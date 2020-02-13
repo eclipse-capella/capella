@@ -162,11 +162,9 @@ import org.polarsys.capella.core.data.la.CapabilityRealization;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.la.LogicalComponentPkg;
-import org.polarsys.capella.core.data.oa.ActivityAllocation;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.oa.OperationalCapability;
-import org.polarsys.capella.core.data.oa.Role;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
@@ -1426,8 +1424,8 @@ public class CapellaServices {
    * @param current
    * @return current if it is a diagram or the diagram that contains current if it is a DDiagramElement.
    * 
-   *         May return null: If used in a style computation or a decoration, the expression will be called twice,
-   *         the first time, the view doesn't have yet a container nor a semantic element.
+   *         May return null: If used in a style computation or a decoration, the expression will be called twice, the
+   *         first time, the view doesn't have yet a container nor a semantic element.
    */
   public DDiagram getDiagramContainer(EObject current) {
     DDiagram parent = DiagramHelper.getService().getDiagramContainer(current);
@@ -2097,30 +2095,6 @@ public class CapellaServices {
   }
 
   /**
-   * a function is allocated to a component/role if it is effectively allocated or if all its leaves are allocated to
-   * considered component/role. used in Architecture Blank Diagrams
-   * 
-   * @param eObject
-   * @param function
-   * @param component
-   *          or role
-   * @return is function allocated to component/role
-   */
-  public boolean isAllocatedFunction(EObject eObject, AbstractFunction function, EObject container) {
-    LinkedList<AbstractFunction> allocatedFunctions = new LinkedList<>();
-
-    if (container instanceof Component) {
-      Component component = (Component) container;
-      allocatedFunctions.addAll(component.getAllocatedFunctions());
-      for (Component subComponent : getCache(ComponentExt::getAllSubUsedAndDeployedComponents, component)) {
-        allocatedFunctions.addAll(subComponent.getAllocatedFunctions());
-      }
-    }
-
-    return isAllocatedFunctionCommon(function, container, allocatedFunctions);
-  }
-
-  /**
    * Returns true if the function can be displayed in the container which has the specified target, false otherwise.
    * 
    * @param function
@@ -2134,8 +2108,15 @@ public class CapellaServices {
    *         TODO This function should have a more meaningfull name such as shouldFunctionBeDisplayed, the current
    *         isAllocatedFunction name is confusing. This should be changed in a non patch version.
    */
-  public boolean isAllocatedFunction(AbstractFunction function, EObject container, DNodeContainer containerView) {
+  public boolean isAllocatedFunction(AbstractFunction function, EObject container, DSemanticDecorator containerView) {
     EObject containerTarget;
+
+    if (!(containerView instanceof DNodeContainer)) {
+      // As PAB_Function mapping is defined under layer, the precondition may be called with diagram as container.
+      // Making container as DNodeContainer raised an EvaluationException, which returns true on evaluationPrecondition.
+      // We need to return false in that case.
+      return false;
+    }
 
     if (function instanceof OperationalActivity) {
       containerTarget = container;
@@ -2155,7 +2136,7 @@ public class CapellaServices {
     // none of the allocation blocks must be in this container
     // otherwise we could just display the function in the visible container
     for (EObject allocationObject : allocationObjects) {
-      if (DiagramServices.getDiagramServices().isIndirectlyOnDiagram(containerView, allocationObject)) {
+      if (DiagramServices.getDiagramServices().isIndirectlyOnDiagram((DNodeContainer)containerView, allocationObject)) {
         return false;
       }
     }
@@ -2179,7 +2160,7 @@ public class CapellaServices {
 
     // not a direct subcomponent -> compute the subproblem on hidden subcomponents and stop at first match
     for (EObject subComponent : subComponents) {
-      boolean isOnDiagram = DiagramServices.getDiagramServices().isIndirectlyOnDiagram(containerView, subComponent);
+      boolean isOnDiagram = DiagramServices.getDiagramServices().isIndirectlyOnDiagram((DNodeContainer)containerView, subComponent);
 
       if (!isOnDiagram && isAllocatedFunction(function, subComponent, containerView)) {
         return true;
@@ -2196,41 +2177,12 @@ public class CapellaServices {
     // an element can be displayed in a container, if all of its children can be displayed in that container
     // compute the subproblem on all children
     for (AbstractFunction subFunction : subFunctions) {
-      if (!isAllocatedFunction(subFunction, container, containerView)) {
+      if (!isAllocatedFunction(subFunction, container, (DNodeContainer)containerView)) {
         return false;
       }
     }
 
     return true;
-  }
-
-  protected boolean isAllocatedFunctionCommon(AbstractFunction function, EObject container,
-      LinkedList<AbstractFunction> allocatedFunctions) {
-    boolean result = false;
-
-    // can be added after
-    if (container instanceof Role) {
-      Role role = (Role) container;
-      for (ActivityAllocation alloc : role.getOwnedActivityAllocations()) {
-        if (alloc.getTargetElement() instanceof AbstractFunction) {
-          AbstractFunction alfunc = (AbstractFunction) alloc.getTargetElement();
-          allocatedFunctions.add(alfunc);
-        }
-      }
-    }
-
-    if (allocatedFunctions.contains(function)) {
-      result = true;
-    } else if (!FunctionExt.isLeaf(function)) {
-      LinkedList<AbstractFunction> leaves = getLeaves(function);
-      LinkedList<AbstractFunction> allocatedLeaves = new LinkedList<>(leaves);
-      allocatedLeaves.retainAll(allocatedFunctions);
-      if (allocatedLeaves.size() == leaves.size()) {
-        result = true;
-      }
-    }
-
-    return result;
   }
 
   /**

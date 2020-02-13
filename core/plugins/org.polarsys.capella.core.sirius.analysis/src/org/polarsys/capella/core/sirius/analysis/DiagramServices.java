@@ -60,6 +60,7 @@ import org.eclipse.sirius.diagram.business.api.query.DDiagramQuery;
 import org.eclipse.sirius.diagram.business.api.query.DiagramElementMappingQuery;
 import org.eclipse.sirius.diagram.business.api.query.EdgeMappingQuery;
 import org.eclipse.sirius.diagram.business.internal.helper.decoration.DecorationHelperInternal;
+import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.SiriusElementMappingSpecOperations;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContentHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.EdgeMappingHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingHelper;
@@ -678,6 +679,43 @@ public class DiagramServices {
   protected Predicate<Setting> isValidTargetFeature() {
     return setting -> ViewpointPackage.Literals.DSEMANTIC_DECORATOR__TARGET.equals(setting.getEStructuralFeature())
         || ViewpointPackage.Literals.DREPRESENTATION_ELEMENT__SEMANTIC_ELEMENTS.equals(setting.getEStructuralFeature());
+  }
+
+  /**
+   * Return whether the given node mapping can be created into the given container 
+   */
+  public boolean isValidMapping(DSemanticDiagram diagram, AbstractNodeMapping mapping_p,
+      DSemanticDecorator container) {
+
+    DiagramMappingsManager manager = DiagramMappingsManagerRegistry.INSTANCE
+        .getDiagramMappingsManager(SessionManager.INSTANCE.getSession(diagram.getTarget()), diagram);
+
+    if (mapping_p instanceof ContainerMapping) {
+      if (container instanceof DDiagram && !manager.getContainerMappings().contains(mapping_p)) {
+        return false;
+      } else if (container instanceof DNodeContainer
+          && !manager.getContainerMappings((DNodeContainer) container).contains(mapping_p)) {
+        return false;
+      }
+    } else if (mapping_p instanceof NodeMapping
+        && !DiagramServices.getDiagramServices().isBorderedNodeMapping(mapping_p)) {
+      if (container instanceof DDiagram && !manager.getNodeMappings().contains(mapping_p)) {
+        return false;
+      } else if (container instanceof DNodeContainer
+          && !manager.getNodeMappings((DNodeContainer) container).contains(mapping_p)) {
+        return false;
+      } else if (container instanceof DNodeList
+          && !manager.getNodeMappings((DNodeList) container).contains(mapping_p)) {
+        return false;
+      }
+    } else if (mapping_p instanceof NodeMapping
+        && DiagramServices.getDiagramServices().isBorderedNodeMapping(mapping_p)) {
+      if (container instanceof AbstractDNode
+          && !manager.getBorderedNodeMappings((AbstractDNode) container).contains(mapping_p)) {
+        return false;
+      }
+    }
+    return true;
   }
 
   /**

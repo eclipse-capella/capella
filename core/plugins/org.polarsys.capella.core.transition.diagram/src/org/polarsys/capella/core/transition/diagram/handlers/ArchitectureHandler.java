@@ -30,9 +30,12 @@ import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
+import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
+import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.oa.Entity;
+import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.diagram.helpers.DiagramHelper;
 import org.polarsys.capella.core.diagram.helpers.naming.DiagramNamingConstants;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
@@ -56,31 +59,42 @@ public class ArchitectureHandler extends AbstractDiagramHandler {
     if (DiagramHelper.getService().isA(representation_p, IDiagramNameConstants.OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME)) {
       return true;
 
-    } else if (DiagramHelper.getService().isA(representation_p, IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    } else if (DiagramHelper.getService().isA(representation_p,
+        IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       return true;
 
-    } else if (DiagramHelper.getService().isA(representation_p, IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    } else if (DiagramHelper.getService().isA(representation_p,
+        IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       return true;
 
-    } else if (DiagramHelper.getService().isA(representation_p, IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    } else if (DiagramHelper.getService().isA(representation_p,
+        IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       return true;
 
     }
     return false;
   }
 
+  /**
+   * In PAB, we don't want to display Root Physical System when initialized from a LAB with displayed LogicalSystem
+   */
   @Override
-  public DSemanticDecorator showNode(IContext context_p, RepresentationDescription sourceDescription_p, DDiagramContents targetContents_p,
-      AbstractNodeMapping mapping_p, DSemanticDecorator containerNode_p, EObject targetSemantic_p) {
+  public DSemanticDecorator showNode(IContext context_p, RepresentationDescription sourceDescription_p,
+      DDiagramContents targetContents_p, AbstractNodeMapping mapping_p, DSemanticDecorator containerNode_p,
+      EObject targetSemantic_p) {
+    if (targetSemantic_p instanceof AbstractFunction) {
+      System.out.println(0);
+    }
     if (targetSemantic_p instanceof Part) {
-      if (((Part) targetSemantic_p).getAbstractType() instanceof Component) {
-        if (BlockArchitectureExt.getOrCreateSystem(BlockArchitectureExt.getRootBlockArchitecture(targetSemantic_p)).equals(
-            ((Part) targetSemantic_p).getAbstractType())) {
+      if (((Part) targetSemantic_p).getAbstractType() instanceof PhysicalComponent) {
+        if (BlockArchitectureExt.getOrCreateSystem(BlockArchitectureExt.getRootBlockArchitecture(targetSemantic_p))
+            .equals(((Part) targetSemantic_p).getAbstractType())) {
           return null;
         }
       }
     }
-    return super.showNode(context_p, sourceDescription_p, targetContents_p, mapping_p, containerNode_p, targetSemantic_p);
+    return super.showNode(context_p, sourceDescription_p, targetContents_p, mapping_p, containerNode_p,
+        targetSemantic_p);
   }
 
   /**
@@ -92,10 +106,12 @@ public class ArchitectureHandler extends AbstractDiagramHandler {
     if (DiagramHelper.getService().isA(description_p, IDiagramNameConstants.OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME)) {
       return true;
 
-    } else if (DiagramHelper.getService().isA(description_p, IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    } else if (DiagramHelper.getService().isA(description_p,
+        IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       return true;
 
-    } else if (DiagramHelper.getService().isA(description_p, IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    } else if (DiagramHelper.getService().isA(description_p,
+        IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       return true;
 
     }
@@ -108,10 +124,12 @@ public class ArchitectureHandler extends AbstractDiagramHandler {
     if (DiagramHelper.getService().isA(description_p, IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       return true;
 
-    } else if (DiagramHelper.getService().isA(description_p, IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    } else if (DiagramHelper.getService().isA(description_p,
+        IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       return true;
 
-    } else if (DiagramHelper.getService().isA(description_p, IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    } else if (DiagramHelper.getService().isA(description_p,
+        IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       return true;
 
     }
@@ -119,8 +137,8 @@ public class ArchitectureHandler extends AbstractDiagramHandler {
   }
 
   @Override
-  public EObject _getTargetSemantic(IContext context_p, EObject sourceSemantic_p, RepresentationDescription sourceDescription_p,
-      RepresentationDescription targetDescription_p) {
+  public EObject _getTargetSemantic(IContext context_p, EObject sourceSemantic_p,
+      RepresentationDescription sourceDescription_p, RepresentationDescription targetDescription_p) {
 
     EObject result = super._getTargetSemantic(context_p, sourceSemantic_p, sourceDescription_p, targetDescription_p);
     if (sourceSemantic_p instanceof Entity) {
@@ -130,9 +148,10 @@ public class ArchitectureHandler extends AbstractDiagramHandler {
   }
 
   @Override
-  public Collection<EObject> getTargetSemantics(IContext context_p, EObject sourceSemantic_p, RepresentationDescription sourceDescription_p,
-      RepresentationDescription targetDescription_p) {
-    Collection<EObject> result = super.getTargetSemantics(context_p, sourceSemantic_p, sourceDescription_p, targetDescription_p);
+  public Collection<EObject> getTargetSemantics(IContext context_p, EObject sourceSemantic_p,
+      RepresentationDescription sourceDescription_p, RepresentationDescription targetDescription_p) {
+    Collection<EObject> result = super.getTargetSemantics(context_p, sourceSemantic_p, sourceDescription_p,
+        targetDescription_p);
 
     if (sourceSemantic_p instanceof Entity) {
       Collection<EObject> result2 = new ArrayList<EObject>();
@@ -151,10 +170,12 @@ public class ArchitectureHandler extends AbstractDiagramHandler {
   }
 
   @Override
-  public DDiagramElement showEdge(IContext context_p, RepresentationDescription sourceDescription_p, DDiagramContents targetContents_p, EdgeMapping mapping_p,
-      DSemanticDecorator sourceNode_p, DSemanticDecorator targetNode_p, EObject targetSemantic_p) {
+  public DDiagramElement showEdge(IContext context_p, RepresentationDescription sourceDescription_p,
+      DDiagramContents targetContents_p, EdgeMapping mapping_p, DSemanticDecorator sourceNode_p,
+      DSemanticDecorator targetNode_p, EObject targetSemantic_p) {
 
-    if (DiagramHelper.getService().isA(sourceDescription_p, IDiagramNameConstants.OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME)) {
+    if (DiagramHelper.getService().isA(sourceDescription_p,
+        IDiagramNameConstants.OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME)) {
       if (targetSemantic_p instanceof FunctionalExchange) {
         ABServices.getService().showABFunctionalExchange(Collections.singleton(targetSemantic_p), targetContents_p);
 
@@ -163,7 +184,8 @@ public class ArchitectureHandler extends AbstractDiagramHandler {
       }
     }
 
-    return super.showEdge(context_p, sourceDescription_p, targetContents_p, mapping_p, sourceNode_p, targetNode_p, targetSemantic_p);
+    return super.showEdge(context_p, sourceDescription_p, targetContents_p, mapping_p, sourceNode_p, targetNode_p,
+        targetSemantic_p);
   }
 
   /**
@@ -171,13 +193,16 @@ public class ArchitectureHandler extends AbstractDiagramHandler {
    */
   @Override
   public DiagramElementMapping getTargetMapping(IContext context_p, RepresentationDescription sourceDescription_p,
-      RepresentationDescription targetDescription_p, DiagramElementMapping sourceMapping_p, EObject source_p, EObject target_p) {
+      RepresentationDescription targetDescription_p, DiagramElementMapping sourceMapping_p, EObject source_p,
+      EObject target_p) {
 
     String mappingName = sourceMapping_p.getName();
     String targetMappingName = null;
 
-    if (DiagramHelper.getService().isA(sourceDescription_p, IDiagramNameConstants.OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME)) {
-      if (DiagramHelper.getService().isA(targetDescription_p, IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (DiagramHelper.getService().isA(sourceDescription_p,
+        IDiagramNameConstants.OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME)) {
+      if (DiagramHelper.getService().isA(targetDescription_p,
+          IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
 
         if (IMappingNameConstants.OAB_OPERATIONAL_PROCESS_END_MAPPING_NAME.equals(mappingName)) {
           targetMappingName = IMappingNameConstants.SAB_FUNCTIONAL_CHAIN_END_MAPPING_NAME;
@@ -203,10 +228,15 @@ public class ArchitectureHandler extends AbstractDiagramHandler {
 
       }
 
-    } else if (DiagramHelper.getService().isA(sourceDescription_p, IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
-      if (DiagramHelper.getService().isA(targetDescription_p, IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    } else if (DiagramHelper.getService().isA(sourceDescription_p,
+        IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+      if (DiagramHelper.getService().isA(targetDescription_p,
+          IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
 
-        if (IMappingNameConstants.SAB_ACTOR_MAPPING_NAME.equals(mappingName)) {
+        if (IMappingNameConstants.SAB_SYSTEM_MAPPING_NAME.equals(mappingName)) {
+          targetMappingName = IMappingNameConstants.LAB_LOGICAL_COMPONENT_MAPPING_NAME;
+
+        } else if (IMappingNameConstants.SAB_ACTOR_MAPPING_NAME.equals(mappingName)) {
           targetMappingName = IMappingNameConstants.LAB_LOGICAL_COMPONENT_MAPPING_NAME;
 
         } else if (IMappingNameConstants.SAB_COMPONENT_CATEGORY_MAPPING_NAME.equals(mappingName)) {
@@ -237,11 +267,11 @@ public class ArchitectureHandler extends AbstractDiagramHandler {
           targetMappingName = IMappingNameConstants.LAB_FUNCTION_PORT_MAPPING_NAME;
 
         } else if (IMappingNameConstants.SAB_PHYSICAL_PORT_MAPPING_NAME.equals(mappingName)) {
-            targetMappingName = IMappingNameConstants.LAB_PHYSICAL_PORT_MAPPING_NAME;
+          targetMappingName = IMappingNameConstants.LAB_PHYSICAL_PORT_MAPPING_NAME;
 
         } else if (IMappingNameConstants.SAB_PHYSICALLINK_MAPPING_NAME.equals(mappingName)) {
-            targetMappingName = IMappingNameConstants.LAB_PHYSICALLINK_MAPPING_NAME;
-            
+          targetMappingName = IMappingNameConstants.LAB_PHYSICALLINK_MAPPING_NAME;
+
         } else if (IMappingNameConstants.SAB_FUNCTION_PORT_ALLOCATION_MAPPING_NAME.equals(mappingName)) {
           targetMappingName = IMappingNameConstants.LAB_FUNCTION_PORT_ALLOCATION_MAPPING_NAME;
 
@@ -252,11 +282,11 @@ public class ArchitectureHandler extends AbstractDiagramHandler {
           targetMappingName = IMappingNameConstants.LAB_FUNCTIONAL_CHAIN_MAPPING_NAME;
 
         } else if (IMappingNameConstants.SAB_PHYSICAL_PATH_INTERNAL_LINK_MAPPING_NAME.equals(mappingName)) {
-            targetMappingName = IMappingNameConstants.LAB_PHYSICAL_PATH_INTERNAL_LINK_MAPPING_NAME;
+          targetMappingName = IMappingNameConstants.LAB_PHYSICAL_PATH_INTERNAL_LINK_MAPPING_NAME;
 
         } else if (IMappingNameConstants.SAB_PHYSICAL_PATH_END.equals(mappingName)) {
-            targetMappingName = IMappingNameConstants.LAB_PHYSICAL_PATH_END;
-          
+          targetMappingName = IMappingNameConstants.LAB_PHYSICAL_PATH_END;
+
         } else if (IMappingNameConstants.SAB_FUNCTIONAL_EXCHANGE_MAPPING_NAME.equals(mappingName)) {
           targetMappingName = IMappingNameConstants.LAB_FUNCTIONAL_EXCHANGE_MAPPING_NAME;
 
@@ -273,12 +303,14 @@ public class ArchitectureHandler extends AbstractDiagramHandler {
 
       }
 
-    } else if (DiagramHelper.getService().isA(sourceDescription_p, IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
-      if (DiagramHelper.getService().isA(targetDescription_p, IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    } else if (DiagramHelper.getService().isA(sourceDescription_p,
+        IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+      if (DiagramHelper.getService().isA(targetDescription_p,
+          IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
 
         if (IMappingNameConstants.LAB_COMPONENT_CATEGORY_MAPPING_NAME.equals(mappingName)) {
           targetMappingName = IMappingNameConstants.PAB_COMPONENT_CATEGORY_MAPPING_NAME;
-          
+
         } else if (IMappingNameConstants.LAB_COMPONENT_CATEGORY_PIN_MAPPING_NAME.equals(mappingName)) {
           targetMappingName = IMappingNameConstants.PAB_COMPONENT_CATEGORY_PIN_MAPPING_NAME;
 
@@ -311,16 +343,16 @@ public class ArchitectureHandler extends AbstractDiagramHandler {
 
         } else if (IMappingNameConstants.LAB_FUNCTIONAL_CHAIN_MAPPING_NAME.equals(mappingName)) {
           targetMappingName = IMappingNameConstants.PAB_FUNCTIONAL_CHAIN_MAPPING_NAME;
-        
+
         } else if (IMappingNameConstants.LAB_PHYSICAL_PATH_END.equals(mappingName)) {
           targetMappingName = IMappingNameConstants.PAB_PHYSICAL_PATH_END;
-          
+
         } else if (IMappingNameConstants.LAB_PHYSICALLINK_MAPPING_NAME.equals(mappingName)) {
-            targetMappingName = IMappingNameConstants.PAB_PHYSICALLINK_MAPPING_NAME;
+          targetMappingName = IMappingNameConstants.PAB_PHYSICALLINK_MAPPING_NAME;
 
         } else if (IMappingNameConstants.LAB_INTERNAL_LINK_MAPPING_NAME.equals(mappingName)) {
           targetMappingName = IMappingNameConstants.PAB_INTERNAL_LINK_MAPPING_NAME;
-              
+
         } else if (IMappingNameConstants.LAB_FUNCTIONAL_EXCHANGE_MAPPING_NAME.equals(mappingName)) {
           targetMappingName = IMappingNameConstants.PAB_FUNCTIONAL_EXCHANGE_MAPPING_NAME;
 
@@ -332,10 +364,10 @@ public class ArchitectureHandler extends AbstractDiagramHandler {
 
         } else if (IMappingNameConstants.LAB_LOGICAL_FUNCTION_MAPPING_NAME.equals(mappingName)) {
           targetMappingName = IMappingNameConstants.PAB_PHYSICAL_FUNCTION_MAPPING_NAME;
-          
+
         } else if (IMappingNameConstants.LAB_PHYSICAL_PORT_MAPPING_NAME.equals(mappingName)) {
-            targetMappingName = IMappingNameConstants.PAB_PHYSICAL_PORT_MAPPING_NAME;
-            
+          targetMappingName = IMappingNameConstants.PAB_PHYSICAL_PORT_MAPPING_NAME;
+
         }
       }
     }
@@ -347,10 +379,11 @@ public class ArchitectureHandler extends AbstractDiagramHandler {
    * {@inheritDoc}
    */
   @Override
-  public RepresentationDescription getTargetDescription(IContext context_p, Session session_p, RepresentationDescription description_p) {
+  public RepresentationDescription getTargetDescription(IContext context_p, Session session_p,
+      RepresentationDescription description_p) {
     DiagramHelper service = DiagramHelper.getService();
 
-    //Architecture Blank
+    // Architecture Blank
     if (service.isA(description_p, IDiagramNameConstants.OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME)) {
       return service.getDescription(session_p, IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME);
 
@@ -368,27 +401,35 @@ public class ArchitectureHandler extends AbstractDiagramHandler {
    * {@inheritDoc}
    */
   @Override
-  public String getTargetName(IContext context_p, DRepresentation diagram_p, RepresentationDescription targetDescription_p) {
+  public String getTargetName(IContext context_p, DRepresentation diagram_p,
+      RepresentationDescription targetDescription_p) {
     RepresentationDescription description = DiagramHelper.getService().getDescription(diagram_p);
     String name = RepresentationHelper.getRepresentationDescriptor(diagram_p).getName();
     name = name.replace(description.getName(), targetDescription_p.getName());
 
     if (DiagramHelper.getService().isA(description, IDiagramNameConstants.OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME)) {
-      if (DiagramHelper.getService().isA(targetDescription_p, IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+      if (DiagramHelper.getService().isA(targetDescription_p,
+          IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
         name = name.replace(description.getLabel(), targetDescription_p.getName());
-        name = name.replace(DiagramNamingConstants.OPERATIONAL_ENTITY_BLANK_DIAGRAM_PREFIX, DiagramNamingConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_PREFIX);
+        name = name.replace(DiagramNamingConstants.OPERATIONAL_ENTITY_BLANK_DIAGRAM_PREFIX,
+            DiagramNamingConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_PREFIX);
       }
 
-    } else if (DiagramHelper.getService().isA(description, IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
-      if (DiagramHelper.getService().isA(targetDescription_p, IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
-        name = name.replace(DiagramNamingConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_PREFIX, DiagramNamingConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_PREFIX);
+    } else if (DiagramHelper.getService().isA(description,
+        IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+      if (DiagramHelper.getService().isA(targetDescription_p,
+          IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+        name = name.replace(DiagramNamingConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_PREFIX,
+            DiagramNamingConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_PREFIX);
 
       }
 
-    } else if (DiagramHelper.getService().isA(description, IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
-      if (DiagramHelper.getService().isA(targetDescription_p, IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
-        name =
-            name.replace(DiagramNamingConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_PREFIX, DiagramNamingConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_PREFIX);
+    } else if (DiagramHelper.getService().isA(description,
+        IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+      if (DiagramHelper.getService().isA(targetDescription_p,
+          IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+        name = name.replace(DiagramNamingConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_PREFIX,
+            DiagramNamingConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_PREFIX);
       }
     }
     return name;
@@ -401,14 +442,17 @@ public class ArchitectureHandler extends AbstractDiagramHandler {
    * @return
    */
   @Override
-  public boolean isReconciliable(IContext context_p, RepresentationDescription sourceDescription_p, DEdge edgeTarget_p, DSemanticDecorator sourceNode_p,
-      DSemanticDecorator targetNode_p) {
-    if (DiagramHelper.getService().isA(sourceDescription_p, IDiagramNameConstants.OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME)) {
+  public boolean isReconciliable(IContext context_p, RepresentationDescription sourceDescription_p, DEdge edgeTarget_p,
+      DSemanticDecorator sourceNode_p, DSemanticDecorator targetNode_p) {
+    if (DiagramHelper.getService().isA(sourceDescription_p,
+        IDiagramNameConstants.OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME)) {
       if (edgeTarget_p.getTarget() instanceof FunctionalExchange) {
-        return EcoreUtil.isAncestor(sourceNode_p, edgeTarget_p.getSourceNode()) && EcoreUtil.isAncestor(targetNode_p, edgeTarget_p.getTargetNode());
+        return EcoreUtil.isAncestor(sourceNode_p, edgeTarget_p.getSourceNode())
+            && EcoreUtil.isAncestor(targetNode_p, edgeTarget_p.getTargetNode());
 
       } else if (edgeTarget_p.getTarget() instanceof ComponentExchange) {
-        return EcoreUtil.isAncestor(sourceNode_p, edgeTarget_p.getSourceNode()) && EcoreUtil.isAncestor(targetNode_p, edgeTarget_p.getTargetNode());
+        return EcoreUtil.isAncestor(sourceNode_p, edgeTarget_p.getSourceNode())
+            && EcoreUtil.isAncestor(targetNode_p, edgeTarget_p.getTargetNode());
       }
     }
     return sourceNode_p.equals(edgeTarget_p.getSourceNode()) && targetNode_p.equals(edgeTarget_p.getTargetNode());
@@ -418,19 +462,23 @@ public class ArchitectureHandler extends AbstractDiagramHandler {
    * {@inheritDoc}
    */
   @Override
-  public EObject getTargetDefaultLocation(IContext context_p, BlockArchitecture root_p, RepresentationDescription description_p) {
+  public EObject getTargetDefaultLocation(IContext context_p, BlockArchitecture root_p,
+      RepresentationDescription description_p) {
 
-    //Architecture Blank
+    // Architecture Blank
     if (DiagramHelper.getService().isA(description_p, IDiagramNameConstants.OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME)) {
       return BlockArchitectureExt.getContext(root_p);
 
-    } else if (DiagramHelper.getService().isA(description_p, IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    } else if (DiagramHelper.getService().isA(description_p,
+        IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       return BlockArchitectureExt.getOrCreateSystem(root_p);
 
-    } else if (DiagramHelper.getService().isA(description_p, IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    } else if (DiagramHelper.getService().isA(description_p,
+        IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       return BlockArchitectureExt.getOrCreateSystem(root_p);
 
-    } else if (DiagramHelper.getService().isA(description_p, IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    } else if (DiagramHelper.getService().isA(description_p,
+        IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       return BlockArchitectureExt.getOrCreateSystem(root_p);
     }
 
