@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,6 +26,7 @@ import org.polarsys.capella.test.transition.ju.testcases.RootPropertyValueTestCa
 import org.polarsys.capella.test.transition.ju.testcases.SkeletonElementsNames;
 import org.polarsys.capella.test.transition.ju.testcases.options.IncrementalModeTest;
 import org.polarsys.capella.test.transition.ju.testcases.options.MergeCategoryManagerTest;
+import org.polarsys.capella.test.transition.ju.testcases.sa.FunctionalTransitionInLib;
 
 import junit.framework.Test;
 
@@ -53,6 +54,7 @@ public class TransitionTestSuite extends BasicTestSuite {
     tests.add(new FC2FSInitializationTestCase());
     tests.add(new FunctionalChainTestCase());
     tests.add(new RootPropertyValueTestCase());
+    tests.add(new FunctionalTransitionInLib());
     return tests;
   }
 
