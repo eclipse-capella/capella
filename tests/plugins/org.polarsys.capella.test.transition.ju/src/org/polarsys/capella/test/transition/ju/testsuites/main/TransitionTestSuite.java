@@ -65,6 +65,7 @@ public class TransitionTestSuite extends BasicTestSuite {
     tests.add(new SaTransitionTestSuite());
     tests.add(new LaTransitionTestSuite());
     
+    tests.add(new FunctionalTransitionInLib());
     return tests;
   }
 
