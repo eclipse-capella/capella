@@ -266,6 +266,7 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
     qGrp.setText(Messages.SearchFor_Label);
     CapellaLeftSearchForContainerArea leftCont = new CapellaLeftSearchForContainerArea(qGrp);
     CapellaRightSearchForContainerArea rightCont = new CapellaRightSearchForContainerArea(qGrp, leftCont);
+    leftCont.setOtherSideArea(rightCont);
     createFiltercontainer(qGrp);
   }
   

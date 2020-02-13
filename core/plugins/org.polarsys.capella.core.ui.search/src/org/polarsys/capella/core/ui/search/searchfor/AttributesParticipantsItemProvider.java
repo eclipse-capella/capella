@@ -20,46 +20,49 @@ import org.eclipse.emf.ecore.EClass;
 
 public class AttributesParticipantsItemProvider extends AbstractMetaModelParticipantsItemProvider {
   private AbstractCapellaSearchForContainerArea leftArea = null;
-	public AttributesParticipantsItemProvider(AbstractCapellaSearchForContainerArea area) {
-	  this.leftArea = area;
-	}
+
+  public AttributesParticipantsItemProvider(AbstractCapellaSearchForContainerArea area) {
+    this.leftArea = area;
+  }
 
   public Object[] getElements(Object inputElement) {
     Set<EAttribute> eAttributesList = new HashSet<EAttribute>();
-    Set<EClass> eClasses = leftArea.displayedMetaClasses;
-    for (EClass eCls : eClasses) {
-      EList<EAttribute> attributes = eCls.getEAttributes();
-      for (EAttribute newAttr : attributes) {
-        boolean add = true;
-        for (EAttribute attr : eAttributesList) {
-          if (newAttr.getName().equals(attr.getName())) {
-            add = false;
-            break;
+    Set<Object> checkedMetaClasses = leftArea.checkedElements;
+    for (Object obj : checkedMetaClasses) {
+      if (obj instanceof EClass) {
+        EList<EAttribute> attributes = ((EClass) obj).getEAllAttributes();
+        for (EAttribute newAttr : attributes) {
+          boolean add = true;
+          for (EAttribute attr : eAttributesList) {
+            if (newAttr.getName().equals(attr.getName())) {
+              add = false;
+              break;
+            }
           }
-        }
-        if(add) {
-          eAttributesList.add(newAttr);
+          if (add) {
+            eAttributesList.add(newAttr);
+          }
         }
       }
     }
     return eAttributesList.toArray();
   }
 
-	@Override
-	public boolean hasChildren(Object element) {
-		if(element instanceof EAttribute) return false ;
-		return getChildren(element).length > 0;
-	}
+  @Override
+  public boolean hasChildren(Object element) {
+    if (element instanceof EAttribute)
+      return false;
+    return getChildren(element).length > 0;
+  }
 
-	@Override
-	public Object[] getChildren(Object parentElement) {
-		return Collections.EMPTY_LIST.toArray();
-	}
-	
+  @Override
+  public Object[] getChildren(Object parentElement) {
+    return Collections.EMPTY_LIST.toArray();
+  }
 
-	@Override
-	public Object getParent(Object element) {
-		return null;
-	}
-	
+  @Override
+  public Object getParent(Object element) {
+    return null;
+  }
+
 }
