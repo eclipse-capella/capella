@@ -750,7 +750,7 @@
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="triggerDescription" valueExpression="aql:arg0"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete StateMode" precondition="aql: not self.makeUnion(self.eContainerOrSelf(diagram::DDiagram).target, self.eContainerOrSelf(diagram::DDiagram).target.ancestors())->includes(element)">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete StateMode" >
             <element name="element"/>
             <elementView name="view"/>
             <containerView name="containerView"/>
@@ -1543,7 +1543,7 @@
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="triggerDescription" valueExpression="aql:arg0"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete StateMode" precondition="aql: not self.makeUnion(self.eContainerOrSelf(diagram::DDiagram).target, self.eContainerOrSelf(diagram::DDiagram).target.ancestors())->includes(element)">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete StateMode" >
             <element name="element"/>
             <elementView name="view"/>
             <containerView name="containerView"/>
@@ -3830,7 +3830,7 @@
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:arg0"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete_DataType" precondition="aql: not self.makeUnion(self.eContainerOrSelf(diagram::DDiagram).target, self.eContainerOrSelf(diagram::DDiagram).target.ancestors())->includes(element)">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete_DataType" >
             <element name="element"/>
             <elementView name="view"/>
             <containerView name="containerView"/>
@@ -6321,7 +6321,7 @@
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements" precondition="aql: not self.makeUnion(self.eContainerOrSelf(diagram::DDiagram).target, self.eContainerOrSelf(diagram::DDiagram).target.ancestors())->includes(element)">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements" >
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -7925,7 +7925,7 @@
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements" precondition="aql: not self.makeUnion(self.eContainerOrSelf(diagram::DDiagram).target, self.eContainerOrSelf(diagram::DDiagram).target.ancestors())->includes(element)">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements" >
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -9645,7 +9645,7 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements" precondition="aql: not self.makeUnion(self.eContainerOrSelf(diagram::DDiagram).target, self.eContainerOrSelf(diagram::DDiagram).target.ancestors())->includes(element)">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements" >
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -11373,7 +11373,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements" precondition="aql: not self.makeUnion(self.eContainerOrSelf(diagram::DDiagram).target, self.eContainerOrSelf(diagram::DDiagram).target.ancestors())->includes(element)">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements" >
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -12310,7 +12310,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements" precondition="aql: not self.makeUnion(self.eContainerOrSelf(diagram::DDiagram).target, self.eContainerOrSelf(diagram::DDiagram).target.ancestors())->includes(element)">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements" >
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -13758,7 +13758,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements" precondition="aql: not self.makeUnion(self.eContainerOrSelf(diagram::DDiagram).target, self.eContainerOrSelf(diagram::DDiagram).target.ancestors())->includes(element)">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements" >
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -15609,7 +15609,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements IS" precondition="aql: not self.makeUnion(self.eContainerOrSelf(diagram::DDiagram).target, self.eContainerOrSelf(diagram::DDiagram).target.ancestors())->includes(element)">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements IS" >
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -17369,7 +17369,7 @@
               </initialOperation>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements DF" precondition="aql: not self.makeUnion(self.eContainerOrSelf(diagram::DDiagram).target, self.eContainerOrSelf(diagram::DDiagram).target.ancestors())->includes(element)">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements DF" >
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -18485,7 +18485,7 @@
             <startingEndPredecessor name="messageEndBefore"/>
             <finishingEndPredecessor name="messageEndAfter"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements" precondition="aql: not self.makeUnion(self.eContainerOrSelf(diagram::DDiagram).target, self.eContainerOrSelf(diagram::DDiagram).target.ancestors())->includes(element)">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements" >
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
