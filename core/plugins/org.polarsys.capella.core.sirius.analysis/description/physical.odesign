@@ -1171,7 +1171,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="delete SF" precondition="aql: not self.makeUnion(self.eContainerOrSelf(diagram::DDiagram).target, self.eContainerOrSelf(diagram::DDiagram).target.ancestors())->includes(element)">
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="delete SF">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -3868,7 +3868,8 @@
               </initialOperation>
             </tools>
             <tools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Function Output Port on the target Function." name="Output Port" precondition="aql:containerView.isValidCreationFunctionOutputPort()" nodeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_PhysicalFunction']/@borderedNodeMappings[name='PAB_Pin']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/OutFlowPort.gif">
-              <variable name="container"/>              <viewVariable name="containerView"/>
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="FunctionOutputPort" referenceName="outputs">
@@ -4796,4 +4797,3 @@
     <ownedJavaExtensions qualifiedClassName="org.polarsys.capella.core.sirius.analysis.ABServices"/>
   </ownedViewpoints>
 </description:Group>
-
