@@ -43,9 +43,10 @@ public class MDCHK_LogicalArchitecture_LaToSaRealization extends AbstractValidat
               project);
           SystemAnalysis sa = (SystemAnalysis) architecture;
           String targetArchitecture = CapellaElementExt.getValidationRuleMessagePrefix(sa);
-          targetArchitecture = targetArchitecture.isEmpty()?"System Analysis":targetArchitecture.substring(0, targetArchitecture.length() - 1);
-          return createFailureStatus(ctx, new Object[] { CapellaElementExt.getValidationRuleMessagePrefix(la)
-              + "does not realize " + targetArchitecture });
+          targetArchitecture = targetArchitecture.isEmpty() ? "System Analysis"
+              : targetArchitecture.substring(0, targetArchitecture.length() - 1);
+          return createFailureStatus(ctx, new Object[] {
+              CapellaElementExt.getValidationRuleMessagePrefix(la) + "does not realize " + targetArchitecture });
         }
       }
     }

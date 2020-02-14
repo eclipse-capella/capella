@@ -20,6 +20,7 @@ import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
+import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ComponentRealization;
 import org.polarsys.capella.core.data.cs.CsFactory;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
@@ -59,7 +60,7 @@ public class LogicalComponentRealizedSystemComponentsResolver extends AbstractCa
             if (logicalComponent != null) {
               EList<ComponentRealization> componentRealizationList = logicalComponent.getOwnedComponentRealizations();
               ComponentRealization cr = null;
-              if (componentRealizationList != null && !componentRealizationList.isEmpty()) {
+              if (!componentRealizationList.isEmpty()) {
                 cr = componentRealizationList.get(0);
                 if (cr.getSourceElement() != logicalComponent) {
                   cr.setSourceElement(logicalComponent);
@@ -85,15 +86,22 @@ public class LogicalComponentRealizedSystemComponentsResolver extends AbstractCa
    * Disabled if System Architecture does not exist.
    */
   @Override
-  protected boolean enabled(Collection<IMarker> markers) {
+  public boolean enabled(Collection<IMarker> markers) {
     for (IMarker iMarker : markers) {
       final List<EObject> modelElements = getModelElements(iMarker);
-      Project project = ProjectExt.getProject(modelElements.get(0));
-      BlockArchitecture architecture = BlockArchitectureExt.getBlockArchitecture(CtxPackage.Literals.SYSTEM_ANALYSIS,
-          project);
-      if (architecture == null) {
-        return false;
+      if (!modelElements.isEmpty()) {
+        Project project = ProjectExt.getProject(modelElements.get(0));
+        BlockArchitecture architecture = BlockArchitectureExt.getBlockArchitecture(CtxPackage.Literals.SYSTEM_ANALYSIS,
+            project);
+        if (architecture == null) {
+          return false;
+        }
+        Component cpkg = architecture.getSystem();
+        if (cpkg == null) {
+          return false;
+        }
       }
+
     }
     return super.enabled(markers);
   }

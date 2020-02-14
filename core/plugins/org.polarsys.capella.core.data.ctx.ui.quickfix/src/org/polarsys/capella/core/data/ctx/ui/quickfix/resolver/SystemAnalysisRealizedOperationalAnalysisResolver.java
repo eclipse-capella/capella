@@ -74,23 +74,22 @@ public class SystemAnalysisRealizedOperationalAnalysisResolver extends AbstractC
                 operationalAnalysis = (OperationalAnalysis) architecture;
               }
             }
-            
+
             OperationalAnalysisRealization lar = CtxFactory.eINSTANCE.createOperationalAnalysisRealization();
             lar.setSourceElement(systemAnalysis);
             lar.setTargetElement(operationalAnalysis);
             systemAnalysis.getOwnedOperationalAnalysisRealizations().add(lar);
 
-            //Root FunctionRealization
+            // Root FunctionRealization
             AbstractFunction sourceFunction = null;
             sourceFunction = BlockArchitectureExt.getRootFunction(systemAnalysis);
 
-            
-            if(sourceFunction.getOwnedFunctionRealizations().isEmpty()){
+            if (sourceFunction.getOwnedFunctionRealizations().isEmpty()) {
               FunctionRealization rlz = FaFactory.eINSTANCE.createFunctionRealization();
               rlz.setSourceElement(sourceFunction);
               rlz.setTargetElement(BlockArchitectureExt.getRootFunction(operationalAnalysis));
               sourceFunction.getOwnedFunctionRealizations().add(rlz);
-              
+
             }
           }
         }

@@ -43,9 +43,10 @@ public class MDCHK_PhysicalArchitecture_PaToLaRealization extends AbstractValida
               project);
           LogicalArchitecture la = (LogicalArchitecture) architecture;
           String targetArchitecture = CapellaElementExt.getValidationRuleMessagePrefix(la);
-          targetArchitecture = targetArchitecture.isEmpty()?"Logical Architecture":targetArchitecture.substring(0, targetArchitecture.length() - 1);
-          return createFailureStatus(ctx, new Object[] { CapellaElementExt.getValidationRuleMessagePrefix(pa)
-              + "does not realize " + targetArchitecture });
+          targetArchitecture = targetArchitecture.isEmpty() ? "Logical Architecture"
+              : targetArchitecture.substring(0, targetArchitecture.length() - 1);
+          return createFailureStatus(ctx, new Object[] {
+              CapellaElementExt.getValidationRuleMessagePrefix(pa) + "does not realize " + targetArchitecture });
         }
       }
     }

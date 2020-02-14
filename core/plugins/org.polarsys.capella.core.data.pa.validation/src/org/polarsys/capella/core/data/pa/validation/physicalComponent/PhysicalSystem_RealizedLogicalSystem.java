@@ -37,8 +37,8 @@ public class PhysicalSystem_RealizedLogicalSystem extends AbstractValidationRule
         PhysicalComponent component = (PhysicalComponent) eObj;
         if (component.equals(BlockArchitectureExt.getRootBlockArchitecture(component).getSystem())) {
           if (component.getRealizedLogicalComponents().isEmpty()) {
-            return ctx.createFailureStatus(
-                CapellaElementExt.getValidationRuleMessagePrefix(component) + " does not realize the Logical Component");
+            return ctx.createFailureStatus(CapellaElementExt.getValidationRuleMessagePrefix(component)
+                + " does not realize the Logical Component");
           }
         }
       }

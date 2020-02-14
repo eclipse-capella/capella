@@ -19,6 +19,7 @@ import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
+import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ComponentRealization;
 import org.polarsys.capella.core.data.cs.CsFactory;
 import org.polarsys.capella.core.data.la.LaPackage;
@@ -58,7 +59,7 @@ public class PhysicalComponentRealizedLogicalComponentsResolver extends Abstract
             if (physicalComponent != null) {
               List<ComponentRealization> componentRealizationList = physicalComponent.getOwnedComponentRealizations();
               ComponentRealization cr = null;
-              if (componentRealizationList != null && !componentRealizationList.isEmpty()) {
+              if (!componentRealizationList.isEmpty()) {
                 cr = componentRealizationList.get(0);
                 if (cr.getSourceElement() != physicalComponent) {
                   cr.setSourceElement(physicalComponent);
@@ -79,20 +80,22 @@ public class PhysicalComponentRealizedLogicalComponentsResolver extends Abstract
     }
     deleteMarker(marker);
   }
-  
-  
-  
+
   /**
    * Disabled if System Architecture does not exist.
    */
   @Override
-  protected boolean enabled(Collection<IMarker> markers) {
+  public boolean enabled(Collection<IMarker> markers) {
     for (IMarker iMarker : markers) {
       final List<EObject> modelElements = getModelElements(iMarker);
       Project project = ProjectExt.getProject(modelElements.get(0));
-      BlockArchitecture architecture = BlockArchitectureExt.getBlockArchitecture(LaPackage.Literals.LOGICAL_ARCHITECTURE,
-          project);
+      BlockArchitecture architecture = BlockArchitectureExt
+          .getBlockArchitecture(LaPackage.Literals.LOGICAL_ARCHITECTURE, project);
       if (architecture == null) {
+        return false;
+      }
+      Component cpkg = architecture.getSystem();
+      if (cpkg == null) {
         return false;
       }
     }

@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.fa.validation.function;
 
-import java.util.List;
-
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
@@ -43,44 +41,45 @@ public class MDCHK_RootFunction_FunctionRealization extends AbstractValidationRu
     if (eType == EMFEventType.NULL) {
       if (eObj instanceof AbstractFunction) {
         AbstractFunction function = (AbstractFunction) eObj;
-        String currentFunction = CapellaElementExt.getValidationRuleMessagePrefix(function);
+        String currentFunctionName = CapellaElementExt.getValidationRuleMessagePrefix(function);
         String targetFunctionName = "";
         BlockArchitecture currentLevelArchitecture = BlockArchitectureExt.getRootBlockArchitecture(function);
-        List<BlockArchitecture> previousArchitectures = BlockArchitectureExt
-            .getPreviousBlockArchitectures(currentLevelArchitecture);
-        if (previousArchitectures!= null && !previousArchitectures.isEmpty()) {
-          AbstractFunction targetFunction = BlockArchitectureExt
-              .getRootFunction(previousArchitectures.get(previousArchitectures.size() - 1));
-          targetFunctionName = CapellaElementExt.getValidationRuleMessagePrefix(targetFunction).substring(0,
-              CapellaElementExt.getValidationRuleMessagePrefix(targetFunction).length() - 1);
+        BlockArchitecture previousArchitectures = BlockArchitectureExt
+            .getPreviousBlockArchitecture(currentLevelArchitecture);
+        if (previousArchitectures != null) {
+          AbstractFunction targetFunction = BlockArchitectureExt.getRootFunction(previousArchitectures);
+          if (targetFunction != null) {
+            targetFunctionName = CapellaElementExt.getValidationRuleMessagePrefix(targetFunction).substring(0,
+                CapellaElementExt.getValidationRuleMessagePrefix(targetFunction).length() - 1);
+          }
         }
 
         if (function
             .equals(BlockArchitectureExt.getRootFunction(BlockArchitectureExt.getRootBlockArchitecture(function)))) {
           if (function instanceof SystemFunction) {
             if (((SystemFunction) function).getRealizedOperationalActivities().isEmpty()) {
-              if (previousArchitectures.isEmpty()) {
-                return createFailureStatus(ctx, new Object[] { currentFunction + "does not realize "
-                    +"Operational Analysis (Not Found), Please create Operational Analysis" });
+              if (previousArchitectures == null) {
+                return createFailureStatus(ctx, new Object[] { currentFunctionName + "does not realize "
+                    + "Operational Analysis (Not Found), Please create Operational Analysis" });
               }
               targetFunctionName = (targetFunctionName.isEmpty()) ? "Root Operational Activity (Not Found)"
                   : targetFunctionName;
               return createFailureStatus(ctx,
-                  new Object[] { currentFunction + "does not realize " + targetFunctionName });
+                  new Object[] { currentFunctionName + "does not realize " + targetFunctionName });
             }
           } else if (function instanceof LogicalFunction) {
             if (((LogicalFunction) function).getRealizedSystemFunctions().isEmpty()) {
               targetFunctionName = (targetFunctionName.isEmpty()) ? "Root System Function (Not Found)"
                   : targetFunctionName;
               return createFailureStatus(ctx,
-                  new Object[] { currentFunction + "does not realize " + targetFunctionName });
+                  new Object[] { currentFunctionName + "does not realize " + targetFunctionName });
             }
           } else if (function instanceof PhysicalFunction) {
             if (((PhysicalFunction) function).getRealizedLogicalFunctions().isEmpty()) {
               targetFunctionName = (targetFunctionName.isEmpty()) ? "Root Logical Function (Not Found)"
                   : targetFunctionName;
               return createFailureStatus(ctx,
-                  new Object[] { currentFunction + "does not realize " + targetFunctionName });
+                  new Object[] { currentFunctionName + "does not realize " + targetFunctionName });
             }
           }
 
@@ -92,7 +91,7 @@ public class MDCHK_RootFunction_FunctionRealization extends AbstractValidationRu
                   || (function instanceof SystemFunction && sourceElement instanceof LogicalFunction)
                   || (function instanceof OperationalActivity && sourceElement instanceof SystemFunction))) {
                 return createFailureStatus(ctx,
-                    new Object[] { currentFunction + "does not realize by accurate Function" });
+                    new Object[] { currentFunctionName + "does not realize by accurate Function" });
               }
             }
           }

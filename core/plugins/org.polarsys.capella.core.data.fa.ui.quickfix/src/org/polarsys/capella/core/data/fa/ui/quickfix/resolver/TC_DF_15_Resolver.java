@@ -54,12 +54,12 @@ public class TC_DF_15_Resolver extends AbstractCapellaMarkerResolution {
     AbstractFunction targetFunction = null;
     AbstractFunction sourceFunction = null;
     BlockArchitecture currentLevelArchitecture = BlockArchitectureExt.getRootBlockArchitecture(obj);
-    List<BlockArchitecture> previousArchitectures = BlockArchitectureExt
-        .getPreviousBlockArchitectures(currentLevelArchitecture);
-    if(!previousArchitectures.isEmpty()) {
+    BlockArchitecture previousArchitecture = BlockArchitectureExt
+        .getPreviousBlockArchitecture(currentLevelArchitecture);
+    if (previousArchitecture != null) {
       AbstractFunction rootfunc = BlockArchitectureExt.getRootFunction(currentLevelArchitecture);
-      if(rootfunc.getOwnedFunctionRealizations().isEmpty()) {
-        targetFunction = BlockArchitectureExt.getRootFunction(previousArchitectures.get(previousArchitectures.size() - 1));
+      if (rootfunc.getOwnedFunctionRealizations().isEmpty()) {
+        targetFunction = BlockArchitectureExt.getRootFunction(previousArchitecture);
         sourceFunction = (AbstractFunction) obj;
         FunctionRealization rlz = FaFactory.eINSTANCE.createFunctionRealization();
         rlz.setSourceElement(sourceFunction);
@@ -70,26 +70,25 @@ public class TC_DF_15_Resolver extends AbstractCapellaMarkerResolution {
   }
 
   @Override
-  protected boolean enabled(Collection<IMarker> markers) {
+  public boolean enabled(Collection<IMarker> markers) {
     for (IMarker iMarker : markers) {
-      return isEnabled(iMarker);
+      if (!isEnabled(iMarker)) {
+        return false;
+      }
     }
     return super.enabled(markers);
   }
-  
+
   private boolean isEnabled(IMarker marker) {
     final List<EObject> modelElements = getModelElements(marker);
-    if(!modelElements.isEmpty()) {
+    if (!modelElements.isEmpty()) {
       BlockArchitecture currentLevelArchitecture = BlockArchitectureExt.getRootBlockArchitecture(modelElements.get(0));
-      List<BlockArchitecture> previousArchitectures = BlockArchitectureExt
-          .getPreviousBlockArchitectures(currentLevelArchitecture);
-      if(previousArchitectures.isEmpty()) {
+      BlockArchitecture previousArchitectures = BlockArchitectureExt
+          .getPreviousBlockArchitecture(currentLevelArchitecture);
+      if (previousArchitectures == null) {
         return false;
       }
-      if (previousArchitectures.get(previousArchitectures.size()-1) == null) {
-        return false;
-      }
-      
+
       AbstractFunction rootfunc = BlockArchitectureExt.getRootFunction(currentLevelArchitecture);
       if (!rootfunc.getOwnedFunctionRealizations().isEmpty()) {
         return false;
@@ -97,5 +96,4 @@ public class TC_DF_15_Resolver extends AbstractCapellaMarkerResolution {
     }
     return true;
   }
-
 }
