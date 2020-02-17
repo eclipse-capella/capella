@@ -1770,6 +1770,9 @@
       <filters xsi:type="filter:CompositeFilterDescription" name="hide.property.values.filter" label="%common.cdb.hide.property.values.filter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG']"/>
       </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.title.block.filter" label="%common.cdb.hide.title.blocks.filter">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']"/>
+      </filters>
       <concerns>
         <ownedConcernDescriptions name="default" filters="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@filters[name='hide.association.labels.filter'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@filters[name='hide.technical.interfaces.filter']"/>
       </concerns>
@@ -3865,6 +3868,27 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
+          <ownedTools xsi:type="tool_1:ToolDescription" name="title.blocks" label="%common.cdb.title.blocks" precondition="aql:not (containerView.getDiagramContainer().isSynchronized() and (containerView.oclIsKindOf(diagram::DNodeList) or containerView.oclIsKindOf(diagram::DNodeListElement)))" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <element name="element"/>
+            <elementView name="elementView">
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="aql:elementView.getParentDiagram()"/>
+            </elementView>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectTitleBlocks" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
+                  <parameters name="context" value="aql:elementView"/>
+                  <parameters name="scope" value="aql:elementView.getAvailableTitleBlocksToInsert()"/>
+                  <parameters name="resultVariable" value="selectedTitleBlocks"/>
+                  <parameters name="wizardMessage" value="aql:'Select Values to show in ' + element.name + '.'"/>
+                  <parameters name="initialSelection" value="aql:self.void2Null(elementView.getInitialSelectionOfShowHideTitleBlocks())"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (selectedTitleBlocks = 'WIZARD_CANCELED')">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.showHideTitleBlocks(selectedTitleBlocks,diagram)"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:diagram.forceRefresh()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
           <ownedTools xsi:type="tool:ToolGroup" name="Constraints"/>
           <ownedTools xsi:type="tool:DirectEditLabel" name="name" forceRefresh="true" inputLabelExpression="feature:name">
             <mask mask="{0}"/>
@@ -4338,12 +4362,21 @@
             </menuItemDescription>
           </ownedTools>
           <ownedTools xsi:type="tool:ToolGroup" name="TitleBlock">
-            <tools xsi:type="tool_1:ToolDescription" name="Create Title Block" forceRefresh="true">
+            <tools xsi:type="tool_1:ToolDescription" name="Create Diagram Title Block" precondition="aql:self.isDiagram()" forceRefresh="true">
               <element name="container"/>
               <elementView name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:containerView">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.createTitleBlock(diagram)"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.createDiagramTitleBlock(diagram)"/>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool_1:ToolDescription" name="Create Element Title Block" precondition="aql:not self.isDiagram()" forceRefresh="true">
+              <element name="container"/>
+              <elementView name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:containerView">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.createElementTitleBlock(diagram)"/>
                 </firstModelOperations>
               </initialOperation>
             </tools>
