@@ -11,31 +11,18 @@
 package org.polarsys.capella.core.ui.search.searchfor;
 
 import java.lang.reflect.InvocationTargetException;
-import java.net.URL;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
-import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.Path;
-import org.eclipse.core.runtime.Status;
-import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.ENamedElement;
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.CheckboxTreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerComparator;
-import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
-import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
-import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
@@ -45,9 +32,8 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.PatternFilter;
 import org.eclipse.ui.progress.IProgressService;
-import org.polarsys.capella.core.ui.search.Activator;
 import org.polarsys.capella.core.ui.search.CapellaSearchConstants;
-import org.polarsys.capella.core.data.capellamodeller.provider.CapellaModellerEditPlugin;
+import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 
 public abstract class AbstractCapellaSearchForContainerArea {
   protected Button selectAllButton;
@@ -80,25 +66,9 @@ public abstract class AbstractCapellaSearchForContainerArea {
 
     filteredTree = new CheckboxFilteredTree(parentGroup, SWT.BORDER, patternFilter);
     filteredTree.getViewer().setContentProvider(partictipantsItemProvider);
-    filteredTree.getViewer()
-        .setLabelProvider(new AdapterFactoryLabelProvider(getMetaElementComposeableAdapterFactory()) {
-          @Override
-          public Image getImage(Object object) {
-            Image img = getTargetModelElementImage(object);
-            return img != null ? img : super.getImage(object);
-          }
-
-          @Override
-          public String getText(Object object) {
-            String txt = getTargetModelElementText(object);
-            return txt != null ? txt : super.getText(object);
-          }
-
-          @Override
-          public String getColumnText(Object object, int columnIndex) {
-            return super.getText(object);
-          }
-        });
+    
+    filteredTree.getViewer().setLabelProvider(new SearchForLabelProvider(CapellaAdapterFactoryProvider.getInstance()
+        .getAdapterFactory()));
 
     filteredTree.getViewer().setInput("");
 
@@ -194,43 +164,6 @@ public abstract class AbstractCapellaSearchForContainerArea {
 
   public void checkAll(CheckboxTreeViewer viewer, boolean state) {
     viewer.setAllChecked(state);
-  }
-
-  protected Image getTargetModelElementImage(Object object) {
-    try {
-      if (object instanceof ENamedElement) {
-        String imagePath = "/icons/full/obj16/" + computeElementImageName(((ENamedElement) object).getName()) + ".gif";
-        URL url = FileLocator.find(CapellaModellerEditPlugin.getPlugin().getBundle(), new Path(imagePath), null);
-        if (url != null) {
-          return ModelSearchImagesUtil.getImage(url);
-        }
-      }
-    } catch (Throwable t) {
-      Activator.getDefault().getLog()
-          .log(new Status(Status.ERROR, Activator.PLUGIN_ID, "Error while attempmting to retrieve image from edit"
-              + CapellaModellerEditPlugin.getPlugin().getBundle() + " bundle"));
-    }
-    return null;
-  }
-
-  private String computeElementImageName(String name) {
-    return name;
-  }
-
-  public final ComposeableAdapterFactory getMetaElementComposeableAdapterFactory() {
-    List<AdapterFactory> adapterFactoryList = new ArrayList<AdapterFactory>();
-    return new ComposedAdapterFactory(adapterFactoryList);
-  }
-
-  protected String getTargetModelElementText(Object object) {
-    if (object instanceof ENamedElement)
-      return ((ENamedElement) object).getName();
-    if (object instanceof DRepresentationDescriptor)
-      return ((DRepresentationDescriptor) object).getName();
-    if (object instanceof DRepresentationElement)
-      return ((DRepresentationElement) object).getName();
-
-    return null;
   }
 
   protected abstract AbstractMetaModelParticipantsItemProvider getPartictipantsItemProvider();

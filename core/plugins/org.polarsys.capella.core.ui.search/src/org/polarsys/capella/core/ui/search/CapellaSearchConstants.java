@@ -49,4 +49,5 @@ public class CapellaSearchConstants {
   public static final String SearchFor_Label = "Search For";
   public static final String ModelElements_Key = "Model Elements";
   public static final String DiagramElements_Key = "Diagram Elements";
+  public static final String Diagram_Label = "Diagram";
 }
