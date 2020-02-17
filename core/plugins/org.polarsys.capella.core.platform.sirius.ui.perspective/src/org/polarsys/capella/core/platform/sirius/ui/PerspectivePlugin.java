@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,14 @@
 
 package org.polarsys.capella.core.platform.sirius.ui;
 
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.preferences.DefaultScope;
+import org.eclipse.core.runtime.preferences.IEclipsePreferences;
+import org.eclipse.gmf.runtime.notation.JumpLinkStatus;
+import org.eclipse.gmf.runtime.notation.JumpLinkType;
+import org.eclipse.sirius.diagram.DiagramPlugin;
+import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramCorePreferences;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
@@ -35,6 +43,18 @@ public class PerspectivePlugin extends AbstractUIPlugin {
   public void start(BundleContext context_p) throws Exception {
     super.start(context_p);
     __plugin = this;
+    try {
+      IEclipsePreferences diagramCoreDefaultPreferences = DefaultScope.INSTANCE.getNode(DiagramPlugin.ID);
+
+      // By default override the Jump Link properties default values
+      diagramCoreDefaultPreferences.putBoolean(SiriusDiagramCorePreferences.PREF_JUMP_LINK_ENABLE_OVERRIDE, true);
+      // Set the jump link status as "Above"
+      diagramCoreDefaultPreferences.putInt(SiriusDiagramCorePreferences.PREF_JUMP_LINK_STATUS, JumpLinkStatus.ABOVE);
+      // Set the jump link type as "Tunnel"
+      diagramCoreDefaultPreferences.putInt(SiriusDiagramCorePreferences.PREF_JUMP_LINK_TYPE, JumpLinkType.TUNNEL);
+    } catch (Exception e) {
+      getLog().log(new Status(IStatus.ERROR, PLUGIN_ID, IStatus.OK, e.getMessage(), e));
+    }
   }
 
   /**
