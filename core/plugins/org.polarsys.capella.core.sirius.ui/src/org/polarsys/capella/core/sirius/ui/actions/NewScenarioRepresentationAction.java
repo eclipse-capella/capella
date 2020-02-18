@@ -59,7 +59,7 @@ public class NewScenarioRepresentationAction extends NewRepresentationAction {
    */
   public NewScenarioRepresentationAction(RepresentationDescription description, AbstractCapability selectedEObject, Session session,
       boolean forceDefaultName, boolean openRepresentation) {
-    super(description, selectedEObject, session);
+    super(description, selectedEObject, session, forceDefaultName, openRepresentation);
     this.selectedEObject = selectedEObject;
   }
 
