@@ -2904,7 +2904,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="DT_TitleBlockEdge" targetMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']" targetFinderExpression="service:computeTitleBlockElements(diagram)" reconnections="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='Reconnect%20TitleBlockEdge%20Source'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='Reconnect%20TitleBlockEdge%20Target']">
+        <edgeMappings name="DT_TitleBlockEdge" targetMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']" targetFinderExpression="service:computeTitleBlockElements(diagram)">
           <sourceMapping xsi:type="description_1:ContainerMapping" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_Class']"/>
           <sourceMapping xsi:type="description_1:ContainerMapping" href="physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']"/>
           <style lineStyle="dash" targetArrow="NoDecoration" sizeComputationExpression="2">
@@ -3170,7 +3170,7 @@
                   </style>
                 </conditionnalStyles>
               </subNodeMappings>
-              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:diagram.getTitleBlockCellLabel(self)" widthComputationExpression="10" heightComputationExpression="10">
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:diagram.getTitleBlockCellLabel(self)" widthComputationExpression="10" heightComputationExpression="5">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -4362,7 +4362,7 @@
             </menuItemDescription>
           </ownedTools>
           <ownedTools xsi:type="tool:ToolGroup" name="TitleBlock">
-            <tools xsi:type="tool_1:ToolDescription" name="Create Diagram Title Block" precondition="aql:self.isDiagram()" forceRefresh="true">
+            <tools xsi:type="tool_1:ToolDescription" name="Create Diagram Title Block" precondition="aql:self.isDiagram()" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlock_16.png">
               <element name="container"/>
               <elementView name="containerView"/>
               <initialOperation>
@@ -4371,7 +4371,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ToolDescription" name="Create Element Title Block" precondition="aql:not self.isDiagram()" forceRefresh="true">
+            <tools xsi:type="tool_1:ToolDescription" name="Create Element Title Block" precondition="aql:not self.isDiagram()" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlock_16.png">
               <element name="container"/>
               <elementView name="containerView"/>
               <initialOperation>
@@ -4409,28 +4409,6 @@
               </firstModelOperations>
             </initialOperation>
             <hook id="org.polarsys.capella.core.sirius.analysis.delete.CapellaDeleteActionHook"/>
-          </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="Reconnect TitleBlockEdge Source" reconnectionKind="RECONNECT_SOURCE">
-            <source name="source"/>
-            <target name="target"/>
-            <sourceView name="sourceView"/>
-            <targetView name="targetView"/>
-            <element name="element"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.reconnectTitleBlockEdgeSource(source, target, edgeView)"/>
-            </initialOperation>
-            <edgeView name="edgeView"/>
-          </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="Reconnect TitleBlockEdge Target" forceRefresh="true">
-            <source name="source"/>
-            <target name="target"/>
-            <sourceView name="sourceView"/>
-            <targetView name="targetView"/>
-            <element name="element"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.reconnectTitleBlockEdgeTarget(source, target)"/>
-            </initialOperation>
-            <edgeView name="edgeView"/>
           </ownedTools>
         </toolSections>
         <customization>

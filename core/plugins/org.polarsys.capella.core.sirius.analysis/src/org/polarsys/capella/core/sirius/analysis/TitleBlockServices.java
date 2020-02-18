@@ -73,7 +73,7 @@ public class TitleBlockServices {
   }
 
   public void createDiagramTitleBlock(EObject elementView, EObject diagram) {
-    if (elementView instanceof DSemanticDiagram) {
+    if (elementView instanceof DSemanticDiagram && isUniqueDiagramTitleBlock(diagram)) {
       createTitleBlock(elementView, diagram);
     }
   }
@@ -393,6 +393,16 @@ public class TitleBlockServices {
       titleBlock.getDetails().put(VISIBILITY, TRUE);
     }
     return DiagramServices.getDiagramServices().createNode(mapping, titleBlock, (DragAndDropTarget) context, diagram);
+  }
+
+  public boolean isUniqueDiagramTitleBlock(EObject diagram) {
+    Collection<DAnnotation> result = new ArrayList<>();
+    if ((diagram instanceof DRepresentation)) {
+      DRepresentation representation = (DRepresentation) diagram;
+      result = representation.getEAnnotations().stream().filter(x -> x.getSource().equals(TITLE_BLOCK))
+          .filter(x -> x.getReferences().size() == 2).collect(Collectors.toList());
+    }
+    return (result.size() == 0);
   }
 
 }
