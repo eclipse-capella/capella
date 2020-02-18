@@ -162,9 +162,11 @@ import org.polarsys.capella.core.data.la.CapabilityRealization;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.la.LogicalComponentPkg;
+import org.polarsys.capella.core.data.oa.ActivityAllocation;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.oa.OperationalCapability;
+import org.polarsys.capella.core.data.oa.Role;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
@@ -2095,6 +2097,30 @@ public class CapellaServices {
   }
 
   /**
+   * a function is allocated to a component/role if it is effectively allocated or if all its leaves are allocated to
+   * considered component/role. used in Architecture Blank Diagrams
+   * 
+   * @param eObject
+   * @param function
+   * @param component
+   *          or role
+   * @return is function allocated to component/role
+   */
+  public boolean isAllocatedFunction(EObject eObject, AbstractFunction function, EObject container) {
+    LinkedList<AbstractFunction> allocatedFunctions = new LinkedList<>();
+
+    if (container instanceof Component) {
+      Component component = (Component) container;
+      allocatedFunctions.addAll(component.getAllocatedFunctions());
+      for (Component subComponent : getCache(ComponentExt::getAllSubUsedAndDeployedComponents, component)) {
+        allocatedFunctions.addAll(subComponent.getAllocatedFunctions());
+      }
+    }
+
+    return isAllocatedFunctionCommon(function, container, allocatedFunctions);
+  }
+
+  /**
    * Returns true if the function can be displayed in the container which has the specified target, false otherwise.
    * 
    * @param function
@@ -2186,6 +2212,35 @@ public class CapellaServices {
     }
 
     return true;
+  }
+
+  protected boolean isAllocatedFunctionCommon(AbstractFunction function, EObject container,
+      LinkedList<AbstractFunction> allocatedFunctions) {
+    boolean result = false;
+
+    // can be added after
+    if (container instanceof Role) {
+      Role role = (Role) container;
+      for (ActivityAllocation alloc : role.getOwnedActivityAllocations()) {
+        if (alloc.getTargetElement() instanceof AbstractFunction) {
+          AbstractFunction alfunc = (AbstractFunction) alloc.getTargetElement();
+          allocatedFunctions.add(alfunc);
+        }
+      }
+    }
+
+    if (allocatedFunctions.contains(function)) {
+      result = true;
+    } else if (!FunctionExt.isLeaf(function)) {
+      LinkedList<AbstractFunction> leaves = getLeaves(function);
+      LinkedList<AbstractFunction> allocatedLeaves = new LinkedList<>(leaves);
+      allocatedLeaves.retainAll(allocatedFunctions);
+      if (allocatedLeaves.size() == leaves.size()) {
+        result = true;
+      }
+    }
+
+    return result;
   }
 
   /**
