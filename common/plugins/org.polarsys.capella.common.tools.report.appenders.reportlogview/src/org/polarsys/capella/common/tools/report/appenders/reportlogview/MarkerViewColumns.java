@@ -13,10 +13,11 @@ package org.polarsys.capella.common.tools.report.appenders.reportlogview;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -481,17 +482,15 @@ class MarkerViewColumns {
             // resolution generators in plugins that aren't yet
             // loaded.
             IMarker marker = (IMarker) element;
-            Collection<IMarker> c = new HashSet<IMarker>();
-            c.add(marker);
             IMarkerResolution[] resolutions = IDE.getMarkerHelpRegistry().getResolutions(marker);
-            if (resolutions != null && resolutions.length > 0 && resolutions[0] instanceof ReportMarkerResolution) {
-              ReportMarkerResolution resolution = (ReportMarkerResolution) resolutions[0];
-              if (!resolution.enabled(c)) {
-                return null;
-              }
-            }
 
             if ((resolutions != null) && (resolutions.length > 0)) {
+              // Mask the icon if all resolutions are not enabled 
+              if (isAllCapellaMarkerResolution(resolutions)
+                  && !hasAtLeastOneEnabledMarkerResolution(marker, resolutions)) {
+                return null;
+              }
+              
               if (hasAtLeastOneMultipleMarkerResolution(marker, resolutions)) {
                 return MarkerViewPlugin.getDefault().getImage("quickfixAll-repository.png"); //$NON-NLS-1$
               }
@@ -523,6 +522,21 @@ class MarkerViewColumns {
               if (similarMarkers.length > 1) {
                 return true;
               }
+            }
+          }
+          return false;
+        }
+
+        private boolean isAllCapellaMarkerResolution(IMarkerResolution[] resolutions) {
+          return Arrays.stream(resolutions).allMatch(ReportMarkerResolution.class::isInstance);
+        }
+
+        // check if there is at least one Capella marker resolution that's enabled
+        private boolean hasAtLeastOneEnabledMarkerResolution(IMarker marker, IMarkerResolution[] resolutions) {
+          for (IMarkerResolution res : resolutions) {
+            if (res instanceof ReportMarkerResolution
+                && ((ReportMarkerResolution) res).enabled(Collections.singleton(marker))) {
+              return true;
             }
           }
           return false;
