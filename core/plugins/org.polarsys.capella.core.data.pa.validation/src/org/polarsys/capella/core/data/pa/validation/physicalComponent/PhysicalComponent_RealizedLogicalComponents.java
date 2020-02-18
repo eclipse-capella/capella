@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019, 2020 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,7 +21,7 @@ import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 /**
- * Ensures that the Component Realization targeting a Physical Component always realizes a Logical Component.
+ * TC_DC_09 - Ensures that the Component Realization targeting a Physical Component always realizes a Logical Component.
  */
 public class PhysicalComponent_RealizedLogicalComponents extends AbstractValidationRule {
   /**

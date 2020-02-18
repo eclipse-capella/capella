@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2019, 2020 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -394,29 +394,26 @@
                This rule ensures that a System Component Realizes at least one Entity.
             </description>
          </constraint>
+         <constraint
+               class="org.polarsys.capella.core.data.ctx.validation.systemAnalysis.MDCHK_SystemAnalysis_SaToOaRealization"
+               id="TJ_SA_04"
+               isEnabledByDefault="true"
+               lang="Java"
+               mode="Batch"
+               name="TJ_SA_04 - System Analysis Realization"
+               severity="ERROR"
+               statusCode="1">
+            <message>
+               {0}.
+            </message>
+            <description>
+               This rule ensures the realization consistency between System Analysis and Operational Analysis.
+            </description>
+            <target
+                  class="SystemAnalysis">
+            </target>
+         </constraint>
       </constraints>
-               <constraints
-               categories="capella.category/transition/consistency/components">
-            <constraint
-                  class="org.polarsys.capella.core.data.ctx.validation.systemAnalysis.MDCHK_SystemAnalysis_SaToOaRealization"
-                  id="TC_DC_09"
-                  isEnabledByDefault="true"
-                  lang="Java"
-                  mode="Batch"
-                  name="TC_DC_09 - System Analysis Realization"
-                  severity="ERROR"
-                  statusCode="1">
-               <message>
-                  Realization consistency error for {0}.
-               </message>
-               <description>
-                  The rule checks the realization consistency between system analysis and operational analysis. 
-               </description>
-               <target
-                     class="SystemAnalysis">
-               </target>
-            </constraint>
-         </constraints>
       </constraintProvider>
    </extension>
 </plugin>

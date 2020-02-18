@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019, 2020 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -347,7 +347,7 @@ public class BlockArchitectureExt {
   public static ComponentPkg getActorPkg(BlockArchitecture architecture, boolean create) {
     return getComponentPkg(architecture, create);
   }
-  
+
   public static ComponentPkg getComponentPkg(BlockArchitecture blockArchitecture) {
     return getComponentPkg(blockArchitecture, true);
   }
@@ -690,8 +690,7 @@ public class BlockArchitectureExt {
       first = ((OperationalAnalysis) architecture).getSystem();
       if ((first == null) && create) {
         first = OaFactory.eINSTANCE.createEntity(NamingConstants.CreateOaAnalysisCmd_entity_name);
-        ((EntityPkg) getComponentPkg(architecture, true)).getOwnedEntities()
-            .add((Entity) first);
+        ((EntityPkg) getComponentPkg(architecture, true)).getOwnedEntities().add((Entity) first);
       }
 
     } else if (architecture instanceof SystemAnalysis) {
@@ -759,8 +758,8 @@ public class BlockArchitectureExt {
    */
   public static boolean isRootComponent(Component component) {
     BlockArchitecture architecture = getRootBlockArchitecture(component);
-    if(architecture != null) {
-      return component.equals(architecture.getSystem());      
+    if (architecture != null) {
+      return component.equals(architecture.getSystem());
     }
     return false;
   }
@@ -772,7 +771,7 @@ public class BlockArchitectureExt {
    * @param availableElements
    */
   public static void getAllStatesAndModes(BlockArchitecture blockArch, List<CapellaElement> availableElements) {
-    availableElements.addAll((List)EObjectExt.getAll(blockArch, CapellacommonPackage.Literals.STATE));
+    availableElements.addAll((List) EObjectExt.getAll(blockArch, CapellacommonPackage.Literals.STATE));
   }
 
   public static List<EObject> getAllStatesAndModes(BlockArchitecture blockArch) {
@@ -812,19 +811,23 @@ public class BlockArchitectureExt {
    * 
    * @param anArchitecture
    *          an Architecture
-   * @return return only the previous architecture of anArchitecture
+   * @return return the previous architecture of anArchitecture is exist else return null
    */
-  public static List<BlockArchitecture> getPreviousBlockArchitecture(final BlockArchitecture anArchitecture) {
-    List<BlockArchitecture> result = new ArrayList<>();
+  public static BlockArchitecture getPreviousBlockArchitecture(final BlockArchitecture anArchitecture) {
+    List<BlockArchitecture> architectureList = new ArrayList<>();
+    BlockArchitecture result = null;
 
     if (null != anArchitecture) {
       // functional way according to model
-      result.addAll(getPreviousBlockArchitectureByFunctinoalWay(anArchitecture));
+      architectureList.addAll(getPreviousBlockArchitectureByFunctinoalWay(anArchitecture));
 
       // consider classic way only if functional way result is void
-      if (result.isEmpty()) {
+      if (architectureList.isEmpty()) {
         // classic way (consider the level as OA,SA,LA,PA,EPBS)
-        result.addAll(getPreviousBlockArchitectureByClassicWay(anArchitecture));
+        architectureList.addAll(getPreviousBlockArchitectureByClassicWay(anArchitecture));
+      }
+      if (!architectureList.isEmpty()) {
+        result = architectureList.get(0);
       }
     }
     return result;

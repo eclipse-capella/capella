@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019, 2020 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -50,12 +50,14 @@ public class GetAvailable_PhysicalComponent_UsedInterfaces extends AbstractQuery
           }
         }
         BlockArchitecture currentBlock = BlockArchitectureExt.getRootBlockArchitecture(currentPC);
-        List<CapellaElement> allInterfaces = QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_INTERFACES, currentBlock, context);
+        List<CapellaElement> allInterfaces = QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_INTERFACES,
+            currentBlock, context);
         availableElements.addAll(allInterfaces);
         EList<Component> lcs = currentPC.getRealizedComponents();
         if (lcs.isEmpty()) {
-          currentBlock = BlockArchitectureExt.getPreviousBlockArchitecture(currentBlock).get(0);
-          allInterfaces = QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_ALL_INTERFACES, currentBlock, context);
+          currentBlock = BlockArchitectureExt.getPreviousBlockArchitecture(currentBlock);
+          allInterfaces = QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_ALL_INTERFACES, currentBlock,
+              context);
           availableElements.addAll(allInterfaces);
         } else {
           for (Component logicalComponent : lcs) {

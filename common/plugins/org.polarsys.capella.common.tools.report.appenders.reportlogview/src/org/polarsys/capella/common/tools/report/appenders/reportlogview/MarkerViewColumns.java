@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -54,6 +55,7 @@ import org.eclipse.ui.views.markers.WorkbenchMarkerResolution;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.helpers.validation.ConstraintStatusDiagnostic;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.common.tools.report.appenders.reportlogview.handler.ReportMarkerResolution;
 
 class MarkerViewColumns {
 
@@ -208,7 +210,8 @@ class MarkerViewColumns {
   }
 
   /**
-   * Provide a ContentProvider to Column mapping. Must be called after installing a new content provider on the marker view's viewer.
+   * Provide a ContentProvider to Column mapping. Must be called after installing a new content provider on the marker
+   * view's viewer.
    */
   void update(AbstractMarkerViewContentProvider provider) {
     Class<?> providerClass = provider.getClass();
@@ -344,7 +347,8 @@ class MarkerViewColumns {
             try {
               result = format.format(new Date(((IMarker) element).getCreationTime()));
             } catch (CoreException e) {
-              MarkerViewPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, MarkerViewPlugin.PLUGIN_ID, e.getLocalizedMessage(), e));
+              MarkerViewPlugin.getDefault().getLog()
+                  .log(new Status(IStatus.ERROR, MarkerViewPlugin.PLUGIN_ID, e.getLocalizedMessage(), e));
             }
           }
           return result;
@@ -400,7 +404,7 @@ class MarkerViewColumns {
 
           if (element instanceof IMarker) {
             result = ((IMarker) element).getAttribute(IMarker.MESSAGE, ICommonConstants.EMPTY_STRING).toString();
-            result = pattern.matcher(result).replaceAll(" "); //$NON-NLS-1$ 
+            result = pattern.matcher(result).replaceAll(" "); //$NON-NLS-1$
 
           } else if (element instanceof IConstraintDescriptor) {
             result = ((IConstraintDescriptor) element).getName();
@@ -477,10 +481,17 @@ class MarkerViewColumns {
             // resolution generators in plugins that aren't yet
             // loaded.
             IMarker marker = (IMarker) element;
+            Collection<IMarker> c = new HashSet<IMarker>();
+            c.add(marker);
             IMarkerResolution[] resolutions = IDE.getMarkerHelpRegistry().getResolutions(marker);
+            if (resolutions != null && resolutions.length > 0 && resolutions[0] instanceof ReportMarkerResolution) {
+              ReportMarkerResolution resolution = (ReportMarkerResolution) resolutions[0];
+              if (!resolution.enabled(c)) {
+                return null;
+              }
+            }
 
             if ((resolutions != null) && (resolutions.length > 0)) {
-
               if (hasAtLeastOneMultipleMarkerResolution(marker, resolutions)) {
                 return MarkerViewPlugin.getDefault().getImage("quickfixAll-repository.png"); //$NON-NLS-1$
               }
@@ -589,7 +600,8 @@ class MarkerViewColumns {
           if (element instanceof IMarker) {
             Diagnostic diagnostic = MarkerViewHelper.getDiagnostic((IMarker) element);
             if (diagnostic instanceof ConstraintStatusDiagnostic) {
-              Set<Category> cats = ((ConstraintStatusDiagnostic) diagnostic).getConstraintStatus().getConstraint().getDescriptor().getCategories();
+              Set<Category> cats = ((ConstraintStatusDiagnostic) diagnostic).getConstraintStatus().getConstraint()
+                  .getDescriptor().getCategories();
               if (!cats.isEmpty()) {
                 result = cats.iterator().next().getQualifiedName();
               }
@@ -624,8 +636,7 @@ class MarkerViewColumns {
 
     @Override
     /**
-     * This makes sure that nodes with children are always on top
-     * {@inheritDoc}
+     * This makes sure that nodes with children are always on top {@inheritDoc}
      */
     public int category(Object o) {
       if (o instanceof IMarker) {

@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.validation.rules.ju.testcases.tc_dc;
+package org.polarsys.capella.test.validation.rules.ju.testcases.tj_la;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,28 +19,28 @@ import org.polarsys.capella.test.framework.api.OracleDefinition;
 import org.polarsys.capella.test.validation.rules.ju.testcases.AbstractRulesOnTransitionTest;
 
 /**
- * Test on TC_DC_12 : This rule ensures that Root Logical Component always realizes a Root System Component.
+ * Test on TJ_LA_07 : This rule ensures the realization consistency between Logical Architecture and System Analysis.
  */
-public class Rule_TC_DC_12 extends AbstractRulesOnTransitionTest {
+public class Rule_TJ_LA_07 extends AbstractRulesOnTransitionTest {
 
   @Override
   protected EClass getTargetedEClass() {
-    return LaPackage.Literals.LOGICAL_COMPONENT;
+    return LaPackage.Literals.LOGICAL_ARCHITECTURE;
   }
 
   @Override
   protected String getRuleID() {
-    return "org.polarsys.capella.core.data.la.validation.TC_DC_12";
+    return "org.polarsys.capella.core.data.la.validation.TJ_LA_07";
   }
 
   @Override
   protected List<String> getScopeDefinition() {
-    return Arrays.asList(new String[] { "8256d54b-ba8f-46df-89d8-7fe0d4a582e9" });
+    return Arrays.asList(new String[] { "c2a7f4c9-0866-488e-b1f9-4618971f8cd9" });
   }
 
   @Override
   protected List<OracleDefinition> getOracleDefinitions() {
-    return Arrays.asList(new OracleDefinition[] { new OracleDefinition("8256d54b-ba8f-46df-89d8-7fe0d4a582e9", 1) });
+    return Arrays.asList(new OracleDefinition[] { new OracleDefinition("c2a7f4c9-0866-488e-b1f9-4618971f8cd9", 1) });
   }
 
 }
