@@ -25,6 +25,8 @@ import org.eclipse.sirius.diagram.ui.business.api.view.SiriusGMFHelper;
 import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.junit.Assert;
+import org.polarsys.capella.core.sirius.analysis.CapellaServices;
+import org.polarsys.capella.core.sirius.analysis.DiagramServices;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
 import org.polarsys.capella.test.framework.helpers.GuiActions;
@@ -113,7 +115,11 @@ public class InitializationFromExistingDiagramTool extends InsertRemoveTool {
       if (element instanceof AbstractDNode) {
         Node node = SiriusGMFHelper.getGmfNode(element, session);
         Point location = GMFHelper.getAbsoluteLocation(node);
-        locationMap.put(element.getName(), location);
+        String name = element.getName();
+        if (DiagramServices.getDiagramServices().isABorderedNode((AbstractDNode)element)) {
+          name+=((AbstractDNode)element.eContainer()).getName();
+        }
+        locationMap.put(name, location);
       }
     }
     return locationMap;
