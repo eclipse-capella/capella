@@ -18,6 +18,7 @@ import junit.framework.Test;
 import org.polarsys.capella.test.explorer.activity.ju.testcases.AutoOpen;
 import org.polarsys.capella.test.explorer.activity.ju.testcases.ManualOpen;
 import org.polarsys.capella.test.explorer.activity.ju.testcases.MultipleModels;
+import org.polarsys.capella.test.explorer.activity.ju.testcases.ScenarioName;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 
@@ -35,6 +36,7 @@ public class ActivityExplorerTestsSuite extends BasicTestSuite {
     tests.add(new AutoOpen());
     tests.add(new ManualOpen());
     tests.add(new MultipleModels());
+    tests.add(new ScenarioName());
     return tests;
   }
 

@@ -10,20 +10,12 @@
  *******************************************************************************/
 package org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.pa;
 
-import org.eclipse.emf.ecore.EObject;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
-import org.polarsys.capella.core.data.capellamodeller.Project;
-import org.polarsys.capella.core.data.interaction.ScenarioKind;
-import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
-import org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.AbstractCapellaNewDiagramHyperlinkAdapter;
-import org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.ModelCreationHelper;
-import org.polarsys.capella.core.model.helpers.ModelQueryHelper;
 import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 
 /**
  * New Interface scenario for PA.
  */
-public class NewScenarioDiagramAdapter extends AbstractCapellaNewDiagramHyperlinkAdapter {
+public class NewScenarioDiagramAdapter extends AbstractNewPAScenarioDiagramAdapter {
 	/**
 	 * Constructor.
 	 * @param rootSemanticModel
@@ -36,11 +28,5 @@ public class NewScenarioDiagramAdapter extends AbstractCapellaNewDiagramHyperlin
 	@Override
 	public String getRepresentationName() {
 		return IDiagramNameConstants.INTERFACE_SCENARIO_DIAGRAM_NAME;
-	}
-
-	@Override
-	protected ModelElement getModelElement(EObject rootSemanticModel) {
-		PhysicalArchitecture physicalArchitecture = ModelQueryHelper.getPhysicalArchitecture((Project) rootSemanticModel);
-		return ModelCreationHelper.selectCapabilityAndCreateScenario((Project) rootSemanticModel, physicalArchitecture, ScenarioKind.INTERFACE);
 	}
 }
