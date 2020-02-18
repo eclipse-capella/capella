@@ -30,6 +30,7 @@ import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.impl.DRepresentationDescriptorImpl;
+import org.polarsys.capella.core.model.helpers.registry.CapellaPackageRegistry;
 import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 import org.polarsys.capella.core.ui.search.CapellaSearchConstants;
 
@@ -103,6 +104,7 @@ public class MetaClassesParticipantsItemProvider extends AbstractMetaModelPartic
   }
 
   public Set<Object> getEClassifiers() {
+    test();
     Set<Object> allDerivedReferences = new HashSet<>();
     for (String nsURI : EPackage.Registry.INSTANCE.keySet()) {
       if (nsURI.startsWith("http://www.polarsys.org/capella")) {
@@ -115,6 +117,11 @@ public class MetaClassesParticipantsItemProvider extends AbstractMetaModelPartic
       }
     }
     return allDerivedReferences;
+  }
+  
+  public void test() {
+    Collection<EPackage> pkgs = CapellaPackageRegistry.getAllCapellaPackages();
+    System.out.println(pkgs);
   }
 
   public Set<Object> getDiagramElements() {
