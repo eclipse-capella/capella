@@ -15,24 +15,14 @@ import java.util.Collection;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.AbstractDNode;
-import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
-import org.eclipse.sirius.diagram.DNodeContainer;
-import org.eclipse.sirius.diagram.DNodeList;
-import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.EdgeTarget;
-import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManager;
-import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManagerRegistry;
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.SiriusElementMappingSpecOperations;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
-import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
-import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -139,7 +129,7 @@ public abstract class AbstractDiagramHandler implements IDiagramHandler {
       }
     }
 
-    if (DiagramServices.getDiagramServices().isValidMapping(((DSemanticDiagram)targetContents_p.getDDiagram()), mapping_p, containerNode_p)) {
+    if (DiagramServices.getDiagramServices().isValidMapping(mapping_p, containerNode_p)) {
       if (DiagramServices.getDiagramServices().evaluateNodePrecondition(mapping_p, targetContents_p.getDDiagram(), containerNode_p, targetSemantic_p)) {
         DDiagramElement targetView = DiagramServices.getDiagramServices().createAbstractDNode(mapping_p,
             targetSemantic_p, (DragAndDropTarget) containerNode_p, targetContents_p.getDDiagram());

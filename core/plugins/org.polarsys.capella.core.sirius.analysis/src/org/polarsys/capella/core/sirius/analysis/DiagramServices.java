@@ -61,7 +61,6 @@ import org.eclipse.sirius.diagram.business.api.query.DDiagramQuery;
 import org.eclipse.sirius.diagram.business.api.query.DiagramElementMappingQuery;
 import org.eclipse.sirius.diagram.business.api.query.EdgeMappingQuery;
 import org.eclipse.sirius.diagram.business.internal.helper.decoration.DecorationHelperInternal;
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.SiriusElementMappingSpecOperations;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContentHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.EdgeMappingHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingHelper;
@@ -686,15 +685,15 @@ public class DiagramServices {
   /**
    * Return whether the given node mapping can be created into the given container
    */
-  public boolean isValidMapping(DSemanticDiagram diagram, AbstractNodeMapping mapping_p, DSemanticDecorator container) {
+  public boolean isValidMapping(AbstractNodeMapping mapping_p, DSemanticDecorator container) {
 
     AbstractNodeMappingApplicabilityTester tester = new AbstractNodeMappingApplicabilityTester(
         Arrays.asList(mapping_p));
     if (container instanceof DDiagram) {
       return tester.canCreateIn((DDiagram) container);
 
-    } else if (container instanceof DNodeContainer) {
-      return tester.canCreateIn((DNodeContainer) container);
+    } else if (container instanceof DDiagramElementContainer) {
+      return tester.canCreateIn((DDiagramElementContainer) container);
 
     } else if (container instanceof DNode) {
       return tester.canCreateIn((DNode) container);
