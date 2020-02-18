@@ -2112,9 +2112,10 @@ public class CapellaServices {
     EObject containerTarget;
 
     if (!(containerView instanceof DNodeContainer)) {
-      // As PAB_Function mapping is defined under layer, the precondition may be called with diagram as container.
-      // Making container as DNodeContainer raised an EvaluationException, which returns true on evaluationPrecondition.
-      // We need to return false in that case.
+      // As PAB_Function mapping is defined under layer and not under component mapping, the precondition may be called
+      // with diagram as container. Making container parameter as DNodeContainer only raised an EvaluationException,
+      // which returns true on AbstractNodeMappingQuery.evaluationPrecondition.
+      // We need to return false if used outside a container.
       return false;
     }
 
@@ -2136,7 +2137,8 @@ public class CapellaServices {
     // none of the allocation blocks must be in this container
     // otherwise we could just display the function in the visible container
     for (EObject allocationObject : allocationObjects) {
-      if (DiagramServices.getDiagramServices().isIndirectlyOnDiagram((DNodeContainer)containerView, allocationObject)) {
+      if (DiagramServices.getDiagramServices().isIndirectlyOnDiagram((DNodeContainer) containerView,
+          allocationObject)) {
         return false;
       }
     }
@@ -2160,7 +2162,8 @@ public class CapellaServices {
 
     // not a direct subcomponent -> compute the subproblem on hidden subcomponents and stop at first match
     for (EObject subComponent : subComponents) {
-      boolean isOnDiagram = DiagramServices.getDiagramServices().isIndirectlyOnDiagram((DNodeContainer)containerView, subComponent);
+      boolean isOnDiagram = DiagramServices.getDiagramServices().isIndirectlyOnDiagram((DNodeContainer) containerView,
+          subComponent);
 
       if (!isOnDiagram && isAllocatedFunction(function, subComponent, containerView)) {
         return true;
@@ -2177,7 +2180,7 @@ public class CapellaServices {
     // an element can be displayed in a container, if all of its children can be displayed in that container
     // compute the subproblem on all children
     for (AbstractFunction subFunction : subFunctions) {
-      if (!isAllocatedFunction(subFunction, container, (DNodeContainer)containerView)) {
+      if (!isAllocatedFunction(subFunction, container, (DNodeContainer) containerView)) {
         return false;
       }
     }

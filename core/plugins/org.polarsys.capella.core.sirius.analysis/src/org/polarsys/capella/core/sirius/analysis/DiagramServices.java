@@ -13,6 +13,7 @@ package org.polarsys.capella.core.sirius.analysis;
 import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -65,6 +66,7 @@ import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContentHelp
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.EdgeMappingHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.operations.DDiagramSpecOperations;
+import org.eclipse.sirius.diagram.business.internal.query.AbstractNodeMappingApplicabilityTester;
 import org.eclipse.sirius.diagram.business.internal.sync.DDiagramElementSynchronizer;
 import org.eclipse.sirius.diagram.business.internal.sync.DDiagramSynchronizer;
 import org.eclipse.sirius.diagram.business.internal.sync.DEdgeCandidate;
@@ -682,39 +684,22 @@ public class DiagramServices {
   }
 
   /**
-   * Return whether the given node mapping can be created into the given container 
+   * Return whether the given node mapping can be created into the given container
    */
-  public boolean isValidMapping(DSemanticDiagram diagram, AbstractNodeMapping mapping_p,
-      DSemanticDecorator container) {
+  public boolean isValidMapping(DSemanticDiagram diagram, AbstractNodeMapping mapping_p, DSemanticDecorator container) {
 
-    DiagramMappingsManager manager = DiagramMappingsManagerRegistry.INSTANCE
-        .getDiagramMappingsManager(SessionManager.INSTANCE.getSession(diagram.getTarget()), diagram);
+    AbstractNodeMappingApplicabilityTester tester = new AbstractNodeMappingApplicabilityTester(
+        Arrays.asList(mapping_p));
+    if (container instanceof DDiagram) {
+      return tester.canCreateIn((DDiagram) container);
 
-    if (mapping_p instanceof ContainerMapping) {
-      if (container instanceof DDiagram && !manager.getContainerMappings().contains(mapping_p)) {
-        return false;
-      } else if (container instanceof DNodeContainer
-          && !manager.getContainerMappings((DNodeContainer) container).contains(mapping_p)) {
-        return false;
-      }
-    } else if (mapping_p instanceof NodeMapping
-        && !DiagramServices.getDiagramServices().isBorderedNodeMapping(mapping_p)) {
-      if (container instanceof DDiagram && !manager.getNodeMappings().contains(mapping_p)) {
-        return false;
-      } else if (container instanceof DNodeContainer
-          && !manager.getNodeMappings((DNodeContainer) container).contains(mapping_p)) {
-        return false;
-      } else if (container instanceof DNodeList
-          && !manager.getNodeMappings((DNodeList) container).contains(mapping_p)) {
-        return false;
-      }
-    } else if (mapping_p instanceof NodeMapping
-        && DiagramServices.getDiagramServices().isBorderedNodeMapping(mapping_p)) {
-      if (container instanceof AbstractDNode
-          && !manager.getBorderedNodeMappings((AbstractDNode) container).contains(mapping_p)) {
-        return false;
-      }
+    } else if (container instanceof DNodeContainer) {
+      return tester.canCreateIn((DNodeContainer) container);
+
+    } else if (container instanceof DNode) {
+      return tester.canCreateIn((DNode) container);
     }
+
     return true;
   }
 

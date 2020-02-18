@@ -95,13 +95,17 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractCacheAwa
     // -------------------------------------
 
     String mappingName = MappingConstantsHelper.getMappingFunction(diagram);
-    NodeMapping mapping = DiagramServices.getDiagramServices().getNodeMapping(diagram, mappingName);
-    Collection<DDiagramElement> nodes = diagram.getOwnedDiagramElements().stream() //
-        .filter(AbstractDNode.class::isInstance) //
-        .filter(d -> d.getTarget() != null && d.getTarget() instanceof AbstractFunction) //
-        .filter(d -> mapping.equals(d.getDiagramElementMapping())) //
-        .collect(Collectors.toList());
-    nodes.stream().forEach(d -> DiagramServices.getDiagramServices().removeContainerView(d));
+    if (mappingName != null) {
+      NodeMapping mapping = DiagramServices.getDiagramServices().getNodeMapping(diagram, mappingName);
+      if (mapping != null) {
+        Collection<DDiagramElement> nodes = diagram.getOwnedDiagramElements().stream() //
+            .filter(AbstractDNode.class::isInstance) //
+            .filter(d -> d.getTarget() instanceof AbstractFunction) //
+            .filter(d -> mapping.equals(d.getDiagramElementMapping())) //
+            .collect(Collectors.toList());
+        nodes.stream().forEach(d -> DiagramServices.getDiagramServices().removeContainerView(d));
+      }
+    }
 
     // -------------------------------------
     // Show in diagram related contextual elements

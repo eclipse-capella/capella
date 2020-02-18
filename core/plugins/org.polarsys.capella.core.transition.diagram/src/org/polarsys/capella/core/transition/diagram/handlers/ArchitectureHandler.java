@@ -30,10 +30,8 @@ import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
-import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
-import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.diagram.helpers.DiagramHelper;
@@ -82,9 +80,6 @@ public class ArchitectureHandler extends AbstractDiagramHandler {
   public DSemanticDecorator showNode(IContext context_p, RepresentationDescription sourceDescription_p,
       DDiagramContents targetContents_p, AbstractNodeMapping mapping_p, DSemanticDecorator containerNode_p,
       EObject targetSemantic_p) {
-    if (targetSemantic_p instanceof AbstractFunction) {
-      System.out.println(0);
-    }
     if (targetSemantic_p instanceof Part) {
       if (((Part) targetSemantic_p).getAbstractType() instanceof PhysicalComponent) {
         if (BlockArchitectureExt.getOrCreateSystem(BlockArchitectureExt.getRootBlockArchitecture(targetSemantic_p))
@@ -150,23 +145,23 @@ public class ArchitectureHandler extends AbstractDiagramHandler {
   @Override
   public Collection<EObject> getTargetSemantics(IContext context_p, EObject sourceSemantic_p,
       RepresentationDescription sourceDescription_p, RepresentationDescription targetDescription_p) {
+
     Collection<EObject> result = super.getTargetSemantics(context_p, sourceSemantic_p, sourceDescription_p,
         targetDescription_p);
 
-    if (sourceSemantic_p instanceof Entity) {
-      Collection<EObject> result2 = new ArrayList<EObject>();
-
-      for (EObject traced : result) {
-        if (traced instanceof Component) {
-          for (Part part : getCache(ComponentExt::getRepresentingParts, (Component) traced)) {
-            result2.add(part);
-            break;
-          }
+    ArrayList<EObject> objects = new ArrayList<EObject>();
+    for (EObject resut : result) {
+      if (result instanceof Component) {
+        for (Part part : getCache(ComponentExt::getRepresentingParts, (Component) result)) {
+          objects.add(part);
+          break;
         }
+      } else {
+        objects.add(resut);
       }
-      return result2;
     }
-    return result;
+
+    return objects;
   }
 
   @Override
