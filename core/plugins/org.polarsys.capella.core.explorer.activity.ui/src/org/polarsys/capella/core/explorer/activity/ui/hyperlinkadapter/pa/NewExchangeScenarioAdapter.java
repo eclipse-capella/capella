@@ -10,17 +10,12 @@
  *******************************************************************************/
 package org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.pa;
 
-import org.eclipse.emf.ecore.EObject;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
-import org.polarsys.capella.core.data.capellamodeller.Project;
-import org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.AbstractCapellaNewDiagramHyperlinkAdapter;
-import org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.ModelCreationHelper;
 import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 
 /**
  * Create a new Dataflow Scenario
  */
-public class NewExchangeScenarioAdapter extends AbstractCapellaNewDiagramHyperlinkAdapter {
+public class NewExchangeScenarioAdapter extends AbstractNewPAScenarioDiagramAdapter {
 	/**
 	 * Constructor.
 	 * @param rootSemanticModel
@@ -33,10 +28,5 @@ public class NewExchangeScenarioAdapter extends AbstractCapellaNewDiagramHyperli
 	@Override
 	public String getRepresentationName() {
 		return IDiagramNameConstants.DATA_FLOW_SCENARIO_DIAGRAM_NAME;
-	}
-
-	@Override
-	protected ModelElement getModelElement(EObject rootSemanticModel) {
-		return ModelCreationHelper.selectPACapabilityRealizationAndCreateDataFlowScenario((Project) rootSemanticModel);
 	}
 }

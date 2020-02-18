@@ -6,7 +6,10 @@ Bundle-Version: 1.4.0.qualifier
 Bundle-Activator: org.polarsys.capella.test.explorer.activity.ju.TestActivityExplorerPlugin
 Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.capella.test.framework,
- org.eclipse.amalgam.explorer.activity.ui
+ org.eclipse.amalgam.explorer.activity.ui,
+ org.polarsys.capella.core.explorer.activity.ui,
+ org.eclipse.sirius.diagram,
+ org.polarsys.capella.core.data.gen
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: %providerName
