@@ -533,7 +533,10 @@
 		<p>The parameter 
 			<i>-import is mandatory</i>, but parameters 
 			<i>-filepath</i> and 
-			<i>-outputfolder</i> are not. 
+			<i>-outputfolder</i> are not.
+		</p>
+		<p>For a migration and post-migration script example, please check: 
+			<a href="/wiki/../help/topic/org.polarsys.capella.commandline.doc/html/19.%20Command%20Line%20Support/19.2.%20Migration%20and%20Post-Migration%20script%20example.html" title="../help/topic/org.polarsys.capella.commandline.doc/html/19.%20Command%20Line%20Support/19.2.%20Migration%20and%20Post-Migration%20script%20example.html">Migration and Post-Migration script example</a>
 		</p>
 		<p><u>
 			<b>Simple use case:</b></u>
@@ -600,52 +603,6 @@
 			<i>-logfile D:\CommandLineLog\log.html</i>
 		</p>
 		<p>This command migrates the given project/libraries and creates a log.html at the specified location.</p>
-		<h3 id="Export_Representations_as_Images">Export Representations as Images</h3>
-		<p>This command will export images of all representations to the given outputfolder. More information here: 
-			<a href="/wiki/../help/topic/org.polarsys.capella.tipsandtricks.doc/html/Tips%20and%20tricks/13_Diagram%20Export%20and%20Printing/13_Diagram%20Export%20and%20Printing.html#Export_As_Image" title="../help/topic/org.polarsys.capella.tipsandtricks.doc/html/Tips%20and%20tricks/13_Diagram%20Export%20and%20Printing/13_Diagram%20Export%20and%20Printing.html#Export_As_Image">Export_As_Image</a>
-		</p>
-		<p>The 
-			<i>-imageFormat</i> parameter allows to choose the images format:
-		</p>
-		<ul>
-			<li>JPG (by default)</li>
-			<li>PNG</li>
-			<li>SVG</li>
-			<li>BMP</li>
-			<li>GIF</li>
-		</ul>
-		<p>The 
-			<i>-exportToHtml</i> parameter add an html page for each images.
-		</p>
-		<p>The 
-			<i>-exportDecorations</i> parameter is for exporting decorations.
-		</p>
-		<p><u>
-			<b>Simple use case:</b></u>
-		</p>
-		<p>
-			<i>&lt;</i>
-			<i>CapellaInstallationPath&gt;/capella.exe -nosplash</i>
-		</p>
-		<p>
-			<i>-application </i>
-			<i>org.polarsys.capella.core.commandline.core</i>
-		</p>
-		<p>
-			<i>-appid org.polarsys.capella.exportRepresentations</i>
-		</p>
-		<p>
-			<i>-data &lt;workspacePath&gt;</i>
-		</p>
-		<p>
-			<i>-filepath &quot;/EOLE_AF/EOLE_AF.aird&quot;</i>
-		</p>
-		<p>
-			<i>-outputfolder &quot;/EOLE_AF/output&quot;</i>
-		</p>
-		<p>
-			<i>-forceoutputfoldercreation</i>
-		</p>
 		<h3 id="Refresh_Representations">Refresh Representations</h3>
 		<p>This command will refresh all representations. More information here: 
 			<a href="/wiki/../help/topic/org.polarsys.capella.ui.doc/html/05.%20Diagram%20Management/5.1.%20Diagram%20concepts.html#Diagram_Refreshing_Strategies" title="../help/topic/org.polarsys.capella.ui.doc/html/05.%20Diagram%20Management/5.1.%20Diagram%20concepts.html#Diagram_Refreshing_Strategies">Diagram Refreshing Strategies</a>
@@ -696,6 +653,52 @@
 		</p>
 		<p>
 			<i>-appid org.polarsys.capella.removeHiddenElements</i>
+		</p>
+		<p>
+			<i>-data &lt;workspacePath&gt;</i>
+		</p>
+		<p>
+			<i>-filepath &quot;/EOLE_AF/EOLE_AF.aird&quot;</i>
+		</p>
+		<p>
+			<i>-outputfolder &quot;/EOLE_AF/output&quot;</i>
+		</p>
+		<p>
+			<i>-forceoutputfoldercreation</i>
+		</p>
+		<h3 id="Export_Representations_as_Images">Export Representations as Images</h3>
+		<p>This command will export images of all representations to the given outputfolder. More information here: 
+			<a href="/wiki/../help/topic/org.polarsys.capella.tipsandtricks.doc/html/Tips%20and%20tricks/13_Diagram%20Export%20and%20Printing/13_Diagram%20Export%20and%20Printing.html#Export_As_Image" title="../help/topic/org.polarsys.capella.tipsandtricks.doc/html/Tips%20and%20tricks/13_Diagram%20Export%20and%20Printing/13_Diagram%20Export%20and%20Printing.html#Export_As_Image">Export_As_Image</a>
+		</p>
+		<p>The 
+			<i>-imageFormat</i> parameter allows to choose the images format:
+		</p>
+		<ul>
+			<li>JPG (by default)</li>
+			<li>PNG</li>
+			<li>SVG</li>
+			<li>BMP</li>
+			<li>GIF</li>
+		</ul>
+		<p>The 
+			<i>-exportToHtml</i> parameter add an html page for each images.
+		</p>
+		<p>The 
+			<i>-exportDecorations</i> parameter is for exporting decorations.
+		</p>
+		<p><u>
+			<b>Simple use case:</b></u>
+		</p>
+		<p>
+			<i>&lt;</i>
+			<i>CapellaInstallationPath&gt;/capella.exe -nosplash</i>
+		</p>
+		<p>
+			<i>-application </i>
+			<i>org.polarsys.capella.core.commandline.core</i>
+		</p>
+		<p>
+			<i>-appid org.polarsys.capella.exportRepresentations</i>
 		</p>
 		<p>
 			<i>-data &lt;workspacePath&gt;</i>

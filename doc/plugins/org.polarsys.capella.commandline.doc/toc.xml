@@ -13,16 +13,19 @@
 <toc label="Command Line Support" link_to="PLUGINS_ROOT/org.polarsys.capella.doc/toc.xml#contribution" sort="true">
 	<topic href="html/19. Command Line Support/19.1. Core Mechanism and Applications.html" label="Command Line Support">
 		<topic label="Overview">
-		<topic href="html/19. Command Line Support/19.1. Core Mechanism and Applications.html#Overview" label="Overview">
-	</topic>
-	</topic>
+			<topic href="html/19. Command Line Support/19.1. Core Mechanism and Applications.html#Overview" label="Overview"></topic>
+		</topic>
 		<topic href="html/19. Command Line Support/19.1. Core Mechanism and Applications.html#Command_Line_Application_Examples" label="Command Line Application Examples">
 			<topic href="html/19. Command Line Support/19.1. Core Mechanism and Applications.html#Model_Validation" label="Model Validation"></topic>
 			<topic href="html/19. Command Line Support/19.1. Core Mechanism and Applications.html#HTML_Production" label="HTML Production"></topic>
 			<topic href="html/19. Command Line Support/19.1. Core Mechanism and Applications.html#XML_Export" label="XML Export"></topic>
 			<topic href="html/19. Command Line Support/19.1. Core Mechanism and Applications.html#Export_as_ZIP" label="Export as ZIP"></topic>
 			<topic href="html/19. Command Line Support/19.1. Core Mechanism and Applications.html#Migration" label="Migration"></topic>
+			<topic href="html/19. Command Line Support/19.1. Core Mechanism and Applications.html#Refresh_Representations" label="Refresh Representations"></topic>
+			<topic href="html/19. Command Line Support/19.1. Core Mechanism and Applications.html#Remove_Hidden_Elements_from_Representations" label="Remove Hidden Elements from Representations"></topic>
+			<topic href="html/19. Command Line Support/19.1. Core Mechanism and Applications.html#Export_Representations_as_Images" label="Export Representations as Images"></topic>
 		</topic>
+		<topic href="html/19. Command Line Support/19.2. Migration and Post-Migration script example.html" label="Migration and Post-Migration script example"></topic>
 		<anchor id="contribution"/>
 	</topic>
 </toc>

@@ -424,7 +424,9 @@ Mandatory parameters:
 
 This command will migrate the project(s) given as input. A workspace folder is created and located where the command is triggered or in a specified path given by the ''-data'' parameter. It creates a log file located in the .metadata folder of the workspace. If the input project is a folder, it will be backed up and migrated inside this folder, otherwise if the input is a zip file it will be unzipped and project(s) inside it will be migrated into the workspace folder.
 
-The parameter ''-import is mandatory'', but parameters ''-filepath'' and ''-outputfolder'' are not. 
+The parameter ''-import is mandatory'', but parameters ''-filepath'' and ''-outputfolder'' are not.
+
+For a migration and post-migration script example, please check: [[../help/topic/org.polarsys.capella.commandline.doc/html/19.%20Command%20Line%20Support/19.2.%20Migration%20and%20Post-Migration%20script%20example.html | Migration and Post-Migration script example]]
 
 <u>'''Simple use case:'''</u>
 
@@ -471,37 +473,6 @@ In such a case, the migration sequence can be done either by launching several u
 
 This command migrates the given project/libraries and creates a log.html at the specified location.
 
-=== Export Representations as Images ===
-
-This command will export images of all representations to the given outputfolder. More information here: [[../help/topic/org.polarsys.capella.tipsandtricks.doc/html/Tips%20and%20tricks/13_Diagram%20Export%20and%20Printing/13_Diagram%20Export%20and%20Printing.html#Export_As_Image | Export_As_Image]]
-
-The ''-imageFormat'' parameter allows to choose the images format:
-* JPG (by default)
-* PNG
-* SVG
-* BMP
-* GIF
-
-The ''-exportToHtml'' parameter add an html page for each images.
-
-The ''-exportDecorations'' parameter is for exporting decorations.
-
-<u>'''Simple use case:'''</u>
-
-''&lt;''''CapellaInstallationPath&gt;/capella.exe -nosplash''
-
-''-application ''''org.polarsys.capella.core.commandline.core''
-
-''-appid org.polarsys.capella.exportRepresentations''
-
-''-data &lt;workspacePath&gt;''
-
-''-filepath &quot;/EOLE_AF/EOLE_AF.aird&quot;''
-
-''-outputfolder &quot;/EOLE_AF/output&quot;''
-
-''-forceoutputfoldercreation''
-
 === Refresh Representations ===
 
 This command will refresh all representations. More information here: [[../help/topic/org.polarsys.capella.ui.doc/html/05.%20Diagram%20Management/5.1.%20Diagram%20concepts.html#Diagram_Refreshing_Strategies | Diagram Refreshing Strategies]]
@@ -535,6 +506,37 @@ If the ''-unsyncDiags'' parameter is used, all the elements with Unsynchronizabl
 ''-application ''''org.polarsys.capella.core.commandline.core''
 
 ''-appid org.polarsys.capella.removeHiddenElements''
+
+''-data &lt;workspacePath&gt;''
+
+''-filepath &quot;/EOLE_AF/EOLE_AF.aird&quot;''
+
+''-outputfolder &quot;/EOLE_AF/output&quot;''
+
+''-forceoutputfoldercreation''
+
+=== Export Representations as Images ===
+
+This command will export images of all representations to the given outputfolder. More information here: [[../help/topic/org.polarsys.capella.tipsandtricks.doc/html/Tips%20and%20tricks/13_Diagram%20Export%20and%20Printing/13_Diagram%20Export%20and%20Printing.html#Export_As_Image | Export_As_Image]]
+
+The ''-imageFormat'' parameter allows to choose the images format:
+* JPG (by default)
+* PNG
+* SVG
+* BMP
+* GIF
+
+The ''-exportToHtml'' parameter add an html page for each images.
+
+The ''-exportDecorations'' parameter is for exporting decorations.
+
+<u>'''Simple use case:'''</u>
+
+''&lt;''''CapellaInstallationPath&gt;/capella.exe -nosplash''
+
+''-application ''''org.polarsys.capella.core.commandline.core''
+
+''-appid org.polarsys.capella.exportRepresentations''
 
 ''-data &lt;workspacePath&gt;''
 
