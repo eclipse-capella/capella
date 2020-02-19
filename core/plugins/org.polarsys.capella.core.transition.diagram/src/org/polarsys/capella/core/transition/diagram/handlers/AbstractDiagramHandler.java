@@ -55,8 +55,8 @@ public abstract class AbstractDiagramHandler implements IDiagramHandler {
     return true;
   }
 
-  public FilterDescription getTargetFilterDescription(IContext context_p, DiagramDescription description_p, DiagramDescription description2_p,
-      FilterDescription description3_p) {
+  public FilterDescription getTargetFilterDescription(IContext context_p, DiagramDescription description_p,
+      DiagramDescription description2_p, FilterDescription description3_p) {
     String sourceLabel = description3_p.getName();
     if (description3_p.getLabel() != null) {
       sourceLabel = description3_p.getLabel();
@@ -80,8 +80,8 @@ public abstract class AbstractDiagramHandler implements IDiagramHandler {
    * @param targetNode_p
    * @return
    */
-  public boolean isReconciliable(IContext context_p, RepresentationDescription sourceDescription_p, DEdge edgeTarget_p, DSemanticDecorator sourceNode_p,
-      DSemanticDecorator targetNode_p) {
+  public boolean isReconciliable(IContext context_p, RepresentationDescription sourceDescription_p, DEdge edgeTarget_p,
+      DSemanticDecorator sourceNode_p, DSemanticDecorator targetNode_p) {
     return sourceNode_p.equals(edgeTarget_p.getSourceNode()) && targetNode_p.equals(edgeTarget_p.getTargetNode());
   }
 
@@ -90,7 +90,8 @@ public abstract class AbstractDiagramHandler implements IDiagramHandler {
    * @param eContainer_p
    * @return
    */
-  public boolean isReconciliable(IContext context_p, RepresentationDescription sourceDescription_p, AbstractDNode currentNode_p, DSemanticDecorator eContainer_p) {
+  public boolean isReconciliable(IContext context_p, RepresentationDescription sourceDescription_p,
+      AbstractDNode currentNode_p, DSemanticDecorator eContainer_p) {
     return currentNode_p.eContainer().equals(eContainer_p);
   }
 
@@ -112,10 +113,12 @@ public abstract class AbstractDiagramHandler implements IDiagramHandler {
    * {@inheritDoc}
    */
   @Override
-  public DSemanticDecorator showNode(IContext context_p, RepresentationDescription sourceDescription_p, DDiagramContents targetContents_p,
-      AbstractNodeMapping mapping_p, DSemanticDecorator containerNode_p, EObject targetSemantic_p) {
+  public DSemanticDecorator showNode(IContext context_p, RepresentationDescription sourceDescription_p,
+      DDiagramContents targetContents_p, AbstractNodeMapping mapping_p, DSemanticDecorator containerNode_p,
+      EObject targetSemantic_p) {
 
-    Collection<DDiagramElement> nodes = targetContents_p.getDiagramElements(targetSemantic_p, mapping_p, containerNode_p);
+    Collection<DDiagramElement> nodes = targetContents_p.getDiagramElements(targetSemantic_p, mapping_p,
+        containerNode_p);
     if (nodes.size() > 0) {
       for (DSemanticDecorator target : nodes) {
         if (target instanceof AbstractDNode) {
@@ -126,12 +129,14 @@ public abstract class AbstractDiagramHandler implements IDiagramHandler {
       }
     }
 
-    if (!(DiagramServices.getDiagramServices().isBorderedNodeMapping(mapping_p) && !(containerNode_p instanceof AbstractDNode))) {
-      DDiagramElement targetView =
-          DiagramServices.getDiagramServices().createAbstractDNode(mapping_p, targetSemantic_p, (DragAndDropTarget) containerNode_p,
-              targetContents_p.getDDiagram());
-      return targetView;
+    if (DiagramServices.getDiagramServices().isValidMapping(mapping_p, containerNode_p)) {
+      if (DiagramServices.getDiagramServices().evaluateNodePrecondition(mapping_p, targetContents_p.getDDiagram(), containerNode_p, targetSemantic_p)) {
+        DDiagramElement targetView = DiagramServices.getDiagramServices().createAbstractDNode(mapping_p,
+            targetSemantic_p, (DragAndDropTarget) containerNode_p, targetContents_p.getDDiagram());
+        return targetView;
+      }
     }
+
     return null;
   }
 
@@ -139,31 +144,33 @@ public abstract class AbstractDiagramHandler implements IDiagramHandler {
    * {@inheritDoc}
    */
   @Override
-  public DDiagramElement showEdge(IContext context_p, RepresentationDescription sourceDescription_p, DDiagramContents targetContents_p, EdgeMapping mapping_p,
-      DSemanticDecorator sourceNode_p, DSemanticDecorator targetNode_p, EObject targetSemantic_p) {
+  public DDiagramElement showEdge(IContext context_p, RepresentationDescription sourceDescription_p,
+      DDiagramContents targetContents_p, EdgeMapping mapping_p, DSemanticDecorator sourceNode_p,
+      DSemanticDecorator targetNode_p, EObject targetSemantic_p) {
 
     for (DSemanticDecorator target : targetContents_p.getDiagramElements(targetSemantic_p, mapping_p)) {
       if (target instanceof DEdge) {
         DEdge edgeTarget = (DEdge) target;
-        if (DiagramDescriptionHelper.getService(context_p).isReconciliable(context_p, sourceDescription_p, edgeTarget, sourceNode_p, targetNode_p)) {
+        if (DiagramDescriptionHelper.getService(context_p).isReconciliable(context_p, sourceDescription_p, edgeTarget,
+            sourceNode_p, targetNode_p)) {
           return (DEdge) target;
         }
       }
     }
 
-    DDiagramElement targetView =
-        DiagramServices.getDiagramServices().createEdge(mapping_p, (EdgeTarget) sourceNode_p, (EdgeTarget) targetNode_p, targetSemantic_p);
+    DDiagramElement targetView = DiagramServices.getDiagramServices().createEdge(mapping_p, (EdgeTarget) sourceNode_p,
+        (EdgeTarget) targetNode_p, targetSemantic_p);
     return targetView;
   }
 
-  public Collection<EObject> getTargetSemantics(IContext context_p, EObject sourceSemantic_p, RepresentationDescription sourceDescription_p,
-      RepresentationDescription targetDescription_p) {
+  public Collection<EObject> getTargetSemantics(IContext context_p, EObject sourceSemantic_p,
+      RepresentationDescription sourceDescription_p, RepresentationDescription targetDescription_p) {
     return TraceabilityHelper.getService(context_p).getAllocatingElements(context_p, sourceSemantic_p);
   }
 
   @Override
-  public EObject getTargetSemantic(IContext context_p, EObject sourceSemantic_p, RepresentationDescription sourceDescription_p,
-      RepresentationDescription targetDescription_p) {
+  public EObject getTargetSemantic(IContext context_p, EObject sourceSemantic_p,
+      RepresentationDescription sourceDescription_p, RepresentationDescription targetDescription_p) {
 
     EObject target = _getTargetSemantic(context_p, sourceSemantic_p, sourceDescription_p, targetDescription_p);
     if (target != null) {
@@ -176,7 +183,8 @@ public abstract class AbstractDiagramHandler implements IDiagramHandler {
     if (target != null) {
       EObject targetArchitecture = target;
       if (targetArchitecture instanceof BlockArchitecture) {
-        return DiagramDescriptionHelper.getService(context_p).getTargetDefaultLocation(context_p, (BlockArchitecture) targetArchitecture, targetDescription_p);
+        return DiagramDescriptionHelper.getService(context_p).getTargetDefaultLocation(context_p,
+            (BlockArchitecture) targetArchitecture, targetDescription_p);
       }
     }
     return null;
@@ -188,9 +196,10 @@ public abstract class AbstractDiagramHandler implements IDiagramHandler {
    * @param targetDescription_p
    * @return
    */
-  protected EObject _getTargetSemantic(IContext context_p, EObject sourceSemantic_p, RepresentationDescription sourceDescription_p,
-      RepresentationDescription targetDescription_p) {
-    Collection<EObject> result = getTargetSemantics(context_p, sourceSemantic_p, sourceDescription_p, targetDescription_p);
+  protected EObject _getTargetSemantic(IContext context_p, EObject sourceSemantic_p,
+      RepresentationDescription sourceDescription_p, RepresentationDescription targetDescription_p) {
+    Collection<EObject> result = getTargetSemantics(context_p, sourceSemantic_p, sourceDescription_p,
+        targetDescription_p);
     if (!result.isEmpty()) {
       return result.iterator().next();
     }

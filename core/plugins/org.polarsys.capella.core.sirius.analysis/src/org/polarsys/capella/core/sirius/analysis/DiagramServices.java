@@ -13,6 +13,7 @@ package org.polarsys.capella.core.sirius.analysis;
 import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -64,6 +65,7 @@ import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContentHelp
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.EdgeMappingHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.operations.DDiagramSpecOperations;
+import org.eclipse.sirius.diagram.business.internal.query.AbstractNodeMappingApplicabilityTester;
 import org.eclipse.sirius.diagram.business.internal.sync.DDiagramElementSynchronizer;
 import org.eclipse.sirius.diagram.business.internal.sync.DDiagramSynchronizer;
 import org.eclipse.sirius.diagram.business.internal.sync.DEdgeCandidate;
@@ -678,6 +680,26 @@ public class DiagramServices {
   protected Predicate<Setting> isValidTargetFeature() {
     return setting -> ViewpointPackage.Literals.DSEMANTIC_DECORATOR__TARGET.equals(setting.getEStructuralFeature())
         || ViewpointPackage.Literals.DREPRESENTATION_ELEMENT__SEMANTIC_ELEMENTS.equals(setting.getEStructuralFeature());
+  }
+
+  /**
+   * Return whether the given node mapping can be created into the given container
+   */
+  public boolean isValidMapping(AbstractNodeMapping mapping_p, DSemanticDecorator container) {
+
+    AbstractNodeMappingApplicabilityTester tester = new AbstractNodeMappingApplicabilityTester(
+        Arrays.asList(mapping_p));
+    if (container instanceof DDiagram) {
+      return tester.canCreateIn((DDiagram) container);
+
+    } else if (container instanceof DDiagramElementContainer) {
+      return tester.canCreateIn((DDiagramElementContainer) container);
+
+    } else if (container instanceof DNode) {
+      return tester.canCreateIn((DNode) container);
+    }
+
+    return true;
   }
 
   /**
