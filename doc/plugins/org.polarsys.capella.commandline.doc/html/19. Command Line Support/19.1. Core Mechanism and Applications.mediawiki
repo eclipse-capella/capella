@@ -83,7 +83,7 @@ The core mechanism provides the following parameters:
  
 <u>'''Simple use case:'''</u>
 
-''&lt;''''CapellaInstallationPath&gt;/eclipse.exe -nosplash ''
+''&lt;''''CapellaInstallationPath&gt;/capella.exe -nosplash''
 
  
 ''-application ''''org.polarsys.capella.core.commandline.core''
@@ -92,7 +92,7 @@ The core mechanism provides the following parameters:
 ''-appid ''''org.polarsys.capella.core.validation.commandline''
 
  
-''-data &lt;workspacePath&gt; ''
+''-data &lt;workspacePath&gt;''
 
  
 ''-filepath /EOLE_AF/EOLE_AF.aird''
@@ -118,7 +118,7 @@ A log file can be also specified with the parameter '''''-logfile'''''
 <u>'''Complex use case:'''</u>
 
  
-''&lt;CapellaInstallationPath&gt;/''''eclipse.exe -nosplash''
+''&lt;CapellaInstallationPath&gt;/''''capella.exe -nosplash''
 
  
 ''-application ''''org.polarsys.capella.core.commandline.core''
@@ -127,7 +127,7 @@ A log file can be also specified with the parameter '''''-logfile'''''
 ''-appid ''''org.polarsys.capella.core.validation.commandline''
 
  
-''-filepath /EOLE_AF/EOLE_AF.aird ''
+''-filepath /EOLE_AF/EOLE_AF.aird''
 
  
 ''-outputfolder /DocProject/validation''
@@ -142,7 +142,7 @@ A log file can be also specified with the parameter '''''-logfile'''''
 ''-validationcontext &quot;EOLE_AF/EOLE_AF.melodymodeller#971d9934-9780-4e41-b02e-312d0eac3223 ''''| ''
 
  
-''EOLE_AF'''' EOLE_AF/fragments/OA-Operational%20Context-Operational%20Entity.melodyfragment#c6aebe52-c8a4-4d35-8105-177c87470bef &quot;''
+''EOLE_AF'''' EOLE_AF/fragments/OA-Operational%20Context-Operational%20Entity.melodyfragment#c6aebe52-c8a4-4d35-8105-177c87470bef&quot;''
 
  
 ''-data ''''&lt;workspacePath&gt;''
@@ -182,7 +182,7 @@ A log file is also specified.
 <u>'''Simple use case:'''</u>
 
  
-''&lt;CapellaInstallationPath&gt;/eclipse.exe -nosplash ''
+''&lt;CapellaInstallationPath&gt;/capella.exe -nosplash''
 
  
 ''-application org.polarsys.capella.core.commandline.core''
@@ -197,7 +197,7 @@ A log file is also specified.
 ''-filepath /EOLE_AF/EOLE_AF.aird''
 
  
-''-outputfolder /DocProject/HTML ''
+''-outputfolder /DocProject/HTML''
 
 
 ''-forceoutputfoldercreation''
@@ -213,7 +213,7 @@ This command will generate ''HTML'' report from the EOLE-AF aird file specified 
 
 '''Import Capella project and generate inside it'''
 
-''&lt;CapellaInstallationPath&gt;/eclipse.exe -nosplash ''
+''&lt;CapellaInstallationPath&gt;/capella.exe -nosplash''
 
  
 ''-application org.polarsys.capella.core.commandline.core''
@@ -225,7 +225,7 @@ This command will generate ''HTML'' report from the EOLE-AF aird file specified 
 ''-data &lt;targetWorkspacePath&gt;''
 
  
-''-import &lt;absolutePath&gt;/EOLE_AF ''
+''-import &lt;absolutePath&gt;/EOLE_AF''
 
 
 ''-filepath /EOLE_AF/EOLE_AF.aird''
@@ -248,7 +248,7 @@ This command will import the EOLE_AF project from ''&lt;absolutePath&gt;'' works
 
 </br>
 
-''&lt;CapellaInstallationPath&gt;/eclipse.exe -nosplash ''
+''&lt;CapellaInstallationPath&gt;/capella.exe -nosplash''
 
  
 ''-application org.polarsys.capella.core.commandline.core''
@@ -263,7 +263,7 @@ This command will import the EOLE_AF project from ''&lt;absolutePath&gt;'' works
 ''-import &lt;absolutePath&gt;/EOLE_AF''
 
 
-''-filepath /EOLE_AF/EOLE_AF.aird ''
+''-filepath /EOLE_AF/EOLE_AF.aird''
 
  
 ''-outputfolder /DocProject/HTML''
@@ -283,7 +283,7 @@ This command will import the EOLE_AF project from ''&lt;absolutePath&gt;'' works
 
 <br>
 
-''&lt;CapellaInstallationPath&gt;/eclipse.exe -nosplash ''
+''&lt;CapellaInstallationPath&gt;/capella.exe -nosplash''
 
  
 ''-application org.polarsys.capella.core.commandline.core''
@@ -295,13 +295,13 @@ This command will import the EOLE_AF project from ''&lt;absolutePath&gt;'' works
 ''-data &lt;targetWorkspacePath&gt;''
 
  
-''-import "&lt;absolutePath&gt;/EOLE_AF | &lt;absolutePath&gt;/DocProject" ''
+''-import "&lt;absolutePath&gt;/EOLE_AF | &lt;absolutePath&gt;/DocProject"''
 
 
 ''-filepath /EOLE_AF/EOLE_AF.aird''
 
 
-''-outputfolder /DocProject/HTML ''
+''-outputfolder /DocProject/HTML''
 
 
 ''-forceoutputfoldercreation''
@@ -337,7 +337,7 @@ This command will import two projects (EOLE_AF and DocProject) from ''&lt;absolu
 Another Capella headless commandline application is the XML export. The following command runs an export in headless mode:
 
  
-''&lt;CapellaInstallationPath&gt;/eclipse.exe -consoleLog -nosplash''
+''&lt;CapellaInstallationPath&gt;/capella.exe -consoleLog -nosplash''
 
 ''-application org.polarsys.capella.core.commandline.core''
 
@@ -352,7 +352,7 @@ The filepath argument may either be a relative or an absolute path. If it is a r
 <u>'''Simple use cases:'''</u>
 
  
-''&lt;CapellaInstallationPath&gt;/eclipse.exe -consoleLog &ndash;nosplash''
+''&lt;CapellaInstallationPath&gt;/capella.exe -consoleLog &ndash;nosplash''
 
 
 ''-application org.polarsys.capella.core.commandline.core''
@@ -389,7 +389,7 @@ Mandatory parameters:
 <u>'''Simple use case:'''</u>
 
  
-''&lt;CapellaInstallationPath&gt;/eclipse.exe -nosplash ''
+''&lt;CapellaInstallationPath&gt;/capella.exe -nosplash''
 
  
 ''-application org.polarsys.capella.core.commandline.core''
@@ -398,7 +398,7 @@ Mandatory parameters:
 ''-appid org.polarsys.capella.core.commandline.core.exportZip''
 
  
-''-data &lt;workspacePath&gt; ''
+''-data &lt;workspacePath&gt;''
 
  
 ''-export &quot;EOLE_AF&quot;''
@@ -407,7 +407,7 @@ Mandatory parameters:
 ''-exportZipName &quot;/EOLE_AF/EOLE_qualifier.zip&quot;''
 
  
-''-filepath &quot;/EOLE_AF/EOLE_AF.aird&quot; ''
+''-filepath &quot;/EOLE_AF/EOLE_AF.aird&quot;''
 
  
 ''-outputfolder &quot;/EOLE_AF/output&quot;''
@@ -428,7 +428,7 @@ The parameter ''-import is mandatory'', but parameters ''-filepath'' and ''-outp
 
 <u>'''Simple use case:'''</u>
 
-''&lt;''''CapellaInstallationPath&gt;/eclipse.exe -nosplash ''
+''&lt;''''CapellaInstallationPath&gt;/capella.exe -nosplash''
  
 ''-application ''''org.polarsys.capella.core.commandline.core''
 
@@ -457,7 +457,7 @@ In such a case, the migration sequence can be done either by launching several u
 
 <u>'''Complex use case:'''</u>
 
-''&lt;''''CapellaInstallationPath&gt;/eclipse.exe -nosplash ''
+''&lt;''''CapellaInstallationPath&gt;/capella.exe -nosplash''
  
 ''-application ''''org.polarsys.capella.core.commandline.core''
 
@@ -470,4 +470,77 @@ In such a case, the migration sequence can be done either by launching several u
 ''-logfile D:\CommandLineLog\log.html''
 
 This command migrates the given project/libraries and creates a log.html at the specified location.
-   
+
+=== Export Representations as Images ===
+
+This command will export images of all representations to the given outputfolder. More information here: [[../help/topic/org.polarsys.capella.tipsandtricks.doc/html/Tips%20and%20tricks/13_Diagram%20Export%20and%20Printing/13_Diagram%20Export%20and%20Printing.html#Export_As_Image | Export_As_Image]]
+
+The ''-imageFormat'' parameter allows to choose the images format:
+* JPG (by default)
+* PNG
+* SVG
+* BMP
+* GIF
+
+The ''-exportToHtml'' parameter add an html page for each images.
+
+The ''-exportDecorations'' parameter is for exporting decorations.
+
+<u>'''Simple use case:'''</u>
+
+''&lt;''''CapellaInstallationPath&gt;/capella.exe -nosplash''
+
+''-application ''''org.polarsys.capella.core.commandline.core''
+
+''-appid org.polarsys.capella.exportRepresentations''
+
+''-data &lt;workspacePath&gt;''
+
+''-filepath &quot;/EOLE_AF/EOLE_AF.aird&quot;''
+
+''-outputfolder &quot;/EOLE_AF/output&quot;''
+
+''-forceoutputfoldercreation''
+
+=== Refresh Representations ===
+
+This command will refresh all representations. More information here: [[../help/topic/org.polarsys.capella.ui.doc/html/05.%20Diagram%20Management/5.1.%20Diagram%20concepts.html#Diagram_Refreshing_Strategies | Diagram Refreshing Strategies]]
+
+<u>'''Simple use case:'''</u>
+
+''&lt;''''CapellaInstallationPath&gt;/capella.exe -nosplash''
+
+''-application ''''org.polarsys.capella.core.commandline.core''
+
+''-appid org.polarsys.capella.refreshRepresentations''
+
+''-data &lt;workspacePath&gt;''
+
+''-filepath &quot;/EOLE_AF/EOLE_AF.aird&quot;''
+
+''-outputfolder &quot;/EOLE_AF/output&quot;''
+
+''-forceoutputfoldercreation''
+
+=== Remove Hidden Elements from Representations ===
+
+This command will remove all hidden elements of all representations. More information here: [[../help/topic/org.polarsys.capella.ui.doc/html/05.%20Diagram%20Management/5.2.%20Advanced%20Management%20of%20Diagrams.html#Removing_Hidden_Elements_from_Diagrams | Removing Hidden Elements from Diagrams]]
+
+If the ''-unsyncDiags'' parameter is used, all the elements with Unsynchronizable and Not synchronized mappings will be removed from diagrams. if not, only elements with Not synchronized mappings will be removed from diagrams.
+
+<u>'''Simple use case:'''</u>
+
+''&lt;''''CapellaInstallationPath&gt;/capella.exe -nosplash''
+
+''-application ''''org.polarsys.capella.core.commandline.core''
+
+''-appid org.polarsys.capella.removeHiddenElements''
+
+''-data &lt;workspacePath&gt;''
+
+''-filepath &quot;/EOLE_AF/EOLE_AF.aird&quot;''
+
+''-outputfolder &quot;/EOLE_AF/output&quot;''
+
+''-forceoutputfoldercreation''
+

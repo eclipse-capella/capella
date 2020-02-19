@@ -20,7 +20,9 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.equinox.app.IApplicationContext;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
@@ -28,17 +30,30 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.factory.SessionFactory;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Synchronizer;
+import org.eclipse.ui.internal.UISynchronizer;
 import org.polarsys.capella.core.commandline.core.CommandLineException;
 import org.polarsys.capella.core.commandline.core.ui.AbstractWorkbenchCommandLine;
+import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
+import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 import org.polarsys.capella.core.sirius.ui.handlers.RefreshDiagramsCommandHandler;
-import org.polarsys.capella.core.sirius.ui.handlers.RefreshDiagramsCommandHandler.RefreshDiagramsJob;
+import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 
 public class RefreshAirdCommandLine extends AbstractWorkbenchCommandLine {
 
   @Override
   public boolean execute(IApplicationContext context) throws CommandLineException {
     startWorkbench();
+    
+    // Because the following job is run in the first thread, the UI is still in startup mode 
+    // and no non-workbench runnables cannot be invoked, so the job is put on hold.
+    // To avoid this, UISynchronizer must be started first.
+    Synchronizer synchronizer = Display.getDefault().getSynchronizer();
+    if (synchronizer instanceof UISynchronizer) {
+      UISynchronizer uiSynchronizer = (UISynchronizer) synchronizer;
+      uiSynchronizer.started();
+    }
     
     String outputFolder = argHelper.getOutputFolder();
 
@@ -47,7 +62,7 @@ public class RefreshAirdCommandLine extends AbstractWorkbenchCommandLine {
 
     try {
       Session session = SessionFactory.INSTANCE.createSession(uri, new NullProgressMonitor());
-    
+
       if (session == null) {
         throw new CommandLineException("No aird model found!"); //$NON-NLS-1$
       }
@@ -55,13 +70,14 @@ public class RefreshAirdCommandLine extends AbstractWorkbenchCommandLine {
       session.open(new NullProgressMonitor());
 
       if (CapellaResourceHelper.isAirdResource(uri)) {
+        Project capellaProject = SessionHelper.getCapellaProject(session);
+
         Collection<DRepresentationDescriptor> representations = DialectManager.INSTANCE
             .getAllRepresentationDescriptors(session);
-  
+
         RefreshDiagramsCommandHandler handler = new RefreshDiagramsCommandHandler();
-        RefreshDiagramsJob job = handler.new RefreshDiagramsJob( //
-            Messages.RefreshRepresentation_0, representations, session, Display.getCurrent());
-        IStatus status = job.run(new NullProgressMonitor());
+        Job job = handler.refreshRepresentations(SystemEngineeringExt.getSystemEngineering(capellaProject), session, true);
+        job.join();
         
         session.save(new NullProgressMonitor());
         
@@ -72,7 +88,7 @@ public class RefreshAirdCommandLine extends AbstractWorkbenchCommandLine {
           }
           String fileName = Messages.refreshResultsFileName;
           IFile file = folder.getFile(new Path(fileName));
-          String result = toHTML(status, representations);
+          String result = toHTML(job.getResult(), representations);
           InputStream outputContent = new ByteArrayInputStream(result.getBytes());
           if (file.exists()) {
             file.setContents(outputContent, true, false, null);
@@ -84,13 +100,13 @@ public class RefreshAirdCommandLine extends AbstractWorkbenchCommandLine {
           e.printStackTrace();
         }
       }
-    } catch (CoreException e1) {
+    } catch (CoreException | OperationCanceledException | InterruptedException e1) {
       // TODO: handle exception
       e1.printStackTrace();
     }
     return false;
   }
-  
+
   private String toHTML(IStatus status, Collection<DRepresentationDescriptor> representations) {
     StringBuilder res = new StringBuilder();
     res.append("<html> \n"); //$NON-NLS-1$
@@ -99,7 +115,7 @@ public class RefreshAirdCommandLine extends AbstractWorkbenchCommandLine {
     res.append("<head> \n"); //$NON-NLS-1$
     res.append("<body> \n"); //$NON-NLS-1$
     if (status.getSeverity() == IStatus.OK) {
-      res.append("All "+representations.size()+" representations refreshed."); //$NON-NLS-1$
+      res.append("All "+representations.size()+" representation(s) refreshed."); //$NON-NLS-1$
     } else {
       res.append("The refresh of all representations failed."); //$NON-NLS-1$
     }

@@ -52,6 +52,9 @@ public class RemoveHiddenElementsCommandLine extends AbstractWorkbenchCommandLin
     URI uri = URI.createURI(fileURI);
 
     try {
+      // SessionManager.INSTANCE.getSession() do not load the IsModifiedSavingPolicy class
+      // that set the isModified flag to true, thus the session is never saved.
+      // To avoid this, use the SessionFactory.INSTANCE.createSession() method instead.
       Session session = SessionFactory.INSTANCE.createSession(uri, new NullProgressMonitor());
 
       if (session == null) {

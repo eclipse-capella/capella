@@ -64,6 +64,6 @@ public class CommandLineRefreshAirdTest extends BasicTestCase {
     IPath validationResultFile = workspaceLocation.append(projectName).append("RefreshResult").append("refresh-results.html");
     byte[] fileContentInBytes = Files.readAllBytes(Paths.get(validationResultFile.toOSString()));
     String fileContentInString = new String(fileContentInBytes);
-    assertTrue(fileContentInString.contains("All 148 representations refreshed")); 
+    assertTrue(fileContentInString.contains("All 148 representation(s) refreshed")); 
   }
 }

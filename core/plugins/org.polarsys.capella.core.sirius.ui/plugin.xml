@@ -161,7 +161,7 @@
       <command
             categoryId="org.polarsys.capella.core.sirius.ui"
             defaultHandler="org.polarsys.capella.core.sirius.ui.handlers.RemoveHiddenElementsHandler"
-            id="org.polarsys.capella.core.sirius.ui.refreshAird"
+            id="org.polarsys.capella.core.sirius.ui.removeHiddenElements"
             name="%command.removeHiddenElements"
             description="%command.removeHiddenElements.description">
       </command>
@@ -175,7 +175,7 @@
       <menuContribution 
       		locationURI="popup:capella.project.explorer#PopupMenu?after=group.project">
          <command
-               commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.refreshAird"
+               commandId="org.polarsys.capella.core.sirius.ui.refreshAird"
                label="%command.refreshDiagrams"
                style="push">
             <visibleWhen checkEnabled="true">
@@ -205,7 +205,7 @@
             </visibleWhen>
          </command>
          <command
-               commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.removeHiddenElements"
+               commandId="org.polarsys.capella.core.sirius.ui.removeHiddenElements"
                label="%command.removeHiddenElements"
                style="push">
             <visibleWhen
@@ -244,11 +244,11 @@
    <extension
          point="org.eclipse.ui.commandImages">
       <image
-            commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.refreshAird"
+            commandId="org.polarsys.capella.core.sirius.ui.refreshAird"
             icon="icons/viewpoint.gif">
       </image>
       <image
-            commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.removeHiddenElements"
+            commandId="org.polarsys.capella.core.sirius.ui.removeHiddenElements"
             icon="icons/viewpoint.gif">
       </image>
    </extension>

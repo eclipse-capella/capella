@@ -1,11 +1,713 @@
-<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>19.1. Core Mechanism and Applications</title><link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/></head><body><h1 id="Command_Line_Support">Command Line Support</h1><h2 id="Overview">Overview</h2><p>Capella provides the capacity to launch actions from command line. Potential actions are Model Validation, HTML Production, XML Export, Export as ZIP and Migration.</p><p>The core mechanism provides the following parameters:</p><table><tr><th>Name</th><th>Category</th><th>Description</th></tr><tr><td>appid</td><td>mandatory</td><td>defines the id of the command line application to launch. Command line applications are plugins that extend the core mechanism (e.g. model validation)</td></tr><tr><td>filepath</td><td>mandatory</td><td>defines the path to your aird file</td></tr><tr><td>outputfolder</td><td>mandatory</td><td>defines the path to the output folder</td></tr><tr><td>nosplash</td><td>optional</td><td>launch Capella without the initial splash screen</td></tr><tr><td>consolelog</td><td>optional</td><td>allows to log messages into the console output</td></tr><tr><td>data</td><td>optional</td><td>defines the path to the workspace</td></tr><tr><td>import</td><td>optional</td><td>defines a list of the path of the Eclipse projects to import into the workspace before doing the actual job. The list have to be placed into quotes "" and separated by a <i>pipe</i> character</td></tr><tr><td>forceimport</td><td>optional</td><td>unreference/delete exiting project from the workspace while importing projects using command line. Without this option, an error is logged if a project with the same name than the imported project exists already in the workspace</td></tr><tr><td>forceoutputfoldercreation</td><td>optional</td><td>automatically create the output folder. If the folder already exists, this one is deleted and a new output folder is created</td></tr><tr><td>logfile</td><td>optional</td><td>defines the path to the log file (if not specified, log file is created in the workspace directory)</td></tr><tr><td>help</td><td>optional</td><td>prints the help message</td></tr></table><p><br/></p><table border="1"><tr><td><p><img height="48" width="48" border="0" src="Images/19.1. Core Mechanism &amp; Applications_html_3c78e175.png"/></p></td><td><p><ul>
-<li>Default behaviour of command line support checks that the workspace specified for validation result and HTML report generation is not in use by another instance of Eclipse.</li><br/>
-<li>Be careful to use a Capella version that is compatible with the Java Runtime Environment (i.e. run Capella 32 bits on a 32 bits JVM and Capella 64 bits on 64 bits JVM).</li><br/>
-<li>If the path to the aird file or the path to the workspace or the path to the log file contains white space, it should be in quotes (eg: <b>-data &ldquo;D: \Application Data\workspace&rdquo;)</b></li><br/>
-<li>When Capella is run in command line, logs levels INFO, WARN, ERROR, FATAL are automatically activated for File and Console appender (regardless of the current log configuration stored in %USERPROFILE%\ReportConfiguration.xml)</li><br/>
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>19.1. Core Mechanism and Applications</title>
+		<link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/>
+	</head>
+	<body>
+		<h1 id="Command_Line_Support">Command Line Support</h1>
+		<h2 id="Overview">Overview</h2>
+		<p>Capella provides the capacity to launch actions from command line. Potential actions are Model Validation, HTML Production, XML Export, Export as ZIP and Migration.</p>
+		<p>The core mechanism provides the following parameters:</p>
+		<table>
+			<tr>
+				<th>Name</th>
+				<th>Category</th>
+				<th>Description</th>
+			</tr>
+			<tr>
+				<td>appid</td>
+				<td>mandatory</td>
+				<td>defines the id of the command line application to launch. Command line applications are plugins that extend the core mechanism (e.g. model validation)</td>
+			</tr>
+			<tr>
+				<td>filepath</td>
+				<td>mandatory</td>
+				<td>defines the path to your aird file</td>
+			</tr>
+			<tr>
+				<td>outputfolder</td>
+				<td>mandatory</td>
+				<td>defines the path to the output folder</td>
+			</tr>
+			<tr>
+				<td>nosplash</td>
+				<td>optional</td>
+				<td>launch Capella without the initial splash screen</td>
+			</tr>
+			<tr>
+				<td>consolelog</td>
+				<td>optional</td>
+				<td>allows to log messages into the console output</td>
+			</tr>
+			<tr>
+				<td>data</td>
+				<td>optional</td>
+				<td>defines the path to the workspace</td>
+			</tr>
+			<tr>
+				<td>import</td>
+				<td>optional</td>
+				<td>defines a list of the path of the Eclipse projects to import into the workspace before doing the actual job. The list have to be placed into quotes "" and separated by a 
+					<i>pipe</i> character
+				</td>
+			</tr>
+			<tr>
+				<td>forceimport</td>
+				<td>optional</td>
+				<td>unreference/delete exiting project from the workspace while importing projects using command line. Without this option, an error is logged if a project with the same name than the imported project exists already in the workspace</td>
+			</tr>
+			<tr>
+				<td>forceoutputfoldercreation</td>
+				<td>optional</td>
+				<td>automatically create the output folder. If the folder already exists, this one is deleted and a new output folder is created</td>
+			</tr>
+			<tr>
+				<td>logfile</td>
+				<td>optional</td>
+				<td>defines the path to the log file (if not specified, log file is created in the workspace directory)</td>
+			</tr>
+			<tr>
+				<td>help</td>
+				<td>optional</td>
+				<td>prints the help message</td>
+			</tr>
+		</table>
+		<p>
+			<br/>
+		</p>
+		<table border="1">
+			<tr>
+				<td>
+					<p>
+						<img height="48" width="48" border="0" src="Images/19.1. Core Mechanism &amp; Applications_html_3c78e175.png"/>
+					</p>
+				</td>
+				<td>
+					<p><ul>
+<li>Default behaviour of command line support checks that the workspace specified for validation result and HTML report generation is not in use by another instance of Eclipse.</li>
+						<br/>
+<li>Be careful to use a Capella version that is compatible with the Java Runtime Environment (i.e. run Capella 32 bits on a 32 bits JVM and Capella 64 bits on 64 bits JVM).</li>
+						<br/>
+<li>If the path to the aird file or the path to the workspace or the path to the log file contains white space, it should be in quotes (eg: 
+						<b>-data &ldquo;D: \Application Data\workspace&rdquo;)</b></li>
+						<br/>
+<li>When Capella is run in command line, logs levels INFO, WARN, ERROR, FATAL are automatically activated for File and Console appender (regardless of the current log configuration stored in %USERPROFILE%\ReportConfiguration.xml)</li>
+						<br/>
 <li>Before running below commands make sure to not have newline between each parameters to avoid copy/paste errors.</li>
-</ul></p></td></tr></table><p><br/></p><h2 id="Command_Line_Application_Examples">Command Line Application Examples</h2><h3 id="Model_Validation">Model Validation</h3><p><u><b>Simple use case:</b></u></p><p><i>&lt;</i><i>CapellaInstallationPath&gt;/eclipse.exe -nosplash </i></p><p><i>-application </i><i>org.polarsys.capella.core.commandline.core</i></p><p><i>-appid </i><i>org.polarsys.capella.core.validation.commandline</i></p><p><i>-data &lt;workspacePath&gt; </i></p><p><i>-filepath /EOLE_AF/EOLE_AF.aird</i></p><p><i>-outputfolder /DocProject/validation</i></p><p><i>-logfile D:\CommandLineLog\log.html</i></p><p><br/></p><p>This command validates the model corresponding to the <i>&lt;workspacePath&gt;</i>/EOLE_AF/EOLE_AF.aird file and generates a report to the output folder <i>&lt;workspacePath&gt;</i>/DocProject/validation. </p><p><b><i>DocProject</i></b> must be a general Eclipse project (not a directory) initially created into the specified workspace, with inside a folder named <b><i>validation</i></b>. As well, <b><i>EOLE_AF</i></b> must exist as Capella project inside the same workspace.
-A log file can be also specified with the parameter <b><i>-logfile</i></b></p><p><br/>
-<br/></p><p><u><b>Complex use case:</b></u></p><p><i>&lt;CapellaInstallationPath&gt;/</i><i>eclipse.exe -nosplash</i></p><p><i>-application </i><i>org.polarsys.capella.core.commandline.core</i></p><p><i>-appid </i><i>org.polarsys.capella.core.validation.commandline</i></p><p><i>-filepath /EOLE_AF/EOLE_AF.aird </i></p><p><i>-outputfolder /DocProject/validation</i></p><p><i>-forceoutputfoldercreation</i></p><p><i>-validationruleset D:/EPF/exportall.epf</i></p><p><i>-validationcontext &quot;EOLE_AF/EOLE_AF.melodymodeller#971d9934-9780-4e41-b02e-312d0eac3223 </i><i>| </i></p><p><i>EOLE_AF</i><i> EOLE_AF/fragments/OA-Operational%20Context-Operational%20Entity.melodyfragment#c6aebe52-c8a4-4d35-8105-177c87470bef &quot;</i></p><p><i>-data </i><i>&lt;workspacePath&gt;</i></p><p><i>-logfile D:\CommandLineLog\log.html</i></p><p>This new command uses a <b><i>-validationruleset</i></b> parameter to specify the path to an Eclipse Property File (epf file) and a <b><i>-validationcontext</i></b> parameter to specify the set of URIs of model elements to validate. The set of rule to validate against are stored into the exported epf file.</p><p>The parameter <b><i>-forceoutputfoldercreation</i></b> becomes necessary for the following cases :</p><ul><li>If <b><i>validation</i></b> folder does not exist and <i>DocProject</i> already exist, then it will be created inside <i>DocProject</i></li><li>If either <b><i>validation</i></b> folder and <b><i>DocProject</i></b> do not exist, then <b><i>DocProject</i></b> will be created as well <b><i>validation</i></b> folder inside it.</li></ul><p>A log file is also specified.</p><p><br/></p><h3 id="HTML_Production">HTML Production</h3><table border="1"><tr><td><p><img height="48" width="48" border="0" src="Images/19.1.%20Core%20Mechanism%20&amp;%20Applications_html_3c78e109.png"/></p></td><td><p><u>Prerequisites</u>: 				 XHTML Add-on has to be installed.</p></td></tr></table><p><br/>
-<br/></p><p><u><b>Simple use case:</b></u></p><p><i>&lt;CapellaInstallationPath&gt;/eclipse.exe -nosplash </i></p><p><i>-application org.polarsys.capella.core.commandline.core</i></p><p><i>-appid org.polarsys.kitalpha.doc.gen.business.capella.commandline</i></p><p><i>-data &lt;workspacePath&gt;</i></p><p><i>-filepath /EOLE_AF/EOLE_AF.aird</i></p><p><i>-outputfolder /DocProject/HTML </i></p><p><i>-forceoutputfoldercreation</i></p><p>This command will generate <i>HTML</i> report from the EOLE-AF aird file specified to the output folder <b><i>HTML</i></b> present into <b><i>Doc project</i></b>.</p><p><br/></p><p><u><b>Complex use cases:</b></u></p><p>&lt;/br&gt;</p><p><b>Import Capella project and generate inside it</b></p><p><i>&lt;CapellaInstallationPath&gt;/eclipse.exe -nosplash </i></p><p><i>-application org.polarsys.capella.core.commandline.core</i></p><p><i>-appid org.polarsys.kitalpha.doc.gen.business.capella.commandline</i></p><p><i>-data &lt;targetWorkspacePath&gt;</i></p><p><i>-import &lt;absolutePath&gt;/EOLE_AF </i></p><p><i>-filepath /EOLE_AF/EOLE_AF.aird</i></p><p><i>-outputfolder /EOLE_AF/HTML</i></p><p><i>-forceoutputfoldercreation</i></p><p><i>-logfile D:/CommandLineLog/log.html</i></p><p>This command will import the EOLE_AF project from <i>&lt;absolutePath&gt;</i> workspace into <i>&lt;targetWorkspacePath&gt; </i>workspace before generating the HTML report inside it.</p><p>&lt;/br&gt;</p><p><b>Import Capella project and generate inside a new project</b></p><p>&lt;/br&gt;</p><p><i>&lt;CapellaInstallationPath&gt;/eclipse.exe -nosplash </i></p><p><i>-application org.polarsys.capella.core.commandline.core</i></p><p><i>-appid org.polarsys.kitalpha.doc.gen.business.capella.commandline</i></p><p><i>-data &lt;targetWorkspacePath&gt;</i></p><p><i>-import &lt;absolutePath&gt;/EOLE_AF</i></p><p><i>-filepath /EOLE_AF/EOLE_AF.aird </i></p><p><i>-outputfolder /DocProject/HTML</i></p><p><i>-forceoutputfoldercreation</i></p><p><i>-logfile D:/CommandLineLog/log.html</i></p><p>This command will import the EOLE_AF project from <i>&lt;absolutePath&gt;</i> workspace into <i>&lt;targetWorkspacePath&gt; </i>workspace and create the DocProject to generate the HTML report inside it.</p><p><br/></p><p><b>Import Capella project and a Doc project to generate inside it</b></p><p><br/></p><p><i>&lt;CapellaInstallationPath&gt;/eclipse.exe -nosplash </i></p><p><i>-application org.polarsys.capella.core.commandline.core</i></p><p><i>-appid org.polarsys.kitalpha.doc.gen.business.capella.commandline</i></p><p><i>-data &lt;targetWorkspacePath&gt;</i></p><p><i>-import "&lt;absolutePath&gt;/EOLE_AF | &lt;absolutePath&gt;/DocProject" </i></p><p><i>-filepath /EOLE_AF/EOLE_AF.aird</i></p><p><i>-outputfolder /DocProject/HTML </i></p><p><i>-forceoutputfoldercreation</i></p><p><i>-logfile D:/CommandLineLog/log.html</i></p><p>This command will import two projects (EOLE_AF and DocProject) from <i>&lt;absolutePath&gt;</i> workspace into <i>&lt;targetWorkspacePath&gt; </i>workspace before generating the HTML report inside the DocProject.</p><p><b>NOTE</b>: The source and target workspaces have to be different.</p><p><br/></p><h3 id="XML_Export">XML Export</h3><table border="1"><tr><td><p><img height="48" width="48" border="0" src="Images/19.1.%20Core%20Mechanism%20&amp;%20Applications_html_3c78e109.png"/></p></td><td><p><u>Prerequisites</u>: 				 XML Pivot Add-on has to be installed.</p></td></tr></table><p><br/>
-<br/></p><p>Another Capella headless commandline application is the XML export. The following command runs an export in headless mode:</p><p><i>&lt;CapellaInstallationPath&gt;/eclipse.exe -consoleLog -nosplash</i></p><p><i>-application org.polarsys.capella.core.commandline.core</i></p><p><i>-appid xmlpivot.export</i></p><p><i>-filepath &lt;Path&gt;</i></p><p>The filepath argument may either be a relative or an absolute path. If it is a relative path, it is interpreted relative to the workspace. To specify an explicit workspace, you can use the <b><i>&ndash;data</i></b> parameter.</p><p><u><b>Simple use cases:</b></u></p><p><i>&lt;CapellaInstallationPath&gt;/eclipse.exe -consoleLog &ndash;nosplash</i></p><p><i>-application org.polarsys.capella.core.commandline.core</i></p><p><i>-appid xmlpivot.export</i></p><p><i>-filepath C:/EOLE_AF/EOLE_AF.melodymodeller</i></p><p>This command exports a capella model into an xml file stored at <i>filepath</i> path.</p><p><br/></p><h3 id="Export_as_ZIP">Export as ZIP</h3><p>This command will export selected project to the given zip filename</p><p>Mandatory parameters:</p><ul><li>export: defines the project name to export as zip</li></ul><ul><li>exportZipName: a relative path to the output zip (path must be a relative path into the given <b><i>-data </i></b> parameter)</li></ul><p><br/></p><p>(usage of &ldquo;qualifier&rdquo; in the output file name will be replaced by current date/time)</p><p><u><b>Simple use case:</b></u></p><p><i>&lt;CapellaInstallationPath&gt;/eclipse.exe -nosplash </i></p><p><i>-application org.polarsys.capella.core.commandline.core</i></p><p><i>-appid org.polarsys.capella.core.commandline.core.exportZip</i></p><p><i>-data &lt;workspacePath&gt; </i></p><p><i>-export &quot;EOLE_AF&quot;</i></p><p><i>-exportZipName &quot;/EOLE_AF/EOLE_qualifier.zip&quot;</i></p><p><i>-filepath &quot;/EOLE_AF/EOLE_AF.aird&quot; </i></p><p><i>-outputfolder &quot;/EOLE_AF/output&quot;</i></p><p><i>-forceoutputfoldercreation</i></p><p><i>-logfile &quot;D:\ CommandLineLog \log.html&quot;</i></p><p><br/></p><h3 id="Migration">Migration</h3><p>This command will migrate the project(s) given as input. A workspace folder is created and located where the command is triggered or in a specified path given by the <i>-data</i> parameter. It creates a log file located in the .metadata folder of the workspace. If the input project is a folder, it will be backed up and migrated inside this folder, otherwise if the input is a zip file it will be unzipped and project(s) inside it will be migrated into the workspace folder.</p><p>The parameter <i>-import is mandatory</i>, but parameters <i>-filepath</i> and <i>-outputfolder</i> are not. </p><p><u><b>Simple use case:</b></u></p><p><i>&lt;</i><i>CapellaInstallationPath&gt;/eclipse.exe -nosplash </i></p><p><i>-application </i><i>org.polarsys.capella.core.commandline.core</i></p><p><i>-appid </i><i>org.polarsys.capella.migration</i></p><p><i>-import D:/Projects/EOLE_AF.zip</i></p><p><i>-data &lt;workspacePath&gt;</i></p><p>This command imports a .zip into the specified workspace and migrate all projects inside.</p><p>If you migrate a project using libraries, all dependent projects/libraries must be included and the sequence order matters.</p><p>Consider the example below:</p><ul><li>Project1 (references) Library1 &amp; Library2</li><li>Library1 (references) Library3</li><li>Library2 (references) Library3</li></ul><p>The migration process must be done according to the following sequence:</p><ol><li>Library3</li><li>Library1</li><li>Library2</li><li>Project1</li></ol><p>In such a case, the migration sequence can be done either by launching several unary migration commands on each project/library or by giving the whole sequence through the <i>-import</i> parameter (using <i>|</i> separator).</p><p><u><b>Complex use case:</b></u></p><p><i>&lt;</i><i>CapellaInstallationPath&gt;/eclipse.exe -nosplash </i></p><p><i>-application </i><i>org.polarsys.capella.core.commandline.core</i></p><p><i>-appid </i><i>org.polarsys.capella.migration</i></p><p><i>-import "D:/Projects/Library3 | D:/Projects/Library1 | D:/Projects/Library2 | D:/Projects/Project1"</i></p><p><i>-data &lt;workspacePath&gt;</i></p><p><i>-logfile D:\CommandLineLog\log.html</i></p><p>This command migrates the given project/libraries and creates a log.html at the specified location.</p></body></html>
+</ul>
+					</p>
+				</td>
+			</tr>
+		</table>
+		<p>
+			<br/>
+		</p>
+		<h2 id="Command_Line_Application_Examples">Command Line Application Examples</h2>
+		<h3 id="Model_Validation">Model Validation</h3>
+		<p><u>
+			<b>Simple use case:</b></u>
+		</p>
+		<p>
+			<i>&lt;</i>
+			<i>CapellaInstallationPath&gt;/capella.exe -nosplash</i>
+		</p>
+		<p>
+			<i>-application </i>
+			<i>org.polarsys.capella.core.commandline.core</i>
+		</p>
+		<p>
+			<i>-appid </i>
+			<i>org.polarsys.capella.core.validation.commandline</i>
+		</p>
+		<p>
+			<i>-data &lt;workspacePath&gt;</i>
+		</p>
+		<p>
+			<i>-filepath /EOLE_AF/EOLE_AF.aird</i>
+		</p>
+		<p>
+			<i>-outputfolder /DocProject/validation</i>
+		</p>
+		<p>
+			<i>-logfile D:\CommandLineLog\log.html</i>
+		</p>
+		<p>
+			<br/>
+		</p>
+		<p>This command validates the model corresponding to the 
+			<i>&lt;workspacePath&gt;</i>/EOLE_AF/EOLE_AF.aird file and generates a report to the output folder 
+			<i>&lt;workspacePath&gt;</i>/DocProject/validation. 
+		</p>
+		<p>
+			<b>
+				<i>DocProject</i>
+			</b> must be a general Eclipse project (not a directory) initially created into the specified workspace, with inside a folder named 
+			<b>
+				<i>validation</i>
+			</b>. As well, 
+			<b>
+				<i>EOLE_AF</i>
+			</b> must exist as Capella project inside the same workspace.
+			A log file can be also specified with the parameter 
+			<b>
+				<i>-logfile</i>
+			</b>
+		</p>
+		<p>
+			<br/>
+
+			<br/>
+		</p>
+		<p><u>
+			<b>Complex use case:</b></u>
+		</p>
+		<p>
+			<i>&lt;CapellaInstallationPath&gt;/</i>
+			<i>capella.exe -nosplash</i>
+		</p>
+		<p>
+			<i>-application </i>
+			<i>org.polarsys.capella.core.commandline.core</i>
+		</p>
+		<p>
+			<i>-appid </i>
+			<i>org.polarsys.capella.core.validation.commandline</i>
+		</p>
+		<p>
+			<i>-filepath /EOLE_AF/EOLE_AF.aird</i>
+		</p>
+		<p>
+			<i>-outputfolder /DocProject/validation</i>
+		</p>
+		<p>
+			<i>-forceoutputfoldercreation</i>
+		</p>
+		<p>
+			<i>-validationruleset D:/EPF/exportall.epf</i>
+		</p>
+		<p>
+			<i>-validationcontext &quot;EOLE_AF/EOLE_AF.melodymodeller#971d9934-9780-4e41-b02e-312d0eac3223 </i>
+			<i>| </i>
+		</p>
+		<p>
+			<i>EOLE_AF</i>
+			<i> EOLE_AF/fragments/OA-Operational%20Context-Operational%20Entity.melodyfragment#c6aebe52-c8a4-4d35-8105-177c87470bef&quot;</i>
+		</p>
+		<p>
+			<i>-data </i>
+			<i>&lt;workspacePath&gt;</i>
+		</p>
+		<p>
+			<i>-logfile D:\CommandLineLog\log.html</i>
+		</p>
+		<p>This new command uses a 
+			<b>
+				<i>-validationruleset</i>
+			</b> parameter to specify the path to an Eclipse Property File (epf file) and a 
+			<b>
+				<i>-validationcontext</i>
+			</b> parameter to specify the set of URIs of model elements to validate. The set of rule to validate against are stored into the exported epf file.
+		</p>
+		<p>The parameter 
+			<b>
+				<i>-forceoutputfoldercreation</i>
+			</b> becomes necessary for the following cases :
+		</p>
+		<ul>
+			<li>If 
+				<b>
+					<i>validation</i>
+				</b> folder does not exist and 
+				<i>DocProject</i> already exist, then it will be created inside 
+				<i>DocProject</i>
+			</li>
+			<li>If either 
+				<b>
+					<i>validation</i>
+				</b> folder and 
+				<b>
+					<i>DocProject</i>
+				</b> do not exist, then 
+				<b>
+					<i>DocProject</i>
+				</b> will be created as well 
+				<b>
+					<i>validation</i>
+				</b> folder inside it.
+			</li>
+		</ul>
+		<p>A log file is also specified.</p>
+		<p>
+			<br/>
+		</p>
+		<h3 id="HTML_Production">HTML Production</h3>
+		<table border="1">
+			<tr>
+				<td>
+					<p>
+						<img height="48" width="48" border="0" src="Images/19.1.%20Core%20Mechanism%20&amp;%20Applications_html_3c78e109.png"/>
+					</p>
+				</td>
+				<td>
+					<p><u>Prerequisites</u>: 				 XHTML Add-on has to be installed.</p>
+				</td>
+			</tr>
+		</table>
+		<p>
+			<br/>
+
+			<br/>
+		</p>
+		<p><u>
+			<b>Simple use case:</b></u>
+		</p>
+		<p>
+			<i>&lt;CapellaInstallationPath&gt;/capella.exe -nosplash</i>
+		</p>
+		<p>
+			<i>-application org.polarsys.capella.core.commandline.core</i>
+		</p>
+		<p>
+			<i>-appid org.polarsys.kitalpha.doc.gen.business.capella.commandline</i>
+		</p>
+		<p>
+			<i>-data &lt;workspacePath&gt;</i>
+		</p>
+		<p>
+			<i>-filepath /EOLE_AF/EOLE_AF.aird</i>
+		</p>
+		<p>
+			<i>-outputfolder /DocProject/HTML</i>
+		</p>
+		<p>
+			<i>-forceoutputfoldercreation</i>
+		</p>
+		<p>This command will generate 
+			<i>HTML</i> report from the EOLE-AF aird file specified to the output folder 
+			<b>
+				<i>HTML</i>
+			</b> present into 
+			<b>
+				<i>Doc project</i>
+			</b>.
+		</p>
+		<p>
+			<br/>
+		</p>
+		<p><u>
+			<b>Complex use cases:</b></u>
+		</p>
+		<p>&lt;/br&gt;</p>
+		<p>
+			<b>Import Capella project and generate inside it</b>
+		</p>
+		<p>
+			<i>&lt;CapellaInstallationPath&gt;/capella.exe -nosplash</i>
+		</p>
+		<p>
+			<i>-application org.polarsys.capella.core.commandline.core</i>
+		</p>
+		<p>
+			<i>-appid org.polarsys.kitalpha.doc.gen.business.capella.commandline</i>
+		</p>
+		<p>
+			<i>-data &lt;targetWorkspacePath&gt;</i>
+		</p>
+		<p>
+			<i>-import &lt;absolutePath&gt;/EOLE_AF</i>
+		</p>
+		<p>
+			<i>-filepath /EOLE_AF/EOLE_AF.aird</i>
+		</p>
+		<p>
+			<i>-outputfolder /EOLE_AF/HTML</i>
+		</p>
+		<p>
+			<i>-forceoutputfoldercreation</i>
+		</p>
+		<p>
+			<i>-logfile D:/CommandLineLog/log.html</i>
+		</p>
+		<p>This command will import the EOLE_AF project from 
+			<i>&lt;absolutePath&gt;</i> workspace into 
+			<i>&lt;targetWorkspacePath&gt; </i>workspace before generating the HTML report inside it.
+		</p>
+		<p>&lt;/br&gt;</p>
+		<p>
+			<b>Import Capella project and generate inside a new project</b>
+		</p>
+		<p>&lt;/br&gt;</p>
+		<p>
+			<i>&lt;CapellaInstallationPath&gt;/capella.exe -nosplash</i>
+		</p>
+		<p>
+			<i>-application org.polarsys.capella.core.commandline.core</i>
+		</p>
+		<p>
+			<i>-appid org.polarsys.kitalpha.doc.gen.business.capella.commandline</i>
+		</p>
+		<p>
+			<i>-data &lt;targetWorkspacePath&gt;</i>
+		</p>
+		<p>
+			<i>-import &lt;absolutePath&gt;/EOLE_AF</i>
+		</p>
+		<p>
+			<i>-filepath /EOLE_AF/EOLE_AF.aird</i>
+		</p>
+		<p>
+			<i>-outputfolder /DocProject/HTML</i>
+		</p>
+		<p>
+			<i>-forceoutputfoldercreation</i>
+		</p>
+		<p>
+			<i>-logfile D:/CommandLineLog/log.html</i>
+		</p>
+		<p>This command will import the EOLE_AF project from 
+			<i>&lt;absolutePath&gt;</i> workspace into 
+			<i>&lt;targetWorkspacePath&gt; </i>workspace and create the DocProject to generate the HTML report inside it.
+		</p>
+		<p>
+			<br/>
+		</p>
+		<p>
+			<b>Import Capella project and a Doc project to generate inside it</b>
+		</p>
+		<p>
+			<br/>
+		</p>
+		<p>
+			<i>&lt;CapellaInstallationPath&gt;/capella.exe -nosplash</i>
+		</p>
+		<p>
+			<i>-application org.polarsys.capella.core.commandline.core</i>
+		</p>
+		<p>
+			<i>-appid org.polarsys.kitalpha.doc.gen.business.capella.commandline</i>
+		</p>
+		<p>
+			<i>-data &lt;targetWorkspacePath&gt;</i>
+		</p>
+		<p>
+			<i>-import "&lt;absolutePath&gt;/EOLE_AF | &lt;absolutePath&gt;/DocProject"</i>
+		</p>
+		<p>
+			<i>-filepath /EOLE_AF/EOLE_AF.aird</i>
+		</p>
+		<p>
+			<i>-outputfolder /DocProject/HTML</i>
+		</p>
+		<p>
+			<i>-forceoutputfoldercreation</i>
+		</p>
+		<p>
+			<i>-logfile D:/CommandLineLog/log.html</i>
+		</p>
+		<p>This command will import two projects (EOLE_AF and DocProject) from 
+			<i>&lt;absolutePath&gt;</i> workspace into 
+			<i>&lt;targetWorkspacePath&gt; </i>workspace before generating the HTML report inside the DocProject.
+		</p>
+		<p>
+			<b>NOTE</b>: The source and target workspaces have to be different.
+		</p>
+		<p>
+			<br/>
+		</p>
+		<h3 id="XML_Export">XML Export</h3>
+		<table border="1">
+			<tr>
+				<td>
+					<p>
+						<img height="48" width="48" border="0" src="Images/19.1.%20Core%20Mechanism%20&amp;%20Applications_html_3c78e109.png"/>
+					</p>
+				</td>
+				<td>
+					<p><u>Prerequisites</u>: 				 XML Pivot Add-on has to be installed.</p>
+				</td>
+			</tr>
+		</table>
+		<p>
+			<br/>
+
+			<br/>
+		</p>
+		<p>Another Capella headless commandline application is the XML export. The following command runs an export in headless mode:</p>
+		<p>
+			<i>&lt;CapellaInstallationPath&gt;/capella.exe -consoleLog -nosplash</i>
+		</p>
+		<p>
+			<i>-application org.polarsys.capella.core.commandline.core</i>
+		</p>
+		<p>
+			<i>-appid xmlpivot.export</i>
+		</p>
+		<p>
+			<i>-filepath &lt;Path&gt;</i>
+		</p>
+		<p>The filepath argument may either be a relative or an absolute path. If it is a relative path, it is interpreted relative to the workspace. To specify an explicit workspace, you can use the 
+			<b>
+				<i>&ndash;data</i>
+			</b> parameter.
+		</p>
+		<p><u>
+			<b>Simple use cases:</b></u>
+		</p>
+		<p>
+			<i>&lt;CapellaInstallationPath&gt;/capella.exe -consoleLog &ndash;nosplash</i>
+		</p>
+		<p>
+			<i>-application org.polarsys.capella.core.commandline.core</i>
+		</p>
+		<p>
+			<i>-appid xmlpivot.export</i>
+		</p>
+		<p>
+			<i>-filepath C:/EOLE_AF/EOLE_AF.melodymodeller</i>
+		</p>
+		<p>This command exports a capella model into an xml file stored at 
+			<i>filepath</i> path.
+		</p>
+		<p>
+			<br/>
+		</p>
+		<h3 id="Export_as_ZIP">Export as ZIP</h3>
+		<p>This command will export selected project to the given zip filename</p>
+		<p>Mandatory parameters:</p>
+		<ul>
+			<li>export: defines the project name to export as zip</li>
+		</ul>
+		<ul>
+			<li>exportZipName: a relative path to the output zip (path must be a relative path into the given 
+				<b>
+					<i>-data </i>
+				</b> parameter)
+			</li>
+		</ul>
+		<p>
+			<br/>
+		</p>
+		<p>(usage of &ldquo;qualifier&rdquo; in the output file name will be replaced by current date/time)</p>
+		<p><u>
+			<b>Simple use case:</b></u>
+		</p>
+		<p>
+			<i>&lt;CapellaInstallationPath&gt;/capella.exe -nosplash</i>
+		</p>
+		<p>
+			<i>-application org.polarsys.capella.core.commandline.core</i>
+		</p>
+		<p>
+			<i>-appid org.polarsys.capella.core.commandline.core.exportZip</i>
+		</p>
+		<p>
+			<i>-data &lt;workspacePath&gt;</i>
+		</p>
+		<p>
+			<i>-export &quot;EOLE_AF&quot;</i>
+		</p>
+		<p>
+			<i>-exportZipName &quot;/EOLE_AF/EOLE_qualifier.zip&quot;</i>
+		</p>
+		<p>
+			<i>-filepath &quot;/EOLE_AF/EOLE_AF.aird&quot;</i>
+		</p>
+		<p>
+			<i>-outputfolder &quot;/EOLE_AF/output&quot;</i>
+		</p>
+		<p>
+			<i>-forceoutputfoldercreation</i>
+		</p>
+		<p>
+			<i>-logfile &quot;D:\ CommandLineLog \log.html&quot;</i>
+		</p>
+		<p>
+			<br/>
+		</p>
+		<h3 id="Migration">Migration</h3>
+		<p>This command will migrate the project(s) given as input. A workspace folder is created and located where the command is triggered or in a specified path given by the 
+			<i>-data</i> parameter. It creates a log file located in the .metadata folder of the workspace. If the input project is a folder, it will be backed up and migrated inside this folder, otherwise if the input is a zip file it will be unzipped and project(s) inside it will be migrated into the workspace folder.
+		</p>
+		<p>The parameter 
+			<i>-import is mandatory</i>, but parameters 
+			<i>-filepath</i> and 
+			<i>-outputfolder</i> are not. 
+		</p>
+		<p><u>
+			<b>Simple use case:</b></u>
+		</p>
+		<p>
+			<i>&lt;</i>
+			<i>CapellaInstallationPath&gt;/capella.exe -nosplash</i>
+		</p>
+		<p>
+			<i>-application </i>
+			<i>org.polarsys.capella.core.commandline.core</i>
+		</p>
+		<p>
+			<i>-appid </i>
+			<i>org.polarsys.capella.migration</i>
+		</p>
+		<p>
+			<i>-import D:/Projects/EOLE_AF.zip</i>
+		</p>
+		<p>
+			<i>-data &lt;workspacePath&gt;</i>
+		</p>
+		<p>This command imports a .zip into the specified workspace and migrate all projects inside.</p>
+		<p>If you migrate a project using libraries, all dependent projects/libraries must be included and the sequence order matters.</p>
+		<p>Consider the example below:</p>
+		<ul>
+			<li>Project1 (references) Library1 &amp; Library2</li>
+			<li>Library1 (references) Library3</li>
+			<li>Library2 (references) Library3</li>
+		</ul>
+		<p>The migration process must be done according to the following sequence:</p>
+		<ol>
+			<li>Library3</li>
+			<li>Library1</li>
+			<li>Library2</li>
+			<li>Project1</li>
+		</ol>
+		<p>In such a case, the migration sequence can be done either by launching several unary migration commands on each project/library or by giving the whole sequence through the 
+			<i>-import</i> parameter (using 
+			<i>|</i> separator).
+		</p>
+		<p><u>
+			<b>Complex use case:</b></u>
+		</p>
+		<p>
+			<i>&lt;</i>
+			<i>CapellaInstallationPath&gt;/capella.exe -nosplash</i>
+		</p>
+		<p>
+			<i>-application </i>
+			<i>org.polarsys.capella.core.commandline.core</i>
+		</p>
+		<p>
+			<i>-appid </i>
+			<i>org.polarsys.capella.migration</i>
+		</p>
+		<p>
+			<i>-import "D:/Projects/Library3 | D:/Projects/Library1 | D:/Projects/Library2 | D:/Projects/Project1"</i>
+		</p>
+		<p>
+			<i>-data &lt;workspacePath&gt;</i>
+		</p>
+		<p>
+			<i>-logfile D:\CommandLineLog\log.html</i>
+		</p>
+		<p>This command migrates the given project/libraries and creates a log.html at the specified location.</p>
+		<h3 id="Export_Representations_as_Images">Export Representations as Images</h3>
+		<p>This command will export images of all representations to the given outputfolder. More information here: 
+			<a href="/wiki/../help/topic/org.polarsys.capella.tipsandtricks.doc/html/Tips%20and%20tricks/13_Diagram%20Export%20and%20Printing/13_Diagram%20Export%20and%20Printing.html#Export_As_Image" title="../help/topic/org.polarsys.capella.tipsandtricks.doc/html/Tips%20and%20tricks/13_Diagram%20Export%20and%20Printing/13_Diagram%20Export%20and%20Printing.html#Export_As_Image">Export_As_Image</a>
+		</p>
+		<p>The 
+			<i>-imageFormat</i> parameter allows to choose the images format:
+		</p>
+		<ul>
+			<li>JPG (by default)</li>
+			<li>PNG</li>
+			<li>SVG</li>
+			<li>BMP</li>
+			<li>GIF</li>
+		</ul>
+		<p>The 
+			<i>-exportToHtml</i> parameter add an html page for each images.
+		</p>
+		<p>The 
+			<i>-exportDecorations</i> parameter is for exporting decorations.
+		</p>
+		<p><u>
+			<b>Simple use case:</b></u>
+		</p>
+		<p>
+			<i>&lt;</i>
+			<i>CapellaInstallationPath&gt;/capella.exe -nosplash</i>
+		</p>
+		<p>
+			<i>-application </i>
+			<i>org.polarsys.capella.core.commandline.core</i>
+		</p>
+		<p>
+			<i>-appid org.polarsys.capella.exportRepresentations</i>
+		</p>
+		<p>
+			<i>-data &lt;workspacePath&gt;</i>
+		</p>
+		<p>
+			<i>-filepath &quot;/EOLE_AF/EOLE_AF.aird&quot;</i>
+		</p>
+		<p>
+			<i>-outputfolder &quot;/EOLE_AF/output&quot;</i>
+		</p>
+		<p>
+			<i>-forceoutputfoldercreation</i>
+		</p>
+		<h3 id="Refresh_Representations">Refresh Representations</h3>
+		<p>This command will refresh all representations. More information here: 
+			<a href="/wiki/../help/topic/org.polarsys.capella.ui.doc/html/05.%20Diagram%20Management/5.1.%20Diagram%20concepts.html#Diagram_Refreshing_Strategies" title="../help/topic/org.polarsys.capella.ui.doc/html/05.%20Diagram%20Management/5.1.%20Diagram%20concepts.html#Diagram_Refreshing_Strategies">Diagram Refreshing Strategies</a>
+		</p>
+		<p><u>
+			<b>Simple use case:</b></u>
+		</p>
+		<p>
+			<i>&lt;</i>
+			<i>CapellaInstallationPath&gt;/capella.exe -nosplash</i>
+		</p>
+		<p>
+			<i>-application </i>
+			<i>org.polarsys.capella.core.commandline.core</i>
+		</p>
+		<p>
+			<i>-appid org.polarsys.capella.refreshRepresentations</i>
+		</p>
+		<p>
+			<i>-data &lt;workspacePath&gt;</i>
+		</p>
+		<p>
+			<i>-filepath &quot;/EOLE_AF/EOLE_AF.aird&quot;</i>
+		</p>
+		<p>
+			<i>-outputfolder &quot;/EOLE_AF/output&quot;</i>
+		</p>
+		<p>
+			<i>-forceoutputfoldercreation</i>
+		</p>
+		<h3 id="Remove_Hidden_Elements_from_Representations">Remove Hidden Elements from Representations</h3>
+		<p>This command will remove all hidden elements of all representations. More information here: 
+			<a href="/wiki/../help/topic/org.polarsys.capella.ui.doc/html/05.%20Diagram%20Management/5.2.%20Advanced%20Management%20of%20Diagrams.html#Removing_Hidden_Elements_from_Diagrams" title="../help/topic/org.polarsys.capella.ui.doc/html/05.%20Diagram%20Management/5.2.%20Advanced%20Management%20of%20Diagrams.html#Removing_Hidden_Elements_from_Diagrams">Removing Hidden Elements from Diagrams</a>
+		</p>
+		<p>If the 
+			<i>-unsyncDiags</i> parameter is used, all the elements with Unsynchronizable and Not synchronized mappings will be removed from diagrams. if not, only elements with Not synchronized mappings will be removed from diagrams.
+		</p>
+		<p><u>
+			<b>Simple use case:</b></u>
+		</p>
+		<p>
+			<i>&lt;</i>
+			<i>CapellaInstallationPath&gt;/capella.exe -nosplash</i>
+		</p>
+		<p>
+			<i>-application </i>
+			<i>org.polarsys.capella.core.commandline.core</i>
+		</p>
+		<p>
+			<i>-appid org.polarsys.capella.removeHiddenElements</i>
+		</p>
+		<p>
+			<i>-data &lt;workspacePath&gt;</i>
+		</p>
+		<p>
+			<i>-filepath &quot;/EOLE_AF/EOLE_AF.aird&quot;</i>
+		</p>
+		<p>
+			<i>-outputfolder &quot;/EOLE_AF/output&quot;</i>
+		</p>
+		<p>
+			<i>-forceoutputfoldercreation</i>
+		</p>
+	</body>
+</html>

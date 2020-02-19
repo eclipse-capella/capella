@@ -25,8 +25,11 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.IJobChangeEvent;
 import org.eclipse.core.runtime.jobs.IJobChangeListener;
+import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
@@ -54,31 +57,38 @@ public class RefreshDiagramsCommandHandler extends AbstractDiagramCommandHandler
    */
   public class RefreshDiagramsJob extends WorkspaceJob {
 
-    private Session _session;
-    private Collection<DRepresentationDescriptor> _representationsToRefresh;
-    private Display _display;
+    private Session session;
+    private Collection<DRepresentationDescriptor> representationsToRefresh;
+    private Display display;
+    private boolean headless;
 
-    public RefreshDiagramsJob(String name, Collection<DRepresentationDescriptor> representations, Session session_p,
-        Display display_p) {
+    public RefreshDiagramsJob(String name, Collection<DRepresentationDescriptor> representations, Session session,
+        Display display, boolean headless) {
       super(name);
-      _session = session_p;
-      _representationsToRefresh = representations;
-      _display = display_p;
+      this.session = session;
+      this.representationsToRefresh = representations;
+      this.display = display;
+      this.headless = headless;
+    }
+    
+    public RefreshDiagramsJob(String name, Collection<DRepresentationDescriptor> representations, Session session,
+        Display display) {
+      this(name, representations, session, display, false);
     }
 
     @Override
     public IStatus runInWorkspace(IProgressMonitor monitor_p) throws CoreException {
-      int repToRefreshNb = _representationsToRefresh.size();
+      int repToRefreshNb = representationsToRefresh.size();
       monitor_p.beginTask(getName(), repToRefreshNb);
-      if (_session != null) {
+      if (session != null) {
         int counter = 0;
-        for (final DRepresentationDescriptor dRepresentation : _representationsToRefresh) {
+        for (final DRepresentationDescriptor dRepresentation : representationsToRefresh) {
           counter++;
           monitor_p.subTask(Messages.bind(Messages.RefreshRepresentation_6, new Object[] { dRepresentation.getName(), counter, repToRefreshNb }));
 
           DRepresentation representation = dRepresentation.getRepresentation();
-          OpeningDiagramJob job_opening = new OpeningDiagramJob(Messages.RefreshRepresentation_7, _session,
-              representation);
+          OpeningDiagramJob job_opening = new OpeningDiagramJob(Messages.RefreshRepresentation_7, session,
+              representation, headless);
           job_opening.setUser(false);
           job_opening.schedule();
           try {
@@ -88,7 +98,7 @@ public class RefreshDiagramsCommandHandler extends AbstractDiagramCommandHandler
           }
           if (job_opening.getResult().isOK()) {
             ClosingDiagramJob job_closing = new ClosingDiagramJob(Messages.RefreshRepresentation_8,
-                job_opening.getCurrentEditor(), _display);
+                job_opening.getCurrentEditor(), display);
             job_closing.setUser(false);
             job_closing.schedule();
             try {
@@ -112,24 +122,36 @@ public class RefreshDiagramsCommandHandler extends AbstractDiagramCommandHandler
 
   protected class OpeningDiagramJob extends WorkspaceJob {
 
-    private Session _session;
-    private DRepresentation _dRepresentation;
+    private Session session;
+    private DRepresentation dRepresentation;
     private IEditorPart currentEditor;
+    private boolean headless;
 
     /**
      * @param name
      */
-    public OpeningDiagramJob(String name, Session session, DRepresentation dRepresentation) {
+    public OpeningDiagramJob(String name, Session session, DRepresentation dRepresentation, boolean headless) {
       super(name);
-      _session = session;
-      _dRepresentation = dRepresentation;
-      currentEditor = null;
+      this.session = session;
+      this.dRepresentation = dRepresentation;
+      this.currentEditor = null;
+      this.headless = headless;
     }
 
     @Override
     public IStatus runInWorkspace(IProgressMonitor monitor) throws CoreException {
-      if (_session != null && _dRepresentation != null) {
-        currentEditor = DialectUIManager.INSTANCE.openEditor(_session, _dRepresentation, monitor);
+      if (headless) {
+        TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
+        domain.getCommandStack().execute(new RecordingCommand(domain) {
+            @Override
+            protected void doExecute() {
+                DialectManager.INSTANCE.refresh(dRepresentation, new NullProgressMonitor());
+            }
+        });
+      } else {
+        if (session != null && dRepresentation != null) {
+          currentEditor = DialectUIManager.INSTANCE.openEditor(session, dRepresentation, monitor);
+        }
       }
       return Status.OK_STATUS;
     }
@@ -209,12 +231,16 @@ public class RefreshDiagramsCommandHandler extends AbstractDiagramCommandHandler
     return (null != selectedElementSession);
   }
 
+  @Override
   public Object execute(ExecutionEvent event_p) throws ExecutionException {
-
-    // Get the selected element and its session
+ // Get the selected element and its session
     Object selectedElement = getSelection().getFirstElement();
     Session session = getSession(selectedElement);
-
+    refreshRepresentations(selectedElement, session, true);
+    return null;
+  }
+  
+  public Job refreshRepresentations(Object selectedElement, Session session, boolean headless) {
     // Compute representations to refresh.
     Collection<DRepresentationDescriptor> representationsToRefresh = Collections.emptyList();
     if (selectedElement instanceof ModelElement) {
@@ -264,7 +290,7 @@ public class RefreshDiagramsCommandHandler extends AbstractDiagramCommandHandler
 
       // Show to user the total number of representations to refresh and ask user to confirm for the last time before
       // refreshing.
-      if (MessageDialog.openConfirm(PlatformUI.getWorkbench().getDisplay().getActiveShell(),
+      if (headless || MessageDialog.openConfirm(PlatformUI.getWorkbench().getDisplay().getActiveShell(),
           Messages.RefreshRepresentation_1,
           Messages.bind(Messages.RefreshRepresentation_2, representationsToRefresh.size()))) {
 
@@ -276,7 +302,7 @@ public class RefreshDiagramsCommandHandler extends AbstractDiagramCommandHandler
 
         // Schedule the job
         RefreshDiagramsJob job = new RefreshDiagramsJob(Messages.RefreshRepresentation_0, representationsToRefresh, session,
-            Display.getDefault());
+            Display.getDefault(), headless);
         job.setUser(true);
         job.schedule();
 
@@ -318,6 +344,7 @@ public class RefreshDiagramsCommandHandler extends AbstractDiagramCommandHandler
             // do nothing
           }
         });
+        return job;
       }
     }
     return null;
