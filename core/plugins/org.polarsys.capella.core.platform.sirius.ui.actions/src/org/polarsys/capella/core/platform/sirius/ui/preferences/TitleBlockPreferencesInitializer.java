@@ -24,8 +24,9 @@ public class TitleBlockPreferencesInitializer extends AbstractPreferencesInitial
   @Override
   public void initializeDefaultPreferences() {
     IPreferenceStore preferenceStore = Activator.getDefault().getPreferenceStore();
-    preferenceStore.setDefault("columnField", 2);
-    preferenceStore.setDefault("EnableCustomValue", false);
+    preferenceStore.setDefault("columnField1", 2);
+    preferenceStore.setDefault("rowField", 2);
+    preferenceStore.setDefault("tableTitleBlock", "");
 
   }
 
