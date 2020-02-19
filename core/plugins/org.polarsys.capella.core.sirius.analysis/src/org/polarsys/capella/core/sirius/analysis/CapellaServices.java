@@ -1426,8 +1426,8 @@ public class CapellaServices {
    * @param current
    * @return current if it is a diagram or the diagram that contains current if it is a DDiagramElement.
    * 
-   *         May return null: If used in a style computation or a decoration, the expression will be called twice,
-   *         the first time, the view doesn't have yet a container nor a semantic element.
+   *         May return null: If used in a style computation or a decoration, the expression will be called twice, the
+   *         first time, the view doesn't have yet a container nor a semantic element.
    */
   public DDiagram getDiagramContainer(EObject current) {
     DDiagram parent = DiagramHelper.getService().getDiagramContainer(current);
@@ -2134,8 +2134,16 @@ public class CapellaServices {
    *         TODO This function should have a more meaningfull name such as shouldFunctionBeDisplayed, the current
    *         isAllocatedFunction name is confusing. This should be changed in a non patch version.
    */
-  public boolean isAllocatedFunction(AbstractFunction function, EObject container, DNodeContainer containerView) {
+  public boolean isAllocatedFunction(AbstractFunction function, EObject container, DSemanticDecorator containerView) {
     EObject containerTarget;
+
+    if (!(containerView instanceof DNodeContainer)) {
+      // As PAB_Function mapping is defined under layer and not under component mapping, the precondition may be called
+      // with diagram as container. Making container parameter as DNodeContainer only raised an EvaluationException,
+      // which returns true on AbstractNodeMappingQuery.evaluationPrecondition.
+      // We need to return false if used outside a container.
+      return false;
+    }
 
     if (function instanceof OperationalActivity) {
       containerTarget = container;
@@ -2155,7 +2163,8 @@ public class CapellaServices {
     // none of the allocation blocks must be in this container
     // otherwise we could just display the function in the visible container
     for (EObject allocationObject : allocationObjects) {
-      if (DiagramServices.getDiagramServices().isIndirectlyOnDiagram(containerView, allocationObject)) {
+      if (DiagramServices.getDiagramServices().isIndirectlyOnDiagram((DNodeContainer) containerView,
+          allocationObject)) {
         return false;
       }
     }
@@ -2179,7 +2188,8 @@ public class CapellaServices {
 
     // not a direct subcomponent -> compute the subproblem on hidden subcomponents and stop at first match
     for (EObject subComponent : subComponents) {
-      boolean isOnDiagram = DiagramServices.getDiagramServices().isIndirectlyOnDiagram(containerView, subComponent);
+      boolean isOnDiagram = DiagramServices.getDiagramServices().isIndirectlyOnDiagram((DNodeContainer) containerView,
+          subComponent);
 
       if (!isOnDiagram && isAllocatedFunction(function, subComponent, containerView)) {
         return true;
@@ -2196,7 +2206,7 @@ public class CapellaServices {
     // an element can be displayed in a container, if all of its children can be displayed in that container
     // compute the subproblem on all children
     for (AbstractFunction subFunction : subFunctions) {
-      if (!isAllocatedFunction(subFunction, container, containerView)) {
+      if (!isAllocatedFunction(subFunction, container, (DNodeContainer) containerView)) {
         return false;
       }
     }

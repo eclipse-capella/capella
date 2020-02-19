@@ -88,6 +88,7 @@ import org.polarsys.capella.common.utils.RunnableWithBooleanResult;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
+import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.diagram.helpers.DiagramHelper;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
@@ -552,18 +553,8 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
           EObject sourceSemantic = element.getTarget();
           EObject semanticSource = sourceSemantic;
 
-          if ((sourceSemantic instanceof Part)
-              && (((Part) sourceSemantic).getAbstractType().eContainer() instanceof BlockArchitecture)) {
-            semanticSource = ((Part) sourceSemantic).getAbstractType();
-          }
           for (EObject semanticTarget : getTargetSemantics(semanticSource, sourceDescription, targetDescription)) {
             EObject targetSemantic = semanticTarget;
-            if ((semanticTarget instanceof Component) && (semanticTarget.eContainer() instanceof BlockArchitecture)) {
-              for (Part part : getCache(ComponentExt::getRepresentingParts, (Component) semanticTarget)) {
-                targetSemantic = part;
-                break;
-              }
-            }
             DiagramElementMapping mapping = DiagramDescriptionHelper.getService(getContext()).getTargetMapping(
                 getContext(), sourceDescription, targetDescription, element.getDiagramElementMapping(), semanticSource,
                 semanticTarget);
@@ -680,17 +671,14 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
           sourceDescription, targetContents, (AbstractNodeMapping) mapping, containerNode, targetSemantic);
 
       if (targetView == null) {
-
-        if ((targetSemantic instanceof Part)
-            && !(((Part) targetSemantic).getAbstractType().eContainer() instanceof BlockArchitecture)) {
+        if (targetSemantic instanceof Part) {
           if (((Part) targetSemantic).getAbstractType() instanceof Component) {
             if (BlockArchitectureExt.getOrCreateSystem(BlockArchitectureExt.getRootBlockArchitecture(targetSemantic)).equals(
                 ((Part) targetSemantic).getAbstractType())) {
-              map.put(sourceView, (DSemanticDecorator) targetContents.getDDiagram());
+              targetView = ((DSemanticDecorator)targetContents.getDDiagram());
             }
           }
         }
-
       }
       if (targetView != null) {
         map.put(sourceView, targetView);

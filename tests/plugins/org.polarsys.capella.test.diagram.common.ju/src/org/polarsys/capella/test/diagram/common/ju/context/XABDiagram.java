@@ -49,6 +49,7 @@ import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateContainerToo
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateDEdgeTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateNodeTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreatePathTool;
+import org.polarsys.capella.test.diagram.common.ju.step.tools.InitializationFromExistingDiagramTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.ReconnectTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.SelectFromListTool;
@@ -205,6 +206,13 @@ public class XABDiagram extends CommonDiagram {
     return name;
   }
 
+  public void initializationFromExistingDiagram(DiagramContext existingContext) {
+    InitializationFromExistingDiagramTool tool = new InitializationFromExistingDiagramTool(this, IToolNameConstants.TOOL_INITIALIZATION_FROM_EXISTING_DIAGRAM,
+        existingContext);
+    tool.setTolerance(6);
+    tool.insert(existingContext.getDiagramId());
+  }
+  
   public void insertActor(String id) {
     new InsertRemoveTool(this, getToolNameShowHideActor()).insert(id);
   }
