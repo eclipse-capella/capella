@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.polarsys.capella.core.platform.sirius.ui.preferences;
 
-import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.TitleAreaDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
@@ -23,6 +22,11 @@ import org.eclipse.swt.widgets.Text;
 
 public class TitleBlockDialog extends TitleAreaDialog {
   private final String TITLE_NAME = "Add name and content";
+  private final String NAME_LABEL = "Name";
+  private final String CONTENT_LABEL = "Content";
+  private final String ERROR_MESSAGE = "The content of data fields can be customized via aql, feature or capella:\r\n"
+      + "\r\n" + "      AQL query (aql:)\r\n" + "      Name of feature (feature:)\r\n"
+      + "      Predefined service (capella:)\r\n\r\n " + "      Example: feature:name";
   private Text txtName;
   private Text txtContent;
 
@@ -59,7 +63,7 @@ public class TitleBlockDialog extends TitleAreaDialog {
 
   private void createName(Composite container) {
     Label lbName = new Label(container, SWT.NONE);
-    lbName.setText("Name");
+    lbName.setText(NAME_LABEL);
 
     GridData dataName = new GridData();
     dataName.grabExcessHorizontalSpace = true;
@@ -72,7 +76,7 @@ public class TitleBlockDialog extends TitleAreaDialog {
 
   private void createContent(Composite container) {
     Label lbContent = new Label(container, SWT.NONE);
-    lbContent.setText("Content");
+    lbContent.setText(CONTENT_LABEL);
 
     GridData dataContent = new GridData();
     dataContent.grabExcessHorizontalSpace = true;
@@ -95,10 +99,7 @@ public class TitleBlockDialog extends TitleAreaDialog {
 
       return true;
     }
-    MessageDialog.openError(getParentShell(), "Error",
-        "The content of data fields can be customized via:\r\n" + "\r\n" + "      AQL query (aql:)\r\n"
-            + "      Name of feature (feature:)\r\n" + "      Predefined service (capella:)\r\n\r\n "
-            + "      Example: feature:name");
+    setErrorMessage(ERROR_MESSAGE);
     return false;
   }
 
