@@ -48,6 +48,7 @@ public class TitleBlockServices {
   private static final String NAME = "Name:";
   private static final String CONTENT = "Content:";
   private static final String VISIBILITY = "Visibility";
+  private static final String IS_ELEMENT_TITLE_BLOCK = "Is Element Title Block";
   private static final String TRUE = "True";
   private static final String FALSE = "False";
 
@@ -126,6 +127,7 @@ public class TitleBlockServices {
 
       if (!elementView.equals(diagram)) {
         annotation.getReferences().add(((DDiagramElement) elementView).getTarget());
+        annotation.getDetails().put(IS_ELEMENT_TITLE_BLOCK, TRUE);
       }
       annotation.getReferences().addAll(annotationLines);
       representation.getEAnnotations().add(annotation);
@@ -238,10 +240,29 @@ public class TitleBlockServices {
       DRepresentation representation = (DRepresentation) elementView;
       list = representation.getEAnnotations().stream().filter(x -> x.getSource().equals(TITLE_BLOCK))
           .collect(Collectors.toList());
+      deleteDanglingTitleBlock(list);
       list = list.stream().filter(x -> Objects.nonNull(x.getDetails().get(VISIBILITY)))
           .filter(x -> x.getDetails().get(VISIBILITY).equals(TRUE)).collect(Collectors.toList());
     }
     return list;
+  }
+
+  public void deleteDanglingTitleBlock(List<DAnnotation> list) {
+    List<DAnnotation> deleteList = new ArrayList<DAnnotation>();
+    for (DAnnotation annotation : list) {
+      boolean hasExternalElementReference = false;
+      for (EObject element : annotation.getReferences()) {
+        if (!(element instanceof DAnnotation)) {
+          hasExternalElementReference = true;
+        }
+      }
+      if (!(hasExternalElementReference)) {
+        deleteList.add(annotation);
+      }
+    }
+    deleteList = deleteList.stream().filter(x -> Objects.nonNull(x.getDetails().get(IS_ELEMENT_TITLE_BLOCK)))
+        .filter(x -> x.getDetails().get(IS_ELEMENT_TITLE_BLOCK).equals(TRUE)).collect(Collectors.toList());
+    CapellaServices.getService().removeElements(deleteList);
   }
 
   public List<Object> getTitleBlockCellContent(EObject diagram, EObject cell) {
