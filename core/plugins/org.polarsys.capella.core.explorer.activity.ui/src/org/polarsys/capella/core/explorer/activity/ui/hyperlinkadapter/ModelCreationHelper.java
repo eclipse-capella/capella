@@ -94,8 +94,8 @@ public class ModelCreationHelper {
     }
   }
 
-  protected static AbstractCapability selectCapability(final Project project, BlockArchitecture architecture) {
-    AbstractCapability result = null;
+  public static AbstractCapability selectCapability(final Project project, BlockArchitecture architecture) {
+    AbstractCapability[] result = new AbstractCapability[1];
     AbstractCapabilityPkg capabilityPkg = BlockArchitectureExt.getAbstractCapabilityPkg(architecture);
     if (capabilityPkg != null) {
       EClass clazz = CtxPackage.Literals.CAPABILITY;
@@ -107,14 +107,20 @@ public class ModelCreationHelper {
       Set<EObject> all = EObjectExt.getAll(capabilityPkg, clazz);
       if (!all.isEmpty()) {
         Shell shell = PlatformUI.getWorkbench().getDisplay().getActiveShell();
-        result = (AbstractCapability) SelectionDialogHelper
+        result[0] = (AbstractCapability) SelectionDialogHelper
             .simplePropertySelectionDialogWizard(new ArrayList<EObject>(all), shell);
-        return result;
+        return result[0];
       }
       // No capability found, let's create a new one.
-      result = createAbstractCapability(capabilityPkg);
+      AbstractReadWriteCommand cmd = new AbstractReadWriteCommand() {
+        public void run() {
+          result[0] = createAbstractCapability(capabilityPkg);
+        }
+      };
+      TransactionHelper.getExecutionManager(project).execute(cmd);
+
     }
-    return result;
+    return result[0];
   }
 
   public static AbstractCapability createAbstractCapability(AbstractCapabilityPkg capabilityPkg) {
