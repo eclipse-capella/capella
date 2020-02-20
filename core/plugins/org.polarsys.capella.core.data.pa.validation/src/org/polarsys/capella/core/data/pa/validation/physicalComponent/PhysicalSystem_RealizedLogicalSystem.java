@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2019, 2020 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,7 +21,7 @@ import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 /**
- * Ensures that the Component Realization targeting a Physical Component always realizes a Logical Component.
+ * TC_DC_13 - This rule ensures that Root Physical Component always realizes a Root Logical Component.
  */
 public class PhysicalSystem_RealizedLogicalSystem extends AbstractValidationRule {
   /**
@@ -36,11 +36,10 @@ public class PhysicalSystem_RealizedLogicalSystem extends AbstractValidationRule
       if (eObj instanceof PhysicalComponent && !ComponentExt.isActor(eObj)) {
         PhysicalComponent component = (PhysicalComponent) eObj;
         if (component.equals(BlockArchitectureExt.getRootBlockArchitecture(component).getSystem())) {
-          if (!component.getRealizedLogicalComponents().isEmpty()) {
-            return ctx.createSuccessStatus();
+          if (component.getRealizedLogicalComponents().isEmpty()) {
+            return ctx.createFailureStatus(CapellaElementExt.getValidationRuleMessagePrefix(component)
+                + " does not realize the Logical Component");
           }
-          return ctx.createFailureStatus(
-              CapellaElementExt.getValidationRuleMessagePrefix(component) + " does not realize any Logical Component.");
         }
       }
     }
