@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2019, 2020 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,7 +21,7 @@ import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 /**
- * Ensures that the Component Realization targeting a Logical Component always realizes a System Component.
+ * TC_DC_11 - This rule ensures that Logical Component always realizes a System Component.
  */
 public class LogicalComponent_RealizedSystemComponents extends AbstractValidationRule {
   /**
@@ -40,7 +40,7 @@ public class LogicalComponent_RealizedSystemComponents extends AbstractValidatio
             return ctx.createSuccessStatus();
           }
           return ctx.createFailureStatus(
-              CapellaElementExt.getValidationRuleMessagePrefix(component) + " does not realize any System Component.");
+              CapellaElementExt.getValidationRuleMessagePrefix(component) + " does not realize any System Component");
         }
       }
     }

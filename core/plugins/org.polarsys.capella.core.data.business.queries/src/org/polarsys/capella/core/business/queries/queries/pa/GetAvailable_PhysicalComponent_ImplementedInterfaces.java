@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019, 2020 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,7 +35,8 @@ import org.polarsys.capella.core.model.utils.ListExt;
 
 /**
  * <p>
- * Gets All the Interfaces contained in the Interface Package (and all of its sub-packages) of the Physical Architecture layer.
+ * Gets All the Interfaces contained in the Interface Package (and all of its sub-packages) of the Physical Architecture
+ * layer.
  * </p>
  * <p>
  * Except The interfaces that are already implemented by the current Physical Component.
@@ -43,6 +44,7 @@ import org.polarsys.capella.core.model.utils.ListExt;
  * <p>
  * Refer MQRY_ PhysicalComponent_ImplInterfaces_1
  * </p>
+ * 
  * @see org.polarsys.capella.core.business.queries.core.business.queries.IBusinessQuery#getAvailableElements(EObject)
  */
 public class GetAvailable_PhysicalComponent_ImplementedInterfaces extends AbstractQuery {
@@ -54,7 +56,8 @@ public class GetAvailable_PhysicalComponent_ImplementedInterfaces extends Abstra
     SystemEngineering systemEngineering = SystemEngineeringExt.getSystemEngineering(element);
     if (systemEngineering != null) {
       if (element instanceof PhysicalComponent) {
-        // Gets All the Interfaces contained in the Interface Package (and all of its sub-packages) of the Physical Architecture layer.
+        // Gets All the Interfaces contained in the Interface Package (and all of its sub-packages) of the Physical
+        // Architecture layer.
         // Except The interfaces that are already implemented by the current Physical Component.
         PhysicalComponent currentPC = (PhysicalComponent) element;
         for (Component cpnt : CapellaElementExt.getComponentHierarchy(currentPC)) {
@@ -64,12 +67,14 @@ public class GetAvailable_PhysicalComponent_ImplementedInterfaces extends Abstra
           }
         }
         BlockArchitecture currentBlock = BlockArchitectureExt.getRootBlockArchitecture(currentPC);
-        List<CapellaElement> allInterfaces = QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_INTERFACES, currentBlock, context);
+        List<CapellaElement> allInterfaces = QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_INTERFACES,
+            currentBlock, context);
         availableElements.addAll(allInterfaces);
         EList<Component> lcs = currentPC.getRealizedComponents();
         if (lcs.isEmpty()) {
-          currentBlock = BlockArchitectureExt.getPreviousBlockArchitecture(currentBlock).get(0);
-          allInterfaces = QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_ALL_INTERFACES, currentBlock, context);
+          currentBlock = BlockArchitectureExt.getPreviousBlockArchitecture(currentBlock);
+          allInterfaces = QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_ALL_INTERFACES, currentBlock,
+              context);
           availableElements.addAll(allInterfaces);
         } else {
           for (Component logicalComponent : lcs) {

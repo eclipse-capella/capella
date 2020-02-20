@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2019, 2020 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,7 +33,6 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 
-
 /**
  * A quick fix for pattern instance issues.
  */
@@ -63,16 +62,16 @@ public class PatternCapellaMarkerResolution extends AbstractPatternCapellaMarker
           public void run() {
             EObject patternStorage = null;
             if (instance instanceof CommonPatternInstance)
-              patternStorage = ((CommonPatternInstance)instance).eContainer();
-            
+              patternStorage = ((CommonPatternInstance) instance).eContainer();
+
             if (shouldKeepElements())
               instance.delete(true);
             else
               instance.delete(false);
-            
+
             if (patternStorage != null)
               deletePatternStorage(patternStorage);
-            
+
             mustDeleteMarker[0] = true;
           }
         };
@@ -96,7 +95,7 @@ public class PatternCapellaMarkerResolution extends AbstractPatternCapellaMarker
    * @see org.polarsys.capella.common.tools.report.appenders.reportlogview.handler.ReportMarkerResolution#enabled(java.util.Collection)
    */
   @Override
-  protected boolean enabled(Collection<IMarker> markers) {
+  public boolean enabled(Collection<IMarker> markers) {
     for (IMarker marker : markers) {
       List<IPatternInstance> invalidPatternInstances = new ArrayList<>();
       List<EObject> modelElements = getModelElements(marker);
@@ -138,5 +137,5 @@ public class PatternCapellaMarkerResolution extends AbstractPatternCapellaMarker
   protected boolean quickFixAllSimilarEnabled(Collection<IMarker> markers) {
     return false;
   }
-  
+
 }

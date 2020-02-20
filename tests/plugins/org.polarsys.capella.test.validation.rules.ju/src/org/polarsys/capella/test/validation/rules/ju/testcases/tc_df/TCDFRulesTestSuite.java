@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019, 2020 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -47,6 +47,7 @@ public class TCDFRulesTestSuite extends BasicTestSuite {
     tests.add(new Rule_TC_DF_12());
     tests.add(new Rule_TC_DF_13());
     tests.add(new Rule_TC_DF_14());
+    tests.add(new Rule_TC_DF_15());
     return tests;
   }
 

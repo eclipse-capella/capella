@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2019, 2020 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.validation.rules.ju.testcases.i;
+package org.polarsys.capella.test.validation.rules.ju.testcases.tc_df;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,11 +19,11 @@ import org.polarsys.capella.test.framework.api.OracleDefinition;
 import org.polarsys.capella.test.validation.rules.ju.testcases.AbstractRulesOnIntegrityTest;
 
 /**
- * test on I_01: This rule ensures that an association has a name.
+ * test on TC_DF_15: This rule ensures the realization consistency between Root Functions.
  * 
  * @generated
  */
-public class Rule_I_44 extends AbstractRulesOnIntegrityTest {
+public class Rule_TC_DF_15 extends AbstractRulesOnIntegrityTest {
 
   /**
    * @see org.polarsys.capella.test.validation.rules.ju.testcases.ValidationRuleTestCase#getTargetedEClass()
@@ -40,7 +40,7 @@ public class Rule_I_44 extends AbstractRulesOnIntegrityTest {
    */
   @Override
   protected String getRuleID() {
-    return "org.polarsys.capella.core.data.la.validation.I_44";
+    return "org.polarsys.capella.core.data.fa.validation.TC_DF_15";
   }
 
   /**
@@ -49,7 +49,7 @@ public class Rule_I_44 extends AbstractRulesOnIntegrityTest {
    */
   @Override
   protected List<String> getScopeDefinition() {
-    return Arrays.asList(new String[] { "62d020dc-013a-428b-87c5-215a0ed64957" });
+    return Arrays.asList(new String[] { "140b5a74-ebfd-415a-a06c-b406e537b9be" });
   }
 
   /**
@@ -58,6 +58,6 @@ public class Rule_I_44 extends AbstractRulesOnIntegrityTest {
    */
   @Override
   protected List<OracleDefinition> getOracleDefinitions() {
-    return Arrays.asList(new OracleDefinition[] { new OracleDefinition("62d020dc-013a-428b-87c5-215a0ed64957", 1) });
+    return Arrays.asList(new OracleDefinition[] { new OracleDefinition("140b5a74-ebfd-415a-a06c-b406e537b9be", 1) });
   }
 }
