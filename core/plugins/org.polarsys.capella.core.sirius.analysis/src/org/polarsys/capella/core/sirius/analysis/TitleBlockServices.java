@@ -112,9 +112,6 @@ public class TitleBlockServices {
           annotationCol.setSource("TB_" + i + "_" + j);
           annotationCol.getDetails().put(NAME, "Name");
           annotationCol.getDetails().put(CONTENT, "feature:name");
-          if (!elementView.equals(diagram)) {
-            annotationCol.getReferences().add(((DDiagramElement) elementView).getTarget());
-          }
           annotationCols.add(annotationCol);
           representation.getEAnnotations().add(annotationCol);
         }
@@ -132,18 +129,6 @@ public class TitleBlockServices {
       annotation.getReferences().addAll(annotationLines);
       representation.getEAnnotations().add(annotation);
     }
-  }
-
-  public void reconnectTitleBlockEdgeTarget(EObject elementView, DAnnotation source, DAnnotation target) {
-    source.getReferences().remove(elementView);
-    target.getReferences().add(elementView);
-  }
-
-  public void reconnectTitleBlockEdgeSource(EObject elementView, EObject source, EObject target, DEdge edgeView) {
-    DNodeContainer targetNode = (DNodeContainer) edgeView.getTargetNode();
-    DAnnotation annotation = (DAnnotation) targetNode.getTarget();
-    annotation.getReferences().remove(source);
-    annotation.getReferences().add(target);
   }
 
   public void createTitleBlockLine(EObject titleBlock, EObject diagram) {
@@ -181,7 +166,6 @@ public class TitleBlockServices {
             annotationCol.setSource("TitleBlockLineCol");
             if (lines.get(i) instanceof DAnnotation) {
               ((DAnnotation) (lines.get(i))).getReferences().add(annotationCol);
-              representation.getEAnnotations().add(annotationCol);
             }
           }
         }
@@ -224,13 +208,11 @@ public class TitleBlockServices {
 
   public Collection<EObject> computeTitleBlockElements(EObject elem, EObject diagram) {
     Collection<EObject> result = new ArrayList<>();
-
     if ((diagram instanceof DRepresentation)) {
       DRepresentation representation = (DRepresentation) diagram;
       result = representation.getEAnnotations().stream().filter(x -> x.getReferences().contains(elem))
           .collect(Collectors.toList());
     }
-
     return result;
   }
 
@@ -240,20 +222,30 @@ public class TitleBlockServices {
       DRepresentation representation = (DRepresentation) elementView;
       list = representation.getEAnnotations().stream().filter(x -> x.getSource().equals(TITLE_BLOCK))
           .collect(Collectors.toList());
-      deleteDanglingTitleBlock(list);
+      deleteDanglingTitleBlock(list, elementView);
       list = list.stream().filter(x -> Objects.nonNull(x.getDetails().get(VISIBILITY)))
           .filter(x -> x.getDetails().get(VISIBILITY).equals(TRUE)).collect(Collectors.toList());
     }
     return list;
   }
 
-  public void deleteDanglingTitleBlock(List<DAnnotation> list) {
+  public void deleteDanglingTitleBlock(List<DAnnotation> list, Object elementView) {
     List<DAnnotation> deleteList = new ArrayList<DAnnotation>();
     for (DAnnotation annotation : list) {
       boolean hasExternalElementReference = false;
       for (EObject element : annotation.getReferences()) {
         if (!(element instanceof DAnnotation)) {
           hasExternalElementReference = true;
+          boolean elementPresentInDiagram = false;
+          List<DDiagramElement> diagramElementsList = ((DSemanticDiagram) elementView).getOwnedDiagramElements();
+          for (DDiagramElement diagramElement : diagramElementsList) {
+            if (!(diagramElement instanceof DEdge) && diagramElement.getTarget().equals(element)) {
+              elementPresentInDiagram = true;
+            }
+          }
+          if (!(elementPresentInDiagram)) {
+            annotation.getDetails().put(VISIBILITY, FALSE);
+          }
         }
       }
       if (!(hasExternalElementReference)) {
@@ -265,19 +257,21 @@ public class TitleBlockServices {
     CapellaServices.getService().removeElements(deleteList);
   }
 
-  public List<Object> getTitleBlockCellContent(EObject diagram, EObject cell) {
+  public List<Object> getTitleBlockCellContent(EObject diagram, EObject cell, EObject containerView) {
     init();
     List<Object> list = new ArrayList<Object>();
     if ((diagram instanceof DRepresentation)) {
       if (cell instanceof DAnnotation) {
-        DAnnotation annotation = (DAnnotation) cell;
+        DAnnotation annotation = (DAnnotation) ((DNodeContainer) (containerView.eContainer().eContainer())).getTarget();
         FeatureInterpreter interpreter = new FeatureInterpreter();
         try {
-          String feature = annotation.getDetails().get(CONTENT);
+          String feature = ((DAnnotation) cell).getDetails().get(CONTENT);
           if (feature != null) {
             EObject objToEvaluate = diagram;
-            if (!annotation.getReferences().isEmpty()) {
-              objToEvaluate = annotation.getReferences().get(0);
+            List<EObject> modelElements = annotation.getReferences().parallelStream()
+                .filter(x -> !(x instanceof DAnnotation)).collect(Collectors.toList());
+            if (!modelElements.isEmpty()) {
+              objToEvaluate = modelElements.get(0);
             }
             Object obj = interpreter.evaluate(objToEvaluate, feature);
             if (obj != null) {
@@ -287,8 +281,6 @@ public class TitleBlockServices {
                 DAnnotation annotationContent = DescriptionFactory.eINSTANCE.createDAnnotation();
                 annotationContent.setSource("abc");
                 annotationContent.getDetails().put(CONTENT, (String) obj);
-                DRepresentation representation = (DRepresentation) diagram;
-                representation.getEAnnotations().add(annotationContent);
                 list.add(annotationContent);
               }
             } else {
@@ -298,7 +290,6 @@ public class TitleBlockServices {
             }
           }
         } catch (EvaluationException e) {
-          // TODO Auto-generated catch block
           e.printStackTrace();
         }
       }
