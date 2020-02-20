@@ -37,7 +37,7 @@ public class DWF_SM_06Resolver extends AbstractDeleteCommandResolver {
   }
 
   @Override
-  protected boolean enabled(Collection<IMarker> markers) {
+  public boolean enabled(Collection<IMarker> markers) {
     for (IMarker marker : markers) {
       EObject modelElement = getModelElements(marker).get(0);
       if ((null != modelElement) && (modelElement instanceof AbstractState)) {

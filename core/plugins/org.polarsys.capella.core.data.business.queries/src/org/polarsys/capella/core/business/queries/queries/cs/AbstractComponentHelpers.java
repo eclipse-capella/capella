@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019, 2020 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -40,7 +40,8 @@ public class AbstractComponentHelpers {
 
   /**
    * <p>
-   * Gets All the Interfaces contained in the Interface Package (and all of its sub-packages) of the Physical Architecture layer.
+   * Gets All the Interfaces contained in the Interface Package (and all of its sub-packages) of the Physical
+   * Architecture layer.
    * </p>
    * <p>
    * Except The interfaces that are already implemented by the current Physical Component.
@@ -48,29 +49,31 @@ public class AbstractComponentHelpers {
    * <p>
    * Refer MQRY_ PhysicalComponent_ImplInterfaces_1
    * </p>
+   * 
    * @see org.polarsys.capella.core.business.queries.core.business.queries.IBusinessQuery#getAvailableElements(EObject)
    */
   public static List<EObject> getAvailableElements_Component_ImplementedInterface(CapellaElement element) {
     List<EObject> availableElements = new ArrayList<EObject>();
     EObject input = element;
     BlockArchitecture block = BlockArchitectureExt.getRootBlockArchitecture(element);
-    IModel currentProject =  ILibraryManager.INSTANCE.getModel(input);
+    IModel currentProject = ILibraryManager.INSTANCE.getModel(input);
 
     final Component component = (Component) input;
-    MultiFilter filter =
-        new MultiFilter(new IQueryFilter[] { new RemoveAllocatedInterfacesFilter(), new PreviousInterfacesForImplementationFilter(component) });
+    MultiFilter filter = new MultiFilter(new IQueryFilter[] { new RemoveAllocatedInterfacesFilter(),
+        new PreviousInterfacesForImplementationFilter(component) });
 
     Collection<IModel> libraries = LibraryManagerExt.getAllActivesReferences(currentProject);
     for (IModel library : libraries) {
       EObject correspondingInput = QueryExt.getCorrespondingElementInLibrary(block, (CapellaModel) library);
-      List<Interface> interfaces =
-          QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_ALL_INTERFACES_FROM_ARCHITECTURE, correspondingInput, new QueryContext());
+      List<Interface> interfaces = QueryInterpretor.executeQuery(
+          QueryIdentifierConstants.GET_ALL_INTERFACES_FROM_ARCHITECTURE, correspondingInput, new QueryContext());
       availableElements.addAll(interfaces);
 
       if (correspondingInput instanceof PhysicalArchitecture) {
-        BlockArchitecture logicalBlock = BlockArchitectureExt.getPreviousBlockArchitecture((BlockArchitecture) correspondingInput).get(0);
-        List<Interface> logicalInterfaces =
-            QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_ALL_INTERFACES_FROM_ARCHITECTURE, logicalBlock, new QueryContext(), filter);
+        BlockArchitecture logicalBlock = BlockArchitectureExt
+            .getPreviousBlockArchitecture((BlockArchitecture) correspondingInput);
+        List<Interface> logicalInterfaces = QueryInterpretor.executeQuery(
+            QueryIdentifierConstants.GET_ALL_INTERFACES_FROM_ARCHITECTURE, logicalBlock, new QueryContext(), filter);
         availableElements.addAll(logicalInterfaces);
       }
     }
@@ -81,7 +84,8 @@ public class AbstractComponentHelpers {
 
   /**
    * <p>
-   * Gets All the Interfaces contained in the Interface Package (and all of its sub-packages) of the Physical Architecture layer.
+   * Gets All the Interfaces contained in the Interface Package (and all of its sub-packages) of the Physical
+   * Architecture layer.
    * </p>
    * <p>
    * Except The interfaces that are already used by the current Physical Component.
@@ -89,28 +93,31 @@ public class AbstractComponentHelpers {
    * <p>
    * Refer MQRY_ PhysicalComponent_UsedInterfaces_1
    * </p>
+   * 
    * @see org.polarsys.capella.core.business.queries.core.business.queries.IBusinessQuery#getAvailableElements(EObject)
    */
   public static List<EObject> getAvailableElements_Component_UsedInterface(CapellaElement element) {
     List<EObject> availableElements = new ArrayList<EObject>();
     EObject input = element;
     BlockArchitecture block = BlockArchitectureExt.getRootBlockArchitecture(element);
-    IModel currentProject =  ILibraryManager.INSTANCE.getModel(input);
+    IModel currentProject = ILibraryManager.INSTANCE.getModel(input);
 
     final Component component = (Component) input;
-    MultiFilter filter = new MultiFilter(new IQueryFilter[] { new RemoveAllocatedInterfacesFilter(), new PreviousInterfacesForUseFilter(component) });
+    MultiFilter filter = new MultiFilter(
+        new IQueryFilter[] { new RemoveAllocatedInterfacesFilter(), new PreviousInterfacesForUseFilter(component) });
 
     Collection<IModel> libraries = LibraryManagerExt.getAllActivesReferences(currentProject);
     for (IModel library : libraries) {
       EObject correspondingInput = QueryExt.getCorrespondingElementInLibrary(block, (CapellaModel) library);
-      List<Interface> interfaces =
-          QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_ALL_INTERFACES_FROM_ARCHITECTURE, correspondingInput, new QueryContext());
+      List<Interface> interfaces = QueryInterpretor.executeQuery(
+          QueryIdentifierConstants.GET_ALL_INTERFACES_FROM_ARCHITECTURE, correspondingInput, new QueryContext());
       availableElements.addAll(interfaces);
 
       if (correspondingInput instanceof PhysicalArchitecture) {
-        BlockArchitecture logicalBlock = BlockArchitectureExt.getPreviousBlockArchitecture((BlockArchitecture) correspondingInput).get(0);
-        List<Interface> logicalInterfaces =
-            QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_ALL_INTERFACES_FROM_ARCHITECTURE, logicalBlock, new QueryContext(), filter);
+        BlockArchitecture logicalBlock = BlockArchitectureExt
+            .getPreviousBlockArchitecture((BlockArchitecture) correspondingInput);
+        List<Interface> logicalInterfaces = QueryInterpretor.executeQuery(
+            QueryIdentifierConstants.GET_ALL_INTERFACES_FROM_ARCHITECTURE, logicalBlock, new QueryContext(), filter);
         availableElements.addAll(logicalInterfaces);
       }
     }

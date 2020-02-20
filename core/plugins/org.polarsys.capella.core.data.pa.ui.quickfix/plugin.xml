@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <!--
-  Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2019, 2020 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -69,18 +69,20 @@
       </resolver>
       <resolver
             class="org.polarsys.capella.core.data.pa.ui.quickfix.resolver.PhysicalComponentRealizedLogicalComponentsResolver"
-            desc="%quickFix.TC_DC_14.desc"
-            label="%quickFix.TC_DC_14.label">
+            desc="%quickFix.TC_DC_13.desc"
+            icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+            label="%quickFix.TC_DC_13.label">
          <rules
-               ruleId="TC_DC_14">
+               ruleId="TC_DC_13">
          </rules>
       </resolver>
       <resolver
             class="org.polarsys.capella.core.data.pa.ui.quickfix.resolver.PhysicalArchitectureRealizedLogicalArchitectureResolver"
-            desc="%quickFix.TC_DC_11.desc"
-            label="%quickFix.TC_DC_11.label">
+            desc="%quickFix.TJ_PA_12.desc"
+            icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+            label="%quickFix.TJ_PA_12.label">
          <rules
-               ruleId="TC_DC_11">
+               ruleId="TJ_PA_12">
          </rules>
       </resolver>      
     </extension>  

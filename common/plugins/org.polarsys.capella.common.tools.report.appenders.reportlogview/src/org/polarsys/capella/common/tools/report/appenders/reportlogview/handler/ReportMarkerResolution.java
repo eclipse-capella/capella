@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015, 2020 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,7 +25,7 @@ public abstract class ReportMarkerResolution extends WorkbenchMarkerResolution {
    * @param markers
    * @return true if the resolution is compatible with markers
    */
-  protected boolean enabled(Collection<IMarker> markers) {
+  public boolean enabled(Collection<IMarker> markers) {
     return true;
   }
 

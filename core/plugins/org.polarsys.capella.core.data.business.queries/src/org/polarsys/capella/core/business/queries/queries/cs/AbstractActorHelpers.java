@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019, 2020 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -45,23 +45,24 @@ public class AbstractActorHelpers {
     List<EObject> availableElements = new ArrayList<EObject>();
     EObject input = element;
     BlockArchitecture block = BlockArchitectureExt.getRootBlockArchitecture(element);
-    IModel currentProject =  ILibraryManager.INSTANCE.getModel(input);
+    IModel currentProject = ILibraryManager.INSTANCE.getModel(input);
 
     final Component component = (Component) input;
-    MultiFilter filter =
-        new MultiFilter(new IQueryFilter[] { new RemoveAllocatedInterfacesFilter(), new PreviousInterfacesForImplementationFilter(component) });
+    MultiFilter filter = new MultiFilter(new IQueryFilter[] { new RemoveAllocatedInterfacesFilter(),
+        new PreviousInterfacesForImplementationFilter(component) });
 
     Collection<IModel> libraries = LibraryManagerExt.getAllActivesReferences(currentProject);
     for (IModel library : libraries) {
       EObject correspondingInput = QueryExt.getCorrespondingElementInLibrary(block, (CapellaModel) library);
-      List<Interface> interfaces =
-          QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_ALL_INTERFACES_FOR_ACTOR, correspondingInput, new QueryContext(), filter);
+      List<Interface> interfaces = QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_ALL_INTERFACES_FOR_ACTOR,
+          correspondingInput, new QueryContext(), filter);
       availableElements.addAll(interfaces);
 
       if (correspondingInput instanceof PhysicalArchitecture) {
-        BlockArchitecture logicalBlock = BlockArchitectureExt.getPreviousBlockArchitecture((BlockArchitecture) correspondingInput).get(0);
-        List<Interface> logicalInterfaces =
-            QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_ALL_INTERFACES_FOR_ACTOR, logicalBlock, new QueryContext(), filter);
+        BlockArchitecture logicalBlock = BlockArchitectureExt
+            .getPreviousBlockArchitecture((BlockArchitecture) correspondingInput);
+        List<Interface> logicalInterfaces = QueryInterpretor.executeQuery(
+            QueryIdentifierConstants.GET_ALL_INTERFACES_FOR_ACTOR, logicalBlock, new QueryContext(), filter);
         availableElements.addAll(logicalInterfaces);
       }
     }
@@ -77,22 +78,24 @@ public class AbstractActorHelpers {
     List<EObject> availableElements = new ArrayList<EObject>();
     EObject input = element;
     BlockArchitecture block = BlockArchitectureExt.getRootBlockArchitecture(element);
-    IModel currentProject =  ILibraryManager.INSTANCE.getModel(input);
+    IModel currentProject = ILibraryManager.INSTANCE.getModel(input);
 
     final Component component = (Component) input;
-    MultiFilter filter = new MultiFilter(new IQueryFilter[] { new RemoveAllocatedInterfacesFilter(), new PreviousInterfacesForUseFilter(component) });
+    MultiFilter filter = new MultiFilter(
+        new IQueryFilter[] { new RemoveAllocatedInterfacesFilter(), new PreviousInterfacesForUseFilter(component) });
 
     Collection<IModel> libraries = LibraryManagerExt.getAllActivesReferences(currentProject);
     for (IModel library : libraries) {
       EObject correspondingInput = QueryExt.getCorrespondingElementInLibrary(block, (CapellaModel) library);
-      List<Interface> interfaces =
-          QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_ALL_INTERFACES_FOR_ACTOR, correspondingInput, new QueryContext(), filter);
+      List<Interface> interfaces = QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_ALL_INTERFACES_FOR_ACTOR,
+          correspondingInput, new QueryContext(), filter);
       availableElements.addAll(interfaces);
 
       if (correspondingInput instanceof PhysicalArchitecture) {
-        BlockArchitecture logicalBlock = BlockArchitectureExt.getPreviousBlockArchitecture((BlockArchitecture) correspondingInput).get(0);
-        List<Interface> logicalInterfaces =
-            QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_ALL_INTERFACES_FOR_ACTOR, logicalBlock, new QueryContext(), filter);
+        BlockArchitecture logicalBlock = BlockArchitectureExt
+            .getPreviousBlockArchitecture((BlockArchitecture) correspondingInput);
+        List<Interface> logicalInterfaces = QueryInterpretor.executeQuery(
+            QueryIdentifierConstants.GET_ALL_INTERFACES_FOR_ACTOR, logicalBlock, new QueryContext(), filter);
         availableElements.addAll(logicalInterfaces);
       }
     }

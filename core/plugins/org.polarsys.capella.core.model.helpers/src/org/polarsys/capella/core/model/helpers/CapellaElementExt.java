@@ -83,7 +83,6 @@ public class CapellaElementExt {
    */
   public static List<Component> getComponentHierarchy(CapellaElement element) {
     List<Component> result = new ArrayList<Component>();
-
     if (null != element) {
       EObject owner = element.eContainer();
       if (owner instanceof Component) {

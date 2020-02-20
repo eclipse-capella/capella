@@ -8,39 +8,39 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.validation.rules.ju.testcases.tc_dc;
+package org.polarsys.capella.test.validation.rules.ju.testcases.tj_epbs;
 
 import java.util.Arrays;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
-import org.polarsys.capella.core.data.la.LaPackage;
+import org.polarsys.capella.core.data.epbs.EpbsPackage;
 import org.polarsys.capella.test.framework.api.OracleDefinition;
 import org.polarsys.capella.test.validation.rules.ju.testcases.AbstractRulesOnTransitionTest;
 
 /**
- * Test on TC_DC_12 : This rule ensures that Root Logical Component always realizes a Root System Component.
+ * Test on TJ_EPBS_04 : This rule ensures the realization consistency between EPBS Architecture and Physical Architecture.
  */
-public class Rule_TC_DC_12 extends AbstractRulesOnTransitionTest {
+public class Rule_TJ_EPBS_04 extends AbstractRulesOnTransitionTest {
 
   @Override
   protected EClass getTargetedEClass() {
-    return LaPackage.Literals.LOGICAL_COMPONENT;
+    return EpbsPackage.Literals.EPBS_ARCHITECTURE;
   }
 
   @Override
   protected String getRuleID() {
-    return "org.polarsys.capella.core.data.la.validation.TC_DC_12";
+    return "org.polarsys.capella.core.data.epbs.validation.TJ_EPBS_04";
   }
 
   @Override
   protected List<String> getScopeDefinition() {
-    return Arrays.asList(new String[] { "8256d54b-ba8f-46df-89d8-7fe0d4a582e9" });
+    return Arrays.asList(new String[] { "6e4dac02-f611-4ca8-b7e3-462968a98e16" });
   }
 
   @Override
   protected List<OracleDefinition> getOracleDefinitions() {
-    return Arrays.asList(new OracleDefinition[] { new OracleDefinition("8256d54b-ba8f-46df-89d8-7fe0d4a582e9", 1) });
+    return Arrays.asList(new OracleDefinition[] { new OracleDefinition("6e4dac02-f611-4ca8-b7e3-462968a98e16", 1) });
   }
 
 }

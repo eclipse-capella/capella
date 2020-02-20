@@ -13,7 +13,9 @@ package org.polarsys.capella.common.tools.report.appenders.reportlogview;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -54,6 +56,7 @@ import org.eclipse.ui.views.markers.WorkbenchMarkerResolution;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.helpers.validation.ConstraintStatusDiagnostic;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.common.tools.report.appenders.reportlogview.handler.ReportMarkerResolution;
 
 class MarkerViewColumns {
 
@@ -208,7 +211,8 @@ class MarkerViewColumns {
   }
 
   /**
-   * Provide a ContentProvider to Column mapping. Must be called after installing a new content provider on the marker view's viewer.
+   * Provide a ContentProvider to Column mapping. Must be called after installing a new content provider on the marker
+   * view's viewer.
    */
   void update(AbstractMarkerViewContentProvider provider) {
     Class<?> providerClass = provider.getClass();
@@ -344,7 +348,8 @@ class MarkerViewColumns {
             try {
               result = format.format(new Date(((IMarker) element).getCreationTime()));
             } catch (CoreException e) {
-              MarkerViewPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, MarkerViewPlugin.PLUGIN_ID, e.getLocalizedMessage(), e));
+              MarkerViewPlugin.getDefault().getLog()
+                  .log(new Status(IStatus.ERROR, MarkerViewPlugin.PLUGIN_ID, e.getLocalizedMessage(), e));
             }
           }
           return result;
@@ -400,7 +405,7 @@ class MarkerViewColumns {
 
           if (element instanceof IMarker) {
             result = ((IMarker) element).getAttribute(IMarker.MESSAGE, ICommonConstants.EMPTY_STRING).toString();
-            result = pattern.matcher(result).replaceAll(" "); //$NON-NLS-1$ 
+            result = pattern.matcher(result).replaceAll(" "); //$NON-NLS-1$
 
           } else if (element instanceof IConstraintDescriptor) {
             result = ((IConstraintDescriptor) element).getName();
@@ -480,7 +485,12 @@ class MarkerViewColumns {
             IMarkerResolution[] resolutions = IDE.getMarkerHelpRegistry().getResolutions(marker);
 
             if ((resolutions != null) && (resolutions.length > 0)) {
-
+              // Mask the icon if all resolutions are not enabled 
+              if (isAllCapellaMarkerResolution(resolutions)
+                  && !hasAtLeastOneEnabledMarkerResolution(marker, resolutions)) {
+                return null;
+              }
+              
               if (hasAtLeastOneMultipleMarkerResolution(marker, resolutions)) {
                 return MarkerViewPlugin.getDefault().getImage("quickfixAll-repository.png"); //$NON-NLS-1$
               }
@@ -512,6 +522,21 @@ class MarkerViewColumns {
               if (similarMarkers.length > 1) {
                 return true;
               }
+            }
+          }
+          return false;
+        }
+
+        private boolean isAllCapellaMarkerResolution(IMarkerResolution[] resolutions) {
+          return Arrays.stream(resolutions).allMatch(ReportMarkerResolution.class::isInstance);
+        }
+
+        // check if there is at least one Capella marker resolution that's enabled
+        private boolean hasAtLeastOneEnabledMarkerResolution(IMarker marker, IMarkerResolution[] resolutions) {
+          for (IMarkerResolution res : resolutions) {
+            if (res instanceof ReportMarkerResolution
+                && ((ReportMarkerResolution) res).enabled(Collections.singleton(marker))) {
+              return true;
             }
           }
           return false;
@@ -589,7 +614,8 @@ class MarkerViewColumns {
           if (element instanceof IMarker) {
             Diagnostic diagnostic = MarkerViewHelper.getDiagnostic((IMarker) element);
             if (diagnostic instanceof ConstraintStatusDiagnostic) {
-              Set<Category> cats = ((ConstraintStatusDiagnostic) diagnostic).getConstraintStatus().getConstraint().getDescriptor().getCategories();
+              Set<Category> cats = ((ConstraintStatusDiagnostic) diagnostic).getConstraintStatus().getConstraint()
+                  .getDescriptor().getCategories();
               if (!cats.isEmpty()) {
                 result = cats.iterator().next().getQualifiedName();
               }
@@ -624,8 +650,7 @@ class MarkerViewColumns {
 
     @Override
     /**
-     * This makes sure that nodes with children are always on top
-     * {@inheritDoc}
+     * This makes sure that nodes with children are always on top {@inheritDoc}
      */
     public int category(Object o) {
       if (o instanceof IMarker) {

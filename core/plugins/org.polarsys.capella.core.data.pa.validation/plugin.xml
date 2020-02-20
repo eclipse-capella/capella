@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2019, 2020 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -35,28 +35,6 @@
                <description>
                   This rule checks the realization consistency between physical architecture and EPBS architecture.
                </description>
-            </constraint>
-         </constraints>
-         <constraints
-               categories="capella.category/transition/consistency/components">
-            <constraint
-                  class="org.polarsys.capella.core.data.pa.validation.pa.MDCHK_PhysicalArchitecture_PaToLaRealization"
-                  id="TC_DC_11"
-                  isEnabledByDefault="true"
-                  lang="Java"
-                  mode="Batch"
-                  name="TC_DC_11 - Physical Architecture Realization"
-                  severity="ERROR"
-                  statusCode="1">
-               <message>
-                  Realization consistency error for {0}.
-               </message>
-               <description>
-                  The rule checks the realization consistency between physical architecture and logical architecture. 
-               </description>
-               <target
-                     class="PhysicalArchitecture">
-               </target>
             </constraint>
          </constraints>
          <constraints
@@ -187,36 +165,33 @@ BEHAVIOUR PC cannot be contained by a NODE PC
              </constraint>
          </constraints>
          <constraints
-               categories="capella.category/integrity">
-            <constraint
-                  class="org.polarsys.capella.core.data.pa.validation.physicalComponent.PhysicalComponent_RealizedLogicalComponents"
-                  id="I_06"
-                  isEnabledByDefault="true"
-                  lang="Java"
-                  mode="Batch"
-                  name="I_06 - Physical Component Realization"
-                  severity="WARNING"
-                  statusCode="1">
-               <message>
-                  {0}
-               </message>
-               <target
-                     class="PhysicalComponent">
-               </target>
-               <description>
-                 This rule Ensures that Physical Component always realizes a Logical Component.
-               </description>
-            </constraint>
-         </constraints>
-         <constraints
                categories="capella.category/transition/consistency/components">
             <constraint
                   class="org.polarsys.capella.core.data.pa.validation.physicalComponent.PhysicalSystem_RealizedLogicalSystem"
-                  id="TC_DC_14"
+                  id="TC_DC_13"
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="TC_DC_14 - Physical Root Component Realization"
+                  name="TC_DC_13 - Physical Root Component Realization"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0}.
+               </message>
+               <target
+                     class="PhysicalComponent">
+               </target>
+               <description>
+                 This rule ensures that Root Physical Component always realizes a Root Logical Component.
+               </description>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.pa.validation.physicalComponent.PhysicalComponent_RealizedLogicalComponents"
+                  id="TC_DC_09"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="TC_DC_09 - Physical Component Realization"
                   severity="WARNING"
                   statusCode="1">
                <message>
@@ -226,7 +201,7 @@ BEHAVIOUR PC cannot be contained by a NODE PC
                      class="PhysicalComponent">
                </target>
                <description>
-                 This rule Ensures that Root Physical Component always realizes a Root Logical Component.
+                  This rule ensures that Physical Component always realizes a Logical Component.
                </description>
             </constraint>
          </constraints>
@@ -292,6 +267,25 @@ This rule is only evaluated if the transition preference&quot;Transit Interfaces
                <description>
                   This rule ensures that a Physical Actor realizes at least one Logical Actor.
                </description>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.pa.validation.pa.MDCHK_PhysicalArchitecture_PaToLaRealization"
+                  id="TJ_PA_12"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="TJ_PA_12 - Physical Architecture Realization"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  {0}.
+               </message>
+               <description>
+                  This rule ensures the realization consistency between Physical Architecture and Logical Architecture.
+               </description>
+               <target
+                     class="PhysicalArchitecture">
+               </target>
             </constraint>
          </constraints>
       </constraintProvider>
