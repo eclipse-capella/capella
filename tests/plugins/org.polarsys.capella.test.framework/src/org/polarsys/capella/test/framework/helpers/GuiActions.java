@@ -386,7 +386,7 @@ public class GuiActions {
   public static void refreshAllSubRepresentations(IFile airdFile, Session session) {
     Collection<DRepresentationDescriptor> representationsToRefresh = DialectManager.INSTANCE
         .getAllRepresentationDescriptors(session);
-    Job job = new RefreshDiagramsCommandHandler().new RefreshDiagramsJob(airdFile.getName(), representationsToRefresh,
+    Job job = new RefreshDiagramsCommandHandler().new RefreshDiagramsJob(representationsToRefresh,
         session, Display.getCurrent());
     job.setThread(Display.getDefault().getThread());
     job.setUser(true);

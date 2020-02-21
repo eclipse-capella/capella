@@ -6,8 +6,7 @@ Bundle-Version: 1.4.0.qualifier
 Bundle-Activator: org.polarsys.capella.core.platform.sirius.ui.navigator.CapellaNavigatorPlugin
 Bundle-Vendor: %providerName
 Bundle-localization: plugin
-Require-Bundle: org.polarsys.capella.core.commandline.core,
- org.eclipse.amalgam.explorer.activity.ui,
+Require-Bundle: org.eclipse.amalgam.explorer.activity.ui,
  org.eclipse.core.expressions,
  org.eclipse.emf.transaction.ui;visibility:=reexport,
  org.eclipse.gmf.runtime.diagram.ui.resources.editor,

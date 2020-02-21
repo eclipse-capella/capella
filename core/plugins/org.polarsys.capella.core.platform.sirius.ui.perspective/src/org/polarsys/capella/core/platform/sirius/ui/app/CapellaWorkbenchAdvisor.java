@@ -18,6 +18,8 @@ import java.io.OutputStream;
 import java.lang.reflect.Field;
 import java.time.Year;
 import java.util.Properties;
+
+import org.apache.log4j.Logger;
 import org.eclipse.core.commands.operations.IUndoContext;
 import org.eclipse.core.commands.operations.OperationHistoryFactory;
 import org.eclipse.core.internal.jobs.JobManager;
@@ -26,9 +28,14 @@ import org.eclipse.core.internal.registry.ExtensionRegistry;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtensionPoint;
 import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.IProduct;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.jobs.IJobChangeEvent;
+import org.eclipse.core.runtime.jobs.IJobChangeListener;
+import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.core.runtime.jobs.JobChangeAdapter;
 import org.eclipse.emf.validation.service.ModelValidationService;
 import org.eclipse.jface.viewers.ILabelDecorator;
 import org.eclipse.jface.viewers.ILabelProviderListener;
@@ -46,6 +53,9 @@ import org.eclipse.ui.statushandlers.WorkbenchStatusDialogManager;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.platform.sirius.customisation.SiriusCustomizationPlugin;
 import org.polarsys.capella.common.tools.report.appenders.usage.UsageMonitoringLogger;
+import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
+import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
+import org.polarsys.capella.common.tools.report.util.LogExt;
 import org.polarsys.capella.core.commands.preferences.util.PreferencesHelper;
 import org.polarsys.capella.core.model.handler.advisor.DelegateWorkbenchAdvisor;
 import org.polarsys.capella.core.platform.sirius.ui.perspective.CapellaPerspective;
@@ -125,9 +135,12 @@ public class CapellaWorkbenchAdvisor extends IDEWorkbenchAdvisor {
     // current plug-in.
     // Don't use Capella Feature version as it is also used in persistence of semantic models to get something working
     // for both 1.x & 2.x releases.
-    String bundleVersion = ((String) Platform.getProduct().getDefiningBundle().getHeaders().get("Bundle-version")); //$NON-NLS-1$
-    System.setProperty(CAPELLA_VERSION_TAG, bundleVersion.substring(0, 5));
-    System.setProperty(BUILD_ID_TAG, bundleVersion.substring(6));
+    IProduct product = Platform.getProduct();
+    if (product != null) {
+      String bundleVersion = ((String) product.getDefiningBundle().getHeaders().get("Bundle-version")); //$NON-NLS-1$
+      System.setProperty(CAPELLA_VERSION_TAG, bundleVersion.substring(0, 5));
+      System.setProperty(BUILD_ID_TAG, bundleVersion.substring(6));
+    }
     System.setProperty(CURRENT_YEAR, Year.now().toString());
 
     DelegateWorkbenchAdvisor.INSTANCE.callPreStartup();
@@ -139,12 +152,14 @@ public class CapellaWorkbenchAdvisor extends IDEWorkbenchAdvisor {
     // org.polarsys.capella.common.tools.report.appenders.usage so that default preferences will be initialized by the
     // org.polarsys.capella.common.tools.report.appenders.usage.preferences.PreferencesInitializer
     UsageMonitoringLogger.getInstance();
-    
+
     // FIXME Workaround for Eclipse Bug 467000 (Too many refreshes when building Dynamic Menus), Capella Bug 1916
     String workaround = "eclipse.workaround.bug467000"; //$NON-NLS-1$
-    if (System.getProperty(workaround) == null) { // Only change the value if it is not explicitly set already (Don't override user-defined value)
+    if (System.getProperty(workaround) == null) { // Only change the value if it is not explicitly set already (Don't
+                                                  // override user-defined value)
       System.setProperty(workaround, Boolean.TRUE.toString());
     }
+    
   }
 
   /**

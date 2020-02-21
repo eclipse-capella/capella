@@ -11,11 +11,8 @@
 package org.polarsys.capella.test.commandline.ju.testcases;
 
 import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
-import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.equinox.app.IApplicationContext;
 import org.polarsys.capella.core.commandline.core.CommandLineConstants;
 import org.polarsys.capella.core.commandline.core.CommandLineMode;
@@ -23,47 +20,52 @@ import org.polarsys.capella.core.sirius.ui.commandline.RefreshAirdCommandLine;
 import org.polarsys.capella.test.commandline.ju.utils.MockApplicationContext;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
 import org.polarsys.capella.test.framework.api.ModelProviderHelper;
+import org.polarsys.capella.test.framework.helpers.GuiActions;
+import org.polarsys.capella.test.framework.helpers.log.StatusValidator;
 
 /**
  * Test simulating a Validation launch from command line.
  */
 public class CommandLineRefreshAirdTest extends BasicTestCase {
+
   @Override
-  public void test() throws Exception { 
-    IPath workspaceLocation = ResourcesPlugin.getWorkspace().getRoot().getRawLocation();
-    String projectName = "sysmodelProject";
+  public void test()  {
+    String projectName = "RefreshRemoveExport";
     File sourceFolder = getFolderInTestModelRepository(projectName);
-    
-    // Copy test project from the JUnit plugin to the workspace directory
     ModelProviderHelper.getInstance().importCapellaProject(projectName, sourceFolder);
     
-    // Simulated validation command line
-    String[] refreshAirdCommandLineArguments = {
-        CommandLineConstants.ID, "org.polarsys.capella.refreshRepresentations",
-        CommandLineConstants.FILE_PATH, projectName + "/sysmodelProject.aird",
-        CommandLineConstants.OUTPUTFOLDER, projectName + "/RefreshResult",
-        CommandLineConstants.FORCEOUTPUTFOLDERCREATION
-    };
-    IApplicationContext mockApplicationContext = new MockApplicationContext(refreshAirdCommandLineArguments);
+    try {
+      StatusValidator removeSomething = new StatusValidator(s -> s.getMessage().contains("representation(s) refreshed"));
+      Platform.addLogListener(removeSomething);
+      refreshElements(projectName);
+      Platform.removeLogListener(removeSomething);
+      assertTrue("Refresh representations", removeSomething.isValid());
+      
+    } catch (Exception e) {
+      assertFalse(e.getMessage(), true);
+    }
 
-    // Simulate launching from command line
-    RefreshAirdCommandLine refreshAirdCommandLine = new RefreshAirdCommandLine();
-    refreshAirdCommandLine.parseContext(mockApplicationContext);
-    refreshAirdCommandLine.setMode(CommandLineMode.NO_IMPORT);
-
-    // precondition: check parameters validity
-    refreshAirdCommandLine.checkArgs(mockApplicationContext);
-
-    // prepare execution (e.g. import project into a specified workspace)
-    refreshAirdCommandLine.prepare(mockApplicationContext);
-
-    // call execute
-    refreshAirdCommandLine.execute(mockApplicationContext);
-    
-    // Check we have a result file with the expected validation results    
-    IPath validationResultFile = workspaceLocation.append(projectName).append("RefreshResult").append("refresh-results.html");
-    byte[] fileContentInBytes = Files.readAllBytes(Paths.get(validationResultFile.toOSString()));
-    String fileContentInString = new String(fileContentInBytes);
-    assertTrue(fileContentInString.contains("All 148 representation(s) refreshed")); 
   }
+
+  /**
+   * Simulate a call to refresh diagrams command line
+   */
+  private void refreshElements(String project) throws Exception {
+
+    String[] arguments = { CommandLineConstants.ID,
+        "org.polarsys.capella.refreshRepresentations", CommandLineConstants.FILE_PATH, project + "/" + project + ".aird",
+        CommandLineConstants.OUTPUTFOLDER, project + "/output", CommandLineConstants.FORCEOUTPUTFOLDERCREATION };
+    IApplicationContext mockApplicationContext = new MockApplicationContext(arguments);
+
+    RefreshAirdCommandLine commandLine = new RefreshAirdCommandLine();
+    commandLine.parseContext(mockApplicationContext);
+    commandLine.setMode(CommandLineMode.NO_IMPORT);
+
+    commandLine.checkArgs(mockApplicationContext);
+    commandLine.prepare(mockApplicationContext);
+    commandLine.execute(mockApplicationContext);
+    
+    GuiActions.flushASyncGuiJobs();
+  }
+  
 }

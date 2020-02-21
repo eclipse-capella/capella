@@ -6,7 +6,6 @@ Bundle-Version: 1.4.0.qualifier
 Bundle-Activator: org.polarsys.capella.core.validation.commandline.Activator
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.core.runtime,
- org.polarsys.capella.core.commandline.core,
  org.polarsys.capella.core.platform.sirius.ui.actions,
  org.polarsys.capella.core.model.helpers,
  org.polarsys.capella.core.platform.sirius.ui.project,

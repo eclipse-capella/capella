@@ -10,9 +10,11 @@
  *******************************************************************************/
 package org.polarsys.capella.common.tools.report.config;
 
+import org.eclipse.core.runtime.QualifiedName;
+
 @SuppressWarnings("nls")
 public interface ReportManagerConstants {
-
+  
   String LOG_LEVEL = "Log Level";
 
   String LOG_LEVEL_FATAL = "FATAL";

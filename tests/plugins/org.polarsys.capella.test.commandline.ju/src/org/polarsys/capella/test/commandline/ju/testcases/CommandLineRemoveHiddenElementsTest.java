@@ -11,11 +11,8 @@
 package org.polarsys.capella.test.commandline.ju.testcases;
 
 import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
-import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.equinox.app.IApplicationContext;
 import org.polarsys.capella.core.commandline.core.CommandLineConstants;
 import org.polarsys.capella.core.commandline.core.CommandLineMode;
@@ -23,47 +20,58 @@ import org.polarsys.capella.core.sirius.ui.commandline.RemoveHiddenElementsComma
 import org.polarsys.capella.test.commandline.ju.utils.MockApplicationContext;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
 import org.polarsys.capella.test.framework.api.ModelProviderHelper;
+import org.polarsys.capella.test.framework.helpers.log.StatusValidator;
 
 /**
  * Test simulating a Validation launch from command line.
  */
 public class CommandLineRemoveHiddenElementsTest extends BasicTestCase {
+
   @Override
-  public void test() throws Exception { 
-    IPath workspaceLocation = ResourcesPlugin.getWorkspace().getRoot().getRawLocation();
-    String projectName = "sysmodelProject";
+  public void test()  {
+    String projectName = "RefreshRemoveExport";
     File sourceFolder = getFolderInTestModelRepository(projectName);
-    
-    // Copy test project from the JUnit plugin to the workspace directory
     ModelProviderHelper.getInstance().importCapellaProject(projectName, sourceFolder);
     
-    // Simulated validation command line
-    String[] removeHiddenElementsCommandLineArguments = {
-        CommandLineConstants.ID, "org.polarsys.capella.removeHiddenElements",
-        CommandLineConstants.FILE_PATH, projectName + "/sysmodelProject.aird",
-        CommandLineConstants.OUTPUTFOLDER, projectName + "/RefreshResult",
-        CommandLineConstants.FORCEOUTPUTFOLDERCREATION
-    };
-    IApplicationContext mockApplicationContext = new MockApplicationContext(removeHiddenElementsCommandLineArguments);
+    try {
+      StatusValidator removeSomething = new StatusValidator(s -> s.getMessage().contains("diagram(s) updated"));
+      Platform.addLogListener(removeSomething);
+      removeElements(projectName);
+      Platform.removeLogListener(removeSomething);
+      assertTrue("Remove hidden elements shall have removed something", removeSomething.isValid());
+      
+    } catch (Exception e) {
+      assertFalse(e.getMessage(), true);
+    }
 
-    // Simulate launching from command line
-    RemoveHiddenElementsCommandLine removeHiddenElementsCommandLine = new RemoveHiddenElementsCommandLine();
-    removeHiddenElementsCommandLine.parseContext(mockApplicationContext);
-    removeHiddenElementsCommandLine.setMode(CommandLineMode.NO_IMPORT);
+    try {
+      StatusValidator removeNothing = new StatusValidator(s -> s.getMessage().contains("Nothing to do"));
+      Platform.addLogListener(removeNothing);
+      removeElements(projectName);
+      Platform.removeLogListener(removeNothing);
+      assertTrue("Remove hidden elements shall have removed nothing", removeNothing.isValid());
+      
+    } catch (Exception e) {
+      assertFalse(e.getMessage(), true);
+    }
+  }
 
-    // precondition: check parameters validity
-    removeHiddenElementsCommandLine.checkArgs(mockApplicationContext);
+  /**
+   * Simulate a call to remove hidden element command line
+   */
+  private void removeElements(String project) throws Exception {
 
-    // prepare execution (e.g. import project into a specified workspace)
-    removeHiddenElementsCommandLine.prepare(mockApplicationContext);
+    String[] arguments = { CommandLineConstants.ID,
+        "org.polarsys.capella.removeHiddenElements", CommandLineConstants.FILE_PATH, project + "/" + project + ".aird",
+        CommandLineConstants.OUTPUTFOLDER, project + "/output", CommandLineConstants.FORCEOUTPUTFOLDERCREATION };
+    IApplicationContext mockApplicationContext = new MockApplicationContext(arguments);
 
-    // call execute
-    removeHiddenElementsCommandLine.execute(mockApplicationContext);
-    
-    // Check we have a result file with the expected validation results    
-    IPath validationResultFile = workspaceLocation.append(projectName).append("RefreshResult").append("removeHiddenElements-results.html");
-    byte[] fileContentInBytes = Files.readAllBytes(Paths.get(validationResultFile.toOSString()));
-    String fileContentInString = new String(fileContentInBytes);
-    assertTrue(fileContentInString.contains("All hidden elements was removed from 148 representation(s).")); 
+    RemoveHiddenElementsCommandLine commandLine = new RemoveHiddenElementsCommandLine();
+    commandLine.parseContext(mockApplicationContext);
+    commandLine.setMode(CommandLineMode.NO_IMPORT);
+
+    commandLine.checkArgs(mockApplicationContext);
+    commandLine.prepare(mockApplicationContext);
+    commandLine.execute(mockApplicationContext);
   }
 }

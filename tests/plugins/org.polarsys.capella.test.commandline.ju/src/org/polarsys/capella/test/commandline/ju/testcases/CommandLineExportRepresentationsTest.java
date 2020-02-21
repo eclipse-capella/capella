@@ -27,39 +27,41 @@ import org.polarsys.capella.test.framework.api.ModelProviderHelper;
  */
 public class CommandLineExportRepresentationsTest extends BasicTestCase {
   @Override
-  public void test() throws Exception { 
+  public void test() {
     IPath workspaceLocation = ResourcesPlugin.getWorkspace().getRoot().getRawLocation();
-    String projectName = "sysmodelProject";
+    String projectName = "RefreshRemoveExport";
     File sourceFolder = getFolderInTestModelRepository(projectName);
-    
-    // Copy test project from the JUnit plugin to the workspace directory
+
     ModelProviderHelper.getInstance().importCapellaProject(projectName, sourceFolder);
     
-    // Simulated validation command line
-    String[] exportRepresentationsCommandLineArguments = {
-        CommandLineConstants.ID, "org.polarsys.capella.exportRepresentations",
-        CommandLineConstants.FILE_PATH, projectName + "/sysmodelProject.aird",
-        CommandLineConstants.OUTPUTFOLDER, projectName + "/ImagesExported",
-        CommandLineConstants.FORCEOUTPUTFOLDERCREATION
-    };
-    IApplicationContext mockApplicationContext = new MockApplicationContext(exportRepresentationsCommandLineArguments);
-
-    // Simulate launching from command line
-    ExportRepresentationsCommandLine exportRepresenationsCommandLine = new ExportRepresentationsCommandLine();
-    exportRepresenationsCommandLine.parseContext(mockApplicationContext);
-    exportRepresenationsCommandLine.setMode(CommandLineMode.NO_IMPORT);
-
-    // precondition: check parameters validity
-    exportRepresenationsCommandLine.checkArgs(mockApplicationContext);
-
-    // prepare execution (e.g. import project into a specified workspace)
-    exportRepresenationsCommandLine.prepare(mockApplicationContext);
-
-    // call execute
-    exportRepresenationsCommandLine.execute(mockApplicationContext);
+    try {
+      exportImages(projectName);
+    } catch (Exception e) {
+      assertFalse(e.getMessage(), true);
+    }
     
-    // Check we have a result file with the expected validation results    
+    // Check we have a result file with the expected validation results
     IPath validationResultFile = workspaceLocation.append(projectName).append("ImagesExported");
-    assertTrue(validationResultFile.toFile().listFiles().length == 123);
+    assertTrue(validationResultFile.toFile().listFiles().length == 3);
+  }
+
+  private void exportImages(String projectName) throws Exception {
+
+    String[] arguments = { CommandLineConstants.ID,
+        "org.polarsys.capella.exportRepresentations", CommandLineConstants.FILE_PATH,
+        projectName + "/" + projectName + ".aird", CommandLineConstants.OUTPUTFOLDER, projectName + "/ImagesExported",
+        CommandLineConstants.FORCEOUTPUTFOLDERCREATION };
+    IApplicationContext mockApplicationContext = new MockApplicationContext(arguments);
+
+    ExportRepresentationsCommandLine commandLine = new ExportRepresentationsCommandLine();
+    commandLine.parseContext(mockApplicationContext);
+    commandLine.setMode(CommandLineMode.NO_IMPORT);
+
+    commandLine.checkArgs(mockApplicationContext);
+
+    commandLine.prepare(mockApplicationContext);
+
+    commandLine.execute(mockApplicationContext);
+
   }
 }

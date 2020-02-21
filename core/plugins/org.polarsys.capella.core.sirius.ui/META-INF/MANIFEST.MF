@@ -31,7 +31,6 @@ Require-Bundle: org.eclipse.ui.ide,
  org.eclipse.sirius.diagram.formatdata,
  org.polarsys.capella.common.tools.report.appenders.usage;visibility:=reexport,
  org.polarsys.capella.core.sirius.analysis,
- org.polarsys.capella.core.commandline.core,
  org.polarsys.capella.core.commandline.core.ui
 Export-Package: org.polarsys.capella.core.sirius.ui,
  org.polarsys.capella.core.sirius.ui.actions,
