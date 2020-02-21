@@ -29,6 +29,7 @@ import org.polarsys.capella.test.transition.ju.testcases.RootPropertyValueTestCa
 import org.polarsys.capella.test.transition.ju.testcases.SkeletonElementsNames;
 import org.polarsys.capella.test.transition.ju.testcases.options.IncrementalModeTest;
 import org.polarsys.capella.test.transition.ju.testcases.options.MergeCategoryManagerTest;
+import org.polarsys.capella.test.transition.ju.testcases.sa.FunctionalTransitionInLib;
 
 import junit.framework.Test;
 
