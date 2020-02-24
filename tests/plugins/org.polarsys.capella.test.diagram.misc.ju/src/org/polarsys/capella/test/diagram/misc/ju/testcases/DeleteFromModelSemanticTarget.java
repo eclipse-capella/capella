@@ -98,7 +98,7 @@ public class DeleteFromModelSemanticTarget extends BasicTestCase {
         assertEquals(0, PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getEditorReferences().length);
     }
 
-    private IGraphicalEditPart getFunctionEditPart(Session session, IEditorPart editorPart, PhysicalFunction aFunction) {
+    static IGraphicalEditPart getFunctionEditPart(Session session, IEditorPart editorPart, PhysicalFunction aFunction) {
         List<DNodeContainer> aNode = session.getSemanticCrossReferencer().getInverseReferences(aFunction).stream()//
                 .filter(s -> s.getEStructuralFeature() == ViewpointPackage.eINSTANCE.getDSemanticDecorator_Target() && s.getEObject() instanceof DNodeContainer)//
                 .map(s -> (DNodeContainer) s.getEObject())//
@@ -112,7 +112,7 @@ public class DeleteFromModelSemanticTarget extends BasicTestCase {
         return graphEdit;
     }
 
-    private DDiagram getDiagram(Session session, PhysicalFunction bFunction) {
+    static DDiagram getDiagram(Session session, PhysicalFunction bFunction) {
         Collection<DRepresentation> representations = DialectManager.INSTANCE.getRepresentations(bFunction, session);
         assertEquals(1, representations.size());
         DDiagram rep = (DDiagram) representations.iterator().next();
@@ -133,7 +133,7 @@ public class DeleteFromModelSemanticTarget extends BasicTestCase {
     /*
      * Copied from org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase
      */
-    private IGraphicalEditPart getEditPart(final View gmfView, final IEditorPart editor) {
+    private static IGraphicalEditPart getEditPart(final View gmfView, final IEditorPart editor) {
         IGraphicalEditPart result = null;
         if (gmfView != null && editor instanceof DiagramEditor) {
             final Map<?, ?> editPartRegistry = ((DiagramEditor) editor).getDiagramGraphicalViewer().getEditPartRegistry();
@@ -159,7 +159,7 @@ public class DeleteFromModelSemanticTarget extends BasicTestCase {
     /*
      * Copied from org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase
      */
-    private IGraphicalEditPart getEditPart(final DDiagramElement diagramElement, final IEditorPart editor, Session session) {
+    private static IGraphicalEditPart getEditPart(final DDiagramElement diagramElement, final IEditorPart editor, Session session) {
         final View gmfView = getGmfView(diagramElement, session);
         return getEditPart(gmfView, editor);
     }
@@ -174,14 +174,14 @@ public class DeleteFromModelSemanticTarget extends BasicTestCase {
     /*
      * Inspired from org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase
      */
-    private View getGmfView(final DDiagramElement diagramElement, Session session) {
+    private static View getGmfView(final DDiagramElement diagramElement, Session session) {
         return SiriusGMFHelper.getGmfView(diagramElement, session);
     }
 
     /*
      * Inspired from org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase
      */
-    private void delete(final EditPart editPart) {
+    static void delete(final EditPart editPart) {
         final DeleteFromModelAction actionDelegate = new DeleteFromModelAction();
         final IEditorPart editor = EclipseUIUtil.getActiveEditor();
         final GraphicalViewer viewer = editor.getAdapter(GraphicalViewer.class);
