@@ -27,6 +27,7 @@ public class TitleBlockPreferencesInitializer extends AbstractPreferencesInitial
     preferenceStore.setDefault("columnField1", 2);
     preferenceStore.setDefault("rowField", 2);
     preferenceStore.setDefault("tableTitleBlock", "");
+    preferenceStore.setDefault("defaultTitleBlock", false);
 
   }
 
