@@ -216,6 +216,19 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
     v.setInput(createModel(columnsNumber, rowsNumber));
     v.getTable().setLinesVisible(true);
     v.getTable().setHeaderVisible(true);
+    GridData gridData = new GridData(GridData.FILL_BOTH);
+    gridData.grabExcessVerticalSpace = true;
+    gridData.grabExcessHorizontalSpace = true;
+    gridData.verticalAlignment = GridData.FILL;
+    gridData.horizontalAlignment = GridData.FILL;
+    gridData.widthHint = 200;
+    // gridData.heightHint = table.getItemHeight();
+    gridData.horizontalSpan = 1;
+    v.getTable().setLayoutData(gridData);
+
+    // v.getTable().setBounds();
+    System.out.println("Lalal:" + v.getTable().getGridLineWidth());
+    System.out.println("Border: " + v.getTable().getBorderWidth());
 
     Listener treeListener = new Listener() {
       @Override
@@ -232,9 +245,13 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
           String content = list.get(index).content;
           System.out.println(name + " " + content);
           TitleBlockDialog dialog = new TitleBlockDialog(getShell());
-
-          dialog.setCurrentName("");
-          dialog.setCurrentContent("");
+          if (content == "content") {
+            dialog.setCurrentName("");
+            dialog.setCurrentContent("");
+          } else {
+            dialog.setCurrentName(name);
+            dialog.setCurrentContent(content);
+          }
           dialog.create();
           if (dialog.open() == Window.OK) {
             list.get(index).name = dialog.getName();
@@ -371,12 +388,12 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
    * TableItem(table, SWT.NULL); item.setText(0, currentTableItems[i]); item.setText(1, currentTableItems[i + 1]); } }
    */
 
-  private void refreshTable() {
+  private void refreshTableColumns() {
     TableColumn[] columns = v.getTable().getColumns();
     System.out.println(columns);
-    v.getTable().removeAll();
+    // v.getTable().removeAll();
     for (TableColumn tc : columns) {
-      TableColumn[] x = v.getTable().getColumns();
+      tc.dispose();
 
     }
     for (TableColumn tc : columns) {
@@ -384,6 +401,11 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
     }
 
     createColumns(v, columnsNumber);
+    // v.setContentProvider(ArrayContentProvider.getInstance());
+    v.setInput(createModel(columnsNumber, rowsNumber));
+  }
+
+  private void refreshTableRows() {
     v.setContentProvider(ArrayContentProvider.getInstance());
     v.setInput(createModel(columnsNumber, rowsNumber));
   }
@@ -413,7 +435,7 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
         if (event.getNewValue() instanceof String) {
           if (!event.getNewValue().toString().isEmpty()) {
             columnsNumber = Integer.parseInt((String) event.getNewValue());
-            refreshTable();
+            refreshTableColumns();
           }
         }
 
@@ -432,6 +454,22 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
     rowsFieldEditor.setValidRange(1, 50);
     rowsNumber = doGetPreferenceStore().getInt("rowField");
     rowsFieldEditor.setStringValue(String.valueOf(rowsNumber));
+    rowsFieldEditor.setPropertyChangeListener(new IPropertyChangeListener() {
+
+      @Override
+      public void propertyChange(PropertyChangeEvent event) {
+        System.out.println(event.getNewValue());
+        Class<? extends Object> a = event.getNewValue().getClass();
+        if (event.getNewValue() instanceof String) {
+          if (!event.getNewValue().toString().isEmpty()) {
+            rowsNumber = Integer.parseInt((String) event.getNewValue());
+            refreshTableRows();
+          }
+        }
+
+      }
+
+    });
 
     // labelControl = rowsFieldEditor.getLabelControl(group);
     // labelControl.setLayoutData(layoutData);
@@ -459,13 +497,13 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
   }
 
   private List<List<TitleBlockCell>> createModel(int nrCol, int nrRows) {
-    List<TitleBlockCell> tbcCell = new ArrayList<>();
-    List<List<TitleBlockCell>> tccMatrix = new ArrayList<>();
-    for (int i = 0; i < nrCol; i++) {
-      tbcCell.add(new TitleBlockCell("insert", "content"));
-    }
 
+    List<List<TitleBlockCell>> tccMatrix = new ArrayList<>();
     for (int i = 0; i < nrRows; i++) {
+      List<TitleBlockCell> tbcCell = new ArrayList<>();
+      for (int j = 0; j < nrCol; j++) {
+        tbcCell.add(new TitleBlockCell("insert", "content"));
+      }
       tccMatrix.add(tbcCell);
     }
 
@@ -474,6 +512,10 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
   }
 
   private void createColumns(TableViewer viewer, int nrColumns) {
+    Point size = viewer.getTable().getSize();
+    System.out.println("X este: " + size.x);
+    System.out.println("Y este: " + size.y);
+
     final int[] bounds = { 100, 100, 100, 100 };
     List<String> columnHeadings = new ArrayList<>();
     for (int i = 0; i < nrColumns; i++) {
@@ -484,15 +526,20 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
   }
 
   private void createColumn(TableViewer v, final String title, final int bound, int index) {
-    TableViewerColumn column = createTableViewerColumn(v, title, bound);
+    // TableViewerColumn column = createTableViewerColumn(v, title, bound);
+    TableViewerColumn column = createTableViewerColumn(v, title, 200);
+
     column.setLabelProvider(new StyledCellLabelProvider() {
       @Override
       public void update(final ViewerCell cell) {
         List<TitleBlockCell> lst = (List<TitleBlockCell>) cell.getElement();
+        // if (index < columnsNumber) {
+
         final TitleBlockCell tbcell = lst.get(index);
         final String cellText = String.valueOf(tbcell);
         cell.setText(cellText);
       }
+      // }
     });
   }
 
