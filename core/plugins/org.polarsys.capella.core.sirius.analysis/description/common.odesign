@@ -1770,8 +1770,11 @@
       <filters xsi:type="filter:CompositeFilterDescription" name="hide.property.values.filter" label="%common.cdb.hide.property.values.filter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG']"/>
       </filters>
-      <filters xsi:type="filter:CompositeFilterDescription" name="hide.title.block.filter" label="%common.cdb.hide.title.blocks.filter">
-        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']"/>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.diagram.title.block.filter" label="%common.cdb.hide.diagram.title.blocks.filter">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']" semanticConditionExpression="aql:self.isDiagramTitleBlock()"/>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.element.title.block.filter" label="%common.cdb.hide.element.title.blocks.filter">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']" semanticConditionExpression="aql:not (self.isDiagramTitleBlock())"/>
       </filters>
       <concerns>
         <ownedConcernDescriptions name="default" filters="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@filters[name='hide.association.labels.filter'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@filters[name='hide.technical.interfaces.filter']"/>
@@ -4195,7 +4198,11 @@
             <containerView name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:element">
-                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="deleteCapellaElement" forceRefresh="true" id="org.polarsys.capella.core.sirius.analysis.delete.CapellaDeleteExternalAction"/>
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="deleteCapellaElement" forceRefresh="true" id="org.polarsys.capella.core.sirius.analysis.delete.CapellaDeleteExternalAction">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:containerView">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.clearEAnnotations()"/>
+                  </subModelOperations>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
             <hook id="org.polarsys.capella.core.sirius.analysis.delete.CapellaDeleteActionHook"/>

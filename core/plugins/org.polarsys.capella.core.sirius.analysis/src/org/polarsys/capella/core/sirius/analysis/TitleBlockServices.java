@@ -85,6 +85,15 @@ public class TitleBlockServices {
     }
   }
 
+  public boolean isDiagramTitleBlock(DAnnotation titleBlock) {
+    List<EObject> references = titleBlock.getReferences().stream().filter(x -> !(x instanceof DAnnotation))
+        .collect(Collectors.toList());
+    if (references.isEmpty()) {
+      return false;
+    }
+    return true;
+  }
+
   private void createTitleBlock(EObject elementView, EObject diagram) {
     DRepresentation representation = null;
     if ((diagram instanceof DRepresentation)) {
@@ -223,13 +232,14 @@ public class TitleBlockServices {
       list = representation.getEAnnotations().stream().filter(x -> x.getSource().equals(TITLE_BLOCK))
           .collect(Collectors.toList());
       deleteDanglingTitleBlock(list, elementView);
+      // clearEAnnotations(elementView);
       list = list.stream().filter(x -> Objects.nonNull(x.getDetails().get(VISIBILITY)))
           .filter(x -> x.getDetails().get(VISIBILITY).equals(TRUE)).collect(Collectors.toList());
     }
     return list;
   }
 
-  public void deleteDanglingTitleBlock(List<DAnnotation> list, Object elementView) {
+  private void deleteDanglingTitleBlock(List<DAnnotation> list, Object elementView) {
     List<DAnnotation> deleteList = new ArrayList<DAnnotation>();
     for (DAnnotation annotation : list) {
       boolean hasExternalElementReference = false;
@@ -250,11 +260,41 @@ public class TitleBlockServices {
       }
       if (!(hasExternalElementReference)) {
         deleteList.add(annotation);
+        // for(obj : annotation.refe)
       }
     }
     deleteList = deleteList.stream().filter(x -> Objects.nonNull(x.getDetails().get(IS_ELEMENT_TITLE_BLOCK)))
         .filter(x -> x.getDetails().get(IS_ELEMENT_TITLE_BLOCK).equals(TRUE)).collect(Collectors.toList());
     CapellaServices.getService().removeElements(deleteList);
+  }
+
+  public void clearEAnnotations(Object elementView) {
+    List<DAnnotation> annotationsList = new ArrayList<>();
+    List<DDiagramElement> diagramElementsList = ((DSemanticDiagram) elementView).getOwnedDiagramElements();
+    if (!diagramElementsList.isEmpty()) {
+      for (DDiagramElement diagramElement : diagramElementsList) {
+        if (diagramElement.getTarget() instanceof DAnnotation) {
+          DAnnotation annotation = (DAnnotation) diagramElement.getTarget();
+          // annotationsList.add(annotation); // title block
+          if (!annotation.getReferences().isEmpty()) {
+            for (EObject titleBlockLine : annotation.getReferences()) {
+              if (titleBlockLine instanceof DAnnotation) {
+                annotationsList.add((DAnnotation) titleBlockLine); // title block lines
+                if (!((DAnnotation) titleBlockLine).getReferences().isEmpty()) {
+                  for (EObject titleBlockCell : ((DAnnotation) titleBlockLine).getReferences()) {
+                    if (titleBlockCell instanceof DAnnotation) {
+                      annotationsList.add((DAnnotation) titleBlockCell);
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    ((DSemanticDiagram) elementView).getEAnnotations().removeAll(annotationsList);
+    System.out.println("test");
   }
 
   public List<Object> getTitleBlockCellContent(EObject diagram, EObject cell, EObject containerView) {
