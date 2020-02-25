@@ -30,7 +30,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramGraphicalViewer;
@@ -90,7 +89,6 @@ import org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.diagram.helpers.DiagramHelper;
@@ -1834,32 +1832,5 @@ public class DiagramServices {
       CapellaServices.getService().forceRefresh((DDiagram) representation);
     }
   }
-
-  /**
-   * Return true if the diagram delete button should be displayed for the current element, false otherwise. The button
-   * is not displayed if the selected element is equal or an ancestor of the diagram target.
-   * 
-   * @param element
-   *          the semantic element
-   * @param containerView
-   *          the container view
-   * @return true if the diagram delete button should be displayed for the current element, false otherwise.
-   */
-  public boolean shouldDisplayDeleteButton(ModelElement element, DSemanticDecorator containerView) {
-    DDiagram diagramContainer = CapellaServices.getService().getDiagramContainer(containerView);
-
-    if (diagramContainer instanceof DSemanticDecorator) {
-      DSemanticDecorator diagram = (DSemanticDecorator) diagramContainer;
-      EObject diagramTarget = diagram.getTarget();
-      EObject semanticElement = element;
-
-      if (element instanceof Part) {
-        semanticElement = ((Part) element).getAbstractType();
-      }
-
-      return !EcoreUtil.isAncestor(semanticElement, diagramTarget);
-    }
-
-    return true;
-  }
+  
 }
