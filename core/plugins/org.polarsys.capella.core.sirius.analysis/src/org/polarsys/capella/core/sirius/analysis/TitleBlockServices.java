@@ -89,9 +89,9 @@ public class TitleBlockServices {
     List<EObject> references = titleBlock.getReferences().stream().filter(x -> !(x instanceof DAnnotation))
         .collect(Collectors.toList());
     if (references.isEmpty()) {
-      return false;
+      return true;
     }
-    return true;
+    return false;
   }
 
   private void createTitleBlock(EObject elementView, EObject diagram) {
@@ -260,7 +260,6 @@ public class TitleBlockServices {
       }
       if (!(hasExternalElementReference)) {
         deleteList.add(annotation);
-        // for(obj : annotation.refe)
       }
     }
     deleteList = deleteList.stream().filter(x -> Objects.nonNull(x.getDetails().get(IS_ELEMENT_TITLE_BLOCK)))
@@ -366,7 +365,7 @@ public class TitleBlockServices {
     return false;
   }
 
-  public List<DAnnotation> getAvailableTitleBlocksToInsert(final EObject elementView) {
+  public List<DAnnotation> getAvailableTitleBlocksToInsert(final EObject elementView, boolean isDiagramTitleBlock) {
     List<DAnnotation> result = new ArrayList<>();
     EList<DAnnotation> eList = ((DDiagram) elementView).getEAnnotations();
     for (DAnnotation elem : eList) {
@@ -374,10 +373,23 @@ public class TitleBlockServices {
         result.add(elem);
       }
     }
-    return result;
+    List<DAnnotation> finalResult = new ArrayList<>();
+    for (DAnnotation annotation : result) {
+      if (isDiagramTitleBlock) {
+        if (isDiagramTitleBlock(annotation)) {
+          finalResult.add(annotation);
+        }
+      } else {
+        if (!isDiagramTitleBlock(annotation)) {
+          finalResult.add(annotation);
+        }
+      }
+    }
+    return finalResult;
   }
 
-  public List<DAnnotation> getInitialSelectionOfShowHideTitleBlocks(final EObject elementView) {
+  public List<DAnnotation> getInitialSelectionOfShowHideTitleBlocks(final EObject elementView,
+      boolean isDiagramTitleBlock) {
     List<DAnnotation> result = new ArrayList<>(1);
     DSemanticDiagram diagram = (DSemanticDiagram) CapellaServices.getService().getDiagramContainer(elementView);
     if (elementView.equals(diagram)) {
@@ -392,10 +404,23 @@ public class TitleBlockServices {
         }
       }
     }
-    return result;
+    List<DAnnotation> finalResult = new ArrayList<>();
+    for (DAnnotation annotation : result) {
+      if (isDiagramTitleBlock) {
+        if (isDiagramTitleBlock(annotation)) {
+          finalResult.add(annotation);
+        }
+      } else {
+        if (!isDiagramTitleBlock(annotation)) {
+          finalResult.add(annotation);
+        }
+      }
+    }
+    return finalResult;
   }
 
-  public EObject showHideTitleBlocks(EObject context, List<DAnnotation> selectedTitleBlocks, DDiagram diagram) {
+  public EObject showHideTitleBlocks(EObject context, List<DAnnotation> selectedTitleBlocks, DDiagram diagram,
+      boolean isDiagram) {
     Map<DAnnotation, DDiagramElement> visibleElements = new HashMap<>();
     List<EObject> allNodes = new ArrayList<>();
     allNodes.addAll(((DSemanticDiagram) context).getOwnedDiagramElements());
@@ -417,8 +442,17 @@ public class TitleBlockServices {
         EObject container = me.getValue().eContainer();
         if (container instanceof DSemanticDiagram) {
           DAnnotation annotation = ((DAnnotation) (me.getValue().getTarget()));
-          annotation.getDetails().put(VISIBILITY, FALSE);
-          DiagramServices.getDiagramServices().removeAbstractDNodeView((DNodeContainer) me.getValue());
+          if (isDiagram) {
+            if (isDiagramTitleBlock(annotation)) {
+              annotation.getDetails().put(VISIBILITY, FALSE);
+              DiagramServices.getDiagramServices().removeAbstractDNodeView((DNodeContainer) me.getValue());
+            }
+          } else {
+            if (!isDiagramTitleBlock(annotation)) {
+              annotation.getDetails().put(VISIBILITY, FALSE);
+              DiagramServices.getDiagramServices().removeAbstractDNodeView((DNodeContainer) me.getValue());
+            }
+          }
         }
       }
     }
