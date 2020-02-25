@@ -29,6 +29,7 @@ import org.polarsys.capella.test.transition.ju.testcases.RootPropertyValueTestCa
 import org.polarsys.capella.test.transition.ju.testcases.SkeletonElementsNames;
 import org.polarsys.capella.test.transition.ju.testcases.options.IncrementalModeTest;
 import org.polarsys.capella.test.transition.ju.testcases.options.MergeCategoryManagerTest;
+import org.polarsys.capella.test.transition.ju.testcases.sa.FunctionalTransitionInLib;
 
 import junit.framework.Test;
 
@@ -65,6 +66,7 @@ public class TransitionTestSuite extends BasicTestSuite {
     tests.add(new SaTransitionTestSuite());
     tests.add(new LaTransitionTestSuite());
     
+    tests.add(new FunctionalTransitionInLib());
     return tests;
   }
 
