@@ -188,7 +188,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.sourceNode.target.dndCBComponent(elementView.sourceNode.target.eContainer(),containerView.target)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="capellaElement" precondition="aql:element.shouldDisplayDeleteButton(containerView)" forceRefresh="true">
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="capellaElement"  forceRefresh="true">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -504,7 +504,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="capellaElement" precondition="aql:element.shouldDisplayDeleteButton(containerView)">
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="capellaElement" >
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -1095,7 +1095,7 @@
               <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:arg0"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="capellaElement" precondition="aql:element.shouldDisplayDeleteButton(containerView)">
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="capellaElement" >
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -1865,7 +1865,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.sourceNode.target.dndDFBAbstractFunction(elementView.sourceNode.target.eContainer(),containerView.target)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="capellaElement" precondition="aql:element.shouldDisplayDeleteButton(containerView)">
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="capellaElement" >
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -2105,7 +2105,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="capellaElement" precondition="aql:element.shouldDisplayDeleteButton(containerView)">
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="capellaElement" >
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -3559,7 +3559,7 @@
               <finishingEndPredecessor name="messageEndAfter"/>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="delete capella elements OA" precondition="aql:element.shouldDisplayDeleteButton(containerView)">
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="delete capella elements OA" >
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
