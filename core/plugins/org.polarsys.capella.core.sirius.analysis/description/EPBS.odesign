@@ -502,7 +502,7 @@
               <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:arg0"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="delete a CI" precondition="aql:element.shouldDisplayDeleteButton(containerView)">
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="delete a CI" >
             <element name="element"/>
             <elementView name="view"/>
             <containerView name="containerView"/>
@@ -839,7 +839,7 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="delete Configuration Item" precondition="aql:element.shouldDisplayDeleteButton(containerView)">
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="delete Configuration Item" >
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>

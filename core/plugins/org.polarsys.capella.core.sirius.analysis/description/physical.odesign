@@ -533,7 +533,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.sourceNode.target.dndDFBAbstractFunction(elementView.sourceNode.target.eContainer(),containerView.target)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="delete SF" precondition="aql:element.shouldDisplayDeleteButton(containerView)" forceRefresh="true">
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="delete SF"  forceRefresh="true">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -1171,7 +1171,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="delete SF" precondition="aql:element.shouldDisplayDeleteButton(containerView)">
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="delete SF" >
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -1727,7 +1727,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.sourceNode.target.dndCBComponent(elementView.sourceNode.target.eContainer(),containerView.target)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="Physical Component" precondition="aql:element.shouldDisplayDeleteButton(containerView)">
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="Physical Component" >
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -3156,7 +3156,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element.dndABComponent(newContainerView)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="delete SF" precondition="aql:element.shouldDisplayDeleteButton(containerView)">
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="delete SF" >
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
