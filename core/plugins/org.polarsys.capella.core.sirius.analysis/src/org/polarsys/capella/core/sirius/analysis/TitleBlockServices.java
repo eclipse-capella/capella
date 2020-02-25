@@ -80,7 +80,7 @@ public class TitleBlockServices {
   }
 
   public void createElementTitleBlock(EObject elementView, EObject diagram) {
-    if (!(elementView instanceof DSemanticDiagram)) {
+    if (!(elementView instanceof DSemanticDiagram) && isUniqueElementTitleBlock(elementView, diagram)) {
       createTitleBlock(elementView, diagram);
     }
   }
@@ -267,33 +267,21 @@ public class TitleBlockServices {
     CapellaServices.getService().removeElements(deleteList);
   }
 
-  public void clearEAnnotations(Object elementView) {
+  public void clearEAnnotations(Object elementView, DAnnotation element) {
     List<DAnnotation> annotationsList = new ArrayList<>();
-    List<DDiagramElement> diagramElementsList = ((DSemanticDiagram) elementView).getOwnedDiagramElements();
-    if (!diagramElementsList.isEmpty()) {
-      for (DDiagramElement diagramElement : diagramElementsList) {
-        if (diagramElement.getTarget() instanceof DAnnotation) {
-          DAnnotation annotation = (DAnnotation) diagramElement.getTarget();
-          // annotationsList.add(annotation); // title block
-          if (!annotation.getReferences().isEmpty()) {
-            for (EObject titleBlockLine : annotation.getReferences()) {
-              if (titleBlockLine instanceof DAnnotation) {
-                annotationsList.add((DAnnotation) titleBlockLine); // title block lines
-                if (!((DAnnotation) titleBlockLine).getReferences().isEmpty()) {
-                  for (EObject titleBlockCell : ((DAnnotation) titleBlockLine).getReferences()) {
-                    if (titleBlockCell instanceof DAnnotation) {
-                      annotationsList.add((DAnnotation) titleBlockCell);
-                    }
-                  }
-                }
-              }
+    for (EObject titleBlockLine : element.getReferences()) {
+      if (titleBlockLine instanceof DAnnotation) {
+        annotationsList.add((DAnnotation) titleBlockLine); // title block lines
+        if (!((DAnnotation) titleBlockLine).getReferences().isEmpty()) {
+          for (EObject titleBlockCell : ((DAnnotation) titleBlockLine).getReferences()) {
+            if (titleBlockCell instanceof DAnnotation) {
+              annotationsList.add((DAnnotation) titleBlockCell);
             }
           }
         }
       }
     }
     ((DSemanticDiagram) elementView).getEAnnotations().removeAll(annotationsList);
-    System.out.println("test");
   }
 
   public List<Object> getTitleBlockCellContent(EObject diagram, EObject cell, EObject containerView) {
@@ -489,6 +477,23 @@ public class TitleBlockServices {
           .filter(x -> x.getReferences().size() == 2).collect(Collectors.toList());
     }
     return (result.size() == 0);
+  }
+
+  public boolean isUniqueElementTitleBlock(Object elementView, EObject diagram) {
+    Collection<DAnnotation> result = new ArrayList<>();
+    if ((diagram instanceof DRepresentation)) {
+      DRepresentation representation = (DRepresentation) diagram;
+      result = representation.getEAnnotations().stream().filter(x -> x.getSource().equals(TITLE_BLOCK))
+          .collect(Collectors.toList());
+      for (DAnnotation annotation : result) {
+        for (EObject reference : annotation.getReferences()) {
+          if (reference == ((DNodeList) elementView).getTarget()) {
+            return false;
+          }
+        }
+      }
+    }
+    return true;
   }
 
 }

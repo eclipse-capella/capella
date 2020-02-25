@@ -3173,26 +3173,23 @@
                   </style>
                 </conditionnalStyles>
               </subNodeMappings>
-              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:diagram.getTitleBlockCellLabel(self)" widthComputationExpression="10" heightComputationExpression="5">
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:diagram.getTitleBlockCellLabel(self)" widthComputationExpression="10" heightComputationExpression="5" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_TitleBlock_Gray']">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
                 <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.2"/>
               </style>
             </subContainerMappings>
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="1" showIcon="false" labelExpression="" hideLabelByDefault="true">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="1" showIcon="false" labelExpression="" hideLabelByDefault="true" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_TitleBlock_Gray']">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
             </style>
           </subContainerMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="2" labelSize="9" showIcon="false" labelExpression="" hideLabelByDefault="true">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="2" labelSize="9" showIcon="false" labelExpression="" hideLabelByDefault="true" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_TitleBlock_Gray']">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
         </containerMappings>
         <toolSections name="Classes">
@@ -4244,7 +4241,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:element">
                 <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="deleteCapellaElement" forceRefresh="true" id="org.polarsys.capella.core.sirius.analysis.delete.CapellaDeleteExternalAction">
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:containerView">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.clearEAnnotations()"/>
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.clearEAnnotations(element)"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -20333,5 +20330,6 @@
     <entries xsi:type="description:UserFixedColor" red="234" green="234" blue="234" name="_CAP_Unset_Gray_min"/>
     <entries xsi:type="description:UserFixedColor" red="128" green="128" blue="128" name="_CAP_Unset_Gray_Border"/>
     <entries xsi:type="description:UserFixedColor" red="0" green="0" blue="0" name="_CAP_Unset_Gray_Label"/>
+    <entries xsi:type="description:UserFixedColor" red="230" green="230" blue="230" name="_CAP_TitleBlock_Gray"/>
   </userColorsPalettes>
 </description:Group>
