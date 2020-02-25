@@ -56,8 +56,6 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
   private Combo comboSearchPattern;
   private Label labelForComboSearchPattern;
 
-  private Map<CapellaSearchField, Button> mapSearchFieldToCheckbox = new EnumMap<>(CapellaSearchField.class);
-
   private Label labelRegex;
   private CLabel labelValidationStatus;
   private ContentAssistCommandAdapter comboSearchPatternRegexContentAssist;
@@ -228,8 +226,9 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
 
     qGrp.setLayoutData(gdGrp);
     qGrp.setText(CapellaSearchConstants.SearchFor_Label);
-    CapellaLeftSearchForContainerArea leftCont = new CapellaLeftSearchForContainerArea(qGrp);
-    CapellaRightSearchForContainerArea rightCont = new CapellaRightSearchForContainerArea(qGrp, leftCont);
+    
+    CapellaLeftSearchForContainerArea leftCont = new CapellaLeftSearchForContainerArea(qGrp, capellaSearchSettings);
+    CapellaRightSearchForContainerArea rightCont = new CapellaRightSearchForContainerArea(qGrp, leftCont, capellaSearchSettings);
     leftCont.setOtherSideArea(rightCont);
     createFiltercontainer(qGrp);
   }
@@ -278,7 +277,7 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
         String[] previousSearchPatterns = previousSearchSettings.stream() //
             .map(CapellaSearchSettings::getTextPattern) //
             .toArray(String[]::new);
-        comboSearchPattern.setItems(previousSearchPatterns);
+        // comboSearchPattern.setItems(previousSearchPatterns); todo fix
         comboSearchPattern.select(0);
         applySearchSettings(previousSearchSettings.get(0));
       }
@@ -296,18 +295,6 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
     capellaSearchSettings.setCaseSensitive(checkboxCaseSensitive.getSelection());
     capellaSearchSettings.setRegExSearch(checkboxRegex.getSelection());
     capellaSearchSettings.setWholeWord(checkboxWholeWord.getSelection());
-
-    capellaSearchSettings.clearSearchFields();
-    for (Entry<CapellaSearchField, Button> entry : mapSearchFieldToCheckbox.entrySet()) {
-      CapellaSearchField capellaSearchField = entry.getKey();
-      Button searchFieldCheckbox = entry.getValue();
-      if (searchFieldCheckbox.getSelection()) {
-        capellaSearchSettings.addSearchField(capellaSearchField);
-      }
-    }
-    capellaSearchSettings.addSearchField(CapellaSearchField.NAME);
-    capellaSearchSettings.addSearchField(CapellaSearchField.DESCRIPTION);
-    capellaSearchSettings.addSearchField(CapellaSearchField.SUMMARY);
 
     capellaSearchSettings.clearProjects();
     for (Object checkedElement : getProjectsFromWorkspace()) {

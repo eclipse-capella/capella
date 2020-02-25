@@ -33,6 +33,7 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.PatternFilter;
 import org.eclipse.ui.progress.IProgressService;
 import org.polarsys.capella.core.ui.search.CapellaSearchConstants;
+import org.polarsys.capella.core.ui.search.CapellaSearchSettings;
 import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 
 public abstract class AbstractCapellaSearchForContainerArea {
@@ -48,10 +49,12 @@ public abstract class AbstractCapellaSearchForContainerArea {
   protected Group parentGroup;
   protected int participantsCheckStrategy = SWT.MULTI;
   protected AbstractCapellaSearchForContainerArea otherSideArea;
+  protected CapellaSearchSettings capellaSearchSettings;
 
-  public AbstractCapellaSearchForContainerArea(Group parent, AbstractCapellaSearchForContainerArea area) {
+  public AbstractCapellaSearchForContainerArea(Group parent, AbstractCapellaSearchForContainerArea area, CapellaSearchSettings settings) {
     parentGroup = parent;
     otherSideArea = area;
+    capellaSearchSettings = settings;
     createContent();
   }
 

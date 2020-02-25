@@ -28,7 +28,9 @@ public class CapellaSearchSettings {
   private String replaceTextPattern = null;
   private Set<String> projects = new HashSet<>();
   private Set<CapellaSearchField> capellaSearchFields = new HashSet<>();
-
+  private Set<Object> searchAttributes = new HashSet<>();
+  private Set<Object> searchMetaClasses = new HashSet<>();
+  
   public void addProject(String name) {
     projects.add(name);
   }
@@ -45,6 +47,8 @@ public class CapellaSearchSettings {
     projects.clear();
   }
 
+  
+  /* to remove start */
   public void addSearchField(CapellaSearchField searchField) {
     capellaSearchFields.add(searchField);
   }
@@ -60,6 +64,7 @@ public class CapellaSearchSettings {
   public boolean containSearchField(CapellaSearchField searchField) {
     return capellaSearchFields.contains(searchField);
   }
+  /* to remove end */
 
   public boolean isCaseSensitive() {
     return isCaseSensitive;
@@ -99,6 +104,22 @@ public class CapellaSearchSettings {
 
   public void setReplaceTextPattern(String replaceTextPattern) {
     this.replaceTextPattern = replaceTextPattern;
+  }
+
+  public Set<Object> getSearchAttributes() {
+    return searchAttributes;
+  }
+
+  public void setSearchAttributes(Set<Object> searchAttributes) {
+    this.searchAttributes = searchAttributes;
+  }
+
+  public Set<Object> getSearchMetaClasses() {
+    return searchMetaClasses;
+  }
+
+  public void setSearchMetaClasses(Set<Object> searchMetaClasses) {
+    this.searchMetaClasses = searchMetaClasses;
   }
 
   public IStatus validate() {

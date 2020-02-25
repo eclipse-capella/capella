@@ -17,11 +17,12 @@ import org.eclipse.jface.viewers.ICheckStateListener;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.ui.dialogs.PatternFilter;
+import org.polarsys.capella.core.ui.search.CapellaSearchSettings;
 
 public class CapellaLeftSearchForContainerArea extends AbstractCapellaSearchForContainerArea {
 
-  public CapellaLeftSearchForContainerArea(Group parent) {
-    super(parent, null);
+  public CapellaLeftSearchForContainerArea(Group parent, CapellaSearchSettings settings) {
+    super(parent, null, settings);
   }
 
   @Override
@@ -83,6 +84,8 @@ public class CapellaLeftSearchForContainerArea extends AbstractCapellaSearchForC
           else
             checkedElements.remove(obj);
         }
+        
+        capellaSearchSettings.setSearchMetaClasses(checkedElements);
         // refresh the attributes in right panel
         if(otherSideArea != null) {
           otherSideArea.filteredTree.getViewer().refresh();

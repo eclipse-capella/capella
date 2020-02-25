@@ -22,6 +22,9 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.SubMonitor;
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.search.ui.ISearchQuery;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.viewer.CapellaNavigatorContentProvider;
@@ -36,7 +39,7 @@ public class CapellaSearchQuery implements ISearchQuery {
   public CapellaSearchQuery(CapellaSearchSettings capellaSearchSettings) {
     this.capellaSearchSettings = capellaSearchSettings;
   }
-  
+
   @Override
   public IStatus run(IProgressMonitor monitor) {
     capellaSearchResult.removeAll();
@@ -46,7 +49,8 @@ public class CapellaSearchQuery implements ISearchQuery {
       Set<String> selectedProjects = capellaSearchSettings.getProjects();
 
       SubMonitor subMonitor = SubMonitor.convert(monitor, selectedProjects.size());
-      subMonitor.setTaskName(String.format(CapellaSearchConstants.SearchJob_Title, capellaSearchSettings.getTextPattern()));
+      subMonitor
+          .setTaskName(String.format(CapellaSearchConstants.SearchJob_Title, capellaSearchSettings.getTextPattern()));
       for (String projectName : selectedProjects) {
         subMonitor.subTask(String.format(CapellaSearchConstants.SearchJob_SubTitle, projectName));
         IProject project = workspaceRoot.getProject(projectName);
@@ -55,8 +59,8 @@ public class CapellaSearchQuery implements ISearchQuery {
       }
       return Status.OK_STATUS;
     } catch (PatternSyntaxException e) {
-      String message = String.format(CapellaSearchConstants.CapellaSearchQuery_Search_Pattern_Not_Validated_Message, e.getPattern(),
-          e.getDescription());
+      String message = String.format(CapellaSearchConstants.CapellaSearchQuery_Search_Pattern_Not_Validated_Message,
+          e.getPattern(), e.getDescription());
       return new Status(IStatus.ERROR, Activator.PLUGIN_ID, message);
     } catch (Exception e) {
       String message = e.getMessage();
@@ -65,21 +69,26 @@ public class CapellaSearchQuery implements ISearchQuery {
   }
 
   private void search(Pattern pattern, Object element, IProject project) {
-    capellaSearchSettings.getSearchFields().forEach(searchField -> {
-      String text = searchField.getText(element);
-      if (text != null) {
-        String[] lines = text.split(System.lineSeparator());
-        for (int i = 0; i < lines.length; i++) {
-          String line = lines[i];
-          if (isMatchOccurrences(pattern, line)) {
-            CapellaSearchMatchEntry result = new CapellaSearchMatchEntry(element, text, project, searchField.getEAttribute(element));
-            capellaSearchResult.addMatch(result);
-            capellaSearchResult.getTreeData().addElement(element);
-          }
+    if (element instanceof EObject) {
+      EObject eObj = (EObject) element;
+      capellaSearchSettings.getSearchMetaClasses().forEach(metaObj -> {
+        EClass eCls = (EClass) metaObj;
+        if (eObj.eClass().equals(eCls)) {
+          capellaSearchSettings.getSearchAttributes().forEach(attrObj -> {
+            EAttribute attribute = (EAttribute) attrObj;
+            Object attrValue = eObj.eGet(attribute);
+            if (attrValue instanceof String) {
+              String attrString = (String) attrValue;
+              if (isMatchOccurrences(pattern, attrString)) {
+                CapellaSearchMatchEntry result = new CapellaSearchMatchEntry(element, attrString, project, attribute);
+                capellaSearchResult.addMatch(result);
+                capellaSearchResult.getTreeData().addElement(element);
+              }
+            }
+          });
         }
-      }
-    });
-
+      });
+    }
     Object[] children = contentProvider.getChildren(element);
     for (int i = 0; i < children.length; i++) {
       search(pattern, children[i], project);

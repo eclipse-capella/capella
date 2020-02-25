@@ -24,8 +24,8 @@ public abstract class AbstractCapellaHistory {
   protected static final String SECTION_HISTORY_PREFIX = "history.replace";
   protected static final String SECTION_HISTORY_COUNT = "history.count.replace";
 
-  protected static final String SECTION_SEARCH_FIELD_PREFIX = "field.replace";
-  protected static final String SECTION_SEARCH_FIELD_COUNT = "field.count.replace";
+  protected static final String SECTION_SEARCH_ATTRIBUTE_PREFIX = "attribute.replace";
+  protected static final String SECTION_SEARCH_ATTRIBUTE_COUNT = "attribute.count.replace";
 
   protected static final String SECTION_SEARCH_PROJECT_PREFIX = "project.replace";
   protected static final String SECTION_SEARCH_PROJECT_COUNT = "project.count.replace";
@@ -60,9 +60,9 @@ public abstract class AbstractCapellaHistory {
         for (int i = 0; i < projectsCount; i++) {
           searchSettings.addProject(searchHistorySection.get(SECTION_SEARCH_PROJECT_PREFIX + i));
         }
-        int fieldsCount = searchHistorySection.getInt(SECTION_SEARCH_FIELD_COUNT);
+        int fieldsCount = searchHistorySection.getInt(SECTION_SEARCH_ATTRIBUTE_COUNT);
         for (int i = 0; i < fieldsCount; i++) {
-          String searchFieldText = searchHistorySection.get(SECTION_SEARCH_FIELD_PREFIX + i);
+          String searchFieldText = searchHistorySection.get(SECTION_SEARCH_ATTRIBUTE_PREFIX + i);
           searchSettings.addSearchField(CapellaSearchField.valueOf(searchFieldText));
         }
       } catch (NumberFormatException e) {
@@ -135,10 +135,10 @@ public abstract class AbstractCapellaHistory {
 
       int fieldsCount = 0;
       for (CapellaSearchField searchField : capellaSearchSettings.getSearchFields()) {
-        searchHistorySection.put(SECTION_SEARCH_FIELD_PREFIX + fieldsCount, searchField.toString());
+        searchHistorySection.put(SECTION_SEARCH_ATTRIBUTE_PREFIX + fieldsCount, searchField.toString());
         fieldsCount++;
       }
-      searchHistorySection.put(SECTION_SEARCH_FIELD_COUNT, fieldsCount);
+      searchHistorySection.put(SECTION_SEARCH_ATTRIBUTE_COUNT, fieldsCount);
     }
   }
   

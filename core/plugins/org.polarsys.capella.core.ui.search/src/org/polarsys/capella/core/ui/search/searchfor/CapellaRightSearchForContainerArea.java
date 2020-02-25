@@ -10,18 +10,23 @@
  *******************************************************************************/
 package org.polarsys.capella.core.ui.search.searchfor;
 
+import org.eclipse.jface.viewers.CheckStateChangedEvent;
+import org.eclipse.jface.viewers.CheckboxTreeViewer;
+import org.eclipse.jface.viewers.ICheckStateListener;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.ui.dialogs.PatternFilter;
+import org.polarsys.capella.core.ui.search.CapellaSearchSettings;
 
 public class CapellaRightSearchForContainerArea extends AbstractCapellaSearchForContainerArea {
-  public CapellaRightSearchForContainerArea(Group parent, AbstractCapellaSearchForContainerArea leftArea) {
-    super(parent, leftArea);
+  public CapellaRightSearchForContainerArea(Group parent, AbstractCapellaSearchForContainerArea leftArea,
+      CapellaSearchSettings settings) {
+    super(parent, leftArea, settings);
   }
 
   @Override
   protected AbstractMetaModelParticipantsItemProvider getPartictipantsItemProvider() {
-    if(partictipantsItemProvider == null)
+    if (partictipantsItemProvider == null)
       return new AttributesParticipantsItemProvider(otherSideArea);
     return partictipantsItemProvider;
   }
@@ -42,8 +47,28 @@ public class CapellaRightSearchForContainerArea extends AbstractCapellaSearchFor
 
       private void updateDisplayedElements(Object[] elements) {
         for (Object displayedElement : elements) {
-          displayedElements.add( displayedElement);
+          displayedElements.add(displayedElement);
         }
+      }
+    };
+  }
+
+  @Override
+  protected void setCheckSubtree() {
+    ((CheckboxTreeViewer) filteredTree.getViewer()).addCheckStateListener(getCheckStateListener());
+  }
+
+  private ICheckStateListener getCheckStateListener() {
+    return new ICheckStateListener() {
+      public void checkStateChanged(final CheckStateChangedEvent event) {
+        boolean state = event.getChecked();
+        Object element = event.getElement();
+        if (state == true)
+          checkedElements.add(element);
+        else
+          checkedElements.remove(element);
+        
+        capellaSearchSettings.setSearchAttributes(checkedElements);
       }
     };
   }
