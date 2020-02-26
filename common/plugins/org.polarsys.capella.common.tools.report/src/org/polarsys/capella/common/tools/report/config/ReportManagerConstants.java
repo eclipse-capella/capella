@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.polarsys.capella.common.tools.report.config;
 
-import org.eclipse.core.runtime.QualifiedName;
-
 @SuppressWarnings("nls")
 public interface ReportManagerConstants {
   

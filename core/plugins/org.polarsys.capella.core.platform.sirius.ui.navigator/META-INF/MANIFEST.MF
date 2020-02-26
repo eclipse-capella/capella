@@ -29,7 +29,6 @@ Require-Bundle: org.eclipse.amalgam.explorer.activity.ui,
  org.polarsys.capella.core.model.handler;visibility:=reexport,
  org.polarsys.capella.core.platform.sirius.adapter,
  org.polarsys.capella.core.platform.sirius.ui.actions,
- org.polarsys.capella.core.platform.sirius.ui.project,
  org.polarsys.capella.core.preferences,
  org.polarsys.capella.core.sirius.analysis,
  org.polarsys.capella.core.ui.properties,
@@ -42,7 +41,9 @@ Require-Bundle: org.eclipse.amalgam.explorer.activity.ui,
  org.polarsys.capella.common.tools.report.appenders.usage;visibility:=reexport,
  org.eclipse.jface,
  org.eclipse.ui.workbench,
- org.polarsys.capella.common
+ org.polarsys.capella.common,
+ org.polarsys.capella.core.sirius.ui,
+ org.polarsys.capella.core.platform.sirius.ui.project
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.platform.sirius.ui.navigator,
  org.polarsys.capella.core.platform.sirius.ui.navigator.actions,
