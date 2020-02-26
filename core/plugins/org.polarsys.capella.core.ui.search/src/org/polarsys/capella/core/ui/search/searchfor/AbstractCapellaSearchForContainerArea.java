@@ -40,7 +40,7 @@ public abstract class AbstractCapellaSearchForContainerArea {
   protected Button selectAllButton;
   protected Button deselectAllButton;
   protected Button defaultButton;
-  protected AbstractMetaModelParticipantsItemProvider partictipantsItemProvider;
+  protected static AbstractMetaModelParticipantsItemProvider partictipantsItemProvider;
 
   protected Set<Object> checkedElements = new HashSet<Object>();
   protected Set<Object> displayedElements = new HashSet<Object>();
