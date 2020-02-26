@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.core.platform.sirius.ui.preferences;
+package org.polarsys.capella.core.sirius.analysis.preferences;
 
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.polarsys.capella.core.commands.preferences.service.AbstractPreferencesInitializer;
@@ -27,8 +27,7 @@ public class TitleBlockPreferencesInitializer extends AbstractPreferencesInitial
     preferenceStore.setDefault("columnField1", 2);
     preferenceStore.setDefault("rowField", 2);
     preferenceStore.setDefault("tableTitleBlock", "");
-    preferenceStore.setDefault("defaultTitleBlock", false);
-
+    preferenceStore.setDefault("defaultTitleBlock", true);
   }
 
 }

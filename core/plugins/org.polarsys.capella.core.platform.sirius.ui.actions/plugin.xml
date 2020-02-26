@@ -86,12 +86,6 @@
             id="org.polarsys.capella.core.platform.sirius.ui.actions.preferences.CapellaValidationPreferences"
             name="%ModelValidationPreferencePage_Name">
       </page>
-      <page 
-      category="org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page"
-      class="org.polarsys.capella.core.platform.sirius.ui.preferences.TitleBlockPreferencePage"
-      id="org.polarsys.capella.core.platform.sirius.ui.actions.preferences.TitleBlockPage"
-      name="%TitleBlock_Page_Name">
-      </page>
    </extension>
    
    <extension
@@ -105,9 +99,7 @@
       <initializer
             class="org.polarsys.capella.core.model.preferences.DeletePreferences">
       </initializer>
-      <initializer
-      		 class="org.polarsys.capella.core.platform.sirius.ui.preferences.TitleBlockPreferencesInitializer">
-      </initializer>
+     
    </extension>
    <!-- shall not be activated : not fully tested -->
    <!--extension

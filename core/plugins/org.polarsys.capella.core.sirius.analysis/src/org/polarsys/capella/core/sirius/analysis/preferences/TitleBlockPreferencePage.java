@@ -8,15 +8,19 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.core.platform.sirius.ui.preferences;
+package org.polarsys.capella.core.sirius.analysis.preferences;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.core.resources.ProjectScope;
+import org.eclipse.jface.action.Action;
+import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.layout.TableColumnLayout;
 import org.eclipse.jface.preference.BooleanFieldEditor;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.preference.IntegerFieldEditor;
+import org.eclipse.jface.util.ConfigureColumns;
 import org.eclipse.jface.util.IPropertyChangeListener;
 import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.jface.viewers.ArrayContentProvider;
@@ -35,6 +39,7 @@ import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.jface.viewers.TableViewerEditor;
 import org.eclipse.jface.viewers.TableViewerFocusCellManager;
 import org.eclipse.jface.viewers.ViewerCell;
+import org.eclipse.jface.window.SameShellProvider;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Point;
@@ -49,6 +54,8 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.polarsys.capella.core.commands.preferences.service.AbstractDefaultPreferencePage;
+import org.polarsys.capella.core.commands.preferences.service.PreferenceField;
+import org.polarsys.capella.core.commands.preferences.service.UserProfileModeEnum;
 import org.polarsys.capella.core.preferences.Activator;
 
 public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
@@ -83,6 +90,9 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
   TableViewer v;
   private Table table;
 
+  private PreferenceField defaultTitleBlockFieldEditor;
+  private TableViewerColumn column;
+  private int activeColumn = -1;
   Button button1;
   Button add_button;
   Button edit_button;
@@ -130,9 +140,13 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
   }
 
   private void createCheckBox() {
-    button1 = new Button(getFieldEditorParent(), SWT.CHECK);
-    button1.setText("Add by default Diagram TitleBlock");
-    button1.setSelection(doGetPreferenceStore().getBoolean("defaultTitleBlock"));
+    defaultTitleBlockFieldEditor = new PreferenceField("defaultTitleBlock", "Add by default Diagram TitleBlock",
+        getFieldEditorParent());
+    addField(defaultTitleBlockFieldEditor, UserProfileModeEnum.Expert, getFieldEditorParent(), ProjectScope.class);
+    /*
+     * button1 = new Button(getFieldEditorParent(), SWT.CHECK); button1.setText("Add by default Diagram TitleBlock");
+     * button1.setSelection(doGetPreferenceStore().getBoolean("defaultTitleBlock"));
+     */
     /*
      * enableMonitoringFieldEditor = new BooleanFieldEditor("defaultTitleBlock", "Add by default Diagram Title Block",
      * getFieldEditorParent()) {
@@ -235,7 +249,9 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
 
     createColumns(v, columnsNumber);
     v.setContentProvider(ArrayContentProvider.getInstance());
-    v.setInput(createModel(columnsNumber, rowsNumber));
+    // v.setInput(createModel(columnsNumber, rowsNumber));
+    v.setInput(createModel(2, 2));
+
     v.getTable().setLinesVisible(true);
     v.getTable().setHeaderVisible(true);
     GridData gridData = new GridData(GridData.FILL_BOTH);
@@ -249,6 +265,7 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
 
     System.out.println("Lalal:" + v.getTable().getGridLineWidth());
     System.out.println("Border: " + v.getTable().getBorderWidth());
+    addMenu(v);
 
     Listener treeListener = new Listener() {
       @Override
@@ -362,13 +379,15 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
       }
 
     });
+    addField(rowsFieldEditor);
+    addField(columnsFieldEditor);
 
   }
 
   @Override
   public boolean performOk() {
-    boolean x = button1.getSelection();
-    doGetPreferenceStore().setValue("defaultTitleBlock", button1.getSelection());
+
+    doGetPreferenceStore().setValue("defaultTitleBlock", defaultTitleBlockFieldEditor.getBooleanValue());
     doGetPreferenceStore().setValue("columnField1", columnsFieldEditor.getIntValue());
     doGetPreferenceStore().setValue("rowField", rowsFieldEditor.getIntValue());
     return super.performOk();
@@ -381,12 +400,15 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
    */
 
   private List<List<TitleBlockCell>> createModel(int nrCol, int nrRows) {
-
+    String[] cellsNameAndContent = { "Name", "aql:name", "Description", "aql:description", "Summary", "aql:summary",
+        "Documentation", "aql:documentation" };
+    int currentIndex = 0;
     List<List<TitleBlockCell>> tccMatrix = new ArrayList<>();
     for (int i = 0; i < nrRows; i++) {
       List<TitleBlockCell> tbcCell = new ArrayList<>();
       for (int j = 0; j < nrCol; j++) {
-        tbcCell.add(new TitleBlockCell("insert", "content"));
+        tbcCell.add(new TitleBlockCell(cellsNameAndContent[currentIndex], cellsNameAndContent[currentIndex + 1]));
+        currentIndex += 2;
       }
       tccMatrix.add(tbcCell);
     }
@@ -538,6 +560,105 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
     }
     column.setResizable(true);
     return viewerColumn;
+  }
+
+  private void addMenu(final TableViewer v) {
+    final MenuManager mgr = new MenuManager();
+
+    final Action insertEmailBefore = new Action("Insert E-Mail before") {
+      @Override
+      public void run() {
+        addEmailColumn(v, activeColumn);
+      }
+    };
+
+    final Action addRow = new Action("Add row") {
+      @Override
+      public void run() {
+        // addEmailColumn(v, activeColumn + 1);
+        rowsNumber += 1;
+        refreshTableRows();
+
+      }
+    };
+    final Action addColumnBefore = new Action("Add column before") {
+      @Override
+      public void run() {
+        removeEmailColumn(v);
+      }
+    };
+
+    final Action addColumnAfter = new Action("Add column after") {
+      @Override
+      public void run() {
+        // removeEmailColumn(v);
+        createColumn(v, "", 100, v.getTable().getColumnCount());
+        columnsNumber += 1;
+        refreshTableColumns();
+      }
+    };
+
+    final Action removeColumn = new Action("Remove column") {
+      @Override
+      public void run() {
+        DeleteRowOrColumnDialog dialog = new DeleteRowOrColumnDialog(getShell());
+        dialog.create();
+        if (dialog.open() == Window.OK) {
+
+        }
+      }
+    };
+
+    final Action removeRow = new Action("Remove row") {
+      @Override
+      public void run() {
+        DeleteRowOrColumnDialog dialog = new DeleteRowOrColumnDialog(getShell());
+        dialog.create();
+        if (dialog.open() == Window.OK) {
+
+        }
+
+      }
+    };
+
+    final Action configureColumns = new Action("Configure Columns...") {
+      @Override
+      public void run() {
+        ConfigureColumns.forTable(v.getTable(), new SameShellProvider(v.getControl()));
+      }
+    };
+
+    mgr.setRemoveAllWhenShown(true);
+    mgr.addMenuListener(manager -> {
+      if (v.getTable().getColumnCount() == 2) {
+        manager.add(addColumnAfter);
+        manager.add(removeColumn);
+        manager.add(addRow);
+        manager.add(removeRow);
+      } else {
+        manager.add(addColumnAfter);
+      }
+      manager.add(configureColumns);
+    });
+
+    v.getControl().setMenu(mgr.createContextMenu(v.getControl()));
+  }
+
+  private void removeEmailColumn(TableViewer v) {
+
+    column.getColumn().dispose();
+    v.refresh();
+  }
+
+  private void addEmailColumn(TableViewer v, int columnIndex) {
+    column = new TableViewerColumn(v, SWT.NONE, columnIndex);
+    column.getColumn().setText("E-Mail");
+    column.getColumn().setResizable(false);
+
+    v.refresh();
+
+    column.getColumn().setWidth(200);
+
   }
 
 }
