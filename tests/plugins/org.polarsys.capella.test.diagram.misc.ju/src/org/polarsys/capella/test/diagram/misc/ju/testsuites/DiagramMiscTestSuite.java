@@ -30,6 +30,8 @@ import org.polarsys.capella.test.diagram.misc.ju.testcases.InsertRemoveComponent
 import org.polarsys.capella.test.diagram.misc.ju.testcases.InterfacePortSizeTestCase;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.PABStyleChecksDiagramElements;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.StatusLineTestCase;
+import org.polarsys.capella.test.diagram.misc.ju.testcases.delete.DeleteFromModelContainerSemanticTarget;
+import org.polarsys.capella.test.diagram.misc.ju.testcases.delete.DeleteFromModelSemanticTarget;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 
@@ -64,6 +66,8 @@ public class DiagramMiscTestSuite extends BasicTestSuite {
     tests.add(new PABStyleChecksDiagramElements());
     tests.add(new DecompositionWizardTestCase());
     tests.add(new CheckPhysCompNatureOptionTestCase());
+    tests.add(new DeleteFromModelSemanticTarget());
+    tests.add(new DeleteFromModelContainerSemanticTarget());
     return tests;
   }
 }
