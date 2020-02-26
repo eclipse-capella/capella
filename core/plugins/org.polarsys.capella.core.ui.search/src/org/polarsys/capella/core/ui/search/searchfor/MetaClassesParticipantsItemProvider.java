@@ -16,22 +16,12 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.sirius.business.api.dialect.DialectManager;
-import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.DiagramPackage;
-import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
-import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
-import org.eclipse.sirius.viewpoint.impl.DRepresentationDescriptorImpl;
-import org.polarsys.capella.core.model.helpers.registry.CapellaPackageRegistry;
-import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 import org.polarsys.capella.core.ui.search.CapellaSearchConstants;
 
 public class MetaClassesParticipantsItemProvider extends AbstractMetaModelParticipantsItemProvider {
@@ -104,7 +94,6 @@ public class MetaClassesParticipantsItemProvider extends AbstractMetaModelPartic
   }
 
   public Set<Object> getEClassifiers() {
-    test();
     Set<Object> allDerivedReferences = new HashSet<>();
     for (String nsURI : EPackage.Registry.INSTANCE.keySet()) {
       if (nsURI.startsWith("http://www.polarsys.org/capella")) {
@@ -119,12 +108,7 @@ public class MetaClassesParticipantsItemProvider extends AbstractMetaModelPartic
     return allDerivedReferences;
   }
   
-  public void test() {
-    Collection<EPackage> pkgs = CapellaPackageRegistry.getAllCapellaPackages();
-    System.out.println(pkgs);
-  }
-
-  public Set<Object> getDiagramElements() {
+ public Set<Object> getDiagramElements() {
     Set<Object> result = new HashSet<Object>();
     result.add(DiagramPackage.eINSTANCE.getNote());
     result.add(ViewpointPackage.eINSTANCE.getDRepresentationDescriptor());
