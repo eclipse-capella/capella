@@ -16,7 +16,7 @@
       </vmArgsMac>
    </launcherArgs>
 
-   <windowImages/>
+   <windowImages i16="window_icons/Capella16x16.png" i32="window_icons/Capella32x32.png" i48="window_icons/Capella48x48.png" i64="window_icons/Capella64x64.png" i128="window_icons/Capella128x128.png" i256="window_icons/Capella256x256.png"/>
 
    <splash
       location="org.polarsys.capella.core.platform.sirius.ui.perspective" />

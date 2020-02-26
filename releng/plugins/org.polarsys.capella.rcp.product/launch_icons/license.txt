@@ -4,5 +4,5 @@ These followings icons are made available under the terms of the Eclipse Public 
 
 <icon file path> - <original eclipse plug-in> - <original file path>
 
-/launch_icons/Capella_launch_icon.ico - org.polarsys.capella.rcp - org.polarsys.capella.rcp/icons/Capella48x48.bmp
+/launch_icons/Capella_launch_icon.ico - org.polarsys.capella.rcp - org.polarsys.capella.rcp/icons/Capella256x256.png
 

@@ -4,15 +4,12 @@ These followings icons are made available under the terms of the Eclipse Public 
 
 <icon file path> - <original eclipse plug-in> - <original file path>
 
-/icons/Capella16x16_8bits.bmp - org.polarsys.capella.rcp - org.polarsys.capella.rcp/icons/Capella16x16_8bits.bmp
-/icons/Capella16x16.bmp - org.polarsys.capella.rcp - org.polarsys.capella.rcp/icons/Capella16x16.bmp
-/icons/Capella16x16.png - org.polarsys.capella.rcp - org.polarsys.capella.rcp/icons/Capella16x16.png
-/icons/Capella32x32.png - org.polarsys.capella.rcp - org.polarsys.capella.rcp/icons/Capella32x32.png
-/icons/Capella32x32_8bits.bmp - org.polarsys.capella.rcp - org.polarsys.capella.rcp/icons/Capella32x32_8bits.bmp
-/icons/Capella32x32.bmp - org.polarsys.capella.rcp - org.polarsys.capella.rcp/icons/Capella32x32.bmp
-/icons/Capella48x48.png - org.polarsys.capella.rcp - org.polarsys.capella.rcp/icons/Capella48x48.png
-/icons/Capella48x48_8bits.bmp - org.polarsys.capella.rcp - org.polarsys.capella.rcp/icons/Capella48x48_8bits.bmp
-/icons/Capella48x48.bmp - org.polarsys.capella.rcp - org.polarsys.capella.rcp/icons/Capella48x48.bmp
-/icons/Capella256x256.bmp - org.polarsys.capella.rcp - org.polarsys.capella.rcp/icons/Capella256x256.bmp
-/icons/intro-capella.png - org.polarsys.capella.rcp - org.polarsys.capella.rcp/icons/intro-capella.png
-/icons/CapellaAbout.png - org.polarsys.capella.rcp - org.polarsys.capella.rcp/icons/CapellaAbout.png
+
+/icons/Capella16x16.png - org.polarsys.capella.rcp - org.polarsys.capella.rcp/icons/Capella256x256.png
+/icons/Capella32x32.png - org.polarsys.capella.rcp - org.polarsys.capella.rcp/icons/Capella256x256.png
+/icons/Capella48x48.png - org.polarsys.capella.rcp - oorg.polarsys.capella.rcp/icons/Capella256x256.png
+/icons/Capella64x64.png - org.polarsys.capella.rcp - org.polarsys.capella.rcp/icons/Capella256x256.png
+/icons/Capella128x128.png - org.polarsys.capella.rcp - org.polarsys.capella.rcp/icons/Capella256x256.png
+/icons/Capella256x256.png - org.polarsys.capella.rcp - org.polarsys.capella.rcp/icons/Capella256x256.png
+/icons/intro-capella.png - org.polarsys.capella.rcp - org.polarsys.capella.rcp/icons/Capella256x256.png
+/icons/CapellaAbout.png - org.polarsys.capella.rcp - org.polarsys.capella.rcp/icons/Capella256x256.png
