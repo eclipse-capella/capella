@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.diagram.misc.ju.testcases;
+package org.polarsys.capella.test.diagram.misc.ju.testcases.delete;
 
 import java.util.Collection;
 
@@ -26,7 +26,6 @@ import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.core.data.pa.PhysicalFunction;
 import org.polarsys.capella.core.platform.sirius.clipboard.util.LayerUtil;
 import org.polarsys.capella.core.sirius.analysis.DiagramServices;
-import org.polarsys.capella.test.diagram.misc.ju.testcases.delete.AbstractDeleteFromModelTestCase;
 import org.polarsys.capella.test.framework.context.SessionContext;
 import org.polarsys.capella.test.framework.helpers.GuiActions;
 

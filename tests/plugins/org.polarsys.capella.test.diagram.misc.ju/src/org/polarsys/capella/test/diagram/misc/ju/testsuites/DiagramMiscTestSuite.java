@@ -25,13 +25,13 @@ import org.polarsys.capella.test.diagram.misc.ju.testcases.CheckPhysCompNatureOp
 import org.polarsys.capella.test.diagram.misc.ju.testcases.CloneDiagramTestCase;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.DDiagramEditorUndoRedoHandlerTest;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.DecompositionWizardTestCase;
-import org.polarsys.capella.test.diagram.misc.ju.testcases.DeleteFromModelContainerSemanticTarget;
-import org.polarsys.capella.test.diagram.misc.ju.testcases.DeleteFromModelSemanticTarget;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.GraphTest;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.InsertRemoveComponentsWithNoParts;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.InterfacePortSizeTestCase;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.PABStyleChecksDiagramElements;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.StatusLineTestCase;
+import org.polarsys.capella.test.diagram.misc.ju.testcases.delete.DeleteFromModelContainerSemanticTarget;
+import org.polarsys.capella.test.diagram.misc.ju.testcases.delete.DeleteFromModelSemanticTarget;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 
