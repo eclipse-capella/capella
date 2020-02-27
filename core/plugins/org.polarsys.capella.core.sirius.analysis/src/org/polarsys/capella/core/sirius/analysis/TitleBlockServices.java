@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.analysis;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -19,8 +20,11 @@ import java.util.Map.Entry;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import org.eclipse.core.runtime.FileLocator;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.internal.interpreter.FeatureInterpreter;
 import org.eclipse.sirius.diagram.AbstractDNode;
@@ -35,8 +39,10 @@ import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
+import org.eclipse.swt.graphics.Image;
 import org.polarsys.capella.core.data.information.impl.ClassImpl;
 import org.polarsys.capella.core.data.information.impl.DataPkgImpl;
+import org.polarsys.capella.core.sirius.analysis.activator.SiriusViewActivator;
 
 public class TitleBlockServices {
   private static TitleBlockServices service = null;
@@ -494,6 +500,16 @@ public class TitleBlockServices {
       }
     }
     return true;
+  }
+
+  public static Image getImage(Object object) {
+    DAnnotation annotation = (DAnnotation) object;
+    // if is diag ann
+    String imagePath = "/icons/full/obj16/TitleBlock_16.png";
+    URL url = FileLocator.find(SiriusViewActivator.getInstance().getBundle(), new Path(imagePath), null);
+
+    // org.polarsys.capella.core.sirius.analysis.activator.SiriusViewActivator.getPlugin()
+    return ImageDescriptor.createFromURL(url).createImage();
   }
 
 }
