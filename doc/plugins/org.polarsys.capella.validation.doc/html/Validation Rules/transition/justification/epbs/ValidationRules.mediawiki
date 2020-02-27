@@ -21,3 +21,10 @@
 |-
 | colspan="2"|This rule checks that a Configuration Item realizes at least one Physical Artifact.
 |}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/error.gif|ERROR]]
+|TJ_EPBS_04 - EPBS Architecture Realization 
+|-
+| colspan="2"|This rule ensures the realization consistency between EPBS Architecture and Physical Architecture.
+|}
