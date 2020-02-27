@@ -357,17 +357,10 @@ public class DragDropTest extends NavigatorEmptyProject {
     return create(container, FaPackage.Literals.FUNCTIONAL_CHAIN_REFERENCE);
   }
 
-  @SuppressWarnings("restriction")
   @Override
   protected void setUp() throws Exception {
     super.setUp();
-    // Deadlock because of Workbench Auto-Save Job, so we have to remove it
-    Job[] allJobs = Job.getJobManager().find(null);
-    for (Job job : allJobs) {
-      if (Workbench.WORKBENCH_AUTO_SAVE_JOB.equals(job.getName())) {
-        job.cancel();
-      }
-    }
+    TestHelper.disableAutoSaveJob();
   }
 
   /**

@@ -42,6 +42,7 @@ import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
 import org.polarsys.capella.test.framework.helpers.GuiActions;
+import org.polarsys.capella.test.framework.helpers.TestHelper;
 
 /**
  * This test case create some elements in the project and test that selection is newly created elements
@@ -55,17 +56,10 @@ public class CreateElement extends BasicTestCase {
     return Arrays.asList("NavigatorEmptyProject");
   }
 
-  @SuppressWarnings("restriction")
   @Override
   protected void setUp() throws Exception {
     super.setUp();
-    // Deadlock because of Workbench Auto-Save Job, so we have to remove it
-    Job[] allJobs = Job.getJobManager().find(null);
-    for (Job job : allJobs) {
-      if (Workbench.WORKBENCH_AUTO_SAVE_JOB.equals(job.getName())) {
-        job.cancel();
-      }
-    }
+    TestHelper.disableAutoSaveJob();
   }
 
   @Override

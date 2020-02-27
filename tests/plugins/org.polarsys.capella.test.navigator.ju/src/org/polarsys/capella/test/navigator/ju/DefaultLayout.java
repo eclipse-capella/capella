@@ -20,6 +20,7 @@ import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.libraries.model.CapellaModel;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
+import org.polarsys.capella.test.framework.helpers.TestHelper;
 
 /**
  * This test case checks the layout of a default project.
@@ -34,17 +35,10 @@ public class DefaultLayout extends BasicTestCase {
     return Arrays.asList("NavigatorEmptyProject");
   }
 
-  @SuppressWarnings("restriction")
   @Override
   protected void setUp() throws Exception {
     super.setUp();
-    // Deadlock because of Workbench Auto-Save Job, so we have to remove it 
-    Job[] allJobs = Job.getJobManager().find(null);
-    for (Job job : allJobs) {
-      if (Workbench.WORKBENCH_AUTO_SAVE_JOB.equals(job.getName())) {
-        job.cancel();
-      }
-    }
+    TestHelper.disableAutoSaveJob();
   }
 
   @Override

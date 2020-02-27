@@ -48,6 +48,7 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.commands.ICommandService;
 import org.eclipse.ui.handlers.IHandlerService;
+import org.eclipse.ui.internal.Workbench;
 import org.eclipse.ui.progress.UIJob;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.explorer.activity.ui.actions.OpenActivityExplorerAction;
@@ -386,9 +387,8 @@ public class GuiActions {
   public static void refreshAllSubRepresentations(IFile airdFile, Session session) {
     Collection<DRepresentationDescriptor> representationsToRefresh = DialectManager.INSTANCE
         .getAllRepresentationDescriptors(session);
-    Job job = new RefreshDiagramsCommandHandler().new RefreshDiagramsJob(representationsToRefresh,
-        session, Display.getCurrent());
-    job.setThread(Display.getDefault().getThread());
+    Job job = new RefreshDiagramsCommandHandler().new RefreshDiagramsJob(representationsToRefresh, session,
+        Display.getDefault());
     job.setUser(true);
     job.schedule();
   }
