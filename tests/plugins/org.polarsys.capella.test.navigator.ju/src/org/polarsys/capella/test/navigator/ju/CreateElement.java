@@ -16,7 +16,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 
-import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.action.IContributionItem;
@@ -29,7 +28,6 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.internal.Workbench;
 import org.eclipse.ui.navigator.CommonViewer;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
@@ -42,7 +40,6 @@ import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
 import org.polarsys.capella.test.framework.helpers.GuiActions;
-import org.polarsys.capella.test.framework.helpers.TestHelper;
 
 /**
  * This test case create some elements in the project and test that selection is newly created elements
@@ -54,12 +51,6 @@ public class CreateElement extends BasicTestCase {
   @Override
   public List<String> getRequiredTestModels() {
     return Arrays.asList("NavigatorEmptyProject");
-  }
-
-  @Override
-  protected void setUp() throws Exception {
-    super.setUp();
-    TestHelper.disableAutoSaveJob();
   }
 
   @Override

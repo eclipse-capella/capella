@@ -13,14 +13,11 @@ package org.polarsys.capella.test.navigator.ju;
 import java.util.Arrays;
 import java.util.List;
 
-import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.ui.internal.Workbench;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.libraries.model.CapellaModel;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
-import org.polarsys.capella.test.framework.helpers.TestHelper;
 
 /**
  * This test case checks the layout of a default project.
@@ -33,12 +30,6 @@ public class DefaultLayout extends BasicTestCase {
   @Override
   public List<String> getRequiredTestModels() {
     return Arrays.asList("NavigatorEmptyProject");
-  }
-
-  @Override
-  protected void setUp() throws Exception {
-    super.setUp();
-    TestHelper.disableAutoSaveJob();
   }
 
   @Override

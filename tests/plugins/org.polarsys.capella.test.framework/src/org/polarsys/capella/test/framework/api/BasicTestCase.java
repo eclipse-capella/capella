@@ -173,6 +173,7 @@ public abstract class BasicTestCase extends TestCase implements BasicTestArtefac
   protected void setUp() throws Exception {
     super.setUp();
     currentTest = this;
+    TestHelper.disableAutoSaveJob();
     List<String> projectNamesToLoad = getRequiredTestModels();
     if (projectNamesToLoad != null) {
       ModelProviderHelper.getInstance().getModelProvider().requireTestModel(projectNamesToLoad, this);

@@ -10,12 +10,9 @@
  *******************************************************************************/
 package org.polarsys.capella.test.diagram.tools.ju.diagram.actions;
 
-import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.ui.internal.Workbench;
 import org.polarsys.capella.test.diagram.common.ju.api.AbstractDiagramTestCase;
 import org.polarsys.capella.test.framework.helpers.GuiActions;
-import org.polarsys.capella.test.framework.helpers.TestHelper;
 
 import junit.framework.Test;
 
@@ -30,12 +27,6 @@ public class RefreshAllSubRepresentations extends AbstractDiagramTestCase {
   @Override
   public String getRequiredTestModel() {
     return "DiagramAction";
-  }
-  
-  @Override
-  protected void setUp() throws Exception {
-    super.setUp();
-    TestHelper.disableAutoSaveJob();
   }
   
   @Override
