@@ -177,7 +177,7 @@ This command will generate ''HTML'' report from the EOLE-AF aird file specified 
 -logfile D:/CommandLineLog/log.html
 </pre>
 
-This command will import the EOLE_AF project from ''<absolutePath>'' workspace into ''<targetWorkspacePath> ''workspace before generating the HTML report inside it.
+This command will import the EOLE_AF project from ''&lt;absolutePath&gt;'' workspace into ''&lt;targetWorkspacePath&gt; ''workspace before generating the HTML report inside it.
 
 '''Import Capella project and generate inside a new project'''
 
