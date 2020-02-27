@@ -64,7 +64,7 @@ public class RefreshDiagramsCommandHandler extends AbstractDiagramCommandHandler
     public RefreshDiagramsJob(Collection<DRepresentationDescriptor> representations, Session session,
         Display display) {
       super(Messages.RefreshRepresentation_0);
-     // setProperty(IJobConstants.ALWAYS_LOG_STATUS, true);
+      setProperty(IJobConstants.ALWAYS_LOG_STATUS, true);
       this.session = session;
       this.representationsToRefresh = representations;
       this.display = display;
