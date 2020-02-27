@@ -172,7 +172,7 @@ BEHAVIOUR PC cannot be contained by a NODE PC
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="TC_DC_13 - Physical Root Component Realization"
+                  name="TC_DC_13 - Root Physical Component Realization"
                   severity="WARNING"
                   statusCode="1">
                <message>
