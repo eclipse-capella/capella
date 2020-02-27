@@ -14,6 +14,7 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.core.resources.IMarker;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
@@ -58,13 +59,19 @@ public class TC_DF_15_Resolver extends AbstractCapellaMarkerResolution {
         .getPreviousBlockArchitecture(currentLevelArchitecture);
     if (previousArchitecture != null) {
       AbstractFunction rootfunc = BlockArchitectureExt.getRootFunction(currentLevelArchitecture);
+      targetFunction = BlockArchitectureExt.getRootFunction(previousArchitecture);
+      sourceFunction = (AbstractFunction) obj;
       if (rootfunc.getOwnedFunctionRealizations().isEmpty()) {
-        targetFunction = BlockArchitectureExt.getRootFunction(previousArchitecture);
-        sourceFunction = (AbstractFunction) obj;
         FunctionRealization rlz = FaFactory.eINSTANCE.createFunctionRealization();
         rlz.setSourceElement(sourceFunction);
         rlz.setTargetElement(targetFunction);
         sourceFunction.getOwnedFunctionRealizations().add(rlz);
+      } else {
+        EList<FunctionRealization> es = rootfunc.getOwnedFunctionRealizations();
+        FunctionRealization freal = es.get(0);
+        freal.setSourceElement(sourceFunction);
+        freal.setTargetElement(targetFunction);
+        sourceFunction.getOwnedFunctionRealizations().add(freal);
       }
     }
   }
@@ -88,10 +95,13 @@ public class TC_DF_15_Resolver extends AbstractCapellaMarkerResolution {
       if (previousArchitectures == null) {
         return false;
       }
-
       AbstractFunction rootfunc = BlockArchitectureExt.getRootFunction(currentLevelArchitecture);
       if (!rootfunc.getOwnedFunctionRealizations().isEmpty()) {
-        return false;
+        EList<FunctionRealization> es = rootfunc.getOwnedFunctionRealizations();
+        FunctionRealization freal = es.get(0);
+        if (freal != null && freal.getTargetElement() != null) {
+          return false;
+        }
       }
     }
     return true;

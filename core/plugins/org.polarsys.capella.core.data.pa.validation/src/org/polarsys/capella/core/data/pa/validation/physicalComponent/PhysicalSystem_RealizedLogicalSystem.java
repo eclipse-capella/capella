@@ -14,9 +14,10 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
+import org.polarsys.capella.core.data.cs.BlockArchitecture;
+import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
-import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
@@ -37,8 +38,16 @@ public class PhysicalSystem_RealizedLogicalSystem extends AbstractValidationRule
         PhysicalComponent component = (PhysicalComponent) eObj;
         if (component.equals(BlockArchitectureExt.getRootBlockArchitecture(component).getSystem())) {
           if (component.getRealizedLogicalComponents().isEmpty()) {
-            return ctx.createFailureStatus(CapellaElementExt.getValidationRuleMessagePrefix(component)
-                + " does not realize the Logical Component");
+            String previousRootCompoenentname = "Logical Component";
+            BlockArchitecture previousArchitectures = BlockArchitectureExt
+                .getPreviousBlockArchitecture(BlockArchitectureExt.getRootBlockArchitecture(component));
+            Component previousRootComponent = previousArchitectures.getSystem();
+            if (previousRootComponent != null) {
+              previousRootCompoenentname = "\"" + previousRootComponent.getName() + "\" ("
+                  + previousRootComponent.eClass().getName() + ")";
+            }
+            return ctx.createFailureStatus("Root \"" + component.getName() + "\" (" + component.eClass().getName() + ")"
+                + " does not realize the Root " + previousRootCompoenentname);
           }
         }
       }
