@@ -17,12 +17,7 @@ import org.eclipse.core.resources.ProjectScope;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.layout.TableColumnLayout;
-import org.eclipse.jface.preference.BooleanFieldEditor;
 import org.eclipse.jface.preference.IPreferenceStore;
-import org.eclipse.jface.preference.IntegerFieldEditor;
-import org.eclipse.jface.util.ConfigureColumns;
-import org.eclipse.jface.util.IPropertyChangeListener;
-import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.CellNavigationStrategy;
 import org.eclipse.jface.viewers.ColumnViewer;
@@ -39,20 +34,16 @@ import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.jface.viewers.TableViewerEditor;
 import org.eclipse.jface.viewers.TableViewerFocusCellManager;
 import org.eclipse.jface.viewers.ViewerCell;
-import org.eclipse.jface.window.SameShellProvider;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
-import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Listener;
-import org.eclipse.swt.widgets.Table;
+import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.TableColumn;
-import org.eclipse.swt.widgets.TableItem;
 import org.polarsys.capella.core.commands.preferences.service.AbstractDefaultPreferencePage;
 import org.polarsys.capella.core.commands.preferences.service.PreferenceField;
 import org.polarsys.capella.core.commands.preferences.service.UserProfileModeEnum;
@@ -84,25 +75,21 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
   public static final String CONTENT = "Content";
   public static final String GROUP_LABEL = "Number of columns in TitleBlock";
   public static final String TOOLTIP_GROUP = "Tooltip group";
-  private IntegerFieldEditor columnsFieldEditor;
-  private IntegerFieldEditor rowsFieldEditor;
 
   TableViewer v;
-  private Table table;
 
   private PreferenceField defaultTitleBlockFieldEditor;
-  private TableViewerColumn column;
-  private int activeColumn = -1;
-  Button button1;
-  Button add_button;
-  Button edit_button;
-  Button remove_button;
-  BooleanFieldEditor enableMonitoringFieldEditor;
+
+  List<List<TitleBlockCell>> tccMatrix;
   int columnsNumber;
   int rowsNumber;
+  String tableContent;
 
   public TitleBlockPreferencePage() {
     super(PAGE_ID);
+    tableContent = doGetPreferenceStore().getString("tableTitleBlock");
+    columnsNumber = doGetPreferenceStore().getInt("columnFieldTitleBlock");
+    rowsNumber = doGetPreferenceStore().getInt("rowFieldTitleBlock");
   }
 
   @Override
@@ -123,7 +110,6 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
   @Override
   protected void createFieldEditors() {
     createCheckBox();
-    createGroupForNumberOfColumns();
 
     Composite top = new Composite(getFieldEditorParent(), SWT.NONE);
     GridLayout top_layout = new GridLayout();
@@ -135,113 +121,12 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
 
     createTable(top);
 
-    // createButtons(top);
-
   }
 
   private void createCheckBox() {
     defaultTitleBlockFieldEditor = new PreferenceField("defaultTitleBlock", "Add by default Diagram TitleBlock",
         getFieldEditorParent());
     addField(defaultTitleBlockFieldEditor, UserProfileModeEnum.Expert, getFieldEditorParent(), ProjectScope.class);
-    /*
-     * button1 = new Button(getFieldEditorParent(), SWT.CHECK); button1.setText("Add by default Diagram TitleBlock");
-     * button1.setSelection(doGetPreferenceStore().getBoolean("defaultTitleBlock"));
-     */
-    /*
-     * enableMonitoringFieldEditor = new BooleanFieldEditor("defaultTitleBlock", "Add by default Diagram Title Block",
-     * getFieldEditorParent()) {
-     * 
-     * @SuppressWarnings("synthetic-access")
-     * 
-     * @Override protected void valueChanged(boolean oldValue_p, boolean newValue_p) { super.valueChanged(oldValue_p,
-     * newValue_p); } };
-     */
-    // enableMonitoringFieldEditor.setEnabled(doGetPreferenceStore().getBoolean("defaultTitleBlock"),getFieldEditorParent());
-    /*
-     * Composite compositeCheckBox = new Composite(top, SWT.NONE); Button buttonCheckBox = new Button(compositeCheckBox,
-     * SWT.CHECK); buttonCheckBox.setText("Add by default Diagram Title Block");
-     */
-  }
-
-  private Button createButton(Composite top, Composite container, String text, boolean enabled) {
-    Button button = new Button(container, SWT.PUSH);
-    button.setFont(top.getFont());
-    button.setText(text);
-    button.setEnabled(enabled);
-    this.setButtonLayoutData(button);
-    return button;
-  }
-
-  private void createButtons(Composite top) {
-
-    Composite container = new Composite(top, SWT.NONE);
-    GridLayout container_layout = new GridLayout();
-    container_layout.marginHeight = 0;
-    container_layout.marginWidth = 0;
-    container.setLayout(container_layout);
-    container.setLayoutData(new GridData(GridData.FILL_VERTICAL));
-    container.setFont(top.getFont());
-
-    add_button = createButton(top, container, ADD, true);
-
-    edit_button = createButton(top, container, EDIT, false);
-
-    remove_button = createButton(top, container, REMOVE, false);
-
-    add_button.addListener(SWT.Selection, new Listener() {
-      @Override
-      public void handleEvent(Event e) {
-        switch (e.type) {
-        case SWT.Selection:
-          TitleBlockDialog dialog = new TitleBlockDialog(getShell());
-          dialog.setCurrentName("");
-          dialog.setCurrentContent("");
-          dialog.create();
-          if (dialog.open() == Window.OK) {
-            TableItem item = new TableItem(table, SWT.NULL);
-            item.setText(0, dialog.getName());
-            item.setText(1, dialog.getContent());
-          }
-          break;
-        }
-      }
-    });
-    remove_button.addListener(SWT.Selection, new Listener() {
-      @Override
-      public void handleEvent(Event e) {
-        switch (e.type) {
-        case SWT.Selection:
-          table.remove(table.getSelectionIndices());
-          edit_button.setEnabled(false);
-          remove_button.setEnabled(false);
-          break;
-        }
-      }
-    });
-
-    edit_button.addListener(SWT.Selection, new Listener() {
-      @Override
-      public void handleEvent(Event e) {
-        switch (e.type) {
-        case SWT.Selection:
-          int index = table.getSelectionIndex();
-          String currentName = table.getItem(index).getText(0);
-          String currentContent = table.getItem(index).getText(1);
-          TitleBlockDialog dialog = new TitleBlockDialog(getShell());
-
-          dialog.setCurrentName(currentName);
-          dialog.setCurrentContent(currentContent);
-          dialog.create();
-          if (dialog.open() == Window.OK) {
-            table.getItem(index).setText(0, dialog.getName());
-            table.getItem(index).setText(1, dialog.getContent());
-            edit_button.setEnabled(false);
-            remove_button.setEnabled(false);
-          }
-        }
-      }
-    });
-
   }
 
   private void createTable(Composite top) {
@@ -249,10 +134,10 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
 
     createColumns(v, columnsNumber);
     v.setContentProvider(ArrayContentProvider.getInstance());
-    // v.setInput(createModel(columnsNumber, rowsNumber));
-    v.setInput(createModel(2, 2));
+    v.setInput(createModel(columnsNumber, rowsNumber));
 
     v.getTable().setLinesVisible(true);
+    // v.getTable().setBackground(getShell().getDisplay().getSystemColor(SWT.COLOR_GREEN));
     v.getTable().setHeaderVisible(true);
     GridData gridData = new GridData(GridData.FILL_BOTH);
     gridData.grabExcessVerticalSpace = true;
@@ -263,8 +148,6 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
     gridData.horizontalSpan = 1;
     v.getTable().setLayoutData(gridData);
 
-    System.out.println("Lalal:" + v.getTable().getGridLineWidth());
-    System.out.println("Border: " + v.getTable().getBorderWidth());
     addMenu(v);
 
     Listener treeListener = new Listener() {
@@ -276,11 +159,9 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
 
           ViewerCell cell = v.getCell(coords);
           int index = cell.getColumnIndex();
-          System.out.println(cell.getElement());
           List<TitleBlockCell> list = (List<TitleBlockCell>) cell.getElement();
           String name = list.get(index).name;
           String content = list.get(index).content;
-          System.out.println(name + " " + content);
           TitleBlockDialog dialog = new TitleBlockDialog(getShell());
           if (content == "content") {
             dialog.setCurrentName("");
@@ -306,104 +187,83 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
     v.getTable().addListener(SWT.MouseDoubleClick, treeListener);
   }
 
-  private void refreshTableColumns() {
+  private void disposeColumns() {
     TableColumn[] columns = v.getTable().getColumns();
-    System.out.println(columns);
-    // v.getTable().removeAll();
     for (TableColumn tc : columns) {
       tc.dispose();
-
     }
-    for (TableColumn tc : columns) {
-      System.out.print(tc);
-    }
+  }
 
+  private void refreshTableColumns() {
+    disposeColumns();
     createColumns(v, columnsNumber);
-    // v.setContentProvider(ArrayContentProvider.getInstance());
-    v.setInput(createModel(columnsNumber, rowsNumber));
+    v.setInput(updateModel(columnsNumber, rowsNumber));
+
   }
 
   private void refreshTableRows() {
-    v.setContentProvider(ArrayContentProvider.getInstance());
-    v.setInput(createModel(columnsNumber, rowsNumber));
-  }
-
-  private void createGroupForNumberOfColumns() {
-    final Group group = createGroup(GROUP_LABEL, TOOLTIP_GROUP, getFieldEditorParent());
-    columnsFieldEditor = new IntegerFieldEditor("columnField", "Columns", group, 2);
-    columnsFieldEditor.setValidRange(1, 50);
-
-    columnsNumber = doGetPreferenceStore().getInt("columnField1");
-    columnsFieldEditor.setStringValue(String.valueOf(columnsNumber));
-    columnsFieldEditor.setPropertyChangeListener(new IPropertyChangeListener() {
-
-      @Override
-      public void propertyChange(PropertyChangeEvent event) {
-        System.out.println(event.getNewValue());
-        Class<? extends Object> a = event.getNewValue().getClass();
-        if (event.getNewValue() instanceof String) {
-          if (!event.getNewValue().toString().isEmpty()) {
-            columnsNumber = Integer.parseInt((String) event.getNewValue());
-            refreshTableColumns();
-          }
-        }
-
-      }
-
-    });
-
-    /*
-     * addField(columnsFieldEditor, UserProfileModeEnum.Expert, group);
-     */
-    // Label labelControl = columnsFieldEditor.getLabelControl(group);
-    // GridData layoutData = new GridData(SWT.FILL, SWT.FILL, false, false);
-    // labelControl.setLayoutData(layoutData);
-    // layoutData.horizontalIndent = 15;
-    rowsFieldEditor = new IntegerFieldEditor("rowField", "Rows", group, 2);
-    rowsFieldEditor.setValidRange(1, 50);
-    rowsNumber = doGetPreferenceStore().getInt("rowField");
-    rowsFieldEditor.setStringValue(String.valueOf(rowsNumber));
-    rowsFieldEditor.setPropertyChangeListener(new IPropertyChangeListener() {
-
-      @Override
-      public void propertyChange(PropertyChangeEvent event) {
-        System.out.println(event.getNewValue());
-        Class<? extends Object> a = event.getNewValue().getClass();
-        if (event.getNewValue() instanceof String) {
-          if (!event.getNewValue().toString().isEmpty()) {
-            rowsNumber = Integer.parseInt((String) event.getNewValue());
-            refreshTableRows();
-          }
-        }
-
-      }
-
-    });
-    addField(rowsFieldEditor);
-    addField(columnsFieldEditor);
-
+    rowsNumber += 1;
+    v.setInput(updateModelRows(columnsNumber, rowsNumber));
   }
 
   @Override
   public boolean performOk() {
 
     doGetPreferenceStore().setValue("defaultTitleBlock", defaultTitleBlockFieldEditor.getBooleanValue());
-    doGetPreferenceStore().setValue("columnField1", columnsFieldEditor.getIntValue());
-    doGetPreferenceStore().setValue("rowField", rowsFieldEditor.getIntValue());
+    doGetPreferenceStore().setValue("columnFieldTitleBlock", columnsNumber);
+    doGetPreferenceStore().setValue("rowFieldTitleBlock", rowsNumber);
+    String s = "";
+    for (int i = 0; i < rowsNumber; i++) {
+      for (int j = 0; j < columnsNumber; j++) {
+        if (i == rowsNumber - 1 && j == columnsNumber - 1) {
+          s = s + tccMatrix.get(i).get(j).name + "+" + tccMatrix.get(i).get(j).content;
+        } else {
+          s = s + tccMatrix.get(i).get(j).name + "+" + tccMatrix.get(i).get(j).content + "+";
+
+        }
+
+      }
+    }
+    doGetPreferenceStore().setValue("tableTitleBlock", s);
     return super.performOk();
   }
-  /*
-   * private TableViewerColumn createTableViewerColumn(final TableViewer viewer, final String title, final int bound) {
-   * final TableViewerColumn viewerColumn = new TableViewerColumn(viewer, SWT.NONE); final TableColumn column =
-   * viewerColumn.getColumn(); column.setText(title); column.setWidth(bound); column.setResizable(true); return
-   * viewerColumn; }
-   */
+
+  private List<List<TitleBlockCell>> updateModel(int nrCol, int nrRows) {
+    for (int i = 0; i < nrRows; i++) {
+      List<TitleBlockCell> tbcCell = tccMatrix.get(i);
+      tbcCell.add(new TitleBlockCell("Edit", "aql:edit"));
+    }
+    return tccMatrix;
+  }
+
+  private List<List<TitleBlockCell>> updateModelRows(int nrCol, int nrRows) {
+    List<TitleBlockCell> tbcCell = new ArrayList<>();
+    for (int i = 0; i < nrCol; i++) {
+      tbcCell.add(new TitleBlockCell("Edit", "aql:edit"));
+    }
+    tccMatrix.add(tbcCell);
+    return tccMatrix;
+  }
+
+  private List<List<TitleBlockCell>> updateModelRowsDelete(int rowToDelete) {
+
+    tccMatrix.remove(rowToDelete);
+    rowsNumber -= 1;
+    return tccMatrix;
+  }
+
+  private List<List<TitleBlockCell>> updateModelColumnsDelete(int columnToDelete) {
+
+    for (int i = 0; i < rowsNumber; i++) {
+      tccMatrix.get(i).remove(columnToDelete);
+    }
+    return tccMatrix;
+  }
 
   private List<List<TitleBlockCell>> createModel(int nrCol, int nrRows) {
-    String[] cellsNameAndContent = { "Name", "aql:name", "Description", "aql:description", "Summary", "aql:summary",
-        "Documentation", "aql:documentation" };
+    String[] cellsNameAndContent = tableContent.split("\\+");
     int currentIndex = 0;
-    List<List<TitleBlockCell>> tccMatrix = new ArrayList<>();
+    tccMatrix = new ArrayList<>();
     for (int i = 0; i < nrRows; i++) {
       List<TitleBlockCell> tbcCell = new ArrayList<>();
       for (int j = 0; j < nrCol; j++) {
@@ -413,33 +273,21 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
       tccMatrix.add(tbcCell);
     }
 
-    // return persons;
     return tccMatrix;
   }
-  /*
-   * private void createColumns(TableViewer viewer, int nrColumns) { Point size = viewer.getTable().getSize();
-   * System.out.println("X este: " + size.x); System.out.println("Y este: " + size.y);
-   * 
-   * final int[] bounds = { 100, 100, 100, 100 }; List<String> columnHeadings = new ArrayList<>(); for (int i = 0; i <
-   * nrColumns; i++) { columnHeadings.add(""); createColumn(viewer, columnHeadings.get(i), bounds[0], i); }
-   * testSelectCell(viewer); }
-   */
 
   private void createColumn(TableViewer v, final String title, final int bound, int index) {
-    // TableViewerColumn column = createTableViewerColumn(v, title, bound);
     TableViewerColumn column = createTableViewerColumn(v, title, 200);
 
     column.setLabelProvider(new StyledCellLabelProvider() {
       @Override
       public void update(final ViewerCell cell) {
         List<TitleBlockCell> lst = (List<TitleBlockCell>) cell.getElement();
-        // if (index < columnsNumber) {
 
         final TitleBlockCell tbcell = lst.get(index);
         final String cellText = String.valueOf(tbcell);
         cell.setText(cellText);
       }
-      // }
     });
   }
 
@@ -462,7 +310,6 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
         if (cell != null) {
           TableColumn t = viewer.getTable().getColumn(cell.getColumnIndex());
           viewer.getTable().showColumn(t);
-          System.out.println("test");
         }
         return cell;
 
@@ -525,10 +372,6 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
   }
 
   private void createColumns(TableViewer viewer, int nrColumns) {
-    Point size = viewer.getTable().getSize();
-    System.out.println("X este: " + size.x);
-    System.out.println("Y este: " + size.y);
-
     final int[] bounds = { 100, 100, 100, 100 };
     List<String> columnHeadings = new ArrayList<>();
     for (int i = 0; i < nrColumns; i++) {
@@ -565,33 +408,17 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
   private void addMenu(final TableViewer v) {
     final MenuManager mgr = new MenuManager();
 
-    final Action insertEmailBefore = new Action("Insert E-Mail before") {
-      @Override
-      public void run() {
-        addEmailColumn(v, activeColumn);
-      }
-    };
-
     final Action addRow = new Action("Add row") {
       @Override
       public void run() {
-        // addEmailColumn(v, activeColumn + 1);
-        rowsNumber += 1;
         refreshTableRows();
 
-      }
-    };
-    final Action addColumnBefore = new Action("Add column before") {
-      @Override
-      public void run() {
-        removeEmailColumn(v);
       }
     };
 
     final Action addColumnAfter = new Action("Add column after") {
       @Override
       public void run() {
-        // removeEmailColumn(v);
         createColumn(v, "", 100, v.getTable().getColumnCount());
         columnsNumber += 1;
         refreshTableColumns();
@@ -601,10 +428,20 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
     final Action removeColumn = new Action("Remove column") {
       @Override
       public void run() {
-        DeleteRowOrColumnDialog dialog = new DeleteRowOrColumnDialog(getShell());
-        dialog.create();
-        if (dialog.open() == Window.OK) {
+        MessageBox messageBox = new MessageBox(getShell(), SWT.ICON_QUESTION | SWT.YES | SWT.NO);
+        messageBox.setMessage("Are you sure you want to delete the entire column?");
+        messageBox.setText("Confirm Delete");
+        int response = messageBox.open();
+        if (response == SWT.YES) {
+          try {
+            int columnToDelete = v.getColumnViewerEditor().getFocusCell().getColumnIndex();
+            disposeColumns();
+            columnsNumber -= 1;
+            createColumns(v, columnsNumber);
+            v.setInput(updateModelColumnsDelete(columnToDelete));
+          } catch (Exception e) {
 
+          }
         }
       }
     };
@@ -612,53 +449,48 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
     final Action removeRow = new Action("Remove row") {
       @Override
       public void run() {
-        DeleteRowOrColumnDialog dialog = new DeleteRowOrColumnDialog(getShell());
-        dialog.create();
-        if (dialog.open() == Window.OK) {
+        MessageBox messageBox = new MessageBox(getShell(), SWT.ICON_QUESTION | SWT.YES | SWT.NO);
+        messageBox.setMessage("Are you sure you want to delete the entire row?");
+        messageBox.setText("Confirm Delete");
+        int response = messageBox.open();
+        if (response == SWT.YES) {
+          try {
+            int rowToDelete = v.getTable().getSelectionIndex();
+            v.setInput(updateModelRowsDelete(rowToDelete));
 
+          } catch (Exception e) {
+
+          }
         }
-
-      }
-    };
-
-    final Action configureColumns = new Action("Configure Columns...") {
-      @Override
-      public void run() {
-        ConfigureColumns.forTable(v.getTable(), new SameShellProvider(v.getControl()));
       }
     };
 
     mgr.setRemoveAllWhenShown(true);
     mgr.addMenuListener(manager -> {
-      if (v.getTable().getColumnCount() == 2) {
+      if (v.getTable().getColumnCount() >= 1 && rowsNumber >= 1) {
         manager.add(addColumnAfter);
         manager.add(removeColumn);
         manager.add(addRow);
         manager.add(removeRow);
-      } else {
-        manager.add(addColumnAfter);
       }
-      manager.add(configureColumns);
     });
 
     v.getControl().setMenu(mgr.createContextMenu(v.getControl()));
   }
 
-  private void removeEmailColumn(TableViewer v) {
+  @Override
+  protected void performDefaults() {
+    super.performDefaults();
+    columnsNumber = doGetPreferenceStore().getDefaultInt("columnFieldTitleBlock");
+    rowsNumber = doGetPreferenceStore().getDefaultInt("rowFieldTitleBlock");
+    tableContent = doGetPreferenceStore().getDefaultString("tableTitleBlock");
+    // refreshTableColumns();
+    disposeColumns();
+    createColumns(v, columnsNumber);
+    v.setInput(createModel(columnsNumber, rowsNumber));
+    performOk();
 
-    column.getColumn().dispose();
-    v.refresh();
-  }
-
-  private void addEmailColumn(TableViewer v, int columnIndex) {
-    column = new TableViewerColumn(v, SWT.NONE, columnIndex);
-    column.getColumn().setText("E-Mail");
-    column.getColumn().setResizable(false);
-
-    v.refresh();
-
-    column.getColumn().setWidth(200);
-
+    return;
   }
 
 }
