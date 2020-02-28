@@ -88,7 +88,7 @@ public class TitleBlockServices {
     return false;
   }
 
-  private void createElementTitleBlock(EObject elementView, EObject diagram) {
+  public void createElementTitleBlock(EObject elementView, EObject diagram) {
     if (!(elementView instanceof DSemanticDiagram) && isUniqueElementTitleBlock(elementView, diagram)) {
       DRepresentation representation = null;
       if ((diagram instanceof DRepresentation)) {
@@ -120,7 +120,7 @@ public class TitleBlockServices {
     }
   }
 
-  private void createDiagramTitleBlock(EObject elementView, EObject diagram) {
+  public void createDiagramTitleBlock(EObject elementView, EObject diagram) {
     if (elementView instanceof DSemanticDiagram && isUniqueDiagramTitleBlock(diagram)) {
       DRepresentation representation = null;
       if ((diagram instanceof DRepresentation)) {
