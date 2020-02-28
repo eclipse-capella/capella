@@ -4170,13 +4170,13 @@
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView">
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectTitleBlocks" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
                     <parameters name="context" value="aql:elementView"/>
-                    <parameters name="scope" value="aql:elementView.getAvailableTitleBlocksToInsert(true)"/>
+                    <parameters name="scope" value="aql:elementView.getAvailableDiagramTitleBlocksToInsert()"/>
                     <parameters name="resultVariable" value="selectedTitleBlocks"/>
                     <parameters name="wizardMessage" value="aql:'Select Values to show in ' + element.name + '.'"/>
-                    <parameters name="initialSelection" value="aql:self.void2Null(elementView.getInitialSelectionOfShowHideTitleBlocks(true))"/>
+                    <parameters name="initialSelection" value="aql:self.void2Null(elementView.getInitialSelectionOfShowHideDiagramTitleBlocks())"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (selectedTitleBlocks = 'WIZARD_CANCELED')">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.showHideTitleBlocks(selectedTitleBlocks,diagram, true)"/>
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.showHideDiagramTitleBlocks(selectedTitleBlocks,diagram)"/>
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:diagram.forceRefresh()"/>
                   </subModelOperations>
                 </firstModelOperations>
@@ -4193,7 +4193,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ToolDescription" name="Title Block Line" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlockLine_16.png">
+            <tools xsi:type="tool_1:ToolDescription" name="Element Title Block Line" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlockLine_16.png">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
@@ -4202,7 +4202,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ToolDescription" name="Title Block Column" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlockColumn_16.png">
+            <tools xsi:type="tool_1:ToolDescription" name="Element Title Block Column" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlockColumn_16.png">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
@@ -4220,13 +4220,13 @@
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView">
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectTitleBlocks" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
                     <parameters name="context" value="aql:elementView"/>
-                    <parameters name="scope" value="aql:elementView.getAvailableTitleBlocksToInsert(false)"/>
+                    <parameters name="scope" value="aql:elementView.getAvailableElementTitleBlocksToInsert()"/>
                     <parameters name="resultVariable" value="selectedTitleBlocks"/>
                     <parameters name="wizardMessage" value="aql:'Select Values to show in ' + element.name + '.'"/>
-                    <parameters name="initialSelection" value="aql:self.void2Null(elementView.getInitialSelectionOfShowHideTitleBlocks(false))"/>
+                    <parameters name="initialSelection" value="aql:self.void2Null(elementView.getInitialSelectionOfShowHideElementTitleBlocks())"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (selectedTitleBlocks = 'WIZARD_CANCELED')">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.showHideTitleBlocks(selectedTitleBlocks,diagram, false)"/>
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.showHideElementTitleBlocks(selectedTitleBlocks,diagram)"/>
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:diagram.forceRefresh()"/>
                   </subModelOperations>
                 </firstModelOperations>
