@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@ package org.polarsys.capella.test.diagram.misc.ju.testsuites;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.polarsys.capella.test.diagram.misc.ju.testcases.AllocationManagementTest;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.BreakdownDiagramElements;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.Bug1006TestCase;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.Bug1024TestCase;
@@ -48,7 +49,8 @@ public class DiagramMiscTestSuite extends BasicTestSuite {
 
   @Override
   protected List<BasicTestArtefact> getTests() {
-    List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
+    List<BasicTestArtefact> tests = new ArrayList<>();
+    
     tests.add(new DDiagramEditorUndoRedoHandlerTest());
     tests.add(new GraphTest());
     tests.add(new Bug1006TestCase());
@@ -68,6 +70,8 @@ public class DiagramMiscTestSuite extends BasicTestSuite {
     tests.add(new CheckPhysCompNatureOptionTestCase());
     tests.add(new DeleteFromModelSemanticTarget());
     tests.add(new DeleteFromModelContainerSemanticTarget());
+    tests.add(new AllocationManagementTest());
+    
     return tests;
   }
 }

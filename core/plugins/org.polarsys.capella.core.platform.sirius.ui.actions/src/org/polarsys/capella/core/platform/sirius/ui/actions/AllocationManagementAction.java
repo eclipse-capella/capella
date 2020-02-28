@@ -15,7 +15,6 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsFactory;
 import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
@@ -37,6 +36,7 @@ import org.polarsys.capella.core.data.pa.deployment.DeploymentFactory;
 import org.polarsys.capella.core.data.pa.deployment.PartDeploymentLink;
 import org.polarsys.capella.core.model.helpers.ComponentExchangeExt;
 import org.polarsys.capella.core.model.helpers.PhysicalComponentExt;
+import org.polarsys.capella.core.model.helpers.PhysicalLinkExt;
 import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 
 /**
@@ -57,9 +57,13 @@ public class AllocationManagementAction {
   }
 
   /**
-   * Action to perform allocation of all the targetElements(list of functions) to sourceElement(component or role(oa layer))
-   * @param targetElements list of functions
-   * @param sourceElement a component
+   * Action to perform allocation of all the targetElements(list of functions) to sourceElement(component or role(oa
+   * layer))
+   * 
+   * @param targetElements
+   *          list of functions
+   * @param sourceElement
+   *          a component
    */
   public void allocatingFunctionsToComponent(List<EObject> targetElements, EObject sourceElement) {
     if (sourceElement != null) {
@@ -107,6 +111,7 @@ public class AllocationManagementAction {
 
   /**
    * Action to perform allocation of all the targetElements(list of exchangeItems) to sourceElements(Interfaces)
+   * 
    * @param selectedCapellaElement
    * @param selectedElements
    */
@@ -137,6 +142,7 @@ public class AllocationManagementAction {
 
   /**
    * Action to perform deployment of physical component
+   * 
    * @param targetElements
    * @param sourceElements
    */
@@ -168,27 +174,28 @@ public class AllocationManagementAction {
 
   /**
    * Action to perform allocation of functional exchanges.
+   * 
    * @param selectedCapellaElement
    * @param object
    */
   public void allocatingFEsToComponentExchanges(List<EObject> targetElements, EObject sourceElement) {
-    if (sourceElement != null) {
-      if (sourceElement instanceof ComponentExchange) {
-        ComponentExchange compExc = (ComponentExchange) sourceElement;
-        for (EObject object : targetElements) {
-          if (object instanceof FunctionalExchange) {
-            FunctionalExchange functExc = (FunctionalExchange) object;
-            ComponentExchangeFunctionalExchangeAllocation allocation = FaFactory.eINSTANCE.createComponentExchangeFunctionalExchangeAllocation();
-            // add allocation to component exchange
-            compExc.getOwnedComponentExchangeFunctionalExchangeAllocations().add(allocation);
-            // set source
-            allocation.setSourceElement(compExc);
-            // set target
-            allocation.setTargetElement(functExc);
-            // Create ports allocations if requested.
-            if (CapellaModelPreferencesPlugin.getDefault().isSynchronizationOfComponentPortToFunctionPortAllowed()) {
-              ComponentExchangeExt.synchronizePortAllocations(compExc, functExc);
-            }
+    if (sourceElement instanceof ComponentExchange) {
+      ComponentExchange componentExchange = (ComponentExchange) sourceElement;
+      boolean shouldSyncronize = CapellaModelPreferencesPlugin.getDefault()
+          .isSynchronizationOfComponentPortToFunctionPortAllowed();
+
+      for (EObject object : targetElements) {
+        if (object instanceof FunctionalExchange) {
+          FunctionalExchange functionalExchange = (FunctionalExchange) object;
+          ComponentExchangeFunctionalExchangeAllocation allocation = FaFactory.eINSTANCE
+              .createComponentExchangeFunctionalExchangeAllocation();
+
+          allocation.setSourceElement(componentExchange);
+          allocation.setTargetElement(functionalExchange);
+          componentExchange.getOwnedComponentExchangeFunctionalExchangeAllocations().add(allocation);
+
+          if (shouldSyncronize) {
+            ComponentExchangeExt.synchronizePortAllocations(componentExchange, functionalExchange);
           }
         }
       }
@@ -197,22 +204,27 @@ public class AllocationManagementAction {
 
   /**
    * Action to perform allocation of component Exchanges.
+   * 
    * @param selectedCapellaElement
    * @param object
    */
   public void allocatingCEsToPhysicalLinks(List<EObject> targetElements, EObject sourceElement) {
-    if (sourceElement != null) {
-      if (sourceElement instanceof PhysicalLink) {
-        PhysicalLink physicalLink = (PhysicalLink) sourceElement;
-        for (EObject object : targetElements) {
-          if (object instanceof ComponentExchange) {
-            ComponentExchangeAllocation allocation = FaFactory.eINSTANCE.createComponentExchangeAllocation();
-            // add allocation to component exchange
-            physicalLink.getOwnedComponentExchangeAllocations().add(allocation);
-            // set source
-            allocation.setSourceElement(physicalLink);
-            // set target
-            allocation.setTargetElement((ComponentExchange) object);
+    if (sourceElement instanceof PhysicalLink) {
+      PhysicalLink physicalLink = (PhysicalLink) sourceElement;
+      boolean shouldSyncronize = CapellaModelPreferencesPlugin.getDefault()
+          .isSynchronizationOfPhysicalPortToComponentPortOnPhysicalLinkAllowed();
+
+      for (EObject object : targetElements) {
+        if (object instanceof ComponentExchange) {
+          ComponentExchange componentExchange = (ComponentExchange) object;
+          ComponentExchangeAllocation allocation = FaFactory.eINSTANCE.createComponentExchangeAllocation();
+
+          allocation.setSourceElement(physicalLink);
+          allocation.setTargetElement(componentExchange);
+          physicalLink.getOwnedComponentExchangeAllocations().add(allocation);
+
+          if (shouldSyncronize) {
+            PhysicalLinkExt.synchronizeAllocations(physicalLink, componentExchange);
           }
         }
       }
