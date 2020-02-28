@@ -83,7 +83,9 @@ public class TitleBlockBasicElementGroup extends AbstractSemanticField {
   }
 
   protected void setTextValue(Text text, String value) {
-    text.setText(value);
+    if (null != value) {
+      text.setText(value);
+    }
   }
 
   /**
