@@ -22,6 +22,7 @@ import org.eclipse.core.runtime.jobs.JobChangeAdapter;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.commandline.core.ui.AbstractWorkbenchCommandLine;
 import org.polarsys.capella.core.commandline.core.ui.CloseWorkbenchJob;
@@ -43,8 +44,14 @@ public class RefreshAirdCommandLine extends AbstractWorkbenchCommandLine {
         URI selectedUri = EcoreUtil2.getURI(file);
         Session session = SessionManager.INSTANCE.getSession(selectedUri, new NullProgressMonitor());
         session.save(new NullProgressMonitor());
-        session.close(new NullProgressMonitor());
-        new CloseWorkbenchJob().schedule();
+        try {
+          session.close(new NullProgressMonitor());
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
+        if (PlatformUI.getTestableObject() == null) {
+          new CloseWorkbenchJob().schedule();
+        }
       }
 
     });

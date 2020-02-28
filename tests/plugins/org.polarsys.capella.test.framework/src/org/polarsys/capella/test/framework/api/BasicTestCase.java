@@ -21,17 +21,18 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import junit.framework.TestCase;
-
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.sirius.business.api.session.Session;
 import org.polarsys.capella.core.libraries.model.CapellaModel;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
+import org.polarsys.capella.test.framework.helpers.GuiActions;
 import org.polarsys.capella.test.framework.helpers.IResourceHelpers;
 import org.polarsys.capella.test.framework.helpers.PerformanceHelper;
 import org.polarsys.capella.test.framework.helpers.TestHelper;
+
+import junit.framework.TestCase;
 
 /**
  * Generic implementation of a test case.<br>
@@ -178,6 +179,7 @@ public abstract class BasicTestCase extends TestCase implements BasicTestArtefac
     if (projectNamesToLoad != null) {
       ModelProviderHelper.getInstance().getModelProvider().requireTestModel(projectNamesToLoad, this);
     }
+    GuiActions.flushASyncGuiJobs();
   }
 
   @Override
@@ -194,6 +196,7 @@ public abstract class BasicTestCase extends TestCase implements BasicTestArtefac
     } finally {
       TestHelper.disposeObject(this);
     }
+    GuiActions.flushASyncGuiJobs();
   }
 
 	protected void copyTestDataFolderInWorkspace(String relativeFolderInTestPluginToCopy, IContainer target)

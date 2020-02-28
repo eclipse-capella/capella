@@ -51,7 +51,6 @@ public abstract class NonDirtyTestCase extends BasicTestCase {
 
   @Override
   protected void tearDown() throws Exception {
-    GuiActions.flushASyncGuiThread();
     GuiActions.flushASyncGuiJobs();
     if (ModelProviderHelper.getInstance().getModelProvider().undoTestCaseChanges()) {
       undoAllChanges();

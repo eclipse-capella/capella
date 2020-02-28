@@ -21,6 +21,7 @@ import org.polarsys.capella.core.sirius.ui.commandline.ExportRepresentationsComm
 import org.polarsys.capella.test.commandline.ju.utils.MockApplicationContext;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
 import org.polarsys.capella.test.framework.api.ModelProviderHelper;
+import org.polarsys.capella.test.framework.helpers.GuiActions;
 
 /**
  * Test simulating a Validation launch from command line.
@@ -33,10 +34,10 @@ public class CommandLineExportRepresentationsTest extends BasicTestCase {
     File sourceFolder = getFolderInTestModelRepository(projectName);
 
     ModelProviderHelper.getInstance().importCapellaProject(projectName, sourceFolder);
-    
     try {
       exportImages(projectName);
     } catch (Exception e) {
+      e.printStackTrace();
       assertFalse(e.getMessage(), true);
     }
     
@@ -58,10 +59,8 @@ public class CommandLineExportRepresentationsTest extends BasicTestCase {
     commandLine.setMode(CommandLineMode.NO_IMPORT);
 
     commandLine.checkArgs(mockApplicationContext);
-
     commandLine.prepare(mockApplicationContext);
-
     commandLine.execute(mockApplicationContext);
-
+    GuiActions.flushASyncGuiJobs();
   }
 }

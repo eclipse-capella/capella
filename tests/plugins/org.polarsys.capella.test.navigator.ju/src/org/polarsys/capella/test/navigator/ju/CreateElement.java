@@ -148,7 +148,6 @@ public class CreateElement extends BasicTestCase {
       }
     });
 
-    GuiActions.flushASyncGuiThread();
     GuiActions.flushASyncGuiJobs();
     ISelection selection3 = viewer.getSelection();
     EObject a = (EObject) ((IStructuredSelection) selection3).getFirstElement();

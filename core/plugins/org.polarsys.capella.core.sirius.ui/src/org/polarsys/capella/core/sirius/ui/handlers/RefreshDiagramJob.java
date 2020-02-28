@@ -47,7 +47,6 @@ public class RefreshDiagramJob extends Job {
       session.open(monitor);
     }
     Project capellaProject = SessionHelper.getCapellaProject(session);
-    
     RefreshDiagramsCommandHandler handler = new RefreshDiagramsCommandHandler();
     Job job = handler.new RefreshDiagramsJob(handler.getSubRepresentations(capellaProject, session), session, Display.getDefault());
     job.setUser(true);

@@ -20,6 +20,7 @@ import org.polarsys.capella.core.sirius.ui.commandline.RemoveHiddenElementsComma
 import org.polarsys.capella.test.commandline.ju.utils.MockApplicationContext;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
 import org.polarsys.capella.test.framework.api.ModelProviderHelper;
+import org.polarsys.capella.test.framework.helpers.GuiActions;
 import org.polarsys.capella.test.framework.helpers.log.StatusValidator;
 
 /**
@@ -52,6 +53,7 @@ public class CommandLineRemoveHiddenElementsTest extends BasicTestCase {
       assertTrue("Remove hidden elements shall have removed nothing", removeNothing.isValid());
       
     } catch (Exception e) {
+      e.printStackTrace();
       assertFalse(e.getMessage(), true);
     }
   }
@@ -73,5 +75,6 @@ public class CommandLineRemoveHiddenElementsTest extends BasicTestCase {
     commandLine.checkArgs(mockApplicationContext);
     commandLine.prepare(mockApplicationContext);
     commandLine.execute(mockApplicationContext);
+    GuiActions.flushASyncGuiJobs();
   }
 }

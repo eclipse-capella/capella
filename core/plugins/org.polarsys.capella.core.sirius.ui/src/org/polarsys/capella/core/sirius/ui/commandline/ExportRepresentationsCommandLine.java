@@ -52,7 +52,7 @@ public class ExportRepresentationsCommandLine extends AbstractWorkbenchCommandLi
     if (!session.isOpen()) {
       session.open(new NullProgressMonitor());
     }
-
+    
     if (CapellaResourceHelper.isAirdResource(uri)) {
       Collection<DRepresentation> representations = DialectManager.INSTANCE.getAllRepresentations(session);
 
@@ -71,7 +71,10 @@ public class ExportRepresentationsCommandLine extends AbstractWorkbenchCommandLi
 
       } catch (InvocationTargetException e) {
         return new Status(IStatus.ERROR, SiriusUIPlugin.getDefault().getPluginId(), e.getMessage(), e);
-      }
+      
+      } catch (Exception e) {
+        return new Status(IStatus.ERROR, SiriusUIPlugin.getDefault().getPluginId(), e.getMessage(), e);
+      } 
     }
 
     return Status.OK_STATUS;

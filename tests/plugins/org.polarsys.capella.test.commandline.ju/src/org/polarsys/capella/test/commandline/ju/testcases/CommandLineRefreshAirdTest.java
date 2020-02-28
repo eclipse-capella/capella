@@ -42,6 +42,7 @@ public class CommandLineRefreshAirdTest extends BasicTestCase {
       assertTrue("Refresh representations", removeSomething.isValid());
       
     } catch (Exception e) {
+      e.printStackTrace();
       assertFalse(e.getMessage(), true);
     }
 
@@ -64,7 +65,6 @@ public class CommandLineRefreshAirdTest extends BasicTestCase {
     commandLine.checkArgs(mockApplicationContext);
     commandLine.prepare(mockApplicationContext);
     commandLine.execute(mockApplicationContext);
-    
     GuiActions.flushASyncGuiJobs();
   }
   

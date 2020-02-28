@@ -64,7 +64,12 @@ public class RemoveHiddenElementsCommandLine extends AbstractWorkbenchCommandLin
         return Status.CANCEL_STATUS;
       }
       session.save(new NullProgressMonitor());
-      session.close(new NullProgressMonitor());
+      try {
+        session.close(new NullProgressMonitor());
+        
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
     }
 
     return Status.OK_STATUS;

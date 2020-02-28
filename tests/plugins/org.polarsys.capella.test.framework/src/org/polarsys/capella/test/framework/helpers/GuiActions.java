@@ -48,8 +48,8 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.commands.ICommandService;
 import org.eclipse.ui.handlers.IHandlerService;
-import org.eclipse.ui.internal.Workbench;
 import org.eclipse.ui.progress.UIJob;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.explorer.activity.ui.actions.OpenActivityExplorerAction;
 import org.polarsys.capella.core.model.helpers.move.MoveHelper;
@@ -215,10 +215,11 @@ public class GuiActions {
   }
 
   /**
-   * Prevents that all UIJobs scheduled has been executed before returning.
+   * Prevents that all async scheduled has been executed before returning.
    */
   public static void flushASyncGuiJobs() {
-    Collection<Job> jobs = getUIJobs();
+    Collection<Job> jobs = getAsyncJobs();
+    flushASyncGuiThread();
     while (jobs.size() > 0) {
       for (Job job : jobs) {
         try {
@@ -228,11 +229,15 @@ public class GuiActions {
         }
       }
       flushASyncGuiThread();
-      jobs = getUIJobs();
+      jobs = getAsyncJobs();
     }
   }
 
-  protected static Collection<Job> getUIJobs() {
+  /**
+   * Returns all interesting jobs that we want to wait.
+   * UIJob but also our jobs
+   */
+  protected static Collection<Job> getAsyncJobs() {
     IJobManager jobMan = Job.getJobManager();
     Job[] jobs = jobMan.find(null);
 
@@ -241,6 +246,10 @@ public class GuiActions {
       try {
         if (job instanceof UIJob) {
           result.add(job);
+        } else {
+          if (FrameworkUtil.getBundle(job.getClass()).getSymbolicName().contains("polarsys")) {
+            result.add(job);
+          }
         }
       } catch (Exception e) {
         e.printStackTrace();
@@ -445,7 +454,7 @@ public class GuiActions {
     capellaCloneDiagramCommand.execute();
     return capellaCloneDiagramCommand.getResult();
   }
-  
+
   /**
    * Clone the given diagram and all its attached elements
    * 
@@ -463,11 +472,11 @@ public class GuiActions {
     try {
       setCurrentSelection(newTarget);
       return command.isEnabled();
-      
+
     } catch (Exception e) {
       return false;
     }
-    
+
   }
 
   /**
@@ -511,7 +520,7 @@ public class GuiActions {
     action.setShouldUncontrolRepresentations(bShouldUncontrolRepresentations_p);
     action.run();
   }
-  
+
   public static boolean canDnD(EObject owner, List<EObject> elementsToDnD) {
     MoveHelper moveHelper = new MoveHelper();
     return moveHelper.checkSemanticRules(elementsToDnD, owner).isOK()
