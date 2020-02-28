@@ -17,18 +17,21 @@ import org.eclipse.jface.viewers.ICheckStateListener;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.ui.dialogs.PatternFilter;
+import org.polarsys.capella.core.ui.search.CapellaSearchPage;
 import org.polarsys.capella.core.ui.search.CapellaSearchSettings;
 
 public class CapellaLeftSearchForContainerArea extends AbstractCapellaSearchForContainerArea {
-
-  public CapellaLeftSearchForContainerArea(Group parent, CapellaSearchSettings settings) {
-    super(parent, null, settings);
+  protected AbstractMetaModelParticipantsItemProvider partictipantsItemProvider;
+  
+  public CapellaLeftSearchForContainerArea(Group parent, CapellaSearchPage searchPage) {
+    super(parent, null, searchPage);
   }
 
   @Override
   protected AbstractMetaModelParticipantsItemProvider getPartictipantsItemProvider() {
-    if (partictipantsItemProvider == null)
-      return new MetaClassesParticipantsItemProvider(this);
+    if (partictipantsItemProvider == null) {
+      partictipantsItemProvider = new MetaClassesParticipantsItemProvider(this);
+    }
     return partictipantsItemProvider;
   }
 
@@ -60,7 +63,6 @@ public class CapellaLeftSearchForContainerArea extends AbstractCapellaSearchForC
 
   @Override
   protected void setCheckSubtree() {
-    // for partictipantsItemProviders
     ((CheckboxTreeViewer) filteredTree.getViewer()).addCheckStateListener(getCheckStateListener());
   }
 
@@ -77,15 +79,20 @@ public class CapellaLeftSearchForContainerArea extends AbstractCapellaSearchForC
         
         // handle the inheritance check propagation
         Object[] changedObjects = partictipantsItemProvider.getChildren(parent);
+        
         for (Object obj : changedObjects) {
           viewer.setChecked(obj, state);
-          if(state == true)
+          if(state == true) {
             checkedElements.add(obj);
-          else
+          }
+          else {
             checkedElements.remove(obj);
+          }
         }
         
-        capellaSearchSettings.setSearchMetaClasses(checkedElements);
+        searchPage.updateValidationStatus(searchPage.getCapellaSearchSettings().validate());
+        // setSearchMetaClasses, beside the metaclass it contains also the category (Diagram Elements or Model Elements)
+        searchPage.getCapellaSearchSettings().setSearchMetaClasses(checkedElements);
         // refresh the attributes in right panel
         if(otherSideArea != null) {
           otherSideArea.filteredTree.getViewer().refresh();

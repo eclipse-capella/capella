@@ -17,9 +17,9 @@ public class CapellaSearchConstants {
   public static final String CapellaReplaceQuery_Validation_Replacement_Null="The replacement must not be null";
   public static final String CapellaSearchDialog_ShowIn_NotFound_Message = "The selected element is not present in the search result for pattern '%s'";
   public static final String CapellaSearchDialog_Title = "Capella Search";
-  public static final String CapellaSearchField_Description = "Description";
-  public static final String CapellaSearchField_Name = "Name";
-  public static final String CapellaSearchField_Summary = "Summary";
+  public static final String CapellaAttribute_Description = "Description";
+  public static final String CapellaAttribute_Name = "Name";
+  public static final String CapellaAttribute_Summary = "Summary";
   public static final String CapellaSearchPage_Checkbox_CaseSensitive_Label = "Case sensitive";
   public static final String CapellaSearchPage_Checkbox_Regex_Label = "Regular expression";
   public static final String CapellaSearchPage_Checkbox_WholeWord_Label = "Whole word";
@@ -28,7 +28,8 @@ public class CapellaSearchConstants {
   public static final String CapellaSearchPage_Validation_Message_OK = "";
   public static final String CapellaSearchPage_Validation_Message_Pattern_Empty = "Search pattern must not be empty";
   public static final String CapellaSearchPage_Validation_Message_Project_Selection = "At least one project must be selected";
-  public static final String CapellaSearchPage_Validation_Message_SearchField_Selection = "At least one search field must be selected";
+  public static final String CapellaSearchPage_Validation_Message_SearchAttribute_Selection = "At least one attribute must be selected";
+  public static final String CapellaSearchPage_Validation_Message_SearchMetaClass_Selection = "At least one metaclass must be selected";
   public static final String CapellaSearchQuery_Search_Pattern_Not_Validated_Message = "The search pattern '%s' is not validated because: %s";
   public static final String CapellaSearchResult_Label = "'%s' - %d occurrence(s) in %d element(s) of %d project(s)";
   public static final String CapellaSearchResult_Label_With_Active_Filters = "'%s' - %d occurrence(s) in %d element(s) of %d project(s) - %d occurrence(s) filtered by %d active filter(s)";
@@ -37,6 +38,7 @@ public class CapellaSearchConstants {
   public static final String ReplaceDialog_Label_Replacement = "With:";
   public static final String ReplaceDialog_Label = "Replace:";
   public static final String ReplaceDialog_Title = "Capella Replace";
+  public static final String ReplaceDialog_No_Match_Found_Message = "No match found";
   public static final String ReplaceJob_SubTitle = "Replace %d occurrence(s) in the project: %s";
   public static final String ReplaceJob_Title = "Replacing occurrences by '%s'...";
   public static final String SearchJob_SubTitle = "Scanning elements in the project: %s";

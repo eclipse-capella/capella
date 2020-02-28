@@ -53,6 +53,7 @@ public class CapellaReplaceRunnable implements IRunnableWithProgress {
     CapellaReplaceDialog capellaReplaceDialog = new CapellaReplaceDialog(shell, pattern, title);
     if (capellaReplaceDialog.open() == Window.OK) {
       replacement = capellaReplaceDialog.getReplacement();
+      searchQuery.getCapellaSearchSettings().setReplaceTextPattern(replacement);
       return true;
     }
 

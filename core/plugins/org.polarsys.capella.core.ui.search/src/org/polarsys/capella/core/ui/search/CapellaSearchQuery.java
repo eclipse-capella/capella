@@ -72,20 +72,27 @@ public class CapellaSearchQuery implements ISearchQuery {
     if (element instanceof EObject) {
       EObject eObj = (EObject) element;
       capellaSearchSettings.getSearchMetaClasses().forEach(metaObj -> {
-        EClass eCls = (EClass) metaObj;
-        if (eObj.eClass().equals(eCls)) {
-          capellaSearchSettings.getSearchAttributes().forEach(attrObj -> {
-            EAttribute attribute = (EAttribute) attrObj;
-            Object attrValue = eObj.eGet(attribute);
-            if (attrValue instanceof String) {
-              String attrString = (String) attrValue;
-              if (isMatchOccurrences(pattern, attrString)) {
-                CapellaSearchMatchEntry result = new CapellaSearchMatchEntry(element, attrString, project, attribute);
-                capellaSearchResult.addMatch(result);
-                capellaSearchResult.getTreeData().addElement(element);
+        if ((metaObj instanceof EClass)) {
+          EClass eCls = (EClass) metaObj;
+          if (eObj.eClass().equals(eCls)) {
+            capellaSearchSettings.getSearchAttributes().forEach(attrObj -> {
+              EAttribute attribute = (EAttribute) attrObj;
+              try {
+                Object attrValue = eObj.eGet(attribute);
+                if (attrValue instanceof String) {
+                  String attrString = (String) attrValue;
+                  if (isMatchOccurrences(pattern, attrString)) {
+                    CapellaSearchMatchEntry result = new CapellaSearchMatchEntry(element, attrString, project,
+                        attribute);
+                    capellaSearchResult.addMatch(result);
+                    capellaSearchResult.getTreeData().addElement(element);
+                  }
+                }
+              } catch (Exception e) {
+
               }
-            }
-          });
+            });
+          }
         }
       });
     }
@@ -98,8 +105,12 @@ public class CapellaSearchQuery implements ISearchQuery {
   private boolean isMatchOccurrences(Pattern pattern, String text) {
     if (text != null && !text.isEmpty()) {
       Matcher matcher = pattern.matcher(text);
-      if (matcher.find()) {
-        return true;
+      try {
+        if (matcher.find()) {
+          return true;
+        }
+      } catch (Exception e) {
+        System.out.println("a1");
       }
     }
 

@@ -33,6 +33,7 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.PatternFilter;
 import org.eclipse.ui.progress.IProgressService;
 import org.polarsys.capella.core.ui.search.CapellaSearchConstants;
+import org.polarsys.capella.core.ui.search.CapellaSearchPage;
 import org.polarsys.capella.core.ui.search.CapellaSearchSettings;
 import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 
@@ -40,7 +41,6 @@ public abstract class AbstractCapellaSearchForContainerArea {
   protected Button selectAllButton;
   protected Button deselectAllButton;
   protected Button defaultButton;
-  protected static AbstractMetaModelParticipantsItemProvider partictipantsItemProvider;
 
   protected Set<Object> checkedElements = new HashSet<Object>();
   protected Set<Object> displayedElements = new HashSet<Object>();
@@ -49,12 +49,12 @@ public abstract class AbstractCapellaSearchForContainerArea {
   protected Group parentGroup;
   protected int participantsCheckStrategy = SWT.MULTI;
   protected AbstractCapellaSearchForContainerArea otherSideArea;
-  protected CapellaSearchSettings capellaSearchSettings;
-
-  public AbstractCapellaSearchForContainerArea(Group parent, AbstractCapellaSearchForContainerArea area, CapellaSearchSettings settings) {
+  protected CapellaSearchPage searchPage;
+  
+  public AbstractCapellaSearchForContainerArea(Group parent, AbstractCapellaSearchForContainerArea area, CapellaSearchPage page) {
     parentGroup = parent;
     otherSideArea = area;
-    capellaSearchSettings = settings;
+    searchPage = page;
     createContent();
   }
 
@@ -64,7 +64,7 @@ public abstract class AbstractCapellaSearchForContainerArea {
   }
 
   protected void createContentArea() {
-    partictipantsItemProvider = getPartictipantsItemProvider();
+    AbstractMetaModelParticipantsItemProvider partictipantsItemProvider = getPartictipantsItemProvider();
     patternFilter = createPatternFilter();
 
     filteredTree = new CheckboxFilteredTree(parentGroup, SWT.BORDER, patternFilter);
@@ -178,5 +178,23 @@ public abstract class AbstractCapellaSearchForContainerArea {
   
   public void setOtherSideArea(AbstractCapellaSearchForContainerArea area) {
     this.otherSideArea = area;
+  }
+  
+  public void applySearchSettings(Set<Object> objects) {
+    CheckboxTreeViewer checkboxTreeViewer = (CheckboxTreeViewer) filteredTree.getViewer();
+    checkedElements.clear();
+    checkAll(checkboxTreeViewer, false);
+    
+    for(Object obj : objects) {
+      checkedElements.add(obj);
+      checkboxTreeViewer.setChecked(obj, true);
+    }
+    if(otherSideArea != null) {
+      otherSideArea.filteredTree.getViewer().refresh();
+    }
+  }
+  
+  public void refresh() {
+    filteredTree.getViewer().refresh();
   }
 }

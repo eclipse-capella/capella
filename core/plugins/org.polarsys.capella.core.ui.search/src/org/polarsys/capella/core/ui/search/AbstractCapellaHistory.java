@@ -13,7 +13,10 @@ package org.polarsys.capella.core.ui.search;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.jface.dialogs.IDialogSettings;
+import org.polarsys.capella.core.ui.search.searchfor.MetaClassesUtil;
 
 public abstract class AbstractCapellaHistory {
   protected static final int HISTORY_SIZE = 5;
@@ -27,12 +30,16 @@ public abstract class AbstractCapellaHistory {
   protected static final String SECTION_SEARCH_ATTRIBUTE_PREFIX = "attribute.replace";
   protected static final String SECTION_SEARCH_ATTRIBUTE_COUNT = "attribute.count.replace";
 
+  protected static final String SECTION_SEARCH_METACLASS_PREFIX = "metaclass.replace";
+  protected static final String SECTION_SEARCH_METACLASS_COUNT = "metaclass.count.replace";
+
   protected static final String SECTION_SEARCH_PROJECT_PREFIX = "project.replace";
   protected static final String SECTION_SEARCH_PROJECT_COUNT = "project.count.replace";
 
-  protected AbstractCapellaHistory() {}
+  protected AbstractCapellaHistory() {
+  }
 
-  public static List<CapellaSearchSettings> getAllSearchSettings() {
+  public List<CapellaSearchSettings> getAllSearchSettings() {
     List<CapellaSearchSettings> capellaSearchSettingsInHistory = new ArrayList<>();
 
     IDialogSettings capellaSearchSection = getDialogSettingsForCapellaSearch();
@@ -48,12 +55,11 @@ public abstract class AbstractCapellaHistory {
     return capellaSearchSettingsInHistory;
   }
 
-  private static CapellaSearchSettings createSearchSettingsFromHistoryIndex(int historyIndex) {
+  private CapellaSearchSettings createSearchSettingsFromHistoryIndex(int historyIndex) {
     IDialogSettings searchHistorySection = getDialogSettingsForHistoryIndex(historyIndex);
     CapellaSearchSettings searchSettings = new CapellaSearchSettings();
     if (searchHistorySection != null) {
       setSearchSettings(searchSettings, searchHistorySection);
-      searchSettings.setReplaceTextPattern(searchHistorySection.get(SECTION_SEARCH_REPLACE_PATTERN));
 
       try {
         int projectsCount = searchHistorySection.getInt(SECTION_SEARCH_PROJECT_COUNT);
@@ -63,7 +69,19 @@ public abstract class AbstractCapellaHistory {
         int fieldsCount = searchHistorySection.getInt(SECTION_SEARCH_ATTRIBUTE_COUNT);
         for (int i = 0; i < fieldsCount; i++) {
           String searchFieldText = searchHistorySection.get(SECTION_SEARCH_ATTRIBUTE_PREFIX + i);
-          searchSettings.addSearchField(CapellaSearchField.valueOf(searchFieldText));
+          Object attribute = MetaClassesUtil.getInstance().getAttribute(searchFieldText);
+          if(attribute != null) {
+            searchSettings.getSearchAttributes().add(attribute);
+          }
+        }
+
+        int metaFieldsCount = searchHistorySection.getInt(SECTION_SEARCH_METACLASS_COUNT);
+        for (int i = 0; i < metaFieldsCount; i++) {
+          String searchFieldText = searchHistorySection.get(SECTION_SEARCH_METACLASS_PREFIX + i);
+          Object metaclass = MetaClassesUtil.getInstance().getClassifier(searchFieldText);
+          if(metaclass != null) {
+            searchSettings.getSearchMetaClasses().add(metaclass);
+          }
         }
       } catch (NumberFormatException e) {
         // Nothing
@@ -71,10 +89,12 @@ public abstract class AbstractCapellaHistory {
     }
     return searchSettings;
   }
-  
-  protected static void setSearchSettings(CapellaSearchSettings searchSettings, IDialogSettings searchHistorySection) {}
 
-  public static void appendSearchSettings(CapellaSearchSettings capellaSearchSettings) {
+  protected void setSearchSettings(CapellaSearchSettings searchSettings, IDialogSettings searchHistorySection) {
+    System.out.println("b");
+  }
+
+  public void appendSearchSettings(CapellaSearchSettings capellaSearchSettings) {
     IDialogSettings capellaSearchSection = getDialogSettingsForCapellaSearch();
     int historyIndex = getHistoryIndex(capellaSearchSettings);
     if (historyIndex == -1) { // not yet in history
@@ -101,7 +121,7 @@ public abstract class AbstractCapellaHistory {
     }
   }
 
-  private static IDialogSettings getDialogSettingsForCapellaSearch() {
+  private IDialogSettings getDialogSettingsForCapellaSearch() {
     IDialogSettings dialogSettings = Activator.getDefault().getDialogSettings();
     IDialogSettings section = dialogSettings.getSection(SECTION_SEARCH);
     if (section == null) {
@@ -110,7 +130,7 @@ public abstract class AbstractCapellaHistory {
     return section;
   }
 
-  private static IDialogSettings getDialogSettingsForHistoryIndex(int historyIndex) {
+  private IDialogSettings getDialogSettingsForHistoryIndex(int historyIndex) {
     IDialogSettings capellaSearch = getDialogSettingsForCapellaSearch();
 
     IDialogSettings searchSectionAtHistoryPoint = capellaSearch.getSection(SECTION_HISTORY_PREFIX + historyIndex);
@@ -121,10 +141,9 @@ public abstract class AbstractCapellaHistory {
     return searchSectionAtHistoryPoint;
   }
 
-  private static void saveSearchSettingsToHistoryPoint(CapellaSearchSettings capellaSearchSettings, int historyIndex) {
+  private void saveSearchSettingsToHistoryPoint(CapellaSearchSettings capellaSearchSettings, int historyIndex) {
     IDialogSettings searchHistorySection = getDialogSettingsForHistoryIndex(historyIndex);
     if (searchHistorySection != null) {
-      searchHistorySection.put(SECTION_SEARCH_REPLACE_PATTERN, capellaSearchSettings.getReplaceTextPattern());
       setSearchHistorySettings(capellaSearchSettings, searchHistorySection);
       int projectsCount = 0;
       for (String project : capellaSearchSettings.getProjects()) {
@@ -133,25 +152,37 @@ public abstract class AbstractCapellaHistory {
       }
       searchHistorySection.put(SECTION_SEARCH_PROJECT_COUNT, projectsCount);
 
-      int fieldsCount = 0;
-      for (CapellaSearchField searchField : capellaSearchSettings.getSearchFields()) {
-        searchHistorySection.put(SECTION_SEARCH_ATTRIBUTE_PREFIX + fieldsCount, searchField.toString());
-        fieldsCount++;
+     int attrFieldsCount = 0;
+      for (Object searchAttribute : capellaSearchSettings.getSearchAttributes()) {
+        EAttribute attributes = (EAttribute) searchAttribute;
+        searchHistorySection.put(SECTION_SEARCH_ATTRIBUTE_PREFIX + attrFieldsCount, attributes.getName());
+        attrFieldsCount++;
       }
-      searchHistorySection.put(SECTION_SEARCH_ATTRIBUTE_COUNT, fieldsCount);
+      searchHistorySection.put(SECTION_SEARCH_ATTRIBUTE_COUNT, attrFieldsCount);
+
+      int clsFieldsCount = 0;
+      for (Object searchMetaClasses : capellaSearchSettings.getSearchMetaClasses()) {
+        if (searchMetaClasses instanceof EClass) {
+          EClass eCls = (EClass) searchMetaClasses;
+          searchHistorySection.put(SECTION_SEARCH_METACLASS_PREFIX + clsFieldsCount, eCls.getName());
+          clsFieldsCount++;
+        }
+      }
+      searchHistorySection.put(SECTION_SEARCH_METACLASS_COUNT, clsFieldsCount);
     }
   }
-  
-  protected static void setSearchHistorySettings(CapellaSearchSettings searchSettings, IDialogSettings searchHistorySection) {
+
+  protected void setSearchHistorySettings(CapellaSearchSettings searchSettings,
+      IDialogSettings searchHistorySection) {
   }
-  
-  private static int getHistoryIndex(CapellaSearchSettings capellaSearchSettings) {
+
+  private int getHistoryIndex(CapellaSearchSettings capellaSearchSettings) {
     IDialogSettings capellaSearchSection = getDialogSettingsForCapellaSearch();
     try {
       int currentHistoryCount = capellaSearchSection.getInt(SECTION_HISTORY_COUNT);
       for (int i = 0; i < currentHistoryCount; i++) {
         CapellaSearchSettings searchSettingsInHistory = createSearchSettingsFromHistoryIndex(i);
-        if (searchSettingsInHistory.equalsForReplace(capellaSearchSettings)) {
+        if (searchSettingsInHistory.equals(capellaSearchSettings)) {
           return i;
         }
       }

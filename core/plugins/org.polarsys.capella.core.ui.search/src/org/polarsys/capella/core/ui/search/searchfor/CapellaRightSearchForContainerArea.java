@@ -16,18 +16,22 @@ import org.eclipse.jface.viewers.ICheckStateListener;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.ui.dialogs.PatternFilter;
+import org.polarsys.capella.core.ui.search.CapellaSearchPage;
 import org.polarsys.capella.core.ui.search.CapellaSearchSettings;
 
 public class CapellaRightSearchForContainerArea extends AbstractCapellaSearchForContainerArea {
+  protected AbstractMetaModelParticipantsItemProvider partictipantsItemProvider;
+  
   public CapellaRightSearchForContainerArea(Group parent, AbstractCapellaSearchForContainerArea leftArea,
-      CapellaSearchSettings settings) {
-    super(parent, leftArea, settings);
+       CapellaSearchPage searchPage) {
+    super(parent, leftArea, searchPage);
   }
 
   @Override
   protected AbstractMetaModelParticipantsItemProvider getPartictipantsItemProvider() {
-    if (partictipantsItemProvider == null)
-      return new AttributesParticipantsItemProvider(otherSideArea);
+    if (partictipantsItemProvider == null) {
+      partictipantsItemProvider = new AttributesParticipantsItemProvider(otherSideArea);
+    }
     return partictipantsItemProvider;
   }
 
@@ -68,9 +72,9 @@ public class CapellaRightSearchForContainerArea extends AbstractCapellaSearchFor
         else
           checkedElements.remove(element);
         
-        capellaSearchSettings.setSearchAttributes(checkedElements);
+        searchPage.getCapellaSearchSettings().setSearchAttributes(checkedElements);
+        searchPage.updateValidationStatus(searchPage.getCapellaSearchSettings().validate());
       }
     };
   }
-
 }

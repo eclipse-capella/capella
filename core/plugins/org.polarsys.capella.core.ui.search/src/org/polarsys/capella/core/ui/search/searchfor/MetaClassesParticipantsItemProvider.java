@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.polarsys.capella.core.ui.search.searchfor;
 
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -34,7 +33,7 @@ public class MetaClassesParticipantsItemProvider extends AbstractMetaModelPartic
 
   public MetaClassesParticipantsItemProvider(AbstractCapellaSearchForContainerArea area) {
     this.area = area;
-    eClassifierList = getEClassifiers();
+    eClassifierList = MetaClassesUtil.getInstance().getClassifiers();
     diagramElements = getDiagramElements();
     elements = new HashMap<String, Set<Object>>();
     elements.put(CapellaSearchConstants.ModelElements_Key, eClassifierList);
@@ -92,7 +91,7 @@ public class MetaClassesParticipantsItemProvider extends AbstractMetaModelPartic
   public void showOnlySemantics(boolean showOnly) {
     this.showsOnlySemantics = showOnly;
   }
-
+/*
   public Set<Object> getEClassifiers() {
     Set<Object> allDerivedReferences = new HashSet<>();
     for (String nsURI : EPackage.Registry.INSTANCE.keySet()) {
@@ -107,7 +106,7 @@ public class MetaClassesParticipantsItemProvider extends AbstractMetaModelPartic
     }
     return allDerivedReferences;
   }
-  
+  */
  public Set<Object> getDiagramElements() {
     Set<Object> result = new HashSet<Object>();
     result.add(DiagramPackage.eINSTANCE.getNote());

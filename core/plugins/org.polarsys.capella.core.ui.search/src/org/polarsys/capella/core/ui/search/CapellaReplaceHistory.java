@@ -13,13 +13,21 @@ package org.polarsys.capella.core.ui.search;
 import org.eclipse.jface.dialogs.IDialogSettings;
 
 public class CapellaReplaceHistory extends AbstractCapellaHistory {
+  private static CapellaReplaceHistory instance;
   protected CapellaReplaceHistory() {}
+  
+  public static CapellaReplaceHistory getInstance() {
+    if(instance == null) {
+      instance = new CapellaReplaceHistory();
+    }
+    return instance;
+  }
 
-  protected static void setSearchSettings(CapellaSearchSettings searchSettings, IDialogSettings searchHistorySection) {
+  protected void setSearchSettings(CapellaSearchSettings searchSettings, IDialogSettings searchHistorySection) {
     searchSettings.setReplaceTextPattern(searchHistorySection.get(SECTION_SEARCH_REPLACE_PATTERN));
   }
   
-  protected static void setSearchHistorySettings(CapellaSearchSettings capellaSearchSettings, IDialogSettings searchHistorySection) {
+  protected void setSearchHistorySettings(CapellaSearchSettings capellaSearchSettings, IDialogSettings searchHistorySection) {
     searchHistorySection.put(SECTION_SEARCH_REPLACE_PATTERN, capellaSearchSettings.getReplaceTextPattern());
   }
 }

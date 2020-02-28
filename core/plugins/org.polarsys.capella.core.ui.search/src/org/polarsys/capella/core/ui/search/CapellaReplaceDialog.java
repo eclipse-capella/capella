@@ -82,7 +82,7 @@ public class CapellaReplaceDialog extends Dialog {
   }
 
   private void createInputReplacement(Composite container) {
-    previousSearchSettings.addAll(CapellaReplaceHistory.getAllSearchSettings());
+    previousSearchSettings.addAll(CapellaReplaceHistory.getInstance().getAllSearchSettings());
     Label label = new Label(container, SWT.NONE);
     label.setText(CapellaSearchConstants.ReplaceDialog_Label_Replacement);
 
@@ -92,9 +92,9 @@ public class CapellaReplaceDialog extends Dialog {
     inputReplacement = new Combo(container, SWT.BORDER);
     inputReplacement.setLayoutData(gridData);
     if (!previousSearchSettings.isEmpty()) {
-      String[] previousSearchPatterns = previousSearchSettings.stream()
+      String[] previousSearchPatterns = previousSearchSettings.stream().filter(x -> x.getReplaceTextPattern() != null)
           .map(CapellaSearchSettings::getReplaceTextPattern).toArray(String[]::new);
-      if (previousSearchPatterns != null) {
+      if (previousSearchPatterns != null && previousSearchPatterns.length > 0) {
         inputReplacement.setItems(previousSearchPatterns);
         inputReplacement.select(0);
       }

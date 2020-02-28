@@ -19,6 +19,8 @@
             id="org.polarsys.capella.core.ui.search.page"
             label="Capella Search"
             tabPosition="0"
+			extensions="*:1"
+			canSearchEnclosingProjects="true"
             showScopeSection="true">
       </page>
    </extension>

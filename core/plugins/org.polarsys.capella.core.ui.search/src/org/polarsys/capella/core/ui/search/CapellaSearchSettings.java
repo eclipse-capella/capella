@@ -27,7 +27,6 @@ public class CapellaSearchSettings {
   private String textPattern = null;
   private String replaceTextPattern = null;
   private Set<String> projects = new HashSet<>();
-  private Set<CapellaSearchField> capellaSearchFields = new HashSet<>();
   private Set<Object> searchAttributes = new HashSet<>();
   private Set<Object> searchMetaClasses = new HashSet<>();
   
@@ -46,25 +45,6 @@ public class CapellaSearchSettings {
   public void clearProjects() {
     projects.clear();
   }
-
-  
-  /* to remove start */
-  public void addSearchField(CapellaSearchField searchField) {
-    capellaSearchFields.add(searchField);
-  }
-
-  public Set<CapellaSearchField> getSearchFields() {
-    return Collections.unmodifiableSet(capellaSearchFields);
-  }
-
-  public void clearSearchFields() {
-    capellaSearchFields.clear();
-  }
-
-  public boolean containSearchField(CapellaSearchField searchField) {
-    return capellaSearchFields.contains(searchField);
-  }
-  /* to remove end */
 
   public boolean isCaseSensitive() {
     return isCaseSensitive;
@@ -121,6 +101,14 @@ public class CapellaSearchSettings {
   public void setSearchMetaClasses(Set<Object> searchMetaClasses) {
     this.searchMetaClasses = searchMetaClasses;
   }
+  
+  public void addSearchMetaClass(Object searchMetaClasse) {
+    this.searchMetaClasses.add(searchMetaClasses);
+  }
+  
+  public void removeSearchMetaClass(Object searchMetaClasse) {
+    this.searchMetaClasses.remove(searchMetaClasses);
+  }
 
   public IStatus validate() {
     if (projects.isEmpty()) {
@@ -128,9 +116,14 @@ public class CapellaSearchSettings {
           CapellaSearchConstants.CapellaSearchPage_Validation_Message_Project_Selection);
     }
 
-    if (capellaSearchFields.isEmpty()) {
+    if (searchAttributes.isEmpty()) {
       return new Status(IStatus.ERROR, Activator.PLUGIN_ID,
-          CapellaSearchConstants.CapellaSearchPage_Validation_Message_SearchField_Selection);
+          CapellaSearchConstants.CapellaSearchPage_Validation_Message_SearchAttribute_Selection);
+    }
+    
+    if (searchMetaClasses.isEmpty()) {
+      return new Status(IStatus.ERROR, Activator.PLUGIN_ID,
+          CapellaSearchConstants.CapellaSearchPage_Validation_Message_SearchMetaClass_Selection);
     }
 
     if (isRegExSearch) {
@@ -157,21 +150,6 @@ public class CapellaSearchSettings {
     return createPattern(textPattern, isCaseSensitive, isRegExSearch, isWholeWord);
   }
 
-  public boolean equalsForReplace(Object arg0) {
-    if (arg0 == this) {
-      return true;
-    }
-
-    CapellaSearchSettings that = (CapellaSearchSettings) arg0;
-
-    if (this.replaceTextPattern == null ? that.replaceTextPattern != null
-        : !this.replaceTextPattern.equals(that.replaceTextPattern)) {
-      return false;
-    }
-
-    return true;
-  }
-
   @Override
   public boolean equals(Object arg0) {
     if (arg0 == this) {
@@ -196,8 +174,13 @@ public class CapellaSearchSettings {
       return false;
     }
 
-    if (this.capellaSearchFields == null ? that.capellaSearchFields != null
-        : !this.capellaSearchFields.equals(that.capellaSearchFields)) {
+    if (this.searchAttributes == null ? that.searchAttributes != null
+        : !this.searchAttributes.equals(that.searchAttributes)) {
+      return false;
+    }
+    
+    if (this.searchMetaClasses == null ? that.searchMetaClasses != null
+        : !this.searchMetaClasses.equals(that.searchMetaClasses)) {
       return false;
     }
 
@@ -214,7 +197,8 @@ public class CapellaSearchSettings {
     hashCode += 7 * hashCode + (isRegExSearch ? 1 : 0);
     hashCode += 7 * hashCode + (textPattern == null ? 0 : textPattern.hashCode());
     hashCode += 7 * hashCode + (replaceTextPattern == null ? 0 : replaceTextPattern.hashCode());
-    hashCode += 7 * hashCode + capellaSearchFields.hashCode();
+    hashCode += 7 * hashCode + searchAttributes.hashCode();
+    hashCode += 7 * hashCode + searchMetaClasses.hashCode();
     hashCode += 7 * hashCode + projects.hashCode();
     return hashCode;
   }
