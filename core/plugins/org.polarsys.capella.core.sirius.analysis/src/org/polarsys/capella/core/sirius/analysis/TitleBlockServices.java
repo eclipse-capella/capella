@@ -237,9 +237,11 @@ public class TitleBlockServices {
   }
 
   public int getNumColumns(DAnnotation titleBlock) {
-    EObject obj = titleBlock.getReferences().get(1);
-    if (obj instanceof DAnnotation)
-      return ((DAnnotation) obj).getReferences().size();
+    if (titleBlock.getReferences().size() > 1) {
+      EObject obj = titleBlock.getReferences().get(1);
+      if (obj instanceof DAnnotation)
+        return ((DAnnotation) obj).getReferences().size();
+    }
     return 0;
   }
 
