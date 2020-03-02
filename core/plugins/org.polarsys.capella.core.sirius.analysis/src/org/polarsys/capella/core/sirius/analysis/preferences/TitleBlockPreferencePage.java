@@ -67,14 +67,17 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
   }
 
   public static final String PAGE_ID = "org.polarsys.capella.core.platform.sirius.ui.actions.preferences.TitleBlockPage";
-  public static final String ADD = "Add";
-  public static final String EDIT = "Edit";
-  public static final String REMOVE = "Remove";
-  public static final String DELETE_SELECTION = "Delete Selection";
   public static final String NAME = "Name";
   public static final String CONTENT = "Content";
-  public static final String GROUP_LABEL = "Number of columns in TitleBlock";
-  public static final String TOOLTIP_GROUP = "Tooltip group";
+  public static final String TABEL_CONTENT_PREFERENCE_STORE = "tableTitleBlock";
+  public static final String COLUMNS_NUMBER_PREFERENCE_STORE = "columnsNumberTitleBlock";
+  public static final String ROWS_NUMBER_PREFERENCE_STORE = "rowsNumberTitleBlock";
+  public static final String ESCAPED_SEPARATOR = "\\+";
+  public static final String SEPARATOR = "+";
+  public static final String EMPTY_STRING = "";
+  public static final int BOUND = 200;
+
+  public
 
   TableViewer v;
 
@@ -87,9 +90,9 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
 
   public TitleBlockPreferencePage() {
     super(PAGE_ID);
-    tableContent = doGetPreferenceStore().getString("tableTitleBlock");
-    columnsNumber = doGetPreferenceStore().getInt("columnFieldTitleBlock");
-    rowsNumber = doGetPreferenceStore().getInt("rowFieldTitleBlock");
+    tableContent = doGetPreferenceStore().getString(TABEL_CONTENT_PREFERENCE_STORE);
+    columnsNumber = doGetPreferenceStore().getInt(COLUMNS_NUMBER_PREFERENCE_STORE);
+    rowsNumber = doGetPreferenceStore().getInt("rowsNumberTitleBlock");
   }
 
   @Override
@@ -175,12 +178,9 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
             list.get(index).name = dialog.getName();
             list.get(index).content = dialog.getContent();
             cell.setText(dialog.getName());
-
           }
-
         }
         }
-
       }
     };
 
@@ -201,37 +201,52 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
 
   }
 
-  private void refreshTableRows() {
+  private void refreshTableAddRows() {
     rowsNumber += 1;
     v.setInput(updateModelRows(columnsNumber, rowsNumber));
+  }
+
+  private void refreshTableRemoveRow() {
+    int rowToDelete = v.getTable().getSelectionIndex();
+    v.setInput(updateModelRowsDelete(rowToDelete));
   }
 
   @Override
   public boolean performOk() {
 
     doGetPreferenceStore().setValue("defaultTitleBlock", defaultTitleBlockFieldEditor.getBooleanValue());
-    doGetPreferenceStore().setValue("columnFieldTitleBlock", columnsNumber);
-    doGetPreferenceStore().setValue("rowFieldTitleBlock", rowsNumber);
-    String s = "";
+    doGetPreferenceStore().setValue(COLUMNS_NUMBER_PREFERENCE_STORE, columnsNumber);
+    doGetPreferenceStore().setValue(ROWS_NUMBER_PREFERENCE_STORE, rowsNumber);
+    String currentTableContent = "";
     for (int i = 0; i < rowsNumber; i++) {
       for (int j = 0; j < columnsNumber; j++) {
         if (i == rowsNumber - 1 && j == columnsNumber - 1) {
-          s = s + tccMatrix.get(i).get(j).name + "+" + tccMatrix.get(i).get(j).content;
+          if (tccMatrix.get(i).get(j).name == "" || tccMatrix.get(i).get(j).content == "") {
+            return false;
+          }
+          currentTableContent = currentTableContent + tccMatrix.get(i).get(j).name + SEPARATOR
+              + tccMatrix.get(i).get(j).content;
         } else {
-          s = s + tccMatrix.get(i).get(j).name + "+" + tccMatrix.get(i).get(j).content + "+";
+          if (tccMatrix.get(i).get(j).name == "" || tccMatrix.get(i).get(j).content == "") {
+            return false;
+          }
+          currentTableContent = currentTableContent + tccMatrix.get(i).get(j).name + SEPARATOR
+              + tccMatrix.get(i).get(j).content + SEPARATOR;
 
         }
 
       }
     }
-    doGetPreferenceStore().setValue("tableTitleBlock", s);
+    doGetPreferenceStore().setValue(TABEL_CONTENT_PREFERENCE_STORE, currentTableContent);
     return super.performOk();
   }
 
   private List<List<TitleBlockCell>> updateModel(int nrCol, int nrRows) {
     for (int i = 0; i < nrRows; i++) {
       List<TitleBlockCell> tbcCell = tccMatrix.get(i);
-      tbcCell.add(new TitleBlockCell("Edit", "aql:edit"));
+      // tbcCell.add(new TitleBlockCell("Edit", "aql:edit"));
+      tbcCell.add(new TitleBlockCell(EMPTY_STRING, EMPTY_STRING));
+
     }
     return tccMatrix;
   }
@@ -239,7 +254,8 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
   private List<List<TitleBlockCell>> updateModelRows(int nrCol, int nrRows) {
     List<TitleBlockCell> tbcCell = new ArrayList<>();
     for (int i = 0; i < nrCol; i++) {
-      tbcCell.add(new TitleBlockCell("Edit", "aql:edit"));
+      // tbcCell.add(new TitleBlockCell("Edit", "aql:edit"));
+      tbcCell.add(new TitleBlockCell(EMPTY_STRING, EMPTY_STRING));
     }
     tccMatrix.add(tbcCell);
     return tccMatrix;
@@ -261,7 +277,7 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
   }
 
   private List<List<TitleBlockCell>> createModel(int nrCol, int nrRows) {
-    String[] cellsNameAndContent = tableContent.split("\\+");
+    String[] cellsNameAndContent = tableContent.split(ESCAPED_SEPARATOR);
     int currentIndex = 0;
     tccMatrix = new ArrayList<>();
     for (int i = 0; i < nrRows; i++) {
@@ -276,8 +292,8 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
     return tccMatrix;
   }
 
-  private void createColumn(TableViewer v, final String title, final int bound, int index) {
-    TableViewerColumn column = createTableViewerColumn(v, title, 200);
+  private void createColumn(TableViewer v, final String title, int index) {
+    TableViewerColumn column = createTableViewerColumn(v, title, BOUND);
 
     column.setLabelProvider(new StyledCellLabelProvider() {
       @Override
@@ -372,11 +388,10 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
   }
 
   private void createColumns(TableViewer viewer, int nrColumns) {
-    final int[] bounds = { 100, 100, 100, 100 };
     List<String> columnHeadings = new ArrayList<>();
     for (int i = 0; i < nrColumns; i++) {
       columnHeadings.add("");
-      createColumn(viewer, columnHeadings.get(i), bounds[0], i);
+      createColumn(viewer, columnHeadings.get(i), i);
     }
     testSelectCell(viewer);
     setColumnLayout(viewer, nrColumns);
@@ -411,7 +426,7 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
     final Action addRow = new Action("Add row") {
       @Override
       public void run() {
-        refreshTableRows();
+        refreshTableAddRows();
 
       }
     };
@@ -419,7 +434,7 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
     final Action addColumnAfter = new Action("Add column after") {
       @Override
       public void run() {
-        createColumn(v, "", 100, v.getTable().getColumnCount());
+        createColumn(v, "", v.getTable().getColumnCount());
         columnsNumber += 1;
         refreshTableColumns();
       }
@@ -455,8 +470,7 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
         int response = messageBox.open();
         if (response == SWT.YES) {
           try {
-            int rowToDelete = v.getTable().getSelectionIndex();
-            v.setInput(updateModelRowsDelete(rowToDelete));
+            refreshTableRemoveRow();
 
           } catch (Exception e) {
 
@@ -481,9 +495,9 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
   @Override
   protected void performDefaults() {
     super.performDefaults();
-    columnsNumber = doGetPreferenceStore().getDefaultInt("columnFieldTitleBlock");
-    rowsNumber = doGetPreferenceStore().getDefaultInt("rowFieldTitleBlock");
-    tableContent = doGetPreferenceStore().getDefaultString("tableTitleBlock");
+    columnsNumber = doGetPreferenceStore().getDefaultInt(COLUMNS_NUMBER_PREFERENCE_STORE);
+    rowsNumber = doGetPreferenceStore().getDefaultInt(ROWS_NUMBER_PREFERENCE_STORE);
+    tableContent = doGetPreferenceStore().getDefaultString(TABEL_CONTENT_PREFERENCE_STORE);
     // refreshTableColumns();
     disposeColumns();
     createColumns(v, columnsNumber);

@@ -14,8 +14,6 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Predicate;
 
-import org.eclipse.core.runtime.preferences.DefaultScope;
-import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
@@ -31,6 +29,7 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 import org.polarsys.capella.core.sirius.analysis.helpers.DDiagramHelper;
 import org.polarsys.capella.core.sirius.analysis.preferences.DiagramPreferenceInitializer;
+import org.polarsys.capella.core.sirius.analysis.preferences.TitleBlockPreferencesInitializer;
 import org.polarsys.capella.core.sirius.analysis.tool.ActivityEditorUpdater;
 
 public class SiriusViewActivator extends AbstractUIPlugin {
@@ -71,6 +70,7 @@ public class SiriusViewActivator extends AbstractUIPlugin {
 
     // Initialize preference values
     new DiagramPreferenceInitializer();
+    new TitleBlockPreferencesInitializer();
 
     // Register a predicate to consider Collapse/Uncollapse changes as impacting in "Functional Chain Description"
     // diagram.
@@ -86,7 +86,8 @@ public class SiriusViewActivator extends AbstractUIPlugin {
       return false;
     };
     RefreshHelper.registerImpactingNotification(considerCollapseStateForAutomaticRefreshPredicate);
-    PlatformUI.getWorkbench().getActivitySupport().getActivityManager().addActivityManagerListener(new ActivityEditorUpdater());
+    PlatformUI.getWorkbench().getActivitySupport().getActivityManager()
+        .addActivityManagerListener(new ActivityEditorUpdater());
   }
 
   /**
