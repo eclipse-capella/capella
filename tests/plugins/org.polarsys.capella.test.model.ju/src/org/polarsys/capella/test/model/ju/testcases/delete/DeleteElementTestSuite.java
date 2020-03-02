@@ -37,11 +37,10 @@ public class DeleteElementTestSuite extends BasicTestSuite {
     tests.add(new DeleteChainInvolvmentLink());
     tests.add(new DeleteChainReferenceSourceHierarchy());
     tests.add(new DeleteChainReferenceTargetHierarchy());
-
     tests.add(new DeleteExchangeItem());
     tests.add(new DeleteGuard());
-
     tests.add(new DeleteProtectedElements());
+    tests.add(new DeleteDoNotDeletePropertyValue());
 
     return tests;
   }
