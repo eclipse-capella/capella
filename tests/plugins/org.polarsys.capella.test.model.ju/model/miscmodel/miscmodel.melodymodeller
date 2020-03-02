@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--Capella_Version_null-->
+<!--Capella_Version_1.4.0-->
 <org.polarsys.capella.core.data.capellamodeller:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
     xmlns:org.eclipse.emf.diffmerge.patterns.core="http://org.eclipse.com/emf/diffmerge/patterns/core/1.0.0"
@@ -633,6 +633,8 @@
       key="projectApproach" value="SingletonComponents"/>
   <ownedModelRoots xsi:type="org.polarsys.capella.core.data.capellamodeller:SystemEngineering"
       id="b3f7e50c-ce73-45c0-ac2a-38365b7d0e91" name="miscmodel">
+    <ownedPropertyValues xsi:type="org.polarsys.capella.core.data.capellacore:BooleanPropertyValue"
+        id="ae83a8ca-a114-4ed6-b260-31c88aa90a76" name="BooleanPropertyValue 1"/>
     <ownedArchitectures xsi:type="org.polarsys.capella.core.data.oa:OperationalAnalysis"
         id="c7daf8d7-abf1-4ba8-bbc5-6acc83d55cfe" name="Operational Analysis">
       <ownedFunctionPkg xsi:type="org.polarsys.capella.core.data.oa:OperationalActivityPkg"
@@ -725,7 +727,10 @@
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
           id="643f8f34-5333-492d-8a36-f742e4cc0466" name="Interfaces"/>
       <ownedDataPkg xsi:type="org.polarsys.capella.core.data.information:DataPkg"
-          id="f579edce-3fa3-4d6b-9540-6dfd16418db3" name="Data"/>
+          id="f579edce-3fa3-4d6b-9540-6dfd16418db3" name="Data">
+        <ownedClasses xsi:type="org.polarsys.capella.core.data.information:Class"
+            id="c8fdd007-bef1-4b5a-b35d-a11969aa5e85" name="Class 1" appliedPropertyValues="#ae83a8ca-a114-4ed6-b260-31c88aa90a76"/>
+      </ownedDataPkg>
       <ownedRolePkg xsi:type="org.polarsys.capella.core.data.oa:RolePkg" id="0eae0d46-5721-4476-a3d5-5dff228ec9ae"
           name="Roles"/>
       <ownedEntityPkg xsi:type="org.polarsys.capella.core.data.oa:EntityPkg" id="f6daaca6-fee7-401b-b77c-a3880f335fd1"
