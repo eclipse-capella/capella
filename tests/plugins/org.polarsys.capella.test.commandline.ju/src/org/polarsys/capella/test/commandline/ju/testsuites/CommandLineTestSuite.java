@@ -32,9 +32,9 @@ public class CommandLineTestSuite extends BasicTestSuite {
     tests.add(new CommandLineValidationTest());
     tests.add(new CommandLineZipMigrationTest());
     tests.add(new CommandLineFolderMigrationTest());
-    tests.add(new CommandLineRefreshAirdTest());
     tests.add(new CommandLineRemoveHiddenElementsTest());
     tests.add(new CommandLineExportRepresentationsTest());
+    tests.add(new CommandLineRefreshAirdTest());
     return tests;
   }
   
