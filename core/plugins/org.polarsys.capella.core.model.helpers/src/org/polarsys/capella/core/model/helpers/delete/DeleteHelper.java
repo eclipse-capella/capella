@@ -30,11 +30,8 @@ import org.polarsys.capella.core.data.capellacommon.AbstractState;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.capellacommon.StateEvent;
 import org.polarsys.capella.core.data.capellacommon.TransfoLink;
-import org.polarsys.capella.core.data.capellacore.AbstractPropertyValue;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellacore.InvolvedElement;
-import org.polarsys.capella.core.data.capellacore.Involvement;
 import org.polarsys.capella.core.data.capellacore.PropertyValueGroup;
 import org.polarsys.capella.core.data.cs.AbstractPathInvolvedElement;
 import org.polarsys.capella.core.data.cs.Component;
@@ -62,7 +59,6 @@ import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink;
 import org.polarsys.capella.core.data.fa.FunctionalChainReference;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.fa.FunctionalExchangeRealization;
-import org.polarsys.capella.core.data.fa.SequenceLink;
 import org.polarsys.capella.core.data.fa.SequenceLinkEnd;
 import org.polarsys.capella.core.data.information.AbstractEventOperation;
 import org.polarsys.capella.core.data.information.Association;
@@ -200,82 +196,6 @@ public class DeleteHelper implements IDeleteHelper {
   }
 
   /**
-   * Add pending property values in addition to their elements if necessary.
-   * 
-   * @param elementsToDelete
-   */
-  protected void addPendingPropertyValues(Set<? super EObject> elementsToDelete) {
-    // This algorithm is specified by Loic Petit.
-    Set<EObject> propertyValuesToAddToDeletedElements = new HashSet<EObject>(0);
-    // Loop over elements to delete.
-    for (Object object : elementsToDelete) {
-      if (object instanceof CapellaElement) {
-        // Get applied property values.
-        List<AbstractPropertyValue> appliedPropertyValues = ((CapellaElement) object).getAppliedPropertyValues();
-        // Loop over property values to collect only the ones which have only current capella element as
-        // involvedElements.
-        for (AbstractPropertyValue propertyValue : appliedPropertyValues) {
-          // Is it a pending property value ? i.e valueElements must contain only current object and involvedElements
-          // must be empty.
-          List<CapellaElement> valuedElements = propertyValue.getValuedElements();
-          if ((propertyValue != object) && propertyValue.getInvolvedElements().isEmpty()
-              && ((valuedElements.size() == 1) && valuedElements.contains(object))) {
-            // That's it !
-            Set<EObject> propertyValues = new HashSet<EObject>();
-            propertyValues.add(propertyValue);
-            // Recurse algorithm on this pending property value to remove other pending property values linked to this
-            // one.
-            addPendingPropertyValues(propertyValues);
-            propertyValuesToAddToDeletedElements.addAll(propertyValues);
-          }
-        }
-      }
-    }
-    if (!propertyValuesToAddToDeletedElements.isEmpty()) {
-      elementsToDelete.addAll(propertyValuesToAddToDeletedElements);
-    }
-  }
-
-  /**
-   * Add pending property value groups in addition to their elements if necessary.
-   * 
-   * @param elementsToDelete
-   */
-  protected void addPendingPropertyValueGroups(Set<? super EObject> elementsToDelete) {
-    // This algorithm is specified by Loic Petit.
-    Set<EObject> propertyValueGroupsToAddToDeletedElements = new HashSet<EObject>(0);
-    // Loop over elements to delete.
-    for (Object object : elementsToDelete) {
-      if (object instanceof CapellaElement) {
-        // Get applied property values.
-        List<PropertyValueGroup> appliedPropertyValueGroups = ((CapellaElement) object).getAppliedPropertyValueGroups();
-        // Loop over property value groups to collect only the ones which have only current capella element as
-        // involvedElements.
-        for (PropertyValueGroup propertyValueGroup : appliedPropertyValueGroups) {
-          // StackOverflow deleting property value applied on itself
-          if (!elementsToDelete.contains(propertyValueGroup)) {
-            // Is it a pending property value group ? i.e valueElements must contain only current object and
-            // involvedElements must be empty.
-            List<CapellaElement> valuedElements = propertyValueGroup.getValuedElements();
-            if ((valuedElements.size() == 1) && valuedElements.contains(object)) {
-              // That's it !
-              Set<EObject> propertyValueGroups = new HashSet<EObject>();
-              propertyValueGroups.add(propertyValueGroup);
-              // Recurse algorithm on this pending property value to remove other pending property values linked to this
-              // one.
-              addPendingPropertyValueGroups(propertyValueGroups);
-              propertyValueGroupsToAddToDeletedElements.addAll(propertyValueGroups);
-            }
-          }
-        }
-      }
-    }
-    if (!propertyValueGroupsToAddToDeletedElements.isEmpty()) {
-      elementsToDelete.addAll(propertyValueGroupsToAddToDeletedElements);
-    }
-  }
-
-  /**
    * @param elementsToDelete
    */
   protected void getAdditionalElementsForParts(Set<? super AbstractType> elementsToDelete) {
@@ -385,10 +305,6 @@ public class DeleteHelper implements IDeleteHelper {
     addElementsForAssociation(expandedSelection);
     // Get all elements for a scenario.
     addElementsForScenario(expandedSelection);
-    // Special case for property values.
-    addPendingPropertyValues(expandedSelection);
-    // Special case for property value groups.
-    addPendingPropertyValueGroups(expandedSelection);
     // Special case for Sequence Link Ends.
     addElementsForSequenceLinkEnd(expandedSelection);
 

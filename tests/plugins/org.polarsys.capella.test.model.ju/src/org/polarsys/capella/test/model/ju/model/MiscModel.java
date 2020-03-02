@@ -28,6 +28,7 @@ public abstract class MiscModel extends NonDirtyTestCase {
   public static final String PROJECT_MISCMODEL__PROGRESSSTATUS__REVIEWED_OK = "c0727184-bc83-4c97-b0ed-861615570ccc";
   public static final String PROJECT_MISCMODEL__PROJECTAPPROACH = "48adfcca-50a9-415c-81f3-ce75b5420dd1";
   public static final String MISCMODEL = "b3f7e50c-ce73-45c0-ac2a-38365b7d0e91";
+  public static final String MISCMODEL__PROPERTY_VALUE_1 = "ae83a8ca-a114-4ed6-b260-31c88aa90a76";
   public static final String OA = "c7daf8d7-abf1-4ba8-bbc5-6acc83d55cfe";
   public static final String OA_OPERATIONAL_ENTITIES = "f6daaca6-fee7-401b-b77c-a3880f335fd1";
   public static final String OA__OPERATIONAL_ACTIVITIES = "75261e4b-971c-4964-b4e2-9a312bd6ae50";
@@ -35,6 +36,7 @@ public abstract class MiscModel extends NonDirtyTestCase {
   public static final String OA__OPERATIONAL_CAPABILITIES = "3756abbb-cad4-440c-b8cc-75361d76c913";
   public static final String OA__INTERFACES = "643f8f34-5333-492d-8a36-f742e4cc0466";
   public static final String OA__DATA = "f579edce-3fa3-4d6b-9540-6dfd16418db3";
+  public static final String OA__DATA__CLASS_1 = "c8fdd007-bef1-4b5a-b35d-a11969aa5e85"; 
   public static final String OA__OPERATIONAL_CONTEXT = "f6daaca6-fee7-401b-b77c-a3880f335fd1";
   public static final String OA__ROLES = "0eae0d46-5721-4476-a3d5-5dff228ec9ae";
   public static final String OA__OPERATIONAL_ENTITIES = "27bd9112-bc96-45f7-8790-122c82880b19";
