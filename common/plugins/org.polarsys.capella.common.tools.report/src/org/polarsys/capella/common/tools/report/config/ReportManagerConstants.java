@@ -12,7 +12,7 @@ package org.polarsys.capella.common.tools.report.config;
 
 @SuppressWarnings("nls")
 public interface ReportManagerConstants {
-
+  
   String LOG_LEVEL = "Log Level";
 
   String LOG_LEVEL_FATAL = "FATAL";

@@ -27,6 +27,7 @@ import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
@@ -40,6 +41,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.ui.internal.Workbench;
 import org.junit.Assert;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.ExecutionManagerRegistry;
@@ -307,6 +309,16 @@ public class TestHelper {
       }
     }
     return element;
+  }
+
+  public static void disableAutoSaveJob() {
+    // Deadlock because of Workbench Auto-Save Job, so we have to remove it 
+    Job[] allJobs = Job.getJobManager().find(null);
+    for (Job job : allJobs) {
+      if (Workbench.WORKBENCH_AUTO_SAVE_JOB.equals(job.getName())) {
+        job.cancel();
+      }
+    }
   }
 
 }

@@ -16,10 +16,8 @@ import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IPerspectiveFactory;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.views.IViewDescriptor;
-
 import org.polarsys.capella.core.commands.preferences.service.AbstractPreferencesInitializer;
 import org.polarsys.capella.core.platform.sirius.ui.PerspectivePreferences;
-import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
 
 /**
  * The Capella perspective factory.
@@ -29,7 +27,6 @@ public class CapellaPerspective implements IPerspectiveFactory {
    * The Capella perspective identifier.
    */
   public static final String PERSPECTIVE_ID = "capella.sirius.perspective"; //$NON-NLS-1$
-
   /**
    * The Capella logger view identifier.
    */
@@ -45,8 +42,11 @@ public class CapellaPerspective implements IPerspectiveFactory {
   /**
    * The Project explorer view identifier.
    */
-  public static final String CAPELLA_PROJECT_EXPLORER_ID = CapellaCommonNavigator.ID;
-
+  public static final String CAPELLA_PROJECT_EXPLORER_ID = "capella.project.explorer"; //$NON-NLS-1$
+  /**
+   * The Fast Linker view identifier.
+   */
+  public static final String FAST_LINKER_ID = "org.polarsys.capella.core.ui.fastlinker.view"; //$NON-NLS-1$
   /**
    * The center area place holder identifier.
    */
@@ -89,8 +89,8 @@ public class CapellaPerspective implements IPerspectiveFactory {
     IViewDescriptor[] viewsDescriptors = PlatformUI.getWorkbench().getViewRegistry().getViews();
     for (IViewDescriptor viewDescriptor : viewsDescriptors) {
       if ((viewDescriptor != null) && (viewDescriptor.getId() != null)) {
-        if (viewDescriptor.getId().equals("org.polarsys.capella.core.ui.fastlinker.view")) { //$NON-NLS-1$
-          bottomLeft.addView("org.polarsys.capella.core.ui.fastlinker.view"); //$NON-NLS-1$
+        if (viewDescriptor.getId().equals(FAST_LINKER_ID)) {
+          bottomLeft.addView(FAST_LINKER_ID);
           break;
         }
 
