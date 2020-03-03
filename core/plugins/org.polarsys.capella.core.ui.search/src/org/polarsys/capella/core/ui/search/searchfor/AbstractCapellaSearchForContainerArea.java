@@ -45,7 +45,7 @@ public abstract class AbstractCapellaSearchForContainerArea {
 
   protected Set<Object> checkedElements = new HashSet<Object>();
   protected PatternFilter patternFilter;
-  CheckboxFilteredTree filteredTree;
+  protected CheckboxFilteredTree filteredTree;
   protected Group parentGroup;
   protected int participantsCheckStrategy = SWT.MULTI;
   protected AbstractCapellaSearchForContainerArea otherSideArea;

@@ -54,6 +54,7 @@ public class CapellaSearchQuery implements ISearchQuery {
       for (String projectName : selectedProjects) {
         subMonitor.subTask(String.format(CapellaSearchConstants.SearchJob_SubTitle, projectName));
         IProject project = workspaceRoot.getProject(projectName);
+        // search the pattern in the projects
         search(pattern, project, project);
         subMonitor.split(1);
       }
@@ -85,11 +86,11 @@ public class CapellaSearchQuery implements ISearchQuery {
                     CapellaSearchMatchEntry result = new CapellaSearchMatchEntry(element, attrString, project,
                         attribute);
                     capellaSearchResult.addMatch(result);
+                    // use tree data if we want to display the result as a tree
                     capellaSearchResult.getTreeData().addElement(element);
                   }
                 }
               } catch (Exception e) {
-
               }
             });
           }
@@ -98,6 +99,7 @@ public class CapellaSearchQuery implements ISearchQuery {
     }
     Object[] children = contentProvider.getChildren(element);
     for (int i = 0; i < children.length; i++) {
+      // search recursively in all the elements in the project tree
       search(pattern, children[i], project);
     }
   }

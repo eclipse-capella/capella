@@ -36,9 +36,6 @@ public abstract class AbstractCapellaHistory {
   protected static final String SECTION_SEARCH_PROJECT_PREFIX = "project.replace";
   protected static final String SECTION_SEARCH_PROJECT_COUNT = "project.count.replace";
 
-  protected AbstractCapellaHistory() {
-  }
-
   public List<CapellaSearchSettings> getAllSearchSettings() {
     List<CapellaSearchSettings> capellaSearchSettingsInHistory = new ArrayList<>();
 

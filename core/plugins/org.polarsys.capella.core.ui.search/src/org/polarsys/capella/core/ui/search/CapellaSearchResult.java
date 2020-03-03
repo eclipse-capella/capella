@@ -58,7 +58,7 @@ public class CapellaSearchResult extends AbstractTextSearchResult {
 
   @Override
   public ImageDescriptor getImageDescriptor() {
-    return Activator.getDefault().getImageDescriptor("search.gif"); //$NON-NLS-1$
+    return Activator.getDefault().getImageDescriptor("search.gif");
   }
 
   @Override
@@ -78,10 +78,8 @@ public class CapellaSearchResult extends AbstractTextSearchResult {
 
   /**
    * Get all projects from matches
-   * 
    * @return
    */
-  
   public Set<IProject> getProjects() {
     return getCapellaSearchMatchesStream() //
         .map(CapellaSearchMatchEntry::getProject) //

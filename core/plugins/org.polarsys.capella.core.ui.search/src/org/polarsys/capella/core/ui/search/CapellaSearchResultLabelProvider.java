@@ -22,7 +22,9 @@ import org.eclipse.ui.navigator.INavigatorContentService;
 import org.eclipse.ui.navigator.NavigatorContentServiceFactory;
 import org.polarsys.capella.core.model.handler.provider.CapellaReadOnlyHelper;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
-
+/*
+ * class used to format the result displayed in the search result
+ */
 public class CapellaSearchResultLabelProvider extends LabelProvider implements IStyledLabelProvider {
   public static final Styler HIGHLIGHT_MATCHED_TEXT_STYLE = StyledString.createColorRegistryStyler(null,
       "org.eclipse.search.ui.match.highlight"); 

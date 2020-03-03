@@ -16,6 +16,9 @@ import java.util.Arrays;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 
+/*
+ * Class used to provide input when we display the result of the search as a Tree (display the tree structure)
+ */
 public class CapellaSearchResultTreeContentProvider implements ITreeContentProvider { 
   private CapellaSearchResult searchResult;
 

@@ -20,6 +20,11 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.search.internal.core.text.PatternConstructor;
 
+/*
+ * Class used to keep the settings (parameters) of a search action.
+ * We can use this class in the current search to update the ui accordingly to what the user has selected.
+ * Also we use this class to keep a history of the search and be able to apply the search settings in a next search or replace.
+ */
 public class CapellaSearchSettings {
   private boolean isCaseSensitive = false;
   private boolean isRegExSearch = false;
@@ -110,20 +115,11 @@ public class CapellaSearchSettings {
     this.searchMetaClasses.remove(searchMetaClasses);
   }
 
+  // method used to check the search settings (that we entered text, selected at least one mettaclass or attribute etc) 
   public IStatus validate() {
     if (projects.isEmpty()) {
       return new Status(IStatus.ERROR, Activator.PLUGIN_ID,
           CapellaSearchConstants.CapellaSearchPage_Validation_Message_Project_Selection);
-    }
-
-    if (searchAttributes.isEmpty()) {
-      return new Status(IStatus.ERROR, Activator.PLUGIN_ID,
-          CapellaSearchConstants.CapellaSearchPage_Validation_Message_SearchAttribute_Selection);
-    }
-    
-    if (searchMetaClasses.isEmpty()) {
-      return new Status(IStatus.ERROR, Activator.PLUGIN_ID,
-          CapellaSearchConstants.CapellaSearchPage_Validation_Message_SearchMetaClass_Selection);
     }
 
     if (isRegExSearch) {
@@ -138,6 +134,18 @@ public class CapellaSearchSettings {
       return new Status(IStatus.ERROR, Activator.PLUGIN_ID,
           CapellaSearchConstants.CapellaSearchPage_Validation_Message_Pattern_Empty);
     }
+    
+    
+    if (searchMetaClasses.isEmpty()) {
+      return new Status(IStatus.ERROR, Activator.PLUGIN_ID,
+          CapellaSearchConstants.CapellaSearchPage_Validation_Message_SearchMetaClass_Selection);
+    }
+    
+    if (searchAttributes.isEmpty()) {
+      return new Status(IStatus.ERROR, Activator.PLUGIN_ID,
+          CapellaSearchConstants.CapellaSearchPage_Validation_Message_SearchAttribute_Selection);
+    }
+
     return Status.OK_STATUS;
   }
 

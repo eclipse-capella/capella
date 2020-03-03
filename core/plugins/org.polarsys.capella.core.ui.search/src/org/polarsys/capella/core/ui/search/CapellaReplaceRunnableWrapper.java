@@ -51,11 +51,11 @@ public class CapellaReplaceRunnableWrapper {
 
       // Inform how many replaces were done
       if (replacement != null) {
-        String message = String.format(CapellaSearchConstants.ReplaceDialog_Finished_Or_Canceled_Message, //
-            searchPattern, //
-            replacement, //
-            replacedOccurrenceCount, //
-            replacedElementCount, //
+        String message = String.format(CapellaSearchConstants.ReplaceDialog_Finished_Or_Canceled_Message,
+            searchPattern,
+            replacement,
+            replacedOccurrenceCount,
+            replacedElementCount,
             replacedProjectCount);
 
         MessageDialog.openInformation(shell, CapellaSearchConstants.ReplaceDialog_Title, message);

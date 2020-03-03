@@ -12,6 +12,9 @@ package org.polarsys.capella.core.ui.search;
 
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 
+/*
+ * Class used to provide input when we display the result of the search as a List (display only the leaf)
+ */
 public class CapellaSearchResultListContentProvider implements IStructuredContentProvider {
   public CapellaSearchResultListContentProvider() {}
 
