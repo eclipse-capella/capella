@@ -44,6 +44,11 @@ public class MetaClassesParticipantsItemProvider extends AbstractMetaModelPartic
     }
     return new Object[0];
   }
+  
+  @Override
+  public Object[] getElements() {
+    return new Object[0];
+  }
 
   @Override
   public boolean hasChildren(Object element) {

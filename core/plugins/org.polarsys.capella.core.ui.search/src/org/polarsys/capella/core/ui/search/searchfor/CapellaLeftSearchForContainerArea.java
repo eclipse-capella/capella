@@ -12,28 +12,19 @@ package org.polarsys.capella.core.ui.search.searchfor;
 
 import java.lang.reflect.InvocationTargetException;
 
-import org.eclipse.core.resources.IProjectDescription;
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.jface.layout.GridDataFactory;
 import org.eclipse.jface.layout.GridLayoutFactory;
 import org.eclipse.jface.operation.IRunnableWithProgress;
-import org.eclipse.jface.viewers.CheckStateChangedEvent;
 import org.eclipse.jface.viewers.CheckboxTreeViewer;
-import org.eclipse.jface.viewers.ICheckStateListener;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
-import org.eclipse.swt.widgets.Text;
-import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.PatternFilter;
 import org.eclipse.ui.progress.IProgressService;
@@ -64,62 +55,43 @@ public class CapellaLeftSearchForContainerArea extends AbstractCapellaSearchForC
         Object[] result = super.filter(viewer, parent, elements);
         if (parent != null) {
           if (parent.equals("")) {
-            displayedElements.clear();
             for (Object element : result) {
-              updateDisplayedElements(filter(viewer, element, partictipantsItemProvider.getChildren(element)));
+              filter(viewer, element, partictipantsItemProvider.getChildren(element));
             }
           }
         }
         return result;
       }
-
-      private void updateDisplayedElements(Object[] elements) {
-        for (Object displayedElement : elements) {
-          if (displayedElement instanceof EClass) {
-            displayedElements.add(displayedElement);
-          }
-        }
-      }
     };
   }
 
-  @Override
-  protected void setCheckSubtree() {
-    ((CheckboxTreeViewer) filteredTree.getViewer()).addCheckStateListener(getCheckStateListener());
-  }
+  protected void updateCheckedElements(Object parent, boolean state) {
+    if (state == true)
+      checkedElements.add(parent);
+    else
+      checkedElements.remove(parent);
 
-  private ICheckStateListener getCheckStateListener() {
-    return new ICheckStateListener() {
-      public void checkStateChanged(final CheckStateChangedEvent event) {
-        CheckboxTreeViewer viewer = (CheckboxTreeViewer) filteredTree.getViewer();
-        boolean state = event.getChecked();
-        Object parent = event.getElement();
-        if (state == true)
-          checkedElements.add(parent);
-        else
-          checkedElements.remove(parent);
-
-        // handle the inheritance check propagation
-        Object[] changedObjects = partictipantsItemProvider.getChildren(parent);
-
-        for (Object obj : changedObjects) {
-          viewer.setChecked(obj, state);
-          if (state == true) {
-            checkedElements.add(obj);
-          } else {
-            checkedElements.remove(obj);
-          }
-        }
-
-        searchPage.updateValidationStatus(searchPage.getCapellaSearchSettings().validate());
-        // setSearchMetaClasses, beside the metaclass it contains also the category (Diagram Elements or Model Elements)
-        searchPage.getCapellaSearchSettings().setSearchMetaClasses(checkedElements);
-        // refresh the attributes in right panel
-        if (otherSideArea != null) {
-          otherSideArea.filteredTree.getViewer().refresh();
-        }
+    // handle the inheritance check propagation
+    Object[] changedObjects = partictipantsItemProvider.getChildren(parent);
+    CheckboxTreeViewer viewer = (CheckboxTreeViewer) filteredTree.getViewer();
+    viewer.setChecked(parent, state);
+    
+    for (Object obj : changedObjects) {
+      viewer.setChecked(obj, state);
+      if (state == true) {
+        checkedElements.add(obj);
+      } else {
+        checkedElements.remove(obj);
       }
-    };
+    }
+
+    searchPage.updateValidationStatus(searchPage.getCapellaSearchSettings().validate());
+    // setSearchMetaClasses, beside the metaclass it contains also the category (Diagram Elements or Model Elements)
+    searchPage.getCapellaSearchSettings().setSearchMetaClasses(checkedElements);
+    // refresh the attributes in right panel
+    if (otherSideArea != null) {
+      otherSideArea.filteredTree.getViewer().refresh();
+    }
   }
 
   public void createFiltercontainer(Group parentGroup) {

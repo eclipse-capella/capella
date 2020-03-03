@@ -17,7 +17,9 @@ import java.util.Set;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.jface.operation.IRunnableWithProgress;
+import org.eclipse.jface.viewers.CheckStateChangedEvent;
 import org.eclipse.jface.viewers.CheckboxTreeViewer;
+import org.eclipse.jface.viewers.ICheckStateListener;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerComparator;
 import org.eclipse.swt.SWT;
@@ -34,7 +36,6 @@ import org.eclipse.ui.dialogs.PatternFilter;
 import org.eclipse.ui.progress.IProgressService;
 import org.polarsys.capella.core.ui.search.CapellaSearchConstants;
 import org.polarsys.capella.core.ui.search.CapellaSearchPage;
-import org.polarsys.capella.core.ui.search.CapellaSearchSettings;
 import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 
 public abstract class AbstractCapellaSearchForContainerArea {
@@ -43,15 +44,15 @@ public abstract class AbstractCapellaSearchForContainerArea {
   protected Button defaultButton;
 
   protected Set<Object> checkedElements = new HashSet<Object>();
-  protected Set<Object> displayedElements = new HashSet<Object>();
   protected PatternFilter patternFilter;
   CheckboxFilteredTree filteredTree;
   protected Group parentGroup;
   protected int participantsCheckStrategy = SWT.MULTI;
   protected AbstractCapellaSearchForContainerArea otherSideArea;
   protected CapellaSearchPage searchPage;
-  
-  public AbstractCapellaSearchForContainerArea(Group parent, AbstractCapellaSearchForContainerArea area, CapellaSearchPage page) {
+
+  public AbstractCapellaSearchForContainerArea(Group parent, AbstractCapellaSearchForContainerArea area,
+      CapellaSearchPage page) {
     parentGroup = parent;
     otherSideArea = area;
     searchPage = page;
@@ -69,9 +70,9 @@ public abstract class AbstractCapellaSearchForContainerArea {
 
     filteredTree = new CheckboxFilteredTree(parentGroup, SWT.BORDER, patternFilter);
     filteredTree.getViewer().setContentProvider(partictipantsItemProvider);
-    
-    filteredTree.getViewer().setLabelProvider(new SearchForLabelProvider(CapellaAdapterFactoryProvider.getInstance()
-        .getAdapterFactory()));
+
+    filteredTree.getViewer()
+        .setLabelProvider(new SearchForLabelProvider(CapellaAdapterFactoryProvider.getInstance().getAdapterFactory()));
 
     filteredTree.getViewer().setInput("");
 
@@ -83,26 +84,37 @@ public abstract class AbstractCapellaSearchForContainerArea {
 
     filteredTree.getViewer().getTree().setLayoutData(chechboxTreeViewerGridData);
     filteredTree.getViewer().setComparator(new ViewerComparator() {
-          @Override
-          public int compare(Viewer testViewer, Object e1, Object e2) {
-            if (e1 instanceof ENamedElement && e2 instanceof ENamedElement) {
-              ENamedElement eClass1 = (ENamedElement) e1;
-              ENamedElement eClass2 = (ENamedElement) e2;
-              String eClass1Name = eClass1.getName() == null ? "" : eClass1.getName();
-              String eClass2Name = eClass2.getName() == null ? "" : eClass2.getName();
-              return eClass1Name.compareTo(eClass2Name);
-            }
-            else if(e1 instanceof String && e2 instanceof String) {
-              String cat1 = (String) e1;
-              if(cat1.equals(CapellaSearchConstants.ModelElements_Key))
-                return -1;
-              return 1;
-            }
-            return 0;
-          }
-        });
-    setCheckSubtree();
+      @Override
+      public int compare(Viewer testViewer, Object e1, Object e2) {
+        if (e1 instanceof ENamedElement && e2 instanceof ENamedElement) {
+          ENamedElement eClass1 = (ENamedElement) e1;
+          ENamedElement eClass2 = (ENamedElement) e2;
+          String eClass1Name = eClass1.getName() == null ? "" : eClass1.getName();
+          String eClass2Name = eClass2.getName() == null ? "" : eClass2.getName();
+          return eClass1Name.compareTo(eClass2Name);
+        } else if (e1 instanceof String && e2 instanceof String) {
+          String cat1 = (String) e1;
+          if (cat1.equals(CapellaSearchConstants.ModelElements_Key))
+            return -1;
+          return 1;
+        }
+        return 0;
+      }
+    });
+    ((CheckboxTreeViewer) filteredTree.getViewer()).addCheckStateListener(getCheckStateListener());
   }
+
+  protected ICheckStateListener getCheckStateListener() {
+    return new ICheckStateListener() {
+      public void checkStateChanged(final CheckStateChangedEvent event) {
+        boolean state = event.getChecked();
+        Object parent = event.getElement();
+        updateCheckedElements(parent, state);
+      }
+    };
+  }
+
+  protected abstract void updateCheckedElements(Object parent, boolean state);
 
   protected void createButtonsArea() {
     // buttons area
@@ -166,34 +178,32 @@ public abstract class AbstractCapellaSearchForContainerArea {
   protected abstract PatternFilter createPatternFilter();
 
   public void checkAll(CheckboxTreeViewer viewer, boolean state) {
-    viewer.setAllChecked(state);
+    Object[] viewerElements = getPartictipantsItemProvider().getElements("");
+    for (Object obj : viewerElements) {
+      updateCheckedElements(obj, state);
+    }
   }
 
   protected abstract AbstractMetaModelParticipantsItemProvider getPartictipantsItemProvider();
 
-  /*
-   * set the listeners in order to check all the children when a parent is selected
-   */
-  protected void setCheckSubtree() {};
-  
   public void setOtherSideArea(AbstractCapellaSearchForContainerArea area) {
     this.otherSideArea = area;
   }
-  
+
   public void applySearchSettings(Set<Object> objects) {
     CheckboxTreeViewer checkboxTreeViewer = (CheckboxTreeViewer) filteredTree.getViewer();
     checkedElements.clear();
     checkAll(checkboxTreeViewer, false);
-    
-    for(Object obj : objects) {
+
+    for (Object obj : objects) {
       checkedElements.add(obj);
       checkboxTreeViewer.setChecked(obj, true);
     }
-    if(otherSideArea != null) {
+    if (otherSideArea != null) {
       otherSideArea.filteredTree.getViewer().refresh();
     }
   }
-  
+
   public void refresh() {
     filteredTree.getViewer().refresh();
   }

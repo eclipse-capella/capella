@@ -10,14 +10,10 @@
  *******************************************************************************/
 package org.polarsys.capella.core.ui.search.searchfor;
 
-import org.eclipse.jface.viewers.CheckStateChangedEvent;
 import org.eclipse.jface.viewers.CheckboxTreeViewer;
-import org.eclipse.jface.viewers.ICheckStateListener;
-import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.ui.dialogs.PatternFilter;
 import org.polarsys.capella.core.ui.search.CapellaSearchPage;
-import org.polarsys.capella.core.ui.search.CapellaSearchSettings;
 
 public class CapellaRightSearchForContainerArea extends AbstractCapellaSearchForContainerArea {
   protected AbstractMetaModelParticipantsItemProvider partictipantsItemProvider;
@@ -36,45 +32,19 @@ public class CapellaRightSearchForContainerArea extends AbstractCapellaSearchFor
   }
 
   protected PatternFilter createPatternFilter() {
-    return new PatternFilter() {
-      @Override
-      public Object[] filter(Viewer viewer, Object parent, Object[] elements) {
-        Object[] result = super.filter(viewer, parent, elements);
-        if (parent != null) {
-          if (parent.equals("")) {
-            displayedElements.clear();
-            updateDisplayedElements(result);
-          }
-        }
-        return result;
-      }
-
-      private void updateDisplayedElements(Object[] elements) {
-        for (Object displayedElement : elements) {
-          displayedElements.add(displayedElement);
-        }
-      }
-    };
+    return new PatternFilter();
   }
-
-  @Override
-  protected void setCheckSubtree() {
-    ((CheckboxTreeViewer) filteredTree.getViewer()).addCheckStateListener(getCheckStateListener());
-  }
-
-  private ICheckStateListener getCheckStateListener() {
-    return new ICheckStateListener() {
-      public void checkStateChanged(final CheckStateChangedEvent event) {
-        boolean state = event.getChecked();
-        Object element = event.getElement();
-        if (state == true)
-          checkedElements.add(element);
-        else
-          checkedElements.remove(element);
-        
-        searchPage.getCapellaSearchSettings().setSearchAttributes(checkedElements);
-        searchPage.updateValidationStatus(searchPage.getCapellaSearchSettings().validate());
-      }
-    };
+  
+  protected void updateCheckedElements(Object element, boolean state) {
+    if (state == true)
+      checkedElements.add(element);
+    else
+      checkedElements.remove(element);
+    
+    CheckboxTreeViewer viewer = (CheckboxTreeViewer) filteredTree.getViewer();
+    viewer.setChecked(element, state);
+    
+    searchPage.getCapellaSearchSettings().setSearchAttributes(checkedElements);
+    searchPage.updateValidationStatus(searchPage.getCapellaSearchSettings().validate());
   }
 }

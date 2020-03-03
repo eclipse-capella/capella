@@ -38,6 +38,11 @@ public abstract class AbstractMetaModelParticipantsItemProvider implements ITree
     public Object[] getElements(Object inputElement) {
     	return new Object[0];
     }
+    
+    public Object[] getElements() {
+      return new Object[0];
+    }
+    
 	/**
 	 * {@inheritDoc}
 	 */
