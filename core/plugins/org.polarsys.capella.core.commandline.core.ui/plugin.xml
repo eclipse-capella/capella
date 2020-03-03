@@ -18,4 +18,12 @@
             extension="zip">
       </FileImporterExtension>
    </extension>
+   
+   <extension point="org.eclipse.e4.workbench.model" id="org.polarsys.capella.core.commandline.core.workbenchModel">
+       <processor
+             apply="always"
+             beforefragment="true"
+             class="org.polarsys.capella.core.commandline.core.ui.CommandLineWorkbenchModel"/>
+    </extension>
+    
 </plugin>

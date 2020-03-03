@@ -26,9 +26,11 @@ import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.preferences.IExportedPreferences;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
@@ -37,13 +39,10 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.validation.model.Category;
 import org.eclipse.emf.validation.preferences.EMFModelValidationPreferences;
 import org.eclipse.emf.validation.service.ModelValidationService;
-import org.eclipse.equinox.app.IApplicationContext;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.application.WorkbenchAdvisor;
 import org.eclipse.ui.views.markers.MarkerViewUtil;
+import org.osgi.framework.FrameworkUtil;
 import org.osgi.service.prefs.BackingStoreException;
 import org.osgi.service.prefs.Preferences;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
@@ -52,14 +51,13 @@ import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.LightMarkerRegistry;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewHelper;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
-import org.polarsys.capella.core.commandline.core.AbstractCommandLine;
-import org.polarsys.capella.core.commandline.core.CommandLineException;
+import org.polarsys.capella.core.commandline.core.ui.AbstractWorkbenchCommandLine;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.model.handler.markers.ICapellaValidationConstants;
 import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
 import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 
-public class ValidationCommandLine extends AbstractCommandLine {
+public class ValidationCommandLine extends AbstractWorkbenchCommandLine {
   static final String CONSTRAINT_DISABLED_PREFIX = "org.eclipse.emf.validation//con.disabled/"; //$NON-NLS-1$
 
   public ValidationCommandLine() {
@@ -74,70 +72,64 @@ public class ValidationCommandLine extends AbstractCommandLine {
   }
 
   @Override
-  public boolean execute(IApplicationContext context) throws CommandLineException {
-    startFakeWorkbench();
+  protected IStatus executeWithinWorkbench() {
     // load the AIRD
     String fileURI = Messages.resource_prefix + argHelper.getFilePath();
     URI uri = URI.createURI(fileURI);
     String outputFolder = argHelper.getOutputFolder();
-
-    boolean status;
-    try {
-      status = execute(uri, outputFolder);
-    } catch (FileNotFoundException exception) {
-      logError(exception.getMessage());
-      throw new CommandLineException(exception.getMessage());
-    } catch (CoreException exception) {
-      logError(exception.getMessage());
-      throw new CommandLineException(exception.getMessage());
-    }
-    if (status) {
-      logInfo("validation report generated to: " + " " + argHelper.getOutputFolder()); //$NON-NLS-1$ //$NON-NLS-2$
-    }
-    return false;
+    return execute(uri, outputFolder);
   }
 
-  private boolean execute(final URI uri, final String outputFolder) throws FileNotFoundException, CoreException, CommandLineException {
+  private IStatus execute(final URI uri, final String outputFolder) {
+    IStatus status = Status.OK_STATUS;
+    try {
 
-    // Create the validate action.
-    CapellaValidateComlineAction capellaValidateCLineAction = new CapellaValidateComlineAction();
+      // Create the validate action.
+      CapellaValidateComlineAction capellaValidateCLineAction = new CapellaValidateComlineAction();
 
-    // load
-    Project semanticRootElement = loadSemanticRootElement(uri);
-    if (semanticRootElement == null) {
-      throw new CommandLineException("No semantic model found!"); //$NON-NLS-1$
-    }
-    Resource semanticRootResource = semanticRootElement.eResource();
-    capellaValidateCLineAction.setResource(semanticRootResource);
-
-    // set the rule set
-    String validationRuleSetFile = ((ValidationArgumentHelper) argHelper).getValidationRuleSet();
-
-    if (!isEmtyOrNull(validationRuleSetFile)) {// validate selected EObjects
-      List<String> ruleSet = readRules(validationRuleSetFile);
-      ensureEMFValidationActivation();
-      for (String ruleId : ruleSet) {
-        EMFModelValidationPreferences.setConstraintDisabled(ruleId, true);
+      // load
+      Project semanticRootElement = loadSemanticRootElement(uri);
+      if (semanticRootElement == null) {
+        return new Status(IStatus.ERROR, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), "No semantic model found!");
       }
+      Resource semanticRootResource = semanticRootElement.eResource();
+      capellaValidateCLineAction.setResource(semanticRootResource);
+
+      // set the rule set
+      String validationRuleSetFile = ((ValidationArgumentHelper) argHelper).getValidationRuleSet();
+
+      if (!isEmtyOrNull(validationRuleSetFile)) {// validate selected EObjects
+        List<String> ruleSet = readRules(validationRuleSetFile);
+        ensureEMFValidationActivation();
+        for (String ruleId : ruleSet) {
+          EMFModelValidationPreferences.setConstraintDisabled(ruleId, true);
+        }
+      }
+
+      // list of EObject to validate
+      String validationContext = ((ValidationArgumentHelper) argHelper).getValidationContext();
+
+      if (!isEmtyOrNull(validationContext)) {// validate selected EObjects
+        List<String> objectToValidateUris = toListOfURIString(validationContext);
+        List<EObject> loadedEObjs = loadEObjects(semanticRootElement, objectToValidateUris);
+        capellaValidateCLineAction.setSelectedObjects(loadedEObjs);
+      } else {// validate the whole model
+        capellaValidateCLineAction.setSelectedObjects(semanticRootResource.getContents());
+      }
+
+      // Run the validation
+      capellaValidateCLineAction.run();
+
+      storeResultsToFile(outputFolder);
+
+    } catch (FileNotFoundException exception) {
+      status = new Status(IStatus.ERROR, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), exception.getMessage(), exception);
+      
+    } catch (CoreException exception) {
+      status = new Status(IStatus.ERROR, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), exception.getMessage(), exception);
     }
 
-    // list of EObject to validate
-    String validationContext = ((ValidationArgumentHelper) argHelper).getValidationContext();
-
-    if (!isEmtyOrNull(validationContext)) {// validate selected EObjects
-      List<String> objectToValidateUris = toListOfURIString(validationContext);
-      List<EObject> loadedEObjs = loadEObjects(semanticRootElement, objectToValidateUris);
-      capellaValidateCLineAction.setSelectedObjects(loadedEObjs);
-    } else {// validate the whole model
-      capellaValidateCLineAction.setSelectedObjects(semanticRootResource.getContents());
-    }
-
-    // Run the validation
-    capellaValidateCLineAction.run();
-
-    storeResultsToFile(outputFolder);
-
-    return true;
+    return status;
   }
 
   /**
@@ -152,6 +144,7 @@ public class ValidationCommandLine extends AbstractCommandLine {
 
   /**
    * Returns list of disabled rule IDs
+   * 
    * @param validationRuleSetFile
    * @return
    * @throws CoreException
@@ -273,32 +266,6 @@ public class ValidationCommandLine extends AbstractCommandLine {
   }
 
   /**
-   * A workbench is needed by some Sirius plugins
-   */
-  public static void startFakeWorkbench() {
-    if (PlatformUI.isWorkbenchRunning()) {
-      return;
-    }
-    
-    Display display = PlatformUI.createDisplay();
-    PlatformUI.createAndRunWorkbench(display, new WorkbenchAdvisor() {
-
-      /**
-       * {@inheritDoc}
-       */
-      @Override
-      public boolean openWindows() {
-        return false;
-      }
-
-      @Override
-      public String getInitialWindowPerspectiveId() {
-        return null;
-      }
-    });
-  }
-
-  /**
    * @param markers
    * @return
    * @throws CoreException
@@ -333,12 +300,12 @@ public class ValidationCommandLine extends AbstractCommandLine {
 
       // ruleId
       res.append("<td>"); //$NON-NLS-1$
-      
+
       String ruleId = MarkerViewHelper.getRuleID(iMarker, false);
       if (ruleId == null) {
         ruleId = MarkerViewHelper.getSource(iMarker);
       }
-      
+
       res.append(ruleId);
       res.append("</td>"); //$NON-NLS-1$
 
@@ -370,12 +337,12 @@ public class ValidationCommandLine extends AbstractCommandLine {
    */
   private String getSeverityLabel(Integer severity) {
     switch (severity.intValue()) {
-      case IMarker.SEVERITY_ERROR:
-        return "Error"; //$NON-NLS-1$
-      case IMarker.SEVERITY_WARNING:
-        return "Warning"; //$NON-NLS-1$
-      case IMarker.SEVERITY_INFO:
-        return "Info"; //$NON-NLS-1$
+    case IMarker.SEVERITY_ERROR:
+      return "Error"; //$NON-NLS-1$
+    case IMarker.SEVERITY_WARNING:
+      return "Warning"; //$NON-NLS-1$
+    case IMarker.SEVERITY_INFO:
+      return "Info"; //$NON-NLS-1$
     }
     return ""; //$NON-NLS-1$
   }
@@ -389,7 +356,8 @@ public class ValidationCommandLine extends AbstractCommandLine {
     String result = ""; //$NON-NLS-1$
     Diagnostic diagnostic = (Diagnostic) iMarker.getAdapter(Diagnostic.class);
     if (diagnostic instanceof ConstraintStatusDiagnostic) {
-      Set<Category> cats = ((ConstraintStatusDiagnostic) diagnostic).getConstraintStatus().getConstraint().getDescriptor().getCategories();
+      Set<Category> cats = ((ConstraintStatusDiagnostic) diagnostic).getConstraintStatus().getConstraint()
+          .getDescriptor().getCategories();
       if (!cats.isEmpty()) {
         result = cats.iterator().next().getQualifiedName();
       }

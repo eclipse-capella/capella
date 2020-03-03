@@ -15,7 +15,6 @@ import java.util.Collection;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -26,7 +25,6 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.internal.Workbench;
 import org.eclipse.ui.navigator.CommonDropAdapterAssistant;
 import org.eclipse.ui.navigator.CommonViewer;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
@@ -355,19 +353,6 @@ public class DragDropTest extends NavigatorEmptyProject {
 
   private FunctionalChainReference createFunctionalChainReference(EObject container) {
     return create(container, FaPackage.Literals.FUNCTIONAL_CHAIN_REFERENCE);
-  }
-
-  @SuppressWarnings("restriction")
-  @Override
-  protected void setUp() throws Exception {
-    super.setUp();
-    // Deadlock because of Workbench Auto-Save Job, so we have to remove it
-    Job[] allJobs = Job.getJobManager().find(null);
-    for (Job job : allJobs) {
-      if (Workbench.WORKBENCH_AUTO_SAVE_JOB.equals(job.getName())) {
-        job.cancel();
-      }
-    }
   }
 
   /**

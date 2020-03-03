@@ -28,10 +28,8 @@ import org.eclipse.ui.navigator.ICommonActionExtensionSite;
 import org.eclipse.ui.navigator.ICommonMenuConstants;
 import org.eclipse.ui.navigator.ICommonViewerSite;
 import org.eclipse.ui.navigator.ICommonViewerWorkbenchSite;
-import org.polarsys.capella.core.libraries.nature.LibraryNature;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.SelectionHelper;
-import org.polarsys.capella.core.platform.sirius.ui.project.CapellaNature;
 import org.polarsys.capella.core.sirius.ui.actions.CloseSessionAction;
 import org.polarsys.capella.core.sirius.ui.actions.OpenSessionAction;
 import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
@@ -136,7 +134,7 @@ public class AirdCommonActionProvider extends CommonActionProvider {
         }
         
         // if the aird selected is not inside a Capella project, we don't open the dashboard
-        if(!CapellaResourceHelper.isProjectOfType(airdFile.getProject(), Arrays.asList(CapellaNature.ID, LibraryNature.ID))){
+        if(!CapellaResourceHelper.isProjectOfType(airdFile.getProject(), Arrays.asList(CapellaResourceHelper.CAPELLA_PROJECT_NATURE, CapellaResourceHelper.CAPELLA_LIBRARY_PROJECT_NATURE))){
           openSessionAction.setOpenActivityExplorer(false);
         } else {
         	boolean toOpen = org.eclipse.amalgam.explorer.activity.ui.api.actions.OpenSessionAction.getActivityExplorerPreference();

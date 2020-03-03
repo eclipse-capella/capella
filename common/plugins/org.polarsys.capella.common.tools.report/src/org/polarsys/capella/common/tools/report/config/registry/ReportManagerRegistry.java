@@ -25,8 +25,12 @@ import org.apache.log4j.ConsoleAppender;
 import org.apache.log4j.Hierarchy;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
+import org.eclipse.core.internal.runtime.RuntimeLog;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.jobs.IJobChangeEvent;
+import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.core.runtime.jobs.JobChangeAdapter;
 import org.osgi.framework.Bundle;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.EmbeddedMessageRenderer;
@@ -37,7 +41,9 @@ import org.polarsys.capella.common.tools.report.appenders.ReportManagerFilter;
 import org.polarsys.capella.common.tools.report.config.ReportManagerConstants;
 import org.polarsys.capella.common.tools.report.config.persistence.ConfigurationInstance;
 import org.polarsys.capella.common.tools.report.config.persistence.CreateXmlConfiguration;
+import org.polarsys.capella.common.tools.report.util.IJobConstants;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
+import org.polarsys.capella.common.tools.report.util.LogExt;
 
 public class ReportManagerRegistry {
 	
@@ -84,6 +90,23 @@ public class ReportManagerRegistry {
 
     // Register loggers into Log4J
     initRootLogger();
+    
+    Job.getJobManager().addJobChangeListener(new JobChangeAdapter() {
+      
+      @Override
+      public void done(IJobChangeEvent event) {
+        Object property = event.getJob().getProperty(IJobConstants.ALWAYS_LOG_STATUS);
+        if (Boolean.TRUE.equals(property)) {
+          IStatus status = event.getResult();
+          if (!status.matches(IStatus.ERROR) && !status.matches(IStatus.WARNING)) {
+            //JobManager.endJob logs only ERROR and WARNING
+            RuntimeLog.log(status);
+          }
+          LogExt.log(IReportManagerDefaultComponents.DEFAULT, status);
+        }
+      }
+      
+    });
   }
 
   public Collection<String> getAppenderKinds() {
