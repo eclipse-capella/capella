@@ -139,7 +139,7 @@ public class AbstractCommandLine implements ICommandLine {
     }
 
     // create outputfolder if necessary
-    if (argHelper.isCreateFolder()) {
+    if (argHelper.isCreateFolder() && argHelper.getOutputFolder() != null) {
       createOutputFolder(argHelper.getOutputFolder());
     }
     if (!projectVersionIsCompliant()) {
