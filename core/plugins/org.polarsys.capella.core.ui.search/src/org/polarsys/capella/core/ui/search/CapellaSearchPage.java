@@ -227,27 +227,7 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
     leftCont = new CapellaLeftSearchForContainerArea(qGrp, this);
     rightCont = new CapellaRightSearchForContainerArea(qGrp, leftCont, this);
     leftCont.setOtherSideArea(rightCont);
-    createFiltercontainer(qGrp);
-  }
-
-  protected void createFiltercontainer(Group parentGroup) {
-    Group searchForSelectionGroup = new Group(parentGroup, SWT.NONE);
-    GridLayoutFactory.swtDefaults().numColumns(2).applyTo(searchForSelectionGroup);
-
-    GridData gdGrp = new GridData(GridData.FILL_BOTH);
-    gdGrp.widthHint = 50;
-    searchForSelectionGroup.setLayoutData(gdGrp);
-
-    searchForSelectionGroup.setText(CapellaSearchConstants.Filters_Label);
-    createCheckboxRegex(searchForSelectionGroup, CapellaSearchConstants.Abstract_Label);
-    createCheckboxRegex(searchForSelectionGroup, CapellaSearchConstants.Semantic_Label);
-  }
-
-  private void createCheckboxRegex(Composite group, String text) {
-    Button checkboxRegex = new Button(group, SWT.CHECK);
-    checkboxRegex.setText(text);
-    GridDataFactory.swtDefaults().align(SWT.FILL, SWT.CENTER).applyTo(checkboxRegex);
-    checkboxRegex.setFont(group.getFont());
+    leftCont.createFiltercontainer(qGrp);
   }
 
   protected void applySearchSettings(CapellaSearchSettings settings) {

@@ -90,9 +90,7 @@ public abstract class AbstractCapellaHistory {
     return searchSettings;
   }
 
-  protected void setSearchSettings(CapellaSearchSettings searchSettings, IDialogSettings searchHistorySection) {
-    System.out.println("b");
-  }
+  protected abstract void setSearchSettings(CapellaSearchSettings searchSettings, IDialogSettings searchHistorySection);
 
   public void appendSearchSettings(CapellaSearchSettings capellaSearchSettings) {
     IDialogSettings capellaSearchSection = getDialogSettingsForCapellaSearch();
@@ -172,9 +170,8 @@ public abstract class AbstractCapellaHistory {
     }
   }
 
-  protected void setSearchHistorySettings(CapellaSearchSettings searchSettings,
-      IDialogSettings searchHistorySection) {
-  }
+  protected abstract void setSearchHistorySettings(CapellaSearchSettings searchSettings,
+      IDialogSettings searchHistorySection);
 
   private int getHistoryIndex(CapellaSearchSettings capellaSearchSettings) {
     IDialogSettings capellaSearchSection = getDialogSettingsForCapellaSearch();

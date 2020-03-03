@@ -14,25 +14,22 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
-import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.polarsys.capella.core.ui.search.CapellaSearchConstants;
 
 public class MetaClassesParticipantsItemProvider extends AbstractMetaModelParticipantsItemProvider {
-  private AbstractCapellaSearchForContainerArea area = null;
-  private boolean isFilteringAbstract = false;
-  private boolean showsOnlySemantics = false;
+  private boolean showAbstract = false;
+  private boolean showSemantics = true;
   private Set<Object> eClassifierList = null;
   private Set<Object> diagramElements = null;
   protected Map<String, Set<Object>> elements;
 
   public MetaClassesParticipantsItemProvider(AbstractCapellaSearchForContainerArea area) {
-    this.area = area;
     eClassifierList = MetaClassesUtil.getInstance().getClassifiers();
     diagramElements = getDiagramElements();
     elements = new HashMap<String, Set<Object>>();
@@ -43,7 +40,7 @@ public class MetaClassesParticipantsItemProvider extends AbstractMetaModelPartic
   @Override
   public Object[] getElements(Object inputElement) {
     if (inputElement != null) {
-      return elements.keySet().toArray();
+      return elements.keySet().stream().filter(x -> !isFiltered(x)).collect(Collectors.toSet()).toArray();
     }
     return new Object[0];
   }
@@ -58,7 +55,7 @@ public class MetaClassesParticipantsItemProvider extends AbstractMetaModelPartic
   @Override
   public Object[] getChildren(Object parentElement) {
     if (parentElement instanceof String && elements.keySet().contains(parentElement)) {
-      return elements.get((String) parentElement).toArray();
+      return elements.get((String) parentElement).stream().filter(x -> !isFiltered(x)).collect(Collectors.toSet()).toArray();
     }
     return super.getChildren(parentElement);
   }
@@ -76,38 +73,38 @@ public class MetaClassesParticipantsItemProvider extends AbstractMetaModelPartic
     return null;
   }
 
-  public boolean isFilteringAbstract() {
-    return isFilteringAbstract;
+  public boolean isShowAbstract() {
+    return showAbstract;
   }
 
-  public void filtersAbstract(boolean filter) {
-    this.isFilteringAbstract = filter;
+  public void setShowAbstract(boolean showAbstract) {
+    this.showAbstract = showAbstract;
   }
 
-  public boolean showOnlySemantics() {
-    return showsOnlySemantics;
+  public boolean isShowSemantics() {
+    return showSemantics;
   }
 
-  public void showOnlySemantics(boolean showOnly) {
-    this.showsOnlySemantics = showOnly;
+  public void setShowSemantics(boolean showSemantics) {
+    this.showSemantics = showSemantics;
   }
-/*
-  public Set<Object> getEClassifiers() {
-    Set<Object> allDerivedReferences = new HashSet<>();
-    for (String nsURI : EPackage.Registry.INSTANCE.keySet()) {
-      if (nsURI.startsWith("http://www.polarsys.org/capella")) {
-        EPackage ePackage = EPackage.Registry.INSTANCE.getEPackage(nsURI);
-        for (EClassifier eClassifier : ePackage.getEClassifiers())
-          if (eClassifier instanceof EClass) {
-            EClass eClass = (EClass) eClassifier;
-            allDerivedReferences.add(eClass);
-          }
+
+  protected boolean isFiltered(Object cls) {
+    if(!showSemantics && !showAbstract)
+      return true;
+    if(cls instanceof EClass) {
+      EClass eCls = (EClass) cls;
+      if(showSemantics && !showAbstract && eCls.isAbstract()) {
+        return true;
+      }
+      if(!showSemantics && showAbstract && !eCls.isAbstract()) {
+        return true;
       }
     }
-    return allDerivedReferences;
+    return false;
   }
-  */
- public Set<Object> getDiagramElements() {
+
+  public Set<Object> getDiagramElements() {
     Set<Object> result = new HashSet<Object>();
     result.add(DiagramPackage.eINSTANCE.getNote());
     result.add(ViewpointPackage.eINSTANCE.getDRepresentationDescriptor());

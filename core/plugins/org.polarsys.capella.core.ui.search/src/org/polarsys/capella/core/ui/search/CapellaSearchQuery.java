@@ -110,7 +110,7 @@ public class CapellaSearchQuery implements ISearchQuery {
           return true;
         }
       } catch (Exception e) {
-        System.out.println("a1");
+        System.err.println(e);
       }
     }
 
