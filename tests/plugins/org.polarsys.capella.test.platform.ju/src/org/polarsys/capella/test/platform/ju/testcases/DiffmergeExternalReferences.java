@@ -31,30 +31,75 @@ import org.polarsys.capella.test.framework.api.BasicTestCase;
  * This test ensures that {@link CapellaScope} is handling references towards elements loaded in a different resource
  * set.
  * 
- * Element in the scope must references elements loaded in the current resource set instead of relying on the external
- * one.
+ * If the external resource is also loaded in the current resource set, Element in the scope must references elements
+ * loaded in the current resource set instead of relying on the external one.
+ * 
+ * Otherwise, element must reference the external one
  */
 public class DiffmergeExternalReferences extends BasicTestCase {
 
   @Override
   public void test() throws Exception {
+    externalLoadedReference();
+    externalNotLoadedReference();
+  }
+
+  public void externalLoadedReference() {
     ExecutionManager manager = ExecutionManagerRegistry.getInstance().addNewManager();
-    Viewpoint sharedVp = ViewpointRegistry.getInstance().getViewpoints().iterator().next();
+    EAnnotation annotation = createAnnotation(manager);
+    Viewpoint sharedVp = getViewpoint();
 
-    EObject annotation = createAnnotation(manager);
+    // Load shared vp resource in the current resource set
     loadResource(manager, sharedVp.eResource());
-    CapellaScope scope = new CapellaScope(annotation.eResource().getURI(), manager.getEditingDomain(), false);
-    manager.execute(new AbstractReadWriteCommand() {
-      @Override
-      public void run() {
-        scope.add(annotation, EcorePackage.Literals.EANNOTATION__REFERENCES, sharedVp);
-      }
-    });
 
+    // Add reference from the current toward external viewpoint
+    CapellaScope scope = new CapellaScope(annotation.eResource().getURI(), manager.getEditingDomain(), false);
+    addReference(manager, scope, annotation, sharedVp);
+
+    // As vp resource is also loaded in current resource set, Scope shall refer to the current vp, not the external one
     Viewpoint currentVp = getCurrentElement(manager.getEditingDomain().getResourceSet(), sharedVp);
+    assertNotNull(currentVp);
+    assertNotEquals(currentVp, sharedVp);
     assertEquals(currentVp.getName(), sharedVp.getName());
     assertTrue(!scope.get(annotation, EcorePackage.Literals.EANNOTATION__REFERENCES).contains(sharedVp));
     assertTrue(scope.get(annotation, EcorePackage.Literals.EANNOTATION__REFERENCES).contains(currentVp));
+  }
+
+  public void externalNotLoadedReference() {
+    ExecutionManager manager = ExecutionManagerRegistry.getInstance().addNewManager();
+    EAnnotation annotation = createAnnotation(manager);
+    Viewpoint sharedVp = getViewpoint();
+
+    // Add reference from the current toward external viewpoint
+    CapellaScope scope = new CapellaScope(annotation.eResource().getURI(), manager.getEditingDomain(), false);
+    addReference(manager, scope, annotation, sharedVp);
+
+    // As vp resource is not loaded in current resource set, Scope shall refer to the external one
+    Viewpoint currentVp = getCurrentElement(manager.getEditingDomain().getResourceSet(), sharedVp);
+    assertNull(currentVp);
+    assertTrue(scope.get(annotation, EcorePackage.Literals.EANNOTATION__REFERENCES).contains(sharedVp));
+  }
+
+  /**
+   * Returns a loaded viewpoint
+   */
+  private Viewpoint getViewpoint() {
+    Viewpoint vp = ViewpointRegistry.getInstance().getViewpoints().iterator().next();
+    assertNotNull(vp);
+    return vp;
+  }
+
+  /**
+   * Add annotation reference towards the given element
+   */
+  private void addReference(ExecutionManager manager, CapellaScope scope, EAnnotation annotation,
+      EObject referencedElement) {
+    manager.execute(new AbstractReadWriteCommand() {
+      @Override
+      public void run() {
+        scope.add(annotation, EcorePackage.Literals.EANNOTATION__REFERENCES, referencedElement);
+      }
+    });
   }
 
   /**
@@ -64,10 +109,10 @@ public class DiffmergeExternalReferences extends BasicTestCase {
    */
   private <T extends EObject> T getCurrentElement(ResourceSet set, T sharedElement) {
     Resource rvp = set.getResource(sharedElement.eResource().getURI(), false);
-    assertNotNull(rvp);
-    T object = (T) rvp.getEObject(sharedElement.eResource().getURIFragment(sharedElement));
-    assertNotNull(object);
-    assertNotEquals(object, sharedElement);
+    T object = null;
+    if (rvp != null) {
+      object = (T) rvp.getEObject(sharedElement.eResource().getURIFragment(sharedElement));
+    }
     return object;
   }
 
@@ -90,6 +135,9 @@ public class DiffmergeExternalReferences extends BasicTestCase {
     return annotation;
   }
 
+  /**
+   * Load the given resource into the current manager
+   */
   private void loadResource(ExecutionManager manager, Resource sharedElement) {
     manager.execute(new AbstractReadWriteCommand() {
 
