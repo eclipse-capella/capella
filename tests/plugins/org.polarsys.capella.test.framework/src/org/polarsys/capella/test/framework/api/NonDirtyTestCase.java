@@ -18,6 +18,7 @@ import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.session.Session;
 import org.polarsys.capella.common.ef.internal.command.WorkspaceCommandStackImpl;
+import org.polarsys.capella.test.framework.helpers.GuiActions;
 
 /**
  * A test case that discard all changes to the test model at the end of test case.
@@ -50,6 +51,7 @@ public abstract class NonDirtyTestCase extends BasicTestCase {
 
   @Override
   protected void tearDown() throws Exception {
+    GuiActions.flushASyncGuiJobs();
     if (ModelProviderHelper.getInstance().getModelProvider().undoTestCaseChanges()) {
       undoAllChanges();
     }

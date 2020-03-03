@@ -1,0 +1,62 @@
+= Migration and Post-Migration script example for Windows =
+
+Below a batch script (.bat) to first execute a migration of projects given in parameters (zip), then execute 3 command lines on each project after migration: Refresh Representations, Remove Hidden Elements, and Export All Representations as images.
+
+<pre>
+@echo off
+setlocal enabledelayedexpansion
+</pre>
+<span style="color: green">rem Mandatory to set</span>
+<pre>
+set capellaExe=...\capella\capella.exe
+set workspacePath=...\workspace
+</pre>
+<span style="color: green">rem compute importedFiles (".../projectA.zip | .../projectB.zip | ...")</span>
+<pre>
+SET projectsList=
+for %%x in (%*) do (
+  set projectsList=!projectsList! ^| %%x
+)
+set importedFiles=!projectsList:~3!
+</pre>
+<span style="color: green">rem First, execute the migration on the given projects</span>
+<pre>
+echo Execute migration of all given projects:
+@echo on
+%capellaExe% -nosplash -application org.polarsys.capella.core.commandline.core -appid org.polarsys.capella.migration -data "%workspacePath%" -import "%importedFiles%" -outputfolder "A_ok/MigrationResult" -forceoutputfoldercreation
+@echo off
+echo.
+</pre>
+
+<span style="color: green">rem Then, for each project, call the 3 commands: refreshRepresentations, removeHiddenElements, exportRepresentations</span>
+<pre>
+for %%x in (%*) do (
+  for %%a in (%%x) do (
+    set projectName=%%~na
+  )
+  echo Execute commands for !projectName! project:
+  echo.
+</pre>
+  <span style="color: green">rem execute the refreshRepresentations command line</span>
+<pre>
+  set command1=%capellaExe% -nosplash -application org.polarsys.capella.core.commandline.core -appid org.polarsys.capella.refreshRepresentations -data "%workspacePath%" -filepath "!projectName!/!projectName!.aird" -outputfolder "!projectName!/RefreshResult" -forceoutputfoldercreation
+  echo !command1!
+  call !command1!
+  echo.
+</pre>
+  <span style="color: green">rem execute the removeHiddenElements command line</span>
+<pre>
+  set command2=%capellaExe% -nosplash -application org.polarsys.capella.core.commandline.core -appid org.polarsys.capella.removeHiddenElements   -data "%workspacePath%" -filepath "!projectName!/!projectName!.aird" -outputfolder "!projectName!/RemoveResult"  -forceoutputfoldercreation -unsyncDiags
+  echo !command2!
+  call !command2!
+  echo.
+</pre>
+  <span style="color: green">rem execute the exportRepresentations command line</span>
+<pre>
+  set command3=%capellaExe% -nosplash -application org.polarsys.capella.core.commandline.core -appid org.polarsys.capella.exportRepresentations  -data "%workspacePath%" -filepath "!projectName!/!projectName!.aird" -outputfolder "!projectName!/ExportResult"  -forceoutputfoldercreation -exportToHTML
+  echo !command3!
+  call !command3!
+  echo.
+)
+@echo on
+</pre>

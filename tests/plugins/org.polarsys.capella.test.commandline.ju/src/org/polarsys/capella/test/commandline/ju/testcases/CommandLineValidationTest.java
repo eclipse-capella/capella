@@ -51,13 +51,8 @@ public class CommandLineValidationTest extends BasicTestCase {
     validationCommandLine.parseContext(mockApplicationContext);
     validationCommandLine.setMode(CommandLineMode.NO_IMPORT);
 
-    // precondition: check parameters validity
     validationCommandLine.checkArgs(mockApplicationContext);
-
-    // prepare execution (e.g. import project into a specified workspace)
     validationCommandLine.prepare(mockApplicationContext);
-
-    // call execute
     validationCommandLine.execute(mockApplicationContext);
     
     // Check we have a result file with the expected validation results    
