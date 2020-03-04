@@ -25,8 +25,10 @@ import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.ComponentExchangeRealization;
+import org.polarsys.capella.core.data.fa.ComponentFunctionalAllocation;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.fa.FunctionalExchangeRealization;
+import org.polarsys.capella.core.data.fa.impl.ComponentFunctionalAllocationImpl;
 import org.polarsys.capella.core.data.information.Port;
 import org.polarsys.capella.core.data.information.PortRealization;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
@@ -61,8 +63,9 @@ public class TraceabilityKeyProvider implements IKeyProvider {
             keys.add(new CapellaTraceabilityFormatDataKey(mKey, trace.getTargetElement()));
           }
         }
-
-      } else if (semantic instanceof Part) {
+      }
+      
+      if (semantic instanceof Part) {
         keys.add(new CapellaTraceabilityFormatDataKey(mKey, ((Part) semantic).getAbstractType()));
 
         for (AbstractTrace trace : ((TraceableElement) (((Part) semantic).getAbstractType())).getOutgoingTraces()) {
@@ -86,6 +89,9 @@ public class TraceabilityKeyProvider implements IKeyProvider {
    */
   private boolean isValidTrace(AbstractTrace trace) {
     if ((trace.getSourceElement() == null) || (trace.getTargetElement() == null)) {
+      return false;
+    }
+    if (trace instanceof ComponentFunctionalAllocation) {
       return false;
     }
     if (trace.getSourceElement() instanceof Port) {

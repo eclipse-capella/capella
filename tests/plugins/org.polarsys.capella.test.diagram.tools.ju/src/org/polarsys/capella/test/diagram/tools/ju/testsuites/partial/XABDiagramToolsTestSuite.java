@@ -44,6 +44,7 @@ import org.polarsys.capella.test.diagram.tools.ju.xab.DragAndDropPhysicalCompone
 import org.polarsys.capella.test.diagram.tools.ju.xab.DragAndDropTest;
 import org.polarsys.capella.test.diagram.tools.ju.xab.ElementsFromModeAndStates;
 import org.polarsys.capella.test.diagram.tools.ju.xab.ElementsFromScenario;
+import org.polarsys.capella.test.diagram.tools.ju.xab.InitializeDiagramInvalidFunction;
 import org.polarsys.capella.test.diagram.tools.ju.xab.ManageBehaviorPCsDeployment;
 import org.polarsys.capella.test.diagram.tools.ju.xab.ManageEABRealizedPhysicalArtifacts;
 import org.polarsys.capella.test.diagram.tools.ju.xab.ManageFunctionAllocation;
@@ -164,8 +165,9 @@ public class XABDiagramToolsTestSuite extends BasicTestSuite {
     tests.add(new XABShowHideFunctionsTestSuite());
     tests.add(new ShowHideFunctionalExchanges());
     tests.add(new ShowHidePortAllocations());
-    tests.add(new ShowHideFunctionPorts());
-
+    tests.add(new ShowHideFunctionPorts()); 
+    tests.add(new InitializeDiagramInvalidFunction());
+    
     tests.add(new CreateConstraint());
     tests.add(new CreateConstraintElement());
     tests.add(new ShowHideConstraints());

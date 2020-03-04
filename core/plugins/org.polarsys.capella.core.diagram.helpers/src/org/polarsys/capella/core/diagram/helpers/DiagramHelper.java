@@ -134,7 +134,7 @@ public class DiagramHelper {
     return false;
   }
 
-  private boolean hasKind(RepresentationDescription description, String diagramDescriptionId) {
+  public boolean hasKind(RepresentationDescription description, String diagramDescriptionId) {
     if (description != null) {
       if (diagramDescriptionId == null) {
         return true;
