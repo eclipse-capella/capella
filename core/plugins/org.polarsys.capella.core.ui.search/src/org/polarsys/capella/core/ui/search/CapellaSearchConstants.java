@@ -30,6 +30,7 @@ public class CapellaSearchConstants {
   public static final String CapellaSearchPage_Validation_Message_Project_Selection = "At least one project must be selected";
   public static final String CapellaSearchPage_Validation_Message_SearchAttribute_Selection = "At least one attribute must be selected";
   public static final String CapellaSearchPage_Validation_Message_SearchMetaClass_Selection = "At least one metaclass must be selected";
+  public static final String CapellaSearchPage_Validation_Message_SearchFilter_Selection = "At least one filter must be selected";
   public static final String CapellaSearchQuery_Search_Pattern_Not_Validated_Message = "The search pattern '%s' is not validated because: %s";
   public static final String CapellaSearchResult_Label = "'%s' - %d occurrence(s) in %d element(s) of %d project(s)";
   public static final String CapellaSearchResult_Label_With_Active_Filters = "'%s' - %d occurrence(s) in %d element(s) of %d project(s) - %d occurrence(s) filtered by %d active filter(s)";

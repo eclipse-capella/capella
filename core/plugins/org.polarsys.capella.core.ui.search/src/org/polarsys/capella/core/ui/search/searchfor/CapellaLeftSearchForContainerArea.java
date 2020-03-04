@@ -30,6 +30,7 @@ import org.eclipse.ui.dialogs.PatternFilter;
 import org.eclipse.ui.progress.IProgressService;
 import org.polarsys.capella.core.ui.search.CapellaSearchConstants;
 import org.polarsys.capella.core.ui.search.CapellaSearchPage;
+import org.polarsys.capella.core.ui.search.CapellaSearchSettings;
 
 public class CapellaLeftSearchForContainerArea extends AbstractCapellaSearchForContainerArea {
   protected AbstractMetaModelParticipantsItemProvider partictipantsItemProvider;
@@ -85,9 +86,9 @@ public class CapellaLeftSearchForContainerArea extends AbstractCapellaSearchForC
       }
     }
 
-    searchPage.updateValidationStatus(searchPage.getCapellaSearchSettings().validate());
     // setSearchMetaClasses, beside the metaclass it contains also the category (Diagram Elements or Model Elements)
     searchPage.getCapellaSearchSettings().setSearchMetaClasses(checkedElements);
+    searchPage.updateValidationStatus(searchPage.getCapellaSearchSettings().validate());
     // refresh the attributes in right panel
     if (otherSideArea != null) {
       otherSideArea.filteredTree.getViewer().refresh();
@@ -135,6 +136,10 @@ public class CapellaLeftSearchForContainerArea extends AbstractCapellaSearchForC
         provider.setShowSemantics(checkboxFilterSemantic.getSelection());
         checkboxTreeViewer.refresh();
         checkboxTreeViewer.expandAll();
+        CapellaSearchSettings settings = searchPage.getCapellaSearchSettings();
+        settings.setAbstractChecked(checkboxFilterAbstract.getSelection());
+        settings.setSemanticChecked(checkboxFilterSemantic.getSelection());
+        searchPage.updateValidationStatus(searchPage.getCapellaSearchSettings().validate());
       }
     };
     IProgressService service = PlatformUI.getWorkbench().getProgressService();

@@ -34,6 +34,8 @@ public class CapellaSearchSettings {
   private Set<String> projects = new HashSet<>();
   private Set<Object> searchAttributes = new HashSet<>();
   private Set<Object> searchMetaClasses = new HashSet<>();
+  private boolean isAbstractChecked = false;
+  private boolean isSemanticChecked = true;
   
   public void addProject(String name) {
     projects.add(name);
@@ -115,13 +117,21 @@ public class CapellaSearchSettings {
     this.searchMetaClasses.remove(searchMetaClasses);
   }
 
+  public void setAbstractChecked(boolean isAbstractChecked) {
+    this.isAbstractChecked = isAbstractChecked;
+  }
+
+  public void setSemanticChecked(boolean isSemanticChecked) {
+    this.isSemanticChecked = isSemanticChecked;
+  }
+
   // method used to check the search settings (that we entered text, selected at least one mettaclass or attribute etc) 
   public IStatus validate() {
-    if (projects.isEmpty()) {
+    if (textPattern == null || textPattern.isEmpty()) {
       return new Status(IStatus.ERROR, Activator.PLUGIN_ID,
-          CapellaSearchConstants.CapellaSearchPage_Validation_Message_Project_Selection);
+          CapellaSearchConstants.CapellaSearchPage_Validation_Message_Pattern_Empty);
     }
-
+    
     if (isRegExSearch) {
       try {
         CapellaSearchSettings.createPattern(textPattern, isCaseSensitive, isRegExSearch, isWholeWord);
@@ -130,12 +140,6 @@ public class CapellaSearchSettings {
       }
     }
 
-    if (textPattern == null || textPattern.isEmpty()) {
-      return new Status(IStatus.ERROR, Activator.PLUGIN_ID,
-          CapellaSearchConstants.CapellaSearchPage_Validation_Message_Pattern_Empty);
-    }
-    
-    
     if (searchMetaClasses.isEmpty()) {
       return new Status(IStatus.ERROR, Activator.PLUGIN_ID,
           CapellaSearchConstants.CapellaSearchPage_Validation_Message_SearchMetaClass_Selection);
@@ -144,6 +148,11 @@ public class CapellaSearchSettings {
     if (searchAttributes.isEmpty()) {
       return new Status(IStatus.ERROR, Activator.PLUGIN_ID,
           CapellaSearchConstants.CapellaSearchPage_Validation_Message_SearchAttribute_Selection);
+    }
+    
+    if (!isAbstractChecked && !isSemanticChecked) {
+      return new Status(IStatus.ERROR, Activator.PLUGIN_ID,
+          CapellaSearchConstants.CapellaSearchPage_Validation_Message_SearchFilter_Selection);
     }
 
     return Status.OK_STATUS;
