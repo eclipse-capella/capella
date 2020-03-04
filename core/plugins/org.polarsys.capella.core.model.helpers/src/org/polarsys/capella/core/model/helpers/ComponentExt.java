@@ -2869,6 +2869,10 @@ public class ComponentExt {
    * @return
    */
   public static boolean canMoveInto(Component source, Component target) {
+    return canMoveInto(source, target, false);
+  }
+
+  public static boolean canMoveInto(Component source, Component target, boolean sourceIsDeployed) {
     if (source.equals(target)) {
       return false;
     }
@@ -2878,7 +2882,10 @@ public class ComponentExt {
     if (source instanceof PhysicalComponent && target instanceof PhysicalComponent) {
       PhysicalComponentNature nature1 = ((PhysicalComponent) source).getNature();
       PhysicalComponentNature nature2 = ((PhysicalComponent) target).getNature();
-      if (nature1 != PhysicalComponentNature.UNSET && nature2 != PhysicalComponentNature.UNSET && nature1 != nature2) {
+      if (nature1 == PhysicalComponentNature.NODE && nature2 == PhysicalComponentNature.BEHAVIOR) {
+        return false;
+      }
+      if (nature1 == PhysicalComponentNature.BEHAVIOR && nature2 == PhysicalComponentNature.NODE && !sourceIsDeployed) {
         return false;
       }
     }
