@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.sirius.diagram.DiagramPackage;
 
 public class AttributesParticipantsItemProvider extends AbstractMetaModelParticipantsItemProvider {
   private AbstractCapellaSearchForContainerArea leftArea = null;
@@ -31,18 +32,21 @@ public class AttributesParticipantsItemProvider extends AbstractMetaModelPartici
     Set<Object> checkedMetaClasses = leftArea.checkedElements;
     for (Object obj : checkedMetaClasses) {
       if (obj instanceof EClass) {
-        EList<EAttribute> attributes = ((EClass) obj).getEAllAttributes();
-        for (EAttribute newAttr : attributes) {
-          EDataType type = newAttr.getEAttributeType();
-          boolean add = type.getInstanceClass().equals(java.lang.String.class);
-          for (EAttribute attr : eAttributesList) {
-            if (add && newAttr.getName().equals(attr.getName())) {
-              add = false;
-              break;
+        // org.eclipse.sirius.diagram.Note
+        if (!obj.equals(DiagramPackage.eINSTANCE.getNote())) {
+          EList<EAttribute> attributes = ((EClass) obj).getEAllAttributes();
+          for (EAttribute newAttr : attributes) {
+            EDataType type = newAttr.getEAttributeType();
+            boolean add = type.getInstanceClass().equals(java.lang.String.class);
+            for (EAttribute attr : eAttributesList) {
+              if (add && newAttr.getName().equals(attr.getName())) {
+                add = false;
+                break;
+              }
             }
-          }
-          if (add) {
-            eAttributesList.add(newAttr);
+            if (add) {
+              eAttributesList.add(newAttr);
+            }
           }
         }
       }

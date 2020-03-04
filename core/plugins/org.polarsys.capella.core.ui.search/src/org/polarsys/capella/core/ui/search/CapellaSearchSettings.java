@@ -19,6 +19,7 @@ import java.util.regex.PatternSyntaxException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.search.internal.core.text.PatternConstructor;
+import org.eclipse.sirius.diagram.DiagramPackage;
 
 /*
  * Class used to keep the settings (parameters) of a search action.
@@ -145,7 +146,7 @@ public class CapellaSearchSettings {
           CapellaSearchConstants.CapellaSearchPage_Validation_Message_SearchMetaClass_Selection);
     }
     
-    if (searchAttributes.isEmpty()) {
+    if (searchAttributes.isEmpty() && !searchMetaClasses.contains(DiagramPackage.eINSTANCE.getNote())) {
       return new Status(IStatus.ERROR, Activator.PLUGIN_ID,
           CapellaSearchConstants.CapellaSearchPage_Validation_Message_SearchAttribute_Selection);
     }
