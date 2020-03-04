@@ -293,6 +293,14 @@ public class TitleBlockServices {
     return list;
   }
 
+  public boolean isTitleBlockContainer(EObject element) {
+    if (element instanceof DAnnotation) {
+      DAnnotation annotation = (DAnnotation) element;
+      return annotation.getSource().equals(DIAGRAM_TITLE_BLOCK) || annotation.getSource().equals(ELEMENT_TITLE_BLOCK);
+    }
+    return false;
+  }
+
   private void deleteDanglingTitleBlock(List<DAnnotation> list, Object elementView) {
     List<DAnnotation> deleteList = new ArrayList<DAnnotation>();
     for (DAnnotation annotation : list) {
