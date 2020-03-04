@@ -42,11 +42,11 @@ public class DragAndDropPhysicalComponent extends XABDiagramsProject {
     Session session = getSession(getRequiredTestModel());
     SessionContext context = new SessionContext(session);
 
-    oldTest(context);
-    newTest(session, context);
+    testDnDComponentsFromProjectExplorer(context);
+    testDnDComponentsBehaviorAndNodeDeployedOrNot(session, context);
   }
 
-  public void oldTest(SessionContext context) {
+  public void testDnDComponentsFromProjectExplorer(SessionContext context) {
     testOnXAB(context, PA__PAB_DIAGRAM, PA__PAB_DIAGRAM, PA__PC_PART_PC14);
     // drag and drop sub physical component
     testOnXAB(context, PA__PAB_DIAGRAM, PA__PAB_COMPONENT_PC2, PA__PC_PART_PC2_1);
@@ -64,7 +64,7 @@ public class DragAndDropPhysicalComponent extends XABDiagramsProject {
         .run();
   }
 
-  public void newTest(Session session, SessionContext context) throws Exception {
+  public void testDnDComponentsBehaviorAndNodeDeployedOrNot(Session session, SessionContext context) throws Exception {
     List<String> draggedElements = new ArrayList<>();
     List<String> containerElements = new ArrayList<>();
 
@@ -122,7 +122,7 @@ public class DragAndDropPhysicalComponent extends XABDiagramsProject {
     expectedNotPossible.add(new Pair<>(NOT_DEPLOYED_BEHAVIOR_DRAGGED, NOT_DEPLOYED_NODE_CONTAINER));
     expectedNotPossible.add(new Pair<>(NOT_DEPLOYED_BEHAVIOR_DRAGGED, DEPLOYED_NODE_CONTAINER));
 
-    // Now testing all combinaisons of dragged elements and containers
+    // Now testing all combinations of dragged elements and containers
     for (String draggedElement : draggedElements) {
       for (String containerElement : containerElements) {
         // same component, so cannot test the DnD
