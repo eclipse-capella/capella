@@ -52,6 +52,7 @@ public class CapellaTransfertViewerLabelProvider extends DataLabelProvider {
 
   private static String PATTERN1 = " [{0} -> {1}]{2}"; //$NON-NLS-1$
   private static String UNAMED = "<unnamed>"; //$NON-NLS-1$
+  private static String TITLE_BLOCK = "TitleBlock";
 
   private boolean disableLabelComputation = CapellaUIPropertiesPlugin.getDefault().isDisableLabelComputation();
 
@@ -68,9 +69,11 @@ public class CapellaTransfertViewerLabelProvider extends DataLabelProvider {
     }
     if (object instanceof DAnnotation) {
       DAnnotation annotation = (DAnnotation) object;
-      String imagePath = "/icons/full/obj16/TitleBlock_16.png";
-      URL url = FileLocator.find(CapellaUIResourcesPlugin.getDefault().getBundle(), new Path(imagePath), null);
-      return ImageDescriptor.createFromURL(url).createImage();
+      if (annotation.getSource().contains(TITLE_BLOCK)) {
+        String imagePath = "/icons/full/obj16/TitleBlock_16.gif";
+        URL url = FileLocator.find(CapellaUIResourcesPlugin.getDefault().getBundle(), new Path(imagePath), null);
+        return ImageDescriptor.createFromURL(url).createImage();
+      }
     }
     return super.getImage(object);
   }
@@ -164,15 +167,18 @@ public class CapellaTransfertViewerLabelProvider extends DataLabelProvider {
       }
 
     } else if (object instanceof DAnnotation) {
-      if (!(((DAnnotation) object).getReferences().get(0) instanceof DAnnotation)) {
-        EObject obj = ((DAnnotation) object).getReferences().get(0);
-        if (obj instanceof AbstractNamedElement) {
-          return ((AbstractNamedElement) obj).getName();
-        }
-      } else {
-        DSemanticDiagram diagram = (DSemanticDiagram) ((DAnnotation) object).eContainer();
-        if (diagram instanceof DRepresentation) {
-          return ((DRepresentation) diagram).getName();
+      DAnnotation annotation = (DAnnotation) object;
+      if (annotation.getSource().contains(TITLE_BLOCK)) {
+        if (!(annotation.getReferences().get(0) instanceof DAnnotation)) {
+          EObject obj = annotation.getReferences().get(0);
+          if (obj instanceof AbstractNamedElement) {
+            return ((AbstractNamedElement) obj).getName();
+          }
+        } else {
+          DSemanticDiagram diagram = (DSemanticDiagram) annotation.eContainer();
+          if (diagram instanceof DRepresentation) {
+            return ((DRepresentation) diagram).getName();
+          }
         }
       }
     } else {
