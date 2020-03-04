@@ -17,6 +17,12 @@ import org.polarsys.capella.core.preferences.Activator;
 
 public class TitleBlockPreferencesInitializer extends AbstractPreferencesInitializer {
 
+  public static final String TABEL_CONTENT_PREFERENCE_STORE = "tableTitleBlock";
+  public static final String COLUMNS_NUMBER_PREFERENCE_STORE = "columnsNumberTitleBlock";
+  public static final String ROWS_NUMBER_PREFERENCE_STORE = "rowsNumberTitleBlock";
+  public static final String DEFAULT_TITLEBLOCK_PREFERENCE_STORE = "defaultTitleBlock";
+  public static final String DEFAULT_TABLE = "Name+aql:name+Description+aql:description+Summary+aql:summary+Documentation+aql:documentation";
+
   public TitleBlockPreferencesInitializer() {
     super(CapellaActionsActivator.PLUGIN_ID);
   }
@@ -24,12 +30,11 @@ public class TitleBlockPreferencesInitializer extends AbstractPreferencesInitial
   @Override
   public void initializeDefaultPreferences() {
     IPreferenceStore preferenceStore = Activator.getDefault().getPreferenceStore();
-    preferenceStore.setDefault("columnsNumberTitleBlock", 2);
-    preferenceStore.setDefault("rowsNumberTitleBlock", 2);
-    preferenceStore.setDefault("tableTitleBlock",
-        "Name+aql:name+Description+aql:description+Summary+aql:summary+Documentation+aql:documentation");
+    preferenceStore.setDefault(COLUMNS_NUMBER_PREFERENCE_STORE, 2);
+    preferenceStore.setDefault(ROWS_NUMBER_PREFERENCE_STORE, 2);
+    preferenceStore.setDefault(TABEL_CONTENT_PREFERENCE_STORE, DEFAULT_TABLE);
 
-    preferenceStore.setDefault("defaultTitleBlock", true);
+    preferenceStore.setDefault(DEFAULT_TITLEBLOCK_PREFERENCE_STORE, true);
   }
 
 }

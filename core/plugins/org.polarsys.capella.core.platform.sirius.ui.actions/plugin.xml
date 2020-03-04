@@ -86,8 +86,7 @@
             id="org.polarsys.capella.core.platform.sirius.ui.actions.preferences.CapellaValidationPreferences"
             name="%ModelValidationPreferencePage_Name">
       </page>
-   </extension>
-   
+   </extension>   
    <extension
          point="org.eclipse.core.runtime.preferences">
       <initializer
