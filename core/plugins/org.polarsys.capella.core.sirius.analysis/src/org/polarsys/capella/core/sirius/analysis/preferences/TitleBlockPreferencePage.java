@@ -69,7 +69,7 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
   public static final String CONTENT = "Content";
   public static final String CONTENT_LOWERCASE = "content";
   public static final String DEFAULT_TITLEBLOCK_PREFERENCE_STORE = "defaultTitleBlock";
-  public static final String ADD_BY_DEFAULT = "Add by default Diagram TitleBlock";
+  public static final String ADD_BY_DEFAULT = "Add by default Diagram Title Block";
   public static final String TABEL_CONTENT_PREFERENCE_STORE = "tableTitleBlock";
   public static final String COLUMNS_NUMBER_PREFERENCE_STORE = "columnsNumberTitleBlock";
   public static final String ROWS_NUMBER_PREFERENCE_STORE = "rowsNumberTitleBlock";
@@ -143,7 +143,7 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
     v.setContentProvider(ArrayContentProvider.getInstance());
     v.setInput(createModel());
     v.getTable().setLinesVisible(true);
-    v.getTable().setHeaderVisible(true);
+    v.getTable().setHeaderVisible(false);
     GridData gridData = new GridData(GridData.FILL_BOTH);
     gridData.grabExcessVerticalSpace = true;
     gridData.grabExcessHorizontalSpace = true;
@@ -313,6 +313,7 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
         final TitleBlockCell tbcell = lst.get(index);
         final String cellText = String.valueOf(tbcell);
         cell.setText(cellText);
+        cell.setBackground(getShell().getDisplay().getSystemColor(SWT.COLOR_GRAY));
       }
     });
   }
