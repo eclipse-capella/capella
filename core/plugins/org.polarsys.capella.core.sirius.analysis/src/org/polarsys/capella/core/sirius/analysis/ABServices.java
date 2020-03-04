@@ -97,6 +97,7 @@ import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.ComponentPkgExt;
 import org.polarsys.capella.core.model.helpers.ComponentPortAllocationExt;
 import org.polarsys.capella.core.model.helpers.FunctionalExchangeExt;
+import org.polarsys.capella.core.model.helpers.PartExt;
 import org.polarsys.capella.core.model.helpers.PortExt;
 import org.polarsys.capella.core.model.helpers.ScenarioExt;
 import org.polarsys.capella.core.sirius.analysis.constants.MappingConstantsHelper;
@@ -669,7 +670,8 @@ public class ABServices {
     if (parts.contains(source)) {
       return false;
     }
-    if (!ComponentExt.canMoveInto((Component) source.getAbstractType(), (Component) target.getAbstractType())) {
+    if (!ComponentExt.canMoveInto((Component) source.getAbstractType(), (Component) target.getAbstractType(),
+        PartExt.isDeployed(source))) {
       return false;
     }
     return true;

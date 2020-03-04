@@ -297,4 +297,7 @@ public class PartExt {
     return part.getDeployingParts().isEmpty();
   }
 
+  public static boolean isDeployed(Part part) {
+    return !part.getDeployingParts().isEmpty();
+  }
 }
