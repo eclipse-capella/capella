@@ -349,6 +349,28 @@ public class TitleBlockServices {
     ((DSemanticDiagram) elementView).getEAnnotations().removeAll(annotationsList);
   }
 
+  public void clearLineEAnnotation(DAnnotation titleBlock, DDiagram diagram) {
+    List<DAnnotation> eAnnotationsList = diagram.getEAnnotations();
+    List<DAnnotation> annotationsListToBeRemoved = new ArrayList<>();
+    for (DAnnotation eAnnotation : eAnnotationsList) {
+      if (eAnnotation.getReferences().contains(titleBlock)) {
+        annotationsListToBeRemoved.add(eAnnotation);
+        for (EObject reference : eAnnotation.getReferences()) {
+          if (reference instanceof DAnnotation) {
+            annotationsListToBeRemoved.add((DAnnotation) reference);
+          }
+        }
+      }
+    }
+    eAnnotationsList.removeAll(annotationsListToBeRemoved);
+  }
+
+  public void clearColumnEAnnotation(DAnnotation titleBlock, DDiagram diagram) {
+    int last = titleBlock.getSource().lastIndexOf("_");
+    int length = titleBlock.getSource().length();
+    String columnNumber = titleBlock.getSource().substring(last + 1, length);
+  }
+
   public List<Object> getTitleBlockCellContent(EObject diagram, EObject cell, EObject containerView) {
     List<Object> list = new ArrayList<Object>();
     if ((diagram instanceof DRepresentation)) {
