@@ -77,15 +77,17 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
   public static final String SEPARATOR = "+";
   public static final String EMPTY_STRING = "";
   public static final int BOUND = 200;
-  public static final String ADD_ROW = "Add row";
+  public static final String ADD_ROW = "Add row to the end";
   public static final String ADD_ROW_AFTER = "Add row after";
-  public static final String ADD_COLUMN = "Add column";
+  public static final String ADD_COLUMN = "Add column to the end";
   public static final String ADD_COLUMN_AFTER = "Add column after";
   public static final String REMOVE_ROW = "Remove row";
   public static final String REMOVE_COLUMN = "Remove column";
   public static final String ROW_DELETE_MESSAGE = "Are you sure you want to delete the entire row?";
   public static final String COLUMN_DELETE_MESSAGE = "Are you sure you want to delete the entire column?";
   public static final String CONFIRM_DELETE = "Confirm Delete";
+  public static final String EDIT_ALL_CELLS = "Please edit all cells!";
+  public static final String ERROR = "Error";
   public static final String TitleBlockPreferencePage_Title = "Title Block";
   public static final String TitleBlockPreferencePage_Description = "Preferences related to Title Block";
 
@@ -219,16 +221,17 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
 
   @Override
   public boolean performOk() {
-    doGetPreferenceStore().setValue(DEFAULT_TITLEBLOCK_PREFERENCE_STORE,
-        defaultTitleBlockFieldEditor.getBooleanValue());
-    doGetPreferenceStore().setValue(COLUMNS_NUMBER_PREFERENCE_STORE, columnsNumber);
-    doGetPreferenceStore().setValue(ROWS_NUMBER_PREFERENCE_STORE, rowsNumber);
-    String currentTableContent = "";
+
+    String currentTableContent = EMPTY_STRING;
     for (int i = 0; i < rowsNumber; i++) {
       for (int j = 0; j < columnsNumber; j++) {
         if (i == rowsNumber - 1 && j == columnsNumber - 1) {
           if (tccMatrix.get(i).get(j).name.equals(EMPTY_STRING)
               || tccMatrix.get(i).get(j).content.equals(EMPTY_STRING)) {
+            MessageBox messageBox = new MessageBox(getShell(), SWT.ICON_WARNING | SWT.OK);
+            messageBox.setMessage(EDIT_ALL_CELLS);
+            messageBox.setText(ERROR);
+            messageBox.open();
             return false;
           }
           currentTableContent = currentTableContent + tccMatrix.get(i).get(j).name + SEPARATOR
@@ -236,6 +239,10 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
         } else {
           if (tccMatrix.get(i).get(j).name.equals(EMPTY_STRING)
               || tccMatrix.get(i).get(j).content.equals(EMPTY_STRING)) {
+            MessageBox messageBox = new MessageBox(getShell(), SWT.ICON_WARNING | SWT.OK);
+            messageBox.setMessage(EDIT_ALL_CELLS);
+            messageBox.setText(ERROR);
+            messageBox.open();
             return false;
           }
           currentTableContent = currentTableContent + tccMatrix.get(i).get(j).name + SEPARATOR
@@ -243,6 +250,10 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
         }
       }
     }
+    doGetPreferenceStore().setValue(DEFAULT_TITLEBLOCK_PREFERENCE_STORE,
+        defaultTitleBlockFieldEditor.getBooleanValue());
+    doGetPreferenceStore().setValue(COLUMNS_NUMBER_PREFERENCE_STORE, columnsNumber);
+    doGetPreferenceStore().setValue(ROWS_NUMBER_PREFERENCE_STORE, rowsNumber);
     doGetPreferenceStore().setValue(TABEL_CONTENT_PREFERENCE_STORE, currentTableContent);
     return super.performOk();
   }
@@ -404,22 +415,22 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
   private void addMenu(final TableViewer v) {
     final MenuManager mgr = new MenuManager();
 
-    final Action addRowAfter = new Action(ADD_ROW_AFTER) {
+    final Action addRowToTheEnd = new Action(ADD_ROW) {
       @Override
       public void run() {
         refreshTableAddRows(-1);
       }
     };
 
-    final Action addRow = new Action(ADD_ROW) {
+    final Action addRowAfter = new Action(ADD_ROW_AFTER) {
       @Override
       public void run() {
-        int rowToAdd = v.getTable().getSelectionIndex();
+        int rowToAdd = v.getTable().getSelectionIndex() + 1;
         refreshTableAddRows(rowToAdd);
       }
     };
 
-    final Action addColumnAfter = new Action(ADD_COLUMN_AFTER) {
+    final Action addColumnToTheEnd = new Action(ADD_COLUMN) {
       @Override
       public void run() {
         createColumn(v, EMPTY_STRING, v.getTable().getColumnCount());
@@ -428,12 +439,12 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
       }
     };
 
-    final Action addColumn = new Action(ADD_COLUMN) {
+    final Action addColumnAfter = new Action(ADD_COLUMN_AFTER) {
       @Override
       public void run() {
         createColumn(v, EMPTY_STRING, v.getTable().getColumnCount());
         columnsNumber += 1;
-        int columnToAdd = v.getColumnViewerEditor().getFocusCell().getColumnIndex();
+        int columnToAdd = v.getColumnViewerEditor().getFocusCell().getColumnIndex() + 1;
         refreshTableColumns(columnToAdd);
       }
     };
@@ -473,10 +484,10 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
     mgr.addMenuListener(manager -> {
       if (v.getTable().getColumnCount() >= 1 && rowsNumber >= 1) {
         manager.add(addColumnAfter);
-        manager.add(addColumn);
+        manager.add(addColumnToTheEnd);
         manager.add(removeColumn);
         manager.add(addRowAfter);
-        manager.add(addRow);
+        manager.add(addRowToTheEnd);
         manager.add(removeRow);
       }
     });
