@@ -1770,10 +1770,10 @@
       <filters xsi:type="filter:CompositeFilterDescription" name="hide.property.values.filter" label="%common.cdb.hide.property.values.filter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG']"/>
       </filters>
-      <filters xsi:type="filter:CompositeFilterDescription" name="hide.diagram.title.block.filter" label="%common.cdb.hide.diagram.title.blocks.filter">
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.diagram.title.blocks.filter" label="%common.cdb.hide.diagram.title.blocks.filter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']" semanticConditionExpression="aql:not (self.isDiagramTitleBlock())"/>
       </filters>
-      <filters xsi:type="filter:CompositeFilterDescription" name="hide.element.title.block.filter" label="%common.cdb.hide.element.title.blocks.filter">
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.element.title.blocks.filter" label="%common.cdb.hide.element.title.blocks.filter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']" semanticConditionExpression="aql:self.isDiagramTitleBlock()"/>
       </filters>
       <concerns>
@@ -4152,7 +4152,7 @@
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:ToolGroup" name="DiagramTitleBlock">
-            <tools xsi:type="tool_1:ToolDescription" name="Diagram Title Block" precondition="aql:self.isDiagram()" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlock_16.gif">
+            <tools xsi:type="tool_1:ToolDescription" name="diagram.title.block" label="%common.cdb.diagram.title.block" precondition="aql:self.isDiagram()" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlock_16.gif">
               <element name="container"/>
               <elementView name="containerView"/>
               <initialOperation>
@@ -4161,7 +4161,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ToolDescription" name="title.blocks" label="%common.cdb.diagram.title.blocks" precondition="aql:not (containerView.getDiagramContainer().isSynchronized() and (containerView.oclIsKindOf(diagram::DNodeList) or containerView.oclIsKindOf(diagram::DNodeListElement)))" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <tools xsi:type="tool_1:ToolDescription" name="diagram.title.blocks" label="%common.cdb.diagram.title.blocks" precondition="aql:not (containerView.getDiagramContainer().isSynchronized() and (containerView.oclIsKindOf(diagram::DNodeList) or containerView.oclIsKindOf(diagram::DNodeListElement)))" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
               <element name="element"/>
               <elementView name="elementView">
                 <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="aql:elementView.getParentDiagram()"/>
@@ -4184,7 +4184,7 @@
             </tools>
           </ownedTools>
           <ownedTools xsi:type="tool:ToolGroup" name="ElementTitleBlock">
-            <tools xsi:type="tool_1:ToolDescription" name="Element Title Block" precondition="aql:not self.isDiagram()" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlock_16.gif">
+            <tools xsi:type="tool_1:ToolDescription" name="element.title.block" label="%common.cdb.element.title.block" precondition="aql:not self.isDiagram()" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlock_16.gif">
               <element name="container"/>
               <elementView name="containerView"/>
               <initialOperation>
@@ -4193,7 +4193,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ToolDescription" name="Element Title Block Line" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlockLine_16.gif">
+            <tools xsi:type="tool_1:ToolDescription" name="element.title.block.line" label="%common.cdb.element.title.block.line" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlockLine_16.gif">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
@@ -4202,7 +4202,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ToolDescription" name="Element Title Block Column" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlockColumn_16.gif">
+            <tools xsi:type="tool_1:ToolDescription" name="element.title.block.column" label="%common.cdb.element.title.block.column" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlockColumn_16.gif">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
