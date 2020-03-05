@@ -14,8 +14,11 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
+import org.eclipse.osgi.util.NLS;
+import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
@@ -32,23 +35,22 @@ public class LogicalSystem_RealizedSystemSystem extends AbstractValidationRule {
   public IStatus validate(IValidationContext ctx) {
     EObject eObj = ctx.getTarget();
     EMFEventType eType = ctx.getEventType();
-
     if (eType == EMFEventType.NULL) {
       if (eObj instanceof LogicalComponent && !ComponentExt.isActor(eObj)) {
         LogicalComponent component = (LogicalComponent) eObj;
         if (component.equals(BlockArchitectureExt.getRootBlockArchitecture(component).getSystem())) {
           if (component.getRealizedSystemComponents().isEmpty()) {
-            String previousRootCompoenentname = "System Component";
             BlockArchitecture previousArchitectures = BlockArchitectureExt
                 .getPreviousBlockArchitecture(BlockArchitectureExt.getRootBlockArchitecture(component));
             Component previousRootComponent = previousArchitectures.getSystem();
+            String previousRootComponentName = NLS.bind("Root {0}", CtxPackage.Literals.SYSTEM_COMPONENT.getName());
             if (previousRootComponent != null) {
-              previousRootCompoenentname = "\"" + previousRootComponent.getName() + "\" ("
-                  + previousRootComponent.eClass().getName() + ")";
+              previousRootComponentName = NLS.bind("Root \"{0}\"{1}", previousRootComponent.getName(),
+                  EObjectLabelProviderHelper.getMetaclassLabel(previousRootComponent, true));
             }
 
-            return ctx.createFailureStatus("Root \"" + component.getName() + "\" (" + component.eClass().getName() + ")"
-                + " does not realize the Root " + previousRootCompoenentname);
+            return ctx.createFailureStatus(NLS.bind("Root \"{0}\"{1}", component.getName(),
+                EObjectLabelProviderHelper.getMetaclassLabel(component, true)), previousRootComponentName);
           }
         }
       }

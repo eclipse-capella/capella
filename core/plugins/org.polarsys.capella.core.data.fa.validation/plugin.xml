@@ -1003,7 +1003,7 @@ If E1 is carried by another Function Port P2 contained by a Function F2 and F2 r
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  {0}.
+                  {0} does not realize {1}.
                </message>
                <description>
                   This rule ensures the realization consistency between Root Functions.

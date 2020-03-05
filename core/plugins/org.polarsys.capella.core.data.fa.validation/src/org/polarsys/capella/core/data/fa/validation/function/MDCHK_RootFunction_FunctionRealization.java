@@ -14,8 +14,10 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
+import org.eclipse.osgi.util.NLS;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
+import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
@@ -40,7 +42,8 @@ public class MDCHK_RootFunction_FunctionRealization extends AbstractValidationRu
     if (eType == EMFEventType.NULL) {
       if (eObj instanceof AbstractFunction) {
         AbstractFunction function = (AbstractFunction) eObj;
-        String currentFunctionName = "Root \"" + function.getName() + "\" (" + function.eClass().getName() + ") ";
+        String currentFunctionName = NLS.bind("Root \"{0}\"{1}", function.getName(),
+            EObjectLabelProviderHelper.getMetaclassLabel(function, true));
         String targetFunctionName = "";
         BlockArchitecture currentLevelArchitecture = BlockArchitectureExt.getRootBlockArchitecture(function);
         BlockArchitecture previousArchitectures = BlockArchitectureExt
@@ -48,8 +51,8 @@ public class MDCHK_RootFunction_FunctionRealization extends AbstractValidationRu
         if (previousArchitectures != null) {
           AbstractFunction targetFunction = BlockArchitectureExt.getRootFunction(previousArchitectures);
           if (targetFunction != null) {
-            targetFunctionName = "Root \"" + targetFunction.getName() + "\" (" + targetFunction.eClass().getName()
-                + ")";
+            targetFunctionName = NLS.bind("Root \"{0}\"{1}", targetFunction.getName(),
+                EObjectLabelProviderHelper.getMetaclassLabel(targetFunction, true));
           }
         }
 
@@ -58,27 +61,24 @@ public class MDCHK_RootFunction_FunctionRealization extends AbstractValidationRu
           if (function instanceof SystemFunction) {
             if (((SystemFunction) function).getRealizedOperationalActivities().isEmpty()) {
               if (previousArchitectures == null) {
-                return createFailureStatus(ctx, new Object[] { currentFunctionName + "does not realize the "
-                    + "Operational Analysis (Not Found), Please create Operational Analysis" });
+                return ctx.createFailureStatus(currentFunctionName,
+                    "the Operational Analysis (Not Found), Please create Operational Analysis");
               }
               targetFunctionName = (targetFunctionName.isEmpty()) ? "Root Operational Activity (Not Found)"
                   : targetFunctionName;
-              return createFailureStatus(ctx,
-                  new Object[] { currentFunctionName + "does not realize the " + targetFunctionName });
+              return ctx.createFailureStatus(currentFunctionName, targetFunctionName);
             }
           } else if (function instanceof LogicalFunction) {
             if (((LogicalFunction) function).getRealizedSystemFunctions().isEmpty()) {
               targetFunctionName = (targetFunctionName.isEmpty()) ? "Root System Function (Not Found)"
                   : targetFunctionName;
-              return createFailureStatus(ctx,
-                  new Object[] { currentFunctionName + "does not realize the " + targetFunctionName });
+              return ctx.createFailureStatus(currentFunctionName, targetFunctionName);
             }
           } else if (function instanceof PhysicalFunction) {
             if (((PhysicalFunction) function).getRealizedLogicalFunctions().isEmpty()) {
               targetFunctionName = (targetFunctionName.isEmpty()) ? "Root Logical Function (Not Found)"
                   : targetFunctionName;
-              return createFailureStatus(ctx,
-                  new Object[] { currentFunctionName + "does not realize the " + targetFunctionName });
+              return ctx.createFailureStatus(currentFunctionName, targetFunctionName);
             }
           }
 
@@ -89,8 +89,7 @@ public class MDCHK_RootFunction_FunctionRealization extends AbstractValidationRu
               if (!((function instanceof LogicalFunction && sourceElement instanceof PhysicalFunction)
                   || (function instanceof SystemFunction && sourceElement instanceof LogicalFunction)
                   || (function instanceof OperationalActivity && sourceElement instanceof SystemFunction))) {
-                return createFailureStatus(ctx,
-                    new Object[] { currentFunctionName + "does not realize by accurate Root Function" });
+                return ctx.createFailureStatus(currentFunctionName, "by accurate Root Function");
               }
             }
           }

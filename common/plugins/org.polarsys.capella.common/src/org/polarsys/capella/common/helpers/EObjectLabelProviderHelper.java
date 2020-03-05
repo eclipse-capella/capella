@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2019, 2020 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,19 +10,31 @@
  *******************************************************************************/
 package org.polarsys.capella.common.helpers;
 
+import java.net.URL;
 import java.util.Collection;
 import java.util.MissingResourceException;
+import java.util.ResourceBundle;
 
+import org.eclipse.core.runtime.FileLocator;
+import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
+import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
+import org.eclipse.emf.edit.provider.DecoratorAdapterFactory;
 import org.eclipse.emf.edit.provider.IChangeNotifier;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ItemProviderDecorator;
+import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
+import org.eclipse.jface.resource.ImageDescriptor;
+import org.osgi.framework.Bundle;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 
 /**
@@ -114,6 +126,71 @@ public class EObjectLabelProviderHelper {
       label = METACLASS_DISPLAY_PREFIX + label + METACLASS_DISPLAY_SUFFIX;
     }
     return label;
+  }
+
+  /**
+   * Get the metaclass label for the given EClass
+   * 
+   * @param eClass
+   * @param editingDomain
+   * @return
+   */
+  public static String getMetaclassLabel(EClass eClass, AdapterFactoryEditingDomain editingDomain) {
+    Bundle bundle = getGenBundle(eClass, editingDomain);
+    String label = "";
+    if (bundle != null) {
+      ResourceBundle resourceBundle = Platform.getResourceBundle(bundle);
+      if (resourceBundle != null) {
+        label = resourceBundle.getString(GENERATED_KEY_PREFIX + eClass.getName() + METACLASS_GENERATED_KEY_SUFFIX);
+      }
+    }
+    return label;
+  }
+
+  /**
+   * Get the imageDescriptor for the given EClass.
+   * 
+   * @param eClass
+   * @param editingDomain
+   * @return
+   */
+  public static ImageDescriptor getImage(EClass eClass, AdapterFactoryEditingDomain editingDomain) {
+    Bundle bundle = getGenBundle(eClass, editingDomain);
+    ImageDescriptor imageDescriptor = null;
+    if (bundle != null) {
+      ResourceBundle resourceBundle = Platform.getResourceBundle(bundle);
+      if (resourceBundle != null) {
+        URL imageURL = FileLocator.find(bundle, new Path("icons/full/obj16/" + eClass.getName() + ".gif"), null);
+        imageDescriptor = ExtendedImageRegistry.getInstance().getImageDescriptor(imageURL);
+      }
+    }
+    return imageDescriptor;
+  }
+
+  /**
+   * Get the genBundle for given eClass and editingDomain.
+   * 
+   * @param eClass
+   * @param editingDomain
+   * @return
+   */
+  private static Bundle getGenBundle(EClass eClass, AdapterFactoryEditingDomain editingDomain) {
+    EPackage selectedEPackage = eClass.getEPackage();
+    AdapterFactory adapterFactory = editingDomain.getAdapterFactory();
+    Bundle bundle = null;
+    if (adapterFactory instanceof ComposedAdapterFactory) {
+      AdapterFactory selectedAdapterFactory = ((ComposedAdapterFactory) adapterFactory)
+          .getFactoryForType(selectedEPackage);
+
+      if (selectedAdapterFactory instanceof DecoratorAdapterFactory) {
+        AdapterFactory decoratedAdapterFactory = ((DecoratorAdapterFactory) selectedAdapterFactory)
+            .getDecoratedAdapterFactory();
+        bundle = FrameworkUtil.getBundle(decoratedAdapterFactory.getClass());
+      } else {
+        bundle = FrameworkUtil.getBundle(selectedAdapterFactory.getClass());
+      }
+    }
+    return bundle;
   }
 
   /**
