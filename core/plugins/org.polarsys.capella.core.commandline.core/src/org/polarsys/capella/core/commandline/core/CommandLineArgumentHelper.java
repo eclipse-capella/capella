@@ -20,7 +20,9 @@ public class CommandLineArgumentHelper {
 
   private static CommandLineArgumentHelper instance;
   
+  @Deprecated
   private String filePath;
+  private String input;
   private String outputFolder;
   private boolean helpNeeded;
   private String logFilePath;
@@ -28,6 +30,7 @@ public class CommandLineArgumentHelper {
   private String importProjects;
   private boolean forceImport;
   private boolean copyOnWorkspace = false;
+  @Deprecated
   private boolean createFolder;
   private String exportProject;
   private String zipNameProject;
@@ -53,13 +56,13 @@ public class CommandLineArgumentHelper {
     helpNeeded = helper.hasParameter(CommandLineConstants.HELP);
     createFolder = helper.hasParameter(CommandLineConstants.FORCEOUTPUTFOLDERCREATION);
     copyOnWorkspace = helper.hasParameter(CommandLineConstants.COPY_ON_WORKSPACE);
-    
     appid = helper.getString(CommandLineConstants.ID);
     importProjects = helper.getString(CommandLineConstants.IMPORT);
     forceImport = helper.hasParameter(CommandLineConstants.FORCEIMPORT);
     exportProject = helper.getString(CommandLineConstants.EXPORT);
     zipNameProject = helper.getString(CommandLineConstants.EXPORT_ZIP_NAME);
     filePath = helper.getString(CommandLineConstants.FILE_PATH);
+    input = helper.getString(CommandLineConstants.INPUT);
     outputFolder = helper.getString(CommandLineConstants.OUTPUTFOLDER);
     logFilePath = helper.getString(CommonArgumentsConstants.LOG_FILE_PATH);
     
@@ -147,5 +150,12 @@ public class CommandLineArgumentHelper {
    */
   public String getZipNameProject() {
     return zipNameProject;
+  }
+  
+  /**
+   * @return the inputs
+   */
+  public String getInputs() {
+    return input;
   }
 }

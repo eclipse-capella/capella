@@ -24,7 +24,7 @@ import org.eclipse.equinox.app.IApplicationContext;
 /**
  *
  */
-public class ExportZipCommand extends AbstractCommandLine {
+public class ExportZipCommand extends DefaultCommandLine {
 
   /**
    * {@inheritDoc}

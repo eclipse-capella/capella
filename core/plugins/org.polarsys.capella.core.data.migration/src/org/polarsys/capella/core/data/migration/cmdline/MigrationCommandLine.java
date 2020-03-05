@@ -11,10 +11,6 @@
 package org.polarsys.capella.core.data.migration.cmdline;
 
 import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.IResource;
-import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.equinox.app.IApplicationContext;
@@ -27,10 +23,8 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.application.WorkbenchAdvisor;
-import org.polarsys.capella.core.commandline.core.AbstractCommandLine;
 import org.polarsys.capella.core.commandline.core.CommandLineException;
-import org.polarsys.capella.core.commandline.core.CommandLineMode;
-import org.polarsys.capella.core.commandline.core.Messages;
+import org.polarsys.capella.core.commandline.core.DefaultCommandLine;
 import org.polarsys.capella.core.data.migration.MigrationConstants;
 import org.polarsys.capella.core.data.migration.MigrationHelpers;
 
@@ -48,17 +42,11 @@ import org.polarsys.capella.core.data.migration.MigrationHelpers;
  * -outputfolder d:/tmp <br/>
  * </p>
  */
-public class MigrationCommandLine extends AbstractCommandLine {
+public class MigrationCommandLine extends DefaultCommandLine {
 
   private Display display;
   private boolean initialValue_RefreshOnOpening;
   private boolean initialValue_AutoRefresh;
-  
-  @Override
-  public boolean projectVersionIsCompliant() throws CommandLineException {
-    // FIXME: 'filepath'and'outputfolder' are not used. Maybe they mustn'tbe mandatory in CommandLine
-    return true;
-  }
 
   /**
    * {@inheritDoc}
@@ -81,7 +69,7 @@ public class MigrationCommandLine extends AbstractCommandLine {
         setRefreshPrefs();
         migrateAllImportedProjects(display.getActiveShell());
         resetRefreshPrefs();
-        
+
         PlatformUI.getWorkbench().close();
       }
     });
@@ -90,17 +78,13 @@ public class MigrationCommandLine extends AbstractCommandLine {
   }
 
   public void migrateAllImportedProjects(Shell shell) {
-    for (String projectName : getImportedProjects()) {
+    for (IProject project : getProjectsFromInput()) {
       try {
-        IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
-
         // Migrate Project
-        MigrationHelpers.getInstance().trigger(project, shell, true, false,
-            MigrationConstants.DEFAULT_KIND_ORDER);
+        MigrationHelpers.getInstance().trigger(project, shell, true, false, MigrationConstants.DEFAULT_KIND_ORDER);
       } catch (Exception e) {
-        logError("Error during migration of " + projectName);
+        logError("Error during migration of " + project.getName());
       }
-
     }
   }
 
@@ -109,42 +93,27 @@ public class MigrationCommandLine extends AbstractCommandLine {
    *
    */
   public void setRefreshPrefs() {
-      IPreferenceStore preferenceStore = SiriusEditPlugin.getPlugin().getPreferenceStore();
-      initialValue_RefreshOnOpening = preferenceStore.getBoolean(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name());
-      preferenceStore = SiriusEditPlugin.getPlugin().getCorePreferenceStore();
-      initialValue_AutoRefresh = preferenceStore.getBoolean(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name());
+    IPreferenceStore preferenceStore = SiriusEditPlugin.getPlugin().getPreferenceStore();
+    initialValue_RefreshOnOpening = preferenceStore
+        .getBoolean(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name());
+    preferenceStore = SiriusEditPlugin.getPlugin().getCorePreferenceStore();
+    initialValue_AutoRefresh = preferenceStore.getBoolean(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name());
 
-      doSetSiriusPrefs(true, true);
+    doSetSiriusPrefs(true, true);
 
-      return;
-    }
-    
-    private void resetRefreshPrefs() {
-        doSetSiriusPrefs(initialValue_RefreshOnOpening, initialValue_AutoRefresh);
-    }
+    return;
+  }
 
-    private void doSetSiriusPrefs(boolean refreshOnOpening, boolean autoRefresh) {
-      IEclipsePreferences siriusUIPluginPreferences = InstanceScope.INSTANCE.getNode(SiriusEditPlugin.ID);
-      siriusUIPluginPreferences.putBoolean(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name(), refreshOnOpening);
-      
-      IEclipsePreferences siriusPluginPreferences = InstanceScope.INSTANCE.getNode(SiriusPlugin.ID);
-      siriusPluginPreferences.putBoolean(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), autoRefresh);
-    }
+  private void resetRefreshPrefs() {
+    doSetSiriusPrefs(initialValue_RefreshOnOpening, initialValue_AutoRefresh);
+  }
 
-    
-  @Override
-  public void checkArgs(IApplicationContext context) throws CommandLineException {
-    // refreshing the workspace needed in case of folders removed from outside the workbench
-    try {
-      ResourcesPlugin.getWorkspace().getRoot().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
-    } catch (CoreException exception) {
-      logErrorAndThrowException(Messages.refresh_problem);
-    }
+  private void doSetSiriusPrefs(boolean refreshOnOpening, boolean autoRefresh) {
+    IEclipsePreferences siriusUIPluginPreferences = InstanceScope.INSTANCE.getNode(SiriusEditPlugin.ID);
+    siriusUIPluginPreferences.putBoolean(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name(),
+        refreshOnOpening);
 
-    if (isEmtyOrNull(argHelper.getImportProjects())) {
-      logErrorAndThrowException(Messages.representation_mandatory);
-    } else 
-      setMode(CommandLineMode.IMPORT);
-
+    IEclipsePreferences siriusPluginPreferences = InstanceScope.INSTANCE.getNode(SiriusPlugin.ID);
+    siriusPluginPreferences.putBoolean(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), autoRefresh);
   }
 }

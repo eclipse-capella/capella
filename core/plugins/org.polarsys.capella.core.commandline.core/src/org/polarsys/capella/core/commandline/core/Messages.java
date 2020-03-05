@@ -39,6 +39,8 @@ public class Messages extends NLS {
   public static String unable_open_project;
   public static String compliance_check_pb;
   public static String import_mandatory;
+  public static String inputs_mandatory;
+  public static String aird_not_found;
   static {
     // initialize resource bundle
     NLS.initializeMessages(BUNDLE_NAME, Messages.class);
