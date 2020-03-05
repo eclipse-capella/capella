@@ -11,15 +11,12 @@
 package org.polarsys.capella.core.ui.search.searchfor;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.sirius.diagram.DiagramPackage;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.polarsys.capella.core.ui.search.CapellaSearchConstants;
 
 public class MetaClassesParticipantsItemProvider extends AbstractMetaModelParticipantsItemProvider {
@@ -31,7 +28,7 @@ public class MetaClassesParticipantsItemProvider extends AbstractMetaModelPartic
 
   public MetaClassesParticipantsItemProvider(AbstractCapellaSearchForContainerArea area) {
     eClassifierList = MetaClassesUtil.getInstance().getClassifiers();
-    diagramElements = getDiagramElements();
+    diagramElements = MetaClassesUtil.getInstance().getClassifiersDiagramElements();
     elements = new HashMap<String, Set<Object>>();
     elements.put(CapellaSearchConstants.ModelElements_Key, eClassifierList);
     elements.put(CapellaSearchConstants.DiagramElements_Key, diagramElements);
@@ -107,12 +104,5 @@ public class MetaClassesParticipantsItemProvider extends AbstractMetaModelPartic
       }
     }
     return false;
-  }
-
-  public Set<Object> getDiagramElements() {
-    Set<Object> result = new HashSet<Object>();
-    result.add(DiagramPackage.eINSTANCE.getNote());
-    result.add(ViewpointPackage.eINSTANCE.getDRepresentationDescriptor());
-    return result;
   }
 }

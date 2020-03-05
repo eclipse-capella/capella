@@ -88,7 +88,9 @@ public final class GetImagesFromEClassUtil {
         });
       }
       return obj;
-    } catch (Exception e) {}
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
     return null;
   }
 }

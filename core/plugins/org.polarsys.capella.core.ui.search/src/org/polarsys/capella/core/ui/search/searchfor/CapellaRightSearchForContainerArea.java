@@ -36,15 +36,10 @@ public class CapellaRightSearchForContainerArea extends AbstractCapellaSearchFor
   }
   
   protected void updateCheckedElements(Object element, boolean state) {
-    if (state == true)
-      checkedElements.add(element);
-    else
-      checkedElements.remove(element);
-    
     CheckboxTreeViewer viewer = (CheckboxTreeViewer) filteredTree.getViewer();
     viewer.setChecked(element, state);
     
-    searchPage.getCapellaSearchSettings().setSearchAttributes(checkedElements);
+    searchPage.getCapellaSearchSettings().setSearchAttributes(getCheckedElements());
     searchPage.updateValidationStatus(searchPage.getCapellaSearchSettings().validate());
   }
 }

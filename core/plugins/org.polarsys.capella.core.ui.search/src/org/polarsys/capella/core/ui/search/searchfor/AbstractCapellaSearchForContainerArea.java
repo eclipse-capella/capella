@@ -11,6 +11,7 @@
 package org.polarsys.capella.core.ui.search.searchfor;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -43,7 +44,6 @@ public abstract class AbstractCapellaSearchForContainerArea {
   protected Button deselectAllButton;
   protected Button defaultButton;
 
-  protected Set<Object> checkedElements = new HashSet<Object>();
   protected PatternFilter patternFilter;
   protected CheckboxFilteredTree filteredTree;
   protected Group parentGroup;
@@ -56,8 +56,7 @@ public abstract class AbstractCapellaSearchForContainerArea {
     parentGroup = parent;
     otherSideArea = area;
     searchPage = page;
-    createContent();
-  }
+    createContent();  }
 
   protected void createContent() {
     createContentArea();
@@ -192,13 +191,12 @@ public abstract class AbstractCapellaSearchForContainerArea {
 
   public void applySearchSettings(Set<Object> objects) {
     CheckboxTreeViewer checkboxTreeViewer = (CheckboxTreeViewer) filteredTree.getViewer();
-    checkedElements.clear();
     checkAll(checkboxTreeViewer, false);
 
     for (Object obj : objects) {
-      checkedElements.add(obj);
       checkboxTreeViewer.setChecked(obj, true);
     }
+    
     if (otherSideArea != null) {
       otherSideArea.filteredTree.getViewer().refresh();
     }
@@ -206,5 +204,9 @@ public abstract class AbstractCapellaSearchForContainerArea {
 
   public void refresh() {
     filteredTree.getViewer().refresh();
+  }
+  
+  public Set<Object> getCheckedElements() {
+    return new HashSet<Object>(Arrays.asList(((CheckboxTreeViewer) filteredTree.getViewer()).getCheckedElements()));
   }
 }

@@ -47,13 +47,12 @@ public abstract class AbstractCapellaHistory {
         capellaSearchSettingsInHistory.add(createSearchSettingsFromHistoryIndex(i));
       }
     } catch (NumberFormatException e) {
-      // nothing
     }
     return capellaSearchSettingsInHistory;
   }
 
   private CapellaSearchSettings createSearchSettingsFromHistoryIndex(int historyIndex) {
-    IDialogSettings searchHistorySection = getDialogSettingsForHistoryIndex(historyIndex);
+     IDialogSettings searchHistorySection = getDialogSettingsForHistoryIndex(historyIndex);
     CapellaSearchSettings searchSettings = new CapellaSearchSettings();
     if (searchHistorySection != null) {
       setSearchSettings(searchSettings, searchHistorySection);
@@ -79,9 +78,12 @@ public abstract class AbstractCapellaHistory {
           if(metaclass != null) {
             searchSettings.getSearchMetaClasses().add(metaclass);
           }
+          else {
+            searchSettings.getSearchMetaClasses().add(searchFieldText);
+          }
         }
       } catch (NumberFormatException e) {
-        // Nothing
+        e.printStackTrace();
       }
     }
     return searchSettings;
@@ -162,6 +164,10 @@ public abstract class AbstractCapellaHistory {
           searchHistorySection.put(SECTION_SEARCH_METACLASS_PREFIX + clsFieldsCount, eCls.getName());
           clsFieldsCount++;
         }
+        else {
+          searchHistorySection.put(SECTION_SEARCH_METACLASS_PREFIX + clsFieldsCount, searchMetaClasses.toString());
+          clsFieldsCount++;
+        }
       }
       searchHistorySection.put(SECTION_SEARCH_METACLASS_COUNT, clsFieldsCount);
     }
@@ -181,7 +187,6 @@ public abstract class AbstractCapellaHistory {
         }
       }
     } catch (NumberFormatException e) {
-      // Nothing
     }
     return -1;
   }

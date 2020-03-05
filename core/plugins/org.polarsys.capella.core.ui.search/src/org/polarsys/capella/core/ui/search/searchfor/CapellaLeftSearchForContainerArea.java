@@ -65,13 +65,8 @@ public class CapellaLeftSearchForContainerArea extends AbstractCapellaSearchForC
       }
     };
   }
-
+  
   protected void updateCheckedElements(Object parent, boolean state) {
-    if (state == true)
-      checkedElements.add(parent);
-    else
-      checkedElements.remove(parent);
-
     // handle the inheritance check propagation
     Object[] changedObjects = partictipantsItemProvider.getChildren(parent);
     CheckboxTreeViewer viewer = (CheckboxTreeViewer) filteredTree.getViewer();
@@ -79,15 +74,10 @@ public class CapellaLeftSearchForContainerArea extends AbstractCapellaSearchForC
     
     for (Object obj : changedObjects) {
       viewer.setChecked(obj, state);
-      if (state == true) {
-        checkedElements.add(obj);
-      } else {
-        checkedElements.remove(obj);
-      }
     }
 
     // setSearchMetaClasses, beside the metaclass it contains also the category (Diagram Elements or Model Elements)
-    searchPage.getCapellaSearchSettings().setSearchMetaClasses(checkedElements);
+    searchPage.getCapellaSearchSettings().setSearchMetaClasses(getCheckedElements());
     searchPage.updateValidationStatus(searchPage.getCapellaSearchSettings().validate());
     // refresh the attributes in right panel
     if (otherSideArea != null) {
