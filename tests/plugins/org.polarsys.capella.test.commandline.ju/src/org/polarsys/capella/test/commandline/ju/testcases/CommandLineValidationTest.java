@@ -40,7 +40,7 @@ public class CommandLineValidationTest extends BasicTestCase {
     // Simulated validation command line
     String[] validationCommandLineArguments = {
         CommandLineConstants.ID, "org.polarsys.capella.core.validation.commandline",
-        CommandLineConstants.FILE_PATH, projectName + "/Test Command Line Validation.aird",
+        CommandLineConstants.INPUT, projectName + "/Test Command Line Validation.aird",
         CommandLineConstants.OUTPUTFOLDER, projectName + "/ValidationResult",
         CommandLineConstants.FORCEOUTPUTFOLDERCREATION
     };
@@ -49,14 +49,13 @@ public class CommandLineValidationTest extends BasicTestCase {
     // Simulate launching from command line
     ValidationCommandLine validationCommandLine = new ValidationCommandLine();
     validationCommandLine.parseContext(mockApplicationContext);
-    validationCommandLine.setMode(CommandLineMode.NO_IMPORT);
 
     validationCommandLine.checkArgs(mockApplicationContext);
     validationCommandLine.prepare(mockApplicationContext);
     validationCommandLine.execute(mockApplicationContext);
     
     // Check we have a result file with the expected validation results    
-    IPath validationResultFile = workspaceLocation.append(projectName).append("ValidationResult").append(Messages.resultsFileName);
+    IPath validationResultFile = workspaceLocation.append(projectName).append("ValidationResult").append(projectName).append(projectName + ".aird").append(Messages.resultsFileName);
     byte[] fileContentInBytes = Files.readAllBytes(Paths.get(validationResultFile.toOSString()));
     String fileContentInString = new String(fileContentInBytes);
     assertTrue(fileContentInString.contains("DCOM_03") && fileContentInString.contains("TJ_SA_01")); 

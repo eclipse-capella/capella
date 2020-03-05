@@ -26,6 +26,7 @@ import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaValidateActio
 public class CapellaValidateComlineAction extends CapellaValidateAction {
 
   private Resource resourceToValidate;
+  private Diagnostic diagnostic;
 
   public void setSelectedObjects(List<EObject> selectedObjects) {
     this.selectedObjects = selectedObjects;
@@ -38,7 +39,7 @@ public class CapellaValidateComlineAction extends CapellaValidateAction {
   public void run() {
     if(isSetEditingDomain()){
       // works fine
-      Diagnostic diagnostic = super.validate(new NullProgressMonitor());
+      diagnostic = super.validate(new NullProgressMonitor());
       handleDiagnostic(diagnostic);
     }
   }
@@ -67,5 +68,11 @@ public class CapellaValidateComlineAction extends CapellaValidateAction {
    */
   public void setResource(Resource airdSemanticModel) {
     resourceToValidate = airdSemanticModel;
+  }
+  
+  public void deleteMarkers() {
+    for (Diagnostic childDiagnostic : diagnostic.getChildren()) {
+      eclipseResourcesUtil.deleteMarkers(childDiagnostic);
+    }
   }
 }

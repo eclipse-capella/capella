@@ -27,7 +27,8 @@ public class CommandLineFolderMigrationTest extends CommandLineMigrationTest {
     // Simulated migration command line with multiple projects
     String[] validationCommandLineArguments = {
         CommandLineConstants.ID, "org.polarsys.capella.migration",
-        CommandLineConstants.IMPORT, superLibFolder.getAbsolutePath() + "|" + subLibFolder.getAbsolutePath() + "|" + sysmodelFolder.getAbsolutePath()
+        CommandLineConstants.IMPORT, superLibFolder.getAbsolutePath() + "|" + subLibFolder.getAbsolutePath() + "|" + sysmodelFolder.getAbsolutePath(),
+        CommandLineConstants.INPUT, "/all"
     };
     IApplicationContext mockApplicationContext = new MockApplicationContext(validationCommandLineArguments);
 

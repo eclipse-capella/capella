@@ -125,12 +125,12 @@ public class CommandLineApp extends AbstractApplication {
         app.printHelp();
         return status;
       }
+      
+      // prepare execution (e.g. import project into a specified workspace)
+      app.prepare(context);
 
       // precondition: check parameters validity
       app.checkArgs(context);
-
-      // prepare execution (e.g. import project into a specified workspace)
-      app.prepare(context);
 
       // call execute
       app.execute(context);

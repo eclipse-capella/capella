@@ -11,12 +11,11 @@
 package org.polarsys.capella.core.sirius.ui.commandline;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
@@ -42,37 +41,45 @@ public class RemoveHiddenElementsCommandLine extends AbstractWorkbenchCommandLin
     RemoveHiddenElementsArgumentHelper args = (RemoveHiddenElementsArgumentHelper) argHelper;
     boolean unsyncDiags = args.getUnsyncDiags();
 
-    IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(argHelper.getFilePath()));
-    URI uri = EcoreUtil2.getURI(file);
-    
-    Session session = SessionManager.INSTANCE.getSession(uri, new NullProgressMonitor());
-    if (session == null) {
-      return new Status(IStatus.ERROR, SiriusUIPlugin.getDefault().getPluginId(), "No aird model found!");
-    }
-    if (!session.isOpen()) {
-      session.open(new NullProgressMonitor());
-    }
-    if (CapellaResourceHelper.isAirdResource(uri)) {
-      Collection<DRepresentationDescriptor> representations = DialectManager.INSTANCE
-          .getAllRepresentationDescriptors(session);
+    List<IFile> airdFiles = getAirdFilesFromInput();
+    for (IFile file : airdFiles) {
+      URI uri = EcoreUtil2.getURI(file);
 
-      DeleteHiddenElementsJob job = new DeleteHiddenElementsJob(representations, session, unsyncDiags);
-      job.schedule();
-      try {
-        job.join();
-      } catch (InterruptedException e) {
-        return Status.CANCEL_STATUS;
+      Session session = SessionManager.INSTANCE.getSession(uri, new NullProgressMonitor());
+      if (session == null) {
+        return new Status(IStatus.ERROR, SiriusUIPlugin.getDefault().getPluginId(), "No aird model found!");
       }
-      session.save(new NullProgressMonitor());
-      try {
-        session.close(new NullProgressMonitor());
-        
-      } catch (Exception e) {
-        e.printStackTrace();
+      if (!session.isOpen()) {
+        session.open(new NullProgressMonitor());
       }
+      if (CapellaResourceHelper.isAirdResource(uri)) {
+        Collection<DRepresentationDescriptor> representations = DialectManager.INSTANCE
+            .getAllRepresentationDescriptors(session);
+
+        DeleteHiddenElementsJob job = new DeleteHiddenElementsJob(representations, session, unsyncDiags);
+        job.schedule();
+        try {
+          job.join();
+        } catch (InterruptedException e) {
+          return Status.CANCEL_STATUS;
+        }
+        session.save(new NullProgressMonitor());
+        try {
+          session.close(new NullProgressMonitor());
+
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
+      }
+
     }
 
     return Status.OK_STATUS;
   }
-
+  
+  @Override
+  public void printHelp() {
+    super.printHelp();
+    printArgumentsFromTable("removeHiddenElementsParameters", false);
+  }
 }
