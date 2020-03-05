@@ -49,7 +49,7 @@ public class RefreshAirdCommandLine extends AbstractWorkbenchCommandLine {
         } catch (Exception e) {
           e.printStackTrace();
         }
-        if (PlatformUI.getTestableObject() == null) {
+        if (PlatformUI.getTestableObject() == null || PlatformUI.getTestableObject().getTestHarness() == null) {
           new CloseWorkbenchJob().schedule();
         }
       }
