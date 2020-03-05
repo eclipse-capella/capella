@@ -25,7 +25,7 @@
             category="org.polarsys.capella.wizards"
             class="org.polarsys.capella.core.libraries.ui.wizard.newLibrary.NewLibraryProjectWizard"
             hasPages="true"
-            icon="icons/full/etool16/Library.gif"
+            icon="icons/full/etool16/capella_library.png"
             id="capella.library.wizard"
             name="Capella Library"
             project="true">
