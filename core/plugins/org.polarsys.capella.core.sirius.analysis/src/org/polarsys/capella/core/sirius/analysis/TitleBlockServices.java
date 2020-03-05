@@ -369,6 +369,24 @@ public class TitleBlockServices {
     int last = titleBlock.getSource().lastIndexOf("_");
     int length = titleBlock.getSource().length();
     String columnNumber = titleBlock.getSource().substring(last + 1, length);
+    List<DAnnotation> eAnnotationsList = diagram.getEAnnotations();
+    List<DAnnotation> annotationsListToBeRemoved = new ArrayList<>();
+    DAnnotation parentTitleBlock = getParentTitleBlock(titleBlock, diagram);
+    for (EObject reference : parentTitleBlock.getReferences()) {
+      if (reference instanceof DAnnotation) {
+        List<EObject> lineReferences = ((DAnnotation) reference).getReferences();
+        for (EObject lineRef : lineReferences) {
+          if (lineRef instanceof DAnnotation) {
+            last = titleBlock.getSource().lastIndexOf("_");
+            length = titleBlock.getSource().length();
+            if (((DAnnotation) lineRef).getSource().substring(last + 1, length).equals(columnNumber)) {
+              annotationsListToBeRemoved.add((DAnnotation) lineRef);
+            }
+          }
+        }
+      }
+    }
+    eAnnotationsList.removeAll(annotationsListToBeRemoved);
   }
 
   public List<Object> getTitleBlockCellContent(EObject diagram, EObject cell, EObject containerView) {

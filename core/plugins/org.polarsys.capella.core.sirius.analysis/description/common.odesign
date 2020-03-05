@@ -4247,7 +4247,7 @@
               <elementView name="elementView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.clearLineEAnnotation(diagram)"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.clearColumnEAnnotation(diagram)"/>
                 </firstModelOperations>
               </initialOperation>
             </tools>
