@@ -19,7 +19,7 @@ import org.polarsys.capella.core.commands.preferences.service.PreferenceField;
 import org.polarsys.capella.core.commands.preferences.service.UserProfileModeEnum;
 import org.polarsys.capella.core.preferences.Activator;
 
-public class DiagramsPreferencePage extends AbstractDefaultPreferencePage {
+public class DiagramProcessChainPathPreferencePage extends AbstractDefaultPreferencePage {
 
   public static final String PROPERTY_PAGE_ID = "org.polarsys.capella.core.sirius.analysis.preferences.DiagramsPreferencePage"; //$NON-NLS-1$
 
@@ -47,7 +47,7 @@ public class DiagramsPreferencePage extends AbstractDefaultPreferencePage {
   public static final String LABEL_PREF_DISPLAY_INVALID_IN_OPERATIONAL_PROCESS_LABEL = "Show 'Invalid' in the process's label";
   public static final String TOOLTIP_PREF_DISPLAY_INVALID_IN_OPERATIONAL_PROCESS_LABEL = "If the process is not valid";
 
-  public DiagramsPreferencePage() {
+  public DiagramProcessChainPathPreferencePage() {
     super(PROPERTY_PAGE_ID);
   }
 
