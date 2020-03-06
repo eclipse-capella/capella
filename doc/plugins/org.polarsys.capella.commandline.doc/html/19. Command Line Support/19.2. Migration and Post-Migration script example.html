@@ -8,6 +8,11 @@
 	<body>
 		<h1 id="Migration_and_Post-Migration_script_example_for_Windows">Migration and Post-Migration script example for Windows</h1>
 		<p>Below a batch script (.bat) to first execute a migration of projects given in parameters (zip), then execute 3 command lines on each project after migration: Refresh Representations, Remove Hidden Elements, and Export All Representations as images.</p>
+		<p>To execute it:</p>
+		<pre>
+thisScript.bat #absolutePathToProjectA.zip #absolutePathToProjectB.zip #absolutePathToProjectC.zip
+</pre>
+		<p>If you migrate a project using libraries, all dependent projects/libraries must be included and the sequence order matters.</p>
 		<pre>
 @echo off
 setlocal enabledelayedexpansion
