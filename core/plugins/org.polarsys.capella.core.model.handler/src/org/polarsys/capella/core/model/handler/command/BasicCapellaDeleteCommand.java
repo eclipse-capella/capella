@@ -32,6 +32,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.operations.LongRunningListenersRegistry;
@@ -90,8 +91,8 @@ public class BasicCapellaDeleteCommand extends AbstractCommand {
   private boolean ensureTransaction;
 
   /**
-   * Show a confirmation dialog? Note: This value only controls whether we show the dialog to confirm the delete. Another dialog may be shown in case the
-   * selection contains fragment roots.
+   * Show a confirmation dialog? Note: This value only controls whether we show the dialog to confirm the delete.
+   * Another dialog may be shown in case the selection contains fragment roots.
    */
   private boolean confirmDelete;
 
@@ -99,12 +100,12 @@ public class BasicCapellaDeleteCommand extends AbstractCommand {
    * The execution manager.
    */
   private ExecutionManager executionManager;
-  
+
   /**
    * The editing domain (used when no execution manager is available).
    */
   protected EditingDomain editingDomain;
-  
+
   /**
    * Are we notifying the long running event registry?
    */
@@ -112,6 +113,7 @@ public class BasicCapellaDeleteCommand extends AbstractCommand {
 
   /**
    * Equivalent to <code>BasicCapellaDeleteCommand(executionManager, selection, true)</code>.
+   * 
    * @param executionManager
    * @param collection
    */
@@ -122,23 +124,32 @@ public class BasicCapellaDeleteCommand extends AbstractCommand {
   /**
    * Equivalent to
    * <code>BasicCapellaDeleteCommand(executionManager, collection, ensureTransaction, IDeletePreferences.INSTANCE.isConfirmationRequired(), true)</code>.
+   * 
    * @param executionManager
    * @param collection
    */
-  public BasicCapellaDeleteCommand(ExecutionManager executionManager, Collection<?> selection, boolean ensureTransaction) {
+  public BasicCapellaDeleteCommand(ExecutionManager executionManager, Collection<?> selection,
+      boolean ensureTransaction) {
     this(executionManager, selection, ensureTransaction, false, true);
     this.confirmDelete = isConfirmationRequired();
   }
 
   /**
    * Constructor.
+   * 
    * @param executionManager
    * @param selection
-   * @param ensureTransaction Should it be executed against the specified execution manager directly (<code>true</code>) or not (<code>false</code>) ?
-   * @param monitorDelete Should the user be asked for confirmation (<code>true</code>) or not (<code>false</code>) ?
-   * @param longOperationEvents Should events about this long running operation flow be sent ? <code>true</code> if so, <code>false</code> otherwise.
+   * @param ensureTransaction
+   *          Should it be executed against the specified execution manager directly (<code>true</code>) or not
+   *          (<code>false</code>) ?
+   * @param monitorDelete
+   *          Should the user be asked for confirmation (<code>true</code>) or not (<code>false</code>) ?
+   * @param longOperationEvents
+   *          Should events about this long running operation flow be sent ? <code>true</code> if so, <code>false</code>
+   *          otherwise.
    */
-  public BasicCapellaDeleteCommand(ExecutionManager executionManager, Collection<?> selection, boolean ensureTransaction, boolean confirmDelete, boolean longOperationEvents) {
+  public BasicCapellaDeleteCommand(ExecutionManager executionManager, Collection<?> selection,
+      boolean ensureTransaction, boolean confirmDelete, boolean longOperationEvents) {
     this.executionManager = executionManager;
     this.editingDomain = (executionManager != null) ? executionManager.getEditingDomain() : null;
     this.ensureTransaction = ensureTransaction;
@@ -150,11 +161,12 @@ public class BasicCapellaDeleteCommand extends AbstractCommand {
   /**
    * @see org.eclipse.emf.edit.command.DeleteCommand#execute()
    */
+  @Override
   public void execute() {
 
     /**
-     * Hard constraint on executability: If one of the elements to be deleted is a fragment root, we show an abort dialog and do nothing. FIXME This is
-     * expensive. FIXME transactional context?
+     * Hard constraint on executability: If one of the elements to be deleted is a fragment root, we show an abort
+     * dialog and do nothing. FIXME This is expensive. FIXME transactional context?
      */
     Set<? extends EObject> allControlledElementsToDelete = getAllControlledElementsToDelete();
     if (allControlledElementsToDelete.size() > 0) {
@@ -208,6 +220,7 @@ public class BasicCapellaDeleteCommand extends AbstractCommand {
         /**
          * @see java.lang.Runnable#run()
          */
+        @Override
         public void run() {
           doExecute();
         }
@@ -217,11 +230,13 @@ public class BasicCapellaDeleteCommand extends AbstractCommand {
       try {
         doExecute();
       } catch (OperationCanceledException oce) {
-        // If an OperationCanceledException is thrown by the doExecute, we propagate it, to rollback the current command.
+        // If an OperationCanceledException is thrown by the doExecute, we propagate it, to rollback the current
+        // command.
         throw oce;
       } catch (Exception re) {
         // For other kind of Exception, we only log them.
-        ModelHandlerPlugin.getDefault().getLog().log(new Status(IStatus.WARNING, ModelHandlerPlugin.PLUGIN_ID, re.getMessage(), re));
+        ModelHandlerPlugin.getDefault().getLog()
+            .log(new Status(IStatus.WARNING, ModelHandlerPlugin.PLUGIN_ID, re.getMessage(), re));
       }
     }
   }
@@ -236,7 +251,8 @@ public class BasicCapellaDeleteCommand extends AbstractCommand {
 
   protected Command getDeleteRepresentationCommand(TransactionalEditingDomain editingDomain) {
     return new BasicRepresentationDeleteCommand(editingDomain,
-        RepresentationHelper.getAllRepresentationDescriptorsTargetedBy(getExpandedSelection()), new NullProgressMonitor());
+        RepresentationHelper.getAllRepresentationDescriptorsTargetedBy(getExpandedSelection()),
+        new NullProgressMonitor());
   }
 
   /**
@@ -312,6 +328,7 @@ public class BasicCapellaDeleteCommand extends AbstractCommand {
   /**
    * @see org.eclipse.emf.common.command.Command#redo()
    */
+  @Override
   public void redo() {
     if (null != realCommand) {
       realCommand.redo();
@@ -335,11 +352,12 @@ public class BasicCapellaDeleteCommand extends AbstractCommand {
     if (deleteCommandHooks == null) {
       deleteCommandHooks = new ArrayList<AbstractCapellaDeleteHook>();
       // Load IDeleteCommandDelegation contributor if any.
-      IConfigurationElement[] configurationElements =
-          ExtensionPointHelper.getConfigurationElements("org.polarsys.capella.core.platform.sirius.ui.actions", "deleteCommandDelegation"); //$NON-NLS-1$
+      IConfigurationElement[] configurationElements = ExtensionPointHelper
+          .getConfigurationElements("org.polarsys.capella.core.platform.sirius.ui.actions", "deleteCommandDelegation"); //$NON-NLS-1$
       // Loop over contributed IDeleteCommandDelegation contributor, must be only one.
       for (IConfigurationElement elem : configurationElements) {
-        deleteCommandHooks.add((AbstractCapellaDeleteHook) ExtensionPointHelper.createInstance(elem, ExtensionPointHelper.ATT_CLASS));
+        deleteCommandHooks
+            .add((AbstractCapellaDeleteHook) ExtensionPointHelper.createInstance(elem, ExtensionPointHelper.ATT_CLASS));
       }
     }
     return deleteCommandHooks;
@@ -347,6 +365,7 @@ public class BasicCapellaDeleteCommand extends AbstractCommand {
 
   /**
    * Expand the original selection with business rules defined in our delete helper.
+   * 
    * @see getDeleteHelper()
    */
   public Collection<?> getExpandedSelection() {
@@ -365,6 +384,7 @@ public class BasicCapellaDeleteCommand extends AbstractCommand {
 
   /**
    * Sets the delete helper for this command.
+   * 
    * @see getExpandedSelection()
    */
   public void setDeleteHelper(IDeleteHelper helper) {
@@ -373,6 +393,7 @@ public class BasicCapellaDeleteCommand extends AbstractCommand {
 
   /**
    * Find controlled elements that are to be deleted.
+   * 
    * @see AdapterFactoryEditingDomain.isControlled(..)
    */
   public Set<? extends EObject> getAllControlledElementsToDelete() {
@@ -389,9 +410,10 @@ public class BasicCapellaDeleteCommand extends AbstractCommand {
   }
 
   /**
-   * Finds _all_ elements that will be deleted when the command is executed. NOTES: a. Two layers of business logic are controlling the result of this
-   * operation: 1. The delete helper is used to expand the initial selection 2. Business rules defined in PreDeleteStructureCommand b. All containment children
-   * of deleted elements are explicitly contained in the result set.
+   * Finds _all_ elements that will be deleted when the command is executed. NOTES: a. Two layers of business logic are
+   * controlling the result of this operation: 1. The delete helper is used to expand the initial selection 2. Business
+   * rules defined in PreDeleteStructureCommand b. All containment children of deleted elements are explicitly contained
+   * in the result set.
    */
   public Set<?> getAllElementsToDelete() {
     if (allElementsToDelete == null) {
@@ -400,8 +422,7 @@ public class BasicCapellaDeleteCommand extends AbstractCommand {
       PreDeleteHandler handler = new PreDeleteHandler();
 
       // Call predeletion command.
-      Command preDeletion =
-          new PreDeleteStructureCommand(editingDomain, getExpandedSelection(), handler);
+      Command preDeletion = new PreDeleteStructureCommand(editingDomain, getExpandedSelection(), handler);
       if (preDeletion.canExecute()) {
         preDeletion.execute();
       }
@@ -414,40 +435,41 @@ public class BasicCapellaDeleteCommand extends AbstractCommand {
           int notificationType = notification.getEventType();
           switch (notificationType) {
           // Set case.
-          // Handle it as a remove, as long as there is a null new value (and a not null old one, but that part is tested within the remove case
+          // Handle it as a remove, as long as there is a null new value (and a not null old one, but that part is
+          // tested within the remove case
           // directly).
-            case Notification.SET:
-              if (null != notification.getNewValue()) {
-                break;
+          case Notification.SET:
+            if (null != notification.getNewValue()) {
+              break;
+            }
+            //$FALL-THROUGH$
+          case Notification.REMOVE:
+            if (oldValue instanceof EObject) {
+              boolean handleNotification = false;
+              try {
+                EReference feature = EReference.class.cast(notification.getFeature());
+                handleNotification = feature != null ? feature.isContainment() : false;
+              } catch (ClassCastException cce) {
+                // Could not tell feature, add notification whatever it might be.
+                handleNotification = true;
               }
-              //$FALL-THROUGH$
-            case Notification.REMOVE:
-              if (oldValue instanceof EObject) {
-                boolean handleNotification = false;
-                try {
-                  EReference feature = EReference.class.cast(notification.getFeature());
-                  handleNotification = feature != null ? feature.isContainment() : false;                    
-                } catch (ClassCastException cce) {
-                  // Could not tell feature, add notification whatever it might be.
-                  handleNotification = true;
-                }
-                if (handleNotification) {
-                  // Add the deleted element.
-                  EObject deletedObject = (EObject) oldValue;
-                  result.add(deletedObject);
-                  // Filter out children of non Capella model elements as DRepresentation for instance.
-                  if (CapellaResourceHelper.isSemanticElement(deletedObject)) {
-                    // Add the deleted element subtree.
-                    TreeIterator<EObject> allChildrenOfDeletedObject = deletedObject.eAllContents();
-                    while (allChildrenOfDeletedObject.hasNext()) {
-                      EObject child = allChildrenOfDeletedObject.next();
-                      result.add(child);
-                    }
+              if (handleNotification) {
+                // Add the deleted element.
+                EObject deletedObject = (EObject) oldValue;
+                result.add(deletedObject);
+                // Filter out children of non Capella model elements as DRepresentation for instance.
+                if (CapellaResourceHelper.isSemanticElement(deletedObject) && !(deletedObject instanceof DAnnotation)) {
+                  // Add the deleted element subtree.
+                  TreeIterator<EObject> allChildrenOfDeletedObject = deletedObject.eAllContents();
+                  while (allChildrenOfDeletedObject.hasNext()) {
+                    EObject child = allChildrenOfDeletedObject.next();
+                    result.add(child);
                   }
                 }
               }
+            }
             break;
-            default:
+          default:
             break;
           }
         }
@@ -460,9 +482,13 @@ public class BasicCapellaDeleteCommand extends AbstractCommand {
 
   /**
    * FIXME who's using this? Fill parents to children structure for specified elements.
-   * @param parent The parent object.
-   * @param removedElement The removed element, child of specified parent one.
-   * @param parentsToChildren The resulting parents to children structure.
+   * 
+   * @param parent
+   *          The parent object.
+   * @param removedElement
+   *          The removed element, child of specified parent one.
+   * @param parentsToChildren
+   *          The resulting parents to children structure.
    */
   protected void fillStructure(EObject parent, EObject removedElement, Map<EObject, Set<EObject>> parentsToChildren) {
     // Precondition.
