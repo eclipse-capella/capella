@@ -388,7 +388,7 @@ public abstract class DefaultCommandLine implements ICommandLine {
     Bundle bundle = FrameworkUtil.getBundle(org.polarsys.capella.commandline.doc.Activator.class);
     URL fileURL = bundle.getEntry("html/19. Command Line Support/19.1. Core Mechanism and Applications.html");
     try {
-      URL resolvedUrl = FileLocator.resolve(fileURL);
+      URL resolvedUrl = FileLocator.toFileURL(fileURL);
       // We need to use the 3-arg constructor of URI in order to properly escape file system chars.
       java.net.URI resolvedUri = new java.net.URI(resolvedUrl.getProtocol(), resolvedUrl.getPath(), null);
       File docFile = new File(resolvedUri);
