@@ -77,10 +77,8 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
   public static final String SEPARATOR = "+";
   public static final String EMPTY_STRING = "";
   public static final int BOUND = 200;
-  public static final String ADD_ROW = "Add row to the end";
-  public static final String ADD_ROW_AFTER = "Add row after";
-  public static final String ADD_COLUMN = "Add column to the end";
-  public static final String ADD_COLUMN_AFTER = "Add column after";
+  public static final String ADD_ROW = "Add row";
+  public static final String ADD_COLUMN = "Add column";
   public static final String REMOVE_ROW = "Remove row";
   public static final String REMOVE_COLUMN = "Remove column";
   public static final String ROW_DELETE_MESSAGE = "Are you sure you want to delete the entire row?";
@@ -180,6 +178,7 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
             list.get(index).name = dialog.getName();
             list.get(index).content = dialog.getContent();
             cell.setText(dialog.getName());
+
           }
         }
         }
@@ -415,14 +414,7 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
   private void addMenu(final TableViewer v) {
     final MenuManager mgr = new MenuManager();
 
-    final Action addRowToTheEnd = new Action(ADD_ROW) {
-      @Override
-      public void run() {
-        refreshTableAddRows(-1);
-      }
-    };
-
-    final Action addRowAfter = new Action(ADD_ROW_AFTER) {
+    final Action addRow = new Action(ADD_ROW) {
       @Override
       public void run() {
         int rowToAdd = v.getTable().getSelectionIndex() + 1;
@@ -430,16 +422,7 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
       }
     };
 
-    final Action addColumnToTheEnd = new Action(ADD_COLUMN) {
-      @Override
-      public void run() {
-        createColumn(v, EMPTY_STRING, v.getTable().getColumnCount());
-        columnsNumber += 1;
-        refreshTableColumns(-1);
-      }
-    };
-
-    final Action addColumnAfter = new Action(ADD_COLUMN_AFTER) {
+    final Action addColumn = new Action(ADD_COLUMN) {
       @Override
       public void run() {
         createColumn(v, EMPTY_STRING, v.getTable().getColumnCount());
@@ -483,11 +466,9 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
     mgr.setRemoveAllWhenShown(true);
     mgr.addMenuListener(manager -> {
       if (v.getTable().getColumnCount() >= 1 && rowsNumber >= 1) {
-        manager.add(addColumnAfter);
-        manager.add(addColumnToTheEnd);
+        manager.add(addColumn);
         manager.add(removeColumn);
-        manager.add(addRowAfter);
-        manager.add(addRowToTheEnd);
+        manager.add(addRow);
         manager.add(removeRow);
       }
     });

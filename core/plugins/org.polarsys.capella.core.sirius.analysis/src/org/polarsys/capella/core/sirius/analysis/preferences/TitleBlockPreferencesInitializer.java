@@ -21,7 +21,7 @@ public class TitleBlockPreferencesInitializer extends AbstractPreferencesInitial
   public static final String COLUMNS_NUMBER_PREFERENCE_STORE = "columnsNumberTitleBlock";
   public static final String ROWS_NUMBER_PREFERENCE_STORE = "rowsNumberTitleBlock";
   public static final String DEFAULT_TITLEBLOCK_PREFERENCE_STORE = "defaultTitleBlock";
-  public static final String DEFAULT_TABLE = "Name+aql:name+Description+aql:description+Summary+aql:summary+Documentation+aql:documentation";
+  public static final String DEFAULT_TABLE = "Name+aql:name+Synchronized+aql:synchronized+Summary+aql:summary+Description+aql:description";
 
   public TitleBlockPreferencesInitializer() {
     super(CapellaActionsActivator.PLUGIN_ID);
