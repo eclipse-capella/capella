@@ -97,7 +97,7 @@ import org.polarsys.capella.core.model.helpers.PhysicalComponentExt;
 import org.polarsys.capella.core.model.helpers.PhysicalPathExt;
 import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 import org.polarsys.capella.core.sirius.analysis.constants.MappingConstantsHelper;
-import org.polarsys.capella.core.sirius.analysis.preferences.DiagramsPreferencePage;
+import org.polarsys.capella.core.sirius.analysis.preferences.DiagramProcessChainPathPreferencePage;
 import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
 
 /**
@@ -1244,10 +1244,10 @@ public class PhysicalServices {
     boolean isComplete = isCompletePhysicalPath(path, diagram);
     IProject project = PreferencesHelper.getProject(path);
     boolean displayIncompleteLabel = !isComplete && ScopedCapellaPreferencesStore
-        .getBoolean(DiagramsPreferencePage.NAME_PREF_DISPLAY_INCOMPLETE_IN_PHYSICAL_PATH_LABEL, project);
+        .getBoolean(DiagramProcessChainPathPreferencePage.NAME_PREF_DISPLAY_INCOMPLETE_IN_PHYSICAL_PATH_LABEL, project);
     boolean isValid = PhysicalPathExt.isPhysicalPathValid(path);
     boolean displayInvalidLabel = !isValid && ScopedCapellaPreferencesStore
-        .getBoolean(DiagramsPreferencePage.NAME_PREF_DISPLAY_INVALID_IN_PHYSICAL_PATH_LABEL, project);
+        .getBoolean(DiagramProcessChainPathPreferencePage.NAME_PREF_DISPLAY_INVALID_IN_PHYSICAL_PATH_LABEL, project);
     if (displayIncompleteLabel || displayInvalidLabel) {
       label = label + " ("; //$NON-NLS-1$
     }
