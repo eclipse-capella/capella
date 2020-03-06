@@ -2,6 +2,14 @@
 
 Below a batch script (.bat) to first execute a migration of projects given in parameters (zip), then execute 3 command lines on each project after migration: Refresh Representations, Remove Hidden Elements, and Export All Representations as images.
 
+To execute it:
+
+<pre>
+thisScript.bat #absolutePathToProjectA.zip #absolutePathToProjectB.zip #absolutePathToProjectC.zip
+</pre>
+
+If you migrate a project using libraries, all dependent projects/libraries must be included and the sequence order matters.
+
 <pre>
 @echo off
 setlocal enabledelayedexpansion
