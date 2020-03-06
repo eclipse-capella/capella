@@ -12,7 +12,12 @@
  *******************************************************************************/
 package org.polarsys.capella.core.diagram.helpers;
 
+import java.util.List;
+
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.sirius.viewpoint.description.DModelElement;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
@@ -24,6 +29,7 @@ public class DAnnotationHelper {
 
   /**
    * Create a DAnnotation with a given source on a given model element
+   * 
    * @param source
    * @param representation
    */
@@ -35,8 +41,8 @@ public class DAnnotationHelper {
   }
 
   /**
-   * Get the first annotation with a given source from a given model element, optionally
-   * creating the annotation if none previously existed.
+   * Get the first annotation with a given source from a given model element, optionally creating the annotation if none
+   * previously existed.
    * 
    * @param source
    * @param representation
@@ -68,6 +74,7 @@ public class DAnnotationHelper {
 
   /**
    * Delete the first annotation with a given source from a given model element
+   * 
    * @param source
    * @param representation
    * @return true if an annotation was deleted, false otherwise

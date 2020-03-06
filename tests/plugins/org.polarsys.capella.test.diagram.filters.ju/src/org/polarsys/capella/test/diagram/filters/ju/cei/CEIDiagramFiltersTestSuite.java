@@ -24,6 +24,8 @@ public class CEIDiagramFiltersTestSuite extends BasicTestSuite {
     tests.add(new HidePropertyValues());
     tests.add(new HideSimplifiedComponentInteractions());
     tests.add(new HideTechnicalInterfaceForCEI());
+    tests.add(new HideDiagramTitleBocksForCEI());
+    tests.add(new HideElementTitleBocksForCEI());
     return tests;
   }
 }

@@ -1,0 +1,50 @@
+=Title Block=
+
+ 
+This wizard helps you setting the label of the cell and the content displayed in a cell of a Title Block.
+
+ 
+'''Base '''
+
+                      
+{| border="1"
+|-
+| 
+'''Field'''
+
+ 
+| 
+'''Description'''
+
+ 
+| 
+'''Default'''
+
+ 
+|-
+| 
+'''Name'''
+
+ 
+| 
+The name of the label of the current Title Block cell.
+
+ 
+| 
+&lt;Name&gt;
+
+ 
+|-
+| 
+'''Content'''
+
+ 
+| 
+The data displayed in the cell, which can be customized via aql:, feature: or capella: queries.
+
+ 
+| 
+&lt;feature:name&gt;
+
+ 
+|}  

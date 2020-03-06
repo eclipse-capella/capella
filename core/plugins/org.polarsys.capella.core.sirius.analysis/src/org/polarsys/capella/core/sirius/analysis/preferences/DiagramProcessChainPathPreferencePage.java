@@ -1,12 +1,10 @@
 /*******************************************************************************
  * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
- * 
- * This program and the accompanying materials are made available under the
- * terms of the Eclipse Public License 2.0 which is available at
- * http://www.eclipse.org/legal/epl-2.0
- * 
- * SPDX-License-Identifier: EPL-2.0
- * 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *  
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
@@ -21,7 +19,7 @@ import org.polarsys.capella.core.commands.preferences.service.PreferenceField;
 import org.polarsys.capella.core.commands.preferences.service.UserProfileModeEnum;
 import org.polarsys.capella.core.preferences.Activator;
 
-public class DiagramsPreferencePage extends AbstractDefaultPreferencePage {
+public class DiagramProcessChainPathPreferencePage extends AbstractDefaultPreferencePage {
 
   public static final String PROPERTY_PAGE_ID = "org.polarsys.capella.core.sirius.analysis.preferences.DiagramsPreferencePage"; //$NON-NLS-1$
 
@@ -49,7 +47,7 @@ public class DiagramsPreferencePage extends AbstractDefaultPreferencePage {
   public static final String LABEL_PREF_DISPLAY_INVALID_IN_OPERATIONAL_PROCESS_LABEL = "Show 'Invalid' in the process's label";
   public static final String TOOLTIP_PREF_DISPLAY_INVALID_IN_OPERATIONAL_PROCESS_LABEL = "If the process is not valid";
 
-  public DiagramsPreferencePage() {
+  public DiagramProcessChainPathPreferencePage() {
     super(PROPERTY_PAGE_ID);
   }
 
