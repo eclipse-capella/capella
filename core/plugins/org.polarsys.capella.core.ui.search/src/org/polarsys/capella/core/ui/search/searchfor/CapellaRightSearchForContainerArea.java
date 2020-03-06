@@ -35,11 +35,7 @@ public class CapellaRightSearchForContainerArea extends AbstractCapellaSearchFor
     return new PatternFilter();
   }
   
-  protected void updateCheckedElements(Object element, boolean state) {
-    CheckboxTreeViewer viewer = (CheckboxTreeViewer) filteredTree.getViewer();
-    viewer.setChecked(element, state);
-    
+  public void updateSearchSettings() {
     searchPage.getCapellaSearchSettings().setSearchAttributes(getCheckedElements());
-    searchPage.updateValidationStatus(searchPage.getCapellaSearchSettings().validate());
   }
 }

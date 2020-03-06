@@ -65,24 +65,10 @@ public class CapellaLeftSearchForContainerArea extends AbstractCapellaSearchForC
       }
     };
   }
-  
-  protected void updateCheckedElements(Object parent, boolean state) {
-    // handle the inheritance check propagation
-    Object[] changedObjects = partictipantsItemProvider.getChildren(parent);
-    CheckboxTreeViewer viewer = (CheckboxTreeViewer) filteredTree.getViewer();
-    viewer.setChecked(parent, state);
-    
-    for (Object obj : changedObjects) {
-      viewer.setChecked(obj, state);
-    }
 
+  public void updateSearchSettings() {
     // setSearchMetaClasses, beside the metaclass it contains also the category (Diagram Elements or Model Elements)
     searchPage.getCapellaSearchSettings().setSearchMetaClasses(getCheckedElements());
-    searchPage.updateValidationStatus(searchPage.getCapellaSearchSettings().validate());
-    // refresh the attributes in right panel
-    if (otherSideArea != null) {
-      otherSideArea.filteredTree.getViewer().refresh();
-    }
   }
 
   public void createFiltercontainer(Group parentGroup) {
@@ -139,6 +125,13 @@ public class CapellaLeftSearchForContainerArea extends AbstractCapellaSearchForC
       e.printStackTrace();
     } catch (InvocationTargetException e) {
       e.printStackTrace();
+    }
+  }
+
+  @Override
+  public void refreshOtherSideArea() {
+    if (otherSideArea != null) {
+      otherSideArea.filteredTree.getViewer().refresh();
     }
   }
 }

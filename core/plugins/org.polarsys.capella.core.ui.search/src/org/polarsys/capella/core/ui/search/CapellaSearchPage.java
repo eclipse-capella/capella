@@ -141,7 +141,6 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
         }
       }
     });
-    comboSearchPattern.addModifyListener(e -> validate());
     comboSearchPattern.setToolTipText(CapellaSearchConstants.CapellaSearchPage_Combo_Pattern_Label_Regex_Enabled);
 
     ComboContentAdapter contentAdapter = new ComboContentAdapter();
@@ -175,12 +174,6 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
     checkboxCaseSensitive.setText(CapellaSearchConstants.CapellaSearchPage_Checkbox_CaseSensitive_Label);
     GridDataFactory.fillDefaults().applyTo(checkboxCaseSensitive);
     checkboxCaseSensitive.setFont(group.getFont());
-    checkboxCaseSensitive.addSelectionListener(new SelectionAdapter() {
-      @Override
-      public void widgetSelected(SelectionEvent e) {
-        validate();
-      }
-    });
   }
 
   private void createCheckboxRegex(Composite group) {
@@ -200,7 +193,6 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
           labelRegex.setText(CapellaSearchConstants.CapellaSearchRegexExplanation);
           checkboxWholeWord.setEnabled(true);
         }
-        validate();
       }
     });
   }
@@ -211,12 +203,6 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
     checkboxWholeWord.setText(CapellaSearchConstants.CapellaSearchPage_Checkbox_WholeWord_Label);
     GridDataFactory.fillDefaults().applyTo(checkboxWholeWord);
     checkboxWholeWord.setFont(group.getFont());
-    checkboxWholeWord.addSelectionListener(new SelectionAdapter() {
-      @Override
-      public void widgetSelected(SelectionEvent e) {
-        validate();
-      }
-    });
   }
 
   private void createSearchForGroup(Composite parent) {

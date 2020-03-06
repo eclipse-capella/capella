@@ -113,7 +113,19 @@ public abstract class AbstractCapellaSearchForContainerArea {
     };
   }
 
-  protected abstract void updateCheckedElements(Object parent, boolean state);
+  protected void updateCheckedElements(Object parent, boolean state) {
+    // handle the inheritance check propagation
+    boolean hasChildren = getPartictipantsItemProvider().hasChildren(parent);
+    CheckboxTreeViewer viewer = (CheckboxTreeViewer) filteredTree.getViewer();
+    if(hasChildren) {
+      viewer.setSubtreeChecked(parent, state);
+    }
+    else {
+      viewer.setChecked(parent, state);
+    }
+    updateSearchSettings();
+    refreshOtherSideArea();
+  }
 
   protected void createButtonsArea() {
     // buttons area
@@ -159,6 +171,8 @@ public abstract class AbstractCapellaSearchForContainerArea {
             public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
               CheckboxTreeViewer checkboxTreeViewer = (CheckboxTreeViewer) filteredTree.getViewer();
               checkAll(checkboxTreeViewer, selected);
+              updateSearchSettings();
+              refreshOtherSideArea();
             }
           }, null);
         } catch (InvocationTargetException e1) {
@@ -179,7 +193,7 @@ public abstract class AbstractCapellaSearchForContainerArea {
   public void checkAll(CheckboxTreeViewer viewer, boolean state) {
     Object[] viewerElements = getPartictipantsItemProvider().getElements("");
     for (Object obj : viewerElements) {
-      updateCheckedElements(obj, state);
+      viewer.setSubtreeChecked(obj, state);
     }
   }
 
@@ -187,6 +201,10 @@ public abstract class AbstractCapellaSearchForContainerArea {
 
   public void setOtherSideArea(AbstractCapellaSearchForContainerArea area) {
     this.otherSideArea = area;
+  }
+  
+  public void refreshOtherSideArea() {
+    // do nothing, want to refresh only the right side (attributes) based on the left (metaclasses) selection
   }
 
   public void applySearchSettings(Set<Object> objects) {
@@ -197,10 +215,10 @@ public abstract class AbstractCapellaSearchForContainerArea {
       checkboxTreeViewer.setChecked(obj, true);
     }
     
-    if (otherSideArea != null) {
-      otherSideArea.filteredTree.getViewer().refresh();
-    }
+    refreshOtherSideArea();
   }
+  
+  public abstract void updateSearchSettings();
 
   public void refresh() {
     filteredTree.getViewer().refresh();
