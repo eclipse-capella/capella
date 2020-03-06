@@ -44,7 +44,7 @@
    <topic href="html/Model Editors/PhysicalPort.html" label="Physical Port"></topic>
    
    <topic href="html/Model Editors/ConfigurationItem.html" label="Configuration Item (COTS / CS / HW / Interface / ND / PrimeItem / System)"></topic>
-   
+   <topic href="html/Model Editors/TitleBlock.html" label="Title Block"></topic>
    <anchor id="contribution"/>
    </topic>
 </toc>

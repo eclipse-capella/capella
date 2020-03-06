@@ -28,6 +28,8 @@ public class MBDiagramFiltersTestSuite extends BasicTestSuite {
     tests.add(new HideActorsForMB());
     tests.add(new HideCapabilitiesForMB());
     tests.add(new HideCapabilityExploitationsForMB());
+    tests.add(new HideDiagramTitleBlocksForMB());
+    tests.add(new HideElementTitleBlocksForMB());
     tests.add(new HideMissionsForMB());
     tests.add(new HidePropertyValuesForMB());
     tests.add(new HideCapabilityGeneralizationsForMB());

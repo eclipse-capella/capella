@@ -23,6 +23,8 @@ public class XDFBDiagramFiltersTestSuite extends BasicTestSuite {
   @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<>();
+    tests.add(new HideDiagramTitleBlocksTestCase());
+    tests.add(new HideElementTitleBlocksTestCase());
     tests.add(new HideFunctionalExchangesTestCase());
     return tests;
   }
