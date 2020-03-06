@@ -462,7 +462,6 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
 
       }
     };
-
     mgr.setRemoveAllWhenShown(true);
     mgr.addMenuListener(manager -> {
       if (v.getTable().getColumnCount() >= 1 && rowsNumber >= 1) {
@@ -472,7 +471,6 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
         manager.add(removeRow);
       }
     });
-
     v.getControl().setMenu(mgr.createContextMenu(v.getControl()));
   }
 
