@@ -41,6 +41,8 @@ public class Messages extends NLS {
   public static String import_mandatory;
   public static String inputs_mandatory;
   public static String aird_not_found;
+  public static String export_zip_not_found;
+  public static String export_zip_no_ouputfolder;
   static {
     // initialize resource bundle
     NLS.initializeMessages(BUNDLE_NAME, Messages.class);

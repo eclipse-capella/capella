@@ -21,7 +21,10 @@ public class CommandLineConstants {
   public static final String DATA = "-data";//$NON-NLS-1$
   public static final String IMPORT = "-import"; //$NON-NLS-1$
   public static final String FORCEIMPORT = "-forceimport"; //$NON-NLS-1$
+  public static final String EXPORTZIP = "-exportZip"; //$NON-NLS-1$
+  @Deprecated
   public static final String EXPORT = "-export"; //$NON-NLS-1$
+  @Deprecated
   public static final String EXPORT_ZIP_NAME = "-exportZipName"; //$NON-NLS-1$
   @Deprecated
   public static final String FILE_PATH = "-filepath";//$NON-NLS-1$
@@ -31,5 +34,6 @@ public class CommandLineConstants {
   @Deprecated
   public static final String FORCEOUTPUTFOLDERCREATION = "-forceoutputfoldercreation"; //$NON-NLS-1$
   public static final String LOG_FILE_PATH = CommonArgumentsConstants.LOG_FILE_PATH;
+  public static final String BACKUP = "-backup";
 
 }

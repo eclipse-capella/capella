@@ -135,6 +135,9 @@ public class CommandLineApp extends AbstractApplication {
       // call execute
       app.execute(context);
 
+      // post execute
+      app.postExecute(context);
+      
     } catch (CommandLineException exception) {
       __logger.error(exception.getMessage());
       status = IApplication.EXIT_RELAUNCH;

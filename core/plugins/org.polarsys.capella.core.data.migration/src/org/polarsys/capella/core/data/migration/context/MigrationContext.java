@@ -25,6 +25,8 @@ import org.osgi.framework.Version;
  */
 public class MigrationContext {
 
+  private boolean backUpModel = true;
+  
   private boolean _skipConfirmation = false;
 
   private Shell _shell;
@@ -66,6 +68,14 @@ public class MigrationContext {
     _skipConfirmation = skipConfirmation;
   }
 
+  public boolean isBackupModel() {
+    return backUpModel;
+  }
+
+  public void setBackupModel(boolean backupModel) {
+    backUpModel = backupModel;
+  }
+  
   public void setProgressMonitor(IProgressMonitor monitor) {
     _monitor = monitor;
   }

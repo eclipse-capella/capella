@@ -16,21 +16,13 @@ The core mechanism provides the following parameters:
 |mandatory
 |defines the id of the command line application to launch. Command line applications are plugins that extend the core mechanism (e.g. model validation)
 |-
-|input
-|mandatory
-|defines a list of the relative paths of the Eclipse projects or aird files to as input of the command line. The list have to be placed into quotes "" and separated by a &#124; character. Use /all to specify that all projects in the workspace are used as input.
-|-
-|nosplash
-|optional
-|launch Capella without the initial splash screen
-|-
-|consolelog
-|optional
-|allows to log messages into the console output
-|-
 |data
 |optional
 |defines the path to the workspace
+|-
+|input
+|mandatory
+|defines a list of the relative paths (to the workspace) of the Eclipse projects or aird files to use as input of the command line. The list have to be placed into quotes "" and separated by a &#124; character. Use /all to specify that all projects in the workspace are used as input.
 |-
 |import
 |optional
@@ -39,6 +31,22 @@ The core mechanism provides the following parameters:
 |forceimport
 |optional
 |unreference/delete exiting project from the workspace while importing projects using command line. Without this option, an error is logged if a project with the same name than the imported project exists already in the workspace
+|-
+|outputfolder
+|optional
+|defines the relative path (to the workspace) of the output folder
+|-
+|exportZip
+|optional
+|defines a list of the relative paths of the Eclipse projects to export as zip. The list have to be placed into quotes "" and separated by a &#124; character. Use /all to specify that all projects in the workspace are exported. This parameter must be used with -outputfolder to specify the folder that contains the zips.
+|-
+|nosplash
+|optional
+|launch Capella without the initial splash screen
+|-
+|consolelog
+|optional
+|allows to log messages into the console output
 |-
 |logfile
 |optional
@@ -57,7 +65,7 @@ The core mechanism provides the following parameters:
 [[Image:Images/19.1. Core Mechanism & Applications_html_3c78e175.png|48x48px]]
 |
 <ul>
-<li>Default behaviour of command line support checks that the workspace specified for validation result and HTML report generation is not in use by another instance of Eclipse.</li><br/>
+<li>Default behaviour of command line support checks that the workspace specified for use in command line is not in use by another instance of Eclipse.</li><br/>
 <li>Be careful to use a Capella version that is compatible with the Java Runtime Environment (i.e. run Capella 32 bits on a 32 bits JVM and Capella 64 bits on 64 bits JVM).</li><br/>
 <li>If the path to the aird file or the path to the workspace or the path to the log file contains white space, it should be in quotes (eg: '''-data &ldquo;D: \Application Data\workspace&rdquo;)'''</li><br/>
 <li>When Capella is run in command line, logs levels INFO, WARN, ERROR, FATAL are automatically activated for File and Console appender (regardless of the current log configuration stored in %USERPROFILE%\ReportConfiguration.xml)</li><br/>
@@ -70,6 +78,7 @@ The core mechanism provides the following parameters:
 == Command Line Application Examples ==
 
 === Model Validation ===
+The model validation command line provides the following additional parameters:
 
 {| id="validationParameters"
 !Name
@@ -78,13 +87,22 @@ The core mechanism provides the following parameters:
 |-
 |outputfolder
 |mandatory
-|defines the path to the output folder to generate the validation report
+|defines the path to the output folder to generate the validation report.
+|-
+|validationruleset
+|optional
+|defines path to the epf file of the disalbed rule IDs
+|-
+|validationcontext
+|optional
+|defines the list of path to objects to validate
+|-
 |}
 
 <u>'''Simple use case:'''</u>
 
 <pre>
-<CapellaInstallationPath>/capella.exe -nosplash
+<CapellaInstallationPath>/eclipsec.exe -nosplash
 -application org.polarsys.capella.core.commandline.core
 -appid org.polarsys.capella.core.validation.commandline
 -data <workspacePath>
@@ -105,7 +123,7 @@ A log file can be also specified with the parameter '''''-logfile'''''
 <u>'''Complex use case:'''</u>
 
 <pre>
-<CapellaInstallationPath>/capella.exe -nosplash
+<CapellaInstallationPath>/eclipsec.exe -nosplash
 -application org.polarsys.capella.core.commandline.core
 -appid org.polarsys.capella.core.validation.commandline
 -input /EOLE_AF/EOLE_AF.aird
@@ -147,7 +165,7 @@ A log file is also specified.
 <u>'''Simple use case:'''</u>
 
 <pre>
-<CapellaInstallationPath>/capella.exe -nosplash
+<CapellaInstallationPath>/eclipsec.exe -nosplash
 -application org.polarsys.capella.core.commandline.core
 -appid org.polarsys.kitalpha.doc.gen.business.capella.commandline
 -data <workspacePath>
@@ -167,7 +185,7 @@ This command will generate ''HTML'' report from the EOLE-AF aird file specified 
 '''Import Capella project and generate inside it'''
 
 <pre>
-<CapellaInstallationPath>/capella.exe -nosplash
+<CapellaInstallationPath>/eclipsec.exe -nosplash
 -application org.polarsys.capella.core.commandline.core
 -appid org.polarsys.kitalpha.doc.gen.business.capella.commandline
 -data <targetWorkspacePath>
@@ -182,7 +200,7 @@ This command will import the EOLE_AF project from ''&lt;absolutePath&gt;'' works
 '''Import Capella project and generate inside a new project'''
 
 <pre>
-<CapellaInstallationPath>/capella.exe -nosplash
+<CapellaInstallationPath>/eclipsec.exe -nosplash
 -application org.polarsys.capella.core.commandline.core
 -appid org.polarsys.kitalpha.doc.gen.business.capella.commandline
 -data <targetWorkspacePath>
@@ -197,7 +215,7 @@ This command will import the EOLE_AF project from ''&lt;absolutePath&gt;'' works
 '''Import Capella project and a Doc project to generate inside it'''
 
 <pre>
-<CapellaInstallationPath>/capella.exe -nosplash
+<CapellaInstallationPath>/eclipsec.exe -nosplash
 -application org.polarsys.capella.core.commandline.core
 -appid org.polarsys.kitalpha.doc.gen.business.capella.commandline
 -data <targetWorkspacePath>
@@ -213,7 +231,7 @@ This command will import two projects (EOLE_AF and DocProject) from ''&lt;absolu
 '''NOTE''': The source and target workspaces have to be different.
 
 
-=== Export as ZIP ===
+=== Export as ZIP (Deprecated, use the parameter -exportZip instead) ===
 
 This command will export selected project to the given zip filename
 
@@ -233,7 +251,7 @@ Mandatory parameters:
 <u>'''Simple use case:'''</u>
 
 <pre>
-<CapellaInstallationPath>/capella.exe -nosplash
+<CapellaInstallationPath>/eclipsec.exe -nosplash
 -application org.polarsys.capella.core.commandline.core
 -appid org.polarsys.capella.core.commandline.core.exportZip
 -data <workspacePath>
@@ -247,7 +265,15 @@ Mandatory parameters:
 
 
 === Migration ===
-
+{| id="migrationParameters"
+!Name
+!Category
+!Description
+|-
+|backup
+|optional
+|whether the model is backed up during the migration.
+|}
 This command will migrate the project(s) given as input. A workspace folder is created and located where the command is triggered or in a specified path given by the ''-data'' parameter. It creates a log file located in the .metadata folder of the workspace. If the input project is a folder, it will be backed up and migrated inside this folder, otherwise if the input is a zip file it will be unzipped and project(s) inside it will be migrated into the workspace folder.
 
 For a migration and post-migration script example, please check: [[../help/topic/org.polarsys.capella.commandline.doc/html/19.%20Command%20Line%20Support/19.2.%20Migration%20and%20Post-Migration%20script%20example.html | Migration and Post-Migration script example]]
@@ -256,15 +282,17 @@ For a migration and post-migration script example, please check: [[../help/topic
 
 
 <pre>
-<CapellaInstallationPath>/capella.exe -nosplash
+<CapellaInstallationPath>/eclipsec.exe -nosplash
 -application org.polarsys.capella.core.commandline.core
 -appid org.polarsys.capella.migration
+-data <workspacePath>
 -import D:/Projects/EOLE_AF.zip
 -input /all
--data <workspacePath>
+-exportZip EOLE_AF
+-outputfolder /MigratedProject/output
 </pre>
 
-This command imports a .zip into the specified workspace and migrate all projects inside.
+This command imports a .zip into the specified workspace, migrate all projects inside and exported the migrated project as zip to the output folder.
 
 If you migrate a project using libraries, all dependent projects/libraries must be included and the sequence order matters.
 
@@ -284,7 +312,7 @@ In such a case, the migration sequence can be done either by launching several u
 <u>'''Complex use case:'''</u>
 
 <pre>
-<CapellaInstallationPath>/capella.exe -nosplash
+<CapellaInstallationPath>/eclipsec.exe -nosplash
 -application org.polarsys.capella.core.commandline.core
 -appid org.polarsys.capella.migration
 -import "D:/Projects/Library3 | D:/Projects/Library1 | D:/Projects/Library2 | D:/Projects/Project1"
@@ -302,7 +330,7 @@ This command will refresh all representations. More information here: [[../help/
 <u>'''Simple use case:'''</u>
 
 <pre>
-<CapellaInstallationPath>/capella.exe -nosplash
+<CapellaInstallationPath>/eclipsec.exe -nosplash
 -application org.polarsys.capella.core.commandline.core
 -appid org.polarsys.capella.refreshRepresentations
 -data <workspacePath>
@@ -327,7 +355,7 @@ This command will remove all hidden elements of all representations. More inform
 <u>'''Simple use case:'''</u>
 
 <pre>
-<CapellaInstallationPath>/capella.exe -nosplash
+<CapellaInstallationPath>/eclipsec.exe -nosplash
 -application org.polarsys.capella.core.commandline.core
 -appid org.polarsys.capella.removeHiddenElements
 -data <workspacePath>
@@ -344,7 +372,7 @@ This command will remove all hidden elements of all representations. More inform
 |-
 |outputfolder
 |mandatory
-|defines the path to the output folder to export images
+|defines the path to the output folder to export images.
 |-
 |imageFormat
 |optional
@@ -364,7 +392,7 @@ This command will export images of all representations to the given outputfolder
 <u>'''Simple use case:'''</u>
 
 <pre>
-<CapellaInstallationPath>/capella.exe -nosplash
+<CapellaInstallationPath>/eclipsec.exe -nosplash
 -application org.polarsys.capella.core.commandline.core
 -appid org.polarsys.capella.exportRepresentations
 -data <workspacePath>

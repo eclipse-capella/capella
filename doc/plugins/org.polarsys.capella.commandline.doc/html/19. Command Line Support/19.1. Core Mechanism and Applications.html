@@ -22,24 +22,14 @@
 				<td>defines the id of the command line application to launch. Command line applications are plugins that extend the core mechanism (e.g. model validation)</td>
 			</tr>
 			<tr>
-				<td>input</td>
-				<td>mandatory</td>
-				<td>defines a list of the relative paths of the Eclipse projects or aird files to as input of the command line. The list have to be placed into quotes "" and separated by a &#124; character. Use /all to specify that all projects in the workspace are used as input.</td>
-			</tr>
-			<tr>
-				<td>nosplash</td>
-				<td>optional</td>
-				<td>launch Capella without the initial splash screen</td>
-			</tr>
-			<tr>
-				<td>consolelog</td>
-				<td>optional</td>
-				<td>allows to log messages into the console output</td>
-			</tr>
-			<tr>
 				<td>data</td>
 				<td>optional</td>
 				<td>defines the path to the workspace</td>
+			</tr>
+			<tr>
+				<td>input</td>
+				<td>mandatory</td>
+				<td>defines a list of the relative paths of the Eclipse projects or aird files to use as input of the command line. The list have to be placed into quotes "" and separated by a &#124; character. Use /all to specify that all projects in the workspace are used as input.</td>
 			</tr>
 			<tr>
 				<td>import</td>
@@ -50,6 +40,26 @@
 				<td>forceimport</td>
 				<td>optional</td>
 				<td>unreference/delete exiting project from the workspace while importing projects using command line. Without this option, an error is logged if a project with the same name than the imported project exists already in the workspace</td>
+			</tr>
+			<tr>
+				<td>outputfolder</td>
+				<td>optional</td>
+				<td>defines the path to the output folder</td>
+			</tr>
+			<tr>
+				<td>exportZip</td>
+				<td>optional</td>
+				<td>defines a list of the relative paths of the Eclipse projects to export as zip. The list have to be placed into quotes "" and separated by a &#124; character. Use /all to specify that all projects in the workspace are exported. This parameter must be used with -outputfolder to specify the folder that contains the zips.</td>
+			</tr>
+			<tr>
+				<td>nosplash</td>
+				<td>optional</td>
+				<td>launch Capella without the initial splash screen</td>
+			</tr>
+			<tr>
+				<td>consolelog</td>
+				<td>optional</td>
+				<td>allows to log messages into the console output</td>
 			</tr>
 			<tr>
 				<td>logfile</td>
@@ -74,7 +84,7 @@
 				</td>
 				<td>
 					<p><ul>
-<li>Default behaviour of command line support checks that the workspace specified for validation result and HTML report generation is not in use by another instance of Eclipse.</li>
+<li>Default behaviour of command line support checks that the workspace specified for use in command line is not in use by another instance of Eclipse.</li>
 						<br/>
 <li>Be careful to use a Capella version that is compatible with the Java Runtime Environment (i.e. run Capella 32 bits on a 32 bits JVM and Capella 64 bits on 64 bits JVM).</li>
 						<br/>
@@ -91,6 +101,7 @@
 		</table>
 		<h2 id="Command_Line_Application_Examples">Command Line Application Examples</h2>
 		<h3 id="Model_Validation">Model Validation</h3>
+		<p>The model validation command line provides the following additional parameters:</p>
 		<table id="validationParameters">
 			<tr>
 				<th>Name</th>
@@ -100,8 +111,19 @@
 			<tr>
 				<td>outputfolder</td>
 				<td>mandatory</td>
-				<td>defines the path to the output folder to generate the validation report</td>
+				<td>defines the path to the output folder to generate the validation report.</td>
 			</tr>
+			<tr>
+				<td>validationruleset</td>
+				<td>optional</td>
+				<td>defines path to the epf file of the disalbed rule IDs</td>
+			</tr>
+			<tr>
+				<td>validationcontext</td>
+				<td>optional</td>
+				<td>defines the list of path to objects to validate</td>
+			</tr>
+			<tr></tr>
 		</table>
 		<p><u>
 			<b>Simple use case:</b></u>
@@ -279,7 +301,7 @@
 		<p>
 			<b>NOTE</b>: The source and target workspaces have to be different.
 		</p>
-		<h3 id="Export_as_ZIP">Export as ZIP</h3>
+		<h3 id="Export_as_ZIP_.28Deprecated.2C_use_the_parameter_-exportZip_instead.29">Export as ZIP (Deprecated, use the parameter -exportZip instead)</h3>
 		<p>This command will export selected project to the given zip filename</p>
 		<p>Mandatory parameters:</p>
 		<ul>
@@ -309,6 +331,18 @@
 -logfile D:/CommandLineLog/log.html
 </pre>
 		<h3 id="Migration">Migration</h3>
+		<table id="migrationParameters">
+			<tr>
+				<th>Name</th>
+				<th>Category</th>
+				<th>Description</th>
+			</tr>
+			<tr>
+				<td>backup</td>
+				<td>optional</td>
+				<td>whether the model is backed up during the migration.</td>
+			</tr>
+		</table>
 		<p>This command will migrate the project(s) given as input. A workspace folder is created and located where the command is triggered or in a specified path given by the 
 			<i>-data</i> parameter. It creates a log file located in the .metadata folder of the workspace. If the input project is a folder, it will be backed up and migrated inside this folder, otherwise if the input is a zip file it will be unzipped and project(s) inside it will be migrated into the workspace folder.
 		</p>
@@ -322,11 +356,13 @@
 &lt;CapellaInstallationPath&gt;/capella.exe -nosplash
 -application org.polarsys.capella.core.commandline.core
 -appid org.polarsys.capella.migration
+-data &lt;workspacePath&gt;
 -import D:/Projects/EOLE_AF.zip
 -input /all
--data &lt;workspacePath&gt;
+-exportZip EOLE_AF
+-outputfolder /MigratedProject/output
 </pre>
-		<p>This command imports a .zip into the specified workspace and migrate all projects inside.</p>
+		<p>This command imports a .zip into the specified workspace, migrate all projects inside and exported the migrated project as zip to the output folder.</p>
 		<p>If you migrate a project using libraries, all dependent projects/libraries must be included and the sequence order matters.</p>
 		<p>Consider the example below:</p>
 		<ul>
@@ -410,7 +446,7 @@
 			<tr>
 				<td>outputfolder</td>
 				<td>mandatory</td>
-				<td>defines the path to the output folder to export images</td>
+				<td>defines the path to the output folder to export images.</td>
 			</tr>
 			<tr>
 				<td>imageFormat</td>

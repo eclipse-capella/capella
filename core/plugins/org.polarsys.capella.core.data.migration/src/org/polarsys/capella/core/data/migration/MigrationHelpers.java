@@ -74,11 +74,33 @@ public class MigrationHelpers implements IMigrationContribution {
     }
   }
 
+  /**
+   * Trigger with runInJob = true & bakupModel = true
+   */
   public void trigger(IResource resource, Shell shell, boolean skipConfirmation, boolean checkVersion, String[] kinds) {
     trigger(resource, shell, true, skipConfirmation, checkVersion, kinds);
   }
 
-  public void trigger(IResource resource, Shell shell, boolean runInJob, boolean skipConfirmation, boolean checkVersion, String[] kinds) {
+  /**
+   * Trigger with bakupModel = true
+   */
+  public void trigger(IResource resource, Shell shell, boolean runInJob, boolean skipConfirmation, boolean checkVersion,
+      String[] kinds) {
+    trigger(resource, shell, runInJob, skipConfirmation, true, checkVersion, kinds);
+  }
+
+  /**
+   * 
+   * @param resource
+   * @param shell
+   * @param runInJob whether the migration is run in a job
+   * @param skipConfirmation whether the confirmation dialog is displayed
+   * @param backupModel whether the model is backed up or not if the confirmation dialog is not displayed
+   * @param checkVersion whether resource version is checked
+   * @param kinds migration kinds
+   */
+  public void trigger(IResource resource, Shell shell, boolean runInJob, boolean skipConfirmation, boolean backupModel,
+      boolean checkVersion, String[] kinds) {
     LinkedHashSet<IResource> files = new LinkedHashSet<>();
     Collection<AbstractMigrationContributor> currentContributors = new LinkedList<AbstractMigrationContributor>();
 
@@ -100,6 +122,7 @@ public class MigrationHelpers implements IMigrationContribution {
     context.setName(NLS.bind(Messages.MigrationAction_Title, resource.getName()));
     context.setShell(shell);
     context.setSkipConfirmation(skipConfirmation);
+    context.setBackupModel(backupModel);
 
     // Retrieve all commands that will need to be run to perform the
     // migration

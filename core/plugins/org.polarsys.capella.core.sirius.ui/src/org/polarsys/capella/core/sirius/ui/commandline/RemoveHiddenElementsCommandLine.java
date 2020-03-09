@@ -11,6 +11,7 @@
 package org.polarsys.capella.core.sirius.ui.commandline;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.core.resources.IFile;
@@ -80,6 +81,6 @@ public class RemoveHiddenElementsCommandLine extends AbstractWorkbenchCommandLin
   @Override
   public void printHelp() {
     super.printHelp();
-    printArgumentsFromTable("removeHiddenElementsParameters", false);
+    printArgumentsFromTable("removeHiddenElementsParameters", false, Collections.emptyList());
   }
 }

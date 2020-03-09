@@ -80,8 +80,12 @@ public class MigrationCommandLine extends DefaultCommandLine {
   public void migrateAllImportedProjects(Shell shell) {
     for (IProject project : getProjectsFromInput()) {
       try {
-        // Migrate Project
-        MigrationHelpers.getInstance().trigger(project, shell, true, false, MigrationConstants.DEFAULT_KIND_ORDER);
+        if (argHelper.isBackupNeeded()) {
+          // Migrate Project
+          MigrationHelpers.getInstance().trigger(project, shell, true, false, MigrationConstants.DEFAULT_KIND_ORDER);
+        } else {
+          MigrationHelpers.getInstance().trigger(project, shell, true, true, false, false, MigrationConstants.DEFAULT_KIND_ORDER);
+        }
       } catch (Exception e) {
         logError("Error during migration of " + project.getName());
       }

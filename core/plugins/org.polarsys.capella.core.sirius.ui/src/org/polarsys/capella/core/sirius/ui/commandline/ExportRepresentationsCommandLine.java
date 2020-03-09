@@ -11,7 +11,9 @@
 package org.polarsys.capella.core.sirius.ui.commandline;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.core.resources.IFile;
@@ -93,7 +95,7 @@ public class ExportRepresentationsCommandLine extends AbstractWorkbenchCommandLi
   
   @Override
   public void printHelp() {
-    super.printHelp();
-    printArgumentsFromTable("exportRepresentationsParameters", false);
+    super.printHelp(Arrays.asList("outputfolder"));
+    printArgumentsFromTable("exportRepresentationsParameters", false, Collections.emptyList());
   }
 }

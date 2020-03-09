@@ -16,7 +16,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -69,8 +71,8 @@ public class ValidationCommandLine extends AbstractWorkbenchCommandLine {
 
   @Override
   public void printHelp() {
-    super.printHelp();
-    printArgumentsFromTable("validationParameters", false);
+    super.printHelp(Arrays.asList("outputfolder"));
+    printArgumentsFromTable("validationParameters", false, Collections.emptyList());
   }
 
   @Override
