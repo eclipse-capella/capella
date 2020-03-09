@@ -17,7 +17,7 @@
             allowMultiple="false"
             category="org.polarsys.capella.views.category"
             class="org.polarsys.capella.core.ui.fastlinker.view.FastLinkerView"
-            icon="icons/cview/fastlinker_16x16.png"
+            icon="icons/eview16/fastlinker.png"
             id="org.polarsys.capella.core.ui.fastlinker.view"
             name="%view.name"
             restorable="true">
@@ -84,7 +84,7 @@
          point="org.eclipse.ui.commandImages">
       <image
             commandId="org.polarsys.capella.core.ui.fastlinker.sendToFastLinker"
-            icon="icons/cview/fastlinker_view16x16.gif">
+            icon="icons/eview16/fastlinker.png">
       </image>
    </extension>
    <extension

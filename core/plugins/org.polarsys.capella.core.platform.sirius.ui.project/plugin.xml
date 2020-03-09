@@ -36,7 +36,7 @@
       <wizard
             category="capella.sample"
             class="org.polarsys.capella.core.platform.sirius.ui.project.sample.SampleModelWizard"
-            icon="icons/capella_16.png"
+            icon="icons/capella_project.png"
             id="capella.project.wizard.sample"
             name="%CapellaSample">
          <description>
