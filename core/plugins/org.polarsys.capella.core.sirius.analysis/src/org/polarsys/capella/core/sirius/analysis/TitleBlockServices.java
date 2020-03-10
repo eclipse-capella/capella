@@ -164,28 +164,6 @@ public class TitleBlockServices {
     }
   }
 
-  public void createTitleBlockLine(EObject titleBlock, EObject diagram) {
-    if (!isDiagramTitleBlock((DAnnotation) titleBlock)
-        || "True".equals(((DAnnotation) titleBlock).getDetails().get(IS_ELEMENT_TITLE_BLOCK))) {
-      titleBlock = getParentTitleBlock((DAnnotation) titleBlock, diagram);
-      DRepresentation representation = null;
-      if ((diagram instanceof DRepresentation)) {
-        representation = (DRepresentation) diagram;
-      }
-      if (representation != null) {
-        DAnnotation annotationLine = DescriptionFactory.eINSTANCE.createDAnnotation();
-        annotationLine.setSource("TitleBlockLine");
-        if (titleBlock instanceof DAnnotation) {
-          int numCols = getNumColumns((DAnnotation) titleBlock);
-          if (numCols > 0) {
-            ((DAnnotation) titleBlock).getReferences().add(annotationLine);
-            addColumnsToLine(annotationLine, representation, numCols, getNumLines((DAnnotation) titleBlock) - 1);
-          }
-        }
-      }
-    }
-  }
-
   private DAnnotation getParentTitleBlock(DAnnotation titleBlock, EObject diagram) {
     DAnnotation parentTitleBlock = DescriptionFactory.eINSTANCE.createDAnnotation();
     if (titleBlock.getSource().startsWith("TB")) {
@@ -208,32 +186,27 @@ public class TitleBlockServices {
     return titleBlock;
   }
 
-  public void createTitleBlockColumn(EObject titleBlock, EObject diagram) {
+  public void createTitleBlockLine(EObject titleBlock, EObject diagram) {
     if (!isDiagramTitleBlock((DAnnotation) titleBlock)
         || "True".equals(((DAnnotation) titleBlock).getDetails().get(IS_ELEMENT_TITLE_BLOCK))) {
+      int lineNumber = getLineNumber((DAnnotation) titleBlock);
       titleBlock = getParentTitleBlock((DAnnotation) titleBlock, diagram);
       DRepresentation representation = null;
       if ((diagram instanceof DRepresentation)) {
         representation = (DRepresentation) diagram;
       }
       if (representation != null) {
+        DAnnotation annotationLine = DescriptionFactory.eINSTANCE.createDAnnotation();
+        annotationLine.setSource("TitleBlockLine");
         if (titleBlock instanceof DAnnotation) {
-          int numLines = ((DAnnotation) titleBlock).getReferences().size();
-          int numColumns = getNumColumns((DAnnotation) titleBlock);
-          List<EObject> lines = ((DAnnotation) titleBlock).getReferences();
-          for (int i = 0; i < numLines; i++) {
-            DAnnotation annotationCol = DescriptionFactory.eINSTANCE.createDAnnotation();
-            annotationCol.setSource("TB_" + String.valueOf(i - 1) + "_" + String.valueOf(numColumns));
-            annotationCol.getDetails().put(NAME, "Name");
-            annotationCol.getDetails().put(CONTENT, "feature:name");
-            annotationCol.getDetails().put(IS_ELEMENT_TITLE_BLOCK, TRUE);
-            if (lines.get(i) instanceof DAnnotation) {
-              ((DAnnotation) (lines.get(i))).getReferences().add(annotationCol);
-              representation.getEAnnotations().add(annotationCol);
-            }
+          int numCols = getNumColumns((DAnnotation) titleBlock);
+          if (numCols > 0) {
+            ((DAnnotation) titleBlock).getReferences().add(lineNumber + 2, annotationLine);
+            addColumnsToLine(annotationLine, representation, numCols, lineNumber + 1);
           }
         }
       }
+      renumberColumns((DAnnotation) titleBlock);
     }
   }
 
@@ -243,14 +216,75 @@ public class TitleBlockServices {
     for (int j = 0; j < numCols; j++) {
       DAnnotation annotationCol = DescriptionFactory.eINSTANCE.createDAnnotation();
       annotationCol.setSource("TB_" + lineNumber + "_" + j);
-      annotationCol.getDetails().put(NAME, "Name");
-      annotationCol.getDetails().put(CONTENT, "feature:name");
+      annotationCol.getDetails().put(NAME, "");
+      annotationCol.getDetails().put(CONTENT, "");
       annotationCol.getDetails().put(IS_ELEMENT_TITLE_BLOCK, TRUE);
       annotationCols.add(annotationCol);
       representation.getEAnnotations().add(annotationCol);
     }
     annotationLine.getReferences().addAll(annotationCols);
     representation.getEAnnotations().add(annotationLine);
+  }
+
+  public void createTitleBlockColumn(EObject titleBlock, EObject diagram) {
+    if (!isDiagramTitleBlock((DAnnotation) titleBlock)
+        || "True".equals(((DAnnotation) titleBlock).getDetails().get(IS_ELEMENT_TITLE_BLOCK))) {
+      int columnNumber = getColumnNumber((DAnnotation) titleBlock);
+      titleBlock = getParentTitleBlock((DAnnotation) titleBlock, diagram);
+      DRepresentation representation = null;
+      if ((diagram instanceof DRepresentation)) {
+        representation = (DRepresentation) diagram;
+      }
+      if (representation != null) {
+        if (titleBlock instanceof DAnnotation) {
+          int numLines = ((DAnnotation) titleBlock).getReferences().size();
+          List<EObject> lines = ((DAnnotation) titleBlock).getReferences();
+          for (int i = 0; i < numLines; i++) {
+            DAnnotation annotationCol = DescriptionFactory.eINSTANCE.createDAnnotation();
+            annotationCol.setSource("TB_" + String.valueOf(i - 1) + "_" + String.valueOf(columnNumber));
+            annotationCol.getDetails().put(NAME, "");
+            annotationCol.getDetails().put(CONTENT, "");
+            annotationCol.getDetails().put(IS_ELEMENT_TITLE_BLOCK, TRUE);
+            if (lines.get(i) instanceof DAnnotation) {
+              ((DAnnotation) (lines.get(i))).getReferences().add(columnNumber + 1, annotationCol);
+              representation.getEAnnotations().add(annotationCol);
+            }
+          }
+        }
+      }
+      renumberColumns((DAnnotation) titleBlock);
+    }
+  }
+
+  private void renumberColumns(DAnnotation titleBlock) {
+    int lineNumber = -1;
+    for (EObject reference : titleBlock.getReferences()) {
+      if (reference instanceof DAnnotation) {
+        int columnNumber = 0;
+        for (EObject ref : ((DAnnotation) reference).getReferences()) {
+          String newSource = "TB_" + lineNumber + "_" + columnNumber;
+          ((DAnnotation) ref).setSource(newSource);
+          columnNumber++;
+        }
+      }
+      lineNumber++;
+    }
+  }
+
+  private int getLineNumber(DAnnotation titleBlock) {
+    String source = titleBlock.getSource();
+    int first = source.indexOf("_");
+    int second = source.indexOf("_", first + 1);
+    String lineNumber = source.substring(first + 1, second);
+    return Integer.valueOf(lineNumber);
+  }
+
+  private int getColumnNumber(DAnnotation titleBlock) {
+    String source = titleBlock.getSource();
+    int last = source.lastIndexOf("_");
+    int length = source.length();
+    String columnNumber = source.substring(last + 1, length);
+    return Integer.valueOf(columnNumber);
   }
 
   public int getNumLines(DAnnotation titleBlock) {
