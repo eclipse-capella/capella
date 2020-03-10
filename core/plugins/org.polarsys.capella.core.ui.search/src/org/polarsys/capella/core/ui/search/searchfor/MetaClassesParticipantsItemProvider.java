@@ -93,7 +93,7 @@ public class MetaClassesParticipantsItemProvider extends AbstractMetaModelPartic
   }
   
   
-  // based on abstract/semantic checks, check if the element is displayed or not
+  // based on abstract and semantic checks, check if the element is displayed or not
   protected boolean isDisplayed(Object cls) {
     if(cls instanceof EClass) {
       EClass eclass = (EClass) cls;
