@@ -95,7 +95,7 @@
 		<p>When &ldquo;
 			<b>Multiple inheritance allowed</b>&rdquo; is activated, a Class can inherit from several other Classes. Otherwise, it can only have one inheritance ancestor.
 		</p>
-			<p>When &ldquo;
+		<p>When &ldquo;
 			<b>Component Non Actor inheritance allowed</b>&rdquo; is activated, a Component Non Actor can generalize other Components Non Actor (via Properties View or using Diagram Generalization tools). Otherwise, only Actors are allowed to generalize other Actors.
 		</p>
 		<p>When &ldquo;
@@ -192,16 +192,13 @@
 		<p>On the sub section of 
 			<b>Capella / Transitions/Generation preferences</b>, it is possible to specify the scope of automatic transitions.
 		</p>
-		<p>
-			<img height="896" width="868" border="0" src="Images/6.2.%20Model%20preferences_html_m73c38954.png"/>
-		</p>
 		<ul>
 			<li>The radio buttons &ldquo;
 				<b>Propagate LC / LA breakdown in physical architecture</b>&rdquo; and &ldquo;
 				<b>Propagate only leaf LC / LA in physical architecture</b>&rdquo; specifies whether the breakdown of Logical Components is kept at physical level or not.
 			</li>
 			<li>The checkbox &ldquo;
-				<b>Transit interfaces handled by Components from context/logical layers to physical architecture</b>&rdquo; specifies whether interfaces are duplicated from Logical architecture to Physical architecture when performing a Logical Component to Physical Component transition. If not activated, Physical Components will directly implement / use / provide / require interface located in the system analysis and logical architecture.
+				<b>Transit interfaces handled by Components</b>&rdquo; specifies whether interfaces are realized from one architecture to another when performing a transition. For example, if this preference is not activated, Physical Components will directly implement / use / provide / require interface located in the system analysis and logical architecture.
 			</li>
 			<li>The checkbox &ldquo;
 				<b>Transit allocated Exchange Items while transition of Interfaces, Functions or Components</b>&rdquo; specifies whether Interfaces, Functions or Components transition triggers transition of related Exchange Items (i.e. duplicates Exchange Items from one engineering phase to the following one). If not activated, Interface, Functions and Component Exchanges in the target engineering phase will still refer the Exchange Items located in the previous engineering phase.
