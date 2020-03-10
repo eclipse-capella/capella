@@ -5,4 +5,4 @@ These followings icons are made available under the terms of the Eclipse Public 
 <icon file path> - <original eclipse plug-in> - <original file path>
 
 /icons/libraryWizard.png - capella.libraries.ui - capella.libraries.ui/icons/libraryWizard.png
-/icons/transfer_16x16.png - org.polarsys.capella.core.libraries.ui - org.polarsys.capella.core.libraries.ui/icons/transfer_16x16.png
+/icons/eview/transfer.png - org.polarsys.capella.core.libraries.ui - org.polarsys.capella.core.libraries.ui/eview/transfer.png
