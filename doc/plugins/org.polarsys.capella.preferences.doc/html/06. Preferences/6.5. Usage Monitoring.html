@@ -1,43 +1,5 @@
-<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-		<title>6.5. Usage Monitoring</title>
-		<link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/>
-	</head>
-	<body>
-		<h1 id="Usage_Monitoring_Preference">Usage Monitoring Preference</h1>
-		<p>Preference is available from the 
-			<b>Window / Preferences menu/ Capella</b>.
-		</p>
-		<p>
-			<img height="217" width="399" border="0" src="Images/6.5_Usage%20monitoring1.png"/>
-		</p>
-		<h2 id="General">General</h2>
-		<p>
-			<img height="539" width="616" border="0" src="Images/6.5_Usage%20monitoring2.png"/>
-		</p>
-		<p>This preference is related to the logger "Usage Monitoring". This logger is aimed to track Capella usage (Project creation, Diagram creation, ...) then generate tracking information into a log file named "Usage.log".
-			<br/>
-			By default, this file is generated into the current workspace. However the file location can be set in the eclipse.ini configuration file as following :
-		</p>
-		<pre>-DUsagePath=D:\APP\&lt;UsagePath&gt;
-</pre>
-		<p>If this file reaches the size of 20 MB, another file is created.
-			The maximum number of files is 30.
-			If this limit is reaches, the first file is destroyed and therefore the log performs a cycle on the files.</p>
-		<p>
-			<b> Note :</b> This preference is activated by default.
-		</p>
-		<p>Usage Monitoring logs a short list of commands:</p>
-		<ol>
-			<li>Open Session</li>
-			<li>Close Session</li>
-			<li>Create Representation</li>
-			<li>Open Representation</li>
-			<li>Transition</li>
-			<li>Validation</li>
-			<li>REC-RPL</li>
-		</ol>
-	</body>
-</html>
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>6.5. Usage Monitoring</title><link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/></head><body><h1 id="Usage_Monitoring_Preference">Usage Monitoring Preference</h1><p>Preference is available from the <b>Window / Preferences menu/ Capella</b>.</p><p><img height="217" width="399" border="0" src="Images/6.5_Usage%20monitoring1.png"/></p><h2 id="General">General</h2><p><img height="539" width="616" border="0" src="Images/6.5_Usage%20monitoring2.png"/></p><p>This preference is related to the logger "Usage Monitoring". This logger is aimed to track Capella usage (Project creation, Diagram creation, ...) then generate tracking information into a log file named "Usage.log".<br/>
+By default, this file is generated into the current workspace. However the file location can be set in the eclipse.ini configuration file as following :</p><pre>-DUsagePath=D:\APP\&lt;UsagePath&gt;
+</pre><p>If this file reaches the size of 20 MB, another file is created.
+The maximum number of files is 30.
+If this limit is reaches, the first file is destroyed and therefore the log performs a cycle on the files.</p><p><b> Note :</b> This preference is activated by default.</p><p>Usage Monitoring logs a short list of commands:</p><ol><li>Open Session</li><li>Close Session</li><li>Create Representation</li><li>Open Representation</li><li>Transition</li><li>Validation</li><li>REC-RPL</li></ol></body></html>
