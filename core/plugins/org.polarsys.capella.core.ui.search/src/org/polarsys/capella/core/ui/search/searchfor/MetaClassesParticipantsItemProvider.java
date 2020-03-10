@@ -92,14 +92,20 @@ public class MetaClassesParticipantsItemProvider extends AbstractMetaModelPartic
     this.showSemantics = showSemantics;
   }
   
+  
   // based on abstract/semantic checks, check if the element is displayed or not
   protected boolean isDisplayed(Object cls) {
     if(cls instanceof EClass) {
       EClass eclass = (EClass) cls;
-      if(showSemantics && SimplifiedCapellaMetadata.INSTANCE.isSemantic(eclass)) {
+      boolean eclassIsSemantic = SimplifiedCapellaMetadata.INSTANCE.isSemantic(eclass);
+      boolean eclassIsAbstract = eclass.isAbstract();
+      if (showSemantics && showAbstract && eclassIsSemantic && eclassIsAbstract) {
         return true;
       }
-      if(showAbstract && eclass.isAbstract()) {
+      if (showSemantics && !showAbstract && eclassIsSemantic && !eclassIsAbstract) {
+        return true;
+      }
+      if (!showSemantics && showAbstract && !eclassIsSemantic && eclassIsAbstract) {
         return true;
       }
     }
