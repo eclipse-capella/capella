@@ -39,18 +39,24 @@ public class PartComponentStyleConfiguration extends SimpleStyleConfiguration im
 
   @Override
   public Image getLabelIcon(DDiagramElement representationElement, IGraphicalEditPart editPart) {
-    EObject target = representationElement.getTarget();
-    if (target instanceof Part) {
-      if (CapellaProjectHelper.isReusableComponentsDriven(target) != TriStateBoolean.True) {
-        Type type = ((Part) target).getType();
-        if (type != null) {
-          IItemLabelProvider provider = (IItemLabelProvider) CapellaAdapterFactoryProvider.getInstance()
-              .getAdapterFactory().adapt(type, IItemLabelProvider.class);
-          return ExtendedImageRegistry.getInstance().getImage(provider.getImage(type));
+    if (representationElement != null) {
+      if (isShowIcon(representationElement, editPart)) {
+        EObject target = representationElement.getTarget();
+
+        if (target instanceof Part && !useCustomIcon(representationElement, editPart)) {
+          if (CapellaProjectHelper.isReusableComponentsDriven(target) != TriStateBoolean.True) {
+            Type type = ((Part) target).getType();
+            if (type != null) {
+              IItemLabelProvider provider = (IItemLabelProvider) CapellaAdapterFactoryProvider.getInstance()
+                  .getAdapterFactory().adapt(type, IItemLabelProvider.class);
+              return ExtendedImageRegistry.getInstance().getImage(provider.getImage(type));
+            }
+          }
         }
+        return super.getLabelIcon(representationElement, editPart);
       }
     }
-    return super.getLabelIcon(representationElement, editPart);
+    return null;
   }
 
   public boolean provides(DiagramElementMapping mapping, Style style) {
