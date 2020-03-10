@@ -84,7 +84,7 @@ public class ScenarioFinalizer implements IFinalizer {
     return getInstanceRoles().get(ir_p);
   }
 
-  static void registerInstanceRole(AbstractInstance instance, InstanceRole role) {
+  public static void registerInstanceRole(AbstractInstance instance, InstanceRole role) {
     getInstanceRoles().put(instance, role);
   }
 

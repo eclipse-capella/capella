@@ -24,16 +24,20 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.polarsys.capella.common.ui.toolkit.dialogs.SelectElementsDialog;
 import org.polarsys.capella.common.ui.toolkit.viewers.IViewerStyle;
 import org.polarsys.capella.common.ui.toolkit.viewers.TreeAndListViewer;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.DataContentProvider;
+import org.polarsys.capella.core.data.interaction.InstanceRole;
 import org.polarsys.capella.core.data.interaction.MessageKind;
 import org.polarsys.capella.core.data.interaction.properties.dialogs.Messages;
 import org.polarsys.capella.core.data.interaction.properties.dialogs.sequenceMessage.model.ISelectInvokedOperationModel;
+import org.polarsys.capella.core.data.interaction.properties.dialogs.sequenceMessage.model.SelectInvokedOperationModel;
 import org.polarsys.capella.core.data.interaction.properties.dialogs.sequenceMessage.model.communications.AbstractCommunication;
+import org.polarsys.capella.core.model.utils.CapellaLayerCheckingExt;
 import org.polarsys.capella.core.ui.toolkit.ToolkitPlugin;
 
 /**
@@ -146,24 +150,29 @@ public class SelectInvokedOperationView extends SelectElementsDialog {
 
   @Override
   protected void doCreateDialogArea(Composite parent) {
- // add the GUI group for defining the sequence message kind
-  	createSequenceMessageKind_area(parent);
-  	// add the GUI group for the creation choice
-  	createElementCreation_area(parent);
+    // add the GUI group for defining the sequence message kind
+    createSequenceMessageKind_area(parent);
+    // add the GUI group for the creation choice
+    createElementCreation_area(parent,
+        isCreateEIEnabeld(((SelectInvokedOperationModel) model).getSourceInstanceRole()));
     // add the GUI group for interface choice and renaming
-  	createInterface_area(parent);    
+    createInterface_area(parent);
     // add the tree viewer
     super.doCreateDialogArea(parent);
     TreeAndListViewer viewer = getViewer();
     viewer.getClientViewer().addFilter(new SelectInvokedOperationFilter(viewer, model));
-  	// add the GUI group for the selection options  
+    // add the GUI group for the selection options
     createSelectionOptions_area(parent);
-  	// add the GUI group for the creation options
-    createCreationOptions_area(parent);     
+    // add the GUI group for the creation options
+    createCreationOptions_area(parent);
     // initialize controllers
     controller.initControlOnView(this);
   }
   
+  private boolean isCreateEIEnabeld(InstanceRole instanceRole) {
+    return !CapellaLayerCheckingExt.isAOrInEPBSLayer(instanceRole);
+  }
+
   @Override
   protected void addDoubleCLickListener() {
   	// do nothing because we do not need this feature
@@ -200,22 +209,27 @@ public class SelectInvokedOperationView extends SelectElementsDialog {
    * Create creation operation widgets.
    * @param parent
    */
-  private void createElementCreation_area(Composite parent) {
+  private void createElementCreation_area(Composite parent, boolean enabled) {
     // Add a group surrounding the create operation part.
     final Group treeViewerPartGroup = new Group(parent, SWT.NONE);
+    treeViewerPartGroup.setEnabled(enabled);
     treeViewerPartGroup.setLayoutData(new GridData(GridData.FILL, GridData.BEGINNING, true, true));
     treeViewerPartGroup.setLayout(new GridLayout(3, false)); // 3 columns one for the label, one the text and the last one for the button
     treeViewerPartGroup.setText(Messages.SelectOperationDialog_CreateNewExchangeItem);
 
     createElementButton = new Button(treeViewerPartGroup, SWT.CHECK);
     createElementButton.setText(Messages.SelectOperationDialog_EnableCreationButton_Title);
+    createElementButton.setEnabled(enabled);
     GridData layoutData = new GridData(GridData.FILL, GridData.BEGINNING, false, false);
     layoutData.horizontalSpan = 3;
     createElementButton.setLayoutData(layoutData);
     createElementButton.setSelection(model.doesElementMustBeCreated());    
 
-    createLabel(treeViewerPartGroup, Messages.SelectOperationDialog_Operation_Title);
+    Label label = createLabel(treeViewerPartGroup, Messages.SelectOperationDialog_Operation_Title);
+    label.setEnabled(enabled);
+    
     exchangeItemNameText = createText(treeViewerPartGroup);
+    exchangeItemNameText.setEnabled(enabled);
     ((GridData) exchangeItemNameText.getLayoutData()).horizontalSpan = 3; // No button following.
 
     eiTypeGroup = new Group(treeViewerPartGroup, SWT.NONE);

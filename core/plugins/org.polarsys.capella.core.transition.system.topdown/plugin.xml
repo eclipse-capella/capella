@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <!--
-  Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -36,6 +36,11 @@
          <group
                id="transition.propertyValue"
                name="%group.transition.propertyValue.name"
+               parent="iterative.Transitions">
+         </group>
+         <group
+               id="transition.pc2ci"
+               name="PC to CI"
                parent="iterative.Transitions">
          </group>
          <group
@@ -408,8 +413,86 @@
                   value="1">
             </option>
          </property>
-         
-         
+     </properties>
+     <properties
+           id="capella.core.transition.system.topdown.pc2ci">
+        <inheritance
+              properties="capella.core.transition.system.topdown">
+        </inheritance>
+        <property
+              class="org.polarsys.capella.core.transition.system.topdown.preferences.BooleanPropertyPreference"
+              description="%transition.pc2ci.enabled.description"
+              enabled="true"
+              group="transition.pc2ci"
+              id="projection.pc2ci.enabled"
+              name="%transition.pc2ci.enabled.name">
+           <parameter
+                 id="scope"
+                 value="org.polarsys.capella.core.transition.system.topdown.preferences">
+           </parameter>
+           <parameter
+                 id="default"
+                 value="false">
+           </parameter>
+        </property>
+        <property
+              class="org.polarsys.capella.core.transition.system.topdown.preferences.CIKindPropertyPreference"
+              description="%transition.pc2ci.kind.description"
+              enabled="true"
+              group="transition.pc2ci"
+              id="projection.pc2ci.kind"
+              name="%transition.pc2ci.kind.name">
+           <parameter
+                 id="scope"
+                 value="org.polarsys.capella.core.transition.system.topdown.preferences">
+           </parameter>
+           <parameter
+                 id="default"
+                 value="COTSCI">
+           </parameter>
+           <option
+                 enabled="true"
+                 id="org.polarsys.capella.core.transition.system.topdown.pc2ci.option.cots"
+                 name="COTS"
+                 value="COTSCI">
+           </option>
+           <option
+                 enabled="true"
+                 id="org.polarsys.capella.core.transition.system.topdown.pc2ci.option.cs"
+                 name="CS"
+                 value="CSCI">
+           </option>
+           <option
+                 enabled="true"
+                 id="org.polarsys.capella.core.transition.system.topdown.pc2ci.option.hw"
+                 name="HW"
+                 value="HWCI">
+           </option>
+           <option
+                 enabled="true"
+                 id="org.polarsys.capella.core.transition.system.topdown.pc2ci.option.interface"
+                 name="Interface"
+                 value="InterfaceCI">
+           </option>
+           <option
+                 enabled="true"
+                 id="org.polarsys.capella.core.transition.system.topdown.pc2ci.option.ndi"
+                 name="NDI"
+                 value="NDICI">
+           </option>
+           <option
+                 enabled="true"
+                 id="org.polarsys.capella.core.transition.system.topdown.pc2ci.option.primeitem"
+                 name="Prime Item"
+                 value="PrimeItemCI">
+           </option>
+           <option
+                 enabled="true"
+                 id="org.polarsys.capella.core.transition.system.topdown.pc2ci.option.system"
+                 name="System"
+                 value="SystemCI">
+           </option>
+        </property>
      </properties>
      
      <properties
@@ -434,13 +517,8 @@
             <inheritance properties="capella.core.transition.system.topdown.lc2pc.breakdown" />
             <inheritance properties="capella.core.transition.system.topdown.lc2pc.leaf" />
             <inheritance properties="capella.core.transition.system.topdown.lc2pc" />
-            
-            
-            
+            <inheritance properties="capella.core.transition.system.topdown.pc2ci" />
      </properties>
-     
-     
-     
 </extension>
 
 
@@ -1478,6 +1556,44 @@
          
          
      </mapping>
+</extension>
+<extension
+      id="org.polarsys.capella.core.transition.system.topdown.pc2ci"
+      name="PC to CI"
+      point="org.polarsys.kitalpha.transposer.rules.handler.mapping">
+   <mapping
+         context="org.polarsys.capella.core.transition.common.context.TransitionContext"
+         description="Transition for Physical Components to Configuration Items"
+         domainHelper="org.polarsys.capella.core.transition.system.domain.CapellaTransitionDomainHelper"
+         extendedMappingExtensionID="org.polarsys.capella.core.transition.system.topdown"
+         mappingName="PC to CI"
+         mappingPurpose="org.polarsys.capella.core.transition">
+      <mappingPackage
+            name="pa">
+         <mappingElement
+               domainMetaClass="org.polarsys.capella.core.data.pa.PhysicalArchitecture"
+               reuseExtendedElementDefaultPossibility="true"
+               reuseExtendedElementPossibilities="true">
+            <defaultMappingPossibility
+                  completeRule="org.polarsys.capella.core.transition.system.topdown.rules.pa.PhysicalArchitectureRule"
+                  enabled="true"
+                  incompleteRule="org.polarsys.capella.core.transition.system.topdown.rules.pa.PhysicalArchitectureRule"
+                  name="PhysicalArchitecture">
+            </defaultMappingPossibility>
+         </mappingElement>
+         <mappingElement
+               domainMetaClass="org.polarsys.capella.core.data.pa.PhysicalComponent"
+               reuseExtendedElementDefaultPossibility="true"
+               reuseExtendedElementPossibilities="true">
+            <defaultMappingPossibility
+                  completeRule="org.polarsys.capella.core.transition.system.topdown.rules.pa.PhysicalComponentRule"
+                  enabled="true"
+                  incompleteRule="org.polarsys.capella.core.transition.system.topdown.rules.pa.PhysicalComponentRule"
+                  name="PhysicalComponent">
+            </defaultMappingPossibility>
+         </mappingElement>
+      </mappingPackage>
+   </mapping>
 </extension>
 
 </plugin>

@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
 
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
+import org.polarsys.capella.core.data.epbs.EpbsPackage;
 import org.polarsys.capella.core.data.la.LaPackage;
 import org.polarsys.capella.core.data.oa.OaPackage;
 import org.polarsys.capella.core.data.pa.PaPackage;
@@ -41,7 +42,7 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 public class DefaultLevelHandler implements ILevelHandler {
 
   EClass[] clazzes = new EClass[] { OaPackage.Literals.OPERATIONAL_ANALYSIS, CtxPackage.Literals.SYSTEM_ANALYSIS, LaPackage.Literals.LOGICAL_ARCHITECTURE,
-                                   PaPackage.Literals.PHYSICAL_ARCHITECTURE };
+                                   PaPackage.Literals.PHYSICAL_ARCHITECTURE, EpbsPackage.Literals.EPBS_ARCHITECTURE };
 
   String[] levelContext = new String[] { ITopDownConstants.SELECTION_CONTEXT__PREVIOUS_N2_ARCHITECTURE,
                                         ITopDownConstants.SELECTION_CONTEXT__PREVIOUS_N1_ARCHITECTURE,

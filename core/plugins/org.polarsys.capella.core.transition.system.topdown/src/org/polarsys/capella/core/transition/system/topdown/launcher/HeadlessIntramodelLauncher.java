@@ -100,7 +100,9 @@ public class HeadlessIntramodelLauncher extends TransitionLauncher {
 
     } else if (ITopDownConstants.TRANSITION_TOPDOWN_SYSTEM.equals(kind)) {
       return "System Transition";
-
+      
+    } else if (ITopDownConstants.TRANSITION_TOPDOWN_PC2CI.equals(kind)) {
+      return "PC to CI Transition";
     }
 
     return getOptionScope();
