@@ -34,14 +34,17 @@ import org.eclipse.jface.viewers.TableViewerFocusCellManager;
 import org.eclipse.jface.viewers.ViewerCell;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.TableColumn;
+import org.eclipse.swt.widgets.Text;
 import org.polarsys.capella.core.commands.preferences.service.AbstractDefaultPreferencePage;
 import org.polarsys.capella.core.commands.preferences.service.PreferenceField;
 import org.polarsys.capella.core.commands.preferences.service.UserProfileModeEnum;
@@ -64,6 +67,7 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
     }
   }
 
+  public static final int MIN_CELL_WIDTH = 100;
   public static final String PAGE_ID = "org.polarsys.capella.core.platform.sirius.ui.actions.preferences.TitleBlockPage";
   public static final String NAME = "Name";
   public static final String CONTENT = "Content";
@@ -84,10 +88,13 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
   public static final String ROW_DELETE_MESSAGE = "Are you sure you want to delete the entire row?";
   public static final String COLUMN_DELETE_MESSAGE = "Are you sure you want to delete the entire column?";
   public static final String CONFIRM_DELETE = "Confirm Delete";
+  public static final String UNABLE_REMOVE_ROW_MESSAGE = "You can't remove the last row of the Title Block.";
+  public static final String UNABLE_REMOVE_COLUMN_MESSAGE = "You can't remove the last column of the Title Block.";
   public static final String EDIT_ALL_CELLS = "Please edit all cells!";
   public static final String ERROR = "Error";
   public static final String TitleBlockPreferencePage_Title = "Title Block";
-  public static final String TitleBlockPreferencePage_Description = "Preferences related to Title Block";
+  public static final String TitleBlockPreferencePage_Description = "Preferences related to Diagram Title Block";
+  public static final String EXPLANATION_LABEL = "To edit a cell, double click on it. \nTo add/remove a row/column, right click on the gray area.";
 
   private TableViewer v;
   private PreferenceField defaultTitleBlockFieldEditor;
@@ -95,6 +102,7 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
   private int columnsNumber;
   private int rowsNumber;
   private String tableContent;
+  private Text contentText;
 
   public TitleBlockPreferencePage() {
     super(PAGE_ID);
@@ -120,6 +128,7 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
 
   @Override
   protected void createFieldEditors() {
+    createExplanationLabel();
     createCheckBox();
     Composite top = new Composite(getFieldEditorParent(), SWT.NONE);
     GridLayout top_layout = new GridLayout();
@@ -129,6 +138,20 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
     top.setLayout(top_layout);
     top.setLayoutData(new GridData(GridData.FILL_BOTH));
     createTable(top);
+    createCellContentLabel();
+  }
+
+  private void createExplanationLabel() {
+    Label explanation_label = new Label(getFieldEditorParent(), SWT.NONE);
+    explanation_label.setText(EXPLANATION_LABEL);
+    Font font = new Font(getShell().getDisplay(), "", 9, SWT.ITALIC);
+    explanation_label.setFont(font);
+  }
+
+  private void createCellContentLabel() {
+    contentText = new Text(getFieldEditorParent(), SWT.NONE);
+    contentText.setBackground(getFieldEditorParent().getBackground());
+    contentText.setEditable(false);
   }
 
   private void createCheckBox() {
@@ -154,38 +177,54 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
     v.getTable().setLayoutData(gridData);
     addMenu(v);
 
-    Listener treeListener = new Listener() {
+    Listener tableListener = new Listener() {
       @Override
       public void handleEvent(Event event) {
         switch (event.type) {
+        case SWT.MouseDown: {
+          Point coords = new Point(event.x, event.y);
+          ViewerCell cell = v.getCell(coords);
+          if (cell != null) {
+            int index = cell.getColumnIndex();
+            List<TitleBlockCell> list = (List<TitleBlockCell>) cell.getElement();
+            String content = list.get(index).content;
+            contentText.setSize(content.length() * 10, contentText.getLineHeight());
+            contentText.setText(content);
+          }
+
+          break;
+        }
         case SWT.MouseDoubleClick: {
           Point coords = new Point(event.x, event.y);
           ViewerCell cell = v.getCell(coords);
-          int index = cell.getColumnIndex();
-          List<TitleBlockCell> list = (List<TitleBlockCell>) cell.getElement();
-          String name = list.get(index).name;
-          String content = list.get(index).content;
-          TitleBlockDialog dialog = new TitleBlockDialog(getShell());
-          if (content.equals(CONTENT_LOWERCASE)) {
-            dialog.setCurrentName(EMPTY_STRING);
-            dialog.setCurrentContent(EMPTY_STRING);
-          } else {
-            dialog.setCurrentName(name);
-            dialog.setCurrentContent(content);
+          if (cell != null) {
+            int index = cell.getColumnIndex();
+            List<TitleBlockCell> list = (List<TitleBlockCell>) cell.getElement();
+            String name = list.get(index).name;
+            String content = list.get(index).content;
+            TitleBlockDialog dialog = new TitleBlockDialog(getShell());
+            if (content.equals(CONTENT_LOWERCASE)) {
+              dialog.setCurrentName(EMPTY_STRING);
+              dialog.setCurrentContent(EMPTY_STRING);
+            } else {
+              dialog.setCurrentName(name);
+              dialog.setCurrentContent(content);
+            }
+            dialog.create();
+            if (dialog.open() == Window.OK) {
+              list.get(index).name = dialog.getName();
+              list.get(index).content = dialog.getContent();
+              cell.setText(dialog.getName());
+            }
           }
-          dialog.create();
-          if (dialog.open() == Window.OK) {
-            list.get(index).name = dialog.getName();
-            list.get(index).content = dialog.getContent();
-            cell.setText(dialog.getName());
-
-          }
+          break;
         }
         }
       }
     };
 
-    v.getTable().addListener(SWT.MouseDoubleClick, treeListener);
+    v.getTable().addListener(SWT.MouseDoubleClick, tableListener);
+    v.getTable().addListener(SWT.MouseDown, tableListener);
   }
 
   private void disposeColumns() {
@@ -227,10 +266,7 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
         if (i == rowsNumber - 1 && j == columnsNumber - 1) {
           if (tccMatrix.get(i).get(j).name.equals(EMPTY_STRING)
               || tccMatrix.get(i).get(j).content.equals(EMPTY_STRING)) {
-            MessageBox messageBox = new MessageBox(getShell(), SWT.ICON_WARNING | SWT.OK);
-            messageBox.setMessage(EDIT_ALL_CELLS);
-            messageBox.setText(ERROR);
-            messageBox.open();
+            createMessageBox(EDIT_ALL_CELLS, ERROR);
             return false;
           }
           currentTableContent = currentTableContent + tccMatrix.get(i).get(j).name + SEPARATOR
@@ -238,10 +274,7 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
         } else {
           if (tccMatrix.get(i).get(j).name.equals(EMPTY_STRING)
               || tccMatrix.get(i).get(j).content.equals(EMPTY_STRING)) {
-            MessageBox messageBox = new MessageBox(getShell(), SWT.ICON_WARNING | SWT.OK);
-            messageBox.setMessage(EDIT_ALL_CELLS);
-            messageBox.setText(ERROR);
-            messageBox.open();
+            createMessageBox(EDIT_ALL_CELLS, ERROR);
             return false;
           }
           currentTableContent = currentTableContent + tccMatrix.get(i).get(j).name + SEPARATOR
@@ -403,7 +436,12 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
     column.setText(title);
     int wd = viewer.getTable().getClientArea().width;
     if (wd > 0) {
-      column.setWidth(wd / columnsNumber);
+      int columnWidth = wd / columnsNumber;
+      if (columnWidth > MIN_CELL_WIDTH) {
+        column.setWidth(columnWidth);
+      } else {
+        column.setWidth(MIN_CELL_WIDTH);
+      }
     } else {
       column.setWidth(bound);
     }
@@ -418,30 +456,40 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
       @Override
       public void run() {
         int rowToAdd = v.getTable().getSelectionIndex() + 1;
-        refreshTableAddRows(rowToAdd);
+        if (rowToAdd != 0) {
+          refreshTableAddRows(rowToAdd);
+        }
       }
     };
 
     final Action addColumn = new Action(ADD_COLUMN) {
       @Override
       public void run() {
-        createColumn(v, EMPTY_STRING, v.getTable().getColumnCount());
-        columnsNumber += 1;
-        int columnToAdd = v.getColumnViewerEditor().getFocusCell().getColumnIndex() + 1;
-        refreshTableColumns(columnToAdd);
+        if (v.getColumnViewerEditor().getFocusCell() != null) {
+          createColumn(v, EMPTY_STRING, v.getTable().getColumnCount());
+          columnsNumber += 1;
+          int columnToAdd = v.getColumnViewerEditor().getFocusCell().getColumnIndex() + 1;
+          refreshTableColumns(columnToAdd);
+        }
       }
     };
 
     final Action removeColumn = new Action(REMOVE_COLUMN) {
       @Override
       public void run() {
-        MessageBox messageBox = new MessageBox(getShell(), SWT.ICON_QUESTION | SWT.YES | SWT.NO);
-        messageBox.setMessage(COLUMN_DELETE_MESSAGE);
-        messageBox.setText(CONFIRM_DELETE);
-        int response = messageBox.open();
-        if (response == SWT.YES) {
-          int columnToDelete = v.getColumnViewerEditor().getFocusCell().getColumnIndex();
-          refreshTableRemoveColumn(columnToDelete);
+        if (columnsNumber == 1) {
+          createMessageBox(UNABLE_REMOVE_COLUMN_MESSAGE, EMPTY_STRING);
+        }
+        if (v.getColumnViewerEditor().getFocusCell() != null && columnsNumber > 1) {
+
+          MessageBox messageBox = new MessageBox(getShell(), SWT.ICON_QUESTION | SWT.YES | SWT.NO);
+          messageBox.setMessage(COLUMN_DELETE_MESSAGE);
+          messageBox.setText(CONFIRM_DELETE);
+          int response = messageBox.open();
+          if (response == SWT.YES) {
+            int columnToDelete = v.getColumnViewerEditor().getFocusCell().getColumnIndex();
+            refreshTableRemoveColumn(columnToDelete);
+          }
         }
       }
     };
@@ -449,17 +497,21 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
     final Action removeRow = new Action(REMOVE_ROW) {
       @Override
       public void run() {
-        int rowToDelete = v.getTable().getSelectionIndex();
-        if (rowToDelete != -1) {
-          MessageBox messageBox = new MessageBox(getShell(), SWT.ICON_QUESTION | SWT.YES | SWT.NO);
-          messageBox.setMessage(ROW_DELETE_MESSAGE);
-          messageBox.setText(CONFIRM_DELETE);
-          int response = messageBox.open();
-          if (response == SWT.YES) {
-            refreshTableRemoveRow();
+        if (rowsNumber == 1) {
+          createMessageBox(UNABLE_REMOVE_ROW_MESSAGE, EMPTY_STRING);
+        } else if (v.getColumnViewerEditor().getFocusCell() != null) {
+
+          int rowToDelete = v.getTable().getSelectionIndex();
+          if (rowToDelete != -1) {
+            MessageBox messageBox = new MessageBox(getShell(), SWT.ICON_QUESTION | SWT.YES | SWT.NO);
+            messageBox.setMessage(ROW_DELETE_MESSAGE);
+            messageBox.setText(CONFIRM_DELETE);
+            int response = messageBox.open();
+            if (response == SWT.YES) {
+              refreshTableRemoveRow();
+            }
           }
         }
-
       }
     };
     mgr.setRemoveAllWhenShown(true);
@@ -472,6 +524,13 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
       }
     });
     v.getControl().setMenu(mgr.createContextMenu(v.getControl()));
+  }
+
+  private void createMessageBox(String messageToDisplay, String textBox) {
+    MessageBox box = new MessageBox(getShell(), SWT.ICON_WARNING | SWT.OK);
+    box.setMessage(messageToDisplay);
+    box.setText(textBox);
+    box.open();
   }
 
   @Override
