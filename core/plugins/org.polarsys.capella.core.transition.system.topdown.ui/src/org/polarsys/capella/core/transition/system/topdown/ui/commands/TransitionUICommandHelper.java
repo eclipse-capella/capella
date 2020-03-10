@@ -20,11 +20,18 @@ import org.eclipse.core.commands.ParameterizedCommand;
 import org.eclipse.core.commands.common.NotDefinedException;
 import org.eclipse.core.expressions.EvaluationContext;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.commands.ICommandService;
 import org.eclipse.ui.handlers.IHandlerService;
 import org.polarsys.capella.common.ef.command.ICommand;
+import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
+import org.polarsys.capella.common.tools.report.util.LogExt;
 import org.polarsys.capella.core.transition.system.topdown.constants.ITopDownConstants;
+import org.polarsys.capella.core.transition.system.topdown.preferences.PreferenceHelper;
+import org.polarsys.capella.core.transition.system.topdown.ui.Activator;
 
 public class TransitionUICommandHelper
     extends org.polarsys.capella.core.transition.system.topdown.commands.TransitionCommandHelper {
@@ -245,12 +252,25 @@ public class TransitionUICommandHelper
       }
     };
   }
-  
+
   public ICommand getPC2CITransitionCommand(Collection<?> elements, IProgressMonitor monitor) {
     return new IntramodelTransitionCommand(elements, monitor) {
       @Override
       protected String getTransitionKind() {
         return ITopDownConstants.TRANSITION_TOPDOWN_PC2CI;
+      }
+
+      @Override
+      public void run() {
+        if (!PreferenceHelper.getInstance().transitionPC2CIWhileScenarioTransition()) {
+          String message = Messages.TransitionUICommandHelper_PC2CI_EnablePreference;
+          MessageDialog.openWarning(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), getName(),
+              message);
+          LogExt.log(IReportManagerDefaultComponents.DEFAULT,
+              new Status(IStatus.WARNING, Activator.getDefault().getBundle().getSymbolicName(), message));
+        } else {
+          super.run();
+        }
       }
     };
   }

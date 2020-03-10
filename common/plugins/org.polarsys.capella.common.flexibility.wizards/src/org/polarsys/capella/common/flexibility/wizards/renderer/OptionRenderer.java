@@ -95,10 +95,13 @@ public class OptionRenderer extends AbstractRenderer {
   @Override
   public void updatedValue(IProperty property, IRendererContext propertyContext, Object newValue) {
     if (property.equals(propertyContext.getProperty(this))) {
+      boolean enabled = property.isEnabled(propertyContext.getPropertyContext());
+      options.setEnabled(enabled);
       for (Button button : buttons) {
         if ((button.getData() != null) && (button.getData() instanceof IPropertyOption)) {
           IPropertyOption option = (IPropertyOption) button.getData();
           button.setSelection(option.getValue().equals(newValue));
+          button.setEnabled(enabled);
         }
       }
     }

@@ -4,23 +4,22 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ *  
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+package org.polarsys.capella.core.transition.system.topdown.ui.commands;
 
-package org.polarsys.capella.core.transition.system.topdown.ui.renderers;
+import org.eclipse.osgi.util.NLS;
 
-import org.polarsys.capella.common.flexibility.properties.schema.IProperty;
-import org.polarsys.capella.common.flexibility.wizards.renderer.OptionRenderer;
+public class Messages extends NLS {
+  private static final String BUNDLE_NAME = "org.polarsys.capella.core.transition.system.topdown.ui.commands.messages"; //$NON-NLS-1$
+  public static String TransitionUICommandHelper_PC2CI_EnablePreference;
+  static {
+    // initialize resource bundle
+    NLS.initializeMessages(BUNDLE_NAME, Messages.class);
+  }
 
-/**
- */
-public class HorizontalOptionRenderer extends OptionRenderer {
-  
-  @Override
-  protected int getNumColumns(IProperty property) {
-    int size = property.getOptions().size();
-    return size > 1 ? size : 1;
+  private Messages() {
   }
 }

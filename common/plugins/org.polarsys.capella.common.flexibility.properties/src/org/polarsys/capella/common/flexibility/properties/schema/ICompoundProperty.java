@@ -12,10 +12,14 @@
 package org.polarsys.capella.common.flexibility.properties.schema;
 
 /**
- * Describes a property
+ * Describes a compound property. When one of its related properties will change, it will be notified
  */
 public interface ICompoundProperty extends IProperty {
 
+  /**
+   * When the given properties will change, the current property will be notified by updatedValue and will notify its
+   * listeners.
+   */
   public String[] getRelatedProperties();
 
   public void updatedValue(IProperty property, IPropertyContext context);

@@ -18,14 +18,18 @@ import org.polarsys.capella.core.transition.system.topdown.constants.ITopDownCon
 public class CIKindPropertyPreference extends StringPropertyPreference implements ICompoundProperty {
 
   @Override
+  public boolean isEnabled(IPropertyContext context) {
+    IProperty property = context.getProperties().getProperty(ITopDownConstants.OPTIONS_TRANSITION__PCCI_ENABLED);
+    return Boolean.TRUE.equals(context.getCurrentValue(property));
+  }
+
+  @Override
   public String[] getRelatedProperties() {
-    
-    return new String[] {ITopDownConstants.OPTIONS_TRANSITION__PCCI_ENABLED};
+    return new String[] { ITopDownConstants.OPTIONS_TRANSITION__PCCI_ENABLED };
   }
 
   @Override
   public void updatedValue(IProperty property, IPropertyContext context) {
-    Object currentValue = context.getCurrentValue(property);
-    setEnabled(Boolean.valueOf(currentValue.toString()));
+    // Nothing here
   }
 }

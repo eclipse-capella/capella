@@ -119,10 +119,12 @@
                   property="transition.system.scope.ownedPropertyValues"
                   renderer="checkboxRenderer">
         </propertyBinding>
+        
         <propertyBinding
               property="projection.pc2ci.kind"
-              renderer="horizontalOptionRenderer">
+              renderer="optionHorizontalRenderer">
         </propertyBinding>
+        
         <propertyBinding
               property="projection.pc2ci.enabled"
               renderer="checkboxRenderer">
@@ -143,20 +145,17 @@
                   property="projection.interfaces.createCE"
                   renderer="checkboxRenderer">
         </propertyBinding>
+        
         <propertyBinding
               property="transition.fc2fs.sequence.message.strategy"
               renderer="optionRenderer">
         </propertyBinding>
+        
         <propertyBinding
               property="transition.op2oas.sequence.message.strategy"
               renderer="optionRenderer">
         </propertyBinding>
       </bindings>
-      <propertyRenderer
-            class="org.polarsys.capella.core.transition.system.topdown.ui.renderers.HorizontalOptionRenderer"
-            id="horizontalOptionRenderer">
-      </propertyRenderer>
-      
       
       
    </extension>
