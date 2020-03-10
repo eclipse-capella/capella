@@ -4152,37 +4152,14 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolGroup" name="DiagramTitleBlock">
-            <tools xsi:type="tool_1:ToolDescription" name="diagram.title.block" label="%common.cdb.diagram.title.block" precondition="aql:self.isDiagram()" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlock_16.gif">
-              <element name="container"/>
-              <elementView name="containerView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:containerView">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.createDiagramTitleBlock(diagram)"/>
-                </firstModelOperations>
-              </initialOperation>
-            </tools>
-            <tools xsi:type="tool_1:ToolDescription" name="diagram.title.blocks" label="%common.cdb.diagram.title.blocks" precondition="aql:not (containerView.getDiagramContainer().isSynchronized() and (containerView.oclIsKindOf(diagram::DNodeList) or containerView.oclIsKindOf(diagram::DNodeListElement)))" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
-              <element name="element"/>
-              <elementView name="elementView">
-                <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="aql:elementView.getParentDiagram()"/>
-              </elementView>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView">
-                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectTitleBlocks" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
-                    <parameters name="context" value="aql:elementView"/>
-                    <parameters name="scope" value="aql:elementView.getAvailableDiagramTitleBlocksToInsert()"/>
-                    <parameters name="resultVariable" value="selectedTitleBlocks"/>
-                    <parameters name="wizardMessage" value="aql:'Select Values to show in ' + element.name + '.'"/>
-                    <parameters name="initialSelection" value="aql:self.void2Null(elementView.getInitialSelectionOfShowHideDiagramTitleBlocks())"/>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (selectedTitleBlocks = 'WIZARD_CANCELED')">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.showHideDiagramTitleBlocks(selectedTitleBlocks,diagram)"/>
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:diagram.forceRefresh()"/>
-                  </subModelOperations>
-                </firstModelOperations>
-              </initialOperation>
-            </tools>
+          <ownedTools xsi:type="tool_1:ToolDescription" name="diagram.title.block" label="%common.cdb.diagram.title.block" precondition="aql:self.isDiagram()" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlock_16.gif">
+            <element name="container"/>
+            <elementView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:containerView">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.createDiagramTitleBlock(diagram)"/>
+              </firstModelOperations>
+            </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:ToolGroup" name="ElementTitleBlock">
             <tools xsi:type="tool_1:ToolDescription" name="element.title.block" label="%common.cdb.element.title.block" precondition="aql:not self.isDiagram()" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlock_16.gif">
@@ -4212,28 +4189,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ToolDescription" name="element.title.blocks" label="%common.cdb.element.title.blocks" precondition="aql:not (containerView.getDiagramContainer().isSynchronized() and (containerView.oclIsKindOf(diagram::DNodeList) or containerView.oclIsKindOf(diagram::DNodeListElement)))" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
-              <element name="element"/>
-              <elementView name="elementView">
-                <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="aql:elementView.getParentDiagram()"/>
-              </elementView>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView">
-                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectTitleBlocks" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
-                    <parameters name="context" value="aql:elementView"/>
-                    <parameters name="scope" value="aql:elementView.getAvailableElementTitleBlocksToInsert()"/>
-                    <parameters name="resultVariable" value="selectedTitleBlocks"/>
-                    <parameters name="wizardMessage" value="aql:'Select Values to show in ' + element.name + '.'"/>
-                    <parameters name="initialSelection" value="aql:self.void2Null(elementView.getInitialSelectionOfShowHideElementTitleBlocks())"/>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (selectedTitleBlocks = 'WIZARD_CANCELED')">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.showHideElementTitleBlocks(selectedTitleBlocks,diagram)"/>
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:diagram.forceRefresh()"/>
-                  </subModelOperations>
-                </firstModelOperations>
-              </initialOperation>
-            </tools>
-            <tools xsi:type="tool_1:ToolDescription" name="remove.element.title.block.line" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlockLine_16.gif">
+            <tools xsi:type="tool_1:ToolDescription" name="remove.element.title.block.line" label="%common.cdb.remove.element.title.block.line" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlockLineRemove_16.gif">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
@@ -4242,7 +4198,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ToolDescription" name="remove.element.title.block.column" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlockColumn_16.gif">
+            <tools xsi:type="tool_1:ToolDescription" name="remove.element.title.block.column" label="%common.cdb.remove.element.title.block.column" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlockColumnRemove_16.gif">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
@@ -4455,6 +4411,50 @@
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self"/>
               </initialOperation>
             </menuItemDescription>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolGroup" name="Show/Hide TitleBlocks">
+            <tools xsi:type="tool_1:ToolDescription" name="diagram.title.blocks" label="%common.cdb.diagram.title.blocks" precondition="aql:not (containerView.getDiagramContainer().isSynchronized() and (containerView.oclIsKindOf(diagram::DNodeList) or containerView.oclIsKindOf(diagram::DNodeListElement)))" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+              <element name="element"/>
+              <elementView name="elementView">
+                <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="aql:elementView.getParentDiagram()"/>
+              </elementView>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView">
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectTitleBlocks" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
+                    <parameters name="context" value="aql:elementView"/>
+                    <parameters name="scope" value="aql:elementView.getAvailableDiagramTitleBlocksToInsert()"/>
+                    <parameters name="resultVariable" value="selectedTitleBlocks"/>
+                    <parameters name="wizardMessage" value="aql:'Select Values to show in ' + element.name + '.'"/>
+                    <parameters name="initialSelection" value="aql:self.void2Null(elementView.getInitialSelectionOfShowHideDiagramTitleBlocks())"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (selectedTitleBlocks = 'WIZARD_CANCELED')">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.showHideDiagramTitleBlocks(selectedTitleBlocks,diagram)"/>
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:diagram.forceRefresh()"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool_1:ToolDescription" name="element.title.blocks" label="%common.cdb.element.title.blocks" precondition="aql:not (containerView.getDiagramContainer().isSynchronized() and (containerView.oclIsKindOf(diagram::DNodeList) or containerView.oclIsKindOf(diagram::DNodeListElement)))" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+              <element name="element"/>
+              <elementView name="elementView">
+                <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="aql:elementView.getParentDiagram()"/>
+              </elementView>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView">
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectTitleBlocks" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
+                    <parameters name="context" value="aql:elementView"/>
+                    <parameters name="scope" value="aql:elementView.getAvailableElementTitleBlocksToInsert()"/>
+                    <parameters name="resultVariable" value="selectedTitleBlocks"/>
+                    <parameters name="wizardMessage" value="aql:'Select Values to show in ' + element.name + '.'"/>
+                    <parameters name="initialSelection" value="aql:self.void2Null(elementView.getInitialSelectionOfShowHideElementTitleBlocks())"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (selectedTitleBlocks = 'WIZARD_CANCELED')">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.showHideElementTitleBlocks(selectedTitleBlocks,diagram)"/>
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:diagram.forceRefresh()"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
           </ownedTools>
         </toolSections>
         <customization>
