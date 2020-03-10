@@ -12,19 +12,6 @@
 -->
 <plugin>
 
-<!--
-   <extension
-         point="org.eclipse.ui.views">
-      <view
-            category="org.polarsys.capella.views.category"
-            class="org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerView"
-            icon="icons/information_16x16.png"
-            id="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview"
-            name="%view.name">
-      </view>
-   </extension>
--->   
-   
 <extension-point
 	id="filterOnReportView"
 	name="Filtering marker type for reportlogview"

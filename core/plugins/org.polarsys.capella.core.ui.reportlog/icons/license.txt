@@ -4,5 +4,5 @@ These followings icons are made available under the terms of the Eclipse Public 
 
 <icon file path> - <original eclipse plug-in> - <original file path>
 
-/icons/information_16x16.png - capella.ui.reportlog - capella.ui.reportlog/icons/information_16x16.png
+/icons/eview16/information.png - capella.ui.reportlog - capella.ui.reportlog/icons/eview16/information.png
 /icons/add_element.gif - org.eclipse.debug.ui - org.eclipse.debug.ui/icons/full/elcl16/monitorexpression_tsk.gif

@@ -16,7 +16,7 @@
             allowMultiple="false"
             category="org.polarsys.capella.views.category"
             class="org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator"
-            icon="icons/capella_16.png"
+            icon="icons/eview16/project_explorer.png"
             id="capella.project.explorer"
             name="%project.explorer.name">
          <description>%project.explorer.description</description>
@@ -197,7 +197,7 @@
       <navigatorContent
             activeByDefault="true"
             contentProvider="org.polarsys.capella.core.platform.sirius.ui.navigator.viewer.CapellaNavigatorContentProvider"
-            icon="icons/capella_16.png"
+            icon="icons/eview16/project_explorer.png"
             id="capella.project.explorer.content"
             labelProvider="org.polarsys.capella.core.platform.sirius.ui.navigator.viewer.CapellaNavigatorLabelProvider"
             name="Capella Content"
@@ -1152,11 +1152,11 @@
       </image>
       <image
             commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.locateInCapellaExplorerCommand"
-            icon="icons/capella_16.png">
+            icon="icons/eview16/project_explorer.png">
       </image>
       <image
             commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.showRelatedElementsCommand"
-            icon="icons/capella_16.png">
+            icon="icons/eview16/project_explorer.png">
       </image>
       <image
             commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.showImpactAnalysisCommand"
@@ -1216,7 +1216,7 @@
          </command>
          
          <menu
-               icon="icons/capella_16.png"
+               icon="icons/eview16/project_explorer.png"
                label="%showSemanticInCapellaExplorerAction">
                <visibleWhen
                      checkEnabled="true">

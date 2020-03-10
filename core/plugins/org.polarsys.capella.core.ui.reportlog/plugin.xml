@@ -17,7 +17,7 @@
       <view
             category="org.polarsys.capella.views.category"
             class="org.polarsys.capella.core.ui.reportlog.InformationView"
-            icon="icons/information_16x16.png"
+            icon="icons/eview16/information.png"
             id="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview"
             name="%view.name">
       </view>

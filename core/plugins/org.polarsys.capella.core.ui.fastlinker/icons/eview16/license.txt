@@ -4,4 +4,4 @@ These followings icons are made available under the terms of the Eclipse Public 
 
 <icon file path> - <original eclipse plug-in> - <original file path>
 
-/icons/cview/fastlinker_view16x16.gif - capella.ui.fastlinker - capella.ui.fastlinker/icons/cview/fastlinker_view16x16.gif
+/icons/eview16/fastlinker.png - capella.ui.fastlinker - capella.ui.fastlinker/icons/eview16/fastlinker.png

@@ -25,7 +25,7 @@
             category="org.polarsys.capella.wizards"
             class="org.polarsys.capella.core.libraries.ui.wizard.newLibrary.NewLibraryProjectWizard"
             hasPages="true"
-            icon="icons/full/etool16/Library.gif"
+            icon="icons/full/etool16/capella_library.png"
             id="capella.library.wizard"
             name="Capella Library"
             project="true">
@@ -131,7 +131,7 @@
             locationURI="popup:org.eclipse.ui.popup.any?after=group.sendTo">
          <command
                commandId="org.polarsys.capella.core.libraries.ui.sendToTransferView"
-               icon="icons/transfer_16x16.png"
+               icon="icons/full/eview16/transfer.png"
                label="%sendToTransferViewLabel"
                style="push">
             <visibleWhen
@@ -240,7 +240,7 @@
       <view
             category="org.polarsys.capella.views.category"
             class="org.polarsys.capella.core.libraries.ui.move.MoveStagingView"
-            icon="icons/transfer_16x16.png"
+            icon="icons/full/eview16/transfer.png"
             id="org.polarsys.capella.core.libraries.ui.moveview"
             name="Transfer"
             restorable="true">

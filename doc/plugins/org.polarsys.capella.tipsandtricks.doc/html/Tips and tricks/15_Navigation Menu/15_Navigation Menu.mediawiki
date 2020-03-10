@@ -52,7 +52,7 @@ The navigation menu is available for most of the views. However, based on the ty
 |
 |Show the '''Impact Analysis''' dialog for the selected element.
 |-
-|[[Image:../../Images/IconFastLinker.gif]]
+|[[Image:../../Images/IconFastLinker.png]]
 |''Send to Fast Linker View''
 |'''F6'''
 |If the selected element is valid, send that element to the view '''Fast Linker'''.
