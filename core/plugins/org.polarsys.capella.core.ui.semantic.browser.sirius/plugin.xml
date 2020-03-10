@@ -17,7 +17,7 @@
             allowMultiple="false"
             category="org.polarsys.capella.views.category"
             class="org.polarsys.capella.core.ui.semantic.browser.sirius.view.SiriusSemanticBrowserView"
-            icon="platform:/plugin/org.polarsys.capella.core.ui.semantic.browser/icons/eview16/sembrowser.png"
+            icon="platform:/plugin/org.polarsys.capella.core.ui.semantic.browser/icons/full/eview16/sembrowser.png"
             id="org.polarsys.capella.core.ui.semantic.browser.view.SemanticBrowserID"
             name="Semantic Browser">
       </view>
@@ -44,7 +44,7 @@
          point="org.eclipse.ui.commandImages">
       <image
             commandId="org.polarsys.capella.core.ui.semantic.browser.sirius.semanticBrowserSetSelectionCommand"
-            icon="platform:/plugin/org.polarsys.capella.core.ui.semantic.browser/icons/eview16/sembrowser.png">
+            icon="platform:/plugin/org.polarsys.capella.core.ui.semantic.browser/icons/full/eview16/sembrowser.png">
       </image>
    </extension>
    <extension
