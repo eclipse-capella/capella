@@ -1,4 +1,231 @@
-<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>6.2. Model preferences</title><link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/></head><body><h1 id="Model_Preferences">Model Preferences</h1><p>Preferences are available from the <b>Window / Preferences menu</b>. A section is dedicated to Capella.</p><p><img height="300" width="250" border="0" src="Images/6.2.%20Model%20preferences_html_1f594e63.png"/></p><p><br/>
-<br/></p><h2 id="General">General</h2><p><img height="522" width="627" border="0" src="Images/6.2.%20Model%20preferences_html_mcdd659.png"/></p><p>The &ldquo;Check model version at load time&rdquo; provides a security when opening a model. It checks whether the model has been produced with the current version and thus <b>whether it needs to be migrated or not</b>. <b>The drawback of activating this check is that the opening of models takes twice as long</b>.</p><p>The AIRD Fragment File Extension option allows specifying the expected file suffix for AIRD fragments.</p><table border="1"><tr><td><p><img height="48" width="48" border="0" src="Images/6.2.%20Model%20preferences_html_3c78e109.png"/></p></td><td><p>It is strongly recommended to use &ldquo;airdfragment&rdquo;.</p></td></tr></table><h2 id="Delete">Delete</h2><p>On the sub section of <b>Capella / Delete preferences</b>, it is possible to specify deletion options:</p><ul><li>If &ldquo;<b>Confirm deletions</b>&rdquo; is activated, then a confirmation dialog will be prompted for each deletion attempt. This dialog show a live impact analysis of the deletion.</li><li>If &ldquo;<b>If reusing components is allowed, synchronize &hellip;</b>&rdquo; is activated, then when deleting a Component, all the Parts that are typed by this component will be deleted as well.</li></ul><p><b>Protected Elements</b>: It is possible to prohibit the deletion of certain critical elements. In that case, the deletion command will not be active for these elements.</p><p><img height="513" width="699" border="0" src="Images/6.2.%20Model%20preferences_html_497e9b20.png"/></p><p>The following figure illustrates the prompted dialog when deleting the System Actor &ldquo;Mission Control Operator&rdquo;. All the elements in red will be deleted if the deletion is confirmed. The blue elements are the references towards the elements that are going to be deleted.</p><p><img height="595" width="877" border="0" src="Images/6.2.%20Model%20preferences_html_597b3feb.png"/></p><h2 id="Diagrams">Diagrams</h2><p>On the sub section of <b>Capella / Diagrams</b>, it is possible to specify preferences for displaying diagrams:</p><ul><li>If &ldquo;<b>Show 'Incomplete' in the chain/path/process's label</b>&rdquo; is activated, then incomplete chain/path/process's labels are annotated with <i>Incomplete</i>.</li><li>If &ldquo;<b>Show 'Invalid' in the chain/path/process's label</b>&rdquo; is activated, then invalid chain/path/process's labels are annotated with <i>Invalid</i>.</li></ul><p><img border="0" src="Images/DiagramsPreference.PNG"/></p><h2 id="Model">Model</h2><p>On the sub section <b>Model</b> of Capella preferences, it is possible to specify global behavior regarding the management of specific elements.</p><p><img height="633" width="874" border="0" src="Images/6.2.%20Model%20preferences_html_m2492a832.png"/></p><p>When &ldquo;<b>Reuse of components</b>&rdquo; is activated, it activates to enable the reuse of components, creating several ï¿½Partsï¿½ from a Type. During a project creation, it activate a performance to reuse components.</p><p><img height="350" width="500" border="0" src="Images/6.2_Model preferences8.png"/></p><p>In diagrams, you can use the ï¿½Reuse Componentsï¿½ palette tool. In Properties, selecting the ï¿½Partï¿½ will provide a way to select an available Type (e.g. Logical Component, Physical Components...).</p><p>When &ldquo;<b>Multiple inheritance allowed</b>&rdquo; is activated, a Class can inherit from several other Classes. Otherwise, it can only have one inheritance ancestor.</p><p>When &ldquo;<b>Component Non Actor inheritance allowed</b>&rdquo; is activated, a Component Non Actor can generalize other Components Non Actor (via Properties View or using Diagram Generalization tools). Otherwise, only Actors are allowed to generalize other Actors.</p><p>When &ldquo;<b>Multiple deployment allowed</b>&rdquo; is activated, one given Behaviour Physical Component can be deployed on several Node Physical Components.</p><p>When &ldquo;<b>Delete related associations when a class becomes primitive</b>&rdquo; is activated, existing associations towards the class which primitive status has changed is deleted automatically. If this option is not activated, then model validation is such cases will raise an error and the end user will be able to manually delete the obsolete association.</p><p><b>The three synchronization options define whether Port allocations and delegations are automatically set</b> when performing allocations from editors. Activating this option helps improving the productivity.</p><p><br/>
-<br/></p><h2 id="Model_Change_Recorder">Model Change Recorder</h2><p>On the sub section of <b>Capella / Model Change Recorder preferences</b>, it is possible to activate the model changer recording to log technical model or diagram modification .</p><p><img height="250" width="550" border="0" src="Images/6.2_Model preferences2.png"/></p><p>You can configure it thanks to features such as the maximum file size or the number of day to keep files.</p><h2 id="Model_Validation">Model Validation</h2><p>On the sub section of <b>Capella / Model Valdation preferences</b>, it is possible to manage preferences related to Capella Model Validation by choosing by choosing to enable or disable some validation results.</p><p><img height="90" width="300" border="0" src="Images/6.2_Model preferences3.png"/></p><h2 id="Project_Explorer">Project Explorer</h2><p>On the sub section of <b>Capella / Project Explorer preferences</b>, when the &ldquo;<b>Project</b>&rdquo; option is activated, the semantic element &ldquo;Project&rdquo; is displayed (see illustration below). By default, this option is not active.</p><p>In order to modify configuration property values located on the Project element (reusable components or not, default values for progress monitoring, etc.).), you can activate temporary this option.</p><p><img height="152" width="440" border="0" src="Images/6.2_Model preferences.png"/></p><p>If the preference is activated, the tree will be displayed. For significant model, it can be useful to not display entire trees and use the Regex to find a specific model.</p><p><img height="200" width="250" border="0" src="Images/6.2.%20Model%20preferences_html_mc875712.png"/></p><h2 id="Refinement">Refinement</h2><p>This section <b>Capella / Refinement preferences</b> is dedicated to delegation-based refinement of interface sequence diagrams. <b>It is not relevant when exploiting Functional Analysis.</b></p><p><img height="215" width="640" border="0" src="Images/6.2.%20Model%20preferences_html_3df4739.png"/></p><p>The checkbox &ldquo;<b>Allow diagram creation</b>&rdquo; specifies whether a diagram shall be automatically created for the target scenario of the refinement.</p><p>The checkbox &ldquo;<b>Allow diagram opening</b>&rdquo; specifies whether the diagram corresponding to the target scenario of the refinement shall be automatically opened or not.</p><p>The checkbox &ldquo;<b>Perform a pre-validation</b>&rdquo; specifies whether the refinement tool shall perform a set of elementary check verifying the source scenario are ready for refinement. It is strongly recommended to activate this option as well as the following one &ldquo;<b>Stop Refinement on pre-validation error</b>&rdquo;.</p><h2 id="SCM">SCM</h2><p><img height="136" width="360" border="0" src="Images/6.2.%20Model%20preferences_html_3d6d7194.png"/></p><p>This section <b>Capella / SCM preferences</b> is related to the behaviour of Capella regarding the Software Configuration Management tool (e.g. Clearcase). The configuration option allows setting an automatic synchronization delay with the File System.</p><table border="1"><tr><td><p><img height="48" width="48" border="0" src="Images/6.2.%20Model%20preferences_html_3c78e109.png"/></p></td><td><p>Activating this configuration option is mandatory when working with Clearcase Dynamic Views, in order to be notified immediately of changes performed by other users.</p></td></tr></table><h2 id="Transfer_Viewer">Transfer Viewer</h2><p>On the sub section of <b>Capella / Transfer Viewer preferences</b>, it's recommended for huge models to disable the computation of labels for model elements which appear in the tree, it is also possible to allow the automatic expansion of trees in selection dialogs from Browse button in Properties view and also from Insert/Remove tool in diagram Palette.</p><p><img height="537" width="625" border="0" src="Images/6.2_Model preferences5.png"/></p><p><img height="500" width="800" border="0" src="Images/6.2_Model preferences6.png"/></p><p>If the preference is activated, the tree will be displayed. For significant model, it can be useful to not display entire trees.</p><h2 id="Transitions.2FGeneration">Transitions/Generation</h2><p>On the sub section of <b>Capella / Transitions/Generation preferences</b>, it is possible to specify the scope of automatic transitions.</p><ul><li>The radio buttons &ldquo;<b>Propagate LC / LA breakdown in physical architecture</b>&rdquo; and &ldquo;<b>Propagate only leaf LC / LA in physical architecture</b>&rdquo; specifies whether the breakdown of Logical Components is kept at physical level or not.</li><li>The checkbox &ldquo;<b>Transit interfaces handled by Components</b>&rdquo; specifies whether interfaces are realized from one architecture to another when performing a transition. For example, if this preference is not activated, Physical Components will directly implement / use / provide / require interface located in the system analysis and logical architecture.</li><li>The checkbox &ldquo;<b>Transit allocated Exchange Items while transition of Interfaces, Functions or Components</b>&rdquo; specifies whether Interfaces, Functions or Components transition triggers transition of related Exchange Items (i.e. duplicates Exchange Items from one engineering phase to the following one). If not activated, Interface, Functions and Component Exchanges in the target engineering phase will still refer the Exchange Items located in the previous engineering phase.</li><li>The checkbox &ldquo;<b>Transit Data Types handled by Exchange Items while transition of Exchange Items</b>&rdquo; specifies whether Exchange Items transition triggers transition of related Data (i.e. duplicates Data from one engineering phase to the following one). If not activated, Exchange Items in the target engineering phase will still refer the Data elements located in the previous engineering phase.</li><li>The checkbox &ldquo;<b>Transit State Machines owned by a Component while transition of Components</b>&rdquo; specifies whether State Machines transition is triggered when performing a Component transition.</li><li>The checkbox &ldquo;<b>Transit Functional elements allocated by an Operational Entity or Operational Actor while their transition</b>&rdquo; specifies whether Operational Activities are transformed into System Functions when performing a transition of Operational Entities or Actors.</li><li>The checkbox <b>&ldquo;Include involved elements&rdquo;</b> on the Property Values section specifies whether involved elements will be propagated while a transition of Property Values</li><li>The checkbox <b>&ldquo;Propagate Exchange Items from Functional Exchanges to Function Ports&rdquo;</b> specifies whether Exchange Items from Functional Exchanges should be propagated to their related Function Ports during Interface generation.</li><li>The checkbox <b>&ldquo;Create Component Exchange Between provider/requirer ports&rdquo;</b> specifies if the Interface generation should create a Component Exchange between each pair of Interface provider/requirer ports if such an exchange does not already exist.</li></ul><p><br/>
-<br/></p></body></html>
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>6.2. Model preferences</title>
+		<link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/>
+	</head>
+	<body>
+		<h1 id="Model_Preferences">Model Preferences</h1>
+		<p>Preferences are available from the 
+			<b>Window / Preferences menu</b>. A section is dedicated to Capella.
+		</p>
+		<p>
+			<img height="300" width="250" border="0" src="Images/6.2.%20Model%20preferences_html_1f594e63.png"/>
+		</p>
+		<p>
+			<br/>
+
+			<br/>
+		</p>
+		<h2 id="General">General</h2>
+		<p>
+			<img height="522" width="627" border="0" src="Images/6.2.%20Model%20preferences_html_mcdd659.png"/>
+		</p>
+		<p>The &ldquo;Check model version at load time&rdquo; provides a security when opening a model. It checks whether the model has been produced with the current version and thus 
+			<b>whether it needs to be migrated or not</b>. 
+			<b>The drawback of activating this check is that the opening of models takes twice as long</b>.
+		</p>
+		<p>The AIRD Fragment File Extension option allows specifying the expected file suffix for AIRD fragments.</p>
+		<table border="1">
+			<tr>
+				<td>
+					<p>
+						<img height="48" width="48" border="0" src="Images/6.2.%20Model%20preferences_html_3c78e109.png"/>
+					</p>
+				</td>
+				<td>
+					<p>It is strongly recommended to use &ldquo;airdfragment&rdquo;.</p>
+				</td>
+			</tr>
+		</table>
+		<h2 id="Delete">Delete</h2>
+		<p>On the sub section of 
+			<b>Capella / Delete preferences</b>, it is possible to specify deletion options:
+		</p>
+		<ul>
+			<li>If &ldquo;
+				<b>Confirm deletions</b>&rdquo; is activated, then a confirmation dialog will be prompted for each deletion attempt. This dialog show a live impact analysis of the deletion.
+			</li>
+			<li>If &ldquo;
+				<b>If reusing components is allowed, synchronize &hellip;</b>&rdquo; is activated, then when deleting a Component, all the Parts that are typed by this component will be deleted as well.
+			</li>
+		</ul>
+		<p>
+			<b>Protected Elements</b>: It is possible to prohibit the deletion of certain critical elements. In that case, the deletion command will not be active for these elements.
+		</p>
+		<p>
+			<img height="513" width="699" border="0" src="Images/6.2.%20Model%20preferences_html_497e9b20.png"/>
+		</p>
+		<p>The following figure illustrates the prompted dialog when deleting the System Actor &ldquo;Mission Control Operator&rdquo;. All the elements in red will be deleted if the deletion is confirmed. The blue elements are the references towards the elements that are going to be deleted.</p>
+		<p>
+			<img height="595" width="877" border="0" src="Images/6.2.%20Model%20preferences_html_597b3feb.png"/>
+		</p>
+		<h2 id="Diagrams">Diagrams</h2>
+		<p>On the sub section of 
+			<b>Capella / Diagrams</b>, it is possible to specify preferences for displaying diagrams:
+		</p>
+		<ul>
+			<li>If &ldquo;
+				<b>Show 'Incomplete' in the chain/path/process's label</b>&rdquo; is activated, then incomplete chain/path/process's labels are annotated with 
+				<i>Incomplete</i>.
+			</li>
+			<li>If &ldquo;
+				<b>Show 'Invalid' in the chain/path/process's label</b>&rdquo; is activated, then invalid chain/path/process's labels are annotated with 
+				<i>Invalid</i>.
+			</li>
+		</ul>
+		<p>
+			<img border="0" src="Images/DiagramsPreference.PNG"/>
+		</p>
+		<h2 id="Model">Model</h2>
+		<p>On the sub section 
+			<b>Model</b> of Capella preferences, it is possible to specify global behavior regarding the management of specific elements.
+		</p>
+		<p>
+			<img height="633" width="874" border="0" src="Images/6.2.%20Model%20preferences_html_m2492a832.png"/>
+		</p>
+		<p>When &ldquo;
+			<b>Reuse of components</b>&rdquo; is activated, it activates to enable the reuse of components, creating several ï¿½Partsï¿½ from a Type. During a project creation, it activate a performance to reuse components.
+		</p>
+		<p>
+			<img height="350" width="500" border="0" src="Images/6.2_Model preferences8.png"/>
+		</p>
+		<p>In diagrams, you can use the ï¿½Reuse Componentsï¿½ palette tool. In Properties, selecting the ï¿½Partï¿½ will provide a way to select an available Type (e.g. Logical Component, Physical Components...).</p>
+		<p>When &ldquo;
+			<b>Multiple inheritance allowed</b>&rdquo; is activated, a Class can inherit from several other Classes. Otherwise, it can only have one inheritance ancestor.
+		</p>
+		<p>When &ldquo;
+			<b>Component Non Actor inheritance allowed</b>&rdquo; is activated, a Component Non Actor can generalize other Components Non Actor (via Properties View or using Diagram Generalization tools). Otherwise, only Actors are allowed to generalize other Actors.
+		</p>
+		<p>When &ldquo;
+			<b>Multiple deployment allowed</b>&rdquo; is activated, one given Behaviour Physical Component can be deployed on several Node Physical Components.
+		</p>
+		<p>When &ldquo;
+			<b>Delete related associations when a class becomes primitive</b>&rdquo; is activated, existing associations towards the class which primitive status has changed is deleted automatically. If this option is not activated, then model validation is such cases will raise an error and the end user will be able to manually delete the obsolete association.
+		</p>
+		<p>
+			<b>The three synchronization options define whether Port allocations and delegations are automatically set</b> when performing allocations from editors. Activating this option helps improving the productivity.
+		</p>
+		<p>
+			<br/>
+
+			<br/>
+		</p>
+		<h2 id="Model_Change_Recorder">Model Change Recorder</h2>
+		<p>On the sub section of 
+			<b>Capella / Model Change Recorder preferences</b>, it is possible to activate the model changer recording to log technical model or diagram modification .
+		</p>
+		<p>
+			<img height="250" width="550" border="0" src="Images/6.2_Model preferences2.png"/>
+		</p>
+		<p>You can configure it thanks to features such as the maximum file size or the number of day to keep files.</p>
+		<h2 id="Model_Validation">Model Validation</h2>
+		<p>On the sub section of 
+			<b>Capella / Model Valdation preferences</b>, it is possible to manage preferences related to Capella Model Validation by choosing by choosing to enable or disable some validation results.
+		</p>
+		<p>
+			<img height="90" width="300" border="0" src="Images/6.2_Model preferences3.png"/>
+		</p>
+		<h2 id="Project_Explorer">Project Explorer</h2>
+		<p>On the sub section of 
+			<b>Capella / Project Explorer preferences</b>, when the &ldquo;
+			<b>Project</b>&rdquo; option is activated, the semantic element &ldquo;Project&rdquo; is displayed (see illustration below). By default, this option is not active.
+		</p>
+		<p>In order to modify configuration property values located on the Project element (reusable components or not, default values for progress monitoring, etc.).), you can activate temporary this option.</p>
+		<p>
+			<img height="152" width="440" border="0" src="Images/6.2_Model preferences.png"/>
+		</p>
+		<p>If the preference is activated, the tree will be displayed. For significant model, it can be useful to not display entire trees and use the Regex to find a specific model.</p>
+		<p>
+			<img height="200" width="250" border="0" src="Images/6.2.%20Model%20preferences_html_mc875712.png"/>
+		</p>
+		<h2 id="Refinement">Refinement</h2>
+		<p>This section 
+			<b>Capella / Refinement preferences</b> is dedicated to delegation-based refinement of interface sequence diagrams. 
+			<b>It is not relevant when exploiting Functional Analysis.</b>
+		</p>
+		<p>
+			<img height="215" width="640" border="0" src="Images/6.2.%20Model%20preferences_html_3df4739.png"/>
+		</p>
+		<p>The checkbox &ldquo;
+			<b>Allow diagram creation</b>&rdquo; specifies whether a diagram shall be automatically created for the target scenario of the refinement.
+		</p>
+		<p>The checkbox &ldquo;
+			<b>Allow diagram opening</b>&rdquo; specifies whether the diagram corresponding to the target scenario of the refinement shall be automatically opened or not.
+		</p>
+		<p>The checkbox &ldquo;
+			<b>Perform a pre-validation</b>&rdquo; specifies whether the refinement tool shall perform a set of elementary check verifying the source scenario are ready for refinement. It is strongly recommended to activate this option as well as the following one &ldquo;
+			<b>Stop Refinement on pre-validation error</b>&rdquo;.
+		</p>
+		<h2 id="SCM">SCM</h2>
+		<p>
+			<img height="136" width="360" border="0" src="Images/6.2.%20Model%20preferences_html_3d6d7194.png"/>
+		</p>
+		<p>This section 
+			<b>Capella / SCM preferences</b> is related to the behaviour of Capella regarding the Software Configuration Management tool (e.g. Clearcase). The configuration option allows setting an automatic synchronization delay with the File System.
+		</p>
+		<table border="1">
+			<tr>
+				<td>
+					<p>
+						<img height="48" width="48" border="0" src="Images/6.2.%20Model%20preferences_html_3c78e109.png"/>
+					</p>
+				</td>
+				<td>
+					<p>Activating this configuration option is mandatory when working with Clearcase Dynamic Views, in order to be notified immediately of changes performed by other users.</p>
+				</td>
+			</tr>
+		</table>
+		<h2 id="Transfer_Viewer">Transfer Viewer</h2>
+		<p>On the sub section of 
+			<b>Capella / Transfer Viewer preferences</b>, it's recommended for huge models to disable the computation of labels for model elements which appear in the tree, it is also possible to allow the automatic expansion of trees in selection dialogs from Browse button in Properties view and also from Insert/Remove tool in diagram Palette.
+		</p>
+		<p>
+			<img height="537" width="625" border="0" src="Images/6.2_Model preferences5.png"/>
+		</p>
+		<p>
+			<img height="500" width="800" border="0" src="Images/6.2_Model preferences6.png"/>
+		</p>
+		<p>If the preference is activated, the tree will be displayed. For significant model, it can be useful to not display entire trees.</p>
+		<h2 id="Transitions.2FGeneration">Transitions/Generation</h2>
+		<p>On the sub section of 
+			<b>Capella / Transitions/Generation preferences</b>, it is possible to specify the scope of automatic transitions.
+		</p>
+		<ul>
+			<li>The radio buttons &ldquo;
+				<b>Propagate LC / LA breakdown in physical architecture</b>&rdquo; and &ldquo;
+				<b>Propagate only leaf LC / LA in physical architecture</b>&rdquo; specifies whether the breakdown of Logical Components is kept at physical level or not.
+			</li>
+			<li>The checkbox &ldquo;
+				<b>Transit interfaces handled by Components</b>&rdquo; specifies whether interfaces are realized from one architecture to another when performing a transition. For example, if this preference is not activated, Physical Components will directly implement / use / provide / require interface located in the system analysis and logical architecture.
+			</li>
+			<li>The checkbox &ldquo;
+				<b>Transit allocated Exchange Items while transition of Interfaces, Functions or Components</b>&rdquo; specifies whether Interfaces, Functions or Components transition triggers transition of related Exchange Items (i.e. duplicates Exchange Items from one engineering phase to the following one). If not activated, Interface, Functions and Component Exchanges in the target engineering phase will still refer the Exchange Items located in the previous engineering phase.
+			</li>
+			<li>The checkbox &ldquo;
+				<b>Transit Data Types handled by Exchange Items while transition of Exchange Items</b>&rdquo; specifies whether Exchange Items transition triggers transition of related Data (i.e. duplicates Data from one engineering phase to the following one). If not activated, Exchange Items in the target engineering phase will still refer the Data elements located in the previous engineering phase.
+			</li>
+			<li>The checkbox &ldquo;
+				<b>Transit State Machines owned by a Component while transition of Components</b>&rdquo; specifies whether State Machines transition is triggered when performing a Component transition.
+			</li>
+			<li>The checkbox &ldquo;
+				<b>Transit Functional elements allocated by an Operational Entity or Operational Actor while their transition</b>&rdquo; specifies whether Operational Activities are transformed into System Functions when performing a transition of Operational Entities or Actors.
+			</li>
+			<li>The checkbox 
+				<b>&ldquo;Include involved elements&rdquo;</b> on the Property Values section specifies whether involved elements will be propagated while a transition of Property Values
+			</li>
+			<li>The checkbox 
+				<b>&ldquo;Propagate Exchange Items from Functional Exchanges to Function Ports&rdquo;</b> specifies whether Exchange Items from Functional Exchanges should be propagated to their related Function Ports during Interface generation.
+			</li>
+			<li>The checkbox 
+				<b>&ldquo;Create Component Exchange Between provider/requirer ports&rdquo;</b> specifies if the Interface generation should create a Component Exchange between each pair of Interface provider/requirer ports if such an exchange does not already exist.
+			</li>
+		</ul>
+		<p>
+			<br/>
+
+			<br/>
+		</p>
+	</body>
+</html>
