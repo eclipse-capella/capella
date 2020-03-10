@@ -63,11 +63,6 @@ public class DefaultCommandLine extends AbstractCommandLine {
     logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.DEFAULT);
   }
 
-  /**
-   * {@inheritDoc}
-   *
-   * @throws CommandLineException
-   */
   @Override
   public void prepare(IApplicationContext context) throws CommandLineException {
     // Import projects
@@ -113,9 +108,10 @@ public class DefaultCommandLine extends AbstractCommandLine {
     if (outputFolder == null) {
       logger.error(Messages.export_zip_no_ouputfolder);
     } else {
+      IProject[] iProjects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
       for (String project : projectsToExportZip) {
-        Optional<IProject> anyIProject = Arrays.stream(ResourcesPlugin.getWorkspace().getRoot().getProjects())
-            .filter(iProject -> iProject.getName().equals(project)).findAny();
+        Optional<IProject> anyIProject = Arrays.stream(iProjects).filter(iProject -> iProject.getName().equals(project))
+            .findAny();
         if (!anyIProject.isPresent()) {
           logger.error(Messages.export_zip_not_found + project);
         } else {

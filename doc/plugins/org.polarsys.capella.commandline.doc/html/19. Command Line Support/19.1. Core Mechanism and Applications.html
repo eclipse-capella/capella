@@ -29,7 +29,7 @@
 			<tr>
 				<td>input</td>
 				<td>mandatory</td>
-				<td>defines a list of the relative paths of the Eclipse projects or aird files to use as input of the command line. The list have to be placed into quotes "" and separated by a &#124; character. Use /all to specify that all projects in the workspace are used as input.</td>
+				<td>defines a list of the relative paths (to the workspace) of the Eclipse projects or aird files to use as input of the command line. The list have to be placed into quotes "" and separated by a &#124; character. Use /all to specify that all projects in the workspace are used as input.</td>
 			</tr>
 			<tr>
 				<td>import</td>
@@ -44,7 +44,7 @@
 			<tr>
 				<td>outputfolder</td>
 				<td>optional</td>
-				<td>defines the path to the output folder</td>
+				<td>defines the relative path (to the workspace) of the output folder</td>
 			</tr>
 			<tr>
 				<td>exportZip</td>
@@ -129,7 +129,7 @@
 			<b>Simple use case:</b></u>
 		</p>
 		<pre>
-&lt;CapellaInstallationPath&gt;/capella.exe -nosplash
+&lt;CapellaInstallationPath&gt;/eclipsec.exe -nosplash
 -application org.polarsys.capella.core.commandline.core
 -appid org.polarsys.capella.core.validation.commandline
 -data &lt;workspacePath&gt;
@@ -163,7 +163,7 @@
 			<b>Complex use case:</b></u>
 		</p>
 		<pre>
-&lt;CapellaInstallationPath&gt;/capella.exe -nosplash
+&lt;CapellaInstallationPath&gt;/eclipsec.exe -nosplash
 -application org.polarsys.capella.core.commandline.core
 -appid org.polarsys.capella.core.validation.commandline
 -input /EOLE_AF/EOLE_AF.aird
@@ -227,7 +227,7 @@
 			<b>Simple use case:</b></u>
 		</p>
 		<pre>
-&lt;CapellaInstallationPath&gt;/capella.exe -nosplash
+&lt;CapellaInstallationPath&gt;/eclipsec.exe -nosplash
 -application org.polarsys.capella.core.commandline.core
 -appid org.polarsys.kitalpha.doc.gen.business.capella.commandline
 -data &lt;workspacePath&gt;
@@ -251,7 +251,7 @@
 			<b>Import Capella project and generate inside it</b>
 		</p>
 		<pre>
-&lt;CapellaInstallationPath&gt;/capella.exe -nosplash
+&lt;CapellaInstallationPath&gt;/eclipsec.exe -nosplash
 -application org.polarsys.capella.core.commandline.core
 -appid org.polarsys.kitalpha.doc.gen.business.capella.commandline
 -data &lt;targetWorkspacePath&gt;
@@ -268,7 +268,7 @@
 			<b>Import Capella project and generate inside a new project</b>
 		</p>
 		<pre>
-&lt;CapellaInstallationPath&gt;/capella.exe -nosplash
+&lt;CapellaInstallationPath&gt;/eclipsec.exe -nosplash
 -application org.polarsys.capella.core.commandline.core
 -appid org.polarsys.kitalpha.doc.gen.business.capella.commandline
 -data &lt;targetWorkspacePath&gt;
@@ -285,7 +285,7 @@
 			<b>Import Capella project and a Doc project to generate inside it</b>
 		</p>
 		<pre>
-&lt;CapellaInstallationPath&gt;/capella.exe -nosplash
+&lt;CapellaInstallationPath&gt;/eclipsec.exe -nosplash
 -application org.polarsys.capella.core.commandline.core
 -appid org.polarsys.kitalpha.doc.gen.business.capella.commandline
 -data &lt;targetWorkspacePath&gt;
@@ -319,7 +319,7 @@
 			<b>Simple use case:</b></u>
 		</p>
 		<pre>
-&lt;CapellaInstallationPath&gt;/capella.exe -nosplash
+&lt;CapellaInstallationPath&gt;/eclipsec.exe -nosplash
 -application org.polarsys.capella.core.commandline.core
 -appid org.polarsys.capella.core.commandline.core.exportZip
 -data &lt;workspacePath&gt;
@@ -353,7 +353,7 @@
 			<b>Simple use case:</b></u>
 		</p>
 		<pre>
-&lt;CapellaInstallationPath&gt;/capella.exe -nosplash
+&lt;CapellaInstallationPath&gt;/eclipsec.exe -nosplash
 -application org.polarsys.capella.core.commandline.core
 -appid org.polarsys.capella.migration
 -data &lt;workspacePath&gt;
@@ -385,7 +385,7 @@
 			<b>Complex use case:</b></u>
 		</p>
 		<pre>
-&lt;CapellaInstallationPath&gt;/capella.exe -nosplash
+&lt;CapellaInstallationPath&gt;/eclipsec.exe -nosplash
 -application org.polarsys.capella.core.commandline.core
 -appid org.polarsys.capella.migration
 -import "D:/Projects/Library3 | D:/Projects/Library1 | D:/Projects/Library2 | D:/Projects/Project1"
@@ -402,7 +402,7 @@
 			<b>Simple use case:</b></u>
 		</p>
 		<pre>
-&lt;CapellaInstallationPath&gt;/capella.exe -nosplash
+&lt;CapellaInstallationPath&gt;/eclipsec.exe -nosplash
 -application org.polarsys.capella.core.commandline.core
 -appid org.polarsys.capella.refreshRepresentations
 -data &lt;workspacePath&gt;
@@ -429,7 +429,7 @@
 			<b>Simple use case:</b></u>
 		</p>
 		<pre>
-&lt;CapellaInstallationPath&gt;/capella.exe -nosplash
+&lt;CapellaInstallationPath&gt;/eclipsec.exe -nosplash
 -application org.polarsys.capella.core.commandline.core
 -appid org.polarsys.capella.removeHiddenElements
 -data &lt;workspacePath&gt;
@@ -471,7 +471,7 @@
 			<b>Simple use case:</b></u>
 		</p>
 		<pre>
-&lt;CapellaInstallationPath&gt;/capella.exe -nosplash
+&lt;CapellaInstallationPath&gt;/eclipsec.exe -nosplash
 -application org.polarsys.capella.core.commandline.core
 -appid org.polarsys.capella.exportRepresentations
 -data &lt;workspacePath&gt;

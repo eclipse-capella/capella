@@ -65,7 +65,7 @@ public class MigrationContext {
   }
 
   public void setSkipConfirmation(boolean skipConfirmation) {
-    _skipConfirmation = skipConfirmation;
+    this._skipConfirmation = skipConfirmation;
   }
 
   public boolean isBackupModel() {
@@ -73,15 +73,15 @@ public class MigrationContext {
   }
 
   public void setBackupModel(boolean backupModel) {
-    backUpModel = backupModel;
+    this.backUpModel = backupModel;
   }
   
   public void setProgressMonitor(IProgressMonitor monitor) {
-    _monitor = monitor;
+    this._monitor = monitor;
   }
 
   public void setShell(Shell shell) {
-    _shell = shell;
+    this._shell = shell;
   }
 
   public IProgressMonitor getProgressMonitor() {
@@ -97,7 +97,7 @@ public class MigrationContext {
   }
 
   public void setName(String name) {
-    _name = name;
+    this._name = name;
   }
 
   public IFile getResource() {
@@ -109,7 +109,7 @@ public class MigrationContext {
   }
 
   public void setResource(IFile file) {
-    _resource = file;
+    this._resource = file;
 
   }
 }
