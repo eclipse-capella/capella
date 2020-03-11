@@ -262,19 +262,19 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
     GridData gdGrp = new GridData(GridData.FILL_BOTH);
     gdGrp.horizontalSpan = 2;
     scopeGroup.setLayoutData(gdGrp);
-    scopeGroup.setText(Messages.scopeGroup_text);
+    scopeGroup.setText(CapellaSearchConstants.ScopeGroup_text);
 
     workspaceBtn = new Button(scopeGroup, SWT.RADIO);
     workspaceBtn.setData(Integer.valueOf(WORKSPACE_SCOPE));
-    workspaceBtn.setText(Messages.workspaceScope_text);
+    workspaceBtn.setText(CapellaSearchConstants.WorkspaceScope_text);
 
     selectedElementBtn = new Button(scopeGroup, SWT.RADIO);
     selectedElementBtn.setData(Integer.valueOf(SELECTED_ELEMENT_SCOPE));
-    selectedElementBtn.setText(Messages.selectedElementScope_text);
+    selectedElementBtn.setText(CapellaSearchConstants.SelectedElementScope_text);
 
     projectBtn = new Button(scopeGroup, SWT.RADIO);
     projectBtn.setData(Integer.valueOf(PROJECT_SCOPE));
-    projectBtn.setText(Messages.projectScope_text);
+    projectBtn.setText(CapellaSearchConstants.ProjectScope_text);
     
     // Add scope change listeners
     SelectionAdapter scopeChangedLister= new SelectionAdapter() {
