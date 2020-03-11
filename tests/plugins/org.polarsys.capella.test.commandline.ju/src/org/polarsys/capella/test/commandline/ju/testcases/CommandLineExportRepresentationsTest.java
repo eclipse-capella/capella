@@ -16,7 +16,6 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.equinox.app.IApplicationContext;
 import org.polarsys.capella.core.commandline.core.CommandLineConstants;
-import org.polarsys.capella.core.commandline.core.CommandLineMode;
 import org.polarsys.capella.core.sirius.ui.commandline.ExportRepresentationsCommandLine;
 import org.polarsys.capella.test.commandline.ju.utils.MockApplicationContext;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
@@ -42,21 +41,20 @@ public class CommandLineExportRepresentationsTest extends BasicTestCase {
     }
     
     // Check we have a result file with the expected validation results
-    IPath validationResultFile = workspaceLocation.append(projectName).append("ImagesExported");
+    IPath validationResultFile = workspaceLocation.append(projectName).append("ImagesExported").append(projectName).append(projectName + ".aird");
     assertTrue(validationResultFile.toFile().listFiles().length == 3);
   }
 
   private void exportImages(String projectName) throws Exception {
 
     String[] arguments = { CommandLineConstants.ID,
-        "org.polarsys.capella.exportRepresentations", CommandLineConstants.FILE_PATH,
+        "org.polarsys.capella.exportRepresentations", CommandLineConstants.INPUT,
         projectName + "/" + projectName + ".aird", CommandLineConstants.OUTPUTFOLDER, projectName + "/ImagesExported",
         CommandLineConstants.FORCEOUTPUTFOLDERCREATION };
     IApplicationContext mockApplicationContext = new MockApplicationContext(arguments);
 
     ExportRepresentationsCommandLine commandLine = new ExportRepresentationsCommandLine();
     commandLine.parseContext(mockApplicationContext);
-    commandLine.setMode(CommandLineMode.NO_IMPORT);
 
     commandLine.checkArgs(mockApplicationContext);
     commandLine.prepare(mockApplicationContext);

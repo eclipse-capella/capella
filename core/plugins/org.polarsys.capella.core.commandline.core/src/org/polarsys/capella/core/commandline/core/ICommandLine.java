@@ -55,4 +55,11 @@ public interface ICommandLine {
    */
   boolean execute(IApplicationContext context) throws CommandLineException;
 
+  /**
+   * Performs after the execution of the command line application
+   * @param context
+   * @return
+   * @throws CommandLineException
+   */
+  void postExecute(IApplicationContext context) throws CommandLineException;
 }

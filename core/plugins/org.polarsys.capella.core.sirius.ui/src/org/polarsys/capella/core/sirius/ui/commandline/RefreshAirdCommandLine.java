@@ -10,11 +10,11 @@
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.ui.commandline;
 
+import java.util.List;
+
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.IJobChangeEvent;
 import org.eclipse.core.runtime.jobs.Job;
@@ -35,28 +35,28 @@ public class RefreshAirdCommandLine extends AbstractWorkbenchCommandLine {
   }
   
   protected IStatus executeWithinWorkbench() {
-    IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(argHelper.getFilePath()));
-    Job job = new RefreshDiagramJob(file);
-    job.addJobChangeListener(new JobChangeAdapter() {
+    List<IFile> airdFiles = getAirdFilesFromInput();
+    for (IFile file : airdFiles) {
+      Job job = new RefreshDiagramJob(file);
+      job.addJobChangeListener(new JobChangeAdapter() {
 
-      @Override
-      public void done(IJobChangeEvent event) {
-        URI selectedUri = EcoreUtil2.getURI(file);
-        Session session = SessionManager.INSTANCE.getSession(selectedUri, new NullProgressMonitor());
-        session.save(new NullProgressMonitor());
-        try {
-          session.close(new NullProgressMonitor());
-        } catch (Exception e) {
-          e.printStackTrace();
+        @Override
+        public void done(IJobChangeEvent event) {
+          URI selectedUri = EcoreUtil2.getURI(file);
+          Session session = SessionManager.INSTANCE.getSession(selectedUri, new NullProgressMonitor());
+          session.save(new NullProgressMonitor());
+          try {
+            session.close(new NullProgressMonitor());
+          } catch (Exception e) {
+            e.printStackTrace();
+          }
+          if (PlatformUI.getTestableObject() == null || PlatformUI.getTestableObject().getTestHarness() == null) {
+            new CloseWorkbenchJob().schedule();
+          }
         }
-        if (PlatformUI.getTestableObject() == null || PlatformUI.getTestableObject().getTestHarness() == null) {
-          new CloseWorkbenchJob().schedule();
-        }
-      }
-
-    });
-    job.schedule();
+      });
+      job.schedule();
+    }
     return Status.OK_STATUS;
   }
-
 }
