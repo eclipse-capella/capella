@@ -28,10 +28,10 @@ import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
 import org.polarsys.capella.core.projection.common.CommonRule;
 import org.polarsys.capella.core.projection.common.ProjectionMessages;
-import org.polarsys.capella.core.projection.scenario.CommonScenarioHelper;
 import org.polarsys.capella.core.projection.scenario.Messages;
-import org.polarsys.capella.core.projection.scenario.ScenarioFinalizer;
-import org.polarsys.capella.core.projection.scenario.es2es.rules.ScenarioHelper;
+import org.polarsys.capella.core.projection.scenario.esf2esb.ESF2ESBExt;
+import org.polarsys.capella.core.projection.scenario.helpers.ScenarioExt;
+import org.polarsys.capella.core.projection.scenario.helpers.UnwantedObjects;
 import org.polarsys.capella.core.tiger.ITransfo;
 import org.polarsys.capella.core.tiger.TransfoException;
 import org.polarsys.capella.core.tiger.helpers.Query;
@@ -43,7 +43,7 @@ public class Rule_Event extends CommonRule {
 
   @Override
   protected boolean transformIsRequired(EObject element_p, ITransfo transfo_p) {
-    if (ScenarioFinalizer.isUnwantedObject(element_p, transfo_p)) {
+    if (UnwantedObjects.contains(element_p, transfo_p)) {
       return false;
     }
     return true;
@@ -52,7 +52,7 @@ public class Rule_Event extends CommonRule {
   @Override
   protected String reasonTransformFailed(EObject element_p, ITransfo transfo_p) {
     Event event = (Event) element_p;
-    AbstractEventOperation operation = CommonScenarioHelper.getOperation(event, transfo_p);
+    AbstractEventOperation operation = ScenarioExt.getOperation(event);
     if (operation != null) {
       if (operation instanceof ComponentExchange) {
         return ProjectionMessages.RelatedConnectionConveyNoExchangeItem;
@@ -112,8 +112,8 @@ public class Rule_Event extends CommonRule {
    * @throws TransfoException 
    */
   private AbstractEventOperation getRelatedConnection(AbstractEventOperation operation_p, Event event_p, int n, ITransfo transfo_p) {
-    SequenceMessage relatedMessage = ScenarioHelper.getRelatedSequenceMessage(event_p);
-    AbstractEventOperation operation = CESF2CESBHelper.getRelatedConnection(operation_p, relatedMessage, transfo_p);
+    SequenceMessage relatedMessage = ScenarioExt.getRelatedSequenceMessage(event_p);
+    AbstractEventOperation operation = ESF2ESBExt.getTargetOperation(operation_p, relatedMessage, transfo_p);
     if (operation == null) {
       notifyMessage(
           NLS.bind(Messages.Rule_Event_FunctionalExchangeNotAllocated, EObjectLabelProviderHelper.getText(operation_p),

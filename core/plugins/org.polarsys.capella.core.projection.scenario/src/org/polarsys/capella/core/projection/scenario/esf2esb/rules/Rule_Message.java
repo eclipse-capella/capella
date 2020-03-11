@@ -20,7 +20,8 @@ import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
 import org.polarsys.capella.core.projection.common.CommonRule;
 import org.polarsys.capella.core.projection.common.ProjectionMessages;
-import org.polarsys.capella.core.projection.scenario.CommonScenarioHelper;
+import org.polarsys.capella.core.projection.scenario.esf2esb.ESF2ESBExt;
+import org.polarsys.capella.core.projection.scenario.helpers.ScenarioExt;
 import org.polarsys.capella.core.tiger.ITransfo;
 import org.polarsys.capella.core.tiger.TransfoException;
 import org.polarsys.capella.core.tiger.helpers.TigerRelationshipHelper;
@@ -74,9 +75,9 @@ public class Rule_Message extends CommonRule {
         transfo_p);
 
     AbstractEventOperation toperation =
-        CESF2CESBHelper.getRelatedConnection(CommonScenarioHelper.getOperation(element_p, transfo_p), (SequenceMessage) element_p, transfo_p);
-    CommonScenarioHelper.attachToBestAndValidElements(element_p, InteractionPackage.Literals.SEQUENCE_MESSAGE__EXCHANGED_ITEMS,
-        (Collection) CommonScenarioHelper.getExchangeItems(toperation), transfo_p);
+        ESF2ESBExt.getTargetOperation(ScenarioExt.getOperation(element_p), (SequenceMessage) element_p, transfo_p);
+    TigerRelationshipHelper.attachToBestAndValidElements(element_p, InteractionPackage.Literals.SEQUENCE_MESSAGE__EXCHANGED_ITEMS,
+        (Collection) ScenarioExt.getExchangeItems(toperation), transfo_p);
 
   }
 

@@ -13,7 +13,6 @@ package org.polarsys.capella.core.transition.system.topdown.rules.information;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.contextscope.ContextScopeHandlerHelper;
@@ -40,12 +39,13 @@ public class ExchangeItemRule extends org.polarsys.capella.core.transition.syste
 
     if (transition) {
       result_p.addAll(item.getOwnedElements());
+      result_p.addAll(item.getOwnedExchangeItemInstances());
 
       IContextScopeHandler handler = ContextScopeHandlerHelper.getInstance(context_p);
       if (handler.contains(ITransitionConstants.SOURCE_SCOPE, source_p, context_p)) {
         handler.addAll(ITransitionConstants.SOURCE_SCOPE, item.getOwnedElements(), context_p);
+        handler.addAll(ITransitionConstants.SOURCE_SCOPE, item.getOwnedExchangeItemInstances(), context_p);
       }
-
     }
   }
 

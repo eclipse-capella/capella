@@ -12,7 +12,6 @@ package org.polarsys.capella.core.projection.scenario.uml2.rules;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.interaction.InteractionUse;
 import org.polarsys.capella.core.projection.common.context.IContext;

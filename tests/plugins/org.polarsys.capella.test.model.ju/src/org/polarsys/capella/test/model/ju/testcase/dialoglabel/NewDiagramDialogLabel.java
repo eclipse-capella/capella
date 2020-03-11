@@ -25,7 +25,7 @@ import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.data.la.CapabilityRealization;
 import org.polarsys.capella.core.libraries.model.ICapellaModel;
 import org.polarsys.capella.core.libraries.utils.ScopeModelWrapper;
-import org.polarsys.capella.core.projection.scenario.es.transition.commands.ESToISCommand;
+import org.polarsys.capella.core.projection.scenario.commands.ESToISCommand;
 import org.polarsys.capella.core.sirius.ui.actions.NewRepresentationAction;
 import org.polarsys.capella.shared.id.handler.IScope;
 import org.polarsys.capella.shared.id.handler.IdManager;

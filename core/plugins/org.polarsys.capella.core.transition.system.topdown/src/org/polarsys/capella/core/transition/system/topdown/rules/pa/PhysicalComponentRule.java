@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.transition.system.topdown.rules.pa;
 
+import java.util.List;
+
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EClass;
@@ -46,6 +48,11 @@ public class PhysicalComponentRule extends org.polarsys.capella.core.transition.
     }
     return new Status(IStatus.WARNING, Messages.Activity_Transformation,
         "Physical Actor " + ((PhysicalComponent) element).getName());
+  }
+  
+  @Override
+  protected void retrieveComponentGoDeep(EObject source_p, List<EObject> result_p, IContext context_p) {
+    retrieveRepresentingPartitions(source_p, result_p, context_p);
   }
   
   @Override

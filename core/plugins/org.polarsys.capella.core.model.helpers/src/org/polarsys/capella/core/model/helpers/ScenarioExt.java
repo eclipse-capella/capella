@@ -131,9 +131,7 @@ public class ScenarioExt {
     }
     //
 
-    for (AbstractFunction function : functions) {
-      result.add(function);
-    }
+    result.addAll(functions);
 
     ArrayList<AbstractFunction> newElements = new ArrayList<>();
 

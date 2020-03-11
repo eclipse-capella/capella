@@ -50,12 +50,12 @@ public class CapabilityRealizationExt {
    *          the involved component
    */
   public static void addInvolvedComponent(CapabilityRealization capability, Component component) {
-    if (component instanceof InvolvedElement
+    if (component instanceof CapabilityRealizationInvolvedElement
         && !capability.getInvolvedComponents().contains((InvolvedElement) component)) {
       CapabilityRealizationInvolvement involvementLnk = CapellacommonFactory.eINSTANCE
           .createCapabilityRealizationInvolvement();
       capability.getOwnedCapabilityRealizationInvolvements().add(involvementLnk);
-      involvementLnk.setInvolved((InvolvedElement) component);
+      involvementLnk.setInvolved((CapabilityRealizationInvolvedElement) component);
     }
   }
 
@@ -68,10 +68,10 @@ public class CapabilityRealizationExt {
    *          the non involved component
    */
   public static void removeInvolvedComponent(CapabilityRealization capability, Component component) {
-    if (component instanceof InvolvedElement) {
+    if (component instanceof CapabilityRealizationInvolvedElement) {
       CapabilityRealizationInvolvement capabilityInvolvement = null;
       for (CapabilityRealizationInvolvement involvement : capability.getOwnedCapabilityRealizationInvolvements()) {
-        if (involvement.getInvolved().equals((InvolvedElement) component)) {
+        if (involvement.getInvolvedCapabilityRealizationInvolvedElement().equals(component)) {
           capabilityInvolvement = involvement;
         }
       }

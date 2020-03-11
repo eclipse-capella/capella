@@ -13,10 +13,9 @@ package org.polarsys.capella.core.projection.scenario.common.rules;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-
-import org.polarsys.capella.core.data.capellacore.Constraint;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
+import org.polarsys.capella.core.data.capellacore.Constraint;
 import org.polarsys.capella.core.projection.common.context.IContext;
 import org.polarsys.capella.core.tiger.ITransfo;
 import org.polarsys.capella.core.tiger.helpers.Query;

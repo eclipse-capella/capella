@@ -11,7 +11,6 @@
 package org.polarsys.capella.core.projection.scenario.fs2es.rules;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.capella.core.data.interaction.AbstractEnd;
 import org.polarsys.capella.core.data.interaction.Execution;
 import org.polarsys.capella.core.data.interaction.InteractionFragment;
@@ -51,7 +50,6 @@ public class Rule_Execution extends CommonRule {
   protected String reasonTransformFailed(EObject element_p, ITransfo transfo_p) {
     return ProjectionMessages.EndNotTransitioned;
   }
-
   
   /**
    * @see org.polarsys.capella.core.tiger.impl.TransfoRule#attach_(org.eclipse.emf.ecore.EObject, org.polarsys.capella.core.tiger.ITransfo)
@@ -62,11 +60,5 @@ public class Rule_Execution extends CommonRule {
     TigerRelationshipHelper.attachIemeWithIeme(element_p, getTargetType(), InteractionPackage.Literals.INTERACTION_FRAGMENT, InteractionPackage.Literals.TIME_LAPSE__FINISH, transfo_p);
     TigerRelationshipHelper.attachUnattachedIntoTransformedContainer(element_p, getTargetType(), InteractionPackage.Literals.SCENARIO__OWNED_TIME_LAPSES, transfo_p);
   }
-  
-  @Override
-  public Object transformElement(EObject element_p, ITransfo transfo_p) {
-    return super.transformElement(element_p, transfo_p);
-  }
-  
 
 }
