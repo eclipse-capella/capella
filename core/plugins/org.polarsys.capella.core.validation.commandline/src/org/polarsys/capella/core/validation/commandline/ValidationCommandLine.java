@@ -16,7 +16,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -24,9 +26,9 @@ import java.util.Set;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IMarker;
-import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.MultiStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
@@ -39,6 +41,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.validation.model.Category;
 import org.eclipse.emf.validation.preferences.EMFModelValidationPreferences;
 import org.eclipse.emf.validation.service.ModelValidationService;
+import org.eclipse.equinox.app.IApplicationContext;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.ui.views.markers.MarkerViewUtil;
@@ -51,6 +54,7 @@ import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.LightMarkerRegistry;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewHelper;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
+import org.polarsys.capella.core.commandline.core.CommandLineException;
 import org.polarsys.capella.core.commandline.core.ui.AbstractWorkbenchCommandLine;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.model.handler.markers.ICapellaValidationConstants;
@@ -67,20 +71,24 @@ public class ValidationCommandLine extends AbstractWorkbenchCommandLine {
 
   @Override
   public void printHelp() {
-    System.out.println("Capella Validation Command Line Exporter"); //$NON-NLS-1$
-    super.printHelp();
+    super.printHelp(Arrays.asList("outputfolder"));
+    printArgumentsFromTable("validationParameters", false, Collections.emptyList());
   }
 
   @Override
   protected IStatus executeWithinWorkbench() {
-    // load the AIRD
-    String fileURI = Messages.resource_prefix + argHelper.getFilePath();
-    URI uri = URI.createURI(fileURI);
-    String outputFolder = argHelper.getOutputFolder();
-    return execute(uri, outputFolder);
+    // load the AIRDs
+    MultiStatus status = new MultiStatus(Activator.PLUGIN_ID, IStatus.OK, Messages.validationStatus, null);
+    List<IFile> airdFiles = getAirdFilesFromInput();
+    for (IFile file : airdFiles) {
+      URI uri = URI.createPlatformResourceURI(file.getFullPath().toString(), true);
+      status.add(execute(uri));
+    }
+    
+    return status;
   }
 
-  private IStatus execute(final URI uri, final String outputFolder) {
+  private IStatus execute(final URI airdURI) {
     IStatus status = Status.OK_STATUS;
     try {
 
@@ -88,7 +96,7 @@ public class ValidationCommandLine extends AbstractWorkbenchCommandLine {
       CapellaValidateComlineAction capellaValidateCLineAction = new CapellaValidateComlineAction();
 
       // load
-      Project semanticRootElement = loadSemanticRootElement(uri);
+      Project semanticRootElement = loadSemanticRootElement(airdURI);
       if (semanticRootElement == null) {
         return new Status(IStatus.ERROR, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), "No semantic model found!");
       }
@@ -120,7 +128,9 @@ public class ValidationCommandLine extends AbstractWorkbenchCommandLine {
       // Run the validation
       capellaValidateCLineAction.run();
 
-      storeResultsToFile(outputFolder);
+      storeResultsToFile(getOrCreateOutputFolderForAird(airdURI));
+      
+      capellaValidateCLineAction.deleteMarkers();
 
     } catch (FileNotFoundException exception) {
       status = new Status(IStatus.ERROR, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), exception.getMessage(), exception);
@@ -150,7 +160,7 @@ public class ValidationCommandLine extends AbstractWorkbenchCommandLine {
    * @throws CoreException
    * @throws FileNotFoundException
    */
-  private static List<String> readRules(String ruleSetFile) throws FileNotFoundException, CoreException {
+  private List<String> readRules(String ruleSetFile) throws FileNotFoundException, CoreException {
     List<String> results = new ArrayList<String>();
 
     // read epf file
@@ -223,19 +233,15 @@ public class ValidationCommandLine extends AbstractWorkbenchCommandLine {
   /**
    * @param outputFolder
    */
-  private void storeResultsToFile(String outputFolder) {
+  private void storeResultsToFile(IFolder outputFolder) {
     Collection<IMarker> markers = LightMarkerRegistry.getInstance().getMarkers();
     try {
       Collection<IMarker> validationMarkers = filterValidationMarkers(markers);
 
       String result = null;
       result = toHTML(validationMarkers);
-      IFolder folder = ResourcesPlugin.getWorkspace().getRoot().getFolder(new Path(outputFolder));
-      if (!folder.exists()) {
-        folder.create(false, true, new NullProgressMonitor());
-      }
       String fileName = Messages.resultsFileName;
-      IFile file = folder.getFile(new Path(fileName));
+      IFile file = outputFolder.getFile(new Path(fileName));
       ByteArrayInputStream outputContent = new ByteArrayInputStream(result.getBytes());
       if (file.exists()) {
         file.setContents(outputContent, true, false, null);
@@ -365,5 +371,12 @@ public class ValidationCommandLine extends AbstractWorkbenchCommandLine {
     return result;
 
   }
-
+  
+  @Override
+  public void checkArgs(IApplicationContext context) throws CommandLineException {
+    super.checkArgs(context);
+    if (argHelper.getOutputFolder() == null) {
+      logger.error(org.polarsys.capella.core.commandline.core.Messages.outputfolder_mandatory);
+    }
+  }
 }

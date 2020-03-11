@@ -40,13 +40,15 @@ import org.polarsys.capella.core.af.integration.CapellaMetadataProvider;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 
 /**
+ * @deprecated (use DefaultCommandLine instead)
  */
+@Deprecated
 public class AbstractCommandLine implements ICommandLine {
 
   public static int FATAL = IStatus.CANCEL;
 
-  protected static Logger logger;
-  protected static CommandLineArgumentHelper argHelper;
+  protected Logger logger;
+  protected CommandLineArgumentHelper argHelper;
   protected CommandLineMode mode;
 
   private List<String> importedProjects = new ArrayList<String>();
@@ -148,6 +150,16 @@ public class AbstractCommandLine implements ICommandLine {
 
   }
 
+  /**
+   * {@inheritDoc}
+   *
+   * @throws CommandLineException
+   */
+  @Override
+  public void postExecute(IApplicationContext context) throws CommandLineException {
+    // Do nothing
+  }
+  
   public boolean projectVersionIsCompliant() throws CommandLineException {
     // retrieve melodymodeller files
     // project exists in the workspace ?
@@ -221,7 +233,7 @@ public class AbstractCommandLine implements ICommandLine {
   /**
    * @param project
    */
-  private List<IFile> getCapellamodellerFiles(IProject project) {
+  protected List<IFile> getCapellamodellerFiles(IProject project) {
     List<IFile> files = new ArrayList<IFile>();
     try {
 
@@ -369,7 +381,7 @@ public class AbstractCommandLine implements ICommandLine {
    * @param string
    * @return
    */
-  private List<String> toList(String string) {
+  protected List<String> toList(String string) {
     List<String> list = new ArrayList<String>();
     for (String path : Arrays.asList(string.split("\\|"))) { //$NON-NLS-1$
       list.add(path.trim());
@@ -381,7 +393,7 @@ public class AbstractCommandLine implements ICommandLine {
    * @param projectsToImport
    * @throws CoreException
    */
-  private void importProjects(List<String> projectsToImport) throws CoreException {
+  protected void importProjects(List<String> projectsToImport) throws CoreException {
 
     for (String projectPath : projectsToImport) {
       IProject project = null;

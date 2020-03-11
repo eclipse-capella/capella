@@ -64,13 +64,12 @@ public class CommandLineRemoveHiddenElementsTest extends BasicTestCase {
   private void removeElements(String project) throws Exception {
 
     String[] arguments = { CommandLineConstants.ID,
-        "org.polarsys.capella.removeHiddenElements", CommandLineConstants.FILE_PATH, project + "/" + project + ".aird",
+        "org.polarsys.capella.removeHiddenElements", CommandLineConstants.INPUT, project + "/" + project + ".aird",
         CommandLineConstants.OUTPUTFOLDER, project + "/output", CommandLineConstants.FORCEOUTPUTFOLDERCREATION };
     IApplicationContext mockApplicationContext = new MockApplicationContext(arguments);
 
     RemoveHiddenElementsCommandLine commandLine = new RemoveHiddenElementsCommandLine();
     commandLine.parseContext(mockApplicationContext);
-    commandLine.setMode(CommandLineMode.NO_IMPORT);
 
     commandLine.checkArgs(mockApplicationContext);
     commandLine.prepare(mockApplicationContext);

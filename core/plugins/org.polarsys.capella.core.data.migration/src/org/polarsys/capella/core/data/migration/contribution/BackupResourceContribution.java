@@ -47,7 +47,7 @@ public class BackupResourceContribution extends AbstractMigrationContribution {
   @Override
   public IStatus preMigrationExecute(IResource fileToMigrate, final MigrationContext context, boolean checkVersion) {
     if (context.isSkipConfirmation()) {
-      _backupModels = Boolean.TRUE;
+      _backupModels = context.isBackupModel();
       return Status.OK_STATUS;
     }
 
