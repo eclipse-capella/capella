@@ -20,8 +20,8 @@
             label="Capella Search"
             tabPosition="0"
 			extensions="*:1"
-			canSearchEnclosingProjects="true"
-            showScopeSection="true">
+			canSearchEnclosingProjects="false"
+            showScopeSection="false">
       </page>
    </extension>
    <extension

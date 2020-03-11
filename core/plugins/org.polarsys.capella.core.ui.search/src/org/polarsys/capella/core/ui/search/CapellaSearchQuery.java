@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.search.ui.ISearchQuery;
+import org.polarsys.capella.core.commands.preferences.util.PreferencesHelper;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.viewer.CapellaNavigatorContentProvider;
 
 public class CapellaSearchQuery implements ISearchQuery {
@@ -46,17 +47,25 @@ public class CapellaSearchQuery implements ISearchQuery {
     try {
       Pattern pattern = capellaSearchSettings.createPattern();
       IWorkspaceRoot workspaceRoot = ResourcesPlugin.getWorkspace().getRoot();
-      Set<String> selectedProjects = capellaSearchSettings.getProjects();
+      Set<Object> selectedObjects = capellaSearchSettings.getObjectsToSearch();
 
-      SubMonitor subMonitor = SubMonitor.convert(monitor, selectedProjects.size());
+      SubMonitor subMonitor = SubMonitor.convert(monitor, selectedObjects.size());
       subMonitor
           .setTaskName(String.format(CapellaSearchConstants.SearchJob_Title, capellaSearchSettings.getTextPattern()));
-      for (String projectName : selectedProjects) {
-        subMonitor.subTask(String.format(CapellaSearchConstants.SearchJob_SubTitle, projectName));
-        IProject project = workspaceRoot.getProject(projectName);
+      for (Object selectedObj : selectedObjects) {
+        IProject project = null;
+        if (selectedObj instanceof IProject) {
+          subMonitor
+              .subTask(String.format(CapellaSearchConstants.SearchJob_SubTitle, ((IProject) selectedObj).getName()));
+          project = workspaceRoot.getProject(((IProject) selectedObj).getName());
+        } else if (selectedObj instanceof EObject) {
+          project = PreferencesHelper.getProject((EObject) selectedObj);
+        }
         // search the pattern in the projects
-        search(pattern, project, project);
-        subMonitor.split(1);
+        if (project != null) {
+          search(pattern, selectedObj, project);
+          subMonitor.split(1);
+        }
       }
       return Status.OK_STATUS;
     } catch (PatternSyntaxException e) {
@@ -69,6 +78,12 @@ public class CapellaSearchQuery implements ISearchQuery {
     }
   }
 
+  /**
+   * 
+   * @param pattern
+   * @param element the entry point to launch the search
+   * @param project
+   */
   private void search(Pattern pattern, Object element, IProject project) {
     if (element instanceof EObject) {
       EObject eObj = (EObject) element;
