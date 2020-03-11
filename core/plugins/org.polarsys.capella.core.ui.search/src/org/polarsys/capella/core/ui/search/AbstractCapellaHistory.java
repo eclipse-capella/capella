@@ -13,6 +13,7 @@ package org.polarsys.capella.core.ui.search;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.core.resources.IProject;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.jface.dialogs.IDialogSettings;
@@ -60,7 +61,7 @@ public abstract class AbstractCapellaHistory {
       try {
         int projectsCount = searchHistorySection.getInt(SECTION_SEARCH_PROJECT_COUNT);
         for (int i = 0; i < projectsCount; i++) {
-          searchSettings.addProject(searchHistorySection.get(SECTION_SEARCH_PROJECT_PREFIX + i));
+          searchSettings.addObjectToSearch(searchHistorySection.get(SECTION_SEARCH_PROJECT_PREFIX + i));
         }
         int fieldsCount = searchHistorySection.getInt(SECTION_SEARCH_ATTRIBUTE_COUNT);
         for (int i = 0; i < fieldsCount; i++) {
@@ -143,9 +144,11 @@ public abstract class AbstractCapellaHistory {
     if (searchHistorySection != null) {
       setSearchHistorySettings(capellaSearchSettings, searchHistorySection);
       int projectsCount = 0;
-      for (String project : capellaSearchSettings.getProjects()) {
-        searchHistorySection.put(SECTION_SEARCH_PROJECT_PREFIX + projectsCount, project);
-        projectsCount++;
+      for (Object project : capellaSearchSettings.getObjectsToSearch()) {
+        if (project instanceof IProject) {
+          searchHistorySection.put(SECTION_SEARCH_PROJECT_PREFIX + projectsCount, ((IProject) project).getName());
+          projectsCount++;
+        }
       }
       searchHistorySection.put(SECTION_SEARCH_PROJECT_COUNT, projectsCount);
 

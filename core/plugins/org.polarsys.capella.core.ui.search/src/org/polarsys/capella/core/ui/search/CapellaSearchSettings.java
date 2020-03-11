@@ -32,26 +32,27 @@ public class CapellaSearchSettings {
   private boolean isWholeWord = false;
   private String textPattern = null;
   private String replaceTextPattern = null;
-  private Set<String> projects = new HashSet<>();
+  private Set<Object> objectsToSearch = new HashSet<>();
   private Set<Object> searchAttributes = new HashSet<>();
   private Set<Object> searchMetaClasses = new HashSet<>();
   private boolean isAbstractChecked = false;
   private boolean isSemanticChecked = true;
+  private int scope;
   
-  public void addProject(String name) {
-    projects.add(name);
+  public void addObjectToSearch(Object objectToSearch) {
+    objectsToSearch.add(objectToSearch);
   }
 
-  public Set<String> getProjects() {
-    return Collections.unmodifiableSet(projects);
+  public Set<Object> getObjectsToSearch() {
+    return Collections.unmodifiableSet(objectsToSearch);
   }
 
   public boolean containProject(String name) {
-    return projects.contains(name);
+    return objectsToSearch.contains(name);
   }
 
   public void clearProjects() {
-    projects.clear();
+    objectsToSearch.clear();
   }
 
   public boolean isCaseSensitive() {
@@ -124,6 +125,14 @@ public class CapellaSearchSettings {
 
   public void setSemanticChecked(boolean isSemanticChecked) {
     this.isSemanticChecked = isSemanticChecked;
+  }
+  
+  public void setScope(int scope) {
+    this.scope = scope;
+  }
+  
+  public int getScope() {
+    return this.scope;
   }
 
   // method used to check the search settings (that we entered text, selected at least one mettaclass or attribute etc) 
@@ -202,9 +211,14 @@ public class CapellaSearchSettings {
       return false;
     }
 
-    if (this.projects == null ? that.projects != null : !this.projects.equals(that.projects)) {
+    if (this.objectsToSearch == null ? that.objectsToSearch != null : !this.objectsToSearch.equals(that.objectsToSearch)) {
       return false;
     }
+    
+    if (this.scope != that.scope) {
+      return false;
+    }
+    
     return true;
   }
 
@@ -217,7 +231,8 @@ public class CapellaSearchSettings {
     hashCode += 7 * hashCode + (replaceTextPattern == null ? 0 : replaceTextPattern.hashCode());
     hashCode += 7 * hashCode + searchAttributes.hashCode();
     hashCode += 7 * hashCode + searchMetaClasses.hashCode();
-    hashCode += 7 * hashCode + projects.hashCode();
+    hashCode += 7 * hashCode + objectsToSearch.hashCode();
+    hashCode += 7 * hashCode + scope;
     return hashCode;
   }
 }

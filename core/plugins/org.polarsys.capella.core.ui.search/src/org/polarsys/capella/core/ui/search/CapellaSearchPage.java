@@ -11,12 +11,16 @@
 package org.polarsys.capella.core.ui.search;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.DialogPage;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -25,6 +29,9 @@ import org.eclipse.jface.layout.GridDataFactory;
 import org.eclipse.jface.layout.GridLayoutFactory;
 import org.eclipse.jface.resource.JFaceColors;
 import org.eclipse.jface.text.FindReplaceDocumentAdapterContentProposalProvider;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.search.internal.ui.SearchDialog;
 import org.eclipse.search.ui.IReplacePage;
 import org.eclipse.search.ui.ISearchPage;
 import org.eclipse.search.ui.ISearchPageContainer;
@@ -40,17 +47,32 @@ import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.fieldassist.ContentAssistCommandAdapter;
 import org.eclipse.ui.texteditor.ITextEditorActionDefinitionIds;
+import org.polarsys.capella.core.commands.preferences.util.PreferencesHelper;
+import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
 import org.polarsys.capella.core.ui.search.searchfor.CapellaLeftSearchForContainerArea;
 import org.polarsys.capella.core.ui.search.searchfor.CapellaRightSearchForContainerArea;
-import org.polarsys.capella.core.ui.search.CapellaReplaceRunnableWrapper;
-import org.polarsys.capella.core.ui.search.CapellaReplaceRunnable;
-import org.polarsys.capella.core.ui.search.CapellaSearchQuery;
-import org.polarsys.capella.core.ui.search.CapellaSearchResult;
 
 public class CapellaSearchPage extends DialogPage implements ISearchPage, IReplacePage {
-
+  /**
+   * Workspace scope (value <code>0</code>).
+   */
+  public static final int WORKSPACE_SCOPE = 0;
+  /**
+   * Selected element scope (value <code>1</code>).
+   */
+  public static final int SELECTED_ELEMENT_SCOPE = 1;
+  /**
+   * Project scope (value <code>2</code>).
+   */
+  public static final int PROJECT_SCOPE = 2;
+  private int selectedScope;
+  
   private List<CapellaSearchSettings> previousSearchSettings = new ArrayList<>();
 
   private Combo comboSearchPattern;
@@ -63,6 +85,10 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
   private Button checkboxCaseSensitive;
   private Button checkboxRegex;
   private Button checkboxWholeWord;
+  
+  private Button workspaceBtn;
+  private Button selectedElementBtn;
+  private Button projectBtn;
 
   private ISearchPageContainer searchPageContainer;
 
@@ -88,8 +114,11 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
 
     // create search for area
     createSearchForGroup(composite);
+    // Create Scope area
+    createScopeGroup(composite);
     Dialog.applyDialogFont(composite);
     setControl(composite);
+    
   }
 
   // create the text search box and the check-boxes for the search preferences
@@ -210,6 +239,7 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
     qGrp.setLayout(new GridLayout(4, false));
 
     GridData gdGrp = new GridData(GridData.FILL_BOTH);
+    gdGrp.horizontalSpan = 2;
     gdGrp.heightHint = 250;
 
     qGrp.setLayoutData(gdGrp);
@@ -224,7 +254,59 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
     leftCont.setOtherSideArea(rightCont);
     leftCont.createFiltercontainer(qGrp);
   }
+  
+  private void createScopeGroup(Composite parent) {
+    Group scopeGroup = new Group(parent, SWT.NONE);
+    scopeGroup.setLayout(new GridLayout(4, false));
 
+    GridData gdGrp = new GridData(GridData.FILL_BOTH);
+    gdGrp.horizontalSpan = 2;
+    scopeGroup.setLayoutData(gdGrp);
+    scopeGroup.setText(Messages.scopeGroup_text);
+
+    workspaceBtn = new Button(scopeGroup, SWT.RADIO);
+    workspaceBtn.setData(Integer.valueOf(WORKSPACE_SCOPE));
+    workspaceBtn.setText(Messages.workspaceScope_text);
+
+    selectedElementBtn = new Button(scopeGroup, SWT.RADIO);
+    selectedElementBtn.setData(Integer.valueOf(SELECTED_ELEMENT_SCOPE));
+    selectedElementBtn.setText(Messages.selectedElementScope_text);
+
+    projectBtn = new Button(scopeGroup, SWT.RADIO);
+    projectBtn.setData(Integer.valueOf(PROJECT_SCOPE));
+    projectBtn.setText(Messages.projectScope_text);
+    
+    // Add scope change listeners
+    SelectionAdapter scopeChangedLister= new SelectionAdapter() {
+      @Override
+      public void widgetSelected(SelectionEvent e) {
+        handleScopeChanged(e);
+      }
+    };
+    workspaceBtn.addSelectionListener(scopeChangedLister);
+    selectedElementBtn.addSelectionListener(scopeChangedLister);
+    projectBtn.addSelectionListener(scopeChangedLister);
+    
+    // Set initial scope
+    setScopeAndUpdateUI(WORKSPACE_SCOPE);
+  }
+
+  private void handleScopeChanged(SelectionEvent e) {
+    Object source= e.getSource();
+    if (source instanceof Button) {
+      Button button= (Button) source;
+      if (button.getSelection())
+        this.selectedScope = ((Integer) button.getData()).intValue();
+    }
+  }
+  
+  public void setScopeAndUpdateUI(int scope) {
+    this.selectedScope = scope;
+    workspaceBtn.setSelection(scope == WORKSPACE_SCOPE);
+    selectedElementBtn.setSelection(scope == SELECTED_ELEMENT_SCOPE);
+    projectBtn.setSelection(scope == PROJECT_SCOPE);
+  }
+  
   // this function is used to apply the settings stored in history, from a previous search
   protected void applySearchSettings(CapellaSearchSettings settings) {
     capellaSearchSettings = settings;
@@ -250,6 +332,9 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
       // update the attributes panel to display the selected elements stored from a previous search
       rightCont.applySearchSettings(settings.getSearchAttributes());
     }
+    
+    int scope = settings.getScope();
+    setScopeAndUpdateUI(scope);
 
     validate();
   }
@@ -286,18 +371,69 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
     capellaSearchSettings.setCaseSensitive(checkboxCaseSensitive.getSelection());
     capellaSearchSettings.setRegExSearch(checkboxRegex.getSelection());
     capellaSearchSettings.setWholeWord(checkboxWholeWord.getSelection());
+    capellaSearchSettings.setScope(selectedScope);
 
     capellaSearchSettings.clearProjects();
-    for (Object checkedElement : getProjectsFromWorkspace()) {
-      if (checkedElement instanceof IProject) {
-        capellaSearchSettings.addProject(((IProject) checkedElement).getName());
+    
+    
+    if (selectedScope == WORKSPACE_SCOPE) {
+      for (IProject project : getProjectsFromWorkspace()) {
+        capellaSearchSettings.addObjectToSearch(project);
       }
+    } else if (selectedScope == PROJECT_SCOPE) {
+      Set<IProject> selectedProjects = new HashSet<>();
+      ISelection selection = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getSelectionService().getSelection();
+      // EObject is selected
+      if (selection instanceof IStructuredSelection) {
+        for (Iterator<?> iter= ((IStructuredSelection) selection).iterator(); iter.hasNext();) {
+          Object sel = iter.next();
+          if (sel instanceof EObject) {
+            selectedProjects.add(PreferencesHelper.getProject((EObject) sel));
+          }
+        }
+      }
+      // Resource/editor is selected
+      String[] evaluatedProjects = SearchDialog.evaluateEnclosingProject(selection, getActiveEditor());
+      for (IProject project : getProjectsFromWorkspace()) {
+        if (Arrays.asList(evaluatedProjects).contains(project.getName())) {
+          selectedProjects.add(project);
+        }
+      }
+      selectedProjects.stream().forEach(project -> capellaSearchSettings.addObjectToSearch(project));
+    } else if (selectedScope == SELECTED_ELEMENT_SCOPE) {
+      Set<EObject> selectedElements = new HashSet<>();
+      ISelection selection = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getSelectionService().getSelection();
+      // EObject is selected
+      if (selection instanceof IStructuredSelection) {
+        for (Iterator<?> iter = ((IStructuredSelection) selection).iterator(); iter.hasNext();) {
+          Object sel = iter.next();
+          EObject semanticObj = CapellaAdapterHelper.resolveSemanticObject(sel);
+          selectedElements.add(semanticObj);
+        }
+      }
+      selectedElements.stream().forEach(project -> capellaSearchSettings.addObjectToSearch(project));
     }
 
     // Validate and update status to be displayed
     IStatus validateStatus = capellaSearchSettings.validate();
     updateValidationStatus(validateStatus);
     return validateStatus;
+  }
+  
+  private IEditorPart getActiveEditor() {
+    IWorkbenchPage activePage= PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+    if (activePage == null)
+      return null;
+
+    IWorkbenchPart activePart= activePage.getActivePart();
+    if (activePart == null)
+      return null;
+
+    IEditorPart activeEditor= activePage.getActiveEditor();
+    if (activeEditor == activePart)
+      return activeEditor;
+
+    return null;
   }
 
   // this function will display an error message if the search parameters are not ok
