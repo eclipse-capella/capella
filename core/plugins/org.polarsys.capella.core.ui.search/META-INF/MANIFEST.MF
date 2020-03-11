@@ -24,7 +24,8 @@ Require-Bundle: org.eclipse.search,
  org.eclipse.emf.codegen.ecore,
  org.eclipse.emf.ecore,
  org.eclipse.swt,
- org.eclipse.sirius.diagram
+ org.eclipse.sirius.diagram,
+ org.polarsys.capella.core.model.semantic
 Export-Package: org.polarsys.capella.core.ui.search
  
 
