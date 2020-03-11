@@ -19,17 +19,36 @@ import org.polarsys.capella.common.application.CommonArgumentsConstants;
 public class CommandLineArgumentHelper {
 
   private static CommandLineArgumentHelper instance;
-  
-  private String filePath;
+
+  private String input;
   private String outputFolder;
   private boolean helpNeeded;
   private String logFilePath;
   private String appid;
   private String importProjects;
+  private String exportZips;
   private boolean forceImport;
   private boolean copyOnWorkspace = false;
+  private boolean backup;
+  /**
+   * @deprecated (use -input instead)
+   */
+  @Deprecated
+  private String filePath;
+  /**
+   * @deprecated (output folder is always created if it does not exist)
+   */
+  @Deprecated
   private boolean createFolder;
+  @Deprecated
+  /**
+   * @deprecated (use -exportZip instead)
+   */
   private String exportProject;
+  /**
+   * @deprecated (exported zips have the same name as the exported projects)
+   */
+  @Deprecated
   private String zipNameProject;
 
   protected static String[] args;
@@ -53,16 +72,17 @@ public class CommandLineArgumentHelper {
     helpNeeded = helper.hasParameter(CommandLineConstants.HELP);
     createFolder = helper.hasParameter(CommandLineConstants.FORCEOUTPUTFOLDERCREATION);
     copyOnWorkspace = helper.hasParameter(CommandLineConstants.COPY_ON_WORKSPACE);
-    
     appid = helper.getString(CommandLineConstants.ID);
     importProjects = helper.getString(CommandLineConstants.IMPORT);
+    exportZips = helper.getString(CommandLineConstants.EXPORTZIP);
     forceImport = helper.hasParameter(CommandLineConstants.FORCEIMPORT);
     exportProject = helper.getString(CommandLineConstants.EXPORT);
     zipNameProject = helper.getString(CommandLineConstants.EXPORT_ZIP_NAME);
     filePath = helper.getString(CommandLineConstants.FILE_PATH);
+    input = helper.getString(CommandLineConstants.INPUT);
     outputFolder = helper.getString(CommandLineConstants.OUTPUTFOLDER);
     logFilePath = helper.getString(CommonArgumentsConstants.LOG_FILE_PATH);
-    
+    backup = helper.hasParameter(CommandLineConstants.BACKUP);
   }
 
   /**
@@ -108,6 +128,13 @@ public class CommandLineArgumentHelper {
   }
 
   /**
+   * @return the exportZips
+   */
+  public String getExportZips() {
+    return exportZips;
+  }
+  
+  /**
    * @return the forceImport
    */
   public boolean isForceImport() {
@@ -147,5 +174,20 @@ public class CommandLineArgumentHelper {
    */
   public String getZipNameProject() {
     return zipNameProject;
+  }
+  
+  /**
+   * @return the inputs
+   */
+  public String getInputs() {
+    return input;
+  }
+  
+  /**
+   * 
+   * @return whether a backup is needed
+   */
+  public boolean isBackupNeeded() {
+    return backup;
   }
 }

@@ -17,11 +17,11 @@ import org.eclipse.equinox.app.IApplicationContext;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.application.WorkbenchAdvisor;
-import org.polarsys.capella.core.commandline.core.AbstractCommandLine;
 import org.polarsys.capella.core.commandline.core.CommandLineException;
+import org.polarsys.capella.core.commandline.core.DefaultCommandLine;
 import org.polarsys.capella.core.platform.sirius.ui.app.CapellaWorkbenchAdvisor;
 
-public abstract class AbstractWorkbenchCommandLine extends AbstractCommandLine {
+public abstract class AbstractWorkbenchCommandLine extends DefaultCommandLine {
 
   private boolean openWindows;
 
@@ -52,6 +52,7 @@ public abstract class AbstractWorkbenchCommandLine extends AbstractCommandLine {
     if (!status.isOK()) {
       throw new CommandLineException(status.getMessage());
     }
+    
     return true;
   }
 

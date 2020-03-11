@@ -54,13 +54,12 @@ public class CommandLineRefreshAirdTest extends BasicTestCase {
   private void refreshElements(String project) throws Exception {
 
     String[] arguments = { CommandLineConstants.ID,
-        "org.polarsys.capella.refreshRepresentations", CommandLineConstants.FILE_PATH, project + "/" + project + ".aird",
+        "org.polarsys.capella.refreshRepresentations", CommandLineConstants.INPUT, project + "/" + project + ".aird",
         CommandLineConstants.OUTPUTFOLDER, project + "/output", CommandLineConstants.FORCEOUTPUTFOLDERCREATION };
     IApplicationContext mockApplicationContext = new MockApplicationContext(arguments);
 
     RefreshAirdCommandLine commandLine = new RefreshAirdCommandLine();
     commandLine.parseContext(mockApplicationContext);
-    commandLine.setMode(CommandLineMode.NO_IMPORT);
 
     commandLine.checkArgs(mockApplicationContext);
     commandLine.prepare(mockApplicationContext);
