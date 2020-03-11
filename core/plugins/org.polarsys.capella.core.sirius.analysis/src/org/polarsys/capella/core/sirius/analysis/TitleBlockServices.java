@@ -383,6 +383,11 @@ public class TitleBlockServices {
     ((DSemanticDiagram) elementView).getEAnnotations().removeAll(annotationsList);
   }
 
+  public void clearCell(Object element) {
+    ((DAnnotation) element).getDetails().put(NAME, "");
+    ((DAnnotation) element).getDetails().put(CONTENT, "");
+  }
+
   public void clearLineEAnnotation(DAnnotation titleBlock, DDiagram diagram) {
     List<DAnnotation> eAnnotationsList = diagram.getEAnnotations();
     List<DAnnotation> annotationsListToBeRemoved = new ArrayList<>();

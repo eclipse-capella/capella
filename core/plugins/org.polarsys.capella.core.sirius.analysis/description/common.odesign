@@ -4208,6 +4208,16 @@
               </initialOperation>
             </tools>
           </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete Title Block" forceRefresh="true">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:element">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.clearCell()"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
           <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete Title Block" precondition="service:self.isTitleBlockContainer()">
             <element name="element"/>
             <elementView name="elementView"/>
