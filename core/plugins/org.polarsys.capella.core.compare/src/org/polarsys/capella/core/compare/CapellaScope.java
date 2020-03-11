@@ -31,6 +31,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
@@ -96,6 +97,15 @@ public class CapellaScope extends SiriusScope {
   public CapellaScope(Collection<URI> uris, ResourceSet resourceSet, boolean readOnly) {
     super(uris, resourceSet, readOnly);
     // Do not explicitly assign _ignoreCapellaVersions: it may be assigned via super constructor
+  }
+  
+  /**
+   * @see org.eclipse.emf.diffmerge.sirius.SiriusScope#add(org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EReference, org.eclipse.emf.ecore.EObject)
+   */
+  @Override
+  public boolean add(EObject source, EReference reference, EObject value) {
+    EObject actualValue = getLocalElement(value);
+    return super.add(source, reference, actualValue);
   }
   
   /**
@@ -274,6 +284,36 @@ public class CapellaScope extends SiriusScope {
               result.createLink(path, IResource.REPLACE, null);
             } catch (CoreException e) {
               // Just proceed
+            }
+          }
+        }
+      }
+    }
+    return result;
+  }
+  
+  /**
+   * Return a scope-local element that corresponds to the given one, if any, otherwise return
+   * the given element
+   * @param element a potentially null element
+   * @return an element that is null if and only if the given element is null
+   */
+  protected EObject getLocalElement(EObject element) {
+    EObject result = element;
+    ResourceSet localResourceSet = _resourceSet;
+    if (element != null && localResourceSet != null ) {
+      Resource valueResource = element.eResource();
+      if (valueResource != null && localResourceSet != valueResource.getResourceSet()) {
+        // Element belongs to another resource set
+        URI valueResourceURI = valueResource.getURI();
+        if (valueResourceURI != null && valueResourceURI.isPlatformPlugin()) {
+          // And element belongs to a platform plug-in
+          URI valueURI = EcoreUtil.getURI(element);
+          if (valueURI != null) {
+            // Try and get the same element (URI-based) in the local resource set
+            EObject localElement = localResourceSet.getEObject(valueURI, false);
+            if (localElement != null) {
+              result = localElement;
             }
           }
         }
