@@ -115,7 +115,6 @@ public class CapellaLeftSearchForContainerArea extends AbstractCapellaSearchForC
         CapellaSearchSettings settings = searchPage.getCapellaSearchSettings();
         settings.setAbstractChecked(checkboxFilterAbstract.getSelection());
         settings.setSemanticChecked(checkboxFilterSemantic.getSelection());
-        searchPage.updateValidationStatus(searchPage.getCapellaSearchSettings().validate());
       }
     };
     IProgressService service = PlatformUI.getWorkbench().getProgressService();

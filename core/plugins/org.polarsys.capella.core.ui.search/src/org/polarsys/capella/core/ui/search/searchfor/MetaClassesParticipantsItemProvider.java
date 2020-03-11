@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.polarsys.capella.core.model.semantic.SimplifiedCapellaMetadata;
 import org.polarsys.capella.core.ui.search.CapellaSearchConstants;
 
 public class MetaClassesParticipantsItemProvider extends AbstractMetaModelParticipantsItemProvider {
@@ -37,7 +38,7 @@ public class MetaClassesParticipantsItemProvider extends AbstractMetaModelPartic
   @Override
   public Object[] getElements(Object inputElement) {
     if (inputElement != null) {
-      return elements.keySet().stream().filter(x -> !isFiltered(x)).collect(Collectors.toSet()).toArray();
+      return elements.keySet().stream().filter(x -> hasChildren(x)).collect(Collectors.toSet()).toArray();
     }
     return new Object[0];
   }
@@ -57,7 +58,7 @@ public class MetaClassesParticipantsItemProvider extends AbstractMetaModelPartic
   @Override
   public Object[] getChildren(Object parentElement) {
     if (parentElement instanceof String && elements.keySet().contains(parentElement)) {
-      return elements.get((String) parentElement).stream().filter(x -> !isFiltered(x)).collect(Collectors.toSet()).toArray();
+      return elements.get((String) parentElement).stream().filter(x -> isDisplayed(x)).collect(Collectors.toSet()).toArray();
     }
     return super.getChildren(parentElement);
   }
@@ -90,16 +91,14 @@ public class MetaClassesParticipantsItemProvider extends AbstractMetaModelPartic
   public void setShowSemantics(boolean showSemantics) {
     this.showSemantics = showSemantics;
   }
-
-  protected boolean isFiltered(Object cls) {
-    if(!showSemantics && !showAbstract)
-      return true;
-    if(cls instanceof EClass) {
-      EClass eCls = (EClass) cls;
-      if(showSemantics && !showAbstract && eCls.isAbstract()) {
-        return true;
-      }
-      if(!showSemantics && showAbstract && !eCls.isAbstract()) {
+  
+  // based on abstract and semantic checks, check if the element is displayed or not
+  protected boolean isDisplayed(Object cls) {
+    if (cls instanceof EClass) {
+      EClass eclass = (EClass) cls;
+      boolean abstractFilterPassed = showAbstract == eclass.isAbstract();
+      boolean semanticFilterPassed = showSemantics == SimplifiedCapellaMetadata.INSTANCE.isSemantic(eclass);
+      if (abstractFilterPassed && semanticFilterPassed) {
         return true;
       }
     }
