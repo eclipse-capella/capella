@@ -25,39 +25,36 @@ import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
-import org.polarsys.capella.common.ui.providers.MDEAdapterFactoryLabelProvider;
-import org.polarsys.capella.common.ui.toolkit.dialogs.AbstractMessageDialogWithViewer;
+import org.polarsys.capella.common.ui.toolkit.dialogs.AbstractViewerDialog;
 import org.polarsys.capella.common.ui.toolkit.viewers.AbstractContextMenuFiller;
 import org.polarsys.capella.common.ui.toolkit.viewers.IViewerStyle;
 import org.polarsys.capella.common.ui.toolkit.viewers.TreeAndListViewer;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.DataContentProvider;
+import org.polarsys.capella.common.ui.toolkit.viewers.data.DataLabelProvider;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.TreeData;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 
 /**
  * Impact Analysis Tool dialog.
  */
-public class ImpactAnalysisDialog extends AbstractMessageDialogWithViewer {
+public class ImpactAnalysisDialog extends AbstractViewerDialog {
   
   public static final String IMPACT_ANALYSIS_DIALOG = "org.polarsys.capella.core.ui.toolkit.dialogs.impactAnalysis";
   
   /**
    * Impact analysis label provider.
    */
-  protected class ImpactAnalysisLabelProvider extends MDEAdapterFactoryLabelProvider implements IColorProvider {
+  protected class ImpactAnalysisLabelProvider extends DataLabelProvider implements IColorProvider {
+
     /**
      * Foreground color for referencing elements.
      */
     private int _foregroundColor;
-    /**
-     * Viewer that uses this label provider.
-     */
-    private TreeViewer _viewer;
 
     /**
      * Constructor.
@@ -67,27 +64,12 @@ public class ImpactAnalysisDialog extends AbstractMessageDialogWithViewer {
     public ImpactAnalysisLabelProvider(TreeViewer viewer_p, int foregroundColorForReferencingElements_p) {
       super();
       _foregroundColor = foregroundColorForReferencingElements_p;
-      _viewer = viewer_p;
+      setViewer(viewer_p);
     }
 
-    /**
-     * @see org.eclipse.jface.viewers.IColorProvider#getBackground(java.lang.Object)
-     */
-    public Color getBackground(Object element_p) {
-      return null;
-    }
-
-    /**
-     * @see org.eclipse.jface.viewers.IColorProvider#getForeground(java.lang.Object)
-     */
-    public Color getForeground(Object element_p) {
-      // Select the foreground color for elements that reference the selected one.
-      Object input = _viewer.getInput();
-      if ((input instanceof TreeData) && (((TreeData) input).isValid(element_p))) {
-        Display display = PlatformUI.getWorkbench().getDisplay();
-        return display.getSystemColor(_foregroundColor);
-      }
-      return null;
+    @Override
+    protected Color getValidElementColor() {
+      return PlatformUI.getWorkbench().getDisplay().getSystemColor(_foregroundColor);
     }
 
     /**
@@ -166,6 +148,10 @@ public class ImpactAnalysisDialog extends AbstractMessageDialogWithViewer {
    */
   private boolean _isMultiSelection;
 
+      /**
+     * Internal viewer displayed in the custom area.
+     */
+    private Viewer _viewer;
 
   /**
    * Constructor.<br>
@@ -191,7 +177,8 @@ public class ImpactAnalysisDialog extends AbstractMessageDialogWithViewer {
    */
   public ImpactAnalysisDialog(List<?> referencingElements_p, String dialogTitle_p, String dialogMessage_p, int dialogImageType_p,
       String[] dialogButtonLabels_p, int foregroundColorForReferencingElements_p, boolean isMultiSelection_p) {
-    super(PlatformUI.getWorkbench().getDisplay().getActiveShell(), dialogTitle_p, null, dialogMessage_p, dialogImageType_p, dialogButtonLabels_p, 0);
+    super(PlatformUI.getWorkbench().getDisplay().getActiveShell(), dialogTitle_p, dialogMessage_p, dialogTitle_p);
+    setHelpAvailable(false);
     _referencingElements = referencingElements_p;
     _foregroundColorForReferencingElements = foregroundColorForReferencingElements_p;
     _isMultiSelection = isMultiSelection_p;
@@ -200,7 +187,6 @@ public class ImpactAnalysisDialog extends AbstractMessageDialogWithViewer {
   /**
    * @see org.polarsys.capella.common.ui.toolkit.dialogs.AbstractMessageDialogWithViewer#createViewer(org.eclipse.swt.widgets.Composite)
    */
-  @Override
   protected TreeViewer createViewer(Composite parent_p) {
     // Create tree viewer.
     // Don't use the status bar of the viewer b
@@ -312,23 +298,34 @@ public class ImpactAnalysisDialog extends AbstractMessageDialogWithViewer {
       }
 		return input;
 	}
-  
+
+  @Override
+  protected void doCreateDialogArea(Composite dialogAreaComposite) {
+    Composite containingComposite = new Composite(dialogAreaComposite, SWT.NONE);
+    GridLayout layout = new GridLayout(1, true);
+    containingComposite.setLayout(layout);
+    containingComposite.setLayoutData(new GridData(GridData.FILL_BOTH));
+    // Create the viewer area.
+    createViewerArea(containingComposite);
+  }
+
+  protected void createViewerArea(Composite parent) {
+    // Create the viewer.
+    _viewer = createViewer(parent);
+    // Set Input data.
+    _viewer.setInput(getInitialInputData());
+  }
+
+  @Override
+  protected Object getResult() {
+    return null;
+  }
 
   /**
    * @see org.polarsys.capella.common.ui.toolkit.dialogs.AbstractMessageDialogWithViewer#getInitialInputData()
    */
-  @Override
   protected TreeData getInitialInputData() {
     return new TreeData(_referencingElements, null);
-  }
-
-  /**
-   * see {@link #createViewer(Composite)} implementation.
-   * @see org.polarsys.capella.common.ui.toolkit.dialogs.AbstractMessageDialogWithViewer#getViewer()
-   */
-  @Override
-  protected TreeViewer getViewer() {
-    return (TreeViewer) super.getViewer();
   }
 
   /**

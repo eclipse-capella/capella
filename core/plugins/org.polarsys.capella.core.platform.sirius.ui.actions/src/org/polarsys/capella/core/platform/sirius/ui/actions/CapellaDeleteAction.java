@@ -12,17 +12,14 @@ package org.polarsys.capella.core.platform.sirius.ui.actions;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
-import java.util.List;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.command.Command;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.ui.EMFEditUIPlugin;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.util.IPropertyChangeListener;
 import org.eclipse.jface.util.PropertyChangeEvent;
-import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
@@ -126,23 +123,6 @@ public class CapellaDeleteAction extends AbstractCommandActionHandler implements
   }
 
   /**
-   * Depending on use cases we have to override this methods to call canDelete.
-   * 
-   * @see org.eclipse.emf.edit.ui.action.CommandActionHandler#updateSelection(org.eclipse.jface.viewers.IStructuredSelection)
-   */
-  @SuppressWarnings("unchecked")
-  @Override
-  public boolean updateSelection(IStructuredSelection selection) {
-    // Check selected elements are deletable based on preferences.
-    List<EObject> selectedElements = getStructuredSelection().toList();
-    boolean result = canDelete(selectedElements);
-    if (result) {
-      result = super.updateSelection(selection);
-    }
-    return result;
-  }
-
-  /**
    * Can delete selected elements ?
    * 
    * @param selectedElements
@@ -164,7 +144,7 @@ public class CapellaDeleteAction extends AbstractCommandActionHandler implements
    * @param element
    * @return
    */
-  protected static boolean isElementProtected(Element element) {
+  public static boolean isElementProtected(Element element) {
 
     boolean specialElementProtectionAllowed = CapellaModelPreferencesPlugin.getDefault()
         .isSpecialElementProtectionAllowed();

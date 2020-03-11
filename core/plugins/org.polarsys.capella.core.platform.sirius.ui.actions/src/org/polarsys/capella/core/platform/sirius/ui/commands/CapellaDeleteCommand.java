@@ -13,7 +13,10 @@ package org.polarsys.capella.core.platform.sirius.ui.commands;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Set;
+import java.util.stream.Collectors;
 
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
@@ -26,8 +29,11 @@ import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.core.model.handler.command.BasicCapellaDeleteCommand;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.model.preferences.IDeletePreferences;
+import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaActionsActivator;
+import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaDeleteAction;
 import org.polarsys.capella.core.ui.toolkit.dialogs.ConfirmDeleteCapellaElementDialog;
 import org.polarsys.capella.core.ui.toolkit.dialogs.ImpactAnalysisDialog;
+import org.polarsys.kitalpha.emde.model.Element;
 
 /**
  * Capella delete command facade.
@@ -51,7 +57,7 @@ public class CapellaDeleteCommand extends BasicCapellaDeleteCommand {
    * @param confirmDelete
    */
   public CapellaDeleteCommand(EditingDomain editingDomain, Collection<?> selection, boolean confirmDelete) {
-	  this(null, selection, false, confirmDelete, true);
+    this(null, selection, false, confirmDelete, true);
     this.editingDomain = editingDomain;
   }
 
@@ -108,15 +114,30 @@ public class CapellaDeleteCommand extends BasicCapellaDeleteCommand {
   }
 
   protected boolean confirmDeletion() {
-    final int dialogResult[] = new int[] { 0 };
+    Set<?> elementsToDelete = getAllElementsToDelete();
+    ConfirmDeleteCapellaElementDialog confirmDeletionDialog = new ConfirmDeleteCapellaElementDialog(
+        new ArrayList<Object>(elementsToDelete), true, getExpandedSelection().toArray()) {
+          @Override
+          protected IStatus getStatus() {
+            if (CapellaDeleteAction.canDelete(elementsToDelete)) {
+              return Status.OK_STATUS;
+            }
+            return new Status(Status.ERROR, CapellaActionsActivator.PLUGIN_ID,
+                Messages.CapellaDeleteCommand_ProtectedElementsError);
+          }
+
+          @Override
+          public Set<Object> getProtectedElements() {
+            return elementsToDelete.stream().filter(Element.class::isInstance).map(Element.class::cast)
+            .filter(CapellaDeleteAction::isElementProtected).collect(Collectors.toSet());
+          }
+    };
     PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
       public void run() {
-        ConfirmDeleteCapellaElementDialog confirmDeletionDialog =
-            new ConfirmDeleteCapellaElementDialog(new ArrayList<Object>(getAllElementsToDelete()), true, getExpandedSelection().toArray());
-        dialogResult[0] = confirmDeletionDialog.open();
+        confirmDeletionDialog.open();
       }
     });
-    return (dialogResult[0] == IDialogConstants.OK_ID);
+    return confirmDeletionDialog.getReturnCode() == IDialogConstants.OK_ID;
   }
 
   static class DryRun extends CapellaDeleteCommand {

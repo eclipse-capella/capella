@@ -17,10 +17,17 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.jface.resource.JFaceResources;
+import org.eclipse.jface.resource.LocalResourceManager;
 import org.eclipse.jface.viewers.DecoratingLabelProvider;
+import org.eclipse.jface.viewers.DecorationOverlayIcon;
+import org.eclipse.jface.viewers.IDecoration;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
@@ -29,6 +36,7 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
@@ -42,11 +50,33 @@ import org.polarsys.capella.common.ui.toolkit.viewers.data.DataContentProvider;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.TreeData;
 import org.polarsys.capella.core.model.handler.helpers.CrossReferencerHelper;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
+import org.polarsys.capella.core.ui.toolkit.Activator;
 
 /**
  * Confirm Capella elements deletion Tool dialog
  */
 public class ConfirmDeleteCapellaElementDialog extends ImpactAnalysisDialog {
+
+  public class ConfirmDeleteCapellaElementLabelProvider extends ImpactAnalysisLabelProvider {
+
+    public ConfirmDeleteCapellaElementLabelProvider(TreeViewer viewer_p, int foregroundColorForReferencingElements_p) {
+      super(viewer_p, foregroundColorForReferencingElements_p);
+    }
+
+    @Override
+    public Image getImage(Object object) {
+      if (getProtectedElements().contains(object)) {
+        Image baseImage = super.getImage(object);
+        ImageDescriptor overlayImage = Activator.getDefault().getImageDescriptor("lock.gif");
+        DecorationOverlayIcon icon = new DecorationOverlayIcon( //
+            baseImage, overlayImage, IDecoration.BOTTOM_RIGHT);
+        LocalResourceManager manager = new LocalResourceManager( //
+            JFaceResources.getResources(PlatformUI.getWorkbench().getDisplay()));
+        return manager.createImage(icon);
+      }
+      return super.getImage(object);
+    }
+  }
 
   public static final String DELETE_ANALYSIS_DIALOG_ELEMENTS = "org.polarsys.capella.core.ui.toolkit.dialogs.confirmDelete.elements";
   
@@ -98,7 +128,6 @@ public class ConfirmDeleteCapellaElementDialog extends ImpactAnalysisDialog {
   /**
    * @see org.polarsys.capella.common.ui.toolkit.dialogs.AbstractMessageDialogWithViewer#createViewerArea(org.eclipse.swt.widgets.Composite)
    */
-  @Override
   protected Control createCustomArea(Composite parentComposite) {
     // Since we add a second viewer to display referencing elements for deleted ones.
     // Let's tweak the UI by the changing the layout data.
@@ -120,7 +149,7 @@ public class ConfirmDeleteCapellaElementDialog extends ImpactAnalysisDialog {
     // Create a second viewer to display referencing elements related to a deleted element.
     createReferencingElementViewer(parentComposite);
     // Set a label provider that allow decorator mechanism.
-    elementsToDeleteViewer.setLabelProvider(new DecoratingLabelProvider(new ImpactAnalysisLabelProvider(elementsToDeleteViewer, SWT.COLOR_RED), PlatformUI
+    elementsToDeleteViewer.setLabelProvider(new DecoratingLabelProvider(new ConfirmDeleteCapellaElementLabelProvider(elementsToDeleteViewer, SWT.COLOR_RED), PlatformUI
         .getWorkbench().getDecoratorManager()));
     elementsToDeleteViewer.setSelection(new StructuredSelection(expendedElements), true);
     elementsToDeleteViewer.getControl().setFocus();
@@ -143,7 +172,7 @@ public class ConfirmDeleteCapellaElementDialog extends ImpactAnalysisDialog {
     // Create the referencing element with this group as parent.
     referencingElementsViewer = this.createViewer(referencingElementsGroup, DELETE_ANALYSIS_DIALOG_REFERENCING_ELEMENTS);
     // Set a label provider that allow decorator mechanism.
-    referencingElementsViewer.setLabelProvider(new DecoratingLabelProvider(new ImpactAnalysisLabelProvider(referencingElementsViewer,
+    referencingElementsViewer.setLabelProvider(new DecoratingLabelProvider(new ConfirmDeleteCapellaElementLabelProvider(referencingElementsViewer,
         DEFAULT_COLOR_FOR_RELEVANT_ELEMENTS), PlatformUI.getWorkbench().getDecoratorManager()));
     // Add a button to display EMF resource as root nodes.
     resourceCheckReferencingElemntButton = createResourceCheckButton(referencingElementsGroup, referencingElementsViewer);
@@ -188,14 +217,6 @@ public class ConfirmDeleteCapellaElementDialog extends ImpactAnalysisDialog {
     return objects;
   }
 
-  /**
-   * @see org.polarsys.capella.common.ui.toolkit.dialogs.AbstractMessageDialogWithViewer#getDialogWidth()
-   */
-  @Override
-  protected int getDialogWidth() {
-    return 800; // With 2 viewers, we need more space.
-  }
-
   protected TreeViewer createViewer(Composite parentComposite, String location) {
     // Create tree viewer.
     // Don't use the status bar of the viewer b
@@ -210,7 +231,7 @@ public class ConfirmDeleteCapellaElementDialog extends ImpactAnalysisDialog {
 
     TreeViewer viewer = treeViewer.getClientViewer();
     viewer.setContentProvider(new DataContentProvider());
-    viewer.setLabelProvider(new ImpactAnalysisLabelProvider(viewer, SWT.COLOR_RED));
+    viewer.setLabelProvider(new ConfirmDeleteCapellaElementLabelProvider(viewer, SWT.COLOR_RED));
     // Set layout data.
     viewer.getTree().setLayoutData(new GridData(GridData.FILL_BOTH));
     viewer.setSorter(new ImpactAnalysisSorter());
@@ -254,4 +275,31 @@ public class ConfirmDeleteCapellaElementDialog extends ImpactAnalysisDialog {
     clientViewer.setInput(input);
   }
 
+  @Override
+  protected void doCreateDialogArea(Composite dialogAreaComposite) {
+    createCustomArea(dialogAreaComposite);
+  }
+
+  @Override
+  protected Control createContents(Composite parent) {
+    Control control = super.createContents(parent);
+    validate();
+    return control;
+  }
+
+  private void validate() {
+    IStatus status = getStatus();
+    if (!status.isOK()) {
+      setErrorMessage(status.getMessage());
+      getButton(OK).setEnabled(false);
+    }
+  }
+
+  protected IStatus getStatus() {
+    return Status.OK_STATUS;
+  }
+
+  public Set<Object> getProtectedElements() {
+    return Collections.emptySet();
+  }
 }

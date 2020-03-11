@@ -12,7 +12,6 @@ package org.polarsys.capella.core.sirius.analysis.delete;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -22,22 +21,16 @@ import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.common.helpers.TransactionHelper;
-import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaDeleteAction;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaDeleteCommand;
 import org.polarsys.capella.core.platform.sirius.ui.commands.Messages;
 
 public class CapellaDeleteExternalAction implements IExternalJavaAction {
-  private Map<Collection<? extends EObject>, Boolean> selectionDeletable;
-
-  public CapellaDeleteExternalAction() {
-    selectionDeletable = new HashMap<>();
-  }
 
   /**
    * @see org.eclipse.sirius.tools.api.ui.IExternalJavaAction#canExecute(java.util.Collection)
    */
   public boolean canExecute(Collection<? extends EObject> selections) {
-    return selectionDeletable.computeIfAbsent(selections, CapellaDeleteAction::canDelete);
+    return true;
   }
 
   /**

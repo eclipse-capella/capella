@@ -20,6 +20,7 @@ public class Messages extends NLS {
   public static String CapellaCloneDiagramCommand_CommandLabel;
   public static String CapellaDeleteCommand_CancelDeletionMessage;
   public static String CapellaDeleteCommand_ConfirmDeletionQuestion;
+  public static String CapellaDeleteCommand_ProtectedElementsError;
   public static String CapellaDeleteCommand_ControlledElementsError_Message;
   public static String CapellaDeleteCommand_DeleteCommandError_Message;
   public static String CapellaDeleteCommand_ImpactAnalysis_DeletedElements_Group_Title;
