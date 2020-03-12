@@ -151,7 +151,9 @@ public class DefaultCommandLine extends AbstractCommandLine {
     if (argHelper.getInputs() == null) {
       logger.error(Messages.inputs_mandatory);
     } else if (argHelper.getInputs().equals(ALL_ARGUMENT)) {
-      // /all is accepted as argument
+      for (IProject project : ResourcesPlugin.getWorkspace().getRoot().getProjects()) {
+        checkProject(project);
+      }
     } else {
       List<String> inputs = toList(argHelper.getInputs());
       for (String input : inputs) {

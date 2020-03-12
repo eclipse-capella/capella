@@ -14,6 +14,7 @@ import java.util.Collections;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.core.runtime.preferences.InstanceScope;
@@ -133,5 +134,10 @@ public class MigrationCommandLine extends DefaultCommandLine {
   public void printHelp() {
     super.printHelp();
     printArgumentsFromTable("migrationParameters", false, Collections.emptyList());
+  }
+  
+  @Override
+  public void compliancyCheck(IFile modeller) throws CommandLineException {
+    // No check for compliancy for Migration command line since it's done already in Migration command
   }
 }
