@@ -58,6 +58,10 @@ public class TitleBlockServices {
   private static final String IS_ELEMENT_TITLE_BLOCK = "Is Element Title Block";
   private static final String TRUE = "True";
   private static final String FALSE = "False";
+  private static final String COLUMNS_NUMBER_PREFERENCE_STORE = "columnsNumberTitleBlock";
+  private static final String LINES_NUMBER_PREFERENCE_STORE = "linesNumberTitleBlock";
+  private static final String TABEL_CONTENT_PREFERENCE_STORE = "tableTitleBlock";
+  private static final String ESCAPED_SEPARATOR = "\\+";
 
   public static TitleBlockServices getService() {
     if (service == null) {
