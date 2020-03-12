@@ -565,7 +565,7 @@
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="delete Logical Component" >
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="delete Logical Component">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -921,7 +921,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="delete LF" >
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="delete LF">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -1625,7 +1625,7 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="delete capella element" >
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="delete capella element">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -2150,6 +2150,7 @@
           </style>
         </edgeMappings>
         <edgeMappings name="LAB_InternPhysicalPathLink" preconditionExpression="service:isValidABPhysicalPathInternalLinkEdge(sourceView, targetView)" createElements="false" sourceMapping="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@borderedNodeMappings[name='LAB_PhysicalPort']" targetMapping="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@borderedNodeMappings[name='LAB_PhysicalPort']" targetFinderExpression="service:getPhysicalPathTargets()" sourceFinderExpression="service:getPhysicalPathSources()" domainClass="PhysicalPath" useDomainElement="true">
+          <deletionDescription href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']"/>
           <style targetArrow="NoDecoration" endsCentering="Both">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_red']"/>
             <centerLabelStyleDescription showIcon="false">
@@ -3662,7 +3663,7 @@
               <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:arg0"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="delete capella element" >
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="delete capella element">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -4004,6 +4005,7 @@
           </style>
         </nodeMappings>
         <edgeMappings name="CRI_Refine" semanticCandidatesExpression="aql:self.getRefinementTracesRecursively()" sourceMapping="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Capability%20Realization%20Refinement']/@defaultLayer/@nodeMappings[name='CRI_CapabilityRealization']" targetMapping="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Capability%20Realization%20Refinement']/@defaultLayer/@nodeMappings[name='CRI_CapabilityRealization_1']" targetFinderExpression="feature:targetElement" sourceFinderExpression="feature:sourceElement" domainClass="RefinementLink" useDomainElement="true">
+          <deletionDescription href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']"/>
           <style lineStyle="dash">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
             <centerLabelStyleDescription>
@@ -4012,6 +4014,7 @@
           </style>
         </edgeMappings>
         <edgeMappings name="CRI_Refine_to_internals" semanticCandidatesExpression="aql:self.getRefinementTracesRecursively()" sourceMapping="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Capability%20Realization%20Refinement']/@defaultLayer/@containerMappings[name='CRI_SystemComponent_top']/@subNodeMappings[name='CRI_CapabilityRealization_int']" targetMapping="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Capability%20Realization%20Refinement']/@defaultLayer/@containerMappings[name='CRI_SystemComponent_top']/@subNodeMappings[name='CRI_CapabilityRealization_int']" targetFinderExpression="feature:targetElement" sourceFinderExpression="feature:sourceElement" domainClass="RefinementLink" useDomainElement="true">
+          <deletionDescription href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']"/>
           <style lineStyle="dash">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
             <centerLabelStyleDescription>
@@ -4020,6 +4023,7 @@
           </style>
         </edgeMappings>
         <edgeMappings name="CRI_Refine_inttoext" semanticCandidatesExpression="aql:self.getRefinementTracesRecursively()" sourceMapping="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Capability%20Realization%20Refinement']/@defaultLayer/@containerMappings[name='CRI_SystemComponent_top']/@subNodeMappings[name='CRI_CapabilityRealization_int']" targetMapping="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Capability%20Realization%20Refinement']/@defaultLayer/@nodeMappings[name='CRI_CapabilityRealization']" targetFinderExpression="feature:targetElement" sourceFinderExpression="feature:sourceElement" domainClass="RefinementLink" useDomainElement="true">
+          <deletionDescription href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']"/>
           <style lineStyle="dash">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
             <centerLabelStyleDescription>
@@ -4028,6 +4032,7 @@
           </style>
         </edgeMappings>
         <edgeMappings name="CRI_Refine_intinttoint" semanticCandidatesExpression="aql:self.getRefinementTracesRecursively()" sourceMapping="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Capability%20Realization%20Refinement']/@defaultLayer/@containerMappings[name='CRI_SystemComponent_top']/@subContainerMappings[name='CRI_System_Component']/@subNodeMappings[name='CRI_CapabilityRealization_int_int']" targetMapping="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Capability%20Realization%20Refinement']/@defaultLayer/@containerMappings[name='CRI_SystemComponent_top']/@subNodeMappings[name='CRI_CapabilityRealization_int']" targetFinderExpression="feature:targetElement" sourceFinderExpression="feature:sourceElement" domainClass="RefinementLink" useDomainElement="true">
+          <deletionDescription href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']"/>
           <style lineStyle="dash">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
             <centerLabelStyleDescription>
@@ -4036,6 +4041,7 @@
           </style>
         </edgeMappings>
         <edgeMappings name="CRI_Refine_intinttointint" semanticCandidatesExpression="aql:self.getRefinementTracesRecursively()" sourceMapping="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Capability%20Realization%20Refinement']/@defaultLayer/@containerMappings[name='CRI_SystemComponent_top']/@subContainerMappings[name='CRI_System_Component']/@subNodeMappings[name='CRI_CapabilityRealization_int_int']" targetMapping="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Capability%20Realization%20Refinement']/@defaultLayer/@containerMappings[name='CRI_SystemComponent_top']/@subContainerMappings[name='CRI_System_Component']/@subNodeMappings[name='CRI_CapabilityRealization_int_int']" targetFinderExpression="feature:targetElement" sourceFinderExpression="feature:sourceElement" domainClass="RefinementLink" useDomainElement="true">
+          <deletionDescription href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']"/>
           <style lineStyle="dash">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
             <centerLabelStyleDescription>
@@ -4044,6 +4050,7 @@
           </style>
         </edgeMappings>
         <edgeMappings name="CRI_Involvment" semanticCandidatesExpression="aql:self.getInvolvmentLinkOnRefinedRecursively()" sourceMapping="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Capability%20Realization%20Refinement']/@defaultLayer/@nodeMappings[name='CRI_CapabilityRealization']" targetMapping="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Capability%20Realization%20Refinement']/@defaultLayer/@containerMappings[name='CRI_SystemComponent_top']" targetFinderExpression="feature:involved" sourceFinderExpression="feature:involver" domainClass="CapabilityRealizationInvolvement" useDomainElement="true">
+          <deletionDescription href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']"/>
           <style>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription>
@@ -4052,6 +4059,7 @@
           </style>
         </edgeMappings>
         <edgeMappings name="CRI_Involvment_int" semanticCandidatesExpression="aql:self.getInvolvmentLinkOnRefinedRecursively()" sourceMapping="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Capability%20Realization%20Refinement']/@defaultLayer/@containerMappings[name='CRI_SystemComponent_top']/@subNodeMappings[name='CRI_CapabilityRealization_int']" targetMapping="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Capability%20Realization%20Refinement']/@defaultLayer/@containerMappings[name='CRI_SystemComponent_top']/@subContainerMappings[name='CRI_System_Component']" targetFinderExpression="feature:involved" sourceFinderExpression="feature:involver" domainClass="CapabilityRealizationInvolvement" useDomainElement="true">
+          <deletionDescription href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']"/>
           <style>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription>
@@ -4060,6 +4068,7 @@
           </style>
         </edgeMappings>
         <edgeMappings name="CRI_Involvment_intint" semanticCandidatesExpression="aql:self.getInvolvmentLinkOnRefinedRecursively()" sourceMapping="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Capability%20Realization%20Refinement']/@defaultLayer/@containerMappings[name='CRI_SystemComponent_top']/@subContainerMappings[name='CRI_System_Component']/@subNodeMappings[name='CRI_CapabilityRealization_int_int']" targetMapping="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Capability%20Realization%20Refinement']/@defaultLayer/@containerMappings[name='CRI_SystemComponent_top']/@subContainerMappings[name='CRI_System_Component']" targetFinderExpression="feature:involved" sourceFinderExpression="feature:involver" domainClass="CapabilityRealizationInvolvement" useDomainElement="true">
+          <deletionDescription href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']"/>
           <style>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription>
@@ -4068,6 +4077,7 @@
           </style>
         </edgeMappings>
         <edgeMappings name="CRI_Involvment_inttotop" semanticCandidatesExpression="aql:self.getInvolvmentLinkOnRefinedRecursively()" sourceMapping="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Capability%20Realization%20Refinement']/@defaultLayer/@containerMappings[name='CRI_SystemComponent_top']/@subNodeMappings[name='CRI_CapabilityRealization_int']" targetMapping="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Capability%20Realization%20Refinement']/@defaultLayer/@containerMappings[name='CRI_SystemComponent_top']" targetFinderExpression="feature:involved" sourceFinderExpression="feature:involver" domainClass="CapabilityRealizationInvolvement" useDomainElement="true">
+          <deletionDescription href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']"/>
           <style>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription>
@@ -4076,6 +4086,7 @@
           </style>
         </edgeMappings>
         <edgeMappings name="CRI_capaToCaparea" semanticCandidatesExpression="aql:self.getRefinementLinksChain()" sourceMapping="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Capability%20Realization%20Refinement']/@defaultLayer/@nodeMappings[name='CRI_CapabilityRealization'] //@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Capability%20Realization%20Refinement']/@defaultLayer/@nodeMappings[name='CRI_CapabilityRealization_1']" targetMapping="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Capability%20Realization%20Refinement']/@defaultLayer/@nodeMappings[name='CRI_Capability'] //@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Capability%20Realization%20Refinement']/@defaultLayer/@nodeMappings[name='CRI_CapabilityRealization_1']" targetFinderExpression="feature:targetElement" sourceFinderExpression="feature:sourceElement" domainClass="RefinementLink" useDomainElement="true">
+          <deletionDescription href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']"/>
           <style lineStyle="dash">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_orange']"/>
             <centerLabelStyleDescription>
@@ -4084,6 +4095,7 @@
           </style>
         </edgeMappings>
         <edgeMappings name="CRI_participation" semanticCandidatesExpression="aql:self.getRefinedInvolvedActors()" sourceMapping="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Capability%20Realization%20Refinement']/@defaultLayer/@nodeMappings[name='CRI_Capability']" targetMapping="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Capability%20Realization%20Refinement']/@defaultLayer/@nodeMappings[name='CRI_Actors']" targetFinderExpression="feature:systemComponent" sourceFinderExpression="feature:capability" domainClass="CapabilityInvolvement" useDomainElement="true">
+          <deletionDescription href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']"/>
           <style>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription>
@@ -4092,6 +4104,7 @@
           </style>
         </edgeMappings>
         <edgeMappings name="CRI_participation_by_realizations" semanticCandidatesExpression="aql:self.getInvolvedActorsForCapabilityRealizations()" sourceMapping="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Capability%20Realization%20Refinement']/@defaultLayer/@nodeMappings[name='CRI_CapabilityRealization_1'] //@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Capability%20Realization%20Refinement']/@defaultLayer/@nodeMappings[name='CRI_CapabilityRealization']" targetMapping="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Capability%20Realization%20Refinement']/@defaultLayer/@nodeMappings[name='CRI_Actors']" targetFinderExpression="feature:involved" sourceFinderExpression="feature:involver" domainClass="CapabilityRealizationInvolvement" useDomainElement="true">
+          <deletionDescription href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']"/>
           <style>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription>
@@ -4100,6 +4113,7 @@
           </style>
         </edgeMappings>
         <edgeMappings name="CRI_ActorRealizations" semanticCandidatesExpression="aql:self.getActorsAllocationLinks()" sourceMapping="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Capability%20Realization%20Refinement']/@defaultLayer/@nodeMappings[name='CRI_Actors']" targetMapping="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Capability%20Realization%20Refinement']/@defaultLayer/@nodeMappings[name='CRI_Actors']" targetFinderExpression="feature:realizedComponent" sourceFinderExpression="feature:realizingComponent" domainClass="ComponentRealization" useDomainElement="true">
+          <deletionDescription href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']"/>
           <style lineStyle="dash">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_orange']"/>
             <centerLabelStyleDescription>
@@ -4108,9 +4122,11 @@
           </style>
         </edgeMappings>
         <containerMappings name="CRI_SystemComponent_top" preconditionExpression="aql:viewpoint.target.getSystemComponentInvolvmentOnRefinedRecursively()->includes(self)" semanticCandidatesExpression="aql:self.involvedComponents->select(c | not c.isActor())" domainClass="cs::Component">
+          <deletionDescription href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']"/>
           <subNodeMappings name="CRI_CapabilityRealization_int" preconditionExpression="aql:self.eContainerOrSelf(cs::Component) = containerView.target" semanticCandidatesExpression="aql:viewpoint.target.getRefinedRecursively()" domainClass="CapabilityRealization">
             <detailDescriptions xsi:type="tool_1:DiagramCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Dataflow%20Scenario']"/>
             <navigationDescriptions xsi:type="tool_1:DiagramNavigationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Existing%20Dataflow%20Scenario']"/>
+            <deletionDescription href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']"/>
             <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="4" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/CapabilityRealization.png">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -4120,6 +4136,7 @@
             <subNodeMappings name="CRI_CapabilityRealization_int_int" preconditionExpression="aql:self.eContainerOrSelf(cs::Component) = containerView.target" semanticCandidatesExpression="aql:viewpoint.target.getRefinedRecursively()" domainClass="CapabilityRealization">
               <detailDescriptions xsi:type="tool_1:DiagramCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Dataflow%20Scenario']"/>
               <navigationDescriptions xsi:type="tool_1:DiagramNavigationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Existing%20Dataflow%20Scenario']"/>
+              <deletionDescription href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']"/>
               <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="4" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/CapabilityRealization.png">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
