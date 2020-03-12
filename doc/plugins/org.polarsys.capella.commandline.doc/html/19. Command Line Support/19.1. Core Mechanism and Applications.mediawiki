@@ -3,7 +3,7 @@
 
 == Overview ==
 
-Capella provides the capacity to launch actions from command line. Potential actions are Model Validation, HTML Production, XML Export, Export as ZIP and Migration.
+Capella provides the capacity to launch actions from command line. Potential actions are Model Validation, Model Migration, HTML Production, Refresh Representations, Remove Hidden Elements from Representations and Export Representations as Images.
 
 The core mechanism provides the following parameters:
 
@@ -46,7 +46,7 @@ The core mechanism provides the following parameters:
 |-
 |consolelog
 |optional
-|allows to log messages into the console output
+|allows to send additional log messages (e.g. exceptions) into the console output
 |-
 |logfile
 |optional
@@ -290,6 +290,7 @@ For a migration and post-migration script example, please check: [[../help/topic
 -input /all
 -exportZip EOLE_AF
 -outputfolder /MigratedProject/output
+-backup
 </pre>
 
 This command imports a .zip into the specified workspace, migrate all projects inside and exported the migrated project as zip to the output folder.

@@ -10,6 +10,10 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.migration.cmdline;
 
+import java.util.Collections;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.core.runtime.preferences.InstanceScope;
@@ -27,6 +31,7 @@ import org.polarsys.capella.core.commandline.core.CommandLineException;
 import org.polarsys.capella.core.commandline.core.DefaultCommandLine;
 import org.polarsys.capella.core.data.migration.MigrationConstants;
 import org.polarsys.capella.core.data.migration.MigrationHelpers;
+import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 
 /**
  * <p>
@@ -78,13 +83,16 @@ public class MigrationCommandLine extends DefaultCommandLine {
   }
 
   public void migrateAllImportedProjects(Shell shell) {
-    for (IProject project : getProjectsFromInput()) {
+    Set<IProject> capellaProjects = getProjectsFromInput().stream().filter(CapellaResourceHelper::isCapellaProject)
+        .collect(Collectors.toSet());
+    for (IProject project : capellaProjects) {
       try {
         if (argHelper.isBackupNeeded()) {
           // Migrate Project
           MigrationHelpers.getInstance().trigger(project, shell, true, false, MigrationConstants.DEFAULT_KIND_ORDER);
         } else {
-          MigrationHelpers.getInstance().trigger(project, shell, true, true, false, false, MigrationConstants.DEFAULT_KIND_ORDER);
+          MigrationHelpers.getInstance().trigger(project, shell, true, true, false, false,
+              MigrationConstants.DEFAULT_KIND_ORDER);
         }
       } catch (Exception e) {
         logError("Error during migration of " + project.getName());
@@ -119,5 +127,11 @@ public class MigrationCommandLine extends DefaultCommandLine {
 
     IEclipsePreferences siriusPluginPreferences = InstanceScope.INSTANCE.getNode(SiriusPlugin.ID);
     siriusPluginPreferences.putBoolean(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), autoRefresh);
+  }
+  
+  @Override
+  public void printHelp() {
+    super.printHelp();
+    printArgumentsFromTable("migrationParameters", false, Collections.emptyList());
   }
 }
