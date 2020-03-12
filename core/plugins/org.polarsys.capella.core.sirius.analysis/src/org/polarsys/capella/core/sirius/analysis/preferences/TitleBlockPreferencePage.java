@@ -69,9 +69,6 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
 
   public static final int MIN_CELL_WIDTH = 100;
   public static final String PAGE_ID = "org.polarsys.capella.core.platform.sirius.ui.actions.preferences.TitleBlockPage";
-  public static final String NAME = "Name";
-  public static final String CONTENT = "Content";
-  public static final String CONTENT_LOWERCASE = "content";
   public static final String DEFAULT_TITLEBLOCK_PREFERENCE_STORE = "defaultTitleBlock";
   public static final String ADD_BY_DEFAULT = "Add by default Diagram Title Block";
   public static final String TABEL_CONTENT_PREFERENCE_STORE = "tableTitleBlock";
@@ -200,16 +197,9 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
           if (cell != null) {
             int index = cell.getColumnIndex();
             List<TitleBlockCell> list = (List<TitleBlockCell>) cell.getElement();
-            String name = list.get(index).name;
-            String content = list.get(index).content;
             TitleBlockDialog dialog = new TitleBlockDialog(getShell());
-            if (content.equals(CONTENT_LOWERCASE)) {
-              dialog.setCurrentName(EMPTY_STRING);
-              dialog.setCurrentContent(EMPTY_STRING);
-            } else {
-              dialog.setCurrentName(name);
-              dialog.setCurrentContent(content);
-            }
+            dialog.setCurrentName(list.get(index).name);
+            dialog.setCurrentContent(list.get(index).content);
             dialog.create();
             if (dialog.open() == Window.OK) {
               list.get(index).name = dialog.getName();
@@ -234,8 +224,9 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
     }
   }
 
-  private void refreshTableColumns(int index) {
+  private void refreshTableInsertColumns(int index) {
     disposeColumns();
+    columnsNumber += 1;
     createColumns(v, columnsNumber);
     v.setInput(insertNewEmptyColumn(index));
   }
@@ -248,7 +239,6 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
   }
 
   private void refreshTableInsertLines(int index) {
-    linesNumber += 1;
     v.setInput(insertNewEmptyLine(index));
   }
 
@@ -306,6 +296,7 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
   }
 
   private List<List<TitleBlockCell>> insertNewEmptyLine(int index) {
+    linesNumber += 1;
     List<TitleBlockCell> tbcCell = new ArrayList<>();
     for (int i = 0; i < columnsNumber; i++) {
       tbcCell.add(new TitleBlockCell(EMPTY_STRING, EMPTY_STRING));
@@ -466,9 +457,8 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
       public void run() {
         if (v.getColumnViewerEditor().getFocusCell() != null) {
           createColumn(v, EMPTY_STRING, v.getTable().getColumnCount());
-          columnsNumber += 1;
           int columnToInsert = v.getColumnViewerEditor().getFocusCell().getColumnIndex() + 1;
-          refreshTableColumns(columnToInsert);
+          refreshTableInsertColumns(columnToInsert);
         }
       }
     };
