@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2019, 2020 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,11 +15,12 @@ import java.util.List;
 
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
-import org.polarsys.capella.test.odesign.directeditlabel.DirectEditLabelTestSuite;
 import org.polarsys.capella.test.odesign.identifier.DuplicateToolsAndFiltersTest;
 import org.polarsys.capella.test.odesign.identifier.ToolActivityCoverageTest;
 import org.polarsys.capella.test.odesign.identifier.ToolAndLabelCoherenceTest;
 import org.polarsys.capella.test.odesign.identifier.ToolIdentifierConsistencyTest;
+import org.polarsys.capella.test.odesign.ju.deletecheck.CheckDeletionDescriptionTest;
+import org.polarsys.capella.test.odesign.ju.directeditlabel.DirectEditLabelTestSuite;
 import org.polarsys.capella.test.odesign.ju.domainclass.CheckDomainClassTestSuite;
 import org.polarsys.capella.test.odesign.typereferencename.CheckTypeReferenceNameTestSuite;
 
@@ -42,6 +43,7 @@ public class ODesignTestSuite extends BasicTestSuite {
     tests.add(new ToolActivityCoverageTest());
     tests.add(new ToolIdentifierConsistencyTest());
     tests.add(new ToolAndLabelCoherenceTest());
+    tests.add(new CheckDeletionDescriptionTest());
     return tests;
   }
 
