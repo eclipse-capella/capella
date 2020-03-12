@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016, 2020 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,8 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 import org.polarsys.capella.test.framework.helpers.EObjectHelper;
 
 /**
@@ -30,6 +32,7 @@ public class ODesignHelper {
 
   /**
    * Return all odesign {@link Resource} from a given {@link ResourceSet}
+   * 
    * @param resourceSet
    * @return a {@link List} of resources if found, an empty one otherwise.
    */
@@ -49,6 +52,7 @@ public class ODesignHelper {
 
   /**
    * Get all the {@link DiagramDescription} defined into a given odesign {@link Resource}
+   * 
    * @param resources
    * @return
    */
@@ -65,6 +69,7 @@ public class ODesignHelper {
 
   /**
    * Get all the {@link DiagramDescription} defined into a given {@link List} of odesign {@link Resource}.
+   * 
    * @param resource
    * @return
    */
@@ -80,6 +85,21 @@ public class ODesignHelper {
     }
 
     return result;
+  }
+
+  /**
+   * 
+   * @param mappingToolDescription
+   * @return path of the element in odesign
+   */
+  public static String computeModelPath(DiagramElementMapping mappingToolDescription) {
+    StringBuilder sb = new StringBuilder(mappingToolDescription.getName());
+    EObject container = mappingToolDescription.eContainer();
+    while ((null != container) && (container instanceof IdentifiedElement)) {
+      sb.insert(0, ((IdentifiedElement) container).getName() + "/"); //$NON-NLS-1$
+      container = container.eContainer();
+    }
+    return sb.toString();
   }
 
 }
