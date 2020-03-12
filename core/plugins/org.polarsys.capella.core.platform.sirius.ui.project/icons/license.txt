@@ -4,6 +4,6 @@ These followings icons are made available under the terms of the Eclipse Public 
 
 <icon file path> - <original eclipse plug-in> - <original file path>
 
-/icons/capella_16.png - capella.platform.sirius.ui.project - capella.platform.sirius.ui.project/icons/capella_16.png
+/icons/capella_project.png - capella.platform.sirius.ui.project - capella.platform.sirius.ui.project/icons/capella_project.png
 /icons/projectWizard.png - capella.platform.sirius.ui.project - capella.platform.sirius.ui.project/icons/projectWizard.png
-/icons/capella_8x8.png - capella.platform.sirius.ui.project - capella.platform.sirius.ui.project/icons/capella_8x8.png
+/icons/capella_nature.png - capella.platform.sirius.ui.project - capella.platform.sirius.ui.project/icons/capella_nature.png
