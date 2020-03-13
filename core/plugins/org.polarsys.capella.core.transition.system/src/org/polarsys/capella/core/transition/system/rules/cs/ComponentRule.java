@@ -71,9 +71,14 @@ public class ComponentRule extends AbstractCapellaElementRule {
     registerUpdatedAttribute(CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__ABSTRACT);
   }
 
+  
+  protected boolean transformAsRootComponent(EObject object, IContext context) {
+    return BlockArchitectureExt.isRootComponent((Component)object);
+  }
+  
   @Override
   protected EObject transformDirectElement(EObject element, IContext context) {
-    if (BlockArchitectureExt.isRootComponent((Component) element)) {
+    if (transformAsRootComponent(element, context)) {
       EObject root = TransformationHandlerHelper.getInstance(context).getLevelElement(element, context);
       BlockArchitecture target = (BlockArchitecture) TransformationHandlerHelper.getInstance(context)
           .getBestTracedElement(root, context, CsPackage.Literals.BLOCK_ARCHITECTURE);

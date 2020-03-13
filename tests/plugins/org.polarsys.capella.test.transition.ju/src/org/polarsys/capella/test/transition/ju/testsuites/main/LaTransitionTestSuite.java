@@ -24,6 +24,7 @@ import org.polarsys.capella.test.transition.ju.testcases.la.InterfaceTransition;
 import org.polarsys.capella.test.transition.ju.testcases.la.LCPCBreakdown;
 import org.polarsys.capella.test.transition.ju.testcases.la.LCPCBreakdownWithItf;
 import org.polarsys.capella.test.transition.ju.testcases.la.LCPCLeaf;
+import org.polarsys.capella.test.transition.ju.testcases.la.LCPCNatureTransition;
 import org.polarsys.capella.test.transition.ju.testcases.la.ScenarioTransition;
 import org.polarsys.capella.test.transition.ju.testcases.la.StateMachineTransition;
 
@@ -50,8 +51,9 @@ public class LaTransitionTestSuite extends BasicTestSuite {
     tests.add(new LCPCBreakdown());
     tests.add(new LCPCBreakdownWithItf());
     tests.add(new LCPCLeaf());
+    tests.add(new LCPCNatureTransition());
     tests.add(new ScenarioTransition());
-    tests.add(new StateMachineTransition());
+    tests.add(new StateMachineTransition());    
     return tests;
   }
 
