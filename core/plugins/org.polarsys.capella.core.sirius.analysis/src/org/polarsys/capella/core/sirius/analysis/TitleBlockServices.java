@@ -66,6 +66,8 @@ public class TitleBlockServices {
   private static final String TABEL_CONTENT_PREFERENCE_STORE = "tableTitleBlock";
   private static final String ESCAPED_SEPARATOR = "\\+";
 
+  private int x;
+
   public static TitleBlockServices getService() {
     if (service == null) {
       service = new TitleBlockServices();
@@ -175,6 +177,7 @@ public class TitleBlockServices {
         }
         annotation.getReferences().addAll(annotationLines);
         representation.getEAnnotations().add(annotation);
+        x = 1;
       }
     }
   }
@@ -304,8 +307,38 @@ public class TitleBlockServices {
       deleteDanglingTitleBlock(list, elementView);
       list = list.stream().filter(x -> Objects.nonNull(x.getDetails().get(VISIBILITY)))
           .filter(x -> x.getDetails().get(VISIBILITY).equals(TRUE)).collect(Collectors.toList());
+      List<DAnnotation> diagramTitleBlockList = list.stream().filter(x -> x.getSource().equals(DIAGRAM_TITLE_BLOCK))
+          .collect(Collectors.toList());
+      if (!diagramTitleBlockList.isEmpty() && x == 0) {
+        DAnnotation diagramTitleBlock = diagramTitleBlockList.get(0);
+        updateDiagramTitleBlock(diagramTitleBlock, (EObject) elementView);
+        // x = 1;
+      }
     }
     return list;
+  }
+
+  private void updateDiagramTitleBlock(DAnnotation diagramTitleBlock, EObject elementView) {
+    String currentTB = "";
+    for (EObject line : diagramTitleBlock.getReferences()) {
+      if (line instanceof DAnnotation) {
+        for (EObject column : ((DAnnotation) line).getReferences()) {
+          if (column instanceof DAnnotation) {
+            currentTB += ((DAnnotation) column).getDetails().get(NAME) + "+"
+                + ((DAnnotation) column).getDetails().get(CONTENT) + "+";
+
+          }
+        }
+      }
+    }
+    if (currentTB.length() > 0) {
+      currentTB = currentTB.substring(currentTB.length() - 1);
+    }
+
+    if (!currentTB.equals(doGetPreferenceStore().getString(TABEL_CONTENT_PREFERENCE_STORE))) {
+      clearEAnnotations(elementView, diagramTitleBlock);
+      // createDiagramTitleBlock(elementView, elementView);
+    }
   }
 
   public boolean isTitleBlockContainer(EObject element) {
