@@ -42,6 +42,7 @@ public class LaTransitionTestSuite extends BasicTestSuite {
   @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
+    tests.add(new LCPCNatureTransition());
     tests.add(new ActorTransition());
     tests.add(new CapabilityTransition());
     tests.add(new DataTransition());
@@ -51,7 +52,6 @@ public class LaTransitionTestSuite extends BasicTestSuite {
     tests.add(new LCPCBreakdown());
     tests.add(new LCPCBreakdownWithItf());
     tests.add(new LCPCLeaf());
-    tests.add(new LCPCNatureTransition());
     tests.add(new ScenarioTransition());
     tests.add(new StateMachineTransition());    
     return tests;

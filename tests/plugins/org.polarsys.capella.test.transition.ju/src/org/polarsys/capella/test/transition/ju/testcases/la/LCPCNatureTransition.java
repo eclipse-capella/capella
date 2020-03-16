@@ -11,10 +11,13 @@
 package org.polarsys.capella.test.transition.ju.testcases.la;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Predicate;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.session.Session;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.core.data.cs.Component;
@@ -65,7 +68,7 @@ public class LCPCNatureTransition extends TopDownTransitionTestCase {
 
     assertTrue(logicalComponents.remove(logicalSystem));
     assertEquals(8, logicalComponents.size());
-    
+
     expectedComponentToNature = new HashMap<>();
 
     for (Component component : logicalComponents) {
@@ -80,40 +83,49 @@ public class LCPCNatureTransition extends TopDownTransitionTestCase {
         }
       }
     }
-
+    
   }
 
-  
-  // TODO refactor this in a single method that takes a predicate to test on all transitioned components
-  // first method -> all noed
-  // second method -> check map containment
-  
-  protected void performSingularTransition() {
-    performLCtoPCTransition(Arrays.asList(la1));
+  @Override
+  public void performTest() throws Exception {
+    assertSingularTransition();
+    assertMultipleTransition();
+  }
+
+  /**
+   * Assert that transitioning an isolated component hierarchy does not take into account his whole parent nature hierarchy
+   */
+  private void assertSingularTransition() {
+    Predicate<PhysicalComponent> singularTransitionPredicate = physicalComponent -> PhysicalComponentNature.NODE == physicalComponent
+        .getNature();
+
+    assertLCPCNatureTransition(Arrays.asList(la1), singularTransitionPredicate);
+  }
+
+  /**
+   * Assert that transitioning a whole hierarchy of components takes into account his whole parent nature hierarchy
+   */
+  private void assertMultipleTransition() {
+    Predicate<PhysicalComponent> multiTransitionPredicate = physicalComponent -> {
+      LogicalComponent logicalComponent = (LogicalComponent) ProjectionTestUtils
+          .getRealizedTargetElement(physicalComponent);
+      PhysicalComponentNature expectedNature = expectedComponentToNature.get(logicalComponent);
+
+      return physicalComponent.getNature() == expectedNature;
+    };
+
+    assertLCPCNatureTransition(Arrays.asList(logicalComponentPkg), multiTransitionPredicate);
+  }
+
+  protected void assertLCPCNatureTransition(Collection<EObject> logicalElements,
+      Predicate<PhysicalComponent> testPredicate) {
+
+    performLCtoPCTransition(logicalElements);
 
     List<Component> transionedPhysicalComponents = ComponentPkgExt.getAllSubDefinedComponents(physicalComponentPkg);
     Component physicalSystem = BlockArchitectureExt.getRootBlockArchitecture(physicalComponentPkg).getSystem();
 
     assertTrue(transionedPhysicalComponents.remove(physicalSystem));
-    assertEquals(1, transionedPhysicalComponents.size());
-
-    Component component = transionedPhysicalComponents.get(0);
-    assertTrue(component instanceof PhysicalComponent);
-
-    PhysicalComponent transitionedComponent = (PhysicalComponent) component;
-
-    assertEquals(la1, ProjectionTestUtils.getRealizedTargetElement(transitionedComponent));
-    assertEquals(PhysicalComponentNature.NODE, transitionedComponent.getNature());
-  }
-
-  protected void performFullTransition() {
-    performLCtoPCTransition(Arrays.asList(logicalComponentPkg));
-
-    List<Component> transionedPhysicalComponents = ComponentPkgExt.getAllSubDefinedComponents(physicalComponentPkg);
-    Component physicalSystem = BlockArchitectureExt.getRootBlockArchitecture(physicalComponentPkg).getSystem();
-
-    assertTrue(transionedPhysicalComponents.remove(physicalSystem));
-    assertEquals(8, transionedPhysicalComponents.size());
 
     for (Component component : transionedPhysicalComponents) {
       assertTrue(component instanceof PhysicalComponent);
@@ -121,18 +133,9 @@ public class LCPCNatureTransition extends TopDownTransitionTestCase {
 
       TraceableElement realizedTargetElement = ProjectionTestUtils.getRealizedTargetElement(transitionedComponent);
       assertTrue(realizedTargetElement instanceof LogicalComponent);
-      
-      LogicalComponent logicalComponent = (LogicalComponent) realizedTargetElement;
-      PhysicalComponentNature expectedNature = expectedComponentToNature.get(logicalComponent);
 
-      assertEquals(expectedNature, transitionedComponent.getNature());
+      assertTrue(testPredicate.test(transitionedComponent));
     }
-  }
-
-  @Override
-  public void performTest() throws Exception {
-    performSingularTransition();
-    performFullTransition();
   }
 
 }
