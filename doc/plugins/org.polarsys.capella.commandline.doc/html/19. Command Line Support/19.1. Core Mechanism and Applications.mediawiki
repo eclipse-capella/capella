@@ -3,7 +3,7 @@
 
 == Overview ==
 
-Capella provides the capacity to launch actions from command line. Potential actions are Model Validation, HTML Production, XML Export, Export as ZIP and Migration.
+Capella provides the capacity to launch actions from command line. Potential actions are Model Validation, Model Migration, HTML Production, Refresh Representations, Remove Hidden Elements from Representations and Export Representations as Images.
 
 The core mechanism provides the following parameters:
 
@@ -46,11 +46,11 @@ The core mechanism provides the following parameters:
 |-
 |consolelog
 |optional
-|allows to log messages into the console output
+|allows to send additional log messages (e.g. exceptions) into the console output
 |-
 |logfile
 |optional
-|defines the path to the log file (if not specified, log file is created in the workspace directory)
+|defines the path to the log file (if not specified, log file is created in the workspace directory with the name MDEReport.html)
 |-
 |help
 |optional
@@ -108,7 +108,7 @@ The model validation command line provides the following additional parameters:
 -data <workspacePath>
 -input "/EOLE_AF/EOLE_AF.aird"
 -outputfolder /DocProject/validation
--logfile D:\CommandLineLog\log.html
+-logfile D:/CommandLineLog/log.html
 </pre>
 
 <br/>
@@ -131,7 +131,7 @@ A log file can be also specified with the parameter '''''-logfile'''''
 -validationruleset D:/EPF/exportall.epf
 -validationcontext "EOLE_AF/EOLE_AF.melodymodeller#971d9934-9780-4e41-b02e-312d0eac3223 | EOLE_AF EOLE_AF/fragments/OA-Operational%20Context-Operational%20Entity.melodyfragment#c6aebe52-c8a4-4d35-8105-177c87470bef"
 -data <workspacePath>
--logfile D:\CommandLineLog\log.html
+-logfile D:/CommandLineLog/log.html
 </pre>
 
 This new command uses a '''''-validationruleset''''' parameter to specify the path to an Eclipse Property File (epf file) and a '''''-validationcontext''''' parameter to specify the set of URIs of model elements to validate. The set of rule to validate against are stored into the exported epf file.
@@ -290,6 +290,7 @@ For a migration and post-migration script example, please check: [[../help/topic
 -input /all
 -exportZip EOLE_AF
 -outputfolder /MigratedProject/output
+-backup
 </pre>
 
 This command imports a .zip into the specified workspace, migrate all projects inside and exported the migrated project as zip to the output folder.
@@ -318,7 +319,7 @@ In such a case, the migration sequence can be done either by launching several u
 -import "D:/Projects/Library3 | D:/Projects/Library1 | D:/Projects/Library2 | D:/Projects/Project1"
 -input /all
 -data <workspacePath>
--logfile D:\CommandLineLog\log.html
+-logfile D:/CommandLineLog/log.html
 </pre>
 
 This command migrates the given project/libraries and creates a log.html at the specified location.

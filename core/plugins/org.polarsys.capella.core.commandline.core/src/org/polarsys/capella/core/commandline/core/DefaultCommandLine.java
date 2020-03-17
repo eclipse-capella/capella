@@ -92,7 +92,8 @@ public class DefaultCommandLine extends AbstractCommandLine {
     if (projectsToExportZip != null) {
       if (projectsToExportZip.equals(ALL_ARGUMENT)) {
         exportProjectZips(Arrays.stream(ResourcesPlugin.getWorkspace().getRoot().getProjects())
-            .map(iProject -> iProject.getName()).collect(Collectors.toList()));
+            .filter(CapellaResourceHelper::isCapellaProject).map(iProject -> iProject.getName())
+            .collect(Collectors.toList()));
       } else {
         exportProjectZips(toList(projectsToExportZip));
       }
@@ -150,7 +151,9 @@ public class DefaultCommandLine extends AbstractCommandLine {
     if (argHelper.getInputs() == null) {
       logger.error(Messages.inputs_mandatory);
     } else if (argHelper.getInputs().equals(ALL_ARGUMENT)) {
-      // /all is accepted as argument
+      for (IProject project : ResourcesPlugin.getWorkspace().getRoot().getProjects()) {
+        checkProject(project);
+      }
     } else {
       List<String> inputs = toList(argHelper.getInputs());
       for (String input : inputs) {
@@ -202,10 +205,7 @@ public class DefaultCommandLine extends AbstractCommandLine {
         }
         if (!folder.exists()) {
           folder.create(true, true, new NullProgressMonitor());
-        } else {
-          logInfo(outputFolder + Messages.already_exist);
         }
-
       } catch (CoreException exception) {
         StringBuilder message = new StringBuilder(Messages.cannot_create_folder);
         logger.error(message.toString(), exception);

@@ -34,7 +34,7 @@ set importedFiles=!projectsList:~3!
 		<pre>
 echo Execute migration of all given projects:
 @echo on
-%capellaExe% -nosplash -application org.polarsys.capella.core.commandline.core -appid org.polarsys.capella.migration -data "%workspacePath%" -import "%importedFiles%" -outputfolder "A_ok/MigrationResult" -forceoutputfoldercreation
+%capellaExe% -nosplash -application org.polarsys.capella.core.commandline.core -appid org.polarsys.capella.migration -data "%workspacePath%" -import "%importedFiles%" -input /all -outputfolder "A_ok/MigrationResult" -backup
 @echo off
 echo.
 </pre>
@@ -50,7 +50,7 @@ for %%x in (%*) do (
 		<pre> <span style="color: green">rem execute the refreshRepresentations command line</span>
 </pre>
 		<pre>
-  set command1=%capellaExe% -nosplash -application org.polarsys.capella.core.commandline.core -appid org.polarsys.capella.refreshRepresentations -data "%workspacePath%" -filepath "!projectName!/!projectName!.aird" -outputfolder "!projectName!/RefreshResult" -forceoutputfoldercreation
+  set command1=%capellaExe% -nosplash -application org.polarsys.capella.core.commandline.core -appid org.polarsys.capella.refreshRepresentations -data "%workspacePath%" -input "!projectName!/!projectName!.aird" -outputfolder "!projectName!/RefreshResult"
   echo !command1!
   call !command1!
   echo.
@@ -58,7 +58,7 @@ for %%x in (%*) do (
 		<pre> <span style="color: green">rem execute the removeHiddenElements command line</span>
 </pre>
 		<pre>
-  set command2=%capellaExe% -nosplash -application org.polarsys.capella.core.commandline.core -appid org.polarsys.capella.removeHiddenElements   -data "%workspacePath%" -filepath "!projectName!/!projectName!.aird" -outputfolder "!projectName!/RemoveResult"  -forceoutputfoldercreation -unsyncDiags
+  set command2=%capellaExe% -nosplash -application org.polarsys.capella.core.commandline.core -appid org.polarsys.capella.removeHiddenElements -data "%workspacePath%" -input "!projectName!/!projectName!.aird" -outputfolder "!projectName!/RemoveResult" -unsyncDiags
   echo !command2!
   call !command2!
   echo.
@@ -66,7 +66,7 @@ for %%x in (%*) do (
 		<pre> <span style="color: green">rem execute the exportRepresentations command line</span>
 </pre>
 		<pre>
-  set command3=%capellaExe% -nosplash -application org.polarsys.capella.core.commandline.core -appid org.polarsys.capella.exportRepresentations  -data "%workspacePath%" -filepath "!projectName!/!projectName!.aird" -outputfolder "!projectName!/ExportResult"  -forceoutputfoldercreation -exportToHTML
+  set command3=%capellaExe% -nosplash -application org.polarsys.capella.core.commandline.core -appid org.polarsys.capella.exportRepresentations  -data "%workspacePath%" -input "!projectName!/!projectName!.aird" -outputfolder "!projectName!/ExportResult" -exportToHTML
   echo !command3!
   call !command3!
   echo.
