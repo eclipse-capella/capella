@@ -25,6 +25,7 @@ public class EntityRule extends org.polarsys.capella.core.transition.system.topd
     // Nothing, we will just create a ComponentRealization to System
   }
 
+  @Override
   protected boolean transformAsRootComponent(EObject object, IContext context) {
     return true;
   }
