@@ -43,9 +43,9 @@ import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
  * Impact Analysis Tool dialog.
  */
 public class ImpactAnalysisDialog extends AbstractViewerDialog {
-  
+
   public static final String IMPACT_ANALYSIS_DIALOG = "org.polarsys.capella.core.ui.toolkit.dialogs.impactAnalysis";
-  
+
   /**
    * Impact analysis label provider.
    */
@@ -58,8 +58,10 @@ public class ImpactAnalysisDialog extends AbstractViewerDialog {
 
     /**
      * Constructor.
+     * 
      * @param adapterFactory_p
-     * @param foregroundColorForReferencingElements_p must be a {@link SWT#COLOR} constant.
+     * @param foregroundColorForReferencingElements_p
+     *          must be a {@link SWT#COLOR} constant.
      */
     public ImpactAnalysisLabelProvider(TreeViewer viewer_p, int foregroundColorForReferencingElements_p) {
       super();
@@ -95,6 +97,7 @@ public class ImpactAnalysisDialog extends AbstractViewerDialog {
 
     /**
      * Constructor.
+     * 
      * @param collator_p
      */
     public ImpactAnalysisSorter(Collator collator_p) {
@@ -102,7 +105,8 @@ public class ImpactAnalysisDialog extends AbstractViewerDialog {
     }
 
     /**
-     * @see org.eclipse.jface.viewers.ViewerComparator#compare(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+     * @see org.eclipse.jface.viewers.ViewerComparator#compare(org.eclipse.jface.viewers.Viewer, java.lang.Object,
+     *      java.lang.Object)
      */
     @Override
     public int compare(Viewer viewer_p, Object object1_p, Object object2_p) {
@@ -148,35 +152,41 @@ public class ImpactAnalysisDialog extends AbstractViewerDialog {
    */
   private boolean _isMultiSelection;
 
-      /**
-     * Internal viewer displayed in the custom area.
-     */
-    private Viewer _viewer;
+  /**
+   * Internal viewer displayed in the custom area.
+   */
+  private Viewer _viewer;
 
   /**
    * Constructor.<br>
-   * Instantiate a {@link MessageDialog#INFORMATION} message dialog with one OK button and {@link SWT#COLOR_BLUE} to underline referencing elements.
+   * Instantiate a {@link MessageDialog#INFORMATION} message dialog with one OK button and {@link SWT#COLOR_BLUE} to
+   * underline referencing elements.
+   * 
    * @param referencingElements_p
    * @param dialogTitle_p
    * @param dialogMessage_p
    */
   public ImpactAnalysisDialog(List<?> referencingElements_p, String dialogTitle_p, String dialogMessage_p) {
     this(referencingElements_p, dialogTitle_p, dialogMessage_p, MessageDialog.INFORMATION,
-         new String[] { org.polarsys.capella.common.ui.toolkit.dialogs.Messages.AbstractViewerDialog_OK_Title }, DEFAULT_COLOR_FOR_RELEVANT_ELEMENTS, false);
+        new String[] { org.polarsys.capella.common.ui.toolkit.dialogs.Messages.AbstractViewerDialog_OK_Title },
+        DEFAULT_COLOR_FOR_RELEVANT_ELEMENTS, false);
   }
 
   /**
    * Constructor.
+   * 
    * @param referencingElements_p
    * @param dialogTitle_p
    * @param dialogMessage_p
    * @param dialogImageType_p
    * @param dialogButtonLabels_p
-   * @param foregroundColorForReferencingElements_p must be a {@link SWT#COLOR} constant.
+   * @param foregroundColorForReferencingElements_p
+   *          must be a {@link SWT#COLOR} constant.
    * @param isMultiSelection_p
    */
-  public ImpactAnalysisDialog(List<?> referencingElements_p, String dialogTitle_p, String dialogMessage_p, int dialogImageType_p,
-      String[] dialogButtonLabels_p, int foregroundColorForReferencingElements_p, boolean isMultiSelection_p) {
+  public ImpactAnalysisDialog(List<?> referencingElements_p, String dialogTitle_p, String dialogMessage_p,
+      int dialogImageType_p, String[] dialogButtonLabels_p, int foregroundColorForReferencingElements_p,
+      boolean isMultiSelection_p) {
     super(PlatformUI.getWorkbench().getDisplay().getActiveShell(), dialogTitle_p, dialogMessage_p, dialogTitle_p);
     setHelpAvailable(false);
     _referencingElements = referencingElements_p;
@@ -205,9 +215,10 @@ public class ImpactAnalysisDialog extends AbstractViewerDialog {
       public String getContextMenuLocation() {
         return IMPACT_ANALYSIS_DIALOG;
       }
-      
+
       /**
        * Create a check button to display (or not) the resource.
+       * 
        * @param parent_p
        */
       protected void createResourceCheckButton(Composite parent__p) {
@@ -222,7 +233,7 @@ public class ImpactAnalysisDialog extends AbstractViewerDialog {
            */
           @Override
           public void widgetSelected(SelectionEvent event_p) {
-        	  
+
             handleResourceCheckButtonClicked(((Button) event_p.widget).getSelection());
           }
         });
@@ -230,6 +241,7 @@ public class ImpactAnalysisDialog extends AbstractViewerDialog {
 
       /**
        * Handle resource check button click.
+       * 
        * @param selection_p
        */
       protected void handleResourceCheckButtonClicked(boolean isChecked_p) {
@@ -237,13 +249,13 @@ public class ImpactAnalysisDialog extends AbstractViewerDialog {
         TreeData input = null;
         // Get the 'real' viewer.
         TreeViewer clientViewer = getClientViewer();
-        
+
         List<Object> referencingElements = ((TreeData) clientViewer.getInput()).getValidElements();
-        input =getTreeViewerItems(isChecked_p, referencingElements);
+        input = getTreeViewerItems(isChecked_p, referencingElements);
         // Set the new input.
         clientViewer.setInput(input);
-        
-      }   
+
+      }
     };
     // Install a context menu manager filler if any.
     if (null != _contextMenuManagerFiller) {
@@ -257,47 +269,48 @@ public class ImpactAnalysisDialog extends AbstractViewerDialog {
     viewer.setSorter(new ImpactAnalysisSorter());
     return viewer;
   }
-  
+
   /**
-   *   
+   * 
    * @param isCheckedShowResourceButton
    * @param referencingElements
    * @return
    */
-	protected TreeData getTreeViewerItems(boolean isCheckedShowResourceButton, List<Object> referencingElements) {
-		TreeData input;
-		if (isCheckedShowResourceButton) {
-        // Change the viewer's input to take into account resource as parent.
-        input = new TreeData(referencingElements, null) {
-          /**
-           * @see org.polarsys.capella.common.ui.toolkit.viewers.data.TreeData#filterComputedParent(java.lang.Object, java.lang.Object)
-           */
-          @Override
-          protected Object filterComputedParent(Object parent__p, Object element_p) {
-            // Check if computed parent and its child (i.e specified element) have the same resource.
-            if (!(parent__p instanceof EObject) || !(element_p instanceof EObject)) {
-              return parent__p;
-            }
-            Object parent = parent__p;
-            // Get the resource that hosts the parent object.
-            Resource parentResource = ((EObject) parent__p).eResource();
-            // Get the resource that hosts the child object.
-            Resource childResource = ((EObject) element_p).eResource();
-            // Check if both resources are equals.
-            if (!parentResource.equals(childResource)) {
-              // The child object is not hosts by the parent resource.
-              // Since we want to display resources in the tree viewer, the parent for this child is its resource.
-              parent = childResource;
-            }
-            return parent;
+  protected TreeData getTreeViewerItems(boolean isCheckedShowResourceButton, List<Object> referencingElements) {
+    TreeData input;
+    if (isCheckedShowResourceButton) {
+      // Change the viewer's input to take into account resource as parent.
+      input = new TreeData(referencingElements, null) {
+        /**
+         * @see org.polarsys.capella.common.ui.toolkit.viewers.data.TreeData#filterComputedParent(java.lang.Object,
+         *      java.lang.Object)
+         */
+        @Override
+        protected Object filterComputedParent(Object parent__p, Object element_p) {
+          // Check if computed parent and its child (i.e specified element) have the same resource.
+          if (!(parent__p instanceof EObject) || !(element_p instanceof EObject)) {
+            return parent__p;
           }
-        };
-      } else {
-        // Change the viewer's input to classic data input.
-        input = new TreeData(referencingElements, null);
-      }
-		return input;
-	}
+          Object parent = parent__p;
+          // Get the resource that hosts the parent object.
+          Resource parentResource = ((EObject) parent__p).eResource();
+          // Get the resource that hosts the child object.
+          Resource childResource = ((EObject) element_p).eResource();
+          // Check if both resources are equals.
+          if (!parentResource.equals(childResource)) {
+            // The child object is not hosts by the parent resource.
+            // Since we want to display resources in the tree viewer, the parent for this child is its resource.
+            parent = childResource;
+          }
+          return parent;
+        }
+      };
+    } else {
+      // Change the viewer's input to classic data input.
+      input = new TreeData(referencingElements, null);
+    }
+    return input;
+  }
 
   @Override
   protected void doCreateDialogArea(Composite dialogAreaComposite) {
@@ -330,6 +343,7 @@ public class ImpactAnalysisDialog extends AbstractViewerDialog {
 
   /**
    * Set a context menu manager filler.
+   * 
    * @param filler
    */
   public void setContextMenuManagerFiller(AbstractContextMenuFiller filler) {

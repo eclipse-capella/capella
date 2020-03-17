@@ -72,7 +72,9 @@ public class CapellaDeleteAction extends AbstractCommandActionHandler implements
    */
   @Override
   public Command createCommand(Collection<Object> selection) {
-    return new CapellaDeleteCommand(TransactionHelper.getExecutionManager(filterSelection(selection)), selection);
+    CapellaDeleteCommand command = new CapellaDeleteCommand(TransactionHelper.getExecutionManager(filterSelection(selection)), selection);
+    command.setPreventProtectedElementsDeletion(true);
+    return command;
   }
 
   /**

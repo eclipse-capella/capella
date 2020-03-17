@@ -53,6 +53,7 @@ public class CapellaDeleteExternalAction implements IExternalJavaAction {
         monitor_p.beginTask(Messages.CapellaDeleteCommand_Label, IProgressMonitor.UNKNOWN);
         CapellaDeleteCommand mdc = new CapellaDeleteCommand(TransactionHelper.getExecutionManager(selection), selection,
             false, false, true);
+        mdc.setPreventProtectedElementsDeletion(true);
         if (mdc.canExecute()) {
           // Do execute the command !
           mdc.execute();

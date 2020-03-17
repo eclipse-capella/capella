@@ -28,6 +28,7 @@ public class Messages extends NLS {
   public static String CapellaDeleteCommand_ImpactAnalysis_ReferencingElements_Group_Title;
   public static String CapellaDeleteCommand_ImpactAnalysis_ReferencingElements_Group_Tooltip;
   public static String CapellaDeleteCommand_Label;
+  public static String CapellaDeleteCommand_ConfirmLabel;
   public static String CapellaDeleteCommand_RemoveElement_Msg;
   public static String CapellaDeleteCommand_UnsetElement_Msg;
   public static String CapellaPasteCommand_COPY_2_OF;

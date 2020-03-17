@@ -40,6 +40,10 @@ import org.polarsys.kitalpha.emde.model.Element;
  */
 public class CapellaDeleteCommand extends BasicCapellaDeleteCommand {
 
+  private boolean preventProtectedElementsDeletion;
+  
+  private IStatus protectedElements = Status.OK_STATUS;
+  
   /**
    * Equivalent to <code>CapellaDeleteCommand(executionManager, selection, true)</code>.
    * @param executionManager
@@ -81,8 +85,13 @@ public class CapellaDeleteCommand extends BasicCapellaDeleteCommand {
    */
   public CapellaDeleteCommand(ExecutionManager executionManager, Collection<?> selection, boolean ensureTransaction, boolean confirmDelete, boolean longOperationEvents) {
     super(executionManager, selection, ensureTransaction, confirmDelete, longOperationEvents);
+    this.preventProtectedElementsDeletion = false;
   }
 
+  public void setPreventProtectedElementsDeletion(boolean value) {
+    this.preventProtectedElementsDeletion = value;
+  }
+  
   /**
    * 
    */
@@ -105,25 +114,33 @@ public class CapellaDeleteCommand extends BasicCapellaDeleteCommand {
     PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
       public void run() {
         ImpactAnalysisDialog dialog =
-            new ImpactAnalysisDialog(new ArrayList<EObject>(controlledElementsToDelete), Messages.CapellaDeleteCommand_Label,
+            new ImpactAnalysisDialog(new ArrayList<EObject>(controlledElementsToDelete), Messages.CapellaDeleteCommand_ConfirmLabel,
                 Messages.CapellaDeleteCommand_ControlledElementsError_Message, MessageDialog.ERROR,
                 new String[] { org.polarsys.capella.common.ui.toolkit.dialogs.Messages.AbstractViewerDialog_OK_Title }, SWT.COLOR_RED, false);
         dialog.open();
       }
     });
   }
-
+  
+  @Override
+  protected IStatus preDeleteChecks() {
+    if (preventProtectedElementsDeletion) {
+      Set<?> elementsToDelete = getAllElementsToDelete();
+      if (!CapellaDeleteAction.canDelete(elementsToDelete)) {
+        protectedElements = new Status(Status.ERROR, CapellaActionsActivator.PLUGIN_ID,
+          Messages.CapellaDeleteCommand_ProtectedElementsError);
+      }
+    }
+    return protectedElements;
+  }
+  
   protected boolean confirmDeletion() {
     Set<?> elementsToDelete = getAllElementsToDelete();
     ConfirmDeleteCapellaElementDialog confirmDeletionDialog = new ConfirmDeleteCapellaElementDialog(
         new ArrayList<Object>(elementsToDelete), true, getExpandedSelection().toArray()) {
           @Override
           protected IStatus getStatus() {
-            if (CapellaDeleteAction.canDelete(elementsToDelete)) {
-              return Status.OK_STATUS;
-            }
-            return new Status(Status.ERROR, CapellaActionsActivator.PLUGIN_ID,
-                Messages.CapellaDeleteCommand_ProtectedElementsError);
+            return protectedElements;
           }
 
           @Override

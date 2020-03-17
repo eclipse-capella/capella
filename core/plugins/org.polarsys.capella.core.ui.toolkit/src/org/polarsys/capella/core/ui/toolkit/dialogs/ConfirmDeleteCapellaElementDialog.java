@@ -125,9 +125,6 @@ public class ConfirmDeleteCapellaElementDialog extends ImpactAnalysisDialog {
     this.setBlockOnOpen(true);
   }
 
-  /**
-   * @see org.polarsys.capella.common.ui.toolkit.dialogs.AbstractMessageDialogWithViewer#createViewerArea(org.eclipse.swt.widgets.Composite)
-   */
   protected Control createCustomArea(Composite parentComposite) {
     // Since we add a second viewer to display referencing elements for deleted ones.
     // Let's tweak the UI by the changing the layout data.
@@ -235,6 +232,7 @@ public class ConfirmDeleteCapellaElementDialog extends ImpactAnalysisDialog {
     // Set layout data.
     viewer.getTree().setLayoutData(new GridData(GridData.FILL_BOTH));
     viewer.setSorter(new ImpactAnalysisSorter());
+    constrainViewer(viewer, getViewerHeighthint());
     return viewer;
   }
   
