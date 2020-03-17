@@ -21,7 +21,7 @@ The FunctionPort should be defined in a function or a sub-function realizing the
 !|[[Image:../../../../Images/warning.gif|WARNING]]
 |TC_DC_03 - Logical Architecture Realization 
 |-
-| colspan="2"|The rule checks the realization consistency between logical architecture and physical architecture.
+| colspan="2"|The rule checks the realization consistency between Logical Architecture and Physical Architecture.
 |}
 <br>
 {| class="VALIDATION-RULE"
@@ -64,43 +64,36 @@ ComponentExchangeFunctionalExchangeAllocation ComponentExchange and FunctionalEx
 |}
 <br>
 {| class="VALIDATION-RULE"
-!|[[Image:../../../../Images/error.gif|ERROR]]
-|TC_DC_09 - System Analysis Realization 
+!|[[Image:../../../../Images/warning.gif|WARNING]]
+|TC_DC_09 - Physical Component Realization 
 |-
-| colspan="2"|The rule checks the realization consistency between system analysis and operational analysis.
-|}
-<br>
-{| class="VALIDATION-RULE"
-!|[[Image:../../../../Images/error.gif|ERROR]]
-|TC_DC_10 - Logical Architecture Realization 
-|-
-| colspan="2"|The rule checks the realization consistency between logical architecture and system analysis.
-|}
-<br>
-{| class="VALIDATION-RULE"
-!|[[Image:../../../../Images/error.gif|ERROR]]
-|TC_DC_11 - Physical Architecture Realization 
-|-
-| colspan="2"|The rule checks the realization consistency between physical architecture and logical architecture.
-|}
-<br>
-{| class="VALIDATION-RULE"
-!|[[Image:../../../../Images/error.gif|ERROR]]
-|TC_DC_12 - EPBS Architecture Realization 
-|-
-| colspan="2"|The rule checks the realization consistency between epbs architecture and physical architecture.
+| colspan="2"|This rule ensures that Physical Component always realizes a Logical Component.
 |}
 <br>
 {| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/warning.gif|WARNING]]
-|TC_DC_13 - Root Logical Component Realization 
+|TC_DC_10 - Logical Actor Realization 
 |-
-| colspan="2"|This rule Ensures that Root Logical Component always realizes a Root System Component.
+| colspan="2"|This rule ensures that Logical Actor always realizes a System Actor.
 |}
 <br>
 {| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/warning.gif|WARNING]]
-|TC_DC_14 - Physical Root Component Realization 
+|TC_DC_11 - Logical Component Realization 
 |-
-| colspan="2"|This rule Ensures that Root Physical Component always realizes a Root Logical Component.
+| colspan="2"|This rule ensures that Logical Component always realizes a System Component.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/warning.gif|WARNING]]
+|TC_DC_12 - Root Logical Component Realization 
+|-
+| colspan="2"|This rule ensures that Root Logical Component always realizes a Root System Component.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/warning.gif|WARNING]]
+|TC_DC_13 - Root Physical Component Realization 
+|-
+| colspan="2"|This rule ensures that Root Physical Component always realizes a Root Logical Component.
 |}

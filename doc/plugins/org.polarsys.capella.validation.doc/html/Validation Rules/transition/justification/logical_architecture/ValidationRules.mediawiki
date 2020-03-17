@@ -35,3 +35,10 @@
 |-
 | colspan="2"|This rule ensures that an System Component is realized by at least one Logical Component.
 |}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/error.gif|ERROR]]
+|TJ_LA_07 - Logical Architecture Realization to System Analysis 
+|-
+| colspan="2"|This rule ensures the realization consistency between Logical Architecture and System Analysis.
+|}

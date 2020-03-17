@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2014, 2020 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,15 +11,14 @@
 package org.polarsys.capella.core.data.oa.validation.operationalActivity;
 
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
-
 import org.polarsys.capella.core.data.ctx.SystemFunction;
-import org.polarsys.capella.core.data.fa.FunctionRealization;
+import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
-import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 
 public class MDCHK_OperationalActivity_Realization_1 extends AbstractValidationRule {
   /**
@@ -33,14 +32,12 @@ public class MDCHK_OperationalActivity_Realization_1 extends AbstractValidationR
     if (eType == EMFEventType.NULL) {
       if (eObj instanceof OperationalActivity) {
         OperationalActivity act = (OperationalActivity) eObj;
-
-        for (AbstractTrace trace : act.getIncomingTraces()) {
-          if ((trace instanceof FunctionRealization) && (trace.getSourceElement() instanceof SystemFunction)) {
-            return ctx.createSuccessStatus();
+        if (!FunctionExt.isRootFunction(eObj)) {
+          EList<SystemFunction> realizedSystemFunctions = act.getRealizingSystemFunctions();
+          if (realizedSystemFunctions.isEmpty()) {
+            return createFailureStatus(ctx, new Object[] { act.getName() });
           }
         }
-
-        return createFailureStatus(ctx, new Object[] { act.getName() });
       }
     }
     return ctx.createSuccessStatus();
