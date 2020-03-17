@@ -8,7 +8,7 @@
 	<body>
 		<h1 id="Command_Line_Support">Command Line Support</h1>
 		<h2 id="Overview">Overview</h2>
-		<p>Capella provides the capacity to launch actions from command line. Potential actions are Model Validation, HTML Production, XML Export, Export as ZIP and Migration.</p>
+		<p>Capella provides the capacity to launch actions from command line. Potential actions are Model Validation, Model Migration, HTML Production, Refresh Representations, Remove Hidden Elements from Representations and Export Representations as Images.</p>
 		<p>The core mechanism provides the following parameters:</p>
 		<table id="commonParameters">
 			<tr>
@@ -59,12 +59,12 @@
 			<tr>
 				<td>consolelog</td>
 				<td>optional</td>
-				<td>allows to log messages into the console output</td>
+				<td>allows to send additional log messages (e.g. exceptions) into the console output</td>
 			</tr>
 			<tr>
 				<td>logfile</td>
 				<td>optional</td>
-				<td>defines the path to the log file (if not specified, log file is created in the workspace directory)</td>
+				<td>defines the path to the log file (if not specified, log file is created in the workspace directory with the name MDEReport.html)</td>
 			</tr>
 			<tr>
 				<td>help</td>
@@ -361,6 +361,7 @@
 -input /all
 -exportZip EOLE_AF
 -outputfolder /MigratedProject/output
+-backup
 </pre>
 		<p>This command imports a .zip into the specified workspace, migrate all projects inside and exported the migrated project as zip to the output folder.</p>
 		<p>If you migrate a project using libraries, all dependent projects/libraries must be included and the sequence order matters.</p>
