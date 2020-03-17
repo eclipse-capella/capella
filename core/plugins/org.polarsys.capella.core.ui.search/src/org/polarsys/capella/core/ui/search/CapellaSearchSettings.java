@@ -19,7 +19,7 @@ import java.util.regex.PatternSyntaxException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.search.internal.core.text.PatternConstructor;
-import org.eclipse.sirius.diagram.DiagramPackage;
+import org.polarsys.capella.core.ui.search.searchfor.item.SearchForNoteItem;
 
 /*
  * Class used to keep the settings (parameters) of a search action.
@@ -33,8 +33,8 @@ public class CapellaSearchSettings {
   private String textPattern = null;
   private String replaceTextPattern = null;
   private Set<Object> objectsToSearch = new HashSet<>();
-  private Set<Object> searchAttributes = new HashSet<>();
-  private Set<Object> searchMetaClasses = new HashSet<>();
+  private Set<Object> searchAttributeItems = new HashSet<>();
+  private Set<Object> searchMetaClassItems = new HashSet<>();
   private boolean isAbstractChecked = false;
   private boolean isSemanticChecked = true;
   private int scope;
@@ -95,28 +95,20 @@ public class CapellaSearchSettings {
     this.replaceTextPattern = replaceTextPattern;
   }
 
-  public Set<Object> getSearchAttributes() {
-    return searchAttributes;
+  public Set<Object> getSearchAttributeItems() {
+    return searchAttributeItems;
   }
 
-  public void setSearchAttributes(Set<Object> searchAttributes) {
-    this.searchAttributes = searchAttributes;
+  public void setSearchAttributeItems(Set<Object> searchAttributeItems) {
+    this.searchAttributeItems = searchAttributeItems;
   }
 
-  public Set<Object> getSearchMetaClasses() {
-    return searchMetaClasses;
+  public Set<Object> getSearchClassItems() {
+    return searchMetaClassItems;
   }
 
-  public void setSearchMetaClasses(Set<Object> searchMetaClasses) {
-    this.searchMetaClasses = searchMetaClasses;
-  }
-  
-  public void addSearchMetaClass(Object searchMetaClasse) {
-    this.searchMetaClasses.add(searchMetaClasses);
-  }
-  
-  public void removeSearchMetaClass(Object searchMetaClasse) {
-    this.searchMetaClasses.remove(searchMetaClasses);
+  public void setSearchClassItems(Set<Object> searchClassItems) {
+    this.searchMetaClassItems = searchClassItems;
   }
 
   public void setAbstractChecked(boolean isAbstractChecked) {
@@ -150,19 +142,14 @@ public class CapellaSearchSettings {
       }
     }
 
-    if (searchMetaClasses.isEmpty()) {
+    if (searchMetaClassItems.isEmpty()) {
       return new Status(IStatus.ERROR, Activator.PLUGIN_ID,
           CapellaSearchConstants.CapellaSearchPage_Validation_Message_SearchMetaClass_Selection);
     }
-    
-    if (searchAttributes.isEmpty() && !searchMetaClasses.contains(DiagramPackage.eINSTANCE.getNote())) {
+
+    if (searchAttributeItems.isEmpty() && !searchMetaClassItems.stream().anyMatch(SearchForNoteItem.class::isInstance)) {
       return new Status(IStatus.ERROR, Activator.PLUGIN_ID,
           CapellaSearchConstants.CapellaSearchPage_Validation_Message_SearchAttribute_Selection);
-    }
-    
-    if (!isAbstractChecked && !isSemanticChecked) {
-      return new Status(IStatus.ERROR, Activator.PLUGIN_ID,
-          CapellaSearchConstants.CapellaSearchPage_Validation_Message_SearchFilter_Selection);
     }
 
     return Status.OK_STATUS;
@@ -201,13 +188,13 @@ public class CapellaSearchSettings {
       return false;
     }
 
-    if (this.searchAttributes == null ? that.searchAttributes != null
-        : !this.searchAttributes.equals(that.searchAttributes)) {
+    if (this.searchAttributeItems == null ? that.searchAttributeItems != null
+        : !this.searchAttributeItems.equals(that.searchAttributeItems)) {
       return false;
     }
     
-    if (this.searchMetaClasses == null ? that.searchMetaClasses != null
-        : !this.searchMetaClasses.equals(that.searchMetaClasses)) {
+    if (this.searchMetaClassItems == null ? that.searchMetaClassItems != null
+        : !this.searchMetaClassItems.equals(that.searchMetaClassItems)) {
       return false;
     }
 
@@ -229,8 +216,8 @@ public class CapellaSearchSettings {
     hashCode += 7 * hashCode + (isRegExSearch ? 1 : 0);
     hashCode += 7 * hashCode + (textPattern == null ? 0 : textPattern.hashCode());
     hashCode += 7 * hashCode + (replaceTextPattern == null ? 0 : replaceTextPattern.hashCode());
-    hashCode += 7 * hashCode + searchAttributes.hashCode();
-    hashCode += 7 * hashCode + searchMetaClasses.hashCode();
+    hashCode += 7 * hashCode + searchAttributeItems.hashCode();
+    hashCode += 7 * hashCode + searchMetaClassItems.hashCode();
     hashCode += 7 * hashCode + objectsToSearch.hashCode();
     hashCode += 7 * hashCode + scope;
     return hashCode;

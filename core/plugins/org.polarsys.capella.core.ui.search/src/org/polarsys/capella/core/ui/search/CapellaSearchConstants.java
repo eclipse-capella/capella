@@ -53,6 +53,7 @@ public class CapellaSearchConstants {
   public static final String ModelElements_Key = "Model Elements";
   public static final String DiagramElements_Key = "Diagram Elements";
   public static final String Diagram_Label = "Diagram";
+  public static final String Note_Label = "Note";
   public static final String WorkspaceScope_text = "Workspace";
   public static final String SelectedElementScope_text = "Selected model elements";
   public static final String ProjectScope_text = "Enclosing projects";

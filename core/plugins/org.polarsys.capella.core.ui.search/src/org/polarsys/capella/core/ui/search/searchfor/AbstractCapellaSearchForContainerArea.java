@@ -16,7 +16,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.CheckStateChangedEvent;
 import org.eclipse.jface.viewers.CheckboxTreeViewer;
@@ -37,7 +36,7 @@ import org.eclipse.ui.dialogs.PatternFilter;
 import org.eclipse.ui.progress.IProgressService;
 import org.polarsys.capella.core.ui.search.CapellaSearchConstants;
 import org.polarsys.capella.core.ui.search.CapellaSearchPage;
-import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
+import org.polarsys.capella.core.ui.search.searchfor.item.SearchForItem;
 
 public abstract class AbstractCapellaSearchForContainerArea {
   protected Button selectAllButton;
@@ -64,14 +63,14 @@ public abstract class AbstractCapellaSearchForContainerArea {
   }
 
   protected void createContentArea() {
-    AbstractMetaModelParticipantsItemProvider partictipantsItemProvider = getPartictipantsItemProvider();
+    AbstractSearchForContentProvider partictipantsItemProvider = getSearchForContentProvider();
     patternFilter = createPatternFilter();
 
     filteredTree = new CheckboxFilteredTree(parentGroup, SWT.BORDER, patternFilter);
     filteredTree.getViewer().setContentProvider(partictipantsItemProvider);
 
     filteredTree.getViewer()
-        .setLabelProvider(new SearchForLabelProvider(CapellaAdapterFactoryProvider.getInstance().getAdapterFactory()));
+        .setLabelProvider(new SearchForLabelProvider());
 
     filteredTree.getViewer().setInput("");
 
@@ -85,12 +84,8 @@ public abstract class AbstractCapellaSearchForContainerArea {
     filteredTree.getViewer().setComparator(new ViewerComparator() {
       @Override
       public int compare(Viewer testViewer, Object e1, Object e2) {
-        if (e1 instanceof ENamedElement && e2 instanceof ENamedElement) {
-          ENamedElement eClass1 = (ENamedElement) e1;
-          ENamedElement eClass2 = (ENamedElement) e2;
-          String eClass1Name = eClass1.getName() == null ? "" : eClass1.getName();
-          String eClass2Name = eClass2.getName() == null ? "" : eClass2.getName();
-          return eClass1Name.compareTo(eClass2Name);
+        if (e1 instanceof SearchForItem && e2 instanceof SearchForItem) {
+          return ((SearchForItem) e1).getText().compareTo(((SearchForItem) e2).getText());
         } else if (e1 instanceof String && e2 instanceof String) {
           String cat1 = (String) e1;
           if (cat1.equals(CapellaSearchConstants.ModelElements_Key))
@@ -115,7 +110,7 @@ public abstract class AbstractCapellaSearchForContainerArea {
 
   protected void updateCheckedElements(Object parent, boolean state) {
     // handle the inheritance check propagation
-    boolean hasChildren = getPartictipantsItemProvider().hasChildren(parent);
+    boolean hasChildren = getSearchForContentProvider().hasChildren(parent);
     CheckboxTreeViewer viewer = (CheckboxTreeViewer) filteredTree.getViewer();
     if(hasChildren) {
       viewer.setSubtreeChecked(parent, state);
@@ -191,13 +186,13 @@ public abstract class AbstractCapellaSearchForContainerArea {
   protected abstract PatternFilter createPatternFilter();
 
   public void checkAll(CheckboxTreeViewer viewer, boolean state) {
-    Object[] viewerElements = getPartictipantsItemProvider().getElements("");
+    Object[] viewerElements = getSearchForContentProvider().getElements("");
     for (Object obj : viewerElements) {
       viewer.setSubtreeChecked(obj, state);
     }
   }
 
-  protected abstract AbstractMetaModelParticipantsItemProvider getPartictipantsItemProvider();
+  protected abstract AbstractSearchForContentProvider getSearchForContentProvider();
 
   public void setOtherSideArea(AbstractCapellaSearchForContainerArea area) {
     this.otherSideArea = area;
@@ -225,6 +220,6 @@ public abstract class AbstractCapellaSearchForContainerArea {
   }
   
   public Set<Object> getCheckedElements() {
-    return new HashSet<Object>(Arrays.asList(((CheckboxTreeViewer) filteredTree.getViewer()).getCheckedElements()));
+    return new HashSet<>(Arrays.asList(((CheckboxTreeViewer) filteredTree.getViewer()).getCheckedElements()));
   }
 }

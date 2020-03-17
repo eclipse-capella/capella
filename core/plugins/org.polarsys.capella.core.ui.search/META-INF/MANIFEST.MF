@@ -25,7 +25,13 @@ Require-Bundle: org.eclipse.search,
  org.eclipse.emf.ecore,
  org.eclipse.swt,
  org.eclipse.sirius.diagram,
- org.polarsys.capella.core.model.semantic
+ org.polarsys.capella.core.model.semantic,
+ org.eclipse.sirius.diagram.ui,
+ org.eclipse.gmf.runtime.notation.edit,
+ org.eclipse.sirius.ext.base,
+ com.google.guava,
+ org.eclipse.gmf.runtime.diagram.core,
+ org.eclipse.gmf.runtime.diagram.ui
 Export-Package: org.polarsys.capella.core.ui.search
  
 
