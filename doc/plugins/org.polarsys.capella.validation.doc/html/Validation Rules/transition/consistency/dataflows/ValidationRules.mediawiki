@@ -117,3 +117,10 @@ If E1 is carried by another Function Port P2 contained by a Function F2 and F2 r
 |-
 | colspan="2"|This rule verifies that a realization link exists between two functions containing a function port having a realization link.
 |}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/error.gif|ERROR]]
+|TC_DF_15 - Root Function Realization 
+|-
+| colspan="2"|This rule ensures the realization consistency between Root Functions.
+|}
