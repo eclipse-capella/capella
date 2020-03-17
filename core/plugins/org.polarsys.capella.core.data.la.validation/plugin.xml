@@ -187,7 +187,7 @@
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0}.
+                  {0}does not realize the {1}.
                </message>
                <target
                      class="LogicalComponent">

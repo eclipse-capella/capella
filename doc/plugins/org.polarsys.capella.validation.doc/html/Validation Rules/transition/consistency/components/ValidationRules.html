@@ -49,7 +49,7 @@
 				<td>TC_DC_03 - Logical Architecture Realization </td>
 			</tr>
 			<tr>
-				<td colspan="2">The rule checks the realization consistency between logical architecture and physical architecture.</td>
+				<td colspan="2">The rule checks the realization consistency between Logical Architecture and Physical Architecture.</td>
 			</tr>
 		</table>
 		<p>
@@ -134,54 +134,12 @@
 		<table class="VALIDATION-RULE">
 			<tr>
 				<th>
-					<img title="ERROR" alt="ERROR" border="0" src="../../../../Images/error.gif"/>
+					<img title="WARNING" alt="WARNING" border="0" src="../../../../Images/warning.gif"/>
 				</th>
-				<td>TC_DC_09 - System Analysis Realization </td>
+				<td>TC_DC_09 - Physical Component Realization </td>
 			</tr>
 			<tr>
-				<td colspan="2">The rule checks the realization consistency between system analysis and operational analysis.</td>
-			</tr>
-		</table>
-		<p>
-			<br/>
-		</p>
-		<table class="VALIDATION-RULE">
-			<tr>
-				<th>
-					<img title="ERROR" alt="ERROR" border="0" src="../../../../Images/error.gif"/>
-				</th>
-				<td>TC_DC_10 - Logical Architecture Realization </td>
-			</tr>
-			<tr>
-				<td colspan="2">The rule checks the realization consistency between logical architecture and system analysis.</td>
-			</tr>
-		</table>
-		<p>
-			<br/>
-		</p>
-		<table class="VALIDATION-RULE">
-			<tr>
-				<th>
-					<img title="ERROR" alt="ERROR" border="0" src="../../../../Images/error.gif"/>
-				</th>
-				<td>TC_DC_11 - Physical Architecture Realization </td>
-			</tr>
-			<tr>
-				<td colspan="2">The rule checks the realization consistency between physical architecture and logical architecture.</td>
-			</tr>
-		</table>
-		<p>
-			<br/>
-		</p>
-		<table class="VALIDATION-RULE">
-			<tr>
-				<th>
-					<img title="ERROR" alt="ERROR" border="0" src="../../../../Images/error.gif"/>
-				</th>
-				<td>TC_DC_12 - EPBS Architecture Realization </td>
-			</tr>
-			<tr>
-				<td colspan="2">The rule checks the realization consistency between epbs architecture and physical architecture.</td>
+				<td colspan="2">This rule ensures that Physical Component always realizes a Logical Component.</td>
 			</tr>
 		</table>
 		<p>
@@ -192,10 +150,10 @@
 				<th>
 					<img title="WARNING" alt="WARNING" border="0" src="../../../../Images/warning.gif"/>
 				</th>
-				<td>TC_DC_13 - Root Logical Component Realization </td>
+				<td>TC_DC_10 - Logical Actor Realization </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule Ensures that Root Logical Component always realizes a Root System Component.</td>
+				<td colspan="2">This rule ensures that Logical Actor always realizes a System Actor.</td>
 			</tr>
 		</table>
 		<p>
@@ -206,10 +164,38 @@
 				<th>
 					<img title="WARNING" alt="WARNING" border="0" src="../../../../Images/warning.gif"/>
 				</th>
-				<td>TC_DC_14 - Physical Root Component Realization </td>
+				<td>TC_DC_11 - Logical Component Realization </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule Ensures that Root Physical Component always realizes a Root Logical Component.</td>
+				<td colspan="2">This rule ensures that Logical Component always realizes a System Component.</td>
+			</tr>
+		</table>
+		<p>
+			<br/>
+		</p>
+		<table class="VALIDATION-RULE">
+			<tr>
+				<th>
+					<img title="WARNING" alt="WARNING" border="0" src="../../../../Images/warning.gif"/>
+				</th>
+				<td>TC_DC_12 - Root Logical Component Realization </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule ensures that Root Logical Component always realizes a Root System Component.</td>
+			</tr>
+		</table>
+		<p>
+			<br/>
+		</p>
+		<table class="VALIDATION-RULE">
+			<tr>
+				<th>
+					<img title="WARNING" alt="WARNING" border="0" src="../../../../Images/warning.gif"/>
+				</th>
+				<td>TC_DC_13 - Root Physical Component Realization </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule ensures that Root Physical Component always realizes a Root Logical Component.</td>
 			</tr>
 		</table>
 	</body>
