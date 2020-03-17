@@ -162,5 +162,9 @@
             class="org.polarsys.capella.core.data.cs.ui.quickfix.generator.DWF_DC_36_Generator"
             markerType="org.polarsys.capella.core.validation.markers">
       </markerResolutionGenerator>
+	  <markerResolutionGenerator
+            class="org.polarsys.capella.core.data.cs.ui.quickfix.generator.DWF_DC_30_Generator"
+            markerType="org.polarsys.capella.core.validation.markers">
+      </markerResolutionGenerator>
    </extension>
 </plugin>

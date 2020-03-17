@@ -129,4 +129,6 @@ public interface ITransitionConstants {
 
   String CATEGORY_SEMANTIC = "category.semantic";
   String CATEGORY_BUSINESS = "category.business";
+  
+  String LC_TO_PC_COMPUTED_NATURE = "LC_TO_PC_COMPUTED_NATURE";
 }

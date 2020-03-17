@@ -405,9 +405,7 @@ contains the part {2} {5} typed by {0} {3}.
                   {0}
                </message>
                <description>
-                  This rule ensures that PhysicalPort is not contained in BehaviourPC.
-
-BehaviourPC=Physical Component of nature BEHAVIOUR
+                  This rule ensures that a Physical Port is not contained in a Physical Component of nature BEHAVIOUR.
                </description>
                <target
                      class="PhysicalPort">

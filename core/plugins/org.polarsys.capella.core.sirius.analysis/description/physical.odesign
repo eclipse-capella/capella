@@ -533,7 +533,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.sourceNode.target.dndDFBAbstractFunction(elementView.sourceNode.target.eContainer(),containerView.target)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="delete SF"  forceRefresh="true">
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="delete SF" forceRefresh="true">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -1171,7 +1171,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="delete SF" >
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="delete SF">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -1727,7 +1727,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.sourceNode.target.dndCBComponent(elementView.sourceNode.target.eContainer(),containerView.target)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="Physical Component" >
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="Physical Component">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -3156,7 +3156,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element.dndABComponent(newContainerView)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="delete SF" >
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="delete SF">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -4133,7 +4133,7 @@
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolGroup" name="Show/Hide Functions">
-            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Insert/Remove Allocated Functions. Creates or deletes graphical objects corresponding to already allocated Functions. Removing a Function graphical object from the Physical Component or Actor does not delete the allocation relationship towards the Function. This tool does not modify the semantic model." name="allocated.functions" label="%pa.pab.allocated.functions" precondition="aql:(not self.isNode() or self.isActor()) and container.getComponentType().oclIsKindOf(cs::Component)" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_PhysicalFunction'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_ControlFunction']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Insert/Remove Allocated Functions. Creates or deletes graphical objects corresponding to already allocated Functions. Removing a Function graphical object from the Physical Component or Actor does not delete the allocation relationship towards the Function. This tool does not modify the semantic model." name="allocated.functions" label="%pa.pab.allocated.functions" precondition="aql:(not containerView.oclIsKindOf(diagram::DSemanticDiagram)) and container.getComponentType().oclIsKindOf(cs::Component)" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_PhysicalFunction'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_ControlFunction']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
               <variable name="container">
                 <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
               </variable>
@@ -4155,7 +4155,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Insert All Allocated Functions. Creates graphical objects for all Functions already allocated to all Physical Components and Actors appearing on the diagram. This tool does not modify the semantic model." name="all.allocated.functions" label="%pa.pab.all.allocated.functions" precondition="aql:(not self.isNode() or self.isActor())" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_Dummy']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Insert All Allocated Functions. Creates graphical objects for all Functions already allocated to all Physical Components and Actors appearing on the diagram. This tool does not modify the semantic model." name="all.allocated.functions" label="%pa.pab.all.allocated.functions" precondition="aql:container.getComponentType().oclIsKindOf(cs::Component)" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_Dummy']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
