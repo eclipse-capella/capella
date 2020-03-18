@@ -9,6 +9,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
+import org.polarsys.capella.core.data.cs.Part;
+import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.helpers.interaction.services.SequenceMessageExt;
@@ -26,6 +28,7 @@ import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.interaction.MessageEnd;
 import org.polarsys.capella.core.data.interaction.MessageKind;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
+import org.polarsys.capella.core.data.oa.Role;
 
 public class ScenarioExt {
 
@@ -174,6 +177,30 @@ public class ScenarioExt {
         && end.getCoveredInstanceRoles().get(0).getRepresentedInstance() instanceof ExchangeItemInstance;
   }
 
+  /**
+   * Returns whether the given end is on a Role instance role
+   */
+  public static boolean isRoleInstanceRole(AbstractEnd end) {
+    return end.getCoveredInstanceRoles().size() > 0
+        && end.getCoveredInstanceRoles().get(0).getRepresentedInstance() instanceof Role;
+  }
+  
+  /**
+   * Returns whether the given end is on a Part instance role
+   */
+  public static boolean isPartInstanceRole(AbstractEnd end) {
+    return end.getCoveredInstanceRoles().size() > 0
+        && end.getCoveredInstanceRoles().get(0).getRepresentedInstance() instanceof Part;
+  }
+  
+  /**
+   * Returns whether the given end is on a AbstractFunction instance role
+   */
+  public static boolean isFunctionalInstanceRole(AbstractEnd end) {
+    return end.getCoveredInstanceRoles().size() > 0
+        && end.getCoveredInstanceRoles().get(0).getRepresentedInstance() instanceof AbstractFunction;
+  }
+  
   /**
    * Return the ExchangeItemInstance related to the abstract end.
    * 

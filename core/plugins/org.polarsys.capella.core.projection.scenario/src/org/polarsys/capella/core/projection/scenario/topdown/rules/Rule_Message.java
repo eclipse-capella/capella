@@ -17,8 +17,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.core.data.information.AbstractEventOperation;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
-import org.polarsys.capella.core.projection.common.CommonRule;
 import org.polarsys.capella.core.projection.common.ProjectionMessages;
+import org.polarsys.capella.core.projection.scenario.common.rules.Rule_InteractionElement;
 import org.polarsys.capella.core.projection.scenario.helpers.ScenarioExt;
 import org.polarsys.capella.core.projection.scenario.topdown.TopDownExt;
 import org.polarsys.capella.core.tiger.ITransfo;
@@ -26,7 +26,7 @@ import org.polarsys.capella.core.tiger.helpers.TigerRelationshipHelper;
 
 /**
  */
-public class Rule_Message extends CommonRule {
+public class Rule_Message extends Rule_InteractionElement {
 
   /**
    * @param eclass_p
@@ -78,10 +78,8 @@ public class Rule_Message extends CommonRule {
 
   @Override
   protected void doGoDeep(EObject element_p, List<EObject> result_p) {
-
-    SequenceMessage s = (SequenceMessage) element_p;
-
-    result_p.add(s.getExchangeContext());
+    super.doGoDeep(element_p, result_p);
+    result_p.add(((SequenceMessage)element_p).getExchangeContext());
   }
 
 }

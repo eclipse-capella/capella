@@ -18,8 +18,8 @@ import org.polarsys.capella.core.data.information.AbstractInstance;
 import org.polarsys.capella.core.data.information.InformationPackage;
 import org.polarsys.capella.core.data.interaction.InstanceRole;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
-import org.polarsys.capella.core.projection.common.CommonRule;
 import org.polarsys.capella.core.projection.common.context.IContext;
+import org.polarsys.capella.core.projection.scenario.common.rules.Rule_InteractionElement;
 import org.polarsys.capella.core.projection.scenario.helpers.IScenarioHelper;
 import org.polarsys.capella.core.projection.scenario.helpers.InstanceRoles;
 import org.polarsys.capella.core.tiger.ITransfo;
@@ -29,7 +29,7 @@ import org.polarsys.capella.core.tiger.helpers.TigerRelationshipHelper;
 
 /**
  */
-public class Rule_InstanceRole extends CommonRule {
+public class Rule_InstanceRole extends Rule_InteractionElement {
 
   /**
    * @param sourceType
@@ -102,9 +102,4 @@ public class Rule_InstanceRole extends CommonRule {
 
   }
 
-  @Override
-  protected void doGoDeep(EObject element, List<EObject> result) {
-    super.doGoDeep(element, result);
-    result.addAll(((InstanceRole)element).getConstraints());
-  }
 }

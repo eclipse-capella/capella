@@ -26,6 +26,7 @@ import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
+import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.interaction.InteractionFactory;
 import org.polarsys.capella.core.data.interaction.RefinementLink;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
@@ -34,6 +35,7 @@ import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.data.capellacore.Namespace;
 import org.polarsys.capella.core.model.utils.CapellaLayerCheckingExt;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.common.menu.dynamic.CreationHelper;
 
@@ -45,10 +47,12 @@ public class RefinementLinkExt {
   /**
    * 
    */
-  private static final Logger _logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.MODEL);
+  private static final Logger _logger = ReportManagerRegistry.getInstance()
+      .subscribe(IReportManagerDefaultComponents.MODEL);
 
   /**
    * Creates a refinement traceability link owned by the source's first possible container.
+   * 
    * @param sourceElt
    * @param targetElt
    * @return RefinementLink
@@ -59,22 +63,24 @@ public class RefinementLinkExt {
 
   /**
    * Creates a refinement traceability link owned by given NamedElement first possible container.
+   * 
    * @param sourceElt
    * @param targetElt
    * @param container
    * @return RefinementLink
    */
-  static public RefinementLink createRefinementTraceabilityLink(NamedElement sourceElt, NamedElement targetElt, NamedElement container) {
+  static public RefinementLink createRefinementTraceabilityLink(NamedElement sourceElt, NamedElement targetElt,
+      NamedElement container) {
     RefinementLink lnk = null;
-    Namespace ownerElt =
-        (Namespace) ((container instanceof Namespace) ? container : EcoreUtil2.getFirstContainer(container, CapellacorePackage.Literals.NAMESPACE));
+    Namespace ownerElt = (Namespace) ((container instanceof Namespace) ? container
+        : EcoreUtil2.getFirstContainer(container, CapellacorePackage.Literals.NAMESPACE));
 
     if (ownerElt != null) {
       lnk = createRefinementTraceabilityLink(sourceElt, targetElt, ownerElt);
     } else {
-      _logger
-          .debug(new EmbeddedMessage(
-              "The traceability between '" + sourceElt.getName() + "' and '" + targetElt.getName() + "' have no container.", IReportManagerDefaultComponents.MODEL)); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+      _logger.debug(new EmbeddedMessage(
+          "The traceability between '" + sourceElt.getName() + "' and '" + targetElt.getName() + "' have no container.", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+          IReportManagerDefaultComponents.MODEL));
     }
 
     return lnk;
@@ -82,12 +88,14 @@ public class RefinementLinkExt {
 
   /**
    * Creates a refinement traceability link.
+   * 
    * @param sourceElt
    * @param targetElt
    * @param container
    * @return RefinementLink
    */
-  static public RefinementLink createRefinementTraceabilityLink(NamedElement sourceElt, NamedElement targetElt, Namespace container) {
+  static public RefinementLink createRefinementTraceabilityLink(NamedElement sourceElt, NamedElement targetElt,
+      Namespace container) {
     RefinementLink lnk = null;
 
     if (container != null) {
@@ -104,7 +112,8 @@ public class RefinementLinkExt {
   }
 
   /**
-   * Returns elements values for sourceElt.eGet(reference) where values isn't the best values used. (best value as in isAttachedToBestElement method)
+   * Returns elements values for sourceElt.eGet(reference) where values isn't the best values used. (best value as in
+   * isAttachedToBestElement method)
    */
   public static List<EObject> getInvalidAttachedToBestElement(EObject sourceElt, EReference reference) {
     List<EObject> list = new ArrayList<EObject>();
@@ -130,7 +139,8 @@ public class RefinementLinkExt {
   /**
    * Returns list of attribute values which isn't equals from the source element and refined elements
    */
-  public static List<Object> getMissingValuesFromRefined(EObject sourceElt, EAttribute attribute, Collection<?> excludeValuesFromSources) {
+  public static List<Object> getMissingValuesFromRefined(EObject sourceElt, EAttribute attribute,
+      Collection<?> excludeValuesFromSources) {
     List<Object> list = new ArrayList<Object>();
 
     for (AbstractTrace lnk : ((TraceableElement) sourceElt).getOutgoingTraces()) {
@@ -162,6 +172,7 @@ public class RefinementLinkExt {
 
   /**
    * Retrieves all source elements linked, by a refinement traceability link, with a given target element.
+   * 
    * @param currentElt
    * @param type
    * @return List<NamedElement>
@@ -185,6 +196,7 @@ public class RefinementLinkExt {
 
   /**
    * Retrieves all target elements linked, by a refinement traceability link, with a given source element.
+   * 
    * @param currentElt
    * @param type
    * @return List<NamedElement>
@@ -208,6 +220,7 @@ public class RefinementLinkExt {
 
   /**
    * Retrieves all source elements linked, by a refinement traceability link, with a given target element.
+   * 
    * @param currentElt
    * @param type
    * @return List<NamedElement>
@@ -229,6 +242,7 @@ public class RefinementLinkExt {
 
   /**
    * Retrieves all target elements linked, by a traceability link, with a given source element.
+   * 
    * @param currentElt
    * @param type
    * @return List<NamedElement>
@@ -251,13 +265,14 @@ public class RefinementLinkExt {
   /**
    * Returns list of attribute values which isn't equals from the source element and refined elements
    */
-  public static boolean hasMissingValuesFromRefined(EObject sourceElt, EAttribute attribute, Collection<?> excludeValuesFromSources) {
+  public static boolean hasMissingValuesFromRefined(EObject sourceElt, EAttribute attribute,
+      Collection<?> excludeValuesFromSources) {
     return getMissingValuesFromRefined(sourceElt, attribute, excludeValuesFromSources).size() > 0;
   }
 
   /**
-   * Returns whether the element objValue is the best element defined for the sourceElt. (It means returns whether objValue is in the same layer than
-   * sourceElement or if it isn't refined in the sourceElt architecture)
+   * Returns whether the element objValue is the best element defined for the sourceElt. (It means returns whether
+   * objValue is in the same layer than sourceElement or if it isn't refined in the sourceElt architecture)
    */
   public static boolean isAttachedToBestElement(EObject sourceElt, EObject objValue) {
     if (!CapellaLayerCheckingExt.areInSameLayer(sourceElt, objValue)) {
@@ -270,6 +285,7 @@ public class RefinementLinkExt {
 
   /**
    * Verifies whether {@link sourceElt} has a refinement link towards {@link targetElt} or not.
+   * 
    * @param sourceElt
    * @param targetElt
    */
@@ -282,6 +298,14 @@ public class RefinementLinkExt {
         }
       }
     }
+    if (sourceElt instanceof Part && targetElt instanceof Part) {
+      AbstractType sourceType = ((Part) sourceElt).getAbstractType();
+      AbstractType targetType = ((Part) targetElt).getAbstractType();
+      if (sourceType instanceof TraceableElement && targetType instanceof TraceableElement) {
+        return isLinkedTo((TraceableElement) sourceType, (TraceableElement) targetType);
+      }
+    }
+
     return false;
   }
 
