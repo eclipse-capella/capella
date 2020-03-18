@@ -38,6 +38,11 @@
       </propertyRenderer>
       
       <propertyRenderer 
+            id="optionHorizontalRenderer" 
+            class="org.polarsys.capella.common.flexibility.wizards.renderer.OptionHorizontalRenderer">
+      </propertyRenderer>
+      
+      <propertyRenderer 
             id="browseRenderer" 
             class="org.polarsys.capella.common.flexibility.wizards.renderer.BrowseRenderer">
       </propertyRenderer>

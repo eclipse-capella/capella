@@ -14,7 +14,7 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.interaction.ScenarioKind;
@@ -24,7 +24,6 @@ import org.polarsys.capella.core.projection.scenario.common.rules.Rule_CapellaEl
 import org.polarsys.capella.core.tiger.ITransfo;
 import org.polarsys.capella.core.tiger.helpers.Query;
 import org.polarsys.capella.core.tiger.impl.TransfoEngine;
-import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 
 /**
  */

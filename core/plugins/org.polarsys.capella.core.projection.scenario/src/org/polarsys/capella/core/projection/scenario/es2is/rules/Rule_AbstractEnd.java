@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.interaction.AbstractEnd;
 import org.polarsys.capella.core.data.interaction.Execution;
@@ -24,8 +23,10 @@ import org.polarsys.capella.core.data.interaction.InteractionFactory;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.projection.common.CommonRule;
 import org.polarsys.capella.core.projection.common.ProjectionMessages;
-import org.polarsys.capella.core.projection.scenario.CommonScenarioHelper;
-import org.polarsys.capella.core.projection.scenario.ScenarioFinalizer;
+import org.polarsys.capella.core.projection.scenario.es2is.ES2ISExt;
+import org.polarsys.capella.core.projection.scenario.helpers.ReorderEnds;
+import org.polarsys.capella.core.projection.scenario.helpers.ScenarioExt;
+import org.polarsys.capella.core.projection.scenario.helpers.UnwantedObjects;
 import org.polarsys.capella.core.tiger.ITransfo;
 import org.polarsys.capella.core.tiger.helpers.Query;
 import org.polarsys.capella.core.tiger.helpers.TigerRelationshipHelper;
@@ -43,7 +44,7 @@ public class Rule_AbstractEnd extends CommonRule {
       Execution execution = ((ExecutionEnd) end).getExecution();
       end = (AbstractEnd) execution.getStart();
       if (!isOrWillBeTransformed(end.getEvent(), transfo_p)) {
-        ScenarioFinalizer.registerUnwantedObject(end.getEvent(), transfo_p);
+        UnwantedObjects.add(end.getEvent(), transfo_p);
         return false;
       }
 
@@ -70,8 +71,8 @@ public class Rule_AbstractEnd extends CommonRule {
   private void attachAbstractEnd(AbstractEnd element_p, AbstractEnd newAe, int i, ITransfo transfo_p) {
     AbstractEnd me = element_p;
     InstanceRole ir = me.getCovered();
-    if (DF2ISHelper.mustInverse(element_p, i)) {
-      InstanceRole opposite = CommonScenarioHelper.getOppositeCoveredIR(me);
+    if (ES2ISExt.mustInverse(element_p, i)) {
+      InstanceRole opposite = ScenarioExt.getOppositeCoveredIR(me);
       if (opposite != null) {
         ir = opposite;
       }
@@ -103,11 +104,11 @@ public class Rule_AbstractEnd extends CommonRule {
   @Override
   @SuppressWarnings("unused")
   public Object transformElement(EObject element_p, ITransfo transfo_p) {
-    List<ExchangeItem> eis = DF2ISHelper.getExchangeItems((AbstractEnd) element_p);
+    List<ExchangeItem> eis = ES2ISExt.getExchangeItems((AbstractEnd) element_p);
     if (eis.size() <= 1)
       return InteractionFactory.eINSTANCE.create(element_p.eClass());
 
-    Df2IsFinalizer.register((AbstractEnd) element_p);
+    ReorderEnds.add((AbstractEnd) element_p);
 
     List<AbstractEnd> result = new ArrayList<AbstractEnd>(eis.size());
     for (ExchangeItem exchangeItem : eis) {

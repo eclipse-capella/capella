@@ -13,6 +13,7 @@ package org.polarsys.capella.test.transition.ju.transitions;
 import java.util.Arrays;
 import java.util.List;
 
+import org.polarsys.capella.core.transition.system.topdown.constants.ITopDownConstants;
 import org.polarsys.capella.test.transition.ju.TopDownTransitionTestCase;
 
 /**
@@ -56,6 +57,7 @@ public class Context_I01_01 extends TopDownTransitionTestCase {
 
   @Override
   public void performTest() throws Exception {
+    setPreferenceValue(ITopDownConstants.OPTIONS_TRANSITION__EXCHANGE_ITEM, true);
     step1();
   }
 

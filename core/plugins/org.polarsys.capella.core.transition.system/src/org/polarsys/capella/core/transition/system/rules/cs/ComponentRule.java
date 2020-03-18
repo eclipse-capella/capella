@@ -35,6 +35,8 @@ import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
 import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.ctx.SystemComponentPkg;
+import org.polarsys.capella.core.data.epbs.ConfigurationItem;
+import org.polarsys.capella.core.data.epbs.EpbsPackage;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
 import org.polarsys.capella.core.data.la.LaPackage;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
@@ -291,6 +293,10 @@ public class ComponentRule extends AbstractCapellaElementRule {
 
     } else if (container instanceof Part) {
       return CsPackage.Literals.PART__OWNED_ABSTRACT_TYPE;
+    } else if(container instanceof ConfigurationItem) {
+      if(EpbsPackage.Literals.CONFIGURATION_ITEM.isSuperTypeOf(targetType)) {
+        return EpbsPackage.Literals.CONFIGURATION_ITEM__OWNED_CONFIGURATION_ITEMS;
+      }
     }
     return element.eContainingFeature();
   }

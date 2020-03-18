@@ -13,7 +13,7 @@ package org.polarsys.capella.core.projection.scenario.fs2es.rules;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.interaction.ScenarioKind;
@@ -24,7 +24,6 @@ import org.polarsys.capella.core.tiger.TransfoException;
 import org.polarsys.capella.core.tiger.helpers.Query;
 import org.polarsys.capella.core.tiger.helpers.TigerRelationshipHelper;
 import org.polarsys.capella.core.tiger.impl.TransfoEngine;
-import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 
 /**
  *

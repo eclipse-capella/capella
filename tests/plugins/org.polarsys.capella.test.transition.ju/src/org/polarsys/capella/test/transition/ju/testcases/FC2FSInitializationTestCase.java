@@ -31,7 +31,7 @@ import org.polarsys.capella.core.data.oa.OperationalCapability;
 import org.polarsys.capella.core.data.oa.OperationalCapabilityPkg;
 import org.polarsys.capella.core.libraries.model.CapellaModel;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
-import org.polarsys.capella.core.projection.scenario.FC2FSInitialization;
+import org.polarsys.capella.core.projection.scenario.fc2fs.FC2FSInitialization;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
 import org.polarsys.capella.test.framework.helpers.EObjectHelper;
 

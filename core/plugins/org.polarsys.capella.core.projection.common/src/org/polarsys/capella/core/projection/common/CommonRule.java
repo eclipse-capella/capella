@@ -321,7 +321,6 @@ public abstract class CommonRule extends TransfoRule implements IRuleTransformat
   /**
    * Returns whether the given element is or will be transformed after transition
    */
-  @Deprecated
   protected boolean isOrWillBeTransformed(EObject element_p, ITransfo transfo_p) {
     IContext context = IContext.getContext(transfo_p);
     return TransformationHandlerHelper.getInstance(context).isOrWillBeTransformed(element_p, context).isOK();
@@ -331,7 +330,6 @@ public abstract class CommonRule extends TransfoRule implements IRuleTransformat
    * Returns whether the given element is or will be transformed after transition This can be useful to know if the rule loaded which perform the transition
    * will transform it to the specified target EClass
    */
-  @Deprecated
   protected boolean isOrWillBeTranformedTo(EObject element_p, ITransfo transfo_p, EClass target) {
     IContext context = IContext.getContext(transfo_p);
     return TransformationHandlerHelper.getInstance(context).isOrWillBeTransformedTo(element_p, context, target).isOK();

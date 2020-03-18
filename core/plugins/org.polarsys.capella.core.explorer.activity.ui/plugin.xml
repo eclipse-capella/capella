@@ -1104,6 +1104,26 @@
          <Predicate
                class="org.polarsys.capella.core.explorer.activity.ui.predicate.CapellaActivityExplorerPredicate">
          </Predicate>
+         <Section
+               expanded="false"
+               filtering="true"
+               id="org.polarsys.capella.core.explorer.activity.ui.section.epbs.enrich.epbs.scenarios"
+               index="2"
+               name="%EpbsArchitectureActivityExplorerPage_EnrichEPBSScenariosSection_Title">
+            <Description>
+               %EpbsArchitectureActivityExplorerPage_EnrichEPBSScenariosSection_Description
+            </Description>
+            <Activity
+                  class="org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.epbs.NewScenarioDiagramAdapter"
+                  id="org.polarsys.capella.core.explorer.activity.ui.section.epbs.interface.scenario"
+                  image="icons/full/ctool/interface-scenario.png"
+                  index="1"
+                  name="%EpbsArchitectureActivityExplorerPage_NewScenario_Title">
+               <Description>
+                  %EpbsArchitectureActivityExplorerPage_NewScenario_Description
+               </Description>
+            </Activity>
+         </Section>
       </Page>
    </extension>
 </plugin>

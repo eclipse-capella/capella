@@ -30,8 +30,8 @@ import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.projection.common.CommonRule;
 import org.polarsys.capella.core.projection.common.ProjectionMessages;
 import org.polarsys.capella.core.projection.interfaces.generateInterfaces.Rule_FunctionalExchange_Interface;
-import org.polarsys.capella.core.projection.scenario.CommonScenarioHelper;
-import org.polarsys.capella.core.projection.scenario.ScenarioFinalizer;
+import org.polarsys.capella.core.projection.scenario.helpers.ScenarioExt;
+import org.polarsys.capella.core.projection.scenario.helpers.UnwantedObjects;
 import org.polarsys.capella.core.tiger.ITransfo;
 import org.polarsys.capella.core.tiger.TransfoException;
 import org.polarsys.capella.core.tiger.helpers.Query;
@@ -45,10 +45,10 @@ public class Rule_Event extends CommonRule {
   protected boolean transformIsRequired(EObject element_p, ITransfo transfo_p) {
     Event event = (Event) element_p;
 
-    if ((DF2ISHelper.getOperation(event) != null) && (DF2ISHelper.getExchangeItems(event).size() == 0)) {
+    if ((ScenarioExt.getOperation(event) != null) && (ScenarioExt.getExchangeItems(event).size() == 0)) {
       return false;
     }
-    if (ScenarioFinalizer.isUnwantedObject(element_p, transfo_p)) {
+    if (UnwantedObjects.contains(element_p, transfo_p)) {
       return false;
     }
     return true;
@@ -57,7 +57,7 @@ public class Rule_Event extends CommonRule {
   @Override
   protected String reasonTransformFailed(EObject element_p, ITransfo transfo_p) {
     Event event = (Event) element_p;
-    AbstractEventOperation operation = CommonScenarioHelper.getOperation(event, transfo_p);
+    AbstractEventOperation operation = ScenarioExt.getOperation(event);
     if (operation != null) {
       if (operation instanceof ComponentExchange) {
         return ProjectionMessages.RelatedConnectionConveyNoExchangeItem;
@@ -84,7 +84,7 @@ public class Rule_Event extends CommonRule {
   public void firstAttach(EObject element_p, ITransfo transfo_p) throws TransfoException {
     int i = 0;
 
-    List<ExchangeItem> items = DF2ISHelper.getExchangeItems((Event) element_p);
+    List<ExchangeItem> items = ScenarioExt.getExchangeItems((Event) element_p);
     for (EObject obj : Query.retrieveTransformedElements(element_p, transfo_p, getTargetType())) {
       if (obj instanceof EventSentOperation) {
         EventSentOperation src = (EventSentOperation) element_p;
@@ -143,7 +143,7 @@ public class Rule_Event extends CommonRule {
   @SuppressWarnings("unused")
   protected Object transformElement(EObject element_p, ITransfo transfo_p) {
     EPackage pkg = (EPackage) element_p.eClass().eContainer();
-    List<ExchangeItem> eis = DF2ISHelper.getExchangeItems((Event) element_p);
+    List<ExchangeItem> eis = ScenarioExt.getExchangeItems((Event) element_p);
     if (eis.size() <= 1) {
       return pkg.getEFactoryInstance().create(element_p.eClass());
     }

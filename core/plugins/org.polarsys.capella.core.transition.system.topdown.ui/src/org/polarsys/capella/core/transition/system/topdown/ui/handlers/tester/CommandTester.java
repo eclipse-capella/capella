@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -56,6 +56,8 @@ public class CommandTester extends PropertyTester {
           return TransitionCommandHelper.getInstance().isOA2SCTransitionAvailable(element);
         case "transitionOA2SM":
           return TransitionCommandHelper.getInstance().isOA2SMTransitionAvailable(element);
+        case "transitionPC2CI":
+          return TransitionCommandHelper.getInstance().isPC2CITransitionAvailable(element);
         default:
           break;
         }

@@ -23,7 +23,8 @@ import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.projection.common.CommonRule;
 import org.polarsys.capella.core.projection.common.context.IContext;
 import org.polarsys.capella.core.projection.scenario.Messages;
-import org.polarsys.capella.core.projection.scenario.handlers.ScenarioHandlerHelper;
+import org.polarsys.capella.core.projection.scenario.helpers.IScenarioHelper;
+import org.polarsys.capella.core.projection.scenario.helpers.InstanceRoles;
 import org.polarsys.capella.core.tiger.ITransfo;
 import org.polarsys.capella.core.tiger.TransfoException;
 import org.polarsys.capella.core.tiger.helpers.Query;
@@ -50,7 +51,7 @@ public class Rule_InstanceRole extends CommonRule {
     InstanceRole src = (InstanceRole) element_p;
 
     IContext context = IContext.getContext(transfo_p);
-    List<AbstractInstance> parts = ScenarioHandlerHelper.getInstance(context).getRelatedInstances(src, context);
+    List<AbstractInstance> parts = IScenarioHelper.getInstance(context).getTargetInstances(src, context);
 
     for (AbstractInstance part : parts) {
       for (EObject eTgt : Query.retrieveUnattachedTransformedElements(src, transfo_p, getTargetType())) {
@@ -72,7 +73,7 @@ public class Rule_InstanceRole extends CommonRule {
     InstanceRole src = (InstanceRole) element_p;
     InstanceRole role = null;
     IContext context = IContext.getContext(transfo_p);
-    List<AbstractInstance> parts = ScenarioHandlerHelper.getInstance(context).getRelatedInstances(src, context);
+    List<AbstractInstance> parts = IScenarioHelper.getInstance(context).getTargetInstances(src, context);
 
     if (parts.isEmpty()) {
       throw new OperationCanceledException(NLS.bind(Messages.Rule_InstanceRole_CannotProcess_FunctionUnallocated,
@@ -80,10 +81,10 @@ public class Rule_InstanceRole extends CommonRule {
 
     }
 
-    role = ScenarioHandlerHelper.getInstance(context).getInstanceRole(parts.iterator().next(), context);
+    role = InstanceRoles.get(parts.iterator().next());
     if (role == null) {
       role = InteractionFactory.eINSTANCE.createInstanceRole();
-      FS2CESFinalizer.registerInstanceRole(parts.iterator().next(), role);
+      InstanceRoles.add(parts.iterator().next(), role);
     }
 
     return role;

@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.core.tiger.IResolver;
 import org.polarsys.capella.core.tiger.ITransfo;
+import org.polarsys.capella.test.transition.ju.model.CreateRule_Scenario_IS2IS;
 import org.polarsys.capella.test.transition.ju.transitions.CreateRule_ESF2ESB_01;
 
 
@@ -40,10 +41,14 @@ public class SimpleResolver implements IResolver {
 
           AbstractNamedElement a1 = (AbstractNamedElement)items_p.get(0);
           AbstractNamedElement a2 = (AbstractNamedElement)items_p.get(1);
+          
           AbstractNamedElement c1 = a1.getId().equals(CreateRule_ESF2ESB_01.id_c_1) ? a1 : a2;
           AbstractNamedElement e1 = a1.getId().equals(CreateRule_ESF2ESB_01.id_exchange_1) ? a1 : a2;
-
+          
           if (ane.getId().equals(CreateRule_ESF2ESB_01.id_sm21)) {
+            result.add(c1);
+
+          } else if (ane.getId().equals(CreateRule_ESF2ESB_01.id_sm21)) {
             result.add(c1);
 
           } else if (ane.getId().equals(CreateRule_ESF2ESB_01.id_sm22)) {

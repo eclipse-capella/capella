@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -14,10 +14,10 @@
    <extension
          point="org.polarsys.capella.core.tiger">
          
-      <!-- CES2CES -->
+      <!-- TopDown -->
       <ruleset
-            context="org.polarsys.capella.core.projection.scenario.es2es"
-            rulepackage="org.polarsys.capella.core.projection.scenario.es2es.rules"
+            context="org.polarsys.capella.core.projection.scenario.topdown"
+            rulepackage="org.polarsys.capella.core.projection.scenario.topdown.rules"
             transfolink="org.polarsys.capella.core.projection.common.ProjectionTraceLinkProvider">
             
          <rule rulename="Rule_Scenario"/>
@@ -26,24 +26,16 @@
          <rule rulename="Rule_Event"/>
          <rule rulename="Rule_Message"/>
          <rule rulename="Rule_AbstractEnd"/>
-      
-       <sharedRuleset bundle="org.polarsys.capella.core.projection.scenario"
-          rulepackage="org.polarsys.capella.core.projection.scenario.uml2.rules">
-         <rule rulename="Rule_CombinedFragment"/>
-         <rule rulename="Rule_FragmentEnd"/>
-         <rule rulename="Rule_InteractionOperand"/>
-         <rule rulename="Rule_InteractionUse"/>
-       </sharedRuleset>
         
-         <finalizer class="org.polarsys.capella.core.projection.scenario.ScenarioFinalizer"/>
-         <finalizer class="org.polarsys.capella.core.projection.scenario.es2es.rules.ScenarioFinalizer"/>
+         <finalizer class="org.polarsys.capella.core.projection.scenario.helpers.ScenarioInvolvementSynchronizer"/>
+         <finalizer class="org.polarsys.capella.core.projection.scenario.helpers.UnwantedObjects"/>
+         <finalizer class="org.polarsys.capella.core.projection.scenario.helpers.InstanceRoles"/>
          
          <sharedContext context="org.polarsys.capella.core.projection.scenario.common.rules"/>
          <sharedContext context="org.polarsys.capella.core.projection.scenario.uml2.rules"/>
          <sharedContext context="org.polarsys.capella.core.projection.common.resolver"/>
          
       </ruleset>
-      
       
       
       <!-- CES2CIS -->
@@ -60,8 +52,10 @@
          <rule rulename="Rule_Message"/>
          <rule rulename="Rule_AbstractEnd"/>
          
-         <finalizer class="org.polarsys.capella.core.projection.scenario.ScenarioFinalizer"/>
-         <finalizer class="org.polarsys.capella.core.projection.scenario.es2is.rules.Df2IsFinalizer"/>
+         <finalizer class="org.polarsys.capella.core.projection.scenario.helpers.ScenarioInvolvementSynchronizer"/>
+         <finalizer class="org.polarsys.capella.core.projection.scenario.helpers.UnwantedObjects"/>
+         <finalizer class="org.polarsys.capella.core.projection.scenario.helpers.InstanceRoles"/>
+         <finalizer class="org.polarsys.capella.core.projection.scenario.helpers.ReorderEnds"/>
         
          <sharedContext context="org.polarsys.capella.core.projection.interfaces.generation"/>
          
@@ -87,8 +81,9 @@
          <rule rulename="Rule_Message"/>
          <rule rulename="Rule_AbstractEnd"/>
          
-         <finalizer class="org.polarsys.capella.core.projection.scenario.ScenarioFinalizer"/>
-         <finalizer class="org.polarsys.capella.core.projection.scenario.fs2es.rules.FS2CESFinalizer"/>
+         <finalizer class="org.polarsys.capella.core.projection.scenario.helpers.ScenarioInvolvementSynchronizer"/>
+         <finalizer class="org.polarsys.capella.core.projection.scenario.helpers.UnwantedObjects"/>
+         <finalizer class="org.polarsys.capella.core.projection.scenario.helpers.InstanceRoles"/>
          
          <sharedContext context="org.polarsys.capella.core.projection.scenario.common.rules"/>
          <sharedContext context="org.polarsys.capella.core.projection.scenario.uml2.rules"/>
@@ -111,14 +106,17 @@
          <rule rulename="Rule_Message"/>
          <rule rulename="Rule_AbstractEnd"/>
          
-         <finalizer class="org.polarsys.capella.core.projection.scenario.ScenarioFinalizer"/>
-         <finalizer class="org.polarsys.capella.core.projection.scenario.esf2esb.rules.CESF2CESBFinalizer"/>
+         <finalizer class="org.polarsys.capella.core.projection.scenario.helpers.ScenarioInvolvementSynchronizer"/>
+         <finalizer class="org.polarsys.capella.core.projection.scenario.helpers.UnwantedObjects"/>
+         <finalizer class="org.polarsys.capella.core.projection.scenario.helpers.InstanceRoles"/>
          
          <sharedContext context="org.polarsys.capella.core.projection.scenario.common.rules"/>
          <sharedContext context="org.polarsys.capella.core.projection.scenario.uml2.rules"/>
          <sharedContext context="org.polarsys.capella.core.projection.common.resolver"/>
          
       </ruleset>
+      
+      
       
       <!-- UML2 concepts -->
       
@@ -141,6 +139,7 @@
           <rule rulename="Rule_Constraint"/>
           <rule rulename="Rule_OpaqueExpression"/>
      </ruleset>
+     
        
    </extension>
    
@@ -350,6 +349,72 @@
                   </with>
                </and>
             </visibleWhen>
+         </command>
+         <command
+               commandId="org.polarsys.capella.core.projection.commands.ui.commands.command25"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <and>
+                  <reference
+                        definitionId="org.polarsys.capella.core.projection.commands.ui.expression.transitionVisibilityModelElementExpression">
+                  </reference>
+                  <with
+                        variable="selection">
+                     <iterate>
+                        <test
+                              forcePluginActivation="true"
+                              property="org.polarsys.capella.core.platform.sirius.ui.projectionMode"
+                              value="transitionIS2IS-SALA">
+                        </test>
+                     </iterate>
+                  </with>
+               </and>
+            </visibleWhen>
+         </command>
+         <command
+               commandId="org.polarsys.capella.core.projection.commands.ui.commands.command27"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <and>
+                  <reference
+                        definitionId="org.polarsys.capella.core.projection.commands.ui.expression.transitionVisibilityModelElementExpression">
+                  </reference>
+                  <with
+                        variable="selection">
+                     <iterate>
+                        <test
+                              forcePluginActivation="true"
+                              property="org.polarsys.capella.core.platform.sirius.ui.projectionMode"
+                              value="transitionIS2IS-LAPA">
+                        </test>
+                     </iterate>
+                  </with>
+               </and>
+            </visibleWhen>
+         </command>
+         <command
+               commandId="org.polarsys.capella.core.projection.commands.ui.commands.command29"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <and>
+                  <reference
+                        definitionId="org.polarsys.capella.core.projection.commands.ui.expression.transitionVisibilityModelElementExpression">
+                  </reference>
+                  <with
+                        variable="selection">
+                     <iterate>
+                        <test
+                              forcePluginActivation="true"
+                              property="org.polarsys.capella.core.platform.sirius.ui.projectionMode"
+                              value="transitionIS2IS-PAEPBS">
+                        </test>
+                     </iterate>
+                  </with>
+               </and>
+            </visibleWhen>
          </command> 
        </menuContribution>
       </extension>
@@ -360,83 +425,98 @@
                 name="Transitions">
           </category>
          <command
-               defaultHandler="org.polarsys.capella.core.projection.scenario.es.transition.actions.ESToESAction"
+               defaultHandler="org.polarsys.capella.core.projection.scenario.commands.ESToESHandler"
                id="org.polarsys.capella.core.projection.commands.ui.commands.command1"
                name="%transitionES2ES_OAtoSA_label"
                >
          </command>
          
          <command
-               defaultHandler="org.polarsys.capella.core.projection.scenario.es.transition.actions.ESToESAction"
+               defaultHandler="org.polarsys.capella.core.projection.scenario.commands.ESToESHandler"
                id="org.polarsys.capella.core.projection.commands.ui.commands.command3"
                name="%transitionES2ES_SAtoLA_label"
                >
          </command>
          
          <command
-               defaultHandler="org.polarsys.capella.core.projection.scenario.es.transition.actions.ESToESAction"
+               defaultHandler="org.polarsys.capella.core.projection.scenario.commands.ESToESHandler"
                id="org.polarsys.capella.core.projection.commands.ui.commands.command5"
                name="%transitionES2ES_LAtoPA_label"
                >
          </command>
              
          <command
-               defaultHandler="org.polarsys.capella.core.projection.scenario.es.transition.actions.ESToISAction"
+               defaultHandler="org.polarsys.capella.core.projection.scenario.commands.ESToISHandler"
                id="org.polarsys.capella.core.projection.commands.ui.commands.command7"
                name="%transitionES2IS_label"
                >
          </command>
          
          <command
-               defaultHandler="org.polarsys.capella.core.projection.scenario.es.transition.actions.ESFToESBAction"
+               defaultHandler="org.polarsys.capella.core.projection.scenario.commands.ESFToESBHandler"
                id="org.polarsys.capella.core.projection.commands.ui.commands.command9"
                name="%transitionESF2ESB_label"
                >
          </command>
          
          <command
-               defaultHandler="org.polarsys.capella.core.projection.scenario.fs.transition.actions.FSToESAction"
+               defaultHandler="org.polarsys.capella.core.projection.scenario.commands.FSToESHandler"
                id="org.polarsys.capella.core.projection.commands.ui.commands.command11"
                name="%transitionFS2ES_SALAPA_label"
                >
          </command>
          
          <command
-               defaultHandler="org.polarsys.capella.core.projection.scenario.fs.transition.actions.FSToESAction"
+               defaultHandler="org.polarsys.capella.core.projection.scenario.commands.FSToESHandler"
                id="org.polarsys.capella.core.projection.commands.ui.commands.command13"
                name="%transitionFS2ES_OASA_label"
                >
          </command>
          
          <command
-               defaultHandler="org.polarsys.capella.core.projection.scenario.fs.transition.actions.FSToFSAction"
+               defaultHandler="org.polarsys.capella.core.projection.scenario.commands.FSToFSHandler"
                id="org.polarsys.capella.core.projection.commands.ui.commands.command15"
                name="%transitionFS2FS_OAtoSA_label"
                >
          </command>
          
          <command
-               defaultHandler="org.polarsys.capella.core.projection.scenario.fs.transition.actions.FSToFSAction"
+               defaultHandler="org.polarsys.capella.core.projection.scenario.commands.FSToFSHandler"
                id="org.polarsys.capella.core.projection.commands.ui.commands.command17"
                name="%transitionFS2FS_SAtoLA_label"
                >
          </command>
          
          <command
-               defaultHandler="org.polarsys.capella.core.projection.scenario.fs.transition.actions.FSToFSAction"
+               defaultHandler="org.polarsys.capella.core.projection.scenario.commands.FSToFSHandler"
                id="org.polarsys.capella.core.projection.commands.ui.commands.command19"
                name="%transitionFS2FS_LAtoPA_label"
                >
          </command>
          <command
-               defaultHandler="org.polarsys.capella.core.projection.scenario.handlers.FC2FSHandler"
+               defaultHandler="org.polarsys.capella.core.projection.scenario.commands.FC2FSHandler"
                id="org.polarsys.capella.core.projection.commands.ui.commands.command21"
                name="%transitionFC2FS_label">
          </command>
          <command
-               defaultHandler="org.polarsys.capella.core.projection.scenario.handlers.FC2FSHandler"
+               defaultHandler="org.polarsys.capella.core.projection.scenario.commands.FC2FSHandler"
                id="org.polarsys.capella.core.projection.commands.ui.commands.command23"
                name="%transitionOP2OAS_label">
+         </command>
+         <command
+               defaultHandler="org.polarsys.capella.core.projection.scenario.commands.ISToISHandler"
+               id="org.polarsys.capella.core.projection.commands.ui.commands.command25"
+               name="%transitionIS2IS_SAtoLA_label">
+         </command>
+         <command
+               defaultHandler="org.polarsys.capella.core.projection.scenario.commands.ISToISHandler"
+               id="org.polarsys.capella.core.projection.commands.ui.commands.command27"
+               name="%transitionIS2IS_LAtoPA_label">
+         </command>
+         <command
+               defaultHandler="org.polarsys.capella.core.projection.scenario.commands.ISToISHandler"
+               id="org.polarsys.capella.core.projection.commands.ui.commands.command29"
+               name="%transitionIS2IS_PAtoEPBS_label">
          </command>
      </extension>
      
@@ -449,6 +529,18 @@
          </image>
          <image
                commandId="org.polarsys.capella.core.projection.commands.ui.commands.command23"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif">
+         </image>
+         <image
+               commandId="org.polarsys.capella.core.projection.commands.ui.commands.command25"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif">
+         </image>
+         <image
+               commandId="org.polarsys.capella.core.projection.commands.ui.commands.command27"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif">
+         </image>
+         <image
+               commandId="org.polarsys.capella.core.projection.commands.ui.commands.command29"
                icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif">
          </image>
             

@@ -484,4 +484,19 @@ public class TransitionHelper {
         && EcoreUtil2.isContainedBy(object, CsPackage.Literals.BLOCK_ARCHITECTURE)
         && !(CapellaLayerCheckingExt.isAOrInEPBSLayer((CapellaElement) object)));
   }
+
+  public boolean isIS2ISSALATransitionAvailable(EObject element) {
+    return element instanceof Scenario && ((Scenario) element).getKind() == ScenarioKind.INTERFACE
+        && CapellaLayerCheckingExt.isAOrInContextLayer((Scenario) element);
+  }
+
+  public boolean isIS2ISLAPATransitionAvailable(EObject element) {
+    return element instanceof Scenario && ((Scenario) element).getKind() == ScenarioKind.INTERFACE
+        && CapellaLayerCheckingExt.isAOrInLogicalLayer((Scenario) element);
+  }
+
+  public boolean isIS2ISPAEPBSTransitionAvailable(EObject element) {
+    return element instanceof Scenario && ((Scenario) element).getKind() == ScenarioKind.INTERFACE
+        && CapellaLayerCheckingExt.isAOrInPhysicalLayer((Scenario) element);
+  }
 }
