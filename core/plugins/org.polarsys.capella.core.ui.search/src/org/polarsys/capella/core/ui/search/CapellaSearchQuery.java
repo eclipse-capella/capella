@@ -52,7 +52,8 @@ public class CapellaSearchQuery implements ISearchQuery {
     // Extend the search scope to include note from diagram
     @Override
     public Object[] getChildren(Object element) {
-      if (element instanceof DRepresentationDescriptor) {
+      if (element instanceof DRepresentationDescriptor
+          && ((DRepresentationDescriptor) element).isLoadedRepresentation()) {
         DRepresentation representation = ((DRepresentationDescriptor) element).getRepresentation();
         if (representation instanceof DDiagram) {
           List<Shape> notes = new ArrayList<>();
