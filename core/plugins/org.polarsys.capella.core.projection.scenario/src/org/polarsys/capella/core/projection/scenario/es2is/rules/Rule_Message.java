@@ -14,13 +14,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.interaction.InteractionFactory;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
 import org.polarsys.capella.core.projection.common.CommonRule;
 import org.polarsys.capella.core.projection.common.ProjectionMessages;
+import org.polarsys.capella.core.projection.scenario.es2is.ES2ISExt;
 import org.polarsys.capella.core.tiger.ITransfo;
 import org.polarsys.capella.core.tiger.TransfoException;
 import org.polarsys.capella.core.tiger.helpers.TigerRelationshipHelper;
@@ -77,7 +77,7 @@ public class Rule_Message extends CommonRule {
   @SuppressWarnings("unused")
   public Object transformElement(EObject element_p, ITransfo transfo_p) {
     
-    List<ExchangeItem> eis = DF2ISHelper.getExchangeItems((SequenceMessage) element_p);
+    List<ExchangeItem> eis = ES2ISExt.getExchangeItems((SequenceMessage) element_p);
     if (eis.size() <= 1)
       return InteractionFactory.eINSTANCE.createSequenceMessage();
     

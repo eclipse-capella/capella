@@ -62,6 +62,8 @@ import org.polarsys.capella.core.data.oa.OperationalActivityPkg;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.data.oa.OperationalCapability;
 import org.polarsys.capella.core.data.oa.OperationalCapabilityPkg;
+import org.polarsys.capella.core.data.pa.PhysicalComponent;
+import org.polarsys.capella.core.data.pa.PhysicalComponentPkg;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ComponentExchangeExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
@@ -247,6 +249,15 @@ public class TransitionCommandHelper {
       @Override
       protected String getTransitionKind() {
         return ITopDownConstants.TRANSITION_TOPDOWN_SYSTEM;
+      }
+    };
+  }
+  
+  public ICommand getPC2CITransitionCommand(Collection<?> elements, IProgressMonitor monitor) {
+    return new IntramodelTransitionCommand(elements, monitor) {
+      @Override
+      protected String getTransitionKind() {
+        return ITopDownConstants.TRANSITION_TOPDOWN_PC2CI;
       }
     };
   }
@@ -475,5 +486,19 @@ public class TransitionCommandHelper {
             || (element instanceof AbstractPropertyValue) || (element instanceof EnumerationPropertyType))
         && EcoreUtil2.isContainedBy(element, CsPackage.Literals.BLOCK_ARCHITECTURE)
         && !(CapellaLayerCheckingExt.isAOrInEPBSLayer((CapellaElement) element)));
+  }
+
+  public boolean isPC2CITransitionAvailable(EObject element) {
+
+    if (CapellaLayerCheckingExt.isInPhysicalLayer((CapellaElement) element)) {
+      Component component = getComponent(element);
+      if (component instanceof PhysicalComponent || //
+          element instanceof PhysicalComponentPkg || //
+          (element instanceof ComponentExchange)
+              && ComponentExchangeExt.isNotLinkToAnActor((ComponentExchange) element)) {
+        return true;
+      }
+    }
+    return false;
   }
 }

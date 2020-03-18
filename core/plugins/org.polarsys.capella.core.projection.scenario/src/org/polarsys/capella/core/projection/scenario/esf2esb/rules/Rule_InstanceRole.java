@@ -21,7 +21,7 @@ import org.polarsys.capella.core.data.interaction.InteractionFactory;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.projection.common.CommonRule;
 import org.polarsys.capella.core.projection.exchanges.ConnectionCreatorFactory;
-import org.polarsys.capella.core.projection.scenario.fs2es.rules.FS2CESFinalizer;
+import org.polarsys.capella.core.projection.scenario.helpers.InstanceRoles;
 import org.polarsys.capella.core.tiger.ITransfo;
 import org.polarsys.capella.core.tiger.TransfoException;
 import org.polarsys.capella.core.tiger.helpers.Query;
@@ -64,7 +64,7 @@ public class Rule_InstanceRole extends CommonRule {
   @Override
   public EObject transformElement(EObject element_p, ITransfo transfo_p) {
     InstanceRole role = InteractionFactory.eINSTANCE.createInstanceRole();
-    FS2CESFinalizer.registerInstanceRole(((InstanceRole) element_p).getRepresentedInstance(), role);
+    InstanceRoles.add(((InstanceRole) element_p).getRepresentedInstance(), role);
     return role;
   }
 

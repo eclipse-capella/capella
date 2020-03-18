@@ -38,7 +38,7 @@ public class MassColumnsConstantModel implements IMAColumnProvider {
 
     @Override
     public Object getDataValue(EObject rowObject) {
-      String constant = EObjectLabelProviderHelper.getText(rowObject).replaceAll(" ", "_").toUpperCase();
+      String constant = EObjectLabelProviderHelper.getText(rowObject).replaceAll(" ", "_").replaceAll("[\\[\\]]", "").toUpperCase();
       String id = rowObject.eResource().getURIFragment(rowObject);
       return NLS.bind("public static final String {0} = \"{1}\"; //$NON-NLS-1$", constant, id);
     }

@@ -18,11 +18,12 @@ import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.ExecutionManagerRegistry;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.projection.interfaces.generateInterfaces.GenerateInterfacesCommand;
-import org.polarsys.capella.core.projection.scenario.es.transition.commands.ESFtoESBCommand;
-import org.polarsys.capella.core.projection.scenario.es.transition.commands.ESToISCommand;
-import org.polarsys.capella.core.projection.scenario.es.transition.commands.EStoESCommand;
-import org.polarsys.capella.core.projection.scenario.fs.transition.commands.FSToESCommand;
-import org.polarsys.capella.core.projection.scenario.fs.transition.commands.FStoFSCommand;
+import org.polarsys.capella.core.projection.scenario.commands.ESFtoESBCommand;
+import org.polarsys.capella.core.projection.scenario.commands.ESToISCommand;
+import org.polarsys.capella.core.projection.scenario.commands.EStoESCommand;
+import org.polarsys.capella.core.projection.scenario.commands.FSToESCommand;
+import org.polarsys.capella.core.projection.scenario.commands.FStoFSCommand;
+import org.polarsys.capella.core.projection.scenario.commands.IStoISCommand;
 
 /**
  */
@@ -74,6 +75,10 @@ public abstract class TopDownTransitionTestCase extends TransitionTestCase {
 
   public void performFStoESTransition(Collection<EObject> elements) {
     executeCommand(new FSToESCommand(elements));
+  }
+
+  public void performIStoISTransition(Collection<EObject> elements) {
+    executeCommand(new IStoISCommand(elements));
   }
 
   public void performOCtoSMTransition(Collection<EObject> elements) {

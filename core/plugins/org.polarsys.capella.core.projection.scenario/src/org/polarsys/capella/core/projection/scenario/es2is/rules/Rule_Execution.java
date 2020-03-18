@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.interaction.AbstractEnd;
 import org.polarsys.capella.core.data.interaction.Execution;
@@ -22,6 +21,7 @@ import org.polarsys.capella.core.data.interaction.InteractionFragment;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.projection.common.CommonRule;
 import org.polarsys.capella.core.projection.common.ProjectionMessages;
+import org.polarsys.capella.core.projection.scenario.es2is.ES2ISExt;
 import org.polarsys.capella.core.tiger.ITransfo;
 import org.polarsys.capella.core.tiger.TransfoException;
 import org.polarsys.capella.core.tiger.helpers.TigerRelationshipHelper;
@@ -72,7 +72,7 @@ public class Rule_Execution extends CommonRule {
   @SuppressWarnings("unused")
   public Object transformElement(EObject element_p, ITransfo transfo_p) {
 
-    List<ExchangeItem> eis = DF2ISHelper.getExchangeItems((Execution) element_p);
+    List<ExchangeItem> eis = ES2ISExt.getExchangeItems((Execution) element_p);
     if (eis.size() <= 1)
       return super.transformElement(element_p, transfo_p);
 

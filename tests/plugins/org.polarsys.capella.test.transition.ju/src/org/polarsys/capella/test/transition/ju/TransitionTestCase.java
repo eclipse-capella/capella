@@ -11,6 +11,8 @@
 package org.polarsys.capella.test.transition.ju;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
@@ -23,7 +25,9 @@ import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.common.flexibility.properties.loader.PropertiesLoader;
+import org.polarsys.capella.common.flexibility.properties.property.IDefaultValueProperty;
 import org.polarsys.capella.common.flexibility.properties.property.PropertyContext;
+import org.polarsys.capella.common.flexibility.properties.schema.IEditableProperty;
 import org.polarsys.capella.common.flexibility.properties.schema.IProperties;
 import org.polarsys.capella.common.flexibility.properties.schema.IProperty;
 import org.polarsys.capella.common.flexibility.properties.schema.IPropertyContext;
@@ -68,6 +72,16 @@ public abstract class TransitionTestCase extends BasicCommandTestCase {
     _propertiesContext.write(property);
   }
 
+  @Override
+  protected void tearDown() throws Exception {
+    //If we had set some preferences, reset them to their default values.
+    if (_propertiesContext != null) {
+      _propertiesContext.setDefaults();
+      _propertiesContext.writeAll();
+    }
+    super.tearDown();
+  }
+  
   protected List<EObject> getAllocatedElements(EObject object) {
     List<EObject> result = new ArrayList<EObject>();
     if (object instanceof TraceableElement) {
@@ -78,12 +92,12 @@ public abstract class TransitionTestCase extends BasicCommandTestCase {
     return result;
   }
 
-  protected List<EObject> getAllocatingElements(EObject object) {
-    List<EObject> result = new ArrayList<EObject>();
+  protected <T extends EObject> List<T> getAllocatingElements(EObject object) {
+    List<T> result = new ArrayList<T>();
     if (object instanceof TraceableElement) {
       for (AbstractTrace trace : ((TraceableElement) object).getIncomingTraces()) {
         if (!(trace instanceof ComponentFunctionalAllocation || trace instanceof PortAllocation || trace instanceof ComponentExchangeFunctionalExchangeAllocation)) {
-          result.add(trace.getSourceElement());
+          result.add((T)trace.getSourceElement());
         }
       }
     }
@@ -112,27 +126,27 @@ public abstract class TransitionTestCase extends BasicCommandTestCase {
     assertTrue(objectId.equals(containerId));
   }
 
-  protected EObject mustBeMonoTransitioned(String id) {
+  protected <T extends EObject> T mustBeMonoTransitioned(String id) {
     EObject element = getObject(id);
-    return mustBeMultiTransitioned(element, 1).get(0);
+    return (T) mustBeMultiTransitioned(element, 1).get(0);
   }
 
-  protected EObject mustBeMonoTransitioned(EObject element) {
-    return mustBeMultiTransitioned(element, 1).get(0);
+  protected <T extends EObject> T mustBeMonoTransitioned(EObject element) {
+    return (T) mustBeMultiTransitioned(element, 1).get(0);
   }
 
   protected void mustBeNamed(EObject result, String name) {
     assertTrue(((AbstractNamedElement) result).getName().equals(name));
   }
 
-  protected List<EObject> mustBeMultiTransitioned(String id, int nb) {
+  protected <T extends EObject> List<T> mustBeMultiTransitioned(String id, int nb) {
     EObject element = getObject(id);
     return mustBeMultiTransitioned(element, nb);
   }
 
-  protected List<EObject> mustBeMultiTransitioned(EObject element, int nb) {
+  protected <T extends EObject> List<T> mustBeMultiTransitioned(EObject element, int nb) {
     assertNotNull(NLS.bind(Messages.NullElement, EObjectLabelProviderHelper.getText(element)));
-    List<EObject> a4t = getAllocatingElements(element);
+    List<T> a4t = getAllocatingElements(element);
     assertTrue(NLS.bind("Should be equals to ''{0}'' but was ''{1}''", nb, a4t.size()), a4t.size() == nb); //$NON-NLS-1$ //$NON-NLS-2$
     return a4t;
   }

@@ -16,11 +16,9 @@ import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.projection.common.AbstractTransform;
 import org.polarsys.capella.core.projection.common.context.IContext;
-import org.polarsys.capella.core.projection.scenario.handlers.IScenarioHandler;
-import org.polarsys.capella.core.projection.scenario.handlers.ScenarioHandlerHelper;
+import org.polarsys.capella.core.projection.scenario.helpers.IScenarioHelper;
 import org.polarsys.capella.core.tiger.ITransfo;
 import org.polarsys.capella.core.tiger.ITransfoRuleBase;
-import org.polarsys.capella.core.tiger.impl.Transfo;
 import org.polarsys.capella.core.tiger.impl.TransfoEngine;
 
 /**
@@ -50,11 +48,11 @@ public abstract class ScenarioTransform extends AbstractTransform {
     transfo.put(TransfoEngine.TRANSFO_SOURCE, _context);
 
     IContext context = IContext.getContext(transfo);
-    ScenarioHandlerHelper.setInstance(context, createScenarioHandler(context));
+    IScenarioHelper.setInstance(context, createScenarioHandler(context));
     return transfo;
   }
 
-  protected abstract IScenarioHandler createScenarioHandler(IContext context_p);
+  protected abstract IScenarioHelper createScenarioHandler(IContext context_p);
 
   /**
    * @param contextElement_p

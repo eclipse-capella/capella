@@ -14,15 +14,14 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.data.information.AbstractEventOperation;
 import org.polarsys.capella.core.data.interaction.EventReceiptOperation;
 import org.polarsys.capella.core.data.interaction.EventSentOperation;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.projection.common.CommonRule;
-import org.polarsys.capella.core.projection.scenario.CommonScenarioHelper;
-import org.polarsys.capella.core.projection.scenario.ScenarioFinalizer;
+import org.polarsys.capella.core.projection.scenario.helpers.ScenarioExt;
+import org.polarsys.capella.core.projection.scenario.helpers.UnwantedObjects;
 import org.polarsys.capella.core.tiger.ITransfo;
 import org.polarsys.capella.core.tiger.TransfoException;
 import org.polarsys.capella.core.tiger.helpers.Query;
@@ -41,7 +40,7 @@ public class Rule_Event extends CommonRule {
 
   @Override
   protected boolean transformIsRequired(EObject element_p, ITransfo transfo_p) {
-    return !ScenarioFinalizer.isUnwantedObject(element_p, transfo_p);
+    return !UnwantedObjects.contains(element_p, transfo_p);
   }
 
   @Override
@@ -59,7 +58,7 @@ public class Rule_Event extends CommonRule {
       EventSentOperation src = (EventSentOperation) element_p;
       for (EObject eTgt : Query.retrieveUnattachedTransformedElements(src, transfo_p, InteractionPackage.Literals.EVENT_SENT_OPERATION)) {
         EventSentOperation tgt = (EventSentOperation) eTgt;
-        AbstractEventOperation operation = CommonScenarioHelper.getOperation(element_p, transfo_p);
+        AbstractEventOperation operation = ScenarioExt.getOperation(element_p);
         if (operation != null)
           TigerRelationshipHelper.attachElementByRel(tgt, operation, InteractionPackage.Literals.EVENT_SENT_OPERATION__OPERATION);
       }
@@ -68,7 +67,7 @@ public class Rule_Event extends CommonRule {
       EventReceiptOperation src = (EventReceiptOperation) element_p;
       for (EObject eTgt : Query.retrieveUnattachedTransformedElements(src, transfo_p, InteractionPackage.Literals.EVENT_RECEIPT_OPERATION)) {
         EventReceiptOperation tgt = (EventReceiptOperation) eTgt;
-        AbstractEventOperation operation = CommonScenarioHelper.getOperation(element_p, transfo_p);
+        AbstractEventOperation operation = ScenarioExt.getOperation(element_p);
         if (operation != null)
           TigerRelationshipHelper.attachElementByRel(tgt, operation, InteractionPackage.Literals.EVENT_RECEIPT_OPERATION__OPERATION);
       }

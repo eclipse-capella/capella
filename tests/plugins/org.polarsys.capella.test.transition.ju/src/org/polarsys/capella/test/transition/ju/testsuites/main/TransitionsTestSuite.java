@@ -57,6 +57,16 @@ import org.polarsys.capella.test.transition.ju.transitions.CreateRule_ESF2ESB_01
 import org.polarsys.capella.test.transition.ju.transitions.CreateRule_FS2ES_01;
 import org.polarsys.capella.test.transition.ju.transitions.CreateRule_FS2ES_02;
 import org.polarsys.capella.test.transition.ju.transitions.CreateRule_FS2FS_01;
+import org.polarsys.capella.test.transition.ju.transitions.CreateRule_IS2IS_EPBS_01;
+import org.polarsys.capella.test.transition.ju.transitions.CreateRule_IS2IS_EPBS_02;
+import org.polarsys.capella.test.transition.ju.transitions.CreateRule_IS2IS_EPBS_03;
+import org.polarsys.capella.test.transition.ju.transitions.CreateRule_IS2IS_ItfEI_01;
+import org.polarsys.capella.test.transition.ju.transitions.CreateRule_IS2IS_ItfEI_02;
+import org.polarsys.capella.test.transition.ju.transitions.CreateRule_IS2IS_ItfEI_03;
+import org.polarsys.capella.test.transition.ju.transitions.CreateRule_IS2IS_ItfEI_04;
+import org.polarsys.capella.test.transition.ju.transitions.CreateRule_IS2IS_MultiInstanceRoles;
+import org.polarsys.capella.test.transition.ju.transitions.CreateRule_IS2IS_StateFragment_01;
+import org.polarsys.capella.test.transition.ju.transitions.CreateRule_IS2IS_StateFragment_02;
 import org.polarsys.capella.test.transition.ju.transitions.CreateRule_RA01_01;
 import org.polarsys.capella.test.transition.ju.transitions.CreateRule_RA01_02;
 import org.polarsys.capella.test.transition.ju.transitions.CreateRule_RA01_03;
@@ -116,8 +126,10 @@ public class TransitionsTestSuite extends BasicTestSuite {
   @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
+
     tests.add(new ActorTransitionWithGeneralizationTest());
     tests.add(new SequenceMessageAndExchangeItems());
+
     tests.add(new Context_A01_01());
     tests.add(new Context_A01_02());
     tests.add(new Context_A01_03());
@@ -203,6 +215,16 @@ public class TransitionsTestSuite extends BasicTestSuite {
     tests.add(new UpdateRule_MEG01TYPE_01());
     tests.add(new UpdateRule_NE01_01());
     tests.add(new UpdateRule_ST01_01());
+    tests.add(new CreateRule_IS2IS_MultiInstanceRoles());
+    tests.add(new CreateRule_IS2IS_ItfEI_01());
+    tests.add(new CreateRule_IS2IS_ItfEI_02());
+    tests.add(new CreateRule_IS2IS_ItfEI_03());
+    tests.add(new CreateRule_IS2IS_ItfEI_04());
+    tests.add(new CreateRule_IS2IS_StateFragment_01());
+    tests.add(new CreateRule_IS2IS_StateFragment_02());
+    tests.add(new CreateRule_IS2IS_EPBS_01());
+    tests.add(new CreateRule_IS2IS_EPBS_02());
+    tests.add(new CreateRule_IS2IS_EPBS_03());
     return tests;
   }
 

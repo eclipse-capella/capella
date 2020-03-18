@@ -12,14 +12,16 @@ package org.polarsys.capella.core.projection.scenario;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
+import org.eclipse.osgi.util.NLS;
+import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
+import org.polarsys.capella.core.tiger.ITransfo;
 import org.polarsys.capella.core.tiger.ITransfoRuleBase;
 import org.polarsys.capella.core.tiger.impl.Transfo;
 import org.polarsys.capella.core.tiger.impl.TransfoEngine;
-import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 
 /**
  * Since some scenario transformation can occurs in the same architecture
@@ -68,6 +70,14 @@ public class ScenarioTransfo extends Transfo {
     }
 
     return result;
+  }
+
+  public static String getTitle(ITransfo transfo) {
+    Object source = transfo.get(TransfoEngine.TRANSFO_SOURCE);
+    if (source instanceof EObject) {
+      return NLS.bind(Messages.Rule_InstanceRole_TransitionTitleDetailled, EObjectLabelProviderHelper.getText((EObject) source));
+    }
+    return Messages.Rule_InstanceRole_TransitionTitle;
   }
 
 }

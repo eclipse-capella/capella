@@ -10,21 +10,15 @@
  *******************************************************************************/
 package org.polarsys.capella.core.projection.scenario.common.rules;
 
-import java.util.List;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
+import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
-import org.polarsys.capella.core.data.capellacore.Structure;
 import org.polarsys.capella.core.projection.common.context.IContext;
-import org.polarsys.capella.core.projection.common.handlers.attachment.AttachmentHelper;
 import org.polarsys.capella.core.projection.common.rules.AbstractCommonRule;
 import org.polarsys.capella.core.tiger.helpers.TigerRelationshipHelper;
 import org.polarsys.capella.core.tiger.impl.TransfoEngine;
-import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 
 /**
  */

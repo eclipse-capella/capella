@@ -261,6 +261,10 @@ public class SequenceMessageExt {
       ei = (ExchangeItem) tgt.getRepresentedInstance().getAbstractType();
     }
 
+    if (ei == null) {
+      return ICommonConstants.EMPTY_STRING;
+    }
+    
     // The create message must display "CREATE" in the case of sharedData,
     // and the send protocol in the case of an event.
     if (message.getKind() == MessageKind.CREATE) {

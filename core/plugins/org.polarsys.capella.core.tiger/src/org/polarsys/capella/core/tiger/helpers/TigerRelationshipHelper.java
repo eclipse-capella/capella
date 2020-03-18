@@ -980,4 +980,39 @@ protected static final Logger logger = ReportManagerRegistry.getInstance().subsc
       }
     }
   }
+
+  /**
+   * @param element
+   * @param reference
+   * @param transfo
+   */
+  public static void attachToBestAndValidElements(EObject element, EReference reference, Collection<EObject> objects, ITransfo transfo) {
+  
+    if ((element == null) || !isApplicable(element.eClass(), reference)) {
+      return;
+    }
+  
+    for (EObject targetElement : Query.retrieveTransformedElements(element, transfo)) {
+      if (isApplicable(targetElement.eClass(), reference)) {
+  
+        Object resultTarget = targetElement.eGet(reference);
+  
+        for (EObject sourceElement : retrieveReferenceAsList(element, reference)) {
+          for (EObject bestElement : retrieveBestElements(targetElement, sourceElement, (EClass) reference.getEType(), transfo)) {
+            if (!objects.contains(bestElement)) {
+              continue;
+            }
+            if (reference.isMany() || (resultTarget == null)
+                || (resultTarget.equals(sourceElement) || resultTarget.equals(bestElement))) {
+              if (bestElement != sourceElement) {
+                detachElementByRel(targetElement, sourceElement, reference);
+              }
+              attachElementByRel(targetElement, bestElement, reference);
+            }
+          }
+        }
+      }
+    }
+  
+  }
 }

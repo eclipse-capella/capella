@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -50,7 +50,7 @@ public class OptionRenderer extends AbstractRenderer {
     options.setEnabled(property.isEnabled(propertyContext));
 
     if (parent.getLayout() instanceof GridLayout) {
-      options.setLayout(new GridLayout(1, false));
+      options.setLayout(new GridLayout(getNumColumns(property), false));
       options.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
     }
 
@@ -82,6 +82,10 @@ public class OptionRenderer extends AbstractRenderer {
       buttons.add(dataExport);
     }
   }
+  
+  protected int getNumColumns(IProperty property) {
+    return 1;
+  }
 
   public void initialize(IProperty property, IRendererContext propertyContext) {
     Object value = propertyContext.getPropertyContext().getDefaultValue(property);
@@ -91,10 +95,13 @@ public class OptionRenderer extends AbstractRenderer {
   @Override
   public void updatedValue(IProperty property, IRendererContext propertyContext, Object newValue) {
     if (property.equals(propertyContext.getProperty(this))) {
+      boolean enabled = property.isEnabled(propertyContext.getPropertyContext());
+      options.setEnabled(enabled);
       for (Button button : buttons) {
         if ((button.getData() != null) && (button.getData() instanceof IPropertyOption)) {
           IPropertyOption option = (IPropertyOption) button.getData();
           button.setSelection(option.getValue().equals(newValue));
+          button.setEnabled(enabled);
         }
       }
     }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -67,6 +67,15 @@ public class CommandTester extends PropertyTester {
           
           } else if (value.equals("OP2OAS")) {
             return element instanceof OperationalProcess;
+            
+          } else if(value.equals("IS2IS-SALA")) {
+            return TransitionHelper.getService().isIS2ISSALATransitionAvailable(element);
+          
+          } else if(value.equals("IS2IS-LAPA")) {
+            return TransitionHelper.getService().isIS2ISLAPATransitionAvailable(element);
+          
+          } else if(value.equals("IS2IS-PAEPBS")) {
+            return TransitionHelper.getService().isIS2ISPAEPBSTransitionAvailable(element);
           }
 
         } else if (value.startsWith("generate")) { //$NON-NLS-1$

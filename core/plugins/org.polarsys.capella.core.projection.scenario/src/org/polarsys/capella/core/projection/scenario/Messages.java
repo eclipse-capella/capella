@@ -58,6 +58,10 @@ public class Messages extends NLS {
   public static String transitionFS2FS_OAtoSA_label;
   public static String transitionFS2FS_SAtoLA_label;
   public static String transitionFS2FS_LAtoPA_label;
+  public static String transitionIS2IS_SAtoLA_label;
+  public static String transitionIS2IS_LAtoPA_label;
+  public static String transitionIS2IS_PAtoEPBS_label;
+  public static String transitionIS2IS_label;
 
   static {
     // initialize resource bundle
