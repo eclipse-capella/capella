@@ -989,6 +989,17 @@
                </defaultMappingPossibility>
             </mappingElement>
             <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.information.ExchangeItemInstance"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.information.ExchangeItemInstanceRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.information.ExchangeItemInstanceRule"
+                     enabled="true"
+                     name="ExchangeItemInstance">
+               </defaultMappingPossibility>
+            </mappingElement>
+            <mappingElement
                   domainMetaClass="org.polarsys.capella.core.data.information.ExchangeItemElement"
                   reuseExtendedElementDefaultPossibility="true"
                   reuseExtendedElementPossibilities="true">

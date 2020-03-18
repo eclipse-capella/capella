@@ -750,7 +750,7 @@
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="triggerDescription" valueExpression="aql:arg0"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete StateMode" >
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete StateMode">
             <element name="element"/>
             <elementView name="view"/>
             <containerView name="containerView"/>
@@ -1543,7 +1543,7 @@
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="triggerDescription" valueExpression="aql:arg0"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete StateMode" >
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete StateMode">
             <element name="element"/>
             <elementView name="view"/>
             <containerView name="containerView"/>
@@ -3823,7 +3823,7 @@
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:arg0"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete_DataType" >
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete_DataType">
             <element name="element"/>
             <elementView name="view"/>
             <containerView name="containerView"/>
@@ -6320,7 +6320,7 @@
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements" >
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -7862,7 +7862,7 @@
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements" >
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -9596,7 +9596,7 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements" >
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -11260,7 +11260,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements" >
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -12242,7 +12242,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements" >
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -13608,7 +13608,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements" >
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -14627,9 +14627,6 @@
             <predecessor name="predecessor"/>
           </ownedTools>
           <ownedTools xsi:type="tool_2:MessageCreationTool" documentation="Creates a new Sequence Message invoking a Interface Exchange Item allocation without return branch between the Source and Target Lifelines representing existing Component/Actor Parts. The kind of these Components/Actors is related to the Architecture. This tool opens a selection wizard to select an available existing Interface Exchange Item allocation or to create a new one to existing/new Interface." name="sequence.message" label="%common.is.sequence.message" precondition="aql:self.allowMessageCreation2(preSource, preTarget, false, messageEndBefore, messageEndAfter)" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@edgeMappings[name='Basic%20message%20mapping']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/AsyncSequenceMessage.gif">
-            <filters precondition="aql:(self.target.eContainerOrSelf(epbs::EPBSArchitecture)->size() != 0)" elementsToListen="aql:self.target.eContainerOrSelf(interaction::Scenario)">
-              <listeners domainClass="interaction.Scenario" featureName="ownedAbstractEnds"/>
-            </filters>
             <sourceVariable name="source">
               <subVariables xsi:type="tool_1:AcceleoVariable" name="sourceIR" computationExpression="aql:if (self->filter(interaction::Execution)->size() > 0) then self.covered else self endif"/>
             </sourceVariable>
@@ -14723,9 +14720,6 @@
             <finishingEndPredecessor name="messageEndAfter"/>
           </ownedTools>
           <ownedTools xsi:type="tool_2:MessageCreationTool" documentation="Creates a new Sequence Message invoking a Interface Exchange Item allocation with return branch between the Source and Target Lifelines representing existing Component/Actor Parts. The kind of these Components/Actors is related to the Architecture. This tool opens a selection wizard to select an available existing Interface Exchange Item allocation or to create a new one to existing/new Interface." name="sequence.message.with.return.branch" label="%common.is.sequence.message.with.return.branch" precondition="aql:self.allowMessageCreation2(preSource, preTarget, false, messageEndBefore, messageEndAfter)" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@edgeMappings[name='Basic%20message%20mapping']" extraSourceMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']/@borderedNodeMappings[name='default%20execution'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']/@borderedNodeMappings[name='default%20execution']/@borderedNodeMappings[name='Execution']" extraTargetMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']/@borderedNodeMappings[name='default%20execution']/@borderedNodeMappings[name='Execution'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']/@borderedNodeMappings[name='default%20execution']">
-            <filters precondition="aql:(self.target.eContainerOrSelf(epbs::EPBSArchitecture)->size() != 0)" elementsToListen="aql:self.target.eContainerOrSelf(interaction::Scenario)">
-              <listeners domainClass="interaction.Scenario" featureName="ownedAbstractEnds"/>
-            </filters>
             <sourceVariable name="source">
               <subVariables xsi:type="tool_1:AcceleoVariable" name="sourceIR" computationExpression="aql:if (self->filter(interaction::Execution)->size() > 0) then self.covered else self endif"/>
             </sourceVariable>
@@ -15534,7 +15528,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements IS" >
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements IS">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -17262,7 +17256,7 @@
               </initialOperation>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements DF" >
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements DF">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -18376,7 +18370,7 @@
             <startingEndPredecessor name="messageEndBefore"/>
             <finishingEndPredecessor name="messageEndAfter"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements" >
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>

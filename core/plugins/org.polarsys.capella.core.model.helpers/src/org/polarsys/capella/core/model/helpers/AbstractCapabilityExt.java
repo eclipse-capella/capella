@@ -26,6 +26,7 @@ import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.ctx.Capability;
 import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
+import org.polarsys.capella.core.data.fa.FaFactory;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.helpers.ctx.services.CapabilityExt;
 import org.polarsys.capella.core.data.helpers.ctx.services.OperationalCapabilityExt;
@@ -37,6 +38,8 @@ import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.la.CapabilityRealization;
 import org.polarsys.capella.core.data.oa.Entity;
+import org.polarsys.capella.core.data.oa.EntityOperationalCapabilityInvolvement;
+import org.polarsys.capella.core.data.oa.OaFactory;
 import org.polarsys.capella.core.data.oa.OperationalCapability;
 
 /**
@@ -46,8 +49,11 @@ public class AbstractCapabilityExt {
 
   /**
    * This method adds an involved actor.
-   * @param capabilityUseCase the capability in which the component will be involved in
-   * @param component the involved component
+   * 
+   * @param capabilityUseCase
+   *          the capability in which the component will be involved in
+   * @param component
+   *          the involved component
    */
   public static void addInvolvedComponent(AbstractCapability capability, Component component) {
     if (capability instanceof OperationalCapability && component instanceof Entity) {
@@ -61,6 +67,7 @@ public class AbstractCapabilityExt {
 
   /**
    * This method retrieves all the scenarios from the model (contained by the given AbstractCapability).
+   * 
    * @param currentElement
    * @return List<Scenario>
    */
@@ -78,7 +85,9 @@ public class AbstractCapabilityExt {
 
   /**
    * This method retrieves the contributing components.
-   * @param capability the capability whose contributing components will be retrieved
+   * 
+   * @param capability
+   *          the capability whose contributing components will be retrieved
    * @return the contributing components
    */
   public static List<Component> getInvolvedComponents(AbstractCapability capability) {
@@ -96,14 +105,17 @@ public class AbstractCapabilityExt {
 
   /**
    * This method retrieves the AspectPkg containing the given capability.
-   * @param capability the capability whose container AspectPkg will be retrieved
+   * 
+   * @param capability
+   *          the capability whose container AspectPkg will be retrieved
    * @return the owner AspectPkg
    */
   public static AbstractCapabilityPkg getOwnerAbstractCapabilityPkg(AbstractCapability capability) {
     AbstractCapabilityPkg aspectPkg = null;
 
     if (capability != null) {
-      aspectPkg = (AbstractCapabilityPkg) EcoreUtil2.getFirstContainer(capability, CapellacommonPackage.Literals.ABSTRACT_CAPABILITY_PKG);
+      aspectPkg = (AbstractCapabilityPkg) EcoreUtil2.getFirstContainer(capability,
+          CapellacommonPackage.Literals.ABSTRACT_CAPABILITY_PKG);
     }
 
     return aspectPkg;
@@ -111,8 +123,11 @@ public class AbstractCapabilityExt {
 
   /**
    * This method removes an involved actor.
-   * @param capability the capability in which the component will not be involved in
-   * @param component the non involved component
+   * 
+   * @param capability
+   *          the capability in which the component will not be involved in
+   * @param component
+   *          the non involved component
    */
   public static void removeInvolvedComponent(AbstractCapability capability, Component component) {
     if (capability instanceof Capability && component instanceof SystemComponent) {
@@ -121,7 +136,7 @@ public class AbstractCapabilityExt {
       CapabilityRealizationExt.removeInvolvedComponent((CapabilityRealization) capability, component);
     }
   }
-  
+
   /**
    * This method returns all the components involved in all the scenarios of the capability.
    * 
@@ -183,19 +198,22 @@ public class AbstractCapabilityExt {
     }
     return functionalChains;
   }
-  
+
   /**
    * This method adds involved function to a capability.
    * 
    * @param abstractCapability
    *          the capability to which the function will be involved
-   *  @param function
+   * @param function
    *          the function which will be added in the involved functions list of the abstractCapability
    */
   public static void addInvolvedFunction(AbstractCapability capability, AbstractFunction function) {
-    AbstractFunctionAbstractCapabilityInvolvement link = InteractionFactory.eINSTANCE.createAbstractFunctionAbstractCapabilityInvolvement();
-    link.setInvolved(function);
-    capability.getOwnedAbstractFunctionAbstractCapabilityInvolvements().add(link);
+    if (!capability.getInvolvedAbstractFunctions().contains(function)) {
+      AbstractFunctionAbstractCapabilityInvolvement link = InteractionFactory.eINSTANCE
+          .createAbstractFunctionAbstractCapabilityInvolvement();
+      link.setInvolved(function);
+      capability.getOwnedAbstractFunctionAbstractCapabilityInvolvements().add(link);
+    }
   }
 
   /**
@@ -203,12 +221,15 @@ public class AbstractCapabilityExt {
    * 
    * @param abstractCapability
    *          the capability to which the functionalChain will be involved
-   *  @param functionalChain
+   * @param functionalChain
    *          the functionalChain which will be added in the involved functional chains list of the abstractCapability
    */
   public static void addInvolvedFunctionalChain(AbstractCapability capability, FunctionalChain functionalChain) {
-    FunctionalChainAbstractCapabilityInvolvement link = InteractionFactory.eINSTANCE.createFunctionalChainAbstractCapabilityInvolvement();
-    link.setInvolved(functionalChain);
-    capability.getOwnedFunctionalChainAbstractCapabilityInvolvements().add(link);
+    if (!capability.getInvolvedFunctionalChains().contains(functionalChain)) {
+      FunctionalChainAbstractCapabilityInvolvement link = InteractionFactory.eINSTANCE
+          .createFunctionalChainAbstractCapabilityInvolvement();
+      link.setInvolved(functionalChain);
+      capability.getOwnedFunctionalChainAbstractCapabilityInvolvements().add(link);
+    }
   }
 }

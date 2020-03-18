@@ -85,7 +85,20 @@ public class ITopDownConstants {
 
   public static final String OPTIONS__PROPERTY_VALUE__INVOLVED_ELEMENTS = "projection.propertyValue.involvedElements";
   public static final Boolean OPTIONS__PROPERTY_VALUE__INVOLVED_ELEMENTS__DEFAULT = Boolean.FALSE;
-
+  
+  public static final String OPTIONS_TRANSITION__PCCI_ENABLED = "projection.pc2ci.enabled";
+  public static final Boolean OPTIONS_TRANSITION__PCCI_ENABLED_DEFAULT = Boolean.FALSE;
+  
+  public static final String OPTIONS_TRANSITION__PCCI_KIND = "projection.pc2ci.kind";
+  public static final String OPTIONS_TRANSITION__PCCI_KIND_COTS = "COTSCI";
+  public static final String OPTIONS_TRANSITION__PCCI_KIND_CS = "CSCI";
+  public static final String OPTIONS_TRANSITION__PCCI_KIND_HW = "HWCI";
+  public static final String OPTIONS_TRANSITION__PCCI_KIND_Interface = "InterfaceCI"; 
+  public static final String OPTIONS_TRANSITION__PCCI_KIND_NDI = "NDICI";
+  public static final String OPTIONS_TRANSITION__PCCI_KIND_Prime = "PrimeItemCI";
+  public static final String OPTIONS_TRANSITION__PCCI_KIND_System = "SystemCI";
+  public static final String OPTIONS_TRANSITION__PCCI_KIND_DEFAULT = OPTIONS_TRANSITION__PCCI_KIND_COTS;
+  
   public static final String TRANSITION_TOPDOWN = "capella.core.transition.system.topdown";
   public static final String TRANSITION_TOPDOWN_FUNCTIONAL = "capella.core.transition.system.topdown.functional";
   public static final String TRANSITION_TOPDOWN_INTERFACE = "capella.core.transition.system.topdown.interface";
@@ -102,6 +115,7 @@ public class ITopDownConstants {
   public static final String TRANSITION_TOPDOWN_OC2SM = "capella.core.transition.system.topdown.oc2mission";
   public static final String TRANSITION_TOPDOWN_OA2SC = "capella.core.transition.system.topdown.oa2capability";
   public static final String TRANSITION_TOPDOWN_OA2SM = "capella.core.transition.system.topdown.oa2mission";
+  public static final String TRANSITION_TOPDOWN_PC2CI = "capella.core.transition.system.topdown.pc2ci";
 
   public static final String OPTIONS_SCOPE = "capella.core.transition.system.topdown";
 

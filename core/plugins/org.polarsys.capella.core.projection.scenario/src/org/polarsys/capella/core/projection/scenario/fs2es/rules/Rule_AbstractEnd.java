@@ -11,7 +11,6 @@
 package org.polarsys.capella.core.projection.scenario.fs2es.rules;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.capella.core.data.interaction.AbstractEnd;
 import org.polarsys.capella.core.data.interaction.Execution;
 import org.polarsys.capella.core.data.interaction.ExecutionEnd;
@@ -21,7 +20,7 @@ import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.interaction.MessageEnd;
 import org.polarsys.capella.core.projection.common.CommonRule;
 import org.polarsys.capella.core.projection.common.ProjectionMessages;
-import org.polarsys.capella.core.projection.scenario.ScenarioFinalizer;
+import org.polarsys.capella.core.projection.scenario.helpers.UnwantedObjects;
 import org.polarsys.capella.core.tiger.ITransfo;
 import org.polarsys.capella.core.tiger.helpers.Query;
 import org.polarsys.capella.core.tiger.helpers.TigerRelationshipHelper;
@@ -39,7 +38,7 @@ public class Rule_AbstractEnd extends CommonRule {
       Execution execution = ((ExecutionEnd) end).getExecution();
       end = (AbstractEnd) execution.getStart();
       if (!isOrWillBeTransformed(end.getEvent(), transfo_p)) {
-        ScenarioFinalizer.registerUnwantedObject(end.getEvent(), transfo_p);
+        UnwantedObjects.add(end.getEvent(), transfo_p);
         return false;
       }
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -68,6 +68,7 @@ public class IntramodelTransitionCommand extends LauncherCommand {
     case ITopDownConstants.TRANSITION_TOPDOWN_OC2SM:
     case ITopDownConstants.TRANSITION_TOPDOWN_OA2SC:
     case ITopDownConstants.TRANSITION_TOPDOWN_OA2SM:
+    case ITopDownConstants.TRANSITION_TOPDOWN_PC2CI:
       return "org.polarsys." + kind;
 
     default:
@@ -153,6 +154,7 @@ public class IntramodelTransitionCommand extends LauncherCommand {
       
     case ITopDownConstants.TRANSITION_TOPDOWN_SYSTEM:
     case ITopDownConstants.TRANSITION_TOPDOWN_LC2PC:
+    case ITopDownConstants.TRANSITION_TOPDOWN_PC2CI:
       if (rootElement instanceof BlockArchitecture) {
         rootElement = BlockArchitectureExt.getComponentPkg((BlockArchitecture) rootElement, false);
       }

@@ -57,7 +57,7 @@
                <element ref="sharedContext"/>
                <element ref="sharedRuleset"/>
             </choice>
-            <element ref="finalizer" minOccurs="0" maxOccurs="1"/>
+            <element ref="finalizer" minOccurs="0" maxOccurs="unbounded"/>
          </sequence>
          <attribute name="rulepackage" type="string">
             <annotation>
@@ -115,6 +115,9 @@
                <documentation>
                   
                </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn=":org.polarsys.capella.core.tiger.IFinalizer"/>
+               </appInfo>
             </annotation>
          </attribute>
       </complexType>

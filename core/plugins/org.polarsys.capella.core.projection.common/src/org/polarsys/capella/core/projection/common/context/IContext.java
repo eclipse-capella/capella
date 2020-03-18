@@ -23,11 +23,15 @@ public class IContext extends HashMap<String, Object> {
   public IContext(ITransfo transfo) {
     _transfo = transfo;
   }
-
+  
   public IContext() {
     // Nothing here
   }
 
+  public <T> T get(Class<T> clazz) {
+    return (T)get(clazz.getSimpleName());
+  }
+  
   public ITransfo getTransfo() {
     return _transfo;
   }
