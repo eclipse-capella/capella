@@ -79,7 +79,7 @@ public class TopDownExt {
         AbstractEnd end = (AbstractEnd) fragment;
         AbstractEventOperation transitionedOperation = getTransitionedOperation(end, transfo_p);
         boolean isSource = ScenarioExt.isSource(end);
-        AbstractInstance instance = getRelatedInstance(isSource, end, transitionedOperation, transfo_p);
+        AbstractInstance instance = getTargetInstance(isSource, end, transitionedOperation, transfo_p);
         if (instance != null) {
           partBounds.add(instance);
         }
@@ -101,7 +101,7 @@ public class TopDownExt {
     for (AbstractEnd end : role.getAbstractEnds()) {
       AbstractEventOperation transitionedOperation = getTransitionedOperation(end, transfo_p);
       boolean isSource = ScenarioExt.isSource(end);
-      AbstractInstance instance = getRelatedInstance(isSource, end, transitionedOperation, transfo_p);
+      AbstractInstance instance = getTargetInstance(isSource, end, transitionedOperation, transfo_p);
       if (instance != null) {
         partBounds.add(instance);
       } else {
@@ -141,49 +141,51 @@ public class TopDownExt {
   }
 
   /**
-   * Retrieve an instance for the given end and given operation_p. sourceEnd is used to restrict
+   * Retrieve the target instance for the given end and given operation_p
    */
   @SuppressWarnings({ "unchecked", "rawtypes" })
-  public static AbstractInstance getRelatedInstance(boolean isSource, AbstractEnd sourceEnd,
+  public static AbstractInstance getTargetInstance(boolean isSource, AbstractEnd sourceEnd,
       AbstractEventOperation targetOperation, ITransfo transfo_p) {
     List<AbstractInstance> partBounds = new ArrayList<AbstractInstance>();
 
-    if (sourceEnd != null) {
+    // If there is no operation, then there is no related instance
+    if (targetOperation == null) {
+      return null;
+    }
 
-      if (!ScenarioExt.isExchangeItemInstanceRole(sourceEnd)) {
-        Collection<AbstractInstance> relatedParts = getRelatedInstances(isSource, targetOperation, transfo_p);
+    if (ScenarioExt.isFunctionalInstanceRole(sourceEnd) || ScenarioExt.isRoleInstanceRole(sourceEnd)) {
+      Collection<AbstractInstance> relatedParts = getRelatedInstances(isSource, targetOperation, transfo_p);
+      partBounds.addAll(relatedParts);
 
-        // Restrict to components or parent components.
-        boolean isLinked = false;
-        for (AbstractInstance relatedPart : relatedParts) {
-          for (AbstractInstance parent : getRelatedPartAndAncestors(relatedPart)) {
-            for (InstanceRole relatedRole : sourceEnd.getCoveredInstanceRoles()) {
-              if (RefinementLinkExt.isLinkedTo(parent, relatedRole.getRepresentedInstance())) {
-                isLinked = true;
-                partBounds.add(relatedPart);
-              }
+    } else if (ScenarioExt.isPartInstanceRole(sourceEnd)) {
+      Collection<AbstractInstance> relatedParts = getRelatedInstances(isSource, targetOperation, transfo_p);
+
+      // Restrict to components or parent components.
+      for (AbstractInstance relatedPart : relatedParts) {
+        for (AbstractInstance parent : getRelatedPartAndAncestors(relatedPart)) {
+          for (InstanceRole relatedRole : sourceEnd.getCoveredInstanceRoles()) {
+            if (RefinementLinkExt.isLinkedTo(parent, relatedRole.getRepresentedInstance())) {
+              partBounds.add(relatedPart);
             }
-          }
-        }
-
-        if (!isLinked) {
-          partBounds.addAll(relatedParts);
-        }
-
-      } else {
-        ExchangeItemInstance instance = (ExchangeItemInstance) ScenarioExt.getExchangeItemInstanceRole(sourceEnd);
-        if (targetOperation instanceof ExchangeItemAllocation) {
-          if (RefinementLinkExt.isLinkedTo(((ExchangeItemAllocation)targetOperation).getAllocatedItem(), instance.getType())) {
-            List<?> instances = Query.retrieveTransformedElements(instance, transfo_p,
-                InformationPackage.Literals.ABSTRACT_INSTANCE);
-            partBounds.addAll((List) instances);
-            
-          } else if (((ExchangeItemAllocation)targetOperation).getAllocatedItem().equals(instance.getType()) ){
-            partBounds.add(instance);
           }
         }
       }
 
+    } else if (ScenarioExt.isExchangeItemInstanceRole(sourceEnd)) {
+      // If targetOperation is in target architecture, retrieve the ExchangeItemInstance in the target architecture
+      // If targetOperation is in source architecture, retrieve the current ExchangeItemInstance
+      ExchangeItemInstance instance = (ExchangeItemInstance) ScenarioExt.getExchangeItemInstanceRole(sourceEnd);
+      if (targetOperation instanceof ExchangeItemAllocation) {
+        if (RefinementLinkExt.isLinkedTo(((ExchangeItemAllocation) targetOperation).getAllocatedItem(),
+            instance.getType())) {
+          List<?> instances = Query.retrieveTransformedElements(instance, transfo_p,
+              InformationPackage.Literals.ABSTRACT_INSTANCE);
+          partBounds.addAll((List) instances);
+
+        } else if (((ExchangeItemAllocation) targetOperation).getAllocatedItem().equals(instance.getType())) {
+          partBounds.add(instance);
+        }
+      }
     }
 
     partBounds = (List) ListExt.removeDuplicates((List) partBounds);

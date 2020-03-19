@@ -17,7 +17,6 @@ import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellacore.Constraint;
 import org.polarsys.capella.core.projection.common.context.IContext;
-import org.polarsys.capella.core.tiger.ITransfo;
 import org.polarsys.capella.core.tiger.helpers.Query;
 
 public class Rule_Constraint extends Rule_CapellaElement {
@@ -31,11 +30,6 @@ public class Rule_Constraint extends Rule_CapellaElement {
     super.retrieveGoDeep(source, result, context);
     Constraint sourceElement = (Constraint) source;
     result.add(sourceElement.getOwnedSpecification());
-  }
-  
-  @Override
-  public void update_(EObject element, ITransfo transfo) {
-    super.update_(element, transfo);
   }
   
   @Override

@@ -10,10 +10,13 @@
  *******************************************************************************/
 package org.polarsys.capella.core.projection.scenario.common.rules;
 
+import java.util.List;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.projection.common.context.IContext;
 import org.polarsys.capella.core.projection.common.rules.AbstractCommonRule;
@@ -54,6 +57,12 @@ public class Rule_CapellaElement extends AbstractCommonRule {
     return EcoreUtil2.isOrIsContainedBy(element_p, transfoSource);
   }
 
+  @Override
+  protected void retrieveGoDeep(EObject source_p, List<EObject> result_p, IContext context_p) {
+    super.retrieveGoDeep(source_p, result_p, context_p);
+    result_p.addAll(((CapellaElement) source_p).getOwnedConstraints());
+  }
+  
   /**
    * @param element_p
    * @param result_p

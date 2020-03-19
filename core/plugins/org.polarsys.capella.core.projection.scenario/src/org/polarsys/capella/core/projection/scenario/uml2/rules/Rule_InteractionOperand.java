@@ -10,8 +10,11 @@
  *******************************************************************************/
 package org.polarsys.capella.core.projection.scenario.uml2.rules;
 
+import java.util.List;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.polarsys.capella.core.data.interaction.InteractionOperand;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.projection.common.context.IContext;
 import org.polarsys.capella.core.projection.common.handlers.attachment.AttachmentHelper;
@@ -44,6 +47,12 @@ public class Rule_InteractionOperand extends Rule_CapellaElement {
 
     AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p, InteractionPackage.Literals.INTERACTION_FRAGMENT__COVERED_INSTANCE_ROLES,
         context_p);
-
   }
+  
+  @Override
+  protected void retrieveGoDeep(EObject source_p, List<EObject> result_p, IContext context_p) {
+    super.retrieveGoDeep(source_p, result_p, context_p);
+    result_p.add(((InteractionOperand)source_p).getGuard());
+  }
+  
 }

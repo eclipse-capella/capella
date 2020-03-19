@@ -19,7 +19,7 @@ import org.polarsys.capella.core.data.information.AbstractEventOperation;
 import org.polarsys.capella.core.data.interaction.EventReceiptOperation;
 import org.polarsys.capella.core.data.interaction.EventSentOperation;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
-import org.polarsys.capella.core.projection.common.CommonRule;
+import org.polarsys.capella.core.projection.scenario.common.rules.Rule_InteractionElement;
 import org.polarsys.capella.core.projection.scenario.helpers.ScenarioExt;
 import org.polarsys.capella.core.projection.scenario.helpers.UnwantedObjects;
 import org.polarsys.capella.core.tiger.ITransfo;
@@ -29,7 +29,7 @@ import org.polarsys.capella.core.tiger.helpers.TigerRelationshipHelper;
 
 /**
  */
-public class Rule_Event extends CommonRule {
+public class Rule_Event extends Rule_InteractionElement {
 
   /**
    * @param eclass_p
@@ -80,11 +80,6 @@ public class Rule_Event extends CommonRule {
   protected Object transformElement(EObject element_p, ITransfo transfo_p) {
     EPackage pkg = (EPackage) element_p.eClass().eContainer();
     return pkg.getEFactoryInstance().create(element_p.eClass());
-  }
-
-  @Override
-  protected void doGoDeep(EObject element_p, List<EObject> result_p) {
-    //Nothing here
   }
 
 }
