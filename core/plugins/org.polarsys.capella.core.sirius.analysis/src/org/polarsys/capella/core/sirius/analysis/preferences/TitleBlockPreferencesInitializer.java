@@ -19,9 +19,9 @@ public class TitleBlockPreferencesInitializer extends AbstractPreferencesInitial
 
   public static final String TABEL_CONTENT_PREFERENCE_STORE = "tableTitleBlock";
   public static final String COLUMNS_NUMBER_PREFERENCE_STORE = "columnsNumberTitleBlock";
-  public static final String LINES_NUMBER_PREFERENCE_STORE = "linesNumberTitleBlock";
+  public static final String ROWS_NUMBER_PREFERENCE_STORE = "rowsNumberTitleBlock";
   public static final String DEFAULT_TITLEBLOCK_PREFERENCE_STORE = "defaultTitleBlock";
-  public static final String DEFAULT_TABLE = "Name+feature:name+Synchronized+feature:synchronized+Summary+aql:self.target.summary+Description+feature:documentation";
+  public static final String DEFAULT_TABLE = "Name+aql:name+Synchronized+aql:synchronized+Summary+aql:summary+Description+aql:description";
 
   public TitleBlockPreferencesInitializer() {
     super(CapellaActionsActivator.PLUGIN_ID);
@@ -31,7 +31,7 @@ public class TitleBlockPreferencesInitializer extends AbstractPreferencesInitial
   public void initializeDefaultPreferences() {
     IPreferenceStore preferenceStore = Activator.getDefault().getPreferenceStore();
     preferenceStore.setDefault(COLUMNS_NUMBER_PREFERENCE_STORE, 2);
-    preferenceStore.setDefault(LINES_NUMBER_PREFERENCE_STORE, 2);
+    preferenceStore.setDefault(ROWS_NUMBER_PREFERENCE_STORE, 2);
     preferenceStore.setDefault(TABEL_CONTENT_PREFERENCE_STORE, DEFAULT_TABLE);
 
     preferenceStore.setDefault(DEFAULT_TITLEBLOCK_PREFERENCE_STORE, true);
