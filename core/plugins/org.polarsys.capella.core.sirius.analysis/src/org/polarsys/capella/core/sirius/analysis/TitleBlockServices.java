@@ -384,8 +384,12 @@ public class TitleBlockServices {
   }
 
   public void clearCell(Object element) {
-    ((DAnnotation) element).getDetails().put(NAME, "");
-    ((DAnnotation) element).getDetails().put(CONTENT, "");
+    if (element instanceof DAnnotation) {
+      if (TRUE.equals(((DAnnotation) element).getDetails().get(IS_ELEMENT_TITLE_BLOCK))) {
+        ((DAnnotation) element).getDetails().put(NAME, "");
+        ((DAnnotation) element).getDetails().put(CONTENT, "");
+      }
+    }
   }
 
   public void clearLineEAnnotation(DAnnotation titleBlock, DDiagram diagram) {
