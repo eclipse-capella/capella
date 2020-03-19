@@ -38,8 +38,6 @@ import org.polarsys.capella.core.data.ctx.MissionPkg;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.FunctionPkg;
 import org.polarsys.capella.core.data.information.DataPkg;
-import org.polarsys.capella.core.data.interaction.MessageKind;
-import org.polarsys.capella.core.data.interaction.SequenceMessage;
 import org.polarsys.capella.core.data.la.LaPackage;
 import org.polarsys.capella.core.data.oa.OaPackage;
 import org.polarsys.capella.core.data.oa.RolePkg;
@@ -179,10 +177,6 @@ public class CapellaDeleteAction extends AbstractCommandActionHandler implements
         if (type != null) {
           return isElementProtected(type);
         }
-      } else if (element instanceof SequenceMessage) {
-        SequenceMessage msg = (SequenceMessage) element;
-        return !(msg.getReceivingEnd() == null || msg.getKind() == MessageKind.CREATE
-            || msg.getKind() == MessageKind.DELETE);
       }
 
       return element instanceof Project || element instanceof SystemEngineering || element instanceof BlockArchitecture

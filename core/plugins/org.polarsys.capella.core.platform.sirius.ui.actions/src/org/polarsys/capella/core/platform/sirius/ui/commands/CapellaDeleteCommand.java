@@ -13,7 +13,6 @@ package org.polarsys.capella.core.platform.sirius.ui.commands;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -23,6 +22,8 @@ import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.viewers.DecoratingLabelProvider;
+import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.swt.SWT;
 import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.common.ef.ExecutionManager;
@@ -31,9 +32,9 @@ import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.model.preferences.IDeletePreferences;
 import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaActionsActivator;
 import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaDeleteAction;
+import org.polarsys.capella.core.platform.sirius.ui.actions.decorators.ProtectedElementsDecorator;
 import org.polarsys.capella.core.ui.toolkit.dialogs.ConfirmDeleteCapellaElementDialog;
 import org.polarsys.capella.core.ui.toolkit.dialogs.ImpactAnalysisDialog;
-import org.polarsys.kitalpha.emde.model.Element;
 
 /**
  * Capella delete command facade.
@@ -41,21 +42,23 @@ import org.polarsys.kitalpha.emde.model.Element;
 public class CapellaDeleteCommand extends BasicCapellaDeleteCommand {
 
   private boolean preventProtectedElementsDeletion;
-  
+
   private IStatus protectedElements = Status.OK_STATUS;
-  
+
   /**
    * Equivalent to <code>CapellaDeleteCommand(executionManager, selection, true)</code>.
+   * 
    * @param executionManager
    * @param collection
    */
   public CapellaDeleteCommand(ExecutionManager executionManager, Collection<?> selection) {
     this(executionManager, selection, true);
   }
-  
+
   /**
    * 
    * <h2>Warning: This constructor doesn't support execution manager</i></h2><br>
+   * 
    * @param editingDomain
    * @param selection
    * @param confirmDelete
@@ -68,6 +71,7 @@ public class CapellaDeleteCommand extends BasicCapellaDeleteCommand {
   /**
    * Equivalent to
    * <code>CapellaDeleteCommand(executionManager, collection, ensureTransaction, IDeletePreferences.INSTANCE.isConfirmationRequired(), true)</code>.
+   * 
    * @param executionManager
    * @param collection
    */
@@ -77,13 +81,20 @@ public class CapellaDeleteCommand extends BasicCapellaDeleteCommand {
 
   /**
    * Constructor.
+   * 
    * @param executionManager
    * @param selection
-   * @param ensureTransaction Should it be executed against the specified execution manager directly (<code>true</code>) or not (<code>false</code>) ?
-   * @param confirmDelete Should the user be asked for confirmation (<code>true</code>) or not (<code>false</code>) ?
-   * @param longOperationEvents Should events about this long running operation flow be sent ? <code>true</code> if so, <code>false</code> otherwise.
+   * @param ensureTransaction
+   *          Should it be executed against the specified execution manager directly (<code>true</code>) or not
+   *          (<code>false</code>) ?
+   * @param confirmDelete
+   *          Should the user be asked for confirmation (<code>true</code>) or not (<code>false</code>) ?
+   * @param longOperationEvents
+   *          Should events about this long running operation flow be sent ? <code>true</code> if so, <code>false</code>
+   *          otherwise.
    */
-  public CapellaDeleteCommand(ExecutionManager executionManager, Collection<?> selection, boolean ensureTransaction, boolean confirmDelete, boolean longOperationEvents) {
+  public CapellaDeleteCommand(ExecutionManager executionManager, Collection<?> selection, boolean ensureTransaction,
+      boolean confirmDelete, boolean longOperationEvents) {
     super(executionManager, selection, ensureTransaction, confirmDelete, longOperationEvents);
     this.preventProtectedElementsDeletion = false;
   }
@@ -91,12 +102,13 @@ public class CapellaDeleteCommand extends BasicCapellaDeleteCommand {
   public void setPreventProtectedElementsDeletion(boolean value) {
     this.preventProtectedElementsDeletion = value;
   }
-  
+
   /**
    * 
    */
   protected Command getDeleteRepresentationCommand(TransactionalEditingDomain editingDomain) {
-    return new DeleteRepresentationCommand(editingDomain, RepresentationHelper.getAllRepresentationDescriptorsTargetedBy(getExpandedSelection()));
+    return new DeleteRepresentationCommand(editingDomain,
+        RepresentationHelper.getAllRepresentationDescriptorsTargetedBy(getExpandedSelection()));
   }
 
   /**
@@ -108,47 +120,54 @@ public class CapellaDeleteCommand extends BasicCapellaDeleteCommand {
 
   /**
    * In case we would delete controlled elements, show a dialog to warn the user.
+   * 
    * @param controlledElementsToDelete
    */
   protected void showAbortDialogForControlledElementsToDelete(final Set<? extends EObject> controlledElementsToDelete) {
     PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
       public void run() {
-        ImpactAnalysisDialog dialog =
-            new ImpactAnalysisDialog(new ArrayList<EObject>(controlledElementsToDelete), Messages.CapellaDeleteCommand_ConfirmLabel,
-                Messages.CapellaDeleteCommand_ControlledElementsError_Message, MessageDialog.ERROR,
-                new String[] { org.polarsys.capella.common.ui.toolkit.dialogs.Messages.AbstractViewerDialog_OK_Title }, SWT.COLOR_RED, false);
+        ImpactAnalysisDialog dialog = new ImpactAnalysisDialog(new ArrayList<EObject>(controlledElementsToDelete),
+            Messages.CapellaDeleteCommand_ConfirmLabel, Messages.CapellaDeleteCommand_ControlledElementsError_Message,
+            MessageDialog.ERROR,
+            new String[] { org.polarsys.capella.common.ui.toolkit.dialogs.Messages.AbstractViewerDialog_OK_Title },
+            SWT.COLOR_RED, false);
         dialog.open();
       }
     });
   }
-  
+
   @Override
   protected IStatus preDeleteChecks() {
     if (preventProtectedElementsDeletion) {
       Set<?> elementsToDelete = getAllElementsToDelete();
       if (!CapellaDeleteAction.canDelete(elementsToDelete)) {
         protectedElements = new Status(Status.ERROR, CapellaActionsActivator.PLUGIN_ID,
-          Messages.CapellaDeleteCommand_ProtectedElementsError);
+            Messages.CapellaDeleteCommand_ProtectedElementsError);
       }
     }
     return protectedElements;
   }
-  
+
   protected boolean confirmDeletion() {
     Set<?> elementsToDelete = getAllElementsToDelete();
+
     ConfirmDeleteCapellaElementDialog confirmDeletionDialog = new ConfirmDeleteCapellaElementDialog(
         new ArrayList<Object>(elementsToDelete), true, getExpandedSelection().toArray()) {
-          @Override
-          protected IStatus getStatus() {
-            return protectedElements;
-          }
 
-          @Override
-          public Set<Object> getProtectedElements() {
-            return elementsToDelete.stream().filter(Element.class::isInstance).map(Element.class::cast)
-            .filter(CapellaDeleteAction::isElementProtected).collect(Collectors.toSet());
-          }
+      @Override
+      protected IStatus getStatus() {
+        return protectedElements;
+      }
+
+      @Override
+      protected ILabelProvider createLabelProvider(ILabelProvider provider) {
+        if (preventProtectedElementsDeletion && !ProtectedElementsDecorator.isEnabled()) {
+          return new DecoratingLabelProvider(provider, new ProtectedElementsDecorator(elementsToDelete));
+        }
+        return provider;
+      }
     };
+
     PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
       public void run() {
         confirmDeletionDialog.open();
@@ -175,10 +194,11 @@ public class CapellaDeleteCommand extends BasicCapellaDeleteCommand {
       proceed = true;
     }
   }
-  
+
   /**
-   * Simulate deletion of the given selection up to the point where we show a confirmation dialog to the user. Also performs the check on fragment roots. Needed
-   * when deleting elements from a diagram editor for some obscure reason.
+   * Simulate deletion of the given selection up to the point where we show a confirmation dialog to the user. Also
+   * performs the check on fragment roots. Needed when deleting elements from a diagram editor for some obscure reason.
+   * 
    * @see CapellaDeleteActionHook
    * @param manager
    * @param selection

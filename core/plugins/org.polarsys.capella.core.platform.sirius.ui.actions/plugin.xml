@@ -695,5 +695,19 @@
          </item>
       </category>
 
+   </extension>
+   <extension
+         point="org.eclipse.ui.decorators">
+      <decorator
+            icon="icons/lock.png"
+            id="org.polarsys.capella.core.platform.sirius.ui.actions.decorators.ProtectedElementsDecorator"
+            label="%ProtectedElementsDecorator_name"
+            lightweight="true"
+            class="org.polarsys.capella.core.platform.sirius.ui.actions.decorators.ProtectedElementsDecorator"
+            location="BOTTOM_LEFT"
+            state="false">
+            <description>%ProtectedElementsDecorator_description</description>
+      </decorator>
    </extension>   
+   
 </plugin>
