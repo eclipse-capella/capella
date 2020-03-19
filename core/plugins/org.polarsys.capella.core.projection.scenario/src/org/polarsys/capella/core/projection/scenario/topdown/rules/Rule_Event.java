@@ -19,8 +19,8 @@ import org.polarsys.capella.core.data.information.AbstractEventOperation;
 import org.polarsys.capella.core.data.interaction.EventReceiptOperation;
 import org.polarsys.capella.core.data.interaction.EventSentOperation;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
-import org.polarsys.capella.core.projection.common.CommonRule;
 import org.polarsys.capella.core.projection.scenario.Messages;
+import org.polarsys.capella.core.projection.scenario.common.rules.Rule_InteractionElement;
 import org.polarsys.capella.core.projection.scenario.helpers.ScenarioExt;
 import org.polarsys.capella.core.projection.scenario.helpers.UnwantedObjects;
 import org.polarsys.capella.core.projection.scenario.topdown.TopDownExt;
@@ -30,7 +30,7 @@ import org.polarsys.capella.core.tiger.helpers.TigerRelationshipHelper;
 
 /**
  */
-public class Rule_Event extends CommonRule {
+public class Rule_Event extends Rule_InteractionElement {
 
   @Override
   protected boolean transformIsRequired(EObject element_p, ITransfo transfo_p) {

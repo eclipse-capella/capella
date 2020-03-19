@@ -17,8 +17,8 @@ import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.interaction.ScenarioKind;
-import org.polarsys.capella.core.projection.common.CommonRule;
 import org.polarsys.capella.core.projection.scenario.Messages;
+import org.polarsys.capella.core.projection.scenario.common.rules.Rule_InteractionElement;
 import org.polarsys.capella.core.tiger.ITransfo;
 import org.polarsys.capella.core.tiger.TransfoException;
 import org.polarsys.capella.core.tiger.helpers.Query;
@@ -28,7 +28,7 @@ import org.polarsys.capella.core.tiger.impl.TransfoEngine;
 /**
  *
  */
-public class Rule_Scenario extends CommonRule {
+public class Rule_Scenario extends Rule_InteractionElement {
 
   /**
    * @param sourceType_p
@@ -89,6 +89,7 @@ public class Rule_Scenario extends CommonRule {
 
   @Override
   protected void doGoDeep(EObject element_p, List<EObject> result_p) {
+    super.doGoDeep(element_p, result_p);
     Scenario s = (Scenario) element_p;
     result_p.add(s.getPreCondition());
     result_p.add(s.getPostCondition());

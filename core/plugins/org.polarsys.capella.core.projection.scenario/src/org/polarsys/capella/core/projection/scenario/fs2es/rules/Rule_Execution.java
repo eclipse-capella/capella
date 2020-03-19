@@ -15,8 +15,8 @@ import org.polarsys.capella.core.data.interaction.AbstractEnd;
 import org.polarsys.capella.core.data.interaction.Execution;
 import org.polarsys.capella.core.data.interaction.InteractionFragment;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
-import org.polarsys.capella.core.projection.common.CommonRule;
 import org.polarsys.capella.core.projection.common.ProjectionMessages;
+import org.polarsys.capella.core.projection.scenario.common.rules.Rule_InteractionElement;
 import org.polarsys.capella.core.tiger.ITransfo;
 import org.polarsys.capella.core.tiger.TransfoException;
 import org.polarsys.capella.core.tiger.helpers.TigerRelationshipHelper;
@@ -24,7 +24,7 @@ import org.polarsys.capella.core.tiger.helpers.TigerRelationshipHelper;
 /**
  *
  */
-public class Rule_Execution extends CommonRule {
+public class Rule_Execution extends Rule_InteractionElement {
 
   /**
    * @param eclass_p

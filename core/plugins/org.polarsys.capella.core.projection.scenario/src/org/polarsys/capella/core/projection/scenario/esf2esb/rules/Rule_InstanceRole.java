@@ -19,8 +19,8 @@ import org.polarsys.capella.core.data.information.AbstractInstance;
 import org.polarsys.capella.core.data.interaction.InstanceRole;
 import org.polarsys.capella.core.data.interaction.InteractionFactory;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
-import org.polarsys.capella.core.projection.common.CommonRule;
 import org.polarsys.capella.core.projection.exchanges.ConnectionCreatorFactory;
+import org.polarsys.capella.core.projection.scenario.common.rules.Rule_InteractionElement;
 import org.polarsys.capella.core.projection.scenario.helpers.InstanceRoles;
 import org.polarsys.capella.core.tiger.ITransfo;
 import org.polarsys.capella.core.tiger.TransfoException;
@@ -30,7 +30,7 @@ import org.polarsys.capella.core.tiger.helpers.TigerRelationshipHelper;
 /**
  *
  */
-public class Rule_InstanceRole extends CommonRule {
+public class Rule_InstanceRole extends Rule_InteractionElement {
 
   /**
    * @param sourceType_p
@@ -66,14 +66,6 @@ public class Rule_InstanceRole extends CommonRule {
     InstanceRole role = InteractionFactory.eINSTANCE.createInstanceRole();
     InstanceRoles.add(((InstanceRole) element_p).getRepresentedInstance(), role);
     return role;
-  }
-
-  /**
-   * @see org.polarsys.capella.core.projection.common.CommonRule#doGoDeep(org.eclipse.emf.ecore.EObject, java.util.List)
-   */
-  @Override
-  protected void doGoDeep(EObject element_p, List<EObject> result_p) {
-    // Nothing here
   }
 
   /**

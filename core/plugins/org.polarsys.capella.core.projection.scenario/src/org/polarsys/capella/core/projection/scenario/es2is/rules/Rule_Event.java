@@ -27,9 +27,9 @@ import org.polarsys.capella.core.data.interaction.Event;
 import org.polarsys.capella.core.data.interaction.EventReceiptOperation;
 import org.polarsys.capella.core.data.interaction.EventSentOperation;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
-import org.polarsys.capella.core.projection.common.CommonRule;
 import org.polarsys.capella.core.projection.common.ProjectionMessages;
 import org.polarsys.capella.core.projection.interfaces.generateInterfaces.Rule_FunctionalExchange_Interface;
+import org.polarsys.capella.core.projection.scenario.common.rules.Rule_InteractionElement;
 import org.polarsys.capella.core.projection.scenario.helpers.ScenarioExt;
 import org.polarsys.capella.core.projection.scenario.helpers.UnwantedObjects;
 import org.polarsys.capella.core.tiger.ITransfo;
@@ -39,7 +39,7 @@ import org.polarsys.capella.core.tiger.helpers.TigerRelationshipHelper;
 
 /**
  */
-public class Rule_Event extends CommonRule {
+public class Rule_Event extends Rule_InteractionElement {
 
   @Override
   protected boolean transformIsRequired(EObject element_p, ITransfo transfo_p) {
@@ -156,11 +156,6 @@ public class Rule_Event extends CommonRule {
       //end.setName(element_p.eClass().getName()+": "+exchangeItem.getName()+" ("+(i++)+")"); //$NON-NLS-1$
     }
     return result;
-  }
-
-  @Override
-  protected void doGoDeep(EObject element_p, List<EObject> result_p) {
-    // Nothing here
   }
 
 }
