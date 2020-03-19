@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.FileLocator;
@@ -25,8 +26,10 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.sirius.common.tools.api.interpreter.CompoundInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
-import org.eclipse.sirius.common.tools.internal.interpreter.FeatureInterpreter;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterProvider;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -40,8 +43,12 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
 import org.eclipse.swt.graphics.Image;
+import org.polarsys.capella.common.ui.toolkit.browser.category.CategoryRegistry;
+import org.polarsys.capella.common.ui.toolkit.browser.category.ICategory;
 import org.polarsys.capella.core.data.information.impl.DataPkgImpl;
 import org.polarsys.capella.core.sirius.analysis.activator.SiriusViewActivator;
+
+import com.google.common.base.CaseFormat;
 
 public class TitleBlockServices {
   private static TitleBlockServices service = null;
@@ -57,7 +64,8 @@ public class TitleBlockServices {
   private static final String IS_ELEMENT_TITLE_BLOCK = "Is Element Title Block";
   private static final String TRUE = "True";
   private static final String FALSE = "False";
-
+  private static final String CAPELLA_COMMAND = "capella:";
+  
   public static TitleBlockServices getService() {
     if (service == null) {
       service = new TitleBlockServices();
@@ -388,15 +396,21 @@ public class TitleBlockServices {
     }
     eAnnotationsList.removeAll(annotationsListToBeRemoved);
   }
-
+  
+  
+  /**
+   * 
+   * @param diagram
+   * @param cell
+   * @param containerView
+   * @return the content of the cell which can be a string or a collection of objects
+   */
   public List<Object> getTitleBlockCellContent(EObject diagram, EObject cell, EObject containerView) {
     List<Object> list = new ArrayList<Object>();
     if ((diagram instanceof DRepresentation)) {
       if (cell instanceof DAnnotation) {
         DAnnotation annotation = (DAnnotation) ((DNodeContainer) (containerView.eContainer().eContainer())).getTarget();
-        FeatureInterpreter interpreter = new FeatureInterpreter();
-        try {
-          String feature = ((DAnnotation) cell).getDetails().get(CONTENT);
+        String feature = ((DAnnotation) cell).getDetails().get(CONTENT);
           if (feature != null) {
             EObject objToEvaluate = diagram;
             List<EObject> modelElements = annotation.getReferences().parallelStream()
@@ -404,7 +418,7 @@ public class TitleBlockServices {
             if (!modelElements.isEmpty()) {
               objToEvaluate = modelElements.get(0);
             }
-            Object obj = interpreter.evaluate(objToEvaluate, feature);
+            Object obj = Interpreter.evaluate(objToEvaluate, feature);
             if (obj != null) {
               if (obj instanceof String) {
                 boolean EANNOTATION_PRESENT = false;
@@ -427,11 +441,13 @@ public class TitleBlockServices {
                   list.add(annotationContent);
                 }
               }
+              else {
+            	  if(obj instanceof Collection) {
+            		list.addAll((Collection)obj);
+            	  }
+              }
             }
           }
-        } catch (EvaluationException e) {
-          e.printStackTrace();
-        }
       }
     }
     return list;
@@ -614,4 +630,49 @@ public class TitleBlockServices {
     return ImageDescriptor.createFromURL(url).createImage();
   }
 
+  /**
+   * class that evaluates the services offered via TitleBlocks (aql, features or capella)
+   */
+  private static class Interpreter {
+
+    /**
+     * 
+     * @param target:
+     *          the element which will be evaluated (the semantic element on which the TB is attached)
+     * @param expression:
+     *          the query which is evaluated
+     * @return the result after the expression is evaluated (applied to target)
+     */
+    private static Object evaluate(EObject target, String expression) {
+      // check if it is a capella service (the ones in ServiceBroker)
+      if (expression.startsWith(CAPELLA_COMMAND)) {
+        // extract the capella command
+        String command = expression.substring(CAPELLA_COMMAND.length(), expression.length()).trim();
+
+        // get all the categories for target and match the command name from category with the command in TitleBlock
+        Set<ICategory> categories = CategoryRegistry.getInstance().gatherCategories(target).stream()
+            .filter(category -> CaseFormat.UPPER_UNDERSCORE
+                .to(CaseFormat.LOWER_CAMEL, category.getName().trim().replaceAll(" ", "_")).equals(command))
+            .collect(Collectors.toSet());
+
+        ICategory category = categories.iterator().next();
+        if (category != null) {
+          // execute the command
+          return category.compute(target);
+        }
+
+      } else {
+        // obtain the provider for the type of interpreter we used in TitleBlock (aql, feature)
+        IInterpreterProvider provider = CompoundInterpreter.INSTANCE.getProviderForExpression(expression);
+        IInterpreter interpreter = provider.createInterpreter();
+        try {
+          // return the result after we evaluated the expression
+          return interpreter.evaluate(target, expression);
+        } catch (EvaluationException e) {
+          e.printStackTrace();
+        }
+      }
+      return null;
+    }
+  }
 }
