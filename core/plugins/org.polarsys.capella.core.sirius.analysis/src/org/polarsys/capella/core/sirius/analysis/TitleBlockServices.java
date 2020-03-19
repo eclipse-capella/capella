@@ -35,7 +35,6 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNodeContainer;
-import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.description.NodeMapping;
@@ -93,8 +92,8 @@ public class TitleBlockServices {
 
   public void createElementTitleBlock(EObject elementView, EObject diagram) {
     if (!(elementView instanceof DSemanticDiagram) && isUniqueElementTitleBlock(elementView, diagram)) {
-      if (elementView instanceof DNodeList) {
-        if (!(((DNodeList) elementView).getTarget() instanceof DAnnotation)) {
+      if (elementView instanceof DDiagramElement) {
+        if (!(((DDiagramElement) elementView).getTarget() instanceof DAnnotation)) {
 
           DRepresentation representation = null;
           if ((diagram instanceof DRepresentation)) {
@@ -610,7 +609,7 @@ public class TitleBlockServices {
   private AbstractDNode createTitleBlockView(EObject context, DAnnotation titleBlock, DDiagram diagram) {
     String mappingName = IMappingNameConstants.DT_TITLE_BLOCK;
     NodeMapping mapping = DiagramServices.getDiagramServices().getNodeMapping(diagram, mappingName);
-    if (context instanceof DNodeList) {
+    if (context instanceof DDiagramElement) {
       if (null != titleBlock.getDetails().get(VISIBILITY)) {
         titleBlock.getDetails().put(VISIBILITY, TRUE);
       }
@@ -641,7 +640,7 @@ public class TitleBlockServices {
           .collect(Collectors.toList());
       for (DAnnotation annotation : result) {
         for (EObject reference : annotation.getReferences()) {
-          if (reference == ((DNodeList) elementView).getTarget()) {
+          if (reference == ((DDiagramElement) elementView).getTarget()) {
             return false;
           }
         }
