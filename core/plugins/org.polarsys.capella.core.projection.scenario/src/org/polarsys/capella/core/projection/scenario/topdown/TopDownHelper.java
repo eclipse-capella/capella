@@ -25,11 +25,9 @@ public class TopDownHelper extends ScenarioHorizontalHelper {
 
   @Override
   public List<EObject> getTargetRelatedElements(StateFragment state, IContext context_p) {
-
     if (state.getRelatedAbstractFunction() != null) {
       return TraceabilityHandlerHelper.getInstance(context_p).retrieveTracedElements(state.getRelatedAbstractFunction(), context_p);
     }
-
     if (state.getRelatedAbstractState() != null) {
       return TraceabilityHandlerHelper.getInstance(context_p).retrieveTracedElements(state.getRelatedAbstractState(), context_p);
     }

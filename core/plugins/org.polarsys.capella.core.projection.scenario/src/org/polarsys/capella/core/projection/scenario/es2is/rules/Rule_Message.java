@@ -18,8 +18,8 @@ import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.interaction.InteractionFactory;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
-import org.polarsys.capella.core.projection.common.CommonRule;
 import org.polarsys.capella.core.projection.common.ProjectionMessages;
+import org.polarsys.capella.core.projection.scenario.common.rules.Rule_InteractionElement;
 import org.polarsys.capella.core.projection.scenario.es2is.ES2ISExt;
 import org.polarsys.capella.core.tiger.ITransfo;
 import org.polarsys.capella.core.tiger.TransfoException;
@@ -27,7 +27,7 @@ import org.polarsys.capella.core.tiger.helpers.TigerRelationshipHelper;
 
 /**
  */
-public class Rule_Message extends CommonRule {
+public class Rule_Message extends Rule_InteractionElement {
 
   /**
    * @param eclass_p
@@ -86,6 +86,12 @@ public class Rule_Message extends CommonRule {
       result.add(InteractionFactory.eINSTANCE.createSequenceMessage());
     }
     return result;
+  }
+
+  @Override
+  protected void doGoDeep(EObject element_p, List<EObject> result_p) {
+    super.doGoDeep(element_p, result_p);
+    result_p.add(((SequenceMessage)element_p).getExchangeContext());
   }
 
 }

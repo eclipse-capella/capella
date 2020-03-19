@@ -30,8 +30,8 @@ import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.interaction.ScenarioKind;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
 import org.polarsys.capella.core.model.utils.CapellaLayerCheckingExt;
-import org.polarsys.capella.core.projection.common.CommonRule;
 import org.polarsys.capella.core.projection.common.TransitionHelper;
+import org.polarsys.capella.core.projection.scenario.common.rules.Rule_InteractionElement;
 import org.polarsys.capella.core.projection.scenario.helpers.ScenarioExt;
 import org.polarsys.capella.core.projection.scenario.topdown.TopDownExt;
 import org.polarsys.capella.core.tiger.ITransfo;
@@ -43,7 +43,7 @@ import org.polarsys.capella.core.transition.system.topdown.preferences.Preferenc
 
 /**
  */
-public class Rule_Scenario extends CommonRule {
+public class Rule_Scenario extends Rule_InteractionElement {
 
   /**
    * @param sourceType_p
@@ -188,7 +188,6 @@ public class Rule_Scenario extends CommonRule {
     super.doGoDeep(element_p, result_p);
 
     Scenario s = (Scenario) element_p;
-
     result_p.add(s.getPreCondition());
     result_p.add(s.getPostCondition());
     result_p.addAll(s.getOwnedMessages());
@@ -196,7 +195,6 @@ public class Rule_Scenario extends CommonRule {
     result_p.addAll(s.getOwnedInteractionFragments());
     result_p.addAll(s.getOwnedTimeLapses());
     result_p.addAll(s.getOwnedInstanceRoles());
-
   }
 
   @Override

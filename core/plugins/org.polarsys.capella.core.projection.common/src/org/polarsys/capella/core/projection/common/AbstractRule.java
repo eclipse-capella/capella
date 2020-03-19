@@ -23,6 +23,7 @@ import org.polarsys.capella.core.tiger.impl.TransfoRule;
 
 /**
  */
+@Deprecated
 public abstract class AbstractRule extends TransfoRule {
   protected ITransfo _transfo;
 

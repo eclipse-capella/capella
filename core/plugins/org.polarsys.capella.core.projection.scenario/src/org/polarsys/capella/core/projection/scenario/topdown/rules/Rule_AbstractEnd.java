@@ -23,8 +23,8 @@ import org.polarsys.capella.core.data.interaction.ExecutionEnd;
 import org.polarsys.capella.core.data.interaction.InstanceRole;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.interaction.MessageEnd;
-import org.polarsys.capella.core.projection.common.CommonRule;
 import org.polarsys.capella.core.projection.common.ProjectionMessages;
+import org.polarsys.capella.core.projection.scenario.common.rules.Rule_InteractionElement;
 import org.polarsys.capella.core.projection.scenario.es2is.ES2ISExt;
 import org.polarsys.capella.core.projection.scenario.helpers.ScenarioExt;
 import org.polarsys.capella.core.projection.scenario.helpers.UnwantedObjects;
@@ -35,7 +35,7 @@ import org.polarsys.capella.core.tiger.helpers.TigerRelationshipHelper;
 
 /**
  */
-public class Rule_AbstractEnd extends CommonRule {
+public class Rule_AbstractEnd extends Rule_InteractionElement {
 
   @Override
   protected void runSubTransitionBeforeTransform(EObject element_p, ITransfo transfo_p) {
@@ -61,7 +61,7 @@ public class Rule_AbstractEnd extends CommonRule {
       AbstractEventOperation operation = ScenarioExt.getOperation(element_p);
       AbstractEventOperation transitionedOperation = TopDownExt.getTransitionedOperation(element_p, transfo_p);
       boolean isSource = ScenarioExt.isSource(end);
-      AbstractInstance instance = TopDownExt.getRelatedInstance(isSource, end, transitionedOperation, transfo_p);
+      AbstractInstance instance = TopDownExt.getTargetInstance(isSource, end, transitionedOperation, transfo_p);
       if (operation != null && transitionedOperation != null && instance == null) {
         if (end instanceof MessageEnd) {
           for (AbstractEnd relatedEnd : ES2ISExt.getDirectRelateds((MessageEnd) end)) {
@@ -142,7 +142,7 @@ public class Rule_AbstractEnd extends CommonRule {
         }
       } else {
         boolean isSource = ScenarioExt.isSource(targetEnd);
-        AbstractInstance part = TopDownExt.getRelatedInstance(isSource, sourceEnd, operation, transfo_p);
+        AbstractInstance part = TopDownExt.getTargetInstance(isSource, sourceEnd, operation, transfo_p);
         if (part != null && partRoles.containsKey(part)) {
           for (AbstractEnd endTransitioned2 : (List<AbstractEnd>) Query.retrieveTransformedElements(element_p, transfo_p, getTargetType())) {
             TigerRelationshipHelper.attachElementByRel(endTransitioned2, partRoles.get(part),

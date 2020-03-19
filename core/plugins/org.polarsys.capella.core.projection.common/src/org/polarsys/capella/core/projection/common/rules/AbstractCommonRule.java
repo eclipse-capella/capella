@@ -417,4 +417,12 @@ public abstract class AbstractCommonRule extends TransfoRule implements IRuleTra
     LogHelper.getInstance().log(message, priority, affectedObject, getClass().getSimpleName());
   }
 
+  /**
+   * Returns whether the given element is or will be transformed after transition
+   */
+  protected boolean isOrWillBeTransformed(EObject element_p, ITransfo transfo_p) {
+    IContext context = IContext.getContext(transfo_p);
+    return TransformationHandlerHelper.getInstance(context).isOrWillBeTransformed(element_p, context).isOK();
+  }
+
 }

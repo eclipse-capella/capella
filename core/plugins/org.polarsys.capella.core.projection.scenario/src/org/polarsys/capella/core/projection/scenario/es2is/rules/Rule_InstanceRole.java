@@ -18,7 +18,7 @@ import org.polarsys.capella.core.data.information.AbstractInstance;
 import org.polarsys.capella.core.data.interaction.InstanceRole;
 import org.polarsys.capella.core.data.interaction.InteractionFactory;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
-import org.polarsys.capella.core.projection.common.CommonRule;
+import org.polarsys.capella.core.projection.scenario.common.rules.Rule_InteractionElement;
 import org.polarsys.capella.core.projection.scenario.helpers.InstanceRoles;
 import org.polarsys.capella.core.tiger.ITransfo;
 import org.polarsys.capella.core.tiger.TransfoException;
@@ -28,7 +28,7 @@ import org.polarsys.capella.core.tiger.helpers.TigerRelationshipHelper;
 /**
  *
  */
-public class Rule_InstanceRole extends CommonRule {
+public class Rule_InstanceRole extends Rule_InteractionElement {
 
   /**
    * @param sourceType_p
@@ -68,6 +68,7 @@ public class Rule_InstanceRole extends CommonRule {
 
   @Override
   protected void doGoDeep(EObject element_p, List<EObject> result_p) {
+    super.doGoDeep(element_p, result_p);
     if (element_p instanceof InstanceRole) {
       InstanceRole role = (InstanceRole) element_p;
       if (role.getRepresentedInstance() != null) {
