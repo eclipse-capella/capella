@@ -37,7 +37,10 @@ import org.polarsys.capella.core.model.handler.provider.IReadOnlySectionHandler;
  * This implementation overrides common implementation to adapt it to {@link DRepresentation}.
  * 
  * @author Joao Barata
+ * 
+ * @deprecated This class has been replaced by {@link CapellaDescriptionPropertySection}
  */
+@Deprecated
 public class DiagramDescriptionPropertySection extends DescriptionPropertySection {
   private WeakReference<DRepresentationDescriptor> representationDescriptor;
 
@@ -89,6 +92,9 @@ public class DiagramDescriptionPropertySection extends DescriptionPropertySectio
    * Reload widgets according to data model.
    */
   public void loadData() {
+    if (null == representationDescriptor) {
+      return;
+    }
     // Register as operation history listener the first time capella element is set.
     if (null == representationDescriptor.get()) {
       // This operation history listener is used to force refreshes when undo / redo operations are performed.

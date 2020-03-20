@@ -23,6 +23,7 @@ import org.polarsys.kitalpha.richtext.widget.factory.MDERichTextFactory;
 public class RichtextManager {
   private static RichtextManager instance;
   private MDENebulaBasedRichTextWidget richtextWidget;
+
   /**
    * A temporary shell to contain the editor
    */
@@ -48,7 +49,7 @@ public class RichtextManager {
         richtextWidget = (MDENebulaBasedRichTextWidget) widget;
       }
 
-    } else {
+    } else if (richtextWidget.getParent() != parent) {
       richtextWidget.setParent(parent);
     }
 
@@ -60,18 +61,27 @@ public class RichtextManager {
    * Remove the editor from its actual container and put it in the invisible shell
    */
   public void removeWidget(Composite parent) {
-    if (!invisibleShell.isDisposed() && !richtextWidget.isEditorDisposed() && richtextWidget.getParent() == parent)
+    if (!invisibleShell.isDisposed() && !richtextWidget.isEditorDisposed() && richtextWidget.getParent() == parent) {
       richtextWidget.setParent(invisibleShell);
+    }
   }
 
   /**
    * 
    * Move the editor to new container
    */
-  public void addWidget(Composite parent) {
-    if (!richtextWidget.isEditorDisposed() && richtextWidget.getParent() != parent) {
-      richtextWidget.setParent(parent);
+  public MDERichTextWidget addWidget(Composite parent) {
+    return getRichtextWidget(parent);
+  }
+
+  /**
+   * Returns whether the Richtext is available in the given parent composite
+   */
+  public boolean isOnWidget(Composite parent) {
+    if (!richtextWidget.isEditorDisposed() && richtextWidget.getParent() == parent) {
+      return true;
     }
+    return false;
   }
 
   /**

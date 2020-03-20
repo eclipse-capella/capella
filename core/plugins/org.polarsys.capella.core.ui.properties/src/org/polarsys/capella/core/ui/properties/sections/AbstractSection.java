@@ -37,7 +37,6 @@ import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.command.ICommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
 import org.polarsys.capella.core.model.handler.provider.CapellaReadOnlyHelper;
 import org.polarsys.capella.core.model.handler.provider.IReadOnlyListener;
@@ -56,7 +55,7 @@ public abstract class AbstractSection extends AbstractPropertySection implements
   /**
    * Capella element displayed by this section.
    */
-  private EObject _capellaElement;
+  private EObject _element;
   /**
    * Parent background color.
    */
@@ -146,11 +145,11 @@ public abstract class AbstractSection extends AbstractPropertySection implements
   public void dispose() {
     super.dispose();
     // Unregister...
-    CapellaReadOnlyHelper.unregister(_capellaElement, this);
+    CapellaReadOnlyHelper.unregister(_element, this);
     CapellalEditingDomainListenerForPropertySections.getCapellaDataListenerForPropertySections().unregisterPropertySheetPage(propertySheetPage);
 
     // Clean capella element.
-    _capellaElement = null;
+    _element = null;
 
     if (null != widgetFactory) {
       // Clean widget factory.
@@ -239,7 +238,7 @@ public abstract class AbstractSection extends AbstractPropertySection implements
         // Get the command.
         Command command = ((EMFCommandOperation) operation).getCommand();
         // Is the current capella element involved in this command ?
-        if (command.getAffectedObjects().contains(_capellaElement)) {
+        if (command.getAffectedObjects().contains(_element)) {
           // If so, let's refresh the content.
           refresh();
         }
@@ -254,31 +253,37 @@ public abstract class AbstractSection extends AbstractPropertySection implements
   protected boolean isDisplayedInWizard() {
     return displayedInWizard;
   }
-
+  
+  /**
+   * Allows to adapt the loaded element
+   */
+  protected EObject adaptElement(EObject element) {
+    if (element instanceof DSemanticDecorator) {
+      return ((DSemanticDecorator) element).getTarget();
+    }
+    return element;
+  }
+  
   /**
    * load the form data from given Capella element.<br>
    * Default implementation registers an EMF adapter to listen to model changes if displayed in a wizard.
    */
   @Override
   public void loadData(EObject object) {
-    EObject capellaElement = object;
-    if (object instanceof DSemanticDecorator) {
-      DSemanticDecorator dsem = (DSemanticDecorator) object;
-      capellaElement = (CapellaElement) dsem.getTarget();
-    }
-
+    EObject element = adaptElement(object);
+    
     // Register as operation history listener the first time capella element is set.
-    if (null == _capellaElement) {
+    if (null == _element) {
       // This operation history listener is used to force refreshes when undo / redo operations are performed.
       OperationHistoryFactory.getOperationHistory().addOperationHistoryListener(this);
     }
-    _capellaElement = capellaElement;
+    _element = element;
     // Register....
-    register(_capellaElement);
+    register(_element);
 
     // Disable the section if the element is read only.
     IReadOnlySectionHandler roHandler = CapellaReadOnlyHelper.getReadOnlySectionHandler();
-    if ((roHandler != null) && roHandler.isLockedByOthers(_capellaElement)) {
+    if ((roHandler != null) && roHandler.isLockedByOthers(_element)) {
       setInitialEnabledState(false);
     } else {
       setInitialEnabledState(true);
@@ -291,8 +296,8 @@ public abstract class AbstractSection extends AbstractPropertySection implements
   @Override
   public void refresh() {
     // Make sure object is still available.
-    if (null != _capellaElement && null != _capellaElement.eResource()) {
-      loadData(_capellaElement);
+    if (null != _element && null != _element.eResource()) {
+      loadData(_element);
     }
   }
 
@@ -379,7 +384,7 @@ public abstract class AbstractSection extends AbstractPropertySection implements
    * Retrieve the execution manager
    */
   protected ExecutionManager getExecutionManager() {
-    return TransactionHelper.getExecutionManager(_capellaElement);
+    return TransactionHelper.getExecutionManager(_element);
   }
 
   /**
