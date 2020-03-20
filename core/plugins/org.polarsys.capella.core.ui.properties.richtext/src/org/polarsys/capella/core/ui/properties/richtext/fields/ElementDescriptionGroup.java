@@ -33,7 +33,6 @@ import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.ef.command.ICommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
-import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.model.handler.provider.CapellaReadOnlyHelper;
 import org.polarsys.capella.core.model.handler.provider.IReadOnlySectionHandler;
 import org.polarsys.capella.core.ui.properties.helpers.NotificationHelper;
@@ -48,9 +47,9 @@ import org.polarsys.kitalpha.richtext.widget.helper.MDERichtextWidgetHelper;
  * @author Joao Barata
  */
 public abstract class ElementDescriptionGroup {
-  
-    
-  private static final String FAMILY_DEFERRED_REFRESH = CapellaUIPropertiesRichtextPlugin.PLUGIN_ID + ".refreshJobFamily";
+
+  private static final String FAMILY_DEFERRED_REFRESH = CapellaUIPropertiesRichtextPlugin.PLUGIN_ID
+      + ".refreshJobFamily";
 
   /**
    * Current edited semantic element.
@@ -61,7 +60,7 @@ public abstract class ElementDescriptionGroup {
    * Handle semantic element's feature handled by this field.
    */
   protected EStructuralFeature semanticFeature;
-  
+
   /**
    * The section where this element is created.
    */
@@ -82,6 +81,34 @@ public abstract class ElementDescriptionGroup {
 
   private static final String EXISTED_EDITOR_TEXT = "The description is currently opened in an editor. Please use this editor to edit your description."; //$NON-NLS-1$
 
+  private class SavingStrategy implements SaveStrategy {
+
+    EObject owner;
+
+    EStructuralFeature feature;
+
+    public SavingStrategy() {
+    }
+
+    public SavingStrategy(EObject owner, EStructuralFeature feature) {
+      this.owner = owner;
+      this.feature = feature;
+    }
+
+    @Override
+    public void save(final String editorText, final EObject owner, final EStructuralFeature feature) {
+      // Due to async 'lost focus' event, the given owner in parameter can be the next one and not the intended one
+
+      // Usecase:
+      // On ProjectExplorer, select an element. Change its description, then choose another element in explorer.
+      // Save is called twice, one in loadData/within bind method with previous element, then another one in lostFocus
+      // with new one but with old text.
+      if (this.owner == owner && this.feature == feature) {
+        setDataValue(owner, feature, editorText);
+      }
+    }
+  }
+
   /**
    * @param parent
    * @param widgetFactory
@@ -95,6 +122,8 @@ public abstract class ElementDescriptionGroup {
     existedEditorLayoutData = new GridData();
     existedEditorLabel.setLayoutData(existedEditorLayoutData);
     existedEditorLabel.setText(EXISTED_EDITOR_TEXT);
+    existedEditorLabel.setVisible(false);
+    existedEditorLayoutData.exclude = true;
 
     // Do not propagate the focus event to the embedded editor
     descriptionContainer = new Group(parent, SWT.NONE) {
@@ -102,9 +131,10 @@ public abstract class ElementDescriptionGroup {
       public boolean setFocus() {
         return true;
       }
+
       @Override
       protected void checkSubclass() {
-          // Do nothing
+        // Do nothing
       }
     };
     if (widgetFactory != null) {
@@ -113,8 +143,9 @@ public abstract class ElementDescriptionGroup {
     descriptionContainer.setLayout(new GridLayout());
     descriptionContainer.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 
-    descriptionTextField = createDescriptionField(descriptionContainer);
-    
+    descriptionTextField = RichtextManager.getInstance().getRichtextWidget(descriptionContainer);
+    descriptionTextField.setSaveStrategy(new SavingStrategy());
+
     this.section = section;
   }
 
@@ -122,56 +153,30 @@ public abstract class ElementDescriptionGroup {
    * Move the editor to the new container
    */
   public void aboutToBeShown() {
-    RichtextManager.getInstance().addWidget(descriptionContainer);
-    
-    try {
-      if (semanticElement != null && semanticFeature != null) {
-        descriptionTextField.bind(semanticElement, semanticFeature);
+    if (updateDescriptionEditability(semanticElement, semanticFeature)) {
+      try {
+        if (semanticElement != null && semanticFeature != null) {
+          descriptionTextField.bind(semanticElement, semanticFeature);
+          descriptionTextField.setSaveStrategy(new SavingStrategy(semanticElement, semanticFeature));
+        }
+      } catch (SWTException e) {
+        // Catch SWT "Permission denied" exception raised by Nebula Richtext
       }
-    } catch (SWTException e) {
-      // Catch SWT "Permission denied" exception raised by Nebula Richtext
     }
-    
   }
-  
+
   /**
    * Remove the editor before the Property tab is disposed
    */
   public void aboutToBeHidden() {
     RichtextManager.getInstance().removeWidget(descriptionContainer);
   }
-  
+
   /**
    * 
    */
   public void dispose() {
     // Do nothing
-  }
-
-  /**
-   * This method can be override to provide a customized text widget
-   * 
-   * @param parent
-   * @return
-   */
-  protected MDERichTextWidget createDescriptionField(Composite parent) {
-    MDERichTextWidget widget = RichtextManager.getInstance().getRichtextWidget(parent);
-
-    widget.setSaveStrategy(new SaveStrategy() {
-      @Override
-      public void save(final String editorText, final EObject owner, final EStructuralFeature feature) {
-        if (NotificationHelper.isNotificationRequired(owner, feature, editorText)) {
-          AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
-            public void run() {
-              owner.eSet(feature, editorText);
-            }
-          };
-          executeCommand(command, owner, feature);
-        }
-      }
-    });
-
-    return widget;
   }
 
   /**
@@ -195,6 +200,7 @@ public abstract class ElementDescriptionGroup {
         /**
          * @see java.lang.Runnable#run()
          */
+        @Override
         public void run() {
           command.run();
         }
@@ -227,13 +233,12 @@ public abstract class ElementDescriptionGroup {
         /**
          * @see org.polarsys.capella.common.tig.ef.command.AbstractCommand#commandRolledBack()
          */
-        @SuppressWarnings("synthetic-access")
         @Override
         public void commandRolledBack() {
           IReadOnlySectionHandler roHandler = CapellaReadOnlyHelper.getReadOnlySectionHandler();
           if ((roHandler != null) && roHandler.isLockedByOthers(owner))
             return;
-          
+
           // Reload data >> refresh the UI.
           loadData(owner, feature);
         }
@@ -241,8 +246,8 @@ public abstract class ElementDescriptionGroup {
     }
     // Execute it against the TED.
     ExecutionManager executionManager = TransactionHelper.getExecutionManager(owner);
-    if(executionManager != null) {
-        executionManager.execute(cmd);        
+    if (executionManager != null) {
+      executionManager.execute(cmd);
     }
   }
 
@@ -250,38 +255,39 @@ public abstract class ElementDescriptionGroup {
    * @param enabled
    */
   public void setEnabled(boolean enabled) {
-      try {
-          if(descriptionTextField.isReady()) {
-              descriptionTextField.setEditable(enabled);
-          }else {
-              scheduleDeferredRefresh();
-          }
-      }catch (Exception e) {
-          // If setEditable throws an exception, we schedule a deferred refresh
-          scheduleDeferredRefresh();
+    try {
+      if (descriptionTextField.isReady()) {
+        descriptionTextField.setEditable(enabled);
+      } else {
+        scheduleDeferredRefresh();
+      }
+    } catch (Exception e) {
+      // If setEditable throws an exception, we schedule a deferred refresh
+      scheduleDeferredRefresh();
     }
     descriptionContainer.setEnabled(enabled);
   }
 
-  private void scheduleDeferredRefresh() {
+  protected void scheduleDeferredRefresh() {
     Job[] jobs = Job.getJobManager().find(FAMILY_DEFERRED_REFRESH);
-    if(section != null && jobs.length == 0) {
-        UIJob job = new UIJob("Deferred Section Refresh") {
-            
-            @Override
-            public IStatus runInUIThread(IProgressMonitor monitor) {
-                section.refresh();
-                return Status.OK_STATUS;
-            }
-            
-            @Override
-            public boolean belongsTo(Object family) {
-                return FAMILY_DEFERRED_REFRESH.equals(family);
-            }
-        };
-        job.schedule(1000);        
+    if (section != null && jobs.length == 0) {
+      UIJob job = new UIJob("Refresh of Description editor") {
+
+        @Override
+        public IStatus runInUIThread(IProgressMonitor monitor) {
+          section.refresh();
+          return Status.OK_STATUS;
+        }
+
+        @Override
+        public boolean belongsTo(Object family) {
+          return FAMILY_DEFERRED_REFRESH.equals(family);
+        }
+      };
+      job.setSystem(true);
+      job.schedule(1000);
     }
-}
+  }
 
   /**
    * @param element
@@ -289,42 +295,36 @@ public abstract class ElementDescriptionGroup {
    */
   public void loadData(EObject element, EStructuralFeature feature) {
     try {
-      if (element != semanticElement) {
-        semanticElement = element;
-        semanticFeature = feature;
-        if (descriptionTextField instanceof MDENebulaBasedRichTextWidget) {
-          ((MDENebulaBasedRichTextWidget) descriptionTextField).setDirtyStateUpdated(true);
+      // if editable, we update the content
+      if (updateDescriptionEditability(element, feature)) {
+
+        // If we have set or changed the element, then we 'bind' it to the richtext
+        if (element != semanticElement || descriptionTextField.getElement() == null) {
+          semanticElement = element;
+          semanticFeature = feature;
+          if (descriptionTextField instanceof MDENebulaBasedRichTextWidget) {
+            ((MDENebulaBasedRichTextWidget) descriptionTextField).setDirtyStateUpdated(true);
+          }
+
+          // We setSaveStrategy after the bind, as bind also do a saveContent on previous element.
+          descriptionTextField.bind(semanticElement, semanticFeature);
+          descriptionTextField.setSaveStrategy(new SavingStrategy(semanticElement, semanticFeature));
+
+        } else {
+          // Otherwise we just reload the content on the same element
+          descriptionTextField.loadContent();
         }
-        descriptionTextField.bind(semanticElement, semanticFeature);
+
       } else {
-        descriptionTextField.loadContent();
+        // if not editable, we still update the semantic element of the view. Otherwise aboutToBeShown may be called
+        // without knowing semanticElement
+        if (element != semanticElement) {
+          semanticElement = element;
+          semanticFeature = feature;
+        }
       }
-      
-      updateDescriptionEditability();
-      
     } catch (SWTException e) {
       // Catch SWT "Permission denied" exception raised by Nebula Richtext
-    }
-  }
-
-  /**
-   * Set text value.
-   * 
-   * @param text
-   * @param object
-   * @param feature
-   */
-  protected void setTextValue(MDERichTextWidget text, EObject object, EStructuralFeature feature) {
-    // Precondition:
-    if ((null == text) || (null == object) || (null == feature)) {
-      return;
-    }
-    Object value = object.eGet(feature);
-    String currentTextValue = text.getText();
-    String newTextValue = (String) ((value instanceof String) ? value : ICommonConstants.EMPTY_STRING);
-    // Update the text value if needed.
-    if (!currentTextValue.equals(newTextValue) || ICommonConstants.EMPTY_STRING.equals(currentTextValue)) {
-      text.setText(newTextValue);
     }
   }
 
@@ -335,7 +335,17 @@ public abstract class ElementDescriptionGroup {
    * @param feature
    * @param value
    */
-  protected abstract void setDataValue(final EObject object, final EStructuralFeature feature, final Object value);
+  protected void setDataValue(final EObject object, final EStructuralFeature feature, final Object value) {
+    if (NotificationHelper.isNotificationRequired(object, feature, value)) {
+      AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
+        @Override
+        public void run() {
+          object.eSet(feature, value);
+        }
+      };
+      executeCommand(command, object, feature);
+    }
+  }
 
   /**
    * Save a description into related element.
@@ -343,13 +353,14 @@ public abstract class ElementDescriptionGroup {
    * @param newDescription
    */
   public void saveDescription(String newDescription) {
-    setDataValue(semanticElement, semanticFeature, newDescription);
+    descriptionTextField.setText(newDescription);
+    descriptionTextField.saveContent();
   }
 
   public void save(String value) {
     saveDescription(value);
   }
-  
+
   /**
    * Save the text field's content
    */
@@ -364,25 +375,45 @@ public abstract class ElementDescriptionGroup {
     return descriptionTextField.getText();
   }
 
-  protected void updateDescriptionEditability() {
+  /**
+   * Update the editor enablement according to the given element.
+   * 
+   * Returns whether the editor is in editable state
+   */
+  protected boolean updateDescriptionEditability(EObject object, EStructuralFeature feature) {
     // Only allow to edit the description using the property view when no
     // other editor concerning the same semantic element is opened
-    boolean isEditable = MDERichtextWidgetHelper.getActiveMDERichTextEditors(semanticElement).isEmpty();
-    descriptionContainer.setVisible(isEditable);
-    if (isEditable) {
-      // Hide the text about "existed editor"
-      existedEditorLabel.setVisible(false);
-      existedEditorLayoutData.exclude = true;
-    } else {
-      // Show the text about "existed editor"
-      existedEditorLabel.setVisible(true);
-      existedEditorLayoutData.exclude = false;
+    boolean isEditable = MDERichtextWidgetHelper.getActiveMDERichTextEditors(object).isEmpty();
+    boolean isOn = RichtextManager.getInstance().isOnWidget(descriptionContainer);
+    boolean isVisible = descriptionContainer.isVisible();
+    boolean isValidState = ((isEditable && isVisible && isOn) || (!isEditable && !isVisible && !isOn));
+
+    // Here, we avoid to update the view if it is already in a valid state
+    if (!isValidState) {
+      descriptionContainer.setVisible(isEditable);
+      if (isEditable) {
+        // Hide the text about "existed editor" and update the existing richtext field
+        existedEditorLabel.setVisible(false);
+        existedEditorLayoutData.exclude = true;
+        descriptionTextField = RichtextManager.getInstance().addWidget(descriptionContainer);
+        // As the viewer may have been recreated, we re-set the saving strategy here
+        descriptionTextField.setSaveStrategy(new SavingStrategy(semanticElement, semanticFeature));
+
+      } else {
+        // Show the text about "existed editor"
+        existedEditorLabel.setVisible(true);
+        existedEditorLayoutData.exclude = false;
+        RichtextManager.getInstance().removeWidget(descriptionContainer);
+      }
+      // Recalculate the layout
+      parentComposite.layout(true);
+      isValidState = true;
     }
-    // Recalculate the layout
-    parentComposite.layout(true);
+
+    return isValidState && isEditable;
   }
-  
-  public boolean shouldRefresh(){
+
+  public boolean shouldRefresh() {
     return descriptionTextField == null || !descriptionTextField.hasFocus();
   }
 }

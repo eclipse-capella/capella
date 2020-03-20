@@ -29,18 +29,18 @@ public class RichtextManager {
    * A temporary shell to contain the editor
    */
   private Shell invisibleShell;
-  
+
   private RichtextManager() {
     invisibleShell = new Shell();
   }
-  
+
   public static RichtextManager getInstance() {
     if (instance == null) {
       instance = new RichtextManager();
     }
     return instance;
   }
-  
+
   public MDERichTextWidget getRichtextWidget(Composite parent) {
     if (richtextWidget == null || richtextWidget.isEditorDisposed()) {
       MDERichTextFactory f = new MDERichTextFactory() {
@@ -52,47 +52,56 @@ public class RichtextManager {
           return factory;
         }
       };
+
       MDERichTextWidget widget = f.createMinimalRichTextWidget(parent);
-      if (widget instanceof MDENebulaBasedRichTextWidget)
+
+      if (widget instanceof MDENebulaBasedRichTextWidget) {
         richtextWidget = (MDENebulaBasedRichTextWidget) widget;
-    }
-    else {
+      }
+
+    } else if (richtextWidget.getParent() != parent) {
       richtextWidget.setParent(parent);
     }
-    
+
     return richtextWidget;
   }
-  
+
   /**
    * 
    * Remove the editor from its actual container and put it in the invisible shell
    */
   public void removeWidget(Composite parent) {
-    if (!invisibleShell.isDisposed() && !richtextWidget.isEditorDisposed() && richtextWidget.getParent() == parent)
+    if (!invisibleShell.isDisposed() && !richtextWidget.isEditorDisposed() && richtextWidget.getParent() == parent) {
       richtextWidget.setParent(invisibleShell);
+    }
   }
-  
+
   /**
    * 
    * Move the editor to new container
    */
-  public void addWidget(Composite parent) {
-    if (!richtextWidget.isEditorDisposed() && richtextWidget.getParent() != parent) {
-      richtextWidget.setParent(parent);
-    }
+  public MDERichTextWidget addWidget(Composite parent) {
+    return getRichtextWidget(parent);
   }
-  
+
+  public boolean isOnWidget(Composite parent) {
+    if (!richtextWidget.isEditorDisposed() && richtextWidget.getParent() == parent) {
+      return true;
+    }
+    return false;
+  }
+
   /**
-   * Returns whether the nebula rich text is enable or disabled by the end-user.
-   * It's provided as a fallback solution is case of issues with richtext.
-   * By default richtext is enabled.
+   * Returns whether the nebula rich text is enable or disabled by the end-user. It's provided as a fallback solution is
+   * case of issues with richtext. By default richtext is enabled.
+   * 
    * @return
    */
   public boolean isRichTextEnabled() {
-      String property = System.getProperty("disable.nebula.richtext");
-      if(property != null) {
-          return !Boolean.valueOf(property);            
-      }
-      return true;
+    String property = System.getProperty("disable.nebula.richtext");
+    if (property != null) {
+      return !Boolean.valueOf(property);
+    }
+    return true;
   }
 }

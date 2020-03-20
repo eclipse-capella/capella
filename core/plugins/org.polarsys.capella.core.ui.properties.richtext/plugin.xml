@@ -20,11 +20,6 @@
             <input
                   type="org.polarsys.capella.core.data.capellacore.CapellaElement">
             </input>
-         </propertySection>
-         <propertySection tab="DescriptionCapella"
-               class="org.polarsys.capella.core.ui.properties.richtext.sections.DiagramDescriptionPropertySection"
-			   filter="org.polarsys.capella.core.ui.properties.richtext.sections.DiagramDescriptionPropertySection"
-               id="org.polarsys.capella.core.ui.properties.descriptions.sections.DiagramaDescriptionPropertySection.navigator">
             <input
                   type="org.eclipse.sirius.viewpoint.DRepresentationDescriptor">
             </input>
@@ -37,14 +32,6 @@
                class="org.polarsys.capella.core.ui.properties.richtext.sections.CapellaDescriptionPropertySection"
 			   filter="org.polarsys.capella.core.ui.properties.richtext.sections.CapellaDescriptionPropertySection"
                id="org.polarsys.capella.core.ui.properties.descriptions.sections.CapellaDescriptionPropertySection.diagram">
-         </propertySection>
-         <propertySection tab="DescriptionSiriusDiagram"
-               class="org.polarsys.capella.core.ui.properties.richtext.sections.DiagramDescriptionPropertySection"
-               filter="org.polarsys.capella.core.ui.properties.richtext.sections.DiagramDescriptionPropertySection"
-               id="org.polarsys.capella.core.ui.properties.descriptions.section.DiagramDescriptionPropertySection.diagram">
-            <input
-                  type="org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart">
-            </input>
          </propertySection>
       </propertySections>
    </extension>
