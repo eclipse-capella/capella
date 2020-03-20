@@ -1,0 +1,10 @@
+= Appearance =
+
+In the "General > Appearance > Label and Decorations" section, several decorators can be enabled/disabled. Among others:
+
+* '''Capella SCM Decorator''' : Display if the element is located in a resource Writeable, Read-Only or under source control.
+
+* '''Capella Protected Elements''' : Display if the element is protected and can't be deleted to ensure model consistency. This protection can be disabled through Preferences > Capella > Delete
+
+* '''Instanciation Text Decorator''' : Display if the element part of a REC or a RPL
+
