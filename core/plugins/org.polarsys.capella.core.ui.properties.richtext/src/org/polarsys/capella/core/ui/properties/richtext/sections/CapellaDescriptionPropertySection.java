@@ -14,12 +14,18 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jdt.internal.core.search.processing.JobManager;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.progress.UIJob;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
 
 /**
@@ -35,23 +41,67 @@ public class CapellaDescriptionPropertySection extends DescriptionPropertySectio
   private static Map<CapellaDescriptionPropertySection, EObject> mapDescriptionSectionToEObject = new HashMap<>();
 
   /**
+   * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
+   */
+  @Override
+  public boolean select(Object toTest) {
+    EObject eObj = CapellaAdapterHelper.resolveDescriptorOrBusinessObject(toTest);
+    return eObj instanceof CapellaElement || (eObj instanceof DRepresentationDescriptor);
+  }
+
+  /**
    * {@inheritDoc}
    */
   @Override
   public void dispose() {
     super.dispose();
     // On disposing, remove the instance from the map
-    mapDescriptionSectionToEObject.remove(this);
+    EObject element = mapDescriptionSectionToEObject.remove(this);
     // If the disposing section is displayed in the wizard, then notify the section (if there is) in the view properties
     // to be refreshed.
-    if (isDisplayedInWizard()) {
+    if (element != null && isDisplayedInWizard()) {
       Set<CapellaDescriptionPropertySection> availableDescriptionSections = mapDescriptionSectionToEObject.keySet();
       for (CapellaDescriptionPropertySection descriptionSection : availableDescriptionSections) {
         if (descriptionSection != null && !descriptionSection.isDisplayedInWizard()) {
-          descriptionSection.refresh();
-          descriptionSection.aboutToBeShown();
+          if (mapDescriptionSectionToEObject.get(descriptionSection) == element) {
+            descriptionSection.refresh();
+            descriptionSection.aboutToBeShown();
+          }
         }
       }
+    }
+  }
+
+  DelayedSetDescription job = new DelayedSetDescription("Load Description");
+  
+  /**
+   * Avoid consecutive loads if the selection is quickly changed
+   */
+  private class DelayedSetDescription extends UIJob {
+
+    EObject current = null;
+    
+    public DelayedSetDescription(String name) {
+      super(name);
+      setSystem(true);
+    }
+
+    public boolean belongsTo(Object family) {
+      return family == DelayedSetDescription.class.getSimpleName();
+    };
+    
+    @Override
+    public IStatus runInUIThread(IProgressMonitor monitor) {
+      EObject element = current;
+      
+      // On loading data, add the instance to the map.
+      if (null != descriptionGroup) {
+        descriptionGroup.loadData(element);
+
+      } else if (descriptionFallbackGroup != null) {
+        descriptionFallbackGroup.loadData(element);
+      }
+      return Status.OK_STATUS;
     }
   }
 
@@ -59,15 +109,11 @@ public class CapellaDescriptionPropertySection extends DescriptionPropertySectio
    * {@inheritDoc}
    */
   @Override
-  public void loadData(EObject capellaElement) {
-    super.loadData(capellaElement);
-    // On loading data, add the instance to the map.
-    mapDescriptionSectionToEObject.put(this, capellaElement);
-    if (null != descriptionGroup) {
-      descriptionGroup.loadData(capellaElement);
-    } else if (descriptionFallbackGroup != null) {
-      descriptionFallbackGroup.loadData(capellaElement, CapellacorePackage.eINSTANCE.getCapellaElement_Description());
-    }
+  public void loadData(EObject descriptorOrCapellaElement) {
+    super.loadData(descriptorOrCapellaElement);
+    mapDescriptionSectionToEObject.put(CapellaDescriptionPropertySection.this, descriptorOrCapellaElement);
+    job.current = descriptorOrCapellaElement;
+    job.schedule(100);
   }
 
   /**
@@ -76,21 +122,18 @@ public class CapellaDescriptionPropertySection extends DescriptionPropertySectio
    */
   @Override
   public void setInput(IWorkbenchPart part, ISelection selection) {
+    super.setInput(part, selection);
     if (selection instanceof StructuredSelection) {
-      EObject elt = CapellaAdapterHelper.resolveBusinessObject(((StructuredSelection) selection).getFirstElement());
+      EObject elt = CapellaAdapterHelper
+          .resolveDescriptorOrBusinessObject(((StructuredSelection) selection).getFirstElement());
+
       if (elt instanceof CapellaElement) {
         loadData((CapellaElement) elt);
+
+      } else if (elt instanceof DRepresentationDescriptor) {
+        loadData((DRepresentationDescriptor) elt);
       }
     }
-    super.setInput(part, selection);
   }
 
-  /**
-   * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
-   */
-  @Override
-  public boolean select(Object toTest) {
-    EObject eObj = CapellaAdapterHelper.resolveDescriptorOrBusinessObject(toTest);
-    return eObj instanceof CapellaElement;
-  }
 }
