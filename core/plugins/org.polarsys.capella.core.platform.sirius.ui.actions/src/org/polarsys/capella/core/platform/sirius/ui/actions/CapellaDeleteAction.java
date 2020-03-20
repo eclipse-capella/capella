@@ -12,17 +12,14 @@ package org.polarsys.capella.core.platform.sirius.ui.actions;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
-import java.util.List;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.command.Command;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.ui.EMFEditUIPlugin;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.util.IPropertyChangeListener;
 import org.eclipse.jface.util.PropertyChangeEvent;
-import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
@@ -41,8 +38,6 @@ import org.polarsys.capella.core.data.ctx.MissionPkg;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.FunctionPkg;
 import org.polarsys.capella.core.data.information.DataPkg;
-import org.polarsys.capella.core.data.interaction.MessageKind;
-import org.polarsys.capella.core.data.interaction.SequenceMessage;
 import org.polarsys.capella.core.data.la.LaPackage;
 import org.polarsys.capella.core.data.oa.OaPackage;
 import org.polarsys.capella.core.data.oa.RolePkg;
@@ -75,7 +70,9 @@ public class CapellaDeleteAction extends AbstractCommandActionHandler implements
    */
   @Override
   public Command createCommand(Collection<Object> selection) {
-    return new CapellaDeleteCommand(TransactionHelper.getExecutionManager(filterSelection(selection)), selection);
+    CapellaDeleteCommand command = new CapellaDeleteCommand(TransactionHelper.getExecutionManager(filterSelection(selection)), selection);
+    command.setPreventProtectedElementsDeletion(true);
+    return command;
   }
 
   /**
@@ -126,23 +123,6 @@ public class CapellaDeleteAction extends AbstractCommandActionHandler implements
   }
 
   /**
-   * Depending on use cases we have to override this methods to call canDelete.
-   * 
-   * @see org.eclipse.emf.edit.ui.action.CommandActionHandler#updateSelection(org.eclipse.jface.viewers.IStructuredSelection)
-   */
-  @SuppressWarnings("unchecked")
-  @Override
-  public boolean updateSelection(IStructuredSelection selection) {
-    // Check selected elements are deletable based on preferences.
-    List<EObject> selectedElements = getStructuredSelection().toList();
-    boolean result = canDelete(selectedElements);
-    if (result) {
-      result = super.updateSelection(selection);
-    }
-    return result;
-  }
-
-  /**
    * Can delete selected elements ?
    * 
    * @param selectedElements
@@ -164,7 +144,7 @@ public class CapellaDeleteAction extends AbstractCommandActionHandler implements
    * @param element
    * @return
    */
-  protected static boolean isElementProtected(Element element) {
+  public static boolean isElementProtected(Element element) {
 
     boolean specialElementProtectionAllowed = CapellaModelPreferencesPlugin.getDefault()
         .isSpecialElementProtectionAllowed();
@@ -197,10 +177,6 @@ public class CapellaDeleteAction extends AbstractCommandActionHandler implements
         if (type != null) {
           return isElementProtected(type);
         }
-      } else if (element instanceof SequenceMessage) {
-        SequenceMessage msg = (SequenceMessage) element;
-        return !(msg.getReceivingEnd() == null || msg.getKind() == MessageKind.CREATE
-            || msg.getKind() == MessageKind.DELETE);
       }
 
       return element instanceof Project || element instanceof SystemEngineering || element instanceof BlockArchitecture

@@ -48,7 +48,6 @@ public class DeleteProtectedElements extends MiscModel {
     protectedElementsIds.addAll(getProjects());
     protectedElementsIds.addAll(getSystemEngineering());
     protectedElementsIds.addAll(getBlockArchitectures());
-    protectedElementsIds.addAll(getSequenceMessages());
     protectedElementsIds.addAll(getRootComponents());
     protectedElementsIds.addAll(getRootParts());
     protectedElementsIds.addAll(getRootFunctions());
@@ -101,10 +100,6 @@ public class DeleteProtectedElements extends MiscModel {
 
   protected List<String> getBlockArchitectures() {
     return Arrays.asList(OA, SA, LA, PA, EPBS);
-  }
-
-  protected List<String> getSequenceMessages() {
-    return Arrays.asList(OA__SEQUENCE_MESSAGE_1, OA__SEQUENCE_MESSAGE_2);
   }
 
   protected List<String> getRootComponents() {

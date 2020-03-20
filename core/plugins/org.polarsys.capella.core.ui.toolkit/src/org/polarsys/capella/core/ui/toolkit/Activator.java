@@ -10,10 +10,10 @@
  *******************************************************************************/
 package org.polarsys.capella.core.ui.toolkit;
 
-import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
+import org.polarsys.capella.common.ui.services.AbstractUIActivator;
 
-public class Activator extends AbstractUIPlugin {
+public class Activator extends AbstractUIActivator {
 	/** The plug-in ID */
 	public static final String PLUGIN_ID = "org.polarsys.capella.core.ui.toolkit"; //$NON-NLS-1$
 
