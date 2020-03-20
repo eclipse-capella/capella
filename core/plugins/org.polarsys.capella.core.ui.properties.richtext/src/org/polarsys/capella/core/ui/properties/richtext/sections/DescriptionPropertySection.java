@@ -13,6 +13,8 @@ package org.polarsys.capella.core.ui.properties.richtext.sections;
 import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.layout.GridData;
@@ -21,9 +23,9 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
-import org.polarsys.capella.core.ui.properties.fields.TextAreaValueGroup;
 import org.polarsys.capella.core.ui.properties.richtext.RichtextManager;
 import org.polarsys.capella.core.ui.properties.richtext.fields.CapellaElementDescriptionGroup;
+import org.polarsys.capella.core.ui.properties.richtext.fields.FallbackDescriptionGroup;
 import org.polarsys.capella.core.ui.properties.sections.AbstractSection;
 
 public abstract class DescriptionPropertySection extends AbstractSection {
@@ -33,12 +35,8 @@ public abstract class DescriptionPropertySection extends AbstractSection {
   /**
    * In case Richtext is disabled, we replace Richtext widget by this text group.
    */
-  protected TextAreaValueGroup descriptionFallbackGroup;
+  protected FallbackDescriptionGroup descriptionFallbackGroup;
 
-  /**
-   * @see org.eclipse.ui.views.properties.tabbed.ISection#createControls(org.eclipse.swt.widgets.Composite,
-   *      org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage)
-   */
   @Override
   public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
     super.createControls(parent, aTabbedPropertySheetPage);
@@ -48,6 +46,11 @@ public abstract class DescriptionPropertySection extends AbstractSection {
 
     // Create Description text field.
     createDescriptionWidget(getWidgetFactory(), rootParentComposite);
+  }
+
+  @Override
+  public boolean shouldUseExtraSpace() {
+    return true;
   }
 
   /**
@@ -60,7 +63,7 @@ public abstract class DescriptionPropertySection extends AbstractSection {
     if (RichtextManager.getInstance().isRichTextEnabled()) {
       descriptionGroup = new CapellaElementDescriptionGroup(parent, widgetFactory, this);
     } else {
-      descriptionFallbackGroup = new TextAreaValueGroup(rootParentComposite, "", getWidgetFactory(), true);
+      descriptionFallbackGroup = new FallbackDescriptionGroup(parent, "", widgetFactory, true); //$NON-NLS-1$
       descriptionFallbackGroup.setDisplayedInWizard(isDisplayedInWizard());
     }
   }
@@ -75,6 +78,15 @@ public abstract class DescriptionPropertySection extends AbstractSection {
       descriptionGroup.dispose();
       descriptionGroup = null;
     }
+  }
+
+  @Override
+  protected EObject adaptElement(EObject object) {
+    // We want to add description on descriptors, so we don't adapt it to its semantic element
+    if (object instanceof DRepresentation) {
+      return object;
+    }
+    return super.adaptElement(object);
   }
 
   /**
