@@ -2,8 +2,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-		<title>19.2. Migration and Post-Migration script example</title>
-		<link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/>
 	</head>
 	<body>
 		<h1 id="Migration_and_Post-Migration_script_example_for_Windows">Migration and Post-Migration script example for Windows</h1>
@@ -19,8 +17,8 @@ setlocal enabledelayedexpansion
 </pre>
 		<p><span style="color: green">rem Mandatory to set</span></p>
 		<pre>
-set capellaExe=...\capella\capella.exe
-set workspacePath=...\workspace
+set capellaExe=.../eclipse/eclipse.exe
+set workspacePath=.../workspace
 </pre>
 		<p><span style="color: green">rem compute importedFiles (".../projectA.zip | .../projectB.zip | ...")</span></p>
 		<pre>
@@ -34,7 +32,7 @@ set importedFiles=!projectsList:~3!
 		<pre>
 echo Execute migration of all given projects:
 @echo on
-%capellaExe% -nosplash -application org.polarsys.capella.core.commandline.core -appid org.polarsys.capella.migration -data "%workspacePath%" -import "%importedFiles%" -input /all -outputfolder "A_ok/MigrationResult" -backup
+%capellaExe% -nosplash -application org.polarsys.capella.core.commandline.core -appid org.polarsys.capella.migration -data "%workspacePath%" -import "%importedFiles%" -input /all -backup
 @echo off
 echo.
 </pre>
@@ -50,7 +48,7 @@ for %%x in (%*) do (
 		<pre> <span style="color: green">rem execute the refreshRepresentations command line</span>
 </pre>
 		<pre>
-  set command1=%capellaExe% -nosplash -application org.polarsys.capella.core.commandline.core -appid org.polarsys.capella.refreshRepresentations -data "%workspacePath%" -input "!projectName!/!projectName!.aird" -outputfolder "!projectName!/RefreshResult"
+  set command1=%capellaExe% -nosplash -application org.polarsys.capella.core.commandline.core -appid org.polarsys.capella.refreshRepresentations -data "%workspacePath%" -input "!projectName!/!projectName!.aird"
   echo !command1!
   call !command1!
   echo.
@@ -58,7 +56,7 @@ for %%x in (%*) do (
 		<pre> <span style="color: green">rem execute the removeHiddenElements command line</span>
 </pre>
 		<pre>
-  set command2=%capellaExe% -nosplash -application org.polarsys.capella.core.commandline.core -appid org.polarsys.capella.removeHiddenElements -data "%workspacePath%" -input "!projectName!/!projectName!.aird" -outputfolder "!projectName!/RemoveResult" -unsyncDiags
+  set command2=%capellaExe% -nosplash -application org.polarsys.capella.core.commandline.core -appid org.polarsys.capella.removeHiddenElements -data "%workspacePath%" -input "!projectName!/!projectName!.aird" -unsyncDiags
   echo !command2!
   call !command2!
   echo.
