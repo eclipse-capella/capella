@@ -19,12 +19,11 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.jface.layout.GridLayoutFactory;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.SWTException;
 import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.progress.UIJob;
 import org.eclipse.ui.views.properties.tabbed.ISection;
@@ -71,7 +70,7 @@ public abstract class ElementDescriptionGroup {
    */
   protected MDERichTextWidget descriptionTextField;
 
-  protected Group descriptionContainer;
+  protected Composite descriptionContainer;
 
   protected GridData existedEditorLayoutData;
 
@@ -118,15 +117,14 @@ public abstract class ElementDescriptionGroup {
 
     parentComposite = parent;
 
-    existedEditorLabel = new Label(parent, SWT.NONE);
+    existedEditorLabel = widgetFactory.createLabel(parent, EXISTED_EDITOR_TEXT);
     existedEditorLayoutData = new GridData();
     existedEditorLabel.setLayoutData(existedEditorLayoutData);
-    existedEditorLabel.setText(EXISTED_EDITOR_TEXT);
     existedEditorLabel.setVisible(false);
     existedEditorLayoutData.exclude = true;
 
     // Do not propagate the focus event to the embedded editor
-    descriptionContainer = new Group(parent, SWT.NONE) {
+    descriptionContainer = new Composite(parent, SWT.NONE) {
       @Override
       public boolean setFocus() {
         return true;
@@ -140,7 +138,7 @@ public abstract class ElementDescriptionGroup {
     if (widgetFactory != null) {
       widgetFactory.adapt(descriptionContainer);
     }
-    descriptionContainer.setLayout(new GridLayout());
+    GridLayoutFactory.fillDefaults().extendedMargins(0, 0, 0, 0).applyTo(descriptionContainer);
     descriptionContainer.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 
     descriptionTextField = RichtextManager.getInstance().getRichtextWidget(descriptionContainer);
