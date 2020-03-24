@@ -27,7 +27,9 @@ public class ProjectionMessages extends NLS {
   public static String EndNotTransitioned;
   public static String EventNotTransitioned;
   public static String RelatedFunctionalExchangeConveyNoExchangeItem;
-  public static String RelatedConnectionConveyNoExchangeItem;
+  public static String RelatedComponentExchangeConveyNoExchangeItem;
+  public static String RelatedFunctionalExchangeConveyNoInterface;
+  public static String RelatedComponentExchangeConveyNoInterface;
 
   public static String Null;
 

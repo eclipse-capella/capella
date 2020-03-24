@@ -23,28 +23,28 @@ import org.polarsys.capella.core.data.fa.OrientationPortKind;
 import org.polarsys.capella.core.tiger.ITransfo;
 
 public class Rule_ComponentExchange_Interface extends InterfaceGenerationRule {
-  
+
   private final TracingStrategy tracingStrategy = new ExchangeTracing();
-  
-  public Rule_ComponentExchange_Interface(){
+
+  public Rule_ComponentExchange_Interface() {
     super(FaPackage.Literals.COMPONENT_EXCHANGE, CsPackage.Literals.INTERFACE);
   }
 
   @Override
   protected Collection<InterfaceInfo> transformToInterfaceInfo(EObject element, ITransfo transfo) {
     InterfaceInfo info = getInterfaceInfo((ComponentExchange) element);
-    if (info != null){
+    if (info != null) {
       return Collections.singleton(info);
     }
     return Collections.emptyList();
   }
 
-  private InterfaceInfo getInterfaceInfo(ComponentExchange exchange){
+  private InterfaceInfo getInterfaceInfo(ComponentExchange exchange) {
 
     InterfaceInfo result = null;
-    
+
     /* already covered by functional exchange rule */
-    if (exchange.getAllocatedFunctionalExchanges().size() > 0){
+    if (exchange.getAllocatedFunctionalExchanges().size() > 0) {
       return null;
     }
 
@@ -52,18 +52,24 @@ public class Rule_ComponentExchange_Interface extends InterfaceGenerationRule {
     if (exchange.getConvoyedInformations().isEmpty()) {
       return null;
     }
-   
+
     /* which side is provider, which is requirer? */
     ComponentPort sourceCP = (ComponentPort) exchange.getSourcePort();
     ComponentPort targetCP = (ComponentPort) exchange.getTargetPort();
-    
-    if (sourceCP.getOrientation() == OrientationPortKind.IN && targetCP.getOrientation() == OrientationPortKind.OUT){ 
-      result  = new InterfaceInfo(new ComponentPortInterfaceAdapter(targetCP), new ComponentPortInterfaceAdapter(sourceCP), tracingStrategy);
-    } else if (sourceCP.getOrientation() == OrientationPortKind.OUT && targetCP.getOrientation() == OrientationPortKind.IN){
-      result = new InterfaceInfo(new ComponentPortInterfaceAdapter(sourceCP), new ComponentPortInterfaceAdapter(targetCP), tracingStrategy);
+
+    if (sourceCP.getOrientation() == OrientationPortKind.OUT && targetCP.getOrientation() == OrientationPortKind.IN) {
+      result = new InterfaceInfo(new ComponentPortInterfaceAdapter(targetCP),
+          new ComponentPortInterfaceAdapter(sourceCP), tracingStrategy);
+
+    } else if (sourceCP.getOrientation() == OrientationPortKind.IN
+        && targetCP.getOrientation() == OrientationPortKind.OUT) {
+      result = new InterfaceInfo(new ComponentPortInterfaceAdapter(sourceCP),
+          new ComponentPortInterfaceAdapter(targetCP), tracingStrategy);
+
     } else {
       // just guess as a last resort
-      result = new InterfaceInfo(new ComponentPortInterfaceAdapter(sourceCP), new ComponentPortInterfaceAdapter(targetCP), tracingStrategy);
+      result = new InterfaceInfo(new ComponentPortInterfaceAdapter(targetCP),
+          new ComponentPortInterfaceAdapter(sourceCP), tracingStrategy);
     }
     return result;
   }
