@@ -188,7 +188,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.sourceNode.target.dndCBComponent(elementView.sourceNode.target.eContainer(),containerView.target)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="capellaElement"  forceRefresh="true">
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="capellaElement" forceRefresh="true">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -504,7 +504,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="capellaElement" >
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="capellaElement">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -1095,7 +1095,7 @@
               <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:arg0"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="capellaElement" >
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="capellaElement">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -1865,7 +1865,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.sourceNode.target.dndDFBAbstractFunction(elementView.sourceNode.target.eContainer(),containerView.target)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="capellaElement" >
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="capellaElement">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -2105,7 +2105,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="capellaElement" >
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="capellaElement">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -2577,7 +2577,7 @@
             </style>
           </conditionnalStyles>
         </nodeMappings>
-        <nodeMappings xsi:type="description_3:InstanceRoleMapping" name="hideSequenceLabelOA" semanticCandidatesExpression="ocl:Set {}" domainClass="EObject"/>
+        <nodeMappings xsi:type="description_3:InstanceRoleMapping" name="hideSequenceLabelOA" deletionDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='no%20delete%20OA']" semanticCandidatesExpression="ocl:Set {}" domainClass="EObject"/>
         <nodeMappings xsi:type="description_3:ObservationPointMapping" name="ObservationPointOA" deletionDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='no%20delete%20OA']" semanticCandidatesExpression="aql:self.makeUnion(self.ownedConstraintDurations.start, self.ownedConstraintDurations.finish)" semanticElements="service:getAssociatedSemanticElements()" domainClass="InteractionFragment">
           <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="" sizeComputationExpression="1" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/observation.svg">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -3559,7 +3559,7 @@
               <finishingEndPredecessor name="messageEndAfter"/>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="delete capella elements OA" >
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="delete capella elements OA">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -4186,7 +4186,7 @@
             <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Orange']"/>
           </style>
         </nodeMappings>
-        <nodeMappings xsi:type="description_3:InstanceRoleMapping" name="hideSequenceLabel AIS" semanticCandidatesExpression="ocl:Set {}" domainClass="EObject"/>
+        <nodeMappings xsi:type="description_3:InstanceRoleMapping" name="hideSequenceLabel AIS" deletionDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Activity%20Interaction%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='no%20delete%20AIS']" semanticCandidatesExpression="ocl:Set {}" domainClass="EObject"/>
         <nodeMappings xsi:type="description_3:ObservationPointMapping" name="ObservationPoint AIS" deletionDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Activity%20Interaction%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='no%20delete%20AIS']" semanticCandidatesExpression="aql:self.makeUnion(self.ownedConstraintDurations.start, self.ownedConstraintDurations.finish)" semanticElements="service:getAssociatedSemanticElements()" domainClass="InteractionFragment">
           <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="" sizeComputationExpression="1" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/observation.svg">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>

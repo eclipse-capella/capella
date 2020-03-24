@@ -21,6 +21,8 @@ import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.test.framework.helpers.EObjectHelper;
 
 /**
@@ -102,4 +104,19 @@ public class ODesignHelper {
     return sb.toString();
   }
 
+  public static boolean isNotDeprecatedMapping(DiagramElementMapping mapping) {
+    if ("false".equalsIgnoreCase(mapping.getPreconditionExpression())) {
+      return false;
+    }
+    if (mapping.getName().contains("Dummy")) {
+      return false;
+    }
+    RepresentationDescription description = (RepresentationDescription)EcoreUtil2.getFirstContainer(mapping, org.eclipse.sirius.viewpoint.description.DescriptionPackage.Literals.REPRESENTATION_DESCRIPTION);
+    if (description instanceof DiagramDescription) {
+      if ("false".equalsIgnoreCase(((DiagramDescription)description).getPreconditionExpression())) {
+        return false;
+      }
+    }
+    return true;
+  }
 }
