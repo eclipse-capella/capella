@@ -106,7 +106,17 @@ public class ConfirmDeleteCapellaElementDialog extends ImpactAnalysisDialog {
     layout.numColumns = 2;
     layout.makeColumnsEqualWidth = true;
     layout.marginWidth = 0; // To have the status bar nicely displayed.
-    // Create a group to host the deleted element viewer.
+
+    createElementsToDeleteViewer(parentComposite);
+    createReferencingElementViewer(parentComposite);
+
+    return parentComposite;
+  }
+
+  /**
+   * Create a group to host the deleted element viewer
+   */
+  protected void createElementsToDeleteViewer(Composite parentComposite) {
     Group deletedElementsGroup = new Group(parentComposite, SWT.NONE);
     deletedElementsGroup.setText(Messages.CapellaDeleteCommand_ImpactAnalysis_DeletedElements_Group_Title);
     deletedElementsGroup.setToolTipText(Messages.CapellaDeleteCommand_ImpactAnalysis_DeletedElements_Group_Tooltip);
@@ -117,16 +127,13 @@ public class ConfirmDeleteCapellaElementDialog extends ImpactAnalysisDialog {
     elementsToDeleteViewer.setInput(getInitialInputData());
     // Add a button to display EMF resource as root nodes.
     createResourceCheckButton(deletedElementsGroup, elementsToDeleteViewer);
-    // Create a second viewer to display referencing elements related to a deleted element.
-    createReferencingElementViewer(parentComposite);
+
     // Set a label provider that allow decorator mechanism.
     elementsToDeleteViewer.setLabelProvider(createLabelProvider(
         new DecoratingLabelProvider(new ImpactAnalysisLabelProvider(elementsToDeleteViewer, SWT.COLOR_RED),
             PlatformUI.getWorkbench().getDecoratorManager())));
     elementsToDeleteViewer.setSelection(new StructuredSelection(expendedElements), true);
     elementsToDeleteViewer.getControl().setFocus();
-
-    return parentComposite;
   }
 
   /**
@@ -134,7 +141,6 @@ public class ConfirmDeleteCapellaElementDialog extends ImpactAnalysisDialog {
    * 
    * @param parentComposite
    */
-
   protected void createReferencingElementViewer(Composite parentComposite) {
     // Create a group to host the referencing elements.
     Group referencingElementsGroup = new Group(parentComposite, SWT.NONE);
@@ -265,19 +271,22 @@ public class ConfirmDeleteCapellaElementDialog extends ImpactAnalysisDialog {
   protected void doCreateDialogArea(Composite dialogAreaComposite) {
     createCustomArea(dialogAreaComposite);
   }
-
+  
   @Override
   protected Control createContents(Composite parent) {
     Control control = super.createContents(parent);
-    validate();
+    updateMessageAndButtons();
     return control;
   }
 
-  private void validate() {
+  private void updateMessageAndButtons() {
     IStatus status = getStatus();
     if (!status.isOK()) {
       setErrorMessage(status.getMessage());
       getButton(OK).setEnabled(false);
+      getShell().setDefaultButton(getButton(CANCEL));
+    } else {
+      getShell().setDefaultButton(getButton(OK));
     }
   }
 
