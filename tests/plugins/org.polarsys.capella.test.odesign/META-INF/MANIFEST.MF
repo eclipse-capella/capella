@@ -7,11 +7,11 @@ Bundle-Activator: org.polarsys.capella.test.odesign.Activator
 Bundle-Vendor: Thales
 Require-Bundle: org.polarsys.capella.test.framework,
  org.polarsys.capella.core.platform.sirius.ui.services,
- org.eclipse.sirius
+ org.eclipse.sirius,
+ org.eclipse.sirius.table,
+ org.polarsys.capella.test.diagram.common.ju
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Automatic-Module-Name: org.polarsys.capella.test.odesign
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.test.odesign.ju.maintestsuite
-Import-Package: org.eclipse.sirius.table.metamodel.table.description;version="4.0.0",
- org.polarsys.capella.test.diagram.common.ju.wrapper.utils
 
