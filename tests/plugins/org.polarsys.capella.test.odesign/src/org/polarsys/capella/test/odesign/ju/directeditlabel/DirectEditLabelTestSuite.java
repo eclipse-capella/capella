@@ -22,6 +22,7 @@ import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.tool.DirectEditLabel;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ODesignHelper;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 
@@ -32,13 +33,16 @@ public class DirectEditLabelTestSuite extends BasicTestSuite {
     List<DiagramElementMapping> diagramElementMappings = new ArrayList<DiagramElementMapping>();
     Set<Viewpoint> viewpoints = ViewpointRegistry.getInstance().getViewpoints();
     List<DirectEditLabel> directEditLabels = new ArrayList<DirectEditLabel>();
+
     for (Viewpoint viewpoint : viewpoints) {
       directEditLabels.addAll((Collection<? extends DirectEditLabel>) StreamSupport
           .stream(Spliterators.spliteratorUnknownSize(viewpoint.eResource().getAllContents(), 0), false)
           .filter(DirectEditLabel.class::isInstance).collect(Collectors.toList()));
+
       diagramElementMappings.addAll((Collection<? extends DiagramElementMapping>) StreamSupport
           .stream(Spliterators.spliteratorUnknownSize(viewpoint.eResource().getAllContents(), 0), false)
-          .filter(DiagramElementMapping.class::isInstance).collect(Collectors.toList()));
+          .filter(DiagramElementMapping.class::isInstance).map(x -> (DiagramElementMapping) x)
+          .filter(ODesignHelper::isNotDeprecatedMapping).collect(Collectors.toList()));
     }
     List<BasicTestArtefact> tests = new ArrayList<>();
     tests.add(new CheckDirectEditLabelHasMappingsTest(directEditLabels));
