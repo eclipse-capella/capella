@@ -10,13 +10,12 @@
  *******************************************************************************/
 package org.polarsys.capella.core.ui.search.searchfor;
 
-import org.eclipse.jface.viewers.CheckboxTreeViewer;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.ui.dialogs.PatternFilter;
 import org.polarsys.capella.core.ui.search.CapellaSearchPage;
 
 public class CapellaRightSearchForContainerArea extends AbstractCapellaSearchForContainerArea {
-  protected AbstractMetaModelParticipantsItemProvider partictipantsItemProvider;
+  protected AbstractSearchForContentProvider partictipantsItemProvider;
   
   public CapellaRightSearchForContainerArea(Group parent, AbstractCapellaSearchForContainerArea leftArea,
        CapellaSearchPage searchPage) {
@@ -24,9 +23,9 @@ public class CapellaRightSearchForContainerArea extends AbstractCapellaSearchFor
   }
 
   @Override
-  protected AbstractMetaModelParticipantsItemProvider getPartictipantsItemProvider() {
+  protected AbstractSearchForContentProvider getSearchForContentProvider() {
     if (partictipantsItemProvider == null) {
-      partictipantsItemProvider = new AttributesParticipantsItemProvider(otherSideArea);
+      partictipantsItemProvider = new AttributeContentProvider(otherSideArea);
     }
     return partictipantsItemProvider;
   }
@@ -36,6 +35,6 @@ public class CapellaRightSearchForContainerArea extends AbstractCapellaSearchFor
   }
   
   public void updateSearchSettings() {
-    searchPage.getCapellaSearchSettings().setSearchAttributes(getCheckedElements());
+    searchPage.getCapellaSearchSettings().setSearchAttributeItems(getCheckedElements());
   }
 }

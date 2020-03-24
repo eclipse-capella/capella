@@ -15,16 +15,16 @@ import java.util.Set;
 
 import org.eclipse.emf.ecore.EAttribute;
 
-public class AttributesParticipantsItemProvider extends AbstractMetaModelParticipantsItemProvider {
+public class AttributeContentProvider extends AbstractSearchForContentProvider {
   private AbstractCapellaSearchForContainerArea leftArea = null;
 
-  public AttributesParticipantsItemProvider(AbstractCapellaSearchForContainerArea area) {
+  public AttributeContentProvider(AbstractCapellaSearchForContainerArea area) {
     this.leftArea = area;
   }
 
   public Object[] getElements(Object inputElement) {
     Set<Object> checkedMetaClasses = leftArea.getCheckedElements();
-    return MetaClassesUtil.getInstance().getAttributes(checkedMetaClasses).toArray();
+    return SearchForItemCache.getInstance().getAttributes(checkedMetaClasses).toArray();
   }
 
   @Override

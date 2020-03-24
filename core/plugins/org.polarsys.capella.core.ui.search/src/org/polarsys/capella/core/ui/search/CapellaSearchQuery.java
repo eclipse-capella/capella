@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.ui.search;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -23,19 +25,53 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gmf.runtime.diagram.core.util.ViewType;
+import org.eclipse.gmf.runtime.notation.Diagram;
+import org.eclipse.gmf.runtime.notation.NotationPackage;
+import org.eclipse.gmf.runtime.notation.Shape;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.search.ui.ISearchQuery;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.ui.business.api.query.DDiagramGraphicalQuery;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.polarsys.capella.core.commands.preferences.util.PreferencesHelper;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.viewer.CapellaNavigatorContentProvider;
+import org.polarsys.capella.core.ui.search.searchfor.item.SearchForAttributeItem;
+import org.polarsys.capella.core.ui.search.searchfor.item.SearchForClassItem;
+import org.polarsys.capella.core.ui.search.searchfor.item.SearchForNoteItem;
 
 public class CapellaSearchQuery implements ISearchQuery {
 
   private final CapellaSearchResult capellaSearchResult = new CapellaSearchResult(this);
   private final CapellaSearchSettings capellaSearchSettings;
 
-  private final ITreeContentProvider contentProvider = new CapellaNavigatorContentProvider();
+  private final ITreeContentProvider contentProvider = new CapellaNavigatorContentProvider() {
+    // Extend the search scope to include note from diagram
+    @Override
+    public Object[] getChildren(Object element) {
+      if (element instanceof DRepresentationDescriptor
+          && ((DRepresentationDescriptor) element).isLoadedRepresentation()) {
+        DRepresentation representation = ((DRepresentationDescriptor) element).getRepresentation();
+        if (representation instanceof DDiagram) {
+          List<Shape> notes = new ArrayList<>();
+          DDiagramGraphicalQuery query = new DDiagramGraphicalQuery((DDiagram) representation);
+          Option<Diagram> gmfDiagram = query.getAssociatedGMFDiagram();
+          if (gmfDiagram.some()) {
+            for (Object child : gmfDiagram.get().getChildren()) {
+              if (child instanceof Shape && ViewType.NOTE.equals(((Shape) child).getType())) {
+                notes.add((Shape) child);
+              }
+            }
+          }
+          return notes.toArray();
+        }
+      }
+      return super.getChildren(element);
+    }
+  };
 
   public CapellaSearchQuery(CapellaSearchSettings capellaSearchSettings) {
     this.capellaSearchSettings = capellaSearchSettings;
@@ -87,25 +123,16 @@ public class CapellaSearchQuery implements ISearchQuery {
   private void search(Pattern pattern, Object element, IProject project) {
     if (element instanceof EObject) {
       EObject eObj = (EObject) element;
-      capellaSearchSettings.getSearchMetaClasses().forEach(metaObj -> {
-        if ((metaObj instanceof EClass)) {
-          EClass eCls = (EClass) metaObj;
-          if (eObj.eClass().equals(eCls)) {
-            capellaSearchSettings.getSearchAttributes().forEach(attrObj -> {
-              EAttribute attribute = (EAttribute) attrObj;
-              try {
-                Object attrValue = eObj.eGet(attribute);
-                if (attrValue instanceof String) {
-                  String attrString = (String) attrValue;
-                  if (isMatchOccurrences(pattern, attrString)) {
-                    CapellaSearchMatchEntry result = new CapellaSearchMatchEntry(element, attrString, project,
-                        attribute);
-                    capellaSearchResult.addMatch(result);
-                    // use tree data if we want to display the result as a tree
-                    capellaSearchResult.getTreeData().addElement(element);
-                  }
-                }
-              } catch (Exception e) {
+      capellaSearchSettings.getSearchClassItems().forEach(item -> {
+        if (item instanceof SearchForClassItem && ((SearchForClassItem) item).cover(eObj)) {
+          // Case of searching in NOTE, search directly in description attribute
+          if (item instanceof SearchForNoteItem) {
+            EAttribute shapeDescriptionAttribute = NotationPackage.eINSTANCE.getDescriptionStyle_Description();
+            searchForAttribute(pattern, project, eObj, shapeDescriptionAttribute);
+          } else {
+            capellaSearchSettings.getSearchAttributeItems().forEach(attributeItem -> {
+              if (attributeItem instanceof SearchForAttributeItem) {
+                searchForAttribute(pattern, project, eObj, (SearchForAttributeItem) attributeItem);
               }
             });
           }
@@ -116,6 +143,33 @@ public class CapellaSearchQuery implements ISearchQuery {
     for (int i = 0; i < children.length; i++) {
       // search recursively in all the elements in the project tree
       search(pattern, children[i], project);
+    }
+  }
+
+  protected void searchForAttribute(Pattern pattern, IProject project, EObject eObj,
+      SearchForAttributeItem attributeItem) {
+    if (attributeItem.getAttributeFor(eObj) != null) {
+      String textToSearch = attributeItem.getTextToSearch(eObj);
+      if (isMatchOccurrences(pattern, textToSearch)) {
+        CapellaSearchMatchEntry result = new CapellaSearchMatchEntry(eObj, textToSearch, project,
+            attributeItem.getAttributeFor(eObj));
+        capellaSearchResult.addMatch(result);
+        // use tree data if we want to display the result as a tree
+        capellaSearchResult.getTreeData().addElement(eObj);
+      }
+    }
+  }
+  
+  protected void searchForAttribute(Pattern pattern, IProject project, EObject eObj, EAttribute attribute) {
+    Object attrValue = eObj.eGet(attribute);
+    if (attrValue instanceof String) {
+      String attrString = (String) attrValue;
+      if (isMatchOccurrences(pattern, attrString)) {
+        CapellaSearchMatchEntry result = new CapellaSearchMatchEntry(eObj, attrString, project, attribute);
+        capellaSearchResult.addMatch(result);
+        // use tree data if we want to display the result as a tree
+        capellaSearchResult.getTreeData().addElement(eObj);
+      }
     }
   }
 

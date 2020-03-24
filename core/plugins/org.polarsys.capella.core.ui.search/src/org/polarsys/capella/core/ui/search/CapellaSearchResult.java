@@ -17,12 +17,18 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.eclipse.core.resources.IProject;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gmf.runtime.notation.Diagram;
+import org.eclipse.gmf.runtime.notation.Shape;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.search.ui.text.AbstractTextSearchResult;
 import org.eclipse.search.ui.text.IEditorMatchAdapter;
 import org.eclipse.search.ui.text.IFileMatchAdapter;
 import org.eclipse.search.ui.text.MatchFilter;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.TreeData;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 
 public class CapellaSearchResult extends AbstractTextSearchResult {
 
@@ -32,7 +38,22 @@ public class CapellaSearchResult extends AbstractTextSearchResult {
   public CapellaSearchResult(CapellaSearchQuery capellaSearchQuery) {
     this.capellaSearchQuery = capellaSearchQuery;
     setActiveMatchFilters(new MatchFilter[] {});
-    treeData = new TreeData(new ArrayList<Object>(), null);
+    treeData = new TreeData(new ArrayList<Object>(), null) {
+      // Customize this to add notes into search scope
+      @Override
+      protected Object doGetParent(Object element) {
+        if (element instanceof DRepresentationDescriptor) {
+          return ((DRepresentationDescriptor) element).getTarget();
+        } else if (element instanceof Shape) {
+          Diagram diagram = ((Shape) element).getDiagram();
+          EObject elt = diagram.getElement();
+          if (elt instanceof DDiagram) {
+            return RepresentationHelper.getRepresentationDescriptor((DDiagram) elt);
+          }
+        }
+        return super.doGetParent(element);
+      }
+    };
   }
   
   @Override

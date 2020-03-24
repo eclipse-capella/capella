@@ -13,7 +13,7 @@ package org.polarsys.capella.core.ui.search.searchfor;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 
-public abstract class AbstractMetaModelParticipantsItemProvider implements ITreeContentProvider {
+public abstract class AbstractSearchForContentProvider implements ITreeContentProvider {
 	/**
 	 * {@inheritDoc}
 	 */
