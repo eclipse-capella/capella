@@ -46,9 +46,10 @@ public class CheckDeletionDescriptionTest extends BasicTestCase {
   }
 
   protected void checkMappingsHasDeletionDescription(Resource resource) {
-    List<EObject> diamap = StreamSupport
+    List<DiagramElementMapping> diamap = StreamSupport
         .stream(Spliterators.spliteratorUnknownSize(resource.getAllContents(), 0), false)
-        .filter(DiagramElementMapping.class::isInstance).collect(Collectors.toList());
+        .filter(DiagramElementMapping.class::isInstance).map(x -> (DiagramElementMapping) x)
+        .filter(ODesignHelper::isNotDeprecatedMapping).collect(Collectors.toList());
     for (EObject diagramElementMapping : diamap) {
       checkHasDeletionDescription((DiagramElementMapping) diagramElementMapping);
     }
@@ -58,31 +59,17 @@ public class CheckDeletionDescriptionTest extends BasicTestCase {
     if (diagramElementMapping instanceof AbstractNodeMapping) {
       AbstractNodeMapping nodeMapping = (AbstractNodeMapping) diagramElementMapping;
       if (nodeMapping.getDomainClass() != null) {
-        if ("false".equalsIgnoreCase(nodeMapping.getPreconditionExpression())
-            || nodeMapping.getPreconditionExpression().isEmpty()
-            || ("EObject".equalsIgnoreCase(nodeMapping.getDomainClass()))) {
-          System.err.println(
-              "Deprecated, No Deletion Description for: " + ODesignHelper.computeModelPath(diagramElementMapping));
-
-        } else {
-          if (nodeMapping.getDeletionDescription() == null) {
-            this.failedTest
-                .append("No Deletion Description for: " + ODesignHelper.computeModelPath(diagramElementMapping) + "\n");
-          }
+        if (nodeMapping.getDeletionDescription() == null) {
+          this.failedTest
+              .append("No Deletion Description for: " + ODesignHelper.computeModelPath(diagramElementMapping) + "\n");
         }
-
       }
     } else if (diagramElementMapping instanceof EdgeMapping) {
       EdgeMapping edgeMapping = (EdgeMapping) diagramElementMapping;
       if (edgeMapping.isUseDomainElement() && edgeMapping.getDeletionDescription() == null) {
-        if ("false".equalsIgnoreCase(edgeMapping.getPreconditionExpression())) {
-          System.err.println(
-              "Deprecated, No Deletion Description for: " + ODesignHelper.computeModelPath(diagramElementMapping));
-        } else {
-          if (edgeMapping.getDeletionDescription() == null) {
-            this.failedTest
-                .append("No Deletion Description for: " + ODesignHelper.computeModelPath(diagramElementMapping) + "\n");
-          }
+        if (edgeMapping.getDeletionDescription() == null) {
+          this.failedTest
+              .append("No Deletion Description for: " + ODesignHelper.computeModelPath(diagramElementMapping) + "\n");
         }
       }
     }
