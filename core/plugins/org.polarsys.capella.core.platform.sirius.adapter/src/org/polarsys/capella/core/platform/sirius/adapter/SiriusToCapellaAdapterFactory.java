@@ -38,41 +38,46 @@ public class SiriusToCapellaAdapterFactory implements IAdapterFactory {
    * @return
    */
   public EObject adaptToBusinessElement(Object object) {
-    if (object instanceof ItemWrapper) {
-      object = ((ItemWrapper) object).getWrappedObject();
-    }
-    if (object instanceof EObjectWrapper) {
-      object = ((EObjectWrapper) object).getElement();
-    }
-    if (object instanceof EditPart) {
-      EditPart editPart = (EditPart) object;
-      Object editPartModel = editPart.getModel();
-      if (editPartModel instanceof View) {
-        EObject siriusElement = ((View) editPartModel).getElement();
-        if (siriusElement instanceof DSemanticDecorator) {
-          return ((DSemanticDecorator) siriusElement).getTarget();
-        } 
-        if (siriusElement instanceof DRepresentation) {
-          return RepresentationHelper.getRepresentationDescriptor((DRepresentation) siriusElement);
+    try {
+      if (object instanceof ItemWrapper) {
+        object = ((ItemWrapper) object).getWrappedObject();
+      }
+      if (object instanceof EObjectWrapper) {
+        object = ((EObjectWrapper) object).getElement();
+      }
+      if (object instanceof EditPart) {
+        EditPart editPart = (EditPart) object;
+        Object editPartModel = editPart.getModel();
+        if (editPartModel instanceof View) {
+          EObject siriusElement = ((View) editPartModel).getElement();
+          if (siriusElement instanceof DSemanticDecorator) {
+            return ((DSemanticDecorator) siriusElement).getTarget();
+          }
+          if (siriusElement instanceof DRepresentation) {
+            return RepresentationHelper.getRepresentationDescriptor((DRepresentation) siriusElement);
+          }
         }
       }
-    }
-    
-    // It is for DRepresentationElement and DTableElement
-    if (object instanceof DSemanticDecorator) {
-      DSemanticDecorator vpe = (DSemanticDecorator) object;
-      EObject element = vpe.getTarget();
-      if (CapellaResourceHelper.isSemanticElement(element)) {
-        return element;
+      
+      // It is for DRepresentationElement and DTableElement
+      if (object instanceof DSemanticDecorator) {
+        DSemanticDecorator vpe = (DSemanticDecorator) object;
+        EObject element = vpe.getTarget();
+        if (CapellaResourceHelper.isSemanticElement(element)) {
+          return element;
+        }
       }
-    }
 
-    if (object instanceof IMarker) {
-      List<EObject> objects = MarkerViewHelper.getModelElementsFromMarker((IMarker) object);
-      if (!objects.isEmpty()) {
-        return objects.get(0);
+      if (object instanceof IMarker) {
+        List<EObject> objects = MarkerViewHelper.getModelElementsFromMarker((IMarker) object);
+        if (!objects.isEmpty()) {
+          return objects.get(0);
+        }
       }
-    }
+    } catch (IllegalStateException e) {
+          // Silent catch: this can happen when trying to get the session
+          // on a disposed Eobject
+   }
     return null;
   }
 
