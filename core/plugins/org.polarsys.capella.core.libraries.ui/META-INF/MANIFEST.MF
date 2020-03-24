@@ -5,19 +5,20 @@ Bundle-SymbolicName: org.polarsys.capella.core.libraries.ui;singleton:=true
 Bundle-Version: 1.4.1.qualifier
 Bundle-Activator: org.polarsys.capella.core.libraries.ui.Activator
 Bundle-Vendor: %providerName
-Require-Bundle: org.eclipse.core.expressions,
+Require-Bundle: com.google.guava;bundle-version="15.0.0",
+ org.eclipse.core.expressions,
+ org.eclipse.debug.ui,
  org.eclipse.ui.ide,
- org.polarsys.capella.common.flexibility.wizards,
- org.polarsys.capella.common.ui,
- org.polarsys.capella.core.data.core.validation,
+ org.eclipse.ui.views.properties.tabbed,
  org.polarsys.capella.core.libraries,
  org.polarsys.capella.core.model.handler,
  org.polarsys.capella.core.platform.sirius.ui.project,
- com.google.guava;bundle-version="15.0.0",
+ org.polarsys.capella.core.data.core.validation,
+ org.polarsys.capella.common.ui,
+ org.polarsys.capella.common.flexibility.wizards,
  org.polarsys.capella.core.platform.sirius.ui.navigator,
- org.eclipse.ui.views.properties.tabbed,
- org.eclipse.debug.ui,
- org.polarsys.capella.common.ui.toolkit
+ org.polarsys.capella.common.ui.toolkit,
+ org.polarsys.capella.core.data.common.validation
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.libraries.ui,
