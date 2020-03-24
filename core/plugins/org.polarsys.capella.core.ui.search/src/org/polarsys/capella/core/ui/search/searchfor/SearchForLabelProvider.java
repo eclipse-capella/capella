@@ -10,38 +10,24 @@
  *******************************************************************************/
 package org.polarsys.capella.core.ui.search.searchfor;
 
-import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.ENamedElement;
-import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
-import org.polarsys.capella.core.ui.search.CapellaSearchConstants;
+import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.swt.graphics.Image;
+import org.polarsys.capella.core.ui.search.searchfor.item.SearchForItem;
 
-public class SearchForLabelProvider extends AdapterFactoryLabelProvider {
-  public SearchForLabelProvider(AdapterFactory adapterFactory) {
-    super(adapterFactory);
-  }
-
+public class SearchForLabelProvider extends LabelProvider {
   @Override
   public String getText(Object element) {
-    if (element instanceof EClass) {
-      if (((EClass) element).getInstanceClass().equals(DRepresentationDescriptor.class))
-        return CapellaSearchConstants.Diagram_Label;
+    if (element instanceof SearchForItem) {
+      return ((SearchForItem) element).getText();
     }
-    if (element instanceof ENamedElement)
-      return ((ENamedElement) element).getName();
     return super.getText(element);
   }
 
   @Override
-  public Image getImage(Object object) {
-    Image img = null;
-    if (object instanceof EClass && adapterFactory != null) {
-      img = GetImagesFromEClassUtil.getInstance().getImageForEClass((EClass) object,
-          (ComposedAdapterFactory) adapterFactory);
+  public Image getImage(Object element) {
+    if (element instanceof SearchForItem) {
+      return ((SearchForItem) element).getImage();
     }
-    return img != null ? img : super.getImage(object);
+    return super.getImage(element);
   }
 }

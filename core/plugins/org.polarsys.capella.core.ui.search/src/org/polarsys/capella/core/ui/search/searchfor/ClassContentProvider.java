@@ -15,24 +15,21 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.polarsys.capella.core.model.semantic.SimplifiedCapellaMetadata;
 import org.polarsys.capella.core.ui.search.CapellaSearchConstants;
+import org.polarsys.capella.core.ui.search.searchfor.item.SearchForClassItem;
+import org.polarsys.capella.core.ui.search.searchfor.item.SearchForItem;
 
-public class MetaClassesParticipantsItemProvider extends AbstractMetaModelParticipantsItemProvider {
+public class ClassContentProvider extends AbstractSearchForContentProvider {
   private boolean showAbstract = false;
   private boolean showSemantics = true;
-  private Set<Object> eClassifierList = null;
-  private Set<Object> diagramElements = null;
-  protected Map<String, Set<Object>> elements;
+  protected Map<String, Set<SearchForItem>> elements;
 
-  public MetaClassesParticipantsItemProvider(AbstractCapellaSearchForContainerArea area) {
-    eClassifierList = MetaClassesUtil.getInstance().getClassifiers();
-    diagramElements = MetaClassesUtil.getInstance().getClassifiersDiagramElements();
-    elements = new HashMap<String, Set<Object>>();
-    elements.put(CapellaSearchConstants.ModelElements_Key, eClassifierList);
-    elements.put(CapellaSearchConstants.DiagramElements_Key, diagramElements);
+  public ClassContentProvider() {
+    elements = new HashMap<>();
+    elements.put(CapellaSearchConstants.ModelElements_Key, SearchForItemCache.getInstance().getSearchForClassItems());
+    elements.put(CapellaSearchConstants.DiagramElements_Key, SearchForItemCache.getInstance().getSearchForDiagramItems());
   }
 
   @Override
@@ -42,7 +39,7 @@ public class MetaClassesParticipantsItemProvider extends AbstractMetaModelPartic
     }
     return new Object[0];
   }
-  
+
   @Override
   public Object[] getElements() {
     return new Object[0];
@@ -50,15 +47,14 @@ public class MetaClassesParticipantsItemProvider extends AbstractMetaModelPartic
 
   @Override
   public boolean hasChildren(Object element) {
-    if (element instanceof EAttribute)
-      return false;
     return getChildren(element).length > 0;
   }
 
   @Override
   public Object[] getChildren(Object parentElement) {
     if (parentElement instanceof String && elements.keySet().contains(parentElement)) {
-      return elements.get((String) parentElement).stream().filter(x -> isDisplayed(x)).collect(Collectors.toSet()).toArray();
+      return elements.get((String) parentElement).stream().filter(x -> isDisplayed(x)).collect(Collectors.toSet())
+          .toArray();
     }
     return super.getChildren(parentElement);
   }
@@ -91,15 +87,18 @@ public class MetaClassesParticipantsItemProvider extends AbstractMetaModelPartic
   public void setShowSemantics(boolean showSemantics) {
     this.showSemantics = showSemantics;
   }
-  
+
   // based on abstract and semantic checks, check if the element is displayed or not
-  protected boolean isDisplayed(Object cls) {
-    if (cls instanceof EClass) {
-      EClass eclass = (EClass) cls;
-      boolean abstractFilterPassed = showAbstract == eclass.isAbstract();
-      boolean semanticFilterPassed = showSemantics == SimplifiedCapellaMetadata.INSTANCE.isSemantic(eclass);
-      if (abstractFilterPassed && semanticFilterPassed) {
-        return true;
+  protected boolean isDisplayed(SearchForItem item) {
+    if (item instanceof SearchForClassItem) {
+      Object obj = ((SearchForClassItem) item).getObject();
+      if (obj instanceof EClass) {
+        EClass eclass = (EClass) obj;
+        boolean abstractFilterPassed = showAbstract == eclass.isAbstract();
+        boolean semanticFilterPassed = showSemantics == SimplifiedCapellaMetadata.INSTANCE.isSemantic(eclass);
+        if (abstractFilterPassed && semanticFilterPassed) {
+          return true;
+        }
       }
     }
     return false;

@@ -33,7 +33,7 @@ import org.polarsys.capella.core.ui.search.CapellaSearchPage;
 import org.polarsys.capella.core.ui.search.CapellaSearchSettings;
 
 public class CapellaLeftSearchForContainerArea extends AbstractCapellaSearchForContainerArea {
-  protected AbstractMetaModelParticipantsItemProvider partictipantsItemProvider;
+  protected AbstractSearchForContentProvider partictipantsItemProvider;
   Button checkboxFilterAbstract;
   Button checkboxFilterSemantic;
 
@@ -42,9 +42,9 @@ public class CapellaLeftSearchForContainerArea extends AbstractCapellaSearchForC
   }
 
   @Override
-  protected AbstractMetaModelParticipantsItemProvider getPartictipantsItemProvider() {
+  protected AbstractSearchForContentProvider getSearchForContentProvider() {
     if (partictipantsItemProvider == null) {
-      partictipantsItemProvider = new MetaClassesParticipantsItemProvider(this);
+      partictipantsItemProvider = new ClassContentProvider();
     }
     return partictipantsItemProvider;
   }
@@ -68,7 +68,7 @@ public class CapellaLeftSearchForContainerArea extends AbstractCapellaSearchForC
 
   public void updateSearchSettings() {
     // setSearchMetaClasses, beside the metaclass it contains also the category (Diagram Elements or Model Elements)
-    searchPage.getCapellaSearchSettings().setSearchMetaClasses(getCheckedElements());
+    searchPage.getCapellaSearchSettings().setSearchClassItems(getCheckedElements());
   }
 
   public void createFiltercontainer(Group parentGroup) {
@@ -107,7 +107,7 @@ public class CapellaLeftSearchForContainerArea extends AbstractCapellaSearchForC
       @Override
       public void run(IProgressMonitor monitor) throws InvocationTargetException {
         CheckboxTreeViewer checkboxTreeViewer = (CheckboxTreeViewer) filteredTree.getViewer();
-        MetaClassesParticipantsItemProvider provider = (MetaClassesParticipantsItemProvider) getPartictipantsItemProvider();
+        ClassContentProvider provider = (ClassContentProvider) getSearchForContentProvider();
         provider.setShowAbstract(checkboxFilterAbstract.getSelection());
         provider.setShowSemantics(checkboxFilterSemantic.getSelection());
         checkboxTreeViewer.refresh();

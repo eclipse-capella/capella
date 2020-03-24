@@ -72,7 +72,7 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
    */
   public static final int PROJECT_SCOPE = 2;
   private int selectedScope;
-  
+
   private List<CapellaSearchSettings> previousSearchSettings = new ArrayList<>();
 
   private Combo comboSearchPattern;
@@ -85,7 +85,7 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
   private Button checkboxCaseSensitive;
   private Button checkboxRegex;
   private Button checkboxWholeWord;
-  
+
   private Button workspaceBtn;
   private Button selectedElementBtn;
   private Button projectBtn;
@@ -118,7 +118,7 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
     createScopeGroup(composite);
     Dialog.applyDialogFont(composite);
     setControl(composite);
-    
+
   }
 
   // create the text search box and the check-boxes for the search preferences
@@ -254,7 +254,7 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
     leftCont.setOtherSideArea(rightCont);
     leftCont.createFiltercontainer(qGrp);
   }
-  
+
   private void createScopeGroup(Composite parent) {
     Group scopeGroup = new Group(parent, SWT.NONE);
     scopeGroup.setLayout(new GridLayout(4, false));
@@ -275,9 +275,9 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
     projectBtn = new Button(scopeGroup, SWT.RADIO);
     projectBtn.setData(Integer.valueOf(PROJECT_SCOPE));
     projectBtn.setText(CapellaSearchConstants.ProjectScope_text);
-    
+
     // Add scope change listeners
-    SelectionAdapter scopeChangedLister= new SelectionAdapter() {
+    SelectionAdapter scopeChangedLister = new SelectionAdapter() {
       @Override
       public void widgetSelected(SelectionEvent e) {
         handleScopeChanged(e);
@@ -286,27 +286,27 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
     workspaceBtn.addSelectionListener(scopeChangedLister);
     selectedElementBtn.addSelectionListener(scopeChangedLister);
     projectBtn.addSelectionListener(scopeChangedLister);
-    
+
     // Set initial scope
     setScopeAndUpdateUI(WORKSPACE_SCOPE);
   }
 
   private void handleScopeChanged(SelectionEvent e) {
-    Object source= e.getSource();
+    Object source = e.getSource();
     if (source instanceof Button) {
-      Button button= (Button) source;
+      Button button = (Button) source;
       if (button.getSelection())
         this.selectedScope = ((Integer) button.getData()).intValue();
     }
   }
-  
+
   public void setScopeAndUpdateUI(int scope) {
     this.selectedScope = scope;
     workspaceBtn.setSelection(scope == WORKSPACE_SCOPE);
     selectedElementBtn.setSelection(scope == SELECTED_ELEMENT_SCOPE);
     projectBtn.setSelection(scope == PROJECT_SCOPE);
   }
-  
+
   // this function is used to apply the settings stored in history, from a previous search
   protected void applySearchSettings(CapellaSearchSettings settings) {
     capellaSearchSettings = settings;
@@ -325,14 +325,14 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
 
     if (leftCont != null) {
       // update the meta-classes panel to display the selected elements stored from a previous search
-      leftCont.applySearchSettings(settings.getSearchMetaClasses());
+      leftCont.applySearchSettings(settings.getSearchClassItems());
     }
 
     if (rightCont != null) {
       // update the attributes panel to display the selected elements stored from a previous search
-      rightCont.applySearchSettings(settings.getSearchAttributes());
+      rightCont.applySearchSettings(settings.getSearchAttributeItems());
     }
-    
+
     int scope = settings.getScope();
     setScopeAndUpdateUI(scope);
 
@@ -374,8 +374,7 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
     capellaSearchSettings.setScope(selectedScope);
 
     capellaSearchSettings.clearProjects();
-    
-    
+
     if (selectedScope == WORKSPACE_SCOPE) {
       for (IProject project : getProjectsFromWorkspace()) {
         capellaSearchSettings.addObjectToSearch(project);
@@ -385,7 +384,7 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
       ISelection selection = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getSelectionService().getSelection();
       // EObject is selected
       if (selection instanceof IStructuredSelection) {
-        for (Iterator<?> iter= ((IStructuredSelection) selection).iterator(); iter.hasNext();) {
+        for (Iterator<?> iter = ((IStructuredSelection) selection).iterator(); iter.hasNext();) {
           Object sel = iter.next();
           if (sel instanceof EObject) {
             selectedProjects.add(PreferencesHelper.getProject((EObject) sel));
@@ -419,17 +418,17 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
     updateValidationStatus(validateStatus);
     return validateStatus;
   }
-  
+
   private IEditorPart getActiveEditor() {
-    IWorkbenchPage activePage= PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+    IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
     if (activePage == null)
       return null;
 
-    IWorkbenchPart activePart= activePage.getActivePart();
+    IWorkbenchPart activePart = activePage.getActivePart();
     if (activePart == null)
       return null;
 
-    IEditorPart activeEditor= activePage.getActiveEditor();
+    IEditorPart activeEditor = activePage.getActiveEditor();
     if (activeEditor == activePart)
       return activeEditor;
 

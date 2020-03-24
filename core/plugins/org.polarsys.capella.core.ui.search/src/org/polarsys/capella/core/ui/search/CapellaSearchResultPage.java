@@ -10,11 +10,12 @@
  *******************************************************************************/
 package org.polarsys.capella.core.ui.search;
 
-import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider;
+import org.eclipse.jface.viewers.DecoratingLabelProvider;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.search.ui.text.AbstractTextSearchViewPage;
+import org.eclipse.ui.PlatformUI;
 
 public class CapellaSearchResultPage extends AbstractTextSearchViewPage {
 
@@ -36,13 +37,13 @@ public class CapellaSearchResultPage extends AbstractTextSearchViewPage {
   @Override
   protected void configureTreeViewer(TreeViewer viewer) {
     viewer.setContentProvider(new CapellaSearchResultTreeContentProvider(this));
-    viewer.setLabelProvider(new DelegatingStyledCellLabelProvider(new CapellaSearchResultLabelProvider()));
+    viewer.setLabelProvider(new DecoratingLabelProvider(new CapellaSearchResultLabelProvider(), PlatformUI.getWorkbench().getDecoratorManager()));
   }
 
   @Override
   protected void configureTableViewer(TableViewer viewer) {
     viewer.setContentProvider(new CapellaSearchResultListContentProvider());
-    viewer.setLabelProvider(new DelegatingStyledCellLabelProvider(new CapellaSearchResultLabelProvider()));
+    viewer.setLabelProvider(new DecoratingLabelProvider(new CapellaSearchResultLabelProvider(), PlatformUI.getWorkbench().getDecoratorManager()));
   }
   
   @Override

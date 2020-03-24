@@ -14,10 +14,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.core.resources.IProject;
-import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.jface.dialogs.IDialogSettings;
-import org.polarsys.capella.core.ui.search.searchfor.MetaClassesUtil;
+import org.polarsys.capella.core.ui.search.searchfor.SearchForItemCache;
+import org.polarsys.capella.core.ui.search.searchfor.item.SearchForAttributeItem;
+import org.polarsys.capella.core.ui.search.searchfor.item.SearchForClassItem;
 
 public abstract class AbstractCapellaHistory {
   protected static final int HISTORY_SIZE = 5;
@@ -66,21 +66,21 @@ public abstract class AbstractCapellaHistory {
         int fieldsCount = searchHistorySection.getInt(SECTION_SEARCH_ATTRIBUTE_COUNT);
         for (int i = 0; i < fieldsCount; i++) {
           String searchFieldText = searchHistorySection.get(SECTION_SEARCH_ATTRIBUTE_PREFIX + i);
-          Object attribute = MetaClassesUtil.getInstance().getAttribute(searchFieldText);
+          Object attribute = SearchForItemCache.getInstance().getAttribute(searchFieldText);
           if(attribute != null) {
-            searchSettings.getSearchAttributes().add(attribute);
+            searchSettings.getSearchAttributeItems().add(attribute);
           }
         }
 
         int metaFieldsCount = searchHistorySection.getInt(SECTION_SEARCH_METACLASS_COUNT);
         for (int i = 0; i < metaFieldsCount; i++) {
           String searchFieldText = searchHistorySection.get(SECTION_SEARCH_METACLASS_PREFIX + i);
-          Object metaclass = MetaClassesUtil.getInstance().getClassifier(searchFieldText);
+          Object metaclass = SearchForItemCache.getInstance().getClassItem(searchFieldText);
           if(metaclass != null) {
-            searchSettings.getSearchMetaClasses().add(metaclass);
+            searchSettings.getSearchClassItems().add(metaclass);
           }
           else {
-            searchSettings.getSearchMetaClasses().add(searchFieldText);
+            searchSettings.getSearchClassItems().add(searchFieldText);
           }
         }
       } catch (NumberFormatException e) {
@@ -153,18 +153,18 @@ public abstract class AbstractCapellaHistory {
       searchHistorySection.put(SECTION_SEARCH_PROJECT_COUNT, projectsCount);
 
      int attrFieldsCount = 0;
-      for (Object searchAttribute : capellaSearchSettings.getSearchAttributes()) {
-        EAttribute attributes = (EAttribute) searchAttribute;
-        searchHistorySection.put(SECTION_SEARCH_ATTRIBUTE_PREFIX + attrFieldsCount, attributes.getName());
+      for (Object searchAttribute : capellaSearchSettings.getSearchAttributeItems()) {
+        SearchForAttributeItem attributeItem = (SearchForAttributeItem) searchAttribute;
+        searchHistorySection.put(SECTION_SEARCH_ATTRIBUTE_PREFIX + attrFieldsCount, attributeItem.getText());
         attrFieldsCount++;
       }
       searchHistorySection.put(SECTION_SEARCH_ATTRIBUTE_COUNT, attrFieldsCount);
 
       int clsFieldsCount = 0;
-      for (Object searchMetaClasses : capellaSearchSettings.getSearchMetaClasses()) {
-        if (searchMetaClasses instanceof EClass) {
-          EClass eCls = (EClass) searchMetaClasses;
-          searchHistorySection.put(SECTION_SEARCH_METACLASS_PREFIX + clsFieldsCount, eCls.getName());
+      for (Object searchMetaClasses : capellaSearchSettings.getSearchClassItems()) {
+        if (searchMetaClasses instanceof SearchForClassItem) {
+          SearchForClassItem classItem = (SearchForClassItem) searchMetaClasses;
+          searchHistorySection.put(SECTION_SEARCH_METACLASS_PREFIX + clsFieldsCount, classItem.getUniqueID());
           clsFieldsCount++;
         }
         else {
