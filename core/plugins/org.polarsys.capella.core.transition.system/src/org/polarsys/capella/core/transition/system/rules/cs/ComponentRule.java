@@ -11,7 +11,11 @@
 
 package org.polarsys.capella.core.transition.system.rules.cs;
 
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -67,6 +71,7 @@ public class ComponentRule extends AbstractCapellaElementRule {
     registerUpdatedAttribute(CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__ABSTRACT);
   }
 
+  
   protected boolean transformAsRootComponent(EObject object, IContext context) {
     return BlockArchitectureExt.isRootComponent((Component)object);
   }
@@ -79,11 +84,24 @@ public class ComponentRule extends AbstractCapellaElementRule {
           .getBestTracedElement(root, context, CsPackage.Literals.BLOCK_ARCHITECTURE);
       return BlockArchitectureExt.getOrCreateSystem(target);
     }
-    EObject result = super.transformDirectElement(element, context);
-    if (result instanceof PhysicalComponent) {
-      ((PhysicalComponent) result).setNature(PhysicalComponentNature.NODE);
+
+    return super.transformDirectElement(element, context);
+  }
+
+  @Override
+  protected void updateElement(EObject logicalElement, EObject physicalElement, IContext context) {
+    super.updateElement(logicalElement, physicalElement, context);
+
+    if (logicalElement instanceof LogicalComponent && physicalElement instanceof PhysicalComponent) {
+      LogicalComponent logicalComponent = (LogicalComponent) logicalElement;
+      PhysicalComponent physicalComponent = (PhysicalComponent) physicalElement;
+
+      if (!BlockArchitectureExt.isRootComponent(physicalComponent)) {
+        PhysicalComponentNature nature = getComputedNature(context, logicalComponent);
+
+        physicalComponent.setNature(nature);
+      }
     }
-    return result;
   }
 
   @Override
@@ -100,11 +118,6 @@ public class ComponentRule extends AbstractCapellaElementRule {
   @Override
   protected EClass getSourceType() {
     return CsPackage.Literals.COMPONENT;
-  }
-
-  @Override
-  protected void retrieveContainer(EObject element, List<EObject> result, IContext context) {
-    super.retrieveContainer(element, result, context);
   }
 
   @Override
@@ -281,4 +294,48 @@ public class ComponentRule extends AbstractCapellaElementRule {
     }
     return element.eContainingFeature();
   }
+
+  PhysicalComponentNature getComputedNature(IContext context, LogicalComponent logicalComponent) {
+    Map<LogicalComponent, PhysicalComponentNature> natureMap = getNatureMap(context);
+
+    PhysicalComponentNature nature = natureMap.get(logicalComponent);
+
+    if (nature == null) {
+      Collection<Component> subComponents = ComponentExt.getAllSubUsedComponents(logicalComponent);
+      nature = computeNature(subComponents);
+      cacheNature(natureMap, Arrays.asList(logicalComponent), nature);
+      cacheNature(natureMap, subComponents, nature);
+    }
+
+    return nature;
+  }
+
+  @SuppressWarnings("unchecked")
+  private Map<LogicalComponent, PhysicalComponentNature> getNatureMap(IContext context) {
+    Map<LogicalComponent, PhysicalComponentNature> natureMap = (Map<LogicalComponent, PhysicalComponentNature>) context
+        .get(ITransitionConstants.LC_TO_PC_COMPUTED_NATURE);
+
+    if (natureMap == null) {
+      natureMap = new HashMap<>();
+      context.put(ITransitionConstants.LC_TO_PC_COMPUTED_NATURE, natureMap);
+    }
+
+    return natureMap;
+  }
+
+  private PhysicalComponentNature computeNature(Collection<Component> subComponents) {
+    boolean allSubComponentsActors = subComponents.stream().allMatch(Component::isActor);
+
+    return allSubComponentsActors ? PhysicalComponentNature.NODE : PhysicalComponentNature.BEHAVIOR;
+  }
+
+  private void cacheNature(Map<LogicalComponent, PhysicalComponentNature> natureMap, Collection<Component> components,
+      PhysicalComponentNature nature) {
+
+    components.stream() //
+        .filter(LogicalComponent.class::isInstance) //
+        .map(LogicalComponent.class::cast) //
+        .forEach(component -> natureMap.put(component, nature));
+  }
+
 }

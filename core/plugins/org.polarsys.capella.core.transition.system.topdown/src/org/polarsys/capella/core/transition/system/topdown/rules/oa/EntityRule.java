@@ -12,12 +12,10 @@ package org.polarsys.capella.core.transition.system.topdown.rules.oa;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.OaPackage;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.transition.common.handlers.transformation.TransformationHandlerHelper;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
@@ -42,6 +40,7 @@ public class EntityRule extends org.polarsys.capella.core.transition.system.topd
     return CtxPackage.Literals.SYSTEM_COMPONENT;
   }
 
+  @Override
   protected boolean transformAsRootComponent(EObject object, IContext context) {
     return false;
   }
