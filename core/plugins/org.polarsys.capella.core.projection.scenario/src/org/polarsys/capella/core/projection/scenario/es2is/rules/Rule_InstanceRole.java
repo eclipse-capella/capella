@@ -10,11 +10,7 @@
  *******************************************************************************/
 package org.polarsys.capella.core.projection.scenario.es2is.rules;
 
-import java.util.List;
-
 import org.eclipse.emf.ecore.EObject;
-import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.information.AbstractInstance;
 import org.polarsys.capella.core.data.interaction.InstanceRole;
 import org.polarsys.capella.core.data.interaction.InteractionFactory;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
@@ -64,20 +60,6 @@ public class Rule_InstanceRole extends Rule_InteractionElement {
     InstanceRole role = InteractionFactory.eINSTANCE.createInstanceRole();
     InstanceRoles.add(((InstanceRole) element_p).getRepresentedInstance(), role);
     return role;
-  }
-
-  @Override
-  protected void doGoDeep(EObject element_p, List<EObject> result_p) {
-    super.doGoDeep(element_p, result_p);
-    if (element_p instanceof InstanceRole) {
-      InstanceRole role = (InstanceRole) element_p;
-      if (role.getRepresentedInstance() != null) {
-        AbstractInstance instance = role.getRepresentedInstance();
-        if ((instance != null) && (instance.getAbstractType() != null) && (instance.getAbstractType() instanceof Component)) {
-          result_p.add(instance.getAbstractType());
-        }
-      }
-    }
   }
 
 }
