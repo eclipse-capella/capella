@@ -4453,7 +4453,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ToolDescription" name="remove.element.title.block.line" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlockLine_16.gif">
+            <tools xsi:type="tool_1:ToolDescription" name="remove.element.title.block.line" label="%common.cdb.remove.element.title.block.line" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlockLineRemove_16.gif">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
@@ -4462,7 +4462,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ToolDescription" name="remove.element.title.block.column" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlockColumn_16.gif">
+            <tools xsi:type="tool_1:ToolDescription" name="remove.element.title.block.column" label="%common.cdb.remove.element.title.block.column" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlockColumnRemove_16.gif">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
