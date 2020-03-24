@@ -16,7 +16,6 @@ import java.util.List;
 
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.core.data.information.ExchangeItem;
-import org.polarsys.capella.core.data.information.ExchangeMechanism;
 import org.polarsys.capella.core.data.interaction.AbstractEnd;
 import org.polarsys.capella.core.data.interaction.Event;
 import org.polarsys.capella.core.data.interaction.EventReceiptOperation;
@@ -149,15 +148,6 @@ public class ES2ISExt {
   }
 
   public static boolean mustInverse(SequenceMessage message_p, int i) {
-    // List<ExchangeItem> items = getExchangeItems(message_p);
-    List<ExchangeItem> items = message_p.getExchangedItems();
-
-    if (items.size() > i) {
-      ExchangeItem item = items.get(i);
-      if (item != null) {
-        return item.getExchangeMechanism() == ExchangeMechanism.EVENT;
-      }
-    }
     return false;
   }
 

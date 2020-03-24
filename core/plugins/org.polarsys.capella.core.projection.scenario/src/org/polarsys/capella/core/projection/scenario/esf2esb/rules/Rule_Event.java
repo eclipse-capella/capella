@@ -55,7 +55,7 @@ public class Rule_Event extends Rule_InteractionElement {
     AbstractEventOperation operation = ScenarioExt.getOperation(event);
     if (operation != null) {
       if (operation instanceof ComponentExchange) {
-        return ProjectionMessages.RelatedConnectionConveyNoExchangeItem;
+        return ProjectionMessages.RelatedComponentExchangeConveyNoExchangeItem;
 
       } else if (operation instanceof FunctionalExchange) {
         return ProjectionMessages.RelatedFunctionalExchangeConveyNoExchangeItem;

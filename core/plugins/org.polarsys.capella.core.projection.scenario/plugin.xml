@@ -46,7 +46,7 @@
             transfolink="org.polarsys.capella.core.projection.common.ProjectionTraceLinkProvider">
          
          <rule rulename="Rule_Execution"/>
-         <rule rulename="Rule_DFScenario_IScenario"/>
+         <rule rulename="Rule_Scenario"/>
          <rule rulename="Rule_Event"/>
          <rule rulename="Rule_InstanceRole"/>
          <rule rulename="Rule_Message"/>
@@ -57,8 +57,6 @@
          <finalizer class="org.polarsys.capella.core.projection.scenario.helpers.InstanceRoles"/>
          <finalizer class="org.polarsys.capella.core.projection.scenario.helpers.ReorderEnds"/>
         
-         <sharedContext context="org.polarsys.capella.core.projection.interfaces.generation"/>
-         
          <sharedContext context="org.polarsys.capella.core.projection.scenario.common.rules"/>
          <sharedContext context="org.polarsys.capella.core.projection.scenario.uml2.rules"/>
          <sharedContext context="org.polarsys.capella.core.projection.common.resolver"/>

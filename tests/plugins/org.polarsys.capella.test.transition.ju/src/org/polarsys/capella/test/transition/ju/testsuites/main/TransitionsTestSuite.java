@@ -53,6 +53,7 @@ import org.polarsys.capella.test.transition.ju.transitions.CreateRule_ES2ES_02;
 import org.polarsys.capella.test.transition.ju.transitions.CreateRule_ES2ES_03;
 import org.polarsys.capella.test.transition.ju.transitions.CreateRule_ES2ES_04;
 import org.polarsys.capella.test.transition.ju.transitions.CreateRule_ES2IS_01;
+import org.polarsys.capella.test.transition.ju.transitions.CreateRule_ES2IS_02;
 import org.polarsys.capella.test.transition.ju.transitions.CreateRule_ESF2ESB_01;
 import org.polarsys.capella.test.transition.ju.transitions.CreateRule_FS2ES_01;
 import org.polarsys.capella.test.transition.ju.transitions.CreateRule_FS2ES_02;
@@ -167,6 +168,7 @@ public class TransitionsTestSuite extends BasicTestSuite {
     tests.add(new CreateRule_ES2ES_03());
     tests.add(new CreateRule_ES2ES_04());
     tests.add(new CreateRule_ES2IS_01());
+    tests.add(new CreateRule_ES2IS_02());
     tests.add(new CreateRule_ESF2ESB_01());
     tests.add(new CreateRule_FS2ES_01());
     tests.add(new CreateRule_FS2ES_02());
