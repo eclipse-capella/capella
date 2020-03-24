@@ -2907,7 +2907,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="DT_TitleBlockEdge" targetMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']" targetFinderExpression="service:computeTitleBlockElements(diagram)">
+        <edgeMappings name="DT_TitleBlockEdge" targetMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']" targetFinderExpression="service:getTitleBlocksForElement(diagram)">
           <sourceMapping xsi:type="description_1:ContainerMapping" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_Class']"/>
           <sourceMapping xsi:type="description_1:ContainerMapping" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_Collection']"/>
           <sourceMapping xsi:type="description_1:ContainerMapping" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_Enumeration']"/>
@@ -3421,24 +3421,24 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
         </containerMappings>
-        <containerMappings name="DT_TitleBlockContainer" preconditionExpression="service:isTitleBlockAllowed(containerView)" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='Delete%20Title%20Block']" semanticCandidatesExpression="aql:diagram.checkIsTitleBlockContainer()" domainClass="DAnnotation" childrenPresentation="VerticalStack">
-          <subContainerMappings name="DT_TitleBlockLineContainer" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='Delete%20Title%20Block']" semanticCandidatesExpression="feature:references" domainClass="DAnnotation" childrenPresentation="HorizontalStack">
-            <subContainerMappings name="DT_TitleBlockColumnContainer" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='Delete%20Title%20Block']" semanticCandidatesExpression="feature:references" domainClass="DAnnotation" childrenPresentation="List">
-              <subNodeMappings name="DT_TitleBlockCellNode" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='Delete%20Title%20Block']" semanticCandidatesExpression="aql:diagram.getTitleBlockCellContent(self, containerView)" domainClass="EObject">
+        <containerMappings name="DT_TitleBlockContainer" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='Delete%20Title%20Block%20Cell']" semanticCandidatesExpression="aql:diagram.getTitleBlocksInDiagram()" domainClass="DAnnotation" childrenPresentation="VerticalStack">
+          <subContainerMappings name="DT_TitleBlockLineContainer" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='Delete%20Title%20Block%20Cell']" semanticCandidatesExpression="feature:references" domainClass="DAnnotation" childrenPresentation="HorizontalStack">
+            <subContainerMappings name="DT_TitleBlockColumnContainer" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='Delete%20Title%20Block%20Cell']" semanticCandidatesExpression="feature:references" domainClass="DAnnotation" childrenPresentation="List">
+              <subNodeMappings name="DT_TitleBlockCellNode" semanticCandidatesExpression="aql:diagram.getTitleBlockCellContent(self, containerView)" domainClass="EObject">
                 <style xsi:type="style:SquareDescription" labelSize="7" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
                 </style>
-                <conditionnalStyles predicateExpression="service:isAnnotation()">
-                  <style xsi:type="style:SquareDescription" labelSize="7" showIcon="false" labelExpression="service:getCellLabel()" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+                <conditionnalStyles predicateExpression="service:isWrapperOfPrimitiveType()">
+                  <style xsi:type="style:SquareDescription" labelSize="7" showIcon="false" labelExpression="feature:value" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
                     <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                     <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                     <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
                   </style>
                 </conditionnalStyles>
               </subNodeMappings>
-              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:diagram.getTitleBlockCellLabel(self)" widthComputationExpression="10" heightComputationExpression="5" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_TitleBlock_Gray']">
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:self.getTitleBlockCellLabel()" widthComputationExpression="10" heightComputationExpression="5" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_TitleBlock_Gray']">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -4416,17 +4416,17 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" name="diagram.title.block" label="%common.cdb.diagram.title.block" precondition="aql:self.isDiagram()" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlock_16.gif">
+          <ownedTools xsi:type="tool_1:ToolDescription" name="diagram.title.block" label="%common.cdb.diagram.title.block" precondition="service:containerView.isValidCreateDiagramTitleBlock()" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlock_16.gif">
             <element name="container"/>
             <elementView name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:containerView">
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.createDiagramTitleBlock(diagram)"/>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.createDiagramTitleBlock()"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:ToolGroup" name="ElementTitleBlock">
-            <tools xsi:type="tool_1:ToolDescription" name="element.title.block" label="%common.cdb.element.title.block" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlock_16.gif">
+            <tools xsi:type="tool_1:ToolDescription" name="element.title.block" label="%common.cdb.element.title.block" precondition="service:containerView.isValidCreateElementTitleBlock()" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlock_16.gif">
               <element name="container"/>
               <elementView name="containerView"/>
               <initialOperation>
@@ -4435,39 +4435,39 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ToolDescription" name="element.title.block.line" label="%common.cdb.element.title.block.line" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlockLine_16.gif">
+            <tools xsi:type="tool_1:ToolDescription" name="element.title.block.line" label="%common.cdb.element.title.block.line" precondition="service:containerView.isValidInsertLineOrColumn()" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlockLine_16.gif">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.createTitleBlockLine(diagram)"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.insertTitleBlockLine(diagram)"/>
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ToolDescription" name="element.title.block.column" label="%common.cdb.element.title.block.column" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlockColumn_16.gif">
+            <tools xsi:type="tool_1:ToolDescription" name="element.title.block.column" label="%common.cdb.element.title.block.column" precondition="service:containerView.isValidInsertLineOrColumn()" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlockColumn_16.gif">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.createTitleBlockColumn(diagram)"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.insertTitleBlockColumn(diagram)"/>
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ToolDescription" name="remove.element.title.block.line" label="%common.cdb.remove.element.title.block.line" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlockLineRemove_16.gif">
+            <tools xsi:type="tool_1:ToolDescription" name="remove.element.title.block.line" label="%common.cdb.remove.element.title.block.line" precondition="service:containerView.isValidRemoveLineOfElementTitleBlock()" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlockLineRemove_16.gif">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.clearLineEAnnotation(diagram)"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.removeLineOfTitleBlock(diagram)"/>
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ToolDescription" name="remove.element.title.block.column" label="%common.cdb.remove.element.title.block.column" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlockColumnRemove_16.gif">
+            <tools xsi:type="tool_1:ToolDescription" name="remove.element.title.block.column" label="%common.cdb.remove.element.title.block.column" precondition="service:containerView.isValidRemoveColumnOfElementTitleBlock()" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlockColumnRemove_16.gif">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.clearColumnEAnnotation(diagram)"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.removeColumnOfTitleBlock(diagram)"/>
                 </firstModelOperations>
               </initialOperation>
             </tools>
@@ -4478,7 +4478,7 @@
             <containerView name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:element">
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.clearCell()"/>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.clearCellContent()"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -4490,7 +4490,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:element">
                 <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="deleteCapellaElement" forceRefresh="true" id="org.polarsys.capella.core.sirius.analysis.delete.CapellaDeleteExternalAction">
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:containerView">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.clearEAnnotations(element)"/>
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.deleteTitleBlock(element)"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -4696,10 +4696,10 @@
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView">
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectTitleBlocks" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
                     <parameters name="context" value="aql:elementView"/>
-                    <parameters name="scope" value="aql:elementView.getAvailableDiagramTitleBlocksToInsert()"/>
+                    <parameters name="scope" value="aql:elementView.getDiagramTitleBlocks()"/>
                     <parameters name="resultVariable" value="selectedTitleBlocks"/>
                     <parameters name="wizardMessage" value="aql:'Select Values to show in ' + element.name + '.'"/>
-                    <parameters name="initialSelection" value="aql:self.void2Null(elementView.getInitialSelectionOfShowHideDiagramTitleBlocks())"/>
+                    <parameters name="initialSelection" value="aql:self.void2Null(elementView.getVisibleDiagramTitleBlocks())"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (selectedTitleBlocks = 'WIZARD_CANCELED')">
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.showHideDiagramTitleBlocks(selectedTitleBlocks,diagram)"/>
@@ -4717,10 +4717,10 @@
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView">
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectTitleBlocks" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
                     <parameters name="context" value="aql:elementView"/>
-                    <parameters name="scope" value="aql:elementView.getAvailableElementTitleBlocksToInsert()"/>
+                    <parameters name="scope" value="aql:elementView.getElementTitleBlocks()"/>
                     <parameters name="resultVariable" value="selectedTitleBlocks"/>
                     <parameters name="wizardMessage" value="aql:'Select Values to show in ' + element.name + '.'"/>
-                    <parameters name="initialSelection" value="aql:self.void2Null(elementView.getInitialSelectionOfShowHideElementTitleBlocks())"/>
+                    <parameters name="initialSelection" value="aql:self.void2Null(elementView.getVisibleElementTitleBlocks())"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (selectedTitleBlocks = 'WIZARD_CANCELED')">
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.showHideElementTitleBlocks(selectedTitleBlocks,diagram)"/>

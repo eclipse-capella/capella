@@ -27,7 +27,7 @@ import org.polarsys.capella.core.ui.properties.sections.AbstractSection;
  * The PropertyValueGroup section.
  */
 public class TitleBlockCellSection extends AbstractSection {
-  private static final String CELL_PREFIX = "TB";
+  private static final String CELL_PREFIX = "TB_CELL";
   private static final String CELL_NAME = "Name:";
   private static final String CELL_CONTENT = "Content:";
   protected TitleBlockBasicElementGroup titleBlockBasicElementGroup;
@@ -40,6 +40,7 @@ public class TitleBlockCellSection extends AbstractSection {
     EObject eObjectToTest = super.selection(toTest);
 
     return ((eObjectToTest != null) && (eObjectToTest instanceof DAnnotation)
+        && ((DAnnotation) eObjectToTest).getSource() != null
         && ((DAnnotation) eObjectToTest).getSource().startsWith(CELL_PREFIX));
   }
 

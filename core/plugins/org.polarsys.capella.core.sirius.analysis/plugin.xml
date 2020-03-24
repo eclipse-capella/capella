@@ -627,4 +627,7 @@
        </enabledWhen>
     </page>
  </extension>
+ <extension id="org.polarsys.capella.core.sirius.analysis.CapellaInterpreter" point="org.eclipse.sirius.common.expressionInterpreter">
+    <expressionInterpreterProvider interpreterProviderClass="org.polarsys.capella.core.sirius.analysis.CapellaInterpreter" />
+ </extension>
 </plugin>
