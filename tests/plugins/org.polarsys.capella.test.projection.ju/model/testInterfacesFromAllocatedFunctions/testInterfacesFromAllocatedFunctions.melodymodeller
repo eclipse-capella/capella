@@ -1558,13 +1558,13 @@
           <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
               id="c669a60b-ee02-4fb7-998b-95324e8a146e" name="test9.1" nature="BEHAVIOR">
             <ownedFeatures xsi:type="org.polarsys.capella.core.data.fa:ComponentPort"
-                id="f999156c-205f-45ac-b848-0c0334c679a7" name="CP 1" providedInterfaces="#7a4561f4-5da6-475f-8136-1e1ee6798ca9"
+                id="f999156c-205f-45ac-b848-0c0334c679a7" name="CP 1" requiredInterfaces="#7a4561f4-5da6-475f-8136-1e1ee6798ca9"
                 orientation="OUT" kind="FLOW"/>
           </ownedPhysicalComponents>
           <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
               id="055e80ae-c7d1-4c5a-9324-6765b17ad126" name="test9.2" nature="BEHAVIOR">
             <ownedFeatures xsi:type="org.polarsys.capella.core.data.fa:ComponentPort"
-                id="06bd33d5-74a1-4ac1-a1ba-0a235a397523" name="CP 1" requiredInterfaces="#7a4561f4-5da6-475f-8136-1e1ee6798ca9"
+                id="06bd33d5-74a1-4ac1-a1ba-0a235a397523" name="CP 1" providedInterfaces="#7a4561f4-5da6-475f-8136-1e1ee6798ca9"
                 orientation="IN" kind="FLOW"/>
           </ownedPhysicalComponents>
           <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"

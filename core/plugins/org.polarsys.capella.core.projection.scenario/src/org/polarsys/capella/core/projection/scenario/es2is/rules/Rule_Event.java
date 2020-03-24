@@ -28,7 +28,6 @@ import org.polarsys.capella.core.data.interaction.EventReceiptOperation;
 import org.polarsys.capella.core.data.interaction.EventSentOperation;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.projection.common.ProjectionMessages;
-import org.polarsys.capella.core.projection.interfaces.generateInterfaces.Rule_FunctionalExchange_Interface;
 import org.polarsys.capella.core.projection.scenario.common.rules.Rule_InteractionElement;
 import org.polarsys.capella.core.projection.scenario.helpers.ScenarioExt;
 import org.polarsys.capella.core.projection.scenario.helpers.UnwantedObjects;
@@ -45,12 +44,29 @@ public class Rule_Event extends Rule_InteractionElement {
   protected boolean transformIsRequired(EObject element_p, ITransfo transfo_p) {
     Event event = (Event) element_p;
 
-    if ((ScenarioExt.getOperation(event) != null) && (ScenarioExt.getExchangeItems(event).size() == 0)) {
+    AbstractEventOperation operation = ScenarioExt.getOperation(event);
+
+    if ((operation != null) && (ScenarioExt.getExchangeItems(event).size() == 0)) {
       return false;
-    }
-    if (UnwantedObjects.contains(element_p, transfo_p)) {
+
+    } else if (UnwantedObjects.contains(element_p, transfo_p)) {
       return false;
+
+    } else if (operation instanceof FunctionalExchange) {
+      Interface itf = (Interface) Query.retrieveFirstTransformedElement(operation, _transfo,
+          CsPackage.Literals.INTERFACE);
+      if (itf == null) {
+        return false;
+      }
+
+    } else if (operation instanceof ComponentExchange) {
+      Interface itf = (Interface) Query.retrieveFirstTransformedElement(operation, _transfo,
+          CsPackage.Literals.INTERFACE);
+      if (itf == null) {
+        return false;
+      }
     }
+
     return true;
   }
 
@@ -58,14 +74,21 @@ public class Rule_Event extends Rule_InteractionElement {
   protected String reasonTransformFailed(EObject element_p, ITransfo transfo_p) {
     Event event = (Event) element_p;
     AbstractEventOperation operation = ScenarioExt.getOperation(event);
-    if (operation != null) {
-      if (operation instanceof ComponentExchange) {
-        return ProjectionMessages.RelatedConnectionConveyNoExchangeItem;
-
-      } else if (operation instanceof FunctionalExchange) {
-        return ProjectionMessages.RelatedFunctionalExchangeConveyNoExchangeItem;
-
+    if (operation instanceof FunctionalExchange) {
+      Interface itf = (Interface) Query.retrieveFirstTransformedElement(operation, _transfo,
+          CsPackage.Literals.INTERFACE);
+      if (itf == null) {
+        return ProjectionMessages.RelatedFunctionalExchangeConveyNoInterface;
       }
+      return ProjectionMessages.RelatedFunctionalExchangeConveyNoExchangeItem;
+
+    } else if (operation instanceof ComponentExchange) {
+      Interface itf = (Interface) Query.retrieveFirstTransformedElement(operation, _transfo,
+          CsPackage.Literals.INTERFACE);
+      if (itf == null) {
+        return ProjectionMessages.RelatedComponentExchangeConveyNoInterface;
+      }
+      return ProjectionMessages.RelatedComponentExchangeConveyNoExchangeItem;
     }
     return ICommonConstants.EMPTY_STRING;
   }
@@ -90,9 +113,11 @@ public class Rule_Event extends Rule_InteractionElement {
         EventSentOperation src = (EventSentOperation) element_p;
         EventSentOperation tgt = (EventSentOperation) obj;
         if (!items.isEmpty() && (src.getOperation() != null)) {
-          AbstractEventOperation operation = getRelatedExchangeItemAllocation(src.getOperation(), items.get(i), i, transfo_p);
+          AbstractEventOperation operation = getRelatedExchangeItemAllocation(src.getOperation(), items.get(i), i,
+              transfo_p);
           if (operation != null) {
-            TigerRelationshipHelper.attachElementByRel(tgt, operation, InteractionPackage.Literals.EVENT_SENT_OPERATION__OPERATION);
+            TigerRelationshipHelper.attachElementByRel(tgt, operation,
+                InteractionPackage.Literals.EVENT_SENT_OPERATION__OPERATION);
           }
         }
       }
@@ -100,15 +125,18 @@ public class Rule_Event extends Rule_InteractionElement {
         EventReceiptOperation src = (EventReceiptOperation) element_p;
         EventReceiptOperation tgt = (EventReceiptOperation) obj;
         if (!items.isEmpty() && (src.getOperation() != null)) {
-          AbstractEventOperation operation = getRelatedExchangeItemAllocation(src.getOperation(), items.get(i), i, transfo_p);
+          AbstractEventOperation operation = getRelatedExchangeItemAllocation(src.getOperation(), items.get(i), i,
+              transfo_p);
           if (operation != null) {
-            TigerRelationshipHelper.attachElementByRel(tgt, operation, InteractionPackage.Literals.EVENT_RECEIPT_OPERATION__OPERATION);
+            TigerRelationshipHelper.attachElementByRel(tgt, operation,
+                InteractionPackage.Literals.EVENT_RECEIPT_OPERATION__OPERATION);
           }
         }
       }
       i++;
     }
-    TigerRelationshipHelper.attachUnattachedIntoTransformedContainer(element_p, getTargetType(), InteractionPackage.Literals.SCENARIO__OWNED_EVENTS, transfo_p);
+    TigerRelationshipHelper.attachUnattachedIntoTransformedContainer(element_p, getTargetType(),
+        InteractionPackage.Literals.SCENARIO__OWNED_EVENTS, transfo_p);
 
   }
 
@@ -116,12 +144,13 @@ public class Rule_Event extends Rule_InteractionElement {
    * @param operation_p
    * @return
    */
-  private AbstractEventOperation getRelatedExchangeItemAllocation(AbstractEventOperation operation_p, ExchangeItem item, int n, ITransfo transfo) {
+  private AbstractEventOperation getRelatedExchangeItemAllocation(AbstractEventOperation operation_p, ExchangeItem item,
+      int n, ITransfo transfo) {
 
     Interface itf = null;
 
-    if (operation_p instanceof FunctionalExchange){
-      itf = Rule_FunctionalExchange_Interface.getInterface(((FunctionalExchange)operation_p), transfo);
+    if (operation_p instanceof FunctionalExchange) {
+      itf = (Interface) Query.retrieveFirstTransformedElement(operation_p, _transfo, CsPackage.Literals.INTERFACE);
     } else {
       itf = (Interface) Query.retrieveFirstTransformedElement(operation_p, _transfo, CsPackage.Literals.INTERFACE);
     }
@@ -153,7 +182,7 @@ public class Rule_Event extends Rule_InteractionElement {
     for (ExchangeItem exchangeItem : eis) {
       Event end = (Event) pkg.getEFactoryInstance().create(element_p.eClass());
       result.add(end);
-      //end.setName(element_p.eClass().getName()+": "+exchangeItem.getName()+" ("+(i++)+")"); //$NON-NLS-1$
+      // end.setName(element_p.eClass().getName()+": "+exchangeItem.getName()+" ("+(i++)+")"); //$NON-NLS-1$
     }
     return result;
   }

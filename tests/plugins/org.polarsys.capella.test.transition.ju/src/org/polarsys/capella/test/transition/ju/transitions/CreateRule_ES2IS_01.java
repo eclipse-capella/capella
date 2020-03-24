@@ -154,8 +154,8 @@ public class CreateRule_ES2IS_01 extends TopDownTransitionTestCase {
     // Two message with exchanges items for a functional exchange
     List<EObject> a4t = mustBeMultiTransitioned(id_sm17, 2);
 
-    // Message with event should be inverted
-    assertTrue(NLS.bind("Message ''{0}'' should be inverted", EObjectLabelProviderHelper.getText(a4t.get(0))),
+    // Message with event should not be inverted
+    assertFalse(NLS.bind("Message ''{0}'' should be inverted", EObjectLabelProviderHelper.getText(a4t.get(0))),
         ((SequenceMessage) a4t.get(0)).getSendingEnd().getCovered() != ((SequenceMessage) a4t.get(1)).getSendingEnd()
             .getCovered());
 
