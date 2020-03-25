@@ -11,8 +11,8 @@
 package org.polarsys.capella.core.ui.search.searchfor;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.Arrays;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -147,8 +147,11 @@ public class CapellaLeftSearchForContainerArea extends AbstractCapellaSearchForC
   @Override
   protected void createContentArea() {
     super.createContentArea();
-    List<String> fixedCategories = Arrays.asList(CapellaSearchConstants.ModelElements_Key,
-        CapellaSearchConstants.DiagramElements_Key);
+    // Map of fix categories and their index
+    Map<String, Integer> fixedCategories = new HashMap<>();
+    fixedCategories.put(CapellaSearchConstants.ModelElements_Key, 0);
+    fixedCategories.put(CapellaSearchConstants.DiagramElements_Key, 1);
+    
     filteredTree.getViewer().setComparator(new ViewerComparator() {
       @Override
       public int compare(Viewer viewer, Object e1, Object e2) {
@@ -157,11 +160,11 @@ public class CapellaLeftSearchForContainerArea extends AbstractCapellaSearchForC
         } else if (e1 instanceof String && e2 instanceof String) {
           String category1 = (String) e1;
           String category2 = (String) e2;
-          if (fixedCategories.contains(category1) && fixedCategories.contains(category2)) {
-            return fixedCategories.indexOf(category1) < fixedCategories.indexOf(category2) ? -1 : 1;
-          } else if (fixedCategories.contains(category1)) {
+          if (fixedCategories.containsKey(category1) && fixedCategories.containsKey(category2)) {
+            return fixedCategories.get(category1) < fixedCategories.get(category2) ? -1 : 1;
+          } else if (fixedCategories.containsKey(category1)) {
             return -1;
-          } else if (fixedCategories.contains(category2)) {
+          } else if (fixedCategories.containsKey(category2)) {
             return 1;
           }
           return category1.compareTo(category2);

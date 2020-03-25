@@ -10,8 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.ui.search.searchfor;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -31,13 +31,16 @@ import org.polarsys.capella.core.ui.search.searchfor.item.SearchForItem;
 
 public class CapellaRightSearchForContainerArea extends AbstractCapellaSearchForContainerArea {
   protected AbstractSearchForContentProvider partictipantsItemProvider;
-  // Attributes that should be on the top of attribute list
-  private List<EAttribute> topAttributes = Arrays.asList(ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME,
-      CapellacorePackage.Literals.CAPELLA_ELEMENT__SUMMARY, CapellacorePackage.Literals.CAPELLA_ELEMENT__DESCRIPTION);
+  // Map of attributes that should be on the top of attribute list and their index
+  private Map<EAttribute, Integer> topAttributes;
 
   public CapellaRightSearchForContainerArea(Group parent, AbstractCapellaSearchForContainerArea leftArea,
       CapellaSearchPage searchPage) {
     super(parent, leftArea, searchPage);
+    topAttributes = new HashMap<>();
+    topAttributes.put(ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME, 0);
+    topAttributes.put(CapellacorePackage.Literals.CAPELLA_ELEMENT__SUMMARY, 1);
+    topAttributes.put(CapellacorePackage.Literals.CAPELLA_ELEMENT__DESCRIPTION, 2);
   }
 
   @Override
@@ -66,11 +69,10 @@ public class CapellaRightSearchForContainerArea extends AbstractCapellaSearchFor
         if (e1 instanceof SearchForAttributeItem && e2 instanceof SearchForAttributeItem) {
           SearchForAttributeItem item1 = (SearchForAttributeItem) e1;
           SearchForAttributeItem item2 = (SearchForAttributeItem) e2;
-          Optional<EAttribute> item1TopAttribute = topAttributes.stream().filter(item1::represent).findAny();
-          Optional<EAttribute> item2TopAttribute = topAttributes.stream().filter(item2::represent).findAny();
+          Optional<EAttribute> item1TopAttribute = topAttributes.keySet().stream().filter(item1::represent).findAny();
+          Optional<EAttribute> item2TopAttribute = topAttributes.keySet().stream().filter(item2::represent).findAny();
           if (item1TopAttribute.isPresent() && item2TopAttribute.isPresent()) {
-            return topAttributes.indexOf(item1TopAttribute.get()) < topAttributes.indexOf(item2TopAttribute.get()) ? -1
-                : 1;
+            return topAttributes.get(item1TopAttribute.get()) < topAttributes.get(item2TopAttribute.get()) ? -1 : 1;
           } else if (item1TopAttribute.isPresent()) {
             return -1;
           } else if (item2TopAttribute.isPresent()) {
@@ -102,7 +104,7 @@ public class CapellaRightSearchForContainerArea extends AbstractCapellaSearchFor
   public void applyDefaultSearchSettings() {
     Set<Object> topAttributeItems = SearchForItemCache.getInstance().getAttributeItems().stream()
         .filter(SearchForAttributeItem.class::isInstance).map(SearchForAttributeItem.class::cast)
-        .filter(item -> topAttributes.stream().anyMatch(item::represent)).collect(Collectors.toSet());
+        .filter(item -> topAttributes.keySet().stream().anyMatch(item::represent)).collect(Collectors.toSet());
     filteredTree.getCheckboxTreeViewer().setCheckedElements(topAttributeItems.toArray());
     updateSearchSettings();
   }

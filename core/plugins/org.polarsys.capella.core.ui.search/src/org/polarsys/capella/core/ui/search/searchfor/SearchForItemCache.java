@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -36,6 +37,7 @@ import org.polarsys.capella.core.ui.search.searchfor.item.SearchForNoteItem;
 import org.polarsys.kitalpha.ad.common.utils.URIHelper;
 import org.polarsys.kitalpha.ad.services.manager.ViewpointManager;
 import org.polarsys.kitalpha.ad.viewpoint.coredomain.viewpoint.model.Viewpoint;
+import org.polarsys.kitalpha.resourcereuse.model.Resource;
 
 /**
  * 
@@ -43,7 +45,7 @@ import org.polarsys.kitalpha.ad.viewpoint.coredomain.viewpoint.model.Viewpoint;
  */
 public class SearchForItemCache {
   private Map<String, SearchForClassItem> classID2ClassItemMap;
-  private Map<String, SearchForClassItem> classID2DiagItemMap;
+  private Map<String, SearchForClassItem> classID2DiagCategoryItemMap;
   private Map<String, SearchForAttributeItem> attributeName2AttributeItemMap;
   private Set<Viewpoint> viewpoints;
   private Map<String, Viewpoint> classID2ViewpointMap;
@@ -52,7 +54,7 @@ public class SearchForItemCache {
 
   private SearchForItemCache() {
     classID2ClassItemMap = new HashMap<>();
-    classID2DiagItemMap = new HashMap<>();
+    classID2DiagCategoryItemMap = new HashMap<>();
     attributeName2AttributeItemMap = new HashMap<>();
     viewpoints = new HashSet<>();
     classID2ViewpointMap = new HashMap<>();
@@ -61,12 +63,12 @@ public class SearchForItemCache {
     initViewpointElements();
     
     initAttributes(classID2ClassItemMap);
-    initAttributes(classID2DiagItemMap);
+    initAttributes(classID2DiagCategoryItemMap);
   }
 
   private void initViewpointElements() {
     ResourceSet set = new ResourceSetImpl();
-    for (org.polarsys.kitalpha.resourcereuse.model.Resource res : ViewpointManager.getAvailableViewpoints()) {
+    for (Resource res : ViewpointManager.getAvailableViewpoints()) {
       URI uri = URIHelper.createURI(res);
       Viewpoint vp = (Viewpoint) set.getEObject(uri, true);
       viewpoints.add(vp);
@@ -103,8 +105,8 @@ public class SearchForItemCache {
     SearchForDiagramItem diagramItem = new SearchForDiagramItem(
         ViewpointPackage.eINSTANCE.getDRepresentationDescriptor());
     SearchForNoteItem noteItem = new SearchForNoteItem(NotationPackage.eINSTANCE.getShape());
-    classID2DiagItemMap.put(diagramItem.getUniqueID(), diagramItem);
-    classID2DiagItemMap.put(noteItem.getUniqueID(), noteItem);
+    classID2DiagCategoryItemMap.put(diagramItem.getUniqueID(), diagramItem);
+    classID2DiagCategoryItemMap.put(noteItem.getUniqueID(), noteItem);
   }
 
   private void initAttributes(Map<String, SearchForClassItem> classifiers) {
@@ -135,7 +137,7 @@ public class SearchForItemCache {
   }
 
   public Set<SearchForItem> getDiagramItems() {
-    return new HashSet<>(classID2DiagItemMap.values());
+    return new HashSet<>(classID2DiagCategoryItemMap.values());
   }
 
   public Set<SearchForItem> getClassItems() {
@@ -154,14 +156,15 @@ public class SearchForItemCache {
   public Set<SearchForItem> getAddonItems(Viewpoint vp) {
     Set<String> vpClasses = classID2ViewpointMap.keySet().stream().filter(cls -> classID2ViewpointMap.get(cls) == vp)
         .collect(Collectors.toSet());
-    return classID2ClassItemMap.keySet().stream().filter(vpClasses::contains)
-        .map(cls -> classID2ClassItemMap.get(cls)).collect(Collectors.toSet());
+
+    return vpClasses.stream().map(cls -> classID2ClassItemMap.get(cls)).filter(Objects::nonNull)
+        .collect(Collectors.toSet());
   }
 
   public Object getClassItem(String name) {
     Object eCls = classID2ClassItemMap.get(name);
     if (eCls == null) {
-      eCls = classID2DiagItemMap.get(name);
+      eCls = classID2DiagCategoryItemMap.get(name);
     }
     return eCls;
   }
