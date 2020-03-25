@@ -16,7 +16,7 @@
 	<parent>
 		<groupId>org.polarsys</groupId>
 		<artifactId>org.polarsys.capella.tests.plugins</artifactId>
-		<version>1.4.0-SNAPSHOT</version>
+		<version>1.4.1-SNAPSHOT</version>
 	</parent>
 	<groupId>org.polarsys</groupId>
 	<artifactId>org.polarsys.capella.test.rcptt</artifactId>

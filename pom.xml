@@ -16,7 +16,7 @@
 	<name>Capella</name>
 	<groupId>org.polarsys</groupId>
 	<artifactId>org.polarsys.capella</artifactId>
-	<version>1.4.0-SNAPSHOT</version>
+	<version>1.4.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -78,7 +78,7 @@
 						<artifact>
 							<groupId>org.polarsys</groupId>
 							<artifactId>org.polarsys.capella</artifactId>
-							<version>1.4.0-SNAPSHOT</version>
+							<version>1.4.1-SNAPSHOT</version>
 							<classifier>releng/plugins/org.polarsys.capella.targets/${target-platform-path}/capella.target-definition</classifier>
 						</artifact>
 					</target>
