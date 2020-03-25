@@ -17,10 +17,14 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.preferences.DefaultScope;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
+import org.eclipse.gmf.runtime.notation.JumpLinkStatus;
+import org.eclipse.gmf.runtime.notation.JumpLinkType;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.common.tools.api.constant.CommonPreferencesConstants;
 import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
 import org.eclipse.sirius.common.ui.SiriusTransPlugin;
+import org.eclipse.sirius.diagram.DiagramPlugin;
+import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramCorePreferences;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.ui.IWorkbenchPreferenceConstants;
@@ -92,38 +96,61 @@ public class SiriusCustomizationPlugin extends AbstractUIPlugin {
 
   private void customizeSiriusDefaultPreferences() {
     // ----------------
+    
     // Preference customization for plugin "org.eclipse.sirius"
-    IEclipsePreferences defaultScope = DefaultScope.INSTANCE.getNode(org.eclipse.sirius.viewpoint.SiriusPlugin.ID);
+    IEclipsePreferences siriusPreferences = DefaultScope.INSTANCE.getNode(org.eclipse.sirius.viewpoint.SiriusPlugin.ID);
+    
     // Allow by default aird fragment with no representation creation
-    defaultScope.putBoolean(SiriusPreferencesKeys.PREF_EMPTY_AIRD_FRAGMENT_ON_CONTROL.name(), true);
+    siriusPreferences.putBoolean(SiriusPreferencesKeys.PREF_EMPTY_AIRD_FRAGMENT_ON_CONTROL.name(), true);
 
     // Re-apply command line customizations
-    applyCommandLineCustomizations(defaultScope);
+    applyCommandLineCustomizations(siriusPreferences);
 
     // ----------------
+    
     // Preference customization for plugin "org.eclipse.sirius.common.ui"
-    defaultScope = DefaultScope.INSTANCE.getNode(SiriusTransPlugin.PLUGIN_ID);
+    IEclipsePreferences transPreferences = DefaultScope.INSTANCE.getNode(SiriusTransPlugin.PLUGIN_ID);
+    
     // Disable Sirius Pre-commit listener behavior since Capella has the same one.
-    defaultScope.putBoolean(CommonPreferencesConstants.PREF_DEFENSIVE_EDIT_VALIDATION, false);
+    transPreferences.putBoolean(CommonPreferencesConstants.PREF_DEFENSIVE_EDIT_VALIDATION, false);
 
     // Re-apply command line customizations
-    applyCommandLineCustomizations(defaultScope);
+    applyCommandLineCustomizations(transPreferences);
 
     // ----------------
+    
     // Preference customization for plugin "org.eclipse.sirius.ui"
-    defaultScope = DefaultScope.INSTANCE.getNode(SiriusEditPlugin.ID);
+    IEclipsePreferences editPreferences = DefaultScope.INSTANCE.getNode(SiriusEditPlugin.ID);
     // Required since Sirius 5.1 since default behavior is not welcome
-    defaultScope.putBoolean(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name(), false);
-    defaultScope.putBoolean(SiriusUIPreferencesKeys.PREF_RELOAD_ON_LAST_EDITOR_CLOSE.name(), false);
+    editPreferences.putBoolean(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name(), false);
+    editPreferences.putBoolean(SiriusUIPreferencesKeys.PREF_RELOAD_ON_LAST_EDITOR_CLOSE.name(), false);
 
     // Set the default Sirius scale option (20%).
-    defaultScope.putInt(SiriusUIPreferencesKeys.PREF_SCALE_LEVEL_DIAGRAMS_ON_EXPORT.name(), 2);
+    editPreferences.putInt(SiriusUIPreferencesKeys.PREF_SCALE_LEVEL_DIAGRAMS_ON_EXPORT.name(), 2);
 
     // Don't use colors from odesign in diagram palettes
-    defaultScope.putBoolean(SiriusUIPreferencesKeys.PREF_DISPLAY_VSM_USER_FIXED_COLOR_IN_PALETTE.name(), false);
+    editPreferences.putBoolean(SiriusUIPreferencesKeys.PREF_DISPLAY_VSM_USER_FIXED_COLOR_IN_PALETTE.name(), false);
 
     // Re-apply command line customizations
-    applyCommandLineCustomizations(defaultScope);
+    applyCommandLineCustomizations(editPreferences);
+
+    // ----------------
+
+    // Preference customization for plugin "org.eclipse.sirius.diagram"
+    IEclipsePreferences diagramPreferences = DefaultScope.INSTANCE.getNode(DiagramPlugin.ID);
+
+    // By default override the Jump Link properties default values
+    diagramPreferences.putBoolean(SiriusDiagramCorePreferences.PREF_JUMP_LINK_ENABLE_OVERRIDE, true);
+    
+    // Set the jump link status as "Above"
+    diagramPreferences.putInt(SiriusDiagramCorePreferences.PREF_JUMP_LINK_STATUS, JumpLinkStatus.ABOVE);
+    
+    // Set the jump link type as "Tunnel"
+    diagramPreferences.putInt(SiriusDiagramCorePreferences.PREF_JUMP_LINK_TYPE, JumpLinkType.TUNNEL);
+    
+    // Re-apply command line customizations
+    applyCommandLineCustomizations(diagramPreferences);
+    
   }
 
   /**
