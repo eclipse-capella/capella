@@ -33,7 +33,8 @@ public class RefreshAirdCommandLine extends AbstractWorkbenchCommandLine {
   public RefreshAirdCommandLine() {
     super(true);
   }
-  
+
+  @Override
   protected IStatus executeWithinWorkbench() {
     List<IFile> airdFiles = getAirdFilesFromInput();
     for (IFile file : airdFiles) {
@@ -55,8 +56,12 @@ public class RefreshAirdCommandLine extends AbstractWorkbenchCommandLine {
           }
         }
       });
+
+      Session session = SessionManager.INSTANCE.getSession(EcoreUtil2.getURI(file), new NullProgressMonitor());
+      session.save(new NullProgressMonitor());
       job.schedule();
     }
     return Status.OK_STATUS;
   }
+
 }
