@@ -59,6 +59,11 @@ public class RefreshAirdCommandLine extends AbstractWorkbenchCommandLine {
 
       Session session = SessionManager.INSTANCE.getSession(EcoreUtil2.getURI(file), new NullProgressMonitor());
       session.save(new NullProgressMonitor());
+      try {
+        session.close(new NullProgressMonitor());
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
       job.schedule();
     }
     return Status.OK_STATUS;
