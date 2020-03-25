@@ -20,6 +20,7 @@ import org.polarsys.capella.core.model.semantic.SimplifiedCapellaMetadata;
 import org.polarsys.capella.core.ui.search.CapellaSearchConstants;
 import org.polarsys.capella.core.ui.search.searchfor.item.SearchForClassItem;
 import org.polarsys.capella.core.ui.search.searchfor.item.SearchForItem;
+import org.polarsys.kitalpha.ad.viewpoint.coredomain.viewpoint.model.Viewpoint;
 
 public class ClassContentProvider extends AbstractSearchForContentProvider {
   private boolean showAbstract = false;
@@ -28,8 +29,12 @@ public class ClassContentProvider extends AbstractSearchForContentProvider {
 
   public ClassContentProvider() {
     elements = new HashMap<>();
-    elements.put(CapellaSearchConstants.ModelElements_Key, SearchForItemCache.getInstance().getSearchForClassItems());
-    elements.put(CapellaSearchConstants.DiagramElements_Key, SearchForItemCache.getInstance().getSearchForDiagramItems());
+    elements.put(CapellaSearchConstants.ModelElements_Key, SearchForItemCache.getInstance().getCapellaClassItems());
+    elements.put(CapellaSearchConstants.DiagramElements_Key, SearchForItemCache.getInstance().getDiagramItems());
+    // load add-ons
+    for (Viewpoint vp : SearchForItemCache.getInstance().getViewpoints()) {
+      elements.put(vp.getName(), SearchForItemCache.getInstance().getAddonItems(vp));
+    }
   }
 
   @Override
