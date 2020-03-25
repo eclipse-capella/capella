@@ -12,7 +12,7 @@
 <feature
       id="org.polarsys.capella.core.git.feature"
       label="%featureName"
-      version="1.4.0.qualifier"
+      version="1.4.1.qualifier"
       provider-name="%providerName">
 
    <description url="http://www.example.com/description">
