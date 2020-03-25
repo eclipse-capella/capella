@@ -46,6 +46,7 @@ public class CapellaSearchConstants {
   public static final String SearchJob_Title = "Searching for pattern '%s'...";
   public static final String SelectAllButton_Name = "Select All";
   public static final String DeselectAllButton_Name = "Deselect All";
+  public static final String RestoreDefaultsButton_Name = "Restore Defaults";
   public static final String Filters_Label = "Filters";
   public static final String Abstract_Label = "Abstract";
   public static final String Semantic_Label = "Semantic";

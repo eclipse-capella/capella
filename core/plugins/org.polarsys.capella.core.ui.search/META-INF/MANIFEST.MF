@@ -31,7 +31,8 @@ Require-Bundle: org.eclipse.search,
  org.eclipse.sirius.ext.base,
  com.google.guava,
  org.eclipse.gmf.runtime.diagram.core,
- org.eclipse.gmf.runtime.diagram.ui
+ org.eclipse.gmf.runtime.diagram.ui,
+ org.polarsys.kitalpha.ad.services
 Export-Package: org.polarsys.capella.core.ui.search
  
 

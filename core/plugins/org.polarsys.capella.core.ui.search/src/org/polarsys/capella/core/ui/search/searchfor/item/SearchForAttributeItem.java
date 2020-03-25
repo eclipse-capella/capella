@@ -10,21 +10,21 @@
  *******************************************************************************/
 package org.polarsys.capella.core.ui.search.searchfor.item;
 
+import java.util.Collection;
 import java.util.HashSet;
-import java.util.Set;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.provider.EcoreEditPlugin;
 import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.swt.graphics.Image;
-
+@SuppressWarnings("rawtypes")
 public class SearchForAttributeItem implements SearchForItem {
-  // An attribute item can represent many attributes with the same name
-  private Set<Object> attributes;
+  private Object attribute;
 
   public SearchForAttributeItem() {
-    this.attributes = new HashSet<>();
+    // An attribute item can represent many EAttributes with the same name
+    this.attribute = new HashSet<>();
   }
 
   /**
@@ -33,16 +33,22 @@ public class SearchForAttributeItem implements SearchForItem {
    * @return the search text matched from this search item
    */
   public String getTextToSearch(EObject eObj) {
-    Object attribute = getAttributeFor(eObj);
-    if (attribute instanceof EAttribute) {
-      return (String) eObj.eGet((EAttribute) attribute);
+    Object att = getAttributeFor(eObj);
+    if (att instanceof EAttribute) {
+      return (String) eObj.eGet((EAttribute) att);
     }
     return null;
   }
 
   @Override
   public String getText() {
-    return ((EAttribute) attributes.iterator().next()).getName();
+    if (attribute instanceof Collection) {
+      Object anAttribute = ((Collection) attribute).iterator().next();
+      if (anAttribute instanceof EAttribute) {
+        return ((EAttribute) anAttribute).getName();
+      }
+    }
+    return null;
   }
 
   @Override
@@ -52,20 +58,26 @@ public class SearchForAttributeItem implements SearchForItem {
 
   @Override
   public Object getObject() {
-    return attributes;
-  }
-  
-  public void addAttribute(Object obj) {
-    attributes.add(obj);
+    return attribute;
   }
 
-  /**
-   * Check if this search item covers the input attribute
-   * 
-   * @param attribute
-   */
-  public boolean cover(Object attribute) {
-    return attributes.contains(attribute);
+  @SuppressWarnings("unchecked")
+  public void addAttribute(Object obj) {
+    if (attribute instanceof Collection) {
+      ((Collection) attribute).add(obj);
+    }
+  }
+
+  public boolean cover(Object object) {
+    return getAttributeFor(object) != null;
+  }
+  
+  
+  public boolean represent(Object att) {
+    if (attribute instanceof Collection) {
+      return ((Collection) attribute).contains(att);
+    }
+    return attribute == att;
   }
   
   /**
@@ -73,13 +85,14 @@ public class SearchForAttributeItem implements SearchForItem {
    * @param eObj
    * @return the attribute compatible with the eObj
    */
-  public Object getAttributeFor(EObject eObj) {
-    for (Object att : attributes) {
-      if (att instanceof EAttribute && eObj.eClass().getEAllAttributes().contains(att)) {
-        return att;
+  public Object getAttributeFor(Object obj) {
+    if (obj instanceof EObject && attribute instanceof Collection) {
+      for (Object att : ((Collection) attribute)) {
+        if (att instanceof EAttribute && ((EObject) obj).eClass().getEAllAttributes().contains(att)) {
+          return att;
+        }
       }
     }
     return null;
-  }
-  
+  }  
 }
