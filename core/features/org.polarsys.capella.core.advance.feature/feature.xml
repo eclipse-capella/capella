@@ -12,7 +12,7 @@
 <feature
       id="org.polarsys.capella.core.advance.feature"
       label="%featureName"
-      version="1.4.0.qualifier"
+      version="5.0.0.qualifier"
       provider-name="%providerName"
       plugin="org.polarsys.capella.core.platform.sirius.ui.perspective"
       image="Capella32x32.gif">

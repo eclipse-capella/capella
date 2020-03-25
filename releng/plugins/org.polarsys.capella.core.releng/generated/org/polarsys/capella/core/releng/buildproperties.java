@@ -1,4 +1,4 @@
-//Generated with EGF 1.4.1.v20161010-1511
+//Generated with EGF 5.0.0.v20161010-1511
 package org.polarsys.capella.core.releng;
 
 import org.eclipse.egf.common.helper.*;
