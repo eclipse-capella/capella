@@ -10,7 +10,9 @@
  *******************************************************************************/
 package org.polarsys.capella.core.ui.search.searchfor.item;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -20,6 +22,7 @@ import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.swt.graphics.Image;
 import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 import org.polarsys.capella.core.ui.search.searchfor.GetImagesFromEClassUtil;
+import org.polarsys.capella.core.ui.search.searchfor.ItemContributionManager;
 
 /**
  * 
@@ -51,7 +54,8 @@ public class SearchForClassItem implements SearchForItem {
     AdapterFactory adapterFactory = CapellaAdapterFactoryProvider.getInstance().getAdapterFactory();
     Image img = null;
     if (adapterFactory instanceof ComposedAdapterFactory) {
-      img = GetImagesFromEClassUtil.getInstance().getImageForEClass((EClass) obj, (ComposedAdapterFactory) adapterFactory);
+      img = GetImagesFromEClassUtil.getInstance().getImageForEClass((EClass) obj,
+          (ComposedAdapterFactory) adapterFactory);
     }
     return img;
   }
@@ -59,17 +63,30 @@ public class SearchForClassItem implements SearchForItem {
   public String getUniqueID() {
     return ((EClass) obj).getEPackage().getNsURI() + "/" + ((EClass) obj).getName();
   }
-  
+
   @Override
   public Object getObject() {
     return obj;
   }
-  
+
   /**
    * 
    * @return all the attributes of this class. Ideal place to plug extended attribute search
    */
   public List<Object> getAttributes() {
-    return ((EClass) obj).getEAllAttributes().stream().collect(Collectors.toList());
+    List<Object> attributes = ((EClass) obj).getEAllAttributes().stream().collect(Collectors.toList());
+    Set<SearchForAttributeItem> contributedAttributeItems = ItemContributionManager.getInstance()
+        .getContributedAttributeItems();
+    for (SearchForAttributeItem item : contributedAttributeItems) {
+      if (item.cover(obj)) {
+        Object attributeObj = item.getObject();
+        if (attributeObj instanceof Collection) {
+          attributes.addAll((Collection) attributeObj);
+        } else {
+          attributes.add(attributeObj);
+        }
+      }
+    }
+    return attributes;
   }
 }

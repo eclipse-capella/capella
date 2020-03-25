@@ -11,6 +11,7 @@
        Thales - initial API and implementation
 -->
 <plugin>
+   <extension-point id="AttributeItem" name="AttributeItem" schema="schema/AttributeItem.exsd"/>
    <extension
          point="org.eclipse.search.searchPages">
       <page

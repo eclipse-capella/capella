@@ -43,8 +43,9 @@ public class CapellaSearchResultLabelProvider extends LabelProvider {
   public String getText(Object element) {
     if (element instanceof CapellaSearchMatchEntry) {
       CapellaSearchMatchEntry capellaSearchMatchEntry = (CapellaSearchMatchEntry) element;
-      EAttribute attribute = (EAttribute) capellaSearchMatchEntry.getAttribute();
-      return attribute.getName() + ": " + capellaSearchMatchEntry.getText();
+      Object attribute = capellaSearchMatchEntry.getAttribute();
+      String attributeName = attribute instanceof String ? (String) attribute : ((EAttribute) attribute).getName();
+      return attributeName + ": " + capellaSearchMatchEntry.getText();
     } else if (element instanceof Shape && ViewType.NOTE.equals(((Shape) element).getType())) {
       return CapellaSearchConstants.Note_Label;
     }

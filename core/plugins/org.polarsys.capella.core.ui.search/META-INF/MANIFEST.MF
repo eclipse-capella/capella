@@ -33,6 +33,6 @@ Require-Bundle: org.eclipse.search,
  org.eclipse.gmf.runtime.diagram.core,
  org.eclipse.gmf.runtime.diagram.ui,
  org.polarsys.kitalpha.ad.services
-Export-Package: org.polarsys.capella.core.ui.search
- 
+Export-Package: org.polarsys.capella.core.ui.search,
+ org.polarsys.capella.core.ui.search.searchfor.item
 

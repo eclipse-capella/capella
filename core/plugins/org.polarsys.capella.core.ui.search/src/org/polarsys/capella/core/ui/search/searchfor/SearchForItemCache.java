@@ -49,7 +49,6 @@ public class SearchForItemCache {
   private Map<String, SearchForAttributeItem> attributeName2AttributeItemMap;
   private Set<Viewpoint> viewpoints;
   private Map<String, Viewpoint> classID2ViewpointMap;
-
   private static SearchForItemCache instance;
 
   private SearchForItemCache() {
@@ -61,7 +60,7 @@ public class SearchForItemCache {
     initModelElements();
     initDiagramElements();
     initViewpointElements();
-    
+
     initAttributes(classID2ClassItemMap);
     initAttributes(classID2DiagCategoryItemMap);
   }
@@ -86,7 +85,7 @@ public class SearchForItemCache {
       }
     }
   }
-  
+
   private void initModelElements() {
     for (String nsURI : EPackage.Registry.INSTANCE.keySet()) {
       if (nsURI.startsWith("http://www.polarsys.org/capella")) {
@@ -119,9 +118,14 @@ public class SearchForItemCache {
             continue;
           }
         }
-        SearchForAttributeItem attributeItem = new SearchForAttributeItem();
-        attributeItem.addAttribute(attribute);
-        SearchForItem currentAttributeItem = attributeName2AttributeItemMap.putIfAbsent(attributeItem.getText(), attributeItem);
+        SearchForAttributeItem attributeItem = ItemContributionManager.getInstance()
+            .getContributedAttributeItem(attribute);
+        if (attributeItem == null) {
+          attributeItem = new SearchForAttributeItem();
+          attributeItem.addAttribute(attribute);
+        }
+        SearchForItem currentAttributeItem = attributeName2AttributeItemMap.putIfAbsent(attributeItem.getText(),
+            attributeItem);
         if (currentAttributeItem instanceof SearchForAttributeItem) {
           ((SearchForAttributeItem) currentAttributeItem).addAttribute(attribute);
         }
@@ -169,7 +173,7 @@ public class SearchForItemCache {
     return eCls;
   }
 
-  public Object getAttribute(String attributeUniqueID) {
+  public SearchForAttributeItem getAttributeItem(String attributeUniqueID) {
     return attributeName2AttributeItemMap.get(attributeUniqueID);
   }
 
@@ -189,7 +193,7 @@ public class SearchForItemCache {
     }
     return attributeItems;
   }
-  
+
   public Set<Viewpoint> getViewpoints() {
     return viewpoints;
   }

@@ -13,14 +13,18 @@ package org.polarsys.capella.core.ui.search.searchfor.item;
 import java.util.Collection;
 import java.util.HashSet;
 
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.provider.EcoreEditPlugin;
+import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.swt.graphics.Image;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 @SuppressWarnings("rawtypes")
 public class SearchForAttributeItem implements SearchForItem {
-  private Object attribute;
+  protected Object attribute;
 
   public SearchForAttributeItem() {
     // An attribute item can represent many EAttributes with the same name
@@ -95,4 +99,17 @@ public class SearchForAttributeItem implements SearchForItem {
     }
     return null;
   }  
+  
+  /**
+   * 
+   * @param element
+   * @param newContent
+   * @return true if replaced, false otherwise
+   */
+  public boolean replace(EObject element, String newContent) {
+    TransactionalEditingDomain domain = TransactionHelper.getEditingDomain(element);
+    Command setCommand = SetCommand.create(domain, element, getAttributeFor(element), newContent);
+    domain.getCommandStack().execute(setCommand);
+    return true;
+  }
 }

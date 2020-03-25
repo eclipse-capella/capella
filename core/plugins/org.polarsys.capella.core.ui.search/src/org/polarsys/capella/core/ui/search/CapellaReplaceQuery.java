@@ -20,13 +20,11 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.SubMonitor;
-import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.edit.command.SetCommand;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.search.ui.text.Match;
-import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.core.ui.search.searchfor.SearchForItemCache;
+import org.polarsys.capella.core.ui.search.searchfor.item.SearchForAttributeItem;
 
 public class CapellaReplaceQuery {
 
@@ -74,21 +72,22 @@ public class CapellaReplaceQuery {
   }
   
   public void replace(CapellaSearchMatchEntry capellaMatch, Pattern searchPattern, String replacement) {
-    EAttribute attribute = (EAttribute) capellaMatch.getAttribute();
+    Object attribute = capellaMatch.getAttribute();
+    SearchForAttributeItem attributeItem = SearchForItemCache.getInstance()
+        .getAttributeItem(attribute instanceof String ? (String) attribute : ((EAttribute) attribute).getName());
 
     String oldLine = capellaMatch.getText();
     String newContent = searchPattern.matcher(oldLine).replaceAll(replacement);
 
-    if (attribute != null) {
+    if (attributeItem != null) {
       Object element = capellaMatch.getElement();
-
-      TransactionalEditingDomain domain = TransactionHelper.getEditingDomain((EObject) element);
-      Command setCommand = SetCommand.create(domain, element, attribute, newContent);
-      domain.getCommandStack().execute(setCommand);
-      capellaMatch.setText(newContent);
-      replacedProjects.add(capellaMatch.getProject());
-      replacedElements.add((EObject) element);
-      replacedOccurrenceCount += 1;
+      boolean replaced = attributeItem.replace((EObject) element, newContent);
+      if (replaced) {
+        capellaMatch.setText(newContent);
+        replacedProjects.add(capellaMatch.getProject());
+        replacedElements.add((EObject) element);
+        replacedOccurrenceCount += 1;
+      }
     }
   }
 

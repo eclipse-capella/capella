@@ -66,7 +66,7 @@ public abstract class AbstractCapellaHistory {
         int fieldsCount = searchHistorySection.getInt(SECTION_SEARCH_ATTRIBUTE_COUNT);
         for (int i = 0; i < fieldsCount; i++) {
           String searchFieldText = searchHistorySection.get(SECTION_SEARCH_ATTRIBUTE_PREFIX + i);
-          Object attribute = SearchForItemCache.getInstance().getAttribute(searchFieldText);
+          Object attribute = SearchForItemCache.getInstance().getAttributeItem(searchFieldText);
           if(attribute != null) {
             searchSettings.getSearchAttributeItems().add(attribute);
           }
