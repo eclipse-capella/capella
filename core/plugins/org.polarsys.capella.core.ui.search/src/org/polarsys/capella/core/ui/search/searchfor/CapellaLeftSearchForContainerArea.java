@@ -160,11 +160,13 @@ public class CapellaLeftSearchForContainerArea extends AbstractCapellaSearchForC
         } else if (e1 instanceof String && e2 instanceof String) {
           String category1 = (String) e1;
           String category2 = (String) e2;
-          if (fixedCategories.containsKey(category1) && fixedCategories.containsKey(category2)) {
-            return fixedCategories.get(category1) < fixedCategories.get(category2) ? -1 : 1;
-          } else if (fixedCategories.containsKey(category1)) {
+          Integer indexOfCategory1 = fixedCategories.get(category1);
+          Integer indexOfCategory2 = fixedCategories.get(category2);
+          if (indexOfCategory1 != null && indexOfCategory2 != null) {
+            return indexOfCategory1 < indexOfCategory2 ? -1 : 1;
+          } else if (indexOfCategory1 != null) {
             return -1;
-          } else if (fixedCategories.containsKey(category2)) {
+          } else if (indexOfCategory2 != null) {
             return 1;
           }
           return category1.compareTo(category2);
