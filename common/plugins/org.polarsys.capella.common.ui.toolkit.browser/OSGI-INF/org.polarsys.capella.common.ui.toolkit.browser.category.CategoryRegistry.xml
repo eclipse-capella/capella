@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="org.polarsys.capella.common.ui.toolkit.browser.category.CategoryRegistry">
+   <service>
+      <provide interface="org.polarsys.capella.common.ui.toolkit.browser.category.ICategoryRegistry"/>
+   </service>
+   <reference bind="addEditableQuery" cardinality="0..n" interface="org.polarsys.capella.common.ui.IEditableQuery" name="EditableQuery"/>
+   <reference bind="addQuery" cardinality="0..n" interface="org.polarsys.capella.common.helpers.query.IQuery" name="Query"/>
+   <implementation class="org.polarsys.capella.common.ui.toolkit.browser.category.CategoryRegistry"/>
+</scr:component>

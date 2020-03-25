@@ -45,4 +45,7 @@ Export-Package: org.polarsys.capella.core.sirius.ui,
  org.polarsys.capella.core.sirius.ui.wizard
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.polarsys.capella.core.sirius.ui.SiriusUIPlugin
+Service-Component: OSGI-INF/org.polarsys.capella.core.sirius.ui.queries.NameQuery.xml,
+ OSGI-INF/org.polarsys.capella.core.sirius.ui.queries.NameQuery2.xml,
+ OSGI-INF/org.polarsys.capella.core.sirius.ui.queries.NameQuery3.xml
 

@@ -161,6 +161,7 @@
         <module>org.polarsys.capella.core.data.migration</module>
         <module>org.polarsys.capella.core.explorer.activity.ui</module>
         <module>org.polarsys.capella.core.explorer.activity.ui.richtext</module>
+        <module>org.polarsys.capella.ext.query</module>
       </modules>
     </profile>
    </profiles>

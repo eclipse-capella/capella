@@ -16,3 +16,8 @@ Export-Package: org.polarsys.capella.core.semantic.queries,
  org.polarsys.capella.core.semantic.queries.basic.queries.utils
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Localization: plugin
+Service-Component: OSGI-INF/org.polarsys.capella.core.semantic.queries.basic.queries.AbstractCapability_refiningAbstractCapabilities.xml,
+ OSGI-INF/org.polarsys.capella.core.semantic.queries.basic.queries.AbstractCapability_refinedAbstractCapabilities.xml,
+ OSGI-INF/org.polarsys.capella.core.semantic.queries.basic.queries.AbstractCapabilityInvolvedFunctionalChains.xml,
+ OSGI-INF/org.polarsys.capella.core.semantic.queries.basic.queries.AbstractCapabilityOwnedFunctionalChains.xml,
+ OSGI-INF/org.polarsys.capella.core.semantic.queries.basic.queries.AbstractCapabilityInvolvedFunctions.xml

@@ -22,14 +22,23 @@ import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.emf.ecore.EObject;
+import org.osgi.framework.BundleContext;
+import org.osgi.framework.FrameworkUtil;
+import org.osgi.framework.ServiceReference;
+import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.component.annotations.ReferenceCardinality;
+import org.polarsys.capella.common.helpers.query.IQuery;
 import org.polarsys.capella.common.mdsofa.common.misc.ExtensionClassDescriptor;
+import org.polarsys.capella.common.ui.IEditableQuery;
 import org.polarsys.capella.common.ui.toolkit.browser.BrowserActivator;
 import org.polarsys.capella.common.ui.toolkit.browser.content.provider.IBrowserContentProvider;
 
 /**
  * Category Registry. Responsibility of initialize and cache all categories on loading. Gathering categories in session.
  */
-public class CategoryRegistry {
+@Component
+public class CategoryRegistry implements ICategoryRegistry {
 
   private static final String CONTENT_PROVIDER_CATEGORY = Messages.getString("CategoryRegistry.ContentProvider"); //$NON-NLS-1$
 
@@ -37,6 +46,20 @@ public class CategoryRegistry {
 
   protected List<ICategory> categoriesCache;
 
+  static List<IEditableQuery> editableQueries = new ArrayList<IEditableQuery>(); 
+
+  static List<IQuery> queries = new ArrayList<IQuery>(); 
+  
+  @Reference(cardinality = ReferenceCardinality.MULTIPLE)
+  public void addEditableQuery(IEditableQuery query) {
+    editableQueries.add(query);
+  }
+
+  @Reference(cardinality = ReferenceCardinality.MULTIPLE)
+  public void addQuery(IQuery query) {
+    queries.add(query);
+  }
+  
   /**
    * CategoryMap<Category Id, Category>
    */
@@ -48,7 +71,7 @@ public class CategoryRegistry {
 
   private Collection<ExtensionClassDescriptor> availableForTypeClassDescriptors;
 
-  private CategoryRegistry() {
+  public CategoryRegistry() {
     this.categoriesCache = new ArrayList<>();
 
     initRegistry();
@@ -74,6 +97,9 @@ public class CategoryRegistry {
         categories.add(category);
       }
     }
+    
+    System.out.println("Editable:"+editableQueries);
+    System.out.println("Query:"+queries);
     return categories;
   }
 
@@ -325,9 +351,10 @@ public class CategoryRegistry {
   }
 
   public static CategoryRegistry getInstance() {
-    if (categoryRegistry == null) {
-      categoryRegistry = new CategoryRegistry();
-    }
-    return categoryRegistry;
+    // Retrieve the CategoryRegistry instanciated by osgi and with queries available
+    BundleContext bundleContext = FrameworkUtil.getBundle(CategoryRegistry.class).getBundleContext();
+    ServiceReference<?> serviceReference = bundleContext.getServiceReference(ICategoryRegistry.class.getName());
+    ICategoryRegistry service = (ICategoryRegistry) bundleContext.getService(serviceReference);
+    return (CategoryRegistry) service;
   }
 }

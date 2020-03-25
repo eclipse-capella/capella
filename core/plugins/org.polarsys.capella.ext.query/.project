@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>org.polarsys.capella.core.semantic.queries</name>
+	<name>org.polarsys.capella.ext.query</name>
 	<comment></comment>
 	<projects>
 	</projects>

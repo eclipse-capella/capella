@@ -14,14 +14,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
-
+import org.osgi.service.component.annotations.Component;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
 import org.polarsys.capella.common.helpers.query.IQuery;
+import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.ISemanticEditingDomainProviders;
 
 /**
  * Return owned FunctinoalChains of current AbstractCapability
  */
+@Component
 public class AbstractCapabilityOwnedFunctionalChains implements IQuery {
 
   /**

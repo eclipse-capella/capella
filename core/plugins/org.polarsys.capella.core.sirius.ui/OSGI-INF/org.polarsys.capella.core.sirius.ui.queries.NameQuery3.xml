@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="org.polarsys.capella.core.sirius.ui.queries.NameQuery3">
+   <service>
+      <provide interface="org.polarsys.capella.common.ui.IEditableQuery"/>
+   </service>
+   <implementation class="org.polarsys.capella.core.sirius.ui.queries.NameQuery3"/>
+</scr:component>

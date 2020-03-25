@@ -209,7 +209,7 @@ public abstract class ElementDescriptionGroup {
         }
 
         /**
-         * @see org.polarsys.capella.common.tig.ef.command.AbstractCommand#getName()
+         * @see org.polarsys.capella.common.tig.ef.command.AbstractCommand#setName()
          */
         @Override
         public String getName() {

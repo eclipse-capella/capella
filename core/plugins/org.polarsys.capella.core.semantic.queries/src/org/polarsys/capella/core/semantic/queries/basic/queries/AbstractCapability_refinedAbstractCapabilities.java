@@ -17,13 +17,14 @@ import org.polarsys.capella.core.data.interaction.AbstractCapability;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.model.helpers.RefinementLinkExt;
+import org.osgi.service.component.annotations.Component;
 import org.polarsys.capella.common.helpers.query.IQuery;
 
 /**
  *
  */
+@Component
 public class AbstractCapability_refinedAbstractCapabilities implements IQuery {
-
 
   /**
    * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)

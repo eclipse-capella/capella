@@ -29,3 +29,5 @@ Export-Package: org.polarsys.capella.common.ui.toolkit.browser,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
+Import-Package: org.osgi.service.component.annotations;version="1.3.0"
+Service-Component: OSGI-INF/org.polarsys.capella.common.ui.toolkit.browser.category.CategoryRegistry.xml

@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
-
+import org.osgi.service.component.annotations.Component;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
 import org.polarsys.capella.core.data.interaction.AbstractFunctionAbstractCapabilityInvolvement;
@@ -24,6 +24,7 @@ import org.polarsys.capella.common.helpers.query.IQuery;
  * Return Involved Functions of current AbstractCapability
  *
  */
+@Component
 public class AbstractCapabilityInvolvedFunctions implements IQuery {
 
 

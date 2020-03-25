@@ -37,3 +37,4 @@ Export-Package: org.polarsys.capella.common.ui,
  org.polarsys.capella.common.ui.toolkit.widgets.handler
 Bundle-Activator: org.polarsys.capella.common.ui.MdeCommonUiActivator
 Bundle-Localization: plugin
+Import-Package: org.osgi.service.component.annotations;version="1.3.0"
