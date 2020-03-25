@@ -11,23 +11,16 @@
 package org.polarsys.capella.core.ui.search.searchfor;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.jface.layout.GridDataFactory;
 import org.eclipse.jface.layout.GridLayoutFactory;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.CheckboxTreeViewer;
 import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.jface.viewers.ViewerComparator;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
@@ -35,15 +28,12 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.PatternFilter;
 import org.eclipse.ui.progress.IProgressService;
-import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.ui.search.CapellaSearchConstants;
 import org.polarsys.capella.core.ui.search.CapellaSearchPage;
 import org.polarsys.capella.core.ui.search.CapellaSearchSettings;
-import org.polarsys.capella.core.ui.search.searchfor.item.SearchForClassItem;
-import org.polarsys.capella.core.ui.search.searchfor.item.SearchForItem;
 
 public class CapellaLeftSearchForContainerArea extends AbstractCapellaSearchForContainerArea {
-  protected AbstractSearchForContentProvider searchForContentProvider;
+  protected AbstractSearchForContentProvider partictipantsItemProvider;
   Button checkboxFilterAbstract;
   Button checkboxFilterSemantic;
 
@@ -53,10 +43,10 @@ public class CapellaLeftSearchForContainerArea extends AbstractCapellaSearchForC
 
   @Override
   protected AbstractSearchForContentProvider getSearchForContentProvider() {
-    if (searchForContentProvider == null) {
-      searchForContentProvider = new ClassContentProvider();
+    if (partictipantsItemProvider == null) {
+      partictipantsItemProvider = new ClassContentProvider();
     }
-    return searchForContentProvider;
+    return partictipantsItemProvider;
   }
 
   protected PatternFilter createPatternFilter() {
@@ -67,7 +57,7 @@ public class CapellaLeftSearchForContainerArea extends AbstractCapellaSearchForC
         if (parent != null) {
           if (parent.equals("")) {
             for (Object element : result) {
-              filter(viewer, element, searchForContentProvider.getChildren(element));
+              filter(viewer, element, partictipantsItemProvider.getChildren(element));
             }
           }
         }
@@ -142,63 +132,5 @@ public class CapellaLeftSearchForContainerArea extends AbstractCapellaSearchForC
     if (otherSideArea != null) {
       otherSideArea.filteredTree.getViewer().refresh();
     }
-  }
-
-  @Override
-  protected void createContentArea() {
-    super.createContentArea();
-    // Map of fix categories and their index
-    Map<String, Integer> fixedCategories = new HashMap<>();
-    fixedCategories.put(CapellaSearchConstants.ModelElements_Key, 0);
-    fixedCategories.put(CapellaSearchConstants.DiagramElements_Key, 1);
-    
-    filteredTree.getViewer().setComparator(new ViewerComparator() {
-      @Override
-      public int compare(Viewer viewer, Object e1, Object e2) {
-        if (e1 instanceof SearchForItem && e2 instanceof SearchForItem) {
-          return ((SearchForItem) e1).getText().compareTo(((SearchForItem) e2).getText());
-        } else if (e1 instanceof String && e2 instanceof String) {
-          String category1 = (String) e1;
-          String category2 = (String) e2;
-          Integer indexOfCategory1 = fixedCategories.get(category1);
-          Integer indexOfCategory2 = fixedCategories.get(category2);
-          if (indexOfCategory1 != null && indexOfCategory2 != null) {
-            return indexOfCategory1 < indexOfCategory2 ? -1 : 1;
-          } else if (indexOfCategory1 != null) {
-            return -1;
-          } else if (indexOfCategory2 != null) {
-            return 1;
-          }
-          return category1.compareTo(category2);
-        }
-        return 0;
-      }
-    });
-  }
-
-  @Override
-  protected SelectionListener getRestoreDefaultsSelectionListener() {
-    return new SelectionListener() {
-      @Override
-      public void widgetSelected(SelectionEvent e) {
-        applyDefaultSearchSettings();
-      }
-
-      @Override
-      public void widgetDefaultSelected(SelectionEvent e) {
-        widgetSelected(e);
-      }
-    };
-  }
-
-  @Override
-  public void applyDefaultSearchSettings() {
-    Set<Object> namedElementClasses = SearchForItemCache.getInstance().getClassItems().stream()
-        .filter(SearchForClassItem.class::isInstance).map(SearchForClassItem.class::cast)
-        .filter(item -> CapellacorePackage.Literals.NAMED_ELEMENT.isSuperTypeOf((EClass) item.getObject()))
-        .collect(Collectors.toSet());
-    filteredTree.getCheckboxTreeViewer().setCheckedElements(namedElementClasses.toArray());
-    updateSearchSettings();
-    refreshOtherSideArea();
   }
 }

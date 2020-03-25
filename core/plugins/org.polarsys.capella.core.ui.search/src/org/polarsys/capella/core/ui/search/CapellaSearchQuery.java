@@ -117,8 +117,7 @@ public class CapellaSearchQuery implements ISearchQuery {
   /**
    * 
    * @param pattern
-   * @param element
-   *          the entry point to launch the search
+   * @param element the entry point to launch the search
    * @param project
    */
   private void search(Pattern pattern, Object element, IProject project) {
@@ -160,7 +159,7 @@ public class CapellaSearchQuery implements ISearchQuery {
       }
     }
   }
-
+  
   protected void searchForAttribute(Pattern pattern, IProject project, EObject eObj, EAttribute attribute) {
     Object attrValue = eObj.eGet(attribute);
     if (attrValue instanceof String) {

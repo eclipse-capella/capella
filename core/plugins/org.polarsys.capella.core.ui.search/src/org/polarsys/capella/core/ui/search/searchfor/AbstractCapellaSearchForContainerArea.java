@@ -20,6 +20,8 @@ import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.CheckStateChangedEvent;
 import org.eclipse.jface.viewers.CheckboxTreeViewer;
 import org.eclipse.jface.viewers.ICheckStateListener;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerComparator;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
@@ -34,12 +36,12 @@ import org.eclipse.ui.dialogs.PatternFilter;
 import org.eclipse.ui.progress.IProgressService;
 import org.polarsys.capella.core.ui.search.CapellaSearchConstants;
 import org.polarsys.capella.core.ui.search.CapellaSearchPage;
+import org.polarsys.capella.core.ui.search.searchfor.item.SearchForItem;
 
 public abstract class AbstractCapellaSearchForContainerArea {
   protected Button selectAllButton;
   protected Button deselectAllButton;
   protected Button defaultButton;
-  protected Button restoreDefaultsButton;
 
   protected PatternFilter patternFilter;
   protected CheckboxFilteredTree filteredTree;
@@ -53,8 +55,7 @@ public abstract class AbstractCapellaSearchForContainerArea {
     parentGroup = parent;
     otherSideArea = area;
     searchPage = page;
-    createContent();
-  }
+    createContent();  }
 
   protected void createContent() {
     createContentArea();
@@ -68,7 +69,8 @@ public abstract class AbstractCapellaSearchForContainerArea {
     filteredTree = new CheckboxFilteredTree(parentGroup, SWT.BORDER, patternFilter);
     filteredTree.getViewer().setContentProvider(partictipantsItemProvider);
 
-    filteredTree.getViewer().setLabelProvider(new SearchForLabelProvider());
+    filteredTree.getViewer()
+        .setLabelProvider(new SearchForLabelProvider());
 
     filteredTree.getViewer().setInput("");
 
@@ -79,7 +81,20 @@ public abstract class AbstractCapellaSearchForContainerArea {
     chechboxTreeViewerGridData.heightHint = 140;
 
     filteredTree.getViewer().getTree().setLayoutData(chechboxTreeViewerGridData);
-
+    filteredTree.getViewer().setComparator(new ViewerComparator() {
+      @Override
+      public int compare(Viewer testViewer, Object e1, Object e2) {
+        if (e1 instanceof SearchForItem && e2 instanceof SearchForItem) {
+          return ((SearchForItem) e1).getText().compareTo(((SearchForItem) e2).getText());
+        } else if (e1 instanceof String && e2 instanceof String) {
+          String cat1 = (String) e1;
+          if (cat1.equals(CapellaSearchConstants.ModelElements_Key))
+            return -1;
+          return 1;
+        }
+        return 0;
+      }
+    });
     ((CheckboxTreeViewer) filteredTree.getViewer()).addCheckStateListener(getCheckStateListener());
   }
 
@@ -97,9 +112,10 @@ public abstract class AbstractCapellaSearchForContainerArea {
     // handle the inheritance check propagation
     boolean hasChildren = getSearchForContentProvider().hasChildren(parent);
     CheckboxTreeViewer viewer = (CheckboxTreeViewer) filteredTree.getViewer();
-    if (hasChildren) {
+    if(hasChildren) {
       viewer.setSubtreeChecked(parent, state);
-    } else {
+    }
+    else {
       viewer.setChecked(parent, state);
     }
     updateSearchSettings();
@@ -117,7 +133,6 @@ public abstract class AbstractCapellaSearchForContainerArea {
 
     createSelectAllButton(buttonsContainer);
     createDeselectAllButton(buttonsContainer);
-    createRestoreDefaultsButton(buttonsContainer);
   }
 
   protected void createSelectAllButton(Composite rightPaneContainer) {
@@ -137,13 +152,6 @@ public abstract class AbstractCapellaSearchForContainerArea {
     deselectAllButton.addSelectionListener(getSelectionListener(false));
 
     deselectAllButton.setEnabled(SWT.MULTI == participantsCheckStrategy);
-  }
-
-  protected void createRestoreDefaultsButton(Composite rightPaneContainer) {
-    restoreDefaultsButton = new Button(rightPaneContainer, SWT.PUSH);
-    restoreDefaultsButton.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-    restoreDefaultsButton.setText(CapellaSearchConstants.RestoreDefaultsButton_Name);
-    restoreDefaultsButton.addSelectionListener(getRestoreDefaultsSelectionListener());
   }
 
   protected SelectionListener getSelectionListener(boolean selected) {
@@ -177,8 +185,6 @@ public abstract class AbstractCapellaSearchForContainerArea {
 
   protected abstract PatternFilter createPatternFilter();
 
-  protected abstract SelectionListener getRestoreDefaultsSelectionListener();
-
   public void checkAll(CheckboxTreeViewer viewer, boolean state) {
     Object[] viewerElements = getSearchForContentProvider().getElements("");
     for (Object obj : viewerElements) {
@@ -191,7 +197,7 @@ public abstract class AbstractCapellaSearchForContainerArea {
   public void setOtherSideArea(AbstractCapellaSearchForContainerArea area) {
     this.otherSideArea = area;
   }
-
+  
   public void refreshOtherSideArea() {
     // do nothing, want to refresh only the right side (attributes) based on the left (metaclasses) selection
   }
@@ -203,17 +209,16 @@ public abstract class AbstractCapellaSearchForContainerArea {
     for (Object obj : objects) {
       checkboxTreeViewer.setChecked(obj, true);
     }
-
+    
     refreshOtherSideArea();
   }
-
+  
   public abstract void updateSearchSettings();
-  public abstract void applyDefaultSearchSettings();
 
   public void refresh() {
     filteredTree.getViewer().refresh();
   }
-
+  
   public Set<Object> getCheckedElements() {
     return new HashSet<>(Arrays.asList(((CheckboxTreeViewer) filteredTree.getViewer()).getCheckedElements()));
   }

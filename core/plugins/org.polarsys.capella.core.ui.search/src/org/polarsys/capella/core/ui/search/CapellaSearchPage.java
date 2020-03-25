@@ -338,27 +338,6 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
 
     validate();
   }
-  
-  /**
-   * 
-   * Apply the default settings
-   */
-  protected void applyDefaultSearchSettings() {
-    checkboxCaseSensitive.setSelection(false);
-    comboSearchPattern.setText("");
-    checkboxWholeWord.setSelection(false);
-    checkboxRegex.setSelection(false);
-
-    if (leftCont != null) {
-      leftCont.applyDefaultSearchSettings();
-    }
-
-    if (rightCont != null) {
-      rightCont.applyDefaultSearchSettings();
-    }
-
-    setScopeAndUpdateUI(WORKSPACE_SCOPE);
-  }
 
   public CapellaSearchSettings getCapellaSearchSettings() {
     if (capellaSearchSettings == null) {
@@ -376,8 +355,6 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
         comboSearchPattern.setItems(previousSearchPatterns);
         comboSearchPattern.select(0);
         applySearchSettings(previousSearchSettings.get(0));
-      } else {
-        applyDefaultSearchSettings();
       }
       comboSearchPattern.setFocus();
     }
