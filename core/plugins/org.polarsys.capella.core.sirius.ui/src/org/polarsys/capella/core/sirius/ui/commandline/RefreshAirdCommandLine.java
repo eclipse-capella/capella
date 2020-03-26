@@ -42,6 +42,7 @@ public class RefreshAirdCommandLine extends AbstractWorkbenchCommandLine {
       }
       Job job = new RefreshDiagramJob(file);
       job.schedule();
+      //
       try {
         job.join();
       } catch (InterruptedException e) {
