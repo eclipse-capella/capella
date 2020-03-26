@@ -109,7 +109,7 @@ public class MigrationCommandLine extends DefaultCommandLine {
     IPreferenceStore preferenceStore = SiriusEditPlugin.getPlugin().getPreferenceStore();
     initialValue_RefreshOnOpening = preferenceStore
         .getBoolean(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name());
-    preferenceStore = SiriusEditPlugin.getPlugin().getCorePreferenceStore();
+    preferenceStore = SiriusEditPlugin.getPlugin().getPreferenceStore();
     initialValue_AutoRefresh = preferenceStore.getBoolean(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name());
 
     doSetSiriusPrefs(true, true);
@@ -129,13 +129,13 @@ public class MigrationCommandLine extends DefaultCommandLine {
     IEclipsePreferences siriusPluginPreferences = InstanceScope.INSTANCE.getNode(SiriusPlugin.ID);
     siriusPluginPreferences.putBoolean(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), autoRefresh);
   }
-  
+
   @Override
   public void printHelp() {
     super.printHelp();
     printArgumentsFromTable("migrationParameters", false, Collections.emptyList());
   }
-  
+
   @Override
   public void compliancyCheck(IFile modeller) throws CommandLineException {
     // No check for compliancy for Migration command line since it's done already in Migration command

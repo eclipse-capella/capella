@@ -49,23 +49,14 @@ public class RefreshAirdCommandLine extends AbstractWorkbenchCommandLine {
           try {
             session.close(new NullProgressMonitor());
           } catch (Exception e) {
-            session.save(new NullProgressMonitor());
             e.printStackTrace();
           }
-          if (PlatformUI.getTestableObject() == null || PlatformUI.getTestableObject().getTestHarness() == null) {
+          if (PlatformUI.getTestableObject() != null || PlatformUI.getTestableObject().getTestHarness() != null) {
             new CloseWorkbenchJob().schedule();
           }
         }
       });
-      SessionManager.INSTANCE.getSession(EcoreUtil2.getURI(file), new NullProgressMonitor())
-          .save(new NullProgressMonitor());
       job.schedule();
-
-    }
-    if (!airdFiles.isEmpty()) {
-      Session session = SessionManager.INSTANCE.getSession(EcoreUtil2.getURI(airdFiles.get(0)),
-          new NullProgressMonitor());
-
     }
     return Status.OK_STATUS;
   }
