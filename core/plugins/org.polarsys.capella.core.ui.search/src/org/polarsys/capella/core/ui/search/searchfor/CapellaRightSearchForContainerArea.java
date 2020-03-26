@@ -24,6 +24,7 @@ import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.ui.dialogs.PatternFilter;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
+import org.polarsys.capella.common.ui.toolkit.widgets.filter.CapellaPatternFilter;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.ui.search.CapellaSearchPage;
 import org.polarsys.capella.core.ui.search.searchfor.item.SearchForAttributeItem;
@@ -52,7 +53,7 @@ public class CapellaRightSearchForContainerArea extends AbstractCapellaSearchFor
   }
 
   protected PatternFilter createPatternFilter() {
-    return new PatternFilter();
+    return new CapellaPatternFilter();
   }
 
   public void updateSearchSettings() {
@@ -106,6 +107,7 @@ public class CapellaRightSearchForContainerArea extends AbstractCapellaSearchFor
         .filter(SearchForAttributeItem.class::isInstance).map(SearchForAttributeItem.class::cast)
         .filter(item -> topAttributes.keySet().stream().anyMatch(item::represent)).collect(Collectors.toSet());
     filteredTree.getCheckboxTreeViewer().setCheckedElements(topAttributeItems.toArray());
+    topAttributeItems.stream().forEach(item -> updateCheckedElements(item, true));
     updateSearchSettings();
   }
 }

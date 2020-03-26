@@ -11,7 +11,6 @@
 package org.polarsys.capella.core.ui.search.searchfor;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -48,8 +47,12 @@ public abstract class AbstractCapellaSearchForContainerArea {
   protected AbstractCapellaSearchForContainerArea otherSideArea;
   protected CapellaSearchPage searchPage;
 
+  // Collection of elements currently checked by user.
+  protected Set<Object> checkedElements;
+
   public AbstractCapellaSearchForContainerArea(Group parent, AbstractCapellaSearchForContainerArea area,
       CapellaSearchPage page) {
+    checkedElements = new HashSet<>();
     parentGroup = parent;
     otherSideArea = area;
     searchPage = page;
@@ -65,7 +68,7 @@ public abstract class AbstractCapellaSearchForContainerArea {
     AbstractSearchForContentProvider partictipantsItemProvider = getSearchForContentProvider();
     patternFilter = createPatternFilter();
 
-    filteredTree = new CheckboxFilteredTree(parentGroup, SWT.BORDER, patternFilter);
+    filteredTree = new CheckboxFilteredTree(parentGroup, SWT.BORDER, patternFilter, checkedElements);
     filteredTree.getViewer().setContentProvider(partictipantsItemProvider);
 
     filteredTree.getViewer().setLabelProvider(new SearchForLabelProvider());
@@ -88,22 +91,33 @@ public abstract class AbstractCapellaSearchForContainerArea {
       public void checkStateChanged(final CheckStateChangedEvent event) {
         boolean state = event.getChecked();
         Object parent = event.getElement();
-        updateCheckedElements(parent, state);
+        setCheckedState(parent, state);
       }
     };
   }
 
-  protected void updateCheckedElements(Object parent, boolean state) {
+  protected void setCheckedState(Object parent, boolean state) {
     // handle the inheritance check propagation
     boolean hasChildren = getSearchForContentProvider().hasChildren(parent);
     CheckboxTreeViewer viewer = (CheckboxTreeViewer) filteredTree.getViewer();
+    viewer.setChecked(parent, state);
+    updateCheckedElements(parent, state);
     if (hasChildren) {
-      viewer.setSubtreeChecked(parent, state);
-    } else {
-      viewer.setChecked(parent, state);
+      for (Object child : getSearchForContentProvider().getChildren(parent)) {
+        viewer.setChecked(child, state);
+        updateCheckedElements(child, state);
+      }
     }
     updateSearchSettings();
     refreshOtherSideArea();
+  }
+
+  protected void updateCheckedElements(Object obj, boolean state) {
+    if (state) {
+      checkedElements.add(obj);
+    } else {
+      checkedElements.remove(obj);
+    }
   }
 
   protected void createButtonsArea() {
@@ -182,7 +196,7 @@ public abstract class AbstractCapellaSearchForContainerArea {
   public void checkAll(CheckboxTreeViewer viewer, boolean state) {
     Object[] viewerElements = getSearchForContentProvider().getElements("");
     for (Object obj : viewerElements) {
-      viewer.setSubtreeChecked(obj, state);
+      setCheckedState(obj, state);
     }
   }
 
@@ -202,12 +216,14 @@ public abstract class AbstractCapellaSearchForContainerArea {
 
     for (Object obj : objects) {
       checkboxTreeViewer.setChecked(obj, true);
+      updateCheckedElements(obj, true);
     }
 
     refreshOtherSideArea();
   }
 
   public abstract void updateSearchSettings();
+
   public abstract void applyDefaultSearchSettings();
 
   public void refresh() {
@@ -215,6 +231,6 @@ public abstract class AbstractCapellaSearchForContainerArea {
   }
 
   public Set<Object> getCheckedElements() {
-    return new HashSet<>(Arrays.asList(((CheckboxTreeViewer) filteredTree.getViewer()).getCheckedElements()));
+    return checkedElements;
   }
 }
