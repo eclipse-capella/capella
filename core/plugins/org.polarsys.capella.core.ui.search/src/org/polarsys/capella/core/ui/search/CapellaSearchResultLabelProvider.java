@@ -41,10 +41,15 @@ public class CapellaSearchResultLabelProvider extends LabelProvider {
 
   @Override
   public String getText(Object element) {
-    if (element instanceof CapellaSearchMatchEntry) {
+    if (element instanceof CapellaSearchMatchEntryLine) {
+      return ((CapellaSearchMatchEntryLine) element).getText();
+    } else if (element instanceof CapellaSearchMatchEntry) {
       CapellaSearchMatchEntry capellaSearchMatchEntry = (CapellaSearchMatchEntry) element;
       EAttribute attribute = (EAttribute) capellaSearchMatchEntry.getAttribute();
-      return attribute.getName() + ": " + capellaSearchMatchEntry.getText();
+      if (capellaSearchMatchEntry.getEntryLines().isEmpty()) {
+        return attribute.getName() + ": " + capellaSearchMatchEntry.getText();
+      }
+      return attribute.getName();
     } else if (element instanceof Shape && ViewType.NOTE.equals(((Shape) element).getType())) {
       return CapellaSearchConstants.Note_Label;
     }
@@ -54,7 +59,9 @@ public class CapellaSearchResultLabelProvider extends LabelProvider {
   @SuppressWarnings("restriction")
   @Override
   public Image getImage(Object element) {
-    if (element instanceof CapellaSearchMatchEntry) {
+    if (element instanceof CapellaSearchMatchEntryLine) {
+      return null;
+    } else if (element instanceof CapellaSearchMatchEntry) {
       return Activator.getDefault().getImage("line_match.png");
     } else if (element instanceof Shape && ViewType.NOTE.equals(((Shape) element).getType())) {
       return ExtendedImageRegistry.INSTANCE

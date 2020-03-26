@@ -11,7 +11,9 @@
 package org.polarsys.capella.core.ui.search;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -50,8 +52,18 @@ public class CapellaSearchResult extends AbstractTextSearchResult {
           if (elt instanceof DDiagram) {
             return RepresentationHelper.getRepresentationDescriptor((DDiagram) elt);
           }
+        } else if (element instanceof CapellaSearchMatchEntryLine) {
+          return ((CapellaSearchMatchEntryLine) element).getMatchEntry();
         }
         return super.doGetParent(element);
+      }
+      
+      @Override
+      public Object[] getChildren(Object element) {
+        if (element instanceof CapellaSearchMatchEntry) {
+          return ((CapellaSearchMatchEntry) element).getEntryLines().toArray();
+        }
+        return super.getChildren(element);
       }
     };
   }
@@ -139,5 +151,10 @@ public class CapellaSearchResult extends AbstractTextSearchResult {
   
   public TreeData getTreeData() {
     return treeData;
+  }
+  
+  public List<CapellaSearchMatchEntry> getCapellaEntryMatches(Object element) {
+    return Arrays.asList(getMatches(element)).stream().filter(e -> e.getClass().equals(CapellaSearchMatchEntry.class))
+        .map(CapellaSearchMatchEntry.class::cast).collect(Collectors.toList());
   }
 }
