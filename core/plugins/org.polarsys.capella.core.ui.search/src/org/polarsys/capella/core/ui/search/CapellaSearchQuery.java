@@ -147,16 +147,39 @@ public class CapellaSearchQuery implements ISearchQuery {
     }
   }
 
+  @SuppressWarnings({ "unchecked", "rawtypes" })
   protected void searchForAttribute(Pattern pattern, IProject project, EObject eObj,
       SearchForAttributeItem attributeItem) {
     if (attributeItem.getAttributeFor(eObj) != null) {
-      String textToSearch = attributeItem.getTextToSearch(eObj);
-      if (isMatchOccurrences(pattern, textToSearch)) {
-        CapellaSearchMatchEntry result = new CapellaSearchMatchEntry(eObj, textToSearch, project,
+      Object textToSearch = attributeItem.getTextToSearch(eObj);
+      if (textToSearch instanceof String) {
+        if (isMatchOccurrences(pattern, (String) textToSearch)) {
+          CapellaSearchMatchEntry result = new CapellaSearchMatchEntry(eObj, (String) textToSearch, project,
+              attributeItem.getAttributeFor(eObj));
+          capellaSearchResult.addMatch(result);
+          capellaSearchResult.getTreeData().addElement(eObj);
+        }
+      } else if (textToSearch instanceof List) {
+        List texts = ((List) textToSearch);
+        CapellaSearchMatchEntry matchEntry = new CapellaSearchMatchEntry(eObj, null, project,
             attributeItem.getAttributeFor(eObj));
-        capellaSearchResult.addMatch(result);
-        // use tree data if we want to display the result as a tree
-        capellaSearchResult.getTreeData().addElement(eObj);
+        boolean matched = false;
+        for (int i = 0; i < texts.size(); i++) {
+          if (texts.get(i) instanceof String) {
+            String text = (String) texts.get(i);
+            if (isMatchOccurrences(pattern, text)) {
+              CapellaSearchMatchEntryLine entryLine = new CapellaSearchMatchEntryLine(eObj, (String) text, project,
+                  matchEntry, i);
+              matchEntry.getEntryLines().add(entryLine);
+              capellaSearchResult.addMatch(entryLine);
+              matched = true;
+            }
+          }
+        }
+        if (matched) {
+          capellaSearchResult.addMatch(matchEntry);
+          capellaSearchResult.getTreeData().addElement(eObj);
+        }
       }
     }
   }

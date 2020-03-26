@@ -10,8 +10,17 @@
  *******************************************************************************/
 package org.polarsys.capella.core.ui.search;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Pattern;
+
 import org.eclipse.core.resources.IProject;
+import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.command.SetCommand;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.search.ui.text.Match;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 
 /**
  * Entity responsible of model result hierarchical organization.
@@ -22,13 +31,20 @@ public class CapellaSearchMatchEntry extends Match {
   
   private IProject project;
   
-  private Object attribute;
+  protected Object attribute;
+  
+  private List<CapellaSearchMatchEntryLine> entryLines;
 
   public CapellaSearchMatchEntry(Object source, String text,
-      IProject project, Object attribute) {
+      IProject project) {
     super(source, -1, -1);
     this.project = project;
     this.text = text;
+    this.entryLines = new ArrayList<>();
+  }
+
+  public CapellaSearchMatchEntry(Object source, String text, IProject project, Object attribute) {
+    this(source, text, project);
     this.attribute = attribute;
   }
 
@@ -44,10 +60,40 @@ public class CapellaSearchMatchEntry extends Match {
     return project;
   }
   
-  /////////////////////////
-  // Getters / Setters
-  /////////////////////////
-
+  public List<CapellaSearchMatchEntryLine> getEntryLines() {
+    return entryLines;
+  }
+  
+  /**
+   * 
+   * @param searchPattern
+   * @param replacement
+   * @return true if replaced, false otherwise
+   */
+  public boolean replace(Pattern searchPattern, String replacement) {
+    if (getEntryLines().isEmpty()) {
+      String oldLine = getText();
+      String newContent = searchPattern.matcher(oldLine).replaceAll(replacement);
+      if (attribute != null) {
+        Object element = getElement();
+        TransactionalEditingDomain domain = TransactionHelper.getEditingDomain((EObject) element);
+        Command setCommand = SetCommand.create(domain, element, attribute, newContent);
+        domain.getCommandStack().execute(setCommand);
+        setText(newContent);
+        return true;
+      }
+    } else {
+      boolean replaced = false;
+      for (CapellaSearchMatchEntryLine line : getEntryLines()) {
+        replaced |= line.replace(searchPattern, replacement);
+      }
+      if (replaced) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
   @Override
   public int hashCode() {
     final int prime = 31;

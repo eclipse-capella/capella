@@ -47,6 +47,7 @@ public class CapellaSearchResultPageHandlerReplaceSelected implements IHandler {
         Object selectedElement = iterator.next();
         if (selectedElement instanceof CapellaSearchMatchEntry) {
           matches.add((CapellaSearchMatchEntry) selectedElement);
+          matches.addAll(((CapellaSearchMatchEntry) selectedElement).getEntryLines());
         } else if (selectedElement instanceof IProject) {
           matches.addAll(capellaSearchResult.getDisplayedMatches((IProject) selectedElement));
         } else {
