@@ -172,7 +172,6 @@ public class CapellaSearchQuery implements ISearchQuery {
                   matchEntry, i);
               matchEntry.getEntryLines().add(entryLine);
               capellaSearchResult.addMatch(entryLine);
-              capellaSearchResult.getTreeData().addElement(eObj);
               matched = true;
             }
           }
