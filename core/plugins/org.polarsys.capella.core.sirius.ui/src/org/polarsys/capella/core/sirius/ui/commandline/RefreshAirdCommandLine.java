@@ -20,8 +20,10 @@ import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.commandline.core.ui.AbstractWorkbenchCommandLine;
+import org.polarsys.capella.core.commandline.core.ui.CloseWorkbenchJob;
 import org.polarsys.capella.core.sirius.ui.SiriusUIPlugin;
 import org.polarsys.capella.core.sirius.ui.handlers.RefreshDiagramJob;
 
@@ -42,18 +44,14 @@ public class RefreshAirdCommandLine extends AbstractWorkbenchCommandLine {
       }
       Job job = new RefreshDiagramJob(file);
       job.schedule();
-      //
-      try {
-        job.join();
-      } catch (InterruptedException e) {
-        return Status.CANCEL_STATUS;
-      }
       session.save(new NullProgressMonitor());
       try {
         session.close(new NullProgressMonitor());
-
       } catch (Exception e) {
         e.printStackTrace();
+      }
+      if (PlatformUI.getTestableObject() != null || PlatformUI.getTestableObject().getTestHarness() != null) {
+        new CloseWorkbenchJob().schedule();
       }
 
       // job.addJobChangeListener(new JobChangeAdapter() {
