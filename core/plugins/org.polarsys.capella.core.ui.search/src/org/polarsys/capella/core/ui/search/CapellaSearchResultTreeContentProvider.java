@@ -42,7 +42,7 @@ public class CapellaSearchResultTreeContentProvider implements ITreeContentProvi
   public Object[] getChildren(Object parentElement) {
     if(searchResult != null) {
       ArrayList<Object> list = new ArrayList<Object>();
-      list.addAll(Arrays.asList(searchResult.getMatches(parentElement)));
+      list.addAll(searchResult.getCapellaEntryMatches(parentElement));
       list.addAll(Arrays.asList(searchResult.getTreeData().getChildren(parentElement)));
       return list.toArray();
     }

@@ -74,20 +74,10 @@ public class CapellaReplaceQuery {
   }
   
   public void replace(CapellaSearchMatchEntry capellaMatch, Pattern searchPattern, String replacement) {
-    EAttribute attribute = (EAttribute) capellaMatch.getAttribute();
-
-    String oldLine = capellaMatch.getText();
-    String newContent = searchPattern.matcher(oldLine).replaceAll(replacement);
-
-    if (attribute != null) {
-      Object element = capellaMatch.getElement();
-
-      TransactionalEditingDomain domain = TransactionHelper.getEditingDomain((EObject) element);
-      Command setCommand = SetCommand.create(domain, element, attribute, newContent);
-      domain.getCommandStack().execute(setCommand);
-      capellaMatch.setText(newContent);
+    boolean replaced = capellaMatch.replace(searchPattern, replacement);
+    if (replaced) {
       replacedProjects.add(capellaMatch.getProject());
-      replacedElements.add((EObject) element);
+      replacedElements.add((EObject) capellaMatch.getElement());
       replacedOccurrenceCount += 1;
     }
   }

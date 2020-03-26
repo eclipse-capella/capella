@@ -32,10 +32,10 @@ public class SearchForAttributeItem implements SearchForItem {
    * @param eObj
    * @return the search text matched from this search item
    */
-  public String getTextToSearch(EObject eObj) {
+  public Object getTextToSearch(EObject eObj) {
     Object att = getAttributeFor(eObj);
     if (att instanceof EAttribute) {
-      return (String) eObj.eGet((EAttribute) att);
+      return eObj.eGet((EAttribute) att);
     }
     return null;
   }
