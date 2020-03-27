@@ -78,7 +78,6 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
   private Combo comboSearchPattern;
   private Label labelForComboSearchPattern;
 
-  private Label labelRegex;
   private CLabel labelValidationStatus;
   private ContentAssistCommandAdapter comboSearchPatternRegexContentAssist;
 
@@ -129,7 +128,6 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
     GridLayoutFactory.fillDefaults().applyTo(column1);
     GridDataFactory.fillDefaults().grab(true, false).applyTo(column1);
     createComboSearchPattern(column1);
-    createLabelRegex(column1);
     createLabelValidationStatus(column1);
 
     Composite column2 = new Composite(group, SWT.NONE);
@@ -143,7 +141,7 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
 
   private void createLabelForComboSearchPattern(Composite group) {
     labelForComboSearchPattern = new Label(group, SWT.LEAD);
-    labelForComboSearchPattern.setText(CapellaSearchConstants.CapellaSearchContainingText);
+    labelForComboSearchPattern.setText(CapellaSearchConstants.CapellaSearchPage_Combo_Pattern_Label_Regex_Disabled);
     GridDataFactory.swtDefaults().align(SWT.FILL, SWT.CENTER).span(2, 1).grab(true, true)
         .applyTo(labelForComboSearchPattern);
     labelForComboSearchPattern.setFont(group.getFont());
@@ -180,14 +178,6 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
     comboSearchPatternRegexContentAssist.setEnabled(false);
   }
 
-  private void createLabelRegex(Composite group) {
-    labelRegex = new Label(group, SWT.LEAD);
-    labelRegex.setText(CapellaSearchConstants.CapellaSearchRegexExplanation);
-    GridDataFactory.fillDefaults().align(SWT.FILL, SWT.FILL).applyTo(labelRegex);
-    labelRegex.setFont(group.getFont());
-    labelRegex.setAlignment(SWT.LEFT);
-  }
-
   // Create a label to display a message if the search pattern is correctly formatted
   private void createLabelValidationStatus(Composite group) {
     labelValidationStatus = new CLabel(group, SWT.LEAD);
@@ -216,10 +206,10 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
         boolean regexEnabled = checkboxRegex.getSelection();
         comboSearchPatternRegexContentAssist.setEnabled(regexEnabled);
         if (regexEnabled) {
-          labelRegex.setText(CapellaSearchConstants.CapellaSearchEmptyString);
+          labelForComboSearchPattern.setText(CapellaSearchConstants.CapellaSearchPage_Combo_Pattern_Label_Regex_Enabled);
           checkboxWholeWord.setEnabled(false);
         } else {
-          labelRegex.setText(CapellaSearchConstants.CapellaSearchRegexExplanation);
+          labelForComboSearchPattern.setText(CapellaSearchConstants.CapellaSearchPage_Combo_Pattern_Label_Regex_Disabled);
           checkboxWholeWord.setEnabled(true);
         }
       }
