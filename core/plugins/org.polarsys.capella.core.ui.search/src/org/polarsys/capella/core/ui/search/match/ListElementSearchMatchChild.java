@@ -8,9 +8,10 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.core.ui.search;
+package org.polarsys.capella.core.ui.search.match;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 import org.eclipse.core.resources.IProject;
@@ -19,37 +20,22 @@ import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 
-/**
- * Represents a line match for a match entry
- */
-public class CapellaSearchMatchEntryLine extends CapellaSearchMatchEntry {
+public class ListElementSearchMatchChild extends SearchMatchChild {
 
-  private CapellaSearchMatchEntry matchEntry;
-  
   private int index;
 
-  public CapellaSearchMatchEntryLine(Object source, String text, IProject project, CapellaSearchMatchEntry matchEntry, int index) {
-    super(source, text, project);
-    this.matchEntry = matchEntry;
+  public ListElementSearchMatchChild(Object source, String text, IProject project, SearchMatch parent, int index) {
+    super(source, text, project, parent);
     this.index = index;
   }
 
-  public CapellaSearchMatchEntry getMatchEntry() {
-    return matchEntry;
-  }
-  
-  @Override
-  public Object getAttribute() {
-    return matchEntry.getAttribute();
-  }
-  
   @Override
   public boolean replace(Pattern searchPattern, String replacement) {
-    String oldLine = getText();
+    String oldLine = getOriginalText();
     String newContent = searchPattern.matcher(oldLine).replaceAll(replacement);
-    if (getMatchEntry().getAttribute() instanceof EAttribute && getMatchEntry().getElement() instanceof EObject) {
-      EAttribute matchEntryAttribute = (EAttribute) getMatchEntry().getAttribute();
-      EObject matchEntryElement = (EObject) getMatchEntry().getElement();
+    if (getParent().getAttribute() instanceof EAttribute && getParent().getElement() instanceof EObject) {
+      EAttribute matchEntryAttribute = (EAttribute) getParent().getAttribute();
+      EObject matchEntryElement = (EObject) getParent().getElement();
       if (matchEntryElement.eGet(matchEntryAttribute) instanceof List) {
         TransactionHelper.getExecutionManager(matchEntryElement).execute(new AbstractReadWriteCommand() {
           @SuppressWarnings("unchecked")
@@ -61,7 +47,7 @@ public class CapellaSearchMatchEntryLine extends CapellaSearchMatchEntry {
             lineMatches.add(index, newContent);
           }
         });
-        setText(newContent);
+        setOriginalText(newContent);
         return true;
       }
     }
@@ -72,20 +58,23 @@ public class CapellaSearchMatchEntryLine extends CapellaSearchMatchEntry {
   public int hashCode() {
     final int prime = 31;
     int result = super.hashCode();
-    result = prime * result + ((getMatchEntry() == null) ? 0 : getMatchEntry().hashCode());
-    result = prime * result + this.index;
+    result = prime * result + Objects.hash(index);
     return result;
   }
 
   @Override
   public boolean equals(Object obj) {
-    if (this == obj)
+    if (this == obj) {
       return true;
-    if (obj == null || getClass() != obj.getClass()) {
+    }
+    if (!super.equals(obj)) {
       return false;
     }
-    CapellaSearchMatchEntryLine other = (CapellaSearchMatchEntryLine) obj;
-    return getElement().equals(other.getElement()) && getText().equals(other.getText())
-        && getProject().equals(other.getProject()) && getMatchEntry().equals(other.getMatchEntry());
+    if (!(obj instanceof ListElementSearchMatchChild)) {
+      return false;
+    }
+    ListElementSearchMatchChild other = (ListElementSearchMatchChild) obj;
+    return index == other.index;
   }
+
 }

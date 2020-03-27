@@ -17,6 +17,7 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.IHandler;
 import org.eclipse.core.commands.IHandlerListener;
 import org.eclipse.search.ui.NewSearchUI;
+import org.polarsys.capella.core.ui.search.match.SearchMatch;
 
 public class CapellaSearchResultPageHandlerReplaceAll implements IHandler {
 
@@ -38,7 +39,7 @@ public class CapellaSearchResultPageHandlerReplaceAll implements IHandler {
     if (capellaSearchResultPage != null) {
       CapellaSearchResult capellaSearchResult = capellaSearchResultPage.getInput();
       
-      Set<CapellaSearchMatchEntry> matches = capellaSearchResult.getDisplayedMatches();
+      Set<SearchMatch> matches = capellaSearchResult.getDisplayedMatches();
 
       CapellaSearchQuery searchQuery = capellaSearchResult.getQuery();
 

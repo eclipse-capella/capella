@@ -27,15 +27,11 @@ public class SearchForAttributeItem implements SearchForItem {
     this.attribute = new HashSet<>();
   }
 
-  /**
-   * 
-   * @param eObj
-   * @return the search text matched from this search item
-   */
-  public Object getTextToSearch(EObject eObj) {
-    Object att = getAttributeFor(eObj);
+  @Override
+  public Object getRelevantSearchData(EObject searchTarget) {
+    Object att = getAttributeFor(searchTarget);
     if (att instanceof EAttribute) {
-      return eObj.eGet((EAttribute) att);
+      return searchTarget.eGet((EAttribute) att);
     }
     return null;
   }
@@ -68,7 +64,8 @@ public class SearchForAttributeItem implements SearchForItem {
     }
   }
 
-  public boolean cover(Object object) {
+  @Override
+  public boolean covers(Object object) {
     return getAttributeFor(object) != null;
   }
   

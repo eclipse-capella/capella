@@ -28,7 +28,6 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.diagram.core.util.ViewType;
 import org.eclipse.gmf.runtime.notation.Diagram;
-import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.Shape;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.search.ui.ISearchQuery;
@@ -39,6 +38,9 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.polarsys.capella.core.commands.preferences.util.PreferencesHelper;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.viewer.CapellaNavigatorContentProvider;
+import org.polarsys.capella.core.ui.search.match.LineSearchMatchChild;
+import org.polarsys.capella.core.ui.search.match.ListElementSearchMatchChild;
+import org.polarsys.capella.core.ui.search.match.SearchMatch;
 import org.polarsys.capella.core.ui.search.searchfor.item.SearchForAttributeItem;
 import org.polarsys.capella.core.ui.search.searchfor.item.SearchForClassItem;
 import org.polarsys.capella.core.ui.search.searchfor.item.SearchForNoteItem;
@@ -124,22 +126,26 @@ public class CapellaSearchQuery implements ISearchQuery {
   private void search(Pattern pattern, Object element, IProject project) {
     if (element instanceof EObject) {
       EObject eObj = (EObject) element;
-      capellaSearchSettings.getSearchClassItems().forEach(item -> {
-        if (item instanceof SearchForClassItem && ((SearchForClassItem) item).cover(eObj)) {
-          // Case of searching in NOTE, search directly in description attribute
-          if (item instanceof SearchForNoteItem) {
-            EAttribute shapeDescriptionAttribute = NotationPackage.eINSTANCE.getDescriptionStyle_Description();
-            searchForAttribute(pattern, project, eObj, shapeDescriptionAttribute);
+
+      Set<Object> searchClassItems = capellaSearchSettings.getSearchClassItems();
+      for (Object searchClassItem : searchClassItems) {
+        if (searchClassItem instanceof SearchForClassItem && ((SearchForClassItem) searchClassItem).covers(eObj)) {
+
+          if (searchClassItem instanceof SearchForNoteItem) {
+            searchForAttribute(pattern, project, eObj, (SearchForNoteItem) searchClassItem);
           } else {
-            capellaSearchSettings.getSearchAttributeItems().forEach(attributeItem -> {
-              if (attributeItem instanceof SearchForAttributeItem) {
-                searchForAttribute(pattern, project, eObj, (SearchForAttributeItem) attributeItem);
+            Set<Object> searchAttributeItems = capellaSearchSettings.getSearchAttributeItems();
+            for (Object searchAttributeItem : searchAttributeItems) {
+              if (searchAttributeItem instanceof SearchForAttributeItem) {
+                searchForAttribute(pattern, project, eObj, (SearchForAttributeItem) searchAttributeItem);
               }
-            });
+            }
+
           }
         }
-      });
+      }
     }
+
     Object[] children = contentProvider.getChildren(element);
     for (int i = 0; i < children.length; i++) {
       // search recursively in all the elements in the project tree
@@ -147,49 +153,84 @@ public class CapellaSearchQuery implements ISearchQuery {
     }
   }
 
-  @SuppressWarnings({ "unchecked", "rawtypes" })
-  protected void searchForAttribute(Pattern pattern, IProject project, EObject eObj,
+  protected void searchForAttribute(Pattern pattern, IProject project, EObject inputObject,
       SearchForAttributeItem attributeItem) {
-    if (attributeItem.getAttributeFor(eObj) != null) {
-      Object textToSearch = attributeItem.getTextToSearch(eObj);
-      if (textToSearch instanceof String) {
-        if (isMatchOccurrences(pattern, (String) textToSearch)) {
-          CapellaSearchMatchEntry result = new CapellaSearchMatchEntry(eObj, (String) textToSearch, project,
-              attributeItem.getAttributeFor(eObj));
-          capellaSearchResult.addMatch(result);
-          capellaSearchResult.getTreeData().addElement(eObj);
+
+    Object searchAttribute = attributeItem.getAttributeFor(inputObject);
+    if (searchAttribute != null) {
+      Object searchData = attributeItem.getRelevantSearchData(inputObject);
+
+      if (searchData instanceof String) {
+        String searchText = (String) searchData;
+        String[] searchTextLines = searchText.split("\n");
+
+        if (searchTextLines.length == 1) {
+          if (isMatchOccurrences(pattern, searchText)) {
+            SearchMatch result = new SearchMatch(inputObject, searchText, project, searchAttribute);
+            capellaSearchResult.addMatch(result);
+            capellaSearchResult.getTreeData().addElement(inputObject);
+          }
+        } else {
+          SearchMatch parentSearchMatch = new SearchMatch(inputObject, null, project, searchAttribute);
+          boolean matched = false;
+          for (int number = 0; number < searchTextLines.length; number++) {
+            String searchTextLine = searchTextLines[number];
+
+            if (isMatchOccurrences(pattern, searchTextLine)) {
+              LineSearchMatchChild childSearchMatch = new LineSearchMatchChild(inputObject, searchTextLine, project,
+                  parentSearchMatch, number);
+
+              parentSearchMatch.getChildren().add(childSearchMatch);
+              capellaSearchResult.addMatch(childSearchMatch);
+              matched = true;
+            }
+          }
+
+          if (matched) {
+            capellaSearchResult.addMatch(parentSearchMatch);
+            capellaSearchResult.getTreeData().addElement(inputObject);
+          }
         }
-      } else if (textToSearch instanceof List) {
-        List texts = ((List) textToSearch);
-        CapellaSearchMatchEntry matchEntry = new CapellaSearchMatchEntry(eObj, null, project,
-            attributeItem.getAttributeFor(eObj));
+
+      }
+
+      else if (searchData instanceof List) {
+        List<?> searchDataList = ((List<?>) searchData);
+        SearchMatch parentSearchMatch = new SearchMatch(inputObject, null, project, searchAttribute);
         boolean matched = false;
-        for (int i = 0; i < texts.size(); i++) {
-          if (texts.get(i) instanceof String) {
-            String text = (String) texts.get(i);
-            if (isMatchOccurrences(pattern, text)) {
-              CapellaSearchMatchEntryLine entryLine = new CapellaSearchMatchEntryLine(eObj, (String) text, project,
-                  matchEntry, i);
-              matchEntry.getEntryLines().add(entryLine);
-              capellaSearchResult.addMatch(entryLine);
+
+        for (int index = 0; index < searchDataList.size(); index++) {
+          Object searchElement = searchDataList.get(index);
+
+          if (searchElement instanceof String) {
+            String searchText = (String) searchDataList.get(index);
+
+            if (isMatchOccurrences(pattern, searchText)) {
+              ListElementSearchMatchChild childSearchMatch = new ListElementSearchMatchChild(inputObject, searchText,
+                  project, parentSearchMatch, index);
+              parentSearchMatch.getChildren().add(childSearchMatch);
+              capellaSearchResult.addMatch(childSearchMatch);
               matched = true;
             }
           }
         }
+
         if (matched) {
-          capellaSearchResult.addMatch(matchEntry);
-          capellaSearchResult.getTreeData().addElement(eObj);
+          capellaSearchResult.addMatch(parentSearchMatch);
+          capellaSearchResult.getTreeData().addElement(inputObject);
         }
       }
     }
   }
 
-  protected void searchForAttribute(Pattern pattern, IProject project, EObject eObj, EAttribute attribute) {
-    Object attrValue = eObj.eGet(attribute);
-    if (attrValue instanceof String) {
-      String attrString = (String) attrValue;
-      if (isMatchOccurrences(pattern, attrString)) {
-        CapellaSearchMatchEntry result = new CapellaSearchMatchEntry(eObj, attrString, project, attribute);
+  protected void searchForAttribute(Pattern pattern, IProject project, EObject eObj, SearchForNoteItem searchNoteItem) {
+    Object searchData = searchNoteItem.getRelevantSearchData(eObj);
+
+    if (searchData instanceof String) {
+      String textToSearch = (String) searchData;
+      EAttribute shapeDescriptionAttribute = searchNoteItem.getContentAttribute();
+      if (isMatchOccurrences(pattern, textToSearch)) {
+        SearchMatch result = new SearchMatch(eObj, textToSearch, project, shapeDescriptionAttribute);
         capellaSearchResult.addMatch(result);
         // use tree data if we want to display the result as a tree
         capellaSearchResult.getTreeData().addElement(eObj);

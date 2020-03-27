@@ -22,6 +22,7 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.search.ui.NewSearchUI;
 import org.eclipse.ui.handlers.HandlerUtil;
+import org.polarsys.capella.core.ui.search.match.SearchMatch;
 
 public class CapellaSearchResultPageHandlerReplaceSelected implements IHandler {
 
@@ -42,14 +43,14 @@ public class CapellaSearchResultPageHandlerReplaceSelected implements IHandler {
       CapellaSearchResult capellaSearchResult = capellaSearchResultPage.getInput();
       IStructuredSelection currentStructuredSelection = HandlerUtil.getCurrentStructuredSelection(event);
 
-      Set<CapellaSearchMatchEntry> matches = new HashSet<>();
+      Set<SearchMatch> matches = new HashSet<>();
       for (Iterator<?> iterator = currentStructuredSelection.iterator(); iterator.hasNext();) {
         Object selectedElement = iterator.next();
-        if (selectedElement instanceof CapellaSearchMatchEntry) {
-          matches.add((CapellaSearchMatchEntry) selectedElement);
-          matches.addAll(((CapellaSearchMatchEntry) selectedElement).getEntryLines());
+        if (selectedElement instanceof SearchMatch) {
+          matches.add((SearchMatch) selectedElement);
+          matches.addAll(((SearchMatch) selectedElement).getChildren());
         } else if (selectedElement instanceof IProject) {
-          matches.addAll(capellaSearchResult.getDisplayedMatches((IProject) selectedElement));
+          matches.addAll(capellaSearchResult.getDisplayedMatches(selectedElement));
         } else {
           matches.addAll(capellaSearchResult.getDisplayedMatches(selectedElement));
         }

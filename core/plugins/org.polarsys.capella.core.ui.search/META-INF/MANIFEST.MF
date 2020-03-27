@@ -8,31 +8,20 @@ Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Localization: plugin
 Require-Bundle: org.eclipse.search,
- org.eclipse.jface.text,
  org.polarsys.capella.core.platform.sirius.ui.navigator,
  org.polarsys.capella.common.ui.toolkit,
  org.eclipse.sirius.common.ui,
  org.polarsys.capella.core.sirius.ui,
- org.eclipse.ui.workbench.texteditor,
- org.eclipse.jface,
  org.polarsys.capella.common.ui,
- org.eclipse.ui.workbench,
  org.polarsys.capella.core.data.gen.edit.decorators,
- org.polarsys.capella.common.data.core.gen,
- org.eclipse.core.resources,
- org.eclipse.sirius,
  org.eclipse.emf.codegen.ecore,
- org.eclipse.emf.ecore,
- org.eclipse.swt,
- org.eclipse.sirius.diagram,
  org.polarsys.capella.core.model.semantic,
  org.eclipse.sirius.diagram.ui,
  org.eclipse.gmf.runtime.notation.edit,
  org.eclipse.sirius.ext.base,
- com.google.guava,
- org.eclipse.gmf.runtime.diagram.core,
  org.eclipse.gmf.runtime.diagram.ui,
- org.polarsys.kitalpha.ad.services
+ org.polarsys.kitalpha.ad.services,
+ org.apache.commons.lang
 Export-Package: org.polarsys.capella.core.ui.search
  
 
