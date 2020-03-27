@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.ui.commandline;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.core.resources.IFile;
@@ -33,16 +34,19 @@ public class RefreshAirdCommandLine extends AbstractWorkbenchCommandLine {
   public RefreshAirdCommandLine() {
     super(true);
   }
-  
+
   protected IStatus executeWithinWorkbench() {
     List<IFile> airdFiles = getAirdFilesFromInput();
-    for (IFile file : airdFiles) {
-      Job job = new RefreshDiagramJob(file);
-      job.addJobChangeListener(new JobChangeAdapter() {
-
+    List<Job> listJob = new ArrayList<Job>();
+    for (int i = 0; i < airdFiles.size(); i++) {
+      listJob.add(new RefreshDiagramJob(airdFiles.get(i)));
+    }
+    for (int i = 0; i < listJob.size(); i++) {
+      int index = i;
+      listJob.get(i).addJobChangeListener(new JobChangeAdapter() {
         @Override
         public void done(IJobChangeEvent event) {
-          URI selectedUri = EcoreUtil2.getURI(file);
+          URI selectedUri = EcoreUtil2.getURI(airdFiles.get(index));
           Session session = SessionManager.INSTANCE.getSession(selectedUri, new NullProgressMonitor());
           session.save(new NullProgressMonitor());
           try {
@@ -50,12 +54,18 @@ public class RefreshAirdCommandLine extends AbstractWorkbenchCommandLine {
           } catch (Exception e) {
             e.printStackTrace();
           }
-          if (PlatformUI.getTestableObject() == null || PlatformUI.getTestableObject().getTestHarness() == null) {
-            new CloseWorkbenchJob().schedule();
+          if (index < listJob.size() - 1) {
+            listJob.get(index + 1).schedule();
+          } else {
+            if (PlatformUI.getTestableObject() == null || PlatformUI.getTestableObject().getTestHarness() == null) {
+              new CloseWorkbenchJob().schedule();
+            }
           }
         }
       });
-      job.schedule();
+    }
+    if (!listJob.isEmpty()) {
+      listJob.get(0).schedule();
     }
     return Status.OK_STATUS;
   }
