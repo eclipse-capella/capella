@@ -89,9 +89,9 @@
 <li>Be careful to use a Capella version that is compatible with the Java Runtime Environment (i.e. run Capella 32 bits on a 32 bits JVM and Capella 64 bits on 64 bits JVM).</li>
 						<br/>
 <li>If the path to the aird file or the path to the workspace or the path to the log file contains white space, it should be in quotes (eg: 
-						<b>-data &ldquo;D: \Application Data\workspace&rdquo;)</b></li>
+						<b>-data &ldquo;D: /Application Data/workspace&rdquo;)</b></li>
 						<br/>
-<li>When Capella is run in command line, logs levels INFO, WARN, ERROR, FATAL are automatically activated for File and Console appender (regardless of the current log configuration stored in %USERPROFILE%\ReportConfiguration.xml)</li>
+<li>When Capella is run in command line, logs levels INFO, WARN, ERROR, FATAL are automatically activated for File and Console appender (regardless of the current log configuration stored in %USERPROFILE%/ReportConfiguration.xml)</li>
 						<br/>
 <li>Before running below commands make sure to not have newline between each parameters to avoid copy/paste errors.</li>
 </ul>
@@ -135,7 +135,7 @@
 -data &lt;workspacePath&gt;
 -input "/EOLE_AF/EOLE_AF.aird"
 -outputfolder /DocProject/validation
--logfile D:\CommandLineLog\log.html
+-logfile D:/CommandLineLog/log.html
 </pre>
 		<p>
 			<br/>
@@ -171,7 +171,7 @@
 -validationruleset D:/EPF/exportall.epf
 -validationcontext "EOLE_AF/EOLE_AF.melodymodeller#971d9934-9780-4e41-b02e-312d0eac3223 | EOLE_AF EOLE_AF/fragments/OA-Operational%20Context-Operational%20Entity.melodyfragment#c6aebe52-c8a4-4d35-8105-177c87470bef"
 -data &lt;workspacePath&gt;
--logfile D:\CommandLineLog\log.html
+-logfile D:/CommandLineLog/log.html
 </pre>
 		<p>This new command uses a 
 			<b>
@@ -392,7 +392,7 @@
 -import "D:/Projects/Library3 | D:/Projects/Library1 | D:/Projects/Library2 | D:/Projects/Project1"
 -input /all
 -data &lt;workspacePath&gt;
--logfile D:\CommandLineLog\log.html
+-logfile D:/CommandLineLog/log.html
 </pre>
 		<p>This command migrates the given project/libraries and creates a log.html at the specified location.</p>
 		<h3 id="Refresh_Representations">Refresh Representations</h3>
