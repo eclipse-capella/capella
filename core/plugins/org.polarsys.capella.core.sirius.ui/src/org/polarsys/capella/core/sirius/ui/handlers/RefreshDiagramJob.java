@@ -27,7 +27,7 @@ import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 public class RefreshDiagramJob extends Job {
 
   IFile file;
-  
+
   public RefreshDiagramJob(IFile file) {
     super(NLS.bind("Refresh diagrams on {0}", file.getName()));
     this.file = file;
@@ -38,7 +38,7 @@ public class RefreshDiagramJob extends Job {
   public boolean belongsTo(Object family) {
     return family.getClass().equals(RefreshDiagramJob.class);
   }
-  
+
   @Override
   public IStatus run(IProgressMonitor monitor) {
     URI selectedUri = EcoreUtil2.getURI(file);
@@ -48,7 +48,8 @@ public class RefreshDiagramJob extends Job {
     }
     Project capellaProject = SessionHelper.getCapellaProject(session);
     RefreshDiagramsCommandHandler handler = new RefreshDiagramsCommandHandler();
-    Job job = handler.new RefreshDiagramsJob(handler.getSubRepresentations(capellaProject, session), session, Display.getDefault());
+    Job job = handler.new RefreshDiagramsJob(handler.getSubRepresentations(capellaProject, session), session,
+        Display.getDefault());
     job.setUser(true);
     job.schedule();
     try {
@@ -58,4 +59,9 @@ public class RefreshDiagramJob extends Job {
     }
     return job.getResult();
   }
+
+  public IFile getFile() {
+    return file;
+  }
+
 }

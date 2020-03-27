@@ -37,35 +37,44 @@ public class RefreshAirdCommandLine extends AbstractWorkbenchCommandLine {
 
   protected IStatus executeWithinWorkbench() {
     List<IFile> airdFiles = getAirdFilesFromInput();
-    List<Job> listJob = new ArrayList<Job>();
-    for (int i = 0; i < airdFiles.size(); i++) {
-      listJob.add(new RefreshDiagramJob(airdFiles.get(i)));
+    List<Job> jobs = new ArrayList<>();
+    for (IFile file : airdFiles) {
+      jobs.add(new RefreshDiagramJob(file));
     }
-    for (int i = 0; i < listJob.size(); i++) {
-      int index = i;
-      listJob.get(i).addJobChangeListener(new JobChangeAdapter() {
+    for (int i = 0; i < jobs.size(); i++) {
+      final int index = i;
+      Job currentJob = jobs.get(i);
+      currentJob.addJobChangeListener(new JobChangeAdapter() {
+
         @Override
         public void done(IJobChangeEvent event) {
-          URI selectedUri = EcoreUtil2.getURI(airdFiles.get(index));
-          Session session = SessionManager.INSTANCE.getSession(selectedUri, new NullProgressMonitor());
-          session.save(new NullProgressMonitor());
-          try {
-            session.close(new NullProgressMonitor());
-          } catch (Exception e) {
-            e.printStackTrace();
-          }
-          if (index < listJob.size() - 1) {
-            listJob.get(index + 1).schedule();
-          } else {
-            if (PlatformUI.getTestableObject() == null || PlatformUI.getTestableObject().getTestHarness() == null) {
-              new CloseWorkbenchJob().schedule();
+          Job eventJob = event.getJob();
+          if (eventJob instanceof RefreshDiagramJob) {
+            RefreshDiagramJob job = (RefreshDiagramJob) eventJob;
+            IFile file = job.getFile();
+            URI selectedUri = EcoreUtil2.getURI(file);
+            Session session = SessionManager.INSTANCE.getSession(selectedUri, new NullProgressMonitor());
+            session.save(new NullProgressMonitor());
+            try {
+              session.close(new NullProgressMonitor());
+            } catch (Exception e) {
+              e.printStackTrace();
+            }
+            if (index < jobs.size() - 1) {
+              Job nextJob = jobs.get(index + 1);
+              nextJob.schedule();
+            } else {
+              if (PlatformUI.getTestableObject() == null || PlatformUI.getTestableObject().getTestHarness() == null) {
+                new CloseWorkbenchJob().schedule();
+              }
             }
           }
         }
       });
     }
-    if (!listJob.isEmpty()) {
-      listJob.get(0).schedule();
+    if (!jobs.isEmpty()) {
+      Job entryJob = jobs.get(0);
+      entryJob.schedule();
     }
     return Status.OK_STATUS;
   }
