@@ -31,12 +31,14 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.TreeData;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
+import org.polarsys.capella.core.ui.search.match.SearchMatch;
+import org.polarsys.capella.core.ui.search.match.SearchMatchChild;
 
 public class CapellaSearchResult extends AbstractTextSearchResult {
 
   private CapellaSearchQuery capellaSearchQuery;
   private TreeData treeData;
-  
+
   public CapellaSearchResult(CapellaSearchQuery capellaSearchQuery) {
     this.capellaSearchQuery = capellaSearchQuery;
     setActiveMatchFilters(new MatchFilter[] {});
@@ -52,22 +54,22 @@ public class CapellaSearchResult extends AbstractTextSearchResult {
           if (elt instanceof DDiagram) {
             return RepresentationHelper.getRepresentationDescriptor((DDiagram) elt);
           }
-        } else if (element instanceof CapellaSearchMatchEntryLine) {
-          return ((CapellaSearchMatchEntryLine) element).getMatchEntry();
+        } else if (element instanceof SearchMatchChild) {
+          return ((SearchMatchChild) element).getParent();
         }
         return super.doGetParent(element);
       }
-      
+
       @Override
       public Object[] getChildren(Object element) {
-        if (element instanceof CapellaSearchMatchEntry) {
-          return ((CapellaSearchMatchEntry) element).getEntryLines().toArray();
+        if (element instanceof SearchMatch) {
+          return ((SearchMatch) element).getChildren().toArray();
         }
         return super.getChildren(element);
       }
     };
   }
-  
+
   @Override
   public String getLabel() {
     int totalOccurrenceCount = getOccurrenceCount();
@@ -76,12 +78,13 @@ public class CapellaSearchResult extends AbstractTextSearchResult {
     String queryLabel = capellaSearchQuery.getLabel();
     int activeFilterCount = getActiveMatchFilters().length;
     if (activeFilterCount == 0) {
-      return String.format(CapellaSearchConstants.CapellaSearchResult_Label, queryLabel, totalOccurrenceCount, matchedElementsCount,
-          matchedProjectsCount);
+      return String.format(CapellaSearchConstants.CapellaSearchResult_Label, queryLabel, totalOccurrenceCount,
+          matchedElementsCount, matchedProjectsCount);
     }
     int displayedOccurrenceCount = getOccurrenceCount();
-    return String.format(CapellaSearchConstants.CapellaSearchResult_Label_With_Active_Filters, queryLabel, totalOccurrenceCount,
-        matchedElementsCount, matchedProjectsCount, totalOccurrenceCount - displayedOccurrenceCount, activeFilterCount);
+    return String.format(CapellaSearchConstants.CapellaSearchResult_Label_With_Active_Filters, queryLabel,
+        totalOccurrenceCount, matchedElementsCount, matchedProjectsCount,
+        totalOccurrenceCount - displayedOccurrenceCount, activeFilterCount);
   }
 
   @Override
@@ -111,36 +114,47 @@ public class CapellaSearchResult extends AbstractTextSearchResult {
 
   /**
    * Get all projects from matches
+   * 
    * @return
    */
   public Set<IProject> getProjects() {
     return getCapellaSearchMatchesStream() //
-        .map(CapellaSearchMatchEntry::getProject) //
+        .map(SearchMatch::getProject) //
         .collect(Collectors.toSet());
   }
 
   /**
    * Count all occurrences of matches
+   * 
    * @return Assuming that integer is sufficient for this count
    */
   public int getOccurrenceCount() {
-    long count = getElements().length;
-    return Math.toIntExact(count);
+    int count = 0;
+
+    Set<SearchMatch> searchMatches = getCapellaSearchMatchesStream() //
+        .filter(match -> !(match instanceof SearchMatchChild)) //
+        .collect(Collectors.toSet());
+
+    for (SearchMatch searchMatch : searchMatches) {
+      List<SearchMatchChild> children = searchMatch.getChildren();
+      count += children.isEmpty() ? 1 : children.size();
+    }
+
+    return count;
   }
-  
-  private Stream<CapellaSearchMatchEntry> getCapellaSearchMatchesStream() {
+
+  private Stream<SearchMatch> getCapellaSearchMatchesStream() {
     return Stream.of(getElements()) //
         .flatMap(e -> Stream.of(getMatches(e))) //
-        .filter(CapellaSearchMatchEntry.class::isInstance) //
-        .map(CapellaSearchMatchEntry.class::cast);
+        .filter(SearchMatch.class::isInstance) //
+        .map(SearchMatch.class::cast);
   }
-  
-  public Set<CapellaSearchMatchEntry> getDisplayedMatches() {
-    return getCapellaSearchMatchesStream()
-        .collect(Collectors.toSet());
+
+  public Set<SearchMatch> getDisplayedMatches() {
+    return getCapellaSearchMatchesStream().collect(Collectors.toSet());
   }
-  
-  public Set<CapellaSearchMatchEntry> getDisplayedMatches(Object element) {
+
+  public Set<SearchMatch> getDisplayedMatches(Object element) {
     if (element == null) {
       return Collections.emptySet();
     }
@@ -148,13 +162,13 @@ public class CapellaSearchResult extends AbstractTextSearchResult {
         .filter(m -> element.equals(m.getElement())) //
         .collect(Collectors.toSet());
   }
-  
+
   public TreeData getTreeData() {
     return treeData;
   }
-  
-  public List<CapellaSearchMatchEntry> getCapellaEntryMatches(Object element) {
-    return Arrays.asList(getMatches(element)).stream().filter(e -> e.getClass().equals(CapellaSearchMatchEntry.class))
-        .map(CapellaSearchMatchEntry.class::cast).collect(Collectors.toList());
+
+  public List<SearchMatch> getCapellaEntryMatches(Object element) {
+    return Arrays.asList(getMatches(element)).stream().filter(e -> e.getClass().equals(SearchMatch.class))
+        .map(SearchMatch.class::cast).collect(Collectors.toList());
   }
 }

@@ -55,6 +55,7 @@ import org.eclipse.ui.fieldassist.ContentAssistCommandAdapter;
 import org.eclipse.ui.texteditor.ITextEditorActionDefinitionIds;
 import org.polarsys.capella.core.commands.preferences.util.PreferencesHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
+import org.polarsys.capella.core.ui.search.match.SearchMatch;
 import org.polarsys.capella.core.ui.search.searchfor.CapellaLeftSearchForContainerArea;
 import org.polarsys.capella.core.ui.search.searchfor.CapellaRightSearchForContainerArea;
 
@@ -470,7 +471,7 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
       if (searchStatus.isOK()) {
         CapellaSearchResult searchResult = searchQuery.getSearchResult();
         if (searchResult.getMatchCount() > 0) {
-          Set<CapellaSearchMatchEntry> allMatches = searchResult.getDisplayedMatches();
+          Set<SearchMatch> allMatches = searchResult.getDisplayedMatches();
           CapellaReplaceRunnable capellaReplaceRunnable = new CapellaReplaceRunnable(searchQuery, allMatches, true);
           new CapellaReplaceRunnableWrapper(capellaReplaceRunnable).run();
           if (capellaSearchSettings.getReplaceTextPattern() != null) {

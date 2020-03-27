@@ -18,16 +18,17 @@ import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
+import org.polarsys.capella.core.ui.search.match.SearchMatch;
 
 public class CapellaReplaceRunnable implements IRunnableWithProgress {
   private final CapellaSearchQuery searchQuery;
-  private final Set<CapellaSearchMatchEntry> matches;
+  private final Set<SearchMatch> matches;
   private String replacement = null;
   private final boolean rerunQueryAfterReplacement;
 
   private final CapellaReplaceQuery replaceQuery;
 
-  public CapellaReplaceRunnable(CapellaSearchQuery searchQuery, Set<CapellaSearchMatchEntry> matches,
+  public CapellaReplaceRunnable(CapellaSearchQuery searchQuery, Set<SearchMatch> matches,
       boolean rerunQueryAfterReplacement) {
     this.searchQuery = searchQuery;
     this.matches = matches;

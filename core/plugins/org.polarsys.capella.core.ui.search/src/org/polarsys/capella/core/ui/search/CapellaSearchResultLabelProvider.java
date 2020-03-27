@@ -23,10 +23,13 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.navigator.INavigatorContentService;
 import org.eclipse.ui.navigator.NavigatorContentServiceFactory;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
+import org.polarsys.capella.core.ui.search.match.SearchMatch;
+import org.polarsys.capella.core.ui.search.match.SearchMatchChild;
 
 /*
  * class used to format the result displayed in the search result
  */
+@SuppressWarnings("restriction")
 public class CapellaSearchResultLabelProvider extends LabelProvider {
   public static final Styler HIGHLIGHT_MATCHED_TEXT_STYLE = StyledString.createColorRegistryStyler(null,
       "org.eclipse.search.ui.match.highlight");
@@ -41,13 +44,13 @@ public class CapellaSearchResultLabelProvider extends LabelProvider {
 
   @Override
   public String getText(Object element) {
-    if (element instanceof CapellaSearchMatchEntryLine) {
-      return ((CapellaSearchMatchEntryLine) element).getText();
-    } else if (element instanceof CapellaSearchMatchEntry) {
-      CapellaSearchMatchEntry capellaSearchMatchEntry = (CapellaSearchMatchEntry) element;
+    if (element instanceof SearchMatchChild) {
+      return ((SearchMatchChild) element).getDisplayText();
+    } else if (element instanceof SearchMatch) {
+      SearchMatch capellaSearchMatchEntry = (SearchMatch) element;
       EAttribute attribute = (EAttribute) capellaSearchMatchEntry.getAttribute();
-      if (capellaSearchMatchEntry.getEntryLines().isEmpty()) {
-        return attribute.getName() + ": " + capellaSearchMatchEntry.getText();
+      if (capellaSearchMatchEntry.getChildren().isEmpty()) {
+        return attribute.getName() + ": " + capellaSearchMatchEntry.getDisplayText();
       }
       return attribute.getName();
     } else if (element instanceof Shape && ViewType.NOTE.equals(((Shape) element).getType())) {
@@ -56,12 +59,11 @@ public class CapellaSearchResultLabelProvider extends LabelProvider {
     return capellaNavigatorLabelProvider.getText(element);
   }
 
-  @SuppressWarnings("restriction")
   @Override
   public Image getImage(Object element) {
-    if (element instanceof CapellaSearchMatchEntryLine) {
+    if (element instanceof SearchMatchChild) {
       return null;
-    } else if (element instanceof CapellaSearchMatchEntry) {
+    } else if (element instanceof SearchMatch) {
       return Activator.getDefault().getImage("line_match.png");
     } else if (element instanceof Shape && ViewType.NOTE.equals(((Shape) element).getType())) {
       return ExtendedImageRegistry.INSTANCE
