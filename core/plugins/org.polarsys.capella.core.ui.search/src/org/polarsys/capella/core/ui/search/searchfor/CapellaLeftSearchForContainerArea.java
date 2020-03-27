@@ -35,6 +35,7 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.PatternFilter;
 import org.eclipse.ui.progress.IProgressService;
+import org.polarsys.capella.common.ui.toolkit.widgets.filter.CapellaPatternFilter;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.ui.search.CapellaSearchConstants;
 import org.polarsys.capella.core.ui.search.CapellaSearchPage;
@@ -60,20 +61,7 @@ public class CapellaLeftSearchForContainerArea extends AbstractCapellaSearchForC
   }
 
   protected PatternFilter createPatternFilter() {
-    return new PatternFilter() {
-      @Override
-      public Object[] filter(Viewer viewer, Object parent, Object[] elements) {
-        Object[] result = super.filter(viewer, parent, elements);
-        if (parent != null) {
-          if (parent.equals("")) {
-            for (Object element : result) {
-              filter(viewer, element, searchForContentProvider.getChildren(element));
-            }
-          }
-        }
-        return result;
-      }
-    };
+    return new CapellaPatternFilter();
   }
 
   public void updateSearchSettings() {
@@ -151,7 +139,7 @@ public class CapellaLeftSearchForContainerArea extends AbstractCapellaSearchForC
     Map<String, Integer> fixedCategories = new HashMap<>();
     fixedCategories.put(CapellaSearchConstants.ModelElements_Key, 0);
     fixedCategories.put(CapellaSearchConstants.DiagramElements_Key, 1);
-    
+
     filteredTree.getViewer().setComparator(new ViewerComparator() {
       @Override
       public int compare(Viewer viewer, Object e1, Object e2) {
@@ -198,6 +186,10 @@ public class CapellaLeftSearchForContainerArea extends AbstractCapellaSearchForC
         .filter(item -> CapellacorePackage.Literals.NAMED_ELEMENT.isSuperTypeOf((EClass) item.getObject()))
         .collect(Collectors.toSet());
     filteredTree.getCheckboxTreeViewer().setCheckedElements(namedElementClasses.toArray());
+    cleanCheckedElements();
+    for (Object obj : filteredTree.getCheckboxTreeViewer().getCheckedElements()) {
+      updateCheckedElements(obj, true);
+    }
     updateSearchSettings();
     refreshOtherSideArea();
   }
