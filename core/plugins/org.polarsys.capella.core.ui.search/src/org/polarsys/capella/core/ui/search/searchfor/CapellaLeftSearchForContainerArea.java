@@ -186,6 +186,7 @@ public class CapellaLeftSearchForContainerArea extends AbstractCapellaSearchForC
         .filter(item -> CapellacorePackage.Literals.NAMED_ELEMENT.isSuperTypeOf((EClass) item.getObject()))
         .collect(Collectors.toSet());
     filteredTree.getCheckboxTreeViewer().setCheckedElements(namedElementClasses.toArray());
+    cleanCheckedElements();
     for (Object obj : filteredTree.getCheckboxTreeViewer().getCheckedElements()) {
       updateCheckedElements(obj, true);
     }
