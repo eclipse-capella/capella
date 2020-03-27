@@ -37,7 +37,8 @@ public class SearchForClassItem implements SearchForItem {
    * 
    * @param eObj
    */
-  public boolean cover(Object object) {
+  @Override
+  public boolean covers(Object object) {
     return object instanceof EObject && obj instanceof EClass && ((EObject) object).eClass() == obj;
   }
 
@@ -71,5 +72,10 @@ public class SearchForClassItem implements SearchForItem {
    */
   public List<Object> getAttributes() {
     return ((EClass) obj).getEAllAttributes().stream().collect(Collectors.toList());
+  }
+
+  @Override
+  public Object getRelevantSearchData(EObject searchTarget) {
+    return null;
   }
 }
