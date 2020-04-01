@@ -1653,4 +1653,14 @@ public interface IToolNameConstants {
   String TOOL_XAB_INSERT_FUNCTIONS_FROM_MODE_STATE = "functions.from.mode.state";
   String TOOL_XAB_INSERT_REMOVE_PHYSICAL_PATH = "physical.paths";
 
+  // Title Blocks tools
+  String TOOL_CREATE_DIAGRAM_TITLE_BLOCK = "diagram.title.block";
+  String TOOL_CREATE_ELEMENT_TITLE_BLOCK = "element.title.block";
+
+  // insert/remove line/col
+  String TOOL_INSERT_LINE_TITLE_BLOCK = "element.title.block.line";
+
+  // s/h
+  String TOOL_INSERT_REMOVE_ELEMENT_TITLE_BLOCK = "element.title.blocks"; // todo -> from odes
+  // for col
 }
