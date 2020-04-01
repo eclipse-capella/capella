@@ -7,5 +7,6 @@
 	<buildSpec>
 	</buildSpec>
 	<natures>
+		<nature>org.polarsys.capella.project.nature</nature>
 	</natures>
 </projectDescription>
