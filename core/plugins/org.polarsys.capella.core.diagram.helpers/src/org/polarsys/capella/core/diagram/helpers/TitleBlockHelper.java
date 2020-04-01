@@ -164,6 +164,19 @@ public class TitleBlockHelper {
   }
   
   /**
+   * 
+   * @param titleBlock
+   * @return then semantic element attached to a Title Block
+   */
+  public static EObject getSemanticElementReference(DAnnotation titleBlock) {
+    List<EObject> modelElements = titleBlock.getReferences().stream()
+        .filter(x -> !(x instanceof DAnnotation)).collect(Collectors.toList());
+    if(!modelElements.isEmpty())
+      return modelElements.iterator().next();
+    return null;
+  }
+  
+  /**
    * function that return the index of the column of a selected cell in a Title Block
    * 
    * @param titleBlock:
@@ -270,7 +283,23 @@ public class TitleBlockHelper {
     DAnnotation line = DescriptionFactory.eINSTANCE.createDAnnotation();
     line.setSource(TITLE_BLOCK_LINE);
     diagram.getEAnnotations().add(line);
-    titleBlock.getReferences().add(position, line);
+    // position + 1 because on the first position in references we have the semantic element
+    titleBlock.getReferences().add(position + 1, line);
+    return line;
+  }
+  
+  /**
+   * Add new Title Block to diagram to the given position
+   * and create the columns in the line also
+   * 
+   * @param diagram
+   * @return the added Title Block
+   */
+  public static DAnnotation addTitleBlockLine(DDiagram diagram, DAnnotation titleBlock, int position, int numCols) {
+    DAnnotation line = addTitleBlockLine(diagram, titleBlock, position);
+    for(int i = 0; i < numCols; i++) {
+    	addTitleBlockCell(diagram, line, "", "");
+    }
     return line;
   }
 
