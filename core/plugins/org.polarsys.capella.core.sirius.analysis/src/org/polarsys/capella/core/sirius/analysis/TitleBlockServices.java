@@ -49,6 +49,12 @@ import org.polarsys.capella.core.diagram.helpers.TitleBlockHelper;
 import org.polarsys.capella.core.sirius.analysis.activator.SiriusViewActivator;
 import org.polarsys.capella.core.sirius.analysis.preferences.TitleBlockPreferencesInitializer;
 
+/*
+ * This class exposes the Title Block Services.
+ * We can have two types of title Blocks:
+ * - Diagram Title Blocks
+ * - Element Title Blocks
+ */
 public class TitleBlockServices {
   private static TitleBlockServices service = null;
 
