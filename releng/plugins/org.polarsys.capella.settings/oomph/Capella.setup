@@ -17,230 +17,34 @@
     label="Capella">
   <setupTask
       xsi:type="setup:CompoundTask"
-      name="Global Variables">
-    <setupTask
-        xsi:type="setup:VariableTask"
-        name="bugzilla.id"
-        defaultValue="anonymous"
-        label="Eclipse user email for Bugzilla/Jenkins/Jiro">
-      <description>The email associated with the Eclipse Bugzilla/Jenkins/Jiro account</description>
-    </setupTask>
-    <setupTask
-        xsi:type="setup:VariableTask"
-        type="PASSWORD"
-        name="eclipse.user.password"
-        label="Eclipse password for Bugzilla/Jenkins/Jiro">
-      <annotation
-          source="http://www.eclipse.org/oomph/setup/PasswordVerification">
-        <detail
-            key="type">
-          <value>form</value>
-        </detail>
-        <detail
-            key="form.url">
-          <value>https://accounts.eclipse.org/</value>
-        </detail>
-        <detail
-            key="form.parameters">
-          <value>name pass op form_id</value>
-        </detail>
-        <detail
-            key="form.secure.parameters">
-          <value>pass</value>
-        </detail>
-        <detail
-            key="form.filter">
-          <value>name=anonymous\&amp;.*</value>
-        </detail>
-        <detail
-            key="form.parameter.name">
-          <value>$${bugzilla.id}</value>
-        </detail>
-        <detail
-            key="form.parameter.pass">
-          <value>$${value}</value>
-        </detail>
-        <detail
-            key="form.parameter.op">
-          <value>Sign in</value>
-        </detail>
-        <detail
-            key="form.parameter.form_id">
-          <value>user_login</value>
-        </detail>
-        <detail
-            key="form.verification.matches">
-          <value>&lt;https://www.eclipse.org/user/.*>; rel=&quot;canonical&quot;.*</value>
-        </detail>
-        <detail
-            key="form.ok">
-          <value>Valid password for $${form.parameter.name} at $${form.url}.</value>
-        </detail>
-        <detail
-            key="form.info">
-          <value>Validate the password for $${form.parameter.name} at $${form.url}.</value>
-        </detail>
-        <detail
-            key="form.warning">
-          <value>Unable to validate the password for $${form.parameter.name} because $${form.url} is unreachable.</value>
-        </detail>
-        <detail
-            key="form.error">
-          <value>Invalid password for $${form.parameter.name} at $${form.url}.</value>
-        </detail>
-      </annotation>
-      <annotation
-          source="http://www.eclipse.org/oomph/setup/PasswordVerification">
-        <detail
-            key="type">
-          <value>form</value>
-        </detail>
-        <detail
-            key="form.url">
-          <value>https://git.eclipse.org/r/login/</value>
-        </detail>
-        <detail
-            key="form.parameters">
-          <value>username password submit</value>
-        </detail>
-        <detail
-            key="form.secure.parameters">
-          <value>password</value>
-        </detail>
-        <detail
-            key="form.filter">
-          <value>username=anonymous\&amp;.*</value>
-        </detail>
-        <detail
-            key="form.parameter.username">
-          <value>$${bugzilla.id}</value>
-        </detail>
-        <detail
-            key="form.parameter.password">
-          <value>$${value}</value>
-        </detail>
-        <detail
-            key="form.parameter.submit">
-          <value>Sign In</value>
-        </detail>
-        <detail
-            key="form.verification.url">
-          <value>https://git.eclipse.org/r/accounts/$${git.user.id|username}</value>
-        </detail>
-        <detail
-            key="form.verification.matches">
-          <value>.*&quot;email&quot;: &quot;$${form.parameter.username}&quot;.*</value>
-        </detail>
-        <detail
-            key="form.ok">
-          <value>Valid password for account $${git.user.id} of $${form.parameter.username} at $${form.url}.</value>
-        </detail>
-        <detail
-            key="form.info">
-          <value>Validate the password for account $${git.user.id} of $${form.parameter.username} at $${form.url}.</value>
-        </detail>
-        <detail
-            key="form.warning">
-          <value>Unable to validate the password for account $${git.user.id} of $${form.parameter.username} because $${form.url} is unreachable.</value>
-        </detail>
-        <detail
-            key="form.error">
-          <value>Invalid password for account $${git.user.id} of $${form.parameter.username} at $${form.url}.</value>
-        </detail>
-      </annotation>
-      <annotation
-          source="http://www.eclipse.org/oomph/setup/PasswordVerification">
-        <detail
-            key="type">
-          <value>form-post</value>
-        </detail>
-        <detail
-            key="form.url">
-          <value>https://accounts.eclipse.org/</value>
-        </detail>
-        <detail
-            key="form.filter">
-          <value>anonymous</value>
-        </detail>
-        <detail
-            key="form.user">
-          <value>$${bugzilla.id}</value>
-        </detail>
-        <detail
-            key="form.password">
-          <value>$${value}</value>
-        </detail>
-        <detail
-            key="form.response.location.matches">
-          <value>https://accounts.eclipse.org/users/$${git.user.id}</value>
-        </detail>
-        <detail
-            key="form.ok">
-          <value>Valid password for account $${git.user.id} of $${form.user} at $${form.url}.</value>
-        </detail>
-        <detail
-            key="form.info">
-          <value>Validate the password for account $${git.user.id} of $${form.user} at $${form.url}.</value>
-        </detail>
-        <detail
-            key="form.warning">
-          <value>Unable to validate the password for account $${git.user.id} of $${form.user} because $${form.url} is unreachable.</value>
-        </detail>
-        <detail
-            key="form.error">
-          <value>Invalid password for account $${git.user.id} of $${form.user} at $${form.url}.</value>
-        </detail>
-      </annotation>
-      <annotation
-          source="http://www.eclipse.org/oomph/setup/PasswordVerification">
-        <detail
-            key="type">
-          <value>form-post</value>
-        </detail>
-        <detail
-            key="form.url">
-          <value>https://accounts.eclipse.org/</value>
-        </detail>
-        <detail
-            key="form.filter">
-          <value>anonymous</value>
-        </detail>
-        <detail
-            key="form.user">
-          <value>$${bugzilla.id}</value>
-        </detail>
-        <detail
-            key="form.password">
-          <value>$${value}</value>
-        </detail>
-        <detail
-            key="form.response.location.matches">
-          <value>https://accounts.eclipse.org/users/.*</value>
-        </detail>
-        <detail
-            key="form.ok">
-          <value>Valid password for $${form.user} at $${form.url}.</value>
-        </detail>
-        <detail
-            key="form.info">
-          <value>Validate the password for $${form.user} at $${form.url}.</value>
-        </detail>
-        <detail
-            key="form.warning">
-          <value>Unable to validate the password for $${form.user} because $${form.url} is unreachable.</value>
-        </detail>
-        <detail
-            key="form.error">
-          <value>Invalid password for $${form.user} at $${form.url}.</value>
-        </detail>
-      </annotation>
-    </setupTask>
+      name="User Preferences">
+    <annotation
+        source="http://www.eclipse.org/oomph/setup/UserPreferences"/>
   </setupTask>
   <setupTask
       xsi:type="jdt:JRETask"
       version="JavaSE-1.8"
       location="${jre.location-1.8}">
     <description>Define the JRE needed to compile and run the Java projects of ${scope.project.label} 1.2.x+</description>
+  </setupTask>
+  <setupTask
+      xsi:type="setup:CompoundTask"
+      name="Global Variables">
+    <setupTask
+        xsi:type="setup:VariableTask"
+        name="github.remoteURIs"
+        label="Github repository">
+      <choice
+          value="https://${github.user.id|username}@github.com/@{remoteURI}.git"
+          label="HTTPS (read-write)"/>
+      <choice
+          value="git@github.com:@{remoteURI}.git"
+          label="Git (read-write)"/>
+      <choice
+          value="https://github.com/@{remoteURI}.git"
+          label="HTTPS (read-only, anonymous)"/>
+      <description>Choose from the available Github URIs</description>
+    </setupTask>
   </setupTask>
   <project name="Capella Developer">
     <setupTask
@@ -1101,6 +905,6 @@
   </project>
   <logicalProjectContainer
       xsi:type="setup:ProjectCatalog"
-      href="index:/org.eclipse.setup#//@projectCatalogs[name='com.github']"/>
+      href="index:/org.eclipse.setup#//@projectCatalogs[name='org.eclipse']"/>
   <description></description>
 </setup:Project>
