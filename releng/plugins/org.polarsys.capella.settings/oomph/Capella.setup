@@ -242,8 +242,7 @@
       location="${jre.location-1.8}">
     <description>Define the JRE needed to compile and run the Java projects of ${scope.project.label} 1.2.x+</description>
   </setupTask>
-  <project name="Capella Developer"
-      logicalProjectContainer="/">
+  <project name="Capella Developer">
     <setupTask
         xsi:type="git:GitCloneTask"
         id="git.clone.capella"
@@ -363,7 +362,7 @@
         <sourceLocator
             rootFolder="${git.clone.capella.location}"
             locateNestedProjects="true">
-          <excludedPath>ext/viatra/</excludedPath>
+          <excludedPath>ext/viatra</excludedPath>
           <predicate
               xsi:type="predicates:NotPredicate">
             <operand
