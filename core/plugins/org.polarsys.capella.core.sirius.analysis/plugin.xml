@@ -91,6 +91,10 @@
             priority="high"
             providerClass="org.polarsys.capella.core.sirius.analysis.refresh.extension.ContextualOCRefreshExtensionProvider">
       </refreshExtensionProvider>
+      <refreshExtensionProvider
+            priority="high"
+            providerClass="org.polarsys.capella.core.sirius.analysis.refresh.extension.TitleBlockRefreshExtensionProvider">
+      </refreshExtensionProvider>
    </extension>
    <extension
          point="org.eclipse.sirius.externalJavaAction">

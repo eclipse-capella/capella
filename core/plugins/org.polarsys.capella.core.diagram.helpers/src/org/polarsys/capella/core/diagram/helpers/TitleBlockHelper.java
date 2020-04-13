@@ -28,7 +28,6 @@ public class TitleBlockHelper {
   public static final String TITLE_BLOCK_LINE = "TitleBlockLine";
   public static final String TITLE_BLOCK_CELL = "TitleBlockCell";
   public static final String ELEMENT_TITLE_BLOCK = "ElementTitleBlock";
-  public static final String VISIBILITY = "Visibility";
   public static final String TRUE = "True";
   public static final String NAME = "Name:";
   public static final String CONTENT = "Content:";
@@ -172,7 +171,7 @@ public class TitleBlockHelper {
     List<EObject> modelElements = titleBlock.getReferences().stream()
         .filter(x -> !(x instanceof DAnnotation)).collect(Collectors.toList());
     if(!modelElements.isEmpty())
-      return modelElements.iterator().next();
+      return modelElements.get(0);
     return null;
   }
   
@@ -239,7 +238,6 @@ public class TitleBlockHelper {
   public static DAnnotation addDiagramTitleBlock(DDiagram diagram) {
     DAnnotation titleBlock = DescriptionFactory.eINSTANCE.createDAnnotation();
     titleBlock.setSource(DIAGRAM_TITLE_BLOCK);
-    titleBlock.getDetails().put(VISIBILITY, TRUE);
     diagram.getEAnnotations().add(titleBlock);
     return titleBlock;
   }
@@ -253,7 +251,6 @@ public class TitleBlockHelper {
   public static DAnnotation addElementTitleBlock(DDiagram diagram, DDiagramElement diagramElement) {
     DAnnotation titleBLock = DescriptionFactory.eINSTANCE.createDAnnotation();
     titleBLock.setSource(ELEMENT_TITLE_BLOCK);
-    titleBLock.getDetails().put(VISIBILITY, TRUE);
     titleBLock.getReferences().add(diagramElement.getTarget());
     diagram.getEAnnotations().add(titleBLock);
     return titleBLock;
@@ -274,7 +271,7 @@ public class TitleBlockHelper {
   }
   
   /**
-   * Add new Title Block to diagram to the given position
+   * Add new line to an existing Title Block in diagram to the given position
    * 
    * @param diagram
    * @return the added Title Block
