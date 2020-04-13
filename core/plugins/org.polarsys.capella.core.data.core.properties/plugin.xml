@@ -281,4 +281,13 @@
          </propertySection>
       </propertySections>
    </extension>
+   <extension
+        point="org.eclipse.eef.properties.ui.eefTabDescriptorFilter">
+     <descriptor
+           class="org.polarsys.capella.core.data.core.properties.filters.LegacyTabFilter"
+           description="Filters out Sirius' legacy tabs from the Properties view when editing custom models with a Sirius based diagram editor."
+           id="org.polarsys.capella.core.data.core.properties.filters"
+           label="Filter Legacy Sirius Tabs">
+     </descriptor>
+  </extension>
 </plugin>
