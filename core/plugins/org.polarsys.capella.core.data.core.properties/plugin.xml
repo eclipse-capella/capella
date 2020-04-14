@@ -281,6 +281,7 @@
          </propertySection>
       </propertySections>
    </extension>
+   <!--
    <extension
         point="org.eclipse.eef.properties.ui.eefTabDescriptorFilter">
      <descriptor
@@ -290,4 +291,5 @@
            label="Filter Legacy Sirius Tabs">
      </descriptor>
   </extension>
+  -->
 </plugin>
