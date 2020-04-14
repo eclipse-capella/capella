@@ -1,10 +1,10 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Capella REC Project Plugin
+Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.re.project;singleton:=true
 Bundle-Version: 1.4.1.qualifier
 Bundle-Activator: org.polarsys.capella.core.re.project.ReProjectActivator
-Bundle-Vendor: Eclipse.org
+Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.osgi,
  org.eclipse.jface,
  org.eclipse.core.runtime,

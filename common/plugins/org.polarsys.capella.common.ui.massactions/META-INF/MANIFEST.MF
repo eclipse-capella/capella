@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Massediting
+Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.common.ui.massactions;singleton:=true
 Bundle-Version: 1.4.1.qualifier
 Require-Bundle: org.polarsys.kitalpha.massactions;visibility:=reexport,
@@ -14,3 +14,4 @@ Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
 Export-Package: org.polarsys.capella.common.ui.massactions.activator
 Automatic-Module-Name: org.polarsys.capella.common.ui.massactions
+Bundle-Vendor: %providerName

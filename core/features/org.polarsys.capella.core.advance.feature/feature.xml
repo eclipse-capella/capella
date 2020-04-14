@@ -14,8 +14,7 @@
       label="%featureName"
       version="1.4.1.qualifier"
       provider-name="%providerName"
-      plugin="org.polarsys.capella.core.platform.sirius.ui.perspective"
-      image="Capella32x32.gif">
+      plugin="org.polarsys.capella.core.platform.sirius.ui.perspective">
 
    <description>
       %description

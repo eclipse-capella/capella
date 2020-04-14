@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Ju
+Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.test.platform.ju
 Bundle-Version: 1.4.1.qualifier
 Bundle-Activator: org.polarsys.capella.test.platform.ju.Activator
@@ -23,3 +23,5 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.polarsys.capella.test.platform.ju,
  org.polarsys.capella.test.platform.ju.testcases,
  org.polarsys.capella.test.platform.ju.testsuites
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin

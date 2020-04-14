@@ -24,3 +24,4 @@ Export-Package: org.polarsys.capella.detachment.propertyvalue.command,
  org.polarsys.capella.detachment.propertyvalue.messages,
  org.polarsys.capella.detachment.propertyvalues.scrutinizers,
  org.polarsys.capella.detachment.propertyvalues.ui.page
+Bundle-Localization: plugin

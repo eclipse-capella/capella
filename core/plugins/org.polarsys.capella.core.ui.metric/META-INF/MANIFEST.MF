@@ -5,7 +5,7 @@ Bundle-SymbolicName: org.polarsys.capella.core.ui.metric;singleton:=true
 Bundle-Version: 1.4.1.qualifier
 Bundle-Activator: org.polarsys.capella.core.ui.metric.MetricActivator
 Bundle-Vendor: %providerName
-Bundle-localization: plugin
+Bundle-Localization: plugin
 Require-Bundle: com.google.guava,
  org.eclipse.core.runtime,
  org.eclipse.sirius.table,

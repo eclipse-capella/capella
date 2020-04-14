@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Tests
+Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.test.massactions.ju
 Bundle-Version: 1.4.1.qualifier
 Bundle-Activator: org.polarsys.capella.test.massactions.ju.activator.TestActivator
@@ -11,3 +11,5 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Automatic-Module-Name: org.polarsys.capella.common.ui.massactions.tests.ju
 Export-Package: org.polarsys.capella.test.massactions.ju.testsuites
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin

@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: %bundleName
+Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.re.updateconnections.ui;singleton:=true
 Bundle-Version: 1.4.1.qualifier
 Bundle-Activator: org.polarsys.capella.core.re.updateconnections.ui.UpdateConnectionsUIActivator
@@ -24,3 +24,4 @@ Export-Package: org.polarsys.capella.core.re.updateconnections.ui,
  org.polarsys.capella.core.re.updateconnections.ui.properties,
  org.polarsys.capella.core.re.updateconnections.ui.tester
 Bundle-Vendor: %providerName
+Bundle-Localization: plugin

@@ -15,11 +15,11 @@
       version="1.4.1.qualifier"
       provider-name="%providerName">
 
-   <copyright url="%licenseURL">
+   <copyright>
       %copyright
    </copyright>
 
-   <license url="">
+   <license url="%licenseURL">
       %license
    </license>
 
