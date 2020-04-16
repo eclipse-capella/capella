@@ -23,8 +23,8 @@ import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.xml.type.SimpleAnyType;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.jface.window.Window;
 import org.eclipse.sirius.common.tools.api.interpreter.CompoundInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
@@ -35,13 +35,13 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
-import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
 import org.eclipse.swt.graphics.Image;
 import org.polarsys.capella.core.diagram.helpers.TitleBlockHelper;
 import org.polarsys.capella.core.sirius.analysis.activator.SiriusViewActivator;
+import org.polarsys.capella.core.sirius.analysis.preferences.TitleBlockDialog;
 import org.polarsys.capella.core.sirius.analysis.preferences.TitleBlockPreferencesInitializer;
 
 /*
@@ -57,6 +57,7 @@ public class TitleBlockServices {
   static Map<String, String> propertiesContent = new HashMap<String, String>();
   private static final String DEFAULT_CELL_NAME = "Name";
   private static final String DEFAULT_CELL_CONTENT = "feature:name";
+  private static final String INTERPRETER_ERROR = "Interpreter Error: Syntax not valid";
 
   public static TitleBlockServices getService() {
     if (service == null) {
@@ -435,10 +436,10 @@ public class TitleBlockServices {
      * if the current Title Block from diagram needs to be updated with the new preferences stored Title Block remove
      * the current Title Block and re-create it again
      */
-    if (!currentTB.equals(TitleBlockPreferencesInitializer.getContent())) {
-      deleteTitleBlock((DDiagram) elementView, diagramTitleBlock);
-      createDiagramTitleBlock((DDiagram) elementView);
-    }
+    // if (!currentTB.equals(TitleBlockPreferencesInitializer.getContent())) {
+    // deleteTitleBlock((DDiagram) elementView, diagramTitleBlock);
+    // createDiagramTitleBlock((DDiagram) elementView);
+    // }
   }
 
   /**
@@ -574,8 +575,8 @@ public class TitleBlockServices {
    * @param cell
    * @param containerView
    * @param titleBlockContainer
-   * @return the content of the cell, the returned object can be a EObject, Collection<?EObjects>; 
-   * we wrap a primitive type in a DAnnotation object
+   * @return the content of the cell, the returned object can be a EObject, Collection<?EObjects>; we wrap a primitive
+   *         type in a DAnnotation object
    */
   public Object getCellContent(EObject diagram, EObject cell, EObject containerView, DAnnotation titleBlockContainer) {
     if ((diagram instanceof DDiagram)) {
@@ -588,7 +589,7 @@ public class TitleBlockServices {
           if (objToEvaluate == null)
             objToEvaluate = diagram;
 
-          Object obj = getResultOfExpression(objToEvaluate, feature);
+          Object obj = getResultOfExpression(objToEvaluate, feature, cell);
           if (obj != null) {
             if (obj instanceof Collection) {
               return ((Collection) obj).stream()
@@ -677,8 +678,8 @@ public class TitleBlockServices {
   }
 
   /**
-   * show or hide a Title Block depending on given type (DIAGRAM_TITLE_BLOCK or ELEMENT_TITLE_BLOCK).
-   * selectedTypes are the elements that shall be displayed
+   * show or hide a Title Block depending on given type (DIAGRAM_TITLE_BLOCK or ELEMENT_TITLE_BLOCK). selectedTypes are
+   * the elements that shall be displayed
    * 
    * @param elementView
    * @param selectedTypes
@@ -713,6 +714,7 @@ public class TitleBlockServices {
 
   /**
    * creates a Container Node for the given mapping name
+   * 
    * @param titleBlock
    * @param diagram
    * @param context
@@ -728,6 +730,7 @@ public class TitleBlockServices {
 
   /**
    * creates the graphical view of the Title Block (including lines and columns)
+   * 
    * @param titleBlock
    * @param diagram
    * @param context
@@ -750,6 +753,7 @@ public class TitleBlockServices {
 
   /**
    * creates the graphical view of a line for a Title Block (creates also the views for each column)
+   * 
    * @param nodeTitleBlock
    * @param annotationLine
    * @param diagram
@@ -772,6 +776,7 @@ public class TitleBlockServices {
 
   /**
    * creates the graphical view of a column for a Title Block
+   * 
    * @param nodeLine
    * @param annotationCol
    * @param diagram
@@ -829,7 +834,7 @@ public class TitleBlockServices {
    *          the expression to be evaluate (ex feature: name, or capella: xyz)
    * @return result after the expression was evaluated
    */
-  private Object getResultOfExpression(EObject target, String expression) {
+  private Object getResultOfExpression(EObject target, String expression, EObject cell) {
     IInterpreterProvider provider = CompoundInterpreter.INSTANCE.getProviderForExpression(expression);
     IInterpreter interpreter = provider.createInterpreter();
     Object result = null;
@@ -837,8 +842,23 @@ public class TitleBlockServices {
       result = interpreter.evaluate(target, expression);
     } catch (EvaluationException e) {
       e.printStackTrace();
+      return createValidationDialog(target, result, cell);
     }
     return result;
+  }
+
+  private Object createValidationDialog(EObject target, Object resultToValidate, EObject cell) {
+    resultToValidate = String.valueOf(INTERPRETER_ERROR);
+    TitleBlockDialog dialog = new TitleBlockDialog(null);
+    dialog.setCurrentName(((DAnnotation) cell).getDetails().get(TitleBlockHelper.NAME));
+    dialog.setCurrentContent(INTERPRETER_ERROR);
+    dialog.create();
+    if (dialog.open() == Window.OK) {
+      ((DAnnotation) cell).getDetails().put(TitleBlockHelper.CONTENT, String.valueOf(dialog.getContent()));
+      resultToValidate = getResultOfExpression(target, String.valueOf(dialog.getContent()), cell);
+      dialog.close();
+    }
+    return resultToValidate;
   }
 
 }
