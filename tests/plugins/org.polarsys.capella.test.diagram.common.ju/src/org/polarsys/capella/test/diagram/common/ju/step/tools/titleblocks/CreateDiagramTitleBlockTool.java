@@ -28,6 +28,8 @@ import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateAbstractDNod
 
 public class CreateDiagramTitleBlockTool extends CreateAbstractDNodeTool<DDiagramElementContainer> {
 
+  private static final String DIAGRAM_TITLE_BLOCK = "DiagramTitleBlock";
+
   public CreateDiagramTitleBlockTool(DiagramContext context, String toolName, String containerView) {
     super(context, toolName, containerView);
   }
@@ -53,8 +55,7 @@ public class CreateDiagramTitleBlockTool extends CreateAbstractDNodeTool<DDiagra
 
     DAnnotation titleBlock = (DAnnotation) element.getTarget();
 
-    // to replace with constant after merge with existing code
-    assertTrue(titleBlock.getSource().equals("DiagramTitleBlock"));
+    assertTrue(titleBlock.getSource().equals(DIAGRAM_TITLE_BLOCK));
 
     int numLines = TitleBlockPreferencesInitializer.getLinesNumber();
     int numCols = TitleBlockPreferencesInitializer.getColumnsNumber();
@@ -64,9 +65,6 @@ public class CreateDiagramTitleBlockTool extends CreateAbstractDNodeTool<DDiagra
 
     List<DAnnotation> columns = TitleBlockHelper.getTitleBlockCells(lines.get(0));
     assertTrue(numCols == columns.size());
-
-    // todo: check that the number of cols, lines are as the one in preferences
-    // ->after merge with existing code
   }
 
   @Override

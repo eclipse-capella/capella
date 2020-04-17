@@ -30,8 +30,11 @@ import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.SelectTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.titleblocks.CreateDiagramTitleBlockTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.titleblocks.CreateElementTitleBlockTool;
+import org.polarsys.capella.test.diagram.common.ju.step.tools.titleblocks.InsertColumnInTitleBlockTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.titleblocks.InsertLineInTitleBlockTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.titleblocks.InsertRemoveTitleBlockTool;
+import org.polarsys.capella.test.diagram.common.ju.step.tools.titleblocks.RemoveColumnFromTitleBlockTool;
+import org.polarsys.capella.test.diagram.common.ju.step.tools.titleblocks.RemoveLineFromTitleBlockTool;
 import org.polarsys.capella.test.framework.context.SessionContext;
 
 public class CommonDiagram extends DiagramContext {
@@ -71,10 +74,28 @@ public class CommonDiagram extends DiagramContext {
     new InsertRemoveTitleBlockTool(this, IToolNameConstants.TOOL_INSERT_REMOVE_ELEMENT_TITLE_BLOCK).insert(id);
   }
 
-  public void insertLineInTitleBlock(DAnnotation titleBlock, int prevLine) {
-    new InsertLineInTitleBlockTool(this, IToolNameConstants.TOOL_INSERT_LINE_TITLE_BLOCK, titleBlock, prevLine,
-        getDiagramId());
+  public DAnnotation insertLineInTitleBlock(DAnnotation titleBlock, int lineNo) {
+    DDiagramElementContainer createdTB = new InsertLineInTitleBlockTool(this,
+        IToolNameConstants.TOOL_INSERT_LINE_TITLE_BLOCK, getDiagramId(), titleBlock, lineNo).run();
+    return (DAnnotation) createdTB.getTarget();
+  }
 
+  public DAnnotation insertColumnInTitleBlock(DAnnotation titleBlock, int colNo) {
+    DDiagramElementContainer createdTB = new InsertColumnInTitleBlockTool(this,
+        IToolNameConstants.TOOL_INSERT_COLUMN_TITLE_BLOCK, getDiagramId(), titleBlock, colNo).run();
+    return (DAnnotation) createdTB.getTarget();
+  }
+
+  public DAnnotation removeLineFromTitleBlock(DAnnotation titleBlock, int lineNo) {
+    DDiagramElementContainer createdTB = new RemoveLineFromTitleBlockTool(this,
+        IToolNameConstants.TOOL_REMOVE_LINE_TITLE_BLOCK, getDiagramId(), titleBlock, lineNo).run();
+    return (DAnnotation) createdTB.getTarget();
+  }
+
+  public DAnnotation removeColumnFromTitleBlock(DAnnotation titleBlock, int colNo) {
+    DDiagramElementContainer createdTB = new RemoveColumnFromTitleBlockTool(this,
+        IToolNameConstants.TOOL_REMOVE_COLUMN_TITLE_BLOCK, getDiagramId(), titleBlock, colNo).run();
+    return (DAnnotation) createdTB.getTarget();
   }
 
   public void createConstrainedElement(String sourceId, String targetId) {

@@ -25,14 +25,20 @@ public abstract class CDBTitleBlockTestCase extends AbstractTitleBlockTestCase {
   @Override
   public void testTitleBlocks() {
     // create TB tools
-    // diagram.createDiagramTitleBlock();
+    diagram.createDiagramTitleBlock();
     DAnnotation elementTB = diagram.createElementTitleBlock(classId);
 
     // show/hide tool
-    // diagram.removeTitleBlock(elementTB.getUid());
-    // diagram.insertTitleBlock(elementTB.getUid());
+    diagram.removeTitleBlock(elementTB.getUid());
+    diagram.insertTitleBlock(elementTB.getUid());
+
+    // insert line/column in TB element
     diagram.insertLineInTitleBlock(elementTB, 0);
-    // inset line in element TB
+    diagram.insertColumnInTitleBlock(elementTB, 0);
+
+    // remove line/column from TB element
+    diagram.removeLineFromTitleBlock(elementTB, 0);
+    diagram.removeColumnFromTitleBlock(elementTB, 0);
 
   }
 

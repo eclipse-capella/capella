@@ -16,21 +16,18 @@ import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.polarsys.capella.core.diagram.helpers.TitleBlockHelper;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 
-public class InsertLineInTitleBlockTool extends InsertRemoveLineInTitleBlockTool {
-  public InsertLineInTitleBlockTool(DiagramContext context, String toolName, String diagramID, DAnnotation titleBlock,
-      int lineNo) {
-    super(context, toolName, diagramID, titleBlock, lineNo);
+public class InsertColumnInTitleBlockTool extends InsertRemoveColumnInTitleBlockTool {
+
+  public InsertColumnInTitleBlockTool(DiagramContext context, String toolName, String diagramID, DAnnotation titleBlock,
+      int colNo) {
+    super(context, toolName, diagramID, titleBlock, colNo);
   }
 
   @Override
   protected void postRunTest() {
-    // a new line is added under the current selected line
-    int newLinesNo = TitleBlockHelper.getTitleBlockLines(titleBlock).size();
-    assertTrue(newLinesNo == currentLinesNo + 1);
+    // a new col is added under the current selected column
+    int newColsNo = TitleBlockHelper.getNumOfColumns(titleBlock);
+    assertTrue(newColsNo == currentColsNo + 1);
 
-    DAnnotation currentLine = TitleBlockHelper.getTitleBlockLines(titleBlock).get(currentLineNo);
-    DAnnotation newLine = TitleBlockHelper.getTitleBlockLines(titleBlock).get(currentLineNo + 1);
-    assertTrue(
-        TitleBlockHelper.getTitleBlockCells(newLine).size() == TitleBlockHelper.getTitleBlockCells(currentLine).size());
   }
 }

@@ -1657,10 +1657,13 @@ public interface IToolNameConstants {
   String TOOL_CREATE_DIAGRAM_TITLE_BLOCK = "diagram.title.block";
   String TOOL_CREATE_ELEMENT_TITLE_BLOCK = "element.title.block";
 
-  // insert/remove line/col
+  // insert/remove line/col TB
   String TOOL_INSERT_LINE_TITLE_BLOCK = "element.title.block.line";
+  String TOOL_INSERT_COLUMN_TITLE_BLOCK = "element.title.block.column";
+  String TOOL_REMOVE_LINE_TITLE_BLOCK = "remove.element.title.block.line";
+  String TOOL_REMOVE_COLUMN_TITLE_BLOCK = "remove.element.title.block.column";
 
-  // s/h
-  String TOOL_INSERT_REMOVE_ELEMENT_TITLE_BLOCK = "element.title.blocks"; // todo -> from odes
-  // for col
+  // s/h TB
+  String TOOL_INSERT_REMOVE_ELEMENT_TITLE_BLOCK = "element.title.blocks";
+
 }

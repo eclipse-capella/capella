@@ -11,8 +11,13 @@
 package org.polarsys.capella.test.diagram.tools.ju.tb;
 
 public class SA_CDBTitleBlockTestCase extends CDBTitleBlockTestCase {
+
+  private static final String CLASS_ID = "8feafdba-d299-4195-9d47-ee216dc52cdd";
+  private static final String DIAGRAM_NAME = "[CDB] Data TestCase1";
+
+  @Override
   public void initData() {
-    classId = "8feafdba-d299-4195-9d47-ee216dc52cdd";
-    diagramName = "[CDB] Data TestCase1";
+    classId = CLASS_ID;
+    diagramName = DIAGRAM_NAME;
   }
 }
