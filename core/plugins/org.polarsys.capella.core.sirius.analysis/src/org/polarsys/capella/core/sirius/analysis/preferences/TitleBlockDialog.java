@@ -10,7 +10,24 @@
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.analysis.preferences;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.eclipse.jface.bindings.keys.KeyStroke;
+import org.eclipse.jface.bindings.keys.ParseException;
 import org.eclipse.jface.dialogs.TitleAreaDialog;
+import org.eclipse.jface.fieldassist.ContentProposalAdapter;
+import org.eclipse.jface.fieldassist.IContentProposal;
+import org.eclipse.jface.fieldassist.IContentProposalListener;
+import org.eclipse.jface.fieldassist.IContentProposalProvider;
+import org.eclipse.jface.fieldassist.TextContentAdapter;
+import org.eclipse.sirius.common.tools.api.contentassist.ContentInstanceContext;
+import org.eclipse.sirius.common.tools.api.contentassist.ContentProposal;
+import org.eclipse.sirius.common.tools.api.contentassist.IProposalProvider;
+import org.eclipse.sirius.common.tools.api.interpreter.CompoundInterpreter;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.internal.assist.ProposalProviderRegistry;
+import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DSemanticDiagramSpec;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -85,6 +102,50 @@ public class TitleBlockDialog extends TitleAreaDialog {
     txtContent.setText(currentContent);
 
     txtContent.setLayoutData(dataContent);
+    KeyStroke keyStroke;
+    try {
+      keyStroke = KeyStroke.getInstance("Ctrl+Space");
+      IContentProposalProvider provider = new IContentProposalProvider() {
+
+        @Override
+        public IContentProposal[] getProposals(String contents, int position) {
+          IInterpreter vpInterpreter = CompoundInterpreter.INSTANCE.getInterpreterForExpression(contents);
+          DSemanticDiagramSpec target = new DSemanticDiagramSpec();
+
+          ContentInstanceContext contentContext = new ContentInstanceContext(target, contents, position);
+          List<ContentProposal> computedProposals;
+          if (vpInterpreter instanceof IProposalProvider) {
+            computedProposals = ((IProposalProvider) vpInterpreter).getProposals(vpInterpreter, contentContext);
+          } else {
+            computedProposals = new ArrayList<>();
+            final List<IProposalProvider> proposalProviders = ProposalProviderRegistry.getProvidersFor(vpInterpreter);
+            for (IProposalProvider provider : proposalProviders) {
+              computedProposals.addAll(provider.getProposals(vpInterpreter, contentContext));
+            }
+          }
+          List<IContentProposal> proposalsList = new ArrayList<IContentProposal>();
+          for (ContentProposal proposals : computedProposals) {
+            org.eclipse.jface.fieldassist.ContentProposal contentProposals = new org.eclipse.jface.fieldassist.ContentProposal(
+                proposals.getProposal());
+            proposalsList.add(contentProposals);
+          }
+
+          IContentProposal[] proposals = new IContentProposal[proposalsList.size()];
+          proposals = proposalsList.toArray(proposals);
+          return proposals;
+        }
+      };
+
+      ContentProposalAdapter adapter = new ContentProposalAdapter(txtContent, new TextContentAdapter(), provider,
+          keyStroke, null);
+
+      adapter.addContentProposalListener(new IContentProposalListener() {
+        public void proposalAccepted(IContentProposal proposal) {
+        }
+      });
+    } catch (ParseException e) {
+      e.printStackTrace();
+    }
   }
 
   @Override
