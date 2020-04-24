@@ -42,7 +42,7 @@ import org.polarsys.capella.common.ui.toolkit.browser.category.ICategory;
 import org.polarsys.capella.core.sirius.analysis.CapellaInterpreter;
 
 import com.google.common.base.CaseFormat;
-
+// New commit 2
 public class TitleBlockDialog extends TitleAreaDialog {
   private final String TITLE_NAME = "Add name and content";
   private final String NAME_LABEL = "Name";
