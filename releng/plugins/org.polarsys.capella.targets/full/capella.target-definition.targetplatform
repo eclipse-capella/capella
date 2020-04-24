@@ -10,7 +10,7 @@
  *******************************************************************************/
 target "Capella"
 
-include "../modules/gmf-runtime-1.13.tpd"
+include "https://download.eclipse.org/sirius/updates/stable/6.3.1-S20200424-062347/2019-06/targets/modules/gmf-runtime-1.13.tpd"
 
 with source, requirements
 
