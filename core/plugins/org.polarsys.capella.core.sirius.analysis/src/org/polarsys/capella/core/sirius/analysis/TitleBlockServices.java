@@ -298,14 +298,14 @@ public class TitleBlockServices {
     handleDanglingElementTitleBlocks(listElementTitleBlocks, diagram);
 
     // refresh the diagram title block, so that if preferences have changed, TB is updated
-    DAnnotation diagramTitleBlock = TitleBlockHelper.getDiagramTitleBlock(diagram);
-    if (diagramTitleBlock != null) {
-      updateDiagramTitleBlock(diagramTitleBlock, (EObject) diagram);
-    } else {
-      if (TitleBlockPreferencesInitializer.isCreateDiagramTitleBlockByDefault()) {
-        createDiagramTitleBlock((DDiagram) diagram);
-      }
-    }
+//    DAnnotation diagramTitleBlock = TitleBlockHelper.getDiagramTitleBlock(diagram);
+//    if (diagramTitleBlock != null) {
+//      updateDiagramTitleBlock(diagramTitleBlock, (EObject) diagram);
+//    } else {
+//      if (TitleBlockPreferencesInitializer.isCreateDiagramTitleBlockByDefault()) {
+//        createDiagramTitleBlock((DDiagram) diagram);
+//      }
+//    }
   }
 
   /**
@@ -818,6 +818,16 @@ public class TitleBlockServices {
       return TitleBlockHelper.isDiagramTitleBlock(annotation) | TitleBlockHelper.isElementTitleBlock(annotation);
     }
     return false;
+  }
+  
+  /**
+   * 
+   * @param element
+   * @return true if element is a Diagram Title Block
+   */
+  public boolean isDiagramTitleBlock(EObject element) {
+    return (element instanceof DAnnotation) &&
+        TitleBlockHelper.isDiagramTitleBlock((DAnnotation)element);
   }
 
   public static Image getImage(Object object) {
