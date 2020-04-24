@@ -16,7 +16,6 @@ import java.util.function.Predicate;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.GraphicalFilter;
-import org.eclipse.sirius.diagram.impl.HideLabelFilterImpl;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
@@ -33,6 +32,16 @@ import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
  */
 public abstract class DiagramTitleBlockFilterTestCase extends DiagramObjectFilterTestCase {
 
+  @Override
+  protected String getTestProjectName() {
+    return "TitleBlocksModel";
+  }
+
+  @Override
+  protected String getDiagramName() {
+    return "[CDB] Data Title Blocks";
+  }
+  
   protected void getCurrentFilterMappings() {
     filteredMappingNames.add(IMappingNameConstants.DT_TITLE_BLOCK_CONTAINER);
     filteredMappingNames.add(IMappingNameConstants.DT_TITLE_BLOCK_LINE_CONTAINER);
@@ -56,6 +65,9 @@ public abstract class DiagramTitleBlockFilterTestCase extends DiagramObjectFilte
     }
   }
 
+  /**
+   * creates a map with elements that shall be filter and another map with elements that shall not be filtered
+   */
   protected void setFilteredObjectMaps() {
     for (DDiagramElement elt : diagram.getDiagramElements()) {
       EObject target = elt.getTarget();
@@ -99,7 +111,6 @@ public abstract class DiagramTitleBlockFilterTestCase extends DiagramObjectFilte
 
   protected boolean isFilteredByTestedFilter(DDiagramElement elt) {
     for (GraphicalFilter gFilter : elt.getGraphicalFilters()) {
-      HideLabelFilterImpl a = (HideLabelFilterImpl) gFilter;
       DDiagramElement container = (DDiagramElement) gFilter.eContainer();
       return !container.isVisible() && 
           toBeFiltered.keySet().contains(gFilter.eContainer());

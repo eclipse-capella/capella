@@ -34,7 +34,7 @@ public class CDBDiagramFiltersTestSuite extends BasicTestSuite {
     tests.add(new ShowModifiers());
     tests.add(new HideAssociationLabels());
     tests.add(new HideTechnicalInterfaceForCDB());
-    tests.add(new HideElementTitleBocks());
+    tests.add(new HideElementTitleBocksTest());
     tests.add(new HideDiagramTitleBocksTest());
     return tests;
   }

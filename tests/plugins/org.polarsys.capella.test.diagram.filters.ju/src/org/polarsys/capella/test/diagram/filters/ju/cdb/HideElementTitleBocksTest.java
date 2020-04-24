@@ -14,24 +14,12 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
-import org.polarsys.capella.test.diagram.filters.ju.DiagramObjectFilterTestCase;
 import org.polarsys.capella.test.diagram.filters.ju.DiagramTitleBlockFilterTestCase;
 
-public class HideElementTitleBocks extends DiagramTitleBlockFilterTestCase {
+public class HideElementTitleBocksTest extends DiagramTitleBlockFilterTestCase {
 
   private final String ELEMENT_TITLE_BLOCK_CLASS_ID = "_48t68IXwEeqWaJq2mNMsRw";
-  
   private final String ELEMENT_TITLE_BLOCK_DATA_PKG_ID = "_6iC6AIXwEeqWaJq2mNMsRw";
-
-  @Override
-  protected String getTestProjectName() {
-    return "TitleBlocksModel";
-  }
-
-  @Override
-  protected String getDiagramName() {
-    return "[CDB] Data Title Blocks";
-  }
 
   @Override
   protected String getFilterName() {
@@ -43,5 +31,4 @@ public class HideElementTitleBocks extends DiagramTitleBlockFilterTestCase {
     return Arrays.asList(new String[] { ELEMENT_TITLE_BLOCK_CLASS_ID,
         ELEMENT_TITLE_BLOCK_DATA_PKG_ID});
   }
-
 }
