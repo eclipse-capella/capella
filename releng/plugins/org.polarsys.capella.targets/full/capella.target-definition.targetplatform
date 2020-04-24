@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018, 2020 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -36,7 +36,7 @@ location eclipse "http://download.eclipse.org/releases/2019-06" {
 	org.eclipse.mylyn.help.ui
 }
 
-location sirius "https://download.eclipse.org/sirius/updates/stable/6.3.1-S20200403-185919/2019-06/" {
+location sirius "https://download.eclipse.org/sirius/updates/stable/6.3.1-S20200424-062347/2019-06/" {
 	org.eclipse.sirius.doc.feature.feature.group
 	org.eclipse.sirius.doc.feature.source.feature.group
 	org.eclipse.sirius.runtime.feature.group

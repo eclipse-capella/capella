@@ -271,7 +271,7 @@
         <repositoryList
             name="2019-06">
           <repository
-              url="https://download.eclipse.org/sirius/updates/stable/6.3.1-S20200403-185919/2019-06/"/>
+              url="https://download.eclipse.org/sirius/updates/stable/6.3.1-S20200424-062347/2019-06/"/>
         </repositoryList>
       </targlet>
       <targlet
@@ -533,9 +533,9 @@
         <repositoryList
             name="2019-06">
           <repository
-              url="http://download.eclipse.org/modeling/gmp/gmf-notation/updates/milestones/S202003100829"/>
+              url="http://download.eclipse.org/modeling/gmp/gmf-notation/updates/releases/R202004160913"/>
           <repository
-              url="http://download.eclipse.org/modeling/gmp/gmf-runtime/updates/milestones/S202003121028"/>
+              url="http://download.eclipse.org/modeling/gmp/gmf-runtime/updates/releases/R202004160913"/>
         </repositoryList>
       </targlet>
       <description>This defines the targets for 1.2.x and master. The filter below is defined to exclude this targlet from v1.1.x which is isolated in its own stream since its tp differs quite a bit.</description>
