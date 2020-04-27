@@ -70,7 +70,7 @@ public class GenerateGenModelsTask implements ITaskProduction {
 				super.setGenModelParameters(genModel_p);
 				int year = Calendar.getInstance().get(Calendar.YEAR);
 				genModel_p.setCopyrightText(" Copyright (c) 2006, " + year
-						+ " THALES GLOBAL SERVICES.\n All rights reserved. This program and the accompanying materials\n are made available under the terms of the Eclipse Public License v1.0\n which accompanies this distribution, and is available at\n http://www.eclipse.org/legal/epl-v10.html\n\n Contributors:\n    Thales - initial API and implementation");
+						+ " THALES GLOBAL SERVICES.\n This program and the accompanying materials are made available under the\n terms of the Eclipse Public License 2.0 which is available at\n http://www.eclipse.org/legal/epl-2.0\n\n SPDX-License-Identifier: EPL-2.0\n\n Contributors:\n    Thales - initial API and implementation");
 
 				// Add a customization for set melody extension (to be discussed)
 				if ("CapellaModeller".equals(genModel_p.getModelName())) {
