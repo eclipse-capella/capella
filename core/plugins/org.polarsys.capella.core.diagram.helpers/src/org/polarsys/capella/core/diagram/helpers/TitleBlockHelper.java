@@ -16,6 +16,10 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.common.tools.api.interpreter.CompoundInterpreter;
+import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterProvider;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
@@ -340,5 +344,25 @@ public class TitleBlockHelper {
   public static void setTitleBlockCellContent(DAnnotation line, String name, String content) {
     line.getDetails().put(NAME, name);
     line.getDetails().put(CONTENT, content);
+  }
+  
+  /**
+   * 
+   * @param target
+   * @param expression:
+   *          the expression to be evaluate (ex feature: name, or capella: xyz)
+   * @return result after the expression was evaluated
+   */
+  public static Object getResultOfExpression(EObject target, String expression, EObject cell) {
+    IInterpreterProvider provider = CompoundInterpreter.INSTANCE.getProviderForExpression(expression);
+    IInterpreter interpreter = provider.createInterpreter();
+    Object result = null;
+    try {
+      result = interpreter.evaluate(target, expression);
+    } catch (EvaluationException e) {
+      e.printStackTrace();
+      return e;
+    }
+    return result;
   }
 }

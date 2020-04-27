@@ -606,7 +606,7 @@ public class TitleBlockServices {
           if (objToEvaluate == null)
             objToEvaluate = diagram;
 
-          Object obj = getResultOfExpression(objToEvaluate, feature, cell);
+          Object obj = TitleBlockHelper.getResultOfExpression(objToEvaluate, feature, cell);
           if (obj != null) {
             if (obj instanceof Collection) {
               return ((Collection) obj).stream()
@@ -852,25 +852,4 @@ public class TitleBlockServices {
     URL url = FileLocator.find(SiriusViewActivator.getInstance().getBundle(), new Path(imagePath), null);
     return ImageDescriptor.createFromURL(url).createImage();
   }
-
-  /**
-   * 
-   * @param target
-   * @param expression:
-   *          the expression to be evaluate (ex feature: name, or capella: xyz)
-   * @return result after the expression was evaluated
-   */
-  public Object getResultOfExpression(EObject target, String expression, EObject cell) {
-    IInterpreterProvider provider = CompoundInterpreter.INSTANCE.getProviderForExpression(expression);
-    IInterpreter interpreter = provider.createInterpreter();
-    Object result = null;
-    try {
-      result = interpreter.evaluate(target, expression);
-    } catch (EvaluationException e) {
-      e.printStackTrace();
-      return e;
-    }
-    return result;
-  }
-
 }

@@ -30,7 +30,6 @@ import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.data.core.properties.Messages;
 import org.polarsys.capella.core.diagram.helpers.TitleBlockHelper;
-import org.polarsys.capella.core.sirius.analysis.TitleBlockServices;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
 import org.polarsys.capella.core.ui.properties.helpers.LockHelper;
 
@@ -94,7 +93,7 @@ public class TitleBlockBasicElementGroup extends AbstractSemanticField {
     if (container instanceof DDiagram) {
       DDiagram diagram = (DDiagram) container;
       DAnnotation titleBlock = TitleBlockHelper.getParentTitleBlock(titleBlockCell, diagram);
-      Object evaluateResult = TitleBlockServices.getService().getResultOfExpression(titleBlock,
+      Object evaluateResult = TitleBlockHelper.getResultOfExpression(titleBlock,
           contentTextField.getText(), titleBlockCell);
       if (evaluateResult instanceof EvaluationException) {
         error_label.setText(INTERPRETER_ERROR);
@@ -173,5 +172,5 @@ public class TitleBlockBasicElementGroup extends AbstractSemanticField {
   public void loadData(EObject semanticElement) {
     // TODO Auto-generated method stub
   }
-
+  
 }
