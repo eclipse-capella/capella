@@ -4635,7 +4635,21 @@
             <elementView name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:containerView">
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.createDiagramTitleBlock()"/>
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.hasADiagramTitleBlock()">
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectTitleBlocks" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
+                    <parameters name="context" value="aql:containerView"/>
+                    <parameters name="scope" value="aql:containerView.getDiagramTitleBlocks()"/>
+                    <parameters name="resultVariable" value="selectedTitleBlocks"/>
+                    <parameters name="wizardMessage" value="aql:'Diagram Title Block already exists but is hidden. Select to unhide it.'"/>
+                    <parameters name="initialSelection" value="aql:self.void2Null(containerView.getVisibleDiagramTitleBlocks())"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (selectedTitleBlocks = 'WIZARD_CANCELED')">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerView.showHideElementTitleBlocks(selectedTitleBlocks,diagram)"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not self.hasADiagramTitleBlock()">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.createDiagramTitleBlock()"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -4645,7 +4659,21 @@
               <elementView name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:containerView">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.createElementTitleBlock(diagram)"/>
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.hasAElementTitleBlock()">
+                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectTitleBlocks" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
+                      <parameters name="context" value="aql:containerView"/>
+                      <parameters name="scope" value="aql:self.getAvailableToInsertElementTitleBlocks(diagram)"/>
+                      <parameters name="resultVariable" value="selectedTitleBlocks"/>
+                      <parameters name="wizardMessage" value="aql:'Element Title Block already exists but is hidden. Select to unhide it.'"/>
+                      <parameters name="initialSelection" value="aql:self.void2Null(containerView.getVisibleElementTitleBlocks())"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (selectedTitleBlocks = 'WIZARD_CANCELED')">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerView.showHideElementTitleBlocks(selectedTitleBlocks,diagram)"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not self.hasAElementTitleBlock()">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.createElementTitleBlock(diagram)"/>
+                  </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
             </tools>

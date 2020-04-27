@@ -101,7 +101,8 @@ public class TitleBlockServices {
    * @return true if the container is valid to create a Diagram Title Block
    */
   public boolean isValidCreateDiagramTitleBlock(EObject containerView) {
-    return isContainerDiagram(containerView) && !hasADiagramTitleBlock((DDiagram) containerView);
+    return isContainerDiagram(containerView)
+        && (!hasADiagramTitleBlock((DDiagram) containerView) || getVisibleDiagramTitleBlocks(containerView).isEmpty());
   }
 
   /**
@@ -111,7 +112,10 @@ public class TitleBlockServices {
    *         not annotation and there is not another annotation associated with elementView
    */
   public boolean isValidCreateElementTitleBlock(EObject containerView) {
-    return (containerView instanceof DDiagramElement) && !hasAElementTitleBlock((DDiagramElement) containerView)
+    // getVisibleElementTitleBlocks intoarce mereu o lista goala pt TB Element :(
+    return (containerView instanceof DDiagramElement)
+        && (!hasAElementTitleBlock((DDiagramElement) containerView)
+            || getVisibleElementTitleBlocks(containerView).isEmpty())
         && !(((DDiagramElement) containerView).getTarget() instanceof DAnnotation);
   }
 
@@ -298,14 +302,14 @@ public class TitleBlockServices {
     handleDanglingElementTitleBlocks(listElementTitleBlocks, diagram);
 
     // refresh the diagram title block, so that if preferences have changed, TB is updated
-//    DAnnotation diagramTitleBlock = TitleBlockHelper.getDiagramTitleBlock(diagram);
-//    if (diagramTitleBlock != null) {
-//      updateDiagramTitleBlock(diagramTitleBlock, (EObject) diagram);
-//    } else {
-//      if (TitleBlockPreferencesInitializer.isCreateDiagramTitleBlockByDefault()) {
-//        createDiagramTitleBlock((DDiagram) diagram);
-//      }
-//    }
+    // DAnnotation diagramTitleBlock = TitleBlockHelper.getDiagramTitleBlock(diagram);
+    // if (diagramTitleBlock != null) {
+    // updateDiagramTitleBlock(diagramTitleBlock, (EObject) diagram);
+    // } else {
+    // if (TitleBlockPreferencesInitializer.isCreateDiagramTitleBlockByDefault()) {
+    // createDiagramTitleBlock((DDiagram) diagram);
+    // }
+    // }
   }
 
   /**
@@ -391,6 +395,18 @@ public class TitleBlockServices {
       }
     }
     return toInsertlementTitleBlocks;
+  }
+
+  /**
+   * get the list of Element Title Blocks
+   * 
+   * @param elementView
+   * @param diagram
+   * @return list of Title Blocks (Element TB) for elementView
+   */
+  public List<DAnnotation> getAvailableToInsertElementTitleBlocks(DDiagramElement elementView, DDiagram diagram) {
+    return getAvailableToInsertElementTitleBlocks(diagram).stream()
+        .filter(x -> x.getReferences().contains(elementView.getTarget())).collect(Collectors.toList());
   }
 
   /**
@@ -819,7 +835,7 @@ public class TitleBlockServices {
     }
     return false;
   }
-  
+
   /**
    * 
    * @param element
