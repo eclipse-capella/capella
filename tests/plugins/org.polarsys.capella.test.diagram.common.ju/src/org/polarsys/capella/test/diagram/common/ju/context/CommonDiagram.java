@@ -66,12 +66,30 @@ public class CommonDiagram extends DiagramContext {
     return (DAnnotation) createdTB.getTarget();
   }
 
-  public void removeTitleBlock(String id) {
+  public void checkCreateElementTitleBlock(String containerId) {
+    new CreateElementTitleBlockTool(this, IToolNameConstants.TOOL_CREATE_ELEMENT_TITLE_BLOCK, containerId,
+        getDiagramId()).contextOk();
+  }
+
+  public void checkCreateTitleBlock() {
+    new CreateDiagramTitleBlockTool(this, IToolNameConstants.TOOL_CREATE_DIAGRAM_TITLE_BLOCK, getDiagramId())
+        .contextOk();
+  }
+
+  public void removeElementTitleBlock(String id) {
     new InsertRemoveTitleBlockTool(this, IToolNameConstants.TOOL_INSERT_REMOVE_ELEMENT_TITLE_BLOCK).remove(id);
   }
 
-  public void insertTitleBlock(String id) {
+  public void insertElementTitleBlock(String id) {
     new InsertRemoveTitleBlockTool(this, IToolNameConstants.TOOL_INSERT_REMOVE_ELEMENT_TITLE_BLOCK).insert(id);
+  }
+
+  public void removeTitleBlock(String id) {
+    new InsertRemoveTitleBlockTool(this, IToolNameConstants.TOOL_INSERT_REMOVE_TITLE_BLOCK).remove(id);
+  }
+
+  public void insertTitleBlock(String id) {
+    new InsertRemoveTitleBlockTool(this, IToolNameConstants.TOOL_INSERT_REMOVE_TITLE_BLOCK).insert(id);
   }
 
   public DAnnotation insertLineInTitleBlock(DAnnotation titleBlock, int lineNo) {
