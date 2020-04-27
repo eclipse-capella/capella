@@ -12,6 +12,7 @@ package org.polarsys.capella.core.sirius.analysis.preferences;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.jface.bindings.keys.KeyStroke;
 import org.eclipse.jface.bindings.keys.ParseException;
@@ -36,6 +37,11 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
+import org.polarsys.capella.common.ui.toolkit.browser.category.CategoryRegistry;
+import org.polarsys.capella.common.ui.toolkit.browser.category.ICategory;
+import org.polarsys.capella.core.sirius.analysis.CapellaInterpreter;
+
+import com.google.common.base.CaseFormat;
 
 public class TitleBlockDialog extends TitleAreaDialog {
   private final String TITLE_NAME = "Add name and content";
@@ -112,22 +118,35 @@ public class TitleBlockDialog extends TitleAreaDialog {
           IInterpreter vpInterpreter = CompoundInterpreter.INSTANCE.getInterpreterForExpression(contents);
           DSemanticDiagramSpec target = new DSemanticDiagramSpec();
 
-          ContentInstanceContext contentContext = new ContentInstanceContext(target, contents, position);
-          List<ContentProposal> computedProposals;
-          if (vpInterpreter instanceof IProposalProvider) {
-            computedProposals = ((IProposalProvider) vpInterpreter).getProposals(vpInterpreter, contentContext);
-          } else {
-            computedProposals = new ArrayList<>();
-            final List<IProposalProvider> proposalProviders = ProposalProviderRegistry.getProvidersFor(vpInterpreter);
-            for (IProposalProvider provider : proposalProviders) {
-              computedProposals.addAll(provider.getProposals(vpInterpreter, contentContext));
-            }
-          }
           List<IContentProposal> proposalsList = new ArrayList<IContentProposal>();
-          for (ContentProposal proposals : computedProposals) {
-            org.eclipse.jface.fieldassist.ContentProposal contentProposals = new org.eclipse.jface.fieldassist.ContentProposal(
-                proposals.getProposal());
-            proposalsList.add(contentProposals);
+          ContentInstanceContext contentContext = new ContentInstanceContext(target, contents, position);
+          if (vpInterpreter instanceof CapellaInterpreter) {
+            // get all the categories for target and match the command name from category with the command in TitleBlock
+            Set<ICategory> categories = CategoryRegistry.getInstance().gatherCategories(target);
+
+            for (ICategory category : categories) {
+              proposalsList.add(new org.eclipse.jface.fieldassist.ContentProposal(
+                  CaseFormat.UPPER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL,
+                      category.getName().trim().replaceAll(" ", "_")),
+                  contentContext.getTextSoFar(), null, contentContext.getCursorPosition()));
+            }
+          } else {
+            List<ContentProposal> computedProposals;
+            if (vpInterpreter instanceof IProposalProvider) {
+              computedProposals = ((IProposalProvider) vpInterpreter).getProposals(vpInterpreter, contentContext);
+            } else {
+              computedProposals = new ArrayList<>();
+              final List<IProposalProvider> proposalProviders = ProposalProviderRegistry.getProvidersFor(vpInterpreter);
+              for (IProposalProvider provider : proposalProviders) {
+                computedProposals.addAll(provider.getProposals(vpInterpreter, contentContext));
+              }
+            }
+            for (ContentProposal proposals : computedProposals) {
+              org.eclipse.jface.fieldassist.ContentProposal contentProposals = new org.eclipse.jface.fieldassist.ContentProposal(
+                  proposals.getProposal(), proposals.getDisplay(), proposals.getInformation(),
+                  proposals.getCursorPosition());
+              proposalsList.add(contentProposals);
+            }
           }
 
           IContentProposal[] proposals = new IContentProposal[proposalsList.size()];
@@ -141,8 +160,17 @@ public class TitleBlockDialog extends TitleAreaDialog {
 
       adapter.addContentProposalListener(new IContentProposalListener() {
         public void proposalAccepted(IContentProposal proposal) {
+          int posOfDot = txtContent.getText().lastIndexOf(".");
+          StringBuilder text = new StringBuilder();
+          text = text.append(txtContent.getText().substring(0, posOfDot)).append(".").append(proposal.getContent());
+          txtContent.setText(text.toString());
+
+          adapter.getControlContentAdapter().setCursorPosition(txtContent, txtContent.getText().length());
         }
       });
+
+      // adapter.getControlContentAdapter().setCursorPosition(txtContent, txtContent.getText().length());
+      adapter.getControlContentAdapter().setCursorPosition(txtContent, 5);
     } catch (ParseException e) {
       e.printStackTrace();
     }
