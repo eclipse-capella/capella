@@ -132,6 +132,14 @@ public abstract class AbstractToolStep<A> extends AbstractDiagramStep<A> {
     });
   }
 
+  public void contextOk() {
+    initializeToolAndCheckArguments();
+
+    // Context should be OK
+    boolean isContextOk = _toolWrapper.isContextOk();
+    Assert.assertTrue(NLS.bind(Messages.toolWrapperArgumentValueFailedErr, toolName), isContextOk);
+  }
+
   public void shouldFail() {
 
     initializeToolAndCheckArguments();
@@ -148,6 +156,7 @@ public abstract class AbstractToolStep<A> extends AbstractDiagramStep<A> {
       preRunTest();
 
       TestHelper.getExecutionManager(getExecutionContext().getSession()).execute(new AbstractReadWriteCommand() {
+        @Override
         public void run() {
           Command cmd = _toolWrapper.createCommand();
           Assert.assertTrue(UnexecutableCommand.INSTANCE.equals(cmd));

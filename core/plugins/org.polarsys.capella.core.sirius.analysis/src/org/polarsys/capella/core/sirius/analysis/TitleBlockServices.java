@@ -24,7 +24,6 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.jface.window.Window;
 import org.eclipse.sirius.common.tools.api.interpreter.CompoundInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
@@ -42,7 +41,6 @@ import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
 import org.eclipse.swt.graphics.Image;
 import org.polarsys.capella.core.diagram.helpers.TitleBlockHelper;
 import org.polarsys.capella.core.sirius.analysis.activator.SiriusViewActivator;
-import org.polarsys.capella.core.sirius.analysis.preferences.TitleBlockDialog;
 import org.polarsys.capella.core.sirius.analysis.preferences.TitleBlockPreferencesInitializer;
 
 /*
@@ -58,7 +56,6 @@ public class TitleBlockServices {
   static Map<String, String> propertiesContent = new HashMap<String, String>();
   private static final String DEFAULT_CELL_NAME = "Name";
   private static final String DEFAULT_CELL_CONTENT = "feature:name";
-  private static final String INTERPRETER_ERROR = "Interpreter Error: Syntax not valid";
 
   public static TitleBlockServices getService() {
     if (service == null) {
@@ -103,8 +100,7 @@ public class TitleBlockServices {
    */
   public boolean isValidCreateDiagramTitleBlock(EObject containerView) {
     return isContainerDiagram(containerView)
-        && (!hasADiagramTitleBlock((DDiagram) containerView) ||
-            getVisibleDiagramTitleBlocks(containerView).isEmpty());
+        && (!hasADiagramTitleBlock((DDiagram) containerView) || getVisibleDiagramTitleBlocks(containerView).isEmpty());
   }
 
   /**
@@ -114,9 +110,8 @@ public class TitleBlockServices {
    *         not annotation and there is not another annotation associated with elementView
    */
   public boolean isValidCreateElementTitleBlock(EObject containerView) {
-    return (containerView instanceof DDiagramElement)
-        && (!hasAElementTitleBlock((DDiagramElement) containerView)
-            || getVisibleElementTitleBlocks(containerView).isEmpty());
+    return (containerView instanceof DDiagramElement) && (!hasAElementTitleBlock((DDiagramElement) containerView)
+        || getVisibleElementTitleBlocks(containerView).isEmpty());
   }
 
   /**
@@ -338,15 +333,14 @@ public class TitleBlockServices {
    */
   private List<DAnnotation> getVisibleTitleBlocks(Object containerView, String type) {
     List<DAnnotation> list = new ArrayList<DAnnotation>();
-    if(containerView instanceof DDiagramElementContainer) {
-      for(DEdge edge : ((DDiagramElementContainer) containerView).getOutgoingEdges()) {
-        if(edge.getTargetNode() instanceof DNodeContainer &&
-            ((DNodeContainer)edge.getTargetNode()).getTarget() instanceof DAnnotation) {
-          list.add((DAnnotation) ((DNodeContainer)edge.getTargetNode()).getTarget());
+    if (containerView instanceof DDiagramElementContainer) {
+      for (DEdge edge : ((DDiagramElementContainer) containerView).getOutgoingEdges()) {
+        if (edge.getTargetNode() instanceof DNodeContainer
+            && ((DNodeContainer) edge.getTargetNode()).getTarget() instanceof DAnnotation) {
+          list.add((DAnnotation) ((DNodeContainer) edge.getTargetNode()).getTarget());
         }
       }
-    }
-    else if (containerView instanceof DDiagram) {
+    } else if (containerView instanceof DDiagram) {
       EList<DDiagramElement> elements = ((DDiagram) containerView).getOwnedDiagramElements();
       for (DDiagramElement element : elements) {
         if (element.getTarget() instanceof DAnnotation) {
@@ -671,7 +665,7 @@ public class TitleBlockServices {
         wrapperAnnotation.getDetails().put(TitleBlockHelper.CONTENT, object.toString());
       }
     }
-    return (EObject) wrapperAnnotation;
+    return wrapperAnnotation;
   }
 
   /**
@@ -849,8 +843,7 @@ public class TitleBlockServices {
    * @return true if element is a Diagram Title Block
    */
   public boolean isDiagramTitleBlock(EObject element) {
-    return (element instanceof DAnnotation) &&
-        TitleBlockHelper.isDiagramTitleBlock((DAnnotation)element);
+    return (element instanceof DAnnotation) && TitleBlockHelper.isDiagramTitleBlock((DAnnotation) element);
   }
 
   public static Image getImage(Object object) {
@@ -867,7 +860,7 @@ public class TitleBlockServices {
    *          the expression to be evaluate (ex feature: name, or capella: xyz)
    * @return result after the expression was evaluated
    */
-  private Object getResultOfExpression(EObject target, String expression, EObject cell) {
+  public Object getResultOfExpression(EObject target, String expression, EObject cell) {
     IInterpreterProvider provider = CompoundInterpreter.INSTANCE.getProviderForExpression(expression);
     IInterpreter interpreter = provider.createInterpreter();
     Object result = null;
@@ -875,23 +868,9 @@ public class TitleBlockServices {
       result = interpreter.evaluate(target, expression);
     } catch (EvaluationException e) {
       e.printStackTrace();
-      return createValidationDialog(target, result, cell);
+      return e;
     }
     return result;
-  }
-
-  private Object createValidationDialog(EObject target, Object resultToValidate, EObject cell) {
-    resultToValidate = String.valueOf(INTERPRETER_ERROR);
-    TitleBlockDialog dialog = new TitleBlockDialog(null);
-    dialog.setCurrentName(((DAnnotation) cell).getDetails().get(TitleBlockHelper.NAME));
-    dialog.setCurrentContent(INTERPRETER_ERROR);
-    dialog.create();
-    if (dialog.open() == Window.OK) {
-      ((DAnnotation) cell).getDetails().put(TitleBlockHelper.CONTENT, String.valueOf(dialog.getContent()));
-      resultToValidate = getResultOfExpression(target, String.valueOf(dialog.getContent()), cell);
-      dialog.close();
-    }
-    return resultToValidate;
   }
 
 }

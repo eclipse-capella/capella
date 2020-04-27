@@ -14,25 +14,34 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
+import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.data.core.properties.Messages;
+import org.polarsys.capella.core.diagram.helpers.TitleBlockHelper;
+import org.polarsys.capella.core.sirius.analysis.TitleBlockServices;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
 import org.polarsys.capella.core.ui.properties.helpers.LockHelper;
 
 public class TitleBlockBasicElementGroup extends AbstractSemanticField {
   private static final String NAME = "Name:";
   private static final String CONTENT = "Content:";
+  private static final String INTERPRETER_ERROR = "Interpreter Error: Syntax not valid";
+  private static final String EMPTY_STRING = "";
   protected Text nameTextField;
   protected Text contentTextField;
+  protected CLabel error_label;
 
   /**
    * @param parent
@@ -51,6 +60,7 @@ public class TitleBlockBasicElementGroup extends AbstractSemanticField {
 
     nameTextField = createTextField(textGroup, Messages.getString("NamedElement.NameLabel"));
     contentTextField = createTextField(textGroup, Messages.getString("NamedElement.ContentLabel"));
+    error_label = widgetFactory.createCLabel(parent, "Error");
   }
 
   /**
@@ -73,12 +83,25 @@ public class TitleBlockBasicElementGroup extends AbstractSemanticField {
    */
   public void loadData(EObject semanticElement, String name, String content) {
     super.loadData(semanticElement, null);
-
     if (null != semanticElement) {
       if (null != nameTextField)
         setTextValue(nameTextField, name);
       if (null != contentTextField)
         setTextValue(contentTextField, content);
+    }
+    DAnnotation titleBlockCell = ((DAnnotation) semanticElement);
+    EObject container = titleBlockCell.eContainer();
+    if (container instanceof DDiagram) {
+      DDiagram diagram = (DDiagram) container;
+      DAnnotation titleBlock = TitleBlockHelper.getParentTitleBlock(titleBlockCell, diagram);
+      Object evaluateResult = TitleBlockServices.getService().getResultOfExpression(titleBlock,
+          contentTextField.getText(), titleBlockCell);
+      if (evaluateResult instanceof EvaluationException) {
+        error_label.setText(INTERPRETER_ERROR);
+        error_label.setForeground(Display.getCurrent().getSystemColor(SWT.COLOR_RED));
+      } else {
+        error_label.setText(EMPTY_STRING);
+      }
     }
   }
 
