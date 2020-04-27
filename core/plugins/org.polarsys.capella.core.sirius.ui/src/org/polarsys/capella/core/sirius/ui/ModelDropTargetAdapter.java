@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-2.0
  * 
  * SPDX-License-Identifier: EPL-2.0
- *  
+ * 
  * Contributors: Cedric Brun (Obeo) <cedric.brun@obeo.fr> - Initial API and implementation
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.ui;

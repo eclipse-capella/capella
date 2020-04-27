@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-2.0
  * 
  * SPDX-License-Identifier: EPL-2.0
- *  
+ * 
  * Contributors:
  *    Thales - new class (see https://bugs.polarsys.org/show_bug.cgi?id=2614)
  *******************************************************************************/
