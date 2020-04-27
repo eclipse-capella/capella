@@ -38,7 +38,7 @@ public class CapellaSearchSettings {
   private boolean isAbstractChecked = false;
   private boolean isSemanticChecked = true;
   private int scope;
-  
+
   public void addObjectToSearch(Object objectToSearch) {
     objectsToSearch.add(objectToSearch);
   }
@@ -118,23 +118,28 @@ public class CapellaSearchSettings {
   public void setSemanticChecked(boolean isSemanticChecked) {
     this.isSemanticChecked = isSemanticChecked;
   }
-  
+
   public void setScope(int scope) {
     this.scope = scope;
   }
-  
+
   public int getScope() {
     return this.scope;
   }
 
-  // method used to check the search settings (that we entered text, selected at least one mettaclass or attribute etc) 
+  // method used to check the search settings (that we entered text, selected at least one mettaclass or attribute etc)
   public IStatus validate() {
     if (textPattern == null || textPattern.isEmpty()) {
       return new Status(IStatus.ERROR, Activator.PLUGIN_ID,
           CapellaSearchConstants.CapellaSearchPage_Validation_Message_Pattern_Empty);
     }
-    
+
     if (isRegExSearch) {
+      if (isWholeWord) {
+        return new Status(IStatus.ERROR, Activator.PLUGIN_ID,
+            CapellaSearchConstants.CapellaSearchPage_Validation_Message_Whole_Word_Same_Time_Regex);
+      }
+
       try {
         CapellaSearchSettings.createPattern(textPattern, isCaseSensitive, isRegExSearch, isWholeWord);
       } catch (PatternSyntaxException e) {
@@ -147,7 +152,8 @@ public class CapellaSearchSettings {
           CapellaSearchConstants.CapellaSearchPage_Validation_Message_SearchMetaClass_Selection);
     }
 
-    if (searchAttributeItems.isEmpty() && !searchMetaClassItems.stream().anyMatch(SearchForNoteItem.class::isInstance)) {
+    if (searchAttributeItems.isEmpty()
+        && !searchMetaClassItems.stream().anyMatch(SearchForNoteItem.class::isInstance)) {
       return new Status(IStatus.ERROR, Activator.PLUGIN_ID,
           CapellaSearchConstants.CapellaSearchPage_Validation_Message_SearchAttribute_Selection);
     }
@@ -157,7 +163,7 @@ public class CapellaSearchSettings {
 
   public static Pattern createPattern(String textPattern, boolean isCaseSensitive, boolean isRegExSearch,
       boolean isWholeWord) {
-    return PatternConstructor.createPattern(textPattern, isRegExSearch, false, isCaseSensitive, isWholeWord);
+    return PatternConstructor.createPattern(textPattern, isRegExSearch, true, isCaseSensitive, isWholeWord);
   }
 
   public Pattern createPattern() {
@@ -192,20 +198,21 @@ public class CapellaSearchSettings {
         : !this.searchAttributeItems.equals(that.searchAttributeItems)) {
       return false;
     }
-    
+
     if (this.searchMetaClassItems == null ? that.searchMetaClassItems != null
         : !this.searchMetaClassItems.equals(that.searchMetaClassItems)) {
       return false;
     }
 
-    if (this.objectsToSearch == null ? that.objectsToSearch != null : !this.objectsToSearch.equals(that.objectsToSearch)) {
+    if (this.objectsToSearch == null ? that.objectsToSearch != null
+        : !this.objectsToSearch.equals(that.objectsToSearch)) {
       return false;
     }
-    
+
     if (this.scope != that.scope) {
       return false;
     }
-    
+
     return true;
   }
 
