@@ -32,6 +32,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterProvider;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
@@ -102,7 +103,8 @@ public class TitleBlockServices {
    */
   public boolean isValidCreateDiagramTitleBlock(EObject containerView) {
     return isContainerDiagram(containerView)
-        && (!hasADiagramTitleBlock((DDiagram) containerView) || getVisibleDiagramTitleBlocks(containerView).isEmpty());
+        && (!hasADiagramTitleBlock((DDiagram) containerView) ||
+            getVisibleDiagramTitleBlocks(containerView).isEmpty());
   }
 
   /**
@@ -112,11 +114,9 @@ public class TitleBlockServices {
    *         not annotation and there is not another annotation associated with elementView
    */
   public boolean isValidCreateElementTitleBlock(EObject containerView) {
-    // getVisibleElementTitleBlocks intoarce mereu o lista goala pt TB Element :(
     return (containerView instanceof DDiagramElement)
         && (!hasAElementTitleBlock((DDiagramElement) containerView)
-            || getVisibleElementTitleBlocks(containerView).isEmpty())
-        && !(((DDiagramElement) containerView).getTarget() instanceof DAnnotation);
+            || getVisibleElementTitleBlocks(containerView).isEmpty());
   }
 
   /**
@@ -338,9 +338,16 @@ public class TitleBlockServices {
    */
   private List<DAnnotation> getVisibleTitleBlocks(Object containerView, String type) {
     List<DAnnotation> list = new ArrayList<DAnnotation>();
-    if (containerView instanceof DDiagram) {
-      DDiagram diagram = (DDiagram) containerView;
-      EList<DDiagramElement> elements = diagram.getOwnedDiagramElements();
+    if(containerView instanceof DDiagramElementContainer) {
+      for(DEdge edge : ((DDiagramElementContainer) containerView).getOutgoingEdges()) {
+        if(edge.getTargetNode() instanceof DNodeContainer &&
+            ((DNodeContainer)edge.getTargetNode()).getTarget() instanceof DAnnotation) {
+          list.add((DAnnotation) ((DNodeContainer)edge.getTargetNode()).getTarget());
+        }
+      }
+    }
+    else if (containerView instanceof DDiagram) {
+      EList<DDiagramElement> elements = ((DDiagram) containerView).getOwnedDiagramElements();
       for (DDiagramElement element : elements) {
         if (element.getTarget() instanceof DAnnotation) {
           DAnnotation annotation = (DAnnotation) element.getTarget();
