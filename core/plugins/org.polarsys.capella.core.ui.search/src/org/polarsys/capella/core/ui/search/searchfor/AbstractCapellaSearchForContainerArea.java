@@ -16,7 +16,6 @@ import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.operation.IRunnableWithProgress;
-import org.eclipse.jface.viewers.CheckStateChangedEvent;
 import org.eclipse.jface.viewers.CheckboxTreeViewer;
 import org.eclipse.jface.viewers.ICheckStateListener;
 import org.eclipse.swt.SWT;
@@ -33,6 +32,7 @@ import org.eclipse.ui.dialogs.PatternFilter;
 import org.eclipse.ui.progress.IProgressService;
 import org.polarsys.capella.core.ui.search.CapellaSearchConstants;
 import org.polarsys.capella.core.ui.search.CapellaSearchPage;
+import org.polarsys.capella.core.ui.search.CapellaSearchSettings;
 
 public abstract class AbstractCapellaSearchForContainerArea {
   protected Button selectAllButton;
@@ -88,12 +88,10 @@ public abstract class AbstractCapellaSearchForContainerArea {
   }
 
   protected ICheckStateListener getCheckStateListener() {
-    return new ICheckStateListener() {
-      public void checkStateChanged(final CheckStateChangedEvent event) {
-        boolean state = event.getChecked();
-        Object parent = event.getElement();
-        setCheckedState(parent, state);
-      }
+    return event -> {
+      boolean state = event.getChecked();
+      Object parent = event.getElement();
+      setCheckedState(parent, state);
     };
   }
 
@@ -120,7 +118,7 @@ public abstract class AbstractCapellaSearchForContainerArea {
       checkedElements.remove(obj);
     }
   }
-  
+
   protected void cleanCheckedElements() {
     checkedElements.clear();
   }
@@ -167,11 +165,12 @@ public abstract class AbstractCapellaSearchForContainerArea {
 
   protected SelectionListener getSelectionListener(boolean selected) {
     return new SelectionListener() {
-      public void widgetSelected(SelectionEvent e) {
-        IWorkbench wb = PlatformUI.getWorkbench();
-        IProgressService ps = wb.getProgressService();
+      @Override
+      public void widgetSelected(SelectionEvent event) {
+        IWorkbench workbench = PlatformUI.getWorkbench();
+        IProgressService progressService = workbench.getProgressService();
         try {
-          ps.runInUI(ps, new IRunnableWithProgress() {
+          progressService.runInUI(progressService, new IRunnableWithProgress() {
 
             @Override
             public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
@@ -181,13 +180,12 @@ public abstract class AbstractCapellaSearchForContainerArea {
               refreshOtherSideArea();
             }
           }, null);
-        } catch (InvocationTargetException e1) {
-          e1.printStackTrace();
-        } catch (InterruptedException e1) {
-          e1.printStackTrace();
+        } catch (InvocationTargetException | InterruptedException e) {
+          e.printStackTrace();
         }
       }
 
+      @Override
       public void widgetDefaultSelected(SelectionEvent e) {
         widgetSelected(e);
       }
@@ -226,6 +224,8 @@ public abstract class AbstractCapellaSearchForContainerArea {
 
     refreshOtherSideArea();
   }
+
+  public abstract void applySearchSettings(CapellaSearchSettings settings);
 
   public abstract void updateSearchSettings();
 

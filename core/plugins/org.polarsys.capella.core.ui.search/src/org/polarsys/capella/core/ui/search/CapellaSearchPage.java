@@ -207,10 +207,12 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
         boolean regexEnabled = checkboxRegex.getSelection();
         comboSearchPatternRegexContentAssist.setEnabled(regexEnabled);
         if (regexEnabled) {
-          labelForComboSearchPattern.setText(CapellaSearchConstants.CapellaSearchPage_Combo_Pattern_Label_Regex_Enabled);
+          labelForComboSearchPattern
+              .setText(CapellaSearchConstants.CapellaSearchPage_Combo_Pattern_Label_Regex_Enabled);
           checkboxWholeWord.setEnabled(false);
         } else {
-          labelForComboSearchPattern.setText(CapellaSearchConstants.CapellaSearchPage_Combo_Pattern_Label_Regex_Disabled);
+          labelForComboSearchPattern
+              .setText(CapellaSearchConstants.CapellaSearchPage_Combo_Pattern_Label_Regex_Disabled);
           checkboxWholeWord.setEnabled(true);
         }
       }
@@ -316,12 +318,12 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
 
     if (leftCont != null) {
       // update the meta-classes panel to display the selected elements stored from a previous search
-      leftCont.applySearchSettings(settings.getSearchClassItems());
+      leftCont.applySearchSettings(settings);
     }
 
     if (rightCont != null) {
       // update the attributes panel to display the selected elements stored from a previous search
-      rightCont.applySearchSettings(settings.getSearchAttributeItems());
+      rightCont.applySearchSettings(settings);
     }
 
     int scope = settings.getScope();
@@ -329,7 +331,7 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
 
     validate();
   }
-  
+
   /**
    * 
    * Apply the default settings
@@ -386,6 +388,9 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
     capellaSearchSettings.setRegExSearch(checkboxRegex.getSelection());
     capellaSearchSettings.setWholeWord(checkboxWholeWord.getSelection());
     capellaSearchSettings.setScope(selectedScope);
+
+    capellaSearchSettings.setAbstractChecked(leftCont.isAbstractChecked());
+    capellaSearchSettings.setNonSemanticChecked(leftCont.isNonSemanticChecked());
 
     capellaSearchSettings.clearProjects();
 

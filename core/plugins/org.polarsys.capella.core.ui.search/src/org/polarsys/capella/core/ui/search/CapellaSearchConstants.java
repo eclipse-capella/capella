@@ -46,9 +46,9 @@ public class CapellaSearchConstants {
   public static final String SelectAllButton_Name = "Select All";
   public static final String DeselectAllButton_Name = "Deselect All";
   public static final String RestoreDefaultsButton_Name = "Restore Defaults";
-  public static final String Filters_Label = "Filters";
-  public static final String Abstract_Label = "Abstract";
-  public static final String Semantic_Label = "Semantic";
+  public static final String Filters_Label = "Active filters";
+  public static final String Abstract_Label = "Abstract elements";
+  public static final String Semantic_Label = "Non Semantic elements";
   public static final String SearchFor_Label = "Search for (* = any string, ? = any character, \\ = escape for literals: * ? \\)";
   public static final String ModelElements_Key = "Model Elements";
   public static final String DiagramElements_Key = "Diagram Elements";
