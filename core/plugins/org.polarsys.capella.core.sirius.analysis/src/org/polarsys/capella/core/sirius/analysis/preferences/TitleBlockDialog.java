@@ -119,8 +119,8 @@ public class TitleBlockDialog extends TitleAreaDialog {
           DSemanticDiagramSpec target = new DSemanticDiagramSpec();
 
           List<IContentProposal> proposalsList = new ArrayList<IContentProposal>();
+          ContentInstanceContext contentContext = new ContentInstanceContext(target, contents, position);
           if (vpInterpreter instanceof CapellaInterpreter) {
-            ContentInstanceContext contentContext = new ContentInstanceContext(target, contents, position);
             // get all the categories for target and match the command name from category with the command in TitleBlock
             Set<ICategory> categories = CategoryRegistry.getInstance().gatherCategories(target);
 
@@ -128,12 +128,9 @@ public class TitleBlockDialog extends TitleAreaDialog {
               proposalsList.add(new org.eclipse.jface.fieldassist.ContentProposal(
                   CaseFormat.UPPER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL,
                       category.getName().trim().replaceAll(" ", "_")),
-                  contentContext.getTextSoFar(), 
-                  null, 
-                  contentContext.getCursorPosition()));
+                  contentContext.getTextSoFar(), null, contentContext.getCursorPosition()));
             }
           } else {
-            ContentInstanceContext contentContext = new ContentInstanceContext(target, contents, position);
             List<ContentProposal> computedProposals;
             if (vpInterpreter instanceof IProposalProvider) {
               computedProposals = ((IProposalProvider) vpInterpreter).getProposals(vpInterpreter, contentContext);
@@ -144,7 +141,6 @@ public class TitleBlockDialog extends TitleAreaDialog {
                 computedProposals.addAll(provider.getProposals(vpInterpreter, contentContext));
               }
             }
-            // List<IContentProposal> proposalsList = new ArrayList<IContentProposal>();
             for (ContentProposal proposals : computedProposals) {
               org.eclipse.jface.fieldassist.ContentProposal contentProposals = new org.eclipse.jface.fieldassist.ContentProposal(
                   proposals.getProposal(), proposals.getDisplay(), proposals.getInformation(),
@@ -166,11 +162,15 @@ public class TitleBlockDialog extends TitleAreaDialog {
         public void proposalAccepted(IContentProposal proposal) {
           int posOfDot = txtContent.getText().lastIndexOf(".");
           StringBuilder text = new StringBuilder();
-          text = text.append(txtContent.getText().substring(0, posOfDot))
-              .append(".").append(proposal.getContent());
+          text = text.append(txtContent.getText().substring(0, posOfDot)).append(".").append(proposal.getContent());
           txtContent.setText(text.toString());
+
+          adapter.getControlContentAdapter().setCursorPosition(txtContent, txtContent.getText().length());
         }
       });
+
+      // adapter.getControlContentAdapter().setCursorPosition(txtContent, txtContent.getText().length());
+      adapter.getControlContentAdapter().setCursorPosition(txtContent, 5);
     } catch (ParseException e) {
       e.printStackTrace();
     }
