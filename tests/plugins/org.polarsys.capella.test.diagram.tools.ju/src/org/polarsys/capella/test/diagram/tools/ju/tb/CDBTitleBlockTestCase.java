@@ -34,9 +34,9 @@ public abstract class CDBTitleBlockTestCase extends AbstractTitleBlockTestCase {
     diagram.checkCreateElementTitleBlock(classId);
     diagram.insertElementTitleBlock(elementTB.getUid());
 
-    diagram.removeTitleBlock(diagramTB.getUid());
-    diagram.checkCreateTitleBlock();
-    diagram.insertTitleBlock(diagramTB.getUid());
+    diagram.removeDiagramTitleBlock(diagramTB.getUid());
+    diagram.checkCreateDiagramTitleBlock();
+    diagram.insertDiagramTitleBlock(diagramTB.getUid());
 
     // insert line/column in TB element
     diagram.insertLineInTitleBlock(elementTB, 0);
