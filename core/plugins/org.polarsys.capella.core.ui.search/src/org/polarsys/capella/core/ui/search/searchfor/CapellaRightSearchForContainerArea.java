@@ -19,7 +19,6 @@ import java.util.stream.Collectors;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerComparator;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
@@ -29,6 +28,7 @@ import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.ui.toolkit.widgets.filter.CapellaPatternFilter;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.ui.search.CapellaSearchPage;
+import org.polarsys.capella.core.ui.search.CapellaSearchSettings;
 import org.polarsys.capella.core.ui.search.searchfor.item.SearchForAttributeItem;
 import org.polarsys.capella.core.ui.search.searchfor.item.SearchForItem;
 
@@ -48,17 +48,24 @@ public class CapellaRightSearchForContainerArea extends AbstractCapellaSearchFor
   }
 
   @Override
-  protected AbstractSearchForContentProvider getSearchForContentProvider() {
+  protected AttributeContentProvider getSearchForContentProvider() {
     if (partictipantsItemProvider == null) {
       partictipantsItemProvider = new AttributeContentProvider(otherSideArea);
     }
-    return partictipantsItemProvider;
+    return (AttributeContentProvider) partictipantsItemProvider;
   }
 
+  @Override
   protected PatternFilter createPatternFilter() {
     return new CapellaPatternFilter();
   }
 
+  @Override
+  public void applySearchSettings(CapellaSearchSettings settings) {
+    super.applySearchSettings(settings.getSearchAttributeItems());
+  }
+
+  @Override
   public void updateSearchSettings() {
     searchPage.getCapellaSearchSettings().setSearchAttributeItems(getCheckedElements());
   }
@@ -88,7 +95,7 @@ public class CapellaRightSearchForContainerArea extends AbstractCapellaSearchFor
       }
     });
   }
-  
+
   @Override
   protected SelectionListener getRestoreDefaultsSelectionListener() {
     return new SelectionListener() {
@@ -114,4 +121,5 @@ public class CapellaRightSearchForContainerArea extends AbstractCapellaSearchFor
     topAttributeItems.stream().forEach(item -> updateCheckedElements(item, true));
     updateSearchSettings();
   }
+
 }
