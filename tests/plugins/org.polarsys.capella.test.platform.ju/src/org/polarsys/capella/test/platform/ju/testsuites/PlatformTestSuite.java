@@ -17,6 +17,7 @@ import java.util.List;
 
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
+import org.polarsys.capella.test.platform.ju.testcases.AboutInfoTest;
 import org.polarsys.capella.test.platform.ju.testcases.CapellaCDOGenerationOfDerivedFeature;
 import org.polarsys.capella.test.platform.ju.testcases.CapellaCheckAcceleo2NotUsed;
 import org.polarsys.capella.test.platform.ju.testcases.CapellaDefaultEditorEnabled;
@@ -29,6 +30,7 @@ import org.polarsys.capella.test.platform.ju.testcases.DiffmergeExternalReferenc
 import org.polarsys.capella.test.platform.ju.testcases.ExportCSVPreferencesTest;
 import org.polarsys.capella.test.platform.ju.testcases.InvalidPreferencesInitializer;
 import org.polarsys.capella.test.platform.ju.testcases.InvalidRepresentationDescriptorAdapterFactory;
+import org.polarsys.capella.test.platform.ju.testcases.LicenceTest;
 import org.polarsys.capella.test.platform.ju.testcases.ProjectSelectionDialogTest;
 import org.polarsys.capella.test.platform.ju.testcases.PropertiesWizardIconTest;
 import org.polarsys.capella.test.platform.ju.testcases.ViatraSurrogateAllDerivedFeaturesImplemented;
@@ -68,6 +70,8 @@ public class PlatformTestSuite extends BasicTestSuite {
     tests.add(new InvalidPreferencesInitializer());
     tests.add(new ProjectSelectionDialogTest());
     tests.add(new DataNotifierBeforeTransactionRecorder());
+    tests.add(new AboutInfoTest());
+    tests.add(new LicenceTest());
 
     return tests;
   }
