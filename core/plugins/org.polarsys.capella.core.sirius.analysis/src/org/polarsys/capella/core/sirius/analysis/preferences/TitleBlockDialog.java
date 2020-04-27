@@ -42,7 +42,7 @@ import org.polarsys.capella.common.ui.toolkit.browser.category.ICategory;
 import org.polarsys.capella.core.sirius.analysis.CapellaInterpreter;
 
 import com.google.common.base.CaseFormat;
-// New commit 2
+
 public class TitleBlockDialog extends TitleAreaDialog {
   private final String TITLE_NAME = "Add name and content";
   private final String NAME_LABEL = "Name";
@@ -128,8 +128,8 @@ public class TitleBlockDialog extends TitleAreaDialog {
               proposalsList.add(new org.eclipse.jface.fieldassist.ContentProposal(
                   CaseFormat.UPPER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL,
                       category.getName().trim().replaceAll(" ", "_")),
-                  null, // TODO - insert the correct label
-                  null, // TODO - insert the correct description
+                  contentContext.getTextSoFar(), 
+                  null, 
                   contentContext.getCursorPosition()));
             }
           } else {
@@ -164,8 +164,11 @@ public class TitleBlockDialog extends TitleAreaDialog {
 
       adapter.addContentProposalListener(new IContentProposalListener() {
         public void proposalAccepted(IContentProposal proposal) {
-          // TODO - concatenate with current text, overlap common text (?)
-          txtContent.setText(/* txtContent. */ proposal.getContent());
+          int posOfDot = txtContent.getText().lastIndexOf(".");
+          StringBuilder text = new StringBuilder();
+          text = text.append(txtContent.getText().substring(0, posOfDot))
+              .append(".").append(proposal.getContent());
+          txtContent.setText(text.toString());
         }
       });
     } catch (ParseException e) {
