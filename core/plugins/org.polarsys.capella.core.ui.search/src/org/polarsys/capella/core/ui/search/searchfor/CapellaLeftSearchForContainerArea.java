@@ -12,6 +12,7 @@ package org.polarsys.capella.core.ui.search.searchfor;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -67,29 +68,45 @@ public class CapellaLeftSearchForContainerArea extends AbstractCapellaSearchForC
 
   @Override
   public void applySearchSettings(CapellaSearchSettings settings) {
-    super.applySearchSettings(settings.getSearchClassItems());
+    Set<Object> searchClassItems = new HashSet<>(settings.getSearchClassItems());
 
+    // the filter settings might modify the structure of the tree, so they are applied first
+    applyFilterSearchSettings(settings);
+
+    // the search settings are applied second
+    super.applySearchSettings(searchClassItems);
+  }
+
+  /**
+   * Applies the filter settings to the current tree. This method is lazy, meaning that the application of the settings
+   * and thus the refresh of the tree is performed only if the settings changed.
+   * 
+   * @param settings
+   *          the search settings
+   */
+  private void applyFilterSearchSettings(CapellaSearchSettings settings) {
     boolean updateRequired = false;
+    ClassContentProvider classContentProvider = getSearchForContentProvider();
 
     boolean settingsAbstractChecked = settings.isAbstractChecked();
 
-    // TODO This is not enough, Should also check the status for the ClassContentProvider
-    // to avoid useless refresh when the history settings are the default ones
-    if (settingsAbstractChecked != isAbstractChecked()) {
+    if (settingsAbstractChecked != classContentProvider.isFilterAbstract()) {
       checkboxFilterAbstract.setSelection(settingsAbstractChecked);
+      classContentProvider.setFilterAbstract(settingsAbstractChecked);
       updateRequired = true;
     }
 
     boolean settingsNonSemanticChecked = settings.isNonSemanticChecked();
-    if (settingsAbstractChecked != isNonSemanticChecked()) {
+
+    if (settingsNonSemanticChecked != classContentProvider.isFilterNonSemantic()) {
       checkboxFilterNonSemantic.setSelection(settingsNonSemanticChecked);
+      classContentProvider.setFilterNonSemantic(settingsNonSemanticChecked);
       updateRequired = true;
     }
 
     if (updateRequired) {
       applyFilter();
     }
-
   }
 
   public boolean isAbstractChecked() {

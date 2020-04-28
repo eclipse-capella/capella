@@ -24,7 +24,7 @@ import org.polarsys.kitalpha.ad.viewpoint.coredomain.viewpoint.model.Viewpoint;
 
 public class ClassContentProvider extends AbstractSearchForContentProvider {
   private boolean filterAbstract = true;
-  private boolean filterNonSemantics = true;
+  private boolean filterNonSemantic = true;
   protected Map<String, Set<SearchForItem>> elements;
 
   public ClassContentProvider() {
@@ -80,8 +80,16 @@ public class ClassContentProvider extends AbstractSearchForContentProvider {
     this.filterAbstract = filterAbstract;
   }
 
-  public void setFilterNonSemantic(boolean filterNonSemantics) {
-    this.filterNonSemantics = filterNonSemantics;
+  public void setFilterNonSemantic(boolean filterNonSemantic) {
+    this.filterNonSemantic = filterNonSemantic;
+  }
+
+  public boolean isFilterNonSemantic() {
+    return filterNonSemantic;
+  }
+
+  public boolean isFilterAbstract() {
+    return filterAbstract;
   }
 
   // based on abstract and semantic checks, check if the element is displayed or not
@@ -95,7 +103,7 @@ public class ClassContentProvider extends AbstractSearchForContentProvider {
           return false;
         }
 
-        if (filterNonSemantics && !SimplifiedCapellaMetadata.INSTANCE.isSemantic(eclass)) {
+        if (filterNonSemantic && !SimplifiedCapellaMetadata.INSTANCE.isSemantic(eclass)) {
           return false;
         }
 

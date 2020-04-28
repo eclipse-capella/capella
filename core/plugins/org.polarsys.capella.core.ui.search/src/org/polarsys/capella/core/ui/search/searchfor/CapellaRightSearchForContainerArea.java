@@ -11,6 +11,7 @@
 package org.polarsys.capella.core.ui.search.searchfor;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
@@ -62,7 +63,8 @@ public class CapellaRightSearchForContainerArea extends AbstractCapellaSearchFor
 
   @Override
   public void applySearchSettings(CapellaSearchSettings settings) {
-    super.applySearchSettings(settings.getSearchAttributeItems());
+    Set<Object> searchAttributeItems = new HashSet<>(settings.getSearchAttributeItems());
+    super.applySearchSettings(searchAttributeItems);
   }
 
   @Override

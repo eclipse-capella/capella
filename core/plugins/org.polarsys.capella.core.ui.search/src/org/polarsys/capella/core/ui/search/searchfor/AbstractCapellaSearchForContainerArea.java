@@ -92,6 +92,8 @@ public abstract class AbstractCapellaSearchForContainerArea {
       boolean state = event.getChecked();
       Object parent = event.getElement();
       setCheckedState(parent, state);
+      updateSearchSettings();
+      refreshOtherSideArea();
     };
   }
 
@@ -107,8 +109,6 @@ public abstract class AbstractCapellaSearchForContainerArea {
         updateCheckedElements(child, state);
       }
     }
-    updateSearchSettings();
-    refreshOtherSideArea();
   }
 
   protected void updateCheckedElements(Object obj, boolean state) {
