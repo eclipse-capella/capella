@@ -16,6 +16,10 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.common.tools.api.interpreter.CompoundInterpreter;
+import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterProvider;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
@@ -341,4 +345,29 @@ public class TitleBlockHelper {
     line.getDetails().put(NAME, name);
     line.getDetails().put(CONTENT, content);
   }
+  
+  /**
+   * 
+   * @param target
+   * @param expression:
+   *          the expression to be evaluate (ex feature: name, or capella: xyz)
+   * @return result after the expression was evaluated
+   */
+  public static Object getResultOfExpression(DDiagram diagram, String expression, DAnnotation titleBlock) {
+    EObject objToEvaluate = TitleBlockHelper.getSemanticElementReference(titleBlock);
+    // if is a Diagram Title Block, objToEvaluate will be the diagram
+    if (objToEvaluate == null)
+      objToEvaluate = diagram;
+    
+    IInterpreterProvider provider = CompoundInterpreter.INSTANCE.getProviderForExpression(expression);
+    IInterpreter interpreter = provider.createInterpreter();
+    Object result = null;
+    try {
+      result = interpreter.evaluate(objToEvaluate, expression);
+    } catch (EvaluationException e) {
+        return e;
+    }
+    return result;
+  }
+
 }

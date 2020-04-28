@@ -600,14 +600,8 @@ public class TitleBlockServices {
       if (cell instanceof DAnnotation && TitleBlockHelper.isTitleBlockCell((DAnnotation) cell)) {
         String feature = ((DAnnotation) cell).getDetails().get(TitleBlockHelper.CONTENT);
         if (feature != null) {
-
-          EObject objToEvaluate = TitleBlockHelper.getSemanticElementReference(titleBlockContainer);
-          // if is a Diagram Title Block, objToEvaluate will be the diagram
-          if (objToEvaluate == null)
-            objToEvaluate = diagram;
-
-          Object obj = getResultOfExpression(objToEvaluate, feature, cell);
-          if (obj != null) {
+          Object obj = TitleBlockHelper.getResultOfExpression((DDiagram)diagram, feature, titleBlockContainer);
+          if (obj != null && !(obj instanceof EvaluationException)) {
             if (obj instanceof Collection) {
               return ((Collection) obj).stream()
                   .map(object -> getWrappedObject(object, (DAnnotation) cell, (DDiagram) diagram))
@@ -852,25 +846,4 @@ public class TitleBlockServices {
     URL url = FileLocator.find(SiriusViewActivator.getInstance().getBundle(), new Path(imagePath), null);
     return ImageDescriptor.createFromURL(url).createImage();
   }
-
-  /**
-   * 
-   * @param target
-   * @param expression:
-   *          the expression to be evaluate (ex feature: name, or capella: xyz)
-   * @return result after the expression was evaluated
-   */
-  public Object getResultOfExpression(EObject target, String expression, EObject cell) {
-    IInterpreterProvider provider = CompoundInterpreter.INSTANCE.getProviderForExpression(expression);
-    IInterpreter interpreter = provider.createInterpreter();
-    Object result = null;
-    try {
-      result = interpreter.evaluate(target, expression);
-    } catch (EvaluationException e) {
-      e.printStackTrace();
-      return e;
-    }
-    return result;
-  }
-
 }
