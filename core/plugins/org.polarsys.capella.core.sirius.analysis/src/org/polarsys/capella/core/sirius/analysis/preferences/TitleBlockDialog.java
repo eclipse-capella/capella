@@ -161,15 +161,19 @@ public class TitleBlockDialog extends TitleAreaDialog {
       adapter.addContentProposalListener(new IContentProposalListener() {
         public void proposalAccepted(IContentProposal proposal) {
           int posOfDot = txtContent.getText().lastIndexOf(".");
+          char charToAppend = '.';
+          if(posOfDot < 0) {
+            posOfDot = txtContent.getText().lastIndexOf(":");
+            charToAppend = ':';
+          }
           StringBuilder text = new StringBuilder();
-          text = text.append(txtContent.getText().substring(0, posOfDot)).append(".").append(proposal.getContent());
+          text = text.append(txtContent.getText().substring(0, posOfDot)).append(charToAppend).append(proposal.getContent());
           txtContent.setText(text.toString());
 
           adapter.getControlContentAdapter().setCursorPosition(txtContent, txtContent.getText().length());
         }
       });
 
-      // adapter.getControlContentAdapter().setCursorPosition(txtContent, txtContent.getText().length());
       adapter.getControlContentAdapter().setCursorPosition(txtContent, 5);
     } catch (ParseException e) {
       e.printStackTrace();
