@@ -22,11 +22,11 @@
    </description>
 
    <copyright>
-      Capella Transition Common
+      %copyright
    </copyright>
 
    <license url="%licenseURL">
-      Capella Transition Common
+      %license
    </license>
 
    <requires>

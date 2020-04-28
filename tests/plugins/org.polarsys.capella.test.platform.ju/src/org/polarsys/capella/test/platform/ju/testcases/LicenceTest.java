@@ -77,10 +77,10 @@ public class LicenceTest extends BasicTestCase {
         // All features must contains an EPL-2.0 license.html
         String content = getContent(feature, "license.html");
         if (content == null) {
-          status.add(new Status(Status.WARNING, id, "[licence.html] Missing file"));
+          status.add(new Status(Status.WARNING, id, "[license.html] Missing file"));
         } else {
           if (!content.contains("epl-2.0")) {
-            status.add(new Status(Status.WARNING, id, "[licence.html] is not EPL-2.0"));
+            status.add(new Status(Status.WARNING, id, "[license.html] is not EPL-2.0"));
           }
         }
 
@@ -91,28 +91,28 @@ public class LicenceTest extends BasicTestCase {
 
         Properties featureProperties = getProperties(feature, "feature.properties");
 
-        // All feature.properties must contain a licenseURL towards the licence.html
+        // All feature.properties must contain a licenseURL towards the license.html
         if (!featureProperties.getProperty("licenseURL", "").equals("license.html")) {
-          status.add(new Status(Status.WARNING, id, "[feature.properties] licenceURL not license.html"));
+          status.add(new Status(Status.WARNING, id, "[feature.properties] licenseURL not license.html"));
         }
 
         // All feature.properties must contain a license description
         if (!featureProperties.getProperty("license", "").contains("epl-2.0")) {
-          status.add(new Status(Status.WARNING, id, "[feature.properties] licence not EPL-2.0"));
+          status.add(new Status(Status.WARNING, id, "[feature.properties] license not EPL-2.0"));
         }
 
         // All feature.xml must contain a licenseURL to %licenseURL
         if (!"%licenseURL".equals(feature.getFeature().getFeatureInfo(IFeature.INFO_LICENSE).getURL())) {
-          status.add(new Status(Status.WARNING, id, "[feature.xml] licenceURL not %licenseURL"));
+          status.add(new Status(Status.WARNING, id, "[feature.xml] licenseURL not %licenseURL"));
         }
 
         // All feature.xml must contain a license to %license
         if (!"%license".equals(feature.getFeature().getFeatureInfo(IFeature.INFO_LICENSE).getDescription())) {
-          status.add(new Status(Status.WARNING, id, "[feature.xml] licence not %license"));
+          status.add(new Status(Status.WARNING, id, "[feature.xml] license not %license"));
         }
 
         if (!"%copyright".equals(feature.getFeature().getFeatureInfo(IFeature.INFO_COPYRIGHT).getDescription())) {
-          status.add(new Status(Status.WARNING, id, "[feature.xml] licence not %copyright"));
+          status.add(new Status(Status.WARNING, id, "[feature.xml] copyright not %copyright"));
         }
 
         // feature.properties must have an updated copyright according to plugin version (only if its packaged
@@ -139,16 +139,16 @@ public class LicenceTest extends BasicTestCase {
           } else {
 
             // Plugin about.ini must have an aboutText=%blurb
-            Properties aboutIni = getProperties(feature, "about.ini");
+            Properties aboutIni = getProperties(plu, "about.ini");
             if (!aboutIni.getProperty("aboutText", "").equals("%blurb")) {
               status.add(
                   new Status(Status.WARNING, id, "[about.ini of branding-plugin] Property aboutText=%blurb missing"));
             }
 
             // Plugin about.properties must have an blurb property
-            Properties aboutProperties = getProperties(feature, "about.properties");
+            Properties aboutProperties = getProperties(plu, "about.properties");
             if (aboutProperties.getProperty("blurb", "").isEmpty()) {
-              status.add(new Status(Status.WARNING, id, "[about.properties of branding-plugin] Licence not EPL-2.0"));
+              status.add(new Status(Status.WARNING, id, "[about.properties of branding-plugin] Property blurb empty"));
             }
 
             // Plugin about.properties must have an updated copyright according to plugin version (only if its packaged
