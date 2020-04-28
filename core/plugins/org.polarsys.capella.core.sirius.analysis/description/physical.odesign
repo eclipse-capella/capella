@@ -347,12 +347,12 @@
           <mappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG']"/>
         </filters>
       </filters>
-      <filters xsi:type="filter:CompositeFilterDescription" name="hide.diagram.titleblock.filter" label="%pa.pfbd.hide.diagram.titleblock.filter">
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.diagram.titleblock.filter" label="%common.hide.diagram.title.blocks.filter">
         <filters xsi:type="filter:MappingFilter" semanticConditionExpression="aql:not (self.isDiagramTitleBlock())">
           <mappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']"/>
         </filters>
       </filters>
-      <filters xsi:type="filter:CompositeFilterDescription" name="hide.element.titleblock.filter" label="%pa.pfbd.hide.element.titleblock.filter">
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.element.titleblock.filter" label="%common.hide.element.titleblock.filter">
         <filters xsi:type="filter:MappingFilter" semanticConditionExpression="aql:self.isDiagramTitleBlock()">
           <mappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']"/>
         </filters>
@@ -712,12 +712,12 @@
           <mappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG']"/>
         </filters>
       </filters>
-      <filters xsi:type="filter:CompositeFilterDescription" name="hide.diagram.titleblock.filter" label="%pa.pdfb.hide.diagram.titleblock.filter">
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.diagram.titleblock.filter" label="%common.hide.diagram.title.blocks.filter">
         <filters xsi:type="filter:MappingFilter" semanticConditionExpression="aql:not (self.isDiagramTitleBlock())">
           <mappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']"/>
         </filters>
       </filters>
-      <filters xsi:type="filter:CompositeFilterDescription" name="hide.element.titleblock.filter" label="%pa.pdfb.hide.element.titleblock.filter">
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.element.titleblock.filter" label="%common.hide.element.title.blocks.filter">
         <filters xsi:type="filter:MappingFilter" semanticConditionExpression="aql:self.isDiagramTitleBlock()">
           <mappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']"/>
         </filters>
@@ -2048,12 +2048,12 @@
           <mappings xsi:type="description_2:EdgeMapping" href="#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='PAB_FC_SequenceLink']"/>
         </filters>
       </filters>
-      <filters xsi:type="filter:CompositeFilterDescription" name="hide.diagram.titleblock.filter" label="%pa.pab.hide.diagram.titleblock.filter">
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.diagram.titleblock.filter" label="%common.hide.diagram.title.blocks.filter">
         <filters xsi:type="filter:MappingFilter" semanticConditionExpression="aql:not (self.isDiagramTitleBlock())">
           <mappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']"/>
         </filters>
       </filters>
-      <filters xsi:type="filter:CompositeFilterDescription" name="hide.element.titleblock.filter" label="%pa.pab.hide.element.titleblock.filter">
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.element.titleblock.filter" label="%common.hide.element.title.blocks.filter">
         <filters xsi:type="filter:MappingFilter" semanticConditionExpression="aql:self.isDiagramTitleBlock()">
           <mappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']"/>
         </filters>
