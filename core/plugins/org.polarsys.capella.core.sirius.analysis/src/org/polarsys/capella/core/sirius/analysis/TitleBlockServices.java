@@ -600,14 +600,8 @@ public class TitleBlockServices {
       if (cell instanceof DAnnotation && TitleBlockHelper.isTitleBlockCell((DAnnotation) cell)) {
         String feature = ((DAnnotation) cell).getDetails().get(TitleBlockHelper.CONTENT);
         if (feature != null) {
-
-          EObject objToEvaluate = TitleBlockHelper.getSemanticElementReference(titleBlockContainer);
-          // if is a Diagram Title Block, objToEvaluate will be the diagram
-          if (objToEvaluate == null)
-            objToEvaluate = diagram;
-
-          Object obj = TitleBlockHelper.getResultOfExpression(objToEvaluate, feature, cell);
-          if (obj != null) {
+          Object obj = TitleBlockHelper.getResultOfExpression((DDiagram)diagram, feature, titleBlockContainer);
+          if (obj != null && !(obj instanceof EvaluationException)) {
             if (obj instanceof Collection) {
               return ((Collection) obj).stream()
                   .map(object -> getWrappedObject(object, (DAnnotation) cell, (DDiagram) diagram))

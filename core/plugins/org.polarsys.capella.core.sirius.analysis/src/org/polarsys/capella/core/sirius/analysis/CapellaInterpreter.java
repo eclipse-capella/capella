@@ -80,12 +80,16 @@ public class CapellaInterpreter implements IInterpreterProvider, IInterpreter, T
               .to(CaseFormat.LOWER_CAMEL, category.getName().trim().replaceAll(" ", "_")).equals(command))
           .collect(Collectors.toSet());
 
-      ICategory category = categories.iterator().next();
-      if (category != null) {
-        // execute the command
-        result = category.compute(target);
+      if (!categories.isEmpty()) {
+        ICategory category = categories.iterator().next();
+        if (category != null) {
+          // execute the command
+          result = category.compute(target);
+        }
       }
-
+      else {
+        throw new EvaluationException();
+      }
     }
     return result;
   }

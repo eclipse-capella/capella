@@ -353,16 +353,21 @@ public class TitleBlockHelper {
    *          the expression to be evaluate (ex feature: name, or capella: xyz)
    * @return result after the expression was evaluated
    */
-  public static Object getResultOfExpression(EObject target, String expression, EObject cell) {
+  public static Object getResultOfExpression(DDiagram diagram, String expression, DAnnotation titleBlock) {
+    EObject objToEvaluate = TitleBlockHelper.getSemanticElementReference(titleBlock);
+    // if is a Diagram Title Block, objToEvaluate will be the diagram
+    if (objToEvaluate == null)
+      objToEvaluate = diagram;
+    
     IInterpreterProvider provider = CompoundInterpreter.INSTANCE.getProviderForExpression(expression);
     IInterpreter interpreter = provider.createInterpreter();
     Object result = null;
     try {
-      result = interpreter.evaluate(target, expression);
+      result = interpreter.evaluate(objToEvaluate, expression);
     } catch (EvaluationException e) {
-      e.printStackTrace();
-      return e;
+        return e;
     }
     return result;
   }
+
 }

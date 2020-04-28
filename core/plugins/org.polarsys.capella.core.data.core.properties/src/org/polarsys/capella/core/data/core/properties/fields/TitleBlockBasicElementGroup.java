@@ -36,11 +36,10 @@ import org.polarsys.capella.core.ui.properties.helpers.LockHelper;
 public class TitleBlockBasicElementGroup extends AbstractSemanticField {
   private static final String NAME = "Name:";
   private static final String CONTENT = "Content:";
-  private static final String INTERPRETER_ERROR = "Interpreter Error: Syntax not valid";
-  private static final String EMPTY_STRING = "";
+  private static final String INTERPRETER_ERROR = "Content Interpreter Error: Syntax not valid";
   protected Text nameTextField;
   protected Text contentTextField;
-  protected CLabel error_label;
+  protected CLabel errorLabel;
 
   /**
    * @param parent
@@ -59,7 +58,9 @@ public class TitleBlockBasicElementGroup extends AbstractSemanticField {
 
     nameTextField = createTextField(textGroup, Messages.getString("NamedElement.NameLabel"));
     contentTextField = createTextField(textGroup, Messages.getString("NamedElement.ContentLabel"));
-    error_label = widgetFactory.createCLabel(parent, "Error");
+    errorLabel = widgetFactory.createCLabel(parent, ICommonConstants.EMPTY_STRING);
+    errorLabel.setRightMargin(300);
+    errorLabel.setForeground(Display.getCurrent().getSystemColor(SWT.COLOR_RED));
   }
 
   /**
@@ -88,20 +89,6 @@ public class TitleBlockBasicElementGroup extends AbstractSemanticField {
       if (null != contentTextField)
         setTextValue(contentTextField, content);
     }
-    DAnnotation titleBlockCell = ((DAnnotation) semanticElement);
-    EObject container = titleBlockCell.eContainer();
-    if (container instanceof DDiagram) {
-      DDiagram diagram = (DDiagram) container;
-      DAnnotation titleBlock = TitleBlockHelper.getParentTitleBlock(titleBlockCell, diagram);
-      Object evaluateResult = TitleBlockHelper.getResultOfExpression(titleBlock,
-          contentTextField.getText(), titleBlockCell);
-      if (evaluateResult instanceof EvaluationException) {
-        error_label.setText(INTERPRETER_ERROR);
-        error_label.setForeground(Display.getCurrent().getSystemColor(SWT.COLOR_RED));
-      } else {
-        error_label.setText(EMPTY_STRING);
-      }
-    }
   }
 
   protected void setTextValue(Text text, String value) {
@@ -124,7 +111,11 @@ public class TitleBlockBasicElementGroup extends AbstractSemanticField {
   }
 
   private void setFieldValue(EObject object, String field, final Object value) {
-    if (!((DAnnotation) object).getDetails().get(field).equals(value.toString())) {
+    boolean errorSet = false;
+    if (field.equals(CONTENT)) {
+      errorSet = setContentErrorField(semanticElement);
+    }
+    if (!errorSet && !((DAnnotation) object).getDetails().get(field).equals(value.toString())) {
       DDiagram diagram = (DDiagram) object.eContainer();
       AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
         @Override
@@ -137,6 +128,25 @@ public class TitleBlockBasicElementGroup extends AbstractSemanticField {
       };
       executeCommand(command);
     }
+  }
+
+  private boolean setContentErrorField(EObject semanticElement) {
+    boolean errorSet = false;
+    DAnnotation titleBlockCell = ((DAnnotation) semanticElement);
+    EObject container = titleBlockCell.eContainer();
+    if (container instanceof DDiagram) {
+      DDiagram diagram = (DDiagram) container;
+      DAnnotation titleBlock = TitleBlockHelper.getParentTitleBlock(titleBlockCell, diagram);
+
+      Object evaluateResult = TitleBlockHelper.getResultOfExpression(diagram, contentTextField.getText(), titleBlock);
+      if (evaluateResult instanceof EvaluationException) {
+        errorLabel.setText(INTERPRETER_ERROR);
+        errorSet = true;
+      } else {
+        errorLabel.setText(ICommonConstants.EMPTY_STRING);
+      }
+    }
+    return errorSet;
   }
 
   /**
@@ -172,5 +182,5 @@ public class TitleBlockBasicElementGroup extends AbstractSemanticField {
   public void loadData(EObject semanticElement) {
     // TODO Auto-generated method stub
   }
-  
+
 }
