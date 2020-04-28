@@ -27,6 +27,7 @@ import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.command.AbstractCommand.NonDirtying;
 import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -339,6 +340,9 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
          */
         @Override
         public void dispose() {
+            
+            getResourceSet().unregisterAdapters();
+            
             SemanticCommandStack workspaceCommandStack = (SemanticCommandStack) getCommandStack();
             workspaceCommandStack.flush();
             // Make sure Operation History don't retain Context for resources.
@@ -575,6 +579,45 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
             return dataNotifier;
         }
 
+        public void unregisterAdapters() {
+            // Disable resolution of proxy for SiriusCrossReferenceAdapter of
+            // resourceSet
+            List<Adapter> adaptersToRemove = new ArrayList<Adapter>();
+            for (Adapter next : eAdapters()) {
+                if (next instanceof SiriusCrossReferenceAdapter) {
+                    ((SiriusCrossReferenceAdapter) next).disableResolveProxy();
+                    adaptersToRemove.add(next);
+                }
+            }
+            eAdapters().removeAll(adaptersToRemove);
+
+            // disable resolveProxy capability before clearing adapters on resources
+            for (Resource resource : getResources()) {
+                disableCrossReferencerResolve(resource);
+                resource.eAdapters().clear();
+            }
+
+            eAdapters().remove(dataNotifier);
+            dataNotifier = null;
+        }
+            
+        /**
+         * Disable {@link SiriusCrossReferenceAdapter} resolveProxy capability on resource and all its contents
+         * 
+         * @param resource
+         *            the resource
+         */
+        private void disableCrossReferencerResolve(Resource resource) {
+            // Disable resolveProxy for SiriusCrossreferencerAdapter.
+            // SiriusCrossreferencerAdapter on EObject are also on resource,
+            // consequently we manage only the resource itself.
+            for (Adapter adapter : resource.eAdapters()) {
+                if (adapter instanceof SiriusCrossReferenceAdapter) {
+                    ((SiriusCrossReferenceAdapter) adapter).disableResolveProxy();
+                }
+            }
+        }
+            
         /**
          * 
          * @see org.eclipse.emf.edit.domain.IEditingDomainProvider#getEditingDomain()

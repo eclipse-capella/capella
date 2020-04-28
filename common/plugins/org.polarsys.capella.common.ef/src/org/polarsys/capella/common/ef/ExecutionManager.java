@@ -169,4 +169,12 @@ public class ExecutionManager {
     }
     return null;
   }
+
+  /**
+   * Dispose the {@link ExecutionManager}. {@link ExecutionManager#dispose()} should be called after the dispose of the
+   * {@link TransactionalEditingDomain}.
+   */
+  public void dispose() {
+    this._editingDomain = null;
+  }
 }

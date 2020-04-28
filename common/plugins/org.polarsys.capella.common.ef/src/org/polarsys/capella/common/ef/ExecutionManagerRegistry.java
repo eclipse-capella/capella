@@ -77,6 +77,7 @@ public class ExecutionManagerRegistry {
   public void removeManager(ExecutionManager executionManager) {
     if ((executionManager != null) && (executionManager.getEditingDomain() != null)) {
       _managers.remove(executionManager.getEditingDomain());
+      executionManager.dispose();
     }
   }
 
