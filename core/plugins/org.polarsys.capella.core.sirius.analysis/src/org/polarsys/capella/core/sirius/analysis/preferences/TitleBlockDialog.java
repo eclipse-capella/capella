@@ -26,8 +26,10 @@ import org.eclipse.sirius.common.tools.api.contentassist.ContentInstanceContext;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentProposal;
 import org.eclipse.sirius.common.tools.api.contentassist.IProposalProvider;
 import org.eclipse.sirius.common.tools.api.interpreter.CompoundInterpreter;
+import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.internal.assist.ProposalProviderRegistry;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DSemanticDiagramSpec;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
@@ -39,6 +41,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.polarsys.capella.common.ui.toolkit.browser.category.CategoryRegistry;
 import org.polarsys.capella.common.ui.toolkit.browser.category.ICategory;
+import org.polarsys.capella.core.diagram.helpers.TitleBlockHelper;
 import org.polarsys.capella.core.sirius.analysis.CapellaInterpreter;
 
 import com.google.common.base.CaseFormat;
@@ -47,9 +50,8 @@ public class TitleBlockDialog extends TitleAreaDialog {
   private final String TITLE_NAME = "Add name and content";
   private final String NAME_LABEL = "Name";
   private final String CONTENT_LABEL = "Content";
-  private final String ERROR_MESSAGE = "The content of data fields can be customized via aql, feature or capella:\r\n"
-      + "\r\n" + "      AQL query (aql:)\r\n" + "      Name of feature (feature:)\r\n"
-      + "      Predefined service (capella:)\r\n\r\n " + "      Example: feature:name";
+  private final String INTERPRETOR_ERROR = "Content Interpreter Error: Syntax not valid\r\n";
+  private final String INFO_MESSAGE = "The content field can be customized via aql, feature or capella queries.\r\n";
   private Text txtName;
   private Text txtContent;
 
@@ -68,6 +70,7 @@ public class TitleBlockDialog extends TitleAreaDialog {
   public void create() {
     super.create();
     setTitle(TITLE_NAME);
+    setMessage(INFO_MESSAGE, 2);
   }
 
   @Override
@@ -77,7 +80,7 @@ public class TitleBlockDialog extends TitleAreaDialog {
     container.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
     GridLayout layout = new GridLayout(2, false);
     container.setLayout(layout);
-
+    
     createName(container);
     createContent(container);
 
@@ -159,6 +162,7 @@ public class TitleBlockDialog extends TitleAreaDialog {
           keyStroke, null);
 
       adapter.addContentProposalListener(new IContentProposalListener() {
+        @Override
         public void proposalAccepted(IContentProposal proposal) {
           int posOfDot = txtContent.getText().lastIndexOf(".");
           char charToAppend = '.';
@@ -188,12 +192,13 @@ public class TitleBlockDialog extends TitleAreaDialog {
   private boolean saveInput() {
     name = txtName.getText();
     content = txtContent.getText();
-    if (content.matches("feature:(.*)") || content.matches("aql:(.*)") || content.matches("capella:(.*)")) {
-
-      return true;
+    DDiagram diagram = new DSemanticDiagramSpec();
+    Object evaluateResult = TitleBlockHelper.getResultOfExpression(diagram, content, null);
+    if (evaluateResult instanceof EvaluationException) {
+      setErrorMessage(INTERPRETOR_ERROR);
+      return false;
     }
-    setErrorMessage(ERROR_MESSAGE);
-    return false;
+    return true;
   }
 
   @Override

@@ -172,10 +172,12 @@ public class TitleBlockHelper {
    * @return then semantic element attached to a Title Block
    */
   public static EObject getSemanticElementReference(DAnnotation titleBlock) {
+    if (titleBlock != null) {
     List<EObject> modelElements = titleBlock.getReferences().stream()
         .filter(x -> !(x instanceof DAnnotation)).collect(Collectors.toList());
     if(!modelElements.isEmpty())
       return modelElements.get(0);
+    }
     return null;
   }
   
