@@ -50,10 +50,8 @@ public class TitleBlockDialog extends TitleAreaDialog {
   private final String TITLE_NAME = "Add name and content";
   private final String NAME_LABEL = "Name";
   private final String CONTENT_LABEL = "Content";
-  private final String ERROR_MESSAGE = "Content Interpreter Error: Syntax not valid\r\n"
-      + "The content of data fields can be customized via aql, feature or capella:\r\n" + "      AQL query (aql:)\r\n"
-      + "      Name of feature (feature:)\r\n" + "      Predefined service (capella:)\r\n\r\n"
-      + "      Example: feature:name";
+  private final String INTERPRETOR_ERROR = "Content Interpreter Error: Syntax not valid\r\n";
+  private final String INFO_MESSAGE = "The content of data fields can be customized via aql, feature or capella queries.\r\n";
   private Text txtName;
   private Text txtContent;
 
@@ -72,6 +70,7 @@ public class TitleBlockDialog extends TitleAreaDialog {
   public void create() {
     super.create();
     setTitle(TITLE_NAME);
+    setMessage(INFO_MESSAGE, 2);
   }
 
   @Override
@@ -81,7 +80,7 @@ public class TitleBlockDialog extends TitleAreaDialog {
     container.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
     GridLayout layout = new GridLayout(2, false);
     container.setLayout(layout);
-
+    
     createName(container);
     createContent(container);
 
@@ -196,7 +195,7 @@ public class TitleBlockDialog extends TitleAreaDialog {
     DDiagram diagram = new DSemanticDiagramSpec();
     Object evaluateResult = TitleBlockHelper.getResultOfExpression(diagram, content, null);
     if (evaluateResult instanceof EvaluationException) {
-      setErrorMessage(ERROR_MESSAGE);
+      setErrorMessage(INTERPRETOR_ERROR);
       return false;
     }
     return true;
