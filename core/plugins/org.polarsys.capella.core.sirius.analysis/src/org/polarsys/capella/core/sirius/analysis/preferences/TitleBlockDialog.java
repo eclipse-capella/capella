@@ -51,7 +51,7 @@ public class TitleBlockDialog extends TitleAreaDialog {
   private final String NAME_LABEL = "Name";
   private final String CONTENT_LABEL = "Content";
   private final String INTERPRETOR_ERROR = "Content Interpreter Error: Syntax not valid\r\n";
-  private final String INFO_MESSAGE = "The content of data fields can be customized via aql, feature or capella queries.\r\n";
+  private final String INFO_MESSAGE = "The content field can be customized via aql, feature or capella queries.\r\n";
   private Text txtName;
   private Text txtContent;
 
