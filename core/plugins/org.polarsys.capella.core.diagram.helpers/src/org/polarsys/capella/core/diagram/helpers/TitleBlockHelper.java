@@ -13,17 +13,35 @@ package org.polarsys.capella.core.diagram.helpers;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jface.bindings.keys.KeyStroke;
+import org.eclipse.jface.bindings.keys.ParseException;
+import org.eclipse.jface.fieldassist.ContentProposalAdapter;
+import org.eclipse.jface.fieldassist.IContentProposal;
+import org.eclipse.jface.fieldassist.IContentProposalListener;
+import org.eclipse.jface.fieldassist.IContentProposalProvider;
+import org.eclipse.jface.fieldassist.TextContentAdapter;
+import org.eclipse.sirius.common.tools.api.contentassist.ContentInstanceContext;
+import org.eclipse.sirius.common.tools.api.contentassist.ContentProposal;
+import org.eclipse.sirius.common.tools.api.contentassist.IProposalProvider;
 import org.eclipse.sirius.common.tools.api.interpreter.CompoundInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterProvider;
+import org.eclipse.sirius.common.tools.internal.assist.ProposalProviderRegistry;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DSemanticDiagramSpec;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
+import org.eclipse.swt.widgets.Text;
+import org.polarsys.capella.common.ui.toolkit.browser.category.CategoryRegistry;
+import org.polarsys.capella.common.ui.toolkit.browser.category.ICategory;
+
+import com.google.common.base.CaseFormat;
 
 /**
  * Various helpers for {@link DAnnotation} annotations on {@link Title Blocks} elements.
@@ -372,4 +390,77 @@ public class TitleBlockHelper {
     return result;
   }
 
+  public static void getServicesProposals(Text textField) {
+    KeyStroke keyStroke;
+    try {
+      keyStroke = KeyStroke.getInstance("Ctrl+Space");
+      IContentProposalProvider provider = new IContentProposalProvider() {
+
+        @Override
+        public IContentProposal[] getProposals(String contents, int position) {
+          IInterpreter vpInterpreter = CompoundInterpreter.INSTANCE.getInterpreterForExpression(contents);
+          DSemanticDiagramSpec target = new DSemanticDiagramSpec();
+
+          List<IContentProposal> proposalsList = new ArrayList<IContentProposal>();
+          ContentInstanceContext contentContext = new ContentInstanceContext(target, contents, position);
+          if (contents.contains("capella:")) {
+            // get all the categories for target and match the command name from category with the command in TitleBlock
+            Set<ICategory> categories = CategoryRegistry.getInstance().gatherCategories(target);
+
+            for (ICategory category : categories) {
+              proposalsList.add(new org.eclipse.jface.fieldassist.ContentProposal(
+                  CaseFormat.UPPER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL,
+                      category.getName().trim().replaceAll(" ", "_")),
+                  contentContext.getTextSoFar(), null, contentContext.getCursorPosition()));
+            }
+          } else {
+            List<ContentProposal> computedProposals;
+            if (vpInterpreter instanceof IProposalProvider) {
+              computedProposals = ((IProposalProvider) vpInterpreter).getProposals(vpInterpreter, contentContext);
+            } else {
+              computedProposals = new ArrayList<>();
+              final List<IProposalProvider> proposalProviders = ProposalProviderRegistry.getProvidersFor(vpInterpreter);
+              for (IProposalProvider provider : proposalProviders) {
+                computedProposals.addAll(provider.getProposals(vpInterpreter, contentContext));
+              }
+            }
+            for (ContentProposal proposals : computedProposals) {
+              org.eclipse.jface.fieldassist.ContentProposal contentProposals = new org.eclipse.jface.fieldassist.ContentProposal(
+                  proposals.getProposal(), proposals.getDisplay(), proposals.getInformation(),
+                  proposals.getCursorPosition());
+              proposalsList.add(contentProposals);
+            }
+          }
+
+          IContentProposal[] proposals = new IContentProposal[proposalsList.size()];
+          proposals = proposalsList.toArray(proposals);
+          return proposals;
+        }
+      };
+      ContentProposalAdapter adapter = new ContentProposalAdapter(textField, new TextContentAdapter(), provider,
+          keyStroke, null);
+      adapter.addContentProposalListener(new IContentProposalListener() {
+        @Override
+        public void proposalAccepted(IContentProposal proposal) {
+          int posOfDot = textField.getText().lastIndexOf(".");
+          char charToAppend = '.';
+          if (posOfDot < 0) {
+            posOfDot = textField.getText().lastIndexOf(":");
+            charToAppend = ':';
+          }
+          StringBuilder text = new StringBuilder();
+          text = text.append(textField.getText().substring(0, posOfDot)).append(charToAppend)
+              .append(proposal.getContent());
+          textField.setText(text.toString());
+
+          adapter.getControlContentAdapter().setCursorPosition(textField, textField.getText().length());
+        }
+      });
+
+      adapter.getControlContentAdapter().setCursorPosition(textField, 5);
+    } catch (ParseException e) {
+      e.printStackTrace();
+    }
+
+}
 }
