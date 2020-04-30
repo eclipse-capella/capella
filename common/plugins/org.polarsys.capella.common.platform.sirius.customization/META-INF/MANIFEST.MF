@@ -16,7 +16,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.sirius.diagram.ui,
  org.polarsys.capella.shared.id.handler,
  org.eclipse.sirius.common.ui,
- org.eclipse.gmf.runtime.notation
+ org.eclipse.gmf.runtime.notation;bundle-version="1.10.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.common.platform.sirius.customisation,
