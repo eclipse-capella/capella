@@ -58,6 +58,7 @@ public class TitleBlockBasicElementGroup extends AbstractSemanticField {
 
     nameTextField = createTextField(textGroup, Messages.getString("NamedElement.NameLabel"));
     contentTextField = createTextField(textGroup, Messages.getString("NamedElement.ContentLabel"));
+    TitleBlockHelper.getServicesProposals(contentTextField);
     errorLabel = widgetFactory.createCLabel(parent, ICommonConstants.EMPTY_STRING);
     errorLabel.setRightMargin(300);
     errorLabel.setForeground(Display.getCurrent().getSystemColor(SWT.COLOR_RED));
