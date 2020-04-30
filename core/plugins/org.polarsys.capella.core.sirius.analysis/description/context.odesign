@@ -52,6 +52,16 @@
           <mappings xsi:type="description_1:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG']"/>
         </filters>
       </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.diagram.titleblock.filter" label="%common.hide.diagram.title.blocks.filter">
+        <filters xsi:type="filter:MappingFilter" semanticConditionExpression="aql:not (self.isDiagramTitleBlock())">
+          <mappings xsi:type="description_1:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']"/>
+        </filters>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.element.titleblock.filter" label="%common.hide.element.title.blocks.filter">
+        <filters xsi:type="filter:MappingFilter" semanticConditionExpression="aql:self.isDiagramTitleBlock()">
+          <mappings xsi:type="description_1:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']"/>
+        </filters>
+      </filters>
       <defaultLayer name="default layer Functional Mission">
         <nodeMappings name="MissionNode" detailDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20Mission']" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" semanticCandidatesExpression="" createElements="false" domainClass="Mission">
           <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="7" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Mission.svg">
@@ -502,6 +512,16 @@
         <filters xsi:type="filter:MappingFilter">
           <mappings xsi:type="description_1:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_PV']"/>
           <mappings xsi:type="description_1:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG']"/>
+        </filters>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.diagram.titleblock.filter" label="%common.hide.diagram.title.blocks.filter">
+        <filters xsi:type="filter:MappingFilter" semanticConditionExpression="aql:not (self.isDiagramTitleBlock())">
+          <mappings xsi:type="description_1:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']"/>
+        </filters>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.element.titleblock.filter" label="%common.hide.element.title.blocks.filter">
+        <filters xsi:type="filter:MappingFilter" semanticConditionExpression="aql:self.isDiagramTitleBlock()">
+          <mappings xsi:type="description_1:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']"/>
         </filters>
       </filters>
       <defaultLayer name="default layer Functional Missions 2">
@@ -970,6 +990,16 @@
         <filters xsi:type="filter:MappingFilter">
           <mappings xsi:type="description_1:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_PV']"/>
           <mappings xsi:type="description_1:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG']"/>
+        </filters>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.diagram.titleblock.filter" label="%common.hide.diagram.title.blocks.filter">
+        <filters xsi:type="filter:MappingFilter" semanticConditionExpression="aql:not (self.isDiagramTitleBlock())">
+          <mappings xsi:type="description_1:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']"/>
+        </filters>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.element.titleblock.filter" label="%common.hide.element.title.blocks.filter">
+        <filters xsi:type="filter:MappingFilter" semanticConditionExpression="aql:self.isDiagramTitleBlock()">
+          <mappings xsi:type="description_1:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']"/>
         </filters>
       </filters>
       <defaultLayer name="default layer Functional Capability 3">
