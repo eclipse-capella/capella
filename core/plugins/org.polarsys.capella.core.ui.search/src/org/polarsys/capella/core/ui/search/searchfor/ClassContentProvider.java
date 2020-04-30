@@ -23,8 +23,8 @@ import org.polarsys.capella.core.ui.search.searchfor.item.SearchForItem;
 import org.polarsys.kitalpha.ad.viewpoint.coredomain.viewpoint.model.Viewpoint;
 
 public class ClassContentProvider extends AbstractSearchForContentProvider {
-  private boolean showAbstract = false;
-  private boolean showSemantics = true;
+  private boolean filterAbstract = true;
+  private boolean filterNonSemantic = true;
   protected Map<String, Set<SearchForItem>> elements;
 
   public ClassContentProvider() {
@@ -40,7 +40,7 @@ public class ClassContentProvider extends AbstractSearchForContentProvider {
   @Override
   public Object[] getElements(Object inputElement) {
     if (inputElement != null) {
-      return elements.keySet().stream().filter(x -> hasChildren(x)).collect(Collectors.toSet()).toArray();
+      return elements.keySet().stream().filter(this::hasChildren).toArray();
     }
     return new Object[0];
   }
@@ -58,8 +58,7 @@ public class ClassContentProvider extends AbstractSearchForContentProvider {
   @Override
   public Object[] getChildren(Object parentElement) {
     if (parentElement instanceof String && elements.keySet().contains(parentElement)) {
-      return elements.get((String) parentElement).stream().filter(x -> isDisplayed(x)).collect(Collectors.toSet())
-          .toArray();
+      return elements.get(parentElement).stream().filter(this::isDisplayed).collect(Collectors.toSet()).toArray();
     }
     return super.getChildren(parentElement);
   }
@@ -77,20 +76,20 @@ public class ClassContentProvider extends AbstractSearchForContentProvider {
     return null;
   }
 
-  public boolean isShowAbstract() {
-    return showAbstract;
+  public void setFilterAbstract(boolean filterAbstract) {
+    this.filterAbstract = filterAbstract;
   }
 
-  public void setShowAbstract(boolean showAbstract) {
-    this.showAbstract = showAbstract;
+  public void setFilterNonSemantic(boolean filterNonSemantic) {
+    this.filterNonSemantic = filterNonSemantic;
   }
 
-  public boolean isShowSemantics() {
-    return showSemantics;
+  public boolean isFilterNonSemantic() {
+    return filterNonSemantic;
   }
 
-  public void setShowSemantics(boolean showSemantics) {
-    this.showSemantics = showSemantics;
+  public boolean isFilterAbstract() {
+    return filterAbstract;
   }
 
   // based on abstract and semantic checks, check if the element is displayed or not
@@ -99,13 +98,19 @@ public class ClassContentProvider extends AbstractSearchForContentProvider {
       Object obj = ((SearchForClassItem) item).getObject();
       if (obj instanceof EClass) {
         EClass eclass = (EClass) obj;
-        boolean abstractFilterPassed = showAbstract == eclass.isAbstract();
-        boolean semanticFilterPassed = showSemantics == SimplifiedCapellaMetadata.INSTANCE.isSemantic(eclass);
-        if (abstractFilterPassed && semanticFilterPassed) {
-          return true;
+
+        if (filterAbstract && eclass.isAbstract()) {
+          return false;
         }
+
+        if (filterNonSemantic && !SimplifiedCapellaMetadata.INSTANCE.isSemantic(eclass)) {
+          return false;
+        }
+
+        return true;
       }
     }
+
     return false;
   }
 }

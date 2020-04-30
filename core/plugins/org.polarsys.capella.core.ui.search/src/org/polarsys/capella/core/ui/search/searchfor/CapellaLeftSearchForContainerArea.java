@@ -12,6 +12,7 @@ package org.polarsys.capella.core.ui.search.searchfor;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -46,24 +47,77 @@ import org.polarsys.capella.core.ui.search.searchfor.item.SearchForItem;
 public class CapellaLeftSearchForContainerArea extends AbstractCapellaSearchForContainerArea {
   protected AbstractSearchForContentProvider searchForContentProvider;
   Button checkboxFilterAbstract;
-  Button checkboxFilterSemantic;
+  Button checkboxFilterNonSemantic;
 
   public CapellaLeftSearchForContainerArea(Group parent, CapellaSearchPage searchPage) {
     super(parent, null, searchPage);
   }
 
   @Override
-  protected AbstractSearchForContentProvider getSearchForContentProvider() {
+  protected ClassContentProvider getSearchForContentProvider() {
     if (searchForContentProvider == null) {
       searchForContentProvider = new ClassContentProvider();
     }
-    return searchForContentProvider;
+    return (ClassContentProvider) searchForContentProvider;
   }
 
+  @Override
   protected PatternFilter createPatternFilter() {
     return new CapellaPatternFilter();
   }
 
+  @Override
+  public void applySearchSettings(CapellaSearchSettings settings) {
+    Set<Object> searchClassItems = new HashSet<>(settings.getSearchClassItems());
+
+    // the filter settings might modify the structure of the tree, so they are applied first
+    applyFilterSearchSettings(settings);
+
+    // the search settings are applied second
+    super.applySearchSettings(searchClassItems);
+  }
+
+  /**
+   * Applies the filter settings to the current tree. This method is lazy, meaning that the application of the settings
+   * and thus the refresh of the tree is performed only if the settings changed.
+   * 
+   * @param settings
+   *          the search settings
+   */
+  private void applyFilterSearchSettings(CapellaSearchSettings settings) {
+    boolean updateRequired = false;
+    ClassContentProvider classContentProvider = getSearchForContentProvider();
+
+    boolean settingsAbstractChecked = settings.isAbstractChecked();
+
+    if (settingsAbstractChecked != classContentProvider.isFilterAbstract()) {
+      checkboxFilterAbstract.setSelection(settingsAbstractChecked);
+      classContentProvider.setFilterAbstract(settingsAbstractChecked);
+      updateRequired = true;
+    }
+
+    boolean settingsNonSemanticChecked = settings.isNonSemanticChecked();
+
+    if (settingsNonSemanticChecked != classContentProvider.isFilterNonSemantic()) {
+      checkboxFilterNonSemantic.setSelection(settingsNonSemanticChecked);
+      classContentProvider.setFilterNonSemantic(settingsNonSemanticChecked);
+      updateRequired = true;
+    }
+
+    if (updateRequired) {
+      applyFilter();
+    }
+  }
+
+  public boolean isAbstractChecked() {
+    return checkboxFilterAbstract.getSelection();
+  }
+
+  public boolean isNonSemanticChecked() {
+    return checkboxFilterNonSemantic.getSelection();
+  }
+
+  @Override
   public void updateSearchSettings() {
     // setSearchMetaClasses, beside the metaclass it contains also the category (Diagram Elements or Model Elements)
     searchPage.getCapellaSearchSettings().setSearchClassItems(getCheckedElements());
@@ -79,8 +133,8 @@ public class CapellaLeftSearchForContainerArea extends AbstractCapellaSearchForC
 
     searchForSelectionGroup.setText(CapellaSearchConstants.Filters_Label);
     checkboxFilterAbstract = createCheckboxFilters(searchForSelectionGroup, CapellaSearchConstants.Abstract_Label,
-        false);
-    checkboxFilterSemantic = createCheckboxFilters(searchForSelectionGroup, CapellaSearchConstants.Semantic_Label,
+        true);
+    checkboxFilterNonSemantic = createCheckboxFilters(searchForSelectionGroup, CapellaSearchConstants.Semantic_Label,
         true);
   }
 
@@ -93,7 +147,7 @@ public class CapellaLeftSearchForContainerArea extends AbstractCapellaSearchForC
 
     checkboxFilters.addSelectionListener(new SelectionAdapter() {
       @Override
-      public void widgetSelected(SelectionEvent e) {
+      public void widgetSelected(SelectionEvent event) {
         applyFilter();
       }
     });
@@ -105,22 +159,17 @@ public class CapellaLeftSearchForContainerArea extends AbstractCapellaSearchForC
       @Override
       public void run(IProgressMonitor monitor) throws InvocationTargetException {
         CheckboxTreeViewer checkboxTreeViewer = (CheckboxTreeViewer) filteredTree.getViewer();
-        ClassContentProvider provider = (ClassContentProvider) getSearchForContentProvider();
-        provider.setShowAbstract(checkboxFilterAbstract.getSelection());
-        provider.setShowSemantics(checkboxFilterSemantic.getSelection());
+        ClassContentProvider provider = getSearchForContentProvider();
+        provider.setFilterAbstract(isAbstractChecked());
+        provider.setFilterNonSemantic(isNonSemanticChecked());
         checkboxTreeViewer.refresh();
         checkboxTreeViewer.expandAll();
-        CapellaSearchSettings settings = searchPage.getCapellaSearchSettings();
-        settings.setAbstractChecked(checkboxFilterAbstract.getSelection());
-        settings.setSemanticChecked(checkboxFilterSemantic.getSelection());
       }
     };
     IProgressService service = PlatformUI.getWorkbench().getProgressService();
     try {
       service.run(false, false, runnable);
-    } catch (InterruptedException e) {
-      e.printStackTrace();
-    } catch (InvocationTargetException e) {
+    } catch (InterruptedException | InvocationTargetException e) {
       e.printStackTrace();
     }
   }
@@ -193,4 +242,5 @@ public class CapellaLeftSearchForContainerArea extends AbstractCapellaSearchForC
     updateSearchSettings();
     refreshOtherSideArea();
   }
+
 }

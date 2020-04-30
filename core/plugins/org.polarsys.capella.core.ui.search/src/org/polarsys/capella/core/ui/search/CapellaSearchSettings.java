@@ -26,6 +26,7 @@ import org.polarsys.capella.core.ui.search.searchfor.item.SearchForNoteItem;
  * We can use this class in the current search to update the ui accordingly to what the user has selected.
  * Also we use this class to keep a history of the search and be able to apply the search settings in a next search or replace.
  */
+@SuppressWarnings("restriction")
 public class CapellaSearchSettings {
   private boolean isCaseSensitive = false;
   private boolean isRegExSearch = false;
@@ -35,8 +36,8 @@ public class CapellaSearchSettings {
   private Set<Object> objectsToSearch = new HashSet<>();
   private Set<Object> searchAttributeItems = new HashSet<>();
   private Set<Object> searchMetaClassItems = new HashSet<>();
-  private boolean isAbstractChecked = false;
-  private boolean isSemanticChecked = true;
+  private boolean abstractChecked = true;
+  private boolean nonSemanticChecked = true;
   private int scope;
 
   public void addObjectToSearch(Object objectToSearch) {
@@ -111,12 +112,20 @@ public class CapellaSearchSettings {
     this.searchMetaClassItems = searchClassItems;
   }
 
-  public void setAbstractChecked(boolean isAbstractChecked) {
-    this.isAbstractChecked = isAbstractChecked;
+  public void setAbstractChecked(boolean abstractChecked) {
+    this.abstractChecked = abstractChecked;
   }
 
-  public void setSemanticChecked(boolean isSemanticChecked) {
-    this.isSemanticChecked = isSemanticChecked;
+  public void setNonSemanticChecked(boolean nonSemanticChecked) {
+    this.nonSemanticChecked = nonSemanticChecked;
+  }
+
+  public boolean isAbstractChecked() {
+    return abstractChecked;
+  }
+
+  public boolean isNonSemanticChecked() {
+    return nonSemanticChecked;
   }
 
   public void setScope(int scope) {
