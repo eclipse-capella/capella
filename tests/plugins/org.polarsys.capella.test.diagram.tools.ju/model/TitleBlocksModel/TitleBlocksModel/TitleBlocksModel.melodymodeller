@@ -172,6 +172,8 @@
           id="0bb7473d-46f3-4284-b40c-09059e271e36" name="Structure">
         <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="46fd9193-f391-41c7-b368-8e5b81673539"
             name="System" abstractType="#dde2b030-28f4-4b9d-bee5-36361298400a"/>
+        <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="9dcae60f-09c0-4fe1-b9c9-990c36bedc14"
+            name="SA 2" abstractType="#435c21b9-b55a-46b7-b41e-cf1161fe34ad"/>
         <ownedSystemComponents xsi:type="org.polarsys.capella.core.data.ctx:SystemComponent"
             id="dde2b030-28f4-4b9d-bee5-36361298400a" name="System">
           <ownedStateMachines xsi:type="org.polarsys.capella.core.data.capellacommon:StateMachine"
@@ -180,6 +182,8 @@
                 id="a43fb86e-1d34-4a8e-88eb-6cb3e2eb8ff9" name="Default Region"/>
           </ownedStateMachines>
         </ownedSystemComponents>
+        <ownedSystemComponents xsi:type="org.polarsys.capella.core.data.ctx:SystemComponent"
+            id="435c21b9-b55a-46b7-b41e-cf1161fe34ad" name="SA 2" actor="true"/>
       </ownedSystemComponentPkg>
       <ownedMissionPkg xsi:type="org.polarsys.capella.core.data.ctx:MissionPkg" id="d11d3b2d-c464-49d4-9c2e-838222c3e153"
           name="Missions"/>

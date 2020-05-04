@@ -11,6 +11,7 @@
 package org.polarsys.capella.test.diagram.tools.ju.tb;
 
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.polarsys.capella.test.diagram.common.ju.api.AbstractDiagramTestCase;
 import org.polarsys.capella.test.diagram.common.ju.context.CommonDiagram;
 import org.polarsys.capella.test.framework.context.SessionContext;
@@ -19,6 +20,7 @@ public abstract class AbstractTitleBlockTestCase extends AbstractDiagramTestCase
   protected Session session;
   protected SessionContext context;
   protected CommonDiagram diagram;
+  protected String elementId;
   
   @Override
   protected String getRequiredTestModel() {
@@ -31,7 +33,29 @@ public abstract class AbstractTitleBlockTestCase extends AbstractDiagramTestCase
     testTitleBlocks();
   }
 
-  public abstract void testTitleBlocks();
+  public void testTitleBlocks() {
+    // create TB tools
+    DAnnotation diagramTB = diagram.createDiagramTitleBlock();
+    DAnnotation elementTB = diagram.createElementTitleBlock(elementId);
+
+    // show/hide tool + create TB after hide it
+
+    diagram.removeElementTitleBlock(elementTB.getUid());
+    diagram.checkCreateElementTitleBlock(elementId);
+    diagram.insertElementTitleBlock(elementTB.getUid());
+
+    diagram.removeDiagramTitleBlock(diagramTB.getUid());
+    diagram.checkCreateDiagramTitleBlock();
+    diagram.insertDiagramTitleBlock(diagramTB.getUid());
+
+    // insert line/column in TB element
+    diagram.insertLineInTitleBlock(elementTB, 0);
+    diagram.insertColumnInTitleBlock(elementTB, 0);
+
+    // remove line/column from TB element
+    diagram.removeLineFromTitleBlock(elementTB, 0);
+    diagram.removeColumnFromTitleBlock(elementTB, 0);
+  }
   protected abstract CommonDiagram initDiagram();
   
   protected void initTest() {
