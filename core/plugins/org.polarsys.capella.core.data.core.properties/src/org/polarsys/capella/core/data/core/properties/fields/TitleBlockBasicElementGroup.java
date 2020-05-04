@@ -14,25 +14,32 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
+import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.data.core.properties.Messages;
+import org.polarsys.capella.core.diagram.helpers.TitleBlockHelper;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
 import org.polarsys.capella.core.ui.properties.helpers.LockHelper;
 
 public class TitleBlockBasicElementGroup extends AbstractSemanticField {
   private static final String NAME = "Name:";
   private static final String CONTENT = "Content:";
+  private static final String INTERPRETER_ERROR = "The expression is not valid";
   protected Text nameTextField;
   protected Text contentTextField;
+  protected CLabel errorLabel;
 
   /**
    * @param parent
@@ -51,6 +58,10 @@ public class TitleBlockBasicElementGroup extends AbstractSemanticField {
 
     nameTextField = createTextField(textGroup, Messages.getString("NamedElement.NameLabel"));
     contentTextField = createTextField(textGroup, Messages.getString("NamedElement.ContentLabel"));
+    TitleBlockHelper.getServicesProposals(contentTextField);
+    errorLabel = widgetFactory.createCLabel(parent, ICommonConstants.EMPTY_STRING);
+    errorLabel.setRightMargin(300);
+    errorLabel.setForeground(Display.getCurrent().getSystemColor(SWT.COLOR_RED));
   }
 
   /**
@@ -73,7 +84,6 @@ public class TitleBlockBasicElementGroup extends AbstractSemanticField {
    */
   public void loadData(EObject semanticElement, String name, String content) {
     super.loadData(semanticElement, null);
-
     if (null != semanticElement) {
       if (null != nameTextField)
         setTextValue(nameTextField, name);
@@ -102,7 +112,11 @@ public class TitleBlockBasicElementGroup extends AbstractSemanticField {
   }
 
   private void setFieldValue(EObject object, String field, final Object value) {
-    if (!((DAnnotation) object).getDetails().get(field).equals(value.toString())) {
+    boolean errorSet = false;
+    if (field.equals(CONTENT)) {
+      errorSet = setContentErrorField(semanticElement);
+    }
+    if (!errorSet && !((DAnnotation) object).getDetails().get(field).equals(value.toString())) {
       DDiagram diagram = (DDiagram) object.eContainer();
       AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
         @Override
@@ -115,6 +129,25 @@ public class TitleBlockBasicElementGroup extends AbstractSemanticField {
       };
       executeCommand(command);
     }
+  }
+
+  private boolean setContentErrorField(EObject semanticElement) {
+    boolean errorSet = false;
+    DAnnotation titleBlockCell = ((DAnnotation) semanticElement);
+    EObject container = titleBlockCell.eContainer();
+    if (container instanceof DDiagram) {
+      DDiagram diagram = (DDiagram) container;
+      DAnnotation titleBlock = TitleBlockHelper.getParentTitleBlock(titleBlockCell, diagram);
+
+      Object evaluateResult = TitleBlockHelper.getResultOfExpression(diagram, contentTextField.getText(), titleBlock);
+      if (evaluateResult instanceof EvaluationException) {
+        errorLabel.setText(INTERPRETER_ERROR);
+        errorSet = true;
+      } else {
+        errorLabel.setText(ICommonConstants.EMPTY_STRING);
+      }
+    }
+    return errorSet;
   }
 
   /**

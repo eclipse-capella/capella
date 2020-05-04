@@ -88,26 +88,4 @@ public class DAnnotationHelper {
     return false;
   }
 
-  public static DAnnotation getParentTitleBlock(DAnnotation titleBlock, EObject diagram) {
-    DAnnotation parentTitleBlock = DescriptionFactory.eINSTANCE.createDAnnotation();
-    if (titleBlock.getSource().startsWith("TB")) {
-      List<DDiagramElement> diagramElements = ((DDiagram) diagram).getOwnedDiagramElements();
-      for (DDiagramElement diagramElem : diagramElements) {
-        if (diagramElem.getTarget() instanceof DAnnotation) {
-          List<EObject> references = ((DAnnotation) diagramElem.getTarget()).getReferences();
-          for (EObject reference : references) {
-            if (reference instanceof DAnnotation) {
-              List<EObject> refs = ((DAnnotation) reference).getReferences();
-              if (refs.contains(titleBlock)) {
-                parentTitleBlock = (DAnnotation) diagramElem.getTarget();
-              }
-            }
-          }
-        }
-      }
-      return parentTitleBlock;
-    }
-    return titleBlock;
-  }
-
 }
