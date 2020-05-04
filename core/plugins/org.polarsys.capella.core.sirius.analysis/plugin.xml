@@ -93,6 +93,10 @@
             priority="high"
             providerClass="org.polarsys.capella.core.sirius.analysis.refresh.extension.ContextualOCRefreshExtensionProvider">
       </refreshExtensionProvider>
+      <refreshExtensionProvider
+            priority="high"
+            providerClass="org.polarsys.capella.core.sirius.analysis.refresh.extension.TitleBlockRefreshExtensionProvider">
+      </refreshExtensionProvider>
    </extension>
    <extension
          point="org.eclipse.sirius.externalJavaAction">
@@ -628,5 +632,8 @@
           </reference>
        </enabledWhen>
     </page>
+ </extension>
+ <extension id="org.polarsys.capella.core.sirius.analysis.CapellaInterpreter" point="org.eclipse.sirius.common.expressionInterpreter">
+    <expressionInterpreterProvider interpreterProviderClass="org.polarsys.capella.core.sirius.analysis.CapellaInterpreter" />
  </extension>
 </plugin>

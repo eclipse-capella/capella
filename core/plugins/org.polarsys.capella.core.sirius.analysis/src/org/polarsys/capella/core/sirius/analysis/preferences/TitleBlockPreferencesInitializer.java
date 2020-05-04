@@ -22,19 +22,60 @@ public class TitleBlockPreferencesInitializer extends AbstractPreferencesInitial
   public static final String LINES_NUMBER_PREFERENCE_STORE = "linesNumberTitleBlock";
   public static final String DEFAULT_TITLEBLOCK_PREFERENCE_STORE = "defaultTitleBlock";
   public static final String DEFAULT_TABLE = "Name+feature:name+Synchronized+feature:synchronized+Summary+aql:self.target.summary+Description+feature:documentation";
-
+  private static final String ESCAPED_SEPARATOR = "\\+";
+  
   public TitleBlockPreferencesInitializer() {
     super(CapellaActionsActivator.PLUGIN_ID);
   }
 
   @Override
   public void initializeDefaultPreferences() {
-    IPreferenceStore preferenceStore = Activator.getDefault().getPreferenceStore();
+    IPreferenceStore preferenceStore = doGetPreferenceStore();
     preferenceStore.setDefault(COLUMNS_NUMBER_PREFERENCE_STORE, 2);
     preferenceStore.setDefault(LINES_NUMBER_PREFERENCE_STORE, 2);
     preferenceStore.setDefault(TABEL_CONTENT_PREFERENCE_STORE, DEFAULT_TABLE);
 
     preferenceStore.setDefault(DEFAULT_TITLEBLOCK_PREFERENCE_STORE, true);
   }
+  
+  
+  /**
+   * @return IPreferenceStore the default preference store instance
+   */
+  public static IPreferenceStore doGetPreferenceStore() {
+    return Activator.getDefault().getPreferenceStore();
+  }
 
+  /**
+   * @return int the number of lines a Diagram Title Block has
+   */
+  public static int getLinesNumber() {
+    return doGetPreferenceStore().getInt(LINES_NUMBER_PREFERENCE_STORE);
+  }
+  
+  /**
+   * @return int the number of columns a Diagram Title Block has
+   */
+  public static int getColumnsNumber() {
+    return doGetPreferenceStore().getInt(COLUMNS_NUMBER_PREFERENCE_STORE);
+  }
+  
+  /**
+   * @return String[] the content of a Diagram Title Block
+   */
+  public static String[] getContentAsArray() {
+    return doGetPreferenceStore().getString(TABEL_CONTENT_PREFERENCE_STORE)
+        .split(ESCAPED_SEPARATOR);
+  }
+  
+  /**
+   * @return String[] the content of a Diagram Title Block
+   */
+  public static String getContent() {
+    return doGetPreferenceStore().getString(TABEL_CONTENT_PREFERENCE_STORE);
+  }
+  
+  public static boolean isCreateDiagramTitleBlockByDefault() {
+    return doGetPreferenceStore().getBoolean(DEFAULT_TITLEBLOCK_PREFERENCE_STORE);
+  }
 }

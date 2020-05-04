@@ -17,6 +17,7 @@ Export-Package: org.polarsys.capella.core.sequencediag,
  org.polarsys.capella.core.sirius.analysis.editpart,
  org.polarsys.capella.core.sirius.analysis.extension.style,
  org.polarsys.capella.core.sirius.analysis.helpers,
+ org.polarsys.capella.core.sirius.analysis.preferences,
  org.polarsys.capella.core.sirius.analysis.queries,
  org.polarsys.capella.core.sirius.analysis.queries.configurationItemServices,
  org.polarsys.capella.core.sirius.analysis.queries.csServices,
@@ -41,7 +42,10 @@ Require-Bundle: org.eclipse.core.expressions,
  org.polarsys.capella.core.preferences,
  org.polarsys.capella.core.data.gen.edit.decorators,
  org.polarsys.capella.core.libraries,
- org.polarsys.capella.core.data.gen
+ org.polarsys.capella.core.data.gen,
+ org.polarsys.capella.common.ui.toolkit.browser,
+ org.eclipse.emf.ecore,
+ org.eclipse.jface
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Localization: plugin

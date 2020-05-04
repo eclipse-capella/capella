@@ -916,6 +916,12 @@
       <filters xsi:type="filter:CompositeFilterDescription" name="hide.property.values.filter" label="%common.msm.hide.property.values.filter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG']"/>
       </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.diagram.titleblock.filter" label="%common.hide.diagram.title.blocks.filter">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']" semanticConditionExpression="aql:not (self.isDiagramTitleBlock())"/>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.element.titleblock.filter" label="%common.hide.element.title.blocks.filter">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']" semanticConditionExpression="aql:self.isDiagramTitleBlock()"/>
+      </filters>
       <defaultLayer name="default" reusedMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVconnector'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVGconnector'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_TitleBlockEdge']">
         <nodeMappings name="MSM_ModeState" preconditionExpression="aql:((self.makeUnion(self->filter(capellacommon::FinalState), self->filter(capellacommon::Pseudostate)))->size() > 0) and (((self.makeUnion(self.eContainer().eContainer()->filter(capellacommon::State), self.eContainer().eContainer()->filter(capellacommon::Mode)))->size() = 0) or ((self.makeUnion(self->filter(capellacommon::EntryPointPseudoState), self->filter(capellacommon::ExitPointPseudoState)))->size() = 0))" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20StateMode']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" semanticCandidatesExpression="feature:involvedStates" domainClass="IState">
           <style xsi:type="style:BundledImageDescription" borderSizeComputationExpression="1" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="5">
@@ -1770,10 +1776,10 @@
       <filters xsi:type="filter:CompositeFilterDescription" name="hide.property.values.filter" label="%common.cdb.hide.property.values.filter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG']"/>
       </filters>
-      <filters xsi:type="filter:CompositeFilterDescription" name="hide.diagram.title.blocks.filter" label="%common.cdb.hide.diagram.title.blocks.filter">
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.diagram.title.blocks.filter" label="%common.hide.diagram.title.blocks.filter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']" semanticConditionExpression="aql:not (self.isDiagramTitleBlock())"/>
       </filters>
-      <filters xsi:type="filter:CompositeFilterDescription" name="hide.element.title.blocks.filter" label="%common.cdb.hide.element.title.blocks.filter">
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.element.title.blocks.filter" label="%common.hide.element.title.blocks.filter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']" semanticConditionExpression="aql:self.isDiagramTitleBlock()"/>
       </filters>
       <concerns>
@@ -2907,7 +2913,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="DT_TitleBlockEdge" targetMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']" targetFinderExpression="service:computeTitleBlockElements(diagram)">
+        <edgeMappings name="DT_TitleBlockEdge" targetMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']" targetFinderExpression="service:getTitleBlocksForElement(diagram)">
           <sourceMapping xsi:type="description_1:ContainerMapping" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_Class']"/>
           <sourceMapping xsi:type="description_1:ContainerMapping" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_Collection']"/>
           <sourceMapping xsi:type="description_1:ContainerMapping" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_Enumeration']"/>
@@ -3421,24 +3427,24 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
         </containerMappings>
-        <containerMappings name="DT_TitleBlockContainer" preconditionExpression="service:isTitleBlockAllowed(containerView)" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='Delete%20Title%20Block']" semanticCandidatesExpression="aql:diagram.checkIsTitleBlockContainer()" domainClass="DAnnotation" childrenPresentation="VerticalStack">
-          <subContainerMappings name="DT_TitleBlockLineContainer" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='Delete%20Title%20Block']" semanticCandidatesExpression="feature:references" domainClass="DAnnotation" childrenPresentation="HorizontalStack">
-            <subContainerMappings name="DT_TitleBlockColumnContainer" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='Delete%20Title%20Block']" semanticCandidatesExpression="feature:references" domainClass="DAnnotation" childrenPresentation="List">
-              <subNodeMappings name="DT_TitleBlockCellNode" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='Delete%20Title%20Block']" semanticCandidatesExpression="aql:diagram.getTitleBlockCellContent(self, containerView)" domainClass="EObject">
+        <containerMappings name="DT_TitleBlockContainer" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='Delete%20Title%20Block']" semanticCandidatesExpression="aql:diagram.getTitleBlocksInDiagram()" createElements="false" domainClass="DAnnotation" childrenPresentation="VerticalStack">
+          <subContainerMappings name="DT_TitleBlockLineContainer" semanticCandidatesExpression="feature:references" createElements="false" domainClass="DAnnotation" childrenPresentation="HorizontalStack">
+            <subContainerMappings name="DT_TitleBlockColumnContainer" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='Delete%20Title%20Block%20Cell']" semanticCandidatesExpression="feature:references" createElements="false" domainClass="DAnnotation" childrenPresentation="List">
+              <subNodeMappings name="DT_TitleBlockCellNode" semanticCandidatesExpression="aql:diagram.getTitleBlockCellContent(self, containerView)" domainClass="EObject">
                 <style xsi:type="style:SquareDescription" labelSize="7" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
                 </style>
                 <conditionnalStyles predicateExpression="service:isAnnotation()">
-                  <style xsi:type="style:SquareDescription" labelSize="7" showIcon="false" labelExpression="service:getCellLabel()" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+                  <style xsi:type="style:SquareDescription" labelSize="7" showIcon="false" labelExpression="service:self.getTitleBockCellLabel()" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
                     <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                     <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                     <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
                   </style>
                 </conditionnalStyles>
               </subNodeMappings>
-              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:diagram.getTitleBlockCellLabel(self)" widthComputationExpression="10" heightComputationExpression="5" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_TitleBlock_Gray']">
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:self.getTitleBlockCellLabel()" widthComputationExpression="10" heightComputationExpression="5" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_TitleBlock_Gray']">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -4416,87 +4422,6 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" name="diagram.title.block" label="%common.cdb.diagram.title.block" precondition="aql:self.isDiagram()" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlock_16.gif">
-            <element name="container"/>
-            <elementView name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:containerView">
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.createDiagramTitleBlock(diagram)"/>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:ToolGroup" name="ElementTitleBlock">
-            <tools xsi:type="tool_1:ToolDescription" name="element.title.block" label="%common.cdb.element.title.block" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlock_16.gif">
-              <element name="container"/>
-              <elementView name="containerView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:containerView">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.createElementTitleBlock(diagram)"/>
-                </firstModelOperations>
-              </initialOperation>
-            </tools>
-            <tools xsi:type="tool_1:ToolDescription" name="element.title.block.line" label="%common.cdb.element.title.block.line" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlockLine_16.gif">
-              <element name="element"/>
-              <elementView name="elementView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.createTitleBlockLine(diagram)"/>
-                </firstModelOperations>
-              </initialOperation>
-            </tools>
-            <tools xsi:type="tool_1:ToolDescription" name="element.title.block.column" label="%common.cdb.element.title.block.column" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlockColumn_16.gif">
-              <element name="element"/>
-              <elementView name="elementView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.createTitleBlockColumn(diagram)"/>
-                </firstModelOperations>
-              </initialOperation>
-            </tools>
-            <tools xsi:type="tool_1:ToolDescription" name="remove.element.title.block.line" label="%common.cdb.remove.element.title.block.line" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlockLineRemove_16.gif">
-              <element name="element"/>
-              <elementView name="elementView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.clearLineEAnnotation(diagram)"/>
-                </firstModelOperations>
-              </initialOperation>
-            </tools>
-            <tools xsi:type="tool_1:ToolDescription" name="remove.element.title.block.column" label="%common.cdb.remove.element.title.block.column" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlockColumnRemove_16.gif">
-              <element name="element"/>
-              <elementView name="elementView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.clearColumnEAnnotation(diagram)"/>
-                </firstModelOperations>
-              </initialOperation>
-            </tools>
-          </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete Title Block Cell" forceRefresh="true">
-            <element name="element"/>
-            <elementView name="elementView"/>
-            <containerView name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:element">
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.clearCell()"/>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete Title Block" precondition="service:self.isTitleBlockContainer()">
-            <element name="element"/>
-            <elementView name="elementView"/>
-            <containerView name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:element">
-                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="deleteCapellaElement" forceRefresh="true" id="org.polarsys.capella.core.sirius.analysis.delete.CapellaDeleteExternalAction">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:containerView">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.clearEAnnotations(element)"/>
-                  </subModelOperations>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-            <hook id="org.polarsys.capella.core.sirius.analysis.delete.CapellaDeleteActionHook"/>
-          </ownedTools>
           <ownedTools xsi:type="tool_1:ToolDescription" documentation="Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model." name="constraints" label="%common.cdb.constraints" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element"/>
             <elementView name="elementView">
@@ -4686,29 +4611,117 @@
               </initialOperation>
             </menuItemDescription>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolGroup" name="Show/Hide TitleBlocks">
-            <tools xsi:type="tool_1:ToolDescription" name="diagram.title.blocks" label="%common.cdb.diagram.title.blocks" precondition="aql:not (containerView.getDiagramContainer().isSynchronized() and (containerView.oclIsKindOf(diagram::DNodeList) or containerView.oclIsKindOf(diagram::DNodeListElement)))" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
-              <element name="element"/>
-              <elementView name="elementView">
-                <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="aql:elementView.getParentDiagram()"/>
-              </elementView>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView">
+          <ownedTools xsi:type="tool:DeleteElementDescription" documentation="Delete the content properies of an Element Title Block cell." name="Delete Title Block Cell" forceRefresh="true">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:element">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.clearCellContent()"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" documentation="Delete a Diagram Title Block or an Element Title Block." name="Delete Title Block" precondition="service:self.isTitleBlockContainer()">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:element">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="deleteCapellaElement" forceRefresh="true" id="org.polarsys.capella.core.sirius.analysis.delete.CapellaDeleteExternalAction">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:containerView">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.deleteTitleBlock(element)"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <hook id="org.polarsys.capella.core.sirius.analysis.delete.CapellaDeleteActionHook"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Creates a graphical object corresponding to a Diagram Title Block which will display information related to the current diagram. The displayed data is configurable via the Capella Preferences page. The Diagram Title Block does not have a corresponding semantic object." name="diagram.title.block" label="%common.cdb.diagram.title.block" precondition="service:containerView.isValidCreateDiagramTitleBlock()" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlock_16.gif">
+            <element name="container"/>
+            <elementView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:containerView">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.hasADiagramTitleBlock()">
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectTitleBlocks" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
-                    <parameters name="context" value="aql:elementView"/>
-                    <parameters name="scope" value="aql:elementView.getAvailableDiagramTitleBlocksToInsert()"/>
+                    <parameters name="context" value="aql:containerView"/>
+                    <parameters name="scope" value="aql:containerView.getDiagramTitleBlocks()"/>
                     <parameters name="resultVariable" value="selectedTitleBlocks"/>
-                    <parameters name="wizardMessage" value="aql:'Select Values to show in ' + element.name + '.'"/>
-                    <parameters name="initialSelection" value="aql:self.void2Null(elementView.getInitialSelectionOfShowHideDiagramTitleBlocks())"/>
+                    <parameters name="wizardMessage" value="aql:'Diagram Title Block already exists but is hidden. Select to unhide it.'"/>
+                    <parameters name="initialSelection" value="aql:self.void2Null(containerView.getVisibleDiagramTitleBlocks())"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (selectedTitleBlocks = 'WIZARD_CANCELED')">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.showHideDiagramTitleBlocks(selectedTitleBlocks,diagram)"/>
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:diagram.forceRefresh()"/>
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerView.showHideElementTitleBlocks(selectedTitleBlocks,diagram)"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not self.hasADiagramTitleBlock()">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.createDiagramTitleBlock()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolGroup" name="ElementTitleBlock">
+            <tools xsi:type="tool_1:ToolDescription" documentation="Creates a graphical object corresponding to an Element Title Block which will display information related to the current element to which the Element Title Block is applied. The Element Title Block does not have a corresponding semantic object." name="element.title.block" label="%common.cdb.element.title.block" precondition="service:containerView.isValidCreateElementTitleBlock()" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlock_16.gif">
+              <element name="container"/>
+              <elementView name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:containerView">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.hasAElementTitleBlock()">
+                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectTitleBlocks" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
+                      <parameters name="context" value="aql:containerView"/>
+                      <parameters name="scope" value="aql:self.getAvailableToInsertElementTitleBlocks(diagram)"/>
+                      <parameters name="resultVariable" value="selectedTitleBlocks"/>
+                      <parameters name="wizardMessage" value="aql:'Element Title Block already exists but is hidden. Select to unhide it.'"/>
+                      <parameters name="initialSelection" value="aql:self.void2Null(containerView.getVisibleElementTitleBlocks())"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (selectedTitleBlocks = 'WIZARD_CANCELED')">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerView.showHideElementTitleBlocks(selectedTitleBlocks,diagram)"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not self.hasAElementTitleBlock()">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.createElementTitleBlock(diagram)"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ToolDescription" name="element.title.blocks" label="%common.cdb.element.title.blocks" precondition="aql:not (containerView.getDiagramContainer().isSynchronized() and (containerView.oclIsKindOf(diagram::DNodeList) or containerView.oclIsKindOf(diagram::DNodeListElement)))" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <tools xsi:type="tool_1:ToolDescription" documentation="Creates a new line that will be inserted under the line of the currently selected cell of the Element Title Block." name="element.title.block.line" label="%common.cdb.element.title.block.line" precondition="service:containerView.isValidInsertLineOrColumn()" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlockLine_16.gif">
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.insertTitleBlockLine(diagram)"/>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool_1:ToolDescription" documentation="Creates a new column that will be inserted to the right of the column of the currently selected cell of the Element Title Block." name="element.title.block.column" label="%common.cdb.element.title.block.column" precondition="service:containerView.isValidInsertLineOrColumn()" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlockColumn_16.gif">
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.insertTitleBlockColumn(diagram)"/>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool_1:ToolDescription" documentation="Removes the line that contains the currently selected cell of the Element Title Block." name="remove.element.title.block.line" label="%common.cdb.remove.element.title.block.line" precondition="service:containerView.isValidRemoveLineOfElementTitleBlock()" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlockLineRemove_16.gif">
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.removeLineOfTitleBlock(diagram)"/>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool_1:ToolDescription" documentation="Removes the column that contains the currently selected cell of the Element Title Block." name="remove.element.title.block.column" label="%common.cdb.remove.element.title.block.column" precondition="service:containerView.isValidRemoveColumnOfElementTitleBlock()" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlockColumnRemove_16.gif">
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.removeColumnOfTitleBlock(diagram)"/>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolGroup" name="Show/Hide TitleBlocks">
+            <tools xsi:type="tool_1:ToolDescription" documentation="Inserts or removes graphical objects on the diagrams corresponding to an existing Diagram Title Block. Removing a Diagram Title Block graphical object from the diagram does not delete the Diagram Title Block from the model." name="diagram.title.blocks" label="%common.cdb.diagram.title.blocks" precondition="aql:not (containerView.getDiagramContainer().isSynchronized() and (containerView.oclIsKindOf(diagram::DNodeList) or containerView.oclIsKindOf(diagram::DNodeListElement)))" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
               <element name="element"/>
               <elementView name="elementView">
                 <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="aql:elementView.getParentDiagram()"/>
@@ -4717,14 +4730,33 @@
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView">
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectTitleBlocks" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
                     <parameters name="context" value="aql:elementView"/>
-                    <parameters name="scope" value="aql:elementView.getAvailableElementTitleBlocksToInsert()"/>
+                    <parameters name="scope" value="aql:elementView.getDiagramTitleBlocks()"/>
                     <parameters name="resultVariable" value="selectedTitleBlocks"/>
                     <parameters name="wizardMessage" value="aql:'Select Values to show in ' + element.name + '.'"/>
-                    <parameters name="initialSelection" value="aql:self.void2Null(elementView.getInitialSelectionOfShowHideElementTitleBlocks())"/>
+                    <parameters name="initialSelection" value="aql:self.void2Null(elementView.getVisibleDiagramTitleBlocks())"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (selectedTitleBlocks = 'WIZARD_CANCELED')">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.showHideDiagramTitleBlocks(selectedTitleBlocks,diagram)"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool_1:ToolDescription" documentation="Inserts or removes graphical objects on the diagrams corresponding to an existing Element Title Block applied to an element. Removing an Element Title Block graphical object from the diagram does not delete the Element Title Block from the model." name="element.title.blocks" label="%common.cdb.element.title.blocks" precondition="aql:not (containerView.getDiagramContainer().isSynchronized() and (containerView.oclIsKindOf(diagram::DNodeList) or containerView.oclIsKindOf(diagram::DNodeListElement)))" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+              <element name="element"/>
+              <elementView name="elementView">
+                <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="aql:elementView.getParentDiagram()"/>
+              </elementView>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView">
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectTitleBlocks" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
+                    <parameters name="context" value="aql:elementView"/>
+                    <parameters name="scope" value="aql:elementView.getAvailableToInsertElementTitleBlocks()"/>
+                    <parameters name="resultVariable" value="selectedTitleBlocks"/>
+                    <parameters name="wizardMessage" value="aql:'Select Values to show in ' + element.name + '.'"/>
+                    <parameters name="initialSelection" value="aql:self.void2Null(elementView.getVisibleElementTitleBlocks())"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (selectedTitleBlocks = 'WIZARD_CANCELED')">
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.showHideElementTitleBlocks(selectedTitleBlocks,diagram)"/>
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:diagram.forceRefresh()"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
@@ -5755,6 +5787,12 @@
       </filters>
       <filters xsi:type="filter:CompositeFilterDescription" name="hide.property.values.filter" label="%common.cdi.hide.property.values.filter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG']"/>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.diagram.titleblock.filter" label="%common.hide.diagram.title.blocks.filter">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']" semanticConditionExpression="aql:not (self.isDiagramTitleBlock())"/>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.element.titleblock.filter" label="%common.hide.element.title.blocks.filter">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']" semanticConditionExpression="aql:self.isDiagramTitleBlock()"/>
       </filters>
       <concerns>
         <ownedConcernDescriptions name="default" filters="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@filters[name='hide.technical.interfaces.filter']"/>
@@ -7238,6 +7276,12 @@
       </filters>
       <filters xsi:type="filter:CompositeFilterDescription" name="hide.property.values.filter" label="%common.cei.hide.property.values.filter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG']"/>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.diagram.titleblock.filter" label="%common.hide.diagram.title.blocks.filter">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']" semanticConditionExpression="aql:not (self.isDiagramTitleBlock())"/>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.element.titleblock.filter" label="%common.hide.element.title.blocks.filter">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']" semanticConditionExpression="aql:self.isDiagramTitleBlock()"/>
       </filters>
       <concerns>
         <ownedConcernDescriptions name="default" filters="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@filters[name='hide.simplified.component.interactions.filter'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@filters[name='hide.technical.interfaces.filter']"/>
@@ -8775,6 +8819,12 @@
       </filters>
       <filters xsi:type="filter:CompositeFilterDescription" name="hide.property.values.filter" label="%common.cii.hide.property.values.filter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG']"/>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.diagram.titleblock.filter" label="%common.hide.diagram.title.blocks.filter">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']" semanticConditionExpression="aql:not (self.isDiagramTitleBlock())"/>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.element.titleblock.filter" label="%common.hide.element.title.blocks.filter">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']" semanticConditionExpression="aql:self.isDiagramTitleBlock()"/>
       </filters>
       <concerns>
         <ownedConcernDescriptions name="default" filters="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@filters[name='hide.simplified.component.interactions.filter'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@filters[name='hide.technical.interfaces.filter']"/>
@@ -10368,6 +10418,12 @@
       </filters>
       <filters xsi:type="filter:CompositeFilterDescription" name="hide.property.values.filter" label="%common.idb.hide.property.values.filter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG']"/>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.diagram.titleblock.filter" label="%common.hide.diagram.title.blocks.filter">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']" semanticConditionExpression="aql:not (self.isDiagramTitleBlock())"/>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.element.titleblock.filter" label="%common.hide.element.title.blocks.filter">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']" semanticConditionExpression="aql:self.isDiagramTitleBlock()"/>
       </filters>
       <concerns>
         <ownedConcernDescriptions name="default" filters="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@filters[name='hide.simplified.component.interactions.filter'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@filters[name='hide.simplified.diagram.based.interactions.filter'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@filters[name='hide.technical.interfaces.filter']"/>
@@ -12425,6 +12481,12 @@
       <filters xsi:type="filter:CompositeFilterDescription" name="hide.property.values.filter" label="%common.cri.hide.property.values.filter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG']"/>
       </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.diagram.titleblock.filter" label="%common.hide.diagram.title.blocks.filter">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']" semanticConditionExpression="aql:not (self.isDiagramTitleBlock())"/>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.element.titleblock.filter" label="%common.hide.element.title.blocks.filter">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']" semanticConditionExpression="aql:self.isDiagramTitleBlock()"/>
+      </filters>
       <defaultLayer name="default layer" reusedMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVconnector'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVGconnector'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_TitleBlockEdge']">
         <nodeMappings name="CCRI CapabilityRealization" detailDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Logical%20Data%20Flow%20Blank'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Physical%20Data%20Flow%20Blank'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Component%20Interfaces%20Scenario'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Component%20Exchanges%20Scenario'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Functional%20Scenario'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20Capability%20Realization%20Involvement'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@toolSections.0/@ownedTools[name='Capability%20Realization%20Refinement']" navigationDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Existing%20Component%20Exchanges%20Scenario'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Existing%20Functional%20Scenario'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Existing%20Component%20Interfaces%20Scenario'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@toolSections.0/@ownedTools[name='Diagram%20Contextual%20Capability%20Realization%20Involvement'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@toolSections.0/@ownedTools[name='Diagram%20Capability%20Realization%20Refinement']" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" createElements="false" domainClass="CapabilityRealization">
           <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="6" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/CapabilityRealization.svg">
@@ -12829,6 +12891,12 @@
       </filters>
       <filters xsi:type="filter:CompositeFilterDescription" name="hide.property.values.filter" label="%common.crb.hide.property.values.filter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG']"/>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.diagram.titleblock.filter" label="%common.hide.diagram.title.blocks.filter">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']" semanticConditionExpression="aql:not (self.isDiagramTitleBlock())"/>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.element.titleblock.filter" label="%common.hide.element.title.blocks.filter">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']" semanticConditionExpression="aql:self.isDiagramTitleBlock()"/>
       </filters>
       <defaultLayer name="default layer CRB" label="default layer" reusedMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVconnector'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVGconnector'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_TitleBlockEdge']">
         <nodeMappings name="CRB CapabilityRealization" navigationDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@toolSections.0/@ownedTools[name='Diagram%20Contextual%20Capability%20Realization%20Involvement'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@toolSections.0/@ownedTools[name='Diagram%20Capability%20Realization%20Refinement'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Existing%20Component%20Exchanges%20Scenario'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Existing%20Component%20Interfaces%20Scenario'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Existing%20Functional%20Scenario']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" createElements="false" domainClass="CapabilityRealization">
@@ -13506,6 +13574,12 @@
       <filters xsi:type="filter:CompositeFilterDescription" name="hide.property.values.filter" label="%common.pd.hide.property.values.filter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG']"/>
       </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.diagram.titleblock.filter" label="%common.hide.diagram.title.blocks.filter">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']" semanticConditionExpression="aql:not (self.isDiagramTitleBlock())"/>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.element.titleblock.filter" label="%common.hide.element.title.blocks.filter">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']" semanticConditionExpression="aql:self.isDiagramTitleBlock()"/>
+      </filters>
       <defaultLayer name="Packages" reusedMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@additionalLayers[name='Communication%20Model']/@containerMappings[name='DT_InterfacePkg'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_DataPkg'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVconnector'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVGconnector'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_TitleBlockEdge']">
         <edgeMappings name="PD_PkgDependency" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Package%20Dependencies']/@defaultLayer/@toolSections.0/@ownedTools[name='No%20Delete']" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@additionalLayers[name='Communication%20Model']/@containerMappings[name='DT_InterfacePkg'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_DataPkg']" targetMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_DataPkg'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@additionalLayers[name='Communication%20Model']/@containerMappings[name='DT_InterfacePkg']" targetFinderExpression="aql:self.getDependentPackages2(diagram)">
           <style lineStyle="dash">
@@ -13673,6 +13747,12 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']" name="Interface Diagram" label="%common.id" titleExpression="aql:'[ID] ' + self.name" domainClass="Interface">
       <filters xsi:type="filter:CompositeFilterDescription" name="hide.property.values.filter" label="%common.id.hide.property.values.filter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG']"/>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.diagram.titleblock.filter" label="%common.hide.diagram.title.blocks.filter">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']" semanticConditionExpression="aql:not (self.isDiagramTitleBlock())"/>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.element.titleblock.filter" label="%common.hide.element.title.blocks.filter">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']" semanticConditionExpression="aql:self.isDiagramTitleBlock()"/>
       </filters>
       <defaultLayer name="default IDB" reusedMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVconnector'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVGconnector'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_TitleBlockEdge']">
         <containerMappings name="ID_Interface" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interface%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interface%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" semanticCandidatesExpression="aql:self" domainClass="Interface" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interface%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Allocation%20ExchangeItem%20from%20Model']" childrenPresentation="List">
@@ -19314,6 +19394,12 @@
       </filters>
       <filters xsi:type="filter:CompositeFilterDescription" name="merge.associated.functional.exchange.involvements.and.sequence.links.without.control.node.filter" label="%common.fcd.merge.associated.functional.exchange.involvements.and.sequence.links.without.control.node.filter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_Exchange']" viewConditionExpression="aql:not(self.isFEWithAssociatedSL())"/>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.diagram.titleblock.filter" label="%common.hide.diagram.title.blocks.filter">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']" semanticConditionExpression="aql:not (self.isDiagramTitleBlock())"/>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.element.titleblock.filter" label="%common.hide.element.title.blocks.filter">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']" semanticConditionExpression="aql:self.isDiagramTitleBlock()"/>
       </filters>
       <concerns>
         <ownedConcernDescriptions name="hideLinksByDefault" filters="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@filters[name='hide.association.links.filter']"/>
