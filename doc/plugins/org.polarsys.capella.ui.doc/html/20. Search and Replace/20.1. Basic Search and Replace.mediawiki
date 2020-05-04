@@ -3,48 +3,48 @@
  
 == Overview ==
  
-Capella provides contextual search &amp; replace on model elements. Several options are provided to enable fine grained search &amp; replace on Capella models.
-
+Capella provides Search &amp; Replace functionalities on model elements that follow the Eclipse Search &amp; Replace convention. Several options are provided to enable fine grained Search &amp; Replace on Capella models.
  
-To open the Search &amp; Replace window dialog, select a Capella element in Project Explorer and click on''''' Ctrl+Shift+F'''''. You can also use the contextual &ldquo;Search and Replace&rdquo; menu or the magnifying glass toolbar menu.
-
+To open the Search &amp; Replace window dialog, go to the '''Search''' toolbar (Ctrl + H).
  
-[[Image:Images/20.1.%20Basic%20Search%20&%20Replace_html_m55039b91.png|900x520px]]
-
+[[Image:Images/20.1Search_and_Replace_Open.png|900x520px]]
  
-'''Fig.''' Search &amp; Replace contextual and toolbar menus.
+'''Fig.''' Search &amp; Replace toolbar menu.
 
- 
 <br>
-
+<br>
  
 == Search Options ==
+<br>
  
+=== Model Element Scope ===
+ 
+Model element scope can be customized in the '''Search For''' section which allows us to specify the granularity  of content to search for:
+* Search in specific features of selected meta-classes
+* Search in diagram (attributes of diagrams or notes)
+* Filter criteria: abstract and semantic
+
+On the left side of the '''Search For''' section, the meta-classes can be selected, the right panel will be updated with the union of the attributes of the selected meta-classes.
+We have the option to apply the default search for granularity by pressing the '''Restore Defaults''' buttons.
+
+[[Image:Images/20.1Search_and_Replace_Search_For.png]]
+
+ 
+'''Fig.''' Model element search for scope options.
+
 <br>
 <br>
-
  
-=== Model Element Scope Options ===
+=== Find Pattern ===
  
-Model element scope options enable to select the search scope in Capella model elements. Three scopes are available: '''Name''', '''summary''' and '''description'''.
-
- 
-[[Image:Images/20.1.%20Basic%20Search%20&%20Replace_html_m20afcd41.png|517x254px]]
-
- 
-'''Fig.''' Model element scope options.
-
- 
-=== Find Pattern Options ===
- 
-The find text is used to match model elements before performing the replacement. Several options can be chosen:
+The find text is used to match model elements before performing the search. Several options can be chosen:
 
  
 * '''Case sensitive'''.
-* '''Whole expression''': only model elements that starts by the find 	expressions (e.g. &ldquo;ABC DEF&rdquo; matches &ldquo;ABC DEF GHI&rdquo; 	but not &ldquo;ABC DEFG&rdquo;)
-* '''Wildcards''': enables the use of * and ? in the find expression 	i.e. * matches zero or more characters and ? matches zero or one 	character.
+* '''Regular expression''': enables the use of * and ? in the find expression 	i.e. * matches zero or more characters and ? matches zero or one 	character.
+* '''Whole word''': only model elements that starts by the find 	expressions (e.g. &ldquo;ABC DEF&rdquo; matches &ldquo;ABC DEF GHI&rdquo; 	but not &ldquo;ABC DEFG&rdquo;)
  
-[[Image:Images/20.1.%20Basic%20Search%20&%20Replace_html_md895f0a.png|514x206px]]
+[[Image:Images/20.1Search_and_Replace_Text_Options.png]]
 
  
 '''Fig.''' Find pattern options.
@@ -52,65 +52,72 @@ The find text is used to match model elements before performing the replacement.
  
 '''Note:''' selecting &ldquo;''Wildcards&rdquo;'' options disables &ldquo;''Whole expression''&rdquo; option.
 
+<br>
+<br>
+
+=== Search Scope ===
  
-=== Model Scope Options ===
- 
-Search can be performed on the selection displayed in the tree (i.e. with &ldquo;''selected elements&rdquo;'' option) or on the whole model (e.g. &ldquo;''Whole model''&rdquo; option).
+The Capella Search dialog provides a section to define the search scope which only concerns opened sessions:
+* The '''Workspace''' scope applies on all projects in the workspace
+* The '''Selected model elements''' scope applies on selected elements
+* The '''Enclosing project''' scope applies on current project
 
  
-[[Image:Images/20.1.%20Basic%20Search%20&%20Replace_html_5fd250d2.png|517x254px]]
+[[Image:Images/20.1Search_and_Replace_Scope.png]]
 
  
 '''Fig.''' Model scope options
 
- 
-=== Replace Impact Preview ===
- 
-Search &amp; Replace window provides a Preview impact feature that enables to compute impacted elements for a specific find pattern. Impacted elements are displayed in a new window. It also reports impacted elements metrics in the main dialog.
+<br>
+<br>
 
+=== Search and Replace Operations ===
  
-[[Image:Images/20.1.%20Basic%20Search%20&%20Replace_html_m7a0d8e38.png|900x700px]]
-
- 
-'''Fig. '''Computing impacted elements with &ldquo;Preview impact&rdquo; button
-
+From the Capella Search dialog we have the option to fill a text pattern and then perform:
+* '''Search''': pressing the search button will close the current dialog and will display the search results in a separate window.
+* '''Replace''' will open a dialog box that will have the possibility to enter a replacement text pattern.
  
 <br>
 <br>
 
+=== Search Result ===
  
-In the ''Preview Impact'' window, contextual menus are available to help finding further information on impacted elements.
+When you perform a search in Capella, the matching model elements according to the selected criteria in the search dialog will be found. The result will be displayed in separate window as below, following the Eclipse Search &amp; Result conventions.
 
  
-[[Image:Images/20.1.%20Basic%20Search%20&%20Replace_html_m2ea67ac6.png|450x549px]]
+[[Image:Images/20.1Search_and_Replace_Search_Result.png]]
 
- 
-'''Fig. '''Contextual menus on Preview impact window
+'''Fig.''' Search result window
 
+The Capella search result can be displayed as tree or list.
+[[Image:Images/20.1Search_and_Replace_Result_Display.png]]
+
+'''Fig. '''Search result tree or list mode
+
+<br>
+<br>
  
+=== Search Result Operations ===
+
+In the Capella search result window we will be able to perform operations and manage the result like text replacement or navigation to the element in Project Explorer.
+
+[[Image:Images/20.1Search_and_Replace_ResultOperations.png]] 
+ 
+'''Fig. '''Search result operations
+
+
 <br>
 <br>
 
  
-== Replace Options ==
+== Replace Text Pattern ==
  
-=== Update hyperlinks ===
- 
-Replace all button performs a replace on all the impacted elements displayed in the ''Preview Impact'' dialog window. The &ldquo;update description hyperlinks&rdquo; option enables to automatically update descriptions that are impacted by the changes performed by the replace execution.
+The Capella search result window enables the possibility to replace a text pattern, a single occurrence or replace all the occurrences.
+
+
+[[Image:Images/20.1Search_and_Replace_Replace_Occurrence.png]]
 
  
-[[Image:Images/20.1.%20Basic%20Search%20&%20Replace_html_m58a01ebe.png|518x783px]]
-
- 
-'''Fig.''' Replace all with description hyperlinks update
-
- 
-After performing a replacement information are reported to the information view. It shows impacted elements for name, summary and description replacements and the impacted element ids.
-
- 
-[[Image:Images/20.1.%20Basic%20Search%20&%20Replace_html_165f01ea.png|755x121px]]
-
- 
-'''Fig'''. Replace all report
+'''Fig.''' Model replace text pattern
 
    
