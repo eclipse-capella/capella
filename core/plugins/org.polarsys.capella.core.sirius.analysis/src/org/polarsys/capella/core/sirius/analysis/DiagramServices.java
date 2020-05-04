@@ -446,7 +446,7 @@ public class DiagramServices {
     return (DNode) elementSync.createNewNode(getMappingManager((DSemanticDiagram) diag), nodeCandidate, true);
   }
 
-  public AbstractDNode createDNodeListElement(NodeMapping mapping, EObject modelElement, DragAndDropTarget container,
+  public AbstractDNode createDNodeListElement(AbstractNodeMapping mapping, EObject modelElement, DragAndDropTarget container,
       DDiagram diagram) {
     final DDiagram diag = diagram;
 

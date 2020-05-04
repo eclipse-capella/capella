@@ -13,7 +13,9 @@ Require-Bundle: org.polarsys.capella.core.model.helpers;visibility:=reexport,
  org.eclipse.gmf.runtime.diagram.ui,
  org.eclipse.sirius.diagram.ui,
  org.eclipse.gmf.runtime.diagram.core,
- org.eclipse.sirius.common.ui
+ org.eclipse.sirius.common.ui,
+ com.google.guava,
+ org.polarsys.capella.common.ui.toolkit.browser
 Export-Package: org.polarsys.capella.core.diagram.helpers,
  org.polarsys.capella.core.diagram.helpers.naming,
  org.polarsys.capella.core.diagram.helpers.traceability
