@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -49,6 +49,8 @@ public interface IFilterNameConstants {
   String FILTER_CDB_HIDE_ROLE_NAMES = "hide.role.names.filter";
   String FILTER_CDB_SHOW_MODIFIERS = "show.modifiers.filter";
   String FILTER_CDB_HIDE_PROPERTY_VALUES = "hide.property.values.filter";
+  String FILTER_CDB_HIDE_DIAGRAM_TITLE_BLOCKS = "hide.diagram.title.blocks.filter";
+  String FILTER_CDB_HIDE_ELEMENT_TITLE_BLOCKS = "hide.element.title.blocks.filter";
 
   // CDI filters - Contextual Component Detailed Interfaces
   String FILTER_CDI_HIDE_INTERFACE_CONTENTS = "hide.interface.contents.filter";
