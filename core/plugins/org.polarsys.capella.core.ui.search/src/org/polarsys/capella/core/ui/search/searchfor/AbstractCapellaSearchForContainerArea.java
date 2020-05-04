@@ -75,7 +75,7 @@ public abstract class AbstractCapellaSearchForContainerArea {
 
     filteredTree.getViewer().setInput("");
 
-    ((CheckboxTreeViewer) filteredTree.getViewer()).expandAll();
+    filteredTree.getViewer().expandAll();
     filteredTree.getViewer().getTree().setLayout(new GridLayout());
 
     GridData chechboxTreeViewerGridData = new GridData(GridData.FILL_BOTH);
