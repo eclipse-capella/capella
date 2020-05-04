@@ -36,7 +36,7 @@ import org.polarsys.capella.core.ui.properties.helpers.LockHelper;
 public class TitleBlockBasicElementGroup extends AbstractSemanticField {
   private static final String NAME = "Name:";
   private static final String CONTENT = "Content:";
-  private static final String INTERPRETER_ERROR = "Content Interpreter Error: Syntax not valid";
+  private static final String INTERPRETER_ERROR = "The expression is not valid";
   protected Text nameTextField;
   protected Text contentTextField;
   protected CLabel errorLabel;
