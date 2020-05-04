@@ -118,7 +118,11 @@ public interface IMappingNameConstants {
   String CDB_CONSTRAINT_MAPPING_NAME = "DT_Contraint";
   String CDB_CONSTRAINT_ELEMENT_MAPPING_NAME = "DT_ContrainedElements";
   String CDB_INTERFACE_MAPPING_NAME = IMappingNameConstants.CCDI_INTERFACE;
-  String DT_TITLE_BLOCK = "DT_TitleBlock";
+  String DT_TITLE_BLOCK_CONTAINER = "DT_TitleBlockContainer";
+  String DT_TITLE_BLOCK_LINE_CONTAINER = "DT_TitleBlockLineContainer";
+  String DT_TITLE_BLOCK_COLUMN_CONTAINER = "DT_TitleBlockColumnContainer";
+  String DT_TITLE_BLOCK_CELL = "DT_TitleBlockCellNode";
+  String DT_TITLE_BLOCK_EDGE = "DT_TitleBlockEdge";
 
   @Deprecated
   String CB_CONSTRAINT = CDB_CONSTRAINT_MAPPING_NAME;

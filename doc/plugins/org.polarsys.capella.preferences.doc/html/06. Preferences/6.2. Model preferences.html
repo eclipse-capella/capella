@@ -2,8 +2,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-		<title>6.2. Model preferences</title>
-		<link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/>
 	</head>
 	<body>
 		<h1 id="Model_Preferences">Model Preferences</h1>
@@ -65,6 +63,10 @@
 		<p>On the sub section of 
 			<b>Capella / Diagrams</b>, it is possible to specify preferences for displaying diagrams:
 		</p>
+		<h3 id="Process.2FChain.2FPath_Display">Process/Chain/Path Display</h3>
+		<p>On the sub section of 
+			<b>Capella / Diagrams / Process/Chain/Path Display</b>, it is possible to specify preferences for displaying processes, Chains, paths in diagrams:
+		</p>
 		<ul>
 			<li>If &ldquo;
 				<b>Show 'Incomplete' in the chain/path/process's label</b>&rdquo; is activated, then incomplete chain/path/process's labels are annotated with 
@@ -76,7 +78,41 @@
 			</li>
 		</ul>
 		<p>
-			<img border="0" src="Images/DiagramsPreference.PNG"/>
+			<img border="0" src="Images/Process_Chain_Path_DiagramPreferences.PNG"/>
+		</p>
+		<h3 id="Title_Block">Title Block</h3>
+		<p>On the sub section of 
+			<b>Capella / Diagrams / Title Block</b>, it is possible to specify preferences for displaying a Diagram Title Block in diagrams:
+		</p>
+		<ul>
+			<li>If &ldquo;
+				<b>Add by default Diagram Title Block</b>&rdquo; is activated, then when a new diagram is created, a new Diagram Title Block is also created by default.
+			</li>
+			<li>By right click-ing on a cell, it is possible to insert or remove new lines and columns.</li>
+			<li>When a cell is selected, the content of the cell is displayed on the bottom of the table.</li>
+		</ul>
+		<p>
+			<img border="0" src="Images/Title_Block_DiagramPreferences.PNG"/>
+		</p>
+		<ul>
+			<li>The content of each cell can be editable by double clicking on a cell. A new dialog is opened and can edit the fields below:
+				<ul>
+					<li>name: enter the name(label) that will be displayed on the cell</li>
+					<li>content: type a query that will provide the content that we need to display in the cell of the Diagram Title Block. The content of data fields can be customized via:
+						<ul>
+							<li>AQL query (aql:)</li>
+							<li>Name of feature (feature:)</li>
+							<li>Predefined service (capella:)</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<p>
+			<img border="0" src="Images/Title_Block_CellEdit_DiagramPreferences.PNG"/>
+		</p>
+		<p>
+			<br/>
 		</p>
 		<h2 id="Model">Model</h2>
 		<p>On the sub section 
@@ -95,7 +131,7 @@
 		<p>When &ldquo;
 			<b>Multiple inheritance allowed</b>&rdquo; is activated, a Class can inherit from several other Classes. Otherwise, it can only have one inheritance ancestor.
 		</p>
-			<p>When &ldquo;
+		<p>When &ldquo;
 			<b>Component Non Actor inheritance allowed</b>&rdquo; is activated, a Component Non Actor can generalize other Components Non Actor (via Properties View or using Diagram Generalization tools). Otherwise, only Actors are allowed to generalize other Actors.
 		</p>
 		<p>When &ldquo;

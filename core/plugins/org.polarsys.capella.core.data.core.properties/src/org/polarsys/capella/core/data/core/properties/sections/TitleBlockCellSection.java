@@ -20,6 +20,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 import org.polarsys.capella.core.data.core.properties.fields.TitleBlockBasicElementGroup;
+import org.polarsys.capella.core.diagram.helpers.TitleBlockHelper;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
 import org.polarsys.capella.core.ui.properties.sections.AbstractSection;
 
@@ -27,7 +28,7 @@ import org.polarsys.capella.core.ui.properties.sections.AbstractSection;
  * The PropertyValueGroup section.
  */
 public class TitleBlockCellSection extends AbstractSection {
-  private static final String CELL_PREFIX = "TB";
+  private static final String CELL_PREFIX = TitleBlockHelper.TITLE_BLOCK_CELL;
   private static final String CELL_NAME = "Name:";
   private static final String CELL_CONTENT = "Content:";
   protected TitleBlockBasicElementGroup titleBlockBasicElementGroup;
@@ -40,6 +41,7 @@ public class TitleBlockCellSection extends AbstractSection {
     EObject eObjectToTest = super.selection(toTest);
 
     return ((eObjectToTest != null) && (eObjectToTest instanceof DAnnotation)
+        && ((DAnnotation) eObjectToTest).getSource() != null
         && ((DAnnotation) eObjectToTest).getSource().startsWith(CELL_PREFIX));
   }
 

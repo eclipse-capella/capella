@@ -3,8 +3,10 @@
 	<topic href="html/06. Preferences/6.2. Model preferences.html" label="Model Preferences">
 		<topic href="html/06. Preferences/6.2. Model preferences.html#General" label="General"></topic>
 		<topic href="html/06. Preferences/6.2. Model preferences.html#Delete" label="Delete"></topic>
-  <topic href="html/06. Preferences/6.2. Model preferences.html#Diagrams" label="Diagrams">
-  </topic>
+  		<topic href="html/06. Preferences/6.2. Model preferences.html#Diagrams" label="Diagrams">
+				<topic href="html/06. Preferences/6.2. Model preferences.html#Diagrams" label="Process/Chain/Path Display"></topic>
+				<topic href="html/06. Preferences/6.2. Model preferences.html#Title_Block" label="Title Block"></topic>
+		</topic>
 		<topic href="html/06. Preferences/6.2. Model preferences.html#Model" label="Model"></topic>
 		<topic href="html/06. Preferences/6.2. Model preferences.html#Model_Change_Recorder" label="Model Change Recorder"></topic>
 		<topic href="html/06. Preferences/6.2. Model preferences.html#Model_Validation" label="Model Validation"></topic>
