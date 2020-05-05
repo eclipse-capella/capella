@@ -83,6 +83,7 @@ public class TitleBlockBasicElementGroup extends AbstractSemanticField {
    * {@inheritDoc}
    */
   public void loadData(EObject semanticElement, String name, String content) {
+    errorLabel.setText(ICommonConstants.EMPTY_STRING);
     super.loadData(semanticElement, null);
     if (null != semanticElement) {
       if (null != nameTextField)
@@ -151,26 +152,6 @@ public class TitleBlockBasicElementGroup extends AbstractSemanticField {
   }
 
   /**
-   * @param enabled
-   *          whether or not the name text field is enabled
-   */
-  public void enableNameField(boolean enabled) {
-    if (null != nameTextField && !nameTextField.isDisposed()) {
-      nameTextField.setEnabled(enabled);
-    }
-  }
-
-  /**
-   * @param enabled
-   *          whether or not the content text field is enabled
-   */
-  public void enableContentField(boolean enabled) {
-    if (null != contentTextField && !contentTextField.isDisposed()) {
-      contentTextField.setEnabled(enabled);
-    }
-  }
-
-  /**
    * {@inheritDoc}
    */
   @Override
@@ -183,5 +164,4 @@ public class TitleBlockBasicElementGroup extends AbstractSemanticField {
   public void loadData(EObject semanticElement) {
     // TODO Auto-generated method stub
   }
-
 }

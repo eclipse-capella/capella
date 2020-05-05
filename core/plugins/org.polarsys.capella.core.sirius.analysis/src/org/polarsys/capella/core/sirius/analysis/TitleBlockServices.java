@@ -20,14 +20,13 @@ import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.FileLocator;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.sirius.common.tools.api.interpreter.CompoundInterpreter;
+import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterProvider;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -172,12 +171,24 @@ public class TitleBlockServices {
    * @return
    */
   public void createDiagramTitleBlock(DDiagram diagram) {
-    int numLines = TitleBlockPreferencesInitializer.getColumnsNumber();
-    int numCols = TitleBlockPreferencesInitializer.getLinesNumber();
-    String[] titleBlockContent = TitleBlockPreferencesInitializer.getContentAsArray();
     DAnnotation titleBlock = TitleBlockHelper.addDiagramTitleBlock(diagram);
-    // use this index to go trough the content stored in preferences for the content
-    // of Diagram TB
+    addDiagramTitleBlockContent(diagram, titleBlock);
+    createTitleBlockView(titleBlock, diagram, diagram);
+  }
+  
+
+  /**
+   * add the content (lines, columns, content) to a Diagram Title Block
+   * 
+   * @param diagram
+   * @param titleBlock
+   * @return
+   */
+  protected void addDiagramTitleBlockContent(DDiagram diagram, DAnnotation titleBlock) {
+    int numLines = TitleBlockPreferencesInitializer.getLinesNumber();
+    int numCols = TitleBlockPreferencesInitializer.getColumnsNumber();
+    String[] titleBlockContent = TitleBlockPreferencesInitializer.getContentAsArray();
+    // use this index to go trough the content stored in preferences for the content of Diagram TB
     int currIndexTB = 0;
     for (int i = 0; i < numLines; i++) {
       DAnnotation line = TitleBlockHelper.addTitleBlockLine(diagram, titleBlock);
@@ -187,8 +198,6 @@ public class TitleBlockServices {
         currIndexTB += 2;
       }
     }
-
-    createTitleBlockView(titleBlock, diagram, diagram);
   }
 
   /**
@@ -297,14 +306,10 @@ public class TitleBlockServices {
     handleDanglingElementTitleBlocks(listElementTitleBlocks, diagram);
 
     // refresh the diagram title block, so that if preferences have changed, TB is updated
-    // DAnnotation diagramTitleBlock = TitleBlockHelper.getDiagramTitleBlock(diagram);
-    // if (diagramTitleBlock != null) {
-    // updateDiagramTitleBlock(diagramTitleBlock, (EObject) diagram);
-    // } else {
-    // if (TitleBlockPreferencesInitializer.isCreateDiagramTitleBlockByDefault()) {
-    // createDiagramTitleBlock((DDiagram) diagram);
-    // }
-    // }
+    DAnnotation diagramTitleBlock = TitleBlockHelper.getDiagramTitleBlock(diagram);
+    if (diagramTitleBlock != null) {
+      updateDiagramTitleBlock(diagramTitleBlock, (EObject) diagram);
+    }
   }
 
   /**
@@ -453,10 +458,18 @@ public class TitleBlockServices {
      * if the current Title Block from diagram needs to be updated with the new preferences stored Title Block remove
      * the current Title Block and re-create it again
      */
-    // if (!currentTB.equals(TitleBlockPreferencesInitializer.getContent())) {
-    // deleteTitleBlock((DDiagram) elementView, diagramTitleBlock);
-    // createDiagramTitleBlock((DDiagram) elementView);
-    // }
+    if (!currentTB.equals(TitleBlockPreferencesInitializer.getContent())) {
+      removeTitleBlockContent((DDiagram) elementView, diagramTitleBlock);
+      addDiagramTitleBlockContent((DDiagram) elementView, diagramTitleBlock);
+      
+      DDiagramElement nodeTitleBlock = DiagramServices.getDiagramServices().getDiagramElement(((DDiagram) elementView), diagramTitleBlock);
+      for (EObject objLine : diagramTitleBlock.getReferences()) {
+        if (objLine instanceof DAnnotation) {
+          createTitleBlockLineView(nodeTitleBlock, (DAnnotation) objLine, ((DDiagram) elementView), ((DDiagram) elementView));
+        }
+      }
+      DialectManager.INSTANCE.refresh((DDiagram) elementView, new NullProgressMonitor());
+    }
   }
 
   /**
@@ -503,6 +516,7 @@ public class TitleBlockServices {
         deleteTitleBlock(diagram, annotation);
       }
       list.removeAll(deleteList);
+      DialectManager.INSTANCE.refresh(diagram, new NullProgressMonitor());
     }
 
     if (!hideList.isEmpty()) {
@@ -524,6 +538,18 @@ public class TitleBlockServices {
    * @return list of Title Blocks (both Diagram or Element TB) that will be displayed in diagram
    */
   public void deleteTitleBlock(DDiagram diagram, DAnnotation titleBlock) {
+    removeTitleBlockContent(diagram, titleBlock);
+    diagram.getEAnnotations().remove(titleBlock);
+  }
+  
+  /**
+   * this deletes Title Blocks lines, columns, content DAnnotations
+   * 
+   * @param diagram
+   * @param titleBlock
+   * @return
+   */
+  protected void removeTitleBlockContent(DDiagram diagram, DAnnotation titleBlock) {
     List<DAnnotation> annotationsList = new ArrayList<>();
     for (DAnnotation line : TitleBlockHelper.getTitleBlockLines(titleBlock)) {
       annotationsList.add(line);
@@ -534,10 +560,11 @@ public class TitleBlockServices {
             annotationsList.add((DAnnotation) reference);
           }
         }
+        cell.getReferences().clear();
       }
+      line.getReferences().clear();
     }
-    // remove also the container TB
-    annotationsList.add(titleBlock);
+    titleBlock.getReferences().clear();
     diagram.getEAnnotations().removeAll(annotationsList);
   }
 

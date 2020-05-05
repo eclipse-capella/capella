@@ -3429,7 +3429,7 @@
         </containerMappings>
         <containerMappings name="DT_TitleBlockContainer" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='Delete%20Title%20Block']" semanticCandidatesExpression="aql:diagram.getTitleBlocksInDiagram()" createElements="false" domainClass="DAnnotation" childrenPresentation="VerticalStack">
           <subContainerMappings name="DT_TitleBlockLineContainer" semanticCandidatesExpression="feature:references" createElements="false" domainClass="DAnnotation" childrenPresentation="HorizontalStack">
-            <subContainerMappings name="DT_TitleBlockColumnContainer" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='Delete%20Title%20Block%20Cell']" semanticCandidatesExpression="feature:references" createElements="false" domainClass="DAnnotation" childrenPresentation="List">
+            <subContainerMappings name="DT_TitleBlockColumnContainer" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='Delete%20Title%20Block%20Cell']" semanticCandidatesExpression="feature:references" domainClass="DAnnotation" childrenPresentation="List">
               <subNodeMappings name="DT_TitleBlockCellNode" semanticCandidatesExpression="aql:diagram.getTitleBlockCellContent(self, containerView)" domainClass="EObject">
                 <style xsi:type="style:SquareDescription" labelSize="7" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -4611,7 +4611,7 @@
               </initialOperation>
             </menuItemDescription>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" documentation="Delete the content properies of an Element Title Block cell." name="Delete Title Block Cell" forceRefresh="true">
+          <ownedTools xsi:type="tool:DeleteElementDescription" documentation="Delete the content properies of an Element Title Block cell." name="Delete Title Block Cell" precondition="aql:not (self.isDiagramTitleBlock())" forceRefresh="true">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>

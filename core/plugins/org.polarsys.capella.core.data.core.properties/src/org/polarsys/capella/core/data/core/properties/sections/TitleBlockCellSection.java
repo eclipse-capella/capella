@@ -60,10 +60,20 @@ public class TitleBlockCellSection extends AbstractSection {
 
   @Override
   public void loadData(EObject capellaElement) {
-    super.loadData(capellaElement);
-    String name = ((DAnnotation) capellaElement).getDetails().get(CELL_NAME);
-    String content = ((DAnnotation) capellaElement).getDetails().get(CELL_CONTENT);
-    titleBlockBasicElementGroup.loadData(capellaElement, name, content);
+    if (capellaElement instanceof DAnnotation) {
+      super.loadData(capellaElement);
+      DAnnotation titleBlockCell = (DAnnotation) capellaElement;
+      
+      // if the cell belongs to a Diagram Title Block, disable the edit
+      DAnnotation titleBlockContainer = TitleBlockHelper.getParentTitleBlock(titleBlockCell);
+      if(TitleBlockHelper.isDiagramTitleBlock(titleBlockContainer)) {
+        super.setEnabled(false);
+      }
+      
+      String name = titleBlockCell.getDetails().get(CELL_NAME);
+      String content = titleBlockCell.getDetails().get(CELL_CONTENT);
+      titleBlockBasicElementGroup.loadData(capellaElement, name, content);
+    }
   }
 
   @Override
