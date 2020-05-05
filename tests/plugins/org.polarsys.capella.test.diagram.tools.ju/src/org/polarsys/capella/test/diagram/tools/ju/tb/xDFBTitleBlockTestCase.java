@@ -11,17 +11,22 @@
 package org.polarsys.capella.test.diagram.tools.ju.tb;
 
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.polarsys.capella.test.diagram.common.ju.context.CommonDiagram;
+import org.polarsys.capella.test.diagram.common.ju.context.XDFBDiagram;
 
-public class SA_xABTitleBlockTestCase extends xABTitleBlockTestCase {
+public abstract class xDFBTitleBlockTestCase extends AbstractTitleBlockTestCase {
+  protected String diagramName;
+  protected BlockArchitectureExt.Type type;
 
-  private static final String ACTOR_ID = "9dcae60f-09c0-4fe1-b9c9-990c36bedc14";
-  private static final String DIAGRAM_NAME = "[SAB] Structure";
+  public xDFBTitleBlockTestCase() {
+    initData();
+  }
 
   @Override
-  public void initData() {
-    elementsId.add(ACTOR_ID);
-    diagramName = DIAGRAM_NAME;
-    type = BlockArchitectureExt.Type.SA;
+  protected CommonDiagram initDiagram() {
+    return XDFBDiagram.openDiagram(context, diagramName, type);
   }
+
+  protected abstract void initData();
 
 }

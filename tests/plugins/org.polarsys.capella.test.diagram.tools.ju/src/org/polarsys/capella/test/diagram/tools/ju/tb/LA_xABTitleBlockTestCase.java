@@ -12,16 +12,16 @@ package org.polarsys.capella.test.diagram.tools.ju.tb;
 
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 
-public class SA_xABTitleBlockTestCase extends xABTitleBlockTestCase {
-
-  private static final String ACTOR_ID = "9dcae60f-09c0-4fe1-b9c9-990c36bedc14";
-  private static final String DIAGRAM_NAME = "[SAB] Structure";
+public class LA_xABTitleBlockTestCase extends xABTitleBlockTestCase {
+  private static final String ACTOR_ID = "10a3c71c-3a7a-47b4-a554-b29d2c0ede35";
+  private static final String COMPONENT_ID = "503e9596-b811-47d2-9531-4ec463c6c33b";
+  private static final String DIAGRAM_NAME = "[LAB] Structure";
 
   @Override
   public void initData() {
     elementsId.add(ACTOR_ID);
+    elementsId.add(COMPONENT_ID);
     diagramName = DIAGRAM_NAME;
-    type = BlockArchitectureExt.Type.SA;
+    type = BlockArchitectureExt.Type.LA;
   }
-
 }

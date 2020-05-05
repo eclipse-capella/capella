@@ -17,7 +17,7 @@ public class SA_CDBTitleBlockTestCase extends CDBTitleBlockTestCase {
 
   @Override
   public void initData() {
-    elementId = CLASS_ID;
+    elementsId.add(CLASS_ID);
     diagramName = DIAGRAM_NAME;
   }
 }
