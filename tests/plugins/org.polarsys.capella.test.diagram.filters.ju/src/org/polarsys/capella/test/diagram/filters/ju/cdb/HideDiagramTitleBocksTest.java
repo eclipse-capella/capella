@@ -22,11 +22,16 @@ public class HideDiagramTitleBocksTest extends DiagramTitleBlockFilterTestCase {
   
   @Override
   protected String getFilterName() {
-    return IFilterNameConstants.FILTER_CDB_HIDE_DIAGRAM_TITLE_BLOCKS;
+    return IFilterNameConstants.FILTER_COMMON_HIDE_DIAGRAM_TITLE_BLOCKS;
   }
 
   @Override
   protected List<String> getFilteredObjetIDs() {
     return Arrays.asList(new String[] { DIAGRAM_TITLE_BLOCK_ID });
+  }
+  
+  @Override
+  protected String getDiagramName() {
+    return "[CDB] Data Title Blocks";
   }
 }
