@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.polarsys.capella.test.diagram.tools.ju.tb.EPBS_CRBTitleBlockTestCase;
 import org.polarsys.capella.test.diagram.tools.ju.tb.LABTitleBlockTestCase;
 import org.polarsys.capella.test.diagram.tools.ju.tb.LA_CDBTitleBlockTestCase;
 import org.polarsys.capella.test.diagram.tools.ju.tb.LA_CRBTitleBlockTestCase;
@@ -27,6 +28,7 @@ import org.polarsys.capella.test.diagram.tools.ju.tb.OA_IDTitleBlockTestCase;
 import org.polarsys.capella.test.diagram.tools.ju.tb.OA_PDTitleBlockTestCase;
 import org.polarsys.capella.test.diagram.tools.ju.tb.PABTitleBlockTestCase;
 import org.polarsys.capella.test.diagram.tools.ju.tb.PA_CDBTitleBlockTestCase;
+import org.polarsys.capella.test.diagram.tools.ju.tb.PA_CRBTitleBlockTestCase;
 import org.polarsys.capella.test.diagram.tools.ju.tb.PA_IDTitleBlockTestCase;
 import org.polarsys.capella.test.diagram.tools.ju.tb.PA_PDTitleBlockTestCase;
 import org.polarsys.capella.test.diagram.tools.ju.tb.PDFBTitleBlockTestCase;
@@ -64,6 +66,7 @@ public class TitleBlocksToolsTestSuite extends BasicTestSuite {
   @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
+    tests.add(new EPBS_CRBTitleBlockTestCase());
     tests.add(new LA_CDBTitleBlockTestCase());
     tests.add(new LA_CRBTitleBlockTestCase());
     tests.add(new LA_IDTitleBlockTestCase());
@@ -76,6 +79,7 @@ public class TitleBlocksToolsTestSuite extends BasicTestSuite {
     tests.add(new OABTitleBlockTestCase());
     tests.add(new OAIBTitleBlockTestCase());
     tests.add(new PA_CDBTitleBlockTestCase());
+    tests.add(new PA_CRBTitleBlockTestCase());
     tests.add(new PA_IDTitleBlockTestCase());
     tests.add(new PA_PDTitleBlockTestCase());
     tests.add(new PABTitleBlockTestCase());
