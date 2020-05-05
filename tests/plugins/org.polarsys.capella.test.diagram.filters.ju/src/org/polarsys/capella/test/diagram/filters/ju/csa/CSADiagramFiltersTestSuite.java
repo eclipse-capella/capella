@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.diagram.filters.ju.crb;
+package org.polarsys.capella.test.diagram.filters.ju.csa;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,22 +16,13 @@ import java.util.List;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 
-public class CRBDiagramFiltersTestSuite extends BasicTestSuite {
+public class CSADiagramFiltersTestSuite extends BasicTestSuite {
 
   @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<>();
-    tests.add(new HideCapabilityRealizations());
-    tests.add(new HideInvolvements());
-    tests.add(new HideCapabilityExtends());
-    tests.add(new HideCapabilityIncludes());
-    tests.add(new HideCapabilityRealizationGeneralizations());
-    tests.add(new HideComponents());
-    tests.add(new HideActors());
-    tests.add(new HideActorGeneralizations());
-    tests.add(new HidePropertyValues());
-    tests.add(new HideDiagramTitleBlocksForCRB());
-    tests.add(new HideElementTitleBlocksForCRB());
+    tests.add(new HideDiagramTitleBlocksForCSA());
+    tests.add(new HideElementTitleBlocksForCSA());
     return tests;
   }
 }

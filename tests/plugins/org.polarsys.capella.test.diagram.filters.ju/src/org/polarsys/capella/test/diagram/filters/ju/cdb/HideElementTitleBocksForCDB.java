@@ -16,18 +16,20 @@ import java.util.List;
 import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
 import org.polarsys.capella.test.diagram.filters.ju.DiagramTitleBlockFilterTestCase;
 
-public class HideDiagramTitleBocksTest extends DiagramTitleBlockFilterTestCase {
+public class HideElementTitleBocksForCDB extends DiagramTitleBlockFilterTestCase {
 
-  private final String DIAGRAM_TITLE_BLOCK_ID = "_8t01EIXwEeqWaJq2mNMsRw";
-  
+  private final String ELEMENT_TITLE_BLOCK_CLASS_ID = "_48t68IXwEeqWaJq2mNMsRw";
+  private final String ELEMENT_TITLE_BLOCK_DATA_PKG_ID = "_6iC6AIXwEeqWaJq2mNMsRw";
+
   @Override
   protected String getFilterName() {
-    return IFilterNameConstants.FILTER_COMMON_HIDE_DIAGRAM_TITLE_BLOCKS;
+    return IFilterNameConstants.FILTER_COMMON_HIDE_ELEMENT_TITLE_BLOCKS;
   }
 
   @Override
   protected List<String> getFilteredObjetIDs() {
-    return Arrays.asList(new String[] { DIAGRAM_TITLE_BLOCK_ID });
+    return Arrays.asList(new String[] { ELEMENT_TITLE_BLOCK_CLASS_ID,
+        ELEMENT_TITLE_BLOCK_DATA_PKG_ID});
   }
   
   @Override
