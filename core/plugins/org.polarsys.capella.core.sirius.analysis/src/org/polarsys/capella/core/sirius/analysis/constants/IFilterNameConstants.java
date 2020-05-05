@@ -250,8 +250,6 @@ public interface IFilterNameConstants {
   String FILTER_LAB_HIDE_PHYSICAL_LINKS_NAME = "hide.physical.links.names.filter";
   String FILTER_LAB_HIDE_PROPERTY_VALUES = "hide.property.values.filter";
   String FILTER_LAB_HIDE_SEQUENCING_INFORMATION = "hide.sequencing.information.filter";
-  String FILTER_LAB_HIDE_DIAGRAM_TITLE_BLOCKS = "hide.diagram.title.blocks.filter";
-  String FILTER_LAB_HIDE_ELEMENT_TITLE_BLOCKS = "hide.element.title.blocks.filter";
 
   String FILTER_XAB_HIDE_COMPUTED_CE = "hide.computed.component.exchanges.filter";
   String FILTER_XAB_HIDE_COMPUTED_PL = "hide.computed.physical.links.filter";
