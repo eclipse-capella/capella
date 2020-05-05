@@ -10,7 +10,10 @@
  *******************************************************************************/
 package org.polarsys.capella.test.diagram.tools.ju.tb;
 
+import java.util.ArrayList;
+
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.polarsys.capella.test.diagram.common.ju.api.AbstractDiagramTestCase;
 import org.polarsys.capella.test.diagram.common.ju.context.CommonDiagram;
 import org.polarsys.capella.test.framework.context.SessionContext;
@@ -19,24 +22,59 @@ public abstract class AbstractTitleBlockTestCase extends AbstractDiagramTestCase
   protected Session session;
   protected SessionContext context;
   protected CommonDiagram diagram;
-  
+  protected ArrayList<String> elementsId = new ArrayList<String>();
+
   @Override
   protected String getRequiredTestModel() {
     return "TitleBlocksModel";
   }
-  
+
   @Override
   public void test() throws Exception {
     initTest();
     testTitleBlocks();
   }
 
-  public abstract void testTitleBlocks();
+  public void testTitleBlocks() {
+    testDiagramTitleBlock();
+    for (String elementId : elementsId) {
+      testElementTitleBlock(elementId);
+    }
+  }
+
+  public void testDiagramTitleBlock() {
+    // create TB tools
+    DAnnotation diagramTB = diagram.createDiagramTitleBlock();
+
+    // show/hide tool + create TB after hide it
+    diagram.removeDiagramTitleBlock(diagramTB.getUid());
+    diagram.checkCreateDiagramTitleBlock();
+    diagram.insertDiagramTitleBlock(diagramTB.getUid());
+  }
+
+  public void testElementTitleBlock(String elementId) {
+    // create TB tools
+    DAnnotation elementTB = diagram.createElementTitleBlock(elementId);
+
+    // show/hide tool + create TB after hide it
+    diagram.removeElementTitleBlock(elementTB.getUid());
+    diagram.checkCreateElementTitleBlock(elementId);
+    diagram.insertElementTitleBlock(elementTB.getUid());
+
+    // insert line/column in TB element
+    diagram.insertLineInTitleBlock(elementTB, 0);
+    diagram.insertColumnInTitleBlock(elementTB, 0);
+
+    // remove line/column from TB element
+    diagram.removeLineFromTitleBlock(elementTB, 0);
+    diagram.removeColumnFromTitleBlock(elementTB, 0);
+  }
+
   protected abstract CommonDiagram initDiagram();
-  
+
   protected void initTest() {
     session = getSession(getRequiredTestModel());
     context = new SessionContext(session);
     diagram = initDiagram();
   }
- }
+}
