@@ -28,6 +28,8 @@ public class LABDiagramFiltersTestSuite extends BasicTestSuite {
     tests.add(new HideComponentExchangesForLAB());
     tests.add(new HideComponentExchangesNamesForLAB());
     tests.add(new HideComponentPortsWithoutExchangesForLAB());
+    tests.add(new HideDiagramTitleBlocksTest());
+    tests.add(new HideElementTitleBlocksTest());    
     tests.add(new HideFunctionalExchangesForLAB());
     tests.add(new HideFunctionalExchangesNamesForLAB());
     tests.add(new HideFunctionPortsWithoutExchangesForLAB());

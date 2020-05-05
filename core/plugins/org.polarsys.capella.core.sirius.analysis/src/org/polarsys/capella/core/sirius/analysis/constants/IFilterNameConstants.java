@@ -49,8 +49,8 @@ public interface IFilterNameConstants {
   String FILTER_CDB_HIDE_ROLE_NAMES = "hide.role.names.filter";
   String FILTER_CDB_SHOW_MODIFIERS = "show.modifiers.filter";
   String FILTER_CDB_HIDE_PROPERTY_VALUES = "hide.property.values.filter";
-  String FILTER_CDB_HIDE_DIAGRAM_TITLE_BLOCKS = "hide.diagram.title.blocks.filter";
-  String FILTER_CDB_HIDE_ELEMENT_TITLE_BLOCKS = "hide.element.title.blocks.filter";
+  String FILTER_COMMON_HIDE_DIAGRAM_TITLE_BLOCKS = "hide.diagram.title.blocks.filter";
+  String FILTER_COMMON_HIDE_ELEMENT_TITLE_BLOCKS = "hide.element.title.blocks.filter";
 
   // CDI filters - Contextual Component Detailed Interfaces
   String FILTER_CDI_HIDE_INTERFACE_CONTENTS = "hide.interface.contents.filter";
@@ -250,6 +250,8 @@ public interface IFilterNameConstants {
   String FILTER_LAB_HIDE_PHYSICAL_LINKS_NAME = "hide.physical.links.names.filter";
   String FILTER_LAB_HIDE_PROPERTY_VALUES = "hide.property.values.filter";
   String FILTER_LAB_HIDE_SEQUENCING_INFORMATION = "hide.sequencing.information.filter";
+  String FILTER_LAB_HIDE_DIAGRAM_TITLE_BLOCKS = "hide.diagram.title.blocks.filter";
+  String FILTER_LAB_HIDE_ELEMENT_TITLE_BLOCKS = "hide.element.title.blocks.filter";
 
   String FILTER_XAB_HIDE_COMPUTED_CE = "hide.computed.component.exchanges.filter";
   String FILTER_XAB_HIDE_COMPUTED_PL = "hide.computed.physical.links.filter";
