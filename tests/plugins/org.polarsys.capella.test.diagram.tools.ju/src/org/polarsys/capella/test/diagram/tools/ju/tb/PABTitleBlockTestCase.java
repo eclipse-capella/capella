@@ -12,16 +12,18 @@ package org.polarsys.capella.test.diagram.tools.ju.tb;
 
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 
-public class OA_xDFBTitleBlockTestCase extends xDFBTitleBlockTestCase {
+public class PABTitleBlockTestCase extends XABTitleBlockTestCase {
 
-  private static final String ACTIVITY_ID = "71f32d65-40cb-416b-97ce-f71b03614d1c";
-  private static final String DIAGRAM_NAME = "[OAIB] Root Operational Activity";
+  private static final String ACTOR_ID = "13cccb6a-687d-4a81-89b7-69bdde6443cb";
+  private static final String NODE_ID = "cd02d8ef-bb7f-4d09-ae46-d3c434b3999d";
+  private static final String DIAGRAM_NAME = "[PAB] Structure";
 
   @Override
-  protected void initData() {
-    elementsId.add(ACTIVITY_ID);
+  public void initData() {
+    elementsId.add(ACTOR_ID);
+    elementsId.add(NODE_ID);
     diagramName = DIAGRAM_NAME;
-    type = BlockArchitectureExt.Type.OA;
-  } 
+    type = BlockArchitectureExt.Type.PA;
+  }
 
 }

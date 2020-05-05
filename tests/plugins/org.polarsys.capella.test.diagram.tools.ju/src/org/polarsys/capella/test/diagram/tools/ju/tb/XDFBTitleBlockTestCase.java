@@ -14,11 +14,11 @@ import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.test.diagram.common.ju.context.CommonDiagram;
 import org.polarsys.capella.test.diagram.common.ju.context.XDFBDiagram;
 
-public abstract class xDFBTitleBlockTestCase extends AbstractTitleBlockTestCase {
+public abstract class XDFBTitleBlockTestCase extends AbstractTitleBlockTestCase {
   protected String diagramName;
   protected BlockArchitectureExt.Type type;
 
-  public xDFBTitleBlockTestCase() {
+  public XDFBTitleBlockTestCase() {
     initData();
   }
 

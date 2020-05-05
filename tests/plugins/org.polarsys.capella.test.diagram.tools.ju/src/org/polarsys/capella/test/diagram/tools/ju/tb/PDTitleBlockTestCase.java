@@ -10,23 +10,22 @@
  *******************************************************************************/
 package org.polarsys.capella.test.diagram.tools.ju.tb;
 
-import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.test.diagram.common.ju.context.CommonDiagram;
-import org.polarsys.capella.test.diagram.common.ju.context.XABDiagram;
+import org.polarsys.capella.test.diagram.common.ju.context.PDDiagram;
 
-public abstract class xABTitleBlockTestCase extends AbstractTitleBlockTestCase {
+public abstract class PDTitleBlockTestCase extends AbstractTitleBlockTestCase {
   protected String diagramName;
-  protected BlockArchitectureExt.Type type;
 
-  public xABTitleBlockTestCase() {
+  public PDTitleBlockTestCase() {
     initData();
   }
 
   @Override
   protected CommonDiagram initDiagram() {
-    return XABDiagram.openDiagram(context, diagramName, type);
+    return PDDiagram.openDiagram(context, diagramName);
   }
 
-  public abstract void initData();
+  protected abstract void initData();
 
 }
+

@@ -10,20 +10,19 @@
  *******************************************************************************/
 package org.polarsys.capella.test.diagram.tools.ju.tb;
 
-import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
-
-public class LA_xDFBTitleBlockTestCase extends xDFBTitleBlockTestCase {
-
-  private static final String ACTOR_ID = "310a22b0-8d6c-4d5d-bd6b-806f33dc17b2";
-  private static final String FUNCTION_ID = "b1eb04f5-ac15-43b9-b25b-df8389c224c3";
-  private static final String DIAGRAM_NAME = "[LDFB] Root Logical Function";
+public class PA_PDTitleBlockTestCase extends PDTitleBlockTestCase {
+  private static final String DATA_ID = "7da31f5f-5ce1-454e-916a-e8593af47236";
+  private static final String DATA2_ID = "402bc79a-3d0f-4361-8deb-b0e2237bfed5";
+  private static final String DATA3_ID = "fa4dd744-ef0f-451a-a713-5f79f344812b";
+  private static final String DATA4_ID = "56938bb5-311a-4f97-b9dc-28674e4b50cd";
+  private static final String DIAGRAM_NAME = "[PD] Interfaces Physical";
 
   @Override
   protected void initData() {
-    elementsId.add(ACTOR_ID);
-    elementsId.add(FUNCTION_ID);
+    elementsId.add(DATA_ID);
+    elementsId.add(DATA2_ID);
+    elementsId.add(DATA3_ID);
+    elementsId.add(DATA4_ID);
     diagramName = DIAGRAM_NAME;
-    type = BlockArchitectureExt.Type.LA;
   }
-
 }

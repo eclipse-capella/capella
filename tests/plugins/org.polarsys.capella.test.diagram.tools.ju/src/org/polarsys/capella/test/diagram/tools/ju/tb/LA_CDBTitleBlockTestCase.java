@@ -10,19 +10,18 @@
  *******************************************************************************/
 package org.polarsys.capella.test.diagram.tools.ju.tb;
 
-import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+public class LA_CDBTitleBlockTestCase extends CDBTitleBlockTestCase {
 
-public class OA_xABTitleBlockTestCase extends xABTitleBlockTestCase {
-  private static final String ACTOR_ID = "134804c9-802b-4b16-80fa-4993456bb82b";
-  private static final String ENTITY_ID = "56e2d841-e27c-49e1-ab37-37498d8ecbb5";
-  private static final String DIAGRAM_NAME = "[OAB] Operational Entities";
+  private static final String CLASS_ID = "330d0716-9466-4a2c-8a06-9b95b1d2d1ef";
+  private static final String DATA_ID = "28654216-6820-4e87-8d31-d146b194ba19";
+  private static final String BOOLEAN_ID = "06c37c44-d801-4ff0-8f0f-2708df03d97b";
+  private static final String DIAGRAM_NAME = "[CDB] Data Logical";
 
   @Override
   public void initData() {
-    elementsId.add(ACTOR_ID);
-    elementsId.add(ENTITY_ID);
+    elementsId.add(CLASS_ID);
+    elementsId.add(DATA_ID);
+    elementsId.add(BOOLEAN_ID);
     diagramName = DIAGRAM_NAME;
-    type = BlockArchitectureExt.Type.OA;
   }
-
 }
