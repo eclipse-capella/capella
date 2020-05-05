@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.diagram.filters.ju.xdfb;
+package org.polarsys.capella.test.diagram.filters.ju.sab;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,10 +16,10 @@ import java.util.List;
 import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
 import org.polarsys.capella.test.diagram.filters.ju.DiagramTitleBlockFilterTestCase;
 
-public class HideElementTitleBlocksTest extends DiagramTitleBlockFilterTestCase {
+public class HideElementTitleBlocksForSAB extends DiagramTitleBlockFilterTestCase {
 
-  private final String ELEMENT_TITLE_BLOCK_OPERATIONAL_ACTIVITY1_ID = "_2JYV8I4aEeqaDKEiylAJ0A";
-  private final String ELEMENT_TITLE_BLOCK_OPERATIONAL_ACTIVITY2_ID = "_4Req4I4aEeqaDKEiylAJ0A";
+  private final String ELEMENT_TITLE_BLOCK_SYSTEM_ID = "_CldHAI4ZEeqaDKEiylAJ0A";
+  private final String ELEMENT_TITLE_BLOCK_SYSTEM_ACTOR_ID = "_CK-xgI4ZEeqaDKEiylAJ0A";
 
   @Override
   protected String getFilterName() {
@@ -28,12 +28,12 @@ public class HideElementTitleBlocksTest extends DiagramTitleBlockFilterTestCase 
 
   @Override
   protected List<String> getFilteredObjetIDs() {
-    return Arrays.asList(new String[] { ELEMENT_TITLE_BLOCK_OPERATIONAL_ACTIVITY1_ID,
-        ELEMENT_TITLE_BLOCK_OPERATIONAL_ACTIVITY2_ID});
+    return Arrays.asList(new String[] { ELEMENT_TITLE_BLOCK_SYSTEM_ID,
+        ELEMENT_TITLE_BLOCK_SYSTEM_ACTOR_ID});
   }
   
   @Override
   protected String getDiagramName() {
-    return "[OAIB] Root Operational Activity Title Blocks";
+    return "[SAB] System Title Blocks";
   }
 }

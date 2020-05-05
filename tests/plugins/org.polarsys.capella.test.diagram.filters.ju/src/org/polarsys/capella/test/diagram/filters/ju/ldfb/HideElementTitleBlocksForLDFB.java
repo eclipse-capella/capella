@@ -8,30 +8,32 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.diagram.filters.ju.lab;
+package org.polarsys.capella.test.diagram.filters.ju.ldfb;
 
 import java.util.Arrays;
 import java.util.List;
+
 import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
 import org.polarsys.capella.test.diagram.filters.ju.DiagramTitleBlockFilterTestCase;
 
-public class HideDiagramTitleBlocksTest extends DiagramTitleBlockFilterTestCase {
+public class HideElementTitleBlocksForLDFB extends DiagramTitleBlockFilterTestCase {
 
-  private final String DIAGRAM_TITLE_BLOCK_ID = "_Pp_DYI4QEeqaDKEiylAJ0A";
-  
+  private final String ELEMENT_TITLE_BLOCK_LOGICAL_FUNCTION_ID = "_BV8xgI4aEeqaDKEiylAJ0A";
+  private final String ELEMENT_TITLE_BLOCK_ACTOR_FUNCTiON_ID = "_DJhn8I4aEeqaDKEiylAJ0A";
+
   @Override
   protected String getFilterName() {
-    return IFilterNameConstants.FILTER_COMMON_HIDE_DIAGRAM_TITLE_BLOCKS;
+    return IFilterNameConstants.FILTER_COMMON_HIDE_ELEMENT_TITLE_BLOCKS;
   }
 
   @Override
-  protected String getDiagramName() {
-    return "[LAB] Logical System Title Blocks";
+  protected List<String> getFilteredObjetIDs() {
+    return Arrays.asList(new String[] { ELEMENT_TITLE_BLOCK_LOGICAL_FUNCTION_ID,
+        ELEMENT_TITLE_BLOCK_ACTOR_FUNCTiON_ID});
   }
   
   @Override
-  protected List<String> getFilteredObjetIDs() {
-    return Arrays.asList(new String[] { DIAGRAM_TITLE_BLOCK_ID });
+  protected String getDiagramName() {
+    return "[LDFB] Root Logical Function Title Blocks";
   }
 }
-

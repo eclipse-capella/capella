@@ -249,6 +249,8 @@
             name="Logical System" abstractType="#10011dd8-9d61-418a-b9d2-a50f491d83d8"/>
         <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="56d8cafb-d707-4ff5-be92-ac52cc1d4d6f"
             name="LA 2" abstractType="#2705568d-3239-4912-8d59-3daabe9dc84b"/>
+        <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="5f79a19f-c9e1-4f62-87ee-590b3b9896bc"
+            name="LA 3" abstractType="#641fad5a-cf68-4662-b162-6ef7d4379e14"/>
         <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
             id="10011dd8-9d61-418a-b9d2-a50f491d83d8" name="Logical System">
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="053b8224-8b89-40c2-8ffc-99f0f325607e"
@@ -269,6 +271,8 @@
               id="ec59d8a5-d802-4115-b188-1d0014540de9" targetElement="#c430be3c-df9b-4acd-8a90-3038e0a2359b"
               sourceElement="#2705568d-3239-4912-8d59-3daabe9dc84b"/>
         </ownedLogicalComponents>
+        <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
+            id="641fad5a-cf68-4662-b162-6ef7d4379e14" name="LA 3" actor="true"/>
       </ownedLogicalComponentPkg>
       <ownedSystemAnalysisRealizations xsi:type="org.polarsys.capella.core.data.la:SystemAnalysisRealization"
           id="1b485461-92dd-47dc-85c4-142a73c719c5" targetElement="#c634baa5-b71e-4be4-8d8f-4cfe90ce1f27"

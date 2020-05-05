@@ -13,8 +13,8 @@ package org.polarsys.capella.test.diagram.filters.ju.sdfb;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.polarsys.capella.test.diagram.filters.ju.pdfb.HideDiagramTitleBlocksTest;
-import org.polarsys.capella.test.diagram.filters.ju.pdfb.HideElementTitleBlocksTest;
+import org.polarsys.capella.test.diagram.filters.ju.pdfb.HideDiagramTitleBlocksForPDFB;
+import org.polarsys.capella.test.diagram.filters.ju.pdfb.HideElementTitleBlocksForPDFB;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 
@@ -24,8 +24,8 @@ public class SDFBDiagramFiltersTestSuite extends BasicTestSuite {
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<>();
     tests.add(new CollapsePortsForSDFB());
-    tests.add(new HideDiagramTitleBlocksTest());
-    tests.add(new HideElementTitleBlocksTest());
+    tests.add(new HideDiagramTitleBlocksForPDFB());
+    tests.add(new HideElementTitleBlocksForPDFB());
     tests.add(new HideExchangeCategoriesForSDFB());
     tests.add(new HideFunctionalExchangesForSDFB());
     tests.add(new HideFunctionalExchangesNamesForSDFB());

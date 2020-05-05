@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.diagram.filters.ju.pab;
+package org.polarsys.capella.test.diagram.filters.ju.pdfb;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,10 +16,10 @@ import java.util.List;
 import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
 import org.polarsys.capella.test.diagram.filters.ju.DiagramTitleBlockFilterTestCase;
 
-public class HideElementTitleBlocksTest extends DiagramTitleBlockFilterTestCase {
+public class HideElementTitleBlocksForPDFB extends DiagramTitleBlockFilterTestCase {
 
-  private final String ELEMENT_TITLE_BLOCK_NODE_PC_ID = "_SipY8I4YEeqaDKEiylAJ0A";
-  private final String ELEMENT_TITLE_BLOCK_PHYSICAL_ACTOR_ID = "_S1bLAI4YEeqaDKEiylAJ0A";
+  private final String ELEMENT_TITLE_BLOCK_PHYSICAL_FUNCTION_ID = "_Wrc6AI4bEeqaDKEiylAJ0A";
+  private final String ELEMENT_TITLE_BLOCK_ACTOR_FUNCTiON_ID = "_XiYiAI4bEeqaDKEiylAJ0A";
 
   @Override
   protected String getFilterName() {
@@ -28,12 +28,12 @@ public class HideElementTitleBlocksTest extends DiagramTitleBlockFilterTestCase 
 
   @Override
   protected List<String> getFilteredObjetIDs() {
-    return Arrays.asList(new String[] { ELEMENT_TITLE_BLOCK_NODE_PC_ID,
-        ELEMENT_TITLE_BLOCK_PHYSICAL_ACTOR_ID});
+    return Arrays.asList(new String[] { ELEMENT_TITLE_BLOCK_PHYSICAL_FUNCTION_ID,
+        ELEMENT_TITLE_BLOCK_ACTOR_FUNCTiON_ID});
   }
   
   @Override
   protected String getDiagramName() {
-    return "[PAB] Physical System Title Blocks";
+    return "[PDFB] Root Physical Function Title Blocks";
   }
 }

@@ -29,8 +29,8 @@ public class SABDiagramFiltersTestSuite extends BasicTestSuite {
     tests.add(new HideComponentExchangesNamesForSAB());
     tests.add(new HideComponentPortsWithoutExchangesForSAB());
     // tests.add(new HideCrossFunctionalExchangesOfReusableComponentsForSAB());
-    tests.add(new HideDiagramTitleBlocksTest());
-    tests.add(new HideElementTitleBlocksTest());
+    tests.add(new HideDiagramTitleBlocksForSAB());
+    tests.add(new HideElementTitleBlocksForSAB());
     tests.add(new HideFunctionalExchangesForSAB());
     tests.add(new HideFunctionalExchangesNamesForSAB());
     tests.add(new HideFunctionPortsWithoutExchangesForSAB());

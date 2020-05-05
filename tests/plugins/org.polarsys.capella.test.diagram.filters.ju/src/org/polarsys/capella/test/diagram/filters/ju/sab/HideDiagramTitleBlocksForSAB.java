@@ -8,16 +8,16 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.diagram.filters.ju.ldfb;
+package org.polarsys.capella.test.diagram.filters.ju.sab;
 
 import java.util.Arrays;
 import java.util.List;
 import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
 import org.polarsys.capella.test.diagram.filters.ju.DiagramTitleBlockFilterTestCase;
 
-public class HideDiagramTitleBlocksTest extends DiagramTitleBlockFilterTestCase {
+public class HideDiagramTitleBlocksForSAB extends DiagramTitleBlockFilterTestCase {
 
-  private final String DIAGRAM_TITLE_BLOCK_ID = "_AvaV8I4aEeqaDKEiylAJ0A";
+  private final String DIAGRAM_TITLE_BLOCK_ID = "_By3McI4ZEeqaDKEiylAJ0A";
   
   @Override
   protected String getFilterName() {
@@ -26,7 +26,7 @@ public class HideDiagramTitleBlocksTest extends DiagramTitleBlockFilterTestCase 
 
   @Override
   protected String getDiagramName() {
-    return "[LDFB] Root Logical Function Title Blocks";
+    return "[SAB] System Title Blocks";
   }
   
   @Override

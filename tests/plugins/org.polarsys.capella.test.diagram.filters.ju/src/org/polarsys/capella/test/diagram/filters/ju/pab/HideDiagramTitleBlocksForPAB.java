@@ -8,32 +8,30 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.diagram.filters.ju.ldfb;
+package org.polarsys.capella.test.diagram.filters.ju.pab;
 
 import java.util.Arrays;
 import java.util.List;
-
 import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
 import org.polarsys.capella.test.diagram.filters.ju.DiagramTitleBlockFilterTestCase;
 
-public class HideElementTitleBlocksTest extends DiagramTitleBlockFilterTestCase {
+public class HideDiagramTitleBlocksForPAB extends DiagramTitleBlockFilterTestCase {
 
-  private final String ELEMENT_TITLE_BLOCK_LOGICAL_FUNCTION_ID = "_BV8xgI4aEeqaDKEiylAJ0A";
-  private final String ELEMENT_TITLE_BLOCK_ACTOR_FUNCTiON_ID = "_DJhn8I4aEeqaDKEiylAJ0A";
-
+  private final String DIAGRAM_TITLE_BLOCK_ID = "_SL2pkI4YEeqaDKEiylAJ0A";
+  
   @Override
   protected String getFilterName() {
-    return IFilterNameConstants.FILTER_COMMON_HIDE_ELEMENT_TITLE_BLOCKS;
+    return IFilterNameConstants.FILTER_COMMON_HIDE_DIAGRAM_TITLE_BLOCKS;
   }
 
   @Override
-  protected List<String> getFilteredObjetIDs() {
-    return Arrays.asList(new String[] { ELEMENT_TITLE_BLOCK_LOGICAL_FUNCTION_ID,
-        ELEMENT_TITLE_BLOCK_ACTOR_FUNCTiON_ID});
+  protected String getDiagramName() {
+    return "[PAB] Physical System Title Blocks";
   }
   
   @Override
-  protected String getDiagramName() {
-    return "[LDFB] Root Logical Function Title Blocks";
+  protected List<String> getFilteredObjetIDs() {
+    return Arrays.asList(new String[] { DIAGRAM_TITLE_BLOCK_ID });
   }
 }
+
