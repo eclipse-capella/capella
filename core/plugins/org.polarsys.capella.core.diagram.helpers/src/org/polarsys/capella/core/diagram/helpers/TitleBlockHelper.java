@@ -185,6 +185,20 @@ public class TitleBlockHelper {
   }
   
   /**
+   * function that return the container Title Block of a selected cell; the container is the one storing all together
+   * the lines and columns
+   * 
+   * @param titleBlockCell:
+   *          the selected cell
+   * @return the parent title block
+   */
+  public static DAnnotation getParentTitleBlock(DAnnotation titleBlockCell) {
+    if (titleBlockCell.eContainer() instanceof DDiagram)
+      return getParentTitleBlock(titleBlockCell, (DDiagram) titleBlockCell.eContainer());
+    return null;
+  }
+  
+  /**
    * 
    * @param titleBlock
    * @return then semantic element attached to a Title Block
