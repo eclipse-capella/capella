@@ -4650,7 +4650,7 @@
                     <parameters name="initialSelection" value="aql:self.void2Null(containerView.getVisibleDiagramTitleBlocks())"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (selectedTitleBlocks = 'WIZARD_CANCELED')">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerView.showHideElementTitleBlocks(selectedTitleBlocks,diagram)"/>
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerView.showHideDiagramTitleBlocks(selectedTitleBlocks,diagram)"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not self.hasADiagramTitleBlock()">
