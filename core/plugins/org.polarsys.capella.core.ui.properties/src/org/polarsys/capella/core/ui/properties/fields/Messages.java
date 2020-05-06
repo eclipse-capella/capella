@@ -29,6 +29,8 @@ public class Messages extends NLS {
   public static String BooleanValueGroup_Value_Label;
   public static String TextValueGroup_Value_Label;
   public static String TextValueGroup_ValueResetBtn_Label;
+  public static String TitleBlock_Label_Label;
+  public static String TitleBlock_Reference_Label;
 
   static {
     // initialize resource bundle

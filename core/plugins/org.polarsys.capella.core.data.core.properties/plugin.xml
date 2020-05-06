@@ -191,6 +191,18 @@
                id="org.polarsys.capella.core.data.core.properties.sections.TitleBlockCellSection"
                tab="BaseSiriusDiagram">
          </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.core.properties.sections.TitleBlockContainerSection"
+               filter="org.polarsys.capella.core.data.core.properties.sections.TitleBlockContainerSection"
+               id="org.polarsys.capella.core.data.core.properties.sections.TitleBlockContainerSection"
+               tab="BaseSiriusDiagram">
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.core.properties.sections.TitleBlockContentSection"
+               filter="org.polarsys.capella.core.data.core.properties.sections.TitleBlockContentSection"
+               id="org.polarsys.capella.core.data.core.properties.sections.TitleBlockContentSection"
+               tab="BaseSiriusDiagram">
+         </propertySection>
       </propertySections>
    </extension>
    <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">      

@@ -22,7 +22,7 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
-import org.polarsys.capella.core.diagram.helpers.TitleBlockHelper;
+import org.polarsys.capella.core.model.helpers.TitleBlockExt;
 
 public class TitleBlockDialog extends TitleAreaDialog {
   private final String TITLE_NAME = "Add name and content";
@@ -89,7 +89,7 @@ public class TitleBlockDialog extends TitleAreaDialog {
     txtContent.setText(currentContent);
 
     txtContent.setLayoutData(dataContent);
-    TitleBlockHelper.getServicesProposals(txtContent);
+    TitleBlockExt.getServicesProposals(txtContent);
   }
 
   @Override
@@ -101,7 +101,7 @@ public class TitleBlockDialog extends TitleAreaDialog {
     name = txtName.getText();
     content = txtContent.getText();
     DDiagram diagram = new DSemanticDiagramSpec();
-    Object evaluateResult = TitleBlockHelper.getResultOfExpression(diagram, content, null);
+    Object evaluateResult = TitleBlockExt.getResultOfExpression(diagram, content, null);
     if (evaluateResult instanceof EvaluationException) {
       setErrorMessage(INTERPRETOR_ERROR);
       return false;

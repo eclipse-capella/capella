@@ -20,7 +20,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 import org.polarsys.capella.core.data.core.properties.fields.TitleBlockBasicElementGroup;
-import org.polarsys.capella.core.diagram.helpers.TitleBlockHelper;
+import org.polarsys.capella.core.model.helpers.TitleBlockExt;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
 import org.polarsys.capella.core.ui.properties.sections.AbstractSection;
 
@@ -28,7 +28,6 @@ import org.polarsys.capella.core.ui.properties.sections.AbstractSection;
  * The PropertyValueGroup section.
  */
 public class TitleBlockCellSection extends AbstractSection {
-  private static final String CELL_PREFIX = TitleBlockHelper.TITLE_BLOCK_CELL;
   private static final String CELL_NAME = "Name:";
   private static final String CELL_CONTENT = "Content:";
   protected TitleBlockBasicElementGroup titleBlockBasicElementGroup;
@@ -40,9 +39,8 @@ public class TitleBlockCellSection extends AbstractSection {
   public boolean select(Object toTest) {
     EObject eObjectToTest = super.selection(toTest);
 
-    return ((eObjectToTest != null) && (eObjectToTest instanceof DAnnotation)
-        && ((DAnnotation) eObjectToTest).getSource() != null
-        && ((DAnnotation) eObjectToTest).getSource().startsWith(CELL_PREFIX));
+    return (eObjectToTest instanceof DAnnotation
+        && TitleBlockExt.isCellTitleBlock((DAnnotation) eObjectToTest));
   }
 
   @Override
@@ -65,8 +63,8 @@ public class TitleBlockCellSection extends AbstractSection {
       DAnnotation titleBlockCell = (DAnnotation) capellaElement;
       
       // if the cell belongs to a Diagram Title Block, disable the edit
-      DAnnotation titleBlockContainer = TitleBlockHelper.getParentTitleBlock(titleBlockCell);
-      if(TitleBlockHelper.isDiagramTitleBlock(titleBlockContainer)) {
+      DAnnotation titleBlockContainer = TitleBlockExt.getParentTitleBlock(titleBlockCell);
+      if(TitleBlockExt.isDiagramTitleBlock(titleBlockContainer)) {
         super.setEnabled(false);
       }
       
@@ -79,7 +77,8 @@ public class TitleBlockCellSection extends AbstractSection {
   @Override
   public void setInput(IWorkbenchPart part, ISelection selection) {
     EObject newEObject = super.setInputSelection(part, selection);
-    if (newEObject instanceof DAnnotation && ((DAnnotation) newEObject).getSource().startsWith(CELL_PREFIX)) {
+    if (newEObject instanceof DAnnotation
+        && TitleBlockExt.isCellTitleBlock((DAnnotation) newEObject)) {
       loadData(newEObject);
     }
   }

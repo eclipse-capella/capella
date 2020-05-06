@@ -11,7 +11,8 @@ Require-Bundle: org.polarsys.capella.core.ui.properties;visibility:=reexport,
  org.polarsys.capella.common.ui.menu.dynamic,
  org.eclipse.jface,
  org.polarsys.capella.core.platform.sirius.ui.actions,
- org.polarsys.capella.core.diagram.helpers
+ org.polarsys.capella.core.diagram.helpers,
+ org.eclipse.swt
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.data.core.properties,
  org.polarsys.capella.core.data.core.properties.controllers,

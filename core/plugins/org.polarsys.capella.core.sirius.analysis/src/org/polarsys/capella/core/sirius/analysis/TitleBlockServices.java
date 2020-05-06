@@ -38,7 +38,7 @@ import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
 import org.eclipse.swt.graphics.Image;
-import org.polarsys.capella.core.diagram.helpers.TitleBlockHelper;
+import org.polarsys.capella.core.model.helpers.TitleBlockExt;
 import org.polarsys.capella.core.sirius.analysis.activator.SiriusViewActivator;
 import org.polarsys.capella.core.sirius.analysis.preferences.TitleBlockPreferencesInitializer;
 
@@ -76,7 +76,7 @@ public class TitleBlockServices {
    * @return true if the diagram already contains a Diagram Title Block
    */
   public boolean hasADiagramTitleBlock(DDiagram diagram) {
-    return TitleBlockHelper.getDiagramTitleBlock(diagram) != null;
+    return TitleBlockExt.getDiagramTitleBlock(diagram) != null;
   }
 
   /**
@@ -123,10 +123,10 @@ public class TitleBlockServices {
   public boolean isValidInsertLineOrColumn(EObject containerView) {
     if (containerView instanceof DDiagramElement) {
       DDiagramElement diagramElement = (DDiagramElement) containerView;
-      if (TitleBlockHelper.isTitleBlockCell(diagramElement)) {
+      if (TitleBlockExt.isTitleBlockCell(diagramElement)) {
         DAnnotation cell = (DAnnotation) diagramElement.getTarget();
-        DAnnotation titleBlock = TitleBlockHelper.getParentTitleBlock(cell, diagramElement.getParentDiagram());
-        return TitleBlockHelper.isElementTitleBlock(titleBlock);
+        DAnnotation titleBlock = TitleBlockExt.getParentTitleBlock(cell, diagramElement.getParentDiagram());
+        return TitleBlockExt.isElementTitleBlock(titleBlock);
       }
     }
     return false;
@@ -141,9 +141,9 @@ public class TitleBlockServices {
   public boolean isValidRemoveLineOfElementTitleBlock(EObject containerView) {
     if (isValidInsertLineOrColumn(containerView)) {
       DAnnotation annotation = (DAnnotation) ((DDiagramElement) containerView).getTarget();
-      DAnnotation titleBlockContainer = TitleBlockHelper.getParentTitleBlock(annotation,
+      DAnnotation titleBlockContainer = TitleBlockExt.getParentTitleBlock(annotation,
           ((DDiagramElement) containerView).getParentDiagram());
-      return TitleBlockHelper.getTitleBlockLines(titleBlockContainer).size() > 1;
+      return TitleBlockExt.getTitleBlockLines(titleBlockContainer).size() > 1;
     }
     return false;
   }
@@ -157,9 +157,9 @@ public class TitleBlockServices {
   public boolean isValidRemoveColumnOfElementTitleBlock(EObject containerView) {
     if (isValidInsertLineOrColumn(containerView)) {
       DAnnotation annotation = (DAnnotation) ((DDiagramElement) containerView).getTarget();
-      DAnnotation titleBlockContainer = TitleBlockHelper.getParentTitleBlock(annotation,
+      DAnnotation titleBlockContainer = TitleBlockExt.getParentTitleBlock(annotation,
           ((DDiagramElement) containerView).getParentDiagram());
-      return TitleBlockHelper.getNumOfColumns(titleBlockContainer) > 1;
+      return TitleBlockExt.getNumOfColumns(titleBlockContainer) > 1;
     }
     return false;
   }
@@ -171,7 +171,7 @@ public class TitleBlockServices {
    * @return
    */
   public void createDiagramTitleBlock(DDiagram diagram) {
-    DAnnotation titleBlock = TitleBlockHelper.addDiagramTitleBlock(diagram);
+    DAnnotation titleBlock = TitleBlockExt.addDiagramTitleBlock(diagram);
     addDiagramTitleBlockContent(diagram, titleBlock);
     createTitleBlockView(titleBlock, diagram, diagram);
   }
@@ -191,9 +191,9 @@ public class TitleBlockServices {
     // use this index to go trough the content stored in preferences for the content of Diagram TB
     int currIndexTB = 0;
     for (int i = 0; i < numLines; i++) {
-      DAnnotation line = TitleBlockHelper.addTitleBlockLine(diagram, titleBlock);
+      DAnnotation line = TitleBlockExt.addTitleBlockLine(diagram, titleBlock);
       for (int j = 0; j < numCols; j++) {
-        TitleBlockHelper.addTitleBlockCell(diagram, line, titleBlockContent[currIndexTB],
+        TitleBlockExt.addTitleBlockCell(diagram, line, titleBlockContent[currIndexTB],
             titleBlockContent[currIndexTB + 1]);
         currIndexTB += 2;
       }
@@ -208,9 +208,9 @@ public class TitleBlockServices {
    * @return
    */
   public void createElementTitleBlock(DDiagramElement elementView, DDiagram diagram) {
-    DAnnotation titleBlock = TitleBlockHelper.addElementTitleBlock(diagram, elementView);
-    DAnnotation line = TitleBlockHelper.addTitleBlockLine(diagram, titleBlock);
-    TitleBlockHelper.addTitleBlockCell(diagram, line, DEFAULT_CELL_NAME, DEFAULT_CELL_CONTENT);
+    DAnnotation titleBlock = TitleBlockExt.addElementTitleBlock(diagram, elementView);
+    DAnnotation line = TitleBlockExt.addTitleBlockLine(diagram, titleBlock);
+    TitleBlockExt.addTitleBlockCell(diagram, line, DEFAULT_CELL_NAME, DEFAULT_CELL_CONTENT);
     createTitleBlockView(titleBlock, diagram, elementView);
   }
 
@@ -223,12 +223,12 @@ public class TitleBlockServices {
    * @return
    */
   public void insertTitleBlockLine(DAnnotation cell, DDiagram diagram) {
-    DAnnotation titleBlock = TitleBlockHelper.getParentTitleBlock(cell, diagram);
-    int numCols = TitleBlockHelper.getNumOfColumns(titleBlock);
+    DAnnotation titleBlock = TitleBlockExt.getParentTitleBlock(cell, diagram);
+    int numCols = TitleBlockExt.getNumOfColumns(titleBlock);
     if (numCols > 0) {
       // insert the new line under the cell we clicked on
-      int indexLine = TitleBlockHelper.getLineIndexOfCell(cell, titleBlock);
-      DAnnotation annotationLine = TitleBlockHelper.addTitleBlockLine(diagram, titleBlock, indexLine + 1, numCols);
+      int indexLine = TitleBlockExt.getLineIndexOfCell(cell, titleBlock);
+      DAnnotation annotationLine = TitleBlockExt.addTitleBlockLine(diagram, titleBlock, indexLine + 1, numCols);
       createTitleBlockLineView(DiagramServices.getDiagramServices().getDiagramElement(diagram, titleBlock),
           annotationLine, diagram, diagram);
     }
@@ -243,12 +243,12 @@ public class TitleBlockServices {
    * @return
    */
   public void insertTitleBlockColumn(DAnnotation cell, DDiagram diagram) {
-    DAnnotation titleBlock = TitleBlockHelper.getParentTitleBlock(cell, diagram);
+    DAnnotation titleBlock = TitleBlockExt.getParentTitleBlock(cell, diagram);
     // insert the new column at the right of the cell we clicked on
-    int indexCol = TitleBlockHelper.getColumnIndexOfCell(cell, titleBlock);
-    for (DAnnotation line : TitleBlockHelper.getTitleBlockLines(titleBlock)) {
+    int indexCol = TitleBlockExt.getColumnIndexOfCell(cell, titleBlock);
+    for (DAnnotation line : TitleBlockExt.getTitleBlockLines(titleBlock)) {
       // Add new empty cell
-      DAnnotation annotationColumn = TitleBlockHelper.addTitleBlockCell(diagram, line, "", "", indexCol + 1);
+      DAnnotation annotationColumn = TitleBlockExt.addTitleBlockCell(diagram, line, "", "", indexCol + 1);
       createTitleBlockColumnView(DiagramServices.getDiagramServices().getDiagramElement(diagram, line),
           annotationColumn, diagram, diagram);
     }
@@ -264,8 +264,8 @@ public class TitleBlockServices {
   public void clearCellContent(EObject object) {
     if (object instanceof DAnnotation) {
       DAnnotation cellAnnotation = (DAnnotation) object;
-      if (TitleBlockHelper.isTitleBlockCell(cellAnnotation)) {
-        TitleBlockHelper.setTitleBlockCellContent(cellAnnotation, "", "");
+      if (TitleBlockExt.isTitleBlockCell(cellAnnotation)) {
+        TitleBlockExt.setTitleBlockCellContent(cellAnnotation, "", "");
       }
     }
   }
@@ -277,7 +277,7 @@ public class TitleBlockServices {
    * @return list of Title Blocks (will be one Element TB) that are associated to element given as parameter
    */
   public List<DAnnotation> getTitleBlocksForElement(EObject element, DDiagram diagram) {
-    return TitleBlockHelper.getElementTitleBlocks(diagram, element);
+    return TitleBlockExt.getElementTitleBlocks(diagram, element);
   }
 
   /**
@@ -306,7 +306,7 @@ public class TitleBlockServices {
     handleDanglingElementTitleBlocks(listElementTitleBlocks, diagram);
 
     // refresh the diagram title block, so that if preferences have changed, TB is updated
-    DAnnotation diagramTitleBlock = TitleBlockHelper.getDiagramTitleBlock(diagram);
+    DAnnotation diagramTitleBlock = TitleBlockExt.getDiagramTitleBlock(diagram);
     if (diagramTitleBlock != null) {
       updateDiagramTitleBlock(diagramTitleBlock, (EObject) diagram);
     }
@@ -317,7 +317,7 @@ public class TitleBlockServices {
    * @return list of visible Diagram Title Blocks in diagram
    */
   public List<DAnnotation> getVisibleDiagramTitleBlocks(Object containerView) {
-    return getVisibleTitleBlocks(containerView, TitleBlockHelper.DIAGRAM_TITLE_BLOCK);
+    return getVisibleTitleBlocks(containerView, TitleBlockExt.DIAGRAM_TITLE_BLOCK);
   }
 
   /**
@@ -325,7 +325,7 @@ public class TitleBlockServices {
    * @return list of visible Element Title Blocks in diagram
    */
   public List<DAnnotation> getVisibleElementTitleBlocks(Object containerView) {
-    return getVisibleTitleBlocks(containerView, TitleBlockHelper.ELEMENT_TITLE_BLOCK);
+    return getVisibleTitleBlocks(containerView, TitleBlockExt.ELEMENT_TITLE_BLOCK);
   }
 
   /**
@@ -351,7 +351,7 @@ public class TitleBlockServices {
         if (element.getTarget() instanceof DAnnotation) {
           DAnnotation annotation = (DAnnotation) element.getTarget();
           if (annotation.getSource() != null && annotation.getSource().equals(type)) {
-            if (type.equals(TitleBlockHelper.ELEMENT_TITLE_BLOCK)) {
+            if (type.equals(TitleBlockExt.ELEMENT_TITLE_BLOCK)) {
               DNodeContainer node = (DNodeContainer) element;
 
               // do not return the Title Blocks that are associated to a hidden element
@@ -377,7 +377,7 @@ public class TitleBlockServices {
    * @return list of Title Blocks (Element TB) that will be displayed in diagram
    */
   public List<DAnnotation> getElementTitleBlocks(DDiagram diagram) {
-    return TitleBlockHelper.getElementTitleBlocks(diagram);
+    return TitleBlockExt.getElementTitleBlocks(diagram);
   }
 
   /**
@@ -423,7 +423,7 @@ public class TitleBlockServices {
    */
   public List<DAnnotation> getDiagramTitleBlocks(DDiagram diagram) {
     List<DAnnotation> list = new ArrayList<>();
-    DAnnotation titleBlock = TitleBlockHelper.getDiagramTitleBlock(diagram);
+    DAnnotation titleBlock = TitleBlockExt.getDiagramTitleBlock(diagram);
     if (titleBlock != null) {
       list.add(titleBlock);
     }
@@ -444,10 +444,10 @@ public class TitleBlockServices {
      */
     String currentTB = "";
 
-    for (DAnnotation line : TitleBlockHelper.getTitleBlockLines(diagramTitleBlock)) {
-      for (DAnnotation cell : TitleBlockHelper.getTitleBlockCells(line)) {
-        currentTB += cell.getDetails().get(TitleBlockHelper.NAME) + "+"
-            + cell.getDetails().get(TitleBlockHelper.CONTENT) + "+";
+    for (DAnnotation line : TitleBlockExt.getTitleBlockLines(diagramTitleBlock)) {
+      for (DAnnotation cell : TitleBlockExt.getTitleBlockCells(line)) {
+        currentTB += cell.getDetails().get(TitleBlockExt.NAME) + "+"
+            + cell.getDetails().get(TitleBlockExt.TITLE_BLOCK_CONTENT) + "+";
       }
     }
     if (currentTB.length() > 0) {
@@ -524,7 +524,7 @@ public class TitleBlockServices {
       List<EObject> listToShow = new ArrayList<EObject>();
       listToShow.addAll(elementsTB);
       listToShow.removeAll(hideList);
-      showHideTitleBlocks(diagram, listToShow, TitleBlockHelper.ELEMENT_TITLE_BLOCK);
+      showHideTitleBlocks(diagram, listToShow, TitleBlockExt.ELEMENT_TITLE_BLOCK);
     }
   }
 
@@ -551,9 +551,9 @@ public class TitleBlockServices {
    */
   protected void removeTitleBlockContent(DDiagram diagram, DAnnotation titleBlock) {
     List<DAnnotation> annotationsList = new ArrayList<>();
-    for (DAnnotation line : TitleBlockHelper.getTitleBlockLines(titleBlock)) {
+    for (DAnnotation line : TitleBlockExt.getTitleBlockLines(titleBlock)) {
       annotationsList.add(line);
-      for (DAnnotation cell : TitleBlockHelper.getTitleBlockCells(line)) {
+      for (DAnnotation cell : TitleBlockExt.getTitleBlockCells(line)) {
         annotationsList.add(cell);
         for (EObject reference : cell.getReferences()) {
           if (reference instanceof DAnnotation) {
@@ -576,16 +576,16 @@ public class TitleBlockServices {
    * @return
    */
   public void removeLineOfTitleBlock(DAnnotation cell, DDiagram diagram) {
-    if (TitleBlockHelper.isTitleBlockCell(cell)) {
-      DAnnotation titleBlockContainer = TitleBlockHelper.getParentTitleBlock(cell, diagram);
+    if (TitleBlockExt.isTitleBlockCell(cell)) {
+      DAnnotation titleBlockContainer = TitleBlockExt.getParentTitleBlock(cell, diagram);
 
       // remove the line of the cell we clicked on
-      int indexLine = TitleBlockHelper.getLineIndexOfCell(cell, titleBlockContainer);
-      DAnnotation titleBlockLine = TitleBlockHelper.getTitleBlockLines(titleBlockContainer).get(indexLine);
+      int indexLine = TitleBlockExt.getLineIndexOfCell(cell, titleBlockContainer);
+      DAnnotation titleBlockLine = TitleBlockExt.getTitleBlockLines(titleBlockContainer).get(indexLine);
 
       List<DAnnotation> toRemove = new ArrayList<>();
       toRemove.add(titleBlockLine);
-      toRemove.addAll(TitleBlockHelper.getTitleBlockCells(titleBlockLine));
+      toRemove.addAll(TitleBlockExt.getTitleBlockCells(titleBlockLine));
       diagram.getEAnnotations().removeAll(toRemove);
     }
   }
@@ -599,14 +599,14 @@ public class TitleBlockServices {
    * @return
    */
   public void removeColumnOfTitleBlock(DAnnotation cell, DDiagram diagram) {
-    if (TitleBlockHelper.isTitleBlockCell(cell)) {
-      DAnnotation titleBlockContainer = TitleBlockHelper.getParentTitleBlock(cell, diagram);
+    if (TitleBlockExt.isTitleBlockCell(cell)) {
+      DAnnotation titleBlockContainer = TitleBlockExt.getParentTitleBlock(cell, diagram);
 
       // remove the column of the cell we clicked on
-      int indexCol = TitleBlockHelper.getColumnIndexOfCell(cell, titleBlockContainer);
+      int indexCol = TitleBlockExt.getColumnIndexOfCell(cell, titleBlockContainer);
 
       // go in each line and remove a cell on column of the clicked cell
-      for (DAnnotation line : TitleBlockHelper.getTitleBlockLines(titleBlockContainer)) {
+      for (DAnnotation line : TitleBlockExt.getTitleBlockLines(titleBlockContainer)) {
         EObject removedCell = line.getReferences().remove(indexCol);
         diagram.getEAnnotations().remove(removedCell);
       }
@@ -624,10 +624,10 @@ public class TitleBlockServices {
    */
   public Object getCellContent(EObject diagram, EObject cell, EObject containerView, DAnnotation titleBlockContainer) {
     if ((diagram instanceof DDiagram)) {
-      if (cell instanceof DAnnotation && TitleBlockHelper.isTitleBlockCell((DAnnotation) cell)) {
-        String feature = ((DAnnotation) cell).getDetails().get(TitleBlockHelper.CONTENT);
+      if (cell instanceof DAnnotation && TitleBlockExt.isTitleBlockCell((DAnnotation) cell)) {
+        String feature = ((DAnnotation) cell).getDetails().get(TitleBlockExt.TITLE_BLOCK_CONTENT);
         if (feature != null) {
-          Object obj = TitleBlockHelper.getResultOfExpression((DDiagram)diagram, feature, titleBlockContainer);
+          Object obj = TitleBlockExt.getResultOfExpression((DDiagram)diagram, feature, titleBlockContainer);
           if (obj != null && !(obj instanceof EvaluationException)) {
             if (obj instanceof Collection) {
               return ((Collection) obj).stream()
@@ -651,8 +651,8 @@ public class TitleBlockServices {
    */
   public Object getTitleBlockCellContent(EObject diagram, EObject cell, EObject containerView) {
     if ((diagram instanceof DDiagram)) {
-      if (cell instanceof DAnnotation && TitleBlockHelper.isTitleBlockCell((DAnnotation) cell)) {
-        DAnnotation titleBlockContainer = TitleBlockHelper.getParentTitleBlock((DAnnotation) cell, (DDiagram) diagram);
+      if (cell instanceof DAnnotation && TitleBlockExt.isTitleBlockCell((DAnnotation) cell)) {
+        DAnnotation titleBlockContainer = TitleBlockExt.getParentTitleBlock((DAnnotation) cell, (DDiagram) diagram);
         if (titleBlockContainer != null) {
           return getCellContent(diagram, cell, containerView, titleBlockContainer);
         }
@@ -676,14 +676,14 @@ public class TitleBlockServices {
     DAnnotation wrapperAnnotation = null;
     if (cell.getReferences().isEmpty()) {
       wrapperAnnotation = DescriptionFactory.eINSTANCE.createDAnnotation();
-      wrapperAnnotation.setSource(TitleBlockHelper.CONTENT);
-      wrapperAnnotation.getDetails().put(TitleBlockHelper.CONTENT, object.toString());
+      wrapperAnnotation.setSource(TitleBlockExt.TITLE_BLOCK_CONTENT);
+      wrapperAnnotation.getDetails().put(TitleBlockExt.TITLE_BLOCK_CONTENT, object.toString());
       cell.getReferences().add(wrapperAnnotation);
       diagram.getEAnnotations().add(wrapperAnnotation);
     } else {
       wrapperAnnotation = (DAnnotation) cell.getReferences().get(0);
-      if (!object.toString().equals(wrapperAnnotation.getDetails().get(TitleBlockHelper.CONTENT))) {
-        wrapperAnnotation.getDetails().put(TitleBlockHelper.CONTENT, object.toString());
+      if (!object.toString().equals(wrapperAnnotation.getDetails().get(TitleBlockExt.TITLE_BLOCK_CONTENT))) {
+        wrapperAnnotation.getDetails().put(TitleBlockExt.TITLE_BLOCK_CONTENT, object.toString());
       }
     }
     return wrapperAnnotation;
@@ -704,15 +704,15 @@ public class TitleBlockServices {
    * @return String the label of the content cell
    */
   public String getTitleBockCellLabel(DAnnotation cell) {
-    return cell.getDetails().get(TitleBlockHelper.CONTENT);
+    return cell.getDetails().get(TitleBlockExt.TITLE_BLOCK_CONTENT);
   }
 
   public EObject showHideDiagramTitleBlocks(EObject context, List<EObject> selectedTitleBlocks, DDiagram diagram) {
-    return showHideTitleBlocks(context, selectedTitleBlocks, TitleBlockHelper.DIAGRAM_TITLE_BLOCK);
+    return showHideTitleBlocks(context, selectedTitleBlocks, TitleBlockExt.DIAGRAM_TITLE_BLOCK);
   }
 
   public EObject showHideElementTitleBlocks(EObject context, List<EObject> selectedTitleBlocks, DDiagram diagram) {
-    return showHideTitleBlocks(context, selectedTitleBlocks, TitleBlockHelper.ELEMENT_TITLE_BLOCK);
+    return showHideTitleBlocks(context, selectedTitleBlocks, TitleBlockExt.ELEMENT_TITLE_BLOCK);
   }
 
   /**
@@ -840,7 +840,7 @@ public class TitleBlockServices {
   public String getTitleBlockCellLabel(EObject cell) {
     String name = "";
     if (cell instanceof DAnnotation) {
-      name = ((DAnnotation) cell).getDetails().get(TitleBlockHelper.NAME);
+      name = ((DAnnotation) cell).getDetails().get(TitleBlockExt.NAME);
     }
     return name;
   }
@@ -853,7 +853,7 @@ public class TitleBlockServices {
   public boolean isTitleBlockContainer(EObject element) {
     if (element instanceof DAnnotation) {
       DAnnotation annotation = (DAnnotation) element;
-      return TitleBlockHelper.isDiagramTitleBlock(annotation) | TitleBlockHelper.isElementTitleBlock(annotation);
+      return TitleBlockExt.isDiagramTitleBlock(annotation) | TitleBlockExt.isElementTitleBlock(annotation);
     }
     return false;
   }
@@ -864,7 +864,7 @@ public class TitleBlockServices {
    * @return true if element is a Diagram Title Block
    */
   public boolean isDiagramTitleBlock(EObject element) {
-    return (element instanceof DAnnotation) && TitleBlockHelper.isDiagramTitleBlock((DAnnotation) element);
+    return (element instanceof DAnnotation) && TitleBlockExt.isDiagramTitleBlock((DAnnotation) element);
   }
 
   public static Image getImage(Object object) {

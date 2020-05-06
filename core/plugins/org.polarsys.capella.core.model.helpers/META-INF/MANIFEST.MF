@@ -13,7 +13,8 @@ Require-Bundle: org.apache.commons.lang,
  org.polarsys.capella.core.model.preferences,
  org.polarsys.capella.common.libraries,
  com.google.guava;bundle-version="15.0.0",
- org.eclipse.sirius.diagram
+ org.eclipse.sirius.diagram,
+ org.eclipse.jface
 Export-Package: org.polarsys.capella.core.model.helpers,
  org.polarsys.capella.core.model.helpers.delete,
  org.polarsys.capella.core.model.helpers.graph,
@@ -32,3 +33,4 @@ Export-Package: org.polarsys.capella.core.model.helpers,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
+Import-Package: org.polarsys.capella.common.ui.toolkit.browser.category

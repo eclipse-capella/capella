@@ -43,6 +43,7 @@ import org.polarsys.capella.core.data.information.datavalue.DataValue;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
+import org.polarsys.capella.core.model.helpers.TitleBlockExt;
 
 /**
  */
@@ -60,7 +61,10 @@ public class NamingHelper {
   public static String getDefaultTitle(EObject modelElement) {
     String name = null;
     String title = getTitleLabel(modelElement);
-    if (modelElement instanceof AbstractNamedElement) {
+    if (TitleBlockExt.isTitleBlockAnnotation(modelElement)) {
+      name = TitleBlockExt.getTitleBlockAnnotationLabel(modelElement);
+    }
+    else if (modelElement instanceof AbstractNamedElement) {
       name = ((AbstractNamedElement) modelElement).getName();
     } 
     else{

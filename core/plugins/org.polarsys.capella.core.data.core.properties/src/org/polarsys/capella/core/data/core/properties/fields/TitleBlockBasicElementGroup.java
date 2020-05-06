@@ -29,7 +29,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.data.core.properties.Messages;
-import org.polarsys.capella.core.diagram.helpers.TitleBlockHelper;
+import org.polarsys.capella.core.model.helpers.TitleBlockExt;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
 import org.polarsys.capella.core.ui.properties.helpers.LockHelper;
 
@@ -58,7 +58,7 @@ public class TitleBlockBasicElementGroup extends AbstractSemanticField {
 
     nameTextField = createTextField(textGroup, Messages.getString("NamedElement.NameLabel"));
     contentTextField = createTextField(textGroup, Messages.getString("NamedElement.ContentLabel"));
-    TitleBlockHelper.getServicesProposals(contentTextField);
+    TitleBlockExt.getServicesProposals(contentTextField);
     errorLabel = widgetFactory.createCLabel(parent, ICommonConstants.EMPTY_STRING);
     errorLabel.setRightMargin(300);
     errorLabel.setForeground(Display.getCurrent().getSystemColor(SWT.COLOR_RED));
@@ -138,9 +138,9 @@ public class TitleBlockBasicElementGroup extends AbstractSemanticField {
     EObject container = titleBlockCell.eContainer();
     if (container instanceof DDiagram) {
       DDiagram diagram = (DDiagram) container;
-      DAnnotation titleBlock = TitleBlockHelper.getParentTitleBlock(titleBlockCell, diagram);
+      DAnnotation titleBlock = TitleBlockExt.getParentTitleBlock(titleBlockCell, diagram);
 
-      Object evaluateResult = TitleBlockHelper.getResultOfExpression(diagram, contentTextField.getText(), titleBlock);
+      Object evaluateResult = TitleBlockExt.getResultOfExpression(diagram, contentTextField.getText(), titleBlock);
       if (evaluateResult instanceof EvaluationException) {
         errorLabel.setText(INTERPRETER_ERROR);
         errorSet = true;

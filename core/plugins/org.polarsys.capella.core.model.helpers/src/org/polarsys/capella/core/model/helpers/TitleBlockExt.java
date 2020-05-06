@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.core.diagram.helpers;
+package org.polarsys.capella.core.model.helpers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,19 +40,18 @@ import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
 import org.eclipse.swt.widgets.Text;
 import org.polarsys.capella.common.ui.toolkit.browser.category.CategoryRegistry;
 import org.polarsys.capella.common.ui.toolkit.browser.category.ICategory;
-
 import com.google.common.base.CaseFormat;
 
 /**
  * Various helpers for {@link DAnnotation} annotations on {@link Title Blocks} elements.
  */
-public class TitleBlockHelper {
+public class TitleBlockExt {
   public static final String TITLE_BLOCK_LINE = "TitleBlockLine";
   public static final String TITLE_BLOCK_CELL = "TitleBlockCell";
   public static final String ELEMENT_TITLE_BLOCK = "ElementTitleBlock";
   public static final String TRUE = "True";
   public static final String NAME = "Name:";
-  public static final String CONTENT = "Content:";
+  public static final String TITLE_BLOCK_CONTENT = "TitleBlockContent";
   public static final String DIAGRAM_TITLE_BLOCK = "DiagramTitleBlock";
   
   /**
@@ -68,6 +67,20 @@ public class TitleBlockHelper {
    */
   public static boolean isElementTitleBlock(DAnnotation titleBlock) {
     return titleBlock.getSource() != null && titleBlock.getSource().equals(ELEMENT_TITLE_BLOCK);
+  }
+  /**
+   * @param titleBlock
+   * @return true if the annotation is a Diagram Title Block type annotation
+   */
+  public static boolean isCellTitleBlock(DAnnotation titleBlock) {
+    return titleBlock.getSource() != null && titleBlock.getSource().equals(TITLE_BLOCK_CELL);
+  }
+  /**
+   * @param titleBlock
+   * @return true if the annotation is a Diagram Title Block type annotation
+   */
+  public static boolean isContentTitleBlock(DAnnotation titleBlock) {
+    return titleBlock.getSource() != null && titleBlock.getSource().equals(TITLE_BLOCK_CONTENT);
   }
   
   /**
@@ -263,7 +276,7 @@ public class TitleBlockHelper {
     DAnnotation annotation = DescriptionFactory.eINSTANCE.createDAnnotation();
     annotation.setSource(TITLE_BLOCK_CELL);
     annotation.getDetails().put(NAME, name);
-    annotation.getDetails().put(CONTENT, content);
+    annotation.getDetails().put(TITLE_BLOCK_CONTENT, content);
     return annotation;
   }
 
@@ -348,7 +361,7 @@ public class TitleBlockHelper {
     DAnnotation cell = DescriptionFactory.eINSTANCE.createDAnnotation();
     cell.setSource(TITLE_BLOCK_CELL);
     cell.getDetails().put(NAME, name);
-    cell.getDetails().put(CONTENT, content);
+    cell.getDetails().put(TITLE_BLOCK_CONTENT, content);
     diagram.getEAnnotations().add(cell);
     line.getReferences().add(cell);
     return cell;
@@ -364,7 +377,7 @@ public class TitleBlockHelper {
     DAnnotation cell = DescriptionFactory.eINSTANCE.createDAnnotation();
     cell.setSource(TITLE_BLOCK_CELL);
     cell.getDetails().put(NAME, name);
-    cell.getDetails().put(CONTENT, content);
+    cell.getDetails().put(TITLE_BLOCK_CONTENT, content);
     diagram.getEAnnotations().add(cell);
     line.getReferences().add(position, cell);
     return cell;
@@ -377,7 +390,7 @@ public class TitleBlockHelper {
   
   public static void setTitleBlockCellContent(DAnnotation line, String name, String content) {
     line.getDetails().put(NAME, name);
-    line.getDetails().put(CONTENT, content);
+    line.getDetails().put(TITLE_BLOCK_CONTENT, content);
   }
   
   /**
@@ -388,7 +401,7 @@ public class TitleBlockHelper {
    * @return result after the expression was evaluated
    */
   public static Object getResultOfExpression(DDiagram diagram, String expression, DAnnotation titleBlock) {
-    EObject objToEvaluate = TitleBlockHelper.getSemanticElementReference(titleBlock);
+    EObject objToEvaluate = TitleBlockExt.getSemanticElementReference(titleBlock);
     // if is a Diagram Title Block, objToEvaluate will be the diagram
     if (objToEvaluate == null)
       objToEvaluate = diagram;
@@ -475,6 +488,48 @@ public class TitleBlockHelper {
     } catch (ParseException e) {
       e.printStackTrace();
     }
-
-}
+  }
+  
+  /**
+   * @param titleBlock
+   * @return true if the annotation is a Diagram Title Block type annotation
+   */
+  public static boolean isTitleBlockAnnotation(EObject object) {
+    if (object instanceof DAnnotation) {
+      DAnnotation annotation = (DAnnotation) object;
+      return isDiagramTitleBlock(annotation) || isElementTitleBlock(annotation) || isCellTitleBlock(annotation)
+          || isContentTitleBlock(annotation);
+    }
+    return false;
+  }
+  
+  /**
+   * @param titleBlock
+   * @return true if the annotation is a Diagram Title Block type annotation
+   */
+  public static String getTitleBlockAnnotationLabel(EObject object) {
+    if(object instanceof DAnnotation) {
+      String label = ((DAnnotation)object).getSource();
+      label = label.replaceAll("([^_])([A-Z])", "$1 $2");
+      return label;
+    }
+    return "";
+  }
+  
+  /**
+   * @param object
+   * @return the referenced object/diagram
+   */
+  public static EObject getReferencedElement(EObject object) {
+    if(object instanceof DAnnotation) {
+      DAnnotation annotation = (DAnnotation) object;
+      if(isElementTitleBlock(annotation)) {
+        return annotation.getReferences().get(0);
+      }
+      else if(isDiagramTitleBlock(annotation)){
+        return annotation.eContainer();
+      }
+    }
+    return null;
+  }
 }
