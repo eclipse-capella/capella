@@ -1,12 +1,12 @@
-# Notices for PolarSys Capella
+# Notices for Eclipse Capella
 
-This content is produced and maintained by the PolarSys Capella project.
+This content is produced and maintained by the Eclipse Capella project.
 
-* Project home: https://www.polarsys.org/projects/polarsys.capella
+* Project home: https://projects.eclipse.org/projects/polarsys.capella
 
 ## Trademarks
 
-PolarSys Capella, and Capella are trademarks of the Eclipse Foundation.
+Eclipse and Capella are trademarks of the Eclipse Foundation.
 
 ## Copyright
 
@@ -16,27 +16,31 @@ source code repository logs.
 
 ## Declared Project Licenses
 
-This program and the accompanying materials are made available under the terms
-of the Eclipse Public License v. 1.0 which is available at
-http://www.eclipse.org/legal/epl-v10.html.
+This program and the accompanying materials are made available under the
+terms of the Eclipse Public License 2.0 which is available at
+http://www.eclipse.org/legal/epl-2.0
 
-SPDX-License-Identifier: EPL-1.0
+SPDX-License-Identifier: EPL-2.0
 
 ## Source Code
 
 The project maintains the following source code repositories:
 
-* http://git.polarsys.org/c/capella/capella.git
-* http://git.polarsys.org/c/capella/capella-addons.git
-* http://git.polarsys.org/c/capella/capella-basic-vp.git
-* http://git.polarsys.org/c/capella/capella-filtering.git
-* http://git.polarsys.org/c/capella/capella-gitadapter.git
-* http://git.polarsys.org/c/capella/capella-requirements-vp.git
-* http://git.polarsys.org/c/capella/capella-sss-transition.git
-* http://git.polarsys.org/c/capella/capella-studio.git
-* http://git.polarsys.org/c/capella/capella-tools.git
-* http://git.polarsys.org/c/capella/capella-xhtml-docgen.git
-* http://git.polarsys.org/c/capella/capella-xmlpivot.git
+* https://github.com/eclipse/capella
+* https://github.com/eclipse/capella-basic-vp
+* https://github.com/eclipse/capella-addons
+* https://github.com/eclipse/capella-cybersecurity
+* https://github.com/eclipse/capella-filtering
+* https://github.com/eclipse/capella-gitadapter
+* https://github.com/eclipse/capella-requirements-vp
+* https://github.com/eclipse/capella-sss-transition
+* https://github.com/eclipse/capella-studio
+* https://github.com/eclipse/capella-tools
+* https://github.com/eclipse/capella-xhtml-docgen
+* https://github.com/eclipse/capella-xmlpivot
+* https://github.com/eclipse/capella-vpms
+* https://github.com/eclipse/capella-releng-parent
+* https://github.com/eclipse/capella-pipeline-library
 
 ## Third-party Content
 
