@@ -114,11 +114,12 @@ public abstract class ElementDescriptionGroup {
       if (lastSave == null && this.owner == owner && this.feature == feature) {
         setDataValue(owner, feature, editorText);
 
-      } else if (lastSave == Boolean.TRUE) {
+      } else if (Boolean.TRUE.equals(lastSave)) {
         // Usecase:
         // On two opened diagrams with description tab opened, Change description of element, keep edition focus, then
         // switch tab to other diagram.
         // Last save may be lost by the previous if.
+
         setDataValue(owner, feature, editorText);
         lastSave = Boolean.FALSE;
       }
@@ -225,6 +226,7 @@ public abstract class ElementDescriptionGroup {
         /**
          * @see java.lang.Runnable#run()
          */
+        @Override
         public void run() {
           command.run();
         }
@@ -363,6 +365,7 @@ public abstract class ElementDescriptionGroup {
   protected void setDataValue(final EObject object, final EStructuralFeature feature, final Object value) {
     if (NotificationHelper.isNotificationRequired(object, feature, value)) {
       AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
+        @Override
         public void run() {
           object.eSet(feature, value);
         }
