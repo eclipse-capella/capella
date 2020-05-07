@@ -184,6 +184,9 @@ public class CapellaLeftSearchForContainerArea extends AbstractCapellaSearchForC
   @Override
   protected void createContentArea() {
     super.createContentArea();
+
+    filteredTree.getViewer().collapseAll();
+
     // Map of fix categories and their index
     Map<String, Integer> fixedCategories = new HashMap<>();
     fixedCategories.put(CapellaSearchConstants.ModelElements_Key, 0);
