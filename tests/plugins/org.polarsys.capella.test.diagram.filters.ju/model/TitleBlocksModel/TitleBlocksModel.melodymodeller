@@ -267,7 +267,10 @@
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.la:CapabilityRealizationPkg"
           id="2841f745-86fa-4d2a-ac8f-a3261a25c45e" name="Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
-          id="f5c3da2e-4c3a-4453-b93c-c7ae028c07b4" name="Interfaces"/>
+          id="f5c3da2e-4c3a-4453-b93c-c7ae028c07b4" name="Interfaces">
+        <ownedInterfaces xsi:type="org.polarsys.capella.core.data.cs:Interface" id="f4f00aa3-d580-4334-900b-0e2f3c3d74c4"
+            name="Interface 1"/>
+      </ownedInterfacePkg>
       <ownedDataPkg xsi:type="org.polarsys.capella.core.data.information:DataPkg"
           id="8e6e8641-ee58-41a8-b8e0-cc687070ea75" name="Data"/>
       <ownedLogicalComponentPkg xsi:type="org.polarsys.capella.core.data.la:LogicalComponentPkg"
