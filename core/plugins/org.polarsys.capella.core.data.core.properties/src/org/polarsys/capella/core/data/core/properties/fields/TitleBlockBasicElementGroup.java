@@ -118,6 +118,7 @@ public class TitleBlockBasicElementGroup extends AbstractSemanticField {
       errorSet = setContentErrorField(semanticElement);
     }
     if (!errorSet && !((DAnnotation) object).getDetails().get(field).equals(value.toString())) {
+      //TitleBlockHelper.getServicesProposals(contentTextField, object);
       DDiagram diagram = (DDiagram) object.eContainer();
       AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
         @Override
