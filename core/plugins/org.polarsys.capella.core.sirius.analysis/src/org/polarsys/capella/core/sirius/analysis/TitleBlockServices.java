@@ -301,6 +301,12 @@ public class TitleBlockServices {
    * @return list of Title Blocks (both Diagram or Element TB) that will be displayed in diagram
    */
   public void refreshTitleBlocksInDiagram(DDiagram diagram) {
+    if (TitleBlockHelper.isInitializedDiagramTitleBlock(diagram) == false) {
+      titleBlockFirstInitialize(diagram);
+      if (TitleBlockPreferencesInitializer.isCreateDiagramTitleBlockByDefault()) {
+        createDiagramTitleBlock(diagram);
+      }
+    }
     // delete the dangling element title blocks
     List<DAnnotation> listElementTitleBlocks = getElementTitleBlocks(diagram);
     handleDanglingElementTitleBlocks(listElementTitleBlocks, diagram);
@@ -687,6 +693,17 @@ public class TitleBlockServices {
       }
     }
     return wrapperAnnotation;
+  }
+
+  /**
+   * create a DAnnotation when diagram is first created
+   * 
+   * @param diagram
+   */
+  private void titleBlockFirstInitialize(DDiagram diagram) {
+    DAnnotation titleBlockInitialized = DescriptionFactory.eINSTANCE.createDAnnotation();
+    titleBlockInitialized.setSource(TitleBlockHelper.TITLE_BLOCK_INITIALIZED);
+    diagram.getEAnnotations().add(titleBlockInitialized);
   }
 
   /**

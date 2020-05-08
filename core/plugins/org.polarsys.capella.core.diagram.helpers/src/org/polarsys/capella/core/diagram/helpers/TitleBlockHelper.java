@@ -54,6 +54,7 @@ public class TitleBlockHelper {
   public static final String NAME = "Name:";
   public static final String CONTENT = "Content:";
   public static final String DIAGRAM_TITLE_BLOCK = "DiagramTitleBlock";
+  public static final String TITLE_BLOCK_INITIALIZED = "TitleBlockInitialized";
   
   /**
    * @param titleBlock
@@ -101,6 +102,16 @@ public class TitleBlockHelper {
   public static boolean isTitleBlockCell(DDiagramElement diagramElement) {
     return diagramElement.getTarget() instanceof DAnnotation
         && isTitleBlockCell((DAnnotation) diagramElement.getTarget());
+  }
+
+  /**
+   * @param diagram
+   * @return true if the titleBlockInitialized exists in diagram
+   */
+  public static boolean isInitializedDiagramTitleBlock(DDiagram diagram) {
+    return !diagram.getEAnnotations().stream().filter(a -> a.getSource().equals(TITLE_BLOCK_INITIALIZED))
+        .collect(Collectors.toList())
+        .isEmpty();
   }
 
   public static List<DAnnotation> getElementTitleBlocks(DDiagram diagram) {
