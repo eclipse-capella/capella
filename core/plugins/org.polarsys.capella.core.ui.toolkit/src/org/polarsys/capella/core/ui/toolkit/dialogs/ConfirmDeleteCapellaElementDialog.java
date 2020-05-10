@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.polarsys.capella.core.ui.toolkit.dialogs;
 
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -18,12 +17,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.eclipse.core.runtime.FileLocator;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.DecoratingLabelProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
@@ -32,9 +28,6 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
-import org.eclipse.sirius.diagram.DSemanticDiagram;
-import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -46,14 +39,12 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.ui.PlatformUI;
-import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.ui.toolkit.viewers.IViewerStyle;
 import org.polarsys.capella.common.ui.toolkit.viewers.TreeAndListViewer;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.DataContentProvider;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.TreeData;
 import org.polarsys.capella.core.model.handler.helpers.CrossReferencerHelper;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
-import org.polarsys.capella.core.ui.resources.CapellaUIResourcesPlugin;
 
 /**
  * Confirm Capella elements deletion Tool dialog
@@ -289,13 +280,7 @@ public class ConfirmDeleteCapellaElementDialog extends ImpactAnalysisDialog {
 
     @Override
     public Image getImage(Object element) {
-      if (element instanceof DAnnotation) {
-        String imagePath = "/icons/full/obj16/TitleBlock_16.gif";
-        URL url = FileLocator.find(CapellaUIResourcesPlugin.getDefault().getBundle(), new Path(imagePath), null);
-        return ImageDescriptor.createFromURL(url).createImage();
-      } else {
-        return provider.getImage(element);
-      }
+      return provider.getImage(element);
     }
 
     @Override
@@ -322,21 +307,6 @@ public class ConfirmDeleteCapellaElementDialog extends ImpactAnalysisDialog {
 
     @Override
     public String getText(Object element) {
-      if (element instanceof DAnnotation) {
-        if (element instanceof DAnnotation) {
-          if (!(((DAnnotation) element).getReferences().get(0) instanceof DAnnotation)) {
-            EObject obj = ((DAnnotation) element).getReferences().get(0);
-            if (obj instanceof AbstractNamedElement) {
-              return ((AbstractNamedElement) obj).getName();
-            }
-          } else {
-            DSemanticDiagram diagram = (DSemanticDiagram) ((DAnnotation) element).eContainer();
-            if (diagram instanceof DRepresentation) {
-              return ((DRepresentation) diagram).getName();
-            }
-          }
-        }
-      }
       return provider.getText(element);
     }
   }

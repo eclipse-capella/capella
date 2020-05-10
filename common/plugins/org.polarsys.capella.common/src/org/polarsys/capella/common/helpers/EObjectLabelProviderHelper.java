@@ -12,7 +12,6 @@ package org.polarsys.capella.common.helpers;
 
 import java.util.Collection;
 import java.util.MissingResourceException;
-
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EClass;
@@ -23,6 +22,7 @@ import org.eclipse.emf.edit.provider.IChangeNotifier;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ItemProviderDecorator;
+import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 
 /**
@@ -83,8 +83,15 @@ public class EObjectLabelProviderHelper {
    *        until bugzilla 2036 is solved
    */
   private static String getTextEObject(EObject object) {
-    IItemLabelProvider provider = getItemLabelProvider(object);
     String label = ICommonConstants.EMPTY_STRING;
+    
+    if(object instanceof DAnnotation && ((DAnnotation)object).getSource().contains("TitleBlock")) {
+      label = ((DAnnotation)object).getSource();
+      label = label.replaceAll("([^_])([A-Z])", "$1 $2");
+      return label;
+    }
+    
+    IItemLabelProvider provider = getItemLabelProvider(object);
 
     if (null != provider) {
       label = provider.getText(object);
@@ -105,6 +112,9 @@ public class EObjectLabelProviderHelper {
     // Precondition.
     if (null == object) {
       return label;
+    }
+    if(object instanceof DAnnotation && ((DAnnotation)object).getSource().contains("TitleBlock")) {
+      return "";
     }
     ItemProviderAdapter provider = getItemProvider(object);
     if (provider instanceof ItemProviderAdapter) {

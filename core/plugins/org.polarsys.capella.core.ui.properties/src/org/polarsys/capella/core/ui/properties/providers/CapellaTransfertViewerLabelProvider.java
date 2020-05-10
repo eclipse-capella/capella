@@ -10,21 +10,14 @@
  *******************************************************************************/
 package org.polarsys.capella.core.ui.properties.providers;
 
-import java.net.URL;
 import java.text.MessageFormat;
 import java.util.Collection;
 
-import org.eclipse.core.runtime.FileLocator;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.viewpoint.DAnalysis;
-import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DView;
-import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swt.graphics.Image;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
@@ -46,13 +39,11 @@ import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
 import org.polarsys.capella.core.model.helpers.ComponentExchangeExt;
 import org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlugin;
-import org.polarsys.capella.core.ui.resources.CapellaUIResourcesPlugin;
 
 public class CapellaTransfertViewerLabelProvider extends DataLabelProvider {
 
   private static String PATTERN1 = " [{0} -> {1}]{2}"; //$NON-NLS-1$
   private static String UNAMED = "<unnamed>"; //$NON-NLS-1$
-  private static String TITLE_BLOCK = "TitleBlock";
 
   private boolean disableLabelComputation = CapellaUIPropertiesPlugin.getDefault().isDisableLabelComputation();
 
@@ -65,14 +56,6 @@ public class CapellaTransfertViewerLabelProvider extends DataLabelProvider {
       Viewpoint viewpoint = ((DView) object).getViewpoint();
       if (viewpoint != null) {
         return getImage(viewpoint);
-      }
-    }
-    if (object instanceof DAnnotation) {
-      DAnnotation annotation = (DAnnotation) object;
-      if (annotation.getSource().contains(TITLE_BLOCK)) {
-        String imagePath = "/icons/full/obj16/TitleBlock_16.gif";
-        URL url = FileLocator.find(CapellaUIResourcesPlugin.getDefault().getBundle(), new Path(imagePath), null);
-        return ImageDescriptor.createFromURL(url).createImage();
       }
     }
     return super.getImage(object);
@@ -166,21 +149,6 @@ public class CapellaTransfertViewerLabelProvider extends DataLabelProvider {
         return viewpoint.getName();
       }
 
-    } else if (object instanceof DAnnotation) {
-      DAnnotation annotation = (DAnnotation) object;
-      if (annotation.getSource().contains(TITLE_BLOCK)) {
-        if (!(annotation.getReferences().get(0) instanceof DAnnotation)) {
-          EObject obj = annotation.getReferences().get(0);
-          if (obj instanceof AbstractNamedElement) {
-            return ((AbstractNamedElement) obj).getName();
-          }
-        } else {
-          DSemanticDiagram diagram = (DSemanticDiagram) annotation.eContainer();
-          if (diagram instanceof DRepresentation) {
-            return ((DRepresentation) diagram).getName();
-          }
-        }
-      }
     } else {
       // Default case
       return super.getText(object);

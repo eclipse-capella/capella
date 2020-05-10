@@ -52,6 +52,7 @@ public class TitleBlockHelper {
   public static final String TITLE_BLOCK_LINE = "TitleBlockLine";
   public static final String TITLE_BLOCK_CELL = "TitleBlockCell";
   public static final String ELEMENT_TITLE_BLOCK = "ElementTitleBlock";
+  public static final String TITLE_BLOCK_CONTENT = "TitleBlockContent";
   public static final String TRUE = "True";
   public static final String NAME = "Name:";
   public static final String CONTENT = "Content:";
@@ -98,6 +99,14 @@ public class TitleBlockHelper {
    */
   public static boolean isTitleBlockCell(DAnnotation annotation) {
     return annotation.getSource() != null && annotation.getSource().equals(TITLE_BLOCK_CELL);
+  }
+  
+  /**
+   * @param titleBlock
+   * @return true if the annotation is a Diagram Title Block type annotation
+   */
+  public static boolean isContentTitleBlock(DAnnotation titleBlock) {
+    return titleBlock.getSource() != null && titleBlock.getSource().equals(TITLE_BLOCK_CONTENT);
   }
 
   /**
@@ -433,7 +442,7 @@ public class TitleBlockHelper {
 
           List<IContentProposal> proposalsList = new ArrayList<IContentProposal>();
           ContentInstanceContext contentContext = new ContentInstanceContext(target, contents, position);
-          
+
           if (contents.contains(CAPELLA_PREFIX)) {
             // get all the categories for target and match the command name from category with the command in TitleBlock
             Set<ICategory> categories = CategoryRegistry.getInstance().gatherCategories(target);
@@ -442,26 +451,29 @@ public class TitleBlockHelper {
               String proposalContent = CaseFormat.UPPER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL,
                   category.getName().trim().replaceAll(" ", "_"));
               if (proposalContent.toLowerCase().startsWith(contents.replaceFirst(CAPELLA_PREFIX, "").toLowerCase())) {
-                proposalsList.add(new org.eclipse.jface.fieldassist.ContentProposal(
-                  proposalContent, proposalContent, null));
+                proposalsList
+                    .add(new org.eclipse.jface.fieldassist.ContentProposal(proposalContent, proposalContent, null));
               }
             }
           } else {
-            List<ContentProposal> computedProposals;  
-            
+            List<ContentProposal> computedProposals;
+
             if (contents == null || contents.length() == 0 || !contents.contains(":")) {
               computedProposals = CompoundInterpreter.INSTANCE.getAllNewEmtpyExpressions();
-              computedProposals.removeIf((ContentProposal p) -> !p.getProposal().equals(AQL_PREFIX) && !p.getProposal().equals(FEATURE_PREFIX));
+              computedProposals.removeIf((ContentProposal p) -> !p.getProposal().equals(AQL_PREFIX)
+                  && !p.getProposal().equals(FEATURE_PREFIX));
               computedProposals.add(new ContentProposal(CAPELLA_PREFIX, CAPELLA_PREFIX, null));
               if (contents != null && contents.length() > 0) {
-                computedProposals.removeIf((ContentProposal p) -> !p.getProposal().toLowerCase().startsWith(contents.toLowerCase()));
+                computedProposals
+                    .removeIf((ContentProposal p) -> !p.getProposal().toLowerCase().startsWith(contents.toLowerCase()));
               }
-            } else {   
+            } else {
               if (vpInterpreter instanceof IProposalProvider) {
                 computedProposals = ((IProposalProvider) vpInterpreter).getProposals(vpInterpreter, contentContext);
               } else {
                 computedProposals = new ArrayList<>();
-                final List<IProposalProvider> proposalProviders = ProposalProviderRegistry.getProvidersFor(vpInterpreter);
+                final List<IProposalProvider> proposalProviders = ProposalProviderRegistry
+                    .getProvidersFor(vpInterpreter);
                 for (IProposalProvider provider : proposalProviders) {
                   computedProposals.addAll(provider.getProposals(vpInterpreter, contentContext));
                 }
@@ -487,23 +499,24 @@ public class TitleBlockHelper {
         public void proposalAccepted(IContentProposal proposal) {
           String proposalContent = proposal.getContent();
           String textBeforeProposal = textField.getText(0, textField.getText().length() - proposalContent.length() - 1);
-          
+
           StringBuffer patternToMatch = new StringBuffer();
           int currentIndex = textBeforeProposal.length() - 1;
           String matchedString = "";
-          
+
           while (currentIndex >= 0 && patternToMatch.length() <= textBeforeProposal.length()) {
             patternToMatch.reverse();
             patternToMatch.append(textBeforeProposal.charAt(currentIndex));
             patternToMatch.reverse();
-            
+
             if (proposalContent.toLowerCase().startsWith(patternToMatch.toString().toLowerCase())) {
               matchedString = patternToMatch.toString();
             }
             currentIndex--;
           }
-                      
-          textField.setText(textBeforeProposal.substring(0, textBeforeProposal.length() - matchedString.length()) + proposalContent);
+
+          textField.setText(
+              textBeforeProposal.substring(0, textBeforeProposal.length() - matchedString.length()) + proposalContent);
           adapter.getControlContentAdapter().setCursorPosition(textField, textField.getText().length());
         }
       });
@@ -512,6 +525,49 @@ public class TitleBlockHelper {
     } catch (ParseException e) {
       e.printStackTrace();
     }
+  }
+  
 
-}
+  /**
+   * @param titleBlock
+   * @return true if the annotation is a Diagram Title Block type annotation
+   */
+  public static boolean isTitleBlockAnnotation(EObject object) {
+    if (object instanceof DAnnotation) {
+      DAnnotation annotation = (DAnnotation) object;
+      return isDiagramTitleBlock(annotation) || isElementTitleBlock(annotation) || isTitleBlockCell(annotation)
+          || isContentTitleBlock(annotation);
+    }
+    return false;
+  }
+  
+  /**
+   * @param titleBlock
+   * @return true if the annotation is a Diagram Title Block type annotation
+   */
+  public static String getTitleBlockAnnotationLabel(EObject object) {
+    if(object instanceof DAnnotation) {
+      String label = ((DAnnotation)object).getSource();
+      label = label.replaceAll("([^_])([A-Z])", "$1 $2");
+      return label;
+    }
+    return "";
+  }
+  
+  /**
+   * @param object
+   * @return the referenced object/diagram
+   */
+  public static EObject getReferencedElement(EObject object) {
+    if(object instanceof DAnnotation) {
+      DAnnotation annotation = (DAnnotation) object;
+      if(isElementTitleBlock(annotation)) {
+        return annotation.getReferences().get(0);
+      }
+      else if(isDiagramTitleBlock(annotation)){
+        return annotation.eContainer();
+      }
+    }
+    return null;
+  }
 }
