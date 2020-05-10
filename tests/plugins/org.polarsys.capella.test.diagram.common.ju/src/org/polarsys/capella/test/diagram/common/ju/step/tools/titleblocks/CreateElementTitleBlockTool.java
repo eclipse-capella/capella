@@ -12,10 +12,15 @@ package org.polarsys.capella.test.diagram.common.ju.step.tools.titleblocks;
 
 import static org.junit.Assert.assertTrue;
 
+import java.util.Iterator;
+
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
+import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.diagram.helpers.TitleBlockHelper;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateAbstractDNodeTool;
@@ -45,18 +50,25 @@ public class CreateElementTitleBlockTool extends CreateAbstractDNodeTool<DDiagra
 
     newElements.removeAll(elements);
 
-    assertTrue(newElements.size() == 1);
+    // contains an edge and a container TB
+    assertTrue(newElements.size() == 2);
 
-    DDiagramElement element = newElements.iterator().next();
+    Iterator<DDiagramElement> it = newElements.iterator();
+    DDiagramElement element = it.next();
     assertTrue(element.getTarget() instanceof DAnnotation);
 
     DAnnotation elementTB = (DAnnotation) element.getTarget();
 
-    assertTrue(elementTB.getSource().equals(TitleBlockHelper.ELEMENT_TITLE_BLOCK));
+    assertTrue("A new Element Title Block should have been created.", elementTB.getSource().equals(TitleBlockHelper.ELEMENT_TITLE_BLOCK));
 
     DSemanticDecorator elementView = getDiagramContext().getView(containerView);
 
-    assertTrue(elementTB.getReferences().contains(elementView.getTarget()));
+    assertTrue("The created Element Title Block does not have a reference to " + containerView,
+        elementTB.getReferences().contains(elementView.getTarget()));
+    
+    DEdge edge = (DEdge) it.next();
+    assertTrue("An edge to " + containerView + " should have been created.",
+        containerView.equals(((CapellaElement) edge.getTarget()).getId()));
   }
 
   @Override
