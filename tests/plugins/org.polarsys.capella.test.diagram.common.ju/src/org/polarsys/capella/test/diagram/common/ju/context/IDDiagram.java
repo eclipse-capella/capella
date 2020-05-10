@@ -29,6 +29,7 @@ import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 import org.polarsys.capella.core.sirius.analysis.constants.IDNDToolNameConstants;
 import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.CreateDiagramStep;
+import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateAbstractDNodeWithSelectionTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.DragAndDropTool;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ArgumentType;
@@ -58,6 +59,15 @@ public class IDDiagram extends CommonDiagram {
 
   public static IDDiagram createDiagram(SessionContext executionContext, String targetIdentifier) {
     return createDiagram(executionContext, IDiagramNameConstants.INTERFACE_DIAGRAM_NAME, targetIdentifier);
+  }
+
+  public static IDDiagram openDiagram(SessionContext executionContext, String name) {
+    return (IDDiagram) new OpenDiagramStep(executionContext, name) {
+      @Override
+      public DiagramContext getResult() {
+        return new IDDiagram(getExecutionContext(), diagram);
+      }
+    }.run().open();
   }
 
   public String createExchangeItem(String containerId, ExchangeMechanism eiType) {
