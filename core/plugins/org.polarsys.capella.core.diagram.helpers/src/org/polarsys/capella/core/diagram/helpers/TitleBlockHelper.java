@@ -35,6 +35,8 @@ import org.eclipse.sirius.common.tools.internal.assist.ProposalProviderRegistry;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DSemanticDiagramSpec;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
 import org.eclipse.swt.widgets.Text;
@@ -54,6 +56,9 @@ public class TitleBlockHelper {
   public static final String NAME = "Name:";
   public static final String CONTENT = "Content:";
   public static final String DIAGRAM_TITLE_BLOCK = "DiagramTitleBlock";
+  public static final String CAPELLA_PREFIX = "capella:";
+  public static final String AQL_PREFIX = "aql:";
+  public static final String FEATURE_PREFIX = "feature:";
   public static final String TITLE_BLOCK_INITIALIZED = "TitleBlockInitialized";
   
   /**
@@ -424,29 +429,42 @@ public class TitleBlockHelper {
         @Override
         public IContentProposal[] getProposals(String contents, int position) {
           IInterpreter vpInterpreter = CompoundInterpreter.INSTANCE.getInterpreterForExpression(contents);
-          DSemanticDiagramSpec target = new DSemanticDiagramSpec();
+          DRepresentationDescriptor target = ViewpointFactory.eINSTANCE.createDRepresentationDescriptor();
 
           List<IContentProposal> proposalsList = new ArrayList<IContentProposal>();
           ContentInstanceContext contentContext = new ContentInstanceContext(target, contents, position);
-          if (contents.contains("capella:")) {
+          
+          if (contents.contains(CAPELLA_PREFIX)) {
             // get all the categories for target and match the command name from category with the command in TitleBlock
             Set<ICategory> categories = CategoryRegistry.getInstance().gatherCategories(target);
 
             for (ICategory category : categories) {
-              proposalsList.add(new org.eclipse.jface.fieldassist.ContentProposal(
-                  CaseFormat.UPPER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL,
-                      category.getName().trim().replaceAll(" ", "_")),
-                  contentContext.getTextSoFar(), null, contentContext.getCursorPosition()));
+              String proposalContent = CaseFormat.UPPER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL,
+                  category.getName().trim().replaceAll(" ", "_"));
+              if (proposalContent.toLowerCase().startsWith(contents.replaceFirst(CAPELLA_PREFIX, "").toLowerCase())) {
+                proposalsList.add(new org.eclipse.jface.fieldassist.ContentProposal(
+                  proposalContent, proposalContent, null));
+              }
             }
           } else {
-            List<ContentProposal> computedProposals;
-            if (vpInterpreter instanceof IProposalProvider) {
-              computedProposals = ((IProposalProvider) vpInterpreter).getProposals(vpInterpreter, contentContext);
-            } else {
-              computedProposals = new ArrayList<>();
-              final List<IProposalProvider> proposalProviders = ProposalProviderRegistry.getProvidersFor(vpInterpreter);
-              for (IProposalProvider provider : proposalProviders) {
-                computedProposals.addAll(provider.getProposals(vpInterpreter, contentContext));
+            List<ContentProposal> computedProposals;  
+            
+            if (contents == null || contents.length() == 0 || !contents.contains(":")) {
+              computedProposals = CompoundInterpreter.INSTANCE.getAllNewEmtpyExpressions();
+              computedProposals.removeIf((ContentProposal p) -> !p.getProposal().equals(AQL_PREFIX) && !p.getProposal().equals(FEATURE_PREFIX));
+              computedProposals.add(new ContentProposal(CAPELLA_PREFIX, CAPELLA_PREFIX, null));
+              if (contents != null && contents.length() > 0) {
+                computedProposals.removeIf((ContentProposal p) -> !p.getProposal().toLowerCase().startsWith(contents.toLowerCase()));
+              }
+            } else {   
+              if (vpInterpreter instanceof IProposalProvider) {
+                computedProposals = ((IProposalProvider) vpInterpreter).getProposals(vpInterpreter, contentContext);
+              } else {
+                computedProposals = new ArrayList<>();
+                final List<IProposalProvider> proposalProviders = ProposalProviderRegistry.getProvidersFor(vpInterpreter);
+                for (IProposalProvider provider : proposalProviders) {
+                  computedProposals.addAll(provider.getProposals(vpInterpreter, contentContext));
+                }
               }
             }
             for (ContentProposal proposals : computedProposals) {
@@ -467,17 +485,25 @@ public class TitleBlockHelper {
       adapter.addContentProposalListener(new IContentProposalListener() {
         @Override
         public void proposalAccepted(IContentProposal proposal) {
-          int posOfDot = textField.getText().lastIndexOf(".");
-          char charToAppend = '.';
-          if (posOfDot < 0) {
-            posOfDot = textField.getText().lastIndexOf(":");
-            charToAppend = ':';
+          String proposalContent = proposal.getContent();
+          String textBeforeProposal = textField.getText(0, textField.getText().length() - proposalContent.length() - 1);
+          
+          StringBuffer patternToMatch = new StringBuffer();
+          int currentIndex = textBeforeProposal.length() - 1;
+          String matchedString = "";
+          
+          while (currentIndex >= 0 && patternToMatch.length() <= textBeforeProposal.length()) {
+            patternToMatch.reverse();
+            patternToMatch.append(textBeforeProposal.charAt(currentIndex));
+            patternToMatch.reverse();
+            
+            if (proposalContent.toLowerCase().startsWith(patternToMatch.toString().toLowerCase())) {
+              matchedString = patternToMatch.toString();
+            }
+            currentIndex--;
           }
-          StringBuilder text = new StringBuilder();
-          text = text.append(textField.getText().substring(0, posOfDot)).append(charToAppend)
-              .append(proposal.getContent());
-          textField.setText(text.toString());
-
+                      
+          textField.setText(textBeforeProposal.substring(0, textBeforeProposal.length() - matchedString.length()) + proposalContent);
           adapter.getControlContentAdapter().setCursorPosition(textField, textField.getText().length());
         }
       });
