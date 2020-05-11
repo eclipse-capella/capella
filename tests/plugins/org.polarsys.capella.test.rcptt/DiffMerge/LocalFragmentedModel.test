@@ -6,8 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _s0WTkLfUEea5ZpGbd-RfXw
-Runtime-Version: 2.5.0.M2
-Save-Time: 9/11/19 10:42 AM
+Runtime-Version: 2.5.0.201909172034
+Save-Time: 5/11/20 12:18 PM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -125,8 +125,8 @@ get-editor "fragmentedModel" | get-section "Refine System Functions, describe Fu
 get-window "New Function Scenario" | get-button OK | click
 get-window "Analysis Selection" | get-table 
     | select "platform:\\/resource\\/fragmentedModel\\/fragments\\/SA.airdfragment" | double-click
-with [get-editor "[FS] Scenario 1"] {
-    with [get-diagram -index 1 | get-edit-part -name "[FS] Scenario 1"] {
+with [get-editor "[FS] Capability 1"] {
+    with [get-diagram -index 1 | get-edit-part -name "[FS] Capability 1"] {
         mouse-release 302 22 button1 524288 -height 365 -width 598
         mouse-move 300 24 -height 365 -width 598
         mouse-hover 300 24 -height 365 -width 598
@@ -140,23 +140,23 @@ with [get-editor "[FS] Scenario 1"] {
             mouse-release 55 15 button1 524288 -height 23 -width 125
         }
     }
-    with [get-diagram -index 1 | get-edit-part -name "[FS] Scenario 1"] {
+    with [get-diagram -index 1 | get-edit-part -name "[FS] Capability 1"] {
         mouse-move 136 125 button1 CTRL -height 365 -width 598
         mouse-press 136 125 button1 CTRL -height 365 -width 598
         mouse-release 136 125 button1 786432 -height 365 -width 598
     }
-    with [get-diagram -index 1 | get-edit-part -name "[FS] Scenario 1"] {
+    with [get-diagram -index 1 | get-edit-part -name "[FS] Capability 1"] {
         mouse-move 361 136 button1 CTRL -height 505 -width 598
         mouse-press 361 136 button1 CTRL -height 505 -width 598
         mouse-release 361 136 button1 786432 -height 505 -width 598
     }
-    get-diagram -index 1 | get-edit-part -name "[FS] Scenario 1" | mouse-move 581 151 -height 505 -width 598
+    get-diagram -index 1 | get-edit-part -name "[FS] Capability 1" | mouse-move 581 151 -height 505 -width 598
     with [get-palette | get-palette-entry "Functional Exchange"] {
         mouse-move 44 10 button1 -height 37 -width 125
         mouse-press 44 10 button1 -height 37 -width 125
         mouse-release 44 10 button1 524288 -height 37 -width 125
     }
-    with [get-diagram -index 1 | get-edit-part -name "[FS] Scenario 1"] {
+    with [get-diagram -index 1 | get-edit-part -name "[FS] Capability 1"] {
         mouse-move 179 155 -height 505 -width 598
         with [get-edit-part -name "SystemFunction 3" | get-edit-part -name "" | get-edit-part 
             -className SquareEditPart] {
@@ -176,11 +176,11 @@ with [get-window "Selection Dialog"] {
     get-group "Create a new Functional Exchange" | get-editbox -after [get-label "Functional Exchange"] | set-text fze
     get-button OK | click
 }
-with [get-editor "[FS] Scenario 1"] {
+with [get-editor "[FS] Capability 1"] {
     with [get-diagram -index 1] {
-        get-edit-part -name "[FS] Scenario 1" | mouse-move 335 209 -height 505 -width 598
+        get-edit-part -name "[FS] Capability 1" | mouse-move 335 209 -height 505 -width 598
         key-type "M1+s"
-        get-edit-part -name "[FS] Scenario 1" | mouse-move 328 22 -height 505 -width 598
+        get-edit-part -name "[FS] Capability 1" | mouse-move 328 22 -height 505 -width 598
     }
     close
 }
@@ -274,13 +274,13 @@ get-editor "fragmentedModel"
     | get-section "Refine Logical Functions, describe Functional Exchanges" 
     | get-link "[FS] Create a new Functional Scenario" | click
 with [get-window "New Function Scenario"] {
-    get-editbox -after [get-label "Name:"] | set-text "[FS] Scenario 2"
+    get-editbox -after [get-label "Name:"] | set-text "[FS] Capability 2"
     get-button OK | click
 }
 get-window "Analysis Selection" | get-table | select "platform:\\/resource\\/fragmentedModel\\/fragmentedModel.aird" 
     | double-click
-with [get-editor "[FS] Scenario 2"] {
-    with [get-diagram -index 1 | get-edit-part -name "[FS] Scenario 2"] {
+with [get-editor "[FS] Capability 2"] {
+    with [get-diagram -index 1 | get-edit-part -name "[FS] Capability 2"] {
         mouse-release 260 14 button1 524288 -height 365 -width 598
         mouse-move 565 42 -height 365 -width 598
     }
@@ -290,12 +290,12 @@ with [get-editor "[FS] Scenario 2"] {
         mouse-press 59 12 button1 -height 23 -width 125
         mouse-release 59 12 button1 524288 -height 23 -width 125
     }
-    with [get-diagram -index 1 | get-edit-part -name "[FS] Scenario 2"] {
+    with [get-diagram -index 1 | get-edit-part -name "[FS] Capability 2"] {
         mouse-move 96 116 button1 CTRL -height 365 -width 598
         mouse-press 96 116 button1 CTRL -height 365 -width 598
         mouse-release 96 116 button1 786432 -height 365 -width 598
     }
-    with [get-diagram -index 1 | get-edit-part -name "[FS] Scenario 2"] {
+    with [get-diagram -index 1 | get-edit-part -name "[FS] Capability 2"] {
         mouse-move 358 63 button1 CTRL -height 505 -width 598
         mouse-press 358 63 button1 CTRL -height 505 -width 598
         mouse-release 358 63 button1 786432 -height 505 -width 598
@@ -305,7 +305,7 @@ with [get-editor "[FS] Scenario 2"] {
         mouse-press 74 17 button1 -height 37 -width 125
         mouse-release 74 17 button1 524288 -height 37 -width 125
     }
-    with [get-diagram -index 1 | get-edit-part -name "[FS] Scenario 2"] {
+    with [get-diagram -index 1 | get-edit-part -name "[FS] Capability 2"] {
         mouse-move 151 178 -height 505 -width 598
         with [get-edit-part -name "LogicalFunction 3" | get-edit-part -name "" | get-edit-part 
             -className SquareEditPart] {
@@ -325,11 +325,11 @@ with [get-window "Selection Dialog"] {
     get-group "Create a new Functional Exchange" | get-editbox -after [get-label "Functional Exchange"] | set-text fe
     get-button OK | click
 }
-with [get-editor "[FS] Scenario 2"] {
+with [get-editor "[FS] Capability 2"] {
     with [get-diagram -index 1] {
-        get-edit-part -name "[FS] Scenario 2" | mouse-move 439 341 -mask CTRL -height 505 -width 598
+        get-edit-part -name "[FS] Capability 2" | mouse-move 439 341 -mask CTRL -height 505 -width 598
         key-type "M1+s"
-        get-edit-part -name "[FS] Scenario 2" | mouse-move 357 14 -height 505 -width 598
+        get-edit-part -name "[FS] Capability 2" | mouse-move 357 14 -height 505 -width 598
     }
     close
 }
@@ -378,7 +378,7 @@ get-window "EMF Diff/Merge" | get-button Finish | click
 with [get-editor "Compare ('fragmentedModel' - 'fragmentedModel')"] {
     get-button "Expand all" | click
     get-tree 
-        | select "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Capabilities (14)/CapabilityRealization 1 (13)/[Abstract Function Abstract Capability Involvement] to LogicalFunction 4" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Capabilities (14)/CapabilityRealization 1 (13)/[Abstract Function Abstract Capability Involvement] to LogicalFunction 3" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Capabilities (14)/CapabilityRealization 1 (13)/Scenario 1 (10)/[Execution Event]" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Capabilities (14)/CapabilityRealization 1 (13)/Scenario 1 (10)/[Event Receipt Operation]" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Capabilities (14)/CapabilityRealization 1 (13)/Scenario 1 (10)/[Event Sent Operation]" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Capabilities (14)/CapabilityRealization 1 (13)/Scenario 1 (10)/[Execution]" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Capabilities (14)/CapabilityRealization 1 (13)/Scenario 1 (10)/endExec" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Capabilities (14)/CapabilityRealization 1 (13)/Scenario 1 (10)/Receive Call Message Call" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Capabilities (14)/CapabilityRealization 1 (13)/Scenario 1 (10)/Send Call Message Call" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Capabilities (14)/CapabilityRealization 1 (13)/Scenario 1 (10)/fe" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Capabilities (14)/CapabilityRealization 1 (13)/Scenario 1 (10)/LogicalFunction 4" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Capabilities (14)/CapabilityRealization 1 (13)/Scenario 1 (10)/LogicalFunction 3" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Capabilities (14)/CapabilityRealization 1 (13)/Scenario 1 (10)" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Capabilities (14)/CapabilityRealization 1 (13)" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Capabilities (14)" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Logical Functions (11)/Root Logical Function (11)/fe" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Logical Functions (11)/Root Logical Function (11)/FunctionalExchange 1" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Logical Functions (11)/Root Logical Function (11)/LogicalFunction 4 (1)/FIP 1" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Logical Functions (11)/Root Logical Function (11)/LogicalFunction 4 (1)" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Logical Functions (11)/Root Logical Function (11)/LogicalFunction 3 (2)/[Function Realization] to SystemFunction 2" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Logical Functions (11)/Root Logical Function (11)/LogicalFunction 3 (2)/FOP 1" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Logical Functions (11)/Root Logical Function (11)/LogicalFunction 3 (2)" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Logical Functions (11)/Root Logical Function (11)/LogicalFunction 2 (1)/FIP 1" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Logical Functions (11)/Root Logical Function (11)/LogicalFunction 2 (1)" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Logical Functions (11)/Root Logical Function (11)/LogicalFunction 1 (1)/FOP 1" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Logical Functions (11)/Root Logical Function (11)/LogicalFunction 1 (1)" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Logical Functions (11)/Root Logical Function (11)" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Logical Functions (11)" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/Capabilities (15)/Capability 1 (14)/[Capability Involvement] to System" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/Capabilities (15)/Capability 1 (14)/[Abstract Function Abstract Capability Involvement] to SystemFunction 4" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/Capabilities (15)/Capability 1 (14)/[Abstract Function Abstract Capability Involvement] to SystemFunction 3" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/Capabilities (15)/Capability 1 (14)/Scenario 1 (10)/[Execution Event]" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/Capabilities (15)/Capability 1 (14)/Scenario 1 (10)/[Event Receipt Operation]" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/Capabilities (15)/Capability 1 (14)/Scenario 1 (10)/[Event Sent Operation]" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/Capabilities (15)/Capability 1 (14)/Scenario 1 (10)/[Execution]" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/Capabilities (15)/Capability 1 (14)/Scenario 1 (10)/endExec" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/Capabilities (15)/Capability 1 (14)/Scenario 1 (10)/Receive Call Message Call" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/Capabilities (15)/Capability 1 (14)/Scenario 1 (10)/Send Call Message Call" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/Capabilities (15)/Capability 1 (14)/Scenario 1 (10)/fze" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/Capabilities (15)/Capability 1 (14)/Scenario 1 (10)/SystemFunction 4" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/Capabilities (15)/Capability 1 (14)/Scenario 1 (10)/SystemFunction 3" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/Capabilities (15)/Capability 1 (14)/Scenario 1 (10)" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/Capabilities (15)/Capability 1 (14)" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/Capabilities (15)" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/System Functions (11)/Root System Function (11)/fze" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/System Functions (11)/Root System Function (11)/FunctionalExchange 1" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/System Functions (11)/Root System Function (11)/SystemFunction 4 (1)/FIP 1" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/System Functions (11)/Root System Function (11)/SystemFunction 4 (1)" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/System Functions (11)/Root System Function (11)/SystemFunction 3 (1)/FOP 1" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/System Functions (11)/Root System Function (11)/SystemFunction 3 (1)" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/System Functions (11)/Root System Function (11)/SystemFunction 2 (2)/[Function Realization] to OperationalActivity 1" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/System Functions (11)/Root System Function (11)/SystemFunction 2 (2)/FIP 1" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/System Functions (11)/Root System Function (11)/SystemFunction 2 (2)" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/System Functions (11)/Root System Function (11)/SystemFunction 1 (1)/FOP 1" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/System Functions (11)/Root System Function (11)/SystemFunction 1 (1)" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/System Functions (11)/Root System Function (11)" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/System Functions (11)" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)" "fragmentedModel (51)/fragmentedModel (51)" "fragmentedModel (51)"
+        | select "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Capabilities (14)/CapabilityRealization 1 (13)/[Abstract Function Abstract Capability Involvement] to LogicalFunction 4" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Capabilities (14)/CapabilityRealization 1 (13)/[Abstract Function Abstract Capability Involvement] to LogicalFunction 3" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Capabilities (14)/CapabilityRealization 1 (13)/[FS] Capability 2 (10)/[Execution Event]" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Capabilities (14)/CapabilityRealization 1 (13)/[FS] Capability 2 (10)/[Event Receipt Operation]" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Capabilities (14)/CapabilityRealization 1 (13)/[FS] Capability 2 (10)/[Event Sent Operation]" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Capabilities (14)/CapabilityRealization 1 (13)/[FS] Capability 2 (10)/[Execution]" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Capabilities (14)/CapabilityRealization 1 (13)/[FS] Capability 2 (10)/endExec" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Capabilities (14)/CapabilityRealization 1 (13)/[FS] Capability 2 (10)/Receive Call Message Call" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Capabilities (14)/CapabilityRealization 1 (13)/[FS] Capability 2 (10)/Send Call Message Call" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Capabilities (14)/CapabilityRealization 1 (13)/[FS] Capability 2 (10)/fe" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Capabilities (14)/CapabilityRealization 1 (13)/[FS] Capability 2 (10)/LogicalFunction 4" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Capabilities (14)/CapabilityRealization 1 (13)/[FS] Capability 2 (10)/LogicalFunction 3" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Capabilities (14)/CapabilityRealization 1 (13)/[FS] Capability 2 (10)" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Capabilities (14)/CapabilityRealization 1 (13)" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Capabilities (14)" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Logical Functions (11)/Root Logical Function (11)/fe" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Logical Functions (11)/Root Logical Function (11)/FunctionalExchange 1" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Logical Functions (11)/Root Logical Function (11)/LogicalFunction 4 (1)/FIP 1" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Logical Functions (11)/Root Logical Function (11)/LogicalFunction 4 (1)" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Logical Functions (11)/Root Logical Function (11)/LogicalFunction 3 (2)/[Function Realization] to SystemFunction 2" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Logical Functions (11)/Root Logical Function (11)/LogicalFunction 3 (2)/FOP 1" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Logical Functions (11)/Root Logical Function (11)/LogicalFunction 3 (2)" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Logical Functions (11)/Root Logical Function (11)/LogicalFunction 2 (1)/FIP 1" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Logical Functions (11)/Root Logical Function (11)/LogicalFunction 2 (1)" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Logical Functions (11)/Root Logical Function (11)/LogicalFunction 1 (1)/FOP 1" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Logical Functions (11)/Root Logical Function (11)/LogicalFunction 1 (1)" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Logical Functions (11)/Root Logical Function (11)" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)/Logical Functions (11)" "fragmentedModel (51)/fragmentedModel (51)/Logical Architecture (25)" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/Capabilities (15)/Capability 1 (14)/[Capability Involvement] to System" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/Capabilities (15)/Capability 1 (14)/[Abstract Function Abstract Capability Involvement] to SystemFunction 4" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/Capabilities (15)/Capability 1 (14)/[Abstract Function Abstract Capability Involvement] to SystemFunction 3" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/Capabilities (15)/Capability 1 (14)/[FS] Capability 1 (10)/[Execution Event]" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/Capabilities (15)/Capability 1 (14)/[FS] Capability 1 (10)/[Event Receipt Operation]" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/Capabilities (15)/Capability 1 (14)/[FS] Capability 1 (10)/[Event Sent Operation]" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/Capabilities (15)/Capability 1 (14)/[FS] Capability 1 (10)/[Execution]" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/Capabilities (15)/Capability 1 (14)/[FS] Capability 1 (10)/endExec" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/Capabilities (15)/Capability 1 (14)/[FS] Capability 1 (10)/Receive Call Message Call" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/Capabilities (15)/Capability 1 (14)/[FS] Capability 1 (10)/Send Call Message Call" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/Capabilities (15)/Capability 1 (14)/[FS] Capability 1 (10)/fze" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/Capabilities (15)/Capability 1 (14)/[FS] Capability 1 (10)/SystemFunction 4" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/Capabilities (15)/Capability 1 (14)/[FS] Capability 1 (10)/SystemFunction 3" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/Capabilities (15)/Capability 1 (14)/[FS] Capability 1 (10)" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/Capabilities (15)/Capability 1 (14)" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/Capabilities (15)" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/System Functions (11)/Root System Function (11)/fze" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/System Functions (11)/Root System Function (11)/FunctionalExchange 1" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/System Functions (11)/Root System Function (11)/SystemFunction 4 (1)/FIP 1" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/System Functions (11)/Root System Function (11)/SystemFunction 4 (1)" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/System Functions (11)/Root System Function (11)/SystemFunction 3 (1)/FOP 1" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/System Functions (11)/Root System Function (11)/SystemFunction 3 (1)" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/System Functions (11)/Root System Function (11)/SystemFunction 2 (2)/[Function Realization] to OperationalActivity 1" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/System Functions (11)/Root System Function (11)/SystemFunction 2 (2)/FIP 1" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/System Functions (11)/Root System Function (11)/SystemFunction 2 (2)" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/System Functions (11)/Root System Function (11)/SystemFunction 1 (1)/FOP 1" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/System Functions (11)/Root System Function (11)/SystemFunction 1 (1)" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/System Functions (11)/Root System Function (11)" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)/System Functions (11)" "fragmentedModel (51)/fragmentedModel (51)/System Analysis (26)" "fragmentedModel (51)/fragmentedModel (51)" "fragmentedModel (51)"
     get-button "Apply changes to the right" | click
 }
 // Merge and save

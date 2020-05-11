@@ -50,7 +50,7 @@ with [get-view "Project Explorer" | get-tree] {
     get-menu -path Delete | click
 }
 // Confirm the deletion
-get-window "Progress Information" | get-window Delete | get-button Yes | click
+get-window "Progress Information" | get-window "Confirm Deletion" | get-button OK | click
 
 // Select an element on the diagram and go to the view Properties to verify that its semantic model was really deleted.
 with [get-editor "[OAIB] Root Operational Activity" | get-diagram -index 1 | get-edit-part 

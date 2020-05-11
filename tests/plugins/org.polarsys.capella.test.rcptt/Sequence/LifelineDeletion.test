@@ -35,7 +35,7 @@ with [get-editor "[IS] Capability 1" | get-diagram -index 1] {
     }
     get-menu "Edit/Delete from Model" | click
 }
-get-window Delete | get-button Yes | click
+get-window "Confirm Deletion" | get-button OK | click
 
 // Delete Actor 2
 with [get-editor "[IS] Capability 1" | get-diagram -index 1] {
@@ -52,7 +52,7 @@ with [get-editor "[IS] Capability 1" | get-diagram -index 1] {
     }
     get-menu "Edit/Delete from Model" | click
 }
-get-window Delete | get-button Yes | click
+get-window "Confirm Deletion" | get-button OK | click
 get-button "Save (M1+S)" | click
 // Now check that the "create" and "delete" Messages are deleted when deleting Actors
 // Only System and [IS] Capability 1 should be under the item [IS] Capability 1
