@@ -438,7 +438,7 @@ public class TitleBlockHelper {
         @Override
         public IContentProposal[] getProposals(String contents, int position) {
           IInterpreter vpInterpreter = CompoundInterpreter.INSTANCE.getInterpreterForExpression(contents);
-
+          
           List<IContentProposal> proposalsList = new ArrayList<IContentProposal>();
           ContentInstanceContext contentContext = new ContentInstanceContext(target, contents, position);
 
