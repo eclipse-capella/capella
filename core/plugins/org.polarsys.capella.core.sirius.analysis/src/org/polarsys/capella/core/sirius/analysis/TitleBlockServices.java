@@ -682,7 +682,7 @@ public class TitleBlockServices {
     DAnnotation wrapperAnnotation = null;
     if (cell.getReferences().isEmpty()) {
       wrapperAnnotation = DescriptionFactory.eINSTANCE.createDAnnotation();
-      wrapperAnnotation.setSource(TitleBlockHelper.CONTENT);
+      wrapperAnnotation.setSource(TitleBlockHelper.TITLE_BLOCK_CONTENT);
       wrapperAnnotation.getDetails().put(TitleBlockHelper.CONTENT, object.toString());
       cell.getReferences().add(wrapperAnnotation);
       diagram.getEAnnotations().add(wrapperAnnotation);
@@ -882,12 +882,5 @@ public class TitleBlockServices {
    */
   public boolean isDiagramTitleBlock(EObject element) {
     return (element instanceof DAnnotation) && TitleBlockHelper.isDiagramTitleBlock((DAnnotation) element);
-  }
-
-  public static Image getImage(Object object) {
-    DAnnotation annotation = (DAnnotation) object;
-    String imagePath = "/icons/full/obj16/TitleBlock_16.gif";
-    URL url = FileLocator.find(SiriusViewActivator.getInstance().getBundle(), new Path(imagePath), null);
-    return ImageDescriptor.createFromURL(url).createImage();
   }
 }
