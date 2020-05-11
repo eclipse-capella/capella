@@ -122,23 +122,41 @@ public class TitleBlockBasicElementGroup extends AbstractSemanticField {
 
   private void setFieldValue(EObject object, String field, final Object value) {
     boolean errorSet = false;
+    String nameValue = nameTextField.getText();
+    String contentValue = contentTextField.getText();
     if (field.equals(CONTENT)) {
       errorSet = setContentErrorField(semanticElement);
+      contentValue = value.toString();
     }
-    if (!errorSet && !((DAnnotation) object).getDetails().get(field).equals(value.toString())) {
-      //TitleBlockHelper.getServicesProposals(contentTextField, object);
-      DDiagram diagram = (DDiagram) object.eContainer();
-      AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
-        @Override
-        public void run() {
-          ((DAnnotation) object).getDetails().put(field, value.toString());
-          RefreshRepresentationsCommand refreshCommand = new RefreshRepresentationsCommand(
-              TransactionUtil.getEditingDomain(diagram), new NullProgressMonitor(), diagram);
-          refreshCommand.execute();
+    if (field.equals(NAME)) {
+      nameValue = value.toString();
+    }
+    if (!errorSet && (!((DAnnotation) object).getDetails().get(field).equals(value.toString()) || 
+        nameTextField.getText().isEmpty())) {
+      updateTitleBlock(object, nameValue, contentValue);
+    }
+  }
+  
+  private void updateTitleBlock(EObject object, String nameValue, String contentField) {
+    DDiagram diagram = (DDiagram) object.eContainer();
+    AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
+      @Override
+      public void run() {
+        ((DAnnotation) object).getDetails().put(NAME, nameValue);
+        ((DAnnotation) object).getDetails().put(CONTENT, contentField);
+        // auto-get the service name if it is a capella service and the name field is empty
+        if (contentField.contains(TitleBlockHelper.CAPELLA_PREFIX)) {
+          String serviceName = TitleBlockHelper.getServiceName(contentField);
+          nameTextField.setText(TitleBlockHelper.getServiceName(contentField));
+          ((DAnnotation) object).getDetails().put(NAME, serviceName);
         }
-      };
-      executeCommand(command);
-    }
+        
+        RefreshRepresentationsCommand refreshCommand = new RefreshRepresentationsCommand(
+            TransactionUtil.getEditingDomain(diagram), new NullProgressMonitor(), diagram);
+        refreshCommand.execute();
+      }
+    };
+    executeCommand(command);
   }
 
   private boolean setContentErrorField(EObject semanticElement) {

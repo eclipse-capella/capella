@@ -12,10 +12,10 @@ package org.polarsys.capella.core.sirius.analysis.preferences;
 
 import org.eclipse.jface.dialogs.TitleAreaDialog;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
-import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DSemanticDiagramSpec;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -88,6 +88,16 @@ public class TitleBlockDialog extends TitleAreaDialog {
     dataContent.horizontalAlignment = GridData.FILL;
     txtContent = new Text(container, SWT.BORDER);
     txtContent.setText(currentContent);
+    
+    // if we have a capella service, auto-get the name from the service name
+    txtContent.addModifyListener(new ModifyListener() {
+      @Override
+      public void modifyText(ModifyEvent e) {
+        if (!txtContent.getText().equals(content) && txtContent.getText().contains(TitleBlockHelper.CAPELLA_PREFIX) && evaluate()) {
+          txtName.setText(TitleBlockHelper.getServiceName(txtContent.getText()));
+        }
+      }
+    });
 
     txtContent.setLayoutData(dataContent);
     TitleBlockHelper.getServicesProposals(txtContent,
@@ -100,14 +110,22 @@ public class TitleBlockDialog extends TitleAreaDialog {
   }
 
   private boolean saveInput() {
-    name = txtName.getText();
-    content = txtContent.getText();
-    DDiagram diagram = new DSemanticDiagramSpec();
-    Object evaluateResult = TitleBlockHelper.getResultOfExpression(diagram, content, null);
+    boolean evalResult = evaluate();
+    if (evalResult) {
+      name = txtName.getText();
+      content = txtContent.getText();
+    }
+    return evalResult;
+  }
+  
+  private boolean evaluate() {
+    Object evaluateResult = TitleBlockHelper.getResultOfExpression(ViewpointFactory.eINSTANCE.createDRepresentationDescriptor(),
+        txtContent.getText(), null);
     if (evaluateResult instanceof EvaluationException) {
       setErrorMessage(INTERPRETOR_ERROR);
       return false;
     }
+    setErrorMessage(null);
     return true;
   }
 
