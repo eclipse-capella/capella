@@ -429,7 +429,7 @@ public class TitleBlockHelper {
     return result;
   }
 
-  public static void getServicesProposals(Text textField) {
+  public static void getServicesProposals(Text textField, EObject target) {
     KeyStroke keyStroke;
     try {
       keyStroke = KeyStroke.getInstance("Ctrl+Space");
@@ -438,7 +438,6 @@ public class TitleBlockHelper {
         @Override
         public IContentProposal[] getProposals(String contents, int position) {
           IInterpreter vpInterpreter = CompoundInterpreter.INSTANCE.getInterpreterForExpression(contents);
-          DRepresentationDescriptor target = ViewpointFactory.eINSTANCE.createDRepresentationDescriptor();
 
           List<IContentProposal> proposalsList = new ArrayList<IContentProposal>();
           ContentInstanceContext contentContext = new ContentInstanceContext(target, contents, position);
@@ -566,6 +565,9 @@ public class TitleBlockHelper {
       }
       else if(isDiagramTitleBlock(annotation)){
         return annotation.eContainer();
+      }
+      else if(isTitleBlockCell(annotation)){
+        return getReferencedElement(getParentTitleBlock(annotation, (DDiagram) annotation.eContainer()));
       }
     }
     return null;

@@ -40,6 +40,7 @@ public class TitleBlockBasicElementGroup extends AbstractSemanticField {
   protected Text nameTextField;
   protected Text contentTextField;
   protected CLabel errorLabel;
+  protected boolean proposalsLoaded;
 
   /**
    * @param parent
@@ -58,10 +59,11 @@ public class TitleBlockBasicElementGroup extends AbstractSemanticField {
 
     nameTextField = createTextField(textGroup, Messages.getString("NamedElement.NameLabel"));
     contentTextField = createTextField(textGroup, Messages.getString("NamedElement.ContentLabel"));
-    TitleBlockHelper.getServicesProposals(contentTextField);
     errorLabel = widgetFactory.createCLabel(parent, ICommonConstants.EMPTY_STRING);
     errorLabel.setRightMargin(300);
     errorLabel.setForeground(Display.getCurrent().getSystemColor(SWT.COLOR_RED));
+    
+    proposalsLoaded = false;
   }
 
   /**
@@ -84,12 +86,18 @@ public class TitleBlockBasicElementGroup extends AbstractSemanticField {
    */
   public void loadData(EObject semanticElement, String name, String content) {
     errorLabel.setText(ICommonConstants.EMPTY_STRING);
+    if (!proposalsLoaded) {
+      TitleBlockHelper.getServicesProposals(contentTextField,
+          TitleBlockHelper.getReferencedElement(semanticElement));
+      proposalsLoaded = true;
+    }
     super.loadData(semanticElement, null);
     if (null != semanticElement) {
       if (null != nameTextField)
         setTextValue(nameTextField, name);
-      if (null != contentTextField)
+      if (null != contentTextField) {
         setTextValue(contentTextField, content);
+      }
     }
   }
 

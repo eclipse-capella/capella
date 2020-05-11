@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.analysis;
 
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -19,12 +18,9 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
-import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.diagram.AbstractDNode;
@@ -37,9 +33,7 @@ import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
-import org.eclipse.swt.graphics.Image;
 import org.polarsys.capella.core.diagram.helpers.TitleBlockHelper;
-import org.polarsys.capella.core.sirius.analysis.activator.SiriusViewActivator;
 import org.polarsys.capella.core.sirius.analysis.preferences.TitleBlockPreferencesInitializer;
 
 /*
