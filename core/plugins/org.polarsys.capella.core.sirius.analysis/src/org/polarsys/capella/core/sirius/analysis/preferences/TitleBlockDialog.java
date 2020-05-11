@@ -14,6 +14,7 @@ import org.eclipse.jface.dialogs.TitleAreaDialog;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DSemanticDiagramSpec;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -89,7 +90,8 @@ public class TitleBlockDialog extends TitleAreaDialog {
     txtContent.setText(currentContent);
 
     txtContent.setLayoutData(dataContent);
-    TitleBlockHelper.getServicesProposals(txtContent);
+    TitleBlockHelper.getServicesProposals(txtContent,
+        ViewpointFactory.eINSTANCE.createDRepresentationDescriptor());
   }
 
   @Override
