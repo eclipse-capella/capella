@@ -18,22 +18,12 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.IHandlerListener;
 import org.eclipse.core.expressions.IEvaluationContext;
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.validation.model.EvaluationMode;
-import org.eclipse.emf.validation.preferences.EMFModelValidationPreferences;
-import org.eclipse.emf.validation.service.IBatchValidator;
-import org.eclipse.emf.validation.service.IConstraintDescriptor;
-import org.eclipse.emf.validation.service.IConstraintFilter;
-import org.eclipse.emf.validation.service.ModelValidationService;
-import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.jface.window.Window;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.polarsys.capella.common.flexibility.properties.loader.PropertiesLoader;
@@ -50,12 +40,9 @@ import org.polarsys.capella.common.flexibility.wizards.ui.PropertyWizardPage;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.libraries.ILibraryManager;
 import org.polarsys.capella.common.libraries.IModel;
-import org.polarsys.capella.core.data.common.validation.project.ProjectReferencedLibrariesRule;
 import org.polarsys.capella.core.libraries.properties.FlexibilityIds;
 import org.polarsys.capella.core.libraries.properties.LibraryManagerModel;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
-import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
-import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 
 public class ManageReferencedLibrariesHandler extends AbstractHandler {
 
@@ -92,30 +79,28 @@ public class ManageReferencedLibrariesHandler extends AbstractHandler {
   }
 
   @Override
-  public void removeHandlerListener(IHandlerListener handlerListener) {
-    super.removeHandlerListener(handlerListener);
+  public void removeHandlerListener(IHandlerListener handlerListener_p) {
+    super.removeHandlerListener(handlerListener_p);
   }
 
   @Override
-  public Object execute(ExecutionEvent event) throws ExecutionException {
-    TreeSelection selection = (TreeSelection) HandlerUtil.getCurrentSelection(event);
+  public Object execute(ExecutionEvent event_p) throws ExecutionException {
+    TreeSelection selection = (TreeSelection) HandlerUtil.getCurrentSelection(event_p);
     IFile file = (IFile) selection.getFirstElement();
     Session session = getExistingSession(file);
 
+    return openManageReferencesWizard(session);
+  }
+
+  public static Object openManageReferencesWizard(Session session) {
     IModel rootModel = ILibraryManager.INSTANCE.getModel(session.getTransactionalEditingDomain());
     if ((rootModel == null) || !(rootModel instanceof IModel.Edit)) {
       return null;
     }
-    
-    IStatus status = checkReferencedLibraries(rootModel, session);
-    if (!status.isOK()) {
-      MessageDialog.openError(Display.getCurrent().getActiveShell(), "Error", status.getMessage());
-      return null;
-    }
-    
     final String modelName = rootModel.getIdentifier().getName();
     IProperties properties = new PropertiesLoader().getProperties(FlexibilityIds.MANAGE_REFERENCES_PROPERTIES);
-    IPropertyContext context = new PropertyContext(properties, new LibraryManagerModel(session.getTransactionalEditingDomain(), (IModel.Edit) rootModel));
+    IPropertyContext context = new PropertyContext(properties,
+        new LibraryManagerModel(session.getTransactionalEditingDomain(), (IModel.Edit) rootModel));
     IRenderers renderers = new RenderersLoader().getRenderers(properties);
     IRendererContext rendererContext = new RendererContext(renderers, context);
 
@@ -125,7 +110,8 @@ public class ManageReferencedLibrariesHandler extends AbstractHandler {
       public void addPages() {
         PropertyWizardPage page = new PropertyWizardPage("propertiesEditor", getContext(), getRendererContext()); //$NON-NLS-1$
         page.setTitle(modelName + " management");
-        page.setDescription("This wizard helps you to define the libraries that are referenced by the current project (first tab).\nYou can also specify among these libraries which ones must be considered in capella query scopes (second tab).");
+        page.setDescription(
+            "This wizard helps you to define the libraries that are referenced by the current project (first tab).\nYou can also specify among these libraries which ones must be considered in capella query scopes (second tab).");
         addPage(page);
       }
     };
@@ -143,29 +129,5 @@ public class ManageReferencedLibrariesHandler extends AbstractHandler {
     }
     return null;
   }
-  
-  private IStatus checkReferencedLibraries(IModel rootModel, Session session) {
-    boolean disabled = EMFModelValidationPreferences.isConstraintDisabled(ProjectReferencedLibrariesRule.ID);
-    if (disabled) {
-      EMFModelValidationPreferences.setConstraintDisabled(ProjectReferencedLibrariesRule.ID, false);
-    }
-    IBatchValidator validator = (IBatchValidator) ModelValidationService.getInstance()
-        .newValidator(EvaluationMode.BATCH);
-    validator.setIncludeLiveConstraints(false);
-    validator.addConstraintFilter(new IConstraintFilter() {
 
-      @Override
-      public boolean accept(IConstraintDescriptor descriptor, EObject object) {
-        return ProjectReferencedLibrariesRule.ID.equals(descriptor.getId());
-      }
-    });
-
-    IStatus status = validator
-        .validate(SystemEngineeringExt.getSystemEngineering(SessionHelper.getCapellaProject(session)));
-    // Disable if it was disabled
-    if (disabled) {
-      EMFModelValidationPreferences.setConstraintDisabled(ProjectReferencedLibrariesRule.ID, true);
-    }
-    return status;
-  }
 }

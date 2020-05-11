@@ -19,7 +19,6 @@ import org.eclipse.emf.validation.IValidationContext;
 import org.polarsys.capella.common.libraries.LibraryReference;
 import org.polarsys.capella.common.libraries.ModelInformation;
 import org.polarsys.capella.core.data.capellamodeller.Project;
-import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.model.helpers.ProjectExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 import org.polarsys.kitalpha.emde.model.ElementExtension;
@@ -36,7 +35,7 @@ public class ProjectReferencedLibrariesRule extends AbstractValidationRule {
 
     EObject target = validationContext.getTarget();
 
-    Project project = getProject(target);
+    Project project = ProjectExt.getProject(target);
     if (project != null) {
       for (ElementExtension extension : project.getOwnedExtensions()) {
         if (extension instanceof ModelInformation) {
@@ -50,14 +49,5 @@ public class ProjectReferencedLibrariesRule extends AbstractValidationRule {
       }
     }
     return Status.OK_STATUS;
-  }
-
-  private Project getProject(EObject target) {
-    if (target instanceof Project) {
-      return (Project) target;
-    } else if (target instanceof SystemEngineering) {
-      return ProjectExt.getProject(target);
-    }
-    return null;
   }
 }

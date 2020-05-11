@@ -76,6 +76,15 @@
                ruleId="I_40">
          </rules>
       </resolver>
+      <resolver
+            class="org.polarsys.capella.core.data.core.ui.quickfix.resolver.I_03_Resolver"
+            desc="%quickFix.I_03.desc"
+            icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_manage.gif"
+            label="%quickFix.I_03.label">
+         <rules
+               ruleId="I_03">
+         </rules>
+      </resolver>
    </extension>
 
 </plugin>

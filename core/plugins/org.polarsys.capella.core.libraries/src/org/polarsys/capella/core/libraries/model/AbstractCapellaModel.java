@@ -144,9 +144,14 @@ public abstract class AbstractCapellaModel extends AbstractUriModel implements I
       }
     }
 
+    // Calculate access policy based on intermediate dependent libraries
     Collection<IModel> referencedLibraries = LibraryManagerExt.getReferences(model);
     for (IModel referencedLibrary : referencedLibraries) {
-      calculateAccessPolicy(referencedLibrary, library, policies, level + 1, mergePolicies(policy, model.getAccess(referencedLibrary)));
+      if (CapellaLibraryExt.isUnresolvableIdentifier(referencedLibrary.getIdentifier())) {
+        continue;
+      }
+      calculateAccessPolicy(referencedLibrary, library, policies, level + 1,
+          mergePolicies(policy, model.getAccess(referencedLibrary)));
     }
   }
   

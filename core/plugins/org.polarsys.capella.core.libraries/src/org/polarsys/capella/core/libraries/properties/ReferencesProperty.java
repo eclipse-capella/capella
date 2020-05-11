@@ -59,7 +59,20 @@ public class ReferencesProperty extends AbstractProperty implements IEditablePro
 
     boolean unsavedModel = model.isUnsavedRootModel();
     if (unsavedModel) {
-      return new Status(IStatus.WARNING, Activator.PLUGIN_ID, "The session is unsaved. Manage references will save the session.");
+      return new Status(IStatus.WARNING, Activator.PLUGIN_ID,
+          "The session is unsaved. Manage references will save the session.");
+    }
+
+    Collection<IModel> unResolvableLibs = model.getUnresolvableReferencedLibraries();
+    if (!unResolvableLibs.isEmpty()) {
+      StringBuffer b = new StringBuffer();
+      for (IModel modelX : unResolvableLibs) {
+        b.append(modelX.getIdentifier().getName() + ",");
+      }
+      b.deleteCharAt(b.length() - 1);
+      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, NLS.bind(
+          "The following libraries are not properly referenced: ({0}). This may lead to inconsistencies.\n You should uncheck these dependencies, click OK and reference them again using the same wizard.",
+          b));
     }
 
     Collection<Collection<IModel>> cycles = model.getCycles();

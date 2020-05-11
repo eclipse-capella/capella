@@ -16,8 +16,8 @@ import org.polarsys.capella.common.libraries.IModelIdentifier;
 public class ModelIdentifier implements IModelIdentifier {
 
   String identifier = null;
-
   URI uri = null;
+  boolean isProxy = false;
 
   public ModelIdentifier(String paramIdentifier, URI paramUri) {
     super();
@@ -25,6 +25,13 @@ public class ModelIdentifier implements IModelIdentifier {
     this.uri = paramUri;
   }
 
+  public ModelIdentifier(String paramIdentifier, URI paramUri, boolean isProxy) {
+    super();
+    this.identifier = paramIdentifier;
+    this.uri = paramUri;
+    this.isProxy = isProxy;
+  }
+  
   @Override
   public int hashCode() {
     return uri.hashCode();
@@ -55,5 +62,9 @@ public class ModelIdentifier implements IModelIdentifier {
   @Override
   public String getName() {
     return URI.decode(uri.lastSegment());
+  }
+  
+  public boolean isProxy() {
+    return isProxy;
   }
 }

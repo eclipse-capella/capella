@@ -12,6 +12,7 @@ package org.polarsys.capella.core.libraries.model;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.polarsys.capella.common.libraries.IModelIdentifier;
 import org.polarsys.capella.common.libraries.LibrariesFactory;
 import org.polarsys.capella.common.libraries.ModelInformation;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
@@ -60,6 +61,13 @@ public class CapellaLibraryExt {
       }
     }
     return null;
+  }
+  
+  public static boolean isUnresolvableIdentifier(IModelIdentifier identifier) {
+    if (identifier instanceof ModelIdentifier && ((ModelIdentifier) identifier).isProxy()) {
+      return true;
+    }
+    return false;
   }
 
 }
