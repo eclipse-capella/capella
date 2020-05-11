@@ -32,11 +32,9 @@ import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterProvider;
 import org.eclipse.sirius.common.tools.internal.assist.ProposalProviderRegistry;
+import org.eclipse.sirius.common.tools.internal.interpreter.DefaultInterpreterProvider;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DSemanticDiagramSpec;
-import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
-import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
 import org.eclipse.swt.widgets.Text;
@@ -412,13 +410,18 @@ public class TitleBlockHelper {
    *          the expression to be evaluate (ex feature: name, or capella: xyz)
    * @return result after the expression was evaluated
    */
-  public static Object getResultOfExpression(DDiagram diagram, String expression, DAnnotation titleBlock) {
+  public static Object getResultOfExpression(EObject diagram, String expression, DAnnotation titleBlock) {
     EObject objToEvaluate = TitleBlockHelper.getSemanticElementReference(titleBlock);
     // if is a Diagram Title Block, objToEvaluate will be the diagram
     if (objToEvaluate == null)
       objToEvaluate = diagram;
     
     IInterpreterProvider provider = CompoundInterpreter.INSTANCE.getProviderForExpression(expression);
+    
+    if(provider instanceof DefaultInterpreterProvider) {
+      return new EvaluationException();
+    }
+    
     IInterpreter interpreter = provider.createInterpreter();
     Object result = null;
     try {
@@ -426,6 +429,7 @@ public class TitleBlockHelper {
     } catch (EvaluationException e) {
         return e;
     }
+    
     return result;
   }
 
@@ -571,5 +575,11 @@ public class TitleBlockHelper {
       }
     }
     return null;
+  }
+  
+  public static String getServiceName(String service) {
+    String text = service.replaceAll(TitleBlockHelper.CAPELLA_PREFIX, "").replaceAll("([^_])([A-Z])", "$1 $2");
+    text = text.length() > 1 ? text. substring(0, 1).toUpperCase() + text. substring(1) : text;
+    return text;
   }
 }
