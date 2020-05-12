@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,6 +37,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.RollbackException;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -106,6 +107,12 @@ public class FileModificationPreCommitListener extends AbstractEditingDomainReso
     SessionManager.INSTANCE.addSessionsListener(this);
   }
 
+  @Override
+  public void disposedEditingDomain(EditingDomain editingDomain) {
+    super.disposedEditingDomain(editingDomain);
+    SessionManager.INSTANCE.removeSessionsListener(this);
+  }
+  
   /**
    * @see org.eclipse.emf.transaction.ResourceSetListenerImpl#isAggregatePrecommitListener()
    */
