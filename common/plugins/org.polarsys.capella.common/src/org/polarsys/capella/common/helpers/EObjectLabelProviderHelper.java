@@ -85,12 +85,6 @@ public class EObjectLabelProviderHelper {
   private static String getTextEObject(EObject object) {
     String label = ICommonConstants.EMPTY_STRING;
     
-    if(object instanceof DAnnotation && ((DAnnotation)object).getSource().contains("TitleBlock")) {
-      label = ((DAnnotation)object).getSource();
-      label = label.replaceAll("([^_])([A-Z])", "$1 $2");
-      return label;
-    }
-    
     IItemLabelProvider provider = getItemLabelProvider(object);
 
     if (null != provider) {
