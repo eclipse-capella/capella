@@ -64,10 +64,7 @@ public class CapellaLibraryExt {
   }
   
   public static boolean isUnresolvableIdentifier(IModelIdentifier identifier) {
-    if (identifier instanceof ModelIdentifier && ((ModelIdentifier) identifier).isProxy()) {
-      return true;
-    }
-    return false;
+    return identifier instanceof ModelIdentifier && ((ModelIdentifier) identifier).isProxy();
   }
 
 }

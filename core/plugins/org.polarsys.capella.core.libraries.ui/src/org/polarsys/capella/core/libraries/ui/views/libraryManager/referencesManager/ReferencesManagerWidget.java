@@ -97,16 +97,13 @@ public class ReferencesManagerWidget {
       }
     }
 
-    for (IModel library : model.getAllLibraries()) {
-      int index = model.getAllLibraries().indexOf(library);
-      if (index >= 0) {
-        if (!LibraryManagerExt.getAllUnavailableReferences(library).isEmpty()) {
-          itemsToBeDisabled.add(table.getItem(index));
-        }
+    for (int i = 0; i < model.getAllLibraries().size(); i++) {
+      if (!LibraryManagerExt.getAllUnavailableReferences(model.getAllLibraries().get(i)).isEmpty()) {
+        itemsToBeDisabled.add(table.getItem(i));
       }
     }
     
-    for (IModel library : model.getAllLibraries()) {
+    for (IModel library : currentReferencedLibraries) {
       int index = model.getAllLibraries().indexOf(library);
       if (index >= 0) {
         if (CapellaLibraryExt.isUnresolvableIdentifier(library.getIdentifier())) {
@@ -136,11 +133,9 @@ public class ReferencesManagerWidget {
         item.setForeground(Display.getDefault().getSystemColor(SWT.COLOR_BLACK));
       }
     }
-    for (TableItem item : items) {
-      if (itemsToBeItalicAndRed.contains(item)) {
-        item.setForeground(Display.getDefault().getSystemColor(SWT.COLOR_RED));
-        item.setFont(JFaceResources.getFontRegistry().getItalic(JFaceResources.DEFAULT_FONT));
-      }
+    for (TableItem item : itemsToBeItalicAndRed) {
+      item.setForeground(Display.getDefault().getSystemColor(SWT.COLOR_RED));
+      item.setFont(JFaceResources.getFontRegistry().getItalic(JFaceResources.DEFAULT_FONT));
     }
   }
 

@@ -11,6 +11,7 @@
 package org.polarsys.capella.core.libraries.properties;
 
 import java.util.Collection;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -45,16 +46,10 @@ public class ReferencesProperty extends AbstractProperty implements IEditablePro
    */
   @Override
   public IStatus validate(Object newValue_p, IPropertyContext context_p) {
-
-    Collection<IModel> unsavedSessions = model.getUnsavedModels();
-    if (!unsavedSessions.isEmpty()) {
-      StringBuffer b = new StringBuffer();
-      for (IModel modelX : unsavedSessions) {
-        b.append(modelX.getIdentifier().getName() + ",");
-      }
-      b.deleteCharAt(b.length() - 1);
+    if (!model.getUnsavedModels().isEmpty()) {
+      String unsavedTxt = model.getUnsavedModels().stream().map(m -> m.getIdentifier().getName()).collect(Collectors.joining(", "));
       return new Status(IStatus.ERROR, Activator.PLUGIN_ID, NLS.bind(
-          "There is other unsaved session(s) ({0}), this may lead to inconsistencies,\n You should save others sessions before manage references.", b));
+          "There is other unsaved session(s) ({0}), this may lead to inconsistencies,\n You should save others sessions before manage references.", unsavedTxt));
     }
 
     boolean unsavedModel = model.isUnsavedRootModel();
@@ -63,26 +58,19 @@ public class ReferencesProperty extends AbstractProperty implements IEditablePro
           "The session is unsaved. Manage references will save the session.");
     }
 
-    Collection<IModel> unResolvableLibs = model.getUnresolvableReferencedLibraries();
-    if (!unResolvableLibs.isEmpty()) {
-      StringBuffer b = new StringBuffer();
-      for (IModel modelX : unResolvableLibs) {
-        b.append(modelX.getIdentifier().getName() + ",");
-      }
-      b.deleteCharAt(b.length() - 1);
+    if (!model.getUnresolvableReferencedLibraries().isEmpty()) {
+      String unresolvableLibs = model.getUnresolvableReferencedLibraries().stream()
+          .map(m -> m.getIdentifier().getName()).collect(Collectors.joining(", "));
       return new Status(IStatus.ERROR, Activator.PLUGIN_ID, NLS.bind(
           "The following libraries are not properly referenced: ({0}). This may lead to inconsistencies.\n You should uncheck these dependencies, click OK and reference them again using the same wizard.",
-          b));
+          unresolvableLibs));
     }
-
-    Collection<Collection<IModel>> cycles = model.getCycles();
-    if (cycles.size() > 0) {
-      Collection<IModel> cycle = cycles.iterator().next();
-      StringBuffer b = new StringBuffer();
-      for (IModel pathElement : cycle) {
-        b.append(pathElement.getIdentifier().getName() + " ");
-      }
-      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, cycles.size() + " cycles found. First one is [" + b + "]");
+    
+    if (!model.getCycles().isEmpty()) {
+      Collection<IModel> cycle = model.getCycles().iterator().next();
+      String cycleLibTxt = cycle.stream()
+          .map(m -> m.getIdentifier().getName()).collect(Collectors.joining(" "));
+      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, model.getCycles().size() + " cycles found. First one is [" + cycleLibTxt + "]");
     }
 
     return Status.OK_STATUS;
