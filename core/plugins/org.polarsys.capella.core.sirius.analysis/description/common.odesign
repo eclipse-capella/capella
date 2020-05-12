@@ -14858,9 +14858,6 @@
           </ownedTools>
           <ownedTools xsi:type="tool:ToolGroup" name="SequenceMessages">
             <tools xsi:type="tool_2:MessageCreationTool" documentation="Creates a new Create Sequence Message invoking a Interface Exchange Item allocation between the Source and Target Lifelines representing existing Component/Actor Parts. The kind of these Components/Actors is related to the Architecture. This tool opens a selection wizard to select an available existing Interface Exchange Item allocation or to create a new one to existing/new Interface." name="create.message" label="%common.is.create.message" precondition="aql:self.allowCreateMessageCreation2(preTargetView.target,preSourceView.target,messageEndBefore,messageEndAfter)" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@edgeMappings[name='Basic%20message%20mapping']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/CreateSequenceMessage.gif">
-              <filters precondition="aql:(self.target.eContainerOrSelf(epbs::EPBSArchitecture)->size() != 0)" elementsToListen="aql:self.target.eContainerOrSelf(interaction::Scenario)">
-                <listeners domainClass="interaction.Scenario" featureName="ownedAbstractEnds"/>
-              </filters>
               <sourceVariable name="source">
                 <subVariables xsi:type="tool_1:AcceleoVariable" name="sourceIR" computationExpression="aql:if (self->filter(interaction::Execution)->size() > 0) then self.covered else self endif"/>
               </sourceVariable>
@@ -14995,9 +14992,6 @@
               <finishingEndPredecessor name="messageEndAfter"/>
             </tools>
             <tools xsi:type="tool_2:MessageCreationTool" documentation="Creates a new Delete Sequence Message invoking a Interface Exchange Item allocation between the Source and Target Lifelines representing existing Component/Actor Parts. The kind of these Components/Actors is related to the Architecture. This tool opens a selection wizard to select an available existing Interface Exchange Item allocation or to create a new one to existing/new Interface." name="delete.message" label="%common.is.delete.message" precondition="aql:self.allowDeleteMessageCreation2(preTargetView.target,preSourceView.target,messageEndBefore,messageEndAfter)" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@edgeMappings[name='Basic%20message%20mapping']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/DeleteSequenceMessage.gif">
-              <filters precondition="aql:(self.target.eContainerOrSelf(epbs::EPBSArchitecture)->size() != 0)" elementsToListen="aql:self.target.eContainerOrSelf(interaction::Scenario)">
-                <listeners domainClass="interaction.Scenario" featureName="ownedAbstractEnds"/>
-              </filters>
               <sourceVariable name="source">
                 <subVariables xsi:type="tool_1:AcceleoVariable" name="sourceIR" computationExpression="aql:if (self->filter(interaction::Execution)->size() > 0) then self.covered else self endif"/>
               </sourceVariable>
