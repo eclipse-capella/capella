@@ -14479,7 +14479,7 @@
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Select Actor" forceRefresh="true" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
                     <parameters name="context" value="aql:container"/>
                     <parameters name="scope" value="aql:self.void2Null(container.getISScopeInsertActors())"/>
-                    <parameters name="initialSelection" value="aql:self.void2Null(containerView.eContainerOrSelf(diagram::DDiagram).eAllContents(viewpoint::DSemanticDecorator).target->filter(interaction::InstanceRole).representedInstance->select(x | x.abstractType->filter(cs::Component)->select(c | c.isActor())->size() > 0))"/>
+                    <parameters name="initialSelection" value="aql:self.void2Null(containerView.eContainerOrSelf(diagram::DDiagram).eAllContents(viewpoint::DSemanticDecorator).target->filter(interaction::InstanceRole)->select(x | x.representedInstance.abstractType.oclIsKindOf(cs::Component) and x.representedInstance.abstractType.isActor()))"/>
                     <parameters name="wizardMessage" value=""/>
                     <parameters name="resultVariable" value="result"/>
                   </subModelOperations>
@@ -14548,7 +14548,7 @@
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Select Component" forceRefresh="true" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
                     <parameters name="context" value="aql:container"/>
                     <parameters name="scope" value="aql:self.void2Null(container.getISScopeInsertComponents())"/>
-                    <parameters name="initialSelection" value="aql:self.void2Null(containerView.eContainerOrSelf(diagram::DDiagram).eAllContents(viewpoint::DSemanticDecorator).target->filter(interaction::InstanceRole).representedInstance->select(x | x.abstractType->filter(cs::Component)->select(c | c.isActor())->size() = 0))"/>
+                    <parameters name="initialSelection" value="aql:self.void2Null(containerView.eContainerOrSelf(diagram::DDiagram).eAllContents(viewpoint::DSemanticDecorator).target->filter(interaction::InstanceRole)->select(x | x.representedInstance.abstractType.oclIsKindOf(cs::Component) and not x.representedInstance.abstractType.isActor()))"/>
                     <parameters name="wizardMessage" value=""/>
                     <parameters name="resultVariable" value="result"/>
                   </subModelOperations>
