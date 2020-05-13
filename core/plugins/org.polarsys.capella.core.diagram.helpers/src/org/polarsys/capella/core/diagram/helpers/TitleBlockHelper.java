@@ -35,9 +35,13 @@ import org.eclipse.sirius.common.tools.internal.assist.ProposalProviderRegistry;
 import org.eclipse.sirius.common.tools.internal.interpreter.DefaultInterpreterProvider;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
 import org.eclipse.swt.widgets.Text;
+import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.ui.toolkit.browser.category.CategoryRegistry;
 import org.polarsys.capella.common.ui.toolkit.browser.category.ICategory;
 
@@ -576,6 +580,23 @@ public class TitleBlockHelper {
     }
     return null;
   }
+  
+  
+  /**
+   * @param object
+   * @return the referenced object/diagram label
+   */
+  public static String getReferencedElementLabel(EObject object) {
+    EObject referencedElement = TitleBlockHelper.getReferencedElement((EObject) object);
+    if(referencedElement instanceof AbstractNamedElement) {
+      return ((AbstractNamedElement)referencedElement).getName();
+    }
+    else if(referencedElement instanceof DRepresentation) {
+      return ((DRepresentation)referencedElement).getName();
+    }
+    return null;
+  }
+  
   
   public static String getServiceName(String service) {
     String text = service.replaceAll(TitleBlockHelper.CAPELLA_PREFIX, "").replaceAll("([^_])([A-Z])", "$1 $2");

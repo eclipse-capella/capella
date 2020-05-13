@@ -12,22 +12,11 @@
 package org.polarsys.capella.common.ui.providers;
 
 import org.eclipse.core.runtime.IConfigurationElement;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.sirius.diagram.DSemanticDiagram;
-import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.swt.graphics.Image;
-import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
 import org.polarsys.capella.common.ui.MdeCommonUiActivator;
 import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
-import java.net.URL;
-
-import org.eclipse.core.runtime.FileLocator;
-import org.eclipse.core.runtime.Path;
-import org.eclipse.core.runtime.Platform;
 
 public class MDEAdapterFactoryLabelProvider extends AdapterFactoryLabelProvider {
   /**
@@ -48,11 +37,6 @@ public class MDEAdapterFactoryLabelProvider extends AdapterFactoryLabelProvider 
 
   @Override
   public Image getImage(Object object) {
-    if (object instanceof DAnnotation && ((DAnnotation)object).getSource().contains("TitleBlock")) {
-      String imagePath = "/icons/full/obj16/TitleBlock_16.gif";
-      URL url = FileLocator.find(Platform.getBundle("org.polarsys.capella.core.sirius.analysis"), new Path(imagePath), null);
-      return ImageDescriptor.createFromURL(url).createImage();
-    }
     Image result = super.getImage(object);
 
     // Delegation for CDO usage for instance.
@@ -66,29 +50,6 @@ public class MDEAdapterFactoryLabelProvider extends AdapterFactoryLabelProvider 
 
   @Override
   public String getText(Object object) {
-    if (object instanceof DAnnotation && ((DAnnotation)object).getSource().contains("TitleBlock")) {
-      String text = ((DAnnotation) object).getSource();
-      text = text.replaceAll("([^_])([A-Z])", "$1 $2");
-      
-      DAnnotation annotation = (DAnnotation) object;
-      String referenceLabel = null;
-      if (!(annotation.getReferences().get(0) instanceof DAnnotation)) {
-        EObject obj = annotation.getReferences().get(0);
-        if (obj instanceof AbstractNamedElement) {
-          referenceLabel  = ((AbstractNamedElement) obj).getName();
-        }
-      } else {
-        DSemanticDiagram diagram = (DSemanticDiagram) annotation.eContainer();
-        if (diagram instanceof DRepresentation) {
-          referenceLabel = ((DRepresentation) diagram).getName();
-        }
-      }
-      if(referenceLabel != null) {
-        text = text + " : " + referenceLabel;
-      }
-      return text;
-    }
-
     String text = super.getText(object);
 
     // Delegation for CDO usage for instance.
