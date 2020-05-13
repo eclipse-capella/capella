@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.diagram.filters.ju.mb;
+package org.polarsys.capella.test.diagram.filters.ju.ccri;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,21 +16,13 @@ import java.util.List;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 
-public class MBDiagramFiltersTestSuite extends BasicTestSuite {
+public class CCRIDiagramFiltersTestSuite extends BasicTestSuite {
 
   @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<>();
-    tests.add(new HideActorGeneralizationsForMB());
-    tests.add(new HideActorInvolvementsForMB());
-    tests.add(new HideActorsForMB());
-    tests.add(new HideCapabilitiesForMB());
-    tests.add(new HideCapabilityExploitationsForMB());
-    tests.add(new HideDiagramTitleBlocksForMB());
-    tests.add(new HideElementTitleBlocksForMB());
-    tests.add(new HideMissionsForMB());
-    tests.add(new HidePropertyValuesForMB());
-    tests.add(new HideCapabilityGeneralizationsForMB());
+    tests.add(new HideDiagramTitleBlocksForCCRI());
+    tests.add(new HideElementTitleBlocksForCCRI());
     return tests;
   }
 
