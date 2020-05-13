@@ -16,7 +16,10 @@ import org.polarsys.capella.test.diagram.common.ju.context.MissionDiagram;
 
 public abstract class CRBTitleBlockTestCase extends AbstractTitleBlockTestCase {
   protected String diagramName;
+  protected String capabilityPKG;
   protected BlockArchitectureExt.Type type;
+  private static final String DEFAULT_NAME = "[CRB] New Diagram";
+
 
   public CRBTitleBlockTestCase() {
     initData();
@@ -25,6 +28,11 @@ public abstract class CRBTitleBlockTestCase extends AbstractTitleBlockTestCase {
   @Override
   protected CommonDiagram initDiagram() {
     return MissionDiagram.openDiagram(context, diagramName, type);
+  }
+
+  @Override
+  protected CommonDiagram createDiagram() {
+    return MissionDiagram.createDiagram(context, capabilityPKG, DEFAULT_NAME);
   }
 
   public abstract void initData();

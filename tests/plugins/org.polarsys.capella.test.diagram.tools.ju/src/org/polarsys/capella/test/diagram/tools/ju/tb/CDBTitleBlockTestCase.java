@@ -15,6 +15,7 @@ import org.polarsys.capella.test.diagram.common.ju.context.CommonDiagram;
 
 public abstract class CDBTitleBlockTestCase extends AbstractTitleBlockTestCase {
   protected String diagramName;
+  protected String dataPKG;
 
   public CDBTitleBlockTestCase() {
     initData();
@@ -23,6 +24,11 @@ public abstract class CDBTitleBlockTestCase extends AbstractTitleBlockTestCase {
   @Override
   protected CommonDiagram initDiagram() {
     return CDBDiagram.openDiagram(context, diagramName);
+  }
+
+  @Override
+  protected CommonDiagram createDiagram() {
+    return CDBDiagram.createDiagram(context, dataPKG);
   }
 
   public abstract void initData();

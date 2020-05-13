@@ -18,6 +18,7 @@ public class PA_CRBTitleBlockTestCase extends CRBTitleBlockTestCase {
   private static final String COMPONENT_ID = "961eecdb-26a4-4d3f-a1f7-8b36f470f534";
   private static final String CAPABILITY_ID = "ee54e52c-4357-4608-87b3-de0f7370a93c";
   private static final String DIAGRAM_NAME = "[CRB] Capabilities Physical";
+  private static final String CAPABILITY_PKG = "0cfbe3e4-cb26-41cf-93e1-16730241bb16";
 
   @Override
   public void initData() {
@@ -26,6 +27,7 @@ public class PA_CRBTitleBlockTestCase extends CRBTitleBlockTestCase {
     elementsId.add(CAPABILITY_ID);
     diagramName = DIAGRAM_NAME;
     type = BlockArchitectureExt.Type.PA;
+    capabilityPKG = CAPABILITY_PKG;
   }
 
 }

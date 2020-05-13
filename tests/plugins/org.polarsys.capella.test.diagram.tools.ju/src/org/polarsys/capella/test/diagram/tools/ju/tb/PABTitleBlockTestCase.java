@@ -17,6 +17,7 @@ public class PABTitleBlockTestCase extends XABTitleBlockTestCase {
   private static final String ACTOR_ID = "13cccb6a-687d-4a81-89b7-69bdde6443cb";
   private static final String NODE_ID = "cd02d8ef-bb7f-4d09-ae46-d3c434b3999d";
   private static final String DIAGRAM_NAME = "[PAB] Structure";
+  private static final String STRUCTURE_PKG = "928ffbe4-b066-44a3-9158-5bfa8308ba31";
 
   @Override
   public void initData() {
@@ -24,6 +25,7 @@ public class PABTitleBlockTestCase extends XABTitleBlockTestCase {
     elementsId.add(NODE_ID);
     diagramName = DIAGRAM_NAME;
     type = BlockArchitectureExt.Type.PA;
+    structurePKG = STRUCTURE_PKG;
   }
 
 }

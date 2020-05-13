@@ -16,6 +16,7 @@ public class PA_PDTitleBlockTestCase extends PDTitleBlockTestCase {
   private static final String DATA3_ID = "fa4dd744-ef0f-451a-a713-5f79f344812b";
   private static final String DATA4_ID = "56938bb5-311a-4f97-b9dc-28674e4b50cd";
   private static final String DIAGRAM_NAME = "[PD] Interfaces Physical";
+  private static final String INTERFACES_PKG = "463eeb69-e250-4fac-8ba2-d27cf2b10ed8";
 
   @Override
   protected void initData() {
@@ -24,5 +25,6 @@ public class PA_PDTitleBlockTestCase extends PDTitleBlockTestCase {
     elementsId.add(DATA3_ID);
     elementsId.add(DATA4_ID);
     diagramName = DIAGRAM_NAME;
+    interfacesPKG = INTERFACES_PKG;
   }
 }

@@ -12,16 +12,21 @@ package org.polarsys.capella.test.diagram.tools.ju.tb;
 
 import java.util.ArrayList;
 
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
+import org.eclipse.ui.preferences.ScopedPreferenceStore;
+import org.polarsys.capella.common.ui.MdeCommonUiActivator;
 import org.polarsys.capella.test.diagram.common.ju.api.AbstractDiagramTestCase;
 import org.polarsys.capella.test.diagram.common.ju.context.CommonDiagram;
 import org.polarsys.capella.test.framework.context.SessionContext;
 
 public abstract class AbstractTitleBlockTestCase extends AbstractDiagramTestCase {
+  private ScopedPreferenceStore preferenceStore;
   protected Session session;
   protected SessionContext context;
   protected CommonDiagram diagram;
+  protected CommonDiagram newDiagram;
   protected ArrayList<String> elementsId = new ArrayList<String>();
 
   @Override
@@ -43,6 +48,10 @@ public abstract class AbstractTitleBlockTestCase extends AbstractDiagramTestCase
   }
 
   public void testDiagramTitleBlock() {
+
+    // check if diagram was created by default
+
+    newDiagram.checkAutocreateDiagramTitleBlock();
     // create TB tools
     DAnnotation diagramTB = diagram.createDiagramTitleBlock();
 
@@ -72,9 +81,16 @@ public abstract class AbstractTitleBlockTestCase extends AbstractDiagramTestCase
 
   protected abstract CommonDiagram initDiagram();
 
+  protected abstract CommonDiagram createDiagram();
+
+
   protected void initTest() {
     session = getSession(getRequiredTestModel());
     context = new SessionContext(session);
     diagram = initDiagram();
+    preferenceStore = (ScopedPreferenceStore) MdeCommonUiActivator.getDefault().getPreferenceStore();
+    preferenceStore.setValue("defaultTitleBlock", true);
+    newDiagram = createDiagram();
+    session.save(new NullProgressMonitor());
   }
 }

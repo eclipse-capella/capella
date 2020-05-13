@@ -15,6 +15,7 @@ import org.polarsys.capella.test.diagram.common.ju.context.PDDiagram;
 
 public abstract class PDTitleBlockTestCase extends AbstractTitleBlockTestCase {
   protected String diagramName;
+  protected String interfacesPKG;
 
   public PDTitleBlockTestCase() {
     initData();
@@ -23,6 +24,11 @@ public abstract class PDTitleBlockTestCase extends AbstractTitleBlockTestCase {
   @Override
   protected CommonDiagram initDiagram() {
     return PDDiagram.openDiagram(context, diagramName);
+  }
+
+  @Override
+  protected CommonDiagram createDiagram() {
+    return PDDiagram.createDiagram(context, interfacesPKG);
   }
 
   protected abstract void initData();

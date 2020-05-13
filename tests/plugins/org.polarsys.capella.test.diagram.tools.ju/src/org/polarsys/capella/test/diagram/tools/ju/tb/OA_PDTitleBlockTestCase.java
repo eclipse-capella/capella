@@ -14,10 +14,12 @@ public class OA_PDTitleBlockTestCase extends PDTitleBlockTestCase {
 
   private static final String DATA_ID = "fa4dd744-ef0f-451a-a713-5f79f344812b";
   private static final String DIAGRAM_NAME = "[PD] Interfaces Operational";
+  private static final String INTERFACES_PKG = "eca2076d-da93-44f7-89d8-d58c22edbd85";
 
   @Override
   protected void initData() {
     elementsId.add(DATA_ID);
     diagramName = DIAGRAM_NAME;
+    interfacesPKG = INTERFACES_PKG;
   }
 }
