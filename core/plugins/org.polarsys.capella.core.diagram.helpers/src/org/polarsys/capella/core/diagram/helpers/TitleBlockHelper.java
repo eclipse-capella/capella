@@ -598,4 +598,14 @@ public class TitleBlockHelper {
     text = text.length() > 1 ? text.substring(0, 1).toUpperCase() + text.substring(1) : text;
     return text;
   }
+
+  public static String getTitleBlockName(String type) {
+    if (type.equals(TitleBlockHelper.DIAGRAM_TITLE_BLOCK)) {
+      return "Diagram Title Block";
+    }
+    if (type.equals(TitleBlockHelper.ELEMENT_TITLE_BLOCK)) {
+      return "Element Title Block";
+    }
+    return "";
+  }
 }
