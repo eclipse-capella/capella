@@ -15,6 +15,7 @@ import org.polarsys.capella.test.diagram.common.ju.context.IDDiagram;
 
 public abstract class IDTitleBlockTestCase extends AbstractTitleBlockTestCase {
   protected String diagramName;
+  protected String interfaceID;
 
   public IDTitleBlockTestCase() {
     initData();
@@ -23,6 +24,11 @@ public abstract class IDTitleBlockTestCase extends AbstractTitleBlockTestCase {
   @Override
   protected CommonDiagram initDiagram() {
     return IDDiagram.openDiagram(context, diagramName);
+  }
+
+  @Override
+  protected CommonDiagram createDiagram() {
+    return IDDiagram.createDiagram(context, interfaceID);
   }
 
   protected abstract void initData();

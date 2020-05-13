@@ -16,6 +16,7 @@ import org.polarsys.capella.test.diagram.common.ju.context.XABDiagram;
 
 public abstract class XABTitleBlockTestCase extends AbstractTitleBlockTestCase {
   protected String diagramName;
+  protected String structurePKG;
   protected BlockArchitectureExt.Type type;
 
   public XABTitleBlockTestCase() {
@@ -25,6 +26,11 @@ public abstract class XABTitleBlockTestCase extends AbstractTitleBlockTestCase {
   @Override
   protected CommonDiagram initDiagram() {
     return XABDiagram.openDiagram(context, diagramName, type);
+  }
+
+  @Override
+  protected CommonDiagram createDiagram() {
+    return XABDiagram.createDiagram(context, structurePKG);
   }
 
   public abstract void initData();

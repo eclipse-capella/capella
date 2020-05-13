@@ -16,6 +16,7 @@ public class PA_CDBTitleBlockTestCase extends CDBTitleBlockTestCase {
   private static final String DATA_ID = "b6a3203f-af0a-438c-beea-666327cf46df";
   private static final String BOOLEAN_ID = "3f5abbf2-54b5-487a-b9e5-cd1351389229";
   private static final String DIAGRAM_NAME = "[CDB] Data Physical";
+  private static final String DATA_PKG = "56938bb5-311a-4f97-b9dc-28674e4b50cd";
 
   @Override
   public void initData() {
@@ -23,5 +24,6 @@ public class PA_CDBTitleBlockTestCase extends CDBTitleBlockTestCase {
     elementsId.add(DATA_ID);
     elementsId.add(BOOLEAN_ID);
     diagramName = DIAGRAM_NAME;
+    dataPKG = DATA_PKG;
   }
 }

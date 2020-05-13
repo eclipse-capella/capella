@@ -16,6 +16,7 @@ import org.polarsys.capella.test.diagram.common.ju.context.XDFBDiagram;
 
 public abstract class XDFBTitleBlockTestCase extends AbstractTitleBlockTestCase {
   protected String diagramName;
+  protected String rootFunction;
   protected BlockArchitectureExt.Type type;
 
   public XDFBTitleBlockTestCase() {
@@ -25,6 +26,11 @@ public abstract class XDFBTitleBlockTestCase extends AbstractTitleBlockTestCase 
   @Override
   protected CommonDiagram initDiagram() {
     return XDFBDiagram.openDiagram(context, diagramName, type);
+  }
+
+  @Override
+  protected CommonDiagram createDiagram() {
+    return XDFBDiagram.createDiagram(context, rootFunction);
   }
 
   protected abstract void initData();

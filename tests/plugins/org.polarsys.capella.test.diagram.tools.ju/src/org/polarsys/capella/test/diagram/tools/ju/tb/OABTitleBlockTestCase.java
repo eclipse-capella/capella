@@ -16,6 +16,7 @@ public class OABTitleBlockTestCase extends XABTitleBlockTestCase {
   private static final String ACTOR_ID = "134804c9-802b-4b16-80fa-4993456bb82b";
   private static final String ENTITY_ID = "56e2d841-e27c-49e1-ab37-37498d8ecbb5";
   private static final String DIAGRAM_NAME = "[OAB] Operational Entities";
+  private static final String STRUCTURE_PKG = "1a93375b-9ee4-413f-a839-bdb017d2f191";
 
   @Override
   public void initData() {
@@ -23,6 +24,7 @@ public class OABTitleBlockTestCase extends XABTitleBlockTestCase {
     elementsId.add(ENTITY_ID);
     diagramName = DIAGRAM_NAME;
     type = BlockArchitectureExt.Type.OA;
+    structurePKG = STRUCTURE_PKG;
   }
 
 }

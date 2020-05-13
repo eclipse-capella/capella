@@ -18,6 +18,7 @@ public class PA_IDTitleBlockTestCase extends IDTitleBlockTestCase {
   protected void initData() {
     elementsId.add(INTERFACE_ID);
     diagramName = DIAGRAM_NAME;
+    interfaceID = INTERFACE_ID;
   }
 
 }

@@ -22,6 +22,7 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.polarsys.capella.core.diagram.helpers.TitleBlockHelper;
 import org.polarsys.capella.core.sirius.analysis.DiagramServices;
+import org.polarsys.capella.core.sirius.analysis.TitleBlockServices;
 import org.polarsys.capella.core.sirius.analysis.preferences.TitleBlockPreferencesInitializer;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateAbstractDNodeTool;
@@ -71,4 +72,16 @@ public class CreateDiagramTitleBlockTool extends CreateAbstractDNodeTool<DDiagra
   public DDiagramElementContainer getResult() {
     return (DDiagramElementContainer) newElements.iterator().next();
   }
+
+  @Override
+  public void contextOk() {
+    super.contextOk();
+    assertTrue(TitleBlockServices.getService().isValidCreateDiagramTitleBlock(getDiagramContext().getDiagram()));
+  }
+
+  public void checkAutocreate() {
+    super.contextOk();
+    assertTrue(TitleBlockServices.getService().hasADiagramTitleBlock(getDiagramContext().getDiagram())
+        && !TitleBlockServices.getService().getVisibleDiagramTitleBlocks(getDiagramContext().getDiagram()).isEmpty());
+}
 }
