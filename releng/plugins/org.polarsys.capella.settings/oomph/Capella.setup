@@ -178,6 +178,7 @@
       <targlet
           name="Capella source code, excluding test model projects and ext/ sources"
           activeRepositoryList=""
+          includeAllRequirements="false"
           includeBinaryEquivalents="false">
         <requirement
             name="*"/>
