@@ -48,7 +48,7 @@ with [get-view "Project Explorer" | get-tree] {
     select "RefreshAllSubRepresentations/model.aird/model/Operational Analysis/Operational Activities/Root Operational Activity/OperationalActivity 6" "RefreshAllSubRepresentations/model.aird/model/Operational Analysis/Operational Activities/Root Operational Activity/OperationalActivity 5" "RefreshAllSubRepresentations/model.aird/model/Operational Analysis/Operational Activities/Root Operational Activity/OperationalActivity 4" "RefreshAllSubRepresentations/model.aird/model/Operational Analysis/Operational Activities/Root Operational Activity/OperationalActivity 3" "RefreshAllSubRepresentations/model.aird/model/Operational Analysis/Operational Activities/Root Operational Activity/OperationalActivity 2" "RefreshAllSubRepresentations/model.aird/model/Operational Analysis/Operational Activities/Root Operational Activity/OperationalActivity 1"
     get-menu -path Delete | click
 }
-get-window "Progress Information" | get-window Delete | get-button Yes | click
+get-window "Progress Information" | get-window "Confirm Deletion" | get-button OK | click
 
 // Do not save manually the model. Call the refresh all sub representations
 get-view "Project Explorer" | get-tree | select "RefreshAllSubRepresentations/*model.aird" | get-menu 
