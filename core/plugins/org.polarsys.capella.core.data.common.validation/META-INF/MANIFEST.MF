@@ -15,4 +15,5 @@ Require-Bundle: org.polarsys.capella.core.validation,
  org.polarsys.capella.core.sirius.analysis
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
-Export-Package: org.polarsys.capella.core.data.common.validation.statetransition
+Export-Package: org.polarsys.capella.core.data.common.validation.project,
+ org.polarsys.capella.core.data.common.validation.statetransition
