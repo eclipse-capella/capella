@@ -5,3 +5,6 @@ These followings icons are made available under the terms of the Eclipse Public 
 <icon file path> - <original eclipse plug-in> - <original file path>
 
 icons/search.gif - org.eclipse.search - org.eclipse.search/icons/full/etool16/search.gif
+icons/line_match.png - org.eclipse.search - org.eclipse.search/icons/full/etool16/line_match.png
+icons/check_all.png - org.eclipse.egit.ui - org.eclipse.egit.ui/icons/obj16/check_all.png
+icons/uncheck_all.png - org.eclipse.egit.ui - org.eclipse.egit.ui/icons/obj16/uncheck_all.png
