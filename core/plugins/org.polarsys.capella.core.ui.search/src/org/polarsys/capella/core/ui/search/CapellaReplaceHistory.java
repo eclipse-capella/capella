@@ -1,10 +1,12 @@
 /*******************************************************************************
  * Copyright (c) 2020 THALES GLOBAL SERVICES.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *  
+ * 
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0
+ * 
+ * SPDX-License-Identifier: EPL-2.0
+ * 
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
@@ -14,20 +16,25 @@ import org.eclipse.jface.dialogs.IDialogSettings;
 
 public class CapellaReplaceHistory extends AbstractCapellaHistory {
   private static CapellaReplaceHistory instance;
-  protected CapellaReplaceHistory() {}
-  
+
+  protected CapellaReplaceHistory() {
+  }
+
   public static CapellaReplaceHistory getInstance() {
-    if(instance == null) {
+    if (instance == null) {
       instance = new CapellaReplaceHistory();
     }
     return instance;
   }
 
+  @Override
   protected void setSearchSettings(CapellaSearchSettings searchSettings, IDialogSettings searchHistorySection) {
     searchSettings.setReplaceTextPattern(searchHistorySection.get(SECTION_SEARCH_REPLACE_PATTERN));
   }
-  
-  protected void setSearchHistorySettings(CapellaSearchSettings capellaSearchSettings, IDialogSettings searchHistorySection) {
+
+  @Override
+  protected void setSearchHistorySettings(CapellaSearchSettings capellaSearchSettings,
+      IDialogSettings searchHistorySection) {
     searchHistorySection.put(SECTION_SEARCH_REPLACE_PATTERN, capellaSearchSettings.getReplaceTextPattern());
   }
 }
