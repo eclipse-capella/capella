@@ -348,5 +348,31 @@
             </constraint>
          </constraints>
       </constraintProvider>
+      <constraintProvider>
+         <package
+               namespaceUri="http://www.polarsys.org/capella/core/modeller/1.4.0">
+         </package>
+         <constraints
+               categories="capella.category/integrity">
+            <constraint
+                  class="org.polarsys.capella.core.data.common.validation.project.ProjectReferencedLibrariesRule"
+                  id="I_03"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="I_03 - Check existence of referenced libraries"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  Referenced library {0} does not exist.
+               </message>
+               <description>
+                  This rule checks that referenced libraries exist for a given Project.
+               </description>
+               <target
+                     class="SystemEngineering">
+               </target>
+            </constraint></constraints>
+      </constraintProvider>
    </extension>
 </plugin>
