@@ -21,6 +21,8 @@ import java.util.stream.Collectors;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.diagram.AbstractDNode;
@@ -30,9 +32,19 @@ import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
+import org.eclipse.sirius.diagram.business.api.helper.filter.FilterService;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
+import org.eclipse.sirius.diagram.description.filter.FilterDescription;
+import org.eclipse.sirius.diagram.ui.business.api.helper.graphicalfilters.CompositeFilterApplicationBuilder;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
+import org.eclipse.sirius.viewpoint.provider.Messages;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
+import org.polarsys.capella.common.ef.command.AbstractCommand;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.core.diagram.helpers.DiagramHelper;
 import org.polarsys.capella.core.diagram.helpers.TitleBlockHelper;
 import org.polarsys.capella.core.sirius.analysis.preferences.TitleBlockPreferencesInitializer;
 
@@ -49,6 +61,10 @@ public class TitleBlockServices {
   static Map<String, String> propertiesContent = new HashMap<String, String>();
   private static final String DEFAULT_CELL_NAME = "Name";
   private static final String DEFAULT_CELL_CONTENT = "feature:name";
+  private static final String FILTERS_TITLE_BLOCKS_MESSAGE = "{0} are hidden by filters. Do you want to deactivate the filters for {1}?";
+  private static final String FILTERS_DIALOG_TITLE = "Filters deactivation";
+  private static final String FILTER_DIAGRAM_TITLE_BLOCK = "hide.diagram.title.blocks.filter";
+  private static final String FILTER_ELEMENT_TITLE_BLOCK = "hide.element.title.blocks.filter";
 
   public static TitleBlockServices getService() {
     if (service == null) {
@@ -93,7 +109,8 @@ public class TitleBlockServices {
    */
   public boolean isValidCreateDiagramTitleBlock(EObject containerView) {
     return isContainerDiagram(containerView)
-        && (!hasADiagramTitleBlock((DDiagram) containerView) || getVisibleDiagramTitleBlocks(containerView).isEmpty());
+        && (!hasADiagramTitleBlock((DDiagram) containerView) || getVisibleDiagramTitleBlocks(containerView).isEmpty()
+            || isFilterDiagramTitleBlocksEnabled((DDiagram) containerView));
   }
 
   /**
@@ -104,7 +121,8 @@ public class TitleBlockServices {
    */
   public boolean isValidCreateElementTitleBlock(EObject containerView) {
     return (containerView instanceof DDiagramElement) && (!hasAElementTitleBlock((DDiagramElement) containerView)
-        || getVisibleElementTitleBlocks(containerView).isEmpty());
+        || getVisibleElementTitleBlocks(containerView).isEmpty()
+        || isFilterElementTitleBlocksEnabled((DDiagramElement) containerView));
   }
 
   /**
@@ -165,11 +183,39 @@ public class TitleBlockServices {
    * @return
    */
   public void createDiagramTitleBlock(DDiagram diagram) {
+    createDiagramTitleBlock(diagram, true);
+  }
+
+  /**
+   * creates a Diagram Title Block and if the filters are activated for the created element, the user will see a dialog
+   * to choose if he wants to disable the filters.
+   * 
+   * @param diagram
+   * @param checkFilters
+   * @return
+   */
+  public void createDiagramTitleBlock(DDiagram diagram, boolean checkFilters) {
     DAnnotation titleBlock = TitleBlockHelper.addDiagramTitleBlock(diagram);
     addDiagramTitleBlockContent(diagram, titleBlock);
     createTitleBlockView(titleBlock, diagram, diagram);
+    if (checkFilters) {
+      checkTitleBlocksFilters(diagram, TitleBlockHelper.DIAGRAM_TITLE_BLOCK);
+    }
   }
-  
+
+  /**
+   * allows to deactivate filters when create/show-hide Diagram Title Block tools are used
+   * 
+   * @param diagram
+   * @return
+   */
+  public boolean deactivateDiagramTitleBlockFilter(DDiagram diagram) {
+    if (hasADiagramTitleBlock(diagram) && !getVisibleDiagramTitleBlocks(diagram).isEmpty()
+        && isFilterDiagramTitleBlocksEnabled(diagram)) {
+      return checkTitleBlocksFilters(diagram, TitleBlockHelper.DIAGRAM_TITLE_BLOCK);
+    }
+    return false;
+  }
 
   /**
    * add the content (lines, columns, content) to a Diagram Title Block
@@ -206,6 +252,21 @@ public class TitleBlockServices {
     DAnnotation line = TitleBlockHelper.addTitleBlockLine(diagram, titleBlock);
     TitleBlockHelper.addTitleBlockCell(diagram, line, DEFAULT_CELL_NAME, DEFAULT_CELL_CONTENT);
     createTitleBlockView(titleBlock, diagram, elementView);
+    checkTitleBlocksFilters(diagram, TitleBlockHelper.ELEMENT_TITLE_BLOCK);
+  }
+
+  /**
+   * allows to deactivate filters when create/show-hide Diagram Title Block tools are used
+   * 
+   * @param diagram
+   * @return
+   */
+  public boolean deactivateElementTitleBlockFilter(DDiagramElement elementView) {
+    if (hasAElementTitleBlock(elementView) && !getVisibleElementTitleBlocks(elementView).isEmpty()
+        && isFilterElementTitleBlocksEnabled(elementView)) {
+      return checkTitleBlocksFilters((DDiagram) elementView.eContainer(), TitleBlockHelper.ELEMENT_TITLE_BLOCK);
+    }
+    return false;
   }
 
   /**
@@ -298,7 +359,7 @@ public class TitleBlockServices {
     if (TitleBlockHelper.isInitializedDiagramTitleBlock(diagram) == false) {
       titleBlockFirstInitialize(diagram);
       if (TitleBlockPreferencesInitializer.isCreateDiagramTitleBlockByDefault()) {
-        createDiagramTitleBlock(diagram);
+        createDiagramTitleBlock(diagram, false);
       }
     }
     // delete the dangling element title blocks
@@ -326,6 +387,31 @@ public class TitleBlockServices {
    */
   public List<DAnnotation> getVisibleElementTitleBlocks(Object containerView) {
     return getVisibleTitleBlocks(containerView, TitleBlockHelper.ELEMENT_TITLE_BLOCK);
+  }
+
+  /**
+   * @param diagram
+   * @return check if Diagram Title Block filter is enabled
+   */
+  public boolean isFilterDiagramTitleBlocksEnabled(DDiagram diagram) {
+    return !getActivatedFilters(diagram, FILTER_DIAGRAM_TITLE_BLOCK).isEmpty();
+  }
+
+  /**
+   * @param diagram
+   * @return check if Diagram Title Block filter is enabled
+   */
+  public boolean isFilterElementTitleBlocksEnabled(DDiagramElement element) {
+    if (element.eContainer() instanceof DDiagram) {
+      DDiagram diagram = (DDiagram) element.eContainer();
+      return !getActivatedFilters(diagram, FILTER_ELEMENT_TITLE_BLOCK).isEmpty();
+    }
+    return false;
+  }
+
+  public List<FilterDescription> getActivatedFilters(DDiagram diagram, String filerType) {
+    return diagram.getActivatedFilters().stream().filter(x -> x.getName().equals(filerType))
+        .collect(Collectors.toList());
   }
 
   /**
@@ -461,11 +547,13 @@ public class TitleBlockServices {
     if (!currentTB.equals(TitleBlockPreferencesInitializer.getContent())) {
       removeTitleBlockContent((DDiagram) elementView, diagramTitleBlock);
       addDiagramTitleBlockContent((DDiagram) elementView, diagramTitleBlock);
-      
-      DDiagramElement nodeTitleBlock = DiagramServices.getDiagramServices().getDiagramElement(((DDiagram) elementView), diagramTitleBlock);
+
+      DDiagramElement nodeTitleBlock = DiagramServices.getDiagramServices().getDiagramElement(((DDiagram) elementView),
+          diagramTitleBlock);
       for (EObject objLine : diagramTitleBlock.getReferences()) {
         if (objLine instanceof DAnnotation) {
-          createTitleBlockLineView(nodeTitleBlock, (DAnnotation) objLine, ((DDiagram) elementView), ((DDiagram) elementView));
+          createTitleBlockLineView(nodeTitleBlock, (DAnnotation) objLine, ((DDiagram) elementView),
+              ((DDiagram) elementView));
         }
       }
       DialectManager.INSTANCE.refresh((DDiagram) elementView, new NullProgressMonitor());
@@ -541,7 +629,7 @@ public class TitleBlockServices {
     removeTitleBlockContent(diagram, titleBlock);
     diagram.getEAnnotations().remove(titleBlock);
   }
-  
+
   /**
    * this deletes Title Blocks lines, columns, content DAnnotations
    * 
@@ -627,7 +715,7 @@ public class TitleBlockServices {
       if (cell instanceof DAnnotation && TitleBlockHelper.isTitleBlockCell((DAnnotation) cell)) {
         String feature = ((DAnnotation) cell).getDetails().get(TitleBlockHelper.CONTENT);
         if (feature != null) {
-          Object obj = TitleBlockHelper.getResultOfExpression((DDiagram)diagram, feature, titleBlockContainer);
+          Object obj = TitleBlockHelper.getResultOfExpression((DDiagram) diagram, feature, titleBlockContainer);
           if (obj != null && !(obj instanceof EvaluationException)) {
             if (obj instanceof Collection) {
               return ((Collection) obj).stream()
@@ -756,6 +844,7 @@ public class TitleBlockServices {
     for (EObject aType : selectedTypes) {
       if (!existingTypes.containsKey(aType)) {
         createTitleBlockView((DAnnotation) aType, diagram, elementView);
+        checkTitleBlocksFilters(diagram, type);
       }
     }
     return elementView;
@@ -876,5 +965,47 @@ public class TitleBlockServices {
    */
   public boolean isDiagramTitleBlock(EObject element) {
     return (element instanceof DAnnotation) && TitleBlockHelper.isDiagramTitleBlock((DAnnotation) element);
+  }
+
+  /**
+   * check if the filters are activated for Element Title Block or Diagram Title Block
+   * 
+   * @param diagram
+   * @param type
+   *          (Diagram or Element TB)
+   * @return boolean
+   */
+  protected boolean checkTitleBlocksFilters(DDiagram diagram, String type) {
+    List<FilterDescription> activatedFiltersOnNode = getActivatedFilters(diagram, getFilterLable(type));
+    if (!activatedFiltersOnNode.isEmpty()) {
+      String typeLabel = TitleBlockHelper.getTitleBlockName(type);
+      boolean confirmation = MessageDialog.openQuestion(Display.getDefault().getActiveShell(), FILTERS_DIALOG_TITLE,
+          NLS.bind(FILTERS_TITLE_BLOCKS_MESSAGE, typeLabel, typeLabel));
+      if (confirmation) {
+        // remove the filter
+        AbstractCommand cmd = new AbstractReadWriteCommand() {
+          @Override
+          public void run() {
+            EList<FilterDescription> activatedFilters = diagram.getActivatedFilters();
+            activatedFilters.removeAll(activatedFiltersOnNode);
+            CompositeFilterApplicationBuilder builder = new CompositeFilterApplicationBuilder(diagram);
+            builder.computeCompositeFilterApplications();
+          }
+        };
+        TransactionHelper.getExecutionManager(diagram).execute(cmd);
+        return true;
+      }
+    }
+    return false;
+  }
+
+  private String getFilterLable(String type) {
+    if (type.equals(TitleBlockHelper.DIAGRAM_TITLE_BLOCK)) {
+      return FILTER_DIAGRAM_TITLE_BLOCK;
+    }
+    if (type.equals(TitleBlockHelper.ELEMENT_TITLE_BLOCK)) {
+      return FILTER_ELEMENT_TITLE_BLOCK;
+    }
+    return "";
   }
 }
