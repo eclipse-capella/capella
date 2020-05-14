@@ -61,7 +61,7 @@ public class TitleBlockServices {
   static Map<String, String> propertiesContent = new HashMap<String, String>();
   private static final String DEFAULT_CELL_NAME = "Name";
   private static final String DEFAULT_CELL_CONTENT = "feature:name";
-  private static final String FILTERS_TITLE_BLOCKS_MESSAGE = "{0} are hidden by filters. Do you want to deactivate the filters for {1}?";
+  private static final String FILTERS_TITLE_BLOCKS_MESSAGE = "{0}s are hidden by filters. Do you want to deactivate the filters for {1}s?";
   private static final String FILTERS_DIALOG_TITLE = "Filters deactivation";
   private static final String FILTER_DIAGRAM_TITLE_BLOCK = "hide.diagram.title.blocks.filter";
   private static final String FILTER_ELEMENT_TITLE_BLOCK = "hide.element.title.blocks.filter";
