@@ -18,8 +18,8 @@ import org.polarsys.capella.test.diagram.filters.ju.DiagramTitleBlockFilterTestC
 
 public class HideElementTitleBocksForCDI extends DiagramTitleBlockFilterTestCase {
 
-  private final String ELEMENT_TITLE_BLOCK_LOGICAL_SYSTEM_ID = "_ZXKBAJA5EeqLfrB_jI9lxg";
-  private final String ELEMENT_TITLE_BLOCK_INTERFACE_ID = "_ZxBSgJA5EeqLfrB_jI9lxg";
+  private final String ELEMENT_TITLE_BLOCK_LOGICAL_SYSTEM_ID = "_JWG40JXXEeqIX5DIDYO2NQ";
+  private final String ELEMENT_TITLE_BLOCK_INTERFACE_ID = "_KfpTwJXXEeqIX5DIDYO2NQ";
 
   @Override
   protected String getFilterName() {
@@ -34,6 +34,6 @@ public class HideElementTitleBocksForCDI extends DiagramTitleBlockFilterTestCase
   
   @Override
   protected String getDiagramName() {
-    return "[CDI] Logical System Title Blocks";
+    return "[CDI] Logical Component Title Blocks";
   }
 }

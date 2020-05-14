@@ -18,9 +18,9 @@ import org.polarsys.capella.test.diagram.filters.ju.DiagramTitleBlockFilterTestC
 
 public class HideElementTitleBocksForCEI extends DiagramTitleBlockFilterTestCase {
 
-  private final String ELEMENT_TITLE_BLOCK_LOGICAL_COMPONENT_ID = "_3BP5AJNzEeq9H9-hvp0b0w";
-  private final String ELEMENT_TITLE_BLOCK_LOGICAL_ACTOR_ID = "_3caLAJNzEeq9H9-hvp0b0w";
-  private final String ELEMENT_TITLE_BLOCK_INTERFACE_ID = "_32ISkJNzEeq9H9-hvp0b0w";
+  private final String ELEMENT_TITLE_BLOCK_LOGICAL_COMPONENT_ID = "_3pXikJXcEeqIX5DIDYO2NQ";
+  private final String ELEMENT_TITLE_BLOCK_LOGICAL_ACTOR_ID = "_5BGxkJXcEeqIX5DIDYO2NQ";
+  private final String ELEMENT_TITLE_BLOCK_INTERFACE_ID = "_PH9T8JXdEeqIX5DIDYO2NQ";
 
   @Override
   protected String getFilterName() {
