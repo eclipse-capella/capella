@@ -3,18 +3,25 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.ui.search;singleton:=true
 Bundle-Version: 1.4.0.qualifier
-Bundle-Activator: org.polarsys.capella.core.ui.search.CapellaUISearchPlugin
+Bundle-Activator: org.polarsys.capella.core.ui.search.Activator
 Bundle-Vendor: %providerName
-Require-Bundle: com.google.guava,
- org.polarsys.capella.core.ui.toolkit,
- org.polarsys.capella.core.platform.sirius.ui.navigator,
- org.polarsys.capella.core.ui.semantic.browser,
- org.polarsys.capella.common.tools.report.appenders.reportlogview,
- org.polarsys.capella.common.re.gen,
- org.eclipse.sirius,
- org.eclipse.core.expressions,
- org.eclipse.ui.ide
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: org.polarsys.capella.core.ui.search,
- org.polarsys.capella.core.ui.search.handler
 Bundle-Localization: plugin
+Require-Bundle: org.eclipse.search,
+ org.polarsys.capella.core.platform.sirius.ui.navigator,
+ org.polarsys.capella.common.ui.toolkit,
+ org.eclipse.sirius.common.ui,
+ org.polarsys.capella.core.sirius.ui,
+ org.polarsys.capella.common.ui,
+ org.polarsys.capella.core.data.gen.edit.decorators,
+ org.eclipse.emf.codegen.ecore,
+ org.polarsys.capella.core.model.semantic,
+ org.eclipse.sirius.diagram.ui,
+ org.eclipse.gmf.runtime.notation.edit,
+ org.eclipse.sirius.ext.base,
+ org.eclipse.gmf.runtime.diagram.ui,
+ org.polarsys.kitalpha.ad.services,
+ org.apache.commons.lang
+Export-Package: org.polarsys.capella.core.ui.search
+ 
+
