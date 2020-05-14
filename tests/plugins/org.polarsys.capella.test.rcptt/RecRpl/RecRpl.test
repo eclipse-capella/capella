@@ -330,7 +330,7 @@ with [get-editor "[SDFB] Root System Function" -index 1 | get-diagram -index 1] 
     }
     key-type Del
 }
-get-window Delete | get-button Yes | click
+get-window "Confirm Deletion" | get-button OK | click
 with [get-editor "[SDFB] Root System Function" -index 1 | get-diagram -index 1 | get-edit-part 
     -name "[SDFB] Root System Function" | get-edit-part -name "SystemFunction 1_newElements" | get-edit-part 
     -className DNodeContainerViewNodeContainerCompartmentEditPart] {
@@ -462,7 +462,7 @@ with [get-editor "[SDFB] Root System Function" -index 1 | get-diagram -index 1] 
     get-edit-part -name "[SDFB] Root System Function" | mouse-move 763 495 -height 687 -width 1042
     key-type Del
 }
-get-window Delete | get-button Yes | click
+get-window "Confirm Deletion" | get-button OK | click
 
 
 // Update REC from RPL, Sub function of REC shall be deleted too

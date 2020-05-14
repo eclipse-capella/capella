@@ -46,10 +46,10 @@ with [get-editor "[SDFB] Root System Function" | get-diagram -index 1] {
 
 // This Delete window should'nt appear as the command is disabled
 try {
-    get-window Delete | get-button Yes | click
+    get-window "Confirm Deletion" | get-button OK | click
 } -catch {
     // Verify that the window was missing (and not some other problem)
-    verify-error -command {get-window Delete}
+    verify-error -command {get-window "Confirm Deletion"}
 }
 
 // check that the SystemFunction 1 is always here

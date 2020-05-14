@@ -327,7 +327,7 @@ get-view "Project Explorer" | get-tree
     | select "MAProjectReadWriteLib/*MAProjectReadWriteLib.aird/MAProjectReadWriteLib/Logical Architecture/Structure/Logical System/LC 1 [RPL]/[Constraint] [RPL]" 
     | key-type Del
     
-get-window "Progress Information" | get-window Delete | get-button Yes | click
+get-window "Progress Information" | get-window "Confirm Deletion" | get-button OK | click
 get-view "Project Explorer" | get-tree 
     | select "MAProjectReadWriteLib/*MAProjectReadWriteLib.aird/MAProjectReadWriteLib/Logical Architecture/Structure/Logical System/LC 1 [RPL]" 
     | get-menu "REC \\/ RPL/Update REC from selected RPL" | click
