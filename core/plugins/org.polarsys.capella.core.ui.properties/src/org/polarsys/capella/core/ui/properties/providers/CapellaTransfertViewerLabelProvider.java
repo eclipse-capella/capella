@@ -44,7 +44,7 @@ public class CapellaTransfertViewerLabelProvider extends DataLabelProvider {
 
   private static String PATTERN1 = " [{0} -> {1}]{2}"; //$NON-NLS-1$
   private static String UNAMED = "<unnamed>"; //$NON-NLS-1$
-
+  
   private boolean disableLabelComputation = CapellaUIPropertiesPlugin.getDefault().isDisableLabelComputation();
 
   /**
@@ -52,7 +52,7 @@ public class CapellaTransfertViewerLabelProvider extends DataLabelProvider {
    */
   @Override
   public Image getImage(Object object) {
-    if (object instanceof DView) { // Sirius-2822
+    if (object instanceof DView) { //Sirius-2822
       Viewpoint viewpoint = ((DView) object).getViewpoint();
       if (viewpoint != null) {
         return getImage(viewpoint);
@@ -66,13 +66,14 @@ public class CapellaTransfertViewerLabelProvider extends DataLabelProvider {
    */
   @Override
   public String getText(Object object) {
-    if (disableLabelComputation) {
-      if (object instanceof AbstractNamedElement) {
-        return ((AbstractNamedElement) object).getName();
-      } else if (object instanceof EObject) {
-        return "[" + ((EObject) object).eClass().getName() + "]";
+    if(disableLabelComputation){
+      if(object instanceof AbstractNamedElement){
+        return ((AbstractNamedElement)object).getName();
       }
-      return UNAMED;
+      else if(object instanceof EObject){
+        return "["+((EObject)object).eClass().getName()+"]";
+      }
+        return UNAMED;
     }
     return doGetText(object);
   }
@@ -87,19 +88,19 @@ public class CapellaTransfertViewerLabelProvider extends DataLabelProvider {
     if ((object instanceof ComponentExchange) && !(object instanceof CommunicationMean)) {
       ComponentExchange connection = (ComponentExchange) object;
       if (TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven(connection))) {
-        Component sourceComponent = ComponentExchangeExt.getSourceComponent(connection);
+        Component sourceComponent  = ComponentExchangeExt.getSourceComponent(connection);
         Component targetComponent = ComponentExchangeExt.getTargetComponent(connection);
-        if (ComponentExchangeExt.isConnectionBetweenTypes(connection)) {
-          sourceElement = sourceComponent;
+        if(ComponentExchangeExt.isConnectionBetweenTypes(connection)) {
+          sourceElement =  sourceComponent; 
           targetElement = targetComponent;
-        } else {
+        }else {
           Collection<Part> sourceParts = ComponentExchangeExt.getSourceParts(connection);
           Collection<Part> targetParts = ComponentExchangeExt.getTargetParts(connection);
           sourceElement = (NamedElement) (!sourceParts.isEmpty() ? sourceParts.toArray()[0] : null);
           targetElement = (NamedElement) (!targetParts.isEmpty() ? targetParts.toArray()[0] : null);
-          if (sourceElement != null && targetElement != null) {
+          if(sourceElement != null && targetElement != null) {
             sourceLabel = sourceElement.getName() + " : " + sourceComponent.getName();
-            targetLabel = targetElement.getName() + " : " + targetElement.getName();
+            targetLabel = targetElement.getName() +  " : " + targetElement.getName();
             return super.getText(object) + MessageFormat.format(PATTERN1, sourceLabel, targetLabel, sufixLabel);
           }
         }
@@ -134,13 +135,13 @@ public class CapellaTransfertViewerLabelProvider extends DataLabelProvider {
         targetElement = PhysicalLinkExt.getTargetComponent(link);
       }
 
-    } else if (object instanceof DAnalysis) { // Sirius-2822
+    } else if (object instanceof DAnalysis) { //Sirius-2822
       Resource resource = ((DAnalysis) object).eResource();
       if ((resource != null) && (resource.getURI() != null)) {
         return resource.getURI().lastSegment();
       }
 
-    } else if (object instanceof DView) { // Sirius-2822
+    } else if (object instanceof DView) { //Sirius-2822
       Viewpoint viewpoint = ((DView) object).getViewpoint();
       if ((viewpoint != null)) {
         if (viewpoint.eIsProxy()) {

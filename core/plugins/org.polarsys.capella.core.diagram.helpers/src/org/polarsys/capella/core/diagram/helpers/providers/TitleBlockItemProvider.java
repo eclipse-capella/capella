@@ -17,4 +17,8 @@ public class TitleBlockItemProvider extends DAnnotationItemProvider {
   public TitleBlockItemProvider(AdapterFactory adapterFactory) {
     super(adapterFactory);
   }
+  public String getString(String key)
+  {
+    return "Title Block";
+  }
 }

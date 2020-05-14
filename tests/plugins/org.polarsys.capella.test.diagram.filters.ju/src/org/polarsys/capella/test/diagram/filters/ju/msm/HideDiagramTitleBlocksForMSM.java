@@ -8,17 +8,16 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.diagram.filters.ju.idb;
+package org.polarsys.capella.test.diagram.filters.ju.msm;
 
 import java.util.Arrays;
 import java.util.List;
-
 import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
 import org.polarsys.capella.test.diagram.filters.ju.DiagramTitleBlockFilterTestCase;
 
-public class HideDiagramTitleBocksForIDB extends DiagramTitleBlockFilterTestCase {
+public class HideDiagramTitleBlocksForMSM extends DiagramTitleBlockFilterTestCase {
 
-  private final String DIAGRAM_TITLE_BLOCK_ID = "_qe9hU5XdEeqIX5DIDYO2NQ";
+  private final String DIAGRAM_TITLE_BLOCK_ID = "_Mlh_85QbEeqmRd48Y6X5KA";
   
   @Override
   protected String getFilterName() {
@@ -26,12 +25,13 @@ public class HideDiagramTitleBocksForIDB extends DiagramTitleBlockFilterTestCase
   }
 
   @Override
-  protected List<String> getFilteredObjetIDs() {
-    return Arrays.asList(new String[] { DIAGRAM_TITLE_BLOCK_ID });
+  protected String getDiagramName() {
+    return "[MSM] Default Region Title Blocks";
   }
   
   @Override
-  protected String getDiagramName() {
-    return "[IDB] Logical Component Title Blocks";
+  protected List<String> getFilteredObjetIDs() {
+    return Arrays.asList(new String[] { DIAGRAM_TITLE_BLOCK_ID });
   }
 }
+

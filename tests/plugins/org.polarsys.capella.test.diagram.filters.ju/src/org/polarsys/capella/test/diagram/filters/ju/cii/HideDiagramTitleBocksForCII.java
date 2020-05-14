@@ -18,7 +18,7 @@ import org.polarsys.capella.test.diagram.filters.ju.DiagramTitleBlockFilterTestC
 
 public class HideDiagramTitleBocksForCII extends DiagramTitleBlockFilterTestCase {
 
-  private final String DIAGRAM_TITLE_BLOCK_ID = "_m8HMApN0EeqIefg3uSANvA";
+  private final String DIAGRAM_TITLE_BLOCK_ID = "_ZtpgQ5XdEeqIX5DIDYO2NQ";
   
   @Override
   protected String getFilterName() {
