@@ -29,8 +29,6 @@ import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateAbstractDNod
 
 public class CreateDiagramTitleBlockTool extends CreateAbstractDNodeTool<DDiagramElementContainer> {
 
-  private static final String DIAGRAM_TITLE_BLOCK = "DiagramTitleBlock";
-
   public CreateDiagramTitleBlockTool(DiagramContext context, String toolName, String containerView) {
     super(context, toolName, containerView);
   }
@@ -51,12 +49,14 @@ public class CreateDiagramTitleBlockTool extends CreateAbstractDNodeTool<DDiagra
 
     assertFalse(newElements.isEmpty());
 
-    DDiagramElement element = newElements.iterator().next();
+    DDiagramElement element = newElements.stream().filter(x -> x.getTarget() instanceof DAnnotation
+        && ((DAnnotation) (x.getTarget())).getSource().equals(TitleBlockHelper.DIAGRAM_TITLE_BLOCK)).findFirst().get();
+    assertTrue(element != null);
     assertTrue(element.getTarget() instanceof DAnnotation);
 
     DAnnotation titleBlock = (DAnnotation) element.getTarget();
 
-    assertTrue(titleBlock.getSource().equals(DIAGRAM_TITLE_BLOCK));
+    assertTrue(titleBlock.getSource().equals(TitleBlockHelper.DIAGRAM_TITLE_BLOCK));
 
     int numLines = TitleBlockPreferencesInitializer.getLinesNumber();
     int numCols = TitleBlockPreferencesInitializer.getColumnsNumber();

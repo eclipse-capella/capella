@@ -18,7 +18,7 @@ public abstract class CRBTitleBlockTestCase extends AbstractTitleBlockTestCase {
   protected String diagramName;
   protected String capabilityPKG;
   protected BlockArchitectureExt.Type type;
-  private static final String DEFAULT_NAME = "[CRB] New Diagram";
+  private static final String DEFAULT_NAME = "Capability Realization Blank";
 
 
   public CRBTitleBlockTestCase() {
