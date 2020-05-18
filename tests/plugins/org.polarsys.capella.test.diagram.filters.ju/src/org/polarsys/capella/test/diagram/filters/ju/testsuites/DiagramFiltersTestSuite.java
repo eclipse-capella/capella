@@ -60,7 +60,7 @@ public class DiagramFiltersTestSuite extends BasicTestSuite {
     return Arrays.asList("ElementLabelFilterModel", "HideFunctionalExchange", "HideSimplifiedLinksFilter", "model2", //$NON-NLS-1$
         "model3_multpart", "PB8", "PB9", "Project_validation_hideControlNodesFilter",
         "Project_validation_hideTechnicalInterfaceFilter", "ShowTriggerSourceFunctionFilter",
-        "StandardDiagramFiltersModel", "Test_delegationWizard");
+        "StandardDiagramFiltersModel", "Test_delegationWizard", "TitleBlocksModel");
   }
 
   /**

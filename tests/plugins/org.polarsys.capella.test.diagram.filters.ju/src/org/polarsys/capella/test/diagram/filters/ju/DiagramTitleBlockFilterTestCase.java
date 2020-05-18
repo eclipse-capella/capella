@@ -36,11 +36,6 @@ public abstract class DiagramTitleBlockFilterTestCase extends DiagramObjectFilte
   protected String getTestProjectName() {
     return "TitleBlocksModel";
   }
-
-  @Override
-  protected String getDiagramName() {
-    return "[CDB] Data Title Blocks";
-  }
   
   protected void getCurrentFilterMappings() {
     filteredMappingNames.add(IMappingNameConstants.DT_TITLE_BLOCK_CONTAINER);

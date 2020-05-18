@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.polarsys.capella.core.ui.toolkit.dialogs;
 
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -18,27 +17,18 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.eclipse.core.runtime.FileLocator;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.DecoratingLabelProvider;
-import org.eclipse.jface.viewers.ILabelProvider;
-import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
-import org.eclipse.sirius.diagram.DSemanticDiagram;
-import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
@@ -46,14 +36,12 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.ui.PlatformUI;
-import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.ui.toolkit.viewers.IViewerStyle;
 import org.polarsys.capella.common.ui.toolkit.viewers.TreeAndListViewer;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.DataContentProvider;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.TreeData;
 import org.polarsys.capella.core.model.handler.helpers.CrossReferencerHelper;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
-import org.polarsys.capella.core.ui.resources.CapellaUIResourcesPlugin;
 
 /**
  * Confirm Capella elements deletion Tool dialog
@@ -61,9 +49,9 @@ import org.polarsys.capella.core.ui.resources.CapellaUIResourcesPlugin;
 public class ConfirmDeleteCapellaElementDialog extends ImpactAnalysisDialog {
 
   public static final String DELETE_ANALYSIS_DIALOG_ELEMENTS = "org.polarsys.capella.core.ui.toolkit.dialogs.confirmDelete.elements";
-
+  
   public static final String DELETE_ANALYSIS_DIALOG_REFERENCING_ELEMENTS = "org.polarsys.capella.core.ui.toolkit.dialogs.confirmDelete.referencingElements";
-
+  
   /*
    * Referencing elements viewer to deleted elements.
    */
@@ -80,14 +68,14 @@ public class ConfirmDeleteCapellaElementDialog extends ImpactAnalysisDialog {
   private Object[] expendedElements;
 
   /*
-  	 * 
-  	 */
+		 * 
+		 */
 
   private boolean isMultipleSelection;
 
   /*
-  	 * 
-  	 */
+		 * 
+		 */
   private Button resourceCheckReferencingElemntButton;
 
   /**
@@ -99,11 +87,9 @@ public class ConfirmDeleteCapellaElementDialog extends ImpactAnalysisDialog {
    * @param color
    * @param isMultipleSelection
    */
-  public ConfirmDeleteCapellaElementDialog(List<?> elementsToDelete, boolean isMultipleSelection,
-      Object[] expendedElements) {
-    super(elementsToDelete, Messages.CapellaDeleteCommand_Label, Messages.CapellaDeleteCommand_ConfirmDeletionQuestion,
-        MessageDialog.QUESTION, new String[] { IDialogConstants.YES_LABEL, IDialogConstants.NO_LABEL }, SWT.COLOR_RED,
-        isMultipleSelection);
+  public ConfirmDeleteCapellaElementDialog(List<?> elementsToDelete, boolean isMultipleSelection, Object[] expendedElements) {
+    super(elementsToDelete, Messages.CapellaDeleteCommand_Label, Messages.CapellaDeleteCommand_ConfirmDeletionQuestion, MessageDialog.QUESTION,
+          new String[] { IDialogConstants.YES_LABEL, IDialogConstants.NO_LABEL }, SWT.COLOR_RED, isMultipleSelection);
     this.expendedElements = expendedElements;
     this.isMultipleSelection = isMultipleSelection;
     this.setBlockOnOpen(true);
@@ -134,9 +120,8 @@ public class ConfirmDeleteCapellaElementDialog extends ImpactAnalysisDialog {
     // Create a second viewer to display referencing elements related to a deleted element.
     createReferencingElementViewer(parentComposite);
     // Set a label provider that allow decorator mechanism.
-    elementsToDeleteViewer.setLabelProvider(new DecoratingLabelProvider(
-        new ConfirmDeleteLabelProvider(new ImpactAnalysisLabelProvider(elementsToDeleteViewer, SWT.COLOR_RED)),
-        PlatformUI.getWorkbench().getDecoratorManager()));
+    elementsToDeleteViewer.setLabelProvider(new DecoratingLabelProvider(new ImpactAnalysisLabelProvider(elementsToDeleteViewer, SWT.COLOR_RED), PlatformUI
+        .getWorkbench().getDecoratorManager()));
     elementsToDeleteViewer.setSelection(new StructuredSelection(expendedElements), true);
     elementsToDeleteViewer.getControl().setFocus();
 
@@ -145,7 +130,6 @@ public class ConfirmDeleteCapellaElementDialog extends ImpactAnalysisDialog {
 
   /**
    * Create a second viewer to display referencing elements related to a deleted element.
-   * 
    * @param parentComposite
    */
 
@@ -153,20 +137,16 @@ public class ConfirmDeleteCapellaElementDialog extends ImpactAnalysisDialog {
     // Create a group to host the referencing elements.
     Group referencingElementsGroup = new Group(parentComposite, SWT.NONE);
     referencingElementsGroup.setText(Messages.CapellaDeleteCommand_ImpactAnalysis_ReferencingElements_Group_Title);
-    referencingElementsGroup
-        .setToolTipText(Messages.CapellaDeleteCommand_ImpactAnalysis_ReferencingElements_Group_Tooltip);
+    referencingElementsGroup.setToolTipText(Messages.CapellaDeleteCommand_ImpactAnalysis_ReferencingElements_Group_Tooltip);
     referencingElementsGroup.setLayout(new GridLayout());
     referencingElementsGroup.setLayoutData(new GridData(GridData.FILL_BOTH));
     // Create the referencing element with this group as parent.
-    referencingElementsViewer = this.createViewer(referencingElementsGroup,
-        DELETE_ANALYSIS_DIALOG_REFERENCING_ELEMENTS);
+    referencingElementsViewer = this.createViewer(referencingElementsGroup, DELETE_ANALYSIS_DIALOG_REFERENCING_ELEMENTS);
     // Set a label provider that allow decorator mechanism.
-    referencingElementsViewer.setLabelProvider(new DecoratingLabelProvider(
-        new ImpactAnalysisLabelProvider(referencingElementsViewer, DEFAULT_COLOR_FOR_RELEVANT_ELEMENTS),
-        PlatformUI.getWorkbench().getDecoratorManager()));
+    referencingElementsViewer.setLabelProvider(new DecoratingLabelProvider(new ImpactAnalysisLabelProvider(referencingElementsViewer,
+        DEFAULT_COLOR_FOR_RELEVANT_ELEMENTS), PlatformUI.getWorkbench().getDecoratorManager()));
     // Add a button to display EMF resource as root nodes.
-    resourceCheckReferencingElemntButton = createResourceCheckButton(referencingElementsGroup,
-        referencingElementsViewer);
+    resourceCheckReferencingElemntButton = createResourceCheckButton(referencingElementsGroup, referencingElementsViewer);
     registerElementsToDeleteListener();
   }
 
@@ -179,7 +159,6 @@ public class ConfirmDeleteCapellaElementDialog extends ImpactAnalysisDialog {
       /**
        * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
        */
-      @Override
       @SuppressWarnings("synthetic-access")
       public void selectionChanged(SelectionChangedEvent event_p) {
         IStructuredSelection ssel = (IStructuredSelection) event_p.getSelection();
@@ -194,8 +173,7 @@ public class ConfirmDeleteCapellaElementDialog extends ImpactAnalysisDialog {
           }
         }
         // Compute the referencing elements.
-        referencingElementsViewer.setInput(getTreeViewerItems(resourceCheckReferencingElemntButton.getSelection(),
-            new ArrayList<Object>(referencingElements)));
+        referencingElementsViewer.setInput(getTreeViewerItems(resourceCheckReferencingElemntButton.getSelection(), new ArrayList<Object>(referencingElements)));
         ;
       }
     });
@@ -206,8 +184,7 @@ public class ConfirmDeleteCapellaElementDialog extends ImpactAnalysisDialog {
    */
   protected Collection<? extends EObject> getReferencingElements(Object currentSelectedElement) {
     List<EObject> objects = CrossReferencerHelper.getReferencingElements((EObject) currentSelectedElement);
-    objects.addAll(RepresentationHelper
-        .getAllRepresentationDescriptorsAnnotatedBy(Collections.singletonList((EObject) currentSelectedElement)));
+    objects.addAll(RepresentationHelper.getAllRepresentationDescriptorsAnnotatedBy(Collections.singletonList((EObject)currentSelectedElement)));
     return objects;
   }
 
@@ -222,14 +199,13 @@ public class ConfirmDeleteCapellaElementDialog extends ImpactAnalysisDialog {
   protected TreeViewer createViewer(Composite parentComposite, String location) {
     // Create tree viewer.
     // Don't use the status bar of the viewer b
-    TreeAndListViewer treeViewer = new TreeAndListViewer(parentComposite, this.isMultipleSelection,
-        IViewerStyle.SHOW_STATUS_BAR) {
-
+    TreeAndListViewer treeViewer = new TreeAndListViewer(parentComposite, this.isMultipleSelection, IViewerStyle.SHOW_STATUS_BAR) {
+      
       @Override
       public String getContextMenuLocation() {
         return location;
       }
-
+      
     };
 
     TreeViewer viewer = treeViewer.getClientViewer();
@@ -240,10 +216,9 @@ public class ConfirmDeleteCapellaElementDialog extends ImpactAnalysisDialog {
     viewer.setSorter(new ImpactAnalysisSorter());
     return viewer;
   }
-
+  
   /**
    * Create a check button to display (or not) the resource.
-   * 
    * @param parentComposite
    * @return
    */
@@ -267,7 +242,6 @@ public class ConfirmDeleteCapellaElementDialog extends ImpactAnalysisDialog {
 
   /**
    * Handle resource check button click.
-   * 
    * @param selection_p
    */
   protected void handleResourceCheckButtonClicked(boolean isChecked_p, TreeViewer clientViewer) {
@@ -278,67 +252,6 @@ public class ConfirmDeleteCapellaElementDialog extends ImpactAnalysisDialog {
     input = super.getTreeViewerItems(isChecked_p, referencingElements);
     // Set the new input.
     clientViewer.setInput(input);
-  }
-
-  private class ConfirmDeleteLabelProvider implements ILabelProvider {
-    ILabelProvider provider;
-
-    public ConfirmDeleteLabelProvider(ILabelProvider provider) {
-      this.provider = provider;
-    }
-
-    @Override
-    public Image getImage(Object element) {
-      if (element instanceof DAnnotation) {
-        String imagePath = "/icons/full/obj16/TitleBlock_16.gif";
-        URL url = FileLocator.find(CapellaUIResourcesPlugin.getDefault().getBundle(), new Path(imagePath), null);
-        return ImageDescriptor.createFromURL(url).createImage();
-      } else {
-        return provider.getImage(element);
-      }
-    }
-
-    @Override
-    public void addListener(ILabelProviderListener listener) {
-      provider.addListener(listener);
-    }
-
-    @Override
-    public void dispose() {
-      provider.dispose();
-    }
-
-    @Override
-    public boolean isLabelProperty(Object element, String property) {
-      return provider.isLabelProperty(element, property);
-    }
-
-    @Override
-    public void removeListener(ILabelProviderListener listener) {
-      // TODO Auto-generated method stub
-      provider.removeListener(listener);
-
-    }
-
-    @Override
-    public String getText(Object element) {
-      if (element instanceof DAnnotation) {
-        if (element instanceof DAnnotation) {
-          if (!(((DAnnotation) element).getReferences().get(0) instanceof DAnnotation)) {
-            EObject obj = ((DAnnotation) element).getReferences().get(0);
-            if (obj instanceof AbstractNamedElement) {
-              return ((AbstractNamedElement) obj).getName();
-            }
-          } else {
-            DSemanticDiagram diagram = (DSemanticDiagram) ((DAnnotation) element).eContainer();
-            if (diagram instanceof DRepresentation) {
-              return ((DRepresentation) diagram).getName();
-            }
-          }
-        }
-      }
-      return provider.getText(element);
-    }
   }
 
 }

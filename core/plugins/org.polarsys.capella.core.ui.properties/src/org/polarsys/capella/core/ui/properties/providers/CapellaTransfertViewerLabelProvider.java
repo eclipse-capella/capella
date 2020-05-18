@@ -10,21 +10,14 @@
  *******************************************************************************/
 package org.polarsys.capella.core.ui.properties.providers;
 
-import java.net.URL;
 import java.text.MessageFormat;
 import java.util.Collection;
 
-import org.eclipse.core.runtime.FileLocator;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.viewpoint.DAnalysis;
-import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DView;
-import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swt.graphics.Image;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
@@ -46,14 +39,12 @@ import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
 import org.polarsys.capella.core.model.helpers.ComponentExchangeExt;
 import org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlugin;
-import org.polarsys.capella.core.ui.resources.CapellaUIResourcesPlugin;
 
 public class CapellaTransfertViewerLabelProvider extends DataLabelProvider {
 
   private static String PATTERN1 = " [{0} -> {1}]{2}"; //$NON-NLS-1$
   private static String UNAMED = "<unnamed>"; //$NON-NLS-1$
-  private static String TITLE_BLOCK = "TitleBlock";
-
+  
   private boolean disableLabelComputation = CapellaUIPropertiesPlugin.getDefault().isDisableLabelComputation();
 
   /**
@@ -61,18 +52,10 @@ public class CapellaTransfertViewerLabelProvider extends DataLabelProvider {
    */
   @Override
   public Image getImage(Object object) {
-    if (object instanceof DView) { // Sirius-2822
+    if (object instanceof DView) { //Sirius-2822
       Viewpoint viewpoint = ((DView) object).getViewpoint();
       if (viewpoint != null) {
         return getImage(viewpoint);
-      }
-    }
-    if (object instanceof DAnnotation) {
-      DAnnotation annotation = (DAnnotation) object;
-      if (annotation.getSource().contains(TITLE_BLOCK)) {
-        String imagePath = "/icons/full/obj16/TitleBlock_16.gif";
-        URL url = FileLocator.find(CapellaUIResourcesPlugin.getDefault().getBundle(), new Path(imagePath), null);
-        return ImageDescriptor.createFromURL(url).createImage();
       }
     }
     return super.getImage(object);
@@ -83,13 +66,14 @@ public class CapellaTransfertViewerLabelProvider extends DataLabelProvider {
    */
   @Override
   public String getText(Object object) {
-    if (disableLabelComputation) {
-      if (object instanceof AbstractNamedElement) {
-        return ((AbstractNamedElement) object).getName();
-      } else if (object instanceof EObject) {
-        return "[" + ((EObject) object).eClass().getName() + "]";
+    if(disableLabelComputation){
+      if(object instanceof AbstractNamedElement){
+        return ((AbstractNamedElement)object).getName();
       }
-      return UNAMED;
+      else if(object instanceof EObject){
+        return "["+((EObject)object).eClass().getName()+"]";
+      }
+        return UNAMED;
     }
     return doGetText(object);
   }
@@ -104,19 +88,19 @@ public class CapellaTransfertViewerLabelProvider extends DataLabelProvider {
     if ((object instanceof ComponentExchange) && !(object instanceof CommunicationMean)) {
       ComponentExchange connection = (ComponentExchange) object;
       if (TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven(connection))) {
-        Component sourceComponent = ComponentExchangeExt.getSourceComponent(connection);
+        Component sourceComponent  = ComponentExchangeExt.getSourceComponent(connection);
         Component targetComponent = ComponentExchangeExt.getTargetComponent(connection);
-        if (ComponentExchangeExt.isConnectionBetweenTypes(connection)) {
-          sourceElement = sourceComponent;
+        if(ComponentExchangeExt.isConnectionBetweenTypes(connection)) {
+          sourceElement =  sourceComponent; 
           targetElement = targetComponent;
-        } else {
+        }else {
           Collection<Part> sourceParts = ComponentExchangeExt.getSourceParts(connection);
           Collection<Part> targetParts = ComponentExchangeExt.getTargetParts(connection);
           sourceElement = (NamedElement) (!sourceParts.isEmpty() ? sourceParts.toArray()[0] : null);
           targetElement = (NamedElement) (!targetParts.isEmpty() ? targetParts.toArray()[0] : null);
-          if (sourceElement != null && targetElement != null) {
+          if(sourceElement != null && targetElement != null) {
             sourceLabel = sourceElement.getName() + " : " + sourceComponent.getName();
-            targetLabel = targetElement.getName() + " : " + targetElement.getName();
+            targetLabel = targetElement.getName() +  " : " + targetElement.getName();
             return super.getText(object) + MessageFormat.format(PATTERN1, sourceLabel, targetLabel, sufixLabel);
           }
         }
@@ -151,13 +135,13 @@ public class CapellaTransfertViewerLabelProvider extends DataLabelProvider {
         targetElement = PhysicalLinkExt.getTargetComponent(link);
       }
 
-    } else if (object instanceof DAnalysis) { // Sirius-2822
+    } else if (object instanceof DAnalysis) { //Sirius-2822
       Resource resource = ((DAnalysis) object).eResource();
       if ((resource != null) && (resource.getURI() != null)) {
         return resource.getURI().lastSegment();
       }
 
-    } else if (object instanceof DView) { // Sirius-2822
+    } else if (object instanceof DView) { //Sirius-2822
       Viewpoint viewpoint = ((DView) object).getViewpoint();
       if ((viewpoint != null)) {
         if (viewpoint.eIsProxy()) {
@@ -166,21 +150,6 @@ public class CapellaTransfertViewerLabelProvider extends DataLabelProvider {
         return viewpoint.getName();
       }
 
-    } else if (object instanceof DAnnotation) {
-      DAnnotation annotation = (DAnnotation) object;
-      if (annotation.getSource().contains(TITLE_BLOCK)) {
-        if (!(annotation.getReferences().get(0) instanceof DAnnotation)) {
-          EObject obj = annotation.getReferences().get(0);
-          if (obj instanceof AbstractNamedElement) {
-            return ((AbstractNamedElement) obj).getName();
-          }
-        } else {
-          DSemanticDiagram diagram = (DSemanticDiagram) annotation.eContainer();
-          if (diagram instanceof DRepresentation) {
-            return ((DRepresentation) diagram).getName();
-          }
-        }
-      }
     } else {
       // Default case
       return super.getText(object);
