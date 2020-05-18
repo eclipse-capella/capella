@@ -1,10 +1,12 @@
 /*******************************************************************************
  * Copyright (c) 2020 THALES GLOBAL SERVICES.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *  
+ * 
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0
+ * 
+ * SPDX-License-Identifier: EPL-2.0
+ * 
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
@@ -14,41 +16,53 @@ import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 
 public abstract class AbstractSearchForContentProvider implements ITreeContentProvider {
-	/**
-	 * {@inheritDoc}
-	 */
-    public Object[] getChildren(Object parentElement) {
-    	return new Object[0];
-    }
-	/**
-	 * {@inheritDoc}
-	 */
-    public Object getParent(Object element) {
-    	return new Object[0];
-    }
-	/**
-	 * {@inheritDoc}
-	 */
-    public boolean hasChildren(Object element) {
-    	return false;
-    }
-	/**
-	 * {@inheritDoc}
-	 */
-    public Object[] getElements(Object inputElement) {
-    	return new Object[0];
-    }
-    
-    public Object[] getElements() {
-      return new Object[0];
-    }
-    
-	/**
-	 * {@inheritDoc}
-	 */
-    public void dispose() {}
-	/**
-	 * {@inheritDoc}
-	 */
-    public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {}
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public Object[] getChildren(Object parentElement) {
+    return new Object[0];
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public Object getParent(Object element) {
+    return new Object[0];
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public boolean hasChildren(Object element) {
+    return false;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public Object[] getElements(Object inputElement) {
+    return new Object[0];
+  }
+
+  public Object[] getElements() {
+    return new Object[0];
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public void dispose() {
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
+  }
 }

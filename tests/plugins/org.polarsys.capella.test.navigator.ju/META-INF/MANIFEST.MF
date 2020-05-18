@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Navigator JUnit
+Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.test.navigator.ju
 Bundle-Version: 1.4.1.qualifier
 Bundle-Activator: org.polarsys.capella.test.navigator.ju.Activator
@@ -15,3 +15,5 @@ Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.polarsys.capella.test.navigator.ju,
  org.polarsys.capella.test.navigator.ju.testsuites.main
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin

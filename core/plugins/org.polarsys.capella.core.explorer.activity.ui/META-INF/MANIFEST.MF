@@ -35,3 +35,4 @@ Export-Package: org.polarsys.capella.core.explorer.activity.ui,
  org.polarsys.capella.core.explorer.activity.ui.pages,
  org.polarsys.capella.core.explorer.activity.ui.predicate,
  org.polarsys.capella.core.explorer.activity.ui.viewer
+Bundle-Localization: plugin
