@@ -36,6 +36,7 @@ import org.eclipse.sirius.common.tools.internal.interpreter.DefaultInterpreterPr
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
 import org.eclipse.swt.widgets.Text;
@@ -408,16 +409,18 @@ public class TitleBlockHelper {
 
   /**
    * 
-   * @param target
+   * @param diagramDesc
    * @param expression:
    *          the expression to be evaluate (ex feature: name, or capella: xyz)
+   * @param titleBlock
    * @return result after the expression was evaluated
    */
-  public static Object getResultOfExpression(EObject diagram, String expression, DAnnotation titleBlock) {
+  public static Object getResultOfExpression(DRepresentationDescriptor diagramDesc, String expression, DAnnotation titleBlock) {
     EObject objToEvaluate = TitleBlockHelper.getSemanticElementReference(titleBlock);
     // if is a Diagram Title Block, objToEvaluate will be the diagram
-    if (objToEvaluate == null)
-      objToEvaluate = diagram;
+    if (objToEvaluate == null) {
+      objToEvaluate = diagramDesc;
+    }
 
     IInterpreterProvider provider = CompoundInterpreter.INSTANCE.getProviderForExpression(expression);
 
