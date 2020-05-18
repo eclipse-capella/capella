@@ -388,7 +388,7 @@
                <description>
                   This rule checks the existence of unkown model features. 
 An unkown model feature is a feature that is persisted in your textual model representation, but is not recognised by the metamodel and therefore is not loaded during model opening.
-Its existence does not add any coruption risk to your model, but it does represent an anomaly so it should be removed.
+Its existence does not add any corruption risk to your model, but it does represent an anomaly so it should be removed.
                </description>
                <target
                      class="SystemEngineering">
