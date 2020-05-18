@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Junit tests on command line feature
+Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.test.commandline.ju
 Bundle-Version: 1.4.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
@@ -10,7 +10,8 @@ Require-Bundle: org.polarsys.capella.test.framework,
  org.polarsys.capella.core.commandline.core.ui,
  org.polarsys.capella.core.data.migration,
  org.polarsys.capella.core.sirius.ui
-Bundle-Vendor: Eclipse.org
+Bundle-Vendor: %providerName
 Export-Package: org.polarsys.capella.test.commandline.ju.testcases,
  org.polarsys.capella.test.commandline.ju.testsuites,
  org.polarsys.capella.test.commandline.ju.utils
+Bundle-Localization: plugin

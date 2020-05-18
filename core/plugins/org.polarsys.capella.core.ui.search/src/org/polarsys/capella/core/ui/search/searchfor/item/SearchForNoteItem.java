@@ -1,10 +1,12 @@
 /*******************************************************************************
  * Copyright (c) 2020 THALES GLOBAL SERVICES.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *  
+ * 
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0
+ * 
+ * SPDX-License-Identifier: EPL-2.0
+ * 
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
@@ -25,9 +27,9 @@ import org.polarsys.capella.core.ui.search.CapellaSearchConstants;
 
 @SuppressWarnings("restriction")
 public class SearchForNoteItem extends SearchForClassItem {
-  
+
   protected EAttribute contentAttribute;
-  
+
   public SearchForNoteItem(Object eClass) {
     super(eClass);
     this.contentAttribute = NotationPackage.eINSTANCE.getDescriptionStyle_Description();
@@ -53,14 +55,14 @@ public class SearchForNoteItem extends SearchForClassItem {
     return ExtendedImageRegistry.INSTANCE
         .getImage(DiagramUIPlugin.getInstance().getBundle().getEntry("icons/note.gif"));
   }
-  
+
   @Override
-  public Object getRelevantSearchData(EObject searchTarget) {    
+  public Object getRelevantSearchData(EObject searchTarget) {
     return searchTarget.eGet(contentAttribute);
   }
-  
+
   public EAttribute getContentAttribute() {
     return contentAttribute;
   }
-    
+
 }

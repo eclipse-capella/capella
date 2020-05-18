@@ -1,10 +1,12 @@
 /*******************************************************************************
  * Copyright (c) 2020 THALES GLOBAL SERVICES.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *  
+ * 
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0
+ * 
+ * SPDX-License-Identifier: EPL-2.0
+ * 
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
@@ -53,7 +55,7 @@ public abstract class AbstractCapellaHistory {
   }
 
   private CapellaSearchSettings createSearchSettingsFromHistoryIndex(int historyIndex) {
-     IDialogSettings searchHistorySection = getDialogSettingsForHistoryIndex(historyIndex);
+    IDialogSettings searchHistorySection = getDialogSettingsForHistoryIndex(historyIndex);
     CapellaSearchSettings searchSettings = new CapellaSearchSettings();
     if (searchHistorySection != null) {
       setSearchSettings(searchSettings, searchHistorySection);
@@ -67,7 +69,7 @@ public abstract class AbstractCapellaHistory {
         for (int i = 0; i < fieldsCount; i++) {
           String searchFieldText = searchHistorySection.get(SECTION_SEARCH_ATTRIBUTE_PREFIX + i);
           Object attribute = SearchForItemCache.getInstance().getAttribute(searchFieldText);
-          if(attribute != null) {
+          if (attribute != null) {
             searchSettings.getSearchAttributeItems().add(attribute);
           }
         }
@@ -76,10 +78,9 @@ public abstract class AbstractCapellaHistory {
         for (int i = 0; i < metaFieldsCount; i++) {
           String searchFieldText = searchHistorySection.get(SECTION_SEARCH_METACLASS_PREFIX + i);
           Object metaclass = SearchForItemCache.getInstance().getClassItem(searchFieldText);
-          if(metaclass != null) {
+          if (metaclass != null) {
             searchSettings.getSearchClassItems().add(metaclass);
-          }
-          else {
+          } else {
             searchSettings.getSearchClassItems().add(searchFieldText);
           }
         }
@@ -152,7 +153,7 @@ public abstract class AbstractCapellaHistory {
       }
       searchHistorySection.put(SECTION_SEARCH_PROJECT_COUNT, projectsCount);
 
-     int attrFieldsCount = 0;
+      int attrFieldsCount = 0;
       for (Object searchAttribute : capellaSearchSettings.getSearchAttributeItems()) {
         SearchForAttributeItem attributeItem = (SearchForAttributeItem) searchAttribute;
         searchHistorySection.put(SECTION_SEARCH_ATTRIBUTE_PREFIX + attrFieldsCount, attributeItem.getText());
@@ -166,8 +167,7 @@ public abstract class AbstractCapellaHistory {
           SearchForClassItem classItem = (SearchForClassItem) searchMetaClasses;
           searchHistorySection.put(SECTION_SEARCH_METACLASS_PREFIX + clsFieldsCount, classItem.getUniqueID());
           clsFieldsCount++;
-        }
-        else {
+        } else {
           searchHistorySection.put(SECTION_SEARCH_METACLASS_PREFIX + clsFieldsCount, searchMetaClasses.toString());
           clsFieldsCount++;
         }

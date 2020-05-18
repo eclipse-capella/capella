@@ -1,10 +1,12 @@
 /*******************************************************************************
  * Copyright (c) 2020 THALES GLOBAL SERVICES.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *  
+ * 
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0
+ * 
+ * SPDX-License-Identifier: EPL-2.0
+ * 
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
@@ -61,7 +63,7 @@ public class SearchForItemCache {
     initModelElements();
     initDiagramElements();
     initViewpointElements();
-    
+
     initAttributes(classID2ClassItemMap);
     initAttributes(classID2DiagCategoryItemMap);
   }
@@ -86,7 +88,7 @@ public class SearchForItemCache {
       }
     }
   }
-  
+
   private void initModelElements() {
     for (String nsURI : EPackage.Registry.INSTANCE.keySet()) {
       if (nsURI.startsWith("http://www.polarsys.org/capella")) {
@@ -121,7 +123,8 @@ public class SearchForItemCache {
         }
         SearchForAttributeItem attributeItem = new SearchForAttributeItem();
         attributeItem.addAttribute(attribute);
-        SearchForItem currentAttributeItem = attributeName2AttributeItemMap.putIfAbsent(attributeItem.getText(), attributeItem);
+        SearchForItem currentAttributeItem = attributeName2AttributeItemMap.putIfAbsent(attributeItem.getText(),
+            attributeItem);
         if (currentAttributeItem instanceof SearchForAttributeItem) {
           ((SearchForAttributeItem) currentAttributeItem).addAttribute(attribute);
         }
@@ -189,7 +192,7 @@ public class SearchForItemCache {
     }
     return attributeItems;
   }
-  
+
   public Set<Viewpoint> getViewpoints() {
     return viewpoints;
   }

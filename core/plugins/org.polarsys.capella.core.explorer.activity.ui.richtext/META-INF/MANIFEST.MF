@@ -18,3 +18,4 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.polarsys.capella.core.explorer.activity.ui.richtext,
  org.polarsys.capella.core.explorer.activity.ui.richtext.page
 Bundle-Vendor: %providerName
+Bundle-Localization: plugin
