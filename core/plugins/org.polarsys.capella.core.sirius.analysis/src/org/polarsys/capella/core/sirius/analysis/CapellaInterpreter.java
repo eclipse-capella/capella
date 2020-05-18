@@ -29,13 +29,14 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescript
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.polarsys.capella.common.ui.toolkit.browser.category.CategoryRegistry;
 import org.polarsys.capella.common.ui.toolkit.browser.category.ICategory;
+import org.polarsys.capella.core.diagram.helpers.TitleBlockHelper;
 
 import com.google.common.base.CaseFormat;
 
 public class CapellaInterpreter implements IInterpreterProvider, IInterpreter, TypedValidation {
 
   /** The Capella interpreter prefix. */
-  public static final String PREFIX = "capella:";
+  public static final String PREFIX = TitleBlockHelper.CAPELLA_PREFIX;
 
   @Override
   public boolean provides(String expression) {

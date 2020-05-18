@@ -30,6 +30,8 @@ public class CRBDiagramFiltersTestSuite extends BasicTestSuite {
     tests.add(new HideActors());
     tests.add(new HideActorGeneralizations());
     tests.add(new HidePropertyValues());
+    tests.add(new HideDiagramTitleBlocksForCRB());
+    tests.add(new HideElementTitleBlocksForCRB());
     return tests;
   }
 }

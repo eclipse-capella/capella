@@ -13,6 +13,8 @@ package org.polarsys.capella.test.diagram.filters.ju.ldfb;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.polarsys.capella.test.diagram.filters.ju.pdfb.HideDiagramTitleBlocksForPDFB;
+import org.polarsys.capella.test.diagram.filters.ju.pdfb.HideElementTitleBlocksForPDFB;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 
@@ -22,6 +24,8 @@ public class LDFBDiagramFiltersTestSuite extends BasicTestSuite {
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<>();
     tests.add(new CollapsePortsForLDFB());
+    tests.add(new HideDiagramTitleBlocksForPDFB());
+    tests.add(new HideElementTitleBlocksForPDFB());
     tests.add(new HideExchangeCategoriesForLDFB());
     tests.add(new HideFunctionalExchangesForLDFB());
     tests.add(new HideFunctionalExchangesNamesForLDFB());
