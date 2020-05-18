@@ -24,6 +24,8 @@ public class PDFBDiagramFiltersTestSuite extends BasicTestSuite {
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<>();
     tests.add(new CollapsePortsForPDFB());
+    tests.add(new HideDiagramTitleBlocksForPDFB());
+    tests.add(new HideElementTitleBlocksForPDFB());
     tests.add(new HideExchangeCategoriesForPDFB());
     tests.add(new HideFunctionalExchangesForPDFB());
     tests.add(new HideFunctionalExchangesNamesForPDFB());

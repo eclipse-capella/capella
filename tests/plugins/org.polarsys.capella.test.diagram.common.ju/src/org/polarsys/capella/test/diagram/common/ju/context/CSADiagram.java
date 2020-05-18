@@ -18,6 +18,7 @@ import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
 import org.polarsys.capella.core.sirius.analysis.helpers.ToolProviderHelper;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.CreateDiagramStep;
+import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateAbstractDNodeTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.ReconnectTool;
@@ -43,9 +44,19 @@ public class CSADiagram extends CommonDiagram {
         targetIdentifier);
   }
 
+  public static CSADiagram openDiagram(SessionContext executionContext, String name) {
+    return (CSADiagram) new OpenDiagramStep(executionContext, name) {
+      @Override
+      public DiagramContext getResult() {
+        return new CSADiagram(getExecutionContext(), diagram);
+      }
+    }.run().open();
+  }
+
   public String createActor() {
     DNode graphicalElement = new CreateAbstractDNodeTool<DNode>(this, IToolNameConstants.TOOL_CSA_CREATE_ACTOR,
         getDiagramId()) {
+      @Override
       protected int expectedNewElements() {
         return 2;
       };

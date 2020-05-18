@@ -40,6 +40,7 @@ public class TitleBlockBasicElementGroup extends AbstractSemanticField {
   protected Text nameTextField;
   protected Text contentTextField;
   protected CLabel errorLabel;
+  protected boolean proposalsLoaded;
 
   /**
    * @param parent
@@ -58,10 +59,11 @@ public class TitleBlockBasicElementGroup extends AbstractSemanticField {
 
     nameTextField = createTextField(textGroup, Messages.getString("NamedElement.NameLabel"));
     contentTextField = createTextField(textGroup, Messages.getString("NamedElement.ContentLabel"));
-    TitleBlockHelper.getServicesProposals(contentTextField);
     errorLabel = widgetFactory.createCLabel(parent, ICommonConstants.EMPTY_STRING);
     errorLabel.setRightMargin(300);
     errorLabel.setForeground(Display.getCurrent().getSystemColor(SWT.COLOR_RED));
+    
+    proposalsLoaded = false;
   }
 
   /**
@@ -83,12 +85,19 @@ public class TitleBlockBasicElementGroup extends AbstractSemanticField {
    * {@inheritDoc}
    */
   public void loadData(EObject semanticElement, String name, String content) {
+    errorLabel.setText(ICommonConstants.EMPTY_STRING);
+    if (!proposalsLoaded) {
+      TitleBlockHelper.getServicesProposals(contentTextField,
+          TitleBlockHelper.getReferencedElement(semanticElement));
+      proposalsLoaded = true;
+    }
     super.loadData(semanticElement, null);
     if (null != semanticElement) {
       if (null != nameTextField)
         setTextValue(nameTextField, name);
-      if (null != contentTextField)
+      if (null != contentTextField) {
         setTextValue(contentTextField, content);
+      }
     }
   }
 
@@ -113,22 +122,41 @@ public class TitleBlockBasicElementGroup extends AbstractSemanticField {
 
   private void setFieldValue(EObject object, String field, final Object value) {
     boolean errorSet = false;
+    String nameValue = nameTextField.getText();
+    String contentValue = contentTextField.getText();
     if (field.equals(CONTENT)) {
       errorSet = setContentErrorField(semanticElement);
+      contentValue = value.toString();
     }
-    if (!errorSet && !((DAnnotation) object).getDetails().get(field).equals(value.toString())) {
-      DDiagram diagram = (DDiagram) object.eContainer();
-      AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
-        @Override
-        public void run() {
-          ((DAnnotation) object).getDetails().put(field, value.toString());
-          RefreshRepresentationsCommand refreshCommand = new RefreshRepresentationsCommand(
-              TransactionUtil.getEditingDomain(diagram), new NullProgressMonitor(), diagram);
-          refreshCommand.execute();
+    if (field.equals(NAME)) {
+      nameValue = value.toString();
+    }
+    if (!errorSet && (!((DAnnotation) object).getDetails().get(field).equals(value.toString()) || 
+        nameTextField.getText().isEmpty())) {
+      updateTitleBlock(object, nameValue, contentValue);
+    }
+  }
+  
+  private void updateTitleBlock(EObject object, String nameValue, String contentField) {
+    DDiagram diagram = (DDiagram) object.eContainer();
+    AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
+      @Override
+      public void run() {
+        ((DAnnotation) object).getDetails().put(NAME, nameValue);
+        ((DAnnotation) object).getDetails().put(CONTENT, contentField);
+        // auto-get the service name if it is a capella service and the name field is empty
+        if (contentField.contains(TitleBlockHelper.CAPELLA_PREFIX)) {
+          String serviceName = TitleBlockHelper.getServiceName(contentField);
+          nameTextField.setText(TitleBlockHelper.getServiceName(contentField));
+          ((DAnnotation) object).getDetails().put(NAME, serviceName);
         }
-      };
-      executeCommand(command);
-    }
+        
+        RefreshRepresentationsCommand refreshCommand = new RefreshRepresentationsCommand(
+            TransactionUtil.getEditingDomain(diagram), new NullProgressMonitor(), diagram);
+        refreshCommand.execute();
+      }
+    };
+    executeCommand(command);
   }
 
   private boolean setContentErrorField(EObject semanticElement) {
@@ -151,26 +179,6 @@ public class TitleBlockBasicElementGroup extends AbstractSemanticField {
   }
 
   /**
-   * @param enabled
-   *          whether or not the name text field is enabled
-   */
-  public void enableNameField(boolean enabled) {
-    if (null != nameTextField && !nameTextField.isDisposed()) {
-      nameTextField.setEnabled(enabled);
-    }
-  }
-
-  /**
-   * @param enabled
-   *          whether or not the content text field is enabled
-   */
-  public void enableContentField(boolean enabled) {
-    if (null != contentTextField && !contentTextField.isDisposed()) {
-      contentTextField.setEnabled(enabled);
-    }
-  }
-
-  /**
    * {@inheritDoc}
    */
   @Override
@@ -183,5 +191,4 @@ public class TitleBlockBasicElementGroup extends AbstractSemanticField {
   public void loadData(EObject semanticElement) {
     // TODO Auto-generated method stub
   }
-
 }
