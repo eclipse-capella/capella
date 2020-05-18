@@ -32,11 +32,11 @@ public class SelectionDialogHelper {
     // Utility class
   }
 
-  private static SelectElementsDialog getSelectionDialogWizard(Collection<? extends EObject> list, Shell shell) {
+  private static SelectElementsDialog getSelectionDialogWizard(Collection<? extends EObject> list, Shell shell, boolean multiplicity) {
     // Displayed elements.
     Collection<? extends EObject> elements = (null != list) ? list : new ArrayList<>(0);
     // call wizard
-    return new SelectElementsDialog(shell, Messages.SelectionDialogHelper_SelectionWizard_Title, ICommonConstants.EMPTY_STRING, elements);
+    return new SelectElementsDialog(shell, Messages.SelectionDialogHelper_SelectionWizard_Title, ICommonConstants.EMPTY_STRING, elements, multiplicity, null);
   }
   
   private static SelectElementsDialog getSelectionDialogWizard(Collection<? extends EObject> list, DataLabelProvider labelProvider, Shell shell, boolean multiplicity,
@@ -56,7 +56,7 @@ public class SelectionDialogHelper {
    * @return Collection<EObject> : selected elements from wizard (value can be null)
    */
   public static Collection<? extends EObject> simplePropertiesSelectionDialogWizard(Collection<? extends EObject> list, Shell shell) {
-    SelectElementsDialog selectionDialog = getSelectionDialogWizard(list, shell);
+    SelectElementsDialog selectionDialog = getSelectionDialogWizard(list, shell, true);
     if (Window.OK == selectionDialog.open()) {
       return selectionDialog.getResult();
     }
@@ -86,7 +86,7 @@ public class SelectionDialogHelper {
    * @return EObject : selected element from wizard (value can be null)
    */
   public static EObject simplePropertySelectionDialogWizard(Collection<? extends EObject> list, Shell shell) {
-    SelectElementsDialog selectionDialog = getSelectionDialogWizard(list, shell);
+    SelectElementsDialog selectionDialog = getSelectionDialogWizard(list, shell, false);
     if (Window.OK == selectionDialog.open()) {
       List<? extends EObject> result = selectionDialog.getResult();
       if (!result.isEmpty()) {
