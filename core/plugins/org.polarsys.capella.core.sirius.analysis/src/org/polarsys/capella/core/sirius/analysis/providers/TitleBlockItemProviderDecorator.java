@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.core.diagram.helpers.providers;
+package org.polarsys.capella.core.sirius.analysis.providers;
 
 import java.net.URL;
 

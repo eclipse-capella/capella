@@ -35,13 +35,11 @@ import org.eclipse.sirius.common.tools.internal.assist.ProposalProviderRegistry;
 import org.eclipse.sirius.common.tools.internal.interpreter.DefaultInterpreterProvider;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
 import org.eclipse.swt.widgets.Text;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.ui.toolkit.browser.category.CategoryRegistry;
 import org.polarsys.capella.common.ui.toolkit.browser.category.ICategory;
 

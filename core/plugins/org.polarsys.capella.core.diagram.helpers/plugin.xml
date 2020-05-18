@@ -13,16 +13,4 @@
 <plugin>
    <extension-point id="org.polarsys.capella.core.diagram.traceability" name="org.polarsys.capella.core.diagram.traceability" schema="schema/traceability.exsd"/>
 
-	<extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
-      <factory
-        class="org.polarsys.capella.core.diagram.helpers.providers.TitleBlockItemDecoratorAdapterFactory"
-        supportedTypes="org.eclipse.emf.edit.provider.IItemLabelProvider"
-        uri="http://www.polarsys.org/capella/titleblocks/providers/1.0"/>
-   </extension>
-   <extension
-        point="org.polarsys.capella.core.model.handler.decoratorAdapterFactory">
-     <decoratorAdapterFactory
-           class="org.polarsys.capella.core.diagram.helpers.providers.TitleBlockItemDecoratorAdapterFactory">
-     </decoratorAdapterFactory>
-  </extension>
 </plugin>

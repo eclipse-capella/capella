@@ -634,4 +634,16 @@
  <extension id="org.polarsys.capella.core.sirius.analysis.CapellaInterpreter" point="org.eclipse.sirius.common.expressionInterpreter">
     <expressionInterpreterProvider interpreterProviderClass="org.polarsys.capella.core.sirius.analysis.CapellaInterpreter" />
  </extension>
+ <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <factory
+        class="org.polarsys.capella.core.sirius.analysis.providers.TitleBlockItemDecoratorAdapterFactory"
+        supportedTypes="org.eclipse.emf.edit.provider.IItemLabelProvider"
+        uri="http://www.eclipse.org/sirius/description/1.1.0"/>
+ </extension>
+ <extension
+        point="org.polarsys.capella.core.model.handler.decoratorAdapterFactory">
+     <decoratorAdapterFactory
+           class="org.polarsys.capella.core.sirius.analysis.providers.TitleBlockItemDecoratorAdapterFactory">
+     </decoratorAdapterFactory>
+ </extension>
 </plugin>
