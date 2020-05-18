@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Core
+Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.common.ui.massactions.core;singleton:=true
 Bundle-Version: 1.4.0.qualifier
 Bundle-Activator: org.polarsys.capella.common.ui.massactions.core.activator.MECoreCapellaActivator
@@ -16,3 +16,5 @@ Export-Package: org.polarsys.capella.common.ui.massactions.core.activator,
  org.polarsys.capella.common.ui.massactions.core.shared.helper,
  org.polarsys.capella.common.ui.massactions.core.visualize.table
 Automatic-Module-Name: org.polarsys.capella.common.ui.massactions.core
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin

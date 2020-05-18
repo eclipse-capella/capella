@@ -1,10 +1,12 @@
 /*******************************************************************************
  * Copyright (c) 2020 THALES GLOBAL SERVICES.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *  
+ * 
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0
+ * 
+ * SPDX-License-Identifier: EPL-2.0
+ * 
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
@@ -18,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.provider.EcoreEditPlugin;
 import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.swt.graphics.Image;
+
 @SuppressWarnings("rawtypes")
 public class SearchForAttributeItem implements SearchForItem {
   private Object attribute;
@@ -68,15 +71,14 @@ public class SearchForAttributeItem implements SearchForItem {
   public boolean covers(Object object) {
     return getAttributeFor(object) != null;
   }
-  
-  
+
   public boolean represent(Object att) {
     if (attribute instanceof Collection) {
       return ((Collection) attribute).contains(att);
     }
     return attribute == att;
   }
-  
+
   /**
    * 
    * @param eObj
@@ -91,5 +93,5 @@ public class SearchForAttributeItem implements SearchForItem {
       }
     }
     return null;
-  }  
+  }
 }

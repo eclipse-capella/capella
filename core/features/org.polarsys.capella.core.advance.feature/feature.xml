@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
-  All rights reserved. This program and the accompanying materials
-  are made available under the terms of the Eclipse Public License v1.0
-  which accompanies this distribution, and is available at
-  http://www.eclipse.org/legal/epl-v10.html
-
+  
+  This program and the accompanying materials are made available under the
+  terms of the Eclipse Public License 2.0 which is available at
+  http://www.eclipse.org/legal/epl-2.0
+  
+  SPDX-License-Identifier: EPL-2.0
+  
   Contributors:
        Thales - initial API and implementation
 -->
@@ -14,8 +16,7 @@
       label="%featureName"
       version="1.4.0.qualifier"
       provider-name="%providerName"
-      plugin="org.polarsys.capella.core.platform.sirius.ui.perspective"
-      image="Capella32x32.gif">
+      plugin="org.polarsys.capella.core.platform.sirius.ui.perspective">
 
    <description>
       %description
@@ -25,7 +26,7 @@
       %copyright
    </copyright>
 
-   <license>
+   <license url="%licenseURL">
       %license
    </license>
 

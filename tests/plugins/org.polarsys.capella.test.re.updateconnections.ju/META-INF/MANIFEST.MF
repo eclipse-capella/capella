@@ -14,3 +14,4 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Vendor: %providerName
 Export-Package: org.polarsys.capella.test.re.updateconnections.ju
+Bundle-Localization: plugin
