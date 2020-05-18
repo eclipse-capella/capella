@@ -102,10 +102,10 @@ location eclipse-shared-license "http://download.eclipse.org/cbi/updates/license
 	org.eclipse.license.feature.group lazy
 }
 
-location orbit-R20140525021250 "http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository" {
-	org.jsoup [1.7.2.v201304221138,1.7.2.v201304221138]
-	org.apache.commons.net [3.2.0.v201305141515,3.2.0.v201305141515]
-	org.apache.commons.lang [2.4.0.v201005080502,2.4.0.v201005080502]
+location orbit-R20160221192158 "https://download.eclipse.org/tools/orbit/downloads/drops/R20160221192158/repository" {
 	org.apache.log4j [1.2.15.v201012070815,1.2.15.v201012070815]
+	org.apache.commons.lang [2.4.0.v201005080502,2.4.0.v201005080502]
+	org.apache.commons.net [3.2.0.v201305141515,3.2.0.v201305141515]
+	org.jsoup [1.7.2.v201411291515,1.7.2.v201411291515]
 	com.google.guava [15.0.0.v201403281430,15.0.0.v201403281430]
 }
