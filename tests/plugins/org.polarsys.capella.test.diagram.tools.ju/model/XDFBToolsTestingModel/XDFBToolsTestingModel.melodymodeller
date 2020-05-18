@@ -117,6 +117,8 @@
           name="Roles"/>
       <ownedEntityPkg xsi:type="org.polarsys.capella.core.data.oa:EntityPkg" id="04ca1b6d-1842-4f58-93b9-58977778a6c4"
           name="Operational Entities">
+        <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="2f6adba1-42ca-4ae7-b853-60006be66ced"
+            name="OA 2" abstractType="#41347b92-d3e6-4b6a-b46d-01af1685b84d"/>
         <ownedEntities xsi:type="org.polarsys.capella.core.data.oa:Entity" id="7fc2273d-bdd4-4ff5-80d2-09920eda18e0"
             name="Operational Entity">
           <ownedStateMachines xsi:type="org.polarsys.capella.core.data.capellacommon:StateMachine"
@@ -131,6 +133,8 @@
             </ownedRegions>
           </ownedStateMachines>
         </ownedEntities>
+        <ownedEntities xsi:type="org.polarsys.capella.core.data.oa:Entity" id="41347b92-d3e6-4b6a-b46d-01af1685b84d"
+            name="OA 2" actor="true" human="true"/>
       </ownedEntityPkg>
     </ownedArchitectures>
     <ownedArchitectures xsi:type="org.polarsys.capella.core.data.ctx:SystemAnalysis"

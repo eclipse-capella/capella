@@ -418,14 +418,14 @@
           <ownedTools xsi:type="tool:ToolDescription" documentation="Insert/Remove Operational Activities. Create or delete graphical objects corresponding to already existing Operational Activities. Removing an Operational Activity graphical object from the diagram does not delete the Operational Activity from the model. This tool does not modify the semantic model." name="functions" label="%oa.oaib.functions" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element"/>
             <elementView name="elementView">
-              <subVariables xsi:type="tool:AcceleoVariable" name="visibleFunctions" computationExpression="aql:self.void2Null(elementView.getDisplayedAbstractFunctions()->select(getDisplayedAbstractFunction | getDisplayedAbstractFunction.allocationBlocks->filter(cs::Component)->select(c | c.isActor())->size() = 0))"/>
-              <subVariables xsi:type="tool:AcceleoVariable" name="visibleFunctionViews" computationExpression="aql:self.void2Null(elementView.getDisplayedAbstractFunctionViews()->select(getDisplayedAbstractFunctionView | getDisplayedAbstractFunctionView.target.allocationBlocks->filter(cs::Component)->select(c | c.isActor())->size() = 0))"/>
+              <subVariables xsi:type="tool:AcceleoVariable" name="visibleFunctions" computationExpression="aql:self.void2Null(elementView.getDisplayedAbstractFunctions())"/>
+              <subVariables xsi:type="tool:AcceleoVariable" name="visibleFunctionViews" computationExpression="aql:self.void2Null(elementView.getDisplayedAbstractFunctionViews())"/>
             </elementView>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView">
                 <subModelOperations xsi:type="tool:ExternalJavaAction" name="selectFunctions" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
                   <parameters name="context" value="aql:elementView"/>
-                  <parameters name="scope" value="aql:self.void2Null(elementView.getAvailableAbstractFunctionsToInsertInDataFlowBlank()->select(x | x.allocationBlocks->filter(cs::Component)->select(c | c.isActor())->size() = 0))"/>
+                  <parameters name="scope" value="aql:self.void2Null(elementView.getAvailableAbstractFunctionsToInsertInDataFlowBlank())"/>
                   <parameters name="resultVariable" value="selectedFunctions"/>
                   <parameters name="wizardMessage" value="aql:'Select Functions and ControlNodes to show in ' + element.name + '.'"/>
                   <parameters name="initialSelection" value="aql:visibleFunctions"/>
