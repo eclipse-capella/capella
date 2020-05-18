@@ -5,8 +5,8 @@ Element-Name: ValidationProfileActions
 Element-Type: context
 Element-Version: 2.0
 Id: _ZR3fQKKHEeaAAPJPtfviTA
-Runtime-Version: 2.5.0.M2
-Save-Time: 10/8/19 5:44 PM
+Runtime-Version: 2.5.0.201909172034
+Save-Time: 5/11/20 11:17 AM
 
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
 Content-Type: text/ecl
@@ -231,7 +231,7 @@ proc "checkDefaultPreferences" [val projectName] {
 	            checkPropertyButtonSelected "Include applied Property Values" true
 	            checkPropertyButtonSelected "Include owned Property Values" true
 	        }
-	        checkPropertyButtonSelected "Transit Interfaces handled by Components from context/logical layers to physical architecture" false
+	        checkPropertyButtonSelected "Transit Interfaces handled by Components" false
 	        checkPropertyButtonSelected "Transit allocated Exchange Items while transition of Interfaces, Functions or Components" false
 	        checkPropertyButtonSelected "Transit Datatypes handled by Exchanges items while transition of Exchange Items" false
 	        checkPropertyButtonSelected "Transit State Machines owned by a Component while transition of Components" false
@@ -302,7 +302,7 @@ proc "changePreferences" [val projectName] {
 	            get-button "Include applied Property Values" | uncheck
 	            get-button "Include owned Property Values" | uncheck
 	        }
-	        get-button "Transit Interfaces handled by Components from context/logical layers to physical architecture" 
+	        get-button "Transit Interfaces handled by Components" 
 	            | check
 	        get-button "Transit allocated Exchange Items while transition of Interfaces, Functions or Components" 
 	            | check
@@ -378,7 +378,7 @@ proc "checkChangedPreferences" [val projectName] {
 	            get-button "Include applied Property Values" | get-property selected | equals false | verify-true
 	            get-button "Include owned Property Values" | get-property selected | equals false | verify-true
 	        }
-	        get-button "Transit Interfaces handled by Components from context/logical layers to physical architecture" 
+	        get-button "Transit Interfaces handled by Components" 
 	            | get-property selected | equals true | verify-true
 	        get-button "Transit allocated Exchange Items while transition of Interfaces, Functions or Components" 
 	            | get-property selected | equals true | verify-true
@@ -460,7 +460,7 @@ proc "checkUnchangedPreferencesProject1" [val projectName] {
 	            get-button "Include applied Property Values" | get-property selected | equals false | verify-true
 	            get-button "Include owned Property Values" | get-property selected | equals false | verify-true
 	        }
-	        get-button "Transit Interfaces handled by Components from context/logical layers to physical architecture" 
+	        get-button "Transit Interfaces handled by Components" 
 	            | get-property selected | equals true | verify-true
 	        get-button "Transit allocated Exchange Items while transition of Interfaces, Functions or Components" 
 	            | get-property selected | equals true | verify-true

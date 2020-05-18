@@ -103,9 +103,9 @@ proc foldInstance {
 	get-window "Pattern Instance Management" | get-group "Life-cycle" | get-button Fold | click
 
 	// Check if the deleted content is not empty delete the instance
-	get-window "Pattern Instance Management" | get-window Delete | get-group "Deleted Elements" | get-tree
+	get-window "Pattern Instance Management" | get-window "Confirm Deletion" | get-group "Deleted Elements" | get-tree
 		| get-property itemCount | equals 1 | verify-true
-	get-window "Pattern Instance Management" | get-window Delete | get-button Yes | click
+	get-window "Pattern Instance Management" | get-window "Confirm Deletion" | get-button OK | click
 	
 	// Finish
 	get-window "Pattern Instance Management" | get-button Close | click

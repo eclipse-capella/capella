@@ -97,7 +97,7 @@ with [get-window "Pattern Instance Management"] {
 	get-table | get-cell 1 0 | click
 	get-group "Life-cycle" | get-button Delete | click
 	get-window "Modeling Patterns" | get-button Yes | click
-	get-window Delete | get-button Yes | click
+	get-window "Confirm Deletion" | get-button OK | click
 }
 
 // Verify that we have only 2 instances now

@@ -201,7 +201,7 @@ with [get-editor "[SDFB] Root System Function" | get-diagram -index 1] {
 get-view "Project Explorer" | get-tree 
     | select "ModelProject/*ModelProject.aird/ModelProject/System Analysis/System Functions/Root System Function/SystemFunction 2" 
     | key-type Del
-get-window "Progress Information" | get-window Delete | get-button Yes | click
+get-window "Progress Information" | get-window "Confirm Deletion" | get-button OK | click
 
     
     
