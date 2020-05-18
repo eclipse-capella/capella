@@ -33,6 +33,8 @@ public class PABDiagramFiltersTestSuite extends BasicTestSuite {
     tests.add(new HideComponentPortsWithoutExchangesForPAB());
     tests.add(new HideComputedComponentExchangesForPAB());
     tests.add(new HideDeployedPCsForPAB());
+    tests.add(new HideDiagramTitleBlocksForPAB());
+    tests.add(new HideElementTitleBlocksForPAB());
     tests.add(new HideComputedPhysicaLinksForPAB());
     tests.add(new HideFunctionalExchangesForPAB());
     tests.add(new HideFunctionalExchangesNamesForPAB());

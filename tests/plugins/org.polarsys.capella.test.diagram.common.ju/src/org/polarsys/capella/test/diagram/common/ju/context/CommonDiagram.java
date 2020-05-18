@@ -76,6 +76,11 @@ public class CommonDiagram extends DiagramContext {
         .contextOk();
   }
 
+  public void checkAutocreateDiagramTitleBlock() {
+    new CreateDiagramTitleBlockTool(this, IToolNameConstants.TOOL_CREATE_DIAGRAM_TITLE_BLOCK, getDiagramId())
+        .checkAutocreate();
+  }
+
   public void removeElementTitleBlock(String id) {
     new InsertRemoveTitleBlockTool(this, IToolNameConstants.TOOL_INSERT_REMOVE_ELEMENT_TITLE_BLOCK).remove(id);
   }

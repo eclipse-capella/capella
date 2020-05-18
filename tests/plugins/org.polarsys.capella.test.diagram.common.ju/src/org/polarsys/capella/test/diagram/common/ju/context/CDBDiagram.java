@@ -83,7 +83,6 @@ public class CDBDiagram extends CommonDiagram {
       }
     }.run().open();
   }
-
   
   public String createDataPackage() {
     return createDataPackage(getDiagramId());
