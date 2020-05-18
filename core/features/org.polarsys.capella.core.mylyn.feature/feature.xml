@@ -28,6 +28,7 @@
    </license>
 
    <requires>
+      <import feature="org.eclipse.egit.mylyn"/>
       <import feature="org.eclipse.mylyn.team_feature"/>
       <import plugin="org.eclipse.mylyn.help.ui"/>
    </requires>

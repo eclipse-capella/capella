@@ -25,6 +25,7 @@ location eclipse "http://download.eclipse.org/releases/2019-06" {
 	org.eclipse.jgit.feature.group
 	org.eclipse.jgit.source.feature.group
 	org.eclipse.egit.feature.group
+	org.eclipse.egit.mylyn.feature.group
 	org.eclipse.egit.source.feature.group
 	org.eclipse.mylyn_feature.feature.group
 	org.eclipse.mylyn.commons.feature.group
