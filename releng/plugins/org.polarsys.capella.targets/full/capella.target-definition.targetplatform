@@ -27,6 +27,7 @@ location eclipse "http://download.eclipse.org/releases/2019-06" {
 	com.ibm.icu
 	org.eclipse.viatra.query.sdk.feature.source.feature.group
 	org.eclipse.jgit.source.feature.group
+	org.eclipse.egit.mylyn.feature.group
 	org.eclipse.egit.source.feature.group
 	org.eclipse.mylyn_feature.feature.group
 	org.eclipse.mylyn.commons.feature.group
