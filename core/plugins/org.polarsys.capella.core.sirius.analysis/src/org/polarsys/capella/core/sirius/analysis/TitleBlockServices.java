@@ -32,19 +32,15 @@ import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
-import org.eclipse.sirius.diagram.business.api.helper.filter.FilterService;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.diagram.ui.business.api.helper.graphicalfilters.CompositeFilterApplicationBuilder;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
-import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Shell;
 import org.polarsys.capella.common.ef.command.AbstractCommand;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
-import org.polarsys.capella.core.diagram.helpers.DiagramHelper;
 import org.polarsys.capella.core.diagram.helpers.TitleBlockHelper;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.sirius.analysis.preferences.TitleBlockPreferencesInitializer;
@@ -533,8 +529,8 @@ public class TitleBlockServices {
 
     for (DAnnotation line : TitleBlockHelper.getTitleBlockLines(diagramTitleBlock)) {
       for (DAnnotation cell : TitleBlockHelper.getTitleBlockCells(line)) {
-        currentTB += cell.getDetails().get(TitleBlockHelper.NAME) + "+"
-            + cell.getDetails().get(TitleBlockHelper.CONTENT) + "+";
+        currentTB += cell.getDetails().get(TitleBlockHelper.NAME) + "&"
+            + cell.getDetails().get(TitleBlockHelper.CONTENT) + "&";
       }
     }
     if (currentTB.length() > 0) {
