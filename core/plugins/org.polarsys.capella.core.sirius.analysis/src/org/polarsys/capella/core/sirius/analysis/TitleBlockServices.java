@@ -529,8 +529,8 @@ public class TitleBlockServices {
 
     for (DAnnotation line : TitleBlockHelper.getTitleBlockLines(diagramTitleBlock)) {
       for (DAnnotation cell : TitleBlockHelper.getTitleBlockCells(line)) {
-        currentTB += cell.getDetails().get(TitleBlockHelper.NAME) + "&"
-            + cell.getDetails().get(TitleBlockHelper.CONTENT) + "&";
+        currentTB += cell.getDetails().get(TitleBlockHelper.NAME) + "#"
+            + cell.getDetails().get(TitleBlockHelper.CONTENT) + "#";
       }
     }
     if (currentTB.length() > 0) {
