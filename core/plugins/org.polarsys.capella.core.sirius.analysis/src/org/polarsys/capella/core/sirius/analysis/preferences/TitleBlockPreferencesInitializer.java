@@ -23,7 +23,7 @@ public class TitleBlockPreferencesInitializer extends AbstractPreferencesInitial
   public static final String DEFAULT_TITLEBLOCK_PREFERENCE_STORE = "defaultTitleBlock";
   public static final String SEPARATOR = "SEPARATOR";
   public static final String DEFAULT_TABLE = "Name" + SEPARATOR + "feature:name" + SEPARATOR + "Synchronized" 
-  + SEPARATOR + "feature:synchronized" + SEPARATOR + "Summary" + SEPARATOR + "aql:self.target.summary" + SEPARATOR
+  + SEPARATOR + "aql:self.representation.synchronized" + SEPARATOR + "Summary" + SEPARATOR + "aql:self.target.summary" + SEPARATOR
   + "Description" + SEPARATOR + "feature:documentation";
 
   
