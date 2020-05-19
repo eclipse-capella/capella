@@ -21,6 +21,7 @@ import org.eclipse.osgi.util.NLS;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.interaction.InteractionOperand;
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.interaction.ScenarioKind;
 import org.polarsys.capella.core.transition.system.topdown.constants.ITopDownConstants;
@@ -154,9 +155,11 @@ public class CreateRule_ScenarioUml2_01 extends TopDownTransitionTestCase {
     mustBeTransitionedAndReference(SF1111, scenario);
     mustBeTransitionedAndReference(fe1112, scenario);
     mustBeTransitionedAndReference(io1113, scenario);
+    hasGuard(io1113, scenario);
     mustBeTransitionedAndReference(fe1114, scenario);
     mustBeTransitionedAndReference(fe1115, scenario);
     mustBeTransitionedAndReference(io1116, scenario);
+    hasGuard(io1116, scenario);
     mustBeTransitionedAndReference(SF1117, scenario);
     mustBeTransitionedAndReference(io1118, scenario);
     mustBeTransitionedAndReference(SF1119, scenario);
@@ -164,6 +167,11 @@ public class CreateRule_ScenarioUml2_01 extends TopDownTransitionTestCase {
     mustBeTransitioned(iu112, scenario);
     mustBeTransitioned(cf113, scenario);
     mustBeTransitioned(cf114, scenario);
+  }
+
+  private void hasGuard(String id, EObject container) {
+    InteractionOperand target = (InteractionOperand) super.mustBeTransitionedAndReference(id, container);
+    assertTrue(target.getGuard() != null);
   }
 
   @Override
@@ -184,9 +192,11 @@ public class CreateRule_ScenarioUml2_01 extends TopDownTransitionTestCase {
     mustBeTransitionedAndReference(SF1211, scenario);
     mustBeTransitionedAndReference(fe1212, scenario);
     mustBeTransitionedAndReference(io1213, scenario);
+    hasGuard(io1213, scenario);
     mustBeTransitionedAndReference(fe1214, scenario);
     mustBeTransitionedAndReference(fe1215, scenario);
     mustBeTransitionedAndReference(io1216, scenario);
+    hasGuard(io1216, scenario);
     mustBeTransitionedAndReference(SF1217, scenario);
     mustBeTransitionedAndReference(io1218, scenario);
     mustBeTransitionedAndReference(SF1219, scenario);
@@ -206,9 +216,11 @@ public class CreateRule_ScenarioUml2_01 extends TopDownTransitionTestCase {
     mustBeTransitionedAndReference(SF1311, scenario);
     mustBeTransitionedAndReference(fe1312, scenario);
     mustBeTransitionedAndReference(io1313, scenario);
+    hasGuard(io1113, scenario);
     mustBeTransitionedAndReference(fe1314, scenario);
     mustBeTransitionedAndReference(fe1315, scenario);
     mustBeTransitionedAndReference(io1316, scenario);
+    hasGuard(io1316, scenario);
     mustBeTransitionedAndReference(SF1317, scenario);
     mustBeTransitionedAndReference(io1318, scenario);
     mustBeTransitionedAndReference(SF1319, scenario);
@@ -228,9 +240,11 @@ public class CreateRule_ScenarioUml2_01 extends TopDownTransitionTestCase {
     mustBeTransitionedAndReference(SF1411, scenario);
     mustBeTransitionedAndReference(FE1412, scenario);
     mustBeTransitionedAndReference(IO1413, scenario);
+    hasGuard(IO1413, scenario);
     mustBeTransitionedAndReference(FE1414, scenario);
     mustBeTransitionedAndReference(FE1415, scenario);
     mustBeTransitionedAndReference(IO1416, scenario);
+    hasGuard(IO1416, scenario);
     mustBeTransitionedAndReference(SF1417, scenario);
     mustBeTransitionedAndReference(IO1418, scenario);
     mustBeTransitionedAndReference(SF1419, scenario);
@@ -253,9 +267,11 @@ public class CreateRule_ScenarioUml2_01 extends TopDownTransitionTestCase {
     mustBeTransitionedAndReference(SF1111, scenario);
     mustBeTransitionedAndReference(fe1112, scenario);
     mustBeTransitionedAndReference(io1113, scenario);
+    hasGuard(io1113, scenario);
     mustBeTransitionedAndReference(fe1114, scenario);
     mustBeTransitionedAndReference(fe1115, scenario);
     mustBeTransitionedAndReference(io1116, scenario);
+    hasGuard(io1116, scenario);
     mustBeTransitionedAndReference(SF1117, scenario);
     mustBeTransitionedAndReference(io1118, scenario);
     mustBeTransitionedAndReference(SF1119, scenario);
@@ -274,9 +290,11 @@ public class CreateRule_ScenarioUml2_01 extends TopDownTransitionTestCase {
     mustBeTransitionedAndReference(SF1211, scenario);
     mustBeTransitionedAndReference(fe1212, scenario);
     mustBeTransitionedAndReference(io1213, scenario);
+    hasGuard(io1213, scenario);
     mustBeTransitionedAndReference(fe1214, scenario);
     mustBeTransitionedAndReference(fe1215, scenario);
     mustBeTransitionedAndReference(io1216, scenario);
+    hasGuard(io1216, scenario);
     mustBeTransitionedAndReference(SF1217, scenario);
     mustBeTransitionedAndReference(io1218, scenario);
     mustBeTransitionedAndReference(SF1219, scenario);
@@ -296,9 +314,11 @@ public class CreateRule_ScenarioUml2_01 extends TopDownTransitionTestCase {
     mustBeTransitionedAndReference(SF1311, scenario);
     mustBeTransitionedAndReference(fe1312, scenario);
     mustBeTransitionedAndReference(io1313, scenario);
+    hasGuard(io1313, scenario);
     mustBeTransitionedAndReference(fe1314, scenario);
     mustBeTransitionedAndReference(fe1315, scenario);
     mustBeTransitionedAndReference(io1316, scenario);
+    hasGuard(io1316, scenario);
     mustBeTransitionedAndReference(SF1317, scenario);
     mustBeTransitionedAndReference(io1318, scenario);
     mustBeTransitionedAndReference(SF1319, scenario);
