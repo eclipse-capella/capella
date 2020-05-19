@@ -56,6 +56,7 @@ public class TitleBlockServices {
 
   static Map<String, String> propertiesName = new HashMap<String, String>();
   static Map<String, String> propertiesContent = new HashMap<String, String>();
+  private static final String SEPARATOR = "SEPARATOR";
   private static final String DEFAULT_CELL_NAME = "Name";
   private static final String DEFAULT_CELL_CONTENT = "feature:name";
   private static final String FILTERS_TITLE_BLOCKS_MESSAGE = "{0}s are hidden by filters. Do you want to deactivate the filters for {1}s?";
@@ -529,12 +530,12 @@ public class TitleBlockServices {
 
     for (DAnnotation line : TitleBlockHelper.getTitleBlockLines(diagramTitleBlock)) {
       for (DAnnotation cell : TitleBlockHelper.getTitleBlockCells(line)) {
-        currentTB += cell.getDetails().get(TitleBlockHelper.NAME) + "#"
-            + cell.getDetails().get(TitleBlockHelper.CONTENT) + "#";
+        currentTB += cell.getDetails().get(TitleBlockHelper.NAME) + SEPARATOR
+            + cell.getDetails().get(TitleBlockHelper.CONTENT) + SEPARATOR;
       }
     }
     if (currentTB.length() > 0) {
-      currentTB = currentTB.substring(0, currentTB.length() - 1);
+      currentTB = currentTB.substring(0, currentTB.length() - SEPARATOR.length());
     }
 
     /*

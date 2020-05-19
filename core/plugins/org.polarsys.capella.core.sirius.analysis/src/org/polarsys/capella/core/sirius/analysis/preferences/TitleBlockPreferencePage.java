@@ -74,8 +74,7 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
   public static final String TABEL_CONTENT_PREFERENCE_STORE = "tableTitleBlock";
   public static final String COLUMNS_NUMBER_PREFERENCE_STORE = "columnsNumberTitleBlock";
   public static final String LINES_NUMBER_PREFERENCE_STORE = "linesNumberTitleBlock";
-  public static final String ESCAPED_SEPARATOR = "\\#";
-  public static final String SEPARATOR = "#";
+  public static final String SEPARATOR = "SEPARATOR";
   public static final String EMPTY_STRING = "";
   public static final int BOUND = 200;
   public static final String INSERT_LINE = "Insert line";
@@ -323,7 +322,7 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
   }
 
   private List<List<TitleBlockCell>> createModel() {
-    String[] cellsNameAndContent = tableContent.split(ESCAPED_SEPARATOR);
+    String[] cellsNameAndContent = tableContent.split(SEPARATOR);
     int currentIndex = 0;
     tccMatrix = new ArrayList<>();
     for (int i = 0; i < linesNumber; i++) {
