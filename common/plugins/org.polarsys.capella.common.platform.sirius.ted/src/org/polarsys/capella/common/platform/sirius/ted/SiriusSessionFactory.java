@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -57,7 +57,7 @@ public class SiriusSessionFactory extends SessionFactoryImpl implements SessionF
       public Collection<Resource> getSemanticResources() {
         Collection<Resource> semanticResources = new ArrayList<Resource>(super.getSemanticResources());
         semanticResources.addAll(
-            new DerivedResourcesHelper().getDerivedSemanticResources(transactionalEditingDomain, semanticResources));
+            new DerivedResourcesHelper().getDerivedSemanticResources(this.getTransactionalEditingDomain(), semanticResources));
         return Collections.unmodifiableCollection(semanticResources);
       }
     };
