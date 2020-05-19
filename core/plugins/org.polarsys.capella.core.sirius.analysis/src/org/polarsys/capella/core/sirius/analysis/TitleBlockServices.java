@@ -580,7 +580,7 @@ public class TitleBlockServices {
         if (!(element instanceof DAnnotation)) {
           hasExternalElementReference = true;
           boolean elementPresentInDiagram = false;
-          List<DDiagramElement> diagramElementsList = diagram.getOwnedDiagramElements();
+          List<DDiagramElement> diagramElementsList = diagram.getDiagramElements();
           for (DDiagramElement diagramElement : diagramElementsList) {
             if (!(diagramElement instanceof DEdge) && diagramElement.getTarget().equals(element)) {
               elementPresentInDiagram = true;
