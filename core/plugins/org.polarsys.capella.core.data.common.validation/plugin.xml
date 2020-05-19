@@ -374,6 +374,27 @@
                <target
                      class="SystemEngineering">
                </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.common.validation.project.UnkownFeaturesRule"
+                  id="I_44"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="I_44 - Check existence of unknown model features"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  {0} [{1}] has an unknown feature [{2}] of value [{3}].
+               </message>
+               <description>
+                  This rule checks the existence of unkown model features. 
+An unkown model feature is a feature that is persisted in your textual model representation, but is not recognised by the metamodel and therefore is not loaded during model opening.
+Its existence does not add any corruption risk to your model, but it does represent an anomaly so it should be removed.
+               </description>
+               <target
+                     class="SystemEngineering">
+               </target>
             </constraint></constraints>
       </constraintProvider>
    </extension>
