@@ -199,7 +199,7 @@ public class TitleBlockHelper {
    */
   public static DAnnotation getParentTitleBlock(DAnnotation titleBlockCell, DDiagram diagram) {
     if (isTitleBlockCell(titleBlockCell)) {
-      for (DDiagramElement diagramElem : diagram.getOwnedDiagramElements()) {
+      for (DDiagramElement diagramElem : diagram.getDiagramElements()) {
         if (diagramElem.getTarget() instanceof DAnnotation && isTitleBlock((DAnnotation) diagramElem.getTarget())) {
           DAnnotation titleBlock = (DAnnotation) diagramElem.getTarget();
           if (containsCell(titleBlock, titleBlockCell)) {
