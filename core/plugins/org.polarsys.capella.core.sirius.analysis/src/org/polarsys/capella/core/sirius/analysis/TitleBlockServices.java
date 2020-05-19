@@ -46,6 +46,7 @@ import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.diagram.helpers.DiagramHelper;
 import org.polarsys.capella.core.diagram.helpers.TitleBlockHelper;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.sirius.analysis.preferences.TitleBlockPreferencesInitializer;
 
 /*
@@ -579,7 +580,7 @@ public class TitleBlockServices {
         if (!(element instanceof DAnnotation)) {
           hasExternalElementReference = true;
           boolean elementPresentInDiagram = false;
-          List<DDiagramElement> diagramElementsList = diagram.getOwnedDiagramElements();
+          List<DDiagramElement> diagramElementsList = diagram.getDiagramElements();
           for (DDiagramElement diagramElement : diagramElementsList) {
             if (!(diagramElement instanceof DEdge) && diagramElement.getTarget().equals(element)) {
               elementPresentInDiagram = true;
@@ -715,7 +716,8 @@ public class TitleBlockServices {
       if (cell instanceof DAnnotation && TitleBlockHelper.isTitleBlockCell((DAnnotation) cell)) {
         String feature = ((DAnnotation) cell).getDetails().get(TitleBlockHelper.CONTENT);
         if (feature != null) {
-          Object obj = TitleBlockHelper.getResultOfExpression((DDiagram) diagram, feature, titleBlockContainer);
+          Object obj = TitleBlockHelper.getResultOfExpression(RepresentationHelper.getRepresentationDescriptor((DDiagram) diagram),
+              feature, titleBlockContainer);
           if (obj != null && !(obj instanceof EvaluationException)) {
             if (obj instanceof Collection) {
               return ((Collection) obj).stream()
