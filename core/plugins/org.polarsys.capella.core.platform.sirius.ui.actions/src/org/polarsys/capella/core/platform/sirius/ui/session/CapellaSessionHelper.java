@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -42,6 +42,7 @@ import org.eclipse.emf.ecore.xmi.PackageNotFoundException;
 import org.eclipse.emf.ecore.xmi.UnresolvedReferenceException;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.gmf.runtime.emf.core.resources.GMFResource;
+import org.eclipse.sirius.business.api.resource.strategy.ResourceStrategyRegistry;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.factory.SessionFactory;
 import org.eclipse.ui.PartInitException;
@@ -186,16 +187,16 @@ public class CapellaSessionHelper {
   }
 
   /**
-   * Unload all resources on a temporary resourceSet, so resources are not removed
+   * Unload all resources on a temporary resourceSet and remove them from the temporary resourceSet.
    * 
    * @param resourceSet
    *          the resource set to be cleaned
    */
   public static void cleanResourceSet(ResourceSet resourceSet) {
     if (null != resourceSet) {
-      List<Resource> resources = new ArrayList<Resource>(resourceSet.getResources());
-      for (Resource resource : resources) {
-        resource.unload();
+      for (Resource resource : new ArrayList<Resource>(resourceSet.getResources())) {
+        ResourceStrategyRegistry.getInstance().unloadAtResourceSetDispose(resource, new NullProgressMonitor());
+        resourceSet.getResources().remove(resource);
       }
     }
   }
@@ -209,7 +210,7 @@ public class CapellaSessionHelper {
     ResourceSet resourceSet = session.getSessionResource().getResourceSet();
     for (Resource resource : new ArrayList<Resource>(resourceSet.getResources())) {
       if (resource.getErrors().size() > 0) {
-        resource.unload();
+        ResourceStrategyRegistry.getInstance().unloadAtResourceSetDispose(resource, new NullProgressMonitor());
         resourceSet.getResources().remove(resource);
       }
     }
