@@ -541,3 +541,4 @@ These followings icons are made available under the terms of the Eclipse Public 
 /icons/full/obj16/FunctionalChainInvolvementLinkOA_AndFunction.gif - org.polarsys.capella.core.sirius.analysis - org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvementLinkOA_AndFunction.gif
 /icons/full/obj16/SequenceLink.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/SequenceLink.gif
 /icons/full/obj16/SystemActor - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/SystemActor.gif
+/icons/full/obj16/TitleBlock_16.gif - org.polarsys.capella.core.sirius.analysis - org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlock_16.gif

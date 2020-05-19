@@ -185,6 +185,12 @@
                id="org.polarsys.capella.core.data.core.properties.sections.StringPropertyValueSection"
                tab="BaseSiriusDiagram">
          </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.core.properties.sections.TitleBlockCellSection"
+               filter="org.polarsys.capella.core.data.core.properties.sections.TitleBlockCellSection"
+               id="org.polarsys.capella.core.data.core.properties.sections.TitleBlockCellSection"
+               tab="BaseSiriusDiagram">
+         </propertySection>
       </propertySections>
    </extension>
    <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">      
