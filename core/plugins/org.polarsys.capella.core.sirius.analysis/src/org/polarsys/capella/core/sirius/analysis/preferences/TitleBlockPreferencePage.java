@@ -530,7 +530,6 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
     disposeColumns();
     createColumns(v, columnsNumber);
     v.setInput(createModel());
-    performOk();
   }
 
 }
