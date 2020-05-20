@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,6 +22,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.core.runtime.IStatus;
@@ -53,6 +54,7 @@ import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.Style;
+import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.platform.sirius.clipboard.Activator;
@@ -140,7 +142,7 @@ public class CapellaDiagramPasteCommand extends AbstractResultCommand {
     }
 
     List<EObject> semanticOrigins = getSemanticRootsForCopy(CapellaDiagramClipboard.getInstance().getSiriusElements(),
-        semanticTarget);
+        semanticTarget).stream().filter(x -> !(x instanceof DAnnotation)).collect(Collectors.toList());
     List<EObject> semanticCopies = pasteCapellaElements(semanticOrigins, semanticSource, semanticTarget);
     if (semanticCopies == null) {
       return; // failure: empty result

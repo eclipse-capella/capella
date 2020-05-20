@@ -45,7 +45,8 @@ Require-Bundle: org.eclipse.core.expressions,
  org.polarsys.capella.core.data.gen,
  org.polarsys.capella.common.ui.toolkit.browser,
  org.eclipse.emf.ecore,
- org.eclipse.jface
+ org.eclipse.jface,
+ org.eclipse.sirius.diagram
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Localization: plugin
