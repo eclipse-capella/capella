@@ -715,6 +715,7 @@ public class TitleBlockServices {
         if (feature != null) {
           Object obj = TitleBlockHelper.getResultOfExpression(RepresentationHelper.getRepresentationDescriptor((DDiagram) diagram),
               feature, titleBlockContainer);
+          obj = ((String) obj).replaceAll("\\<[^>]*>","");
           if (obj != null && !(obj instanceof EvaluationException)) {
             if (obj instanceof Collection) {
               return ((Collection) obj).stream()
