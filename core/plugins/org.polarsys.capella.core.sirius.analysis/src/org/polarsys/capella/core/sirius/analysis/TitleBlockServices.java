@@ -764,16 +764,20 @@ public class TitleBlockServices {
     if (cell.getReferences().isEmpty()) {
       wrapperAnnotation = DescriptionFactory.eINSTANCE.createDAnnotation();
       wrapperAnnotation.setSource(TitleBlockHelper.TITLE_BLOCK_CONTENT);
-      wrapperAnnotation.getDetails().put(TitleBlockHelper.CONTENT, object.toString());
+      wrapperAnnotation.getDetails().put(TitleBlockHelper.CONTENT, htmlToPlainText(object.toString()));
       cell.getReferences().add(wrapperAnnotation);
       diagram.getEAnnotations().add(wrapperAnnotation);
     } else {
       wrapperAnnotation = (DAnnotation) cell.getReferences().get(0);
       if (!object.toString().equals(wrapperAnnotation.getDetails().get(TitleBlockHelper.CONTENT))) {
-        wrapperAnnotation.getDetails().put(TitleBlockHelper.CONTENT, object.toString());
+        wrapperAnnotation.getDetails().put(TitleBlockHelper.CONTENT, htmlToPlainText(object.toString()));
       }
     }
     return wrapperAnnotation;
+  }
+  
+  private String htmlToPlainText(String content) {
+      return content.replaceAll("\\<[^>]*>","");  
   }
 
   /**
