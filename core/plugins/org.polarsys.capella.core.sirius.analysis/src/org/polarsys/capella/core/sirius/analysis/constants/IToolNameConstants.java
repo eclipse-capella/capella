@@ -1667,4 +1667,7 @@ public interface IToolNameConstants {
   String TOOL_INSERT_REMOVE_ELEMENT_TITLE_BLOCK = "element.title.blocks";
   String TOOL_INSERT_REMOVE_DIAGRAM_TITLE_BLOCK = "diagram.title.blocks";
 
+  //delete TB tools
+  String TOOL_DELETE_DIAGRAM_TITLE_BLOCK = "Delete Title Block";
+  
 }
