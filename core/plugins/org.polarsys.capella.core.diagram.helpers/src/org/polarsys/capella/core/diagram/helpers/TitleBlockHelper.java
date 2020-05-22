@@ -535,6 +535,33 @@ public class TitleBlockHelper {
       e.printStackTrace();
     }
   }
+  
+  public static List<DAnnotation> getAllAnnotationsForTitleBlock(DAnnotation titleBlock) {
+	    List<DAnnotation> pieces = new ArrayList<>();
+	    if (isTitleBlock(titleBlock)) {
+	      for (EObject element : titleBlock.getReferences()) {
+	        if (element instanceof DAnnotation && isTitleBlockLine((DAnnotation) element)) {
+	          pieces.add((DAnnotation) element);
+	          for(EObject elementCol : ((DAnnotation) element).getReferences()) {
+	            if (elementCol instanceof DAnnotation) {
+	              pieces.add((DAnnotation) elementCol);
+	              for(EObject elementCel : ((DAnnotation) elementCol).getReferences()) {
+	                if (elementCel instanceof DAnnotation) {
+	                  pieces.add((DAnnotation) elementCel);
+	                  for(EObject elementContent : ((DAnnotation) elementCel).getReferences()) {
+	                    if (elementContent instanceof DAnnotation) {
+	                      pieces.add((DAnnotation) elementContent);
+	                    }
+	                  }
+	                }
+	              }
+	            }
+	          }
+	        }
+	      }
+	    }
+	    return pieces;
+	  }
 
   /**
    * @param titleBlock

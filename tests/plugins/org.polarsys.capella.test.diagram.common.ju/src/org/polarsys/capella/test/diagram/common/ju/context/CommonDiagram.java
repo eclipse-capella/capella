@@ -30,6 +30,7 @@ import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.SelectTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.titleblocks.CreateDiagramTitleBlockTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.titleblocks.CreateElementTitleBlockTool;
+import org.polarsys.capella.test.diagram.common.ju.step.tools.titleblocks.DeleteTitleBlockTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.titleblocks.InsertColumnInTitleBlockTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.titleblocks.InsertLineInTitleBlockTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.titleblocks.InsertRemoveTitleBlockTool;
@@ -120,6 +121,11 @@ public class CommonDiagram extends DiagramContext {
         IToolNameConstants.TOOL_REMOVE_COLUMN_TITLE_BLOCK, getDiagramId(), titleBlock, colNo).run();
     return (DAnnotation) createdTB.getTarget();
   }
+  
+  public void deleteTitleBlock(DAnnotation titleBlock) {
+	    DeleteTitleBlockTool delTool = new DeleteTitleBlockTool(this, this, IToolNameConstants.TOOL_DELETE_DIAGRAM_TITLE_BLOCK);
+	    delTool.delete(titleBlock);
+	  }
 
   public void createConstrainedElement(String sourceId, String targetId) {
     // All diagrams shared the same tool

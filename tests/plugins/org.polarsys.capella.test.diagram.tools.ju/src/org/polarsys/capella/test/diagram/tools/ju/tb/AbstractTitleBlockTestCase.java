@@ -59,6 +59,8 @@ public abstract class AbstractTitleBlockTestCase extends AbstractDiagramTestCase
     diagram.removeDiagramTitleBlock(diagramTB.getUid());
     diagram.checkCreateDiagramTitleBlock();
     diagram.insertDiagramTitleBlock(diagramTB.getUid());
+    
+    diagram.deleteTitleBlock(diagramTB);
   }
 
   public void testElementTitleBlock(String elementId) {
@@ -77,6 +79,8 @@ public abstract class AbstractTitleBlockTestCase extends AbstractDiagramTestCase
     // remove line/column from TB element
     diagram.removeLineFromTitleBlock(elementTB, 0);
     diagram.removeColumnFromTitleBlock(elementTB, 0);
+    
+    diagram.deleteTitleBlock(elementTB);
   }
 
   protected abstract CommonDiagram initDiagram();
