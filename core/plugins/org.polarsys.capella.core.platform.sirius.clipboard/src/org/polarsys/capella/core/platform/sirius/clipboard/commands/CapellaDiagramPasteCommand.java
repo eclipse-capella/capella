@@ -202,7 +202,7 @@ public class CapellaDiagramPasteCommand extends AbstractResultCommand {
         DDiagramElement diagramElementRoot = (DDiagramElement) siriusElementRoot;
         DiagramElementMapping diagramElementRootMapping = diagramElementRoot.getDiagramElementMapping();
 
-        if (diagramElementRootMapping instanceof AbstractNodeMapping) {
+        if (!(diagramElementRoot.getTarget() instanceof DAnnotation) && diagramElementRootMapping instanceof AbstractNodeMapping) {
           AbstractNodeMapping abstractRootElementMapping = (AbstractNodeMapping) diagramElementRootMapping;
 
           IStatus validityStatus = checkPastedElementValidity(diagramElementRoot, abstractRootElementMapping,

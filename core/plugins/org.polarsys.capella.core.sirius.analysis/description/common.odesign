@@ -3428,7 +3428,7 @@
           </style>
         </containerMappings>
         <containerMappings name="DT_TitleBlockContainer" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='Delete%20Title%20Block']" semanticCandidatesExpression="aql:diagram.getTitleBlocksInDiagram()" createElements="false" domainClass="DAnnotation" childrenPresentation="VerticalStack">
-          <subContainerMappings name="DT_TitleBlockLineContainer" semanticCandidatesExpression="feature:references" createElements="false" domainClass="DAnnotation" childrenPresentation="HorizontalStack">
+          <subContainerMappings name="DT_TitleBlockLineContainer" semanticCandidatesExpression="feature:references" domainClass="DAnnotation" childrenPresentation="HorizontalStack">
             <subContainerMappings name="DT_TitleBlockColumnContainer" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='Delete%20Title%20Block%20Cell']" semanticCandidatesExpression="feature:references" domainClass="DAnnotation" childrenPresentation="List">
               <subNodeMappings name="DT_TitleBlockCellNode" semanticCandidatesExpression="aql:diagram.getTitleBlockCellContent(self, containerView)" domainClass="EObject">
                 <style xsi:type="style:SquareDescription" labelSize="7" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
@@ -3457,7 +3457,7 @@
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </style>
           </subContainerMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="2" labelSize="9" showIcon="false" labelExpression="" hideLabelByDefault="true" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_TitleBlock_Gray']">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="9" showIcon="false" labelExpression="" hideLabelByDefault="true" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_TitleBlock_Gray']">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -4754,7 +4754,7 @@
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView">
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectTitleBlocks" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
                     <parameters name="context" value="aql:elementView"/>
-                    <parameters name="scope" value="aql:elementView.getAvailableToInsertElementTitleBlocks()"/>
+                    <parameters name="scope" value="aql:elementView.getAvailableToInsertElementTitleBlocks(diagram)"/>
                     <parameters name="resultVariable" value="selectedTitleBlocks"/>
                     <parameters name="wizardMessage" value="aql:'Select Values to show in ' + element.name + '.'"/>
                     <parameters name="initialSelection" value="aql:self.void2Null(elementView.getVisibleElementTitleBlocks())"/>
