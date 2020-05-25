@@ -11,6 +11,7 @@
 package org.polarsys.capella.core.sirius.analysis;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -28,11 +29,12 @@ import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
+import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.diagram.ui.business.api.helper.graphicalfilters.CompositeFilterApplicationBuilder;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
@@ -118,7 +120,7 @@ public class TitleBlockServices {
    *         not annotation and there is not another annotation associated with elementView
    */
   public boolean isValidCreateElementTitleBlock(EObject containerView) {
-    return (containerView instanceof DDiagramElement) && (!hasAElementTitleBlock((DDiagramElement) containerView)
+     return (containerView instanceof EdgeTarget && containerView instanceof DDiagramElement) && (!hasAElementTitleBlock((DDiagramElement) containerView)
         || getVisibleElementTitleBlocks(containerView).isEmpty()
         || isFilterElementTitleBlocksEnabled((DDiagramElement) containerView));
   }
@@ -327,10 +329,14 @@ public class TitleBlockServices {
    * 
    * @param element
    * @param diagram
-   * @return list of Title Blocks (will be one Element TB) that are associated to element given as parameter
+   * @return list of Elements (will be one Element) that are associated to a given Title Block as parameter
    */
-  public List<DAnnotation> getTitleBlocksForElement(EObject element, DDiagram diagram) {
-    return TitleBlockHelper.getElementTitleBlocks(diagram, element);
+  public List<EObject> targetFinderExpressionForTitleBlocks(EObject element) {
+    List<EObject> list = new ArrayList<EObject>();
+    if(element instanceof DAnnotation) {
+      list.add(TitleBlockHelper.getReferencedElement((DAnnotation) element));
+    }
+    return list;
   }
 
   /**
@@ -421,36 +427,46 @@ public class TitleBlockServices {
    * @return list of Title Blocks (both Diagram or Element TB) that are visible in diagram
    */
   private List<DAnnotation> getVisibleTitleBlocks(Object containerView, String type) {
-    List<DAnnotation> list = new ArrayList<DAnnotation>();
-    if (containerView instanceof DDiagramElementContainer) {
-      for (DEdge edge : ((DDiagramElementContainer) containerView).getOutgoingEdges()) {
-        if (edge.getTargetNode() instanceof DNodeContainer
-            && ((DNodeContainer) edge.getTargetNode()).getTarget() instanceof DAnnotation) {
-          list.add((DAnnotation) ((DNodeContainer) edge.getTargetNode()).getTarget());
-        }
+    if (containerView instanceof EdgeTarget) {
+      DAnnotation elementTitleBlock = getAssociatedElementTitleBlock((EdgeTarget) containerView);
+      if(elementTitleBlock != null) {
+        return Arrays.asList(elementTitleBlock);
       }
     } else if (containerView instanceof DDiagram) {
-      EList<DDiagramElement> elements = ((DDiagram) containerView).getOwnedDiagramElements();
-      for (DDiagramElement element : elements) {
-        if (element.getTarget() instanceof DAnnotation) {
-          DAnnotation annotation = (DAnnotation) element.getTarget();
-          if (annotation.getSource() != null && annotation.getSource().equals(type)) {
-            if (type.equals(TitleBlockHelper.ELEMENT_TITLE_BLOCK)) {
-              DNodeContainer node = (DNodeContainer) element;
-
-              // do not return the Title Blocks that are associated to a hidden element
-              if (!node.getIncomingEdges().isEmpty()) {
-                DEdge edge = node.getIncomingEdges().get(0);
-                if (edge.getSourceNode() != null)
-                  list.add(annotation);
-              }
-            } else {
-              list.add(annotation);
-            }
-          }
-        }
+      return getAllAssociatedTitleBlocks((DDiagram) containerView, type);
+    }
+    return new ArrayList<DAnnotation>();
+  }
+  
+  /**
+   * get the Element Title Block associated to an element in diagram
+   *
+   * @param edgeTarget
+   * @return a Element Title Block or null
+   */
+  private DAnnotation getAssociatedElementTitleBlock(EdgeTarget edgeTarget) {
+    for (DEdge edge : edgeTarget.getIncomingEdges()) {
+      if (edge.getSourceNode() instanceof DNodeContainer
+          && ((DNodeContainer) edge.getSourceNode()).getTarget() instanceof DAnnotation) {
+        return (DAnnotation) ((DNodeContainer) edge.getSourceNode()).getTarget();
       }
     }
+    return null;
+  }
+
+  /**
+   * get the list of associated title blocks by type (type: can be all the Element Title Blocks in diagram or the Diagram Title Block)
+   * 
+   * @param diagram
+   * @param type
+   * @return list of Title Blocks (Element TB/Diagram TB) that are displayed in the diagram
+   */
+  private List<DAnnotation> getAllAssociatedTitleBlocks(DDiagram diagram, String type) {
+    List<DAnnotation> list = new ArrayList<DAnnotation>();
+    list = diagram.getDiagramElements().stream()
+        .filter(x -> x instanceof DNodeContainer && x.getTarget() instanceof DAnnotation && type != null
+            && type.equals(((DAnnotation) x.getTarget()).getSource()))
+        .map(x -> (DAnnotation) x.getTarget()).collect(Collectors.toList());
     return list;
   }
 
@@ -494,11 +510,14 @@ public class TitleBlockServices {
    * @param diagram
    * @return list of Title Blocks (Element TB) for elementView
    */
-  public List<DAnnotation> getAvailableToInsertElementTitleBlocks(DDiagramElement elementView, DDiagram diagram) {
-    return getAvailableToInsertElementTitleBlocks(diagram).stream()
-        .filter(x -> x.getReferences().contains(elementView.getTarget())).collect(Collectors.toList());
+  public List<DAnnotation> getAvailableToInsertElementTitleBlocks(EObject elementView, DDiagram diagram) {
+    if(elementView instanceof DDiagramElement)
+      return getAvailableToInsertElementTitleBlocks(diagram).stream()
+          .filter(x -> x.getReferences().contains(((DDiagramElement)elementView).getTarget()))
+          .collect(Collectors.toList());
+    return getAvailableToInsertElementTitleBlocks(diagram);
   }
-
+  
   /**
    * get the Diagram Title Blocks
    * 
@@ -572,26 +591,16 @@ public class TitleBlockServices {
     List<DAnnotation> deleteList = new ArrayList<>();
     List<EObject> hideList = new ArrayList<>();
     for (DAnnotation annotation : list) {
-      boolean hasExternalElementReference = false;
-      for (EObject element : annotation.getReferences()) {
-        if (!(element instanceof DAnnotation)) {
-          hasExternalElementReference = true;
-          boolean elementPresentInDiagram = false;
-          List<DDiagramElement> diagramElementsList = diagram.getDiagramElements();
-          for (DDiagramElement diagramElement : diagramElementsList) {
-            if (!(diagramElement instanceof DEdge) && diagramElement.getTarget().equals(element)) {
-              elementPresentInDiagram = true;
-            }
-          }
-          // case to hide the TB
-          if (!(elementPresentInDiagram)) {
-            hideList.add(annotation);
-          }
+      EObject element = TitleBlockHelper.getSemanticElementReference(annotation);
+      if(element != null) {
+        DDiagramElement diagElement = DiagramServices.getDiagramServices().getDiagramElement(diagram, element);
+        // case to hide the TB
+        if (diagElement == null) {
+          hideList.add(annotation);
         }
       }
-
-      // case to delete the TB because it has no reference to a semantic element
-      if (!(hasExternalElementReference)) {
+      else {
+        // case to delete the TB because it has no reference to a semantic element
         deleteList.add(annotation);
       }
     }
@@ -828,18 +837,27 @@ public class TitleBlockServices {
    */
   public EObject showHideTitleBlocks(final EObject elementView, List<EObject> selectedTypes, String type) {
     DDiagram diagram = CapellaServices.getService().getDiagramContainer(elementView);
-
-    Map<EObject, AbstractDNode> existingTypes = new HashMap<>();
-    for (EObject currentContainer : DiagramServices.getDiagramServices().getAllContainersAndNodeLists(elementView)) {
-      AbstractDNode aContainer = (AbstractDNode) currentContainer;
-      if ((aContainer.getTarget() instanceof DAnnotation)) {
-        DAnnotation annotation = (DAnnotation) aContainer.getTarget();
-        if (annotation.getSource() != null && annotation.getSource().equals(type))
-          existingTypes.put(aContainer.getTarget(), aContainer);
+    Map<EObject, DDiagramElement> existingTypes = new HashMap<>();
+    if (elementView instanceof EdgeTarget) {
+      // we want to show/hide the Title Block associated to elementView
+      DAnnotation elementTitleBlock = getAssociatedElementTitleBlock((EdgeTarget) elementView);
+      if(elementTitleBlock != null) {
+        existingTypes.put(elementTitleBlock, 
+            DiagramServices.getDiagramServices().getDiagramElement(diagram,
+                elementTitleBlock));
+      }
+    } else {
+      // we want to show/hide one or more Title Blocks in the diagram
+      for (DDiagramElement aContainer : diagram.getDiagramElements()) {
+        if ((aContainer.getTarget() instanceof DAnnotation)) {
+          DAnnotation annotation = (DAnnotation) aContainer.getTarget();
+          if (annotation.getSource() != null && annotation.getSource().equals(type))
+            existingTypes.put(aContainer.getTarget(), aContainer);
+        }
       }
     }
 
-    for (Entry<EObject, AbstractDNode> me : existingTypes.entrySet()) {
+    for (Entry<EObject, DDiagramElement> me : existingTypes.entrySet()) {
       if (!selectedTypes.contains(me.getKey())) {
         DiagramServices.getDiagramServices().removeContainerView(me.getValue());
       }
@@ -887,6 +905,14 @@ public class TitleBlockServices {
         if (objLine instanceof DAnnotation) {
           createTitleBlockLineView(nodeTitleBlock, (DAnnotation) objLine, diagram, context);
         }
+      }
+      
+      if(TitleBlockHelper.isElementTitleBlock(titleBlock)) {
+        EObject element = TitleBlockHelper.getReferencedElement(titleBlock);
+        DDiagramElement nodeElement = DiagramServices.getDiagramServices().getDiagramElement(diagram, element);
+        EdgeMapping edgeMapping = DiagramServices.getDiagramServices().getEdgeMapping(diagram, IMappingNameConstants.DT_TITLE_BLOCK_EDGE);
+        DiagramServices.getDiagramServices().createEdge(edgeMapping, (EdgeTarget)nodeTitleBlock,
+            (EdgeTarget)nodeElement, titleBlock);
       }
     } catch (RuntimeException e) {
     }
