@@ -89,13 +89,18 @@ public class ManageReferencedLibrariesHandler extends AbstractHandler {
     IFile file = (IFile) selection.getFirstElement();
     Session session = getExistingSession(file);
 
+    return openManageReferencesWizard(session);
+  }
+
+  public static Object openManageReferencesWizard(Session session) {
     IModel rootModel = ILibraryManager.INSTANCE.getModel(session.getTransactionalEditingDomain());
     if ((rootModel == null) || !(rootModel instanceof IModel.Edit)) {
       return null;
     }
     final String modelName = rootModel.getIdentifier().getName();
     IProperties properties = new PropertiesLoader().getProperties(FlexibilityIds.MANAGE_REFERENCES_PROPERTIES);
-    IPropertyContext context = new PropertyContext(properties, new LibraryManagerModel(session.getTransactionalEditingDomain(), (IModel.Edit) rootModel));
+    IPropertyContext context = new PropertyContext(properties,
+        new LibraryManagerModel(session.getTransactionalEditingDomain(), (IModel.Edit) rootModel));
     IRenderers renderers = new RenderersLoader().getRenderers(properties);
     IRendererContext rendererContext = new RendererContext(renderers, context);
 
@@ -105,7 +110,8 @@ public class ManageReferencedLibrariesHandler extends AbstractHandler {
       public void addPages() {
         PropertyWizardPage page = new PropertyWizardPage("propertiesEditor", getContext(), getRendererContext()); //$NON-NLS-1$
         page.setTitle(modelName + " management");
-        page.setDescription("This wizard helps you to define the libraries that are referenced by the current project (first tab).\nYou can also specify among these libraries which ones must be considered in capella query scopes (second tab).");
+        page.setDescription(
+            "This wizard helps you to define the libraries that are referenced by the current project (first tab).\nYou can also specify among these libraries which ones must be considered in capella query scopes (second tab).");
         addPage(page);
       }
     };

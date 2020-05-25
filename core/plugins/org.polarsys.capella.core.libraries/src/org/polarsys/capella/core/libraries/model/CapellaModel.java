@@ -13,6 +13,7 @@ package org.polarsys.capella.core.libraries.model;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Optional;
 
 import org.eclipse.core.runtime.preferences.ConfigurationScope;
 import org.eclipse.emf.common.util.URI;
@@ -68,7 +69,7 @@ public class CapellaModel extends AbstractCapellaModel implements IModel.Edit {
           if (!(library.eIsProxy())) {
             identifier = createModelIdentifier(library.eResource());
           } else {
-            identifier = createModelIdentifier(((InternalEObject) library).eProxyURI().fragment(), ((InternalEObject) library).eProxyURI().trimFragment());
+            identifier = createModelIdentifier(((InternalEObject) library).eProxyURI().fragment(), ((InternalEObject) library).eProxyURI().trimFragment(), true);
           }
         }
 
@@ -96,6 +97,10 @@ public class CapellaModel extends AbstractCapellaModel implements IModel.Edit {
   protected static ModelIdentifier createModelIdentifier(String identifier, URI uri) {
     return new ModelIdentifier(identifier, uri);
   }
+  
+  protected static ModelIdentifier createModelIdentifier(String identifier, URI uri, boolean isProxy) {
+    return new ModelIdentifier(identifier, uri, isProxy);
+  }
 
   public static ModelIdentifier createModelIdentifier(Resource resource) {
     Project project = CapellaLibraryExt.getProject(resource);
@@ -103,7 +108,7 @@ public class CapellaModel extends AbstractCapellaModel implements IModel.Edit {
       Resource rootResource = project.eResource();
       ModelInformation information = CapellaLibraryExt.getModelInformation(rootResource, false);
       String identifier = CapellaLibraryExt.getIdentifier(information);
-      return createModelIdentifier(identifier, rootResource.getURI());
+      return createModelIdentifier(identifier, rootResource.getURI(), false);
     }
     return null;
   }
@@ -201,20 +206,28 @@ public class CapellaModel extends AbstractCapellaModel implements IModel.Edit {
         }
 
         if (toDelete != null) {
-
-          // session.removeSemanticResources unload the resource and depending ones (so the root model resource too)
-          Resource toRemove = toDelete.getLibrary().eResource();
-          Session session = SessionManager.INSTANCE.getSession(source);
-          if (session instanceof DAnalysisSessionImpl) {
-            for (final DAnalysis analysis : ((DAnalysisSessionImpl) session).allAnalyses()) {
-              analysis.getSemanticResources()
-                  .remove(new ResourceDescriptor(toDelete.getLibrary().eResource().getURI()));
+          Resource toRemove = null;
+          if (toDelete.getLibrary().eIsProxy()) {
+            // Find the resource based solely on resource URI, not ModelInformation
+            URI resourceURI = ((InternalEObject) toDelete.getLibrary()).eProxyURI().trimFragment();
+            Optional<Resource> foundResource = _domain.getResourceSet().getResources().stream()
+                .filter(res -> res.getURI().equals(resourceURI)).findFirst();
+            if (foundResource.isPresent()) {
+              toRemove = foundResource.get();
             }
+          } else {
+            toRemove = toDelete.getLibrary().eResource();
           }
-
-          new BasicCapellaDeleteCommand(ExecutionManagerRegistry.getInstance().getExecutionManager(_domain),
-              Collections.singleton(toDelete), false, false, false).execute();
           if (toRemove != null) {
+            Session session = SessionManager.INSTANCE.getSession(source);
+            if (session instanceof DAnalysisSessionImpl) {
+              for (final DAnalysis analysis : ((DAnalysisSessionImpl) session).allAnalyses()) {
+                analysis.getSemanticResources().remove(new ResourceDescriptor(toRemove.getURI()));
+              }
+            }
+
+            new BasicCapellaDeleteCommand(ExecutionManagerRegistry.getInstance().getExecutionManager(_domain),
+                Collections.singleton(toDelete), false, false, false).execute();
             toRemove.unload();
             toRemove.eAdapters().removeAll(toRemove.eAdapters());
             toRemove.getResourceSet().getResources().remove(toRemove);

@@ -15,6 +15,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.session.Session;
@@ -23,6 +24,7 @@ import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.polarsys.capella.common.libraries.AccessPolicy;
 import org.polarsys.capella.common.libraries.ILibraryManager;
 import org.polarsys.capella.common.libraries.IModel;
+import org.polarsys.capella.core.libraries.model.CapellaLibraryExt;
 import org.polarsys.capella.core.libraries.utils.AbstractModelComparator;
 
 /**
@@ -241,6 +243,11 @@ public class LibraryManagerModel {
       }
     }
     return models;
+  }
+  
+  public Collection<IModel> getUnresolvableReferencedLibraries() {
+    return allReferencedLibraries.stream()
+        .filter(lib -> CapellaLibraryExt.isUnresolvableIdentifier(lib.getIdentifier())).collect(Collectors.toList());
   }
 
   public boolean isUnsavedRootModel() {
