@@ -38,7 +38,7 @@ public class TitleBlockPreferencesInitializer extends AbstractPreferencesInitial
     preferenceStore.setDefault(LINES_NUMBER_PREFERENCE_STORE, 2);
     preferenceStore.setDefault(TABEL_CONTENT_PREFERENCE_STORE, DEFAULT_TABLE);
 
-    preferenceStore.setDefault(DEFAULT_TITLEBLOCK_PREFERENCE_STORE, true);
+    preferenceStore.setDefault(DEFAULT_TITLEBLOCK_PREFERENCE_STORE, false);
   }
   
   

@@ -786,7 +786,10 @@ public class TitleBlockServices {
   }
   
   private String htmlToPlainText(String content) {
-      return content.replaceAll("\\<[^>]*>","");  
+      content = content.replaceAll("\\<[^>]*>","").trim();  
+      content = content.replaceAll("\\&nbsp;","\n");
+      content = content.replaceAll("\\s{2,}", " ");
+      return content;
   }
 
   /**
