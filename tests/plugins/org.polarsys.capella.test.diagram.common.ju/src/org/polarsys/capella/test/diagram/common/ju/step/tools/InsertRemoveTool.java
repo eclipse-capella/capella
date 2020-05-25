@@ -186,11 +186,16 @@ public class InsertRemoveTool extends AbstractToolStep {
             sessionContext.getSemanticElements(insertedElements));
         Collection<EObject> removed = context.adaptTool(InsertRemoveTool.this, parameters,
             sessionContext.getSemanticElements(removedElements));
-        objects.addAll(AbstractExternalJavaAction.getInitialSelection(parameters));
+        
+        Collection<EObject> initialSelection = AbstractExternalJavaAction.getInitialSelection(parameters);
+        objects.addAll(initialSelection);
         objects.addAll(inserted);
         objects.removeAll(removed);
+        
+        if (removed.size() > 0) {
+          assertTrue("All removed elements were not available on right pane", initialSelection.containsAll(removed));
+        }
         return new ArrayList<EObject>(objects);
-
       }
     };
   }
