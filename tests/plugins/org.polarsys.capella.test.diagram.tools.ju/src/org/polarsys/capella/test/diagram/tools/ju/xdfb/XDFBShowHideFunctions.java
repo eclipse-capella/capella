@@ -13,12 +13,23 @@
 package org.polarsys.capella.test.diagram.tools.ju.xdfb;
 
 import org.eclipse.sirius.business.api.session.Session;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
+import org.polarsys.capella.core.model.helpers.FunctionAllocator;
+import org.polarsys.capella.common.ef.ExecutionManager;
+import org.polarsys.capella.common.ef.ExecutionManagerRegistry;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.fa.AbstractFunction;
+import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
+import org.polarsys.capella.core.data.helpers.fa.services.FunctionalExt;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt.Type;
 import org.polarsys.capella.test.diagram.common.ju.availableXDFBDiagramTools.XDFBCreateContainerTools;
 import org.polarsys.capella.test.diagram.common.ju.availableXDFBDiagramTools.XDFBInsertRemoveTools;
 import org.polarsys.capella.test.diagram.common.ju.context.XDFBDiagram;
 import org.polarsys.capella.test.diagram.tools.ju.model.XDFBToolsTestingModel;
 import org.polarsys.capella.test.framework.context.SessionContext;
+import org.polarsys.capella.test.framework.helpers.GuiActions;
+import org.polarsys.capella.test.framework.helpers.SkeletonHelper;
 
 public class XDFBShowHideFunctions extends XDFBToolsTestingModel {
 
@@ -44,10 +55,24 @@ public class XDFBShowHideFunctions extends XDFBToolsTestingModel {
     hideAndShow(xdfb, function1Id, function2Id);
 
     if (diagramType != Type.OA) {
-
       String actorFunction1Id = xdfb.createContainer(diagramId, XDFBCreateContainerTools.CREATE_ACTOR_FUNCTION);
       String actorFunction2Id = xdfb.createContainer(diagramId, XDFBCreateContainerTools.CREATE_ACTOR_FUNCTION);
-
+      hideAndShow(xdfb, actorFunction1Id, actorFunction2Id);
+      
+    } else {
+      String actorFunction1Id = xdfb.createContainer(diagramId, XDFBCreateContainerTools.CREATE_FUNCTION);
+      String actorFunction2Id = xdfb.createContainer(diagramId, XDFBCreateContainerTools.CREATE_FUNCTION);
+      context.getExecutionManager().execute(new AbstractReadWriteCommand() {
+        
+        @Override
+        public void run() {
+          Component actor = context.getSemanticElement(OA__ACTOR_ID);
+          AbstractFunction actorFunction1 = context.getSemanticElement(actorFunction1Id);
+          AbstractFunction actorFunction2 = context.getSemanticElement(actorFunction2Id);
+          FunctionAllocator.allocate(actorFunction1).on(actor);
+          FunctionAllocator.allocate(actorFunction2).on(actor);
+        }
+      });
       hideAndShow(xdfb, actorFunction1Id, actorFunction2Id);
     }
   }
