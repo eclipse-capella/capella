@@ -28,6 +28,7 @@ public abstract class XDFBToolsTestingModel extends AbstractDiagramTestCase {
   public static final String OA__PROPERTY_VALUE_ID = "abe7cb39-7291-470a-9ead-5fc0147f1d54";
   public static final String OA__PROPERTY_VALUE_GROUP_ID = "94ec1cd7-ecdc-431f-96be-be117554d980";
   public static final String OA__STATE_MACHINE_MODE_ID = "94a5676f-da61-4cd6-8a59-320451855777";
+  public static final String OA__ACTOR_ID = "41347b92-d3e6-4b6a-b46d-01af1685b84d";
   
   // System Analysis
   public static final String SA__ROOT_SF_ID = "d560188d-bfa0-4a6b-a7ec-ef1a0a5a3415";
