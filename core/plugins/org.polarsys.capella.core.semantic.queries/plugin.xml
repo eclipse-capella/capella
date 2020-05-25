@@ -7083,5 +7083,37 @@
                id="CurrentElementBrowser">
          </targetBrowserId>
       </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.sirius.elementTitleBlockReferencedElements"
+            isTopLevel="true"
+            name="Associated Element">
+         <availableForType
+               class="org.eclipse.sirius.viewpoint.description.DAnnotation">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.ElementTitleBlockReferencedElements">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.sirius.diagramTitleBlockReferencedElements"
+            isTopLevel="true"
+            name="Associated Diagram">
+         <availableForType
+               class="org.eclipse.sirius.viewpoint.description.DAnnotation">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.DiagramTitleBlockReferencedElements">
+            </basicQuery>
+         </categoryQuery>
+      </category>
    </extension>
 </plugin>
