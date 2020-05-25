@@ -55,7 +55,7 @@ public class LicenceTest extends BasicTestCase {
     for (IPluginModelBase base : PDECore.getDefault().getModelManager().getActiveModels()) {
       MultiStatus status = statuses.computeIfAbsent(base, x -> new MultiStatus(id, Status.OK, "ok", null));
 
-      if (base.getPluginBase().getId().contains("org.polarsys.capella")) {
+      if (base.getPluginBase().getId().contains("org.polarsys.capella") && !base.getPluginBase().getId().endsWith(".source")) {
 
         // All plugins must contain an EPL-2.0 license.html
         String content = getContent(base, "about.html");
@@ -72,7 +72,7 @@ public class LicenceTest extends BasicTestCase {
     for (IFeatureModel feature : PDECore.getDefault().getFeatureModelManager().getModels()) {
       MultiStatus status = statuses.computeIfAbsent(feature, x -> new MultiStatus(id, Status.OK, "ok", null));
 
-      if (feature.getFeature().getId().contains("org.polarsys.capella")) {
+      if (feature.getFeature().getId().contains("org.polarsys.capella") && !feature.getFeature().getId().endsWith(".source")) {
 
         // All features must contains an EPL-2.0 license.html
         String content = getContent(feature, "license.html");
