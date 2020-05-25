@@ -7115,37 +7115,5 @@
             </basicQuery>
          </categoryQuery>
       </category>
-            <category
-            id="org.polarsys.capella.core.semantic.queries.sirius.titleBlockReferencingElements"
-            isTopLevel="true"
-            name="Associating Elements">
-         <availableForType
-               class="org.polarsys.capella.core.data.cs.Component">
-         </availableForType>
-         <targetBrowserId
-               id="ReferencingElementBrowser">
-         </targetBrowserId>
-         <categoryQuery>
-            <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.ModelElementReferencingElements">
-            </basicQuery>
-         </categoryQuery>
-      </category>
-      <category
-            id="org.polarsys.capella.core.semantic.queries.sirius.diagramReferencingElements"
-            isTopLevel="true"
-            name="Associating Element">
-         <categoryQuery>
-            <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.DiagramReferencingElements">
-            </basicQuery>
-         </categoryQuery>
-         <availableForType
-               class="org.eclipse.sirius.viewpoint.DRepresentationDescriptor">
-         </availableForType>
-         <targetBrowserId
-               id="ReferencingElementBrowser">
-         </targetBrowserId>
-      </category>
    </extension>
 </plugin>
