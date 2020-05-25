@@ -82,7 +82,7 @@ public abstract class CountBasedDiagramFilterTestCase extends NonDirtyTestCase {
     DiagramHelper.refreshDiagram(diagram);
     
     // Check that count match before applying filter
-    assertTrue(diagram.getDiagramElements().size() == getBeforeFilterDiagramElementCount() + 7);
+    assertTrue(diagram.getDiagramElements().size() == getBeforeFilterDiagramElementCount());
 
     // Activate the filter
     FilterDescription filter = DiagramHelper.getFilterForDiagram(diagram, filterName);
@@ -101,6 +101,6 @@ public abstract class CountBasedDiagramFilterTestCase extends NonDirtyTestCase {
     }
 
     // Check that count match after applying filter
-    assertTrue((diagram.getDiagramElements().size()-filteredCount) == getAfterFilterDiagramElementCount() + 10);
+    assertTrue((diagram.getDiagramElements().size()-filteredCount) == getAfterFilterDiagramElementCount());
   }
 }
