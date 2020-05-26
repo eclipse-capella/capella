@@ -24,6 +24,7 @@ import org.polarsys.capella.test.odesign.identifier.ToolIdentifierConsistencyTes
 import org.polarsys.capella.test.odesign.ju.deletecheck.CheckDeletionDescriptionTest;
 import org.polarsys.capella.test.odesign.ju.directeditlabel.DirectEditLabelTestSuite;
 import org.polarsys.capella.test.odesign.ju.domainclass.CheckDomainClassTestSuite;
+import org.polarsys.capella.test.odesign.ju.titleblock.CheckTitleBlockTestSuite;
 import org.polarsys.capella.test.odesign.typereferencename.CheckTypeReferenceNameTestSuite;
 
 import junit.framework.Test;
@@ -46,7 +47,7 @@ public class ODesignTestSuite extends BasicTestSuite {
     tests.add(new ToolIdentifierConsistencyTest());
     tests.add(new ToolAndLabelCoherenceTest());
     tests.add(new CheckDeletionDescriptionTest());
-    tests.add(new CheckDeletionDescriptionTest());
+    tests.add(new CheckTitleBlockTestSuite());
     return tests;
   }
 
