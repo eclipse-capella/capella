@@ -17,9 +17,7 @@ import java.util.Set;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.jdt.internal.core.search.processing.JobManager;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
@@ -73,27 +71,28 @@ public class CapellaDescriptionPropertySection extends DescriptionPropertySectio
   }
 
   DelayedSetDescription job = new DelayedSetDescription("Load Description");
-  
+
   /**
    * Avoid consecutive loads if the selection is quickly changed
    */
   private class DelayedSetDescription extends UIJob {
 
     EObject current = null;
-    
+
     public DelayedSetDescription(String name) {
       super(name);
       setSystem(true);
     }
 
+    @Override
     public boolean belongsTo(Object family) {
-      return family == DelayedSetDescription.class.getSimpleName();
-    };
-    
+      return DelayedSetDescription.class.getSimpleName().equals(family);
+    }
+
     @Override
     public IStatus runInUIThread(IProgressMonitor monitor) {
       EObject element = current;
-      
+
       // On loading data, add the instance to the map.
       if (null != descriptionGroup) {
         descriptionGroup.loadData(element);
@@ -112,6 +111,7 @@ public class CapellaDescriptionPropertySection extends DescriptionPropertySectio
   public void loadData(EObject descriptorOrCapellaElement) {
     super.loadData(descriptorOrCapellaElement);
     mapDescriptionSectionToEObject.put(CapellaDescriptionPropertySection.this, descriptorOrCapellaElement);
+
     job.current = descriptorOrCapellaElement;
     job.schedule(100);
   }
@@ -127,11 +127,8 @@ public class CapellaDescriptionPropertySection extends DescriptionPropertySectio
       EObject elt = CapellaAdapterHelper
           .resolveDescriptorOrBusinessObject(((StructuredSelection) selection).getFirstElement());
 
-      if (elt instanceof CapellaElement) {
-        loadData((CapellaElement) elt);
-
-      } else if (elt instanceof DRepresentationDescriptor) {
-        loadData((DRepresentationDescriptor) elt);
+      if (elt instanceof CapellaElement || elt instanceof DRepresentationDescriptor) {
+        loadData(elt);
       }
     }
   }
