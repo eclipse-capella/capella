@@ -26,7 +26,7 @@ public class CheckTitleBlockTestSuite extends BasicTestSuite {
     List<BasicTestArtefact> tests = new ArrayList<>();
     tests.add(new CheckTitleBlockMappingTest());
     tests.add(new CheckTitleBlockFilterTest());
-    tests.add(new CheckTitleBlockTestSuite());
+    tests.add(new CheckTitleBlockToolTest());
     return tests;
   }
 

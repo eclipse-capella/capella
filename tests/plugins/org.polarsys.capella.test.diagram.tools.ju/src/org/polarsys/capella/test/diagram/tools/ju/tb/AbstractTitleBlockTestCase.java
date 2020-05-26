@@ -51,9 +51,10 @@ public abstract class AbstractTitleBlockTestCase extends AbstractDiagramTestCase
 
   public void testDiagramTitleBlock() {
 
-    // check if diagram was created by default
-
-    newDiagram.checkAutocreateDiagramTitleBlock();
+    // Check if diagram was created by default
+    // TODO Reactivate or remove the test when the preference option is decided
+    // newDiagram.checkAutocreateDiagramTitleBlock();
+    
     // create TB tools
     DAnnotation diagramTB = diagram.createDiagramTitleBlock();
 

@@ -32,6 +32,7 @@ import org.polarsys.capella.core.sirius.analysis.actions.extensions.AbstractExte
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 import org.polarsys.capella.test.diagram.common.ju.headless.IHeadlessResult;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveTool;
+import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
 
 // show hide
 public class InsertRemoveTitleBlockTool extends InsertRemoveTool {
@@ -77,6 +78,8 @@ public class InsertRemoveTitleBlockTool extends InsertRemoveTool {
 
   @Override
   protected void postRunTest() {
+    DiagramHelper.refreshDiagram(getDiagramContext().getDiagram());
+    
     for (String uid : insertedElements) {
       assertTrue(hasView(getAnnotation(uid)));
     }

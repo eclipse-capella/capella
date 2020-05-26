@@ -69,7 +69,7 @@ public class CreateElementTitleBlockTool extends CreateAbstractDNodeTool<DDiagra
     
     DEdge edge = (DEdge) it.next();
     assertTrue("An edge to " + containerView + " should have been created.",
-        containerView.equals(((CapellaElement) edge.getTarget()).getId()));
+        containerView.equals(((CapellaElement)((DSemanticDecorator) edge.getTargetNode()).getTarget()).getId()));
   }
 
   @Override

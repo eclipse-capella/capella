@@ -398,6 +398,16 @@
           <mappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG']"/>
         </filters>
       </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.diagram.title.blocks.filter" label="%common.hide.diagram.title.blocks.filter">
+        <filters xsi:type="filter:MappingFilter" semanticConditionExpression="aql:not (self.isDiagramTitleBlock())">
+          <mappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']"/>
+        </filters>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.element.title.blocks.filter" label="%common.hide.element.title.blocks.filter">
+        <filters xsi:type="filter:MappingFilter" semanticConditionExpression="aql:self.isDiagramTitleBlock()">
+          <mappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']"/>
+        </filters>
+      </filters>
       <layout xsi:type="description_2:OrderedTreeLayout" childrenExpression="aql:self.ownedFeatures->filter(cs::Part).abstractType" nodeMapping="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']/@defaultLayer/@nodeMappings[name='LCB_LogicalComponent']"/>
       <defaultLayer name="default">
         <nodeMappings name="LCB_LogicalComponent" navigationDescriptions="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20LCB%20to%20LAB']" deletionDescription="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20Logical%20Component']" labelDirectEdit="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='Logical%20Rename%20Part']" semanticCandidatesExpression="service:self.getCBComponentSemanticCandidates()" synchronizationLock="true" domainClass="LogicalComponent">
