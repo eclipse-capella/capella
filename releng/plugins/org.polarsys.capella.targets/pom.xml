@@ -17,7 +17,7 @@
 
 	<groupId>org.polarsys.capella.releng</groupId>
 	<artifactId>capella.target-definition</artifactId>
-	<version>1.4.1-SNAPSHOT</version>
+	<version>1.4.2-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<licenses>

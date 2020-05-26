@@ -17,10 +17,10 @@
   <parent>
     <groupId>org.polarsys</groupId>
     <artifactId>org.polarsys.capella.core.plugins</artifactId>
-    <version>1.4.1-SNAPSHOT</version>
+    <version>1.4.2-SNAPSHOT</version>
   </parent>
   <groupId>org.polarsys</groupId>
   <artifactId>org.polarsys.capella.core.data.res.editor</artifactId>
-  <version>1.4.1-SNAPSHOT</version>
+  <version>1.4.2-SNAPSHOT</version>
   <packaging>eclipse-plugin</packaging>
 </project>
