@@ -10,18 +10,14 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.diagram.tools.ju.tb;
+package org.polarsys.capella.test.odesign.ju.titleblock;
 
-public class OA_PDTitleBlockTestCase extends PDTitleBlockTestCase {
+import org.eclipse.sirius.diagram.description.DiagramDescription;
+import org.polarsys.capella.test.framework.api.BasicTestCase;
 
-  private static final String DATA_ID = "fa4dd744-ef0f-451a-a713-5f79f344812b";
-  private static final String DIAGRAM_NAME = "[PD] Interfaces Operational";
-  private static final String INTERFACES_PKG = "eca2076d-da93-44f7-89d8-d58c22edbd85";
-
-  @Override
-  protected void initData() {
-    elementsId.add(DATA_ID);
-    diagramName = DIAGRAM_NAME;
-    interfacesPKG = INTERFACES_PKG;
+public abstract class CheckTitleBlockTest extends BasicTestCase {
+  protected boolean isDiagramDescriptionIgnored(DiagramDescription diagDes) {
+    return diagDes.getName().equals("AD diagram") || diagDes.getName().equals("Capella Architecture")
+        || diagDes.getName().equals("Capability Realization Refinement");
   }
 }

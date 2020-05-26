@@ -30,8 +30,6 @@ public class CMDiagramFiltersTestSuite extends BasicTestSuite {
     tests.add(new HideCapabilityExploitationsForCM());
     tests.add(new HidePropertyValuesForCM());
     tests.add(new HideCapabilityGeneralizationsForCM());
-    tests.add(new HideDiagramTitleBlocksForCM());
-    tests.add(new HideElementTitleBlocksForCM());
     return tests;
   }
 

@@ -22,6 +22,7 @@ public interface IDiagramNameConstants extends DiagramDescriptionConstants {
   /**
    * Common diagrams
    */
+  String CLASS_BLANK_DIAGRAM_NAME = "Class Diagram Blank";
   String CONTEXTUAL_COMPONENT_DETAILED_INTERFACES_DIAGRAM_NAME = "Contextual Component Detailed Interfaces"; //$NON-NLS-1$
   String CONTEXTUAL_COMPONENT_EXTERNAL_INTERFACES_DIAGRAM_NAME = "Contextual Component External Interfaces"; //$NON-NLS-1$
   String CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME = "Contextual Component Internal Interfaces"; //$NON-NLS-1$

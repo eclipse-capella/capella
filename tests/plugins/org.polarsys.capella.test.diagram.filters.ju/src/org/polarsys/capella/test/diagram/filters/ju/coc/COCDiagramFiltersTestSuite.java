@@ -23,8 +23,6 @@ public class COCDiagramFiltersTestSuite extends BasicTestSuite {
   @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<>();
-    tests.add(new HideDiagramTitleBlocksForCOC());
-    tests.add(new HideElementTitleBlocksForCOC());
     tests.add(new HideEntitiesForCOC());
     tests.add(new HideInvolvementLinksForCOC());
     tests.add(new HideOperationalCapabilityExtendsForCOC());

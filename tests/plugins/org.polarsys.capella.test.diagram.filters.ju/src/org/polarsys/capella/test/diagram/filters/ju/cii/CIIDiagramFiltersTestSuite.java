@@ -41,8 +41,6 @@ public class CIIDiagramFiltersTestSuite extends BasicTestSuite {
     // tests.add(new HideDelegatedCommunicationLinksForCII());
     tests.add(new HideDelegatedUseImplementationRequireProvideLinksForCII());
     tests.add(new HidePropertyValuesForCII());
-    tests.add(new HideDiagramTitleBocksForCII());
-    tests.add(new HideElementTitleBocksForCII());
 
     return tests;
   }
