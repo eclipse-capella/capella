@@ -86,7 +86,7 @@ public class CapellaDescriptionPropertySection extends DescriptionPropertySectio
 
     @Override
     public boolean belongsTo(Object family) {
-      return family == DelayedSetDescription.class.getSimpleName();
+      return DelayedSetDescription.class.getSimpleName().equals(family);
     };
 
     @Override
@@ -126,10 +126,7 @@ public class CapellaDescriptionPropertySection extends DescriptionPropertySectio
       EObject elt = CapellaAdapterHelper
           .resolveRepresentationOrBusinessObject(((StructuredSelection) selection).getFirstElement());
 
-      if (elt instanceof CapellaElement) {
-        loadData(elt);
-
-      } else if (elt instanceof DRepresentation) {
+      if (elt instanceof CapellaElement || elt instanceof DRepresentation) {
         loadData(elt);
       }
     }
