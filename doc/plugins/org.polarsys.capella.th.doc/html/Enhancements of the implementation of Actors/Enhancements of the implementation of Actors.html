@@ -1,0 +1,160 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>Enhancements of the implementation of Actors</title>
+		<link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/>
+	</head>
+	<body>
+		<h1 id="Enhancements_of_the_implementation_of_Actors">Enhancements of the implementation of Actors</h1>
+		<p>Since Capella 1.4.0, Actors are implemented in a more generic and flexible way. It is now possible to:</p>
+		<dl>
+			<dd>- decompose actors into sub-actors, </dd>
+			<dd>- separate the concepts of 
+				<i>location</i> and scope of 
+				<i>responsibility</i> of components and actors 
+			</dd>
+			<dd>- reuse components as actors, and vice-versa</dd>
+		</dl>
+		<p>The purpose of this chapter is to provide guidance on taking advantage of these enhancements and on highlighting the consequences of these enhancements on LA to PA transitions.</p>
+		<h2 id="Definition_of_Components_.2F_Actors">Definition of Components / Actors</h2>
+		<p>All structural elements (actors, logical components, physical components) now have two attributes:</p>
+		<p>
+			<img height="170" width="268" border="0" src="Images/enhancements_1.png"/>
+			<br/>
+		</p>
+		<ul>
+			<li>
+				<b>Is human</b>: allow identifying a person (e.g. an operator) in opposition to a non-human system. Humans are identified by a specific symbol. The only difference is that a human cannot be broken-down into sub-element
+			</li>
+		</ul>
+		<ul>
+			<li>
+				<b>Is actor</b>: actor basically identifies elements outside of the scope of responsibility of the System of Interest (SoI)
+			</li>
+		</ul>
+		<h2 id="Scope_of_responsibility">Scope of responsibility</h2>
+		<p>This new management of Actor allow a great flexibility in the distinction between scope of responsibility (i.e. whether a structural element is an actor, meaning that it is not part of the SoI) and deployment or decomposition aspects.
+			For example, in the Physical Architecture perspective we can consider:</p>
+		<ul>
+			<li>Mixing the hierarchy of Node Components</li>
+		</ul>
+		<pre><img height="242" width="602" border="0" src="Images/enhancements_2.png"/><br/>
+</pre>
+		<ul>
+			<li>Mixing the deployment of Behavior Components on Node Components</li>
+		</ul>
+		<p>
+			<img height="242" width="602" border="0" src="Images/enhancements_3.png"/>
+			<br/>
+		</p>
+		<ul>
+			<li>Mixing the hierarchy of Behavior Components</li>
+		</ul>
+		<p>
+			<img height="109" width="601" border="0" src="Images/enhancements_4.png"/>
+			<br/>
+		</p>
+		<p>These different scopes of responsibility can also be defined in the Logical Architecture perspective, except for the one related to the deployment of components (as the deployment aspect is addressed in the Physical Architecture only).</p>
+		<h2 id="Node_vs._Behavior_Components_in_Physical_Architecture.2C_and_simplifications_for_Actors">Node vs. Behavior Components in Physical Architecture, and simplifications for Actors</h2>
+		<p>Implementation resource (Node Component) is a concept introduced in the Physical Architecture in order to define the deployment aspect of the system.</p>
+		<p>Note: In Logical Architecture, the breakdown of the system is a logical breakdown. It is the equivalent of Behavioral Components in Physical Architecture.</p>
+		<p>Node Components are connected together with physical links and Behavior Components are connected together with component exchanges.</p>
+		<p>Moreover, functions are allocated to Behavior Components, and Behavior Components are deployed on Node Components.</p>
+		<p>
+			<img height="176" width="606" border="0" src="Images/enhancements_5.png"/>
+			<br/>
+		</p>
+		<p>While the distinction between Node and Behavior components is mandatory in the description of the system, it is optional for external actors. Indeed, as they are not part of the scope of interest, their definition can be simplified. As a result, this representation is allowed:</p>
+		<p>
+			<img height="174" width="605" border="0" src="Images/enhancements_6.png"/>
+			<br/>
+			In this case, a Node Actor has the properties of both Node component and Behavior component.
+		</p>
+		<p>Note that Physical Links can also be defined between the System and the Actors in the System Needs Analysis perspective, which permits a well-defined integration between the System and the Actor:</p>
+		<p>
+			<img height="144" width="551" border="0" src="Images/enhancements_7.png"/>
+			<br/>
+		</p>
+		<h2 id="LA_to_PA_transition_of_components_.2F_actors">LA to PA transition of components / actors</h2>
+		<p>As a result of these enhancements, a lot of different cases can occur in the transition between Logical and Physical Architecture perspectives. </p>
+		<h3 id="Reminder">Reminder</h3>
+		<p>As a reminder, a transition is an accelerator used to initialize the model based on information defined in the previous perspective. After the transition, users may have to modify the result of the transition in order to consolidate the initial state of the Physical Architecture.</p>
+		<h3 id="Rules_applied_during_the_transition">Rules applied during the transition</h3>
+		<p>The LA to PA transition of components / actors is defined based on 3 different rules:</p>
+		<p><u>
+			<b>Rule 1</b></u>
+		</p>
+		<p>The breakdown of the system in Logical Architecture is a logical breakdown. It is the equivalent of Behavioral Components breakdown in Physical Architecture.</p>
+		<p>Thus, the first rule in a transition between LA and PA is to 
+			<b>convert Logical Components into Behavior Components.</b>
+		</p>
+		<p>
+			<img height="145" width="585" border="0" src="Images/enhancements_8.png"/>
+			<br/>
+		</p>
+		<p>After the transition, the Behavior Components in PA will need to be deployed on Node Components.</p>
+		<p><u>
+			<b>Rule 2</b></u>
+		</p>
+		<p>The second rule is to transpose the hierarchy defined in Logical Architecture in the Physical Architecture.</p>
+		<p>
+			<img height="190" width="585" border="0" src="Images/enhancements_9.png"/>
+			<br/>
+		</p>
+		<p>In Physical Architecture, Node and Behavior need to be defined as different breakdowns. Behavior components are 
+			<i>deployed</i> on Node components. It is not decomposition. See the example below for the IFE sample model:
+		</p>
+		<p>
+			<img height="198" width="680" border="0" src="Images/enhancements_10.png"/>
+			<br/>
+		</p>
+		<p>As a result, 
+			<b>the transition will create a hierarchy of Behavior components, or a hierarchy of Node components, but will never mix them.</b>
+		</p>
+		<p><u>
+			<b>Rule 3</b></u>
+		</p>
+		<p>The third rule is related to the simplification of the representation of Actors. As stated above, the simplification of Actors is implemented using Node Actors.</p>
+		<p>As a result, 
+			<b>Logical Actors (when not mixed with components in the SoI) will be converted into Node Actors</b> to allow simple representation of the actor.
+		</p>
+		<p>
+			<img height="190" width="585" border="0" src="Images/enhancements_11.png"/>
+			<br/>
+		</p>
+		<p>The resulting actor is a Node Component having also the properties of a Behavior Component.</p>
+		<h3 id="Result_of_transition_when_mixing_System_.2F_Actor_definitions">Result of transition when mixing System / Actor definitions</h3>
+		<p>When mixing System / Actor definitions in Logical Architecture, the result of the transition is to transpose the actors as Behavior Components.</p>
+		<p>This is the result of rule 1 combined with rule 2.</p>
+		<p>
+			<img height="306" width="585" border="0" src="Images/enhancements_12.png"/>
+			<br/>
+		</p>
+		<p>In this case, 
+			<b>the user will have to deploy Physical Actor 2 on a Node Component (system or actor) after the transition, in order to complete the model definition.</b>
+		</p>
+		<p>“Actor 1” does not necessarily need to be deployed if “Comp 1” is deployed as a whole.</p>
+		<p>In some cases, the result of the automated transition will have to be refined by the user.  It is the case of an Actor, containing a component of the system and having at least one physical link defined on it.</p>
+		<p>
+			<img height="312" width="279" border="0" src="Images/enhancements_13.png"/>
+			<br/>
+		</p>
+		<p>In this case, “Actor 1”, “Actor 1.1” and “Comp 2” are transformed into Physical Behavior Components (actor or system).</p>
+		<p>
+			<img height="341" width="304" border="0" src="Images/enhancements_14.png"/>
+			<br/>
+		</p>
+		<p>However, this representation violates one rule of Capella: Behavior components shall not have physical ports (DWF_DC_30).</p>
+		<p>As a result, 
+			<b>user has to refine the transition into an acceptable result.</b> 
+		</p>
+		<ul>
+			<li>One possible solution is to create a dedicated Node Actor, to deploy “Actor 1” (the result of the transition) on it and to move the physical port on this Node element.</li>
+		</ul>
+		<p>
+			<img height="401" width="449" border="0" src="Images/enhancements_15.png"/>
+			<br/>
+		</p>
+	</body>
+</html>
