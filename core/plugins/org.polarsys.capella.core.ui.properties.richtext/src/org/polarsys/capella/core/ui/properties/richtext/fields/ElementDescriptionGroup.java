@@ -88,6 +88,12 @@ public abstract class ElementDescriptionGroup {
 
     EStructuralFeature feature;
 
+    // Does the saveStrategy has to perform the last save before its disposal.
+    // If null, the last save is not yet there.
+    // If true, the last save has to be done
+    // If false, the last save has been done and another save is not welcome as the given owner may have changed
+    Boolean lastSave = null;
+
     public SavingStrategy() {
     }
 
@@ -101,11 +107,30 @@ public abstract class ElementDescriptionGroup {
       // Due to async 'lost focus' event, the given owner in parameter can be the next one and not the intended one
 
       // Usecase:
-      // On ProjectExplorer, select an element. Change its description, then choose another element in explorer.
+      // On ProjectExplorer, select an element. Change its description, keep edition focus, then choose another element
+      // in explorer.
       // Save is called twice, one in loadData/within bind method with previous element, then another one in lostFocus
       // with new one but with old text.
-      if (this.owner == owner && this.feature == feature) {
+      if (lastSave == null && this.owner == owner && this.feature == feature) {
         setDataValue(owner, feature, editorText);
+
+      } else if (Boolean.TRUE.equals(lastSave)) {
+        // Usecase:
+        // On two opened diagrams with description tab opened, Change description of element, keep edition focus, then
+        // switch tab to other diagram.
+        // Last save may be lost by the previous if.
+
+        setDataValue(owner, feature, editorText);
+        lastSave = Boolean.FALSE;
+      }
+    }
+
+    /**
+     * Mark the save strategy to ensure that last save of the editor will be performed
+     */
+    public void ensureLastSave() {
+      if (lastSave == null) {
+        lastSave = Boolean.TRUE;
       }
     }
   }
@@ -156,6 +181,7 @@ public abstract class ElementDescriptionGroup {
     if (updateDescriptionEditability(semanticElement, semanticFeature)) {
       try {
         if (semanticElement != null && semanticFeature != null) {
+          ((SavingStrategy) descriptionTextField.getSaveStrategy()).ensureLastSave();
           descriptionTextField.bind(semanticElement, semanticFeature);
           descriptionTextField.setSaveStrategy(new SavingStrategy(semanticElement, semanticFeature));
         }
@@ -200,6 +226,7 @@ public abstract class ElementDescriptionGroup {
         /**
          * @see java.lang.Runnable#run()
          */
+        @Override
         public void run() {
           command.run();
         }
@@ -306,6 +333,7 @@ public abstract class ElementDescriptionGroup {
           }
 
           // We setSaveStrategy after the bind, as bind also do a saveContent on previous element.
+          ((SavingStrategy) descriptionTextField.getSaveStrategy()).ensureLastSave();
           descriptionTextField.bind(semanticElement, semanticFeature);
           descriptionTextField.setSaveStrategy(new SavingStrategy(semanticElement, semanticFeature));
 
@@ -337,6 +365,7 @@ public abstract class ElementDescriptionGroup {
   protected void setDataValue(final EObject object, final EStructuralFeature feature, final Object value) {
     if (NotificationHelper.isNotificationRequired(object, feature, value)) {
       AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
+        @Override
         public void run() {
           object.eSet(feature, value);
         }
