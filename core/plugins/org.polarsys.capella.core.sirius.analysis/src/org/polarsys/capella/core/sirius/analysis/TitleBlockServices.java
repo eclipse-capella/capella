@@ -575,7 +575,6 @@ public class TitleBlockServices {
               ((DDiagram) elementView));
         }
       }
-      DialectManager.INSTANCE.refresh((DDiagram) elementView, new NullProgressMonitor());
     }
   }
 

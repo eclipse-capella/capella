@@ -45,8 +45,6 @@ public class XFCDDiagramFiltersTestSuite extends BasicTestSuite {
     tests.add(new HideByDefaultAssociationLinksLFCD());
     tests.add(new HideByDefaultAssociationLinksPFCD());
     tests.add(new HideByDefaultAssociationLinksOPD());
-    tests.add(new HideDiagramTitleBlocksForSFCD());
-    tests.add(new HideElementTitleBlocksForSFCD());
     tests.add(new MergeSequenceLinksAssociatedLinksTestCase1());
     tests.add(new MergeSequenceLinksAssociatedLinksTestCase2());
     tests.add(new MergeSequenceLinksAssociatedLinksTestCase3());

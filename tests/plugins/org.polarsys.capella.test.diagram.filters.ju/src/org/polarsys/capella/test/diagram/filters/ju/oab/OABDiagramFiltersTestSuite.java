@@ -15,8 +15,6 @@ package org.polarsys.capella.test.diagram.filters.ju.oab;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.polarsys.capella.test.diagram.filters.ju.oab.HideDiagramTitleBlocksForOAB;
-import org.polarsys.capella.test.diagram.filters.ju.oab.HideElementTitleBlocksForOAB;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 
@@ -26,8 +24,6 @@ public class OABDiagramFiltersTestSuite extends BasicTestSuite {
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<>();
     tests.add(new HideAllocatedInteractionsForOAB());
-    tests.add(new HideDiagramTitleBlocksForOAB());
-    tests.add(new HideElementTitleBlocksForOAB());    
     tests.add(new HideOperationalActivitiesForOAB());
     tests.add(new HideRolesForOAB());
     tests.add(new HideOperationalActorsForOAB());

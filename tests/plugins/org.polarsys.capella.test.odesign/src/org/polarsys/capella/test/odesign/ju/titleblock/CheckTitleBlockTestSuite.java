@@ -10,7 +10,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.diagram.filters.ju.ccri;
+package org.polarsys.capella.test.odesign.ju.titleblock;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,14 +18,19 @@ import java.util.List;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 
-public class CCRIDiagramFiltersTestSuite extends BasicTestSuite {
+import junit.framework.Test;
 
+public class CheckTitleBlockTestSuite extends BasicTestSuite {
   @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<>();
-    tests.add(new HideDiagramTitleBlocksForCCRI());
-    tests.add(new HideElementTitleBlocksForCCRI());
+    tests.add(new CheckTitleBlockMappingTest());
+    tests.add(new CheckTitleBlockFilterTest());
+    tests.add(new CheckTitleBlockTestSuite());
     return tests;
   }
 
+  public static Test suite() {
+    return new CheckTitleBlockTestSuite();
+  }
 }

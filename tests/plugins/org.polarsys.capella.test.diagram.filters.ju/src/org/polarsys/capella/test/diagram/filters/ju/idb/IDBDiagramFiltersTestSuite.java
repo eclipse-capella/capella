@@ -43,8 +43,6 @@ public class IDBDiagramFiltersTestSuite extends BasicTestSuite {
     tests.add(new HideDelegatedUseImplementationRequireProvideLinksForIDB());
     tests.add(new ShowModifiersForIDB());
     tests.add(new HidePropertyValuesForIDB());
-    tests.add(new HideDiagramTitleBocksForIDB());
-    tests.add(new HideElementTitleBocksForIDB());
 
     return tests;
   }

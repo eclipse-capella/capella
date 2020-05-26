@@ -46,6 +46,7 @@ public class ODesignTestSuite extends BasicTestSuite {
     tests.add(new ToolIdentifierConsistencyTest());
     tests.add(new ToolAndLabelCoherenceTest());
     tests.add(new CheckDeletionDescriptionTest());
+    tests.add(new CheckDeletionDescriptionTest());
     return tests;
   }
 
