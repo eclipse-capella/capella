@@ -17,7 +17,7 @@
   <parent>
     <groupId>org.polarsys</groupId>
     <artifactId>org.polarsys.capella</artifactId>
-    <version>1.4.1-SNAPSHOT</version>
+    <version>1.4.2-SNAPSHOT</version>
     <relativePath>../../../</relativePath>
   </parent>
   <properties>
@@ -25,6 +25,6 @@
   </properties>
   <groupId>org.polarsys</groupId>
   <artifactId>org.polarsys.capella.common.extension.migration.egf</artifactId>
-  <version>1.4.1-SNAPSHOT</version>
+  <version>1.4.2-SNAPSHOT</version>
   <packaging>eclipse-plugin</packaging>
 </project>
