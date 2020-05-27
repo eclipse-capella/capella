@@ -602,12 +602,6 @@
           id="org.polarsys.capella.core.sirius.analysis.preferences.DiagramsProcessChainPathPreferencePagePreferencePage"
           name="%Diagram_Process_Chain_Path_Page_Name">
     </page>
-    <page
-    category="org.polarsys.capella.common.ui.preferences.diagram"
-      class="org.polarsys.capella.core.sirius.analysis.preferences.TitleBlockPreferencePage"
-      id="org.polarsys.capella.core.platform.sirius.ui.actions.preferences.TitleBlockPage"
-      name="%Diagram_Title_Block_Page_Name">
-    </page>
  </extension>
  <extension
        point="org.eclipse.core.runtime.preferences">
@@ -620,17 +614,32 @@
  </extension>
  <extension
        point="org.eclipse.ui.propertyPages">
+     <page
+            category="org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page"
+            class="org.polarsys.capella.core.commands.preferences.ui.AbstractCapellaCommandsPreferencePage"
+            id="org.polarsys.capella.common.ui.preferences.diagram"
+            name="%Diagram_Page_Name">
+            
+    </page>
     <page
-          category="org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page"
+          category="org.polarsys.capella.common.ui.preferences.diagram"
           class="org.polarsys.capella.core.sirius.analysis.preferences.DiagramProcessChainPathPreferencePage"
           id="org.polarsys.capella.core.sirius.analysis.preferences.DiagramsPreferencePage"
-          name="Diagrams"
+          name="%Diagram_Process_Chain_Path_Page_Name"
           objectClass="org.eclipse.core.resources.IProject">
-       <enabledWhen>
+            <enabledWhen>
           <reference
                 definitionId="org.polarsys.capella.core.preferences.project.property.pages.visibilityExpression">
           </reference>
        </enabledWhen>
+          
+       
+    </page>
+        <page
+    category="org.polarsys.capella.common.ui.preferences.diagram"
+      class="org.polarsys.capella.core.sirius.analysis.preferences.TitleBlockPreferencePage"
+      id="org.polarsys.capella.core.platform.sirius.ui.actions.preferences.TitleBlockPage"
+      name="%Diagram_Title_Block_Page_Name">
     </page>
  </extension>
  <extension id="org.polarsys.capella.core.sirius.analysis.CapellaInterpreter" point="org.eclipse.sirius.common.expressionInterpreter">
