@@ -296,14 +296,13 @@
     <topic href="html/20. Search and Replace/20.1. Basic Search and Replace.html" label="Basic Search &amp; Replace">
 		<topic href="html/20. Search and Replace/20.1. Basic Search and Replace.html#Overview" label="Overview"></topic>
 		<topic href="html/20. Search and Replace/20.1. Basic Search and Replace.html#Search_Options" label="Search Options">
-			<topic href="html/20. Search and Replace/20.1. Basic Search and Replace.html#Model_Element_Scope_Options" label="Model Element Scope Options"></topic>
-			<topic href="html/20. Search and Replace/20.1. Basic Search and Replace.html#Find_Pattern_Options" label="Find Pattern Options"></topic>
-			<topic href="html/20. Search and Replace/20.1. Basic Search and Replace.html#Model_Scope_Options" label="Model Scope Options"></topic>
-			<topic href="html/20. Search and Replace/20.1. Basic Search and Replace.html#Replace_Impact_Preview" label="Replace Impact Preview"></topic>
+			<topic href="html/20. Search and Replace/20.1. Basic Search and Replace.html#Model_Element_Scope" label="Model Element Scope"></topic>
+			<topic href="html/20. Search and Replace/20.1. Basic Search and Replace.html#Find_Pattern" label="Find Pattern"></topic>
+			<topic href="html/20. Search and Replace/20.1. Basic Search and Replace.html#Search_Scope" label="Search Scope"></topic>
+			<topic href="html/20. Search and Replace/20.1. Basic Search and Replace.html#Search_and_Replace_Operations" label="Search and Replace Operations"></topic>
 		</topic>
-		<topic href="html/20. Search and Replace/20.1. Basic Search and Replace.html#Replace_Options" label="Replace Options">
-			<topic href="html/20. Search and Replace/20.1. Basic Search and Replace.html#Update_hyperlinks" label="Update hyperlinks"></topic>
-		</topic>
+		<topic href="html/20. Search and Replace/20.1. Basic Search and Replace.html#Search_Result" label="Search Result"></topic>
+		<topic href="html/20. Search and Replace/20.1. Basic Search and Replace.html#Replace_Text_Pattern" label="Replace Text Pattern"></topic>
 	</topic>
       <anchor id="Search and Replace"/>
    </topic>
