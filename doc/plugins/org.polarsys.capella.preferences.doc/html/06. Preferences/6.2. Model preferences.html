@@ -2,6 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>6.5. Usage Monitoring</title>
+		<link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/>
 	</head>
 	<body>
 		<h1 id="Model_Preferences">Model Preferences</h1>
@@ -81,11 +83,13 @@
 			</li>
 		</ul>
 		<p>
-			<img border="0" src="Images/Process_Chain_Path_DiagramPreferences.PNG"/>
+			<img height="595" width="877" border="0" src="Images/Process_Chain_Path_DiagramPreferences.PNG"/>
 		</p>
 		<h3 id="Title_Block">Title Block</h3>
 		<p>On the sub section of 
 			<b>Capella / Diagrams / Title Block</b>, it is possible to specify preferences for displaying a Diagram Title Block in diagrams:
+
+			<img height="595" width="877" border="0" src="Images/Title_Block_Default_DiagramPreferences.PNG"/>
 		</p>
 		<ul>
 			<li>If &ldquo;
@@ -95,24 +99,71 @@
 			<li>When a cell is selected, the content of the cell is displayed on the bottom of the table.</li>
 		</ul>
 		<p>
-			<img border="0" src="Images/Title_Block_DiagramPreferences.PNG"/>
+			<img height="595" width="877" border="0" src="Images/Title_Block_DiagramPreferences.PNG"/>
 		</p>
 		<ul>
-			<li>The content of each cell can be editable by double clicking on a cell. A new dialog is opened and can edit the fields below:
+			<li>The content of each cell can be editable by double clicking on a cell.</li>
+		</ul>
+		<p>
+			<img height="595" width="877" border="0" src="Images/Title_Block_CellDefault_DiagramPreferences.PNG"/>
+		</p>
+		<p>
+			<br/>
+			A new dialog is opened the fields below can be edited (we can edit the existing fields or add new values for the new cells):
+		</p>
+		<ul>
+			<li>name: enter the name(label) that will be displayed on the cell</li>
+			<li>content: type a query that will provide the content that we need to display in the cell of the Diagram Title Block. The content of data fields can be customized via:
 				<ul>
-					<li>name: enter the name(label) that will be displayed on the cell</li>
-					<li>content: type a query that will provide the content that we need to display in the cell of the Diagram Title Block. The content of data fields can be customized via:
-						<ul>
-							<li>AQL query (aql:)</li>
-							<li>Name of feature (feature:)</li>
-							<li>Predefined service (capella:)</li>
-						</ul>
-					</li>
+					<li>AQL query (aql:)</li>
+					<li>Name of feature (feature:)</li>
+					<li>Predefined service (capella:)</li>
 				</ul>
 			</li>
 		</ul>
 		<p>
-			<img border="0" src="Images/Title_Block_CellEdit_DiagramPreferences.PNG"/>
+			<img height="295" width="575" border="0" src="Images/Title_Block_CellEdit_DiagramPreferences.PNG"/>
+
+			<br/>
+		</p>
+		<ul>
+			<li>For Capella services: Name of data field (if not specified) are deduced from the contributed service.</li>
+			<li>Available services are proposed with the command Ctrl+Space on content text field.</li>
+		</ul>
+		<p>
+			<img height="295" width="575" border="0" src="Images/Title_Block_CellEditOptions_DiagramPreferences.PNG"/>
+
+			<br/>
+		</p>
+		<ul>
+			<li>Example of customization using aql queries:</li>
+		</ul>
+		<p>
+			<img height="295" width="575" border="0" src="Images/Title_Block_CellEdit_AqlQuery_DiagramPreferences.PNG"/>
+
+			<br/>
+		</p>
+		<ul>
+			<li>Example of customization using feature queries:</li>
+		</ul>
+		<p>
+			<img height="295" width="575" border="0" src="Images/Title_Block_CellEdit_FeatureQuery_DiagramPreferences.PNG"/>
+
+			<br/>
+		</p>
+		<ul>
+			<li>Example of customization using capella queries:</li>
+		</ul>
+		<p>
+			<img height="295" width="575" border="0" src="Images/Title_Block_CellEdit_CapellaQuery_DiagramPreferences.PNG"/>
+
+			<br/>
+		</p>
+		<ul>
+			<li>After edit or update the cells of a Title Block, we can save the changes by clicking the Apply buttons.</li>
+		</ul>
+		<p>
+			<img height="595" width="877" border="0" src="Images/Title_Block_DiagramPreferences_Updated.PNG"/>
 		</p>
 		<p>
 			<br/>
