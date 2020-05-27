@@ -255,19 +255,12 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
     for (int i = 0; i < linesNumber; i++) {
       for (int j = 0; j < columnsNumber; j++) {
         if (i == linesNumber - 1 && j == columnsNumber - 1) {
-          if (tccMatrix.get(i).get(j).name.equals(EMPTY_STRING)
-              || tccMatrix.get(i).get(j).content.equals(EMPTY_STRING)) {
-            createMessageBox(EDIT_ALL_CELLS, ERROR);
-            return false;
+          if (tccMatrix.get(i).get(j).content.equals(EMPTY_STRING)) {
+        	  tccMatrix.get(i).get(j).content = " ";
           }
           currentTableContent = currentTableContent + tccMatrix.get(i).get(j).name + SEPARATOR
               + tccMatrix.get(i).get(j).content;
-        } else {
-          if (tccMatrix.get(i).get(j).name.equals(EMPTY_STRING)
-              || tccMatrix.get(i).get(j).content.equals(EMPTY_STRING)) {
-            createMessageBox(EDIT_ALL_CELLS, ERROR);
-            return false;
-          }
+        } else {             	 
           currentTableContent = currentTableContent + tccMatrix.get(i).get(j).name + SEPARATOR
               + tccMatrix.get(i).get(j).content + SEPARATOR;
         }
