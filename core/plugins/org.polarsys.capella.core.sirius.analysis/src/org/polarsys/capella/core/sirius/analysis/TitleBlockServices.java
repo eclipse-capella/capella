@@ -362,21 +362,13 @@ public class TitleBlockServices {
    * @return list of Title Blocks (both Diagram or Element TB) that will be displayed in diagram
    */
   public void refreshTitleBlocksInDiagram(DDiagram diagram) {
-    if (TitleBlockHelper.isInitializedDiagramTitleBlock(diagram) == false) {
-      titleBlockFirstInitialize(diagram);
-      if (TitleBlockPreferencesInitializer.isCreateDiagramTitleBlockByDefault()) {
+    if (diagram.getOwnedDiagramElements().isEmpty() && TitleBlockPreferencesInitializer.isCreateDiagramTitleBlockByDefault()) {
         createDiagramTitleBlock(diagram, false);
-      }
     }
+    
     // delete the dangling element title blocks
     List<DAnnotation> listElementTitleBlocks = getElementTitleBlocks(diagram);
     handleDanglingElementTitleBlocks(listElementTitleBlocks, diagram);
-
-    // refresh the diagram title block, so that if preferences have changed, TB is updated
-    DAnnotation diagramTitleBlock = TitleBlockHelper.getDiagramTitleBlock(diagram);
-    if (diagramTitleBlock != null) {
-      updateDiagramTitleBlock(diagramTitleBlock, (EObject) diagram);
-    }
   }
 
   /**
@@ -533,49 +525,6 @@ public class TitleBlockServices {
       list.add(titleBlock);
     }
     return list;
-  }
-
-  /**
-   * update the Diagram Title Block if the preferences settings were updated
-   * 
-   * @param diagramTitleBlock
-   * @param elementView
-   * @return
-   */
-  private void updateDiagramTitleBlock(DAnnotation diagramTitleBlock, EObject elementView) {
-    /*
-     * create a string similar to the one stored in preferences of the Diagram Title Block content use this string to
-     * compare with the one in preferences, if they are different, update the Title Block
-     */
-    String currentTB = "";
-
-    for (DAnnotation line : TitleBlockHelper.getTitleBlockLines(diagramTitleBlock)) {
-      for (DAnnotation cell : TitleBlockHelper.getTitleBlockCells(line)) {
-        currentTB += cell.getDetails().get(TitleBlockHelper.NAME) + SEPARATOR
-            + cell.getDetails().get(TitleBlockHelper.CONTENT) + SEPARATOR;
-      }
-    }
-    if (currentTB.length() > 0) {
-      currentTB = currentTB.substring(0, currentTB.length() - SEPARATOR.length());
-    }
-
-    /*
-     * if the current Title Block from diagram needs to be updated with the new preferences stored Title Block remove
-     * the current Title Block and re-create it again
-     */
-    if (!currentTB.equals(TitleBlockPreferencesInitializer.getContent())) {
-      removeTitleBlockContent((DDiagram) elementView, diagramTitleBlock);
-      addDiagramTitleBlockContent((DDiagram) elementView, diagramTitleBlock);
-
-      DDiagramElement nodeTitleBlock = DiagramServices.getDiagramServices().getDiagramElement(((DDiagram) elementView),
-          diagramTitleBlock);
-      for (EObject objLine : diagramTitleBlock.getReferences()) {
-        if (objLine instanceof DAnnotation) {
-          createTitleBlockLineView(nodeTitleBlock, (DAnnotation) objLine, ((DDiagram) elementView),
-              ((DDiagram) elementView));
-        }
-      }
-    }
   }
 
   /**
@@ -791,17 +740,6 @@ public class TitleBlockServices {
       content = content.replaceAll("\\&nbsp;","\n");
       content = content.replaceAll("\\s{2,}", " ");
       return content;
-  }
-
-  /**
-   * create a DAnnotation when diagram is first created
-   * 
-   * @param diagram
-   */
-  private void titleBlockFirstInitialize(DDiagram diagram) {
-    DAnnotation titleBlockInitialized = DescriptionFactory.eINSTANCE.createDAnnotation();
-    titleBlockInitialized.setSource(TitleBlockHelper.TITLE_BLOCK_INITIALIZED);
-    diagram.getEAnnotations().add(titleBlockInitialized);
   }
 
   /**
