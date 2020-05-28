@@ -30,6 +30,7 @@ import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IActionDelegate;
+import org.polarsys.capella.core.diagram.helpers.TitleBlockHelper;
 import org.polarsys.capella.core.platform.sirius.clipboard.Messages;
 import org.polarsys.capella.core.platform.sirius.clipboard.commands.CapellaDiagramPasteCommand;
 import org.polarsys.capella.core.platform.sirius.clipboard.commands.GraphicalAdjustmentCommand;
@@ -108,34 +109,37 @@ public class CapellaDiagramPasteAction extends AbstractCopyPasteAction {
       monitor.beginTask(Messages.CapellaDiagramPasteAction_ProgressMessage, 2);
       // Selection not empty because action enabled
       final List<? extends View> gmfSelection = getCopyPasteSelection();
+      gmfSelection.removeIf(element -> (TitleBlockHelper.isTitleBlockAnnotation(LayerUtil.getSiriusElement((View)element).getTarget())));
       // Sirius + Capella layer
       monitor.worked(1);
-      final CapellaDiagramPasteCommand siriusCmd = new CapellaDiagramPasteCommand(gmfSelection, true);
-      boolean success = MiscUtil.transactionallyExecute(gmfSelection, siriusCmd);
-      monitor.worked(1);
-
-      if (success) {
-
-        // Set format (layout and/or style) to pasted elements and move them under the mouse cursor
-        // Keep mouse location
-        final Point relativeLocation = getRelativeLocation();
-        // GraphicalAdjustmentCommand is executed asynchronously to come after the SiriusCanonicalLayoutCommand
-        Display.getDefault().asyncExec(() -> {
-          View target = siriusCmd.getGmfTarget();
-          EObject siriusTarget = LayerUtil.getSiriusElement(target);
-          GraphicalAdjustmentCommand gmfCmd;
-          if (SiriusUtil.layoutIsConstrained(siriusTarget) && mustRefresh()) {
-            // Just refresh the diagram
-            gmfCmd = new GraphicalAdjustmentCommand(target);
-          } else {
-            // Duplicate layout
-            gmfCmd = new GraphicalAdjustmentCommand((List) siriusCmd.getResults(),
-                siriusCmd.getPastedSiriusElementsOrigins(), target, relativeLocation, mustRefresh(), mustPasteLayout(),
-                mustPasteStyle());
-          }
-          MiscUtil.transactionallyExecute(gmfSelection, gmfCmd);
-        });
-
+      if (gmfSelection.size() > 0) {
+        final CapellaDiagramPasteCommand siriusCmd = new CapellaDiagramPasteCommand(gmfSelection, true);
+        boolean success = MiscUtil.transactionallyExecute(gmfSelection, siriusCmd);
+        monitor.worked(1);
+  
+        if (success) {
+  
+          // Set format (layout and/or style) to pasted elements and move them under the mouse cursor
+          // Keep mouse location
+          final Point relativeLocation = getRelativeLocation();
+          // GraphicalAdjustmentCommand is executed asynchronously to come after the SiriusCanonicalLayoutCommand
+          Display.getDefault().asyncExec(() -> {
+            View target = siriusCmd.getGmfTarget();
+            EObject siriusTarget = LayerUtil.getSiriusElement(target);
+            GraphicalAdjustmentCommand gmfCmd;
+            if (SiriusUtil.layoutIsConstrained(siriusTarget) && mustRefresh()) {
+              // Just refresh the diagram
+              gmfCmd = new GraphicalAdjustmentCommand(target);
+            } else {
+              // Duplicate layout
+              gmfCmd = new GraphicalAdjustmentCommand((List) siriusCmd.getResults(),
+                  siriusCmd.getPastedSiriusElementsOrigins(), target, relativeLocation, mustRefresh(), mustPasteLayout(),
+                  mustPasteStyle());
+            }
+            MiscUtil.transactionallyExecute(gmfSelection, gmfCmd);
+          });
+  
+        }
       }
     } finally {
       monitor.done();

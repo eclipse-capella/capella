@@ -18,10 +18,15 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.action.IAction;
+import org.eclipse.sirius.business.internal.metamodel.description.spec.DAnnotationSpec;
+import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DNodeListElementSpec;
+import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.ui.IActionDelegate;
+import org.polarsys.capella.core.diagram.helpers.TitleBlockHelper;
 import org.polarsys.capella.core.platform.sirius.clipboard.commands.CapellaDiagramCopyCommand;
 import org.polarsys.capella.core.platform.sirius.clipboard.util.CapellaDiagramClipboard;
 import org.polarsys.capella.core.platform.sirius.clipboard.util.GmfUtil;
+import org.polarsys.capella.core.platform.sirius.clipboard.util.LayerUtil;
 import org.polarsys.capella.core.platform.sirius.clipboard.util.MiscUtil;
 
 /**
@@ -49,8 +54,12 @@ public class CapellaDiagramCopyAction extends AbstractCopyPasteAction {
     } else {
       // Copying graphical and semantic elements
       List<? extends EObject> toCopy = getCopyPasteSelection();
-      CapellaDiagramCopyCommand cmd = new CapellaDiagramCopyCommand(toCopy);
-      MiscUtil.transactionallyExecute(toCopy, cmd);
+      toCopy.removeIf(element -> (TitleBlockHelper.isTitleBlockAnnotation(LayerUtil.getSiriusElement((View)element).getTarget())));
+      
+      if (toCopy.size() > 0) {
+        CapellaDiagramCopyCommand cmd = new CapellaDiagramCopyCommand(toCopy);
+        MiscUtil.transactionallyExecute(toCopy, cmd);
+      }
     }
   }
 

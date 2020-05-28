@@ -572,7 +572,7 @@ public class TitleBlockHelper {
   public static boolean isTitleBlockAnnotation(EObject object) {
     if (object instanceof DAnnotation) {
       DAnnotation annotation = (DAnnotation) object;
-      return isDiagramTitleBlock(annotation) || isElementTitleBlock(annotation) || isTitleBlockCell(annotation)
+      return isDiagramTitleBlock(annotation) || isElementTitleBlock(annotation) || isTitleBlockCell(annotation) || isTitleBlockLine(annotation)
           || isContentTitleBlock(annotation) || isTitleBlockLine(annotation);
     }
     return false;
