@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<toc topic="html/Enhancements of the implementation of Actors/Enhancements of the implementation of Actors.html" label="Enhancements of the implementation of Actors">
+	<topic href="html/Enhancements of the implementation of Actors/Enhancements of the implementation of Actors.html" label="Enhancements of the implementation of Actors">
+		<topic href="html/Enhancements of the implementation of Actors/Enhancements of the implementation of Actors.html#Definition_of_Components_.2F_Actors" label="Definition of Components / Actors"></topic>
+		<topic href="html/Enhancements of the implementation of Actors/Enhancements of the implementation of Actors.html#Scope_of_responsibility" label="Scope of responsibility"></topic>
+		<topic href="html/Enhancements of the implementation of Actors/Enhancements of the implementation of Actors.html#Node_vs._Behavior_Components_in_Physical_Architecture.2C_and_simplifications_for_Actors" label="Node vs. Behavior Components in Physical Architecture, and simplifications for Actors"></topic>
+		<topic href="html/Enhancements of the implementation of Actors/Enhancements of the implementation of Actors.html#LA_to_PA_transition_of_components_.2F_actors" label="LA to PA transition of components / actors">
+			<topic href="html/Enhancements of the implementation of Actors/Enhancements of the implementation of Actors.html#Reminder" label="Reminder"></topic>
+			<topic href="html/Enhancements of the implementation of Actors/Enhancements of the implementation of Actors.html#Rules_applied_during_the_transition" label="Rules applied during the transition"></topic>
+			<topic href="html/Enhancements of the implementation of Actors/Enhancements of the implementation of Actors.html#Result_of_transition_when_mixing_System_.2F_Actor_definitions" label="Result of transition when mixing System / Actor definitions"></topic>
+		</topic>
+	</topic>
+</toc>
