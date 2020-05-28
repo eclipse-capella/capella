@@ -49,6 +49,8 @@ public class Rule_InteractionOperand extends Rule_CapellaElement {
 
     AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p, InteractionPackage.Literals.INTERACTION_FRAGMENT__COVERED_INSTANCE_ROLES,
         context_p);
+    AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p, InteractionPackage.Literals.INTERACTION_OPERAND__GUARD,
+        context_p);
   }
   
   @Override
