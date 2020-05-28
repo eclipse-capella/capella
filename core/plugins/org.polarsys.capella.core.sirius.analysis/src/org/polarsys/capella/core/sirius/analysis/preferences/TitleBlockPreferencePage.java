@@ -18,6 +18,7 @@ import java.util.List;
 import org.eclipse.core.resources.ProjectScope;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.MenuManager;
+import org.eclipse.jface.layout.GridDataFactory;
 import org.eclipse.jface.layout.TableColumnLayout;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.viewers.ArrayContentProvider;
@@ -36,6 +37,7 @@ import org.eclipse.jface.viewers.TableViewerFocusCellManager;
 import org.eclipse.jface.viewers.ViewerCell;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.StyleRange;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.GridData;
@@ -46,6 +48,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.TableColumn;
+import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
 import org.polarsys.capella.core.commands.preferences.service.AbstractDefaultPreferencePage;
 import org.polarsys.capella.core.commands.preferences.service.PreferenceField;
@@ -66,7 +69,7 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
 
     @Override
     public String toString() {
-      return name;
+      return name+"\n"+content; //$NON-NLS-1$
     }
   }
 
@@ -79,8 +82,6 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
   public static final String SEPARATOR = "SEPARATOR"; //$NON-NLS-1$
   public static final String EMPTY_STRING = ""; //$NON-NLS-1$
   public static final int BOUND = 200;
-  
-  
 
   public static final String IMAGE_LINE = "icons/full/obj16/TitleBlockLine_16.gif"; //$NON-NLS-1$
   public static final String IMAGE_COLUMN = "icons/full/obj16/TitleBlockColumn_16.gif"; //$NON-NLS-1$
@@ -93,7 +94,6 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
   private int columnsNumber;
   private int linesNumber;
   private String tableContent;
-  private Text contentText;
 
   public TitleBlockPreferencePage() {
     super(PAGE_ID);
@@ -129,7 +129,7 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
     top.setLayoutData(new GridData(GridData.FILL_BOTH));
     createTable(top);
     createExplanationLabel();
-    createCellContentLabel();
+    
   }
 
   private void createExplanationLabel() {
@@ -137,12 +137,6 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
     explanation_label.setText(Messages.TitleBlockPreferencePage_Message);
     Font font = new Font(getShell().getDisplay(), "", 9, SWT.ITALIC); //$NON-NLS-1$
     explanation_label.setFont(font);
-  }
-
-  private void createCellContentLabel() {
-    contentText = new Text(getFieldEditorParent(), SWT.NONE);
-    contentText.setBackground(getFieldEditorParent().getBackground());
-    contentText.setEditable(false);
   }
 
   private void createCheckBox() {
@@ -154,37 +148,19 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
   private void createTable(Composite top) {
     v = new TableViewer(top, SWT.MULTI | SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL | SWT.FULL_SELECTION);
     createColumns(v, columnsNumber);
+    
     v.setContentProvider(ArrayContentProvider.getInstance());
-    v.setInput(createModel());
     v.getTable().setLinesVisible(true);
     v.getTable().setHeaderVisible(false);
-    GridData gridData = new GridData(GridData.FILL_BOTH);
-    gridData.grabExcessVerticalSpace = true;
-    gridData.grabExcessHorizontalSpace = true;
-    gridData.verticalAlignment = GridData.FILL;
-    gridData.horizontalAlignment = GridData.FILL;
-    gridData.widthHint = 200;
-    gridData.horizontalSpan = 1;
-    v.getTable().setLayoutData(gridData);
+    v.getTable().setLayout(new GridLayout());
+    v.getTable().setLayoutData(GridDataFactory.swtDefaults().grab(true, true).create());
+
     addMenu(v);
 
     Listener tableListener = new Listener() {
       @Override
       public void handleEvent(Event event) {
         switch (event.type) {
-        case SWT.MouseDown: {
-          Point coords = new Point(event.x, event.y);
-          ViewerCell cell = v.getCell(coords);
-          if (cell != null) {
-            int index = cell.getColumnIndex();
-            List<TitleBlockCell> list = (List<TitleBlockCell>) cell.getElement();
-            String content = list.get(index).content;
-            contentText.setSize(content.length() * 10, contentText.getLineHeight());
-            contentText.setText(content);
-          }
-
-          break;
-        }
         case SWT.MouseDoubleClick: {
           Point coords = new Point(event.x, event.y);
           ViewerCell cell = v.getCell(coords);
@@ -198,7 +174,7 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
             if (dialog.open() == Window.OK) {
               list.get(index).name = dialog.getName();
               list.get(index).content = dialog.getContent();
-              cell.setText(dialog.getName());
+              cell.setText(list.get(index).toString());
             }
           }
           break;
@@ -209,6 +185,27 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
 
     v.getTable().addListener(SWT.MouseDoubleClick, tableListener);
     v.getTable().addListener(SWT.MouseDown, tableListener);
+    
+    Listener paintListener = new Listener() {
+      public void handleEvent(Event event) {
+        switch (event.type) {
+        case SWT.MeasureItem: {
+          TableItem item = (TableItem) event.item;
+          String text = getText(item, event.index);
+          Point size = event.gc.textExtent(text);
+          event.height = Math.max(event.height, size.y + 10);
+          break;
+        }
+        }
+      }
+
+      String getText(TableItem item, int column) {
+        String text = item.getText(column);
+        return text;
+      }
+    };
+    v.getTable().addListener(SWT.MeasureItem, paintListener);
+    v.setInput(createModel());
   }
 
   private void disposeColumns() {
@@ -333,8 +330,18 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
         List<TitleBlockCell> lst = (List<TitleBlockCell>) cell.getElement();
         final TitleBlockCell tbcell = lst.get(index);
         final String cellText = String.valueOf(tbcell);
-        cell.setText(cellText);
-        cell.setBackground(getShell().getDisplay().getSystemColor(SWT.COLOR_GRAY));
+        if (cellText != null && !cellText.trim().isEmpty()) {
+          cell.setText(cellText);
+          int multiLine = cellText.indexOf("\n"); //$NON-NLS-1$
+          if (multiLine > 0) {
+            cell.setStyleRanges(new StyleRange[] {
+                new StyleRange(multiLine, cellText.length(), getShell().getDisplay().getSystemColor(SWT.COLOR_DARK_GRAY), null)
+            });
+          }
+        } else {
+            cell.setText(Messages.TitleBlockPreferencePage_EmptyMessage);
+            cell.setForeground(getShell().getDisplay().getSystemColor(SWT.COLOR_DARK_GRAY));
+        }
       }
     });
   }
