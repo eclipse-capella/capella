@@ -64,7 +64,6 @@ public class TitleBlockHelper {
   public static final String CAPELLA_PREFIX = "capella:";
   public static final String AQL_PREFIX = "aql:";
   public static final String FEATURE_PREFIX = "feature:";
-  public static final String TITLE_BLOCK_INITIALIZED = "TitleBlockInitialized";
   public static final String TITLE_BLOCK_MAPPING_PREFIX = "DT_TitleBlock";
 
   /**
@@ -126,15 +125,6 @@ public class TitleBlockHelper {
 
   public static boolean isTitleBlockMapping(RepresentationElementMapping mapping) {
     return mapping != null && mapping.getName() != null && mapping.getName().contains(TITLE_BLOCK_MAPPING_PREFIX);
-  }
-
-  /**
-   * @param diagram
-   * @return true if the titleBlockInitialized exists in diagram
-   */
-  public static boolean isInitializedDiagramTitleBlock(DDiagram diagram) {
-    return !diagram.getEAnnotations().stream().filter(a -> a.getSource().equals(TITLE_BLOCK_INITIALIZED))
-        .collect(Collectors.toList()).isEmpty();
   }
 
   public static List<DAnnotation> getElementTitleBlocks(DDiagram diagram) {

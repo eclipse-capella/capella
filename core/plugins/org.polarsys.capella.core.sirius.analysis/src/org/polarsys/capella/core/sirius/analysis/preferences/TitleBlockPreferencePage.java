@@ -51,6 +51,7 @@ import org.polarsys.capella.core.commands.preferences.service.AbstractDefaultPre
 import org.polarsys.capella.core.commands.preferences.service.PreferenceField;
 import org.polarsys.capella.core.commands.preferences.service.UserProfileModeEnum;
 import org.polarsys.capella.core.preferences.Activator;
+import org.polarsys.capella.core.sirius.analysis.activator.SiriusViewActivator;
 
 public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
 
@@ -70,30 +71,22 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
   }
 
   public static final int MIN_CELL_WIDTH = 100;
-  public static final String PAGE_ID = "org.polarsys.capella.core.platform.sirius.ui.actions.preferences.TitleBlockPage";
-  public static final String DEFAULT_TITLEBLOCK_PREFERENCE_STORE = "defaultTitleBlock";
-  public static final String ADD_BY_DEFAULT = "Add by default Diagram Title Block";
-  public static final String TABEL_CONTENT_PREFERENCE_STORE = "tableTitleBlock";
-  public static final String COLUMNS_NUMBER_PREFERENCE_STORE = "columnsNumberTitleBlock";
-  public static final String LINES_NUMBER_PREFERENCE_STORE = "linesNumberTitleBlock";
-  public static final String SEPARATOR = "SEPARATOR";
-  public static final String EMPTY_STRING = "";
+  public static final String PAGE_ID = "org.polarsys.capella.core.platform.sirius.ui.actions.preferences.TitleBlockPage"; //$NON-NLS-1$
+  public static final String DEFAULT_TITLEBLOCK_PREFERENCE_STORE = "defaultTitleBlock"; //$NON-NLS-1$
+  public static final String TABEL_CONTENT_PREFERENCE_STORE = "tableTitleBlock"; //$NON-NLS-1$
+  public static final String COLUMNS_NUMBER_PREFERENCE_STORE = "columnsNumberTitleBlock"; //$NON-NLS-1$
+  public static final String LINES_NUMBER_PREFERENCE_STORE = "linesNumberTitleBlock"; //$NON-NLS-1$
+  public static final String SEPARATOR = "SEPARATOR"; //$NON-NLS-1$
+  public static final String EMPTY_STRING = ""; //$NON-NLS-1$
   public static final int BOUND = 200;
-  public static final String INSERT_LINE = "Insert line";
-  public static final String INSERT_COLUMN = "Insert column";
-  public static final String REMOVE_LINE = "Remove line";
-  public static final String REMOVE_COLUMN = "Remove column";
-  public static final String LINE_DELETE_MESSAGE = "Are you sure you want to delete the entire line?";
-  public static final String COLUMN_DELETE_MESSAGE = "Are you sure you want to delete the entire column?";
-  public static final String CONFIRM_DELETE = "Confirm Delete";
-  public static final String UNABLE_REMOVE_LINE_MESSAGE = "You can't remove the last line of the Title Block.";
-  public static final String UNABLE_REMOVE_COLUMN_MESSAGE = "You can't remove the last column of the Title Block.";
-  public static final String EDIT_ALL_CELLS = "Please edit all cells!";
-  public static final String ERROR = "Error";
-  public static final String TitleBlockPreferencePage_Title = "Title Block";
-  public static final String TitleBlockPreferencePage_Description = "Preferences related to Diagram Title Block";
-  public static final String EXPLANATION_LABEL = "To edit a cell, double click on it. \nTo insert/remove a line/column, right click on the gray area.";
+  
+  
 
+  public static final String IMAGE_LINE = "icons/full/obj16/TitleBlockLine_16.gif"; //$NON-NLS-1$
+  public static final String IMAGE_COLUMN = "icons/full/obj16/TitleBlockColumn_16.gif"; //$NON-NLS-1$
+  public static final String IMAGE_LINE_REMOVE = "icons/full/obj16/TitleBlockLineRemove_16.gif"; //$NON-NLS-1$
+  public static final String IMAGE_COLUMN_REMOVE = "icons/full/obj16/TitleBlockColumnRemove_16.gif"; //$NON-NLS-1$
+  
   private TableViewer v;
   private PreferenceField defaultTitleBlockFieldEditor;
   private List<List<TitleBlockCell>> tccMatrix;
@@ -116,17 +109,16 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
 
   @Override
   protected String getPageTitle() {
-    return TitleBlockPreferencePage_Title;
+    return Messages.TitleBlockPreferencePage_Title;
   }
 
   @Override
   protected String getPageDescription() {
-    return TitleBlockPreferencePage_Description;
+    return Messages.TitleBlockPreferencePage_Description;
   }
 
   @Override
   protected void createFieldEditors() {
-    createExplanationLabel();
     createCheckBox();
     Composite top = new Composite(getFieldEditorParent(), SWT.NONE);
     GridLayout top_layout = new GridLayout();
@@ -136,13 +128,14 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
     top.setLayout(top_layout);
     top.setLayoutData(new GridData(GridData.FILL_BOTH));
     createTable(top);
+    createExplanationLabel();
     createCellContentLabel();
   }
 
   private void createExplanationLabel() {
     Label explanation_label = new Label(getFieldEditorParent(), SWT.NONE);
-    explanation_label.setText(EXPLANATION_LABEL);
-    Font font = new Font(getShell().getDisplay(), "", 9, SWT.ITALIC);
+    explanation_label.setText(Messages.TitleBlockPreferencePage_Message);
+    Font font = new Font(getShell().getDisplay(), "", 9, SWT.ITALIC); //$NON-NLS-1$
     explanation_label.setFont(font);
   }
 
@@ -153,7 +146,7 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
   }
 
   private void createCheckBox() {
-    defaultTitleBlockFieldEditor = new PreferenceField(DEFAULT_TITLEBLOCK_PREFERENCE_STORE, ADD_BY_DEFAULT,
+    defaultTitleBlockFieldEditor = new PreferenceField(DEFAULT_TITLEBLOCK_PREFERENCE_STORE, Messages.TitleBlockPreferencePage_AddDefaultTitleBlock,
         getFieldEditorParent());
     addField(defaultTitleBlockFieldEditor, UserProfileModeEnum.Expert, getFieldEditorParent(), ProjectScope.class);
   }
@@ -436,7 +429,7 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
   private void addMenu(final TableViewer v) {
     final MenuManager mgr = new MenuManager();
 
-    final Action insertLine = new Action(INSERT_LINE) {
+    final Action insertLine = new Action(Messages.TitleBlockPreferencePage_InsertLine) {
       @Override
       public void run() {
         int lineToInsert = v.getTable().getSelectionIndex() + 1;
@@ -445,8 +438,9 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
         }
       }
     };
+    insertLine.setImageDescriptor(SiriusViewActivator.imageDescriptorFromPlugin(SiriusViewActivator.ID, IMAGE_LINE));
 
-    final Action insertColumn = new Action(INSERT_COLUMN) {
+    final Action insertColumn = new Action(Messages.TitleBlockPreferencePage_InsertColumn) {
       @Override
       public void run() {
         if (v.getColumnViewerEditor().getFocusCell() != null) {
@@ -456,39 +450,20 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
         }
       }
     };
+    insertColumn.setImageDescriptor(SiriusViewActivator.imageDescriptorFromPlugin(SiriusViewActivator.ID, IMAGE_COLUMN));
 
-    final Action removeColumn = new Action(REMOVE_COLUMN) {
-      @Override
-      public void run() {
-        if (columnsNumber == 1) {
-          createMessageBox(UNABLE_REMOVE_COLUMN_MESSAGE, EMPTY_STRING);
-        }
-        if (v.getColumnViewerEditor().getFocusCell() != null && columnsNumber > 1) {
-
-          MessageBox messageBox = new MessageBox(getShell(), SWT.ICON_QUESTION | SWT.YES | SWT.NO);
-          messageBox.setMessage(COLUMN_DELETE_MESSAGE);
-          messageBox.setText(CONFIRM_DELETE);
-          int response = messageBox.open();
-          if (response == SWT.YES) {
-            int columnToDelete = v.getColumnViewerEditor().getFocusCell().getColumnIndex();
-            refreshTableRemoveColumn(columnToDelete);
-          }
-        }
-      }
-    };
-
-    final Action removeLine = new Action(REMOVE_LINE) {
+    final Action removeLine = new Action(Messages.TitleBlockPreferencePage_RemoveLine) {
       @Override
       public void run() {
         if (linesNumber == 1) {
-          createMessageBox(UNABLE_REMOVE_LINE_MESSAGE, EMPTY_STRING);
+          createMessageBox(Messages.TitleBlockPreferencePage_RemoveLastLineError, EMPTY_STRING);
         } else if (v.getColumnViewerEditor().getFocusCell() != null) {
 
           int lineToDelete = v.getTable().getSelectionIndex();
           if (lineToDelete != -1) {
             MessageBox messageBox = new MessageBox(getShell(), SWT.ICON_QUESTION | SWT.YES | SWT.NO);
-            messageBox.setMessage(LINE_DELETE_MESSAGE);
-            messageBox.setText(CONFIRM_DELETE);
+            messageBox.setMessage(Messages.TitleBlockPreferencePage_DeleteEntireRow);
+            messageBox.setText(Messages.TitleBlockPreferencePage_ConfirmDeletion);
             int response = messageBox.open();
             if (response == SWT.YES) {
               refreshTableRemoveLine();
@@ -497,13 +472,36 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
         }
       }
     };
+    removeLine.setImageDescriptor(SiriusViewActivator.imageDescriptorFromPlugin(SiriusViewActivator.ID, IMAGE_LINE_REMOVE));
+
+    final Action removeColumn = new Action(Messages.TitleBlockPreferencePage_RemoveColumn) {
+      @Override
+      public void run() {
+        if (columnsNumber == 1) {
+          createMessageBox(Messages.TitleBlockPreferencePage_RemoveLastColumnError, EMPTY_STRING);
+        }
+        if (v.getColumnViewerEditor().getFocusCell() != null && columnsNumber > 1) {
+
+          MessageBox messageBox = new MessageBox(getShell(), SWT.ICON_QUESTION | SWT.YES | SWT.NO);
+          messageBox.setMessage(Messages.TitleBlockPreferencePage_DeleteEntireColumn);
+          messageBox.setText(Messages.TitleBlockPreferencePage_ConfirmDeletion);
+          int response = messageBox.open();
+          if (response == SWT.YES) {
+            int columnToDelete = v.getColumnViewerEditor().getFocusCell().getColumnIndex();
+            refreshTableRemoveColumn(columnToDelete);
+          }
+        }
+      }
+    };
+    removeColumn.setImageDescriptor(SiriusViewActivator.imageDescriptorFromPlugin(SiriusViewActivator.ID, IMAGE_COLUMN_REMOVE));
+
     mgr.setRemoveAllWhenShown(true);
     mgr.addMenuListener(manager -> {
       if (v.getTable().getColumnCount() >= 1 && linesNumber >= 1) {
-        manager.add(insertColumn);
-        manager.add(removeColumn);
         manager.add(insertLine);
+        manager.add(insertColumn);
         manager.add(removeLine);
+        manager.add(removeColumn);
       }
     });
     v.getControl().setMenu(mgr.createContextMenu(v.getControl()));
