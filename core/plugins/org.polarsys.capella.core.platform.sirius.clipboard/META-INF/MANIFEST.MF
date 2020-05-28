@@ -24,3 +24,4 @@ Export-Package: org.polarsys.capella.core.platform.sirius.clipboard,
  org.polarsys.capella.core.platform.sirius.clipboard.actions,
  org.polarsys.capella.core.platform.sirius.clipboard.commands,
  org.polarsys.capella.core.platform.sirius.clipboard.util
+Import-Package: org.polarsys.capella.core.diagram.helpers
