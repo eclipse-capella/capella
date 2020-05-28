@@ -573,7 +573,7 @@ public class TitleBlockHelper {
     if (object instanceof DAnnotation) {
       DAnnotation annotation = (DAnnotation) object;
       return isDiagramTitleBlock(annotation) || isElementTitleBlock(annotation) || isTitleBlockCell(annotation)
-          || isContentTitleBlock(annotation);
+          || isContentTitleBlock(annotation) || isTitleBlockLine(annotation);
     }
     return false;
   }

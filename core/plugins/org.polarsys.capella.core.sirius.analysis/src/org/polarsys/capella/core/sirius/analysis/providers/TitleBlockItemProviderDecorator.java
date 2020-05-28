@@ -51,6 +51,13 @@ public class TitleBlockItemProviderDecorator extends ItemProviderAdapterDecorato
   @Override
   public Object getImage(Object object) {
     String imagePath = "/icons/full/obj16/TitleBlock_16.gif";
+    
+    if (TitleBlockHelper.isTitleBlockLine((DAnnotation) object)) {
+      imagePath = "/icons/full/obj16/TitleBlockLine_16.gif";
+      
+    } else if (TitleBlockHelper.isTitleBlockCell((DAnnotation) object)) {
+      imagePath = "/icons/full/obj16/TitleBlockCell_16.gif";
+    }
     URL url = FileLocator.find(Platform.getBundle("org.polarsys.capella.core.sirius.analysis"), new Path(imagePath),
         null);
     return ImageDescriptor.createFromURL(url).createImage();
