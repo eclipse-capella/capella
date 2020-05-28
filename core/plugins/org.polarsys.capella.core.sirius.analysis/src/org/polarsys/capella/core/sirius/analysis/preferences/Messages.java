@@ -21,6 +21,7 @@ public class Messages extends NLS {
   public static String TitleBlockPreferencePage_DeleteEntireColumn;
   public static String TitleBlockPreferencePage_DeleteEntireRow;
   public static String TitleBlockPreferencePage_Description;
+  public static String TitleBlockPreferencePage_EmptyMessage;
   public static String TitleBlockPreferencePage_ErrorMessage;
   public static String TitleBlockPreferencePage_InsertColumn;
   public static String TitleBlockPreferencePage_InsertLine;
