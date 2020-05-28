@@ -648,4 +648,13 @@
            class="org.polarsys.capella.core.sirius.analysis.providers.TitleBlockItemDecoratorAdapterFactory">
      </decoratorAdapterFactory>
  </extension>
+ <extension
+       point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders">
+    <editpartProvider
+          class="org.polarsys.capella.core.sirius.analysis.editpart.DDiagramEditPartProvider">
+       <Priority
+             name="Highest">
+       </Priority>
+    </editpartProvider>
+ </extension>
 </plugin>

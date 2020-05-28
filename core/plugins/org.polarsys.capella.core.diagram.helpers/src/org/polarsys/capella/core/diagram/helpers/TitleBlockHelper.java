@@ -41,6 +41,7 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
+import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 import org.eclipse.swt.widgets.Text;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.ui.toolkit.browser.category.CategoryRegistry;
@@ -64,6 +65,7 @@ public class TitleBlockHelper {
   public static final String AQL_PREFIX = "aql:";
   public static final String FEATURE_PREFIX = "feature:";
   public static final String TITLE_BLOCK_INITIALIZED = "TitleBlockInitialized";
+  public static final String TITLE_BLOCK_MAPPING_PREFIX = "DT_TitleBlock";
 
   /**
    * @param titleBlock
@@ -120,6 +122,10 @@ public class TitleBlockHelper {
   public static boolean isTitleBlockCell(DDiagramElement diagramElement) {
     return diagramElement.getTarget() instanceof DAnnotation
         && isTitleBlockCell((DAnnotation) diagramElement.getTarget());
+  }
+
+  public static boolean isTitleBlockMapping(RepresentationElementMapping mapping) {
+    return mapping != null && mapping.getName() != null && mapping.getName().contains(TITLE_BLOCK_MAPPING_PREFIX);
   }
 
   /**
@@ -417,7 +423,8 @@ public class TitleBlockHelper {
    * @param titleBlock
    * @return result after the expression was evaluated
    */
-  public static Object getResultOfExpression(DRepresentationDescriptor diagramDesc, String expression, DAnnotation titleBlock) {
+  public static Object getResultOfExpression(DRepresentationDescriptor diagramDesc, String expression,
+      DAnnotation titleBlock) {
     EObject objToEvaluate = TitleBlockHelper.getSemanticElementReference(titleBlock);
     // if is a Diagram Title Block, objToEvaluate will be the diagram
     if (objToEvaluate == null) {
@@ -537,33 +544,33 @@ public class TitleBlockHelper {
       e.printStackTrace();
     }
   }
-  
+
   public static List<DAnnotation> getAllAnnotationsForTitleBlock(DAnnotation titleBlock) {
-	    List<DAnnotation> pieces = new ArrayList<>();
-	    if (isTitleBlock(titleBlock)) {
-	      for (EObject element : titleBlock.getReferences()) {
-	        if (element instanceof DAnnotation && isTitleBlockLine((DAnnotation) element)) {
-	          pieces.add((DAnnotation) element);
-	          for(EObject elementCol : ((DAnnotation) element).getReferences()) {
-	            if (elementCol instanceof DAnnotation) {
-	              pieces.add((DAnnotation) elementCol);
-	              for(EObject elementCel : ((DAnnotation) elementCol).getReferences()) {
-	                if (elementCel instanceof DAnnotation) {
-	                  pieces.add((DAnnotation) elementCel);
-	                  for(EObject elementContent : ((DAnnotation) elementCel).getReferences()) {
-	                    if (elementContent instanceof DAnnotation) {
-	                      pieces.add((DAnnotation) elementContent);
-	                    }
-	                  }
-	                }
-	              }
-	            }
-	          }
-	        }
-	      }
-	    }
-	    return pieces;
-	  }
+    List<DAnnotation> pieces = new ArrayList<>();
+    if (isTitleBlock(titleBlock)) {
+      for (EObject element : titleBlock.getReferences()) {
+        if (element instanceof DAnnotation && isTitleBlockLine((DAnnotation) element)) {
+          pieces.add((DAnnotation) element);
+          for (EObject elementCol : ((DAnnotation) element).getReferences()) {
+            if (elementCol instanceof DAnnotation) {
+              pieces.add((DAnnotation) elementCol);
+              for (EObject elementCel : ((DAnnotation) elementCol).getReferences()) {
+                if (elementCel instanceof DAnnotation) {
+                  pieces.add((DAnnotation) elementCel);
+                  for (EObject elementContent : ((DAnnotation) elementCel).getReferences()) {
+                    if (elementContent instanceof DAnnotation) {
+                      pieces.add((DAnnotation) elementContent);
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return pieces;
+  }
 
   /**
    * @param titleBlock
@@ -614,7 +621,7 @@ public class TitleBlockHelper {
    * @return the referenced object/diagram label
    */
   public static String getReferencedElementLabel(EObject object) {
-    EObject referencedElement = TitleBlockHelper.getReferencedElement((EObject) object);
+    EObject referencedElement = TitleBlockHelper.getReferencedElement(object);
     if (referencedElement instanceof AbstractNamedElement) {
       return ((AbstractNamedElement) referencedElement).getName();
     } else if (referencedElement instanceof DRepresentation) {
