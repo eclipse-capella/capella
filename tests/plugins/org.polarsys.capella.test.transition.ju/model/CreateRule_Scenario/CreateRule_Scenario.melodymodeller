@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--Capella_Version_1.4.0-->
+<!--Capella_Version_1.4.1-->
 <org.polarsys.capella.core.data.capellamodeller:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/1.4.0"
     xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/1.4.0"
@@ -5056,7 +5056,8 @@
             <ownedInteractionFragments xsi:type="org.polarsys.capella.core.data.interaction:FragmentEnd"
                 id="02ed717d-e0fc-4df6-a0e5-b482e956d94a" name="FE1412" coveredInstanceRoles="#6846e53f-bac2-471d-8392-4317716d9872"/>
             <ownedInteractionFragments xsi:type="org.polarsys.capella.core.data.interaction:InteractionOperand"
-                id="efee6369-502a-480b-b937-aed808ac7097" name="IO1413" coveredInstanceRoles="#6846e53f-bac2-471d-8392-4317716d9872">
+                id="efee6369-502a-480b-b937-aed808ac7097" name="IO1413" coveredInstanceRoles="#6846e53f-bac2-471d-8392-4317716d9872"
+                guard="#57e74bf6-fe24-4a49-9d16-2180742f42db">
               <ownedConstraints xsi:type="org.polarsys.capella.core.data.capellacore:Constraint"
                   id="57e74bf6-fe24-4a49-9d16-2180742f42db" name="" constrainedElements="#efee6369-502a-480b-b937-aed808ac7097">
                 <ownedSpecification xsi:type="org.polarsys.capella.core.data.information.datavalue:OpaqueExpression"
@@ -5079,7 +5080,8 @@
             <ownedInteractionFragments xsi:type="org.polarsys.capella.core.data.interaction:FragmentEnd"
                 id="352a6ea8-be2e-4b7c-a244-7d0c0f0f192a" name="FE1415" coveredInstanceRoles="#6846e53f-bac2-471d-8392-4317716d9872"/>
             <ownedInteractionFragments xsi:type="org.polarsys.capella.core.data.interaction:InteractionOperand"
-                id="8540a655-115c-4f3f-b57f-2df182b23ee7" name="IO1416" coveredInstanceRoles="#6846e53f-bac2-471d-8392-4317716d9872">
+                id="8540a655-115c-4f3f-b57f-2df182b23ee7" name="IO1416" coveredInstanceRoles="#6846e53f-bac2-471d-8392-4317716d9872"
+                guard="#846ae807-e60c-4e66-b0ce-201848a779c4">
               <ownedConstraints xsi:type="org.polarsys.capella.core.data.capellacore:Constraint"
                   id="846ae807-e60c-4e66-b0ce-201848a779c4" name="" constrainedElements="#8540a655-115c-4f3f-b57f-2df182b23ee7">
                 <ownedSpecification xsi:type="org.polarsys.capella.core.data.information.datavalue:OpaqueExpression"
