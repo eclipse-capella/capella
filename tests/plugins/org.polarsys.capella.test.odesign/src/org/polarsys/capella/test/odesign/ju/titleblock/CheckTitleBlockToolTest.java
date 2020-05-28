@@ -23,12 +23,10 @@ import org.polarsys.capella.test.odesign.helper.OdesignTestHelper;
 public class CheckTitleBlockToolTest extends CheckTitleBlockTest {
   @Override
   public void test() throws Exception {
-    assertAllDiagramContainTool(IToolNameConstants.TOOL_CREATE_DIAGRAM_TITLE_BLOCK);
-    assertAllDiagramContainTool(IToolNameConstants.TOOL_CREATE_ELEMENT_TITLE_BLOCK);
+    assertAllDiagramContainTool(IToolNameConstants.TOOL_CREATE_TITLE_BLOCK);
     assertAllDiagramContainTool(IToolNameConstants.TOOL_INSERT_COLUMN_TITLE_BLOCK);
     assertAllDiagramContainTool(IToolNameConstants.TOOL_INSERT_LINE_TITLE_BLOCK);
-    assertAllDiagramContainTool(IToolNameConstants.TOOL_INSERT_REMOVE_DIAGRAM_TITLE_BLOCK);
-    assertAllDiagramContainTool(IToolNameConstants.TOOL_INSERT_REMOVE_ELEMENT_TITLE_BLOCK);
+    assertAllDiagramContainTool(IToolNameConstants.TOOL_INSERT_REMOVE_TITLE_BLOCK);
     assertAllDiagramContainTool(IToolNameConstants.TOOL_REMOVE_COLUMN_TITLE_BLOCK);
     assertAllDiagramContainTool(IToolNameConstants.TOOL_REMOVE_LINE_TITLE_BLOCK);
   }

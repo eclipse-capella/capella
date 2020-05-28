@@ -1651,7 +1651,7 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
-        <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='select.menu'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='diagram.title.block'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='ElementTitleBlock'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='Show%2FHide%20TitleBlocks']">
+        <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='select.menu'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='TitleBlock'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='title.blocks']">
           <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create a new Constraint." name="constraint" label="%common.msm.constraint" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -2923,6 +2923,7 @@
           </style>
         </edgeMappings>
         <edgeMappings name="DT_TitleBlockEdge" sourceMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']" targetFinderExpression="service:self.targetFinderExpressionForTitleBlocks()">
+          <deletionDescription href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20element']"/>
           <targetMapping xsi:type="description_1:ContainerMapping" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_Class']"/>
           <targetMapping xsi:type="description_1:ContainerMapping" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_Collection']"/>
           <targetMapping xsi:type="description_1:ContainerMapping" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_Enumeration']"/>
@@ -3190,6 +3191,8 @@
           <targetMapping xsi:type="description_1:NodeMapping" href="oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@nodeMappings[name='FC_ControlNode']"/>
           <targetMapping xsi:type="description_1:NodeMapping" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_ControlNode']"/>
           <targetMapping xsi:type="description_1:EdgeMapping" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_SequenceLink']"/>
+          <targetMapping xsi:type="description_1:NodeMapping" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
+          <targetMapping xsi:type="description_1:EdgeMapping" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements']"/>
           <style lineStyle="dash" targetArrow="NoDecoration" sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelSize="12">
@@ -3445,7 +3448,7 @@
                   <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
                 </style>
                 <conditionnalStyles predicateExpression="service:isAnnotation()">
-                  <style xsi:type="style:SquareDescription" labelSize="7" showIcon="false" labelExpression="service:self.getTitleBockCellLabel()" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+                  <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="service:self.getTitleBockCellLabel()" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
                     <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                     <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                     <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
@@ -4644,58 +4647,22 @@
             </initialOperation>
             <hook id="org.polarsys.capella.core.sirius.analysis.delete.CapellaDeleteActionHook"/>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Creates a graphical object corresponding to a Diagram Title Block which will display information related to the current diagram. The displayed data is configurable via the Capella Preferences page. The Diagram Title Block does not have a corresponding semantic object." name="diagram.title.block" label="%common.cdb.diagram.title.block" precondition="service:containerView.isValidCreateDiagramTitleBlock()" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlock_16.gif">
-            <element name="container"/>
-            <elementView name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:containerView">
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not self.deactivateDiagramTitleBlockFilter()">
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.hasADiagramTitleBlock()">
-                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectTitleBlocks" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
-                      <parameters name="context" value="aql:containerView"/>
-                      <parameters name="scope" value="aql:containerView.getDiagramTitleBlocks()"/>
-                      <parameters name="resultVariable" value="selectedTitleBlocks"/>
-                      <parameters name="wizardMessage" value="aql:'Diagram Title Block already exists but is hidden. Select to unhide it.'"/>
-                      <parameters name="initialSelection" value="aql:self.void2Null(containerView.getVisibleDiagramTitleBlocks())"/>
-                    </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (selectedTitleBlocks = 'WIZARD_CANCELED')">
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerView.showHideDiagramTitleBlocks(selectedTitleBlocks,diagram)"/>
-                    </subModelOperations>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not self.hasADiagramTitleBlock()">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.createDiagramTitleBlock()"/>
-                  </subModelOperations>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:ToolGroup" name="ElementTitleBlock">
-            <tools xsi:type="tool_1:ToolDescription" documentation="Creates a graphical object corresponding to an Element Title Block which will display information related to the current element to which the Element Title Block is applied. The Element Title Block does not have a corresponding semantic object." name="element.title.block" label="%common.cdb.element.title.block" precondition="service:containerView.isValidCreateElementTitleBlock()" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlock_16.gif">
+          <ownedTools xsi:type="tool:ToolGroup" name="TitleBlock">
+            <tools xsi:type="tool_1:ToolDescription" documentation="Creates a graphical object corresponding to an Element Title Block which will display information related to the current element to which the Element Title Block is applied. The Element Title Block does not have a corresponding semantic object." name="title.block" label="%common.cdb.title.block" precondition="service:containerView.isValidCreateTitleBlock()" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlock_16.gif">
               <element name="container"/>
               <elementView name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:containerView">
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not self.deactivateElementTitleBlockFilter()">
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.hasAElementTitleBlock()">
-                      <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectTitleBlocks" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
-                        <parameters name="context" value="aql:containerView"/>
-                        <parameters name="scope" value="aql:self.getAvailableToInsertElementTitleBlocks(diagram)"/>
-                        <parameters name="resultVariable" value="selectedTitleBlocks"/>
-                        <parameters name="wizardMessage" value="aql:'Element Title Block already exists but is hidden. Select to unhide it.'"/>
-                        <parameters name="initialSelection" value="aql:self.void2Null(containerView.getVisibleElementTitleBlocks())"/>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (selectedTitleBlocks = 'WIZARD_CANCELED')">
-                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerView.showHideElementTitleBlocks(selectedTitleBlocks,diagram)"/>
-                      </subModelOperations>
-                    </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not self.hasAElementTitleBlock()">
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.createElementTitleBlock(diagram)"/>
-                    </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.isValidCreateDiagramTitleBlock()">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.createDiagramTitleBlock()"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.isValidCreateElementTitleBlock()">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.createElementTitleBlock(diagram)"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ToolDescription" documentation="Creates a new line that will be inserted under the line of the currently selected cell of the Element Title Block." name="element.title.block.line" label="%common.cdb.element.title.block.line" precondition="service:containerView.isValidInsertLineOrColumn()" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlockLine_16.gif">
+            <tools xsi:type="tool_1:ToolDescription" documentation="Creates a new line that will be inserted under the line of the currently selected cell of the Element Title Block." name="element.title.block.line" label="%common.cdb.title.block.line" precondition="service:containerView.isValidInsertLineOrColumn()" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlockLine_16.gif">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
@@ -4704,7 +4671,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ToolDescription" documentation="Creates a new column that will be inserted to the right of the column of the currently selected cell of the Element Title Block." name="element.title.block.column" label="%common.cdb.element.title.block.column" precondition="service:containerView.isValidInsertLineOrColumn()" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlockColumn_16.gif">
+            <tools xsi:type="tool_1:ToolDescription" documentation="Creates a new column that will be inserted to the right of the column of the currently selected cell of the Element Title Block." name="element.title.block.column" label="%common.cdb.title.block.column" precondition="service:containerView.isValidInsertLineOrColumn()" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlockColumn_16.gif">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
@@ -4713,7 +4680,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ToolDescription" documentation="Removes the line that contains the currently selected cell of the Element Title Block." name="remove.element.title.block.line" label="%common.cdb.remove.element.title.block.line" precondition="service:containerView.isValidRemoveLineOfElementTitleBlock()" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlockLineRemove_16.gif">
+            <tools xsi:type="tool_1:ToolDescription" documentation="Removes the line that contains the currently selected cell of the Element Title Block." name="remove.element.title.block.line" label="%common.cdb.remove.title.block.line" precondition="service:containerView.isValidRemoveLineOfElementTitleBlock()" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlockLineRemove_16.gif">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
@@ -4722,7 +4689,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ToolDescription" documentation="Removes the column that contains the currently selected cell of the Element Title Block." name="remove.element.title.block.column" label="%common.cdb.remove.element.title.block.column" precondition="service:containerView.isValidRemoveColumnOfElementTitleBlock()" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlockColumnRemove_16.gif">
+            <tools xsi:type="tool_1:ToolDescription" documentation="Removes the column that contains the currently selected cell of the Element Title Block." name="remove.element.title.block.column" label="%common.cdb.remove.title.block.column" precondition="service:containerView.isValidRemoveColumnOfElementTitleBlock()" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlockColumnRemove_16.gif">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
@@ -4732,47 +4699,25 @@
               </initialOperation>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolGroup" name="Show/Hide TitleBlocks">
-            <tools xsi:type="tool_1:ToolDescription" documentation="Inserts or removes graphical objects on the diagrams corresponding to an existing Diagram Title Block. Removing a Diagram Title Block graphical object from the diagram does not delete the Diagram Title Block from the model." name="diagram.title.blocks" label="%common.cdb.diagram.title.blocks" precondition="aql:not (containerView.getDiagramContainer().isSynchronized() and (containerView.oclIsKindOf(diagram::DNodeList) or containerView.oclIsKindOf(diagram::DNodeListElement)))" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
-              <element name="element"/>
-              <elementView name="elementView">
-                <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="aql:elementView.getParentDiagram()"/>
-              </elementView>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView">
-                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectTitleBlocks" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
-                    <parameters name="context" value="aql:elementView"/>
-                    <parameters name="scope" value="aql:elementView.getDiagramTitleBlocks()"/>
-                    <parameters name="resultVariable" value="selectedTitleBlocks"/>
-                    <parameters name="wizardMessage" value="aql:'Select Values to show in ' + element.name + '.'"/>
-                    <parameters name="initialSelection" value="aql:self.void2Null(elementView.getVisibleDiagramTitleBlocks())"/>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (selectedTitleBlocks = 'WIZARD_CANCELED')">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.showHideDiagramTitleBlocks(selectedTitleBlocks,diagram)"/>
-                  </subModelOperations>
-                </firstModelOperations>
-              </initialOperation>
-            </tools>
-            <tools xsi:type="tool_1:ToolDescription" documentation="Inserts or removes graphical objects on the diagrams corresponding to an existing Element Title Block applied to an element. Removing an Element Title Block graphical object from the diagram does not delete the Element Title Block from the model." name="element.title.blocks" label="%common.cdb.element.title.blocks" precondition="aql:not (containerView.getDiagramContainer().isSynchronized() and (containerView.oclIsKindOf(diagram::DNodeList) or containerView.oclIsKindOf(diagram::DNodeListElement)))" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
-              <element name="element"/>
-              <elementView name="elementView">
-                <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="aql:elementView.getParentDiagram()"/>
-              </elementView>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView">
-                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectTitleBlocks" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
-                    <parameters name="context" value="aql:elementView"/>
-                    <parameters name="scope" value="aql:elementView.getAvailableToInsertElementTitleBlocks(diagram)"/>
-                    <parameters name="resultVariable" value="selectedTitleBlocks"/>
-                    <parameters name="wizardMessage" value="aql:'Select Values to show in ' + element.name + '.'"/>
-                    <parameters name="initialSelection" value="aql:self.void2Null(elementView.getVisibleElementTitleBlocks())"/>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (selectedTitleBlocks = 'WIZARD_CANCELED')">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.showHideElementTitleBlocks(selectedTitleBlocks,diagram)"/>
-                  </subModelOperations>
-                </firstModelOperations>
-              </initialOperation>
-            </tools>
+          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Inserts or removes graphical objects on the diagrams corresponding to an existing Diagram Title Block. Removing a Diagram Title Block graphical object from the diagram does not delete the Diagram Title Block from the model." name="title.blocks" label="%common.cdb.title.blocks" precondition="service:containerView.isValidCreateTitleBlock()" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <element name="element"/>
+            <elementView name="elementView">
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="aql:elementView.getParentDiagram()"/>
+            </elementView>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectTitleBlocks" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
+                  <parameters name="context" value="aql:elementView"/>
+                  <parameters name="scope" value="aql:elementView.getAvailableToInsertTitleBlocks(diagram)"/>
+                  <parameters name="resultVariable" value="selectedTitleBlocks"/>
+                  <parameters name="wizardMessage" value="aql:'Select Values to show in ' + element.name + '.'"/>
+                  <parameters name="initialSelection" value="aql:self.void2Null(elementView.getVisibleTitleBlocks())"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (selectedTitleBlocks = 'WIZARD_CANCELED')">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.showHideTitleBlocks(selectedTitleBlocks)"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
           </ownedTools>
         </toolSections>
         <customization>
@@ -7159,7 +7104,7 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
-        <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='select.menu'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='diagram.title.block'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='ElementTitleBlock'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='Show%2FHide%20TitleBlocks']">
+        <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='select.menu'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='TitleBlock'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='title.blocks']">
           <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create a new Constraint." name="constraint" label="%common.cdi.constraint" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -8702,7 +8647,7 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
-        <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='select.menu'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='diagram.title.block'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='ElementTitleBlock'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='Show%2FHide%20TitleBlocks']">
+        <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='select.menu'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='TitleBlock'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='title.blocks']">
           <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create a new Constraint." name="constraint" label="%common.cei.constraint" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -10301,7 +10246,7 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
-        <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='select.menu'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='diagram.title.block'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='ElementTitleBlock'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='Show%2FHide%20TitleBlocks']">
+        <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='select.menu'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='TitleBlock'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='title.blocks']">
           <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create a new Constraint." name="constraint" label="%common.cii.constraint" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -12140,7 +12085,7 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Accelerators" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@additionalLayers[name='Communication%20Model']/@toolSections.1/@ownedTools[name='initialization.from.existing.diagram']"/>
-        <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='select.menu'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='diagram.title.block'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='ElementTitleBlock'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='Show%2FHide%20TitleBlocks']">
+        <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='select.menu'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='TitleBlock'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='title.blocks']">
           <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create a new Constraint." name="constraint" label="%common.idb.constraint" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -12807,7 +12752,7 @@
             <diagramDescription href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Capability%20Realization%20Refinement']"/>
           </ownedTools>
         </toolSections>
-        <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='select.menu'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='diagram.title.block'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='ElementTitleBlock'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='Show%2FHide%20TitleBlocks']">
+        <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='select.menu'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='TitleBlock'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='title.blocks']">
           <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create a new Constraint." name="constraint" label="%common.cri.constraint" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -13503,7 +13448,7 @@
             <hook id="org.polarsys.capella.core.sirius.analysis.delete.CapellaDeleteActionHook"/>
           </ownedTools>
         </toolSections>
-        <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='select.menu'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='diagram.title.block'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='ElementTitleBlock'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='Show%2FHide%20TitleBlocks']">
+        <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='select.menu'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='TitleBlock'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='title.blocks']">
           <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create a new Constraint." name="constraint" label="%common.crb.constraint" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -13689,7 +13634,7 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
-        <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='select.menu'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='diagram.title.block'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='ElementTitleBlock'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='Show%2FHide%20TitleBlocks']">
+        <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='select.menu'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='TitleBlock'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='title.blocks']">
           <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create a new Constraint." name="constraint" label="%common.pd.constraint" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -14193,7 +14138,7 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
-        <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='select.menu'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='diagram.title.block'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='ElementTitleBlock'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='Show%2FHide%20TitleBlocks']">
+        <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='select.menu'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='TitleBlock'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='title.blocks']">
           <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create a new Constraint." name="constraint" label="%common.id.constraint" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -16353,7 +16298,7 @@
             </instanceRoleMoved>
           </ownedTools>
         </toolSections>
-        <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='select.menu'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='diagram.title.block'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='ElementTitleBlock'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='Show%2FHide%20TitleBlocks']">
+        <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='select.menu'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='TitleBlock'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='title.blocks']">
           <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create a new Constraint." name="constraint" label="%common.is.constraint" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Scenario_Constraint']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -18248,7 +18193,7 @@
             </instanceRoleMoved>
           </ownedTools>
         </toolSections>
-        <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='select.menu'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='diagram.title.block'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='ElementTitleBlock'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='Show%2FHide%20TitleBlocks']">
+        <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='select.menu'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='TitleBlock'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='title.blocks']">
           <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create a new Constraint." name="constraint" label="%common.es.constraint" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Scenario_Constraint']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -19327,7 +19272,7 @@
             </instanceRoleMoved>
           </ownedTools>
         </toolSections>
-        <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='select.menu'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='diagram.title.block'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='ElementTitleBlock'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='Show%2FHide%20TitleBlocks']">
+        <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='select.menu'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='TitleBlock'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='title.blocks']">
           <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create a new Constraint." name="constraint" label="%common.fs.constraint" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Scenario_Constraint']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -20301,7 +20246,7 @@
             </tools>
           </ownedTools>
         </toolSections>
-        <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='select.menu'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='diagram.title.block'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='ElementTitleBlock'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='Show%2FHide%20TitleBlocks']">
+        <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='select.menu'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='TitleBlock'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='title.blocks']">
           <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create a new Constraint." name="constraint" label="%common.fcd.constraint" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>

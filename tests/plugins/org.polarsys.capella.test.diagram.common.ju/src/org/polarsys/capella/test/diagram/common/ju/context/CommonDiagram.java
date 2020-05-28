@@ -59,45 +59,45 @@ public class CommonDiagram extends DiagramContext {
 
   public DAnnotation createDiagramTitleBlock() {
     DDiagramElementContainer createdTB = new CreateDiagramTitleBlockTool(this,
-        IToolNameConstants.TOOL_CREATE_DIAGRAM_TITLE_BLOCK, getDiagramId()).run();
+        IToolNameConstants.TOOL_CREATE_TITLE_BLOCK, getDiagramId()).run();
     return (DAnnotation) createdTB.getTarget();
   }
 
   public DAnnotation createElementTitleBlock(String containerId) {
     DDiagramElementContainer createdTB = new CreateElementTitleBlockTool(this,
-        IToolNameConstants.TOOL_CREATE_ELEMENT_TITLE_BLOCK, containerId, getDiagramId()).run();
+        IToolNameConstants.TOOL_CREATE_TITLE_BLOCK, containerId, getDiagramId()).run();
     return (DAnnotation) createdTB.getTarget();
   }
 
   public void checkCreateElementTitleBlock(String containerId) {
-    new CreateElementTitleBlockTool(this, IToolNameConstants.TOOL_CREATE_ELEMENT_TITLE_BLOCK, containerId,
+    new CreateElementTitleBlockTool(this, IToolNameConstants.TOOL_CREATE_TITLE_BLOCK, containerId,
         getDiagramId()).contextOk();
   }
 
   public void checkCreateDiagramTitleBlock() {
-    new CreateDiagramTitleBlockTool(this, IToolNameConstants.TOOL_CREATE_DIAGRAM_TITLE_BLOCK, getDiagramId())
+    new CreateDiagramTitleBlockTool(this, IToolNameConstants.TOOL_CREATE_TITLE_BLOCK, getDiagramId())
         .contextOk();
   }
 
   public void checkAutocreateDiagramTitleBlock() {
-    new CreateDiagramTitleBlockTool(this, IToolNameConstants.TOOL_CREATE_DIAGRAM_TITLE_BLOCK, getDiagramId())
+    new CreateDiagramTitleBlockTool(this, IToolNameConstants.TOOL_CREATE_TITLE_BLOCK, getDiagramId())
         .checkAutocreate();
   }
 
   public void removeElementTitleBlock(String id) {
-    new InsertRemoveTitleBlockTool(this, IToolNameConstants.TOOL_INSERT_REMOVE_ELEMENT_TITLE_BLOCK).remove(id);
+    new InsertRemoveTitleBlockTool(this, IToolNameConstants.TOOL_INSERT_REMOVE_TITLE_BLOCK).remove(id);
   }
 
   public void insertElementTitleBlock(String id) {
-    new InsertRemoveTitleBlockTool(this, IToolNameConstants.TOOL_INSERT_REMOVE_ELEMENT_TITLE_BLOCK).insert(id);
+    new InsertRemoveTitleBlockTool(this, IToolNameConstants.TOOL_INSERT_REMOVE_TITLE_BLOCK).insert(id);
   }
 
   public void removeDiagramTitleBlock(String id) {
-    new InsertRemoveTitleBlockTool(this, IToolNameConstants.TOOL_INSERT_REMOVE_DIAGRAM_TITLE_BLOCK).remove(id);
+    new InsertRemoveTitleBlockTool(this, IToolNameConstants.TOOL_INSERT_REMOVE_TITLE_BLOCK).remove(id);
   }
 
   public void insertDiagramTitleBlock(String id) {
-    new InsertRemoveTitleBlockTool(this, IToolNameConstants.TOOL_INSERT_REMOVE_DIAGRAM_TITLE_BLOCK).insert(id);
+    new InsertRemoveTitleBlockTool(this, IToolNameConstants.TOOL_INSERT_REMOVE_TITLE_BLOCK).insert(id);
   }
 
   public DAnnotation insertLineInTitleBlock(DAnnotation titleBlock, int lineNo) {
