@@ -1,5 +1,5 @@
             
-= Methodology - Seamless Workflow between Functional Analysis and Interface Engineering =
+= Methodology -  Seamless Workflow between Functional Analysis and Interface Engineering =
  
 
 [[Image:Images/TH_1.5.png|50x50px]]<br>
