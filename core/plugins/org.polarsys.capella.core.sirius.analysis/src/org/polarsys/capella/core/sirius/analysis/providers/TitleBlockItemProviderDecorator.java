@@ -27,6 +27,7 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.polarsys.capella.core.data.gen.edit.decorators.ItemProviderAdapterDecorator;
 import org.polarsys.capella.core.diagram.helpers.TitleBlockHelper;
+import org.polarsys.capella.core.sirius.analysis.activator.SiriusViewActivator;
 
 public class TitleBlockItemProviderDecorator extends ItemProviderAdapterDecorator implements IEditingDomainItemProvider,
     IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
@@ -50,16 +51,14 @@ public class TitleBlockItemProviderDecorator extends ItemProviderAdapterDecorato
 
   @Override
   public Object getImage(Object object) {
-    String imagePath = "/icons/full/obj16/TitleBlock_16.gif";
+    String imagePath = "/icons/full/obj16/TitleBlock.gif";
     
     if (TitleBlockHelper.isTitleBlockLine((DAnnotation) object)) {
-      imagePath = "/icons/full/obj16/TitleBlockLine_16.gif";
+      imagePath = "/icons/full/obj16/TitleBlockLine.gif";
       
     } else if (TitleBlockHelper.isTitleBlockCell((DAnnotation) object)) {
-      imagePath = "/icons/full/obj16/TitleBlockCell_16.gif";
+      imagePath = "/icons/full/obj16/TitleBlockCell.gif";
     }
-    URL url = FileLocator.find(Platform.getBundle("org.polarsys.capella.core.sirius.analysis"), new Path(imagePath),
-        null);
-    return ImageDescriptor.createFromURL(url).createImage();
+    return SiriusViewActivator.imageDescriptorFromPlugin(SiriusViewActivator.ID, imagePath).createImage();
   }
 }
