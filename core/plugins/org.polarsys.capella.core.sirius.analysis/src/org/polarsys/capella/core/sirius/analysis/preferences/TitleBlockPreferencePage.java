@@ -83,10 +83,10 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
   public static final String EMPTY_STRING = ""; //$NON-NLS-1$
   public static final int BOUND = 200;
 
-  public static final String IMAGE_LINE = "icons/full/obj16/TitleBlockLine_16.gif"; //$NON-NLS-1$
-  public static final String IMAGE_COLUMN = "icons/full/obj16/TitleBlockColumn_16.gif"; //$NON-NLS-1$
-  public static final String IMAGE_LINE_REMOVE = "icons/full/obj16/TitleBlockLineRemove_16.gif"; //$NON-NLS-1$
-  public static final String IMAGE_COLUMN_REMOVE = "icons/full/obj16/TitleBlockColumnRemove_16.gif"; //$NON-NLS-1$
+  public static final String IMAGE_LINE = "icons/full/obj16/TitleBlockLine.gif"; //$NON-NLS-1$
+  public static final String IMAGE_COLUMN = "icons/full/obj16/TitleBlockColumn.gif"; //$NON-NLS-1$
+  public static final String IMAGE_LINE_REMOVE = "icons/full/obj16/TitleBlockLineRemove.gif"; //$NON-NLS-1$
+  public static final String IMAGE_COLUMN_REMOVE = "icons/full/obj16/TitleBlockColumnRemove.gif"; //$NON-NLS-1$
   
   private TableViewer v;
   private PreferenceField defaultTitleBlockFieldEditor;
