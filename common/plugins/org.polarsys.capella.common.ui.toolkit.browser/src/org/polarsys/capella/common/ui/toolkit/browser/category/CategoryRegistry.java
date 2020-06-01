@@ -76,7 +76,19 @@ public class CategoryRegistry {
         categories.add(category);
       }
     }
+    removeOverriddenCategories(categories, currentElement);
     return categories;
+  }
+
+  /**
+   * Remove categories overridden by at least one another category in the same input set of categories
+   * 
+   * @param categories
+   */
+  private void removeOverriddenCategories(Set<ICategory> categories, EObject current) {
+    Set<ICategory> overriddenCategories = categories.stream()
+        .filter(x -> categories.stream().anyMatch(y -> y != x && y.overrides(x, current))).collect(Collectors.toSet());
+    categories.removeAll(overriddenCategories);
   }
 
   /**

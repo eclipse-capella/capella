@@ -14,6 +14,7 @@ package org.polarsys.capella.common.ui.toolkit.browser.category;
 
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * Represents a category of elements in the tree viewer dedicated to semantic browsing.
@@ -115,4 +116,23 @@ public interface ICategory {
    * @return the category identifier.
    */
   public String getCategoryId();
+  
+  /**
+   * @return the type fully qualified name
+   */
+  public String getTypeFullyQualifiedName();
+  
+  /**
+   * 
+   * @param otherCategory
+   * @param current
+   * @return whether this category overrides another category in the context of current object
+   */
+  public boolean overrides(ICategory otherCategory, EObject current);
+  
+  /**
+   * 
+   * @return the symbolic name for the category (e.g. used in Capella interpreter)
+   */
+  public String getSymbolicName();
 }

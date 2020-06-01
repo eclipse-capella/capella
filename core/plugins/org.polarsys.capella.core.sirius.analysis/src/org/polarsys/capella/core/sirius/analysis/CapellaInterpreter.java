@@ -32,6 +32,7 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.polarsys.capella.common.ui.toolkit.browser.category.CategoryRegistry;
 import org.polarsys.capella.common.ui.toolkit.browser.category.ICategory;
 import org.polarsys.capella.core.diagram.helpers.TitleBlockHelper;
+import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
 
 import com.google.common.base.CaseFormat;
 
@@ -73,12 +74,13 @@ public class CapellaInterpreter implements IInterpreterProvider, IInterpreter, T
   @Override
   public Object evaluate(EObject target, String expression) throws EvaluationException {
     Object result = null;
-    if (target != null && expression != null && expression.startsWith(PREFIX)) {
+    EObject resolvedTarget = CapellaAdapterHelper.resolveDescriptorOrBusinessObject(target);
+    if (resolvedTarget != null && expression != null && expression.startsWith(PREFIX)) {
       // extract the capella command
       String command = expression.substring(PREFIX.length(), expression.length()).trim();
 
       // get all the categories for target and match the command name from category with the command in TitleBlock
-      Set<ICategory> categories = CategoryRegistry.getInstance().gatherCategories(target).stream()
+      Set<ICategory> categories = CategoryRegistry.getInstance().gatherCategories(resolvedTarget).stream()
           .filter(category -> CaseFormat.UPPER_UNDERSCORE
               .to(CaseFormat.LOWER_CAMEL, category.getName().trim().replaceAll(" ", "_")).equals(command))
           .collect(Collectors.toSet());
@@ -87,7 +89,7 @@ public class CapellaInterpreter implements IInterpreterProvider, IInterpreter, T
         ICategory category = categories.iterator().next();
         if (category != null) {
           // execute the command
-          result = category.compute(target);
+          result = category.compute(resolvedTarget);
         }
       }
       else {
