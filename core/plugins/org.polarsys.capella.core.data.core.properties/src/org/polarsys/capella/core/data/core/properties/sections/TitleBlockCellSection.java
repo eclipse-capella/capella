@@ -59,13 +59,6 @@ public class TitleBlockCellSection extends AbstractSection {
     if (capellaElement instanceof DAnnotation) {
       super.loadData(capellaElement);
       DAnnotation titleBlockCell = (DAnnotation) capellaElement;
-      
-      // if the cell belongs to a Diagram Title Block, disable the edit
-      DAnnotation titleBlockContainer = TitleBlockHelper.getParentTitleBlock(titleBlockCell);
-      if(TitleBlockHelper.isDiagramTitleBlock(titleBlockContainer)) {
-        super.setEnabled(false);
-      }
-      
       String name = titleBlockCell.getDetails().get(TitleBlockHelper.NAME);
       String content = titleBlockCell.getDetails().get(TitleBlockHelper.CONTENT);
       titleBlockBasicElementGroup.loadData(capellaElement, name, content);
