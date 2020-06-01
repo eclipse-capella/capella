@@ -142,13 +142,9 @@ public class TitleBlockHelper {
         .collect(Collectors.toList());
   }
 
-  public static DAnnotation getDiagramTitleBlock(DDiagram diagram) {
-    Optional<DAnnotation> blockOpt = diagram.getEAnnotations().stream()
-        .filter(a -> a.getSource().equals(DIAGRAM_TITLE_BLOCK)).findFirst();
-    if (blockOpt.isPresent()) {
-      return blockOpt.get();
-    }
-    return null;
+  public static List<DAnnotation> getDiagramTitleBlocks(DDiagram diagram) {
+    return diagram.getEAnnotations().stream().filter(a -> a.getSource().equals(DIAGRAM_TITLE_BLOCK))
+        .collect(Collectors.toList());
   }
 
   public static List<DAnnotation> getElementTitleBlocks(DDiagram diagram, EObject element) {
@@ -353,8 +349,12 @@ public class TitleBlockHelper {
     DAnnotation line = DescriptionFactory.eINSTANCE.createDAnnotation();
     line.setSource(TITLE_BLOCK_LINE);
     diagram.getEAnnotations().add(line);
-    // position + 1 because on the first position in references we have the semantic element
-    titleBlock.getReferences().add(position + 1, line);
+    if (isDiagramTitleBlock(titleBlock)) {
+      titleBlock.getReferences().add(position, line);
+    } else {
+      // position + 1 because on the first position in references we have the semantic element
+      titleBlock.getReferences().add(position + 1, line);      
+    }
     return line;
   }
 

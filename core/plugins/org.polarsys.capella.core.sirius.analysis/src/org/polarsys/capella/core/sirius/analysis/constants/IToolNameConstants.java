@@ -1656,8 +1656,7 @@ public interface IToolNameConstants {
   String TOOL_XAB_INSERT_REMOVE_PHYSICAL_PATH = "physical.paths";
 
   // Title Blocks tools
-  String TOOL_CREATE_DIAGRAM_TITLE_BLOCK = "diagram.title.block";
-  String TOOL_CREATE_ELEMENT_TITLE_BLOCK = "element.title.block";
+  String TOOL_CREATE_TITLE_BLOCK = "title.block";
 
   // insert/remove line/col TB
   String TOOL_INSERT_LINE_TITLE_BLOCK = "element.title.block.line";
@@ -1666,8 +1665,7 @@ public interface IToolNameConstants {
   String TOOL_REMOVE_COLUMN_TITLE_BLOCK = "remove.element.title.block.column";
 
   // s/h TB
-  String TOOL_INSERT_REMOVE_ELEMENT_TITLE_BLOCK = "element.title.blocks";
-  String TOOL_INSERT_REMOVE_DIAGRAM_TITLE_BLOCK = "diagram.title.blocks";
+  String TOOL_INSERT_REMOVE_TITLE_BLOCK = "title.blocks";
 
   //delete TB tools
   String TOOL_DELETE_DIAGRAM_TITLE_BLOCK = "Delete Title Block";
