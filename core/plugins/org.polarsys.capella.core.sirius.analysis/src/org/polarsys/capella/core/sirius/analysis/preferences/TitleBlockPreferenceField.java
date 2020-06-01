@@ -58,7 +58,7 @@ public class TitleBlockPreferenceField extends FieldEditor {
   public static final String IMAGE_COLUMN = "icons/full/obj16/TitleBlockColumn.gif"; //$NON-NLS-1$
   public static final String IMAGE_LINE_REMOVE = "icons/full/obj16/TitleBlockLineRemove.gif"; //$NON-NLS-1$
   public static final String IMAGE_COLUMN_REMOVE = "icons/full/obj16/TitleBlockColumnRemove.gif"; //$NON-NLS-1$
-  
+
   private TableViewer v;
   private List<List<TitleBlockCell>> tccMatrix;
   private int columnsNumber;
@@ -76,14 +76,14 @@ public class TitleBlockPreferenceField extends FieldEditor {
 
     @Override
     public String toString() {
-      return name+"\n"+content; //$NON-NLS-1$
+      return name + "\n" + content; //$NON-NLS-1$
     }
   }
 
   public TitleBlockPreferenceField(Composite parent) {
     super("", Messages.TitleBlockPreferencePage_Message, parent);
   }
-  
+
   @Override
   protected void adjustForNumColumns(int numColumns) {
     System.out.println();
@@ -94,9 +94,9 @@ public class TitleBlockPreferenceField extends FieldEditor {
     Composite top = new Composite(parent, SWT.NONE);
     top.setLayout(new GridLayout());
     top.setLayoutData(GridDataFactory.fillDefaults().grab(true, true).create());
-    
+
     v = new TableViewer(top, SWT.MULTI | SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL | SWT.FULL_SELECTION);
-    
+
     v.setContentProvider(ArrayContentProvider.getInstance());
     v.getTable().setLinesVisible(true);
     v.getTable().setHeaderVisible(false);
@@ -122,7 +122,7 @@ public class TitleBlockPreferenceField extends FieldEditor {
             if (dialog.open() == Window.OK) {
               list.get(index).name = dialog.getName();
               list.get(index).content = dialog.getContent();
-              cell.setText(list.get(index).toString());
+              v.refresh(list);
             }
           }
           break;
@@ -133,28 +133,21 @@ public class TitleBlockPreferenceField extends FieldEditor {
 
     v.getTable().addListener(SWT.MouseDoubleClick, tableListener);
     v.getTable().addListener(SWT.MouseDown, tableListener);
-    
+
     Listener paintListener = new Listener() {
       public void handleEvent(Event event) {
         switch (event.type) {
         case SWT.MeasureItem: {
           TableItem item = (TableItem) event.item;
-          String text = getText(item, event.index);
+          String text = item.getText(event.index);
           Point size = event.gc.textExtent(text);
           event.height = Math.max(event.height, size.y + 10);
-          break;
         }
         }
-      }
-
-      String getText(TableItem item, int column) {
-        String text = item.getText(column);
-        return text;
       }
     };
     v.getTable().addListener(SWT.MeasureItem, paintListener);
   }
-
 
   private void disposeColumns() {
     TableColumn[] columns = v.getTable().getColumns();
@@ -208,24 +201,21 @@ public class TitleBlockPreferenceField extends FieldEditor {
 
   @Override
   protected void doStore() {
-    String currentTableContent = EMPTY_STRING;
+    StringBuilder table = new StringBuilder();
+    
     for (int i = 0; i < linesNumber; i++) {
       for (int j = 0; j < columnsNumber; j++) {
-        if (i == linesNumber - 1 && j == columnsNumber - 1) {
-          if (tccMatrix.get(i).get(j).content.equals(EMPTY_STRING)) {
-            tccMatrix.get(i).get(j).content = " ";
-          }
-          currentTableContent = currentTableContent + tccMatrix.get(i).get(j).name + TitleBlockPreferencePage.SEPARATOR
-              + tccMatrix.get(i).get(j).content;
-        } else {               
-          currentTableContent = currentTableContent + tccMatrix.get(i).get(j).name + TitleBlockPreferencePage.SEPARATOR
-              + tccMatrix.get(i).get(j).content + TitleBlockPreferencePage.SEPARATOR;
+        table.append(tccMatrix.get(i).get(j).name);
+        table.append(TitleBlockPreferencePage.SEPARATOR);
+        table.append(tccMatrix.get(i).get(j).content);
+        if (!(i == linesNumber - 1 && j == columnsNumber - 1)) {
+          table.append(TitleBlockPreferencePage.SEPARATOR);
         }
       }
     }
     getPreferenceStore().setValue(TitleBlockPreferencePage.COLUMNS_NUMBER_PREFERENCE_STORE, columnsNumber);
     getPreferenceStore().setValue(TitleBlockPreferencePage.LINES_NUMBER_PREFERENCE_STORE, linesNumber);
-    getPreferenceStore().setValue(TitleBlockPreferencePage.TABLE_CONTENT_PREFERENCE_STORE, currentTableContent);
+    getPreferenceStore().setValue(TitleBlockPreferencePage.TABLE_CONTENT_PREFERENCE_STORE, table.toString());
   }
 
   @Override
@@ -276,16 +266,18 @@ public class TitleBlockPreferenceField extends FieldEditor {
   }
 
   private List<List<TitleBlockCell>> createModel() {
-    String[] cellsNameAndContent = tableContent.split(TitleBlockPreferencePage.SEPARATOR);
+    String[] cellsNameAndContent = tableContent.split(TitleBlockPreferencePage.SEPARATOR, -1);
     int currentIndex = 0;
-    tccMatrix = new ArrayList<>();
+    tccMatrix = new ArrayList<>(cellsNameAndContent.length);
     for (int i = 0; i < linesNumber; i++) {
-      List<TitleBlockCell> tbcCell = new ArrayList<>();
+      List<TitleBlockCell> row = new ArrayList<>();
       for (int j = 0; j < columnsNumber; j++) {
-        tbcCell.add(new TitleBlockCell(cellsNameAndContent[currentIndex], cellsNameAndContent[currentIndex + 1]));
+        String name = currentIndex < cellsNameAndContent.length ? cellsNameAndContent[currentIndex] : EMPTY_STRING;
+        String value = currentIndex + 1 < cellsNameAndContent.length ? cellsNameAndContent[currentIndex + 1] : EMPTY_STRING;
+        row.add(new TitleBlockCell(name, value));
         currentIndex += 2;
       }
-      tccMatrix.add(tbcCell);
+      tccMatrix.add(row);
     }
 
     return tccMatrix;
@@ -303,13 +295,14 @@ public class TitleBlockPreferenceField extends FieldEditor {
           cell.setText(cellText);
           int multiLine = cellText.indexOf("\n"); //$NON-NLS-1$
           if (multiLine > 0) {
-            cell.setStyleRanges(new StyleRange[] {
-                new StyleRange(multiLine, cellText.length(), cell.getControl().getShell().getDisplay().getSystemColor(SWT.COLOR_DARK_GRAY), null)
-            });
+            cell.setStyleRanges(new StyleRange[] { new StyleRange(0, multiLine,
+                cell.getControl().getShell().getDisplay().getSystemColor(SWT.COLOR_WIDGET_FOREGROUND), null), 
+                new StyleRange(multiLine, cellText.length(),
+                cell.getControl().getShell().getDisplay().getSystemColor(SWT.COLOR_DARK_GRAY), null) });
           }
         } else {
-            cell.setText(Messages.TitleBlockPreferencePage_EmptyMessage);
-            cell.setForeground(cell.getControl().getShell().getDisplay().getSystemColor(SWT.COLOR_DARK_GRAY));
+          cell.setText(Messages.TitleBlockPreferencePage_EmptyMessage);
+          cell.setForeground(cell.getControl().getShell().getDisplay().getSystemColor(SWT.COLOR_DARK_GRAY));
         }
       }
     });
@@ -426,13 +419,15 @@ public class TitleBlockPreferenceField extends FieldEditor {
         }
       }
     };
-    insertColumn.setImageDescriptor(SiriusViewActivator.imageDescriptorFromPlugin(SiriusViewActivator.ID, IMAGE_COLUMN));
+    insertColumn
+        .setImageDescriptor(SiriusViewActivator.imageDescriptorFromPlugin(SiriusViewActivator.ID, IMAGE_COLUMN));
 
     final Action removeLine = new Action(Messages.TitleBlockPreferencePage_RemoveLine) {
       @Override
       public void run() {
         if (linesNumber == 1) {
-          createMessageBox(v.getTable().getShell(), Messages.TitleBlockPreferencePage_RemoveLastLineError, EMPTY_STRING);
+          createMessageBox(v.getTable().getShell(), Messages.TitleBlockPreferencePage_RemoveLastLineError,
+              EMPTY_STRING);
         } else if (v.getColumnViewerEditor().getFocusCell() != null) {
 
           int lineToDelete = v.getTable().getSelectionIndex();
@@ -448,13 +443,15 @@ public class TitleBlockPreferenceField extends FieldEditor {
         }
       }
     };
-    removeLine.setImageDescriptor(SiriusViewActivator.imageDescriptorFromPlugin(SiriusViewActivator.ID, IMAGE_LINE_REMOVE));
+    removeLine
+        .setImageDescriptor(SiriusViewActivator.imageDescriptorFromPlugin(SiriusViewActivator.ID, IMAGE_LINE_REMOVE));
 
     final Action removeColumn = new Action(Messages.TitleBlockPreferencePage_RemoveColumn) {
       @Override
       public void run() {
         if (columnsNumber == 1) {
-          createMessageBox(v.getTable().getShell(), Messages.TitleBlockPreferencePage_RemoveLastColumnError, EMPTY_STRING);
+          createMessageBox(v.getTable().getShell(), Messages.TitleBlockPreferencePage_RemoveLastColumnError,
+              EMPTY_STRING);
         }
         if (v.getColumnViewerEditor().getFocusCell() != null && columnsNumber > 1) {
 
@@ -469,7 +466,8 @@ public class TitleBlockPreferenceField extends FieldEditor {
         }
       }
     };
-    removeColumn.setImageDescriptor(SiriusViewActivator.imageDescriptorFromPlugin(SiriusViewActivator.ID, IMAGE_COLUMN_REMOVE));
+    removeColumn
+        .setImageDescriptor(SiriusViewActivator.imageDescriptorFromPlugin(SiriusViewActivator.ID, IMAGE_COLUMN_REMOVE));
 
     mgr.setRemoveAllWhenShown(true);
     mgr.addMenuListener(manager -> {
