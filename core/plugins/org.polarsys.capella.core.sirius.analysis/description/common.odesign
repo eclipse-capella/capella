@@ -3439,9 +3439,9 @@
           </style>
         </containerMappings>
         <containerMappings name="DT_TitleBlockContainer" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='Delete%20Title%20Block']" semanticCandidatesExpression="aql:diagram.getTitleBlocksInDiagram()" createElements="false" domainClass="DAnnotation" childrenPresentation="VerticalStack">
-          <subContainerMappings name="DT_TitleBlockLineContainer" semanticCandidatesExpression="feature:references" domainClass="DAnnotation" childrenPresentation="HorizontalStack">
+          <subContainerMappings name="DT_TitleBlockLineContainer" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='Title%20Block%20Forbid%20Deletion%20Of%20Referenced%20Model%20Elements']" semanticCandidatesExpression="feature:references" domainClass="DAnnotation" childrenPresentation="HorizontalStack">
             <subContainerMappings name="DT_TitleBlockColumnContainer" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='Delete%20Title%20Block%20Cell']" semanticCandidatesExpression="feature:references" domainClass="DAnnotation" childrenPresentation="List">
-              <subNodeMappings name="DT_TitleBlockCellNode" semanticCandidatesExpression="aql:diagram.getTitleBlockCellContent(self, containerView)" domainClass="EObject">
+              <subNodeMappings name="DT_TitleBlockCellNode" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='Title%20Block%20Forbid%20Deletion%20Of%20Referenced%20Model%20Elements']" semanticCandidatesExpression="aql:diagram.getTitleBlockCellContent(self, containerView)" domainClass="EObject">
                 <style xsi:type="style:SquareDescription" labelSize="7" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -4717,6 +4717,14 @@
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.showHideTitleBlocks(selectedTitleBlocks)"/>
                 </subModelOperations>
               </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" documentation="Title Block Cells can contain as targets Model Elements&#xD;&#xA;When deleting a Title Block, we do not want to also delete the target Model Elements.&#xD;&#xA;&#xD;&#xA;If you do not associate a Delete tool to a mapping, the default delete behavior when the user deletes a graphical element is to remove the target semantic element &#xD;&#xA;and all the associated semantic elements from the semantic model. &#xD;&#xA;&#xD;&#xA;Since we want a different behavior we define this explicit Delete tool that does not delete the model element.&#xD;&#xA;When the Parent Mapping is Deleted, the delete function is also invoked on the children (in our case we do nothing at the semantic elevel) and then the children diagram node is also removed.&#xD;&#xA;&#xD;&#xA;If we add a precondition that is always false, disabling the delete, then the deletion of the parent will not succeed, since some of its children can no be deleted." name="Title Block Forbid Deletion Of Referenced Model Elements">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self"/>
             </initialOperation>
           </ownedTools>
         </toolSections>
