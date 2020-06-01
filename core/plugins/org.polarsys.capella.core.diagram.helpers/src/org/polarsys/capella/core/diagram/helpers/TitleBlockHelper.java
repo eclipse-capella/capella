@@ -14,7 +14,6 @@ package org.polarsys.capella.core.diagram.helpers;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -124,7 +123,11 @@ public class TitleBlockHelper {
   }
 
   public static boolean isTitleBlockMapping(RepresentationElementMapping mapping) {
-    return mapping != null && mapping.getName() != null && mapping.getName().contains(TITLE_BLOCK_MAPPING_PREFIX);
+    return mapping != null && isTitleBlockMapping(mapping.getName());
+  }
+  
+  public static boolean isTitleBlockMapping(String mappingName) {
+    return mappingName != null && mappingName.contains(TITLE_BLOCK_MAPPING_PREFIX);
   }
 
   public static List<DAnnotation> getElementTitleBlocks(DDiagram diagram) {
