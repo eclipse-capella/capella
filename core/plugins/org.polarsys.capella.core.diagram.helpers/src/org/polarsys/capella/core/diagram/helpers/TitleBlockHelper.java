@@ -42,13 +42,11 @@ import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 import org.eclipse.swt.widgets.Text;
-import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.ui.toolkit.browser.category.CategoryRegistry;
 import org.polarsys.capella.common.ui.toolkit.browser.category.ICategory;
+import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
-
-import com.google.common.base.CaseFormat;
 
 /**
  * Various helpers for {@link DAnnotation} annotations on {@link Title Blocks} elements.
@@ -445,6 +443,7 @@ public class TitleBlockHelper {
 
   public static void getServicesProposals(Text textField, EObject target) {
     KeyStroke keyStroke;
+    EObject resolvedTarget = CapellaAdapterHelper.resolveDescriptorOrBusinessObject(target);
     try {
       keyStroke = KeyStroke.getInstance("Ctrl+Space");
       IContentProposalProvider provider = new IContentProposalProvider() {
@@ -454,15 +453,14 @@ public class TitleBlockHelper {
           IInterpreter vpInterpreter = CompoundInterpreter.INSTANCE.getInterpreterForExpression(contents);
 
           List<IContentProposal> proposalsList = new ArrayList<IContentProposal>();
-          ContentInstanceContext contentContext = new ContentInstanceContext(target, contents, position);
-
+          ContentInstanceContext contentContext = new ContentInstanceContext(resolvedTarget, contents, position);
           if (contents.contains(CAPELLA_PREFIX)) {
+            
             // get all the categories for target and match the command name from category with the command in TitleBlock
-            Set<ICategory> categories = CategoryRegistry.getInstance().gatherCategories(target);
+            Set<ICategory> categories = CategoryRegistry.getInstance().gatherCategories(resolvedTarget);
 
             for (ICategory category : categories) {
-              String proposalContent = CaseFormat.UPPER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL,
-                  category.getName().trim().replaceAll(" ", "_"));
+              String proposalContent = category.getSymbolicName();
               if (proposalContent.toLowerCase().startsWith(contents.replaceFirst(CAPELLA_PREFIX, "").toLowerCase())) {
                 proposalsList
                     .add(new org.eclipse.jface.fieldassist.ContentProposal(proposalContent, proposalContent, null));

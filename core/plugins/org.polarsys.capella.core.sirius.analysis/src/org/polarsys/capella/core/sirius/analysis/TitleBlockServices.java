@@ -771,7 +771,8 @@ public class TitleBlockServices {
     } else {
       // we want to show/hide one or more Title Blocks in the diagram
       for (DDiagramElement aContainer : diagram.getDiagramElements()) {
-        if ((aContainer.getTarget() instanceof DAnnotation)) {
+        if ((aContainer.getTarget() instanceof DAnnotation)
+            && TitleBlockHelper.isTitleBlock((DAnnotation) aContainer.getTarget())) {
           DAnnotation annotation = (DAnnotation) aContainer.getTarget();
           if (annotation.getSource() != null)
             existingTitleBlocks.put(annotation, aContainer);
