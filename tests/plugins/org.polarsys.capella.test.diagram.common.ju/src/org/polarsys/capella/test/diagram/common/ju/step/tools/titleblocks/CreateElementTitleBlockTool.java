@@ -49,7 +49,7 @@ public class CreateElementTitleBlockTool extends CreateAbstractDNodeTool<DDiagra
 
   @Override
   protected void postRunTest() {
-	DiagramHelper.refreshDiagram(getDiagramContext().getDiagram());
+    DiagramHelper.refreshDiagram(getDiagramContext().getDiagram());
 
     newElements = DiagramHelper.getOwnedElements(getContainerView());
 
@@ -63,25 +63,25 @@ public class CreateElementTitleBlockTool extends CreateAbstractDNodeTool<DDiagra
     assertTrue(element.getTarget() instanceof DAnnotation);
 
     DAnnotation elementTB = (DAnnotation) element.getTarget();
-    
+
     DAnnotation line = (DAnnotation) elementTB.getReferences().get(1);
-	DAnnotation cell = (DAnnotation) line.getReferences().get(0);
-	DNodeList cellNode = (DNodeList) DiagramServices.getDiagramServices()
-			.getDiagramElement(getDiagramContext().getDiagram(), cell);
+    DAnnotation cell = (DAnnotation) line.getReferences().get(0);
+    DNodeList cellNode = (DNodeList) DiagramServices.getDiagramServices()
+        .getDiagramElement(getDiagramContext().getDiagram(), cell);
 
-	assertTrue("Cell view should contain content in unsynchronized mode", cellNode.eContents().size() > 1);
+    assertTrue("Cell view should contain content view", cellNode.eContents().size() > 1);
 
-
-    assertTrue("A new Element Title Block should have been created.", elementTB.getSource().equals(TitleBlockHelper.ELEMENT_TITLE_BLOCK));
+    assertTrue("A new Element Title Block should have been created.",
+        elementTB.getSource().equals(TitleBlockHelper.ELEMENT_TITLE_BLOCK));
 
     DSemanticDecorator elementView = getDiagramContext().getView(containerView);
 
     assertTrue("The created Element Title Block does not have a reference to " + containerView,
         elementTB.getReferences().contains(elementView.getTarget()));
-    
+
     DEdge edge = (DEdge) it.next();
     assertTrue("An edge to " + containerView + " should have been created.",
-        containerView.equals(((CapellaElement)((DSemanticDecorator) edge.getTargetNode()).getTarget()).getId()));
+        containerView.equals(((CapellaElement) ((DSemanticDecorator) edge.getTargetNode()).getTarget()).getId()));
   }
 
   @Override
