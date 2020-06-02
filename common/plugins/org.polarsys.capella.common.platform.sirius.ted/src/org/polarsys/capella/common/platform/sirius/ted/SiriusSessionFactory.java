@@ -56,8 +56,8 @@ public class SiriusSessionFactory extends SessionFactoryImpl implements SessionF
       @Override
       public Collection<Resource> getSemanticResources() {
         Collection<Resource> semanticResources = new ArrayList<Resource>(super.getSemanticResources());
-        semanticResources.addAll(
-            new DerivedResourcesHelper().getDerivedSemanticResources(this.getTransactionalEditingDomain(), semanticResources));
+        semanticResources.addAll(new DerivedResourcesHelper()
+            .getDerivedSemanticResources(this.getTransactionalEditingDomain(), semanticResources));
         return Collections.unmodifiableCollection(semanticResources);
       }
     };
@@ -100,10 +100,12 @@ public class SiriusSessionFactory extends SessionFactoryImpl implements SessionF
         Collection<Resource> nonDerivedSemanticResources) {
       Collection<Resource> derivedSemanticResources = new ArrayList<Resource>();
 
-      for (IDerivedSemanticResourceProvider provider : getAllDerivedSemanticResourceProviders()) {
-        for (Resource resource : provider.getDerivedSemanticResources(editingDomain)) {
-          if (!nonDerivedSemanticResources.contains(resource) && !derivedSemanticResources.contains(resource)) {
-            derivedSemanticResources.add(resource);
+      if (editingDomain != null) {
+        for (IDerivedSemanticResourceProvider provider : getAllDerivedSemanticResourceProviders()) {
+          for (Resource resource : provider.getDerivedSemanticResources(editingDomain)) {
+            if (!nonDerivedSemanticResources.contains(resource) && !derivedSemanticResources.contains(resource)) {
+              derivedSemanticResources.add(resource);
+            }
           }
         }
       }
@@ -137,11 +139,11 @@ public class SiriusSessionFactory extends SessionFactoryImpl implements SessionF
   public static class SessionMetadataHelper {
 
     static Boolean loaded = Boolean.FALSE;
-    
+
     static IMetadataProvider provider = null;
 
     public IMetadataProvider getProvider() {
-      
+
       if (loaded == Boolean.FALSE) {
         for (IConfigurationElement configurationElement : ExtensionPointHelper
             .getConfigurationElements(PlatformSiriusTedActivator.getDefault().getPluginId(), "metadataProvider")) {
