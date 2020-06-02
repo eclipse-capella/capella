@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-		<title>6.5. Usage Monitoring</title>
-		<link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/>
+			<title>6.2. Model Preferences</title>
+			<link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/>
 	</head>
 	<body>
 		<h1 id="Model_Preferences">Model Preferences</h1>
@@ -64,13 +64,13 @@
 		<p>
 			<img height="595" width="877" border="0" src="Images/6.2.%20Model%20preferences_html_597b3feb.png"/>
 		</p>
-		<h2 id="Diagrams">Diagrams</h2>
+		<h2 id="Diagram">Diagram</h2>
 		<p>On the sub section of 
-			<b>Capella / Diagrams</b>, it is possible to specify preferences for displaying diagrams:
+			<b>Capella / Diagram</b>, it is possible to specify preferences for displaying diagrams:
 		</p>
 		<h3 id="Process.2FChain.2FPath_Display">Process/Chain/Path Display</h3>
 		<p>On the sub section of 
-			<b>Capella / Diagrams / Process/Chain/Path Display</b>, it is possible to specify preferences for displaying processes, Chains, paths in diagrams:
+			<b>Capella / Diagram / Process/Chain/Path Display</b>, it is possible to specify preferences for displaying processes, Chains, paths in diagrams:
 		</p>
 		<ul>
 			<li>If &ldquo;
@@ -83,92 +83,49 @@
 			</li>
 		</ul>
 		<p>
-			<img height="595" width="877" border="0" src="Images/Process_Chain_Path_DiagramPreferences.PNG"/>
+			<img border="0" src="Images/Process_Chain_Path_DiagramPreferences.PNG"/>
 		</p>
 		<h3 id="Title_Block">Title Block</h3>
 		<p>On the sub section of 
-			<b>Capella / Diagrams / Title Block</b>, it is possible to specify preferences for displaying a Diagram Title Block in diagrams:
-
-			<img height="595" width="877" border="0" src="Images/Title_Block_Default_DiagramPreferences.PNG"/>
+			<b>Capella / Diagram / Title Block</b>, it is possible to specify preferences for displaying a Diagram Title Block in diagrams:
+		</p>
+		<p>
+			<img border="0" src="Images/Title_Block_Default_DiagramPreferences.PNG"/>
 		</p>
 		<ul>
 			<li>If &ldquo;
-				<b>Add by default Diagram Title Block</b>&rdquo; is activated, then when a new diagram is created, a new Diagram Title Block is also created by default.
+				<b>Add by default Diagram Title Block on empty diagrams</b>&rdquo; is activated, then when a new diagram is created, a new Diagram Title Block is also created by default.
 			</li>
-			<li>By right click-ing on a cell, it is possible to insert or remove new lines and columns.</li>
-			<li>When a cell is selected, the content of the cell is displayed on the bottom of the table.</li>
+			<li>By right clicking on a cell, it is possible to insert or remove new lines and columns.</li>
 		</ul>
 		<p>
-			<img height="595" width="877" border="0" src="Images/Title_Block_DiagramPreferences.PNG"/>
+			<img border="0" src="Images/Title_Block_DiagramPreferences.PNG"/>
 		</p>
 		<ul>
 			<li>The content of each cell can be edited by double clicking on it.</li>
 		</ul>
 		<p>
-			<img height="595" width="877" border="0" src="Images/Title_Block_CellDefault_DiagramPreferences.PNG"/>
-		</p>
-		<p>
-			<br/>
-			A new dialog is opened the fields below can be edited (we can edit the existing fields or add new values for the new cells):
+			<img border="0" src="Images/Title_Block_CellDefault_DiagramPreferences.PNG"/>
 		</p>
 		<ul>
 			<li>name: enter the name (label) that will be displayed as the header of the cell</li>
 			<li>content: type a query that will provide the content that we need to display in the cell of the Diagram Title Block. The content of data fields can be customized via:
 				<ul>
 					<li>
-						<a href="https://www.eclipse.org/acceleo/documentation/">AQL query</a> (aql:)
+						<a href="/wiki/../help/topic/org.polarsys.capella.ui.doc/html/12.%20Model%20Analysis/12.5.1%20AQL%20Queries.html" title="../help/topic/org.polarsys.capella.ui.doc/html/12.%20Model%20Analysis/12.5.1%20AQL%20Queries.html">AQL queries</a> (aql:)
 					</li>
 					<li>Name of feature (feature:)</li>
-					<li>Predefined service (capella:)</li>
+					<li>Semantic browser queries (capella:)</li>
 				</ul>
 			</li>
 		</ul>
-		<p>
-			<img height="295" width="575" border="0" src="Images/Title_Block_CellEdit_DiagramPreferences.PNG"/>
-
-			<br/>
-		</p>
 		<ul>
 			<li>For Capella services: Name of data field (if not specified) are deduced from the contributed service.</li>
 			<li>Available services are proposed with the command Ctrl+Space on content text field.</li>
 		</ul>
+		<p>Sample of Title Block:</p>
 		<p>
-			<img height="295" width="575" border="0" src="Images/Title_Block_CellEditOptions_DiagramPreferences.PNG"/>
-
-			<br/>
-		</p>
-		<ul>
-			<li>Example of customization using aql queries:</li>
-		</ul>
-		<p>
-			<img height="295" width="575" border="0" src="Images/Title_Block_CellEdit_AqlQuery_DiagramPreferences.PNG"/>
-
-			<br/>
-		</p>
-		<ul>
-			<li>Example of customization using feature queries:</li>
-		</ul>
-		<p>
-			<img height="295" width="575" border="0" src="Images/Title_Block_CellEdit_FeatureQuery_DiagramPreferences.PNG"/>
-
-			<br/>
-		</p>
-		<ul>
-			<li>Example of customization using capella queries:</li>
-		</ul>
-		<p>
-			<img height="295" width="575" border="0" src="Images/Title_Block_CellEdit_CapellaQuery_DiagramPreferences.PNG"/>
-
-			<br/>
-		</p>
-		<ul>
-			<li>After editing or updating the cells of a Diagram Title Block, we can save the changes by clicking the Apply buttons.</li>
-		</ul>
-		<p>
-			<img height="595" width="877" border="0" src="Images/Title_Block_DiagramPreferences_Updated.PNG"/>
-		</p>
-		<p>
-			<br/>
+			<img border="0" src="Images/Title_Block_DiagramPreferences_Updated.PNG"/>
 		</p>
 		<h2 id="Model">Model</h2>
 		<p>On the sub section 
