@@ -43,8 +43,10 @@ import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 import org.eclipse.swt.widgets.Text;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
+import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.ui.toolkit.browser.category.CategoryRegistry;
 import org.polarsys.capella.common.ui.toolkit.browser.category.ICategory;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 
 import com.google.common.base.CaseFormat;
 
@@ -596,17 +598,21 @@ public class TitleBlockHelper {
    * @return the referenced object/diagram
    */
   public static EObject getReferencedElement(EObject object) {
+    EObject target = null;
     if (object instanceof DAnnotation) {
       DAnnotation annotation = (DAnnotation) object;
       if (isElementTitleBlock(annotation)) {
-        return annotation.getReferences().get(0);
+        target = annotation.getReferences().get(0);
       } else if (isDiagramTitleBlock(annotation)) {
-        return annotation.eContainer();
+        target = annotation.eContainer();
       } else if (isTitleBlockCell(annotation)) {
-        return getReferencedElement(getParentTitleBlock(annotation, (DDiagram) annotation.eContainer()));
+        target = getReferencedElement(getParentTitleBlock(annotation, (DDiagram) annotation.eContainer()));
+      }
+      if (target instanceof DRepresentation) {
+        target = RepresentationHelper.getRepresentationDescriptor((DRepresentation)target);
       }
     }
-    return null;
+    return target;
   }
 
   /**
@@ -615,12 +621,7 @@ public class TitleBlockHelper {
    */
   public static String getReferencedElementLabel(EObject object) {
     EObject referencedElement = TitleBlockHelper.getReferencedElement(object);
-    if (referencedElement instanceof AbstractNamedElement) {
-      return ((AbstractNamedElement) referencedElement).getName();
-    } else if (referencedElement instanceof DRepresentation) {
-      return ((DRepresentation) referencedElement).getName();
-    }
-    return null;
+    return EObjectLabelProviderHelper.getText(referencedElement);
   }
 
   public static String getServiceName(String service) {
