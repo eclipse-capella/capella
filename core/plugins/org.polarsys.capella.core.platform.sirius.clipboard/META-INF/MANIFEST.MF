@@ -16,7 +16,8 @@ Require-Bundle: org.eclipse.sirius.diagram.sequence,
  org.polarsys.capella.common.ui.services,
  org.polarsys.capella.core.model.preferences,
  org.polarsys.capella.shared.id.handler,
- org.eclipse.sirius
+ org.eclipse.sirius,
+ org.polarsys.capella.core.diagram.helpers
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
@@ -24,4 +25,3 @@ Export-Package: org.polarsys.capella.core.platform.sirius.clipboard,
  org.polarsys.capella.core.platform.sirius.clipboard.actions,
  org.polarsys.capella.core.platform.sirius.clipboard.commands,
  org.polarsys.capella.core.platform.sirius.clipboard.util
-Import-Package: org.polarsys.capella.core.diagram.helpers
