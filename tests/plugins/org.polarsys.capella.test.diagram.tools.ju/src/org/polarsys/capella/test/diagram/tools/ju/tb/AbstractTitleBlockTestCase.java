@@ -21,6 +21,7 @@ import org.eclipse.ui.preferences.ScopedPreferenceStore;
 import org.polarsys.capella.common.ui.MdeCommonUiActivator;
 import org.polarsys.capella.test.diagram.common.ju.api.AbstractDiagramTestCase;
 import org.polarsys.capella.test.diagram.common.ju.context.CommonDiagram;
+import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
 import org.polarsys.capella.test.framework.context.SessionContext;
 
 public abstract class AbstractTitleBlockTestCase extends AbstractDiagramTestCase {
@@ -67,6 +68,9 @@ public abstract class AbstractTitleBlockTestCase extends AbstractDiagramTestCase
   }
 
   public void testElementTitleBlock(String elementId) {
+	// unsynchronized
+	DiagramHelper.setSynchronized(diagram.getDiagram(), false);
+
     // create TB tools
     DAnnotation elementTB = diagram.createElementTitleBlock(elementId);
 
