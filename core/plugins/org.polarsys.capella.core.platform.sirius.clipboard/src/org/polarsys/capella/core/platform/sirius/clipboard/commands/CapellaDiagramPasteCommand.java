@@ -24,7 +24,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.core.runtime.IStatus;
@@ -56,7 +55,6 @@ import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.Style;
-import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.platform.sirius.clipboard.Activator;
@@ -144,7 +142,7 @@ public class CapellaDiagramPasteCommand extends AbstractResultCommand {
     }
 
     List<EObject> semanticOrigins = getSemanticRootsForCopy(CapellaDiagramClipboard.getInstance().getSiriusElements(),
-        semanticTarget).stream().filter(x -> !(x instanceof DAnnotation)).collect(Collectors.toList());
+        semanticTarget);
     List<EObject> semanticCopies = pasteCapellaElements(semanticOrigins, semanticSource, semanticTarget);
     if (semanticCopies == null) {
       return; // failure: empty result
@@ -204,7 +202,7 @@ public class CapellaDiagramPasteCommand extends AbstractResultCommand {
         DDiagramElement diagramElementRoot = (DDiagramElement) siriusElementRoot;
         DiagramElementMapping diagramElementRootMapping = diagramElementRoot.getDiagramElementMapping();
 
-        if (!(diagramElementRoot.getTarget() instanceof DAnnotation) && diagramElementRootMapping instanceof AbstractNodeMapping) {
+        if (diagramElementRootMapping instanceof AbstractNodeMapping) {
           AbstractNodeMapping abstractRootElementMapping = (AbstractNodeMapping) diagramElementRootMapping;
 
           IStatus validityStatus = checkPastedElementValidity(diagramElementRoot, abstractRootElementMapping,

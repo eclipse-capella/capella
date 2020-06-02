@@ -25,27 +25,27 @@ This section lists tools that are available on all Capella diagrams. These tools
 | 		Creates or deletes graphical objects corresponding to existing Property Value Groups. Removing a Property Value Group graphical object does not delete this Property Value Group from the model. This tool does not modify the semantic model.
 |-
 | 	Diagram Title Block 	
-| [[Image:Images/icons/full/obj16/TitleBlock_16.gif]]
+| [[Image:Images/icons/full/obj16/TitleBlock.gif]]
 | 		Creates a graphical object corresponding to a Diagram Title Block which will display information related to the current diagram. The displayed data is configurable via the Capella Preferences page. The Diagram Title Block does not have a corresponding semantic object.
 |-
 | 	Element Title Block 	
-| [[Image:Images/icons/full/obj16/TitleBlock_16.gif]]
+| [[Image:Images/icons/full/obj16/TitleBlock.gif]]
 | 		Creates a graphical object corresponding to an Element Title Block which will display information related to the current element to which the Element Title Block is applied. The Element Title Block does not have a corresponding semantic object.
 |-
 | 	Insert Line 	
-| [[Image:Images/icons/full/obj16/TitleBlockLine_16.gif]]
+| [[Image:Images/icons/full/obj16/TitleBlockLine.gif]]
 | 		Creates a new line that will be inserted under the line of the currently selected cell of the Element Title Block.
 |-
 | 	Insert Column 	
-| [[Image:Images/icons/full/obj16/TitleBlockColumn_16.gif]]
+| [[Image:Images/icons/full/obj16/TitleBlockColumn.gif]]
 | 		Creates a new column that will be inserted to the right of the column of the currently selected cell of the Element Title Block.
 |-
 | 	Remove Line 	
-| [[Image:Images/icons/full/obj16/TitleBlockLineRemove_16.gif]]
+| [[Image:Images/icons/full/obj16/TitleBlockLineRemove.gif]]
 | 		Removes the line that contains the currently selected cell of the Element Title Block.
 |-
 | 	Remove Column 	
-| [[Image:Images/icons/full/obj16/TitleBlockColumnRemove_16.gif]]
+| [[Image:Images/icons/full/obj16/TitleBlockColumnRemove.gif]]
 | 		Removes the column that contains the currently selected cell of the Element Title Block.
 |-
 | 	Diagram Title Blocks 	
