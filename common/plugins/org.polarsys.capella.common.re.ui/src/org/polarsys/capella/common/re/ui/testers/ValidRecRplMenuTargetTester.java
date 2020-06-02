@@ -15,7 +15,10 @@ package org.polarsys.capella.common.re.ui.testers;
 import org.eclipse.core.expressions.PropertyTester;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
-import org.polarsys.capella.core.diagram.helpers.TitleBlockHelper;
+import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.description.DAnnotation;
+import org.polarsys.capella.core.platform.sirius.clipboard.util.LayerUtil;
 
 public class ValidRecRplMenuTargetTester extends PropertyTester {
 
@@ -37,7 +40,13 @@ public class ValidRecRplMenuTargetTester extends PropertyTester {
 
   private boolean isValidGraphicalElement(Object element) {
     if (element instanceof EditPart) {
-      return !TitleBlockHelper.isTitleBlockEditPart((EditPart) element);
+      EditPart editPart = (EditPart) element;
+
+      View gmfElement = LayerUtil.getGmfElement(editPart);
+      DSemanticDecorator siriusElement = LayerUtil.getSiriusElement(gmfElement);
+      EObject target = siriusElement.getTarget();
+
+      return target != null && !(target instanceof DAnnotation);
     }
 
     return false;

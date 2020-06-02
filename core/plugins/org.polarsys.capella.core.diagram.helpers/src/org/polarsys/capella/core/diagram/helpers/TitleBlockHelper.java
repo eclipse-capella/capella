@@ -18,8 +18,6 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.gef.EditPart;
-import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.bindings.keys.KeyStroke;
 import org.eclipse.jface.bindings.keys.ParseException;
 import org.eclipse.jface.fieldassist.ContentProposalAdapter;
@@ -40,7 +38,6 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
@@ -48,7 +45,6 @@ import org.eclipse.swt.widgets.Text;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.ui.toolkit.browser.category.CategoryRegistry;
 import org.polarsys.capella.common.ui.toolkit.browser.category.ICategory;
-import org.polarsys.capella.core.platform.sirius.clipboard.util.LayerUtil;
 
 import com.google.common.base.CaseFormat;
 
@@ -124,18 +120,6 @@ public class TitleBlockHelper {
   public static boolean isTitleBlockCell(DDiagramElement diagramElement) {
     return diagramElement.getTarget() instanceof DAnnotation
         && isTitleBlockCell((DAnnotation) diagramElement.getTarget());
-  }
-  
-  public static boolean isTitleBlockEditPart(EditPart editPart) {
-    View gmfElement = LayerUtil.getGmfElement(editPart);
-    DSemanticDecorator siriusElement = LayerUtil.getSiriusElement(gmfElement);
-
-    if (siriusElement instanceof DDiagramElement) {
-      DDiagramElement diagramElement = (DDiagramElement) siriusElement;
-      return TitleBlockHelper.isTitleBlockMapping(diagramElement.getMapping());
-    }
-    
-    return false;
   }
 
   public static boolean isTitleBlockMapping(RepresentationElementMapping mapping) {

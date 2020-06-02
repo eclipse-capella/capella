@@ -21,8 +21,7 @@ Require-Bundle: org.polarsys.capella.core.model.helpers;visibility:=reexport,
  org.eclipse.emf.edit,
  org.eclipse.emf.common,
  org.eclipse.sirius.diagram.sequence,
- org.eclipse.sirius.ui,
- org.polarsys.capella.core.platform.sirius.clipboard
+ org.eclipse.sirius.ui
 Export-Package: org.polarsys.capella.core.diagram.helpers,
  org.polarsys.capella.core.diagram.helpers.naming,
  org.polarsys.capella.core.diagram.helpers.traceability
