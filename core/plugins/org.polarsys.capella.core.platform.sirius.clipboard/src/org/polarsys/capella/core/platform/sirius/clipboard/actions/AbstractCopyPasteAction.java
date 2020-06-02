@@ -34,6 +34,7 @@ import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
+import org.polarsys.capella.core.diagram.helpers.TitleBlockHelper;
 import org.polarsys.capella.core.platform.sirius.clipboard.util.LayerUtil;
 import org.polarsys.capella.core.platform.sirius.clipboard.util.SiriusUtil;
 
@@ -92,7 +93,9 @@ public abstract class AbstractCopyPasteAction implements IObjectActionDelegate {
    * Return the current selection adapted for copy/paste, i.e., only the relevant elements from the GMF layer
    */
   protected List<? extends View> getCopyPasteSelection() {
-    return LayerUtil.toGmf(getSelection());
+    List<? extends View> selectionList = LayerUtil.toGmf(getSelection());
+    selectionList.removeIf(element -> (TitleBlockHelper.isTitleBlockAnnotation(LayerUtil.getSiriusElement((View)element).getTarget())));
+    return selectionList;
   }
 
   /**

@@ -30,7 +30,6 @@ import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IActionDelegate;
-import org.polarsys.capella.core.diagram.helpers.TitleBlockHelper;
 import org.polarsys.capella.core.platform.sirius.clipboard.Messages;
 import org.polarsys.capella.core.platform.sirius.clipboard.commands.CapellaDiagramPasteCommand;
 import org.polarsys.capella.core.platform.sirius.clipboard.commands.GraphicalAdjustmentCommand;
@@ -109,7 +108,6 @@ public class CapellaDiagramPasteAction extends AbstractCopyPasteAction {
       monitor.beginTask(Messages.CapellaDiagramPasteAction_ProgressMessage, 2);
       // Selection not empty because action enabled
       final List<? extends View> gmfSelection = getCopyPasteSelection();
-      gmfSelection.removeIf(element -> (TitleBlockHelper.isTitleBlockAnnotation(LayerUtil.getSiriusElement((View)element).getTarget())));
       // Sirius + Capella layer
       monitor.worked(1);
       if (gmfSelection.size() > 0) {
