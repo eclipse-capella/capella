@@ -78,14 +78,14 @@ On the sub section of '''Capella / Diagrams / Title Block''', it is possible to 
 
 [[Image:Images/Title_Block_DiagramPreferences.PNG|877x595px]]
 
-* The content of each cell can be editable by double clicking on a cell.
+* The content of each cell can be edited by double clicking on it.
 [[Image:Images/Title_Block_CellDefault_DiagramPreferences.PNG|877x595px]]
 
 <br>
 A new dialog is opened the fields below can be edited (we can edit the existing fields or add new values for the new cells):
-* name: enter the name(label) that will be displayed on the cell
+* name: enter the name (label) that will be displayed as the header of the cell
 * content: type a query that will provide the content that we need to display in the cell of the Diagram Title Block. The content of data fields can be customized via:
-** AQL query (aql:)
+** [https://www.eclipse.org/acceleo/documentation/ AQL query] (aql:)
 ** Name of feature (feature:)
 ** Predefined service (capella:)
 
@@ -109,7 +109,7 @@ A new dialog is opened the fields below can be edited (we can edit the existing 
 [[Image:Images/Title_Block_CellEdit_CapellaQuery_DiagramPreferences.PNG|575x295px]]
 <br>
 
-* After edit or update the cells of a Title Block, we can save the changes by clicking the Apply buttons.
+* After editing or updating the cells of a Diagram Title Block, we can save the changes by clicking the Apply buttons.
 [[Image:Images/Title_Block_DiagramPreferences_Updated.PNG|877x595px]]
 
 <br>
