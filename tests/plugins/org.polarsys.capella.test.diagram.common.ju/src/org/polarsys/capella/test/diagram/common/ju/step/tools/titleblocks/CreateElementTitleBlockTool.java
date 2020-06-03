@@ -19,10 +19,12 @@ import java.util.Iterator;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.diagram.helpers.TitleBlockHelper;
+import org.polarsys.capella.core.sirius.analysis.DiagramServices;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateAbstractDNodeTool;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
@@ -47,6 +49,7 @@ public class CreateElementTitleBlockTool extends CreateAbstractDNodeTool<DDiagra
 
   @Override
   protected void postRunTest() {
+    DiagramHelper.refreshDiagram(getDiagramContext().getDiagram());
     newElements = DiagramHelper.getOwnedElements(getContainerView());
 
     newElements.removeAll(elements);
@@ -59,17 +62,24 @@ public class CreateElementTitleBlockTool extends CreateAbstractDNodeTool<DDiagra
     assertTrue(element.getTarget() instanceof DAnnotation);
 
     DAnnotation elementTB = (DAnnotation) element.getTarget();
+    DAnnotation line = (DAnnotation) elementTB.getReferences().get(1);
+    DAnnotation cell = (DAnnotation) line.getReferences().get(0);
+    DNodeList cellNode = (DNodeList) DiagramServices.getDiagramServices()
+        .getDiagramElement(getDiagramContext().getDiagram(), cell);
 
-    assertTrue("A new Element Title Block should have been created.", elementTB.getSource().equals(TitleBlockHelper.ELEMENT_TITLE_BLOCK));
+    assertTrue("Cell view should contain content view", cellNode.eContents().size() > 1);
+
+    assertTrue("A new Element Title Block should have been created.",
+        elementTB.getSource().equals(TitleBlockHelper.ELEMENT_TITLE_BLOCK));
 
     DSemanticDecorator elementView = getDiagramContext().getView(containerView);
 
     assertTrue("The created Element Title Block does not have a reference to " + containerView,
         elementTB.getReferences().contains(elementView.getTarget()));
-    
+
     DEdge edge = (DEdge) it.next();
     assertTrue("An edge to " + containerView + " should have been created.",
-        containerView.equals(((CapellaElement)((DSemanticDecorator) edge.getTargetNode()).getTarget()).getId()));
+        containerView.equals(((CapellaElement) ((DSemanticDecorator) edge.getTargetNode()).getTarget()).getId()));
   }
 
   @Override

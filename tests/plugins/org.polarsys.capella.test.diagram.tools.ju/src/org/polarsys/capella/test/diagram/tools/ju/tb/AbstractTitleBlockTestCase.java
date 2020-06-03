@@ -21,6 +21,7 @@ import org.eclipse.ui.preferences.ScopedPreferenceStore;
 import org.polarsys.capella.common.ui.MdeCommonUiActivator;
 import org.polarsys.capella.test.diagram.common.ju.api.AbstractDiagramTestCase;
 import org.polarsys.capella.test.diagram.common.ju.context.CommonDiagram;
+import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
 import org.polarsys.capella.test.framework.context.SessionContext;
 
 public abstract class AbstractTitleBlockTestCase extends AbstractDiagramTestCase {
@@ -40,6 +41,10 @@ public abstract class AbstractTitleBlockTestCase extends AbstractDiagramTestCase
   public void test() throws Exception {
     initTest();
     testTitleBlocks();
+    // unsynchronized
+    DiagramHelper.setSynchronized(diagram.getDiagram(), false);
+    testTitleBlocks();
+
   }
 
   public void testTitleBlocks() {
@@ -54,7 +59,7 @@ public abstract class AbstractTitleBlockTestCase extends AbstractDiagramTestCase
     // Check if diagram was created by default
     // TODO Reactivate or remove the test when the preference option is decided
     // newDiagram.checkAutocreateDiagramTitleBlock();
-    
+
     // create TB tools
     DAnnotation diagramTB = diagram.createDiagramTitleBlock();
 
@@ -62,7 +67,7 @@ public abstract class AbstractTitleBlockTestCase extends AbstractDiagramTestCase
     diagram.removeDiagramTitleBlock(diagramTB.getUid());
     diagram.checkCreateDiagramTitleBlock();
     diagram.insertDiagramTitleBlock(diagramTB.getUid());
-    
+
     diagram.deleteTitleBlock(diagramTB);
   }
 
@@ -82,14 +87,13 @@ public abstract class AbstractTitleBlockTestCase extends AbstractDiagramTestCase
     // remove line/column from TB element
     diagram.removeLineFromTitleBlock(elementTB, 0);
     diagram.removeColumnFromTitleBlock(elementTB, 0);
-    
+
     diagram.deleteTitleBlock(elementTB);
   }
 
   protected abstract CommonDiagram initDiagram();
 
   protected abstract CommonDiagram createDiagram();
-
 
   protected void initTest() {
     session = getSession(getRequiredTestModel());
