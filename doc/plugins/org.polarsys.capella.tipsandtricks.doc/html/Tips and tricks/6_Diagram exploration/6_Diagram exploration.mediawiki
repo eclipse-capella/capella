@@ -116,3 +116,11 @@ The new tool '''Representation Link''' in the palette allows to create a graphic
 On the '''Project Explorer''', it is possible to refresh at once many ''sub''-representations related to a selected element.
 
 [[File:../../Images/Tips92.png|thumbnail|480px]]
+
+==Title Blocks==
+The title blocks enables the possibility to add information about diagram elements or the diagram itself and can be shown in diagram to provide additional information chosen by users.
+Additional details about title blocks (tools, customization) can be found below:
+* [https://wiki.corp.thales/pages/viewpage.action?pageId=785879073#id-2020What'snewinCapella5.0?-TitleBlocks Capella what's new page]
+* [[../help/topic/org.polarsys.capella.preferences.doc/html/06.%20Preferences/6.2.%20Model%20preferences.html#Title_Block | Preferences page]]
+
+[[File:../../Images/Tips610_TitleBlocks.png|961x562px]]
