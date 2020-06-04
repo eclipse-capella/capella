@@ -10,14 +10,19 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.core.ui.search;
+package org.polarsys.capella.core.ui.search.result;
 
 import org.eclipse.jface.viewers.DecoratingLabelProvider;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.search.ui.text.AbstractTextSearchViewPage;
 import org.eclipse.ui.PlatformUI;
+import org.polarsys.capella.core.ui.search.result.providers.content.CapellaSearchResultListContentProvider;
+import org.polarsys.capella.core.ui.search.result.providers.content.CapellaSearchResultTreeContentProvider;
+import org.polarsys.capella.core.ui.search.result.providers.content.SearchResultContentProvider;
+import org.polarsys.capella.core.ui.search.result.providers.label.CapellaSearchResultLabelProvider;
 
 public class CapellaSearchResultPage extends AbstractTextSearchViewPage {
 
@@ -28,13 +33,13 @@ public class CapellaSearchResultPage extends AbstractTextSearchViewPage {
   }
 
   @Override
-  protected void elementsChanged(Object[] objects) {
-    getViewer().refresh();
+  protected void elementsChanged(Object[] elements) {
+    getViewerContentProvider().elementsChanged(elements);
   }
 
   @Override
   protected void clear() {
-    getViewer().refresh();
+    getViewerContentProvider().clear();
   }
 
   @Override
@@ -46,7 +51,7 @@ public class CapellaSearchResultPage extends AbstractTextSearchViewPage {
 
   @Override
   protected void configureTableViewer(TableViewer viewer) {
-    viewer.setContentProvider(new CapellaSearchResultListContentProvider());
+    viewer.setContentProvider(new CapellaSearchResultListContentProvider(this));
     viewer.setLabelProvider(new DecoratingLabelProvider(new CapellaSearchResultLabelProvider(),
         PlatformUI.getWorkbench().getDecoratorManager()));
   }
@@ -63,4 +68,17 @@ public class CapellaSearchResultPage extends AbstractTextSearchViewPage {
   public ISelection getSelection() {
     return getViewer().getSelection();
   }
+
+  protected SearchResultContentProvider getViewerContentProvider() {
+    return (SearchResultContentProvider) getViewer().getContentProvider();
+  }
+
+  /**
+   * Make the viewer public.
+   */
+  @Override
+  public StructuredViewer getViewer() {
+    return super.getViewer();
+  }
+
 }

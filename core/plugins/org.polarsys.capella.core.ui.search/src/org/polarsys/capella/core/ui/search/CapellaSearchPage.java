@@ -58,6 +58,7 @@ import org.eclipse.ui.texteditor.ITextEditorActionDefinitionIds;
 import org.polarsys.capella.core.commands.preferences.util.PreferencesHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
 import org.polarsys.capella.core.ui.search.match.SearchMatch;
+import org.polarsys.capella.core.ui.search.result.CapellaSearchResult;
 import org.polarsys.capella.core.ui.search.searchfor.CapellaLeftSearchForContainerArea;
 import org.polarsys.capella.core.ui.search.searchfor.CapellaRightSearchForContainerArea;
 

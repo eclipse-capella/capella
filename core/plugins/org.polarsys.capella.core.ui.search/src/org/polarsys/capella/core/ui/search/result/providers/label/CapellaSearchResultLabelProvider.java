@@ -10,7 +10,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.core.ui.search;
+package org.polarsys.capella.core.ui.search.result.providers.label;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
@@ -25,6 +25,8 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.navigator.INavigatorContentService;
 import org.eclipse.ui.navigator.NavigatorContentServiceFactory;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
+import org.polarsys.capella.core.ui.search.Activator;
+import org.polarsys.capella.core.ui.search.CapellaSearchConstants;
 import org.polarsys.capella.core.ui.search.match.SearchMatch;
 import org.polarsys.capella.core.ui.search.match.SearchMatchChild;
 
