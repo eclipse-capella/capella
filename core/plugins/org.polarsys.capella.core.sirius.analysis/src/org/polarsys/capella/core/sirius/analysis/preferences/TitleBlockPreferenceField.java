@@ -404,6 +404,8 @@ public class TitleBlockPreferenceField extends FieldEditor {
         int lineToInsert = v.getTable().getSelectionIndex() + 1;
         if (lineToInsert != 0) {
           refreshTableInsertLines(lineToInsert);
+        } else {
+          refreshTableInsertLines(linesNumber);
         }
       }
     };
