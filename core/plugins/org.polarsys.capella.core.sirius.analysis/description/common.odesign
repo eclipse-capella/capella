@@ -4648,7 +4648,7 @@
             <hook id="org.polarsys.capella.core.sirius.analysis.delete.CapellaDeleteActionHook"/>
           </ownedTools>
           <ownedTools xsi:type="tool:ToolGroup" name="TitleBlock">
-            <tools xsi:type="tool_1:ToolDescription" documentation="Creates a graphical object corresponding to an Element Title Block which will display information related to the current element to which the Element Title Block is applied. The Element Title Block does not have a corresponding semantic object." name="title.block" label="%common.cdb.title.block" precondition="service:containerView.isValidCreateTitleBlock()" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlock.gif">
+            <tools xsi:type="tool_1:ToolDescription" documentation="Creates a graphical object corresponding to an Element Title Block which will display information related to the current element to which the Element Title Block is applied or the current diagram if block created onto the diagram blank. Initial content of Titlbe Block on diagram is configurable wia the Capella Preferences page. The Title Block does not have a corresponding semantic object." name="title.block" label="%common.cdb.title.block" precondition="service:containerView.isValidCreateTitleBlock()" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TitleBlock.gif">
               <element name="container"/>
               <elementView name="containerView"/>
               <initialOperation>
@@ -4699,7 +4699,7 @@
               </initialOperation>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Inserts or removes graphical objects on the diagrams corresponding to an existing Diagram Title Block. Removing a Diagram Title Block graphical object from the diagram does not delete the Diagram Title Block from the model." name="title.blocks" label="%common.cdb.title.blocks" precondition="service:containerView.isValidCreateTitleBlock()" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Inserts or removes graphical objects on the diagrams corresponding to an existing Title Block. Removing an Title Block graphical object from the diagram does not delete the Title Block from the model." name="title.blocks" label="%common.cdb.title.blocks" precondition="service:containerView.isValidCreateTitleBlock()" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element"/>
             <elementView name="elementView">
               <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="aql:elementView.getParentDiagram()"/>
