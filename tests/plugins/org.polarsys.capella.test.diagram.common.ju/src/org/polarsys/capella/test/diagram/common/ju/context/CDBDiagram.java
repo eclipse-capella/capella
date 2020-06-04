@@ -33,6 +33,7 @@ import org.polarsys.capella.core.diagram.helpers.naming.DiagramDescriptionConsta
 import org.polarsys.capella.core.sirius.analysis.constants.IDNDToolNameConstants;
 import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.CreateDiagramStep;
+import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateAbstractDNodeWithSelectionTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateContainerTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateDEdgeTool;
@@ -76,6 +77,15 @@ public class CDBDiagram extends CommonDiagram {
     }.run().open();
   }
 
+  public static CDBDiagram openDiagram(SessionContext executionContext, String name) {
+    return (CDBDiagram) new OpenDiagramStep(executionContext, name) {
+      @Override
+      public DiagramContext getResult() {
+        return new CDBDiagram(getExecutionContext(), diagram);
+      }
+    }.run().open();
+  }
+  
   public String createDataPackage() {
     return createDataPackage(getDiagramId());
   }

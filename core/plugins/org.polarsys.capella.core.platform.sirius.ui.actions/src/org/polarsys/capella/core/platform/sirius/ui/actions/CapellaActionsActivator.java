@@ -43,7 +43,6 @@ public class CapellaActionsActivator extends AbstractUIActivator {
     new DeletePreferences();
     new CapellaValidationPreferencesInitializer();
     new ActionsPreferenceInitializer();
-
   }
 
   /**
@@ -57,6 +56,7 @@ public class CapellaActionsActivator extends AbstractUIActivator {
 
   /**
    * Get shared instance.
+   * 
    * @return
    */
   public static CapellaActionsActivator getDefault() {
