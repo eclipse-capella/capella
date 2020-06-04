@@ -11,7 +11,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.edit.ui,
  org.polarsys.capella.common.ui.services,
  org.polarsys.capella.common.ui.toolkit,
- org.polarsys.kitalpha.emde.ui
+ org.polarsys.kitalpha.emde.ui,
+ org.apache.commons.lang
 Export-Package: org.polarsys.capella.common.ui.toolkit.browser,
  org.polarsys.capella.common.ui.toolkit.browser.action,
  org.polarsys.capella.common.ui.toolkit.browser.category,

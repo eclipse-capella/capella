@@ -20,8 +20,6 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.ui.IActionDelegate;
 import org.polarsys.capella.core.platform.sirius.clipboard.commands.CapellaDiagramCopyCommand;
-import org.polarsys.capella.core.platform.sirius.clipboard.util.CapellaDiagramClipboard;
-import org.polarsys.capella.core.platform.sirius.clipboard.util.GmfUtil;
 import org.polarsys.capella.core.platform.sirius.clipboard.util.MiscUtil;
 
 /**
@@ -49,8 +47,11 @@ public class CapellaDiagramCopyAction extends AbstractCopyPasteAction {
     } else {
       // Copying graphical and semantic elements
       List<? extends EObject> toCopy = getCopyPasteSelection();
-      CapellaDiagramCopyCommand cmd = new CapellaDiagramCopyCommand(toCopy);
-      MiscUtil.transactionallyExecute(toCopy, cmd);
+      
+      if (toCopy.size() > 0) {
+        CapellaDiagramCopyCommand cmd = new CapellaDiagramCopyCommand(toCopy);
+        MiscUtil.transactionallyExecute(toCopy, cmd);
+      }
     }
   }
 

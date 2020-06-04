@@ -93,7 +93,7 @@ import org.polarsys.capella.core.sirius.analysis.accelerators.SelectOrCreateFunc
 import org.polarsys.capella.core.sirius.analysis.cache.FunctionalChainCache;
 import org.polarsys.capella.core.sirius.analysis.constants.MappingConstantsHelper;
 import org.polarsys.capella.core.sirius.analysis.helpers.FunctionalChainReferenceHierarchyHelper;
-import org.polarsys.capella.core.sirius.analysis.preferences.DiagramsPreferencePage;
+import org.polarsys.capella.core.sirius.analysis.preferences.DiagramProcessChainPathPreferencePage;
 import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
 
 /**
@@ -666,17 +666,17 @@ public class FunctionalChainServices {
 
     if (chain instanceof OperationalProcess) {
       displayIncompleteLabel = ScopedCapellaPreferencesStore.getBoolean(
-          DiagramsPreferencePage.NAME_PREF_DISPLAY_INCOMPLETE_IN_OPERATIONAL_PROCESS_LABEL,
+          DiagramProcessChainPathPreferencePage.NAME_PREF_DISPLAY_INCOMPLETE_IN_OPERATIONAL_PROCESS_LABEL,
           PreferencesHelper.getProject(chain));
       displayInvalidLabel = ScopedCapellaPreferencesStore.getBoolean(
-          DiagramsPreferencePage.NAME_PREF_DISPLAY_INVALID_IN_OPERATIONAL_PROCESS_LABEL,
+          DiagramProcessChainPathPreferencePage.NAME_PREF_DISPLAY_INVALID_IN_OPERATIONAL_PROCESS_LABEL,
           PreferencesHelper.getProject(chain));
     } else {
       displayIncompleteLabel = ScopedCapellaPreferencesStore.getBoolean(
-          DiagramsPreferencePage.NAME_PREF_DISPLAY_INCOMPLETE_IN_FUNCTIONAL_CHAIN_LABEL,
+          DiagramProcessChainPathPreferencePage.NAME_PREF_DISPLAY_INCOMPLETE_IN_FUNCTIONAL_CHAIN_LABEL,
           PreferencesHelper.getProject(chain));
       displayInvalidLabel = ScopedCapellaPreferencesStore.getBoolean(
-          DiagramsPreferencePage.NAME_PREF_DISPLAY_INVALID_IN_FUNCTIONAL_CHAIN_LABEL,
+          DiagramProcessChainPathPreferencePage.NAME_PREF_DISPLAY_INVALID_IN_FUNCTIONAL_CHAIN_LABEL,
           PreferencesHelper.getProject(chain));
     }
 
