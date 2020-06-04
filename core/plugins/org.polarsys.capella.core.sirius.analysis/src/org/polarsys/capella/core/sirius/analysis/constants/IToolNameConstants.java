@@ -1659,10 +1659,10 @@ public interface IToolNameConstants {
   String TOOL_CREATE_TITLE_BLOCK = "title.block";
 
   // insert/remove line/col TB
-  String TOOL_INSERT_LINE_TITLE_BLOCK = "element.title.block.line";
-  String TOOL_INSERT_COLUMN_TITLE_BLOCK = "element.title.block.column";
-  String TOOL_REMOVE_LINE_TITLE_BLOCK = "remove.element.title.block.line";
-  String TOOL_REMOVE_COLUMN_TITLE_BLOCK = "remove.element.title.block.column";
+  String TOOL_INSERT_LINE_TITLE_BLOCK = "title.block.line";
+  String TOOL_INSERT_COLUMN_TITLE_BLOCK = "title.block.column";
+  String TOOL_REMOVE_LINE_TITLE_BLOCK = "remove.title.block.line";
+  String TOOL_REMOVE_COLUMN_TITLE_BLOCK = "remove.title.block.column";
 
   // s/h TB
   String TOOL_INSERT_REMOVE_TITLE_BLOCK = "title.blocks";
