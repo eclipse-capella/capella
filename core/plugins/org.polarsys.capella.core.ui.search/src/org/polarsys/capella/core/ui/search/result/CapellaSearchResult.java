@@ -10,7 +10,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.core.ui.search;
+package org.polarsys.capella.core.ui.search.result;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -33,6 +33,9 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.TreeData;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
+import org.polarsys.capella.core.ui.search.Activator;
+import org.polarsys.capella.core.ui.search.CapellaSearchConstants;
+import org.polarsys.capella.core.ui.search.CapellaSearchQuery;
 import org.polarsys.capella.core.ui.search.match.SearchMatch;
 import org.polarsys.capella.core.ui.search.match.SearchMatchChild;
 

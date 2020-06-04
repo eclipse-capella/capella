@@ -183,8 +183,8 @@ public class SearchMatch extends Match {
       return false;
     }
     SearchMatch other = (SearchMatch) obj;
-    return Objects.equals(attribute, other.attribute) && Objects.equals(children, other.children)
-        && Objects.equals(displayText, other.displayText) && Objects.equals(originalText, other.originalText)
+    return Objects.equals(getElement(), other.getElement()) && Objects.equals(attribute, other.attribute)
+        && Objects.equals(children, other.children) && Objects.equals(originalText, other.originalText)
         && Objects.equals(project, other.project);
   }
 

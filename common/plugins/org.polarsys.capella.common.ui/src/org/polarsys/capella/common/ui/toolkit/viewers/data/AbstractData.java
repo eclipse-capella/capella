@@ -19,6 +19,8 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 
+import org.polarsys.capella.common.helpers.selection.ILinkSelection;
+
 /**
  * Base class data.
  */
@@ -101,7 +103,7 @@ public abstract class AbstractData {
    * Clear data.<br>
    * Default implementation clears root elements.
    */
-  protected void clearData() {
+  public void clearData() {
     rootElements.clear();
   }
 
