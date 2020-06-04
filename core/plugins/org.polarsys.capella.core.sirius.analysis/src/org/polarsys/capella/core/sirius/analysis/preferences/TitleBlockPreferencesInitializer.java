@@ -50,7 +50,7 @@ public class TitleBlockPreferencesInitializer extends AbstractPreferencesInitial
    * @return String[] the content of a Diagram Title Block
    */
   public static String[] getContentAsArray() {
-    return getString(TitleBlockPreferencePage.TABLE_CONTENT_PREFERENCE_STORE, true).split(TitleBlockPreferencePage.SEPARATOR);
+    return getString(TitleBlockPreferencePage.TABLE_CONTENT_PREFERENCE_STORE, true).split(TitleBlockPreferencePage.SEPARATOR, -1);
   }
 
   /**
