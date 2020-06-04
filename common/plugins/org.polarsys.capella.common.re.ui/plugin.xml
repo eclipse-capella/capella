@@ -643,14 +643,9 @@
          <with
                variable="activeMenuSelection">
                <iterate ifEmpty="false">
-                  <or>
-                     <instanceof
-                           value="org.eclipse.emf.ecore.EObject">
-                     </instanceof>
-                     <instanceof
-                           value="org.eclipse.gef.GraphicalEditPart">
-                     </instanceof>
-                  </or>
+                  <test
+                        property="org.polarsys.capella.common.re.ui.isValidRecRplTarget">
+                  </test>
                </iterate>
          </with>
       </definition>
@@ -1017,6 +1012,16 @@
             class="org.polarsys.capella.common.re.ui.subcommands.handlers.SuffixableHandler">
      </handler>
      
+   </extension>
+   <extension
+         point="org.eclipse.core.expressions.propertyTesters">
+      <propertyTester
+            class="org.polarsys.capella.common.re.ui.testers.ValidRecRplMenuTargetTester"
+            id="org.polarsys.capella.common.re.ui.ValidRecRplMenuTargetTester"
+            namespace="org.polarsys.capella.common.re.ui"
+            properties="isValidRecRplTarget"
+            type="java.lang.Object">
+      </propertyTester>
    </extension>
    
 </plugin>

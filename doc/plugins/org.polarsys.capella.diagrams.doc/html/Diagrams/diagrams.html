@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-		<link rel="stylesheet" type="text/css" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css" media="all" />
+		<link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/>
 	</head>
 	<body>
 		<h3 id="Common_Diagram_Tools">Common Diagram Tools</h3>
@@ -42,6 +42,48 @@
 					<img border="0" src="Images/icons/full/obj16/ShowHide.gif"/>
 				</td>
 				<td>Creates or deletes graphical objects corresponding to existing Property Value Groups. Removing a Property Value Group graphical object does not delete this Property Value Group from the model. This tool does not modify the semantic model.</td>
+			</tr>
+			<tr>
+				<td>Title Block 	</td>
+				<td>
+					<img border="0" src="Images/icons/full/obj16/TitleBlock.gif"/>
+				</td>
+				<td>Creates a graphical object corresponding to an Element Title Block which will display information related to the current element to which the Element Title Block is applied or the current diagram if block created onto the diagram blank. Initial content of Titlbe Block on diagram is configurable wia the Capella Preferences page. The Title Block does not have a corresponding semantic object.</td>
+			</tr>
+			<tr>
+				<td>Insert Line 	</td>
+				<td>
+					<img border="0" src="Images/icons/full/obj16/TitleBlockLine.gif"/>
+				</td>
+				<td>Creates a new line that will be inserted under the line of the currently selected cell of the Element Title Block.</td>
+			</tr>
+			<tr>
+				<td>Insert Column 	</td>
+				<td>
+					<img border="0" src="Images/icons/full/obj16/TitleBlockColumn.gif"/>
+				</td>
+				<td>Creates a new column that will be inserted to the right of the column of the currently selected cell of the Element Title Block.</td>
+			</tr>
+			<tr>
+				<td>Remove Line 	</td>
+				<td>
+					<img border="0" src="Images/icons/full/obj16/TitleBlockLineRemove.gif"/>
+				</td>
+				<td>Removes the line that contains the currently selected cell of the Element Title Block.</td>
+			</tr>
+			<tr>
+				<td>Remove Column 	</td>
+				<td>
+					<img border="0" src="Images/icons/full/obj16/TitleBlockColumnRemove.gif"/>
+				</td>
+				<td>Removes the column that contains the currently selected cell of the Element Title Block.</td>
+			</tr>
+			<tr>
+				<td>Title Blocks 	</td>
+				<td>
+					<img border="0" src="Images/icons/full/obj16/ShowHide.gif"/>
+				</td>
+				<td>Inserts or removes graphical objects on the diagrams corresponding to an existing Title Block. Removing an Title Block graphical object from the diagram does not delete the Title Block from the model.</td>
 			</tr>
 		</table>
 		<h2 id="Activity_Scenario">Activity Scenario</h2>
@@ -240,7 +282,7 @@
 				<td>
 					<img border="0" src="Images/icons/full/obj16/Generalization.gif"/> 
 				</td>
-				<td>Creates a new Generalization relationship between the source and target Actors/Components/Capability Realizations. 	</td>
+				<td>Creates a new Generalization relationship between the source and target Actors/Components/Capabilities. 	</td>
 			</tr>
 			<tr>
 				<td>Capability Realizations 	</td>
@@ -1799,7 +1841,7 @@
 				<td>
 					<img border="0" src="Images/icons/full/obj16/Generalization.gif"/> 
 				</td>
-				<td>Creates a new Generalization relationship between the source and target Actors/Capabilities. 	</td>
+				<td></td>
 			</tr>
 			<tr>
 				<td>Actors 	</td>
@@ -1919,7 +1961,6 @@
 				<td>
 					<img border="0" src="Images/icons/full/obj16/Generalization.gif"/> 
 				</td>
-				<td>Creates a new Generalization relationship between the source and target Actors/Capabilities. 	</td>
 			</tr>
 		</table>
 		<h3 id="Sample_13">Sample</h3>

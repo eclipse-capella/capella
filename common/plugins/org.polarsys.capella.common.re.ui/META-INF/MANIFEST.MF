@@ -18,7 +18,10 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.diffmerge.ui,
  org.polarsys.capella.common.ui,
  org.polarsys.capella.common.ui.toolkit.browser,
- org.polarsys.capella.common.flexibility.wizards
+ org.polarsys.capella.common.flexibility.wizards,
+ org.polarsys.capella.core.diagram.helpers,
+ org.polarsys.capella.core.platform.sirius.clipboard,
+ org.eclipse.sirius.diagram
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.common.re.ui,

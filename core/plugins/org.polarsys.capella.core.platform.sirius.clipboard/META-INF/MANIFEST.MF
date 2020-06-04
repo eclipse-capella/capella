@@ -15,7 +15,9 @@ Require-Bundle: org.eclipse.sirius.diagram.sequence,
  org.eclipse.sirius.diagram.ui,
  org.polarsys.capella.common.ui.services,
  org.polarsys.capella.core.model.preferences,
- org.polarsys.capella.shared.id.handler
+ org.polarsys.capella.shared.id.handler,
+ org.eclipse.sirius,
+ org.polarsys.capella.core.diagram.helpers
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin

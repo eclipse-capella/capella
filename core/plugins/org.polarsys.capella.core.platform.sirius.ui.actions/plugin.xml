@@ -88,7 +88,7 @@
             id="org.polarsys.capella.core.platform.sirius.ui.actions.preferences.CapellaValidationPreferences"
             name="%ModelValidationPreferencePage_Name">
       </page>
-   </extension>
+   </extension>   
    <extension
          point="org.eclipse.core.runtime.preferences">
       <initializer
@@ -100,6 +100,7 @@
       <initializer
             class="org.polarsys.capella.core.model.preferences.DeletePreferences">
       </initializer>
+     
    </extension>
    <!-- shall not be activated : not fully tested -->
    <!--extension
