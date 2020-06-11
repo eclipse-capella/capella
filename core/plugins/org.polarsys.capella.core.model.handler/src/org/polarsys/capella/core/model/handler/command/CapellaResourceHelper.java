@@ -63,6 +63,10 @@ public class CapellaResourceHelper {
    */
   public static final String AIRD_FRAGMENT_FILE_EXTENSION = "airdfragment"; //$NON-NLS-1$
   /**
+   * The Aird representation file extension value:<code>srm</code>
+   */
+  public static final String AIRD_SRM_FILE_EXTENSION = "srm"; //$NON-NLS-1$
+  /**
    * The Aird file extension value:<code>aird</code>
    */
   public static final String AIRD_FILE_EXTENSION = SiriusUtil.SESSION_RESOURCE_EXTENSION;
@@ -161,6 +165,17 @@ public class CapellaResourceHelper {
         || AIRD_FRAGMENT_FILE_EXTENSION.equals(uri.fileExtension()));
   }
 
+  /**
+   * Whether or not given URI represents a representation resource.
+   * 
+   * @param uri
+   * @return <code>true</code> means the file extension is either {@link #AIRD_SRM_FILE_EXTENSION}.
+   * @see {@link #AIRD_SRM_FILE_EXTENSION}
+   */
+  public static boolean isRepresentationResource(URI uri) {
+    return (uri != null) && AIRD_SRM_FILE_EXTENSION.equals(uri.fileExtension());
+  }
+  
   /**
    * Whether or not given resource is a Capella fragment.
    * 
@@ -286,13 +301,13 @@ public class CapellaResourceHelper {
     if (eObject instanceof InternalEObject) {
       InternalEObject internalEObject = (InternalEObject) eObject;
       if (internalEObject.eIsProxy()) {
-        if (isAirdResource(internalEObject.eProxyURI())) {
+        if (isAirdResource(internalEObject.eProxyURI()) || isRepresentationResource(internalEObject.eProxyURI())) {
           return true;
         }
       }
-      Resource ressource = eObject.eResource();
-      if (ressource != null && ressource.getURI() != null) {
-        if (isAirdResource(ressource.getURI())) {
+      Resource resource = eObject.eResource();
+      if (resource != null && resource.getURI() != null) {
+        if (isAirdResource(resource.getURI()) || isRepresentationResource(resource.getURI())) {
           return true;
         }
       }
