@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.polarsys.capella.test.model.ju.sortContent;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
@@ -19,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
+import org.polarsys.capella.test.model.ju.sortSelection.SortSelectionTestSuite;
 
 /**
  * This test case tests if the Sort Content works well when the selected element has only 2 children
@@ -43,6 +45,11 @@ public class SortContentTestCase extends BasicTestCase {
     return true;
   }
 
+  @Override
+  public List<String> getRequiredTestModels() {
+    return Arrays.asList(SortSelectionTestSuite.MODEL_NAME);
+  }
+  
   @Override
   public void test() throws Exception {
     // TODO Auto-generated method stub

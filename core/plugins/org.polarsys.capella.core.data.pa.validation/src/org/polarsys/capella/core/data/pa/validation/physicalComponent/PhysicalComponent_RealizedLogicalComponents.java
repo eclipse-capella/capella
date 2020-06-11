@@ -17,7 +17,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
-import org.polarsys.capella.core.data.pa.impl.PhysicalComponentImpl;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
@@ -37,7 +36,7 @@ public class PhysicalComponent_RealizedLogicalComponents extends AbstractValidat
     if (eType == EMFEventType.NULL) {
       if (eObj instanceof PhysicalComponent && !ComponentExt.isActor(eObj)) {
         PhysicalComponent component = (PhysicalComponent) eObj;
-        if (component.eContainer() instanceof PhysicalComponentImpl) {
+        if (component.eContainer() instanceof PhysicalComponent) {
           if (!component.getRealizedLogicalComponents().isEmpty()) {
             return ctx.createSuccessStatus();
           }
