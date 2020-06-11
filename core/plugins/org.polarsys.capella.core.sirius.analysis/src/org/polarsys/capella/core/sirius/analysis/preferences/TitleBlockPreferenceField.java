@@ -135,6 +135,7 @@ public class TitleBlockPreferenceField extends FieldEditor {
     v.getTable().addListener(SWT.MouseDown, tableListener);
 
     Listener paintListener = new Listener() {
+      @Override
       public void handleEvent(Event event) {
         switch (event.type) {
         case SWT.MeasureItem: {
@@ -202,7 +203,7 @@ public class TitleBlockPreferenceField extends FieldEditor {
   @Override
   protected void doStore() {
     StringBuilder table = new StringBuilder();
-    
+
     for (int i = 0; i < linesNumber; i++) {
       for (int j = 0; j < columnsNumber; j++) {
         table.append(tccMatrix.get(i).get(j).name);
@@ -273,7 +274,8 @@ public class TitleBlockPreferenceField extends FieldEditor {
       List<TitleBlockCell> row = new ArrayList<>();
       for (int j = 0; j < columnsNumber; j++) {
         String name = currentIndex < cellsNameAndContent.length ? cellsNameAndContent[currentIndex] : EMPTY_STRING;
-        String value = currentIndex + 1 < cellsNameAndContent.length ? cellsNameAndContent[currentIndex + 1] : EMPTY_STRING;
+        String value = currentIndex + 1 < cellsNameAndContent.length ? cellsNameAndContent[currentIndex + 1]
+            : EMPTY_STRING;
         row.add(new TitleBlockCell(name, value));
         currentIndex += 2;
       }
@@ -295,10 +297,11 @@ public class TitleBlockPreferenceField extends FieldEditor {
           cell.setText(cellText);
           int multiLine = cellText.indexOf("\n"); //$NON-NLS-1$
           if (multiLine > 0) {
-            cell.setStyleRanges(new StyleRange[] { new StyleRange(0, multiLine,
-                cell.getControl().getShell().getDisplay().getSystemColor(SWT.COLOR_WIDGET_FOREGROUND), null), 
+            cell.setStyleRanges(new StyleRange[] {
+                new StyleRange(0, multiLine,
+                    cell.getControl().getShell().getDisplay().getSystemColor(SWT.COLOR_WIDGET_FOREGROUND), null),
                 new StyleRange(multiLine, cellText.length(),
-                cell.getControl().getShell().getDisplay().getSystemColor(SWT.COLOR_DARK_GRAY), null) });
+                    cell.getControl().getShell().getDisplay().getSystemColor(SWT.COLOR_DARK_GRAY), null) });
           }
         } else {
           cell.setText(Messages.TitleBlockPreferencePage_EmptyMessage);
@@ -414,10 +417,15 @@ public class TitleBlockPreferenceField extends FieldEditor {
     final Action insertColumn = new Action(Messages.TitleBlockPreferencePage_InsertColumn) {
       @Override
       public void run() {
-        if (v.getColumnViewerEditor().getFocusCell() != null) {
-          createColumn(v, EMPTY_STRING, v.getTable().getColumnCount());
-          int columnToInsert = v.getColumnViewerEditor().getFocusCell().getColumnIndex() + 1;
+
+        ViewerCell focusCell = v.getColumnViewerEditor().getFocusCell();
+        createColumn(v, EMPTY_STRING, v.getTable().getColumnCount());
+
+        if (focusCell != null) {
+          int columnToInsert = focusCell.getColumnIndex() + 1;
           refreshTableInsertColumns(columnToInsert);
+        } else {
+          refreshTableInsertColumns(columnsNumber);
         }
       }
     };
