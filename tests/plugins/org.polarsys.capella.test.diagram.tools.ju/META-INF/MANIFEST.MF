@@ -35,3 +35,5 @@ Export-Package: org.polarsys.capella.test.diagram.tools.ju,
  org.polarsys.capella.test.diagram.tools.ju.xdfb,
  org.polarsys.capella.test.diagram.tools.ju.xfbd
 Bundle-Localization: plugin
+Import-Package: org.polarsys.capella.core.platform.sirius.clipboard.actions,
+ org.polarsys.capella.core.platform.sirius.clipboard.util
