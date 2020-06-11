@@ -208,6 +208,8 @@
         </ownedDataPkgs>
         <ownedClasses xsi:type="org.polarsys.capella.core.data.information:Class"
             id="8feafdba-d299-4195-9d47-ee216dc52cdd" name="Class 1"/>
+        <ownedClasses xsi:type="org.polarsys.capella.core.data.information:Class"
+            id="6da79542-9d7b-497e-9505-44fd5a7fc05a" name="Class 2"/>
       </ownedDataPkg>
       <ownedSystemComponentPkg xsi:type="org.polarsys.capella.core.data.ctx:SystemComponentPkg"
           id="0bb7473d-46f3-4284-b40c-09059e271e36" name="Structure">
