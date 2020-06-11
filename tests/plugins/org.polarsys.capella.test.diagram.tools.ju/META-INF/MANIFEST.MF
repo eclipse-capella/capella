@@ -14,7 +14,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.sirius.common.ui,
  org.polarsys.capella.test.diagram.layout.ju,
  org.polarsys.capella.core.diagram.helpers,
- org.polarsys.capella.common.queries
+ org.polarsys.capella.common.queries,
+ org.polarsys.capella.core.platform.sirius.clipboard
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.test.diagram.tools.ju,
@@ -35,5 +36,3 @@ Export-Package: org.polarsys.capella.test.diagram.tools.ju,
  org.polarsys.capella.test.diagram.tools.ju.xdfb,
  org.polarsys.capella.test.diagram.tools.ju.xfbd
 Bundle-Localization: plugin
-Import-Package: org.polarsys.capella.core.platform.sirius.clipboard.actions,
- org.polarsys.capella.core.platform.sirius.clipboard.util
