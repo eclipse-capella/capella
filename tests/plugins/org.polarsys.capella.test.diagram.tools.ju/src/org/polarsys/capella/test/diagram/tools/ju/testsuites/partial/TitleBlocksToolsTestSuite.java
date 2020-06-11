@@ -17,6 +17,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.polarsys.capella.test.diagram.tools.ju.tb.CDBTitleBlockTestCase;
+import org.polarsys.capella.test.diagram.tools.ju.tb.TitleBlockCopyPasteTest;
 import org.polarsys.capella.test.diagram.tools.ju.tb.TitleBlockPreferencePageTest;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
@@ -47,6 +48,7 @@ public class TitleBlocksToolsTestSuite extends BasicTestSuite {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
     tests.add(new CDBTitleBlockTestCase());
     tests.add(new TitleBlockPreferencePageTest());
+    tests.add(new TitleBlockCopyPasteTest());
 
     return tests;
   }
