@@ -142,6 +142,9 @@
 					</execution>
 				</executions>
 				<configuration>
+					<archive>
+						<addMavenDescriptor>false</addMavenDescriptor>
+					</archive>
 					<excludes>
 						<!-- provide bundles not containing any source code -->
 						<plugin id="org.polarsys.capella.core.data.res.edit" />
@@ -165,6 +168,11 @@
 						</goals>
 					</execution>
 				</executions>
+				<configuration>
+					<archive>
+						<addMavenDescriptor>false</addMavenDescriptor>
+					</archive>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
