@@ -5226,7 +5226,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Creates a new Involvement Link referencing an Interaction." name="involve.exchange" label="%oa.opd.involve.exchange" precondition="aql:preSource.isValidFCILinkExchange(preTarget)" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvementLinkOA_ToExchange.gif">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Creates a new Involvement Link referencing an Interaction." name="involve.exchange" label="%oa.opd.involve.exchange" precondition="aql:preSourceView.isValidFCILinkExchange(preTargetView)" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvementLinkOA_ToExchange.gif">
             <edgeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_Exchange']"/>
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
@@ -5859,7 +5859,7 @@
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolGroup" name="Advanced Tools">
-            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="Creates a new Involvement Link referencing an Interaction with a linked Sequence Link." name="involve.exchange.with.sequence.link" label="%oa.opd.involve.exchange.with.sequence.link" precondition="aql:preSource.isValidFCILinkExchange(preTarget)" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvementLinkOA_ToExchange.gif">
+            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="Creates a new Involvement Link referencing an Interaction with a linked Sequence Link." name="involve.exchange.with.sequence.link" label="%oa.opd.involve.exchange.with.sequence.link" precondition="aql:preSourceView.isValidFCILinkExchange(preTargetView)" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvementLinkOA_ToExchange.gif">
               <edgeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_Exchange']"/>
               <sourceVariable name="source"/>
               <targetVariable name="target"/>
