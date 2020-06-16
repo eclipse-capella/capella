@@ -82,6 +82,11 @@ Multi level user shared configuration install.
 ** '''-Dosgi.sharedConfiguration.area=path/to/shared/configuration'''
 ** '''-Dosgi.configuration.cascaded=true'''
 
+=== Workaround to open the Help Content when there is problem with the browser ===
+Sometimes due to security policy, the web browser has problem on opening local host web pages. This is the case of the Help Content page when it is accessed via the 127.0.0.1 IP address. Here are 2 possible workarounds to overcome this problem:
+*  In the URL, replace 127.0.0.1 by localhost.
+*  Copy the URL and paste it in another web browser without restriction.
+
 == Addons Installation ==
 There are 3 ways to install addons :
 # Simple installation 
