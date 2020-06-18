@@ -27,6 +27,12 @@ import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementFunction;
 import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink;
 import org.polarsys.capella.core.data.fa.FunctionalChainReference;
 
+/**
+ * An Involvement graph data structure that combines semantic and hierarchy context information to accurately model the
+ * relationships between the different involvements in a functional chain.
+ *
+ * Using only the semantic information would raise false positive for cycles between involvements.
+ */
 public class InvolvementHierarchyGraph {
 
   private static final Logger LOGGER = Logger.getLogger(InvolvementHierarchyGraph.class);
@@ -63,7 +69,6 @@ public class InvolvementHierarchyGraph {
 
       boolean created = createVertex(function, currentReferenceHierarchy);
 
-      // add a proper log
       if (!created) {
         LOGGER.warn("Vertex already exists: [" + function + " " + currentReferenceHierarchy + "]");
       }
@@ -116,28 +121,6 @@ public class InvolvementHierarchyGraph {
     }
   }
 
-  private Vertex getTargetVertex(LinkedList<FunctionalChainReference> currentReferenceHierarchy,
-      FunctionalChainInvolvementLink link) {
-
-    List<FunctionalChainReference> linkTargetReferenceHierarchy = link.getTargetReferenceHierarchy();
-    FunctionalChainInvolvementFunction targetFunction = link.getTarget();
-    List<FunctionalChainReference> targetFunctionReferenceHierarchy = combineHierarchies(linkTargetReferenceHierarchy,
-        currentReferenceHierarchy);
-
-    return getVertex(targetFunction, targetFunctionReferenceHierarchy);
-  }
-
-  private Vertex getSourceVertex(LinkedList<FunctionalChainReference> currentReferenceHierarchy,
-      FunctionalChainInvolvementLink link) {
-
-    List<FunctionalChainReference> linkSourceReferenceHierarchy = link.getSourceReferenceHierarchy();
-    FunctionalChainInvolvementFunction sourceFunction = link.getSource();
-    List<FunctionalChainReference> sourceFunctionReferenceHierarchy = combineHierarchies(linkSourceReferenceHierarchy,
-        currentReferenceHierarchy);
-
-    return getVertex(sourceFunction, sourceFunctionReferenceHierarchy);
-  }
-
   protected boolean createVertex(FunctionalChainInvolvementFunction function,
       List<FunctionalChainReference> referenceHierarchy) {
 
@@ -166,6 +149,28 @@ public class InvolvementHierarchyGraph {
     sourceVertex.edges.add(edge);
   }
 
+  protected Vertex getTargetVertex(LinkedList<FunctionalChainReference> currentReferenceHierarchy,
+      FunctionalChainInvolvementLink link) {
+
+    List<FunctionalChainReference> linkTargetReferenceHierarchy = link.getTargetReferenceHierarchy();
+    FunctionalChainInvolvementFunction targetFunction = link.getTarget();
+    List<FunctionalChainReference> targetFunctionReferenceHierarchy = combineHierarchies(linkTargetReferenceHierarchy,
+        currentReferenceHierarchy);
+
+    return getVertex(targetFunction, targetFunctionReferenceHierarchy);
+  }
+
+  protected Vertex getSourceVertex(LinkedList<FunctionalChainReference> currentReferenceHierarchy,
+      FunctionalChainInvolvementLink link) {
+
+    List<FunctionalChainReference> linkSourceReferenceHierarchy = link.getSourceReferenceHierarchy();
+    FunctionalChainInvolvementFunction sourceFunction = link.getSource();
+    List<FunctionalChainReference> sourceFunctionReferenceHierarchy = combineHierarchies(linkSourceReferenceHierarchy,
+        currentReferenceHierarchy);
+
+    return getVertex(sourceFunction, sourceFunctionReferenceHierarchy);
+  }
+
   protected List<FunctionalChainReference> combineHierarchies(List<FunctionalChainReference> linkReferenceHierarchy,
       List<FunctionalChainReference> contextReferenceHierarchy) {
 
@@ -175,6 +180,9 @@ public class InvolvementHierarchyGraph {
     return resultHierarchy;
   }
 
+  /**
+   * Detects the presence of any cycles in the graph, by using a recursive DFS with O(V + E) complexity.
+   */
   public boolean hasCycle() {
     Set<Vertex> visited = new HashSet<>();
     Set<Vertex> path = new HashSet<>();
@@ -243,7 +251,6 @@ public class InvolvementHierarchyGraph {
     public String toString() {
       return "VertexKey [function=" + function + ", referenceHierarchy=" + referenceHierarchy + "]";
     }
-
   }
 
   protected static class Vertex extends VertexKey {
@@ -299,7 +306,6 @@ public class InvolvementHierarchyGraph {
     public String toString() {
       return "Edge [link=" + link + ", source=" + source + ", target=" + target + "]";
     }
-
   }
 
 }
