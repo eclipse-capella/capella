@@ -13,11 +13,14 @@
 package org.polarsys.capella.core.diagram.helpers;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.jface.bindings.keys.KeyStroke;
 import org.eclipse.jface.bindings.keys.ParseException;
 import org.eclipse.jface.fieldassist.ContentProposalAdapter;
@@ -25,6 +28,8 @@ import org.eclipse.jface.fieldassist.IContentProposal;
 import org.eclipse.jface.fieldassist.IContentProposalListener;
 import org.eclipse.jface.fieldassist.IContentProposalProvider;
 import org.eclipse.jface.fieldassist.TextContentAdapter;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentInstanceContext;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentProposal;
 import org.eclipse.sirius.common.tools.api.contentassist.IProposalProvider;
@@ -39,7 +44,7 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
-import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 import org.eclipse.swt.widgets.Text;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
@@ -131,13 +136,21 @@ public class TitleBlockHelper {
   }
 
   public static List<DAnnotation> getElementTitleBlocks(DDiagram diagram) {
-    return diagram.getEAnnotations().stream().filter(a -> a.getSource().equals(ELEMENT_TITLE_BLOCK))
+    DRepresentationDescriptor descriptor = RepresentationHelper.getRepresentationDescriptor(diagram);
+    if (descriptor != null && descriptor.getEAnnotations() != null) {
+      return descriptor.getEAnnotations().stream().filter(a -> a.getSource().equals(ELEMENT_TITLE_BLOCK))
         .collect(Collectors.toList());
+    }
+    return Collections.emptyList();
   }
 
   public static List<DAnnotation> getDiagramTitleBlocks(DDiagram diagram) {
-    return diagram.getEAnnotations().stream().filter(a -> a.getSource().equals(DIAGRAM_TITLE_BLOCK))
+    DRepresentationDescriptor descriptor = RepresentationHelper.getRepresentationDescriptor(diagram);
+    if (descriptor != null && descriptor.getEAnnotations() != null) {
+      return descriptor.getEAnnotations().stream().filter(a -> a.getSource().equals(DIAGRAM_TITLE_BLOCK))
         .collect(Collectors.toList());
+    }
+    return Collections.emptyList();
   }
 
   public static List<DAnnotation> getElementTitleBlocks(DDiagram diagram, EObject element) {
@@ -191,16 +204,20 @@ public class TitleBlockHelper {
    * 
    * @param titleBlockCell:
    *          the selected cell
-   * @param diagram:
    * @return the parent title block
    */
-  public static DAnnotation getParentTitleBlock(DAnnotation titleBlockCell, DDiagram diagram) {
+  public static DAnnotation getParentTitleBlock(DAnnotation titleBlockCell) {
     if (isTitleBlockCell(titleBlockCell)) {
-      for (DDiagramElement diagramElem : diagram.getDiagramElements()) {
-        if (diagramElem.getTarget() instanceof DAnnotation && isTitleBlock((DAnnotation) diagramElem.getTarget())) {
-          DAnnotation titleBlock = (DAnnotation) diagramElem.getTarget();
-          if (containsCell(titleBlock, titleBlockCell)) {
-            return titleBlock;
+      Session session = SessionManager.INSTANCE.getSession(titleBlockCell);
+      if (session != null) {
+        Collection<Setting> referencer = session.getSemanticCrossReferencer().getInverseReferences(titleBlockCell,
+            DescriptionPackage.Literals.DANNOTATION__REFERENCES, false);
+        if (!referencer.isEmpty()) {
+          DAnnotation line = (DAnnotation) referencer.iterator().next().getEObject();
+          referencer = session.getSemanticCrossReferencer().getInverseReferences(line,
+              DescriptionPackage.Literals.DANNOTATION__REFERENCES, false);
+          if (!referencer.isEmpty()) {
+            return (DAnnotation) referencer.iterator().next().getEObject();
           }
         }
       }
@@ -209,16 +226,21 @@ public class TitleBlockHelper {
   }
 
   /**
-   * function that return the container Title Block of a selected cell; the container is the one storing all together
-   * the lines and columns
+   * function that return the line containing the given cell
    * 
    * @param titleBlockCell:
    *          the selected cell
    * @return the parent title block
    */
-  public static DAnnotation getParentTitleBlock(DAnnotation titleBlockCell) {
-    if (titleBlockCell.eContainer() instanceof DDiagram)
-      return getParentTitleBlock(titleBlockCell, (DDiagram) titleBlockCell.eContainer());
+  public static DAnnotation getParentAnnotation(DAnnotation annotation) {
+    Session session = SessionManager.INSTANCE.getSession(annotation);
+    if (session != null) {
+      Collection<Setting> referencer = session.getSemanticCrossReferencer().getInverseReferences(annotation,
+          DescriptionPackage.Literals.DANNOTATION__REFERENCES, false);
+      if (!referencer.isEmpty()) {
+        return (DAnnotation) referencer.iterator().next().getEObject();
+      }
+    }
     return null;
   }
 
@@ -278,29 +300,14 @@ public class TitleBlockHelper {
   }
 
   /**
-   * Create a cell where with the settings from parameters
-   * 
-   * @return DAnnotation
-   */
-  public static DAnnotation createTitleBlockCell(String name, String content) {
-    DAnnotation annotation = DescriptionFactory.eINSTANCE.createDAnnotation();
-    annotation.setSource(TITLE_BLOCK_CELL);
-    annotation.getDetails().put(NAME, name);
-    annotation.getDetails().put(CONTENT, content);
-    return annotation;
-  }
-
-  /**
    * Add new Title Block to diagram
    * 
    * @param diagram
    * @return the added Title Block
    */
   public static DAnnotation addDiagramTitleBlock(DDiagram diagram) {
-    DAnnotation titleBlock = DescriptionFactory.eINSTANCE.createDAnnotation();
-    titleBlock.setSource(DIAGRAM_TITLE_BLOCK);
-    diagram.getEAnnotations().add(titleBlock);
-    return titleBlock;
+    return DAnnotationHelper.createAnnotation(DIAGRAM_TITLE_BLOCK,
+        RepresentationHelper.getRepresentationDescriptor(diagram));
   }
 
   /**
@@ -311,11 +318,10 @@ public class TitleBlockHelper {
    * @return the added Title Block
    */
   public static DAnnotation addElementTitleBlock(DDiagram diagram, DDiagramElement diagramElement) {
-    DAnnotation titleBLock = DescriptionFactory.eINSTANCE.createDAnnotation();
-    titleBLock.setSource(ELEMENT_TITLE_BLOCK);
-    titleBLock.getReferences().add(diagramElement.getTarget());
-    diagram.getEAnnotations().add(titleBLock);
-    return titleBLock;
+    DAnnotation annotation = DAnnotationHelper.createAnnotation(ELEMENT_TITLE_BLOCK,
+        RepresentationHelper.getRepresentationDescriptor(diagram));
+    annotation.getReferences().add(diagramElement.getTarget());
+    return annotation;
   }
 
   /**
@@ -325,9 +331,8 @@ public class TitleBlockHelper {
    * @return the added Title Block
    */
   public static DAnnotation addTitleBlockLine(DDiagram diagram, DAnnotation titleBlock) {
-    DAnnotation line = DescriptionFactory.eINSTANCE.createDAnnotation();
-    line.setSource(TITLE_BLOCK_LINE);
-    diagram.getEAnnotations().add(line);
+    DAnnotation line = DAnnotationHelper.createAnnotation(TITLE_BLOCK_LINE,
+        RepresentationHelper.getRepresentationDescriptor(diagram));
     titleBlock.getReferences().add(line);
     return line;
   }
@@ -339,9 +344,8 @@ public class TitleBlockHelper {
    * @return the added Title Block
    */
   public static DAnnotation addTitleBlockLine(DDiagram diagram, DAnnotation titleBlock, int position) {
-    DAnnotation line = DescriptionFactory.eINSTANCE.createDAnnotation();
-    line.setSource(TITLE_BLOCK_LINE);
-    diagram.getEAnnotations().add(line);
+    DAnnotation line = DAnnotationHelper.createAnnotation(TITLE_BLOCK_LINE,
+        RepresentationHelper.getRepresentationDescriptor(diagram));
     if (isDiagramTitleBlock(titleBlock)) {
       titleBlock.getReferences().add(position, line);
     } else {
@@ -372,11 +376,10 @@ public class TitleBlockHelper {
    * @return the added Title Block
    */
   public static DAnnotation addTitleBlockCell(DDiagram diagram, DAnnotation line, String name, String content) {
-    DAnnotation cell = DescriptionFactory.eINSTANCE.createDAnnotation();
-    cell.setSource(TITLE_BLOCK_CELL);
+    DAnnotation cell = DAnnotationHelper.createAnnotation(TITLE_BLOCK_CELL,
+        RepresentationHelper.getRepresentationDescriptor(diagram));
     cell.getDetails().put(NAME, name);
     cell.getDetails().put(CONTENT, content);
-    diagram.getEAnnotations().add(cell);
     line.getReferences().add(cell);
     return cell;
   }
@@ -389,11 +392,10 @@ public class TitleBlockHelper {
    */
   public static DAnnotation addTitleBlockCell(DDiagram diagram, DAnnotation line, String name, String content,
       int position) {
-    DAnnotation cell = DescriptionFactory.eINSTANCE.createDAnnotation();
-    cell.setSource(TITLE_BLOCK_CELL);
+    DAnnotation cell = DAnnotationHelper.createAnnotation(TITLE_BLOCK_CELL,
+        RepresentationHelper.getRepresentationDescriptor(diagram));
     cell.getDetails().put(NAME, name);
     cell.getDetails().put(CONTENT, content);
-    diagram.getEAnnotations().add(cell);
     line.getReferences().add(position, cell);
     return cell;
   }
@@ -626,7 +628,7 @@ public class TitleBlockHelper {
       } else if (isDiagramTitleBlock(annotation)) {
         target = annotation.eContainer();
       } else if (isTitleBlockCell(annotation)) {
-        target = getReferencedElement(getParentTitleBlock(annotation, (DDiagram) annotation.eContainer()));
+        target = getReferencedElement(getParentTitleBlock(annotation));
       }
       if (target instanceof DRepresentation) {
         target = RepresentationHelper.getRepresentationDescriptor((DRepresentation) target);
