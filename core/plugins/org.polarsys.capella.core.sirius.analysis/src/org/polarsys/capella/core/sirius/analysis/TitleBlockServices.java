@@ -13,13 +13,13 @@
 package org.polarsys.capella.core.sirius.analysis;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.apache.commons.lang.StringEscapeUtils;
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -29,7 +29,6 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
-import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
@@ -40,6 +39,7 @@ import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.diagram.ui.business.api.helper.graphicalfilters.CompositeFilterApplicationBuilder;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
 import org.eclipse.swt.widgets.Display;
@@ -50,7 +50,6 @@ import org.polarsys.capella.core.diagram.helpers.TitleBlockHelper;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.sirius.analysis.preferences.TitleBlockPreferencesInitializer;
 
-import com.google.common.collect.Streams;
 
 /*
  * This class exposes the Title Block Services.
@@ -154,8 +153,7 @@ public class TitleBlockServices {
   public boolean isValidRemoveLineOfElementTitleBlock(EObject containerView) {
     if (isValidInsertLineOrColumn(containerView)) {
       DAnnotation annotation = (DAnnotation) ((DDiagramElement) containerView).getTarget();
-      DAnnotation titleBlockContainer = TitleBlockHelper.getParentTitleBlock(annotation,
-          ((DDiagramElement) containerView).getParentDiagram());
+      DAnnotation titleBlockContainer = TitleBlockHelper.getParentTitleBlock(annotation);
       return TitleBlockHelper.getTitleBlockLines(titleBlockContainer).size() > 1;
     }
     return false;
@@ -170,8 +168,7 @@ public class TitleBlockServices {
   public boolean isValidRemoveColumnOfElementTitleBlock(EObject containerView) {
     if (isValidInsertLineOrColumn(containerView)) {
       DAnnotation annotation = (DAnnotation) ((DDiagramElement) containerView).getTarget();
-      DAnnotation titleBlockContainer = TitleBlockHelper.getParentTitleBlock(annotation,
-          ((DDiagramElement) containerView).getParentDiagram());
+      DAnnotation titleBlockContainer = TitleBlockHelper.getParentTitleBlock(annotation);
       return TitleBlockHelper.getNumOfColumns(titleBlockContainer) > 1;
     }
     return false;
@@ -279,7 +276,7 @@ public class TitleBlockServices {
    * @return
    */
   public void insertTitleBlockLine(DAnnotation cell, DDiagram diagram) {
-    DAnnotation titleBlock = TitleBlockHelper.getParentTitleBlock(cell, diagram);
+    DAnnotation titleBlock = TitleBlockHelper.getParentTitleBlock(cell);
     int numCols = TitleBlockHelper.getNumOfColumns(titleBlock);
     if (numCols > 0) {
       // insert the new line under the cell we clicked on
@@ -299,7 +296,7 @@ public class TitleBlockServices {
    * @return
    */
   public void insertTitleBlockColumn(DAnnotation cell, DDiagram diagram) {
-    DAnnotation titleBlock = TitleBlockHelper.getParentTitleBlock(cell, diagram);
+    DAnnotation titleBlock = TitleBlockHelper.getParentTitleBlock(cell);
     // insert the new column at the right of the cell we clicked on
     int indexCol = TitleBlockHelper.getColumnIndexOfCell(cell, titleBlock);
     for (DAnnotation line : TitleBlockHelper.getTitleBlockLines(titleBlock)) {
@@ -387,7 +384,7 @@ public class TitleBlockServices {
   }
   
   public List<DAnnotation> getVisibleTitleBlocks(Object containerView) {
-    return Streams.concat(getVisibleDiagramTitleBlocks(containerView).stream(),
+    return Stream.concat(getVisibleDiagramTitleBlocks(containerView).stream(),
         getVisibleElementTitleBlocks(containerView).stream()).collect(Collectors.toList());
   }
 
@@ -578,7 +575,8 @@ public class TitleBlockServices {
    */
   public void deleteTitleBlock(DDiagram diagram, DAnnotation titleBlock) {
     removeTitleBlockContent(diagram, titleBlock);
-    diagram.getEAnnotations().remove(titleBlock);
+    DRepresentationDescriptor descriptor = RepresentationHelper.getRepresentationDescriptor(diagram);
+    descriptor.getEAnnotations().remove(titleBlock);
   }
 
   /**
@@ -604,7 +602,8 @@ public class TitleBlockServices {
       line.getReferences().clear();
     }
     titleBlock.getReferences().clear();
-    diagram.getEAnnotations().removeAll(annotationsList);
+    DRepresentationDescriptor descriptor = RepresentationHelper.getRepresentationDescriptor(diagram);
+    descriptor.getEAnnotations().removeAll(annotationsList);
   }
 
   /**
@@ -616,7 +615,7 @@ public class TitleBlockServices {
    */
   public void removeLineOfTitleBlock(DAnnotation cell, DDiagram diagram) {
     if (TitleBlockHelper.isTitleBlockCell(cell)) {
-      DAnnotation titleBlockContainer = TitleBlockHelper.getParentTitleBlock(cell, diagram);
+      DAnnotation titleBlockContainer = TitleBlockHelper.getParentTitleBlock(cell);
 
       // remove the line of the cell we clicked on
       int indexLine = TitleBlockHelper.getLineIndexOfCell(cell, titleBlockContainer);
@@ -625,7 +624,8 @@ public class TitleBlockServices {
       List<DAnnotation> toRemove = new ArrayList<>();
       toRemove.add(titleBlockLine);
       toRemove.addAll(TitleBlockHelper.getTitleBlockCells(titleBlockLine));
-      diagram.getEAnnotations().removeAll(toRemove);
+      DRepresentationDescriptor descriptor = RepresentationHelper.getRepresentationDescriptor(diagram);
+      descriptor.getEAnnotations().removeAll(toRemove);
     }
   }
 
@@ -639,15 +639,16 @@ public class TitleBlockServices {
    */
   public void removeColumnOfTitleBlock(DAnnotation cell, DDiagram diagram) {
     if (TitleBlockHelper.isTitleBlockCell(cell)) {
-      DAnnotation titleBlockContainer = TitleBlockHelper.getParentTitleBlock(cell, diagram);
+      DAnnotation titleBlockContainer = TitleBlockHelper.getParentTitleBlock(cell);
 
       // remove the column of the cell we clicked on
       int indexCol = TitleBlockHelper.getColumnIndexOfCell(cell, titleBlockContainer);
 
+      DRepresentationDescriptor descriptor = RepresentationHelper.getRepresentationDescriptor(diagram);
       // go in each line and remove a cell on column of the clicked cell
       for (DAnnotation line : TitleBlockHelper.getTitleBlockLines(titleBlockContainer)) {
         EObject removedCell = line.getReferences().remove(indexCol);
-        diagram.getEAnnotations().remove(removedCell);
+        descriptor.getEAnnotations().remove(removedCell);
       }
     }
   }
@@ -692,7 +693,7 @@ public class TitleBlockServices {
   public Object getTitleBlockCellContent(EObject diagram, EObject cell, EObject containerView) {
     if ((diagram instanceof DDiagram)) {
       if (cell instanceof DAnnotation && TitleBlockHelper.isTitleBlockCell((DAnnotation) cell)) {
-        DAnnotation titleBlockContainer = TitleBlockHelper.getParentTitleBlock((DAnnotation) cell, (DDiagram) diagram);
+        DAnnotation titleBlockContainer = TitleBlockHelper.getParentTitleBlock((DAnnotation) cell);
         if (titleBlockContainer != null) {
           return getCellContent(diagram, cell, containerView, titleBlockContainer);
         }
@@ -719,7 +720,8 @@ public class TitleBlockServices {
       wrapperAnnotation.setSource(TitleBlockHelper.TITLE_BLOCK_CONTENT);
       wrapperAnnotation.getDetails().put(TitleBlockHelper.CONTENT, htmlToPlainText(object.toString()));
       cell.getReferences().add(wrapperAnnotation);
-      diagram.getEAnnotations().add(wrapperAnnotation);
+      DRepresentationDescriptor descriptor = RepresentationHelper.getRepresentationDescriptor(diagram);
+      descriptor.getEAnnotations().add(wrapperAnnotation);
     } else {
       wrapperAnnotation = (DAnnotation) cell.getReferences().get(0);
       if (!object.toString().equals(wrapperAnnotation.getDetails().get(TitleBlockHelper.CONTENT))) {
