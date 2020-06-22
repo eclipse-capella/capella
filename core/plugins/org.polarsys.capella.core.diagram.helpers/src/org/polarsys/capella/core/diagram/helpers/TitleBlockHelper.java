@@ -125,7 +125,7 @@ public class TitleBlockHelper {
   public static boolean isTitleBlockMapping(RepresentationElementMapping mapping) {
     return mapping != null && isTitleBlockMapping(mapping.getName());
   }
-  
+
   public static boolean isTitleBlockMapping(String mappingName) {
     return mappingName != null && mappingName.contains(TITLE_BLOCK_MAPPING_PREFIX);
   }
@@ -346,7 +346,7 @@ public class TitleBlockHelper {
       titleBlock.getReferences().add(position, line);
     } else {
       // position + 1 because on the first position in references we have the semantic element
-      titleBlock.getReferences().add(position + 1, line);      
+      titleBlock.getReferences().add(position + 1, line);
     }
     return line;
   }
@@ -455,7 +455,7 @@ public class TitleBlockHelper {
           List<IContentProposal> proposalsList = new ArrayList<IContentProposal>();
           ContentInstanceContext contentContext = new ContentInstanceContext(resolvedTarget, contents, position);
           if (contents.contains(CAPELLA_PREFIX)) {
-            
+
             // get all the categories for target and match the command name from category with the command in TitleBlock
             Set<ICategory> categories = CategoryRegistry.getInstance().gatherCategories(resolvedTarget);
 
@@ -565,6 +565,28 @@ public class TitleBlockHelper {
     return pieces;
   }
 
+  public static List<Object> getAllContents(DAnnotation titleBlock) {
+    List<Object> allContents = new ArrayList<>();
+
+    if (isTitleBlock(titleBlock)) {
+      for (DAnnotation line : TitleBlockHelper.getTitleBlockLines(titleBlock)) {
+        allContents.add(line);
+        for (DAnnotation cell : TitleBlockHelper.getTitleBlockCells(line)) {
+          allContents.add(cell);
+          for (EObject cellReference : cell.getReferences()) {
+            if (cellReference instanceof DAnnotation) {
+              DAnnotation cellContent = (DAnnotation) cellReference;
+              allContents.add(cellContent);
+              allContents.addAll(cellContent.getDetails());
+            }
+          }
+        }
+      }
+    }
+
+    return allContents;
+  }
+
   /**
    * @param titleBlock
    * @return true if the annotation is a Diagram Title Block type annotation
@@ -607,7 +629,7 @@ public class TitleBlockHelper {
         target = getReferencedElement(getParentTitleBlock(annotation, (DDiagram) annotation.eContainer()));
       }
       if (target instanceof DRepresentation) {
-        target = RepresentationHelper.getRepresentationDescriptor((DRepresentation)target);
+        target = RepresentationHelper.getRepresentationDescriptor((DRepresentation) target);
       }
     }
     return target;
