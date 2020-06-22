@@ -15,4 +15,12 @@
 <plugin>
    <extension-point id="org.polarsys.capella.core.diagram.traceability" name="org.polarsys.capella.core.diagram.traceability" schema="schema/traceability.exsd"/>
 
+   <extension
+         id="titleblock.delete.helper"
+         point="org.polarsys.capella.core.model.handler.deleteCommandProvider">
+      <deleteHelper
+            class="org.polarsys.capella.core.diagram.helpers.TitleBlockDeleteHelper">
+      </deleteHelper>
+   </extension>
+   
 </plugin>
