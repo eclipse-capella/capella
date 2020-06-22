@@ -18,6 +18,7 @@ import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
@@ -141,7 +142,7 @@ public class TitleBlockBasicElementGroup extends AbstractSemanticField {
   }
   
   private void updateTitleBlock(EObject object, String nameValue, String contentField) {
-    DDiagram diagram = (DDiagram) object.eContainer();
+    DRepresentationDescriptor descriptor = (DRepresentationDescriptor) object.eContainer();
     AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
       @Override
       public void run() {
@@ -155,7 +156,7 @@ public class TitleBlockBasicElementGroup extends AbstractSemanticField {
         }
         
         RefreshRepresentationsCommand refreshCommand = new RefreshRepresentationsCommand(
-            TransactionUtil.getEditingDomain(diagram), new NullProgressMonitor(), diagram);
+            TransactionUtil.getEditingDomain(descriptor), new NullProgressMonitor(), descriptor.getRepresentation());
         refreshCommand.execute();
       }
     };
@@ -168,8 +169,7 @@ public class TitleBlockBasicElementGroup extends AbstractSemanticField {
     EObject container = titleBlockCell.eContainer();
     if (container instanceof DDiagram) {
       DDiagram diagram = (DDiagram) container;
-      DAnnotation titleBlock = TitleBlockHelper.getParentTitleBlock(titleBlockCell, diagram);
-
+      DAnnotation titleBlock = TitleBlockHelper.getParentTitleBlock(titleBlockCell);
       Object evaluateResult = TitleBlockHelper.getResultOfExpression(RepresentationHelper.getRepresentationDescriptor((DDiagram) diagram),
           contentTextField.getText(), titleBlock);
       if (evaluateResult instanceof EvaluationException) {

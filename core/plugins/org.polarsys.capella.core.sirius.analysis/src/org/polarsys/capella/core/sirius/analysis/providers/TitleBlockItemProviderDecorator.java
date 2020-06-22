@@ -12,18 +12,12 @@
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.analysis.providers;
 
-import java.net.URL;
-
-import org.eclipse.core.runtime.FileLocator;
-import org.eclipse.core.runtime.Path;
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.polarsys.capella.core.data.gen.edit.decorators.ItemProviderAdapterDecorator;
 import org.polarsys.capella.core.diagram.helpers.TitleBlockHelper;

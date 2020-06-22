@@ -26,7 +26,9 @@ import java.util.Optional;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.sirius.analysis.DiagramServices;
 import org.polarsys.capella.core.sirius.analysis.actions.extensions.AbstractExternalJavaAction;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
@@ -43,7 +45,8 @@ public class InsertRemoveTitleBlockTool extends InsertRemoveTool {
 
   private DAnnotation getAnnotation(String uid) {
     DDiagram diagram = getDiagramContext().getDiagram();
-    Optional<DAnnotation> op = diagram.getEAnnotations().stream().filter(x -> x.getUid().equals(uid)).findFirst();
+    DRepresentationDescriptor descriptor = RepresentationHelper.getRepresentationDescriptor(diagram);
+    Optional<DAnnotation> op = descriptor.getEAnnotations().stream().filter(x -> x.getUid().equals(uid)).findFirst();
 
     if (op.isPresent()) {
       return op.get();
