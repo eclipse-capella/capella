@@ -26,6 +26,7 @@ import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
+import org.eclipse.sirius.diagram.business.api.query.DiagramElementMappingQuery;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -293,7 +294,7 @@ public class DDiagramContents {
 
     ArrayList<DDiagramElement> result = new ArrayList<>();
     for (DDiagramElement view : getMapDiagramElements().get(target)) {
-      if (mapping != null && mapping.equals(view.getDiagramElementMapping())) {
+      if (mapping != null && (mapping.equals(view.getDiagramElementMapping()) || new DiagramElementMappingQuery(mapping).isSuperTypeOf(view.getDiagramElementMapping()))) {
         result.add(view);
       }
     }
@@ -318,7 +319,7 @@ public class DDiagramContents {
 
     ArrayList<DDiagramElement> result = new ArrayList<>();
     for (DDiagramElement view : getMapDiagramElements().get(target)) {
-      if ((mapping == null) || mapping.equals(view.getDiagramElementMapping())) {
+      if ((mapping == null) || (mapping.equals(view.getDiagramElementMapping()) || new DiagramElementMappingQuery(mapping).isSuperTypeOf(view.getDiagramElementMapping()))) {
         if ((containerView == null) || EcoreUtil2.isContainedBy(view, containerView)) {
           result.add(view);
         }

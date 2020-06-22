@@ -25,8 +25,11 @@ import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
+import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.diagram.description.NodeMapping;
+import org.eclipse.sirius.diagram.tools.api.refresh.BestMappingGetter;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.core.sirius.analysis.DDiagramContents;
@@ -728,14 +731,22 @@ public class AbstractShowHide implements IShowHide {
 
     Collection<DSemanticDecorator> result = new ArrayList<DSemanticDecorator>();
     DiagramElementMapping mapping = getMapping(semantic, context, relatedViews);
-
+    
     if (mapping != null) {
       if (mapping instanceof EdgeMapping) {
         Collection<? extends DSemanticDecorator> sourceViews = relatedViews.get(SOURCE);
         Collection<? extends DSemanticDecorator> targetViews = relatedViews.get(TARGET);
+        
+        
         for (DSemanticDecorator sourceView : sourceViews) {
           for (DSemanticDecorator targetView : targetViews) {
-            result.addAll(showEdges(sourceView, targetView, semantic, getContent(), (EdgeMapping) mapping));
+
+            BestMappingGetter bestMappingGetter = new BestMappingGetter((EdgeTarget) sourceView, (EdgeTarget) targetView, semantic);
+            EdgeMapping bestMapping = (EdgeMapping) mapping;
+            if (mapping instanceof EdgeMapping) {
+              bestMapping = bestMappingGetter.getBestEdgeMapping(Collections.singletonList((EdgeMapping)mapping));
+            }
+            result.addAll(showEdges(sourceView, targetView, semantic, getContent(), bestMapping));
           }
         }
       } else if (mapping instanceof AbstractNodeMapping) {
@@ -745,7 +756,15 @@ public class AbstractShowHide implements IShowHide {
         }
         for (DSemanticDecorator targetView : targetViews) {
           if (isValidSemanticView(targetView.getTarget(), targetView, context)) {
-            result.addAll(showNodes(targetView, semantic, getContent(), (AbstractNodeMapping) mapping));
+            BestMappingGetter bestMappingGetter = new BestMappingGetter((DSemanticDecorator) targetView, semantic);
+            AbstractNodeMapping bestMapping = (AbstractNodeMapping) mapping;
+            if (mapping instanceof ContainerMapping) {
+              bestMapping = bestMappingGetter.getBestContainerMapping(Collections.singletonList((ContainerMapping)mapping));
+            }
+            if (mapping instanceof NodeMapping) {
+              bestMapping = bestMappingGetter.getBestNodeMapping(Collections.singletonList((NodeMapping)mapping));
+            }
+            result.addAll(showNodes(targetView, semantic, getContent(), (AbstractNodeMapping) bestMapping));
           }
         }
       }
