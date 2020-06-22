@@ -17,6 +17,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.polarsys.capella.test.diagram.tools.ju.xdfb.CompositeChainDisplay;
+import org.polarsys.capella.test.diagram.tools.ju.xdfb.FunctionalChainCycleDetection;
 import org.polarsys.capella.test.diagram.tools.ju.xdfb.XDFBCreateActorFunction;
 import org.polarsys.capella.test.diagram.tools.ju.xdfb.XDFBCreateConstraint;
 import org.polarsys.capella.test.diagram.tools.ju.xdfb.XDFBCreateConstraintLink;
@@ -51,7 +52,8 @@ public class XDFBDiagramToolsTestSuite extends BasicTestSuite {
   public static Test suite() {
     return new XDFBDiagramToolsTestSuite();
   }
-  
+
+  @Override
   public List<String> getRequiredTestModels() {
     return Arrays.asList("XDFBToolsTestingModel");
   }
@@ -84,11 +86,12 @@ public class XDFBDiagramToolsTestSuite extends BasicTestSuite {
     tests.add(new XDFBTestCaseFunctions());
     tests.add(new XDFBSetContextualElementsScenario());
     tests.add(new CompositeChainDisplay());
+    tests.add(new FunctionalChainCycleDetection());
 
     tests.add(new XDFBDragAndDropTest());
     return tests;
   }
-  
+
   /**
    * 
    * Each test cases of this test suite reloads its test model

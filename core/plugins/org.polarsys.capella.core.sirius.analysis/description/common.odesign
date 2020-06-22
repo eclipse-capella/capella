@@ -19560,7 +19560,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Creates a new Involvement Link referencing a Functional Exchange." name="involve.exchange" label="%common.fcd.involve.exchange" precondition="aql:preSource.isValidFCILinkExchange(preTarget)" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_Exchange']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvementLink_ToExchange.gif">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Creates a new Involvement Link referencing a Functional Exchange." name="involve.exchange" label="%common.fcd.involve.exchange" precondition="aql:preSourceView.isValidFCILinkExchange(preTargetView)" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_Exchange']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvementLink_ToExchange.gif">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -20178,7 +20178,7 @@
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:ToolGroup" name="Advanced Tools">
-            <tools xsi:type="tool:EdgeCreationDescription" documentation="Creates a new Involvement Link referencing a Functional Exchange with a linked Sequence Link." name="involve.exchange.with.sequence.link" label="%common.fcd.involve.exchange.with.sequence.link" precondition="aql:preSource.isValidFCILinkExchange(preTarget)" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_Exchange']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvementLink_ToExchange.gif">
+            <tools xsi:type="tool:EdgeCreationDescription" documentation="Creates a new Involvement Link referencing a Functional Exchange with a linked Sequence Link." name="involve.exchange.with.sequence.link" label="%common.fcd.involve.exchange.with.sequence.link" precondition="aql:preSourceView.isValidFCILinkExchange(preTargetView)" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_Exchange']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvementLink_ToExchange.gif">
               <sourceVariable name="source"/>
               <targetVariable name="target"/>
               <sourceViewVariable name="sourceView"/>

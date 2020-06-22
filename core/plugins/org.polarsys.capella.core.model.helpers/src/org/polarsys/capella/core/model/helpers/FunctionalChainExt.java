@@ -39,7 +39,6 @@ import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
 import org.polarsys.capella.common.helpers.SimpleOrientedGraph;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.menu.dynamic.CreationHelper;
-import org.polarsys.capella.common.utils.graph.CycleDetectionUtils;
 import org.polarsys.capella.common.utils.graph.IDirectedGraph;
 import org.polarsys.capella.core.data.capellacommon.AbstractCapabilityPkg;
 import org.polarsys.capella.core.data.capellacore.InvolvedElement;
@@ -65,6 +64,7 @@ import org.polarsys.capella.core.data.interaction.FunctionalChainAbstractCapabil
 import org.polarsys.capella.core.data.interaction.InteractionFactory;
 import org.polarsys.capella.core.data.oa.OaFactory;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
+import org.polarsys.capella.core.model.helpers.graph.InvolvementHierarchyGraph;
 import org.polarsys.capella.core.model.utils.CapellaLayerCheckingExt;
 
 /**
@@ -765,16 +765,7 @@ public class FunctionalChainExt {
    * @return if there is cycle or not
    */
   public static boolean containsACycle(FunctionalChain functionalChain) {
-    // Get the graph representation
-    FunctionalChainDirectedGraph graph = getFunctionalChainDirectedGraph(functionalChain);
-    if (graph != null) {
-      // Compute detection algorithm
-      boolean cycleFound = CycleDetectionUtils.containsCycles(graph);
-      if (cycleFound) {
-        return true;
-      }
-    }
-    return false;
+    return new InvolvementHierarchyGraph(functionalChain).hasCycle();
   }
 
   /**
@@ -1069,6 +1060,7 @@ public class FunctionalChainExt {
      * Directed links of a source FunctionalChainInvolvements are obtained from NextFunctionalChainInvolvements method
      * {@inheritDoc}
      */
+    @Override
     public Iterator<Object> getSucessors(Object source) {
       if (source instanceof FunctionalChainInvolvement) {
         FunctionalChainInvolvement involvement = (FunctionalChainInvolvement) source;
@@ -1083,6 +1075,7 @@ public class FunctionalChainExt {
     /**
      * Nodes are the FunctionalChainInvolvements {@inheritDoc}
      */
+    @Override
     public Iterator<Object> getNodes() {
       List functionalChainInvolvements = chain.getInvolvedFunctionalChainInvolvements();
       if (functionalChainInvolvements != null) {
@@ -1133,7 +1126,7 @@ public class FunctionalChainExt {
         .map(FunctionalChain.class::cast).distinct().forEach(fc -> ownedSequenceNodes.addAll(getFlatControlNodes(fc)));
     return ownedSequenceNodes;
   }
-  
+
   public static Collection<SequenceLink> getFlatSequenceLinks(FunctionalChain functionalChain) {
     List<SequenceLink> ownedSequenceLinks = new ArrayList<>();
     ownedSequenceLinks.addAll(functionalChain.getOwnedSequenceLinks());
