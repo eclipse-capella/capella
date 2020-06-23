@@ -29,6 +29,7 @@ import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
 import org.polarsys.capella.core.data.ctx.SystemComponent;
+import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.information.AbstractEventOperation;
@@ -489,16 +490,53 @@ public class TransitionHelper {
 
   public boolean isIS2ISSALATransitionAvailable(EObject element) {
     return element instanceof Scenario && ((Scenario) element).getKind() == ScenarioKind.INTERFACE
-        && CapellaLayerCheckingExt.isAOrInContextLayer((Scenario) element);
+        && CapellaLayerCheckingExt.isAOrInContextLayer((Scenario) element)
+        && isIS2ISTransitionAvailable((Scenario) element, "SALA");
   }
 
   public boolean isIS2ISLAPATransitionAvailable(EObject element) {
     return element instanceof Scenario && ((Scenario) element).getKind() == ScenarioKind.INTERFACE
-        && CapellaLayerCheckingExt.isAOrInLogicalLayer((Scenario) element);
+        && CapellaLayerCheckingExt.isAOrInLogicalLayer((Scenario) element)
+        && isIS2ISTransitionAvailable((Scenario) element, "LAPA");
   }
 
   public boolean isIS2ISPAEPBSTransitionAvailable(EObject element) {
     return element instanceof Scenario && ((Scenario) element).getKind() == ScenarioKind.INTERFACE
-        && CapellaLayerCheckingExt.isAOrInPhysicalLayer((Scenario) element);
+        && CapellaLayerCheckingExt.isAOrInPhysicalLayer((Scenario) element)
+        && isIS2ISTransitionAvailable((Scenario) element, "PAEPBS");
+  }
+  
+  private boolean isIS2ISTransitionAvailable(Scenario scenario, String transition) {
+
+    BlockArchitecture architectureSource = BlockArchitectureExt.getRootBlockArchitecture(scenario);
+
+    // Disable command if there is a transitioned IS
+    for (AbstractTrace trace : scenario.getIncomingTraces()) {
+      TraceableElement src = trace.getSourceElement();
+      if (src instanceof Scenario) {
+        Scenario existingScenario = (Scenario) src;
+        // Should be an Interface Scenario
+        if (existingScenario.getKind() == ScenarioKind.INTERFACE) {
+          BlockArchitecture architectureTarget = BlockArchitectureExt.getRootBlockArchitecture(existingScenario);
+          if ("SALA".equals(transition)) {
+            if (architectureSource instanceof SystemAnalysis && architectureTarget instanceof LogicalArchitecture) {
+              return false;
+            }
+          } else if ("LAPA".equals(transition)) {
+            if (architectureSource instanceof LogicalArchitecture
+                && architectureTarget instanceof PhysicalArchitecture) {
+              return false;
+            }
+          } else if ("PAEPBS".equals(transition)) {
+            if (architectureSource instanceof PhysicalArchitecture && architectureTarget instanceof EPBSArchitecture) {
+              return false;
+            }
+          }
+
+          continue;
+        }
+      }
+    }
+    return true;
   }
 }
