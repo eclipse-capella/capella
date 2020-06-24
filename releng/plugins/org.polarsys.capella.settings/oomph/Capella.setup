@@ -111,8 +111,6 @@
           <value>remoteURI</value>
         </detail>
       </annotation>
-            value="Copyright (c) $${date} THALES GLOBAL SERVICES.&#xA;This program and the accompanying materials are made available under the&#xA;terms of the Eclipse Public License 2.0 which is available at&#xA;http://www.eclipse.org/legal/epl-2.0&#xA; &#xA;SPDX-License-Identifier: EPL-2.0&#xA; &#xA;Contributors:&#xA;   Thales - initial API and implementation"/>
-        <setupTask
       <configSections
           name="core">
         <properties
