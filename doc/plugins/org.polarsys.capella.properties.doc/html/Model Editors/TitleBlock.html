@@ -37,6 +37,7 @@
 				</td>
 				<td>
 					<p>The name of the label of the current Title Block cell.</p>
+					<p>If a Capella service is used in Content section, name is deduced from the contributed service.</p>
 				</td>
 				<td>
 					<p>&lt;Name&gt;</p>
@@ -49,7 +50,15 @@
 					</p>
 				</td>
 				<td>
-					<p>The data displayed in the cell, which can be customized via aql:, feature: or capella: queries.</p>
+					<p>A query that will provide the content that we need to display in the cell of the Title Block. The content of data fields can be customized via:</p>
+					<ul>
+						<li>
+							<a href="/wiki/../help/topic/org.polarsys.capella.ui.doc/html/12.%20Model%20Analysis/12.5.1%20AQL%20Queries.html" title="../help/topic/org.polarsys.capella.ui.doc/html/12.%20Model%20Analysis/12.5.1%20AQL%20Queries.html">AQL queries</a> (aql:)
+						</li>
+						<li>Name of feature (feature:)</li>
+						<li>Semantic browser queries (capella:)</li>
+					</ul>
+					<p>Available services are proposed with the command Ctrl+Space on content text field.</p>
 				</td>
 				<td>
 					<p>&lt;feature:name&gt;</p>
