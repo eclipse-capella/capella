@@ -151,10 +151,12 @@ public class TitleBlockPreferenceField extends FieldEditor {
   }
 
   private void disposeColumns() {
+    v.getTable().setRedraw(false);
     TableColumn[] columns = v.getTable().getColumns();
     for (TableColumn tc : columns) {
       tc.dispose();
     }
+    v.getTable().setRedraw(true);
   }
 
   private void refreshTableInsertColumns(int index) {
