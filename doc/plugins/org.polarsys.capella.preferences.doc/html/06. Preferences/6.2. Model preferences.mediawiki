@@ -224,6 +224,8 @@ On the sub section of '''Capella / Transitions/Generation preferences''', it is 
 * The checkbox '''&ldquo;Propagate Exchange Items from Functional Exchanges to Function Ports&rdquo;''' specifies whether Exchange Items from Functional Exchanges should be propagated to their related Function Ports during Interface generation.
 * The checkbox '''&ldquo;Create Component Exchange Between provider/requirer ports&rdquo;''' specifies if the Interface generation should create a Component Exchange between each pair of Interface provider/requirer ports if such an exchange does not already exist.
 
+* The checkbox '''Transit Physical Components to Configuration Items''' specifies whether Physical Components should be transformed into Configuration Items when performing a transition or an initialization from the Physical Architecture to EPBS level.
+
 <br>
 <br>
 
