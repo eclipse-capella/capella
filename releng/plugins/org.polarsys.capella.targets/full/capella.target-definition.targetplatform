@@ -26,7 +26,7 @@ location eclipse-releases-oxygen "http://download.eclipse.org/releases/oxygen/20
 	org.eclipse.viatra.query.sdk.feature.source.feature.group
 }
 
-location sirius-6.1.x "http://download.eclipse.org/sirius/updates/stable/6.1.4-S20200120-085637/oxygen" {
+location sirius-6.1.x "http://download.eclipse.org/sirius/updates/releases/6.1.4/oxygen" {
 	org.eclipse.sirius.doc.feature.feature.group
 	org.eclipse.sirius.doc.feature.source.feature.group
 	org.eclipse.sirius.runtime.feature.group
