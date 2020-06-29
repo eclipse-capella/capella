@@ -1,7 +1,11 @@
 pipeline {
 	agent {
-		label 'ui-test'
-	}
+        kubernetes {
+            label 'capella-buildtest'
+            defaultContainer 'uitests'
+            yaml libraryResource('podTemplates/ui-test-agent-3.29.yaml')
+        }
+    }
   
 	tools {
 		maven 'apache-maven-latest'
