@@ -1,7 +1,73 @@
 pipeline {
 	agent {
-		label 'ui-test'
-	}
+        kubernetes {
+            label 'capella-buildtest'
+            defaultContainer 'uitests'
+            yaml """
+apiVersion: v1
+kind: Pod
+spec:
+  containers:
+  - name: uitests
+    image: eclipsecbijenkins/ui-test-agent:3.29@sha256:b5f847bd86f2761b7c8487e8b97fc5925d9aba6382c88a68fea1aaa01e12db59
+    tty: true
+    command: [ "uid_entrypoint", "cat" ]
+    resources:
+      requests:
+        memory: "3.5Gi"
+        cpu: "1"
+      limits:
+        memory: "3.5Gi"
+        cpu: "1"
+    volumeMounts:
+    - name: volume-known-hosts
+      mountPath: /home/jenkins/.ssh
+    - name: tools
+      mountPath: /opt/tools
+    - name: settings-xml
+      mountPath: /home/jenkins/.m2/settings.xml
+      subPath: settings.xml
+      readOnly: true
+    - name: toolchains-xml
+      mountPath: /home/jenkins/.m2/toolchains.xml
+      subPath: toolchains.xml
+      readOnly: true
+    - name: settings-security-xml
+      mountPath: /home/jenkins/.m2/settings-security.xml
+      subPath: settings-security.xml
+      readOnly: true
+    - name: m2-repo
+      mountPath: /home/jenkins/.m2/repository
+  volumes:
+  - name: volume-known-hosts
+    configMap:
+      name: known-hosts
+  - name: tools
+    persistentVolumeClaim:
+      claimName: tools-claim-jiro-capella
+  - name: settings-xml
+    secret:
+      secretName: m2-secret-dir
+      items:
+      - key: settings.xml
+        path: settings.xml
+  - name: toolchains-xml
+    configMap:
+      name: m2-dir
+      items:
+      - key: toolchains.xml
+        path: toolchains.xml
+  - name: settings-security-xml
+    secret:
+      secretName: m2-secret-dir
+      items:
+      - key: settings-security.xml
+        path: settings-security.xml
+  - name: m2-repo
+    emptyDir: {}
+"""
+        }
+    }
   
 	tools {
 		maven 'apache-maven-latest'
