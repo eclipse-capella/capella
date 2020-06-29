@@ -162,8 +162,10 @@ public class TestRunListener implements ITestRunListener2 {
       }
       element = new TestSuiteElement(testId, testName, testCount);
       testSuites.put(testId, (TestSuiteElement) element);
-      String parentId = description.split(",")[5];
-      parent = ((TestSuiteElement) testSuites.get(parentId));
+      if (description.split(",").length > 4) {
+        String parentId = description.split(",")[5];
+        parent = ((TestSuiteElement) testSuites.get(parentId));
+      }
     } else {
       element = new TestElement(testId, testName);
       remainingTests.addLast(element);
