@@ -29,7 +29,8 @@ This wizard helps you setting the label of the cell and the content displayed in
 | 
 The name of the label of the current Title Block cell.
 
- 
+If a Capella service is used in Content section, name is deduced from the contributed service.
+
 | 
 &lt;Name&gt;
 
@@ -40,8 +41,13 @@ The name of the label of the current Title Block cell.
 
  
 | 
-The data displayed in the cell, which can be customized via aql:, feature: or capella: queries.
+A query that will provide the content that we need to display in the cell of the Title Block. The content of data fields can be customized via:
 
+* [[../help/topic/org.polarsys.capella.ui.doc/html/12.%20Model%20Analysis/12.5.1%20AQL%20Queries.html|AQL queries]] (aql:)
+* Name of feature (feature:)
+* Semantic browser queries (capella:)
+
+Available services are proposed with the command Ctrl+Space on content text field.
  
 | 
 &lt;feature:name&gt;
