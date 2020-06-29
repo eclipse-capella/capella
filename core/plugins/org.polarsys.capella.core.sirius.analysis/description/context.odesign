@@ -4099,8 +4099,10 @@
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container">
                     <subModelOperations xsi:type="tool_1:For" expression="aql:self.void2Null(self.makeDiff(ownedNodeContainer, containerView.target.getComponentType()))">
                       <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (selection->includes(i))">
-                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerView.containers->select(container | (container.target.oclIsKindOf(cs::Part)) and (container.target.getComponentType() = i))->first()">
-                          <subModelOperations xsi:type="tool_1:DeleteView"/>
+                        <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:containerView.containers->select(container | (container.target.oclIsKindOf(cs::Part)) and (container.target.getComponentType() = i))->size() > 0">
+                          <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerView.containers->select(container | (container.target.oclIsKindOf(cs::Part)) and (container.target.getComponentType() = i))->first()">
+                            <subModelOperations xsi:type="tool_1:DeleteView"/>
+                          </subModelOperations>
                         </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
