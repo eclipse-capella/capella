@@ -129,6 +129,7 @@ import org.polarsys.capella.core.data.ctx.SystemAnalysis;
 import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.ctx.SystemComponentPkg;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
+import org.polarsys.capella.core.data.epbs.ConfigurationItemPkg;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.ComponentExchangeCategory;
@@ -1316,7 +1317,8 @@ public class CsServices {
   public Collection<? extends CapellaElement> getABShowHideComponent(DSemanticDecorator decorator, EObject target) {
 
     // In multipart mode or in EPBS Architecture Blank, we display parts
-    if (isMultipartMode((ModelElement) target) || (getComponentType(decorator) instanceof ConfigurationItem)) {
+    if (isMultipartMode((ModelElement) target) || getComponentType(decorator) instanceof ConfigurationItem
+        || getComponentType(decorator) instanceof ConfigurationItemPkg) {
 
       Collection<Part> parts = new ArrayList<>();
 
