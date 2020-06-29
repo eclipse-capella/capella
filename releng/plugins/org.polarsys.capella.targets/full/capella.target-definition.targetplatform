@@ -44,7 +44,7 @@ location sirius-5.1.x "https://download.eclipse.org/sirius/updates/releases/5.1.
 	org.eclipse.sirius.runtime.ide.ui.acceleo.source.feature.group
 }
 
-location kitalpha-runtime-core-master "https://ci.polarsys.org/kitalpha/job/kitalpha-v1.2.x/88/artifact/releng/plugins/org.polarsys.kitalpha.releng.runtime.core.updatesite/target/repository/" {
+location kitalpha-runtime-core-master "https://download.eclipse.org/kitalpha/updates/release/runtimecore/1.2.2/" {
 	org.polarsys.kitalpha.ad.runtime.feature.feature.group
 	org.polarsys.kitalpha.cadence.feature.feature.group
 	org.polarsys.kitalpha.common.feature.feature.group
@@ -66,11 +66,11 @@ location kitalpha-runtime-core-master "https://ci.polarsys.org/kitalpha/job/kita
 	org.polarsys.kitalpha.richtext.widget.ext.feature.source.feature.group
 }
 
-location kitalpha-runtime-master "https://ci.polarsys.org/kitalpha/job/kitalpha-v1.2.x/88/artifact/releng/plugins/org.polarsys.kitalpha.releng.runtime.updatesite/target/repository/" {
+location kitalpha-runtime-master "https://download.eclipse.org/kitalpha/updates/release/runtime/1.2.2/" {
 	org.polarsys.kitalpha.richtext.widget.doc.feature.feature.group
 }
 
-location kitalpha-sdk-master "https://ci.polarsys.org/kitalpha/job/kitalpha-v1.2.x/88/artifact/releng/plugins/org.polarsys.kitalpha.releng.sdk.updatesite/target/repository/" {
+location kitalpha-sdk-master "https://download.eclipse.org/kitalpha/updates/release/sdk/1.2.2/" {
 	org.polarsys.kitalpha.emde.sdk.feature.feature.group
 	org.polarsys.kitalpha.doc.feature.feature.group
 }
