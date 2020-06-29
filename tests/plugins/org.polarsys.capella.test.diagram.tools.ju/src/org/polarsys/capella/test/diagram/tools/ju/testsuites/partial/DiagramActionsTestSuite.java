@@ -36,7 +36,7 @@ public class DiagramActionsTestSuite extends BasicTestSuite {
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
     tests.add(new RefreshAllSubRepresentations());
-    tests.add(new RemoveHiddenElements());
+    //tests.add(new RemoveHiddenElements());
     return tests;
   }
 

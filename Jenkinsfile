@@ -100,11 +100,81 @@ pipeline {
 	     	}
 	    }
 	    
+    	stage('Run tests') {    		
+    		when {
+	          	expression { 
+	        		github.isPullRequest()
+	        	}
+	      	}
+    		
+        	steps {              	
+        		script {
+        			wrap([$class: 'Xvnc', takeScreenshot: false, useXauthority: true]) {
+		        		
+		        		tester.runUITests("${CAPELLA_PRODUCT_PATH}", 'ModelQueriesValidation', 'org.polarsys.capella.test.suites.ju', 
+		        			['org.polarsys.capella.test.business.queries.ju.testSuites.main.BusinessQueryTestSuite',
+		        			 'org.polarsys.capella.test.semantic.queries.ju.testsuites.SemanticQueriesTestSuite', 
+		        			 'org.polarsys.capella.test.validation.rules.ju.testsuites.main.ValidationRulesTestSuite'])
+		        			 
+		        		tester.runUITests("${CAPELLA_PRODUCT_PATH}", 'LibRecTransition', 'org.polarsys.capella.test.suites.ju', 
+		        			['org.polarsys.capella.test.libraries.ju.testsuites.main.LibrariesTestSuite',
+		        			  'org.polarsys.capella.test.recrpl.ju.testsuites.main.RecRplTestSuite',
+		        			  'org.polarsys.capella.test.transition.ju.testsuites.main.TransitionTestSuite'])
+		        		
+		        		tester.runUITests("${CAPELLA_PRODUCT_PATH}", 'DiagramTools1', 'org.polarsys.capella.test.suites.ju', 
+		        			['org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.MSDiagramToolsTestSuite', 
+		        			 'org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.SFDBDiagramToolsTestSuite', 
+		        			 'org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.MSMDiagramToolsTestSuite',
+		        			 'org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.CDBDiagramToolsTestSuite',
+		        			 'org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.LABDiagramToolsTestSuite',
+		        			 'org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.IDBDiagramToolsTestSuite',
+		        			 'org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.PABDiagramToolsTestSuite',
+		        			 'org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.SABDiagramToolsTestSuite',
+		        			 'org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.MCBDiagramToolsTestSuite',
+		        			 'org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.XABDiagramToolsTestSuite'
+		        			])
+		        			
+		        		tester.runUITests("${CAPELLA_PRODUCT_PATH}", 'DiagramTools2', 'org.polarsys.capella.test.suites.ju',
+		        			['org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.ESDiagramToolsTestSuite', 
+		        			 'org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.XBDiagramToolsTestSuite', 
+		        			 'org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.XDFBDiagramToolsTestSuite', 
+		        			 'org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.DiagramActionsTestSuite',
+		        			 'org.polarsys.capella.test.diagram.tools.ju.es.MultiInstanceRoleTest'
+		        			])
+		        			        			
+		        		tester.runUITests("${CAPELLA_PRODUCT_PATH}", 'DiagramMiscFilters', 'org.polarsys.capella.test.suites.ju', 
+		        			['org.polarsys.capella.test.diagram.misc.ju.testsuites.DiagramMiscTestSuite',
+		        			  'org.polarsys.capella.test.diagram.filters.ju.testsuites.DiagramFiltersTestSuite'])		        			    
+		   
+		        		tester.runUITests("${CAPELLA_PRODUCT_PATH}", 'Views', 'org.polarsys.capella.test.suites.ju', 
+		        			['org.polarsys.capella.test.model.ju.testsuites.main.ModelTestSuite', 
+		        			 'org.polarsys.capella.test.richtext.ju.testsuites.RichtextTestSuite',
+		        			 'org.polarsys.capella.test.fastlinker.ju.testsuites.FastLinkerTestsSuite',
+		        			 'org.polarsys.capella.test.explorer.activity.ju.testsuites.ActivityExplorerTestsSuite',
+		        			 'org.polarsys.capella.test.progressmonitoring.ju.testsuites.SetProgressTestSuite',
+		        			 'org.polarsys.capella.test.navigator.ju.testsuites.main.NavigatorUITestSuite'])
+		        			 
+		        		tester.runUITests("${CAPELLA_PRODUCT_PATH}", 'MigrationCommandLine', 'org.polarsys.capella.test.suites.ju', 
+		        			['org.polarsys.capella.test.migration.ju.testsuites.main.MigrationTestSuite',
+		        			 'org.polarsys.capella.test.diagram.layout.ju.testsuites.LayoutTestSuite',
+		        			 'org.polarsys.capella.test.commandline.ju.testsuites.CommandLineTestSuite'])		 	
+		   
+		  				tester.runUITests("${CAPELLA_PRODUCT_PATH}", 'Detach', 'org.polarsys.capella.test.suites.ju', 
+		        			['org.polarsys.capella.test.model.ju.testsuites.partial.DetachTestSuite'])
+		        			
+		        		tester.runNONUITests("${CAPELLA_PRODUCT_PATH}", 'NotUINavigator', 'org.polarsys.capella.test.suites.ju', 
+		        			['org.polarsys.capella.test.navigator.ju.testsuites.main.NavigatorTestSuite'])
+	        		}
+	        		
+	        		junit '*.xml'
+				}
+			}
+		}
 	}
   
 	post {
     	always {
-       		archiveArtifacts artifacts: '**/*.log, *.log'
+       		archiveArtifacts artifacts: '**/*.log, *.log, *.xml, **/*.layout'
     	}
     	
     	success  {
