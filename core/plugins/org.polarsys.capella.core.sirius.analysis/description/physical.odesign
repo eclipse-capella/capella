@@ -2938,8 +2938,10 @@
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
                     <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(self.makeDiff(actorsInDiagram, containerView.target.getComponentType()))">
                       <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selection->includes(i))">
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.containers->select(container | (container.target.oclIsKindOf(cs::Part)) and (container.target.getComponentType() = i))->first()">
-                          <subModelOperations xsi:type="tool:DeleteView"/>
+                        <subModelOperations xsi:type="tool:If" conditionExpression="aql:containerView.containers->select(container | (container.target.oclIsKindOf(cs::Part)) and (container.target.getComponentType() = i))->size() > 0">
+                          <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.containers->select(container | (container.target.oclIsKindOf(cs::Part)) and (container.target.getComponentType() = i))->first()">
+                            <subModelOperations xsi:type="tool:DeleteView"/>
+                          </subModelOperations>
                         </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
