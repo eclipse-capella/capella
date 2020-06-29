@@ -15,17 +15,13 @@ package org.polarsys.capella.core.diagram.helpers;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.jface.bindings.keys.KeyStroke;
 import org.eclipse.jface.bindings.keys.ParseException;
 import org.eclipse.jface.fieldassist.ContentProposalAdapter;
@@ -57,11 +53,8 @@ import org.polarsys.capella.common.ui.toolkit.browser.category.CategoryRegistry;
 import org.polarsys.capella.common.ui.toolkit.browser.category.ICategory;
 import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
-import org.polarsys.kitalpha.ad.common.utils.URIHelper;
-import org.polarsys.kitalpha.ad.services.manager.ViewpointManager;
-import org.polarsys.kitalpha.ad.viewpoint.coredomain.viewpoint.model.Viewpoint;
+import org.polarsys.capella.core.model.helpers.viewpoint.ViewpointHelper;
 import org.polarsys.kitalpha.emde.model.Element;
-import org.polarsys.kitalpha.resourcereuse.model.Resource;
 
 /**
  * Various helpers for {@link DAnnotation} annotations on {@link Title Blocks} elements.
@@ -79,11 +72,6 @@ public class TitleBlockHelper {
   public static final String AQL_PREFIX = "aql:";
   public static final String FEATURE_PREFIX = "feature:";
   public static final String TITLE_BLOCK_MAPPING_PREFIX = "DT_TitleBlock";
-
-  /**
-   * Lazy initialization {@link TitleBlockHelper::getViewpointPackages()}
-   */
-  private static Set<EPackage> viewpointPackages = null;
 
   /**
    * @param titleBlock
@@ -687,15 +675,15 @@ public class TitleBlockHelper {
     if (item instanceof EObject) {
       EObject eObject = (EObject) item;
 
-      if (eObject instanceof Element || eObject instanceof DRepresentationDescriptor) {
-        return true;
-      }
-
-      EPackage ePackage = eObject.eClass().getEPackage();
-      return getViewpointPackages().contains(ePackage);
+      return eObject instanceof Element || eObject instanceof DRepresentationDescriptor || isViewpointElement(eObject);
     }
 
     return true;
+  }
+
+  private static boolean isViewpointElement(EObject eObject) {
+    EPackage ePackage = eObject.eClass().getEPackage();
+    return ViewpointHelper.getViewpointPackages().contains(ePackage);
   }
 
   private static Object sanitizeResultItem(Object resultItem) {
@@ -714,27 +702,6 @@ public class TitleBlockHelper {
 
   private static Object sanitizeResultItems(Collection<?> originalResult) {
     return originalResult.stream().map(TitleBlockHelper::sanitizeResultItem).collect(Collectors.toList());
-  }
-
-  private static Set<EPackage> getViewpointPackages() {
-    if (viewpointPackages == null) {
-      viewpointPackages = new HashSet<>();
-
-      ResourceSet resourceSet = new ResourceSetImpl();
-      for (Resource resource : ViewpointManager.getAvailableViewpoints()) {
-        URI uri = URIHelper.createURI(resource);
-        Viewpoint viewpoint = (Viewpoint) resourceSet.getEObject(uri, true);
-        if (viewpoint.getMetamodel() != null) {
-          for (EPackage ePackage : viewpoint.getMetamodel().getModels()) {
-            EPackage registeredPkg = EPackage.Registry.INSTANCE.getEPackage(ePackage.getNsURI());
-
-            viewpointPackages.add(registeredPkg);
-          }
-        }
-      }
-    }
-
-    return viewpointPackages;
   }
 
 }
