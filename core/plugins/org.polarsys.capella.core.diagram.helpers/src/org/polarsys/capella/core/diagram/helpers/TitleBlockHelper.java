@@ -15,12 +15,17 @@ package org.polarsys.capella.core.diagram.helpers;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.jface.bindings.keys.KeyStroke;
 import org.eclipse.jface.bindings.keys.ParseException;
 import org.eclipse.jface.fieldassist.ContentProposalAdapter;
@@ -52,6 +57,11 @@ import org.polarsys.capella.common.ui.toolkit.browser.category.CategoryRegistry;
 import org.polarsys.capella.common.ui.toolkit.browser.category.ICategory;
 import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
+import org.polarsys.kitalpha.ad.common.utils.URIHelper;
+import org.polarsys.kitalpha.ad.services.manager.ViewpointManager;
+import org.polarsys.kitalpha.ad.viewpoint.coredomain.viewpoint.model.Viewpoint;
+import org.polarsys.kitalpha.emde.model.Element;
+import org.polarsys.kitalpha.resourcereuse.model.Resource;
 
 /**
  * Various helpers for {@link DAnnotation} annotations on {@link Title Blocks} elements.
@@ -69,6 +79,11 @@ public class TitleBlockHelper {
   public static final String AQL_PREFIX = "aql:";
   public static final String FEATURE_PREFIX = "feature:";
   public static final String TITLE_BLOCK_MAPPING_PREFIX = "DT_TitleBlock";
+
+  /**
+   * Lazy initialization {@link TitleBlockHelper::getViewpointPackages()}
+   */
+  private static Set<EPackage> viewpointPackages = null;
 
   /**
    * @param titleBlock
@@ -139,7 +154,7 @@ public class TitleBlockHelper {
     DRepresentationDescriptor descriptor = RepresentationHelper.getRepresentationDescriptor(diagram);
     if (descriptor != null && descriptor.getEAnnotations() != null) {
       return descriptor.getEAnnotations().stream().filter(a -> a.getSource().equals(ELEMENT_TITLE_BLOCK))
-        .collect(Collectors.toList());
+          .collect(Collectors.toList());
     }
     return Collections.emptyList();
   }
@@ -148,7 +163,7 @@ public class TitleBlockHelper {
     DRepresentationDescriptor descriptor = RepresentationHelper.getRepresentationDescriptor(diagram);
     if (descriptor != null && descriptor.getEAnnotations() != null) {
       return descriptor.getEAnnotations().stream().filter(a -> a.getSource().equals(DIAGRAM_TITLE_BLOCK))
-        .collect(Collectors.toList());
+          .collect(Collectors.toList());
     }
     return Collections.emptyList();
   }
@@ -410,39 +425,6 @@ public class TitleBlockHelper {
     line.getDetails().put(CONTENT, content);
   }
 
-  /**
-   * 
-   * @param diagramDesc
-   * @param expression:
-   *          the expression to be evaluate (ex feature: name, or capella: xyz)
-   * @param titleBlock
-   * @return result after the expression was evaluated
-   */
-  public static Object getResultOfExpression(DRepresentationDescriptor diagramDesc, String expression,
-      DAnnotation titleBlock) {
-    EObject objToEvaluate = TitleBlockHelper.getSemanticElementReference(titleBlock);
-    // if is a Diagram Title Block, objToEvaluate will be the diagram
-    if (objToEvaluate == null) {
-      objToEvaluate = diagramDesc;
-    }
-
-    IInterpreterProvider provider = CompoundInterpreter.INSTANCE.getProviderForExpression(expression);
-
-    if (provider instanceof DefaultInterpreterProvider) {
-      return new EvaluationException();
-    }
-
-    IInterpreter interpreter = provider.createInterpreter();
-    Object result = null;
-    try {
-      result = interpreter.evaluate(objToEvaluate, expression);
-    } catch (EvaluationException e) {
-      return e;
-    }
-
-    return result;
-  }
-
   public static void getServicesProposals(Text textField, EObject target) {
     KeyStroke keyStroke;
     EObject resolvedTarget = CapellaAdapterHelper.resolveDescriptorOrBusinessObject(target);
@@ -661,4 +643,98 @@ public class TitleBlockHelper {
     }
     return "";
   }
+
+  /**
+   * Returns the evaluation result of a Title Block expression (aql expression or capella semantic browser query).
+   * 
+   * @param descriptor
+   * @param expression
+   * @param titleBlock
+   * @return the evaluation result of a Title Block expression.
+   */
+  public static Object getResultOfExpression(DRepresentationDescriptor descriptor, String expression,
+      DAnnotation titleBlock) {
+    EObject semanticElement = TitleBlockHelper.getSemanticElementReference(titleBlock);
+
+    // if is a Diagram Title Block, the semantic element will be the descriptor
+    if (semanticElement == null) {
+      semanticElement = descriptor;
+    }
+
+    IInterpreterProvider provider = CompoundInterpreter.INSTANCE.getProviderForExpression(expression);
+
+    if (provider instanceof DefaultInterpreterProvider) {
+      return new EvaluationException();
+    }
+
+    IInterpreter interpreter = provider.createInterpreter();
+    Object result = null;
+    try {
+      result = interpreter.evaluate(semanticElement, expression);
+    } catch (EvaluationException e) {
+      return e;
+    }
+
+    if (result instanceof Collection) {
+      Collection<?> originalResult = (Collection<?>) result;
+      return sanitizeResultItems(originalResult);
+    }
+
+    return sanitizeResultItem(result);
+  }
+
+  private static boolean isValidResultItem(Object item) {
+    if (item instanceof EObject) {
+      EObject eObject = (EObject) item;
+
+      if (eObject instanceof Element || eObject instanceof DRepresentationDescriptor) {
+        return true;
+      }
+
+      EPackage ePackage = eObject.eClass().getEPackage();
+      return getViewpointPackages().contains(ePackage);
+    }
+
+    return true;
+  }
+
+  private static Object sanitizeResultItem(Object resultItem) {
+    if (isValidResultItem(resultItem)) {
+      return resultItem;
+    }
+
+    String sanitizedText = EObjectLabelProviderHelper.getText(resultItem);
+
+    if (sanitizedText != null && !sanitizedText.isEmpty()) {
+      return sanitizedText;
+    }
+
+    return resultItem != null ? resultItem.toString() : "";
+  }
+
+  private static Object sanitizeResultItems(Collection<?> originalResult) {
+    return originalResult.stream().map(TitleBlockHelper::sanitizeResultItem).collect(Collectors.toList());
+  }
+
+  private static Set<EPackage> getViewpointPackages() {
+    if (viewpointPackages == null) {
+      viewpointPackages = new HashSet<>();
+
+      ResourceSet resourceSet = new ResourceSetImpl();
+      for (Resource resource : ViewpointManager.getAvailableViewpoints()) {
+        URI uri = URIHelper.createURI(resource);
+        Viewpoint viewpoint = (Viewpoint) resourceSet.getEObject(uri, true);
+        if (viewpoint.getMetamodel() != null) {
+          for (EPackage ePackage : viewpoint.getMetamodel().getModels()) {
+            EPackage registeredPkg = EPackage.Registry.INSTANCE.getEPackage(ePackage.getNsURI());
+
+            viewpointPackages.add(registeredPkg);
+          }
+        }
+      }
+    }
+
+    return viewpointPackages;
+  }
+
 }
