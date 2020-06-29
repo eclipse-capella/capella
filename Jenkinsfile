@@ -1,6 +1,6 @@
 pipeline {
 	agent {
-		label 'ui-test'
+		label 'migration'
 	}
   
 	tools {
