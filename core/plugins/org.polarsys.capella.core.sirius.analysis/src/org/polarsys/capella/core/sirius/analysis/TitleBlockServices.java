@@ -13,6 +13,7 @@
 package org.polarsys.capella.core.sirius.analysis;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -40,11 +41,11 @@ import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.diagram.ui.business.api.helper.graphicalfilters.CompositeFilterApplicationBuilder;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
-import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
 import org.eclipse.swt.widgets.Display;
 import org.polarsys.capella.common.ef.command.AbstractCommand;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.core.diagram.helpers.DAnnotationHelper;
 import org.polarsys.capella.core.diagram.helpers.TitleBlockHelper;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.sirius.analysis.preferences.TitleBlockPreferencesInitializer;
@@ -657,33 +658,76 @@ public class TitleBlockServices {
   }
 
   /**
+   * Interprets the evaluation expression of the cell and returns the result. EObjects are returned as they are, but
+   * primitive values are wrapped in a DAnnotations (since Sirius needs an EObject target).
    * 
    * @param diagram
    * @param cell
-   * @param containerView
    * @param titleBlockContainer
-   * @return the content of the cell, the returned object can be a EObject, Collection<?EObjects>; we wrap a primitive
-   *         type in a DAnnotation object
+   * @return the cell content to display.
    */
-  public Object getCellContent(EObject diagram, EObject cell, EObject containerView, DAnnotation titleBlockContainer) {
-    if ((diagram instanceof DDiagram)) {
-      if (cell instanceof DAnnotation && TitleBlockHelper.isTitleBlockCell((DAnnotation) cell)) {
-        String feature = ((DAnnotation) cell).getDetails().get(TitleBlockHelper.CONTENT);
-        if (feature != null) {
-          Object obj = TitleBlockHelper.getResultOfExpression(
-              RepresentationHelper.getRepresentationDescriptor((DDiagram) diagram), feature, titleBlockContainer);
-          if (obj != null && !(obj instanceof EvaluationException)) {
-            if (obj instanceof Collection) {
-              return ((Collection) obj).stream()
-                  .map(object -> getWrappedObject(object, (DAnnotation) cell, (DDiagram) diagram))
-                  .collect(Collectors.toList());
-            }
-            return getWrappedObject(obj, (DAnnotation) cell, (DDiagram) diagram);
+  public Object getCellContent(DDiagram diagram, DAnnotation cell, DAnnotation titleBlockContainer) {
+    if (TitleBlockHelper.isTitleBlockCell(cell)) {
+      String evaluationExpression = cell.getDetails().get(TitleBlockHelper.CONTENT);
+
+      if (evaluationExpression != null) {
+        Object evaluationResult = TitleBlockHelper.getResultOfExpression(
+            RepresentationHelper.getRepresentationDescriptor(diagram), evaluationExpression, titleBlockContainer);
+
+        if (evaluationResult != null && !(evaluationResult instanceof EvaluationException)) {
+          if (evaluationResult instanceof Collection) {
+            Collection<?> evaluationResultCollection = (Collection<?>) evaluationResult;
+            return getCellContentFromCollection(diagram, cell, evaluationResultCollection);
           }
+
+          return getCellContentFromObject(diagram, cell, evaluationResult);
         }
       }
     }
+
     return null;
+  }
+
+  /**
+   * Extracts an EObject from the evaluation result of a Title Block content. Since a cell can only contain EObjects,
+   * primitive values are wrapped in a DAnnotation.
+   * 
+   * @param diagram
+   * @param cell
+   * @param evaluationResult
+   * @return the extracted EObject from the evaluation result of a Title Block content.
+   */
+  private EObject getCellContentFromObject(DDiagram diagram, DAnnotation cell, Object evaluationResult) {
+    return evaluationResult instanceof EObject ? (EObject) evaluationResult
+        : createOrUpdatePrimitiveAnnotation(Arrays.asList(evaluationResult), cell, diagram);
+  }
+
+  /**
+   * Extracts a collection of EObjects from the evaluation result of a Title Block content. Since a cell can only
+   * contain EObjects, all the primitive objects are combined into a DAnnotation.
+   * 
+   * @param diagram
+   * @param cell
+   * @param evaluationResult
+   * @return the extracted collection of EObjects from the evaluation result of a Title Block content.
+   */
+  private List<EObject> getCellContentFromCollection(DDiagram diagram, DAnnotation cell,
+      Collection<?> evaluationResult) {
+    List<EObject> wrappedEvaluationResult = new ArrayList<>();
+    List<Object> primitiveEvaluationResult = new ArrayList<>();
+
+    for (Object object : evaluationResult) {
+      if (object instanceof EObject) {
+        wrappedEvaluationResult.add((EObject) object);
+      } else {
+        primitiveEvaluationResult.add(object);
+      }
+    }
+
+    EObject primitiveResultAnnotation = createOrUpdatePrimitiveAnnotation(primitiveEvaluationResult, cell, diagram);
+    wrappedEvaluationResult.add(primitiveResultAnnotation);
+
+    return wrappedEvaluationResult;
   }
 
   /**
@@ -693,12 +737,13 @@ public class TitleBlockServices {
    * @param containerView
    * @return the content of the cell that will be displayed in diagram
    */
-  public Object getTitleBlockCellContent(EObject diagram, EObject cell, EObject containerView) {
-    if ((diagram instanceof DDiagram)) {
-      if (cell instanceof DAnnotation && TitleBlockHelper.isTitleBlockCell((DAnnotation) cell)) {
-        DAnnotation titleBlockContainer = TitleBlockHelper.getParentTitleBlock((DAnnotation) cell);
+  public Object getTitleBlockCellContent(EObject diagram, EObject cell) {
+    if (diagram instanceof DDiagram && cell instanceof DAnnotation) {
+      DAnnotation titleBlockCell = (DAnnotation) cell;
+      if (TitleBlockHelper.isTitleBlockCell(titleBlockCell)) {
+        DAnnotation titleBlockContainer = TitleBlockHelper.getParentTitleBlock(titleBlockCell);
         if (titleBlockContainer != null) {
-          return getCellContent(diagram, cell, containerView, titleBlockContainer);
+          return getCellContent((DDiagram) diagram, titleBlockCell, titleBlockContainer);
         }
       }
     }
@@ -706,29 +751,32 @@ public class TitleBlockServices {
   }
 
   /**
-   * get an EObject; wrap the object in DAnnotation if is not already an EObject; if the content of the cell is already
-   * stored in a DAnnotation, just update the content if the cell content changed
+   * Primitive values must be wrapped in a DAnnotations (since Sirius needs an EObject target). In order to avoid an
+   * unneeded dirty session, a new primitive DAnnotation is created only when the new primitive result is different than
+   * the existing one.
    * 
-   * @param object
+   * @param primitiveEvaluationResult
    * @param cell
    * @param diagram
-   * @return EObject
+   * @return a DAnnotation wrapping a primitive result
    */
-  private EObject getWrappedObject(Object object, DAnnotation cell, DDiagram diagram) {
-    if (object instanceof EObject)
-      return (EObject) object;
+  private DAnnotation createOrUpdatePrimitiveAnnotation(List<Object> primitiveEvaluationResult, DAnnotation cell,
+      DDiagram diagram) {
+
     DAnnotation wrapperAnnotation = null;
+    String serializedResult = primitiveEvaluationResult.stream().map(o -> htmlToPlainText(o.toString()))
+        .collect(Collectors.joining("\n"));
+
     if (cell.getReferences().isEmpty()) {
-      wrapperAnnotation = DescriptionFactory.eINSTANCE.createDAnnotation();
-      wrapperAnnotation.setSource(TitleBlockHelper.TITLE_BLOCK_CONTENT);
-      wrapperAnnotation.getDetails().put(TitleBlockHelper.CONTENT, htmlToPlainText(object.toString()));
-      cell.getReferences().add(wrapperAnnotation);
       DRepresentationDescriptor descriptor = RepresentationHelper.getRepresentationDescriptor(diagram);
-      descriptor.getEAnnotations().add(wrapperAnnotation);
+      wrapperAnnotation = DAnnotationHelper.createAnnotation(TitleBlockHelper.TITLE_BLOCK_CONTENT, descriptor);
+      wrapperAnnotation.getDetails().put(TitleBlockHelper.CONTENT, serializedResult);
+      cell.getReferences().add(wrapperAnnotation);
     } else {
       wrapperAnnotation = (DAnnotation) cell.getReferences().get(0);
-      if (!object.toString().equals(wrapperAnnotation.getDetails().get(TitleBlockHelper.CONTENT))) {
-        wrapperAnnotation.getDetails().put(TitleBlockHelper.CONTENT, htmlToPlainText(object.toString()));
+      String existingResult = wrapperAnnotation.getDetails().get(TitleBlockHelper.CONTENT);
+      if (!serializedResult.equals(existingResult)) {
+        wrapperAnnotation.getDetails().put(TitleBlockHelper.CONTENT, serializedResult);
       }
     }
     return wrapperAnnotation;
