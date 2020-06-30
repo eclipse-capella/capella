@@ -4655,9 +4655,11 @@
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:containerView">
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.isValidCreateDiagramTitleBlock()">
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.createDiagramTitleBlock()"/>
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerView.getDiagramContainer().forceRefresh()"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.isValidCreateElementTitleBlock()">
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.createElementTitleBlock(diagram)"/>
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerView.getDiagramContainer().forceRefresh()"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
@@ -4715,6 +4717,7 @@
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (selectedTitleBlocks = 'WIZARD_CANCELED')">
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.showHideTitleBlocks(selectedTitleBlocks)"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
