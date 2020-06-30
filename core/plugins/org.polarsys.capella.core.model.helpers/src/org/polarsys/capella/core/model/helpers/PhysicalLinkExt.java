@@ -302,30 +302,19 @@ public class PhysicalLinkExt extends org.polarsys.capella.core.data.helpers.cs.s
    */
   protected static PhysicalPort getPhysicalPortFrom(PhysicalLink pLink, InformationsExchanger cPort) {
     EObject cPortOwner = cPort.eContainer();
-    if (cPortOwner instanceof AbstractType) {
-      for (AbstractTypedElement elt : ((AbstractType) cPortOwner).getAbstractTypedElements()) {
-        if (elt instanceof DeployableElement) {
-          for (AbstractDeploymentLink lnk : ((DeployableElement) elt).getDeployingLinks()) {
-            DeploymentTarget tgt = lnk.getLocation();
-            if (tgt instanceof AbstractTypedElement) {
-              AbstractType type = ((AbstractTypedElement) tgt).getAbstractType();
-              if (type instanceof Component) {
-                for (Feature feature : ((Component) type).getOwnedFeatures()) {
-                  if (feature instanceof PhysicalPort) {
-                    for (AbstractPhysicalLinkEnd linkEnd : pLink.getLinkEnds()) {
-                      if ((linkEnd instanceof PhysicalPort) && linkEnd.equals(feature)) {
-                        return (PhysicalPort) feature;
-                      } else if (linkEnd instanceof PhysicalLinkEnd) {
-                        PhysicalPort pp = ((PhysicalLinkEnd) linkEnd).getPort();
-                        if (feature.equals(pp)) {
-                          return (PhysicalPort) feature;
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
+    for (AbstractPhysicalLinkEnd linkEnd : pLink.getLinkEnds()) {
+      PhysicalPort pp = null;
+      if (linkEnd instanceof PhysicalPort) {
+        pp = (PhysicalPort) linkEnd;
+      } else if (linkEnd instanceof PhysicalLinkEnd) {
+        pp = ((PhysicalLinkEnd) linkEnd).getPort();
+      }
+      if (pp != null) {
+        EObject ppOwner = pp.eContainer();
+        if (ppOwner instanceof Component) {
+          List<Component> allSubUsedAndDeployedComponents = ComponentExt.getSubUsedAndDeployedComponents((Component) ppOwner);
+          if (allSubUsedAndDeployedComponents.contains(cPortOwner)) {
+            return pp;
           }
         }
       }

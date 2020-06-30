@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--Capella_Version_1.4.0-->
+<!--Capella_Version_1.4.1-->
 <org.polarsys.capella.core.data.capellamodeller:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:libraries="http://www.polarsys.org/capella/common/libraries/1.4.0"
     xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/1.4.0"
@@ -8521,6 +8521,9 @@ stop sequence</bodies>
                 id="07247d9e-b18c-4c95-81e9-ceb086c0c55c" targetElement="#286120a6-3861-48db-9dbf-f95ab3f2280f"
                 sourceElement="#2c8fb1b2-3a4d-453f-adbd-7e46ac9c27fb"/>
           </ownedComponentExchanges>
+          <ownedComponentExchanges xsi:type="org.polarsys.capella.core.data.fa:ComponentExchange"
+              id="f9f8191c-4453-41ea-8192-05bfa22d669e" name="C 31" source="#c2f8c5cf-6292-4806-8975-7b7d5c7c79c5"
+              target="#781d0eae-7587-421d-b525-0fb206d45032" kind="FLOW"/>
           <ownedComponentExchangeCategories xsi:type="org.polarsys.capella.core.data.fa:ComponentExchangeCategory"
               id="788d1676-6cbd-4960-898f-ec4eab43a1c4" name="CEC_1" exchanges="#47b87c8b-9d4f-4531-83a0-33605b32894a #2089fff5-b658-46fc-8388-382511f1b187"/>
           <ownedComponentExchangeCategories xsi:type="org.polarsys.capella.core.data.fa:ComponentExchangeCategory"
@@ -8637,6 +8640,10 @@ stop sequence</bodies>
               name="PC 19_1" abstractType="#f32ee247-a3e1-4109-b70b-8584f2348cf8"/>
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="e3657b5a-12ab-4e8a-ac41-508f9ba31a06"
               name="PC 20_1" abstractType="#6a90f461-0a1a-4fa9-945c-a83f9f7449bd"/>
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="13cbdd8f-4b98-4465-b7c2-f40e15e8c27a"
+              name="PC 26" abstractType="#75e784e6-8b76-4b83-a53a-c86b4c83fec8"/>
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="c121e7fc-cf14-4863-8dfb-6da5874e9ce7"
+              name="PC 27" abstractType="#aedc34ea-49c7-4d2c-8d1f-a95a7351cdfd"/>
           <ownedInterfaceUses xsi:type="org.polarsys.capella.core.data.cs:InterfaceUse"
               id="a34249cb-9be3-401d-962f-64ae9cebbf8c" usedInterface="#042ea71d-f30b-433d-b3ce-8ba59be4ee2e"/>
           <ownedInterfaceUses xsi:type="org.polarsys.capella.core.data.cs:InterfaceUse"
@@ -8715,6 +8722,8 @@ stop sequence</bodies>
               id="a78b514c-91b4-4e2d-b640-2113b6490def" name="PLC2" linkEnds="#27b7ccea-f846-40b5-b8f0-7d92e950da1e #4f43fa7c-8e71-4dd3-8058-a687caf513a0"/>
           <ownedPhysicalLinks xsi:type="org.polarsys.capella.core.data.cs:PhysicalLink"
               id="9a57ea45-6835-4d1a-a8d0-8b71a0805150" name="PL 10" linkEnds="#755408bc-2d11-4c5a-8304-329c9b18e57a #325b2a96-7664-4316-94a1-ec071e918b29"/>
+          <ownedPhysicalLinks xsi:type="org.polarsys.capella.core.data.cs:PhysicalLink"
+              id="d9359bb4-b0bd-4848-9c42-92b1deefbe0a" name="PL 11" linkEnds="#692a8543-b33d-4b55-b02b-6e3313f234ee #5c10a88e-5d6c-44c6-a61e-7603f04465e5"/>
           <ownedPhysicalLinkCategories xsi:type="org.polarsys.capella.core.data.cs:PhysicalLinkCategory"
               id="b98b82ac-f139-4afc-9743-84b5dd266b8c" name="PLC_A" links="#94b078f3-74dc-4b83-adba-c7e47969d6f9 #7d4f981f-04d6-4be2-8692-cbfdcd582908 #699f5bc4-10c1-4935-8d83-2d4244f1fe06"/>
           <ownedPhysicalLinkCategories xsi:type="org.polarsys.capella.core.data.cs:PhysicalLinkCategory"
@@ -9391,6 +9400,34 @@ stop sequence</bodies>
             <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
                 id="cb0bd1d7-1456-4ed4-93ab-9c177d3326c0" targetElement="#16b37377-609c-4dd6-a92b-964f817ab599"
                 sourceElement="#6a90f461-0a1a-4fa9-945c-a83f9f7449bd"/>
+          </ownedPhysicalComponents>
+          <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
+              id="75e784e6-8b76-4b83-a53a-c86b4c83fec8" name="PC 26" nature="NODE">
+            <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="8280ea4f-5d4b-45c6-a680-557a73e0dd1c"
+                name="PA 1" abstractType="#41474709-edd9-4cad-a27a-865010f14d68"/>
+            <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:PhysicalPort"
+                id="692a8543-b33d-4b55-b02b-6e3313f234ee" name="PP 2"/>
+            <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
+                id="41474709-edd9-4cad-a27a-865010f14d68" name="PA 1" actor="true"
+                nature="NODE">
+              <ownedFeatures xsi:type="org.polarsys.capella.core.data.fa:ComponentPort"
+                  id="c2f8c5cf-6292-4806-8975-7b7d5c7c79c5" name="CP 1" orientation="OUT"
+                  kind="FLOW"/>
+            </ownedPhysicalComponents>
+          </ownedPhysicalComponents>
+          <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
+              id="aedc34ea-49c7-4d2c-8d1f-a95a7351cdfd" name="PC 27" nature="NODE">
+            <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="2070b597-c8f7-4bba-8925-a684a13eeb5c"
+                name="PA 1" abstractType="#7384f849-9fba-480b-812e-119bd3efa744"/>
+            <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:PhysicalPort"
+                id="5c10a88e-5d6c-44c6-a61e-7603f04465e5" name="PP 2"/>
+            <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
+                id="7384f849-9fba-480b-812e-119bd3efa744" name="PA 1" actor="true"
+                nature="NODE">
+              <ownedFeatures xsi:type="org.polarsys.capella.core.data.fa:ComponentPort"
+                  id="781d0eae-7587-421d-b525-0fb206d45032" name="CP 1" orientation="IN"
+                  kind="FLOW"/>
+            </ownedPhysicalComponents>
           </ownedPhysicalComponents>
           <ownedPhysicalComponentPkgs xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponentPkg"
               id="3bb6744d-d92e-4588-b906-35ce65f0448b" name="PC folder">

@@ -20,12 +20,14 @@ import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
 import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.fa.ComponentPortAllocation;
 import org.polarsys.capella.core.data.information.Port;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.LogicalComponentExt;
 import org.polarsys.capella.core.model.utils.ListExt;
 
@@ -86,7 +88,7 @@ public class GetAvailable_PhysicalPort_AllocatedComponentPorts extends AbstractQ
         allPorts.addAll(lc.getContainedComponentPorts());
       }
     } else if (ownerObj instanceof PhysicalComponent) {
-      for (PhysicalComponent deployedCpnt : ((PhysicalComponent) ownerObj).getDeployedPhysicalComponents()) {
+      for (Component deployedCpnt : ComponentExt.getSubUsedAndDeployedComponents((Component) ownerObj)) {
         allPorts.addAll(deployedCpnt.getContainedComponentPorts());
       }
     }
