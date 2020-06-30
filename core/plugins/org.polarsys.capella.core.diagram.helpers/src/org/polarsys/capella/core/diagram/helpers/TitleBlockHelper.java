@@ -20,6 +20,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.jface.bindings.keys.KeyStroke;
 import org.eclipse.jface.bindings.keys.ParseException;
@@ -52,6 +53,8 @@ import org.polarsys.capella.common.ui.toolkit.browser.category.CategoryRegistry;
 import org.polarsys.capella.common.ui.toolkit.browser.category.ICategory;
 import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
+import org.polarsys.capella.core.model.helpers.viewpoint.ViewpointHelper;
+import org.polarsys.kitalpha.emde.model.Element;
 
 /**
  * Various helpers for {@link DAnnotation} annotations on {@link Title Blocks} elements.
@@ -139,7 +142,7 @@ public class TitleBlockHelper {
     DRepresentationDescriptor descriptor = RepresentationHelper.getRepresentationDescriptor(diagram);
     if (descriptor != null && descriptor.getEAnnotations() != null) {
       return descriptor.getEAnnotations().stream().filter(a -> a.getSource().equals(ELEMENT_TITLE_BLOCK))
-        .collect(Collectors.toList());
+          .collect(Collectors.toList());
     }
     return Collections.emptyList();
   }
@@ -148,7 +151,7 @@ public class TitleBlockHelper {
     DRepresentationDescriptor descriptor = RepresentationHelper.getRepresentationDescriptor(diagram);
     if (descriptor != null && descriptor.getEAnnotations() != null) {
       return descriptor.getEAnnotations().stream().filter(a -> a.getSource().equals(DIAGRAM_TITLE_BLOCK))
-        .collect(Collectors.toList());
+          .collect(Collectors.toList());
     }
     return Collections.emptyList();
   }
@@ -410,39 +413,6 @@ public class TitleBlockHelper {
     line.getDetails().put(CONTENT, content);
   }
 
-  /**
-   * 
-   * @param diagramDesc
-   * @param expression:
-   *          the expression to be evaluate (ex feature: name, or capella: xyz)
-   * @param titleBlock
-   * @return result after the expression was evaluated
-   */
-  public static Object getResultOfExpression(DRepresentationDescriptor diagramDesc, String expression,
-      DAnnotation titleBlock) {
-    EObject objToEvaluate = TitleBlockHelper.getSemanticElementReference(titleBlock);
-    // if is a Diagram Title Block, objToEvaluate will be the diagram
-    if (objToEvaluate == null) {
-      objToEvaluate = diagramDesc;
-    }
-
-    IInterpreterProvider provider = CompoundInterpreter.INSTANCE.getProviderForExpression(expression);
-
-    if (provider instanceof DefaultInterpreterProvider) {
-      return new EvaluationException();
-    }
-
-    IInterpreter interpreter = provider.createInterpreter();
-    Object result = null;
-    try {
-      result = interpreter.evaluate(objToEvaluate, expression);
-    } catch (EvaluationException e) {
-      return e;
-    }
-
-    return result;
-  }
-
   public static void getServicesProposals(Text textField, EObject target) {
     KeyStroke keyStroke;
     EObject resolvedTarget = CapellaAdapterHelper.resolveDescriptorOrBusinessObject(target);
@@ -661,4 +631,77 @@ public class TitleBlockHelper {
     }
     return "";
   }
+
+  /**
+   * Returns the evaluation result of a Title Block expression (aql expression or capella semantic browser query).
+   * 
+   * @param descriptor
+   * @param expression
+   * @param titleBlock
+   * @return the evaluation result of a Title Block expression.
+   */
+  public static Object getResultOfExpression(DRepresentationDescriptor descriptor, String expression,
+      DAnnotation titleBlock) {
+    EObject semanticElement = TitleBlockHelper.getSemanticElementReference(titleBlock);
+
+    // if is a Diagram Title Block, the semantic element will be the descriptor
+    if (semanticElement == null) {
+      semanticElement = descriptor;
+    }
+
+    IInterpreterProvider provider = CompoundInterpreter.INSTANCE.getProviderForExpression(expression);
+
+    if (provider instanceof DefaultInterpreterProvider) {
+      return new EvaluationException();
+    }
+
+    IInterpreter interpreter = provider.createInterpreter();
+    Object result = null;
+    try {
+      result = interpreter.evaluate(semanticElement, expression);
+    } catch (EvaluationException e) {
+      return e;
+    }
+
+    if (result instanceof Collection) {
+      Collection<?> originalResult = (Collection<?>) result;
+      return sanitizeResultItems(originalResult);
+    }
+
+    return sanitizeResultItem(result);
+  }
+
+  private static boolean isValidResultItem(Object item) {
+    if (item instanceof EObject) {
+      EObject eObject = (EObject) item;
+
+      return eObject instanceof Element || eObject instanceof DRepresentationDescriptor || isViewpointElement(eObject);
+    }
+
+    return true;
+  }
+
+  private static boolean isViewpointElement(EObject eObject) {
+    EPackage ePackage = eObject.eClass().getEPackage();
+    return ViewpointHelper.getViewpointPackages().contains(ePackage);
+  }
+
+  private static Object sanitizeResultItem(Object resultItem) {
+    if (isValidResultItem(resultItem)) {
+      return resultItem;
+    }
+
+    String sanitizedText = EObjectLabelProviderHelper.getText(resultItem);
+
+    if (sanitizedText != null && !sanitizedText.isEmpty()) {
+      return sanitizedText;
+    }
+
+    return resultItem != null ? resultItem.toString() : "";
+  }
+
+  private static Object sanitizeResultItems(Collection<?> originalResult) {
+    return originalResult.stream().map(TitleBlockHelper::sanitizeResultItem).collect(Collectors.toList());
+  }
+
 }
