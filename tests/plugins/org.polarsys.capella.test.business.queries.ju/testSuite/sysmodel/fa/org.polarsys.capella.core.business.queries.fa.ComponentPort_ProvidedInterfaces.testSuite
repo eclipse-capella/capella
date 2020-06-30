@@ -3203,6 +3203,52 @@ resultIds = {
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.fa.ComponentPort_ProvidedInterfaces-getAvailableElements
+inputId = c2f8c5cf-6292-4806-8975-7b7d5c7c79c5
+resultIds = {
+    042ea71d-f30b-433d-b3ce-8ba59be4ee2e
+    11794653-0351-49f5-8fbc-a781f33ed41d
+    20bd0700-2ea1-4a1a-b744-4c2bf10752f7
+    2d3d4c28-3dfe-4ef3-a681-160cd8844772
+    32bd64a5-4a3f-41fc-89aa-b8b590d57e77
+    4e8e87ee-48ac-4b54-9998-c4423d6b18fb
+    719d4014-ecb3-446f-9737-23ec2a3339d9
+    8610b70f-8e72-467b-9f48-67e63cba21a3
+    8c689d4b-edd1-4548-bac9-0dae826c9be2
+    98531f8b-f63b-4b23-8847-c8076dc3e9e0
+    a6012ae5-af0c-4828-a7bb-f7b5e9fd9323
+    ae866af2-8602-4f28-9503-707c4f2b1e18
+    dad89d13-97be-4e3d-af84-9e926597aebc
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.fa.ComponentPort_ProvidedInterfaces-getCurrentElements
+inputId = c2f8c5cf-6292-4806-8975-7b7d5c7c79c5
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.fa.ComponentPort_ProvidedInterfaces-getAvailableElements
+inputId = 781d0eae-7587-421d-b525-0fb206d45032
+resultIds = {
+    042ea71d-f30b-433d-b3ce-8ba59be4ee2e
+    11794653-0351-49f5-8fbc-a781f33ed41d
+    20bd0700-2ea1-4a1a-b744-4c2bf10752f7
+    2d3d4c28-3dfe-4ef3-a681-160cd8844772
+    32bd64a5-4a3f-41fc-89aa-b8b590d57e77
+    4e8e87ee-48ac-4b54-9998-c4423d6b18fb
+    719d4014-ecb3-446f-9737-23ec2a3339d9
+    8610b70f-8e72-467b-9f48-67e63cba21a3
+    8c689d4b-edd1-4548-bac9-0dae826c9be2
+    98531f8b-f63b-4b23-8847-c8076dc3e9e0
+    a6012ae5-af0c-4828-a7bb-f7b5e9fd9323
+    ae866af2-8602-4f28-9503-707c4f2b1e18
+    dad89d13-97be-4e3d-af84-9e926597aebc
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.fa.ComponentPort_ProvidedInterfaces-getCurrentElements
+inputId = 781d0eae-7587-421d-b525-0fb206d45032
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.fa.ComponentPort_ProvidedInterfaces-getAvailableElements
 inputId = 4ee34e88-afe1-490b-9a1b-6817b3a3b72e
 resultIds = {
     042ea71d-f30b-433d-b3ce-8ba59be4ee2e
