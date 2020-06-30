@@ -15,7 +15,7 @@ include "../modules/gmf-runtime-1.12.tpd"
 
 with source, requirements
 
-location eclipse-releases-oxygen "http://download.eclipse.org/releases/oxygen/201803211000" {
+location eclipse-releases-oxygen "http://download.eclipse.org/releases/oxygen" {
 	org.eclipse.sdk.feature.group
 	org.eclipse.platform.feature.group
 	org.eclipse.emf.sdk.feature.group
