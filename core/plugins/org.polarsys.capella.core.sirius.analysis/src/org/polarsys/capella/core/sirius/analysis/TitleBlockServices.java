@@ -15,7 +15,9 @@ package org.polarsys.capella.core.sirius.analysis;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -40,6 +42,7 @@ import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.diagram.ui.business.api.helper.graphicalfilters.CompositeFilterApplicationBuilder;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.swt.widgets.Display;
 import org.polarsys.capella.common.ef.command.AbstractCommand;
@@ -804,48 +807,89 @@ public class TitleBlockServices {
     return cell.getDetails().get(TitleBlockHelper.CONTENT);
   }
 
-  /**
-   * show or hide a Title Block depending on given type (DIAGRAM_TITLE_BLOCK or ELEMENT_TITLE_BLOCK). selectedTypes are
-   * the elements that shall be displayed
-   * 
-   * @param elementView
-   * @param selectedTitleBlocks
-   * @param type
-   * @return String the label of the content cell
-   */
-  public EObject showHideTitleBlocks(final EObject elementView, Collection<DAnnotation> selectedTitleBlocks) {
-    DDiagram diagram = CapellaServices.getService().getDiagramContainer(elementView);
-    Map<DAnnotation, DDiagramElement> existingTitleBlocks = new HashMap<>();
-    if (elementView instanceof EdgeTarget) {
-      // we want to show/hide the Title Block associated to elementView
-      List<DAnnotation> elementTitleBlocks = getAssociatedElementTitleBlocks((EdgeTarget) elementView);
-      elementTitleBlocks.stream().forEach(
-          tb -> existingTitleBlocks.put(tb, DiagramServices.getDiagramServices().getDiagramElement(diagram, tb)));
+  public EObject showHideTitleBlocks(EObject targetView, Collection<DAnnotation> titleBlockUserSelection) {
+
+    DDiagram diagram = CapellaServices.getService().getDiagramContainer(targetView);
+    Map<DAnnotation, Collection<DSemanticDecorator>> existingTitleBlocksToViews = Collections.emptyMap();
+
+    if (targetView instanceof EdgeTarget) {
+      existingTitleBlocksToViews = getTitleBLocksToViewsMap((EdgeTarget) targetView, diagram);
     } else {
-      // we want to show/hide one or more Title Blocks in the diagram
-      for (DDiagramElement aContainer : diagram.getDiagramElements()) {
-        if ((aContainer.getTarget() instanceof DAnnotation)
-            && TitleBlockHelper.isTitleBlock((DAnnotation) aContainer.getTarget())) {
-          DAnnotation annotation = (DAnnotation) aContainer.getTarget();
-          if (annotation.getSource() != null)
-            existingTitleBlocks.put(annotation, aContainer);
+      existingTitleBlocksToViews = getTitleBLocksToViewsMap(diagram);
+    }
+
+    hideTitleBlocks(titleBlockUserSelection, existingTitleBlocksToViews);
+
+    showTitleBlocks(targetView, diagram, titleBlockUserSelection, existingTitleBlocksToViews);
+
+    return targetView;
+  }
+
+  private Map<DAnnotation, Collection<DSemanticDecorator>> getTitleBLocksToViewsMap(EdgeTarget targetView,
+      DDiagram diagram) {
+    DiagramServices diagramServices = DiagramServices.getDiagramServices();
+    Map<DAnnotation, Collection<DSemanticDecorator>> existingTitleBlocksToViews = new HashMap<>();
+
+    List<DAnnotation> associatedTitleBlocks = getAssociatedElementTitleBlocks(targetView);
+    for (DAnnotation titleBLock : associatedTitleBlocks) {
+      Collection<DSemanticDecorator> titleBlockViews = diagramServices.getDiagramElements(diagram, titleBLock);
+      existingTitleBlocksToViews.put(titleBLock, titleBlockViews);
+    }
+
+    return existingTitleBlocksToViews;
+  }
+
+  private Map<DAnnotation, Collection<DSemanticDecorator>> getTitleBLocksToViewsMap(DDiagram diagram) {
+    Map<DAnnotation, Collection<DSemanticDecorator>> existingTitleBlocksToViews = new HashMap<>();
+
+    for (DDiagramElement diagramElement : diagram.getDiagramElements()) {
+      EObject target = diagramElement.getTarget();
+      if (target instanceof DAnnotation) {
+        DAnnotation annotation = (DAnnotation) target;
+        if (TitleBlockHelper.isTitleBlock(annotation) && annotation.getSource() != null) {
+          existingTitleBlocksToViews.computeIfAbsent(annotation, key -> new HashSet<>()).add(diagramElement);
         }
       }
     }
 
-    for (Entry<DAnnotation, DDiagramElement> me : existingTitleBlocks.entrySet()) {
-      if (!selectedTitleBlocks.contains(me.getKey())) {
-        DiagramServices.getDiagramServices().removeContainerView(me.getValue());
+    return existingTitleBlocksToViews;
+  }
+
+  private void hideTitleBlocks(Collection<DAnnotation> titleBlockUserSelection,
+      Map<DAnnotation, Collection<DSemanticDecorator>> existingTitleBlocksToViews) {
+
+    DiagramServices diagramServices = DiagramServices.getDiagramServices();
+
+    for (Entry<DAnnotation, Collection<DSemanticDecorator>> existingEntry : existingTitleBlocksToViews.entrySet()) {
+      DAnnotation existingTitleBlock = existingEntry.getKey();
+
+      if (!titleBlockUserSelection.contains(existingTitleBlock)) {
+        Collection<DSemanticDecorator> titleBlockViews = existingEntry.getValue();
+
+        for (DSemanticDecorator view : titleBlockViews) {
+          if (view instanceof DEdge) {
+            diagramServices.removeEdgeView((DEdge) view);
+          } else {
+            diagramServices.removeContainerView(view);
+          }
+        }
       }
     }
-    for (DAnnotation tb : selectedTitleBlocks) {
-      if (!existingTitleBlocks.containsKey(tb)) {
-        createTitleBlockView(tb, diagram, elementView);
-        checkTitleBlocksFilters(diagram, TitleBlockHelper.isDiagramTitleBlock(tb) ? TitleBlockHelper.DIAGRAM_TITLE_BLOCK
-            : TitleBlockHelper.ELEMENT_TITLE_BLOCK);
+  }
+
+  private void showTitleBlocks(EObject targetView, DDiagram diagram, Collection<DAnnotation> titleBlockUserSelection,
+      Map<DAnnotation, Collection<DSemanticDecorator>> existingTitleBlocksToViews) {
+
+    for (DAnnotation selectedTitleBLock : titleBlockUserSelection) {
+      if (!existingTitleBlocksToViews.containsKey(selectedTitleBLock)) {
+        String titleBlockType = TitleBlockHelper.isDiagramTitleBlock(selectedTitleBLock)
+            ? TitleBlockHelper.DIAGRAM_TITLE_BLOCK
+            : TitleBlockHelper.ELEMENT_TITLE_BLOCK;
+
+        createTitleBlockView(selectedTitleBLock, diagram, targetView);
+        checkTitleBlocksFilters(diagram, titleBlockType);
       }
     }
-    return elementView;
   }
 
   /**
