@@ -15,6 +15,8 @@ package org.polarsys.capella.core.business.queries.queries.cs;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -105,7 +107,10 @@ public class GetAvailable_PhysicalLink_AllocatedComponentExchanges extends Abstr
       } else if (component instanceof PhysicalComponent) {
         for (AbstractTypedElement abstractTypedElement : component.getAbstractTypedElements()) {
           if (abstractTypedElement instanceof Part) {
-            for (DeployableElement deployableElement : PartExt.getAllDeployableElements((Part) abstractTypedElement)) {
+            for (DeployableElement deployableElement : Stream
+                .concat(PartExt.getSubUsedParts((Part) abstractTypedElement).stream(),
+                    PartExt.getAllDeployableElements((Part) abstractTypedElement).stream())
+                .collect(Collectors.toList())) {
               if (deployableElement instanceof Part) {
                 AbstractType abstractType = ((Part) deployableElement).getAbstractType();
                 if (abstractType instanceof Component) {
@@ -125,7 +130,10 @@ public class GetAvailable_PhysicalLink_AllocatedComponentExchanges extends Abstr
       } else if (component instanceof PhysicalComponent) {
         for (AbstractTypedElement abstractTypedElement : component.getAbstractTypedElements()) {
           if (abstractTypedElement instanceof Part) {
-            for (DeployableElement deployableElement : PartExt.getAllDeployableElements((Part) abstractTypedElement)) {
+            for (DeployableElement deployableElement : Stream
+                .concat(PartExt.getSubUsedParts((Part) abstractTypedElement).stream(),
+                    PartExt.getAllDeployableElements((Part) abstractTypedElement).stream())
+                .collect(Collectors.toList())) {
               if (deployableElement instanceof Part) {
                 AbstractType abstractType = ((Part) deployableElement).getAbstractType();
                 if (abstractType instanceof Component) {
