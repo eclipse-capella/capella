@@ -55,12 +55,11 @@ location sirius "https://download.eclipse.org/sirius/updates/releases/6.3.2/2019
 }
 
 location kitalpha-runtime-core-master "https://download.eclipse.org/kitalpha/updates/stable/runtime/1.4.1.IT5-1" {	
-	org.polarsys.kitalpha.ad.runtime.feature.feature.group
-	org.polarsys.kitalpha.cadence.feature.feature.group
-	org.polarsys.kitalpha.common.feature.feature.group
-	org.polarsys.kitalpha.emde.feature.feature.group
-	org.polarsys.kitalpha.emde.ui.feature.feature.group
-	org.polarsys.kitalpha.massactions.feature.feature.group
+	org.polarsys.kitalpha.ad.runtime.feature.source.feature.group
+	org.polarsys.kitalpha.cadence.feature.source.feature.group
+	org.polarsys.kitalpha.common.feature.source.feature.group
+	org.polarsys.kitalpha.emde.feature.source.feature.group
+	org.polarsys.kitalpha.emde.ui.feature.source.feature.group
 	org.polarsys.kitalpha.massactions.feature.source.feature.group
 	org.polarsys.kitalpha.model.common.share.feature.source.feature.group
 	org.polarsys.kitalpha.model.common.commands.feature.source.feature.group
