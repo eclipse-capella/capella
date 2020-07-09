@@ -328,13 +328,13 @@
           <repository
               url="http://download.eclipse.org/modeling/gmp/gmf-notation/updates/milestones/S202003100829"/>
           <repository
-              url="https://download.eclipse.org/kitalpha/updates/stable/runtimecore/1.4.0.202001100637"/>
+              url="https://download.eclipse.org/kitalpha/updates/stable/runtimecore/1.4.2it2_ter"/>
           <repository
-              url="https://download.eclipse.org/kitalpha/updates/stable/sdk/1.4.0.202001100637"/>
+              url="https://download.eclipse.org/kitalpha/updates/stable/sdk/1.4.2it2_ter"/>
           <repository
               url="http://download.eclipse.org/egf/updates/1.6.1/2019-06"/>
           <repository
-              url="https://download.eclipse.org/sirius/updates/releases/6.3.2/2019-06"/>
+              url="https://download.eclipse.org/sirius/updates/stable/6.3.3-S20200806-045005/2019-06/"/>
           <repository
               url="http://download.eclipse.org/diffmerge/releases/0.12.0/emf-diffmerge-site"/>
           <repository
@@ -345,15 +345,15 @@
         <repositoryList
             name="master">
           <repository
-              url="http://download.eclipse.org/releases/2019-06"/>
+              url="http://download.eclipse.org/releases/2020-06"/>
           <repository
               url="http://download.eclipse.org/modeling/gmp/gmf-notation/updates/releases/R202004160913"/>
           <repository
               url="http://download.eclipse.org/modeling/gmp/gmf-runtime/updates/releases/R202004160913"/>
           <repository
-              url="https://download.eclipse.org/kitalpha/updates/stable/runtime/1.4.1DEV0"/>
+              url="https://download.eclipse.org/kitalpha/updates/stable/runtime/1.4.1.IT5-1"/>
           <repository
-              url="https://download.eclipse.org/kitalpha/updates/stable/sdk/1.4.1DEV0"/>
+              url="https://download.eclipse.org/kitalpha/updates/stable/sdk/1.4.1.IT5-1"/>
           <repository
               url="http://download.eclipse.org/egf/updates/1.6.1/2019-06"/>
           <repository
@@ -748,8 +748,8 @@
       <setupTask
           xsi:type="setup:VariableTask"
           name="eclipse.target.platform"
-          value="2019-06"
-          defaultValue="2019-06"
+          value="2020-06"
+          defaultValue="2020-06"
           storageURI="scope://Workspace"/>
       <setupTask
           xsi:type="setup:EclipseIniTask"
