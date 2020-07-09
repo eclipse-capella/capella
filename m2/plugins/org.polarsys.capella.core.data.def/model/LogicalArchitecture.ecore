@@ -515,9 +515,7 @@
         <details key="constraints" value="none"/>
         <details key="comment/notes" value="none"/>
       </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/semantic">
-        <details key="excludefrom" value="xmlpivot"/>
-      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
       <eAnnotations source="http://www.polarsys.org/capella/derived">
         <details key="viatra.variant" value="alias"/>
         <details key="viatra.expression" value="realizedComponents"/>
