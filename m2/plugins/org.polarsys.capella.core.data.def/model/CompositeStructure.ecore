@@ -537,7 +537,6 @@
         <details key="constraints" value="none"/>
         <details key="comment/notes" value="none"/>
       </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="realizedComponents" upperBound="-1"
         eType="#//Component" changeable="false" volatile="true" transient="true" derived="true">
