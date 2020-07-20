@@ -82,7 +82,7 @@ public abstract class DescriptionPropertySection extends AbstractSection {
 
   @Override
   protected EObject adaptElement(EObject object) {
-    // We want to add description on descriptors, so we don't adapt it to its semantic element
+    // We want to add description on DRepresentation, so we don't adapt it to its semantic element
     if (object instanceof DRepresentation) {
       return object;
     }
