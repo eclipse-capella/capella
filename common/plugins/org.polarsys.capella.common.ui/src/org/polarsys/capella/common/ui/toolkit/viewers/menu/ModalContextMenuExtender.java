@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -19,7 +19,6 @@ import javax.inject.Inject;
 
 import org.eclipse.e4.core.contexts.ContextInjectionFactory;
 import org.eclipse.e4.core.contexts.IEclipseContext;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
@@ -28,6 +27,7 @@ import org.eclipse.ui.ISelectionService;
 import org.eclipse.ui.ISources;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.internal.PartSite;
+import org.eclipse.ui.internal.PopupMenuExtender;
 import org.eclipse.ui.menus.IMenuService;
 import org.eclipse.ui.services.IServiceLocator;
 
@@ -105,7 +105,7 @@ public class ModalContextMenuExtender {
     menuService.populateContributionManager(contributionManager, location);
     PartSite.registerContextMenu(location, (MenuManager) contributionManager, provider, false,
         PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActivePart(), context,
-        new ArrayList<EObject>());
+        new ArrayList<PopupMenuExtender>());
   }
 
   /**
