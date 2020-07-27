@@ -489,54 +489,61 @@ public class TransitionHelper {
   }
 
   public boolean isIS2ISSALATransitionAvailable(EObject element) {
-    return element instanceof Scenario && ((Scenario) element).getKind() == ScenarioKind.INTERFACE
-        && CapellaLayerCheckingExt.isAOrInContextLayer((Scenario) element)
-        && isIS2ISTransitionAvailable((Scenario) element, "SALA");
+    return element instanceof CapellaElement && CapellaLayerCheckingExt.isAOrInContextLayer((CapellaElement) element)
+        && isIS2ISTransitionAvailable(element, "SALA");
   }
 
   public boolean isIS2ISLAPATransitionAvailable(EObject element) {
-    return element instanceof Scenario && ((Scenario) element).getKind() == ScenarioKind.INTERFACE
-        && CapellaLayerCheckingExt.isAOrInLogicalLayer((Scenario) element)
-        && isIS2ISTransitionAvailable((Scenario) element, "LAPA");
+    return element instanceof CapellaElement && CapellaLayerCheckingExt.isAOrInLogicalLayer((CapellaElement) element)
+        && isIS2ISTransitionAvailable(element, "LAPA");
   }
 
   public boolean isIS2ISPAEPBSTransitionAvailable(EObject element) {
-    return element instanceof Scenario && ((Scenario) element).getKind() == ScenarioKind.INTERFACE
-        && CapellaLayerCheckingExt.isAOrInPhysicalLayer((Scenario) element)
-        && isIS2ISTransitionAvailable((Scenario) element, "PAEPBS");
+    return element instanceof CapellaElement && CapellaLayerCheckingExt.isAOrInPhysicalLayer((CapellaElement) element)
+        && isIS2ISTransitionAvailable(element, "PAEPBS");
   }
   
-  private boolean isIS2ISTransitionAvailable(Scenario scenario, String transition) {
+  private boolean isIS2ISTransitionAvailable(EObject object, String transition) {
+    if (object instanceof Scenario && ((Scenario) object).getKind() == ScenarioKind.INTERFACE) {
+      Scenario scenario = (Scenario) object;
+      BlockArchitecture architectureSource = BlockArchitectureExt.getRootBlockArchitecture(scenario);
 
-    BlockArchitecture architectureSource = BlockArchitectureExt.getRootBlockArchitecture(scenario);
+      // Disable command if there is a transitioned IS
+      for (AbstractTrace trace : scenario.getIncomingTraces()) {
+        TraceableElement src = trace.getSourceElement();
+        if (src instanceof Scenario) {
+          Scenario existingScenario = (Scenario) src;
+          // Should be an Interface Scenario
+          if (existingScenario.getKind() == ScenarioKind.INTERFACE) {
+            BlockArchitecture architectureTarget = BlockArchitectureExt.getRootBlockArchitecture(existingScenario);
+            if ("SALA".equals(transition)) {
+              if (architectureSource instanceof SystemAnalysis && architectureTarget instanceof LogicalArchitecture) {
+                return false;
+              }
+            } else if ("LAPA".equals(transition)) {
+              if (architectureSource instanceof LogicalArchitecture
+                  && architectureTarget instanceof PhysicalArchitecture) {
+                return false;
+              }
+            } else if ("PAEPBS".equals(transition)) {
+              if (architectureSource instanceof PhysicalArchitecture
+                  && architectureTarget instanceof EPBSArchitecture) {
+                return false;
+              }
+            }
 
-    // Disable command if there is a transitioned IS
-    for (AbstractTrace trace : scenario.getIncomingTraces()) {
-      TraceableElement src = trace.getSourceElement();
-      if (src instanceof Scenario) {
-        Scenario existingScenario = (Scenario) src;
-        // Should be an Interface Scenario
-        if (existingScenario.getKind() == ScenarioKind.INTERFACE) {
-          BlockArchitecture architectureTarget = BlockArchitectureExt.getRootBlockArchitecture(existingScenario);
-          if ("SALA".equals(transition)) {
-            if (architectureSource instanceof SystemAnalysis && architectureTarget instanceof LogicalArchitecture) {
-              return false;
-            }
-          } else if ("LAPA".equals(transition)) {
-            if (architectureSource instanceof LogicalArchitecture
-                && architectureTarget instanceof PhysicalArchitecture) {
-              return false;
-            }
-          } else if ("PAEPBS".equals(transition)) {
-            if (architectureSource instanceof PhysicalArchitecture && architectureTarget instanceof EPBSArchitecture) {
-              return false;
-            }
+            continue;
           }
-
-          continue;
         }
       }
+      return true;
     }
-    return true;
+    return ((object instanceof SystemAnalysis) || (object instanceof LogicalArchitecture)
+        || (object instanceof PhysicalArchitecture))
+        || ((object instanceof CapellaElement)
+            && (CapellaLayerCheckingExt.isInContextLayer((CapellaElement) object)
+                || CapellaLayerCheckingExt.isInLogicalLayer((CapellaElement) object)
+                || CapellaLayerCheckingExt.isInPhysicalLayer((CapellaElement) object))
+            && ((object instanceof AbstractCapability) || (object instanceof AbstractCapabilityPkg)));
   }
 }
