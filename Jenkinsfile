@@ -33,13 +33,16 @@ pipeline {
     	stage('Build and Package') {
       		steps {
       			script {
-      				def customParams = github.isPullRequest() ? '-DSKIP_SONAR=true' : '-Psign'
-      	    
-      	    		sh "mvn -Djacoco.skip=true -DjavaDocPhase=none -Pfull ${customParams} clean package -f pom.xml"
-	       		}         
+					withCredentials([string(credentialsId: 'sonar-token-capella', variable: 'SONARCLOUD_TOKEN')]) {
+						withEnv(['MAVEN_OPTS=-Xmx4g']) {
+							def customParams = github.isPullRequest() ? '' : '-Psign sonar:sonar -Dsonar.projectKey=eclipse_capella -Dsonar.organization=eclipse -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${SONARCLOUD_TOKEN}'
+	      					sh "mvn clean verify -f pom.xml -Djacoco.skip=true -DjavaDocPhase=none -Pfull ${customParams}"
+						}
+					}
+      			}
 	     	}
 	    }
-    
+	    
 		stage('Deploy to Nightly') {
       		steps {
 				script {		
