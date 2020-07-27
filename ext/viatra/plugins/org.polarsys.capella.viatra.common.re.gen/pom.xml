@@ -20,6 +20,9 @@
     <version>1.4.0-SNAPSHOT</version>
     <relativePath>../../../../</relativePath>
   </parent>
+  <properties>
+    <sonar.skip>true</sonar.skip>
+  </properties>
   <groupId>org.polarsys</groupId>
   <artifactId>org.polarsys.capella.viatra.common.re.gen</artifactId>
   <version>1.4.0-SNAPSHOT</version>

@@ -50,7 +50,7 @@
 								<!-- Create a zip from the sample models -->
 								<zip destfile="./IFE_samplemodel.zip">
 									<zipfileset dir="./In-Flight Entertainment System"
-										prefix="In-Flight Entertainment System" />
+										prefix="In-Flight Entertainment System" erroronmissingdir="false"/>
 								</zip>
 								<delete dir="./In-Flight Entertainment System"
 									includeemptydirs="true" />
