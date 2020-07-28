@@ -16,7 +16,7 @@ include "https://download.eclipse.org/sirius/updates/stable/6.4.0-S20200716-0445
 
 with source, requirements
 
-location eclipse "http://download.eclipse.org/releases/2019-06" {
+location eclipse "http://download.eclipse.org/releases/2020-06" {
 	org.eclipse.sdk.feature.group
 	org.eclipse.platform.feature.group
 	org.eclipse.draw2d.source.feature.group
