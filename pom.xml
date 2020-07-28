@@ -22,19 +22,19 @@
 	<packaging>pom</packaging>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<tycho-version>1.6.0</tycho-version>
-		<tycho-extras-version>1.6.0</tycho-extras-version>
-		<antrun-version>1.7</antrun-version>
-		<rcptt-version>2.1.0</rcptt-version>
-		<rcptt-runner-version>2.1.0</rcptt-runner-version>
+		<tycho-version>1.7.0</tycho-version>
+		<tycho-extras-version>1.7.0</tycho-extras-version>
+		<antrun-version>3.0.0</antrun-version>
+		<rcptt-version>2.5.1</rcptt-version>
+		<rcptt-runner-version>2.5.1</rcptt-runner-version>
 		<sonar-version>3.0.2</sonar-version>
 		<jacoco-version>0.7.6.201602180812</jacoco-version>
 
 		<!-- for tycho -->
-		<tycho.scmUrl>scm:git:http://git.polarsys.org/c/capella/capella.git</tycho.scmUrl>
+		<tycho.scmUrl>scm:git:https://github.com/eclipse/capella.git</tycho.scmUrl>
 
 		<!-- for packaging -->
-		<eclipse-repo.url>http://download.eclipse.org/releases/neon</eclipse-repo.url>
+		<eclipse-repo.url>https://download.eclipse.org/releases/2020-06/</eclipse-repo.url>
 
 		<!-- for junit -->
 		<capella-product-id>org.polarsys.capella.rcp.product</capella-product-id>
