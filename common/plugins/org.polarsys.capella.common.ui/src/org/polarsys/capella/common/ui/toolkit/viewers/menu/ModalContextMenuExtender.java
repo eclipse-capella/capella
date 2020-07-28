@@ -105,7 +105,7 @@ public class ModalContextMenuExtender {
     menuService.populateContributionManager(contributionManager, location);
     PartSite.registerContextMenu(location, (MenuManager) contributionManager, provider, false,
         PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActivePart(), context,
-        new ArrayList<EObject>());
+        new ArrayList<>());
   }
 
   /**

@@ -19,7 +19,8 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.common.helpers,
  org.polarsys.capella.core.model.helpers,
  org.polarsys.capella.common.flexibility.properties;visibility:=reexport,
- org.polarsys.capella.core.model.handler
+ org.polarsys.capella.core.model.handler,
+ javax.inject
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.common.flexibility.wizards,
