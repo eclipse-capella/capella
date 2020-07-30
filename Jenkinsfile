@@ -93,8 +93,7 @@ pipeline {
         	steps {
         		script {
 	        		sh "chmod 755 ${CAPELLA_PRODUCT_PATH}"
-	        		
-	        		eclipse.installFeature("${CAPELLA_PRODUCT_PATH}", 'http://download.eclipse.org/tools/orbit/downloads/drops/R20130827064939/repository', 'org.jsoup')	        		
+	        			        		       		
 	        		eclipse.installFeature("${CAPELLA_PRODUCT_PATH}", "file:/${WORKSPACE}/releng/plugins/org.polarsys.capella.test.site/target/repository".replace("\\", "/"), 'org.polarsys.capella.test.feature.feature.group')
 	       		}         
 	     	}
@@ -159,6 +158,9 @@ pipeline {
 		   
 		  				tester.runUITests("${CAPELLA_PRODUCT_PATH}", 'Detach', 'org.polarsys.capella.test.suites.ju', 
 		        			['org.polarsys.capella.test.model.ju.testsuites.partial.DetachTestSuite'])
+		        			
+		        		tester.runUITests("${CAPELLA_PRODUCT_PATH}", 'Documentation', 'org.polarsys.capella.test.doc.ju', 
+		        			['org.polarsys.capella.test.doc.ju.testsuites.DocTestSuite'])
 		        			
 		        		tester.runNONUITests("${CAPELLA_PRODUCT_PATH}", 'NotUINavigator', 'org.polarsys.capella.test.suites.ju', 
 		        			['org.polarsys.capella.test.navigator.ju.testsuites.main.NavigatorTestSuite'])

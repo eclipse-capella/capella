@@ -12,7 +12,6 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.core.platform.sirius.ui.navigator,
  org.polarsys.capella.core.menu.dynamic,
  org.eclipse.help.base,
- org.jsoup,
  org.eclipse.equinox.http.jetty,
  org.eclipse.equinox.http.registry
 Bundle-ActivationPolicy: lazy
