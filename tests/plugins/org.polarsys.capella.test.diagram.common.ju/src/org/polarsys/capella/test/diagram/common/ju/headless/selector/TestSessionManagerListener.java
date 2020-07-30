@@ -20,12 +20,14 @@ import org.eclipse.ui.PlatformUI;
 
 public class TestSessionManagerListener extends SessionManagerListener.Stub {
 
-  @Override
-  public void notify(Session updated, int notification) {
-    super.notify(updated, notification);
-    boolean enableHeadless = (PlatformUI.getTestableObject().getTestHarness() != null);
-    if (notification == SessionListener.OPENED && enableHeadless) {
-      ((DAnalysisSession) updated).setAnalysisSelector(HeadlessCapellaAnalysisSelector.INSTANCE);
-    }
-  }
+	@Override
+	public void notify(Session updated, int notification) {
+		if (!Boolean.getBoolean("capella.tests.disablecustomdanalysisselector")) {
+			super.notify(updated, notification);
+			boolean enableHeadless = (PlatformUI.getTestableObject().getTestHarness() != null);
+			if (notification == SessionListener.OPENED && enableHeadless) {
+				((DAnalysisSession) updated).setAnalysisSelector(HeadlessCapellaAnalysisSelector.INSTANCE);
+			}
+		}
+	}
 }
