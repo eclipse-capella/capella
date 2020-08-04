@@ -43,6 +43,7 @@ import org.polarsys.capella.test.recrpl.ju.testcases.CreateRPL_SpecificPackages_
 import org.polarsys.capella.test.recrpl.ju.testcases.CreateRPL_WithSuffix;
 import org.polarsys.capella.test.recrpl.ju.testcases.CreateRPL_onREC;
 import org.polarsys.capella.test.recrpl.ju.testcases.DeleteDetachRPL_RelatedElements;
+import org.polarsys.capella.test.recrpl.ju.testcases.DependenciesOnSkeleton;
 import org.polarsys.capella.test.recrpl.ju.testcases.LocationOnUpdate;
 import org.polarsys.capella.test.recrpl.ju.testcases.Location_CEPL;
 import org.polarsys.capella.test.recrpl.ju.testcases.Location_FPCPPP;
@@ -118,6 +119,7 @@ public class RecRplTestSuite extends BasicTestSuite {
     tests.add(new Location_FPCPPP());
     tests.add(new LocationOnUpdate());
     tests.add(new CreateRPLOnFragmentedModel());
+    tests.add(new DependenciesOnSkeleton());
     return tests;
   }
 
