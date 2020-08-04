@@ -12,10 +12,11 @@
  *******************************************************************************/
 package org.polarsys.capella.core.re.rules.fa;
 
-import java.util.List;
-
 import org.eclipse.emf.ecore.EObject;
-
+import org.polarsys.capella.core.data.cs.BlockArchitecture;
+import org.polarsys.capella.core.data.cs.CsPackage;
+import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.polarsys.capella.core.transition.common.handlers.transformation.TransformationHandlerHelper;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
@@ -23,13 +24,12 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 public class FunctionInputPortRule extends org.polarsys.capella.core.transition.system.rules.fa.FunctionInputPortRule {
 
   @Override
-  protected void retrieveRequired(EObject element_p, List<EObject> result_p, IContext context_p) {
-    super.retrieveRequired(element_p, result_p, context_p);
-  }
-
-  @Override
-  protected void retrieveGoDeep(EObject source_p, List<EObject> result_p, IContext context_p) {
-    super.retrieveGoDeep(source_p, result_p, context_p);
+  protected EObject getDefaultContainer(EObject element, EObject result, IContext context) {
+    EObject root = TransformationHandlerHelper.getInstance(context).getLevelElement(element, context);
+    BlockArchitecture target =
+        (BlockArchitecture) TransformationHandlerHelper.getInstance(context).getBestTracedElement(root, context, CsPackage.Literals.BLOCK_ARCHITECTURE,
+            element, result);
+    return BlockArchitectureExt.getRootFunction(target);
   }
 
 }
