@@ -181,6 +181,29 @@ public class PhysicalLinkExt extends org.polarsys.capella.core.data.helpers.cs.s
     return false;
   }
 
+
+  /**
+   * Returns whether the connection is valid (no null bounds) and linked to an actor
+   * @param connection
+   * @return
+   */
+  public static boolean isLinkToAnActor(PhysicalLink connection) {
+    Component source = getSourceComponent(connection);
+    Component target = getTargetComponent(connection);
+    return (source != null) && (target != null) && (source.isActor() || target.isActor());
+  }
+
+  /**
+   * Returns whether the connection is valid (no null bounds) and not linked to an actor
+   * @param connection
+   * @return
+   */
+  public static boolean isNotLinkToAnActor(PhysicalLink connection) {
+    Component source = getSourceComponent(connection);
+    Component target = getTargetComponent(connection);
+    return (source != null) && (target != null) && !source.isActor() && !target.isActor();
+  }
+
   /**
    * @param pLink
    * @param cExchange
