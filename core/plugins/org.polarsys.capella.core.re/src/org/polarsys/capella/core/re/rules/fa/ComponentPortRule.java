@@ -12,6 +12,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.re.rules.fa;
 
+import java.util.List;
+
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.CsPackage;
@@ -21,15 +23,24 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
  */
-public class FunctionOutputPortRule extends org.polarsys.capella.core.transition.system.rules.fa.FunctionOutputPortRule {
-  
+public class ComponentPortRule extends org.polarsys.capella.core.transition.system.rules.fa.ComponentPortRule {
+
   @Override
   protected EObject getDefaultContainer(EObject element, EObject result, IContext context) {
-    EObject root = TransformationHandlerHelper.getInstance(context).getLevelElement(element, context);
-    BlockArchitecture target =
-        (BlockArchitecture) TransformationHandlerHelper.getInstance(context).getBestTracedElement(root, context, CsPackage.Literals.BLOCK_ARCHITECTURE,
-            element, result);
-    return BlockArchitectureExt.getRootFunction(target);
+    BlockArchitecture architecture = BlockArchitectureExt.getRootBlockArchitecture(element);
+    EObject container = element.eContainer();
+    if (container != null && container.equals(BlockArchitectureExt.getFirstComponent(architecture, false))) {
+      EObject root = TransformationHandlerHelper.getInstance(context).getLevelElement(element, context);
+      BlockArchitecture target = (BlockArchitecture) TransformationHandlerHelper.getInstance(context)
+          .getBestTracedElement(root, context, CsPackage.Literals.BLOCK_ARCHITECTURE, element, result);
+      return BlockArchitectureExt.getFirstComponent(target, true);
+    }
+    return super.getDefaultContainer(element, result, context);
   }
 
+  @Override
+  protected void retrieveRequired(EObject element, List<EObject> result, IContext context) {
+    super.retrieveRequired(element, result, context);
+    result.add(element.eContainer());
+  }
 }
