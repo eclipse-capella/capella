@@ -118,6 +118,21 @@ public class SkeletonUtil {
   }
 
   /**
+   * Find all template elements. 
+   */
+  public Collection<EObject> getSkeletonElements() {
+    Collection<EObject> skeleton = new ArrayList<EObject>();
+    IComparison c = getComparison();
+    for (Iterator<IMatch> matchIterator = c.getAllContents(Role.REFERENCE); matchIterator.hasNext();) {
+      IMatch next = matchIterator.next();
+      if (next.get(Role.TARGET) != null) {
+        skeleton.add(next.get(Role.TARGET));
+      }
+    }
+    return skeleton;
+  }
+
+  /**
    * Find all user root elements. A user root element is a child of a template
    * element which is not itself a template element.
    */
