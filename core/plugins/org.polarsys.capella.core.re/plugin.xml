@@ -166,10 +166,21 @@
                </defaultMappingPossibility>
             </mappingElement>
             
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.cs.PhysicalPort"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.re.rules.cs.PhysicalPortRule"
+                     incompleteRule="org.polarsys.capella.core.re.rules.cs.PhysicalPortRule"
+                     enabled="true"
+                     name="PhysicalPort">
+               </defaultMappingPossibility>
+            </mappingElement>
+            
          </mappingPackage>
          
          <mappingPackage name="fa">
-         
          
             <mappingElement
                   domainMetaClass="org.polarsys.capella.core.data.fa.ComponentExchange"
@@ -180,6 +191,18 @@
                      incompleteRule="org.polarsys.capella.core.re.rules.fa.ComponentExchangeRule"
                      enabled="true"
                      name="ComponentExchange">
+               </defaultMappingPossibility>
+            </mappingElement>
+            
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.fa.ComponentPort"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.re.rules.fa.ComponentPortRule"
+                     incompleteRule="org.polarsys.capella.core.re.rules.fa.ComponentPortRule"
+                     enabled="true"
+                     name="ComponentPort">
                </defaultMappingPossibility>
             </mappingElement>
             

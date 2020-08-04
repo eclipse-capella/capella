@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.Optional;
 
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -156,6 +157,10 @@ public abstract class RecRplTestCase extends BasicTestCase {
   }
 
   protected CatalogElement createReplica(Collection<? extends EObject> selection, CatalogElement REC, String suffix) {
+    return createReplica(selection, REC, suffix, true);
+  }
+  
+  protected CatalogElement createReplica(Collection<? extends EObject> selection, CatalogElement REC, String suffix, boolean requireAllElements) {
     Collection<CatalogElement> RPLS = ReplicableElementExt.getReplicas(REC);
 
     CreateReplicaCommand command = new CreateReplicaCommand(selection, new NullProgressMonitor());
@@ -177,15 +182,21 @@ public abstract class RecRplTestCase extends BasicTestCase {
     assertTrue(RPL.getOrigin().equals(REC));
 
     // All elements from REC should be newly created and linked to the RPL
-    for (Object element : QueryInterpretor.executeQuery(CatalogElement_UsedElements.class.getSimpleName(), REC,
+    if (requireAllElements) {
+      for (Object element : QueryInterpretor.executeQuery(CatalogElement_UsedElements.class.getSimpleName(), REC,
         new QueryContext())) {
       EObject ref = ReplicableElementExt.getReferencingElement(RPL, (EObject) element);
-      assertTrue((ref != null) && (ref != element));
+        assertTrue(ref != null && ref != element);
+      }
     }
 
     return RPL;
   }
-
+  
+  protected CatalogElement createPartialReplica(Collection<? extends EObject> selection, String suffix, CatalogElement REC) {
+    return createReplica(selection, REC, null, false);
+  }
+  
   protected void updateCur(Collection<EObject> selection, CatalogElement rec) {
     UpdateCurCommand command = new UpdateCurCommand(selection, new NullProgressMonitor());
     RecRplCommandManager.push(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET, rec);
@@ -268,6 +279,19 @@ public abstract class RecRplTestCase extends BasicTestCase {
 
   protected void mustNotReference(CatalogElement rec, EObject object) {
     assertTrue(!ReplicableElementExt.getReferencingReplicableElements(object).contains(rec));
+  }
+
+  protected CatalogElementLink mustReplicate(CatalogElement rpl, EObject origin) {
+    CatalogElementLink link = rpl.getOrigin().getOwnedLinks().stream().filter(l -> l.getTarget().equals(origin)).findFirst().get();
+    Optional<CatalogElementLink> rplLink = rpl.getOwnedLinks().stream().filter(l -> l.getOrigin().equals(link)).findAny();
+    assertTrue(rplLink.isPresent());
+    return rplLink.get();
+  }
+
+  protected void mustNotReplicate(CatalogElement rpl, EObject origin) {
+    CatalogElementLink link = rpl.getOrigin().getOwnedLinks().stream().filter(l -> l.getTarget().equals(origin)).findFirst().get();
+    Optional<CatalogElementLink> rplLink = rpl.getOwnedLinks().stream().filter(l -> l.getOrigin().equals(link)).findAny();
+    assertTrue(!rplLink.isPresent());
   }
 
   protected RecCatalog getRecCatalog() {

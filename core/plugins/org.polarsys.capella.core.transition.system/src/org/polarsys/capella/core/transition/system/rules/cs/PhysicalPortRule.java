@@ -42,11 +42,6 @@ public class PhysicalPortRule extends AbstractCapellaElementRule {
   }
 
   @Override
-  protected void attachRelated(EObject element, EObject result, IContext context) {
-    super.attachRelated(element, result, context);
-  }
-
-  @Override
   protected void retrieveGoDeep(EObject source, List<EObject> result, IContext context) {
     super.retrieveGoDeep(source, result, context);
     PhysicalPort element = (PhysicalPort) source;

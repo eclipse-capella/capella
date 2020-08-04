@@ -37,17 +37,15 @@ public class ComponentPortRule extends AbstractCapellaElementRule {
     registerUpdatedAttribute(FaPackage.Literals.COMPONENT_PORT__ORIENTATION);
   }
 
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  protected void retrieveRequired(EObject element, List<EObject> result, IContext context) {
-    super.retrieveRequired(element, result, context);
-  }
-
   @Override
   protected EClass getSourceType() {
     return FaPackage.Literals.COMPONENT_PORT;
+  }
+
+  @Override
+  protected void retrieveRequired(EObject element, List<EObject> result, IContext context) {
+    super.retrieveRequired(element, result, context);
+    result.add(element.eContainer());
   }
 
   @Override
