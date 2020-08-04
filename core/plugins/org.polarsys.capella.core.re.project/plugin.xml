@@ -27,6 +27,21 @@
              name="%cmdUpdateRECLibraryContent_name">
       	</command>
    </extension>
+   
+   
+   <extension
+         point="org.polarsys.capella.core.transition.handlers">
+      <handlers
+            id="org.polarsys.capella.common.re.dependencies"
+            mapping="org.polarsys.capella.common.re"
+            purpose="org.polarsys.capella.common.re.dependencies">
+         <scopeFilter
+               class="org.polarsys.capella.core.re.project.SkeletonScopeFilter"
+               id="org.polarsys.capella.core.re.project.SkeletonScopeFilter">
+         </scopeFilter>
+      </handlers>
+   </extension>
+      
    <extension
          point="org.eclipse.ui.handlers">
            <handler
