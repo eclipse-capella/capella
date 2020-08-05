@@ -21,6 +21,8 @@ import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.Part;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
+import org.polarsys.capella.core.data.ctx.SystemComponentPkg;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.model.helpers.AbstractCapabilityPkgExt;
@@ -155,6 +157,13 @@ public class IntramodelTransitionCommand extends LauncherCommand {
       return result;
       
     case ITopDownConstants.TRANSITION_TOPDOWN_SYSTEM:
+      if (rootElement instanceof SystemComponentPkg) {
+        rootElement = BlockArchitectureExt.getRootBlockArchitecture((SystemComponentPkg) rootElement);
+      }
+      if (rootElement instanceof BlockArchitecture) {
+        rootElement = BlockArchitectureExt.getFirstComponent((BlockArchitecture) rootElement, false);
+      }
+      return Collections.singleton(rootElement);
     case ITopDownConstants.TRANSITION_TOPDOWN_LC2PC:
     case ITopDownConstants.TRANSITION_TOPDOWN_PC2CI:
       if (rootElement instanceof BlockArchitecture) {

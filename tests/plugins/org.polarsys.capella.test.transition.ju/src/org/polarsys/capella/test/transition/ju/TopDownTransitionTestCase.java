@@ -31,6 +31,11 @@ import org.polarsys.capella.core.projection.scenario.commands.IStoISCommand;
  */
 public abstract class TopDownTransitionTestCase extends TransitionTestCase {
 
+  public void performSystemTransition(Collection<? extends EObject> elements) {
+    executeCommand(org.polarsys.capella.core.transition.system.topdown.commands.TransitionCommandHelper.getInstance()
+        .getSystemTransitionCommand(elements, new NullProgressMonitor()));
+  }
+  
   public void performActorTransition(Collection<? extends EObject> elements) {
     executeCommand(org.polarsys.capella.core.transition.system.topdown.commands.TransitionCommandHelper.getInstance()
         .getActorTransitionCommand(elements, new NullProgressMonitor()));

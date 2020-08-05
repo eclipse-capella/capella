@@ -218,10 +218,6 @@
 		<topic href="html/07. Modelling Wizards and Accelerators/7.1. Modeling accelerators.html#Port_Realization_According_to_Realizations_Between_Component_Exchanges" label="Port Realization According to Realizations Between Component Exchanges">
 			<topic href="html/07. Modelling Wizards and Accelerators/7.1. Modeling accelerators.html#Illustration_5" label="Illustration"></topic>
 		</topic>
-		<topic href="html/07. Modelling Wizards and Accelerators/7.1. Modeling accelerators.html#Synchronization_of_Interface_Use_.2F_Implement_.2F_Provide_.2F_Require_Links" label="Synchronization of Interface Use / Implement / Provide / Require Links">
-			<topic href="html/07. Modelling Wizards and Accelerators/7.1. Modeling accelerators.html#Illustration_between_System_Analysis_and_Logical_Architecture" label="Illustration between System Analysis and Logical Architecture"></topic>
-			<topic href="html/07. Modelling Wizards and Accelerators/7.1. Modeling accelerators.html#Note_for_the_case_of_a_synchronization_from_Logical_Components_to_Physical_Components" label="Note for the case of a synchronization from Logical Components to Physical Components"></topic>
-		</topic>
 		<topic href="html/07. Modelling Wizards and Accelerators/7.1. Modeling accelerators.html#Interface_Generation_from_Allocated_Functions" label="Interface Generation from Allocated Functions">
 			<topic href="html/07. Modelling Wizards and Accelerators/7.1. Modeling accelerators.html#Illustration_6" label="Illustration"></topic>
 		</topic>
