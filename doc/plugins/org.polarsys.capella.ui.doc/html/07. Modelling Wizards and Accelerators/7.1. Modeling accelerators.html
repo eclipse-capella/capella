@@ -165,53 +165,6 @@
 		<p>
 			<img height="145" width="553" border="0" src="Images/7.1.%20Modeling%20accelerators_html_a37b1aa.png"/>
 		</p>
-		<p>
-			<br/>
-
-			<br/>
-		</p>
-		<h2 id="Synchronization_of_Interface_Use_.2F_Implement_.2F_Provide_.2F_Require_Links">Synchronization of Interface Use / Implement / Provide / Require Links</h2>
-		<p>
-			<b>Source element</b>: System, Logical System, Logical Components, Physical Components, Configuration Items
-		</p>
-		<p>
-			<b>Command for System element: </b>Modeling Accelerators / Propagate Interfaces to Logical System
-		</p>
-		<p>
-			<b>Command for Logical System: </b>Modeling Accelerators / Synchronize Interfaces from System Analysis
-		</p>
-		<p>
-			<b>Command for Logical Components</b>: Modeling Accelerators / Propagate Interfaces to allocating Physical Component
-		</p>
-		<p>
-			<b>Commands for Physical Components</b>:
-		</p>
-		<ul>
-			<li>Modeling Accelerators / Synchronize Interfaces from allocated 	Logical Component</li>
-			<li>Modeling Accelerators / Propagate Interfaces to allocating 	Configuration Item</li>
-		</ul>
-		<p>
-			<b>Command for Configuration Items</b>: Modeling Accelerators / Synchronize Interfaces from allocated Physical Components
-		</p>
-		<p>
-			<b>Effect: </b>Given a source component use / implement / provide / require links towards Interfaces, replicate these links on the target component.
-		</p>
-		<h3 id="Illustration_between_System_Analysis_and_Logical_Architecture">Illustration between System Analysis and Logical Architecture</h3>
-		<p>Model before generation: At System level, the System element uses / implements / provides / requires a set of Interfaces. As shown by the Semantic Browser, the Logical System (which is realizing the System element) does not use / implement / provide / require any Interface.</p>
-		<p>
-			<img height="318" width="414" border="0" src="Images/7.1.%20Modeling%20accelerators_html_1cf7543e.png"/>
-		</p>
-		<p>
-			<img height="114" width="553" border="0" src="Images/7.1.%20Modeling%20accelerators_html_2dcaeafb.png"/>
-		</p>
-		<p>After the Interface Synchronization is launched from the Logical System, the Logical System uses / implements / provides / requires the same Interface than the System element.</p>
-		<p>
-			<img height="251" width="293" border="0" src="Images/7.1.%20Modeling%20accelerators_html_3a3b835f.png"/>
-		</p>
-		<p>This synchronization also manages the Interfaces that are not used / implemented / provided / required anymore by the source element. For example if Interface 1 is not implemented anymore by the System element, applying the same synchronization command a second time modifies the Logical System.</p>
-		<h3 id="Note_for_the_case_of_a_synchronization_from_Logical_Components_to_Physical_Components">Note for the case of a synchronization from Logical Components to Physical Components</h3>
-		<p>Between these two engineering phases, it is possible to perform a transition of Interfaces. In that case, a source Logical Interface leads to the creation of a corresponding Physical Interface in the Physical Architecture.</p>
-		<p>If the Interface synchronization algorithm finds such a realization link between Logical and Physical Interfaces, then the corresponding Use / Implement / Provide / Require links from the Physical Component target the Physical Interface instead of the original Logical Interface.</p>
 		<h2 id="Interface_Generation_from_Allocated_Functions">Interface Generation from Allocated Functions</h2>
 		<p>
 			<b>Source element</b>: Components (System, Logical Components, Physical Components)
