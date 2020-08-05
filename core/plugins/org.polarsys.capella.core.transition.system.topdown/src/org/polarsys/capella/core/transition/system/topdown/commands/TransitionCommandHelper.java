@@ -254,7 +254,7 @@ public class TransitionCommandHelper {
       }
     };
   }
-  
+
   public ICommand getPC2CITransitionCommand(Collection<?> elements, IProgressMonitor monitor) {
     return new IntramodelTransitionCommand(elements, monitor) {
       @Override
@@ -277,13 +277,11 @@ public class TransitionCommandHelper {
   }
 
   public boolean isInterfaceTransitionAvailable(EObject object) {
-    return
-    // Interface transition is disabled from ctx2la. Use generate interfaces instead.
-    // interface transition is disabled from component or architecture
-    ((object instanceof CapellaElement) && (CapellaLayerCheckingExt.isInLogicalLayer((CapellaElement) object))
-        && ((object instanceof Interface) || (object instanceof InterfacePkg)));
+    return (object instanceof Interface || object instanceof InterfacePkg)
+        && (CapellaLayerCheckingExt.isInLogicalLayer((CapellaElement) object)
+            || CapellaLayerCheckingExt.isInContextLayer((CapellaElement) object));
   }
-
+  
   public boolean isExchangeItemTransitionAvailable(EObject object) {
     return ((object instanceof CapellaElement)
         && (CapellaLayerCheckingExt.isInContextLayer((CapellaElement) object)
@@ -356,7 +354,8 @@ public class TransitionCommandHelper {
     if (CapellaLayerCheckingExt.isInLogicalLayer((CapellaElement) object)) {
       Component component = getComponent(object);
       if ((component instanceof LogicalComponent && (ComponentExt.isExternalActor(component))) || //
-          object instanceof LogicalComponentPkg && !ComponentPkgExt.getExternalActors((ComponentPkg) object).isEmpty() || //
+          object instanceof LogicalComponentPkg && !ComponentPkgExt.getExternalActors((ComponentPkg) object).isEmpty()
+          || //
           (object instanceof ComponentExchange) && ComponentExchangeExt.isLinkToAnActor((ComponentExchange) object)) {
         return true;
       }
@@ -369,6 +368,17 @@ public class TransitionCommandHelper {
    * @return
    */
   public boolean isSystemTransitionAvailable(EObject object) {
+    if (object instanceof SystemAnalysis) {
+      return true;
+
+    } else if (object instanceof SystemComponentPkg && object.eContainer() instanceof BlockArchitecture) {
+      return true;
+      
+    } else if (object instanceof SystemComponent) {
+      BlockArchitecture architecture = BlockArchitectureExt.getRootBlockArchitecture(object);
+      return (object.equals(BlockArchitectureExt.getFirstComponent(architecture, false)));
+      
+    }
     return false;
   }
 
@@ -457,7 +467,6 @@ public class TransitionCommandHelper {
         && ((object instanceof OperationalCapability) || (object instanceof OperationalCapabilityPkg)));
   }
 
-
   /**
    * @param object
    * @return
@@ -477,7 +486,6 @@ public class TransitionCommandHelper {
     return null;
   }
 
-  
   /**
    * @param element
    * @return

@@ -106,6 +106,7 @@ import org.polarsys.capella.test.transition.ju.transitions.PropertyValuesParamet
 import org.polarsys.capella.test.transition.ju.transitions.PropertyValuesParameter_09;
 import org.polarsys.capella.test.transition.ju.transitions.PropertyValuesParameter_10;
 import org.polarsys.capella.test.transition.ju.transitions.SequenceMessageAndExchangeItems;
+import org.polarsys.capella.test.transition.ju.transitions.SystemTransition;
 import org.polarsys.capella.test.transition.ju.transitions.UpdateRule_FC01_01;
 import org.polarsys.capella.test.transition.ju.transitions.UpdateRule_MEG01EI_01;
 import org.polarsys.capella.test.transition.ju.transitions.UpdateRule_MEG01EI_02;
@@ -219,6 +220,7 @@ public class TransitionsTestSuite extends BasicTestSuite {
     tests.add(new UpdateRule_MEG01TYPE_01());
     tests.add(new UpdateRule_NE01_01());
     tests.add(new UpdateRule_ST01_01());
+    tests.add(new SystemTransition());
     tests.add(new CreateRule_IS2IS_MultiInstanceRoles());
     tests.add(new CreateRule_IS2IS_ItfEI_01());
     tests.add(new CreateRule_IS2IS_ItfEI_02());
