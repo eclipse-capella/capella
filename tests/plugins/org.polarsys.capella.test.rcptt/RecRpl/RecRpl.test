@@ -124,6 +124,7 @@ with [get-window "Replicable Elements"] {
     with [get-group "" -index 1] {
         get-tree 
             | select "project/project/System Analysis/System Functions/Root System Function/FunctionalExchange 1" "project/project/System Analysis/System Functions/Root System Function/SystemFunction 1/FOP 1" "project/project/System Analysis/System Functions/Root System Function/SystemFunction 1" "project/project/System Analysis/System Functions/Root System Function/SystemFunction 2/FIP 1" "project/project/System Analysis/System Functions/Root System Function/SystemFunction 2"
+        wait -ms 1000 // wait a bit, toolbar update is async
         get-button "Add/remove suffix on elements" | click
     }
     get-button OK | click
