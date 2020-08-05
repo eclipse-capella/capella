@@ -22,7 +22,9 @@ import org.polarsys.capella.core.data.capellacore.Structure;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Part;
+import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.data.ctx.SystemComponent;
+import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
@@ -173,12 +175,13 @@ public class ComponentRule extends org.polarsys.capella.core.transition.system.r
       if (source == element_p) {
         return Status.OK_STATUS;
 
-      } else if (source instanceof Component) {
-        if (ComponentExt.isComponentAncestor((Component) source, (Component) element_p)) {
-          return Status.OK_STATUS;
-        }
+      } else if (source instanceof Component && ComponentExt.isComponentAncestor((Component) source, (Component) element_p)) {
+        return Status.OK_STATUS;
 
       } else if (source instanceof Structure) {
+        return Status.OK_STATUS;
+        
+      } else if (source instanceof ComponentExchange || source instanceof PhysicalLink) {
         return Status.OK_STATUS;
       }
     }
