@@ -12,7 +12,7 @@
  *******************************************************************************/
 target "Capella"
 
-include "https://download.eclipse.org/sirius/updates/releases/6.3.2/2019-06/targets/modules/gmf-runtime-1.13.tpd"
+include "https://download.eclipse.org/sirius/updates/stable/6.3.3-S20200806-045005/2019-06/targets/modules/gmf-runtime-1.13.tpd"
 
 with source, requirements
 
@@ -39,7 +39,7 @@ location eclipse "http://download.eclipse.org/releases/2019-06" {
 	org.eclipse.mylyn.help.ui
 }
 
-location sirius "https://download.eclipse.org/sirius/updates/releases/6.3.2/2019-06/" {
+location sirius "https://download.eclipse.org/sirius/updates/stable/6.3.3-S20200806-045005/2019-06/" {
 	org.eclipse.sirius.doc.feature.feature.group
 	org.eclipse.sirius.doc.feature.source.feature.group
 	org.eclipse.sirius.runtime.feature.group
