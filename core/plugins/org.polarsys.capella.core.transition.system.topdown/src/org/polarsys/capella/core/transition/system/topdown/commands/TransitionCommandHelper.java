@@ -36,6 +36,7 @@ import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.cs.InterfacePkg;
 import org.polarsys.capella.core.data.cs.Part;
+import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
 import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.ctx.SystemComponentPkg;
@@ -346,20 +347,22 @@ public class TransitionCommandHelper {
     if (CapellaLayerCheckingExt.isInContextLayer((CapellaElement) object)) {
       Component component = getComponent(object);
       if ((component instanceof SystemComponent && (ComponentExt.isActor(object))) || //
-          object instanceof SystemComponentPkg && !ComponentPkgExt.getAllActors((ComponentPkg) object).isEmpty() || //
-          (object instanceof ComponentExchange) && ComponentExchangeExt.isLinkToAnActor((ComponentExchange) object)) {
+          ((object instanceof SystemComponentPkg && !ComponentPkgExt.getAllActors((ComponentPkg) object).isEmpty())) || //
+          ((object instanceof ComponentExchange) && ComponentExchangeExt.isLinkToAnActor((ComponentExchange) object)) || //
+          (object instanceof PhysicalLink)) {
         return true;
       }
     }
     if (CapellaLayerCheckingExt.isInLogicalLayer((CapellaElement) object)) {
       Component component = getComponent(object);
       if ((component instanceof LogicalComponent && (ComponentExt.isExternalActor(component))) || //
-          object instanceof LogicalComponentPkg && !ComponentPkgExt.getExternalActors((ComponentPkg) object).isEmpty()
-          || //
-          (object instanceof ComponentExchange) && ComponentExchangeExt.isLinkToAnActor((ComponentExchange) object)) {
+          ((object instanceof LogicalComponentPkg && !ComponentPkgExt.getExternalActors((ComponentPkg) object).isEmpty())) || //
+          ((object instanceof ComponentExchange) && ComponentExchangeExt.isLinkToAnActor((ComponentExchange) object)) || //
+          (object instanceof PhysicalLink)) {
         return true;
       }
     }
+    
     return false;
   }
 
