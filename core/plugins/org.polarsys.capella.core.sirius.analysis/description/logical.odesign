@@ -64,7 +64,7 @@
       </intersection>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:CrossTableDescription" name="Logical Components - Requirements" label="Logical Components/Actors - Requirements" domainClass="LogicalArchitecture">
-      <ownedLineMappings name="Logical Components 2" domainClass="LogicalComponent" semanticCandidatesExpression="aql:self.ownedLogicalComponentPkg.ownedLogicalComponents" headerLabelExpression="feature:name">
+      <ownedLineMappings name="Logical Components 2" domainClass="LogicalComponent" semanticCandidatesExpression="aql:self.makeUnion(self.getSubComponents(), self.getSubActors())" headerLabelExpression="feature:name">
         <ownedSubLines name="Sub Logical Components 2" reusedSubLines="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Components%20-%20Requirements']/@ownedLineMappings[name='Logical%20Components%202']/@ownedSubLines[name='Sub%20Logical%20Components%202']" reusedInMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Components%20-%20Requirements']/@ownedLineMappings[name='Logical%20Components%202']/@ownedSubLines[name='Sub%20Logical%20Components%202']" domainClass="LogicalComponent" semanticCandidatesExpression="aql:self.makeUnion(self.getSubComponents(), self.getSubActors())" headerLabelExpression="feature:name">
           <delete name="No delete" precondition="false">
             <variables name="element" documentation="The currently edited element."/>
@@ -176,7 +176,7 @@
       </intersection>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:CrossTableDescription" name="Logical Components - Logical Functions" label="Logical Components/Actors - Logical Functions" domainClass="LogicalArchitecture">
-      <ownedLineMappings name="Logical Components 1" domainClass="Component" semanticCandidatesExpression="aql:self.ownedLogicalComponentPkg.ownedLogicalComponents" headerLabelExpression="feature:name">
+      <ownedLineMappings name="Logical Components 1" domainClass="Component" semanticCandidatesExpression="aql:self.makeUnion(self.getSubComponents(), self.getSubActors())" headerLabelExpression="feature:name">
         <ownedSubLines name="Sub Logical Components 1" reusedSubLines="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Components%20-%20Logical%20Functions']/@ownedLineMappings[name='Logical%20Components%201']/@ownedSubLines[name='Sub%20Logical%20Components%201']" reusedInMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Components%20-%20Logical%20Functions']/@ownedLineMappings[name='Logical%20Components%201']/@ownedSubLines[name='Sub%20Logical%20Components%201']" domainClass="LogicalComponent" semanticCandidatesExpression="aql:self.makeUnion(self.getSubComponents(), self.getSubActors())" headerLabelExpression="feature:name">
           <delete name="No delete" precondition="false">
             <variables name="element" documentation="The currently edited element."/>
@@ -320,7 +320,7 @@
       </intersection>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:CrossTableDescription" name="Logical Actor - Context Actor" label="Logical Actors - System Actors" domainClass="LogicalArchitecture">
-      <ownedLineMappings name="LACA Logical Actor Line" domainClass="LogicalComponent" semanticCandidatesExpression="aql:self.ownedLogicalComponentPkg.ownedLogicalComponents->select(c | c.isActor())">
+      <ownedLineMappings name="LACA Logical Actor Line" domainClass="LogicalComponent" semanticCandidatesExpression="aql:self.getSubActors()">
         <ownedSubLines name="Sub Logical Actors" reusedSubLines="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Actor%20-%20Context%20Actor']/@ownedLineMappings[name='LACA%20Logical%20Actor%20Line']/@ownedSubLines[name='Sub%20Logical%20Actors']" reusedInMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Actor%20-%20Context%20Actor']/@ownedLineMappings[name='LACA%20Logical%20Actor%20Line']/@ownedSubLines[name='Sub%20Logical%20Actors']" domainClass="LogicalComponent" semanticCandidatesExpression="aql:self.getSubActors()" headerLabelExpression="feature:name">
           <delete name="No delete" precondition="false">
             <variables name="element" documentation="The currently edited element."/>
