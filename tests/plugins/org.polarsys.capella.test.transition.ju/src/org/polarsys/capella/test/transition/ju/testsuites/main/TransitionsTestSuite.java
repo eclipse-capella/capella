@@ -36,7 +36,7 @@ public class TransitionsTestSuite extends BasicTestSuite {
 
     tests.add(new ActorTransitionWithGeneralizationTest());
     tests.add(new SequenceMessageAndExchangeItems());
-
+    
     tests.add(new Context_A01_01());
     tests.add(new Context_A01_02());
     tests.add(new Context_A01_03());
@@ -105,6 +105,7 @@ public class TransitionsTestSuite extends BasicTestSuite {
     tests.add(new FunctionalExchangeAttachment());
     tests.add(new GenerateInterface01_01());
     tests.add(new LCPCTransition_02());
+    tests.add(new LaInnerLC());
     tests.add(new ManyToOne());
     tests.add(new OneToMany());
     tests.add(new PropertyValuesParameter_01());
