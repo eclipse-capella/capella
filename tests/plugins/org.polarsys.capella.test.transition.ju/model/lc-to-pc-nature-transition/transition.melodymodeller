@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--Capella_Version_1.4.0-->
+<!--Capella_Version_1.4.2-->
 <org.polarsys.capella.core.data.capellamodeller:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:libraries="http://www.polarsys.org/capella/common/libraries/1.4.0"
     xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/1.4.0"
@@ -224,6 +224,8 @@
             id="171f25be-e637-422f-bff4-5473dd014811" name="Logical System">
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="da09ca4e-0e88-4110-8f61-ee70a28f1624"
               name="LC 1" abstractType="#12bdef48-70b0-46b2-baac-32c07331f982"/>
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="9cf83550-0678-4f8b-8471-bb1d83358f71"
+              name="LC 2" abstractType="#aaa1c0bf-c034-45a1-969b-6f5f65d14744"/>
           <ownedComponentRealizations xsi:type="org.polarsys.capella.core.data.cs:ComponentRealization"
               id="1682c2a4-9d9f-44f4-a7ff-fac2cd98d94a" targetElement="#b08ed0c0-13df-4ace-9572-9705b71b5aa4"
               sourceElement="#171f25be-e637-422f-bff4-5473dd014811"/>
@@ -246,6 +248,8 @@
                   sourceElement="#2e04b442-1fb6-4aca-bfdb-bf36dc232775"/>
             </ownedLogicalComponents>
           </ownedLogicalComponents>
+          <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
+              id="aaa1c0bf-c034-45a1-969b-6f5f65d14744" name="LC 2"/>
         </ownedLogicalComponents>
         <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
             id="790cd234-0951-496a-a8c9-6f2aa5e02732" name="LA 2" actor="true">
