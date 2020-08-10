@@ -86,11 +86,13 @@ public class ComponentRule extends org.polarsys.capella.core.transition.system.r
   @Override
   protected void retrieveComponentGoDeep(EObject source_p, List<EObject> result_p, IContext context_p) {
     super.retrieveComponentGoDeep(source_p, result_p, context_p);
-
+    
     Component element = (Component) source_p;
 
     IContextScopeHandler handler = ContextScopeHandlerHelper.getInstance(context_p);
 
+    retrieveRepresentingPartitions(source_p, result_p, context_p);
+    
     IOptionsHandler options = OptionsHandlerHelper.getInstance(context_p);
 
     //We put in targetArchi only if ExchangeItem transition or preference is enabled
