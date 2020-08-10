@@ -538,12 +538,8 @@ public class TransitionHelper {
       }
       return true;
     }
-    return ((object instanceof SystemAnalysis) || (object instanceof LogicalArchitecture)
-        || (object instanceof PhysicalArchitecture))
-        || ((object instanceof CapellaElement)
-            && (CapellaLayerCheckingExt.isInContextLayer((CapellaElement) object)
-                || CapellaLayerCheckingExt.isInLogicalLayer((CapellaElement) object)
-                || CapellaLayerCheckingExt.isInPhysicalLayer((CapellaElement) object))
-            && ((object instanceof AbstractCapability) || (object instanceof AbstractCapabilityPkg)));
+    return (object instanceof SystemAnalysis) || (object instanceof LogicalArchitecture)
+        || (object instanceof PhysicalArchitecture) || (object instanceof AbstractCapability)
+        || (object instanceof AbstractCapabilityPkg);
   }
 }
