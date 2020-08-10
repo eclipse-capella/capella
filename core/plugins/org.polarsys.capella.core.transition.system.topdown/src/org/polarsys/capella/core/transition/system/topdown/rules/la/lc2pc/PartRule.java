@@ -48,15 +48,13 @@ public class PartRule extends org.polarsys.capella.core.transition.system.rules.
 
   @Override
   public IStatus transformRequired(EObject element, IContext context) {
-
     Part partSrc = (Part) element;
     boolean result =
         CsPackage.Literals.COMPONENT.isSuperTypeOf(TransformationHandlerHelper.getInstance(context).getTargetType(partSrc.getAbstractType(), context));
     if (!result) {
       return new Status(IStatus.WARNING, Messages.Activity_Transition, "Type transitioned to ComponentPackage");
     }
-
-    return Status.OK_STATUS;
+    return super.transformRequired(element, context);
   }
 
   @Override
