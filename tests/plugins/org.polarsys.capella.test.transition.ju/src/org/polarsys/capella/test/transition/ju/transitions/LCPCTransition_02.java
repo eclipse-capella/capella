@@ -23,7 +23,7 @@ import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 import org.polarsys.capella.test.transition.ju.TopDownTransitionTestCase;
 
 /**
- * Transition of a LogicalComponent should lead to a PhysicalComponent with nature NODE
+ * Transition of a LogicalComponent should lead to a PhysicalComponent with nature BEHAVIOR
  */
 public class LCPCTransition_02 extends TopDownTransitionTestCase {
 
@@ -45,7 +45,7 @@ public class LCPCTransition_02 extends TopDownTransitionTestCase {
         .getOwnedPhysicalArchitecture(SystemEngineeringExt.getSystemEngineering(component));
     PhysicalComponent rootPC = (PhysicalComponent) pa.getSystem();
     assertEquals(1, rootPC.getOwnedPhysicalComponents().size());
-    assertEquals(PhysicalComponentNature.NODE, rootPC.getOwnedPhysicalComponents().get(0).getNature());
+    assertEquals(PhysicalComponentNature.BEHAVIOR, rootPC.getOwnedPhysicalComponents().get(0).getNature());
   }
 
 }

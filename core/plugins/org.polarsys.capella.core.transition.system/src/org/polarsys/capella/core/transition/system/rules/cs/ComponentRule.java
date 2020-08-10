@@ -75,11 +75,10 @@ public class ComponentRule extends AbstractCapellaElementRule {
     registerUpdatedAttribute(CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__ABSTRACT);
   }
 
-  
   protected boolean transformAsRootComponent(EObject object, IContext context) {
-    return BlockArchitectureExt.isRootComponent((Component)object);
+    return BlockArchitectureExt.isRootComponent((Component) object);
   }
-  
+
   @Override
   protected EObject transformDirectElement(EObject element, IContext context) {
     if (transformAsRootComponent(element, context)) {
@@ -233,7 +232,6 @@ public class ComponentRule extends AbstractCapellaElementRule {
     } else if (container instanceof SystemAnalysis) {
       if (CtxPackage.Literals.SYSTEM_COMPONENT_PKG.isSuperTypeOf(targetType)) {
         return CtxPackage.Literals.SYSTEM_ANALYSIS__OWNED_SYSTEM_COMPONENT_PKG;
-
       }
 
     } else if (container instanceof SystemComponentPkg) {
@@ -242,7 +240,6 @@ public class ComponentRule extends AbstractCapellaElementRule {
 
       } else if (CtxPackage.Literals.SYSTEM_COMPONENT_PKG.isSuperTypeOf(targetType)) {
         return CtxPackage.Literals.SYSTEM_COMPONENT_PKG__OWNED_SYSTEM_COMPONENT_PKGS;
-
       }
 
     } else if (container instanceof SystemComponent) {
@@ -251,7 +248,6 @@ public class ComponentRule extends AbstractCapellaElementRule {
 
       } else if (CtxPackage.Literals.SYSTEM_COMPONENT_PKG.isSuperTypeOf(targetType)) {
         return CtxPackage.Literals.SYSTEM_COMPONENT__OWNED_SYSTEM_COMPONENT_PKGS;
-
       }
 
     } else if (container instanceof LogicalArchitecture) {
@@ -276,7 +272,6 @@ public class ComponentRule extends AbstractCapellaElementRule {
     } else if (container instanceof PhysicalArchitecture) {
       if (PaPackage.Literals.PHYSICAL_COMPONENT_PKG.isSuperTypeOf(targetType)) {
         return PaPackage.Literals.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT_PKG;
-
       }
 
     } else if (container instanceof PhysicalComponentPkg) {
@@ -295,8 +290,9 @@ public class ComponentRule extends AbstractCapellaElementRule {
 
     } else if (container instanceof Part) {
       return CsPackage.Literals.PART__OWNED_ABSTRACT_TYPE;
-    } else if(container instanceof ConfigurationItem) {
-      if(EpbsPackage.Literals.CONFIGURATION_ITEM.isSuperTypeOf(targetType)) {
+
+    } else if (container instanceof ConfigurationItem) {
+      if (EpbsPackage.Literals.CONFIGURATION_ITEM.isSuperTypeOf(targetType)) {
         return EpbsPackage.Literals.CONFIGURATION_ITEM__OWNED_CONFIGURATION_ITEMS;
       }
     }
@@ -310,8 +306,8 @@ public class ComponentRule extends AbstractCapellaElementRule {
 
     if (nature == null) {
       Collection<Component> subComponents = ComponentExt.getAllSubUsedComponents(logicalComponent);
+      subComponents.add(logicalComponent);
       nature = computeNature(subComponents);
-      cacheNature(natureMap, Arrays.asList(logicalComponent), nature);
       cacheNature(natureMap, subComponents, nature);
     }
 
@@ -333,7 +329,6 @@ public class ComponentRule extends AbstractCapellaElementRule {
 
   private PhysicalComponentNature computeNature(Collection<Component> subComponents) {
     boolean allSubComponentsActors = subComponents.stream().allMatch(Component::isActor);
-
     return allSubComponentsActors ? PhysicalComponentNature.NODE : PhysicalComponentNature.BEHAVIOR;
   }
 
