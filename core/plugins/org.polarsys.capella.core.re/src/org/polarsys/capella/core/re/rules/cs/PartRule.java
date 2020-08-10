@@ -17,9 +17,9 @@ import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Part;
-import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.transition.common.handlers.transformation.TransformationHandlerHelper;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
@@ -31,15 +31,16 @@ public class PartRule extends org.polarsys.capella.core.transition.system.rules.
   @Override
   protected EObject getDefaultContainer(EObject element_p, EObject result_p, IContext context_p) {
     EObject root = TransformationHandlerHelper.getInstance(context_p).getLevelElement(element_p, context_p);
-    BlockArchitecture target =
-        (BlockArchitecture) TransformationHandlerHelper.getInstance(context_p).getBestTracedElement(root, context_p, CsPackage.Literals.BLOCK_ARCHITECTURE,
-            element_p, result_p);
+    BlockArchitecture target = (BlockArchitecture) TransformationHandlerHelper.getInstance(context_p)
+        .getBestTracedElement(root, context_p, CsPackage.Literals.BLOCK_ARCHITECTURE, element_p, result_p);
 
     Part part = (Part) result_p;
     if (part != null) {
       Component cps = (Component) part.getAbstractType();
-      if (cps != null && (cps.isActor() && BlockArchitectureExt.isRootComponent(cps)) || (cps instanceof Entity) || (cps instanceof SystemComponent)) {
-        return BlockArchitectureExt.getComponentPkg(target, true);
+      if (cps != null) {
+        if (cps instanceof Entity || BlockArchitectureExt.isRootComponent(cps) || ComponentExt.isExternalActor(cps)) {
+          return BlockArchitectureExt.getComponentPkg(target, true);
+        }
       }
     }
     return BlockArchitectureExt.getOrCreateSystem(target);
