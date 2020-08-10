@@ -21,6 +21,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.polarsys.capella.core.data.cs.CsFactory;
 import org.polarsys.capella.core.data.cs.Part;
+import org.polarsys.capella.core.data.fa.FaFactory;
 import org.polarsys.capella.core.data.la.CapabilityRealizationPkg;
 import org.polarsys.capella.core.data.la.LaFactory;
 import org.polarsys.capella.core.data.pa.PaFactory;
@@ -68,6 +69,15 @@ public class CreateRPL_SpecificPackages_PA extends CreateRPL_SpecificPackages {
 
         PhysicalComponent pc = (PhysicalComponent)project.getPhysicalArchitecture().getSystem();
 
+        aPkg.getOwnedPhysicalLinks().add(CsFactory.eINSTANCE.createPhysicalLink());
+        result.addAll(aPkg.getOwnedPhysicalLinks());
+        pc.getOwnedPhysicalLinks().add(CsFactory.eINSTANCE.createPhysicalLink());
+        result.addAll(pc.getOwnedPhysicalLinks());
+        aPkg.getOwnedComponentExchanges().add(FaFactory.eINSTANCE.createComponentExchange());
+        result.addAll(aPkg.getOwnedComponentExchanges());
+        pc.getOwnedComponentExchanges().add(FaFactory.eINSTANCE.createComponentExchange());
+        result.addAll(pc.getOwnedComponentExchanges());
+        
         pc.getOwnedPhysicalComponentPkgs().add(PaFactory.eINSTANCE.createPhysicalComponentPkg());
         PhysicalComponent subPC = PaFactory.eINSTANCE.createPhysicalComponent();
         Part part = CsFactory.eINSTANCE.createPart();
