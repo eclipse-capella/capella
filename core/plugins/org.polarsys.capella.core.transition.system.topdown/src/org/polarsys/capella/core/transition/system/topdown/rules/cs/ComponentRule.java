@@ -19,6 +19,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.core.data.capellacore.Structure;
+import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Part;
@@ -52,7 +53,7 @@ public class ComponentRule extends org.polarsys.capella.core.transition.system.r
 
   @Override
   protected void retrieveComponentAllocations(EObject source_p, List<EObject> result_p, IContext context_p) {
-    if (!(source_p instanceof SystemComponent && BlockArchitectureExt.isRootComponent((SystemComponent)source_p))) {
+    if (!(source_p instanceof SystemComponent && BlockArchitectureExt.isRootComponent((SystemComponent) source_p))) {
       super.retrieveComponentAllocations(source_p, result_p, context_p);
 
     } else {
@@ -63,7 +64,7 @@ public class ComponentRule extends org.polarsys.capella.core.transition.system.r
       }
     }
   }
-  
+
   @Override
   protected void retrieveRepresentingPartitions(EObject source_p, List<EObject> result_p, IContext context_p) {
     Component element = (Component) source_p;
@@ -76,7 +77,8 @@ public class ComponentRule extends org.polarsys.capella.core.transition.system.r
         if ((partition.eContainer() != null) && (ComponentPkgExt.isRootComponentPkg(partition.eContainer()))) {
           result_p.add(partition);
         }
-        if ((partition.getType() instanceof Component) && (((Component) partition.getType()).getRepresentingParts().size() == 1)) {
+        if ((partition.getType() instanceof Component)
+            && (((Component) partition.getType()).getRepresentingParts().size() == 1)) {
           result_p.add(partition);
         }
       }
@@ -86,27 +88,27 @@ public class ComponentRule extends org.polarsys.capella.core.transition.system.r
   @Override
   protected void retrieveComponentGoDeep(EObject source_p, List<EObject> result_p, IContext context_p) {
     super.retrieveComponentGoDeep(source_p, result_p, context_p);
-    
+
     Component element = (Component) source_p;
 
     IContextScopeHandler handler = ContextScopeHandlerHelper.getInstance(context_p);
 
     retrieveRepresentingPartitions(source_p, result_p, context_p);
-    
+
     IOptionsHandler options = OptionsHandlerHelper.getInstance(context_p);
 
-    //We put in targetArchi only if ExchangeItem transition or preference is enabled
-    boolean transitionStateMachine =
-        options.getBooleanValue(context_p, ITopDownConstants.TRANSITION_TOPDOWN, ITopDownConstants.OPTIONS_TRANSITION__STATE_MACHINE,
-            ITopDownConstants.OPTIONS_TRANSITION__STATE_MACHINE_DEFAULT.booleanValue());
+    // We put in targetArchi only if ExchangeItem transition or preference is enabled
+    boolean transitionStateMachine = options.getBooleanValue(context_p, ITopDownConstants.TRANSITION_TOPDOWN,
+        ITopDownConstants.OPTIONS_TRANSITION__STATE_MACHINE,
+        ITopDownConstants.OPTIONS_TRANSITION__STATE_MACHINE_DEFAULT.booleanValue());
 
-    boolean transitionInterface =
-        options.getBooleanValue(context_p, ITopDownConstants.TRANSITION_TOPDOWN, ITopDownConstants.OPTIONS_TRANSITION__INTERFACE,
-            ITopDownConstants.OPTIONS_TRANSITION__INTERFACE_DEFAULT.booleanValue());
+    boolean transitionInterface = options.getBooleanValue(context_p, ITopDownConstants.TRANSITION_TOPDOWN,
+        ITopDownConstants.OPTIONS_TRANSITION__INTERFACE,
+        ITopDownConstants.OPTIONS_TRANSITION__INTERFACE_DEFAULT.booleanValue());
 
-    boolean transitionData =
-        options.getBooleanValue(context_p, ITopDownConstants.TRANSITION_TOPDOWN, ITopDownConstants.OPTIONS_TRANSITION__DATATYPE,
-            ITopDownConstants.OPTIONS_TRANSITION__DATATYPE_DEFAULT.booleanValue());
+    boolean transitionData = options.getBooleanValue(context_p, ITopDownConstants.TRANSITION_TOPDOWN,
+        ITopDownConstants.OPTIONS_TRANSITION__DATATYPE,
+        ITopDownConstants.OPTIONS_TRANSITION__DATATYPE_DEFAULT.booleanValue());
 
     if (transitionStateMachine) {
       if (handler.contains(ITransitionConstants.SOURCE_SCOPE, element, context_p)) {
@@ -148,22 +150,25 @@ public class ComponentRule extends org.polarsys.capella.core.transition.system.r
     EObject container = element_p.eContainer();
     if (container != null) {
       EObject parent = container;
-      while (parent != null) {
+      EObject targetContainer = null;
+      while (parent != null && targetContainer == null) {
+        ISelectionContext sContext = SelectionContextHandlerHelper.getHandler(context_p).getSelectionContext(context_p,
+            ITransitionConstants.SELECTION_CONTEXT__TRANSFORMATION, element_p, result_p);
 
-        ISelectionContext sContext =
-            SelectionContextHandlerHelper.getHandler(context_p).getSelectionContext(context_p, ITransitionConstants.SELECTION_CONTEXT__TRANSFORMATION,
-                element_p, result_p);
-
-        EObject targetContainer =
-            TransformationHandlerHelper.getInstance(context_p).getBestTracedElement(parent, context_p,
-                new EClassSelectionContext(sContext, CsPackage.Literals.COMPONENT));
+        targetContainer = TransformationHandlerHelper.getInstance(context_p).getBestTracedElement(parent, context_p,
+            new EClassSelectionContext(sContext, CsPackage.Literals.COMPONENT));
         if (targetContainer == null) {
-          targetContainer = TransformationHandlerHelper.getInstance(context_p).getBestTracedElement(parent, context_p, sContext);
-        }
-        if (targetContainer != null) {
-          return targetContainer;
+          targetContainer = TransformationHandlerHelper.getInstance(context_p).getBestTracedElement(parent, context_p,
+              sContext);
         }
         parent = parent.eContainer();
+      }
+
+      if (targetContainer != null) {
+        if (targetContainer.eContainer() instanceof BlockArchitecture && !transformAsRootComponent(element_p, context_p)) {
+          return null;
+        }
+        return targetContainer;
       }
     }
 
@@ -177,12 +182,13 @@ public class ComponentRule extends org.polarsys.capella.core.transition.system.r
       if (source == element_p) {
         return Status.OK_STATUS;
 
-      } else if (source instanceof Component && ComponentExt.isComponentAncestor((Component) source, (Component) element_p)) {
+      } else if (source instanceof Component
+          && ComponentExt.isComponentAncestor((Component) source, (Component) element_p)) {
         return Status.OK_STATUS;
 
       } else if (source instanceof Structure) {
         return Status.OK_STATUS;
-        
+
       } else if (source instanceof ComponentExchange || source instanceof PhysicalLink) {
         return Status.OK_STATUS;
       }
@@ -191,7 +197,8 @@ public class ComponentRule extends org.polarsys.capella.core.transition.system.r
     if (TopDownTransformationHelper.getInstance(context_p).isTracedInTarget(element_p, context_p)) {
       return Status.OK_STATUS;
     }
-    if (ContextScopeHandlerHelper.getInstance(context_p).contains(ITransitionConstants.SOURCE_SCOPE, element_p, context_p)) {
+    if (ContextScopeHandlerHelper.getInstance(context_p).contains(ITransitionConstants.SOURCE_SCOPE, element_p,
+        context_p)) {
       return Status.OK_STATUS;
     }
     return new Status(IStatus.WARNING, Messages.Activity_Transition, "Component already transitioned");
