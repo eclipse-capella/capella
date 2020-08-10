@@ -43,6 +43,7 @@ import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.cs.InterfacePkg;
 import org.polarsys.capella.core.data.cs.Part;
+import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.data.cs.util.CsSwitch;
 import org.polarsys.capella.core.data.ctx.Capability;
 import org.polarsys.capella.core.data.ctx.CapabilityPkg;
@@ -56,6 +57,7 @@ import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.data.ctx.SystemFunctionPkg;
 import org.polarsys.capella.core.data.ctx.util.CtxSwitch;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
+import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.ExchangeCategory;
 import org.polarsys.capella.core.data.fa.util.FaSwitch;
 import org.polarsys.capella.core.data.information.Class;
@@ -106,43 +108,33 @@ import org.polarsys.capella.core.model.helpers.SystemAnalysisExt;
 import org.polarsys.capella.core.model.helpers.naming.NamingConstants;
 
 /**
- * This class creates 'packages' for created rpl elements stores the packages in the model.
- * It is guaranteed that only one package is created for multiple invocations
- * with elements that should go to the same package, but this is limited to invocations on a single instance.
+ * This class creates 'packages' for created rpl elements stores the packages in the model. It is guaranteed that only
+ * one package is created for multiple invocations with elements that should go to the same package, but this is limited
+ * to invocations on a single instance.
  */
 public class SpecificPackageSupplierFactory {
 
   private final ComposedSwitch<Supplier<EObject>> zwitch;
 
   /* this stores already created packages so for each setting only one package per instance is created */
-  private final Map<Map.Entry<EObject,EStructuralFeature>, Supplier<EObject>> createdSuppliers = new HashMap<Map.Entry<EObject,EStructuralFeature>,Supplier<EObject>>();
+  private final Map<Map.Entry<EObject, EStructuralFeature>, Supplier<EObject>> createdSuppliers = new HashMap<Map.Entry<EObject, EStructuralFeature>, Supplier<EObject>>();
 
   private final Resource destinationResource;
 
   private BlockArchitecture destinationBlock;
 
   private EObject packagedElement;
-  
+
   /**
-   * @param destinationResource the resource in which we create packages; the resource in which the RPL will 'live'
+   * @param destinationResource
+   *          the resource in which we create packages; the resource in which the RPL will 'live'
    */
-  public SpecificPackageSupplierFactory(Resource destinationResource){
+  public SpecificPackageSupplierFactory(Resource destinationResource) {
     this.destinationResource = destinationResource;
 
-    Collection<Switch<Supplier<EObject>>> theSwitches = Arrays.asList(
-        new Capellacommon(),
-        new Capellacore(),
-        new Communication(),
-        new Cs(),
-        new Ctx(),
-        new Datatype(),
-        new Datavalue(),
-        new Fa(),
-        new Information(),
-        new La(),
-        new Oa(),
-        new Pa()
-    );
+    Collection<Switch<Supplier<EObject>>> theSwitches = Arrays.asList(new Capellacommon(), new Capellacore(),
+        new Communication(), new Cs(), new Ctx(), new Datatype(), new Datavalue(), new Fa(), new Information(),
+        new La(), new Oa(), new Pa());
 
     zwitch = new ComposedSwitch<Supplier<EObject>>(theSwitches);
   }
@@ -151,7 +143,8 @@ public class SpecificPackageSupplierFactory {
    * Returns a supplier that will create and add a specific package that may serve as a container for the given element.
    * Not all elements are stored in specific packages, so this may also return null.
    *
-   * @param packagedElement the element for which a container package is needed
+   * @param packagedElement
+   *          the element for which a container package is needed
    * @return a supplier or null for elements that are not added to specific packages
    */
   public Supplier<EObject> getSpecificPackageSupplier(EObject packagedElement) {
@@ -160,11 +153,9 @@ public class SpecificPackageSupplierFactory {
     return zwitch.doSwitch(packagedElement);
   }
 
-
   /**
-   * Find the first BlockArchitecture in the destination resource that
-   * has the same class as the BlockArchitecture in which packagedElement
-   * belongs to.
+   * Find the first BlockArchitecture in the destination resource that has the same class as the BlockArchitecture in
+   * which packagedElement belongs to.
    */
   private BlockArchitecture findDestinationBlock(EObject packagedElement) {
     BlockArchitecture result = null;
@@ -183,13 +174,15 @@ public class SpecificPackageSupplierFactory {
   @SuppressWarnings("unchecked")
   private Supplier<EObject> getSpecificPackageSupplier(EObject container, EReference feature) {
 
-    final Map.Entry<EObject, EStructuralFeature> key = new SimpleImmutableEntry<EObject, EStructuralFeature>(container, feature);
+    final Map.Entry<EObject, EStructuralFeature> key = new SimpleImmutableEntry<EObject, EStructuralFeature>(container,
+        feature);
     Supplier<EObject> created = createdSuppliers.get(key);
 
     if (created == null) {
 
       created = new Supplier<EObject>() {
         EObject suppliedObject;
+
         @Override
         public EObject get() {
           if (suppliedObject == null) {
@@ -203,7 +196,6 @@ public class SpecificPackageSupplierFactory {
     }
     return created;
   }
-
 
   class La extends LaSwitch<Supplier<EObject>> {
 
@@ -266,6 +258,22 @@ public class SpecificPackageSupplierFactory {
   class Fa extends FaSwitch<Supplier<EObject>> {
 
     @Override
+    public Supplier<EObject> caseComponentExchange(ComponentExchange object) {
+      Type blockArchitectureType = BlockArchitectureExt
+          .getBlockArchitectureType(BlockArchitectureExt.getRootBlockArchitecture(object));
+      if (blockArchitectureType == Type.OA) {
+        return getEntityPkg();
+      } else if (blockArchitectureType == Type.SA) {
+        return getSystemComponentPkg();
+      } else if (blockArchitectureType == Type.LA) {
+        return getLogicalComponentPkg();
+      } else if (blockArchitectureType == Type.PA) {
+        return getPhysicalComponentPkg();
+      }
+      return super.caseComponentExchange(object);
+    }
+
+    @Override
     public Supplier<EObject> caseExchangeCategory(ExchangeCategory object) {
       // here it depends on the parent
       EObject container = object.eContainer();
@@ -306,7 +314,7 @@ public class SpecificPackageSupplierFactory {
 
     @Override
     public Supplier<EObject> caseRole(Role object) {
-       return getRolePkg();
+      return getRolePkg();
     }
 
     @Override
@@ -337,12 +345,12 @@ public class SpecificPackageSupplierFactory {
     public Supplier<EObject> caseSystemComponentPkg(SystemComponentPkg object) {
       return getSystemComponentPkg();
     }
-  
+
     @Override
     public Supplier<EObject> caseSystemComponent(SystemComponent object) {
       return getSystemComponentPkg();
     }
-    
+
     @Override
     public Supplier<EObject> caseMission(Mission object) {
       return getMissionPkg();
@@ -417,6 +425,23 @@ public class SpecificPackageSupplierFactory {
       }
       return super.casePart(object);
     }
+
+    @Override
+    public Supplier<EObject> casePhysicalLink(PhysicalLink object) {
+      Type blockArchitectureType = BlockArchitectureExt
+          .getBlockArchitectureType(BlockArchitectureExt.getRootBlockArchitecture(object));
+      if (blockArchitectureType == Type.OA) {
+        return getEntityPkg();
+      } else if (blockArchitectureType == Type.SA) {
+        return getSystemComponentPkg();
+      } else if (blockArchitectureType == Type.LA) {
+        return getLogicalComponentPkg();
+      } else if (blockArchitectureType == Type.PA) {
+        return getPhysicalComponentPkg();
+      }
+      return super.casePhysicalLink(object);
+    }
+
   }
 
   class Information extends InformationSwitch<Supplier<EObject>> {
@@ -512,22 +537,24 @@ public class SpecificPackageSupplierFactory {
     return getSpecificPackageSupplier(interfacePkg, CsPackage.Literals.INTERFACE_PKG__OWNED_INTERFACE_PKGS);
   }
 
-  private Supplier<EObject> getSystemComponentPkg(){
+  private Supplier<EObject> getSystemComponentPkg() {
     Component root = ComponentExt.getRootComponent(packagedElement);
     if (root != null && BlockArchitectureExt.isRootComponent(root)) {
-      SystemComponent rootComponent = (SystemComponent)((BlockArchitecture) destinationBlock).getSystem();
-      return getSpecificPackageSupplier(rootComponent, CtxPackage.Literals.SYSTEM_COMPONENT__OWNED_SYSTEM_COMPONENT_PKGS);
+      SystemComponent rootComponent = (SystemComponent) ((BlockArchitecture) destinationBlock).getSystem();
+      return getSpecificPackageSupplier(rootComponent,
+          CtxPackage.Literals.SYSTEM_COMPONENT__OWNED_SYSTEM_COMPONENT_PKGS);
     }
-    SystemComponentPkg componentPkg = (SystemComponentPkg)BlockArchitectureExt.getComponentPkg(destinationBlock, true);
-    return getSpecificPackageSupplier(componentPkg, CtxPackage.Literals.SYSTEM_COMPONENT_PKG__OWNED_SYSTEM_COMPONENT_PKGS);
+    SystemComponentPkg componentPkg = (SystemComponentPkg) BlockArchitectureExt.getComponentPkg(destinationBlock, true);
+    return getSpecificPackageSupplier(componentPkg,
+        CtxPackage.Literals.SYSTEM_COMPONENT_PKG__OWNED_SYSTEM_COMPONENT_PKGS);
   }
 
-  private Supplier<EObject> getSystemFunctionPkg(){
+  private Supplier<EObject> getSystemFunctionPkg() {
     AbstractFunction rootFunction = BlockArchitectureExt.getRootFunction(destinationBlock, true);
     return getSpecificPackageSupplier(rootFunction, CtxPackage.Literals.SYSTEM_FUNCTION__OWNED_SYSTEM_FUNCTION_PKGS);
   }
 
-  private Supplier<EObject> getMissionPkg(){
+  private Supplier<EObject> getMissionPkg() {
     if (destinationBlock instanceof SystemAnalysis) {
       MissionPkg missionPkg = SystemAnalysisExt.getMissionPkg((SystemAnalysis) destinationBlock);
       return getSpecificPackageSupplier(missionPkg, CtxPackage.Literals.MISSION_PKG__OWNED_MISSION_PKGS);
@@ -535,52 +562,62 @@ public class SpecificPackageSupplierFactory {
     return null;
   }
 
-  private Supplier<EObject> getPhysicalComponentPkg(){
+  private Supplier<EObject> getPhysicalComponentPkg() {
     Component root = ComponentExt.getRootComponent(packagedElement);
     if (root != null && BlockArchitectureExt.isRootComponent(root)) {
-      PhysicalComponent rootComponent = (PhysicalComponent)((BlockArchitecture) destinationBlock).getSystem();
-      return getSpecificPackageSupplier(rootComponent, PaPackage.Literals.PHYSICAL_COMPONENT__OWNED_PHYSICAL_COMPONENT_PKGS);
+      PhysicalComponent rootComponent = (PhysicalComponent) ((BlockArchitecture) destinationBlock).getSystem();
+      return getSpecificPackageSupplier(rootComponent,
+          PaPackage.Literals.PHYSICAL_COMPONENT__OWNED_PHYSICAL_COMPONENT_PKGS);
     }
-    PhysicalComponentPkg componentPkg = (PhysicalComponentPkg)BlockArchitectureExt.getComponentPkg(destinationBlock, true);
-    return getSpecificPackageSupplier(componentPkg, PaPackage.Literals.PHYSICAL_COMPONENT_PKG__OWNED_PHYSICAL_COMPONENT_PKGS);
+    PhysicalComponentPkg componentPkg = (PhysicalComponentPkg) BlockArchitectureExt.getComponentPkg(destinationBlock,
+        true);
+    return getSpecificPackageSupplier(componentPkg,
+        PaPackage.Literals.PHYSICAL_COMPONENT_PKG__OWNED_PHYSICAL_COMPONENT_PKGS);
   }
 
-  private Supplier<EObject> getPhysicalFunctionPkg(){
+  private Supplier<EObject> getPhysicalFunctionPkg() {
     AbstractFunction rootFunction = BlockArchitectureExt.getRootFunction(destinationBlock, true);
     return getSpecificPackageSupplier(rootFunction, PaPackage.Literals.PHYSICAL_FUNCTION__OWNED_PHYSICAL_FUNCTION_PKGS);
   }
 
-  private Supplier<EObject> getLogicalComponentPkg(){
+  private Supplier<EObject> getLogicalComponentPkg() {
     Component root = ComponentExt.getRootComponent(packagedElement);
     if (root != null && BlockArchitectureExt.isRootComponent(root)) {
-      LogicalComponent rootComponent = (LogicalComponent)((BlockArchitecture) destinationBlock).getSystem();
-      return getSpecificPackageSupplier(rootComponent, LaPackage.Literals.LOGICAL_COMPONENT__OWNED_LOGICAL_COMPONENT_PKGS);
+      LogicalComponent rootComponent = (LogicalComponent) ((BlockArchitecture) destinationBlock).getSystem();
+      return getSpecificPackageSupplier(rootComponent,
+          LaPackage.Literals.LOGICAL_COMPONENT__OWNED_LOGICAL_COMPONENT_PKGS);
     }
-    LogicalComponentPkg componentPkg = (LogicalComponentPkg)BlockArchitectureExt.getComponentPkg(destinationBlock, true);
-    return getSpecificPackageSupplier(componentPkg, LaPackage.Literals.LOGICAL_COMPONENT_PKG__OWNED_LOGICAL_COMPONENT_PKGS);
+    LogicalComponentPkg componentPkg = (LogicalComponentPkg) BlockArchitectureExt.getComponentPkg(destinationBlock,
+        true);
+    return getSpecificPackageSupplier(componentPkg,
+        LaPackage.Literals.LOGICAL_COMPONENT_PKG__OWNED_LOGICAL_COMPONENT_PKGS);
   }
 
-  private Supplier<EObject> getOperationalCapabilityPkg(){
-    OperationalCapabilityPkg pkg = (OperationalCapabilityPkg) BlockArchitectureExt.getAbstractCapabilityPkg(destinationBlock, true);
-    return getSpecificPackageSupplier(pkg, OaPackage.Literals.OPERATIONAL_CAPABILITY_PKG__OWNED_OPERATIONAL_CAPABILITY_PKGS);
+  private Supplier<EObject> getOperationalCapabilityPkg() {
+    OperationalCapabilityPkg pkg = (OperationalCapabilityPkg) BlockArchitectureExt
+        .getAbstractCapabilityPkg(destinationBlock, true);
+    return getSpecificPackageSupplier(pkg,
+        OaPackage.Literals.OPERATIONAL_CAPABILITY_PKG__OWNED_OPERATIONAL_CAPABILITY_PKGS);
   }
 
-  private Supplier<EObject> getCapabilityPkg(){
+  private Supplier<EObject> getCapabilityPkg() {
     CapabilityPkg pkg = (CapabilityPkg) BlockArchitectureExt.getAbstractCapabilityPkg(destinationBlock, true);
     return getSpecificPackageSupplier(pkg, CtxPackage.Literals.CAPABILITY_PKG__OWNED_CAPABILITY_PKGS);
   }
 
-  private Supplier<EObject> getCapabilityRealizationPkg(){
-    CapabilityRealizationPkg pkg = (CapabilityRealizationPkg) BlockArchitectureExt.getAbstractCapabilityPkg(destinationBlock, true);
-    return getSpecificPackageSupplier(pkg, LaPackage.Literals.CAPABILITY_REALIZATION_PKG__OWNED_CAPABILITY_REALIZATION_PKGS);
+  private Supplier<EObject> getCapabilityRealizationPkg() {
+    CapabilityRealizationPkg pkg = (CapabilityRealizationPkg) BlockArchitectureExt
+        .getAbstractCapabilityPkg(destinationBlock, true);
+    return getSpecificPackageSupplier(pkg,
+        LaPackage.Literals.CAPABILITY_REALIZATION_PKG__OWNED_CAPABILITY_REALIZATION_PKGS);
   }
 
-  private Supplier<EObject> getEntityPkg(){
-    EntityPkg pkg = (EntityPkg)BlockArchitectureExt.getComponentPkg(destinationBlock, true);
+  private Supplier<EObject> getEntityPkg() {
+    EntityPkg pkg = (EntityPkg) BlockArchitectureExt.getComponentPkg(destinationBlock, true);
     return getSpecificPackageSupplier(pkg, OaPackage.Literals.ENTITY_PKG__OWNED_ENTITY_PKGS);
   }
 
-  private Supplier<EObject> getRolePkg(){
+  private Supplier<EObject> getRolePkg() {
     RolePkg pkg = ((OperationalAnalysis) destinationBlock).getOwnedRolePkg();
     if (pkg == null) {
       // FIXME move this to OperationalAnalysisExt
@@ -590,18 +627,20 @@ public class SpecificPackageSupplierFactory {
     return getSpecificPackageSupplier(pkg, OaPackage.Literals.ROLE_PKG__OWNED_ROLE_PKGS);
   }
 
-  private Supplier<EObject> getLogicalFunctionPkg(){
+  private Supplier<EObject> getLogicalFunctionPkg() {
     AbstractFunction rootFunction = BlockArchitectureExt.getRootFunction(destinationBlock, true);
     return getSpecificPackageSupplier(rootFunction, LaPackage.Literals.LOGICAL_FUNCTION__OWNED_LOGICAL_FUNCTION_PKGS);
   }
 
-  private Supplier<EObject> getOperationalActivityPkg(){
+  private Supplier<EObject> getOperationalActivityPkg() {
     AbstractFunction rootFunction = BlockArchitectureExt.getRootFunction(destinationBlock, true);
-    return getSpecificPackageSupplier(rootFunction, OaPackage.Literals.OPERATIONAL_ACTIVITY__OWNED_OPERATIONAL_ACTIVITY_PKGS);
+    return getSpecificPackageSupplier(rootFunction,
+        OaPackage.Literals.OPERATIONAL_ACTIVITY__OWNED_OPERATIONAL_ACTIVITY_PKGS);
   }
 
-  private Supplier<EObject> getPropertyValuePkg(){
-    return getSpecificPackageSupplier(destinationBlock, CapellacorePackage.Literals.STRUCTURE__OWNED_PROPERTY_VALUE_PKGS);
+  private Supplier<EObject> getPropertyValuePkg() {
+    return getSpecificPackageSupplier(destinationBlock,
+        CapellacorePackage.Literals.STRUCTURE__OWNED_PROPERTY_VALUE_PKGS);
   }
 
 }
