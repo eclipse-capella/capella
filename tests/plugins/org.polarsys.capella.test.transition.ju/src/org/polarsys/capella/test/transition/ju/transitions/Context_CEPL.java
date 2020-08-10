@@ -15,6 +15,7 @@ package org.polarsys.capella.test.transition.ju.transitions;
 import java.util.Arrays;
 import java.util.List;
 
+import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.test.transition.ju.TopDownTransitionTestCase;
 
 /**
@@ -73,6 +74,8 @@ public class Context_CEPL extends TopDownTransitionTestCase {
     mustBeTransitioned(ACP_1);
     mustBeTransitioned(SA_2);
     mustBeTransitioned(SA_3);
+    assertTrue(!((Component)mustBeTransitioned(SA_3)).getRepresentingParts().isEmpty());
+    
     shouldNotBeTransitioned(SYSTEMCP_1);
     shouldNotBeTransitioned(SA_4);
     shouldNotBeTransitioned(SCP_2);

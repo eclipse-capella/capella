@@ -70,6 +70,7 @@ public class TransitionsTestSuite extends BasicTestSuite {
     tests.add(new Context_SM01_02());
     tests.add(new Context_SM01_03());
     tests.add(new Context_CEPL());
+    tests.add(new Context_Part());
     tests.add(new CreateRule_ES2ES_01());
     tests.add(new CreateRule_ES2ES_02());
     tests.add(new CreateRule_ES2ES_03());
