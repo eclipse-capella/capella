@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -502,7 +502,7 @@ public class TransitionHelper {
     return element instanceof CapellaElement && CapellaLayerCheckingExt.isAOrInPhysicalLayer((CapellaElement) element)
         && isIS2ISTransitionAvailable(element, "PAEPBS");
   }
-  
+
   private boolean isIS2ISTransitionAvailable(EObject object, String transition) {
     if (object instanceof Scenario && ((Scenario) object).getKind() == ScenarioKind.INTERFACE) {
       Scenario scenario = (Scenario) object;
@@ -538,12 +538,8 @@ public class TransitionHelper {
       }
       return true;
     }
-    return ((object instanceof SystemAnalysis) || (object instanceof LogicalArchitecture)
-        || (object instanceof PhysicalArchitecture))
-        || ((object instanceof CapellaElement)
-            && (CapellaLayerCheckingExt.isInContextLayer((CapellaElement) object)
-                || CapellaLayerCheckingExt.isInLogicalLayer((CapellaElement) object)
-                || CapellaLayerCheckingExt.isInPhysicalLayer((CapellaElement) object))
-            && ((object instanceof AbstractCapability) || (object instanceof AbstractCapabilityPkg)));
+    return (object instanceof SystemAnalysis) || (object instanceof LogicalArchitecture)
+        || (object instanceof PhysicalArchitecture) || (object instanceof AbstractCapability)
+        || (object instanceof AbstractCapabilityPkg);
   }
 }
