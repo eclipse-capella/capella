@@ -16,15 +16,15 @@ import java.util.Collection;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
+import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.projection.common.AbstractTransform;
-import org.polarsys.capella.core.projection.common.AbstractTransitionCommand;
 import org.polarsys.capella.core.projection.common.TransitionHelper;
 import org.polarsys.capella.core.projection.scenario.Messages;
 import org.polarsys.capella.core.projection.scenario.topdown.TopDownTransform;
 
 /**
  */
-public class IStoISCommand extends AbstractTransitionCommand {
+public class IStoISCommand extends ESToISCommand  {
 
   public IStoISCommand(Collection<EObject> rootElements) {
     super(rootElements);
@@ -58,8 +58,10 @@ public class IStoISCommand extends AbstractTransitionCommand {
     return new TopDownTransform();
   }
 
-//  @Override
-//  protected boolean isScenarioValid(Scenario scenario) {
-//    return TransitionHelper.getService().isES2ESTransitionAvailable(scenario);
-//  }
+  @Override
+  protected boolean isScenarioValid(Scenario scenario) {
+    return TransitionHelper.getService().isIS2ISSALATransitionAvailable(scenario)
+        || TransitionHelper.getService().isIS2ISLAPATransitionAvailable(scenario)
+        || TransitionHelper.getService().isIS2ISPAEPBSTransitionAvailable(scenario);
+  }
 }
