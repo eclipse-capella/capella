@@ -1057,7 +1057,9 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
   @Override
   public void setFocus() {
     setFocusOnViewer();
-    refresh();
+    if (isLinkedToSelection) {
+      refresh();
+    }
   }
 
   private void setFocusOnViewer() {
