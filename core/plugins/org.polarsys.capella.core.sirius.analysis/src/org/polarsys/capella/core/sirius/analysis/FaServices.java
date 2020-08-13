@@ -3732,7 +3732,8 @@ public class FaServices {
     for (DDiagramElement aContainer : diagram.getContainers()) {
       if ((aContainer != null) && (aContainer.getTarget() != null)
           && FaServices.getFaServices().isAbstractFunctionVisibleInDFB((AbstractDNode) aContainer, diagram)
-          && !(aContainer.getTarget() instanceof PropertyValueGroup)) {
+          && !(aContainer.getTarget() instanceof PropertyValueGroup)
+          && !(TitleBlockServices.getService().isAnnotation(aContainer.getTarget()))) {
         elementsInDiagram.put(aContainer.getTarget(), aContainer);
         if (aContainer.getTarget() instanceof AbstractFunction) {
           allFunctionsInDiagram.put((AbstractFunction) aContainer.getTarget(), (AbstractDNode) aContainer);

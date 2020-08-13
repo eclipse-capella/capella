@@ -22,7 +22,7 @@ import org.polarsys.capella.core.data.fa.AbstractFunctionalBlock;
 import org.polarsys.capella.core.data.fa.ComponentFunctionalAllocation;
 import org.polarsys.capella.core.data.fa.FaFactory;
 import org.polarsys.capella.core.data.information.AbstractInstance;
-import org.polarsys.capella.core.data.interaction.impl.InstanceRoleImpl;
+import org.polarsys.capella.core.data.interaction.InstanceRole;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.test.diagram.common.ju.context.SequenceDiagram;
@@ -68,8 +68,8 @@ public class InsertAllocatedFunctions extends SequenceTest {
   
   private void addAllocatedFunctions(String elementId, String functionId) {
     EObject obj = context.getSemanticElement(elementId);
-    if(obj instanceof InstanceRoleImpl) {
-      InstanceRoleImpl instRole = (InstanceRoleImpl) obj;
+    if(obj instanceof InstanceRole) {
+      InstanceRole instRole = (InstanceRole) obj;
       AbstractInstance  inst = instRole.getRepresentedInstance();
       if(inst instanceof Part) {
         Part part = (Part) inst;

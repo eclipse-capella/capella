@@ -33,13 +33,16 @@ pipeline {
     	stage('Build and Package') {
       		steps {
       			script {
-      				def customParams = github.isPullRequest() ? '-DSKIP_SONAR=true' : '-Psign'
-      	    
-      	    		sh "mvn -Djacoco.skip=true -DjavaDocPhase=none -Pfull ${customParams} clean package -f pom.xml"
-	       		}         
+					withCredentials([string(credentialsId: 'sonar-token-capella', variable: 'SONARCLOUD_TOKEN')]) {
+						withEnv(['MAVEN_OPTS=-Xmx4g']) {
+							def customParams = github.isPullRequest() ? '' : '-Psign sonar:sonar -Dsonar.projectKey=eclipse_capella -Dsonar.organization=eclipse -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${SONARCLOUD_TOKEN}'
+	      					sh "mvn clean verify -f pom.xml -Djacoco.skip=true -DjavaDocPhase=none -Pfull ${customParams}"
+						}
+					}
+      			}
 	     	}
 	    }
-    
+	    
 		stage('Deploy to Nightly') {
       		steps {
 				script {		
@@ -93,8 +96,7 @@ pipeline {
         	steps {
         		script {
 	        		sh "chmod 755 ${CAPELLA_PRODUCT_PATH}"
-	        		
-	        		eclipse.installFeature("${CAPELLA_PRODUCT_PATH}", 'http://download.eclipse.org/tools/orbit/downloads/drops/R20130827064939/repository', 'org.jsoup')	        		
+	        			        		       		
 	        		eclipse.installFeature("${CAPELLA_PRODUCT_PATH}", "file:/${WORKSPACE}/releng/plugins/org.polarsys.capella.test.site/target/repository".replace("\\", "/"), 'org.polarsys.capella.test.feature.feature.group')
 	       		}         
 	     	}
@@ -159,6 +161,9 @@ pipeline {
 		   
 		  				tester.runUITests("${CAPELLA_PRODUCT_PATH}", 'Detach', 'org.polarsys.capella.test.suites.ju', 
 		        			['org.polarsys.capella.test.model.ju.testsuites.partial.DetachTestSuite'])
+		        			
+		        		tester.runUITests("${CAPELLA_PRODUCT_PATH}", 'Documentation', 'org.polarsys.capella.test.doc.ju', 
+		        			['org.polarsys.capella.test.doc.ju.testsuites.DocTestSuite'])
 		        			
 		        		tester.runNONUITests("${CAPELLA_PRODUCT_PATH}", 'NotUINavigator', 'org.polarsys.capella.test.suites.ju', 
 		        			['org.polarsys.capella.test.navigator.ju.testsuites.main.NavigatorTestSuite'])

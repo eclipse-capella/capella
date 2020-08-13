@@ -54,14 +54,46 @@ The following figure illustrates the prompted dialog when deleting the System Ac
  
 [[Image:Images/6.2.%20Model%20preferences_html_597b3feb.png|877x595px]]
 
-== Diagrams ==
+== Diagram ==
  
-On the sub section of '''Capella / Diagrams''', it is possible to specify preferences for displaying diagrams:
+On the sub section of '''Capella / Diagram''', it is possible to specify preferences for displaying diagrams:
+ 
+=== Process/Chain/Path Display ===
+ 
+On the sub section of '''Capella / Diagram / Process/Chain/Path Display''', it is possible to specify preferences for displaying processes, Chains, paths in diagrams:
 
 * If &ldquo;'''Show 'Incomplete' in the chain/path/process's label'''&rdquo; is activated, then incomplete chain/path/process's labels are annotated with ''Incomplete''.
 * If &ldquo;'''Show 'Invalid' in the chain/path/process's label'''&rdquo; is activated, then invalid chain/path/process's labels are annotated with ''Invalid''.
  
-[[Image:Images/DiagramsPreference.PNG]]
+[[Image:Images/Process_Chain_Path_DiagramPreferences.png]]
+
+=== Title Block ===
+
+On the sub section of '''Capella / Diagram / Title Block''', it is possible to specify preferences for displaying a Diagram Title Block in diagrams:
+
+[[Image:Images/Title_Block_Default_DiagramPreferences.png]]
+
+* If &ldquo;'''Add by default Diagram Title Block on empty diagrams'''&rdquo; is activated, then when a new diagram is created, a new Diagram Title Block is also created by default.
+* By right clicking on a cell, it is possible to insert or remove new lines and columns.
+
+[[Image:Images/Title_Block_DiagramPreferences.png]]
+
+* The content of each cell can be edited by double clicking on it.
+
+[[Image:Images/Title_Block_CellDefault_DiagramPreferences.png]]
+
+* name: enter the name (label) that will be displayed as the header of the cell
+* content: type a query that will provide the content that we need to display in the cell of the Diagram Title Block. The content of data fields can be customized via:
+** [[../help/topic/org.polarsys.capella.ui.doc/html/12.%20Model%20Analysis/12.5.1%20AQL%20Queries.html|AQL queries]] (aql:)
+** Name of feature (feature:)
+** Semantic browser queries (capella:)
+
+* For Capella services: Name of data field (if not specified) are deduced from the contributed service.
+* Available services are proposed with the command Ctrl+Space on content text field.
+
+Sample of Title Block:
+
+[[Image:Images/Title_Block_DiagramPreferences_Updated.png]]
 
 == Model ==
  
@@ -191,6 +223,8 @@ On the sub section of '''Capella / Transitions/Generation preferences''', it is 
 * The checkbox '''&ldquo;Include involved elements&rdquo;''' on the Property Values section specifies whether involved elements will be propagated while a transition of Property Values
 * The checkbox '''&ldquo;Propagate Exchange Items from Functional Exchanges to Function Ports&rdquo;''' specifies whether Exchange Items from Functional Exchanges should be propagated to their related Function Ports during Interface generation.
 * The checkbox '''&ldquo;Create Component Exchange Between provider/requirer ports&rdquo;''' specifies if the Interface generation should create a Component Exchange between each pair of Interface provider/requirer ports if such an exchange does not already exist.
+
+* The checkbox '''Transit Physical Components to Configuration Items''' specifies whether Physical Components should be transformed into Configuration Items when performing a transition or an initialization from the Physical Architecture to EPBS level.
 
 <br>
 <br>

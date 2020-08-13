@@ -43,6 +43,7 @@ import org.polarsys.capella.core.platform.sirius.ui.navigator.viewer.CapellaNavi
 import org.polarsys.capella.core.ui.search.match.LineSearchMatchChild;
 import org.polarsys.capella.core.ui.search.match.ListElementSearchMatchChild;
 import org.polarsys.capella.core.ui.search.match.SearchMatch;
+import org.polarsys.capella.core.ui.search.result.CapellaSearchResult;
 import org.polarsys.capella.core.ui.search.searchfor.item.SearchForAttributeItem;
 import org.polarsys.capella.core.ui.search.searchfor.item.SearchForClassItem;
 import org.polarsys.capella.core.ui.search.searchfor.item.SearchForNoteItem;

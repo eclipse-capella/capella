@@ -25,6 +25,7 @@ import org.polarsys.capella.test.diagram.tools.ju.xfcd.CreateExchangeWithSequenc
 import org.polarsys.capella.test.diagram.tools.ju.xfcd.CreateFunctionOnSequenceLinkTest;
 import org.polarsys.capella.test.diagram.tools.ju.xfcd.CreateSequenceLinkTest;
 import org.polarsys.capella.test.diagram.tools.ju.xfcd.DragAndDropTest;
+import org.polarsys.capella.test.diagram.tools.ju.xfcd.InsertExchangeCycleDetection;
 import org.polarsys.capella.test.diagram.tools.ju.xfcd.MaxHierarchyLevel0TestOA;
 import org.polarsys.capella.test.diagram.tools.ju.xfcd.MaxHierarchyLevel0TestSA;
 import org.polarsys.capella.test.diagram.tools.ju.xfcd.MaxHierarchyLevel1TestOA;
@@ -47,7 +48,8 @@ public class XFCDDiagramToolsTestSuite extends BasicTestSuite {
   public static Test suite() {
     return new XFCDDiagramToolsTestSuite();
   }
-  
+
+  @Override
   public List<String> getRequiredTestModels() {
     return Arrays.asList("FunctionalChains");
   }
@@ -69,6 +71,8 @@ public class XFCDDiagramToolsTestSuite extends BasicTestSuite {
     tests.add(new MaxHierarchyLevel0TestSA());
     tests.add(new MaxHierarchyLevel1TestSA());
     tests.add(new MaxHierarchyLevel2TestSA());
+
+    tests.add(new InsertExchangeCycleDetection());
 
     tests.add(new CreateControlNodeTest(new OA_Settings()));
     tests.add(new CreateControlNodeTest(new SA_Settings()));

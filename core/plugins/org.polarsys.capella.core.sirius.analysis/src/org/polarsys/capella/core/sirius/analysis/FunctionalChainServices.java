@@ -93,7 +93,7 @@ import org.polarsys.capella.core.sirius.analysis.accelerators.SelectOrCreateFunc
 import org.polarsys.capella.core.sirius.analysis.cache.FunctionalChainCache;
 import org.polarsys.capella.core.sirius.analysis.constants.MappingConstantsHelper;
 import org.polarsys.capella.core.sirius.analysis.helpers.FunctionalChainReferenceHierarchyHelper;
-import org.polarsys.capella.core.sirius.analysis.preferences.DiagramsPreferencePage;
+import org.polarsys.capella.core.sirius.analysis.preferences.DiagramProcessChainPathPreferencePage;
 import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
 
 /**
@@ -666,17 +666,17 @@ public class FunctionalChainServices {
 
     if (chain instanceof OperationalProcess) {
       displayIncompleteLabel = ScopedCapellaPreferencesStore.getBoolean(
-          DiagramsPreferencePage.NAME_PREF_DISPLAY_INCOMPLETE_IN_OPERATIONAL_PROCESS_LABEL,
+          DiagramProcessChainPathPreferencePage.NAME_PREF_DISPLAY_INCOMPLETE_IN_OPERATIONAL_PROCESS_LABEL,
           PreferencesHelper.getProject(chain));
       displayInvalidLabel = ScopedCapellaPreferencesStore.getBoolean(
-          DiagramsPreferencePage.NAME_PREF_DISPLAY_INVALID_IN_OPERATIONAL_PROCESS_LABEL,
+          DiagramProcessChainPathPreferencePage.NAME_PREF_DISPLAY_INVALID_IN_OPERATIONAL_PROCESS_LABEL,
           PreferencesHelper.getProject(chain));
     } else {
       displayIncompleteLabel = ScopedCapellaPreferencesStore.getBoolean(
-          DiagramsPreferencePage.NAME_PREF_DISPLAY_INCOMPLETE_IN_FUNCTIONAL_CHAIN_LABEL,
+          DiagramProcessChainPathPreferencePage.NAME_PREF_DISPLAY_INCOMPLETE_IN_FUNCTIONAL_CHAIN_LABEL,
           PreferencesHelper.getProject(chain));
       displayInvalidLabel = ScopedCapellaPreferencesStore.getBoolean(
-          DiagramsPreferencePage.NAME_PREF_DISPLAY_INVALID_IN_FUNCTIONAL_CHAIN_LABEL,
+          DiagramProcessChainPathPreferencePage.NAME_PREF_DISPLAY_INVALID_IN_FUNCTIONAL_CHAIN_LABEL,
           PreferencesHelper.getProject(chain));
     }
 
@@ -863,21 +863,30 @@ public class FunctionalChainServices {
   /**
    * Precondition for the creation of a Functional Chain Involvement Link having a Functional Exchange as Involved.
    * 
-   * @param source
+   * @param sourceView
    *          the semantic source
    * 
-   * @param target
+   * @param targetView
    *          the semantic target
    * 
    * @return true if a link can be created, false otherwise.
    */
-  public boolean isValidFCILinkExchange(FunctionalChainInvolvementFunction source,
-      FunctionalChainInvolvementFunction target) {
+  public boolean isValidFCILinkExchange(DNode sourceView, DNode targetView) {
 
-    Collection<FunctionalExchange> commonExchanges = getFCDCommonFunctionalExchanges(source, target);
+    EObject source = sourceView.getTarget();
+    EObject target = targetView.getTarget();
 
-    // common exchanges exists and the new link does not create a cycle
-    return !commonExchanges.isEmpty() && !doesConnectionExist(target, source, new HashSet<>());
+    if (source instanceof FunctionalChainInvolvementFunction && target instanceof FunctionalChainInvolvementFunction) {
+      FunctionalChainInvolvementFunction sourceFunction = (FunctionalChainInvolvementFunction) source;
+      FunctionalChainInvolvementFunction targetFunction = (FunctionalChainInvolvementFunction) target;
+
+      Collection<FunctionalExchange> commonExchanges = FunctionalChainExt
+          .getFlatCommonFunctionalExchanges(sourceFunction, targetFunction);
+
+      return !commonExchanges.isEmpty() && !doesConnectionExist(targetView, sourceView, new HashSet<>());
+    }
+
+    return false;
   }
 
   /**
@@ -969,17 +978,6 @@ public class FunctionalChainServices {
   }
 
   /**
-   * Returns common functional exchanges between both source and target involvement
-   * 
-   * @param source
-   * @param target
-   */
-  private Collection<FunctionalExchange> getFCDCommonFunctionalExchanges(FunctionalChainInvolvement source,
-      FunctionalChainInvolvement target) {
-    return FunctionalChainExt.getFlatCommonFunctionalExchanges(source, target);
-  }
-
-  /**
    * Returns the scope used for for the selection wizard in Functional Chain Involvement tools. Since the wizard is
    * displayed only for Function Involvements binded by a Functional exchange, the scope only contains functional
    * exchanges. For Functional Involvements binded by an Abstract function no wizard is displayed.
@@ -992,7 +990,7 @@ public class FunctionalChainServices {
    */
   public Collection<EObject> computeFCILinkScope(FunctionalChainInvolvement sourceInvolvement,
       FunctionalChainInvolvement targetInvolvement) {
-    return new ArrayList<>(getFCDCommonFunctionalExchanges(sourceInvolvement, targetInvolvement));
+    return new ArrayList<>(FunctionalChainExt.getFlatCommonFunctionalExchanges(sourceInvolvement, targetInvolvement));
   }
 
   /**
@@ -1037,39 +1035,39 @@ public class FunctionalChainServices {
   }
 
   /**
-   * Tests if an direct/indirect connection exists between the current involvement and the goal involvement.
+   * Tests if an direct/indirect path exists between the current node and the goal node.
    * 
-   * @param currentInvolvement
-   *          the current involvement being analyzed.
+   * @param currentNode
+   *          the current node being analyzed.
    * @param goalInvolvement
-   *          the goal involvement that servers at target goal.
-   * @param visitedInvolvements
-   *          the already visited involvements.
-   * @return true if a direct/indirect connection exists between the current involvement and the goal involvement, false
-   *         otherwise.
+   *          the goal node that servers at target goal.
+   * @param visitedNodes
+   *          the already visited nodes.
+   * @return true if a direct/indirect path exists between the current node and the goal node, false otherwise.
    */
-  public boolean doesConnectionExist(FunctionalChainInvolvement currentInvolvement,
-      FunctionalChainInvolvement goalInvolvement, Set<FunctionalChainInvolvement> visitedInvolvements) {
+  public boolean doesConnectionExist(EdgeTarget currentNode, EdgeTarget goalNode, Set<EdgeTarget> visitedNodes) {
 
-    // avoid infinite loops
-    if (visitedInvolvements.contains(currentInvolvement)) {
+    if (visitedNodes.contains(currentNode)) {
       return false;
     }
 
-    if (currentInvolvement.equals(goalInvolvement)) {
+    if (currentNode.equals(goalNode)) {
       return true;
     }
 
-    // create a copy to insure that each recursive call does not contain involvements of other same level calls
-    Set<FunctionalChainInvolvement> visitedInvolvementsCopy = new HashSet<>(visitedInvolvements);
-    visitedInvolvementsCopy.add(currentInvolvement);
+    visitedNodes.add(currentNode);
 
-    // depth first recursive call
-    for (FunctionalChainInvolvement nextInvolvement : currentInvolvement.getNextFunctionalChainInvolvements()) {
-      if (doesConnectionExist(nextInvolvement, goalInvolvement, visitedInvolvementsCopy)) {
-        return true;
+    for (DEdge edge : currentNode.getOutgoingEdges()) {
+      EObject edgeTarget = edge.getTarget();
+      if (edgeTarget instanceof FunctionalChainInvolvementLink) {
+        EdgeTarget nextNode = edge.getTargetNode();
+
+        if (doesConnectionExist(nextNode, goalNode, visitedNodes)) {
+          return true;
+        }
       }
     }
+
     return false;
   }
 
@@ -1682,7 +1680,8 @@ public class FunctionalChainServices {
       }
     }
 
-    SelectOrCreateFunctionalExchangeDialog dialog = new SelectOrCreateFunctionalExchangeDialog(shell, availableFEs, availableSourceFunctions, availableTargetFunctions);
+    SelectOrCreateFunctionalExchangeDialog dialog = new SelectOrCreateFunctionalExchangeDialog(shell, availableFEs,
+        availableSourceFunctions, availableTargetFunctions);
     int returnCode = dialog.open();
 
     NewFEData newFEData = null;

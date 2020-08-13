@@ -96,6 +96,24 @@ In the Capella Transition/Generation preference page, you can control the creati
 	
 [[File:../../Images/Tips68.png|thumbnail|1000px|]]
 
+===Initialize an IS from an IS===
+From each Capella modeling level, you can initialize an [IS] Interface Scenario diagram from an IS in the upper layer.
+This initialization is controlled by some preferences. You can find more informations about them in the sections Capella Guide > User Manual > Preferences > Capella > Transitions/Generation
+
+We provide the following IS initializations :
+ 
+* IS to IS from System Analysis level to Logical Architecture level
+
+[[File:../../Images/IS2IS_SALA.png|thumbnail|800px|]]
+
+* IS to IS from Logical Architecture level to Physical Architecture level
+
+[[File:../../Images/IS2IS_LAPA.png|thumbnail|800px|]]
+
+* IS to IS from Physical Architecture level to EPBS level
+
+[[File:../../Images/IS2IS_PAEPBS.png|thumbnail|800px|]]
+
 This feature is often coupled with:
 * “Synchronizing Diagram” capability in order to master the resulting Diagram, see section below “Unsynchronize your diagram”
 * Copying/Pasting Layout from a template Diagram or a upper Architecture Diagram SAB to keep original layout. (see section below “Layout Management > Diagram Template”.)

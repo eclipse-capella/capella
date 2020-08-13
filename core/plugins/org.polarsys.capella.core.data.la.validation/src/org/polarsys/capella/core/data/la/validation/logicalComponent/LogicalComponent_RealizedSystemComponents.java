@@ -37,7 +37,7 @@ public class LogicalComponent_RealizedSystemComponents extends AbstractValidatio
     if (eType == EMFEventType.NULL) {
       if (eObj instanceof LogicalComponent && !ComponentExt.isActor(eObj)) {
         LogicalComponent component = (LogicalComponent) eObj;
-        if (component.eContainer() instanceof LogicalComponentImpl) {
+        if (component.eContainer() instanceof LogicalComponent) {
           if (!component.getRealizedSystemComponents().isEmpty()) {
             return ctx.createSuccessStatus();
           }

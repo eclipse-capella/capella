@@ -93,6 +93,10 @@
             priority="high"
             providerClass="org.polarsys.capella.core.sirius.analysis.refresh.extension.ContextualOCRefreshExtensionProvider">
       </refreshExtensionProvider>
+      <refreshExtensionProvider
+            priority="high"
+            providerClass="org.polarsys.capella.core.sirius.analysis.refresh.extension.TitleBlockRefreshExtensionProvider">
+      </refreshExtensionProvider>
    </extension>
    <extension
          point="org.eclipse.sirius.externalJavaAction">
@@ -586,32 +590,80 @@
  </extension>
  <extension
        point="org.eclipse.ui.preferencePages">
-    <page
-          category="org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page"
-          class="org.polarsys.capella.core.sirius.analysis.preferences.DiagramsPreferencePage"
-          id="org.polarsys.capella.core.sirius.analysis.preferences.DiagramsPreferencePage"
-          name="Diagrams">
+     <page
+            category="org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page"
+            class="org.eclipse.ui.internal.dialogs.EmptyPreferencePage"
+            id="org.polarsys.capella.common.ui.preferences.diagram"
+            name="%Diagram_Page_Name">
     </page>
+    <page
+          category="org.polarsys.capella.common.ui.preferences.diagram"
+          class="org.polarsys.capella.core.sirius.analysis.preferences.DiagramProcessChainPathPreferencePage"
+          id="org.polarsys.capella.core.sirius.analysis.preferences.DiagramsProcessChainPathPreferencePagePreferencePage"
+          name="%Diagram_Process_Chain_Path_Page_Name">
+    </page>
+    <page
+	      category="org.polarsys.capella.common.ui.preferences.diagram"
+	      class="org.polarsys.capella.core.sirius.analysis.preferences.TitleBlockPreferencePage"
+	      id="org.polarsys.capella.core.platform.sirius.ui.actions.preferences.TitleBlockPage"
+	      name="%Diagram_Title_Block_Page_Name">
+	</page>
  </extension>
  <extension
        point="org.eclipse.core.runtime.preferences">
     <initializer
           class="org.polarsys.capella.core.sirius.analysis.preferences.DiagramPreferenceInitializer">
     </initializer>
+    <initializer
+      		 class="org.polarsys.capella.core.sirius.analysis.preferences.TitleBlockPreferencesInitializer">
+      </initializer>
  </extension>
  <extension
        point="org.eclipse.ui.propertyPages">
+     <page
+            category="org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page"
+            class="org.polarsys.capella.core.commands.preferences.ui.AbstractCapellaCommandsPreferencePage"
+            id="org.polarsys.capella.common.ui.preferences.diagram"
+            name="%Diagram_Page_Name">
+    </page>
     <page
-          category="org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page"
-          class="org.polarsys.capella.core.sirius.analysis.preferences.DiagramsPreferencePage"
+          category="org.polarsys.capella.common.ui.preferences.diagram"
+          class="org.polarsys.capella.core.sirius.analysis.preferences.DiagramProcessChainPathPreferencePage"
           id="org.polarsys.capella.core.sirius.analysis.preferences.DiagramsPreferencePage"
-          name="Diagrams"
+          name="%Diagram_Process_Chain_Path_Page_Name"
           objectClass="org.eclipse.core.resources.IProject">
-       <enabledWhen>
+            <enabledWhen>
           <reference
                 definitionId="org.polarsys.capella.core.preferences.project.property.pages.visibilityExpression">
           </reference>
        </enabledWhen>
     </page>
+    <page
+	      category="org.polarsys.capella.common.ui.preferences.diagram"
+	      class="org.polarsys.capella.core.sirius.analysis.preferences.TitleBlockPreferencePage"
+	      id="org.polarsys.capella.core.platform.sirius.ui.actions.preferences.TitleBlockPage"
+	      name="%Diagram_Title_Block_Page_Name"
+          objectClass="org.eclipse.core.resources.IProject">
+            <enabledWhen>
+          <reference
+                definitionId="org.polarsys.capella.core.preferences.project.property.pages.visibilityExpression">
+          </reference>
+       </enabledWhen>
+	</page>
+ </extension>
+ <extension id="org.polarsys.capella.core.sirius.analysis.CapellaInterpreter" point="org.eclipse.sirius.common.expressionInterpreter">
+    <expressionInterpreterProvider interpreterProviderClass="org.polarsys.capella.core.sirius.analysis.CapellaInterpreter" />
+ </extension>
+ <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <factory
+        class="org.polarsys.capella.core.sirius.analysis.providers.TitleBlockItemDecoratorAdapterFactory"
+        supportedTypes="org.eclipse.emf.edit.provider.IItemLabelProvider"
+        uri="http://www.eclipse.org/sirius/description/1.1.0"/>
+ </extension>
+ <extension
+        point="org.polarsys.capella.core.model.handler.decoratorAdapterFactory">
+     <decoratorAdapterFactory
+           class="org.polarsys.capella.core.sirius.analysis.providers.TitleBlockItemDecoratorAdapterFactory">
+     </decoratorAdapterFactory>
  </extension>
 </plugin>

@@ -16,6 +16,9 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.WordUtils;
+import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.ui.toolkit.browser.internal.TypeHelper;
 import org.polarsys.capella.common.ui.toolkit.browser.query.QueryAdapter;
 
@@ -27,7 +30,7 @@ public class CategoryImpl implements ICategory {
   protected String id;
 
   protected String name;
-
+  
   /**
    * Qualified Name of type for which the category is enabled.
    */
@@ -141,5 +144,20 @@ public class CategoryImpl implements ICategory {
   public String getCategoryId() {
     return this.id;
   }
+  
+  @Override
+  public String getTypeFullyQualifiedName() {
+    return this.typeQualifiedName;
+  }
+  
+  @Override
+  public boolean overrides(ICategory otherCategory, EObject current) {
+    return this.getName().equals(otherCategory.getName())
+        && TypeHelper.getInstance().isSubtype(this.typeQualifiedName, otherCategory.getTypeFullyQualifiedName(), current);
+  }
 
+  @Override
+  public String getSymbolicName() {
+    return StringUtils.uncapitalize(WordUtils.capitalizeFully(this.name.toLowerCase()).replaceAll("\\s+", ""));
+  }
 }

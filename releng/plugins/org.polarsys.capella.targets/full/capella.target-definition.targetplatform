@@ -12,11 +12,11 @@
  *******************************************************************************/
 target "Capella"
 
-include "https://download.eclipse.org/sirius/updates/stable/6.3.1-S20200506-133541/2019-06/targets/modules/gmf-runtime-1.13.tpd"
+include "https://download.eclipse.org/sirius/updates/stable/6.4.0-S20200731-093506/2020-06/targets/modules/gmf-runtime-1.13.tpd"
 
 with source, requirements
 
-location eclipse "http://download.eclipse.org/releases/2019-06" {
+location eclipse "http://download.eclipse.org/releases/2020-06" {
 	org.eclipse.sdk.feature.group
 	org.eclipse.platform.feature.group
 	org.eclipse.draw2d.source.feature.group
@@ -40,8 +40,8 @@ location eclipse "http://download.eclipse.org/releases/2019-06" {
 	org.eclipse.mylyn.ide_feature.feature.group
 	org.eclipse.mylyn.help.ui
 }
-
-location sirius "https://download.eclipse.org/sirius/updates/stable/6.3.1-S20200506-133541/2019-06/" {
+location sirius "https://download.eclipse.org/sirius/updates/stable/6.4.0-S20200731-093506/2020-06/" {
+	org.eclipse.sirius.doc.feature.feature.group
 	org.eclipse.sirius.doc.feature.source.feature.group
 	org.eclipse.sirius.runtime.source.feature.group
 	org.eclipse.sirius.runtime.aql.source.feature.group
@@ -53,7 +53,7 @@ location sirius "https://download.eclipse.org/sirius/updates/stable/6.3.1-S20200
 	org.eclipse.sirius.runtime.ide.ui.acceleo.source.feature.group
 }
 
-location kitalpha-runtime-core-master "https://download.eclipse.org/kitalpha/updates/stable/runtime/1.4.1DEV0" {	
+location kitalpha-runtime-core-master "https://download.eclipse.org/kitalpha/updates/stable/runtime/1.4.1.IT5-1" {	
 	org.polarsys.kitalpha.ad.runtime.feature.source.feature.group
 	org.polarsys.kitalpha.cadence.feature.source.feature.group
 	org.polarsys.kitalpha.common.feature.source.feature.group
@@ -76,7 +76,7 @@ location kitalpha-runtime-core-master "https://download.eclipse.org/kitalpha/upd
 	org.polarsys.kitalpha.richtext.widget.ext.feature.source.feature.group
 	org.polarsys.kitalpha.transposer.feature.source.feature.group
 }
-location kitalpha-sdk-master "https://download.eclipse.org/kitalpha/updates/stable/sdk/1.4.1DEV0" {
+location kitalpha-sdk-master "https://download.eclipse.org/kitalpha/updates/stable/sdk/1.4.1.IT5-1" {
 	org.polarsys.kitalpha.doc.feature.feature.group
 	org.polarsys.kitalpha.emde.sdk.feature.source.feature.group
 }

@@ -29,11 +29,11 @@
    <extension
          point="org.eclipse.search.searchResultViewPages">
       <viewPage
-            class="org.polarsys.capella.core.ui.search.CapellaSearchResultPage"
+            class="org.polarsys.capella.core.ui.search.result.CapellaSearchResultPage"
             icon="icons/search.gif"
             id="org.polarsys.capella.core.ui.search.resultViewPage"
             label="Capella Search Result"
-            searchResultClass="org.polarsys.capella.core.ui.search.CapellaSearchResult">
+            searchResultClass="org.polarsys.capella.core.ui.search.result.CapellaSearchResult">
       </viewPage>
    </extension>
 	<extension
@@ -133,17 +133,17 @@
    <extension
          point="org.eclipse.ui.commands">
       <command
-            defaultHandler="org.polarsys.capella.core.ui.search.CapellaSearchResultPageHandlerReplaceSelected"
+            defaultHandler="org.polarsys.capella.core.ui.search.result.handlers.CapellaSearchResultPageHandlerReplaceSelected"
             id="org.polarsys.capella.core.ui.search.commands.replaceSelected"
             name="Replace Selected...">
       </command>
       <command
-            defaultHandler="org.polarsys.capella.core.ui.search.CapellaSearchResultPageHandlerReplaceAll"
+            defaultHandler="org.polarsys.capella.core.ui.search.result.handlers.CapellaSearchResultPageHandlerReplaceAll"
             id="org.polarsys.capella.core.ui.search.commands.replaceAll"
             name="Replace All...">
       </command>
       <command
-            defaultHandler="org.polarsys.capella.core.ui.search.CapellaSearchResultPageHandlerSelect"
+            defaultHandler="org.polarsys.capella.core.ui.search.result.handlers.CapellaSearchResultPageHandlerSelect"
             id="org.polarsys.capella.core.ui.search.commands.select"
             name="Show In Search">
       </command>

@@ -19,6 +19,7 @@ import org.polarsys.capella.core.model.helpers.BlockArchitectureExt.Type;
 import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.CreateDiagramStep;
+import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateAbstractDNodeTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateDEdgeTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveTool;
@@ -36,6 +37,16 @@ public class MissionDiagram extends CapabilityDiagram {
     final BlockArchitectureExt.Type type = BlockArchitectureExt.getBlockArchitectureType(architecture);
 
     return (MissionDiagram) new CreateDiagramStep(executionContext, targetIdentifier, name) {
+      @Override
+      public DiagramContext getResult() {
+        return new MissionDiagram(type, getExecutionContext(), diagram);
+      }
+    }.run().open();
+  }
+
+  public static MissionDiagram openDiagram(SessionContext executionContext, String name,
+      final BlockArchitectureExt.Type type) {
+    return (MissionDiagram) new OpenDiagramStep(executionContext, name) {
       @Override
       public DiagramContext getResult() {
         return new MissionDiagram(type, getExecutionContext(), diagram);

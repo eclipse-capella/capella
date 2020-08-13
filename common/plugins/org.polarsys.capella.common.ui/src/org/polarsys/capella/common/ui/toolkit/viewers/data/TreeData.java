@@ -24,7 +24,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-
 import org.polarsys.capella.common.ui.services.helper.AdapterManagerHelper;
 import org.polarsys.capella.common.ui.toolkit.viewers.ITreeContentAdapter;
 
@@ -102,7 +101,7 @@ public class TreeData extends AbstractData {
    * @see org.polarsys.capella.common.ui.toolkit.viewers.data.AbstractData#clearData()
    */
   @Override
-  protected void clearData() {
+  public void clearData() {
     super.clearData();
     _childrenForRootElements.clear();
   }
