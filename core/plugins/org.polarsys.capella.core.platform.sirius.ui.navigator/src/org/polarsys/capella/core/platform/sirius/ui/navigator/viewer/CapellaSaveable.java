@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -57,7 +57,7 @@ public class CapellaSaveable extends SessionSaveable {
         .isEnabledContentNotifications(this.getSession().getTransactionalEditingDomain())) {
 
       Session currentSession = getSession();
-      if (currentSession != null) {
+      if (currentSession != null && currentSession.isOpen()) {
         if (SessionManager.INSTANCE.getSessions().contains(currentSession)) {
           return SessionStatus.DIRTY.equals(getSession().getStatus());
         }
@@ -88,7 +88,7 @@ public class CapellaSaveable extends SessionSaveable {
     String result = ICommonConstants.EMPTY_STRING;
     // Compute the returned name on underlying diagram resource rather than the session since this later one is no longer displayed.
     IFile analysisFile = SessionHelper.getFirstAnalysisFile((DAnalysisSession) getSession());
-    IWorkbenchAdapter workbenchAdapter = (IWorkbenchAdapter) analysisFile.getAdapter(IWorkbenchAdapter.class);
+    IWorkbenchAdapter workbenchAdapter = analysisFile.getAdapter(IWorkbenchAdapter.class);
     if (null != workbenchAdapter) {
       result = workbenchAdapter.getLabel(analysisFile);
     } else {
