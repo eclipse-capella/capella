@@ -40,6 +40,7 @@ location eclipse "http://download.eclipse.org/releases/2020-06" {
 	org.eclipse.mylyn.ide_feature.feature.group
 	org.eclipse.mylyn.help.ui
 }
+
 location sirius "https://download.eclipse.org/sirius/updates/stable/6.4.0-S20200731-093506/2020-06/" {
 	org.eclipse.sirius.doc.feature.feature.group
 	org.eclipse.sirius.doc.feature.source.feature.group
@@ -112,3 +113,4 @@ location orbit-R20160221192158 "https://download.eclipse.org/tools/orbit/downloa
 	org.jsoup [1.7.2.v201411291515,1.7.2.v201411291515]
 	com.google.guava [15.0.0.v201403281430,15.0.0.v201403281430]
 }
+
