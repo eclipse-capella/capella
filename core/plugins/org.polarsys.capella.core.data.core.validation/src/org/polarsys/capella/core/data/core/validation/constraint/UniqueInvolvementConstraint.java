@@ -42,7 +42,6 @@ public class UniqueInvolvementConstraint extends AbstractValidationRule {
     InvolvedElement involvementTarget = involvement.getInvolved();
 
     if (null != involvementSource && null != involvementTarget) {
-
       EList<Involvement> involvementLinks = involvementSource.getInvolvedInvolvements();
 
       // Check if the source of the validated Involvement has multiple Involvements pointing to the same Target
@@ -52,8 +51,7 @@ public class UniqueInvolvementConstraint extends AbstractValidationRule {
         // We need to ignore Involvements of type FunctionalChainInvolvement and PhyiscalPathInvolvement
         // Duplicates of these Involvement types are valid
         if (!(inv instanceof FunctionalChainInvolvement || inv instanceof PhysicalPathInvolvement)) {
-
-          if (inv.getInvolved().equals(involvementTarget)) {
+          if (involvementTarget.equals(inv.getInvolved())) {
             equivalentInvolvements.add(inv);
           }
         }
