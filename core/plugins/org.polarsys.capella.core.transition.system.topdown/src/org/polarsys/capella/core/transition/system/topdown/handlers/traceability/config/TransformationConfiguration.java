@@ -75,8 +75,7 @@ public class TransformationConfiguration extends ExtendedTraceabilityConfigurati
             BlockArchitectureExt.getRequirementsPkg(target, false), context);
         addMapping(map, BlockArchitectureExt.getAbstractCapabilityPkg(source, false),
             BlockArchitectureExt.getAbstractCapabilityPkg(target, false), context);
-        addMapping(map, BlockArchitectureExt.getFirstComponent(source, false),
-            BlockArchitectureExt.getFirstComponent(target, false), context);
+        addMapping(map, source.getSystem(), target.getSystem(), context);
       }
 
       /**

@@ -80,13 +80,13 @@ public class ContextServices {
   public List<EObject> getCRIComponents(DSemanticDecorator diagram) {
 
     EObject target = diagram.getTarget();
-    Component rootComponent = BlockArchitectureExt
-        .getOrCreateSystem(BlockArchitectureExt.getRootBlockArchitecture(target));
-
-    Collection<Component> subComponents = ComponentExt.getAllSubUsedComponents(rootComponent);
-
+    Component rootComponent = BlockArchitectureExt.getRootBlockArchitecture(target).getSystem();
     List<EObject> result = new ArrayList<>();
-    result.addAll(subComponents);
+
+    if (rootComponent != null) {
+      Collection<Component> subComponents = ComponentExt.getAllSubUsedComponents(rootComponent);
+      result.addAll(subComponents);
+    }
 
     return result;
   }
@@ -240,7 +240,7 @@ public class ContextServices {
         components = CsServices.getService().getSubComponents(parentContainer);
 
       } else if (parentContainer instanceof BlockArchitecture) {
-        Component firstComponent = BlockArchitectureExt.getOrCreateSystem((BlockArchitecture) parentContainer);
+        Component firstComponent = ((BlockArchitecture) parentContainer).getSystem();
 
         if (null != firstComponent) {
           components = CsServices.getService().getSubComponents(firstComponent);

@@ -38,6 +38,7 @@ public class LogicalArchitectureItemContribution implements IMDEMenuItemContribu
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#selectionContribution()
    */
+  @Override
   public boolean selectionContribution(ModelElement modelElement, EClass cls, EStructuralFeature feature) {
     if ((modelElement instanceof SystemEngineering) && LaPackage.Literals.LOGICAL_ARCHITECTURE.equals(cls)
         && CapellacorePackage.Literals.ABSTRACT_MODELLING_STRUCTURE__OWNED_ARCHITECTURES.equals(feature)) {
@@ -49,6 +50,7 @@ public class LogicalArchitectureItemContribution implements IMDEMenuItemContribu
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#executionContribution()
    */
+  @Override
   public Command executionContribution(EditingDomain editingDomain, ModelElement containerElement,
       ModelElement createdElement, EStructuralFeature feature) {
     if ((createdElement instanceof LogicalArchitecture) && (containerElement instanceof SystemEngineering)) {
@@ -59,8 +61,7 @@ public class LogicalArchitectureItemContribution implements IMDEMenuItemContribu
         protected void doExecute() {
           new CreateLogicalArchiCmd(engineering, NamingConstants.CreateLogicalArchCmd_name, architecture,
               (SystemFunction) BlockArchitectureExt.getRootFunction(architecture, false),
-              (SystemComponent) BlockArchitectureExt.getFirstComponent(architecture, false),
-              (LogicalArchitecture) createdElement).run();
+              (SystemComponent) architecture.getSystem(), (LogicalArchitecture) createdElement).run();
         }
       };
     }
@@ -70,6 +71,7 @@ public class LogicalArchitectureItemContribution implements IMDEMenuItemContribu
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#getMetaclass()
    */
+  @Override
   public EClass getMetaclass() {
     return LaPackage.Literals.LOGICAL_ARCHITECTURE;
   }

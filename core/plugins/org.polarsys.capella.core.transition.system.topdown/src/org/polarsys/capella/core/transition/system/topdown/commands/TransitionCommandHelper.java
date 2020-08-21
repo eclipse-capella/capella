@@ -282,7 +282,7 @@ public class TransitionCommandHelper {
         && (CapellaLayerCheckingExt.isInLogicalLayer((CapellaElement) object)
             || CapellaLayerCheckingExt.isInContextLayer((CapellaElement) object));
   }
-  
+
   public boolean isExchangeItemTransitionAvailable(EObject object) {
     return ((object instanceof CapellaElement)
         && (CapellaLayerCheckingExt.isInContextLayer((CapellaElement) object)
@@ -356,13 +356,15 @@ public class TransitionCommandHelper {
     if (CapellaLayerCheckingExt.isInLogicalLayer((CapellaElement) object)) {
       Component component = getComponent(object);
       if ((component instanceof LogicalComponent && (ComponentExt.isExternalActor(component))) || //
-          ((object instanceof LogicalComponentPkg && !ComponentPkgExt.getExternalActors((ComponentPkg) object).isEmpty())) || //
+          ((object instanceof LogicalComponentPkg
+              && !ComponentPkgExt.getExternalActors((ComponentPkg) object).isEmpty()))
+          || //
           ((object instanceof ComponentExchange) && ComponentExchangeExt.isLinkToAnActor((ComponentExchange) object)) || //
           (object instanceof PhysicalLink)) {
         return true;
       }
     }
-    
+
     return false;
   }
 
@@ -376,11 +378,11 @@ public class TransitionCommandHelper {
 
     } else if (object instanceof SystemComponentPkg && object.eContainer() instanceof BlockArchitecture) {
       return true;
-      
+
     } else if (object instanceof SystemComponent) {
       BlockArchitecture architecture = BlockArchitectureExt.getRootBlockArchitecture(object);
-      return (object.equals(BlockArchitectureExt.getFirstComponent(architecture, false)));
-      
+      return (object.equals(architecture.getSystem()));
+
     }
     return false;
   }

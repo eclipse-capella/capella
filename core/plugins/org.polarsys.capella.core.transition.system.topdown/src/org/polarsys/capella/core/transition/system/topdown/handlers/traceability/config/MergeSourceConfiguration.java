@@ -79,8 +79,8 @@ public class MergeSourceConfiguration extends ExtendedTraceabilityConfiguration 
           BlockArchitectureExt.getRootFunction(target, false), context);
       addMapping(map, BlockArchitectureExt.getDataPkg(source, false), BlockArchitectureExt.getDataPkg(target, false),
           context);
-      addMapping(map, BlockArchitectureExt.getComponentPkg(source, false), BlockArchitectureExt.getComponentPkg(target, false),
-          context);
+      addMapping(map, BlockArchitectureExt.getComponentPkg(source, false),
+          BlockArchitectureExt.getComponentPkg(target, false), context);
 
       if (!((target instanceof PhysicalArchitecture) && !(source instanceof PhysicalArchitecture))) {
         addMapping(map, BlockArchitectureExt.getInterfacePkg(source, false),
@@ -91,16 +91,16 @@ public class MergeSourceConfiguration extends ExtendedTraceabilityConfiguration 
           BlockArchitectureExt.getRequirementsPkg(target, false), context);
       addMapping(map, BlockArchitectureExt.getAbstractCapabilityPkg(source, false),
           BlockArchitectureExt.getAbstractCapabilityPkg(target, false), context);
-      addMapping(map, BlockArchitectureExt.getFirstComponent(source, false),
-          BlockArchitectureExt.getFirstComponent(target, false), context);
+      addMapping(map, source.getSystem(), target.getSystem(), context);
     }
 
     @Override
     protected void initializeRootMappings(IContext context) {
       super.initializeRootMappings(context);
       addMappings(ContextHelper.getSourceProject(context), ContextHelper.getTransformedProject(context), context);
-      addMappings(ContextHelper.getSourceEngineering(context), ContextHelper.getTransformedEngineering(context), context);
-    } 
+      addMappings(ContextHelper.getSourceEngineering(context), ContextHelper.getTransformedEngineering(context),
+          context);
+    }
   }
 
   protected class TopDownSourceSIDTraceabilityHandler extends RealizationLinkTraceabilityHandler {
@@ -112,7 +112,8 @@ public class MergeSourceConfiguration extends ExtendedTraceabilityConfiguration 
     @Override
     protected void initializeRootMappings(IContext context) {
       super.initializeRootMappings(context);
-      initializeMappings(ContextHelper.getSourceProject(context), ContextHelper.getTransformedProject(context), context);
+      initializeMappings(ContextHelper.getSourceProject(context), ContextHelper.getTransformedProject(context),
+          context);
     }
 
   }
