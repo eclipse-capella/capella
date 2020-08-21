@@ -16,6 +16,7 @@ import static org.junit.Assert.assertFalse;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
@@ -62,6 +63,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.CopyFormatAct
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.PasteFormatAction;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
+import org.eclipse.sirius.ui.business.api.editor.ISiriusEditor;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
@@ -613,7 +615,9 @@ public class DiagramHelper {
    */
   public static void closeEditor(Session session, DDiagram diagram) {
     IEditorPart editor = getDiagramEditor(session, diagram);
-    DialectUIManager.INSTANCE.closeEditor(editor, true);
+    if (editor instanceof ISiriusEditor) {
+      SessionUIManager.INSTANCE.getUISession(session).closeEditors(true, Arrays.asList((ISiriusEditor) editor));
+    }
   }
 
   /**
