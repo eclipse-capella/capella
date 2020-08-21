@@ -1241,7 +1241,7 @@ public class CsServices {
         .executeQuery(QueryIdentifierConstants.GET_CCII_SHOW_HIDE_ACTORS, rootActorContainer);
     return Streams.concat(siblingActors.stream(), firstLevelRootActors.stream()).collect(Collectors.toSet());
   }
-  
+
   public Collection<Component> getIBShowHideActor(DSemanticDecorator decorator) {
     return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_IB_SHOW_HIDE_ACTORS_FOR_LIB, decorator);
   }
@@ -5915,7 +5915,7 @@ public class CsServices {
     if (parentContainer instanceof Component) {
       return getSubComponents(parentContainer);
     } else if (parentContainer instanceof BlockArchitecture) {
-      Component firstComponent = BlockArchitectureExt.getOrCreateSystem((BlockArchitecture) parentContainer);
+      Component firstComponent = ((BlockArchitecture) parentContainer).getSystem();
       if (null != firstComponent) {
         return getSubComponents(firstComponent);
       }

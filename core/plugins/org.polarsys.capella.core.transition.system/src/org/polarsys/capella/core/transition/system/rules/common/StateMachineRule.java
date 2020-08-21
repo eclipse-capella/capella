@@ -48,10 +48,9 @@ public class StateMachineRule extends AbstractCapellaElementRule {
   @Override
   protected EObject getDefaultContainer(EObject element, EObject result, IContext context) {
     EObject root = TransformationHandlerHelper.getInstance(context).getLevelElement(element, context);
-    BlockArchitecture target =
-        (BlockArchitecture) TransformationHandlerHelper.getInstance(context).getBestTracedElement(root, context, CsPackage.Literals.BLOCK_ARCHITECTURE,
-            element, result);
-    return BlockArchitectureExt.getFirstComponent(target, true);
+    BlockArchitecture target = (BlockArchitecture) TransformationHandlerHelper.getInstance(context)
+        .getBestTracedElement(root, context, CsPackage.Literals.BLOCK_ARCHITECTURE, element, result);
+    return BlockArchitectureExt.getOrCreateSystem(target);
   }
 
   /**
@@ -62,13 +61,16 @@ public class StateMachineRule extends AbstractCapellaElementRule {
    */
   @Override
   protected EObject getBestContainer(EObject element, EObject result, IContext context) {
-    ISelectionContext sContext = SelectionContextHandlerHelper.getHandler(context).getSelectionContext(context, ITransitionConstants.SELECTION_CONTEXT__TRANSFORMATION, element, result);
+    ISelectionContext sContext = SelectionContextHandlerHelper.getHandler(context).getSelectionContext(context,
+        ITransitionConstants.SELECTION_CONTEXT__TRANSFORMATION, element, result);
     EObject parent = element.eContainer();
     while (parent != null) {
-      EObject bestTracedElement = TransformationHandlerHelper.getInstance(context).getBestTracedElement(parent, context, sContext);
+      EObject bestTracedElement = TransformationHandlerHelper.getInstance(context).getBestTracedElement(parent, context,
+          sContext);
       if (bestTracedElement != null) {
-        EStructuralFeature containmentFeature = getTargetContainementFeature(element, result, bestTracedElement, context);
-        if (bestTracedElement.eClass().getEAllStructuralFeatures().contains(containmentFeature)){
+        EStructuralFeature containmentFeature = getTargetContainementFeature(element, result, bestTracedElement,
+            context);
+        if (bestTracedElement.eClass().getEAllStructuralFeatures().contains(containmentFeature)) {
           return bestTracedElement;
         }
       }
@@ -82,7 +84,7 @@ public class StateMachineRule extends AbstractCapellaElementRule {
    */
   @Override
   protected void retrieveContainer(EObject element, List<EObject> result, IContext context) {
-    
+
   }
 
   @Override
@@ -95,7 +97,8 @@ public class StateMachineRule extends AbstractCapellaElementRule {
     super.premicesRelated(element, needed);
 
     if (!(element.eContainer() instanceof org.polarsys.capella.core.data.information.Class)) {
-      Collection<EObject> transfoSources = (Collection<EObject>) getCurrentContext().get(ITransitionConstants.TRANSITION_SOURCES);
+      Collection<EObject> transfoSources = (Collection<EObject>) getCurrentContext()
+          .get(ITransitionConstants.TRANSITION_SOURCES);
       for (EObject transfoSource : transfoSources) {
         if ((transfoSource instanceof Part) || (transfoSource instanceof Component)) {
           needed.addAll(createDefaultPrecedencePremices(transfoSources, "part"));
@@ -111,20 +114,22 @@ public class StateMachineRule extends AbstractCapellaElementRule {
     result.addAll(sourceElement.getOwnedRegions());
 
     if (ContextScopeHandlerHelper.getInstance(context).contains(ITransitionConstants.SOURCE_SCOPE, source, context)) {
-      ContextScopeHandlerHelper.getInstance(context).addAll(ITransitionConstants.SOURCE_SCOPE, sourceElement.getOwnedRegions(), context);
+      ContextScopeHandlerHelper.getInstance(context).addAll(ITransitionConstants.SOURCE_SCOPE,
+          sourceElement.getOwnedRegions(), context);
     }
 
   }
 
   @Override
-  protected EStructuralFeature getTargetContainementFeature(EObject element, EObject result, EObject container, IContext context) {
+  protected EStructuralFeature getTargetContainementFeature(EObject element, EObject result, EObject container,
+      IContext context) {
     if (container instanceof Component) {
       return CsPackage.Literals.BLOCK__OWNED_STATE_MACHINES;
     } else if (container instanceof Class) {
       return InformationPackage.Literals.CLASS__OWNED_STATE_MACHINES;
     } else if (container instanceof ComponentPkg) {
       return CsPackage.Literals.COMPONENT_PKG__OWNED_STATE_MACHINES;
-    } 
+    }
     return element.eContainingFeature();
   }
 

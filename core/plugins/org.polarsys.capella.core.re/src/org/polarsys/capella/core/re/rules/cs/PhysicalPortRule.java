@@ -27,11 +27,11 @@ public class PhysicalPortRule extends org.polarsys.capella.core.transition.syste
   protected EObject getDefaultContainer(EObject element, EObject result, IContext context) {
     BlockArchitecture architecture = BlockArchitectureExt.getRootBlockArchitecture(element);
     EObject container = element.eContainer();
-    if (container != null && container.equals(BlockArchitectureExt.getFirstComponent(architecture, false))) {
+    if (container != null && container.equals(architecture.getSystem())) {
       EObject root = TransformationHandlerHelper.getInstance(context).getLevelElement(element, context);
       BlockArchitecture target = (BlockArchitecture) TransformationHandlerHelper.getInstance(context)
           .getBestTracedElement(root, context, CsPackage.Literals.BLOCK_ARCHITECTURE, element, result);
-      return BlockArchitectureExt.getFirstComponent(target, true);
+      return BlockArchitectureExt.getOrCreateSystem(target);
     }
     return super.getDefaultContainer(element, result, context);
   }

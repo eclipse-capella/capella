@@ -115,7 +115,7 @@ public class ComponentRule extends AbstractCapellaElementRule {
     if (result instanceof Entity || ComponentExt.isActor(result)) {
       return BlockArchitectureExt.getComponentPkg(target, true);
     }
-    return BlockArchitectureExt.getFirstComponent(target, true);
+    return BlockArchitectureExt.getOrCreateSystem(target);
   }
 
   @Override

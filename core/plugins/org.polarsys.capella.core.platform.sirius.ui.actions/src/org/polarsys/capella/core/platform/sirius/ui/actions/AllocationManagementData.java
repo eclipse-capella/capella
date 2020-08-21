@@ -11,7 +11,6 @@
  *    Thales - initial API and implementation
  *******************************************************************************/
 
-
 package org.polarsys.capella.core.platform.sirius.ui.actions;
 
 import java.util.ArrayList;
@@ -96,6 +95,7 @@ public class AllocationManagementData {
 
   /**
    * Return list of elements used for allocation or deployment
+   * 
    * @param element
    * @param titleMessage
    * @return
@@ -218,8 +218,8 @@ public class AllocationManagementData {
       // add all components from current architecture to temp list
       temp.addAll(BlockArchitectureExt.getAllComponents(arch));
       // remove first component from temp list
-      Component firstComponent = BlockArchitectureExt.getOrCreateSystem(arch);
-      if (!(arch instanceof SystemAnalysis)) {
+      Component firstComponent = arch.getSystem();
+      if (!(arch instanceof SystemAnalysis) && firstComponent != null) {
         temp.remove(firstComponent);
       }
       // filter ComponentContext from temp list... and add to result list
@@ -253,6 +253,7 @@ public class AllocationManagementData {
 
   /**
    * Return all the interfaces from all the layers
+   * 
    * @param element
    * @return
    */
@@ -270,6 +271,7 @@ public class AllocationManagementData {
 
   /**
    * Return all parts from PC layer (except the root and )
+   * 
    * @param nonDeployedPCParts
    * @return
    */
@@ -284,8 +286,11 @@ public class AllocationManagementData {
           return components;
         }
         // remove first component
-        Component firstComponent = BlockArchitectureExt.getOrCreateSystem(arch);
-        components.remove(firstComponent);
+        Component firstComponent = arch.getSystem();
+        if (firstComponent != null) {
+          components.remove(firstComponent);
+        }
+
         for (CapellaElement capellaElement : components) {
           if (capellaElement instanceof PhysicalComponent) {
             PhysicalComponent comp = (PhysicalComponent) capellaElement;
@@ -322,9 +327,9 @@ public class AllocationManagementData {
       if (null != arch) {
         for (ComponentExchange link : BlockArchitectureExt.getAllComponentExchanges(arch)) {
           // get availableComponentExhanges for current PhysicalLink
-          IBusinessQuery query =
-              BusinessQueriesProvider.getInstance().getContribution(FaPackage.Literals.COMPONENT_EXCHANGE,
-                  FaPackage.Literals.COMPONENT_EXCHANGE__OWNED_COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATIONS);
+          IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(
+              FaPackage.Literals.COMPONENT_EXCHANGE,
+              FaPackage.Literals.COMPONENT_EXCHANGE__OWNED_COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATIONS);
           List<EObject> compExchanges = query.getAvailableElements(link);
           for (EObject functionalExchange : compExchanges) {
             // if availableComponentExhanges for current PhysicalLink is one of the selected component exchange
@@ -342,6 +347,7 @@ public class AllocationManagementData {
 
   /**
    * Returns all the physical link available for allocating <to be improved>
+   * 
    * @param nonAllocatedCompExcs
    * @return
    */
@@ -357,9 +363,8 @@ public class AllocationManagementData {
       if (arch instanceof PhysicalArchitecture) {
         for (PhysicalLink link : PhysicalArchitectureExt.getAllPhysicalLinks((PhysicalArchitecture) arch)) {
           // get availableComponentExhanges for current PhysicalLink
-          IBusinessQuery query =
-              BusinessQueriesProvider.getInstance().getContribution(CsPackage.Literals.PHYSICAL_LINK,
-                  FaPackage.Literals.COMPONENT_EXCHANGE_ALLOCATOR__OWNED_COMPONENT_EXCHANGE_ALLOCATIONS);
+          IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(CsPackage.Literals.PHYSICAL_LINK,
+              FaPackage.Literals.COMPONENT_EXCHANGE_ALLOCATOR__OWNED_COMPONENT_EXCHANGE_ALLOCATIONS);
           List<EObject> compExchanges = query.getAvailableElements(link);
           for (EObject compExchange : compExchanges) {
             // if availableComponentExhanges for current PhysicalLink is one of the selected component exchange
@@ -377,6 +382,7 @@ public class AllocationManagementData {
 
   /**
    * return true if all he element in the list are of type AbstractFunction, false otherwise
+   * 
    * @return
    */
   private boolean areAllElementFunctions(List<EObject> elements) {
@@ -394,6 +400,7 @@ public class AllocationManagementData {
 
   /**
    * return true if all he element in the list are of type PhysicalComponent(!Node), false otherwise
+   * 
    * @return
    */
   private boolean areAllElementPCParts(List<EObject> elements) {
@@ -415,6 +422,7 @@ public class AllocationManagementData {
 
   /**
    * return true if all he element in the list are of type ExchangeItem, false otherwise
+   * 
    * @return
    */
   private boolean areAllElementExchangeItems(List<EObject> elements) {
@@ -432,7 +440,9 @@ public class AllocationManagementData {
 
   /**
    * allow multiple selection or not
-   * @param elements list of element selected
+   * 
+   * @param elements
+   *          list of element selected
    * @return
    */
   public boolean isMultiSelection(List<EObject> elements) {
@@ -447,6 +457,7 @@ public class AllocationManagementData {
 
   /**
    * decides weather list of elements are valid or not for allocation action
+   * 
    * @param elements
    * @return
    */
@@ -492,18 +503,22 @@ public class AllocationManagementData {
     } else if (allocationSelectionType == AllocationSelectionType.EXCHANGE_ITEM_ALLOCATION) {
       result = NLS.bind(Messages.Allocation_ExchangeItems_Selection_Message, new String[] { plural, elementsNames });
     } else if (allocationSelectionType == AllocationSelectionType.PHYSICAL_PART_DEPLOYMENT) {
-      result = NLS.bind(Messages.Allocation_PhysicalComponents_Selection_Message, new String[] { plural, elementsNames });
+      result = NLS.bind(Messages.Allocation_PhysicalComponents_Selection_Message,
+          new String[] { plural, elementsNames });
     } else if (allocationSelectionType == AllocationSelectionType.FUNCTIONAL_EXCHANGE_ALLOCATION) {
-      result = NLS.bind(Messages.Allocation_FunctionalExchagnes_Selection_Message, new String[] { plural, elementsNames });
+      result = NLS.bind(Messages.Allocation_FunctionalExchagnes_Selection_Message,
+          new String[] { plural, elementsNames });
     } else if (allocationSelectionType == AllocationSelectionType.COMPONENT_EXCHANGE_ALLOCATION) {
-      result = NLS.bind(Messages.Allocation_ComponentExchagnes_Selection_Message, new String[] { plural, elementsNames });
+      result = NLS.bind(Messages.Allocation_ComponentExchagnes_Selection_Message,
+          new String[] { plural, elementsNames });
     }
 
     return result;
   }
 
   /**
-   * @param dataMessage the dataMessage to set
+   * @param dataMessage
+   *          the dataMessage to set
    */
   private void setDataMessage(String dataMessage) {
     _dataMessage = dataMessage;
@@ -524,7 +539,8 @@ public class AllocationManagementData {
   }
 
   /**
-   * @param dataType the dataType to set
+   * @param dataType
+   *          the dataType to set
    */
   private void setAllocationType(AllocationSelectionType dataType) {
     _allocationType = dataType;
@@ -558,7 +574,8 @@ public class AllocationManagementData {
   }
 
   /**
-   * @param sourceDataVoid the sourceDataVoid to set
+   * @param sourceDataVoid
+   *          the sourceDataVoid to set
    */
   private void setSourceDataVoid(boolean sourceDataVoid) {
     _sourceDataVoid = sourceDataVoid;
