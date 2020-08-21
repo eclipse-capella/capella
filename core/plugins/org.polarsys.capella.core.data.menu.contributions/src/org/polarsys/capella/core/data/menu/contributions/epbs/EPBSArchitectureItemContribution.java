@@ -37,6 +37,7 @@ public class EPBSArchitectureItemContribution implements IMDEMenuItemContributio
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#selectionContribution()
    */
+  @Override
   public boolean selectionContribution(ModelElement modelElement, EClass cls, EStructuralFeature feature) {
     if ((modelElement instanceof SystemEngineering) && EpbsPackage.Literals.EPBS_ARCHITECTURE.equals(cls)
         && CapellacorePackage.Literals.ABSTRACT_MODELLING_STRUCTURE__OWNED_ARCHITECTURES.equals(feature)) {
@@ -48,6 +49,7 @@ public class EPBSArchitectureItemContribution implements IMDEMenuItemContributio
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#executionContribution()
    */
+  @Override
   public Command executionContribution(EditingDomain editingDomain, ModelElement containerElement,
       ModelElement createdElement, EStructuralFeature feature) {
     if ((createdElement instanceof EPBSArchitecture) && (containerElement instanceof SystemEngineering)) {
@@ -57,8 +59,7 @@ public class EPBSArchitectureItemContribution implements IMDEMenuItemContributio
         @Override
         protected void doExecute() {
           new CreateEPBSArchiCmd(engineering, NamingConstants.CreateEPBSArchCmd_name, architecture,
-              (PhysicalComponent) BlockArchitectureExt.getFirstComponent(architecture, false),
-              (EPBSArchitecture) createdElement).run();
+              (PhysicalComponent) architecture.getSystem(), (EPBSArchitecture) createdElement).run();
         }
       };
     }
@@ -68,6 +69,7 @@ public class EPBSArchitectureItemContribution implements IMDEMenuItemContributio
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#getMetaclass()
    */
+  @Override
   public EClass getMetaclass() {
     return EpbsPackage.Literals.EPBS_ARCHITECTURE;
   }

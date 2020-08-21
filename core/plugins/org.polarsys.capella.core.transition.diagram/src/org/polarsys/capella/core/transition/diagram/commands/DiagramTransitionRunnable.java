@@ -82,6 +82,7 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.swt.widgets.Shell;
+import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
@@ -674,10 +675,13 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
 
       if (targetView == null) {
         if (targetSemantic instanceof Part) {
-          if (((Part) targetSemantic).getAbstractType() instanceof Component) {
-            if (BlockArchitectureExt.getOrCreateSystem(BlockArchitectureExt.getRootBlockArchitecture(targetSemantic)).equals(
-                ((Part) targetSemantic).getAbstractType())) {
-              targetView = ((DSemanticDecorator)targetContents.getDDiagram());
+          AbstractType targetSemanticComponent = ((Part) targetSemantic).getAbstractType();
+          if (targetSemanticComponent instanceof Component) {
+            BlockArchitecture blockArchitecture = BlockArchitectureExt.getRootBlockArchitecture(targetSemantic);
+            Component systemComponent = blockArchitecture.getSystem();
+
+            if (targetSemanticComponent.equals(systemComponent)) {
+              targetView = ((DSemanticDecorator) targetContents.getDDiagram());
             }
           }
         }

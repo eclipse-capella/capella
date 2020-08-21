@@ -684,15 +684,24 @@ public class BlockArchitectureExt {
    * @param architecture
    * @param create
    * @return
+   * 
+   * @deprecated use {@link BlockArchitecture::getSystem} or {@link BlockArchitectureExt::getOrCreateComponent} instead.
    */
+  @Deprecated
   public static Component getFirstComponent(BlockArchitecture architecture, boolean create) {
     Component first = null;
 
     if (architecture instanceof OperationalAnalysis) {
-      first = ((OperationalAnalysis) architecture).getSystem();
+      EntityPkg entityPkg = (EntityPkg) getComponentPkg(architecture, true);
+      EList<Entity> ownedEntities = entityPkg.getOwnedEntities();
+
+      first = ownedEntities.stream().filter(x -> !x.isActor()).findFirst().orElse(null);
+
       if ((first == null) && create) {
         first = OaFactory.eINSTANCE.createEntity(NamingConstants.CreateOaAnalysisCmd_entity_name);
-        ((EntityPkg) getComponentPkg(architecture, true)).getOwnedEntities().add((Entity) first);
+        ownedEntities.add((Entity) first);
+
+        CapellaElementExt.creationService(first);
       }
 
     } else if (architecture instanceof SystemAnalysis) {

@@ -38,6 +38,7 @@ public class PhysicalArchitectureItemContribution implements IMDEMenuItemContrib
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#selectionContribution()
    */
+  @Override
   public boolean selectionContribution(ModelElement modelElement, EClass cls, EStructuralFeature feature) {
     if ((modelElement instanceof SystemEngineering) && PaPackage.Literals.PHYSICAL_ARCHITECTURE.equals(cls)
         && CapellacorePackage.Literals.ABSTRACT_MODELLING_STRUCTURE__OWNED_ARCHITECTURES.equals(feature)) {
@@ -49,6 +50,7 @@ public class PhysicalArchitectureItemContribution implements IMDEMenuItemContrib
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#executionContribution()
    */
+  @Override
   public Command executionContribution(EditingDomain editingDomain, ModelElement containerElement,
       ModelElement createdElement, EStructuralFeature feature) {
     if ((createdElement instanceof PhysicalArchitecture) && (containerElement instanceof SystemEngineering)) {
@@ -58,7 +60,7 @@ public class PhysicalArchitectureItemContribution implements IMDEMenuItemContrib
         @Override
         protected void doExecute() {
           new CreatePhysicalArchiCmd(engineering, NamingConstants.CreatePhysicalArchCmd_name, architecture,
-              (LogicalComponent) BlockArchitectureExt.getFirstComponent(architecture, false),
+              (LogicalComponent) architecture.getSystem(),
               (LogicalFunction) BlockArchitectureExt.getRootFunction(architecture, false),
               (PhysicalArchitecture) createdElement).run();
         }
@@ -70,6 +72,7 @@ public class PhysicalArchitectureItemContribution implements IMDEMenuItemContrib
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#getMetaclass()
    */
+  @Override
   public EClass getMetaclass() {
     return PaPackage.Literals.PHYSICAL_ARCHITECTURE;
   }

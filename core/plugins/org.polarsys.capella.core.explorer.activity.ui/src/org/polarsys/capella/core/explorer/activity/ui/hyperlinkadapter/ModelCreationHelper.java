@@ -65,7 +65,7 @@ public class ModelCreationHelper {
 
   protected static Scenario createScenario(AbstractCapability abstractCapability, ScenarioKind scenarioKind) {
     if (abstractCapability != null) {
-      Scenario sc = InteractionFactory.eINSTANCE.createScenario(); //$NON-NLS-1$
+      Scenario sc = InteractionFactory.eINSTANCE.createScenario(); // $NON-NLS-1$
       sc.setKind(scenarioKind);
       abstractCapability.getOwnedScenarios().add(sc);
       CapellaElementExt.creationService(sc);
@@ -90,7 +90,7 @@ public class ModelCreationHelper {
       defaultRegion = region;
     }
     if (defaultRegion == null) {
-      defaultRegion = CapellacommonFactory.eINSTANCE.createRegion(); //$NON-NLS-1$
+      defaultRegion = CapellacommonFactory.eINSTANCE.createRegion(); // $NON-NLS-1$
       defaultSM.getOwnedRegions().add(defaultRegion);
       CapellaElementExt.creationService(defaultRegion);
     }
@@ -115,6 +115,7 @@ public class ModelCreationHelper {
       }
       // No capability found, let's create a new one.
       AbstractReadWriteCommand cmd = new AbstractReadWriteCommand() {
+        @Override
         public void run() {
           result[0] = createAbstractCapability(capabilityPkg);
         }
@@ -128,21 +129,21 @@ public class ModelCreationHelper {
   public static AbstractCapability createAbstractCapability(AbstractCapabilityPkg capabilityPkg) {
     AbstractCapability result = null;
     if (capabilityPkg instanceof CapabilityPkg) {
-      result = CtxFactory.eINSTANCE.createCapability(); //$NON-NLS-1$
+      result = CtxFactory.eINSTANCE.createCapability(); // $NON-NLS-1$
       ((CapabilityPkg) capabilityPkg).getOwnedCapabilities().add((Capability) result);
     } else if (capabilityPkg instanceof CapabilityRealizationPkg) {
-      result = LaFactory.eINSTANCE.createCapabilityRealization(); //$NON-NLS-1$
+      result = LaFactory.eINSTANCE.createCapabilityRealization(); // $NON-NLS-1$
       ((CapabilityRealizationPkg) capabilityPkg).getOwnedCapabilityRealizations().add((CapabilityRealization) result);
     } else if (capabilityPkg instanceof OperationalCapabilityPkg) {
-      result = OaFactory.eINSTANCE.createOperationalCapability(); //$NON-NLS-1$
+      result = OaFactory.eINSTANCE.createOperationalCapability(); // $NON-NLS-1$
       ((OperationalCapabilityPkg) capabilityPkg).getOwnedOperationalCapabilities().add((OperationalCapability) result);
     }
     CapellaElementExt.creationService(result);
     return result;
   }
 
-  public static Scenario selectCapabilityAndCreateScenario(final Project project,
-      final BlockArchitecture architecture, final ScenarioKind scenarioKind) {
+  public static Scenario selectCapabilityAndCreateScenario(final Project project, final BlockArchitecture architecture,
+      final ScenarioKind scenarioKind) {
     AbstractReadWriteCommand cmd = new AbstractReadWriteCommand() {
       private Scenario scenario;
 
@@ -157,6 +158,7 @@ public class ModelCreationHelper {
       /**
        * @see java.lang.Runnable#run()
        */
+      @Override
       public void run() {
         AbstractCapability capability = selectCapability(project, architecture);
         if (capability != null) {
@@ -171,17 +173,20 @@ public class ModelCreationHelper {
 
   @Deprecated
   public static Scenario selectLACapabilityRealizationAndCreateDataFlowScenario(final Project project) {
-    return selectCapabilityAndCreateScenario(project, ModelQueryHelper.getLogicalArchitecture(project), ScenarioKind.DATA_FLOW);
+    return selectCapabilityAndCreateScenario(project, ModelQueryHelper.getLogicalArchitecture(project),
+        ScenarioKind.DATA_FLOW);
   }
 
   @Deprecated
   public static Scenario selectOperationalCapabilityAndCreateInteractionScenario(final Project project) {
-    return selectCapabilityAndCreateScenario(project, ModelQueryHelper.getOperationalAnalysis(project), ScenarioKind.INTERACTION);
+    return selectCapabilityAndCreateScenario(project, ModelQueryHelper.getOperationalAnalysis(project),
+        ScenarioKind.INTERACTION);
   }
 
   @Deprecated
   public static Scenario selectPACapabilityRealizationAndCreateDataFlowScenario(final Project project) {
-    return selectCapabilityAndCreateScenario(project, ModelQueryHelper.getPhysicalArchitecture(project), ScenarioKind.DATA_FLOW);
+    return selectCapabilityAndCreateScenario(project, ModelQueryHelper.getPhysicalArchitecture(project),
+        ScenarioKind.DATA_FLOW);
   }
 
   /**
@@ -230,10 +235,11 @@ public class ModelCreationHelper {
       /**
        * @see java.lang.Runnable#run()
        */
+      @Override
       public void run() {
         components[0] = selectComponent(architecture);
         if (null != components[0]) {
-          createStateMachineRegion(components[0]); //$NON-NLS-1$
+          createStateMachineRegion(components[0]); // $NON-NLS-1$
         }
       }
     };
@@ -258,7 +264,7 @@ public class ModelCreationHelper {
       return (Component) SelectionDialogHelper.simplePropertySelectionDialogWizard(new ArrayList<EObject>(components),
           PlatformUI.getWorkbench().getDisplay().getActiveShell());
     }
-    return BlockArchitectureExt.getFirstComponent(architecture, true);
+    return BlockArchitectureExt.getOrCreateSystem(architecture);
   }
 
 }

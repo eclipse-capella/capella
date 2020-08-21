@@ -23,6 +23,7 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.DeploymentTarget;
@@ -53,7 +54,8 @@ public class ShowHideABComponent extends AbstractShowHide {
    */
   public ShowHideABComponent(DDiagramContents content_p) {
     super(content_p);
-    DiagramElementMapping mapping = getContent().getMapping(MappingConstantsHelper.getMappingABDeployedElement(getContent().getDDiagram()));
+    DiagramElementMapping mapping = getContent()
+        .getMapping(MappingConstantsHelper.getMappingABDeployedElement(getContent().getDDiagram()));
     containsDeployment = (mapping != null) && getContent().getDiagramElements(mapping).iterator().hasNext();
   }
 
@@ -64,8 +66,11 @@ public class ShowHideABComponent extends AbstractShowHide {
   public HashMapSet<String, EObject> getRelatedObjects(EObject semantic_p, DiagramContext context_p) {
     HashMapSet<String, EObject> value = super.getRelatedObjects(semantic_p, context_p);
     ContextItemElement lastContext = context_p.getLast();
-
     Collection<EObject> result = new ArrayList<EObject>();
+
+    BlockArchitecture blockArchitecture = BlockArchitectureExt.getRootBlockArchitecture(semantic_p);
+    Component systemComponent = blockArchitecture.getSystem();
+
     if (lastContext.getValue() instanceof Entity) {
       Entity entity = (Entity) lastContext.getValue();
       Collection<Part> parts = getCache(ComponentExt::getRepresentingParts, entity);
@@ -75,8 +80,9 @@ public class ShowHideABComponent extends AbstractShowHide {
           result.add(targetContainer);
 
           // Remove all parts of root component
-          result.remove((BlockArchitectureExt.getOrCreateSystem(BlockArchitectureExt
-              .getRootBlockArchitecture(semantic_p))));
+          if (systemComponent != null) {
+            result.remove(systemComponent);
+          }
 
         }
       }
@@ -99,11 +105,12 @@ public class ShowHideABComponent extends AbstractShowHide {
       }
 
       // Remove all parts of root component
-      result2.removeAll((BlockArchitectureExt.getOrCreateSystem(BlockArchitectureExt
-          .getRootBlockArchitecture(semantic_p)).getRepresentingParts()));
+      if (systemComponent != null) {
+        result2.removeAll(systemComponent.getRepresentingParts());
+      }
+
       // Retrains to already visible containers, to use the existing container displayed instead of display all
       // available container. if none visible, we add element to diagram, not reveal parent
-
       result.addAll(result2);
       result.addAll(result3);
 
@@ -148,7 +155,7 @@ public class ShowHideABComponent extends AbstractShowHide {
       if (mapping == null) {
         return false;
       }
-        
+
       for (ContextItemView view : originCouple_p.getViews()) {
         for (DSemanticDecorator dView : view.getViews().get(VIEWS)) {
           if ((dView instanceof DDiagramElement)
@@ -176,8 +183,8 @@ public class ShowHideABComponent extends AbstractShowHide {
     if ((originCouple_p.getAncestor() != null)) {
       if ((originCouple_p.getValue() instanceof Part)
           && (originCouple_p.getAncestor().getElement().getValue() instanceof Part)) {
-        if (!getCache(PartExt::getDeployingElements, (Part) originCouple_p.getAncestor().getElement().getValue()).contains(
-            (originCouple_p.getValue()))) {
+        if (!getCache(PartExt::getDeployingElements, (Part) originCouple_p.getAncestor().getElement().getValue())
+            .contains((originCouple_p.getValue()))) {
           return true;
         }
       } else if ((originCouple_p.getValue() instanceof Entity)
@@ -195,7 +202,8 @@ public class ShowHideABComponent extends AbstractShowHide {
     DiagramElementMapping mapping = super.getMapping(semantic, context, relatedViews);
 
     if (semantic instanceof Entity) {
-      mapping =  getContent().getMapping(MappingConstantsHelper.getMappingABComponent(semantic, getContent().getDDiagram()));
+      mapping = getContent()
+          .getMapping(MappingConstantsHelper.getMappingABComponent(semantic, getContent().getDDiagram()));
 
     } else if (semantic instanceof Part) {
       Part part = (Part) semantic;
