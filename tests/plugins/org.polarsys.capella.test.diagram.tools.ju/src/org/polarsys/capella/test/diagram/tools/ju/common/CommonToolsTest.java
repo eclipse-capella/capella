@@ -27,6 +27,8 @@ import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.ui.IViewPart;
+import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.core.data.capellacore.BooleanPropertyValue;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
@@ -38,6 +40,7 @@ import org.polarsys.capella.test.diagram.common.ju.api.AbstractDiagramTestCase;
 import org.polarsys.capella.test.diagram.common.ju.context.CommonDiagram;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 import org.polarsys.capella.test.framework.context.SessionContext;
+import org.polarsys.capella.test.framework.helpers.GuiActions;
 import org.polarsys.capella.test.framework.helpers.TestHelper;
 
 /**
@@ -53,9 +56,6 @@ import org.polarsys.capella.test.framework.helpers.TestHelper;
  */
 public class CommonToolsTest extends AbstractDiagramTestCase {
 
-  protected SessionContext sc;
-  protected Session s;
-
   protected PropertyValueGroup pvg;
   protected BooleanPropertyValue pv;
 
@@ -70,8 +70,8 @@ public class CommonToolsTest extends AbstractDiagramTestCase {
   @Override
   public void test() throws Exception {
 
-    s = getSession(getRequiredTestModel());
-    sc = new SessionContext(s);
+    Session s = getSession(getRequiredTestModel());
+    SessionContext sc = new SessionContext(s);
 
     TransactionalEditingDomain ed = s.getTransactionalEditingDomain();
     s.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(ed) {
@@ -92,21 +92,22 @@ public class CommonToolsTest extends AbstractDiagramTestCase {
 
     for (DRepresentation rep : DialectManager.INSTANCE.getAllRepresentations(s)) {
       if (rep instanceof DDiagram) {
-
         System.err.println(EObjectExt.getText(rep));
-        testCommonTools((DDiagram) rep);
-
+        testCommonTools(sc, (DDiagram) rep);
       }
     }
 
   }
 
-  private void testCommonTools(DDiagram rep) {
+  private void testCommonTools(SessionContext sc, DDiagram rep) {
 
+    IViewPart p = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().findView("org.eclipse.ui.views.PropertySheet");
+    PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().hideView(p);
+    
     // TODO this is a temporary DIRTY FIX and will be removed once filters are migrated
 
-    s.getTransactionalEditingDomain().getCommandStack()
-        .execute(new RecordingCommand(s.getTransactionalEditingDomain()) {
+    sc.getSession().getTransactionalEditingDomain().getCommandStack()
+        .execute(new RecordingCommand(sc.getSession().getTransactionalEditingDomain()) {
           @Override
           protected void doExecute() {
             rep.getActivatedFilters().clear();
@@ -115,21 +116,21 @@ public class CommonToolsTest extends AbstractDiagramTestCase {
 
     CommonDiagram cd = new CommonDiagram(sc, rep);
     DiagramContext dc = cd.open();
-    Session session = dc.getSessionContext().getSession();
-
-    for (DDiagramElement de : new ArrayList<DDiagramElement>(dc.getDiagram().getOwnedDiagramElements())) {
+    
+    for (DDiagramElement de : new ArrayList<DDiagramElement>(rep.getOwnedDiagramElements())) {
 
       if (testedMappings.add(de.getDiagramElementMapping())) {
         if (de.getTarget() instanceof CapellaElement) {
           final CapellaElement ce = (CapellaElement) de.getTarget();
-          session.getTransactionalEditingDomain().getCommandStack()
-              .execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
+          sc.getSession().getTransactionalEditingDomain().getCommandStack()
+              .execute(new RecordingCommand(sc.getSession().getTransactionalEditingDomain()) {
                 @Override
                 protected void doExecute() {
                   ce.getAppliedPropertyValueGroups().add(pvg);
                   ce.getAppliedPropertyValues().add(pv);
                 }
               });
+
           String containerId = ce.getId();
           cd.insertPV(pv.getId(), containerId);
           cd.insertPVG(pvg.getId(), containerId);
@@ -156,7 +157,9 @@ public class CommonToolsTest extends AbstractDiagramTestCase {
       }
       assertTrue(pvFilterPresent);
     }
-
+    cd.close();
+    sc.getSession().getTransactionalEditingDomain().getCommandStack().flush();
+    GuiActions.flushASyncGuiJobs();
   }
 
 }

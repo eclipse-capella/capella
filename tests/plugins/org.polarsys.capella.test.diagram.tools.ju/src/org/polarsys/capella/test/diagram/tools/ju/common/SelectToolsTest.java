@@ -13,7 +13,6 @@
 package org.polarsys.capella.test.diagram.tools.ju.common;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashSet;
 
 import org.eclipse.emf.transaction.RecordingCommand;
@@ -31,16 +30,12 @@ import org.polarsys.capella.test.diagram.common.ju.context.CommonDiagram;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
 import org.polarsys.capella.test.framework.context.SessionContext;
+import org.polarsys.capella.test.framework.helpers.GuiActions;
 
 /**
  * Test whether the selection tools are properly selecting expected elements
  */
 public class SelectToolsTest extends AbstractDiagramTestCase {
-
-  protected SessionContext sc;
-  protected Session s;
-
-  protected Collection<DiagramDescription> testedDiagrams = new HashSet<DiagramDescription>();
 
   @Override
   protected String getRequiredTestModel() {
@@ -50,8 +45,8 @@ public class SelectToolsTest extends AbstractDiagramTestCase {
   @Override
   public void test() throws Exception {
 
-    s = getSession(getRequiredTestModel());
-    sc = new SessionContext(s);
+    Session s = getSession(getRequiredTestModel());
+    SessionContext sc = new SessionContext(s);
 
     // For each kind of diagrams from sample project, check if select tools are working.
     HashSet<DiagramDescription> descriptions = new HashSet<DiagramDescription>();
@@ -59,19 +54,20 @@ public class SelectToolsTest extends AbstractDiagramTestCase {
       if (rep instanceof DDiagram) {
         DDiagram diagram = (DDiagram) rep;
         if (!descriptions.contains(diagram.getDescription())) {
+          System.err.println(diagram.getDescription().getName());
           descriptions.add(diagram.getDescription());
-          testCommonTools(diagram);
+          testCommonTools(sc, diagram);
         }
       }
     }
   }
 
-  protected void testCommonTools(DDiagram rep) {
+  protected void testCommonTools(SessionContext sc, DDiagram rep) {
 
     // TODO this is a temporary DIRTY FIX and will be removed once filters are migrated
 
-    s.getTransactionalEditingDomain().getCommandStack()
-        .execute(new RecordingCommand(s.getTransactionalEditingDomain()) {
+    sc.getSession().getTransactionalEditingDomain().getCommandStack()
+        .execute(new RecordingCommand(sc.getSession().getTransactionalEditingDomain()) {
           @Override
           protected void doExecute() {
             rep.getActivatedFilters().clear();
@@ -104,6 +100,8 @@ public class SelectToolsTest extends AbstractDiagramTestCase {
     }
 
     dc.close();
+    sc.getSession().getTransactionalEditingDomain().getCommandStack().flush();
+    GuiActions.flushASyncGuiJobs();
   }
 
 }
