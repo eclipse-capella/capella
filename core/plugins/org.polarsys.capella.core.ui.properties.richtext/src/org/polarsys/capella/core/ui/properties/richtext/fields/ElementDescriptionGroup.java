@@ -24,7 +24,10 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.jface.layout.GridLayoutFactory;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.SWTException;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.progress.UIJob;
@@ -52,6 +55,9 @@ public abstract class ElementDescriptionGroup {
   private static final String FAMILY_DEFERRED_REFRESH = CapellaUIPropertiesRichtextPlugin.PLUGIN_ID
       + ".refreshJobFamily";
 
+  private static final String FAMILY_LOAD_DATA_REFRESH = CapellaUIPropertiesRichtextPlugin.PLUGIN_ID
+      + ".loadDataJobFamily";
+  
   /**
    * Current edited semantic element.
    */
@@ -74,13 +80,19 @@ public abstract class ElementDescriptionGroup {
 
   protected Composite descriptionContainer;
 
-  protected GridData existedEditorLayoutData;
+  protected GridData infoLabelGridData;
 
-  protected Label existedEditorLabel;
+  protected Label infoLabel;
+  
+  protected Button reloadBtn;
 
+  protected GridData reloadBtnGridData;
+  
   protected Composite parentComposite;
 
   private static final String EXISTED_EDITOR_TEXT = "The description is currently opened in an editor. Please use this editor to edit your description."; //$NON-NLS-1$
+  
+  private static final String EDITOR_LOADING_TEXT = "Attempt(s) loading the editor: "; //$NON-NLS-1$
 
   private class SavingStrategy implements SaveStrategy {
 
@@ -144,12 +156,28 @@ public abstract class ElementDescriptionGroup {
 
     parentComposite = parent;
 
-    existedEditorLabel = widgetFactory.createLabel(parent, EXISTED_EDITOR_TEXT);
-    existedEditorLayoutData = new GridData();
-    existedEditorLabel.setLayoutData(existedEditorLayoutData);
-    existedEditorLabel.setVisible(false);
-    existedEditorLayoutData.exclude = true;
-
+    infoLabel = widgetFactory.createLabel(parent, EXISTED_EDITOR_TEXT);
+    reloadBtn = widgetFactory.createButton(parent, "Reload", SWT.PUSH);
+    reloadBtn.addSelectionListener(new SelectionListener() {
+      @Override
+      public void widgetSelected(SelectionEvent e) {
+        loadData(semanticElement, semanticFeature);
+      }
+      
+      @Override
+      public void widgetDefaultSelected(SelectionEvent e) {
+        
+      }
+    });
+    
+    infoLabelGridData = new GridData(SWT.FILL, SWT.CENTER, false, false);
+    infoLabel.setLayoutData(infoLabelGridData);
+    hideInfoText();
+    
+    reloadBtnGridData = new GridData(SWT.BEGINNING, SWT.CENTER, false, false);
+    reloadBtn.setLayoutData(reloadBtnGridData);
+    hideReloadButton();
+    
     // Do not propagate the focus event to the embedded editor
     descriptionContainer = new Composite(parent, SWT.NONE) {
       @Override
@@ -195,7 +223,7 @@ public abstract class ElementDescriptionGroup {
    * Remove the editor before the Property tab is disposed
    */
   public void aboutToBeHidden() {
-    RichtextManager.getInstance().removeWidget(descriptionContainer);
+    hideEditor();
   }
 
   /**
@@ -320,39 +348,36 @@ public abstract class ElementDescriptionGroup {
    * @param feature
    */
   public void loadData(EObject element, EStructuralFeature feature) {
-    try {
-      // if editable, we update the content
-      if (updateDescriptionEditability(element, feature)) {
-
-        // If we have set or changed the element, then we 'bind' it to the richtext
-        if (element != semanticElement || descriptionTextField.getElement() == null) {
-          semanticElement = element;
-          semanticFeature = feature;
-          if (descriptionTextField instanceof MDENebulaBasedRichTextWidget) {
-            ((MDENebulaBasedRichTextWidget) descriptionTextField).setDirtyStateUpdated(true);
-          }
-
-          // We setSaveStrategy after the bind, as bind also do a saveContent on previous element.
-          ((SavingStrategy) descriptionTextField.getSaveStrategy()).ensureLastSave();
-          descriptionTextField.bind(semanticElement, semanticFeature);
-          descriptionTextField.setSaveStrategy(new SavingStrategy(semanticElement, semanticFeature));
-
+    if (!parentComposite.isDisposed() && parentComposite.isVisible()) {
+      try {
+        // if editable, we update the content
+        if (updateDescriptionEditability(element, feature)) {
+          loadEditorContent(element, feature);
         } else {
-          // Otherwise we just reload the content on the same element
-          descriptionTextField.loadContent();
+          // if not editable, we still update the semantic element of the view. Otherwise aboutToBeShown may be called
+          // without knowing semanticElement
+          if (element != semanticElement) {
+            semanticElement = element;
+            semanticFeature = feature;
+          }
         }
-
-      } else {
-        // if not editable, we still update the semantic element of the view. Otherwise aboutToBeShown may be called
-        // without knowing semanticElement
-        if (element != semanticElement) {
-          semanticElement = element;
-          semanticFeature = feature;
-        }
+      } catch (SWTException e) {
+        // Catch SWT "Permission denied" exception raised by Nebula Richtext
       }
-    } catch (SWTException e) {
-      // Catch SWT "Permission denied" exception raised by Nebula Richtext
     }
+  }
+
+  protected void loadEditorContent(EObject element, EStructuralFeature feature) {
+    semanticElement = element;
+    semanticFeature = feature;
+    if (descriptionTextField instanceof MDENebulaBasedRichTextWidget) {
+      ((MDENebulaBasedRichTextWidget) descriptionTextField).setDirtyStateUpdated(true);
+    }
+
+    // We setSaveStrategy after the bind, as bind also do a saveContent on previous element.
+    ((SavingStrategy) descriptionTextField.getSaveStrategy()).ensureLastSave();
+    descriptionTextField.bind(semanticElement, semanticFeature);
+    descriptionTextField.setSaveStrategy(new SavingStrategy(semanticElement, semanticFeature));
   }
 
   /**
@@ -414,33 +439,109 @@ public abstract class ElementDescriptionGroup {
     boolean isOn = RichtextManager.getInstance().isOnWidget(descriptionContainer);
     boolean isVisible = descriptionContainer.isVisible();
     boolean isValidState = ((isEditable && isVisible && isOn) || (!isEditable && !isVisible && !isOn));
-
+    
     // Here, we avoid to update the view if it is already in a valid state
     if (!isValidState) {
       descriptionContainer.setVisible(isEditable);
       if (isEditable) {
         // Hide the text about "existed editor" and update the existing richtext field
-        existedEditorLabel.setVisible(false);
-        existedEditorLayoutData.exclude = true;
-        descriptionTextField = RichtextManager.getInstance().addWidget(descriptionContainer);
+        hideInfoText();
+        hideReloadButton();
+        descriptionTextField = showEditor();
         // As the viewer may have been recreated, we re-set the saving strategy here
         descriptionTextField.setSaveStrategy(new SavingStrategy(semanticElement, semanticFeature));
-
       } else {
         // Show the text about "existed editor"
-        existedEditorLabel.setVisible(true);
-        existedEditorLayoutData.exclude = false;
-        RichtextManager.getInstance().removeWidget(descriptionContainer);
+        showExistedEditorText();
+        hideEditor();
       }
       // Recalculate the layout
-      parentComposite.layout(true);
       isValidState = true;
+      
+      if (descriptionTextField.isLoading()) {
+        int[] counter = { 1 };
+        Job[] jobs = Job.getJobManager().find(FAMILY_LOAD_DATA_REFRESH);
+        if (jobs.length == 0) {
+          UIJob job = new UIJob("Load editor data") {
+            @Override
+            public IStatus runInUIThread(IProgressMonitor monitor) {
+              if (descriptionTextField.isLoading()) {
+                hideEditor();
+                showEditorLoadingText(counter[0]++);
+                if (counter[0] > 10) {
+                  showReloadButton();
+                } else {
+                  schedule(1000);
+                }
+              } else {
+                loadData(semanticElement, semanticFeature);
+              }
+              return Status.OK_STATUS;
+            }
+            @Override
+            public boolean belongsTo(Object family) {
+              return FAMILY_LOAD_DATA_REFRESH.equals(family);
+            }
+          };
+          job.setSystem(true);
+          job.schedule(1000);
+        }
+        // Stop feeding more data to editor while it's still loading
+        return false;
+      }
     }
 
     return isValidState && isEditable;
   }
 
+  protected void showEditorLoadingText(int counter) {
+    infoLabel.setText(EDITOR_LOADING_TEXT + counter);
+    infoLabel.setVisible(true);
+    infoLabelGridData.exclude = false;
+    parentComposite.layout(true);
+  }
+  
+  protected void showExistedEditorText() {
+    infoLabel.setText(EXISTED_EDITOR_TEXT);
+    infoLabel.setVisible(true);
+    infoLabelGridData.exclude = false;
+    parentComposite.layout(true);
+  }
+  
+  protected void hideInfoText() {
+    infoLabel.setVisible(false);
+    infoLabelGridData.exclude = true;
+    parentComposite.layout(true);
+  }
+  
+  protected void showReloadButton() {
+    reloadBtn.setVisible(true);
+    reloadBtnGridData.exclude = false;
+    parentComposite.layout(true);
+  }
+  
+  protected void hideReloadButton() {
+    reloadBtn.setVisible(false);
+    reloadBtnGridData.exclude = true;
+    parentComposite.layout(true);
+  }
+
+  protected MDERichTextWidget showEditor() {
+    if (!RichtextManager.getInstance().isOnWidget(descriptionContainer)) {
+      MDERichTextWidget widget = RichtextManager.getInstance().addWidget(descriptionContainer);
+      return widget;
+    }
+    return RichtextManager.getInstance().getRichtextWidget(descriptionContainer);
+  }
+
+  protected void hideEditor() {
+    if (!descriptionContainer.isDisposed() && RichtextManager.getInstance().isOnWidget(descriptionContainer)) {
+      RichtextManager.getInstance().removeWidget(descriptionContainer);
+    }
+  }
+
   public boolean shouldRefresh() {
     return descriptionTextField == null || !descriptionTextField.hasFocus();
   }
+  
 }
