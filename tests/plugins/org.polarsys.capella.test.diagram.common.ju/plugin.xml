@@ -17,13 +17,6 @@
 
 <plugin>
    <extension
-         point="org.eclipse.sirius.sessionManagerListener">
-      <listener
-            class="org.polarsys.capella.test.diagram.common.ju.headless.selector.TestSessionManagerListener">
-      </listener>
-   </extension>
-
-   <extension
          point="org.eclipse.sirius.externalJavaAction">
       <javaActions
             actionClass="org.polarsys.capella.test.diagram.common.ju.headless.actions.HeadlessSelectElementsFromListWizard"

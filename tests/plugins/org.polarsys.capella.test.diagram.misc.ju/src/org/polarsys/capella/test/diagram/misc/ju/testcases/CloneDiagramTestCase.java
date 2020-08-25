@@ -50,25 +50,27 @@ public class CloneDiagramTestCase extends BasicTestCase {
   public List<String> getRequiredTestModels() {
     return Arrays.asList(projectName);
   }
-  
+
   @Override
   protected void setUp() throws Exception {
     super.setUp();
+
     // The headless analysis selector should be initialized since the clone action can ask to select analysis
-    HeadlessCapellaAnalysisSelector.INSTANCE
-        .setSelectedURI(TestHelper.getAirdResource(getSession(projectName)).getURI());
+    Session session = getSession(projectName);
+    HeadlessCapellaAnalysisSelector.INSTANCE.setSelectedURI(session, TestHelper.getAirdResource(session).getURI());
   }
-  
+
   @Override
   public void test() throws Exception {
     Session session = getSession(projectName);
     assertNotNull(session);
-    
+
     DRepresentation originalRepresentation = DiagramHelper.getDRepresentation(session, diagramName);
-    DRepresentationDescriptor originalDescriptor = RepresentationHelper.getRepresentationDescriptor(session, originalRepresentation);
-    
+    DRepresentationDescriptor originalDescriptor = RepresentationHelper.getRepresentationDescriptor(session,
+        originalRepresentation);
+
     int sizeBforeCopy = originalDescriptor.getEAnnotations().size();
-    
+
     TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(originalDescriptor);
     domain.getCommandStack().execute(new RecordingCommand(domain) {
 
@@ -108,15 +110,15 @@ public class CloneDiagramTestCase extends BasicTestCase {
         // Check visible in doc
         assertEquals(RepresentationAnnotationHelper.isVisibleInDoc(originalDescriptor),
             RepresentationAnnotationHelper.isVisibleInDoc(clonedDescriptor));
-        
+
         // Check visible for traceability
         assertEquals(RepresentationAnnotationHelper.isVisibleInLM(originalDescriptor),
             RepresentationAnnotationHelper.isVisibleInLM(clonedDescriptor));
-        
+
         // Check review
         assertEquals(RepresentationAnnotationHelper.getStatusReview(originalDescriptor),
             RepresentationAnnotationHelper.getStatusReview(clonedDescriptor));
-        
+
         // Check progress status
         assertEquals(RepresentationAnnotationHelper.getProgressStatus(originalDescriptor),
             RepresentationAnnotationHelper.getProgressStatus(clonedDescriptor));
