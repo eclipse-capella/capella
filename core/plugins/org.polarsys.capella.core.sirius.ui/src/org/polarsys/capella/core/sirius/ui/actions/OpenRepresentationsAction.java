@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -23,6 +23,7 @@ import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.sirius.common.tools.api.query.IllegalStateExceptionQuery;
 import org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.table.metamodel.table.description.CrossTableDescription;
@@ -92,7 +93,15 @@ public class OpenRepresentationsAction extends BaseSelectionListenerAction {
 
   @Override
   protected boolean updateSelection(IStructuredSelection selection) {
-    return !getOpenableRepresentationDescriptors(selection).isEmpty();
+    try {  
+      return !getOpenableRepresentationDescriptors(selection).isEmpty();
+    } catch (IllegalStateException e) {
+      if (new IllegalStateExceptionQuery(e).isAConnectionLostException()) {
+        return false;
+      } else {
+        throw e;
+      }
+    }
   }
 
   /**

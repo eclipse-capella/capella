@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -18,6 +18,7 @@ import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.Adapters;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.common.tools.api.query.IllegalStateExceptionQuery;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -131,45 +132,53 @@ public class CapellaAdapterHelper {
    */
   public static EObject resolveEObject(Object object, boolean onlySemantic, boolean onlyBusiness) {
     EObject result = null;
-    EObject adapt = null;
-    if (object instanceof DRepresentation) {
-      object = RepresentationHelper.getRepresentationDescriptor((DRepresentation) object);
-    }
-
-    adapt = Adapters.adapt(object, EObject.class, true);
-    if (adapt instanceof EObject) {
-      result = adapt;
-    }
-    if (onlySemantic) {
-      if (result instanceof DSemanticDecorator) {
-        result = ((DSemanticDecorator) result).getTarget();
-
-      } else if (result instanceof DRepresentationDescriptor) {
-        result = ((DRepresentationDescriptor) result).getTarget();
+    try {
+      EObject adapt = null;
+      if (object instanceof DRepresentation) {
+        object = RepresentationHelper.getRepresentationDescriptor((DRepresentation) object);
       }
 
-      if (result != null) {
-        adapt = Adapters.adapt(result, Element.class, true);
-      } else {
-        adapt = Adapters.adapt(object, Element.class, true);
-      }
-
-      if (adapt instanceof Element) {
+      adapt = Adapters.adapt(object, EObject.class, true);
+      if (adapt instanceof EObject) {
         result = adapt;
       }
-      if (result instanceof Element) {
-        // null can happen when we try to adapt a non semantic element (notes, text, ...)
-        if (!((object instanceof Project || null != result.eContainer()) && (null != result.eResource()))) {
-          // null can happen when a diagram shows a deleted element
+      if (onlySemantic) {
+        if (result instanceof DSemanticDecorator) {
+          result = ((DSemanticDecorator) result).getTarget();
+
+        } else if (result instanceof DRepresentationDescriptor) {
+          result = ((DRepresentationDescriptor) result).getTarget();
+        }
+
+        if (result != null) {
+          adapt = Adapters.adapt(result, Element.class, true);
+        } else {
+          adapt = Adapters.adapt(object, Element.class, true);
+        }
+
+        if (adapt instanceof Element) {
+          result = adapt;
+        }
+        if (result instanceof Element) {
+          // null can happen when we try to adapt a non semantic element (notes, text, ...)
+          if (!((object instanceof Project || null != result.eContainer()) && (null != result.eResource()))) {
+            // null can happen when a diagram shows a deleted element
+            return null;
+          }
+        } else if (!CapellaResourceHelper.isSemanticElement(result)) {
           return null;
         }
-      }else if(!CapellaResourceHelper.isSemanticElement(result)){
-        return null;
       }
-    }
-    if (onlyBusiness) {
-      if (result instanceof Element) {
-        result = getBusinessObject((Element) result);
+      if (onlyBusiness) {
+        if (result instanceof Element) {
+          result = getBusinessObject((Element) result);
+        }
+      }
+    } catch (IllegalStateException e) {
+      if (new IllegalStateExceptionQuery(e).isAConnectionLostException()) {
+        // Nothing to log here, this can happen if the resource is not accessible anymore (distant resource).
+      } else {
+        throw e;
       }
     }
     return result;

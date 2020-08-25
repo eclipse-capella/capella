@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -22,6 +22,7 @@ import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.jface.layout.GridLayoutFactory;
+import org.eclipse.sirius.common.tools.api.query.IllegalStateExceptionQuery;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.SWTException;
 import org.eclipse.swt.events.SelectionEvent;
@@ -217,6 +218,13 @@ public abstract class ElementDescriptionGroup {
         }
       } catch (SWTException e) {
         // Catch SWT "Permission denied" exception raised by Nebula Richtext
+      } catch (IllegalStateException e2) {
+        if (new IllegalStateExceptionQuery(e2).isAConnectionLostException()) {
+          // Catch the potential exception in case of connection lost with server
+          // (Team4Capella)
+        } else {
+          throw e2;
+        }
       }
     }
   }
@@ -365,6 +373,13 @@ public abstract class ElementDescriptionGroup {
         }
       } catch (SWTException e) {
         // Catch SWT "Permission denied" exception raised by Nebula Richtext
+      } catch (IllegalStateException e2) {
+        if (new IllegalStateExceptionQuery(e2).isAConnectionLostException()) {
+          // Catch the potential exception in case of connection lost with server
+          // (Team4Capella)
+        } else {
+          throw e2;
+        }
       }
     }
   }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
 
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.window.Window;
+import org.eclipse.sirius.common.tools.api.query.IllegalStateExceptionQuery;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.ui.tools.api.dialog.RenameDialog;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
@@ -48,7 +49,15 @@ public class RenameRepresentationAction extends BaseSelectionListenerAction {
    */
   @Override
   protected boolean updateSelection(IStructuredSelection selection) {
-    return !getRenamableRepresentationDescriptors(selection).isEmpty();
+    try {
+      return !getRenamableRepresentationDescriptors(selection).isEmpty();
+    } catch (IllegalStateException e) {
+      if (new IllegalStateExceptionQuery(e).isAConnectionLostException()) {
+        return false;
+      } else {
+        throw e;
+      }
+    }
   }
 
   /**
