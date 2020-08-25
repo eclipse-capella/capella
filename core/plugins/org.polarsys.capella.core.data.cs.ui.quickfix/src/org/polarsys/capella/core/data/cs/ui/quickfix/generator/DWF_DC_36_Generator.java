@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.ui.IMarkerResolution;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewHelper;
 import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.cs.ui.quickfix.resolver.DWF_DC_36_Children_To_Closest_Valid_Ancestor_Resolver;
 import org.polarsys.capella.core.data.cs.ui.quickfix.resolver.SwitchIsActorIsHumanFlag_Resolver;
 import org.polarsys.capella.core.data.cs.ui.quickfix.resolver.SwitchIsActorIsHumanFlag_ResolverAll;
 import org.polarsys.capella.core.data.oa.Entity;
@@ -43,10 +44,14 @@ public class DWF_DC_36_Generator extends AbstractMarkerResolutionGenerator {
       if (component instanceof Entity) {
         resolutions.add(new SwitchIsActorIsHumanFlag_Resolver(switch_OE, false, false));
         resolutions.add(new SwitchIsActorIsHumanFlag_ResolverAll(switch_OE, false, false));
+
+        resolutions.add(new DWF_DC_36_Children_To_Closest_Valid_Ancestor_Resolver());
+
       } else {
         // switch to non human
         resolutions.add(new SwitchIsActorIsHumanFlag_Resolver(switch_non_human, component.isActor(), false));
         resolutions.add(new SwitchIsActorIsHumanFlag_ResolverAll(switch_non_human, component.isActor(), false));
+
       }
     }
 
