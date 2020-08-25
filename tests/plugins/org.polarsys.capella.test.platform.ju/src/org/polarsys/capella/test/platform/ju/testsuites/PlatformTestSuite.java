@@ -25,6 +25,7 @@ import org.polarsys.capella.test.platform.ju.testcases.CapellaLoggerConfigTestCa
 import org.polarsys.capella.test.platform.ju.testcases.CapellaPlatformVersionNotNull;
 import org.polarsys.capella.test.platform.ju.testcases.CapellaSiriusCustomisationEnabled;
 import org.polarsys.capella.test.platform.ju.testcases.CapellaVersionConsistencyTest;
+import org.polarsys.capella.test.platform.ju.testcases.CustomDAnalysisSelection;
 import org.polarsys.capella.test.platform.ju.testcases.DataNotifierBeforeTransactionRecorder;
 import org.polarsys.capella.test.platform.ju.testcases.DerivedFeaturesImplementation;
 import org.polarsys.capella.test.platform.ju.testcases.DiffmergeExternalReferences;
@@ -76,6 +77,7 @@ public class PlatformTestSuite extends BasicTestSuite {
     tests.add(new LicenceTest());
     tests.add(new JobLogTest());
     tests.add(new CapellaLoggerConfigTestCase());
+    tests.add(new CustomDAnalysisSelection());
 
     return tests;
   }

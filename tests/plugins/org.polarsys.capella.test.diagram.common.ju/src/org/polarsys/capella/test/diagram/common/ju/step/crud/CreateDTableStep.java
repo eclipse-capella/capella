@@ -76,7 +76,7 @@ public class CreateDTableStep extends AbstractTestStep {
     Assert.assertNotNull(Messages.nullSemanticObject, target);
     Assert.assertNotNull(Messages.nullRepresentationDesc, description);
 
-    HeadlessCapellaAnalysisSelector.INSTANCE.setSelectedURI(selectedURI);
+    HeadlessCapellaAnalysisSelector.INSTANCE.setSelectedURI(getExecutionContext().getSession(), selectedURI);
   }
 
   /**
