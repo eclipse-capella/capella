@@ -26,13 +26,13 @@ import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateAbstractDNodeTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateContainerTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateDEdgeTool;
+import org.polarsys.capella.test.diagram.common.ju.step.tools.DeleteElementTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.DragAndDropFromProjectExplorerTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.DragAndDropTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.SelectTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.titleblocks.CreateDiagramTitleBlockTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.titleblocks.CreateElementTitleBlockTool;
-import org.polarsys.capella.test.diagram.common.ju.step.tools.titleblocks.DeleteTitleBlockTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.titleblocks.InsertColumnInTitleBlockTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.titleblocks.InsertLineInTitleBlockTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.titleblocks.InsertRemoveTitleBlockTool;
@@ -57,31 +57,29 @@ public class CommonDiagram extends DiagramContext {
     return getSemanticIdFromView(createdConstraint);
   }
 
-  public DAnnotation createDiagramTitleBlock() {
+  public DDiagramElement createDiagramTitleBlock() {
     DDiagramElementContainer createdTB = new CreateDiagramTitleBlockTool(this,
         IToolNameConstants.TOOL_CREATE_TITLE_BLOCK, getDiagramId()).run();
-    return (DAnnotation) createdTB.getTarget();
+    return createdTB;
   }
 
-  public DAnnotation createElementTitleBlock(String containerId) {
+  public DDiagramElement createElementTitleBlock(String containerId) {
     DDiagramElementContainer createdTB = new CreateElementTitleBlockTool(this,
         IToolNameConstants.TOOL_CREATE_TITLE_BLOCK, containerId, getDiagramId()).run();
-    return (DAnnotation) createdTB.getTarget();
+    return createdTB;
   }
 
   public void checkCreateElementTitleBlock(String containerId) {
-    new CreateElementTitleBlockTool(this, IToolNameConstants.TOOL_CREATE_TITLE_BLOCK, containerId,
-        getDiagramId()).contextOk();
-  }
-
-  public void checkCreateDiagramTitleBlock() {
-    new CreateDiagramTitleBlockTool(this, IToolNameConstants.TOOL_CREATE_TITLE_BLOCK, getDiagramId())
+    new CreateElementTitleBlockTool(this, IToolNameConstants.TOOL_CREATE_TITLE_BLOCK, containerId, getDiagramId())
         .contextOk();
   }
 
+  public void checkCreateDiagramTitleBlock() {
+    new CreateDiagramTitleBlockTool(this, IToolNameConstants.TOOL_CREATE_TITLE_BLOCK, getDiagramId()).contextOk();
+  }
+
   public void checkAutocreateDiagramTitleBlock() {
-    new CreateDiagramTitleBlockTool(this, IToolNameConstants.TOOL_CREATE_TITLE_BLOCK, getDiagramId())
-        .checkAutocreate();
+    new CreateDiagramTitleBlockTool(this, IToolNameConstants.TOOL_CREATE_TITLE_BLOCK, getDiagramId()).checkAutocreate();
   }
 
   public void removeElementTitleBlock(String id) {
@@ -123,12 +121,21 @@ public class CommonDiagram extends DiagramContext {
         IToolNameConstants.TOOL_REMOVE_COLUMN_TITLE_BLOCK, getDiagramId(), titleBlock, colNo).run();
     return (DAnnotation) createdTB.getTarget();
   }
-  
-  public void deleteTitleBlock(DAnnotation titleBlock) {
-	    DeleteTitleBlockTool delTool = new DeleteTitleBlockTool(this, this, IToolNameConstants.TOOL_DELETE_DIAGRAM_TITLE_BLOCK);
-	    delTool.delete(titleBlock);
-	  }
 
+  /**
+   * Perform a delete of the view (same effect than delete double red cross)
+   */
+  public void deleteSemantic(DDiagramElement view) {
+    new DeleteElementTool(this).delete(view);
+  }
+
+  /**
+   * Perform a delete of all views (same effect than ctrl+A then delete double red cross)
+   */
+  public void deleteAllSemantic() {
+    new DeleteElementTool(this).deleteAll();
+  }
+  
   public void createConstrainedElement(String sourceId, String targetId) {
     // All diagrams shared the same tool
     String name = IToolNameConstants.TOOL_CC_CREATE_CONSTRAINTELEMENT;
