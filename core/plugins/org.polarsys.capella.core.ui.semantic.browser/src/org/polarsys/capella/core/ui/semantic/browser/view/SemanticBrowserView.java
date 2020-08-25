@@ -48,6 +48,7 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionManagerListener;
+import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.swt.SWT;
@@ -75,6 +76,7 @@ import org.eclipse.ui.IViewSite;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.WorkbenchException;
 import org.eclipse.ui.XMLMemento;
 import org.eclipse.ui.internal.views.properties.tabbed.view.TabbedPropertyTitle;
@@ -397,7 +399,20 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
     // No need to set focus.
     boolean restoreState = shouldSetFocus ? true : false;
     shouldSetFocus = false;
-    setInput(null);
+
+    // Ensure execution of setInput in UI thread.
+    if (Display.getCurrent() == null) {
+        EclipseUIUtil.displayAsyncExec(new Runnable() {
+            public void run() {
+                if (!PlatformUI.getWorkbench().isClosing()) {
+                    setInput(null);
+                }
+            }
+        });
+    } else {
+        setInput(null);
+    }
+
     if (restoreState) {
       shouldSetFocus = true;
     }
