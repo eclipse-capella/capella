@@ -268,8 +268,7 @@ public class ABServices {
       if (pcMoved instanceof Part) {
         newComponentPkg.getOwnedParts().add((Part) pcMoved);
         component = (Component) ((Part) pcMoved).getType();
-      }
-      else if (pcMoved instanceof Component) {
+      } else if (pcMoved instanceof Component) {
         for (Part part : getCache(ComponentExt::getRepresentingParts, (Component) pcMoved)) {
           if (!newComponentPkg.equals(part.eContainer())) {
             newComponentPkg.getOwnedParts().add(part);
@@ -691,7 +690,22 @@ public class ABServices {
   }
 
   /**
-   * Returns whether the given part can be drop into the target element view
+   * Returns whether the given component can be dropped into the target element view
+   */
+  public boolean isValidDndABComponent(Component semanticObjectToDrop, EObject targetContainerView) {
+
+    List<Part> representingParts = semanticObjectToDrop.getRepresentingParts();
+
+    if (representingParts.isEmpty()) {
+      return false;
+    }
+
+    Part part = representingParts.get(0);
+    return isValidDndABComponent(part, targetContainerView);
+  }
+
+  /**
+   * Returns whether the given part can be dropped into the target element view
    */
   public boolean isValidDndABComponent(Part semanticObjectToDrop, EObject targetContainerView) {
     EObject context = null;
