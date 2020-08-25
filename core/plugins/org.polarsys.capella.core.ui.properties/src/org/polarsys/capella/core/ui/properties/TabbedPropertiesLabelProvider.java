@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -23,6 +23,7 @@ import org.eclipse.gmf.runtime.notation.Shape;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.sirius.common.tools.api.query.IllegalStateExceptionQuery;
 import org.eclipse.sirius.common.ui.business.api.views.properties.tabbed.ILabelProviderProvider;
 import org.eclipse.swt.graphics.Image;
 import org.polarsys.capella.common.ui.providers.MDEAdapterFactoryLabelProvider;
@@ -90,11 +91,20 @@ public class TabbedPropertiesLabelProvider extends MDEAdapterFactoryLabelProvide
    */
   @Override
   public Image getImage(Object element) {
+    Image result = null;
     EObject model = getModel(element);
     if (model != null) {
-      return super.getImage(model);
+      try {
+        result = super.getImage(model);
+      } catch (IllegalStateException e) {
+        if (new IllegalStateExceptionQuery(e).isAConnectionLostException()) {
+          // Do nothing just return null
+        } else {
+          throw e;
+        }
+      }
     }
-    return null;
+    return result;
   }
 
   /**

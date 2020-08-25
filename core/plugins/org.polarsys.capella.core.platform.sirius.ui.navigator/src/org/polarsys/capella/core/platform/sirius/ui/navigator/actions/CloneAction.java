@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -20,6 +20,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.common.tools.api.query.IllegalStateExceptionQuery;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -129,9 +130,17 @@ public class CloneAction extends BaseSelectionListenerAction {
   @Override
   protected boolean updateSelection(IStructuredSelection selection) {
     List<?> selectedElements = selection.toList();
-    _descriptors = RepresentationHelper.getSelectedDescriptors(selectedElements).stream().filter(RepresentationHelper::isValid).collect(Collectors.toList());
-    // Enable action only if all selected elements are valid representations.
-    int size = selectedElements.size();
-    return (size > 0) && (size == _descriptors.size());
+    try {
+      _descriptors = RepresentationHelper.getSelectedDescriptors(selectedElements).stream().filter(RepresentationHelper::isValid).collect(Collectors.toList());
+      // Enable action only if all selected elements are valid representations.
+      int size = selectedElements.size();
+      return (size > 0) && (size == _descriptors.size());
+    } catch (IllegalStateException e) {
+      if (new IllegalStateExceptionQuery(e).isAConnectionLostException()) {
+        return false;
+      } else {
+        throw e;
+      }
+    }
   }
 }

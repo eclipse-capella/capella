@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -25,6 +25,7 @@ import org.eclipse.jface.viewers.IFontProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionStatus;
+import org.eclipse.sirius.common.tools.api.query.IllegalStateExceptionQuery;
 import org.eclipse.sirius.common.ui.tools.api.view.common.item.ItemDecorator;
 import org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
@@ -84,34 +85,41 @@ public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvide
   @Override
   public Image getImage(Object object) {
     Image image = null;
-    Optional<DRepresentationDescriptor> repDesc = getRepresentationDescriptor(object);
-    if (repDesc.isPresent()) {
-      image = super.getImage(repDesc.get());
-      if (!RepresentationHelper.isValid(repDesc.get())) {
-        image = getDisabledImage(repDesc.get(), image);
-      }
-    } else if (object instanceof Session) {
-      image = SessionLabelProviderHelper.getInstance().getSessionLabelProvider().getImage(object);
-    } else if (object instanceof ItemDecorator) {
-      image = ((ItemDecorator) object).getImage();
-    } else if (object instanceof ViewpointItem) {
-      image = CapellaNavigatorPlugin.getDefault().getImage(IImageKeys.IMG_VIEWPOINT);
-    } else if (object instanceof RepresentationDescriptionItem) {
-      RepresentationDescriptionItem descriptionItem = (RepresentationDescriptionItem) object;
-      // Filter out scenario diagram to keep the nice image.
-      if (!(descriptionItem.getWrappedObject() instanceof SequenceDiagramDescription)) {
-        image = CapellaNavigatorPlugin.getDefault().getImage(IImageKeys.IMG_DIAGRAM_TYPE);
-      } else {
+    try {
+      Optional<DRepresentationDescriptor> repDesc = getRepresentationDescriptor(object);
+      if (repDesc.isPresent()) {
+        image = super.getImage(repDesc.get());
+        if (!RepresentationHelper.isValid(repDesc.get())) {
+          image = getDisabledImage(repDesc.get(), image);
+        }
+      } else if (object instanceof Session) {
+        image = SessionLabelProviderHelper.getInstance().getSessionLabelProvider().getImage(object);
+      } else if (object instanceof ItemDecorator) {
+        image = ((ItemDecorator) object).getImage();
+      } else if (object instanceof ViewpointItem) {
+        image = CapellaNavigatorPlugin.getDefault().getImage(IImageKeys.IMG_VIEWPOINT);
+      } else if (object instanceof RepresentationDescriptionItem) {
+        RepresentationDescriptionItem descriptionItem = (RepresentationDescriptionItem) object;
+        // Filter out scenario diagram to keep the nice image.
+        if (!(descriptionItem.getWrappedObject() instanceof SequenceDiagramDescription)) {
+          image = CapellaNavigatorPlugin.getDefault().getImage(IImageKeys.IMG_DIAGRAM_TYPE);
+        } else {
+          image = super.getImage(((ItemWrapper) object).getWrappedObject());
+        }
+      } else if (object instanceof ItemWrapper) {
         image = super.getImage(((ItemWrapper) object).getWrappedObject());
+      } else if (object instanceof RepresentationPackage) {
+        image = PlatformUI.getWorkbench().getSharedImages().getImage(ISharedImages.IMG_OBJ_FOLDER);
+      } else if (!(object instanceof IResource)) {
+        image = super.getImage(object);
       }
-    } else if (object instanceof ItemWrapper) {
-      image = super.getImage(((ItemWrapper) object).getWrappedObject());
-    } else if (object instanceof RepresentationPackage) {
-      image = PlatformUI.getWorkbench().getSharedImages().getImage(ISharedImages.IMG_OBJ_FOLDER);
-    } else if (!(object instanceof IResource)) {
-      image = super.getImage(object);
-    }
-
+    } catch (IllegalStateException e) {
+      if (new IllegalStateExceptionQuery(e).isAConnectionLostException()) {
+        // Do nothing.
+      } else {
+        throw e;
+      }
+  }
     return image;
   }
 
@@ -130,7 +138,7 @@ public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvide
 
     String key = sB.toString();
     Image disabledImage = CapellaNavigatorPlugin.getDefault().getImageRegistry().get(key);
-    if (disabledImage == null) {
+    if (disabledImage == null && image != null) {
       ImageDescriptor desc = ImageDescriptor.createFromImage(image);
       ImageDescriptor disabledDesc = ImageDescriptor.createWithFlags(desc, SWT.IMAGE_DISABLE);
       CapellaNavigatorPlugin.getDefault().getImageRegistry().put(key, disabledDesc);
@@ -207,32 +215,40 @@ public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvide
 
   @Override
   public String getDescription(Object element) {
-    if (element instanceof ModelElement) {
-      String slash = String.valueOf(ICommonConstants.SLASH_CHARACTER);
-      ModelElement modelElement = (ModelElement) element;
-      String path = modelElement.getFullLabel();
-      if (path.startsWith(slash)) {
-        path = path.substring(1);
+    try {
+      if (element instanceof ModelElement) {
+        String slash = String.valueOf(ICommonConstants.SLASH_CHARACTER);
+        ModelElement modelElement = (ModelElement) element;
+        String path = modelElement.getFullLabel();
+        if (path.startsWith(slash)) {
+          path = path.substring(1);
+        }
+        return path.replaceAll(slash, STATUS_LINE_PATH_SEPARATOR);
       }
-      return path.replaceAll(slash, STATUS_LINE_PATH_SEPARATOR);
-    }
-    
-    // Handle firstly for representation
-    EObject eObject = CapellaAdapterHelper.resolveEObject(element);
-    if (eObject instanceof DRepresentation) {
-      DRepresentationDescriptor descriptor = RepresentationHelper
-          .getRepresentationDescriptor((DRepresentation) eObject);
-      return RepresentationHelper.getRepresentationFullPathText(descriptor);
-    }
-    
-    if (eObject instanceof DRepresentationDescriptor) {
-      return RepresentationHelper.getRepresentationFullPathText((DRepresentationDescriptor) eObject);
-    }
-
-    // Handle then for semantic element
-    EObject semanticElement = CapellaAdapterHelper.resolveBusinessObject(element);
-    if (semanticElement != null) {
-      return EObjectLabelProviderHelper.getFullPathText(semanticElement);
+      
+      // Handle firstly for representation
+      EObject eObject = CapellaAdapterHelper.resolveEObject(element);
+      if (eObject instanceof DRepresentation) {
+        DRepresentationDescriptor descriptor = RepresentationHelper
+            .getRepresentationDescriptor((DRepresentation) eObject);
+        return RepresentationHelper.getRepresentationFullPathText(descriptor);
+      }
+      
+      if (eObject instanceof DRepresentationDescriptor) {
+        return RepresentationHelper.getRepresentationFullPathText((DRepresentationDescriptor) eObject);
+      }
+      
+      // Handle then for semantic element
+      EObject semanticElement = CapellaAdapterHelper.resolveBusinessObject(element);
+      if (semanticElement != null) {
+        return EObjectLabelProviderHelper.getFullPathText(semanticElement);
+      }
+    } catch (IllegalStateException e) {
+      if (new IllegalStateExceptionQuery(e).isAConnectionLostException()) {
+        // Do nothing.
+      } else {
+        throw e;
+      }
     }
     return "";
   }

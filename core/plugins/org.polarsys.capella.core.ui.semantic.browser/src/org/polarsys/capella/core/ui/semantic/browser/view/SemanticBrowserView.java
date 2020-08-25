@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -971,11 +971,14 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
     Image image = null;
     if (null != selectedElement) {
       // The text to display
-      title = AbstractLabelProviderFactory.getInstance().getCurrentLabelProvider().getText(selectedElement);
-      // Get the metaclass label.
-      String metaclassLabel = EObjectLabelProviderHelper.getMetaclassLabel(((EObject) selectedElement), true);
-      if ((null != metaclassLabel) && !title.startsWith(metaclassLabel)) {
-        title = metaclassLabel + title;
+      String label = AbstractLabelProviderFactory.getInstance().getCurrentLabelProvider().getText(selectedElement);
+      if (label != null) {
+        title = label;
+        // Get the metaclass label.
+        String metaclassLabel = EObjectLabelProviderHelper.getMetaclassLabel(((EObject) selectedElement), true);
+        if ((null != metaclassLabel) && !title.startsWith(metaclassLabel)) {
+          title = metaclassLabel + title;
+        }
       }
 
       // The image to display

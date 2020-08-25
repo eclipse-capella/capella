@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -97,10 +97,19 @@ public class CapellaDescriptionPropertySection extends DescriptionPropertySectio
 
       // On loading data, add the instance to the map.
       if (null != descriptionGroup) {
-        descriptionGroup.loadData(element);
-
+        if (element.eResource() != null) {
+          // If the element is no longer in a resource (for example in case of a
+          // connection lost with the server in Team4Capella usage) there is no reason to
+          // load (except to have some exception).
+          descriptionGroup.loadData(element);
+        }
       } else if (descriptionFallbackGroup != null) {
-        descriptionFallbackGroup.loadData(element);
+        if (element.eResource() != null) {
+          // If the element is no longer in a resource (for example in case of a
+          // connection lost with the server in Team4Capella usage) there is no reason to
+          // load (except to have some exception).
+          descriptionFallbackGroup.loadData(element);
+        }
       }
       return Status.OK_STATUS;
     }

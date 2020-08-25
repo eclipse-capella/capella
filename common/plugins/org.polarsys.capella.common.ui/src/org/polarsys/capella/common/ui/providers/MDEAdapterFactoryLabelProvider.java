@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -15,6 +15,7 @@ package org.polarsys.capella.common.ui.providers;
 
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.sirius.common.tools.api.query.IllegalStateExceptionQuery;
 import org.eclipse.swt.graphics.Image;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
 import org.polarsys.capella.common.ui.MdeCommonUiActivator;
@@ -39,25 +40,44 @@ public class MDEAdapterFactoryLabelProvider extends AdapterFactoryLabelProvider 
 
   @Override
   public Image getImage(Object object) {
-    Image result = super.getImage(object);
-
-    // Delegation for CDO usage for instance.
-    ILabelProviderDelegation delegatedLabelProvider = getDelegatedLabelProvider();
-    if (null != delegatedLabelProvider) {
-      Image decoratedImage = delegatedLabelProvider.getImage(result, object);
-      result = (null != decoratedImage) ? decoratedImage : result;
+    Image result = null;
+    try {
+      result = super.getImage(object);
+    
+      // Delegation for CDO usage for instance.
+      ILabelProviderDelegation delegatedLabelProvider = getDelegatedLabelProvider();
+      if (null != delegatedLabelProvider) {
+        Image decoratedImage = delegatedLabelProvider.getImage(result, object);
+        result = (null != decoratedImage) ? decoratedImage : result;
+      }
+    } catch (IllegalStateException e) {
+      if (new IllegalStateExceptionQuery(e).isAConnectionLostException()) {
+        // Do nothing.
+      } else {
+        throw e;
+      }
     }
     return result;
   }
 
+
   @Override
   public String getText(Object object) {
-    String text = super.getText(object);
+    String text = null;
+    try {
+      text = super.getText(object);
 
-    // Delegation for CDO usage for instance.
-    ILabelProviderDelegation delegatedLabelProvider = getDelegatedLabelProvider();
-    if (null != delegatedLabelProvider) {
-      text = delegatedLabelProvider.getText(text, object);
+      // Delegation for CDO usage for instance.
+      ILabelProviderDelegation delegatedLabelProvider = getDelegatedLabelProvider();
+      if (null != delegatedLabelProvider) {
+        text = delegatedLabelProvider.getText(text, object);
+      }
+    } catch (IllegalStateException e) {
+      if (new IllegalStateExceptionQuery(e).isAConnectionLostException()) {
+        // Do nothing.
+      } else {
+        throw e;
+      }
     }
 
     return text;
