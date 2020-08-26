@@ -13,7 +13,6 @@
 package org.polarsys.capella.test.diagram.tools.ju.xab;
 
 import org.eclipse.sirius.business.api.session.Session;
-import org.junit.Assert;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.test.diagram.common.ju.api.AbstractDiagramTestCase;
 import org.polarsys.capella.test.diagram.common.ju.context.XABDiagram;
@@ -74,11 +73,11 @@ public class DragAndDropOABActors extends AbstractDiagramTestCase {
     XABDiagram diagram = XABDiagram.openDiagram(context, OAB_OPERATIONAL_ENTITIES_PACKAGE,
         BlockArchitectureExt.Type.OA);
 
-    dragAndDropShouldSucceed(diagram, OA_SOURCE_1, OE_VALID_TARGET_1);
-    dragAndDropShouldSucceed(diagram, OA_SOURCE_2, OE_VALID_TARGET_2);
+    diagram.dragAndDropShouldSucceed(OA_SOURCE_1, OE_VALID_TARGET_1);
+    diagram.dragAndDropShouldSucceed(OA_SOURCE_2, OE_VALID_TARGET_2);
 
-    dragAndDropShouldFail(diagram, OA_SOURCE_3, OA_INVALID_TARGET_3);
-    dragAndDropShouldFail(diagram, OA_SOURCE_4, OA_INVALID_TARGET_4);
+    diagram.dragAndDropShouldFail(OA_SOURCE_3, OA_INVALID_TARGET_3);
+    diagram.dragAndDropShouldFail(OA_SOURCE_4, OA_INVALID_TARGET_4);
 
     diagram.close();
   }
@@ -86,27 +85,13 @@ public class DragAndDropOABActors extends AbstractDiagramTestCase {
   public void testOABEntitiesDiagram() {
     XABDiagram diagram = XABDiagram.openDiagram(context, OAB_OPERATIONAL_ENTITIES, BlockArchitectureExt.Type.OA);
 
-    dragAndDropShouldSucceed(diagram, OA_SOURCE_5, OE_VALID_TARGET_5);
-    dragAndDropShouldSucceed(diagram, OA_SOURCE_6, OE_VALID_TARGET_6);
+    diagram.dragAndDropShouldSucceed(OA_SOURCE_5, OE_VALID_TARGET_5);
+    diagram.dragAndDropShouldSucceed(OA_SOURCE_6, OE_VALID_TARGET_6);
 
-    dragAndDropShouldFail(diagram, OA_SOURCE_7, OA_INVALID_TARGET_7);
-    dragAndDropShouldFail(diagram, OA_SOURCE_8, OA_INVALID_TARGET_8);
+    diagram.dragAndDropShouldFail(OA_SOURCE_7, OA_INVALID_TARGET_7);
+    diagram.dragAndDropShouldFail(OA_SOURCE_8, OA_INVALID_TARGET_8);
 
     diagram.close();
-  }
-
-  private static void dragAndDropShouldSucceed(XABDiagram diagram, String sourceId, String targetId) {
-    diagram.dragAndDropComponent(sourceId, targetId);
-  }
-
-  private static void dragAndDropShouldFail(XABDiagram diagram, String sourceId, String targetId) {
-    try {
-      diagram.dragAndDropComponent(sourceId, targetId);
-      Assert.fail(
-          "Drag and drop should have failed for diagram: " + diagram + " source " + sourceId + " target " + targetId);
-    } catch (AssertionError error) {
-      Assert.assertTrue(error.getMessage().startsWith("Precondition"));
-    }
   }
 
 }
