@@ -10173,7 +10173,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:element.dndIDComponentFromModel(newViewContainer)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="Component from Diagram" precondition="aql:element.isValidIDDndComponentFromDiagram(newViewContainer,oldContainer)" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@containerMappings[name='CCII_Component']">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="Component from Diagram" precondition="aql:element.isValidIDDndComponentFromDiagram(newViewContainer)" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@containerMappings[name='CCII_Component']">
             <oldContainer name="oldContainer"/>
             <newContainer name="newContainer"/>
             <element name="element"/>
@@ -11987,7 +11987,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:element.dndIDComponentFromModel(newViewContainer)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="Component from Diagram" precondition="aql:element.isValidIDDndComponentFromDiagram(newViewContainer,oldContainer)" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Component']">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="Component from Diagram" precondition="aql:element.isValidIDDndComponentFromDiagram(newViewContainer)" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Component']">
             <oldContainer name="oldContainer"/>
             <newContainer name="newContainer"/>
             <element name="element"/>
@@ -13411,7 +13411,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="Component from Diagram" precondition="aql:element.isValidIDDndComponentFromDiagram(newViewContainer,oldContainer)" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@containerMappings[name='CRB%20Component']">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="Component from Diagram" precondition="aql:element.isValidIDDndComponentFromDiagram(newViewContainer)" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@containerMappings[name='CRB%20Component']">
             <oldContainer name="oldContainer"/>
             <newContainer name="newContainer"/>
             <element name="element"/>
