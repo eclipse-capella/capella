@@ -81,6 +81,7 @@ public class TransitionsTestSuite extends BasicTestSuite {
     tests.add(new CreateRule_FS2ES_01());
     tests.add(new CreateRule_FS2ES_02());
     tests.add(new CreateRule_FS2FS_01());
+    tests.add(new CreateRule_FS2FS_Involvement());
     tests.add(new CreateRule_RA01_01());
     tests.add(new CreateRule_RA01_02());
     tests.add(new CreateRule_RA01_03());

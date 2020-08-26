@@ -40,7 +40,7 @@ public class ScenarioInvolvementSynchronizer implements IFinalizer {
             AbstractCapabilityExt.addInvolvedComponent((AbstractCapability) container, component);
 
           } else if (role.getRepresentedInstance() instanceof AbstractFunction) {
-            AbstractFunction function = (AbstractFunction) role.getRepresentedInstance().getAbstractType();
+            AbstractFunction function = (AbstractFunction) role.getRepresentedInstance();
             AbstractCapabilityExt.addInvolvedFunction((AbstractCapability) container, function);
           }
         }
