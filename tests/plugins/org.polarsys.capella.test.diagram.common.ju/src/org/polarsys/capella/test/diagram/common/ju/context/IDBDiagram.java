@@ -17,12 +17,14 @@ import java.util.Arrays;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
+import org.junit.Assert;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.information.ExchangeMechanism;
 import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 import org.polarsys.capella.core.sirius.analysis.constants.IDNDToolNameConstants;
 import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.CreateDiagramStep;
+import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateContainerTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateDEdgeTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateNodeTool;
@@ -50,6 +52,15 @@ public class IDBDiagram extends CommonDiagram {
     }
 
     return (IDBDiagram) new CreateDiagramStep(executionContext, targetIdentifier, diagramKind) {
+      @Override
+      public DiagramContext getResult() {
+        return new IDBDiagram(getExecutionContext(), diagram);
+      }
+    }.run().open();
+  }
+
+  public static IDBDiagram openDiagram(SessionContext executionContext, String name) {
+    return (IDBDiagram) new OpenDiagramStep(executionContext, name) {
       @Override
       public DiagramContext getResult() {
         return new IDBDiagram(getExecutionContext(), diagram);
@@ -214,7 +225,7 @@ public class IDBDiagram extends CommonDiagram {
   public void insertComponents(String... id) {
     new InsertRemoveTool(this, getToolInsertComponents()).insert(id);
   }
-  
+
   public void insertSubComponents(String containerId, String... id) {
     new InsertRemoveTool(this, getToolInsertComponents(), containerId).insert(id);
   }
@@ -409,6 +420,20 @@ public class IDBDiagram extends CommonDiagram {
 
   public void dragAndDropComponentFromDiagram(String idDraggedElement, String containerId) {
     dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_IDB_DND_COMPONENT);
+  }
+
+  public void dragAndDropShouldFail(String sourceId, String targetId) {
+    try {
+      dragAndDropComponentFromDiagram(sourceId, targetId);
+      Assert.fail(
+          "Drag and drop should have failed for diagram: " + this + " source " + sourceId + " target " + targetId);
+    } catch (AssertionError error) {
+      Assert.assertTrue(error.getMessage().startsWith("Precondition"));
+    }
+  }
+
+  public void dragAndDropShouldSucceed(String sourceId, String targetId) {
+    dragAndDropComponentFromDiagram(sourceId, targetId);
   }
 
   public void dragAndDropComponentPortFromExplorer(String idDraggedElement, String containerId) {

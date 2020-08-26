@@ -29,6 +29,7 @@ import org.polarsys.capella.core.data.capellacore.Classifier;
 import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.cs.Part;
@@ -533,21 +534,23 @@ public class DragAndDropServices {
    * @param itf
    */
 
-  public boolean isValidIDDndComponentFromDiagram(EObject element, DSemanticDecorator newViewContainer,
-      EObject oldContainer) {
-    EObject newContainer = CsServices.getService().getIBTarget(newViewContainer, false);
-    if (ComponentExt.isActor(element)) {
-      return false;
+  public boolean isValidIDDndComponentFromDiagram(Component component, DSemanticDecorator newViewContainer) {
+    EObject newContainer = null;
+
+    if (component.isActor()) {
+      newContainer = CsServices.getService().getIBTarget(newViewContainer, true);
+      return ABServices.getService().isValidCreationABActor(newContainer);
     }
-    if (newContainer instanceof BlockArchitecture) {
-      return (ComponentExt.isActor(element));
+
+    newContainer = CsServices.getService().getIBTarget(newViewContainer, false);
+
+    if (newContainer instanceof Component) {
+      return ABServices.getService().isValidDndComponent(component, (Component) newContainer);
     }
-    if ((newContainer instanceof Part) && (element instanceof Part)) {
-      return ABServices.getService().isValidDndComponent((Part) element, (Part) newContainer);
+    if (newContainer instanceof ComponentPkg) {
+      return ABServices.getService().isValidDndComponent(component, (ComponentPkg) newContainer);
     }
-    if ((newContainer instanceof Component) && (element instanceof Component)) {
-      return ABServices.getService().isValidDndComponent((Component) element, (Component) newContainer);
-    }
+
     return false;
   }
 

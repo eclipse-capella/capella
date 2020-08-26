@@ -30,6 +30,7 @@ import org.polarsys.capella.test.diagram.tools.ju.idb.CreateInterface;
 import org.polarsys.capella.test.diagram.tools.ju.idb.CreateProvides;
 import org.polarsys.capella.test.diagram.tools.ju.idb.CreateRequires;
 import org.polarsys.capella.test.diagram.tools.ju.idb.CreateUses;
+import org.polarsys.capella.test.diagram.tools.ju.idb.DragAndDropComponents;
 import org.polarsys.capella.test.diagram.tools.ju.idb.DragAndDropTest;
 import org.polarsys.capella.test.diagram.tools.ju.idb.InsertRelationship;
 import org.polarsys.capella.test.diagram.tools.ju.idb.ReconnectEdges;
@@ -48,7 +49,7 @@ public class IDBDiagramToolsTestSuite extends BasicTestSuite {
   public static Test suite() {
     return new IDBDiagramToolsTestSuite();
   }
-  
+
   @Override
   public List<String> getRequiredTestModels() {
     return Arrays.asList("EmptyProject");
@@ -79,6 +80,7 @@ public class IDBDiagramToolsTestSuite extends BasicTestSuite {
     tests.add(new ShowHideElements());
     tests.add(new ReconnectEdges());
     tests.add(new CreateEvent());
+    tests.add(new DragAndDropComponents());
 
     return tests;
   }
