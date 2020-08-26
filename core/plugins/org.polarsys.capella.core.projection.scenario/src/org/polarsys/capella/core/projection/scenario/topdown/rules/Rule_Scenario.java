@@ -78,7 +78,12 @@ public class Rule_Scenario extends Rule_InteractionElement {
         ICommand command = null;
 
         if (CapellaLayerCheckingExt.isInContextLayer(type)) {
-          command = TransitionCommandHelper.getInstance().getActorTransitionCommand(elements, monitor);
+          if (type.isActor()) {
+            command = TransitionCommandHelper.getInstance().getActorTransitionCommand(elements, monitor);
+
+          } else {
+            command = TransitionCommandHelper.getInstance().getSystemTransitionCommand(elements, monitor);
+          }
 
         } else if (CapellaLayerCheckingExt.isInLogicalLayer(type)) {
           if (type.isActor()) {
@@ -92,6 +97,7 @@ public class Rule_Scenario extends Rule_InteractionElement {
           if (!(Query.isElementTransformed(type, transfo_p))) {
             command = TransitionCommandHelper.getInstance().getOE2ActorTransitionCommand(elements, monitor);
           }
+          
         } else if (CapellaLayerCheckingExt.isAOrInPhysicalLayer(type)) {
           if (!Query.isElementTransformed(type, transfo_p)
               && PreferenceHelper.getInstance().transitionPC2CIWhileScenarioTransition()) {
