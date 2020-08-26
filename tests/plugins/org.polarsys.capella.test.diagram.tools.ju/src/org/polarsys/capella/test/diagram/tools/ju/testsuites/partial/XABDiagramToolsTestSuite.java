@@ -45,6 +45,7 @@ import org.polarsys.capella.test.diagram.tools.ju.xab.DragAndDropFunction;
 import org.polarsys.capella.test.diagram.tools.ju.xab.DragAndDropOABActors;
 import org.polarsys.capella.test.diagram.tools.ju.xab.DragAndDropPhysicalComponent;
 import org.polarsys.capella.test.diagram.tools.ju.xab.DragAndDropTest;
+import org.polarsys.capella.test.diagram.tools.ju.xab.DragAndDropXABComponents;
 import org.polarsys.capella.test.diagram.tools.ju.xab.ElementsFromModeAndStates;
 import org.polarsys.capella.test.diagram.tools.ju.xab.ElementsFromScenario;
 import org.polarsys.capella.test.diagram.tools.ju.xab.InitializeDiagramInvalidFunction;
@@ -190,6 +191,7 @@ public class XABDiagramToolsTestSuite extends BasicTestSuite {
     tests.add(new DragAndDropTest());
     tests.add(new DragAndDropEABTest());
     tests.add(new DragAndDropOABActors());
+    tests.add(new DragAndDropXABComponents());
 
     tests.add(new ShowHideFETestCase());
     tests.add(new SwitchCategoryWithDelegation());

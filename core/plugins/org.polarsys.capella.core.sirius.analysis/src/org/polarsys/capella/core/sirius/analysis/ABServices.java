@@ -679,6 +679,42 @@ public class ABServices {
   }
 
   /**
+   * Returns whether part source can be moved into target component package
+   * 
+   * @param sourcePart
+   * @param targetPkg
+   * @return whether part source can be moved into target component package
+   */
+  public boolean isValidDndComponent(Part sourcePart, ComponentPkg targetPkg) {
+    Component parentComponent = ComponentPkgExt.getParentComponent(targetPkg);
+
+    if (parentComponent != null) {
+      return isValidDndComponent(sourcePart, parentComponent);
+    }
+
+    return (ComponentExt.isActor(sourcePart) && ComponentExt.canCreateABActor(targetPkg))
+        || (!ComponentExt.isActor(sourcePart) && ComponentExt.canCreateABComponent(targetPkg));
+  }
+
+  /**
+   * Returns whether component source can be moved into target component package
+   * 
+   * @param sourceComponent
+   * @param targetPkg
+   * @return whether component source can be moved into target component package
+   */
+  public boolean isValidDndComponent(Component sourceComponent, ComponentPkg targetPkg) {
+    Component parentComponent = ComponentPkgExt.getParentComponent(targetPkg);
+
+    if (parentComponent != null) {
+      return isValidDndComponent(sourceComponent, parentComponent);
+    }
+
+    return (sourceComponent.isActor() && ComponentExt.canCreateABActor(targetPkg))
+        || (!sourceComponent.isActor() && ComponentExt.canCreateABComponent(targetPkg));
+  }
+
+  /**
    * Returns whether component source can be moved into target component
    * 
    * @param source
@@ -724,6 +760,8 @@ public class ABServices {
       return isValidDndComponent(semanticObjectToDrop, (Component) context);
     } else if (context instanceof Part) {
       return isValidDndComponent(semanticObjectToDrop, (Part) context);
+    } else if (context instanceof ComponentPkg) {
+      return isValidDndComponent(semanticObjectToDrop, (ComponentPkg) context);
     }
 
     return false;
