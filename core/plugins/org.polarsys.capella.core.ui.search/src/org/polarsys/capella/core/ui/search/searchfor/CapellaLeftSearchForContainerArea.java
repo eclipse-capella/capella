@@ -31,7 +31,6 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
-import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
@@ -127,11 +126,10 @@ public class CapellaLeftSearchForContainerArea extends AbstractCapellaSearchForC
 
   public void createFiltercontainer(Group parentGroup) {
     Group searchForSelectionGroup = new Group(parentGroup, SWT.NONE);
-    GridLayoutFactory.swtDefaults().numColumns(2).applyTo(searchForSelectionGroup);
 
-    GridData gdGrp = new GridData(GridData.FILL_BOTH);
-    gdGrp.widthHint = 50;
-    searchForSelectionGroup.setLayoutData(gdGrp);
+    GridLayoutFactory.swtDefaults().numColumns(2).applyTo(searchForSelectionGroup);
+    GridDataFactory.swtDefaults().align(SWT.FILL, SWT.CENTER).span(2, 1).grab(false, false)
+        .applyTo(searchForSelectionGroup);
 
     searchForSelectionGroup.setText(CapellaSearchConstants.Filters_Label);
     checkboxFilterAbstract = createCheckboxFilters(searchForSelectionGroup, CapellaSearchConstants.Abstract_Label,
@@ -143,7 +141,7 @@ public class CapellaLeftSearchForContainerArea extends AbstractCapellaSearchForC
   private Button createCheckboxFilters(Composite group, String label, boolean selected) {
     Button checkboxFilters = new Button(group, SWT.CHECK);
     checkboxFilters.setText(label);
-    GridDataFactory.swtDefaults().align(SWT.FILL, SWT.CENTER).applyTo(checkboxFilters);
+    GridDataFactory.fillDefaults().applyTo(checkboxFilters);
     checkboxFilters.setFont(group.getFont());
     checkboxFilters.setSelection(selected);
 
