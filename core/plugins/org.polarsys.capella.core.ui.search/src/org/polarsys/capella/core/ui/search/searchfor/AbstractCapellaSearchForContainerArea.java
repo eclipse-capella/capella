@@ -82,7 +82,7 @@ public abstract class AbstractCapellaSearchForContainerArea {
 
     GridData chechboxTreeViewerGridData = new GridData(GridData.FILL_BOTH);
     chechboxTreeViewerGridData.heightHint = 140;
-    chechboxTreeViewerGridData.widthHint = 140;
+    chechboxTreeViewerGridData.widthHint = 250;
 
     filteredTree.getViewer().getTree().setLayoutData(chechboxTreeViewerGridData);
 
