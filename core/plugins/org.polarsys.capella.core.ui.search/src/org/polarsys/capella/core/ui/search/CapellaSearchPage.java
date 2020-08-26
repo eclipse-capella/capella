@@ -102,15 +102,30 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
   private CapellaLeftSearchForContainerArea leftCont;
   private CapellaRightSearchForContainerArea rightCont;
 
+  // A customized composite whose layout is not changed by the Search page
+  private class CompositeForSearchPage extends Composite {
+
+    public CompositeForSearchPage(Composite parent, int style) {
+      super(parent, style);
+    }
+
+    @Override
+    public void setLayoutData(Object layoutData) {
+      if (getLayoutData() == null)
+        super.setLayoutData(layoutData);
+    }
+  }
+
   @Override
   public void createControl(Composite parent) {
     initializeDialogUnits(parent);
     // init history searches
     previousSearchSettings.addAll(CapellaSearchSettingsHistory.getInstance().getAllSearchSettings());
 
-    Composite composite = new Composite(parent, SWT.NONE);
+    CompositeForSearchPage composite = new CompositeForSearchPage(parent, SWT.NONE);
     composite.setFont(parent.getFont());
-    GridLayoutFactory.swtDefaults().numColumns(2).applyTo(composite);
+    GridDataFactory.fillDefaults().grab(true, true).applyTo(composite);
+    GridLayoutFactory.swtDefaults().numColumns(2).equalWidth(false).applyTo(composite);
 
     // create the text field search area and checkboxes (case sensitive etc)
     createSearchPatternControls(composite);
@@ -146,7 +161,7 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
   private void createLabelForComboSearchPattern(Composite group) {
     labelForComboSearchPattern = new Label(group, SWT.LEAD);
     labelForComboSearchPattern.setText(CapellaSearchConstants.CapellaSearchPage_Combo_Pattern_Label_Regex_Disabled);
-    GridDataFactory.swtDefaults().align(SWT.FILL, SWT.CENTER).span(2, 1).grab(true, true)
+    GridDataFactory.swtDefaults().align(SWT.FILL, SWT.CENTER).span(2, 1).grab(false, false)
         .applyTo(labelForComboSearchPattern);
     labelForComboSearchPattern.setFont(group.getFont());
   }
@@ -255,9 +270,8 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
     Group scopeGroup = new Group(parent, SWT.NONE);
     scopeGroup.setLayout(new GridLayout(4, false));
 
-    GridData gdGrp = new GridData(GridData.FILL_BOTH);
-    gdGrp.horizontalSpan = 2;
-    scopeGroup.setLayoutData(gdGrp);
+    GridDataFactory.swtDefaults().align(SWT.FILL, SWT.CENTER).span(2, 1).grab(false, false).applyTo(scopeGroup);
+
     scopeGroup.setText(CapellaSearchConstants.ScopeGroup_text);
 
     workspaceBtn = new Button(scopeGroup, SWT.RADIO);
