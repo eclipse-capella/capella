@@ -269,13 +269,12 @@ public class CategoryRegistry {
         List<IConfigurationElement> navigationQueryCollection = Arrays
             .asList(itemQueriesNode[0].getChildren(Messages.getString("CategoryRegistry.NavigationQuery"))); //$NON-NLS-1$
         basicQueryCollection.addAll(navigationQueryCollection);
-        itemQueries = (IConfigurationElement[]) basicQueryCollection.toArray();
-        for (IConfigurationElement itemQueryConfigurationElement : itemQueries) {
+        basicQueryCollection.forEach(itemQueryConfigurationElement -> {
           Object queryInstance = org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper.createInstance(
               itemQueryConfigurationElement,
               org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper.ATT_CLASS);
           category.addItemQuery(queryInstance);
-        }
+        });
       }
 
       // Retrieve category queries
