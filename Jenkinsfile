@@ -36,7 +36,7 @@ pipeline {
 					withCredentials([string(credentialsId: 'sonar-token-capella', variable: 'SONARCLOUD_TOKEN')]) {
 						withEnv(['MAVEN_OPTS=-Xmx4g']) {
 							def sign = github.isPullRequest() ? '' : '-Psign'
-							def sonar = (github.isPullRequest() || BRANCH_NAME != 'master') ? '' : 'sonar:sonar -Dsonar.projectKey=eclipse_capella -Dsonar.organization=eclipse -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${SONARCLOUD_TOKEN}'
+							def sonar = 'sonar:sonar -Dsonar.projectKey=eclipse_capella -Dsonar.organization=eclipse -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${SONARCLOUD_TOKEN} -Dsonar.branch.name=${CHANGE_TARGET}'
 	      					sh "mvn clean verify -f pom.xml -Djacoco.skip=true -DjavaDocPhase=none ${sign} ${sonar}"
 						}
 					}
