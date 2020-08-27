@@ -18601,7 +18601,7 @@
       <appliedStyles>centeredColor: 0,0,0</appliedStyles>
       <appliedStyles>edgeRouting: straight</appliedStyles>
       <bendpoints x="655" y="124"/>
-      <bendpoints x="467" y="264"/>
+      <bendpoints x="466" y="264"/>
     </ownedLayouts>
     <ownedLayouts xsi:type="layout:EdgeLayout" id="d3566b34-4537-4df5-a192-81f3a83f1f46" name="" actualMapping="CA_use2" source="//@ownedLayouts.73/@ownedLayouts.10" target="//@ownedLayouts.73/@ownedLayouts.4">
       <appliedStyles>strokeColor: 0,0,0</appliedStyles>
