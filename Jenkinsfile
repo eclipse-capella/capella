@@ -40,7 +40,7 @@ pipeline {
 							def sonarBranchAnalysis = '-Dsonar.branch.name=${BRANCH_NAME}'
 							def sonarPullRequestAnalysis = '-Dsonar.pullrequest.provider=GitHub -Dsonar.pullrequest.github.repository=eclipse/capella -Dsonar.pullrequest.key=${CHANGE_ID} -Dsonar.pullrequest.branch=${CHANGE_BRANCH}'
 							def sonar = sonarCommon + (github.isPullRequest() ? sonarPullRequestAnalysis : sonarBranchAnalysis)
-	      					sh "mvn clean verify -f pom.xml -Djacoco.skip=true -DjavaDocPhase=none ${sign} ${sonar}"
+	      					sh "mvn clean verify -f pom.xml -Djacoco.skip=true -DjavaDocPhase=none -Pfull ${sign} ${sonar}"
 						}
 					}
       			}
