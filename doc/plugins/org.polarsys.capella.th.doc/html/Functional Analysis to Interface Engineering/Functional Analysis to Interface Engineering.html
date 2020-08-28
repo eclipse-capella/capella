@@ -1,12 +1,723 @@
-<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Functional Analysis to Interface Engineering</title><link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/></head><body><h1 id="Methodology_-_Seamless_Workflow_between_Functional_Analysis_and_Interface_Engineering">Methodology - Seamless Workflow between Functional Analysis and Interface Engineering</h1><p><img height="50" width="50" border="0" src="Images/TH_1.5.png"/><br/></p><p>This quick tutorial shows one possible way from System Analysis to Physical Architecture, starting with Functional Analysis and
-ending with Component Interfaces.
-<b>System Analysis</b></p><ul><li>Creation of System-level Functional Analysis</li><li>Creation of a Component Exchange Scenario (CES)</li></ul><p><b>Logical Architecture</b></p><ul><li>Transition to Logical Architecture</li><li>Enrichment of the Functional Tree</li><li>Allocation of Functions to Components</li><li>Allocation of Exchange Items to Functional Exchanges</li><li>Transition of CES from System Analysis</li><li>Enrichment of Logical CES</li></ul><p><b>Physical Architecture</b></p><ul><li>Transition from Logical Architecture</li><li>Creation of a Physical Architecture diagram</li><li>Generation of Component Exchanges, Physical Links, Interfaces</li><li>Transition of CES from Logical Architecture</li><li>Initialization of a Component Interface Scenario (CIS) from the CES</li></ul><h2 id="SYSTEM_ANALYSIS">SYSTEM ANALYSIS</h2><p>Once, Capella is open for the first step of this project:</p><ul><li><b>Select the System Analysis icon</b> of the activity explorer </li></ul><p><center><img height="400" width="550" border="0" src="Images/TH_1.1.png"/></center><br/></p><p><center><img height="450" width="550" border="0" src="Images/TH_1.2.png"/></center><br/></p><h3 id="System_Architecture_diagram_.28SAB.29">System Architecture diagram (SAB)</h3><ul><li><b>Create a new System Architecture diagram.</b></li><li>On the "Allocated System Function to System and Acors" expendbar of the activity explorer, <b>select "Create a new System Architecture diagram".</b></li></ul><p><center><img height="175" width="450" border="0" src="Images/TH_1.3.png"/></center><br/></p><h4 id="Create_Actors">Create Actors</h4><ul><li><b>Select the "Actor" palette tool</b> to add some Actors.</li></ul><p><center><img height="350" width="750" border="0" src="Images/TH_1.4.png"/></center><br/></p><p><b>Note:</b> <i>On the IFE System, actors have been created and 2 are visible on the previous picture: Aircaft and Passenger</i></p><h4 id="Allocate_Functions_to_the_Actors_and_System">Allocate Functions to the Actors and System</h4><ul><li><b>Select the "System Function" of the palette</b> and <b>click on Actors or System</b>.</li></ul><p><center><img height="300" width="750" border="0" src="Images/TH_1.6.png"/></center><br/></p><p><b>Note:</b> <i>On the IFE System, functions have been allocated to actors such as:</i></p><ul><li><i>Play sound in cabin to Aircraft </i></li><li><i>Manage video and audio diffusion to IFE System </i></li><li><i>Listen to audio Announcement to Passenger</i></li></ul><h3 id="Component_Exchange_Scenario_.28CES.29">Component Exchange Scenario (CES)</h3><h4 id="Create_a_new_Component_Exchange_Scenario">Create a new Component Exchange Scenario</h4><ul><li>On the "Allocated System Function to System and Actors" expend-bar of the activity explorer, <b>select "Create a new Exchange Scenario".</b></li></ul><p><center><img height="150" width="400" border="0" src="Images/TH_1.7.png"/></center><br/></p><h4 id="Add_actors_to_the_diagram">Add actors to the diagram</h4><ul><li><b>Select the "Actors" of the palette</b>(1) and <b>click on diagram</b>.</li><li><b>Select the required actors</b>(2) and <b>click on OK</b>(3).</li></ul><p><center><img height="500" width="800" border="0" src="Images/TH_1.8.png"/></center><br/></p><ul><li><b>Select the "Functional Exchange" tool</b> of the palette, <b>select the source actor and the target actor.</b></li></ul><p><center><img height="500" width="700" border="0" src="Images/TH_1.9.png"/></center><br/></p><ul><li><b>Click on the Source function selector button</b> and <b>select the desired function.</b></li></ul><p><center><img height="600" width="600" border="0" src="Images/TH_1.11.png"/></center><br/></p><ul><li><b>Click on the Target Function selector button</b> and <b>select the desired function.</b></li></ul><p><center><img height="600" width="600" border="0" src="Images/TH_1.12.png"/></center><br/></p><p><b>Note:</b> <i>When an exchange is already exists, the dialog allows to select it.</i> <br/><br/>
-<b>Note:</b> <i>On the IFE System, as shown in the following picture, the functional exchange "Audio Stream" has: </i></p><ul><li><i>"Send Audio announcement" as source function</i><br/></li><li><i>" Broadcast Audio Video Streams" as target function </i></li></ul><p><center><img height="500" width="700" border="0" src="Images/TH_1.13.png"/></center><br/></p><p><img height="50" width="50" border="0" src="Images/TH_1.5.png"/><br/>
-<b>Note:</b> <i>The System Architecture diagram is updated.</i><br/>
-<b>Note:</b> <i>Once a Functional Exchange has been put on the Scenario, it is not possible anymore to put Component Exchanges.</i></p><p><center><img height="492" width="1016" border="0" src="Images/TH_1.14.png"/></center><br/></p><h2 id="TRANSITIONS_FROM_SYSTEM_ANALYSIS_TO_LOGICAL_ARCHITECTURE">TRANSITIONS FROM SYSTEM ANALYSIS TO LOGICAL ARCHITECTURE</h2><p>On Project Explorer: ,Right click on "System Analysis". <br/>
-On the contextual menu, sub-menu "Transitions", select:</p><ul><li>"Actor"</li><li>"Functional transition"</li></ul><p><center><img height="500" width="700" border="0" src="Images/TH_1.17.png"/></center><br/>
-<center><img height="500" width="700" border="0" src="Images/TH_1.18.png"/></center><br/></p><h2 id="LOGICAL_ARCHITECTURE">LOGICAL ARCHITECTURE</h2><ul><li><b>Select the Logical Architecture icon</b> of the activity explorer </li></ul><p><center><img height="400" width="550" border="0" src="Images/TH_1.15.png"/></center><br/></p><p><center><img height="450" width="550" border="0" src="Images/TH_1.16.png"/></center><br/></p><h3 id="Functional_Breakdown_diagram">Functional Breakdown diagram</h3><h4 id="Create_a_new_Functional_Breakdown_diagram">Create a new Functional Breakdown diagram</h4><ul><li>On the "Refine Logical Functions, describe functional Exchanges" expend-bar of the activity explorer, <b>select "Create a new Functional Breakdown diagram".</b></li></ul><p><center><img height="200" width="400" border="0" src="Images/TH_1.19.png"/></center><br/></p><h4 id="Enrich_Functional_Tree">Enrich Functional Tree</h4><p>To refine a Function : <br/></p><ul><li><b>Select the "Logical Function" palette tool to add function to the diagram  </b></li></ul><p><center><img height="400" width="600" border="0" src="Images/TH_1.21.png"/></center><br/></p><ul><li><b>Use the "Contained in" tool to create a refinement of function.</b></li></ul><p><center><img height="400" width="600" border="0" src="Images/TH_1.20.png"/></center><br/></p><p><b>Note:</b> <i>On the IFE System, as shown in the previous picture, the function "Broadcast stored Audio and video" is refined by 2 logical functions: Prepare Broadcasts and Broadcast Audio Video stream. </i></p><h3 id="Logical_Architecture_Diagram_.28LAB.29">Logical Architecture Diagram (LAB)</h3><h4 id="Create_Logical_Architecture_diagram">Create Logical Architecture diagram</h4><ul><li>On the "Allocate Logical Functions to Logical Components" expend-bar of the activity explorer, <b>select "Create a new Logical Architecture diagram".</b></li></ul><p><center><img height="200" width="450" border="0" src="Images/TH_1.22.png"/></center><br/></p><h4 id="Add_Logical_components">Add Logical components</h4><ul><li><b>Select the "Logical Components" tool of the palette</b> and <b>add it to the diagram.</b></li></ul><p><center><img height="400" width="750" border="0" src="Images/TH_1.23.png"/></center><br/></p><p><b>Note:</b> <i>On the IFE System, as shown in the previous picture, logical componenets have been created such as Seat TV Interactions Manager, Seat TV Airline-Specific Interactions Manager or Seat TV Core Interactions Manager. </i></p><h4 id="Manage_Function_Allocation">Manage Function Allocation</h4><ul><li><b>Use the "Manage Function Allocation" Palette tool </b></li><li><b>Select the target component</b>. On the selection wizard, <b>select the Source Function.</b></li></ul><p><center><img height="400" width="750" border="0" src="Images/TH_1.25.png"/></center><br/></p><p><center><img height="400" width="750" border="0" src="Images/TH_1.24.png"/></center><br/></p><p><b>Note:</b> ''On the IFE System, as shown in the previous picture, functions have been allocated to logical componenets such as:</p><ul><li><i>"Display Audio Interruption Screen on Seat TV" to the logical component "Seat TV Airline-Specific Interactions Manager"</i> </li><li><i>"Handle VOD Service Activation and Interruption" to the  logical component "Seat TV Core Interactions Manager". </i></li></ul><h3 id="Class_Diagram_.28CDB.29">Class Diagram (CDB)</h3><h4 id="Create_an_Class_Diagram">Create an Class Diagram</h4><ul><li>On the "Transverse Modeling" expend-bar of the activity explorer, <b>select "Create a new Class diagram".</b></li></ul><p><center><img height="150" width="400" border="0" src="Images/TH_1.26.png"/></center><br/></p><h4 id="Create_Exchange_Items">Create Exchange Items</h4><p>To create an Exchange Item, <b>use the desired Item palette tool</b> and <b>add it to the Diagram.</b> For example, you can create an event, an operation, a flow or a data.</p><p><center><img height="400" width="200" border="0" src="Images/TH_1.27.png"/></center><br/></p><p><center><img height="400" width="750" border="0" src="Images/TH_1.28.png"/></center><br/></p><p><b>Note:</b> <i>On the IFE System, as shown in the previous picture, a class diagram is set up. </i></p><h3 id="Logical_Dataflow_Diagram">Logical Dataflow Diagram</h3><h4 id="Create_Logical_Dataflow_Diagram_.28LDFB.29">Create Logical Dataflow Diagram (LDFB)</h4><ul><li>On the "Refine Logical Functions, describe functional Exchanges" expend-bar of the activity explorer, <b>select "Create a new Functional Dataflow Blank diagram".</b></li></ul><p><center><img height="200" width="400" border="0" src="Images/TH_1.29.png"/></center><br/></p><h4 id="Show_Functions">Show Functions</h4><p>To show functions, <b>use the "Functions" palette tool on the diagram</b> and <b>select the desired function.</b></p><p><center><img height="425" width="800" border="0" src="Images/TH_1.30.png"/></center><br/></p><p><center><img height="450" width="800" border="0" src="Images/TH_1.31.png"/></center><br/></p><h4 id="Add_a_functional_exchange">Add a functional exchange</h4><p>To add a functional exchange: </p><ul><li><b>Use the Functional Exchange palette tool</b> and <b>select the source and target function on the diagram</b></li></ul><p><center><img height="450" width="800" border="0" src="Images/TH_1.36.png"/></center><br/></p><h4 id="Assign_Exchange_Items_to_functional_exchange">Assign Exchange Items to functional exchange</h4><ul><li><b>Select a functional exchange on the diagram</b></li><li><b>On the property view click on Exchange item button</b></li><li><b>On the wizard select the desired exchange item</b></li></ul><p><center><img height="500" width="800" border="0" src="Images/TH_1.33.png"/></center><br/></p><p><b>Note:</b> <i>On the IFE System, as shown in the previous picture, the exchanged Item "Audio-video Stream" is assigned to the functional exchange "Audio-video Stream". </i></p><h3 id="Exchange_Scenario_.28ES.29_Phase_Transition_System_to_Logical">Exchange Scenario (ES) Phase Transition System to Logical</h3><p>To proceed to an Exchange Scenario transition:</p><ul><li>Right click on the scenario in the Project Explorer</li><li>click on "Transitions" and select "System Exchange Scenario to Logical Exchange Scenario Initialization".</li></ul><p><center><img height="500" width="800" border="0" src="Images/TH_1.34.png"/></center><br/></p><p>This transition gives the following result with the exchange scenario "Perform Audio Announcement" creates previously in the System analysis:
-<center><img height="400" width="800" border="0" src="Images/TH_1.35.png"/></center><br/></p><p><b>Note:</b> <i>The sequence messages originally related to the System element have been correctly dispatched between Logical Components.</i></p><h4 id="Add_a_functional_exchange_2">Add a functional exchange</h4><p>To add a functional exchange:</p><ul><li><b>Use the Functional Exchange palette tool</b> and <b>select the source and target function on the diagram</b></li></ul><p><center><img height="400" width="800" border="0" src="Images/TH_1.37.png"/></center><br/></p><h2 id="TRANSITION_FROM_LOGICAL_ARCHITECTURE_TO_PHYSICAL_ARCHITECTURE">TRANSITION FROM LOGICAL ARCHITECTURE TO PHYSICAL ARCHITECTURE</h2><p>On Project Explorer: ,Right click on "Logical Architecture". <br/>
-On the contextual menu, sub-menu "Transitions", select:</p><ul><li>"Actor"</li><li>"Functional transition"</li></ul><p><center><img height="500" width="750" border="0" src="Images/TH_1.40.png"/></center><br/></p><p>To proceed to an Exchange Scenario transition from Logical architecture to Physical architecture:</p><ul><li>Right click on the scenario in the Project Explorer</li><li>click on "Transitions" and select "Logical Exchange Scenario to Physical Exchange Scenario Initialization".</li></ul><p><center><img height="500" width="800" border="0" src="Images/TH_1.41.png"/></center><br/></p><h2 id="PHYSICAL_ARCHITECTURE">PHYSICAL ARCHITECTURE</h2><ul><li><b>Select the Physical Architecture icon</b> of the activity explorer </li></ul><p><center><img height="400" width="600" border="0" src="Images/TH_1.38.png"/></center><br/></p><p><center><img height="400" width="700" border="0" src="Images/TH_1.39.png"/></center><br/></p><h3 id="Physical_Architecture_Diagram_.28PAB.29">Physical Architecture Diagram (PAB)</h3><h4 id="Create_a_Physical_Architecture_diagram">Create a Physical Architecture diagram</h4><ul><li>On the "Allocate Physical Functions to Physical Components" expend-bar of the activity explorer, <b>select "Create a new Physcial Architecture diagram".</b></li></ul><p><center><img height="150" width="450" border="0" src="Images/TH_1.42.png"/></center><br/></p><h4 id="Create_Node_Physical_Components">Create Node Physical Components</h4><ul><li><b>Select the "Node PC" palette tool</b> and <b>add it to the diagram.</b></li></ul><p><center><img height="400" width="700" border="0" src="Images/TH_1.43.png"/></center><br/></p><p><b>Note:</b> <i>On the IFE System, as shown in the previous picture, 5 Physical Nodes have been created to highlight : Private Video Display Unit, PVDU Processor, Video Server Unit, VSU Processor,Ethernet Switches.</i></p><h4 id="Manage_Deployment_of_Behavior_Physical_Components">Manage Deployment of Behavior Physical Components</h4><ul><li><b>Use the "Manage Function allocation" of the palette</b> on the desired node and <b>select the desired Component on the wizard</b>.</li></ul><p><center><img height="400" width="800" border="0" src="Images/TH_1.44.png"/></center><br/></p><p><center><img height="400" width="800" border="0" src="Images/TH_1.45.png"/></center><br/></p><p><b>Note:</b> <i>On the IFE System, as shown in the previous picture:</i></p><ul><li><i>PTV Video Player(LC) and Unit Network Adapter - PVDU(LC) are allocated to PVDU Processor (PC)</i></li><li><i>Streaming Server(LC) and Unit Network Adapter - VSU(LC) are allocated to VSU Processor (PC)</i></li></ul><h4 id="Show_All_Allocated_Functions">Show All Allocated Functions</h4><ul><li><b>Use the "All Allocated Functions" palette tool</b> on the diagram -&gt; All the Allocated functions will automatically appear.</li></ul><p><center><img height="400" width="750" border="0" src="Images/TH_1.46.png"/></center><br/></p><h3 id="Generations">Generations</h3><h4 id="Generate_Components_Exchanges_on_Behaviour_Components">Generate Components Exchanges on Behaviour Components</h4><p>To generate components exchange on behaviour components:</p><ul><li><b>Right click on a behaviour component</b> </li><li><b>Select "Modeling Accelerators" </b></li><li><b>Select "Component Exchange" item of the contextual menu.</b></li></ul><p><center><img height="600" width="700" border="0" src="Images/TH_1.47.png"/></center><br/></p><h4 id="Generate_Physical_Links_on_Node_Physical_Components">Generate Physical Links on Node Physical Components</h4><p>To generate Physical Links on node components:</p><ul><li><b>Right click on a node component </b></li><li><b>Select "Modeling Accelerators" </b></li><li><b>Select "Physical Links" item of the contextual menu.</b></li></ul><p><center><img height="700" width="700" border="0" src="Images/TH_1.48.png"/></center><br/></p><h4 id="Generate_Interfaces_on_Component_Behavior">Generate Interfaces on Component Behavior</h4><p>To generate Interfaces on Behavior Component:</p><ul><li><b>Right click on a behaviour component </b></li><li><b>Select "Modeling Accelerators" </b></li><li><b>Select "Interfaces from allocated functions" item of the contextual menu.</b></li></ul><p><center><img height="600" width="700" border="0" src="Images/TH_1.49.png"/></center><br/></p><h3 id="Interface_Diagrams">Interface Diagrams</h3><h4 id="Create_Blank_Interface_Diagram_.28IDB.29">Create Blank Interface Diagram (IDB)</h4><p>To generate detail interfaces diagram:</p><ul><li><b>Right click on a component </b></li><li><b>Select the "New -&gt; Interfaces diagram blank" item of the contextual menu.</b></li></ul><p><center><img height="500" width="750" border="0" src="Images/TH_1.50.png"/></center><br/></p><h4 id="Insert_existing_Component">Insert existing Component</h4><p>To insert existing components on the diagram:</p><ul><li><b>Use the "Components" palette tool on the diagram</b> and <b>select the desired component on the wizard.</b></li></ul><p><center><img height="450" width="750" border="0" src="Images/TH_1.51.png"/></center><br/>
-<center><img height="450" width="750" border="0" src="Images/TH_1.52.png"/></center><br/></p><h4 id="Insert_Existing_Interfaces">Insert Existing Interfaces</h4><p>To show Interfaces on the diagram: </p><ul><li><b>Use the "Interfaces" palette tool on the diagram</b> and <b>select the desired interface on the wizard.</b></li></ul><p><center><img height="450" width="800" border="0" src="Images/TH_1.53.png"/></center><br/>
-<center><img height="500" width="750" border="0" src="Images/TH_1.54.png"/></center><br/></p><h3 id="Component_Interface_scenario_.28IS.29">Component Interface scenario (IS)</h3><h4 id="Initialize_Interface_Scenario_.28IS.29_from__Exchange_Scenario_.28ES.29_within_the_Logical_Architecture">Initialize Interface Scenario (IS) from  Exchange Scenario (ES) within the Logical Architecture</h4><p>To proceed to ES to IS transition, within the Logical Analysis:</p><ul><li><b>Right click on the "Scenario" item of the Project Explorer</b> </li><li>On the contextual menu, sub-menu "Transition" <b>select "Exchange scenario to Interface Scenario initialization"</b></li></ul><p><center><img height="500" width="750" border="0" src="Images/TH_1.55.png"/></center><br/></p><p>To create an Interfaces Scenario:</p><ul><li><b>Right click on the "scenario (IS)" item of the Project Explorer </b></li><li>On the contextual menu, sub-menu "New Diagram / Table" <b>select " Interfaces Scenario".</b></li></ul><p><center><img height="550" width="700" border="0" src="Images/TH_1.56.png"/></center><br/></p><h4 id="Exchange_Scenario_.28ES.29_Phase_Transition_Logical_to_Physical">Exchange Scenario (ES) Phase Transition Logical to Physical</h4><p>To proceed to ES transition:</p><ul><li><b>Right click on the "Scenario" item of the Project Explorer </b></li><li>On the contextual menu, sub-menu "Transition" <b>select "Logical Architecture ES to Physical Architecture ES Initialization".</b></li></ul><p><center><img height="400" width="800" border="0" src="Images/TH_1.57.png"/></center><br/></p><p>The result is a corresponding Scenario in the Physical Architecture.</p><h4 id="InitialiZe_Component_Exchange_Scenario_.28CES.29">InitialiZe Component Exchange Scenario (CES)</h4><p>To create a diagram on the transited Exchanges Scenario:</p><ul><li><b>Right click on the scenario item of the Project Explorer </b></li><li>On the contextual menu, sub-menu "New Diagram / Table" <b>select " Exchanges Scenario". </b></li></ul><p><center><img height="400" width="700" border="0" src="Images/TH_1.58.png"/></center><br/></p><h4 id="Initialize_Interface_Scenario_.28IS.29_from__Exchange_Scenario_.28ES.29_within_the_Physical_Architecture">Initialize Interface Scenario (IS) from  Exchange Scenario (ES) within the Physical Architecture</h4><p>To proceed to ES to IS transition, within the Physical Architecture:</p><ul><li><b>Right click on the "Scenario" item of the Project Explorer</b> </li><li>On the contextual menu, sub-menu "Transition" <b>select "Exchange scenario to Interface Scenario initialization"</b></li></ul><p><center><img height="400" width="750" border="0" src="Images/TH_1.59.png"/></center><br/></p><p>To create an Interfaces Scenario:</p><ul><li><b>Right click on the "scenario (IS)" item of the Project Explorer </b></li><li>On the contextual menu, sub-menu "New Diagram / Table" <b>select " Interfaces Scenario".</b></li></ul><p><center><img height="400" width="700" border="0" src="Images/TH_1.60.png"/></center><br/></p></body></html>
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>Functional Analysis to Interface Engineering</title>
+		<link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/>
+	</head>
+	<body>
+		<h1 id="Methodology_-_Seamless_Workflow_between_Functional_Analysis_and_Interface_Engineering">Methodology - Seamless Workflow between Functional Analysis and Interface Engineering</h1>
+		<p>
+			<img height="50" width="50" border="0" src="Images/TH_1.5.png"/>
+			<br/>
+		</p>
+		<p>This quick tutorial shows one possible way from System Analysis to Physical Architecture, starting with Functional Analysis and
+			ending with Component Interfaces.
+
+			<b>System Analysis</b>
+		</p>
+		<ul>
+			<li>Creation of System-level Functional Analysis</li>
+			<li>Creation of a Component Exchange Scenario (CES)</li>
+		</ul>
+		<p>
+			<b>Logical Architecture</b>
+		</p>
+		<ul>
+			<li>Transition to Logical Architecture</li>
+			<li>Enrichment of the Functional Tree</li>
+			<li>Allocation of Functions to Components</li>
+			<li>Allocation of Exchange Items to Functional Exchanges</li>
+			<li>Transition of CES from System Analysis</li>
+			<li>Enrichment of Logical CES</li>
+		</ul>
+		<p>
+			<b>Physical Architecture</b>
+		</p>
+		<ul>
+			<li>Transition from Logical Architecture</li>
+			<li>Creation of a Physical Architecture diagram</li>
+			<li>Generation of Component Exchanges, Physical Links, Interfaces</li>
+			<li>Transition of CES from Logical Architecture</li>
+			<li>Initialization of a Component Interface Scenario (CIS) from the CES</li>
+		</ul>
+		<h2 id="SYSTEM_ANALYSIS">SYSTEM ANALYSIS</h2>
+		<p>Once, Capella is open for the first step of this project:</p>
+		<ul>
+			<li>
+				<b>Select the System Analysis icon</b> of the activity explorer 
+			</li>
+		</ul>
+		<p><center>
+			<img height="400" width="550" border="0" src="Images/TH_1.1.png"/></center>
+			<br/>
+		</p>
+		<p><center>
+			<img height="450" width="550" border="0" src="Images/TH_1.2.png"/></center>
+			<br/>
+		</p>
+		<h3 id="System_Architecture_diagram_.28SAB.29">System Architecture diagram (SAB)</h3>
+		<ul>
+			<li>
+				<b>Create a new System Architecture diagram.</b>
+			</li>
+			<li>On the "Allocated System Function to System and Acors" expendbar of the activity explorer, 
+				<b>select "Create a new System Architecture diagram".</b>
+			</li>
+		</ul>
+		<p><center>
+			<img height="175" width="450" border="0" src="Images/TH_1.3.png"/></center>
+			<br/>
+		</p>
+		<h4 id="Create_Actors">Create Actors</h4>
+		<ul>
+			<li>
+				<b>Select the "Actor" palette tool</b> to add some Actors.
+			</li>
+		</ul>
+		<p><center>
+			<img height="350" width="750" border="0" src="Images/TH_1.4.png"/></center>
+			<br/>
+		</p>
+		<p>
+			<b>Note:</b> 
+			<i>On the IFE System, actors have been created and 2 are visible on the previous picture: Aircaft and Passenger</i>
+		</p>
+		<h4 id="Allocate_Functions_to_the_Actors_and_System">Allocate Functions to the Actors and System</h4>
+		<ul>
+			<li>
+				<b>Select the "System Function" of the palette</b> and 
+				<b>click on Actors or System</b>.
+			</li>
+		</ul>
+		<p><center>
+			<img height="300" width="750" border="0" src="Images/TH_1.6.png"/></center>
+			<br/>
+		</p>
+		<p>
+			<b>Note:</b> 
+			<i>On the IFE System, functions have been allocated to actors such as:</i>
+		</p>
+		<ul>
+			<li>
+				<i>Play sound in cabin to Aircraft </i>
+			</li>
+			<li>
+				<i>Manage video and audio diffusion to IFE System </i>
+			</li>
+			<li>
+				<i>Listen to audio Announcement to Passenger</i>
+			</li>
+		</ul>
+		<h3 id="Component_Exchange_Scenario_.28CES.29">Component Exchange Scenario (CES)</h3>
+		<h4 id="Create_a_new_Component_Exchange_Scenario">Create a new Component Exchange Scenario</h4>
+		<ul>
+			<li>On the "Allocated System Function to System and Actors" expend-bar of the activity explorer, 
+				<b>select "Create a new Exchange Scenario".</b>
+			</li>
+		</ul>
+		<p><center>
+			<img height="150" width="400" border="0" src="Images/TH_1.7.png"/></center>
+			<br/>
+		</p>
+		<h4 id="Add_actors_to_the_diagram">Add actors to the diagram</h4>
+		<ul>
+			<li>
+				<b>Select the "Actors" of the palette</b>(1) and 
+				<b>click on diagram</b>.
+			</li>
+			<li>
+				<b>Select the required actors</b>(2) and 
+				<b>click on OK</b>(3).
+			</li>
+		</ul>
+		<p><center>
+			<img height="500" width="800" border="0" src="Images/TH_1.8.png"/></center>
+			<br/>
+		</p>
+		<ul>
+			<li>
+				<b>Select the "Functional Exchange" tool</b> of the palette, 
+				<b>select the source actor and the target actor.</b>
+			</li>
+		</ul>
+		<p><center>
+			<img height="500" width="700" border="0" src="Images/TH_1.9.png"/></center>
+			<br/>
+		</p>
+		<ul>
+			<li>
+				<b>Click on the Source function selector button</b> and 
+				<b>select the desired function.</b>
+			</li>
+		</ul>
+		<p><center>
+			<img height="600" width="600" border="0" src="Images/TH_1.11.png"/></center>
+			<br/>
+		</p>
+		<ul>
+			<li>
+				<b>Click on the Target Function selector button</b> and 
+				<b>select the desired function.</b>
+			</li>
+		</ul>
+		<p><center>
+			<img height="600" width="600" border="0" src="Images/TH_1.12.png"/></center>
+			<br/>
+		</p>
+		<p>
+			<b>Note:</b> 
+			<i>When an exchange is already exists, the dialog allows to select it.</i> 
+			<br/>
+			<br/>
+
+			<b>Note:</b> 
+			<i>On the IFE System, as shown in the following picture, the functional exchange "Audio Stream" has: </i>
+		</p>
+		<ul>
+			<li>
+				<i>"Send Audio announcement" as source function</i>
+				<br/>
+			</li>
+			<li>
+				<i>" Broadcast Audio Video Streams" as target function </i>
+			</li>
+		</ul>
+		<p><center>
+			<img height="500" width="700" border="0" src="Images/TH_1.13.png"/></center>
+			<br/>
+		</p>
+		<p>
+			<img height="50" width="50" border="0" src="Images/TH_1.5.png"/>
+			<br/>
+
+			<b>Note:</b> 
+			<i>The System Architecture diagram is updated.</i>
+			<br/>
+
+			<b>Note:</b> 
+			<i>Once a Functional Exchange has been put on the Scenario, it is not possible anymore to put Component Exchanges.</i>
+		</p>
+		<p><center>
+			<img height="492" width="1016" border="0" src="Images/TH_1.14.png"/></center>
+			<br/>
+		</p>
+		<h2 id="TRANSITIONS_FROM_SYSTEM_ANALYSIS_TO_LOGICAL_ARCHITECTURE">TRANSITIONS FROM SYSTEM ANALYSIS TO LOGICAL ARCHITECTURE</h2>
+		<p>On Project Explorer: ,Right click on "System Analysis". 
+			<br/>
+			On the contextual menu, sub-menu "Transitions", select:
+		</p>
+		<ul>
+			<li>"Actor"</li>
+			<li>"Functional transition"</li>
+		</ul>
+		<p><center>
+			<img height="500" width="700" border="0" src="Images/TH_1.17.png"/></center>
+			<br/>
+<center>
+			<img height="500" width="700" border="0" src="Images/TH_1.18.png"/></center>
+			<br/>
+		</p>
+		<h2 id="LOGICAL_ARCHITECTURE">LOGICAL ARCHITECTURE</h2>
+		<ul>
+			<li>
+				<b>Select the Logical Architecture icon</b> of the activity explorer 
+			</li>
+		</ul>
+		<p><center>
+			<img height="400" width="550" border="0" src="Images/TH_1.15.png"/></center>
+			<br/>
+		</p>
+		<p><center>
+			<img height="450" width="550" border="0" src="Images/TH_1.16.png"/></center>
+			<br/>
+		</p>
+		<h3 id="Functional_Breakdown_diagram">Functional Breakdown diagram</h3>
+		<h4 id="Create_a_new_Functional_Breakdown_diagram">Create a new Functional Breakdown diagram</h4>
+		<ul>
+			<li>On the "Refine Logical Functions, describe functional Exchanges" expend-bar of the activity explorer, 
+				<b>select "Create a new Functional Breakdown diagram".</b>
+			</li>
+		</ul>
+		<p><center>
+			<img height="200" width="400" border="0" src="Images/TH_1.19.png"/></center>
+			<br/>
+		</p>
+		<h4 id="Enrich_Functional_Tree">Enrich Functional Tree</h4>
+		<p>To refine a Function : 
+			<br/>
+		</p>
+		<ul>
+			<li>
+				<b>Select the "Logical Function" palette tool to add function to the diagram  </b>
+			</li>
+		</ul>
+		<p><center>
+			<img height="400" width="600" border="0" src="Images/TH_1.21.png"/></center>
+			<br/>
+		</p>
+		<ul>
+			<li>
+				<b>Use the "Contained in" tool to create a refinement of function.</b>
+			</li>
+		</ul>
+		<p><center>
+			<img height="400" width="600" border="0" src="Images/TH_1.20.png"/></center>
+			<br/>
+		</p>
+		<p>
+			<b>Note:</b> 
+			<i>On the IFE System, as shown in the previous picture, the function "Broadcast stored Audio and video" is refined by 2 logical functions: Prepare Broadcasts and Broadcast Audio Video stream. </i>
+		</p>
+		<h3 id="Logical_Architecture_Diagram_.28LAB.29">Logical Architecture Diagram (LAB)</h3>
+		<h4 id="Create_Logical_Architecture_diagram">Create Logical Architecture diagram</h4>
+		<ul>
+			<li>On the "Allocate Logical Functions to Logical Components" expend-bar of the activity explorer, 
+				<b>select "Create a new Logical Architecture diagram".</b>
+			</li>
+		</ul>
+		<p><center>
+			<img height="200" width="450" border="0" src="Images/TH_1.22.png"/></center>
+			<br/>
+		</p>
+		<h4 id="Add_Logical_components">Add Logical components</h4>
+		<ul>
+			<li>
+				<b>Select the "Logical Components" tool of the palette</b> and 
+				<b>add it to the diagram.</b>
+			</li>
+		</ul>
+		<p><center>
+			<img height="400" width="750" border="0" src="Images/TH_1.23.png"/></center>
+			<br/>
+		</p>
+		<p>
+			<b>Note:</b> 
+			<i>On the IFE System, as shown in the previous picture, logical componenets have been created such as Seat TV Interactions Manager, Seat TV Airline-Specific Interactions Manager or Seat TV Core Interactions Manager. </i>
+		</p>
+		<h4 id="Manage_Function_Allocation">Manage Function Allocation</h4>
+		<ul>
+			<li>
+				<b>Use the "Manage Function Allocation" Palette tool </b>
+			</li>
+			<li>
+				<b>Select the target component</b>. On the selection wizard, 
+				<b>select the Source Function.</b>
+			</li>
+		</ul>
+		<p><center>
+			<img height="400" width="750" border="0" src="Images/TH_1.25.png"/></center>
+			<br/>
+		</p>
+		<p><center>
+			<img height="400" width="750" border="0" src="Images/TH_1.24.png"/></center>
+			<br/>
+		</p>
+		<p>
+			<b>Note:</b> ''On the IFE System, as shown in the previous picture, functions have been allocated to logical componenets such as:
+		</p>
+		<ul>
+			<li>
+				<i>"Display Audio Interruption Screen on Seat TV" to the logical component "Seat TV Airline-Specific Interactions Manager"</i> 
+			</li>
+			<li>
+				<i>"Handle VOD Service Activation and Interruption" to the  logical component "Seat TV Core Interactions Manager". </i>
+			</li>
+		</ul>
+		<h3 id="Class_Diagram_.28CDB.29">Class Diagram (CDB)</h3>
+		<h4 id="Create_an_Class_Diagram">Create an Class Diagram</h4>
+		<ul>
+			<li>On the "Transverse Modeling" expend-bar of the activity explorer, 
+				<b>select "Create a new Class diagram".</b>
+			</li>
+		</ul>
+		<p><center>
+			<img height="150" width="400" border="0" src="Images/TH_1.26.png"/></center>
+			<br/>
+		</p>
+		<h4 id="Create_Exchange_Items">Create Exchange Items</h4>
+		<p>To create an Exchange Item, 
+			<b>use the desired Item palette tool</b> and 
+			<b>add it to the Diagram.</b> For example, you can create an event, an operation, a flow or a data.
+		</p>
+		<p><center>
+			<img height="400" width="200" border="0" src="Images/TH_1.27.png"/></center>
+			<br/>
+		</p>
+		<p><center>
+			<img height="400" width="750" border="0" src="Images/TH_1.28.png"/></center>
+			<br/>
+		</p>
+		<p>
+			<b>Note:</b> 
+			<i>On the IFE System, as shown in the previous picture, a class diagram is set up. </i>
+		</p>
+		<h3 id="Logical_Dataflow_Diagram">Logical Dataflow Diagram</h3>
+		<h4 id="Create_Logical_Dataflow_Diagram_.28LDFB.29">Create Logical Dataflow Diagram (LDFB)</h4>
+		<ul>
+			<li>On the "Refine Logical Functions, describe functional Exchanges" expend-bar of the activity explorer, 
+				<b>select "Create a new Functional Dataflow Blank diagram".</b>
+			</li>
+		</ul>
+		<p><center>
+			<img height="200" width="400" border="0" src="Images/TH_1.29.png"/></center>
+			<br/>
+		</p>
+		<h4 id="Show_Functions">Show Functions</h4>
+		<p>To show functions, 
+			<b>use the "Functions" palette tool on the diagram</b> and 
+			<b>select the desired function.</b>
+		</p>
+		<p><center>
+			<img height="425" width="800" border="0" src="Images/TH_1.30.png"/></center>
+			<br/>
+		</p>
+		<p><center>
+			<img height="450" width="800" border="0" src="Images/TH_1.31.png"/></center>
+			<br/>
+		</p>
+		<h4 id="Add_a_functional_exchange">Add a functional exchange</h4>
+		<p>To add a functional exchange: </p>
+		<ul>
+			<li>
+				<b>Use the Functional Exchange palette tool</b> and 
+				<b>select the source and target function on the diagram</b>
+			</li>
+		</ul>
+		<p><center>
+			<img height="450" width="800" border="0" src="Images/TH_1.36.png"/></center>
+			<br/>
+		</p>
+		<h4 id="Assign_Exchange_Items_to_functional_exchange">Assign Exchange Items to functional exchange</h4>
+		<ul>
+			<li>
+				<b>Select a functional exchange on the diagram</b>
+			</li>
+			<li>
+				<b>On the property view click on Exchange item button</b>
+			</li>
+			<li>
+				<b>On the wizard select the desired exchange item</b>
+			</li>
+		</ul>
+		<p><center>
+			<img height="500" width="800" border="0" src="Images/TH_1.33.png"/></center>
+			<br/>
+		</p>
+		<p>
+			<b>Note:</b> 
+			<i>On the IFE System, as shown in the previous picture, the exchanged Item "Audio-video Stream" is assigned to the functional exchange "Audio-video Stream". </i>
+		</p>
+		<h3 id="Exchange_Scenario_.28ES.29_Phase_Transition_System_to_Logical">Exchange Scenario (ES) Phase Transition System to Logical</h3>
+		<p>To proceed to an Exchange Scenario transition:</p>
+		<ul>
+			<li>Right click on the scenario in the Project Explorer</li>
+			<li>click on "Transitions" and select "System Exchange Scenario to Logical Exchange Scenario Initialization".</li>
+		</ul>
+		<p><center>
+			<img height="500" width="800" border="0" src="Images/TH_1.34.png"/></center>
+			<br/>
+		</p>
+		<p>This transition gives the following result with the exchange scenario "Perform Audio Announcement" creates previously in the System analysis:
+<center>
+			<img height="400" width="800" border="0" src="Images/TH_1.35.png"/></center>
+			<br/>
+		</p>
+		<p>
+			<b>Note:</b> 
+			<i>The sequence messages originally related to the System element have been correctly dispatched between Logical Components.</i>
+		</p>
+		<h4 id="Add_a_functional_exchange_2">Add a functional exchange</h4>
+		<p>To add a functional exchange:</p>
+		<ul>
+			<li>
+				<b>Use the Functional Exchange palette tool</b> and 
+				<b>select the source and target function on the diagram</b>
+			</li>
+		</ul>
+		<p><center>
+			<img height="400" width="800" border="0" src="Images/TH_1.37.png"/></center>
+			<br/>
+		</p>
+		<h2 id="TRANSITION_FROM_LOGICAL_ARCHITECTURE_TO_PHYSICAL_ARCHITECTURE">TRANSITION FROM LOGICAL ARCHITECTURE TO PHYSICAL ARCHITECTURE</h2>
+		<p>On Project Explorer: ,Right click on "Logical Architecture". 
+			<br/>
+			On the contextual menu, sub-menu "Transitions", select:
+		</p>
+		<ul>
+			<li>"Actor"</li>
+			<li>"Functional transition"</li>
+		</ul>
+		<p><center>
+			<img height="500" width="750" border="0" src="Images/TH_1.40.png"/></center>
+			<br/>
+		</p>
+		<p>To proceed to an Exchange Scenario transition from Logical architecture to Physical architecture:</p>
+		<ul>
+			<li>Right click on the scenario in the Project Explorer</li>
+			<li>click on "Transitions" and select "Logical Exchange Scenario to Physical Exchange Scenario Initialization".</li>
+		</ul>
+		<p><center>
+			<img height="500" width="800" border="0" src="Images/TH_1.41.png"/></center>
+			<br/>
+		</p>
+		<h2 id="PHYSICAL_ARCHITECTURE">PHYSICAL ARCHITECTURE</h2>
+		<ul>
+			<li>
+				<b>Select the Physical Architecture icon</b> of the activity explorer 
+			</li>
+		</ul>
+		<p><center>
+			<img height="400" width="600" border="0" src="Images/TH_1.38.png"/></center>
+			<br/>
+		</p>
+		<p><center>
+			<img height="400" width="700" border="0" src="Images/TH_1.39.png"/></center>
+			<br/>
+		</p>
+		<h3 id="Physical_Architecture_Diagram_.28PAB.29">Physical Architecture Diagram (PAB)</h3>
+		<h4 id="Create_a_Physical_Architecture_diagram">Create a Physical Architecture diagram</h4>
+		<ul>
+			<li>On the "Allocate Physical Functions to Physical Components" expend-bar of the activity explorer, 
+				<b>select "Create a new Physcial Architecture diagram".</b>
+			</li>
+		</ul>
+		<p><center>
+			<img height="150" width="450" border="0" src="Images/TH_1.42.png"/></center>
+			<br/>
+		</p>
+		<h4 id="Create_Node_Physical_Components">Create Node Physical Components</h4>
+		<ul>
+			<li>
+				<b>Select the "Node PC" palette tool</b> and 
+				<b>add it to the diagram.</b>
+			</li>
+		</ul>
+		<p><center>
+			<img height="400" width="700" border="0" src="Images/TH_1.43.png"/></center>
+			<br/>
+		</p>
+		<p>
+			<b>Note:</b> 
+			<i>On the IFE System, as shown in the previous picture, 5 Physical Nodes have been created to highlight : Private Video Display Unit, PVDU Processor, Video Server Unit, VSU Processor,Ethernet Switches.</i>
+		</p>
+		<h4 id="Manage_Deployment_of_Behavior_Physical_Components">Manage Deployment of Behavior Physical Components</h4>
+		<ul>
+			<li>
+				<b>Use the "Manage Function allocation" of the palette</b> on the desired node and 
+				<b>select the desired Component on the wizard</b>.
+			</li>
+		</ul>
+		<p><center>
+			<img height="400" width="800" border="0" src="Images/TH_1.44.png"/></center>
+			<br/>
+		</p>
+		<p><center>
+			<img height="400" width="800" border="0" src="Images/TH_1.45.png"/></center>
+			<br/>
+		</p>
+		<p>
+			<b>Note:</b> 
+			<i>On the IFE System, as shown in the previous picture:</i>
+		</p>
+		<ul>
+			<li>
+				<i>PTV Video Player(LC) and Unit Network Adapter - PVDU(LC) are allocated to PVDU Processor (PC)</i>
+			</li>
+			<li>
+				<i>Streaming Server(LC) and Unit Network Adapter - VSU(LC) are allocated to VSU Processor (PC)</i>
+			</li>
+		</ul>
+		<h4 id="Show_All_Allocated_Functions">Show All Allocated Functions</h4>
+		<ul>
+			<li>
+				<b>Use the "All Allocated Functions" palette tool</b> on the diagram -&gt; All the Allocated functions will automatically appear.
+			</li>
+		</ul>
+		<p><center>
+			<img height="400" width="750" border="0" src="Images/TH_1.46.png"/></center>
+			<br/>
+		</p>
+		<h3 id="Generations">Generations</h3>
+		<h4 id="Generate_Components_Exchanges_on_Behaviour_Components">Generate Components Exchanges on Behaviour Components</h4>
+		<p>To generate components exchange on behaviour components:</p>
+		<ul>
+			<li>
+				<b>Right click on a behaviour component</b> 
+			</li>
+			<li>
+				<b>Select "Modeling Accelerators" </b>
+			</li>
+			<li>
+				<b>Select "Component Exchange" item of the contextual menu.</b>
+			</li>
+		</ul>
+		<p><center>
+			<img height="600" width="700" border="0" src="Images/TH_1.47.png"/></center>
+			<br/>
+		</p>
+		<h4 id="Generate_Physical_Links_on_Node_Physical_Components">Generate Physical Links on Node Physical Components</h4>
+		<p>To generate Physical Links on node components:</p>
+		<ul>
+			<li>
+				<b>Right click on a node component </b>
+			</li>
+			<li>
+				<b>Select "Modeling Accelerators" </b>
+			</li>
+			<li>
+				<b>Select "Physical Links" item of the contextual menu.</b>
+			</li>
+		</ul>
+		<p><center>
+			<img height="700" width="700" border="0" src="Images/TH_1.48.png"/></center>
+			<br/>
+		</p>
+		<h4 id="Generate_Interfaces_on_Component_Behavior">Generate Interfaces on Component Behavior</h4>
+		<p>To generate Interfaces on Behavior Component:</p>
+		<ul>
+			<li>
+				<b>Right click on a behaviour component </b>
+			</li>
+			<li>
+				<b>Select "Modeling Accelerators" </b>
+			</li>
+			<li>
+				<b>Select "Interfaces from allocated functions" item of the contextual menu.</b>
+			</li>
+		</ul>
+		<p><center>
+			<img height="600" width="700" border="0" src="Images/TH_1.49.png"/></center>
+			<br/>
+		</p>
+		<h3 id="Interface_Diagrams">Interface Diagrams</h3>
+		<h4 id="Create_Blank_Interface_Diagram_.28IDB.29">Create Blank Interface Diagram (IDB)</h4>
+		<p>To generate detail interfaces diagram:</p>
+		<ul>
+			<li>
+				<b>Right click on a component </b>
+			</li>
+			<li>
+				<b>Select the "New -&gt; Interfaces diagram blank" item of the contextual menu.</b>
+			</li>
+		</ul>
+		<p><center>
+			<img height="500" width="750" border="0" src="Images/TH_1.50.png"/></center>
+			<br/>
+		</p>
+		<h4 id="Insert_existing_Component">Insert existing Component</h4>
+		<p>To insert existing components on the diagram:</p>
+		<ul>
+			<li>
+				<b>Use the "Components" palette tool on the diagram</b> and 
+				<b>select the desired component on the wizard.</b>
+			</li>
+		</ul>
+		<p><center>
+			<img height="450" width="750" border="0" src="Images/TH_1.51.png"/></center>
+			<br/>
+<center>
+			<img height="450" width="750" border="0" src="Images/TH_1.52.png"/></center>
+			<br/>
+		</p>
+		<h4 id="Insert_Existing_Interfaces">Insert Existing Interfaces</h4>
+		<p>To show Interfaces on the diagram: </p>
+		<ul>
+			<li>
+				<b>Use the "Interfaces" palette tool on the diagram</b> and 
+				<b>select the desired interface on the wizard.</b>
+			</li>
+		</ul>
+		<p><center>
+			<img height="450" width="800" border="0" src="Images/TH_1.53.png"/></center>
+			<br/>
+<center>
+			<img height="500" width="750" border="0" src="Images/TH_1.54.png"/></center>
+			<br/>
+		</p>
+		<h3 id="Component_Interface_scenario_.28IS.29">Component Interface scenario (IS)</h3>
+		<h4 id="Initialize_Interface_Scenario_.28IS.29_from__Exchange_Scenario_.28ES.29_within_the_Logical_Architecture">Initialize Interface Scenario (IS) from  Exchange Scenario (ES) within the Logical Architecture</h4>
+		<p>To proceed to ES to IS transition, within the Logical Analysis:</p>
+		<ul>
+			<li>
+				<b>Right click on the "Scenario" item of the Project Explorer</b> 
+			</li>
+			<li>On the contextual menu, sub-menu "Transition" 
+				<b>select "Exchange scenario to Interface Scenario initialization"</b>
+			</li>
+		</ul>
+		<p><center>
+			<img height="500" width="750" border="0" src="Images/TH_1.55.png"/></center>
+			<br/>
+		</p>
+		<p>To create an Interfaces Scenario:</p>
+		<ul>
+			<li>
+				<b>Right click on the "scenario (IS)" item of the Project Explorer </b>
+			</li>
+			<li>On the contextual menu, sub-menu "New Diagram / Table" 
+				<b>select " Interfaces Scenario".</b>
+			</li>
+		</ul>
+		<p><center>
+			<img height="550" width="700" border="0" src="Images/TH_1.56.png"/></center>
+			<br/>
+		</p>
+		<h4 id="Exchange_Scenario_.28ES.29_Phase_Transition_Logical_to_Physical">Exchange Scenario (ES) Phase Transition Logical to Physical</h4>
+		<p>To proceed to ES transition:</p>
+		<ul>
+			<li>
+				<b>Right click on the "Scenario" item of the Project Explorer </b>
+			</li>
+			<li>On the contextual menu, sub-menu "Transition" 
+				<b>select "Logical Architecture ES to Physical Architecture ES Initialization".</b>
+			</li>
+		</ul>
+		<p><center>
+			<img height="400" width="800" border="0" src="Images/TH_1.57.png"/></center>
+			<br/>
+		</p>
+		<p>The result is a corresponding Scenario in the Physical Architecture.</p>
+		<h4 id="InitialiZe_Component_Exchange_Scenario_.28CES.29">InitialiZe Component Exchange Scenario (CES)</h4>
+		<p>To create a diagram on the transited Exchanges Scenario:</p>
+		<ul>
+			<li>
+				<b>Right click on the scenario item of the Project Explorer </b>
+			</li>
+			<li>On the contextual menu, sub-menu "New Diagram / Table" 
+				<b>select " Exchanges Scenario". </b>
+			</li>
+		</ul>
+		<p><center>
+			<img height="400" width="700" border="0" src="Images/TH_1.58.png"/></center>
+			<br/>
+		</p>
+		<h4 id="Initialize_Interface_Scenario_.28IS.29_from__Exchange_Scenario_.28ES.29_within_the_Physical_Architecture">Initialize Interface Scenario (IS) from  Exchange Scenario (ES) within the Physical Architecture</h4>
+		<p>To proceed to ES to IS transition, within the Physical Architecture:</p>
+		<ul>
+			<li>
+				<b>Right click on the "Scenario" item of the Project Explorer</b> 
+			</li>
+			<li>On the contextual menu, sub-menu "Transition" 
+				<b>select "Exchange scenario to Interface Scenario initialization"</b>
+			</li>
+		</ul>
+		<p><center>
+			<img height="400" width="750" border="0" src="Images/TH_1.59.png"/></center>
+			<br/>
+		</p>
+		<p>To create an Interfaces Scenario:</p>
+		<ul>
+			<li>
+				<b>Right click on the "scenario (IS)" item of the Project Explorer </b>
+			</li>
+			<li>On the contextual menu, sub-menu "New Diagram / Table" 
+				<b>select " Interfaces Scenario".</b>
+			</li>
+		</ul>
+		<p><center>
+			<img height="400" width="700" border="0" src="Images/TH_1.60.png"/></center>
+			<br/>
+		</p>
+	</body>
+</html>

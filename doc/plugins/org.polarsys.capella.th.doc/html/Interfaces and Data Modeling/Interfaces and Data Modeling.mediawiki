@@ -1,4 +1,4 @@
-ÔªøÔªø
+?
 =Introduction=
 ==Why Data Modeling?==
 
@@ -6,7 +6,7 @@
 
 A significant part of system engineering consists in ensuring proper definition and coherency between data & information inside the system, and those exchanged with external actors (including interface & I/O management).
 
-In order to describe un-ambiguously what is exchanged between functions, activities, components, and external actors, a specific formalization of data, information, material flow‚Ä¶ used in the system is usually performed.
+In order to describe un-ambiguously what is exchanged between functions, activities, components, and external actors, a specific formalization of data, information, material flowÖ used in the system is usually performed.
 
 
 
@@ -17,7 +17,7 @@ Beyond this description need, one important engineering task consists in avoidin
 Rationalizing and mastering data definition and use is a major stake of engineering;
 
 * to structure them in an intelligible manner, reducing complexity of their definition and use,
-* to bring out a semantics coherency, independently from their use ‚Äì or common to all their uses,
+* to bring out a semantics coherency, independently from their use ñ or common to all their uses,
 * to avoid ambiguity, redundancy, incoherency in their different uses.
 
 
@@ -32,11 +32,11 @@ The main benefits derived from this improved data definition are:
 
 
 
-An efficient means to ensure these properties is to formalize a ‚Äòdata model‚Äô (also known as ‚Äòinformation model‚Äô in information processing dominant systems), describing the kind of data to be used by the system; at least, for each kind of data:
+An efficient means to ensure these properties is to formalize a ëdata modelí (also known as ëinformation modelí in information processing dominant systems), describing the kind of data to be used by the system; at least, for each kind of data:
 
 * data name and semantics,
-* their definition, contents and properties (unit, value domain‚Ä¶),
-* their relationships with other data (‚Äòis composed of‚Äô, ‚Äòis kind of‚Äô, ‚Äòuses‚Äô, semantic reference ‚Ä¶)
+* their definition, contents and properties (unit, value domainÖ),
+* their relationships with other data (ëis composed ofí, ëis kind ofí, ëusesí, semantic reference Ö)
 
 
 
@@ -142,7 +142,7 @@ Let us create a first Numeric Type of Kind Integer called Mileage, for our car d
 
 ====PhysicalQuantity====
 
-Physical Quantity is a specific kind of Numeric Type. It represents a physical ‚Äúdimension‚Äù and is associated to Unit (meter, gram, volt, etc.).
+Physical Quantity is a specific kind of Numeric Type. It represents a physical ìdimensionî and is associated to Unit (meter, gram, volt, etc.).
 
 =====Unit=====
 
@@ -166,7 +166,7 @@ The Mileage of a car is more precisely expressed in terms of kilometers or miles
 
 
 
-Speed can also be a Physical Quantity, with another Unit. We could even define two different Speed types, with different units‚Ä¶
+Speed can also be a Physical Quantity, with another Unit. We could even define two different Speed types, with different unitsÖ
 
 
 
@@ -210,7 +210,7 @@ A String Type is a kind of simple data type, representing a sequence of characte
 
 
 
-In our example, the owner of the car could be a person, with a first name and a last name. The first name and the last name are of kind String Type. Hence we define a specific String Type named ‚ÄúName‚Äù.
+In our example, the owner of the car could be a person, with a first name and a last name. The first name and the last name are of kind String Type. Hence we define a specific String Type named ìNameî.
 
 
 
@@ -252,7 +252,7 @@ In our example, the owner of the car could be a person, with a first name and a 
 
 ===Complex Type===
 
-In Capella , simple types cannot own [ Properties]. So if we need structured data types, we have to create Classes, but then we have to specify that these classes are ‚Äú[ primitive]‚Äù. These primitive classes play the role of complex types.
+In Capella , simple types cannot own [ Properties]. So if we need structured data types, we have to create Classes, but then we have to specify that these classes are ì[ primitive]î. These primitive classes play the role of complex types.
 
 <center>[[image:Images\image016.png]]</center>
 
@@ -264,7 +264,7 @@ Primitive Classes can be used to type other Class Properties, but cannot be the 
 
 
 
-Let us give an example. If we need a Date type containing three properties like year, month, and day, we have to create a ‚Äúprimitive‚Äù class. 
+Let us give an example. If we need a Date type containing three properties like year, month, and day, we have to create a ìprimitiveî class. 
 
 
 
@@ -284,7 +284,7 @@ A simple solution consists in creating three properties with the Integer type. W
 
 
 
-Two instances of the Date Class with the same property values cannot be distinguished&nbsp;; A date does not have any intrinsic identity, contrary to a car or a person, it is a ¬´&nbsp;primitive&nbsp;¬ª class or complex type.
+Two instances of the Date Class with the same property values cannot be distinguished&nbsp;; A date does not have any intrinsic identity, contrary to a car or a person, it is a ´&nbsp;primitive&nbsp;ª class or complex type.
 
 
 
@@ -308,7 +308,7 @@ Classes have properties, typed by other Classes, [ Unions], [ Collections], data
 
 
 
-Classes are the Capella declination of the UML concept of ‚ÄúClass‚Äù. So, many possibilities given by the UML Class Diagram are available here: classes can be associated and generalized, etc.
+Classes are the Capella declination of the UML concept of ìClassî. So, many possibilities given by the UML Class Diagram are available here: classes can be associated and generalized, etc.
 
 ====Class Editor====
 
@@ -442,7 +442,7 @@ For instance, assuming there are no homonyms, we could say that both properties 
 
 
 
-Key properties are noted with a ‚Äú&‚Äù prefix.
+Key properties are noted with a ì&î prefix.
 
 
 
@@ -450,7 +450,7 @@ Note that a key is said to be composite when it is made of several parts or a un
 
 
 
-Let us give a simple example of an association role being part of a key: a Ground Antenna is both identified by its own antenna number and the Ground Station it is related to (Ground Antennas are numbered by: Ground Antenna 1, 2 3 ‚Ä¶ of Ground Station STA1).
+Let us give a simple example of an association role being part of a key: a Ground Antenna is both identified by its own antenna number and the Ground Station it is related to (Ground Antennas are numbered by: Ground Antenna 1, 2 3 Ö of Ground Station STA1).
 
 
 
@@ -462,11 +462,11 @@ Let us give a simple example of an association role being part of a key: a Groun
 
 By default, each instance of a Class will bear exactly one value for each Property of the Class: Min. Card = Max. Card = 1.
 
-We can specify that a property is optional, by setting its Min. Card to ‚Äú0‚Äù instead of ‚Äú1‚Äù. We can also specify that a property may have several values by setting the Max. Card to more than 1.
+We can specify that a property is optional, by setting its Min. Card to ì0î instead of ì1î. We can also specify that a property may have several values by setting the Max. Card to more than 1.
 
 
 
-In France, for instance, when a child is born and declared, the parents must give him/her at least one first name, but there is no official number limit. The order of declaration is important, and the first one is the official first name. Let us also specify an optional middle name ‚Ä¶
+In France, for instance, when a child is born and declared, the parents must give him/her at least one first name, but there is no official number limit. The order of declaration is important, and the first one is the official first name. Let us also specify an optional middle name Ö
 
 <center>[[image:Images\image026.png]]</center>
 
@@ -474,7 +474,7 @@ In France, for instance, when a child is born and declared, the parents must giv
 
 The cardinality bounds are typically shown in the format: 
 
-&lt;lower-bound&gt; ‚Äò..‚Äô &lt;upper-bound&gt;
+&lt;lower-bound&gt; ë..í &lt;upper-bound&gt;
 
 where &lt;lower-bound&gt; is an integer and &lt;upper-bound&gt; is an unlimited natural number. The star character (*) is used as part of a cardinality specification to represent the unlimited (or infinite) upper bound.
 
@@ -593,7 +593,7 @@ The following table synthetizes the available features of a property according t
 |}
 
 
-These features, when specified for a property, overwrite those, if any, defined for the property‚Äôs type.
+These features, when specified for a property, overwrite those, if any, defined for the propertyís type.
 
 As a good practice, defining these features in types should be preferred to defining them in properties. When features are defined in types the model is clearer. A drawback of this practice is that it leads to defining a larger number of types.
 
@@ -611,7 +611,7 @@ Example: Numeric Type 1 redefines to 9 the default value of Numeric Type 2 (45).
 
 =====Null Value=====
 
-If the null value is defined for a type, wherever a value of this type is expected, the null value shall be provided to actually specify ‚Äúno value‚Äù. The null value of a type is the concrete (physical) value to specify ‚Äúno value‚Äù from a logical point of view.
+If the null value is defined for a type, wherever a value of this type is expected, the null value shall be provided to actually specify ìno valueî. The null value of a type is the concrete (physical) value to specify ìno valueî from a logical point of view.
 
 
 
@@ -661,7 +661,7 @@ Abstract class names are displayed in italics in diagrams (look at ''Vehicle'' i
 
 
 
-In our example, let us speak also about motorbikes. Cars and motorbikes are ‚Äúvehicles‚Äù. We can create an abstract Class ‚ÄúVehicle‚Äù that will factorize all the common properties for cars and motorbikes.
+In our example, let us speak also about motorbikes. Cars and motorbikes are ìvehiclesî. We can create an abstract Class ìVehicleî that will factorize all the common properties for cars and motorbikes.
 
 
 
@@ -687,7 +687,7 @@ Take care that all properties of the generalized class (super-class) must be mea
 
 ====isPrimitive====
 
-When a class is tagged ‚ÄúisPrimitive‚Äù, it becomes a [ Complex Type].
+When a class is tagged ìisPrimitiveî, it becomes a [ Complex Type].
 
 
 
@@ -735,7 +735,7 @@ Examples of Numeric Literals for a Numeric Type of Kind FLOAT:
 
 
 
-In our example, we just wanted to express that the minimum mileage value is ‚Äú0‚Äù.
+In our example, we just wanted to express that the minimum mileage value is ì0î.
 
 
 
@@ -749,7 +749,7 @@ An Enumeration Literal is a user-defined possible [ Enumeration] instance.
 
 
 
-We can specify the precise list of available colors for cars. Let us begin‚Ä¶
+We can specify the precise list of available colors for cars. Let us beginÖ
 
 
 
@@ -822,7 +822,7 @@ Examples of String Literals:
 
 * 'NONE'
 * 'January 2014'
-* ‚ÄòJohn Doe‚Äô
+* ëJohn Doeí
 
 
 
@@ -836,7 +836,7 @@ These String Literals can then be used in default and null values of properties 
 
 ===Association===
 
-An Association is a semantic relationship between two Classes (or Unions and Collections). ‚ÄúAssociation‚Äù represents a relationship shared among the instances of two classes.
+An Association is a semantic relationship between two Classes (or Unions and Collections). ìAssociationî represents a relationship shared among the instances of two classes.
 
 <center>[[image:Images\image039.png]]</center>
 
@@ -844,10 +844,10 @@ An association is normally drawn as a solid line connecting two types, or a soli
 
 
 
-Note: Distinction between ‚Äúattribute‚Äù and ‚Äúassociation‚Äù properties should be made upon the basis of the type of the element linked to the class:
+Note: Distinction between ìattributeî and ìassociationî properties should be made upon the basis of the type of the element linked to the class:
 
-* Relationship towards a ‚ÄúData type‚Äù or a ‚Äúprimitive Class‚Äù leads to the creation of a single class property.
-* Relationship towards a non-primitive ‚ÄúClass‚Äù is achieved through the creation of an association between the two classes.
+* Relationship towards a ìData typeî or a ìprimitive Classî leads to the creation of a single class property.
+* Relationship towards a non-primitive ìClassî is achieved through the creation of an association between the two classes.
 
 As a consequence, it is neither possible to create an association towards a Datatype / primitive Class, neither possible to type a single Property with a non-primitive Class.
 
@@ -881,11 +881,11 @@ Cardinality is a definition of an interval of non-negative integers beginning wi
 
 * isOrdered : Boolean
 
-For a multivalued multiplicity (Max. Card &gt; 1), this attribute specifies whether the values in an instantiation of this element are sequentially ordered. Default is false. See ¬ß [ isOrdered].
+For a multivalued multiplicity (Max. Card &gt; 1), this attribute specifies whether the values in an instantiation of this element are sequentially ordered. Default is false. See ß [ isOrdered].
 
 * isUnique : Boolean
 
-For a multivalued multiplicity (Max. Card &gt; 1), this attributes specifies whether the values in an instantiation of this element are unique. Default is true. See ¬ß [ isUnique].
+For a multivalued multiplicity (Max. Card &gt; 1), this attributes specifies whether the values in an instantiation of this element are unique. Default is true. See ß [ isUnique].
 
 
 
@@ -900,11 +900,11 @@ Typical cardinalities are:
 
 
 
-A cardinality with zero as the lower bound and an unspecified upper bound may use the alternative notation containing a single star ‚Äú*‚Äù instead of ‚Äú0..*‚Äù. In Capella , as for Properties, the default is supposed to be ‚Äú1..1‚Äù, and is not displayed.
+A cardinality with zero as the lower bound and an unspecified upper bound may use the alternative notation containing a single star ì*î instead of ì0..*î. In Capella , as for Properties, the default is supposed to be ì1..1î, and is not displayed.
 
 <center>[[image:Images\image043.png]]</center>
 
-If the lower bound is equal to the upper bound, then an alternate notation is to use the string containing just the upper bound. For example, ‚Äú4‚Äù is semantically equivalent to ‚Äú4..4‚Äù (exactly 4). 
+If the lower bound is equal to the upper bound, then an alternate notation is to use the string containing just the upper bound. For example, ì4î is semantically equivalent to ì4..4î (exactly 4). 
 
 <center>[[image:Images\image044.png]]</center>
 
@@ -967,7 +967,7 @@ Note also that:
 
 ====Name====
 
-It is also possible to give a name to the association itself, instead of or in addition to the role names. Take care: by default, the name of the association does not appear on the diagram! You have to deactivate the default filter called ‚Äúassociation label‚Äù.
+It is also possible to give a name to the association itself, instead of or in addition to the role names. Take care: by default, the name of the association does not appear on the diagram! You have to deactivate the default filter called ìassociation labelî.
 
 
 
@@ -1035,7 +1035,7 @@ When Aggregation Kind of a role is ASSOCIATION, the association is a simple asso
 
 
 
-‚ÄúAggregation‚Äù is a variant of the "has a" association relationship; aggregation is more specific than association. It is an association that represents a part-of relationship. 
+ìAggregationî is a variant of the "has a" association relationship; aggregation is more specific than association. It is an association that represents a part-of relationship. 
 
 <center>[[image:Images\image057.png]]</center>
 
@@ -1043,7 +1043,7 @@ Take care: as this concept does not have a universally agreed semantics (it is a
 
 
 
-‚ÄúComposition‚Äù (or composite aggregation) is a strong form of aggregation that requires a part instance be included in at most one composite at a time. If a composite is deleted, all of its parts are normally deleted with it. Note that a part can (where allowed) be removed from a composite before the composite is deleted, and thus not be deleted as part of the composite. Compositions may be linked in a directed acyclic graph with transitive deletion characteristics; that is, deleting an element in one part of the graph will also result in the deletion of all elements of the composition subgraph below that element.
+ìCompositionî (or composite aggregation) is a strong form of aggregation that requires a part instance be included in at most one composite at a time. If a composite is deleted, all of its parts are normally deleted with it. Note that a part can (where allowed) be removed from a composite before the composite is deleted, and thus not be deleted as part of the composite. Compositions may be linked in a directed acyclic graph with transitive deletion characteristics; that is, deleting an element in one part of the graph will also result in the deletion of all elements of the composition subgraph below that element.
 
 Composition is represented by a black diamond on the origin end of the association.
 
@@ -1091,7 +1091,7 @@ Where a generalization relates a specific class to a general class, each instanc
 
 
 
-A Generalization is shown as a line with a hollow triangle as an arrowhead between the symbols representing the involved classes. The arrowhead points to the symbol representing the general class. The Generalization relationship is also shown in the Properties sheet under the topic ‚ÄúSuper‚Äù, which indicates the super-class.
+A Generalization is shown as a line with a hollow triangle as an arrowhead between the symbols representing the involved classes. The arrowhead points to the symbol representing the general class. The Generalization relationship is also shown in the Properties sheet under the topic ìSuperî, which indicates the super-class.
 
 
 
@@ -1120,7 +1120,7 @@ In our example, we have organized all the System Analysis Types into three packa
 
 
 
-It is highly recommended not to put all the types ¬´&nbsp;flat&nbsp;¬ª in the ''Data'' existing package. Inside ''Classes'', and ''Basic Types'', we could have created subpackages to better structure the Data Model. Usually classes and basic types are mixed in packages for the structuration in packages shall rely on business criteria and not on type kind (class vs datatype). A useful recommendation is to limit the number of datatypes and classes in a package to 20.
+It is highly recommended not to put all the types ´&nbsp;flat&nbsp;ª in the ''Data'' existing package. Inside ''Classes'', and ''Basic Types'', we could have created subpackages to better structure the Data Model. Usually classes and basic types are mixed in packages for the structuration in packages shall rely on business criteria and not on type kind (class vs datatype). A useful recommendation is to limit the number of datatypes and classes in a package to 20.
 
 <center>[[image:Images\image069.jpg]]</center>
 
@@ -1197,7 +1197,7 @@ There are several filters available in the CDB.
 
 <center>[[image:Images\image075.jpg]]</center>
 
-Only the ‚ÄúHide Association Labels‚Äù filter is activated by default. We have given examples of this filter and the following one: ‚ÄúHide Role Labels‚Äù in the [ Association Name ¬ß].
+Only the ìHide Association Labelsî filter is activated by default. We have given examples of this filter and the following one: ìHide Role Labelsî in the [ Association Name ß].
 
 =====Hide Properties=====
 
@@ -1309,7 +1309,7 @@ If only data model was used to structure context-dependent exchanged data, this 
 
 
 
-Exchange Items can be defined in order to group references to a set of data, to be considered in a coherent manner for functional exchanges. Furthermore, some non-functional properties may need to be attached to this set of data: coherency of use in this context, simultaneousness of transport, same quality of service, periodicity‚Ä¶ And here again, the need also exists to indicate that several exchanges should carry the same set of data. 
+Exchange Items can be defined in order to group references to a set of data, to be considered in a coherent manner for functional exchanges. Furthermore, some non-functional properties may need to be attached to this set of data: coherency of use in this context, simultaneousness of transport, same quality of service, periodicityÖ And here again, the need also exists to indicate that several exchanges should carry the same set of data. 
 
 
 
@@ -1331,7 +1331,7 @@ An Exchange Item defines a communication media and a set of data
 * used as a whole for functional exchanges:
 ** same communication principles
 ** simultaneity of transportation
-** same non-functional properties (e.g. security level, integrity requirement, expected performance‚Ä¶)
+** same non-functional properties (e.g. security level, integrity requirement, expected performanceÖ)
 ** indivisibility (an exchange item is atomic)
 * referring to kinds of data described in the data model.
 
@@ -1341,9 +1341,9 @@ Exchange Items help in:
 
 * structuring ports/exchanges in order to organize exchanged data
 * avoiding to define several times the same set of data when used in several ports/exchanges
-* imposing a unification of interactions or exchanges of the same kind everywhere in the system (e.g. standard for messaging, protocols, ‚Ä¶)
+* imposing a unification of interactions or exchanges of the same kind everywhere in the system (e.g. standard for messaging, protocols, Ö)
 * constituting a checkable contract in exchanges with outside the system
-* carrying a requested communication principle if necessary (e.g. event, dataflow, message, service, shared data, continuous flow‚Ä¶).
+* carrying a requested communication principle if necessary (e.g. event, dataflow, message, service, shared data, continuous flowÖ).
 
 
 
@@ -1578,7 +1578,7 @@ Note that for p11, isComposite must be true as Class1 does not have a key proper
 
 
 
-Observe also that it is possible to restrain the Exchange Item Element to a subset of the Class (or data type) properties. In our example, parameter p 21 of Operation 2 could reference only property Class4::a21 through the ‚ÄúReferenced Properties‚Äù field.
+Observe also that it is possible to restrain the Exchange Item Element to a subset of the Class (or data type) properties. In our example, parameter p 21 of Operation 2 could reference only property Class4::a21 through the ìReferenced Propertiesî field.
 
 <center>[[image:Images\image102.png]]</center>
 
@@ -1594,7 +1594,7 @@ When an Exchange Item has a communication mechanism of type EVENT, FLOW, or SHAR
 
 
 
-If the Exchange Item Element is of Kind TYPE, the Exchange Item only owns this Exchange Item Element, and the structure of the Exchange Item is completely defined by the type of the Exchange Item Element, and its features: cardinality, ‚Äôis composite‚Äô, ‚Äòis ordered‚Äô and ‚Äòis unique‚Äô.
+If the Exchange Item Element is of Kind TYPE, the Exchange Item only owns this Exchange Item Element, and the structure of the Exchange Item is completely defined by the type of the Exchange Item Element, and its features: cardinality, íis compositeí, ëis orderedí and ëis uniqueí.
 
 
 
@@ -1724,7 +1724,7 @@ Note that it is possible to create new Exchange Items on the fly, and even new I
 
 
 
-A big difference between Scenario and Data Flow Blank diagrams is that you can specify duration constraints on scenarios, and also loops, alternatives or optional conditions with the ‚Äúcombined fragment‚Äù concept.
+A big difference between Scenario and Data Flow Blank diagrams is that you can specify duration constraints on scenarios, and also loops, alternatives or optional conditions with the ìcombined fragmentî concept.
 
 <center>[[image:Images\image116.png]]</center>
 
@@ -1774,7 +1774,7 @@ When the type is declared discrete, it means that it defines non continuous or s
 
 Specifies whether the property or association is derived from other model elements such as other properties, associations or constraints. The default value is false.
 
-For instance, a common derived property is the age of a Person, derived from the birthDate. The notation of a derived property is ‚Äú/ derivedProperty‚Äù. 
+For instance, a common derived property is the age of a Person, derived from the birthDate. The notation of a derived property is ì/ derivedPropertyî. 
 
 <center>[[image:Images\image120.png]]</center>
 
@@ -1926,7 +1926,7 @@ This field indicates the super-types (or generalized types) of the current type.
 
 
 
-As soon as a Generalization relationship is established, the ‚ÄúSuper‚Äù field is automatically filled, as we saw in ¬ß [ Generalization]. Take care that this field can be edited. For instance, if you remove the ''Vehicle'' super-class from the ''Car'' Properties sheet, it deletes the generalization relationship and modifies the underlying model!
+As soon as a Generalization relationship is established, the ìSuperî field is automatically filled, as we saw in ß [ Generalization]. Take care that this field can be edited. For instance, if you remove the ''Vehicle'' super-class from the ''Car'' Properties sheet, it deletes the generalization relationship and modifies the underlying model!
 
 
 
@@ -2028,7 +2028,7 @@ Collections can be Sequences or Arrays (note that Capella  does not offer yet se
 
 
 
-Note that Collections are more design concepts than analysis concepts. To model domain concepts collections, it is often sufficient to use the cardinality adornment on an association, possibly with the ‚Äúordered‚Äù keyword.
+Note that Collections are more design concepts than analysis concepts. To model domain concepts collections, it is often sufficient to use the cardinality adornment on an association, possibly with the ìorderedî keyword.
 
 
 
@@ -2075,7 +2075,7 @@ These constructs are mainly used in relation with software programming languages
 Differences between Union and Variant are the following:
 
 * In the Union, one value of the discriminant must be associated to at most one property and a property must always be associated to a value of the discriminant;
-* In the Variant, one value of the discriminant can be associated to any number (0 or more) of properties. By convention a variant property that has no discriminant value associated is deemed to be associated to all values ‚Äã‚Äãof the discriminant: it is the fixed part.
+* In the Variant, one value of the discriminant can be associated to any number (0 or more) of properties. By convention a variant property that has no discriminant value associated is deemed to be associated to all values ??of the discriminant: it is the fixed part.
 
 
 
@@ -2107,7 +2107,7 @@ Simple values were explained in the Basic Constructs chapter:
 * See [ Enumeration Literal]
 * See [ Literal Boolean Value]
 * See [ Literal String Value]
-* ‚Ä¶
+* Ö
 
 
 
@@ -2232,7 +2232,7 @@ The model shall be 2NF and there is no transitive dependence: X -&gt; Y -&gt; Z
 
 
 
-A property (attribute or association role) ‚ÄòY‚Äô is functionally dependent on a group of properties ‚ÄòX‚Äô = (X1, .., xn) if and only if its value is by nature determined as soon as the value ‚ÄòV‚Äô = (V1, .., Vn) from group ‚ÄòX‚Äô is known. We note X - &gt;Y.
+A property (attribute or association role) ëYí is functionally dependent on a group of properties ëXí = (X1, .., xn) if and only if its value is by nature determined as soon as the value ëVí = (V1, .., Vn) from group ëXí is known. We note X - &gt;Y.
 
 
 
@@ -2250,7 +2250,7 @@ More precisely, the greater the degree of normalization is required, the more th
 
 A large number of rules checked by Capella  apply to the Interface and Data Model. You should rely on them to maintain your model and ensure its consistency and completeness. 
 
-For instance, in the ''Design ''‚Äì ''Well-Formedness ''category, there is a big ''Data ''group:
+For instance, in the ''Design ''ñ ''Well-Formedness ''category, there is a big ''Data ''group:
 
 <center>[[image:Images\image158.jpg]]</center>
 
@@ -2287,7 +2287,7 @@ Capitalize the first letter of class names.
 
 Begin property names with a lowercase letter. Multi-word names are often formed by concatenating the words and using lowercase for all letters except for upcasing the first letter of each word but the first.
 
-A possible rule for Primitive Classes and Simple Types is to prefix their name with ‚ÄúT‚Äù, in order to easily distinguish them from a standard class.
+A possible rule for Primitive Classes and Simple Types is to prefix their name with ìTî, in order to easily distinguish them from a standard class.
 
 
 
@@ -2309,11 +2309,11 @@ This guideline applies to any diagram and any type of model.
 
 In case color codes are really needed to identifies specific concerns visually on a diagram, this should be managed in a formal way : 
 
-‚Ä¢ Identifying formally a property or property value which holds the semantic concept under consideration, 
+ï Identifying formally a property or property value which holds the semantic concept under consideration, 
 
-‚Ä¢ Developing a viewpoint that will ensure unicity and consistency of this attribute across all model elements, 
+ï Developing a viewpoint that will ensure unicity and consistency of this attribute across all model elements, 
 
-‚Ä¢ Using this same viewpoint to manage the color that is displayed on a diagram. 
+ï Using this same viewpoint to manage the color that is displayed on a diagram. 
 
 
 
