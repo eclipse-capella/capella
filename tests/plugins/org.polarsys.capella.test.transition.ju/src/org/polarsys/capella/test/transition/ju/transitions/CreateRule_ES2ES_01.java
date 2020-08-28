@@ -94,7 +94,10 @@ public class CreateRule_ES2ES_01 extends TopDownTransitionTestCase {
   private String id_sm1 = "ed997754-4000-435f-9d87-ca6927e274fe";
   private String id_sm2 = "a0af25e0-468b-459a-a7b9-853600d1a0e7";
   private String id_part_p1 = "91eb4d9f-51bd-4585-9771-cf3273f0f5f0";
+  public static String id_fe3 = "06d2b8f3-87c5-4b5d-9a0a-67d74373d40b";
+  public static String id_fe4 = "d65a0e41-fa4f-465c-b1ae-a27fbd8309cd";
   private String id_part_p2 = "696381c3-94a1-4252-b152-4db5069e47f2";
+  public static String id_part_ls = "9cea6174-9089-4177-9be9-008f88ea41bb";
 
   @Override
   public List<String> getRequiredTestModels() {
