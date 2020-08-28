@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -96,8 +96,6 @@ public class RepresentationActionProvider extends CommonActionProvider {
    */
   @Override
   public void fillActionBars(IActionBars actionBars_p) {
-    // Make sure action contained list are freed at each selection time.
-    moveRepresentationMenu.dispose();
     actionBars_p.setGlobalActionHandler(ICommonActionConstants.OPEN, _openRepresentation);
     actionBars_p.setGlobalActionHandler(ActionFactory.DELETE.getId(), _deleteRepresentationAction);
     actionBars_p.setGlobalActionHandler(ActionFactory.RENAME.getId(), _renameRepresentationAction);

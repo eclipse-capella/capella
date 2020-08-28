@@ -41,7 +41,7 @@ public class MoveRepresentationMenuManager extends MenuManager implements ISelec
   }
 
   public void initializeSubMenus(ISelection selection) {
-    // Remove existing menu items
+    // Remove existing menu items in order to make sure action contained list are freed at each selection time.
     this.removeAll();
 
     List<?> selectionList = ((IStructuredSelection) selection).toList();
