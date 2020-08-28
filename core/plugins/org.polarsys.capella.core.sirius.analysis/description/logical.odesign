@@ -1380,24 +1380,6 @@
               </initialOperation>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates a new Logical Function allocated to a new Logical Actor" name="actor.function" label="%la.ldfb.actor.function" precondition="aql:containerView.isValidCreationDFFunction() and containerView.oclIsKindOf(diagram::DDiagram)" containerMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='LDFB_Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ActorLogicalFunction.gif">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container.getRootFunction()">
-                <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.isFunction()">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createActorFunction()">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.allocateToCapability(containerView)"/>
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.allocateToNewActor()"/>
-                    <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
-                      <parameters name="context" value="aql:container"/>
-                      <parameters name="scope" value="aql:self"/>
-                    </subModelOperations>
-                  </subModelOperations>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
           <ownedTools xsi:type="tool_1:ToolGroup" name="FuntionalExchanges">
             <tools xsi:type="tool_1:EdgeCreationDescription" documentation="Creates a new Functional Exchange between the Source and Target Logical Functions. If necessary, Function Ports are created automatically. The Functional Exchange is created under the common parent Function of the Source and Target." name="functional.exchange" label="%la.ldfb.functional.exchange" precondition="aql:self.isValidCreationFunctionalExchange(preSource,preTarget)" elementsToSelect="var:result" edgeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='LDFB_Exchange']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalExchange.gif" extraSourceMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='LDFB_Function']" extraTargetMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='LDFB_Function']" connectionStartPrecondition="aql:self.isValidCreationFunctionalExchange(preSource)">
               <sourceVariable name="source"/>

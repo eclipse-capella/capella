@@ -212,12 +212,6 @@ To add a functional exchange:
 
 <center>[[Image:Images/TH_1.36.png|800x450px]]</center><br>
 
-====Show Actor Functions====
-
-To show functions, '''use the "Actor Functions" palette tool on the diagram''' and '''select the desired function.'''
-
-<center>[[Image:Images/TH_1.32.png|800x450px]]</center><br>
-
 ====Assign Exchange Items to functional exchange====
 
 * '''Select a functional exchange on the diagram'''

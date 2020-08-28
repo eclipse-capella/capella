@@ -872,13 +872,11 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getDFTarget()">
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.isFunction()">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createFunction()">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.allocateToCapability(containerView)"/>
-                      <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
-                        <parameters name="context" value="aql:container"/>
-                        <parameters name="scope" value="aql:self"/>
-                      </subModelOperations>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createFunction()">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.allocateToCapability(containerView)"/>
+                    <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
+                      <parameters name="context" value="aql:container"/>
+                      <parameters name="scope" value="aql:self"/>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
@@ -969,24 +967,6 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-          </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates a new Physical Function allocated to a new Physical Actor" name="actor.function" label="%pa.pdfb.actor.function" precondition="aql:containerView.isValidCreationDFFunction() and containerView.oclIsKindOf(diagram::DDiagram)" containerMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='PDFB_Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ActorPhysicalFunction.gif">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container.getRootFunction()">
-                <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.isFunction()">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createActorFunction()">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.allocateToCapability(containerView)"/>
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.allocateToNewActor()"/>
-                    <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
-                      <parameters name="context" value="aql:container"/>
-                      <parameters name="scope" value="aql:self"/>
-                    </subModelOperations>
-                  </subModelOperations>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolGroup" name="FunctionalExchanges">
             <tools xsi:type="tool_1:EdgeCreationDescription" documentation="Creates a new Functional Exchange between the Source and Target Physical Functions. If necessary, Function Ports are created automatically. The Functional Exchange is created under the common parent Function of the Source and Target." name="functional.exchange" label="%pa.pdfb.functional.exchange" precondition="aql:self.isValidCreationFunctionalExchange(preSource,preTarget)" elementsToSelect="var:result" edgeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='PDFB_Exchange']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalExchange.gif" extraSourceMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='PDFB_Function']" extraTargetMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='PDFB_Function']" connectionStartPrecondition="aql:self.isValidCreationFunctionalExchange(preSource)">

@@ -809,7 +809,6 @@ public interface IToolNameConstants {
   String TOOL_LDFB_CREATE_OUTPUT_PORT = "output.port";
   String TOOL_LDFB_CREATE_FUNCTIONAL_EXCHANGE = "functional.exchange";
   String TOOL_LDFB_INSERT_REMOVE_FUNCTIONS = "functions";
-  String TOOL_LDFB_INSERT_REMOVE_ACTOR_FUNCTIONS = "Actor Functions";
   String TOOL_LDFB_INSERT_REMOVE_FUNCTIONAL_EXCHANGES = "functional.exchanges";
   String TOOL_LDFB_INSERT_REMOVE_FUNCTIONAL_CHAINS = "functional.chains";
   String TOOL_LDFB_INSERT_REMOVE_FUNCTIONAL_CHAIN_ELEMENTS = "functional.chain.elements";
@@ -827,14 +826,12 @@ public interface IToolNameConstants {
   String TOOL_LDFB_SHOW_HIDE_FUNCTIONAL_EXCH_CATEGORIES = "switch.functional.exchanges.categories";
   String TOOL_LDFB_SHOW_HIDE_EXCH_CATEGORIES = "Show/Hide Exchange Categories";
   String TOOL_LDFB_SHOW_HIDE_FUNCTIONS = "Show/Hide Functions";
-  String TOOL_LDFB_SHOW_HIDE_ACTOR_FUNCTIONS = "Show/Hide Actor Functions";
   String TOOL_LDFB_SHOW_HIDE_FUNCTIONAL_EXCHANGES = "Show/Hide Functional Exchanges";
   String TOOL_LDFB_SHOW_HIDE_FUNCTION_PORTS = "Show/Hide Function Ports";
   String TOOL_LDFB_SHOW_HIDE_FUNCTIONAL_EXCHANGE = "Show/Hide Functional Exchanges";
   String TOOL_LDFB_SHOW_HIDE_FUNCTION_PORT = "Show/Hide Function Ports";
   String TOOL_LDFB_DELETE_ELEMENT = "delete capella element";
   String TOOL_LDFB_SHOW_HIDE_FUNCTION = "Show/Hide Functions";
-  String TOOL_LDFB_SHOW_HIDE_ACTOR_FUNCTION = "Show/Hide Actor Functions";
   String TOOL_LDFB_INSERT_SCENARIO_ELEMENTS = TOOL_LAB_INSERT_SCENARIO_ELEMENTS;
   String TOOL_LDFB_INSERT_STATEMODE_ELEMENTS = TOOL_LAB_INSERT_STATEMODE_ELEMENTS;
   String TOOL_LDFB_RECONNECT_EXCHANGE = "LDFB Reconnect Exchanges";
@@ -1357,7 +1354,6 @@ public interface IToolNameConstants {
   String TOOL_PDFB_CREATE_INPUT_PORT = "input.port";
   String TOOL_PDFB_CREATE_OUTPUT_PORT = "output.port";
   String TOOL_PDFB_INSERT_FUNCTIONS = "functions";
-  String TOOL_PDFB_INSERT_REMOVE_ACTOR_FUNCTIONS = "Actor Functions";
   String TOOL_PDFB_INSERT_REMOVE_FUNCTIONAL_EXCHANGES = "functional.exchanges";
   String TOOL_PDFB_INSERT_REMOVE_FUNCTION_PORTS = "function.ports";
   String TOOL_PDFB_INSERT_REMOVE_EXCHANGE_CATEGORIES = "exchange.categories";
@@ -1374,7 +1370,6 @@ public interface IToolNameConstants {
   String TOOL_PDFB_SHOW_HIDE_FUNCTIONAL_EXCH_CATEGORIES = "switch.functional.exchanges.categories";
   String TOOL_PDFB_SHOW_HIDE_EXCH_CATEGORIES = "Show/Hide Exchange Categories";
   String TOOL_PDFB_SHOW_HIDE_FUNCTIONS = "Show/Hide Functions";
-  String TOOL_PDFB_SHOW_HIDE_ACTOR_FUNCTIONS = "Show/Hide Actor Functions";
   String TOOL_PDFB_SHOW_HIDE_FUNCTIONAL_EXCHANGES = "Show/Hide Functional Exchanges";
   String TOOL_PDFB_SHOW_HIDE_FUNCTION_PORTS = "Show/Hide Function Ports";
 
@@ -1513,7 +1508,6 @@ public interface IToolNameConstants {
   String TOOL_SDFB_RECONNECT_EXCHANGE = "SDFB Reconnect Exchanges";
   String TOOL_SDFB_SHOW_HIDE_EXCH_CATEGORIES = "Show/Hide Exchange Categories";
   String TOOL_SDFB_SHOW_HIDE_FUNCTIONS = "functions";
-  String TOOL_SDFB_SHOW_HIDE_ACTOR_FUNCTIONS = "Show/Hide Actor Functions";
   String TOOL_SDFB_SHOW_HIDE_FUNCTIONAL_CHAIN = "Show/Hide Functional Chains";
   String TOOL_SDFB_SHOW_HIDE_FUNCTIONAL_EXCH_CATEGORIES = "switch.functional.exchanges.categories";
   String TOOL_SDFB_SHOW_HIDE_FUNCTIONAL_EXCHANGES = "Show/Hide Functional Exchanges";
@@ -1525,7 +1519,6 @@ public interface IToolNameConstants {
 
   // SDFB tool constants added
   String TOOL_SDFB_INSERT_REMOVE_FUNCTIONS = "functions";
-  String TOOL_SDFB_INSERT_REMOVE_ACTOR_FUNCTIONS = "Actor Functions";
   String TOOL_SDFB_INSERT_REMOVE_FUNCTIONAL_EXCHANGES = "functional.exchanges";
   String TOOL_SDFB_INSERT_REMOVE_FUNCTIONAL_CHAINS = "functional.chains";
   String TOOL_SDFB_CREATE_FUNCTIONAL_CHAIN_ELEMENTS = "functional.chain.elements";

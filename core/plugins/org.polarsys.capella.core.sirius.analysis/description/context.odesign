@@ -2744,18 +2744,16 @@
         <reusedMappings xsi:type="description_1:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_TitleBlockEdge']"/>
         <toolSections name="Functions">
           <ownedTools xsi:type="tool:ToolGroup" name="SystemFunctions">
-            <tools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new System Function" name="function" label="%sa.sdfb.function" precondition="aql:containerView.isValidCreationDFFunction() and (container.oclIsKindOf(ctx::Capability) or container.allocationBlocks->filter(cs::Component)->select(c | c.isActor())->size() = 0)" containerMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']">
+            <tools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new System Function" name="function" label="%sa.sdfb.function" precondition="aql:containerView.isValidCreationDFFunction()" containerMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerView.getDFTarget()">
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.isFunction()">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.createFunction()">
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.allocateToCapability(containerView)"/>
-                      <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
-                        <parameters name="context" value="aql:container"/>
-                        <parameters name="scope" value="aql:self"/>
-                      </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.createFunction()">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.allocateToCapability(containerView)"/>
+                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
+                      <parameters name="context" value="aql:container"/>
+                      <parameters name="scope" value="aql:self"/>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
@@ -2846,24 +2844,6 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-          </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new System Function allocated to a new System Actor" name="actor.function" label="%sa.sdfb.actor.function" precondition="aql:containerView.isValidCreationDFFunction() and containerView.oclIsKindOf(diagram::DDiagram)" containerMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ActorSystemFunction.gif">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container.getRootFunction()">
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.isFunction()">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.createActorFunction()">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.allocateToCapability(containerView)"/>
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.allocateToNewActor()"/>
-                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
-                      <parameters name="context" value="aql:container"/>
-                      <parameters name="scope" value="aql:self"/>
-                    </subModelOperations>
-                  </subModelOperations>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:ToolGroup" name="Functional Exchanges">
             <tools xsi:type="tool:EdgeCreationDescription" documentation="Creates a new Functional Exchange between the Source and Target System Functions. If necessary, Function Ports are created automatically. The Functional Exchange is created under the common parent Function of the Source and Target." name="functional.exchange" label="%sa.sdfb.functional.exchange" precondition="aql:self.isValidCreationFunctionalExchange(preSource,preTarget)" elementsToSelect="var:result" edgeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='SDFB_Exchange']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalExchange.gif" extraSourceMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']" extraTargetMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']" connectionStartPrecondition="aql:self.isValidCreationFunctionalExchange(preSource)">
