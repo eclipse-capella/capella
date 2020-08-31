@@ -14,6 +14,7 @@ package org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram;
 
 import java.io.StringReader;
 
+import javax.xml.XMLConstants;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
@@ -99,6 +100,8 @@ public class CapellaElementInDescriptionExistanceCheck extends AbstractValidatio
           SAXParserFactory saxFactory = SAXParserFactory.newInstance();
           saxFactory.setValidating(false);
           saxParser = saxFactory.newSAXParser();
+          saxParser.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, "");
+          saxParser.setProperty(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
           // sax data handler
           DefaultHandler handler = new LocalDefaultHandler(capellaElement, result, ctx);
           // check if capella element id is contained in

@@ -16,17 +16,15 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
-import org.polarsys.capella.core.diagram.helpers.TitleBlockHelper;
 import org.polarsys.capella.core.data.core.properties.Messages;
+import org.polarsys.capella.core.diagram.helpers.TitleBlockHelper;
 
 /**
  * The TitleBlockContainerSection section.
  */
 public class ElementTitleBlockContainerSection extends TitleBlockContainerSection {
-  protected Text valueField;
   
   /**
    * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)

@@ -20,10 +20,10 @@ import org.polarsys.capella.core.data.cs.Component;
 public class SwitchIsActorIsHumanFlag_Resolver extends SwitchHumanActorLabels_Resolver {
   protected boolean isActor;
   protected boolean isHuman;
-  protected String label;
+  protected String overridenLabel;
 
   public SwitchIsActorIsHumanFlag_Resolver(String label, boolean isActor, boolean isHuman) {
-    this.label = label;
+    this.overridenLabel = label;
     this.isActor = isActor;
     this.isHuman = isHuman;
   }
@@ -36,6 +36,6 @@ public class SwitchIsActorIsHumanFlag_Resolver extends SwitchHumanActorLabels_Re
 
   @Override
   public String getLabel() {
-    return label;
+    return overridenLabel;
   }
 }

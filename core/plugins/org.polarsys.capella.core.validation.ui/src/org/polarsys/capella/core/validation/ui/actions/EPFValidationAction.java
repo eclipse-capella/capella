@@ -123,16 +123,14 @@ public class EPFValidationAction extends CapellaValidateAction {
     setEpf(epf);
 
     if (null != getEpf()) {
-      try {
-        File file = new File(getEpf().getLocation().toOSString());
-        FileInputStream fileInput = new FileInputStream(file);
+      try (FileInputStream fileInput = new FileInputStream(new File(getEpf().getLocation().toOSString()))) {
         properties = new Properties();
         properties.load(fileInput);
         fileInput.close();
+        
       } catch (IOException exception) {
         exception.printStackTrace();
       }
-     
     }
   }
 

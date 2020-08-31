@@ -33,14 +33,14 @@ import org.polarsys.capella.core.data.fa.SequenceLink;
 public class RemoveSequenceLinksAssociationsResolver extends AbstractCapellaMarkerResolution {
   private final String PROCESS_ICON = "icons/full/obj16/capella_process.gif";
   private final SequenceLink sequenceLink;
-  private final String label;
+  private final String overridenLabel;
   private final String ruleId;
   private boolean multiMarkerQuickFix;
 
   public RemoveSequenceLinksAssociationsResolver(String label, SequenceLink sequenceLink, boolean multiMarkerQuickFix,
       String ruleId) {
     this.sequenceLink = sequenceLink;
-    this.label = label;
+    this.overridenLabel = label;
     this.multiMarkerQuickFix = multiMarkerQuickFix;
     this.ruleId = ruleId;
     super.setContributorId(CapellaUIResourcesPlugin.PLUGIN_ID);
@@ -52,7 +52,7 @@ public class RemoveSequenceLinksAssociationsResolver extends AbstractCapellaMark
   }
 
   public String getLabel() {
-    return label;
+    return overridenLabel;
   }
 
   @Override

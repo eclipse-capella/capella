@@ -14,6 +14,7 @@ package org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram;
 
 import java.io.StringReader;
 
+import javax.xml.XMLConstants;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
@@ -83,6 +84,8 @@ public class CapellaElementInDescriptionNameCheck extends AbstractValidationRule
           SAXParserFactory saxFactory = SAXParserFactory.newInstance();
           saxFactory.setValidating(false);
           saxParser = saxFactory.newSAXParser();
+          saxParser.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, "");
+          saxParser.setProperty(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
           // SAXParser data handler
           DefaultHandler handler = new DefaultHandler() {
             // element calculated from a tag attribute in 'startElement' service
