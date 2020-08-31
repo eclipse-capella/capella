@@ -48,9 +48,7 @@ public class SaveLogHandler extends AbstractViewHandler {
 
     final String fileName = fd.open();
     if (null != fileName) {
-      try {
-        File f = new File(fileName);
-        FileOutputStream fos = new FileOutputStream(f);
+      try (FileOutputStream fos = new FileOutputStream(new File(fileName))) {
         fos.write(res.getBytes());
         fos.close();
         IEditorDescriptor editor = PlatformUI.getWorkbench().getEditorRegistry().getDefaultEditor(fileName);

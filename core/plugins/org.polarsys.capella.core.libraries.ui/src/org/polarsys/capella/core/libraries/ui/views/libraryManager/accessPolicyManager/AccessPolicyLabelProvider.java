@@ -32,28 +32,25 @@ public final class AccessPolicyLabelProvider extends LabelProvider implements IT
   public String getColumnText(Object element, int columnIndex) {
     IModel library = (IModel) element;
     switch (columnIndex) {
-      case 0:
-        return library.getIdentifier().getName();
-      case 1:
-        return model.getAccessPolicy(library).getLiteral();
-      default:
-        return null;
+    case 0:
+      return library.getIdentifier().getName();
+    case 1:
+      return model.getAccessPolicy(library).getLiteral();
+    default:
+      return null;
     }
   }
 
   @Override
   public Image getColumnImage(Object element, int columnIndex) {
-    switch (columnIndex) {
-      case 0:
-        ImageDescriptor desc = AbstractUIPlugin.imageDescriptorFromPlugin("org.polarsys.capella.core.data.gen.edit", "icons/full/obj16/Library.gif");
-        if (desc != null) {
-          return desc.createImage();
-        }
-      case 1:
-        return null;
-      default:
-        return null;
+    if (columnIndex == 0) {
+      ImageDescriptor desc = AbstractUIPlugin.imageDescriptorFromPlugin("org.polarsys.capella.core.data.gen.edit",
+          "icons/full/obj16/Library.gif");
+      if (desc != null) {
+        return desc.createImage();
+      }
     }
+    return null;
   }
 
 }

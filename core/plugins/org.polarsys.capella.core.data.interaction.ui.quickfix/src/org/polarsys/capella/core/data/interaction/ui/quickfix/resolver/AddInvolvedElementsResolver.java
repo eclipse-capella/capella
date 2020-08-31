@@ -36,12 +36,12 @@ import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarke
 
 public class AddInvolvedElementsResolver extends AbstractCapellaMarkerResolution {
   private final String PROCESS_ICON = "icons/full/obj16/capella_process.gif";
-  private final String label;
+  private final String overridenLabel;
   private final String ruleId;
   private boolean multiMarkerQuickFix;
 
   public AddInvolvedElementsResolver(String label, boolean multiMarkerQuickFix, String ruleId) {
-    this.label = label;
+    this.overridenLabel = label;
     this.multiMarkerQuickFix = multiMarkerQuickFix;
     this.ruleId = ruleId;
     super.setContributorId(CapellaUIResourcesPlugin.PLUGIN_ID);
@@ -50,7 +50,7 @@ public class AddInvolvedElementsResolver extends AbstractCapellaMarkerResolution
 
   @Override
   public String getLabel() {
-    return label;
+    return overridenLabel;
   }
 
   @Override

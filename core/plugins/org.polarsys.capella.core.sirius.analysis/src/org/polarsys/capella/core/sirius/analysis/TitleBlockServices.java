@@ -1002,7 +1002,7 @@ public class TitleBlockServices {
   public boolean isTitleBlockContainer(EObject element) {
     if (element instanceof DAnnotation) {
       DAnnotation annotation = (DAnnotation) element;
-      return TitleBlockHelper.isDiagramTitleBlock(annotation) | TitleBlockHelper.isElementTitleBlock(annotation);
+      return TitleBlockHelper.isDiagramTitleBlock(annotation) || TitleBlockHelper.isElementTitleBlock(annotation);
     }
     return false;
   }
