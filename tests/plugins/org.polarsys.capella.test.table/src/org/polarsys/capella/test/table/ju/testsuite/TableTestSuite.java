@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2019, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -19,6 +19,7 @@ import java.util.List;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 import org.polarsys.capella.test.table.ju.function.FunctionTableTestSuite;
+import org.polarsys.capella.test.table.ju.function.state.StateModeTableTestSuite;
 import org.polarsys.capella.test.table.ju.interfaces.InterfaceTableTestSuite;
 import org.polarsys.capella.test.table.ju.requirements.RequirementsTableTestSuite;
 
@@ -41,6 +42,7 @@ public class TableTestSuite extends BasicTestSuite {
     tests.add(new FunctionTableTestSuite());
     tests.add(new RequirementsTableTestSuite());
     tests.add(new InterfaceTableTestSuite());
+    tests.add(new StateModeTableTestSuite());
     return tests;
   }
 }
