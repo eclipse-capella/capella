@@ -33,6 +33,8 @@ import org.eclipse.swt.custom.CTabFolder;
 import org.eclipse.swt.custom.CTabItem;
 import org.eclipse.swt.events.HelpEvent;
 import org.eclipse.swt.events.HelpListener;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -136,6 +138,21 @@ public class EditCapellaCustomPropertyWizardPage extends WizardPage implements I
     tabFolder.setLayoutData(new GridData(GridData.FILL_BOTH));
     tabFolder.setSimple(false);
 
+    tabFolder.addSelectionListener(new SelectionListener() {
+      @Override
+      public void widgetSelected(SelectionEvent e) {
+        Object data = tabFolder.getSelection().getData();
+        if (data instanceof ISection) {
+          ((ISection) data).refresh();
+        }
+      }
+
+      @Override
+      public void widgetDefaultSelected(SelectionEvent e) {
+        widgetSelected(e);
+      }
+    });
+
     for (ITabDescriptor descriptor : registry.getTabDescriptors(part, selection)) {
       Composite tabItemContent = new Composite(tabFolder, SWT.NONE);
       tabItemContent.setLayout(new GridLayout());
@@ -148,24 +165,24 @@ public class EditCapellaCustomPropertyWizardPage extends WizardPage implements I
         CTabItem tabItem = new CTabItem(tabFolder, SWT.NONE);
         tabItem.setText(descriptor.getLabel());
         tabItem.setControl(tabItemContent);
-        tabItem.setData(descriptor);
 
         for (ISectionDescriptor sd : descriptors) {
           ISectionDescriptor sectionDescriptor = (ISectionDescriptor) sd;
           ISection section = sectionDescriptor.getSectionClass();
           if (section != null) {
-            Composite sectionComposite = new Composite(tabItemContent, SWT.NONE);
-            sectionComposite.setLayout(new FillLayout());
-            int style = (section.shouldUseExtraSpace()) ? GridData.FILL_BOTH : GridData.FILL_HORIZONTAL;
-            GridData data = new GridData(style);
-            data.heightHint = section.getMinimumHeight();
-            sectionComposite.setLayoutData(data);
-            section.createControls(sectionComposite, null);
-            section.setInput(part, new StructuredSelection(object));
-            sections.add(section);
+              Composite sectionComposite = new Composite(tabItemContent, SWT.NONE);
+              sectionComposite.setLayout(new FillLayout());
+              int style = (section.shouldUseExtraSpace()) ? GridData.FILL_BOTH : GridData.FILL_HORIZONTAL;
+              GridData data = new GridData(style);
+              data.heightHint = section.getMinimumHeight();
+              sectionComposite.setLayoutData(data);
+              section.createControls(sectionComposite, null);
+              section.setInput(part, new StructuredSelection(object));
+              tabItem.setData(section);
+              sections.add(section);
+            }
           }
         }
-      }
 
     }
 
@@ -290,5 +307,5 @@ public class EditCapellaCustomPropertyWizardPage extends WizardPage implements I
   public String getContributorId() {
     return CapellaUIPropertiesPlugin.PROPERTIES_CONTRIBUTOR;
   }
-
+  
 }
