@@ -39,8 +39,6 @@ public interface ReportManagerConstants {
 
   String LOG_OUTPUT_FILE = "File";
 
-  String JAXB_INSTANCE = "org.polarsys.capella.common.tools.report.config.persistence";
-
   String REPORTMANAGER_VERSION = "1.1";
 
   String FILEFORMAT_VERSION = "1.0.1";

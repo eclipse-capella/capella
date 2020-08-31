@@ -14,23 +14,27 @@
 package org.polarsys.capella.common.tools.report.config.persistence;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.PropertyException;
-import javax.xml.bind.Unmarshaller;
+import javax.xml.XMLConstants;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
 import org.eclipse.emf.common.util.URI;
 import org.polarsys.capella.common.tools.report.config.ReportManagerConstants;
+import org.w3c.dom.Document;
+import org.xml.sax.SAXException;
 
 /**
  * 
@@ -44,7 +48,7 @@ public class CreateXmlConfiguration {
   private final ObjectFactory objectFactory = new ObjectFactory();
 
   private String filePath = null;
-
+  
   public CreateXmlConfiguration() {
     this.filePath = URI.createURI(FILE_PATH).toFileString();
   }
@@ -121,26 +125,25 @@ public class CreateXmlConfiguration {
   /**
    * load persisted configuration
    * 
-   * Returns configuration Instance Map   
+   * Returns configuration Instance Map
    * 
    * @return configurationMap
    */
   public Map<String, ConfigurationInstance> loadConfiguration() {
     if (isConfigurationFileExists()) {
-      Map<String, ConfigurationInstance> configurationMap = new HashMap<>(1);
+      Map<String, ConfigurationInstance> configurationMap = new HashMap<>();
       try {
-        JAXBContext jc = getJAXBContext();
-
-        // create a UnMarshaller and marshal to a file
-        Unmarshaller marshaller = jc.createUnmarshaller();
-        // To do Check for file correct path
-        ReportConfigurationFile file = (ReportConfigurationFile) marshaller.unmarshal(new FileInputStream(filePath));
-
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
+        factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
+        DocumentBuilder builder;
+        builder = factory.newDocumentBuilder();
+        Document document = builder.parse(new File(filePath));
+        document.getDocumentElement().normalize();
+        ReportConfigurationFile file = new ReportConfigurationFile(document.getDocumentElement());
         configurationMap.putAll(getConfiguration(file));
-
-      } catch (JAXBException | IOException exception) {
-        exception.printStackTrace();
-        return configurationMap;
+      } catch (ParserConfigurationException | SAXException | IOException e) {
+        e.printStackTrace();
       }
       return configurationMap;
     }
@@ -185,34 +188,26 @@ public class CreateXmlConfiguration {
 
   }
 
-  /**
-   * Do the jaxb technical stuff to save the configuration into a file
-   * 
-   * @param repConffile
-   *          the virtual configuration
-   * @throws JAXBException
-   * @throws PropertyException
-   * @throws FileNotFoundException
-   */
   private void doSaveConfigurationFile(ReportConfigurationFile repConffile) {
     try {
-
-      JAXBContext jc = getJAXBContext();
-      Marshaller marshaller = jc.createMarshaller();
-      marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-      marshaller.marshal(repConffile, new FileOutputStream(filePath));
-
-    } catch (FileNotFoundException | JAXBException exception) {
-      exception.printStackTrace();
+      DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+      factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
+      factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
+      DocumentBuilder documentBuilder = factory.newDocumentBuilder();
+      Document document = documentBuilder.newDocument();
+      document.setXmlStandalone(true);
+      document.appendChild(repConffile.convertToElement(document));
+      TransformerFactory transformerFactory = TransformerFactory.newInstance();
+      transformerFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
+      transformerFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_STYLESHEET, "");
+      Transformer transformer = transformerFactory.newTransformer();
+      transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+      transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
+      DOMSource domSource = new DOMSource(document);
+      StreamResult streamResult = new StreamResult(new File(filePath));
+      transformer.transform(domSource, streamResult);
+    } catch (ParserConfigurationException | TransformerException e) {
+      e.printStackTrace();
     }
-  }
-
-  /**
-   * @return
-   * @throws JAXBException
-   */
-  private JAXBContext getJAXBContext() throws JAXBException {
-    ClassLoader theClassLoader = this.getClass().getClassLoader();
-    return JAXBContext.newInstance(ReportManagerConstants.JAXB_INSTANCE, theClassLoader);
   }
 }
