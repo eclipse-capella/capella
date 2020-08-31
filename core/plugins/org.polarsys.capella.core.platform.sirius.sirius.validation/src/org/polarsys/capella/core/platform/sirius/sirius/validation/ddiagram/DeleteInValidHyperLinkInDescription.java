@@ -16,6 +16,7 @@ import java.io.StringReader;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.xml.XMLConstants;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
@@ -68,6 +69,8 @@ public class DeleteInValidHyperLinkInDescription {
             SAXParserFactory saxFactory = SAXParserFactory.newInstance();
             saxFactory.setValidating(false);
             saxParser = saxFactory.newSAXParser();
+            saxParser.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, "");
+            saxParser.setProperty(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
             // sax data handler
             DefaultHandler handler = new DefaultHandler() {
               // check the capella name: if same as value do nothing else update the description

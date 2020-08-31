@@ -22,7 +22,6 @@ import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
  * Change the nature of the Physical Component to {@link PhysicalComponentNature.BEHAVIOR}
  */
 public class PhysicalComponentNatureToBehaviorResolver extends AbstractPhysicalComponentNatureChangeResolver {
-  private String label = "Switch to BEHAVIOR";
   private boolean multiMarkerQuickFix;
 
   public PhysicalComponentNatureToBehaviorResolver() {
@@ -41,7 +40,7 @@ public class PhysicalComponentNatureToBehaviorResolver extends AbstractPhysicalC
 
   @Override
   public String getLabel() {
-    return label;
+    return "Switch to BEHAVIOR";
   }
 
   @Override

@@ -13,7 +13,6 @@
 package org.polarsys.capella.core.preferences.trasferers;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -173,34 +172,16 @@ public class WizardPreferencesTransfererExportPage extends WizardPreferencesPage
     if (!ensureTargetIsValid(exportFile)) {
       return false;
     }
-    FileOutputStream fos = null;
-    try {
-      if (transfers.length > 0) {
-        try {
-          fos = new FileOutputStream(exportFile);
-        } catch (FileNotFoundException e) {
-          WorkbenchPlugin.log(e.getMessage(), e);
-          MessageDialog.open(MessageDialog.ERROR, getControl().getShell(), new String(), e.getLocalizedMessage(), SWT.SHEET);
-          return false;
-        }
+    
+    if (transfers.length > 0) {
+      try (FileOutputStream fos = new FileOutputStream(exportFile)) {
         IPreferencesService service = Platform.getPreferencesService();
-        try {
-          service.exportPreferences(service.getRootNode(), transfers, fos);
-        } catch (CoreException e) {
-          WorkbenchPlugin.log(e.getMessage(), e);
-          MessageDialog.open(MessageDialog.ERROR, getControl().getShell(), new String(), e.getLocalizedMessage(), SWT.SHEET);
-          return false;
-        }
-      }
-    } finally {
-      if (fos != null) {
-        try {
-          fos.close();
-        } catch (IOException e) {
-          WorkbenchPlugin.log(e.getMessage(), e);
-          MessageDialog.open(MessageDialog.ERROR, getControl().getShell(), new String(), e.getLocalizedMessage(), SWT.SHEET);
-          return false;
-        }
+        service.exportPreferences(service.getRootNode(), transfers, fos);
+        
+      } catch (IOException | CoreException e) {
+        WorkbenchPlugin.log(e.getMessage(), e);
+        MessageDialog.open(MessageDialog.ERROR, getControl().getShell(), "", e.getLocalizedMessage(), SWT.SHEET);
+        return false;
       }
     }
     return true;

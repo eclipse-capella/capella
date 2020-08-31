@@ -56,15 +56,7 @@ public class CapabilitiesHandler extends AbstractDiagramHandler {
    */
   @Override
   public boolean covers(IContext context_p, RepresentationDescription description_p) {
-    if (DiagramHelper.getService().isA(description_p, IDiagramNameConstants.OPERATIONAL_CAPABILITIES_ENTITYIES_BLANK_DIAGRAM_NAME)) {
-      return false; //Disabled
-
-    } else if (DiagramHelper.getService().isA(description_p, IDiagramNameConstants.MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME)) {
-      return false; //Disabled
-
-    }
     return false;
-
   }
 
   @Override
