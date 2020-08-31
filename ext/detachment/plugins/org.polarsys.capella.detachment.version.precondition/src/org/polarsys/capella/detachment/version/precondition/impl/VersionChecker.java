@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.HashSet;
 
+import javax.xml.XMLConstants;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -48,6 +49,8 @@ public class VersionChecker implements IPrecondition<IFile> {
 			String projectName = param.getProject().getName();
 			SAXModelsElementsParser modelsEltParser = SAXModelsElementsParser.newInstance(projectName);
 			SAXParser saxParser = parserFactory.newSAXParser();
+			saxParser.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, "");
+			saxParser.setProperty(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
 			XMLReader xmlReader = saxParser.getXMLReader();
 			xmlReader.setContentHandler(modelsEltParser);
 			is = new InputSource();

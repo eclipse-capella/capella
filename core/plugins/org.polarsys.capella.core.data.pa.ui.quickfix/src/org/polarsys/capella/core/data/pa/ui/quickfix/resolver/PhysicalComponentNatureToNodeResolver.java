@@ -18,7 +18,6 @@ import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
  * Change the nature of the Physical Component to {@link PhysicalComponentNature.NODE}
  */
 public class PhysicalComponentNatureToNodeResolver extends AbstractPhysicalComponentNatureChangeResolver {
-  private String label = "Switch to NODE";
 
   @Override
   protected PhysicalComponentNature getPhysicalComponentNature() {
@@ -27,6 +26,6 @@ public class PhysicalComponentNatureToNodeResolver extends AbstractPhysicalCompo
 
   @Override
   public String getLabel() {
-    return this.label;
+    return "Switch to NODE";
   }
 }

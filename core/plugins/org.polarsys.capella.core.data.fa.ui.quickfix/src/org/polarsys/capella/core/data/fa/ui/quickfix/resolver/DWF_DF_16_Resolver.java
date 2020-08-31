@@ -32,10 +32,10 @@ import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarke
  */
 public class DWF_DF_16_Resolver extends AbstractCapellaMarkerResolution {
   private final String PROCESS_ICON = "icons/full/obj16/capella_process.gif";
-  private String label;
+  private String overridenLabel;
 
   public DWF_DF_16_Resolver(String label) {
-    this.label = label;
+    this.overridenLabel = label;
     super.setContributorId(CapellaUIResourcesPlugin.PLUGIN_ID);
     super.setImgKey(PROCESS_ICON);
   }
@@ -85,6 +85,6 @@ public class DWF_DF_16_Resolver extends AbstractCapellaMarkerResolution {
 
   @Override
   public String getLabel() {
-    return label;
+    return overridenLabel;
   }
 }
