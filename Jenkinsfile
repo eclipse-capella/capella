@@ -20,6 +20,9 @@ pipeline {
 	        	script { 
 		        	if(github.isPullRequest()){
 		        	    github.buildStartedComment()
+		        	    
+		        	    github.removeCustomPullRequestLabels()
+		            	github.buildStartedLabel()
 		        	}
 		
 		        	currentBuild.description = BUILD_KEY
@@ -182,12 +185,18 @@ pipeline {
 	post {
     	always {
        		archiveArtifacts artifacts: '**/*.log, *.log, *.xml, **/*.layout'
+       		
+       		script {
+       		    github.removeBuildStartedLabel()
+       		}
     	}
     	
     	success  {
     		script {
     			if(github.isPullRequest()){
         			github.buildSuccessfullComment()
+        			github.buildSuccessfullLabel()
+        			
         		}
         	}
     	}
@@ -196,6 +205,7 @@ pipeline {
 	    	script {
 	    		if(github.isPullRequest()){
 	        		github.buildUnstableComment()
+	        		github.buildUnstableLabel()
 	        	}
 	        }
 	    }
@@ -204,6 +214,7 @@ pipeline {
 	    	script {
 	    		if(github.isPullRequest()){
 	        		github.buildFailedComment()
+	        		github.buildFailedLabel()
 	        	}
 	        }
 	    }
@@ -212,6 +223,7 @@ pipeline {
 	    	script {
 	    		if(github.isPullRequest()){
 	        		github.buildAbortedComment()
+	        		github.buildAbortedLabel()
 	        	}
 	        }
 	    }
