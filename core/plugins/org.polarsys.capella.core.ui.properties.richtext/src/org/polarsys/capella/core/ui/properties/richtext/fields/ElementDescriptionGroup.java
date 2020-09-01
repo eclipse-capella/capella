@@ -89,6 +89,8 @@ public abstract class ElementDescriptionGroup {
   protected GridData reloadBtnGridData;
   
   protected Composite parentComposite;
+  
+  private String baseHrefPath;
 
   private static final String EXISTED_EDITOR_TEXT = "The description is currently opened in an editor. Please use this editor to edit your description."; //$NON-NLS-1$
   
@@ -527,11 +529,15 @@ public abstract class ElementDescriptionGroup {
   }
 
   protected MDERichTextWidget showEditor() {
+    MDERichTextWidget widget;
     if (!RichtextManager.getInstance().isOnWidget(descriptionContainer)) {
-      MDERichTextWidget widget = RichtextManager.getInstance().addWidget(descriptionContainer);
-      return widget;
+      widget = RichtextManager.getInstance().addWidget(descriptionContainer);
+    } else {
+      widget = RichtextManager.getInstance().getRichtextWidget(descriptionContainer);
     }
-    return RichtextManager.getInstance().getRichtextWidget(descriptionContainer);
+    // Make sure editor's base href path is always set
+    widget.setBaseHrefPath(baseHrefPath);
+    return widget;
   }
 
   protected void hideEditor() {
@@ -542,6 +548,14 @@ public abstract class ElementDescriptionGroup {
 
   public boolean shouldRefresh() {
     return descriptionTextField == null || !descriptionTextField.hasFocus();
+  }
+  
+  public String getBaseHrefPath() {
+    return baseHrefPath;
+  }
+
+  public void setBaseHrefPath(String baseHrefPath) {
+    this.baseHrefPath = baseHrefPath;
   }
   
 }
