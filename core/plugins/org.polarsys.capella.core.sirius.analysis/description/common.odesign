@@ -11993,7 +11993,7 @@
             <element name="element"/>
             <newViewContainer name="newViewContainer"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:element.dndIDComponentFromDiagram(newViewContainer,oldContainer)"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:element.dndABComponent(newViewContainer)"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:ContainerDropDescription" name="Allocation ExchangeItem from Model" precondition="aql:element.isValidIDDndAllocationExchangeItemFromModel(newViewContainer)" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Interface']/@subNodeMappings[name='IDB_Operation'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_ExchangeItem']" dragSource="PROJECT_EXPLORER">
