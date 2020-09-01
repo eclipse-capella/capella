@@ -41,7 +41,7 @@ public class XDFBShowHideFunctionPorts extends XDFBToolsTestingModel {
     XDFBDiagram xdfb = XDFBDiagram.openDiagram(context, diagramId, diagramType);
 
     String functionId = xdfb.createContainer(xdfb.getDiagramId(), XDFBCreateContainerTools.CREATE_FUNCTION);
-    String actorFunctionId = xdfb.createContainer(xdfb.getDiagramId(), XDFBCreateContainerTools.CREATE_ACTOR_FUNCTION);
+    String function2Id = xdfb.createContainer(xdfb.getDiagramId(), XDFBCreateContainerTools.CREATE_FUNCTION);
 
     DiagramHelper.setSynchronized(xdfb.getDiagram(), false);
 
@@ -53,18 +53,18 @@ public class XDFBShowHideFunctionPorts extends XDFBToolsTestingModel {
     xdfb.showElements(functionId, XDFBInsertRemoveTools.INSERT_REMOVE_FUNCTION_PORT, functionInputPortId,
         functionOutputPortId);
 
-    String actorFunctionInputPortId = xdfb.createNode(actorFunctionId, XDFBCreateNodeTools.CREATE_INPUT_PORT);
-    String actorFunctionOutputPortId = xdfb.createNode(actorFunctionId, XDFBCreateNodeTools.CREATE_OUTPUT_PORT);
+    String actorFunctionInputPortId = xdfb.createNode(function2Id, XDFBCreateNodeTools.CREATE_INPUT_PORT);
+    String actorFunctionOutputPortId = xdfb.createNode(function2Id, XDFBCreateNodeTools.CREATE_OUTPUT_PORT);
 
-    xdfb.hideElements(actorFunctionId, XDFBInsertRemoveTools.INSERT_REMOVE_FUNCTION_PORT, actorFunctionInputPortId,
+    xdfb.hideElements(function2Id, XDFBInsertRemoveTools.INSERT_REMOVE_FUNCTION_PORT, actorFunctionInputPortId,
         actorFunctionOutputPortId);
-    xdfb.showElements(actorFunctionId, XDFBInsertRemoveTools.INSERT_REMOVE_FUNCTION_PORT, actorFunctionInputPortId,
+    xdfb.showElements(function2Id, XDFBInsertRemoveTools.INSERT_REMOVE_FUNCTION_PORT, actorFunctionInputPortId,
         actorFunctionOutputPortId);
 
     // Hiding a port should hide the functional exchange
     String fe1Id = xdfb.createEdge(functionOutputPortId, actorFunctionInputPortId,
         XDFBCreateEdgeTools.CREATE_FUNCTIONAL_EXCHANGE);
-    xdfb.hideElements(actorFunctionId, XDFBInsertRemoveTools.INSERT_REMOVE_FUNCTION_PORT, actorFunctionInputPortId);
+    xdfb.hideElements(function2Id, XDFBInsertRemoveTools.INSERT_REMOVE_FUNCTION_PORT, actorFunctionInputPortId);
     xdfb.hasntViews(fe1Id);
 
     DiagramHelper.setSynchronized(xdfb.getDiagram(), true);

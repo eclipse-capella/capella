@@ -30,7 +30,6 @@ public interface IToolNameConstants {
   String TOOL_CREATE_FUNCTION_ROUTE = "route";
   String TOOL_CREATE_FUNCTION_SELECT = "select";
   String TOOL_CREATE_FUNCTION_SPLIT = "split";
-  String TOOL_CREATE_ACTOR_FUNCTION = "actor.function";
   String TOOL_CREATE_INPUT_PORT = "input.port";
   String TOOL_CREATE_OUTPUT_PORT = "output.port";
   String TOOL_CREATE_FUNCTIONAL_EXCHANGE = "functional.exchange";
@@ -799,7 +798,6 @@ public interface IToolNameConstants {
 
   // LDFB tools - Logical Data Flow Blank tools
   String TOOL_LDFB_CREATE_LOGICAL_FUNCTION = "logical.function";
-  String TOOL_LDFB_CREATE_ACTOR_FUNCTION = "actor.function";
   String TOOL_LDFB_CREATE_DUPLICATE = "duplicate";
   String TOOL_LDFB_CREATE_GATHER = "gather";
   String TOOL_LDFB_CREATE_ROUTE = "route";
@@ -1345,7 +1343,6 @@ public interface IToolNameConstants {
   String TOOL_PD_SHOW_HIDE_DEPENDENT_PACKAGES = "Show/Hide Dependent Packages";
 
   // PDFB tools - Physical Data Flow Blank tools
-  String TOOL_PDFB_CREATE_ACTOR_FUNCTION = "actor.function";
   String TOOL_PDFB_CREATE_DUPLICATE = "duplicate";
   String TOOL_PDFB_CREATE_GATHER = "gather";
   String TOOL_PDFB_CREATE_ROUTE = "route";
@@ -1496,7 +1493,6 @@ public interface IToolNameConstants {
   String TOOL_LAB_RECONNECT_PHYSICALLINK_SOURCE_ID = "Reconnect PhysicalLink Source";
 
   // SDFB tools - System Data Flow Blank tools
-  String TOOL_SDFB_CREATE_ACTOR_FUNCTION = "actor.function";
   String TOOL_SDFB_CREATE_OUTPUT_PORT = "output.port";
   String TOOL_SDFB_CREATE_INPUT_PORT = "input.port";
   String TOOL_SDFB_CREATE_DUPLICATE = "duplicate";

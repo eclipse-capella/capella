@@ -42,14 +42,6 @@ public class XDFBCreateFunctionalExchange extends XDFBToolsTestingModel {
     String Function1Id = xdfb.createContainer(diagramId, XDFBCreateContainerTools.CREATE_FUNCTION);
     String Function2Id = xdfb.createContainer(diagramId, XDFBCreateContainerTools.CREATE_FUNCTION);
 
-    if (diagramType != Type.OA) {
-      String ActorFunction1Id = xdfb.createContainer(diagramId, XDFBCreateContainerTools.CREATE_ACTOR_FUNCTION);
-      String ActorFunction2Id = xdfb.createContainer(diagramId, XDFBCreateContainerTools.CREATE_ACTOR_FUNCTION);
-
-      xdfb.createEdge(Function2Id, ActorFunction1Id, XDFBCreateEdgeTools.CREATE_FUNCTIONAL_EXCHANGE);
-      xdfb.createEdge(ActorFunction1Id, ActorFunction2Id, XDFBCreateEdgeTools.CREATE_FUNCTIONAL_EXCHANGE);
-    }
-
     xdfb.createEdge(Function1Id, Function2Id, XDFBCreateEdgeTools.CREATE_FUNCTIONAL_EXCHANGE);
   }
 }

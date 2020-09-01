@@ -18,7 +18,6 @@ import java.util.List;
 
 import org.polarsys.capella.test.diagram.tools.ju.xdfb.CompositeChainDisplay;
 import org.polarsys.capella.test.diagram.tools.ju.xdfb.FunctionalChainCycleDetection;
-import org.polarsys.capella.test.diagram.tools.ju.xdfb.XDFBCreateActorFunction;
 import org.polarsys.capella.test.diagram.tools.ju.xdfb.XDFBCreateConstraint;
 import org.polarsys.capella.test.diagram.tools.ju.xdfb.XDFBCreateConstraintLink;
 import org.polarsys.capella.test.diagram.tools.ju.xdfb.XDFBCreateFunction;
@@ -67,7 +66,6 @@ public class XDFBDiagramToolsTestSuite extends BasicTestSuite {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
 
     tests.add(new XDFBCreateFunction());
-    tests.add(new XDFBCreateActorFunction());
     tests.add(new XDFBCreateFunctionalExchange());
     tests.add(new XDFBCreateInputOutputPort());
     tests.add(new XDFBCreateFunctionalChain());

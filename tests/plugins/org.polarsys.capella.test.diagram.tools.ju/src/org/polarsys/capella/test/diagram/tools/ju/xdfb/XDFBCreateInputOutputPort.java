@@ -37,12 +37,8 @@ public class XDFBCreateInputOutputPort extends XDFBToolsTestingModel {
     XDFBDiagram xdfb = XDFBDiagram.openDiagram(context, diagramName, diagramType);
 
     String functionId = xdfb.createContainer(xdfb.getDiagramId(), XDFBCreateContainerTools.CREATE_FUNCTION);
-    String actorFunctionId = xdfb.createContainer(xdfb.getDiagramId(), XDFBCreateContainerTools.CREATE_ACTOR_FUNCTION);
 
     xdfb.createNode(functionId, XDFBCreateNodeTools.CREATE_INPUT_PORT);
     xdfb.createNode(functionId, XDFBCreateNodeTools.CREATE_OUTPUT_PORT);
-
-    xdfb.createNode(actorFunctionId, XDFBCreateNodeTools.CREATE_INPUT_PORT);
-    xdfb.createNode(actorFunctionId, XDFBCreateNodeTools.CREATE_OUTPUT_PORT);
   }
 }

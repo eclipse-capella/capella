@@ -54,27 +54,20 @@ public class XDFBShowHideFunctions extends XDFBToolsTestingModel {
 
     hideAndShow(xdfb, function1Id, function2Id);
 
-    if (diagramType != Type.OA) {
-      String actorFunction1Id = xdfb.createContainer(diagramId, XDFBCreateContainerTools.CREATE_ACTOR_FUNCTION);
-      String actorFunction2Id = xdfb.createContainer(diagramId, XDFBCreateContainerTools.CREATE_ACTOR_FUNCTION);
-      hideAndShow(xdfb, actorFunction1Id, actorFunction2Id);
-      
-    } else {
-      String actorFunction1Id = xdfb.createContainer(diagramId, XDFBCreateContainerTools.CREATE_FUNCTION);
-      String actorFunction2Id = xdfb.createContainer(diagramId, XDFBCreateContainerTools.CREATE_FUNCTION);
-      context.getExecutionManager().execute(new AbstractReadWriteCommand() {
-        
-        @Override
-        public void run() {
-          Component actor = context.getSemanticElement(OA__ACTOR_ID);
-          AbstractFunction actorFunction1 = context.getSemanticElement(actorFunction1Id);
-          AbstractFunction actorFunction2 = context.getSemanticElement(actorFunction2Id);
-          FunctionAllocator.allocate(actorFunction1).on(actor);
-          FunctionAllocator.allocate(actorFunction2).on(actor);
-        }
-      });
-      hideAndShow(xdfb, actorFunction1Id, actorFunction2Id);
-    }
+    String actorFunction1Id = xdfb.createContainer(diagramId, XDFBCreateContainerTools.CREATE_FUNCTION);
+    String actorFunction2Id = xdfb.createContainer(diagramId, XDFBCreateContainerTools.CREATE_FUNCTION);
+    context.getExecutionManager().execute(new AbstractReadWriteCommand() {
+
+      @Override
+      public void run() {
+        Component actor = context.getSemanticElement(OA__ACTOR_ID);
+        AbstractFunction actorFunction1 = context.getSemanticElement(actorFunction1Id);
+        AbstractFunction actorFunction2 = context.getSemanticElement(actorFunction2Id);
+        FunctionAllocator.allocate(actorFunction1).on(actor);
+        FunctionAllocator.allocate(actorFunction2).on(actor);
+      }
+    });
+    hideAndShow(xdfb, actorFunction1Id, actorFunction2Id);
   }
 
   private void hideAndShow(XDFBDiagram xdfb, String... functions) {
