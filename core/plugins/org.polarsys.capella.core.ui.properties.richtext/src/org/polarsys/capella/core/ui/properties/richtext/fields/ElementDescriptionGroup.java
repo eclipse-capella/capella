@@ -419,7 +419,9 @@ public abstract class ElementDescriptionGroup {
    * Save the text field's content
    */
   public void save() {
-    descriptionTextField.saveContent();
+    if (descriptionTextField.getElement() != null && descriptionTextField.getFeature() != null) {
+      descriptionTextField.saveContent();
+    }
   }
 
   /**
