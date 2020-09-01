@@ -117,6 +117,10 @@ If not activated, there are two possibilities:
 * Verify whether the language pack used for spellchecking is installed on the system. If you want to check the typing in French, the French language package must be installed on the Windows. One way to verify the available languages for spellchecking is to look at the folder '''%AppData%\Microsoft\Spelling'''
 * Override the registry value for the feature control '''HKEY_CURRENT_USER / SOFTWARE / Internet Explorer / Main / FeatureControl / FEATURE_SPELLCHECKING / eclipse.exe = (DWORD) 00000001''' and then restart the application.
 
+'''Known issues'''
+
+* The editor is web-based which makes the text in the editor is saved in an asynchronous way. Some actions can lead to the lost of its text, for example, double-clicking on an element right after modifying the text in the property view. To avoid all of these issues, users should click on the Save button inside the editor to make sure everything is properly saved.
+
 ----
 '''Disable Richtext'''
 
