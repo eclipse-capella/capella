@@ -20440,9 +20440,9 @@
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column (only available for Intersection Mapping)."/>
           <variables name="root" documentation="The semantic element of the table."/>
           <firstModelOperation xsi:type="tool_1:ChangeContext" browseExpression="aql:lineSemantic">
-            <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:lineSemantic.oclIsKindOf(fa::FunctionalChain) or lineSemantic.oclIsKindOf(interaction::AbstractCapability)">
-              <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:arg0 = '' and lineSemantic.availableInStates->includes(columnSemantic)">
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:lineSemantic.inActiveAnElement(columnSemantic)"/>
+            <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:columnSemantic.oclIsKindOf(fa::FunctionalChain) or columnSemantic.oclIsKindOf(interaction::AbstractCapability)">
+              <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:arg0 = '' and columnSemantic.availableInStates->includes(lineSemantic)">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:columnSemantic.inActiveAnElement(lineSemantic)"/>
               </subModelOperations>
             </subModelOperations>
           </firstModelOperation>
