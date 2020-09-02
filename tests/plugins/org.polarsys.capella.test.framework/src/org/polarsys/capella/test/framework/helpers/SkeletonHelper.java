@@ -30,6 +30,7 @@ import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
 import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.ctx.SystemComponentPkg;
+import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.data.ctx.SystemFunctionPkg;
 import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.information.AbstractEventOperation;
@@ -48,15 +49,18 @@ import org.polarsys.capella.core.data.la.LaPackage;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.la.LogicalComponentPkg;
+import org.polarsys.capella.core.data.la.LogicalFunction;
 import org.polarsys.capella.core.data.la.LogicalFunctionPkg;
 import org.polarsys.capella.core.data.oa.EntityPkg;
 import org.polarsys.capella.core.data.oa.OaPackage;
+import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.oa.OperationalActivityPkg;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.data.pa.PaPackage;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentPkg;
+import org.polarsys.capella.core.data.pa.PhysicalFunction;
 import org.polarsys.capella.core.data.pa.PhysicalFunctionPkg;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.naming.NamingConstants;
@@ -115,6 +119,44 @@ public class SkeletonHelper {
 
   }
 
+  public static void createFunction(String containerId, String elementId, SessionContext context) {
+    EObject container = context.getSemanticElement(containerId);
+
+    if (container instanceof OperationalActivityPkg) {
+      createObject(elementId, containerId, OaPackage.Literals.OPERATIONAL_ACTIVITY_PKG__OWNED_OPERATIONAL_ACTIVITIES,
+          OaPackage.Literals.OPERATIONAL_ACTIVITY, elementId, context);
+
+    } else if (container instanceof SystemFunctionPkg) {
+      createObject(elementId, containerId, CtxPackage.Literals.SYSTEM_FUNCTION_PKG__OWNED_SYSTEM_FUNCTIONS,
+          CtxPackage.Literals.SYSTEM_FUNCTION, elementId, context);
+
+    } else if (container instanceof LogicalFunctionPkg) {
+      createObject(elementId, containerId, LaPackage.Literals.LOGICAL_FUNCTION_PKG__OWNED_LOGICAL_FUNCTIONS,
+          LaPackage.Literals.LOGICAL_FUNCTION, elementId, context);
+
+    } else if (container instanceof PhysicalFunctionPkg) {
+      createObject(elementId, containerId, PaPackage.Literals.PHYSICAL_FUNCTION_PKG__OWNED_PHYSICAL_FUNCTIONS,
+          PaPackage.Literals.PHYSICAL_FUNCTION, elementId, context);
+      
+    } else if (container instanceof OperationalActivity) {
+      createObject(elementId, containerId, FaPackage.Literals.ABSTRACT_FUNCTION__OWNED_FUNCTIONS,
+          OaPackage.Literals.OPERATIONAL_ACTIVITY, elementId, context);
+
+    } else if (container instanceof SystemFunction) {
+      createObject(elementId, containerId, FaPackage.Literals.ABSTRACT_FUNCTION__OWNED_FUNCTIONS,
+          CtxPackage.Literals.SYSTEM_FUNCTION, elementId, context);
+
+    } else if (container instanceof LogicalFunction) {
+      createObject(elementId, containerId, FaPackage.Literals.ABSTRACT_FUNCTION__OWNED_FUNCTIONS,
+          LaPackage.Literals.LOGICAL_FUNCTION, elementId, context);
+
+    } else if (container instanceof PhysicalFunction) {
+      createObject(elementId, containerId, FaPackage.Literals.ABSTRACT_FUNCTION__OWNED_FUNCTIONS,
+          PaPackage.Literals.PHYSICAL_FUNCTION, elementId, context);
+    }
+
+  }
+
   public static void createCapabilityPkg(String containerId, String elementId, SessionContext context) {
     EObject container = context.getSemanticElement(containerId);
 
@@ -168,13 +210,11 @@ public class SkeletonHelper {
           PaPackage.Literals.PHYSICAL_COMPONENT_PKG, NamingConstants.CreatePhysicalArchCmd_actors_pkg_name, context);
 
     } else if (container instanceof EntityPkg) {
-      return createObject(elementId, containerId,
-          OaPackage.Literals.ENTITY_PKG__OWNED_ENTITY_PKGS, OaPackage.Literals.ENTITY_PKG,
-          elementId, context);
-      
+      return createObject(elementId, containerId, OaPackage.Literals.ENTITY_PKG__OWNED_ENTITY_PKGS,
+          OaPackage.Literals.ENTITY_PKG, elementId, context);
+
     } else if (container instanceof SystemComponentPkg) {
-      return createObject(elementId, containerId,
-          CtxPackage.Literals.SYSTEM_COMPONENT_PKG__OWNED_SYSTEM_COMPONENT_PKGS,
+      return createObject(elementId, containerId, CtxPackage.Literals.SYSTEM_COMPONENT_PKG__OWNED_SYSTEM_COMPONENT_PKGS,
           CtxPackage.Literals.SYSTEM_COMPONENT_PKG, elementId, context);
 
     } else if (container instanceof LogicalComponentPkg) {
@@ -415,11 +455,8 @@ public class SkeletonHelper {
 
   public static void createActor(final String containerId, final String elementId, String partId,
       final SessionContext context) {
-    createObject(elementId, containerId, CtxPackage.Literals.SYSTEM_COMPONENT_PKG__OWNED_SYSTEM_COMPONENTS,
-        CtxPackage.Literals.SYSTEM_COMPONENT, elementId, context);
-
-    Part part = ((SystemComponent) context.getSemanticElement(elementId)).getRepresentingParts().get(0);
-    context.putSemanticElement(partId, part);
+    BlockArchitectureExt.Type type = BlockArchitectureExt.getBlockArchitectureType(BlockArchitectureExt.getRootBlockArchitecture(context.getSemanticElement(containerId)));
+    createComponent(containerId, elementId, partId, context, type, true);
   }
 
   public static Object createComponent(final String containerId, final String elementId, String partId,
@@ -427,6 +464,10 @@ public class SkeletonHelper {
     EStructuralFeature feature = null;
     EClass clazz = null;
     switch (type) {
+    case OA:
+      feature = OaPackage.Literals.ENTITY_PKG__OWNED_ENTITIES;
+      clazz = OaPackage.Literals.ENTITY;
+      break;
     case SA:
       feature = CtxPackage.Literals.SYSTEM_COMPONENT_PKG__OWNED_SYSTEM_COMPONENTS;
       clazz = CtxPackage.Literals.SYSTEM_COMPONENT;
@@ -485,8 +526,7 @@ public class SkeletonHelper {
     return object;
   }
 
-  public static void moveComponent(final String containerId, final String elementId,
-      final SessionContext context) {
+  public static void moveComponent(final String containerId, final String elementId, final SessionContext context) {
     Component component = context.getSemanticElement(elementId);
     Part part = component.getRepresentingParts().get(0);
     SkeletonHelper.moveObject(part.getId(), containerId, context);
