@@ -24,6 +24,7 @@ import org.polarsys.capella.test.diagram.tools.ju.xfbd.LFBDScenario;
 import org.polarsys.capella.test.diagram.tools.ju.xfbd.OABDScenario;
 import org.polarsys.capella.test.diagram.tools.ju.xfbd.PFBDScenario;
 import org.polarsys.capella.test.diagram.tools.ju.xfbd.SFBDScenario;
+import org.polarsys.capella.test.diagram.tools.ju.xfbd.XFBDBlueBold;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 
@@ -56,6 +57,7 @@ public class XBDiagramToolsTestSuite extends BasicTestSuite {
     tests.add(new SFBDScenario());
     tests.add(new LFBDScenario());
     tests.add(new PFBDScenario());
+    tests.add(new XFBDBlueBold());
     return tests;
   }
 

@@ -26,6 +26,7 @@ import org.polarsys.capella.test.diagram.misc.ju.testcases.Bug2579TestCase;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.CheckDiagramDirtyStateOnOpeningTestCase;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.CheckPhysCompNatureOptionTestCase;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.CloneDiagramTestCase;
+import org.polarsys.capella.test.diagram.misc.ju.testcases.ColorNameConstantsTest;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.DDiagramEditorUndoRedoHandlerTest;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.DecompositionWizardTestCase;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.GraphTest;
@@ -73,6 +74,7 @@ public class DiagramMiscTestSuite extends BasicTestSuite {
     tests.add(new DeleteFromModelSemanticTarget());
     tests.add(new DeleteFromModelContainerSemanticTarget());
     tests.add(new AllocationManagementTest());
+    tests.add(new ColorNameConstantsTest());
     
     return tests;
   }
