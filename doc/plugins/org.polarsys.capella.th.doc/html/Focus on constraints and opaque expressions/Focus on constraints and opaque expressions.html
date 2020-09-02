@@ -1,1 +1,67 @@
-<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Focus on constraints and opaque expressions</title><link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/></head><body><h1 id="Focus_on_constraints_and_opaque_expressions">Focus on constraints and opaque expressions</h1><h2 id="Constraints">Constraints</h2><p>Constraints are expression to define the role or the scope of an element. They can be defined under every model elements. The same constraint can be applied on every element using the Constrained Elements reference. The element on which the constraint is applied is called the context of a constraint. Constraints always have only one context which is the owner of this constraint.</p><p>Constraints can be defined and represented on every kind of diagram</p><p><img height="300" width="500" border="0" src="Images/Cons1.png"/><br/></p><p>Hence, palette always define the three following tools to create constraint, to reference ConstraintElements or add an existing constraint in the diagram.</p><p><img height="100" width="220" border="0" src="Images/Cons2.png"/><br/></p><p>The expression of a constraint can be described by Literal Boolean Value, Boolean Reference, Unary or Binary Expressions or by Opaque Expression. The concept of Opaque Expression was added to give more freedom to express complex constraints than with Boolean expression.</p><p><img height="500" width="600" border="0" src="Images/Cons3.png"/><br/></p><h2 id="Opaque_Expressions">Opaque Expressions</h2><p>An opaque expression is an uninterpreted textual statement that denotes a (possibly empty) set of values when evaluated in a context. Opaque Expression value can be defined using multiple languages to represent the same expression. By default, Capella provides a Linked Text language which enable to reference elements from the model and from its referenced libraries.</p><ul><li>LinkedText <br/> <br/> Expression body may include references to model elements. This reference is represented with a hyperlink to this element. If the name of the referenced element changes its textual representation in expressions is updated. Hence, this language and its editor grant more consistency for the expression than a raw text editor thanks to validation and automated correction. Linked Text editor also include an auto completion tools to simplify model reference. </li></ul><p><img height="500" width="600" border="0" src="Images/Cons4.png"/><br/></p><ul><li>Other languages Opaque <br/><br/> Expressions can also be described using other languages, but those other editors only support raw text. An Opaque Expression can be defined in several languages at the same times with a different body for each language.<br/><br/>Languages can be added, removed, or moved. A language is identified by its name, which means that two languages cannot have the same name, and that if LinkedText is removed it can be created again using the name LinkedText.</li></ul><p><img height="500" width="600" border="0" src="Images/Cons5.png"/><br/></p><h2 id="Constraints_label">Constraints label</h2><p>The label of a constraint is either the name of the constraint or their expression (Unary, Binary or Opaque Expression). For constraint defined with opaque expression, the label is simply calculated from the first content which corresponds to the first language in the list. So the label can be adjusted by moving the language list order.</p><h2 id="Constraints_expression_fields_edition">Constraints expression fields edition</h2><p>As Linked Text editor, the direct edition of the following constraint expression fields include a content edition assist, simplifying model elements reference:</p><ul><li>Guard (State Transition/ Operand)</li><li>Pre/Post Condition (Scenario)</li><li>Exchange Context (Sequence Message)</li><li>Owned Specification (Constraint)</li><li>Change Event/ Time Event (State Transition)</li></ul><p><img height="500" width="600" border="0" src="Images/Cons6.png"/><br/></p></body></html>
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>Focus on constraints and opaque expressions</title>
+		<link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/>
+	</head>
+	<body>
+		<h1 id="Focus_on_constraints_and_opaque_expressions">Focus on constraints and opaque expressions</h1>
+		<h2 id="Constraints">Constraints</h2>
+		<p>Constraints are expression to define the role or the scope of an element. They can be defined under every model elements. The same constraint can be applied on every element using the Constrained Elements reference. The element on which the constraint is applied is called the context of a constraint. Constraints always have only one context which is the owner of this constraint.</p>
+		<p>Constraints can be defined and represented on every kind of diagram</p>
+		<p>
+			<img height="300" width="500" border="0" src="Images/Cons1.png"/>
+			<br/>
+		</p>
+		<p>Hence, palette always define the three following tools to create constraint, to reference ConstraintElements or add an existing constraint in the diagram.</p>
+		<p>
+			<img height="100" width="220" border="0" src="Images/Cons2.png"/>
+			<br/>
+		</p>
+		<p>The expression of a constraint can be described by Literal Boolean Value, Boolean Reference, Unary or Binary Expressions or by Opaque Expression. The concept of Opaque Expression was added to give more freedom to express complex constraints than with Boolean expression.</p>
+		<p>
+			<img height="500" width="600" border="0" src="Images/Cons3.png"/>
+			<br/>
+		</p>
+		<h2 id="Opaque_Expressions">Opaque Expressions</h2>
+		<p>An opaque expression is an uninterpreted textual statement that denotes a (possibly empty) set of values when evaluated in a context. Opaque Expression value can be defined using multiple languages to represent the same expression. By default, Capella provides a Linked Text language which enable to reference elements from the model and from its referenced libraries.</p>
+		<ul>
+			<li>LinkedText 
+				<br/> 
+				<br/> Expression body may include references to model elements. This reference is represented with a hyperlink to this element. If the name of the referenced element changes its textual representation in expressions is updated. Hence, this language and its editor grant more consistency for the expression than a raw text editor thanks to validation and automated correction. Linked Text editor also include an auto completion tools to simplify model reference. 
+			</li>
+		</ul>
+		<p>
+			<img height="500" width="600" border="0" src="Images/Cons4.png"/>
+			<br/>
+		</p>
+		<ul>
+			<li>Other languages Opaque 
+				<br/>
+				<br/> Expressions can also be described using other languages, but those other editors only support raw text. An Opaque Expression can be defined in several languages at the same times with a different body for each language.
+				<br/>
+				<br/>Languages can be added, removed, or moved. A language is identified by its name, which means that two languages cannot have the same name, and that if LinkedText is removed it can be created again using the name LinkedText.
+			</li>
+		</ul>
+		<p>
+			<img height="500" width="600" border="0" src="Images/Cons5.png"/>
+			<br/>
+		</p>
+		<h2 id="Constraints_label">Constraints label</h2>
+		<p>The label of a constraint is either the name of the constraint or their expression (Unary, Binary or Opaque Expression). For constraint defined with opaque expression, the label is simply calculated from the first content which corresponds to the first language in the list. So the label can be adjusted by moving the language list order.</p>
+		<h2 id="Constraints_expression_fields_edition">Constraints expression fields edition</h2>
+		<p>As Linked Text editor, the direct edition of the following constraint expression fields include a content edition assist, simplifying model elements reference:</p>
+		<ul>
+			<li>Guard (State Transition/ Operand)</li>
+			<li>Pre/Post Condition (Scenario)</li>
+			<li>Exchange Context (Sequence Message)</li>
+			<li>Owned Specification (Constraint)</li>
+			<li>Change Event/ Time Event (State Transition)</li>
+		</ul>
+		<p>
+			<img height="500" width="600" border="0" src="Images/Cons6.png"/>
+			<br/>
+		</p>
+	</body>
+</html>

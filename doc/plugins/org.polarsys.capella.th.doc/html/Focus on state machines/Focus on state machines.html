@@ -1,9 +1,261 @@
-<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Focus on state machines</title><link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/></head><body><h1 id="Focus_on_the_news_of_state_machines">Focus on the news of state machines</h1><h2 id="State_and_mode_definition">State and mode definition</h2><p>A <b>mode</b> or a <b>state</b> characterizes the (internal or external) context of an element, which determines the behavior of the element at a given time.</p><p>Many elements of the model may need modes &amp; states definition: <b>operational entities and actors, the system itself (most frequently), system components.</b></p><ul><li>The <b>mode</b> of an element defines the kind of element (exploitation expected in given use conditions). A mode is activated by operators. It is usually the result of a design decision and is an expected behavior feature of the element. Analogy: see “a mode of payment”, “a mode of transport”… Example: Online test, Maintenance, Daily Servicing, nominal/operational, training... Radio Set examples: frequency scanning, auto store, sound parameters edition, mono/stereo, AM/FM…</li></ul><p><img height="350" width="750" border="0" src="Images/SM1.png"/></p><ul><li>The <b>state</b> of an element characterizes the element (behavior in given environmental conditions). A state is activated mainly by external conditions, or by operators. It may be unexpected and even suffered. <br/>Analogy: see “a good general state”, “a sorry state”… <br/>Radio Set Examples: Initialization, failed, receiving, non-receiving, play...</li></ul><p><img height="350" width="650" border="0" src="Images/SM2.png"/></p><h2 id="Kinds_of_States_and_Modes">Kinds of States and Modes</h2><p>States and modes can be simple or composite.</p><ul><li><b>Simple state/mode</b>: A simple state/mode is a state/mode that does not have sub states/modes.</li><li><b>Composite state/mode</b>: A composite state/mode either contains one region or is decomposed into two or more orthogonal regions. Each region has a set of states/mode and a set of transitions. Any state/mode enclosed within a region of a composite state/mode is called a sub state of that composite state/mode.</li></ul><p>The state “Washing” in the Figure 3 is a composite state. This state is composed by two sub states and three transitions.</p><p><img height="300" width="500" border="0" src="Images/SM3.png"/></p><p>It is possible to include a state into a mode and conversely a mode into a state. It is recommended to avoid this kind of composition.</p><p>A <b>region</b> is a top-level part of a State Machine or a composite State, which serves as a container for the States/Modes, Pseudo-States and Transitions. A State Machine or composite State may contain multiple Regions representing behaviors that may occur in parallel. The Region concept is already present in Capella M2. But it is not yet tooled in the diagrams: the content of all Regions is graphically "merged". See Figure 14.</p><h2 id="State_and_mode_actions">State and mode actions</h2><p>State and mode can perform three optional actions: Entry, Do activity and Exit. The actions can be selected among operational activities/functions referenced in this Mode/State or Operations which belongs to the same layer.</p><ul><li><b>Entry</b>: An optional action that is executed whenever this state is entered, regardless of the transition taken to reach the state.</li></ul><ul><li><b>Do activity</b>: An optional action that is executed while being in the state. The execution starts when this state is entered, and stops either by itself or when the state is exited whichever comes first.</li></ul><ul><li><b>Exit</b>: An optional action that is executed whenever this state is exited regardless of which transition was taken out of the state. If defined, exit actions are always executed to completion only after all internal activities and transition actions have completed execution.</li></ul><p><img height="100" width="300" border="0" src="Images/SM4.png"/></p><p>The State and Mode action can be set using the dialog properties.</p><p><img height="600" width="600" border="0" src="Images/SM5.png"/></p><h2 id="Transitions">Transitions</h2><p>A Transition is a single directed relationship originating from a single source State/Mode or Pseudo-State and terminating on a single target State, Mode or Pseudo-State, which specifies a valid fragment of a State Machine Behavior. A transition may have a trigger, a guard and an effect, as below.</p><ul><li><b>Trigger</b>: Specifies the triggers that may fire the transition. A State Transition can be triggered by one or many Time Event, Change Event, Functional Exchanges, Exchange Item or Operations.<ul><li><b>Time Event</b>: specifies a point in time. At the specified time, the event occurs. A time event specifies a point in time by an expression. The expression can use two kinds: ‘AT’ and ‘AFTER’.<ul><li>AT: used to specify an absolute time trigger followed by an expression that evaluates to a time value, such as “at Jan. 1, 2015, Noon.".</li><li>AFTER: used to specify a relative time trigger followed by an expression that evaluates to a time value, such as “after (10 seconds).”</li></ul></li><li><b>Change Event</b>: A change event occurs when a Boolean-valued expression becomes true.</li></ul></li></ul><p>The Figure 6 illustrates the use of ChangeEvent and TimeEvent in state machine of a washing machine. The transition from the state ‘HeatingWater’ to the state ‘Washing’ is triggered when the water temperature is equal to 30C. The transition from the state ‘Washing’ to the state ‘Rinsing’ is triggered 45 minutes after the washing start.</p><p><img height="125" width="725" border="0" src="Images/SM6.png"/></p><ul><li><b>Guard</b>: a Transition may have an associated guard Constraint. Transitions that have a guard which evaluates to false are disabled. The guard is evaluated when an event occurrence is dispatched by the state machine. If the guard is true at that time, the transition may be enabled; otherwise, it is disabled.</li></ul><ul><li><b>Effect</b>: A Transition may have an associated effect Behavior, which is executed when the Transition is fired (executed)</li></ul><p>The following state machine (cf. Figure 7), shows the two main states of the door lifetime “Opened” and “Closed”. If the door is in the state “Opened”, it can respond to the “CloseEvent” event if the condition “doorWay-&gt;isEmpty” is fulfilled. The transition (cf. Figure 8) from the state “Opened” to the state “Closed” defines a “Guard” and an “Effect”. The “Guard” is represented by the constraint “doorway-&gt;isEmpty” and the “Effect” is represented by the function “Close”.</p><p><img height="300" width="650" border="0" src="Images/SM7.png"/></p><p><img height="650" width="600" border="0" src="Images/SM8.png"/></p><p>In diagrams, it is possible to cross the boundaries of a composite state/mode (red transitions on the Figure 9).</p><p><img height="300" width="750" border="0" src="Images/SM9.png"/></p><h2 id="History_States">History States</h2><p>A composite state may contain shallow history and deep history states.</p><p><img height="35" width="35" border="0" src="Images/SM10.png"/><br/>
-A <b>Shallow history state</b> is a reference to the most recently visited state on the same hierarchical level within the composite state.</p><p><img height="40" width="40" border="0" src="Images/SM11.png"/><br/>
-A <b>Deep history stat</b>e is a reference to the most recently visited simple state within the composite state.</p><p>The following diagram illustrates (cf. Figure 10) the use of the History states. The example is a state machine belonging to a washing machine.</p><p><img height="500" width="800" border="0" src="Images/SM12.png"/></p><p>In this state machine, when a washing machine is running in the “Running” state, it will progress from “HeatingWater” through "Washing" to "Rinsing". If there is a power cut at the state “FirstWashing”, the washing machine will stop running and will go to the "Power Off" state. Then when the power is restored, the “Running” state can entered at “Deep” or “Shallow” history state.</p><ul><li>If the “Running” state is entered at the state “ShallowHistory” it should resume at the beginning of the state “Washing” which is the state “PreWashing”.</li></ul><ul><li>If the “Running” state is entered at the state “DeepHistory” it should resume at the state “FirstWashing”.</li></ul><h2 id="Initial_Pseudo_State_and_Final_State">Initial Pseudo State and Final State</h2><p><img height="35" width="35" border="0" src="Images/SM13.png"/><br/>
-An <b>Initial Pseudo state</b> is used to represent the initial state when entering in a mode, state or state machine. </p><p><img height="40" width="40" border="0" src="Images/SM14.png"/><br/>
-A <b>Final State</b> represents the end of a sub state or state machine.</p><p>Using Initial Pseudo State and Final simplify Mode or State reusability. Whatever the incoming transition is, the Mode or State will begin in its initial state. At the same time, whatever happens in the state the Final State allow to go out of the current state</p><p>The washing machine represented in Figure 10 illustrates perfectly those concepts. Before anything is done, the washing machine is in an “Idle” state. If the “Filing Water” is performed, the washing machine enters in the “Running” state, which begins with the “Heating Water” sub state and continues with “Washing” state. This “Washing” state begins with “PreWashing” and finish after the “FirstWashing”. Ending the “Washing” state now triggers the “Rinsing” state which ends the “Running” state to continue with “Spinning”. Then, the washing machine returns in its initial “Idle” state.</p><h2 id="Entry_and_Exit_Point">Entry and Exit Point</h2><p><img height="35" width="35" border="0" src="Images/SM15.png"/><br/>
-An <b>Entry Point</b> is used to join an external transition terminating on that “Entry Point” to internals transitions emanating from that “Entry Point”. The “Entry Point” has at most a single transition to a State, Mode or Pseudo-State within the same region. </p><p><img height="35" width="35" border="0" src="Images/SM16.png"/><br/>
-An <b>Exit Point</b> is used to join an internal transition terminating on that “Exit Point” to an external transition emanating from that “Exit Point”.</p><p>The main purpose of such entry and exit points is to execute the state entry and exit actions respectively in between the actions that are associated with the joined transitions.</p><p>The following diagram illustrates (cf. Figure 11) the use of Entry and Exit points. The example is a state machine belonging to a drinks distributor.</p><p><img height="400" width="500" border="0" src="Images/SM17.png"/><br/></p><h2 id="Choice_Pseudo-State">Choice Pseudo-State</h2><p>A <b>Choice</b> pseudo-state is shown as a diamond with one incoming transition and two or more outgoing transitions. Choice is used to realize a dynamic conditional branch. It allows splitting of compound transitions into multiple alternative paths. Hence, the decision on which path to take may depend on the results of Behavior executions performed in the same compound transition prior to reaching the choice point.</p><p><img height="350" width="550" border="0" src="Images/SM18.png"/><br/></p><h2 id="Terminate_Pseudo-State">Terminate Pseudo-State</h2><p>Entering a <b>Terminate Pseudo-State</b> implies that the execution of the State Machine is terminated immediately.</p><p><img height="150" width="400" border="0" src="Images/SM19.png"/><br/></p><h2 id="Fork_and_Join">Fork and Join</h2><p>A <b>Fork</b> Pseudo-State serves to split an incoming transition into two or more transitions terminating on different orthogonal regions. 
-<br/>A <b>Join</b> Pseudo- State serves to merge several transitions emanating from different orthogonal regions.</p><p><img height="450" width="800" border="0" src="Images/SM20.png"/><br/></p><h2 id="Region">Region</h2><p><b>Regions</b> concept in state machine diagrams enables to describe some concurrent behavior happening within the state machine’s owning element.
-The Region concept is now present in Capella and tooled in <b>[MSM] Mode State Machine diagram</b>.</p><p>The new [MSM] Mode State Machine diagrams replaces the old [M&amp;S] Mode &amp; States diagram. The following improvements have been realized:</p><ul><li>Management of concurrent Regions:</li></ul><p><center><img height="300" width="650" border="0" src="Images/SM21.png"/></center><br/></p><ul><li>Entry, DoActivity, Exit  are displayed in the right order on a Mode/State:</li></ul><p><center><img height="100" width="450" border="0" src="Images/SM22.png"/></center><br/></p><ul><li>For a State/Mode, Semantic browser can show its owned Entry/Exit point:</li></ul><p><center><img height="250" width="350" border="0" src="Images/SM23.png"/></center><br/></p><ul><li>For an Entry/Exit point, Semantic browser can show its parent region:</li></ul><p><center><img height="225" width="325" alt="middle" border="0" src="Images/SM24.png"/></center><br/></p><ul><li>A new filter has been added:</li></ul><p><center><img height="100" width="325" border="0" src="Images/SM25.png"/></center><br/></p><ul><li>State/Mode can be now self-connected by a transition:</li></ul><p><center><img height="100" width="225" border="0" src="Images/SM26.png"/></center><br/></p><p><i>Note: Wherefore, it is not recommended to use Fork and Join pseudo state.</i></p></body></html>
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>Focus on state machines</title>
+		<link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/>
+	</head>
+	<body>
+		<h1 id="Focus_on_the_news_of_state_machines">Focus on the news of state machines</h1>
+		<h2 id="State_and_mode_definition">State and mode definition</h2>
+		<p>A 
+			<b>mode</b> or a 
+			<b>state</b> characterizes the (internal or external) context of an element, which determines the behavior of the element at a given time.
+		</p>
+		<p>Many elements of the model may need modes &amp; states definition: 
+			<b>operational entities and actors, the system itself (most frequently), system components.</b>
+		</p>
+		<ul>
+			<li>The 
+				<b>mode</b> of an element defines the kind of element (exploitation expected in given use conditions). A mode is activated by operators. It is usually the result of a design decision and is an expected behavior feature of the element. Analogy: see “a mode of payment”, “a mode of transport”… Example: Online test, Maintenance, Daily Servicing, nominal/operational, training... Radio Set examples: frequency scanning, auto store, sound parameters edition, mono/stereo, AM/FM…
+			</li>
+		</ul>
+		<p>
+			<img height="350" width="750" border="0" src="Images/SM1.png"/>
+		</p>
+		<ul>
+			<li>The 
+				<b>state</b> of an element characterizes the element (behavior in given environmental conditions). A state is activated mainly by external conditions, or by operators. It may be unexpected and even suffered. 
+				<br/>Analogy: see “a good general state”, “a sorry state”… 
+				<br/>Radio Set Examples: Initialization, failed, receiving, non-receiving, play...
+			</li>
+		</ul>
+		<p>
+			<img height="350" width="650" border="0" src="Images/SM2.png"/>
+		</p>
+		<h2 id="Kinds_of_States_and_Modes">Kinds of States and Modes</h2>
+		<p>States and modes can be simple or composite.</p>
+		<ul>
+			<li>
+				<b>Simple state/mode</b>: A simple state/mode is a state/mode that does not have sub states/modes.
+			</li>
+			<li>
+				<b>Composite state/mode</b>: A composite state/mode either contains one region or is decomposed into two or more orthogonal regions. Each region has a set of states/mode and a set of transitions. Any state/mode enclosed within a region of a composite state/mode is called a sub state of that composite state/mode.
+			</li>
+		</ul>
+		<p>The state “Washing” in the Figure 3 is a composite state. This state is composed by two sub states and three transitions.</p>
+		<p>
+			<img height="300" width="500" border="0" src="Images/SM3.png"/>
+		</p>
+		<p>It is possible to include a state into a mode and conversely a mode into a state. It is recommended to avoid this kind of composition.</p>
+		<p>A 
+			<b>region</b> is a top-level part of a State Machine or a composite State, which serves as a container for the States/Modes, Pseudo-States and Transitions. A State Machine or composite State may contain multiple Regions representing behaviors that may occur in parallel. The Region concept is already present in Capella M2. But it is not yet tooled in the diagrams: the content of all Regions is graphically "merged". See Figure 14.
+		</p>
+		<h2 id="State_and_mode_actions">State and mode actions</h2>
+		<p>State and mode can perform three optional actions: Entry, Do activity and Exit. The actions can be selected among operational activities/functions referenced in this Mode/State or Operations which belongs to the same layer.</p>
+		<ul>
+			<li>
+				<b>Entry</b>: An optional action that is executed whenever this state is entered, regardless of the transition taken to reach the state.
+			</li>
+		</ul>
+		<ul>
+			<li>
+				<b>Do activity</b>: An optional action that is executed while being in the state. The execution starts when this state is entered, and stops either by itself or when the state is exited whichever comes first.
+			</li>
+		</ul>
+		<ul>
+			<li>
+				<b>Exit</b>: An optional action that is executed whenever this state is exited regardless of which transition was taken out of the state. If defined, exit actions are always executed to completion only after all internal activities and transition actions have completed execution.
+			</li>
+		</ul>
+		<p>
+			<img height="100" width="300" border="0" src="Images/SM4.png"/>
+		</p>
+		<p>The State and Mode action can be set using the dialog properties.</p>
+		<p>
+			<img height="600" width="600" border="0" src="Images/SM5.png"/>
+		</p>
+		<h2 id="Transitions">Transitions</h2>
+		<p>A Transition is a single directed relationship originating from a single source State/Mode or Pseudo-State and terminating on a single target State, Mode or Pseudo-State, which specifies a valid fragment of a State Machine Behavior. A transition may have a trigger, a guard and an effect, as below.</p>
+		<ul>
+			<li>
+				<b>Trigger</b>: Specifies the triggers that may fire the transition. A State Transition can be triggered by one or many Time Event, Change Event, Functional Exchanges, Exchange Item or Operations.
+				<ul>
+					<li>
+						<b>Time Event</b>: specifies a point in time. At the specified time, the event occurs. A time event specifies a point in time by an expression. The expression can use two kinds: ‘AT’ and ‘AFTER’.
+						<ul>
+							<li>AT: used to specify an absolute time trigger followed by an expression that evaluates to a time value, such as “at Jan. 1, 2015, Noon.".</li>
+							<li>AFTER: used to specify a relative time trigger followed by an expression that evaluates to a time value, such as “after (10 seconds).”</li>
+						</ul>
+					</li>
+					<li>
+						<b>Change Event</b>: A change event occurs when a Boolean-valued expression becomes true.
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<p>The Figure 6 illustrates the use of ChangeEvent and TimeEvent in state machine of a washing machine. The transition from the state ‘HeatingWater’ to the state ‘Washing’ is triggered when the water temperature is equal to 30C. The transition from the state ‘Washing’ to the state ‘Rinsing’ is triggered 45 minutes after the washing start.</p>
+		<p>
+			<img height="125" width="725" border="0" src="Images/SM6.png"/>
+		</p>
+		<ul>
+			<li>
+				<b>Guard</b>: a Transition may have an associated guard Constraint. Transitions that have a guard which evaluates to false are disabled. The guard is evaluated when an event occurrence is dispatched by the state machine. If the guard is true at that time, the transition may be enabled; otherwise, it is disabled.
+			</li>
+		</ul>
+		<ul>
+			<li>
+				<b>Effect</b>: A Transition may have an associated effect Behavior, which is executed when the Transition is fired (executed)
+			</li>
+		</ul>
+		<p>The following state machine (cf. Figure 7), shows the two main states of the door lifetime “Opened” and “Closed”. If the door is in the state “Opened”, it can respond to the “CloseEvent” event if the condition “doorWay-&gt;isEmpty” is fulfilled. The transition (cf. Figure 8) from the state “Opened” to the state “Closed” defines a “Guard” and an “Effect”. The “Guard” is represented by the constraint “doorway-&gt;isEmpty” and the “Effect” is represented by the function “Close”.</p>
+		<p>
+			<img height="300" width="650" border="0" src="Images/SM7.png"/>
+		</p>
+		<p>
+			<img height="650" width="600" border="0" src="Images/SM8.png"/>
+		</p>
+		<p>In diagrams, it is possible to cross the boundaries of a composite state/mode (red transitions on the Figure 9).</p>
+		<p>
+			<img height="300" width="750" border="0" src="Images/SM9.png"/>
+		</p>
+		<h2 id="History_States">History States</h2>
+		<p>A composite state may contain shallow history and deep history states.</p>
+		<p>
+			<img height="35" width="35" border="0" src="Images/SM10.png"/>
+			<br/>
+			A 
+			<b>Shallow history state</b> is a reference to the most recently visited state on the same hierarchical level within the composite state.
+		</p>
+		<p>
+			<img height="40" width="40" border="0" src="Images/SM11.png"/>
+			<br/>
+			A 
+			<b>Deep history stat</b>e is a reference to the most recently visited simple state within the composite state.
+		</p>
+		<p>The following diagram illustrates (cf. Figure 10) the use of the History states. The example is a state machine belonging to a washing machine.</p>
+		<p>
+			<img height="500" width="800" border="0" src="Images/SM12.png"/>
+		</p>
+		<p>In this state machine, when a washing machine is running in the “Running” state, it will progress from “HeatingWater” through "Washing" to "Rinsing". If there is a power cut at the state “FirstWashing”, the washing machine will stop running and will go to the "Power Off" state. Then when the power is restored, the “Running” state can entered at “Deep” or “Shallow” history state.</p>
+		<ul>
+			<li>If the “Running” state is entered at the state “ShallowHistory” it should resume at the beginning of the state “Washing” which is the state “PreWashing”.</li>
+		</ul>
+		<ul>
+			<li>If the “Running” state is entered at the state “DeepHistory” it should resume at the state “FirstWashing”.</li>
+		</ul>
+		<h2 id="Initial_Pseudo_State_and_Final_State">Initial Pseudo State and Final State</h2>
+		<p>
+			<img height="35" width="35" border="0" src="Images/SM13.png"/>
+			<br/>
+			An 
+			<b>Initial Pseudo state</b> is used to represent the initial state when entering in a mode, state or state machine. 
+		</p>
+		<p>
+			<img height="40" width="40" border="0" src="Images/SM14.png"/>
+			<br/>
+			A 
+			<b>Final State</b> represents the end of a sub state or state machine.
+		</p>
+		<p>Using Initial Pseudo State and Final simplify Mode or State reusability. Whatever the incoming transition is, the Mode or State will begin in its initial state. At the same time, whatever happens in the state the Final State allow to go out of the current state</p>
+		<p>The washing machine represented in Figure 10 illustrates perfectly those concepts. Before anything is done, the washing machine is in an “Idle” state. If the “Filing Water” is performed, the washing machine enters in the “Running” state, which begins with the “Heating Water” sub state and continues with “Washing” state. This “Washing” state begins with “PreWashing” and finish after the “FirstWashing”. Ending the “Washing” state now triggers the “Rinsing” state which ends the “Running” state to continue with “Spinning”. Then, the washing machine returns in its initial “Idle” state.</p>
+		<h2 id="Entry_and_Exit_Point">Entry and Exit Point</h2>
+		<p>
+			<img height="35" width="35" border="0" src="Images/SM15.png"/>
+			<br/>
+			An 
+			<b>Entry Point</b> is used to join an external transition terminating on that “Entry Point” to internals transitions emanating from that “Entry Point”. The “Entry Point” has at most a single transition to a State, Mode or Pseudo-State within the same region. 
+		</p>
+		<p>
+			<img height="35" width="35" border="0" src="Images/SM16.png"/>
+			<br/>
+			An 
+			<b>Exit Point</b> is used to join an internal transition terminating on that “Exit Point” to an external transition emanating from that “Exit Point”.
+		</p>
+		<p>The main purpose of such entry and exit points is to execute the state entry and exit actions respectively in between the actions that are associated with the joined transitions.</p>
+		<p>The following diagram illustrates (cf. Figure 11) the use of Entry and Exit points. The example is a state machine belonging to a drinks distributor.</p>
+		<p>
+			<img height="400" width="500" border="0" src="Images/SM17.png"/>
+			<br/>
+		</p>
+		<h2 id="Choice_Pseudo-State">Choice Pseudo-State</h2>
+		<p>A 
+			<b>Choice</b> pseudo-state is shown as a diamond with one incoming transition and two or more outgoing transitions. Choice is used to realize a dynamic conditional branch. It allows splitting of compound transitions into multiple alternative paths. Hence, the decision on which path to take may depend on the results of Behavior executions performed in the same compound transition prior to reaching the choice point.
+		</p>
+		<p>
+			<img height="350" width="550" border="0" src="Images/SM18.png"/>
+			<br/>
+		</p>
+		<h2 id="Terminate_Pseudo-State">Terminate Pseudo-State</h2>
+		<p>Entering a 
+			<b>Terminate Pseudo-State</b> implies that the execution of the State Machine is terminated immediately.
+		</p>
+		<p>
+			<img height="150" width="400" border="0" src="Images/SM19.png"/>
+			<br/>
+		</p>
+		<h2 id="Fork_and_Join">Fork and Join</h2>
+		<p>A 
+			<b>Fork</b> Pseudo-State serves to split an incoming transition into two or more transitions terminating on different orthogonal regions. 
+
+			<br/>A 
+			<b>Join</b> Pseudo- State serves to merge several transitions emanating from different orthogonal regions.
+		</p>
+		<p>
+			<img height="450" width="800" border="0" src="Images/SM20.png"/>
+			<br/>
+		</p>
+		<h2 id="Region">Region</h2>
+		<p>
+			<b>Regions</b> concept in state machine diagrams enables to describe some concurrent behavior happening within the state machine’s owning element.
+			The Region concept is now present in Capella and tooled in 
+			<b>[MSM] Mode State Machine diagram</b>.
+		</p>
+		<p>The new [MSM] Mode State Machine diagrams replaces the old [M&amp;S] Mode &amp; States diagram. The following improvements have been realized:</p>
+		<ul>
+			<li>Management of concurrent Regions:</li>
+		</ul>
+		<p><center>
+			<img height="300" width="650" border="0" src="Images/SM21.png"/></center>
+			<br/>
+		</p>
+		<ul>
+			<li>Entry, DoActivity, Exit  are displayed in the right order on a Mode/State:</li>
+		</ul>
+		<p><center>
+			<img height="100" width="450" border="0" src="Images/SM22.png"/></center>
+			<br/>
+		</p>
+		<ul>
+			<li>For a State/Mode, Semantic browser can show its owned Entry/Exit point:</li>
+		</ul>
+		<p><center>
+			<img height="250" width="350" border="0" src="Images/SM23.png"/></center>
+			<br/>
+		</p>
+		<ul>
+			<li>For an Entry/Exit point, Semantic browser can show its parent region:</li>
+		</ul>
+		<p><center>
+			<img height="225" width="325" alt="middle" border="0" src="Images/SM24.png"/></center>
+			<br/>
+		</p>
+		<ul>
+			<li>A new filter has been added:</li>
+		</ul>
+		<p><center>
+			<img height="100" width="325" border="0" src="Images/SM25.png"/></center>
+			<br/>
+		</p>
+		<ul>
+			<li>State/Mode can be now self-connected by a transition:</li>
+		</ul>
+		<p><center>
+			<img height="100" width="225" border="0" src="Images/SM26.png"/></center>
+			<br/>
+		</p>
+		<p>
+			<i>Note: Wherefore, it is not recommended to use Fork and Join pseudo state.</i>
+		</p>
+	</body>
+</html>

@@ -24,7 +24,7 @@ When the type is declared discrete, it means that it defines non continuous or s
 
 Specifies whether the property or association is derived from other model elements such as other properties, associations or constraints. The default value is false.
 
-For instance, a common derived property is the age of a Person, derived from the birthDate. The notation of a derived property is ‚Äú/ derivedProperty‚Äù. 
+For instance, a common derived property is the age of a Person, derived from the birthDate. The notation of a derived property is ì/ derivedPropertyî. 
 
 <center>[[image:Images\image120.png]]</center>
 
@@ -176,7 +176,7 @@ This field indicates the super-types (or generalized types) of the current type.
 
 
 
-As soon as a Generalization relationship is established, the ‚ÄúSuper‚Äù field is automatically filled, as we saw in ¬ß [ Generalization]. Take care that this field can be edited. For instance, if you remove the ''Vehicle'' super-class from the ''Car'' Properties sheet, it deletes the generalization relationship and modifies the underlying model!
+As soon as a Generalization relationship is established, the ìSuperî field is automatically filled, as we saw in ß [ Generalization]. Take care that this field can be edited. For instance, if you remove the ''Vehicle'' super-class from the ''Car'' Properties sheet, it deletes the generalization relationship and modifies the underlying model!
 
 
 
@@ -278,7 +278,7 @@ Collections can be Sequences or Arrays (note that Capella  does not offer yet se
 
 
 
-Note that Collections are more design concepts than analysis concepts. To model domain concepts collections, it is often sufficient to use the cardinality adornment on an association, possibly with the ‚Äúordered‚Äù keyword.
+Note that Collections are more design concepts than analysis concepts. To model domain concepts collections, it is often sufficient to use the cardinality adornment on an association, possibly with the ìorderedî keyword.
 
 
 
@@ -325,7 +325,7 @@ These constructs are mainly used in relation with software programming languages
 Differences between Union and Variant are the following:
 
 * In the Union, one value of the discriminant must be associated to at most one property and a property must always be associated to a value of the discriminant;
-* In the Variant, one value of the discriminant can be associated to any number (0 or more) of properties. By convention a variant property that has no discriminant value associated is deemed to be associated to all values ‚Äã‚Äãof the discriminant: it is the fixed part.
+* In the Variant, one value of the discriminant can be associated to any number (0 or more) of properties. By convention a variant property that has no discriminant value associated is deemed to be associated to all values of the discriminant: it is the fixed part.
 
 
 
@@ -357,7 +357,7 @@ Simple values were explained in the Basic Constructs chapter:
 * See [ Enumeration Literal]
 * See [ Literal Boolean Value]
 * See [ Literal String Value]
-* ‚Ä¶
+* Ö
 
 
 

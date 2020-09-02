@@ -420,13 +420,11 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getDFTarget()">
-                <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.isFunction()">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createFunction()">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.allocateToCapability(containerView)"/>
-                    <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
-                      <parameters name="context" value="aql:container"/>
-                      <parameters name="scope" value="aql:self"/>
-                    </subModelOperations>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createFunction()">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.allocateToCapability(containerView)"/>
+                  <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
+                    <parameters name="context" value="aql:container"/>
+                    <parameters name="scope" value="aql:self"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>

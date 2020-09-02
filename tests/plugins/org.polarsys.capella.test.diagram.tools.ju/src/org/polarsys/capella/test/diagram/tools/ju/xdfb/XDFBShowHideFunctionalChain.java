@@ -42,13 +42,7 @@ public class XDFBShowHideFunctionalChain extends XDFBToolsTestingModel {
 
     String function1Id = xdfb.createContainer(diagramId, XDFBCreateContainerTools.CREATE_FUNCTION);
     String function2Id = xdfb.createContainer(diagramId, XDFBCreateContainerTools.CREATE_FUNCTION);
-    String function3Id = null;
-
-    if (diagramType != Type.OA) {
-      function3Id = xdfb.createContainer(diagramId, XDFBCreateContainerTools.CREATE_ACTOR_FUNCTION);
-    } else {
-      function3Id = xdfb.createContainer(diagramId, XDFBCreateContainerTools.CREATE_FUNCTION);
-    }
+    String function3Id = xdfb.createContainer(diagramId, XDFBCreateContainerTools.CREATE_FUNCTION);
 
     String functionalExchange1Id = xdfb.createEdge(function1Id, function2Id,
         XDFBCreateEdgeTools.CREATE_FUNCTIONAL_EXCHANGE);

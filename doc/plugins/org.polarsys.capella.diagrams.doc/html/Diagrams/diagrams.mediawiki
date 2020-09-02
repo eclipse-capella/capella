@@ -1761,10 +1761,6 @@ This section lists tools that are available on all Capella diagrams. These tools
 | [[Image:Images/icons/full/obj16/FunctionKind_Split.gif]] 
 | 		Creates a new Split 	
 |-
-| 	Actor Function 	
-| [[Image:Images/icons/full/obj16/ActorFunction.gif]] 
-| 		Creates a new Logical Function allocated to a new Logical Actor 	
-|-
 | 	Functional Exchange 	
 | [[Image:Images/icons/full/obj16/FunctionalExchange.gif]] 
 | 		Creates a new Functional Exchange between the Source and Target Logical Functions. If necessary, Function Ports are created automatically. The Functional Exchange is created under the common parent Function of the Source and Target. 	
@@ -2815,10 +2811,6 @@ This section lists tools that are available on all Capella diagrams. These tools
 | [[Image:Images/icons/full/obj16/FunctionKind_Split.gif]] 
 | 		Creates a new Split 	
 |-
-| 	Actor Function 	
-| [[Image:Images/icons/full/obj16/ActorFunction.gif]] 
-| 		Creates a new Physical Function allocated to a new Physical Actor 	
-|-
 | 	Functional Exchange 	
 | [[Image:Images/icons/full/obj16/FunctionalExchange.gif]] 
 | 		Creates a new Functional Exchange between the Source and Target Physical Functions. If necessary, Function Ports are created automatically. The Functional Exchange is created under the common parent Function of the Source and Target. 	
@@ -3132,10 +3124,6 @@ This section lists tools that are available on all Capella diagrams. These tools
 | 	Split 	
 | [[Image:Images/icons/full/obj16/FunctionKind_Split.gif]] 
 | 		Creates a new Split 	
-|-
-| 	Actor Function 	
-| [[Image:Images/icons/full/obj16/ActorFunction.gif]] 
-| 		Creates a new System Function allocated to a new System Actor 	
 |-
 | 	Functional Exchange 	
 | [[Image:Images/icons/full/obj16/FunctionalExchange.gif]] 

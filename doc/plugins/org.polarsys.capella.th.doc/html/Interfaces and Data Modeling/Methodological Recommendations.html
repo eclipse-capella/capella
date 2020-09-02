@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>Methodological Recommendations</title>
 		<link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/>
 	</head>
 	<body>
@@ -29,7 +30,7 @@
 		</p>
 		<h3 id="3NF">3NF</h3>
 		<p>The model shall be 2NF and there is no transitive dependence: X -&gt; Y -&gt; Z</p>
-		<p>A property (attribute or association role) �Y� is functionally dependent on a group of properties �X� = (X1, .., xn) if and only if its value is by nature determined as soon as the value �V� = (V1, .., Vn) from group �X� is known. We note X - &gt;Y.</p>
+		<p>A property (attribute or association role) ‘Y’ is functionally dependent on a group of properties ‘X’ = (X1, .., xn) if and only if its value is by nature determined as soon as the value ‘V’ = (V1, .., Vn) from group ‘X’ is known. We note X - &gt;Y.</p>
 		<p><center>
 			<img border="0" src="Images\image157.png"/></center>
 		</p>
@@ -38,7 +39,7 @@
 		<h2 id="Validating_the_interface_and_data_model">Validating the interface and data model</h2>
 		<p>A large number of rules checked by Capella  apply to the Interface and Data Model. You should rely on them to maintain your model and ensure its consistency and completeness. </p>
 		<p>For instance, in the 
-			<i>Design </i>� 
+			<i>Design </i>– 
 			<i>Well-Formedness </i>category, there is a big 
 			<i>Data </i>group:
 		</p>
@@ -64,7 +65,7 @@
 		<h3 id="Naming_Conventions">Naming Conventions</h3>
 		<p>Capitalize the first letter of class names. </p>
 		<p>Begin property names with a lowercase letter. Multi-word names are often formed by concatenating the words and using lowercase for all letters except for upcasing the first letter of each word but the first.</p>
-		<p>A possible rule for Primitive Classes and Simple Types is to prefix their name with �T�, in order to easily distinguish them from a standard class.</p>
+		<p>A possible rule for Primitive Classes and Simple Types is to prefix their name with “T”, in order to easily distinguish them from a standard class.</p>
 		<h3 id="Package_Structuration">Package Structuration</h3>
 		<p>A package should never contain more than 20 elements. If it the case, break it down into sub-packages.</p>
 		<h3 id="Diagram_Layout">Diagram Layout</h3>
@@ -74,9 +75,9 @@
 		<h3 id="Using_color_codes_on_diagrams">Using color codes on diagrams</h3>
 		<p>This guideline applies to any diagram and any type of model. </p>
 		<p>In case color codes are really needed to identifies specific concerns visually on a diagram, this should be managed in a formal way : </p>
-		<p>� Identifying formally a property or property value which holds the semantic concept under consideration, </p>
-		<p>� Developing a viewpoint that will ensure unicity and consistency of this attribute across all model elements, </p>
-		<p>� Using this same viewpoint to manage the color that is displayed on a diagram. </p>
+		<p>• Identifying formally a property or property value which holds the semantic concept under consideration, </p>
+		<p>• Developing a viewpoint that will ensure unicity and consistency of this attribute across all model elements, </p>
+		<p>• Using this same viewpoint to manage the color that is displayed on a diagram. </p>
 		<p>Using viewpoints will prevent from manual maintenance of the color codes which would be likely to generate inconsistencies and errors with critical impacts.</p>
 		<h3 id="Document_and_annotate_the_model.21">Document and annotate the model!</h3>
 		<p>Do not forget to document extensively your modeling elements and diagrams.</p>

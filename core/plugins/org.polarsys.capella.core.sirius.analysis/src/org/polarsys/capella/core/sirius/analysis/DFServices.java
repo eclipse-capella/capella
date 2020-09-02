@@ -83,10 +83,6 @@ public class DFServices {
       return false;
     }
 
-    // if ActorFunction return false
-    if ((target instanceof AbstractFunction) && FunctionExt.isActorFunction((AbstractFunction) target)) {
-      return false;
-    }
     return !FaServices.getFaServices().isControlNode(target);
   }
 
