@@ -121,6 +121,12 @@ If not activated, there are two possibilities:
 
 * The editor is web-based which makes the text in the editor is saved in an asynchronous way. Some actions can lead to the lost of its text, for example, double-clicking on an element right after modifying the text in the property view. To avoid all of these issues, users should click on the Save button inside the editor to make sure everything is properly saved.
 
+[[Image:Images/SaveButton.png]]
+
+* In case of editor loading problems (e.g. images are not loaded), users can click on the Refresh button to refresh the content of the editor.
+
+[[Image:Images/RefreshButton.png]]
+
 ----
 '''Disable Richtext'''
 
