@@ -6,7 +6,7 @@ Bundle-Version: 1.4.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: org.polarsys.capella.common.data.core.gen.xmi.impl,
  org.polarsys.capella.common.data.modellingcore,
  org.polarsys.capella.common.data.modellingcore.impl,

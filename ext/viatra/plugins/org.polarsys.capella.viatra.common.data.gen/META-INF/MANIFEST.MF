@@ -13,4 +13,4 @@ Automatic-Module-Name: org.polarsys.capella.viatra.common.data.gen
 Import-Package: org.apache.log4j
 Export-Package: org.polarsys.capella.viatra.common.data.activity.surrogate,
  org.polarsys.capella.viatra.common.data.core.surrogate
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11

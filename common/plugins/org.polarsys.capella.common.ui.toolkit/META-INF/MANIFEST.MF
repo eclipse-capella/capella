@@ -16,5 +16,5 @@ Require-Bundle: org.polarsys.capella.common.ui.services,
  org.eclipse.ui;visibility:=reexport,
  org.eclipse.core.databinding;visibility:=reexport
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-Localization: plugin

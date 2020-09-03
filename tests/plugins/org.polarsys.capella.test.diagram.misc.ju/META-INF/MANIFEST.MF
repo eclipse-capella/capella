@@ -21,7 +21,7 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.core.platform.sirius.clipboard,
  org.polarsys.capella.core.preferences
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Export-Package: org.polarsys.capella.test.diagram.misc.ju,

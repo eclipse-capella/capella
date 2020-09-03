@@ -49,5 +49,5 @@ Require-Bundle: org.eclipse.core.expressions,
  org.eclipse.sirius.diagram,
  org.apache.commons.lang
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-Localization: plugin

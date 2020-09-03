@@ -8,7 +8,7 @@ Require-Bundle: org.eclipse.emf.edit;visibility:=reexport,
  org.polarsys.capella.common.tools.report;visibility:=reexport
 Bundle-ActivationPolicy: lazy
 Bundle-Vendor: %providerName
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: org.polarsys.capella.common.bundle,
  org.polarsys.capella.common.lib,
  org.polarsys.capella.common.model,

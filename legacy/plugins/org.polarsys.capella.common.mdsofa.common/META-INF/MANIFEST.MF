@@ -19,6 +19,6 @@ Export-Package: org.polarsys.capella.common.mdsofa.common.activator,
  org.polarsys.capella.common.mdsofa.common.internal.helper,
  org.polarsys.capella.common.mdsofa.common.listener,
  org.polarsys.capella.common.mdsofa.common.misc
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-Activator: org.polarsys.capella.common.mdsofa.common.activator.SolFaCommonActivator
 Bundle-Localization: plugin

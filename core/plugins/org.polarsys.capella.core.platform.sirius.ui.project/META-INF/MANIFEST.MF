@@ -29,5 +29,5 @@ Export-Package: org.polarsys.capella.core.platform.sirius.ui.project,
  org.polarsys.capella.core.platform.sirius.ui.project.internal.preferences,
  org.polarsys.capella.core.platform.sirius.ui.project.operations,
  org.polarsys.capella.core.platform.sirius.ui.project.provider
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy

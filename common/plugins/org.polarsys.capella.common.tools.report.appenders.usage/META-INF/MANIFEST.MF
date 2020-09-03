@@ -12,5 +12,5 @@ Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.common.tools.report.appenders.usage,
  org.polarsys.capella.common.tools.report.appenders.usage.preferences,
  org.polarsys.capella.common.tools.report.appenders.usage.util
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-Localization: plugin

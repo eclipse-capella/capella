@@ -14,7 +14,7 @@ Require-Bundle: org.eclipse.core.expressions,
  org.eclipse.sirius.diagram.ui,
  org.eclipse.team.ui,
  org.polarsys.capella.core.model.handler;visibility:=reexport
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.commands.preferences,
  org.polarsys.capella.core.commands.preferences.internalization.l10n,

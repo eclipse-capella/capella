@@ -9,7 +9,7 @@ Require-Bundle: org.polarsys.capella.core.ui.properties;visibility:=reexport,
  org.polarsys.kitalpha.massactions.edit;visibility:=reexport,
  org.polarsys.kitalpha.massactions.visualize;visibility:=reexport,
  org.polarsys.capella.core.ui.semantic.browser
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.common.ui.massactions.core.activator,
  org.polarsys.capella.common.ui.massactions.core.edit.table,

@@ -13,5 +13,5 @@ Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.data.ctx.properties,
  org.polarsys.capella.core.data.ctx.properties.controllers,
  org.polarsys.capella.core.data.ctx.properties.sections
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-Localization: plugin

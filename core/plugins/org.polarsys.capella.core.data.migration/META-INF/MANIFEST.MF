@@ -34,7 +34,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.ecore
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: org.polarsys.capella.core.data.migration,
  org.polarsys.capella.core.data.migration.af,
  org.polarsys.capella.core.data.migration.aird,

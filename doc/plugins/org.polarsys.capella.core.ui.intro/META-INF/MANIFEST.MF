@@ -11,5 +11,5 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.ui.intro.universal,
  org.polarsys.capella.core.platform.sirius.ui.project,
  org.eclipse.ui.forms
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy

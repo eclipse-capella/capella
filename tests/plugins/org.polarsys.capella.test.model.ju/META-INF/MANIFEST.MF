@@ -25,7 +25,7 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.core.compare,
  org.polarsys.capella.core.explorer.activity.ui
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Export-Package: org.polarsys.capella.test.model.ju,

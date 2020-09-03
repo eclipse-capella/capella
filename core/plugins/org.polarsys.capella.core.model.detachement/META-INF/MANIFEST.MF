@@ -11,7 +11,7 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.common.libraries,
  org.polarsys.capella.core.libraries.ui
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-Vendor: %providerName
 Export-Package: org.polarsys.capella.core.model.detachement
 Bundle-Localization: plugin

@@ -17,5 +17,5 @@ Export-Package: org.polarsys.capella.core.data.interaction.properties,
  org.polarsys.capella.core.data.interaction.properties.dialogs.sequenceMessage.viewAndController,
  org.polarsys.capella.core.data.interaction.properties.fields,
  org.polarsys.capella.core.data.interaction.properties.sections
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-Localization: plugin

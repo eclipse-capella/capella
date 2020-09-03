@@ -15,7 +15,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.capella.common.model.helpers,
  org.polarsys.capella.common.transition;visibility:=reexport,
  com.google.guava;bundle-version="[15.0.0,16.0.0)"
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
 Export-Package: org.polarsys.capella.common.re,

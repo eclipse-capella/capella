@@ -14,5 +14,5 @@ Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.semantic.queries,
  org.polarsys.capella.core.semantic.queries.basic.queries,
  org.polarsys.capella.core.semantic.queries.basic.queries.utils
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-Localization: plugin

@@ -10,7 +10,7 @@ Export-Package: org.polarsys.capella.core.projection.interfaces,
 Require-Bundle: org.polarsys.capella.core.projection.common,
  org.polarsys.capella.core.platform.sirius.ui.actions,
  org.polarsys.capella.core.transition.system.topdown
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.polarsys.capella.core.projection.interfaces.InterfaceGenerationActivator
 Bundle-Localization: plugin

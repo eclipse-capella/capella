@@ -18,7 +18,7 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.core.ui.semantic.browser,
  org.polarsys.capella.core.validation,
  org.polarsys.capella.core.menu.dynamic
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
 Export-Package: org.polarsys.capella.core.data.fa.ui.wizards,

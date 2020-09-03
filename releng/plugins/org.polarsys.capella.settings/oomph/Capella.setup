@@ -41,7 +41,7 @@
   </setupTask>
   <setupTask
       xsi:type="jdt:JRETask"
-      version="JavaSE-1.8"
+      version="JavaSE-11"
       location="${jre.location-1.8}">
     <description>Define the JRE needed to compile and run the Java projects of ${scope.project.label} 1.2.x+</description>
   </setupTask>

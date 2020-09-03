@@ -4,5 +4,5 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.common.data.def; singleton:=true
 Bundle-Version: 1.4.0.qualifier
 Bundle-Vendor: %providerName
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-Localization: plugin
