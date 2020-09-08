@@ -46,13 +46,10 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
  */
 public class ScopedDiagnostician extends MultiobjectDiagnostician {
 
-  public static final String DEFAULT_PURPOSE = "org.polarsys.capella.core.validation"; //$NON-NLS-1$
-  public static final String DEFAULT_MAPPING = "org.polarsys.capella.core.validation.mapping.default"; //$NON-NLS-1$
-
   private final AdapterFactory adapterFactory;
   private final String mapping;
   private final String purpose;
-  
+
   public ScopedDiagnostician(EValidator.Registry registry, AdapterFactory adapterFactory, String purpose, String mapping) {
     super(registry);
     this.adapterFactory = adapterFactory;

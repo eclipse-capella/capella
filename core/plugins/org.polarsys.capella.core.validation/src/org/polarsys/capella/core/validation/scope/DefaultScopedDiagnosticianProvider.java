@@ -15,9 +15,10 @@ package org.polarsys.capella.core.validation.scope;
 import org.polarsys.capella.core.validation.CapellaValidationActivator;
 
 public class DefaultScopedDiagnosticianProvider extends ScopedDiagnosticianProvider {
-  protected DefaultScopedDiagnosticianProvider() {
-    super(ScopedDiagnostician.DEFAULT_PURPOSE, 
-        ScopedDiagnostician.DEFAULT_MAPPING,
+
+  public DefaultScopedDiagnosticianProvider() {
+    super("org.polarsys.capella.core.validation", 
+          "org.polarsys.capella.core.validation.extended",
         CapellaValidationActivator.getDefault().getCapellaValidatorRegistry());
   }
 }

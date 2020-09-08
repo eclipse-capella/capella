@@ -200,7 +200,7 @@ The difference between Completeness and Coverage can appear subtle. Completeness
   <extension
         point="org.polarsys.capella.core.transition.handlers">
      <handlers
-           mapping="org.polarsys.capella.core.validation.default"
+           mapping="org.polarsys.capella.core.validation.extended"
            purpose="org.polarsys.capella.core.validation">
         <scopeRetriever
               class="org.polarsys.capella.core.validation.scope.DefaultValidationScopeRetriever"
@@ -225,13 +225,13 @@ The difference between Completeness and Coverage can appear subtle. Completeness
      <provider
            class="org.polarsys.capella.core.validation.LegacyDiagnosticianProvider"
            description="Validate tree of selected objects and follows component-part relations"
-           id="org.polarsys.capella.core.validation.default"
+           id="org.polarsys.capella.core.validation.legacy"
            name="Tree Validation">
      </provider>
      <provider
            class="org.polarsys.capella.core.validation.scope.DefaultScopedDiagnosticianProvider"
            description="Tree Validation plus: Validate deployed Components, allocated Functions and Interfaces common to validated Components"
-           id="org.polarsys.capella.core.validation.scoped"
+           id="org.polarsys.capella.core.validation.extended"
            name="Extended Validation">
      </provider>
   </extension>
