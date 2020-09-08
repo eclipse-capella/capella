@@ -127,7 +127,8 @@ public class ValidationCommandLine extends AbstractWorkbenchCommandLine {
         capellaValidateCLineAction.setSelectedObjects(semanticRootResource.getContents());
       }
 
-      capellaValidateCLineAction.setDiagnosticianProviderId(((ValidationArgumentHelper)argHelper).getDiagnosticianProviderId());
+      capellaValidateCLineAction
+          .setDiagnosticianProviderId(((ValidationArgumentHelper) argHelper).getDiagnosticianProviderId());
 
       // Run the validation
       capellaValidateCLineAction.run();
