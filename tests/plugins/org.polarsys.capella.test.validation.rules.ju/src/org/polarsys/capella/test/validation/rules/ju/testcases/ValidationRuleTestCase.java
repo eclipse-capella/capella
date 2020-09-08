@@ -122,7 +122,6 @@ public abstract class ValidationRuleTestCase extends BasicTestCase {
       }
 
       // create the filter and add it to the validator
-      System.out.println(ruleDescriptor.getId());
       filter = new IConstraintFilter() {
         @SuppressWarnings("synthetic-access")
         public boolean accept(IConstraintDescriptor constraint_p, EObject target_p) {
