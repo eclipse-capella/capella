@@ -51,8 +51,6 @@ public class CapellaValidationPreferencesPage extends AbstractDefaultPreferenceP
     Group generalGroup = createGroup(Messages.CapellaValidationPreferencesPage_General_Group_Label, Messages.CapellaValidationPreferencesPage_General_Group_Tooltip, getFieldEditorParent());
     addField(new BooleanFieldEditor(ICapellaValidationPreferences.P_CLEAN_PREVIOUS_VALIDATION_RESULTS,
         Messages.ModelValidationPreferencePage_DeletePreviousResults_Title, generalGroup));
-    
-    Group extenders = createGroup(Messages.CapellaValidationPreferencesPage_ValidationScope_Group_Label, Messages.CapellaValidationPreferencesPage_ValidationScope_Group_Tooltip, getFieldEditorParent());
 
     Collection<Descriptor> descriptors = DiagnosticianProviderRegistry.INSTANCE.getDescriptors();
     String[][] labelsAndValues = new String[descriptors.size()][2];
@@ -63,7 +61,9 @@ public class CapellaValidationPreferencesPage extends AbstractDefaultPreferenceP
       labelsAndValues[i][1] = d.getID();
       i++;
     }
-    addField(new RadioGroupFieldEditor(ICapellaValidationPreferences.P_DIAGNOSTICIAN_PROVIDER, "" , 1, labelsAndValues, extenders)); //$NON-NLS-1$
+
+    addField(new RadioGroupFieldEditor(ICapellaValidationPreferences.P_DIAGNOSTICIAN_PROVIDER, Messages.CapellaValidationPreferencesPage_ValidationScope_Group_Label , 1, labelsAndValues, getFieldEditorParent(), true));
+
   }
 
   /**
