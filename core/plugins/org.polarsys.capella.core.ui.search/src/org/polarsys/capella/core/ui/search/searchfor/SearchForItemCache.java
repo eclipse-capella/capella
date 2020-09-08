@@ -38,6 +38,7 @@ import org.polarsys.capella.core.ui.search.searchfor.item.SearchForItem;
 import org.polarsys.capella.core.ui.search.searchfor.item.SearchForNoteItem;
 import org.polarsys.kitalpha.ad.common.utils.URIHelper;
 import org.polarsys.kitalpha.ad.services.manager.ViewpointManager;
+import org.polarsys.kitalpha.ad.viewpoint.coredomain.viewpoint.model.Metamodel;
 import org.polarsys.kitalpha.ad.viewpoint.coredomain.viewpoint.model.Viewpoint;
 import org.polarsys.kitalpha.resourcereuse.model.Resource;
 
@@ -72,16 +73,25 @@ public class SearchForItemCache {
     ResourceSet set = new ResourceSetImpl();
     for (Resource res : ViewpointManager.getAvailableViewpoints()) {
       URI uri = URIHelper.createURI(res);
-      Viewpoint vp = (Viewpoint) set.getEObject(uri, true);
-      viewpoints.add(vp);
-      if (vp.getMetamodel() != null) {
-        for (EPackage pack : vp.getMetamodel().getModels()) {
-          EPackage registeredPkg = EPackage.Registry.INSTANCE.getEPackage(pack.getNsURI());
-          for (EClassifier eClassifier : registeredPkg.getEClassifiers()) {
-            if (eClassifier instanceof EClass) {
-              SearchForClassItem searchForClassItem = new SearchForClassItem(eClassifier);
-              classID2ClassItemMap.put(searchForClassItem.getUniqueID(), searchForClassItem);
-              classID2ViewpointMap.put(searchForClassItem.getUniqueID(), vp);
+      Viewpoint viewpoint = (Viewpoint) set.getEObject(uri, true);
+
+      if (viewpoint != null) {
+        viewpoints.add(viewpoint);
+        Metamodel metamodel = viewpoint.getMetamodel();
+
+        if (metamodel != null) {
+          for (EPackage pack : metamodel.getModels()) {
+            EPackage registeredPkg = EPackage.Registry.INSTANCE.getEPackage(pack.getNsURI());
+
+            if (registeredPkg != null) {
+              for (EClassifier eClassifier : registeredPkg.getEClassifiers()) {
+
+                if (eClassifier instanceof EClass) {
+                  SearchForClassItem searchForClassItem = new SearchForClassItem(eClassifier);
+                  classID2ClassItemMap.put(searchForClassItem.getUniqueID(), searchForClassItem);
+                  classID2ViewpointMap.put(searchForClassItem.getUniqueID(), viewpoint);
+                }
+              }
             }
           }
         }
@@ -93,10 +103,14 @@ public class SearchForItemCache {
     for (String nsURI : EPackage.Registry.INSTANCE.keySet()) {
       if (nsURI.startsWith("http://www.polarsys.org/capella")) {
         EPackage ePackage = EPackage.Registry.INSTANCE.getEPackage(nsURI);
-        for (EClassifier eClassifier : ePackage.getEClassifiers()) {
-          if (eClassifier instanceof EClass) {
-            SearchForClassItem searchForClassItem = new SearchForClassItem(eClassifier);
-            classID2ClassItemMap.put(searchForClassItem.getUniqueID(), searchForClassItem);
+
+        if (ePackage != null) {
+          for (EClassifier eClassifier : ePackage.getEClassifiers()) {
+
+            if (eClassifier instanceof EClass) {
+              SearchForClassItem searchForClassItem = new SearchForClassItem(eClassifier);
+              classID2ClassItemMap.put(searchForClassItem.getUniqueID(), searchForClassItem);
+            }
           }
         }
       }
@@ -117,7 +131,8 @@ public class SearchForItemCache {
       for (Object attribute : attributes) {
         if (attribute instanceof EAttribute) {
           EDataType type = ((EAttribute) attribute).getEAttributeType();
-          if (type.getInstanceClass() == null || !type.getInstanceClass().equals(java.lang.String.class)) {
+          if (type == null || type.getInstanceClass() == null
+              || !type.getInstanceClass().equals(java.lang.String.class)) {
             continue;
           }
         }
