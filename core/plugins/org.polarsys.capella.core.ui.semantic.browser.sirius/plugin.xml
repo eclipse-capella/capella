@@ -144,16 +144,11 @@
             id="org.polarsys.capella.core.ui.semantic.browser.sirius.openRepresentationDefinition">
          <with
                variable="activeMenuSelection">
-            <and>
-               <iterate>
-                  <instanceof
-                        value="org.eclipse.sirius.viewpoint.DRepresentationDescriptor">
-                  </instanceof>
-               </iterate>
-               <count
-                     value="1">
-               </count>
-            </and>
+            <iterate>
+               <instanceof
+                     value="org.eclipse.sirius.viewpoint.DRepresentationDescriptor">
+               </instanceof>
+            </iterate>
          </with>
       </definition>
    </extension>
