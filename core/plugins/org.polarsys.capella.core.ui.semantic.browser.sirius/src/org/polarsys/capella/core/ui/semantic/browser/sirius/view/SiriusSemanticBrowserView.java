@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -40,23 +40,27 @@ public class SiriusSemanticBrowserView extends SemanticBrowserView {
    */
   @Override
   protected void handleDoubleClick(DoubleClickEvent event) {
+    boolean callSuper = true;
     ITreeSelection selection = (ITreeSelection) event.getSelection();
     if (!selection.isEmpty()) {
-      Object selectedElement = selection.getFirstElement();
-      if (selectedElement instanceof EObjectWrapper) {
-        selectedElement = ((EObjectWrapper) selectedElement).getElement();
-      }
-      if (selectedElement instanceof DRepresentationDescriptor) {
-        DiagramOpenAction action = new DiagramOpenAction();
-        // Open related diagram editor.
-        action.init(this);
-        action.selectionChanged(null, new StructuredSelection(selectedElement));
-        action.run(null);
-        // if it is DRepresentation; then open the representation and return immediately.
-        // Do not run into super.handleDoubleClick in order to avoid opening the wizard properties
-        return;
+      for(Object selectedElement : selection.toList()) {
+        if (selectedElement instanceof EObjectWrapper) {
+          selectedElement = ((EObjectWrapper) selectedElement).getElement();
+        }
+        if (selectedElement instanceof DRepresentationDescriptor) {
+          DiagramOpenAction action = new DiagramOpenAction();
+          // Open related diagram editor.
+          action.init(this);
+          action.selectionChanged(null, new StructuredSelection(selectedElement));
+          action.run(null);
+          // if it is DRepresentation; then open the representation and return immediately.
+          // Do not run into super.handleDoubleClick in order to avoid opening the wizard properties
+          callSuper = false;
+        }        
       }
     }
-    super.handleDoubleClick(event);
+    if(callSuper) {
+      super.handleDoubleClick(event);      
+    }
   }
 }
