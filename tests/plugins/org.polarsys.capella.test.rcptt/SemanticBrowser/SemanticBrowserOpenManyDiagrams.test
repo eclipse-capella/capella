@@ -1,0 +1,52 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _4Zi_gEkPEeaoOLXB8A2oPA,_0i1x8B2fEemB9ZmybI1P4g
+Element-Name: SemanticBrowserOpenManyDiagrams
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _nbtZMPW4EeqKvvtV-Csx4w
+Runtime-Version: 2.5.0.201909302000
+Save-Time: 9/13/20 3:03 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Select many diagrams in the Semantic Browser and tests that we can open them at once.
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+// Get project explorer and open sessin
+get-view "Project Explorer" | get-tree 
+    | select "In-Flight Entertainment System/In-Flight Entertainment System.aird" | double-click
+
+// enable the Link content option if disabled
+if [get-view "Semantic Browser" | get-button "Link content to workbench selection events" | get-property "getSelection()" -raw | not] {
+	get-view "Semantic Browser" | get-button "Link content to workbench selection events" | click
+}
+
+// select Root Logical Function
+get-view "Project Explorer" | get-tree 
+    | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Logical Architecture/Logical Functions/Root Logical Function"
+get-view "Semantic Browser" | get-tree -after [get-label "Current Element"] | get-item -path "Root Logical Function" 
+    | get-property caption | equals "Root Logical Function" | verify-true
+
+// Select two diagrams and right click then Open them
+with [get-view "Semantic Browser" | get-tree -after [get-label "Current Element"]] {
+    select "Root Logical Function/All Related Diagrams/[LFBD] All Functions" "Root Logical Function/All Related Diagrams/[LDFB] Top Level Functions"
+    get-menu -path Open | click
+}
+
+// Get first opened diagram
+get-editor "[LFBD] All Functions" | get-diagram -index 1 | get-edit-part -name "[LFBD] All Functions" 
+    | mouse-move 446 25 -height 1030 -width 4691
+    
+// Get second opened diagram
+get-editor "[LDFB] Top Level Functions" | click
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
