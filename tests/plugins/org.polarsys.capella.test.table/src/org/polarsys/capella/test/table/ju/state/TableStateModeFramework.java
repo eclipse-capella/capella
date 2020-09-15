@@ -10,7 +10,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.table.ju.function.state;
+package org.polarsys.capella.test.table.ju.state;
 
 import java.util.Arrays;
 import java.util.List;
@@ -23,6 +23,7 @@ import org.eclipse.sirius.table.metamodel.table.DColumn;
 import org.eclipse.sirius.table.metamodel.table.DLine;
 import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
+import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.core.data.capellacommon.State;
 import org.polarsys.capella.core.data.ctx.Capability;
 import org.polarsys.capella.core.data.ctx.SystemFunction;
@@ -74,7 +75,7 @@ public abstract class TableStateModeFramework extends TableTestFramework {
   protected State _mode2;
 
   // Error Messages
-  protected String stateModeErrMsg = "State '{0}' is not available in '{1}'";
+  protected String stateModeErrMsg = "State {0} is not available in {1}";
 
   protected void init() {
     session = getSession(modelName);
@@ -135,27 +136,12 @@ public abstract class TableStateModeFramework extends TableTestFramework {
 
         assertEquals(cell.getLabel(), "X");
 
-        assertTrue(lineObj instanceof State);
-        if (colObj instanceof AbstractFunction) {
-          AbstractFunction function = (AbstractFunction) colObj;
-          assertTrue(
-              NLS.bind(stateModeErrMsg, ((State) lineObj).getName(),
-                  function.getClass().getName() + " " + function.getName()),
-              function.getAvailableInStates().contains(lineObj));
-        }
-        if (colObj instanceof AbstractCapability) {
-          AbstractCapability capability = (AbstractCapability) colObj;
-          assertTrue(
-              NLS.bind(stateModeErrMsg, ((State) lineObj).getName(),
-                  capability.getClass().getName() + " " + capability.getName()),
-              capability.getAvailableInStates().contains(lineObj));
-        }
-        if (colObj instanceof FunctionalChain) {
-          FunctionalChain fc = (FunctionalChain) colObj;
-          assertTrue(
-              NLS.bind(stateModeErrMsg, ((State) lineObj).getName(), fc.getClass().getName() + " " + fc.getName()),
-              fc.getAvailableInStates().contains(lineObj));
-        }
+        State state = getState(lineObj, colObj);
+        EObject element = getElement(lineObj, colObj);
+        boolean check = elementAvailableInState(element, state);
+        assertTrue(
+            NLS.bind(stateModeErrMsg, state.getName(), EObjectLabelProviderHelper.getMetaclassLabel(element, true)),
+            check);
       }
 
       @Override
@@ -193,27 +179,13 @@ public abstract class TableStateModeFramework extends TableTestFramework {
         DCell cell = TableTestingHelper.getIntersectionCell(line, column);
 
         assertTrue(cell == null);
-        assertTrue(lineObj instanceof State);
-        if (colObj instanceof AbstractFunction) {
-          AbstractFunction function = (AbstractFunction) colObj;
-          assertFalse(
-              NLS.bind(stateModeErrMsg, ((State) lineObj).getName(),
-                  function.getClass().getName() + " " + function.getName()),
-              function.getAvailableInStates().contains(lineObj));
-        }
-        if (colObj instanceof AbstractCapability) {
-          AbstractCapability capability = (AbstractCapability) colObj;
-          assertFalse(
-              NLS.bind(stateModeErrMsg, ((State) lineObj).getName(),
-                  capability.getClass().getName() + " " + capability.getName()),
-              capability.getAvailableInStates().contains(lineObj));
-        }
-        if (colObj instanceof FunctionalChain) {
-          FunctionalChain fc = (FunctionalChain) colObj;
-          assertFalse(
-              NLS.bind(stateModeErrMsg, ((State) lineObj).getName(), fc.getClass().getName() + " " + fc.getName()),
-              fc.getAvailableInStates().contains(lineObj));
-        }
+
+        State state = getState(lineObj, colObj);
+        EObject element = getElement(lineObj, colObj);
+        boolean check = elementAvailableInState(element, state);
+        assertFalse(
+            NLS.bind(stateModeErrMsg, state.getName(), EObjectLabelProviderHelper.getMetaclassLabel(element, true)),
+            check);
 
       }
 
@@ -222,6 +194,45 @@ public abstract class TableStateModeFramework extends TableTestFramework {
         return null;
       }
     }.run();
+  }
+
+  private State getState(EObject lineObj, EObject colObj) {
+    State state = null;
+    if (lineObj instanceof State) {
+      state = (State) lineObj;
+    } else if (colObj instanceof State) {
+      state = (State) colObj;
+    }
+    assertTrue(state != null);
+    return state;
+  }
+
+  private EObject getElement(EObject lineObj, EObject colObj) {
+    EObject element = null;
+    if (!(lineObj instanceof State)) {
+      element = lineObj;
+    } else if (!(colObj instanceof State)) {
+      element = colObj;
+    }
+    assertTrue(element != null);
+    return element;
+  }
+  
+  /*
+   * check if an element (function, fc, capability) is available in the given state
+   */
+  private boolean elementAvailableInState(EObject element, State state) {
+    boolean check = false;
+    if (element instanceof AbstractFunction) {
+      check = ((AbstractFunction) element).getAvailableInStates().contains(state);
+    }
+    if (element instanceof AbstractCapability) {
+      check = ((AbstractCapability) element).getAvailableInStates().contains(state);
+    }
+    if (element instanceof FunctionalChain) {
+      check = ((FunctionalChain) element).getAvailableInStates().contains(state);
+    }
+    return check;
   }
 
 }

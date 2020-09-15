@@ -10,7 +10,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.table.ju.function.state;
+package org.polarsys.capella.test.table.ju.state.contextual;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,10 +21,10 @@ import org.polarsys.capella.test.framework.api.BasicTestSuite;
 
 import junit.framework.Test;
 
-public class StateModeTableTestSuite extends BasicTestSuite {
+public class ContextualStateModeTableTestSuite extends BasicTestSuite {
 
   public static Test suite() {
-    return new StateModeTableTestSuite();
+    return new ContextualStateModeTableTestSuite();
   }
 
   @Override
@@ -35,7 +35,8 @@ public class StateModeTableTestSuite extends BasicTestSuite {
   @Override
   protected List<BasicTestArtefact> getTests() {
     ArrayList<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
-    tests.add(new StateModeTableTestCase());
+    tests.add(new StateTableTestCase());
+    tests.add(new ModeTableTestCase());
     return tests;
   }
 }

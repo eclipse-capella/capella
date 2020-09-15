@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -39,6 +39,7 @@ public interface IDiagramNameConstants extends DiagramDescriptionConstants {
   String FUNCTIONAL_CHAIN_DIAGRAM_NAME = "Functional Chain Description"; //$NON-NLS-1$
   String PHYSICAL_PATH_DIAGRAM_NAME = "Physical Path Description"; //$NON-NLS-1$
   String STATE_AND_MODE_MATRIX = "State And Mode - Matrix"; //$NON-NLS-1$
+  String CONTEXTUAL_STATE_AND_MODE_MATRIX = "Contextual State And Mode - Matrix"; //$NON-NLS-1$
   String CAPABILITY_REALIZATION_BLANK = "Capability Realization Blank"; //$NON-NLS-1$
   String CONTEXTUAL_CAPABILITY_REALIZATION_INVOLVEMENT = "Contextual Capability Realization Involvement"; //$NON-NLS-1$
 

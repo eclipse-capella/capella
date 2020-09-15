@@ -10,7 +10,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.table.ju.function.state;
+package org.polarsys.capella.test.table.ju.state;
 
 import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
