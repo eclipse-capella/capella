@@ -20521,7 +20521,7 @@
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column (only available for Intersection Mapping)."/>
           <variables name="root" documentation="The semantic element of the table."/>
           <firstModelOperation xsi:type="tool_1:ChangeContext" browseExpression="aql:lineSemantic">
-            <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:lineSemantic.oclIsKindOf(fa::FunctionalChain) or lineSemantic.oclIsKindOf(interaction::AbstractCapability)">
+            <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:lineSemantic.oclIsKindOf(fa::FunctionalChain) or lineSemantic.oclIsKindOf(interaction::AbstractCapability) or lineSemantic.oclIsKindOf(fa::AbstractFunction)">
               <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:arg0 = '' and lineSemantic.availableInStates->includes(columnSemantic)">
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:lineSemantic.inActiveAnElement(columnSemantic)"/>
               </subModelOperations>
@@ -20551,7 +20551,7 @@
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column (only available for Intersection Mapping)."/>
           <variables name="root" documentation="The semantic element of the table."/>
           <firstModelOperation xsi:type="tool_1:ChangeContext" browseExpression="aql:lineSemantic">
-            <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:lineSemantic.oclIsKindOf(fa::FunctionalChain) or lineSemantic.oclIsKindOf(interaction::AbstractCapability)">
+            <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:lineSemantic.oclIsKindOf(fa::FunctionalChain) or lineSemantic.oclIsKindOf(interaction::AbstractCapability) or lineSemantic.oclIsKindOf(fa::AbstractFunction)">
               <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:arg0 = '' and lineSemantic.availableInStates->includes(columnSemantic)">
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:lineSemantic.inActiveAnElement(columnSemantic)"/>
               </subModelOperations>
@@ -20581,7 +20581,7 @@
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column (only available for Intersection Mapping)."/>
           <variables name="root" documentation="The semantic element of the table."/>
           <firstModelOperation xsi:type="tool_1:ChangeContext" browseExpression="aql:lineSemantic">
-            <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:lineSemantic.oclIsKindOf(fa::FunctionalChain) or lineSemantic.oclIsKindOf(interaction::AbstractCapability)">
+            <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:lineSemantic.oclIsKindOf(fa::FunctionalChain) or lineSemantic.oclIsKindOf(interaction::AbstractCapability) or lineSemantic.oclIsKindOf(fa::AbstractFunction)">
               <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:arg0 = '' and lineSemantic.availableInStates->includes(columnSemantic)">
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:lineSemantic.inActiveAnElement(columnSemantic)"/>
               </subModelOperations>
