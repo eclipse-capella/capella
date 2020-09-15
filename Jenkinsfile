@@ -33,6 +33,21 @@ pipeline {
 	     	}
 	    }
 	    
+	    stage('Download JDK') {
+	    	steps {        
+	        	script { 
+		            def jdkWinFolder = 'winJRE'
+		            downloader.downloadWindowsJDK(jdkWinFolder)
+		            
+		            def jdkLinuxFolder = 'linuxJRE'
+		            downloader.downloadLinuxJDK(jdkLinuxFolder)
+		            
+		            def jdkMacFolder = 'macJRE'
+		            downloader.downloadMacJDK(jdkMacFolder)
+	       		}
+	     	}
+	    }
+	    
     	stage('Build and Package') {
       		steps {
       			script {
