@@ -106,7 +106,7 @@
 									
 									
 									
-									<!--  Move the Linux JRE into the product -->
+									<!--  Move the Mac JRE into the product -->
 									<move todir="${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/x86_64/jre" includeEmptyDirs="yes" verbose="true">
 										<fileset dir="../../../macJRE/jre">
 											<include name="**/*" />
