@@ -36,41 +36,15 @@ pipeline {
 	    stage('Download JDK') {
 	    	steps {        
 	        	script { 
-		        	def jdk = 'jdk-14.0.2'
-            
-		            def jdkWinURL = 'https://download.java.net/java/GA/jdk14.0.2/205943a0976c4ed48cb16f1043c5c647/12/GPL/openjdk-14.0.2_windows-x64_bin.zip'
-		            def jdkWinZip = 'jdkWin.zip'
 		            def jdkWinFolder = 'winJRE'
+		            downloader.downloadWindowsJDK(jdkWinFolder)
 		            
-		            sh "curl -k -o ${jdkWinZip} ${jdkWinURL}"
-		            sh "unzip ${jdkWinZip} -d ${jdkWinFolder}"
-		            sh "mv ${jdkWinFolder}/${jdk} ${jdkWinFolder}/jre"
-		            
-		            sh "ls ${jdkWinFolder}/jre"
-		            
-		            
-				    def jdkLinuxURL = 'https://download.java.net/java/GA/jdk14.0.2/205943a0976c4ed48cb16f1043c5c647/12/GPL/openjdk-14.0.2_linux-x64_bin.tar.gz'
-				    def jdkLinuxTar = 'jdkLinux.tar.gz'
 		            def jdkLinuxFolder = 'linuxJRE'
+		            downloader.downloadLinuxJDK(jdkLinuxFolder)
 		            
-		            sh "curl -k -o ${jdkLinuxTar} ${jdkLinuxURL}"
-		            sh "mkdir ${jdkLinuxFolder}"
-		            sh "tar xzvf ${jdkLinuxTar} -C ${jdkLinuxFolder}"
-		            sh "mv ${jdkLinuxFolder}/${jdk} ${jdkLinuxFolder}/jre"
-		            
-		            sh "ls ${jdkLinuxFolder}/jre"
-				    
-				    def jdkMacURL = 'https://download.java.net/java/GA/jdk14.0.2/205943a0976c4ed48cb16f1043c5c647/12/GPL/openjdk-14.0.2_osx-x64_bin.tar.gz' 
-					def jdkMacTar = 'jdkMac.tar.gz'
 		            def jdkMacFolder = 'macJRE'
-		            
-		            sh "curl -k -o ${jdkMacTar} ${jdkMacURL}"
-		            sh "mkdir ${jdkMacFolder}"
-		            sh "tar xzvf ${jdkMacTar} -C ${jdkMacFolder}"
-		            sh "mv ${jdkMacFolder}/${jdk}.jdk ${jdkMacFolder}/jre"
-		            
-		            sh "ls ${jdkMacFolder}/jre" 
-	       		}         
+		            downloader.downloadMacJDK(jdkMacFolder)
+	       		}
 	     	}
 	    }
 	    
