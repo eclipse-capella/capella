@@ -36,9 +36,11 @@ import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Part;
+import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
 import org.polarsys.capella.core.data.ctx.SystemFunctionPkg;
+import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.information.InformationPackage;
 import org.polarsys.capella.core.data.la.LaPackage;
@@ -208,6 +210,10 @@ public abstract class CreateRPL_SpecificPackages extends RecRplTestCase {
       return getExpectedContainerClass(target.eContainer());
     } else if (target instanceof Part) {
       return getExpectedContainerClass(((Part) target).getAbstractType());
+    } else if (target instanceof PhysicalLink) {
+      return getExpectedContainerClass(target.eContainer());
+    } else if (target instanceof ComponentExchange) {
+      return getExpectedContainerClass(target.eContainer());
     }
 
     EClass result = test.get(target.eClass());

@@ -28,7 +28,7 @@ public abstract class ReLauncher extends DefaultLauncher {
  
   protected void initializeParameters() {
     super.initializeParameters();
-   
+
     addSharedParameter(new GenericParameter<IRulesHandler>(org.polarsys.capella.core.transition.common.activities.InitializeTransitionActivity.PARAMETER_RULE_HANDLER,
         getTransposer().getRulesHandler(), "Rule handler"));
 

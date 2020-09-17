@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.polarsys.capella.test.diagram.tools.ju.fcd.FCDDiagramToolsTestSuite;
+import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.ContextualInterfaceDiagramTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.ORBDiagramToolsTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.PDDiagramToolsTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.ReuseTestSuite;
@@ -53,6 +54,7 @@ public class DiagramToolsStep2TestSuite extends BasicTestSuite {
     tests.add(new XFCDDiagramToolsTestSuite());
     tests.add(new ReuseTestSuite());
     tests.add(new TitleBlocksToolsTestSuite());
+    tests.add(new ContextualInterfaceDiagramTestSuite());
     return tests;
   }
 

@@ -17,7 +17,7 @@
 	  <parent>
 	    <groupId>org.polarsys</groupId>
 	    <artifactId>org.polarsys.capella</artifactId>
-	    <version>1.4.0-SNAPSHOT</version>
+	    <version>5.0.0-SNAPSHOT</version>
 	    <relativePath>../../../</relativePath>
 	  </parent>
 	  <properties>
@@ -26,7 +26,7 @@
 
   <groupId>org.polarsys</groupId>
   <artifactId>org.polarsys.capella.rcp.product</artifactId>
-  <version>1.4.0-SNAPSHOT</version>
+  <version>5.0.0-SNAPSHOT</version>
   <packaging>eclipse-repository</packaging>
 	<build>
 		<plugins>
@@ -85,9 +85,17 @@
 								<goal>run</goal>
 							</goals>
 							<configuration>
-								<target>
-									<!-- Create the Capella .zip with 2 folders (capella + samples) -->
+								<!-- Create the Capella .zip with 2 folders (capella + samples) -->
+								<target>								
 									
+									<!--  Move the Linux JRE into the product -->
+									<move todir="${project.build.directory}/products/org.polarsys.capella.rcp.product/linux/gtk/x86_64/jre" includeEmptyDirs="yes" verbose="true">
+										<fileset dir="../../../linuxJRE/jre">
+											<include name="**/*" />
+										</fileset>
+									</move>
+									
+									<!-- Zip the Linux product -->
 									<zip destfile="${project.build.directory}/products/capella-${unqualifiedVersion}.${buildQualifier}-linux-gtk-x86_64.zip">
 										<zipfileset dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/linux/gtk/x86_64" prefix="capella"/>
 										<zipfileset dir="../../../samples" prefix="samples">
@@ -96,6 +104,16 @@
 										</zipfileset>
 									</zip>
 									
+									
+									
+									<!--  Move the Mac JRE into the product -->
+									<move todir="${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/x86_64/jre" includeEmptyDirs="yes" verbose="true">
+										<fileset dir="../../../macJRE/jre">
+											<include name="**/*" />
+										</fileset>
+									</move>
+									
+									<!-- Zip the Mac product -->
 									<zip destfile="${project.build.directory}/products/capella-${unqualifiedVersion}.${buildQualifier}-macosx-cocoa-x86_64.zip">
 										<zipfileset dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/x86_64" prefix="capella"/>
 										<zipfileset dir="../../../samples" prefix="samples">
@@ -103,10 +121,20 @@
 											<exclude name="pom.xml"/>
 										</zipfileset>
 									</zip>
+																		
 									
+									<!--  Rename the product exe -->
 									<move file="${project.build.directory}/products/org.polarsys.capella.rcp.product/win32/win32/x86_64/eclipsec.exe" 
 										  tofile="${project.build.directory}/products/org.polarsys.capella.rcp.product/win32/win32/x86_64/capellac.exe"/>
+										  
+									<!--  Move the Windows JRE into the product -->
+									<move todir="${project.build.directory}/products/org.polarsys.capella.rcp.product/win32/win32/x86_64/jre" includeEmptyDirs="yes" verbose="true">
+										<fileset dir="../../../winJRE/jre">
+											<include name="**/*" />
+										</fileset>
+									</move>
 									
+									<!-- Zip the Windows product -->
 									<zip destfile="${project.build.directory}/products/capella-${unqualifiedVersion}.${buildQualifier}-win32-win32-x86_64.zip">
 										<zipfileset dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/win32/win32/x86_64" prefix="capella"/>
 										<zipfileset dir="../../../samples" prefix="samples">

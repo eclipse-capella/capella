@@ -8176,7 +8176,7 @@
             <viewVariable name="containerView">
               <subVariables xsi:type="tool_1:AcceleoVariable" name="ownedNodes" computationExpression="aql:self.void2Null(containerView.getOwnedContainers())"/>
               <subVariables xsi:type="tool_1:AcceleoVariable" name="visibleTargets" computationExpression="aql:self.void2Null(ownedNodes->select(ownedNode | ownedNode.visible).target)"/>
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="scope" computationExpression="aql:containerView.target.getCCEIShowHideActors()->select(c | c.isActor())"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="scope" computationExpression="aql:containerView.getCCEIShowHideActors()->select(c | c.isActor())"/>
               <subVariables xsi:type="tool_1:AcceleoVariable" name="message" computationExpression="Select Interfaces to show."/>
               <subVariables xsi:type="tool_1:AcceleoVariable" name="context" computationExpression="aql:containerView.target"/>
             </viewVariable>
@@ -10173,7 +10173,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:element.dndIDComponentFromModel(newViewContainer)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="Component from Diagram" precondition="aql:element.isValidIDDndComponentFromDiagram(newViewContainer,oldContainer)" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@containerMappings[name='CCII_Component']">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="Component from Diagram" precondition="aql:element.isValidIDDndComponentFromDiagram(newViewContainer)" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@containerMappings[name='CCII_Component']">
             <oldContainer name="oldContainer"/>
             <newContainer name="newContainer"/>
             <element name="element"/>
@@ -11987,13 +11987,13 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:element.dndIDComponentFromModel(newViewContainer)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="Component from Diagram" precondition="aql:element.isValidIDDndComponentFromDiagram(newViewContainer,oldContainer)" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Component']">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="Component from Diagram" precondition="aql:element.isValidIDDndComponentFromDiagram(newViewContainer)" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Component']">
             <oldContainer name="oldContainer"/>
             <newContainer name="newContainer"/>
             <element name="element"/>
             <newViewContainer name="newViewContainer"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:element.dndIDComponentFromDiagram(newViewContainer,oldContainer)"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:element.dndABComponent(newViewContainer)"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:ContainerDropDescription" name="Allocation ExchangeItem from Model" precondition="aql:element.isValidIDDndAllocationExchangeItemFromModel(newViewContainer)" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Interface']/@subNodeMappings[name='IDB_Operation'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_ExchangeItem']" dragSource="PROJECT_EXPLORER">
@@ -13411,7 +13411,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="Component from Diagram" precondition="aql:element.isValidIDDndComponentFromDiagram(newViewContainer,oldContainer)" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@containerMappings[name='CRB%20Component']">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="Component from Diagram" precondition="aql:element.isValidIDDndComponentFromDiagram(newViewContainer)" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@containerMappings[name='CRB%20Component']">
             <oldContainer name="oldContainer"/>
             <newContainer name="newContainer"/>
             <element name="element"/>
@@ -20521,7 +20521,7 @@
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column (only available for Intersection Mapping)."/>
           <variables name="root" documentation="The semantic element of the table."/>
           <firstModelOperation xsi:type="tool_1:ChangeContext" browseExpression="aql:lineSemantic">
-            <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:lineSemantic.oclIsKindOf(fa::FunctionalChain) or lineSemantic.oclIsKindOf(interaction::AbstractCapability)">
+            <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:lineSemantic.oclIsKindOf(fa::FunctionalChain) or lineSemantic.oclIsKindOf(interaction::AbstractCapability) or lineSemantic.oclIsKindOf(fa::AbstractFunction)">
               <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:arg0 = '' and lineSemantic.availableInStates->includes(columnSemantic)">
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:lineSemantic.inActiveAnElement(columnSemantic)"/>
               </subModelOperations>
@@ -20551,7 +20551,7 @@
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column (only available for Intersection Mapping)."/>
           <variables name="root" documentation="The semantic element of the table."/>
           <firstModelOperation xsi:type="tool_1:ChangeContext" browseExpression="aql:lineSemantic">
-            <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:lineSemantic.oclIsKindOf(fa::FunctionalChain) or lineSemantic.oclIsKindOf(interaction::AbstractCapability)">
+            <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:lineSemantic.oclIsKindOf(fa::FunctionalChain) or lineSemantic.oclIsKindOf(interaction::AbstractCapability) or lineSemantic.oclIsKindOf(fa::AbstractFunction)">
               <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:arg0 = '' and lineSemantic.availableInStates->includes(columnSemantic)">
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:lineSemantic.inActiveAnElement(columnSemantic)"/>
               </subModelOperations>
@@ -20581,7 +20581,7 @@
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column (only available for Intersection Mapping)."/>
           <variables name="root" documentation="The semantic element of the table."/>
           <firstModelOperation xsi:type="tool_1:ChangeContext" browseExpression="aql:lineSemantic">
-            <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:lineSemantic.oclIsKindOf(fa::FunctionalChain) or lineSemantic.oclIsKindOf(interaction::AbstractCapability)">
+            <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:lineSemantic.oclIsKindOf(fa::FunctionalChain) or lineSemantic.oclIsKindOf(interaction::AbstractCapability) or lineSemantic.oclIsKindOf(fa::AbstractFunction)">
               <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:arg0 = '' and lineSemantic.availableInStates->includes(columnSemantic)">
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:lineSemantic.inActiveAnElement(columnSemantic)"/>
               </subModelOperations>

@@ -26,6 +26,7 @@ import org.polarsys.capella.core.ui.properties.richtext.RichtextManager;
 import org.polarsys.capella.core.ui.properties.richtext.fields.CapellaElementDescriptionGroup;
 import org.polarsys.capella.core.ui.properties.richtext.fields.FallbackDescriptionGroup;
 import org.polarsys.capella.core.ui.properties.sections.AbstractSection;
+import org.polarsys.kitalpha.richtext.common.util.MDERichTextHelper;
 
 public abstract class DescriptionPropertySection extends AbstractSection {
 
@@ -163,5 +164,11 @@ public abstract class DescriptionPropertySection extends AbstractSection {
   @Override
   public void performFinish() {
     descriptionGroup.save();
+  }
+  
+  @Override
+  public void loadData(EObject object) {
+    super.loadData(object);
+    descriptionGroup.setBaseHrefPath(MDERichTextHelper.getProjectPath(object));
   }
 }

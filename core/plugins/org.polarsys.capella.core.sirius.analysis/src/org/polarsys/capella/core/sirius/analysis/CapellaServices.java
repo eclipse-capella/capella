@@ -1736,12 +1736,14 @@ public class CapellaServices {
    * @param second
    * @return
    */
-  public List<?> getIntersection(EObject eObject, List<?> first, List<?> second) {
-    if (first == null) // for acceleo2aql
-      first = new ArrayList<>();
-    List<Object> first2 = new LinkedList<>(first);
-    first2.retainAll(second);
-    return first2;
+  public Collection<?> getIntersection(EObject eObject, Collection<?> first, Collection<?> second) {
+    if (first == null) { // for acceleo2aql
+      first = Collections.emptyList();
+    }
+
+    List<Object> firstCopy = new LinkedList<>(first);
+    firstCopy.retainAll(second);
+    return firstCopy;
   }
 
   /**
@@ -2208,7 +2210,7 @@ public class CapellaServices {
     // an element can be displayed in a container, if all of its children can be displayed in that container
     // compute the subproblem on all children
     for (AbstractFunction subFunction : subFunctions) {
-      if (!isAllocatedFunction(subFunction, container, (DNodeContainer) containerView)) {
+      if (!isAllocatedFunction(subFunction, container, containerView)) {
         return false;
       }
     }

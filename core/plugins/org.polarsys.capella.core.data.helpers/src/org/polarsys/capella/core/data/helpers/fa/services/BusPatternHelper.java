@@ -134,9 +134,6 @@ public abstract class BusPatternHelper extends PatternHelper {
 	 */
 	@Override
 	public boolean validatePattern(Set<EObject> objects) {
-		if (objects == null || objects.isEmpty())
-			return false;
-
 		return false;
 	}
 

@@ -24,6 +24,7 @@ import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
+import org.polarsys.capella.core.model.helpers.ComponentPkgExt;
 import org.polarsys.capella.core.model.helpers.PartExt;
 
 /**
@@ -33,23 +34,24 @@ public class GetBrotherComponents extends AbstractQuery {
   @Override
   public List<Object> execute(Object input, IQueryContext context) throws QueryException {
     Component component = (Component) input;
-    Collection<Component> components = new java.util.HashSet<Component>();
+    Collection<Component> components = new java.util.HashSet<>();
     // Add components which are brothers of component-parts
     for (Part part : component.getRepresentingParts()) {
       Component container = ComponentExt.getDirectParent(part);
       if (container != null) {
-        for (Part containerPart : container.getContainedParts()) {
+        for (Part containerPart : ComponentExt.getSubParts(container)) {
           if (containerPart.getType() instanceof Component) {
             components.add((Component) containerPart.getType());
           }
         }
       } else {
         if (part.eContainer() instanceof ComponentPkg) {
-          components.addAll(PartExt.getComponentsOfParts(((ComponentPkg) part.eContainer()).getOwnedParts())); 
+          components
+              .addAll(PartExt.getComponentsOfParts(ComponentPkgExt.getSubParts(((ComponentPkg) part.eContainer()))));
         }
       }
     }
     components.remove(component);
-    return new ArrayList<Object>(components);
+    return new ArrayList<>(components);
   }
 }

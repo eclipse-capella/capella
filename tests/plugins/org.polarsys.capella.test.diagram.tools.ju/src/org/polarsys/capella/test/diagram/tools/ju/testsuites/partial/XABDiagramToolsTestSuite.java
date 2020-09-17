@@ -42,8 +42,10 @@ import org.polarsys.capella.test.diagram.tools.ju.xab.DeleteConstraintLink;
 import org.polarsys.capella.test.diagram.tools.ju.xab.DiagramPartIcon;
 import org.polarsys.capella.test.diagram.tools.ju.xab.DragAndDropEABTest;
 import org.polarsys.capella.test.diagram.tools.ju.xab.DragAndDropFunction;
+import org.polarsys.capella.test.diagram.tools.ju.xab.DragAndDropOABActors;
 import org.polarsys.capella.test.diagram.tools.ju.xab.DragAndDropPhysicalComponent;
 import org.polarsys.capella.test.diagram.tools.ju.xab.DragAndDropTest;
+import org.polarsys.capella.test.diagram.tools.ju.xab.DragAndDropXABComponents;
 import org.polarsys.capella.test.diagram.tools.ju.xab.ElementsFromModeAndStates;
 import org.polarsys.capella.test.diagram.tools.ju.xab.ElementsFromScenario;
 import org.polarsys.capella.test.diagram.tools.ju.xab.InitializeDiagramInvalidFunction;
@@ -136,7 +138,7 @@ public class XABDiagramToolsTestSuite extends BasicTestSuite {
     tests.add(new CreateComponentExchangeGroup());
     tests.add(new CreateActor());
     tests.add(new CreateComponentPort());
-    tests.add(new CreateComponentPortAllocation());    
+    tests.add(new CreateComponentPortAllocation());
     tests.add(new ReconnectComponentExchange());
     tests.add(new ManageBehaviorPCsDeployment());
     tests.add(new ReuseComponents());
@@ -147,7 +149,7 @@ public class XABDiagramToolsTestSuite extends BasicTestSuite {
     tests.add(new ShowHideActors());
     tests.add(new ShowHideBehaviorPCGroup());
     tests.add(new ShowHidePorts());
-    
+
     tests.add(new ShowHideComponentsMultipart());
     tests.add(new ShowHideActorsMultipart());
 
@@ -167,9 +169,9 @@ public class XABDiagramToolsTestSuite extends BasicTestSuite {
     tests.add(new XABShowHideFunctionsTestSuite());
     tests.add(new ShowHideFunctionalExchanges());
     tests.add(new ShowHidePortAllocations());
-    tests.add(new ShowHideFunctionPorts()); 
+    tests.add(new ShowHideFunctionPorts());
     tests.add(new InitializeDiagramInvalidFunction());
-    
+
     tests.add(new CreateConstraint());
     tests.add(new CreateConstraintElement());
     tests.add(new ShowHideConstraints());
@@ -188,6 +190,8 @@ public class XABDiagramToolsTestSuite extends BasicTestSuite {
     tests.add(new DragAndDropPhysicalComponent());
     tests.add(new DragAndDropTest());
     tests.add(new DragAndDropEABTest());
+    tests.add(new DragAndDropOABActors());
+    tests.add(new DragAndDropXABComponents());
 
     tests.add(new ShowHideFETestCase());
     tests.add(new SwitchCategoryWithDelegation());

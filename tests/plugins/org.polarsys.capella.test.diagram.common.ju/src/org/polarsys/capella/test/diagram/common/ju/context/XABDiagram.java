@@ -24,6 +24,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
+import org.junit.Assert;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
@@ -128,8 +129,7 @@ public class XABDiagram extends CommonDiagram {
   }
 
   public void cannotCreateActor(String id, String containerId) {
-    new CreateContainerTool(this, getCreateActorToolName(), containerId, id)
-        .cannotRun();
+    new CreateContainerTool(this, getCreateActorToolName(), containerId, id).cannotRun();
   }
 
   public void failedPreconditionCreateActor(String id, String containerId) {
@@ -209,12 +209,12 @@ public class XABDiagram extends CommonDiagram {
   }
 
   public void initializationFromExistingDiagram(DiagramContext existingContext) {
-    InitializationFromExistingDiagramTool tool = new InitializationFromExistingDiagramTool(this, IToolNameConstants.TOOL_INITIALIZATION_FROM_EXISTING_DIAGRAM,
-        existingContext);
+    InitializationFromExistingDiagramTool tool = new InitializationFromExistingDiagramTool(this,
+        IToolNameConstants.TOOL_INITIALIZATION_FROM_EXISTING_DIAGRAM, existingContext);
     tool.setTolerance(6);
     tool.insert(existingContext.getDiagramId());
   }
-  
+
   public void insertActor(String id) {
     new InsertRemoveTool(this, getToolNameShowHideActor()).insert(id);
   }
@@ -486,6 +486,20 @@ public class XABDiagram extends CommonDiagram {
 
   public void dragAndDropComponent(String idDraggedElement, String containerId) {
     dragAndDrop(idDraggedElement, containerId, getDragAndDropComponentToolName());
+  }
+
+  public void dragAndDropShouldFail(String sourceId, String targetId) {
+    try {
+      dragAndDropComponent(sourceId, targetId);
+      Assert.fail(
+          "Drag and drop should have failed for diagram: " + this + " source " + sourceId + " target " + targetId);
+    } catch (AssertionError error) {
+      Assert.assertTrue(error.getMessage().startsWith("Precondition"));
+    }
+  }
+
+  public void dragAndDropShouldSucceed(String sourceId, String targetId) {
+    dragAndDropComponent(sourceId, targetId);
   }
 
   private String getDragAndDropComponentToolName() {

@@ -13,6 +13,7 @@
 package org.polarsys.capella.test.diagram.misc.ju.testsuites;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.polarsys.capella.test.diagram.misc.ju.testcases.AllocationManagementTest;
@@ -34,6 +35,7 @@ import org.polarsys.capella.test.diagram.misc.ju.testcases.InsertRemoveComponent
 import org.polarsys.capella.test.diagram.misc.ju.testcases.InterfacePortSizeTestCase;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.PABStyleChecksDiagramElements;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.StatusLineTestCase;
+import org.polarsys.capella.test.diagram.misc.ju.testcases.UnsyncronizedSemanticBrowser;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.delete.DeleteFromModelContainerSemanticTarget;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.delete.DeleteFromModelSemanticTarget;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
@@ -49,7 +51,12 @@ public class DiagramMiscTestSuite extends BasicTestSuite {
   public static Test suite() {
     return new DiagramMiscTestSuite();
   }
-
+  
+  @Override
+  public List<String> getRequiredTestModels() {
+    return Arrays.asList("StatusLine");
+  }
+  
   @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<>();
@@ -75,6 +82,7 @@ public class DiagramMiscTestSuite extends BasicTestSuite {
     tests.add(new DeleteFromModelContainerSemanticTarget());
     tests.add(new AllocationManagementTest());
     tests.add(new ColorNameConstantsTest());
+    tests.add(new UnsyncronizedSemanticBrowser());
     
     return tests;
   }

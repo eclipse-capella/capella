@@ -21,6 +21,8 @@ import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.Part;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
+import org.polarsys.capella.core.data.ctx.SystemComponentPkg;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.model.helpers.AbstractCapabilityPkgExt;
@@ -114,7 +116,7 @@ public class IntramodelTransitionCommand extends LauncherCommand {
         rootElement = ComponentExt.getInterfacePkg((Component) rootElement, false);
       }
       return Collections.singleton(rootElement);
-      
+
     case ITopDownConstants.TRANSITION_TOPDOWN_DATA:
       if (rootElement instanceof BlockArchitecture) {
         rootElement = BlockArchitectureExt.getDataPkg((BlockArchitecture) rootElement, false);
@@ -123,10 +125,10 @@ public class IntramodelTransitionCommand extends LauncherCommand {
         rootElement = ComponentExt.getDataPkg((Component) rootElement, false);
       }
       return Collections.singleton(rootElement);
-      
+
     case ITopDownConstants.TRANSITION_TOPDOWN_STATEMACHINE:
       if (rootElement instanceof BlockArchitecture) {
-        rootElement = BlockArchitectureExt.getFirstComponent((BlockArchitecture) rootElement, false);
+        rootElement = ((BlockArchitecture) rootElement).getSystem();
       }
       if (rootElement instanceof Component) {
         Collection<Object> result = new HashSet<>();
@@ -134,7 +136,7 @@ public class IntramodelTransitionCommand extends LauncherCommand {
         return result;
       }
       return Collections.singleton(rootElement);
-      
+
     case ITopDownConstants.TRANSITION_TOPDOWN_ACTOR:
       Collection<Object> result = new HashSet<>();
       if (rootElement instanceof BlockArchitecture) {
@@ -153,36 +155,43 @@ public class IntramodelTransitionCommand extends LauncherCommand {
         result.add(rootElement);
       }
       return result;
-      
+
     case ITopDownConstants.TRANSITION_TOPDOWN_SYSTEM:
+      if (rootElement instanceof SystemComponentPkg) {
+        rootElement = BlockArchitectureExt.getRootBlockArchitecture((SystemComponentPkg) rootElement);
+      }
+      if (rootElement instanceof BlockArchitecture) {
+        rootElement = ((BlockArchitecture) rootElement).getSystem();
+      }
+      return Collections.singleton(rootElement);
     case ITopDownConstants.TRANSITION_TOPDOWN_LC2PC:
     case ITopDownConstants.TRANSITION_TOPDOWN_PC2CI:
       if (rootElement instanceof BlockArchitecture) {
         rootElement = BlockArchitectureExt.getComponentPkg((BlockArchitecture) rootElement, false);
       }
       return Collections.singleton(rootElement);
-      
+
     case ITopDownConstants.TRANSITION_TOPDOWN_OE2ACTOR:
     case ITopDownConstants.TRANSITION_TOPDOWN_OE2SYSTEM:
       if (rootElement instanceof OperationalAnalysis) {
         rootElement = ((OperationalAnalysis) rootElement).getOwnedEntityPkg();
       }
       return Collections.singleton(rootElement);
-      
+
     case ITopDownConstants.TRANSITION_TOPDOWN_CAPABILITY:
     case ITopDownConstants.TRANSITION_TOPDOWN_OC2SM:
       if (rootElement instanceof BlockArchitecture) {
         rootElement = BlockArchitectureExt.getAbstractCapabilityPkg((BlockArchitecture) rootElement, false);
       }
       return Collections.singleton(rootElement);
-      
+
     case ITopDownConstants.TRANSITION_TOPDOWN_OA2SC:
     case ITopDownConstants.TRANSITION_TOPDOWN_OA2SM:
       if (rootElement instanceof BlockArchitecture) {
         rootElement = BlockArchitectureExt.getFunctionPkg((BlockArchitecture) rootElement, false);
       }
       return Collections.singleton(rootElement);
-      
+
     case ITopDownConstants.TRANSITION_TOPDOWN_PROPERTYVALUE:
     case ITopDownConstants.TRANSITION_TOPDOWN_EXCHANGEITEM:
     default:

@@ -70,13 +70,14 @@ public class CapabilityExt {
    * @return the contributing actors
    */
   public static List<SystemComponent> getInvolvedSystemComponents(Capability capability, boolean recurse) {
-    List<SystemComponent> involvedSystemComponents = capability.getInvolvedSystemComponents();
     if (recurse) {
+      List<SystemComponent> involvedSystemComponents = new ArrayList<>(capability.getInvolvedSystemComponents());
       for (AbstractCapability superCapability : AbstractCapabilityExt.getInheritanceHierarchy(capability)) {
         involvedSystemComponents.addAll(getInvolvedSystemComponents((Capability) superCapability, false));
       }
+      return involvedSystemComponents;
     }
-    return involvedSystemComponents;
+    return capability.getInvolvedSystemComponents();
   }
 
   /**

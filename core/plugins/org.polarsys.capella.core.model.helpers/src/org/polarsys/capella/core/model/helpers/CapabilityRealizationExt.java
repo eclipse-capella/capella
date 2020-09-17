@@ -73,7 +73,7 @@ public class CapabilityRealizationExt {
     if (component instanceof CapabilityRealizationInvolvedElement) {
       CapabilityRealizationInvolvement capabilityInvolvement = null;
       for (CapabilityRealizationInvolvement involvement : capability.getOwnedCapabilityRealizationInvolvements()) {
-        if (involvement.getInvolvedCapabilityRealizationInvolvedElement().equals(component)) {
+        if (component.equals(involvement.getInvolvedCapabilityRealizationInvolvedElement())) {
           capabilityInvolvement = involvement;
         }
       }

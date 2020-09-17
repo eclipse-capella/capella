@@ -17,11 +17,7 @@ import java.util.List;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.DEdge;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
-import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
-
-import org.polarsys.capella.test.diagram.common.ju.context.CDBDiagram;
 import org.polarsys.capella.test.diagram.common.ju.context.XABDiagram;
-import org.polarsys.capella.test.diagram.common.ju.step.tools.DeleteElementTool;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
 import org.polarsys.capella.test.framework.context.SessionContext;
 
@@ -48,14 +44,10 @@ public class DeleteConstraintLink extends XABDiagramsProject {
       String constraintId) {
     XABDiagram diagram = XABDiagram.openDiagram(context, diagramName, type);
 
-    final CDBDiagram cdbDiagram = CDBDiagram.createDiagram(context, LA__DATA);
-
     List<DEdge> edgeList = DiagramHelper.getEdges(diagram.getDiagram(), constraintId);
     for (DEdge edge : edgeList) {
-      new DeleteElementTool(diagram, cdbDiagram, IToolNameConstants.TOOL_CDB_DELETE_CONSTRAINT_ELEMENT)
-          .delete(edge);
+      diagram.deleteSemantic(edge);
     }
-
     edgeList = DiagramHelper.getEdges(diagram.getDiagram(), constraintId);
     assertTrue("Constraint link is not removed from the diagram after a deletion", edgeList.size() == 0);
   }

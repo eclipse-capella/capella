@@ -40,7 +40,8 @@ public class LCPCNatureTransition extends TopDownTransitionTestCase {
 
   public static final String LA_3_1_ID = "30288654-bae6-4bc8-a7a5-f2528f9611e9"; //$NON-NLS-1$
   public static final String LA_3_ID = "faa4c7ce-31d0-49cc-8747-e7fe91e03e96"; //$NON-NLS-1$
-
+  public static final String LC_2 = "aaa1c0bf-c034-45a1-969b-6f5f65d14744"; //$NON-NLS-1$
+  
   protected LogicalComponent la1;
 
   protected LogicalComponentPkg logicalComponentPkg;
@@ -69,7 +70,7 @@ public class LCPCNatureTransition extends TopDownTransitionTestCase {
     Component logicalSystem = BlockArchitectureExt.getRootBlockArchitecture(logicalComponentPkg).getSystem();
 
     assertTrue(logicalComponents.remove(logicalSystem));
-    assertEquals(8, logicalComponents.size());
+    assertEquals(9, logicalComponents.size());
 
     expectedComponentToNature = new HashMap<>();
 

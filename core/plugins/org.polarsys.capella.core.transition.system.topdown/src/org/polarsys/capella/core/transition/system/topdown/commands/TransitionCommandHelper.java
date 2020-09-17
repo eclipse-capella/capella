@@ -36,6 +36,7 @@ import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.cs.InterfacePkg;
 import org.polarsys.capella.core.data.cs.Part;
+import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
 import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.ctx.SystemComponentPkg;
@@ -254,7 +255,7 @@ public class TransitionCommandHelper {
       }
     };
   }
-  
+
   public ICommand getPC2CITransitionCommand(Collection<?> elements, IProgressMonitor monitor) {
     return new IntramodelTransitionCommand(elements, monitor) {
       @Override
@@ -277,11 +278,9 @@ public class TransitionCommandHelper {
   }
 
   public boolean isInterfaceTransitionAvailable(EObject object) {
-    return
-    // Interface transition is disabled from ctx2la. Use generate interfaces instead.
-    // interface transition is disabled from component or architecture
-    ((object instanceof CapellaElement) && (CapellaLayerCheckingExt.isInLogicalLayer((CapellaElement) object))
-        && ((object instanceof Interface) || (object instanceof InterfacePkg)));
+    return (object instanceof Interface || object instanceof InterfacePkg)
+        && (CapellaLayerCheckingExt.isInLogicalLayer((CapellaElement) object)
+            || CapellaLayerCheckingExt.isInContextLayer((CapellaElement) object));
   }
 
   public boolean isExchangeItemTransitionAvailable(EObject object) {
@@ -348,19 +347,24 @@ public class TransitionCommandHelper {
     if (CapellaLayerCheckingExt.isInContextLayer((CapellaElement) object)) {
       Component component = getComponent(object);
       if ((component instanceof SystemComponent && (ComponentExt.isActor(object))) || //
-          object instanceof SystemComponentPkg && !ComponentPkgExt.getAllActors((ComponentPkg) object).isEmpty() || //
-          (object instanceof ComponentExchange) && ComponentExchangeExt.isLinkToAnActor((ComponentExchange) object)) {
+          ((object instanceof SystemComponentPkg && !ComponentPkgExt.getAllActors((ComponentPkg) object).isEmpty())) || //
+          ((object instanceof ComponentExchange) && ComponentExchangeExt.isLinkToAnActor((ComponentExchange) object)) || //
+          (object instanceof PhysicalLink)) {
         return true;
       }
     }
     if (CapellaLayerCheckingExt.isInLogicalLayer((CapellaElement) object)) {
       Component component = getComponent(object);
       if ((component instanceof LogicalComponent && (ComponentExt.isExternalActor(component))) || //
-          object instanceof LogicalComponentPkg && !ComponentPkgExt.getExternalActors((ComponentPkg) object).isEmpty() || //
-          (object instanceof ComponentExchange) && ComponentExchangeExt.isLinkToAnActor((ComponentExchange) object)) {
+          ((object instanceof LogicalComponentPkg
+              && !ComponentPkgExt.getExternalActors((ComponentPkg) object).isEmpty()))
+          || //
+          ((object instanceof ComponentExchange) && ComponentExchangeExt.isLinkToAnActor((ComponentExchange) object)) || //
+          (object instanceof PhysicalLink)) {
         return true;
       }
     }
+
     return false;
   }
 
@@ -369,6 +373,17 @@ public class TransitionCommandHelper {
    * @return
    */
   public boolean isSystemTransitionAvailable(EObject object) {
+    if (object instanceof SystemAnalysis) {
+      return true;
+
+    } else if (object instanceof SystemComponentPkg && object.eContainer() instanceof BlockArchitecture) {
+      return true;
+
+    } else if (object instanceof SystemComponent) {
+      BlockArchitecture architecture = BlockArchitectureExt.getRootBlockArchitecture(object);
+      return (object.equals(architecture.getSystem()));
+
+    }
     return false;
   }
 
@@ -457,7 +472,6 @@ public class TransitionCommandHelper {
         && ((object instanceof OperationalCapability) || (object instanceof OperationalCapabilityPkg)));
   }
 
-
   /**
    * @param object
    * @return
@@ -477,7 +491,6 @@ public class TransitionCommandHelper {
     return null;
   }
 
-  
   /**
    * @param element
    * @return

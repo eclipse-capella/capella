@@ -218,6 +218,7 @@ import org.polarsys.capella.core.sirius.analysis.queries.QueryIdentifierConstant
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Streams;
 
 /**
  * Provides services for all interfaces diagram.
@@ -1228,6 +1229,19 @@ public class CsServices {
     return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_CCEI_SHOW_HIDE_ACTORS_FOR_LIB, component);
   }
 
+  public Collection<Component> getCCEIShowHideActors(DSemanticDecorator decorator) {
+    if (!(decorator.getTarget() instanceof Component)) {
+      return Collections.emptyList();
+    }
+    Component target = (Component) decorator.getTarget();
+    Collection<Component> siblingActors = getCCEIShowHideActors(target);
+    // Search for first level root actors since Show/Hide tool is always applied on the diagram background
+    EObject rootActorContainer = getIBTarget(decorator, true);
+    List<Component> firstLevelRootActors = QueryInterpretor
+        .executeQuery(QueryIdentifierConstants.GET_CCII_SHOW_HIDE_ACTORS, rootActorContainer);
+    return Streams.concat(siblingActors.stream(), firstLevelRootActors.stream()).collect(Collectors.toSet());
+  }
+
   public Collection<Component> getIBShowHideActor(DSemanticDecorator decorator) {
     return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_IB_SHOW_HIDE_ACTORS_FOR_LIB, decorator);
   }
@@ -1250,8 +1264,18 @@ public class CsServices {
     if (!(decorator.getTarget() instanceof Component)) {
       return Collections.emptyList();
     }
-    EObject target = getCCIITarget(decorator);
-    return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_CCII_SHOW_HIDE_ACTORS_FOR_LIB, target);
+    EObject directContainer = getCCIITarget(decorator);
+    EObject rootActorContainer = getIBTarget(decorator, true);
+    List<Component> siblingActors = QueryInterpretor
+        .executeQuery(QueryIdentifierConstants.GET_CCII_SHOW_HIDE_ACTORS_FOR_LIB, directContainer);
+    // Show/Hide tool is applied on a Component
+    if (directContainer == rootActorContainer) {
+      return siblingActors;
+    }
+    // Show/Hide tool is applied on the diagram background
+    List<Component> firstLevelRootActors = QueryInterpretor
+        .executeQuery(QueryIdentifierConstants.GET_CCII_SHOW_HIDE_ACTORS, rootActorContainer);
+    return Streams.concat(siblingActors.stream(), firstLevelRootActors.stream()).collect(Collectors.toSet());
   }
 
   public Collection<Component> getSubComponents(EObject target) {
@@ -5891,7 +5915,7 @@ public class CsServices {
     if (parentContainer instanceof Component) {
       return getSubComponents(parentContainer);
     } else if (parentContainer instanceof BlockArchitecture) {
-      Component firstComponent = BlockArchitectureExt.getOrCreateSystem((BlockArchitecture) parentContainer);
+      Component firstComponent = ((BlockArchitecture) parentContainer).getSystem();
       if (null != firstComponent) {
         return getSubComponents(firstComponent);
       }

@@ -198,8 +198,8 @@ public class MergeTargetConfiguration extends ExtendedTraceabilityConfiguration 
           BlockArchitectureExt.getRootFunction(target, false), context);
       addMapping(map, BlockArchitectureExt.getDataPkg(source, false), BlockArchitectureExt.getDataPkg(target, false),
           context);
-      addMapping(map, BlockArchitectureExt.getComponentPkg(source, false), BlockArchitectureExt.getComponentPkg(target, false),
-          context);
+      addMapping(map, BlockArchitectureExt.getComponentPkg(source, false),
+          BlockArchitectureExt.getComponentPkg(target, false), context);
 
       if (!((target instanceof PhysicalArchitecture) && !(source instanceof PhysicalArchitecture))) {
         addMapping(map, BlockArchitectureExt.getInterfacePkg(source, false),
@@ -210,8 +210,7 @@ public class MergeTargetConfiguration extends ExtendedTraceabilityConfiguration 
           BlockArchitectureExt.getRequirementsPkg(target, false), context);
       addMapping(map, BlockArchitectureExt.getAbstractCapabilityPkg(source, false),
           BlockArchitectureExt.getAbstractCapabilityPkg(target, false), context);
-      addMapping(map, BlockArchitectureExt.getFirstComponent(source, false),
-          BlockArchitectureExt.getFirstComponent(target, false), context);
+      addMapping(map, source.getSystem(), target.getSystem(), context);
     }
 
     @Override
@@ -223,7 +222,8 @@ public class MergeTargetConfiguration extends ExtendedTraceabilityConfiguration 
   }
 
   public EObject getTargetEngineering(IContext context) {
-    //In topdown transition, like TargetProject is the same than SourceProject, the SystemEngineering is the same than the source
+    // In topdown transition, like TargetProject is the same than SourceProject, the SystemEngineering is the same than
+    // the source
     return ContextHelper.getSourceEngineering(context);
   }
 
@@ -252,7 +252,7 @@ public class MergeTargetConfiguration extends ExtendedTraceabilityConfiguration 
     addHandler(context, new TopDownRealizationTraceabilityHandler(getIdentifier(context)));
     addHandler(context, new LibraryTraceabilityHandler());
   }
-  
+
   public Collection<EObject> retrieveTracedElementsByRealization(EObject object, IContext context) {
     ITraceabilityHandler handler = getDefinedHandler(context, RealizationLinkTraceabilityHandler.class);
     if (handler != null) {

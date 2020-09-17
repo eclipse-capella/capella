@@ -39,12 +39,16 @@ import org.polarsys.capella.core.re.project.ReProjectScope;
 import org.polarsys.capella.core.transition.common.commands.CommandHandler;
 import org.polarsys.capella.core.transition.common.commands.DefaultCommand;
 import org.polarsys.capella.core.transition.common.commands.LauncherCommand;
+import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.IHandler;
 import org.polarsys.capella.core.transition.common.transposer.SharedWorkflowActivityParameter;
+import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
 import org.polarsys.kitalpha.cadence.core.api.parameter.GenericParameter;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 public abstract class ProjectRecHandler extends CommandHandler {
+
+  private static final String FROM_PROJECT = ProjectRecHandler.class.getSimpleName();
 
   @Override
   public Object execute(Collection<?> selection, String name) throws ExecutionException {
@@ -85,12 +89,13 @@ public abstract class ProjectRecHandler extends CommandHandler {
   protected void handleNullCommand() {
     IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
     if (window != null) {
-      MessageDialog.openInformation(window.getShell(),
-          Messages.ProjectRecHandler_emptyLibraryDialogTitle, Messages.ProjectRecHandler_emtpyLibraryDialogMessage);
+      MessageDialog.openInformation(window.getShell(), Messages.ProjectRecHandler_emptyLibraryDialogTitle,
+          Messages.ProjectRecHandler_emtpyLibraryDialogMessage);
     }
   }
 
-  protected ICommand createInterruptableCommand(Collection<?> selection, IProgressMonitor progressMonitor) throws InterruptedException {
+  protected ICommand createInterruptableCommand(Collection<?> selection, IProgressMonitor progressMonitor)
+      throws InterruptedException {
     Collection<EObject> scope = ReProjectScope.getScope((EObject) selection.iterator().next(), progressMonitor);
     ICommand result = null;
     if (!scope.isEmpty()) {
@@ -108,6 +113,23 @@ public abstract class ProjectRecHandler extends CommandHandler {
     return null;
   }
 
+  @SuppressWarnings({ "rawtypes", "unchecked" })
+  public static boolean isProjectCommand(IContext context) {
+    ActivityParameters parameters = ((ActivityParameters) context.get(ITransitionConstants.OPTIONS_PARAMETERS));
+    if (parameters != null) {
+      GenericParameter<Boolean> value = (GenericParameter) parameters.getParameter(FROM_PROJECT);
+      if (value != null && Boolean.TRUE.equals(value.getValue())) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  public static void setCommandProject(SharedWorkflowActivityParameter param) {
+    param.addSharedParameter(
+        new GenericParameter<Boolean>(FROM_PROJECT, Boolean.TRUE, FROM_PROJECT));
+  }
+
   protected abstract ICommand createRecProjectCommand(Collection<EObject> elementsForRec);
 
   public static class UICreate extends ProjectRecHandler {
@@ -116,7 +138,7 @@ public abstract class ProjectRecHandler extends CommandHandler {
       return customizeParameters(new CreateRecCommand(elementsForRec, new NullProgressMonitor()), true, false);
     }
   }
-  
+
   public static class Create extends ProjectRecHandler {
     @Override
     protected ICommand createRecProjectCommand(Collection<EObject> elementsForRec) {
@@ -130,7 +152,7 @@ public abstract class ProjectRecHandler extends CommandHandler {
       return customizeParameters(new UpdateCurCommand(elementsForRec, new NullProgressMonitor()), true, true);
     }
   }
-  
+
   public static class Update extends ProjectRecHandler {
     @Override
     protected ICommand createRecProjectCommand(Collection<EObject> elementsForRec) {
@@ -139,25 +161,30 @@ public abstract class ProjectRecHandler extends CommandHandler {
   }
 
   /**
-   * - Show the wizard.
-   * - During update also show diffmerge.
-   * - Override dependencies handler to not include any other elements, since we already calculated all required elements
+   * - Show the wizard. - During update also show diffmerge. - Override dependencies handler to not include any other
+   * elements, since we already calculated all required elements
    */
-  protected final DefaultCommand customizeParameters(DefaultCommand command, boolean showOptions, boolean showDiffmerge) {
+  protected final DefaultCommand customizeParameters(DefaultCommand command, boolean showOptions,
+      boolean showDiffmerge) {
     SharedWorkflowActivityParameter param = new UIHeadHandler(showOptions, showDiffmerge);
     param.addSharedParameter(
         new GenericParameter<IHandler>(IReConstants.DEPENDENCIES_HANDLER, new DefaultDependenciesHandler() {
           @Override
-          public Collection<EObject> getScopeElements(Collection<EObject> initialScopeElements, Collection<EObject> scopeElements, IContext context) {
+          public Collection<EObject> getScopeElements(Collection<EObject> initialScopeElements,
+              Collection<EObject> scopeElements, IContext context) {
             return new ArrayList<>(initialScopeElements);
           }
 
           @Override
-          public Collection<EObject> getComplementaryScopeElements(Collection<EObject> initialScopeElements, Collection<EObject> scopeElements, IContext context) {
+          public Collection<EObject> getComplementaryScopeElements(Collection<EObject> initialScopeElements,
+              Collection<EObject> scopeElements, IContext context) {
             return new ArrayList<>(initialScopeElements);
           }
 
-    }, Messages.ProjectRecHandler_OptionsHandler));
+        }, Messages.ProjectRecHandler_OptionsHandler));
+
+    setCommandProject(param);
+
     command.addParameters(param);
     return command;
   }

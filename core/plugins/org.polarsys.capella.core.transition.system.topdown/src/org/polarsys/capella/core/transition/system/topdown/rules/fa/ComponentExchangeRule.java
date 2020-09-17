@@ -70,10 +70,6 @@ public class ComponentExchangeRule extends org.polarsys.capella.core.transition.
     if (result.isOK()) {
       ComponentExchange element = (ComponentExchange) element_p;
 
-      java.util.Collection<EObject> transfoSources = (java.util.Collection<EObject>) context_p.get(ITransitionConstants.TRANSITION_SOURCES);
-      if (transfoSources.contains(element_p)) {
-        return result;
-      }
       if (!ContextScopeHandlerHelper.getInstance(context_p).contains(ITransitionConstants.SOURCE_SCOPE, element_p, context_p)) {
         return new Status(IStatus.WARNING, Messages.Activity_Transition, "not in scope");
       }
@@ -88,6 +84,10 @@ public class ComponentExchangeRule extends org.polarsys.capella.core.transition.
       }
       if (!TransformationHandlerHelper.getInstance(context_p).isOrWillBeTransformed(element.getTarget(), context_p).isOK()) {
         return new Status(IStatus.WARNING, Messages.Activity_Transition, "target");
+      }
+      java.util.Collection<EObject> transfoSources = (java.util.Collection<EObject>) context_p.get(ITransitionConstants.TRANSITION_SOURCES);
+      if (transfoSources.contains(element_p)) {
+        return result;
       }
     }
     return result;

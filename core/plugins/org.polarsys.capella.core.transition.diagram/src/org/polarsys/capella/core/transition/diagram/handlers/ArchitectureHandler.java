@@ -29,6 +29,7 @@ import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
@@ -83,9 +84,10 @@ public class ArchitectureHandler extends AbstractDiagramHandler {
       DDiagramContents targetContents_p, AbstractNodeMapping mapping_p, DSemanticDecorator containerNode_p,
       EObject targetSemantic_p) {
     if (targetSemantic_p instanceof Part) {
-      if (((Part) targetSemantic_p).getAbstractType() instanceof PhysicalComponent) {
-        if (BlockArchitectureExt.getOrCreateSystem(BlockArchitectureExt.getRootBlockArchitecture(targetSemantic_p))
-            .equals(((Part) targetSemantic_p).getAbstractType())) {
+      AbstractType targetSemanticComponent = ((Part) targetSemantic_p).getAbstractType();
+      if (targetSemanticComponent instanceof PhysicalComponent) {
+        BlockArchitecture blockArchitecture = BlockArchitectureExt.getRootBlockArchitecture(targetSemantic_p);
+        if (targetSemanticComponent.equals(blockArchitecture.getSystem())) {
           return null;
         }
       }

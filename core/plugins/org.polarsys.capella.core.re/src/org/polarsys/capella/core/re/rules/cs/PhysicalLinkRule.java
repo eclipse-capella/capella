@@ -14,32 +14,18 @@ package org.polarsys.capella.core.re.rules.cs;
 
 import java.util.List;
 
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.polarsys.capella.core.model.helpers.PhysicalLinkExt;
 import org.polarsys.capella.core.transition.common.handlers.transformation.TransformationHandlerHelper;
-import org.polarsys.capella.core.transition.system.rules.AbstractCapellaElementRule;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
  */
-public class PhysicalLinkRule extends AbstractCapellaElementRule {
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  protected EClass getSourceType() {
-    return CsPackage.Literals.PHYSICAL_LINK;
-  }
-
-  public PhysicalLinkRule() {
-
-  }
+public class PhysicalLinkRule extends org.polarsys.capella.core.transition.system.rules.cs.PhysicalLinkRule {
 
   @Override
   protected void retrieveRequired(EObject element_p, List<EObject> result_p, IContext context_p) {
@@ -56,11 +42,14 @@ public class PhysicalLinkRule extends AbstractCapellaElementRule {
     BlockArchitecture target =
         (BlockArchitecture) TransformationHandlerHelper.getInstance(context_p).getBestTracedElement(root, context_p, CsPackage.Literals.BLOCK_ARCHITECTURE,
             element_p, result_p);
-
     if (root.equals(element_p.eContainer())) {
       return target;
     }
-    return BlockArchitectureExt.getFirstComponent(target, true);
+    PhysicalLink exchange = (PhysicalLink) element_p;
+    if (PhysicalLinkExt.isLinkToAnActor(exchange)) {
+      return BlockArchitectureExt.getComponentPkg(target, true);
+    }
+    return BlockArchitectureExt.getOrCreateSystem(target);
   }
 
 }
