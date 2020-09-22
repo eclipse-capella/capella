@@ -41,7 +41,10 @@ public class SiriusSemanticBrowserView extends SemanticBrowserView {
   @Override
   protected void handleDoubleClick(DoubleClickEvent event) {
     boolean callSuper = true;
-    ITreeSelection selection = (ITreeSelection) event.getSelection();
+    // Get the selection from the current viewer and not from the event, 
+    // otherwise in case of many selected elements only the last selected 
+    // element will be hold by the event selection.
+    ITreeSelection selection = getCurrentViewer().getStructuredSelection();
     if (!selection.isEmpty()) {
       for(Object selectedElement : selection.toList()) {
         if (selectedElement instanceof EObjectWrapper) {
