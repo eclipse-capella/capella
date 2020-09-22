@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.polarsys.capella.core.platform.sirius.ui.commands;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Set;
@@ -26,6 +27,7 @@ import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.DecoratingLabelProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.swt.SWT;
 import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.common.ef.ExecutionManager;
@@ -45,7 +47,7 @@ public class CapellaDeleteCommand extends BasicCapellaDeleteCommand {
 
   private boolean preventProtectedElementsDeletion;
 
-  private IStatus protectedElements = Status.OK_STATUS;
+  private IStatus deletionStatus = Status.OK_STATUS;
 
   /**
    * Equivalent to <code>CapellaDeleteCommand(executionManager, selection, true)</code>.
@@ -108,6 +110,7 @@ public class CapellaDeleteCommand extends BasicCapellaDeleteCommand {
   /**
    * 
    */
+  @Override
   protected Command getDeleteRepresentationCommand(TransactionalEditingDomain editingDomain) {
     return new DeleteRepresentationCommand(editingDomain,
         RepresentationHelper.getAllRepresentationDescriptorsTargetedBy(getExpandedSelection()));
@@ -116,6 +119,7 @@ public class CapellaDeleteCommand extends BasicCapellaDeleteCommand {
   /**
    * 
    */
+  @Override
   protected boolean isConfirmationRequired() {
     return IDeletePreferences.INSTANCE.isConfirmationRequired();
   }
@@ -125,8 +129,10 @@ public class CapellaDeleteCommand extends BasicCapellaDeleteCommand {
    * 
    * @param controlledElementsToDelete
    */
+  @Override
   protected void showAbortDialogForControlledElementsToDelete(final Set<? extends EObject> controlledElementsToDelete) {
     PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
+      @Override
       public void run() {
         ImpactAnalysisDialog dialog = new ImpactAnalysisDialog(new ArrayList<EObject>(controlledElementsToDelete),
             Messages.CapellaDeleteCommand_ConfirmLabel, Messages.CapellaDeleteCommand_ControlledElementsError_Message,
@@ -140,16 +146,41 @@ public class CapellaDeleteCommand extends BasicCapellaDeleteCommand {
 
   @Override
   protected IStatus preDeleteChecks() {
-    if (preventProtectedElementsDeletion) {
-      Set<?> elementsToDelete = getAllElementsToDelete();
-      if (!CapellaDeleteAction.canDelete(elementsToDelete)) {
-        protectedElements = new Status(Status.ERROR, CapellaActionsActivator.PLUGIN_ID,
-            Messages.CapellaDeleteCommand_ProtectedElementsError);
+    Set<?> elementsToDelete = getAllElementsToDelete();
+    if (preventProtectedElementsDeletion && !CapellaDeleteAction.canDelete(elementsToDelete)) {
+      deletionStatus = new Status(Status.ERROR, CapellaActionsActivator.PLUGIN_ID,
+          Messages.CapellaDeleteCommand_ProtectedElementsError);
+    } else {
+      long nbRepresentations = elementsToDelete.stream().filter(DRepresentationDescriptor.class::isInstance).count();
+      long nbSemanticElements = elementsToDelete.size() - nbRepresentations;
+      int status = Status.INFO;
+      String messageNbSemanticElement = "";
+      String messageNbRepresentation = "";
+
+      if (nbSemanticElements == 1) {
+        messageNbSemanticElement = Messages.CapellaDeleteCommand_ConfirmDeletionWithOneSemanticElement;
+      } else {
+        messageNbSemanticElement = MessageFormat
+            .format(Messages.CapellaDeleteCommand_ConfirmDeletionWithManySemanticElement, nbSemanticElements);
       }
+      if (nbRepresentations > 0) {
+        if (nbRepresentations == 1) {
+          messageNbRepresentation = Messages.CapellaDeleteCommand_ConfirmDeletionWithOneRepresentation;
+        } else {
+          messageNbRepresentation = MessageFormat
+              .format(Messages.CapellaDeleteCommand_ConfirmDeletionWithManyRepresentations, nbRepresentations);
+        }
+        status = Status.WARNING;
+      }
+      String message = MessageFormat.format(Messages.CapellaDeleteCommand_ConfirmDeletionQuestion,
+          messageNbSemanticElement, messageNbRepresentation);
+      deletionStatus = new Status(status, CapellaActionsActivator.PLUGIN_ID, message);
     }
-    return protectedElements;
+    return deletionStatus;
+
   }
 
+  @Override
   protected boolean confirmDeletion() {
     Set<?> elementsToDelete = getAllElementsToDelete();
 
@@ -158,7 +189,7 @@ public class CapellaDeleteCommand extends BasicCapellaDeleteCommand {
 
       @Override
       protected IStatus getStatus() {
-        return protectedElements;
+        return deletionStatus;
       }
 
       @Override
@@ -171,6 +202,7 @@ public class CapellaDeleteCommand extends BasicCapellaDeleteCommand {
     };
 
     PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
+      @Override
       public void run() {
         confirmDeletionDialog.open();
       }
