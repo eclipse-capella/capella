@@ -12,13 +12,11 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.migration.contributor;
 
-import java.util.ArrayList;
 import java.util.Collection;
+import java.util.stream.Collectors;
 
-import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
-import org.eclipse.core.runtime.CoreException;
 import org.polarsys.capella.core.data.migration.AbstractMigrationRunnable;
 
 /**
@@ -28,28 +26,8 @@ public abstract class AbstractMigrationContributor {
 
   public abstract String getKind();
 
-  public Collection<IResource> getMigrableFiles(IResource resource) {
-    Collection<IResource> files = new ArrayList<IResource>();
-
-    try {
-      if (resource instanceof IContainer) {
-        for (IResource member : ((IContainer) resource).members()) {
-          if (isValidResource(member)) {
-            files.add(member);
-
-          } else if (member instanceof IResource) {
-            files.addAll(getMigrableFiles(member));
-          }
-        }
-      } else if (isValidResource(resource)) {
-        files.add(resource);
-      }
-
-    } catch (CoreException e) {
-      e.printStackTrace();
-    }
-
-    return files;
+  public Collection<IResource> getMigrableFiles(Collection<IResource> resources) {
+    return resources.stream().filter(this::isValidResource).collect(Collectors.toList());
   }
 
   public abstract boolean isValidResource(IResource member);

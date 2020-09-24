@@ -20,7 +20,6 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xml.type.AnyType;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.data.migration.context.MigrationContext;
-import org.polarsys.kitalpha.emde.model.ElementExtension;
 import org.polarsys.kitalpha.emde.model.EmdePackage;
 
 /**
@@ -31,7 +30,7 @@ public class PatternInstanceDeletionContribution extends AbstractMigrationContri
   @Override
   public void updateElement(EObject peekObject, String typeName, EObject result, EStructuralFeature feature,
       Resource resource, MigrationContext context) {
-    
+
     super.updateElement(peekObject, typeName, result, feature, resource, context);
 
     if (peekObject instanceof Project) {
@@ -43,7 +42,7 @@ public class PatternInstanceDeletionContribution extends AbstractMigrationContri
           if (entry.getEStructuralFeature().getName()
               .equals(EmdePackage.Literals.EXTENSIBLE_ELEMENT__OWNED_EXTENSIONS.getName())) {
             if (entry.getValue() instanceof AnyType) {
-              AnyType type = (AnyType)entry.getValue();
+              AnyType type = (AnyType) entry.getValue();
               if ("EmdePatternInstanceSet".equals(type.eClass().getName())) {
                 entries.remove();
               }
@@ -51,7 +50,6 @@ public class PatternInstanceDeletionContribution extends AbstractMigrationContri
           }
         }
       }
-      System.out.println();
     }
   }
 

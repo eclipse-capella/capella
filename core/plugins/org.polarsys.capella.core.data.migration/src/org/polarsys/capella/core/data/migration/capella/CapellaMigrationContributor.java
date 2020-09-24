@@ -30,7 +30,10 @@ public class CapellaMigrationContributor extends AbstractMigrationContributor {
    */
   @Override
   public boolean isValidResource(IResource member) {
-    return CapellaResourceHelper.isCapellaResource(member, true);
+    return CapellaResourceHelper.isCapellaResource(member, true)
+        // This is only required for Capella 5.0 since legacy resource must be migrated.
+        // TODO remove this in the next version
+        || CapellaResourceHelper.isLegacyCapellaResource(member, true);
   }
 
   @Override

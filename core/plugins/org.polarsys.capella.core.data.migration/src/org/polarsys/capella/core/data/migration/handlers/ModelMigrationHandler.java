@@ -49,7 +49,10 @@ public class ModelMigrationHandler extends AbstractMigrationHandler {
   @Override
   protected boolean isValidSelection(List<Object> selection) {
     for (Object select : selection) {
-      if (!((select instanceof IFile) && CapellaResourceHelper.isCapellaResource(((IFile) select)))) {
+      if (!(select instanceof IFile && (CapellaResourceHelper.isCapellaResource((IFile) select)
+          // This is only required for Capella 5.0 since legacy resource must be migrated.
+          // TODO remove this in the next version
+          || CapellaResourceHelper.isLegacyCapellaResource((IFile) select)))) {
         return false;
       }
     }
