@@ -12,6 +12,8 @@ For a successful installation of Capella, your computer must meet the following 
 
 Starting with Capella 5.0, Open JDK 14 is directly embedded in the product.
 Having a Java environment on your machine is no longer a requirement.
+
+If however you want to use a different JDK version, you need to modify the '''capella.ini''' file. Please refer to the [https://wiki.eclipse.org/Eclipse.ini|following link] for more information.
 === Capella Installation Procedure ===
 Before starting the installation, the target location of Capella must be cleaned:
 
