@@ -54,21 +54,25 @@ import org.xml.sax.helpers.DefaultHandler;
 /**
  * This class provides IModelIdentifiers/IAbstractModel for all Capella model files in the current workspace<br>
  * <br>
- * When accessing the method getAvailableModels, it retrieve a ModelIdentifier based on the root-project-id of the file.<br>
+ * When accessing the method getAvailableModels, it retrieve a ModelIdentifier based on the root-project-id of the
+ * file.<br>
  * When accessing the method getModelDefinition, it retrieve a IAbstractModel: <br>
  * getModelDefinition mechanism:<br>
- * When the wanted resource is not loaded in the given editing domain, we don't load it in the given domain but access to it via<br>
- * another editing domain, the workspaceDomain. On this domain, we will load only the root project and its ModelInformation/LibraryReferences.<br>
- * In that way, when accessing via IAbstractModel.getReferences(), we will have necessary informations to know which references have the model without loading
- * all the resource.<br>
+ * When the wanted resource is not loaded in the given editing domain, we don't load it in the given domain but access
+ * to it via<br>
+ * another editing domain, the workspaceDomain. On this domain, we will load only the root project and its
+ * ModelInformation/LibraryReferences.<br>
+ * In that way, when accessing via IAbstractModel.getReferences(), we will have necessary informations to know which
+ * references have the model without loading all the resource.<br>
  * <br>
  * This assumption is ok since :<br>
- * 1- when the user click on ManageReference or other library's action, the selected resource is loaded in the given domain_p, so the modelDefinition of the
- * selection is always in the given model<br>
- * 2- there is no manipulation of internal EObject / domain of a ModelDefinition otherwise than through getProject(ted) method, which will retrieve here the
- * resource in the given ted.
+ * 1- when the user click on ManageReference or other library's action, the selected resource is loaded in the given
+ * domain_p, so the modelDefinition of the selection is always in the given model<br>
+ * 2- there is no manipulation of internal EObject / domain of a ModelDefinition otherwise than through getProject(ted)
+ * method, which will retrieve here the resource in the given ted.
  */
-public class CapellaWorkspaceProvider extends AbstractCapellaProvider implements IResourceChangeListener, IResourceDeltaVisitor {
+public class CapellaWorkspaceProvider extends AbstractCapellaProvider
+    implements IResourceChangeListener, IResourceDeltaVisitor {
 
   protected final TransactionalEditingDomain workspaceDomain = CapellaWorkspaceProvider.createEditingDomain();
 
@@ -154,8 +158,10 @@ public class CapellaWorkspaceProvider extends AbstractCapellaProvider implements
     if (!isHandled(modelURI)) {
       return null;
     }
-    // we use the modelDefinition from the given editing domain only if the resource is loaded in the resourceSet, otherwise, we use the default model
-    // definition (with a modelDefinition from the domain instead of the default model definition, we ensure that references are at the latest version,
+    // we use the modelDefinition from the given editing domain only if the resource is loaded in the resourceSet,
+    // otherwise, we use the default model
+    // definition (with a modelDefinition from the domain instead of the default model definition, we ensure that
+    // references are at the latest version,
     // even if resources are not saved)
     if (domain != null) {
       Resource resource = getResource(domain, modelURI, false);
@@ -203,11 +209,13 @@ public class CapellaWorkspaceProvider extends AbstractCapellaProvider implements
   }
 
   /**
+   * Listen on changes on {@link CapellaResourceHelper.CAPELLA_MODEL_FILE_EXTENSION} files (i.e. a library/project is
+   * now available or no more available) </br>
    * {@inheritDoc}
    */
   @Override
   public void resourceChanged(IResourceChangeEvent event) {
-    // Listen on changes on .melodymodeller files (i.e. a library/project is now available or no more available)
+
     IResourceDelta delta = event.getDelta();
     try {
       if (delta != null) {
@@ -233,15 +241,15 @@ public class CapellaWorkspaceProvider extends AbstractCapellaProvider implements
     IResource resource = delta.getResource();
 
     switch (resource.getType()) {
-      case IResource.ROOT:
-      case IResource.PROJECT:
-      case IResource.FOLDER:
-        return true;
-      case IResource.FILE:
-        if (CapellaResourceHelper.CAPELLA_MODEL_FILE_EXTENSION.equals(resource.getFileExtension())) {
-          clear(delta);
-        }
-        return false;
+    case IResource.ROOT:
+    case IResource.PROJECT:
+    case IResource.FOLDER:
+      return true;
+    case IResource.FILE:
+      if (CapellaResourceHelper.CAPELLA_MODEL_FILE_EXTENSION.equals(resource.getFileExtension())) {
+        clear(delta);
+      }
+      return false;
     }
     return false;
   }
@@ -265,11 +273,11 @@ public class CapellaWorkspaceProvider extends AbstractCapellaProvider implements
   /**
    * Is the given editing domain the workspace editing domain?
    */
-  public boolean isWorkspaceDomain(TransactionalEditingDomain domain){
+  public boolean isWorkspaceDomain(TransactionalEditingDomain domain) {
     return getWorkspaceEditingDomainID().equals(domain.getID());
   }
 
-  private static String getWorkspaceEditingDomainID(){
+  private static String getWorkspaceEditingDomainID() {
     return CapellaWorkspaceProvider.class.getCanonicalName();
   }
 

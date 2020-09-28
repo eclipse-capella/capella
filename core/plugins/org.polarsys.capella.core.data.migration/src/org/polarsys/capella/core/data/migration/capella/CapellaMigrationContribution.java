@@ -47,7 +47,7 @@ import org.polarsys.capella.core.data.requirement.RequirementPackage;
 import org.polarsys.capella.core.data.sharedmodel.SharedmodelPackage;
 
 /**
- * This contribution ensures migration of all prefixes, nsUri, in melodymodeller, aird and other resources
+ * This contribution ensures migration of all prefixes, nsUri, in capella, aird and other resources
  */
 public class CapellaMigrationContribution extends AbstractMigrationContribution {
 
@@ -60,17 +60,21 @@ public class CapellaMigrationContribution extends AbstractMigrationContribution 
     prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.EPBS_ARCHITECTURE_PREFIX, EpbsPackage.eINSTANCE);
     prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.FUNCTIONAL_ANALYSIS_PREFIX, FaPackage.eINSTANCE);
     prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.INFORMATION_PREFIX, InformationPackage.eINSTANCE);
-    prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.INFORMATION_COMMUNICATION_PREFIX, CommunicationPackage.eINSTANCE);
+    prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.INFORMATION_COMMUNICATION_PREFIX,
+        CommunicationPackage.eINSTANCE);
     prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.INFORMATION_DATATYPE_PREFIX, DatatypePackage.eINSTANCE);
-    prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.INFORMATION_DATAVALUE_PREFIX, DatavaluePackage.eINSTANCE);
+    prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.INFORMATION_DATAVALUE_PREFIX,
+        DatavaluePackage.eINSTANCE);
     prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.INTERACTION_PREFIX, InteractionPackage.eINSTANCE);
     prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.LOGICAL_ARCHITECTURE_PREFIX, LaPackage.eINSTANCE);
     prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.CAPELLA_COMMON_PREFIX, CapellacommonPackage.eINSTANCE);
     prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.CAPELLA_CORE_PREFIX, CapellacorePackage.eINSTANCE);
-    prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.CAPELLA_MODELLER_PREFIX, CapellamodellerPackage.eINSTANCE);
+    prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.CAPELLA_MODELLER_PREFIX,
+        CapellamodellerPackage.eINSTANCE);
     prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.OPERATIONAL_ANALYSIS_PREFIX, OaPackage.eINSTANCE);
     prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.PHYSICAL_ARCHITECTURE_PREFIX, PaPackage.eINSTANCE);
-    prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.PHYSICAL_ARCHITECTURE_DEPLOYMENT_PREFIX, DeploymentPackage.eINSTANCE);
+    prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.PHYSICAL_ARCHITECTURE_DEPLOYMENT_PREFIX,
+        DeploymentPackage.eINSTANCE);
     prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.REQUIREMENT_PREFIX, RequirementPackage.eINSTANCE);
     prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.SHARED_MODEL_PREFIX, SharedmodelPackage.eINSTANCE);
     prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.ACTIVITY_PREFIX, ActivityPackage.eINSTANCE);
@@ -137,7 +141,7 @@ public class CapellaMigrationContribution extends AbstractMigrationContribution 
 
     return null;
   }
-  
+
   @Override
   public EFactory getEFactory(String prefix, Resource resource, MigrationContext context) {
     if (prefixes.containsKey(XMLResource.XML_NS + ":" + prefix)) {

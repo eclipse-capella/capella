@@ -52,7 +52,8 @@ import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
  */
 public class OpenSessionAction extends BaseSelectionListenerAction {
   // Log4j reference logger.
-  private static final Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.UI);
+  private static final Logger logger = ReportManagerRegistry.getInstance()
+      .subscribe(IReportManagerDefaultComponents.UI);
   /**
    * Activity Explorer editor. See org.eclipse.amalgam.explorer.activity.ui.api.editor.ActivityExplorerEditor.ID.<br>
    */
@@ -87,18 +88,18 @@ public class OpenSessionAction extends BaseSelectionListenerAction {
     failedOpeningSessions = new HashMap<IFile, IStatus>();
     // Go through selected elements.
     for (Object selectedElement : getStructuredSelection().toList()) {
-    	
+
       // Precondition ignore selected elements which are not IFile.
       if (!(selectedElement instanceof IFile)) {
         continue;
       }
       IFile selectedFile = (IFile) selectedElement;
       Session session = null;
-      
+
       String eventName = "Open Session";
-	  String eventContext = selectedFile.getName();
-	  UsageMonitoringLogger.getInstance().log(eventName, eventContext, EventStatus.NONE);
-	  
+      String eventContext = selectedFile.getName();
+      UsageMonitoringLogger.getInstance().log(eventName, eventContext, EventStatus.NONE);
+
       try {
         // Don't open session if already opened (bad performance).
         if (SessionHelper.getSession(selectedFile) != null) {
@@ -109,8 +110,8 @@ public class OpenSessionAction extends BaseSelectionListenerAction {
         session = SessionManager.INSTANCE.getSession(selectedUri, monitor);
         if (null == session) {
           // Session is null : open session failed.
-          failedOpeningSessions.put(selectedFile,
-              new Status(IStatus.ERROR, SiriusUIPlugin.getDefault().getPluginId(), "Session can't be opened (null session)")); //$NON-NLS-1$
+          failedOpeningSessions.put(selectedFile, new Status(IStatus.ERROR, SiriusUIPlugin.getDefault().getPluginId(),
+              "Session can't be opened (null session)")); //$NON-NLS-1$
           continue;
         }
 
@@ -123,36 +124,39 @@ public class OpenSessionAction extends BaseSelectionListenerAction {
         // Open session.
         session.open(monitor);
         if (!session.isOpen()) {
-          failedOpeningSessions.put(selectedFile,
-              new Status(IStatus.ERROR, SiriusUIPlugin.getDefault().getPluginId(), NLS.bind("Session can't be opened (null session)", selectedFile))); //$NON-NLS-1$
+          failedOpeningSessions.put(selectedFile, new Status(IStatus.ERROR, SiriusUIPlugin.getDefault().getPluginId(),
+              NLS.bind("Session can't be opened (null session)", selectedFile))); //$NON-NLS-1$
           continue;
         }
 
         // initialize the corresponding model
-        // should be done in a listener but event opened is triggered while the melodymodeller file has not been created
+        // should be done in a listener but event opened is triggered while
+        // CapellaResourceHelper.CAPELLA_MODEL_FILE_EXTENSION file has not been created
         // (in the case of a project creation)
         // Open the editing session.
         IEditingSession editingSession = SessionUIManager.INSTANCE.getOrCreateUISession(session);
         editingSession.open();
         if (session != null) {
-            // Open the startup representations of opened session
-            org.eclipse.sirius.ui.business.api.session.SessionHelper.openStartupRepresentations(session, new NullProgressMonitor());
+          // Open the startup representations of opened session
+          org.eclipse.sirius.ui.business.api.session.SessionHelper.openStartupRepresentations(session,
+              new NullProgressMonitor());
         }
         if (shouldOpenActivityExplorer) {
           // Open Activity Explorer for open sessions.
           openActivityExplorer(session);
         }
-        
+
         UsageMonitoringLogger.getInstance().log(eventName, eventContext, EventStatus.OK);
-        
+
       } catch (Exception ex) {
         CapellaSessionHelper.reportException(ex);
         UsageMonitoringLogger.getInstance().log(eventName, eventContext, EventStatus.ERROR);
-//            	
-//        IStatus status =
-//            new Status(IStatus.ERROR, SiriusUIPlugin.getDefault().getPluginId(), NLS.bind("An error occured when opening session ({0})", selectedFile), ex); //$NON-NLS-1$
-//        failedOpeningSessions.put(selectedFile, status);
-//        CapellaSessionHelper.reportError(status);
+        //
+        // IStatus status =
+        // new Status(IStatus.ERROR, SiriusUIPlugin.getDefault().getPluginId(), NLS.bind("An error occured when opening
+        // session ({0})", selectedFile), ex); //$NON-NLS-1$
+        // failedOpeningSessions.put(selectedFile, status);
+        // CapellaSessionHelper.reportError(status);
 
       } finally {
         // Notify action listeners
@@ -182,6 +186,7 @@ public class OpenSessionAction extends BaseSelectionListenerAction {
 
   /**
    * Get files that a session cannot be open for + a status to explain why.
+   * 
    * @return a not <code>null</code> Map.
    */
   public Map<IFile, IStatus> getFailedOpeningSessions() {
@@ -222,7 +227,9 @@ public class OpenSessionAction extends BaseSelectionListenerAction {
 
   /**
    * Set if the Activity Explorer should be open when running this action.
-   * @param open <code>true</code> means the Activity Explorer will be open after session open operation.
+   * 
+   * @param open
+   *          <code>true</code> means the Activity Explorer will be open after session open operation.
    */
   public void setOpenActivityExplorer(boolean open) {
     shouldOpenActivityExplorer = open;
@@ -230,7 +237,9 @@ public class OpenSessionAction extends BaseSelectionListenerAction {
 
   /**
    * Set if this action should be ran within a progress service runnable.
-   * @param runInProgressService <code>true</code> means this action should be ran within a progress service runnable.
+   * 
+   * @param runInProgressService
+   *          <code>true</code> means this action should be ran within a progress service runnable.
    */
   public void setRunInProgressService(boolean runInProgressService) {
     shouldRunInProgressService = runInProgressService;
@@ -238,6 +247,7 @@ public class OpenSessionAction extends BaseSelectionListenerAction {
 
   /**
    * Open the Activity Explorer for specified session.
+   * 
    * @param session
    * @return
    */

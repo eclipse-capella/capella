@@ -96,7 +96,7 @@ public class AbstractCommandLine implements ICommandLine {
     } catch (CoreException exception) {
       logErrorAndThrowException(Messages.refresh_problem);
     }
-    
+
     // is filepath empty ?
     if (isEmtyOrNull(argHelper.getFilePath())) {
       logErrorAndThrowException(Messages.representation_mandatory);
@@ -161,16 +161,13 @@ public class AbstractCommandLine implements ICommandLine {
   public void postExecute(IApplicationContext context) throws CommandLineException {
     // Do nothing
   }
-  
+
   public boolean projectVersionIsCompliant() throws CommandLineException {
-    // retrieve melodymodeller files
-    // project exists in the workspace ?
     String projectName = getProjectName(argHelper.getFilePath());
     IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
     if (!project.exists()) {
       logError(Messages.project + projectName + Messages.not_exist);
     } else {
-      // file exists in the project ?
       try {
         project.open(new NullProgressMonitor());
       } catch (CoreException exception) {
@@ -178,11 +175,11 @@ public class AbstractCommandLine implements ICommandLine {
         logger.warn(loggerMessage.toString(), exception);
       }
 
-      List<IFile> melodymodellerFiles = getCapellamodellerFiles(project);
+      List<IFile> capellaResources = getCapellaResourceFiles(project);
 
-      // check that all melodymodeller files are compliant with current Capella version
-      for (IFile modeller : melodymodellerFiles) {
-        compliancyCheck(modeller);
+      // check that all capella resources are compliant with current Capella version
+      for (IFile capellaResource : capellaResources) {
+        compliancyCheck(capellaResource);
       }
     }
     return true;
@@ -235,7 +232,7 @@ public class AbstractCommandLine implements ICommandLine {
   /**
    * @param project
    */
-  protected List<IFile> getCapellamodellerFiles(IProject project) {
+  protected List<IFile> getCapellaResourceFiles(IProject project) {
     List<IFile> files = new ArrayList<IFile>();
     try {
 

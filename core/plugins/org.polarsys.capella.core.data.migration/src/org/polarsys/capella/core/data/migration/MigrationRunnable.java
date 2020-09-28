@@ -86,7 +86,7 @@ public abstract class MigrationRunnable extends AbstractMigrationRunnable {
 
     LongRunningListenersRegistry.getInstance().operationStarting(getClass());
 
-    context.setResource((IFile) getFile());
+    context.setResource(getFile());
 
     IStatus result = preMigrationExecute(_file, context, checkVersion);
     if (!result.isOK()) {
@@ -304,6 +304,7 @@ public abstract class MigrationRunnable extends AbstractMigrationRunnable {
         result[0] = new Status(IStatus.ERROR, Activator.PLUGIN_ID, 1, getName(), null);
       }
 
+      @Override
       public void run() {
         context.getProgressMonitor().beginTask(Messages.MigrationAction_Command_LoadResources, 1); // We are not able to
         // know how resources
@@ -358,6 +359,7 @@ public abstract class MigrationRunnable extends AbstractMigrationRunnable {
         result[0] = new Status(IStatus.ERROR, Activator.PLUGIN_ID, 1, getName(), null);
       }
 
+      @Override
       public void run() {
         try {
           // Do additional stuff.
@@ -392,6 +394,7 @@ public abstract class MigrationRunnable extends AbstractMigrationRunnable {
     // Run the save operation within another command to make sure validateEdit prompt a dialog to make files writable
     // with an SCM.
     executionManager.execute(new AbstractReadWriteCommand() {
+      @Override
       public void run() {
         try {
           // Pre-condition.
@@ -409,7 +412,8 @@ public abstract class MigrationRunnable extends AbstractMigrationRunnable {
                 && resource.getURI().isPlatformResource()) {
               // Force to make file writeable : mandatory for aird migration since no notification is received with an
               // EObject as notifier.
-              // Without that, files are made writable silently that is not consistent with .melodymodeller migration
+              // Without that, files are made writable silently that is not consistent with
+              // CapellaResourceHelper.CAPELLA_MODEL_FILE_EXTENSION migration
               // process.
               context.getProgressMonitor()
                   .subTask(NLS.bind(Messages.MigrationAction_Command_SaveResource, resource.getURI().toString()));

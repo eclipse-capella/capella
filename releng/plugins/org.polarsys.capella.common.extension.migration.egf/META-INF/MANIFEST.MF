@@ -16,7 +16,8 @@ Require-Bundle: org.eclipse.ui,
  org.apache.log4j,
  org.eclipse.egf.task,
  org.eclipse.pde.ui,
- org.eclipse.pde.core
+ org.eclipse.pde.core,
+ org.polarsys.capella.core.model.handler
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.polarsys.capella.common.extension.migration.egf

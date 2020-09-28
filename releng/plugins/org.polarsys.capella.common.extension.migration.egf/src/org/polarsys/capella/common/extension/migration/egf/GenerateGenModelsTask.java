@@ -32,6 +32,7 @@ import org.eclipse.emf.codegen.ecore.genmodel.GenResourceKind;
 import org.eclipse.emf.common.util.BasicMonitor;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 
 /**
  * 
@@ -78,7 +79,7 @@ public class GenerateGenModelsTask implements ITaskProduction {
 						String packPrefix = pack.getPrefix();
 
 						if ("Capellamodeller".equals(packPrefix)) {
-							pack.setFileExtensions("melodymodeller");
+							pack.setFileExtensions(CapellaResourceHelper.CAPELLA_MODEL_FILE_EXTENSION);
 						}
 
 						// Add a customization to set "Create Child" attribute of the feature

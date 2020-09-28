@@ -27,6 +27,7 @@ import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
+import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.ProjectApproach;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 import org.polarsys.capella.core.model.skeleton.impl.SkeletonServicesImpl;
@@ -38,15 +39,15 @@ import org.polarsys.capella.core.model.skeleton.impl.cmd.CreateCapellaProjectCmd
 public class CapellaModelSkeleton extends AdapterImpl {
 
   /**
-   * A builder which provides a fluent API to construct new capella project skeletons
-   * with sensible defaults. The builders required parameters are passed in the constructor.
-   * All setters denote optional parameters.
+   * A builder which provides a fluent API to construct new capella project skeletons with sensible defaults. The
+   * builders required parameters are passed in the constructor. All setters denote optional parameters.
    *
    * TODO use the builder also in wizard..
    */
   public static class Builder {
 
-    public static final URI DEFAULT_URI = URI.createURI("skeleton.melodymodeller"); //$NON-NLS-1$
+    public static final String DEFAULT_URI_BASE = "skeleton." + CapellaResourceHelper.CAPELLA_MODEL_FILE_EXTENSION; // $NON-NLS-1$
+    public static final URI DEFAULT_URI = URI.createURI(DEFAULT_URI_BASE); // $NON-NLS-1$
     public static final String DEFAULT_NAME = "Skeleton"; //$NON-NLS-1$
     public static final EngineeringDomain DEFAULT_ENGINEERING_DOMAIN = EngineeringDomain.System;
     public static final boolean DEFAULT_INCLUDE_OPERATIONAL_ANALYSIS = true;
@@ -72,14 +73,15 @@ public class CapellaModelSkeleton extends AdapterImpl {
     }
 
     /**
-     * Set the uri for the skeletons target resource. The default uri is 'skeleton.melodymodeller',
-     * a dummy which works fine if you do not intend to serialize the model.
+     * Set the uri for the skeletons target resource. The {@link #DEFAULT_URI} is a dummy which works fine if you do not
+     * intend to serialize the model.
      * <p>
-     * Note that it is currently not possible to create a skeleton without adding it to a Resource since
-     * the API that the builder uses requires a resource.
+     * Note that it is currently not possible to create a skeleton without adding it to a Resource since the API that
+     * the builder uses requires a resource.
      *
-     * @param uri the URI in which the skeleton should be stored. If the managers resource set already has a Resource with that uri, it is used,
-     * otherwise a new Resource will be created.
+     * @param uri
+     *          the URI in which the skeleton should be stored. If the managers resource set already has a Resource with
+     *          that uri, it is used, otherwise a new Resource will be created.
      * @return this builder
      */
     public Builder setURI(URI uri) {
@@ -89,6 +91,7 @@ public class CapellaModelSkeleton extends AdapterImpl {
 
     /**
      * Sets the type of the root element. Must be a subtype of Project, which is also the default.
+     * 
      * @param rootType
      * @return this builder
      */
@@ -101,7 +104,9 @@ public class CapellaModelSkeleton extends AdapterImpl {
     }
 
     /**
-     * Set the skeleton name. This name will be used as the name for both the Project name and the SystemEngineering name of the new skeleton.
+     * Set the skeleton name. This name will be used as the name for both the Project name and the SystemEngineering
+     * name of the new skeleton.
+     * 
      * @param name
      * @return this builder
      */
@@ -112,6 +117,7 @@ public class CapellaModelSkeleton extends AdapterImpl {
 
     /**
      * Set the skeleton engineering domain. The default is 'System'
+     * 
      * @param domain
      * @return this builder
      */
@@ -122,6 +128,7 @@ public class CapellaModelSkeleton extends AdapterImpl {
 
     /**
      * Sets the flag which includes OperationalAnalysis or not. The default is true
+     * 
      * @param include
      * @return this builder
      */
@@ -132,6 +139,7 @@ public class CapellaModelSkeleton extends AdapterImpl {
 
     /**
      * Builds the skeleton
+     * 
      * @return the new skeleton.
      */
     public CapellaModelSkeleton build() {
@@ -166,8 +174,8 @@ public class CapellaModelSkeleton extends AdapterImpl {
   }
 
   /**
-   * A helper that retrieves a skeleton adapter from the arguments root container and if
-   * none is present creates and attaches one.
+   * A helper that retrieves a skeleton adapter from the arguments root container and if none is present creates and
+   * attaches one.
    *
    * @param capellaModelElement
    * @return a skeleton instance, or null if the root container object is not a capella Project

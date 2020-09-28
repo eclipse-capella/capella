@@ -38,13 +38,13 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.mdsofa.common.helper.FileHelper;
 import org.polarsys.capella.common.mdsofa.common.helper.ProjectHelper;
 import org.polarsys.capella.common.mdsofa.common.helper.StringHelper;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.sirius.ui.Messages;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
 
 /**
  * Dialog to handle Capella model fragment creation.
@@ -57,11 +57,13 @@ public class ControlResourceDialog extends ResourceDialog {
 
   /**
    * Constructor.
+   * 
    * @param parent_p
    * @param domain_p
    * @param currentResource_p
    */
-  public ControlResourceDialog(Shell parent_p, EditingDomain domain_p, Resource currentResource_p, final EObject controledObject) {
+  public ControlResourceDialog(Shell parent_p, EditingDomain domain_p, Resource currentResource_p,
+      final EObject controledObject) {
     super(parent_p, Messages.ControlAction_Window_Title, SWT.SAVE);
     _domain = domain_p;
     _currentResource = currentResource_p;
@@ -71,6 +73,7 @@ public class ControlResourceDialog extends ResourceDialog {
   /**
    * Create the content of this dialog.<br>
    * The code is copied from {@link #createDialogArea(Composite)} super method.
+   * 
    * @param parent_p
    * @return
    */
@@ -110,7 +113,9 @@ public class ControlResourceDialog extends ResourceDialog {
 
   /**
    * Compute default fragment URI.<br>
-   * Default implementation computes a fragment URI located in the project under {@link CapellaResourceHelper#FRAGMENTS_DEFAULT_FOLDER} folder.
+   * Default implementation computes a fragment URI located in the project under
+   * {@link CapellaResourceHelper#FRAGMENTS_DEFAULT_FOLDER} folder.
+   * 
    * @return must be not <code>null</code>.
    */
   protected String computeFragmentUri() {
@@ -188,6 +193,7 @@ public class ControlResourceDialog extends ResourceDialog {
 
   /**
    * Get Camel case representation for specified word.
+   * 
    * @param word_p
    */
   private String getCamelCaseRepresentation(String word_p) {
@@ -204,10 +210,10 @@ public class ControlResourceDialog extends ResourceDialog {
    *
    */
   private String[] XMLEscapeCharacters = { "\"", //$NON-NLS-1$
-                                          "'", //$NON-NLS-1$
-                                          "<", //$NON-NLS-1$
-                                          ">", //$NON-NLS-1$
-                                          "&" //$NON-NLS-1$
+      "'", //$NON-NLS-1$
+      "<", //$NON-NLS-1$
+      ">", //$NON-NLS-1$
+      "&" //$NON-NLS-1$
   };
 
   /**
@@ -235,9 +241,9 @@ public class ControlResourceDialog extends ResourceDialog {
   }
 
   /**
-   * Creates and, if it already exists, loads the specified resource. This implementation verifies that a resource can be opened for that URI, that the resource
-   * is not the object's current container, and that it is not read-only in the editing domain. If there is an existing resource with that URI, it prompts
-   * before overriding or adding to it.
+   * Creates and, if it already exists, loads the specified resource. This implementation verifies that a resource can
+   * be opened for that URI, that the resource is not the object's current container, and that it is not read-only in
+   * the editing domain. If there is an existing resource with that URI, it prompts before overriding or adding to it.
    */
   @Override
   protected boolean processResources() {
@@ -253,29 +259,28 @@ public class ControlResourceDialog extends ResourceDialog {
     for (String character : getInvalidCharacters()) {
       if (file.contains(character)) {
         // Warn the end-user about the problem.
-        String formattedMessage =
-            StringHelper.formatMessage(Messages.ControlAction_Fragmentation_Error3_Message, new String[] { !character.equals("&") ? character : "&&" }); //$NON-NLS-1$ //$NON-NLS-2$
+        String formattedMessage = StringHelper.formatMessage(Messages.ControlAction_Fragmentation_Error3_Message,
+            new String[] { !character.equals("&") ? character : "&&" }); //$NON-NLS-1$ //$NON-NLS-2$
         MessageDialog.openError(getShell(), Messages.ControlAction_Window_Title, formattedMessage);
         return false;
       }
     }
 
     // URI extension must be CAPELLA_FRAGMENT_EXTENSION_FILE value.
-    // Check also that they dont introduce '.melodyfragment' as last segment
-    if (!CapellaResourceHelper.isCapellaFragment(uri)
-        || uri.lastSegment().equals(ICommonConstants.POINT_CHARACTER + CapellaResourceHelper.CAPELLA_FRAGMENT_FILE_EXTENSION)) {
+    // Check also that they do not introduce CapellaResourceHelper.CAPELLA_FRAGMENT_FILE_EXTENSION as last segment
+    if (!CapellaResourceHelper.isCapellaFragment(uri) || uri.lastSegment()
+        .equals(ICommonConstants.POINT_CHARACTER + CapellaResourceHelper.CAPELLA_FRAGMENT_FILE_EXTENSION)) {
       // Warn the end-user about the problem.
-      String formattedMessage =
-          StringHelper
-              .formatMessage(Messages.ControlAction_Fragmentation_Error_Message, new String[] { ICommonConstants.POINT_CHARACTER
-                                                                                                + CapellaResourceHelper.CAPELLA_FRAGMENT_FILE_EXTENSION });
+      String formattedMessage = StringHelper.formatMessage(Messages.ControlAction_Fragmentation_Error_Message,
+          new String[] { ICommonConstants.POINT_CHARACTER + CapellaResourceHelper.CAPELLA_FRAGMENT_FILE_EXTENSION });
       MessageDialog.openError(getShell(), Messages.ControlAction_Window_Title, formattedMessage);
       return false;
     }
 
     // Check if it is platform resource uri
     if (!uri.isPlatformResource()) {
-      String formattedMessage = StringHelper.formatMessage(Messages.ControlAction_Fragmentation_Error4_Message, new String[] { uri.toString() });
+      String formattedMessage = StringHelper.formatMessage(Messages.ControlAction_Fragmentation_Error4_Message,
+          new String[] { uri.toString() });
       MessageDialog.openError(getShell(), Messages.ControlAction_Window_Title, formattedMessage);
       return false;
     }
@@ -283,7 +288,8 @@ public class ControlResourceDialog extends ResourceDialog {
     // Check if project exists
     // So far first segment must be 'resource'. Then second segment must be project name
     if (!projectExists(uri)) {
-      String formattedMessage = StringHelper.formatMessage(Messages.ControlAction_Fragmentation_Error5_Message, new String[] { uri.toString() });
+      String formattedMessage = StringHelper.formatMessage(Messages.ControlAction_Fragmentation_Error5_Message,
+          new String[] { uri.toString() });
       MessageDialog.openError(getShell(), Messages.ControlAction_Window_Title, formattedMessage);
       return false;
     }
@@ -291,7 +297,8 @@ public class ControlResourceDialog extends ResourceDialog {
     // URI must not override an existing file.
     if (FileHelper.getPlatformFile(uri.toPlatformString(true)).exists()) {
       // Warn the end-user about the problem.
-      String formattedMessage = StringHelper.formatMessage(Messages.ControlAction_Fragmentation_Error2_Message, new String[] { uri.toPlatformString(true) });
+      String formattedMessage = StringHelper.formatMessage(Messages.ControlAction_Fragmentation_Error2_Message,
+          new String[] { uri.toPlatformString(true) });
       MessageDialog.openError(getShell(), Messages.ControlAction_Window_Title, formattedMessage);
       return false;
     }
@@ -301,13 +308,13 @@ public class ControlResourceDialog extends ResourceDialog {
     boolean resourceInSet = theResource != null;
 
     if (theResource == _currentResource) {
-      MessageDialog.openError(getShell(), EMFEditUIPlugin.INSTANCE.getString("_UI_InvalidURI_label"), EMFEditUIPlugin.INSTANCE //$NON-NLS-1$
-          .getString("_WARN_AlreadyInResource")); //$NON-NLS-1$
+      MessageDialog.openError(getShell(), EMFEditUIPlugin.INSTANCE.getString("_UI_InvalidURI_label"), //$NON-NLS-1$
+          EMFEditUIPlugin.INSTANCE.getString("_WARN_AlreadyInResource")); //$NON-NLS-1$
       return false;
     }
     if (_domain.isReadOnly(theResource)) {
-      MessageDialog.openError(getShell(), EMFEditUIPlugin.INSTANCE.getString("_UI_InvalidURI_label"), EMFEditUIPlugin.INSTANCE //$NON-NLS-1$
-          .getString("_WARN_ReadOnlyResource")); //$NON-NLS-1$
+      MessageDialog.openError(getShell(), EMFEditUIPlugin.INSTANCE.getString("_UI_InvalidURI_label"), //$NON-NLS-1$
+          EMFEditUIPlugin.INSTANCE.getString("_WARN_ReadOnlyResource")); //$NON-NLS-1$
       return false;
     }
 
@@ -326,8 +333,8 @@ public class ControlResourceDialog extends ResourceDialog {
     if (!resourceInSet) {
       theResource = resourceSet.createResource(uri);
       if (null == theResource) {
-        MessageDialog.openError(getShell(), EMFEditUIPlugin.INSTANCE.getString("_UI_InvalidURI_label"), EMFEditUIPlugin.INSTANCE //$NON-NLS-1$
-            .getString("_WARN_CannotCreateResource")); //$NON-NLS-1$
+        MessageDialog.openError(getShell(), EMFEditUIPlugin.INSTANCE.getString("_UI_InvalidURI_label"), //$NON-NLS-1$
+            EMFEditUIPlugin.INSTANCE.getString("_WARN_CannotCreateResource")); //$NON-NLS-1$
         return false;
       }
 
@@ -343,11 +350,11 @@ public class ControlResourceDialog extends ResourceDialog {
 
     boolean result = true;
     if (resourceBad) {
-      result = MessageDialog.openQuestion(getShell(), EMFEditUIPlugin.INSTANCE.getString("_UI_ExistingResource_label"), EMFEditUIPlugin.INSTANCE //$NON-NLS-1$
-          .getString("_WARN_ReplaceResource")); //$NON-NLS-1$
+      result = MessageDialog.openQuestion(getShell(), EMFEditUIPlugin.INSTANCE.getString("_UI_ExistingResource_label"), //$NON-NLS-1$
+          EMFEditUIPlugin.INSTANCE.getString("_WARN_ReplaceResource")); //$NON-NLS-1$
     } else if (resourceExists) {
-      result = MessageDialog.openQuestion(getShell(), EMFEditUIPlugin.INSTANCE.getString("_UI_ExistingResource_label"), EMFEditUIPlugin.INSTANCE //$NON-NLS-1$
-          .getString("_WARN_AddToResource")); //$NON-NLS-1$
+      result = MessageDialog.openQuestion(getShell(), EMFEditUIPlugin.INSTANCE.getString("_UI_ExistingResource_label"), //$NON-NLS-1$
+          EMFEditUIPlugin.INSTANCE.getString("_WARN_AddToResource")); //$NON-NLS-1$
     }
 
     if (!result && !resourceInSet && (theResource != null)) {
