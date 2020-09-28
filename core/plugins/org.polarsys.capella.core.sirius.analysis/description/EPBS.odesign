@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" version="12.0.0.2017041100">
-  <ownedViewpoints name="EPBS architecture" label="%epbs" modelFileExtension="melodymodeller">
+  <ownedViewpoints name="EPBS architecture" label="%epbs" modelFileExtension="capella">
     <ownedRepresentations xsi:type="description_1:CrossTableDescription" name="Configuration Items - Requirements" domainClass="EPBSArchitecture">
       <ownedLineMappings name="Configuration Item 2" domainClass="ConfigurationItem" semanticCandidatesExpression="aql:self.eAllContents()->filter(epbs::ConfigurationItem)->select(x | not (x.eContainer().oclIsKindOf(epbs::EPBSArchitecture)))" headerLabelExpression="aql:self.computeComponentLabel()">
         <delete name="No delete" precondition="false">
