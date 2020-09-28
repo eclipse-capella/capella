@@ -20,3 +20,4 @@ Export-Package: org.polarsys.capella.core.platform.eclipse.capella.ui.trace,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Activator: org.polarsys.capella.core.platform.eclipse.capella.ui.trace.MDTrace
 Bundle-Localization: plugin
+

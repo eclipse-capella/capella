@@ -18,6 +18,8 @@ public interface IImageKeys {
 	public static final String ACTION_ADD = "icons/add.gif"; //$NON-NLS-1$
 	public static final String ACTION_REMOVE = "icons/remove.gif"; //$NON-NLS-1$
 	public static final String ROOT = "icons/root.gif"; //$NON-NLS-1$
+	public static final String MENU_ITEM = "icons/trace.gif"; //$NON-NLS-1$
+	public static final String GENERIC_VALUE = "icons/generic_value.gif"; //$NON-NLS-1$
 
 	public static final String EXPLANATION = "icons/transparent_traceability.png"; //$NON-NLS-1$
 	public static final String PATH_SEPARATOR = "::"; //$NON-NLS-1$

@@ -37,9 +37,12 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
@@ -59,6 +62,7 @@ import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views.compone
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views.providers.IImageKeys;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views.providers.TracePageContentProvider;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views.providers.TraceStore;
+//import org.polarsys.capella.core.ui.properties.wizards.EditCapellaCustomPropertyWizard;
 import org.polarsys.capella.core.ui.resources.CapellaUIResourcesPlugin;
 import org.polarsys.capella.core.ui.toolkit.dialogs.CapellaWizardDialog;
 
@@ -161,6 +165,10 @@ public class ViewEditPage extends WizardPage {
           return true;
         }
       };
+      
+      IWorkbenchPart part = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActivePart();
+      //EditCapellaCustomPropertyWizard traceEditor = new EditCapellaCustomPropertyWizard(part, currentTrace);
+          
       CapellaWizardDialog dlg = new CapellaWizardDialog(getShell(), traceEditor);
       dlg.open();
     }
