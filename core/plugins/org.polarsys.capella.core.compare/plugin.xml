@@ -26,7 +26,7 @@
          point="org.eclipse.core.contenttype.contentTypes">
       <content-type
             base-type="org.eclipse.emf.ecore.xmi"
-            file-extensions="melodymodeller,melodyfragment"
+            file-extensions="capella,capellafragment"
             id="org.polarsys.capella.core.compare.capella.content-type"
             name="Capella model files"
             priority="normal">

@@ -233,7 +233,7 @@
                     <test 
                         forcePluginActivation="true" 
                         property="org.eclipse.core.resources.extension" 
-                        value="melodymodeller"/> 
+                        value="capella"/> 
                 </and>
                 </or>
          </triggerPoints>
@@ -354,12 +354,12 @@
 	                  <test
 	                        forcePluginActivation="true"
 	                        property="org.eclipse.core.resources.extension"
-	                        value="melodymodeller">
+	                        value="capella">
 	                  </test>
 	                  <test
 	                        forcePluginActivation="true"
 	                        property="org.eclipse.core.resources.extension"
-	                        value="melodyfragment">
+	                        value="capellafragment">
 	                  </test>
 	                  <test
 	                        forcePluginActivation="true"
@@ -476,12 +476,12 @@
                      <test
                            forcePluginActivation="true"
                            property="org.eclipse.core.resources.extension"
-                           value="melodymodeller">
+                           value="capella">
                      </test>
                      <test
                            forcePluginActivation="true"
                            property="org.eclipse.core.resources.extension"
-                           value="melodyfragment">
+                           value="capellafragment">
                      </test>
                      <test
                            forcePluginActivation="true"
@@ -524,16 +524,16 @@
       </navigatorContent>
       <commonFilter
             activeByDefault="false"
-            description="Hides resources that end with &quot;.melodymodeller&quot;"
+            description="Hides resources that end with &quot;.capella&quot;"
             id="capella.project.explorer.filters.capellaModeller"
-            name="*.melodymodeller resources">
+            name="*.capella resources">
          <filterExpression>
             <adapt
                   type="org.eclipse.core.resources.IFile">
                <test
                      forcePluginActivation="true"
                      property="org.eclipse.core.resources.extension"
-                     value="melodymodeller">
+                     value="capella">
                </test>
             </adapt>
          </filterExpression>
@@ -1393,12 +1393,12 @@
                   <test
                         forcePluginActivation="true"
                         property="org.eclipse.core.resources.extension"
-                        value="melodymodeller">
+                        value="capella">
                   </test>
                   <test
                         forcePluginActivation="true"
                         property="org.eclipse.core.resources.extension"
-                        value="melodyfragment">
+                        value="capellafragment">
                   </test>
                </or>
             </and>
