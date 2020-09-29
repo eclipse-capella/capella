@@ -37,7 +37,7 @@ proc "create-project" [val projectName] {
 	    get-item $projectName | get-property caption | equals $projectName | verify-true
 	    get-item $projectName | get-property "getItems().TreeItem[0].getText()" | equals [concat $projectName ".afm"] | verify-true
 	    get-item $projectName | get-property "getItems().TreeItem[1].getText()" | equals [concat $projectName ".aird"] | verify-true
-	    get-item $projectName | get-property "getItems().TreeItem[2].getText()" | equals [concat $projectName ".melodymodeller"] | verify-true
+	    get-item $projectName | get-property "getItems().TreeItem[2].getText()" | equals [concat $projectName ".capella"] | verify-true
 	}
 }
 
