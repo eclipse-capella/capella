@@ -21,7 +21,7 @@ Capella Git Adapter is based on EMF Diff/Merge, help and details about it can be
 <li>Select all fragments on commit if the model is fragmented.</li>
 <li>Close the session before a pull, rebase or merge operation.</li>
 <li>To handle large files in Git Repositories, more than 2GB, there are multiple 3rd party implementations that will try to solve the problem, many of them using a similar paradigm as a solution.</li>
-<li>The content of all model files (aird, airdfragment, melodymodeller, melodyfragment, afm, ...) are declared as ASCII Text and not binary files.<br>(see Capella : Window > Preferences > Team > File Content)</li>
+<li>The content of all model files (aird, airdfragment, capella, capellafragment, afm, ...) are declared as ASCII Text and not binary files.<br>(see Capella : Window > Preferences > Team > File Content)</li>
 </ul>
 |}
 
@@ -86,7 +86,7 @@ This tutorial provides a step by step walk-through of the Capella Git Adapter.
 
 ==== Check the History ====
 
-*Right-click the .melodymodeller file > Team > Show in History. You can now see your two commit in the History view.<br><br>
+*Right-click the .capella file > Team > Show in History. You can now see your two commit in the History view.<br><br>
 :-[[Image:images/History.png|666x215px]]
 <br>
 *In the History view, select the two commits and select "Compare with each other" then "Finish".You should see the differences between your commits with the Capella Diff/Merge tool. But you cannot modify them (merge), because you cannot modify the history.<br><br>
@@ -99,7 +99,7 @@ This tutorial provides a step by step walk-through of the Capella Git Adapter.
 
 *Make new changes in your diagram including the renaming of a function, save.
 
-*Right-click the .melodymodeller file > Compare with > Head revision > Finish. You have the possibility to undo some of the current changes at a fine grain with the diff/merge tool.<br><br>
+*Right-click the .capella file > Compare with > Head revision > Finish. You have the possibility to undo some of the current changes at a fine grain with the diff/merge tool.<br><br>
 :-[[Image:images/CompareWithHead.png|470x600px]]
 <br>
 :-[[Image:images/CompareHeadActions.png]]
@@ -129,7 +129,7 @@ Tags can also be created from the team menu, click '''Team > Advanced > Tag...''
 
 Conflicts arise when contradicting changes have been made in parallel and an attempt is made to integrate (merge) them. With Git, this may happen for example when two branches are '''merged''', when a branch is '''rebased''' on another, or when a '''pull''' is done.
 
-*Commit the changes done before with the message "Added Transmit", including the renaming of the function. Be sure to select both .aird and .melodymodeller files.
+*Commit the changes done before with the message "Added Transmit", including the renaming of the function. Be sure to select both .aird and .capella files.
  
 *Right-click the project > Team > Switch to > New branch..., type "maintenance" and validate.<br>
 '''You are now in branch "maintenance"'''.<br><br>
@@ -161,7 +161,7 @@ Conflicts arise when contradicting changes have been made in parallel and an att
 *A conflict dialog shows up, click OK.<br><br>
 :-[[Image:images/MergeResult.png|450x180px]]
 
-*A red icon identifies the conflicting files, here the .aird and .melodymodeller files.'''They are identified as conflicting because they have been modified in both branches'''.<br><br>
+*A red icon identifies the conflicting files, here the .aird and .capella files.'''They are identified as conflicting because they have been modified in both branches'''.<br><br>
 :-[[Image:images/ConflictFiles.png|400x275px]]
 
 *Right-click the .aird file and select Team > Merge Tool.<br><br>
@@ -198,7 +198,7 @@ Conflicts arise when contradicting changes have been made in parallel and an att
 
 *'''You may now consider the model as merged'''. Press Ctrl-S to save then close the diff/merge editor. You now have to inform Git that the merge is finished. 
 
-*Switch back to the Git perspective, select the repository and select the "Git Staging" view at the bottom. You should see the .aird and .melodymodeller files in the "Unstaged Changes" section.<br><br>
+*Switch back to the Git perspective, select the repository and select the "Git Staging" view at the bottom. You should see the .aird and .capella files in the "Unstaged Changes" section.<br><br>
 :-[[Image:images/GitStaging.png|1000x375px]]
 
 
@@ -227,4 +227,4 @@ If your model refers to libraries, you have to include manually your modified li
 
 * Diff/Merge 3-way can be improved.
 * The session needs to be closed prior to any Fetch, Pull or Rebase. This is due to the fact that files will be changed by Git and those changes need to be synchonized with the Eclipse File System.
-* On a fragmented model, Diff/Merge needs to be performed on the root file (not the airdfragment/melodyfragment) to ensure that the model is fully loaded during the Diff/Merge analysis.
+* On a fragmented model, Diff/Merge needs to be performed on the root file (not the airdfragment/capellafragment) to ensure that the model is fully loaded during the Diff/Merge analysis.

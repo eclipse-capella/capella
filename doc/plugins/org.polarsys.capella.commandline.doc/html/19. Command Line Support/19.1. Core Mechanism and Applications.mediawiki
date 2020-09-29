@@ -129,7 +129,7 @@ A log file can be also specified with the parameter '''''-logfile'''''
 -input /EOLE_AF/EOLE_AF.aird
 -outputfolder /DocProject/validation
 -validationruleset D:/EPF/exportall.epf
--validationcontext "EOLE_AF/EOLE_AF.melodymodeller#971d9934-9780-4e41-b02e-312d0eac3223 | EOLE_AF EOLE_AF/fragments/OA-Operational%20Context-Operational%20Entity.melodyfragment#c6aebe52-c8a4-4d35-8105-177c87470bef"
+-validationcontext "EOLE_AF/EOLE_AF.capella#971d9934-9780-4e41-b02e-312d0eac3223 | EOLE_AF EOLE_AF/fragments/OA-Operational%20Context-Operational%20Entity.capellafragment#c6aebe52-c8a4-4d35-8105-177c87470bef"
 -data <workspacePath>
 -logfile D:/CommandLineLog/log.html
 </pre>

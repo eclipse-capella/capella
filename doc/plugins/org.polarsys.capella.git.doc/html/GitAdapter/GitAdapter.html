@@ -36,7 +36,7 @@
 <li>Select all fragments on commit if the model is fragmented.</li>
 <li>Close the session before a pull, rebase or merge operation.</li>
 <li>To handle large files in Git Repositories, more than 2GB, there are multiple 3rd party implementations that will try to solve the problem, many of them using a similar paradigm as a solution.</li>
-<li>The content of all model files (aird, airdfragment, melodymodeller, melodyfragment, afm, ...) are declared as ASCII Text and not binary files.
+<li>The content of all model files (aird, airdfragment, capella, capellafragment, afm, ...) are declared as ASCII Text and not binary files.
 						<br/>(see Capella : Window &gt; Preferences &gt; Team &gt; File Content)</li>
 </ul>
 					</p>
@@ -151,7 +151,7 @@
 		</ul>
 		<h4 id="Check_the_History">Check the History</h4>
 		<ul>
-			<li>Right-click the .melodymodeller file &gt; Team &gt; Show in History. You can now see your two commit in the History view.
+			<li>Right-click the .capella file &gt; Team &gt; Show in History. You can now see your two commit in the History view.
 				<br/>
 				<br/>-
 				<img height="215" width="666" border="0" src="images/History.png"/>
@@ -180,7 +180,7 @@
 			<li>Make new changes in your diagram including the renaming of a function, save.</li>
 		</ul>
 		<ul>
-			<li>Right-click the .melodymodeller file &gt; Compare with &gt; Head revision &gt; Finish. You have the possibility to undo some of the current changes at a fine grain with the diff/merge tool.
+			<li>Right-click the .capella file &gt; Compare with &gt; Head revision &gt; Finish. You have the possibility to undo some of the current changes at a fine grain with the diff/merge tool.
 				<br/>
 				<br/>-
 				<img height="600" width="470" border="0" src="images/CompareWithHead.png"/>
@@ -232,7 +232,7 @@
 			<b>pull</b> is done.
 		</p>
 		<ul>
-			<li>Commit the changes done before with the message "Added Transmit", including the renaming of the function. Be sure to select both .aird and .melodymodeller files.</li>
+			<li>Commit the changes done before with the message "Added Transmit", including the renaming of the function. Be sure to select both .aird and .capella files.</li>
 		</ul>
 		<ul>
 			<li>Right-click the project &gt; Team &gt; Switch to &gt; New branch..., type "maintenance" and validate.
@@ -326,7 +326,7 @@
 			</li>
 		</ul>
 		<ul>
-			<li>A red icon identifies the conflicting files, here the .aird and .melodymodeller files.
+			<li>A red icon identifies the conflicting files, here the .aird and .capella files.
 				<b>They are identified as conflicting because they have been modified in both branches</b>.
 				<br/>
 				<br/>-
@@ -421,7 +421,7 @@
 			</li>
 		</ul>
 		<ul>
-			<li>Switch back to the Git perspective, select the repository and select the "Git Staging" view at the bottom. You should see the .aird and .melodymodeller files in the "Unstaged Changes" section.
+			<li>Switch back to the Git perspective, select the repository and select the "Git Staging" view at the bottom. You should see the .aird and .capella files in the "Unstaged Changes" section.
 				<br/>
 				<br/>-
 				<img height="375" width="1000" border="0" src="images/GitStaging.png"/>
@@ -455,7 +455,7 @@
 		<ul>
 			<li>Diff/Merge 3-way can be improved.</li>
 			<li>The session needs to be closed prior to any Fetch, Pull or Rebase. This is due to the fact that files will be changed by Git and those changes need to be synchonized with the Eclipse File System.</li>
-			<li>On a fragmented model, Diff/Merge needs to be performed on the root file (not the airdfragment/melodyfragment) to ensure that the model is fully loaded during the Diff/Merge analysis.</li>
+			<li>On a fragmented model, Diff/Merge needs to be performed on the root file (not the airdfragment/capellafragment) to ensure that the model is fully loaded during the Diff/Merge analysis.</li>
 		</ul>
 	</body>
 </html>

@@ -24,7 +24,7 @@ Capella provides a fragmentation facility to create containment fragments of a m
 When working on 			a fragmented model, the user shall still '''always 			open the''' '''root 			aird file (*.aird)''', and not open 			directly one fragment. Capella is in charge to load and 			manage fragment dependencies:
 
  
-*.melodyfragment: model fragments
+*.capellafragment: model fragments
 
  
 *.airdfragment: diagram fragments
@@ -86,7 +86,7 @@ Here, '''&ldquo;Fragment&hellip;&rdquo;''' is executed on the Physical Architect
 [[Image:Images/FragmentManagement_m44b065ba.png|467x757px]]
 
  
-The first step is to define the business model fragment, &lsquo;.melodyfragment&rsquo; file, (fragment that will contain the Physical Architecture).
+The first step is to define the business model fragment, &lsquo;.capellafragment&rsquo; file, (fragment that will contain the Physical Architecture).
 
  
 [[Image:Images/FragmentManagement_m48d4e4f4.png|369x157px]]
@@ -117,7 +117,7 @@ The admin user, which is responsible for creating fragments, must create at leas
 
  
 | 
-The end-user 			must '''not''' 			delete a fragment (aird or melodyfragment) through right click 			delete action.
+The end-user 			must '''not''' 			delete a fragment (aird or capellafragment) through right click 			delete action.
 
  
 |} 
@@ -130,9 +130,9 @@ To unfragment, please use contextual &ldquo;'''unFragment&hellip;'''&rdquo; comm
 Running &lsquo;Unfragment&rsquo; command (for instance System Analysis):
 
  
-# Will check out required file to move 	data from the melodyfragment to melodymodeller
+# Will check out required file to move 	data from the capellafragment to capella
 # Will check out aird file to move 	representation data from the aird fragment to the main aird.
-# Remove related 	fragments files: ''airdfragment'' 	and ''melodyfragment''.
+# Remove related 	fragments files: ''airdfragment'' 	and ''capellafragment''.
  
 [[Image:Images/FragmentManagement_bc471b5.png|528x174px]]
 

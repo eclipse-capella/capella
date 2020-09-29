@@ -20,7 +20,7 @@
 When not fragmented, a Capella model consists in two files: one for the model itself and another one for the representations (diagrams and matrices).
 
  
-* &lt;model name&gt;.melodymodeller (semantic model)
+* &lt;model name&gt;.capella (semantic model)
 * &lt;model name&gt;.aird (representations)
  
 <br>
