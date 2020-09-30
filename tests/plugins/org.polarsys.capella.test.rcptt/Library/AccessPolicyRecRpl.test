@@ -34,12 +34,12 @@ with [get-window "New Capella Library"] {
 get-view "Project Explorer" | get-tree | select "LibProjectSub/LibProjectSub.aird" 
     | get-menu "Libraries/Manage references" | click
 with [get-window -class PropertyDialog] {
-    get-table | get-item "LibProjectSuper.melodymodeller" | check
+    get-table | get-item "LibProjectSuper.capella" | check
     with [get-tab-folder] {
         get-tab-item "Access Policies" | click
     }
     with [get-table -index 1] {
-        select "LibProjectSuper.melodymodeller" | activate-cell-edit -column 1
+        select "LibProjectSuper.capella" | activate-cell-edit -column 1
         get-combo | select readAndWrite
         apply-cell-edit -deactivate
     }
@@ -54,12 +54,12 @@ with [get-window "New Capella Project"] {
 get-view "Project Explorer" | get-tree | select "MAProjectReadOnlyLib/MAProjectReadOnlyLib.aird" 
     | get-menu "Libraries/Manage references" | click
 with [get-window -class PropertyDialog] {
-    get-table | get-item "LibProjectSuper.melodymodeller" | check
+    get-table | get-item "LibProjectSuper.capella" | check
     with [get-tab-folder] {
         get-tab-item "Access Policies" | click
     }
     with [get-table -index 1] {
-        select "LibProjectSuper.melodymodeller" | activate-cell-edit -column 1
+        select "LibProjectSuper.capella" | activate-cell-edit -column 1
         get-combo | select readOnly
         apply-cell-edit -deactivate
     }
@@ -74,12 +74,12 @@ with [get-window "New Capella Project"] {
 get-view "Project Explorer" | get-tree | select "MAProjectReadWriteLib/MAProjectReadWriteLib.aird" 
     | get-menu "Libraries/Manage references" | click
 with [get-window -class PropertyDialog] {
-    get-table | get-item "LibProjectSub.melodymodeller \\(LibProjectSuper.melodymodeller\\)" | check
+    get-table | get-item "LibProjectSub.capella \\(LibProjectSuper.capella\\)" | check
     with [get-tab-folder] {
         get-tab-item "Access Policies" | click
     }
     with [get-table -index 1] {
-        select "LibProjectSub.melodymodeller" | activate-cell-edit -column 1
+        select "LibProjectSub.capella" | activate-cell-edit -column 1
         get-combo | select readAndWrite
         apply-cell-edit -deactivate
     }
