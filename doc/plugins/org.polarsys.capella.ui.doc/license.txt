@@ -348,3 +348,4 @@ warning.png
 
 SaveButton.png
 RefreshButton.png
+LaunchingPopup.png
