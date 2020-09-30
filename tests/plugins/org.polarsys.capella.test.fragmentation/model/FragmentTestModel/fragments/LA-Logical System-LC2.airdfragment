@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:concern="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/1.4.0" xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/1.4.0" xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/1.4.0" xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/1.4.0" xmlns:org.polarsys.capella.core.data.interaction="http://www.polarsys.org/capella/core/interaction/1.4.0" xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/1.4.0" xmlns:sequence="http://www.eclipse.org/sirius/diagram/sequence/2.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/concern http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0 http://www.eclipse.org/sirius/diagram/sequence/2.0.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_i0yfQCZxEeGJJIltX6tx3w" selectedViews="_i0yfQiZxEeGJJIltX6tx3w _i0yfQyZxEeGJJIltX6tx3w _i0yfRCZxEeGJJIltX6tx3w _i0yfRSZxEeGJJIltX6tx3w _i0yfRiZxEeGJJIltX6tx3w _i0yfRyZxEeGJJIltX6tx3w _2CROUEbAEeOX6tmYKd79TQ" version="14.1.0.201810161215">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:concern="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/1.4.0" xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/1.4.0" xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/1.4.0" xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/1.4.0" xmlns:org.polarsys.capella.core.data.interaction="http://www.polarsys.org/capella/core/interaction/1.4.0" xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/1.4.0" xmlns:sequence="http://www.eclipse.org/sirius/diagram/sequence/2.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/concern http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0 http://www.eclipse.org/sirius/diagram/sequence/2.0.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
+  <viewpoint:DAnalysis uid="_i0yfQCZxEeGJJIltX6tx3w" selectedViews="_i0yfQiZxEeGJJIltX6tx3w _i0yfQyZxEeGJJIltX6tx3w _i0yfRCZxEeGJJIltX6tx3w _i0yfRSZxEeGJJIltX6tx3w _i0yfRiZxEeGJJIltX6tx3w _i0yfRyZxEeGJJIltX6tx3w _2CROUEbAEeOX6tmYKd79TQ" version="14.3.1.202003261200">
     <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="LA-Logical%20Functions-RLF-OA2-SysOA2_1.airdfragment#_0VgkACZxEeGJJIltX6tx3w"/>
-    <semanticResources>LA-Logical%20System-LC2.melodyfragment</semanticResources>
-    <semanticResources>../sysmodel.melodymodeller</semanticResources>
+    <semanticResources>LA-Logical%20System-LC2.capellafragment</semanticResources>
+    <semanticResources>../sysmodel.capella</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_i0yfQiZxEeGJJIltX6tx3w">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_D7FG4m9NEeaS6s5ghsv39g" name="[CII] LC2 - Contextual Component Internal Interfaces" repPath="#_W7WmYMS5EeCI_NCOxdDk1w">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']"/>
-        <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="LA-Logical%20System-LC2.melodyfragment#9d407730-701d-4bdb-b0e5-510cd0204642"/>
+        <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="LA-Logical%20System-LC2.capellafragment#9d407730-701d-4bdb-b0e5-510cd0204642"/>
       </ownedRepresentationDescriptors>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_D7FG429NEeaS6s5ghsv39g" name="[CRB] Capabilities - Capability Realization Blank" repPath="#_7BZuQNGZEeGZ5MAd2R9JJw">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']"/>
-        <target xmi:type="org.polarsys.capella.core.data.la:CapabilityRealizationPkg" href="LA-Logical%20System-LC2.melodyfragment#3aa26bfd-ec5b-4afd-9793-765a93bee2b5"/>
+        <target xmi:type="org.polarsys.capella.core.data.la:CapabilityRealizationPkg" href="LA-Logical%20System-LC2.capellafragment#3aa26bfd-ec5b-4afd-9793-765a93bee2b5"/>
       </ownedRepresentationDescriptors>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_D7FG5G9NEeaS6s5ghsv39g" name="[FS] UC1 [From 'Logical System'] - Function Scenario" repPath="#_D2HFINGaEeGZ5MAd2R9JJw">
         <description xmi:type="description_2:SequenceDiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']"/>
-        <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="LA-Logical%20System-LC2.melodyfragment#4e5171f3-833d-4dfa-ba62-619a4838db5e"/>
+        <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="LA-Logical%20System-LC2.capellafragment#4e5171f3-833d-4dfa-ba62-619a4838db5e"/>
       </ownedRepresentationDescriptors>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_D7FG4G9NEeaS6s5ghsv39g" name="[IS] IS1 [From 'Logical System'] - Interface Scenario" repPath="#_tTEPQMS5EeCI_NCOxdDk1w">
         <description xmi:type="description_2:SequenceDiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']"/>
-        <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="LA-Logical%20System-LC2.melodyfragment#bd4dd89a-e21a-487a-819c-062b538b0d70"/>
+        <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="LA-Logical%20System-LC2.capellafragment#bd4dd89a-e21a-487a-819c-062b538b0d70"/>
       </ownedRepresentationDescriptors>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_D7FG4W9NEeaS6s5ghsv39g" name="[IS] SubIS2 [From 'Logical System'] - Interface Scenario" repPath="#_-HPXEMS5EeCI_NCOxdDk1w">
         <description xmi:type="description_2:SequenceDiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']"/>
-        <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="LA-Logical%20System-LC2.melodyfragment#04823c08-0017-496c-b5b7-c9eebd887f5d"/>
+        <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="LA-Logical%20System-LC2.capellafragment#04823c08-0017-496c-b5b7-c9eebd887f5d"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_i0yfQyZxEeGJJIltX6tx3w">
@@ -34,7 +34,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_D7FG5W9NEeaS6s5ghsv39g" name="[LCBD] LC2 - Logical Component Breakdown" repPath="#_5pITwNGZEeGZ5MAd2R9JJw">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']"/>
-        <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="LA-Logical%20System-LC2.melodyfragment#9d407730-701d-4bdb-b0e5-510cd0204642"/>
+        <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="LA-Logical%20System-LC2.capellafragment#9d407730-701d-4bdb-b0e5-510cd0204642"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_i0yfRSZxEeGJJIltX6tx3w">
@@ -50,7 +50,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']"/>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram uid="_W7WmYMS5EeCI_NCOxdDk1w" name="[CII] LC2 - Contextual Component Internal Interfaces">
+  <diagram:DSemanticDiagram uid="_W7WmYMS5EeCI_NCOxdDk1w">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_W7gXYMS5EeCI_NCOxdDk1w" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_W7gXYcS5EeCI_NCOxdDk1w" type="Sirius" element="_W7WmYMS5EeCI_NCOxdDk1w" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_W-CuAMS5EeCI_NCOxdDk1w" type="2002" element="_W7zSUMS5EeCI_NCOxdDk1w">
@@ -214,11 +214,11 @@
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_6uzRw0ZoEeW8qK3X6CuZEg"/>
     </ownedAnnotationEntries>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_W7zSUMS5EeCI_NCOxdDk1w" name="LC2" outgoingEdges="_FCh3IG9NEeaS6s5ghsv39g _FClhgG9NEeaS6s5ghsv39g">
-      <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="LA-Logical%20System-LC2.melodyfragment#9d407730-701d-4bdb-b0e5-510cd0204642"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="LA-Logical%20System-LC2.melodyfragment#9d407730-701d-4bdb-b0e5-510cd0204642"/>
+      <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="LA-Logical%20System-LC2.capellafragment#9d407730-701d-4bdb-b0e5-510cd0204642"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="LA-Logical%20System-LC2.capellafragment#9d407730-701d-4bdb-b0e5-510cd0204642"/>
       <ownedBorderedNodes xmi:type="diagram:DNode" uid="_FCc-oG9NEeaS6s5ghsv39g" name="LFIP 1" width="1" height="1">
-        <target xmi:type="org.polarsys.capella.core.data.fa:ComponentPort" href="LA-Logical%20System-LC2.melodyfragment#d48a087e-e123-420b-85bf-8b7f06dcb773"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.fa:ComponentPort" href="LA-Logical%20System-LC2.melodyfragment#d48a087e-e123-420b-85bf-8b7f06dcb773"/>
+        <target xmi:type="org.polarsys.capella.core.data.fa:ComponentPort" href="LA-Logical%20System-LC2.capellafragment#d48a087e-e123-420b-85bf-8b7f06dcb773"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.fa:ComponentPort" href="LA-Logical%20System-LC2.capellafragment#d48a087e-e123-420b-85bf-8b7f06dcb773"/>
         <graphicalFilters xmi:type="diagram:HideLabelFilter" uid="_FCc-om9NEeaS6s5ghsv39g"/>
         <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_FCc-oW9NEeaS6s5ghsv39g" showIcon="false" hideLabelByDefault="true" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/InFlowPort.png">
           <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@containerMappings[name='CCII_Component']/@borderedNodeMappings[name='CCII_Port']/@conditionnalStyles.3/@style"/>
@@ -233,11 +233,11 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@containerMappings[name='CCII_Component']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_ZvN1IMS5EeCI_NCOxdDk1w" name="LC2_1" outgoingEdges="_FCmIkG9NEeaS6s5ghsv39g">
-        <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="LA-Logical%20System-LC2.melodyfragment#b535c2cc-73eb-43e1-99ab-8ac26c5ab6b8"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="LA-Logical%20System-LC2.melodyfragment#b535c2cc-73eb-43e1-99ab-8ac26c5ab6b8"/>
+        <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="LA-Logical%20System-LC2.capellafragment#b535c2cc-73eb-43e1-99ab-8ac26c5ab6b8"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="LA-Logical%20System-LC2.capellafragment#b535c2cc-73eb-43e1-99ab-8ac26c5ab6b8"/>
         <ownedBorderedNodes xmi:type="diagram:DNode" uid="_FCdlsG9NEeaS6s5ghsv39g" name="FOP 1" width="1" height="1">
-          <target xmi:type="org.polarsys.capella.core.data.fa:ComponentPort" href="LA-Logical%20System-LC2.melodyfragment#77b91bc9-7eb2-4e06-80e7-affe5d2287c4"/>
-          <semanticElements xmi:type="org.polarsys.capella.core.data.fa:ComponentPort" href="LA-Logical%20System-LC2.melodyfragment#77b91bc9-7eb2-4e06-80e7-affe5d2287c4"/>
+          <target xmi:type="org.polarsys.capella.core.data.fa:ComponentPort" href="LA-Logical%20System-LC2.capellafragment#77b91bc9-7eb2-4e06-80e7-affe5d2287c4"/>
+          <semanticElements xmi:type="org.polarsys.capella.core.data.fa:ComponentPort" href="LA-Logical%20System-LC2.capellafragment#77b91bc9-7eb2-4e06-80e7-affe5d2287c4"/>
           <graphicalFilters xmi:type="diagram:HideLabelFilter" uid="_FCeMwW9NEeaS6s5ghsv39g"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_FCeMwG9NEeaS6s5ghsv39g" showIcon="false" hideLabelByDefault="true" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/OutFlowPort.png">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@containerMappings[name='CCII_Component']/@borderedNodeMappings[name='CCII_Port']/@conditionnalStyles.4/@style"/>
@@ -245,8 +245,8 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@containerMappings[name='CCII_Component']/@borderedNodeMappings[name='CCII_Port']"/>
         </ownedBorderedNodes>
         <ownedBorderedNodes xmi:type="diagram:DNode" uid="_FCeMwm9NEeaS6s5ghsv39g" name="FIP 1" width="1" height="1">
-          <target xmi:type="org.polarsys.capella.core.data.fa:ComponentPort" href="LA-Logical%20System-LC2.melodyfragment#1598e5ed-af5e-4f79-b520-162e63409cbd"/>
-          <semanticElements xmi:type="org.polarsys.capella.core.data.fa:ComponentPort" href="LA-Logical%20System-LC2.melodyfragment#1598e5ed-af5e-4f79-b520-162e63409cbd"/>
+          <target xmi:type="org.polarsys.capella.core.data.fa:ComponentPort" href="LA-Logical%20System-LC2.capellafragment#1598e5ed-af5e-4f79-b520-162e63409cbd"/>
+          <semanticElements xmi:type="org.polarsys.capella.core.data.fa:ComponentPort" href="LA-Logical%20System-LC2.capellafragment#1598e5ed-af5e-4f79-b520-162e63409cbd"/>
           <graphicalFilters xmi:type="diagram:HideLabelFilter" uid="_FCeMxG9NEeaS6s5ghsv39g"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_FCeMw29NEeaS6s5ghsv39g" showIcon="false" hideLabelByDefault="true" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/InFlowPort.png">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@containerMappings[name='CCII_Component']/@borderedNodeMappings[name='CCII_Port']/@conditionnalStyles.3/@style"/>
@@ -262,11 +262,11 @@
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@containerMappings[name='CCII_Component']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_aFkfoMS5EeCI_NCOxdDk1w" name="LC2_2" outgoingEdges="_FCieMG9NEeaS6s5ghsv39g">
-        <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="LA-Logical%20System-LC2.melodyfragment#44f5531d-6388-4bad-a448-c796cf5afa0a"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="LA-Logical%20System-LC2.melodyfragment#44f5531d-6388-4bad-a448-c796cf5afa0a"/>
+        <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="LA-Logical%20System-LC2.capellafragment#44f5531d-6388-4bad-a448-c796cf5afa0a"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="LA-Logical%20System-LC2.capellafragment#44f5531d-6388-4bad-a448-c796cf5afa0a"/>
         <ownedBorderedNodes xmi:type="diagram:DNode" uid="_FCeMxW9NEeaS6s5ghsv39g" name="SysFork2_1_1" width="1" height="1">
-          <target xmi:type="org.polarsys.capella.core.data.fa:ComponentPort" href="LA-Logical%20System-LC2.melodyfragment#8db909de-ace8-48d8-9775-024604ebf068"/>
-          <semanticElements xmi:type="org.polarsys.capella.core.data.fa:ComponentPort" href="LA-Logical%20System-LC2.melodyfragment#8db909de-ace8-48d8-9775-024604ebf068"/>
+          <target xmi:type="org.polarsys.capella.core.data.fa:ComponentPort" href="LA-Logical%20System-LC2.capellafragment#8db909de-ace8-48d8-9775-024604ebf068"/>
+          <semanticElements xmi:type="org.polarsys.capella.core.data.fa:ComponentPort" href="LA-Logical%20System-LC2.capellafragment#8db909de-ace8-48d8-9775-024604ebf068"/>
           <graphicalFilters xmi:type="diagram:HideLabelFilter" uid="_FCez0W9NEeaS6s5ghsv39g"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_FCez0G9NEeaS6s5ghsv39g" showIcon="false" hideLabelByDefault="true" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/OutFlowPort.png">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@containerMappings[name='CCII_Component']/@borderedNodeMappings[name='CCII_Port']/@conditionnalStyles.4/@style"/>
@@ -283,8 +283,8 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_W7zSVsS5EeCI_NCOxdDk1w" name="LC1_to_LC2" incomingEdges="_FClhgG9NEeaS6s5ghsv39g _FCmIkG9NEeaS6s5ghsv39g" width="4" height="4" resizeKind="NSEW">
-      <target xmi:type="org.polarsys.capella.core.data.cs:Interface" href="../sysmodel.melodymodeller#133b62c7-2351-4b3c-aad0-71576ccc6a5b"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Interface" href="../sysmodel.melodymodeller#133b62c7-2351-4b3c-aad0-71576ccc6a5b"/>
+      <target xmi:type="org.polarsys.capella.core.data.cs:Interface" href="../sysmodel.capella#133b62c7-2351-4b3c-aad0-71576ccc6a5b"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Interface" href="../sysmodel.capella#133b62c7-2351-4b3c-aad0-71576ccc6a5b"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -294,8 +294,8 @@
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@nodeMappings[name='CCII_Interface']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_W7zSWMS5EeCI_NCOxdDk1w" name="InterfaceSystem_to_Actor3" incomingEdges="_FCh3IG9NEeaS6s5ghsv39g _FCieMG9NEeaS6s5ghsv39g" width="4" height="4" resizeKind="NSEW">
-      <target xmi:type="org.polarsys.capella.core.data.cs:Interface" href="../sysmodel.melodymodeller#042ea71d-f30b-433d-b3ce-8ba59be4ee2e"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Interface" href="../sysmodel.melodymodeller#042ea71d-f30b-433d-b3ce-8ba59be4ee2e"/>
+      <target xmi:type="org.polarsys.capella.core.data.cs:Interface" href="../sysmodel.capella#042ea71d-f30b-433d-b3ce-8ba59be4ee2e"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Interface" href="../sysmodel.capella#042ea71d-f30b-433d-b3ce-8ba59be4ee2e"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -305,8 +305,8 @@
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@nodeMappings[name='CCII_Interface']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_FCh3IG9NEeaS6s5ghsv39g" sourceNode="_W7zSUMS5EeCI_NCOxdDk1w" targetNode="_W7zSWMS5EeCI_NCOxdDk1w">
-      <target xmi:type="org.polarsys.capella.core.data.cs:InterfaceUse" href="LA-Logical%20System-LC2.melodyfragment#2fb386b8-108d-4fbb-bdd5-5c913917fbd1"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:InterfaceUse" href="LA-Logical%20System-LC2.melodyfragment#2fb386b8-108d-4fbb-bdd5-5c913917fbd1"/>
+      <target xmi:type="org.polarsys.capella.core.data.cs:InterfaceUse" href="LA-Logical%20System-LC2.capellafragment#2fb386b8-108d-4fbb-bdd5-5c913917fbd1"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:InterfaceUse" href="LA-Logical%20System-LC2.capellafragment#2fb386b8-108d-4fbb-bdd5-5c913917fbd1"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_FCh3IW9NEeaS6s5ghsv39g" lineStyle="dash_dot" strokeColor="0,0,0">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@edgeMappings[name='CCII_UseInterface']/@style"/>
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_FCh3Im9NEeaS6s5ghsv39g"/>
@@ -314,8 +314,8 @@
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@edgeMappings[name='CCII_UseInterface']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_FCieMG9NEeaS6s5ghsv39g" sourceNode="_aFkfoMS5EeCI_NCOxdDk1w" targetNode="_W7zSWMS5EeCI_NCOxdDk1w">
-      <target xmi:type="org.polarsys.capella.core.data.cs:InterfaceUse" href="LA-Logical%20System-LC2.melodyfragment#2222ea04-9a30-4618-9a3d-4c1eae9286c4"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:InterfaceUse" href="LA-Logical%20System-LC2.melodyfragment#2222ea04-9a30-4618-9a3d-4c1eae9286c4"/>
+      <target xmi:type="org.polarsys.capella.core.data.cs:InterfaceUse" href="LA-Logical%20System-LC2.capellafragment#2222ea04-9a30-4618-9a3d-4c1eae9286c4"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:InterfaceUse" href="LA-Logical%20System-LC2.capellafragment#2222ea04-9a30-4618-9a3d-4c1eae9286c4"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_FCieMW9NEeaS6s5ghsv39g" lineStyle="dash_dot" strokeColor="0,0,0">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@edgeMappings[name='CCII_UseInterface']/@style"/>
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_FCieMm9NEeaS6s5ghsv39g"/>
@@ -323,8 +323,8 @@
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@edgeMappings[name='CCII_UseInterface']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_FClhgG9NEeaS6s5ghsv39g" sourceNode="_W7zSUMS5EeCI_NCOxdDk1w" targetNode="_W7zSVsS5EeCI_NCOxdDk1w">
-      <target xmi:type="org.polarsys.capella.core.data.cs:InterfaceImplementation" href="LA-Logical%20System-LC2.melodyfragment#9c68c2d9-df68-4b6b-9bcc-3c3abab5c7c0"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:InterfaceImplementation" href="LA-Logical%20System-LC2.melodyfragment#9c68c2d9-df68-4b6b-9bcc-3c3abab5c7c0"/>
+      <target xmi:type="org.polarsys.capella.core.data.cs:InterfaceImplementation" href="LA-Logical%20System-LC2.capellafragment#9c68c2d9-df68-4b6b-9bcc-3c3abab5c7c0"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:InterfaceImplementation" href="LA-Logical%20System-LC2.capellafragment#9c68c2d9-df68-4b6b-9bcc-3c3abab5c7c0"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_FClhgW9NEeaS6s5ghsv39g" lineStyle="dash" targetArrow="InputClosedArrow" strokeColor="0,0,0">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@edgeMappings[name='CCII_ImplementInterface']/@style"/>
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_FClhgm9NEeaS6s5ghsv39g"/>
@@ -332,8 +332,8 @@
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@edgeMappings[name='CCII_ImplementInterface']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_FCmIkG9NEeaS6s5ghsv39g" sourceNode="_ZvN1IMS5EeCI_NCOxdDk1w" targetNode="_W7zSVsS5EeCI_NCOxdDk1w">
-      <target xmi:type="org.polarsys.capella.core.data.cs:InterfaceImplementation" href="LA-Logical%20System-LC2.melodyfragment#31a578cd-f1ce-4875-9b70-1a993b549624"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:InterfaceImplementation" href="LA-Logical%20System-LC2.melodyfragment#31a578cd-f1ce-4875-9b70-1a993b549624"/>
+      <target xmi:type="org.polarsys.capella.core.data.cs:InterfaceImplementation" href="LA-Logical%20System-LC2.capellafragment#31a578cd-f1ce-4875-9b70-1a993b549624"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:InterfaceImplementation" href="LA-Logical%20System-LC2.capellafragment#31a578cd-f1ce-4875-9b70-1a993b549624"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_FCmIkW9NEeaS6s5ghsv39g" lineStyle="dash" targetArrow="InputClosedArrow" strokeColor="0,0,0">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@edgeMappings[name='CCII_ImplementInterface']/@style"/>
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_FCmIkm9NEeaS6s5ghsv39g"/>
@@ -346,9 +346,9 @@
     <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']/@ownedRepresentations[name='AD%20diagram']/@filters[name='ModelExtensionFilter']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_W7WmYcS5EeCI_NCOxdDk1w"/>
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer"/>
-    <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="LA-Logical%20System-LC2.melodyfragment#9d407730-701d-4bdb-b0e5-510cd0204642"/>
+    <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="LA-Logical%20System-LC2.capellafragment#9d407730-701d-4bdb-b0e5-510cd0204642"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_7BZuQNGZEeGZ5MAd2R9JJw" name="[CRB] Capabilities - Capability Realization Blank">
+  <diagram:DSemanticDiagram uid="_7BZuQNGZEeGZ5MAd2R9JJw">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_7BZuQtGZEeGZ5MAd2R9JJw" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_7BZuQ9GZEeGZ5MAd2R9JJw" type="Sirius" element="_7BZuQNGZEeGZ5MAd2R9JJw" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_7e-bENGZEeGZ5MAd2R9JJw" type="2001" element="_7eX-INGZEeGZ5MAd2R9JJw">
@@ -437,8 +437,8 @@
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_6uzRxUZoEeW8qK3X6CuZEg"/>
     </ownedAnnotationEntries>
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_7eX-INGZEeGZ5MAd2R9JJw" name="UC1 [From 'Logical System']" outgoingEdges="_FC_xMG9NEeaS6s5ghsv39g" width="7" height="7" resizeKind="NSEW">
-      <target xmi:type="org.polarsys.capella.core.data.la:CapabilityRealization" href="LA-Logical%20System-LC2.melodyfragment#1e8b6132-a356-45d8-97cd-9a6bdcd5d768"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.la:CapabilityRealization" href="LA-Logical%20System-LC2.melodyfragment#1e8b6132-a356-45d8-97cd-9a6bdcd5d768"/>
+      <target xmi:type="org.polarsys.capella.core.data.la:CapabilityRealization" href="LA-Logical%20System-LC2.capellafragment#1e8b6132-a356-45d8-97cd-9a6bdcd5d768"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:CapabilityRealization" href="LA-Logical%20System-LC2.capellafragment#1e8b6132-a356-45d8-97cd-9a6bdcd5d768"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -448,8 +448,8 @@
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@nodeMappings[name='CRB%20CapabilityRealization']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_-LNX0NGZEeGZ5MAd2R9JJw" name="Actor3" outgoingEdges="_FDMlgG9NEeaS6s5ghsv39g" incomingEdges="_FC_xMG9NEeaS6s5ghsv39g">
-      <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="../sysmodel.melodymodeller#72f5a360-f681-45c3-a62c-a47e22be4c4b"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="../sysmodel.melodymodeller#72f5a360-f681-45c3-a62c-a47e22be4c4b"/>
+      <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="../sysmodel.capella#72f5a360-f681-45c3-a62c-a47e22be4c4b"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="../sysmodel.capella#72f5a360-f681-45c3-a62c-a47e22be4c4b"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -459,8 +459,8 @@
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@containerMappings[name='CRB%20Component']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_-LNX1tGZEeGZ5MAd2R9JJw" name="OE3">
-      <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="../sysmodel.melodymodeller#bd425a13-d22c-41d3-be18-a1a61bae7352"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="../sysmodel.melodymodeller#bd425a13-d22c-41d3-be18-a1a61bae7352"/>
+      <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="../sysmodel.capella#bd425a13-d22c-41d3-be18-a1a61bae7352"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="../sysmodel.capella#bd425a13-d22c-41d3-be18-a1a61bae7352"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -470,8 +470,8 @@
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@containerMappings[name='CRB%20Component']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_-LNX3NGZEeGZ5MAd2R9JJw" name="OA1">
-      <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="../sysmodel.melodymodeller#f75ce897-dc5b-473a-8147-557ba79a0126"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="../sysmodel.melodymodeller#f75ce897-dc5b-473a-8147-557ba79a0126"/>
+      <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="../sysmodel.capella#f75ce897-dc5b-473a-8147-557ba79a0126"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="../sysmodel.capella#f75ce897-dc5b-473a-8147-557ba79a0126"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -481,8 +481,8 @@
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@containerMappings[name='CRB%20Component']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_-LNX4tGZEeGZ5MAd2R9JJw" name="Actor4" incomingEdges="_FDMlgG9NEeaS6s5ghsv39g">
-      <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="../sysmodel.melodymodeller#19499ee1-1377-4355-85d3-7daa9af17d1d"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="../sysmodel.melodymodeller#19499ee1-1377-4355-85d3-7daa9af17d1d"/>
+      <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="../sysmodel.capella#19499ee1-1377-4355-85d3-7daa9af17d1d"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="../sysmodel.capella#19499ee1-1377-4355-85d3-7daa9af17d1d"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -492,8 +492,8 @@
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@containerMappings[name='CRB%20Component']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_FC_xMG9NEeaS6s5ghsv39g" sourceNode="_7eX-INGZEeGZ5MAd2R9JJw" targetNode="_-LNX0NGZEeGZ5MAd2R9JJw">
-      <target xmi:type="org.polarsys.capella.core.data.capellacommon:CapabilityRealizationInvolvement" href="LA-Logical%20System-LC2.melodyfragment#9d1093b1-1777-4a79-8592-18689ad8bc52"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.capellacommon:CapabilityRealizationInvolvement" href="LA-Logical%20System-LC2.melodyfragment#9d1093b1-1777-4a79-8592-18689ad8bc52"/>
+      <target xmi:type="org.polarsys.capella.core.data.capellacommon:CapabilityRealizationInvolvement" href="LA-Logical%20System-LC2.capellafragment#9d1093b1-1777-4a79-8592-18689ad8bc52"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.capellacommon:CapabilityRealizationInvolvement" href="LA-Logical%20System-LC2.capellafragment#9d1093b1-1777-4a79-8592-18689ad8bc52"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_FC_xMW9NEeaS6s5ghsv39g" strokeColor="0,0,0">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@edgeMappings[name='CRB%20Involvement']/@style"/>
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_FC_xMm9NEeaS6s5ghsv39g"/>
@@ -501,8 +501,8 @@
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@edgeMappings[name='CRB%20Involvement']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_FDMlgG9NEeaS6s5ghsv39g" sourceNode="_-LNX0NGZEeGZ5MAd2R9JJw" targetNode="_-LNX4tGZEeGZ5MAd2R9JJw">
-      <target xmi:type="org.polarsys.capella.core.data.capellacore:Generalization" href="../sysmodel.melodymodeller#9879f4c2-3c42-412f-9120-887c873ac7ab"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.capellacore:Generalization" href="../sysmodel.melodymodeller#9879f4c2-3c42-412f-9120-887c873ac7ab"/>
+      <target xmi:type="org.polarsys.capella.core.data.capellacore:Generalization" href="../sysmodel.capella#9879f4c2-3c42-412f-9120-887c873ac7ab"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.capellacore:Generalization" href="../sysmodel.capella#9879f4c2-3c42-412f-9120-887c873ac7ab"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_FDMlgW9NEeaS6s5ghsv39g" lineStyle="dot" targetArrow="InputClosedArrow" strokeColor="0,0,0">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@edgeMappings[name='CRB%20Actor%20Generalization']/@style"/>
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_FDMlgm9NEeaS6s5ghsv39g"/>
@@ -513,9 +513,9 @@
     <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']/@ownedRepresentations[name='AD%20diagram']/@filters[name='ModelExtensionFilter']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_7BZuQdGZEeGZ5MAd2R9JJw"/>
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer"/>
-    <target xmi:type="org.polarsys.capella.core.data.la:CapabilityRealizationPkg" href="LA-Logical%20System-LC2.melodyfragment#3aa26bfd-ec5b-4afd-9793-765a93bee2b5"/>
+    <target xmi:type="org.polarsys.capella.core.data.la:CapabilityRealizationPkg" href="LA-Logical%20System-LC2.capellafragment#3aa26bfd-ec5b-4afd-9793-765a93bee2b5"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_5pITwNGZEeGZ5MAd2R9JJw" name="[LCBD] LC2 - Logical Component Breakdown">
+  <diagram:DSemanticDiagram uid="_5pITwNGZEeGZ5MAd2R9JJw">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_5pIT29GZEeGZ5MAd2R9JJw" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_5pIT3NGZEeGZ5MAd2R9JJw" type="Sirius" element="_5pITwNGZEeGZ5MAd2R9JJw" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_5pIT3tGZEeGZ5MAd2R9JJw" type="2001" element="_FEJAsG9NEeaS6s5ghsv39g">
@@ -590,8 +590,8 @@
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_6uzRyUZoEeW8qK3X6CuZEg"/>
     </ownedAnnotationEntries>
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_FEJAsG9NEeaS6s5ghsv39g" name="LC2" incomingEdges="_FEKO0G9NEeaS6s5ghsv39g _FEKO029NEeaS6s5ghsv39g" width="7" height="7" resizeKind="NSEW">
-      <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="LA-Logical%20System-LC2.melodyfragment#9d407730-701d-4bdb-b0e5-510cd0204642"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="LA-Logical%20System-LC2.melodyfragment#9d407730-701d-4bdb-b0e5-510cd0204642"/>
+      <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="LA-Logical%20System-LC2.capellafragment#9d407730-701d-4bdb-b0e5-510cd0204642"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="LA-Logical%20System-LC2.capellafragment#9d407730-701d-4bdb-b0e5-510cd0204642"/>
       <ownedStyle xmi:type="diagram:Square" uid="_FEJAsW9NEeaS6s5ghsv39g" borderSize="1" borderSizeComputationExpression="1" borderColor="74,74,151" labelPosition="node" color="150,177,218">
         <labelFormat>bold</labelFormat>
         <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']/@defaultLayer/@nodeMappings[name='LCB_LogicalComponent']/@conditionnalStyles.0/@style"/>
@@ -599,24 +599,24 @@
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']/@defaultLayer/@nodeMappings[name='LCB_LogicalComponent']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_FEJnwG9NEeaS6s5ghsv39g" name="LC2_1" outgoingEdges="_FEKO0G9NEeaS6s5ghsv39g" width="7" height="7" resizeKind="NSEW">
-      <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="LA-Logical%20System-LC2.melodyfragment#b535c2cc-73eb-43e1-99ab-8ac26c5ab6b8"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="LA-Logical%20System-LC2.melodyfragment#b535c2cc-73eb-43e1-99ab-8ac26c5ab6b8"/>
+      <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="LA-Logical%20System-LC2.capellafragment#b535c2cc-73eb-43e1-99ab-8ac26c5ab6b8"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="LA-Logical%20System-LC2.capellafragment#b535c2cc-73eb-43e1-99ab-8ac26c5ab6b8"/>
       <ownedStyle xmi:type="diagram:Square" uid="_FEJnwW9NEeaS6s5ghsv39g" borderSize="1" borderSizeComputationExpression="1" borderColor="74,74,151" labelPosition="node" color="150,177,218">
         <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']/@defaultLayer/@nodeMappings[name='LCB_LogicalComponent']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']/@defaultLayer/@nodeMappings[name='LCB_LogicalComponent']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_FEJnwm9NEeaS6s5ghsv39g" name="LC2_2" outgoingEdges="_FEKO029NEeaS6s5ghsv39g" width="7" height="7" resizeKind="NSEW">
-      <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="LA-Logical%20System-LC2.melodyfragment#44f5531d-6388-4bad-a448-c796cf5afa0a"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="LA-Logical%20System-LC2.melodyfragment#44f5531d-6388-4bad-a448-c796cf5afa0a"/>
+      <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="LA-Logical%20System-LC2.capellafragment#44f5531d-6388-4bad-a448-c796cf5afa0a"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="LA-Logical%20System-LC2.capellafragment#44f5531d-6388-4bad-a448-c796cf5afa0a"/>
       <ownedStyle xmi:type="diagram:Square" uid="_FEJnw29NEeaS6s5ghsv39g" borderSize="1" borderSizeComputationExpression="1" borderColor="74,74,151" labelPosition="node" color="150,177,218">
         <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']/@defaultLayer/@nodeMappings[name='LCB_LogicalComponent']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']/@defaultLayer/@nodeMappings[name='LCB_LogicalComponent']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_FEKO0G9NEeaS6s5ghsv39g" sourceNode="_FEJnwG9NEeaS6s5ghsv39g" targetNode="_FEJAsG9NEeaS6s5ghsv39g">
-      <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="LA-Logical%20System-LC2.melodyfragment#b535c2cc-73eb-43e1-99ab-8ac26c5ab6b8"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="LA-Logical%20System-LC2.melodyfragment#9d407730-701d-4bdb-b0e5-510cd0204642"/>
+      <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="LA-Logical%20System-LC2.capellafragment#b535c2cc-73eb-43e1-99ab-8ac26c5ab6b8"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="LA-Logical%20System-LC2.capellafragment#9d407730-701d-4bdb-b0e5-510cd0204642"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_FEKO0W9NEeaS6s5ghsv39g" foldingStyle="TARGET" routingStyle="tree">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']/@defaultLayer/@edgeMappings[name='LCB_LogicalComponent_subComponents']/@style"/>
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_FEKO0m9NEeaS6s5ghsv39g"/>
@@ -624,8 +624,8 @@
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']/@defaultLayer/@edgeMappings[name='LCB_LogicalComponent_subComponents']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_FEKO029NEeaS6s5ghsv39g" sourceNode="_FEJnwm9NEeaS6s5ghsv39g" targetNode="_FEJAsG9NEeaS6s5ghsv39g">
-      <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="LA-Logical%20System-LC2.melodyfragment#44f5531d-6388-4bad-a448-c796cf5afa0a"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="LA-Logical%20System-LC2.melodyfragment#9d407730-701d-4bdb-b0e5-510cd0204642"/>
+      <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="LA-Logical%20System-LC2.capellafragment#44f5531d-6388-4bad-a448-c796cf5afa0a"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="LA-Logical%20System-LC2.capellafragment#9d407730-701d-4bdb-b0e5-510cd0204642"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_FEK14G9NEeaS6s5ghsv39g" foldingStyle="TARGET" routingStyle="tree">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']/@defaultLayer/@edgeMappings[name='LCB_LogicalComponent_subComponents']/@style"/>
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_FEK14W9NEeaS6s5ghsv39g"/>
@@ -636,9 +636,9 @@
     <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']/@ownedRepresentations[name='AD%20diagram']/@filters[name='ModelExtensionFilter']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_5pIT2tGZEeGZ5MAd2R9JJw"/>
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']/@defaultLayer"/>
-    <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="LA-Logical%20System-LC2.melodyfragment#9d407730-701d-4bdb-b0e5-510cd0204642"/>
+    <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="LA-Logical%20System-LC2.capellafragment#9d407730-701d-4bdb-b0e5-510cd0204642"/>
   </diagram:DSemanticDiagram>
-  <sequence:SequenceDDiagram uid="_D2HFINGaEeGZ5MAd2R9JJw" name="[FS] UC1 [From 'Logical System'] - Function Scenario">
+  <sequence:SequenceDDiagram uid="_D2HFINGaEeGZ5MAd2R9JJw">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_D2HFJNGaEeGZ5MAd2R9JJw" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_D2HFJdGaEeGZ5MAd2R9JJw" type="Sirius" element="_D2HFINGaEeGZ5MAd2R9JJw" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_Ga6kMNGaEeGZ5MAd2R9JJw" type="2001" element="_FDOasG9NEeaS6s5ghsv39g">
@@ -1209,15 +1209,15 @@
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_6uzRx0ZoEeW8qK3X6CuZEg"/>
     </ownedAnnotationEntries>
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_FDOasG9NEeaS6s5ghsv39g" name="SysFork2_1_1" width="10" height="5" resizeKind="EAST_WEST">
-      <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#e26756b2-a150-48bc-802f-816d6a03388a"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#e26756b2-a150-48bc-802f-816d6a03388a"/>
+      <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#e26756b2-a150-48bc-802f-816d6a03388a"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#e26756b2-a150-48bc-802f-816d6a03388a"/>
       <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_Ap51FgiTEeKON57bbyPgDg" x="230" y="50" height="50" width="100"/>
       <ownedBorderedNodes xmi:type="diagram:DNode" uid="_FDT6Qm9NEeaS6s5ghsv39g" width="1" height="40" resizeKind="NSEW">
-        <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#e26756b2-a150-48bc-802f-816d6a03388a"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#e26756b2-a150-48bc-802f-816d6a03388a"/>
+        <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#e26756b2-a150-48bc-802f-816d6a03388a"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#e26756b2-a150-48bc-802f-816d6a03388a"/>
         <ownedBorderedNodes xmi:type="diagram:DNode" uid="_FDUhUG9NEeaS6s5ghsv39g" width="1" height="1">
-          <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#e26756b2-a150-48bc-802f-816d6a03388a"/>
-          <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#e26756b2-a150-48bc-802f-816d6a03388a"/>
+          <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#e26756b2-a150-48bc-802f-816d6a03388a"/>
+          <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#e26756b2-a150-48bc-802f-816d6a03388a"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_FDUhUW9NEeaS6s5ghsv39g" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']/@borderedNodeMappings[name='default%20execution%20FS']/@borderedNodeMappings[name='endOfLife%20FS']/@style"/>
           </ownedStyle>
@@ -1234,15 +1234,15 @@
       <actualMapping xmi:type="description_2:InstanceRoleMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_FDPBwW9NEeaS6s5ghsv39g" name="Manage View" width="10" height="5" resizeKind="EAST_WEST">
-      <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#31e31456-3134-4b1a-ac77-55b2ccae520e"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#31e31456-3134-4b1a-ac77-55b2ccae520e"/>
+      <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#31e31456-3134-4b1a-ac77-55b2ccae520e"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#31e31456-3134-4b1a-ac77-55b2ccae520e"/>
       <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_Ap51FwiTEeKON57bbyPgDg" x="340" y="50" height="50" width="100"/>
       <ownedBorderedNodes xmi:type="diagram:DNode" uid="_FDUhUm9NEeaS6s5ghsv39g" width="1" height="40" resizeKind="NSEW">
-        <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#31e31456-3134-4b1a-ac77-55b2ccae520e"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#31e31456-3134-4b1a-ac77-55b2ccae520e"/>
+        <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#31e31456-3134-4b1a-ac77-55b2ccae520e"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#31e31456-3134-4b1a-ac77-55b2ccae520e"/>
         <ownedBorderedNodes xmi:type="diagram:DNode" uid="_FDVIYG9NEeaS6s5ghsv39g" width="1" height="1">
-          <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#31e31456-3134-4b1a-ac77-55b2ccae520e"/>
-          <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#31e31456-3134-4b1a-ac77-55b2ccae520e"/>
+          <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#31e31456-3134-4b1a-ac77-55b2ccae520e"/>
+          <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#31e31456-3134-4b1a-ac77-55b2ccae520e"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_FDVIYW9NEeaS6s5ghsv39g" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']/@borderedNodeMappings[name='default%20execution%20FS']/@borderedNodeMappings[name='endOfLife%20FS']/@style"/>
           </ownedStyle>
@@ -1259,15 +1259,15 @@
       <actualMapping xmi:type="description_2:InstanceRoleMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_FDPo0G9NEeaS6s5ghsv39g" name="SF1" width="10" height="5" resizeKind="EAST_WEST">
-      <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#854f8e8e-95f5-4a2a-9743-d70e4f20ba84"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#854f8e8e-95f5-4a2a-9743-d70e4f20ba84"/>
+      <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#854f8e8e-95f5-4a2a-9743-d70e4f20ba84"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#854f8e8e-95f5-4a2a-9743-d70e4f20ba84"/>
       <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_Ap51GAiTEeKON57bbyPgDg" x="450" y="50" height="50" width="100"/>
       <ownedBorderedNodes xmi:type="diagram:DNode" uid="_FDVIYm9NEeaS6s5ghsv39g" width="1" height="40" resizeKind="NSEW">
-        <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#854f8e8e-95f5-4a2a-9743-d70e4f20ba84"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#854f8e8e-95f5-4a2a-9743-d70e4f20ba84"/>
+        <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#854f8e8e-95f5-4a2a-9743-d70e4f20ba84"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#854f8e8e-95f5-4a2a-9743-d70e4f20ba84"/>
         <ownedBorderedNodes xmi:type="diagram:DNode" uid="_FDVIZG9NEeaS6s5ghsv39g" width="1" height="1">
-          <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#854f8e8e-95f5-4a2a-9743-d70e4f20ba84"/>
-          <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#854f8e8e-95f5-4a2a-9743-d70e4f20ba84"/>
+          <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#854f8e8e-95f5-4a2a-9743-d70e4f20ba84"/>
+          <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#854f8e8e-95f5-4a2a-9743-d70e4f20ba84"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_FDVIZW9NEeaS6s5ghsv39g" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']/@borderedNodeMappings[name='default%20execution%20FS']/@borderedNodeMappings[name='endOfLife%20FS']/@style"/>
           </ownedStyle>
@@ -1284,15 +1284,15 @@
       <actualMapping xmi:type="description_2:InstanceRoleMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_FDPo0m9NEeaS6s5ghsv39g" name="OA3" width="10" height="5" resizeKind="EAST_WEST">
-      <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#b3dbf86d-93ef-4350-8228-0ae23a788774"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#b3dbf86d-93ef-4350-8228-0ae23a788774"/>
+      <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#b3dbf86d-93ef-4350-8228-0ae23a788774"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#b3dbf86d-93ef-4350-8228-0ae23a788774"/>
       <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_Ap51GQiTEeKON57bbyPgDg" x="560" y="50" height="50" width="100"/>
       <ownedBorderedNodes xmi:type="diagram:DNode" uid="_FDVIZm9NEeaS6s5ghsv39g" width="1" height="40" resizeKind="NSEW">
-        <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#b3dbf86d-93ef-4350-8228-0ae23a788774"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#b3dbf86d-93ef-4350-8228-0ae23a788774"/>
+        <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#b3dbf86d-93ef-4350-8228-0ae23a788774"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#b3dbf86d-93ef-4350-8228-0ae23a788774"/>
         <ownedBorderedNodes xmi:type="diagram:DNode" uid="_FDVvcG9NEeaS6s5ghsv39g" width="1" height="1">
-          <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#b3dbf86d-93ef-4350-8228-0ae23a788774"/>
-          <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#b3dbf86d-93ef-4350-8228-0ae23a788774"/>
+          <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#b3dbf86d-93ef-4350-8228-0ae23a788774"/>
+          <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#b3dbf86d-93ef-4350-8228-0ae23a788774"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_FDVvcW9NEeaS6s5ghsv39g" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']/@borderedNodeMappings[name='default%20execution%20FS']/@borderedNodeMappings[name='endOfLife%20FS']/@style"/>
           </ownedStyle>
@@ -1309,15 +1309,15 @@
       <actualMapping xmi:type="description_2:InstanceRoleMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_FDQP4G9NEeaS6s5ghsv39g" name="Manage Model" width="10" height="5" resizeKind="EAST_WEST">
-      <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#96201552-70a0-464f-8585-90947f0adcd1"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#96201552-70a0-464f-8585-90947f0adcd1"/>
+      <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#96201552-70a0-464f-8585-90947f0adcd1"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#96201552-70a0-464f-8585-90947f0adcd1"/>
       <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_Ap51GgiTEeKON57bbyPgDg" x="780" y="50" height="50" width="100"/>
       <ownedBorderedNodes xmi:type="diagram:DNode" uid="_FDVvcm9NEeaS6s5ghsv39g" width="1" height="40" resizeKind="NSEW">
-        <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#96201552-70a0-464f-8585-90947f0adcd1"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#96201552-70a0-464f-8585-90947f0adcd1"/>
+        <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#96201552-70a0-464f-8585-90947f0adcd1"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#96201552-70a0-464f-8585-90947f0adcd1"/>
         <ownedBorderedNodes xmi:type="diagram:DNode" uid="_FDWWgG9NEeaS6s5ghsv39g" width="1" height="1">
-          <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#96201552-70a0-464f-8585-90947f0adcd1"/>
-          <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#96201552-70a0-464f-8585-90947f0adcd1"/>
+          <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#96201552-70a0-464f-8585-90947f0adcd1"/>
+          <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#96201552-70a0-464f-8585-90947f0adcd1"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_FDWWgW9NEeaS6s5ghsv39g" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']/@borderedNodeMappings[name='default%20execution%20FS']/@borderedNodeMappings[name='endOfLife%20FS']/@style"/>
           </ownedStyle>
@@ -1334,15 +1334,15 @@
       <actualMapping xmi:type="description_2:InstanceRoleMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_FDQP4m9NEeaS6s5ghsv39g" name="Manage View_pattern1" width="10" height="5" resizeKind="EAST_WEST">
-      <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#fd1107d4-31a3-4ae5-b9f8-e30ab76e8655"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#fd1107d4-31a3-4ae5-b9f8-e30ab76e8655"/>
+      <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#fd1107d4-31a3-4ae5-b9f8-e30ab76e8655"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#fd1107d4-31a3-4ae5-b9f8-e30ab76e8655"/>
       <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_Ap51GwiTEeKON57bbyPgDg" x="890" y="50" height="50" width="100"/>
       <ownedBorderedNodes xmi:type="diagram:DNode" uid="_FDWWgm9NEeaS6s5ghsv39g" width="1" height="40" resizeKind="NSEW">
-        <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#fd1107d4-31a3-4ae5-b9f8-e30ab76e8655"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#fd1107d4-31a3-4ae5-b9f8-e30ab76e8655"/>
+        <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#fd1107d4-31a3-4ae5-b9f8-e30ab76e8655"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#fd1107d4-31a3-4ae5-b9f8-e30ab76e8655"/>
         <ownedBorderedNodes xmi:type="diagram:DNode" uid="_FDW9kG9NEeaS6s5ghsv39g" width="1" height="1">
-          <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#fd1107d4-31a3-4ae5-b9f8-e30ab76e8655"/>
-          <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#fd1107d4-31a3-4ae5-b9f8-e30ab76e8655"/>
+          <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#fd1107d4-31a3-4ae5-b9f8-e30ab76e8655"/>
+          <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#fd1107d4-31a3-4ae5-b9f8-e30ab76e8655"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_FDW9kW9NEeaS6s5ghsv39g" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']/@borderedNodeMappings[name='default%20execution%20FS']/@borderedNodeMappings[name='endOfLife%20FS']/@style"/>
           </ownedStyle>
@@ -1359,15 +1359,15 @@
       <actualMapping xmi:type="description_2:InstanceRoleMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_FDQ28G9NEeaS6s5ghsv39g" name="SysOA2_1" width="10" height="5" resizeKind="EAST_WEST">
-      <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#bd679d4f-7d31-4d8a-ba91-62f65aec4092"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#bd679d4f-7d31-4d8a-ba91-62f65aec4092"/>
+      <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#bd679d4f-7d31-4d8a-ba91-62f65aec4092"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#bd679d4f-7d31-4d8a-ba91-62f65aec4092"/>
       <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_Ap51HAiTEeKON57bbyPgDg" x="1000" y="50" height="50" width="100"/>
       <ownedBorderedNodes xmi:type="diagram:DNode" uid="_FDW9km9NEeaS6s5ghsv39g" width="1" height="40" resizeKind="NSEW">
-        <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#bd679d4f-7d31-4d8a-ba91-62f65aec4092"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#bd679d4f-7d31-4d8a-ba91-62f65aec4092"/>
+        <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#bd679d4f-7d31-4d8a-ba91-62f65aec4092"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#bd679d4f-7d31-4d8a-ba91-62f65aec4092"/>
         <ownedBorderedNodes xmi:type="diagram:DNode" uid="_FDXkoG9NEeaS6s5ghsv39g" width="1" height="1">
-          <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#bd679d4f-7d31-4d8a-ba91-62f65aec4092"/>
-          <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#bd679d4f-7d31-4d8a-ba91-62f65aec4092"/>
+          <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#bd679d4f-7d31-4d8a-ba91-62f65aec4092"/>
+          <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#bd679d4f-7d31-4d8a-ba91-62f65aec4092"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_FDXkoW9NEeaS6s5ghsv39g" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']/@borderedNodeMappings[name='default%20execution%20FS']/@borderedNodeMappings[name='endOfLife%20FS']/@style"/>
           </ownedStyle>
@@ -1384,15 +1384,15 @@
       <actualMapping xmi:type="description_2:InstanceRoleMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_FDQ28m9NEeaS6s5ghsv39g" name="SysOA2_2" width="10" height="5" resizeKind="EAST_WEST">
-      <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#c62a02fc-6178-4d45-81e7-3ed647184cdc"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#c62a02fc-6178-4d45-81e7-3ed647184cdc"/>
+      <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#c62a02fc-6178-4d45-81e7-3ed647184cdc"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#c62a02fc-6178-4d45-81e7-3ed647184cdc"/>
       <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_Ap51HQiTEeKON57bbyPgDg" x="1110" y="50" height="50" width="100"/>
       <ownedBorderedNodes xmi:type="diagram:DNode" uid="_FDXkom9NEeaS6s5ghsv39g" width="1" height="40" resizeKind="NSEW">
-        <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#c62a02fc-6178-4d45-81e7-3ed647184cdc"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#c62a02fc-6178-4d45-81e7-3ed647184cdc"/>
+        <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#c62a02fc-6178-4d45-81e7-3ed647184cdc"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#c62a02fc-6178-4d45-81e7-3ed647184cdc"/>
         <ownedBorderedNodes xmi:type="diagram:DNode" uid="_FDYLsG9NEeaS6s5ghsv39g" width="1" height="1">
-          <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#c62a02fc-6178-4d45-81e7-3ed647184cdc"/>
-          <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#c62a02fc-6178-4d45-81e7-3ed647184cdc"/>
+          <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#c62a02fc-6178-4d45-81e7-3ed647184cdc"/>
+          <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#c62a02fc-6178-4d45-81e7-3ed647184cdc"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_FDYLsW9NEeaS6s5ghsv39g" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']/@borderedNodeMappings[name='default%20execution%20FS']/@borderedNodeMappings[name='endOfLife%20FS']/@style"/>
           </ownedStyle>
@@ -1409,15 +1409,15 @@
       <actualMapping xmi:type="description_2:InstanceRoleMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_FDReAG9NEeaS6s5ghsv39g" name="LF2_3" width="10" height="5" resizeKind="EAST_WEST">
-      <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#e1ebf386-039e-4918-8c33-5ddabaf4afa7"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#e1ebf386-039e-4918-8c33-5ddabaf4afa7"/>
+      <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#e1ebf386-039e-4918-8c33-5ddabaf4afa7"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#e1ebf386-039e-4918-8c33-5ddabaf4afa7"/>
       <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_Ap51HgiTEeKON57bbyPgDg" x="1220" y="50" height="50" width="100"/>
       <ownedBorderedNodes xmi:type="diagram:DNode" uid="_FDYLsm9NEeaS6s5ghsv39g" width="1" height="40" resizeKind="NSEW">
-        <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#e1ebf386-039e-4918-8c33-5ddabaf4afa7"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#e1ebf386-039e-4918-8c33-5ddabaf4afa7"/>
+        <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#e1ebf386-039e-4918-8c33-5ddabaf4afa7"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#e1ebf386-039e-4918-8c33-5ddabaf4afa7"/>
         <ownedBorderedNodes xmi:type="diagram:DNode" uid="_FDYywG9NEeaS6s5ghsv39g" width="1" height="1">
-          <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#e1ebf386-039e-4918-8c33-5ddabaf4afa7"/>
-          <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#e1ebf386-039e-4918-8c33-5ddabaf4afa7"/>
+          <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#e1ebf386-039e-4918-8c33-5ddabaf4afa7"/>
+          <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#e1ebf386-039e-4918-8c33-5ddabaf4afa7"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_FDYywW9NEeaS6s5ghsv39g" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']/@borderedNodeMappings[name='default%20execution%20FS']/@borderedNodeMappings[name='endOfLife%20FS']/@style"/>
           </ownedStyle>
@@ -1434,15 +1434,15 @@
       <actualMapping xmi:type="description_2:InstanceRoleMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_FDReAm9NEeaS6s5ghsv39g" name="SysOA1_1" width="10" height="5" resizeKind="EAST_WEST">
-      <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#2e69f1d0-e618-422f-9615-7af1ae5d7b5d"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#2e69f1d0-e618-422f-9615-7af1ae5d7b5d"/>
+      <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#2e69f1d0-e618-422f-9615-7af1ae5d7b5d"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#2e69f1d0-e618-422f-9615-7af1ae5d7b5d"/>
       <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_Ap51HwiTEeKON57bbyPgDg" x="1360" y="50" height="50" width="100"/>
       <ownedBorderedNodes xmi:type="diagram:DNode" uid="_FDYywm9NEeaS6s5ghsv39g" width="1" height="40" resizeKind="NSEW">
-        <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#2e69f1d0-e618-422f-9615-7af1ae5d7b5d"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#2e69f1d0-e618-422f-9615-7af1ae5d7b5d"/>
+        <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#2e69f1d0-e618-422f-9615-7af1ae5d7b5d"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#2e69f1d0-e618-422f-9615-7af1ae5d7b5d"/>
         <ownedBorderedNodes xmi:type="diagram:DNode" uid="_FDZZ0G9NEeaS6s5ghsv39g" width="1" height="1">
-          <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#2e69f1d0-e618-422f-9615-7af1ae5d7b5d"/>
-          <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#2e69f1d0-e618-422f-9615-7af1ae5d7b5d"/>
+          <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#2e69f1d0-e618-422f-9615-7af1ae5d7b5d"/>
+          <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#2e69f1d0-e618-422f-9615-7af1ae5d7b5d"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_FDZZ0W9NEeaS6s5ghsv39g" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']/@borderedNodeMappings[name='default%20execution%20FS']/@borderedNodeMappings[name='endOfLife%20FS']/@style"/>
           </ownedStyle>
@@ -1459,15 +1459,15 @@
       <actualMapping xmi:type="description_2:InstanceRoleMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_FDReBG9NEeaS6s5ghsv39g" name="Manage Controler" width="10" height="5" resizeKind="EAST_WEST">
-      <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#05ce10a0-01bd-4389-8d2f-49409c6afe33"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#05ce10a0-01bd-4389-8d2f-49409c6afe33"/>
+      <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#05ce10a0-01bd-4389-8d2f-49409c6afe33"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#05ce10a0-01bd-4389-8d2f-49409c6afe33"/>
       <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_Ap51IAiTEeKON57bbyPgDg" x="1530" y="50" height="50" width="100"/>
       <ownedBorderedNodes xmi:type="diagram:DNode" uid="_FDZZ0m9NEeaS6s5ghsv39g" width="1" height="40" resizeKind="NSEW">
-        <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#05ce10a0-01bd-4389-8d2f-49409c6afe33"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#05ce10a0-01bd-4389-8d2f-49409c6afe33"/>
+        <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#05ce10a0-01bd-4389-8d2f-49409c6afe33"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#05ce10a0-01bd-4389-8d2f-49409c6afe33"/>
         <ownedBorderedNodes xmi:type="diagram:DNode" uid="_FDaA4G9NEeaS6s5ghsv39g" width="1" height="1">
-          <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#05ce10a0-01bd-4389-8d2f-49409c6afe33"/>
-          <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#05ce10a0-01bd-4389-8d2f-49409c6afe33"/>
+          <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#05ce10a0-01bd-4389-8d2f-49409c6afe33"/>
+          <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#05ce10a0-01bd-4389-8d2f-49409c6afe33"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_FDaA4W9NEeaS6s5ghsv39g" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']/@borderedNodeMappings[name='default%20execution%20FS']/@borderedNodeMappings[name='endOfLife%20FS']/@style"/>
           </ownedStyle>
@@ -1484,15 +1484,15 @@
       <actualMapping xmi:type="description_2:InstanceRoleMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_FDSFEW9NEeaS6s5ghsv39g" name="Manage Controler_pattern1" width="10" height="5" resizeKind="EAST_WEST">
-      <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#0251035e-5116-46a4-8ce5-69906f3bd360"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#0251035e-5116-46a4-8ce5-69906f3bd360"/>
+      <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#0251035e-5116-46a4-8ce5-69906f3bd360"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#0251035e-5116-46a4-8ce5-69906f3bd360"/>
       <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_Ap51IQiTEeKON57bbyPgDg" x="1680" y="50" height="50" width="100"/>
       <ownedBorderedNodes xmi:type="diagram:DNode" uid="_FDaA4m9NEeaS6s5ghsv39g" width="1" height="40" resizeKind="NSEW">
-        <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#0251035e-5116-46a4-8ce5-69906f3bd360"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#0251035e-5116-46a4-8ce5-69906f3bd360"/>
+        <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#0251035e-5116-46a4-8ce5-69906f3bd360"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#0251035e-5116-46a4-8ce5-69906f3bd360"/>
         <ownedBorderedNodes xmi:type="diagram:DNode" uid="_FDan8G9NEeaS6s5ghsv39g" width="1" height="1">
-          <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#0251035e-5116-46a4-8ce5-69906f3bd360"/>
-          <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#0251035e-5116-46a4-8ce5-69906f3bd360"/>
+          <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#0251035e-5116-46a4-8ce5-69906f3bd360"/>
+          <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#0251035e-5116-46a4-8ce5-69906f3bd360"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_FDan8W9NEeaS6s5ghsv39g" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']/@borderedNodeMappings[name='default%20execution%20FS']/@borderedNodeMappings[name='endOfLife%20FS']/@style"/>
           </ownedStyle>
@@ -1509,15 +1509,15 @@
       <actualMapping xmi:type="description_2:InstanceRoleMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_FDSFE29NEeaS6s5ghsv39g" name="Manage Model_pattern1" width="10" height="5" resizeKind="EAST_WEST">
-      <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#bf00b511-916b-4bc4-9173-df08ba16aac6"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#bf00b511-916b-4bc4-9173-df08ba16aac6"/>
+      <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#bf00b511-916b-4bc4-9173-df08ba16aac6"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#bf00b511-916b-4bc4-9173-df08ba16aac6"/>
       <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_Ap51IgiTEeKON57bbyPgDg" x="1830" y="50" height="50" width="100"/>
       <ownedBorderedNodes xmi:type="diagram:DNode" uid="_FDan8m9NEeaS6s5ghsv39g" width="1" height="40" resizeKind="NSEW">
-        <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#bf00b511-916b-4bc4-9173-df08ba16aac6"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#bf00b511-916b-4bc4-9173-df08ba16aac6"/>
+        <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#bf00b511-916b-4bc4-9173-df08ba16aac6"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#bf00b511-916b-4bc4-9173-df08ba16aac6"/>
         <ownedBorderedNodes xmi:type="diagram:DNode" uid="_FDbPAG9NEeaS6s5ghsv39g" width="1" height="1">
-          <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#bf00b511-916b-4bc4-9173-df08ba16aac6"/>
-          <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#bf00b511-916b-4bc4-9173-df08ba16aac6"/>
+          <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#bf00b511-916b-4bc4-9173-df08ba16aac6"/>
+          <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#bf00b511-916b-4bc4-9173-df08ba16aac6"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_FDbPAW9NEeaS6s5ghsv39g" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']/@borderedNodeMappings[name='default%20execution%20FS']/@borderedNodeMappings[name='endOfLife%20FS']/@style"/>
           </ownedStyle>
@@ -1534,15 +1534,15 @@
       <actualMapping xmi:type="description_2:InstanceRoleMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_FDSsIW9NEeaS6s5ghsv39g" name="SF2" width="10" height="5" resizeKind="EAST_WEST">
-      <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#6c19100c-f18d-4074-b54b-4015efb0b755"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#6c19100c-f18d-4074-b54b-4015efb0b755"/>
+      <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#6c19100c-f18d-4074-b54b-4015efb0b755"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#6c19100c-f18d-4074-b54b-4015efb0b755"/>
       <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_Ap51IwiTEeKON57bbyPgDg" x="1980" y="50" height="50" width="100"/>
       <ownedBorderedNodes xmi:type="diagram:DNode" uid="_FDbPAm9NEeaS6s5ghsv39g" width="1" height="40" resizeKind="NSEW">
-        <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#6c19100c-f18d-4074-b54b-4015efb0b755"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#6c19100c-f18d-4074-b54b-4015efb0b755"/>
+        <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#6c19100c-f18d-4074-b54b-4015efb0b755"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#6c19100c-f18d-4074-b54b-4015efb0b755"/>
         <ownedBorderedNodes xmi:type="diagram:DNode" uid="_FDb2EG9NEeaS6s5ghsv39g" width="1" height="1">
-          <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#6c19100c-f18d-4074-b54b-4015efb0b755"/>
-          <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#6c19100c-f18d-4074-b54b-4015efb0b755"/>
+          <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#6c19100c-f18d-4074-b54b-4015efb0b755"/>
+          <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#6c19100c-f18d-4074-b54b-4015efb0b755"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_FDb2EW9NEeaS6s5ghsv39g" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']/@borderedNodeMappings[name='default%20execution%20FS']/@borderedNodeMappings[name='endOfLife%20FS']/@style"/>
           </ownedStyle>
@@ -1559,15 +1559,15 @@
       <actualMapping xmi:type="description_2:InstanceRoleMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_FDSsI29NEeaS6s5ghsv39g" name="OA2" width="10" height="5" resizeKind="EAST_WEST">
-      <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#fc8ace60-7212-4a64-81a9-f3b201f1633b"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#fc8ace60-7212-4a64-81a9-f3b201f1633b"/>
+      <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#fc8ace60-7212-4a64-81a9-f3b201f1633b"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#fc8ace60-7212-4a64-81a9-f3b201f1633b"/>
       <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_Ap51JAiTEeKON57bbyPgDg" x="2130" y="50" height="50" width="100"/>
       <ownedBorderedNodes xmi:type="diagram:DNode" uid="_FDb2Em9NEeaS6s5ghsv39g" width="1" height="40" resizeKind="NSEW">
-        <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#fc8ace60-7212-4a64-81a9-f3b201f1633b"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#fc8ace60-7212-4a64-81a9-f3b201f1633b"/>
+        <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#fc8ace60-7212-4a64-81a9-f3b201f1633b"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#fc8ace60-7212-4a64-81a9-f3b201f1633b"/>
         <ownedBorderedNodes xmi:type="diagram:DNode" uid="_FDcdIG9NEeaS6s5ghsv39g" width="1" height="1">
-          <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#fc8ace60-7212-4a64-81a9-f3b201f1633b"/>
-          <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#fc8ace60-7212-4a64-81a9-f3b201f1633b"/>
+          <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#fc8ace60-7212-4a64-81a9-f3b201f1633b"/>
+          <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#fc8ace60-7212-4a64-81a9-f3b201f1633b"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_FDcdIW9NEeaS6s5ghsv39g" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']/@borderedNodeMappings[name='default%20execution%20FS']/@borderedNodeMappings[name='endOfLife%20FS']/@style"/>
           </ownedStyle>
@@ -1584,15 +1584,15 @@
       <actualMapping xmi:type="description_2:InstanceRoleMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_FDTTMW9NEeaS6s5ghsv39g" name="SysOA2_1_1" width="10" height="5" resizeKind="EAST_WEST">
-      <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#7fb7e49b-b7aa-4f94-8e6c-987842bbf2a0"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#7fb7e49b-b7aa-4f94-8e6c-987842bbf2a0"/>
+      <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#7fb7e49b-b7aa-4f94-8e6c-987842bbf2a0"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#7fb7e49b-b7aa-4f94-8e6c-987842bbf2a0"/>
       <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_Ap51JQiTEeKON57bbyPgDg" x="2300" y="50" height="50" width="100"/>
       <ownedBorderedNodes xmi:type="diagram:DNode" uid="_FDcdIm9NEeaS6s5ghsv39g" width="1" height="40" resizeKind="NSEW">
-        <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#7fb7e49b-b7aa-4f94-8e6c-987842bbf2a0"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#7fb7e49b-b7aa-4f94-8e6c-987842bbf2a0"/>
+        <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#7fb7e49b-b7aa-4f94-8e6c-987842bbf2a0"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#7fb7e49b-b7aa-4f94-8e6c-987842bbf2a0"/>
         <ownedBorderedNodes xmi:type="diagram:DNode" uid="_FDdEMG9NEeaS6s5ghsv39g" width="1" height="1">
-          <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#7fb7e49b-b7aa-4f94-8e6c-987842bbf2a0"/>
-          <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#7fb7e49b-b7aa-4f94-8e6c-987842bbf2a0"/>
+          <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#7fb7e49b-b7aa-4f94-8e6c-987842bbf2a0"/>
+          <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#7fb7e49b-b7aa-4f94-8e6c-987842bbf2a0"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_FDdEMW9NEeaS6s5ghsv39g" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']/@borderedNodeMappings[name='default%20execution%20FS']/@borderedNodeMappings[name='endOfLife%20FS']/@style"/>
           </ownedStyle>
@@ -1609,15 +1609,15 @@
       <actualMapping xmi:type="description_2:InstanceRoleMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_FDT6QG9NEeaS6s5ghsv39g" name="Root Logical Function" width="10" height="5" resizeKind="EAST_WEST">
-      <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#983f8570-ce48-4a6d-8ba9-0e7a24cf6d85"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#983f8570-ce48-4a6d-8ba9-0e7a24cf6d85"/>
+      <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#983f8570-ce48-4a6d-8ba9-0e7a24cf6d85"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#983f8570-ce48-4a6d-8ba9-0e7a24cf6d85"/>
       <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_Ap51JgiTEeKON57bbyPgDg" x="2470" y="50" height="50" width="100"/>
       <ownedBorderedNodes xmi:type="diagram:DNode" uid="_FDdEMm9NEeaS6s5ghsv39g" width="1" height="40" resizeKind="NSEW">
-        <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#983f8570-ce48-4a6d-8ba9-0e7a24cf6d85"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#983f8570-ce48-4a6d-8ba9-0e7a24cf6d85"/>
+        <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#983f8570-ce48-4a6d-8ba9-0e7a24cf6d85"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#983f8570-ce48-4a6d-8ba9-0e7a24cf6d85"/>
         <ownedBorderedNodes xmi:type="diagram:DNode" uid="_FDdrQG9NEeaS6s5ghsv39g" width="1" height="1">
-          <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#983f8570-ce48-4a6d-8ba9-0e7a24cf6d85"/>
-          <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#983f8570-ce48-4a6d-8ba9-0e7a24cf6d85"/>
+          <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#983f8570-ce48-4a6d-8ba9-0e7a24cf6d85"/>
+          <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#983f8570-ce48-4a6d-8ba9-0e7a24cf6d85"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_FDdrQW9NEeaS6s5ghsv39g" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']/@borderedNodeMappings[name='default%20execution%20FS']/@borderedNodeMappings[name='endOfLife%20FS']/@style"/>
           </ownedStyle>
@@ -1634,14 +1634,13 @@
       <actualMapping xmi:type="description_2:InstanceRoleMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']"/>
     </ownedDiagramElements>
     <description xmi:type="description_2:SequenceDiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']"/>
-    <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@filters[name='hide.pre.post.conditions.filter']"/>
     <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']/@ownedRepresentations[name='AD%20diagram']/@filters[name='ModelExtensionFilter']"/>
     <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@filters[name='hide.pre.post.conditions.filter']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_D2HFIdGaEeGZ5MAd2R9JJw"/>
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer"/>
-    <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="LA-Logical%20System-LC2.melodyfragment#4e5171f3-833d-4dfa-ba62-619a4838db5e"/>
+    <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="LA-Logical%20System-LC2.capellafragment#4e5171f3-833d-4dfa-ba62-619a4838db5e"/>
   </sequence:SequenceDDiagram>
-  <sequence:SequenceDDiagram uid="_tTEPQMS5EeCI_NCOxdDk1w" name="[IS] IS1 [From 'Logical System'] - Interface Scenario">
+  <sequence:SequenceDDiagram uid="_tTEPQMS5EeCI_NCOxdDk1w">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_tTEPRMS5EeCI_NCOxdDk1w" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_tTEPRcS5EeCI_NCOxdDk1w" type="Sirius" element="_tTEPQMS5EeCI_NCOxdDk1w" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_tT9nO8S5EeCI_NCOxdDk1w" type="2001" element="_FCFLMG9NEeaS6s5ghsv39g">
@@ -1880,15 +1879,15 @@
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_6uyqsUZoEeW8qK3X6CuZEg"/>
     </ownedAnnotationEntries>
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_FCFLMG9NEeaS6s5ghsv39g" name="LC2_1" width="15" height="5" resizeKind="EAST_WEST">
-      <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#a684d358-1351-4368-9928-28a26124db3d"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#a684d358-1351-4368-9928-28a26124db3d"/>
+      <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#a684d358-1351-4368-9928-28a26124db3d"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#a684d358-1351-4368-9928-28a26124db3d"/>
       <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_Ap51EAiTEeKON57bbyPgDg" x="50" y="50" height="50" width="150"/>
       <ownedBorderedNodes xmi:type="diagram:DNode" uid="_FCHAYm9NEeaS6s5ghsv39g" width="1" height="40" resizeKind="NSEW">
-        <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#a684d358-1351-4368-9928-28a26124db3d"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#a684d358-1351-4368-9928-28a26124db3d"/>
+        <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#a684d358-1351-4368-9928-28a26124db3d"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#a684d358-1351-4368-9928-28a26124db3d"/>
         <ownedBorderedNodes xmi:type="diagram:DNode" uid="_FCHAZG9NEeaS6s5ghsv39g" outgoingEdges="_FCMf8G9NEeaS6s5ghsv39g" incomingEdges="_FCLR0m9NEeaS6s5ghsv39g" width="1" height="3" resizeKind="NSEW">
-          <target xmi:type="org.polarsys.capella.core.data.interaction:Execution" href="LA-Logical%20System-LC2.melodyfragment#4508a275-e3d9-47e1-879c-e3b1bd5d067d"/>
-          <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:Execution" href="LA-Logical%20System-LC2.melodyfragment#4508a275-e3d9-47e1-879c-e3b1bd5d067d"/>
+          <target xmi:type="org.polarsys.capella.core.data.interaction:Execution" href="LA-Logical%20System-LC2.capellafragment#4508a275-e3d9-47e1-879c-e3b1bd5d067d"/>
+          <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:Execution" href="LA-Logical%20System-LC2.capellafragment#4508a275-e3d9-47e1-879c-e3b1bd5d067d"/>
           <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_tVml4MS5EeCI_NCOxdDk1w" x="120" y="250" height="30" width="10"/>
           <ownedStyle xmi:type="diagram:Square" uid="_FCHAZW9NEeaS6s5ghsv39g" showIcon="false" borderSize="1" borderSizeComputationExpression="1" width="1" height="3" color="209,209,209">
             <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']/@borderedNodeMappings[name='default%20execution']/@borderedNodeMappings[name='Execution']/@conditionnalStyles.1/@style"/>
@@ -1896,8 +1895,8 @@
           <actualMapping xmi:type="description_2:ExecutionMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']/@borderedNodeMappings[name='default%20execution']/@borderedNodeMappings[name='Execution']"/>
         </ownedBorderedNodes>
         <ownedBorderedNodes xmi:type="diagram:DNode" uid="_FCHAZm9NEeaS6s5ghsv39g" width="1" height="1">
-          <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#a684d358-1351-4368-9928-28a26124db3d"/>
-          <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#a684d358-1351-4368-9928-28a26124db3d"/>
+          <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#a684d358-1351-4368-9928-28a26124db3d"/>
+          <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#a684d358-1351-4368-9928-28a26124db3d"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_FCHncG9NEeaS6s5ghsv39g" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']/@borderedNodeMappings[name='default%20execution']/@borderedNodeMappings[name='endOfLife']/@style"/>
           </ownedStyle>
@@ -1914,15 +1913,15 @@
       <actualMapping xmi:type="description_2:InstanceRoleMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_FCFyQW9NEeaS6s5ghsv39g" name="LC2_2" width="15" height="5" resizeKind="EAST_WEST">
-      <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#a617dc3d-2db0-4c33-9f77-150d0cb3434c"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#a617dc3d-2db0-4c33-9f77-150d0cb3434c"/>
+      <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#a617dc3d-2db0-4c33-9f77-150d0cb3434c"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#a617dc3d-2db0-4c33-9f77-150d0cb3434c"/>
       <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_Ap51EQiTEeKON57bbyPgDg" x="230" y="50" height="50" width="150"/>
       <ownedBorderedNodes xmi:type="diagram:DNode" uid="_FCHncW9NEeaS6s5ghsv39g" outgoingEdges="_FCL44m9NEeaS6s5ghsv39g" width="1" height="40" resizeKind="NSEW">
-        <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#a617dc3d-2db0-4c33-9f77-150d0cb3434c"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#a617dc3d-2db0-4c33-9f77-150d0cb3434c"/>
+        <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#a617dc3d-2db0-4c33-9f77-150d0cb3434c"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#a617dc3d-2db0-4c33-9f77-150d0cb3434c"/>
         <ownedBorderedNodes xmi:type="diagram:DNode" uid="_FCIOgG9NEeaS6s5ghsv39g" width="1" height="1">
-          <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#a617dc3d-2db0-4c33-9f77-150d0cb3434c"/>
-          <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#a617dc3d-2db0-4c33-9f77-150d0cb3434c"/>
+          <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#a617dc3d-2db0-4c33-9f77-150d0cb3434c"/>
+          <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#a617dc3d-2db0-4c33-9f77-150d0cb3434c"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_FCIOgW9NEeaS6s5ghsv39g" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']/@borderedNodeMappings[name='default%20execution']/@borderedNodeMappings[name='endOfLife']/@style"/>
           </ownedStyle>
@@ -1939,15 +1938,15 @@
       <actualMapping xmi:type="description_2:InstanceRoleMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_FCGZUW9NEeaS6s5ghsv39g" name="LC1" width="15" height="5" resizeKind="EAST_WEST">
-      <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#28d13090-8b42-4a27-9fd4-6a64daaff15a"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#28d13090-8b42-4a27-9fd4-6a64daaff15a"/>
+      <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#28d13090-8b42-4a27-9fd4-6a64daaff15a"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#28d13090-8b42-4a27-9fd4-6a64daaff15a"/>
       <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_Ap51EgiTEeKON57bbyPgDg" x="410" y="50" height="50" width="150"/>
       <ownedBorderedNodes xmi:type="diagram:DNode" uid="_FCIOgm9NEeaS6s5ghsv39g" outgoingEdges="_FCLR0m9NEeaS6s5ghsv39g" incomingEdges="_FCMf8G9NEeaS6s5ghsv39g" width="1" height="40" resizeKind="NSEW">
-        <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#28d13090-8b42-4a27-9fd4-6a64daaff15a"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#28d13090-8b42-4a27-9fd4-6a64daaff15a"/>
+        <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#28d13090-8b42-4a27-9fd4-6a64daaff15a"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#28d13090-8b42-4a27-9fd4-6a64daaff15a"/>
         <ownedBorderedNodes xmi:type="diagram:DNode" uid="_FCI1kG9NEeaS6s5ghsv39g" width="1" height="1">
-          <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#28d13090-8b42-4a27-9fd4-6a64daaff15a"/>
-          <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#28d13090-8b42-4a27-9fd4-6a64daaff15a"/>
+          <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#28d13090-8b42-4a27-9fd4-6a64daaff15a"/>
+          <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#28d13090-8b42-4a27-9fd4-6a64daaff15a"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_FCI1kW9NEeaS6s5ghsv39g" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']/@borderedNodeMappings[name='default%20execution']/@borderedNodeMappings[name='endOfLife']/@style"/>
           </ownedStyle>
@@ -1964,15 +1963,15 @@
       <actualMapping xmi:type="description_2:InstanceRoleMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_FCHAYG9NEeaS6s5ghsv39g" name="Actor3" width="10" height="5" resizeKind="EAST_WEST">
-      <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#02c84445-1da7-44fd-b30a-16e8c138c3ce"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#02c84445-1da7-44fd-b30a-16e8c138c3ce"/>
+      <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#02c84445-1da7-44fd-b30a-16e8c138c3ce"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#02c84445-1da7-44fd-b30a-16e8c138c3ce"/>
       <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_Ap51EwiTEeKON57bbyPgDg" x="590" y="50" height="50" width="100"/>
       <ownedBorderedNodes xmi:type="diagram:DNode" uid="_FCI1km9NEeaS6s5ghsv39g" width="1" height="40" resizeKind="NSEW">
-        <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#02c84445-1da7-44fd-b30a-16e8c138c3ce"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#02c84445-1da7-44fd-b30a-16e8c138c3ce"/>
+        <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#02c84445-1da7-44fd-b30a-16e8c138c3ce"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#02c84445-1da7-44fd-b30a-16e8c138c3ce"/>
         <ownedBorderedNodes xmi:type="diagram:DNode" uid="_FCJcoG9NEeaS6s5ghsv39g" incomingEdges="_FCL44m9NEeaS6s5ghsv39g" width="1" height="3" resizeKind="NSEW">
-          <target xmi:type="org.polarsys.capella.core.data.interaction:Execution" href="LA-Logical%20System-LC2.melodyfragment#ac59b12a-8cee-4461-a068-4c5dfdad502c"/>
-          <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:Execution" href="LA-Logical%20System-LC2.melodyfragment#ac59b12a-8cee-4461-a068-4c5dfdad502c"/>
+          <target xmi:type="org.polarsys.capella.core.data.interaction:Execution" href="LA-Logical%20System-LC2.capellafragment#ac59b12a-8cee-4461-a068-4c5dfdad502c"/>
+          <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:Execution" href="LA-Logical%20System-LC2.capellafragment#ac59b12a-8cee-4461-a068-4c5dfdad502c"/>
           <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_tVml4cS5EeCI_NCOxdDk1w" x="635" y="348" height="30" width="10"/>
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
@@ -1983,8 +1982,8 @@
           <actualMapping xmi:type="description_2:ExecutionMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']/@borderedNodeMappings[name='default%20execution']/@borderedNodeMappings[name='Execution']"/>
         </ownedBorderedNodes>
         <ownedBorderedNodes xmi:type="diagram:DNode" uid="_FCKDsG9NEeaS6s5ghsv39g" width="1" height="1">
-          <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#02c84445-1da7-44fd-b30a-16e8c138c3ce"/>
-          <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#02c84445-1da7-44fd-b30a-16e8c138c3ce"/>
+          <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#02c84445-1da7-44fd-b30a-16e8c138c3ce"/>
+          <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#02c84445-1da7-44fd-b30a-16e8c138c3ce"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_FCKDsW9NEeaS6s5ghsv39g" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']/@borderedNodeMappings[name='default%20execution']/@borderedNodeMappings[name='endOfLife']/@style"/>
           </ownedStyle>
@@ -2001,10 +2000,10 @@
       <actualMapping xmi:type="description_2:InstanceRoleMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_FCKqwG9NEeaS6s5ghsv39g" name=" ref">
-      <target xmi:type="org.polarsys.capella.core.data.interaction:InteractionUse" href="LA-Logical%20System-LC2.melodyfragment#64849164-7636-4c29-8171-9f75ffa818b6"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InteractionUse" href="LA-Logical%20System-LC2.melodyfragment#64849164-7636-4c29-8171-9f75ffa818b6"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="LA-Logical%20System-LC2.melodyfragment#04823c08-0017-496c-b5b7-c9eebd887f5d"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.la:CapabilityRealization" href="LA-Logical%20System-LC2.melodyfragment#1e8b6132-a356-45d8-97cd-9a6bdcd5d768"/>
+      <target xmi:type="org.polarsys.capella.core.data.interaction:InteractionUse" href="LA-Logical%20System-LC2.capellafragment#64849164-7636-4c29-8171-9f75ffa818b6"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InteractionUse" href="LA-Logical%20System-LC2.capellafragment#64849164-7636-4c29-8171-9f75ffa818b6"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="LA-Logical%20System-LC2.capellafragment#04823c08-0017-496c-b5b7-c9eebd887f5d"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:CapabilityRealization" href="LA-Logical%20System-LC2.capellafragment#1e8b6132-a356-45d8-97cd-9a6bdcd5d768"/>
       <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_tVml4sS5EeCI_NCOxdDk1w" x="50" y="130" height="50" width="510"/>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_FCKqwW9NEeaS6s5ghsv39g" showIcon="false" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="1" foregroundColor="242,242,242">
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@containerMappings[name='InteractionUse']/@style"/>
@@ -2012,16 +2011,16 @@
       <actualMapping xmi:type="description_2:InteractionUseMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@containerMappings[name='InteractionUse']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_FCKqwm9NEeaS6s5ghsv39g" name=" CRITICAL">
-      <target xmi:type="org.polarsys.capella.core.data.interaction:CombinedFragment" href="LA-Logical%20System-LC2.melodyfragment#990779d6-1a26-447c-a2a2-2197b5be9ef5"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:CombinedFragment" href="LA-Logical%20System-LC2.melodyfragment#990779d6-1a26-447c-a2a2-2197b5be9ef5"/>
+      <target xmi:type="org.polarsys.capella.core.data.interaction:CombinedFragment" href="LA-Logical%20System-LC2.capellafragment#990779d6-1a26-447c-a2a2-2197b5be9ef5"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:CombinedFragment" href="LA-Logical%20System-LC2.capellafragment#990779d6-1a26-447c-a2a2-2197b5be9ef5"/>
       <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_tVml48S5EeCI_NCOxdDk1w" x="50" y="200" height="100" width="510"/>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_FCKqw29NEeaS6s5ghsv39g" showIcon="false" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="1" foregroundColor="242,242,242">
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@containerMappings[name='CombinedFragment']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_2:CombinedFragmentMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@containerMappings[name='CombinedFragment']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_FCLR0G9NEeaS6s5ghsv39g">
-        <target xmi:type="org.polarsys.capella.core.data.interaction:InteractionOperand" href="LA-Logical%20System-LC2.melodyfragment#81c9cdf9-0d3c-4560-ada0-5b22b0696845"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InteractionOperand" href="LA-Logical%20System-LC2.melodyfragment#81c9cdf9-0d3c-4560-ada0-5b22b0696845"/>
+        <target xmi:type="org.polarsys.capella.core.data.interaction:InteractionOperand" href="LA-Logical%20System-LC2.capellafragment#81c9cdf9-0d3c-4560-ada0-5b22b0696845"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InteractionOperand" href="LA-Logical%20System-LC2.capellafragment#81c9cdf9-0d3c-4560-ada0-5b22b0696845"/>
         <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_tVml5MS5EeCI_NCOxdDk1w" x="50" y="230" height="70" width="510"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_FCLR0W9NEeaS6s5ghsv39g" showIcon="false" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="1" foregroundColor="242,242,242">
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@containerMappings[name='CombinedFragment']/@subContainerMappings[name='Operand']/@style"/>
@@ -2030,9 +2029,9 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_FCLR0m9NEeaS6s5ghsv39g" name="manage()" sourceNode="_FCIOgm9NEeaS6s5ghsv39g" targetNode="_FCHAZG9NEeaS6s5ghsv39g">
-      <target xmi:type="org.polarsys.capella.core.data.interaction:SequenceMessage" href="LA-Logical%20System-LC2.melodyfragment#2fad5c17-0135-49f8-b247-0bca965f0abb"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:SequenceMessage" href="LA-Logical%20System-LC2.melodyfragment#2fad5c17-0135-49f8-b247-0bca965f0abb"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:ExchangeItemAllocation" href="../sysmodel.melodymodeller#9d969d17-158e-4bec-bf77-01741bdf6af5"/>
+      <target xmi:type="org.polarsys.capella.core.data.interaction:SequenceMessage" href="LA-Logical%20System-LC2.capellafragment#2fad5c17-0135-49f8-b247-0bca965f0abb"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:SequenceMessage" href="LA-Logical%20System-LC2.capellafragment#2fad5c17-0135-49f8-b247-0bca965f0abb"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:ExchangeItemAllocation" href="../sysmodel.capella#9d969d17-158e-4bec-bf77-01741bdf6af5"/>
       <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_tVml5cS5EeCI_NCOxdDk1w" y="250" height="0"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_FCL44G9NEeaS6s5ghsv39g" targetArrow="InputFillClosedArrow" strokeColor="0,0,0">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@edgeMappings[name='Basic%20message%20mapping']/@conditionnalStyles.0/@style"/>
@@ -2041,9 +2040,9 @@
       <actualMapping xmi:type="description_2:BasicMessageMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@edgeMappings[name='Basic%20message%20mapping']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_FCL44m9NEeaS6s5ghsv39g" name="done()" sourceNode="_FCHncW9NEeaS6s5ghsv39g" targetNode="_FCJcoG9NEeaS6s5ghsv39g">
-      <target xmi:type="org.polarsys.capella.core.data.interaction:SequenceMessage" href="LA-Logical%20System-LC2.melodyfragment#c6508db1-d6e0-48c4-a549-81a61c7b21fe"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:SequenceMessage" href="LA-Logical%20System-LC2.melodyfragment#c6508db1-d6e0-48c4-a549-81a61c7b21fe"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:ExchangeItemAllocation" href="../sysmodel.melodymodeller#72123099-7317-4a92-ab03-2ec8de662edd"/>
+      <target xmi:type="org.polarsys.capella.core.data.interaction:SequenceMessage" href="LA-Logical%20System-LC2.capellafragment#c6508db1-d6e0-48c4-a549-81a61c7b21fe"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:SequenceMessage" href="LA-Logical%20System-LC2.capellafragment#c6508db1-d6e0-48c4-a549-81a61c7b21fe"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:ExchangeItemAllocation" href="../sysmodel.capella#72123099-7317-4a92-ab03-2ec8de662edd"/>
       <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_tVml5sS5EeCI_NCOxdDk1w" y="348" height="0"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_FCL4429NEeaS6s5ghsv39g" strokeColor="0,0,0">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@edgeMappings[name='Basic%20message%20mapping']/@style"/>
@@ -2052,8 +2051,8 @@
       <actualMapping xmi:type="description_2:BasicMessageMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@edgeMappings[name='Basic%20message%20mapping']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_FCMf8G9NEeaS6s5ghsv39g" name="manage()" sourceNode="_FCHAZG9NEeaS6s5ghsv39g" targetNode="_FCIOgm9NEeaS6s5ghsv39g">
-      <target xmi:type="org.polarsys.capella.core.data.interaction:SequenceMessage" href="LA-Logical%20System-LC2.melodyfragment#b6f4b680-2fb0-4163-bcb6-2f1002a1a70c"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:SequenceMessage" href="LA-Logical%20System-LC2.melodyfragment#b6f4b680-2fb0-4163-bcb6-2f1002a1a70c"/>
+      <target xmi:type="org.polarsys.capella.core.data.interaction:SequenceMessage" href="LA-Logical%20System-LC2.capellafragment#b6f4b680-2fb0-4163-bcb6-2f1002a1a70c"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:SequenceMessage" href="LA-Logical%20System-LC2.capellafragment#b6f4b680-2fb0-4163-bcb6-2f1002a1a70c"/>
       <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_tVml58S5EeCI_NCOxdDk1w" y="280" height="0"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_FCMf8W9NEeaS6s5ghsv39g" lineStyle="dash" strokeColor="0,0,0">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@edgeMappings[name='return%20message%20mapping']/@style"/>
@@ -2062,15 +2061,14 @@
       <actualMapping xmi:type="description_2:ReturnMessageMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@edgeMappings[name='return%20message%20mapping']"/>
     </ownedDiagramElements>
     <description xmi:type="description_2:SequenceDiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']"/>
-    <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@filters[name='hide.pre.post.conditions.filter']"/>
-    <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']/@ownedRepresentations[name='AD%20diagram']/@filters[name='ModelExtensionFilter']"/>
     <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']/@ownedRepresentations[name='AD%20diagram']/@filters[name='ModelExtensionFilter']"/>
     <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@filters[name='hide.pre.post.conditions.filter']"/>
+    <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']/@ownedRepresentations[name='AD%20diagram']/@filters[name='ModelExtensionFilter']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_tTEPQcS5EeCI_NCOxdDk1w"/>
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer"/>
-    <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="LA-Logical%20System-LC2.melodyfragment#bd4dd89a-e21a-487a-819c-062b538b0d70"/>
+    <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="LA-Logical%20System-LC2.capellafragment#bd4dd89a-e21a-487a-819c-062b538b0d70"/>
   </sequence:SequenceDDiagram>
-  <sequence:SequenceDDiagram uid="_-HPXEMS5EeCI_NCOxdDk1w" name="[IS] SubIS2 [From 'Logical System'] - Interface Scenario">
+  <sequence:SequenceDDiagram uid="_-HPXEMS5EeCI_NCOxdDk1w">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_-HPXFMS5EeCI_NCOxdDk1w" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_-HPXFcS5EeCI_NCOxdDk1w" type="Sirius" element="_-HPXEMS5EeCI_NCOxdDk1w" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_-H-99cS5EeCI_NCOxdDk1w" type="2001" element="_FCSmkG9NEeaS6s5ghsv39g">
@@ -2173,15 +2171,15 @@
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_6uzRwUZoEeW8qK3X6CuZEg"/>
     </ownedAnnotationEntries>
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_FCSmkG9NEeaS6s5ghsv39g" name="LC1" width="15" height="5" resizeKind="EAST_WEST">
-      <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#26504a18-1d91-4c19-8b5f-aca78950b90c"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#26504a18-1d91-4c19-8b5f-aca78950b90c"/>
+      <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#26504a18-1d91-4c19-8b5f-aca78950b90c"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#26504a18-1d91-4c19-8b5f-aca78950b90c"/>
       <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_Ap51FAiTEeKON57bbyPgDg" x="50" y="50" height="50" width="150"/>
       <ownedBorderedNodes xmi:type="diagram:DNode" uid="_FCT0sW9NEeaS6s5ghsv39g" outgoingEdges="_FCWQ8G9NEeaS6s5ghsv39g" width="1" height="40" resizeKind="NSEW">
-        <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#26504a18-1d91-4c19-8b5f-aca78950b90c"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#26504a18-1d91-4c19-8b5f-aca78950b90c"/>
+        <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#26504a18-1d91-4c19-8b5f-aca78950b90c"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#26504a18-1d91-4c19-8b5f-aca78950b90c"/>
         <ownedBorderedNodes xmi:type="diagram:DNode" uid="_FCUbwG9NEeaS6s5ghsv39g" width="1" height="1">
-          <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#26504a18-1d91-4c19-8b5f-aca78950b90c"/>
-          <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#26504a18-1d91-4c19-8b5f-aca78950b90c"/>
+          <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#26504a18-1d91-4c19-8b5f-aca78950b90c"/>
+          <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#26504a18-1d91-4c19-8b5f-aca78950b90c"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_FCUbwW9NEeaS6s5ghsv39g" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']/@borderedNodeMappings[name='default%20execution']/@borderedNodeMappings[name='endOfLife']/@style"/>
           </ownedStyle>
@@ -2198,15 +2196,15 @@
       <actualMapping xmi:type="description_2:InstanceRoleMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_FCTNoW9NEeaS6s5ghsv39g" name="LC2_1" width="15" height="5" resizeKind="EAST_WEST">
-      <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#1c85dc53-106f-493d-9343-ca01cb572574"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#1c85dc53-106f-493d-9343-ca01cb572574"/>
+      <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#1c85dc53-106f-493d-9343-ca01cb572574"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#1c85dc53-106f-493d-9343-ca01cb572574"/>
       <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_Ap51FQiTEeKON57bbyPgDg" x="230" y="50" height="50" width="150"/>
       <ownedBorderedNodes xmi:type="diagram:DNode" uid="_FCUbwm9NEeaS6s5ghsv39g" width="1" height="40" resizeKind="NSEW">
-        <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#1c85dc53-106f-493d-9343-ca01cb572574"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#1c85dc53-106f-493d-9343-ca01cb572574"/>
+        <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#1c85dc53-106f-493d-9343-ca01cb572574"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#1c85dc53-106f-493d-9343-ca01cb572574"/>
         <ownedBorderedNodes xmi:type="diagram:DNode" uid="_FCUbxG9NEeaS6s5ghsv39g" incomingEdges="_FCWQ8G9NEeaS6s5ghsv39g" width="1" height="3" resizeKind="NSEW">
-          <target xmi:type="org.polarsys.capella.core.data.interaction:Execution" href="LA-Logical%20System-LC2.melodyfragment#5fc6e00a-a50c-4a7c-81fb-22ff9b90a0a6"/>
-          <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:Execution" href="LA-Logical%20System-LC2.melodyfragment#5fc6e00a-a50c-4a7c-81fb-22ff9b90a0a6"/>
+          <target xmi:type="org.polarsys.capella.core.data.interaction:Execution" href="LA-Logical%20System-LC2.capellafragment#5fc6e00a-a50c-4a7c-81fb-22ff9b90a0a6"/>
+          <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:Execution" href="LA-Logical%20System-LC2.capellafragment#5fc6e00a-a50c-4a7c-81fb-22ff9b90a0a6"/>
           <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_-IR44MS5EeCI_NCOxdDk1w" x="300" y="130" height="30" width="10"/>
           <ownedStyle xmi:type="diagram:Square" uid="_FCVC0G9NEeaS6s5ghsv39g" showIcon="false" borderSize="1" borderSizeComputationExpression="1" width="1" height="3" color="209,209,209">
             <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']/@borderedNodeMappings[name='default%20execution']/@borderedNodeMappings[name='Execution']/@conditionnalStyles.1/@style"/>
@@ -2214,8 +2212,8 @@
           <actualMapping xmi:type="description_2:ExecutionMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']/@borderedNodeMappings[name='default%20execution']/@borderedNodeMappings[name='Execution']"/>
         </ownedBorderedNodes>
         <ownedBorderedNodes xmi:type="diagram:DNode" uid="_FCVC0W9NEeaS6s5ghsv39g" width="1" height="1">
-          <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#1c85dc53-106f-493d-9343-ca01cb572574"/>
-          <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#1c85dc53-106f-493d-9343-ca01cb572574"/>
+          <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#1c85dc53-106f-493d-9343-ca01cb572574"/>
+          <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.capellafragment#1c85dc53-106f-493d-9343-ca01cb572574"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_FCVC0m9NEeaS6s5ghsv39g" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']/@borderedNodeMappings[name='default%20execution']/@borderedNodeMappings[name='endOfLife']/@style"/>
           </ownedStyle>
@@ -2232,9 +2230,9 @@
       <actualMapping xmi:type="description_2:InstanceRoleMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_FCWQ8G9NEeaS6s5ghsv39g" name="boot()" sourceNode="_FCT0sW9NEeaS6s5ghsv39g" targetNode="_FCUbxG9NEeaS6s5ghsv39g">
-      <target xmi:type="org.polarsys.capella.core.data.interaction:SequenceMessage" href="LA-Logical%20System-LC2.melodyfragment#5d9f893e-c9ad-4579-a770-82774ee9f01f"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:SequenceMessage" href="LA-Logical%20System-LC2.melodyfragment#5d9f893e-c9ad-4579-a770-82774ee9f01f"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:ExchangeItemAllocation" href="../sysmodel.melodymodeller#f7654ccc-e53f-45d2-8579-e6730772672f"/>
+      <target xmi:type="org.polarsys.capella.core.data.interaction:SequenceMessage" href="LA-Logical%20System-LC2.capellafragment#5d9f893e-c9ad-4579-a770-82774ee9f01f"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:SequenceMessage" href="LA-Logical%20System-LC2.capellafragment#5d9f893e-c9ad-4579-a770-82774ee9f01f"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:ExchangeItemAllocation" href="../sysmodel.capella#f7654ccc-e53f-45d2-8579-e6730772672f"/>
       <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_-IR44cS5EeCI_NCOxdDk1w" y="130" height="0"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_FCWQ8W9NEeaS6s5ghsv39g" strokeColor="0,0,0">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@edgeMappings[name='Basic%20message%20mapping']/@style"/>
@@ -2245,9 +2243,8 @@
     <description xmi:type="description_2:SequenceDiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']"/>
     <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@filters[name='hide.pre.post.conditions.filter']"/>
     <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']/@ownedRepresentations[name='AD%20diagram']/@filters[name='ModelExtensionFilter']"/>
-    <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@filters[name='hide.pre.post.conditions.filter']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_-HPXEcS5EeCI_NCOxdDk1w"/>
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer"/>
-    <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="LA-Logical%20System-LC2.melodyfragment#04823c08-0017-496c-b5b7-c9eebd887f5d"/>
+    <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="LA-Logical%20System-LC2.capellafragment#04823c08-0017-496c-b5b7-c9eebd887f5d"/>
   </sequence:SequenceDDiagram>
 </xmi:XMI>

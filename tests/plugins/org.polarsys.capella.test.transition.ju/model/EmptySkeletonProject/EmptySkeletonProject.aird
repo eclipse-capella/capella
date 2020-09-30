@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description" uid="_BgOMgMYJEeaR5vPRlt1ZcQ" selectedViews="_Bg2eoMYJEeaR5vPRlt1ZcQ _Brb-AMYJEeaR5vPRlt1ZcQ _BrscsMYJEeaR5vPRlt1ZcQ _BryjUMYJEeaR5vPRlt1ZcQ _BsAlwMYJEeaR5vPRlt1ZcQ _BsJvsMYJEeaR5vPRlt1ZcQ _BsS5oMYJEeaR5vPRlt1ZcQ" version="14.3.0.201908231800">
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description" uid="_BgOMgMYJEeaR5vPRlt1ZcQ" selectedViews="_Bg2eoMYJEeaR5vPRlt1ZcQ _Brb-AMYJEeaR5vPRlt1ZcQ _BrscsMYJEeaR5vPRlt1ZcQ _BryjUMYJEeaR5vPRlt1ZcQ _BsAlwMYJEeaR5vPRlt1ZcQ _BsJvsMYJEeaR5vPRlt1ZcQ _BsS5oMYJEeaR5vPRlt1ZcQ" version="14.3.1.202003261200">
   <semanticResources>EmptySkeletonProject.afm</semanticResources>
-  <semanticResources>EmptySkeletonProject.melodymodeller</semanticResources>
+  <semanticResources>EmptySkeletonProject.capella</semanticResources>
   <ownedViews xmi:type="viewpoint:DView" uid="_Bg2eoMYJEeaR5vPRlt1ZcQ">
     <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']"/>
   </ownedViews>

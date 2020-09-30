@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/1.4.0" xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/1.4.0" xmlns:org.polarsys.capella.core.data.requirement="http://www.polarsys.org/capella/core/requirement/1.4.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:table="http://www.eclipse.org/sirius/table/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/table/description/1.1.0 http://www.eclipse.org/sirius/table/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_ryw-MItJEd-KSuEkfbRUuQ" selectedViews="_sekUQItJEd-KSuEkfbRUuQ _sekUQYtJEd-KSuEkfbRUuQ _sekUQotJEd-KSuEkfbRUuQ _seuFQItJEd-KSuEkfbRUuQ _seuFQYtJEd-KSuEkfbRUuQ _sfKxMItJEd-KSuEkfbRUuQ _iuVEsLCwEeKTarCrFK6Pwg" version="14.3.0.201908231800">
-    <semanticResources>CrossTable-OA.melodymodeller</semanticResources>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/1.4.0" xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/1.4.0" xmlns:org.polarsys.capella.core.data.requirement="http://www.polarsys.org/capella/core/requirement/1.4.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:table="http://www.eclipse.org/sirius/table/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/table/description/1.1.0 http://www.eclipse.org/sirius/table/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
+  <viewpoint:DAnalysis uid="_ryw-MItJEd-KSuEkfbRUuQ" selectedViews="_sekUQItJEd-KSuEkfbRUuQ _sekUQYtJEd-KSuEkfbRUuQ _sekUQotJEd-KSuEkfbRUuQ _seuFQItJEd-KSuEkfbRUuQ _seuFQYtJEd-KSuEkfbRUuQ _sfKxMItJEd-KSuEkfbRUuQ _iuVEsLCwEeKTarCrFK6Pwg" version="14.3.1.202003261200">
+    <semanticResources>CrossTable-OA.capella</semanticResources>
     <semanticResources>CrossTable-OA.afm</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_sekUQItJEd-KSuEkfbRUuQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']"/>
@@ -13,11 +13,11 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="__zBVoPOAEeaZnfll6B5lKw" name="[OAIB] Root Operational Activity - Operational Activity Interaction Blank" repPath="#_f0xWANw5Ed-oVazRqWRNYw">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']"/>
-        <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.melodymodeller#b390e24d-92d8-403d-9c31-372df545dd35"/>
+        <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.capella#b390e24d-92d8-403d-9c31-372df545dd35"/>
       </ownedRepresentationDescriptors>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_GcS3wb26EemtOJ3YBEa-jg" name="New Operational Activities - Requirements" repPath="#_GbZf4L26EemtOJ3YBEa-jg" changeId="89262cc4-60b5-440f-80f4-2978be2c1f4d">
         <description xmi:type="description_2:CrossTableDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activities%20-%20Requirements']"/>
-        <target xmi:type="org.polarsys.capella.core.data.oa:OperationalAnalysis" href="CrossTable-OA.melodymodeller#03308ea5-1659-41ae-ab94-1b0b9c098dc5"/>
+        <target xmi:type="org.polarsys.capella.core.data.oa:OperationalAnalysis" href="CrossTable-OA.capella#03308ea5-1659-41ae-ab94-1b0b9c098dc5"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_seuFQItJEd-KSuEkfbRUuQ">
@@ -222,8 +222,8 @@
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_nOHcAUQyEea5-eTQrKKc-w"/>
     </ownedAnnotationEntries>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_i303UNw5Ed-oVazRqWRNYw" name="Deliver Meteorological Information">
-      <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.melodymodeller#62d5d005-54f0-44a1-bb9b-aabbdf369736"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.melodymodeller#62d5d005-54f0-44a1-bb9b-aabbdf369736"/>
+      <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.capella#62d5d005-54f0-44a1-bb9b-aabbdf369736"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.capella#62d5d005-54f0-44a1-bb9b-aabbdf369736"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -232,8 +232,8 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@containerMappings[name='OAIB%20Operational%20Activity']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_i3-BQNw5Ed-oVazRqWRNYw" name="Build Meteorological Report" outgoingEdges="_Cd8Dw_OBEeaZnfll6B5lKw" incomingEdges="_Cd8DwPOBEeaZnfll6B5lKw">
-        <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.melodymodeller#b5682772-0698-488c-bba3-b10a09f209d2"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.melodymodeller#b5682772-0698-488c-bba3-b10a09f209d2"/>
+        <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.capella#b5682772-0698-488c-bba3-b10a09f209d2"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.capella#b5682772-0698-488c-bba3-b10a09f209d2"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -243,8 +243,8 @@
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@containerMappings[name='OAIB%20Operational%20Activity']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_i3-BRdw5Ed-oVazRqWRNYw" name="Elaborate Current Situation" outgoingEdges="_Ccc2APOBEeaZnfll6B5lKw" incomingEdges="_Cd8DzPOBEeaZnfll6B5lKw">
-        <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.melodymodeller#a4e551ca-1d6d-4cda-ae16-63c1d594103e"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.melodymodeller#a4e551ca-1d6d-4cda-ae16-63c1d594103e"/>
+        <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.capella#a4e551ca-1d6d-4cda-ae16-63c1d594103e"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.capella#a4e551ca-1d6d-4cda-ae16-63c1d594103e"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -254,8 +254,8 @@
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@containerMappings[name='OAIB%20Operational%20Activity']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_i3-BVNw5Ed-oVazRqWRNYw" name="Elaborate Meteorological Forecast" outgoingEdges="_Cd8DwPOBEeaZnfll6B5lKw" incomingEdges="_Ccc2APOBEeaZnfll6B5lKw">
-        <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.melodymodeller#c1c8004e-98d6-4adf-8fa6-e66df914d735"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.melodymodeller#c1c8004e-98d6-4adf-8fa6-e66df914d735"/>
+        <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.capella#c1c8004e-98d6-4adf-8fa6-e66df914d735"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.capella#c1c8004e-98d6-4adf-8fa6-e66df914d735"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -265,8 +265,8 @@
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@containerMappings[name='OAIB%20Operational%20Activity']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_i4HyQNw5Ed-oVazRqWRNYw" name="Publish Meteorological Report" outgoingEdges="_Cd8DxvOBEeaZnfll6B5lKw" incomingEdges="_Cd8Dw_OBEeaZnfll6B5lKw">
-        <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.melodymodeller#d0fcd409-2f60-4409-9ead-907d905098fb"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.melodymodeller#d0fcd409-2f60-4409-9ead-907d905098fb"/>
+        <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.capella#d0fcd409-2f60-4409-9ead-907d905098fb"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.capella#d0fcd409-2f60-4409-9ead-907d905098fb"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -277,8 +277,8 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_i3-BStw5Ed-oVazRqWRNYw" name="Make Meteorological Data Evolve" outgoingEdges="_Cd8DyfOBEeaZnfll6B5lKw">
-      <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.melodymodeller#7a12df46-8c90-444f-bb18-53b719912386"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.melodymodeller#7a12df46-8c90-444f-bb18-53b719912386"/>
+      <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.capella#7a12df46-8c90-444f-bb18-53b719912386"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.capella#7a12df46-8c90-444f-bb18-53b719912386"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -297,8 +297,8 @@
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@containerMappings[name='OAIB%20Operational%20Activity']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_i3-BT9w5Ed-oVazRqWRNYw" name="Capture Meteorological Data" outgoingEdges="_Cd8DzPOBEeaZnfll6B5lKw" incomingEdges="_Cd8DyfOBEeaZnfll6B5lKw">
-      <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.melodymodeller#e40d356a-7f66-4ef4-b6ab-bf90529dfe04"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.melodymodeller#e40d356a-7f66-4ef4-b6ab-bf90529dfe04"/>
+      <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.capella#e40d356a-7f66-4ef4-b6ab-bf90529dfe04"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.capella#e40d356a-7f66-4ef4-b6ab-bf90529dfe04"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -308,8 +308,8 @@
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@containerMappings[name='OAIB%20Operational%20Activity']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_i4HyRdw5Ed-oVazRqWRNYw" name="Access Meteorological Report" incomingEdges="_Cd8DxvOBEeaZnfll6B5lKw">
-      <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.melodymodeller#b8881ae7-95fa-4762-b607-6e5bf330d4c8"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.melodymodeller#b8881ae7-95fa-4762-b607-6e5bf330d4c8"/>
+      <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.capella#b8881ae7-95fa-4762-b607-6e5bf330d4c8"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.capella#b8881ae7-95fa-4762-b607-6e5bf330d4c8"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -328,8 +328,8 @@
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@containerMappings[name='OAIB%20Operational%20Activity']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_kL3SENw5Ed-oVazRqWRNYw" name="Main OperationalProcess" tooltipText="" width="2" height="2" resizeKind="NSEW">
-      <target xmi:type="org.polarsys.capella.core.data.oa:OperationalProcess" href="CrossTable-OA.melodymodeller#1addf844-e1c2-4f51-b8cc-04520138f6d8"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalProcess" href="CrossTable-OA.melodymodeller#1addf844-e1c2-4f51-b8cc-04520138f6d8"/>
+      <target xmi:type="org.polarsys.capella.core.data.oa:OperationalProcess" href="CrossTable-OA.capella#1addf844-e1c2-4f51-b8cc-04520138f6d8"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalProcess" href="CrossTable-OA.capella#1addf844-e1c2-4f51-b8cc-04520138f6d8"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -347,8 +347,8 @@
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@nodeMappings[name='OAIB_OperationalProcessEnd']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_Ccc2APOBEeaZnfll6B5lKw" name="Current Situation" sourceNode="_i3-BRdw5Ed-oVazRqWRNYw" targetNode="_i3-BVNw5Ed-oVazRqWRNYw">
-      <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="CrossTable-OA.melodymodeller#9942ddc5-331b-47cd-acbe-e9c09bbfa10b"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="CrossTable-OA.melodymodeller#9942ddc5-331b-47cd-acbe-e9c09bbfa10b"/>
+      <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="CrossTable-OA.capella#9942ddc5-331b-47cd-acbe-e9c09bbfa10b"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="CrossTable-OA.capella#9942ddc5-331b-47cd-acbe-e9c09bbfa10b"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_Ccvw8POBEeaZnfll6B5lKw" size="4" strokeColor="24,114,248">
         <customFeatures>strokeColor</customFeatures>
         <customFeatures>size</customFeatures>
@@ -363,8 +363,8 @@
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@edgeMappings[name='OAIB%20Interaction']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_Cd8DwPOBEeaZnfll6B5lKw" name="Situation &amp; Trends" sourceNode="_i3-BVNw5Ed-oVazRqWRNYw" targetNode="_i3-BQNw5Ed-oVazRqWRNYw">
-      <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="CrossTable-OA.melodymodeller#8cc66d98-f477-4f46-877f-6466b0e4f61a"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="CrossTable-OA.melodymodeller#8cc66d98-f477-4f46-877f-6466b0e4f61a"/>
+      <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="CrossTable-OA.capella#8cc66d98-f477-4f46-877f-6466b0e4f61a"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="CrossTable-OA.capella#8cc66d98-f477-4f46-877f-6466b0e4f61a"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_Cd8DwfOBEeaZnfll6B5lKw" size="4" strokeColor="24,114,248">
         <customFeatures>strokeColor</customFeatures>
         <customFeatures>size</customFeatures>
@@ -379,8 +379,8 @@
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@edgeMappings[name='OAIB%20Interaction']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_Cd8Dw_OBEeaZnfll6B5lKw" name="Raw Reports" sourceNode="_i3-BQNw5Ed-oVazRqWRNYw" targetNode="_i4HyQNw5Ed-oVazRqWRNYw">
-      <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="CrossTable-OA.melodymodeller#bfa7af02-0864-49d9-8567-3fafac0c3309"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="CrossTable-OA.melodymodeller#bfa7af02-0864-49d9-8567-3fafac0c3309"/>
+      <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="CrossTable-OA.capella#bfa7af02-0864-49d9-8567-3fafac0c3309"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="CrossTable-OA.capella#bfa7af02-0864-49d9-8567-3fafac0c3309"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_Cd8DxPOBEeaZnfll6B5lKw" size="4" strokeColor="24,114,248">
         <customFeatures>strokeColor</customFeatures>
         <customFeatures>size</customFeatures>
@@ -395,8 +395,8 @@
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@edgeMappings[name='OAIB%20Interaction']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_Cd8DxvOBEeaZnfll6B5lKw" name="Meteorological Report" sourceNode="_i4HyQNw5Ed-oVazRqWRNYw" targetNode="_i4HyRdw5Ed-oVazRqWRNYw">
-      <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="CrossTable-OA.melodymodeller#4781b400-66f4-4ca3-b523-b9eef6a2d9c4"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="CrossTable-OA.melodymodeller#4781b400-66f4-4ca3-b523-b9eef6a2d9c4"/>
+      <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="CrossTable-OA.capella#4781b400-66f4-4ca3-b523-b9eef6a2d9c4"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="CrossTable-OA.capella#4781b400-66f4-4ca3-b523-b9eef6a2d9c4"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_Cd8Dx_OBEeaZnfll6B5lKw" size="4" strokeColor="24,114,248">
         <customFeatures>strokeColor</customFeatures>
         <customFeatures>size</customFeatures>
@@ -411,8 +411,8 @@
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@edgeMappings[name='OAIB%20Interaction']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_Cd8DyfOBEeaZnfll6B5lKw" name="Raw Meteorological Data" sourceNode="_i3-BStw5Ed-oVazRqWRNYw" targetNode="_i3-BT9w5Ed-oVazRqWRNYw">
-      <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="CrossTable-OA.melodymodeller#3b91f28b-3d2e-496f-b2e8-b55e2860dac5"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="CrossTable-OA.melodymodeller#3b91f28b-3d2e-496f-b2e8-b55e2860dac5"/>
+      <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="CrossTable-OA.capella#3b91f28b-3d2e-496f-b2e8-b55e2860dac5"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="CrossTable-OA.capella#3b91f28b-3d2e-496f-b2e8-b55e2860dac5"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_Cd8DyvOBEeaZnfll6B5lKw" size="4" strokeColor="24,114,248">
         <customFeatures>strokeColor</customFeatures>
         <customFeatures>size</customFeatures>
@@ -427,8 +427,8 @@
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@edgeMappings[name='OAIB%20Interaction']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_Cd8DzPOBEeaZnfll6B5lKw" name="Meteorological Data" sourceNode="_i3-BT9w5Ed-oVazRqWRNYw" targetNode="_i3-BRdw5Ed-oVazRqWRNYw">
-      <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="CrossTable-OA.melodymodeller#a678397e-ba48-493a-aa94-6c43b86034b5"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="CrossTable-OA.melodymodeller#a678397e-ba48-493a-aa94-6c43b86034b5"/>
+      <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="CrossTable-OA.capella#a678397e-ba48-493a-aa94-6c43b86034b5"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="CrossTable-OA.capella#a678397e-ba48-493a-aa94-6c43b86034b5"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_Cd8DzfOBEeaZnfll6B5lKw" size="4" strokeColor="24,114,248">
         <customFeatures>strokeColor</customFeatures>
         <customFeatures>size</customFeatures>
@@ -446,83 +446,83 @@
     <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']/@ownedRepresentations[name='AD%20diagram']/@filters[name='ModelExtensionFilter']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_f0xWAdw5Ed-oVazRqWRNYw"/>
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer"/>
-    <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.melodymodeller#b390e24d-92d8-403d-9c31-372df545dd35"/>
+    <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.capella#b390e24d-92d8-403d-9c31-372df545dd35"/>
   </diagram:DSemanticDiagram>
   <table:DTable uid="_GbZf4L26EemtOJ3YBEa-jg" headerColumnWidth="237">
-    <target xmi:type="org.polarsys.capella.core.data.oa:OperationalAnalysis" href="CrossTable-OA.melodymodeller#03308ea5-1659-41ae-ab94-1b0b9c098dc5"/>
+    <target xmi:type="org.polarsys.capella.core.data.oa:OperationalAnalysis" href="CrossTable-OA.capella#03308ea5-1659-41ae-ab94-1b0b9c098dc5"/>
     <lines xmi:type="table:DLine" uid="_GbjQ4L26EemtOJ3YBEa-jg" label="Deliver Meteorological Information">
-      <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.melodymodeller#62d5d005-54f0-44a1-bb9b-aabbdf369736"/>
+      <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.capella#62d5d005-54f0-44a1-bb9b-aabbdf369736"/>
       <lines xmi:type="table:DLine" uid="_Gbsa0L26EemtOJ3YBEa-jg" label="Publish Meteorological Report">
-        <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.melodymodeller#d0fcd409-2f60-4409-9ead-907d905098fb"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.melodymodeller#d0fcd409-2f60-4409-9ead-907d905098fb"/>
+        <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.capella#d0fcd409-2f60-4409-9ead-907d905098fb"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.capella#d0fcd409-2f60-4409-9ead-907d905098fb"/>
         <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activities%20-%20Requirements']/@ownedLineMappings[name='Operational%20Activity']/@ownedSubLines[name='Sub%20Operational%20Activity']"/>
       </lines>
       <lines xmi:type="table:DLine" uid="_Gbsa0r26EemtOJ3YBEa-jg" label="Build Meteorological Report">
-        <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.melodymodeller#b5682772-0698-488c-bba3-b10a09f209d2"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.melodymodeller#b5682772-0698-488c-bba3-b10a09f209d2"/>
+        <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.capella#b5682772-0698-488c-bba3-b10a09f209d2"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.capella#b5682772-0698-488c-bba3-b10a09f209d2"/>
         <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activities%20-%20Requirements']/@ownedLineMappings[name='Operational%20Activity']/@ownedSubLines[name='Sub%20Operational%20Activity']"/>
       </lines>
       <lines xmi:type="table:DLine" uid="_Gbsa1L26EemtOJ3YBEa-jg" label="Elaborate Meteorological Forecast">
-        <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.melodymodeller#c1c8004e-98d6-4adf-8fa6-e66df914d735"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.melodymodeller#c1c8004e-98d6-4adf-8fa6-e66df914d735"/>
+        <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.capella#c1c8004e-98d6-4adf-8fa6-e66df914d735"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.capella#c1c8004e-98d6-4adf-8fa6-e66df914d735"/>
         <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activities%20-%20Requirements']/@ownedLineMappings[name='Operational%20Activity']/@ownedSubLines[name='Sub%20Operational%20Activity']"/>
       </lines>
       <lines xmi:type="table:DLine" uid="_Gbsa1r26EemtOJ3YBEa-jg" label="Elaborate Current Situation">
-        <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.melodymodeller#a4e551ca-1d6d-4cda-ae16-63c1d594103e"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.melodymodeller#a4e551ca-1d6d-4cda-ae16-63c1d594103e"/>
+        <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.capella#a4e551ca-1d6d-4cda-ae16-63c1d594103e"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.capella#a4e551ca-1d6d-4cda-ae16-63c1d594103e"/>
         <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activities%20-%20Requirements']/@ownedLineMappings[name='Operational%20Activity']/@ownedSubLines[name='Sub%20Operational%20Activity']"/>
       </lines>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.melodymodeller#62d5d005-54f0-44a1-bb9b-aabbdf369736"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.capella#62d5d005-54f0-44a1-bb9b-aabbdf369736"/>
       <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activities%20-%20Requirements']/@ownedLineMappings[name='Operational%20Activity']"/>
     </lines>
     <lines xmi:type="table:DLine" uid="_GbjQ4r26EemtOJ3YBEa-jg" label="Access Meteorological Report">
-      <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.melodymodeller#b8881ae7-95fa-4762-b607-6e5bf330d4c8"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.melodymodeller#b8881ae7-95fa-4762-b607-6e5bf330d4c8"/>
+      <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.capella#b8881ae7-95fa-4762-b607-6e5bf330d4c8"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.capella#b8881ae7-95fa-4762-b607-6e5bf330d4c8"/>
       <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activities%20-%20Requirements']/@ownedLineMappings[name='Operational%20Activity']"/>
     </lines>
     <lines xmi:type="table:DLine" uid="_GbjQ5L26EemtOJ3YBEa-jg" label="Make Meteorological Data Evolve">
-      <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.melodymodeller#7a12df46-8c90-444f-bb18-53b719912386"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.melodymodeller#7a12df46-8c90-444f-bb18-53b719912386"/>
+      <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.capella#7a12df46-8c90-444f-bb18-53b719912386"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.capella#7a12df46-8c90-444f-bb18-53b719912386"/>
       <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activities%20-%20Requirements']/@ownedLineMappings[name='Operational%20Activity']"/>
     </lines>
     <lines xmi:type="table:DLine" uid="_GbjQ5r26EemtOJ3YBEa-jg" label="Capture Meteorological Data">
-      <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.melodymodeller#e40d356a-7f66-4ef4-b6ab-bf90529dfe04"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.melodymodeller#e40d356a-7f66-4ef4-b6ab-bf90529dfe04"/>
+      <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.capella#e40d356a-7f66-4ef4-b6ab-bf90529dfe04"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CrossTable-OA.capella#e40d356a-7f66-4ef4-b6ab-bf90529dfe04"/>
       <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activities%20-%20Requirements']/@ownedLineMappings[name='Operational%20Activity']"/>
     </lines>
     <columns xmi:type="table:DTargetColumn" uid="_Gb_80L26EemtOJ3YBEa-jg" label="Capture Meteorological Data" width="195">
-      <target xmi:type="org.polarsys.capella.core.data.requirement:SystemFunctionalRequirement" href="CrossTable-OA.melodymodeller#0e75b6fb-dbc6-4d4b-a91d-57e344116276"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.requirement:SystemFunctionalRequirement" href="CrossTable-OA.melodymodeller#0e75b6fb-dbc6-4d4b-a91d-57e344116276"/>
+      <target xmi:type="org.polarsys.capella.core.data.requirement:SystemFunctionalRequirement" href="CrossTable-OA.capella#0e75b6fb-dbc6-4d4b-a91d-57e344116276"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.requirement:SystemFunctionalRequirement" href="CrossTable-OA.capella#0e75b6fb-dbc6-4d4b-a91d-57e344116276"/>
       <originMapping xmi:type="description_2:ElementColumnMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activities%20-%20Requirements']/@ownedColumnMappings.0"/>
     </columns>
     <columns xmi:type="table:DTargetColumn" uid="_Gb_80r26EemtOJ3YBEa-jg" label="Access Meteorological Report" width="200">
-      <target xmi:type="org.polarsys.capella.core.data.requirement:SystemUserRequirement" href="CrossTable-OA.melodymodeller#ae23499e-23f7-417e-96f6-b50b0674729b"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.requirement:SystemUserRequirement" href="CrossTable-OA.melodymodeller#ae23499e-23f7-417e-96f6-b50b0674729b"/>
+      <target xmi:type="org.polarsys.capella.core.data.requirement:SystemUserRequirement" href="CrossTable-OA.capella#ae23499e-23f7-417e-96f6-b50b0674729b"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.requirement:SystemUserRequirement" href="CrossTable-OA.capella#ae23499e-23f7-417e-96f6-b50b0674729b"/>
       <originMapping xmi:type="description_2:ElementColumnMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activities%20-%20Requirements']/@ownedColumnMappings.0"/>
     </columns>
     <columns xmi:type="table:DTargetColumn" uid="_Gb_81L26EemtOJ3YBEa-jg" label="Elaborate Current Situation" width="185">
-      <target xmi:type="org.polarsys.capella.core.data.requirement:SystemFunctionalRequirement" href="CrossTable-OA.melodymodeller#b36524a8-16e7-49a6-b9ce-72feed229fe2"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.requirement:SystemFunctionalRequirement" href="CrossTable-OA.melodymodeller#b36524a8-16e7-49a6-b9ce-72feed229fe2"/>
+      <target xmi:type="org.polarsys.capella.core.data.requirement:SystemFunctionalRequirement" href="CrossTable-OA.capella#b36524a8-16e7-49a6-b9ce-72feed229fe2"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.requirement:SystemFunctionalRequirement" href="CrossTable-OA.capella#b36524a8-16e7-49a6-b9ce-72feed229fe2"/>
       <originMapping xmi:type="description_2:ElementColumnMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activities%20-%20Requirements']/@ownedColumnMappings.0"/>
     </columns>
     <columns xmi:type="table:DTargetColumn" uid="_Gb_81r26EemtOJ3YBEa-jg" label="Elaborate Meteorological Forecast" width="222">
-      <target xmi:type="org.polarsys.capella.core.data.requirement:SystemFunctionalRequirement" href="CrossTable-OA.melodymodeller#bde8a3ea-2879-46b1-870b-05437d6e3d07"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.requirement:SystemFunctionalRequirement" href="CrossTable-OA.melodymodeller#bde8a3ea-2879-46b1-870b-05437d6e3d07"/>
+      <target xmi:type="org.polarsys.capella.core.data.requirement:SystemFunctionalRequirement" href="CrossTable-OA.capella#bde8a3ea-2879-46b1-870b-05437d6e3d07"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.requirement:SystemFunctionalRequirement" href="CrossTable-OA.capella#bde8a3ea-2879-46b1-870b-05437d6e3d07"/>
       <originMapping xmi:type="description_2:ElementColumnMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activities%20-%20Requirements']/@ownedColumnMappings.0"/>
     </columns>
     <columns xmi:type="table:DTargetColumn" uid="_GcJGwL26EemtOJ3YBEa-jg" label="Build Meteorological Report" width="191">
-      <target xmi:type="org.polarsys.capella.core.data.requirement:SystemFunctionalRequirement" href="CrossTable-OA.melodymodeller#22866ea7-6aeb-46cf-8c41-2991dae9dcc2"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.requirement:SystemFunctionalRequirement" href="CrossTable-OA.melodymodeller#22866ea7-6aeb-46cf-8c41-2991dae9dcc2"/>
+      <target xmi:type="org.polarsys.capella.core.data.requirement:SystemFunctionalRequirement" href="CrossTable-OA.capella#22866ea7-6aeb-46cf-8c41-2991dae9dcc2"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.requirement:SystemFunctionalRequirement" href="CrossTable-OA.capella#22866ea7-6aeb-46cf-8c41-2991dae9dcc2"/>
       <originMapping xmi:type="description_2:ElementColumnMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activities%20-%20Requirements']/@ownedColumnMappings.0"/>
     </columns>
     <columns xmi:type="table:DTargetColumn" uid="_GcJGwr26EemtOJ3YBEa-jg" label="Publish Meteorological Report" width="203">
-      <target xmi:type="org.polarsys.capella.core.data.requirement:SystemFunctionalRequirement" href="CrossTable-OA.melodymodeller#871f791b-c246-44bf-8e27-787cb6acc74f"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.requirement:SystemFunctionalRequirement" href="CrossTable-OA.melodymodeller#871f791b-c246-44bf-8e27-787cb6acc74f"/>
+      <target xmi:type="org.polarsys.capella.core.data.requirement:SystemFunctionalRequirement" href="CrossTable-OA.capella#871f791b-c246-44bf-8e27-787cb6acc74f"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.requirement:SystemFunctionalRequirement" href="CrossTable-OA.capella#871f791b-c246-44bf-8e27-787cb6acc74f"/>
       <originMapping xmi:type="description_2:ElementColumnMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activities%20-%20Requirements']/@ownedColumnMappings.0"/>
     </columns>
     <columns xmi:type="table:DTargetColumn" uid="_GcJGxL26EemtOJ3YBEa-jg" label="Make Meteorological Data Evolve" width="219">
-      <target xmi:type="org.polarsys.capella.core.data.requirement:SystemNonFunctionalRequirement" href="CrossTable-OA.melodymodeller#d58542df-d56e-4cbc-97e8-f9900bd9c0e3"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.requirement:SystemNonFunctionalRequirement" href="CrossTable-OA.melodymodeller#d58542df-d56e-4cbc-97e8-f9900bd9c0e3"/>
+      <target xmi:type="org.polarsys.capella.core.data.requirement:SystemNonFunctionalRequirement" href="CrossTable-OA.capella#d58542df-d56e-4cbc-97e8-f9900bd9c0e3"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.requirement:SystemNonFunctionalRequirement" href="CrossTable-OA.capella#d58542df-d56e-4cbc-97e8-f9900bd9c0e3"/>
       <originMapping xmi:type="description_2:ElementColumnMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activities%20-%20Requirements']/@ownedColumnMappings.0"/>
     </columns>
     <description xmi:type="description_2:CrossTableDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activities%20-%20Requirements']"/>

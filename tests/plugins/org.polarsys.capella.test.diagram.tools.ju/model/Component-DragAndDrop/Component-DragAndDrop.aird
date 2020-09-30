@@ -2,7 +2,7 @@
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:concern="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/1.4.0" xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/1.4.0" xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/1.4.0" xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/1.4.0" xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/1.4.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/concern http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
   <viewpoint:DAnalysis uid="_HsjoAObfEeqg-uUChMfc-w" selectedViews="_Htc_4ObfEeqg-uUChMfc-w _HupSsObfEeqg-uUChMfc-w _H5X8AObfEeqg-uUChMfc-w _H7KEsObfEeqg-uUChMfc-w _H9PvYObfEeqg-uUChMfc-w _H9PvYebfEeqg-uUChMfc-w _H-u9IObfEeqg-uUChMfc-w" version="14.3.1.202003261200">
     <semanticResources>Component-DragAndDrop.afm</semanticResources>
-    <semanticResources>Component-DragAndDrop.melodymodeller</semanticResources>
+    <semanticResources>Component-DragAndDrop.capella</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_Htc_4ObfEeqg-uUChMfc-w">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']"/>
     </ownedViews>
@@ -14,18 +14,18 @@
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_JuBel-bhEeqg-uUChMfc-w" key="hide.computed.physical.links.filter" value="true"/>
         </eAnnotations>
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']"/>
-        <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponentPkg" href="Component-DragAndDrop.melodymodeller#4a9299a2-e7d2-44e5-8d43-177d6799a5f8"/>
+        <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponentPkg" href="Component-DragAndDrop.capella#4a9299a2-e7d2-44e5-8d43-177d6799a5f8"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_H5X8AObfEeqg-uUChMfc-w">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_jiP8gubfEeqg-uUChMfc-w" name="[OAB] Operational Entities" repPath="#_jiGLgObfEeqg-uUChMfc-w" changeId="f4694f4a-0e4a-4a4d-8bcf-4c14fc3cbda8">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']"/>
-        <target xmi:type="org.polarsys.capella.core.data.oa:EntityPkg" href="Component-DragAndDrop.melodymodeller#7d1d584a-73cb-4914-aee8-7a83c0a3578b"/>
+        <target xmi:type="org.polarsys.capella.core.data.oa:EntityPkg" href="Component-DragAndDrop.capella#7d1d584a-73cb-4914-aee8-7a83c0a3578b"/>
       </ownedRepresentationDescriptors>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_rHSbQebfEeqg-uUChMfc-w" name="[OAB] OE 2" repPath="#_rHJRUObfEeqg-uUChMfc-w" changeId="2f7feff6-2300-4407-82ec-748a138f9a4f">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']"/>
-        <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="Component-DragAndDrop.melodymodeller#0731f364-1d25-44b6-a19b-e0ea305c7332"/>
+        <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="Component-DragAndDrop.capella#0731f364-1d25-44b6-a19b-e0ea305c7332"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_H7KEsObfEeqg-uUChMfc-w">
@@ -36,7 +36,7 @@
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_wrOIeebgEeqg-uUChMfc-w" key="hide.computed.physical.links.filter" value="true"/>
         </eAnnotations>
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']"/>
-        <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponentPkg" href="Component-DragAndDrop.melodymodeller#010531e6-2706-4d75-a8b3-8950aa0b2e0e"/>
+        <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponentPkg" href="Component-DragAndDrop.capella#010531e6-2706-4d75-a8b3-8950aa0b2e0e"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_H9PvYObfEeqg-uUChMfc-w">
@@ -49,23 +49,23 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_ERZTQ-bgEeqg-uUChMfc-w" name="[IDB] Structure" repPath="#_ERZTQObgEeqg-uUChMfc-w" changeId="c38f50f2-4576-48c0-9b2b-369e92ba5577">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']"/>
-        <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponentPkg" href="Component-DragAndDrop.melodymodeller#ef28c732-c08a-4a27-a6cc-25427f5318b4"/>
+        <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponentPkg" href="Component-DragAndDrop.capella#ef28c732-c08a-4a27-a6cc-25427f5318b4"/>
       </ownedRepresentationDescriptors>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_j9vwQ-bgEeqg-uUChMfc-w" name="[IDB] SA 1" repPath="#_j9vwQObgEeqg-uUChMfc-w" changeId="c2b54987-52f7-4dd9-9056-31087d5eaf85">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']"/>
-        <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="Component-DragAndDrop.melodymodeller#4a993ca2-d877-4191-9e89-8db11b44700c"/>
+        <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="Component-DragAndDrop.capella#4a993ca2-d877-4191-9e89-8db11b44700c"/>
       </ownedRepresentationDescriptors>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_5bg5YebgEeqg-uUChMfc-w" name="[IDB] LogicalComponentPkg 1" repPath="#_5bXIYObgEeqg-uUChMfc-w" changeId="a3931c0c-2a00-4b96-9ca0-905569a86ed4">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']"/>
-        <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponentPkg" href="Component-DragAndDrop.melodymodeller#010531e6-2706-4d75-a8b3-8950aa0b2e0e"/>
+        <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponentPkg" href="Component-DragAndDrop.capella#010531e6-2706-4d75-a8b3-8950aa0b2e0e"/>
       </ownedRepresentationDescriptors>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_ZyuJ4ebkEeqg-uUChMfc-w" name="[IDB] PhysicalComponentPkg 1" repPath="#_Zyk_8ObkEeqg-uUChMfc-w" changeId="197bddf1-9d8c-4acc-99b7-5eb928cef1b5">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']"/>
-        <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponentPkg" href="Component-DragAndDrop.melodymodeller#4a9299a2-e7d2-44e5-8d43-177d6799a5f8"/>
+        <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponentPkg" href="Component-DragAndDrop.capella#4a9299a2-e7d2-44e5-8d43-177d6799a5f8"/>
       </ownedRepresentationDescriptors>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_oq7UQ-bkEeqg-uUChMfc-w" name="[IDB] Physical System" repPath="#_oq7UQObkEeqg-uUChMfc-w" changeId="66257dc5-5ac8-4012-8795-8bfcb4262d77">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']"/>
-        <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#d20e6507-8f39-4c75-ad92-f2c2084a861b"/>
+        <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#d20e6507-8f39-4c75-ad92-f2c2084a861b"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
   </viewpoint:DAnalysis>
@@ -97,15 +97,15 @@
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_ji1yYebfEeqg-uUChMfc-w"/>
     </ownedAnnotationEntries>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_kpn0QObfEeqg-uUChMfc-w" name="A">
-      <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="Component-DragAndDrop.melodymodeller#48524113-e6cd-425f-9e78-874c4656e42c"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:Entity" href="Component-DragAndDrop.melodymodeller#48524113-e6cd-425f-9e78-874c4656e42c"/>
+      <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="Component-DragAndDrop.capella#48524113-e6cd-425f-9e78-874c4656e42c"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:Entity" href="Component-DragAndDrop.capella#48524113-e6cd-425f-9e78-874c4656e42c"/>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_kpn0QebfEeqg-uUChMfc-w" borderSize="1" borderSizeComputationExpression="1" borderColor="69,69,69" backgroundStyle="GradientTopToBottom" backgroundColor="249,248,245" foregroundColor="221,221,200">
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_k-788ObfEeqg-uUChMfc-w" name="B">
-        <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="Component-DragAndDrop.melodymodeller#4cd64099-971e-44c6-8df5-29a5d9ce727f"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.oa:Entity" href="Component-DragAndDrop.melodymodeller#4cd64099-971e-44c6-8df5-29a5d9ce727f"/>
+        <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="Component-DragAndDrop.capella#4cd64099-971e-44c6-8df5-29a5d9ce727f"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.oa:Entity" href="Component-DragAndDrop.capella#4cd64099-971e-44c6-8df5-29a5d9ce727f"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_k-788ebfEeqg-uUChMfc-w" borderSize="1" borderSizeComputationExpression="1" borderColor="69,69,69" backgroundStyle="GradientTopToBottom" backgroundColor="249,248,245" foregroundColor="221,221,200">
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']/@style"/>
         </ownedStyle>
@@ -118,7 +118,7 @@
     <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']/@ownedRepresentations[name='AD%20diagram']/@filters[name='ModelExtensionFilter']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_jiP8gObfEeqg-uUChMfc-w"/>
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer"/>
-    <target xmi:type="org.polarsys.capella.core.data.oa:EntityPkg" href="Component-DragAndDrop.melodymodeller#7d1d584a-73cb-4914-aee8-7a83c0a3578b"/>
+    <target xmi:type="org.polarsys.capella.core.data.oa:EntityPkg" href="Component-DragAndDrop.capella#7d1d584a-73cb-4914-aee8-7a83c0a3578b"/>
   </diagram:DSemanticDiagram>
   <diagram:DSemanticDiagram uid="_rHJRUObfEeqg-uUChMfc-w">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_rHSbQubfEeqg-uUChMfc-w" source="GMF_DIAGRAMS">
@@ -148,8 +148,8 @@
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_rHcMQebfEeqg-uUChMfc-w"/>
     </ownedAnnotationEntries>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_raXIQObfEeqg-uUChMfc-w" name="OE 1">
-      <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="Component-DragAndDrop.melodymodeller#0bb3cda0-7ece-43dd-a90b-d0728689ea1d"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:Entity" href="Component-DragAndDrop.melodymodeller#0bb3cda0-7ece-43dd-a90b-d0728689ea1d"/>
+      <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="Component-DragAndDrop.capella#0bb3cda0-7ece-43dd-a90b-d0728689ea1d"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:Entity" href="Component-DragAndDrop.capella#0bb3cda0-7ece-43dd-a90b-d0728689ea1d"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -158,8 +158,8 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_rl_JcObfEeqg-uUChMfc-w" name="OE 1">
-        <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="Component-DragAndDrop.melodymodeller#9aa28f89-c070-42c7-8a1e-8d1bbc1ded77"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.oa:Entity" href="Component-DragAndDrop.melodymodeller#9aa28f89-c070-42c7-8a1e-8d1bbc1ded77"/>
+        <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="Component-DragAndDrop.capella#9aa28f89-c070-42c7-8a1e-8d1bbc1ded77"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.oa:Entity" href="Component-DragAndDrop.capella#9aa28f89-c070-42c7-8a1e-8d1bbc1ded77"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_rl_JcebfEeqg-uUChMfc-w" borderSize="1" borderSizeComputationExpression="1" borderColor="69,69,69" backgroundStyle="GradientTopToBottom" backgroundColor="249,248,245" foregroundColor="221,221,200">
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']/@style"/>
         </ownedStyle>
@@ -172,7 +172,7 @@
     <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']/@ownedRepresentations[name='AD%20diagram']/@filters[name='ModelExtensionFilter']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_rHJRUebfEeqg-uUChMfc-w"/>
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer"/>
-    <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="Component-DragAndDrop.melodymodeller#0731f364-1d25-44b6-a19b-e0ea305c7332"/>
+    <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="Component-DragAndDrop.capella#0731f364-1d25-44b6-a19b-e0ea305c7332"/>
   </diagram:DSemanticDiagram>
   <diagram:DSemanticDiagram uid="_ERZTQObgEeqg-uUChMfc-w">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_ERZTRObgEeqg-uUChMfc-w" source="GMF_DIAGRAMS">
@@ -224,8 +224,8 @@
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_ERsOMebgEeqg-uUChMfc-w"/>
     </ownedAnnotationEntries>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_E9NQYObgEeqg-uUChMfc-w" name="SA 3">
-      <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="Component-DragAndDrop.melodymodeller#f2f0a681-513d-439a-9a67-106b304bc94c"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="Component-DragAndDrop.melodymodeller#f2f0a681-513d-439a-9a67-106b304bc94c"/>
+      <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="Component-DragAndDrop.capella#f2f0a681-513d-439a-9a67-106b304bc94c"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="Component-DragAndDrop.capella#f2f0a681-513d-439a-9a67-106b304bc94c"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
@@ -234,8 +234,8 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Component']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_FwBNYObgEeqg-uUChMfc-w" name="SA 1">
-        <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="Component-DragAndDrop.melodymodeller#4a993ca2-d877-4191-9e89-8db11b44700c"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="Component-DragAndDrop.melodymodeller#4a993ca2-d877-4191-9e89-8db11b44700c"/>
+        <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="Component-DragAndDrop.capella#4a993ca2-d877-4191-9e89-8db11b44700c"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="Component-DragAndDrop.capella#4a993ca2-d877-4191-9e89-8db11b44700c"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
@@ -253,7 +253,7 @@
     <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']/@ownedRepresentations[name='AD%20diagram']/@filters[name='ModelExtensionFilter']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_ERZTQebgEeqg-uUChMfc-w"/>
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer"/>
-    <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponentPkg" href="Component-DragAndDrop.melodymodeller#ef28c732-c08a-4a27-a6cc-25427f5318b4"/>
+    <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponentPkg" href="Component-DragAndDrop.capella#ef28c732-c08a-4a27-a6cc-25427f5318b4"/>
   </diagram:DSemanticDiagram>
   <diagram:DSemanticDiagram uid="_j9vwQObgEeqg-uUChMfc-w">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_j9vwRObgEeqg-uUChMfc-w" source="GMF_DIAGRAMS">
@@ -298,8 +298,8 @@
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_j9vwSObgEeqg-uUChMfc-w"/>
     </ownedAnnotationEntries>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_kHb3wObgEeqg-uUChMfc-w" name="SA 4">
-      <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="Component-DragAndDrop.melodymodeller#d29bc31a-e310-473f-862a-7b057f6d1dca"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="Component-DragAndDrop.melodymodeller#d29bc31a-e310-473f-862a-7b057f6d1dca"/>
+      <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="Component-DragAndDrop.capella#d29bc31a-e310-473f-862a-7b057f6d1dca"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="Component-DragAndDrop.capella#d29bc31a-e310-473f-862a-7b057f6d1dca"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
@@ -308,8 +308,8 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Component']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_kTy4wObgEeqg-uUChMfc-w" name="SA 1">
-        <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="Component-DragAndDrop.melodymodeller#a7e3dd8e-3612-4a24-8e61-54f56940ceb0"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="Component-DragAndDrop.melodymodeller#a7e3dd8e-3612-4a24-8e61-54f56940ceb0"/>
+        <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="Component-DragAndDrop.capella#a7e3dd8e-3612-4a24-8e61-54f56940ceb0"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="Component-DragAndDrop.capella#a7e3dd8e-3612-4a24-8e61-54f56940ceb0"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
@@ -327,7 +327,7 @@
     <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']/@ownedRepresentations[name='AD%20diagram']/@filters[name='ModelExtensionFilter']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_j9vwQebgEeqg-uUChMfc-w"/>
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer"/>
-    <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="Component-DragAndDrop.melodymodeller#4a993ca2-d877-4191-9e89-8db11b44700c"/>
+    <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="Component-DragAndDrop.capella#4a993ca2-d877-4191-9e89-8db11b44700c"/>
   </diagram:DSemanticDiagram>
   <diagram:DSemanticDiagram uid="_wrOIcObgEeqg-uUChMfc-w">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_wrOIdObgEeqg-uUChMfc-w" source="GMF_DIAGRAMS">
@@ -411,9 +411,9 @@
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_wrXSYebgEeqg-uUChMfc-w"/>
     </ownedAnnotationEntries>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_CwpDMOeFEeqqgri4Jn-KvA" name="LA VALID TARGET 2">
-      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#8e041517-8e0f-4398-907e-e886913b87d6"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#8e041517-8e0f-4398-907e-e886913b87d6"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Component-DragAndDrop.melodymodeller#602ae9af-5f25-4c86-9f6a-01cd7e39a263"/>
+      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#8e041517-8e0f-4398-907e-e886913b87d6"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#8e041517-8e0f-4398-907e-e886913b87d6"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Component-DragAndDrop.capella#602ae9af-5f25-4c86-9f6a-01cd7e39a263"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -422,9 +422,9 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_CwpDM-eFEeqqgri4Jn-KvA" name="LA SOURCE 2">
-        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#6737ae84-d0de-4234-a22e-6bbf6f75cd49"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#6737ae84-d0de-4234-a22e-6bbf6f75cd49"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Component-DragAndDrop.melodymodeller#35617944-7f57-4b56-b6f8-d406d03f0d52"/>
+        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#6737ae84-d0de-4234-a22e-6bbf6f75cd49"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#6737ae84-d0de-4234-a22e-6bbf6f75cd49"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Component-DragAndDrop.capella#35617944-7f57-4b56-b6f8-d406d03f0d52"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -435,9 +435,9 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_CwpDNueFEeqqgri4Jn-KvA" name="LA VALID TARGET 4">
-      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#e539cc8f-873d-411a-8172-67a3fc869642"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#e539cc8f-873d-411a-8172-67a3fc869642"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Component-DragAndDrop.melodymodeller#e4aead68-344c-4248-8cb8-77f79fdac62d"/>
+      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#e539cc8f-873d-411a-8172-67a3fc869642"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#e539cc8f-873d-411a-8172-67a3fc869642"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Component-DragAndDrop.capella#e4aead68-344c-4248-8cb8-77f79fdac62d"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -446,9 +446,9 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_CUB_tueFEeqqgri4Jn-KvA" name="LC SOURCE 4">
-        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#3355d680-4bb6-492c-ace6-7dded6c2fbbf"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#3355d680-4bb6-492c-ace6-7dded6c2fbbf"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Component-DragAndDrop.melodymodeller#85bedd8b-a17d-45ca-bb85-8bbde470cf12"/>
+        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#3355d680-4bb6-492c-ace6-7dded6c2fbbf"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#3355d680-4bb6-492c-ace6-7dded6c2fbbf"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Component-DragAndDrop.capella#85bedd8b-a17d-45ca-bb85-8bbde470cf12"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -459,9 +459,9 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_Gjr3BueFEeqqgri4Jn-KvA" name="LC VALID TARGET 3">
-      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#5cab633e-e958-4db7-9ca4-5d43964db043"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#5cab633e-e958-4db7-9ca4-5d43964db043"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Component-DragAndDrop.melodymodeller#2578b466-789f-451f-8244-b8445a899316"/>
+      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#5cab633e-e958-4db7-9ca4-5d43964db043"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#5cab633e-e958-4db7-9ca4-5d43964db043"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Component-DragAndDrop.capella#2578b466-789f-451f-8244-b8445a899316"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -470,9 +470,9 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_KkSlsOeFEeqqgri4Jn-KvA" name="LA SOURCE 3">
-        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#9cf31089-a68e-4393-920e-b215e208b037"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#9cf31089-a68e-4393-920e-b215e208b037"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Component-DragAndDrop.melodymodeller#a644d273-3aa2-4216-8fbd-52994fa85979"/>
+        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#9cf31089-a68e-4393-920e-b215e208b037"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#9cf31089-a68e-4393-920e-b215e208b037"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Component-DragAndDrop.capella#a644d273-3aa2-4216-8fbd-52994fa85979"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -483,9 +483,9 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_Gjr3AOeFEeqqgri4Jn-KvA" name="LC VALID TARGET 1">
-      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#1a896d2a-5949-4556-abfd-56853728686e"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#1a896d2a-5949-4556-abfd-56853728686e"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Component-DragAndDrop.melodymodeller#423900d9-9b43-43db-90a5-451776669f26"/>
+      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#1a896d2a-5949-4556-abfd-56853728686e"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#1a896d2a-5949-4556-abfd-56853728686e"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Component-DragAndDrop.capella#423900d9-9b43-43db-90a5-451776669f26"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -494,9 +494,9 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_Gjr3A-eFEeqqgri4Jn-KvA" name="LC SOURCE 1">
-        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#e79f676b-4a6f-4829-8b11-14e45cd88324"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#e79f676b-4a6f-4829-8b11-14e45cd88324"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Component-DragAndDrop.melodymodeller#0ff37bd3-3ae4-4311-b0a5-51aef186b0c5"/>
+        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#e79f676b-4a6f-4829-8b11-14e45cd88324"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#e79f676b-4a6f-4829-8b11-14e45cd88324"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Component-DragAndDrop.capella#0ff37bd3-3ae4-4311-b0a5-51aef186b0c5"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -515,7 +515,7 @@
     <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']/@ownedRepresentations[name='AD%20diagram']/@filters[name='ModelExtensionFilter']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_wrOIcebgEeqg-uUChMfc-w"/>
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer"/>
-    <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponentPkg" href="Component-DragAndDrop.melodymodeller#010531e6-2706-4d75-a8b3-8950aa0b2e0e"/>
+    <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponentPkg" href="Component-DragAndDrop.capella#010531e6-2706-4d75-a8b3-8950aa0b2e0e"/>
   </diagram:DSemanticDiagram>
   <diagram:DSemanticDiagram uid="_5bXIYObgEeqg-uUChMfc-w">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_5bg5YubgEeqg-uUChMfc-w" source="GMF_DIAGRAMS">
@@ -621,8 +621,8 @@
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_5bqDUebgEeqg-uUChMfc-w"/>
     </ownedAnnotationEntries>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_EqO3wOblEeqg-uUChMfc-w" name="LA VALID TARGET 2">
-      <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Component-DragAndDrop.melodymodeller#602ae9af-5f25-4c86-9f6a-01cd7e39a263"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Component-DragAndDrop.melodymodeller#602ae9af-5f25-4c86-9f6a-01cd7e39a263"/>
+      <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Component-DragAndDrop.capella#602ae9af-5f25-4c86-9f6a-01cd7e39a263"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Component-DragAndDrop.capella#602ae9af-5f25-4c86-9f6a-01cd7e39a263"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
@@ -631,8 +631,8 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Component']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_E4FtkOblEeqg-uUChMfc-w" name="LA SOURCE 2">
-        <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Component-DragAndDrop.melodymodeller#35617944-7f57-4b56-b6f8-d406d03f0d52"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Component-DragAndDrop.melodymodeller#35617944-7f57-4b56-b6f8-d406d03f0d52"/>
+        <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Component-DragAndDrop.capella#35617944-7f57-4b56-b6f8-d406d03f0d52"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Component-DragAndDrop.capella#35617944-7f57-4b56-b6f8-d406d03f0d52"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
@@ -643,8 +643,8 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_FNQFQOblEeqg-uUChMfc-w" name="LC VALID TARGET 3">
-      <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Component-DragAndDrop.melodymodeller#2578b466-789f-451f-8244-b8445a899316"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Component-DragAndDrop.melodymodeller#2578b466-789f-451f-8244-b8445a899316"/>
+      <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Component-DragAndDrop.capella#2578b466-789f-451f-8244-b8445a899316"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Component-DragAndDrop.capella#2578b466-789f-451f-8244-b8445a899316"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
@@ -653,8 +653,8 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Component']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_FX1koOblEeqg-uUChMfc-w" name="LA SOURCE 3">
-        <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Component-DragAndDrop.melodymodeller#a644d273-3aa2-4216-8fbd-52994fa85979"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Component-DragAndDrop.melodymodeller#a644d273-3aa2-4216-8fbd-52994fa85979"/>
+        <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Component-DragAndDrop.capella#a644d273-3aa2-4216-8fbd-52994fa85979"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Component-DragAndDrop.capella#a644d273-3aa2-4216-8fbd-52994fa85979"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
@@ -665,8 +665,8 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_Fh9xAOblEeqg-uUChMfc-w" name="LA VALID TARGET 4">
-      <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Component-DragAndDrop.melodymodeller#e4aead68-344c-4248-8cb8-77f79fdac62d"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Component-DragAndDrop.melodymodeller#e4aead68-344c-4248-8cb8-77f79fdac62d"/>
+      <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Component-DragAndDrop.capella#e4aead68-344c-4248-8cb8-77f79fdac62d"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Component-DragAndDrop.capella#e4aead68-344c-4248-8cb8-77f79fdac62d"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
@@ -675,8 +675,8 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Component']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_FufKEOblEeqg-uUChMfc-w" name="LC SOURCE 4">
-        <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Component-DragAndDrop.melodymodeller#85bedd8b-a17d-45ca-bb85-8bbde470cf12"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Component-DragAndDrop.melodymodeller#85bedd8b-a17d-45ca-bb85-8bbde470cf12"/>
+        <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Component-DragAndDrop.capella#85bedd8b-a17d-45ca-bb85-8bbde470cf12"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Component-DragAndDrop.capella#85bedd8b-a17d-45ca-bb85-8bbde470cf12"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
@@ -687,8 +687,8 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_6ALFoObgEeqg-uUChMfc-w" name="LC VALID TARGET 1">
-      <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Component-DragAndDrop.melodymodeller#423900d9-9b43-43db-90a5-451776669f26"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Component-DragAndDrop.melodymodeller#423900d9-9b43-43db-90a5-451776669f26"/>
+      <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Component-DragAndDrop.capella#423900d9-9b43-43db-90a5-451776669f26"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Component-DragAndDrop.capella#423900d9-9b43-43db-90a5-451776669f26"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
@@ -697,8 +697,8 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Component']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_6OLFYObgEeqg-uUChMfc-w" name="LC SOURCE 1">
-        <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Component-DragAndDrop.melodymodeller#0ff37bd3-3ae4-4311-b0a5-51aef186b0c5"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Component-DragAndDrop.melodymodeller#0ff37bd3-3ae4-4311-b0a5-51aef186b0c5"/>
+        <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Component-DragAndDrop.capella#0ff37bd3-3ae4-4311-b0a5-51aef186b0c5"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Component-DragAndDrop.capella#0ff37bd3-3ae4-4311-b0a5-51aef186b0c5"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
@@ -716,7 +716,7 @@
     <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']/@ownedRepresentations[name='AD%20diagram']/@filters[name='ModelExtensionFilter']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_5bXIYebgEeqg-uUChMfc-w"/>
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer"/>
-    <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponentPkg" href="Component-DragAndDrop.melodymodeller#010531e6-2706-4d75-a8b3-8950aa0b2e0e"/>
+    <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponentPkg" href="Component-DragAndDrop.capella#010531e6-2706-4d75-a8b3-8950aa0b2e0e"/>
   </diagram:DSemanticDiagram>
   <diagram:DSemanticDiagram uid="_Jt3tkObhEeqg-uUChMfc-w">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_JuBekubhEeqg-uUChMfc-w" source="GMF_DIAGRAMS">
@@ -1233,9 +1233,9 @@
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_JuKogObhEeqg-uUChMfc-w"/>
     </ownedAnnotationEntries>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_KFQ54ObhEeqg-uUChMfc-w" name="PC VALID TARGET 2">
-      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#07e7715d-6be2-4532-82c9-4c7e5ceb78d8"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#07e7715d-6be2-4532-82c9-4c7e5ceb78d8"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#789f89e6-0648-4c3c-b1a9-3d8a303f6f2b"/>
+      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#07e7715d-6be2-4532-82c9-4c7e5ceb78d8"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#07e7715d-6be2-4532-82c9-4c7e5ceb78d8"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#789f89e6-0648-4c3c-b1a9-3d8a303f6f2b"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1244,9 +1244,9 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_Kb6fUObhEeqg-uUChMfc-w" name="PC SOURCE 2">
-        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#6ce2235b-b0b9-4552-849a-b3e6c1236794"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#6ce2235b-b0b9-4552-849a-b3e6c1236794"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#14df07bf-1fc5-4c3c-b0b9-c60f854b69b1"/>
+        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#6ce2235b-b0b9-4552-849a-b3e6c1236794"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#6ce2235b-b0b9-4552-849a-b3e6c1236794"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#14df07bf-1fc5-4c3c-b0b9-c60f854b69b1"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1257,9 +1257,9 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_OLrVoObhEeqg-uUChMfc-w" name="PA_VALID_TARGET_5">
-      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#b708ce52-a385-491b-8934-b13d0eb07cbd"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#b708ce52-a385-491b-8934-b13d0eb07cbd"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#3c19a1ef-98eb-46a7-b832-a26f444b8958"/>
+      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#b708ce52-a385-491b-8934-b13d0eb07cbd"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#b708ce52-a385-491b-8934-b13d0eb07cbd"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#3c19a1ef-98eb-46a7-b832-a26f444b8958"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1268,9 +1268,9 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_OYykkObhEeqg-uUChMfc-w" name="PA_SOURCE_5">
-        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#3b0a2e03-85eb-4e6d-9d9a-81fdf81f0b73"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#3b0a2e03-85eb-4e6d-9d9a-81fdf81f0b73"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#a9388002-a5ad-4fa5-8a34-8a63f56f2b4b"/>
+        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#3b0a2e03-85eb-4e6d-9d9a-81fdf81f0b73"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#3b0a2e03-85eb-4e6d-9d9a-81fdf81f0b73"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#a9388002-a5ad-4fa5-8a34-8a63f56f2b4b"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_OYykkebhEeqg-uUChMfc-w" borderSize="1" borderSizeComputationExpression="1" borderColor="74,74,151" backgroundStyle="GradientTopToBottom" backgroundColor="218,253,255" foregroundColor="198,230,255">
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']/@conditionnalStyles.0/@style"/>
         </ownedStyle>
@@ -1278,9 +1278,9 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_PlF_oObhEeqg-uUChMfc-w" name="C">
-      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#4bc005fc-258b-4cfa-8627-2f320a2176a8"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#4bc005fc-258b-4cfa-8627-2f320a2176a8"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#7014a251-adad-43dc-addf-d459876805cd"/>
+      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#4bc005fc-258b-4cfa-8627-2f320a2176a8"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#4bc005fc-258b-4cfa-8627-2f320a2176a8"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#7014a251-adad-43dc-addf-d459876805cd"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1289,18 +1289,18 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_TSxLQObhEeqg-uUChMfc-w" name="PC_VALID_TARGET_3">
-        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#9a9f6af8-7e58-4966-8169-63e6f96347a4"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#9a9f6af8-7e58-4966-8169-63e6f96347a4"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#97d02816-6c4e-4fd2-96c4-46733c32becf"/>
+        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#9a9f6af8-7e58-4966-8169-63e6f96347a4"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#9a9f6af8-7e58-4966-8169-63e6f96347a4"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#97d02816-6c4e-4fd2-96c4-46733c32becf"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_TSxLQebhEeqg-uUChMfc-w" borderSize="1" borderSizeComputationExpression="1" borderColor="74,74,151" backgroundStyle="GradientTopToBottom" backgroundColor="195,230,255" foregroundColor="150,177,218">
           <labelFormat>italic</labelFormat>
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Deployment']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Deployment']"/>
         <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_T75n0ObhEeqg-uUChMfc-w" name="PC SOURCE  3">
-          <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#470ca2f1-cb4a-453d-b21c-cfa5959079c9"/>
-          <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#470ca2f1-cb4a-453d-b21c-cfa5959079c9"/>
-          <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#fed3539d-f9a3-43ac-a129-758aae511dc1"/>
+          <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#470ca2f1-cb4a-453d-b21c-cfa5959079c9"/>
+          <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#470ca2f1-cb4a-453d-b21c-cfa5959079c9"/>
+          <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#fed3539d-f9a3-43ac-a129-758aae511dc1"/>
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1312,9 +1312,9 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_QNn_QObhEeqg-uUChMfc-w" name="PC VALID TARGET 1">
-      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#b3c20650-6b1e-47dd-8a1d-7817f5237f9b"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#b3c20650-6b1e-47dd-8a1d-7817f5237f9b"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#b363b120-d848-42a5-848e-3a3f6754c32c"/>
+      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#b3c20650-6b1e-47dd-8a1d-7817f5237f9b"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#b3c20650-6b1e-47dd-8a1d-7817f5237f9b"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#b363b120-d848-42a5-848e-3a3f6754c32c"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1323,9 +1323,9 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_RdpcsObhEeqg-uUChMfc-w" name="PC SOURCE 1">
-        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#5fa45b16-7a6e-4a97-a457-c5e757cbf8e3"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#5fa45b16-7a6e-4a97-a457-c5e757cbf8e3"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#6375c7c6-5da0-49fe-89a0-04351059fb86"/>
+        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#5fa45b16-7a6e-4a97-a457-c5e757cbf8e3"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#5fa45b16-7a6e-4a97-a457-c5e757cbf8e3"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#6375c7c6-5da0-49fe-89a0-04351059fb86"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1336,9 +1336,9 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_a9xIEObhEeqg-uUChMfc-w" name="PC 4">
-      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#7ead73bb-f980-45df-b372-1b58c3d997c7"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#7ead73bb-f980-45df-b372-1b58c3d997c7"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#75fc697e-82bf-4bea-88d2-dfd9f066a9a4"/>
+      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#7ead73bb-f980-45df-b372-1b58c3d997c7"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#7ead73bb-f980-45df-b372-1b58c3d997c7"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#75fc697e-82bf-4bea-88d2-dfd9f066a9a4"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1347,9 +1347,9 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_bpIZQObhEeqg-uUChMfc-w" name="PC 5">
-        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#a5f598c3-a907-4ede-a401-10f47c353a02"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#a5f598c3-a907-4ede-a401-10f47c353a02"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#47da31a3-b4bb-44d1-8f67-2174d16a7117"/>
+        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#a5f598c3-a907-4ede-a401-10f47c353a02"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#a5f598c3-a907-4ede-a401-10f47c353a02"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#47da31a3-b4bb-44d1-8f67-2174d16a7117"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1361,9 +1361,9 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_mckGoObhEeqg-uUChMfc-w" name="PC 5">
-      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#f4664600-344f-49c8-ab32-0f4425be7a73"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#f4664600-344f-49c8-ab32-0f4425be7a73"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#0c8005b8-ce27-488a-b495-b18bd0a8fbcb"/>
+      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#f4664600-344f-49c8-ab32-0f4425be7a73"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#f4664600-344f-49c8-ab32-0f4425be7a73"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#0c8005b8-ce27-488a-b495-b18bd0a8fbcb"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1372,9 +1372,9 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_nFGGQObhEeqg-uUChMfc-w" name="PC 4">
-        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#4b8b8823-336f-41fb-ba29-56b5509baf03"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#4b8b8823-336f-41fb-ba29-56b5509baf03"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#bc0beed7-c41e-4340-91db-f83ee3f81d09"/>
+        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#4b8b8823-336f-41fb-ba29-56b5509baf03"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#4b8b8823-336f-41fb-ba29-56b5509baf03"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#bc0beed7-c41e-4340-91db-f83ee3f81d09"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1386,9 +1386,9 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_1y3iQObhEeqg-uUChMfc-w" name="PC 6">
-      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#e33d02bf-f286-478c-8531-05ba8b058365"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#e33d02bf-f286-478c-8531-05ba8b058365"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#b71f61f3-5d62-45e1-ae64-f6a6e818accf"/>
+      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#e33d02bf-f286-478c-8531-05ba8b058365"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#e33d02bf-f286-478c-8531-05ba8b058365"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#b71f61f3-5d62-45e1-ae64-f6a6e818accf"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1397,9 +1397,9 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_2TDeMObhEeqg-uUChMfc-w" name="PC 5">
-        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#0918f9c2-3d79-479c-a4de-b4ffa6f6350b"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#0918f9c2-3d79-479c-a4de-b4ffa6f6350b"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#0457cfc9-4379-47cf-bd27-e4a3fae3d28f"/>
+        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#0918f9c2-3d79-479c-a4de-b4ffa6f6350b"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#0918f9c2-3d79-479c-a4de-b4ffa6f6350b"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#0457cfc9-4379-47cf-bd27-e4a3fae3d28f"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1409,9 +1409,9 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Deployment']"/>
         <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_48MDoObhEeqg-uUChMfc-w" name="PC 6">
-          <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#24633f28-f1f6-4c53-baaa-971772612f56"/>
-          <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#24633f28-f1f6-4c53-baaa-971772612f56"/>
-          <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#29026d34-6477-4f30-9f55-dc08fb1bd629"/>
+          <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#24633f28-f1f6-4c53-baaa-971772612f56"/>
+          <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#24633f28-f1f6-4c53-baaa-971772612f56"/>
+          <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#29026d34-6477-4f30-9f55-dc08fb1bd629"/>
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1424,9 +1424,9 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_GZDRYObiEeqg-uUChMfc-w" name="PC 7">
-      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#847e8dec-4691-4a3a-9b48-37a7075dd097"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#847e8dec-4691-4a3a-9b48-37a7075dd097"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#c57475ca-3d2a-4207-ab46-5a19a97cdddf"/>
+      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#847e8dec-4691-4a3a-9b48-37a7075dd097"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#847e8dec-4691-4a3a-9b48-37a7075dd097"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#c57475ca-3d2a-4207-ab46-5a19a97cdddf"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1435,9 +1435,9 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_HW4yoObiEeqg-uUChMfc-w" name="PC 7">
-        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#99e45725-fa28-484c-acec-ece0c5ae2be4"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#99e45725-fa28-484c-acec-ece0c5ae2be4"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#102e07f3-9108-4f67-b9bb-e2b9a10ab1bf"/>
+        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#99e45725-fa28-484c-acec-ece0c5ae2be4"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#99e45725-fa28-484c-acec-ece0c5ae2be4"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#102e07f3-9108-4f67-b9bb-e2b9a10ab1bf"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1449,9 +1449,9 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_l0vcMObiEeqg-uUChMfc-w" name="PC_VALID_TARGET_6">
-      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#ae4e491f-865f-43aa-a008-0d62f45ea1f4"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#ae4e491f-865f-43aa-a008-0d62f45ea1f4"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#d7be9cc7-eebd-4403-a268-976149163d5d"/>
+      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#ae4e491f-865f-43aa-a008-0d62f45ea1f4"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#ae4e491f-865f-43aa-a008-0d62f45ea1f4"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#d7be9cc7-eebd-4403-a268-976149163d5d"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1460,9 +1460,9 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_mGescObiEeqg-uUChMfc-w" name="PA_SOURCE_6">
-        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#31a43447-30c5-4f11-ae0e-e2bbc3ca8450"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#31a43447-30c5-4f11-ae0e-e2bbc3ca8450"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#dda43637-0d5a-43f7-a9a8-92895587251b"/>
+        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#31a43447-30c5-4f11-ae0e-e2bbc3ca8450"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#31a43447-30c5-4f11-ae0e-e2bbc3ca8450"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#dda43637-0d5a-43f7-a9a8-92895587251b"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_mGescebiEeqg-uUChMfc-w" borderSize="1" borderSizeComputationExpression="1" borderColor="74,74,151" backgroundStyle="GradientTopToBottom" backgroundColor="218,253,255" foregroundColor="198,230,255">
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']/@conditionnalStyles.0/@style"/>
         </ownedStyle>
@@ -1470,9 +1470,9 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_qUflAObiEeqg-uUChMfc-w" name="PA_VALID_TARGET_7">
-      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#d4d07b94-37c9-4d7f-a356-2b179ac48f07"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#d4d07b94-37c9-4d7f-a356-2b179ac48f07"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#623aabda-a3e2-4135-900f-fb1cfc742d53"/>
+      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#d4d07b94-37c9-4d7f-a356-2b179ac48f07"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#d4d07b94-37c9-4d7f-a356-2b179ac48f07"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#623aabda-a3e2-4135-900f-fb1cfc742d53"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1481,9 +1481,9 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_rGtsIObiEeqg-uUChMfc-w" name="PA_SOURCE_7">
-        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#f75c4c54-5ac7-4169-944a-eb9aead1e220"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#f75c4c54-5ac7-4169-944a-eb9aead1e220"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#6f606b81-641a-4ce6-b8e3-f25cafd132cf"/>
+        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#f75c4c54-5ac7-4169-944a-eb9aead1e220"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#f75c4c54-5ac7-4169-944a-eb9aead1e220"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#6f606b81-641a-4ce6-b8e3-f25cafd132cf"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_rG22EObiEeqg-uUChMfc-w" borderSize="1" borderSizeComputationExpression="1" borderColor="74,74,151" backgroundStyle="GradientTopToBottom" backgroundColor="218,253,255" foregroundColor="198,230,255">
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']/@conditionnalStyles.0/@style"/>
         </ownedStyle>
@@ -1491,9 +1491,9 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_8Aj-MubiEeqg-uUChMfc-w" name="PC 4_1">
-      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#1e4dc370-6391-4cd3-acf6-b34d3753ab3e"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#1e4dc370-6391-4cd3-acf6-b34d3753ab3e"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#80fb7a55-9d87-427d-8b6d-db8a8ef7bcdd"/>
+      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#1e4dc370-6391-4cd3-acf6-b34d3753ab3e"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#1e4dc370-6391-4cd3-acf6-b34d3753ab3e"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#80fb7a55-9d87-427d-8b6d-db8a8ef7bcdd"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1503,9 +1503,9 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_8Aj-NObiEeqg-uUChMfc-w" name="PC_VALID_TARGET_8">
-        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#7829b76d-500f-489f-8ebd-be7f9d8fb1c5"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#7829b76d-500f-489f-8ebd-be7f9d8fb1c5"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#74b1ca22-4537-46ac-a816-f236aadb3834"/>
+        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#7829b76d-500f-489f-8ebd-be7f9d8fb1c5"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#7829b76d-500f-489f-8ebd-be7f9d8fb1c5"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#74b1ca22-4537-46ac-a816-f236aadb3834"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1516,9 +1516,9 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Deployment']"/>
         <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_BJlGYObjEeqg-uUChMfc-w" name="PA_SOURCE_8">
-          <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#6840c824-abae-44f7-8869-598dd115cb68"/>
-          <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#6840c824-abae-44f7-8869-598dd115cb68"/>
-          <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#8e9fc3d2-17f6-4345-97d5-a23a8c73b693"/>
+          <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#6840c824-abae-44f7-8869-598dd115cb68"/>
+          <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#6840c824-abae-44f7-8869-598dd115cb68"/>
+          <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#8e9fc3d2-17f6-4345-97d5-a23a8c73b693"/>
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1530,9 +1530,9 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_8Aj-NubiEeqg-uUChMfc-w" name="PC 5_1">
-      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#73aa2340-b095-453d-b3cf-ad29d9335f81"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#73aa2340-b095-453d-b3cf-ad29d9335f81"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#131a31bd-72a6-4420-940d-2017c4bee246"/>
+      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#73aa2340-b095-453d-b3cf-ad29d9335f81"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#73aa2340-b095-453d-b3cf-ad29d9335f81"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#131a31bd-72a6-4420-940d-2017c4bee246"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1542,9 +1542,9 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_8Aj-OObiEeqg-uUChMfc-w" name="PC_VALID_TARGET_9">
-        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#7af8d7ff-e8b3-42e6-8522-cb75d0062d42"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#7af8d7ff-e8b3-42e6-8522-cb75d0062d42"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#793dca69-554e-40a8-b77a-bc4bc9344156"/>
+        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#7af8d7ff-e8b3-42e6-8522-cb75d0062d42"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#7af8d7ff-e8b3-42e6-8522-cb75d0062d42"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#793dca69-554e-40a8-b77a-bc4bc9344156"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1555,9 +1555,9 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Deployment']"/>
         <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_Ba3qsObjEeqg-uUChMfc-w" name="PA_SOURCE_9">
-          <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#b542e96a-a062-4c60-bf9d-2ccf9e6be439"/>
-          <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#b542e96a-a062-4c60-bf9d-2ccf9e6be439"/>
-          <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#d254403b-00e6-4d03-9585-e07ac6f7f30b"/>
+          <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#b542e96a-a062-4c60-bf9d-2ccf9e6be439"/>
+          <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#b542e96a-a062-4c60-bf9d-2ccf9e6be439"/>
+          <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#d254403b-00e6-4d03-9585-e07ac6f7f30b"/>
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1569,9 +1569,9 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_8Aj-OubiEeqg-uUChMfc-w" name="PC 6_1">
-      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#e38b5b90-a307-41f3-a064-c7944b59d79a"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#e38b5b90-a307-41f3-a064-c7944b59d79a"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#97889311-3fee-4e17-9323-8fea8ba01564"/>
+      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#e38b5b90-a307-41f3-a064-c7944b59d79a"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#e38b5b90-a307-41f3-a064-c7944b59d79a"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#97889311-3fee-4e17-9323-8fea8ba01564"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1581,9 +1581,9 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_8Aj-PObiEeqg-uUChMfc-w" name="PC 5_1">
-        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#708d408b-6b7d-4416-8918-89b0600d8e4f"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#708d408b-6b7d-4416-8918-89b0600d8e4f"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#6d81c4fc-040b-43f1-85be-70ed72a8ea86"/>
+        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#708d408b-6b7d-4416-8918-89b0600d8e4f"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#708d408b-6b7d-4416-8918-89b0600d8e4f"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#6d81c4fc-040b-43f1-85be-70ed72a8ea86"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1594,9 +1594,9 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Deployment']"/>
         <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_8Aj-PubiEeqg-uUChMfc-w" name="PC 6_1">
-          <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#437a3d9e-06d9-407e-b291-6729b210ef19"/>
-          <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#437a3d9e-06d9-407e-b291-6729b210ef19"/>
-          <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#eab2265f-ede7-4686-91d5-58a5737e16ca"/>
+          <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#437a3d9e-06d9-407e-b291-6729b210ef19"/>
+          <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#437a3d9e-06d9-407e-b291-6729b210ef19"/>
+          <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#eab2265f-ede7-4686-91d5-58a5737e16ca"/>
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1607,9 +1607,9 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Deployment']"/>
           <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_Bha-oObjEeqg-uUChMfc-w" name="PA 1">
-            <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#be69e373-91e6-4ff6-aee1-090d2dcd9798"/>
-            <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#be69e373-91e6-4ff6-aee1-090d2dcd9798"/>
-            <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#16ab3b8d-47ca-4631-9124-73b513b3f077"/>
+            <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#be69e373-91e6-4ff6-aee1-090d2dcd9798"/>
+            <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#be69e373-91e6-4ff6-aee1-090d2dcd9798"/>
+            <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#16ab3b8d-47ca-4631-9124-73b513b3f077"/>
             <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
             <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
             <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1622,9 +1622,9 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_8Aj-QObiEeqg-uUChMfc-w" name="PC 7_1">
-      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#736d76eb-560f-4c5e-ae33-24ec82511c6a"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#736d76eb-560f-4c5e-ae33-24ec82511c6a"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#6bc371a5-5f62-4ea7-92f8-3057c7507ba1"/>
+      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#736d76eb-560f-4c5e-ae33-24ec82511c6a"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#736d76eb-560f-4c5e-ae33-24ec82511c6a"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#6bc371a5-5f62-4ea7-92f8-3057c7507ba1"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1634,9 +1634,9 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_8Aj-QubiEeqg-uUChMfc-w" name="PC 7_1">
-        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#89acd7f9-4913-4090-8cab-a837727da2c6"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#89acd7f9-4913-4090-8cab-a837727da2c6"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#d3db42f3-e1df-4fb6-ad4f-845a7246b71f"/>
+        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#89acd7f9-4913-4090-8cab-a837727da2c6"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#89acd7f9-4913-4090-8cab-a837727da2c6"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#d3db42f3-e1df-4fb6-ad4f-845a7246b71f"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1647,9 +1647,9 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Deployment']"/>
         <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_BnYcsObjEeqg-uUChMfc-w" name="PA 1">
-          <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#d832a532-387b-4c38-95f3-7dffaaa31631"/>
-          <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#d832a532-387b-4c38-95f3-7dffaaa31631"/>
-          <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#0cc9fdb2-284d-4de2-b8f9-4dfeb2351aa4"/>
+          <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#d832a532-387b-4c38-95f3-7dffaaa31631"/>
+          <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#d832a532-387b-4c38-95f3-7dffaaa31631"/>
+          <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#0cc9fdb2-284d-4de2-b8f9-4dfeb2351aa4"/>
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1661,9 +1661,9 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_vh9TAubjEeqg-uUChMfc-w" name="DD">
-      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#1d162080-9b68-4434-8869-435b6a9ba52e"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#1d162080-9b68-4434-8869-435b6a9ba52e"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#f51b9500-efed-4e81-b4de-7271c5c2e894"/>
+      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#1d162080-9b68-4434-8869-435b6a9ba52e"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#1d162080-9b68-4434-8869-435b6a9ba52e"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#f51b9500-efed-4e81-b4de-7271c5c2e894"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1673,9 +1673,9 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_viHD8ebjEeqg-uUChMfc-w" name="PC_VALID_TARGET_4">
-        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#3b593508-e858-4771-8d5c-f3092474dfd8"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#3b593508-e858-4771-8d5c-f3092474dfd8"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#9ae8505a-0961-4496-97f6-0c0378e05669"/>
+        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#3b593508-e858-4771-8d5c-f3092474dfd8"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#3b593508-e858-4771-8d5c-f3092474dfd8"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#9ae8505a-0961-4496-97f6-0c0378e05669"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1686,9 +1686,9 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Deployment']"/>
         <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_yf8uEObjEeqg-uUChMfc-w" name="PC SOURCE 4">
-          <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#00fdd8f2-3c69-4c97-b9db-459ce95fc020"/>
-          <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.melodymodeller#00fdd8f2-3c69-4c97-b9db-459ce95fc020"/>
-          <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#1f62f027-0cda-484f-b673-6f7e3e5b7895"/>
+          <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#00fdd8f2-3c69-4c97-b9db-459ce95fc020"/>
+          <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="Component-DragAndDrop.capella#00fdd8f2-3c69-4c97-b9db-459ce95fc020"/>
+          <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#1f62f027-0cda-484f-b673-6f7e3e5b7895"/>
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1708,7 +1708,7 @@
     <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@filters[name='hide.sequencing.information.filter']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_Jt3tkebhEeqg-uUChMfc-w"/>
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer"/>
-    <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponentPkg" href="Component-DragAndDrop.melodymodeller#4a9299a2-e7d2-44e5-8d43-177d6799a5f8"/>
+    <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponentPkg" href="Component-DragAndDrop.capella#4a9299a2-e7d2-44e5-8d43-177d6799a5f8"/>
   </diagram:DSemanticDiagram>
   <diagram:DSemanticDiagram uid="_Zyk_8ObkEeqg-uUChMfc-w">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_ZyuJ4ubkEeqg-uUChMfc-w" source="GMF_DIAGRAMS">
@@ -1812,8 +1812,8 @@
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_ZyuJ5ubkEeqg-uUChMfc-w"/>
     </ownedAnnotationEntries>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_bpVtQObkEeqg-uUChMfc-w" name="PC 16">
-      <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#05c17e7c-56a2-4e99-90f4-2d4fb1867a92"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#05c17e7c-56a2-4e99-90f4-2d4fb1867a92"/>
+      <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#05c17e7c-56a2-4e99-90f4-2d4fb1867a92"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#05c17e7c-56a2-4e99-90f4-2d4fb1867a92"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
@@ -1822,8 +1822,8 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Component']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_b5IcwObkEeqg-uUChMfc-w" name="PC 1">
-        <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#f80cf63d-55cf-4be2-82a5-4ad359ad7592"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#f80cf63d-55cf-4be2-82a5-4ad359ad7592"/>
+        <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#f80cf63d-55cf-4be2-82a5-4ad359ad7592"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#f80cf63d-55cf-4be2-82a5-4ad359ad7592"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
@@ -1834,8 +1834,8 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_eFEI0ObkEeqg-uUChMfc-w" name="PA 3">
-      <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#925461d4-0784-4ff8-a203-2cff6882ef74"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#925461d4-0784-4ff8-a203-2cff6882ef74"/>
+      <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#925461d4-0784-4ff8-a203-2cff6882ef74"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#925461d4-0784-4ff8-a203-2cff6882ef74"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
@@ -1844,8 +1844,8 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Component']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_eS6-oObkEeqg-uUChMfc-w" name="PA 1">
-        <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#9c7144e8-27b6-4870-a43a-eb95adac62b5"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#9c7144e8-27b6-4870-a43a-eb95adac62b5"/>
+        <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#9c7144e8-27b6-4870-a43a-eb95adac62b5"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#9c7144e8-27b6-4870-a43a-eb95adac62b5"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
@@ -1856,8 +1856,8 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_fHE_cObkEeqg-uUChMfc-w" name="PC 17">
-      <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#0309d6f3-0bb6-4753-a1bb-9bed99494c30"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#0309d6f3-0bb6-4753-a1bb-9bed99494c30"/>
+      <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#0309d6f3-0bb6-4753-a1bb-9bed99494c30"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#0309d6f3-0bb6-4753-a1bb-9bed99494c30"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
@@ -1866,8 +1866,8 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Component']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_fSjPoObkEeqg-uUChMfc-w" name="PA 1">
-        <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#a36235e3-1ba7-4d28-bb00-bfb9483f9c31"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#a36235e3-1ba7-4d28-bb00-bfb9483f9c31"/>
+        <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#a36235e3-1ba7-4d28-bb00-bfb9483f9c31"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#a36235e3-1ba7-4d28-bb00-bfb9483f9c31"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
@@ -1885,7 +1885,7 @@
     <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']/@ownedRepresentations[name='AD%20diagram']/@filters[name='ModelExtensionFilter']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_Zyk_8ebkEeqg-uUChMfc-w"/>
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer"/>
-    <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponentPkg" href="Component-DragAndDrop.melodymodeller#4a9299a2-e7d2-44e5-8d43-177d6799a5f8"/>
+    <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponentPkg" href="Component-DragAndDrop.capella#4a9299a2-e7d2-44e5-8d43-177d6799a5f8"/>
   </diagram:DSemanticDiagram>
   <diagram:DSemanticDiagram uid="_oq7UQObkEeqg-uUChMfc-w">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_orFFQObkEeqg-uUChMfc-w" source="GMF_DIAGRAMS">
@@ -2004,8 +2004,8 @@
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_orFFRObkEeqg-uUChMfc-w"/>
     </ownedAnnotationEntries>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_qUR3vObkEeqg-uUChMfc-w" name="PC 16_1">
-      <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#85588624-75ca-4725-b611-cd46f5ee1d3d"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#85588624-75ca-4725-b611-cd46f5ee1d3d"/>
+      <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#85588624-75ca-4725-b611-cd46f5ee1d3d"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#85588624-75ca-4725-b611-cd46f5ee1d3d"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
@@ -2015,8 +2015,8 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Component']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_qUR3vubkEeqg-uUChMfc-w" name="PC 1_1">
-        <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#03e3d304-bbe8-4f8e-9331-ee616b9ae9c3"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#03e3d304-bbe8-4f8e-9331-ee616b9ae9c3"/>
+        <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#03e3d304-bbe8-4f8e-9331-ee616b9ae9c3"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#03e3d304-bbe8-4f8e-9331-ee616b9ae9c3"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
@@ -2028,8 +2028,8 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_qUR3wObkEeqg-uUChMfc-w" name="PA 3_1">
-      <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#d93280f3-edf7-4be5-b0cb-a2a09252fefa"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#d93280f3-edf7-4be5-b0cb-a2a09252fefa"/>
+      <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#d93280f3-edf7-4be5-b0cb-a2a09252fefa"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#d93280f3-edf7-4be5-b0cb-a2a09252fefa"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
@@ -2039,8 +2039,8 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Component']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_qUR3wubkEeqg-uUChMfc-w" name="PA 1_1">
-        <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#b4697793-b283-42ff-8be1-67d946ea0dbd"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#b4697793-b283-42ff-8be1-67d946ea0dbd"/>
+        <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#b4697793-b283-42ff-8be1-67d946ea0dbd"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#b4697793-b283-42ff-8be1-67d946ea0dbd"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
@@ -2052,8 +2052,8 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_qUR3xObkEeqg-uUChMfc-w" name="PC 17_1">
-      <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#3af95416-746e-4032-b1d0-838760d325cb"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#3af95416-746e-4032-b1d0-838760d325cb"/>
+      <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#3af95416-746e-4032-b1d0-838760d325cb"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#3af95416-746e-4032-b1d0-838760d325cb"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
@@ -2063,8 +2063,8 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Component']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_qUR3xubkEeqg-uUChMfc-w" name="PA 1_1">
-        <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#19b5a2c2-dbbe-4633-b06c-0fe6a27cd714"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#19b5a2c2-dbbe-4633-b06c-0fe6a27cd714"/>
+        <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#19b5a2c2-dbbe-4633-b06c-0fe6a27cd714"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#19b5a2c2-dbbe-4633-b06c-0fe6a27cd714"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
@@ -2083,6 +2083,6 @@
     <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']/@ownedRepresentations[name='AD%20diagram']/@filters[name='ModelExtensionFilter']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_oq7UQebkEeqg-uUChMfc-w"/>
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer"/>
-    <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.melodymodeller#d20e6507-8f39-4c75-ad92-f2c2084a861b"/>
+    <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#d20e6507-8f39-4c75-ad92-f2c2084a861b"/>
   </diagram:DSemanticDiagram>
 </xmi:XMI>

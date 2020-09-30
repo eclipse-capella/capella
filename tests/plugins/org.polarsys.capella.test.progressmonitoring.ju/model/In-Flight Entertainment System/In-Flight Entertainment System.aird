@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description" uid="_uvtqENLGEd6Vfu18JJxfmA" selectedViews="_vaJuMNLGEd6Vfu18JJxfmA _vr3wUNLGEd6Vfu18JJxfmA _vwfKkNLGEd6Vfu18JJxfmA _v1tBwNLGEd6Vfu18JJxfmA _v5k1INLGEd6Vfu18JJxfmA _v9JtkNLGEd6Vfu18JJxfmA _9McIcI2tEeOnP4_fXL-3Fw" version="14.3.0.201908231800">
-  <semanticResources>In-Flight%20Entertainment%20System.melodymodeller</semanticResources>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description" uid="_uvtqENLGEd6Vfu18JJxfmA" selectedViews="_vaJuMNLGEd6Vfu18JJxfmA _vr3wUNLGEd6Vfu18JJxfmA _vwfKkNLGEd6Vfu18JJxfmA _v1tBwNLGEd6Vfu18JJxfmA _v5k1INLGEd6Vfu18JJxfmA _v9JtkNLGEd6Vfu18JJxfmA _9McIcI2tEeOnP4_fXL-3Fw" version="14.3.1.202003261200">
+  <semanticResources>In-Flight%20Entertainment%20System.capella</semanticResources>
   <semanticResources>In-Flight%20Entertainment%20System.afm</semanticResources>
   <ownedViews xmi:type="viewpoint:DView" uid="_vaJuMNLGEd6Vfu18JJxfmA">
     <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>

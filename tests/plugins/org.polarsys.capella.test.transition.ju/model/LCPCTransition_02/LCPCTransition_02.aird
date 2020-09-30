@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description" uid="_xVqiQX2mEeGp6eSfSQg3og" selectedViews="_xXJwAH2mEeGp6eSfSQg3og _xXcq8H2mEeGp6eSfSQg3og _xXcq8X2mEeGp6eSfSQg3og _xXmb8H2mEeGp6eSfSQg3og _xYDH4H2mEeGp6eSfSQg3og _xYMR0H2mEeGp6eSfSQg3og _U2lggLCqEeKR0an6CER6Bg" version="14.1.0.201810161215">
-  <semanticResources>LCPCTransition_02.melodymodeller</semanticResources>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description" uid="_xVqiQX2mEeGp6eSfSQg3og" selectedViews="_xXJwAH2mEeGp6eSfSQg3og _xXcq8H2mEeGp6eSfSQg3og _xXcq8X2mEeGp6eSfSQg3og _xXmb8H2mEeGp6eSfSQg3og _xYDH4H2mEeGp6eSfSQg3og _xYMR0H2mEeGp6eSfSQg3og _U2lggLCqEeKR0an6CER6Bg" version="14.3.1.202003261200">
+  <semanticResources>LCPCTransition_02.capella</semanticResources>
   <semanticResources>LCPCTransition_02.afm</semanticResources>
   <ownedViews xmi:type="viewpoint:DView" uid="_xXJwAH2mEeGp6eSfSQg3og">
     <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']"/>

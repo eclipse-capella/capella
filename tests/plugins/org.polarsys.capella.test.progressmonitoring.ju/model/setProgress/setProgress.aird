@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/1.4.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_NXmXoZljEeOT3c8lYGAdUA" selectedViews="_OamFsJljEeOT3c8lYGAdUA _OcDeQJljEeOT3c8lYGAdUA _Ogi8sJljEeOT3c8lYGAdUA _OgsGoJljEeOT3c8lYGAdUA _Ogui4JljEeOT3c8lYGAdUA _OhrlIJljEeOT3c8lYGAdUA _Ohy54JljEeOT3c8lYGAdUA" version="14.3.0.201908231800">
-    <semanticResources>setProgress.melodymodeller</semanticResources>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/1.4.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
+  <viewpoint:DAnalysis uid="_NXmXoZljEeOT3c8lYGAdUA" selectedViews="_OamFsJljEeOT3c8lYGAdUA _OcDeQJljEeOT3c8lYGAdUA _Ogi8sJljEeOT3c8lYGAdUA _OgsGoJljEeOT3c8lYGAdUA _Ogui4JljEeOT3c8lYGAdUA _OhrlIJljEeOT3c8lYGAdUA _Ohy54JljEeOT3c8lYGAdUA" version="14.3.1.202003261200">
+    <semanticResources>setProgress.capella</semanticResources>
     <semanticResources>setProgress.afm</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_OamFsJljEeOT3c8lYGAdUA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
@@ -25,12 +25,12 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_SUL4MHnGEea0Df0HniJfuA" name="[SFBD] SF1 - System Function Breakdown" repPath="#_mVtukJ6VEeWbOcCd2AFRuA">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']"/>
-        <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="setProgress.melodymodeller#e543b7f1-618e-45a3-b73c-4876f14e72e0"/>
+        <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="setProgress.capella#e543b7f1-618e-45a3-b73c-4876f14e72e0"/>
       </ownedRepresentationDescriptors>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_SUL4MXnGEea0Df0HniJfuA" name="[SFBD] Root System Function - System Function Breakdown" repPath="#_oZLbIJ6VEeWbOcCd2AFRuA">
         <eAnnotations xmi:type="description:DAnnotation" uid="_s9J6YHlFEeiR_puvVGHpMA" source="http://www.polarsys.org/capella/core/NotVisibleInLM"/>
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']"/>
-        <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="setProgress.melodymodeller#c5bc9e6f-5878-4ce3-85ef-61d44ac0175c"/>
+        <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="setProgress.capella#c5bc9e6f-5878-4ce3-85ef-61d44ac0175c"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
   </viewpoint:DAnalysis>
@@ -82,8 +82,8 @@
       </data>
     </ownedAnnotationEntries>
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_Sc7kgHnGEea0Df0HniJfuA" name="SF1" incomingEdges="_Sc8LknnGEea0Df0HniJfuA" width="7" height="7" resizeKind="NSEW">
-      <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="setProgress.melodymodeller#e543b7f1-618e-45a3-b73c-4876f14e72e0"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="setProgress.melodymodeller#e543b7f1-618e-45a3-b73c-4876f14e72e0"/>
+      <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="setProgress.capella#e543b7f1-618e-45a3-b73c-4876f14e72e0"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="setProgress.capella#e543b7f1-618e-45a3-b73c-4876f14e72e0"/>
       <ownedStyle xmi:type="diagram:Square" uid="_Sc7kgXnGEea0Df0HniJfuA" borderSize="1" borderSizeComputationExpression="1" borderColor="9,92,46" labelPosition="node" color="197,255,166">
         <labelFormat>bold</labelFormat>
         <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']/@conditionnalStyles.0/@style"/>
@@ -91,15 +91,15 @@
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_Sc8LkHnGEea0Df0HniJfuA" name="SF11" outgoingEdges="_Sc8LknnGEea0Df0HniJfuA" width="7" height="7" resizeKind="NSEW">
-      <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="setProgress.melodymodeller#43d596b5-0519-41e7-bfc2-501ff6c44cc3"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="setProgress.melodymodeller#43d596b5-0519-41e7-bfc2-501ff6c44cc3"/>
+      <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="setProgress.capella#43d596b5-0519-41e7-bfc2-501ff6c44cc3"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="setProgress.capella#43d596b5-0519-41e7-bfc2-501ff6c44cc3"/>
       <ownedStyle xmi:type="diagram:Square" uid="_Sc8LkXnGEea0Df0HniJfuA" borderSize="1" borderSizeComputationExpression="1" borderColor="9,92,46" labelPosition="node" color="197,255,166">
         <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_Sc8LknnGEea0Df0HniJfuA" sourceNode="_Sc8LkHnGEea0Df0HniJfuA" targetNode="_Sc7kgHnGEea0Df0HniJfuA">
-      <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="setProgress.melodymodeller#43d596b5-0519-41e7-bfc2-501ff6c44cc3"/>
+      <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="setProgress.capella#43d596b5-0519-41e7-bfc2-501ff6c44cc3"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_Sc8Lk3nGEea0Df0HniJfuA" foldingStyle="TARGET" routingStyle="tree">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@edgeMappings[name='SFB_SystemFunction_subFunctions']/@style"/>
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_Sc8LlHnGEea0Df0HniJfuA"/>
@@ -110,7 +110,7 @@
     <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']/@ownedRepresentations[name='AD%20diagram']/@filters[name='ModelExtensionFilter']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_mVtump6VEeWbOcCd2AFRuA"/>
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer"/>
-    <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="setProgress.melodymodeller#e543b7f1-618e-45a3-b73c-4876f14e72e0"/>
+    <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="setProgress.capella#e543b7f1-618e-45a3-b73c-4876f14e72e0"/>
   </diagram:DSemanticDiagram>
   <diagram:DSemanticDiagram uid="_oZLbIJ6VEeWbOcCd2AFRuA">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_oZLbIZ6VEeWbOcCd2AFRuA" source="DANNOTATION_CUSTOMIZATION_KEY">
@@ -198,39 +198,39 @@
       </data>
     </ownedAnnotationEntries>
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_Sc9ZsHnGEea0Df0HniJfuA" name="SF1" incomingEdges="_Sc_O4HnGEea0Df0HniJfuA" width="7" height="7" resizeKind="NSEW">
-      <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="setProgress.melodymodeller#e543b7f1-618e-45a3-b73c-4876f14e72e0"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="setProgress.melodymodeller#e543b7f1-618e-45a3-b73c-4876f14e72e0"/>
+      <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="setProgress.capella#e543b7f1-618e-45a3-b73c-4876f14e72e0"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="setProgress.capella#e543b7f1-618e-45a3-b73c-4876f14e72e0"/>
       <ownedStyle xmi:type="diagram:Square" uid="_Sc9ZsXnGEea0Df0HniJfuA" borderSize="1" borderSizeComputationExpression="1" borderColor="9,92,46" labelPosition="node" color="197,255,166">
         <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_Sc-AwHnGEea0Df0HniJfuA" name="SF11" outgoingEdges="_Sc_O4HnGEea0Df0HniJfuA" width="7" height="7" resizeKind="NSEW">
-      <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="setProgress.melodymodeller#43d596b5-0519-41e7-bfc2-501ff6c44cc3"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="setProgress.melodymodeller#43d596b5-0519-41e7-bfc2-501ff6c44cc3"/>
+      <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="setProgress.capella#43d596b5-0519-41e7-bfc2-501ff6c44cc3"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="setProgress.capella#43d596b5-0519-41e7-bfc2-501ff6c44cc3"/>
       <ownedStyle xmi:type="diagram:Square" uid="_Sc-AwXnGEea0Df0HniJfuA" borderSize="1" borderSizeComputationExpression="1" borderColor="9,92,46" labelPosition="node" color="197,255,166">
         <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_Sc-AwnnGEea0Df0HniJfuA" name="SF2" incomingEdges="_Sc_O43nGEea0Df0HniJfuA" width="7" height="7" resizeKind="NSEW">
-      <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="setProgress.melodymodeller#326c0742-f560-422e-af2e-ab40186c7484"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="setProgress.melodymodeller#326c0742-f560-422e-af2e-ab40186c7484"/>
+      <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="setProgress.capella#326c0742-f560-422e-af2e-ab40186c7484"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="setProgress.capella#326c0742-f560-422e-af2e-ab40186c7484"/>
       <ownedStyle xmi:type="diagram:Square" uid="_Sc-n0HnGEea0Df0HniJfuA" borderSize="1" borderSizeComputationExpression="1" borderColor="9,92,46" labelPosition="node" color="197,255,166">
         <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_Sc-n0XnGEea0Df0HniJfuA" name="SF22" outgoingEdges="_Sc_O43nGEea0Df0HniJfuA" width="7" height="7" resizeKind="NSEW">
-      <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="setProgress.melodymodeller#8db8ee16-089e-4661-b446-6e3ba2f4c072"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="setProgress.melodymodeller#8db8ee16-089e-4661-b446-6e3ba2f4c072"/>
+      <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="setProgress.capella#8db8ee16-089e-4661-b446-6e3ba2f4c072"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="setProgress.capella#8db8ee16-089e-4661-b446-6e3ba2f4c072"/>
       <ownedStyle xmi:type="diagram:Square" uid="_Sc-n0nnGEea0Df0HniJfuA" borderSize="1" borderSizeComputationExpression="1" borderColor="9,92,46" labelPosition="node" color="197,255,166">
         <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_Sc_O4HnGEea0Df0HniJfuA" sourceNode="_Sc-AwHnGEea0Df0HniJfuA" targetNode="_Sc9ZsHnGEea0Df0HniJfuA">
-      <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="setProgress.melodymodeller#43d596b5-0519-41e7-bfc2-501ff6c44cc3"/>
+      <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="setProgress.capella#43d596b5-0519-41e7-bfc2-501ff6c44cc3"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_Sc_O4XnGEea0Df0HniJfuA" foldingStyle="TARGET" routingStyle="tree">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@edgeMappings[name='SFB_SystemFunction_subFunctions']/@style"/>
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_Sc_O4nnGEea0Df0HniJfuA"/>
@@ -238,7 +238,7 @@
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@edgeMappings[name='SFB_SystemFunction_subFunctions']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_Sc_O43nGEea0Df0HniJfuA" sourceNode="_Sc-n0XnGEea0Df0HniJfuA" targetNode="_Sc-AwnnGEea0Df0HniJfuA">
-      <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="setProgress.melodymodeller#8db8ee16-089e-4661-b446-6e3ba2f4c072"/>
+      <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="setProgress.capella#8db8ee16-089e-4661-b446-6e3ba2f4c072"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_Sc_O5HnGEea0Df0HniJfuA" foldingStyle="TARGET" routingStyle="tree">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@edgeMappings[name='SFB_SystemFunction_subFunctions']/@style"/>
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_Sc_O5XnGEea0Df0HniJfuA"/>
@@ -249,6 +249,6 @@
     <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']/@ownedRepresentations[name='AD%20diagram']/@filters[name='ModelExtensionFilter']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_oZLbMZ6VEeWbOcCd2AFRuA"/>
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer"/>
-    <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="setProgress.melodymodeller#c5bc9e6f-5878-4ce3-85ef-61d44ac0175c"/>
+    <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="setProgress.capella#c5bc9e6f-5878-4ce3-85ef-61d44ac0175c"/>
   </diagram:DSemanticDiagram>
 </xmi:XMI>

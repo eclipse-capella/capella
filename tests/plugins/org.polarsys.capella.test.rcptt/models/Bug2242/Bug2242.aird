@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description" uid="_T4broddeEeiv0MCZCDcVww" selectedViews="_T5KEYNdeEeiv0MCZCDcVww _UJZf0NdeEeiv0MCZCDcVww _UJsawNdeEeiv0MCZCDcVww _UJsawddeEeiv0MCZCDcVww _UJ_8wNdeEeiv0MCZCDcVww _UKvjoNdeEeiv0MCZCDcVww _ULVZgNdeEeiv0MCZCDcVww" version="14.3.0.201908231800">
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description" uid="_T4broddeEeiv0MCZCDcVww" selectedViews="_T5KEYNdeEeiv0MCZCDcVww _UJZf0NdeEeiv0MCZCDcVww _UJsawNdeEeiv0MCZCDcVww _UJsawddeEeiv0MCZCDcVww _UJ_8wNdeEeiv0MCZCDcVww _UKvjoNdeEeiv0MCZCDcVww _ULVZgNdeEeiv0MCZCDcVww" version="14.3.1.202003261200">
   <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="fragments/OA.airdfragment#_gP-3INdeEeiv0MCZCDcVww"/>
   <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="fragments/SA.airdfragment#_h2qhENdeEeiv0MCZCDcVww"/>
   <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="fragments/LA.airdfragment#_j4cyoNdeEeiv0MCZCDcVww"/>
   <semanticResources>Bug2242.afm</semanticResources>
-  <semanticResources>Bug2242.melodymodeller</semanticResources>
-  <semanticResources>fragments/OA.melodyfragment</semanticResources>
+  <semanticResources>Bug2242.capella</semanticResources>
+  <semanticResources>fragments/OA.capellafragment</semanticResources>
   <ownedViews xmi:type="viewpoint:DView" uid="_T5KEYNdeEeiv0MCZCDcVww">
     <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']"/>
   </ownedViews>

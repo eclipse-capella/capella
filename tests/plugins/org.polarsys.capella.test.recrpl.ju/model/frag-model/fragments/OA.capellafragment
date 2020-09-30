@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--Capella_Version_5.0.0-->
+<org.polarsys.capella.core.data.oa:OperationalAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/1.4.0"
+    xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/1.4.0"
+    xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/1.4.0"
+    id="2eac6da1-ef00-4848-9f9c-5c9a8c69a7ec"
+    name="Operational Analysis">
+  <ownedFunctionPkg xsi:type="org.polarsys.capella.core.data.oa:OperationalActivityPkg"
+      id="a1763e67-49b9-4050-b6a8-1291e5b5be4b" name="Operational Activities">
+    <ownedOperationalActivities xsi:type="org.polarsys.capella.core.data.oa:OperationalActivity"
+        id="b6a4bd7b-6a6e-4a5b-8711-6d9960b433cd" name="Root Operational Activity"/>
+  </ownedFunctionPkg>
+  <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.oa:OperationalCapabilityPkg"
+      id="d351908d-10a1-47dc-8379-029f8f360654" name="Operational Capabilities"/>
+  <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg" id="e44a0598-c9cb-48f8-bf72-7492044ceea7"
+      name="Interfaces"/>
+  <ownedDataPkg xsi:type="org.polarsys.capella.core.data.information:DataPkg" id="050f581b-92dc-491f-bbfd-014249588c86"
+      name="Data"/>
+  <ownedRolePkg xsi:type="org.polarsys.capella.core.data.oa:RolePkg" id="09c517e4-7b41-4faf-a7f1-105ef61d0315"
+      name="Roles"/>
+  <ownedEntityPkg xsi:type="org.polarsys.capella.core.data.oa:EntityPkg" id="7f8c05c3-89c6-478a-af63-b8aa7ca8630c"
+      name="Operational Entities"/>
+</org.polarsys.capella.core.data.oa:OperationalAnalysis>

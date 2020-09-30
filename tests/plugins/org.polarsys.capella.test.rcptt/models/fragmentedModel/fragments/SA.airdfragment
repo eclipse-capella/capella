@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description" uid="_KFxMsLrqEeadJa2S2NItsg" selectedViews="_KFxMsbrqEeadJa2S2NItsg _KFxMsrrqEeadJa2S2NItsg _KFxMs7rqEeadJa2S2NItsg _KFxMtLrqEeadJa2S2NItsg _KFxMtbrqEeadJa2S2NItsg _KFxMtrrqEeadJa2S2NItsg _KFxMt7rqEeadJa2S2NItsg" version="14.3.0.201908231800">
-  <semanticResources>SA.melodyfragment</semanticResources>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description" uid="_KFxMsLrqEeadJa2S2NItsg" selectedViews="_KFxMsbrqEeadJa2S2NItsg _KFxMsrrqEeadJa2S2NItsg _KFxMs7rqEeadJa2S2NItsg _KFxMtLrqEeadJa2S2NItsg _KFxMtbrqEeadJa2S2NItsg _KFxMtrrqEeadJa2S2NItsg _KFxMt7rqEeadJa2S2NItsg" version="14.3.1.202003261200">
+  <semanticResources>SA.capellafragment</semanticResources>
   <ownedViews xmi:type="viewpoint:DView" uid="_KFxMsbrqEeadJa2S2NItsg">
     <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
   </ownedViews>

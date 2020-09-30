@@ -2,7 +2,7 @@
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:concern="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/1.4.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/concern http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
   <viewpoint:DAnalysis uid="_IU1GwObQEeqUc8Y6CrCvEA" selectedViews="_IVsCYObQEeqUc8Y6CrCvEA _IWukMObQEeqUc8Y6CrCvEA _IfhT0ObQEeqUc8Y6CrCvEA _IgtmoObQEeqUc8Y6CrCvEA _IhAhkObQEeqUc8Y6CrCvEA _IhwIcObQEeqUc8Y6CrCvEA _IiWlYObQEeqUc8Y6CrCvEA" version="14.3.1.202003261200">
     <semanticResources>OAB-DragAndDrop.afm</semanticResources>
-    <semanticResources>OAB-DragAndDrop.melodymodeller</semanticResources>
+    <semanticResources>OAB-DragAndDrop.capella</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_IVsCYObQEeqUc8Y6CrCvEA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']"/>
     </ownedViews>
@@ -13,11 +13,11 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_LaYicebQEeqUc8Y6CrCvEA" name="[OAB] Operational Entities Package" repPath="#_LZ72gObQEeqUc8Y6CrCvEA" changeId="8340ea7f-45d8-4307-bedf-e8c4e078e1b9">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']"/>
-        <target xmi:type="org.polarsys.capella.core.data.oa:EntityPkg" href="OAB-DragAndDrop.melodymodeller#2ae0ea1d-3afb-4b36-af9f-0660ee566f74"/>
+        <target xmi:type="org.polarsys.capella.core.data.oa:EntityPkg" href="OAB-DragAndDrop.capella#2ae0ea1d-3afb-4b36-af9f-0660ee566f74"/>
       </ownedRepresentationDescriptors>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_5xtmIebQEeqUc8Y6CrCvEA" name="[OAB] Operational Entities" repPath="#_5xkcMObQEeqUc8Y6CrCvEA" changeId="9b330136-d552-490d-8913-55fb27c88723">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']"/>
-        <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.melodymodeller#2b881abc-1497-43ee-be6b-a7eda9b85609"/>
+        <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.capella#2b881abc-1497-43ee-be6b-a7eda9b85609"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_IgtmoObQEeqUc8Y6CrCvEA">
@@ -133,16 +133,16 @@
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_LcBhMebQEeqUc8Y6CrCvEA"/>
     </ownedAnnotationEntries>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_OPl1AObQEeqUc8Y6CrCvEA" name="OE Valid Target 1">
-      <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.melodymodeller#763b8cef-c9f1-43f1-b5fa-01705f5d868c"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.melodymodeller#763b8cef-c9f1-43f1-b5fa-01705f5d868c"/>
+      <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.capella#763b8cef-c9f1-43f1-b5fa-01705f5d868c"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.capella#763b8cef-c9f1-43f1-b5fa-01705f5d868c"/>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_OPl1AebQEeqUc8Y6CrCvEA" borderSize="1" borderSizeComputationExpression="1" borderColor="69,69,69" backgroundStyle="GradientTopToBottom" backgroundColor="249,248,245" foregroundColor="221,221,200">
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_OmFpcObQEeqUc8Y6CrCvEA" name="OA Source 1">
-      <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.melodymodeller#61aecda1-b7d2-4e37-a201-a3a48db9128f"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.melodymodeller#61aecda1-b7d2-4e37-a201-a3a48db9128f"/>
+      <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.capella#61aecda1-b7d2-4e37-a201-a3a48db9128f"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.capella#61aecda1-b7d2-4e37-a201-a3a48db9128f"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
@@ -152,8 +152,8 @@
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_PRv1kObQEeqUc8Y6CrCvEA" name="OE 3">
-      <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.melodymodeller#cf5a5e7b-6686-40ec-b324-2392bc08af21"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.melodymodeller#cf5a5e7b-6686-40ec-b324-2392bc08af21"/>
+      <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.capella#cf5a5e7b-6686-40ec-b324-2392bc08af21"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.capella#cf5a5e7b-6686-40ec-b324-2392bc08af21"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -162,8 +162,8 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_P76z8ObQEeqUc8Y6CrCvEA" name="OE Valid Target 2">
-        <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.melodymodeller#9ae303c1-dacf-4ff5-bb52-0c9f8f444d5c"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.melodymodeller#9ae303c1-dacf-4ff5-bb52-0c9f8f444d5c"/>
+        <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.capella#9ae303c1-dacf-4ff5-bb52-0c9f8f444d5c"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.capella#9ae303c1-dacf-4ff5-bb52-0c9f8f444d5c"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_P76z8ebQEeqUc8Y6CrCvEA" borderSize="1" borderSizeComputationExpression="1" borderColor="69,69,69" backgroundStyle="GradientTopToBottom" backgroundColor="249,248,245" foregroundColor="221,221,200">
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']/@style"/>
         </ownedStyle>
@@ -171,8 +171,8 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_ReuDcObQEeqUc8Y6CrCvEA" name="OA Source 2">
-      <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.melodymodeller#eb6e23fd-ebc1-49b9-90f6-bc3b7da015cf"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.melodymodeller#eb6e23fd-ebc1-49b9-90f6-bc3b7da015cf"/>
+      <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.capella#eb6e23fd-ebc1-49b9-90f6-bc3b7da015cf"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.capella#eb6e23fd-ebc1-49b9-90f6-bc3b7da015cf"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
@@ -182,8 +182,8 @@
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_SX8KcObQEeqUc8Y6CrCvEA" name="OA Invalid Target 3">
-      <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.melodymodeller#d4f9cdb7-7f87-4ae4-9b37-83cf27662e01"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.melodymodeller#d4f9cdb7-7f87-4ae4-9b37-83cf27662e01"/>
+      <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.capella#d4f9cdb7-7f87-4ae4-9b37-83cf27662e01"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.capella#d4f9cdb7-7f87-4ae4-9b37-83cf27662e01"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
@@ -193,8 +193,8 @@
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_SvCb0ObQEeqUc8Y6CrCvEA" name="OA Source 3">
-      <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.melodymodeller#fd4263d8-6028-413b-8128-6c0c6cbc8a16"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.melodymodeller#fd4263d8-6028-413b-8128-6c0c6cbc8a16"/>
+      <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.capella#fd4263d8-6028-413b-8128-6c0c6cbc8a16"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.capella#fd4263d8-6028-413b-8128-6c0c6cbc8a16"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
@@ -204,8 +204,8 @@
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_TWFNsObQEeqUc8Y6CrCvEA" name="OE 7">
-      <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.melodymodeller#6f97aee4-fd4f-4026-ad33-9a1650ddb57f"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.melodymodeller#6f97aee4-fd4f-4026-ad33-9a1650ddb57f"/>
+      <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.capella#6f97aee4-fd4f-4026-ad33-9a1650ddb57f"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.capella#6f97aee4-fd4f-4026-ad33-9a1650ddb57f"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -214,8 +214,8 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_UiFGwObQEeqUc8Y6CrCvEA" name="OA Invalid Target 4">
-        <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.melodymodeller#c2f6c623-a5e2-42af-a678-33ab0a4de386"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.melodymodeller#c2f6c623-a5e2-42af-a678-33ab0a4de386"/>
+        <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.capella#c2f6c623-a5e2-42af-a678-33ab0a4de386"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.capella#c2f6c623-a5e2-42af-a678-33ab0a4de386"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
@@ -226,8 +226,8 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_Tm6fAObQEeqUc8Y6CrCvEA" name="OA Source 4">
-      <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.melodymodeller#5d9f58ca-beff-44d8-97db-f89a218a9abf"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.melodymodeller#5d9f58ca-beff-44d8-97db-f89a218a9abf"/>
+      <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.capella#5d9f58ca-beff-44d8-97db-f89a218a9abf"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.capella#5d9f58ca-beff-44d8-97db-f89a218a9abf"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
@@ -242,7 +242,7 @@
     <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']/@ownedRepresentations[name='AD%20diagram']/@filters[name='ModelExtensionFilter']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_LaFngObQEeqUc8Y6CrCvEA"/>
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer"/>
-    <target xmi:type="org.polarsys.capella.core.data.oa:EntityPkg" href="OAB-DragAndDrop.melodymodeller#2ae0ea1d-3afb-4b36-af9f-0660ee566f74"/>
+    <target xmi:type="org.polarsys.capella.core.data.oa:EntityPkg" href="OAB-DragAndDrop.capella#2ae0ea1d-3afb-4b36-af9f-0660ee566f74"/>
   </diagram:DSemanticDiagram>
   <diagram:DSemanticDiagram uid="_5xkcMObQEeqUc8Y6CrCvEA">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_5xtmIubQEeqUc8Y6CrCvEA" source="GMF_DIAGRAMS">
@@ -344,16 +344,16 @@
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_5xtmJubQEeqUc8Y6CrCvEA"/>
     </ownedAnnotationEntries>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_6kOoMObQEeqUc8Y6CrCvEA" name="OE Valid Target 5">
-      <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.melodymodeller#56ca8893-569b-4966-9112-ddb5da5be5bf"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.melodymodeller#56ca8893-569b-4966-9112-ddb5da5be5bf"/>
+      <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.capella#56ca8893-569b-4966-9112-ddb5da5be5bf"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.capella#56ca8893-569b-4966-9112-ddb5da5be5bf"/>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_6kOoMebQEeqUc8Y6CrCvEA" borderSize="1" borderSizeComputationExpression="1" borderColor="69,69,69" backgroundStyle="GradientTopToBottom" backgroundColor="249,248,245" foregroundColor="221,221,200">
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="__2pkEObQEeqUc8Y6CrCvEA" name="OA Source 5">
-      <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.melodymodeller#e1497434-470f-4a65-87b4-2914059f89bf"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.melodymodeller#e1497434-470f-4a65-87b4-2914059f89bf"/>
+      <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.capella#e1497434-470f-4a65-87b4-2914059f89bf"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.capella#e1497434-470f-4a65-87b4-2914059f89bf"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
@@ -363,15 +363,15 @@
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_AIh-QObREeqUc8Y6CrCvEA" name="OE 4">
-      <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.melodymodeller#5054c8a8-cf15-4662-98cb-01a3b216ae2d"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.melodymodeller#5054c8a8-cf15-4662-98cb-01a3b216ae2d"/>
+      <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.capella#5054c8a8-cf15-4662-98cb-01a3b216ae2d"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.capella#5054c8a8-cf15-4662-98cb-01a3b216ae2d"/>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_AIh-QebREeqUc8Y6CrCvEA" borderSize="1" borderSizeComputationExpression="1" borderColor="69,69,69" backgroundStyle="GradientTopToBottom" backgroundColor="249,248,245" foregroundColor="221,221,200">
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_AW-p8ObREeqUc8Y6CrCvEA" name="OE Valid Target 6">
-        <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.melodymodeller#eda8661f-5e36-41e7-82e1-d9c57d5950f4"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.melodymodeller#eda8661f-5e36-41e7-82e1-d9c57d5950f4"/>
+        <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.capella#eda8661f-5e36-41e7-82e1-d9c57d5950f4"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.capella#eda8661f-5e36-41e7-82e1-d9c57d5950f4"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_AW-p8ebREeqUc8Y6CrCvEA" borderSize="1" borderSizeComputationExpression="1" borderColor="69,69,69" backgroundStyle="GradientTopToBottom" backgroundColor="249,248,245" foregroundColor="221,221,200">
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']/@style"/>
         </ownedStyle>
@@ -379,8 +379,8 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_ApTwEObREeqUc8Y6CrCvEA" name="OA Invalid Target 7">
-      <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.melodymodeller#29d989c7-1d2c-4fcd-ae97-b451bef991d6"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.melodymodeller#29d989c7-1d2c-4fcd-ae97-b451bef991d6"/>
+      <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.capella#29d989c7-1d2c-4fcd-ae97-b451bef991d6"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.capella#29d989c7-1d2c-4fcd-ae97-b451bef991d6"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
@@ -390,8 +390,8 @@
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_BLIqwObREeqUc8Y6CrCvEA" name="OE 3">
-      <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.melodymodeller#c43ed794-6117-4270-9cca-850c5c64284b"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.melodymodeller#c43ed794-6117-4270-9cca-850c5c64284b"/>
+      <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.capella#c43ed794-6117-4270-9cca-850c5c64284b"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.capella#c43ed794-6117-4270-9cca-850c5c64284b"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -400,8 +400,8 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_BUhQQObREeqUc8Y6CrCvEA" name="OA Invalid Target 8">
-        <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.melodymodeller#ea80860d-1487-4fe9-af2a-c46b628f5467"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.melodymodeller#ea80860d-1487-4fe9-af2a-c46b628f5467"/>
+        <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.capella#ea80860d-1487-4fe9-af2a-c46b628f5467"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.capella#ea80860d-1487-4fe9-af2a-c46b628f5467"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
@@ -412,8 +412,8 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_EJbn4ObREeqUc8Y6CrCvEA" name="OA Source 6">
-      <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.melodymodeller#1ede86e5-2ff0-4c41-9575-5297e0bcfe5b"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.melodymodeller#1ede86e5-2ff0-4c41-9575-5297e0bcfe5b"/>
+      <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.capella#1ede86e5-2ff0-4c41-9575-5297e0bcfe5b"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.capella#1ede86e5-2ff0-4c41-9575-5297e0bcfe5b"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
@@ -423,8 +423,8 @@
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_Ebm9AObREeqUc8Y6CrCvEA" name="OA Source 7">
-      <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.melodymodeller#1ec88d5f-a426-4636-adb4-0b99f70a5f01"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.melodymodeller#1ec88d5f-a426-4636-adb4-0b99f70a5f01"/>
+      <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.capella#1ec88d5f-a426-4636-adb4-0b99f70a5f01"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.capella#1ec88d5f-a426-4636-adb4-0b99f70a5f01"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
@@ -434,8 +434,8 @@
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_EmySQObREeqUc8Y6CrCvEA" name="OA Source 8">
-      <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.melodymodeller#39095f56-71f4-43cc-ae08-9e740bda13c9"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.melodymodeller#39095f56-71f4-43cc-ae08-9e740bda13c9"/>
+      <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.capella#39095f56-71f4-43cc-ae08-9e740bda13c9"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.capella#39095f56-71f4-43cc-ae08-9e740bda13c9"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
@@ -450,6 +450,6 @@
     <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']/@ownedRepresentations[name='AD%20diagram']/@filters[name='ModelExtensionFilter']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_5xkcMebQEeqUc8Y6CrCvEA"/>
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer"/>
-    <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.melodymodeller#2b881abc-1497-43ee-be6b-a7eda9b85609"/>
+    <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.capella#2b881abc-1497-43ee-be6b-a7eda9b85609"/>
   </diagram:DSemanticDiagram>
 </xmi:XMI>
