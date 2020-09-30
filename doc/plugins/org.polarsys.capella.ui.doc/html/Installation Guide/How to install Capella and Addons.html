@@ -20,8 +20,16 @@
 		<p>Starting with Capella 5.0, Open JDK 14 is directly embedded in the product.
 			Having a Java environment on your machine is no longer a requirement.</p>
 		<p>If however you want to use a different JDK version, you need to modify the 
-			<b>capella.ini</b> file. Please refer to the 
-			<a href="https://wiki.eclipse.org/Eclipse.ini" target="_blank">following link</a> for more information.
+			<b>capella.ini</b> file at 2 places. The first one is to add a -vm argument that points to your JDK location. The second one is to modify -Dosgi.requiredJavaVersion argument to point to your JDK version. Please refer to the 
+			<a href="https://wiki.eclipse.org/Eclipse.ini">following link</a> for more information. Notice that the minimum supported version of JDK is JDK 8.
+		</p>
+		<h4 id="Trouble_shooting">Trouble shooting</h4>
+		<p>If launching Capella in Windows OS ends up with the following pop-up, it means that your OS misses some libraries to be compatible with JDK 14.</p>
+		<p>
+			<img border="0" src="Images/LaunchingPopup.png"/>
+		</p>
+		<p>The solution is to install this Microsoft's update according to your OS version: 
+			<a href="https://support.microsoft.com/en-us/help/2999226/update-for-universal-c-runtime-in-windows">https://support.microsoft.com/en-us/help/2999226/update-for-universal-c-runtime-in-windows</a>
 		</p>
 		<h3 id="Capella_Installation_Procedure">Capella Installation Procedure</h3>
 		<p>Before starting the installation, the target location of Capella must be cleaned:</p>
