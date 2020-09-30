@@ -14,7 +14,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ui.workbench,
  org.eclipse.jface,
  org.polarsys.capella.core.ui.toolkit,
- org.polarsys.capella.core.diagram.helpers
+ org.polarsys.capella.core.diagram.helpers,
+ org.polarsys.capella.core.sirius.ui
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.projection.scenario,
