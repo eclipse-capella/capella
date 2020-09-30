@@ -34,6 +34,7 @@ import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
+import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.model.helpers.naming.NamingConstants;
 import org.polarsys.capella.core.model.skeleton.impl.cmd.CreateCtxArchiCmd;
 import org.polarsys.capella.core.model.skeleton.impl.cmd.CreateEngSystemCmd;
@@ -90,7 +91,7 @@ public class MoveElementToNewResourceTest extends AbstractReflectiveCrossReferen
     SemanticEditingDomain editingDomain = (SemanticEditingDomain) getExecutionManager().getEditingDomain();
     ECrossReferenceAdapter crossReferencer = editingDomain.getCrossReferencer();
 
-    LogicalComponent logicalComponent = (LogicalComponent)logicalArchitecture[0].getSystem();
+    LogicalComponent logicalComponent = (LogicalComponent) logicalArchitecture[0].getSystem();
     // Check the Logical System has cross referencers registered as eAdapters().
     assertTrue(logicalComponent.eAdapters().contains(crossReferencer));
   }
@@ -110,7 +111,8 @@ public class MoveElementToNewResourceTest extends AbstractReflectiveCrossReferen
   protected void preRunTest() {
     super.preRunTest();
     IProject project = TestHelper.createCapellaProject("MoveElementTestProject");
-    String fullPath = project.getFullPath().toString() + "/moveElementTestProject.melodymodeller";
+    String fullPath = project.getFullPath().toString() + "/moveElementTestProject."
+        + CapellaResourceHelper.CAPELLA_MODEL_FILE_EXTENSION;
     URI capellaModelURI = URI.createPlatformResourceURI(fullPath, true);
     _resource = getExecutionManager().getEditingDomain().getResourceSet().createResource(capellaModelURI);
     _capellaProject = CapellamodellerFactory.eINSTANCE.createProject("moveElementTestProject");

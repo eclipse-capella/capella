@@ -37,6 +37,7 @@ import org.polarsys.capella.common.libraries.ModelInformation;
 import org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage;
 import org.polarsys.capella.core.data.core.validation.constraint.ReferentialConstraintsResourceSetListener;
 import org.polarsys.capella.core.libraries.model.CapellaLibraryExt;
+import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.model.skeleton.CapellaModelSkeleton;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
 import org.polarsys.capella.test.validation.rules.ju.TestValidationRulesPlugin;
@@ -50,26 +51,28 @@ public abstract class Rule_I37_38 extends BasicTestCase {
   CapellaModelSkeleton projectSkeleton;
   CapellaModelSkeleton librarySkeleton;
   IViewPart moveView;
-  
+
   @SuppressWarnings("nls")
   @Override
   public void setUp() throws Exception {
     super.setUp();
     manager = ExecutionManagerRegistry.getInstance().addNewManager();
 
+    String projectPathName = "/project/project." + CapellaResourceHelper.CAPELLA_MODEL_FILE_EXTENSION;
     projectSkeleton = new CapellaModelSkeleton.Builder(manager)
-        .setURI(URI.createPlatformResourceURI("/project/project.melodymodeller", false)) // must be platform:/resource or libs won't work..
-        .setName("project")
-        .build();
+        .setURI(URI.createPlatformResourceURI(projectPathName, false)) // must be platform:/resource or libs won't
+                                                                       // work..
+        .setName("project").build();
 
+    String libraryPathName = "/library/library." + CapellaResourceHelper.CAPELLA_MODEL_FILE_EXTENSION;
     librarySkeleton = new CapellaModelSkeleton.Builder(manager)
-        .setURI(URI.createPlatformResourceURI("/library/library.melodymodeller", false))
-        .setName("library")
-        .setRootType(CapellamodellerPackage.Literals.LIBRARY)
-        .build();
+        .setURI(URI.createPlatformResourceURI(libraryPathName, false)).setName("library")
+        .setRootType(CapellamodellerPackage.Literals.LIBRARY).build();
 
-    final ModelInformation projectInformation = CapellaLibraryExt.getModelInformation(projectSkeleton.getProject().eResource(), false);
-    final ModelInformation libraryInformation = CapellaLibraryExt.getModelInformation(librarySkeleton.getProject().eResource(), false);
+    final ModelInformation projectInformation = CapellaLibraryExt
+        .getModelInformation(projectSkeleton.getProject().eResource(), false);
+    final ModelInformation libraryInformation = CapellaLibraryExt
+        .getModelInformation(librarySkeleton.getProject().eResource(), false);
 
     manager.execute(new AbstractReadWriteCommand() {
       @Override
@@ -83,22 +86,19 @@ public abstract class Rule_I37_38 extends BasicTestCase {
 
   }
 
-
   @Override
   public void tearDown() throws Exception {
     ExecutionManagerRegistry.getInstance().removeManager(manager);
     super.tearDown();
   }
 
-
   /**
-   * Executes the runnable in a read write command.
-   * RollbackExceptions and InterruptedExceptions are forwarded to the caller.
-   * TODO move to ExecutionManager for 1.4 see https://bugs.polarsys.org/show_bug.cgi?id=1874
+   * Executes the runnable in a read write command. RollbackExceptions and InterruptedExceptions are forwarded to the
+   * caller. TODO move to ExecutionManager for 1.4 see https://bugs.polarsys.org/show_bug.cgi?id=1874
    * 
    * @param r
-   * @throws RollbackException 
-   * @throws InterruptedException 
+   * @throws RollbackException
+   * @throws InterruptedException
    */
   protected void executeCommand(final Runnable r) throws InterruptedException, RollbackException {
     RecordingCommand rc = new RecordingCommand(manager.getEditingDomain()) {
@@ -111,9 +111,9 @@ public abstract class Rule_I37_38 extends BasicTestCase {
     stack.execute(rc, Collections.emptyMap());
   }
 
-
   protected void expectNoRollback(final Runnable r) throws InterruptedException, RollbackException {
-    ReferentialConstraintsRecorder recorder = new ReferentialConstraintsRecorder(manager.getEditingDomain(), new String[0]);
+    ReferentialConstraintsRecorder recorder = new ReferentialConstraintsRecorder(manager.getEditingDomain(),
+        new String[0]);
     try {
       executeCommand(r);
     } finally {
@@ -121,8 +121,9 @@ public abstract class Rule_I37_38 extends BasicTestCase {
     }
   }
 
-  protected void expectRollback(final Runnable r, String... expectedErrors) throws InterruptedException {    
-    ReferentialConstraintsRecorder recorder = new ReferentialConstraintsRecorder(manager.getEditingDomain(), expectedErrors);
+  protected void expectRollback(final Runnable r, String... expectedErrors) throws InterruptedException {
+    ReferentialConstraintsRecorder recorder = new ReferentialConstraintsRecorder(manager.getEditingDomain(),
+        expectedErrors);
     try {
       executeCommand(r);
     } catch (RollbackException expected) {
@@ -141,7 +142,7 @@ public abstract class Rule_I37_38 extends BasicTestCase {
     private final TransactionalEditingDomain domain;
     private final ReferentialConstraintsResourceSetListener listener;
 
-    public ReferentialConstraintsRecorder(TransactionalEditingDomain domain, String...expectedErrors) {
+    public ReferentialConstraintsRecorder(TransactionalEditingDomain domain, String... expectedErrors) {
       this.missingExpected = new ArrayList<>(Arrays.asList(expectedErrors)); // we want to modify the collection later..
       this.domain = domain;
       listener = new ReferentialConstraintsResourceSetListener(this::handleDiagnostic);
@@ -149,17 +150,17 @@ public abstract class Rule_I37_38 extends BasicTestCase {
     }
 
     public void handleDiagnostic(Diagnostic ms) throws RollbackException {
-      for (Iterator<String> it = missingExpected.iterator(); it.hasNext(); ) {
+      for (Iterator<String> it = missingExpected.iterator(); it.hasNext();) {
         String expected = it.next();
         if (findDiagnostic(expected, ms.getChildren()) != null) {
           it.remove();
         }
       }
-      throw new RollbackException(new Status(IStatus.ERROR, TestValidationRulesPlugin.PLUGIN_ID, "rolling back"));  //$NON-NLS-1$
+      throw new RollbackException(new Status(IStatus.ERROR, TestValidationRulesPlugin.PLUGIN_ID, "rolling back")); //$NON-NLS-1$
     }
 
     private Diagnostic findDiagnostic(String message, Collection<Diagnostic> diagnostics) {
-      for(Diagnostic d : diagnostics) {
+      for (Diagnostic d : diagnostics) {
         if (message.equals(d.getMessage())) {
           return d;
         }

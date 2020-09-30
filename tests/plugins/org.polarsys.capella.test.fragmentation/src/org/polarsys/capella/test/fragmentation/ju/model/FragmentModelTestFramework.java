@@ -193,8 +193,7 @@ public abstract class FragmentModelTestFramework extends NonDirtyTestCase {
     }.run();
   }
 
-  public DiagramContext createDiagram(SessionContext context, String targetId, String diagramName,
-      Set<IFile> files) {
+  public DiagramContext createDiagram(SessionContext context, String targetId, String diagramName, Set<IFile> files) {
     return new CreateDiagramStep(context, targetId, diagramName) {
       @Override
       protected void postRunTest() {
@@ -232,8 +231,7 @@ public abstract class FragmentModelTestFramework extends NonDirtyTestCase {
   }
 
   public class FragmentCreateDEdgeTool extends CreateDEdgeTool {
-    public FragmentCreateDEdgeTool(DiagramContext context, String toolName, String idSource,
-        String idTarget) {
+    public FragmentCreateDEdgeTool(DiagramContext context, String toolName, String idSource, String idTarget) {
       super(context, toolName, idSource, idTarget);
     }
 
@@ -375,7 +373,7 @@ public abstract class FragmentModelTestFramework extends NonDirtyTestCase {
           if (uri.toString().contains("SYSOA2")) {
             System.out.println("aaa");
           }
-          if (uri.toString().contains(fragmentURIName + ".melody")) {
+          if (uri.toString().contains(fragmentURIName + ".capella")) {
             m2Resource = (CapellamodellerResourceImpl) current;
             break;
           }
@@ -405,8 +403,7 @@ public abstract class FragmentModelTestFramework extends NonDirtyTestCase {
 
       @Override
       protected void runTest() {
-        Collection<DRepresentation> allRepresentations = DialectManager.INSTANCE
-            .getAllRepresentations(session);
+        Collection<DRepresentation> allRepresentations = DialectManager.INSTANCE.getAllRepresentations(session);
         for (DRepresentation currentRepresentation : allRepresentations) {
           // table case: put the numbers of columns and lines in a map
           if (currentRepresentation instanceof DTable) {

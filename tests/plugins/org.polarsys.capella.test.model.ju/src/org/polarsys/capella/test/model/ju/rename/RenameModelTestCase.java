@@ -60,6 +60,6 @@ public class RenameModelTestCase extends RenameModel {
       
     }
     
-    //In case of remote model, the .melodymodeller resource does not exist => Not testable
+    //In case of remote model, the capella resource does not exist => Not testable
   }
 }

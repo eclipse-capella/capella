@@ -24,19 +24,7 @@
             genModel="model/layout.genmodel"/>
    </extension>
 
-   <extension
-         point="org.polarsys.capella.core.data.migration.migrationContributors">
-      <migrationContributor
-            class="org.polarsys.capella.test.diagram.layout.ju.MigrationContributor">
-      </migrationContributor>
-   </extension>
    
-   <extension
-         point="org.polarsys.capella.core.data.migration.migrationContributions">
-      <migrationContribution
-            class="org.polarsys.capella.test.diagram.layout.ju.MigrationContribution">
-      </migrationContribution>
-   </extension>
 
 	<extension
 	      point="org.eclipse.core.runtime.adapters">
