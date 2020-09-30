@@ -73,6 +73,9 @@ public class ITopDownConstants {
   public static final String OPTIONS_OP2OAS_MESSAGE_WITH_REPLY = "op2oas.msg.with.reply";
 
   public static final String OPTIONS_OP2OAS_SEQUENCE_MESSAGE_STRATEGY_DEFAULT = OPTIONS_OP2OAS_MESSAGE_ONE_WAY;
+  
+  public static final String OPTIONS_TRANSITION__SCENARIO_INITIALIZE = "transition.scenario.initialize";
+  public static final Boolean OPTIONS_TRANSITION__SCENARIO_INITIALIZE_DEFAULT = Boolean.FALSE;
 
   public static final String OPTIONS_LOG = "log.enabled";
   public static final Boolean OPTIONS_LOG__DEFAULT = Boolean.TRUE;

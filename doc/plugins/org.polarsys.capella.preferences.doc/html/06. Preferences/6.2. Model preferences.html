@@ -135,12 +135,15 @@
 			<img height="633" width="874" border="0" src="Images/6.2.%20Model%20preferences_html_m2492a832.png"/>
 		</p>
 		<p>When &ldquo;
-			<b>Reuse of components</b>&rdquo; is activated, it activates to enable the reuse of components, creating several ï¿½Partsï¿½ from a Type. During a project creation, it activate a performance to reuse components.
+			<b>Reuse of components</b>&rdquo; is activated, it activates to enable the reuse of components, creating several Parts from a Type. During a project creation, it activate a performance to reuse components.
 		</p>
 		<p>
 			<img height="350" width="500" border="0" src="Images/6.2_Model preferences8.png"/>
 		</p>
-		<p>In diagrams, you can use the ï¿½Reuse Componentsï¿½ palette tool. In Properties, selecting the ï¿½Partï¿½ will provide a way to select an available Type (e.g. Logical Component, Physical Components...).</p>
+		<p>In diagrams, you can use the 
+			<b>Reuse Components</b> palette tool. In Properties, selecting the 
+			<b>Part</b> will provide a way to select an available Type (e.g. Logical Component, Physical Components...).
+		</p>
 		<p>When &ldquo;
 			<b>Multiple inheritance allowed</b>&rdquo; is activated, a Class can inherit from several other Classes. Otherwise, it can only have one inheritance ancestor.
 		</p>
@@ -246,20 +249,20 @@
 				<b>Propagate LC / LA breakdown in physical architecture</b>&rdquo; and &ldquo;
 				<b>Propagate only leaf LC / LA in physical architecture</b>&rdquo; specifies whether the breakdown of Logical Components is kept at physical level or not.
 			</li>
-			<li>The checkbox &ldquo;
-				<b>Transit interfaces handled by Components</b>&rdquo; specifies whether interfaces are realized from one architecture to another when performing a transition. For example, if this preference is not activated, Physical Components will directly implement / use / provide / require interface located in the system analysis and logical architecture.
+			<li>The checkbox 
+				<b>&ldquo;Transit interfaces handled by Components&rdquo;</b> specifies whether interfaces are realized from one architecture to another when performing a transition. For example, if this preference is not activated, Physical Components will directly implement / use / provide / require interface located in the system analysis and logical architecture.
 			</li>
-			<li>The checkbox &ldquo;
-				<b>Transit allocated Exchange Items while transition of Interfaces, Functions or Components</b>&rdquo; specifies whether Interfaces, Functions or Components transition triggers transition of related Exchange Items (i.e. duplicates Exchange Items from one engineering phase to the following one). If not activated, Interface, Functions and Component Exchanges in the target engineering phase will still refer the Exchange Items located in the previous engineering phase.
+			<li>The checkbox 
+				<b>&ldquo;Transit allocated Exchange Items while transition of Interfaces, Functions or Components&rdquo;</b> specifies whether Interfaces, Functions or Components transition triggers transition of related Exchange Items (i.e. duplicates Exchange Items from one engineering phase to the following one). If not activated, Interface, Functions and Component Exchanges in the target engineering phase will still refer the Exchange Items located in the previous engineering phase.
 			</li>
-			<li>The checkbox &ldquo;
-				<b>Transit Data Types handled by Exchange Items while transition of Exchange Items</b>&rdquo; specifies whether Exchange Items transition triggers transition of related Data (i.e. duplicates Data from one engineering phase to the following one). If not activated, Exchange Items in the target engineering phase will still refer the Data elements located in the previous engineering phase.
+			<li>The checkbox 
+				<b>&ldquo;Transit Data Types handled by Exchange Items while transition of Exchange Items&rdquo;</b> specifies whether Exchange Items transition triggers transition of related Data (i.e. duplicates Data from one engineering phase to the following one). If not activated, Exchange Items in the target engineering phase will still refer the Data elements located in the previous engineering phase.
 			</li>
-			<li>The checkbox &ldquo;
-				<b>Transit State Machines owned by a Component while transition of Components</b>&rdquo; specifies whether State Machines transition is triggered when performing a Component transition.
+			<li>The checkbox 
+				<b>&ldquo;Transit State Machines owned by a Component while transition of Components&rdquo;</b> specifies whether State Machines transition is triggered when performing a Component transition.
 			</li>
-			<li>The checkbox &ldquo;
-				<b>Transit Functional elements allocated by an Operational Entity or Operational Actor while their transition</b>&rdquo; specifies whether Operational Activities are transformed into System Functions when performing a transition of Operational Entities or Actors.
+			<li>The checkbox 
+				<b>&ldquo;Transit Functional elements allocated by an Operational Entity or Operational Actor while their transition&rdquo;</b> specifies whether Operational Activities are transformed into System Functions when performing a transition of Operational Entities or Actors.
 			</li>
 			<li>The checkbox 
 				<b>&ldquo;Include involved elements&rdquo;</b> on the Property Values section specifies whether involved elements will be propagated while a transition of Property Values
@@ -270,13 +273,16 @@
 			<li>The checkbox 
 				<b>&ldquo;Create Component Exchange Between provider/requirer ports&rdquo;</b> specifies if the Interface generation should create a Component Exchange between each pair of Interface provider/requirer ports if such an exchange does not already exist.
 			</li>
-		</ul>
-		<ul>
 			<li>The checkbox 
-				<b>Transit Physical Components to Configuration Items</b> specifies whether Physical Components should be transformed into Configuration Items when performing a transition or an initialization from the Physical Architecture to EPBS level.
+				<b>&ldquo;Transit Physical Components to Configuration Items&rdquo;</b> specifies whether Physical Components should be transformed into Configuration Items when performing a transition or an initialization from the Physical Architecture to EPBS level.
+			</li>
+			<li>The checkbox 
+				<b>&ldquo;Initialize the creation of related scenario diagram&rdquo;</b> specifies whether after transition, the related scenario diagram shall be initialized; this option is disabled by default.
 			</li>
 		</ul>
 		<p>
+			<img height="800" width="750" border="0" src="Images/Capella_Preferences_Transitions.png"/>
+
 			<br/>
 
 			<br/>
