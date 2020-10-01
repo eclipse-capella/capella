@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IStatus;
@@ -52,6 +53,7 @@ import org.polarsys.capella.core.data.interaction.MessageKind;
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.interaction.ScenarioKind;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
+import org.polarsys.capella.core.data.interaction.StateFragment;
 import org.polarsys.capella.core.data.interaction.TimeLapse;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.oa.OperationalCapability;
@@ -59,32 +61,35 @@ import org.polarsys.capella.core.model.helpers.ScenarioExt;
 import org.polarsys.capella.core.model.helpers.SequenceMessageExt;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaDeleteCommand;
 import org.polarsys.capella.core.sirius.analysis.activator.SiriusViewActivator;
+import org.polarsys.capella.core.sirius.analysis.cache.ScenarioCache;
+import org.polarsys.capella.core.sirius.analysis.cache.ScenarioCache.SemanticCandidateContext;
 
 public class SequenceDiagramServices {
 
-  public static List<Execution> getExecutionsFromInstanceRoleOrParentExecution(EObject obj) {
-    if (obj instanceof InstanceRole) {
-      return getExecutionsFromInstanceRole((InstanceRole) obj);
-    }
-    return getExecutionFromExecution((Execution) obj);
-  }
-
-  private static Execution top(List<Execution> stack) {
-    if (stack.size() == 0) {
+  /**
+   * Return covered instance role for EObject.
+   * 
+   * @param eObject
+   *          EObject
+   * @return covered instance role.
+   */
+  public static InstanceRole currentInstanceRole(EObject eObject) {
+    if (eObject instanceof InstanceRole) {
+      return (InstanceRole) eObject;
+    } else if (eObject instanceof Execution) {
+      return ScenarioCache.getInstance().getInteractionCache(Execution::getCovered, (Execution) eObject);
+    } else if (eObject instanceof AbstractEnd) {
+      return ScenarioCache.getInstance().getInteractionCache(AbstractEnd::getCovered, (AbstractEnd) eObject);
+    } else if (eObject instanceof StateFragment) {
+      return ScenarioCache.getInstance()
+          .getInteractionCache(state -> currentInstanceRole(((StateFragment) state).getStart()), eObject);
+    } else {
       return null;
     }
-    return (stack.get(stack.size() - 1));
   }
 
-  /**
-   * Return executions which are just under an other execution.
-   * 
-   * @param objP
-   *          the execution
-   * @return the list of result executions
-   */
-  private static List<Execution> getExecutionFromExecution(Execution execution) {
-    return SequenceMessageExt.getExecutionFromExecution(execution);
+  public static Collection<Execution> getExecutionsFromInstanceRoleOrParentExecution(EObject eObject) {
+    return ScenarioCache.getInstance().getExecutionSemanticCandidates(currentInstanceRole(eObject), eObject);
   }
 
   public static List<InteractionFragment> getOrderedInteractionFragments(Scenario scenario) {
@@ -92,40 +97,6 @@ public class SequenceDiagramServices {
       return new ArrayList<InteractionFragment>();
     }
     return scenario.getOwnedInteractionFragments();
-  }
-
-  private static List<Execution> getExecutionsFromInstanceRole(InstanceRole ir) {
-    List<Execution> result = new ArrayList<Execution>();
-
-    Scenario scenario = (Scenario) ir.eContainer();
-    List<Execution> executionStack = new ArrayList<Execution>();
-    for (InteractionFragment ifgt : getOrderedInteractionFragments(scenario)) {
-      if (ifgt instanceof AbstractEnd) {
-        AbstractEnd ae = (AbstractEnd) ifgt;
-        if (ae.getCovered() == ir) {
-          // if ae starts an exception, the execution is stacked
-          // if ae ends an exception, the execution is unstacked
-          for (TimeLapse laptime : scenario.getOwnedTimeLapses()) {
-            if (laptime instanceof Execution) {
-              Execution exec2 = (Execution) laptime;
-              if (exec2.getCovered() == ir) {
-                if (exec2.getStart() == ae) {
-                  if (top(executionStack) == null) {
-                    result.add(exec2);
-                  }
-                  executionStack.add(exec2);
-                }
-                if (exec2.getFinish() == ae) {
-                  executionStack.remove(exec2);
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-
-    return result;
   }
 
   public static EObject getSendingEndEvent(SequenceMessage message) {
@@ -141,16 +112,13 @@ public class SequenceDiagramServices {
     if (end == null) {
       return message; // found message case
     }
+    InstanceRole currentInstanceRole = currentInstanceRole(end);
+    List<SemanticCandidateContext> semanticCandidateContexts = ScenarioCache.getInstance().getSemanticCandidateContexts(currentInstanceRole);
 
-    Scenario sc = (Scenario) message.eContainer();
-    for (TimeLapse exec : sc.getOwnedTimeLapses()) {
-      if (exec.getFinish() == end) {
-        return exec;
-      }
-    }
-    Execution execution = getExecutionOfMessageEnd(end);
+    Optional<SemanticCandidateContext> sendingEvent = semanticCandidateContexts.stream()
+        .filter(ec -> ec.isStart() && ec.getElement().equals(message)).findFirst();
+    return sendingEvent.isPresent() ? sendingEvent.get().getParent() : currentInstanceRole;
 
-    return execution == null ? end.getCovered() : execution;
   }
 
   public static EObject getReceivingEnd(SequenceMessage message) {
@@ -158,52 +126,13 @@ public class SequenceDiagramServices {
     if (end == null) {
       return message; // lost message case
     }
-    Scenario sc = (Scenario) message.eContainer();
-    for (TimeLapse exec : sc.getOwnedTimeLapses()) {
-      if (exec.getStart() == end) {
-        return exec;
-      }
-    }
-    Execution execution = getExecutionOfMessageEnd(end);
-    return execution == null ? end.getCovered() : execution;
-  }
+    InstanceRole currentInstanceRole = currentInstanceRole(end);
+    List<SemanticCandidateContext> semanticCandidateContexts = ScenarioCache.getInstance().getSemanticCandidateContexts(currentInstanceRole);
 
-  /**
-   * return the execution which start the messageEnd taken in parameter.
-   * 
-   * @param end
-   * @return
-   */
-  private static Execution getExecutionOfMessageEnd(MessageEnd end) {
-    Scenario scenario = getScenario(end);
-    InstanceRole currentIR = end.getCovered();
-    List<Execution> executionStack = new ArrayList<Execution>();
-    for (InteractionFragment ifgt : scenario.getOwnedInteractionFragments()) {
-      if (ifgt instanceof AbstractEnd) {
-        AbstractEnd ae = (AbstractEnd) ifgt;
-        if (ae.getCovered() == currentIR) {
-          // if ae starts an exception, the execution is stacked
-          // if ae ends an exception, the execution is unstacked
-          for (TimeLapse laptime : scenario.getOwnedTimeLapses()) {
-            if (laptime instanceof Execution) {
-              Execution execution = (Execution) laptime;
-              if (execution.getCovered() == currentIR) {
-                if (execution.getStart() == ae) {
-                  executionStack.add(execution);
-                }
-                if (execution.getFinish() == ae) {
-                  executionStack.remove(execution);
-                }
-              }
-            }
-          }
-          if (ae == end) {
-            return top(executionStack);
-          }
-        }
-      }
-    }
-    return null;
+    Optional<SemanticCandidateContext> receivingEvent = semanticCandidateContexts.stream()
+        .filter(ec -> !ec.isStart() && ec.getElement().equals(message)).findFirst();
+    return receivingEvent.isPresent() ? receivingEvent.get().getParent() : currentInstanceRole;
+
   }
 
   /**
@@ -247,8 +176,8 @@ public class SequenceDiagramServices {
     if (object instanceof SequenceMessage) {
       SequenceMessage reorderedMessage = (SequenceMessage) object;
       reorderSequenceMessage(scenario, newPredecessor, newPredecessorOfEnd, reorderedMessage);
-    }  else if (object instanceof TimeLapse) {
-        TimeLapse execution = (TimeLapse) object;
+    } else if (object instanceof TimeLapse) {
+      TimeLapse execution = (TimeLapse) object;
       reorderTimeLapse(scenario, newPredecessor, newPredecessorOfEnd, execution);
     } else if (object instanceof InteractionState) {
       InteractionState interactionState = (InteractionState) object;
@@ -256,7 +185,7 @@ public class SequenceDiagramServices {
     } else if (object instanceof InteractionOperand) {
       InteractionOperand interactionOperand = (InteractionOperand) object;
       reorderInteractionOperand(scenario, newPredecessor, newPredecessorOfEnd, interactionOperand);
-    } 
+    }
     return object;
   }
 
@@ -276,16 +205,16 @@ public class SequenceDiagramServices {
     int currentFragmentIndex = -1;
     if (currentFragment != null) {
       currentFragmentIndex = scenario.getOwnedInteractionFragments().indexOf(currentFragment);
-    int currentIndexNewPredecessor = -1;
-    if (newPredecessor != null) {
-      currentIndexNewPredecessor = scenario.getOwnedInteractionFragments().indexOf(newPredecessor);
-    }
+      int currentIndexNewPredecessor = -1;
+      if (newPredecessor != null) {
+        currentIndexNewPredecessor = scenario.getOwnedInteractionFragments().indexOf(newPredecessor);
+      }
 
-    // Reorder shall use move method instead of remove/add
-    if (currentFragmentIndex < currentIndexNewPredecessor) {
-      scenario.getOwnedInteractionFragments().move(currentIndexNewPredecessor, currentFragmentIndex);
-    } else if (currentFragmentIndex > currentIndexNewPredecessor) {
-      scenario.getOwnedInteractionFragments().move(currentIndexNewPredecessor + 1, currentFragmentIndex);
+      // Reorder shall use move method instead of remove/add
+      if (currentFragmentIndex < currentIndexNewPredecessor) {
+        scenario.getOwnedInteractionFragments().move(currentIndexNewPredecessor, currentFragmentIndex);
+      } else if (currentFragmentIndex > currentIndexNewPredecessor) {
+        scenario.getOwnedInteractionFragments().move(currentIndexNewPredecessor + 1, currentFragmentIndex);
       }
     }
   }
@@ -300,9 +229,9 @@ public class SequenceDiagramServices {
       InteractionFragment newPredecessorOfEnd, InteractionState interactionState) {
     reorderInteractionFragment(scenario, newPredecessor, interactionState);
   }
-  
+
   private static void reorderInteractionOperand(Scenario scenario, InteractionFragment newPredecessor,
-    InteractionFragment newPredecessorOfEnd, InteractionOperand interactionOperand) {
+      InteractionFragment newPredecessorOfEnd, InteractionOperand interactionOperand) {
     reorderInteractionFragment(scenario, newPredecessor, interactionOperand);
   }
 
@@ -329,7 +258,7 @@ public class SequenceDiagramServices {
       InteractionFragment newPredecessorOfEnd, SequenceMessage reorderedMessage) {
     AbstractEnd begin = reorderedMessage.getSendingEnd();
     AbstractEnd end = reorderedMessage.getReceivingEnd();
-    
+
     if (begin != null) {
       reorderInteractionFragment(scenario, newPredecessor, begin);
     }
@@ -343,7 +272,7 @@ public class SequenceDiagramServices {
     fragments = scenario.getOwnedInteractionFragments();
     messages = scenario.getOwnedMessages();
 
-    //Reorder shall use move instead of remove/add
+    // Reorder shall use move instead of remove/add
     if (newPredecessor == null) {
       // The message is pushed up to the top of the message list
       messages.move(0, reorderedMessage);
@@ -352,10 +281,10 @@ public class SequenceDiagramServices {
       SequenceMessage previousMessage = findCorrespondingPreviousMessage(fragments, newPredecessor);
       if (previousMessage != null) {
         int positionMessage = messages.indexOf(previousMessage);
-        if (positionMessage +1 <messages.size()){
-            messages.move(positionMessage +1, reorderedMessage);
+        if (positionMessage + 1 < messages.size()) {
+          messages.move(positionMessage + 1, reorderedMessage);
         } else {
-            messages.move(positionMessage, reorderedMessage);
+          messages.move(positionMessage, reorderedMessage);
         }
       } else {
         // The message is pushed up to the top of the message list
@@ -387,18 +316,19 @@ public class SequenceDiagramServices {
   }
 
   // for acceleo2aql
-  public static boolean allowCreateMessageCreation2(EObject current, EObject preTarget, EObject preSource, EObject eventEndBefore, EObject eventEndAfter) {
-	  EObject preMessageEndBefore = null;
-	  EventEnd eventEndBefore_ = (EventEnd) eventEndBefore;
-	  if (eventEndBefore_ != null)
-		  preMessageEndBefore = eventEndBefore_.getSemanticEnd();
-	  EObject preMessageEndAfter = null;
-	  EventEnd eventEndAfter_ = (EventEnd) eventEndAfter;
-	  if (eventEndAfter_ != null)
-		  preMessageEndAfter = eventEndAfter_.getSemanticEnd();	 
-	  return allowCreateMessageCreation(current, preTarget, preSource, preMessageEndBefore, preMessageEndAfter);
-  }  
-  
+  public static boolean allowCreateMessageCreation2(EObject current, EObject preTarget, EObject preSource,
+      EObject eventEndBefore, EObject eventEndAfter) {
+    EObject preMessageEndBefore = null;
+    EventEnd eventEndBefore_ = (EventEnd) eventEndBefore;
+    if (eventEndBefore_ != null)
+      preMessageEndBefore = eventEndBefore_.getSemanticEnd();
+    EObject preMessageEndAfter = null;
+    EventEnd eventEndAfter_ = (EventEnd) eventEndAfter;
+    if (eventEndAfter_ != null)
+      preMessageEndAfter = eventEndAfter_.getSemanticEnd();
+    return allowCreateMessageCreation(current, preTarget, preSource, preMessageEndBefore, preMessageEndAfter);
+  }
+
   public static boolean allowCreateMessageCreation(EObject current, EObject preTarget, EObject preSource,
       EObject preMessageEndBefore, EObject preMessageEndAfter) {
 
@@ -432,19 +362,20 @@ public class SequenceDiagramServices {
     return true;
   }
 
-  //for acceleo2aql
-  public static boolean allowDeleteMessageCreation2(EObject current, EObject preTarget, EObject preSource, EObject eventEndBefore, EObject eventEndAfter) {
-	  EObject preMessageEndBefore = null;
-	  EventEnd eventEndBefore_ = (EventEnd) eventEndBefore;
-	  if (eventEndBefore_ != null)
-		  preMessageEndBefore = eventEndBefore_.getSemanticEnd();
-	  EObject preMessageEndAfter = null;
-	  EventEnd eventEndAfter_ = (EventEnd) eventEndAfter;
-	  if (eventEndAfter_ != null)
-		  preMessageEndAfter = eventEndAfter_.getSemanticEnd();	 
-	  return allowDeleteMessageCreation(current, preTarget, preSource, preMessageEndBefore, preMessageEndAfter);
-  }  
-  
+  // for acceleo2aql
+  public static boolean allowDeleteMessageCreation2(EObject current, EObject preTarget, EObject preSource,
+      EObject eventEndBefore, EObject eventEndAfter) {
+    EObject preMessageEndBefore = null;
+    EventEnd eventEndBefore_ = (EventEnd) eventEndBefore;
+    if (eventEndBefore_ != null)
+      preMessageEndBefore = eventEndBefore_.getSemanticEnd();
+    EObject preMessageEndAfter = null;
+    EventEnd eventEndAfter_ = (EventEnd) eventEndAfter;
+    if (eventEndAfter_ != null)
+      preMessageEndAfter = eventEndAfter_.getSemanticEnd();
+    return allowDeleteMessageCreation(current, preTarget, preSource, preMessageEndBefore, preMessageEndAfter);
+  }
+
   public static boolean allowDeleteMessageCreation(EObject current, EObject preTarget, EObject preSource,
       EObject preMessageEndBefore, EObject preMessageEndAfter) {
     if (preSource.equals(preTarget)) {
@@ -478,9 +409,10 @@ public class SequenceDiagramServices {
     }
     return true;
   }
-  
+
   // for acceleo2aql wrapper
-  public static boolean allowMessageCreation2(EObject current, EObject preSource, EObject preTarget, boolean withReturn, EObject eventEndBefore, EObject eventEndAfter) {
+  public static boolean allowMessageCreation2(EObject current, EObject preSource, EObject preTarget, boolean withReturn,
+      EObject eventEndBefore, EObject eventEndAfter) {
     EObject preMessageEndBefore = null;
     EventEnd eventEndBefore_ = (EventEnd) eventEndBefore;
     if (eventEndBefore_ != null)
@@ -488,9 +420,9 @@ public class SequenceDiagramServices {
     EObject preMessageEndAfter = null;
     EventEnd eventEndAfter_ = (EventEnd) eventEndAfter;
     if (eventEndAfter_ != null)
-      preMessageEndAfter = eventEndAfter_.getSemanticEnd();  
+      preMessageEndAfter = eventEndAfter_.getSemanticEnd();
     return allowMessageCreation(current, preSource, preTarget, withReturn, preMessageEndBefore, preMessageEndAfter);
-  } 
+  }
 
   public static boolean allowMessageCreation(EObject current, EObject preSource, EObject preTarget, boolean withReturn,
       EObject endBefore, EObject endAfter) {
@@ -604,7 +536,8 @@ public class SequenceDiagramServices {
           || ((existingSequenceMessage.getSendingEnd().getCovered() == targetInstance)
               && (existingSequenceMessage.getReceivingEnd().getCovered() == sourceInstance))) {
         if (existingSequenceMessage.getReceivingEnd().getCovered() == exchangeItemLifeLine) {
-          // SequenceMessage pointing to the ExchangeItem -> can be case 1 (WRITE message) or case 3 (READ message).
+          // SequenceMessage pointing to the ExchangeItem -> can be case 1 (WRITE message) or case 3 (READ
+          // message).
           if (SequenceMessageExt.getOppositeSequenceMessage(existingSequenceMessage) != null) {
             // There is a return SequenceMessage -> it's a case 3 (READ message)
             case3found = true;
@@ -612,7 +545,8 @@ public class SequenceDiagramServices {
         }
         if ((existingSequenceMessage.getSendingEnd().getCovered() == exchangeItemLifeLine)
             && (existingSequenceMessage.getKind() != MessageKind.REPLY)) {
-          // SequenceMessage starting from the ExchangeItem (and which is not a REPLY) -> it's an ACCEPT message.
+          // SequenceMessage starting from the ExchangeItem (and which is not a REPLY) -> it's an ACCEPT
+          // message.
           case2found = true;
         }
       }
