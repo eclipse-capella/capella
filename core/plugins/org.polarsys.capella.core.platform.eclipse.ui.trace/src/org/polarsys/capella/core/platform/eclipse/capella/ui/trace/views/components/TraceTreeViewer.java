@@ -12,13 +12,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views.components;
 
-import java.awt.Dimension;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.EventObject;
 import java.util.List;
-
-import javax.swing.tree.DefaultTreeCellRenderer;
 
 import org.eclipse.core.runtime.ListenerList;
 import org.eclipse.emf.ecore.EObject;
@@ -49,7 +44,6 @@ import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.ToolBar;
 import org.eclipse.swt.widgets.ToolItem;
-import org.eclipse.swt.widgets.Tree;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
@@ -300,8 +294,6 @@ public class TraceTreeViewer implements IDoubleClickListener {
     layoutData.verticalAlignment = GridData.FILL;
     _treeViewer.getControl().setLayoutData(layoutData);
 
-    
-
     if (_traceType.equals(TraceType.SOURCE_ELEMENT)) {
       _srcEltContentProvider = new SourceElementContentProvider();
       _treeViewer.setContentProvider(_srcEltContentProvider);
@@ -490,62 +482,5 @@ public class TraceTreeViewer implements IDoubleClickListener {
     _treeViewer.refresh();
     _treeViewer.expandAll();
     setComboInput();
-  }
-  
-  
-  
-///////////////////////DELETE THIS!  
-  
-  /**
-   * Sets the item height of the given {@link TreeViewer} to the specified value.
-   * @param viewer the tree viewer to set the item height
-   * @param height the height to set, must be > 0
-   */
-  static void setItemHeight(TreeViewer viewer, int height) {
-    setItemHeight(viewer.getTree(), height);
-  }
-  
-  /**
-   * Sets the item height of the given {@link Tree} to the specified value.
-   * @param tree the tree to set the item height
-   * @param height the height to set, must be > 0
-   */
-  static void setItemHeight(Tree tree, int height) {
-    try {
-      Method method = null;
-      
-      Method[] methods = tree.getClass().getDeclaredMethods();
-      method = findMethod(methods, "setItemHeight", 1); //$NON-NLS-1$
-      if (method != null) {
-        boolean accessible = method.isAccessible();
-        method.setAccessible(true);
-        method.invoke(tree, Integer.valueOf(height));
-        method.setAccessible(accessible);
-      }
-    } catch (SecurityException e) {
-      // ignore
-    } catch (IllegalArgumentException e) {
-      // ignore
-    } catch (IllegalAccessException e) {
-      // ignore
-    } catch (InvocationTargetException e) {
-      // ignore
-    }
-  }
-  
-  /**
-   * Finds the method with the given name and parameter count from the specified methods.
-   * @param methods the methods to search through
-   * @param name the name of the method to find
-   * @param parameterCount the count of parameters of the method to find
-   * @return the method or <code>null</code> if not found
-   */
-  private static Method findMethod(Method[] methods, String name, int parameterCount) {
-    for (Method method : methods) {
-      if (method.getName().equals(name) && method.getParameterTypes().length == parameterCount) {
-        return method;
-      }
-    }
-    return null;
   }
 }

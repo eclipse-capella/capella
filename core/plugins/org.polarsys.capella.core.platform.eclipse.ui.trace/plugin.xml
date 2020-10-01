@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+  Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+  
+  This program and the accompanying materials are made available under the
+  terms of the Eclipse Public License 2.0 which is available at
+  http://www.eclipse.org/legal/epl-2.0
+  
+  SPDX-License-Identifier: EPL-2.0
+  
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+    <extension
+      point="org.eclipse.ui.commands">
+
+      <command
+        categoryId="org.polarsys.capella.core.wizards"
+        defaultHandler="org.polarsys.capella.core.platform.eclipse.capella.ui.trace.actions.MDTraceViewEditAction"
+        id="org.polarsys.capella.core.platform.sirius.ui.actions.wizard.traceManagerCommand"
+        name="%TraceManager">
+      </command>
+    </extension>
+   
+    <extension
+      point="org.eclipse.ui.commandImages">
+	  <image
+        commandId="org.polarsys.capella.core.platform.sirius.ui.actions.wizard.traceManagerCommand"
+        icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_trace.gif">
+      </image>
+    </extension>
+    
+    <extension point="org.eclipse.ui.menus">
+      <menuContribution
+        locationURI="popup:org.polarsys.capella.core.wizards?after=additions">
+        <command  commandId="org.polarsys.capella.core.platform.sirius.ui.actions.wizard.traceManagerCommand" >  
+          <visibleWhen
+            checkEnabled="false">
+              <reference
+                definitionId="org.polarsys.capella.core.platform.sirius.ui.actions.TraceManager.expression">
+              </reference>
+          </visibleWhen>
+        </command>   
+      </menuContribution>
+    </extension>
+    
+</plugin>
