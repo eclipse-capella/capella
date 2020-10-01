@@ -15,6 +15,7 @@ package org.polarsys.capella.core.transition.system.topdown.handlers.traceabilit
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -26,6 +27,8 @@ import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.InterfaceImplementation;
 import org.polarsys.capella.core.data.cs.InterfaceUse;
+import org.polarsys.capella.core.data.fa.AbstractFunction;
+import org.polarsys.capella.core.data.fa.ComponentFunctionalAllocation;
 import org.polarsys.capella.core.data.information.DataPkg;
 import org.polarsys.capella.core.data.information.communication.CommunicationLink;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
@@ -211,6 +214,37 @@ public class MergeTargetConfiguration extends ExtendedTraceabilityConfiguration 
       addMapping(map, BlockArchitectureExt.getAbstractCapabilityPkg(source, false),
           BlockArchitectureExt.getAbstractCapabilityPkg(target, false), context);
       addMapping(map, source.getSystem(), target.getSystem(), context);
+    }
+
+    @Override
+    protected void initializeMappings(EObject source, IContext context, LevelMappingTraceability map) {
+      super.initializeMappings(source, context, map);
+
+      if (source instanceof ComponentFunctionalAllocation) {
+        addComponentFunctionalReconciliation((ComponentFunctionalAllocation) source, context, map);
+      }
+    }
+
+    protected void addComponentFunctionalReconciliation(ComponentFunctionalAllocation source, IContext context,
+        LevelMappingTraceability map) {
+      AbstractFunction function = source.getFunction();
+      if (function != null) {
+        ITraceabilityHandler handler = TraceabilityHandlerHelper.getInstance(context);
+        // if isBackward, its bottom to up (source is physical allocation, and we look for logical allocation),
+        // otherwise, its from top to bottom
+        Collection<EObject> sFunctions = isBackward(map.key) ? handler.retrieveSourceElements(function, context)
+            : handler.retrieveTracedElements(function, context);
+        if (sFunctions.size() == 1) {
+          EObject sFunction = (EObject) sFunctions.iterator().next();
+          if (sFunction instanceof AbstractFunction) {
+            List<ComponentFunctionalAllocation> allocations = ((AbstractFunction) sFunction)
+                .getComponentFunctionalAllocations();
+            if (allocations.size() == 1) {
+              addMapping(map, allocations.get(0), source, context);
+            }
+          }
+        }
+      }
     }
 
     @Override
