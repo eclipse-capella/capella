@@ -173,6 +173,13 @@ public class TopDownExt {
         }
       }
 
+      // Fallback: If we can't find from the targetOperation a corresponding part which is related somehow
+      // to the source instance role part (realized or child of realized), then we propose all parts as candidate.
+      // (user rather like an inconsistent diagram than an incomplete diagram)
+      if (partBounds.isEmpty()) {
+        partBounds.addAll(relatedParts);
+      }
+
     } else if (ScenarioExt.isExchangeItemInstanceRole(sourceEnd)) {
       // If targetOperation is in target architecture, retrieve the ExchangeItemInstance in the target architecture
       // If targetOperation is in source architecture, retrieve the current ExchangeItemInstance
