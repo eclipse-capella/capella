@@ -4592,13 +4592,11 @@
               <ownedTransitions xsi:type="org.polarsys.capella.core.data.capellacommon:StateTransition"
                   id="cd74df8f-4436-4d17-91f3-507b873a328e" triggerDescription=""
                   source="#4e32329b-7f36-4710-8e3d-127a5355cb2e" target="#0dc7b156-c0e2-47e5-8c20-c598057cd5ef"
-                  effect="#92574d6e-1b96-4807-9b56-35f5aac2aeb6" triggers="#ecfb8427-ea46-4d0e-9937-e3872dd9e123"
-                  trigger="#ecfb8427-ea46-4d0e-9937-e3872dd9e123"/>
+                  effect="#92574d6e-1b96-4807-9b56-35f5aac2aeb6" triggers="#ecfb8427-ea46-4d0e-9937-e3872dd9e123"/>
               <ownedTransitions xsi:type="org.polarsys.capella.core.data.capellacommon:StateTransition"
                   id="4e580161-0c27-4393-91e6-38f709c5a0e5" summary="dzd" triggerDescription="xcfv"
                   source="#0dc7b156-c0e2-47e5-8c20-c598057cd5ef" target="#cb28b36a-183c-4bce-8575-d08774305a19"
-                  effect="#ce4cdd11-ccdb-47f9-ba8e-5be4ccef0518" triggers="#ae3a2433-90a7-4f00-9a27-7bfcb28ceac6"
-                  trigger="#ae3a2433-90a7-4f00-9a27-7bfcb28ceac6"/>
+                  effect="#ce4cdd11-ccdb-47f9-ba8e-5be4ccef0518" triggers="#ae3a2433-90a7-4f00-9a27-7bfcb28ceac6"/>
             </ownedRegions>
           </ownedStateMachines>
         </ownedSystemComponents>

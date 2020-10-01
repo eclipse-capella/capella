@@ -2,7 +2,8 @@
 
 <!--Capella_Version_5.0.0-->
 <org.polarsys.capella.core.data.capellamodeller:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/1.4.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation"
+    xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/1.4.0"
     xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/1.4.0"
     xmlns:org.polarsys.capella.core.data.capellamodeller="http://www.polarsys.org/capella/core/modeller/1.4.0"
     xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/1.4.0"
@@ -31196,7 +31197,7 @@
         <ownedLinks xsi:type="re:CatalogElementLink" id="f5f3bd95-42c6-44ee-b4f7-4b03363d320a"
             source="#a5b7c9bc-c65c-4a3f-8de3-2a81aeddd13e" target="#a5b7c9bc-c65c-4a3f-8de3-2a81aeddd13e"/>
         <ownedLinks xsi:type="re:CatalogElementLink" id="4baca61d-d6d5-4a61-9754-493b201b74e9"
-            source="#a5b7c9bc-c65c-4a3f-8de3-2a81aeddd13e"/>
+            source="#a5b7c9bc-c65c-4a3f-8de3-2a81aeddd13e" target="notation:ShapeStyle RulesOnDesignTest.aird#_pHEuAZVNEeaLverOP2ugGg"/>
       </ownedElements>
     </ownedExtensions>
   </ownedModelRoots>

@@ -816,8 +816,7 @@
         <ownedDataPkgs xsi:type="org.polarsys.capella.core.data.information:DataPkg"
             id="25fe63b8-424c-492e-918c-835cafd785b5" name="Classes"/>
         <ownedStateEvents xsi:type="org.polarsys.capella.core.data.capellacommon:ChangeEvent"
-            id="ebc7485e-718b-4753-93bf-4ee63c5ce81b" name="ChangeEvent 1" expression="#f32488b8-bcc5-4e97-acb7-4e0537b0217f"
-            condition="#f32488b8-bcc5-4e97-acb7-4e0537b0217f">
+            id="ebc7485e-718b-4753-93bf-4ee63c5ce81b" name="ChangeEvent 1" expression="#f32488b8-bcc5-4e97-acb7-4e0537b0217f">
           <ownedConstraints xsi:type="org.polarsys.capella.core.data.capellacore:Constraint"
               id="f32488b8-bcc5-4e97-acb7-4e0537b0217f" name="cruising altitude reached"/>
         </ownedStateEvents>
@@ -2984,8 +2983,7 @@
           </ownedDataTypes>
         </ownedDataPkgs>
         <ownedStateEvents xsi:type="org.polarsys.capella.core.data.capellacommon:ChangeEvent"
-            id="42b264b0-4ce5-450a-9c31-1eff447fc315" name="Imposed Video Ended" expression="#cc827db9-9cb3-4778-95cb-692951a8edfd"
-            condition="#cc827db9-9cb3-4778-95cb-692951a8edfd">
+            id="42b264b0-4ce5-450a-9c31-1eff447fc315" name="Imposed Video Ended" expression="#cc827db9-9cb3-4778-95cb-692951a8edfd">
           <ownedConstraints xsi:type="org.polarsys.capella.core.data.capellacore:Constraint"
               id="cc827db9-9cb3-4778-95cb-692951a8edfd">
             <ownedSpecification xsi:type="org.polarsys.capella.core.data.information.datavalue:OpaqueExpression"
@@ -8698,8 +8696,7 @@
               sub="#dcb7f0b0-c6f6-4e96-b7bd-762bb0488430"/>
         </ownedClasses>
         <ownedStateEvents xsi:type="org.polarsys.capella.core.data.capellacommon:ChangeEvent"
-            id="0a37d4a9-5c42-4307-8c17-1ed01608ab7b" name="Imposed Movie Ended" expression="#3ef6f083-ed61-4799-916f-0bf24329ffe3"
-            condition="#3ef6f083-ed61-4799-916f-0bf24329ffe3">
+            id="0a37d4a9-5c42-4307-8c17-1ed01608ab7b" name="Imposed Movie Ended" expression="#3ef6f083-ed61-4799-916f-0bf24329ffe3">
           <ownedConstraints xsi:type="org.polarsys.capella.core.data.capellacore:Constraint"
               id="3ef6f083-ed61-4799-916f-0bf24329ffe3">
             <ownedSpecification xsi:type="org.polarsys.capella.core.data.information.datavalue:OpaqueExpression"
