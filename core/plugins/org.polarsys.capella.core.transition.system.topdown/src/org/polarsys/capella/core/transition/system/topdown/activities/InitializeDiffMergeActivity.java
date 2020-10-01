@@ -36,6 +36,7 @@ import org.polarsys.capella.core.transition.system.topdown.handlers.level.LevelH
 import org.polarsys.capella.core.transition.system.topdown.handlers.merge.AppliedPropertyValuesCategoryFilter;
 import org.polarsys.capella.core.transition.system.topdown.handlers.merge.ArchitectureLinkCategoryFilter;
 import org.polarsys.capella.core.transition.system.topdown.handlers.merge.EmptyPackageCategoryFilter;
+import org.polarsys.capella.core.transition.system.topdown.handlers.merge.NoLeafFunctionalAllocationCategoryFilter;
 import org.polarsys.capella.core.transition.system.topdown.handlers.merge.OutsideArchitectureCategoryFilter;
 import org.polarsys.capella.core.transition.system.topdown.handlers.merge.RealizationLinkCategoryFilter;
 import org.polarsys.capella.core.transition.system.topdown.handlers.merge.RemoveRealizedCategoryFilter;
@@ -120,7 +121,8 @@ public class InitializeDiffMergeActivity
     handler.addCategory(new UpdatedAttributeCategoryFilter(context), context);
     handler.addCategory(new UpdatedReferenceCategoryFilter(context), context);
     handler.addCategory(new RemoveRealizedCategoryFilter(context), context);
-
+    handler.addCategory(new NoLeafFunctionalAllocationCategoryFilter(context), context);
+    
     adaptToCommand(context, handler);
     return Status.OK_STATUS;
   }
