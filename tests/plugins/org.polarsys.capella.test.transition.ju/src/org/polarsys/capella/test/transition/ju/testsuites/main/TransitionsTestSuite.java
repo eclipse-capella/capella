@@ -142,6 +142,7 @@ public class TransitionsTestSuite extends BasicTestSuite {
     tests.add(new CreateRule_IS2IS_EPBS_02());
     tests.add(new CreateRule_IS2IS_EPBS_03());
     tests.add(new TwiceAllocation());
+    tests.add(new NonLeafAllocation());
     
     return tests;
   }
