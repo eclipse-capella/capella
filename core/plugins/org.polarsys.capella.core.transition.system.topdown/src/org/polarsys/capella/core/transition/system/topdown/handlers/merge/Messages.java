@@ -35,6 +35,8 @@ public class Messages extends NLS {
   public static String ArchitectureLinkCategoryFilter_Description;
   public static String RemoveRealizedCategoryFilter;
   public static String RemoveRealizedCategoryFilter_Description;
+  public static String NoLeafFunctionalAllocationCategoryFilter;
+  public static String NoLeafFunctionalAllocationCategoryFilter_Description;
 
   static {
     // initialize resource bundle
