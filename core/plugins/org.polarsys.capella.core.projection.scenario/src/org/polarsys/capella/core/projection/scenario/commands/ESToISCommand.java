@@ -12,7 +12,6 @@
  *******************************************************************************/
 package org.polarsys.capella.core.projection.scenario.commands;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
