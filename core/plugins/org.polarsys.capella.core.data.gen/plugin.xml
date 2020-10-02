@@ -28,7 +28,7 @@
 <!--@generated-->
   <extension point="org.eclipse.emf.ecore.extension_parser">
       <!-- @generated CapellaModeller -->
-      <parser class="org.polarsys.capella.core.data.capellamodeller.util.CapellamodellerResourceFactoryImpl" type="melodymodeller"/>
+      <parser class="org.polarsys.capella.core.data.capellamodeller.util.CapellamodellerResourceFactoryImpl" type="capella"/>
    </extension>
 
    
