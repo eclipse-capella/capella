@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -15,7 +15,9 @@ package org.polarsys.capella.core.sirius.ui.handlers;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IFile;
@@ -33,9 +35,13 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
+import org.eclipse.sirius.business.api.query.DRepresentationDescriptorQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionStatus;
+import org.eclipse.sirius.tools.api.command.ui.NoUICallback;
+import org.eclipse.sirius.tools.api.command.ui.UICallBack;
+import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.viewpoint.DRepresentation;
@@ -47,8 +53,11 @@ import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPartSite;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.progress.IProgressConstants;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.util.IJobConstants;
+import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.core.sirius.ui.SiriusUIPlugin;
 import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 
@@ -60,15 +69,18 @@ public class RefreshDiagramsCommandHandler extends AbstractDiagramCommandHandler
   public class RefreshDiagramsJob extends WorkspaceJob {
 
     private Session session;
-    private Collection<DRepresentationDescriptor> representationsToRefresh;
+
+    private Collection<DRepresentationDescriptor> representationsDescriptorsToRefresh;
+
     private Display display;
 
-    public RefreshDiagramsJob(Collection<DRepresentationDescriptor> representations, Session session,
-        Display display) {
+    private UICallBack uiCallback;
+
+    public RefreshDiagramsJob(Collection<DRepresentationDescriptor> representations, Session session, Display display) {
       super(Messages.RefreshRepresentation_0);
       setProperty(IJobConstants.ALWAYS_LOG_STATUS, true);
       this.session = session;
-      this.representationsToRefresh = representations;
+      this.representationsDescriptorsToRefresh = representations;
       this.display = display;
 
       // Add job listener to return the state of Sirius preference.
@@ -83,6 +95,10 @@ public class RefreshDiagramsCommandHandler extends AbstractDiagramCommandHandler
               .getBoolean(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name());
           SiriusEditPlugin.getPlugin().getPreferenceStore()
               .setValue(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name(), true);
+
+          // avoid dialog box to be displayed
+          uiCallback = SiriusEditPlugin.getPlugin().getUiCallback();
+          SiriusEditPlugin.getPlugin().setUiCallback(new NoUICallback());
         }
 
         /**
@@ -93,6 +109,7 @@ public class RefreshDiagramsCommandHandler extends AbstractDiagramCommandHandler
           SiriusEditPlugin.getPlugin().getPreferenceStore().setValue(
               SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name(),
               currentValueOfSiriusPrefRefreshOnOpening);
+          SiriusEditPlugin.getPlugin().setUiCallback(uiCallback);
         }
 
       });
@@ -100,37 +117,53 @@ public class RefreshDiagramsCommandHandler extends AbstractDiagramCommandHandler
 
     @Override
     public IStatus runInWorkspace(IProgressMonitor monitor_p) throws CoreException {
-      int repToRefreshNb = representationsToRefresh.size();
+      int repToRefreshNb = representationsDescriptorsToRefresh.size();
+
+      List<DRepresentationDescriptor> representationWithOtherErrors = new ArrayList<DRepresentationDescriptor>();
+      List<DRepresentationDescriptor> representationNotLoadable = new ArrayList<DRepresentationDescriptor>();
+      List<DRepresentationDescriptor> representationDangling = new ArrayList<DRepresentationDescriptor>();
+
       monitor_p.beginTask(getName(), repToRefreshNb);
       if (session != null) {
         int counter = 0;
-        for (final DRepresentationDescriptor dRepresentation : representationsToRefresh) {
+        for (final DRepresentationDescriptor dRepresentationDesc : representationsDescriptorsToRefresh) {
           counter++;
           monitor_p.subTask(Messages.bind(Messages.RefreshRepresentation_6,
-              new Object[] { dRepresentation.getName(), counter, repToRefreshNb }));
+              new Object[] { dRepresentationDesc.getName(), counter, repToRefreshNb }));
 
-          DRepresentation representation = dRepresentation.getRepresentation();
-          OpeningDiagramJob job_opening = new OpeningDiagramJob(Messages.RefreshRepresentation_7, session,
-              representation);
-          job_opening.setUser(false);
-          job_opening.schedule();
-          try {
-            job_opening.join();
-          } catch (InterruptedException e) {
-            e.printStackTrace();
-          }
-          if (job_opening.getResult().isOK()) {
-            ClosingDiagramJob job_closing = new ClosingDiagramJob(Messages.RefreshRepresentation_8,
-                job_opening.getCurrentEditor(), display);
-            job_closing.setUser(false);
-            job_closing.schedule();
-            try {
-              job_closing.join();
-            } catch (InterruptedException e) {
-              e.printStackTrace();
+          DRepresentation representation = dRepresentationDesc.getRepresentation();
+          if (representation != null) {
+            if (new DRepresentationDescriptorQuery(dRepresentationDesc).isRepresentationValid()) {
+              OpeningDiagramJob job_opening = new OpeningDiagramJob(Messages.RefreshRepresentation_7, session,
+                  representation);
+              job_opening.setProperty(IProgressConstants.NO_IMMEDIATE_ERROR_PROMPT_PROPERTY, Boolean.TRUE);
+              job_opening.setUser(false);
+              job_opening.schedule();
+              try {
+                job_opening.join();
+              } catch (InterruptedException e) {
+                e.printStackTrace();
+              }
+
+              if (job_opening.getResult().isOK()) {
+                ClosingDiagramJob job_closing = new ClosingDiagramJob(Messages.RefreshRepresentation_8,
+                    job_opening.getCurrentEditor(), display);
+                job_closing.setUser(false);
+                job_closing.schedule();
+                try {
+                  job_closing.join();
+                } catch (InterruptedException e) {
+                  e.printStackTrace();
+                }
+              } else {
+                representationWithOtherErrors.add(dRepresentationDesc);
+              }
+            } else {
+              representationDangling.add(dRepresentationDesc);
             }
+          } else {
+            representationNotLoadable.add(dRepresentationDesc);
           }
-
           monitor_p.worked(1);
           if (monitor_p.isCanceled()) {
             break;
@@ -139,14 +172,80 @@ public class RefreshDiagramsCommandHandler extends AbstractDiagramCommandHandler
         }
       }
       monitor_p.done();
-      return new Status(IStatus.OK, SiriusUIPlugin.getDefault().getPluginId(), representationsToRefresh.size() + " representation(s) refreshed.");
+
+      int nbRefreshWithError = representationNotLoadable.size() + representationDangling.size()
+          + representationWithOtherErrors.size();
+
+      int nbRefreshWithSuccess = repToRefreshNb - nbRefreshWithError;
+
+      StringBuilder strBuilder = new StringBuilder();
+      if (nbRefreshWithSuccess > 1) {
+        strBuilder.append(nbRefreshWithSuccess + " representations refreshed");
+      } else {
+        strBuilder.append(nbRefreshWithSuccess + " representation refreshed");
+      }
+
+      int severity = IStatus.OK;
+      if (nbRefreshWithError > 0) {
+        severity = IStatus.WARNING;
+        strBuilder.append(" and " + nbRefreshWithError + " representation(s) failed to refresh");
+        if (representationNotLoadable.size() > 0) {
+          strBuilder.append("\nNot loadable representation(s) (invalid)");
+          representationNotLoadable.stream().forEach(repDesc -> {
+            String repDescInfo = addRepDescInfo(strBuilder, repDesc);
+
+            Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM)
+                .error(new EmbeddedMessage("The representation can not be loaded (invalid): " + repDescInfo, "",
+                    Collections.singletonList(repDesc)));
+          });
+        }
+        if (representationDangling.size() > 0) {
+          strBuilder.append("\nRepresentation(s) with no valid semantic target (invalid)");
+          representationDangling.stream().forEach(repDesc -> {
+            String repDescInfo = addRepDescInfo(strBuilder, repDesc);
+
+            Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM)
+                .error(new EmbeddedMessage("The representation has no valid semantic target (invalid): " + repDescInfo,
+                    "", Collections.singletonList(repDesc)));
+          });
+        }
+        if (representationWithOtherErrors.size() > 0) {
+          strBuilder.append("\nRepresentation(s) that failed to refresh");
+          representationWithOtherErrors.stream().forEach(repDesc -> {
+            String repDescInfo = addRepDescInfo(strBuilder, repDesc);
+
+            Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM).warn(new EmbeddedMessage(
+                "The representation failed to refresh: " + repDescInfo, "", Collections.singletonList(repDesc)));
+          });
+        }
+      }
+      return new Status(severity, SiriusUIPlugin.getDefault().getPluginId(), strBuilder.toString());
+    }
+
+    private String addRepDescInfo(StringBuilder strBuilder, DRepresentationDescriptor repDesc) {
+      String repDescInfo = getRepDescInfo(repDesc);
+      strBuilder.append("\n - ");
+      strBuilder.append(repDescInfo);
+      return repDescInfo;
+    }
+
+    private String getRepDescInfo(DRepresentationDescriptor repDesc) {
+      StringBuilder strBuilder = new StringBuilder();
+      strBuilder.append("name: " + repDesc.getName());
+      strBuilder.append(", uid: " + repDesc.getUid());
+      if (repDesc.getTarget() instanceof ModelElement) {
+        strBuilder.append(", target: " + ((ModelElement) repDesc.getTarget()).getLabel());
+      }
+      return strBuilder.toString();
     }
   }
 
   protected class OpeningDiagramJob extends WorkspaceJob {
 
     private Session session;
+
     private DRepresentation dRepresentation;
+
     private IEditorPart currentEditor;
 
     /**
@@ -164,7 +263,14 @@ public class RefreshDiagramsCommandHandler extends AbstractDiagramCommandHandler
       if (session != null && dRepresentation != null) {
         currentEditor = DialectUIManager.INSTANCE.openEditor(session, dRepresentation, monitor);
       }
-      return Status.OK_STATUS;
+      if (currentEditor != null && ((DialectEditor) currentEditor).isLastRepresentationRefreshSucceeded()
+          .orElse(Boolean.FALSE).booleanValue()) {
+        return Status.OK_STATUS;
+      } else {
+        // INFO severity will not be logged in error log view
+        return new Status(Status.INFO, SiriusUIPlugin.getDefault().getPluginId(),
+            "Failed to refresh the representation " + dRepresentation.getName());
+      }
     }
 
     /**
@@ -178,6 +284,7 @@ public class RefreshDiagramsCommandHandler extends AbstractDiagramCommandHandler
   protected class ClosingDiagramJob extends WorkspaceJob {
 
     private Display _display;
+
     private IEditorPart editor;
 
     /**
@@ -192,6 +299,7 @@ public class RefreshDiagramsCommandHandler extends AbstractDiagramCommandHandler
     @Override
     public IStatus runInWorkspace(IProgressMonitor monitor) throws CoreException {
       _display.asyncExec(new Runnable() {
+        @Override
         public void run() {
           if (editor != null) {
             IWorkbenchPartSite site = editor.getSite();
@@ -206,6 +314,7 @@ public class RefreshDiagramsCommandHandler extends AbstractDiagramCommandHandler
       });
       return Status.OK_STATUS;
     }
+
   }
 
   /**
@@ -275,47 +384,48 @@ public class RefreshDiagramsCommandHandler extends AbstractDiagramCommandHandler
   }
 
   public Job refreshRepresentations(Object selectedElement, Session session) {
-    Collection<DRepresentationDescriptor> representationsToRefresh = getSubRepresentations(selectedElement, session);
+    Collection<DRepresentationDescriptor> representationDescriptors = getSubRepresentations(selectedElement, session);
 
-    if (representationsToRefresh.isEmpty()) {
+    if (representationDescriptors.isEmpty()) {
       // If no representation, show information dialog
       MessageDialog.openInformation(PlatformUI.getWorkbench().getDisplay().getActiveShell(),
           Messages.RefreshRepresentation_9, Messages.RefreshRepresentation_10);
 
     } else {
       if (session.getStatus() == SessionStatus.DIRTY) {
-        // If within the representations to refresh, there is a opened representation, close it. If it is dirty, ask for
+        // If within the representations to refresh, there is a opened representation, close it. If it is dirty,
+        // ask for
         // saving it.
         if (MessageDialog.openConfirm(PlatformUI.getWorkbench().getDisplay().getActiveShell(),
             Messages.RefreshRepresentation_4, Messages.RefreshRepresentation_5)) {
 
           // Save the current session
           session.save(new NullProgressMonitor());
-
-          // Close the diagram editors related to the session
-          IEditorReference[] openedEditorReferences = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
-              .getActivePage().getEditorReferences();
-
-          for (IEditorReference editorReference : openedEditorReferences) {
-            IEditorPart editor = editorReference.getEditor(false);
-            if (DialectUIManager.INSTANCE.canHandleEditor(editor)) {
-              DialectUIManager.INSTANCE.closeEditor(editor, false);
-            }
-          }
         } else {
           return null;
         }
       }
 
-      // Show to user the total number of representations to refresh and ask user to confirm for the last time before
+      // Show to user the total number of representations to refresh and ask user to confirm for the last time
+      // before
       // refreshing.
       if (MessageDialog.openConfirm(PlatformUI.getWorkbench().getDisplay().getActiveShell(),
           Messages.RefreshRepresentation_1,
-          Messages.bind(Messages.RefreshRepresentation_2, representationsToRefresh.size()))) {
+          Messages.bind(Messages.RefreshRepresentation_2, representationDescriptors.size()))) {
+
+        // Close the diagram editors related to the session
+        IEditorReference[] openedEditorReferences = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+            .getEditorReferences();
+
+        for (IEditorReference editorReference : openedEditorReferences) {
+          IEditorPart editor = editorReference.getEditor(false);
+          if (DialectUIManager.INSTANCE.canHandleEditor(editor)) {
+            DialectUIManager.INSTANCE.closeEditor(editor, false);
+          }
+        }
 
         // Schedule the job
-        RefreshDiagramsJob job = new RefreshDiagramsJob(representationsToRefresh,
-            session, Display.getDefault());
+        RefreshDiagramsJob job = new RefreshDiagramsJob(representationDescriptors, session, Display.getDefault());
         job.setUser(true);
         job.schedule();
         return job;
