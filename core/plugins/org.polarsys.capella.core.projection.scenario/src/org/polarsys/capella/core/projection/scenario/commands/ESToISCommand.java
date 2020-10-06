@@ -13,7 +13,7 @@
 package org.polarsys.capella.core.projection.scenario.commands;
 
 import java.util.Collection;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -64,9 +64,9 @@ public class ESToISCommand extends AbstractTransitionCommand {
    * @return
    */
   protected Collection<EObject> searchScenarios(EObject selectedElement_p) {
-    Collection<EObject> result = new HashSet<EObject>();
+    Collection<EObject> result = new LinkedHashSet<EObject>();
     if (selectedElement_p instanceof Scenario) {
-      Set<EObject> referencesScenarios = new HashSet<EObject>();
+      Set<EObject> referencesScenarios = new LinkedHashSet<EObject>();
       searchReferencedScenarios((Scenario) selectedElement_p, referencesScenarios, result);
       result.addAll(referencesScenarios);
       result.add(selectedElement_p);
@@ -81,7 +81,7 @@ public class ESToISCommand extends AbstractTransitionCommand {
         Scenario scenario = (Scenario) eObject;
         if (isScenarioValid(scenario)) {
           // add also the scenario referenced by this scenario
-          Set<EObject> referencesScenarios = new HashSet<EObject>();
+          Set<EObject> referencesScenarios = new LinkedHashSet<EObject>();
           searchReferencedScenarios(scenario, referencesScenarios, result);
           result.addAll(referencesScenarios);
           result.add(scenario);
