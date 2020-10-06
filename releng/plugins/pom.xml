@@ -31,11 +31,7 @@
         <activeByDefault>true</activeByDefault>
       </activation>
       <modules>
-		<module>org.polarsys.capella.common.extension.migration.egf</module>
-		<module>org.polarsys.capella.common.tig.egf</module>
 		<module>org.polarsys.capella.core.egf</module>
-		<module>org.polarsys.capella.core.postgeneration.egf</module>
-		<module>org.polarsys.capella.core.releng</module>
       </modules>
     </profile>
   </profiles>

@@ -1,18 +1,17 @@
 <%
 /**
  * Copyright (c) 2002-2006 IBM Corporation and others.
- * 
- * This program and the accompanying materials are made available under the
- * terms of the Eclipse Public License 2.0 which is available at
- * http://www.eclipse.org/legal/epl-2.0
- * 
- * SPDX-License-Identifier: EPL-2.0
- * 
+ * All rights reserved.   This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v2.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v20.html
+ *
  * Contributors:
  *   IBM - Initial API and implementation
  */
 %>
 <%GenPackage genPackage = (GenPackage)argument; GenModel genModel=genPackage.getGenModel(); ExtendedMetaData extendedMetaData= genModel.getExtendedMetaData();%>
+<%final boolean isJDK50 = genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50;%>
 <%@ egf:patternCall patternId="platform:/plugin/org.eclipse.egf.emf.pattern.base/egf/EMF_Pattern_Base.fcore#LogicalName=org.eclipse.egf.emf.pattern.base.HeaderJava" args="parameter:argument"%>
 package <%=genPackage.getUtilitiesPackageName()%>;
 
@@ -27,8 +26,14 @@ import org.eclipse.emf.ecore.xmi.impl.URIHandlerImpl;
  * The <b>Resource </b> associated with the package.
  * <!-- end-user-doc -->
  * @see <%=genPackage.getQualifiedResourceFactoryClassName()%>
+<%if (genPackage.hasAPITags()) {%>
+ * <%=genPackage.getAPITags(genModel.getIndentation(stringBuffer))%>
+<%}%>
  * @generated
  */
+<%if (isJDK50 && genPackage.hasAPIDeprecatedTag()) {%>
+@Deprecated
+<%}%>
 public class <%=genPackage.getResourceClassName()%> extends <%=genPackage.getImportedResourceBaseClassName()%>
 {
 <%if (genModel.hasCopyrightField()) {%>
@@ -40,6 +45,20 @@ public class <%=genPackage.getResourceClassName()%> extends <%=genPackage.getImp
 	public static final <%=genModel.getImportedName("java.lang.String")%> copyright = <%=genModel.getCopyrightFieldLiteral()%>;<%=genModel.getNonNLS()%>
 
 <%}%>
+	/**
+	 * Creates an instance of the resource.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param uri the URI of the new resource.
+	 * @generated
+	 */
+	public <%=genPackage.getResourceClassName()%>(URI uri)
+	{
+		super(uri);
+<%if (genPackage.getResource() == GenResourceKind.XML_LITERAL) { // Do nothing%>
+<%}%>
+	}
+	
 <%if (genPackage.getResource() == GenResourceKind.XML_LITERAL || genPackage.getResource() == GenResourceKind.XMI_LITERAL) {%>
 	/**
 	 * <!-- begin-user-doc -->
@@ -63,17 +82,7 @@ public class <%=genPackage.getResourceClassName()%> extends <%=genPackage.getImp
 	private <%=genModel.getImportedName("java.util.Map")%><Object, Object> nameToFeatureMap = new <%=genModel.getImportedName("java.util.HashMap")%><Object, Object>();
 	
 <%}%>
-	/**
-	 * Creates an instance of the resource.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param uri the URI of the new resource.
-	 * @generated
-	 */
-	public <%=genPackage.getResourceClassName()%>(URI uri)
-	{
-		super(uri);
-	}	
+	
 <%if (genPackage.getResource() == GenResourceKind.XML_LITERAL || genPackage.getResource() == GenResourceKind.XMI_LITERAL) {%>
 <%if (genPackage.isExtensibleProviderFactory() || genPackage.isChildCreationExtenders()) {%>
 
@@ -273,8 +282,8 @@ public class <%=genPackage.getResourceClassName()%> extends <%=genPackage.getImp
 		return super.setLoaded(isLoaded);
 	}
 	//end-capella-code
-	
 <%}%>
+
 <%if (genPackage.isDataTypeConverters() && (genPackage.hasDocumentRoot() || org.eclipse.emf.ecore.xml.type.XMLTypePackage.eNS_URI.equals(genPackage.getNSURI()))) { boolean isXMLTypePackage = org.eclipse.emf.ecore.xml.type.XMLTypePackage.eNS_URI.equals(genPackage.getNSURI());%>
 <%final String _Map = genModel.useGenerics() ? "Map<?, ?>" : "Map";%>
 <%final String _MapStringBoolean = genModel.useGenerics() ? "Map<String, Boolean>" : "Map";%>
@@ -303,7 +312,7 @@ public class <%=genPackage.getResourceClassName()%> extends <%=genPackage.getImp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String OPTION_USE_DATA_CONVERTER = "USE_DATA_CONVERTER"; <%=genModel.getNonNLS()%>
+	public static final String OPTION_USE_DATA_CONVERTER = "USE_DATA_CONVERTER";
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -378,7 +387,7 @@ public class <%=genPackage.getResourceClassName()%> extends <%=genPackage.getImp
 	public static EObject load(InputSource inputSource, <%=_MapStringBoolean%> features, <%=_MapStringWildcard%> properties, boolean useLexicalHandler) throws IOException
 	{
 		<%=_MapStringBoolean%> requiredFeatures = new <%=_MapStringBoolean.replaceAll("Map","HashMap")%>();
-		requiredFeatures.put("http://xml.org/sax/features/namespaces", Boolean.TRUE); <%=genModel.getNonNLS()%> 
+		requiredFeatures.put("http://xml.org/sax/features/namespaces", Boolean.TRUE); 
 		if (features != null)
 		{
 			requiredFeatures.putAll(features);

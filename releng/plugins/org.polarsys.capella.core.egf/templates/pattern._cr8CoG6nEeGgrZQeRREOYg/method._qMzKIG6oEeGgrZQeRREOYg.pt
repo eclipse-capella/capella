@@ -1,5 +1,0 @@
-/**
- * Copyright (c) THALES 2007, 2009. All rights reserved.
- */
-package <%=generatedSourceFolderPath%>;
-

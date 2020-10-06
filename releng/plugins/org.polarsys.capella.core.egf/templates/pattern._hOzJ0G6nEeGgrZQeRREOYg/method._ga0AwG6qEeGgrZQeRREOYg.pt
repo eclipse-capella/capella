@@ -1,8 +1,0 @@
-import java.util.ArrayList;
-import java.util.List;
-
-import org.polarsys.capella.test.common.IExtendedTest;
-import org.polarsys.capella.core.model.tests.ju.CapellaModelAbstractTestSuite;
-
-import junit.framework.Test;
-

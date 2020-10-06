@@ -13,13 +13,19 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.egf.model.ftask;visibility:=reexport,
  org.eclipse.pde.ui,
  org.polarsys.kitalpha.emde.egf,
- org.polarsys.kitalpha.emde
+ org.polarsys.kitalpha.emde,
+ org.eclipse.emf.importer.ecore,
+ org.eclipse.emf.importer,
+ org.apache.log4j,
+ org.eclipse.egf.task,
+ org.eclipse.pde.core,
+ org.polarsys.capella.core.model.handler
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: 
+ org.polarsys.capella.common.tig.model,
  org.polarsys.capella.core.edit,
  org.polarsys.capella.core.editor,
  org.polarsys.capella.core.egf,
- org.polarsys.capella.core.model,
- org.polarsys.capella.test
+ org.polarsys.capella.core.model
 Bundle-Localization: plugin
