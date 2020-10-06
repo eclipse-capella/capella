@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <!--
-  Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
   
   This program and the accompanying materials are made available under the
   terms of the Eclipse Public License 2.0 which is available at
@@ -67,6 +67,15 @@
             label="%quickFix2.DWF_DS_12.label">
          <rules
                ruleId="DWF_DS_12">
+         </rules>
+      </resolver>
+      <resolver
+            class="org.polarsys.capella.core.data.interaction.ui.quickfix.resolver.DWF_DS_23_ScenarioReferencedResolver"
+            desc="%quickFix2.DWF_DS_23.desc"
+            icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+            label="%quickFix2.DWF_DS_23.label">
+         <rules
+               ruleId="DWF_DS_23">
          </rules>
       </resolver>
    </extension>

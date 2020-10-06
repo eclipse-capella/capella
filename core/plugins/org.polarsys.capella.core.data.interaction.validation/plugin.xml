@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
   
   This program and the accompanying materials are made available under the
   terms of the Eclipse Public License 2.0 which is available at
@@ -243,6 +243,18 @@ Whatever the level, UNSET Scenarios raise an error.
                </target>
                <description>
                   Check that the AbstractFunction associated to the instance role is available for the Mode/State related to the current StateFragment.
+               </description>
+            </constraint>
+            <constraint class="org.polarsys.capella.core.data.interaction.validation.interactionUse.MDCHK_InteractionUse_ReferencedScenario" 
+            id="DWF_DS_23" isEnabledByDefault="true" lang="Java" mode="Batch" 
+            name="DWF_DS_23 - Invalid referenced scenario" severity="ERROR" statusCode="1">
+               <message>
+               	  {0} ({1}) in {2}({3}) [{4}] references an invalid scenario {5}({6}) [{7}]
+               </message>
+               <target class="InteractionUse">
+               </target>
+               <description>
+                  This rule checks that the interactionUse is referencing a Scenario that exists at the current Architectural Level.
                </description>
             </constraint>
          </constraints>

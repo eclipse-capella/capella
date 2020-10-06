@@ -379,6 +379,20 @@
             </option>
          </property>
             
+         <property
+               class="org.polarsys.capella.core.transition.system.topdown.preferences.BooleanPropertyPreference"
+               enabled="true"
+               group="transition.scenario.initialization"
+               id="transition.scenario.initialize"
+               name="%transition.scenario.initialize.name"
+               description="%transition.scenario.initialize.description">
+               <parameter id="scope" value="org.polarsys.capella.core.transition.system.topdown.preferences"></parameter>
+               <parameter
+                     id="default"
+                     value="false">
+               </parameter>
+         </property>
+            
      </properties>
      
      <properties
