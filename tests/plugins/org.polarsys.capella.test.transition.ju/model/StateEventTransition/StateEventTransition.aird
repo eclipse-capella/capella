@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/1.4.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_3fhdkRoQEee7Y7y_i2JAkQ" selectedViews="_3oAEIBoQEee7Y7y_i2JAkQ _3oS_EBoQEee7Y7y_i2JAkQ _3ocwEBoQEee7Y7y_i2JAkQ _3ovrABoQEee7Y7y_i2JAkQ _3pCl8BoQEee7Y7y_i2JAkQ _3pWH8BoQEee7Y7y_i2JAkQ _3ppC4BoQEee7Y7y_i2JAkQ" version="14.3.0.201908231800">
-    <semanticResources>StateEventTransition.melodymodeller</semanticResources>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/1.4.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
+  <viewpoint:DAnalysis uid="_3fhdkRoQEee7Y7y_i2JAkQ" selectedViews="_3oAEIBoQEee7Y7y_i2JAkQ _3oS_EBoQEee7Y7y_i2JAkQ _3ocwEBoQEee7Y7y_i2JAkQ _3ovrABoQEee7Y7y_i2JAkQ _3pCl8BoQEee7Y7y_i2JAkQ _3pWH8BoQEee7Y7y_i2JAkQ _3ppC4BoQEee7Y7y_i2JAkQ" version="14.3.1.202003261200">
+    <semanticResources>StateEventTransition.capella</semanticResources>
     <semanticResources>StateEventTransition.afm</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_3oAEIBoQEee7Y7y_i2JAkQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']"/>
@@ -10,7 +10,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_QjU68B3PEeejjYO-zACrJg" name="[MSM] Default Region" repPath="#_8YGWEBoQEee7Y7y_i2JAkQ">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']"/>
-        <target xmi:type="org.polarsys.capella.core.data.capellacommon:Region" href="StateEventTransition.melodymodeller#f92bcaaf-f6cc-4376-96b7-9c6f77d94828"/>
+        <target xmi:type="org.polarsys.capella.core.data.capellacommon:Region" href="StateEventTransition.capella#f92bcaaf-f6cc-4376-96b7-9c6f77d94828"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_3ocwEBoQEee7Y7y_i2JAkQ">
@@ -93,15 +93,15 @@
       </data>
     </ownedAnnotationEntries>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_SNrj8B3PEeejjYO-zACrJg" name="Mode 1" outgoingEdges="_SNzfwB3PEeejjYO-zACrJg" childrenPresentation="VerticalStack">
-      <target xmi:type="org.polarsys.capella.core.data.capellacommon:Mode" href="StateEventTransition.melodymodeller#1d3d0277-1cdd-484a-8a6e-88f0fe17b1d4"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.capellacommon:Mode" href="StateEventTransition.melodymodeller#1d3d0277-1cdd-484a-8a6e-88f0fe17b1d4"/>
+      <target xmi:type="org.polarsys.capella.core.data.capellacommon:Mode" href="StateEventTransition.capella#1d3d0277-1cdd-484a-8a6e-88f0fe17b1d4"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.capellacommon:Mode" href="StateEventTransition.capella#1d3d0277-1cdd-484a-8a6e-88f0fe17b1d4"/>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_SNsyEB3PEeejjYO-zACrJg" borderSize="1" borderSizeComputationExpression="1" borderColor="69,69,69" backgroundStyle="GradientTopToBottom" backgroundColor="234,239,239" foregroundColor="234,239,239">
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']/@conditionnalStyles.1/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_SNv1YB3PEeejjYO-zACrJg" name=" [region]">
-        <target xmi:type="org.polarsys.capella.core.data.capellacommon:Region" href="StateEventTransition.melodymodeller#f23064ab-e84b-4070-99f8-404fba699328"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.capellacommon:Region" href="StateEventTransition.melodymodeller#f23064ab-e84b-4070-99f8-404fba699328"/>
+        <target xmi:type="org.polarsys.capella.core.data.capellacommon:Region" href="StateEventTransition.capella#f23064ab-e84b-4070-99f8-404fba699328"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.capellacommon:Region" href="StateEventTransition.capella#f23064ab-e84b-4070-99f8-404fba699328"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_SNwccB3PEeejjYO-zACrJg" showIcon="false" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="1" borderColor="69,69,69" backgroundStyle="GradientTopToBottom" backgroundColor="234,239,239" foregroundColor="195,208,208">
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']/@subContainerMappings[name='MSM_Region']/@conditionnalStyles.0/@style"/>
         </ownedStyle>
@@ -109,8 +109,8 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_SNtZIB3PEeejjYO-zACrJg" name="Mode 2" incomingEdges="_SNzfwB3PEeejjYO-zACrJg" childrenPresentation="VerticalStack">
-      <target xmi:type="org.polarsys.capella.core.data.capellacommon:Mode" href="StateEventTransition.melodymodeller#e3a4f2f5-df60-4ee9-b713-7d4def3b61dd"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.capellacommon:Mode" href="StateEventTransition.melodymodeller#e3a4f2f5-df60-4ee9-b713-7d4def3b61dd"/>
+      <target xmi:type="org.polarsys.capella.core.data.capellacommon:Mode" href="StateEventTransition.capella#e3a4f2f5-df60-4ee9-b713-7d4def3b61dd"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.capellacommon:Mode" href="StateEventTransition.capella#e3a4f2f5-df60-4ee9-b713-7d4def3b61dd"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -119,8 +119,8 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_SNxqkB3PEeejjYO-zACrJg" name=" [region]">
-        <target xmi:type="org.polarsys.capella.core.data.capellacommon:Region" href="StateEventTransition.melodymodeller#ba1e7fe2-fbfb-4961-8fe4-e51e2269399d"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.capellacommon:Region" href="StateEventTransition.melodymodeller#ba1e7fe2-fbfb-4961-8fe4-e51e2269399d"/>
+        <target xmi:type="org.polarsys.capella.core.data.capellacommon:Region" href="StateEventTransition.capella#ba1e7fe2-fbfb-4961-8fe4-e51e2269399d"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.capellacommon:Region" href="StateEventTransition.capella#ba1e7fe2-fbfb-4961-8fe4-e51e2269399d"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_SNyRoB3PEeejjYO-zACrJg" showIcon="false" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="1" borderColor="69,69,69" backgroundStyle="GradientTopToBottom" backgroundColor="234,239,239" foregroundColor="195,208,208">
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']/@subContainerMappings[name='MSM_Region']/@conditionnalStyles.0/@style"/>
         </ownedStyle>
@@ -128,8 +128,8 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_SNzfwB3PEeejjYO-zACrJg" name="(AT) TimeEventConstraint, (WHEN) ChangeEventConstraint [StateTransitionConstraint] " sourceNode="_SNrj8B3PEeejjYO-zACrJg" targetNode="_SNtZIB3PEeejjYO-zACrJg">
-      <target xmi:type="org.polarsys.capella.core.data.capellacommon:StateTransition" href="StateEventTransition.melodymodeller#32c91b1f-d85e-4673-a0e6-15c41d6a9e1d"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.capellacommon:StateTransition" href="StateEventTransition.melodymodeller#32c91b1f-d85e-4673-a0e6-15c41d6a9e1d"/>
+      <target xmi:type="org.polarsys.capella.core.data.capellacommon:StateTransition" href="StateEventTransition.capella#32c91b1f-d85e-4673-a0e6-15c41d6a9e1d"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.capellacommon:StateTransition" href="StateEventTransition.capella#32c91b1f-d85e-4673-a0e6-15c41d6a9e1d"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_SN0G0B3PEeejjYO-zACrJg" strokeColor="0,0,0">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@edgeMappings[name='MSM_Transition']/@style"/>
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_SN0G0R3PEeejjYO-zACrJg" showIcon="false"/>
@@ -140,6 +140,6 @@
     <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']/@ownedRepresentations[name='AD%20diagram']/@filters[name='ModelExtensionFilter']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_8YGWExoQEee7Y7y_i2JAkQ"/>
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer"/>
-    <target xmi:type="org.polarsys.capella.core.data.capellacommon:Region" href="StateEventTransition.melodymodeller#f92bcaaf-f6cc-4376-96b7-9c6f77d94828"/>
+    <target xmi:type="org.polarsys.capella.core.data.capellacommon:Region" href="StateEventTransition.capella#f92bcaaf-f6cc-4376-96b7-9c6f77d94828"/>
   </diagram:DSemanticDiagram>
 </xmi:XMI>

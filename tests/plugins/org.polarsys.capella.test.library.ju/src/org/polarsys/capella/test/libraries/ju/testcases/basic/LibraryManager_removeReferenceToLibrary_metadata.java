@@ -41,7 +41,7 @@ public class LibraryManager_removeReferenceToLibrary_metadata  extends BasicTest
 	    monProjet1.addReference(maLibrairie1);
 	    ResourceSet resourceSet = monProjet1.getEditingDomain().getResourceSet();
 	    // -- ORACLE -- //
-	    String metaDataURI = monProjet1.getUriSemanticFile().toString().replace(".melodymodeller", ".afm#_UzLqMHnGEea0Df0HniJfuA");
+	    String metaDataURI = monProjet1.getUriSemanticFile().toString().replace(".capella", ".afm#_UzLqMHnGEea0Df0HniJfuA");
 	    Metadata metadata = (Metadata)resourceSet.getEObject(URI.createURI(metaDataURI), true);
 	    assertFalse(metadata.getAdditionalMetadata().isEmpty());
 	    monProjet1.removeReference(maLibrairie1);

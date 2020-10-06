@@ -59,6 +59,6 @@ public class RenameAfmTestCase extends RenameModel {
       GuiActions.renameModelFile(fileRenamed,oldFileName);
     }
     
-    //In case of remote model, the .melodymodeller resource does not exist => Not testable
+    //In case of remote model, the capella resource does not exist => Not testable
   }
 }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description" uid="_AhBgALrqEeadJa2S2NItsg" selectedViews="_AoVB4LrqEeadJa2S2NItsg _A4HxYLrqEeadJa2S2NItsg _A4RiYLrqEeadJa2S2NItsg _A4asULrqEeadJa2S2NItsg _A4kdULrqEeadJa2S2NItsg _A43YQLrqEeadJa2S2NItsg _A5BJQLrqEeadJa2S2NItsg" version="14.3.0.201908231800">
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description" uid="_AhBgALrqEeadJa2S2NItsg" selectedViews="_AoVB4LrqEeadJa2S2NItsg _A4HxYLrqEeadJa2S2NItsg _A4RiYLrqEeadJa2S2NItsg _A4asULrqEeadJa2S2NItsg _A4kdULrqEeadJa2S2NItsg _A43YQLrqEeadJa2S2NItsg _A5BJQLrqEeadJa2S2NItsg" version="14.3.1.202003261200">
   <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="fragments/SA.airdfragment#_KFxMsLrqEeadJa2S2NItsg"/>
   <semanticResources>fragmentedModel.afm</semanticResources>
-  <semanticResources>fragmentedModel.melodymodeller</semanticResources>
+  <semanticResources>fragmentedModel.capella</semanticResources>
   <ownedViews xmi:type="viewpoint:DView" uid="_AoVB4LrqEeadJa2S2NItsg">
     <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']"/>
   </ownedViews>

@@ -37,7 +37,7 @@ public class NonAbusiveTestCase2 extends FragmentModelTestFramework {
   IFile _SF12m2;
 
   String SF11airdName = "SA-System Functions-RSF-SystemFunctionPkg 1-SystemFunction 1-SystemFunction 11.airdfragment";
-  String SF11m2Name = "SA-System Functions-RSF-SystemFunctionPkg 1-SystemFunction 1-SystemFunction 11.melodyfragment";
+  String SF11m2Name = "SA-System Functions-RSF-SystemFunctionPkg 1-SystemFunction 1-SystemFunction 11.capellafragment";
   String SF12airdName = "SA-System Functions-RSF-SystemFunctionPkg 1-SystemFunction 1-SystemFunction 12.airdfragment";
   String SF12m2Name = "SA-System Functions-RSF-SystemFunctionPkg 1-SystemFunction 1-SystemFunction 12.airdfragment";
   String sf1 = "5dec9cce-f8e4-41ea-847e-fa501df56dd2";

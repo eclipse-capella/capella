@@ -88,8 +88,8 @@ public class ViewpointMigrationContribution extends AbstractMigrationContributio
 
   private IStatus checkLegacy(IFile fileToMigrate, MigrationContext context, boolean checkVersion) {
     // If there is no AFM aside model, then we try to find version with the legacy way to retrieve version
-    Version fileVersion = CapellaFeatureHelper.getFileVersion((IFile) fileToMigrate);
-    context.setFileVersion((IFile) fileToMigrate, fileVersion);
+    Version fileVersion = CapellaFeatureHelper.getFileVersion(fileToMigrate);
+    context.setFileVersion(fileToMigrate, fileVersion);
 
     if (checkVersion) {
       Version currentVersion = CapellaMetadataProvider.getCurrentVersion();
@@ -205,6 +205,8 @@ public class ViewpointMigrationContribution extends AbstractMigrationContributio
       }
     }
 
-    return false;
+    // Allow migration from 1.4.x to 5.0.x
+    return fileVersion.getMajor() == 1 && fileVersion.getMinor() == 4 && currentVersion.getMajor() == 5
+        && currentVersion.getMinor() == 0;
   }
 }

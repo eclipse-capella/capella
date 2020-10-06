@@ -32,7 +32,7 @@ with [get-window "New Capella Library"] {
 
 get-view "Project Explorer" | get-tree | select "project/project.aird" | get-menu "Libraries/Manage references" | click
 with [get-window -class PropertyDialog] {
-    get-table | get-item "library.melodymodeller" | check
+    get-table | get-item "library.capella" | check
     get-button OK | click
 }
 

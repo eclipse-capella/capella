@@ -31,7 +31,7 @@
 <!--@generated-->
   <extension point="org.eclipse.ui.editors">
       <!-- @generated CapellaModeller -->
-      <editor class="org.polarsys.capella.core.data.capellamodeller.presentation.CapellamodellerEditor" contributorClass="org.polarsys.capella.core.data.capellamodeller.presentation.CapellamodellerActionBarContributor" default="true" extensions="melodymodeller" icon="icons/full/obj16/CapellamodellerModelFile.gif" id="org.polarsys.capella.core.data.capellamodeller.presentation.CapellamodellerEditorID" name="%_UI_CapellamodellerEditor_label">
+      <editor class="org.polarsys.capella.core.data.capellamodeller.presentation.CapellamodellerEditor" contributorClass="org.polarsys.capella.core.data.capellamodeller.presentation.CapellamodellerActionBarContributor" default="true" extensions="capella" icon="icons/full/obj16/CapellamodellerModelFile.gif" id="org.polarsys.capella.core.data.capellamodeller.presentation.CapellamodellerEditorID" name="%_UI_CapellamodellerEditor_label">
       </editor>
    </extension>
 

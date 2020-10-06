@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description" uid="_7qmdobXwEeWa1Y0JnDQBMg" selectedViews="_73HPoLXwEeWa1Y0JnDQBMg _73aKkLXwEeWa1Y0JnDQBMg _7322gLXwEeWa1Y0JnDQBMg _74KYgLXwEeWa1Y0JnDQBMg _74wOYLXwEeWa1Y0JnDQBMg _75M6ULXwEeWa1Y0JnDQBMg _75ywMLXwEeWa1Y0JnDQBMg" version="14.3.0.201908231800">
-  <semanticResources>sortcontent.melodymodeller</semanticResources>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description" uid="_7qmdobXwEeWa1Y0JnDQBMg" selectedViews="_73HPoLXwEeWa1Y0JnDQBMg _73aKkLXwEeWa1Y0JnDQBMg _7322gLXwEeWa1Y0JnDQBMg _74KYgLXwEeWa1Y0JnDQBMg _74wOYLXwEeWa1Y0JnDQBMg _75M6ULXwEeWa1Y0JnDQBMg _75ywMLXwEeWa1Y0JnDQBMg" version="14.3.1.202003261200">
+  <semanticResources>sortcontent.capella</semanticResources>
   <semanticResources>sortcontent.afm</semanticResources>
   <ownedViews xmi:type="viewpoint:DView" uid="_73HPoLXwEeWa1Y0JnDQBMg">
     <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']"/>

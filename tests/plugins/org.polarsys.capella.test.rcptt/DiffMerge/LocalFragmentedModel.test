@@ -15,7 +15,7 @@ Content-Type: text/plain
 Entry-Name: .description
 
 A basic diffmerge computation on a fragmented model. We create a copy of an existing model, add some elements on original model and compare them. 
-Compare melodymodeller then aird after some merge all operations.
+Compare capella then aird after some merge all operations.
 
 - Copy a model with a fragment
 - In the original model, add diagram/scenario/table in the fragment and not in the fragment
@@ -366,13 +366,13 @@ with [get-editor "New Logical Functions - System Functions"] {
 // Compare the two models with diffmerge and merge all modified original model in the copied model
 with [get-view "Project Explorer" | get-tree] {
     select "fragmentedModel/fragmentedModel.aird" | get-menu Close | click
-    select "fragmentedModel/fragmentedModel.melodymodeller" "fragmentedModel2/fragmentedModel.melodymodeller" 
+    select "fragmentedModel/fragmentedModel.capella" "fragmentedModel2/fragmentedModel.capella" 
     get-menu "Compare With/Each Other as models" | click
 }
 
 // The Right model shall be the copied one
 get-window "EMF Diff/Merge" | get-group Roles | get-editbox -after [get-label "Right:"] | get-property text 
-    | equals "fragmentedModel2/fragmentedModel.melodymodeller" | verify-true
+    | equals "fragmentedModel2/fragmentedModel.capella" | verify-true
 
 get-window "EMF Diff/Merge" | get-button Finish | click
 with [get-editor "Compare ('fragmentedModel' - 'fragmentedModel')"] {
@@ -419,7 +419,7 @@ with [get-editor "Compare ('fragmentedModel' - 'fragmentedModel')"] {
 
 // Compare again both models, no differences must be found
 with [get-view "Project Explorer" | get-tree] {
-    select "fragmentedModel2/fragmentedModel.melodymodeller" "fragmentedModel/fragmentedModel.melodymodeller"
+    select "fragmentedModel2/fragmentedModel.capella" "fragmentedModel/fragmentedModel.capella"
     get-menu "Compare With/Each Other as models" | click
 }
 

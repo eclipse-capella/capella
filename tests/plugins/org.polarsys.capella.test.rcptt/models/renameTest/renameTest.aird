@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/1.4.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_gXlSMezOEeiYm_kNG_G0NA" selectedViews="_gYLvIOzOEeiYm_kNG_G0NA _gkGrQOzOEeiYm_kNG_G0NA _gkQcQOzOEeiYm_kNG_G0NA _gkQcQezOEeiYm_kNG_G0NA _gkjXMOzOEeiYm_kNG_G0NA _glJNEOzOEeiYm_kNG_G0NA _glS-EOzOEeiYm_kNG_G0NA" version="14.3.0.201908231800">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/1.4.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
+  <viewpoint:DAnalysis uid="_gXlSMezOEeiYm_kNG_G0NA" selectedViews="_gYLvIOzOEeiYm_kNG_G0NA _gkGrQOzOEeiYm_kNG_G0NA _gkQcQOzOEeiYm_kNG_G0NA _gkQcQezOEeiYm_kNG_G0NA _gkjXMOzOEeiYm_kNG_G0NA _glJNEOzOEeiYm_kNG_G0NA _glS-EOzOEeiYm_kNG_G0NA" version="14.3.1.202003261200">
     <semanticResources>renameTest.afm</semanticResources>
-    <semanticResources>renameTest.melodymodeller</semanticResources>
+    <semanticResources>renameTest.capella</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_gYLvIOzOEeiYm_kNG_G0NA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']"/>
     </ownedViews>
@@ -19,7 +19,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_t9YZg-zOEeiYm_kNG_G0NA" name="[SDFB] Root System Function" repPath="#_t8MGsOzOEeiYm_kNG_G0NA">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']"/>
-        <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="renameTest.melodymodeller#77a39698-b614-4efc-87a2-d44563073ce4"/>
+        <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="renameTest.capella#77a39698-b614-4efc-87a2-d44563073ce4"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_glJNEOzOEeiYm_kNG_G0NA">
@@ -48,8 +48,8 @@
       </data>
     </ownedAnnotationEntries>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_u2KboOzOEeiYm_kNG_G0NA" name="SystemFunction 1">
-      <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="renameTest.melodymodeller#6e1f0651-8605-48df-bca3-896047b68307"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="renameTest.melodymodeller#6e1f0651-8605-48df-bca3-896047b68307"/>
+      <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="renameTest.capella#6e1f0651-8605-48df-bca3-896047b68307"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="renameTest.capella#6e1f0651-8605-48df-bca3-896047b68307"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
@@ -63,6 +63,6 @@
     <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']/@ownedRepresentations[name='AD%20diagram']/@filters[name='ModelExtensionFilter']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_t8V3sOzOEeiYm_kNG_G0NA"/>
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer"/>
-    <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="renameTest.melodymodeller#77a39698-b614-4efc-87a2-d44563073ce4"/>
+    <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="renameTest.capella#77a39698-b614-4efc-87a2-d44563073ce4"/>
   </diagram:DSemanticDiagram>
 </xmi:XMI>

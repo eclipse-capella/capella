@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/1.4.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter">
-  <viewpoint:DAnalysis uid="_fpvJYJ82EemCksxQS2dHoQ" selectedViews="_fq8qUJ82EemCksxQS2dHoQ _f6lo0J82EemCksxQS2dHoQ _f7x7oJ82EemCksxQS2dHoQ _f7x7oZ82EemCksxQS2dHoQ _f8FdoJ82EemCksxQS2dHoQ _f8OnkJ82EemCksxQS2dHoQ _f81EgJ82EemCksxQS2dHoQ" version="14.3.0.201908231800">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/1.4.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter">
+  <viewpoint:DAnalysis uid="_fpvJYJ82EemCksxQS2dHoQ" selectedViews="_fq8qUJ82EemCksxQS2dHoQ _f6lo0J82EemCksxQS2dHoQ _f7x7oJ82EemCksxQS2dHoQ _f7x7oZ82EemCksxQS2dHoQ _f8FdoJ82EemCksxQS2dHoQ _f8OnkJ82EemCksxQS2dHoQ _f81EgJ82EemCksxQS2dHoQ" version="14.3.1.202003261200">
     <semanticResources>SearchWithOptions.afm</semanticResources>
-    <semanticResources>SearchWithOptions.melodymodeller</semanticResources>
+    <semanticResources>SearchWithOptions.capella</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_fq8qUJ82EemCksxQS2dHoQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']"/>
     </ownedViews>
@@ -13,7 +13,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_LNIs4583EemCksxQS2dHoQ" name="LookMeInDocumentation" repPath="#_LKAgYJ83EemCksxQS2dHoQ">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Function%20Breakdown']"/>
-        <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalFunction" href="SearchWithOptions.melodymodeller#897dfc83-9919-4180-badf-9d6db6e824f4"/>
+        <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalFunction" href="SearchWithOptions.capella#897dfc83-9919-4180-badf-9d6db6e824f4"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_f7x7oZ82EemCksxQS2dHoQ">
@@ -42,6 +42,6 @@
     <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']/@ownedRepresentations[name='AD%20diagram']/@filters[name='ModelExtensionFilter']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_LLDCMJ83EemCksxQS2dHoQ"/>
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Function%20Breakdown']/@defaultLayer"/>
-    <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalFunction" href="SearchWithOptions.melodymodeller#897dfc83-9919-4180-badf-9d6db6e824f4"/>
+    <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalFunction" href="SearchWithOptions.capella#897dfc83-9919-4180-badf-9d6db6e824f4"/>
   </diagram:DSemanticDiagram>
 </xmi:XMI>

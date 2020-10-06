@@ -8,7 +8,7 @@
   <foreignModel>../../org.polarsys.capella.core.data.def/model/CapellaModeller.ecore</foreignModel>
   <genPackages prefix="Capellamodeller" basePackage="org.polarsys.capella.core.data"
       resource="XMI" disposableProviderFactory="true" extensibleProviderFactory="true"
-      fileExtensions="melodymodeller" ecorePackage="CapellaModeller.ecore#/">
+      fileExtensions="capella" ecorePackage="CapellaModeller.ecore#/">
     <genClasses ecoreClass="CapellaModeller.ecore#//Project">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CapellaModeller.ecore#//Project/keyValuePairs"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CapellaModeller.ecore#//Project/ownedFolders"/>

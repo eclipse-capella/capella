@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description" uid="_85EB4O0dEea3puAT08GMUQ" selectedViews="_86C5UO0dEea3puAT08GMUQ _9GEjIO0dEea3puAT08GMUQ _9GMe8O0dEea3puAT08GMUQ _9GWP8O0dEea3puAT08GMUQ _9GgA8O0dEea3puAT08GMUQ _9GkSYO0dEea3puAT08GMUQ _9GuDYO0dEea3puAT08GMUQ" version="14.3.0.201908231800">
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description" uid="_85EB4O0dEea3puAT08GMUQ" selectedViews="_86C5UO0dEea3puAT08GMUQ _9GEjIO0dEea3puAT08GMUQ _9GMe8O0dEea3puAT08GMUQ _9GWP8O0dEea3puAT08GMUQ _9GgA8O0dEea3puAT08GMUQ _9GkSYO0dEea3puAT08GMUQ _9GuDYO0dEea3puAT08GMUQ" version="14.3.1.202003261200">
   <semanticResources>ObfuscateModelTestCase.afm</semanticResources>
-  <semanticResources>ObfuscateModelTestCase.melodymodeller</semanticResources>
+  <semanticResources>ObfuscateModelTestCase.capella</semanticResources>
   <ownedViews xmi:type="viewpoint:DView" uid="_86C5UO0dEea3puAT08GMUQ">
     <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']"/>
   </ownedViews>

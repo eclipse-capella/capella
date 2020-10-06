@@ -83,7 +83,7 @@ See dedicated Model Configuration Management guidelines
 
 == Fragment Capella Model ==
 
-Fragment Capella models to avoid Capella files (*.melodymodeller, *.aird, *.melodyfragment, *.airdfragment) to be larger than about 50 MB.
+Fragment Capella models to avoid Capella files (*.capella, *.aird, *.capellafragment, *.airdfragment) to be larger than about 50 MB.
 
 
 == Adapt Eclipse.ini configuration ==

@@ -38,7 +38,7 @@ public class ProjectMigrationHandler extends AbstractMigrationHandler {
   @Override
   public Object execute(ExecutionEvent event) throws ExecutionException {
     boolean skipConfirmation = Boolean.valueOf(event.getParameter("skipConfirmation"));
-    
+
     try {
       for (Object selected : getSelection((IEvaluationContext) event.getApplicationContext(), IResource.class)) {
         if (selected instanceof IProject) {
@@ -51,7 +51,7 @@ public class ProjectMigrationHandler extends AbstractMigrationHandler {
           }
         }
       }
-      
+
     } finally {
       MigrationHelpers.getInstance().dispose();
     }
@@ -68,22 +68,23 @@ public class ProjectMigrationHandler extends AbstractMigrationHandler {
           // One element is a closed project.
           return false;
         }
-          try {
-            boolean hasCapellaModel = false;
-            for (IResource content : project.members()) {
-              if (CapellaResourceHelper.CAPELLA_MODEL_FILE_EXTENSION.equals(content.getFileExtension())) {
-                hasCapellaModel = true;
-                break;
-              }
+        try {
+          boolean hasCapellaModel = false;
+          for (IResource content : project.members()) {
+            if (CapellaResourceHelper.CAPELLA_MODEL_FILE_EXTENSION.equals(content.getFileExtension())
+                || CapellaResourceHelper.LEGACY_CAPELLA_MODEL_FILE_EXTENSION.equals(content.getFileExtension())) {
+              hasCapellaModel = true;
+              break;
             }
-            if (!hasCapellaModel) {
-              // One element has no capella model.
-              return false;
-            }
-          } catch (CoreException e) {
-            // One element does not exist anymore or is not an open project.
+          }
+          if (!hasCapellaModel) {
+            // One element has no capella model.
             return false;
           }
+        } catch (CoreException e) {
+          // One element does not exist anymore or is not an open project.
+          return false;
+        }
       } else {
         // One element is not a project.
         return false;

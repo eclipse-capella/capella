@@ -11,7 +11,7 @@
   <modelPluginVariables>CDO=org.eclipse.emf.cdo</modelPluginVariables>
   <genPackages prefix="Capellamodeller" basePackage="org.polarsys.capella.core.data"
       resource="XMI" disposableProviderFactory="true" extensibleProviderFactory="true"
-      fileExtensions="melodymodeller" ecorePackage="../../org.polarsys.capella.core.data.gen/model/CapellaModeller.ecore#/">
+      fileExtensions="capella" ecorePackage="../../org.polarsys.capella.core.data.gen/model/CapellaModeller.ecore#/">
     <genClasses ecoreClass="../../org.polarsys.capella.core.data.gen/model/CapellaModeller.ecore#//Project">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../../org.polarsys.capella.core.data.gen/model/CapellaModeller.ecore#//Project/keyValuePairs"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../../org.polarsys.capella.core.data.gen/model/CapellaModeller.ecore#//Project/ownedFolders"/>

@@ -33,6 +33,7 @@ import org.polarsys.capella.core.compare.CapellaDiffPolicy;
 import org.polarsys.capella.core.compare.CapellaMatchPolicy;
 import org.polarsys.capella.core.compare.CapellaMergePolicy;
 import org.polarsys.capella.core.data.fa.FaPackage;
+import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
 import org.polarsys.capella.test.framework.helpers.IResourceHelpers;
 import org.polarsys.capella.test.migration.ju.helpers.MigrationHelper;
@@ -40,10 +41,12 @@ import org.polarsys.capella.test.migration.ju.helpers.MigrationHelper;
 public class FunctionalChainNonRegressionTest extends BasicTestCase {
 
   private static final String SOURCE_MODEL = "FunctionalChains";
-  private static final String SOURCE_MODEL_MELODY_MODELLER = SOURCE_MODEL + ".melodymodeller";
-
   private static final String TARGET_MIGRATED_MODEL = "FunctionalChainsNonRegression";
-  private static final String TARGET_MIGRATED_MODEL_MELODY_MODELLER = TARGET_MIGRATED_MODEL + ".melodymodeller";
+
+  private static final String SOURCE_MODEL_RESOURCE = SOURCE_MODEL + "."
+      + CapellaResourceHelper.CAPELLA_MODEL_FILE_EXTENSION;
+  private static final String TARGET_MIGRATED_MODEL_RESOURCE = TARGET_MIGRATED_MODEL + "."
+      + CapellaResourceHelper.CAPELLA_MODEL_FILE_EXTENSION;;
 
   private IProject sourceModelProject;
   private IProject targetMigratedModelProject;
@@ -69,8 +72,8 @@ public class FunctionalChainNonRegressionTest extends BasicTestCase {
       // migrate the project
       MigrationHelper.migrateProject(sourceModelProject);
 
-      Resource sourceResource = getResourceToTest(sourceModelProject, SOURCE_MODEL_MELODY_MODELLER);
-      Resource targetResource = getResourceToTest(targetMigratedModelProject, TARGET_MIGRATED_MODEL_MELODY_MODELLER);
+      Resource sourceResource = getResourceToTest(sourceModelProject, SOURCE_MODEL_RESOURCE);
+      Resource targetResource = getResourceToTest(targetMigratedModelProject, TARGET_MIGRATED_MODEL_RESOURCE);
 
       IEditableModelScope sourceProjectScope = new FragmentedModelScope(sourceResource, true);
       IEditableModelScope targetProjectScope = new FragmentedModelScope(targetResource, true);

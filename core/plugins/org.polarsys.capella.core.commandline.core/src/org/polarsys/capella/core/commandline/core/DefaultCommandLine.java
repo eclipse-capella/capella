@@ -136,10 +136,11 @@ public class DefaultCommandLine extends AbstractCommandLine {
       } catch (CoreException exception) {
         logError(Messages.unable_open_project + project.getName());
       }
-      List<IFile> melodymodellerFiles = getCapellamodellerFiles(project);
-      // check that all melodymodeller files are compliant with current Capella version
-      for (IFile modeller : melodymodellerFiles) {
-        compliancyCheck(modeller);
+      List<IFile> capellaResources = getCapellaResourceFiles(project);
+
+      // check that all capella resources are compliant with current Capella version
+      for (IFile capellaResource : capellaResources) {
+        compliancyCheck(capellaResource);
       }
     }
   }
@@ -225,7 +226,7 @@ public class DefaultCommandLine extends AbstractCommandLine {
   public void printHelp() {
     printHelp(Collections.emptyList());
   }
-  
+
   protected void printHelp(List<String> hiddenArguments) {
     System.out.println("*** Applicable arguments for command line***"); //$NON-NLS-1$
     printArgumentsFromTable("commonParameters", true, hiddenArguments);

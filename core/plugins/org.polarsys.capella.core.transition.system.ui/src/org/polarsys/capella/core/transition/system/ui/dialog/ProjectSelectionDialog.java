@@ -41,7 +41,6 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.ElementTreeSelectionDialog;
-
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.utils.ReflectUtil;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
@@ -77,6 +76,7 @@ public class ProjectSelectionDialog extends ElementTreeSelectionDialog implement
 
   /*
    * (non-Javadoc)
+   * 
    * @see org.eclipse.ui.dialogs.ElementTreeSelectionDialog#createDialogArea(org.eclipse.swt.widgets.Composite)
    */
   @Override
@@ -87,10 +87,12 @@ public class ProjectSelectionDialog extends ElementTreeSelectionDialog implement
 
     newButton.addSelectionListener(new SelectionListener() {
 
+      @Override
       public void widgetSelected(SelectionEvent event) {
         createNewProject();
       }
 
+      @Override
       public void widgetDefaultSelected(SelectionEvent e) {
         // Nothing to do
       }
@@ -143,11 +145,6 @@ public class ProjectSelectionDialog extends ElementTreeSelectionDialog implement
     setResult(result);
   }
 
-  protected boolean isCapellaModellerFile(IResource resource_p) {
-    String fileName = resource_p.getName();
-    return fileName.endsWith(CapellaResourceHelper.CAPELLA_MODEL_FILE_EXTENSION);
-  }
-
   public String getCapellaProjectFile(IResource resource) {
     if (!resource.exists()) {
       return null;
@@ -157,15 +154,16 @@ public class ProjectSelectionDialog extends ElementTreeSelectionDialog implement
       if (((IProject) resource).isOpen()) {
         IProject project = (IProject) resource;
 
-        IFile file = project.getFile(project.getName() + ICommonConstants.POINT_CHARACTER + CapellaResourceHelper.CAPELLA_MODEL_FILE_EXTENSION);
+        IFile file = project.getFile(
+            project.getName() + ICommonConstants.POINT_CHARACTER + CapellaResourceHelper.CAPELLA_MODEL_FILE_EXTENSION);
         if (file.exists()) {
           return getCapellaProjectFile(file);
         }
 
         try {
-          // retrieve first valid melodymodeller
+          // retrieve first valid project
           for (IResource member : project.members()) {
-            if (isCapellaModellerFile(member)) {
+            if (CapellaResourceHelper.isCapellaResource(member, true)) {
               return getCapellaProjectFile(member);
             }
           }
@@ -177,28 +175,29 @@ public class ProjectSelectionDialog extends ElementTreeSelectionDialog implement
       return null;
     }
 
-    if (isCapellaModellerFile(resource)) {
+    if (CapellaResourceHelper.isCapellaResource(resource, true)) {
       return resource.getFullPath().toString();
     }
     return null;
   }
-  
+
   /**
    * {@inheritDoc}
    */
+  @Override
   public void resourceChanged(IResourceChangeEvent event) {
-    
+
     // Enable the tree and the label
     getTreeViewer().getTree().setEnabled(true);
     messageLabel.setEnabled(true);
-    
+
     // Set the isEmpty field to false
     try {
       ReflectUtil.setInvisibleFieldValue(this, "fIsEmpty", false);
     } catch (NoSuchFieldException | IllegalArgumentException | IllegalAccessException e) {
       e.printStackTrace();
     }
-    
+
     refreshDialog(event);
   }
 
@@ -212,7 +211,7 @@ public class ProjectSelectionDialog extends ElementTreeSelectionDialog implement
       getTreeViewer().setSelection(new StructuredSelection(resource));
       getButton(OK).forceFocus();
     }
-    
+
     // Update
     updateOKStatus();
   }

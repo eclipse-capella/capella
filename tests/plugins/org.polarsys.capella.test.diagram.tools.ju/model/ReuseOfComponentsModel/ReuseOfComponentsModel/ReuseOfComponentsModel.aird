@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:concern="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/1.4.0" xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/1.4.0" xmlns:org.polarsys.capella.core.data.epbs="http://www.polarsys.org/capella/core/epbs/1.4.0" xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/1.4.0" xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/1.4.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/concern http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_s0SmMP_NEemrtLxzTUEpLQ" selectedViews="_s0okcP_NEemrtLxzTUEpLQ _s1h8UP_NEemrtLxzTUEpLQ _s-Ur8P_NEemrtLxzTUEpLQ _s_qIsP_NEemrtLxzTUEpLQ _tBmCYP_NEemrtLxzTUEpLQ _tCVpQP_NEemrtLxzTUEpLQ _tCyVMP_NEemrtLxzTUEpLQ" version="14.3.0.201909031200">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:concern="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/1.4.0" xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/1.4.0" xmlns:org.polarsys.capella.core.data.epbs="http://www.polarsys.org/capella/core/epbs/1.4.0" xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/1.4.0" xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/1.4.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/concern http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
+  <viewpoint:DAnalysis uid="_s0SmMP_NEemrtLxzTUEpLQ" selectedViews="_s0okcP_NEemrtLxzTUEpLQ _s1h8UP_NEemrtLxzTUEpLQ _s-Ur8P_NEemrtLxzTUEpLQ _s_qIsP_NEemrtLxzTUEpLQ _tBmCYP_NEemrtLxzTUEpLQ _tCVpQP_NEemrtLxzTUEpLQ _tCyVMP_NEemrtLxzTUEpLQ" version="14.3.1.202003261200">
     <semanticResources>ReuseOfComponentsModel.afm</semanticResources>
-    <semanticResources>ReuseOfComponentsModel.melodymodeller</semanticResources>
+    <semanticResources>ReuseOfComponentsModel.capella</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_s0okcP_NEemrtLxzTUEpLQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']"/>
     </ownedViews>
@@ -14,14 +14,14 @@
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_wPh-BP_NEemrtLxzTUEpLQ" key="hide.computed.physical.links.filter" value="true"/>
         </eAnnotations>
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']"/>
-        <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="ReuseOfComponentsModel.melodymodeller#1a70e6fe-3c2b-44ef-8fb1-e9e4dbc32506"/>
+        <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="ReuseOfComponentsModel.capella#1a70e6fe-3c2b-44ef-8fb1-e9e4dbc32506"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_s-Ur8P_NEemrtLxzTUEpLQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_WeJlZgCjEeqrtLxzTUEpLQ" name="[SAB] System" repPath="#_WeAbcACjEeqrtLxzTUEpLQ" changeId="35298b6c-2d7d-498a-b2e1-918491806210">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']"/>
-        <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="ReuseOfComponentsModel.melodymodeller#e66ce912-6fcc-42f4-9007-cb822907cac4"/>
+        <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="ReuseOfComponentsModel.capella#e66ce912-6fcc-42f4-9007-cb822907cac4"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_s_qIsP_NEemrtLxzTUEpLQ">
@@ -38,14 +38,14 @@
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_VOrG5ABpEeqrtLxzTUEpLQ" key="hide.computed.physical.links.filter" value="true"/>
         </eAnnotations>
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']"/>
-        <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="ReuseOfComponentsModel.melodymodeller#14959d52-6c03-4881-b026-36c40979a1bb"/>
+        <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="ReuseOfComponentsModel.capella#14959d52-6c03-4881-b026-36c40979a1bb"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_tCyVMP_NEemrtLxzTUEpLQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_DN_RZQClEeqrtLxzTUEpLQ" name="[EAB] System" repPath="#_DN_RYAClEeqrtLxzTUEpLQ" changeId="801a4fa8-ff5a-413d-9cfe-98da5e9cf6cc">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']"/>
-        <target xmi:type="org.polarsys.capella.core.data.epbs:ConfigurationItem" href="ReuseOfComponentsModel.melodymodeller#81831650-2172-45e9-80aa-51f46cd1eb0e"/>
+        <target xmi:type="org.polarsys.capella.core.data.epbs:ConfigurationItem" href="ReuseOfComponentsModel.capella#81831650-2172-45e9-80aa-51f46cd1eb0e"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
   </viewpoint:DAnalysis>
@@ -149,9 +149,9 @@
       </data>
     </ownedAnnotationEntries>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_M2fQAP_REemrtLxzTUEpLQ" name=" Part 1 : LC 1">
-      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#bbe5a216-d1f1-4adc-bb1e-3b9fa4129bf8"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#bbe5a216-d1f1-4adc-bb1e-3b9fa4129bf8"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="ReuseOfComponentsModel.melodymodeller#9e0ed8ef-1aaa-4622-9d40-83cab16957d0"/>
+      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#bbe5a216-d1f1-4adc-bb1e-3b9fa4129bf8"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#bbe5a216-d1f1-4adc-bb1e-3b9fa4129bf8"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="ReuseOfComponentsModel.capella#9e0ed8ef-1aaa-4622-9d40-83cab16957d0"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -160,9 +160,9 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_NasJQP_REemrtLxzTUEpLQ" name=" Part 1 : LC 1_1">
-        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#bf549818-ef6c-477c-9854-65b1ee40e64e"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#bf549818-ef6c-477c-9854-65b1ee40e64e"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="ReuseOfComponentsModel.melodymodeller#5250c890-0bb6-4436-a68c-d6664214fc19"/>
+        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#bf549818-ef6c-477c-9854-65b1ee40e64e"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#bf549818-ef6c-477c-9854-65b1ee40e64e"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="ReuseOfComponentsModel.capella#5250c890-0bb6-4436-a68c-d6664214fc19"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -172,9 +172,9 @@
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_kMj_sACvEeqrtLxzTUEpLQ" name=" Part 2 : LC 2">
-        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#a9516520-a83e-4a20-a637-defc0a0ea1a5"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#a9516520-a83e-4a20-a637-defc0a0ea1a5"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="ReuseOfComponentsModel.melodymodeller#7ecfa82f-33c7-43f8-8b91-49481db0c7d9"/>
+        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#a9516520-a83e-4a20-a637-defc0a0ea1a5"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#a9516520-a83e-4a20-a637-defc0a0ea1a5"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="ReuseOfComponentsModel.capella#7ecfa82f-33c7-43f8-8b91-49481db0c7d9"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_kMj_sQCvEeqrtLxzTUEpLQ" borderSize="1" borderSizeComputationExpression="1" borderColor="74,74,151" backgroundStyle="GradientTopToBottom" backgroundColor="195,230,255" foregroundColor="150,177,218">
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@style"/>
         </ownedStyle>
@@ -182,9 +182,9 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_SUg-8P_REemrtLxzTUEpLQ" name=" Part 2 : LA 1">
-      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#276952a7-c1da-4884-8df8-926287f705a2"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#276952a7-c1da-4884-8df8-926287f705a2"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="ReuseOfComponentsModel.melodymodeller#1b60b9a3-b8cb-4582-ad47-5c411f72c120"/>
+      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#276952a7-c1da-4884-8df8-926287f705a2"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#276952a7-c1da-4884-8df8-926287f705a2"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="ReuseOfComponentsModel.capella#1b60b9a3-b8cb-4582-ad47-5c411f72c120"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -193,9 +193,9 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_SlD8YP_REemrtLxzTUEpLQ" name=" Part 1 : LA 1_1">
-        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#1840c7a0-fcce-4816-8b65-4a8fffe77b68"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#1840c7a0-fcce-4816-8b65-4a8fffe77b68"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="ReuseOfComponentsModel.melodymodeller#9cf2e682-efd2-4eb4-bd11-6c90f14bf55f"/>
+        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#1840c7a0-fcce-4816-8b65-4a8fffe77b68"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#1840c7a0-fcce-4816-8b65-4a8fffe77b68"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="ReuseOfComponentsModel.capella#9cf2e682-efd2-4eb4-bd11-6c90f14bf55f"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -205,9 +205,9 @@
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_SSi8EACtEeqrtLxzTUEpLQ" name=" Part 2 : LA 2">
-        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#652a978f-9c4a-43e9-b0dc-38be90edb36a"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#652a978f-9c4a-43e9-b0dc-38be90edb36a"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="ReuseOfComponentsModel.melodymodeller#ac4667ce-d958-4237-8380-5b4449eafafe"/>
+        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#652a978f-9c4a-43e9-b0dc-38be90edb36a"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#652a978f-9c4a-43e9-b0dc-38be90edb36a"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="ReuseOfComponentsModel.capella#ac4667ce-d958-4237-8380-5b4449eafafe"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -218,9 +218,9 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_i61scP_bEemrtLxzTUEpLQ" name=" Part 2 : LC 2">
-      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#0d7a1659-3e76-465b-bd02-8b66ee3815dc"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#0d7a1659-3e76-465b-bd02-8b66ee3815dc"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="ReuseOfComponentsModel.melodymodeller#7ecfa82f-33c7-43f8-8b91-49481db0c7d9"/>
+      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#0d7a1659-3e76-465b-bd02-8b66ee3815dc"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#0d7a1659-3e76-465b-bd02-8b66ee3815dc"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="ReuseOfComponentsModel.capella#7ecfa82f-33c7-43f8-8b91-49481db0c7d9"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -230,9 +230,9 @@
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_dy5s0P_cEemrtLxzTUEpLQ" name=" Part 3 : LC 3">
-      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#b21941f4-41dc-439d-aa14-8c213a157c98"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#b21941f4-41dc-439d-aa14-8c213a157c98"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="ReuseOfComponentsModel.melodymodeller#47890135-af9c-4b61-9cc7-b1020315c5e0"/>
+      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#b21941f4-41dc-439d-aa14-8c213a157c98"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#b21941f4-41dc-439d-aa14-8c213a157c98"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="ReuseOfComponentsModel.capella#47890135-af9c-4b61-9cc7-b1020315c5e0"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -242,9 +242,9 @@
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_glHxQP_mEemrtLxzTUEpLQ" name=" Part 3 : LA 2">
-      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#4e814cc9-e9e5-4ee5-8033-c0750b82c06d"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#4e814cc9-e9e5-4ee5-8033-c0750b82c06d"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="ReuseOfComponentsModel.melodymodeller#ac4667ce-d958-4237-8380-5b4449eafafe"/>
+      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#4e814cc9-e9e5-4ee5-8033-c0750b82c06d"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#4e814cc9-e9e5-4ee5-8033-c0750b82c06d"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="ReuseOfComponentsModel.capella#ac4667ce-d958-4237-8380-5b4449eafafe"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -254,9 +254,9 @@
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_1wKWIACrEeqrtLxzTUEpLQ" name=" Part 4 : LA 3">
-      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#b1b07ca5-bc03-442c-a10f-876326b4b1d8"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#b1b07ca5-bc03-442c-a10f-876326b4b1d8"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="ReuseOfComponentsModel.melodymodeller#3054d7ad-6fe0-4a09-b896-9378a7bedaa6"/>
+      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#b1b07ca5-bc03-442c-a10f-876326b4b1d8"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#b1b07ca5-bc03-442c-a10f-876326b4b1d8"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="ReuseOfComponentsModel.capella#3054d7ad-6fe0-4a09-b896-9378a7bedaa6"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -274,7 +274,7 @@
     <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']/@ownedRepresentations[name='AD%20diagram']/@filters[name='ModelExtensionFilter']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_wNJYYf_NEemrtLxzTUEpLQ"/>
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer"/>
-    <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="ReuseOfComponentsModel.melodymodeller#1a70e6fe-3c2b-44ef-8fb1-e9e4dbc32506"/>
+    <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="ReuseOfComponentsModel.capella#1a70e6fe-3c2b-44ef-8fb1-e9e4dbc32506"/>
   </diagram:DSemanticDiagram>
   <diagram:DSemanticDiagram uid="_SuMHIABpEeqrtLxzTUEpLQ">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_VMIwQABpEeqrtLxzTUEpLQ" source="DANNOTATION_CUSTOMIZATION_KEY">
@@ -385,9 +385,9 @@
       </data>
     </ownedAnnotationEntries>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_YzkJ8ABpEeqrtLxzTUEpLQ" name=" Part 1 : PC 1">
-      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#cb5a5d2e-3f48-4164-8e76-f89aadd93f2a"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#cb5a5d2e-3f48-4164-8e76-f89aadd93f2a"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="ReuseOfComponentsModel.melodymodeller#d3d1e2e3-dcfa-4a86-8c43-a1e0ab43801f"/>
+      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#cb5a5d2e-3f48-4164-8e76-f89aadd93f2a"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#cb5a5d2e-3f48-4164-8e76-f89aadd93f2a"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="ReuseOfComponentsModel.capella#d3d1e2e3-dcfa-4a86-8c43-a1e0ab43801f"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -396,9 +396,9 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_ZaTZ0ABpEeqrtLxzTUEpLQ" name=" Part 2 : PC 2">
-        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#a9667785-a8f5-4102-bf82-2c23a59c2aca"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#a9667785-a8f5-4102-bf82-2c23a59c2aca"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="ReuseOfComponentsModel.melodymodeller#ebe49c48-ff28-46ca-9cc2-80566008dc94"/>
+        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#a9667785-a8f5-4102-bf82-2c23a59c2aca"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#a9667785-a8f5-4102-bf82-2c23a59c2aca"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="ReuseOfComponentsModel.capella#ebe49c48-ff28-46ca-9cc2-80566008dc94"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -410,9 +410,9 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_a0KIsABpEeqrtLxzTUEpLQ" name=" Part 3 : PC 3">
-      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#737667c5-d037-4cef-8adb-a13561122308"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#737667c5-d037-4cef-8adb-a13561122308"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="ReuseOfComponentsModel.melodymodeller#ecf07d2a-5265-421c-9123-f31e510c6bc8"/>
+      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#737667c5-d037-4cef-8adb-a13561122308"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#737667c5-d037-4cef-8adb-a13561122308"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="ReuseOfComponentsModel.capella#ecf07d2a-5265-421c-9123-f31e510c6bc8"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -421,9 +421,9 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_hEHq4ABpEeqrtLxzTUEpLQ" name=" Part 4 : PC 5">
-        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#205b6df3-362d-4840-a59c-f35f565ea8a4"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#205b6df3-362d-4840-a59c-f35f565ea8a4"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="ReuseOfComponentsModel.melodymodeller#7523a736-ffc9-4190-ba72-2860bef5be75"/>
+        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#205b6df3-362d-4840-a59c-f35f565ea8a4"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#205b6df3-362d-4840-a59c-f35f565ea8a4"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="ReuseOfComponentsModel.capella#7523a736-ffc9-4190-ba72-2860bef5be75"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -433,9 +433,9 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Deployment']"/>
         <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_hdS_4ABpEeqrtLxzTUEpLQ" name=" Part 1 : PC 5_1">
-          <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#97cb7e7d-d1f6-4e41-a324-fee4bc96eb5e"/>
-          <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#97cb7e7d-d1f6-4e41-a324-fee4bc96eb5e"/>
-          <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="ReuseOfComponentsModel.melodymodeller#45750fd1-8e07-4641-927d-f93a14b4a1e1"/>
+          <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#97cb7e7d-d1f6-4e41-a324-fee4bc96eb5e"/>
+          <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#97cb7e7d-d1f6-4e41-a324-fee4bc96eb5e"/>
+          <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="ReuseOfComponentsModel.capella#45750fd1-8e07-4641-927d-f93a14b4a1e1"/>
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -446,9 +446,9 @@
         </ownedDiagramElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_t-2b8ABpEeqrtLxzTUEpLQ" name=" Part 6 : PC 6">
-        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#2649e06c-22d9-4eec-9c44-668112286cae"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#2649e06c-22d9-4eec-9c44-668112286cae"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="ReuseOfComponentsModel.melodymodeller#f303439d-9778-4d90-ac8b-a4695d5bb800"/>
+        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#2649e06c-22d9-4eec-9c44-668112286cae"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#2649e06c-22d9-4eec-9c44-668112286cae"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="ReuseOfComponentsModel.capella#f303439d-9778-4d90-ac8b-a4695d5bb800"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -459,18 +459,18 @@
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Deployment']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_NjJBwABtEeqrtLxzTUEpLQ" name=" Part 1 : PC 3_1">
-        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#7d2a2522-078b-40d7-b618-67a0ac2e0b64"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#7d2a2522-078b-40d7-b618-67a0ac2e0b64"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="ReuseOfComponentsModel.melodymodeller#b3627946-bc24-4725-93a5-d3148b807727"/>
+        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#7d2a2522-078b-40d7-b618-67a0ac2e0b64"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#7d2a2522-078b-40d7-b618-67a0ac2e0b64"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="ReuseOfComponentsModel.capella#b3627946-bc24-4725-93a5-d3148b807727"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_NjJBwQBtEeqrtLxzTUEpLQ" borderSize="1" borderSizeComputationExpression="1" borderColor="123,105,79" backgroundStyle="GradientTopToBottom" backgroundColor="255,255,220" foregroundColor="255,252,183">
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']/@conditionnalStyles.2/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_afPdQACYEeqrtLxzTUEpLQ" name=" Part 2 : PA 1">
-        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#7b84bb1a-7ff1-4c19-a621-e74d469d3ebc"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#7b84bb1a-7ff1-4c19-a621-e74d469d3ebc"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="ReuseOfComponentsModel.melodymodeller#80be6ca9-6524-4fb9-ad41-5d8cef103009"/>
+        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#7b84bb1a-7ff1-4c19-a621-e74d469d3ebc"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#7b84bb1a-7ff1-4c19-a621-e74d469d3ebc"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="ReuseOfComponentsModel.capella#80be6ca9-6524-4fb9-ad41-5d8cef103009"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -481,17 +481,17 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_b5P9IACYEeqrtLxzTUEpLQ" name=" Part 2 : PA 2">
-      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#3c0704e0-0123-4889-893e-6a9b5109ece1"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#3c0704e0-0123-4889-893e-6a9b5109ece1"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="ReuseOfComponentsModel.melodymodeller#2f1542b7-694f-46d0-9b08-ce383dd6872a"/>
+      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#3c0704e0-0123-4889-893e-6a9b5109ece1"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#3c0704e0-0123-4889-893e-6a9b5109ece1"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="ReuseOfComponentsModel.capella#2f1542b7-694f-46d0-9b08-ce383dd6872a"/>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_b5P9IQCYEeqrtLxzTUEpLQ" borderSize="1" borderSizeComputationExpression="1" borderColor="74,74,151" backgroundStyle="GradientTopToBottom" backgroundColor="218,253,255" foregroundColor="198,230,255">
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']/@conditionnalStyles.0/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_ct2C0ACYEeqrtLxzTUEpLQ" name=" Part 1 : PA 2_1">
-        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#1548e6bb-0eaf-40d7-b08c-9279efb7cbb8"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#1548e6bb-0eaf-40d7-b08c-9279efb7cbb8"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="ReuseOfComponentsModel.melodymodeller#8049447b-c041-40e9-8e7e-d2bca08e11bc"/>
+        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#1548e6bb-0eaf-40d7-b08c-9279efb7cbb8"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#1548e6bb-0eaf-40d7-b08c-9279efb7cbb8"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="ReuseOfComponentsModel.capella#8049447b-c041-40e9-8e7e-d2bca08e11bc"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_ct2C0QCYEeqrtLxzTUEpLQ" borderSize="1" borderSizeComputationExpression="1" borderColor="74,74,151" backgroundStyle="GradientTopToBottom" backgroundColor="218,253,255" foregroundColor="198,230,255">
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']/@conditionnalStyles.0/@style"/>
         </ownedStyle>
@@ -499,9 +499,9 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_vij6gACiEeqrtLxzTUEpLQ" name=" Part 3 : PA 3">
-      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#cdc3184e-de45-4287-adc4-9ebb86294e7a"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#cdc3184e-de45-4287-adc4-9ebb86294e7a"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="ReuseOfComponentsModel.melodymodeller#6707fd8b-7750-4d73-a599-efc2a62ce9c6"/>
+      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#cdc3184e-de45-4287-adc4-9ebb86294e7a"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#cdc3184e-de45-4287-adc4-9ebb86294e7a"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="ReuseOfComponentsModel.capella#6707fd8b-7750-4d73-a599-efc2a62ce9c6"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -519,7 +519,7 @@
     <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']/@ownedRepresentations[name='AD%20diagram']/@filters[name='ModelExtensionFilter']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_SuMHIQBpEeqrtLxzTUEpLQ"/>
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer"/>
-    <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="ReuseOfComponentsModel.melodymodeller#14959d52-6c03-4881-b026-36c40979a1bb"/>
+    <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="ReuseOfComponentsModel.capella#14959d52-6c03-4881-b026-36c40979a1bb"/>
   </diagram:DSemanticDiagram>
   <diagram:DSemanticDiagram uid="_WeAbcACjEeqrtLxzTUEpLQ">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_WeJlYwCjEeqrtLxzTUEpLQ" source="DANNOTATION_CUSTOMIZATION_KEY">
@@ -576,26 +576,26 @@
       </data>
     </ownedAnnotationEntries>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_WeJlYACjEeqrtLxzTUEpLQ" name=" System : System">
-      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#15bc59c5-e284-4f5e-bddd-5a1ad969b4e0"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#15bc59c5-e284-4f5e-bddd-5a1ad969b4e0"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="ReuseOfComponentsModel.melodymodeller#e66ce912-6fcc-42f4-9007-cb822907cac4"/>
+      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#15bc59c5-e284-4f5e-bddd-5a1ad969b4e0"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#15bc59c5-e284-4f5e-bddd-5a1ad969b4e0"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="ReuseOfComponentsModel.capella#e66ce912-6fcc-42f4-9007-cb822907cac4"/>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_WeJlYQCjEeqrtLxzTUEpLQ" borderSize="1" borderSizeComputationExpression="1" borderColor="74,74,151" backgroundStyle="GradientTopToBottom" backgroundColor="195,230,255" foregroundColor="150,177,218">
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20System']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20System']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_XeOiUACjEeqrtLxzTUEpLQ" name=" Part 2 : SA 1">
-      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#76b9a154-208d-48c1-aa93-e2f009078640"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#76b9a154-208d-48c1-aa93-e2f009078640"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="ReuseOfComponentsModel.melodymodeller#45d529c5-c4c7-4c0b-b012-1add54cc7938"/>
+      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#76b9a154-208d-48c1-aa93-e2f009078640"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#76b9a154-208d-48c1-aa93-e2f009078640"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="ReuseOfComponentsModel.capella#45d529c5-c4c7-4c0b-b012-1add54cc7938"/>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_XeOiUQCjEeqrtLxzTUEpLQ" borderSize="1" borderSizeComputationExpression="1" borderColor="74,74,151" backgroundStyle="GradientTopToBottom" backgroundColor="218,253,255" foregroundColor="198,230,255">
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_YDekcACjEeqrtLxzTUEpLQ" name=" Part 1 : SA 1_1">
-        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#3f997813-c6b1-4309-a063-1fa8f298c7d5"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#3f997813-c6b1-4309-a063-1fa8f298c7d5"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="ReuseOfComponentsModel.melodymodeller#8d30491d-f27c-4b0e-8fc6-d35ea69a284b"/>
+        <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#3f997813-c6b1-4309-a063-1fa8f298c7d5"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#3f997813-c6b1-4309-a063-1fa8f298c7d5"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="ReuseOfComponentsModel.capella#8d30491d-f27c-4b0e-8fc6-d35ea69a284b"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_YDekcQCjEeqrtLxzTUEpLQ" borderSize="1" borderSizeComputationExpression="1" borderColor="74,74,151" backgroundStyle="GradientTopToBottom" backgroundColor="218,253,255" foregroundColor="198,230,255">
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@style"/>
         </ownedStyle>
@@ -603,18 +603,18 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_XzY6AACjEeqrtLxzTUEpLQ" name=" Part 3 : SA 2">
-      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#519c43af-4dfc-4565-8eac-ce1997b253a1"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#519c43af-4dfc-4565-8eac-ce1997b253a1"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="ReuseOfComponentsModel.melodymodeller#f537cc2c-3365-4f07-be56-4ce5b98c1f73"/>
+      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#519c43af-4dfc-4565-8eac-ce1997b253a1"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#519c43af-4dfc-4565-8eac-ce1997b253a1"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="ReuseOfComponentsModel.capella#f537cc2c-3365-4f07-be56-4ce5b98c1f73"/>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_XzY6AQCjEeqrtLxzTUEpLQ" borderSize="1" borderSizeComputationExpression="1" borderColor="74,74,151" backgroundStyle="GradientTopToBottom" backgroundColor="218,253,255" foregroundColor="198,230,255">
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_pkEtYACjEeqrtLxzTUEpLQ" name=" Part 4 : SA 3">
-      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#101aef11-24fb-4721-ae92-c33eb9ee846c"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#101aef11-24fb-4721-ae92-c33eb9ee846c"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="ReuseOfComponentsModel.melodymodeller#1cf87c8c-924f-4ffb-81af-f0bcf155f722"/>
+      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#101aef11-24fb-4721-ae92-c33eb9ee846c"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#101aef11-24fb-4721-ae92-c33eb9ee846c"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="ReuseOfComponentsModel.capella#1cf87c8c-924f-4ffb-81af-f0bcf155f722"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -631,7 +631,7 @@
     <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']/@ownedRepresentations[name='AD%20diagram']/@filters[name='ModelExtensionFilter']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_WeAbcQCjEeqrtLxzTUEpLQ"/>
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer"/>
-    <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="ReuseOfComponentsModel.melodymodeller#e66ce912-6fcc-42f4-9007-cb822907cac4"/>
+    <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="ReuseOfComponentsModel.capella#e66ce912-6fcc-42f4-9007-cb822907cac4"/>
   </diagram:DSemanticDiagram>
   <diagram:DSemanticDiagram uid="_DN_RYAClEeqrtLxzTUEpLQ">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_DN_RYgClEeqrtLxzTUEpLQ" source="DANNOTATION_CUSTOMIZATION_KEY">
@@ -706,9 +706,9 @@
       </data>
     </ownedAnnotationEntries>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_FIPXkAClEeqrtLxzTUEpLQ" name=" ConfigurationItem 1 : COTSCI 1">
-      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#587f7eb3-4281-4751-a0a9-3c1459e26a0a"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#587f7eb3-4281-4751-a0a9-3c1459e26a0a"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.epbs:ConfigurationItem" href="ReuseOfComponentsModel.melodymodeller#9d5ce82d-3c44-46a8-8a0f-c168548ad8c7"/>
+      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#587f7eb3-4281-4751-a0a9-3c1459e26a0a"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#587f7eb3-4281-4751-a0a9-3c1459e26a0a"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.epbs:ConfigurationItem" href="ReuseOfComponentsModel.capella#9d5ce82d-3c44-46a8-8a0f-c168548ad8c7"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
@@ -718,9 +718,9 @@
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_HB1WcAClEeqrtLxzTUEpLQ" name=" ConfigurationItem 2 : CSCI 2">
-      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#979fdd06-1e7d-4b32-9f55-1dc5aa0b4e56"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#979fdd06-1e7d-4b32-9f55-1dc5aa0b4e56"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.epbs:ConfigurationItem" href="ReuseOfComponentsModel.melodymodeller#6f522b74-7ba4-4b4a-b203-1ebd489fb71d"/>
+      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#979fdd06-1e7d-4b32-9f55-1dc5aa0b4e56"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#979fdd06-1e7d-4b32-9f55-1dc5aa0b4e56"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.epbs:ConfigurationItem" href="ReuseOfComponentsModel.capella#6f522b74-7ba4-4b4a-b203-1ebd489fb71d"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
@@ -730,9 +730,9 @@
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_KogiMAClEeqrtLxzTUEpLQ" name=" ConfigurationItem 3 : HWCI 3">
-      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#42e37166-5a82-4c9c-8f14-f2fcb792779c"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#42e37166-5a82-4c9c-8f14-f2fcb792779c"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.epbs:ConfigurationItem" href="ReuseOfComponentsModel.melodymodeller#b3c55b95-a45d-4ceb-9e81-d6d0ee34a34a"/>
+      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#42e37166-5a82-4c9c-8f14-f2fcb792779c"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#42e37166-5a82-4c9c-8f14-f2fcb792779c"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.epbs:ConfigurationItem" href="ReuseOfComponentsModel.capella#b3c55b95-a45d-4ceb-9e81-d6d0ee34a34a"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
@@ -742,9 +742,9 @@
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_Lc824AClEeqrtLxzTUEpLQ" name=" ConfigurationItem 4 : InterfaceCI 4">
-      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#52ffdc11-acdc-4952-b7bd-50cc32568529"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#52ffdc11-acdc-4952-b7bd-50cc32568529"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.epbs:ConfigurationItem" href="ReuseOfComponentsModel.melodymodeller#7b373908-6a53-49c6-b860-37e6f3390013"/>
+      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#52ffdc11-acdc-4952-b7bd-50cc32568529"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#52ffdc11-acdc-4952-b7bd-50cc32568529"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.epbs:ConfigurationItem" href="ReuseOfComponentsModel.capella#7b373908-6a53-49c6-b860-37e6f3390013"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
@@ -754,9 +754,9 @@
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_MapOMAClEeqrtLxzTUEpLQ" name=" ConfigurationItem 5 : NDICI 5">
-      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#86828d32-29b3-4b55-98c5-c27a9489b8f6"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#86828d32-29b3-4b55-98c5-c27a9489b8f6"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.epbs:ConfigurationItem" href="ReuseOfComponentsModel.melodymodeller#14f19174-385e-49f1-bfac-321e8209eefb"/>
+      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#86828d32-29b3-4b55-98c5-c27a9489b8f6"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#86828d32-29b3-4b55-98c5-c27a9489b8f6"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.epbs:ConfigurationItem" href="ReuseOfComponentsModel.capella#14f19174-385e-49f1-bfac-321e8209eefb"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
@@ -766,9 +766,9 @@
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_M7uiAAClEeqrtLxzTUEpLQ" name=" ConfigurationItem 6 : PrimeItemCI 6">
-      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#d23a9409-8c70-4c20-805c-201b51bf03d1"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#d23a9409-8c70-4c20-805c-201b51bf03d1"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.epbs:ConfigurationItem" href="ReuseOfComponentsModel.melodymodeller#5a9c60ba-4b0d-43aa-9fb9-bfc73d5fd058"/>
+      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#d23a9409-8c70-4c20-805c-201b51bf03d1"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#d23a9409-8c70-4c20-805c-201b51bf03d1"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.epbs:ConfigurationItem" href="ReuseOfComponentsModel.capella#5a9c60ba-4b0d-43aa-9fb9-bfc73d5fd058"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
@@ -778,9 +778,9 @@
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_NV8_4AClEeqrtLxzTUEpLQ" name=" ConfigurationItem 7 : SystemCI 7">
-      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#54bb50cf-d60e-494a-9489-13d9df372e8f"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.melodymodeller#54bb50cf-d60e-494a-9489-13d9df372e8f"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.epbs:ConfigurationItem" href="ReuseOfComponentsModel.melodymodeller#f46336e4-2255-4bd8-928a-414794969376"/>
+      <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#54bb50cf-d60e-494a-9489-13d9df372e8f"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="ReuseOfComponentsModel.capella#54bb50cf-d60e-494a-9489-13d9df372e8f"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.epbs:ConfigurationItem" href="ReuseOfComponentsModel.capella#f46336e4-2255-4bd8-928a-414794969376"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
@@ -793,6 +793,6 @@
     <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']/@ownedRepresentations[name='AD%20diagram']/@filters[name='ModelExtensionFilter']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_DN_RYQClEeqrtLxzTUEpLQ"/>
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer"/>
-    <target xmi:type="org.polarsys.capella.core.data.epbs:ConfigurationItem" href="ReuseOfComponentsModel.melodymodeller#81831650-2172-45e9-80aa-51f46cd1eb0e"/>
+    <target xmi:type="org.polarsys.capella.core.data.epbs:ConfigurationItem" href="ReuseOfComponentsModel.capella#81831650-2172-45e9-80aa-51f46cd1eb0e"/>
   </diagram:DSemanticDiagram>
 </xmi:XMI>

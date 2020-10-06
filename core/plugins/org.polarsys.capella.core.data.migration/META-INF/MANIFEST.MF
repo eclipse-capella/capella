@@ -31,7 +31,8 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.core.data.business.queries,
  org.polarsys.capella.core.data.gen,
  org.polarsys.capella.core.platform.sirius.clipboard,
- org.eclipse.emf.ecore
+ org.eclipse.emf.ecore,
+ org.polarsys.capella.core.sirius.ui
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8

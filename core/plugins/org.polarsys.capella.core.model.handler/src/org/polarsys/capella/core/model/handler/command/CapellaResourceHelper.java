@@ -14,7 +14,9 @@ package org.polarsys.capella.core.model.handler.command;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.core.resources.IFile;
@@ -24,6 +26,7 @@ import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
@@ -35,6 +38,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
+import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.viewpoint.DRefreshable;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
@@ -44,39 +48,45 @@ import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.mdsofa.common.activator.SolFaCommonActivator;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
-import org.eclipse.gmf.runtime.notation.NotationPackage;
+import org.polarsys.capella.common.mdsofa.common.helper.FileHelper;
 
 /**
  * Helper that deal with Capella resources.
  */
 public class CapellaResourceHelper {
-  /**
-   * The Capella model file extension, value:<code>melodymodeller</code>
-   */
-  public static final String CAPELLA_MODEL_FILE_EXTENSION = "melodymodeller"; //$NON-NLS-1$
-  /**
-   * The Capella fragment file extension value:<code>melodyfragment</code>
-   */
-  public static final String CAPELLA_FRAGMENT_FILE_EXTENSION = "melodyfragment"; //$NON-NLS-1$
-  /**
-   * The Aird fragment file extension value:<code>airdfragment</code>
-   */
+
+  public static final String CAPELLA_MODEL_FILE_EXTENSION = "capella"; //$NON-NLS-1$
+
+  public static final String CAPELLA_FRAGMENT_FILE_EXTENSION = "capellafragment"; //$NON-NLS-1$
+
+  private static final String CAPELLA_CONNECTOR_FILE_EXTENSION = "capellaconnector"; //$NON-NLS-1$
+
+  public static final String LEGACY_CAPELLA_MODEL_FILE_EXTENSION = "melodymodeller"; //$NON-NLS-1$
+
+  public static final String LEGACY_CAPELLA_FRAGMENT_FILE_EXTENSION = "melodyfragment"; //$NON-NLS-1$
+
+  private static final String LEGACY_CAPELLA_CONNECTOR_FILE_EXTENSION = "melodyconnector"; //$NON-NLS-1$
+
+  public static final Map<String, String> LEGACY_TO_MODERN_FILE_EXTENSIONS;
+
+  static {
+    Map<String, String> temp = new HashMap<>();
+
+    temp.put(LEGACY_CAPELLA_FRAGMENT_FILE_EXTENSION, CAPELLA_FRAGMENT_FILE_EXTENSION);
+    temp.put(LEGACY_CAPELLA_MODEL_FILE_EXTENSION, CAPELLA_MODEL_FILE_EXTENSION);
+    temp.put(LEGACY_CAPELLA_CONNECTOR_FILE_EXTENSION, CAPELLA_CONNECTOR_FILE_EXTENSION);
+
+    LEGACY_TO_MODERN_FILE_EXTENSIONS = Collections.unmodifiableMap(temp);
+  }
+
   public static final String AIRD_FRAGMENT_FILE_EXTENSION = "airdfragment"; //$NON-NLS-1$
-  /**
-   * The Aird representation file extension value:<code>srm</code>
-   */
-  public static final String AIRD_SRM_FILE_EXTENSION = "srm"; //$NON-NLS-1$
-  /**
-   * The Aird file extension value:<code>aird</code>
-   */
+
+  public static final String AIRD_SRM_FILE_EXTENSION = SiriusUtil.REPRESENTATION_FILE_EXTENSION; // $NON-NLS-1$
+
   public static final String AIRD_FILE_EXTENSION = SiriusUtil.SESSION_RESOURCE_EXTENSION;
-  /**
-   * The AFM file extension value:<code>afm</code>
-   */
+
   public static final String AFM_FILE_EXTENSION = "afm";
-  /**
-   * Fragments default folder name:<code>fragments</code>
-   */
+
   public static final String FRAGMENTS_DEFAULT_FOLDER = "fragments"; //$NON-NLS-1$
 
   private static boolean __delegatedCapellaResourceHelperLoaded = false;
@@ -175,7 +185,7 @@ public class CapellaResourceHelper {
   public static boolean isRepresentationResource(URI uri) {
     return (uri != null) && AIRD_SRM_FILE_EXTENSION.equals(uri.fileExtension());
   }
-  
+
   /**
    * Whether or not given resource is a Capella fragment.
    * 
@@ -199,6 +209,17 @@ public class CapellaResourceHelper {
   }
 
   /**
+   * Whether or not given resource is a <u>LEGACY</u> Capella one.
+   * 
+   * @param resource
+   *          the resource
+   * @return <code>true</code> means given resource is a <u>LEGACY</u> Capella one
+   */
+  public static boolean isLegacyCapellaResource(IResource resource) {
+    return isLegacyCapellaResource(resource, false);
+  }
+
+  /**
    * Whether or not given resource is a Capella one i.e a model or a fragment depending on ignoreCapellaFragment.
    * 
    * @param resource
@@ -210,6 +231,91 @@ public class CapellaResourceHelper {
   public static boolean isCapellaResource(IResource resource, boolean ignoreCapellaFragment) {
     return hasFileExtension(resource, ignoreCapellaFragment, CAPELLA_FRAGMENT_FILE_EXTENSION,
         CAPELLA_MODEL_FILE_EXTENSION);
+  }
+
+  /**
+   * Whether or not the given resource is a <u>LEGACY</u> Capella one.
+   * 
+   * @param resource
+   *          the resource
+   * @param ignoreCapellaFragment
+   *          <code>true</code> means files with {@link #CAPELLA_FRAGMENT_FILE_EXTENSION} file extension are ignored
+   * @return <code>true</code> means given resource is a <u>LEGACY</u> Capella one
+   * @see {@link #LEGACY_CAPELLA_FRAGMENT_FILE_EXTENSION}, {@link #LEGACY_CAPELLA_MODEL_FILE_EXTENSION},
+   *      {@link #LEGACY_CAPELLA_CONNECTOR_FILE_EXTENSION}
+   */
+  public static boolean isLegacyCapellaResource(IResource resource, boolean ignoreCapellaFragment) {
+    return hasFileExtension(resource, ignoreCapellaFragment, LEGACY_CAPELLA_FRAGMENT_FILE_EXTENSION,
+        LEGACY_CAPELLA_MODEL_FILE_EXTENSION)
+        || hasFileExtension(resource, ignoreCapellaFragment, LEGACY_CAPELLA_FRAGMENT_FILE_EXTENSION,
+            LEGACY_CAPELLA_CONNECTOR_FILE_EXTENSION);
+  }
+
+  /**
+   * Returns the modern extension equivalent for a legacy extension.
+   * 
+   * @param legacyExtension
+   *          the legacy extension
+   * @return the modern extension equivalent for a legacy extension or null if unrecognized
+   */
+  public static String getModernResourceExtension(String legacyExtension) {
+    return LEGACY_TO_MODERN_FILE_EXTENSIONS.get(legacyExtension);
+  }
+
+  /**
+   * Whether or not the given resource path is a <u>LEGACY</u> Capella one.
+   * 
+   * @param path
+   *          the path.
+   * @return whether or not the given resource path is a <u>LEGACY</u> Capella one
+   */
+  public static boolean isLegacyCapellaResourcePath(IPath path) {
+    String fileExtension = path.getFileExtension();
+    return getModernResourceExtension(fileExtension) != null;
+  }
+
+  /**
+   * Converts the <u>LEGACY</u> resource path to a modern path.
+   * 
+   * @param path
+   *          the legacy path
+   * @return the modern path
+   */
+  public static IPath convertLegacyResourcePathToModern(IPath path) {
+    String legacyExtension = path.getFileExtension();
+    String modernExtension = getModernResourceExtension(legacyExtension);
+
+    if (modernExtension != null) {
+      return path.removeFileExtension().addFileExtension(modernExtension);
+
+    }
+    return path;
+  }
+
+  /**
+   * Renames the <u>LEGACY</u> resource to a modern resource. If the resource is not <u>LEGACY</u>, no action is
+   * performed.
+   * 
+   * @param capellaResource
+   *          the capella resource
+   * @return the modern resource
+   */
+  public static IResource renameLegacyResource(IResource capellaResource) {
+    if (isLegacyCapellaResource(capellaResource)) {
+      IFile legacyFile = capellaResource.getAdapter(IFile.class);
+
+      if (legacyFile != null) {
+        IWorkspace workspace = legacyFile.getWorkspace();
+        IPath legacyPath = capellaResource.getFullPath();
+        IPath modernPath = convertLegacyResourcePathToModern(legacyPath);
+
+        FileHelper.moveResource(legacyFile, modernPath);
+
+        return workspace.getRoot().getFile(modernPath);
+      }
+
+    }
+    return capellaResource;
   }
 
   /**

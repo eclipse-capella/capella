@@ -26,7 +26,7 @@ with [get-window "Filters and Customization"] {
     get-item "\*.afm resources" | get-property checked | equals true | verify-true
     get-item "\*.aird" | get-property checked | equals true | verify-true
     get-item "\*.class resources" | get-property checked | equals true | verify-true
-    get-item "\*.melodymodeller resources" | get-property checked | equals true | verify-true
+    get-item "\*.capella resources" | get-property checked | equals true | verify-true
     get-item "Capability and Mission Involvements" | get-property checked | equals true | verify-true
     get-item "Association Links" | get-property checked | equals true | verify-true
     get-item "Closed projects" | get-property checked | equals true | verify-true
@@ -84,7 +84,7 @@ with [get-window "Filters and Customization"] {
     get-item "\*.afm resources" | get-property checked | equals false | verify-true
     get-item "\*.aird" | get-property checked | equals false | verify-true
     get-item "\*.class resources" | get-property checked | equals false | verify-true
-    get-item "\*.melodymodeller resources" | get-property checked | equals false | verify-true
+    get-item "\*.capella resources" | get-property checked | equals false | verify-true
     get-item "Capability and Mission Involvements" | get-property checked | equals false | verify-true
     get-item "Association Links" | get-property checked | equals false | verify-true
     get-item "Closed projects" | get-property checked | equals false | verify-true
@@ -142,7 +142,7 @@ with [get-window "Filters and Customization"] {
     get-item "\*.afm resources" | get-property checked | equals false | verify-true
     get-item "\*.aird" | get-property checked | equals false | verify-true
     get-item "\*.class resources" | get-property checked | equals false | verify-true
-    get-item "\*.melodymodeller resources" | get-property checked | equals false | verify-true
+    get-item "\*.capella resources" | get-property checked | equals false | verify-true
     get-item "Capability and Mission Involvements" | get-property checked | equals true | verify-true
     get-item "Association Links" | get-property checked | equals true | verify-true    
     get-item "Closed projects" | get-property checked | equals false | verify-true

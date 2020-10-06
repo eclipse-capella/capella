@@ -38,8 +38,8 @@ with [get-window "New Capella Library"] {
 get-view "Project Explorer" | get-tree | select "Project/Project.aird" 
     | get-menu "Libraries/Manage references" | click
 with [get-window -class PropertyDialog] {
-    get-table | get-item "Lib1.melodymodeller" | check
-    get-table | get-item "Lib2.melodymodeller" | check
+    get-table | get-item "Lib1.capella" | check
+    get-table | get-item "Lib2.capella" | check
     get-button OK | click
 }
 with [get-view "Project Explorer" | get-tree] {
@@ -172,8 +172,8 @@ get-view "Project Explorer" | get-tree | select "Project/Project.aird" | get-men
     | click
 with [get-window -class PropertyDialog] {
     with [get-table] {
-        get-item "Lib1.melodymodeller" | uncheck
-        get-item "Lib2.melodymodeller" | uncheck
+        get-item "Lib1.capella" | uncheck
+        get-item "Lib2.capella" | uncheck
     }
     get-button OK | click
 }

@@ -21,7 +21,7 @@ with [get-window "Filters and Customization"] {
     get-item "\*.afm resources" | uncheck
     get-item "\*.aird" | uncheck
     get-item "\*.class resources" | uncheck
-    get-item "\*.melodymodeller resources" | uncheck
+    get-item "\*.capella resources" | uncheck
     get-item "Capability and Mission Involvements" | check
     get-item "Association Links" | check
     get-item "Closed projects" | uncheck
