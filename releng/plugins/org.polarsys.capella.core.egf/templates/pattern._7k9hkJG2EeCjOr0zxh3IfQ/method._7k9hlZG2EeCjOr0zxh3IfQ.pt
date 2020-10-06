@@ -36,7 +36,7 @@
         String targetName = "";<%=genModel.getNonNLS()%>
         <%=genModel.getImportedName("org.eclipse.emf.ecore.EObject")%> target = null;
 
-<%List<GenClass> superclasses = genClass.getAllBaseGenClasses(); superclasses.add(genClass);%>
+<%List<GenClass> superclasses = new ArrayList(genClass.getAllBaseGenClasses()); superclasses.add(genClass);%>
 <%for (GenClass cls : superclasses) {%>
   <%if ((cls.getEcoreModelElement() instanceof EClass) && ((EClass) cls.getEcoreModelElement()).getName().equals("AbstractTrace")) {%>
  		target = ((<%=genModel.getImportedName("org.polarsys.capella.common.data.modellingcore.AbstractTrace")%>) object).getTargetElement();

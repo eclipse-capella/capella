@@ -1,4 +1,0 @@
-<%//IN: GenClass genClass%>
-
-        String newBusinessId = <%=genModel.getImportedName("org.polarsys.capella.common.lib.IdGenerator")%>.createId();
-        <%=genClass.getSafeUncapName()%>.setId(newBusinessId);

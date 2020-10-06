@@ -1,9 +1,0 @@
-<%
-genClass = parameter;
-eclassCondition = (String) ctx.getValue("eclassCondition");
-generatedSourceFolderPath = (String) ctx.getValue("generatedSourceFolderPath");
-
-targetPath = "/org.polarsys.capella.core.model.tests.ju/generated";
-packageName = generatedSourceFolderPath;
-className = "Test_" + genClass.getName();
-%>

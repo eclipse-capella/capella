@@ -1,18 +1,17 @@
 <%
 /**
  * Copyright (c) 2002-2004 IBM Corporation and others.
- * 
- * This program and the accompanying materials are made available under the
- * terms of the Eclipse Public License 2.0 which is available at
- * http://www.eclipse.org/legal/epl-2.0
- * 
- * SPDX-License-Identifier: EPL-2.0
- * 
+ * All rights reserved.   This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v2.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v20.html
+ *
  * Contributors:
  *   IBM - Initial API and implementation
  */
 %>
 <%GenModel genModel = (GenModel)argument; /* Trick to import java.util.* without warnings */Iterator.class.getName();%>
+<%final boolean isJDK50 = genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50;%>
 <%@ egf:patternCall patternId="platform:/plugin/org.eclipse.egf.emf.pattern.base/egf/EMF_Pattern_Base.fcore#LogicalName=org.eclipse.egf.emf.pattern.base.HeaderJava" args="parameter:argument"%>
 package <%=genModel.getEditorPluginPackageName()%>;
 
@@ -24,8 +23,14 @@ package <%=genModel.getEditorPluginPackageName()%>;
  * This is the central singleton for the <%=genModel.getModelName()%> editor plugin.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
+<%if (genModel.hasAPITags()) {%>
+ * <%=genModel.getAPITags(genModel.getIndentation(stringBuffer))%>
+<%}%>
  * @generated
  */
+<%if (isJDK50 && genModel.hasAPIDeprecatedTag()) {%>
+@Deprecated
+<%}%>
 public final class <%=genModel.getEditorPluginClassName()%> extends EMFPlugin
 {
 <%if (genModel.hasCopyrightField()) {%>

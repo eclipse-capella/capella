@@ -1,19 +1,18 @@
 <%
 /**
  * Copyright (c) 2002-2010 IBM Corporation and others.
- * 
- * This program and the accompanying materials are made available under the
- * terms of the Eclipse Public License 2.0 which is available at
- * http://www.eclipse.org/legal/epl-2.0
- * 
- * SPDX-License-Identifier: EPL-2.0
- * 
+ * All rights reserved.   This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v2.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v20.html
+ *
  * Contributors:
  *   IBM - Initial API and implementation
  */
 %>
 <%GenPackage genPackage = (GenPackage)((Object[])argument)[0]; GenModel genModel=genPackage.getGenModel(); /* Trick to import java.util.* without warnings */Iterator.class.getName();%>
-<%boolean isInterface = Boolean.TRUE.equals(((Object[])argument)[1]); boolean isImplementation = Boolean.TRUE.equals(((Object[])argument)[2]);%>
+<%final boolean isJDK50 = genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50;%>
+<%boolean isInterface = Boolean.TRUE.equals(((Object[])argument)[1]); boolean isImplementation = Boolean.TRUE.equals(((Object[])argument)[2]); boolean useInterfaceOverrideAnnotation = genModel.useInterfaceOverrideAnnotation() && !(isInterface && isImplementation);%>
 <%String publicStaticFinalFlag = isImplementation ? "public static final " : "";%>
 <%@ egf:patternCall patternId="platform:/plugin/org.eclipse.egf.emf.pattern.base/egf/EMF_Pattern_Base.fcore#LogicalName=org.eclipse.egf.emf.pattern.base.HeaderJava" args="parameter:argument"%>
 <%if (isInterface || genModel.isSuppressInterfaces()) {%>
@@ -40,6 +39,9 @@ package <%=genPackage.getClassPackageName()%>;
 <%if (!genModel.isSuppressEMFMetaData()) {%>
  * @see <%=genPackage.getQualifiedPackageInterfaceName()%>
 <%}%>
+<%if (genPackage.hasAPITags()) {%>
+ * <%=genPackage.getAPITags(genModel.getIndentation(stringBuffer))%>
+<%}%>
  * @generated
  */
 <%} else {%>
@@ -47,10 +49,19 @@ package <%=genPackage.getClassPackageName()%>;
  * <!-- begin-user-doc -->
  * An implementation of the model <b>Factory</b>.
  * <!-- end-user-doc -->
+<%if (genPackage.hasAPITags()) {%>
+ * <%=genPackage.getAPITags(genModel.getIndentation(stringBuffer))%>
+<%}%>
  * @generated
  */
 <%}%>
+<%if (isJDK50 && genPackage.hasAPIDeprecatedTag()) {%>
+@Deprecated
+<%}%>
 <%if (isImplementation) {%>
+  <%if (isJDK50 && !genPackage.hasAPIDeprecatedTag()) { List<GenClassifier> genClassifiers = new ArrayList<GenClassifier>(genPackage.getGenClassifiers()); for (Iterator<GenClassifier> i = genClassifiers.iterator(); i.hasNext(); ) { GenClassifier genClassifier = i.next(); if (genClassifier instanceof GenClass && ((GenClass)genClassifier).isAbstract()) i.remove(); } if (GenModelUtil.hasAPIDeprecatedTag(genClassifiers)) {%>
+@SuppressWarnings("deprecation")
+  <%}}%>
 public class <%=genPackage.getFactoryClassName()%> extends <%=genModel.getImportedName("org.eclipse.emf.ecore.impl.EFactoryImpl")%><%if (!genModel.isSuppressInterfaces()) {%> implements <%=genPackage.getImportedFactoryInterfaceName()%><%}%>
 <%} else {%>
 public interface <%=genPackage.getFactoryInterfaceName()%><%if (!genModel.isSuppressEMFMetaData()) {%> extends <%=genModel.getImportedName("org.eclipse.emf.ecore.EFactory")%><%}%>
@@ -205,8 +216,17 @@ public interface <%=genPackage.getFactoryInterfaceName()%><%if (!genModel.isSupp
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+    <%if (genClass.hasAPITags()) {%>
+	 * <%=genClass.getAPITags(genModel.getIndentation(stringBuffer))%>
+    <%}%>
 	 * @generated
 	 */
+<%if (isJDK50 && genClass.hasAPIDeprecatedTag()) {%>
+	@Deprecated
+<%}%>
+<%if (useInterfaceOverrideAnnotation && !genClass.isMapEntry()) {%>
+	@Override
+<%}%>
 	public <%=genClass.getTypeParameters()%><%=genClass.getImportedInterfaceName()%><%=genClass.getInterfaceTypeArguments()%> create<%=genClass.getName()%>()
 	{
     <%if (genClass.isDynamic()) {%>
@@ -225,11 +245,20 @@ public interface <%=genPackage.getFactoryInterfaceName()%><%if (!genModel.isSupp
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+  <%if (genDataType.hasAPITags()) {%>
+	 * <%=genDataType.getAPITags(genModel.getIndentation(stringBuffer))%>
+  <%}%>
 	 * @generated
 	 */
     <%if (genModel.useGenerics() && genDataType.isUncheckedCast() && !genDataType.hasCreatorBody()) {%>
 	@SuppressWarnings("unchecked")
     <%}%>
+    <%if (isJDK50 && genDataType.hasAPIDeprecatedTag()) {%>
+	@Deprecated
+    <%}%>
+  <%if (genPackage.isDataTypeConverters() && useInterfaceOverrideAnnotation) {%>
+	@Override
+  <%}%>
 	public <%=genDataType.getImportedParameterizedInstanceClassName()%> create<%=genDataType.getName()%>(<%if (genDataType.hasCreatorBody()) {%>final <%}%>String <%if (genDataType.hasCreatorBody()) {%>it<%} else {%>literal<%}%>)
 	{
     <%if (genDataType.hasCreatorBody()) {%>
@@ -240,13 +269,13 @@ public interface <%=genPackage.getFactoryInterfaceName()%><%if (!genModel.isSupp
 		return result;
     <%} else if (genDataType.getBaseType() != null) { GenDataType genBaseType = genDataType.getBaseType(); boolean isPrimitiveConversion = !genDataType.isPrimitiveType() && genBaseType.isPrimitiveType();%>
       <%if (genBaseType.getGenPackage() == genPackage) {%>
-        <%if (isPrimitiveConversion && genModel.getComplianceLevel().getValue() < GenJDKLevel.JDK50) {%>
+        <%if (isPrimitiveConversion && !isJDK50) {%>
 		return new <%=genDataType.getObjectInstanceClassName()%>(create<%=genBaseType.getName()%>(literal));
         <%} else {%>
 		return create<%=genBaseType.getName()%>(literal);
         <%}%>
       <%} else if (genBaseType.getGenPackage().isDataTypeConverters()) {%>
-        <%if (isPrimitiveConversion && genModel.getComplianceLevel().getValue() < GenJDKLevel.JDK50) {%>
+        <%if (isPrimitiveConversion && !isJDK50) {%>
 		return new <%=genDataType.getObjectInstanceClassName()%>(<%=genBaseType.getGenPackage().getQualifiedEFactoryInternalInstanceAccessor()%>.create<%=genBaseType.getName()%>(literal));
         <%} else {%>
 		return <%=genBaseType.getGenPackage().getQualifiedEFactoryInternalInstanceAccessor()%>.create<%=genBaseType.getName()%>(literal);
@@ -301,7 +330,7 @@ public interface <%=genPackage.getFactoryInterfaceName()%><%if (!genModel.isSupp
 			result = (<%=genDataType.getObjectInstanceClassName()%>)<%=genMemberType.getGenPackage().getQualifiedEFactoryInternalInstanceAccessor()%>.createFromString(<%=genMemberType.getQualifiedClassifierAccessor()%>, literal);
         <%}%>
       <%}%>
-			if (<%if (!genDataType.isPrimitiveType()) {%>result != null && <%}%><%=genModel.getImportedName("org.eclipse.emf.ecore.util.Diagnostician")%>.INSTANCE.validate(<%=eDataType%>, <%if (genDataType.isPrimitiveType() && genModel.getComplianceLevel().getValue() < GenJDKLevel.JDK50) {%>new <%=genDataType.getObjectInstanceClassName()%>(result)<%} else {%>result<%}%>, null, null))
+			if (<%if (!genDataType.isPrimitiveType()) {%>result != null && <%}%><%=genModel.getImportedName("org.eclipse.emf.ecore.util.Diagnostician")%>.INSTANCE.validate(<%=eDataType%>, <%if (genDataType.isPrimitiveType() && !isJDK50) {%>new <%=genDataType.getObjectInstanceClassName()%>(result)<%} else {%>result<%}%>, null, null))
 			{
 				return result;
 			}
@@ -320,7 +349,7 @@ public interface <%=genPackage.getFactoryInterfaceName()%><%if (!genModel.isSupp
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new <%=genModel.getImportedName("java.lang.UnsupportedOperationException")%>();
-    <%} else if (genDataType.isPrimitiveType() && genModel.getComplianceLevel().getValue() < GenJDKLevel.JDK50) {%>
+    <%} else if (genDataType.isPrimitiveType() && !isJDK50) {%>
 		return ((<%=genDataType.getObjectInstanceClassName()%>)super.createFromString(<%=eDataType%>, literal)).<%=genDataType.getPrimitiveValueFunction()%>();
     <%} else {%>
 		return <%if (!genDataType.isObjectType()) {%>(<%=genDataType.getImportedParameterizedObjectInstanceClassName()%>)<%}%>super.createFromString(<%=eDataType%>, literal);
@@ -331,10 +360,16 @@ public interface <%=genPackage.getFactoryInterfaceName()%><%if (!genModel.isSupp
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+  <%if (genDataType.hasAPITags()) {%>
+	 * <%=genDataType.getAPITags(genModel.getIndentation(stringBuffer))%>
+  <%}%>
 	 * @generated
 	 */
     <%if (!genPackage.isDataTypeConverters() && genModel.useGenerics() && genDataType.isUncheckedCast() && !genDataType.hasCreatorBody()) {%>
 	@SuppressWarnings("unchecked")
+    <%}%>
+    <%if (isJDK50 && genDataType.hasAPIDeprecatedTag()) {%>
+	@Deprecated
     <%}%>
 	public <%=genDataType.getImportedParameterizedObjectInstanceClassName()%> create<%=genDataType.getName()%>FromString(<%=genModel.getImportedName("org.eclipse.emf.ecore.EDataType")%> eDataType, String initialValue)
 	{
@@ -377,7 +412,7 @@ public interface <%=genPackage.getFactoryInterfaceName()%><%if (!genModel.isSupp
       <%}%>
     <%} else if (!genDataType.getMemberTypes().isEmpty()) {%>
       <%if (genPackage.isDataTypeConverters()) {%>
-        <%if (genDataType.isPrimitiveType() && genModel.getComplianceLevel().getValue() < GenJDKLevel.JDK50) {%>
+        <%if (genDataType.isPrimitiveType() && !isJDK50) {%>
 		return new <%=genDataType.getObjectInstanceClassName()%>(create<%=genDataType.getName()%>(initialValue));
         <%} else {%>
 		return create<%=genDataType.getName()%>(initialValue);
@@ -425,8 +460,17 @@ public interface <%=genPackage.getFactoryInterfaceName()%><%if (!genModel.isSupp
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+  <%if (genDataType.hasAPITags()) {%>
+	 * <%=genDataType.getAPITags(genModel.getIndentation(stringBuffer))%>
+  <%}%>
 	 * @generated
 	 */
+  <%if (isJDK50 && genDataType.hasAPIDeprecatedTag()) {%>
+	@Deprecated
+  <%}%>
+  <%if (genPackage.isDataTypeConverters() && useInterfaceOverrideAnnotation) {%>
+	@Override
+  <%}%>
 	public String convert<%=genDataType.getName()%>(<%if (genDataType.hasCreatorBody()) {%>final <%}%><%=genDataType.getImportedBoundedWildcardInstanceClassName()%> <%if (genDataType.hasConverterBody()) {%>it<%} else {%>instanceValue<%}%>)
 	{
     <%if (genDataType.hasConverterBody()) {%>
@@ -436,7 +480,7 @@ public interface <%=genPackage.getFactoryInterfaceName()%><%if (!genModel.isSupp
     <%} else if (genDataType.getBaseType() != null) { GenDataType genBaseType = genDataType.getBaseType(); boolean isPrimitiveConversion = !genDataType.isPrimitiveType() && genBaseType.isPrimitiveType();%>
       <%if (genBaseType.getGenPackage() == genPackage) {%>
         <%if (isPrimitiveConversion) {%>
-		return instanceValue == null ? null : convert<%=genBaseType.getName()%>(instanceValue<%if (genModel.getComplianceLevel().getValue() < GenJDKLevel.JDK50) {%>.<%=genBaseType.getPrimitiveValueFunction()%>()<%}%>);
+		return instanceValue == null ? null : convert<%=genBaseType.getName()%>(instanceValue<%if (!isJDK50) {%>.<%=genBaseType.getPrimitiveValueFunction()%>()<%}%>);
         <%} else {%>
 		return convert<%=genBaseType.getName()%>(instanceValue);
         <%}%>
@@ -448,7 +492,7 @@ public interface <%=genPackage.getFactoryInterfaceName()%><%if (!genModel.isSupp
     <%} else if (genDataType.getItemType() != null) { GenDataType genItemType = genDataType.getItemType(); %>
 		if (instanceValue == null) return null;
 		if (instanceValue.isEmpty()) return "";
-		<%=genModel.getImportedName("java.lang.StringBuffer")%> result = new <%=genModel.getImportedName("java.lang.StringBuffer")%>();
+		<%=genModel.getImportedName(genModel.useGenerics() ? "java.lang.StringBuilder" : "java.lang.StringBuffer")%> result = new <%=genModel.getImportedName(genModel.useGenerics() ? "java.lang.StringBuilder" : "java.lang.StringBuffer")%>();
         <%String item; if (!genModel.useGenerics()) { item = "i.next()"; %>
 		for (<%=genModel.getImportedName("java.util.Iterator")%> i = instanceValue.iterator(); i.hasNext(); )
         <%} else { item = "item";%>
@@ -483,7 +527,7 @@ public interface <%=genPackage.getFactoryInterfaceName()%><%if (!genModel.isSupp
             <%if (genPackage.isDataTypeConverters()) {%>
               <%if (genMemberType.getQualifiedInstanceClassName().equals(genDataType.getQualifiedInstanceClassName())) {%>
 				String value = convert<%=genMemberType.getName()%>(instanceValue);
-              <%} else if (genMemberType.isPrimitiveType() && genModel.getComplianceLevel().getValue() < GenJDKLevel.JDK50) {%>
+              <%} else if (genMemberType.isPrimitiveType() && !isJDK50) {%>
 				String value = convert<%=genMemberType.getName()%>(((<%=genMemberType.getObjectType().getImportedInstanceClassName()%>)instanceValue).<%=genMemberType.getPrimitiveValueFunction()%>());
               <%} else {%>
 				String value = convert<%=genMemberType.getName()%>((<%=genMemberType.getObjectType().getImportedBoundedWildcardInstanceClassName()%>)instanceValue);
@@ -514,13 +558,13 @@ public interface <%=genPackage.getFactoryInterfaceName()%><%if (!genModel.isSupp
             <%if (genPackage.isDataTypeConverters()) {%>
 			String value = convert<%=genMemberType.getName()%>(instanceValue);
             <%} else {%>
-			String value = convert<%=genMemberType.getName()%>ToString(<%=genMemberType.getQualifiedClassifierAccessor()%>, <%if (genModel.getComplianceLevel().getValue() < GenJDKLevel.JDK50) {%>new <%=genMemberType.getObjectInstanceClassName()%>(instanceValue)<%} else {%>instanceValue<%}%>);
+			String value = convert<%=genMemberType.getName()%>ToString(<%=genMemberType.getQualifiedClassifierAccessor()%>, <%if (!isJDK50) {%>new <%=genMemberType.getObjectInstanceClassName()%>(instanceValue)<%} else {%>instanceValue<%}%>);
             <%}%>
           <%} else {%>
             <%if (genMemberType.getGenPackage().isDataTypeConverters()) {%>
 			String value = <%=genMemberType.getGenPackage().getQualifiedEFactoryInternalInstanceAccessor()%>.convert<%=genMemberType.getName()%>(instanceValue);
             <%} else {%>
-			String value = <%=genMemberType.getGenPackage().getQualifiedEFactoryInternalInstanceAccessor()%>.convertToString(<%=genMemberType.getQualifiedClassifierAccessor()%>, <%if (genModel.getComplianceLevel().getValue() < GenJDKLevel.JDK50) {%>new <%=genMemberType.getObjectInstanceClassName()%>(instanceValue)<%} else {%>instanceValue<%}%>);
+			String value = <%=genMemberType.getGenPackage().getQualifiedEFactoryInternalInstanceAccessor()%>.convertToString(<%=genMemberType.getQualifiedClassifierAccessor()%>, <%if (!isJDK50) {%>new <%=genMemberType.getObjectInstanceClassName()%>(instanceValue)<%} else {%>instanceValue<%}%>);
             <%}%>
           <%}%>
 			if (value != null) return value;
@@ -538,7 +582,7 @@ public interface <%=genPackage.getFactoryInterfaceName()%><%if (!genModel.isSupp
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new <%=genModel.getImportedName("java.lang.UnsupportedOperationException")%>();
-    <%} else if (genDataType.isPrimitiveType() && genModel.getComplianceLevel().getValue() < GenJDKLevel.JDK50) {%>
+    <%} else if (genDataType.isPrimitiveType() && !isJDK50) {%>
 		return super.convertToString(<%=eDataType%>, new <%=genDataType.getObjectInstanceClassName()%>(instanceValue));
     <%} else {%>
 		return super.convertToString(<%=eDataType%>, instanceValue);
@@ -549,11 +593,17 @@ public interface <%=genPackage.getFactoryInterfaceName()%><%if (!genModel.isSupp
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+  <%if (genDataType.hasAPITags()) {%>
+	 * <%=genDataType.getAPITags(genModel.getIndentation(stringBuffer))%>
+  <%}%>
 	 * @generated
 	 */
     <%if (genModel.useGenerics() && (genDataType.getItemType() != null || genDataType.isUncheckedCast()) && (genPackage.isDataTypeConverters() || genDataType.hasCreatorBody())) {%>
 	@SuppressWarnings("unchecked")
     <%}%>
+  <%if (isJDK50 && genDataType.hasAPIDeprecatedTag()) {%>
+	@Deprecated
+  <%}%>
 	public String convert<%=genDataType.getName()%>ToString(<%=genModel.getImportedName("org.eclipse.emf.ecore.EDataType")%> eDataType, Object instanceValue)
 	{
     <%if (genDataType instanceof GenEnum) {%>
@@ -594,7 +644,7 @@ public interface <%=genPackage.getFactoryInterfaceName()%><%if (!genModel.isSupp
     <%} else if (!genDataType.getMemberTypes().isEmpty()) {%>
       <%if (genPackage.isDataTypeConverters() || genDataType.hasConverterBody()) {%>
         <%if (genDataType.isPrimitiveType()) {%>
-		return instanceValue == null ? null : convert<%=genDataType.getName()%>(((<%=genDataType.getObjectInstanceClassName()%>)instanceValue)<%if (genModel.getComplianceLevel().getValue() < GenJDKLevel.JDK50) {%>.<%=genDataType.getPrimitiveValueFunction()%>()<%}%>);
+		return instanceValue == null ? null : convert<%=genDataType.getName()%>(((<%=genDataType.getObjectInstanceClassName()%>)instanceValue)<%if (!isJDK50) {%>.<%=genDataType.getPrimitiveValueFunction()%>()<%}%>);
         <%} else {%>
 		return convert<%=genDataType.getName()%>(instanceValue);
         <%}%>
@@ -622,7 +672,7 @@ public interface <%=genPackage.getFactoryInterfaceName()%><%if (!genModel.isSupp
       <%}%>
     <%} else if (genPackage.isDataTypeConverters() || genDataType.hasConverterBody()) {%>
         <%if (genDataType.isPrimitiveType()) {%>
-		return instanceValue == null ? null : convert<%=genDataType.getName()%>(<%if (genModel.getComplianceLevel().getValue() < GenJDKLevel.JDK50) {%>(<%}%>(<%=genDataType.getObjectInstanceClassName()%>)instanceValue<%if (genModel.getComplianceLevel().getValue() < GenJDKLevel.JDK50) {%>).<%=genDataType.getPrimitiveValueFunction()%>()<%}%>);
+		return instanceValue == null ? null : convert<%=genDataType.getName()%>(<%if (!isJDK50) {%>(<%}%>(<%=genDataType.getObjectInstanceClassName()%>)instanceValue<%if (!isJDK50) {%>).<%=genDataType.getPrimitiveValueFunction()%>()<%}%>);
         <%} else {%>
 		return convert<%=genDataType.getName()%>((<%=genDataType.getImportedBoundedWildcardInstanceClassName()%>)instanceValue);
         <%}%>
@@ -647,8 +697,14 @@ public interface <%=genPackage.getFactoryInterfaceName()%><%if (!genModel.isSupp
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return a new object of class '<em><%=genClass.getFormattedName()%></em>'.
+      <%if (genClass.hasAPITags()) {%>
+	 * <%=genClass.getAPITags(genModel.getIndentation(stringBuffer))%>
+      <%}%>
 	 * @generated
 	 */
+<%if (isJDK50 && genClass.hasAPIDeprecatedTag()) {%>
+	@Deprecated
+<%}%>
 	<%=genClass.getTypeParameters()%><%=genClass.getImportedInterfaceName()%><%=genClass.getInterfaceTypeArguments()%> create<%=genClass.getName()%>();
 
     <%}%>
@@ -662,8 +718,14 @@ public interface <%=genPackage.getFactoryInterfaceName()%><%if (!genModel.isSupp
 	 * <!-- end-user-doc -->
 	 * @param literal a literal of the data type.
 	 * @return a new instance value of the data type.
+  <%if (genDataType.hasAPITags()) {%>
+	 * <%=genDataType.getAPITags(genModel.getIndentation(stringBuffer))%>
+  <%}%>
 	 * @generated
 	 */
+  <%if (isJDK50 && genDataType.hasAPIDeprecatedTag()) {%>
+	@Deprecated
+  <%}%>
 	<%=genDataType.getImportedParameterizedInstanceClassName()%> create<%=genDataType.getName()%>(String literal);
 
 	/**
@@ -672,8 +734,14 @@ public interface <%=genPackage.getFactoryInterfaceName()%><%if (!genModel.isSupp
 	 * <!-- end-user-doc -->
 	 * @param instanceValue an instance value of the data type.
 	 * @return a literal representation of the instance value.
+  <%if (genDataType.hasAPITags()) {%>
+	 * <%=genDataType.getAPITags(genModel.getIndentation(stringBuffer))%>
+  <%}%>
 	 * @generated
 	 */
+  <%if (isJDK50 && genDataType.hasAPIDeprecatedTag()) {%>
+	@Deprecated
+  <%}%>
 	String convert<%=genDataType.getName()%>(<%=genDataType.getImportedBoundedWildcardInstanceClassName()%> instanceValue);
 
       <%}%>
@@ -696,6 +764,9 @@ public interface <%=genPackage.getFactoryInterfaceName()%><%if (!genModel.isSupp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+ <%if (useInterfaceOverrideAnnotation && !genModel.isSuppressEMFMetaData()) {%>
+	@Override
+ <%}%>
 	public <%=genPackage.getImportedPackageInterfaceName()%> get<%=genPackage.getBasicPackageName()%>()
 	{
 		return (<%=genPackage.getImportedPackageInterfaceName()%>)getEPackage();
@@ -720,10 +791,10 @@ public interface <%=genPackage.getFactoryInterfaceName()%><%if (!genModel.isSupp
 	<%
 	for (GenClass genClass : genPackage.getGenClasses()) {
 		if (!genClass.isAbstract()) {
-	  		GenFeature namingAttribute = BusinessGenHelper.getNamingAttribute(genModel, genClass);
+	  		GenFeature namingAttribute = org.polarsys.capella.core.egf.BusinessGenHelper.getNamingAttribute(genModel, genClass);
   			if (namingAttribute != null) {
 %>
-<%@ egf:patternCall patternId="platform:/plugin/org.polarsys.capella.core.egf/egf/capella.fcore#LogicalName=org.polarsys.capella.core.model.createAndSetName.interface" args="genClass:genClass"%>
+<%@ egf:patternCall patternId="platform:/plugin/org.polarsys.capella.core.egf/egf/capella.fcore#LogicalName=org.polarsys.capella.core.model.Factory.CreateAndSetName" args="genClass:genClass"%>
 <%			}
 		}
 	}

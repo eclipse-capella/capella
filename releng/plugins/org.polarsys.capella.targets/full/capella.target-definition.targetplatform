@@ -94,7 +94,7 @@ location amalgam "https://download.eclipse.org/modeling/amalgam/updates/stable/1
 	org.eclipse.amalgam.explorer.activity.source.feature.group
 }
 
-location egf "http://download.eclipse.org/egf/updates/1.6.1/2019-06/" {
+location egf "http://download.eclipse.org/egf/updates/1.6.2/2019-06/" {
 	org.eclipse.egf.sdk.feature.source.feature.group
 }
 

@@ -9,7 +9,7 @@
 	 */
 	public <%=genClass.getTypeParameters()%><%=genClass.getImportedInterfaceName()%><%=genClass.getInterfaceTypeArguments()%> create<%=genClass.getName()%>(String name_p)
 	{
-	  <%=genClass.getTypeParameters()%><%=genClass.getImportedInterfaceName()%><%=genClass.getInterfaceTypeArguments()%> <%=genClass.getSafeUncapName()%> = create<%=genClass.getName()%>();
+		<%=genClass.getTypeParameters()%><%=genClass.getImportedInterfaceName()%><%=genClass.getInterfaceTypeArguments()%> <%=genClass.getSafeUncapName()%> = create<%=genClass.getName()%>();
 		<%=genClass.getSafeUncapName()%>.set<%=namingAttribute.getCapName()%>(name_p);	  
 		return <%=genClass.getSafeUncapName()%>;
 	}
