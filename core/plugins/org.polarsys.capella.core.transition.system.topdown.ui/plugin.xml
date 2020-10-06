@@ -157,6 +157,11 @@
               property="transition.op2oas.sequence.message.strategy"
               renderer="optionRenderer">
         </propertyBinding>
+        
+        <propertyBinding
+                  property="transition.scenario.initialize"
+                  renderer="checkboxRenderer">
+        </propertyBinding>
       </bindings>
       
       

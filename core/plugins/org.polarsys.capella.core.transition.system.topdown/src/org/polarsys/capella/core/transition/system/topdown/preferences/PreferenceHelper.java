@@ -175,6 +175,13 @@ public class PreferenceHelper {
             ITopDownConstants.OPTIONS_OP2OAS_SEQUENCE_MESSAGE_STRATEGY_DEFAULT));
   }
   
+  /**
+   * Returns whether the scenario shall be initialized after a transition
+   */
+  public boolean transitionInitializeTransitionedScenario() {
+    return getBooleanValue(ITopDownConstants.OPTIONS_TRANSITION__SCENARIO_INITIALIZE);
+  }
+  
   public boolean isFC2FSLogEnabled() {
     return getBooleanValue(ITopDownConstants.OPTIONS_LOG);
   }
