@@ -383,6 +383,10 @@ public class TransitionCommandHelper {
       BlockArchitecture architecture = BlockArchitectureExt.getRootBlockArchitecture(object);
       return (object.equals(architecture.getSystem()));
 
+    } else if (object instanceof Part && CapellaLayerCheckingExt.isInContextLayer((CapellaElement) object)) {
+      Component component = getComponent(object);
+      BlockArchitecture architecture = BlockArchitectureExt.getRootBlockArchitecture(object);
+      return (component != null && component.equals(architecture.getSystem()));
     }
     return false;
   }
