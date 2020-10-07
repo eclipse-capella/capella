@@ -12,16 +12,21 @@
  *******************************************************************************/
 package org.polarsys.capella.core.projection.scenario.commands;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.LinkedHashSet;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
+import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.interaction.InteractionUse;
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.interaction.TimeLapse;
+import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.projection.common.AbstractTransform;
 import org.polarsys.capella.core.projection.common.AbstractTransitionCommand;
 import org.polarsys.capella.core.projection.common.TransitionHelper;
@@ -48,7 +53,7 @@ public class ESToISCommand extends AbstractTransitionCommand {
 
   @Override
   protected Collection<EObject> retrieveModelElements(EObject modelElement_p) {
-    return searchScenarios(modelElement_p);
+    return searchScenarios(modelElement_p, false);
   }
 
   /**
@@ -63,10 +68,10 @@ public class ESToISCommand extends AbstractTransitionCommand {
    * @param selectedElement_p
    * @return
    */
-  protected Collection<EObject> searchScenarios(EObject selectedElement_p) {
-    Collection<EObject> result = new LinkedHashSet<EObject>();
+  protected Collection<EObject> searchScenarios(EObject selectedElement_p, boolean postRun) {
+    Collection<EObject> result = new HashSet<EObject>();
     if (selectedElement_p instanceof Scenario) {
-      Set<EObject> referencesScenarios = new LinkedHashSet<EObject>();
+      Set<EObject> referencesScenarios = new HashSet<EObject>();
       searchReferencedScenarios((Scenario) selectedElement_p, referencesScenarios, result);
       result.addAll(referencesScenarios);
       result.add(selectedElement_p);
@@ -79,9 +84,9 @@ public class ESToISCommand extends AbstractTransitionCommand {
 
       if (eObject instanceof Scenario) {
         Scenario scenario = (Scenario) eObject;
-        if (isScenarioValid(scenario)) {
+        if (postRun || isScenarioValid(scenario)) {
           // add also the scenario referenced by this scenario
-          Set<EObject> referencesScenarios = new LinkedHashSet<EObject>();
+          Set<EObject> referencesScenarios = new HashSet<EObject>();
           searchReferencedScenarios(scenario, referencesScenarios, result);
           result.addAll(referencesScenarios);
           result.add(scenario);
@@ -113,5 +118,42 @@ public class ESToISCommand extends AbstractTransitionCommand {
   
   protected boolean isScenarioValid(Scenario scenario_p) {
     return TransitionHelper.getService().isES2ISTransitionAvailable(scenario_p);
+  }
+  
+  @Override
+  public void run() {
+    super.run();
+
+    // do some processing after transition of scenarios, to set the correct referenced scenario
+    Collection<EObject> elements = new ArrayList<EObject>();
+    for (EObject rootElement : rootElements) {
+      elements.addAll(searchScenarios(rootElement, true));
+    }
+
+    for (EObject element : elements) {
+      if (element instanceof Scenario) {
+        for (Scenario scenario : ((Scenario) element).getRealizingScenarios()) {
+          // set the referenced scenarios
+          List<TimeLapse> timelapses = (scenario).getOwnedTimeLapses();
+          for (TimeLapse timelapse : timelapses) {
+            if (timelapse instanceof InteractionUse) {
+              InteractionUse interaction = (InteractionUse) timelapse;
+              Scenario refScenario = interaction.getReferencedScenario();
+              if (refScenario != null) {
+                BlockArchitecture sourceBlock = BlockArchitectureExt.getRootBlockArchitecture(refScenario);
+                BlockArchitecture targetBlock = BlockArchitectureExt.getRootBlockArchitecture(scenario);
+                if (!sourceBlock.equals(targetBlock)) {
+                  Optional<Scenario> match = refScenario.getRealizingScenarios().stream()
+                      .filter(sc -> sc.getName().equals(refScenario.getName())).findFirst();
+                  if (match.isPresent()) {
+                    interaction.setReferencedScenario(match.get());
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
