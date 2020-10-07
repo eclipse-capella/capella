@@ -4853,7 +4853,7 @@
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="name"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="allocatedItem" valueExpression="aql:instance"/>
-                        <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (container.getDiagramContainer().isSynchronized())">
+                        <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (containerView.getDiagramContainer().isSynchronized())">
                           <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:allocation">
                             <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@containerMappings[name='FullInterface1']/@subNodeMappings[name='DT_Operation1']" containerViewExpression="aql:containerView"/>
                           </subModelOperations>
@@ -4900,7 +4900,7 @@
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="name"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="allocatedItem" valueExpression="aql:instance"/>
-                        <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (container.getDiagramContainer().isSynchronized())">
+                        <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (containerView.getDiagramContainer().isSynchronized())">
                           <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:allocation">
                             <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@containerMappings[name='FullInterface1']/@subNodeMappings[name='DT_Operation1']" containerViewExpression="aql:containerView"/>
                           </subModelOperations>
@@ -4947,7 +4947,7 @@
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="name"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="allocatedItem" valueExpression="aql:instance"/>
-                        <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (container.getDiagramContainer().isSynchronized())">
+                        <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (containerView.getDiagramContainer().isSynchronized())">
                           <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:allocation">
                             <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@containerMappings[name='FullInterface1']/@subNodeMappings[name='DT_Operation1']" containerViewExpression="aql:containerView"/>
                           </subModelOperations>
@@ -4994,7 +4994,7 @@
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="name"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="allocatedItem" valueExpression="aql:instance"/>
-                        <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (container.getDiagramContainer().isSynchronized())">
+                        <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (containerView.getDiagramContainer().isSynchronized())">
                           <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:allocation">
                             <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@containerMappings[name='FullInterface1']/@subNodeMappings[name='DT_Operation1']" containerViewExpression="aql:containerView"/>
                           </subModelOperations>
@@ -5041,7 +5041,7 @@
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="name"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="allocatedItem" valueExpression="aql:instance"/>
-                        <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (container.getDiagramContainer().isSynchronized())">
+                        <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (containerView.getDiagramContainer().isSynchronized())">
                           <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:allocation">
                             <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@containerMappings[name='FullInterface1']/@subNodeMappings[name='DT_Operation1']" containerViewExpression="aql:containerView"/>
                           </subModelOperations>
@@ -10955,7 +10955,7 @@
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="name"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="allocatedItem" valueExpression="aql:instance"/>
-                        <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (container.getDiagramContainer().isSynchronized())">
+                        <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (containerView.getDiagramContainer().isSynchronized())">
                           <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:allocation">
                             <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Interface']/@subNodeMappings[name='IDB_Operation']" containerViewExpression="aql:containerView"/>
                           </subModelOperations>
@@ -11014,7 +11014,7 @@
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="name"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="allocatedItem" valueExpression="aql:instance"/>
-                        <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (container.getDiagramContainer().isSynchronized())">
+                        <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (containerView.getDiagramContainer().isSynchronized())">
                           <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:allocation">
                             <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Interface']/@subNodeMappings[name='IDB_Operation']" containerViewExpression="aql:containerView"/>
                           </subModelOperations>
@@ -11073,7 +11073,7 @@
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="name"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="allocatedItem" valueExpression="aql:instance"/>
-                        <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (container.getDiagramContainer().isSynchronized())">
+                        <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (containerView.getDiagramContainer().isSynchronized())">
                           <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:allocation">
                             <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Interface']/@subNodeMappings[name='IDB_Operation']" containerViewExpression="aql:containerView"/>
                           </subModelOperations>
@@ -11132,7 +11132,7 @@
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="name"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="allocatedItem" valueExpression="aql:instance"/>
-                        <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (container.getDiagramContainer().isSynchronized())">
+                        <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (containerView.getDiagramContainer().isSynchronized())">
                           <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:allocation">
                             <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Interface']/@subNodeMappings[name='IDB_Operation']" containerViewExpression="aql:containerView"/>
                           </subModelOperations>
@@ -11191,7 +11191,7 @@
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="name"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="allocatedItem" valueExpression="aql:instance"/>
-                        <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (container.getDiagramContainer().isSynchronized())">
+                        <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (containerView.getDiagramContainer().isSynchronized())">
                           <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:allocation">
                             <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Interface']/@subNodeMappings[name='IDB_Operation']" containerViewExpression="aql:containerView"/>
                           </subModelOperations>
