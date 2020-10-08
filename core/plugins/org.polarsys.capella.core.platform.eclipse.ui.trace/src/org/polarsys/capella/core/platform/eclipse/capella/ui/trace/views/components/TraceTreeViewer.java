@@ -384,6 +384,7 @@ public class TraceTreeViewer implements IDoubleClickListener {
     for (String traceName : TraceNameHelper.getManualTraceTypes()) {
       MenuItem item = new MenuItem(_additionMenu, SWT.PUSH);
       item.setText(traceName);
+      item.setImage(AbstractUIPlugin.imageDescriptorFromPlugin(MDTrace.PLUGIN_ID, IImageKeys.MENU_ITEM).createImage());
       item.addSelectionListener(_menuSelectionListener);
     }
   }

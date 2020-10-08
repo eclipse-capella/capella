@@ -31,7 +31,6 @@ import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.MouseAdapter;
 import org.eclipse.swt.events.MouseEvent;
-import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -40,12 +39,11 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
-import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
-import org.polarsys.capella.common.helpers.TransactionHelper;
-import org.polarsys.capella.common.ui.toolkit.editors.Editor;
 import org.polarsys.capella.common.ui.toolkit.viewers.menu.ModalContextMenuExtender;
 import org.polarsys.capella.core.data.capellacommon.GenericTrace;
 import org.polarsys.capella.core.data.capellacore.Trace;
@@ -57,8 +55,7 @@ import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.messages.Mess
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views.components.TraceTreeViewer;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views.components.TraceTreeViewer.TraceType;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views.providers.IImageKeys;
-import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views.providers.TracePageContentProvider;
-import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views.providers.TraceStore;
+import org.polarsys.capella.core.ui.properties.wizards.EditCapellaCustomPropertyWizard;
 import org.polarsys.capella.core.ui.resources.CapellaUIResourcesPlugin;
 import org.polarsys.capella.core.ui.toolkit.dialogs.CapellaWizardDialog;
 
@@ -132,35 +129,10 @@ public class ViewEditPage extends WizardPage {
       ISelection source = getSelection();
 
       final Trace currentTrace = (Trace) ((IStructuredSelection) source).getFirstElement();
-
-      Editor traceEditor = new Editor(new TracePageContentProvider(), new TraceStore(currentTrace)) {
-        /**
-         * @see org.eclipse.jface.wizard.Wizard#getDefaultPageImage()
-         */
-        @Override
-        public Image getDefaultPageImage() {
-          Image image = null;
-          if (null != getStore()) {
-            ImageDescriptor pngImageDescriptor = CapellaUIResourcesPlugin.getDefault()
-                .getPNGImage(currentTrace.eClass());
-            image = (null != pngImageDescriptor) ? pngImageDescriptor.createImage() : super.getDefaultPageImage();
-          }
-          return image;
-        }
-
-        /**
-         * @see org.eclipse.jface.wizard.Wizard#performFinish()
-         */
-        public boolean performFinish() {
-          // the store must be done in the context of a transaction
-          TransactionHelper.getExecutionManager(currentTrace).execute(new AbstractReadWriteCommand() {
-            public void run() {
-              page.store();
-            }
-          });
-          return true;
-        }
-      };
+      
+      IWorkbenchPart part = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActivePart();
+      EditCapellaCustomPropertyWizard traceEditor = new EditCapellaCustomPropertyWizard(part, currentTrace);
+          
       CapellaWizardDialog dlg = new CapellaWizardDialog(getShell(), traceEditor);
       dlg.open();
     }

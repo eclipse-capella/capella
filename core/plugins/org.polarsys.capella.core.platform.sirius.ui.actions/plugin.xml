@@ -465,14 +465,6 @@
                  </visibleWhen>
         </command> 
         
-        <command  commandId="org.polarsys.capella.core.platform.sirius.ui.actions.wizard.traceManagerCommand" >  
-        <visibleWhen
-                       checkEnabled="false">
-                       <reference
-                                 definitionId="org.polarsys.capella.core.platform.sirius.ui.actions.TraceManager.expression">
-                           </reference>
-                 </visibleWhen>
-        </command> 
         
       </menuContribution>
       
@@ -589,13 +581,6 @@
                name="%RequirementManager"
                >
       </command>
-      <command
-         	   categoryId="org.polarsys.capella.core.wizards"
-               defaultHandler="org.polarsys.capella.core.platform.sirius.ui.actions.MDTraceViewEditAction"
-               id="org.polarsys.capella.core.platform.sirius.ui.actions.wizard.traceManagerCommand"
-               name="%TraceManager"
-               >
-      </command>
       
       <command
             defaultHandler="org.polarsys.capella.core.platform.sirius.ui.actions.CreateCategoriesWizardAction"
@@ -645,10 +630,6 @@
             icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_manage.gif">
       </image>
       <image
-            commandId="org.polarsys.capella.core.platform.sirius.ui.actions.wizard.traceManagerCommand"
-               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_trace.gif">
-      </image>
-      <image
             commandId="org.polarsys.capella.core.platform.sirius.ui.actions.wizard.RequirementManagerWizardAction"
                icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_edit.gif">
       </image>
@@ -674,11 +655,6 @@
                enableByDefault="true"
                id="org.polarsys.capella.core.platform.sirius.ui.actions.wizard.RequirementManagerWizardAction"
                name="Requirement Manager">
-         </item>
-         <item
-               enableByDefault="true"
-               id="org.polarsys.capella.core.platform.sirius.ui.actions.wizard.traceManagerCommand"
-               name="Trace Manager">
          </item>
       </category>
       <category
