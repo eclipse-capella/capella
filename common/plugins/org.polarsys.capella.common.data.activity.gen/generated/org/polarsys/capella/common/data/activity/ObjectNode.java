@@ -61,6 +61,7 @@ public interface ObjectNode extends ActivityNode, AbstractTypedElement {
 	 * @see org.polarsys.capella.common.data.activity.ActivityPackage#getObjectNode_IsControlType()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Tells whether the type of the object node is to be treated as control\r\n[source: UML superstructure v2.2]' constraints='none' type='n/a' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ObjectNode::isControlType' explanation='none' constraints='Cardinality of uml::ObjectNode::isControlType is [1..1]'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -103,6 +104,7 @@ public interface ObjectNode extends ActivityNode, AbstractTypedElement {
 	 * @see org.polarsys.capella.common.data.activity.ActivityPackage#getObjectNode_KindOfNode()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='characterizes the node' constraints='none' type='refer to ObjectNodeKind enumeration' comment/notes='this field does not exist in UML but the related notion exists in SysML'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -146,6 +148,7 @@ public interface ObjectNode extends ActivityNode, AbstractTypedElement {
 	 * @see org.polarsys.capella.common.data.activity.ActivityPackage#getObjectNode_Ordering()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Tells whether and how the tokens in the object node are ordered for selection to traverse edges outgoing from the\r\nobject node\r\n[source: UML superstructure v2.2]' constraints='none' type='Refer to ObjectNodeOrderingKind enumeration' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ObjectNode::ordering' explanation='none' constraints='Cardinality of uml::ObjectNode::ordering is [1..1]'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -188,6 +191,7 @@ public interface ObjectNode extends ActivityNode, AbstractTypedElement {
 	 * @model containment="true" resolveProxies="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The maximum number of tokens allowed in the node. Objects cannot flow into the node if the upper bound is\r\nreached.\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ObjectNode::upperBound' explanation='none' constraints='Cardinality of uml::ObjectNode::upperBound is [1..1]'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -228,6 +232,7 @@ public interface ObjectNode extends ActivityNode, AbstractTypedElement {
 	 * @see org.polarsys.capella.common.data.activity.ActivityPackage#getObjectNode_InState()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The required states of the object available at this point in the activity\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ObjectNode::inState' explanation='none' constraints='Order must be computed'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -253,6 +258,7 @@ public interface ObjectNode extends ActivityNode, AbstractTypedElement {
 	 * @see org.polarsys.capella.common.data.activity.ActivityPackage#getObjectNode_Selection()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Selects tokens for outgoing edges.\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ObjectNode::selection' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

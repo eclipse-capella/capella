@@ -149,6 +149,7 @@ public class ServiceImpl extends OperationImpl implements Service {
 	 * @generated
 	 */
 
+	@Override
 	public void setSynchronismKind(SynchronismKind newSynchronismKind) {
 
 		SynchronismKind oldSynchronismKind = synchronismKind;
@@ -342,7 +343,7 @@ public class ServiceImpl extends OperationImpl implements Service {
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (synchronismKind: "); //$NON-NLS-1$
 		result.append(synchronismKind);
 		result.append(')');

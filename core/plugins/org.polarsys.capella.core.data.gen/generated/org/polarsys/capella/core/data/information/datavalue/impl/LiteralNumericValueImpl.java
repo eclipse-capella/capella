@@ -99,6 +99,7 @@ public class LiteralNumericValueImpl extends NumericValueImpl implements Literal
 	 * @generated
 	 */
 
+	@Override
 	public void setValue(String newValue) {
 
 		String oldValue = value;
@@ -182,7 +183,7 @@ public class LiteralNumericValueImpl extends NumericValueImpl implements Literal
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (value: "); //$NON-NLS-1$
 		result.append(value);
 		result.append(')');

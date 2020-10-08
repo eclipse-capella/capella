@@ -185,6 +185,7 @@ public class InterfaceUseImpl extends RelationshipImpl implements InterfaceUse {
 	 * @generated
 	 */
 
+	@Override
 	public void setUsedInterface(Interface newUsedInterface) {
 
 		Interface oldUsedInterface = usedInterface;

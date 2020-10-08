@@ -152,6 +152,7 @@ public class ConnectionInstanceImpl extends AbstractPhysicalInstanceImpl impleme
 	 * @generated
 	 */
 
+	@Override
 	public void setType(ComponentExchange newType) {
 
 		ComponentExchange oldType = type;

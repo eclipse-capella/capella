@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.polarsys.capella.common.lib.IdGenerator;
+import org.polarsys.capella.core.data.la.*;
 import org.polarsys.capella.core.data.la.CapabilityRealization;
 import org.polarsys.capella.core.data.la.CapabilityRealizationPkg;
 import org.polarsys.capella.core.data.la.ContextInterfaceRealization;
@@ -95,13 +96,11 @@ public class LaFactoryImpl extends EFactoryImpl implements LaFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public LogicalArchitecturePkg createLogicalArchitecturePkg() {
 		LogicalArchitecturePkgImpl logicalArchitecturePkg = new LogicalArchitecturePkgImpl();
     //begin-capella-code
-
     logicalArchitecturePkg.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return logicalArchitecturePkg;
 	}
@@ -111,13 +110,11 @@ public class LaFactoryImpl extends EFactoryImpl implements LaFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public LogicalArchitecture createLogicalArchitecture() {
 		LogicalArchitectureImpl logicalArchitecture = new LogicalArchitectureImpl();
     //begin-capella-code
-
     logicalArchitecture.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return logicalArchitecture;
 	}
@@ -127,13 +124,11 @@ public class LaFactoryImpl extends EFactoryImpl implements LaFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public LogicalFunction createLogicalFunction() {
 		LogicalFunctionImpl logicalFunction = new LogicalFunctionImpl();
     //begin-capella-code
-
     logicalFunction.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return logicalFunction;
 	}
@@ -143,13 +138,11 @@ public class LaFactoryImpl extends EFactoryImpl implements LaFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public LogicalFunctionPkg createLogicalFunctionPkg() {
 		LogicalFunctionPkgImpl logicalFunctionPkg = new LogicalFunctionPkgImpl();
     //begin-capella-code
-
     logicalFunctionPkg.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return logicalFunctionPkg;
 	}
@@ -159,13 +152,11 @@ public class LaFactoryImpl extends EFactoryImpl implements LaFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public LogicalComponent createLogicalComponent() {
 		LogicalComponentImpl logicalComponent = new LogicalComponentImpl();
     //begin-capella-code
-
     logicalComponent.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return logicalComponent;
 	}
@@ -175,13 +166,11 @@ public class LaFactoryImpl extends EFactoryImpl implements LaFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public LogicalComponentPkg createLogicalComponentPkg() {
 		LogicalComponentPkgImpl logicalComponentPkg = new LogicalComponentPkgImpl();
     //begin-capella-code
-
     logicalComponentPkg.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return logicalComponentPkg;
 	}
@@ -191,13 +180,11 @@ public class LaFactoryImpl extends EFactoryImpl implements LaFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CapabilityRealization createCapabilityRealization() {
 		CapabilityRealizationImpl capabilityRealization = new CapabilityRealizationImpl();
     //begin-capella-code
-
     capabilityRealization.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return capabilityRealization;
 	}
@@ -207,13 +194,11 @@ public class LaFactoryImpl extends EFactoryImpl implements LaFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CapabilityRealizationPkg createCapabilityRealizationPkg() {
 		CapabilityRealizationPkgImpl capabilityRealizationPkg = new CapabilityRealizationPkgImpl();
     //begin-capella-code
-
     capabilityRealizationPkg.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return capabilityRealizationPkg;
 	}
@@ -223,13 +208,11 @@ public class LaFactoryImpl extends EFactoryImpl implements LaFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SystemAnalysisRealization createSystemAnalysisRealization() {
 		SystemAnalysisRealizationImpl systemAnalysisRealization = new SystemAnalysisRealizationImpl();
     //begin-capella-code
-
     systemAnalysisRealization.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return systemAnalysisRealization;
 	}
@@ -239,13 +222,11 @@ public class LaFactoryImpl extends EFactoryImpl implements LaFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ContextInterfaceRealization createContextInterfaceRealization() {
 		ContextInterfaceRealizationImpl contextInterfaceRealization = new ContextInterfaceRealizationImpl();
     //begin-capella-code
-
     contextInterfaceRealization.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return contextInterfaceRealization;
 	}
@@ -255,6 +236,7 @@ public class LaFactoryImpl extends EFactoryImpl implements LaFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public LaPackage getLaPackage() {
 		return (LaPackage)getEPackage();
 	}
@@ -278,7 +260,7 @@ public class LaFactoryImpl extends EFactoryImpl implements LaFactory {
 	 * @generated
 	 */
 	public LogicalArchitecturePkg createLogicalArchitecturePkg(String name_p) {
-	  LogicalArchitecturePkg logicalArchitecturePkg = createLogicalArchitecturePkg();
+		LogicalArchitecturePkg logicalArchitecturePkg = createLogicalArchitecturePkg();
 		logicalArchitecturePkg.setName(name_p);	  
 		return logicalArchitecturePkg;
 	}
@@ -291,7 +273,7 @@ public class LaFactoryImpl extends EFactoryImpl implements LaFactory {
 	 * @generated
 	 */
 	public LogicalArchitecture createLogicalArchitecture(String name_p) {
-	  LogicalArchitecture logicalArchitecture = createLogicalArchitecture();
+		LogicalArchitecture logicalArchitecture = createLogicalArchitecture();
 		logicalArchitecture.setName(name_p);	  
 		return logicalArchitecture;
 	}
@@ -304,7 +286,7 @@ public class LaFactoryImpl extends EFactoryImpl implements LaFactory {
 	 * @generated
 	 */
 	public LogicalFunction createLogicalFunction(String name_p) {
-	  LogicalFunction logicalFunction = createLogicalFunction();
+		LogicalFunction logicalFunction = createLogicalFunction();
 		logicalFunction.setName(name_p);	  
 		return logicalFunction;
 	}
@@ -317,7 +299,7 @@ public class LaFactoryImpl extends EFactoryImpl implements LaFactory {
 	 * @generated
 	 */
 	public LogicalFunctionPkg createLogicalFunctionPkg(String name_p) {
-	  LogicalFunctionPkg logicalFunctionPkg = createLogicalFunctionPkg();
+		LogicalFunctionPkg logicalFunctionPkg = createLogicalFunctionPkg();
 		logicalFunctionPkg.setName(name_p);	  
 		return logicalFunctionPkg;
 	}
@@ -330,7 +312,7 @@ public class LaFactoryImpl extends EFactoryImpl implements LaFactory {
 	 * @generated
 	 */
 	public LogicalComponent createLogicalComponent(String name_p) {
-	  LogicalComponent logicalComponent = createLogicalComponent();
+		LogicalComponent logicalComponent = createLogicalComponent();
 		logicalComponent.setName(name_p);	  
 		return logicalComponent;
 	}
@@ -343,7 +325,7 @@ public class LaFactoryImpl extends EFactoryImpl implements LaFactory {
 	 * @generated
 	 */
 	public LogicalComponentPkg createLogicalComponentPkg(String name_p) {
-	  LogicalComponentPkg logicalComponentPkg = createLogicalComponentPkg();
+		LogicalComponentPkg logicalComponentPkg = createLogicalComponentPkg();
 		logicalComponentPkg.setName(name_p);	  
 		return logicalComponentPkg;
 	}
@@ -356,7 +338,7 @@ public class LaFactoryImpl extends EFactoryImpl implements LaFactory {
 	 * @generated
 	 */
 	public CapabilityRealization createCapabilityRealization(String name_p) {
-	  CapabilityRealization capabilityRealization = createCapabilityRealization();
+		CapabilityRealization capabilityRealization = createCapabilityRealization();
 		capabilityRealization.setName(name_p);	  
 		return capabilityRealization;
 	}
@@ -369,7 +351,7 @@ public class LaFactoryImpl extends EFactoryImpl implements LaFactory {
 	 * @generated
 	 */
 	public CapabilityRealizationPkg createCapabilityRealizationPkg(String name_p) {
-	  CapabilityRealizationPkg capabilityRealizationPkg = createCapabilityRealizationPkg();
+		CapabilityRealizationPkg capabilityRealizationPkg = createCapabilityRealizationPkg();
 		capabilityRealizationPkg.setName(name_p);	  
 		return capabilityRealizationPkg;
 	}

@@ -34,6 +34,7 @@ import org.polarsys.capella.core.data.information.Port;
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ConnectionEnd'"
  *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='an endpoint of a connection link\r\n\r\nA connector end is an endpoint of a connector, which attaches the connector to a connectable element. Each connector\r\nend is part of one connector.\r\n[source: UML superstructure v2.2]' usage\040guideline='n/a' used\040in\040levels='operational,system,logical,physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='uml::ConnectorEnd' explanation='none' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface ComponentExchangeEnd extends InformationsExchanger, CapellaElement {
@@ -56,8 +57,10 @@ public interface ComponentExchangeEnd extends InformationsExchanger, CapellaElem
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getComponentExchangeEnd_Port()
 	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='role' featureOwner='ConnectorEnd'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='port'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the port to which this communication endpoint is attached\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ConnectorEnd::role' explanation='none' constraints='uml::ConnectorEnd::role elements on which StandardPort stereotype or any stereotype that inherits from it is applied'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -98,8 +101,10 @@ public interface ComponentExchangeEnd extends InformationsExchanger, CapellaElem
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getComponentExchangeEnd_Part()
 	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='partWithPort' featureOwner='ConnectorEnd'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='part'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the part to which this connect endpoint is attached\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ConnectorEnd::partWithPort' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

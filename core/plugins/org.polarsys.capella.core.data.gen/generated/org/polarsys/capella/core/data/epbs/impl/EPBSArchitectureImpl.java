@@ -186,6 +186,7 @@ public class EPBSArchitectureImpl extends ComponentArchitectureImpl implements E
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedConfigurationItemPkg(ConfigurationItemPkg newOwnedConfigurationItemPkg) {
 
 		if (newOwnedConfigurationItemPkg != ownedConfigurationItemPkg) {

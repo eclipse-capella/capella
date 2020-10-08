@@ -242,6 +242,7 @@ public abstract class BlockArchitectureImpl extends AbstractFunctionalArchitectu
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedAbstractCapabilityPkg(AbstractCapabilityPkg newOwnedAbstractCapabilityPkg) {
 
 		if (newOwnedAbstractCapabilityPkg != ownedAbstractCapabilityPkg) {
@@ -328,6 +329,7 @@ public abstract class BlockArchitectureImpl extends AbstractFunctionalArchitectu
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedInterfacePkg(InterfacePkg newOwnedInterfacePkg) {
 
 		if (newOwnedInterfacePkg != ownedInterfacePkg) {
@@ -414,6 +416,7 @@ public abstract class BlockArchitectureImpl extends AbstractFunctionalArchitectu
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedDataPkg(DataPkg newOwnedDataPkg) {
 
 		if (newOwnedDataPkg != ownedDataPkg) {

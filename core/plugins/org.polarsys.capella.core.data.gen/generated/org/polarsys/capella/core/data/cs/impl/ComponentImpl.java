@@ -592,6 +592,7 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 	 * @generated
 	 */
 
+	@Override
 	public void setAbstract(boolean newAbstract) {
 
 		boolean oldAbstract = abstract_;
@@ -1404,6 +1405,7 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 	 * @generated
 	 */
 
+	@Override
 	public void setActor(boolean newActor) {
 
 		boolean oldActor = actor;
@@ -1430,6 +1432,7 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 	 * @generated
 	 */
 
+	@Override
 	public void setHuman(boolean newHuman) {
 
 		boolean oldHuman = human;
@@ -2548,7 +2551,7 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (abstract: "); //$NON-NLS-1$
 		result.append(abstract_);
 		result.append(", actor: "); //$NON-NLS-1$

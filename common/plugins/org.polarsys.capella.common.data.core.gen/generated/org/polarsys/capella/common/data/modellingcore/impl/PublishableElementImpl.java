@@ -124,6 +124,7 @@ public abstract class PublishableElementImpl extends ModelElementImpl implements
 	 * @generated
 	 */
 
+	@Override
 	public void setVisibleInDoc(boolean newVisibleInDoc) {
 
 		boolean oldVisibleInDoc = visibleInDoc;
@@ -156,6 +157,7 @@ public abstract class PublishableElementImpl extends ModelElementImpl implements
 	 * @generated
 	 */
 
+	@Override
 	public void setVisibleInLM(boolean newVisibleInLM) {
 
 		boolean oldVisibleInLM = visibleInLM;
@@ -249,7 +251,7 @@ public abstract class PublishableElementImpl extends ModelElementImpl implements
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (visibleInDoc: "); //$NON-NLS-1$
 		result.append(visibleInDoc);
 		result.append(", visibleInLM: "); //$NON-NLS-1$

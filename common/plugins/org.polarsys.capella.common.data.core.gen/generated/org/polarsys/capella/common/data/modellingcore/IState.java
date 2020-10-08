@@ -53,6 +53,7 @@ public interface IState extends AbstractNamedElement {
 	 * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getIState_ReferencedStates()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -72,6 +73,7 @@ public interface IState extends AbstractNamedElement {
 	 * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getIState_ExploitedStates()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

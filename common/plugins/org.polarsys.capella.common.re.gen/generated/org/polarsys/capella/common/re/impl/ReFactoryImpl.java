@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.polarsys.capella.common.re.*;
 import org.polarsys.capella.common.re.CatalogElement;
 import org.polarsys.capella.common.re.CatalogElementKind;
 import org.polarsys.capella.common.re.CatalogElementLink;
@@ -120,12 +121,10 @@ public class ReFactoryImpl extends EFactoryImpl implements ReFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public RecCatalog createRecCatalog() {
 		RecCatalogImpl recCatalog = new RecCatalogImpl();
     //begin-capella-code
-
-
-
     //end-capella-code
 		return recCatalog;
 	}
@@ -135,12 +134,10 @@ public class ReFactoryImpl extends EFactoryImpl implements ReFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public GroupingElementPkg createGroupingElementPkg() {
 		GroupingElementPkgImpl groupingElementPkg = new GroupingElementPkgImpl();
     //begin-capella-code
-
-
-
     //end-capella-code
 		return groupingElementPkg;
 	}
@@ -150,12 +147,10 @@ public class ReFactoryImpl extends EFactoryImpl implements ReFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CatalogElementPkg createCatalogElementPkg() {
 		CatalogElementPkgImpl catalogElementPkg = new CatalogElementPkgImpl();
     //begin-capella-code
-
-
-
     //end-capella-code
 		return catalogElementPkg;
 	}
@@ -165,12 +160,10 @@ public class ReFactoryImpl extends EFactoryImpl implements ReFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CatalogElementLink createCatalogElementLink() {
 		CatalogElementLinkImpl catalogElementLink = new CatalogElementLinkImpl();
     //begin-capella-code
-
-
-
     //end-capella-code
 		return catalogElementLink;
 	}
@@ -180,12 +173,10 @@ public class ReFactoryImpl extends EFactoryImpl implements ReFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CatalogElement createCatalogElement() {
 		CatalogElementImpl catalogElement = new CatalogElementImpl();
     //begin-capella-code
-
-
-
     //end-capella-code
 		return catalogElement;
 	}
@@ -195,12 +186,10 @@ public class ReFactoryImpl extends EFactoryImpl implements ReFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CompliancyDefinitionPkg createCompliancyDefinitionPkg() {
 		CompliancyDefinitionPkgImpl compliancyDefinitionPkg = new CompliancyDefinitionPkgImpl();
     //begin-capella-code
-
-
-
     //end-capella-code
 		return compliancyDefinitionPkg;
 	}
@@ -210,12 +199,10 @@ public class ReFactoryImpl extends EFactoryImpl implements ReFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CompliancyDefinition createCompliancyDefinition() {
 		CompliancyDefinitionImpl compliancyDefinition = new CompliancyDefinitionImpl();
     //begin-capella-code
-
-
-
     //end-capella-code
 		return compliancyDefinition;
 	}
@@ -245,6 +232,7 @@ public class ReFactoryImpl extends EFactoryImpl implements ReFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public RePackage getRePackage() {
 		return (RePackage)getEPackage();
 	}

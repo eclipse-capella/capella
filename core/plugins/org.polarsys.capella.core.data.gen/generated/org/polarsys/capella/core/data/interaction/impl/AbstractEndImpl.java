@@ -125,6 +125,7 @@ public abstract class AbstractEndImpl extends InteractionFragmentImpl implements
 	 * @generated
 	 */
 
+	@Override
 	public void setEvent(Event newEvent) {
 
 		Event oldEvent = event;

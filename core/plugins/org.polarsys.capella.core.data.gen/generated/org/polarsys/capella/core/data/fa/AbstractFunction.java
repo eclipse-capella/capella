@@ -79,6 +79,7 @@ public interface AbstractFunction extends Namespace, InvolvedElement, AbstractIn
 	 * @see #setKind(FunctionKind)
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getAbstractFunction_Kind()
 	 * @model annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -119,6 +120,7 @@ public interface AbstractFunction extends Namespace, InvolvedElement, AbstractIn
 	 * @see #setCondition(String)
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getAbstractFunction_Condition()
 	 * @model annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -212,6 +214,7 @@ public interface AbstractFunction extends Namespace, InvolvedElement, AbstractIn
 	 * @model containment="true" resolveProxies="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the functional exchanges that are owned by this function, e.g. that have their source and destination on sub-functions of this function.\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Activity::edge' explanation='Elements are contained in the nearest possible parent container.' constraints='uml::Activity::edge elements on which FunctionalExchange stereotype or any stereotype that inherits from it is applied'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -380,6 +383,7 @@ public interface AbstractFunction extends Namespace, InvolvedElement, AbstractIn
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getAbstractFunction_AvailableInStates()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the list of (system) states in which this function is actually available\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -490,9 +494,11 @@ public interface AbstractFunction extends Namespace, InvolvedElement, AbstractIn
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getAbstractFunction_LinkedStateMachine()
 	 * @model resolveProxies="false" transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='linkedFunction'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='behavior'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the state machine associated to this function\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -517,6 +523,7 @@ public interface AbstractFunction extends Namespace, InvolvedElement, AbstractIn
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getAbstractFunction_LinkedFunctionSpecification()
 	 * @model resolveProxies="false" transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='linkedFunctionSpecification'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='behavior'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the function specification with which this function complies\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"

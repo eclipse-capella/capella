@@ -152,6 +152,7 @@ public class ModelInformationImpl extends LibraryAbstractElementImpl implements 
 	 * @generated
 	 */
 
+	@Override
 	public void setVersion(ModelVersion newVersion) {
 
 		ModelVersion oldVersion = version;

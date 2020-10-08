@@ -129,6 +129,7 @@ public abstract class AbstractDeploymentLinkImpl extends RelationshipImpl implem
 	 * @generated
 	 */
 
+	@Override
 	public void setDeployedElement(DeployableElement newDeployedElement) {
 
 		DeployableElement oldDeployedElement = deployedElement;
@@ -182,6 +183,7 @@ public abstract class AbstractDeploymentLinkImpl extends RelationshipImpl implem
 	 * @generated
 	 */
 
+	@Override
 	public void setLocation(DeploymentTarget newLocation) {
 
 		DeploymentTarget oldLocation = location;

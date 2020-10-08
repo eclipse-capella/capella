@@ -26,6 +26,7 @@ import org.polarsys.capella.core.data.capellacore.Namespace;
 import org.polarsys.capella.core.data.capellacore.ReuseableStructure;
 import org.polarsys.capella.core.data.capellacore.Structure;
 import org.polarsys.capella.core.data.capellamodeller.ModelRoot;
+import org.polarsys.capella.core.data.sharedmodel.*;
 import org.polarsys.capella.core.data.sharedmodel.GenericPkg;
 import org.polarsys.capella.core.data.sharedmodel.SharedPkg;
 import org.polarsys.capella.core.data.sharedmodel.SharedmodelPackage;

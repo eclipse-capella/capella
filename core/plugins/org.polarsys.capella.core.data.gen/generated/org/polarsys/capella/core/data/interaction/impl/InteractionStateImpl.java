@@ -44,6 +44,7 @@ import org.polarsys.capella.core.data.interaction.InteractionState;
  *
  * @generated
  */
+@SuppressWarnings("deprecation")
 public class InteractionStateImpl extends InteractionFragmentImpl implements InteractionState {
 
 	/**
@@ -51,9 +52,11 @@ public class InteractionStateImpl extends InteractionFragmentImpl implements Int
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getRelatedAbstractState()
+	 * @deprecated See {@link org.polarsys.capella.core.data.interaction.InteractionState#getRelatedAbstractState() model documentation} for details.
 	 * @generated
 	 * @ordered
 	 */
+	@Deprecated
 	protected AbstractState relatedAbstractState;
 
 
@@ -65,9 +68,11 @@ public class InteractionStateImpl extends InteractionFragmentImpl implements Int
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getRelatedAbstractFunction()
+	 * @deprecated See {@link org.polarsys.capella.core.data.interaction.InteractionState#getRelatedAbstractFunction() model documentation} for details.
 	 * @generated
 	 * @ordered
 	 */
+	@Deprecated
 	protected AbstractFunction relatedAbstractFunction;
 
 
@@ -105,9 +110,11 @@ public class InteractionStateImpl extends InteractionFragmentImpl implements Int
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @deprecated See {@link org.polarsys.capella.core.data.interaction.InteractionState#getRelatedAbstractState() model documentation} for details.
 	 * @generated
 	 */
 
+	@Deprecated
 	public AbstractState getRelatedAbstractState() {
 
 		if (relatedAbstractState != null && relatedAbstractState.eIsProxy()) {
@@ -125,9 +132,11 @@ public class InteractionStateImpl extends InteractionFragmentImpl implements Int
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @deprecated See {@link org.polarsys.capella.core.data.interaction.InteractionState#getRelatedAbstractState() model documentation} for details.
 	 * @generated
 	 */
 
+	@Deprecated
 	public AbstractState basicGetRelatedAbstractState() {
 
 		return relatedAbstractState;
@@ -138,9 +147,12 @@ public class InteractionStateImpl extends InteractionFragmentImpl implements Int
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @deprecated See {@link org.polarsys.capella.core.data.interaction.InteractionState#getRelatedAbstractState() model documentation} for details.
 	 * @generated
 	 */
 
+	@Deprecated
+		@Override
 	public void setRelatedAbstractState(AbstractState newRelatedAbstractState) {
 
 		AbstractState oldRelatedAbstractState = relatedAbstractState;
@@ -158,9 +170,11 @@ public class InteractionStateImpl extends InteractionFragmentImpl implements Int
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @deprecated See {@link org.polarsys.capella.core.data.interaction.InteractionState#getRelatedAbstractFunction() model documentation} for details.
 	 * @generated
 	 */
 
+	@Deprecated
 	public AbstractFunction getRelatedAbstractFunction() {
 
 		if (relatedAbstractFunction != null && relatedAbstractFunction.eIsProxy()) {
@@ -178,9 +192,11 @@ public class InteractionStateImpl extends InteractionFragmentImpl implements Int
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @deprecated See {@link org.polarsys.capella.core.data.interaction.InteractionState#getRelatedAbstractFunction() model documentation} for details.
 	 * @generated
 	 */
 
+	@Deprecated
 	public AbstractFunction basicGetRelatedAbstractFunction() {
 
 		return relatedAbstractFunction;
@@ -191,9 +207,12 @@ public class InteractionStateImpl extends InteractionFragmentImpl implements Int
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @deprecated See {@link org.polarsys.capella.core.data.interaction.InteractionState#getRelatedAbstractFunction() model documentation} for details.
 	 * @generated
 	 */
 
+	@Deprecated
+		@Override
 	public void setRelatedAbstractFunction(AbstractFunction newRelatedAbstractFunction) {
 
 		AbstractFunction oldRelatedAbstractFunction = relatedAbstractFunction;

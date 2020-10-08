@@ -112,6 +112,7 @@ public class PhysicalQuantityImpl extends NumericTypeImpl implements PhysicalQua
 	 * @generated
 	 */
 
+	@Override
 	public void setUnit(Unit newUnit) {
 
 		Unit oldUnit = unit;

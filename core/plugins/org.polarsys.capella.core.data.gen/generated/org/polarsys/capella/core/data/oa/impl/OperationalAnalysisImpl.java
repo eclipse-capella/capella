@@ -201,6 +201,7 @@ public class OperationalAnalysisImpl extends BlockArchitectureImpl implements Op
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedRolePkg(RolePkg newOwnedRolePkg) {
 
 		if (newOwnedRolePkg != ownedRolePkg) {
@@ -287,6 +288,7 @@ public class OperationalAnalysisImpl extends BlockArchitectureImpl implements Op
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedEntityPkg(EntityPkg newOwnedEntityPkg) {
 
 		if (newOwnedEntityPkg != ownedEntityPkg) {
@@ -373,6 +375,7 @@ public class OperationalAnalysisImpl extends BlockArchitectureImpl implements Op
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedConceptPkg(ConceptPkg newOwnedConceptPkg) {
 
 		if (newOwnedConceptPkg != ownedConceptPkg) {

@@ -84,6 +84,7 @@ public interface AbstractCapability extends Structure, InvolverElement, Abstract
 	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractCapability_PreCondition()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the prerequisite conditions for the use of this Capability\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints=''"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -121,6 +122,7 @@ public interface AbstractCapability extends Structure, InvolverElement, Abstract
 	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractCapability_PostCondition()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the conditions applying after this Capability has been exercized\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints=''"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -159,8 +161,10 @@ public interface AbstractCapability extends Structure, InvolverElement, Abstract
 	 * @model containment="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='ownedBehavior' featureOwner='BehavioredClassifier'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='scenarios'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Scenarios describing the dynamic aspects of this Capability\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::BehavioredClassifier::ownedBehavior' explanation='none' constraints='uml::BehavioredClassifier::ownedBehavior elements on which Scenario stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -245,6 +249,7 @@ public interface AbstractCapability extends Structure, InvolverElement, Abstract
 	 * @model containment="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='extend' featureOwner='UseCase'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='extends'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the list of reference elements to the Capabilities that this Capability extends\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::UseCase::extend' explanation='none' constraints='Order must be computed'"
 	 * @generated
@@ -273,6 +278,7 @@ public interface AbstractCapability extends Structure, InvolverElement, Abstract
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping umlOppositeReference='extendedCase' umlOppositeReferenceOwner='Extend'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='extending'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the list of reference elements to Capabilities that extend this Capability\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Opposite reference of uml::Extend::extendedCase' constraints='Order must be computed'"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='extended'"
@@ -302,6 +308,7 @@ public interface AbstractCapability extends Structure, InvolverElement, Abstract
 	 * @model containment="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='extensionPoint' featureOwner='UseCase'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='abstractCapabilityExtensionPoints'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the extension points that this Capability provides\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::UseCase::extensionPoint' explanation='none' constraints='Order must be computed'"
 	 * @generated
@@ -330,6 +337,7 @@ public interface AbstractCapability extends Structure, InvolverElement, Abstract
 	 * @model containment="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='generalization' featureOwner='Classifier'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='generalizations'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the list of references to Capabilities from which this Capability inherits\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Classifier::generalization' explanation='none' constraints='Order must be computed'"
 	 * @generated
@@ -358,6 +366,7 @@ public interface AbstractCapability extends Structure, InvolverElement, Abstract
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='generalization' featureOwner='Classifier'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='generalizations'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the list of references to Capabilities that derive from this Capability\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Opposite reference of uml::Generalization::general' constraints='none'"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='^super'"
@@ -387,6 +396,7 @@ public interface AbstractCapability extends Structure, InvolverElement, Abstract
 	 * @model containment="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='include' featureOwner='UseCase'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='includes'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the list of references to Capabilities used/included by this Capability\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::UseCase::include' explanation='none' constraints='Order must be computed'"
 	 * @generated
@@ -415,6 +425,7 @@ public interface AbstractCapability extends Structure, InvolverElement, Abstract
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping umlOppositeReference='addition' umlOppositeReferenceOwner='Include'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='including'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the list of references to Capabilities that use/include this Capability\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Opposite reference of uml::Include::addition' constraints='Order must be computed'"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='included'"
@@ -443,9 +454,11 @@ public interface AbstractCapability extends Structure, InvolverElement, Abstract
 	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractCapability_Super()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='superAbstractCapabilityUseCases'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='superGeneralizations.^super'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the direct references to Capabilities from which this Capability inherit' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -471,6 +484,7 @@ public interface AbstractCapability extends Structure, InvolverElement, Abstract
 	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractCapability_Sub()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='superAbstractCapabilityUseCases'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='subGeneralizations.sub'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the direct references to Capabilities that inherit from this Capability' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
@@ -500,9 +514,11 @@ public interface AbstractCapability extends Structure, InvolverElement, Abstract
 	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractCapability_IncludedAbstractCapabilities()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='includedAbstractCapabilityUseCases'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='includes.included'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the direct references to the Capabilities that this Capability uses/includes' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -528,6 +544,7 @@ public interface AbstractCapability extends Structure, InvolverElement, Abstract
 	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractCapability_IncludingAbstractCapabilities()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='includedAbstractCapabilityUseCases'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='AbstractCapabilityInclude.included(aci, self);\r\nAbstractCapabilityInclude.inclusion(aci, target);'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the direct references to the Capabilities that this Capability uses/includes' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
@@ -557,9 +574,11 @@ public interface AbstractCapability extends Structure, InvolverElement, Abstract
 	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractCapability_ExtendedAbstractCapabilities()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='extendedCapabilityUseCases'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='^extends.extended'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the direct references to the Capabilities that this Capability extends' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -585,6 +604,7 @@ public interface AbstractCapability extends Structure, InvolverElement, Abstract
 	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractCapability_ExtendingAbstractCapabilities()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='extendedCapabilityUseCases'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='AbstractCapabilityExtend.extended(ace, self);\r\nAbstractCapabilityExtend.^extension(ace, target);'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the direct references to the Capabilities that this Capability extends' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
@@ -664,6 +684,7 @@ public interface AbstractCapability extends Structure, InvolverElement, Abstract
 	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractCapability_AvailableInStates()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the list of (system) states in which this abstract capability is actually available\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -716,6 +737,7 @@ public interface AbstractCapability extends Structure, InvolverElement, Abstract
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='AbstractCapability.involvedInvolvements(self, afaci);\r\nAbstractFunctionAbstractCapabilityInvolvement.function(afaci, target);'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -743,6 +765,7 @@ public interface AbstractCapability extends Structure, InvolverElement, Abstract
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='AbstractCapability.involvedInvolvements(self, fcaci);\r\nFunctionalChainAbstractCapabilityInvolvement.functionalChain(fcaci, target);'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

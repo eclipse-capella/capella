@@ -28,7 +28,7 @@ import org.polarsys.capella.core.data.capellacore.NamedElement;
  * </ul>
  *
  * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalLinkCategory()
- * @model
+ * @model annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface PhysicalLinkCategory extends NamedElement {

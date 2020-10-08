@@ -67,6 +67,7 @@ import org.polarsys.capella.core.data.fa.FaPackage;
  *
  * @generated
  */
+@SuppressWarnings("deprecation")
 public class PhysicalPathImpl extends NamedElementImpl implements PhysicalPath {
 
 	/**
@@ -100,9 +101,11 @@ public class PhysicalPathImpl extends NamedElementImpl implements PhysicalPath {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getInvolvedLinks()
+	 * @deprecated See {@link org.polarsys.capella.core.data.cs.PhysicalPath#getInvolvedLinks() model documentation} for details.
 	 * @generated
 	 * @ordered
 	 */
+	@Deprecated
 	protected EList<AbstractPhysicalPathLink> involvedLinks;
 
 
@@ -335,9 +338,11 @@ public class PhysicalPathImpl extends NamedElementImpl implements PhysicalPath {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @deprecated See {@link org.polarsys.capella.core.data.cs.PhysicalPath#getInvolvedLinks() model documentation} for details.
 	 * @generated
 	 */
 
+	@Deprecated
 	public EList<AbstractPhysicalPathLink> getInvolvedLinks() {
 
 		if (involvedLinks == null) {

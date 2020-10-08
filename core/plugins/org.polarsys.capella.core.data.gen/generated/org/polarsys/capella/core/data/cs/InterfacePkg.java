@@ -35,6 +35,7 @@ import org.polarsys.capella.core.data.information.communication.MessageReference
  *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping metaclass='Package' stereotype='eng.InterfacePkg'"
  *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='A container for Interface elements\r\n[source: Capella study]' usage\040guideline='n/a' used\040in\040levels='operational,system,logical,physical,epbs' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='uml::Package' explanation='none' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface InterfacePkg extends MessageReferencePkg, AbstractDependenciesPkg, AbstractExchangeItemPkg {
@@ -58,8 +59,10 @@ public interface InterfacePkg extends MessageReferencePkg, AbstractDependenciesP
 	 * @model containment="true" resolveProxies="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedInterfaces'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specifies the interfaces that are owned by this Package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::nestedPackage#uml::Package::packagedElement' explanation='none' constraints='uml::Package::nestedPackage elements on which Interface stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -86,8 +89,10 @@ public interface InterfacePkg extends MessageReferencePkg, AbstractDependenciesP
 	 * @model containment="true" resolveProxies="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='subInterfacePkgs'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specifies the packages of interfaces that are owned by this Package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::nestedPackage#uml::Package::packagedElement' explanation='none' constraints='uml::Package::nestedPackage elements on which InterfacePkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

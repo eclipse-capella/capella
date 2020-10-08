@@ -255,6 +255,7 @@ public abstract class AbstractParameterImpl extends AbstractTypedElementImpl imp
 	 * @generated
 	 */
 
+	@Override
 	public void setIsException(boolean newIsException) {
 
 		boolean oldIsException = isException;
@@ -287,6 +288,7 @@ public abstract class AbstractParameterImpl extends AbstractTypedElementImpl imp
 	 * @generated
 	 */
 
+	@Override
 	public void setIsStream(boolean newIsStream) {
 
 		boolean oldIsStream = isStream;
@@ -319,6 +321,7 @@ public abstract class AbstractParameterImpl extends AbstractTypedElementImpl imp
 	 * @generated
 	 */
 
+	@Override
 	public void setIsOptional(boolean newIsOptional) {
 
 		boolean oldIsOptional = isOptional;
@@ -351,6 +354,7 @@ public abstract class AbstractParameterImpl extends AbstractTypedElementImpl imp
 	 * @generated
 	 */
 
+	@Override
 	public void setKindOfRate(RateKind newKindOfRate) {
 
 		RateKind oldKindOfRate = kindOfRate;
@@ -383,6 +387,7 @@ public abstract class AbstractParameterImpl extends AbstractTypedElementImpl imp
 	 * @generated
 	 */
 
+	@Override
 	public void setEffect(ParameterEffectKind newEffect) {
 
 		ParameterEffectKind oldEffect = effect;
@@ -462,6 +467,7 @@ public abstract class AbstractParameterImpl extends AbstractTypedElementImpl imp
 	 * @generated
 	 */
 
+	@Override
 	public void setRate(ValueSpecification newRate) {
 
 		if (newRate != rate) {
@@ -548,6 +554,7 @@ public abstract class AbstractParameterImpl extends AbstractTypedElementImpl imp
 	 * @generated
 	 */
 
+	@Override
 	public void setProbability(ValueSpecification newProbability) {
 
 		if (newProbability != probability) {
@@ -763,7 +770,7 @@ public abstract class AbstractParameterImpl extends AbstractTypedElementImpl imp
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (isException: "); //$NON-NLS-1$
 		result.append(isException);
 		result.append(", isStream: "); //$NON-NLS-1$

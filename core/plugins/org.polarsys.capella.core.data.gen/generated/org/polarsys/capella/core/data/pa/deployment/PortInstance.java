@@ -31,6 +31,7 @@ import org.polarsys.capella.core.data.fa.ComponentPort;
  *
  * @see org.polarsys.capella.core.data.pa.deployment.DeploymentPackage#getPortInstance()
  * @model annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='' explanation='none' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface PortInstance extends AbstractPhysicalInstance {
@@ -55,6 +56,7 @@ public interface PortInstance extends AbstractPhysicalInstance {
 	 * @see org.polarsys.capella.core.data.pa.deployment.ConnectionInstance#getConnectionEnds
 	 * @model opposite="connectionEnds"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -80,6 +82,7 @@ public interface PortInstance extends AbstractPhysicalInstance {
 	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='portInstances'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -104,6 +107,7 @@ public interface PortInstance extends AbstractPhysicalInstance {
 	 * @see #setType(ComponentPort)
 	 * @see org.polarsys.capella.core.data.pa.deployment.DeploymentPackage#getPortInstance_Type()
 	 * @model annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

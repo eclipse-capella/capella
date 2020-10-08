@@ -400,6 +400,7 @@ public class InterfaceImpl extends GeneralClassImpl implements Interface {
 	 * @generated
 	 */
 
+	@Override
 	public void setMechanism(String newMechanism) {
 
 		String oldMechanism = mechanism;
@@ -431,6 +432,7 @@ public class InterfaceImpl extends GeneralClassImpl implements Interface {
 	 * @generated
 	 */
 
+	@Override
 	public void setStructural(boolean newStructural) {
 
 		boolean oldStructural = structural;
@@ -1436,7 +1438,7 @@ public class InterfaceImpl extends GeneralClassImpl implements Interface {
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (mechanism: "); //$NON-NLS-1$
 		result.append(mechanism);
 		result.append(", structural: "); //$NON-NLS-1$

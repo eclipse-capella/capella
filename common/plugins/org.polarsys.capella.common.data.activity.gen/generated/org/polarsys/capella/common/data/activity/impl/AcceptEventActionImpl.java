@@ -122,6 +122,7 @@ public abstract class AcceptEventActionImpl extends AbstractActionImpl implement
 	 * @generated
 	 */
 
+	@Override
 	public void setIsUnmarshall(boolean newIsUnmarshall) {
 
 		boolean oldIsUnmarshall = isUnmarshall;
@@ -249,7 +250,7 @@ public abstract class AcceptEventActionImpl extends AbstractActionImpl implement
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (isUnmarshall: "); //$NON-NLS-1$
 		result.append(isUnmarshall);
 		result.append(')');

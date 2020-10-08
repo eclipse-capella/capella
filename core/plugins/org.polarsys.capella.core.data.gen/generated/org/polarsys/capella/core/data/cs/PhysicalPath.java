@@ -37,6 +37,7 @@ import org.polarsys.capella.core.data.fa.ComponentExchangeAllocator;
  * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalPath()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the specification of a given path of informations flowing across physical links and interfaces.\r\n[source: Capella study]' usage\040guideline='this is the equivalent for the physical architecture, of a functional chain defined at system level' used\040in\040levels='physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='uml::Class' explanation='_todo_' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface PhysicalPath extends NamedElement, ComponentExchangeAllocator, AbstractPathInvolvedElement, InvolverElement {
@@ -61,6 +62,7 @@ public interface PhysicalPath extends NamedElement, ComponentExchangeAllocator, 
 	 * @generated
 	 */
 
+	@Deprecated
 	EList<AbstractPhysicalPathLink> getInvolvedLinks();
 
 
@@ -83,6 +85,7 @@ public interface PhysicalPath extends NamedElement, ComponentExchangeAllocator, 
 	 * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalPath_OwnedPhysicalPathInvolvements()
 	 * @model containment="true" resolveProxies="true"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -108,6 +111,7 @@ public interface PhysicalPath extends NamedElement, ComponentExchangeAllocator, 
 	 * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalPath_FirstPhysicalPathInvolvements()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='freeform' viatra.expression='pattern PhysicalPath__firstPhysicalPathInvolvements(self : PhysicalPath, target : PhysicalPathInvolvement) {\r\n\tPhysicalPath.ownedPhysicalPathInvolvements(self, target);\r\n\tPhysicalPathInvolvement.involved(target, _);\r\n\tneg find _PreviousInvolvement(target, _);\r\n}\r\nprivate pattern _PreviousInvolvement(ppi : PhysicalPathInvolvement, previous : PhysicalPathInvolvement) {\r\n\tPhysicalPathInvolvement.previousInvolvements(ppi, previous);\r\n}\r\n'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */
@@ -161,6 +165,7 @@ public interface PhysicalPath extends NamedElement, ComponentExchangeAllocator, 
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='PhysicalPathRealization.sourceElement(ppr, self);\r\nPhysicalPathRealization.targetElement(ppr, target);'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

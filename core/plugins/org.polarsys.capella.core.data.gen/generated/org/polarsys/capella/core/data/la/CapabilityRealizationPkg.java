@@ -33,6 +33,7 @@ import org.polarsys.capella.core.data.capellacommon.AbstractCapabilityPkg;
  *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping metaclass='Package' stereotype='eng.CapabilityRealizationPkg'"
  *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='a container for storing CapabilityRealization elements\r\n[source: Capella study]' usage\040guideline='n/a' used\040in\040levels='logical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='uml::Package' explanation='none' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface CapabilityRealizationPkg extends AbstractCapabilityPkg {
@@ -56,8 +57,10 @@ public interface CapabilityRealizationPkg extends AbstractCapabilityPkg {
 	 * @model containment="true" resolveProxies="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='capabilityRealizations'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the CapabilityRealizations contained in this package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which CapabilityRealization stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -84,8 +87,10 @@ public interface CapabilityRealizationPkg extends AbstractCapabilityPkg {
 	 * @model containment="true" resolveProxies="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedCapabilityRealizationPkgs'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the sub-packages in this package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::nestedPackage#uml::Package::packagedElement' explanation='none' constraints='uml::Package::nestedPackage elements on which CapabilityRealizationPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

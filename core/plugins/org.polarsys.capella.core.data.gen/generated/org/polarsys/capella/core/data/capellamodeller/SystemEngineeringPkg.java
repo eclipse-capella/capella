@@ -57,6 +57,7 @@ public interface SystemEngineeringPkg extends Structure, ModelRoot {
 	 * @model containment="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedSystemEngineerings'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Set of system engineering elements\r\n[source:Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='Order must be computed'"
 	 * @generated

@@ -33,6 +33,7 @@ import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
  * @model kind="package"
  *        annotation="http://www.polarsys.org/kitalpha/emde/1.0.0/extension trackResourceModification='true' useUUIDs='false' useIDAttributes='true' extensibleProviderFactory='true' childCreationExtenders='true'"
  *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Requirement aims at defining the requirements expression language.\r\n[source: Capella study]' usage\040guideline='none' used\040in\040levels='n/a' usage\040examples='none' constraints='This package depends on the model CapellaCore.ecore' comment/notes='none' reference\040documentation='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface RequirementPackage extends EPackage {

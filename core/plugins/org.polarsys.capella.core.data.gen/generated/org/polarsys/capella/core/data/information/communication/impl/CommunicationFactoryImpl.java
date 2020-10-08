@@ -123,13 +123,11 @@ public class CommunicationFactoryImpl extends EFactoryImpl implements Communicat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public org.polarsys.capella.core.data.information.communication.Exception createException() {
 		ExceptionImpl exception = new ExceptionImpl();
     //begin-capella-code
-
     exception.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return exception;
 	}
@@ -139,13 +137,11 @@ public class CommunicationFactoryImpl extends EFactoryImpl implements Communicat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Message createMessage() {
 		MessageImpl message = new MessageImpl();
     //begin-capella-code
-
     message.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return message;
 	}
@@ -155,13 +151,11 @@ public class CommunicationFactoryImpl extends EFactoryImpl implements Communicat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public MessageReference createMessageReference() {
 		MessageReferenceImpl messageReference = new MessageReferenceImpl();
     //begin-capella-code
-
     messageReference.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return messageReference;
 	}
@@ -171,13 +165,11 @@ public class CommunicationFactoryImpl extends EFactoryImpl implements Communicat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Signal createSignal() {
 		SignalImpl signal = new SignalImpl();
     //begin-capella-code
-
     signal.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return signal;
 	}
@@ -187,13 +179,11 @@ public class CommunicationFactoryImpl extends EFactoryImpl implements Communicat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SignalInstance createSignalInstance() {
 		SignalInstanceImpl signalInstance = new SignalInstanceImpl();
     //begin-capella-code
-
     signalInstance.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return signalInstance;
 	}
@@ -203,13 +193,11 @@ public class CommunicationFactoryImpl extends EFactoryImpl implements Communicat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CommunicationLink createCommunicationLink() {
 		CommunicationLinkImpl communicationLink = new CommunicationLinkImpl();
     //begin-capella-code
-
     communicationLink.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return communicationLink;
 	}
@@ -259,6 +247,7 @@ public class CommunicationFactoryImpl extends EFactoryImpl implements Communicat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CommunicationPackage getCommunicationPackage() {
 		return (CommunicationPackage)getEPackage();
 	}
@@ -282,7 +271,7 @@ public class CommunicationFactoryImpl extends EFactoryImpl implements Communicat
 	 * @generated
 	 */
 	public org.polarsys.capella.core.data.information.communication.Exception createException(String name_p) {
-	  org.polarsys.capella.core.data.information.communication.Exception exception = createException();
+		org.polarsys.capella.core.data.information.communication.Exception exception = createException();
 		exception.setName(name_p);	  
 		return exception;
 	}
@@ -295,7 +284,7 @@ public class CommunicationFactoryImpl extends EFactoryImpl implements Communicat
 	 * @generated
 	 */
 	public Message createMessage(String name_p) {
-	  Message message = createMessage();
+		Message message = createMessage();
 		message.setName(name_p);	  
 		return message;
 	}
@@ -308,7 +297,7 @@ public class CommunicationFactoryImpl extends EFactoryImpl implements Communicat
 	 * @generated
 	 */
 	public Signal createSignal(String name_p) {
-	  Signal signal = createSignal();
+		Signal signal = createSignal();
 		signal.setName(name_p);	  
 		return signal;
 	}
@@ -321,7 +310,7 @@ public class CommunicationFactoryImpl extends EFactoryImpl implements Communicat
 	 * @generated
 	 */
 	public SignalInstance createSignalInstance(String name_p) {
-	  SignalInstance signalInstance = createSignalInstance();
+		SignalInstance signalInstance = createSignalInstance();
 		signalInstance.setName(name_p);	  
 		return signalInstance;
 	}

@@ -52,6 +52,7 @@ import org.polarsys.capella.core.data.fa.AbstractFunction;
  *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping metaclass='Interaction' stereotype='eng.Scenario'"
  *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Definition of a dynamic behaviour composed of the following information :\r\nContext, objective, pre-conditions, post-conditions, used capabilities, involved roles &amp; actors, operational exchanges &amp; interactions, processes and activities. Ability to be validated. Temporal &amp; performance description.Criticity.\r\nScenarios can be gathered in a set of Use Cases.\r\n\r\nA scenario describes a temporal dynamic interaction between actors (included the system or possibly its components) through their exchanges, it also describes the initialisation and the evolution of the context of the interaction.\r\n[source:ARCADIA encyclopedia v0.8.0]\r\n\r\nA scenario is similar to UML Interaction concept :\r\nAn interaction is a unit of behavior that focuses on the observable exchange of information between\r\nConnectableElements.\r\n\r\nA scenario can be compared to an UML sequence diagram :\r\nA sequence diagram describes an Interaction by focusing on the sequence of Messages that are exchanged, along with\r\ntheir corresponding OccurrenceSpecifications on the Lifelines.\r\n[source:UML Superstructure v2.2]' usage\040guideline='n/a' used\040in\040levels='operational, system, logical, physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='uml::Interaction' explanation='none' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface Scenario extends Namespace, AbstractBehavior {
@@ -74,6 +75,7 @@ public interface Scenario extends Namespace, AbstractBehavior {
 	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getScenario_PreCondition()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the prerequisite conditions for the use of this Scenario' constraints='none' type='n/a' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints=''"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -111,6 +113,7 @@ public interface Scenario extends Namespace, AbstractBehavior {
 	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getScenario_PostCondition()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the conditions applying after this Scenario has been exercized' constraints='none' type='n/a' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints=''"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -152,6 +155,7 @@ public interface Scenario extends Namespace, AbstractBehavior {
 	 * @model default="UNSET"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -194,6 +198,7 @@ public interface Scenario extends Namespace, AbstractBehavior {
 	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='isMerged' featureOwner='eng.Scenario' fromStereotype='true'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Whether the scenario underwent a merge operation for the transition from one level to the next\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -235,8 +240,10 @@ public interface Scenario extends Namespace, AbstractBehavior {
 	 * @model containment="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='lifeline' featureOwner='Interaction'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='instanceRoles'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Link to the set of instance roles (lifelines)\r\n[source:Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Interaction::lifeline' explanation='none' constraints='uml::Interaction::lifeline elements on which InstanceRole stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -263,8 +270,10 @@ public interface Scenario extends Namespace, AbstractBehavior {
 	 * @model containment="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='message' featureOwner='Interaction'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='messages'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Link to the owned sequence messages\r\n[Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Interaction::message' explanation='none' constraints='Order must be computed'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -291,6 +300,7 @@ public interface Scenario extends Namespace, AbstractBehavior {
 	 * @model containment="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='fragment' featureOwner='Interaction'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedAbstractEnds'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Link to the owned message and operation ends\r\n[source:Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Interaction::fragment' explanation='none' constraints='uml::Interaction::fragment elements on which AbstractEnd stereotype or any stereotype that inherits from it is applied'"
 	 * @generated
@@ -319,8 +329,10 @@ public interface Scenario extends Namespace, AbstractBehavior {
 	 * @model containment="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='fragment' featureOwner='Interaction'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedExecutions'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Link to the set of owned executions\r\n[source:Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Interaction::fragment' explanation='none' constraints='uml::Interaction::fragment elements on which Execution stereotype or any stereotype that inherits from it is applied'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -347,6 +359,7 @@ public interface Scenario extends Namespace, AbstractBehavior {
 	 * @model containment="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedEvents'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Events associated to this Capability\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='specific rule : a package will be created in the nearest package, the events will be stored there, and the Capability will have a package import element.' constraints=''"
 	 * @generated
@@ -427,6 +440,7 @@ public interface Scenario extends Namespace, AbstractBehavior {
 	 * @model containment="true" resolveProxies="true"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='n/a' usage\040guideline='n/a' used\040in\040levels='operational, system, logical, physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -454,6 +468,7 @@ public interface Scenario extends Namespace, AbstractBehavior {
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the SequenceMessage list, in sequence order' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedInstanceRoles.representedInstance'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -481,6 +496,7 @@ public interface Scenario extends Namespace, AbstractBehavior {
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the SequenceMessage list, in sequence order' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedInstanceRoles.representedInstance'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -508,6 +524,7 @@ public interface Scenario extends Namespace, AbstractBehavior {
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='Scenario.ownedTimeLapses(self, iu);\r\nInteractionUse.referencedScenario(iu, target);'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -537,6 +554,7 @@ public interface Scenario extends Namespace, AbstractBehavior {
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='Scenario.outgoingTraces(self, sr);\r\nScenarioRealization.realizedScenario(sr, target);'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

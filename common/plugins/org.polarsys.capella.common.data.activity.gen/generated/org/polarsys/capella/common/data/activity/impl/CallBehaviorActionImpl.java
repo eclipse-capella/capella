@@ -112,6 +112,7 @@ public abstract class CallBehaviorActionImpl extends CallActionImpl implements C
 	 * @generated
 	 */
 
+	@Override
 	public void setBehavior(AbstractBehavior newBehavior) {
 
 		AbstractBehavior oldBehavior = behavior;

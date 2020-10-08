@@ -59,6 +59,7 @@ public interface AbstractActivity extends AbstractBehavior, TraceableElement {
 	 * @see org.polarsys.capella.common.data.activity.ActivityPackage#getAbstractActivity_IsReadOnly()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='If true, this activity must not make any changes to variables outside the activity or to objects. (This is an assertion, not\r\nan executable property. It may be used by an execution engine to optimize model execution. If the assertion is\r\nviolated by the action, then the model is ill formed.)\r\n[source: UML superstructure v2.2]' constraints='none' type='n/a' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Activity::isReadOnly' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -99,6 +100,7 @@ public interface AbstractActivity extends AbstractBehavior, TraceableElement {
 	 * @see org.polarsys.capella.common.data.activity.ActivityPackage#getAbstractActivity_IsSingleExecution()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='If true, all invocations of the activity are handled by the same execution\r\n[source: UML superstructure v2.2]' constraints='none' type='n/a' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Activity::isSingleExecution' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

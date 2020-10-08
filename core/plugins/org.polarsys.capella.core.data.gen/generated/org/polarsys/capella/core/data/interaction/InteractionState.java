@@ -56,6 +56,7 @@ public interface InteractionState extends InteractionFragment {
 	 * @generated
 	 */
 
+	@Deprecated
 	AbstractState getRelatedAbstractState();
 
 
@@ -68,9 +69,11 @@ public interface InteractionState extends InteractionFragment {
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Related Abstract State</em>' reference.
 	 * @see #getRelatedAbstractState()
+	 * @deprecated See {@link org.polarsys.capella.core.data.interaction.InteractionState#getRelatedAbstractState() model documentation} for details.
 	 * @generated
 	 */
 
+	@Deprecated
 	void setRelatedAbstractState(AbstractState value);
 
 
@@ -95,6 +98,7 @@ public interface InteractionState extends InteractionFragment {
 	 * @generated
 	 */
 
+	@Deprecated
 	AbstractFunction getRelatedAbstractFunction();
 
 
@@ -107,9 +111,11 @@ public interface InteractionState extends InteractionFragment {
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Related Abstract Function</em>' reference.
 	 * @see #getRelatedAbstractFunction()
+	 * @deprecated See {@link org.polarsys.capella.core.data.interaction.InteractionState#getRelatedAbstractFunction() model documentation} for details.
 	 * @generated
 	 */
 
+	@Deprecated
 	void setRelatedAbstractFunction(AbstractFunction value);
 
 
@@ -132,6 +138,7 @@ public interface InteractionState extends InteractionFragment {
 	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='covered' featureOwner='InteractionFragment'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='instanceRole'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the instance role (lifeline) to which this interaction endpoint is attached\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::InteractionFragment::covered' explanation='none' constraints='Multiplicity must be [1..1]'"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='coveredInstanceRoles'"

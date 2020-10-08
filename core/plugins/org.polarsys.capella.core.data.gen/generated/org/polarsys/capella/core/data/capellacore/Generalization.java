@@ -29,6 +29,7 @@ package org.polarsys.capella.core.data.capellacore;
  * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getGeneralization()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='Generalization'"
  *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping metaclass='Generalization' stereotype='eng.Generalization'"
+ *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Ignore"
  *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='A generalization is a taxonomic relationship between a more general classifier and a more specific classifier. Each instance of the specific classifier is also an indirect instance of the general classifier. Thus, the specific classifier inherits the features of the more general classifier.\r\n[source:Capella study]' usage\040guideline='used to declare a parent/child relationship between two classes' used\040in\040levels='operational, system, logical, physical, epbs' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='uml::Generalization' explanation='none' constraints='none'"
  * @generated
@@ -54,6 +55,7 @@ public interface Generalization extends Relationship {
 	 * @model required="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='general' featureOwner='Generalization'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='super'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Same as UML Generalization general association : References the general classifier in the Generalization relationship.\r\n[source:UML Superstructure v2.2]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Generalization::general' explanation='none' constraints='none'"
 	 * @generated

@@ -165,6 +165,7 @@ public abstract class ExceptionHandlerImpl extends ModelElementImpl implements E
 	 * @generated
 	 */
 
+	@Override
 	public void setProtectedNode(ExecutableNode newProtectedNode) {
 
 		if (newProtectedNode != eInternalContainer() || (eContainerFeatureID() != ActivityPackage.EXCEPTION_HANDLER__PROTECTED_NODE && newProtectedNode != null)) {
@@ -227,6 +228,7 @@ public abstract class ExceptionHandlerImpl extends ModelElementImpl implements E
 	 * @generated
 	 */
 
+	@Override
 	public void setHandlerBody(ExecutableNode newHandlerBody) {
 
 		ExecutableNode oldHandlerBody = handlerBody;
@@ -280,6 +282,7 @@ public abstract class ExceptionHandlerImpl extends ModelElementImpl implements E
 	 * @generated
 	 */
 
+	@Override
 	public void setExceptionInput(ObjectNode newExceptionInput) {
 
 		ObjectNode oldExceptionInput = exceptionInput;

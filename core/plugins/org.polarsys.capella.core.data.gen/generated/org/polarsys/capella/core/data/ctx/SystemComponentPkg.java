@@ -33,6 +33,7 @@ import org.polarsys.capella.core.data.cs.ComponentPkg;
  *
  * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemComponentPkg()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='a package containing System Components\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 
@@ -57,6 +58,7 @@ public interface SystemComponentPkg extends ComponentPkg {
 	 * @model containment="true" resolveProxies="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the System Components included in this package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints=''"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -83,6 +85,7 @@ public interface SystemComponentPkg extends ComponentPkg {
 	 * @model containment="true" resolveProxies="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='sub-packages of this System Component Package' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints=''"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

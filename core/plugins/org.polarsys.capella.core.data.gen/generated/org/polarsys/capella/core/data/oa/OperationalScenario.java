@@ -54,6 +54,7 @@ public interface OperationalScenario extends NamedElement {
 	 * @model required="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='description of the context in which this operational scenario takes place\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -95,6 +96,7 @@ public interface OperationalScenario extends NamedElement {
 	 * @model required="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='description of the objective/output of this operational scenario\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

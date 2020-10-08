@@ -32,6 +32,7 @@ import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
  * @model kind="package"
  *        annotation="http://www.polarsys.org/kitalpha/emde/1.0.0/extension trackResourceModification='true' useUUIDs='false' useIDAttributes='true' extensibleProviderFactory='true' childCreationExtenders='true'"
  *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Shared aims at defining a structure for the shared model elements storage. It is dedicated to the model elements reuse. This is a rest of MDSysE and may be reengineered into more adapted solutions.\r\n[source: Capella study]' usage\040guideline='none' used\040in\040levels='n/a' usage\040examples='none' constraints='This package depends on the model CapellaModeller.ecore' comment/notes='none' reference\040documentation='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface SharedmodelPackage extends EPackage {

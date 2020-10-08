@@ -30,6 +30,7 @@ import org.polarsys.capella.core.data.fa.FunctionalChain;
  * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalProcess()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='An Operational Process is a logical organization of activities to fulfill an operational capability.' usage\040guideline='defining an Operational Process is similar to defining a functional chain at System Analysis level : it is composed of an ordered set of operational activities.\r\n[source: Capella study]' used\040in\040levels='operational' usage\040examples='n/a' constraints='none' comment/notes='not used/implemented as of Capella' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='' explanation='uml::Activity' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface OperationalProcess extends FunctionalChain {

@@ -187,6 +187,7 @@ public abstract class FunctionalChainInvolvementImpl extends RelationshipImpl im
 	 * @generated
 	 */
 
+	@Override
 	public void setInvolved(InvolvedElement newInvolved) {
 
 		InvolvedElement oldInvolved = involved;

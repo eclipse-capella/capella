@@ -34,6 +34,7 @@ import org.polarsys.capella.core.data.capellacore.Involvement;
  * @model abstract="true"
  *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies the involvement of a model element in a functional chain\r\n[source: Capella study]' usage\040guideline='n/a' used\040in\040levels='operational,system,logical,physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='uml::Dependency' explanation='none' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface FunctionalChainInvolvement extends Involvement {
@@ -58,6 +59,7 @@ public interface FunctionalChainInvolvement extends Involvement {
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='freeform' viatra.expression='pattern FunctionalChainInvolvement_nextFunctionalChainInvolvements(self : FunctionalChainInvolvement, target : FunctionalChainInvolvement) {\r\n\tFunctionalChainInvolvementLink.source(target, self);\r\n} or {\r\n\tFunctionalChainInvolvementLink.target(self, target);\r\n}'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='' explanation='' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -84,6 +86,7 @@ public interface FunctionalChainInvolvement extends Involvement {
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='freeform' viatra.expression='pattern FunctionalChainInvolvement__previousFunctionalChainInvolvements(self : FunctionalChainInvolvement, target : FunctionalChainInvolvement) {\r\n\tFunctionalChainInvolvementLink.target(target, self);\r\n} or {\r\n\tFunctionalChainInvolvementLink.source(self, target);\r\n}'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -108,6 +111,7 @@ public interface FunctionalChainInvolvement extends Involvement {
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChainInvolvement_InvolvedElement()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='involved'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */

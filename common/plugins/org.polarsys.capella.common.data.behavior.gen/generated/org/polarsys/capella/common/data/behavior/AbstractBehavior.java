@@ -57,6 +57,7 @@ public interface AbstractBehavior extends AbstractNamedElement {
 	 * @see org.polarsys.capella.common.data.behavior.BehaviorPackage#getAbstractBehavior_IsControlOperator()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Tells whether the type of this behavior node is to be treated as control\r\n[source: UML superstructure v2.2]' constraints='none' type='n/a' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='_todo_ Maybye it can be mapped to uml::ObjectNode::isControlType...' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

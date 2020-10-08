@@ -738,6 +738,7 @@ public class PhysicalComponentImpl extends AbstractPhysicalArtifactImpl implemen
 	 * @generated
 	 */
 
+	@Override
 	public void setName(String newName) {
 
 		String oldName = name;
@@ -1163,6 +1164,7 @@ public class PhysicalComponentImpl extends AbstractPhysicalArtifactImpl implemen
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedAbstractCapabilityPkg(AbstractCapabilityPkg newOwnedAbstractCapabilityPkg) {
 
 		if (newOwnedAbstractCapabilityPkg != ownedAbstractCapabilityPkg) {
@@ -1239,6 +1241,7 @@ public class PhysicalComponentImpl extends AbstractPhysicalArtifactImpl implemen
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedInterfacePkg(InterfacePkg newOwnedInterfacePkg) {
 
 		if (newOwnedInterfacePkg != ownedInterfacePkg) {
@@ -1315,6 +1318,7 @@ public class PhysicalComponentImpl extends AbstractPhysicalArtifactImpl implemen
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedDataPkg(DataPkg newOwnedDataPkg) {
 
 		if (newOwnedDataPkg != ownedDataPkg) {
@@ -1419,6 +1423,7 @@ public class PhysicalComponentImpl extends AbstractPhysicalArtifactImpl implemen
 	 * @generated
 	 */
 
+	@Override
 	public void setAbstract(boolean newAbstract) {
 
 		boolean oldAbstract = abstract_;
@@ -2175,6 +2180,7 @@ public class PhysicalComponentImpl extends AbstractPhysicalArtifactImpl implemen
 	 * @generated
 	 */
 
+	@Override
 	public void setActor(boolean newActor) {
 
 		boolean oldActor = actor;
@@ -2201,6 +2207,7 @@ public class PhysicalComponentImpl extends AbstractPhysicalArtifactImpl implemen
 	 * @generated
 	 */
 
+	@Override
 	public void setHuman(boolean newHuman) {
 
 		boolean oldHuman = human;
@@ -3042,6 +3049,7 @@ public class PhysicalComponentImpl extends AbstractPhysicalArtifactImpl implemen
 	 * @generated
 	 */
 
+	@Override
 	public void setKind(PhysicalComponentKind newKind) {
 
 		PhysicalComponentKind oldKind = kind;
@@ -3068,6 +3076,7 @@ public class PhysicalComponentImpl extends AbstractPhysicalArtifactImpl implemen
 	 * @generated
 	 */
 
+	@Override
 	public void setNature(PhysicalComponentNature newNature) {
 
 		PhysicalComponentNature oldNature = nature;
@@ -4355,7 +4364,7 @@ public class PhysicalComponentImpl extends AbstractPhysicalArtifactImpl implemen
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: "); //$NON-NLS-1$
 		result.append(name);
 		result.append(", abstract: "); //$NON-NLS-1$

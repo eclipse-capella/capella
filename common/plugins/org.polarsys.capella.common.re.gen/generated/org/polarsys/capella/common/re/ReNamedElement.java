@@ -49,7 +49,7 @@ public interface ReNamedElement extends ReAbstractElement {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.polarsys.capella.common.re.RePackage#getReNamedElement_Name()
-	 * @model
+	 * @model annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

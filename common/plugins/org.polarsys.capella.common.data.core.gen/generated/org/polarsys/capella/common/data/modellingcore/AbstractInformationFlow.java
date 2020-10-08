@@ -81,6 +81,7 @@ public interface AbstractInformationFlow extends AbstractNamedElement, AbstractR
 	 * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getAbstractInformationFlow_ConvoyedInformations()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specifies the information items that may circulate on this information flow\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::InformationFlow::conveyed' explanation='none' constraints='Order will not be preserved'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

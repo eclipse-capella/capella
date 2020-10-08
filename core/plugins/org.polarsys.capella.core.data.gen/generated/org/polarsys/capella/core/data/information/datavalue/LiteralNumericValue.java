@@ -30,6 +30,7 @@ package org.polarsys.capella.core.data.information.datavalue;
  *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping metaclass='Expression' stereotype='eng.LiteralNumericValue'"
  *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='A literal value expressed as a number (ordered set of digits)\r\n[source: Capella study]' usage\040guideline='n/a' used\040in\040levels='n/a' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='uml::Expression' explanation='none' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface LiteralNumericValue extends NumericValue {
@@ -53,6 +54,7 @@ public interface LiteralNumericValue extends NumericValue {
 	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='symbol' featureOwner='Expression'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the number defining this value, expressed as a string\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::LiteralString::value' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

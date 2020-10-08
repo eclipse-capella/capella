@@ -35,6 +35,7 @@ import org.polarsys.capella.core.data.la.LogicalFunction;
  * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalFunction()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Function applied at physical level\r\n[source: Capella study]' usage\040guideline='this element is used in the \"functional approach\" usage, as the result of the flow down/refinement of the functions at the logical architecture level\r\n[source: Capella study]' used\040in\040levels='physical' usage\040examples='../img/usage_examples/example_physical_functions.png' constraints='none' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='uml::Activity' explanation='All functions are mapped to (empty) activities' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface PhysicalFunction extends AbstractFunction {
@@ -58,6 +59,7 @@ public interface PhysicalFunction extends AbstractFunction {
 	 * @model containment="true" resolveProxies="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the sub-(physical function) packages contained in this physical function' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::nestedPackage#uml::Package::packagedElement' explanation='none' constraints='uml::Package::nestedPackage elements on which PhysicalFunctionPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -114,6 +116,7 @@ public interface PhysicalFunction extends AbstractFunction {
 	 * @see org.polarsys.capella.core.data.la.LogicalFunction#getRealizingPhysicalFunctions
 	 * @model opposite="realizingPhysicalFunctions" transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='outFunctionRealizations.allocatedFunction'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */

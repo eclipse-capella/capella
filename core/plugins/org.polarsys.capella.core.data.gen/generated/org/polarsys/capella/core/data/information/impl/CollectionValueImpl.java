@@ -177,6 +177,7 @@ public class CollectionValueImpl extends AbstractCollectionValueImpl implements 
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedDefaultElement(DataValue newOwnedDefaultElement) {
 
 		if (newOwnedDefaultElement != ownedDefaultElement) {

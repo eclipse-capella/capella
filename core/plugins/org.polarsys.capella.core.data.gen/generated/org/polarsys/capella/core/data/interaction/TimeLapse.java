@@ -54,6 +54,7 @@ public interface TimeLapse extends NamedElement {
 	 * @model required="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='start' featureOwner='ExecutionSpecification'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='start'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the starting point of this Execution\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ExecutionSpecification::start' explanation='none' constraints='none'"
 	 * @generated
@@ -97,6 +98,7 @@ public interface TimeLapse extends NamedElement {
 	 * @model required="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='finish' featureOwner='ExecutionSpecification'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='finish'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the ending point of this Execution\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ExecutionSpecification::finish' explanation='none' constraints='none'"
 	 * @generated

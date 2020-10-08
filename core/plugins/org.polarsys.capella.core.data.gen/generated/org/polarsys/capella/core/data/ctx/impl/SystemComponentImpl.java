@@ -261,6 +261,7 @@ public class SystemComponentImpl extends ComponentImpl implements SystemComponen
 	 * @generated
 	 */
 
+	@Override
 	public void setDataComponent(boolean newDataComponent) {
 
 		boolean oldDataComponent = dataComponent;
@@ -793,7 +794,7 @@ public class SystemComponentImpl extends ComponentImpl implements SystemComponen
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (dataComponent: "); //$NON-NLS-1$
 		result.append(dataComponent);
 		result.append(')');

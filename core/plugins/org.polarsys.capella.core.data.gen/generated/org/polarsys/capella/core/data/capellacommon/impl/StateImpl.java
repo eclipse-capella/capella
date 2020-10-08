@@ -479,6 +479,7 @@ public class StateImpl extends AbstractStateImpl implements State {
 	 * @generated
 	 */
 
+	@Override
 	public void setStateInvariant(AbstractConstraint newStateInvariant) {
 
 		if (newStateInvariant != stateInvariant) {

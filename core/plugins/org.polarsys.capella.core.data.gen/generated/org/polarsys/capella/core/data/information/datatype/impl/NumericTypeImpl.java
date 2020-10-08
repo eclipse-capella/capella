@@ -163,6 +163,7 @@ public class NumericTypeImpl extends DataTypeImpl implements NumericType {
 	 * @generated
 	 */
 
+	@Override
 	public void setKind(NumericTypeKind newKind) {
 
 		NumericTypeKind oldKind = kind;
@@ -242,6 +243,7 @@ public class NumericTypeImpl extends DataTypeImpl implements NumericType {
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedDefaultValue(NumericValue newOwnedDefaultValue) {
 
 		if (newOwnedDefaultValue != ownedDefaultValue) {
@@ -328,6 +330,7 @@ public class NumericTypeImpl extends DataTypeImpl implements NumericType {
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedNullValue(NumericValue newOwnedNullValue) {
 
 		if (newOwnedNullValue != ownedNullValue) {
@@ -414,6 +417,7 @@ public class NumericTypeImpl extends DataTypeImpl implements NumericType {
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedMinValue(NumericValue newOwnedMinValue) {
 
 		if (newOwnedMinValue != ownedMinValue) {
@@ -500,6 +504,7 @@ public class NumericTypeImpl extends DataTypeImpl implements NumericType {
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedMaxValue(NumericValue newOwnedMaxValue) {
 
 		if (newOwnedMaxValue != ownedMaxValue) {
@@ -654,7 +659,7 @@ public class NumericTypeImpl extends DataTypeImpl implements NumericType {
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (kind: "); //$NON-NLS-1$
 		result.append(kind);
 		result.append(')');

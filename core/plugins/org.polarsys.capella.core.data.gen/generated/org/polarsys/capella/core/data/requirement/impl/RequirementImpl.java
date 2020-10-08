@@ -446,6 +446,7 @@ public abstract class RequirementImpl extends NamedElementImpl implements Requir
 	 * @generated
 	 */
 
+	@Override
 	public void setIsObsolete(boolean newIsObsolete) {
 
 		boolean oldIsObsolete = isObsolete;
@@ -478,6 +479,7 @@ public abstract class RequirementImpl extends NamedElementImpl implements Requir
 	 * @generated
 	 */
 
+	@Override
 	public void setRequirementId(String newRequirementId) {
 
 		String oldRequirementId = requirementId;
@@ -510,6 +512,7 @@ public abstract class RequirementImpl extends NamedElementImpl implements Requir
 	 * @generated
 	 */
 
+	@Override
 	public void setAdditionalInformation(String newAdditionalInformation) {
 
 		String oldAdditionalInformation = additionalInformation;
@@ -542,6 +545,7 @@ public abstract class RequirementImpl extends NamedElementImpl implements Requir
 	 * @generated
 	 */
 
+	@Override
 	public void setVerificationMethod(String newVerificationMethod) {
 
 		String oldVerificationMethod = verificationMethod;
@@ -574,6 +578,7 @@ public abstract class RequirementImpl extends NamedElementImpl implements Requir
 	 * @generated
 	 */
 
+	@Override
 	public void setVerificationPhase(String newVerificationPhase) {
 
 		String oldVerificationPhase = verificationPhase;
@@ -606,6 +611,7 @@ public abstract class RequirementImpl extends NamedElementImpl implements Requir
 	 * @generated
 	 */
 
+	@Override
 	public void setImplementationVersion(String newImplementationVersion) {
 
 		String oldImplementationVersion = implementationVersion;
@@ -638,6 +644,7 @@ public abstract class RequirementImpl extends NamedElementImpl implements Requir
 	 * @generated
 	 */
 
+	@Override
 	public void setFeature(String newFeature) {
 
 		String oldFeature = feature;
@@ -879,7 +886,7 @@ public abstract class RequirementImpl extends NamedElementImpl implements Requir
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (isObsolete: "); //$NON-NLS-1$
 		result.append(isObsolete);
 		result.append(", requirementId: "); //$NON-NLS-1$

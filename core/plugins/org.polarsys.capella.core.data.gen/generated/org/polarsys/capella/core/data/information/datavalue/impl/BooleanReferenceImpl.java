@@ -128,6 +128,7 @@ public class BooleanReferenceImpl extends AbstractBooleanValueImpl implements Bo
 	 * @generated
 	 */
 
+	@Override
 	public void setReferencedValue(AbstractBooleanValue newReferencedValue) {
 
 		AbstractBooleanValue oldReferencedValue = referencedValue;
@@ -181,6 +182,7 @@ public class BooleanReferenceImpl extends AbstractBooleanValueImpl implements Bo
 	 * @generated
 	 */
 
+	@Override
 	public void setReferencedProperty(Property newReferencedProperty) {
 
 		Property oldReferencedProperty = referencedProperty;

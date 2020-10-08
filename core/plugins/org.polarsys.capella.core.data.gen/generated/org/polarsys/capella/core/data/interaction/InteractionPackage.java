@@ -34,6 +34,7 @@ import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
  * @model kind="package"
  *        annotation="http://www.polarsys.org/kitalpha/emde/1.0.0/extension trackResourceModification='true' useUUIDs='false' useIDAttributes='true' extensibleProviderFactory='true' childCreationExtenders='true'"
  *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Interaction aims at defining the components interaction language (close from the UML Sequence diagram, partially).\r\n[source: Capella study]' usage\040guideline='none' used\040in\040levels='operational,system,logical' usage\040examples='none' constraints='This package depends on the model FunctionalAnalysis.ecore\r\nThis package depends on the model Behavior.ecore' comment/notes='none' reference\040documentation='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface InteractionPackage extends EPackage {
@@ -6289,18 +6290,22 @@ public interface InteractionPackage extends EPackage {
 	 * The feature id for the '<em><b>Related Abstract State</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @deprecated See {@link org.polarsys.capella.core.data.interaction.InteractionState#getRelatedAbstractState() model documentation} for details.
 	 * @generated
 	 * @ordered
 	 */
+	@Deprecated
 	int INTERACTION_STATE__RELATED_ABSTRACT_STATE = INTERACTION_FRAGMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Related Abstract Function</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @deprecated See {@link org.polarsys.capella.core.data.interaction.InteractionState#getRelatedAbstractFunction() model documentation} for details.
 	 * @generated
 	 * @ordered
 	 */
+	@Deprecated
 	int INTERACTION_STATE__RELATED_ABSTRACT_FUNCTION = INTERACTION_FRAGMENT_FEATURE_COUNT + 1;
 
 	/**
@@ -10835,8 +10840,10 @@ public interface InteractionPackage extends EPackage {
 	 * @return the meta object for the reference '<em>Related Abstract State</em>'.
 	 * @see org.polarsys.capella.core.data.interaction.InteractionState#getRelatedAbstractState()
 	 * @see #getInteractionState()
+	 * @deprecated See {@link org.polarsys.capella.core.data.interaction.InteractionState#getRelatedAbstractState() model documentation} for details.
 	 * @generated
 	 */
+	@Deprecated
 	EReference getInteractionState_RelatedAbstractState();
 
 	/**
@@ -10846,8 +10853,10 @@ public interface InteractionPackage extends EPackage {
 	 * @return the meta object for the reference '<em>Related Abstract Function</em>'.
 	 * @see org.polarsys.capella.core.data.interaction.InteractionState#getRelatedAbstractFunction()
 	 * @see #getInteractionState()
+	 * @deprecated See {@link org.polarsys.capella.core.data.interaction.InteractionState#getRelatedAbstractFunction() model documentation} for details.
 	 * @generated
 	 */
+	@Deprecated
 	EReference getInteractionState_RelatedAbstractFunction();
 
 	/**
@@ -12145,16 +12154,20 @@ public interface InteractionPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Related Abstract State</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 * @deprecated See {@link org.polarsys.capella.core.data.interaction.InteractionState#getRelatedAbstractState() model documentation} for details.
 		 * @generated
 		 */
+		@Deprecated
 		EReference INTERACTION_STATE__RELATED_ABSTRACT_STATE = eINSTANCE.getInteractionState_RelatedAbstractState();
 
 		/**
 		 * The meta object literal for the '<em><b>Related Abstract Function</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 * @deprecated See {@link org.polarsys.capella.core.data.interaction.InteractionState#getRelatedAbstractFunction() model documentation} for details.
 		 * @generated
 		 */
+		@Deprecated
 		EReference INTERACTION_STATE__RELATED_ABSTRACT_FUNCTION = eINSTANCE.getInteractionState_RelatedAbstractFunction();
 
 		/**

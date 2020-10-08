@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.polarsys.capella.common.libraries.*;
 import org.polarsys.capella.common.libraries.AccessPolicy;
 import org.polarsys.capella.common.libraries.LibrariesFactory;
 import org.polarsys.capella.common.libraries.LibrariesPackage;
@@ -112,12 +113,10 @@ public class LibrariesFactoryImpl extends EFactoryImpl implements LibrariesFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ModelInformation createModelInformation() {
 		ModelInformationImpl modelInformation = new ModelInformationImpl();
     //begin-capella-code
-
-
-
     //end-capella-code
 		return modelInformation;
 	}
@@ -127,12 +126,10 @@ public class LibrariesFactoryImpl extends EFactoryImpl implements LibrariesFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public LibraryReference createLibraryReference() {
 		LibraryReferenceImpl libraryReference = new LibraryReferenceImpl();
     //begin-capella-code
-
-
-
     //end-capella-code
 		return libraryReference;
 	}
@@ -142,12 +139,10 @@ public class LibrariesFactoryImpl extends EFactoryImpl implements LibrariesFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ModelVersion createModelVersion() {
 		ModelVersionImpl modelVersion = new ModelVersionImpl();
     //begin-capella-code
-
-
-
     //end-capella-code
 		return modelVersion;
 	}
@@ -177,6 +172,7 @@ public class LibrariesFactoryImpl extends EFactoryImpl implements LibrariesFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public LibrariesPackage getLibrariesPackage() {
 		return (LibrariesPackage)getEPackage();
 	}

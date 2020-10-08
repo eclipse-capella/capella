@@ -128,6 +128,7 @@ public class PhysicalLinkEndImpl extends AbstractPhysicalLinkEndImpl implements 
 	 * @generated
 	 */
 
+	@Override
 	public void setPort(PhysicalPort newPort) {
 
 		PhysicalPort oldPort = port;
@@ -181,6 +182,7 @@ public class PhysicalLinkEndImpl extends AbstractPhysicalLinkEndImpl implements 
 	 * @generated
 	 */
 
+	@Override
 	public void setPart(Part newPart) {
 
 		Part oldPart = part;

@@ -113,6 +113,7 @@ public class MessageReferenceImpl extends RelationshipImpl implements MessageRef
 	 * @generated
 	 */
 
+	@Override
 	public void setMessage(Message newMessage) {
 
 		Message oldMessage = message;

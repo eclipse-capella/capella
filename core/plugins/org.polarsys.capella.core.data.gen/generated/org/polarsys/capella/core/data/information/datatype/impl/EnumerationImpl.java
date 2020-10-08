@@ -239,6 +239,7 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedDefaultValue(AbstractEnumerationValue newOwnedDefaultValue) {
 
 		if (newOwnedDefaultValue != ownedDefaultValue) {
@@ -325,6 +326,7 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedNullValue(AbstractEnumerationValue newOwnedNullValue) {
 
 		if (newOwnedNullValue != ownedNullValue) {
@@ -411,6 +413,7 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedMinValue(AbstractEnumerationValue newOwnedMinValue) {
 
 		if (newOwnedMinValue != ownedMinValue) {
@@ -497,6 +500,7 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedMaxValue(AbstractEnumerationValue newOwnedMaxValue) {
 
 		if (newOwnedMaxValue != ownedMaxValue) {
@@ -557,6 +561,7 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
 	 * @generated
 	 */
 
+	@Override
 	public void setDomainType(DataType newDomainType) {
 
 		DataType oldDomainType = domainType;

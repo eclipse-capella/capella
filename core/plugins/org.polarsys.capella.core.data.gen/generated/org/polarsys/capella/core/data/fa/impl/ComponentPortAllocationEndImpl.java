@@ -477,6 +477,7 @@ public class ComponentPortAllocationEndImpl extends ModelElementImpl implements 
 	 * @generated
 	 */
 
+	@Override
 	public void setVisibleInDoc(boolean newVisibleInDoc) {
 
 		boolean oldVisibleInDoc = visibleInDoc;
@@ -509,6 +510,7 @@ public class ComponentPortAllocationEndImpl extends ModelElementImpl implements 
 	 * @generated
 	 */
 
+	@Override
 	public void setVisibleInLM(boolean newVisibleInLM) {
 
 		boolean oldVisibleInLM = visibleInLM;
@@ -541,6 +543,7 @@ public class ComponentPortAllocationEndImpl extends ModelElementImpl implements 
 	 * @generated
 	 */
 
+	@Override
 	public void setSummary(String newSummary) {
 
 		String oldSummary = summary;
@@ -573,6 +576,7 @@ public class ComponentPortAllocationEndImpl extends ModelElementImpl implements 
 	 * @generated
 	 */
 
+	@Override
 	public void setDescription(String newDescription) {
 
 		String oldDescription = description;
@@ -605,6 +609,7 @@ public class ComponentPortAllocationEndImpl extends ModelElementImpl implements 
 	 * @generated
 	 */
 
+	@Override
 	public void setReview(String newReview) {
 
 		String oldReview = review;
@@ -748,6 +753,7 @@ public class ComponentPortAllocationEndImpl extends ModelElementImpl implements 
 	 * @generated
 	 */
 
+	@Override
 	public void setStatus(EnumerationPropertyLiteral newStatus) {
 
 		EnumerationPropertyLiteral oldStatus = status;
@@ -866,6 +872,7 @@ public class ComponentPortAllocationEndImpl extends ModelElementImpl implements 
 	 * @generated
 	 */
 
+	@Override
 	public void setPort(Port newPort) {
 
 		Port oldPort = port;
@@ -919,6 +926,7 @@ public class ComponentPortAllocationEndImpl extends ModelElementImpl implements 
 	 * @generated
 	 */
 
+	@Override
 	public void setPart(Part newPart) {
 
 		Part oldPart = part;
@@ -1269,7 +1277,7 @@ public class ComponentPortAllocationEndImpl extends ModelElementImpl implements 
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (visibleInDoc: "); //$NON-NLS-1$
 		result.append(visibleInDoc);
 		result.append(", visibleInLM: "); //$NON-NLS-1$

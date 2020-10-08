@@ -31,6 +31,7 @@ import org.polarsys.capella.core.data.capellacore.Allocation;
  * @model abstract="true"
  *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='FunctionAllocationToLogicalComponent'"
  *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping metaclass='Dependency' stereotype='eng.FunctionAllocationToLogicalComponent'"
+ *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Ignore"
  *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Base class for deriving specific realization links between exchange specifications and the model elements that realize them.\r\n[source: Capella study]' usage\040guideline='n/a' used\040in\040levels='operational,system,logical,physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='' explanation='none' constraints='none'"
  * @generated

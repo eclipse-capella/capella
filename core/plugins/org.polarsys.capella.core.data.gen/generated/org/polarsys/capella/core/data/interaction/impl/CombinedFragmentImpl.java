@@ -134,6 +134,7 @@ public class CombinedFragmentImpl extends AbstractFragmentImpl implements Combin
 	 * @generated
 	 */
 
+	@Override
 	public void setOperator(InteractionOperatorKind newOperator) {
 
 		InteractionOperatorKind oldOperator = operator;
@@ -298,7 +299,7 @@ public class CombinedFragmentImpl extends AbstractFragmentImpl implements Combin
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (operator: "); //$NON-NLS-1$
 		result.append(operator);
 		result.append(')');

@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.polarsys.capella.common.lib.IdGenerator;
+import org.polarsys.capella.core.data.information.datatype.*;
 import org.polarsys.capella.core.data.information.datatype.BooleanType;
 import org.polarsys.capella.core.data.information.datatype.DatatypeFactory;
 import org.polarsys.capella.core.data.information.datatype.DatatypePackage;
@@ -117,13 +118,11 @@ public class DatatypeFactoryImpl extends EFactoryImpl implements DatatypeFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public BooleanType createBooleanType() {
 		BooleanTypeImpl booleanType = new BooleanTypeImpl();
     //begin-capella-code
-
     booleanType.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return booleanType;
 	}
@@ -133,13 +132,11 @@ public class DatatypeFactoryImpl extends EFactoryImpl implements DatatypeFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Enumeration createEnumeration() {
 		EnumerationImpl enumeration = new EnumerationImpl();
     //begin-capella-code
-
     enumeration.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return enumeration;
 	}
@@ -149,13 +146,11 @@ public class DatatypeFactoryImpl extends EFactoryImpl implements DatatypeFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public StringType createStringType() {
 		StringTypeImpl stringType = new StringTypeImpl();
     //begin-capella-code
-
     stringType.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return stringType;
 	}
@@ -165,13 +160,11 @@ public class DatatypeFactoryImpl extends EFactoryImpl implements DatatypeFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NumericType createNumericType() {
 		NumericTypeImpl numericType = new NumericTypeImpl();
     //begin-capella-code
-
     numericType.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return numericType;
 	}
@@ -181,13 +174,11 @@ public class DatatypeFactoryImpl extends EFactoryImpl implements DatatypeFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PhysicalQuantity createPhysicalQuantity() {
 		PhysicalQuantityImpl physicalQuantity = new PhysicalQuantityImpl();
     //begin-capella-code
-
     physicalQuantity.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return physicalQuantity;
 	}
@@ -217,6 +208,7 @@ public class DatatypeFactoryImpl extends EFactoryImpl implements DatatypeFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DatatypePackage getDatatypePackage() {
 		return (DatatypePackage)getEPackage();
 	}
@@ -240,7 +232,7 @@ public class DatatypeFactoryImpl extends EFactoryImpl implements DatatypeFactory
 	 * @generated
 	 */
 	public BooleanType createBooleanType(String name_p) {
-	  BooleanType booleanType = createBooleanType();
+		BooleanType booleanType = createBooleanType();
 		booleanType.setName(name_p);	  
 		return booleanType;
 	}
@@ -253,7 +245,7 @@ public class DatatypeFactoryImpl extends EFactoryImpl implements DatatypeFactory
 	 * @generated
 	 */
 	public Enumeration createEnumeration(String name_p) {
-	  Enumeration enumeration = createEnumeration();
+		Enumeration enumeration = createEnumeration();
 		enumeration.setName(name_p);	  
 		return enumeration;
 	}
@@ -266,7 +258,7 @@ public class DatatypeFactoryImpl extends EFactoryImpl implements DatatypeFactory
 	 * @generated
 	 */
 	public StringType createStringType(String name_p) {
-	  StringType stringType = createStringType();
+		StringType stringType = createStringType();
 		stringType.setName(name_p);	  
 		return stringType;
 	}
@@ -279,7 +271,7 @@ public class DatatypeFactoryImpl extends EFactoryImpl implements DatatypeFactory
 	 * @generated
 	 */
 	public NumericType createNumericType(String name_p) {
-	  NumericType numericType = createNumericType();
+		NumericType numericType = createNumericType();
 		numericType.setName(name_p);	  
 		return numericType;
 	}
@@ -292,7 +284,7 @@ public class DatatypeFactoryImpl extends EFactoryImpl implements DatatypeFactory
 	 * @generated
 	 */
 	public PhysicalQuantity createPhysicalQuantity(String name_p) {
-	  PhysicalQuantity physicalQuantity = createPhysicalQuantity();
+		PhysicalQuantity physicalQuantity = createPhysicalQuantity();
 		physicalQuantity.setName(name_p);	  
 		return physicalQuantity;
 	}

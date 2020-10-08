@@ -30,6 +30,7 @@ import org.polarsys.capella.core.data.capellacore.Relationship;
  * @see org.polarsys.capella.core.data.cs.CsPackage#getInterfaceUse()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='InterfaceUse'"
  *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping metaclass='Usage' stereotype='eng.InterfaceUse'"
+ *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Ignore"
  *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Mediator class between an interface and its user (typically a Component)\r\n[source: Capella study]' usage\040guideline='n/a' used\040in\040levels='operational,system,logical,physical,epbs' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='uml::Usage' explanation='none' constraints='none'"
  * @generated
@@ -56,6 +57,7 @@ public interface InterfaceUse extends Relationship {
 	 * @model opposite="usedInterfaceLinks" required="true" transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='client' featureOwner='Dependency'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='interfaceUser'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='ownedInterfaceUses'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Component that uses the interface\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Dependency::client' explanation='Derived and transient' constraints='none'"
@@ -85,6 +87,7 @@ public interface InterfaceUse extends Relationship {
 	 * @model required="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='supplier' featureOwner='Dependency'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='usedInterface'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Supplied interface\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Dependency::supplier' explanation='none' constraints='Multiplicity must be [1..1]'"
 	 * @generated

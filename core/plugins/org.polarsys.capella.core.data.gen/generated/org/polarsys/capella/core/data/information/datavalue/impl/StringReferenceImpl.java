@@ -128,6 +128,7 @@ public class StringReferenceImpl extends AbstractStringValueImpl implements Stri
 	 * @generated
 	 */
 
+	@Override
 	public void setReferencedValue(AbstractStringValue newReferencedValue) {
 
 		AbstractStringValue oldReferencedValue = referencedValue;
@@ -181,6 +182,7 @@ public class StringReferenceImpl extends AbstractStringValueImpl implements Stri
 	 * @generated
 	 */
 
+	@Override
 	public void setReferencedProperty(Property newReferencedProperty) {
 
 		Property oldReferencedProperty = referencedProperty;

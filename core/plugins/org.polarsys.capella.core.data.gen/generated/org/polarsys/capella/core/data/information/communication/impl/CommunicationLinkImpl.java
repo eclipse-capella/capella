@@ -507,6 +507,7 @@ public class CommunicationLinkImpl extends ModelElementImpl implements Communica
 	 * @generated
 	 */
 
+	@Override
 	public void setVisibleInDoc(boolean newVisibleInDoc) {
 
 		boolean oldVisibleInDoc = visibleInDoc;
@@ -539,6 +540,7 @@ public class CommunicationLinkImpl extends ModelElementImpl implements Communica
 	 * @generated
 	 */
 
+	@Override
 	public void setVisibleInLM(boolean newVisibleInLM) {
 
 		boolean oldVisibleInLM = visibleInLM;
@@ -571,6 +573,7 @@ public class CommunicationLinkImpl extends ModelElementImpl implements Communica
 	 * @generated
 	 */
 
+	@Override
 	public void setSummary(String newSummary) {
 
 		String oldSummary = summary;
@@ -603,6 +606,7 @@ public class CommunicationLinkImpl extends ModelElementImpl implements Communica
 	 * @generated
 	 */
 
+	@Override
 	public void setDescription(String newDescription) {
 
 		String oldDescription = description;
@@ -635,6 +639,7 @@ public class CommunicationLinkImpl extends ModelElementImpl implements Communica
 	 * @generated
 	 */
 
+	@Override
 	public void setReview(String newReview) {
 
 		String oldReview = review;
@@ -778,6 +783,7 @@ public class CommunicationLinkImpl extends ModelElementImpl implements Communica
 	 * @generated
 	 */
 
+	@Override
 	public void setStatus(EnumerationPropertyLiteral newStatus) {
 
 		EnumerationPropertyLiteral oldStatus = status;
@@ -875,6 +881,7 @@ public class CommunicationLinkImpl extends ModelElementImpl implements Communica
 	 * @generated
 	 */
 
+	@Override
 	public void setKind(CommunicationLinkKind newKind) {
 
 		CommunicationLinkKind oldKind = kind;
@@ -907,6 +914,7 @@ public class CommunicationLinkImpl extends ModelElementImpl implements Communica
 	 * @generated
 	 */
 
+	@Override
 	public void setProtocol(CommunicationLinkProtocol newProtocol) {
 
 		CommunicationLinkProtocol oldProtocol = protocol;
@@ -960,6 +968,7 @@ public class CommunicationLinkImpl extends ModelElementImpl implements Communica
 	 * @generated
 	 */
 
+	@Override
 	public void setExchangeItem(ExchangeItem newExchangeItem) {
 
 		ExchangeItem oldExchangeItem = exchangeItem;
@@ -1256,7 +1265,7 @@ public class CommunicationLinkImpl extends ModelElementImpl implements Communica
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (visibleInDoc: "); //$NON-NLS-1$
 		result.append(visibleInDoc);
 		result.append(", visibleInLM: "); //$NON-NLS-1$

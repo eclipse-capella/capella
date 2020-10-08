@@ -16,6 +16,7 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
+import org.polarsys.capella.common.data.activity.*;
 import org.polarsys.capella.common.data.activity.AbstractAction;
 import org.polarsys.capella.common.data.activity.AbstractActivity;
 import org.polarsys.capella.common.data.activity.AcceptEventAction;

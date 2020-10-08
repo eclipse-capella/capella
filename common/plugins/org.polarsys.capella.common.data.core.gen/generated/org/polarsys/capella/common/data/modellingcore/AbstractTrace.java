@@ -30,6 +30,7 @@ package org.polarsys.capella.common.data.modellingcore;
  * @model interface="true" abstract="true"
  *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='AbstractTrace'"
  *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping metaclass='Dependency'"
+ *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Ignore"
  *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='abstract base class supporting the ability to define a trace relationship between two model elements\r\n[source: Capella study]' usage\040guideline='n/a (Abstract)' used\040in\040levels='operational,system,logical,physical,epbs' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='' explanation='uml::Dependency' constraints='none'"
  * @generated
@@ -55,6 +56,7 @@ public interface AbstractTrace extends TraceableElement {
 	 * @model required="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='supplier' featureOwner='Dependency'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='target'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the target/end of the trace link\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Dependency::supplier' explanation='none' constraints='uml::Dependency::supplier elements on which TraceableElement stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [1..1]\r\n'"
 	 * @generated
@@ -98,6 +100,7 @@ public interface AbstractTrace extends TraceableElement {
 	 * @model required="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='client' featureOwner='Dependency'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='source'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the source/beginning of the trace link\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Dependency::client' explanation='none' constraints='uml::Dependency::client elements on which TraceableElement stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [1..1]'"
 	 * @generated

@@ -99,6 +99,7 @@ public abstract class ReDescriptionElementImpl extends ReNamedElementImpl implem
 	 * @generated
 	 */
 
+	@Override
 	public void setDescription(String newDescription) {
 
 		String oldDescription = description;
@@ -182,7 +183,7 @@ public abstract class ReDescriptionElementImpl extends ReNamedElementImpl implem
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(')');
 		return result.toString();
 	}

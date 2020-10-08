@@ -31,8 +31,10 @@ import org.polarsys.capella.core.data.capellacore.NamedRelationship;
  * @see org.polarsys.capella.core.data.information.InformationPackage#getAssociation()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='Association'"
  *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping metaclass='Association' stereotype='eng.Association'"
+ *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Ignore"
  *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='An association specifies a semantic relationship that can occur between typed instances. It has at least two ends\r\nrepresented by properties, each of which is connected to the type of the end. More than one end of the association may\r\nhave the same type.\r\nAn end property of an association that is owned by an end class or that is a navigable owned end of the association\r\nindicates that the association is navigable from the opposite ends; otherwise, the association is not navigable from the\r\nopposite ends.\r\n[source: UML superstructure v2.2]' usage\040guideline='n/a' used\040in\040levels='n/a' usage\040examples='n/a' constraints='- An association specializing another association has the same number of ends as the other association.\r\nself.parents()-&gt;forAll(p | p.memberEnd.size() = self.memberEnd.size())\r\n- When an association specializes another association, every end of the specific association corresponds to an end of the\r\ngeneral association, and the specific end reaches the same type or a subtype of the more general end.\r\n- endType is derived from the types of the member ends.\r\nself.endType = self.memberEnd-&gt;collect(e | e.type)\r\n- Only binary associations can be aggregations.\r\nself.memberEnd-&gt;exists(aggregation &lt;&gt; Aggregation::none) implies self.memberEnd-&gt;size() = 2\r\n- Association ends of associations with more than two ends must be owned by the association.\r\nif memberEnd-&gt;size() &gt; 2 then ownedEnd-&gt;includesAll(memberEnd)\r\n[source: UML superstructure v2.2]' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='uml::Association' explanation='none' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface Association extends NamedRelationship {
@@ -56,8 +58,10 @@ public interface Association extends NamedRelationship {
 	 * @model containment="true" resolveProxies="true" upper="2"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='memberEnd' featureOwner='Association'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='members'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Each end represents participation of instances of the classifier connected to the end in links of the association.\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Association::ownedEnd, uml::Association::memberEnd' explanation='none' constraints='Multiplicity must be [2..2]'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -84,8 +88,10 @@ public interface Association extends NamedRelationship {
 	 * @model upper="2"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='navigableOwnedEnd' featureOwner='Association'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='navigable'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The navigable ends that are owned by the association itself\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Association::navigableOwnedEnd' explanation='none' constraints='Order must be computed'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

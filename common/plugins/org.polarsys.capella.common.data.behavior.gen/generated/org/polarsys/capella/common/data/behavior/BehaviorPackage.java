@@ -33,6 +33,7 @@ import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
  * @model kind="package"
  *        annotation="http://www.polarsys.org/kitalpha/emde/1.0.0/extension trackResourceModification='true' useUUIDs='false' useIDAttributes='true' extensibleProviderFactory='true' childCreationExtenders='true'"
  *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Behaviour aims at defining the core concepts of behavioural model.\r\n[source: Capella study]' usage\040guideline='none' used\040in\040levels='operational,system,logical,physical,epbs' usage\040examples='none' constraints='This package depends on the model ModellingCore.ecore' comment/notes='none' reference\040documentation='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface BehaviorPackage extends EPackage {

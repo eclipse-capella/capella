@@ -129,6 +129,7 @@ public class CommunityOfInterestCompositionImpl extends NamedElementImpl impleme
 	 * @generated
 	 */
 
+	@Override
 	public void setCommunityOfInterest(CommunityOfInterest newCommunityOfInterest) {
 
 		CommunityOfInterest oldCommunityOfInterest = communityOfInterest;
@@ -182,6 +183,7 @@ public class CommunityOfInterestCompositionImpl extends NamedElementImpl impleme
 	 * @generated
 	 */
 
+	@Override
 	public void setInterestedOrganisationUnit(OrganisationalUnit newInterestedOrganisationUnit) {
 
 		OrganisationalUnit oldInterestedOrganisationUnit = interestedOrganisationUnit;

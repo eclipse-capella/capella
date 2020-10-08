@@ -430,7 +430,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-	 * 
+	 *
 	 * <p>This method is used to initialize {@link CapellacorePackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
@@ -444,7 +444,8 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 		if (isInited) return (CapellacorePackage)EPackage.Registry.INSTANCE.getEPackage(CapellacorePackage.eNS_URI);
 
 		// Obtain or create and register package
-		CapellacorePackageImpl theCapellacorePackage = (CapellacorePackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof CapellacorePackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new CapellacorePackageImpl());
+		Object registeredCapellacorePackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+		CapellacorePackageImpl theCapellacorePackage = registeredCapellacorePackage instanceof CapellacorePackageImpl ? (CapellacorePackageImpl)registeredCapellacorePackage : new CapellacorePackageImpl();
 
 		isInited = true;
 
@@ -455,23 +456,40 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 		BehaviorPackage.eINSTANCE.eClass();
 
 		// Obtain or create and register interdependencies
-		CapellamodellerPackageImpl theCapellamodellerPackage = (CapellamodellerPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(CapellamodellerPackage.eNS_URI) instanceof CapellamodellerPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(CapellamodellerPackage.eNS_URI) : CapellamodellerPackage.eINSTANCE);
-		OaPackageImpl theOaPackage = (OaPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(OaPackage.eNS_URI) instanceof OaPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(OaPackage.eNS_URI) : OaPackage.eINSTANCE);
-		CtxPackageImpl theCtxPackage = (CtxPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(CtxPackage.eNS_URI) instanceof CtxPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(CtxPackage.eNS_URI) : CtxPackage.eINSTANCE);
-		LaPackageImpl theLaPackage = (LaPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(LaPackage.eNS_URI) instanceof LaPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(LaPackage.eNS_URI) : LaPackage.eINSTANCE);
-		PaPackageImpl thePaPackage = (PaPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(PaPackage.eNS_URI) instanceof PaPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(PaPackage.eNS_URI) : PaPackage.eINSTANCE);
-		DeploymentPackageImpl theDeploymentPackage = (DeploymentPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(DeploymentPackage.eNS_URI) instanceof DeploymentPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(DeploymentPackage.eNS_URI) : DeploymentPackage.eINSTANCE);
-		EpbsPackageImpl theEpbsPackage = (EpbsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(EpbsPackage.eNS_URI) instanceof EpbsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(EpbsPackage.eNS_URI) : EpbsPackage.eINSTANCE);
-		SharedmodelPackageImpl theSharedmodelPackage = (SharedmodelPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(SharedmodelPackage.eNS_URI) instanceof SharedmodelPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(SharedmodelPackage.eNS_URI) : SharedmodelPackage.eINSTANCE);
-		RequirementPackageImpl theRequirementPackage = (RequirementPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(RequirementPackage.eNS_URI) instanceof RequirementPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(RequirementPackage.eNS_URI) : RequirementPackage.eINSTANCE);
-		CapellacommonPackageImpl theCapellacommonPackage = (CapellacommonPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(CapellacommonPackage.eNS_URI) instanceof CapellacommonPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(CapellacommonPackage.eNS_URI) : CapellacommonPackage.eINSTANCE);
-		InformationPackageImpl theInformationPackage = (InformationPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(InformationPackage.eNS_URI) instanceof InformationPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(InformationPackage.eNS_URI) : InformationPackage.eINSTANCE);
-		CommunicationPackageImpl theCommunicationPackage = (CommunicationPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(CommunicationPackage.eNS_URI) instanceof CommunicationPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(CommunicationPackage.eNS_URI) : CommunicationPackage.eINSTANCE);
-		DatatypePackageImpl theDatatypePackage = (DatatypePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(DatatypePackage.eNS_URI) instanceof DatatypePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(DatatypePackage.eNS_URI) : DatatypePackage.eINSTANCE);
-		DatavaluePackageImpl theDatavaluePackage = (DatavaluePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(DatavaluePackage.eNS_URI) instanceof DatavaluePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(DatavaluePackage.eNS_URI) : DatavaluePackage.eINSTANCE);
-		CsPackageImpl theCsPackage = (CsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(CsPackage.eNS_URI) instanceof CsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(CsPackage.eNS_URI) : CsPackage.eINSTANCE);
-		FaPackageImpl theFaPackage = (FaPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(FaPackage.eNS_URI) instanceof FaPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(FaPackage.eNS_URI) : FaPackage.eINSTANCE);
-		InteractionPackageImpl theInteractionPackage = (InteractionPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(InteractionPackage.eNS_URI) instanceof InteractionPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(InteractionPackage.eNS_URI) : InteractionPackage.eINSTANCE);
+		Object registeredPackage = EPackage.Registry.INSTANCE.getEPackage(CapellamodellerPackage.eNS_URI);
+		CapellamodellerPackageImpl theCapellamodellerPackage = (CapellamodellerPackageImpl)(registeredPackage instanceof CapellamodellerPackageImpl ? registeredPackage : CapellamodellerPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(OaPackage.eNS_URI);
+		OaPackageImpl theOaPackage = (OaPackageImpl)(registeredPackage instanceof OaPackageImpl ? registeredPackage : OaPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(CtxPackage.eNS_URI);
+		CtxPackageImpl theCtxPackage = (CtxPackageImpl)(registeredPackage instanceof CtxPackageImpl ? registeredPackage : CtxPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(LaPackage.eNS_URI);
+		LaPackageImpl theLaPackage = (LaPackageImpl)(registeredPackage instanceof LaPackageImpl ? registeredPackage : LaPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(PaPackage.eNS_URI);
+		PaPackageImpl thePaPackage = (PaPackageImpl)(registeredPackage instanceof PaPackageImpl ? registeredPackage : PaPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(DeploymentPackage.eNS_URI);
+		DeploymentPackageImpl theDeploymentPackage = (DeploymentPackageImpl)(registeredPackage instanceof DeploymentPackageImpl ? registeredPackage : DeploymentPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(EpbsPackage.eNS_URI);
+		EpbsPackageImpl theEpbsPackage = (EpbsPackageImpl)(registeredPackage instanceof EpbsPackageImpl ? registeredPackage : EpbsPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(SharedmodelPackage.eNS_URI);
+		SharedmodelPackageImpl theSharedmodelPackage = (SharedmodelPackageImpl)(registeredPackage instanceof SharedmodelPackageImpl ? registeredPackage : SharedmodelPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(RequirementPackage.eNS_URI);
+		RequirementPackageImpl theRequirementPackage = (RequirementPackageImpl)(registeredPackage instanceof RequirementPackageImpl ? registeredPackage : RequirementPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(CapellacommonPackage.eNS_URI);
+		CapellacommonPackageImpl theCapellacommonPackage = (CapellacommonPackageImpl)(registeredPackage instanceof CapellacommonPackageImpl ? registeredPackage : CapellacommonPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(InformationPackage.eNS_URI);
+		InformationPackageImpl theInformationPackage = (InformationPackageImpl)(registeredPackage instanceof InformationPackageImpl ? registeredPackage : InformationPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(CommunicationPackage.eNS_URI);
+		CommunicationPackageImpl theCommunicationPackage = (CommunicationPackageImpl)(registeredPackage instanceof CommunicationPackageImpl ? registeredPackage : CommunicationPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(DatatypePackage.eNS_URI);
+		DatatypePackageImpl theDatatypePackage = (DatatypePackageImpl)(registeredPackage instanceof DatatypePackageImpl ? registeredPackage : DatatypePackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(DatavaluePackage.eNS_URI);
+		DatavaluePackageImpl theDatavaluePackage = (DatavaluePackageImpl)(registeredPackage instanceof DatavaluePackageImpl ? registeredPackage : DatavaluePackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(CsPackage.eNS_URI);
+		CsPackageImpl theCsPackage = (CsPackageImpl)(registeredPackage instanceof CsPackageImpl ? registeredPackage : CsPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(FaPackage.eNS_URI);
+		FaPackageImpl theFaPackage = (FaPackageImpl)(registeredPackage instanceof FaPackageImpl ? registeredPackage : FaPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(InteractionPackage.eNS_URI);
+		InteractionPackageImpl theInteractionPackage = (InteractionPackageImpl)(registeredPackage instanceof InteractionPackageImpl ? registeredPackage : InteractionPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theCapellacorePackage.createPackageContents();
@@ -516,7 +534,6 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 		// Mark meta-data to indicate it can't be changed
 		theCapellacorePackage.freeze();
 
-  
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(CapellacorePackage.eNS_URI, theCapellacorePackage);
 		return theCapellacorePackage;
@@ -527,6 +544,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getCapellaElement() {
 		return capellaElementEClass;
 	}
@@ -536,6 +554,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getCapellaElement_Summary() {
 		return (EAttribute)capellaElementEClass.getEStructuralFeatures().get(0);
 	}
@@ -545,6 +564,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getCapellaElement_Description() {
 		return (EAttribute)capellaElementEClass.getEStructuralFeatures().get(1);
 	}
@@ -554,6 +574,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getCapellaElement_Review() {
 		return (EAttribute)capellaElementEClass.getEStructuralFeatures().get(2);
 	}
@@ -563,6 +584,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCapellaElement_OwnedPropertyValues() {
 		return (EReference)capellaElementEClass.getEStructuralFeatures().get(3);
 	}
@@ -572,6 +594,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCapellaElement_OwnedEnumerationPropertyTypes() {
 		return (EReference)capellaElementEClass.getEStructuralFeatures().get(4);
 	}
@@ -581,6 +604,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCapellaElement_AppliedPropertyValues() {
 		return (EReference)capellaElementEClass.getEStructuralFeatures().get(5);
 	}
@@ -590,6 +614,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCapellaElement_OwnedPropertyValueGroups() {
 		return (EReference)capellaElementEClass.getEStructuralFeatures().get(6);
 	}
@@ -599,6 +624,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCapellaElement_AppliedPropertyValueGroups() {
 		return (EReference)capellaElementEClass.getEStructuralFeatures().get(7);
 	}
@@ -608,6 +634,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCapellaElement_Status() {
 		return (EReference)capellaElementEClass.getEStructuralFeatures().get(8);
 	}
@@ -617,6 +644,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCapellaElement_Features() {
 		return (EReference)capellaElementEClass.getEStructuralFeatures().get(9);
 	}
@@ -626,6 +654,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCapellaElement_AppliedRequirements() {
 		return (EReference)capellaElementEClass.getEStructuralFeatures().get(10);
 	}
@@ -635,6 +664,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getNamedElement() {
 		return namedElementEClass;
 	}
@@ -644,6 +674,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getRelationship() {
 		return relationshipEClass;
 	}
@@ -653,6 +684,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getNamespace() {
 		return namespaceEClass;
 	}
@@ -662,6 +694,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getNamespace_OwnedTraces() {
 		return (EReference)namespaceEClass.getEStructuralFeatures().get(0);
 	}
@@ -671,6 +704,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getNamespace_ContainedGenericTraces() {
 		return (EReference)namespaceEClass.getEStructuralFeatures().get(1);
 	}
@@ -680,6 +714,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getNamespace_ContainedRequirementsTraces() {
 		return (EReference)namespaceEClass.getEStructuralFeatures().get(2);
 	}
@@ -689,6 +724,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getNamespace_NamingRules() {
 		return (EReference)namespaceEClass.getEStructuralFeatures().get(3);
 	}
@@ -698,6 +734,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getNamedRelationship() {
 		return namedRelationshipEClass;
 	}
@@ -707,6 +744,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getNamedRelationship_NamingRules() {
 		return (EReference)namedRelationshipEClass.getEStructuralFeatures().get(0);
 	}
@@ -716,6 +754,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getStructure() {
 		return structureEClass;
 	}
@@ -725,6 +764,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getStructure_OwnedPropertyValuePkgs() {
 		return (EReference)structureEClass.getEStructuralFeatures().get(0);
 	}
@@ -734,6 +774,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getAbstractModellingStructure() {
 		return abstractModellingStructureEClass;
 	}
@@ -743,6 +784,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getAbstractModellingStructure_OwnedArchitectures() {
 		return (EReference)abstractModellingStructureEClass.getEStructuralFeatures().get(0);
 	}
@@ -752,6 +794,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getAbstractModellingStructure_OwnedArchitecturePkgs() {
 		return (EReference)abstractModellingStructureEClass.getEStructuralFeatures().get(1);
 	}
@@ -761,6 +804,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getModellingBlock() {
 		return modellingBlockEClass;
 	}
@@ -770,6 +814,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getModellingArchitecture() {
 		return modellingArchitectureEClass;
 	}
@@ -779,6 +824,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getModellingArchitecturePkg() {
 		return modellingArchitecturePkgEClass;
 	}
@@ -788,6 +834,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getType() {
 		return typeEClass;
 	}
@@ -797,6 +844,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getType_TypedElements() {
 		return (EReference)typeEClass.getEStructuralFeatures().get(0);
 	}
@@ -806,6 +854,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getTypedElement() {
 		return typedElementEClass;
 	}
@@ -815,6 +864,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTypedElement_Type() {
 		return (EReference)typedElementEClass.getEStructuralFeatures().get(0);
 	}
@@ -824,6 +874,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getTrace() {
 		return traceEClass;
 	}
@@ -833,6 +884,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getAbstractAnnotation() {
 		return abstractAnnotationEClass;
 	}
@@ -842,6 +894,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getAbstractAnnotation_Content() {
 		return (EAttribute)abstractAnnotationEClass.getEStructuralFeatures().get(0);
 	}
@@ -851,6 +904,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getNamingRule() {
 		return namingRuleEClass;
 	}
@@ -860,6 +914,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getNamingRule_TargetType() {
 		return (EAttribute)namingRuleEClass.getEStructuralFeatures().get(0);
 	}
@@ -869,6 +924,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getConstraint() {
 		return constraintEClass;
 	}
@@ -878,6 +934,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getKeyValue() {
 		return keyValueEClass;
 	}
@@ -887,6 +944,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getKeyValue_Key() {
 		return (EAttribute)keyValueEClass.getEStructuralFeatures().get(0);
 	}
@@ -896,6 +954,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getKeyValue_Value() {
 		return (EAttribute)keyValueEClass.getEStructuralFeatures().get(1);
 	}
@@ -905,6 +964,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getReuseLink() {
 		return reuseLinkEClass;
 	}
@@ -914,6 +974,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getReuseLink_Reused() {
 		return (EReference)reuseLinkEClass.getEStructuralFeatures().get(0);
 	}
@@ -923,6 +984,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getReuseLink_Reuser() {
 		return (EReference)reuseLinkEClass.getEStructuralFeatures().get(1);
 	}
@@ -932,6 +994,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getReuseableStructure() {
 		return reuseableStructureEClass;
 	}
@@ -941,6 +1004,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getReuseableStructure_ReuseLinks() {
 		return (EReference)reuseableStructureEClass.getEStructuralFeatures().get(0);
 	}
@@ -950,6 +1014,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getReuserStructure() {
 		return reuserStructureEClass;
 	}
@@ -959,6 +1024,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getReuserStructure_ReuseLinks() {
 		return (EReference)reuserStructureEClass.getEStructuralFeatures().get(0);
 	}
@@ -968,6 +1034,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getReuserStructure_OwnedReuseLinks() {
 		return (EReference)reuserStructureEClass.getEStructuralFeatures().get(1);
 	}
@@ -977,6 +1044,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getGeneralizableElement() {
 		return generalizableElementEClass;
 	}
@@ -986,6 +1054,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getGeneralizableElement_Abstract() {
 		return (EAttribute)generalizableElementEClass.getEStructuralFeatures().get(0);
 	}
@@ -995,6 +1064,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getGeneralizableElement_OwnedGeneralizations() {
 		return (EReference)generalizableElementEClass.getEStructuralFeatures().get(1);
 	}
@@ -1004,6 +1074,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getGeneralizableElement_SuperGeneralizations() {
 		return (EReference)generalizableElementEClass.getEStructuralFeatures().get(2);
 	}
@@ -1013,6 +1084,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getGeneralizableElement_SubGeneralizations() {
 		return (EReference)generalizableElementEClass.getEStructuralFeatures().get(3);
 	}
@@ -1022,6 +1094,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getGeneralizableElement_Super() {
 		return (EReference)generalizableElementEClass.getEStructuralFeatures().get(4);
 	}
@@ -1031,6 +1104,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getGeneralizableElement_Sub() {
 		return (EReference)generalizableElementEClass.getEStructuralFeatures().get(5);
 	}
@@ -1040,6 +1114,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getClassifier() {
 		return classifierEClass;
 	}
@@ -1049,6 +1124,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getClassifier_OwnedFeatures() {
 		return (EReference)classifierEClass.getEStructuralFeatures().get(0);
 	}
@@ -1058,6 +1134,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getClassifier_ContainedProperties() {
 		return (EReference)classifierEClass.getEStructuralFeatures().get(1);
 	}
@@ -1067,6 +1144,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getGeneralClass() {
 		return generalClassEClass;
 	}
@@ -1076,6 +1154,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getGeneralClass_Visibility() {
 		return (EAttribute)generalClassEClass.getEStructuralFeatures().get(0);
 	}
@@ -1085,6 +1164,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getGeneralClass_ContainedOperations() {
 		return (EReference)generalClassEClass.getEStructuralFeatures().get(1);
 	}
@@ -1094,6 +1174,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getGeneralClass_NestedGeneralClasses() {
 		return (EReference)generalClassEClass.getEStructuralFeatures().get(2);
 	}
@@ -1103,6 +1184,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getGeneralization() {
 		return generalizationEClass;
 	}
@@ -1112,6 +1194,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getGeneralization_Super() {
 		return (EReference)generalizationEClass.getEStructuralFeatures().get(0);
 	}
@@ -1121,6 +1204,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getGeneralization_Sub() {
 		return (EReference)generalizationEClass.getEStructuralFeatures().get(1);
 	}
@@ -1130,6 +1214,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getFeature() {
 		return featureEClass;
 	}
@@ -1139,6 +1224,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getFeature_IsAbstract() {
 		return (EAttribute)featureEClass.getEStructuralFeatures().get(0);
 	}
@@ -1148,6 +1234,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getFeature_IsStatic() {
 		return (EAttribute)featureEClass.getEStructuralFeatures().get(1);
 	}
@@ -1157,6 +1244,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getFeature_Visibility() {
 		return (EAttribute)featureEClass.getEStructuralFeatures().get(2);
 	}
@@ -1166,6 +1254,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getAbstractExchangeItemPkg() {
 		return abstractExchangeItemPkgEClass;
 	}
@@ -1175,6 +1264,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getAbstractExchangeItemPkg_OwnedExchangeItems() {
 		return (EReference)abstractExchangeItemPkgEClass.getEStructuralFeatures().get(0);
 	}
@@ -1184,6 +1274,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getAllocation() {
 		return allocationEClass;
 	}
@@ -1193,6 +1284,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getInvolvement() {
 		return involvementEClass;
 	}
@@ -1202,6 +1294,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getInvolvement_Involver() {
 		return (EReference)involvementEClass.getEStructuralFeatures().get(0);
 	}
@@ -1211,6 +1304,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getInvolvement_Involved() {
 		return (EReference)involvementEClass.getEStructuralFeatures().get(1);
 	}
@@ -1220,6 +1314,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getInvolverElement() {
 		return involverElementEClass;
 	}
@@ -1229,6 +1324,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getInvolverElement_InvolvedInvolvements() {
 		return (EReference)involverElementEClass.getEStructuralFeatures().get(0);
 	}
@@ -1238,6 +1334,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getInvolvedElement() {
 		return involvedElementEClass;
 	}
@@ -1247,6 +1344,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getInvolvedElement_InvolvingInvolvements() {
 		return (EReference)involvedElementEClass.getEStructuralFeatures().get(0);
 	}
@@ -1256,6 +1354,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getAbstractPropertyValue() {
 		return abstractPropertyValueEClass;
 	}
@@ -1265,6 +1364,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getAbstractPropertyValue_InvolvedElements() {
 		return (EReference)abstractPropertyValueEClass.getEStructuralFeatures().get(0);
 	}
@@ -1274,6 +1374,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getAbstractPropertyValue_ValuedElements() {
 		return (EReference)abstractPropertyValueEClass.getEStructuralFeatures().get(1);
 	}
@@ -1283,6 +1384,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getStringPropertyValue() {
 		return stringPropertyValueEClass;
 	}
@@ -1292,6 +1394,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getStringPropertyValue_Value() {
 		return (EAttribute)stringPropertyValueEClass.getEStructuralFeatures().get(0);
 	}
@@ -1301,6 +1404,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getIntegerPropertyValue() {
 		return integerPropertyValueEClass;
 	}
@@ -1310,6 +1414,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getIntegerPropertyValue_Value() {
 		return (EAttribute)integerPropertyValueEClass.getEStructuralFeatures().get(0);
 	}
@@ -1319,6 +1424,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getBooleanPropertyValue() {
 		return booleanPropertyValueEClass;
 	}
@@ -1328,6 +1434,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getBooleanPropertyValue_Value() {
 		return (EAttribute)booleanPropertyValueEClass.getEStructuralFeatures().get(0);
 	}
@@ -1337,6 +1444,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getFloatPropertyValue() {
 		return floatPropertyValueEClass;
 	}
@@ -1346,6 +1454,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getFloatPropertyValue_Value() {
 		return (EAttribute)floatPropertyValueEClass.getEStructuralFeatures().get(0);
 	}
@@ -1355,6 +1464,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getEnumerationPropertyValue() {
 		return enumerationPropertyValueEClass;
 	}
@@ -1364,6 +1474,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getEnumerationPropertyValue_Type() {
 		return (EReference)enumerationPropertyValueEClass.getEStructuralFeatures().get(0);
 	}
@@ -1373,6 +1484,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getEnumerationPropertyValue_Value() {
 		return (EReference)enumerationPropertyValueEClass.getEStructuralFeatures().get(1);
 	}
@@ -1382,6 +1494,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getEnumerationPropertyType() {
 		return enumerationPropertyTypeEClass;
 	}
@@ -1391,6 +1504,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getEnumerationPropertyType_OwnedLiterals() {
 		return (EReference)enumerationPropertyTypeEClass.getEStructuralFeatures().get(0);
 	}
@@ -1400,6 +1514,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getEnumerationPropertyLiteral() {
 		return enumerationPropertyLiteralEClass;
 	}
@@ -1409,6 +1524,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getPropertyValueGroup() {
 		return propertyValueGroupEClass;
 	}
@@ -1418,6 +1534,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getPropertyValueGroup_ValuedElements() {
 		return (EReference)propertyValueGroupEClass.getEStructuralFeatures().get(0);
 	}
@@ -1427,6 +1544,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getPropertyValuePkg() {
 		return propertyValuePkgEClass;
 	}
@@ -1436,6 +1554,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getAbstractDependenciesPkg() {
 		return abstractDependenciesPkgEClass;
 	}
@@ -1445,6 +1564,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getVisibilityKind() {
 		return visibilityKindEEnum;
 	}
@@ -1454,6 +1574,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CapellacoreFactory getCapellacoreFactory() {
 		return (CapellacoreFactory)getEFactoryInstance();
 	}
@@ -1893,224 +2014,224 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * @generated
 	 */
 	protected void createUML2MappingAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/UML2Mapping"; //$NON-NLS-1$	
+		String source = "http://www.polarsys.org/capella/2007/UML2Mapping"; //$NON-NLS-1$
 		addAnnotation
-		  (this, 
-		   source, 
+		  (this,
+		   source,
 		   new String[] {
-			 "profileName", "Capella" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "profileName", "Capella" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (capellaElementEClass, 
-		   source, 
+		  (capellaElementEClass,
+		   source,
 		   new String[] {
-			 "metaclass", "Element", //$NON-NLS-1$ //$NON-NLS-2$
-			 "stereotype", "eng.CapellaElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "metaclass", "Element", //$NON-NLS-1$ //$NON-NLS-2$
+			   "stereotype", "eng.CapellaElement" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (namespaceEClass, 
-		   source, 
+		  (namespaceEClass,
+		   source,
 		   new String[] {
-			 "metaclass", "Namespace" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "metaclass", "Namespace" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getNamespace_OwnedTraces(), 
-		   source, 
+		  (getNamespace_OwnedTraces(),
+		   source,
 		   new String[] {
-			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			   "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getNamespace_NamingRules(), 
-		   source, 
+		  (getNamespace_NamingRules(),
+		   source,
 		   new String[] {
-			 "featureName", "ownedComment", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "Element" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "featureName", "ownedComment", //$NON-NLS-1$ //$NON-NLS-2$
+			   "featureOwner", "Element" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (namedRelationshipEClass, 
-		   source, 
+		  (namedRelationshipEClass,
+		   source,
 		   new String[] {
-			 "metaclass", "Relationship" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "metaclass", "Relationship" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getNamedRelationship_NamingRules(), 
-		   source, 
+		  (getNamedRelationship_NamingRules(),
+		   source,
 		   new String[] {
-			 "featureName", "ownedComment", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "Element" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "featureName", "ownedComment", //$NON-NLS-1$ //$NON-NLS-2$
+			   "featureOwner", "Element" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (structureEClass, 
-		   source, 
+		  (structureEClass,
+		   source,
 		   new String[] {
-			 "metaclass", "Element", //$NON-NLS-1$ //$NON-NLS-2$
-			 "stereotype", "eng.CapellaElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "metaclass", "Element", //$NON-NLS-1$ //$NON-NLS-2$
+			   "stereotype", "eng.CapellaElement" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (typeEClass, 
-		   source, 
+		  (typeEClass,
+		   source,
 		   new String[] {
-			 "metaclass", "Type" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "metaclass", "Type" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (traceEClass, 
-		   source, 
+		  (traceEClass,
+		   source,
 		   new String[] {
-			 "metaclass", "Dependency" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "metaclass", "Dependency" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getAbstractAnnotation_Content(), 
-		   source, 
+		  (getAbstractAnnotation_Content(),
+		   source,
 		   new String[] {
-			 "featureName", "body", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "Comment" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "featureName", "body", //$NON-NLS-1$ //$NON-NLS-2$
+			   "featureOwner", "Comment" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (namingRuleEClass, 
-		   source, 
+		  (namingRuleEClass,
+		   source,
 		   new String[] {
-			 "metaclass", "Comment", //$NON-NLS-1$ //$NON-NLS-2$
-			 "stereotype", "eng.NamingRule" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "metaclass", "Comment", //$NON-NLS-1$ //$NON-NLS-2$
+			   "stereotype", "eng.NamingRule" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getNamingRule_TargetType(), 
-		   source, 
+		  (getNamingRule_TargetType(),
+		   source,
 		   new String[] {
-			 "featureName", "targetType", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "eng.NamingRule", //$NON-NLS-1$ //$NON-NLS-2$
-			 "fromStereotype", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "featureName", "targetType", //$NON-NLS-1$ //$NON-NLS-2$
+			   "featureOwner", "eng.NamingRule", //$NON-NLS-1$ //$NON-NLS-2$
+			   "fromStereotype", "true" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (keyValueEClass, 
-		   source, 
+		  (keyValueEClass,
+		   source,
 		   new String[] {
-			 "metaclass", "Comment", //$NON-NLS-1$ //$NON-NLS-2$
-			 "stereotype", "eng.KeyValue" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "metaclass", "Comment", //$NON-NLS-1$ //$NON-NLS-2$
+			   "stereotype", "eng.KeyValue" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getKeyValue_Key(), 
-		   source, 
+		  (getKeyValue_Key(),
+		   source,
 		   new String[] {
-			 "featureName", "key", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "eng.KeyValue", //$NON-NLS-1$ //$NON-NLS-2$
-			 "fromStereotype", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "featureName", "key", //$NON-NLS-1$ //$NON-NLS-2$
+			   "featureOwner", "eng.KeyValue", //$NON-NLS-1$ //$NON-NLS-2$
+			   "fromStereotype", "true" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getKeyValue_Value(), 
-		   source, 
+		  (getKeyValue_Value(),
+		   source,
 		   new String[] {
-			 "featureName", "body", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "Comment" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "featureName", "body", //$NON-NLS-1$ //$NON-NLS-2$
+			   "featureOwner", "Comment" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (reuseLinkEClass, 
-		   source, 
+		  (reuseLinkEClass,
+		   source,
 		   new String[] {
-			 "metaclass", "Dependency", //$NON-NLS-1$ //$NON-NLS-2$
-			 "stereotype", "eng.ReuseLink" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "metaclass", "Dependency", //$NON-NLS-1$ //$NON-NLS-2$
+			   "stereotype", "eng.ReuseLink" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getReuseLink_Reused(), 
-		   source, 
+		  (getReuseLink_Reused(),
+		   source,
 		   new String[] {
-			 "featureName", "supplier", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "Dependency" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "featureName", "supplier", //$NON-NLS-1$ //$NON-NLS-2$
+			   "featureOwner", "Dependency" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getReuseLink_Reuser(), 
-		   source, 
+		  (getReuseLink_Reuser(),
+		   source,
 		   new String[] {
-			 "featureName", "client", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "Dependency" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "featureName", "client", //$NON-NLS-1$ //$NON-NLS-2$
+			   "featureOwner", "Dependency" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getReuseableStructure_ReuseLinks(), 
-		   source, 
+		  (getReuseableStructure_ReuseLinks(),
+		   source,
 		   new String[] {
-			 "umlOppositeReference", "supplier", //$NON-NLS-1$ //$NON-NLS-2$
-			 "umlOppositeReferenceOwner", "Dependency" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "umlOppositeReference", "supplier", //$NON-NLS-1$ //$NON-NLS-2$
+			   "umlOppositeReferenceOwner", "Dependency" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getReuserStructure_ReuseLinks(), 
-		   source, 
+		  (getReuserStructure_ReuseLinks(),
+		   source,
 		   new String[] {
-			 "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
+			   "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getReuserStructure_OwnedReuseLinks(), 
-		   source, 
+		  (getReuserStructure_OwnedReuseLinks(),
+		   source,
 		   new String[] {
-			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			   "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getGeneralizableElement_Abstract(), 
-		   source, 
+		  (getGeneralizableElement_Abstract(),
+		   source,
 		   new String[] {
-			 "featureName", "isAbstract", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "Classifier" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "featureName", "isAbstract", //$NON-NLS-1$ //$NON-NLS-2$
+			   "featureOwner", "Classifier" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getGeneralizableElement_OwnedGeneralizations(), 
-		   source, 
+		  (getGeneralizableElement_OwnedGeneralizations(),
+		   source,
 		   new String[] {
-			 "featureName", "generalization", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "Classifier" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "featureName", "generalization", //$NON-NLS-1$ //$NON-NLS-2$
+			   "featureOwner", "Classifier" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getGeneralizableElement_SuperGeneralizations(), 
-		   source, 
+		  (getGeneralizableElement_SuperGeneralizations(),
+		   source,
 		   new String[] {
-			 "featureName", "generalization", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "Classifier" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "featureName", "generalization", //$NON-NLS-1$ //$NON-NLS-2$
+			   "featureOwner", "Classifier" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (classifierEClass, 
-		   source, 
+		  (classifierEClass,
+		   source,
 		   new String[] {
-			 "metaclass", "Classifier" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "metaclass", "Classifier" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (generalClassEClass, 
-		   source, 
+		  (generalClassEClass,
+		   source,
 		   new String[] {
-			 "metaclass", "Classifier" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "metaclass", "Classifier" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getGeneralClass_ContainedOperations(), 
-		   source, 
+		  (getGeneralClass_ContainedOperations(),
+		   source,
 		   new String[] {
-			 "featureName", "ownedOperation", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "GeneralClass" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "featureName", "ownedOperation", //$NON-NLS-1$ //$NON-NLS-2$
+			   "featureOwner", "GeneralClass" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getGeneralClass_NestedGeneralClasses(), 
-		   source, 
+		  (getGeneralClass_NestedGeneralClasses(),
+		   source,
 		   new String[] {
-			 "featureName", "nestedClassifier", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "Class" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "featureName", "nestedClassifier", //$NON-NLS-1$ //$NON-NLS-2$
+			   "featureOwner", "Class" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (generalizationEClass, 
-		   source, 
+		  (generalizationEClass,
+		   source,
 		   new String[] {
-			 "metaclass", "Generalization", //$NON-NLS-1$ //$NON-NLS-2$
-			 "stereotype", "eng.Generalization" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "metaclass", "Generalization", //$NON-NLS-1$ //$NON-NLS-2$
+			   "stereotype", "eng.Generalization" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getGeneralization_Super(), 
-		   source, 
+		  (getGeneralization_Super(),
+		   source,
 		   new String[] {
-			 "featureName", "general", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "Generalization" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "featureName", "general", //$NON-NLS-1$ //$NON-NLS-2$
+			   "featureOwner", "Generalization" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (allocationEClass, 
-		   source, 
+		  (allocationEClass,
+		   source,
 		   new String[] {
-			 "metaclass", "Dependency" //$NON-NLS-1$ //$NON-NLS-2$
+			   "metaclass", "Dependency" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 	}
 
@@ -2121,1041 +2242,1041 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * @generated
 	 */
 	protected void createDocumentationAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/ecore/documentation"; //$NON-NLS-1$	
-		addAnnotation
-		  (this, 
-		   source, 
-		   new String[] {
-			 "description", "CapellaCore aims at defining the core concepts of the other languages.\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational,system,logical,physical,epbs", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "This package depends on the model ModellingCore.ecore", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (capellaElementEClass, 
-		   source, 
-		   new String[] {
-			 "description", "A Capella element is a model element that is lockable, has a version and has incoming and outgoing traces, it has a summary and a description.\r\n[source:Capella study]\r\n\r\nA capella element can be compared to an UML element : An element is a constituent of a model.\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "n/a" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getCapellaElement_Summary(), 
-		   source, 
-		   new String[] {
-			 "description", "Summary of the element\r\n[Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "None", //$NON-NLS-1$ //$NON-NLS-2$
-			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getCapellaElement_Description(), 
-		   source, 
-		   new String[] {
-			 "description", "Description of the Capella element\r\n[Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "None", //$NON-NLS-1$ //$NON-NLS-2$
-			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getCapellaElement_Review(), 
-		   source, 
-		   new String[] {
-			 "description", "Review description on the Capella element", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "None", //$NON-NLS-1$ //$NON-NLS-2$
-			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getCapellaElement_OwnedPropertyValues(), 
-		   source, 
-		   new String[] {
-			 "description", "the property values that are contained in this element\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getCapellaElement_OwnedEnumerationPropertyTypes(), 
-		   source, 
-		   new String[] {
-			 "description", "the enumeration property types that are contained in this element\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getCapellaElement_AppliedPropertyValues(), 
-		   source, 
-		   new String[] {
-			 "description", "the property values that are applied on this element (whether they are actually stored under this element or not)\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getCapellaElement_OwnedPropertyValueGroups(), 
-		   source, 
-		   new String[] {
-			 "description", "the property value groups that are stored/contained in this element\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getCapellaElement_AppliedPropertyValueGroups(), 
-		   source, 
-		   new String[] {
-			 "description", "the property value groups that apply to this element (whether or not they are actually stored under this element)\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getCapellaElement_Status(), 
-		   source, 
-		   new String[] {
-			 "description", "the enumeration property literal that applies to this element", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (namedElementEClass, 
-		   source, 
-		   new String[] {
-			 "description", "A named element is a Capella element that has a name\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (relationshipEClass, 
-		   source, 
-		   new String[] {
-			 "description", "Relationship is an abstract concept that specifies some kind of relationship between elements.\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (namespaceEClass, 
-		   source, 
-		   new String[] {
-			 "description", "A namespace is an element in a model that contains a set of named elements that can be identified by name.\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getNamespace_OwnedTraces(), 
-		   source, 
-		   new String[] {
-			 "description", "the trace link contained/stored in this element\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getNamespace_ContainedGenericTraces(), 
-		   source, 
-		   new String[] {
-			 "description", "Link to the set of typed elements which eAttribute type value is the owner type.\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "None", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getNamespace_ContainedRequirementsTraces(), 
-		   source, 
-		   new String[] {
-			 "description", "Link to the set of typed elements which eAttribute type value is the owner type.\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "None", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getNamespace_NamingRules(), 
-		   source, 
-		   new String[] {
-			 "description", "specifications of constraints on the naming of the element\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (namedRelationshipEClass, 
-		   source, 
-		   new String[] {
-			 "description", "A named relationship is a relationship that has a name\r\n[source:Capella study]\r\n\r\nA named relationship can be compared to an UML Association :\r\nAn association specifies a semantic relationship that can occur between typed instances. It has at least two ends\r\nrepresented by properties, each of which is connected to the type of the end. More than one end of the association may\r\nhave the same type.\r\nAn end property of an association that is owned by an end class or that is a navigable owned end of the association\r\nindicates that the association is navigable from the opposite ends; otherwise, the association is not navigable from the\r\nopposite ends.\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getNamedRelationship_NamingRules(), 
-		   source, 
-		   new String[] {
-			 "description", "specifications of constraints applying to the naming of the relationship\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (structureEClass, 
-		   source, 
-		   new String[] {
-			 "description", "The relationships between the components that contribute to the properties of the whole, and enable them to interact (inter-relate).\r\n[source: SysML glossary for SysML v1.0]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a (abstract)", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getStructure_OwnedPropertyValuePkgs(), 
-		   source, 
-		   new String[] {
-			 "description", "Link to packages that contain light extensions property values\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (abstractModellingStructureEClass, 
-		   source, 
-		   new String[] {
-			 "description", "An abstract modelling structure is a base structure for a model.\r\nFor example, a system engineering is an abstract modelling structure.\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "System enginering is an abstract modelling structure\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "None", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getAbstractModellingStructure_OwnedArchitectures(), 
-		   source, 
-		   new String[] {
-			 "description", "the modeling architectures contained in this structure\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getAbstractModellingStructure_OwnedArchitecturePkgs(), 
-		   source, 
-		   new String[] {
-			 "description", "the architecture packages contained in this structure\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (modellingBlockEClass, 
-		   source, 
-		   new String[] {
-			 "description", "A modular unit that describes the structure of a system or element.\r\nA class (or block) that cannot be directly instantiated. Contrast: concrete class.\r\n[source:SysML v1.1]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a (abstract)", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (modellingArchitectureEClass, 
-		   source, 
-		   new String[] {
-			 "description", "the base class supporting the definition of the structure of the model at a given design level.\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a (abstract)", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (modellingArchitecturePkgEClass, 
-		   source, 
-		   new String[] {
-			 "description", "a container for modelling architectures\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (typeEClass, 
-		   source, 
-		   new String[] {
-			 "description", "A type represents a set of values. A typed element that has this type is constrained to represent values within this set.\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a (abstract)", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getType_TypedElements(), 
-		   source, 
-		   new String[] {
-			 "description", "Link to the set of typed elements which eAttribute type value is the owner type.\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "None", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (typedElementEClass, 
-		   source, 
-		   new String[] {
-			 "description", "A typed element is an element that has a type that serves as a constraint on the range of values the element can represent.\r\nTyped element is an abstract metaclass.\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getTypedElement_Type(), 
-		   source, 
-		   new String[] {
-			 "description", "The type of the TypedElement\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (traceEClass, 
-		   source, 
-		   new String[] {
-			 "description", "A dependency that indicates a historical or process relationship between two elements that represent the same concept without specific rules for deriving one from the other. Trace dependencies are used to track requirements and changes across models.\r\n[source: SysML glossary for SysML v1.0]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (abstractAnnotationEClass, 
-		   source, 
-		   new String[] {
-			 "description", "An abstract Annotation can be compared to an UML comment : A comment gives the ability to attach various remarks to elements. A comment carries no semantic force, but may contain information that is useful to a modeler.\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getAbstractAnnotation_Content(), 
-		   source, 
-		   new String[] {
-			 "description", "The textual content of the annotation (free format)\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "None", //$NON-NLS-1$ //$NON-NLS-2$
-			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (namingRuleEClass, 
-		   source, 
-		   new String[] {
-			 "description", "Naming rule to apply to instances which type is equal to targetType", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "this is used whenever there is a need to constraint the naming of a given type of element", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getNamingRule_TargetType(), 
-		   source, 
-		   new String[] {
-			 "description", "Type to which instances the naming rule has to be applied", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (constraintEClass, 
-		   source, 
-		   new String[] {
-			 "description", "A constraint is a condition or restriction expressed in natural language text or in a machine readable language for the purpose of declaring some of the semantics of an element\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (keyValueEClass, 
-		   source, 
-		   new String[] {
-			 "description", "a generic key/value pair used to index data\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getKeyValue_Key(), 
-		   source, 
-		   new String[] {
-			 "description", "(textual) content representing the key\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getKeyValue_Value(), 
-		   source, 
-		   new String[] {
-			 "description", "textual content representing the value associated to the key\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (reuseLinkEClass, 
-		   source, 
-		   new String[] {
-			 "description", "Link of reusability between a reuser and a reused structure\r\n[Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getReuseLink_Reused(), 
-		   source, 
-		   new String[] {
-			 "description", "Link to the structure that is reused\r\n[Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getReuseLink_Reuser(), 
-		   source, 
-		   new String[] {
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "description", "Link to the structure that reuses\r\n[Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (reuseableStructureEClass, 
-		   source, 
-		   new String[] {
-			 "description", "specialization of a structure, to add the semantic of a package that is intended to be reused across various architectures\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getReuseableStructure_ReuseLinks(), 
-		   source, 
-		   new String[] {
-			 "description", "Link to the set of reused links of this structure\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (reuserStructureEClass, 
-		   source, 
-		   new String[] {
-			 "description", "a structure that is capable of leveraging existing other structures to build upon them, i.e. reuse them.\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a (abstract)", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getReuserStructure_ReuseLinks(), 
-		   source, 
-		   new String[] {
-			 "description", "the reuse links that involve this structure\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getReuserStructure_OwnedReuseLinks(), 
-		   source, 
-		   new String[] {
-			 "description", "the reuse links that are stored in this structure (may or may not involve it)\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (generalizableElementEClass, 
-		   source, 
-		   new String[] {
-			 "description", "A generalizable element is an abstract metaclass.\r\nA generalizable element is a type and can own generalizations, thereby making it possible to define generalization relationships to\r\nother generalizable elements.\r\nA generalizable element can specify a generalization hierarchy by referencing its general classifiers.\r\nA generalizable element is a redefinable element, meaning that it is possible to redefine nested classifiers.\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a (abstract)", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getGeneralizableElement_Abstract(), 
-		   source, 
-		   new String[] {
-			 "description", "specifies whether this classifier is abstract or concrete\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getGeneralizableElement_OwnedGeneralizations(), 
-		   source, 
-		   new String[] {
-			 "description", "the links to this classifier\'s parent(s)\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getGeneralizableElement_SuperGeneralizations(), 
-		   source, 
-		   new String[] {
-			 "description", "(automatically computed) the links to this classifier\'s parent(s)\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getGeneralizableElement_SubGeneralizations(), 
-		   source, 
-		   new String[] {
-			 "description", "(automatically computed) the links to this classifier\'s child(ren)\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getGeneralizableElement_Super(), 
-		   source, 
-		   new String[] {
-			 "description", "(automatically computed) parent classifiers\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getGeneralizableElement_Sub(), 
-		   source, 
-		   new String[] {
-			 "description", "(automatically computed) children classifiers\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (classifierEClass, 
-		   source, 
-		   new String[] {
-			 "description", "A classifier is a namespace whose members can include features.\r\nA classifier is an abstract metaclass.\r\nA classifier is a type.\r\nA classifier is a redefinable element, meaning that it is possible to redefine nested classifiers.\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a (abstract)", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getClassifier_OwnedFeatures(), 
-		   source, 
-		   new String[] {
-			 "description", "the features contained in this classifier\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (generalClassEClass, 
-		   source, 
-		   new String[] {
-			 "description", "an abstract concept allowing the nesting of classes in classes\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational, system, logical, physical", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getGeneralClass_Visibility(), 
-		   source, 
-		   new String[] {
-			 "description", "the visibility of this class (refer to VisibilityKind definition)\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "type", "refer to VisibilityKind", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getGeneralClass_ContainedOperations(), 
-		   source, 
-		   new String[] {
-			 "description", "The operations owned by the general class. The association is ordered\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getGeneralClass_NestedGeneralClasses(), 
-		   source, 
-		   new String[] {
-			 "description", "the classes contained/nested into this class\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (generalizationEClass, 
-		   source, 
-		   new String[] {
-			 "description", "A generalization is a taxonomic relationship between a more general classifier and a more specific classifier. Each instance of the specific classifier is also an indirect instance of the general classifier. Thus, the specific classifier inherits the features of the more general classifier.\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "used to declare a parent/child relationship between two classes", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getGeneralization_Super(), 
-		   source, 
-		   new String[] {
-			 "description", "Same as UML Generalization general association : References the general classifier in the Generalization relationship.\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getGeneralization_Sub(), 
-		   source, 
-		   new String[] {
-			 "description", "Same as UML Generalization specific association : References the specializing classifier in the Generalization relationship.\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (featureEClass, 
-		   source, 
-		   new String[] {
-			 "description", "A feature declares a behavioral or structural characteristic of instances of classifiers.\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a (abstract)", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational, system, logical, physical", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getFeature_IsAbstract(), 
-		   source, 
-		   new String[] {
-			 "description", "specifies whether the Feature is abstract or concrete\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "type", "true is Feature is abstract", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getFeature_IsStatic(), 
-		   source, 
-		   new String[] {
-			 "description", "Specifies whether the Feature is static\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "type", "true if Feature is static", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getFeature_Visibility(), 
-		   source, 
-		   new String[] {
-			 "description", "the type of visibility of this feature\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "type", "refer to VisibilityKind", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (abstractExchangeItemPkgEClass, 
-		   source, 
-		   new String[] {
-			 "description", "a container for exchange items\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational, system, logical, physical", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getAbstractExchangeItemPkg_OwnedExchangeItems(), 
-		   source, 
-		   new String[] {
-			 "description", "the exchange items contained in this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (allocationEClass, 
-		   source, 
-		   new String[] {
-			 "description", "Allocation is similar to SysML Allocate concept : It is a mechanism for associating elements of different types, or in\r\ndifferent hierarchies, at an abstract level. Allocate is used for assessing user model consistency and directing future design\r\nactivity. It is expected that an \"allocate\" relationship between model elements is a precursor to a more concrete\r\nrelationship between the elements, their properties, operations, attributes, or sub-classes.\r\n[source:SysML v1.1]", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			 "usage guideline", "Allocation is an abstract concept and cannot be used directly.", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "Allocation is an abstract concept", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (involvementEClass, 
-		   source, 
-		   new String[] {
-			 "description", "Link that denotes some involvement relationship of an element that is involved in another one\r\n[Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getInvolvement_Involver(), 
-		   source, 
-		   new String[] {
-			 "description", "Link to the element that involves\r\n[Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getInvolvement_Involved(), 
-		   source, 
-		   new String[] {
-			 "description", "Link to the element that is involved\r\n[Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (involverElementEClass, 
-		   source, 
-		   new String[] {
-			 "description", "An involver element is a capella element that is, at least, involved in an involvement relationship with the role of the element that involves the other one\r\n[source:Meleody light-like study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getInvolverElement_InvolvedInvolvements(), 
-		   source, 
-		   new String[] {
-			 "description", "Link to the set of involvement relationships for which the element is involved with the role of the element which is involved\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (involvedElementEClass, 
-		   source, 
-		   new String[] {
-			 "description", "An involved element is a capella element that is, at least, involved in an involvement relationship with the role of the element that is involved\r\n[source:Meleody light-like study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getInvolvedElement_InvolvingInvolvements(), 
-		   source, 
-		   new String[] {
-			 "description", "Link to the set of involvement relationships for which the element is involved with the role of the element which involves another one\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (abstractPropertyValueEClass, 
-		   source, 
-		   new String[] {
-			 "description", "It is a way to define extension properties for any capella elements\r\nA property value is a named element that has a value. This value has no specific format, it is described as a string.\r\n[Capella study]\r\n", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getAbstractPropertyValue_InvolvedElements(), 
-		   source, 
-		   new String[] {
-			 "description", "the model elements involved by this property value\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getAbstractPropertyValue_ValuedElements(), 
-		   source, 
-		   new String[] {
-			 "description", "the model elements to which this property value is applied\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (stringPropertyValueEClass, 
-		   source, 
-		   new String[] {
-			 "description", "It is a way to define extension properties for any capella elements\r\nA property value is a named element that has a value. This value has no specific format, it is described as a string.\r\n[Capella study]\r\n", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getStringPropertyValue_Value(), 
-		   source, 
-		   new String[] {
-			 "description", "Value of this property, described in string format\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (integerPropertyValueEClass, 
-		   source, 
-		   new String[] {
-			 "description", "It is a way to define extension properties for any capella elements\r\nA property value is a named element that has a value. This value has no specific format, it is described as a string.\r\n[Capella study]\r\n", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getIntegerPropertyValue_Value(), 
-		   source, 
-		   new String[] {
-			 "description", "Value of this property, described in string format\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (booleanPropertyValueEClass, 
-		   source, 
-		   new String[] {
-			 "description", "It is a way to define extension properties for any capella elements\r\nA property value is a named element that has a value. This value has no specific format, it is described as a string.\r\n[Capella study]\r\n", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getBooleanPropertyValue_Value(), 
-		   source, 
-		   new String[] {
-			 "description", "Value of this property, described in string format\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (floatPropertyValueEClass, 
-		   source, 
-		   new String[] {
-			 "description", "It is a way to define extension properties for any capella elements\r\nA property value is a named element that has a value. This value has no specific format, it is described as a string.\r\n[Capella study]\r\n", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getFloatPropertyValue_Value(), 
-		   source, 
-		   new String[] {
-			 "description", "Value of this property, described in string format\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (enumerationPropertyValueEClass, 
-		   source, 
-		   new String[] {
-			 "description", "It is a way to define extension properties for any capella elements\r\nA property value is a named element that has a value. This value has no specific format, it is described as a string.\r\n[Capella study]\r\n", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getEnumerationPropertyValue_Type(), 
-		   source, 
-		   new String[] {
-			 "description", "Type of this property\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getEnumerationPropertyValue_Value(), 
-		   source, 
-		   new String[] {
-			 "description", "Value of this property, described in string format\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (enumerationPropertyTypeEClass, 
-		   source, 
-		   new String[] {
-			 "description", "It is a way to define extension properties for any capella elements\r\nA property value is a named element that has a value. This value has no specific format, it is described as a string.\r\n[Capella study]\r\n", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getEnumerationPropertyType_OwnedLiterals(), 
-		   source, 
-		   new String[] {
-			 "description", "The literal values that are part of this enumeration\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (enumerationPropertyLiteralEClass, 
-		   source, 
-		   new String[] {
-			 "description", "A literal value, used in an EnumerationPropertyType\r\n[Capella study]\r\n", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (propertyValueGroupEClass, 
-		   source, 
-		   new String[] {
-			 "description", "Package that contain property values\r\n[Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getPropertyValueGroup_ValuedElements(), 
-		   source, 
-		   new String[] {
-			 "description", "the model elements to which this property group is applied\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (propertyValuePkgEClass, 
-		   source, 
-		   new String[] {
-			 "description", "A container for PropertyValues/PropertyValueGroups.\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "Whereas PropertyValueGroups are used to group semantically linked PropertyValues, this container structure can be used more arbitrarily to structure the properties hierarchy in the model", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (abstractDependenciesPkgEClass, 
-		   source, 
-		   new String[] {
-			 "description", "a base class for structures that need to contain dependency links\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a (abstract)", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (visibilityKindEEnum, 
-		   source, 
-		   new String[] {
-			 "description", "enumeration listing the various possibilities regarding the visibility of a feature of a class\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (visibilityKindEEnum.getELiterals().get(0), 
-		   source, 
-		   new String[] {
-			 "description", "used when visibility is not precised\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (visibilityKindEEnum.getELiterals().get(1), 
-		   source, 
-		   new String[] {
-			 "description", "used when the feature offers public access\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (visibilityKindEEnum.getELiterals().get(2), 
-		   source, 
-		   new String[] {
-			 "description", "used when the feature offers restricted visibility, only to children of the class\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (visibilityKindEEnum.getELiterals().get(3), 
-		   source, 
-		   new String[] {
-			 "description", "used when the feature is only visible/accessible from the class itself\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (visibilityKindEEnum.getELiterals().get(4), 
-		   source, 
-		   new String[] {
-			 "description", "used when the feature is accessible from any element stored within the same package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		String source = "http://www.polarsys.org/kitalpha/ecore/documentation"; //$NON-NLS-1$
+		addAnnotation
+		  (this,
+		   source,
+		   new String[] {
+			   "description", "CapellaCore aims at defining the core concepts of the other languages.\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "operational,system,logical,physical,epbs", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "This package depends on the model ModellingCore.ecore", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (capellaElementEClass,
+		   source,
+		   new String[] {
+			   "description", "A Capella element is a model element that is lockable, has a version and has incoming and outgoing traces, it has a summary and a description.\r\n[source:Capella study]\r\n\r\nA capella element can be compared to an UML element : An element is a constituent of a model.\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "n/a" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getCapellaElement_Summary(),
+		   source,
+		   new String[] {
+			   "description", "Summary of the element\r\n[Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "None", //$NON-NLS-1$ //$NON-NLS-2$
+			   "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getCapellaElement_Description(),
+		   source,
+		   new String[] {
+			   "description", "Description of the Capella element\r\n[Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "None", //$NON-NLS-1$ //$NON-NLS-2$
+			   "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getCapellaElement_Review(),
+		   source,
+		   new String[] {
+			   "description", "Review description on the Capella element", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "None", //$NON-NLS-1$ //$NON-NLS-2$
+			   "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getCapellaElement_OwnedPropertyValues(),
+		   source,
+		   new String[] {
+			   "description", "the property values that are contained in this element\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getCapellaElement_OwnedEnumerationPropertyTypes(),
+		   source,
+		   new String[] {
+			   "description", "the enumeration property types that are contained in this element\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getCapellaElement_AppliedPropertyValues(),
+		   source,
+		   new String[] {
+			   "description", "the property values that are applied on this element (whether they are actually stored under this element or not)\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getCapellaElement_OwnedPropertyValueGroups(),
+		   source,
+		   new String[] {
+			   "description", "the property value groups that are stored/contained in this element\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getCapellaElement_AppliedPropertyValueGroups(),
+		   source,
+		   new String[] {
+			   "description", "the property value groups that apply to this element (whether or not they are actually stored under this element)\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getCapellaElement_Status(),
+		   source,
+		   new String[] {
+			   "description", "the enumeration property literal that applies to this element", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (namedElementEClass,
+		   source,
+		   new String[] {
+			   "description", "A named element is a Capella element that has a name\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (relationshipEClass,
+		   source,
+		   new String[] {
+			   "description", "Relationship is an abstract concept that specifies some kind of relationship between elements.\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (namespaceEClass,
+		   source,
+		   new String[] {
+			   "description", "A namespace is an element in a model that contains a set of named elements that can be identified by name.\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getNamespace_OwnedTraces(),
+		   source,
+		   new String[] {
+			   "description", "the trace link contained/stored in this element\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getNamespace_ContainedGenericTraces(),
+		   source,
+		   new String[] {
+			   "description", "Link to the set of typed elements which eAttribute type value is the owner type.\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "None", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getNamespace_ContainedRequirementsTraces(),
+		   source,
+		   new String[] {
+			   "description", "Link to the set of typed elements which eAttribute type value is the owner type.\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "None", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getNamespace_NamingRules(),
+		   source,
+		   new String[] {
+			   "description", "specifications of constraints on the naming of the element\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (namedRelationshipEClass,
+		   source,
+		   new String[] {
+			   "description", "A named relationship is a relationship that has a name\r\n[source:Capella study]\r\n\r\nA named relationship can be compared to an UML Association :\r\nAn association specifies a semantic relationship that can occur between typed instances. It has at least two ends\r\nrepresented by properties, each of which is connected to the type of the end. More than one end of the association may\r\nhave the same type.\r\nAn end property of an association that is owned by an end class or that is a navigable owned end of the association\r\nindicates that the association is navigable from the opposite ends; otherwise, the association is not navigable from the\r\nopposite ends.\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getNamedRelationship_NamingRules(),
+		   source,
+		   new String[] {
+			   "description", "specifications of constraints applying to the naming of the relationship\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (structureEClass,
+		   source,
+		   new String[] {
+			   "description", "The relationships between the components that contribute to the properties of the whole, and enable them to interact (inter-relate).\r\n[source: SysML glossary for SysML v1.0]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "n/a (abstract)", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getStructure_OwnedPropertyValuePkgs(),
+		   source,
+		   new String[] {
+			   "description", "Link to packages that contain light extensions property values\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (abstractModellingStructureEClass,
+		   source,
+		   new String[] {
+			   "description", "An abstract modelling structure is a base structure for a model.\r\nFor example, a system engineering is an abstract modelling structure.\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "System enginering is an abstract modelling structure\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "None", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getAbstractModellingStructure_OwnedArchitectures(),
+		   source,
+		   new String[] {
+			   "description", "the modeling architectures contained in this structure\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getAbstractModellingStructure_OwnedArchitecturePkgs(),
+		   source,
+		   new String[] {
+			   "description", "the architecture packages contained in this structure\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (modellingBlockEClass,
+		   source,
+		   new String[] {
+			   "description", "A modular unit that describes the structure of a system or element.\r\nA class (or block) that cannot be directly instantiated. Contrast: concrete class.\r\n[source:SysML v1.1]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "n/a (abstract)", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (modellingArchitectureEClass,
+		   source,
+		   new String[] {
+			   "description", "the base class supporting the definition of the structure of the model at a given design level.\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "n/a (abstract)", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (modellingArchitecturePkgEClass,
+		   source,
+		   new String[] {
+			   "description", "a container for modelling architectures\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (typeEClass,
+		   source,
+		   new String[] {
+			   "description", "A type represents a set of values. A typed element that has this type is constrained to represent values within this set.\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "n/a (abstract)", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getType_TypedElements(),
+		   source,
+		   new String[] {
+			   "description", "Link to the set of typed elements which eAttribute type value is the owner type.\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "None", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (typedElementEClass,
+		   source,
+		   new String[] {
+			   "description", "A typed element is an element that has a type that serves as a constraint on the range of values the element can represent.\r\nTyped element is an abstract metaclass.\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getTypedElement_Type(),
+		   source,
+		   new String[] {
+			   "description", "The type of the TypedElement\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (traceEClass,
+		   source,
+		   new String[] {
+			   "description", "A dependency that indicates a historical or process relationship between two elements that represent the same concept without specific rules for deriving one from the other. Trace dependencies are used to track requirements and changes across models.\r\n[source: SysML glossary for SysML v1.0]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (abstractAnnotationEClass,
+		   source,
+		   new String[] {
+			   "description", "An abstract Annotation can be compared to an UML comment : A comment gives the ability to attach various remarks to elements. A comment carries no semantic force, but may contain information that is useful to a modeler.\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getAbstractAnnotation_Content(),
+		   source,
+		   new String[] {
+			   "description", "The textual content of the annotation (free format)\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "None", //$NON-NLS-1$ //$NON-NLS-2$
+			   "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (namingRuleEClass,
+		   source,
+		   new String[] {
+			   "description", "Naming rule to apply to instances which type is equal to targetType", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "this is used whenever there is a need to constraint the naming of a given type of element", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getNamingRule_TargetType(),
+		   source,
+		   new String[] {
+			   "description", "Type to which instances the naming rule has to be applied", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (constraintEClass,
+		   source,
+		   new String[] {
+			   "description", "A constraint is a condition or restriction expressed in natural language text or in a machine readable language for the purpose of declaring some of the semantics of an element\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (keyValueEClass,
+		   source,
+		   new String[] {
+			   "description", "a generic key/value pair used to index data\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getKeyValue_Key(),
+		   source,
+		   new String[] {
+			   "description", "(textual) content representing the key\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getKeyValue_Value(),
+		   source,
+		   new String[] {
+			   "description", "textual content representing the value associated to the key\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (reuseLinkEClass,
+		   source,
+		   new String[] {
+			   "description", "Link of reusability between a reuser and a reused structure\r\n[Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getReuseLink_Reused(),
+		   source,
+		   new String[] {
+			   "description", "Link to the structure that is reused\r\n[Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getReuseLink_Reuser(),
+		   source,
+		   new String[] {
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "description", "Link to the structure that reuses\r\n[Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (reuseableStructureEClass,
+		   source,
+		   new String[] {
+			   "description", "specialization of a structure, to add the semantic of a package that is intended to be reused across various architectures\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getReuseableStructure_ReuseLinks(),
+		   source,
+		   new String[] {
+			   "description", "Link to the set of reused links of this structure\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (reuserStructureEClass,
+		   source,
+		   new String[] {
+			   "description", "a structure that is capable of leveraging existing other structures to build upon them, i.e. reuse them.\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "n/a (abstract)", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getReuserStructure_ReuseLinks(),
+		   source,
+		   new String[] {
+			   "description", "the reuse links that involve this structure\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getReuserStructure_OwnedReuseLinks(),
+		   source,
+		   new String[] {
+			   "description", "the reuse links that are stored in this structure (may or may not involve it)\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (generalizableElementEClass,
+		   source,
+		   new String[] {
+			   "description", "A generalizable element is an abstract metaclass.\r\nA generalizable element is a type and can own generalizations, thereby making it possible to define generalization relationships to\r\nother generalizable elements.\r\nA generalizable element can specify a generalization hierarchy by referencing its general classifiers.\r\nA generalizable element is a redefinable element, meaning that it is possible to redefine nested classifiers.\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "n/a (abstract)", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getGeneralizableElement_Abstract(),
+		   source,
+		   new String[] {
+			   "description", "specifies whether this classifier is abstract or concrete\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getGeneralizableElement_OwnedGeneralizations(),
+		   source,
+		   new String[] {
+			   "description", "the links to this classifier\'s parent(s)\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getGeneralizableElement_SuperGeneralizations(),
+		   source,
+		   new String[] {
+			   "description", "(automatically computed) the links to this classifier\'s parent(s)\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getGeneralizableElement_SubGeneralizations(),
+		   source,
+		   new String[] {
+			   "description", "(automatically computed) the links to this classifier\'s child(ren)\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getGeneralizableElement_Super(),
+		   source,
+		   new String[] {
+			   "description", "(automatically computed) parent classifiers\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getGeneralizableElement_Sub(),
+		   source,
+		   new String[] {
+			   "description", "(automatically computed) children classifiers\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (classifierEClass,
+		   source,
+		   new String[] {
+			   "description", "A classifier is a namespace whose members can include features.\r\nA classifier is an abstract metaclass.\r\nA classifier is a type.\r\nA classifier is a redefinable element, meaning that it is possible to redefine nested classifiers.\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "n/a (abstract)", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getClassifier_OwnedFeatures(),
+		   source,
+		   new String[] {
+			   "description", "the features contained in this classifier\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (generalClassEClass,
+		   source,
+		   new String[] {
+			   "description", "an abstract concept allowing the nesting of classes in classes\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "operational, system, logical, physical", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getGeneralClass_Visibility(),
+		   source,
+		   new String[] {
+			   "description", "the visibility of this class (refer to VisibilityKind definition)\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "type", "refer to VisibilityKind", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getGeneralClass_ContainedOperations(),
+		   source,
+		   new String[] {
+			   "description", "The operations owned by the general class. The association is ordered\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getGeneralClass_NestedGeneralClasses(),
+		   source,
+		   new String[] {
+			   "description", "the classes contained/nested into this class\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (generalizationEClass,
+		   source,
+		   new String[] {
+			   "description", "A generalization is a taxonomic relationship between a more general classifier and a more specific classifier. Each instance of the specific classifier is also an indirect instance of the general classifier. Thus, the specific classifier inherits the features of the more general classifier.\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "used to declare a parent/child relationship between two classes", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getGeneralization_Super(),
+		   source,
+		   new String[] {
+			   "description", "Same as UML Generalization general association : References the general classifier in the Generalization relationship.\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getGeneralization_Sub(),
+		   source,
+		   new String[] {
+			   "description", "Same as UML Generalization specific association : References the specializing classifier in the Generalization relationship.\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (featureEClass,
+		   source,
+		   new String[] {
+			   "description", "A feature declares a behavioral or structural characteristic of instances of classifiers.\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "n/a (abstract)", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "operational, system, logical, physical", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getFeature_IsAbstract(),
+		   source,
+		   new String[] {
+			   "description", "specifies whether the Feature is abstract or concrete\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "type", "true is Feature is abstract", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getFeature_IsStatic(),
+		   source,
+		   new String[] {
+			   "description", "Specifies whether the Feature is static\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "type", "true if Feature is static", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getFeature_Visibility(),
+		   source,
+		   new String[] {
+			   "description", "the type of visibility of this feature\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "type", "refer to VisibilityKind", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (abstractExchangeItemPkgEClass,
+		   source,
+		   new String[] {
+			   "description", "a container for exchange items\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "operational, system, logical, physical", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getAbstractExchangeItemPkg_OwnedExchangeItems(),
+		   source,
+		   new String[] {
+			   "description", "the exchange items contained in this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (allocationEClass,
+		   source,
+		   new String[] {
+			   "description", "Allocation is similar to SysML Allocate concept : It is a mechanism for associating elements of different types, or in\r\ndifferent hierarchies, at an abstract level. Allocate is used for assessing user model consistency and directing future design\r\nactivity. It is expected that an \"allocate\" relationship between model elements is a precursor to a more concrete\r\nrelationship between the elements, their properties, operations, attributes, or sub-classes.\r\n[source:SysML v1.1]", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			   "usage guideline", "Allocation is an abstract concept and cannot be used directly.", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "Allocation is an abstract concept", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (involvementEClass,
+		   source,
+		   new String[] {
+			   "description", "Link that denotes some involvement relationship of an element that is involved in another one\r\n[Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getInvolvement_Involver(),
+		   source,
+		   new String[] {
+			   "description", "Link to the element that involves\r\n[Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getInvolvement_Involved(),
+		   source,
+		   new String[] {
+			   "description", "Link to the element that is involved\r\n[Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (involverElementEClass,
+		   source,
+		   new String[] {
+			   "description", "An involver element is a capella element that is, at least, involved in an involvement relationship with the role of the element that involves the other one\r\n[source:Meleody light-like study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getInvolverElement_InvolvedInvolvements(),
+		   source,
+		   new String[] {
+			   "description", "Link to the set of involvement relationships for which the element is involved with the role of the element which is involved\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (involvedElementEClass,
+		   source,
+		   new String[] {
+			   "description", "An involved element is a capella element that is, at least, involved in an involvement relationship with the role of the element that is involved\r\n[source:Meleody light-like study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getInvolvedElement_InvolvingInvolvements(),
+		   source,
+		   new String[] {
+			   "description", "Link to the set of involvement relationships for which the element is involved with the role of the element which involves another one\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (abstractPropertyValueEClass,
+		   source,
+		   new String[] {
+			   "description", "It is a way to define extension properties for any capella elements\r\nA property value is a named element that has a value. This value has no specific format, it is described as a string.\r\n[Capella study]\r\n", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getAbstractPropertyValue_InvolvedElements(),
+		   source,
+		   new String[] {
+			   "description", "the model elements involved by this property value\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getAbstractPropertyValue_ValuedElements(),
+		   source,
+		   new String[] {
+			   "description", "the model elements to which this property value is applied\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (stringPropertyValueEClass,
+		   source,
+		   new String[] {
+			   "description", "It is a way to define extension properties for any capella elements\r\nA property value is a named element that has a value. This value has no specific format, it is described as a string.\r\n[Capella study]\r\n", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getStringPropertyValue_Value(),
+		   source,
+		   new String[] {
+			   "description", "Value of this property, described in string format\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (integerPropertyValueEClass,
+		   source,
+		   new String[] {
+			   "description", "It is a way to define extension properties for any capella elements\r\nA property value is a named element that has a value. This value has no specific format, it is described as a string.\r\n[Capella study]\r\n", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getIntegerPropertyValue_Value(),
+		   source,
+		   new String[] {
+			   "description", "Value of this property, described in string format\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (booleanPropertyValueEClass,
+		   source,
+		   new String[] {
+			   "description", "It is a way to define extension properties for any capella elements\r\nA property value is a named element that has a value. This value has no specific format, it is described as a string.\r\n[Capella study]\r\n", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getBooleanPropertyValue_Value(),
+		   source,
+		   new String[] {
+			   "description", "Value of this property, described in string format\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (floatPropertyValueEClass,
+		   source,
+		   new String[] {
+			   "description", "It is a way to define extension properties for any capella elements\r\nA property value is a named element that has a value. This value has no specific format, it is described as a string.\r\n[Capella study]\r\n", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getFloatPropertyValue_Value(),
+		   source,
+		   new String[] {
+			   "description", "Value of this property, described in string format\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (enumerationPropertyValueEClass,
+		   source,
+		   new String[] {
+			   "description", "It is a way to define extension properties for any capella elements\r\nA property value is a named element that has a value. This value has no specific format, it is described as a string.\r\n[Capella study]\r\n", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getEnumerationPropertyValue_Type(),
+		   source,
+		   new String[] {
+			   "description", "Type of this property\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getEnumerationPropertyValue_Value(),
+		   source,
+		   new String[] {
+			   "description", "Value of this property, described in string format\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (enumerationPropertyTypeEClass,
+		   source,
+		   new String[] {
+			   "description", "It is a way to define extension properties for any capella elements\r\nA property value is a named element that has a value. This value has no specific format, it is described as a string.\r\n[Capella study]\r\n", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getEnumerationPropertyType_OwnedLiterals(),
+		   source,
+		   new String[] {
+			   "description", "The literal values that are part of this enumeration\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (enumerationPropertyLiteralEClass,
+		   source,
+		   new String[] {
+			   "description", "A literal value, used in an EnumerationPropertyType\r\n[Capella study]\r\n", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (propertyValueGroupEClass,
+		   source,
+		   new String[] {
+			   "description", "Package that contain property values\r\n[Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getPropertyValueGroup_ValuedElements(),
+		   source,
+		   new String[] {
+			   "description", "the model elements to which this property group is applied\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (propertyValuePkgEClass,
+		   source,
+		   new String[] {
+			   "description", "A container for PropertyValues/PropertyValueGroups.\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "Whereas PropertyValueGroups are used to group semantically linked PropertyValues, this container structure can be used more arbitrarily to structure the properties hierarchy in the model", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (abstractDependenciesPkgEClass,
+		   source,
+		   new String[] {
+			   "description", "a base class for structures that need to contain dependency links\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "n/a (abstract)", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (visibilityKindEEnum,
+		   source,
+		   new String[] {
+			   "description", "enumeration listing the various possibilities regarding the visibility of a feature of a class\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (visibilityKindEEnum.getELiterals().get(0),
+		   source,
+		   new String[] {
+			   "description", "used when visibility is not precised\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (visibilityKindEEnum.getELiterals().get(1),
+		   source,
+		   new String[] {
+			   "description", "used when the feature offers public access\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (visibilityKindEEnum.getELiterals().get(2),
+		   source,
+		   new String[] {
+			   "description", "used when the feature offers restricted visibility, only to children of the class\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (visibilityKindEEnum.getELiterals().get(3),
+		   source,
+		   new String[] {
+			   "description", "used when the feature is only visible/accessible from the class itself\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (visibilityKindEEnum.getELiterals().get(4),
+		   source,
+		   new String[] {
+			   "description", "used when the feature is accessible from any element stored within the same package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 	}
 
@@ -3166,266 +3287,266 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * @generated
 	 */
 	protected void createSemanticAnnotations() {
-		String source = "http://www.polarsys.org/capella/semantic"; //$NON-NLS-1$	
+		String source = "http://www.polarsys.org/capella/semantic"; //$NON-NLS-1$
 		addAnnotation
-		  (this, 
-		   source, 
+		  (this,
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getCapellaElement_Summary(), 
-		   source, 
+		  (getCapellaElement_Summary(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getCapellaElement_Description(), 
-		   source, 
+		  (getCapellaElement_Description(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getCapellaElement_Review(), 
-		   source, 
+		  (getCapellaElement_Review(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getCapellaElement_OwnedPropertyValues(), 
-		   source, 
+		  (getCapellaElement_OwnedPropertyValues(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getCapellaElement_OwnedEnumerationPropertyTypes(), 
-		   source, 
+		  (getCapellaElement_OwnedEnumerationPropertyTypes(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getCapellaElement_AppliedPropertyValues(), 
-		   source, 
+		  (getCapellaElement_AppliedPropertyValues(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getCapellaElement_OwnedPropertyValueGroups(), 
-		   source, 
+		  (getCapellaElement_OwnedPropertyValueGroups(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getCapellaElement_AppliedPropertyValueGroups(), 
-		   source, 
+		  (getCapellaElement_AppliedPropertyValueGroups(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getCapellaElement_Status(), 
-		   source, 
+		  (getCapellaElement_Status(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getCapellaElement_Features(), 
-		   source, 
+		  (getCapellaElement_Features(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getCapellaElement_AppliedRequirements(), 
-		   source, 
+		  (getCapellaElement_AppliedRequirements(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getNamespace_ContainedGenericTraces(), 
-		   source, 
+		  (getNamespace_ContainedGenericTraces(),
+		   source,
 		   new String[] {
-			 "feature", "ownedTraces" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "feature", "ownedTraces" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getNamespace_ContainedRequirementsTraces(), 
-		   source, 
+		  (getNamespace_ContainedRequirementsTraces(),
+		   source,
 		   new String[] {
-			 "feature", "ownedTraces" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "feature", "ownedTraces" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getStructure_OwnedPropertyValuePkgs(), 
-		   source, 
+		  (getStructure_OwnedPropertyValuePkgs(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getTypedElement_Type(), 
-		   source, 
+		  (getTypedElement_Type(),
+		   source,
 		   new String[] {
-			 "feature", "abstractType" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "feature", "abstractType" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getAbstractAnnotation_Content(), 
-		   source, 
+		  (getAbstractAnnotation_Content(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getNamingRule_TargetType(), 
-		   source, 
+		  (getNamingRule_TargetType(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (constraintEClass, 
-		   source, 
+		  (constraintEClass,
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (keyValueEClass, 
-		   source, 
+		  (keyValueEClass,
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getKeyValue_Key(), 
-		   source, 
+		  (getKeyValue_Key(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getKeyValue_Value(), 
-		   source, 
+		  (getKeyValue_Value(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getGeneralizableElement_Abstract(), 
-		   source, 
+		  (getGeneralizableElement_Abstract(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getGeneralizableElement_Super(), 
-		   source, 
+		  (getGeneralizableElement_Super(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getGeneralizableElement_Sub(), 
-		   source, 
+		  (getGeneralizableElement_Sub(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getClassifier_ContainedProperties(), 
-		   source, 
+		  (getClassifier_ContainedProperties(),
+		   source,
 		   new String[] {
-			 "feature", "ownedFeatures" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "feature", "ownedFeatures" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getGeneralClass_Visibility(), 
-		   source, 
+		  (getGeneralClass_Visibility(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getGeneralClass_ContainedOperations(), 
-		   source, 
+		  (getGeneralClass_ContainedOperations(),
+		   source,
 		   new String[] {
-			 "feature", "ownedFeatures" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "feature", "ownedFeatures" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getGeneralClass_NestedGeneralClasses(), 
-		   source, 
+		  (getGeneralClass_NestedGeneralClasses(),
+		   source,
 		   new String[] {
-			 "feature", "ownedFeatures" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "feature", "ownedFeatures" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getFeature_IsAbstract(), 
-		   source, 
+		  (getFeature_IsAbstract(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getFeature_IsStatic(), 
-		   source, 
+		  (getFeature_IsStatic(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getFeature_Visibility(), 
-		   source, 
+		  (getFeature_Visibility(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getAbstractExchangeItemPkg_OwnedExchangeItems(), 
-		   source, 
+		  (getAbstractExchangeItemPkg_OwnedExchangeItems(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getAbstractPropertyValue_ValuedElements(), 
-		   source, 
+		  (getAbstractPropertyValue_ValuedElements(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (stringPropertyValueEClass, 
-		   source, 
+		  (stringPropertyValueEClass,
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getStringPropertyValue_Value(), 
-		   source, 
+		  (getStringPropertyValue_Value(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (integerPropertyValueEClass, 
-		   source, 
+		  (integerPropertyValueEClass,
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getIntegerPropertyValue_Value(), 
-		   source, 
+		  (getIntegerPropertyValue_Value(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (booleanPropertyValueEClass, 
-		   source, 
+		  (booleanPropertyValueEClass,
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getBooleanPropertyValue_Value(), 
-		   source, 
+		  (getBooleanPropertyValue_Value(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (floatPropertyValueEClass, 
-		   source, 
+		  (floatPropertyValueEClass,
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getFloatPropertyValue_Value(), 
-		   source, 
+		  (getFloatPropertyValue_Value(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (enumerationPropertyValueEClass, 
-		   source, 
+		  (enumerationPropertyValueEClass,
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getEnumerationPropertyValue_Type(), 
-		   source, 
+		  (getEnumerationPropertyValue_Type(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getEnumerationPropertyValue_Value(), 
-		   source, 
+		  (getEnumerationPropertyValue_Value(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (enumerationPropertyTypeEClass, 
-		   source, 
+		  (enumerationPropertyTypeEClass,
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getEnumerationPropertyType_OwnedLiterals(), 
-		   source, 
+		  (getEnumerationPropertyType_OwnedLiterals(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (enumerationPropertyLiteralEClass, 
-		   source, 
+		  (enumerationPropertyLiteralEClass,
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (propertyValueGroupEClass, 
-		   source, 
+		  (propertyValueGroupEClass,
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getPropertyValueGroup_ValuedElements(), 
-		   source, 
+		  (getPropertyValueGroup_ValuedElements(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (propertyValuePkgEClass, 
-		   source, 
+		  (propertyValuePkgEClass,
+		   source,
 		   new String[] {
 		   });
 	}
@@ -3437,16 +3558,16 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * @generated
 	 */
 	protected void createExtensionAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/extension"; //$NON-NLS-1$	
+		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/extension"; //$NON-NLS-1$
 		addAnnotation
-		  (this, 
-		   source, 
+		  (this,
+		   source,
 		   new String[] {
-			 "trackResourceModification", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "useUUIDs", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
+			   "trackResourceModification", "true", //$NON-NLS-1$ //$NON-NLS-2$
+			   "useUUIDs", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			   "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
+			   "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
+			   "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 	}
 
@@ -3457,174 +3578,174 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * @generated
 	 */
 	protected void createBusinessInformationAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/BusinessInformation"; //$NON-NLS-1$	
+		String source = "http://www.polarsys.org/capella/2007/BusinessInformation"; //$NON-NLS-1$
 		addAnnotation
-		  (capellaElementEClass, 
-		   source, 
+		  (capellaElementEClass,
+		   source,
 		   new String[] {
-			 "Label", "CapellaElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "CapellaElement" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (namespaceEClass, 
-		   source, 
+		  (namespaceEClass,
+		   source,
 		   new String[] {
-			 "Label", "Namespace" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "Namespace" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getNamespace_OwnedTraces(), 
-		   source, 
+		  (getNamespace_OwnedTraces(),
+		   source,
 		   new String[] {
-			 "Label", "ownedTraces" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "ownedTraces" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getNamespace_NamingRules(), 
-		   source, 
+		  (getNamespace_NamingRules(),
+		   source,
 		   new String[] {
-			 "Label", "namingRules" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "namingRules" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (namedRelationshipEClass, 
-		   source, 
+		  (namedRelationshipEClass,
+		   source,
 		   new String[] {
-			 "Label", "NamedRelationship" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "NamedRelationship" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getNamedRelationship_NamingRules(), 
-		   source, 
+		  (getNamedRelationship_NamingRules(),
+		   source,
 		   new String[] {
-			 "Label", "namingRules" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "namingRules" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (structureEClass, 
-		   source, 
+		  (structureEClass,
+		   source,
 		   new String[] {
-			 "Label", "Structure" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "Structure" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (typeEClass, 
-		   source, 
+		  (typeEClass,
+		   source,
 		   new String[] {
-			 "Label", "Type" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "Type" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (traceEClass, 
-		   source, 
+		  (traceEClass,
+		   source,
 		   new String[] {
-			 "Label", "Trace" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "Trace" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (abstractAnnotationEClass, 
-		   source, 
+		  (abstractAnnotationEClass,
+		   source,
 		   new String[] {
-			 "Label", "AbstractAnnotation" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "AbstractAnnotation" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (namingRuleEClass, 
-		   source, 
+		  (namingRuleEClass,
+		   source,
 		   new String[] {
-			 "Label", "NamingRule" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "NamingRule" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (keyValueEClass, 
-		   source, 
+		  (keyValueEClass,
+		   source,
 		   new String[] {
-			 "Label", "KeyValue" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "KeyValue" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (reuseLinkEClass, 
-		   source, 
+		  (reuseLinkEClass,
+		   source,
 		   new String[] {
-			 "Label", "ReuseLink" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "ReuseLink" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getReuseLink_Reused(), 
-		   source, 
+		  (getReuseLink_Reused(),
+		   source,
 		   new String[] {
-			 "Label", "sharedPkg" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "sharedPkg" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getReuseLink_Reuser(), 
-		   source, 
+		  (getReuseLink_Reuser(),
+		   source,
 		   new String[] {
-			 "Label", "systemEngineering" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "systemEngineering" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getReuseableStructure_ReuseLinks(), 
-		   source, 
+		  (getReuseableStructure_ReuseLinks(),
+		   source,
 		   new String[] {
-			 "Label", "reuseLinks" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "reuseLinks" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getReuserStructure_ReuseLinks(), 
-		   source, 
+		  (getReuserStructure_ReuseLinks(),
+		   source,
 		   new String[] {
-			 "Label", "reuseLinks" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "reuseLinks" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getReuserStructure_OwnedReuseLinks(), 
-		   source, 
+		  (getReuserStructure_OwnedReuseLinks(),
+		   source,
 		   new String[] {
-			 "Label", "ownedReuseLinks" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "ownedReuseLinks" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getGeneralizableElement_OwnedGeneralizations(), 
-		   source, 
+		  (getGeneralizableElement_OwnedGeneralizations(),
+		   source,
 		   new String[] {
-			 "Label", "superGeneralization" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "superGeneralization" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getGeneralizableElement_SuperGeneralizations(), 
-		   source, 
+		  (getGeneralizableElement_SuperGeneralizations(),
+		   source,
 		   new String[] {
-			 "Label", "superGeneralization" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "superGeneralization" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (classifierEClass, 
-		   source, 
+		  (classifierEClass,
+		   source,
 		   new String[] {
-			 "Label", "Classifier" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "Classifier" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (generalClassEClass, 
-		   source, 
+		  (generalClassEClass,
+		   source,
 		   new String[] {
-			 "Label", "GeneralClass" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "GeneralClass" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getGeneralClass_ContainedOperations(), 
-		   source, 
+		  (getGeneralClass_ContainedOperations(),
+		   source,
 		   new String[] {
-			 "Label", "operations" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "operations" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getGeneralClass_NestedGeneralClasses(), 
-		   source, 
+		  (getGeneralClass_NestedGeneralClasses(),
+		   source,
 		   new String[] {
-			 "Label", "nestedGeneralClasses" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "nestedGeneralClasses" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (generalizationEClass, 
-		   source, 
+		  (generalizationEClass,
+		   source,
 		   new String[] {
-			 "Label", "Generalization" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "Generalization" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getGeneralization_Super(), 
-		   source, 
+		  (getGeneralization_Super(),
+		   source,
 		   new String[] {
-			 "Label", "super" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "super" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (featureEClass, 
-		   source, 
+		  (featureEClass,
+		   source,
 		   new String[] {
-			 "Label", "Feature" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "Feature" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (allocationEClass, 
-		   source, 
+		  (allocationEClass,
+		   source,
 		   new String[] {
-			 "Label", "Allocation" //$NON-NLS-1$ //$NON-NLS-2$
+			   "Label", "Allocation" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 	}
 
@@ -3635,911 +3756,911 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * @generated
 	 */
 	protected void createMappingAnnotations() {
-		String source = "http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping"; //$NON-NLS-1$	
-		addAnnotation
-		  (capellaElementEClass, 
-		   source, 
+		String source = "http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping"; //$NON-NLS-1$
+		addAnnotation
+		  (capellaElementEClass,
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "uml::Element", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getCapellaElement_Summary(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getCapellaElement_Description(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getCapellaElement_Review(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getCapellaElement_OwnedPropertyValues(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Element::ownedComment", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "uml::Element::ownedComment elements on which AbstractPropertyValue stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getCapellaElement_OwnedEnumerationPropertyTypes(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::nearestpackage", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "elements on which EnumerationPropertyType stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getCapellaElement_AppliedPropertyValues(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getCapellaElement_OwnedPropertyValueGroups(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Element::ownedComment", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "uml::Element::ownedComment elements on which PropertyValueGroup stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getCapellaElement_AppliedPropertyValueGroups(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getCapellaElement_Status(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getCapellaElement_Features(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getCapellaElement_AppliedRequirements(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (namedElementEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "uml::NamedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (relationshipEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (namespaceEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "uml::Namespace", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getNamespace_OwnedTraces(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::nearestpackage", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "Some packaged elements of the nearest package on which Trace stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getNamespace_ContainedGenericTraces(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getNamespace_ContainedRequirementsTraces(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getNamespace_NamingRules(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Element::ownedComment", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "uml::Element::ownedComment elements on which NamingRule stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (namedRelationshipEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "uml::Relationship", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getNamedRelationship_NamingRules(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Element::ownedComment", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "uml::Element::ownedComment elements on which NamingRule stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (structureEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getStructure_OwnedPropertyValuePkgs(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "uml::Package::nestedPackage elements on which PropertyValuePkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (abstractModellingStructureEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getAbstractModellingStructure_OwnedArchitectures(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "uml::Package::nestedPackage elements on which ModellingArchitecture stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getAbstractModellingStructure_OwnedArchitecturePkgs(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "uml::Package::nestedPackage elements on which ModellingArchitecturePkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (modellingBlockEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (modellingArchitectureEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (modellingArchitecturePkgEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (typeEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getType_TypedElements(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (typedElementEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getTypedElement_Type(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (traceEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (abstractAnnotationEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "uml::Comment", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getAbstractAnnotation_Content(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::specific", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "uml::Comment::body or creation of an Expression as specification of a uml::Constraint", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (namingRuleEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "uml::Comment", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getNamingRule_TargetType(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (constraintEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "uml::Constraint", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (keyValueEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "uml::Comment", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getKeyValue_Key(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getKeyValue_Value(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Comment::body", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (reuseLinkEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "uml::Dependency", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getReuseLink_Reused(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Dependency::supplier", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "Multiplicity must be [1..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getReuseLink_Reuser(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Dependency::client", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "Multiplicity must be [1..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (reuseableStructureEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getReuseableStructure_ReuseLinks(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Opposite reference of uml::Dependency::supplier", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (reuserStructureEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getReuserStructure_ReuseLinks(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::NamedElement::clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "uml::NamedElement::clientDependency elements on which ReuseLink stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getReuserStructure_OwnedReuseLinks(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "uml::Package::packagedElement elements on which ReuseLink stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (generalizableElementEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "uml::RedefinableElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getGeneralizableElement_Abstract(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Classifier::isAbstract", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getGeneralizableElement_OwnedGeneralizations(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Classifier::generalization", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getGeneralizableElement_SuperGeneralizations(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Classifier::generalization", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getGeneralizableElement_SubGeneralizations(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Opposite reference of uml::Generalization::general", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getGeneralizableElement_Super(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getGeneralizableElement_Sub(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (classifierEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "uml::Classifier", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getClassifier_OwnedFeatures(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Classifier::feature#keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getClassifier_ContainedProperties(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (generalClassEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "uml::Class", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getGeneralClass_Visibility(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::NamedElement::visibility", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getGeneralClass_ContainedOperations(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Class:ownedOperation", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient but mapped to ease the transformation : pick the corresponding containment reference that stores Operations, in uml::Class", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getGeneralClass_NestedGeneralClasses(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::specific", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "uml::Class::nestedClassifier || uml::Interface::nestedClassifier", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (generalizationEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "uml::Generalization", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getGeneralization_Super(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Generalization::general", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getGeneralization_Sub(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Generalization::specific", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (featureEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "uml::Feature", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getFeature_IsAbstract(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::BehavioralFeature::isAbstract", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getFeature_IsStatic(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Feature::isStatic", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getFeature_Visibility(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::NamedElement::visibility", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (abstractExchangeItemPkgEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getAbstractExchangeItemPkg_OwnedExchangeItems(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "uml::Package::packagedElement elements on which AbstractExchangeItem stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (allocationEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "SysML::Allocations::Allocate", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (involvementEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "uml::Dependency", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getInvolvement_Involver(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Dependency::client", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "Multiplicity must be [0..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getInvolvement_Involved(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Dependency::supplier", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "Multiplicity must be [0..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (involverElementEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getInvolverElement_InvolvedInvolvements(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and Transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (involvedElementEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getInvolvedElement_InvolvingInvolvements(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and Transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (abstractPropertyValueEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "uml::Comment", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getAbstractPropertyValue_InvolvedElements(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Comment:annotatedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "uml::Comment::annotatedElement elements on which CapellaElement stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getAbstractPropertyValue_ValuedElements(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (stringPropertyValueEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "uml::Comment", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getStringPropertyValue_Value(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "value will be stored as a stereotype-specific property, of type String", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (integerPropertyValueEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "uml::Comment", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getIntegerPropertyValue_Value(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "value will be stored as a stereotype-specific property, of type Int", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (booleanPropertyValueEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "uml::Comment", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getBooleanPropertyValue_Value(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "value will be stored as a stereotype-specific property, of type Boolean", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (floatPropertyValueEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "uml::Comment", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getFloatPropertyValue_Value(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "value will be stored as a stereotype-specific property, of type Float", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (enumerationPropertyValueEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "uml::Comment", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getEnumerationPropertyValue_Type(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getEnumerationPropertyValue_Value(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "value will be stored as a stereotype-specific property, as a reference to an EnumerationPropertyLiteral", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (enumerationPropertyTypeEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "uml::Enumeration", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getEnumerationPropertyType_OwnedLiterals(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Enumeration::ownedLiteral", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (enumerationPropertyLiteralEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "uml::EnumerationLiteral", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (propertyValueGroupEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "uml::Comment", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getPropertyValueGroup_ValuedElements(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (propertyValuePkgEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (abstractDependenciesPkgEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (visibilityKindEEnum, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::VisibilityKind", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (visibilityKindEEnum.getELiterals().get(0), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (visibilityKindEEnum.getELiterals().get(1), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::VisibilityKind::public", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (visibilityKindEEnum.getELiterals().get(2), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::VisibilityKind::protected", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (visibilityKindEEnum.getELiterals().get(3), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::VisibilityKind::private", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (visibilityKindEEnum.getELiterals().get(4), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::VisibilityKind::private", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "uml::Element", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getCapellaElement_Summary(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getCapellaElement_Description(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getCapellaElement_Review(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getCapellaElement_OwnedPropertyValues(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "uml::Element::ownedComment", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "uml::Element::ownedComment elements on which AbstractPropertyValue stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getCapellaElement_OwnedEnumerationPropertyTypes(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "keyword::nearestpackage", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "elements on which EnumerationPropertyType stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getCapellaElement_AppliedPropertyValues(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getCapellaElement_OwnedPropertyValueGroups(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "uml::Element::ownedComment", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "uml::Element::ownedComment elements on which PropertyValueGroup stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getCapellaElement_AppliedPropertyValueGroups(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getCapellaElement_Status(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getCapellaElement_Features(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getCapellaElement_AppliedRequirements(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (namedElementEClass,
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "uml::NamedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (relationshipEClass,
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (namespaceEClass,
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "uml::Namespace", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getNamespace_OwnedTraces(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "keyword::nearestpackage", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "Some packaged elements of the nearest package on which Trace stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getNamespace_ContainedGenericTraces(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getNamespace_ContainedRequirementsTraces(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getNamespace_NamingRules(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "uml::Element::ownedComment", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "uml::Element::ownedComment elements on which NamingRule stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (namedRelationshipEClass,
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "uml::Relationship", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getNamedRelationship_NamingRules(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "uml::Element::ownedComment", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "uml::Element::ownedComment elements on which NamingRule stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (structureEClass,
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getStructure_OwnedPropertyValuePkgs(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "uml::Package::nestedPackage elements on which PropertyValuePkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (abstractModellingStructureEClass,
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getAbstractModellingStructure_OwnedArchitectures(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "uml::Package::nestedPackage elements on which ModellingArchitecture stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getAbstractModellingStructure_OwnedArchitecturePkgs(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "uml::Package::nestedPackage elements on which ModellingArchitecturePkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (modellingBlockEClass,
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (modellingArchitectureEClass,
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (modellingArchitecturePkgEClass,
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (typeEClass,
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getType_TypedElements(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (typedElementEClass,
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getTypedElement_Type(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (traceEClass,
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (abstractAnnotationEClass,
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "uml::Comment", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getAbstractAnnotation_Content(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "keyword::specific", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "uml::Comment::body or creation of an Expression as specification of a uml::Constraint", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (namingRuleEClass,
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "uml::Comment", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getNamingRule_TargetType(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (constraintEClass,
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "uml::Constraint", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (keyValueEClass,
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "uml::Comment", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getKeyValue_Key(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getKeyValue_Value(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "uml::Comment::body", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (reuseLinkEClass,
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "uml::Dependency", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getReuseLink_Reused(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "uml::Dependency::supplier", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "Multiplicity must be [1..1]" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getReuseLink_Reuser(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "uml::Dependency::client", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "Multiplicity must be [1..1]" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (reuseableStructureEClass,
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getReuseableStructure_ReuseLinks(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "Opposite reference of uml::Dependency::supplier", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (reuserStructureEClass,
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getReuserStructure_ReuseLinks(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "uml::NamedElement::clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "uml::NamedElement::clientDependency elements on which ReuseLink stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getReuserStructure_OwnedReuseLinks(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "uml::Package::packagedElement elements on which ReuseLink stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (generalizableElementEClass,
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "uml::RedefinableElement", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getGeneralizableElement_Abstract(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "uml::Classifier::isAbstract", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getGeneralizableElement_OwnedGeneralizations(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "uml::Classifier::generalization", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getGeneralizableElement_SuperGeneralizations(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "uml::Classifier::generalization", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getGeneralizableElement_SubGeneralizations(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "Opposite reference of uml::Generalization::general", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getGeneralizableElement_Super(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getGeneralizableElement_Sub(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (classifierEClass,
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "uml::Classifier", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getClassifier_OwnedFeatures(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "uml::Classifier::feature#keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getClassifier_ContainedProperties(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (generalClassEClass,
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "uml::Class", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getGeneralClass_Visibility(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "uml::NamedElement::visibility", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getGeneralClass_ContainedOperations(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "uml::Class:ownedOperation", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "Derived and transient but mapped to ease the transformation : pick the corresponding containment reference that stores Operations, in uml::Class", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getGeneralClass_NestedGeneralClasses(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "keyword::specific", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "uml::Class::nestedClassifier || uml::Interface::nestedClassifier", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (generalizationEClass,
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "uml::Generalization", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getGeneralization_Super(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "uml::Generalization::general", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getGeneralization_Sub(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "uml::Generalization::specific", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (featureEClass,
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "uml::Feature", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getFeature_IsAbstract(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "uml::BehavioralFeature::isAbstract", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getFeature_IsStatic(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "uml::Feature::isStatic", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getFeature_Visibility(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "uml::NamedElement::visibility", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (abstractExchangeItemPkgEClass,
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getAbstractExchangeItemPkg_OwnedExchangeItems(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "uml::Package::packagedElement elements on which AbstractExchangeItem stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (allocationEClass,
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "SysML::Allocations::Allocate", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (involvementEClass,
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "uml::Dependency", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getInvolvement_Involver(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "uml::Dependency::client", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "Multiplicity must be [0..1]" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getInvolvement_Involved(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "uml::Dependency::supplier", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "Multiplicity must be [0..1]" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (involverElementEClass,
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getInvolverElement_InvolvedInvolvements(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "Derived and Transient", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (involvedElementEClass,
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getInvolvedElement_InvolvingInvolvements(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "Derived and Transient", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (abstractPropertyValueEClass,
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "uml::Comment", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getAbstractPropertyValue_InvolvedElements(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "uml::Comment:annotatedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "uml::Comment::annotatedElement elements on which CapellaElement stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getAbstractPropertyValue_ValuedElements(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (stringPropertyValueEClass,
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "uml::Comment", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getStringPropertyValue_Value(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "value will be stored as a stereotype-specific property, of type String", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (integerPropertyValueEClass,
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "uml::Comment", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getIntegerPropertyValue_Value(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "value will be stored as a stereotype-specific property, of type Int", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (booleanPropertyValueEClass,
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "uml::Comment", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getBooleanPropertyValue_Value(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "value will be stored as a stereotype-specific property, of type Boolean", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (floatPropertyValueEClass,
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "uml::Comment", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getFloatPropertyValue_Value(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "value will be stored as a stereotype-specific property, of type Float", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (enumerationPropertyValueEClass,
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "uml::Comment", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getEnumerationPropertyValue_Type(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getEnumerationPropertyValue_Value(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "value will be stored as a stereotype-specific property, as a reference to an EnumerationPropertyLiteral", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (enumerationPropertyTypeEClass,
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "uml::Enumeration", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getEnumerationPropertyType_OwnedLiterals(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "uml::Enumeration::ownedLiteral", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (enumerationPropertyLiteralEClass,
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "uml::EnumerationLiteral", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (propertyValueGroupEClass,
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "uml::Comment", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (getPropertyValueGroup_ValuedElements(),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (propertyValuePkgEClass,
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (abstractDependenciesPkgEClass,
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (visibilityKindEEnum,
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "uml::VisibilityKind", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (visibilityKindEEnum.getELiterals().get(0),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (visibilityKindEEnum.getELiterals().get(1),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "uml::VisibilityKind::public", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (visibilityKindEEnum.getELiterals().get(2),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "uml::VisibilityKind::protected", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (visibilityKindEEnum.getELiterals().get(3),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "uml::VisibilityKind::private", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
+		addAnnotation
+		  (visibilityKindEEnum.getELiterals().get(4),
+		   source,
+		   new String[] {
+			   "UML/SysML semantic equivalences", "uml::VisibilityKind::private", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 	}
 
@@ -4550,118 +4671,118 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * @generated
 	 */
 	protected void createDerivedAnnotations() {
-		String source = "http://www.polarsys.org/capella/derived"; //$NON-NLS-1$	
+		String source = "http://www.polarsys.org/capella/derived"; //$NON-NLS-1$
 		addAnnotation
-		  (getCapellaElement_AppliedRequirements(), 
-		   source, 
+		  (getCapellaElement_AppliedRequirements(),
+		   source,
 		   new String[] {
-			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "RequirementsTrace.sourceElement(rt, self);\r\nRequirementsTrace.targetElement(rt, target);" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			   "viatra.expression", "RequirementsTrace.sourceElement(rt, self);\r\nRequirementsTrace.targetElement(rt, target);" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getNamespace_ContainedGenericTraces(), 
-		   source, 
+		  (getNamespace_ContainedGenericTraces(),
+		   source,
 		   new String[] {
-			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "ownedTraces" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			   "viatra.expression", "ownedTraces" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getNamespace_ContainedRequirementsTraces(), 
-		   source, 
+		  (getNamespace_ContainedRequirementsTraces(),
+		   source,
 		   new String[] {
-			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "ownedTraces" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			   "viatra.expression", "ownedTraces" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getType_TypedElements(), 
-		   source, 
+		  (getType_TypedElements(),
+		   source,
 		   new String[] {
-			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "abstractTypedElements" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			   "viatra.expression", "abstractTypedElements" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getTypedElement_Type(), 
-		   source, 
+		  (getTypedElement_Type(),
+		   source,
 		   new String[] {
-			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "abstractType" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			   "viatra.expression", "abstractType" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getGeneralizableElement_SuperGeneralizations(), 
-		   source, 
+		  (getGeneralizableElement_SuperGeneralizations(),
+		   source,
 		   new String[] {
-			 "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "sub" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
+			   "viatra.expression", "sub" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getGeneralizableElement_SubGeneralizations(), 
-		   source, 
+		  (getGeneralizableElement_SubGeneralizations(),
+		   source,
 		   new String[] {
-			 "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "^super" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
+			   "viatra.expression", "^super" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getGeneralizableElement_Super(), 
-		   source, 
+		  (getGeneralizableElement_Super(),
+		   source,
 		   new String[] {
-			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "superGeneralizations.^super" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			   "viatra.expression", "superGeneralizations.^super" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getGeneralizableElement_Sub(), 
-		   source, 
+		  (getGeneralizableElement_Sub(),
+		   source,
 		   new String[] {
-			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "subGeneralizations.sub" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			   "viatra.expression", "subGeneralizations.sub" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getClassifier_ContainedProperties(), 
-		   source, 
+		  (getClassifier_ContainedProperties(),
+		   source,
 		   new String[] {
-			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "ownedFeatures" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			   "viatra.expression", "ownedFeatures" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getGeneralClass_ContainedOperations(), 
-		   source, 
+		  (getGeneralClass_ContainedOperations(),
+		   source,
 		   new String[] {
-			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "ownedFeatures" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			   "viatra.expression", "ownedFeatures" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getInvolvement_Involver(), 
-		   source, 
+		  (getInvolvement_Involver(),
+		   source,
 		   new String[] {
-			 "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "involvedInvolvements" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
+			   "viatra.expression", "involvedInvolvements" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getInvolverElement_InvolvedInvolvements(), 
-		   source, 
+		  (getInvolverElement_InvolvedInvolvements(),
+		   source,
 		   new String[] {
-			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "AbstractCapability.ownedAbstractFunctionAbstractCapabilityInvolvements(self, target);\r\n\t} or {\tAbstractCapability.ownedFunctionalChainAbstractCapabilityInvolvements(self, target);\r\n\t} or {\tCapability.ownedActorCapabilityInvolvements(self, target);\r\n\t} or {\tCapability.ownedSystemCapabilityInvolvement(self, target);\r\n\t} or {\tCapabilityRealization.ownedActorCapabilityRealizations(self, target);\r\n\t} or {\tCapabilityRealization.ownedSystemComponentCapabilityRealizations(self, target);\r\n\t} or {\tOperationalCapability.ownedEntityOperationalCapabilityInvolvements(self, target);\r\n\t} or {\tFunctionalChain.ownedFunctionalChainInvolvements(self, target);\r\n\t} or {\tMission.ownedActorMissionInvolvements(self, target);\r\n\t} or {\tMission.ownedSystemMissionInvolvement(self, target);\r\n\t} or {\tPhysicalPath.ownedPhysicalPathInvolvements(self, target);\r\n" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			   "viatra.expression", "AbstractCapability.ownedAbstractFunctionAbstractCapabilityInvolvements(self, target);\r\n\t} or {\tAbstractCapability.ownedFunctionalChainAbstractCapabilityInvolvements(self, target);\r\n\t} or {\tCapability.ownedActorCapabilityInvolvements(self, target);\r\n\t} or {\tCapability.ownedSystemCapabilityInvolvement(self, target);\r\n\t} or {\tCapabilityRealization.ownedActorCapabilityRealizations(self, target);\r\n\t} or {\tCapabilityRealization.ownedSystemComponentCapabilityRealizations(self, target);\r\n\t} or {\tOperationalCapability.ownedEntityOperationalCapabilityInvolvements(self, target);\r\n\t} or {\tFunctionalChain.ownedFunctionalChainInvolvements(self, target);\r\n\t} or {\tMission.ownedActorMissionInvolvements(self, target);\r\n\t} or {\tMission.ownedSystemMissionInvolvement(self, target);\r\n\t} or {\tPhysicalPath.ownedPhysicalPathInvolvements(self, target);\r\n" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getInvolvedElement_InvolvingInvolvements(), 
-		   source, 
+		  (getInvolvedElement_InvolvingInvolvements(),
+		   source,
 		   new String[] {
-			 "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "involved" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
+			   "viatra.expression", "involved" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getAbstractPropertyValue_ValuedElements(), 
-		   source, 
+		  (getAbstractPropertyValue_ValuedElements(),
+		   source,
 		   new String[] {
-			 "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "appliedPropertyValues" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
+			   "viatra.expression", "appliedPropertyValues" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getPropertyValueGroup_ValuedElements(), 
-		   source, 
+		  (getPropertyValueGroup_ValuedElements(),
+		   source,
 		   new String[] {
-			 "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "appliedPropertyValueGroups" //$NON-NLS-1$ //$NON-NLS-2$
+			   "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
+			   "viatra.expression", "appliedPropertyValueGroups" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 	}
 
@@ -4672,60 +4793,60 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * @generated
 	 */
 	protected void createSegmentAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"; //$NON-NLS-1$	
+		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"; //$NON-NLS-1$
 		addAnnotation
-		  (getNamespace_OwnedTraces(), 
-		   source, 
+		  (getNamespace_OwnedTraces(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getReuseLink_Reused(), 
-		   source, 
+		  (getReuseLink_Reused(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getReuseLink_Reuser(), 
-		   source, 
+		  (getReuseLink_Reuser(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getReuseableStructure_ReuseLinks(), 
-		   source, 
+		  (getReuseableStructure_ReuseLinks(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getReuserStructure_ReuseLinks(), 
-		   source, 
+		  (getReuserStructure_ReuseLinks(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getReuserStructure_OwnedReuseLinks(), 
-		   source, 
+		  (getReuserStructure_OwnedReuseLinks(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getGeneralizableElement_OwnedGeneralizations(), 
-		   source, 
+		  (getGeneralizableElement_OwnedGeneralizations(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getGeneralizableElement_SuperGeneralizations(), 
-		   source, 
+		  (getGeneralizableElement_SuperGeneralizations(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getGeneralClass_ContainedOperations(), 
-		   source, 
+		  (getGeneralClass_ContainedOperations(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getGeneralClass_NestedGeneralClasses(), 
-		   source, 
+		  (getGeneralClass_NestedGeneralClasses(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getGeneralization_Super(), 
-		   source, 
+		  (getGeneralization_Super(),
+		   source,
 		   new String[] {
 		   });
 	}
@@ -4737,25 +4858,25 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * @generated
 	 */
 	protected void createIgnoreAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Ignore"; //$NON-NLS-1$	
+		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Ignore"; //$NON-NLS-1$
 		addAnnotation
-		  (traceEClass, 
-		   source, 
+		  (traceEClass,
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (reuseLinkEClass, 
-		   source, 
+		  (reuseLinkEClass,
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (generalizationEClass, 
-		   source, 
+		  (generalizationEClass,
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (allocationEClass, 
-		   source, 
+		  (allocationEClass,
+		   source,
 		   new String[] {
 		   });
 	}

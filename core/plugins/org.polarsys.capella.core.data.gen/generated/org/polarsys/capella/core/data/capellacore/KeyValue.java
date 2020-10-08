@@ -31,6 +31,7 @@ package org.polarsys.capella.core.data.capellacore;
  *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping metaclass='Comment' stereotype='eng.KeyValue'"
  *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='a generic key/value pair used to index data\r\n[source: Capella study]' usage\040guideline='n/a' used\040in\040levels='operational, system, logical, physical, epbs' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='uml::Comment' explanation='none' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface KeyValue extends CapellaElement {
@@ -54,6 +55,7 @@ public interface KeyValue extends CapellaElement {
 	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='key' featureOwner='eng.KeyValue' fromStereotype='true'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(textual) content representing the key\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -95,6 +97,7 @@ public interface KeyValue extends CapellaElement {
 	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='body' featureOwner='Comment'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='textual content representing the value associated to the key\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Comment::body' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

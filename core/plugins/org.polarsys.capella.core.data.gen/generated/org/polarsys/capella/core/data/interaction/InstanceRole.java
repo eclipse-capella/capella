@@ -34,6 +34,7 @@ import org.polarsys.capella.core.data.information.AbstractInstance;
  *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping metaclass='Lifeline' stereotype='eng.InstanceRole'"
  *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Instance role can be compared to UML Lifeline : A lifeline represents an individual participant in the Interaction.\r\n[source:UML Superstructure v2.2]' usage\040guideline='n/a' used\040in\040levels='operational, system, logical, physical' usage\040examples='../img/usage_examples/example_instancerole.png' constraints='none' comment/notes='May be renamed Lifeline' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='uml::Lifeline' explanation='none' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface InstanceRole extends NamedElement {
@@ -59,6 +60,7 @@ public interface InstanceRole extends NamedElement {
 	 * @model opposite="covered" transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='coveredBy' featureOwner='Lifeline'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='abstractEnds'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the start/end points of interactions that are attached to this lifeline\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Lifeline::coveredBy' explanation='none' constraints='Order must be computed'"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='covered'"
@@ -88,8 +90,10 @@ public interface InstanceRole extends NamedElement {
 	 * @model required="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='represents' featureOwner='Lifeline'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='representedInstance'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the instance that this lifeline represents the activity of\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Lifeline::represents' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

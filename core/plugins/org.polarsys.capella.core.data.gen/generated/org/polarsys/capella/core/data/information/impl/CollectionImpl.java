@@ -394,6 +394,7 @@ public class CollectionImpl extends ClassifierImpl implements Collection {
 	 * @generated
 	 */
 
+	@Override
 	public void setOrdered(boolean newOrdered) {
 
 		boolean oldOrdered = ordered;
@@ -420,6 +421,7 @@ public class CollectionImpl extends ClassifierImpl implements Collection {
 	 * @generated
 	 */
 
+	@Override
 	public void setUnique(boolean newUnique) {
 
 		boolean oldUnique = unique;
@@ -446,6 +448,7 @@ public class CollectionImpl extends ClassifierImpl implements Collection {
 	 * @generated
 	 */
 
+	@Override
 	public void setMinInclusive(boolean newMinInclusive) {
 
 		boolean oldMinInclusive = minInclusive;
@@ -472,6 +475,7 @@ public class CollectionImpl extends ClassifierImpl implements Collection {
 	 * @generated
 	 */
 
+	@Override
 	public void setMaxInclusive(boolean newMaxInclusive) {
 
 		boolean oldMaxInclusive = maxInclusive;
@@ -516,6 +520,7 @@ public class CollectionImpl extends ClassifierImpl implements Collection {
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedDefaultValue(DataValue newOwnedDefaultValue) {
 
 		if (newOwnedDefaultValue != ownedDefaultValue) {
@@ -567,6 +572,7 @@ public class CollectionImpl extends ClassifierImpl implements Collection {
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedMinValue(DataValue newOwnedMinValue) {
 
 		if (newOwnedMinValue != ownedMinValue) {
@@ -618,6 +624,7 @@ public class CollectionImpl extends ClassifierImpl implements Collection {
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedMaxValue(DataValue newOwnedMaxValue) {
 
 		if (newOwnedMaxValue != ownedMaxValue) {
@@ -669,6 +676,7 @@ public class CollectionImpl extends ClassifierImpl implements Collection {
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedNullValue(DataValue newOwnedNullValue) {
 
 		if (newOwnedNullValue != ownedNullValue) {
@@ -720,6 +728,7 @@ public class CollectionImpl extends ClassifierImpl implements Collection {
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedMinCard(NumericValue newOwnedMinCard) {
 
 		if (newOwnedMinCard != ownedMinCard) {
@@ -771,6 +780,7 @@ public class CollectionImpl extends ClassifierImpl implements Collection {
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedMinLength(NumericValue newOwnedMinLength) {
 
 		if (newOwnedMinLength != ownedMinLength) {
@@ -822,6 +832,7 @@ public class CollectionImpl extends ClassifierImpl implements Collection {
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedMaxCard(NumericValue newOwnedMaxCard) {
 
 		if (newOwnedMaxCard != ownedMaxCard) {
@@ -873,6 +884,7 @@ public class CollectionImpl extends ClassifierImpl implements Collection {
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedMaxLength(NumericValue newOwnedMaxLength) {
 
 		if (newOwnedMaxLength != ownedMaxLength) {
@@ -934,6 +946,7 @@ public class CollectionImpl extends ClassifierImpl implements Collection {
 	 * @generated
 	 */
 
+	@Override
 	public void setFinal(boolean newFinal) {
 
 		boolean oldFinal = final_;
@@ -960,6 +973,7 @@ public class CollectionImpl extends ClassifierImpl implements Collection {
 	 * @generated
 	 */
 
+	@Override
 	public void setIsPrimitive(boolean newIsPrimitive) {
 
 		boolean oldIsPrimitive = isPrimitive;
@@ -986,6 +1000,7 @@ public class CollectionImpl extends ClassifierImpl implements Collection {
 	 * @generated
 	 */
 
+	@Override
 	public void setVisibility(VisibilityKind newVisibility) {
 
 		VisibilityKind oldVisibility = visibility;
@@ -1012,6 +1027,7 @@ public class CollectionImpl extends ClassifierImpl implements Collection {
 	 * @generated
 	 */
 
+	@Override
 	public void setKind(CollectionKind newKind) {
 
 		CollectionKind oldKind = kind;
@@ -1038,6 +1054,7 @@ public class CollectionImpl extends ClassifierImpl implements Collection {
 	 * @generated
 	 */
 
+	@Override
 	public void setAggregationKind(AggregationKind newAggregationKind) {
 
 		AggregationKind oldAggregationKind = aggregationKind;
@@ -1083,6 +1100,7 @@ public class CollectionImpl extends ClassifierImpl implements Collection {
 	 * @generated
 	 */
 
+	@Override
 	public void setType(Type newType) {
 
 		Type oldType = type;
@@ -1546,7 +1564,7 @@ public class CollectionImpl extends ClassifierImpl implements Collection {
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (ordered: "); //$NON-NLS-1$
 		result.append(ordered);
 		result.append(", unique: "); //$NON-NLS-1$

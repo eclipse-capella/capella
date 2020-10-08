@@ -35,6 +35,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model interface="true" abstract="true"
  *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used to uniquely identify a link between involvement functions when their functional chain is referenced more than once.\r\n[source: Capella study]' usage\040guideline='n/a' used\040in\040levels='operational,system,logical,physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 
@@ -58,6 +59,7 @@ public interface ReferenceHierarchyContext extends EObject {
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getReferenceHierarchyContext_SourceReferenceHierarchy()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used to uniquely identify the source of a link between involvement functions when their functional chain is referenced more than once.\r\n[source: Capella study]' usage\040guideline='n/a' used\040in\040levels='operational,system,logical,physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -83,6 +85,7 @@ public interface ReferenceHierarchyContext extends EObject {
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getReferenceHierarchyContext_TargetReferenceHierarchy()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used to uniquely identify the target of a link between involvement functions when their functional chain is referenced more than once.\r\n[source: Capella study]' usage\040guideline='n/a' used\040in\040levels='operational,system,logical,physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

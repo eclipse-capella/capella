@@ -33,7 +33,7 @@ import org.polarsys.capella.core.data.information.ExchangeItemElement;
  * </ul>
  *
  * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getSequenceMessageValuation()
- * @model
+ * @model annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 
@@ -55,7 +55,7 @@ public interface SequenceMessageValuation extends CapellaElement {
 	 * @return the value of the '<em>Exchange Item Element</em>' reference.
 	 * @see #setExchangeItemElement(ExchangeItemElement)
 	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getSequenceMessageValuation_ExchangeItemElement()
-	 * @model
+	 * @model annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -94,7 +94,7 @@ public interface SequenceMessageValuation extends CapellaElement {
 	 * @return the value of the '<em>Value</em>' reference.
 	 * @see #setValue(ValueSpecification)
 	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getSequenceMessageValuation_Value()
-	 * @model
+	 * @model annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

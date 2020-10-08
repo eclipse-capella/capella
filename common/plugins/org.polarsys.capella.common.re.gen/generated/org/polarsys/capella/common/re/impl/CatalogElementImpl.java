@@ -396,6 +396,7 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
 	 * @generated
 	 */
 
+	@Override
 	public void setKind(CatalogElementKind newKind) {
 
 		CatalogElementKind oldKind = kind;
@@ -428,6 +429,7 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
 	 * @generated
 	 */
 
+	@Override
 	public void setAuthor(String newAuthor) {
 
 		String oldAuthor = author;
@@ -460,6 +462,7 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
 	 * @generated
 	 */
 
+	@Override
 	public void setEnvironment(String newEnvironment) {
 
 		String oldEnvironment = environment;
@@ -491,7 +494,8 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
 	 * @generated
 	 */
 
-  public void setSuffix(String newSuffix) {
+  @Override
+		public void setSuffix(String newSuffix) {
 
 		String oldSuffix = suffix;
 		suffix = newSuffix;
@@ -517,6 +521,7 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
 	 * @generated
 	 */
 
+	@Override
 	public void setPurpose(String newPurpose) {
 
 		String oldPurpose = purpose;
@@ -543,6 +548,7 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
 	 * @generated
 	 */
 
+	@Override
 	public void setReadOnly(boolean newReadOnly) {
 
 		boolean oldReadOnly = readOnly;
@@ -569,6 +575,7 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
 	 * @generated
 	 */
 
+	@Override
 	public void setVersion(String newVersion) {
 
 		String oldVersion = version;
@@ -635,6 +642,7 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
 	 * @generated
 	 */
 
+	@Override
 	public void setOrigin(CatalogElement newOrigin) {
 
 		CatalogElement oldOrigin = origin;
@@ -688,6 +696,7 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
 	 * @generated
 	 */
 
+	@Override
 	public void setCurrentCompliancy(CompliancyDefinition newCurrentCompliancy) {
 
 		CompliancyDefinition oldCurrentCompliancy = currentCompliancy;
@@ -741,6 +750,7 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
 	 * @generated
 	 */
 
+	@Override
 	public void setDefaultReplicaCompliancy(CompliancyDefinition newDefaultReplicaCompliancy) {
 
 		CompliancyDefinition oldDefaultReplicaCompliancy = defaultReplicaCompliancy;
@@ -1111,7 +1121,7 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (kind: "); //$NON-NLS-1$
 		result.append(kind);
 		result.append(", author: "); //$NON-NLS-1$

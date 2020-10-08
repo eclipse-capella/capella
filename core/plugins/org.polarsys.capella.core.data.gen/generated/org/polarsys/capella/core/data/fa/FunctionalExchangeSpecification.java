@@ -29,6 +29,7 @@ import org.eclipse.emf.common.util.EList;
  * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalExchangeSpecification()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='Functional Exchange Specification'"
  *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping metaclass='Connector' stereotype='eng.Exchange'"
+ *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Ignore"
  *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='a specialized version of an exchange specification, dedicated to specify exchanges between two functions of the system\r\n[source: Capella study]' usage\040guideline='n/a' used\040in\040levels='operational,system,logical,physical,epbs' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='uml::InformationFlow' explanation='none' constraints='none'"
  * @generated

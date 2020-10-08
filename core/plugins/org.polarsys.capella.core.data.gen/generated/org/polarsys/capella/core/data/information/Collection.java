@@ -43,6 +43,7 @@ import org.polarsys.capella.core.data.information.datavalue.DataValueContainer;
  *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping metaclass='Component' stereotype='eng.Collection'"
  *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='A set of items of a given type.\r\n[source: Capella study]' usage\040guideline='n/a' used\040in\040levels='n/a' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='uml::DataType' explanation='DataType chosen because it has a containment reference to Operations, which is required to simplify the transformation of Collection::operations derived reference' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface Collection extends Classifier, MultiplicityElement, DataValueContainer, FinalizableElement {
@@ -65,6 +66,7 @@ public interface Collection extends Classifier, MultiplicityElement, DataValueCo
 	 * @see org.polarsys.capella.core.data.information.InformationPackage#getCollection_IsPrimitive()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='indicates whether this collection is a first level assembly using native types, or if it is using previously defined Collections \r\n[source: Capella study]' constraints='none' type='true if the Collection is not assembling other Collections' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -107,6 +109,7 @@ public interface Collection extends Classifier, MultiplicityElement, DataValueCo
 	 * @see org.polarsys.capella.core.data.information.InformationPackage#getCollection_Visibility()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies the visibility status for this collection\r\n[source: Capella study]' constraints='none' type='Refer to VisibilityKind definition' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::NamedElement::visibility' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -150,6 +153,7 @@ public interface Collection extends Classifier, MultiplicityElement, DataValueCo
 	 * @see org.polarsys.capella.core.data.information.InformationPackage#getCollection_Kind()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies the kind status for this collection' constraints='none' type='Refer to CollectionKind definition' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -193,6 +197,7 @@ public interface Collection extends Classifier, MultiplicityElement, DataValueCo
 	 * @see org.polarsys.capella.core.data.information.InformationPackage#getCollection_AggregationKind()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specifies the kind of aggregation that applies to the Collection' constraints='none' type='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -235,6 +240,7 @@ public interface Collection extends Classifier, MultiplicityElement, DataValueCo
 	 * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='type'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the type of the elements being collected\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -275,6 +281,7 @@ public interface Collection extends Classifier, MultiplicityElement, DataValueCo
 	 * @see org.polarsys.capella.core.data.information.InformationPackage#getCollection_Index()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='index pointing to a specific part of this collection \r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -301,6 +308,7 @@ public interface Collection extends Classifier, MultiplicityElement, DataValueCo
 	 * @model resolveProxies="false" transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='ownedOperation' featureOwner='Class'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='operations'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedFeatures'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The operations associated to this collection\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::DataType::ownedOperation' explanation='none' constraints='none'"

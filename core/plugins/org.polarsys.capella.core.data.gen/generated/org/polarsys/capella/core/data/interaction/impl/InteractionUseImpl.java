@@ -129,6 +129,7 @@ public class InteractionUseImpl extends AbstractFragmentImpl implements Interact
 	 * @generated
 	 */
 
+	@Override
 	public void setReferencedScenario(Scenario newReferencedScenario) {
 
 		Scenario oldReferencedScenario = referencedScenario;

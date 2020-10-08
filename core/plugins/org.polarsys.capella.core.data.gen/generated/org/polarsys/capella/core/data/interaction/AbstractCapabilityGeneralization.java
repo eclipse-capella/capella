@@ -30,6 +30,7 @@ import org.polarsys.capella.core.data.capellacore.Relationship;
  * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractCapabilityGeneralization()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='AbstractCapabilityGeneralization'"
  *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping metaclass='Generalization' stereotype='eng.AbstractCapabilityGeneralization'"
+ *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Ignore"
  *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='A specific kind of generalization link between Capabilities.\r\n[source: Capella study]\r\n\r\nThe generalization is useful for Capability reuse (override or extension of Capability).' usage\040guideline='n/a' used\040in\040levels='operational, system, logical, physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='uml::Generalization' explanation='none' constraints='none'"
  * @generated
@@ -55,6 +56,7 @@ public interface AbstractCapabilityGeneralization extends Relationship {
 	 * @model required="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='general' featureOwner='Generalization'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='super'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the parent Capability\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Generalization::general' explanation='none' constraints='none'"
 	 * @generated
@@ -97,6 +99,7 @@ public interface AbstractCapabilityGeneralization extends Relationship {
 	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='general' featureOwner='Generalization'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='super'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the child Capability\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Generalization::specific' explanation='none' constraints='none'"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='superGeneralizations'"

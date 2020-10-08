@@ -259,6 +259,7 @@ public class SwimlaneImpl extends NamedElementImpl implements Swimlane {
 	 * @generated
 	 */
 
+	@Override
 	public void setSuperGroup(ActivityGroup newSuperGroup) {
 
 		if (newSuperGroup != eInternalContainer() || (eContainerFeatureID() != OaPackage.SWIMLANE__SUPER_GROUP && newSuperGroup != null)) {
@@ -354,6 +355,7 @@ public class SwimlaneImpl extends NamedElementImpl implements Swimlane {
 	 * @generated
 	 */
 
+	@Override
 	public void setIsDimension(boolean newIsDimension) {
 
 		boolean oldIsDimension = isDimension;
@@ -386,6 +388,7 @@ public class SwimlaneImpl extends NamedElementImpl implements Swimlane {
 	 * @generated
 	 */
 
+	@Override
 	public void setIsExternal(boolean newIsExternal) {
 
 		boolean oldIsExternal = isExternal;
@@ -439,6 +442,7 @@ public class SwimlaneImpl extends NamedElementImpl implements Swimlane {
 	 * @generated
 	 */
 
+	@Override
 	public void setRepresentedElement(AbstractType newRepresentedElement) {
 
 		AbstractType oldRepresentedElement = representedElement;
@@ -878,7 +882,7 @@ public class SwimlaneImpl extends NamedElementImpl implements Swimlane {
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (isDimension: "); //$NON-NLS-1$
 		result.append(isDimension);
 		result.append(", isExternal: "); //$NON-NLS-1$

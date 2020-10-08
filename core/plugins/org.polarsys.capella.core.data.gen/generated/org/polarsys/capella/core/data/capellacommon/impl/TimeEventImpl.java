@@ -102,6 +102,7 @@ public class TimeEventImpl extends StateEventImpl implements TimeEvent {
 	 * @generated
 	 */
 
+	@Override
 	public void setKind(TimeEventKind newKind) {
 
 		TimeEventKind oldKind = kind;
@@ -185,7 +186,7 @@ public class TimeEventImpl extends StateEventImpl implements TimeEvent {
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (kind: "); //$NON-NLS-1$
 		result.append(kind);
 		result.append(')');

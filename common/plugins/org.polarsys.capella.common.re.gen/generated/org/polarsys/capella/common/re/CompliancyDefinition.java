@@ -21,7 +21,7 @@ package org.polarsys.capella.common.re;
  *
  *
  * @see org.polarsys.capella.common.re.RePackage#getCompliancyDefinition()
- * @model
+ * @model annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 

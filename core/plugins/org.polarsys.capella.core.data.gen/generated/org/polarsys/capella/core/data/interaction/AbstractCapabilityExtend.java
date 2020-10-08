@@ -31,6 +31,7 @@ import org.polarsys.capella.core.data.capellacore.Relationship;
  * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractCapabilityExtend()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='AbstractCapabilityExtend'"
  *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping metaclass='Extend' stereotype='eng.AbstractCapabilityExtend'"
+ *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Ignore"
  *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='A relationship from an extending use case to an extended use case that specifies how and when the behavior defined in\r\nthe extending use case can be inserted into the behavior defined in the extended use case.\r\n\r\nThis concept is similar to UML Extend concept.\r\n[source:UML Superstructure v2.2]' usage\040guideline='n/a' used\040in\040levels='operational, system, logical, physical' usage\040examples='n/a' constraints='none' comment/notes='Should be renamed Extend to map UML concept' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='uml::Extend' explanation='none' constraints='none'"
  * @generated
@@ -56,6 +57,7 @@ public interface AbstractCapabilityExtend extends Relationship {
 	 * @model required="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='extendedCase' featureOwner='Extend'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='extended'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Capability being extended\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Extend::extendedCase' explanation='none' constraints='none'"
 	 * @generated
@@ -98,6 +100,7 @@ public interface AbstractCapabilityExtend extends Relationship {
 	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='extension' featureOwner='Extend'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='extension'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Capability that realizes the extension\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Extend::extension' explanation='none' constraints='none'"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='^extends'"
@@ -126,6 +129,7 @@ public interface AbstractCapabilityExtend extends Relationship {
 	 * @model opposite="extendLinks"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='extensionLocation' featureOwner='Extend'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='extensionLocation'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the extension point to which the extending Capability is attached\r\n[source: Capella study]' constraints='this extension location must be one of the extensions of the Capability pointed by the  \"extended\" reference\r\n' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Extend::extensionLocation' explanation='none' constraints='Multiplicity must be [0..1]'"
 	 * @generated

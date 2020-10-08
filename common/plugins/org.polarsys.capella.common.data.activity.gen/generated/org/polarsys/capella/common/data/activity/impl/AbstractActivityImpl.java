@@ -265,6 +265,7 @@ public abstract class AbstractActivityImpl extends AbstractNamedElementImpl impl
 	 * @generated
 	 */
 
+	@Override
 	public void setIsControlOperator(boolean newIsControlOperator) {
 
 		boolean oldIsControlOperator = isControlOperator;
@@ -427,6 +428,7 @@ public abstract class AbstractActivityImpl extends AbstractNamedElementImpl impl
 	 * @generated
 	 */
 
+	@Override
 	public void setIsReadOnly(boolean newIsReadOnly) {
 
 		boolean oldIsReadOnly = isReadOnly;
@@ -459,6 +461,7 @@ public abstract class AbstractActivityImpl extends AbstractNamedElementImpl impl
 	 * @generated
 	 */
 
+	@Override
 	public void setIsSingleExecution(boolean newIsSingleExecution) {
 
 		boolean oldIsSingleExecution = isSingleExecution;
@@ -783,7 +786,7 @@ public abstract class AbstractActivityImpl extends AbstractNamedElementImpl impl
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (isControlOperator: "); //$NON-NLS-1$
 		result.append(isControlOperator);
 		result.append(", isReadOnly: "); //$NON-NLS-1$

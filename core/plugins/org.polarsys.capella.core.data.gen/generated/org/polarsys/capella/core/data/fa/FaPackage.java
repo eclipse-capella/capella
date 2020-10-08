@@ -37,6 +37,7 @@ import org.polarsys.capella.core.data.information.InformationPackage;
  * @model kind="package"
  *        annotation="http://www.polarsys.org/kitalpha/emde/1.0.0/extension trackResourceModification='true' useUUIDs='false' useIDAttributes='true' extensibleProviderFactory='true' childCreationExtenders='true'"
  *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='FunctionalAnalysis aims at defining the system engineering usual functional breakdown and functional data flow language (close to the UML Activity machine and SysML Activity as Block, partially).\r\n[source: Capella study]' usage\040guideline='none' used\040in\040levels='operational,system,logical,physical,epbs' usage\040examples='none' constraints='This package depends on the model CapellaCommon.ecore\r\nThis package depends on the model Information.ecore' comment/notes='none' reference\040documentation='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface FaPackage extends EPackage {
@@ -4239,9 +4240,11 @@ public interface FaPackage extends EPackage {
 	 * The feature id for the '<em><b>Represented Component Port</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @deprecated See {@link org.polarsys.capella.core.data.fa.FunctionPort#getRepresentedComponentPort() model documentation} for details.
 	 * @generated
 	 * @ordered
 	 */
+	@Deprecated
 	int FUNCTION_PORT__REPRESENTED_COMPONENT_PORT = InformationPackage.PORT_FEATURE_COUNT + 3;
 
 	/**
@@ -4600,9 +4603,11 @@ public interface FaPackage extends EPackage {
 	 * The feature id for the '<em><b>Represented Component Port</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @deprecated See {@link org.polarsys.capella.core.data.fa.FunctionPort#getRepresentedComponentPort() model documentation} for details.
 	 * @generated
 	 * @ordered
 	 */
+	@Deprecated
 	int FUNCTION_INPUT_PORT__REPRESENTED_COMPONENT_PORT = FUNCTION_PORT__REPRESENTED_COMPONENT_PORT;
 
 	/**
@@ -5096,9 +5101,11 @@ public interface FaPackage extends EPackage {
 	 * The feature id for the '<em><b>Represented Component Port</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @deprecated See {@link org.polarsys.capella.core.data.fa.FunctionPort#getRepresentedComponentPort() model documentation} for details.
 	 * @generated
 	 * @ordered
 	 */
+	@Deprecated
 	int FUNCTION_OUTPUT_PORT__REPRESENTED_COMPONENT_PORT = FUNCTION_PORT__REPRESENTED_COMPONENT_PORT;
 
 	/**
@@ -13824,8 +13831,10 @@ public interface FaPackage extends EPackage {
 	 * @return the meta object for the reference '<em>Represented Component Port</em>'.
 	 * @see org.polarsys.capella.core.data.fa.FunctionPort#getRepresentedComponentPort()
 	 * @see #getFunctionPort()
+	 * @deprecated See {@link org.polarsys.capella.core.data.fa.FunctionPort#getRepresentedComponentPort() model documentation} for details.
 	 * @generated
 	 */
+	@Deprecated
 	EReference getFunctionPort_RepresentedComponentPort();
 
 	/**
@@ -15763,8 +15772,10 @@ public interface FaPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Represented Component Port</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 * @deprecated See {@link org.polarsys.capella.core.data.fa.FunctionPort#getRepresentedComponentPort() model documentation} for details.
 		 * @generated
 		 */
+		@Deprecated
 		EReference FUNCTION_PORT__REPRESENTED_COMPONENT_PORT = eINSTANCE.getFunctionPort_RepresentedComponentPort();
 
 		/**

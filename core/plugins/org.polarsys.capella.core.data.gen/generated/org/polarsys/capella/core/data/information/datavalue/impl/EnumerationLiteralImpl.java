@@ -139,6 +139,7 @@ public class EnumerationLiteralImpl extends AbstractEnumerationValueImpl impleme
 	 * @generated
 	 */
 
+	@Override
 	public void setDomainValue(DataValue newDomainValue) {
 
 		if (newDomainValue != domainValue) {

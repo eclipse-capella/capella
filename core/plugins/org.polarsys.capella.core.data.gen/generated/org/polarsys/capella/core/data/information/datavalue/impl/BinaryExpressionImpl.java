@@ -133,6 +133,7 @@ public class BinaryExpressionImpl extends AbstractExpressionValueImpl implements
 	 * @generated
 	 */
 
+	@Override
 	public void setOperator(BinaryOperator newOperator) {
 
 		BinaryOperator oldOperator = operator;
@@ -212,6 +213,7 @@ public class BinaryExpressionImpl extends AbstractExpressionValueImpl implements
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedLeftOperand(DataValue newOwnedLeftOperand) {
 
 		if (newOwnedLeftOperand != ownedLeftOperand) {
@@ -298,6 +300,7 @@ public class BinaryExpressionImpl extends AbstractExpressionValueImpl implements
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedRightOperand(DataValue newOwnedRightOperand) {
 
 		if (newOwnedRightOperand != ownedRightOperand) {
@@ -426,7 +429,7 @@ public class BinaryExpressionImpl extends AbstractExpressionValueImpl implements
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (operator: "); //$NON-NLS-1$
 		result.append(operator);
 		result.append(')');

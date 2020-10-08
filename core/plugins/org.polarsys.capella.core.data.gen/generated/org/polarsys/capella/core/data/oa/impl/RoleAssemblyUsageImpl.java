@@ -113,6 +113,7 @@ public class RoleAssemblyUsageImpl extends NamedElementImpl implements RoleAssem
 	 * @generated
 	 */
 
+	@Override
 	public void setChild(Role newChild) {
 
 		Role oldChild = child;

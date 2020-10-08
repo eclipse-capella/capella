@@ -190,6 +190,7 @@ public class LogicalArchitectureImpl extends ComponentArchitectureImpl implement
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedLogicalComponentPkg(LogicalComponentPkg newOwnedLogicalComponentPkg) {
 
 		if (newOwnedLogicalComponentPkg != ownedLogicalComponentPkg) {

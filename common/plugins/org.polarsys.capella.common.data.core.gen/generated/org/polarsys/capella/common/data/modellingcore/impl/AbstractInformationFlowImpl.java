@@ -201,6 +201,7 @@ public abstract class AbstractInformationFlowImpl extends AbstractNamedElementIm
 	 * @generated
 	 */
 
+	@Override
 	public void setRealizedFlow(AbstractInformationFlow newRealizedFlow) {
 
 		if (newRealizedFlow != realizedFlow) {
@@ -297,6 +298,7 @@ public abstract class AbstractInformationFlowImpl extends AbstractNamedElementIm
 	 * @generated
 	 */
 
+	@Override
 	public void setSource(InformationsExchanger newSource) {
 
 		InformationsExchanger oldSource = source;
@@ -350,6 +352,7 @@ public abstract class AbstractInformationFlowImpl extends AbstractNamedElementIm
 	 * @generated
 	 */
 
+	@Override
 	public void setTarget(InformationsExchanger newTarget) {
 
 		InformationsExchanger oldTarget = target;

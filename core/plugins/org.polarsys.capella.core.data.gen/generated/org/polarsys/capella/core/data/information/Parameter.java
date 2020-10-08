@@ -33,6 +33,7 @@ import org.polarsys.capella.core.data.capellacore.TypedElement;
  *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping metaclass='Parameter' stereotype='eng.Parameter'"
  *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='A parameter is a specification of an argument used to pass information into or out of an invocation of a behavioral\r\nfeature.\r\n[source: UML superstructure v2.2]' usage\040guideline='n/a' used\040in\040levels='system,logical,physical,epbs' usage\040examples='../img/usage_examples/operation_parameters.png' constraints='none' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='uml::Parameter' explanation='none' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface Parameter extends TypedElement, MultiplicityElement, AbstractParameter {
@@ -58,6 +59,7 @@ public interface Parameter extends TypedElement, MultiplicityElement, AbstractPa
 	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='direction' featureOwner='Parameter'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies whether the parameter is an input, an output, or both.\r\n[source: Capella study]' constraints='none' type='see ParameterDirection definition' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Parameter::direction' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -102,6 +104,7 @@ public interface Parameter extends TypedElement, MultiplicityElement, AbstractPa
 	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='passingMode' fromStereotype='true' featureOwner='eng.Parameter'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies the way the parameter is passed along from the caller to the callee\r\n[source: Capella study]' constraints='none' type='see PassingMode enumeration definition for possible values' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

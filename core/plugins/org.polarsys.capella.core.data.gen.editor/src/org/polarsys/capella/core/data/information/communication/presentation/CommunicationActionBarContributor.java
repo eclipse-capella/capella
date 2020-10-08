@@ -368,6 +368,7 @@ public class CommunicationActionBarContributor
 	 */
 	@Override
 	public void contributeToToolBar(IToolBarManager toolBarManager) {
+		super.contributeToToolBar(toolBarManager);
 		toolBarManager.add(new Separator("communication-settings")); //$NON-NLS-1$
 		toolBarManager.add(new Separator("communication-additions")); //$NON-NLS-1$
 	}
@@ -409,6 +410,7 @@ public class CommunicationActionBarContributor
 		//
 		submenuManager.addMenuListener
 			(new IMenuListener() {
+				 @Override
 				 public void menuAboutToShow(IMenuManager menuManager) {
 					 menuManager.updateAll(true);
 				 }
@@ -482,6 +484,7 @@ public class CommunicationActionBarContributor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void selectionChanged(SelectionChangedEvent event) {
 		// Current Selection
 		ISelection selection = event.getSelection();

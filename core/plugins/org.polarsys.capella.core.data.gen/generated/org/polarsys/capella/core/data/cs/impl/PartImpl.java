@@ -689,6 +689,7 @@ public class PartImpl extends AbstractInstanceImpl implements Part {
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedAbstractType(AbstractType newOwnedAbstractType) {
 
 		if (newOwnedAbstractType != ownedAbstractType) {

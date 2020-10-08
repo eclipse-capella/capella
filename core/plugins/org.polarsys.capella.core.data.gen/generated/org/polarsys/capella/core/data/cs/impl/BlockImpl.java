@@ -478,6 +478,7 @@ public abstract class BlockImpl extends TypeImpl implements Block {
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedAbstractCapabilityPkg(AbstractCapabilityPkg newOwnedAbstractCapabilityPkg) {
 
 		if (newOwnedAbstractCapabilityPkg != ownedAbstractCapabilityPkg) {
@@ -564,6 +565,7 @@ public abstract class BlockImpl extends TypeImpl implements Block {
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedInterfacePkg(InterfacePkg newOwnedInterfacePkg) {
 
 		if (newOwnedInterfacePkg != ownedInterfacePkg) {
@@ -650,6 +652,7 @@ public abstract class BlockImpl extends TypeImpl implements Block {
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedDataPkg(DataPkg newOwnedDataPkg) {
 
 		if (newOwnedDataPkg != ownedDataPkg) {

@@ -368,6 +368,7 @@ public class InteractionActionBarContributor
 	 */
 	@Override
 	public void contributeToToolBar(IToolBarManager toolBarManager) {
+		super.contributeToToolBar(toolBarManager);
 		toolBarManager.add(new Separator("interaction-settings")); //$NON-NLS-1$
 		toolBarManager.add(new Separator("interaction-additions")); //$NON-NLS-1$
 	}
@@ -409,6 +410,7 @@ public class InteractionActionBarContributor
 		//
 		submenuManager.addMenuListener
 			(new IMenuListener() {
+				 @Override
 				 public void menuAboutToShow(IMenuManager menuManager) {
 					 menuManager.updateAll(true);
 				 }
@@ -482,6 +484,7 @@ public class InteractionActionBarContributor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void selectionChanged(SelectionChangedEvent event) {
 		// Current Selection
 		ISelection selection = event.getSelection();

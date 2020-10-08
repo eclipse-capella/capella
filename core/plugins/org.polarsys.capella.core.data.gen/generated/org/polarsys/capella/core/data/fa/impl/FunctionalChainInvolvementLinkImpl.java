@@ -224,6 +224,7 @@ public class FunctionalChainInvolvementLinkImpl extends FunctionalChainInvolveme
 	 * @generated
 	 */
 
+	@Override
 	public void setExchangeContext(Constraint newExchangeContext) {
 
 		Constraint oldExchangeContext = exchangeContext;
@@ -290,6 +291,7 @@ public class FunctionalChainInvolvementLinkImpl extends FunctionalChainInvolveme
 	 * @generated
 	 */
 
+	@Override
 	public void setSource(FunctionalChainInvolvementFunction newSource) {
 
 		FunctionalChainInvolvementFunction oldSource = source;
@@ -335,6 +337,7 @@ public class FunctionalChainInvolvementLinkImpl extends FunctionalChainInvolveme
 	 * @generated
 	 */
 
+	@Override
 	public void setTarget(FunctionalChainInvolvementFunction newTarget) {
 
 		FunctionalChainInvolvementFunction oldTarget = target;

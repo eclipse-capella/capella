@@ -36,6 +36,7 @@ import org.polarsys.capella.core.data.capellacore.NamedElement;
  *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping metaclass='UseCase' stereotype='eng.Mission'"
  *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Operational goal. It must be satisfied by usage of System capabilities.\r\n\r\nA mission can be compared to a UML UseCase : A use case is the specification of a set of actions performed by a system, which yields an observable result that is,\r\ntypically, of value for one or more actors or other stakeholders of the system.\r\n[source: UML superstructure v2.2]' usage\040guideline='n/a' used\040in\040levels='system' usage\040examples='../img/usage_examples/example_mission.png' constraints='none' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='uml::UseCase' explanation='none' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface Mission extends NamedElement, InvolverElement {
@@ -84,6 +85,7 @@ public interface Mission extends NamedElement, InvolverElement {
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='System Components that are involved in this Mission' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='Mission.ownedMissionInvolvements(self, missionInvolvements);\r\nMissionInvolvement.systemComponent(missionInvolvements, target);'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -110,6 +112,7 @@ public interface Mission extends NamedElement, InvolverElement {
 	 * @model containment="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='include' featureOwner='UseCase'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='capabilityExploitations'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the capability exploitation links that are assigned to this Mission\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::UseCase::include' explanation='none' constraints='Order must be computed'"
 	 * @generated
@@ -139,9 +142,11 @@ public interface Mission extends NamedElement, InvolverElement {
 	 * @see org.polarsys.capella.core.data.ctx.Capability#getPurposeMissions
 	 * @model opposite="purposeMissions" transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='exploitedCapabilityUseCases'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedCapabilityExploitations.capability'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the list of Capabilities that this Mission exploits\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

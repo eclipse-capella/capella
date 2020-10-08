@@ -177,6 +177,7 @@ public class InstanceRoleImpl extends NamedElementImpl implements InstanceRole {
 	 * @generated
 	 */
 
+	@Override
 	public void setRepresentedInstance(AbstractInstance newRepresentedInstance) {
 
 		AbstractInstance oldRepresentedInstance = representedInstance;

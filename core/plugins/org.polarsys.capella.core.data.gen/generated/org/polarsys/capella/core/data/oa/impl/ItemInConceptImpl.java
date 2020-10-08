@@ -129,6 +129,7 @@ public class ItemInConceptImpl extends NamedElementImpl implements ItemInConcept
 	 * @generated
 	 */
 
+	@Override
 	public void setConcept(Concept newConcept) {
 
 		Concept oldConcept = concept;
@@ -182,6 +183,7 @@ public class ItemInConceptImpl extends NamedElementImpl implements ItemInConcept
 	 * @generated
 	 */
 
+	@Override
 	public void setItem(AbstractConceptItem newItem) {
 
 		AbstractConceptItem oldItem = item;

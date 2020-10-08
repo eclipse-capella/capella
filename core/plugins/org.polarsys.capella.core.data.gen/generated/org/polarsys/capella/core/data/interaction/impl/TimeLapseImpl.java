@@ -128,6 +128,7 @@ public abstract class TimeLapseImpl extends NamedElementImpl implements TimeLaps
 	 * @generated
 	 */
 
+	@Override
 	public void setStart(InteractionFragment newStart) {
 
 		InteractionFragment oldStart = start;
@@ -181,6 +182,7 @@ public abstract class TimeLapseImpl extends NamedElementImpl implements TimeLaps
 	 * @generated
 	 */
 
+	@Override
 	public void setFinish(InteractionFragment newFinish) {
 
 		InteractionFragment oldFinish = finish;

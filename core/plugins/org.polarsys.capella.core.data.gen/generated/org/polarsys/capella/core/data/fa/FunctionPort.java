@@ -61,6 +61,7 @@ public interface FunctionPort extends Port, TypedElement, AbstractEvent {
 	 * @generated
 	 */
 
+	@Deprecated
 	ComponentPort getRepresentedComponentPort();
 
 
@@ -73,9 +74,11 @@ public interface FunctionPort extends Port, TypedElement, AbstractEvent {
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Represented Component Port</em>' reference.
 	 * @see #getRepresentedComponentPort()
+	 * @deprecated See {@link org.polarsys.capella.core.data.fa.FunctionPort#getRepresentedComponentPort() model documentation} for details.
 	 * @generated
 	 */
 
+	@Deprecated
 	void setRepresentedComponentPort(ComponentPort value);
 
 
@@ -127,6 +130,7 @@ public interface FunctionPort extends Port, TypedElement, AbstractEvent {
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionPort_RealizedFunctionPorts()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='outgoingPortRealizations.realizedPort'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */

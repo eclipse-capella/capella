@@ -41,6 +41,7 @@ import org.polarsys.capella.core.data.information.Property;
  * @see org.polarsys.capella.core.data.fa.FaPackage#getComponentPort()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='A component port is the unification of the standard port and the flow port.' constraints='none' comment/notes='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='' explanation='none' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface ComponentPort extends Port, InformationsExchanger, Property {
@@ -65,6 +66,7 @@ public interface ComponentPort extends Port, InformationsExchanger, Property {
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getComponentPort_Orientation()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the orientation of a component port. ' constraints='should be set only when the component port is a flow port' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -108,6 +110,7 @@ public interface ComponentPort extends Port, InformationsExchanger, Property {
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getComponentPort_Kind()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='A component port is the unification of the standard port and the flow port.\r\nsee the ComponentPortKind enumeration.\r\n' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -149,6 +152,7 @@ public interface ComponentPort extends Port, InformationsExchanger, Property {
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getComponentPort_ComponentExchanges()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='ComponentPort.informationFlows(self, target);\r\n} or {\r\n\tComponentExchangeEnd.port(cee, self);\r\n\tComponentExchange.ownedComponentExchangeEnds(target, cee);'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */
@@ -177,6 +181,7 @@ public interface ComponentPort extends Port, InformationsExchanger, Property {
 	 * @see org.polarsys.capella.core.data.fa.FunctionPort#getAllocatorComponentPorts
 	 * @model opposite="allocatorComponentPorts" transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='outgoingPortAllocations.allocatedPort'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */
@@ -205,6 +210,7 @@ public interface ComponentPort extends Port, InformationsExchanger, Property {
 	 * @see org.polarsys.capella.core.data.fa.ComponentPort#getDelegatingComponentPorts
 	 * @model opposite="delegatingComponentPorts" transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='ComponentPort.outgoingInformationFlows(self, ce);\r\nComponentExchange.kind(ce, ::DELEGATION);\r\nComponentExchange.targetPort(ce, target);'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */
@@ -291,6 +297,7 @@ public interface ComponentPort extends Port, InformationsExchanger, Property {
 	 * @see org.polarsys.capella.core.data.fa.ComponentPort#getRealizingComponentPorts
 	 * @model opposite="realizingComponentPorts" transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='outgoingPortRealizations.realizedPort'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */

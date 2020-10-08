@@ -64,6 +64,7 @@ public interface StateTransition extends NamedElement, Relationship {
 	 * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getStateTransition_Guard()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies the guard of the state transition' constraints='none' type='' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -95,6 +96,7 @@ public interface StateTransition extends NamedElement, Relationship {
 	 * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getStateTransition_Kind()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies the type of the state transition (see TransitionKind)\r\n[source: Capella study]' constraints='none' type='refer to TransitionKind definition' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Transition::kind' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -126,6 +128,7 @@ public interface StateTransition extends NamedElement, Relationship {
 	 * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getStateTransition_TriggerDescription()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='describes the trigger associated to the transition\r\n[source: Capella study]' constraints='none' type='' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -156,6 +159,7 @@ public interface StateTransition extends NamedElement, Relationship {
 	 * @model required="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Designates the originating vertex (state or pseudostate) of the transition.\r\n[source:UML Superstructure v2.2]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Transition::source' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -186,6 +190,7 @@ public interface StateTransition extends NamedElement, Relationship {
 	 * @model required="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Designates the target vertex that is reached when the transition is taken.\r\n[source:UML Superstructure v2.2]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Transition::target' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -215,6 +220,7 @@ public interface StateTransition extends NamedElement, Relationship {
 	 * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getStateTransition_Effect()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The event to be triggered' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -234,6 +240,7 @@ public interface StateTransition extends NamedElement, Relationship {
 	 * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getStateTransition_Triggers()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specifies the triggers that may fire the transition.' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Transition::trigger' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -273,6 +280,7 @@ public interface StateTransition extends NamedElement, Relationship {
 	 * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getStateTransition_RealizedStateTransitions()
 	 * @model resolveProxies="false" transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='StateTransitionRealization.realizingStateTransition(asr, self);\r\nStateTransitionRealization.realizedStateTransition(asr, target);\r\n'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

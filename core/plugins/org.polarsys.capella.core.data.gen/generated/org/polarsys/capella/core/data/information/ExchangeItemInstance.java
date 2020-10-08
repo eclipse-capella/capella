@@ -21,6 +21,7 @@ package org.polarsys.capella.core.data.information;
  *
  * @see org.polarsys.capella.core.data.information.InformationPackage#getExchangeItemInstance()
  * @model annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='' explanation='none' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface ExchangeItemInstance extends AbstractInstance {

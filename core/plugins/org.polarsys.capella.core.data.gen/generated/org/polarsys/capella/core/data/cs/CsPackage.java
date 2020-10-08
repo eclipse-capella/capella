@@ -36,6 +36,7 @@ import org.polarsys.capella.core.data.information.communication.CommunicationPac
  * @model kind="package"
  *        annotation="http://www.polarsys.org/kitalpha/emde/1.0.0/extension trackResourceModification='true' useUUIDs='false' useIDAttributes='true' extensibleProviderFactory='true' childCreationExtenders='true'"
  *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='CompositeStructure aims at defining the common component approach composite structure pattern language (close to the UML Composite structure).\r\n[source: Capella study]' usage\040guideline='none' used\040in\040levels='operational,system,logical,physical,epbs' usage\040examples='none' constraints='This package depends on the model FunctionalAnalysis.ecore' comment/notes='none' reference\040documentation='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface CsPackage extends EPackage {
@@ -8708,9 +8709,11 @@ public interface CsPackage extends EPackage {
 	 * The feature id for the '<em><b>Involved Links</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @deprecated See {@link org.polarsys.capella.core.data.cs.PhysicalPath#getInvolvedLinks() model documentation} for details.
 	 * @generated
 	 * @ordered
 	 */
+	@Deprecated
 	int PHYSICAL_PATH__INVOLVED_LINKS = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
@@ -12092,8 +12095,10 @@ public interface CsPackage extends EPackage {
 	 * @return the meta object for the reference list '<em>Involved Links</em>'.
 	 * @see org.polarsys.capella.core.data.cs.PhysicalPath#getInvolvedLinks()
 	 * @see #getPhysicalPath()
+	 * @deprecated See {@link org.polarsys.capella.core.data.cs.PhysicalPath#getInvolvedLinks() model documentation} for details.
 	 * @generated
 	 */
+	@Deprecated
 	EReference getPhysicalPath_InvolvedLinks();
 
 	/**
@@ -13512,8 +13517,10 @@ public interface CsPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Involved Links</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 * @deprecated See {@link org.polarsys.capella.core.data.cs.PhysicalPath#getInvolvedLinks() model documentation} for details.
 		 * @generated
 		 */
+		@Deprecated
 		EReference PHYSICAL_PATH__INVOLVED_LINKS = eINSTANCE.getPhysicalPath_InvolvedLinks();
 
 		/**

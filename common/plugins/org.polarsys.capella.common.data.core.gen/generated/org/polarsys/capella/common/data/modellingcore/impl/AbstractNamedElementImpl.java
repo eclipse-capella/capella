@@ -99,6 +99,7 @@ public abstract class AbstractNamedElementImpl extends ModelElementImpl implemen
 	 * @generated
 	 */
 
+	@Override
 	public void setName(String newName) {
 
 		String oldName = name;
@@ -182,7 +183,7 @@ public abstract class AbstractNamedElementImpl extends ModelElementImpl implemen
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: "); //$NON-NLS-1$
 		result.append(name);
 		result.append(')');

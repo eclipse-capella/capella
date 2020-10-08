@@ -72,6 +72,7 @@ public interface DataType extends GeneralizableElement, DataValueContainer, Fina
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='isDiscreet' featureOwner='eng.DataType' fromStereotype='true'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies whether or not this data type characterizes a discrete value (versus continuous value)\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -114,6 +115,7 @@ public interface DataType extends GeneralizableElement, DataValueContainer, Fina
 	 * @model default="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' type='n/a' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -156,6 +158,7 @@ public interface DataType extends GeneralizableElement, DataValueContainer, Fina
 	 * @model default="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' type='n/a' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -197,6 +200,7 @@ public interface DataType extends GeneralizableElement, DataValueContainer, Fina
 	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='constraint' featureOwner='eng.DataType' fromStereotype='true'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='textual specification of a constraint associated to this data type\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -239,6 +243,7 @@ public interface DataType extends GeneralizableElement, DataValueContainer, Fina
 	 * @see org.polarsys.capella.core.data.information.datatype.DatatypePackage#getDataType_Visibility()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='refer to VisibilityKind description\r\n[source: Capella study]' constraints='none' type='refer to VisibilityKind definition' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::NamedElement:visibility' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -281,6 +286,7 @@ public interface DataType extends GeneralizableElement, DataValueContainer, Fina
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='BooleanType.ownedDefaultValue(self, target);\r\n} or {\r\n\tStringType.ownedDefaultValue(self, target);\r\n} or {\r\n\tEnumeration.ownedDefaultValue(self, target);\r\n} or {\r\n\tNumericType.ownedDefaultValue(self, target);\r\n} or {\r\n\tPhysicalQuantity.ownedDefaultValue(self, target);\r\n\r\n'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='allows to specify a default value for this data type\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -307,6 +313,7 @@ public interface DataType extends GeneralizableElement, DataValueContainer, Fina
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='StringType.ownedNullValue(self, target);\r\n} or {\r\n\tEnumeration.ownedNullValue(self, target);\r\n} or {\r\n\tNumericType.ownedNullValue(self, target);\r\n} or {\r\n\tPhysicalQuantity.ownedNullValue(self, target);\r\n\r\n'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='allows to specify the nature/value of the \"null\" value for this type of data\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -360,6 +367,7 @@ public interface DataType extends GeneralizableElement, DataValueContainer, Fina
 	 * @model opposite="realizingDataTypes" transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='DataType.outgoingTraces(self, ir);\r\nInformationRealization.targetElement(ir, target); '"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='class(es) realized by this class' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

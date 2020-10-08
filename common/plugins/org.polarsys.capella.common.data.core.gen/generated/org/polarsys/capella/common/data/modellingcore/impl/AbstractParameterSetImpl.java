@@ -195,6 +195,7 @@ public abstract class AbstractParameterSetImpl extends AbstractNamedElementImpl 
 	 * @generated
 	 */
 
+	@Override
 	public void setProbability(ValueSpecification newProbability) {
 
 		if (newProbability != probability) {

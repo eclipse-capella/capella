@@ -1148,6 +1148,7 @@ public abstract class AbstractFunctionImpl extends NamedElementImpl implements A
 	 * @generated
 	 */
 
+	@Override
 	public void setIsAbstract(boolean newIsAbstract) {
 
 		boolean oldIsAbstract = isAbstract;
@@ -1180,6 +1181,7 @@ public abstract class AbstractFunctionImpl extends NamedElementImpl implements A
 	 * @generated
 	 */
 
+	@Override
 	public void setIsStatic(boolean newIsStatic) {
 
 		boolean oldIsStatic = isStatic;
@@ -1212,6 +1214,7 @@ public abstract class AbstractFunctionImpl extends NamedElementImpl implements A
 	 * @generated
 	 */
 
+	@Override
 	public void setVisibility(VisibilityKind newVisibility) {
 
 		VisibilityKind oldVisibility = visibility;
@@ -1265,6 +1268,7 @@ public abstract class AbstractFunctionImpl extends NamedElementImpl implements A
 	 * @generated
 	 */
 
+	@Override
 	public void setAbstractType(AbstractType newAbstractType) {
 
 		AbstractType oldAbstractType = abstractType;
@@ -1356,6 +1360,7 @@ public abstract class AbstractFunctionImpl extends NamedElementImpl implements A
 	 * @generated
 	 */
 
+	@Override
 	public void setOrdered(boolean newOrdered) {
 
 		boolean oldOrdered = ordered;
@@ -1388,6 +1393,7 @@ public abstract class AbstractFunctionImpl extends NamedElementImpl implements A
 	 * @generated
 	 */
 
+	@Override
 	public void setUnique(boolean newUnique) {
 
 		boolean oldUnique = unique;
@@ -1420,6 +1426,7 @@ public abstract class AbstractFunctionImpl extends NamedElementImpl implements A
 	 * @generated
 	 */
 
+	@Override
 	public void setMinInclusive(boolean newMinInclusive) {
 
 		boolean oldMinInclusive = minInclusive;
@@ -1452,6 +1459,7 @@ public abstract class AbstractFunctionImpl extends NamedElementImpl implements A
 	 * @generated
 	 */
 
+	@Override
 	public void setMaxInclusive(boolean newMaxInclusive) {
 
 		boolean oldMaxInclusive = maxInclusive;
@@ -1504,6 +1512,7 @@ public abstract class AbstractFunctionImpl extends NamedElementImpl implements A
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedDefaultValue(DataValue newOwnedDefaultValue) {
 
 		if (newOwnedDefaultValue != ownedDefaultValue) {
@@ -1563,6 +1572,7 @@ public abstract class AbstractFunctionImpl extends NamedElementImpl implements A
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedMinValue(DataValue newOwnedMinValue) {
 
 		if (newOwnedMinValue != ownedMinValue) {
@@ -1622,6 +1632,7 @@ public abstract class AbstractFunctionImpl extends NamedElementImpl implements A
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedMaxValue(DataValue newOwnedMaxValue) {
 
 		if (newOwnedMaxValue != ownedMaxValue) {
@@ -1681,6 +1692,7 @@ public abstract class AbstractFunctionImpl extends NamedElementImpl implements A
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedNullValue(DataValue newOwnedNullValue) {
 
 		if (newOwnedNullValue != ownedNullValue) {
@@ -1740,6 +1752,7 @@ public abstract class AbstractFunctionImpl extends NamedElementImpl implements A
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedMinCard(NumericValue newOwnedMinCard) {
 
 		if (newOwnedMinCard != ownedMinCard) {
@@ -1799,6 +1812,7 @@ public abstract class AbstractFunctionImpl extends NamedElementImpl implements A
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedMinLength(NumericValue newOwnedMinLength) {
 
 		if (newOwnedMinLength != ownedMinLength) {
@@ -1858,6 +1872,7 @@ public abstract class AbstractFunctionImpl extends NamedElementImpl implements A
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedMaxCard(NumericValue newOwnedMaxCard) {
 
 		if (newOwnedMaxCard != ownedMaxCard) {
@@ -1917,6 +1932,7 @@ public abstract class AbstractFunctionImpl extends NamedElementImpl implements A
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedMaxLength(NumericValue newOwnedMaxLength) {
 
 		if (newOwnedMaxLength != ownedMaxLength) {
@@ -1956,6 +1972,7 @@ public abstract class AbstractFunctionImpl extends NamedElementImpl implements A
 	 * @generated
 	 */
 
+	@Override
 	public void setFinal(boolean newFinal) {
 
 		boolean oldFinal = final_;
@@ -1988,6 +2005,7 @@ public abstract class AbstractFunctionImpl extends NamedElementImpl implements A
 	 * @generated
 	 */
 
+	@Override
 	public void setAggregationKind(AggregationKind newAggregationKind) {
 
 		AggregationKind oldAggregationKind = aggregationKind;
@@ -2020,6 +2038,7 @@ public abstract class AbstractFunctionImpl extends NamedElementImpl implements A
 	 * @generated
 	 */
 
+	@Override
 	public void setIsDerived(boolean newIsDerived) {
 
 		boolean oldIsDerived = isDerived;
@@ -2052,6 +2071,7 @@ public abstract class AbstractFunctionImpl extends NamedElementImpl implements A
 	 * @generated
 	 */
 
+	@Override
 	public void setIsReadOnly(boolean newIsReadOnly) {
 
 		boolean oldIsReadOnly = isReadOnly;
@@ -2084,6 +2104,7 @@ public abstract class AbstractFunctionImpl extends NamedElementImpl implements A
 	 * @generated
 	 */
 
+	@Override
 	public void setIsPartOfKey(boolean newIsPartOfKey) {
 
 		boolean oldIsPartOfKey = isPartOfKey;
@@ -2576,6 +2597,7 @@ public abstract class AbstractFunctionImpl extends NamedElementImpl implements A
 	 * @generated
 	 */
 
+	@Override
 	public void setLocalPrecondition(AbstractConstraint newLocalPrecondition) {
 
 		if (newLocalPrecondition != localPrecondition) {
@@ -2662,6 +2684,7 @@ public abstract class AbstractFunctionImpl extends NamedElementImpl implements A
 	 * @generated
 	 */
 
+	@Override
 	public void setLocalPostcondition(AbstractConstraint newLocalPostcondition) {
 
 		if (newLocalPostcondition != localPostcondition) {
@@ -2722,6 +2745,7 @@ public abstract class AbstractFunctionImpl extends NamedElementImpl implements A
 	 * @generated
 	 */
 
+	@Override
 	public void setContext(AbstractType newContext) {
 
 		AbstractType oldContext = context;
@@ -2847,6 +2871,7 @@ public abstract class AbstractFunctionImpl extends NamedElementImpl implements A
 	 * @generated
 	 */
 
+	@Override
 	public void setBehavior(AbstractBehavior newBehavior) {
 
 		AbstractBehavior oldBehavior = behavior;
@@ -2926,6 +2951,7 @@ public abstract class AbstractFunctionImpl extends NamedElementImpl implements A
 	 * @generated
 	 */
 
+	@Override
 	public void setKind(FunctionKind newKind) {
 
 		FunctionKind oldKind = kind;
@@ -2958,6 +2984,7 @@ public abstract class AbstractFunctionImpl extends NamedElementImpl implements A
 	 * @generated
 	 */
 
+	@Override
 	public void setCondition(String newCondition) {
 
 		String oldCondition = condition;
@@ -4411,7 +4438,7 @@ public abstract class AbstractFunctionImpl extends NamedElementImpl implements A
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (isAbstract: "); //$NON-NLS-1$
 		result.append(isAbstract);
 		result.append(", isStatic: "); //$NON-NLS-1$

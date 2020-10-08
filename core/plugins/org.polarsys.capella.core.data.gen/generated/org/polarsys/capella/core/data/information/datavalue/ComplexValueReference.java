@@ -30,6 +30,7 @@ import org.polarsys.capella.core.data.information.Property;
  * @see org.polarsys.capella.core.data.information.datavalue.DatavaluePackage#getComplexValueReference()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='A reference to a complex value\r\n[source: Capella light-light study]' usage\040guideline='n/a' used\040in\040levels='n/a' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='uml::Expression' explanation='uml::LiteralSpecification' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface ComplexValueReference extends AbstractComplexValue {
@@ -52,6 +53,7 @@ public interface ComplexValueReference extends AbstractComplexValue {
 	 * @see org.polarsys.capella.core.data.information.datavalue.DatavaluePackage#getComplexValueReference_ReferencedValue()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the complex value being referenced' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -92,8 +94,10 @@ public interface ComplexValueReference extends AbstractComplexValue {
 	 * @see org.polarsys.capella.core.data.information.datavalue.DatavaluePackage#getComplexValueReference_ReferencedProperty()
 	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='clientDependency' featureOwner='NamedElement'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='reference'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the property that uses this reference\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

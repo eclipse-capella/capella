@@ -368,6 +368,7 @@ public class OaActionBarContributor
 	 */
 	@Override
 	public void contributeToToolBar(IToolBarManager toolBarManager) {
+		super.contributeToToolBar(toolBarManager);
 		toolBarManager.add(new Separator("oa-settings")); //$NON-NLS-1$
 		toolBarManager.add(new Separator("oa-additions")); //$NON-NLS-1$
 	}
@@ -409,6 +410,7 @@ public class OaActionBarContributor
 		//
 		submenuManager.addMenuListener
 			(new IMenuListener() {
+				 @Override
 				 public void menuAboutToShow(IMenuManager menuManager) {
 					 menuManager.updateAll(true);
 				 }
@@ -482,6 +484,7 @@ public class OaActionBarContributor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void selectionChanged(SelectionChangedEvent event) {
 		// Current Selection
 		ISelection selection = event.getSelection();

@@ -113,6 +113,7 @@ public class KeyPartImpl extends RelationshipImpl implements KeyPart {
 	 * @generated
 	 */
 
+	@Override
 	public void setProperty(Property newProperty) {
 
 		Property oldProperty = property;

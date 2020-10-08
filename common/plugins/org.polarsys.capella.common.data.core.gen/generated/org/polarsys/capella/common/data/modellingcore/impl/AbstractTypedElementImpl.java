@@ -112,6 +112,7 @@ public abstract class AbstractTypedElementImpl extends AbstractNamedElementImpl 
 	 * @generated
 	 */
 
+	@Override
 	public void setAbstractType(AbstractType newAbstractType) {
 
 		AbstractType oldAbstractType = abstractType;

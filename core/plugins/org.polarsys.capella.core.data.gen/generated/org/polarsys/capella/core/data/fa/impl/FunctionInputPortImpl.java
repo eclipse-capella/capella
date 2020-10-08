@@ -580,6 +580,7 @@ public class FunctionInputPortImpl extends FunctionPortImpl implements FunctionI
 	 * @generated
 	 */
 
+	@Override
 	public void setIsControlType(boolean newIsControlType) {
 
 		boolean oldIsControlType = isControlType;
@@ -612,6 +613,7 @@ public class FunctionInputPortImpl extends FunctionPortImpl implements FunctionI
 	 * @generated
 	 */
 
+	@Override
 	public void setKindOfNode(ObjectNodeKind newKindOfNode) {
 
 		ObjectNodeKind oldKindOfNode = kindOfNode;
@@ -644,6 +646,7 @@ public class FunctionInputPortImpl extends FunctionPortImpl implements FunctionI
 	 * @generated
 	 */
 
+	@Override
 	public void setOrdering(ObjectNodeOrderingKind newOrdering) {
 
 		ObjectNodeOrderingKind oldOrdering = ordering;
@@ -723,6 +726,7 @@ public class FunctionInputPortImpl extends FunctionPortImpl implements FunctionI
 	 * @generated
 	 */
 
+	@Override
 	public void setUpperBound(ValueSpecification newUpperBound) {
 
 		if (newUpperBound != upperBound) {
@@ -801,6 +805,7 @@ public class FunctionInputPortImpl extends FunctionPortImpl implements FunctionI
 	 * @generated
 	 */
 
+	@Override
 	public void setSelection(AbstractBehavior newSelection) {
 
 		AbstractBehavior oldSelection = selection;
@@ -833,6 +838,7 @@ public class FunctionInputPortImpl extends FunctionPortImpl implements FunctionI
 	 * @generated
 	 */
 
+	@Override
 	public void setIsControl(boolean newIsControl) {
 
 		boolean oldIsControl = isControl;
@@ -886,6 +892,7 @@ public class FunctionInputPortImpl extends FunctionPortImpl implements FunctionI
 	 * @generated
 	 */
 
+	@Override
 	public void setInputEvaluationAction(AbstractAction newInputEvaluationAction) {
 
 		AbstractAction oldInputEvaluationAction = inputEvaluationAction;
@@ -1247,7 +1254,7 @@ public class FunctionInputPortImpl extends FunctionPortImpl implements FunctionI
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (isControlType: "); //$NON-NLS-1$
 		result.append(isControlType);
 		result.append(", kindOfNode: "); //$NON-NLS-1$

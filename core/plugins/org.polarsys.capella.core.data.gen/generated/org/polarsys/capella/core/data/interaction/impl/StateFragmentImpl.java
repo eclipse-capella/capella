@@ -128,6 +128,7 @@ public class StateFragmentImpl extends TimeLapseImpl implements StateFragment {
 	 * @generated
 	 */
 
+	@Override
 	public void setRelatedAbstractState(AbstractState newRelatedAbstractState) {
 
 		AbstractState oldRelatedAbstractState = relatedAbstractState;
@@ -181,6 +182,7 @@ public class StateFragmentImpl extends TimeLapseImpl implements StateFragment {
 	 * @generated
 	 */
 
+	@Override
 	public void setRelatedAbstractFunction(AbstractFunction newRelatedAbstractFunction) {
 
 		AbstractFunction oldRelatedAbstractFunction = relatedAbstractFunction;

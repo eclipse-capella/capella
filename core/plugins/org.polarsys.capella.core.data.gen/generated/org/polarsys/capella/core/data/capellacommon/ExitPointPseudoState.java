@@ -25,6 +25,7 @@ package org.polarsys.capella.core.data.capellacommon;
  * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getExitPointPseudoState()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='An exit point pseudostate is an exit point of a state machine or composite state. Entering an exit point within any region\r\nof the composite state or state machine referenced by a submachine state implies the exit of this composite state or\r\nsubmachine state and the triggering of the transition that has this exit point as source in the state machine enclosing the\r\nsubmachine or composite state.\r\n[source: UML superstructure v2.4]' usage\040guideline='n/a' used\040in\040levels='operational, system, logical, physical' constraints='none' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='uml::Pseudostate' explanation='none' constraints='uml::Pseudostate elements for which kind is exit point'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 

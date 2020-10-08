@@ -216,6 +216,7 @@ public class PhysicalPathInvolvementImpl extends RelationshipImpl implements Phy
 	 * @generated
 	 */
 
+	@Override
 	public void setInvolved(InvolvedElement newInvolved) {
 
 		InvolvedElement oldInvolved = involved;

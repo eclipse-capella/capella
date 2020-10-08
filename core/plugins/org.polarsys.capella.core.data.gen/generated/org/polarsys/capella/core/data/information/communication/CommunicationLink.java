@@ -32,6 +32,7 @@ import org.polarsys.capella.core.data.information.ExchangeItem;
  * @see org.polarsys.capella.core.data.information.communication.CommunicationPackage#getCommunicationLink()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='describes a link of communication using exchange items' constraints='none' comment/notes='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='' explanation='none' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface CommunicationLink extends CapellaElement {
@@ -56,6 +57,7 @@ public interface CommunicationLink extends CapellaElement {
 	 * @see org.polarsys.capella.core.data.information.communication.CommunicationPackage#getCommunicationLink_Kind()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='refer to CommunicationLinkKind description' constraints='none' type='refer to CommunicationLinkKind definition' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -99,6 +101,7 @@ public interface CommunicationLink extends CapellaElement {
 	 * @see org.polarsys.capella.core.data.information.communication.CommunicationPackage#getCommunicationLink_Protocol()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='refer to CommunicationLinkProtocol description' constraints='none' type='refer to CommunicationLinkProtocol definition' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -140,6 +143,7 @@ public interface CommunicationLink extends CapellaElement {
 	 * @see org.polarsys.capella.core.data.information.communication.CommunicationPackage#getCommunicationLink_ExchangeItem()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='describes the exchange item related to the link' constraints='none' type='refer to CommunicationLinkProtocol definition' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

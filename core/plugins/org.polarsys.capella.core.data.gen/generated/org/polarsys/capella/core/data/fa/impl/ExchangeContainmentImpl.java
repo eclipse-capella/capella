@@ -150,6 +150,7 @@ public class ExchangeContainmentImpl extends RelationshipImpl implements Exchang
 	 * @generated
 	 */
 
+	@Override
 	public void setExchange(ExchangeSpecification newExchange) {
 
 		if (newExchange != exchange) {
@@ -230,6 +231,7 @@ public class ExchangeContainmentImpl extends RelationshipImpl implements Exchang
 	 * @generated
 	 */
 
+	@Override
 	public void setLink(ExchangeLink newLink) {
 
 		if (newLink != link) {

@@ -59,6 +59,7 @@ public interface AbstractParameter extends AbstractTypedElement {
 	 * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getAbstractParameter_IsException()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Tells whether an output parameter may emit a value to the exclusion of the other outputs\r\n[source: UML superstructure v2.2]' constraints='none' type='n/a' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Parameter::isException' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -99,6 +100,7 @@ public interface AbstractParameter extends AbstractTypedElement {
 	 * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getAbstractParameter_IsStream()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Tells whether an input parameter may accept values while its behavior is executing, or whether an output parameter\r\npost values while the behavior is executing\r\n[source: UML superstructure v2.2]' constraints='none' type='n/a' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Parameter::isStream' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -139,6 +141,7 @@ public interface AbstractParameter extends AbstractTypedElement {
 	 * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getAbstractParameter_IsOptional()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies whether the parameter is optional or not\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Capella AbstractParameter::isOptional is true if stereotype SysML::Activities::Optional is applied, false if not applied' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -181,6 +184,7 @@ public interface AbstractParameter extends AbstractTypedElement {
 	 * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getAbstractParameter_KindOfRate()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='refer to RateKind enumeration description\r\n[source: Capella study]' constraints='none' type='refer to RateKind enumeration definition\r\n[source: Capella study]' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Capella AbstractParameter::kindOfRate is Capella RateKind::Continuous if stereotype SysML::Activities::Continuous is applied\r\nCapella AbstractParameter::kindOfRate is Capella RateKind::Discrete if stereotype SysML::Activities::Discrete is applied\r\nIf none is applied, Capella AbstractParameter::kindOfRate is Capella RateKind::Unspecified' constraints='Applied stereotype that inherits from SysML::Activities::Rate stereotype must be either SysML::Activities::Continuous or SysML::Activities::Discrete.\r\nIf none of both stereotypes are applied, kindOfRate is considered Unspecified'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -224,6 +228,7 @@ public interface AbstractParameter extends AbstractTypedElement {
 	 * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getAbstractParameter_Effect()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specifies the effect that the owner of the parameter has on values passed in or out of the parameter\r\n[source: UML superstructure v2.2]' constraints='none' type='see ParameterEffectKind definition' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Parameter::effect' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -266,6 +271,7 @@ public interface AbstractParameter extends AbstractTypedElement {
 	 * @model containment="true" resolveProxies="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the number of objects or values that flow in or out of the parameter per time interval while the behavior or operation is executing\r\n[source: SysML specification v1.1]' constraints='this field only makes sense if the parameter is a streaming one.\r\n[source: SysML specification v1.1]' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='SysML::Activities::Probability does not extend uml::Parameter' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -307,6 +313,7 @@ public interface AbstractParameter extends AbstractTypedElement {
 	 * @model containment="true" resolveProxies="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Likelihood that values will be output on a parameter set\r\n[source: SysML specification v1.1]' constraints='the probability should be a number between 0 and 1' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='SysML::Activities::Probability does not extend uml::Parameter' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

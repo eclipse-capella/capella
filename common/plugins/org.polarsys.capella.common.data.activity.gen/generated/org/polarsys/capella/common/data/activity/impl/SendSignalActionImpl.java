@@ -155,6 +155,7 @@ public abstract class SendSignalActionImpl extends InvocationActionImpl implemen
 	 * @generated
 	 */
 
+	@Override
 	public void setTarget(InputPin newTarget) {
 
 		if (newTarget != target) {
@@ -215,6 +216,7 @@ public abstract class SendSignalActionImpl extends InvocationActionImpl implemen
 	 * @generated
 	 */
 
+	@Override
 	public void setSignal(AbstractSignal newSignal) {
 
 		AbstractSignal oldSignal = signal;

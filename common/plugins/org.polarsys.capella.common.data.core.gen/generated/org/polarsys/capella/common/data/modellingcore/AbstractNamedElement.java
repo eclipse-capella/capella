@@ -54,6 +54,7 @@ public interface AbstractNamedElement extends ModelElement {
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation namingAttribute='true' Label='name'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The name of the NamedElement\r\n[source: UML superstructure v2.2]' constraints='none' type='n/a' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::NamedElement::name' explanation='' constraints=''"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

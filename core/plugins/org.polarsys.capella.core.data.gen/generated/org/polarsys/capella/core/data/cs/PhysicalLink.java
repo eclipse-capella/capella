@@ -38,6 +38,7 @@ import org.polarsys.capella.core.data.fa.ComponentExchangeFunctionalExchangeAllo
  * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalLink()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the representation of the physical medium connecting two physical interfaces\r\n[source: Capella study]' usage\040guideline='n/a' used\040in\040levels='physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='uml::Connector' explanation='none' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface PhysicalLink extends AbstractPhysicalPathLink, AbstractPhysicalArtifact, AbstractPathInvolvedElement {
@@ -61,6 +62,7 @@ public interface PhysicalLink extends AbstractPhysicalPathLink, AbstractPhysical
 	 * @model lower="2" upper="2"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the source(s) and destination(s) of this physical link\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='first need to create ConnectorEnds pointing to the Ports, and then reference them in uml::Connector::end' constraints='cardinality must be [2..2]'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -113,6 +115,7 @@ public interface PhysicalLink extends AbstractPhysicalPathLink, AbstractPhysical
 	 * @model containment="true" resolveProxies="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the physical link endpoints involved in this link\r\n\r\nA connector consists of at least two connector ends, each representing the participation of instances of the classifiers\r\ntyping the connectable elements attached to this end. The set of connector ends is ordered.\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Connector::end' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -164,6 +167,7 @@ public interface PhysicalLink extends AbstractPhysicalPathLink, AbstractPhysical
 	 * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalLink_Categories()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='links'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -188,6 +192,7 @@ public interface PhysicalLink extends AbstractPhysicalPathLink, AbstractPhysical
 	 * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalLink_SourcePhysicalPort()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='unimplemented' viatra.expression='Unable to match on a positional criteria linkEnds[0] '"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */
@@ -213,6 +218,7 @@ public interface PhysicalLink extends AbstractPhysicalPathLink, AbstractPhysical
 	 * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalLink_TargetPhysicalPort()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='unimplemented' viatra.expression='Unable to match on a positional criteria linkEnds[1] '"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */
@@ -240,6 +246,7 @@ public interface PhysicalLink extends AbstractPhysicalPathLink, AbstractPhysical
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='PhysicalLinkRealization.sourceElement(plr, self);\r\nPhysicalLinkRealization.targetElement(plr, target);'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

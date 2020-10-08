@@ -36,6 +36,7 @@ import org.polarsys.capella.core.data.information.communication.CommunicationLin
  * @see org.polarsys.capella.core.data.cs.CsPackage#getExchangeItemAllocation()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Allocation link between exchange items and interface that support them' usage\040guideline='n/a' used\040in\040levels='operational,system,logical,physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='uml::Realization' explanation='none' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface ExchangeItemAllocation extends Relationship, AbstractEventOperation, FinalizableElement {
@@ -60,6 +61,7 @@ public interface ExchangeItemAllocation extends Relationship, AbstractEventOpera
 	 * @see org.polarsys.capella.core.data.cs.CsPackage#getExchangeItemAllocation_SendProtocol()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='describes the default protocol used by the sender of the exchange item. It could be overrided by the protocol used by the given communication exchanger' constraints='none' type='refer to CommunicationLinkProtocol definition' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -103,6 +105,7 @@ public interface ExchangeItemAllocation extends Relationship, AbstractEventOpera
 	 * @see org.polarsys.capella.core.data.cs.CsPackage#getExchangeItemAllocation_ReceiveProtocol()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='describes the default protocol used by the receiver of the exchange item. It could be overrided by the protocol used by the given communication exchanger' constraints='none' type='refer to CommunicationLinkProtocol definition' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -144,6 +147,7 @@ public interface ExchangeItemAllocation extends Relationship, AbstractEventOpera
 	 * @see org.polarsys.capella.core.data.cs.CsPackage#getExchangeItemAllocation_AllocatedItem()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the exchange item that is being allocated by the interface' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

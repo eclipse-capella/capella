@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.polarsys.capella.common.data.modellingcore.*;
 import org.polarsys.capella.common.data.modellingcore.ModellingcoreFactory;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.data.modellingcore.ParameterEffectKind;
@@ -151,6 +152,7 @@ public class ModellingcoreFactoryImpl extends EFactoryImpl implements Modellingc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ModellingcorePackage getModellingcorePackage() {
 		return (ModellingcorePackage)getEPackage();
 	}

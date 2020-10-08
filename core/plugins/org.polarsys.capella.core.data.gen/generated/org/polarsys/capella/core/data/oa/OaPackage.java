@@ -39,6 +39,7 @@ import org.polarsys.capella.core.data.interaction.InteractionPackage;
  *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping profileName='Capella'"
  *        annotation="http://www.polarsys.org/kitalpha/emde/1.0.0/extension trackResourceModification='true' useUUIDs='false' useIDAttributes='true' extensibleProviderFactory='true' childCreationExtenders='true'"
  *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='OperationalAnalysis aims at defining the system\'s ecosystem operational analysis modelling language (close to the OVs from NAF/MoDAF).\r\n[source: Capella study]' usage\040guideline='none' used\040in\040levels='operational' usage\040examples='none' constraints='This package depends on the model CompositeStructure.ecore\r\nThis package depends on the model Interaction.ecore' comment/notes='none' reference\040documentation='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface OaPackage extends EPackage {

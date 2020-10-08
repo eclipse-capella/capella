@@ -29,6 +29,7 @@ package org.polarsys.capella.common.data.modellingcore;
  * @model abstract="true"
  *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='Relationship'"
  *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping metaclass='Element'"
+ *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Ignore"
  *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='A relationship references one or more related elements. Relationship is an abstract metaclass\r\n[source: UML superstructure v2.2]' usage\040guideline='n/a (Abstract)' used\040in\040levels='operational,system,logical,physical,epbs' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='' explanation='uml::Relationship' constraints=''"
  * @generated

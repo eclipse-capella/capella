@@ -128,6 +128,7 @@ public class NumericReferenceImpl extends NumericValueImpl implements NumericRef
 	 * @generated
 	 */
 
+	@Override
 	public void setReferencedValue(NumericValue newReferencedValue) {
 
 		NumericValue oldReferencedValue = referencedValue;
@@ -181,6 +182,7 @@ public class NumericReferenceImpl extends NumericValueImpl implements NumericRef
 	 * @generated
 	 */
 
+	@Override
 	public void setReferencedProperty(Property newReferencedProperty) {
 
 		Property oldReferencedProperty = referencedProperty;

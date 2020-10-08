@@ -166,6 +166,7 @@ public abstract class ActivityGroupImpl extends ModelElementImpl implements Acti
 	 * @generated
 	 */
 
+	@Override
 	public void setSuperGroup(ActivityGroup newSuperGroup) {
 
 		if (newSuperGroup != eInternalContainer() || (eContainerFeatureID() != ActivityPackage.ACTIVITY_GROUP__SUPER_GROUP && newSuperGroup != null)) {

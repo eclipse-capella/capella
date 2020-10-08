@@ -661,6 +661,7 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 	 * @generated
 	 */
 
+	@Override
 	public void setVisibleInDoc(boolean newVisibleInDoc) {
 
 		boolean oldVisibleInDoc = visibleInDoc;
@@ -693,6 +694,7 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 	 * @generated
 	 */
 
+	@Override
 	public void setVisibleInLM(boolean newVisibleInLM) {
 
 		boolean oldVisibleInLM = visibleInLM;
@@ -725,6 +727,7 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 	 * @generated
 	 */
 
+	@Override
 	public void setSummary(String newSummary) {
 
 		String oldSummary = summary;
@@ -757,6 +760,7 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 	 * @generated
 	 */
 
+	@Override
 	public void setDescription(String newDescription) {
 
 		String oldDescription = description;
@@ -789,6 +793,7 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 	 * @generated
 	 */
 
+	@Override
 	public void setReview(String newReview) {
 
 		String oldReview = review;
@@ -932,6 +937,7 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 	 * @generated
 	 */
 
+	@Override
 	public void setStatus(EnumerationPropertyLiteral newStatus) {
 
 		EnumerationPropertyLiteral oldStatus = status;
@@ -1029,6 +1035,7 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 	 * @generated
 	 */
 
+	@Override
 	public void setOrdered(boolean newOrdered) {
 
 		boolean oldOrdered = ordered;
@@ -1061,6 +1068,7 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 	 * @generated
 	 */
 
+	@Override
 	public void setUnique(boolean newUnique) {
 
 		boolean oldUnique = unique;
@@ -1093,6 +1101,7 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 	 * @generated
 	 */
 
+	@Override
 	public void setMinInclusive(boolean newMinInclusive) {
 
 		boolean oldMinInclusive = minInclusive;
@@ -1125,6 +1134,7 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 	 * @generated
 	 */
 
+	@Override
 	public void setMaxInclusive(boolean newMaxInclusive) {
 
 		boolean oldMaxInclusive = maxInclusive;
@@ -1177,6 +1187,7 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedDefaultValue(DataValue newOwnedDefaultValue) {
 
 		if (newOwnedDefaultValue != ownedDefaultValue) {
@@ -1236,6 +1247,7 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedMinValue(DataValue newOwnedMinValue) {
 
 		if (newOwnedMinValue != ownedMinValue) {
@@ -1295,6 +1307,7 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedMaxValue(DataValue newOwnedMaxValue) {
 
 		if (newOwnedMaxValue != ownedMaxValue) {
@@ -1354,6 +1367,7 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedNullValue(DataValue newOwnedNullValue) {
 
 		if (newOwnedNullValue != ownedNullValue) {
@@ -1413,6 +1427,7 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedMinCard(NumericValue newOwnedMinCard) {
 
 		if (newOwnedMinCard != ownedMinCard) {
@@ -1472,6 +1487,7 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedMinLength(NumericValue newOwnedMinLength) {
 
 		if (newOwnedMinLength != ownedMinLength) {
@@ -1531,6 +1547,7 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedMaxCard(NumericValue newOwnedMaxCard) {
 
 		if (newOwnedMaxCard != ownedMaxCard) {
@@ -1590,6 +1607,7 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedMaxLength(NumericValue newOwnedMaxLength) {
 
 		if (newOwnedMaxLength != ownedMaxLength) {
@@ -1998,7 +2016,7 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (visibleInDoc: "); //$NON-NLS-1$
 		result.append(visibleInDoc);
 		result.append(", visibleInLM: "); //$NON-NLS-1$

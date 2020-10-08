@@ -269,7 +269,8 @@ public class ReItemProviderAdapterFactory extends ReAdapterFactory implements Co
    * <!-- end-user-doc -->
 	 * @generated
 	 */
-  public ComposeableAdapterFactory getRootAdapterFactory() {
+  @Override
+		public ComposeableAdapterFactory getRootAdapterFactory() {
 		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
 	}
 
@@ -279,7 +280,8 @@ public class ReItemProviderAdapterFactory extends ReAdapterFactory implements Co
    * <!-- end-user-doc -->
 	 * @generated
 	 */
-  public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
+  @Override
+		public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
 		this.parentAdapterFactory = parentAdapterFactory;
 	}
 
@@ -354,7 +356,8 @@ public class ReItemProviderAdapterFactory extends ReAdapterFactory implements Co
   * <!-- end-user-doc -->
 	 * @generated
 	 */
-  public void addListener(INotifyChangedListener notifyChangedListener) {
+  @Override
+		public void addListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.addListener(notifyChangedListener);
 	}
 
@@ -364,7 +367,8 @@ public class ReItemProviderAdapterFactory extends ReAdapterFactory implements Co
    * <!-- end-user-doc -->
 	 * @generated
 	 */
-  public void removeListener(INotifyChangedListener notifyChangedListener) {
+  @Override
+		public void removeListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.removeListener(notifyChangedListener);
 	}
 
@@ -374,7 +378,8 @@ public class ReItemProviderAdapterFactory extends ReAdapterFactory implements Co
    * <!-- end-user-doc -->
 	 * @generated
 	 */
-  public void fireNotifyChanged(Notification notification) {
+  @Override
+		public void fireNotifyChanged(Notification notification) {
 		changeNotifier.fireNotifyChanged(notification);
 
 		if (parentAdapterFactory != null) {
@@ -388,7 +393,8 @@ public class ReItemProviderAdapterFactory extends ReAdapterFactory implements Co
    * <!-- end-user-doc -->
 	 * @generated
 	 */
-  public void dispose() {
+  @Override
+		public void dispose() {
 		if (catalogElementPkgItemProvider != null) catalogElementPkgItemProvider.dispose();
 		if (recCatalogItemProvider != null) recCatalogItemProvider.dispose();
 		if (groupingElementPkgItemProvider != null) groupingElementPkgItemProvider.dispose();
@@ -498,8 +504,8 @@ public class ReItemProviderAdapterFactory extends ReAdapterFactory implements Co
 		 */
     public Collection<Object> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
 			ArrayList<Object> result = new ArrayList<Object>();
-		   new CreationSwitch(result, editingDomain).doSwitch((EObject)object);
-		   return result;
+			new CreationSwitch(result, editingDomain).doSwitch((EObject)object);
+			return result;
 		}
 
     /**

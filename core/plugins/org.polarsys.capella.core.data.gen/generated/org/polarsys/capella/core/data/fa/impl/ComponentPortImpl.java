@@ -640,6 +640,7 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 	 * @generated
 	 */
 
+	@Override
 	public void setIsAbstract(boolean newIsAbstract) {
 
 		boolean oldIsAbstract = isAbstract;
@@ -672,6 +673,7 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 	 * @generated
 	 */
 
+	@Override
 	public void setIsStatic(boolean newIsStatic) {
 
 		boolean oldIsStatic = isStatic;
@@ -704,6 +706,7 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 	 * @generated
 	 */
 
+	@Override
 	public void setVisibility(VisibilityKind newVisibility) {
 
 		VisibilityKind oldVisibility = visibility;
@@ -757,6 +760,7 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 	 * @generated
 	 */
 
+	@Override
 	public void setAbstractType(AbstractType newAbstractType) {
 
 		AbstractType oldAbstractType = abstractType;
@@ -848,6 +852,7 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 	 * @generated
 	 */
 
+	@Override
 	public void setOrdered(boolean newOrdered) {
 
 		boolean oldOrdered = ordered;
@@ -880,6 +885,7 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 	 * @generated
 	 */
 
+	@Override
 	public void setUnique(boolean newUnique) {
 
 		boolean oldUnique = unique;
@@ -912,6 +918,7 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 	 * @generated
 	 */
 
+	@Override
 	public void setMinInclusive(boolean newMinInclusive) {
 
 		boolean oldMinInclusive = minInclusive;
@@ -944,6 +951,7 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 	 * @generated
 	 */
 
+	@Override
 	public void setMaxInclusive(boolean newMaxInclusive) {
 
 		boolean oldMaxInclusive = maxInclusive;
@@ -996,6 +1004,7 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedDefaultValue(DataValue newOwnedDefaultValue) {
 
 		if (newOwnedDefaultValue != ownedDefaultValue) {
@@ -1055,6 +1064,7 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedMinValue(DataValue newOwnedMinValue) {
 
 		if (newOwnedMinValue != ownedMinValue) {
@@ -1114,6 +1124,7 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedMaxValue(DataValue newOwnedMaxValue) {
 
 		if (newOwnedMaxValue != ownedMaxValue) {
@@ -1173,6 +1184,7 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedNullValue(DataValue newOwnedNullValue) {
 
 		if (newOwnedNullValue != ownedNullValue) {
@@ -1232,6 +1244,7 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedMinCard(NumericValue newOwnedMinCard) {
 
 		if (newOwnedMinCard != ownedMinCard) {
@@ -1291,6 +1304,7 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedMinLength(NumericValue newOwnedMinLength) {
 
 		if (newOwnedMinLength != ownedMinLength) {
@@ -1350,6 +1364,7 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedMaxCard(NumericValue newOwnedMaxCard) {
 
 		if (newOwnedMaxCard != ownedMaxCard) {
@@ -1409,6 +1424,7 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedMaxLength(NumericValue newOwnedMaxLength) {
 
 		if (newOwnedMaxLength != ownedMaxLength) {
@@ -1448,6 +1464,7 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 	 * @generated
 	 */
 
+	@Override
 	public void setFinal(boolean newFinal) {
 
 		boolean oldFinal = final_;
@@ -1480,6 +1497,7 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 	 * @generated
 	 */
 
+	@Override
 	public void setAggregationKind(AggregationKind newAggregationKind) {
 
 		AggregationKind oldAggregationKind = aggregationKind;
@@ -1512,6 +1530,7 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 	 * @generated
 	 */
 
+	@Override
 	public void setIsDerived(boolean newIsDerived) {
 
 		boolean oldIsDerived = isDerived;
@@ -1544,6 +1563,7 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 	 * @generated
 	 */
 
+	@Override
 	public void setIsReadOnly(boolean newIsReadOnly) {
 
 		boolean oldIsReadOnly = isReadOnly;
@@ -1576,6 +1596,7 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 	 * @generated
 	 */
 
+	@Override
 	public void setIsPartOfKey(boolean newIsPartOfKey) {
 
 		boolean oldIsPartOfKey = isPartOfKey;
@@ -1808,6 +1829,7 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 	 * @generated
 	 */
 
+	@Override
 	public void setOrientation(OrientationPortKind newOrientation) {
 
 		OrientationPortKind oldOrientation = orientation;
@@ -1840,6 +1862,7 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 	 * @generated
 	 */
 
+	@Override
 	public void setKind(ComponentPortKind newKind) {
 
 		ComponentPortKind oldKind = kind;
@@ -2693,7 +2716,7 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (isAbstract: "); //$NON-NLS-1$
 		result.append(isAbstract);
 		result.append(", isStatic: "); //$NON-NLS-1$

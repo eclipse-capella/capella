@@ -128,6 +128,7 @@ public class EnumerationPropertyValueImpl extends AbstractPropertyValueImpl impl
 	 * @generated
 	 */
 
+	@Override
 	public void setType(EnumerationPropertyType newType) {
 
 		EnumerationPropertyType oldType = type;
@@ -181,6 +182,7 @@ public class EnumerationPropertyValueImpl extends AbstractPropertyValueImpl impl
 	 * @generated
 	 */
 
+	@Override
 	public void setValue(EnumerationPropertyLiteral newValue) {
 
 		EnumerationPropertyLiteral oldValue = value;

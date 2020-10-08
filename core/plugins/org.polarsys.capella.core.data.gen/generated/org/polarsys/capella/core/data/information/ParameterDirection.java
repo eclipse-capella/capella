@@ -28,6 +28,7 @@ import org.eclipse.emf.common.util.Enumerator;
  *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping enum='ParameterDirectionKind'"
  *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies the direction in which data is passed along through a parameter \r\n[source: Capella study]' constraints='none' comment/notes='could be renamed ParameterDirectionKind to match UML'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ParameterDirectionKind' explanation='none' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public enum ParameterDirection implements Enumerator {
@@ -309,6 +310,7 @@ public enum ParameterDirection implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getValue() {
 	  return value;
 	}
@@ -318,6 +320,7 @@ public enum ParameterDirection implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 	  return name;
 	}
@@ -327,6 +330,7 @@ public enum ParameterDirection implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getLiteral() {
 	  return literal;
 	}

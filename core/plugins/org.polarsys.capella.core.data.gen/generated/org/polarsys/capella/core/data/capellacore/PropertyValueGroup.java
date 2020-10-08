@@ -29,6 +29,7 @@ import org.eclipse.emf.common.util.EList;
  * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getPropertyValueGroup()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Package that contain property values\r\n[Capella study]' usage\040guideline='none' used\040in\040levels='operational, system, logical, physical, epbs' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='uml::Comment' explanation='none' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface PropertyValueGroup extends Namespace {
@@ -53,6 +54,7 @@ public interface PropertyValueGroup extends Namespace {
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the model elements to which this property group is applied\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='appliedPropertyValueGroups'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

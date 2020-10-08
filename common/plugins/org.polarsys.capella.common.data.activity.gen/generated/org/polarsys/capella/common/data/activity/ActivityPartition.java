@@ -58,6 +58,7 @@ public interface ActivityPartition extends ActivityGroup, AbstractNamedElement {
 	 * @see org.polarsys.capella.common.data.activity.ActivityPackage#getActivityPartition_IsDimension()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Tells whether the partition groups other partitions along a dimension\r\n[source: UML superstructure v2.2]' constraints='none' type='n/a' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ActivityPartition::isDimension' explanation='none' constraints='Cardinality of uml::ActivityPartition::isDimension is [1..1]'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -98,6 +99,7 @@ public interface ActivityPartition extends ActivityGroup, AbstractNamedElement {
 	 * @see org.polarsys.capella.common.data.activity.ActivityPackage#getActivityPartition_IsExternal()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Tells whether the partition represents an entity to which the partitioning structure does not apply\r\n[source: UML superstructure v2.2]' constraints='none' type='n/a' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ActivityPartition::isExternal' explanation='none' constraints='Cardinality of uml::ActivityPartition::isExternal is [1..1]'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

@@ -21,7 +21,7 @@ package org.polarsys.capella.core.data.capellamodeller;
  *
  *
  * @see org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage#getLibrary()
- * @model
+ * @model annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 

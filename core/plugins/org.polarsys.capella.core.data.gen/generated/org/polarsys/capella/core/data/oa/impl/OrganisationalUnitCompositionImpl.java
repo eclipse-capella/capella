@@ -129,6 +129,7 @@ public class OrganisationalUnitCompositionImpl extends NamedElementImpl implemen
 	 * @generated
 	 */
 
+	@Override
 	public void setOrganisationalUnit(OrganisationalUnit newOrganisationalUnit) {
 
 		OrganisationalUnit oldOrganisationalUnit = organisationalUnit;
@@ -182,6 +183,7 @@ public class OrganisationalUnitCompositionImpl extends NamedElementImpl implemen
 	 * @generated
 	 */
 
+	@Override
 	public void setParticipatingEntity(Entity newParticipatingEntity) {
 
 		Entity oldParticipatingEntity = participatingEntity;

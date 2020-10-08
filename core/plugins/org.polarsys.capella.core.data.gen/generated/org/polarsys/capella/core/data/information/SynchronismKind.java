@@ -27,6 +27,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping enum='SynchronismKind'"
  *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies the synchronicity of an operation invocation\r\n[source: Capella study]' constraints='none' comment/notes='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='No equivalent enum on uml Operations. The two other candidates (CallOperationAction::isSynchronous or Message::messageSort) are not appropriate (different semantics)' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public enum SynchronismKind implements Enumerator {
@@ -222,6 +223,7 @@ public enum SynchronismKind implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getValue() {
 	  return value;
 	}
@@ -231,6 +233,7 @@ public enum SynchronismKind implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 	  return name;
 	}
@@ -240,6 +243,7 @@ public enum SynchronismKind implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getLiteral() {
 	  return literal;
 	}

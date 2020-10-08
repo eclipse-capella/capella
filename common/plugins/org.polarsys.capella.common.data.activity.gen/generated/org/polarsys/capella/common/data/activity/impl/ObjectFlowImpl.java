@@ -156,6 +156,7 @@ public abstract class ObjectFlowImpl extends ActivityEdgeImpl implements ObjectF
 	 * @generated
 	 */
 
+	@Override
 	public void setIsMulticast(boolean newIsMulticast) {
 
 		boolean oldIsMulticast = isMulticast;
@@ -188,6 +189,7 @@ public abstract class ObjectFlowImpl extends ActivityEdgeImpl implements ObjectF
 	 * @generated
 	 */
 
+	@Override
 	public void setIsMultireceive(boolean newIsMultireceive) {
 
 		boolean oldIsMultireceive = isMultireceive;
@@ -241,6 +243,7 @@ public abstract class ObjectFlowImpl extends ActivityEdgeImpl implements ObjectF
 	 * @generated
 	 */
 
+	@Override
 	public void setTransformation(AbstractBehavior newTransformation) {
 
 		AbstractBehavior oldTransformation = transformation;
@@ -294,6 +297,7 @@ public abstract class ObjectFlowImpl extends ActivityEdgeImpl implements ObjectF
 	 * @generated
 	 */
 
+	@Override
 	public void setSelection(AbstractBehavior newSelection) {
 
 		AbstractBehavior oldSelection = selection;
@@ -409,7 +413,7 @@ public abstract class ObjectFlowImpl extends ActivityEdgeImpl implements ObjectF
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (isMulticast: "); //$NON-NLS-1$
 		result.append(isMulticast);
 		result.append(", isMultireceive: "); //$NON-NLS-1$

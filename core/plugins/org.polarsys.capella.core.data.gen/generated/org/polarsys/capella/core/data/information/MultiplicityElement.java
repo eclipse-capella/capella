@@ -65,6 +65,7 @@ public interface MultiplicityElement extends CapellaElement {
 	 * @see org.polarsys.capella.core.data.information.InformationPackage#getMultiplicityElement_Ordered()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='For a multivalued multiplicity, this attribute specifies whether the values in an instantiation of this element are\r\nsequentially ordered\r\n[source: UML superstructure v2.2]' constraints='none' type='n/a' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -105,6 +106,7 @@ public interface MultiplicityElement extends CapellaElement {
 	 * @see org.polarsys.capella.core.data.information.InformationPackage#getMultiplicityElement_Unique()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies whether or not this element is unique\r\n[source: Capella study]' constraints='none' type='true is element is unique' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -145,6 +147,7 @@ public interface MultiplicityElement extends CapellaElement {
 	 * @see org.polarsys.capella.core.data.information.InformationPackage#getMultiplicityElement_MinInclusive()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies whether the min value of the range is included or not\r\n[source: Capella light-light study]' constraints='none' type='n/a' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -185,6 +188,7 @@ public interface MultiplicityElement extends CapellaElement {
 	 * @see org.polarsys.capella.core.data.information.InformationPackage#getMultiplicityElement_MaxInclusive()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies whether the max value of the range is included or not\r\n[source: Capella light-light study]' constraints='none' type='n/a' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -225,8 +229,10 @@ public interface MultiplicityElement extends CapellaElement {
 	 * @see org.polarsys.capella.core.data.information.InformationPackage#getMultiplicityElement_OwnedDefaultValue()
 	 * @model containment="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='Default Value'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the value assigned by default to this multiplicity element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='none' constraints='Elements on which DataValue stereotype or any stereotype that inherits from it is applied'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -268,8 +274,10 @@ public interface MultiplicityElement extends CapellaElement {
 	 * @model containment="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='lowerValue' featureOwner='MultiplicityElement'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='Min Value'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='minimum specified value for this element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -311,8 +319,10 @@ public interface MultiplicityElement extends CapellaElement {
 	 * @model containment="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='upperValue' featureOwner='MultiplicityElement'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='Max Value'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specified max value for this element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -353,8 +363,10 @@ public interface MultiplicityElement extends CapellaElement {
 	 * @see org.polarsys.capella.core.data.information.InformationPackage#getMultiplicityElement_OwnedNullValue()
 	 * @model containment="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='Null value'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the reference to the null value among the set of values contained in this MultiplicityElement\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='none' constraints='Elements on which DataValue stereotype or any stereotype that inherits from it is applied'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -396,8 +408,10 @@ public interface MultiplicityElement extends CapellaElement {
 	 * @model containment="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='lowerValue' featureOwner='MultiplicityElement'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='Min Card'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specifies the lower bound of the multiplicity interval, if it is expressed as an integer\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -439,8 +453,10 @@ public interface MultiplicityElement extends CapellaElement {
 	 * @model containment="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='lowerValue' featureOwner='MultiplicityElement'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='Min Length'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specified minimum length for this element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='none' constraints='Elements on which NumericValue stereotype or any stereotype that inherits from it is applied'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -482,8 +498,10 @@ public interface MultiplicityElement extends CapellaElement {
 	 * @model containment="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='upperValue' featureOwner='MultiplicityElement'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='Max Card'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specifies the upper bound of the multiplicity interval, if it is expressed as an unlimited natural\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -525,8 +543,10 @@ public interface MultiplicityElement extends CapellaElement {
 	 * @model containment="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='upperValue' featureOwner='MultiplicityElement'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='Max Length'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specified max length for this element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='none' constraints='Elements on which NumericValue stereotype or any stereotype that inherits from it is applied'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

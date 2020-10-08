@@ -112,6 +112,7 @@ public class CapabilityConfigurationImpl extends AbstractConceptItemImpl impleme
 	 * @generated
 	 */
 
+	@Override
 	public void setConfiguredCapability(OperationalCapability newConfiguredCapability) {
 
 		OperationalCapability oldConfiguredCapability = configuredCapability;

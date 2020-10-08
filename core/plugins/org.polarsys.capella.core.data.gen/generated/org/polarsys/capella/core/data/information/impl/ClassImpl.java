@@ -189,6 +189,7 @@ public class ClassImpl extends GeneralClassImpl implements org.polarsys.capella.
 	 * @generated
 	 */
 
+	@Override
 	public void setIsPrimitive(boolean newIsPrimitive) {
 
 		boolean oldIsPrimitive = isPrimitive;
@@ -509,7 +510,7 @@ public class ClassImpl extends GeneralClassImpl implements org.polarsys.capella.
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (isPrimitive: "); //$NON-NLS-1$
 		result.append(isPrimitive);
 		result.append(')');

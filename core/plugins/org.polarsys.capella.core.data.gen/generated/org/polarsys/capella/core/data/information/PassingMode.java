@@ -28,6 +28,7 @@ import org.eclipse.emf.common.util.Enumerator;
  *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping enum='PassingMode'"
  *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies the data passing mechanism for parameters of an operation\r\n[source: Capella study]' constraints='none' comment/notes='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public enum PassingMode implements Enumerator {
@@ -223,6 +224,7 @@ public enum PassingMode implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getValue() {
 	  return value;
 	}
@@ -232,6 +234,7 @@ public enum PassingMode implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 	  return name;
 	}
@@ -241,6 +244,7 @@ public enum PassingMode implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getLiteral() {
 	  return literal;
 	}

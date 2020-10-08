@@ -107,6 +107,7 @@ public class ReuseLinkImpl extends RelationshipImpl implements ReuseLink {
 	 * @generated
 	 */
 
+	@Override
 	public void setReused(ReuseableStructure newReused) {
 
 		ReuseableStructure oldReused = reused;
@@ -160,6 +161,7 @@ public class ReuseLinkImpl extends RelationshipImpl implements ReuseLink {
 	 * @generated
 	 */
 
+	@Override
 	public void setReuser(ReuserStructure newReuser) {
 
 		ReuserStructure oldReuser = reuser;

@@ -173,6 +173,7 @@ public class ComponentInstanceImpl extends AbstractPhysicalInstanceImpl implemen
 	 * @generated
 	 */
 
+	@Override
 	public void setName(String newName) {
 
 		String oldName = name;
@@ -403,6 +404,7 @@ public class ComponentInstanceImpl extends AbstractPhysicalInstanceImpl implemen
 	 * @generated
 	 */
 
+	@Override
 	public void setType(PhysicalComponent newType) {
 
 		PhysicalComponent oldType = type;
@@ -611,7 +613,7 @@ public class ComponentInstanceImpl extends AbstractPhysicalInstanceImpl implemen
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: "); //$NON-NLS-1$
 		result.append(name);
 		result.append(')');

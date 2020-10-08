@@ -52,6 +52,7 @@ public interface Location extends AbstractConceptItem {
 	 * @see org.polarsys.capella.core.data.oa.OaPackage#getLocation_LocationDescription()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='a textual description of this location\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
