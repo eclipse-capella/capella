@@ -26,6 +26,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * @see org.polarsys.capella.core.data.information.datavalue.DatavaluePackage#getBinaryOperator()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specifies the kind of this binary operator' constraints='none' comment/notes='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public enum BinaryOperator implements Enumerator {
@@ -471,6 +472,7 @@ public enum BinaryOperator implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getValue() {
 	  return value;
 	}
@@ -480,6 +482,7 @@ public enum BinaryOperator implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 	  return name;
 	}
@@ -489,6 +492,7 @@ public enum BinaryOperator implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getLiteral() {
 	  return literal;
 	}

@@ -37,6 +37,7 @@ import org.polarsys.capella.core.data.information.ExchangeItem;
  * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChainInvolvementLink()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies the involvement of a model element in form of link in a functional chain\r\n[source: Capella study]' usage\040guideline='n/a' used\040in\040levels='operational,system,logical,physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 
@@ -58,7 +59,7 @@ public interface FunctionalChainInvolvementLink extends FunctionalChainInvolveme
 	 * @return the value of the '<em>Exchange Context</em>' reference.
 	 * @see #setExchangeContext(Constraint)
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChainInvolvementLink_ExchangeContext()
-	 * @model
+	 * @model annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -99,6 +100,7 @@ public interface FunctionalChainInvolvementLink extends FunctionalChainInvolveme
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChainInvolvementLink_ExchangedItems()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the ExchangeItems carried by this Functional Chain Involvement Link' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -119,7 +121,7 @@ public interface FunctionalChainInvolvementLink extends FunctionalChainInvolveme
 	 * @return the value of the '<em>Source</em>' reference.
 	 * @see #setSource(FunctionalChainInvolvementFunction)
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChainInvolvementLink_Source()
-	 * @model
+	 * @model annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -155,7 +157,7 @@ public interface FunctionalChainInvolvementLink extends FunctionalChainInvolveme
 	 * @return the value of the '<em>Target</em>' reference.
 	 * @see #setTarget(FunctionalChainInvolvementFunction)
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChainInvolvementLink_Target()
-	 * @model
+	 * @model annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

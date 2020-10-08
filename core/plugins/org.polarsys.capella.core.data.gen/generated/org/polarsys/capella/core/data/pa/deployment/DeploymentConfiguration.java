@@ -34,6 +34,7 @@ import org.polarsys.capella.core.data.cs.AbstractDeploymentLink;
  *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping metaclass='Package' stereotype='eng.DeploymentConfiguration'"
  *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='a consistent set of deployment specifications\r\n[source: Capella study]' usage\040guideline='n/a' used\040in\040levels='physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='uml::Package' explanation='none' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface DeploymentConfiguration extends NamedElement {
@@ -59,6 +60,7 @@ public interface DeploymentConfiguration extends NamedElement {
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='deployments'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the deployment specifications that are part of this deployment configuration\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Namespace::elementImport' explanation='none' constraints='uml::Namespace::elementImport elements on which AbstractDeployment stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -84,6 +86,7 @@ public interface DeploymentConfiguration extends NamedElement {
 	 * @see org.polarsys.capella.core.data.pa.deployment.DeploymentPackage#getDeploymentConfiguration_OwnedPhysicalInstances()
 	 * @model containment="true" resolveProxies="true"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

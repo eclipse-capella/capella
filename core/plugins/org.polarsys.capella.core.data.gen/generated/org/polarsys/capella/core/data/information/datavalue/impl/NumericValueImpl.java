@@ -125,6 +125,7 @@ public abstract class NumericValueImpl extends DataValueImpl implements NumericV
 	 * @generated
 	 */
 
+	@Override
 	public void setUnit(Unit newUnit) {
 
 		Unit oldUnit = unit;

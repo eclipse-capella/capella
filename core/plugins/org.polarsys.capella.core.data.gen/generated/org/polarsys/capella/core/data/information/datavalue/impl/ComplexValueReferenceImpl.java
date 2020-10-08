@@ -128,6 +128,7 @@ public class ComplexValueReferenceImpl extends AbstractComplexValueImpl implemen
 	 * @generated
 	 */
 
+	@Override
 	public void setReferencedValue(AbstractComplexValue newReferencedValue) {
 
 		AbstractComplexValue oldReferencedValue = referencedValue;
@@ -181,6 +182,7 @@ public class ComplexValueReferenceImpl extends AbstractComplexValueImpl implemen
 	 * @generated
 	 */
 
+	@Override
 	public void setReferencedProperty(Property newReferencedProperty) {
 
 		Property oldReferencedProperty = referencedProperty;

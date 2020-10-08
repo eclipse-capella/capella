@@ -199,6 +199,7 @@ public class CapabilityInvolvementImpl extends RelationshipImpl implements Capab
 	 * @generated
 	 */
 
+	@Override
 	public void setInvolved(InvolvedElement newInvolved) {
 
 		InvolvedElement oldInvolved = involved;

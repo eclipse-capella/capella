@@ -510,6 +510,7 @@ public class FunctionalExchangeImpl extends NamedElementImpl implements Function
 	 * @generated
 	 */
 
+	@Override
 	public void setRealizedFlow(AbstractInformationFlow newRealizedFlow) {
 
 		if (newRealizedFlow != realizedFlow) {
@@ -596,6 +597,7 @@ public class FunctionalExchangeImpl extends NamedElementImpl implements Function
 	 * @generated
 	 */
 
+	@Override
 	public void setKindOfRate(RateKind newKindOfRate) {
 
 		RateKind oldKindOfRate = kindOfRate;
@@ -852,6 +854,7 @@ public class FunctionalExchangeImpl extends NamedElementImpl implements Function
 	 * @generated
 	 */
 
+	@Override
 	public void setRate(ValueSpecification newRate) {
 
 		if (newRate != rate) {
@@ -938,6 +941,7 @@ public class FunctionalExchangeImpl extends NamedElementImpl implements Function
 	 * @generated
 	 */
 
+	@Override
 	public void setProbability(ValueSpecification newProbability) {
 
 		if (newProbability != probability) {
@@ -998,6 +1002,7 @@ public class FunctionalExchangeImpl extends NamedElementImpl implements Function
 	 * @generated
 	 */
 
+	@Override
 	public void setTarget(ActivityNode newTarget) {
 
 		ActivityNode oldTarget = target;
@@ -1051,6 +1056,7 @@ public class FunctionalExchangeImpl extends NamedElementImpl implements Function
 	 * @generated
 	 */
 
+	@Override
 	public void setSource(ActivityNode newSource) {
 
 		ActivityNode oldSource = source;
@@ -1130,6 +1136,7 @@ public class FunctionalExchangeImpl extends NamedElementImpl implements Function
 	 * @generated
 	 */
 
+	@Override
 	public void setGuard(ValueSpecification newGuard) {
 
 		if (newGuard != guard) {
@@ -1216,6 +1223,7 @@ public class FunctionalExchangeImpl extends NamedElementImpl implements Function
 	 * @generated
 	 */
 
+	@Override
 	public void setWeight(ValueSpecification newWeight) {
 
 		if (newWeight != weight) {
@@ -1296,6 +1304,7 @@ public class FunctionalExchangeImpl extends NamedElementImpl implements Function
 	 * @generated
 	 */
 
+	@Override
 	public void setInterrupts(InterruptibleActivityRegion newInterrupts) {
 
 		if (newInterrupts != interrupts) {
@@ -1335,6 +1344,7 @@ public class FunctionalExchangeImpl extends NamedElementImpl implements Function
 	 * @generated
 	 */
 
+	@Override
 	public void setIsMulticast(boolean newIsMulticast) {
 
 		boolean oldIsMulticast = isMulticast;
@@ -1367,6 +1377,7 @@ public class FunctionalExchangeImpl extends NamedElementImpl implements Function
 	 * @generated
 	 */
 
+	@Override
 	public void setIsMultireceive(boolean newIsMultireceive) {
 
 		boolean oldIsMultireceive = isMultireceive;
@@ -1420,6 +1431,7 @@ public class FunctionalExchangeImpl extends NamedElementImpl implements Function
 	 * @generated
 	 */
 
+	@Override
 	public void setTransformation(AbstractBehavior newTransformation) {
 
 		AbstractBehavior oldTransformation = transformation;
@@ -1473,6 +1485,7 @@ public class FunctionalExchangeImpl extends NamedElementImpl implements Function
 	 * @generated
 	 */
 
+	@Override
 	public void setSelection(AbstractBehavior newSelection) {
 
 		AbstractBehavior oldSelection = selection;
@@ -2616,7 +2629,7 @@ public class FunctionalExchangeImpl extends NamedElementImpl implements Function
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (kindOfRate: "); //$NON-NLS-1$
 		result.append(kindOfRate);
 		result.append(", isMulticast: "); //$NON-NLS-1$

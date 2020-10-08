@@ -15,6 +15,7 @@ package org.polarsys.capella.common.libraries.util;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
+import org.polarsys.capella.common.libraries.*;
 import org.polarsys.capella.common.libraries.LibrariesPackage;
 import org.polarsys.capella.common.libraries.LibraryAbstractElement;
 import org.polarsys.capella.common.libraries.LibraryReference;

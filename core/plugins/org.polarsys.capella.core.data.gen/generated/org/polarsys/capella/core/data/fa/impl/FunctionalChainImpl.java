@@ -403,6 +403,7 @@ public class FunctionalChainImpl extends NamedElementImpl implements FunctionalC
 	 * @generated
 	 */
 
+	@Override
 	public void setKind(FunctionalChainKind newKind) {
 
 		FunctionalChainKind oldKind = kind;
@@ -1022,6 +1023,7 @@ public class FunctionalChainImpl extends NamedElementImpl implements FunctionalC
 	 * @generated
 	 */
 
+	@Override
 	public void setPreCondition(Constraint newPreCondition) {
 
 		Constraint oldPreCondition = preCondition;
@@ -1067,6 +1069,7 @@ public class FunctionalChainImpl extends NamedElementImpl implements FunctionalC
 	 * @generated
 	 */
 
+	@Override
 	public void setPostCondition(Constraint newPostCondition) {
 
 		Constraint oldPostCondition = postCondition;
@@ -1369,7 +1372,7 @@ public class FunctionalChainImpl extends NamedElementImpl implements FunctionalC
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (kind: "); //$NON-NLS-1$
 		result.append(kind);
 		result.append(')');

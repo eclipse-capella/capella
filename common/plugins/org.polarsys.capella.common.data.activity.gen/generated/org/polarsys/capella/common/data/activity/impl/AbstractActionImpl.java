@@ -207,6 +207,7 @@ public abstract class AbstractActionImpl extends ExecutableNodeImpl implements A
 	 * @generated
 	 */
 
+	@Override
 	public void setLocalPrecondition(AbstractConstraint newLocalPrecondition) {
 
 		if (newLocalPrecondition != localPrecondition) {
@@ -293,6 +294,7 @@ public abstract class AbstractActionImpl extends ExecutableNodeImpl implements A
 	 * @generated
 	 */
 
+	@Override
 	public void setLocalPostcondition(AbstractConstraint newLocalPostcondition) {
 
 		if (newLocalPostcondition != localPostcondition) {
@@ -353,6 +355,7 @@ public abstract class AbstractActionImpl extends ExecutableNodeImpl implements A
 	 * @generated
 	 */
 
+	@Override
 	public void setContext(AbstractType newContext) {
 
 		AbstractType oldContext = context;

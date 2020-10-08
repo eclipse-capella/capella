@@ -129,6 +129,7 @@ public abstract class TraceImpl extends RelationshipImpl implements Trace {
 	 * @generated
 	 */
 
+	@Override
 	public void setTargetElement(TraceableElement newTargetElement) {
 
 		TraceableElement oldTargetElement = targetElement;
@@ -182,6 +183,7 @@ public abstract class TraceImpl extends RelationshipImpl implements Trace {
 	 * @generated
 	 */
 
+	@Override
 	public void setSourceElement(TraceableElement newSourceElement) {
 
 		TraceableElement oldSourceElement = sourceElement;

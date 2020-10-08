@@ -157,7 +157,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-	 * 
+	 *
 	 * <p>This method is used to initialize {@link RequirementPackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
@@ -171,7 +171,8 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 		if (isInited) return (RequirementPackage)EPackage.Registry.INSTANCE.getEPackage(RequirementPackage.eNS_URI);
 
 		// Obtain or create and register package
-		RequirementPackageImpl theRequirementPackage = (RequirementPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof RequirementPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new RequirementPackageImpl());
+		Object registeredRequirementPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+		RequirementPackageImpl theRequirementPackage = registeredRequirementPackage instanceof RequirementPackageImpl ? (RequirementPackageImpl)registeredRequirementPackage : new RequirementPackageImpl();
 
 		isInited = true;
 
@@ -182,23 +183,40 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 		BehaviorPackage.eINSTANCE.eClass();
 
 		// Obtain or create and register interdependencies
-		CapellamodellerPackageImpl theCapellamodellerPackage = (CapellamodellerPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(CapellamodellerPackage.eNS_URI) instanceof CapellamodellerPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(CapellamodellerPackage.eNS_URI) : CapellamodellerPackage.eINSTANCE);
-		CapellacorePackageImpl theCapellacorePackage = (CapellacorePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(CapellacorePackage.eNS_URI) instanceof CapellacorePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(CapellacorePackage.eNS_URI) : CapellacorePackage.eINSTANCE);
-		OaPackageImpl theOaPackage = (OaPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(OaPackage.eNS_URI) instanceof OaPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(OaPackage.eNS_URI) : OaPackage.eINSTANCE);
-		CtxPackageImpl theCtxPackage = (CtxPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(CtxPackage.eNS_URI) instanceof CtxPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(CtxPackage.eNS_URI) : CtxPackage.eINSTANCE);
-		LaPackageImpl theLaPackage = (LaPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(LaPackage.eNS_URI) instanceof LaPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(LaPackage.eNS_URI) : LaPackage.eINSTANCE);
-		PaPackageImpl thePaPackage = (PaPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(PaPackage.eNS_URI) instanceof PaPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(PaPackage.eNS_URI) : PaPackage.eINSTANCE);
-		DeploymentPackageImpl theDeploymentPackage = (DeploymentPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(DeploymentPackage.eNS_URI) instanceof DeploymentPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(DeploymentPackage.eNS_URI) : DeploymentPackage.eINSTANCE);
-		EpbsPackageImpl theEpbsPackage = (EpbsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(EpbsPackage.eNS_URI) instanceof EpbsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(EpbsPackage.eNS_URI) : EpbsPackage.eINSTANCE);
-		SharedmodelPackageImpl theSharedmodelPackage = (SharedmodelPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(SharedmodelPackage.eNS_URI) instanceof SharedmodelPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(SharedmodelPackage.eNS_URI) : SharedmodelPackage.eINSTANCE);
-		CapellacommonPackageImpl theCapellacommonPackage = (CapellacommonPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(CapellacommonPackage.eNS_URI) instanceof CapellacommonPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(CapellacommonPackage.eNS_URI) : CapellacommonPackage.eINSTANCE);
-		InformationPackageImpl theInformationPackage = (InformationPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(InformationPackage.eNS_URI) instanceof InformationPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(InformationPackage.eNS_URI) : InformationPackage.eINSTANCE);
-		CommunicationPackageImpl theCommunicationPackage = (CommunicationPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(CommunicationPackage.eNS_URI) instanceof CommunicationPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(CommunicationPackage.eNS_URI) : CommunicationPackage.eINSTANCE);
-		DatatypePackageImpl theDatatypePackage = (DatatypePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(DatatypePackage.eNS_URI) instanceof DatatypePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(DatatypePackage.eNS_URI) : DatatypePackage.eINSTANCE);
-		DatavaluePackageImpl theDatavaluePackage = (DatavaluePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(DatavaluePackage.eNS_URI) instanceof DatavaluePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(DatavaluePackage.eNS_URI) : DatavaluePackage.eINSTANCE);
-		CsPackageImpl theCsPackage = (CsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(CsPackage.eNS_URI) instanceof CsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(CsPackage.eNS_URI) : CsPackage.eINSTANCE);
-		FaPackageImpl theFaPackage = (FaPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(FaPackage.eNS_URI) instanceof FaPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(FaPackage.eNS_URI) : FaPackage.eINSTANCE);
-		InteractionPackageImpl theInteractionPackage = (InteractionPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(InteractionPackage.eNS_URI) instanceof InteractionPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(InteractionPackage.eNS_URI) : InteractionPackage.eINSTANCE);
+		Object registeredPackage = EPackage.Registry.INSTANCE.getEPackage(CapellamodellerPackage.eNS_URI);
+		CapellamodellerPackageImpl theCapellamodellerPackage = (CapellamodellerPackageImpl)(registeredPackage instanceof CapellamodellerPackageImpl ? registeredPackage : CapellamodellerPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(CapellacorePackage.eNS_URI);
+		CapellacorePackageImpl theCapellacorePackage = (CapellacorePackageImpl)(registeredPackage instanceof CapellacorePackageImpl ? registeredPackage : CapellacorePackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(OaPackage.eNS_URI);
+		OaPackageImpl theOaPackage = (OaPackageImpl)(registeredPackage instanceof OaPackageImpl ? registeredPackage : OaPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(CtxPackage.eNS_URI);
+		CtxPackageImpl theCtxPackage = (CtxPackageImpl)(registeredPackage instanceof CtxPackageImpl ? registeredPackage : CtxPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(LaPackage.eNS_URI);
+		LaPackageImpl theLaPackage = (LaPackageImpl)(registeredPackage instanceof LaPackageImpl ? registeredPackage : LaPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(PaPackage.eNS_URI);
+		PaPackageImpl thePaPackage = (PaPackageImpl)(registeredPackage instanceof PaPackageImpl ? registeredPackage : PaPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(DeploymentPackage.eNS_URI);
+		DeploymentPackageImpl theDeploymentPackage = (DeploymentPackageImpl)(registeredPackage instanceof DeploymentPackageImpl ? registeredPackage : DeploymentPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(EpbsPackage.eNS_URI);
+		EpbsPackageImpl theEpbsPackage = (EpbsPackageImpl)(registeredPackage instanceof EpbsPackageImpl ? registeredPackage : EpbsPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(SharedmodelPackage.eNS_URI);
+		SharedmodelPackageImpl theSharedmodelPackage = (SharedmodelPackageImpl)(registeredPackage instanceof SharedmodelPackageImpl ? registeredPackage : SharedmodelPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(CapellacommonPackage.eNS_URI);
+		CapellacommonPackageImpl theCapellacommonPackage = (CapellacommonPackageImpl)(registeredPackage instanceof CapellacommonPackageImpl ? registeredPackage : CapellacommonPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(InformationPackage.eNS_URI);
+		InformationPackageImpl theInformationPackage = (InformationPackageImpl)(registeredPackage instanceof InformationPackageImpl ? registeredPackage : InformationPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(CommunicationPackage.eNS_URI);
+		CommunicationPackageImpl theCommunicationPackage = (CommunicationPackageImpl)(registeredPackage instanceof CommunicationPackageImpl ? registeredPackage : CommunicationPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(DatatypePackage.eNS_URI);
+		DatatypePackageImpl theDatatypePackage = (DatatypePackageImpl)(registeredPackage instanceof DatatypePackageImpl ? registeredPackage : DatatypePackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(DatavaluePackage.eNS_URI);
+		DatavaluePackageImpl theDatavaluePackage = (DatavaluePackageImpl)(registeredPackage instanceof DatavaluePackageImpl ? registeredPackage : DatavaluePackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(CsPackage.eNS_URI);
+		CsPackageImpl theCsPackage = (CsPackageImpl)(registeredPackage instanceof CsPackageImpl ? registeredPackage : CsPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(FaPackage.eNS_URI);
+		FaPackageImpl theFaPackage = (FaPackageImpl)(registeredPackage instanceof FaPackageImpl ? registeredPackage : FaPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(InteractionPackage.eNS_URI);
+		InteractionPackageImpl theInteractionPackage = (InteractionPackageImpl)(registeredPackage instanceof InteractionPackageImpl ? registeredPackage : InteractionPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theRequirementPackage.createPackageContents();
@@ -243,7 +261,6 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 		// Mark meta-data to indicate it can't be changed
 		theRequirementPackage.freeze();
 
-  
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(RequirementPackage.eNS_URI, theRequirementPackage);
 		return theRequirementPackage;
@@ -254,6 +271,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getRequirementsPkg() {
 		return requirementsPkgEClass;
 	}
@@ -263,6 +281,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getRequirementsPkg_AdditionalInformation() {
 		return (EAttribute)requirementsPkgEClass.getEStructuralFeatures().get(0);
 	}
@@ -272,6 +291,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getRequirementsPkg_Level() {
 		return (EAttribute)requirementsPkgEClass.getEStructuralFeatures().get(1);
 	}
@@ -281,6 +301,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getRequirementsPkg_OwnedRequirements() {
 		return (EReference)requirementsPkgEClass.getEStructuralFeatures().get(2);
 	}
@@ -290,6 +311,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getRequirementsPkg_OwnedRequirementPkgs() {
 		return (EReference)requirementsPkgEClass.getEStructuralFeatures().get(3);
 	}
@@ -299,6 +321,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getRequirementsTrace() {
 		return requirementsTraceEClass;
 	}
@@ -308,6 +331,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getRequirementsTrace_Source() {
 		return (EReference)requirementsTraceEClass.getEStructuralFeatures().get(0);
 	}
@@ -317,6 +341,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getRequirementsTrace_Target() {
 		return (EReference)requirementsTraceEClass.getEStructuralFeatures().get(1);
 	}
@@ -326,6 +351,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getRequirement() {
 		return requirementEClass;
 	}
@@ -335,6 +361,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getRequirement_IsObsolete() {
 		return (EAttribute)requirementEClass.getEStructuralFeatures().get(0);
 	}
@@ -344,6 +371,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getRequirement_RequirementId() {
 		return (EAttribute)requirementEClass.getEStructuralFeatures().get(1);
 	}
@@ -353,6 +381,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getRequirement_AdditionalInformation() {
 		return (EAttribute)requirementEClass.getEStructuralFeatures().get(2);
 	}
@@ -362,6 +391,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getRequirement_VerificationMethod() {
 		return (EAttribute)requirementEClass.getEStructuralFeatures().get(3);
 	}
@@ -371,6 +401,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getRequirement_VerificationPhase() {
 		return (EAttribute)requirementEClass.getEStructuralFeatures().get(4);
 	}
@@ -380,6 +411,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getRequirement_ImplementationVersion() {
 		return (EAttribute)requirementEClass.getEStructuralFeatures().get(5);
 	}
@@ -389,6 +421,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getRequirement_Feature() {
 		return (EAttribute)requirementEClass.getEStructuralFeatures().get(6);
 	}
@@ -398,6 +431,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getRequirement_RelatedCapellaElements() {
 		return (EReference)requirementEClass.getEStructuralFeatures().get(7);
 	}
@@ -407,6 +441,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getSystemFunctionalInterfaceRequirement() {
 		return systemFunctionalInterfaceRequirementEClass;
 	}
@@ -416,6 +451,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getSystemFunctionalRequirement() {
 		return systemFunctionalRequirementEClass;
 	}
@@ -425,6 +461,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getSystemNonFunctionalInterfaceRequirement() {
 		return systemNonFunctionalInterfaceRequirementEClass;
 	}
@@ -434,6 +471,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getSystemNonFunctionalRequirement() {
 		return systemNonFunctionalRequirementEClass;
 	}
@@ -443,6 +481,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getSystemUserRequirement() {
 		return systemUserRequirementEClass;
 	}
@@ -452,6 +491,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public RequirementFactory getRequirementFactory() {
 		return (RequirementFactory)getEFactoryInstance();
 	}
@@ -609,211 +649,211 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 	 * @generated
 	 */
 	protected void createDocumentationAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/ecore/documentation"; //$NON-NLS-1$	
+		String source = "http://www.polarsys.org/kitalpha/ecore/documentation"; //$NON-NLS-1$
 		addAnnotation
-		  (this, 
-		   source, 
+		  (this,
+		   source,
 		   new String[] {
-			 "description", "Requirement aims at defining the requirements expression language.\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "This package depends on the model CapellaCore.ecore", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "Requirement aims at defining the requirements expression language.\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "This package depends on the model CapellaCore.ecore", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (requirementsPkgEClass, 
-		   source, 
+		  (requirementsPkgEClass,
+		   source,
 		   new String[] {
-			 "description", "a container for Requirement elements, and sub packages containing Requirements\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational,system,logical,physical,epbs", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "a container for Requirement elements, and sub packages containing Requirements\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "operational,system,logical,physical,epbs", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getRequirementsPkg_AdditionalInformation(), 
-		   source, 
+		  (getRequirementsPkg_AdditionalInformation(),
+		   source,
 		   new String[] {
-			 "description", "free information field to characterize this requirement package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "free information field to characterize this requirement package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getRequirementsPkg_Level(), 
-		   source, 
+		  (getRequirementsPkg_Level(),
+		   source,
 		   new String[] {
-			 "description", "the design level to which this requirement package applies\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "the design level to which this requirement package applies\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getRequirementsPkg_OwnedRequirements(), 
-		   source, 
+		  (getRequirementsPkg_OwnedRequirements(),
+		   source,
 		   new String[] {
-			 "description", "the Requirements contained in this requirement package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "the Requirements contained in this requirement package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getRequirementsPkg_OwnedRequirementPkgs(), 
-		   source, 
+		  (getRequirementsPkg_OwnedRequirementPkgs(),
+		   source,
 		   new String[] {
-			 "description", "the sub-(Requirement) packages contained in this requirement package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "the sub-(Requirement) packages contained in this requirement package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (requirementsTraceEClass, 
-		   source, 
+		  (requirementsTraceEClass,
+		   source,
 		   new String[] {
-			 "description", "a specialized kind of Trace to indicate the relationship between two Requirements\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "used to keep track of links between Requirements, typically which requirement answers to which other requirement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational,system,logical,physical,epbs", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "a specialized kind of Trace to indicate the relationship between two Requirements\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "used to keep track of links between Requirements, typically which requirement answers to which other requirement", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "operational,system,logical,physical,epbs", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (requirementEClass, 
-		   source, 
+		  (requirementEClass,
+		   source,
 		   new String[] {
-			 "description", "a capability or condition that must (or should) be satisfied\r\n[source: SysML glossary for SysML v1.0]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational,system,logical,physical,epbs", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "a capability or condition that must (or should) be satisfied\r\n[source: SysML glossary for SysML v1.0]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "operational,system,logical,physical,epbs", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getRequirement_IsObsolete(), 
-		   source, 
+		  (getRequirement_IsObsolete(),
+		   source,
 		   new String[] {
-			 "description", "field used to flag obsolete requirement (that for some reason we want to keep in the model though)\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "field used to flag obsolete requirement (that for some reason we want to keep in the model though)\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getRequirement_RequirementId(), 
-		   source, 
+		  (getRequirement_RequirementId(),
+		   source,
 		   new String[] {
-			 "description", "a unique identifier for this requirement\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "a unique identifier for this requirement\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getRequirement_AdditionalInformation(), 
-		   source, 
+		  (getRequirement_AdditionalInformation(),
+		   source,
 		   new String[] {
-			 "description", "a free field to capture any additional information required to complement this requirement statement\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "a free field to capture any additional information required to complement this requirement statement\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getRequirement_VerificationMethod(), 
-		   source, 
+		  (getRequirement_VerificationMethod(),
+		   source,
 		   new String[] {
-			 "description", "this field receives the description of the method that will be used to verify that this requirement is fulfilled.\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "this field receives the description of the method that will be used to verify that this requirement is fulfilled.\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getRequirement_VerificationPhase(), 
-		   source, 
+		  (getRequirement_VerificationPhase(),
+		   source,
 		   new String[] {
-			 "description", "a field receiving the description of the design phase in which this requirement can/will be verified\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "a field receiving the description of the design phase in which this requirement can/will be verified\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getRequirement_ImplementationVersion(), 
-		   source, 
+		  (getRequirement_ImplementationVersion(),
+		   source,
 		   new String[] {
-			 "description", "a unique identifier to keep track of the version of this requirement\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "a unique identifier to keep track of the version of this requirement\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getRequirement_Feature(), 
-		   source, 
+		  (getRequirement_Feature(),
+		   source,
 		   new String[] {
-			 "description", "the system feature that this requirement corresponds to\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "the system feature that this requirement corresponds to\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (systemFunctionalInterfaceRequirementEClass, 
-		   source, 
+		  (systemFunctionalInterfaceRequirementEClass,
+		   source,
 		   new String[] {
-			 "description", "A requirement related to an interface functional property", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational,system, logical", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "A requirement related to an interface functional property", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "operational,system, logical", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (systemFunctionalRequirementEClass, 
-		   source, 
+		  (systemFunctionalRequirementEClass,
+		   source,
 		   new String[] {
-			 "description", "A requirement related a system functional property", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational,system,logical", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "A requirement related a system functional property", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "operational,system,logical", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (systemNonFunctionalInterfaceRequirementEClass, 
-		   source, 
+		  (systemNonFunctionalInterfaceRequirementEClass,
+		   source,
 		   new String[] {
-			 "description", "Any non functional constraint to be satisfied at interfaces level.\r\n(e.g. resources usage, environmental constraints, criticity, performance...) ", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational,system,logical,physical", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "Any non functional constraint to be satisfied at interfaces level.\r\n(e.g. resources usage, environmental constraints, criticity, performance...) ", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "operational,system,logical,physical", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (systemNonFunctionalRequirementEClass, 
-		   source, 
+		  (systemNonFunctionalRequirementEClass,
+		   source,
 		   new String[] {
-			 "description", "Non functional requirements are any non functional constraints to be satisfied.\r\n(e.g. resources usage, environmental constraints, criticity, performance...) ", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational,system,logical,physical", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "Non functional requirements are any non functional constraints to be satisfied.\r\n(e.g. resources usage, environmental constraints, criticity, performance...) ", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "operational,system,logical,physical", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (systemUserRequirementEClass, 
-		   source, 
+		  (systemUserRequirementEClass,
+		   source,
 		   new String[] {
-			 "description", "A User requirement that has to be fulfilled by the System", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational,system", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+			   "description", "A User requirement that has to be fulfilled by the System", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "operational,system", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 	}
 
@@ -824,115 +864,115 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 	 * @generated
 	 */
 	protected void createSemanticAnnotations() {
-		String source = "http://www.polarsys.org/capella/semantic"; //$NON-NLS-1$	
+		String source = "http://www.polarsys.org/capella/semantic"; //$NON-NLS-1$
 		addAnnotation
-		  (this, 
-		   source, 
+		  (this,
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (requirementsPkgEClass, 
-		   source, 
+		  (requirementsPkgEClass,
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getRequirementsPkg_AdditionalInformation(), 
-		   source, 
+		  (getRequirementsPkg_AdditionalInformation(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getRequirementsPkg_Level(), 
-		   source, 
+		  (getRequirementsPkg_Level(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getRequirementsPkg_OwnedRequirements(), 
-		   source, 
+		  (getRequirementsPkg_OwnedRequirements(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getRequirementsPkg_OwnedRequirementPkgs(), 
-		   source, 
+		  (getRequirementsPkg_OwnedRequirementPkgs(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (requirementsTraceEClass, 
-		   source, 
+		  (requirementsTraceEClass,
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getRequirementsTrace_Source(), 
-		   source, 
+		  (getRequirementsTrace_Source(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getRequirementsTrace_Target(), 
-		   source, 
+		  (getRequirementsTrace_Target(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getRequirement_IsObsolete(), 
-		   source, 
+		  (getRequirement_IsObsolete(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getRequirement_RequirementId(), 
-		   source, 
+		  (getRequirement_RequirementId(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getRequirement_AdditionalInformation(), 
-		   source, 
+		  (getRequirement_AdditionalInformation(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getRequirement_VerificationMethod(), 
-		   source, 
+		  (getRequirement_VerificationMethod(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getRequirement_VerificationPhase(), 
-		   source, 
+		  (getRequirement_VerificationPhase(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getRequirement_ImplementationVersion(), 
-		   source, 
+		  (getRequirement_ImplementationVersion(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getRequirement_Feature(), 
-		   source, 
+		  (getRequirement_Feature(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getRequirement_RelatedCapellaElements(), 
-		   source, 
+		  (getRequirement_RelatedCapellaElements(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (systemFunctionalInterfaceRequirementEClass, 
-		   source, 
+		  (systemFunctionalInterfaceRequirementEClass,
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (systemFunctionalRequirementEClass, 
-		   source, 
+		  (systemFunctionalRequirementEClass,
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (systemNonFunctionalInterfaceRequirementEClass, 
-		   source, 
+		  (systemNonFunctionalInterfaceRequirementEClass,
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (systemNonFunctionalRequirementEClass, 
-		   source, 
+		  (systemNonFunctionalRequirementEClass,
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (systemUserRequirementEClass, 
-		   source, 
+		  (systemUserRequirementEClass,
+		   source,
 		   new String[] {
 		   });
 	}
@@ -944,16 +984,16 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 	 * @generated
 	 */
 	protected void createExtensionAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/extension"; //$NON-NLS-1$	
+		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/extension"; //$NON-NLS-1$
 		addAnnotation
-		  (this, 
-		   source, 
+		  (this,
+		   source,
 		   new String[] {
-			 "trackResourceModification", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "useUUIDs", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
+			   "trackResourceModification", "true", //$NON-NLS-1$ //$NON-NLS-2$
+			   "useUUIDs", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			   "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
+			   "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
+			   "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 	}
 
@@ -964,66 +1004,66 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 	 * @generated
 	 */
 	protected void createBusinessInformationAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/BusinessInformation"; //$NON-NLS-1$	
+		String source = "http://www.polarsys.org/capella/2007/BusinessInformation"; //$NON-NLS-1$
 		addAnnotation
-		  (requirementsPkgEClass, 
-		   source, 
+		  (requirementsPkgEClass,
+		   source,
 		   new String[] {
-			 "Label", "RequirementPkg" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "RequirementPkg" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getRequirementsPkg_OwnedRequirements(), 
-		   source, 
+		  (getRequirementsPkg_OwnedRequirements(),
+		   source,
 		   new String[] {
-			 "Label", "ownedRequirements" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "ownedRequirements" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getRequirementsPkg_OwnedRequirementPkgs(), 
-		   source, 
+		  (getRequirementsPkg_OwnedRequirementPkgs(),
+		   source,
 		   new String[] {
-			 "Label", "subRequirementPkgs" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "subRequirementPkgs" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (requirementsTraceEClass, 
-		   source, 
+		  (requirementsTraceEClass,
+		   source,
 		   new String[] {
-			 "Label", "RequirementTrace" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "RequirementTrace" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (requirementEClass, 
-		   source, 
+		  (requirementEClass,
+		   source,
 		   new String[] {
-			 "Label", "Requirement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "Requirement" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (systemFunctionalInterfaceRequirementEClass, 
-		   source, 
+		  (systemFunctionalInterfaceRequirementEClass,
+		   source,
 		   new String[] {
-			 "Label", "SystemFunctionalInterfaceRequirement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "SystemFunctionalInterfaceRequirement" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (systemFunctionalRequirementEClass, 
-		   source, 
+		  (systemFunctionalRequirementEClass,
+		   source,
 		   new String[] {
-			 "Label", "SystemFunctionalRequirement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "SystemFunctionalRequirement" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (systemNonFunctionalInterfaceRequirementEClass, 
-		   source, 
+		  (systemNonFunctionalInterfaceRequirementEClass,
+		   source,
 		   new String[] {
-			 "Label", "SystemNonFunctionalInterfaceRequirement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "SystemNonFunctionalInterfaceRequirement" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (systemNonFunctionalRequirementEClass, 
-		   source, 
+		  (systemNonFunctionalRequirementEClass,
+		   source,
 		   new String[] {
-			 "Label", "SystemNonFunctionalRequirement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "SystemNonFunctionalRequirement" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (systemUserRequirementEClass, 
-		   source, 
+		  (systemUserRequirementEClass,
+		   source,
 		   new String[] {
-			 "Label", "SystemUserRequirement" //$NON-NLS-1$ //$NON-NLS-2$
+			   "Label", "SystemUserRequirement" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 	}
 
@@ -1034,174 +1074,174 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 	 * @generated
 	 */
 	protected void createMappingAnnotations() {
-		String source = "http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping"; //$NON-NLS-1$	
+		String source = "http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping"; //$NON-NLS-1$
 		addAnnotation
-		  (requirementsPkgEClass, 
-		   source, 
+		  (requirementsPkgEClass,
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getRequirementsPkg_AdditionalInformation(), 
-		   source, 
+		  (getRequirementsPkg_AdditionalInformation(),
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getRequirementsPkg_Level(), 
-		   source, 
+		  (getRequirementsPkg_Level(),
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getRequirementsPkg_OwnedRequirements(), 
-		   source, 
+		  (getRequirementsPkg_OwnedRequirements(),
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "uml::Package::packagedElement elements on which Requirement stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "uml::Package::packagedElement elements on which Requirement stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getRequirementsPkg_OwnedRequirementPkgs(), 
-		   source, 
+		  (getRequirementsPkg_OwnedRequirementPkgs(),
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "uml::Package::nestedPackage elements on which RequirementPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "uml::Package::nestedPackage elements on which RequirementPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (requirementsTraceEClass, 
-		   source, 
+		  (requirementsTraceEClass,
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "uml::Dependency", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "uml::Dependency", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (requirementEClass, 
-		   source, 
+		  (requirementEClass,
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "SysML::Requirements::Requirement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "SysML::Requirements::Requirement", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getRequirement_IsObsolete(), 
-		   source, 
+		  (getRequirement_IsObsolete(),
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getRequirement_RequirementId(), 
-		   source, 
+		  (getRequirement_RequirementId(),
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "SysML::Requirements::Requirement::id", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "SysML::Requirements::Requirement::id", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getRequirement_AdditionalInformation(), 
-		   source, 
+		  (getRequirement_AdditionalInformation(),
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getRequirement_VerificationMethod(), 
-		   source, 
+		  (getRequirement_VerificationMethod(),
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getRequirement_VerificationPhase(), 
-		   source, 
+		  (getRequirement_VerificationPhase(),
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getRequirement_ImplementationVersion(), 
-		   source, 
+		  (getRequirement_ImplementationVersion(),
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getRequirement_Feature(), 
-		   source, 
+		  (getRequirement_Feature(),
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getRequirement_RelatedCapellaElements(), 
-		   source, 
+		  (getRequirement_RelatedCapellaElements(),
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (systemFunctionalInterfaceRequirementEClass, 
-		   source, 
+		  (systemFunctionalInterfaceRequirementEClass,
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "SysML::Requirements::Requirement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "SysML::Requirements::Requirement", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (systemFunctionalRequirementEClass, 
-		   source, 
+		  (systemFunctionalRequirementEClass,
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "SysML::Requirements::Requirement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "SysML::Requirements::Requirement", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (systemNonFunctionalInterfaceRequirementEClass, 
-		   source, 
+		  (systemNonFunctionalInterfaceRequirementEClass,
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "SysML::Requirements::Requirement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "SysML::Requirements::Requirement", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (systemNonFunctionalRequirementEClass, 
-		   source, 
+		  (systemNonFunctionalRequirementEClass,
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "SysML::Requirements::Requirement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "SysML::Requirements::Requirement", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (systemUserRequirementEClass, 
-		   source, 
+		  (systemUserRequirementEClass,
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "SysML::Requirements::Requirement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "SysML::Requirements::Requirement", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 	}
 
@@ -1212,133 +1252,133 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 	 * @generated
 	 */
 	protected void createUML2MappingAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/UML2Mapping"; //$NON-NLS-1$	
+		String source = "http://www.polarsys.org/capella/2007/UML2Mapping"; //$NON-NLS-1$
 		addAnnotation
-		  (getRequirementsPkg_AdditionalInformation(), 
-		   source, 
+		  (getRequirementsPkg_AdditionalInformation(),
+		   source,
 		   new String[] {
-			 "featureName", "additionalInformation", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "eng.RequirementPkg", //$NON-NLS-1$ //$NON-NLS-2$
-			 "fromStereotype", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "featureName", "additionalInformation", //$NON-NLS-1$ //$NON-NLS-2$
+			   "featureOwner", "eng.RequirementPkg", //$NON-NLS-1$ //$NON-NLS-2$
+			   "fromStereotype", "true" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getRequirementsPkg_Level(), 
-		   source, 
+		  (getRequirementsPkg_Level(),
+		   source,
 		   new String[] {
-			 "featureName", "level", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "eng.RequirementPkg", //$NON-NLS-1$ //$NON-NLS-2$
-			 "fromStereotype", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "featureName", "level", //$NON-NLS-1$ //$NON-NLS-2$
+			   "featureOwner", "eng.RequirementPkg", //$NON-NLS-1$ //$NON-NLS-2$
+			   "fromStereotype", "true" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getRequirementsPkg_OwnedRequirements(), 
-		   source, 
+		  (getRequirementsPkg_OwnedRequirements(),
+		   source,
 		   new String[] {
-			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			   "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getRequirementsPkg_OwnedRequirementPkgs(), 
-		   source, 
+		  (getRequirementsPkg_OwnedRequirementPkgs(),
+		   source,
 		   new String[] {
-			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			   "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (requirementsTraceEClass, 
-		   source, 
+		  (requirementsTraceEClass,
+		   source,
 		   new String[] {
-			 "metaclass", "Dependency", //$NON-NLS-1$ //$NON-NLS-2$
-			 "stereotype", "eng.RequirementTrace" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "metaclass", "Dependency", //$NON-NLS-1$ //$NON-NLS-2$
+			   "stereotype", "eng.RequirementTrace" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (requirementEClass, 
-		   source, 
+		  (requirementEClass,
+		   source,
 		   new String[] {
-			 "metaclass", "Class", //$NON-NLS-1$ //$NON-NLS-2$
-			 "stereotype", "eng.Requirement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "metaclass", "Class", //$NON-NLS-1$ //$NON-NLS-2$
+			   "stereotype", "eng.Requirement" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getRequirement_RequirementId(), 
-		   source, 
+		  (getRequirement_RequirementId(),
+		   source,
 		   new String[] {
-			 "featureName", "requirementId", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "eng.Requirement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "fromStereotype", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "featureName", "requirementId", //$NON-NLS-1$ //$NON-NLS-2$
+			   "featureOwner", "eng.Requirement", //$NON-NLS-1$ //$NON-NLS-2$
+			   "fromStereotype", "true" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getRequirement_AdditionalInformation(), 
-		   source, 
+		  (getRequirement_AdditionalInformation(),
+		   source,
 		   new String[] {
-			 "featureName", "additionalInformation", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "eng.Requirement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "fromStereotype", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "featureName", "additionalInformation", //$NON-NLS-1$ //$NON-NLS-2$
+			   "featureOwner", "eng.Requirement", //$NON-NLS-1$ //$NON-NLS-2$
+			   "fromStereotype", "true" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getRequirement_VerificationMethod(), 
-		   source, 
+		  (getRequirement_VerificationMethod(),
+		   source,
 		   new String[] {
-			 "featureName", "verificationMethod", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "eng.Requirement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "fromStereotype", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "featureName", "verificationMethod", //$NON-NLS-1$ //$NON-NLS-2$
+			   "featureOwner", "eng.Requirement", //$NON-NLS-1$ //$NON-NLS-2$
+			   "fromStereotype", "true" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getRequirement_VerificationPhase(), 
-		   source, 
+		  (getRequirement_VerificationPhase(),
+		   source,
 		   new String[] {
-			 "featureName", "verificationPhase", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "eng.Requirement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "fromStereotype", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "featureName", "verificationPhase", //$NON-NLS-1$ //$NON-NLS-2$
+			   "featureOwner", "eng.Requirement", //$NON-NLS-1$ //$NON-NLS-2$
+			   "fromStereotype", "true" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getRequirement_ImplementationVersion(), 
-		   source, 
+		  (getRequirement_ImplementationVersion(),
+		   source,
 		   new String[] {
-			 "featureName", "implementationVersion", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "eng.Requirement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "fromStereotype", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "featureName", "implementationVersion", //$NON-NLS-1$ //$NON-NLS-2$
+			   "featureOwner", "eng.Requirement", //$NON-NLS-1$ //$NON-NLS-2$
+			   "fromStereotype", "true" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getRequirement_Feature(), 
-		   source, 
+		  (getRequirement_Feature(),
+		   source,
 		   new String[] {
-			 "featureName", "feature", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "eng.Requirement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "fromStereotype", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "featureName", "feature", //$NON-NLS-1$ //$NON-NLS-2$
+			   "featureOwner", "eng.Requirement", //$NON-NLS-1$ //$NON-NLS-2$
+			   "fromStereotype", "true" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (systemFunctionalInterfaceRequirementEClass, 
-		   source, 
+		  (systemFunctionalInterfaceRequirementEClass,
+		   source,
 		   new String[] {
-			 "metaclass", "Class", //$NON-NLS-1$ //$NON-NLS-2$
-			 "stereotype", "eng.sys.SystemFunctionalInterfaceRequirement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "metaclass", "Class", //$NON-NLS-1$ //$NON-NLS-2$
+			   "stereotype", "eng.sys.SystemFunctionalInterfaceRequirement" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (systemFunctionalRequirementEClass, 
-		   source, 
+		  (systemFunctionalRequirementEClass,
+		   source,
 		   new String[] {
-			 "metaclass", "Class", //$NON-NLS-1$ //$NON-NLS-2$
-			 "stereotype", "eng.sys.SystemFunctionalRequirement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "metaclass", "Class", //$NON-NLS-1$ //$NON-NLS-2$
+			   "stereotype", "eng.sys.SystemFunctionalRequirement" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (systemNonFunctionalInterfaceRequirementEClass, 
-		   source, 
+		  (systemNonFunctionalInterfaceRequirementEClass,
+		   source,
 		   new String[] {
-			 "metaclass", "Class", //$NON-NLS-1$ //$NON-NLS-2$
-			 "stereotype", "eng.sys.SystemNonFunctionalInterfaceRequirement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "metaclass", "Class", //$NON-NLS-1$ //$NON-NLS-2$
+			   "stereotype", "eng.sys.SystemNonFunctionalInterfaceRequirement" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (systemNonFunctionalRequirementEClass, 
-		   source, 
+		  (systemNonFunctionalRequirementEClass,
+		   source,
 		   new String[] {
-			 "metaclass", "Class", //$NON-NLS-1$ //$NON-NLS-2$
-			 "stereotype", "eng.sys.SystemNonFunctionalRequirement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "metaclass", "Class", //$NON-NLS-1$ //$NON-NLS-2$
+			   "stereotype", "eng.sys.SystemNonFunctionalRequirement" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (systemUserRequirementEClass, 
-		   source, 
+		  (systemUserRequirementEClass,
+		   source,
 		   new String[] {
-			 "metaclass", "Class", //$NON-NLS-1$ //$NON-NLS-2$
-			 "stereotype", "eng.sys.SystemUserRequirement" //$NON-NLS-1$ //$NON-NLS-2$
+			   "metaclass", "Class", //$NON-NLS-1$ //$NON-NLS-2$
+			   "stereotype", "eng.sys.SystemUserRequirement" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 	}
 
@@ -1349,15 +1389,15 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 	 * @generated
 	 */
 	protected void createSegmentAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"; //$NON-NLS-1$	
+		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"; //$NON-NLS-1$
 		addAnnotation
-		  (getRequirementsPkg_OwnedRequirements(), 
-		   source, 
+		  (getRequirementsPkg_OwnedRequirements(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getRequirementsPkg_OwnedRequirementPkgs(), 
-		   source, 
+		  (getRequirementsPkg_OwnedRequirementPkgs(),
+		   source,
 		   new String[] {
 		   });
 	}
@@ -1369,10 +1409,10 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 	 * @generated
 	 */
 	protected void createIgnoreAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Ignore"; //$NON-NLS-1$	
+		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Ignore"; //$NON-NLS-1$
 		addAnnotation
-		  (requirementsTraceEClass, 
-		   source, 
+		  (requirementsTraceEClass,
+		   source,
 		   new String[] {
 		   });
 	}
@@ -1384,27 +1424,27 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 	 * @generated
 	 */
 	protected void createDerivedAnnotations() {
-		String source = "http://www.polarsys.org/capella/derived"; //$NON-NLS-1$	
+		String source = "http://www.polarsys.org/capella/derived"; //$NON-NLS-1$
 		addAnnotation
-		  (getRequirementsTrace_Source(), 
-		   source, 
+		  (getRequirementsTrace_Source(),
+		   source,
 		   new String[] {
-			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "sourceElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			   "viatra.expression", "sourceElement" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getRequirementsTrace_Target(), 
-		   source, 
+		  (getRequirementsTrace_Target(),
+		   source,
 		   new String[] {
-			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "targetElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			   "viatra.expression", "targetElement" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getRequirement_RelatedCapellaElements(), 
-		   source, 
+		  (getRequirement_RelatedCapellaElements(),
+		   source,
 		   new String[] {
-			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "Requirement.incomingTraces(self, rt);\r\n\tRequirementsTrace.sourceElement(rt, target);" //$NON-NLS-1$ //$NON-NLS-2$
+			   "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			   "viatra.expression", "Requirement.incomingTraces(self, rt);\r\n\tRequirementsTrace.sourceElement(rt, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 	}
 

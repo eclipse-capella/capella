@@ -36,6 +36,7 @@ import org.polarsys.capella.core.data.information.communication.MessageReference
  *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping metaclass='Operation' stereotype='eng.Service'"
  *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specification of an action to be performed by a class, to fulfill a predefined need.\r\n[source: Capella study]' usage\040guideline='n/a' used\040in\040levels='system,logical,physical,epbs' usage\040examples='../img/usage_examples/operation_parameters.png' constraints='none' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='uml::Operation' explanation='none' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface Service extends Operation {
@@ -61,6 +62,7 @@ public interface Service extends Operation {
 	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='synchronismKind' fromStereotype='true' featureOwner='eng.Service'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies the synchronicity of the service call\r\n[source: Capella study]' constraints='none' type='see SynchronismKind definition' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='_todo_ Study the link with CallOperationAction::isSynchronous or Message::messageSort' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -102,8 +104,10 @@ public interface Service extends Operation {
 	 * @see org.polarsys.capella.core.data.information.InformationPackage#getService_ThrownExceptions()
 	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='raisedException' featureOwner='BehavioralFeature'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='thrownExceptions'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='list of exceptions that can be raised by this service\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Operation::raisedException' explanation='Exception should extend uml::Type' constraints='Order must be computed'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -129,6 +133,7 @@ public interface Service extends Operation {
 	 * @see org.polarsys.capella.core.data.information.InformationPackage#getService_Messages()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='messages'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='messageReferences.message'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the Messages involving this Service\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
@@ -157,6 +162,7 @@ public interface Service extends Operation {
 	 * @see org.polarsys.capella.core.data.information.InformationPackage#getService_MessageReferences()
 	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='clientDependency' featureOwner='NamedElement'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='messageReferences'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the reference objects to the Messages involving this Service\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::NamedElement::clientDependency' explanation='none' constraints='uml::NamedElement::clientDependency elements on which MessageReference stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
 	 * @generated

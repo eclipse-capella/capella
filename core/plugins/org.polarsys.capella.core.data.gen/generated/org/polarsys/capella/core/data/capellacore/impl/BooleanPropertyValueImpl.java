@@ -99,6 +99,7 @@ public class BooleanPropertyValueImpl extends AbstractPropertyValueImpl implemen
 	 * @generated
 	 */
 
+	@Override
 	public void setValue(boolean newValue) {
 
 		boolean oldValue = value;
@@ -182,7 +183,7 @@ public class BooleanPropertyValueImpl extends AbstractPropertyValueImpl implemen
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (value: "); //$NON-NLS-1$
 		result.append(value);
 		result.append(')');

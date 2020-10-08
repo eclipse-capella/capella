@@ -60,6 +60,7 @@ public interface ModelElement extends ExtensibleElement {
 	 * @model id="true" required="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the unique identifier for this element\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='' constraints=''"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -99,6 +100,7 @@ public interface ModelElement extends ExtensibleElement {
 	 * @see #setSid(String)
 	 * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getModelElement_Sid()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the unique system identifier for this element' constraints='none' type='n/a' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -167,6 +169,7 @@ public interface ModelElement extends ExtensibleElement {
 	 * @model containment="true" resolveProxies="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the constraints that are stored/owned by this element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::nearestpackage' explanation='none' constraints='Some packaged elements of uml::Element::nearestPackage on which AbstractConstraint stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -201,7 +204,7 @@ public interface ModelElement extends ExtensibleElement {
 
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='org.eclipse.emf.ecore.util.EcoreUtil.delete(this);'"
+	 * @model
 	 * @generated
 	 */
 
@@ -216,7 +219,6 @@ public interface ModelElement extends ExtensibleElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.polarsys.capella.common.model.label.LabelRetriever.getFullLabel(this);'"
 	 * @generated
 	 */
 
@@ -231,7 +233,6 @@ public interface ModelElement extends ExtensibleElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.polarsys.capella.common.model.label.LabelRetriever.getLabel(this);'"
 	 * @generated
 	 */
 
@@ -245,7 +246,7 @@ public interface ModelElement extends ExtensibleElement {
 
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.polarsys.capella.common.model.label.LabelRetriever.UNNAMED_ELEMENT.equals(this.getLabel());'"
+	 * @model
 	 * @generated
 	 */
 

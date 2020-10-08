@@ -33,6 +33,7 @@ import org.eclipse.emf.common.util.EList;
  * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChainInvolvementFunction()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies the involvement of a model element in form of function in a functional chain\r\n[source: Capella study]' usage\040guideline='n/a' used\040in\040levels='operational,system,logical,physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 
@@ -56,6 +57,7 @@ public interface FunctionalChainInvolvementFunction extends FunctionalChainInvol
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChainInvolvementFunction_OutgoingInvolvementLinks()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='source'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */
@@ -82,6 +84,7 @@ public interface FunctionalChainInvolvementFunction extends FunctionalChainInvol
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChainInvolvementFunction_IncomingInvolvementLinks()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='target'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */

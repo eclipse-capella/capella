@@ -386,6 +386,7 @@ public class SharedPkgImpl extends NamedElementImpl implements SharedPkg {
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedDataPkg(DataPkg newOwnedDataPkg) {
 
 		if (newOwnedDataPkg != ownedDataPkg) {
@@ -445,6 +446,7 @@ public class SharedPkgImpl extends NamedElementImpl implements SharedPkg {
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedGenericPkg(GenericPkg newOwnedGenericPkg) {
 
 		if (newOwnedGenericPkg != ownedGenericPkg) {

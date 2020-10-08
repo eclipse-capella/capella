@@ -218,6 +218,7 @@ public class ExchangeItemAllocationImpl extends RelationshipImpl implements Exch
 	 * @generated
 	 */
 
+	@Override
 	public void setName(String newName) {
 
 		String oldName = name;
@@ -297,6 +298,7 @@ public class ExchangeItemAllocationImpl extends RelationshipImpl implements Exch
 	 * @generated
 	 */
 
+	@Override
 	public void setFinal(boolean newFinal) {
 
 		boolean oldFinal = final_;
@@ -329,6 +331,7 @@ public class ExchangeItemAllocationImpl extends RelationshipImpl implements Exch
 	 * @generated
 	 */
 
+	@Override
 	public void setSendProtocol(CommunicationLinkProtocol newSendProtocol) {
 
 		CommunicationLinkProtocol oldSendProtocol = sendProtocol;
@@ -361,6 +364,7 @@ public class ExchangeItemAllocationImpl extends RelationshipImpl implements Exch
 	 * @generated
 	 */
 
+	@Override
 	public void setReceiveProtocol(CommunicationLinkProtocol newReceiveProtocol) {
 
 		CommunicationLinkProtocol oldReceiveProtocol = receiveProtocol;
@@ -414,6 +418,7 @@ public class ExchangeItemAllocationImpl extends RelationshipImpl implements Exch
 	 * @generated
 	 */
 
+	@Override
 	public void setAllocatedItem(ExchangeItem newAllocatedItem) {
 
 		ExchangeItem oldAllocatedItem = allocatedItem;
@@ -673,7 +678,7 @@ public class ExchangeItemAllocationImpl extends RelationshipImpl implements Exch
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: "); //$NON-NLS-1$
 		result.append(name);
 		result.append(", final: "); //$NON-NLS-1$

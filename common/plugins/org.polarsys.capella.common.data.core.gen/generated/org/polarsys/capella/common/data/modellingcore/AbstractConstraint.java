@@ -54,6 +54,7 @@ public interface AbstractConstraint extends ModelElement {
 	 * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getAbstractConstraint_ConstrainedElements()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the model elements being involved in the definition of this constraint\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Constraint::constrainedElement' explanation='' constraints=''"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -73,6 +74,7 @@ public interface AbstractConstraint extends ModelElement {
 	 * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getAbstractConstraint_OwnedSpecification()
 	 * @model containment="true" resolveProxies="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='A condition that must be true when evaluated in order for the constraint to be satisfied'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

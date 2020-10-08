@@ -238,6 +238,7 @@ public class SequenceMessageImpl extends NamedElementImpl implements SequenceMes
 	 * @generated
 	 */
 
+	@Override
 	public void setKind(MessageKind newKind) {
 
 		MessageKind oldKind = kind;
@@ -289,6 +290,7 @@ public class SequenceMessageImpl extends NamedElementImpl implements SequenceMes
 	 * @generated
 	 */
 
+	@Override
 	public void setExchangeContext(Constraint newExchangeContext) {
 
 		Constraint oldExchangeContext = exchangeContext;
@@ -337,6 +339,7 @@ public class SequenceMessageImpl extends NamedElementImpl implements SequenceMes
 	 * @generated
 	 */
 
+	@Override
 	public void setSendingEnd(MessageEnd newSendingEnd) {
 
 		MessageEnd oldSendingEnd = sendingEnd;
@@ -390,6 +393,7 @@ public class SequenceMessageImpl extends NamedElementImpl implements SequenceMes
 	 * @generated
 	 */
 
+	@Override
 	public void setReceivingEnd(MessageEnd newReceivingEnd) {
 
 		MessageEnd oldReceivingEnd = receivingEnd;
@@ -895,7 +899,7 @@ public class SequenceMessageImpl extends NamedElementImpl implements SequenceMes
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (kind: "); //$NON-NLS-1$
 		result.append(kind);
 		result.append(')');

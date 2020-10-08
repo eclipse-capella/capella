@@ -176,8 +176,10 @@ public class PhysicalPathItemProvider
 	 * This adds a property descriptor for the Involved Links feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @deprecated See {@link org.polarsys.capella.core.data.cs.PhysicalPath#getInvolvedLinks() model documentation} for details.
 	 * @generated
 	 */
+	@Deprecated
 	protected void addInvolvedLinksPropertyDescriptor(Object object) {
 
 		// begin-extension-code

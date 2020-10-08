@@ -176,6 +176,7 @@ public class PhysicalComponentPkgImpl extends ComponentPkgImpl implements Physic
 	 * @generated
 	 */
 
+	@Override
 	public void setVisibility(VisibilityKind newVisibility) {
 
 		VisibilityKind oldVisibility = visibility;
@@ -448,7 +449,7 @@ public class PhysicalComponentPkgImpl extends ComponentPkgImpl implements Physic
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (visibility: "); //$NON-NLS-1$
 		result.append(visibility);
 		result.append(')');

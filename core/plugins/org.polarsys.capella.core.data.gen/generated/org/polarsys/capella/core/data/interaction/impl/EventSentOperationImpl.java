@@ -112,6 +112,7 @@ public class EventSentOperationImpl extends EventImpl implements EventSentOperat
 	 * @generated
 	 */
 
+	@Override
 	public void setOperation(AbstractEventOperation newOperation) {
 
 		AbstractEventOperation oldOperation = operation;

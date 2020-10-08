@@ -136,7 +136,8 @@ public interface ActivityNode extends AbstractNamedElement {
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Edges that have the node as source\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='source'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='freeform' viatra.expression='pattern ActivityNode__outgoing(self : ActivityNode, target : ActivityEdge) {\n\tActivityEdge.source(target, self);\n} or {\n\tAbstractAction(self);\n\tAbstractAction.outputs(self, OutputPort);\n\tActivityNode.outgoing(OutputPort, target);\n}'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -163,7 +164,8 @@ public interface ActivityNode extends AbstractNamedElement {
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Edges that have the node as target.\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='target'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='freeform' viatra.expression='pattern ActivityNode__incoming(self : ActivityNode, target : ActivityEdge) {\n\tActivityEdge.target(target, self);\n} or {\n\tAbstractAction(self);\n\tAbstractAction.inputs(self, InputPort);\n\tActivityNode.incoming(InputPort, target);\n}'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

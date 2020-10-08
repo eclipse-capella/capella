@@ -209,6 +209,7 @@ public class SystemAnalysisImpl extends ComponentArchitectureImpl implements Sys
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedSystemComponentPkg(SystemComponentPkg newOwnedSystemComponentPkg) {
 
 		if (newOwnedSystemComponentPkg != ownedSystemComponentPkg) {
@@ -290,6 +291,7 @@ public class SystemAnalysisImpl extends ComponentArchitectureImpl implements Sys
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedMissionPkg(MissionPkg newOwnedMissionPkg) {
 
 		if (newOwnedMissionPkg != ownedMissionPkg) {

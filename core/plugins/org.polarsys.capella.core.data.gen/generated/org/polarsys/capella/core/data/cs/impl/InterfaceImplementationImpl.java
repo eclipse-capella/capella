@@ -185,6 +185,7 @@ public class InterfaceImplementationImpl extends RelationshipImpl implements Int
 	 * @generated
 	 */
 
+	@Override
 	public void setImplementedInterface(Interface newImplementedInterface) {
 
 		Interface oldImplementedInterface = implementedInterface;

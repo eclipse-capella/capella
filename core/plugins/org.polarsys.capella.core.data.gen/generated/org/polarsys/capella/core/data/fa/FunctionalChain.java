@@ -56,6 +56,7 @@ import org.polarsys.capella.core.data.la.CapabilityRealization;
  *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping metaclass='StructuredActivityNode' stereotype='eng.FunctionalChain'"
  *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='A functional chain is a set of Functions, activated through an activation graph (or path) and carrying non functional properties such as latency, criticity level ... \r\nIt provides a high-level description of a contribution of the system, users or external entities to an operational capability.' usage\040guideline='a functional chain is used highlight a specific path in the function flow, that is of particular interest in the context of the targeted application (performance constraint, safety path, ...)\r\n[source: Capella study]' used\040in\040levels='operational,system,logical,physical' usage\040examples='../img/usage_examples/example_functional_chain.png' constraints='none' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='uml::Package' explanation='none' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface FunctionalChain extends NamedElement, InvolverElement, InvolvedElement {
@@ -80,6 +81,7 @@ public interface FunctionalChain extends NamedElement, InvolverElement, Involved
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChain_Kind()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Defines the kind of this FunctionalChain' constraints='none' type='refer to FunctionalChainKind definition' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -122,6 +124,7 @@ public interface FunctionalChain extends NamedElement, InvolverElement, Involved
 	 * @model containment="true" resolveProxies="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the list of involvement relationships owned by this functional chain' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::NamedElement::clientDependency::keyword::specific' explanation='Elements are contained in the nearest possible parent container.' constraints='uml::NamedElement::clientDependency elements on which FunctionalChain stereotype or any stereotype that inherits from it is applied'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -339,6 +342,7 @@ public interface FunctionalChain extends NamedElement, InvolverElement, Involved
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChain_AvailableInStates()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the list of (system) states in which this functional chain is actually available\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -364,6 +368,7 @@ public interface FunctionalChain extends NamedElement, InvolverElement, Involved
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChain_FirstFunctionalChainInvolvements()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='freeform' viatra.expression='pattern FunctionalChain__firstFunctionalChainInvolvements(self : FunctionalChain, target : FunctionalChainInvolvement) {\r\n\tFunctionalChain.ownedFunctionalChainInvolvements(self, target);\r\n\tFunctionalChainInvolvement.involved(target, _);\r\n\tneg find _PreviousInvolvement(target, _);\r\n}\r\nprivate pattern _PreviousInvolvement(fci : FunctionalChainInvolvement, previous : FunctionalChainInvolvement) {\r\n\tFunctionalChainInvolvement.previousFunctionalChainInvolvements(fci, previous);\r\n}\r\n'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */
@@ -446,6 +451,7 @@ public interface FunctionalChain extends NamedElement, InvolverElement, Involved
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChain_RealizedFunctionalChains()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='FunctionalChainRealization.sourceElement(fcr, self);\r\nFunctionalChainRealization.targetElement(fcr, target);'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */
@@ -494,7 +500,7 @@ public interface FunctionalChain extends NamedElement, InvolverElement, Involved
 	 * @return the value of the '<em>Pre Condition</em>' reference.
 	 * @see #setPreCondition(Constraint)
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChain_PreCondition()
-	 * @model
+	 * @model annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -530,7 +536,7 @@ public interface FunctionalChain extends NamedElement, InvolverElement, Involved
 	 * @return the value of the '<em>Post Condition</em>' reference.
 	 * @see #setPostCondition(Constraint)
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChain_PostCondition()
-	 * @model
+	 * @model annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -569,6 +575,7 @@ public interface FunctionalChain extends NamedElement, InvolverElement, Involved
 	 * @model containment="true" resolveProxies="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='' usage\040guideline='n/a' used\040in\040levels='operational,system,logical,physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -592,6 +599,7 @@ public interface FunctionalChain extends NamedElement, InvolverElement, Involved
 	 * @model containment="true" resolveProxies="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='' usage\040guideline='n/a' used\040in\040levels='operational,system,logical,physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

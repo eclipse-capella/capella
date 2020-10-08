@@ -34,6 +34,7 @@ import org.eclipse.emf.common.util.EList;
  *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping metaclass='Class' stereotype='eng.Union'"
  *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(not used)' usage\040guideline='n/a' used\040in\040levels='n/a' usage\040examples='n/a' constraints='n/a' comment/notes='not used/implemented as of Capella' reference\040documentation='n/a'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='' explanation='uml::Class' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface Union extends org.polarsys.capella.core.data.information.Class {
@@ -58,6 +59,7 @@ public interface Union extends org.polarsys.capella.core.data.information.Class 
 	 * @see org.polarsys.capella.core.data.information.InformationPackage#getUnion_Kind()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies the type of the union\r\n[source: Capella study]' constraints='none' type='see UnionKind definition' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -99,8 +101,10 @@ public interface Union extends org.polarsys.capella.core.data.information.Class 
 	 * @see org.polarsys.capella.core.data.information.InformationPackage#getUnion_Discriminant()
 	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='clientDependency' featureOwner='NamedElement'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='discriminant'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Link to the discriminant union property' constraints='n/a' comment/notes='n/a'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -141,6 +145,7 @@ public interface Union extends org.polarsys.capella.core.data.information.Class 
 	 * @see org.polarsys.capella.core.data.information.InformationPackage#getUnion_DefaultProperty()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Link to the default union property' constraints='n/a' comment/notes='n/a'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

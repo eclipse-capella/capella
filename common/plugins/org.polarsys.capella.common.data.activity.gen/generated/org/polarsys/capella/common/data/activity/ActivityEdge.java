@@ -66,6 +66,7 @@ public interface ActivityEdge extends AbstractRelationship {
 	 * @see org.polarsys.capella.common.data.activity.ActivityPackage#getActivityEdge_KindOfRate()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='characterizes the rate : typically, discrete versus continuous.\r\n[source: Capella study]' constraints='none' type='typically, \"discrete\" or \"continuous\"' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='Application of stereotypes that inherits from the SysML::Activities::Rate stereotype.\r\nIt can be either SysML::Activities::Continuous or SysML::Activities::Discrete.' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -186,6 +187,7 @@ public interface ActivityEdge extends AbstractRelationship {
 	 * @model containment="true" resolveProxies="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='It specifies the expected value of the number of objects and\r\nvalues that traverse the edge per time interval, that is, the expected value rate at which they leave the source node and\r\narrive at the target node. It does not refer to the rate at which a value changes over time\r\n[source: SysML specification v1.1]' constraints='The rate of a parameter must be less than or equal to rates on edges that come into or go out from pins and parameters nodes corresponding to the parameter.\r\n[source: SysML specification v1.1]' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='Application of the SysML::Activities::Rate stereotype.\r\nSysML::Activities::Rate::rate' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -227,6 +229,7 @@ public interface ActivityEdge extends AbstractRelationship {
 	 * @model containment="true" resolveProxies="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Likelihood that a value leaving the decision node or object node will traverse the edge.\r\n[source: SysML specification v1.1]' constraints='Shall be between 0 and 1' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='Application of the SysML::Activities::Probability stereotype.\r\nSysML::Activities::Probability::probability' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -268,6 +271,7 @@ public interface ActivityEdge extends AbstractRelationship {
 	 * @model required="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Node to which tokens are put when they traverse the edge\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ActivityEdge::target' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -309,6 +313,7 @@ public interface ActivityEdge extends AbstractRelationship {
 	 * @model required="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Node from which tokens are taken when they traverse the edge\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ActivityEdge::source' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -350,6 +355,7 @@ public interface ActivityEdge extends AbstractRelationship {
 	 * @model containment="true" resolveProxies="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specification evaluated at runtime to determine if the edge can be traversed\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ActivityEdge::guard' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -391,6 +397,7 @@ public interface ActivityEdge extends AbstractRelationship {
 	 * @model containment="true" resolveProxies="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The minimum number of tokens that must traverse the edge at the same time\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ActivityEdge::weight' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

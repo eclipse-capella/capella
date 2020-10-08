@@ -128,6 +128,7 @@ public class EnumerationReferenceImpl extends AbstractEnumerationValueImpl imple
 	 * @generated
 	 */
 
+	@Override
 	public void setReferencedValue(AbstractEnumerationValue newReferencedValue) {
 
 		AbstractEnumerationValue oldReferencedValue = referencedValue;
@@ -181,6 +182,7 @@ public class EnumerationReferenceImpl extends AbstractEnumerationValueImpl imple
 	 * @generated
 	 */
 
+	@Override
 	public void setReferencedProperty(Property newReferencedProperty) {
 
 		Property oldReferencedProperty = referencedProperty;

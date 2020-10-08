@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.polarsys.capella.common.lib.IdGenerator;
+import org.polarsys.capella.core.data.capellamodeller.*;
 import org.polarsys.capella.core.data.capellamodeller.CapellamodellerFactory;
 import org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage;
 import org.polarsys.capella.core.data.capellamodeller.Folder;
@@ -85,13 +86,11 @@ public class CapellamodellerFactoryImpl extends EFactoryImpl implements Capellam
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Project createProject() {
 		ProjectImpl project = new ProjectImpl();
     //begin-capella-code
-
     project.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return project;
 	}
@@ -101,13 +100,11 @@ public class CapellamodellerFactoryImpl extends EFactoryImpl implements Capellam
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Folder createFolder() {
 		FolderImpl folder = new FolderImpl();
     //begin-capella-code
-
     folder.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return folder;
 	}
@@ -117,13 +114,11 @@ public class CapellamodellerFactoryImpl extends EFactoryImpl implements Capellam
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SystemEngineering createSystemEngineering() {
 		SystemEngineeringImpl systemEngineering = new SystemEngineeringImpl();
     //begin-capella-code
-
     systemEngineering.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return systemEngineering;
 	}
@@ -133,13 +128,11 @@ public class CapellamodellerFactoryImpl extends EFactoryImpl implements Capellam
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SystemEngineeringPkg createSystemEngineeringPkg() {
 		SystemEngineeringPkgImpl systemEngineeringPkg = new SystemEngineeringPkgImpl();
     //begin-capella-code
-
     systemEngineeringPkg.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return systemEngineeringPkg;
 	}
@@ -149,13 +142,11 @@ public class CapellamodellerFactoryImpl extends EFactoryImpl implements Capellam
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Library createLibrary() {
 		LibraryImpl library = new LibraryImpl();
     //begin-capella-code
-
     library.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return library;
 	}
@@ -165,6 +156,7 @@ public class CapellamodellerFactoryImpl extends EFactoryImpl implements Capellam
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CapellamodellerPackage getCapellamodellerPackage() {
 		return (CapellamodellerPackage)getEPackage();
 	}
@@ -188,7 +180,7 @@ public class CapellamodellerFactoryImpl extends EFactoryImpl implements Capellam
 	 * @generated
 	 */
 	public Project createProject(String name_p) {
-	  Project project = createProject();
+		Project project = createProject();
 		project.setName(name_p);	  
 		return project;
 	}
@@ -201,7 +193,7 @@ public class CapellamodellerFactoryImpl extends EFactoryImpl implements Capellam
 	 * @generated
 	 */
 	public Folder createFolder(String name_p) {
-	  Folder folder = createFolder();
+		Folder folder = createFolder();
 		folder.setName(name_p);	  
 		return folder;
 	}
@@ -214,7 +206,7 @@ public class CapellamodellerFactoryImpl extends EFactoryImpl implements Capellam
 	 * @generated
 	 */
 	public SystemEngineering createSystemEngineering(String name_p) {
-	  SystemEngineering systemEngineering = createSystemEngineering();
+		SystemEngineering systemEngineering = createSystemEngineering();
 		systemEngineering.setName(name_p);	  
 		return systemEngineering;
 	}
@@ -227,7 +219,7 @@ public class CapellamodellerFactoryImpl extends EFactoryImpl implements Capellam
 	 * @generated
 	 */
 	public SystemEngineeringPkg createSystemEngineeringPkg(String name_p) {
-	  SystemEngineeringPkg systemEngineeringPkg = createSystemEngineeringPkg();
+		SystemEngineeringPkg systemEngineeringPkg = createSystemEngineeringPkg();
 		systemEngineeringPkg.setName(name_p);	  
 		return systemEngineeringPkg;
 	}
@@ -240,7 +232,7 @@ public class CapellamodellerFactoryImpl extends EFactoryImpl implements Capellam
 	 * @generated
 	 */
 	public Library createLibrary(String name_p) {
-	  Library library = createLibrary();
+		Library library = createLibrary();
 		library.setName(name_p);	  
 		return library;
 	}

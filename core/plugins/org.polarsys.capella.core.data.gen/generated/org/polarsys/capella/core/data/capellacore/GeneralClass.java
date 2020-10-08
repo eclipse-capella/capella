@@ -60,6 +60,7 @@ public interface GeneralClass extends Classifier, FinalizableElement {
 	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getGeneralClass_Visibility()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the visibility of this class (refer to VisibilityKind definition)\r\n[source: Capella study]' constraints='none' type='refer to VisibilityKind' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::NamedElement::visibility' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -102,6 +103,7 @@ public interface GeneralClass extends Classifier, FinalizableElement {
 	 * @model resolveProxies="false" transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='ownedOperation' featureOwner='GeneralClass'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='operations'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedFeatures'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The operations owned by the general class. The association is ordered\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Class:ownedOperation' explanation='Derived and transient but mapped to ease the transformation : pick the corresponding containment reference that stores Operations, in uml::Class' constraints='none'"
@@ -132,6 +134,7 @@ public interface GeneralClass extends Classifier, FinalizableElement {
 	 * @model containment="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='nestedClassifier' featureOwner='Class'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='nestedGeneralClasses'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the classes contained/nested into this class\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='uml::Class::nestedClassifier || uml::Interface::nestedClassifier' constraints='none'"
 	 *        annotation="http://www.polarsys.org/capella/semantic feature='ownedFeatures'"

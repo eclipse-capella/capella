@@ -35,6 +35,7 @@ import org.polarsys.capella.core.data.capellacore.Structure;
  * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping metaclass='Model' stereotype='core.Project'"
  *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Project is the model root of a Capella model\r\n[source:Capella study]' usage\040guideline='A Project is the model root of a Capella model' used\040in\040levels='operational, system, logical, physical, epbs' usage\040examples='None' constraints='None' comment/notes='None' reference\040documentation='None'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='uml::Package' explanation='none' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 
@@ -115,6 +116,7 @@ public interface Project extends Structure {
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Set of system engineering elements\r\n[source:Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which ModelRoot stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

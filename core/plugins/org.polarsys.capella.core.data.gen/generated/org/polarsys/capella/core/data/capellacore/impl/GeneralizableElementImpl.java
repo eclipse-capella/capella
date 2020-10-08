@@ -150,6 +150,7 @@ public abstract class GeneralizableElementImpl extends TypeImpl implements Gener
 	 * @generated
 	 */
 
+	@Override
 	public void setAbstract(boolean newAbstract) {
 
 		boolean oldAbstract = abstract_;
@@ -481,7 +482,7 @@ public abstract class GeneralizableElementImpl extends TypeImpl implements Gener
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (abstract: "); //$NON-NLS-1$
 		result.append(abstract_);
 		result.append(')');

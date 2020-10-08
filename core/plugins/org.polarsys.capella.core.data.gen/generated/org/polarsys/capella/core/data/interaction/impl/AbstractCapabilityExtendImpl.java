@@ -142,6 +142,7 @@ public class AbstractCapabilityExtendImpl extends RelationshipImpl implements Ab
 	 * @generated
 	 */
 
+	@Override
 	public void setExtended(AbstractCapability newExtended) {
 
 		AbstractCapability oldExtended = extended;
@@ -271,6 +272,7 @@ public class AbstractCapabilityExtendImpl extends RelationshipImpl implements Ab
 	 * @generated
 	 */
 
+	@Override
 	public void setExtensionLocation(AbstractCapabilityExtensionPoint newExtensionLocation) {
 
 		if (newExtensionLocation != extensionLocation) {

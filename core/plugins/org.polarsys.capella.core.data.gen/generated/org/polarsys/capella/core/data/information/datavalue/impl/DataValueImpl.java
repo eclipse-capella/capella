@@ -154,6 +154,7 @@ public abstract class DataValueImpl extends NamedElementImpl implements DataValu
 	 * @generated
 	 */
 
+	@Override
 	public void setAbstractType(AbstractType newAbstractType) {
 
 		AbstractType oldAbstractType = abstractType;
@@ -186,6 +187,7 @@ public abstract class DataValueImpl extends NamedElementImpl implements DataValu
 	 * @generated
 	 */
 
+	@Override
 	public void setAbstract(boolean newAbstract) {
 
 		boolean oldAbstract = abstract_;
@@ -386,7 +388,7 @@ public abstract class DataValueImpl extends NamedElementImpl implements DataValu
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (abstract: "); //$NON-NLS-1$
 		result.append(abstract_);
 		result.append(')');

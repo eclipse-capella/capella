@@ -129,6 +129,7 @@ public class SystemCommunicationHookImpl extends NamedElementImpl implements Sys
 	 * @generated
 	 */
 
+	@Override
 	public void setCommunication(SystemCommunication newCommunication) {
 
 		SystemCommunication oldCommunication = communication;
@@ -182,6 +183,7 @@ public class SystemCommunicationHookImpl extends NamedElementImpl implements Sys
 	 * @generated
 	 */
 
+	@Override
 	public void setType(Component newType) {
 
 		Component oldType = type;

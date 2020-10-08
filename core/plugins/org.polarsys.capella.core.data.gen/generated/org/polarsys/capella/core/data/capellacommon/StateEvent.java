@@ -37,6 +37,7 @@ import org.polarsys.capella.core.data.capellacore.NamedElement;
  * @model abstract="true"
  *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='An event used in statemachine definition which occurs at a given condition. \r\n[source: Capella study]' usage\040guideline='n/a' used\040in\040levels='operational, system, logical, physical' usage\040examples='../img/usage_examples/example_statemachine.png' constraints='none' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='none' explanation='none' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 
@@ -59,6 +60,7 @@ public interface StateEvent extends NamedElement, AbstractEvent {
 	 * @see #setExpression(Constraint)
 	 * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getStateEvent_Expression()
 	 * @model annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ChangeEvent::changeExpression if current element is a ChangeEvent\r\numl::TimeEvent::when if current element is a TimeEvent\r\n' base\040metaclass\040in\040UML/SysML\040profile\040='uml::ChangeEvent and uml::TimeEvent\r\n' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

@@ -42,7 +42,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see org.polarsys.capella.common.re.RePackage#getCatalogElement()
- * @model
+ * @model annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 
@@ -68,6 +68,7 @@ public interface CatalogElement extends ReDescriptionElement, ReElementContainer
 	 * @see #setKind(CatalogElementKind)
 	 * @see org.polarsys.capella.common.re.RePackage#getCatalogElement_Kind()
 	 * @model default="REC"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -107,7 +108,7 @@ public interface CatalogElement extends ReDescriptionElement, ReElementContainer
 	 * @return the value of the '<em>Author</em>' attribute.
 	 * @see #setAuthor(String)
 	 * @see org.polarsys.capella.common.re.RePackage#getCatalogElement_Author()
-	 * @model
+	 * @model annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -146,7 +147,7 @@ public interface CatalogElement extends ReDescriptionElement, ReElementContainer
 	 * @return the value of the '<em>Environment</em>' attribute.
 	 * @see #setEnvironment(String)
 	 * @see org.polarsys.capella.common.re.RePackage#getCatalogElement_Environment()
-	 * @model
+	 * @model annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -185,7 +186,7 @@ public interface CatalogElement extends ReDescriptionElement, ReElementContainer
 	 * @return the value of the '<em>Suffix</em>' attribute.
 	 * @see #setSuffix(String)
 	 * @see org.polarsys.capella.common.re.RePackage#getCatalogElement_Suffix()
-	 * @model
+	 * @model annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -221,7 +222,7 @@ public interface CatalogElement extends ReDescriptionElement, ReElementContainer
 	 * @return the value of the '<em>Purpose</em>' attribute.
 	 * @see #setPurpose(String)
 	 * @see org.polarsys.capella.common.re.RePackage#getCatalogElement_Purpose()
-	 * @model
+	 * @model annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -259,6 +260,7 @@ public interface CatalogElement extends ReDescriptionElement, ReElementContainer
 	 * @see #setReadOnly(boolean)
 	 * @see org.polarsys.capella.common.re.RePackage#getCatalogElement_ReadOnly()
 	 * @model default="false"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -294,7 +296,7 @@ public interface CatalogElement extends ReDescriptionElement, ReElementContainer
 	 * @return the value of the '<em>Version</em>' attribute.
 	 * @see #setVersion(String)
 	 * @see org.polarsys.capella.common.re.RePackage#getCatalogElement_Version()
-	 * @model
+	 * @model annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -330,7 +332,7 @@ public interface CatalogElement extends ReDescriptionElement, ReElementContainer
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Tags</em>' attribute list.
 	 * @see org.polarsys.capella.common.re.RePackage#getCatalogElement_Tags()
-	 * @model
+	 * @model annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -354,7 +356,7 @@ public interface CatalogElement extends ReDescriptionElement, ReElementContainer
 	 * @return the value of the '<em>Origin</em>' reference.
 	 * @see #setOrigin(CatalogElement)
 	 * @see org.polarsys.capella.common.re.RePackage#getCatalogElement_Origin()
-	 * @model
+	 * @model annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -493,6 +495,7 @@ public interface CatalogElement extends ReDescriptionElement, ReElementContainer
 	 * @return the value of the '<em>Referenced Elements</em>' reference list.
 	 * @see org.polarsys.capella.common.re.RePackage#getCatalogElement_ReferencedElements()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedLinks.target'"
 	 * @generated
 	 */
@@ -515,6 +518,7 @@ public interface CatalogElement extends ReDescriptionElement, ReElementContainer
 	 * @return the value of the '<em>Replicated Elements</em>' reference list.
 	 * @see org.polarsys.capella.common.re.RePackage#getCatalogElement_ReplicatedElements()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='origin'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='retrieve all referencing elements which have the current element as origin'"
 	 * @generated

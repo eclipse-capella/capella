@@ -185,6 +185,7 @@ public class StringTypeImpl extends DataTypeImpl implements StringType {
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedDefaultValue(AbstractStringValue newOwnedDefaultValue) {
 
 		if (newOwnedDefaultValue != ownedDefaultValue) {
@@ -271,6 +272,7 @@ public class StringTypeImpl extends DataTypeImpl implements StringType {
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedNullValue(AbstractStringValue newOwnedNullValue) {
 
 		if (newOwnedNullValue != ownedNullValue) {
@@ -357,6 +359,7 @@ public class StringTypeImpl extends DataTypeImpl implements StringType {
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedMinLength(NumericValue newOwnedMinLength) {
 
 		if (newOwnedMinLength != ownedMinLength) {
@@ -443,6 +446,7 @@ public class StringTypeImpl extends DataTypeImpl implements StringType {
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedMaxLength(NumericValue newOwnedMaxLength) {
 
 		if (newOwnedMaxLength != ownedMaxLength) {

@@ -132,6 +132,7 @@ public class ConstraintDurationImpl extends NamedElementImpl implements Constrai
 	 * @generated
 	 */
 
+	@Override
 	public void setDuration(String newDuration) {
 
 		String oldDuration = duration;
@@ -185,6 +186,7 @@ public class ConstraintDurationImpl extends NamedElementImpl implements Constrai
 	 * @generated
 	 */
 
+	@Override
 	public void setStart(InteractionFragment newStart) {
 
 		InteractionFragment oldStart = start;
@@ -238,6 +240,7 @@ public class ConstraintDurationImpl extends NamedElementImpl implements Constrai
 	 * @generated
 	 */
 
+	@Override
 	public void setFinish(InteractionFragment newFinish) {
 
 		InteractionFragment oldFinish = finish;
@@ -343,7 +346,7 @@ public class ConstraintDurationImpl extends NamedElementImpl implements Constrai
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (duration: "); //$NON-NLS-1$
 		result.append(duration);
 		result.append(')');

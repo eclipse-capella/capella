@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.polarsys.capella.common.lib.IdGenerator;
+import org.polarsys.capella.core.data.capellacore.*;
 import org.polarsys.capella.core.data.capellacore.BooleanPropertyValue;
 import org.polarsys.capella.core.data.capellacore.CapellacoreFactory;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
@@ -135,13 +136,11 @@ public class CapellacoreFactoryImpl extends EFactoryImpl implements CapellacoreF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NamingRule createNamingRule() {
 		NamingRuleImpl namingRule = new NamingRuleImpl();
     //begin-capella-code
-
     namingRule.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return namingRule;
 	}
@@ -151,13 +150,11 @@ public class CapellacoreFactoryImpl extends EFactoryImpl implements CapellacoreF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Constraint createConstraint() {
 		ConstraintImpl constraint = new ConstraintImpl();
     //begin-capella-code
-
     constraint.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return constraint;
 	}
@@ -167,13 +164,11 @@ public class CapellacoreFactoryImpl extends EFactoryImpl implements CapellacoreF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public KeyValue createKeyValue() {
 		KeyValueImpl keyValue = new KeyValueImpl();
     //begin-capella-code
-
     keyValue.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return keyValue;
 	}
@@ -183,13 +178,11 @@ public class CapellacoreFactoryImpl extends EFactoryImpl implements CapellacoreF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ReuseLink createReuseLink() {
 		ReuseLinkImpl reuseLink = new ReuseLinkImpl();
     //begin-capella-code
-
     reuseLink.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return reuseLink;
 	}
@@ -199,13 +192,11 @@ public class CapellacoreFactoryImpl extends EFactoryImpl implements CapellacoreF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Generalization createGeneralization() {
 		GeneralizationImpl generalization = new GeneralizationImpl();
     //begin-capella-code
-
     generalization.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return generalization;
 	}
@@ -215,13 +206,11 @@ public class CapellacoreFactoryImpl extends EFactoryImpl implements CapellacoreF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public StringPropertyValue createStringPropertyValue() {
 		StringPropertyValueImpl stringPropertyValue = new StringPropertyValueImpl();
     //begin-capella-code
-
     stringPropertyValue.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return stringPropertyValue;
 	}
@@ -231,13 +220,11 @@ public class CapellacoreFactoryImpl extends EFactoryImpl implements CapellacoreF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public IntegerPropertyValue createIntegerPropertyValue() {
 		IntegerPropertyValueImpl integerPropertyValue = new IntegerPropertyValueImpl();
     //begin-capella-code
-
     integerPropertyValue.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return integerPropertyValue;
 	}
@@ -247,13 +234,11 @@ public class CapellacoreFactoryImpl extends EFactoryImpl implements CapellacoreF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public BooleanPropertyValue createBooleanPropertyValue() {
 		BooleanPropertyValueImpl booleanPropertyValue = new BooleanPropertyValueImpl();
     //begin-capella-code
-
     booleanPropertyValue.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return booleanPropertyValue;
 	}
@@ -263,13 +248,11 @@ public class CapellacoreFactoryImpl extends EFactoryImpl implements CapellacoreF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public FloatPropertyValue createFloatPropertyValue() {
 		FloatPropertyValueImpl floatPropertyValue = new FloatPropertyValueImpl();
     //begin-capella-code
-
     floatPropertyValue.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return floatPropertyValue;
 	}
@@ -279,13 +262,11 @@ public class CapellacoreFactoryImpl extends EFactoryImpl implements CapellacoreF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EnumerationPropertyValue createEnumerationPropertyValue() {
 		EnumerationPropertyValueImpl enumerationPropertyValue = new EnumerationPropertyValueImpl();
     //begin-capella-code
-
     enumerationPropertyValue.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return enumerationPropertyValue;
 	}
@@ -295,13 +276,11 @@ public class CapellacoreFactoryImpl extends EFactoryImpl implements CapellacoreF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EnumerationPropertyType createEnumerationPropertyType() {
 		EnumerationPropertyTypeImpl enumerationPropertyType = new EnumerationPropertyTypeImpl();
     //begin-capella-code
-
     enumerationPropertyType.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return enumerationPropertyType;
 	}
@@ -311,13 +290,11 @@ public class CapellacoreFactoryImpl extends EFactoryImpl implements CapellacoreF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EnumerationPropertyLiteral createEnumerationPropertyLiteral() {
 		EnumerationPropertyLiteralImpl enumerationPropertyLiteral = new EnumerationPropertyLiteralImpl();
     //begin-capella-code
-
     enumerationPropertyLiteral.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return enumerationPropertyLiteral;
 	}
@@ -327,13 +304,11 @@ public class CapellacoreFactoryImpl extends EFactoryImpl implements CapellacoreF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PropertyValueGroup createPropertyValueGroup() {
 		PropertyValueGroupImpl propertyValueGroup = new PropertyValueGroupImpl();
     //begin-capella-code
-
     propertyValueGroup.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return propertyValueGroup;
 	}
@@ -343,13 +318,11 @@ public class CapellacoreFactoryImpl extends EFactoryImpl implements CapellacoreF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PropertyValuePkg createPropertyValuePkg() {
 		PropertyValuePkgImpl propertyValuePkg = new PropertyValuePkgImpl();
     //begin-capella-code
-
     propertyValuePkg.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return propertyValuePkg;
 	}
@@ -379,6 +352,7 @@ public class CapellacoreFactoryImpl extends EFactoryImpl implements CapellacoreF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CapellacorePackage getCapellacorePackage() {
 		return (CapellacorePackage)getEPackage();
 	}
@@ -402,7 +376,7 @@ public class CapellacoreFactoryImpl extends EFactoryImpl implements CapellacoreF
 	 * @generated
 	 */
 	public Constraint createConstraint(String name_p) {
-	  Constraint constraint = createConstraint();
+		Constraint constraint = createConstraint();
 		constraint.setName(name_p);	  
 		return constraint;
 	}
@@ -415,7 +389,7 @@ public class CapellacoreFactoryImpl extends EFactoryImpl implements CapellacoreF
 	 * @generated
 	 */
 	public StringPropertyValue createStringPropertyValue(String name_p) {
-	  StringPropertyValue stringPropertyValue = createStringPropertyValue();
+		StringPropertyValue stringPropertyValue = createStringPropertyValue();
 		stringPropertyValue.setName(name_p);	  
 		return stringPropertyValue;
 	}
@@ -428,7 +402,7 @@ public class CapellacoreFactoryImpl extends EFactoryImpl implements CapellacoreF
 	 * @generated
 	 */
 	public IntegerPropertyValue createIntegerPropertyValue(String name_p) {
-	  IntegerPropertyValue integerPropertyValue = createIntegerPropertyValue();
+		IntegerPropertyValue integerPropertyValue = createIntegerPropertyValue();
 		integerPropertyValue.setName(name_p);	  
 		return integerPropertyValue;
 	}
@@ -441,7 +415,7 @@ public class CapellacoreFactoryImpl extends EFactoryImpl implements CapellacoreF
 	 * @generated
 	 */
 	public BooleanPropertyValue createBooleanPropertyValue(String name_p) {
-	  BooleanPropertyValue booleanPropertyValue = createBooleanPropertyValue();
+		BooleanPropertyValue booleanPropertyValue = createBooleanPropertyValue();
 		booleanPropertyValue.setName(name_p);	  
 		return booleanPropertyValue;
 	}
@@ -454,7 +428,7 @@ public class CapellacoreFactoryImpl extends EFactoryImpl implements CapellacoreF
 	 * @generated
 	 */
 	public FloatPropertyValue createFloatPropertyValue(String name_p) {
-	  FloatPropertyValue floatPropertyValue = createFloatPropertyValue();
+		FloatPropertyValue floatPropertyValue = createFloatPropertyValue();
 		floatPropertyValue.setName(name_p);	  
 		return floatPropertyValue;
 	}
@@ -467,7 +441,7 @@ public class CapellacoreFactoryImpl extends EFactoryImpl implements CapellacoreF
 	 * @generated
 	 */
 	public EnumerationPropertyValue createEnumerationPropertyValue(String name_p) {
-	  EnumerationPropertyValue enumerationPropertyValue = createEnumerationPropertyValue();
+		EnumerationPropertyValue enumerationPropertyValue = createEnumerationPropertyValue();
 		enumerationPropertyValue.setName(name_p);	  
 		return enumerationPropertyValue;
 	}
@@ -480,7 +454,7 @@ public class CapellacoreFactoryImpl extends EFactoryImpl implements CapellacoreF
 	 * @generated
 	 */
 	public EnumerationPropertyType createEnumerationPropertyType(String name_p) {
-	  EnumerationPropertyType enumerationPropertyType = createEnumerationPropertyType();
+		EnumerationPropertyType enumerationPropertyType = createEnumerationPropertyType();
 		enumerationPropertyType.setName(name_p);	  
 		return enumerationPropertyType;
 	}
@@ -493,7 +467,7 @@ public class CapellacoreFactoryImpl extends EFactoryImpl implements CapellacoreF
 	 * @generated
 	 */
 	public EnumerationPropertyLiteral createEnumerationPropertyLiteral(String name_p) {
-	  EnumerationPropertyLiteral enumerationPropertyLiteral = createEnumerationPropertyLiteral();
+		EnumerationPropertyLiteral enumerationPropertyLiteral = createEnumerationPropertyLiteral();
 		enumerationPropertyLiteral.setName(name_p);	  
 		return enumerationPropertyLiteral;
 	}
@@ -506,7 +480,7 @@ public class CapellacoreFactoryImpl extends EFactoryImpl implements CapellacoreF
 	 * @generated
 	 */
 	public PropertyValueGroup createPropertyValueGroup(String name_p) {
-	  PropertyValueGroup propertyValueGroup = createPropertyValueGroup();
+		PropertyValueGroup propertyValueGroup = createPropertyValueGroup();
 		propertyValueGroup.setName(name_p);	  
 		return propertyValueGroup;
 	}
@@ -519,7 +493,7 @@ public class CapellacoreFactoryImpl extends EFactoryImpl implements CapellacoreF
 	 * @generated
 	 */
 	public PropertyValuePkg createPropertyValuePkg(String name_p) {
-	  PropertyValuePkg propertyValuePkg = createPropertyValuePkg();
+		PropertyValuePkg propertyValuePkg = createPropertyValuePkg();
 		propertyValuePkg.setName(name_p);	  
 		return propertyValuePkg;
 	}

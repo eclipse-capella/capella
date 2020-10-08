@@ -472,6 +472,7 @@ public class SequenceMessageValuationImpl extends ModelElementImpl implements Se
 	 * @generated
 	 */
 
+	@Override
 	public void setVisibleInDoc(boolean newVisibleInDoc) {
 
 		boolean oldVisibleInDoc = visibleInDoc;
@@ -504,6 +505,7 @@ public class SequenceMessageValuationImpl extends ModelElementImpl implements Se
 	 * @generated
 	 */
 
+	@Override
 	public void setVisibleInLM(boolean newVisibleInLM) {
 
 		boolean oldVisibleInLM = visibleInLM;
@@ -536,6 +538,7 @@ public class SequenceMessageValuationImpl extends ModelElementImpl implements Se
 	 * @generated
 	 */
 
+	@Override
 	public void setSummary(String newSummary) {
 
 		String oldSummary = summary;
@@ -568,6 +571,7 @@ public class SequenceMessageValuationImpl extends ModelElementImpl implements Se
 	 * @generated
 	 */
 
+	@Override
 	public void setDescription(String newDescription) {
 
 		String oldDescription = description;
@@ -600,6 +604,7 @@ public class SequenceMessageValuationImpl extends ModelElementImpl implements Se
 	 * @generated
 	 */
 
+	@Override
 	public void setReview(String newReview) {
 
 		String oldReview = review;
@@ -743,6 +748,7 @@ public class SequenceMessageValuationImpl extends ModelElementImpl implements Se
 	 * @generated
 	 */
 
+	@Override
 	public void setStatus(EnumerationPropertyLiteral newStatus) {
 
 		EnumerationPropertyLiteral oldStatus = status;
@@ -861,6 +867,7 @@ public class SequenceMessageValuationImpl extends ModelElementImpl implements Se
 	 * @generated
 	 */
 
+	@Override
 	public void setExchangeItemElement(ExchangeItemElement newExchangeItemElement) {
 
 		ExchangeItemElement oldExchangeItemElement = exchangeItemElement;
@@ -914,6 +921,7 @@ public class SequenceMessageValuationImpl extends ModelElementImpl implements Se
 	 * @generated
 	 */
 
+	@Override
 	public void setValue(ValueSpecification newValue) {
 
 		ValueSpecification oldValue = value;
@@ -1201,7 +1209,7 @@ public class SequenceMessageValuationImpl extends ModelElementImpl implements Se
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (visibleInDoc: "); //$NON-NLS-1$
 		result.append(visibleInDoc);
 		result.append(", visibleInLM: "); //$NON-NLS-1$

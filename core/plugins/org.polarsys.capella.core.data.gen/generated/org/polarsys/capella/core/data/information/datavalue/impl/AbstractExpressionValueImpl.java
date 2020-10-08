@@ -311,6 +311,7 @@ public abstract class AbstractExpressionValueImpl extends AbstractBooleanValueIm
 	 * @generated
 	 */
 
+	@Override
 	public void setUnit(Unit newUnit) {
 
 		Unit oldUnit = unit;
@@ -506,6 +507,7 @@ public abstract class AbstractExpressionValueImpl extends AbstractBooleanValueIm
 	 * @generated
 	 */
 
+	@Override
 	public void setUnparsedExpression(String newUnparsedExpression) {
 
 		String oldUnparsedExpression = unparsedExpression;
@@ -758,7 +760,7 @@ public abstract class AbstractExpressionValueImpl extends AbstractBooleanValueIm
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (unparsedExpression: "); //$NON-NLS-1$
 		result.append(unparsedExpression);
 		result.append(')');

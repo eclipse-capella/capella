@@ -39,6 +39,7 @@ import org.polarsys.capella.core.data.information.AbstractInstance;
  *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping metaclass='Property' stereotype='eng.PhysicalPart'"
  *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='In SysML, a Part is an owned property of a Block\r\n[source: SysML glossary for SysML v1.0]' usage\040guideline='n/a' used\040in\040levels='operational,system,logical,physical,epbs' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='' explanation='should be mapped to uml::Property, but one of its concrete ancestors already is (Property), so avoid redefining it\r\nat this level to avoid profile generation issue' constraints='information::Property must have as base metaclass uml::Property'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface Part extends AbstractInstance, InformationsExchanger, DeployableElement, DeploymentTarget, AbstractPathInvolvedElement {
@@ -61,6 +62,7 @@ public interface Part extends AbstractInstance, InformationsExchanger, Deployabl
 	 * @see org.polarsys.capella.core.data.cs.CsPackage#getPart_ProvidedInterfaces()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='providedInterfaces'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='Part.type(self, component);\r\nComponent.providedInterfaces(component, target);'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(computed) the provided interfaces associated to the classifier that this part represents\r\n[source: Capella study]\r\n\r\nThe interfaces that the component exposes to its environment.\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
@@ -89,6 +91,7 @@ public interface Part extends AbstractInstance, InformationsExchanger, Deployabl
 	 * @see org.polarsys.capella.core.data.cs.CsPackage#getPart_RequiredInterfaces()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='requiredInterfaces'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='Part.type(self, component);\r\nComponent.requiredInterfaces(component, target);'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(computed) the required interfaces associated to the classifier that this part represents\r\n[source: Capella study]\r\n\r\nThe interfaces that the component requires from other components in its environment in order to be able to offer\r\nits full set of provided functionality\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
@@ -143,6 +146,7 @@ public interface Part extends AbstractInstance, InformationsExchanger, Deployabl
 	 * @see org.polarsys.capella.core.data.cs.CsPackage#getPart_DeployedParts()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='deploymentLinks.deployedElement'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */
@@ -195,6 +199,7 @@ public interface Part extends AbstractInstance, InformationsExchanger, Deployabl
 	 * @see #setOwnedAbstractType(AbstractType)
 	 * @see org.polarsys.capella.core.data.cs.CsPackage#getPart_OwnedAbstractType()
 	 * @model containment="true" resolveProxies="true"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

@@ -39,6 +39,7 @@ import org.polarsys.capella.core.data.cs.Component;
  *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping metaclass='Component'"
  *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Aggregation of hardware, software, processed materials, services, or any of their discrete portions designated for configuration management and treated as a single entity in the configuration management process.' usage\040guideline='A configuration item is an abstract concept. Concrete concepts are : COTCI, CSCI, HWCI, InterfaceCI, NDICI, PrimeItemCI and SystemCI' used\040in\040levels='epbs' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none' arcadia_description='A configuration item (CI) is a part of the system, to be \r\n- Designed and produced, or purchased\r\n- Duplicated as much as it is used in the system\r\n- assembled with others \r\nin order to build each copy of the system. \r\nExamples of configuration items are cabinets, racks, electronic boards, wiring &amp; plugs, software components...\r\nCI are usually qualified as Hardware (HWCI), Computer Software (CSCI), Commercial off the Shelf (COTS, purchased item), Prime Item...\r\n'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='SysML::Blocks::Block' explanation='Could have been mapped to Package (to be closer to the semantic of a \"group of\" physical components, \r\nbut it is not possible since there are Parts associated to CI\'s, and packages do not inherit from Type, hence cannot be used to type a Part.' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface ConfigurationItem extends CapabilityRealizationInvolvedElement, Component {
@@ -59,7 +60,7 @@ public interface ConfigurationItem extends CapabilityRealizationInvolvedElement,
 	 * @return the value of the '<em>Item Identifier</em>' attribute.
 	 * @see #setItemIdentifier(String)
 	 * @see org.polarsys.capella.core.data.epbs.EpbsPackage#getConfigurationItem_ItemIdentifier()
-	 * @model
+	 * @model annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -102,6 +103,7 @@ public interface ConfigurationItem extends CapabilityRealizationInvolvedElement,
 	 * @see #setKind(ConfigurationItemKind)
 	 * @see org.polarsys.capella.core.data.epbs.EpbsPackage#getConfigurationItem_Kind()
 	 * @model default="Unset"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -144,8 +146,10 @@ public interface ConfigurationItem extends CapabilityRealizationInvolvedElement,
 	 * @model containment="true" resolveProxies="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Component'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedConfigurationItems'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the children of this ConfigurationItem \r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Class::nestedClassifier' explanation='none' constraints='uml::Class::nestedClassifier elements on which ConfigurationItem stereotype or any stereotype that inherits from it is applied'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -172,8 +176,10 @@ public interface ConfigurationItem extends CapabilityRealizationInvolvedElement,
 	 * @model containment="true" resolveProxies="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Component'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedConfigurationItemPkgs'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the sub-(configuration item) packages owned by this component' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::nearestpackage' explanation='none' constraints='store them in the nearest possible package, since a Block cannot contain packages'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -199,6 +205,7 @@ public interface ConfigurationItem extends CapabilityRealizationInvolvedElement,
 	 * @see org.polarsys.capella.core.data.epbs.EpbsPackage#getConfigurationItem_OwnedPhysicalArtifactRealizations()
 	 * @model containment="true" resolveProxies="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Physical Artifact Realization links owned by this Configuration Item' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -225,6 +232,7 @@ public interface ConfigurationItem extends CapabilityRealizationInvolvedElement,
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='PhysicalArtifactRealization.sourceElement(par, self);\r\nPhysicalArtifactRealization.targetElement(par, target);'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the list of realizations links coming from physical artifacts, and in which this ConfigurationItem is involved\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

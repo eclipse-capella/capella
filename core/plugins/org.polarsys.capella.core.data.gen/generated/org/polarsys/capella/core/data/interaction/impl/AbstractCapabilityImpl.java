@@ -614,6 +614,7 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
 	 * @generated
 	 */
 
+	@Override
 	public void setPreCondition(Constraint newPreCondition) {
 
 		Constraint oldPreCondition = preCondition;
@@ -660,6 +661,7 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
 	 * @generated
 	 */
 
+	@Override
 	public void setPostCondition(Constraint newPostCondition) {
 
 		Constraint oldPostCondition = postCondition;

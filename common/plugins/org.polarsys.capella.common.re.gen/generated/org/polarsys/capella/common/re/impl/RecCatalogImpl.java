@@ -139,6 +139,7 @@ public class RecCatalogImpl extends CatalogElementPkgImpl implements RecCatalog 
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedCompliancyDefinitionPkg(CompliancyDefinitionPkg newOwnedCompliancyDefinitionPkg) {
 
 		if (newOwnedCompliancyDefinitionPkg != ownedCompliancyDefinitionPkg) {

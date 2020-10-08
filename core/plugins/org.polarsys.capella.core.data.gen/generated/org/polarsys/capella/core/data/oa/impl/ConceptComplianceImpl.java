@@ -129,6 +129,7 @@ public class ConceptComplianceImpl extends RelationshipImpl implements ConceptCo
 	 * @generated
 	 */
 
+	@Override
 	public void setComplyWithConcept(Concept newComplyWithConcept) {
 
 		Concept oldComplyWithConcept = complyWithConcept;
@@ -182,6 +183,7 @@ public class ConceptComplianceImpl extends RelationshipImpl implements ConceptCo
 	 * @generated
 	 */
 
+	@Override
 	public void setCompliantCapability(OperationalCapability newCompliantCapability) {
 
 		OperationalCapability oldCompliantCapability = compliantCapability;

@@ -30,6 +30,7 @@ package org.polarsys.capella.core.data.information.datavalue;
  *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping metaclass='LiteralBoolean' stereotype='eng.LiteralBooleanValue'"
  *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='A literal Boolean is a specification of a Boolean value\r\n[source: UML superstructure v2.2]' usage\040guideline='n/a' used\040in\040levels='n/a' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='uml::LiteralBoolean' explanation='none' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface LiteralBooleanValue extends AbstractBooleanValue {
@@ -53,6 +54,7 @@ public interface LiteralBooleanValue extends AbstractBooleanValue {
 	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='value' featureOwner='LiteralBoolean'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the value \"true\" or \"false\"\r\n[source: Capella study]' constraints='none' type='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::LiteralBoolean::value' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

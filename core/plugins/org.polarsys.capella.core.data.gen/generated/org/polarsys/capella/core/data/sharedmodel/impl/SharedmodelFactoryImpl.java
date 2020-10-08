@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.polarsys.capella.common.lib.IdGenerator;
+import org.polarsys.capella.core.data.sharedmodel.*;
 import org.polarsys.capella.core.data.sharedmodel.GenericPkg;
 import org.polarsys.capella.core.data.sharedmodel.SharedPkg;
 import org.polarsys.capella.core.data.sharedmodel.SharedmodelFactory;
@@ -79,13 +80,11 @@ public class SharedmodelFactoryImpl extends EFactoryImpl implements SharedmodelF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SharedPkg createSharedPkg() {
 		SharedPkgImpl sharedPkg = new SharedPkgImpl();
     //begin-capella-code
-
     sharedPkg.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return sharedPkg;
 	}
@@ -95,13 +94,11 @@ public class SharedmodelFactoryImpl extends EFactoryImpl implements SharedmodelF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public GenericPkg createGenericPkg() {
 		GenericPkgImpl genericPkg = new GenericPkgImpl();
     //begin-capella-code
-
     genericPkg.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return genericPkg;
 	}
@@ -111,6 +108,7 @@ public class SharedmodelFactoryImpl extends EFactoryImpl implements SharedmodelF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SharedmodelPackage getSharedmodelPackage() {
 		return (SharedmodelPackage)getEPackage();
 	}
@@ -134,7 +132,7 @@ public class SharedmodelFactoryImpl extends EFactoryImpl implements SharedmodelF
 	 * @generated
 	 */
 	public SharedPkg createSharedPkg(String name_p) {
-	  SharedPkg sharedPkg = createSharedPkg();
+		SharedPkg sharedPkg = createSharedPkg();
 		sharedPkg.setName(name_p);	  
 		return sharedPkg;
 	}
@@ -147,7 +145,7 @@ public class SharedmodelFactoryImpl extends EFactoryImpl implements SharedmodelF
 	 * @generated
 	 */
 	public GenericPkg createGenericPkg(String name_p) {
-	  GenericPkg genericPkg = createGenericPkg();
+		GenericPkg genericPkg = createGenericPkg();
 		genericPkg.setName(name_p);	  
 		return genericPkg;
 	}

@@ -430,6 +430,7 @@ public class ExchangeItemElementImpl extends NamedElementImpl implements Exchang
 	 * @generated
 	 */
 
+	@Override
 	public void setOrdered(boolean newOrdered) {
 
 		boolean oldOrdered = ordered;
@@ -462,6 +463,7 @@ public class ExchangeItemElementImpl extends NamedElementImpl implements Exchang
 	 * @generated
 	 */
 
+	@Override
 	public void setUnique(boolean newUnique) {
 
 		boolean oldUnique = unique;
@@ -494,6 +496,7 @@ public class ExchangeItemElementImpl extends NamedElementImpl implements Exchang
 	 * @generated
 	 */
 
+	@Override
 	public void setMinInclusive(boolean newMinInclusive) {
 
 		boolean oldMinInclusive = minInclusive;
@@ -526,6 +529,7 @@ public class ExchangeItemElementImpl extends NamedElementImpl implements Exchang
 	 * @generated
 	 */
 
+	@Override
 	public void setMaxInclusive(boolean newMaxInclusive) {
 
 		boolean oldMaxInclusive = maxInclusive;
@@ -578,6 +582,7 @@ public class ExchangeItemElementImpl extends NamedElementImpl implements Exchang
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedDefaultValue(DataValue newOwnedDefaultValue) {
 
 		if (newOwnedDefaultValue != ownedDefaultValue) {
@@ -637,6 +642,7 @@ public class ExchangeItemElementImpl extends NamedElementImpl implements Exchang
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedMinValue(DataValue newOwnedMinValue) {
 
 		if (newOwnedMinValue != ownedMinValue) {
@@ -696,6 +702,7 @@ public class ExchangeItemElementImpl extends NamedElementImpl implements Exchang
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedMaxValue(DataValue newOwnedMaxValue) {
 
 		if (newOwnedMaxValue != ownedMaxValue) {
@@ -755,6 +762,7 @@ public class ExchangeItemElementImpl extends NamedElementImpl implements Exchang
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedNullValue(DataValue newOwnedNullValue) {
 
 		if (newOwnedNullValue != ownedNullValue) {
@@ -814,6 +822,7 @@ public class ExchangeItemElementImpl extends NamedElementImpl implements Exchang
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedMinCard(NumericValue newOwnedMinCard) {
 
 		if (newOwnedMinCard != ownedMinCard) {
@@ -873,6 +882,7 @@ public class ExchangeItemElementImpl extends NamedElementImpl implements Exchang
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedMinLength(NumericValue newOwnedMinLength) {
 
 		if (newOwnedMinLength != ownedMinLength) {
@@ -932,6 +942,7 @@ public class ExchangeItemElementImpl extends NamedElementImpl implements Exchang
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedMaxCard(NumericValue newOwnedMaxCard) {
 
 		if (newOwnedMaxCard != ownedMaxCard) {
@@ -991,6 +1002,7 @@ public class ExchangeItemElementImpl extends NamedElementImpl implements Exchang
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedMaxLength(NumericValue newOwnedMaxLength) {
 
 		if (newOwnedMaxLength != ownedMaxLength) {
@@ -1051,6 +1063,7 @@ public class ExchangeItemElementImpl extends NamedElementImpl implements Exchang
 	 * @generated
 	 */
 
+	@Override
 	public void setAbstractType(AbstractType newAbstractType) {
 
 		AbstractType oldAbstractType = abstractType;
@@ -1142,6 +1155,7 @@ public class ExchangeItemElementImpl extends NamedElementImpl implements Exchang
 	 * @generated
 	 */
 
+	@Override
 	public void setKind(ElementKind newKind) {
 
 		ElementKind oldKind = kind;
@@ -1174,6 +1188,7 @@ public class ExchangeItemElementImpl extends NamedElementImpl implements Exchang
 	 * @generated
 	 */
 
+	@Override
 	public void setDirection(ParameterDirection newDirection) {
 
 		ParameterDirection oldDirection = direction;
@@ -1206,6 +1221,7 @@ public class ExchangeItemElementImpl extends NamedElementImpl implements Exchang
 	 * @generated
 	 */
 
+	@Override
 	public void setComposite(boolean newComposite) {
 
 		boolean oldComposite = composite;
@@ -1581,7 +1597,7 @@ public class ExchangeItemElementImpl extends NamedElementImpl implements Exchang
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (ordered: "); //$NON-NLS-1$
 		result.append(ordered);
 		result.append(", unique: "); //$NON-NLS-1$

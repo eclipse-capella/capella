@@ -42,6 +42,7 @@ import org.polarsys.capella.core.data.cs.Interface;
  * @see org.polarsys.capella.core.data.information.InformationPackage#getExchangeItem()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Defined by functional characteristics that exist at a common boundary with co-functioning items and allow systems equipment to be compatible. \r\nAn exchange item describes a required or produced data.\r\nAn exchange item has an exchange mechanism\r\n[source:ARCADIA encyclopedia v0.8.0]' usage\040guideline='an exchange item should be created whenever there is a need to group data type elements that are bound by an applicative meaning, and should be treated as a whole' used\040in\040levels='operational,system,logical,physical,epbs' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='uml::Operation' explanation='none' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface ExchangeItem extends AbstractExchangeItem, AbstractEvent, AbstractSignal, FinalizableElement, GeneralizableElement {
@@ -67,6 +68,7 @@ public interface ExchangeItem extends AbstractExchangeItem, AbstractEvent, Abstr
 	 * @model required="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Communication principle associated to this exchange item\r\n[source:ARCADIA encyclopedia v0.8.0]' constraints='none' type='refer to ExchangeMechanism definition' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -109,6 +111,7 @@ public interface ExchangeItem extends AbstractExchangeItem, AbstractEvent, Abstr
 	 * @model containment="true" resolveProxies="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Set of exchange item elements that form the structure of the structured exchange item\r\n[source:Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Operation::ownedParameter' explanation='none' constraints='uml::Operation::ownedParameter elements on which ExchangeItemElement stereotype or any stereotype that inherits from it is applied'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -159,6 +162,7 @@ public interface ExchangeItem extends AbstractExchangeItem, AbstractEvent, Abstr
 	 * @see org.polarsys.capella.core.data.information.InformationPackage#getExchangeItem_OwnedExchangeItemInstances()
 	 * @model containment="true" resolveProxies="true"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -214,6 +218,7 @@ public interface ExchangeItem extends AbstractExchangeItem, AbstractEvent, Abstr
 	 * @model opposite="realizingExchangeItems" transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='ExchangeItem.outgoingTraces(self, ir);\r\nInformationRealization.targetElement(ir, target); '"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='class(es) realized by this class' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

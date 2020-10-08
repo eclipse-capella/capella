@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.polarsys.capella.common.lib.IdGenerator;
+import org.polarsys.capella.core.data.cs.*;
 import org.polarsys.capella.core.data.cs.ComponentRealization;
 import org.polarsys.capella.core.data.cs.CsFactory;
 import org.polarsys.capella.core.data.cs.CsPackage;
@@ -109,13 +110,11 @@ public class CsFactoryImpl extends EFactoryImpl implements CsFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Part createPart() {
 		PartImpl part = new PartImpl();
     //begin-capella-code
-
     part.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return part;
 	}
@@ -125,13 +124,11 @@ public class CsFactoryImpl extends EFactoryImpl implements CsFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ComponentRealization createComponentRealization() {
 		ComponentRealizationImpl componentRealization = new ComponentRealizationImpl();
     //begin-capella-code
-
     componentRealization.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return componentRealization;
 	}
@@ -141,13 +138,11 @@ public class CsFactoryImpl extends EFactoryImpl implements CsFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public InterfacePkg createInterfacePkg() {
 		InterfacePkgImpl interfacePkg = new InterfacePkgImpl();
     //begin-capella-code
-
     interfacePkg.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return interfacePkg;
 	}
@@ -157,13 +152,11 @@ public class CsFactoryImpl extends EFactoryImpl implements CsFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Interface createInterface() {
 		InterfaceImpl interface_ = new InterfaceImpl();
     //begin-capella-code
-
     interface_.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return interface_;
 	}
@@ -173,13 +166,11 @@ public class CsFactoryImpl extends EFactoryImpl implements CsFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public InterfaceImplementation createInterfaceImplementation() {
 		InterfaceImplementationImpl interfaceImplementation = new InterfaceImplementationImpl();
     //begin-capella-code
-
     interfaceImplementation.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return interfaceImplementation;
 	}
@@ -189,13 +180,11 @@ public class CsFactoryImpl extends EFactoryImpl implements CsFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public InterfaceUse createInterfaceUse() {
 		InterfaceUseImpl interfaceUse = new InterfaceUseImpl();
     //begin-capella-code
-
     interfaceUse.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return interfaceUse;
 	}
@@ -205,13 +194,11 @@ public class CsFactoryImpl extends EFactoryImpl implements CsFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ExchangeItemAllocation createExchangeItemAllocation() {
 		ExchangeItemAllocationImpl exchangeItemAllocation = new ExchangeItemAllocationImpl();
     //begin-capella-code
-
     exchangeItemAllocation.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return exchangeItemAllocation;
 	}
@@ -221,13 +208,11 @@ public class CsFactoryImpl extends EFactoryImpl implements CsFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PhysicalLink createPhysicalLink() {
 		PhysicalLinkImpl physicalLink = new PhysicalLinkImpl();
     //begin-capella-code
-
     physicalLink.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return physicalLink;
 	}
@@ -237,13 +222,11 @@ public class CsFactoryImpl extends EFactoryImpl implements CsFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PhysicalLinkCategory createPhysicalLinkCategory() {
 		PhysicalLinkCategoryImpl physicalLinkCategory = new PhysicalLinkCategoryImpl();
     //begin-capella-code
-
     physicalLinkCategory.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return physicalLinkCategory;
 	}
@@ -253,13 +236,11 @@ public class CsFactoryImpl extends EFactoryImpl implements CsFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PhysicalLinkEnd createPhysicalLinkEnd() {
 		PhysicalLinkEndImpl physicalLinkEnd = new PhysicalLinkEndImpl();
     //begin-capella-code
-
     physicalLinkEnd.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return physicalLinkEnd;
 	}
@@ -269,13 +250,11 @@ public class CsFactoryImpl extends EFactoryImpl implements CsFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PhysicalLinkRealization createPhysicalLinkRealization() {
 		PhysicalLinkRealizationImpl physicalLinkRealization = new PhysicalLinkRealizationImpl();
     //begin-capella-code
-
     physicalLinkRealization.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return physicalLinkRealization;
 	}
@@ -285,13 +264,11 @@ public class CsFactoryImpl extends EFactoryImpl implements CsFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PhysicalPath createPhysicalPath() {
 		PhysicalPathImpl physicalPath = new PhysicalPathImpl();
     //begin-capella-code
-
     physicalPath.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return physicalPath;
 	}
@@ -301,13 +278,11 @@ public class CsFactoryImpl extends EFactoryImpl implements CsFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PhysicalPathInvolvement createPhysicalPathInvolvement() {
 		PhysicalPathInvolvementImpl physicalPathInvolvement = new PhysicalPathInvolvementImpl();
     //begin-capella-code
-
     physicalPathInvolvement.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return physicalPathInvolvement;
 	}
@@ -317,13 +292,11 @@ public class CsFactoryImpl extends EFactoryImpl implements CsFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PhysicalPathReference createPhysicalPathReference() {
 		PhysicalPathReferenceImpl physicalPathReference = new PhysicalPathReferenceImpl();
     //begin-capella-code
-
     physicalPathReference.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return physicalPathReference;
 	}
@@ -333,13 +306,11 @@ public class CsFactoryImpl extends EFactoryImpl implements CsFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PhysicalPathRealization createPhysicalPathRealization() {
 		PhysicalPathRealizationImpl physicalPathRealization = new PhysicalPathRealizationImpl();
     //begin-capella-code
-
     physicalPathRealization.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return physicalPathRealization;
 	}
@@ -349,13 +320,11 @@ public class CsFactoryImpl extends EFactoryImpl implements CsFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PhysicalPort createPhysicalPort() {
 		PhysicalPortImpl physicalPort = new PhysicalPortImpl();
     //begin-capella-code
-
     physicalPort.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return physicalPort;
 	}
@@ -365,13 +334,11 @@ public class CsFactoryImpl extends EFactoryImpl implements CsFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PhysicalPortRealization createPhysicalPortRealization() {
 		PhysicalPortRealizationImpl physicalPortRealization = new PhysicalPortRealizationImpl();
     //begin-capella-code
-
     physicalPortRealization.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return physicalPortRealization;
 	}
@@ -381,6 +348,7 @@ public class CsFactoryImpl extends EFactoryImpl implements CsFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CsPackage getCsPackage() {
 		return (CsPackage)getEPackage();
 	}
@@ -404,7 +372,7 @@ public class CsFactoryImpl extends EFactoryImpl implements CsFactory {
 	 * @generated
 	 */
 	public Part createPart(String name_p) {
-	  Part part = createPart();
+		Part part = createPart();
 		part.setName(name_p);	  
 		return part;
 	}
@@ -417,7 +385,7 @@ public class CsFactoryImpl extends EFactoryImpl implements CsFactory {
 	 * @generated
 	 */
 	public InterfacePkg createInterfacePkg(String name_p) {
-	  InterfacePkg interfacePkg = createInterfacePkg();
+		InterfacePkg interfacePkg = createInterfacePkg();
 		interfacePkg.setName(name_p);	  
 		return interfacePkg;
 	}
@@ -430,7 +398,7 @@ public class CsFactoryImpl extends EFactoryImpl implements CsFactory {
 	 * @generated
 	 */
 	public Interface createInterface(String name_p) {
-	  Interface interface_ = createInterface();
+		Interface interface_ = createInterface();
 		interface_.setName(name_p);	  
 		return interface_;
 	}
@@ -443,7 +411,7 @@ public class CsFactoryImpl extends EFactoryImpl implements CsFactory {
 	 * @generated
 	 */
 	public ExchangeItemAllocation createExchangeItemAllocation(String name_p) {
-	  ExchangeItemAllocation exchangeItemAllocation = createExchangeItemAllocation();
+		ExchangeItemAllocation exchangeItemAllocation = createExchangeItemAllocation();
 		exchangeItemAllocation.setName(name_p);	  
 		return exchangeItemAllocation;
 	}
@@ -456,7 +424,7 @@ public class CsFactoryImpl extends EFactoryImpl implements CsFactory {
 	 * @generated
 	 */
 	public PhysicalLink createPhysicalLink(String name_p) {
-	  PhysicalLink physicalLink = createPhysicalLink();
+		PhysicalLink physicalLink = createPhysicalLink();
 		physicalLink.setName(name_p);	  
 		return physicalLink;
 	}
@@ -469,7 +437,7 @@ public class CsFactoryImpl extends EFactoryImpl implements CsFactory {
 	 * @generated
 	 */
 	public PhysicalLinkCategory createPhysicalLinkCategory(String name_p) {
-	  PhysicalLinkCategory physicalLinkCategory = createPhysicalLinkCategory();
+		PhysicalLinkCategory physicalLinkCategory = createPhysicalLinkCategory();
 		physicalLinkCategory.setName(name_p);	  
 		return physicalLinkCategory;
 	}
@@ -482,7 +450,7 @@ public class CsFactoryImpl extends EFactoryImpl implements CsFactory {
 	 * @generated
 	 */
 	public PhysicalPath createPhysicalPath(String name_p) {
-	  PhysicalPath physicalPath = createPhysicalPath();
+		PhysicalPath physicalPath = createPhysicalPath();
 		physicalPath.setName(name_p);	  
 		return physicalPath;
 	}
@@ -495,7 +463,7 @@ public class CsFactoryImpl extends EFactoryImpl implements CsFactory {
 	 * @generated
 	 */
 	public PhysicalPort createPhysicalPort(String name_p) {
-	  PhysicalPort physicalPort = createPhysicalPort();
+		PhysicalPort physicalPort = createPhysicalPort();
 		physicalPort.setName(name_p);	  
 		return physicalPort;
 	}

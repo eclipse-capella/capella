@@ -28,7 +28,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see org.polarsys.capella.common.re.RePackage#getCatalogElementPkg()
- * @model
+ * @model annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 

@@ -126,6 +126,7 @@ public class InteractionOperandImpl extends InteractionFragmentImpl implements I
 	 * @generated
 	 */
 
+	@Override
 	public void setGuard(Constraint newGuard) {
 
 		Constraint oldGuard = guard;

@@ -37,6 +37,7 @@ import org.polarsys.capella.core.data.capellacore.TypedElement;
  *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping metaclass='Property' stereotype='eng.Property'"
  *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='A property is a structural feature.\r\nA property related to a classifier by ownedAttribute represents an attribute, and it may also represent an association end.\r\nIt relates an instance of the class to a value or collection of values of the type of the attribute.\r\nA property related to an Association by memberEnd or its specializations represents an end of the association. The type\r\nof property is the type of the end of the association.\r\n[source: UML superstructure v2.2]' usage\040guideline='n/a' used\040in\040levels='operational,system,logical,physical,epbs' usage\040examples='n/a' constraints='- If this property is owned by a class associated with a binary association, and the other end of the association is also owned by a class, then opposite gives the other end.\r\n- A multiplicity on an aggregate end of a composite aggregation must not have an upper bound greater than 1.\r\n- Subsetting may only occur when the context of the subsetting property conforms to the context of the subsetted property.\r\n- A redefined property must be inherited from a more general classifier containing the redefining property.\r\n- A subsetting property may strengthen the type of the subsetted property, and its upper bound may be less.\r\n- Only a navigable property can be marked as readOnly.\r\n- A derived union is derived.\r\n- A derived union is read only.\r\n- The value of isComposite is true only if aggregation is composite.\r\n-  A Property cannot be subset by a Property with the same name\r\n[source: UML superstructure v2.2]' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='uml::Property' explanation='none' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface Property extends Feature, TypedElement, MultiplicityElement, FinalizableElement {
@@ -64,6 +65,7 @@ public interface Property extends Feature, TypedElement, MultiplicityElement, Fi
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='aggregation' featureOwner='Property'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specifies the kind of aggregation that applies to the Property\r\n[source: UML superstructure v2.2]' constraints='none' type='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Property::aggregation' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -105,6 +107,7 @@ public interface Property extends Feature, TypedElement, MultiplicityElement, Fi
 	 * @see org.polarsys.capella.core.data.information.InformationPackage#getProperty_IsDerived()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specifies whether the Property is derived, i.e., whether its value or values can be computed from other information\r\n[source: UML superstructure v2.2]' constraints='none' type='n/a' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Property::isDerived' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -146,6 +149,7 @@ public interface Property extends Feature, TypedElement, MultiplicityElement, Fi
 	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='isReadOnly' featureOwner='StructuralFeature'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='If true, the attribute may only be read, and not written\r\n[source: UML superstructure v2.2]' constraints='none' type='n/a' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Property::isReadOnly' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -187,6 +191,7 @@ public interface Property extends Feature, TypedElement, MultiplicityElement, Fi
 	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='isPartOfKey' featureOwner='eng.Property' fromStereotype='true'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies whether this Property is involved as a key to a table of values\r\n[source: Capella study]' constraints='none' type='\"true\" if the Property is used as a key' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -227,6 +232,7 @@ public interface Property extends Feature, TypedElement, MultiplicityElement, Fi
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='association' featureOwner='Property'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='association'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='an association relationship related to this Property\r\n[source: Capella study]\r\n\r\nReferences the association of which this property is a member, if any.\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Property::owningAssociation, uml::Property::association' explanation='none' constraints='none'"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='navigableMembers'"

@@ -206,6 +206,7 @@ public class PhysicalArchitectureImpl extends ComponentArchitectureImpl implemen
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedPhysicalComponentPkg(PhysicalComponentPkg newOwnedPhysicalComponentPkg) {
 
 		if (newOwnedPhysicalComponentPkg != ownedPhysicalComponentPkg) {

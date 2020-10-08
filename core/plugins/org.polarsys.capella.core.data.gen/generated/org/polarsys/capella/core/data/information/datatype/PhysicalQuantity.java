@@ -31,6 +31,7 @@ import org.polarsys.capella.core.data.information.Unit;
  *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping metaclass='DataType' stereotype='eng.PhysicalDimension'"
  *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='A Physical Quantity is a measurable value of a physical property of a thing or a movement. It referes to a Unit.\r\n\r\nA Dimension (SysML notion of Physical Quantity) is a kind of quantity that may be stated by means of defined units. For example, the dimension of length may be measured by units of meters, kilometers, or feet\r\n[source: SysML specification v1.1]' usage\040guideline='n/a' used\040in\040levels='system/logical/physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='' explanation='should be SysML::Blocks::ValueType, but its parent is concrete and already mapped (to uml::DataType), \r\nso do not map this one too to prevent Papyrus errors.' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface PhysicalQuantity extends NumericType {
@@ -53,8 +54,10 @@ public interface PhysicalQuantity extends NumericType {
 	 * @see org.polarsys.capella.core.data.information.datatype.DatatypePackage#getPhysicalQuantity_Unit()
 	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='clientDependency' featureOwner='NamedElement'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='unit'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the unit of this physical dimension\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

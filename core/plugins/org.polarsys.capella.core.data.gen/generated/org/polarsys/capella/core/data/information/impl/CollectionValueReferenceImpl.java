@@ -128,6 +128,7 @@ public class CollectionValueReferenceImpl extends AbstractCollectionValueImpl im
 	 * @generated
 	 */
 
+	@Override
 	public void setReferencedValue(AbstractCollectionValue newReferencedValue) {
 
 		AbstractCollectionValue oldReferencedValue = referencedValue;
@@ -181,6 +182,7 @@ public class CollectionValueReferenceImpl extends AbstractCollectionValueImpl im
 	 * @generated
 	 */
 
+	@Override
 	public void setReferencedProperty(Property newReferencedProperty) {
 
 		Property oldReferencedProperty = referencedProperty;

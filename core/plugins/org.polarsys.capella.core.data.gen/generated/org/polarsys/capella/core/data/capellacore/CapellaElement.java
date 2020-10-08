@@ -67,6 +67,7 @@ public interface CapellaElement extends TraceableElement, PublishableElement {
 	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getCapellaElement_Summary()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Summary of the element\r\n[Capella study]' constraints='None' type='n/a' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -107,6 +108,7 @@ public interface CapellaElement extends TraceableElement, PublishableElement {
 	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getCapellaElement_Description()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Description of the Capella element\r\n[Capella study]' constraints='None' type='n/a' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -147,6 +149,7 @@ public interface CapellaElement extends TraceableElement, PublishableElement {
 	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getCapellaElement_Review()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Review description on the Capella element' constraints='None' type='n/a' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -188,6 +191,7 @@ public interface CapellaElement extends TraceableElement, PublishableElement {
 	 * @model containment="true" resolveProxies="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the property values that are contained in this element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Element::ownedComment' explanation='none' constraints='uml::Element::ownedComment elements on which AbstractPropertyValue stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -214,6 +218,7 @@ public interface CapellaElement extends TraceableElement, PublishableElement {
 	 * @model containment="true" resolveProxies="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the enumeration property types that are contained in this element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::nearestpackage' explanation='none' constraints='elements on which EnumerationPropertyType stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -239,6 +244,7 @@ public interface CapellaElement extends TraceableElement, PublishableElement {
 	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getCapellaElement_AppliedPropertyValues()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the property values that are applied on this element (whether they are actually stored under this element or not)\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -265,6 +271,7 @@ public interface CapellaElement extends TraceableElement, PublishableElement {
 	 * @model containment="true" resolveProxies="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the property value groups that are stored/contained in this element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Element::ownedComment' explanation='none' constraints='uml::Element::ownedComment elements on which PropertyValueGroup stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -290,6 +297,7 @@ public interface CapellaElement extends TraceableElement, PublishableElement {
 	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getCapellaElement_AppliedPropertyValueGroups()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the property value groups that apply to this element (whether or not they are actually stored under this element)\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -315,6 +323,7 @@ public interface CapellaElement extends TraceableElement, PublishableElement {
 	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getCapellaElement_Status()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the enumeration property literal that applies to this element' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -354,6 +363,7 @@ public interface CapellaElement extends TraceableElement, PublishableElement {
 	 * @return the value of the '<em>Features</em>' reference list.
 	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getCapellaElement_Features()
 	 * @model annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -379,6 +389,7 @@ public interface CapellaElement extends TraceableElement, PublishableElement {
 	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getCapellaElement_AppliedRequirements()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='RequirementsTrace.sourceElement(rt, self);\r\nRequirementsTrace.targetElement(rt, target);'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */

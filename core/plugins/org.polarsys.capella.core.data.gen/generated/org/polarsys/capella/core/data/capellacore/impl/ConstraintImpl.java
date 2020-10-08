@@ -187,6 +187,7 @@ public class ConstraintImpl extends NamedElementImpl implements Constraint {
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedSpecification(ValueSpecification newOwnedSpecification) {
 
 		if (newOwnedSpecification != ownedSpecification) {

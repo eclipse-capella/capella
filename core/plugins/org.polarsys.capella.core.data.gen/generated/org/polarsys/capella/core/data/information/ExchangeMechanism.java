@@ -26,6 +26,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * @see org.polarsys.capella.core.data.information.InformationPackage#getExchangeMechanism()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Enumeration of the different exchange mechanisms\r\n[source:Capella study]' constraints='none' comment/notes='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public enum ExchangeMechanism implements Enumerator {
@@ -275,6 +276,7 @@ public enum ExchangeMechanism implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getValue() {
 	  return value;
 	}
@@ -284,6 +286,7 @@ public enum ExchangeMechanism implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 	  return name;
 	}
@@ -293,6 +296,7 @@ public enum ExchangeMechanism implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getLiteral() {
 	  return literal;
 	}

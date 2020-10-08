@@ -30,6 +30,7 @@ import org.polarsys.capella.core.data.capellacore.Relationship;
  * @model abstract="true"
  *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ProvidedInterfaceLink'"
  *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping metaclass='InterfaceRealization' stereotype='eng.ProvidedInterfaceLink'"
+ *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Ignore"
  *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(not used)' usage\040guideline='n/a' used\040in\040levels='n/a' usage\040examples='n/a' constraints='n/a' comment/notes='not used/implemented as of Capella 1.0.3' reference\040documentation='n/a'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='' explanation='uml::InterfaceRealization' constraints='none'"
  * @generated
@@ -55,6 +56,7 @@ public interface ProvidedInterfaceLink extends Relationship {
 	 * @model required="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='contract' featureOwner='InterfaceRealization'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='interface'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='References the Interface specifying the conformance contract\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::InterfaceRealization::contract' explanation='none' constraints='none'"
 	 * @generated

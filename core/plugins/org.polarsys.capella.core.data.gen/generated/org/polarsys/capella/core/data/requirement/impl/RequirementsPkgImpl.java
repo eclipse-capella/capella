@@ -380,6 +380,7 @@ public class RequirementsPkgImpl extends NamedElementImpl implements Requirement
 	 * @generated
 	 */
 
+	@Override
 	public void setAdditionalInformation(String newAdditionalInformation) {
 
 		String oldAdditionalInformation = additionalInformation;
@@ -412,6 +413,7 @@ public class RequirementsPkgImpl extends NamedElementImpl implements Requirement
 	 * @generated
 	 */
 
+	@Override
 	public void setLevel(String newLevel) {
 
 		String oldLevel = level;
@@ -627,7 +629,7 @@ public class RequirementsPkgImpl extends NamedElementImpl implements Requirement
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (additionalInformation: "); //$NON-NLS-1$
 		result.append(additionalInformation);
 		result.append(", level: "); //$NON-NLS-1$

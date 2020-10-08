@@ -26,6 +26,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getParameterEffectKind()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The datatype ParameterEffectKind is an enumeration that indicates the effect of a behavior on values passed in or out of\r\nits parameters\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ParameterEffectKind' explanation='none' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public enum ParameterEffectKind implements Enumerator {
@@ -251,6 +252,7 @@ public enum ParameterEffectKind implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getValue() {
 	  return value;
 	}
@@ -260,6 +262,7 @@ public enum ParameterEffectKind implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 	  return name;
 	}
@@ -269,6 +272,7 @@ public enum ParameterEffectKind implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getLiteral() {
 	  return literal;
 	}

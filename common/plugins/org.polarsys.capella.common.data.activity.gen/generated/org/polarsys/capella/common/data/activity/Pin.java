@@ -51,6 +51,7 @@ public interface Pin extends ObjectNode {
 	 * @see org.polarsys.capella.common.data.activity.ActivityPackage#getPin_IsControl()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Tells whether the pins provide data to the actions, or just controls when it executes it.\r\n[source: UML superstructure v2.2]\r\n' constraints='none' type='n/a' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='Cardinality of uml::Pin::isControl is [1..1]'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

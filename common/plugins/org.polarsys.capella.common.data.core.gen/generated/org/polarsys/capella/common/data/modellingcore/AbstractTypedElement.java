@@ -51,6 +51,7 @@ public interface AbstractTypedElement extends AbstractNamedElement {
 	 * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getAbstractTypedElement_AbstractType()
 	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='type' featureOwner='TypedElement'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='type'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the type associated to this model element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::TypedElement::type' explanation='' constraints=''"
 	 * @generated

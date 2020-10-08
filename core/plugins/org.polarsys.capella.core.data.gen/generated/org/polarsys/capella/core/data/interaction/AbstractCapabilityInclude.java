@@ -30,6 +30,7 @@ import org.polarsys.capella.core.data.capellacore.Relationship;
  * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractCapabilityInclude()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='AbstractCapabilityInclude'"
  *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping metaclass='Include' stereotype='eng.AbstractCapabilityInclude'"
+ *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Ignore"
  *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The Include is a relationship between two use cases, implying that the behavior of the included use case is inserted into the behavior of the including use case. It is also a kind of NamedElement so that it can have a name in the context of its owning use case. \r\nThe including use case may only depend on the result (value) of the included use case. This value is obtained as a result of the execution of the included use case.\r\n\r\nThis concept is similar to UML Include concept.\r\n[source:UML Superstructure v2.2]\r\n\r\nNote that the included use case is not optional, and is always required for the including use case to execute correctly.' usage\040guideline='n/a' used\040in\040levels='operational, system, logical, physical' usage\040examples='n/a' constraints='none' comment/notes='Should be renamed Include to map UML concept' reference\040documentation='n/a'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='uml::Include' explanation='none' constraints='none'"
  * @generated
@@ -55,6 +56,7 @@ public interface AbstractCapabilityInclude extends Relationship {
 	 * @model required="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='addition' featureOwner='Include'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='included'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Capability being included\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Include::addition' explanation='none' constraints='none'"
 	 * @generated
@@ -97,6 +99,7 @@ public interface AbstractCapabilityInclude extends Relationship {
 	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='includingCase' featureOwner='Include'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='inclusion'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Capability performing the inclusion of the other Capability\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Include::includingCase' explanation='none' constraints='none'"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='includes'"

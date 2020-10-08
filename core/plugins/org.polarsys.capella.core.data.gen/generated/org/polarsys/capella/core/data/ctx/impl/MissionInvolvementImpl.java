@@ -199,6 +199,7 @@ public class MissionInvolvementImpl extends RelationshipImpl implements MissionI
 	 * @generated
 	 */
 
+	@Override
 	public void setInvolved(InvolvedElement newInvolved) {
 
 		InvolvedElement oldInvolved = involved;

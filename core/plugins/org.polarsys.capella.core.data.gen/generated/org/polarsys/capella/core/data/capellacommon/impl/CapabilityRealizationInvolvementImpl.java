@@ -185,6 +185,7 @@ public class CapabilityRealizationInvolvementImpl extends RelationshipImpl imple
 	 * @generated
 	 */
 
+	@Override
 	public void setInvolved(InvolvedElement newInvolved) {
 
 		InvolvedElement oldInvolved = involved;

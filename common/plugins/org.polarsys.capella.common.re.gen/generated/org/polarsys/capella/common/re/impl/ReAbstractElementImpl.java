@@ -101,6 +101,7 @@ public abstract class ReAbstractElementImpl extends ExtensibleElementImpl implem
 	 * @generated
 	 */
 
+	@Override
 	public void setId(String newId) {
 
 		String oldId = id;
@@ -184,7 +185,7 @@ public abstract class ReAbstractElementImpl extends ExtensibleElementImpl implem
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (id: "); //$NON-NLS-1$
 		result.append(id);
 		result.append(')');

@@ -185,13 +185,11 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Association createAssociation() {
 		AssociationImpl association = new AssociationImpl();
     //begin-capella-code
-
     association.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return association;
 	}
@@ -201,13 +199,11 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public org.polarsys.capella.core.data.information.Class createClass() {
 		ClassImpl class_ = new ClassImpl();
     //begin-capella-code
-
     class_.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return class_;
 	}
@@ -217,13 +213,11 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Collection createCollection() {
 		CollectionImpl collection = new CollectionImpl();
     //begin-capella-code
-
     collection.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return collection;
 	}
@@ -233,13 +227,11 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CollectionValue createCollectionValue() {
 		CollectionValueImpl collectionValue = new CollectionValueImpl();
     //begin-capella-code
-
     collectionValue.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return collectionValue;
 	}
@@ -249,13 +241,11 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CollectionValueReference createCollectionValueReference() {
 		CollectionValueReferenceImpl collectionValueReference = new CollectionValueReferenceImpl();
     //begin-capella-code
-
     collectionValueReference.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return collectionValueReference;
 	}
@@ -265,13 +255,11 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DataPkg createDataPkg() {
 		DataPkgImpl dataPkg = new DataPkgImpl();
     //begin-capella-code
-
     dataPkg.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return dataPkg;
 	}
@@ -281,13 +269,11 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DomainElement createDomainElement() {
 		DomainElementImpl domainElement = new DomainElementImpl();
     //begin-capella-code
-
     domainElement.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return domainElement;
 	}
@@ -297,13 +283,11 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public KeyPart createKeyPart() {
 		KeyPartImpl keyPart = new KeyPartImpl();
     //begin-capella-code
-
     keyPart.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return keyPart;
 	}
@@ -313,13 +297,11 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public OperationAllocation createOperationAllocation() {
 		OperationAllocationImpl operationAllocation = new OperationAllocationImpl();
     //begin-capella-code
-
     operationAllocation.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return operationAllocation;
 	}
@@ -329,13 +311,11 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Parameter createParameter() {
 		ParameterImpl parameter = new ParameterImpl();
     //begin-capella-code
-
     parameter.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return parameter;
 	}
@@ -345,13 +325,11 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Property createProperty() {
 		PropertyImpl property = new PropertyImpl();
     //begin-capella-code
-
     property.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return property;
 	}
@@ -361,13 +339,11 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Service createService() {
 		ServiceImpl service = new ServiceImpl();
     //begin-capella-code
-
     service.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return service;
 	}
@@ -377,13 +353,11 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Union createUnion() {
 		UnionImpl union = new UnionImpl();
     //begin-capella-code
-
     union.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return union;
 	}
@@ -393,13 +367,11 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public UnionProperty createUnionProperty() {
 		UnionPropertyImpl unionProperty = new UnionPropertyImpl();
     //begin-capella-code
-
     unionProperty.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return unionProperty;
 	}
@@ -409,13 +381,11 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Unit createUnit() {
 		UnitImpl unit = new UnitImpl();
     //begin-capella-code
-
     unit.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return unit;
 	}
@@ -425,13 +395,11 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PortRealization createPortRealization() {
 		PortRealizationImpl portRealization = new PortRealizationImpl();
     //begin-capella-code
-
     portRealization.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return portRealization;
 	}
@@ -441,13 +409,11 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PortAllocation createPortAllocation() {
 		PortAllocationImpl portAllocation = new PortAllocationImpl();
     //begin-capella-code
-
     portAllocation.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return portAllocation;
 	}
@@ -457,13 +423,11 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ExchangeItem createExchangeItem() {
 		ExchangeItemImpl exchangeItem = new ExchangeItemImpl();
     //begin-capella-code
-
     exchangeItem.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return exchangeItem;
 	}
@@ -473,13 +437,11 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ExchangeItemElement createExchangeItemElement() {
 		ExchangeItemElementImpl exchangeItemElement = new ExchangeItemElementImpl();
     //begin-capella-code
-
     exchangeItemElement.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return exchangeItemElement;
 	}
@@ -489,13 +451,11 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ExchangeItemInstance createExchangeItemInstance() {
 		ExchangeItemInstanceImpl exchangeItemInstance = new ExchangeItemInstanceImpl();
     //begin-capella-code
-
     exchangeItemInstance.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return exchangeItemInstance;
 	}
@@ -505,13 +465,11 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public InformationRealization createInformationRealization() {
 		InformationRealizationImpl informationRealization = new InformationRealizationImpl();
     //begin-capella-code
-
     informationRealization.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return informationRealization;
 	}
@@ -521,13 +479,11 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ExchangeItemRealization createExchangeItemRealization() {
 		ExchangeItemRealizationImpl exchangeItemRealization = new ExchangeItemRealizationImpl();
     //begin-capella-code
-
     exchangeItemRealization.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return exchangeItemRealization;
 	}
@@ -697,6 +653,7 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public InformationPackage getInformationPackage() {
 		return (InformationPackage)getEPackage();
 	}
@@ -720,7 +677,7 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	 * @generated
 	 */
 	public Association createAssociation(String name_p) {
-	  Association association = createAssociation();
+		Association association = createAssociation();
 		association.setName(name_p);	  
 		return association;
 	}
@@ -733,7 +690,7 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	 * @generated
 	 */
 	public org.polarsys.capella.core.data.information.Class createClass(String name_p) {
-	  org.polarsys.capella.core.data.information.Class class_ = createClass();
+		org.polarsys.capella.core.data.information.Class class_ = createClass();
 		class_.setName(name_p);	  
 		return class_;
 	}
@@ -746,7 +703,7 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	 * @generated
 	 */
 	public Collection createCollection(String name_p) {
-	  Collection collection = createCollection();
+		Collection collection = createCollection();
 		collection.setName(name_p);	  
 		return collection;
 	}
@@ -759,7 +716,7 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	 * @generated
 	 */
 	public CollectionValue createCollectionValue(String name_p) {
-	  CollectionValue collectionValue = createCollectionValue();
+		CollectionValue collectionValue = createCollectionValue();
 		collectionValue.setName(name_p);	  
 		return collectionValue;
 	}
@@ -772,7 +729,7 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	 * @generated
 	 */
 	public CollectionValueReference createCollectionValueReference(String name_p) {
-	  CollectionValueReference collectionValueReference = createCollectionValueReference();
+		CollectionValueReference collectionValueReference = createCollectionValueReference();
 		collectionValueReference.setName(name_p);	  
 		return collectionValueReference;
 	}
@@ -785,7 +742,7 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	 * @generated
 	 */
 	public DataPkg createDataPkg(String name_p) {
-	  DataPkg dataPkg = createDataPkg();
+		DataPkg dataPkg = createDataPkg();
 		dataPkg.setName(name_p);	  
 		return dataPkg;
 	}
@@ -798,7 +755,7 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	 * @generated
 	 */
 	public DomainElement createDomainElement(String name_p) {
-	  DomainElement domainElement = createDomainElement();
+		DomainElement domainElement = createDomainElement();
 		domainElement.setName(name_p);	  
 		return domainElement;
 	}
@@ -811,7 +768,7 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	 * @generated
 	 */
 	public Parameter createParameter(String name_p) {
-	  Parameter parameter = createParameter();
+		Parameter parameter = createParameter();
 		parameter.setName(name_p);	  
 		return parameter;
 	}
@@ -824,7 +781,7 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	 * @generated
 	 */
 	public Property createProperty(String name_p) {
-	  Property property = createProperty();
+		Property property = createProperty();
 		property.setName(name_p);	  
 		return property;
 	}
@@ -837,7 +794,7 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	 * @generated
 	 */
 	public Service createService(String name_p) {
-	  Service service = createService();
+		Service service = createService();
 		service.setName(name_p);	  
 		return service;
 	}
@@ -850,7 +807,7 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	 * @generated
 	 */
 	public Union createUnion(String name_p) {
-	  Union union = createUnion();
+		Union union = createUnion();
 		union.setName(name_p);	  
 		return union;
 	}
@@ -863,7 +820,7 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	 * @generated
 	 */
 	public UnionProperty createUnionProperty(String name_p) {
-	  UnionProperty unionProperty = createUnionProperty();
+		UnionProperty unionProperty = createUnionProperty();
 		unionProperty.setName(name_p);	  
 		return unionProperty;
 	}
@@ -876,7 +833,7 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	 * @generated
 	 */
 	public Unit createUnit(String name_p) {
-	  Unit unit = createUnit();
+		Unit unit = createUnit();
 		unit.setName(name_p);	  
 		return unit;
 	}
@@ -889,7 +846,7 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	 * @generated
 	 */
 	public ExchangeItem createExchangeItem(String name_p) {
-	  ExchangeItem exchangeItem = createExchangeItem();
+		ExchangeItem exchangeItem = createExchangeItem();
 		exchangeItem.setName(name_p);	  
 		return exchangeItem;
 	}
@@ -902,7 +859,7 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	 * @generated
 	 */
 	public ExchangeItemElement createExchangeItemElement(String name_p) {
-	  ExchangeItemElement exchangeItemElement = createExchangeItemElement();
+		ExchangeItemElement exchangeItemElement = createExchangeItemElement();
 		exchangeItemElement.setName(name_p);	  
 		return exchangeItemElement;
 	}
@@ -915,7 +872,7 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	 * @generated
 	 */
 	public ExchangeItemInstance createExchangeItemInstance(String name_p) {
-	  ExchangeItemInstance exchangeItemInstance = createExchangeItemInstance();
+		ExchangeItemInstance exchangeItemInstance = createExchangeItemInstance();
 		exchangeItemInstance.setName(name_p);	  
 		return exchangeItemInstance;
 	}

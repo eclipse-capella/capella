@@ -204,6 +204,7 @@ public class ExchangeLinkImpl extends RelationshipImpl implements ExchangeLink {
 	 * @generated
 	 */
 
+	@Override
 	public void setName(String newName) {
 
 		String oldName = name;
@@ -559,7 +560,7 @@ public class ExchangeLinkImpl extends RelationshipImpl implements ExchangeLink {
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: "); //$NON-NLS-1$
 		result.append(name);
 		result.append(')');

@@ -317,6 +317,7 @@ public class PaItemProviderAdapterFactory extends PaAdapterFactory implements Co
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ComposeableAdapterFactory getRootAdapterFactory() {
 		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
 	}
@@ -327,6 +328,7 @@ public class PaItemProviderAdapterFactory extends PaAdapterFactory implements Co
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
 		this.parentAdapterFactory = parentAdapterFactory;
 	}
@@ -402,6 +404,7 @@ public class PaItemProviderAdapterFactory extends PaAdapterFactory implements Co
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void addListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.addListener(notifyChangedListener);
 	}
@@ -412,6 +415,7 @@ public class PaItemProviderAdapterFactory extends PaAdapterFactory implements Co
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void removeListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.removeListener(notifyChangedListener);
 	}
@@ -422,6 +426,7 @@ public class PaItemProviderAdapterFactory extends PaAdapterFactory implements Co
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void fireNotifyChanged(Notification notification) {
 		changeNotifier.fireNotifyChanged(notification);
 
@@ -436,6 +441,7 @@ public class PaItemProviderAdapterFactory extends PaAdapterFactory implements Co
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void dispose() {
 		if (physicalArchitecturePkgItemProvider != null) physicalArchitecturePkgItemProvider.dispose();
 		if (physicalArchitectureItemProvider != null) physicalArchitectureItemProvider.dispose();
@@ -562,8 +568,8 @@ public class PaItemProviderAdapterFactory extends PaAdapterFactory implements Co
 		 */
 		public Collection<Object> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
 			ArrayList<Object> result = new ArrayList<Object>();
-		   new CreationSwitch(result, editingDomain).doSwitch((EObject)object);
-		   return result;
+			new CreationSwitch(result, editingDomain).doSwitch((EObject)object);
+			return result;
 		}
 
 		/**

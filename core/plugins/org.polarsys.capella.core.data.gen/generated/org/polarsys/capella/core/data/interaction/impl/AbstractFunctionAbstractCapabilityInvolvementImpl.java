@@ -191,6 +191,7 @@ public class AbstractFunctionAbstractCapabilityInvolvementImpl extends Relations
 	 * @generated
 	 */
 
+	@Override
 	public void setInvolved(InvolvedElement newInvolved) {
 
 		InvolvedElement oldInvolved = involved;

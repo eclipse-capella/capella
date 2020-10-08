@@ -129,6 +129,7 @@ public abstract class AllocationImpl extends RelationshipImpl implements Allocat
 	 * @generated
 	 */
 
+	@Override
 	public void setTargetElement(TraceableElement newTargetElement) {
 
 		TraceableElement oldTargetElement = targetElement;
@@ -182,6 +183,7 @@ public abstract class AllocationImpl extends RelationshipImpl implements Allocat
 	 * @generated
 	 */
 
+	@Override
 	public void setSourceElement(TraceableElement newSourceElement) {
 
 		TraceableElement oldSourceElement = sourceElement;

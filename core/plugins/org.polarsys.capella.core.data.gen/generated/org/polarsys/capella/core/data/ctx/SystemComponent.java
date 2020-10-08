@@ -49,6 +49,7 @@ import org.polarsys.capella.core.data.oa.Entity;
  *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping metaclass='Component'"
  *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='An entity, with discrete structure within the system, that interacts with other Components of the system, thereby contributing at its lowest level to the system properties and characteristics.\r\n[source: Sys EM , ISO/IEC CD 15288]' usage\040guideline='n/a' used\040in\040levels='n/a (abstract)' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='' explanation='none' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 
@@ -73,6 +74,7 @@ public interface SystemComponent extends Component, InvolvedElement {
 	 * @model containment="true" resolveProxies="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the System Components included in this System Component\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints=''"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -96,6 +98,7 @@ public interface SystemComponent extends Component, InvolvedElement {
 	 * @model containment="true" resolveProxies="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='sub-packages of this System Component' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints=''"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -118,6 +121,7 @@ public interface SystemComponent extends Component, InvolvedElement {
 	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemComponent_DataComponent()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies whether or not this is a data component\r\n[source: Capella light-light study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -183,6 +187,7 @@ public interface SystemComponent extends Component, InvolvedElement {
 	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemComponent_InvolvingCapabilities()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Capabilities that involve this System Component' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='SystemComponent.capabilityInvolvements(self, capabilityInvolvements);\r\nCapabilityInvolvement.involver(capabilityInvolvements, target);'"
 	 * @generated
 	 */
@@ -209,6 +214,8 @@ public interface SystemComponent extends Component, InvolvedElement {
 	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemComponent_CapabilityInvolvements()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The Capability Involvement relationships in which this element is referenced' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
+	 *        annotation="http://www.polarsys.org/capella/derived"
 	 * @generated
 	 */
 
@@ -234,6 +241,7 @@ public interface SystemComponent extends Component, InvolvedElement {
 	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemComponent_InvolvingMissions()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Missions that involve this System Component' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='SystemComponent.missionInvolvements(self, missionInvolvements);\r\nMissionInvolvement.involver(missionInvolvements, target);'"
 	 * @generated
 	 */
@@ -260,6 +268,7 @@ public interface SystemComponent extends Component, InvolvedElement {
 	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemComponent_MissionInvolvements()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The Mission Involvement relationships in which this element is referenced' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='involvingInvolvements'"
 	 * @generated
 	 */
@@ -283,6 +292,7 @@ public interface SystemComponent extends Component, InvolvedElement {
 	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemComponent_RealizedEntities()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Entities that are realized by this System Component' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='realizingComponents'"
 	 * @generated
 	 */
@@ -306,6 +316,7 @@ public interface SystemComponent extends Component, InvolvedElement {
 	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemComponent_RealizingLogicalComponents()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Logical Components that realize this System Components' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='realizingComponents'"
 	 * @generated
 	 */
@@ -329,6 +340,7 @@ public interface SystemComponent extends Component, InvolvedElement {
 	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemComponent_AllocatedSystemFunctions()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='allocatedFunctions'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */

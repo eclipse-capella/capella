@@ -85,6 +85,7 @@ public interface AbstractState extends NamedElement, IState {
 	 * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getAbstractState_RealizedAbstractStates()
 	 * @model resolveProxies="false" transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='AbstractStateRealization.realizingAbstractState(asr, self);\r\nAbstractStateRealization.realizedAbstractState(asr, target);\r\n'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

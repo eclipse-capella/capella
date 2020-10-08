@@ -30,6 +30,7 @@ import org.polarsys.capella.core.data.capellacore.Relationship;
  * @see org.polarsys.capella.core.data.cs.CsPackage#getInterfaceImplementation()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='InterfaceImplementation'"
  *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping metaclass='InterfaceRealization' stereotype='eng.InterfaceImplementation'"
+ *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Ignore"
  *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Mediator class between an Interface and its implementor (typically a Component)\r\n[source: Capella study]\r\n\r\nAn InterfaceRealization is a specialized Realization relationship between a Classifier and an Interface. This relationship\r\nsignifies that the realizing classifier conforms to the contract specified by the Interface.\r\n[source: UML superstructure v2.2]' usage\040guideline='n/a' used\040in\040levels='operational,system,logical,physical,epbs' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='uml::InterfaceRealization' explanation='none' constraints='none'"
  * @generated
@@ -56,6 +57,7 @@ public interface InterfaceImplementation extends Relationship {
 	 * @model opposite="implementedInterfaceLinks" required="true" transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='implementingClassifier' featureOwner='InterfaceRealization'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='Interface Implementor'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='ownedInterfaceImplementations'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='References the Component that owns this Interface implementation.\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
@@ -85,6 +87,7 @@ public interface InterfaceImplementation extends Relationship {
 	 * @model required="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='contract' featureOwner='InterfaceRealization'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='realizedInterface'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='References the Interface specifying the conformance contract\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::InterfaceRealization::contract' explanation='none' constraints='none'"
 	 * @generated

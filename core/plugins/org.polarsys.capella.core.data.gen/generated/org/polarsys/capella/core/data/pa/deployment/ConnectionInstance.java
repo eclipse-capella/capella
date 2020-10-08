@@ -30,6 +30,7 @@ import org.polarsys.capella.core.data.fa.ComponentExchange;
  *
  * @see org.polarsys.capella.core.data.pa.deployment.DeploymentPackage#getConnectionInstance()
  * @model annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='' explanation='none' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface ConnectionInstance extends AbstractPhysicalInstance {
@@ -79,6 +80,7 @@ public interface ConnectionInstance extends AbstractPhysicalInstance {
 	 * @see #setType(ComponentExchange)
 	 * @see org.polarsys.capella.core.data.pa.deployment.DeploymentPackage#getConnectionInstance_Type()
 	 * @model annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

@@ -65,6 +65,7 @@ public interface CommunicationLinkExchanger extends EObject {
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedCommunicationLinks'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='list of all communication links owned by the communication exchanger' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

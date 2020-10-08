@@ -150,6 +150,7 @@ public abstract class FeatureImpl extends NamedElementImpl implements Feature {
 	 * @generated
 	 */
 
+	@Override
 	public void setIsAbstract(boolean newIsAbstract) {
 
 		boolean oldIsAbstract = isAbstract;
@@ -182,6 +183,7 @@ public abstract class FeatureImpl extends NamedElementImpl implements Feature {
 	 * @generated
 	 */
 
+	@Override
 	public void setIsStatic(boolean newIsStatic) {
 
 		boolean oldIsStatic = isStatic;
@@ -214,6 +216,7 @@ public abstract class FeatureImpl extends NamedElementImpl implements Feature {
 	 * @generated
 	 */
 
+	@Override
 	public void setVisibility(VisibilityKind newVisibility) {
 
 		VisibilityKind oldVisibility = visibility;
@@ -317,7 +320,7 @@ public abstract class FeatureImpl extends NamedElementImpl implements Feature {
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (isAbstract: "); //$NON-NLS-1$
 		result.append(isAbstract);
 		result.append(", isStatic: "); //$NON-NLS-1$

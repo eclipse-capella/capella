@@ -35,6 +35,7 @@ import org.polarsys.capella.core.data.information.AbstractInstance;
  * @see org.polarsys.capella.core.data.oa.OaPackage#getRole()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Role is a set of activities allocated to an actor or a system against another actor or system.' usage\040guideline='n/a' used\040in\040levels='operational' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='SysML ::Blocks ::Block' explanation='none' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface Role extends AbstractInstance {
@@ -194,6 +195,7 @@ public interface Role extends AbstractInstance {
 	 * @see org.polarsys.capella.core.data.oa.OaPackage#getRole_AllocatedOperationalActivities()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='activityAllocations.activity'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */

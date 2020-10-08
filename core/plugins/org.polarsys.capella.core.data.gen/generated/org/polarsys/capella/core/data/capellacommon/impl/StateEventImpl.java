@@ -189,6 +189,7 @@ public abstract class StateEventImpl extends NamedElementImpl implements StateEv
 	 * @generated
 	 */
 
+	@Override
 	public void setExpression(Constraint newExpression) {
 
 		Constraint oldExpression = expression;

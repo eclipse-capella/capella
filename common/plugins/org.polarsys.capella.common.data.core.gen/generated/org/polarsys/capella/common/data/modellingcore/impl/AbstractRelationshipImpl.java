@@ -133,6 +133,7 @@ public abstract class AbstractRelationshipImpl extends ModelElementImpl implemen
 	 * @generated
 	 */
 
+	@Override
 	public void setRealizedFlow(AbstractInformationFlow newRealizedFlow) {
 
 		if (newRealizedFlow != realizedFlow) {

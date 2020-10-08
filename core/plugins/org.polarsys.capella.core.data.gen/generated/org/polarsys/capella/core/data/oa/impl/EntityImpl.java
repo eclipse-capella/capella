@@ -507,6 +507,7 @@ public class EntityImpl extends AbstractConceptItemImpl implements Entity {
 	 * @generated
 	 */
 
+	@Override
 	public void setActualLocation(Location newActualLocation) {
 
 		Location oldActualLocation = actualLocation;

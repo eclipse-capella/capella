@@ -35,6 +35,7 @@ import org.polarsys.capella.core.data.pa.PhysicalComponent;
  * @see org.polarsys.capella.core.data.pa.deployment.DeploymentPackage#getComponentInstance()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='An instance of a component for deployment purposes.' usage\040guideline='none' used\040in\040levels='physical' usage\040examples='none' constraints='none' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='' explanation='none' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface ComponentInstance extends AbstractPhysicalInstance, DeployableElement, DeploymentTarget {
@@ -58,6 +59,7 @@ public interface ComponentInstance extends AbstractPhysicalInstance, DeployableE
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedAbstractPhysicalInstances'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -83,6 +85,7 @@ public interface ComponentInstance extends AbstractPhysicalInstance, DeployableE
 	 * @see org.polarsys.capella.core.data.pa.deployment.DeploymentPackage#getComponentInstance_OwnedAbstractPhysicalInstances()
 	 * @model containment="true" resolveProxies="true"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -108,6 +111,7 @@ public interface ComponentInstance extends AbstractPhysicalInstance, DeployableE
 	 * @see org.polarsys.capella.core.data.pa.deployment.DeploymentPackage#getComponentInstance_OwnedInstanceDeploymentLinks()
 	 * @model containment="true" resolveProxies="true"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -132,6 +136,7 @@ public interface ComponentInstance extends AbstractPhysicalInstance, DeployableE
 	 * @see #setType(PhysicalComponent)
 	 * @see org.polarsys.capella.core.data.pa.deployment.DeploymentPackage#getComponentInstance_Type()
 	 * @model annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

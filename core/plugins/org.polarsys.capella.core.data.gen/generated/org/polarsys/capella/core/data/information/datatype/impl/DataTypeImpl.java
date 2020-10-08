@@ -351,6 +351,7 @@ public abstract class DataTypeImpl extends GeneralizableElementImpl implements D
 	 * @generated
 	 */
 
+	@Override
 	public void setFinal(boolean newFinal) {
 
 		boolean oldFinal = final_;
@@ -383,6 +384,7 @@ public abstract class DataTypeImpl extends GeneralizableElementImpl implements D
 	 * @generated
 	 */
 
+	@Override
 	public void setDiscrete(boolean newDiscrete) {
 
 		boolean oldDiscrete = discrete;
@@ -415,6 +417,7 @@ public abstract class DataTypeImpl extends GeneralizableElementImpl implements D
 	 * @generated
 	 */
 
+	@Override
 	public void setMinInclusive(boolean newMinInclusive) {
 
 		boolean oldMinInclusive = minInclusive;
@@ -447,6 +450,7 @@ public abstract class DataTypeImpl extends GeneralizableElementImpl implements D
 	 * @generated
 	 */
 
+	@Override
 	public void setMaxInclusive(boolean newMaxInclusive) {
 
 		boolean oldMaxInclusive = maxInclusive;
@@ -479,6 +483,7 @@ public abstract class DataTypeImpl extends GeneralizableElementImpl implements D
 	 * @generated
 	 */
 
+	@Override
 	public void setPattern(String newPattern) {
 
 		String oldPattern = pattern;
@@ -511,6 +516,7 @@ public abstract class DataTypeImpl extends GeneralizableElementImpl implements D
 	 * @generated
 	 */
 
+	@Override
 	public void setVisibility(VisibilityKind newVisibility) {
 
 		VisibilityKind oldVisibility = visibility;
@@ -1000,7 +1006,7 @@ public abstract class DataTypeImpl extends GeneralizableElementImpl implements D
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (final: "); //$NON-NLS-1$
 		result.append(final_);
 		result.append(", discrete: "); //$NON-NLS-1$

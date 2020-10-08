@@ -442,6 +442,7 @@ public abstract class AbstractFunctionalArchitectureImpl extends NamedElementImp
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedFunctionPkg(FunctionPkg newOwnedFunctionPkg) {
 
 		if (newOwnedFunctionPkg != ownedFunctionPkg) {

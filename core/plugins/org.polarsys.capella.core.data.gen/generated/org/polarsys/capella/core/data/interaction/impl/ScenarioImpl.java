@@ -578,6 +578,7 @@ public class ScenarioImpl extends NamedElementImpl implements Scenario {
 	 * @generated
 	 */
 
+	@Override
 	public void setIsControlOperator(boolean newIsControlOperator) {
 
 		boolean oldIsControlOperator = isControlOperator;
@@ -665,6 +666,7 @@ public class ScenarioImpl extends NamedElementImpl implements Scenario {
 	 * @generated
 	 */
 
+	@Override
 	public void setPreCondition(Constraint newPreCondition) {
 
 		Constraint oldPreCondition = preCondition;
@@ -711,6 +713,7 @@ public class ScenarioImpl extends NamedElementImpl implements Scenario {
 	 * @generated
 	 */
 
+	@Override
 	public void setPostCondition(Constraint newPostCondition) {
 
 		Constraint oldPostCondition = postCondition;
@@ -738,6 +741,7 @@ public class ScenarioImpl extends NamedElementImpl implements Scenario {
 	 * @generated
 	 */
 
+	@Override
 	public void setKind(ScenarioKind newKind) {
 
 		ScenarioKind oldKind = kind;
@@ -770,6 +774,7 @@ public class ScenarioImpl extends NamedElementImpl implements Scenario {
 	 * @generated
 	 */
 
+	@Override
 	public void setMerged(boolean newMerged) {
 
 		boolean oldMerged = merged;
@@ -1503,7 +1508,7 @@ public class ScenarioImpl extends NamedElementImpl implements Scenario {
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (isControlOperator: "); //$NON-NLS-1$
 		result.append(isControlOperator);
 		result.append(", kind: "); //$NON-NLS-1$

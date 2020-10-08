@@ -151,8 +151,10 @@ public class InteractionStateItemProvider
 	 * This adds a property descriptor for the Related Abstract State feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @deprecated See {@link org.polarsys.capella.core.data.interaction.InteractionState#getRelatedAbstractState() model documentation} for details.
 	 * @generated
 	 */
+	@Deprecated
 	protected void addRelatedAbstractStatePropertyDescriptor(Object object) {
 		// begin-extension-code
 		relatedAbstractStatePropertyDescriptor = createItemPropertyDescriptor
@@ -177,8 +179,10 @@ public class InteractionStateItemProvider
 	 * This adds a property descriptor for the Related Abstract Function feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @deprecated See {@link org.polarsys.capella.core.data.interaction.InteractionState#getRelatedAbstractFunction() model documentation} for details.
 	 * @generated
 	 */
+	@Deprecated
 	protected void addRelatedAbstractFunctionPropertyDescriptor(Object object) {
 		// begin-extension-code
 		relatedAbstractFunctionPropertyDescriptor = createItemPropertyDescriptor

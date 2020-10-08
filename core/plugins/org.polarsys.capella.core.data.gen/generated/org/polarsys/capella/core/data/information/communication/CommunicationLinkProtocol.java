@@ -26,6 +26,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * @see org.polarsys.capella.core.data.information.communication.CommunicationPackage#getCommunicationLinkProtocol()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='enumeration listing the various possibilities for the protocol of the communication link' constraints='none' comment/notes='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public enum CommunicationLinkProtocol implements Enumerator {
@@ -359,6 +360,7 @@ public enum CommunicationLinkProtocol implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getValue() {
 	  return value;
 	}
@@ -368,6 +370,7 @@ public enum CommunicationLinkProtocol implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 	  return name;
 	}
@@ -377,6 +380,7 @@ public enum CommunicationLinkProtocol implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getLiteral() {
 	  return literal;
 	}

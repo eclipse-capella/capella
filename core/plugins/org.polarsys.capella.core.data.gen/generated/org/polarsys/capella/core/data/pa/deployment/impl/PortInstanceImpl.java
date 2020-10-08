@@ -224,6 +224,7 @@ public class PortInstanceImpl extends AbstractPhysicalInstanceImpl implements Po
 	 * @generated
 	 */
 
+	@Override
 	public void setType(ComponentPort newType) {
 
 		ComponentPort oldType = type;

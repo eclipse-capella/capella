@@ -31,6 +31,7 @@ package org.polarsys.capella.core.data.capellacommon;
  * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getChangeEvent()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='A change event occurs when a Boolean-valued expression becomes true. For example, as a result of a change in the value\r\nheld in a slot corresponding to an attribute, or a change in the value referenced by a link corresponding to an association.\r\nA change event is raised implicitly and is not the result of an explicit action\r\n[source: UML superstructure v2.4]' usage\040guideline='n/a' used\040in\040levels='operational, system, logical, physical' constraints='none' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='uml::ChangeEvent' explanation='none' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 
@@ -56,6 +57,7 @@ public interface ChangeEvent extends StateEvent {
 	 * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getChangeEvent_Kind()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies the type of the state ChangeEvent (see ChangeEventKind)\r\n[source: Capella study]' constraints='none' type='refer to ChangeEventKind definition' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

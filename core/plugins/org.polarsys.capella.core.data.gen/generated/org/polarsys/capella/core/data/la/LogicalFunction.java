@@ -37,6 +37,7 @@ import org.polarsys.capella.core.data.pa.PhysicalFunction;
  * @see org.polarsys.capella.core.data.la.LaPackage#getLogicalFunction()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Function at Logical level' usage\040guideline='n/a' used\040in\040levels='logical' usage\040examples='../img/usage_examples/example_logicalfunction.png' constraints='none' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='uml::Activity' explanation='All functions are mapped to (empty) activities' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface LogicalFunction extends AbstractFunction {
@@ -60,6 +61,7 @@ public interface LogicalFunction extends AbstractFunction {
 	 * @model containment="true" resolveProxies="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Set of subpackages that contain logical function elements' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::nestedPackage#uml::Package::packagedElement' explanation='none' constraints='uml::Package::nestedPackage elements on which LogicalFunctionPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -117,6 +119,7 @@ public interface LogicalFunction extends AbstractFunction {
 	 * @see org.polarsys.capella.core.data.ctx.SystemFunction#getRealizingLogicalFunctions
 	 * @model opposite="realizingLogicalFunctions" transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='outFunctionRealizations.allocatedFunction'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */

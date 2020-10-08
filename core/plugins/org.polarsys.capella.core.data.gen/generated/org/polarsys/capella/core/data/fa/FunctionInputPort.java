@@ -32,6 +32,7 @@ import org.polarsys.capella.core.data.information.ExchangeItem;
  * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionInputPort()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='an input interface of its owning function, to receive functional exchanges from other functions\r\n[source: Capella study]' usage\040guideline='It is necessary to create a function input port on a function, to be able to set this function as the receiving end of a functional exchange. Note however that the Capella tool automatically creates a function input port on the destination function, when a functional exchange is created.\r\n[source: Capella study]' used\040in\040levels='system,logical,physical' usage\040examples='../img/usage_examples/ports_exchanges.png' constraints='none' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='uml::ActivityParameterNode' explanation='use ActivityParameterNodes, delegation will add uml::InputPin on callBeahviorAction\r\n' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface FunctionInputPort extends FunctionPort, InputPin {
@@ -54,6 +55,7 @@ public interface FunctionInputPort extends FunctionPort, InputPin {
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionInputPort_IncomingExchangeItems()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the exchange items that are declared as potential flowing into this port\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

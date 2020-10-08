@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.polarsys.capella.common.lib.IdGenerator;
+import org.polarsys.capella.core.data.ctx.*;
 import org.polarsys.capella.core.data.ctx.Capability;
 import org.polarsys.capella.core.data.ctx.CapabilityExploitation;
 import org.polarsys.capella.core.data.ctx.CapabilityInvolvement;
@@ -105,13 +106,11 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SystemAnalysis createSystemAnalysis() {
 		SystemAnalysisImpl systemAnalysis = new SystemAnalysisImpl();
     //begin-capella-code
-
     systemAnalysis.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return systemAnalysis;
 	}
@@ -121,13 +120,11 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SystemFunction createSystemFunction() {
 		SystemFunctionImpl systemFunction = new SystemFunctionImpl();
     //begin-capella-code
-
     systemFunction.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return systemFunction;
 	}
@@ -137,13 +134,11 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SystemFunctionPkg createSystemFunctionPkg() {
 		SystemFunctionPkgImpl systemFunctionPkg = new SystemFunctionPkgImpl();
     //begin-capella-code
-
     systemFunctionPkg.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return systemFunctionPkg;
 	}
@@ -153,13 +148,11 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SystemCommunicationHook createSystemCommunicationHook() {
 		SystemCommunicationHookImpl systemCommunicationHook = new SystemCommunicationHookImpl();
     //begin-capella-code
-
     systemCommunicationHook.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return systemCommunicationHook;
 	}
@@ -169,13 +162,11 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SystemCommunication createSystemCommunication() {
 		SystemCommunicationImpl systemCommunication = new SystemCommunicationImpl();
     //begin-capella-code
-
     systemCommunication.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return systemCommunication;
 	}
@@ -185,13 +176,11 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CapabilityInvolvement createCapabilityInvolvement() {
 		CapabilityInvolvementImpl capabilityInvolvement = new CapabilityInvolvementImpl();
     //begin-capella-code
-
     capabilityInvolvement.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return capabilityInvolvement;
 	}
@@ -201,13 +190,11 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public MissionInvolvement createMissionInvolvement() {
 		MissionInvolvementImpl missionInvolvement = new MissionInvolvementImpl();
     //begin-capella-code
-
     missionInvolvement.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return missionInvolvement;
 	}
@@ -217,13 +204,11 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Mission createMission() {
 		MissionImpl mission = new MissionImpl();
     //begin-capella-code
-
     mission.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return mission;
 	}
@@ -233,13 +218,11 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public MissionPkg createMissionPkg() {
 		MissionPkgImpl missionPkg = new MissionPkgImpl();
     //begin-capella-code
-
     missionPkg.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return missionPkg;
 	}
@@ -249,13 +232,11 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Capability createCapability() {
 		CapabilityImpl capability = new CapabilityImpl();
     //begin-capella-code
-
     capability.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return capability;
 	}
@@ -265,13 +246,11 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CapabilityExploitation createCapabilityExploitation() {
 		CapabilityExploitationImpl capabilityExploitation = new CapabilityExploitationImpl();
     //begin-capella-code
-
     capabilityExploitation.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return capabilityExploitation;
 	}
@@ -281,13 +260,11 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CapabilityPkg createCapabilityPkg() {
 		CapabilityPkgImpl capabilityPkg = new CapabilityPkgImpl();
     //begin-capella-code
-
     capabilityPkg.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return capabilityPkg;
 	}
@@ -297,13 +274,11 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public OperationalAnalysisRealization createOperationalAnalysisRealization() {
 		OperationalAnalysisRealizationImpl operationalAnalysisRealization = new OperationalAnalysisRealizationImpl();
     //begin-capella-code
-
     operationalAnalysisRealization.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return operationalAnalysisRealization;
 	}
@@ -313,13 +288,11 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SystemComponentPkg createSystemComponentPkg() {
 		SystemComponentPkgImpl systemComponentPkg = new SystemComponentPkgImpl();
     //begin-capella-code
-
     systemComponentPkg.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return systemComponentPkg;
 	}
@@ -329,13 +302,11 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SystemComponent createSystemComponent() {
 		SystemComponentImpl systemComponent = new SystemComponentImpl();
     //begin-capella-code
-
     systemComponent.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return systemComponent;
 	}
@@ -345,6 +316,7 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CtxPackage getCtxPackage() {
 		return (CtxPackage)getEPackage();
 	}
@@ -368,7 +340,7 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	 * @generated
 	 */
 	public SystemAnalysis createSystemAnalysis(String name_p) {
-	  SystemAnalysis systemAnalysis = createSystemAnalysis();
+		SystemAnalysis systemAnalysis = createSystemAnalysis();
 		systemAnalysis.setName(name_p);	  
 		return systemAnalysis;
 	}
@@ -381,7 +353,7 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	 * @generated
 	 */
 	public SystemFunction createSystemFunction(String name_p) {
-	  SystemFunction systemFunction = createSystemFunction();
+		SystemFunction systemFunction = createSystemFunction();
 		systemFunction.setName(name_p);	  
 		return systemFunction;
 	}
@@ -394,7 +366,7 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	 * @generated
 	 */
 	public SystemFunctionPkg createSystemFunctionPkg(String name_p) {
-	  SystemFunctionPkg systemFunctionPkg = createSystemFunctionPkg();
+		SystemFunctionPkg systemFunctionPkg = createSystemFunctionPkg();
 		systemFunctionPkg.setName(name_p);	  
 		return systemFunctionPkg;
 	}
@@ -407,7 +379,7 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	 * @generated
 	 */
 	public SystemCommunicationHook createSystemCommunicationHook(String name_p) {
-	  SystemCommunicationHook systemCommunicationHook = createSystemCommunicationHook();
+		SystemCommunicationHook systemCommunicationHook = createSystemCommunicationHook();
 		systemCommunicationHook.setName(name_p);	  
 		return systemCommunicationHook;
 	}
@@ -420,7 +392,7 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	 * @generated
 	 */
 	public Mission createMission(String name_p) {
-	  Mission mission = createMission();
+		Mission mission = createMission();
 		mission.setName(name_p);	  
 		return mission;
 	}
@@ -433,7 +405,7 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	 * @generated
 	 */
 	public MissionPkg createMissionPkg(String name_p) {
-	  MissionPkg missionPkg = createMissionPkg();
+		MissionPkg missionPkg = createMissionPkg();
 		missionPkg.setName(name_p);	  
 		return missionPkg;
 	}
@@ -446,7 +418,7 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	 * @generated
 	 */
 	public Capability createCapability(String name_p) {
-	  Capability capability = createCapability();
+		Capability capability = createCapability();
 		capability.setName(name_p);	  
 		return capability;
 	}
@@ -459,7 +431,7 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	 * @generated
 	 */
 	public CapabilityPkg createCapabilityPkg(String name_p) {
-	  CapabilityPkg capabilityPkg = createCapabilityPkg();
+		CapabilityPkg capabilityPkg = createCapabilityPkg();
 		capabilityPkg.setName(name_p);	  
 		return capabilityPkg;
 	}
@@ -472,7 +444,7 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	 * @generated
 	 */
 	public SystemComponentPkg createSystemComponentPkg(String name_p) {
-	  SystemComponentPkg systemComponentPkg = createSystemComponentPkg();
+		SystemComponentPkg systemComponentPkg = createSystemComponentPkg();
 		systemComponentPkg.setName(name_p);	  
 		return systemComponentPkg;
 	}
@@ -485,7 +457,7 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	 * @generated
 	 */
 	public SystemComponent createSystemComponent(String name_p) {
-	  SystemComponent systemComponent = createSystemComponent();
+		SystemComponent systemComponent = createSystemComponent();
 		systemComponent.setName(name_p);	  
 		return systemComponent;
 	}

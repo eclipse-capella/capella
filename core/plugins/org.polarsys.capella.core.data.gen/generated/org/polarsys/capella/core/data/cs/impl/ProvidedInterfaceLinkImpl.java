@@ -113,6 +113,7 @@ public abstract class ProvidedInterfaceLinkImpl extends RelationshipImpl impleme
 	 * @generated
 	 */
 
+	@Override
 	public void setInterface(Interface newInterface) {
 
 		Interface oldInterface = interface_;

@@ -112,6 +112,7 @@ public class EventReceiptOperationImpl extends EventImpl implements EventReceipt
 	 * @generated
 	 */
 
+	@Override
 	public void setOperation(AbstractEventOperation newOperation) {
 
 		AbstractEventOperation oldOperation = operation;

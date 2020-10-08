@@ -29,6 +29,7 @@ import org.eclipse.emf.common.util.EList;
  * @see org.polarsys.capella.core.data.information.datavalue.DatavaluePackage#getComplexValue()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Data type characterizing a complex number\r\n[source: Capella light-light study]' usage\040guideline='n/a' used\040in\040levels='n/a' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='uml::Expression' explanation='uml::LiteralSpecification' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface ComplexValue extends AbstractComplexValue {
@@ -52,6 +53,7 @@ public interface ComplexValue extends AbstractComplexValue {
 	 * @model containment="true" resolveProxies="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='stores the different parts that make a complex value\r\n[source: Capella light-light study]' usage\040guideline='n/a' used\040in\040levels='n/a' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='none' constraints='***** elements on which ValuePart stereotype or any stereotype that inherits from it is applied\r\n'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

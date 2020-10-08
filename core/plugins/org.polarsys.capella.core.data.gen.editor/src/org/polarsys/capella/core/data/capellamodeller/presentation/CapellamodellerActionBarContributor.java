@@ -367,6 +367,7 @@ public class CapellamodellerActionBarContributor
 	 */
 	@Override
 	public void contributeToToolBar(IToolBarManager toolBarManager) {
+		super.contributeToToolBar(toolBarManager);
 		toolBarManager.add(new Separator("capellamodeller-settings")); //$NON-NLS-1$
 		toolBarManager.add(new Separator("capellamodeller-additions")); //$NON-NLS-1$
 	}
@@ -408,6 +409,7 @@ public class CapellamodellerActionBarContributor
 		//
 		submenuManager.addMenuListener
 			(new IMenuListener() {
+				 @Override
 				 public void menuAboutToShow(IMenuManager menuManager) {
 					 menuManager.updateAll(true);
 				 }
@@ -481,6 +483,7 @@ public class CapellamodellerActionBarContributor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void selectionChanged(SelectionChangedEvent event) {
 		// Current Selection
 		ISelection selection = event.getSelection();

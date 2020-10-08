@@ -49,7 +49,7 @@ public interface ReDescriptionElement extends ReNamedElement {
 	 * @return the value of the '<em>Description</em>' attribute.
 	 * @see #setDescription(String)
 	 * @see org.polarsys.capella.common.re.RePackage#getReDescriptionElement_Description()
-	 * @model
+	 * @model annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

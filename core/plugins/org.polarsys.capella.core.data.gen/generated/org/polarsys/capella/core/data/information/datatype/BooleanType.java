@@ -34,6 +34,7 @@ import org.polarsys.capella.core.data.information.datavalue.LiteralBooleanValue;
  *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping metaclass='DataType' stereotype='eng.BooleanType'"
  *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='A boolean is an instance of PrimitiveType. In the metamodel, Boolean defines an enumeration that denotes a logical\r\ncondition. Its enumeration literals are:\r\n- true - The Boolean condition is satisfied.\r\n- false - The Boolean condition is not satisfied\r\n[source: UML superstructure v2.2]\r\n' usage\040guideline='n/a' used\040in\040levels='operational,system,logical,physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='uml::PrimitiveType' explanation='none' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface BooleanType extends DataType {
@@ -57,8 +58,10 @@ public interface BooleanType extends DataType {
 	 * @model containment="true" upper="2"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='ownedLiteral' featureOwner='Enumeration'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='literals'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the literals that are contained in this enumeration\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -85,8 +88,10 @@ public interface BooleanType extends DataType {
 	 * @model containment="true" resolveProxies="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='clientDependency' featureOwner='NamedElement'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='defaultValue'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='default value for this data type\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='none' constraints='Elements on which BooleanValue stereotype or any stereotype that inherits from it is applied'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

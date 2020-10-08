@@ -97,7 +97,7 @@ public class LibrariesPackageImpl extends EPackageImpl implements LibrariesPacka
 
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-	 * 
+	 *
 	 * <p>This method is used to initialize {@link LibrariesPackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
@@ -111,7 +111,8 @@ public class LibrariesPackageImpl extends EPackageImpl implements LibrariesPacka
 		if (isInited) return (LibrariesPackage)EPackage.Registry.INSTANCE.getEPackage(LibrariesPackage.eNS_URI);
 
 		// Obtain or create and register package
-		LibrariesPackageImpl theLibrariesPackage = (LibrariesPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof LibrariesPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new LibrariesPackageImpl());
+		Object registeredLibrariesPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+		LibrariesPackageImpl theLibrariesPackage = registeredLibrariesPackage instanceof LibrariesPackageImpl ? (LibrariesPackageImpl)registeredLibrariesPackage : new LibrariesPackageImpl();
 
 		isInited = true;
 
@@ -127,7 +128,6 @@ public class LibrariesPackageImpl extends EPackageImpl implements LibrariesPacka
 		// Mark meta-data to indicate it can't be changed
 		theLibrariesPackage.freeze();
 
-  
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(LibrariesPackage.eNS_URI, theLibrariesPackage);
 		return theLibrariesPackage;
@@ -138,6 +138,7 @@ public class LibrariesPackageImpl extends EPackageImpl implements LibrariesPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getModelInformation() {
 		return modelInformationEClass;
 	}
@@ -147,6 +148,7 @@ public class LibrariesPackageImpl extends EPackageImpl implements LibrariesPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getModelInformation_OwnedReferences() {
 		return (EReference)modelInformationEClass.getEStructuralFeatures().get(0);
 	}
@@ -156,6 +158,7 @@ public class LibrariesPackageImpl extends EPackageImpl implements LibrariesPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getModelInformation_Version() {
 		return (EReference)modelInformationEClass.getEStructuralFeatures().get(1);
 	}
@@ -165,6 +168,7 @@ public class LibrariesPackageImpl extends EPackageImpl implements LibrariesPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getLibraryReference() {
 		return libraryReferenceEClass;
 	}
@@ -174,6 +178,7 @@ public class LibrariesPackageImpl extends EPackageImpl implements LibrariesPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getLibraryReference_Library() {
 		return (EReference)libraryReferenceEClass.getEStructuralFeatures().get(0);
 	}
@@ -183,6 +188,7 @@ public class LibrariesPackageImpl extends EPackageImpl implements LibrariesPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getLibraryReference_AccessPolicy() {
 		return (EAttribute)libraryReferenceEClass.getEStructuralFeatures().get(1);
 	}
@@ -192,6 +198,7 @@ public class LibrariesPackageImpl extends EPackageImpl implements LibrariesPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getLibraryReference_Version() {
 		return (EReference)libraryReferenceEClass.getEStructuralFeatures().get(2);
 	}
@@ -201,6 +208,7 @@ public class LibrariesPackageImpl extends EPackageImpl implements LibrariesPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getModelVersion() {
 		return modelVersionEClass;
 	}
@@ -210,6 +218,7 @@ public class LibrariesPackageImpl extends EPackageImpl implements LibrariesPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getModelVersion_MajorVersionNumber() {
 		return (EAttribute)modelVersionEClass.getEStructuralFeatures().get(0);
 	}
@@ -219,6 +228,7 @@ public class LibrariesPackageImpl extends EPackageImpl implements LibrariesPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getModelVersion_MinorVersionNumber() {
 		return (EAttribute)modelVersionEClass.getEStructuralFeatures().get(1);
 	}
@@ -228,6 +238,7 @@ public class LibrariesPackageImpl extends EPackageImpl implements LibrariesPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getModelVersion_LastModifiedFileStamp() {
 		return (EAttribute)modelVersionEClass.getEStructuralFeatures().get(2);
 	}
@@ -237,6 +248,7 @@ public class LibrariesPackageImpl extends EPackageImpl implements LibrariesPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getLibraryAbstractElement() {
 		return libraryAbstractElementEClass;
 	}
@@ -246,6 +258,7 @@ public class LibrariesPackageImpl extends EPackageImpl implements LibrariesPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getLibraryAbstractElement_Id() {
 		return (EAttribute)libraryAbstractElementEClass.getEStructuralFeatures().get(0);
 	}
@@ -255,6 +268,7 @@ public class LibrariesPackageImpl extends EPackageImpl implements LibrariesPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getAccessPolicy() {
 		return accessPolicyEEnum;
 	}
@@ -264,6 +278,7 @@ public class LibrariesPackageImpl extends EPackageImpl implements LibrariesPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public LibrariesFactory getLibrariesFactory() {
 		return (LibrariesFactory)getEFactoryInstance();
 	}
@@ -387,13 +402,13 @@ public class LibrariesPackageImpl extends EPackageImpl implements LibrariesPacka
 	 * @generated
 	 */
 	protected void createExtensionAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/extension"; //$NON-NLS-1$	
+		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/extension"; //$NON-NLS-1$
 		addAnnotation
-		  (this, 
-		   source, 
+		  (this,
+		   source,
 		   new String[] {
-			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
+			   "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
+			   "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 	}
 
@@ -404,12 +419,12 @@ public class LibrariesPackageImpl extends EPackageImpl implements LibrariesPacka
 	 * @generated
 	 */
 	protected void createConstraintAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/constraint"; //$NON-NLS-1$	
+		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/constraint"; //$NON-NLS-1$
 		addAnnotation
-		  (modelInformationEClass, 
-		   source, 
+		  (modelInformationEClass,
+		   source,
 		   new String[] {
-			 "ExtendedElement", "http://www.polarsys.org/capella/core/modeller/1.4.0#//Project" //$NON-NLS-1$ //$NON-NLS-2$
+			   "ExtendedElement", "http://www.polarsys.org/capella/core/modeller/1.4.0#//Project" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 	}
 
@@ -420,12 +435,12 @@ public class LibrariesPackageImpl extends EPackageImpl implements LibrariesPacka
 	 * @generated
 	 */
 	protected void createConstraintMappingAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/constraintMapping"; //$NON-NLS-1$	
+		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/constraintMapping"; //$NON-NLS-1$
 		addAnnotation
-		  (modelInformationEClass, 
-		   source, 
+		  (modelInformationEClass,
+		   source,
 		   new String[] {
-			 "Mapping", "platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.ecore#//Project" //$NON-NLS-1$ //$NON-NLS-2$
+			   "Mapping", "platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.ecore#//Project" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 	}
 

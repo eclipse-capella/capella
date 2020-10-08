@@ -213,7 +213,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-	 * 
+	 *
 	 * <p>This method is used to initialize {@link CtxPackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
@@ -227,7 +227,8 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 		if (isInited) return (CtxPackage)EPackage.Registry.INSTANCE.getEPackage(CtxPackage.eNS_URI);
 
 		// Obtain or create and register package
-		CtxPackageImpl theCtxPackage = (CtxPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof CtxPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new CtxPackageImpl());
+		Object registeredCtxPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+		CtxPackageImpl theCtxPackage = registeredCtxPackage instanceof CtxPackageImpl ? (CtxPackageImpl)registeredCtxPackage : new CtxPackageImpl();
 
 		isInited = true;
 
@@ -238,23 +239,40 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 		BehaviorPackage.eINSTANCE.eClass();
 
 		// Obtain or create and register interdependencies
-		CapellamodellerPackageImpl theCapellamodellerPackage = (CapellamodellerPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(CapellamodellerPackage.eNS_URI) instanceof CapellamodellerPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(CapellamodellerPackage.eNS_URI) : CapellamodellerPackage.eINSTANCE);
-		CapellacorePackageImpl theCapellacorePackage = (CapellacorePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(CapellacorePackage.eNS_URI) instanceof CapellacorePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(CapellacorePackage.eNS_URI) : CapellacorePackage.eINSTANCE);
-		OaPackageImpl theOaPackage = (OaPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(OaPackage.eNS_URI) instanceof OaPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(OaPackage.eNS_URI) : OaPackage.eINSTANCE);
-		LaPackageImpl theLaPackage = (LaPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(LaPackage.eNS_URI) instanceof LaPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(LaPackage.eNS_URI) : LaPackage.eINSTANCE);
-		PaPackageImpl thePaPackage = (PaPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(PaPackage.eNS_URI) instanceof PaPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(PaPackage.eNS_URI) : PaPackage.eINSTANCE);
-		DeploymentPackageImpl theDeploymentPackage = (DeploymentPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(DeploymentPackage.eNS_URI) instanceof DeploymentPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(DeploymentPackage.eNS_URI) : DeploymentPackage.eINSTANCE);
-		EpbsPackageImpl theEpbsPackage = (EpbsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(EpbsPackage.eNS_URI) instanceof EpbsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(EpbsPackage.eNS_URI) : EpbsPackage.eINSTANCE);
-		SharedmodelPackageImpl theSharedmodelPackage = (SharedmodelPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(SharedmodelPackage.eNS_URI) instanceof SharedmodelPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(SharedmodelPackage.eNS_URI) : SharedmodelPackage.eINSTANCE);
-		RequirementPackageImpl theRequirementPackage = (RequirementPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(RequirementPackage.eNS_URI) instanceof RequirementPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(RequirementPackage.eNS_URI) : RequirementPackage.eINSTANCE);
-		CapellacommonPackageImpl theCapellacommonPackage = (CapellacommonPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(CapellacommonPackage.eNS_URI) instanceof CapellacommonPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(CapellacommonPackage.eNS_URI) : CapellacommonPackage.eINSTANCE);
-		InformationPackageImpl theInformationPackage = (InformationPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(InformationPackage.eNS_URI) instanceof InformationPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(InformationPackage.eNS_URI) : InformationPackage.eINSTANCE);
-		CommunicationPackageImpl theCommunicationPackage = (CommunicationPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(CommunicationPackage.eNS_URI) instanceof CommunicationPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(CommunicationPackage.eNS_URI) : CommunicationPackage.eINSTANCE);
-		DatatypePackageImpl theDatatypePackage = (DatatypePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(DatatypePackage.eNS_URI) instanceof DatatypePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(DatatypePackage.eNS_URI) : DatatypePackage.eINSTANCE);
-		DatavaluePackageImpl theDatavaluePackage = (DatavaluePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(DatavaluePackage.eNS_URI) instanceof DatavaluePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(DatavaluePackage.eNS_URI) : DatavaluePackage.eINSTANCE);
-		CsPackageImpl theCsPackage = (CsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(CsPackage.eNS_URI) instanceof CsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(CsPackage.eNS_URI) : CsPackage.eINSTANCE);
-		FaPackageImpl theFaPackage = (FaPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(FaPackage.eNS_URI) instanceof FaPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(FaPackage.eNS_URI) : FaPackage.eINSTANCE);
-		InteractionPackageImpl theInteractionPackage = (InteractionPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(InteractionPackage.eNS_URI) instanceof InteractionPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(InteractionPackage.eNS_URI) : InteractionPackage.eINSTANCE);
+		Object registeredPackage = EPackage.Registry.INSTANCE.getEPackage(CapellamodellerPackage.eNS_URI);
+		CapellamodellerPackageImpl theCapellamodellerPackage = (CapellamodellerPackageImpl)(registeredPackage instanceof CapellamodellerPackageImpl ? registeredPackage : CapellamodellerPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(CapellacorePackage.eNS_URI);
+		CapellacorePackageImpl theCapellacorePackage = (CapellacorePackageImpl)(registeredPackage instanceof CapellacorePackageImpl ? registeredPackage : CapellacorePackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(OaPackage.eNS_URI);
+		OaPackageImpl theOaPackage = (OaPackageImpl)(registeredPackage instanceof OaPackageImpl ? registeredPackage : OaPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(LaPackage.eNS_URI);
+		LaPackageImpl theLaPackage = (LaPackageImpl)(registeredPackage instanceof LaPackageImpl ? registeredPackage : LaPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(PaPackage.eNS_URI);
+		PaPackageImpl thePaPackage = (PaPackageImpl)(registeredPackage instanceof PaPackageImpl ? registeredPackage : PaPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(DeploymentPackage.eNS_URI);
+		DeploymentPackageImpl theDeploymentPackage = (DeploymentPackageImpl)(registeredPackage instanceof DeploymentPackageImpl ? registeredPackage : DeploymentPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(EpbsPackage.eNS_URI);
+		EpbsPackageImpl theEpbsPackage = (EpbsPackageImpl)(registeredPackage instanceof EpbsPackageImpl ? registeredPackage : EpbsPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(SharedmodelPackage.eNS_URI);
+		SharedmodelPackageImpl theSharedmodelPackage = (SharedmodelPackageImpl)(registeredPackage instanceof SharedmodelPackageImpl ? registeredPackage : SharedmodelPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(RequirementPackage.eNS_URI);
+		RequirementPackageImpl theRequirementPackage = (RequirementPackageImpl)(registeredPackage instanceof RequirementPackageImpl ? registeredPackage : RequirementPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(CapellacommonPackage.eNS_URI);
+		CapellacommonPackageImpl theCapellacommonPackage = (CapellacommonPackageImpl)(registeredPackage instanceof CapellacommonPackageImpl ? registeredPackage : CapellacommonPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(InformationPackage.eNS_URI);
+		InformationPackageImpl theInformationPackage = (InformationPackageImpl)(registeredPackage instanceof InformationPackageImpl ? registeredPackage : InformationPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(CommunicationPackage.eNS_URI);
+		CommunicationPackageImpl theCommunicationPackage = (CommunicationPackageImpl)(registeredPackage instanceof CommunicationPackageImpl ? registeredPackage : CommunicationPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(DatatypePackage.eNS_URI);
+		DatatypePackageImpl theDatatypePackage = (DatatypePackageImpl)(registeredPackage instanceof DatatypePackageImpl ? registeredPackage : DatatypePackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(DatavaluePackage.eNS_URI);
+		DatavaluePackageImpl theDatavaluePackage = (DatavaluePackageImpl)(registeredPackage instanceof DatavaluePackageImpl ? registeredPackage : DatavaluePackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(CsPackage.eNS_URI);
+		CsPackageImpl theCsPackage = (CsPackageImpl)(registeredPackage instanceof CsPackageImpl ? registeredPackage : CsPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(FaPackage.eNS_URI);
+		FaPackageImpl theFaPackage = (FaPackageImpl)(registeredPackage instanceof FaPackageImpl ? registeredPackage : FaPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(InteractionPackage.eNS_URI);
+		InteractionPackageImpl theInteractionPackage = (InteractionPackageImpl)(registeredPackage instanceof InteractionPackageImpl ? registeredPackage : InteractionPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theCtxPackage.createPackageContents();
@@ -299,7 +317,6 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 		// Mark meta-data to indicate it can't be changed
 		theCtxPackage.freeze();
 
-  
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(CtxPackage.eNS_URI, theCtxPackage);
 		return theCtxPackage;
@@ -310,6 +327,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getSystemAnalysis() {
 		return systemAnalysisEClass;
 	}
@@ -319,6 +337,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSystemAnalysis_OwnedSystemComponentPkg() {
 		return (EReference)systemAnalysisEClass.getEStructuralFeatures().get(0);
 	}
@@ -328,6 +347,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSystemAnalysis_OwnedMissionPkg() {
 		return (EReference)systemAnalysisEClass.getEStructuralFeatures().get(1);
 	}
@@ -337,6 +357,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSystemAnalysis_ContainedCapabilityPkg() {
 		return (EReference)systemAnalysisEClass.getEStructuralFeatures().get(2);
 	}
@@ -346,6 +367,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSystemAnalysis_ContainedSystemFunctionPkg() {
 		return (EReference)systemAnalysisEClass.getEStructuralFeatures().get(3);
 	}
@@ -355,6 +377,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSystemAnalysis_OwnedOperationalAnalysisRealizations() {
 		return (EReference)systemAnalysisEClass.getEStructuralFeatures().get(4);
 	}
@@ -364,6 +387,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSystemAnalysis_AllocatedOperationalAnalysisRealizations() {
 		return (EReference)systemAnalysisEClass.getEStructuralFeatures().get(5);
 	}
@@ -373,6 +397,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSystemAnalysis_AllocatedOperationalAnalyses() {
 		return (EReference)systemAnalysisEClass.getEStructuralFeatures().get(6);
 	}
@@ -382,6 +407,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSystemAnalysis_AllocatingLogicalArchitectures() {
 		return (EReference)systemAnalysisEClass.getEStructuralFeatures().get(7);
 	}
@@ -391,6 +417,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getSystemFunction() {
 		return systemFunctionEClass;
 	}
@@ -400,6 +427,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSystemFunction_OwnedSystemFunctionPkgs() {
 		return (EReference)systemFunctionEClass.getEStructuralFeatures().get(0);
 	}
@@ -409,6 +437,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSystemFunction_AllocatingSystemComponents() {
 		return (EReference)systemFunctionEClass.getEStructuralFeatures().get(1);
 	}
@@ -418,6 +447,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSystemFunction_RealizedOperationalActivities() {
 		return (EReference)systemFunctionEClass.getEStructuralFeatures().get(2);
 	}
@@ -427,6 +457,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSystemFunction_RealizingLogicalFunctions() {
 		return (EReference)systemFunctionEClass.getEStructuralFeatures().get(3);
 	}
@@ -436,6 +467,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSystemFunction_ContainedSystemFunctions() {
 		return (EReference)systemFunctionEClass.getEStructuralFeatures().get(4);
 	}
@@ -445,6 +477,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSystemFunction_ChildrenSystemFunctions() {
 		return (EReference)systemFunctionEClass.getEStructuralFeatures().get(5);
 	}
@@ -454,6 +487,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getSystemFunctionPkg() {
 		return systemFunctionPkgEClass;
 	}
@@ -463,6 +497,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSystemFunctionPkg_OwnedSystemFunctions() {
 		return (EReference)systemFunctionPkgEClass.getEStructuralFeatures().get(0);
 	}
@@ -472,6 +507,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSystemFunctionPkg_OwnedSystemFunctionPkgs() {
 		return (EReference)systemFunctionPkgEClass.getEStructuralFeatures().get(1);
 	}
@@ -481,6 +517,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getSystemCommunicationHook() {
 		return systemCommunicationHookEClass;
 	}
@@ -490,6 +527,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSystemCommunicationHook_Communication() {
 		return (EReference)systemCommunicationHookEClass.getEStructuralFeatures().get(0);
 	}
@@ -499,6 +537,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSystemCommunicationHook_Type() {
 		return (EReference)systemCommunicationHookEClass.getEStructuralFeatures().get(1);
 	}
@@ -508,6 +547,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getSystemCommunication() {
 		return systemCommunicationEClass;
 	}
@@ -517,6 +557,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSystemCommunication_Ends() {
 		return (EReference)systemCommunicationEClass.getEStructuralFeatures().get(0);
 	}
@@ -526,6 +567,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getCapabilityInvolvement() {
 		return capabilityInvolvementEClass;
 	}
@@ -535,6 +577,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCapabilityInvolvement_SystemComponent() {
 		return (EReference)capabilityInvolvementEClass.getEStructuralFeatures().get(0);
 	}
@@ -544,6 +587,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCapabilityInvolvement_Capability() {
 		return (EReference)capabilityInvolvementEClass.getEStructuralFeatures().get(1);
 	}
@@ -553,6 +597,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getMissionInvolvement() {
 		return missionInvolvementEClass;
 	}
@@ -562,6 +607,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getMissionInvolvement_SystemComponent() {
 		return (EReference)missionInvolvementEClass.getEStructuralFeatures().get(0);
 	}
@@ -571,6 +617,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getMissionInvolvement_Mission() {
 		return (EReference)missionInvolvementEClass.getEStructuralFeatures().get(1);
 	}
@@ -580,6 +627,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getMission() {
 		return missionEClass;
 	}
@@ -589,6 +637,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getMission_OwnedMissionInvolvements() {
 		return (EReference)missionEClass.getEStructuralFeatures().get(0);
 	}
@@ -598,6 +647,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getMission_InvolvedSystemComponents() {
 		return (EReference)missionEClass.getEStructuralFeatures().get(1);
 	}
@@ -607,6 +657,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getMission_OwnedCapabilityExploitations() {
 		return (EReference)missionEClass.getEStructuralFeatures().get(2);
 	}
@@ -616,6 +667,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getMission_ExploitedCapabilities() {
 		return (EReference)missionEClass.getEStructuralFeatures().get(3);
 	}
@@ -625,6 +677,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getMissionPkg() {
 		return missionPkgEClass;
 	}
@@ -634,6 +687,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getMissionPkg_OwnedMissionPkgs() {
 		return (EReference)missionPkgEClass.getEStructuralFeatures().get(0);
 	}
@@ -643,6 +697,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getMissionPkg_OwnedMissions() {
 		return (EReference)missionPkgEClass.getEStructuralFeatures().get(1);
 	}
@@ -652,6 +707,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getCapability() {
 		return capabilityEClass;
 	}
@@ -661,6 +717,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCapability_OwnedCapabilityInvolvements() {
 		return (EReference)capabilityEClass.getEStructuralFeatures().get(0);
 	}
@@ -670,6 +727,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCapability_InvolvedSystemComponents() {
 		return (EReference)capabilityEClass.getEStructuralFeatures().get(1);
 	}
@@ -679,6 +737,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCapability_Purposes() {
 		return (EReference)capabilityEClass.getEStructuralFeatures().get(2);
 	}
@@ -688,6 +747,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCapability_PurposeMissions() {
 		return (EReference)capabilityEClass.getEStructuralFeatures().get(3);
 	}
@@ -697,6 +757,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCapability_RealizedOperationalCapabilities() {
 		return (EReference)capabilityEClass.getEStructuralFeatures().get(4);
 	}
@@ -706,6 +767,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCapability_RealizingCapabilityRealizations() {
 		return (EReference)capabilityEClass.getEStructuralFeatures().get(5);
 	}
@@ -715,6 +777,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getCapabilityExploitation() {
 		return capabilityExploitationEClass;
 	}
@@ -724,6 +787,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCapabilityExploitation_Mission() {
 		return (EReference)capabilityExploitationEClass.getEStructuralFeatures().get(0);
 	}
@@ -733,6 +797,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCapabilityExploitation_Capability() {
 		return (EReference)capabilityExploitationEClass.getEStructuralFeatures().get(1);
 	}
@@ -742,6 +807,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getCapabilityPkg() {
 		return capabilityPkgEClass;
 	}
@@ -751,6 +817,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCapabilityPkg_OwnedCapabilities() {
 		return (EReference)capabilityPkgEClass.getEStructuralFeatures().get(0);
 	}
@@ -760,6 +827,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCapabilityPkg_OwnedCapabilityPkgs() {
 		return (EReference)capabilityPkgEClass.getEStructuralFeatures().get(1);
 	}
@@ -769,6 +837,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getOperationalAnalysisRealization() {
 		return operationalAnalysisRealizationEClass;
 	}
@@ -778,6 +847,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getSystemComponentPkg() {
 		return systemComponentPkgEClass;
 	}
@@ -787,6 +857,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSystemComponentPkg_OwnedSystemComponents() {
 		return (EReference)systemComponentPkgEClass.getEStructuralFeatures().get(0);
 	}
@@ -796,6 +867,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSystemComponentPkg_OwnedSystemComponentPkgs() {
 		return (EReference)systemComponentPkgEClass.getEStructuralFeatures().get(1);
 	}
@@ -805,6 +877,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getSystemComponent() {
 		return systemComponentEClass;
 	}
@@ -814,6 +887,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSystemComponent_OwnedSystemComponents() {
 		return (EReference)systemComponentEClass.getEStructuralFeatures().get(0);
 	}
@@ -823,6 +897,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSystemComponent_OwnedSystemComponentPkgs() {
 		return (EReference)systemComponentEClass.getEStructuralFeatures().get(1);
 	}
@@ -832,6 +907,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getSystemComponent_DataComponent() {
 		return (EAttribute)systemComponentEClass.getEStructuralFeatures().get(2);
 	}
@@ -841,6 +917,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSystemComponent_DataType() {
 		return (EReference)systemComponentEClass.getEStructuralFeatures().get(3);
 	}
@@ -850,6 +927,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSystemComponent_InvolvingCapabilities() {
 		return (EReference)systemComponentEClass.getEStructuralFeatures().get(4);
 	}
@@ -859,6 +937,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSystemComponent_CapabilityInvolvements() {
 		return (EReference)systemComponentEClass.getEStructuralFeatures().get(5);
 	}
@@ -868,6 +947,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSystemComponent_InvolvingMissions() {
 		return (EReference)systemComponentEClass.getEStructuralFeatures().get(6);
 	}
@@ -877,6 +957,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSystemComponent_MissionInvolvements() {
 		return (EReference)systemComponentEClass.getEStructuralFeatures().get(7);
 	}
@@ -886,6 +967,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSystemComponent_RealizedEntities() {
 		return (EReference)systemComponentEClass.getEStructuralFeatures().get(8);
 	}
@@ -895,6 +977,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSystemComponent_RealizingLogicalComponents() {
 		return (EReference)systemComponentEClass.getEStructuralFeatures().get(9);
 	}
@@ -904,6 +987,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSystemComponent_AllocatedSystemFunctions() {
 		return (EReference)systemComponentEClass.getEStructuralFeatures().get(10);
 	}
@@ -913,6 +997,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CtxFactory getCtxFactory() {
 		return (CtxFactory)getEFactoryInstance();
 	}
@@ -1188,530 +1273,530 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * @generated
 	 */
 	protected void createDocumentationAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/ecore/documentation"; //$NON-NLS-1$	
+		String source = "http://www.polarsys.org/kitalpha/ecore/documentation"; //$NON-NLS-1$
 		addAnnotation
-		  (this, 
-		   source, 
+		  (this,
+		   source,
 		   new String[] {
-			 "description", "SystemAnalysis aims at defining the system context analysis modelling language. It is named ContextArchitecture due to MDSysE naming inheritance.\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "system", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "This package depends on the model CompositeStructure.ecore\r\nThis package depends on the model Interaction.ecore", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "SystemAnalysis aims at defining the system context analysis modelling language. It is named ContextArchitecture due to MDSysE naming inheritance.\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "system", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "This package depends on the model CompositeStructure.ecore\r\nThis package depends on the model Interaction.ecore", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (systemAnalysisEClass, 
-		   source, 
+		  (systemAnalysisEClass,
+		   source,
 		   new String[] {
-			 "description", "Model describing functional and non-functional issues - functions & related items - associated to (created during) a modelling phase", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "system", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "Model describing functional and non-functional issues - functions & related items - associated to (created during) a modelling phase", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "system", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemAnalysis_OwnedSystemComponentPkg(), 
-		   source, 
+		  (getSystemAnalysis_OwnedSystemComponentPkg(),
+		   source,
 		   new String[] {
-			 "description", "Link to a package that contains System Components", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "Link to a package that contains System Components", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemAnalysis_OwnedMissionPkg(), 
-		   source, 
+		  (getSystemAnalysis_OwnedMissionPkg(),
+		   source,
 		   new String[] {
-			 "description", "Link to the package that contains system analysis missions\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "Link to the package that contains system analysis missions\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemAnalysis_OwnedOperationalAnalysisRealizations(), 
-		   source, 
+		  (getSystemAnalysis_OwnedOperationalAnalysisRealizations(),
+		   source,
 		   new String[] {
-			 "description", "the realization links between Operational analysis and System analysis that are owned by this System analysis element\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "the realization links between Operational analysis and System analysis that are owned by this System analysis element\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemAnalysis_AllocatedOperationalAnalysisRealizations(), 
-		   source, 
+		  (getSystemAnalysis_AllocatedOperationalAnalysisRealizations(),
+		   source,
 		   new String[] {
-			 "description", "(automatically computed) reference to operational analysis elements that this system analysis is realizing\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "(automatically computed) reference to operational analysis elements that this system analysis is realizing\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (systemFunctionEClass, 
-		   source, 
+		  (systemFunctionEClass,
+		   source,
 		   new String[] {
-			 "description", "Function at System level\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "system", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "../img/usage_examples/example_systemfunction.png", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "Function at System level\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "system", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "../img/usage_examples/example_systemfunction.png", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemFunction_OwnedSystemFunctionPkgs(), 
-		   source, 
+		  (getSystemFunction_OwnedSystemFunctionPkgs(),
+		   source,
 		   new String[] {
-			 "description", "sub (function) package under this function", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "sub (function) package under this function", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemFunction_AllocatingSystemComponents(), 
-		   source, 
+		  (getSystemFunction_AllocatingSystemComponents(),
+		   source,
 		   new String[] {
-			 "description", "Components that allocate this System Function.", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "Components that allocate this System Function.", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemFunction_ChildrenSystemFunctions(), 
-		   source, 
+		  (getSystemFunction_ChildrenSystemFunctions(),
+		   source,
 		   new String[] {
-			 "description", "list of children system functions\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "list of children system functions\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (systemFunctionPkgEClass, 
-		   source, 
+		  (systemFunctionPkgEClass,
+		   source,
 		   new String[] {
-			 "description", "a container for System Functions\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "this can be used to structure/organize system functions in the model", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "system", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "a container for System Functions\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "this can be used to structure/organize system functions in the model", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "system", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemFunctionPkg_OwnedSystemFunctions(), 
-		   source, 
+		  (getSystemFunctionPkg_OwnedSystemFunctions(),
+		   source,
 		   new String[] {
-			 "description", "system functions contained in this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "system functions contained in this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemFunctionPkg_OwnedSystemFunctionPkgs(), 
-		   source, 
+		  (getSystemFunctionPkg_OwnedSystemFunctionPkgs(),
+		   source,
 		   new String[] {
-			 "description", "sub (function) package under this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "sub (function) package under this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (systemCommunicationHookEClass, 
-		   source, 
+		  (systemCommunicationHookEClass,
+		   source,
 		   new String[] {
-			 "description", "an endpoint of a relationship between the System and external actors\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "system", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "an endpoint of a relationship between the System and external actors\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "system", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemCommunicationHook_Communication(), 
-		   source, 
+		  (getSystemCommunicationHook_Communication(),
+		   source,
 		   new String[] {
-			 "description", "the relationship link to which this endpoint is attached\r\n[source: Capella study]\r\n\r\nReferences the association of which this property is a member, if any.\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "the relationship link to which this endpoint is attached\r\n[source: Capella study]\r\n\r\nReferences the association of which this property is a member, if any.\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemCommunicationHook_Type(), 
-		   source, 
+		  (getSystemCommunicationHook_Type(),
+		   source,
 		   new String[] {
-			 "description", "the type of the entity to which this endpoint is attached\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "the type of the entity to which this endpoint is attached\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (systemCommunicationEClass, 
-		   source, 
+		  (systemCommunicationEClass,
+		   source,
 		   new String[] {
-			 "description", "a communication relationship between the System (seen as a black box) and some external entities (typically Actors)\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "system", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "a communication relationship between the System (seen as a black box) and some external entities (typically Actors)\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "system", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemCommunication_Ends(), 
-		   source, 
+		  (getSystemCommunication_Ends(),
+		   source,
 		   new String[] {
-			 "description", "the endpoints of this relationship link (there can be an arbitrary number of them for a given link)\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "the endpoints of this relationship link (there can be an arbitrary number of them for a given link)\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (capabilityInvolvementEClass, 
-		   source, 
+		  (capabilityInvolvementEClass,
+		   source,
 		   new String[] {
-			 "description", "Link between a system component and a system capability that means the system component is involved in the capability\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "system", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "../img/usage_examples/example_actor_capability.png", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "Link between a system component and a system capability that means the system component is involved in the capability\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "system", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "../img/usage_examples/example_actor_capability.png", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getCapabilityInvolvement_SystemComponent(), 
-		   source, 
+		  (getCapabilityInvolvement_SystemComponent(),
+		   source,
 		   new String[] {
-			 "description", "Link to a system component that is involved in the system capability.", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "Link to a system component that is involved in the system capability.", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getCapabilityInvolvement_Capability(), 
-		   source, 
+		  (getCapabilityInvolvement_Capability(),
+		   source,
 		   new String[] {
-			 "description", "Link to the system capability involving the actor\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "Link to the system capability involving the actor\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (missionInvolvementEClass, 
-		   source, 
+		  (missionInvolvementEClass,
+		   source,
 		   new String[] {
-			 "description", "Link between a system component and a system mission that means the system component is involved in the mission\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "system", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "Link between a system component and a system mission that means the system component is involved in the mission\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "system", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getMissionInvolvement_SystemComponent(), 
-		   source, 
+		  (getMissionInvolvement_SystemComponent(),
+		   source,
 		   new String[] {
-			 "description", "Link to a system actor that is involved in the system mission\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "Link to a system actor that is involved in the system mission\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getMissionInvolvement_Mission(), 
-		   source, 
+		  (getMissionInvolvement_Mission(),
+		   source,
 		   new String[] {
-			 "description", "Link to the system mission related to the actor\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "Link to the system mission related to the actor\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (missionEClass, 
-		   source, 
+		  (missionEClass,
+		   source,
 		   new String[] {
-			 "description", "Operational goal. It must be satisfied by usage of System capabilities.\r\n\r\nA mission can be compared to a UML UseCase : A use case is the specification of a set of actions performed by a system, which yields an observable result that is,\r\ntypically, of value for one or more actors or other stakeholders of the system.\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "system", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "../img/usage_examples/example_mission.png", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "Operational goal. It must be satisfied by usage of System capabilities.\r\n\r\nA mission can be compared to a UML UseCase : A use case is the specification of a set of actions performed by a system, which yields an observable result that is,\r\ntypically, of value for one or more actors or other stakeholders of the system.\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "system", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "../img/usage_examples/example_mission.png", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getMission_OwnedMissionInvolvements(), 
-		   source, 
+		  (getMission_OwnedMissionInvolvements(),
+		   source,
 		   new String[] {
-			 "description", "the links between Mission Involvement links that are owned by this Mission", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "the links between Mission Involvement links that are owned by this Mission", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getMission_InvolvedSystemComponents(), 
-		   source, 
+		  (getMission_InvolvedSystemComponents(),
+		   source,
 		   new String[] {
-			 "description", "System Components that are involved in this Mission", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "System Components that are involved in this Mission", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getMission_OwnedCapabilityExploitations(), 
-		   source, 
+		  (getMission_OwnedCapabilityExploitations(),
+		   source,
 		   new String[] {
-			 "description", "the capability exploitation links that are assigned to this Mission\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "the capability exploitation links that are assigned to this Mission\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getMission_ExploitedCapabilities(), 
-		   source, 
+		  (getMission_ExploitedCapabilities(),
+		   source,
 		   new String[] {
-			 "description", "(automatically computed) the list of Capabilities that this Mission exploits\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "(automatically computed) the list of Capabilities that this Mission exploits\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (missionPkgEClass, 
-		   source, 
+		  (missionPkgEClass,
+		   source,
 		   new String[] {
-			 "description", "Package that contains system missions\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "system", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "Package that contains system missions\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "system", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getMissionPkg_OwnedMissionPkgs(), 
-		   source, 
+		  (getMissionPkg_OwnedMissionPkgs(),
+		   source,
 		   new String[] {
-			 "description", "Sub packages that contain system missions\r\n[Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "Sub packages that contain system missions\r\n[Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getMissionPkg_OwnedMissions(), 
-		   source, 
+		  (getMissionPkg_OwnedMissions(),
+		   source,
 		   new String[] {
-			 "description", "Set of system missions that are defined at that level of package\r\n[Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "Set of system missions that are defined at that level of package\r\n[Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (capabilityEClass, 
-		   source, 
+		  (capabilityEClass,
+		   source,
 		   new String[] {
-			 "description", "Ability of an organisation, system or process to provide a service that supports the achievement of high-level operational goals", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "system", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "../img/usage_examples/example_actor_capability.png", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "Ability of an organisation, system or process to provide a service that supports the achievement of high-level operational goals", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "system", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "../img/usage_examples/example_actor_capability.png", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getCapability_OwnedCapabilityInvolvements(), 
-		   source, 
+		  (getCapability_OwnedCapabilityInvolvements(),
+		   source,
 		   new String[] {
-			 "description", "Capability Involvements owned by this Capability", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "Capability Involvements owned by this Capability", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getCapability_InvolvedSystemComponents(), 
-		   source, 
+		  (getCapability_InvolvedSystemComponents(),
+		   source,
 		   new String[] {
-			 "description", "System Components that are involved in this Capability", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "System Components that are involved in this Capability", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getCapability_Purposes(), 
-		   source, 
+		  (getCapability_Purposes(),
+		   source,
 		   new String[] {
-			 "description", "the links to the Mission(s) that this Capability supports\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "the links to the Mission(s) that this Capability supports\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getCapability_PurposeMissions(), 
-		   source, 
+		  (getCapability_PurposeMissions(),
+		   source,
 		   new String[] {
-			 "description", "(automatically computed) the Mission(s) that this Capability supports\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "(automatically computed) the Mission(s) that this Capability supports\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (capabilityExploitationEClass, 
-		   source, 
+		  (capabilityExploitationEClass,
+		   source,
 		   new String[] {
-			 "description", "a relationship between a mission and a capability that it exploits\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "system", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "a relationship between a mission and a capability that it exploits\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "system", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getCapabilityExploitation_Mission(), 
-		   source, 
+		  (getCapabilityExploitation_Mission(),
+		   source,
 		   new String[] {
-			 "description", "the Mission involved in this relationship\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "the Mission involved in this relationship\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getCapabilityExploitation_Capability(), 
-		   source, 
+		  (getCapabilityExploitation_Capability(),
+		   source,
 		   new String[] {
-			 "description", "the Capability involved in this relationship\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "the Capability involved in this relationship\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (capabilityPkgEClass, 
-		   source, 
+		  (capabilityPkgEClass,
+		   source,
 		   new String[] {
-			 "description", "Package that contains system capabilities\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "system", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "Package that contains system capabilities\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "system", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getCapabilityPkg_OwnedCapabilities(), 
-		   source, 
+		  (getCapabilityPkg_OwnedCapabilities(),
+		   source,
 		   new String[] {
-			 "description", "Set of system capabilities that are defined at that level of package\r\n[Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "Set of system capabilities that are defined at that level of package\r\n[Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getCapabilityPkg_OwnedCapabilityPkgs(), 
-		   source, 
+		  (getCapabilityPkg_OwnedCapabilityPkgs(),
+		   source,
 		   new String[] {
-			 "description", "Sub pakages that contain system capabilities\r\n[Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "Sub pakages that contain system capabilities\r\n[Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (operationalAnalysisRealizationEClass, 
-		   source, 
+		  (operationalAnalysisRealizationEClass,
+		   source,
 		   new String[] {
-			 "description", "Realization link betwen a system analysis and an operational analysis\r\n[source:Capella study]\r\n\r\nRealization is a specialized abstraction relationship between two sets of model elements, one representing a specification\r\n(the supplier) and the other represents an implementation of the latter (the client). Realization can be used to model\r\nstepwise refinement, optimizations, transformations, templates, model synthesis, framework composition, etc.\r\n[source:UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "system", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "Realization link betwen a system analysis and an operational analysis\r\n[source:Capella study]\r\n\r\nRealization is a specialized abstraction relationship between two sets of model elements, one representing a specification\r\n(the supplier) and the other represents an implementation of the latter (the client). Realization can be used to model\r\nstepwise refinement, optimizations, transformations, templates, model synthesis, framework composition, etc.\r\n[source:UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "system", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (systemComponentPkgEClass, 
-		   source, 
+		  (systemComponentPkgEClass,
+		   source,
 		   new String[] {
-			 "description", "a package containing System Components\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "a package containing System Components\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemComponentPkg_OwnedSystemComponents(), 
-		   source, 
+		  (getSystemComponentPkg_OwnedSystemComponents(),
+		   source,
 		   new String[] {
-			 "description", "the System Components included in this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "the System Components included in this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemComponentPkg_OwnedSystemComponentPkgs(), 
-		   source, 
+		  (getSystemComponentPkg_OwnedSystemComponentPkgs(),
+		   source,
 		   new String[] {
-			 "description", "sub-packages of this System Component Package", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "sub-packages of this System Component Package", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (systemComponentEClass, 
-		   source, 
+		  (systemComponentEClass,
+		   source,
 		   new String[] {
-			 "description", "An entity, with discrete structure within the system, that interacts with other Components of the system, thereby contributing at its lowest level to the system properties and characteristics.\r\n[source: Sys EM , ISO/IEC CD 15288]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "n/a (abstract)", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "An entity, with discrete structure within the system, that interacts with other Components of the system, thereby contributing at its lowest level to the system properties and characteristics.\r\n[source: Sys EM , ISO/IEC CD 15288]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "used in levels", "n/a (abstract)", //$NON-NLS-1$ //$NON-NLS-2$
+			   "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemComponent_OwnedSystemComponents(), 
-		   source, 
+		  (getSystemComponent_OwnedSystemComponents(),
+		   source,
 		   new String[] {
-			 "description", "the System Components included in this System Component\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "the System Components included in this System Component\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemComponent_OwnedSystemComponentPkgs(), 
-		   source, 
+		  (getSystemComponent_OwnedSystemComponentPkgs(),
+		   source,
 		   new String[] {
-			 "description", "sub-packages of this System Component", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "sub-packages of this System Component", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemComponent_DataComponent(), 
-		   source, 
+		  (getSystemComponent_DataComponent(),
+		   source,
 		   new String[] {
-			 "description", "specifies whether or not this is a data component\r\n[source: Capella light-light study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "specifies whether or not this is a data component\r\n[source: Capella light-light study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemComponent_DataType(), 
-		   source, 
+		  (getSystemComponent_DataType(),
+		   source,
 		   new String[] {
-			 "description", "data type(s) associated to this component\r\n[source: Capella light-light study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "data type(s) associated to this component\r\n[source: Capella light-light study]", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemComponent_InvolvingCapabilities(), 
-		   source, 
+		  (getSystemComponent_InvolvingCapabilities(),
+		   source,
 		   new String[] {
-			 "description", "Capabilities that involve this System Component", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "Capabilities that involve this System Component", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemComponent_CapabilityInvolvements(), 
-		   source, 
+		  (getSystemComponent_CapabilityInvolvements(),
+		   source,
 		   new String[] {
-			 "description", "The Capability Involvement relationships in which this element is referenced", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "The Capability Involvement relationships in which this element is referenced", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemComponent_InvolvingMissions(), 
-		   source, 
+		  (getSystemComponent_InvolvingMissions(),
+		   source,
 		   new String[] {
-			 "description", "Missions that involve this System Component", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "Missions that involve this System Component", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemComponent_MissionInvolvements(), 
-		   source, 
+		  (getSystemComponent_MissionInvolvements(),
+		   source,
 		   new String[] {
-			 "description", "The Mission Involvement relationships in which this element is referenced", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "The Mission Involvement relationships in which this element is referenced", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemComponent_RealizedEntities(), 
-		   source, 
+		  (getSystemComponent_RealizedEntities(),
+		   source,
 		   new String[] {
-			 "description", "Entities that are realized by this System Component", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "description", "Entities that are realized by this System Component", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemComponent_RealizingLogicalComponents(), 
-		   source, 
+		  (getSystemComponent_RealizingLogicalComponents(),
+		   source,
 		   new String[] {
-			 "description", "Logical Components that realize this System Components", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+			   "description", "Logical Components that realize this System Components", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 	}
 
@@ -1722,244 +1807,244 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * @generated
 	 */
 	protected void createSemanticAnnotations() {
-		String source = "http://www.polarsys.org/capella/semantic"; //$NON-NLS-1$	
+		String source = "http://www.polarsys.org/capella/semantic"; //$NON-NLS-1$
 		addAnnotation
-		  (this, 
-		   source, 
+		  (this,
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (systemAnalysisEClass, 
-		   source, 
+		  (systemAnalysisEClass,
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getSystemAnalysis_OwnedSystemComponentPkg(), 
-		   source, 
+		  (getSystemAnalysis_OwnedSystemComponentPkg(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getSystemAnalysis_OwnedMissionPkg(), 
-		   source, 
+		  (getSystemAnalysis_OwnedMissionPkg(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getSystemAnalysis_ContainedCapabilityPkg(), 
-		   source, 
+		  (getSystemAnalysis_ContainedCapabilityPkg(),
+		   source,
 		   new String[] {
-			 "feature", "ownedAbstractCapabilityPkg" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "feature", "ownedAbstractCapabilityPkg" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemAnalysis_ContainedSystemFunctionPkg(), 
-		   source, 
+		  (getSystemAnalysis_ContainedSystemFunctionPkg(),
+		   source,
 		   new String[] {
-			 "feature", "ownedFunctionPkg" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "feature", "ownedFunctionPkg" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemAnalysis_AllocatedOperationalAnalyses(), 
-		   source, 
+		  (getSystemAnalysis_AllocatedOperationalAnalyses(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getSystemAnalysis_AllocatingLogicalArchitectures(), 
-		   source, 
+		  (getSystemAnalysis_AllocatingLogicalArchitectures(),
+		   source,
 		   new String[] {
-			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (systemFunctionEClass, 
-		   source, 
+		  (systemFunctionEClass,
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getSystemFunction_OwnedSystemFunctionPkgs(), 
-		   source, 
+		  (getSystemFunction_OwnedSystemFunctionPkgs(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getSystemFunction_AllocatingSystemComponents(), 
-		   source, 
+		  (getSystemFunction_AllocatingSystemComponents(),
+		   source,
 		   new String[] {
-			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemFunction_RealizedOperationalActivities(), 
-		   source, 
+		  (getSystemFunction_RealizedOperationalActivities(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getSystemFunction_RealizingLogicalFunctions(), 
-		   source, 
+		  (getSystemFunction_RealizingLogicalFunctions(),
+		   source,
 		   new String[] {
-			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemFunction_ContainedSystemFunctions(), 
-		   source, 
+		  (getSystemFunction_ContainedSystemFunctions(),
+		   source,
 		   new String[] {
-			 "feature", "ownedFunctions" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "feature", "ownedFunctions" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemFunction_ChildrenSystemFunctions(), 
-		   source, 
+		  (getSystemFunction_ChildrenSystemFunctions(),
+		   source,
 		   new String[] {
-			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (systemFunctionPkgEClass, 
-		   source, 
+		  (systemFunctionPkgEClass,
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getSystemFunctionPkg_OwnedSystemFunctions(), 
-		   source, 
+		  (getSystemFunctionPkg_OwnedSystemFunctions(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getSystemFunctionPkg_OwnedSystemFunctionPkgs(), 
-		   source, 
+		  (getSystemFunctionPkg_OwnedSystemFunctionPkgs(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (missionEClass, 
-		   source, 
+		  (missionEClass,
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getMission_InvolvedSystemComponents(), 
-		   source, 
+		  (getMission_InvolvedSystemComponents(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getMission_ExploitedCapabilities(), 
-		   source, 
+		  (getMission_ExploitedCapabilities(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (missionPkgEClass, 
-		   source, 
+		  (missionPkgEClass,
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getMissionPkg_OwnedMissionPkgs(), 
-		   source, 
+		  (getMissionPkg_OwnedMissionPkgs(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getMissionPkg_OwnedMissions(), 
-		   source, 
+		  (getMissionPkg_OwnedMissions(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (capabilityEClass, 
-		   source, 
+		  (capabilityEClass,
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getCapability_InvolvedSystemComponents(), 
-		   source, 
+		  (getCapability_InvolvedSystemComponents(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getCapability_PurposeMissions(), 
-		   source, 
+		  (getCapability_PurposeMissions(),
+		   source,
 		   new String[] {
-			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getCapability_RealizedOperationalCapabilities(), 
-		   source, 
+		  (getCapability_RealizedOperationalCapabilities(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getCapability_RealizingCapabilityRealizations(), 
-		   source, 
+		  (getCapability_RealizingCapabilityRealizations(),
+		   source,
 		   new String[] {
-			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (capabilityPkgEClass, 
-		   source, 
+		  (capabilityPkgEClass,
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getCapabilityPkg_OwnedCapabilities(), 
-		   source, 
+		  (getCapabilityPkg_OwnedCapabilities(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getCapabilityPkg_OwnedCapabilityPkgs(), 
-		   source, 
+		  (getCapabilityPkg_OwnedCapabilityPkgs(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (systemComponentPkgEClass, 
-		   source, 
+		  (systemComponentPkgEClass,
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getSystemComponentPkg_OwnedSystemComponents(), 
-		   source, 
+		  (getSystemComponentPkg_OwnedSystemComponents(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getSystemComponentPkg_OwnedSystemComponentPkgs(), 
-		   source, 
+		  (getSystemComponentPkg_OwnedSystemComponentPkgs(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (systemComponentEClass, 
-		   source, 
+		  (systemComponentEClass,
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getSystemComponent_OwnedSystemComponents(), 
-		   source, 
+		  (getSystemComponent_OwnedSystemComponents(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getSystemComponent_OwnedSystemComponentPkgs(), 
-		   source, 
+		  (getSystemComponent_OwnedSystemComponentPkgs(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getSystemComponent_DataComponent(), 
-		   source, 
+		  (getSystemComponent_DataComponent(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getSystemComponent_InvolvingCapabilities(), 
-		   source, 
+		  (getSystemComponent_InvolvingCapabilities(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getSystemComponent_CapabilityInvolvements(), 
-		   source, 
+		  (getSystemComponent_CapabilityInvolvements(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getSystemComponent_InvolvingMissions(), 
-		   source, 
+		  (getSystemComponent_InvolvingMissions(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getSystemComponent_MissionInvolvements(), 
-		   source, 
+		  (getSystemComponent_MissionInvolvements(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getSystemComponent_RealizedEntities(), 
-		   source, 
+		  (getSystemComponent_RealizedEntities(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getSystemComponent_RealizingLogicalComponents(), 
-		   source, 
+		  (getSystemComponent_RealizingLogicalComponents(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getSystemComponent_AllocatedSystemFunctions(), 
-		   source, 
+		  (getSystemComponent_AllocatedSystemFunctions(),
+		   source,
 		   new String[] {
 		   });
 	}
@@ -1971,16 +2056,16 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * @generated
 	 */
 	protected void createExtensionAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/extension"; //$NON-NLS-1$	
+		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/extension"; //$NON-NLS-1$
 		addAnnotation
-		  (this, 
-		   source, 
+		  (this,
+		   source,
 		   new String[] {
-			 "trackResourceModification", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "useUUIDs", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
+			   "trackResourceModification", "true", //$NON-NLS-1$ //$NON-NLS-2$
+			   "useUUIDs", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			   "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
+			   "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
+			   "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 	}
 
@@ -1991,174 +2076,174 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * @generated
 	 */
 	protected void createBusinessInformationAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/BusinessInformation"; //$NON-NLS-1$	
+		String source = "http://www.polarsys.org/capella/2007/BusinessInformation"; //$NON-NLS-1$
 		addAnnotation
-		  (systemAnalysisEClass, 
-		   source, 
+		  (systemAnalysisEClass,
+		   source,
 		   new String[] {
-			 "Label", "System Analysis" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "System Analysis" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemAnalysis_OwnedMissionPkg(), 
-		   source, 
+		  (getSystemAnalysis_OwnedMissionPkg(),
+		   source,
 		   new String[] {
-			 "Label", "ownedMissionPkg" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "ownedMissionPkg" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (systemCommunicationHookEClass, 
-		   source, 
+		  (systemCommunicationHookEClass,
+		   source,
 		   new String[] {
-			 "Label", "Property" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "Property" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemCommunicationHook_Communication(), 
-		   source, 
+		  (getSystemCommunicationHook_Communication(),
+		   source,
 		   new String[] {
-			 "Label", "communication" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "communication" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemCommunicationHook_Type(), 
-		   source, 
+		  (getSystemCommunicationHook_Type(),
+		   source,
 		   new String[] {
-			 "Label", "type" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "type" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (systemCommunicationEClass, 
-		   source, 
+		  (systemCommunicationEClass,
+		   source,
 		   new String[] {
-			 "Label", "SystemCommunication" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "SystemCommunication" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemCommunication_Ends(), 
-		   source, 
+		  (getSystemCommunication_Ends(),
+		   source,
 		   new String[] {
-			 "Label", "system" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "system" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (capabilityInvolvementEClass, 
-		   source, 
+		  (capabilityInvolvementEClass,
+		   source,
 		   new String[] {
-			 "Label", "CapabilityInvolvement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "CapabilityInvolvement" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getCapabilityInvolvement_Capability(), 
-		   source, 
+		  (getCapabilityInvolvement_Capability(),
+		   source,
 		   new String[] {
-			 "Label", "capability" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "capability" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (missionInvolvementEClass, 
-		   source, 
+		  (missionInvolvementEClass,
+		   source,
 		   new String[] {
-			 "Label", "MissionInvolvement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "MissionInvolvement" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getMissionInvolvement_SystemComponent(), 
-		   source, 
+		  (getMissionInvolvement_SystemComponent(),
+		   source,
 		   new String[] {
-			 "Label", "actor" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "actor" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getMissionInvolvement_Mission(), 
-		   source, 
+		  (getMissionInvolvement_Mission(),
+		   source,
 		   new String[] {
-			 "Label", "mission" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "mission" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (missionEClass, 
-		   source, 
+		  (missionEClass,
+		   source,
 		   new String[] {
-			 "Label", "Mission" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "Mission" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getMission_OwnedCapabilityExploitations(), 
-		   source, 
+		  (getMission_OwnedCapabilityExploitations(),
+		   source,
 		   new String[] {
-			 "Label", "capabilityExploitations" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "capabilityExploitations" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getMission_ExploitedCapabilities(), 
-		   source, 
+		  (getMission_ExploitedCapabilities(),
+		   source,
 		   new String[] {
-			 "Label", "exploitedCapabilityUseCases" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "exploitedCapabilityUseCases" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (missionPkgEClass, 
-		   source, 
+		  (missionPkgEClass,
+		   source,
 		   new String[] {
-			 "Label", "MissionPkg" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "MissionPkg" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getMissionPkg_OwnedMissionPkgs(), 
-		   source, 
+		  (getMissionPkg_OwnedMissionPkgs(),
+		   source,
 		   new String[] {
-			 "Label", "subMissionPkgs" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "subMissionPkgs" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getMissionPkg_OwnedMissions(), 
-		   source, 
+		  (getMissionPkg_OwnedMissions(),
+		   source,
 		   new String[] {
-			 "Label", "ownedMissions" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "ownedMissions" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (capabilityEClass, 
-		   source, 
+		  (capabilityEClass,
+		   source,
 		   new String[] {
-			 "Label", "Capability" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "Capability" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getCapability_Purposes(), 
-		   source, 
+		  (getCapability_Purposes(),
+		   source,
 		   new String[] {
-			 "Label", "purposes" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "purposes" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getCapability_PurposeMissions(), 
-		   source, 
+		  (getCapability_PurposeMissions(),
+		   source,
 		   new String[] {
-			 "Label", "purposeMissions" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "purposeMissions" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (capabilityExploitationEClass, 
-		   source, 
+		  (capabilityExploitationEClass,
+		   source,
 		   new String[] {
-			 "Label", "CapabilityExploitation" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "CapabilityExploitation" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getCapabilityExploitation_Mission(), 
-		   source, 
+		  (getCapabilityExploitation_Mission(),
+		   source,
 		   new String[] {
-			 "Label", "mission" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "mission" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getCapabilityExploitation_Capability(), 
-		   source, 
+		  (getCapabilityExploitation_Capability(),
+		   source,
 		   new String[] {
-			 "Label", "capability" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "capability" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (capabilityPkgEClass, 
-		   source, 
+		  (capabilityPkgEClass,
+		   source,
 		   new String[] {
-			 "Label", "CapabilityPkg" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "CapabilityPkg" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getCapabilityPkg_OwnedCapabilities(), 
-		   source, 
+		  (getCapabilityPkg_OwnedCapabilities(),
+		   source,
 		   new String[] {
-			 "Label", "capabilities" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "capabilities" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getCapabilityPkg_OwnedCapabilityPkgs(), 
-		   source, 
+		  (getCapabilityPkg_OwnedCapabilityPkgs(),
+		   source,
 		   new String[] {
-			 "Label", "subCapabilityPkgs" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "Label", "subCapabilityPkgs" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (systemComponentEClass, 
-		   source, 
+		  (systemComponentEClass,
+		   source,
 		   new String[] {
-			 "Label", "SystemComponent" //$NON-NLS-1$ //$NON-NLS-2$
+			   "Label", "SystemComponent" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 	}
 
@@ -2169,187 +2254,187 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * @generated
 	 */
 	protected void createUML2MappingAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/UML2Mapping"; //$NON-NLS-1$	
+		String source = "http://www.polarsys.org/capella/2007/UML2Mapping"; //$NON-NLS-1$
 		addAnnotation
-		  (systemAnalysisEClass, 
-		   source, 
+		  (systemAnalysisEClass,
+		   source,
 		   new String[] {
-			 "metaclass", "Package", //$NON-NLS-1$ //$NON-NLS-2$
-			 "stereotype", "eng.ContextArchitecture" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "metaclass", "Package", //$NON-NLS-1$ //$NON-NLS-2$
+			   "stereotype", "eng.ContextArchitecture" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemAnalysis_OwnedMissionPkg(), 
-		   source, 
+		  (getSystemAnalysis_OwnedMissionPkg(),
+		   source,
 		   new String[] {
-			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			   "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (systemCommunicationHookEClass, 
-		   source, 
+		  (systemCommunicationHookEClass,
+		   source,
 		   new String[] {
-			 "metaclass", "Property", //$NON-NLS-1$ //$NON-NLS-2$
-			 "stereotype", "eng.SystemCommunicationHook" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "metaclass", "Property", //$NON-NLS-1$ //$NON-NLS-2$
+			   "stereotype", "eng.SystemCommunicationHook" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemCommunicationHook_Communication(), 
-		   source, 
+		  (getSystemCommunicationHook_Communication(),
+		   source,
 		   new String[] {
-			 "featureName", "association", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "Property" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "featureName", "association", //$NON-NLS-1$ //$NON-NLS-2$
+			   "featureOwner", "Property" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemCommunicationHook_Type(), 
-		   source, 
+		  (getSystemCommunicationHook_Type(),
+		   source,
 		   new String[] {
-			 "featureName", "type", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "TypedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "featureName", "type", //$NON-NLS-1$ //$NON-NLS-2$
+			   "featureOwner", "TypedElement" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (systemCommunicationEClass, 
-		   source, 
+		  (systemCommunicationEClass,
+		   source,
 		   new String[] {
-			 "metaclass", "Association", //$NON-NLS-1$ //$NON-NLS-2$
-			 "stereotype", "eng.SystemCommunication" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "metaclass", "Association", //$NON-NLS-1$ //$NON-NLS-2$
+			   "stereotype", "eng.SystemCommunication" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemCommunication_Ends(), 
-		   source, 
+		  (getSystemCommunication_Ends(),
+		   source,
 		   new String[] {
-			 "featureName", "navigableOwnedEnd", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "Association" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "featureName", "navigableOwnedEnd", //$NON-NLS-1$ //$NON-NLS-2$
+			   "featureOwner", "Association" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (capabilityInvolvementEClass, 
-		   source, 
+		  (capabilityInvolvementEClass,
+		   source,
 		   new String[] {
-			 "metaclass", "Dependency", //$NON-NLS-1$ //$NON-NLS-2$
-			 "stereotype", "eng.CapabilityInvolvement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "metaclass", "Dependency", //$NON-NLS-1$ //$NON-NLS-2$
+			   "stereotype", "eng.CapabilityInvolvement" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getCapabilityInvolvement_Capability(), 
-		   source, 
+		  (getCapabilityInvolvement_Capability(),
+		   source,
 		   new String[] {
-			 "featureName", "client", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "Dependency" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "featureName", "client", //$NON-NLS-1$ //$NON-NLS-2$
+			   "featureOwner", "Dependency" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (missionInvolvementEClass, 
-		   source, 
+		  (missionInvolvementEClass,
+		   source,
 		   new String[] {
-			 "metaclass", "Dependency", //$NON-NLS-1$ //$NON-NLS-2$
-			 "stereotype", "eng.MissionInvolvement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "metaclass", "Dependency", //$NON-NLS-1$ //$NON-NLS-2$
+			   "stereotype", "eng.MissionInvolvement" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getMissionInvolvement_SystemComponent(), 
-		   source, 
+		  (getMissionInvolvement_SystemComponent(),
+		   source,
 		   new String[] {
-			 "featureName", "supplier", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "Dependency" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "featureName", "supplier", //$NON-NLS-1$ //$NON-NLS-2$
+			   "featureOwner", "Dependency" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getMissionInvolvement_Mission(), 
-		   source, 
+		  (getMissionInvolvement_Mission(),
+		   source,
 		   new String[] {
-			 "featureName", "client", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "Dependency" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "featureName", "client", //$NON-NLS-1$ //$NON-NLS-2$
+			   "featureOwner", "Dependency" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (missionEClass, 
-		   source, 
+		  (missionEClass,
+		   source,
 		   new String[] {
-			 "metaclass", "UseCase", //$NON-NLS-1$ //$NON-NLS-2$
-			 "stereotype", "eng.Mission" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "metaclass", "UseCase", //$NON-NLS-1$ //$NON-NLS-2$
+			   "stereotype", "eng.Mission" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getMission_OwnedCapabilityExploitations(), 
-		   source, 
+		  (getMission_OwnedCapabilityExploitations(),
+		   source,
 		   new String[] {
-			 "featureName", "include", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "UseCase" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "featureName", "include", //$NON-NLS-1$ //$NON-NLS-2$
+			   "featureOwner", "UseCase" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (missionPkgEClass, 
-		   source, 
+		  (missionPkgEClass,
+		   source,
 		   new String[] {
-			 "metaclass", "Package", //$NON-NLS-1$ //$NON-NLS-2$
-			 "stereotype", "eng.MissionPkg" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "metaclass", "Package", //$NON-NLS-1$ //$NON-NLS-2$
+			   "stereotype", "eng.MissionPkg" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getMissionPkg_OwnedMissionPkgs(), 
-		   source, 
+		  (getMissionPkg_OwnedMissionPkgs(),
+		   source,
 		   new String[] {
-			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			   "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getMissionPkg_OwnedMissions(), 
-		   source, 
+		  (getMissionPkg_OwnedMissions(),
+		   source,
 		   new String[] {
-			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			   "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (capabilityEClass, 
-		   source, 
+		  (capabilityEClass,
+		   source,
 		   new String[] {
-			 "metaclass", "Package", //$NON-NLS-1$ //$NON-NLS-2$
-			 "stereotype", "eng.Capability" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "metaclass", "Package", //$NON-NLS-1$ //$NON-NLS-2$
+			   "stereotype", "eng.Capability" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getCapability_Purposes(), 
-		   source, 
+		  (getCapability_Purposes(),
+		   source,
 		   new String[] {
-			 "umlOppositeReference", "addition", //$NON-NLS-1$ //$NON-NLS-2$
-			 "umlOppositeReferenceOwner", "Include" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "umlOppositeReference", "addition", //$NON-NLS-1$ //$NON-NLS-2$
+			   "umlOppositeReferenceOwner", "Include" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (capabilityExploitationEClass, 
-		   source, 
+		  (capabilityExploitationEClass,
+		   source,
 		   new String[] {
-			 "metaclass", "Include", //$NON-NLS-1$ //$NON-NLS-2$
-			 "stereotype", "eng.CapabilityExploitation" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "metaclass", "Include", //$NON-NLS-1$ //$NON-NLS-2$
+			   "stereotype", "eng.CapabilityExploitation" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getCapabilityExploitation_Mission(), 
-		   source, 
+		  (getCapabilityExploitation_Mission(),
+		   source,
 		   new String[] {
-			 "featureName", "includingCase", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "Include" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "featureName", "includingCase", //$NON-NLS-1$ //$NON-NLS-2$
+			   "featureOwner", "Include" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getCapabilityExploitation_Capability(), 
-		   source, 
+		  (getCapabilityExploitation_Capability(),
+		   source,
 		   new String[] {
-			 "featureName", "addition", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "Include" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "featureName", "addition", //$NON-NLS-1$ //$NON-NLS-2$
+			   "featureOwner", "Include" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (capabilityPkgEClass, 
-		   source, 
+		  (capabilityPkgEClass,
+		   source,
 		   new String[] {
-			 "metaclass", "Package", //$NON-NLS-1$ //$NON-NLS-2$
-			 "stereotype", "eng.CapabilityPkg" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "metaclass", "Package", //$NON-NLS-1$ //$NON-NLS-2$
+			   "stereotype", "eng.CapabilityPkg" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getCapabilityPkg_OwnedCapabilities(), 
-		   source, 
+		  (getCapabilityPkg_OwnedCapabilities(),
+		   source,
 		   new String[] {
-			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			   "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getCapabilityPkg_OwnedCapabilityPkgs(), 
-		   source, 
+		  (getCapabilityPkg_OwnedCapabilityPkgs(),
+		   source,
 		   new String[] {
-			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			   "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (systemComponentEClass, 
-		   source, 
+		  (systemComponentEClass,
+		   source,
 		   new String[] {
-			 "metaclass", "Component" //$NON-NLS-1$ //$NON-NLS-2$
+			   "metaclass", "Component" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 	}
 
@@ -2360,444 +2445,444 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * @generated
 	 */
 	protected void createMappingAnnotations() {
-		String source = "http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping"; //$NON-NLS-1$	
+		String source = "http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping"; //$NON-NLS-1$
 		addAnnotation
-		  (systemAnalysisEClass, 
-		   source, 
+		  (systemAnalysisEClass,
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemAnalysis_OwnedMissionPkg(), 
-		   source, 
+		  (getSystemAnalysis_OwnedMissionPkg(),
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "uml::Package::nestedPackage elements on which MissionPkg stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [0..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "uml::Package::nestedPackage elements on which MissionPkg stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [0..1]" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemAnalysis_ContainedCapabilityPkg(), 
-		   source, 
+		  (getSystemAnalysis_ContainedCapabilityPkg(),
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemAnalysis_ContainedSystemFunctionPkg(), 
-		   source, 
+		  (getSystemAnalysis_ContainedSystemFunctionPkg(),
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemAnalysis_OwnedOperationalAnalysisRealizations(), 
-		   source, 
+		  (getSystemAnalysis_OwnedOperationalAnalysisRealizations(),
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "uml::Package::packagedElement elements on which OperationalAnalysisRealisation stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "uml::Package::packagedElement elements on which OperationalAnalysisRealisation stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemAnalysis_AllocatedOperationalAnalysisRealizations(), 
-		   source, 
+		  (getSystemAnalysis_AllocatedOperationalAnalysisRealizations(),
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemAnalysis_AllocatedOperationalAnalyses(), 
-		   source, 
+		  (getSystemAnalysis_AllocatedOperationalAnalyses(),
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemAnalysis_AllocatingLogicalArchitectures(), 
-		   source, 
+		  (getSystemAnalysis_AllocatingLogicalArchitectures(),
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (systemFunctionEClass, 
-		   source, 
+		  (systemFunctionEClass,
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "uml::Activity", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "All functions are mapped to Activities. Parent activities refer to children activities via CallBehaviorActions", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "uml::Activity", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "All functions are mapped to Activities. Parent activities refer to children activities via CallBehaviorActions", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemFunction_OwnedSystemFunctionPkgs(), 
-		   source, 
+		  (getSystemFunction_OwnedSystemFunctionPkgs(),
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "uml::Package::nestedPackage elements on which SystemFunctionPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "uml::Package::nestedPackage elements on which SystemFunctionPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemFunction_RealizedOperationalActivities(), 
-		   source, 
+		  (getSystemFunction_RealizedOperationalActivities(),
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemFunction_RealizingLogicalFunctions(), 
-		   source, 
+		  (getSystemFunction_RealizingLogicalFunctions(),
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemFunction_ContainedSystemFunctions(), 
-		   source, 
+		  (getSystemFunction_ContainedSystemFunctions(),
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemFunction_ChildrenSystemFunctions(), 
-		   source, 
+		  (getSystemFunction_ChildrenSystemFunctions(),
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (systemFunctionPkgEClass, 
-		   source, 
+		  (systemFunctionPkgEClass,
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemFunctionPkg_OwnedSystemFunctions(), 
-		   source, 
+		  (getSystemFunctionPkg_OwnedSystemFunctions(),
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemFunctionPkg_OwnedSystemFunctionPkgs(), 
-		   source, 
+		  (getSystemFunctionPkg_OwnedSystemFunctionPkgs(),
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "uml::Package::nestedPackage elements on which SystemFunctionPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "uml::Package::nestedPackage elements on which SystemFunctionPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (systemCommunicationHookEClass, 
-		   source, 
+		  (systemCommunicationHookEClass,
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "uml::Property", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "uml::Property", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemCommunicationHook_Communication(), 
-		   source, 
+		  (getSystemCommunicationHook_Communication(),
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Property::association", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "uml::Property::association", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemCommunicationHook_Type(), 
-		   source, 
+		  (getSystemCommunicationHook_Type(),
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::TypedElement::type", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "uml::TypedElement::type", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (systemCommunicationEClass, 
-		   source, 
+		  (systemCommunicationEClass,
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "uml::Association", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "uml::Association", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemCommunication_Ends(), 
-		   source, 
+		  (getSystemCommunication_Ends(),
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Association::ownedEnd", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "uml::Association::ownedEnd", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (capabilityInvolvementEClass, 
-		   source, 
+		  (capabilityInvolvementEClass,
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "uml::Dependency", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "uml::Dependency", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getCapabilityInvolvement_Capability(), 
-		   source, 
+		  (getCapabilityInvolvement_Capability(),
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (missionInvolvementEClass, 
-		   source, 
+		  (missionInvolvementEClass,
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "uml::Dependency", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "uml::Dependency", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getMissionInvolvement_SystemComponent(), 
-		   source, 
+		  (getMissionInvolvement_SystemComponent(),
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getMissionInvolvement_Mission(), 
-		   source, 
+		  (getMissionInvolvement_Mission(),
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (missionEClass, 
-		   source, 
+		  (missionEClass,
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "uml::UseCase", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "uml::UseCase", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getMission_OwnedCapabilityExploitations(), 
-		   source, 
+		  (getMission_OwnedCapabilityExploitations(),
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::UseCase::include", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "uml::UseCase::include", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getMission_ExploitedCapabilities(), 
-		   source, 
+		  (getMission_ExploitedCapabilities(),
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (missionPkgEClass, 
-		   source, 
+		  (missionPkgEClass,
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getMissionPkg_OwnedMissionPkgs(), 
-		   source, 
+		  (getMissionPkg_OwnedMissionPkgs(),
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "uml::Package::nestedPackage elements on which MissionPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "uml::Package::nestedPackage elements on which MissionPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getMissionPkg_OwnedMissions(), 
-		   source, 
+		  (getMissionPkg_OwnedMissions(),
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "uml::Package::packagedElement elements on which Mission stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "uml::Package::packagedElement elements on which Mission stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (capabilityEClass, 
-		   source, 
+		  (capabilityEClass,
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "uml::UseCase", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "uml::UseCase", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getCapability_Purposes(), 
-		   source, 
+		  (getCapability_Purposes(),
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Opposite reference of uml::Include::addition", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "uml::NamedElement::clientDependency elements on which CapabilityExploitation stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "Opposite reference of uml::Include::addition", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "uml::NamedElement::clientDependency elements on which CapabilityExploitation stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getCapability_PurposeMissions(), 
-		   source, 
+		  (getCapability_PurposeMissions(),
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getCapability_RealizedOperationalCapabilities(), 
-		   source, 
+		  (getCapability_RealizedOperationalCapabilities(),
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getCapability_RealizingCapabilityRealizations(), 
-		   source, 
+		  (getCapability_RealizingCapabilityRealizations(),
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (capabilityExploitationEClass, 
-		   source, 
+		  (capabilityExploitationEClass,
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "uml::Include", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "uml::Include", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getCapabilityExploitation_Mission(), 
-		   source, 
+		  (getCapabilityExploitation_Mission(),
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Include::includingCase", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "uml::Include::includingCase", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getCapabilityExploitation_Capability(), 
-		   source, 
+		  (getCapabilityExploitation_Capability(),
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Include::addition", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "uml::Include::addition", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (capabilityPkgEClass, 
-		   source, 
+		  (capabilityPkgEClass,
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getCapabilityPkg_OwnedCapabilities(), 
-		   source, 
+		  (getCapabilityPkg_OwnedCapabilities(),
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getCapabilityPkg_OwnedCapabilityPkgs(), 
-		   source, 
+		  (getCapabilityPkg_OwnedCapabilityPkgs(),
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (operationalAnalysisRealizationEClass, 
-		   source, 
+		  (operationalAnalysisRealizationEClass,
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "uml::Realization", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "uml::Realization", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemComponentPkg_OwnedSystemComponents(), 
-		   source, 
+		  (getSystemComponentPkg_OwnedSystemComponents(),
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemComponentPkg_OwnedSystemComponentPkgs(), 
-		   source, 
+		  (getSystemComponentPkg_OwnedSystemComponentPkgs(),
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (systemComponentEClass, 
-		   source, 
+		  (systemComponentEClass,
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemComponent_OwnedSystemComponents(), 
-		   source, 
+		  (getSystemComponent_OwnedSystemComponents(),
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemComponent_OwnedSystemComponentPkgs(), 
-		   source, 
+		  (getSystemComponent_OwnedSystemComponentPkgs(),
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemComponent_DataComponent(), 
-		   source, 
+		  (getSystemComponent_DataComponent(),
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemComponent_DataType(), 
-		   source, 
+		  (getSystemComponent_DataType(),
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemComponent_AllocatedSystemFunctions(), 
-		   source, 
+		  (getSystemComponent_AllocatedSystemFunctions(),
+		   source,
 		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+			   "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
+			   "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
+			   "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 	}
 
@@ -2808,90 +2893,90 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * @generated
 	 */
 	protected void createSegmentAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"; //$NON-NLS-1$	
+		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"; //$NON-NLS-1$
 		addAnnotation
-		  (getSystemAnalysis_OwnedMissionPkg(), 
-		   source, 
+		  (getSystemAnalysis_OwnedMissionPkg(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getSystemCommunicationHook_Communication(), 
-		   source, 
+		  (getSystemCommunicationHook_Communication(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getSystemCommunicationHook_Type(), 
-		   source, 
+		  (getSystemCommunicationHook_Type(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getSystemCommunication_Ends(), 
-		   source, 
+		  (getSystemCommunication_Ends(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getCapabilityInvolvement_Capability(), 
-		   source, 
+		  (getCapabilityInvolvement_Capability(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getMissionInvolvement_SystemComponent(), 
-		   source, 
+		  (getMissionInvolvement_SystemComponent(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getMissionInvolvement_Mission(), 
-		   source, 
+		  (getMissionInvolvement_Mission(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getMission_OwnedCapabilityExploitations(), 
-		   source, 
+		  (getMission_OwnedCapabilityExploitations(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getMission_ExploitedCapabilities(), 
-		   source, 
+		  (getMission_ExploitedCapabilities(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getMissionPkg_OwnedMissionPkgs(), 
-		   source, 
+		  (getMissionPkg_OwnedMissionPkgs(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getMissionPkg_OwnedMissions(), 
-		   source, 
+		  (getMissionPkg_OwnedMissions(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getCapability_Purposes(), 
-		   source, 
+		  (getCapability_Purposes(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getCapability_PurposeMissions(), 
-		   source, 
+		  (getCapability_PurposeMissions(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getCapabilityExploitation_Mission(), 
-		   source, 
+		  (getCapabilityExploitation_Mission(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getCapabilityExploitation_Capability(), 
-		   source, 
+		  (getCapabilityExploitation_Capability(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getCapabilityPkg_OwnedCapabilities(), 
-		   source, 
+		  (getCapabilityPkg_OwnedCapabilities(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getCapabilityPkg_OwnedCapabilityPkgs(), 
-		   source, 
+		  (getCapabilityPkg_OwnedCapabilityPkgs(),
+		   source,
 		   new String[] {
 		   });
 	}
@@ -2903,207 +2988,207 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * @generated
 	 */
 	protected void createDerivedAnnotations() {
-		String source = "http://www.polarsys.org/capella/derived"; //$NON-NLS-1$	
+		String source = "http://www.polarsys.org/capella/derived"; //$NON-NLS-1$
 		addAnnotation
-		  (getSystemAnalysis_ContainedCapabilityPkg(), 
-		   source, 
+		  (getSystemAnalysis_ContainedCapabilityPkg(),
+		   source,
 		   new String[] {
-			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "ownedAbstractCapabilityPkg" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			   "viatra.expression", "ownedAbstractCapabilityPkg" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemAnalysis_ContainedSystemFunctionPkg(), 
-		   source, 
+		  (getSystemAnalysis_ContainedSystemFunctionPkg(),
+		   source,
 		   new String[] {
-			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "ownedFunctionPkg" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			   "viatra.expression", "ownedFunctionPkg" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemAnalysis_AllocatedOperationalAnalysisRealizations(), 
-		   source, 
+		  (getSystemAnalysis_AllocatedOperationalAnalysisRealizations(),
+		   source,
 		   new String[] {
-			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "provisionedArchitectureAllocations" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			   "viatra.expression", "provisionedArchitectureAllocations" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemAnalysis_AllocatedOperationalAnalyses(), 
-		   source, 
+		  (getSystemAnalysis_AllocatedOperationalAnalyses(),
+		   source,
 		   new String[] {
-			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "allocatedArchitectures" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			   "viatra.expression", "allocatedArchitectures" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemAnalysis_AllocatingLogicalArchitectures(), 
-		   source, 
+		  (getSystemAnalysis_AllocatingLogicalArchitectures(),
+		   source,
 		   new String[] {
-			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "allocatingArchitectures" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			   "viatra.expression", "allocatingArchitectures" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemFunction_AllocatingSystemComponents(), 
-		   source, 
+		  (getSystemFunction_AllocatingSystemComponents(),
+		   source,
 		   new String[] {
-			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "SystemFunction.incomingTraces(self, traces);\r\nComponentFunctionalAllocation.sourceElement(traces, target);" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			   "viatra.expression", "SystemFunction.incomingTraces(self, traces);\r\nComponentFunctionalAllocation.sourceElement(traces, target);" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemFunction_RealizedOperationalActivities(), 
-		   source, 
+		  (getSystemFunction_RealizedOperationalActivities(),
+		   source,
 		   new String[] {
-			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "outFunctionRealizations.allocatedFunction" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			   "viatra.expression", "outFunctionRealizations.allocatedFunction" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemFunction_RealizingLogicalFunctions(), 
-		   source, 
+		  (getSystemFunction_RealizingLogicalFunctions(),
+		   source,
 		   new String[] {
-			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "inFunctionRealizations.allocatingFunction" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			   "viatra.expression", "inFunctionRealizations.allocatingFunction" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemFunction_ContainedSystemFunctions(), 
-		   source, 
+		  (getSystemFunction_ContainedSystemFunctions(),
+		   source,
 		   new String[] {
-			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "ownedFunctions" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			   "viatra.expression", "ownedFunctions" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemFunction_ChildrenSystemFunctions(), 
-		   source, 
+		  (getSystemFunction_ChildrenSystemFunctions(),
+		   source,
 		   new String[] {
-			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "subFunctions" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			   "viatra.expression", "subFunctions" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getCapabilityInvolvement_SystemComponent(), 
-		   source, 
+		  (getCapabilityInvolvement_SystemComponent(),
+		   source,
 		   new String[] {
-			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "involved" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			   "viatra.expression", "involved" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getCapabilityInvolvement_Capability(), 
-		   source, 
+		  (getCapabilityInvolvement_Capability(),
+		   source,
 		   new String[] {
-			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "involver" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			   "viatra.expression", "involver" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getMissionInvolvement_SystemComponent(), 
-		   source, 
+		  (getMissionInvolvement_SystemComponent(),
+		   source,
 		   new String[] {
-			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "involved" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			   "viatra.expression", "involved" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getMissionInvolvement_Mission(), 
-		   source, 
+		  (getMissionInvolvement_Mission(),
+		   source,
 		   new String[] {
-			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "involver" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			   "viatra.expression", "involver" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getMission_InvolvedSystemComponents(), 
-		   source, 
+		  (getMission_InvolvedSystemComponents(),
+		   source,
 		   new String[] {
-			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "Mission.ownedMissionInvolvements(self, missionInvolvements);\r\nMissionInvolvement.systemComponent(missionInvolvements, target);" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			   "viatra.expression", "Mission.ownedMissionInvolvements(self, missionInvolvements);\r\nMissionInvolvement.systemComponent(missionInvolvements, target);" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getMission_ExploitedCapabilities(), 
-		   source, 
+		  (getMission_ExploitedCapabilities(),
+		   source,
 		   new String[] {
-			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "ownedCapabilityExploitations.capability" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			   "viatra.expression", "ownedCapabilityExploitations.capability" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getCapability_InvolvedSystemComponents(), 
-		   source, 
+		  (getCapability_InvolvedSystemComponents(),
+		   source,
 		   new String[] {
-			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "Capability.ownedCapabilityInvolvements(self, involvements);\r\nCapabilityInvolvement.systemComponent(involvements, target);" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			   "viatra.expression", "Capability.ownedCapabilityInvolvements(self, involvements);\r\nCapabilityInvolvement.systemComponent(involvements, target);" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getCapability_Purposes(), 
-		   source, 
+		  (getCapability_Purposes(),
+		   source,
 		   new String[] {
-			 "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "capability" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
+			   "viatra.expression", "capability" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getCapability_PurposeMissions(), 
-		   source, 
+		  (getCapability_PurposeMissions(),
+		   source,
 		   new String[] {
-			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "purposes.mission" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			   "viatra.expression", "purposes.mission" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getCapability_RealizedOperationalCapabilities(), 
-		   source, 
+		  (getCapability_RealizedOperationalCapabilities(),
+		   source,
 		   new String[] {
-			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "AbstractCapabilityRealization.sourceElement(acr, self);\r\nAbstractCapabilityRealization.realizedCapability(acr, target);" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			   "viatra.expression", "AbstractCapabilityRealization.sourceElement(acr, self);\r\nAbstractCapabilityRealization.realizedCapability(acr, target);" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getCapability_RealizingCapabilityRealizations(), 
-		   source, 
+		  (getCapability_RealizingCapabilityRealizations(),
+		   source,
 		   new String[] {
-			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "AbstractCapabilityRealization.targetElement(acr, self);\r\nAbstractCapabilityRealization.realizingCapability(acr, target);" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			   "viatra.expression", "AbstractCapabilityRealization.targetElement(acr, self);\r\nAbstractCapabilityRealization.realizingCapability(acr, target);" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getCapabilityExploitation_Mission(), 
-		   source, 
+		  (getCapabilityExploitation_Mission(),
+		   source,
 		   new String[] {
-			 "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "ownedCapabilityExploitations" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
+			   "viatra.expression", "ownedCapabilityExploitations" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemComponent_InvolvingCapabilities(), 
-		   source, 
+		  (getSystemComponent_InvolvingCapabilities(),
+		   source,
 		   new String[] {
-			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "SystemComponent.capabilityInvolvements(self, capabilityInvolvements);\r\nCapabilityInvolvement.involver(capabilityInvolvements, target);" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			   "viatra.expression", "SystemComponent.capabilityInvolvements(self, capabilityInvolvements);\r\nCapabilityInvolvement.involver(capabilityInvolvements, target);" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemComponent_CapabilityInvolvements(), 
-		   source, 
+		  (getSystemComponent_CapabilityInvolvements(),
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (getSystemComponent_InvolvingMissions(), 
-		   source, 
+		  (getSystemComponent_InvolvingMissions(),
+		   source,
 		   new String[] {
-			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "SystemComponent.missionInvolvements(self, missionInvolvements);\r\nMissionInvolvement.involver(missionInvolvements, target);" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			   "viatra.expression", "SystemComponent.missionInvolvements(self, missionInvolvements);\r\nMissionInvolvement.involver(missionInvolvements, target);" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemComponent_MissionInvolvements(), 
-		   source, 
+		  (getSystemComponent_MissionInvolvements(),
+		   source,
 		   new String[] {
-			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "involvingInvolvements" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			   "viatra.expression", "involvingInvolvements" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemComponent_RealizedEntities(), 
-		   source, 
+		  (getSystemComponent_RealizedEntities(),
+		   source,
 		   new String[] {
-			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "realizingComponents" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			   "viatra.expression", "realizingComponents" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemComponent_RealizingLogicalComponents(), 
-		   source, 
+		  (getSystemComponent_RealizingLogicalComponents(),
+		   source,
 		   new String[] {
-			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "realizingComponents" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+			   "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			   "viatra.expression", "realizingComponents" //$NON-NLS-1$ //$NON-NLS-2$
+		   });
 		addAnnotation
-		  (getSystemComponent_AllocatedSystemFunctions(), 
-		   source, 
+		  (getSystemComponent_AllocatedSystemFunctions(),
+		   source,
 		   new String[] {
-			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "allocatedFunctions" //$NON-NLS-1$ //$NON-NLS-2$
+			   "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			   "viatra.expression", "allocatedFunctions" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 	}
 
@@ -3114,20 +3199,20 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * @generated
 	 */
 	protected void createIgnoreAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Ignore"; //$NON-NLS-1$	
+		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Ignore"; //$NON-NLS-1$
 		addAnnotation
-		  (capabilityInvolvementEClass, 
-		   source, 
+		  (capabilityInvolvementEClass,
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (missionInvolvementEClass, 
-		   source, 
+		  (missionInvolvementEClass,
+		   source,
 		   new String[] {
-		   });	
+		   });
 		addAnnotation
-		  (capabilityExploitationEClass, 
-		   source, 
+		  (capabilityExploitationEClass,
+		   source,
 		   new String[] {
 		   });
 	}

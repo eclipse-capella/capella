@@ -35,6 +35,7 @@ import org.polarsys.capella.core.data.capellacore.CapellaElement;
  * @see org.polarsys.capella.core.data.information.datavalue.DatavaluePackage#getOpaqueExpression()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='An opaque expression contains language-specific text strings used to describe a value or values, and an optional specification of\r\nthe languages.\r\nOne predefined language for specifying expressions is OCL. Natural language or programming languages may also be\r\nused.' constraints='If the language attribute is not empty, then the size of the body and language arrays must be the same.'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping base\040metaclass\040in\040UML/SysML\040profile\040='uml::OpaqueExpression'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 
@@ -58,6 +59,7 @@ public interface OpaqueExpression extends CapellaElement, ValueSpecification {
 	 * @see org.polarsys.capella.core.data.information.datavalue.DatavaluePackage#getOpaqueExpression_Bodies()
 	 * @model unique="false"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The text of the expression, possibly in multiple languages.'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -82,6 +84,7 @@ public interface OpaqueExpression extends CapellaElement, ValueSpecification {
 	 * @return the value of the '<em>Languages</em>' attribute list.
 	 * @see org.polarsys.capella.core.data.information.datavalue.DatavaluePackage#getOpaqueExpression_Languages()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specifies the languages in which the expression is stated. The interpretation of the expression body depends on the\r\nlanguages. If the languages are unspecified, they might be implicit from the expression body or the context.\r\nLanguages are matched to body strings by order.'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

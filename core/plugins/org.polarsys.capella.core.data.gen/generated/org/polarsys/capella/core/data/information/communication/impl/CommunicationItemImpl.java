@@ -210,6 +210,7 @@ public abstract class CommunicationItemImpl extends ClassifierImpl implements Co
 	 * @generated
 	 */
 
+	@Override
 	public void setVisibility(VisibilityKind newVisibility) {
 
 		VisibilityKind oldVisibility = visibility;
@@ -458,7 +459,7 @@ public abstract class CommunicationItemImpl extends ClassifierImpl implements Co
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (visibility: "); //$NON-NLS-1$
 		result.append(visibility);
 		result.append(')');

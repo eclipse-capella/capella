@@ -63,6 +63,7 @@ public interface Requirement extends Namespace {
 	 * @see org.polarsys.capella.core.data.requirement.RequirementPackage#getRequirement_IsObsolete()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='field used to flag obsolete requirement (that for some reason we want to keep in the model though)\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -104,6 +105,7 @@ public interface Requirement extends Namespace {
 	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='requirementId' featureOwner='eng.Requirement' fromStereotype='true'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='a unique identifier for this requirement\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='SysML::Requirements::Requirement::id' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -145,6 +147,7 @@ public interface Requirement extends Namespace {
 	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='additionalInformation' featureOwner='eng.Requirement' fromStereotype='true'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='a free field to capture any additional information required to complement this requirement statement\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -186,6 +189,7 @@ public interface Requirement extends Namespace {
 	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='verificationMethod' featureOwner='eng.Requirement' fromStereotype='true'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='this field receives the description of the method that will be used to verify that this requirement is fulfilled.\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -227,6 +231,7 @@ public interface Requirement extends Namespace {
 	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='verificationPhase' featureOwner='eng.Requirement' fromStereotype='true'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='a field receiving the description of the design phase in which this requirement can/will be verified\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -268,6 +273,7 @@ public interface Requirement extends Namespace {
 	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='implementationVersion' featureOwner='eng.Requirement' fromStereotype='true'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='a unique identifier to keep track of the version of this requirement\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -309,6 +315,7 @@ public interface Requirement extends Namespace {
 	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='feature' featureOwner='eng.Requirement' fromStereotype='true'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the system feature that this requirement corresponds to\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -349,6 +356,7 @@ public interface Requirement extends Namespace {
 	 * @see org.polarsys.capella.core.data.requirement.RequirementPackage#getRequirement_RelatedCapellaElements()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='Requirement.incomingTraces(self, rt);\r\n\tRequirementsTrace.sourceElement(rt, target);'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */

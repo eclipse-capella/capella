@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.polarsys.capella.common.lib.IdGenerator;
+import org.polarsys.capella.core.data.capellacommon.*;
 import org.polarsys.capella.core.data.capellacommon.AbstractStateRealization;
 import org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvement;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonFactory;
@@ -165,13 +166,11 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public GenericTrace createGenericTrace() {
 		GenericTraceImpl genericTrace = new GenericTraceImpl();
     //begin-capella-code
-
     genericTrace.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return genericTrace;
 	}
@@ -181,13 +180,11 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TransfoLink createTransfoLink() {
 		TransfoLinkImpl transfoLink = new TransfoLinkImpl();
     //begin-capella-code
-
     transfoLink.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return transfoLink;
 	}
@@ -197,13 +194,11 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public JustificationLink createJustificationLink() {
 		JustificationLinkImpl justificationLink = new JustificationLinkImpl();
     //begin-capella-code
-
     justificationLink.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return justificationLink;
 	}
@@ -213,13 +208,11 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CapabilityRealizationInvolvement createCapabilityRealizationInvolvement() {
 		CapabilityRealizationInvolvementImpl capabilityRealizationInvolvement = new CapabilityRealizationInvolvementImpl();
     //begin-capella-code
-
     capabilityRealizationInvolvement.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return capabilityRealizationInvolvement;
 	}
@@ -229,13 +222,11 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public StateMachine createStateMachine() {
 		StateMachineImpl stateMachine = new StateMachineImpl();
     //begin-capella-code
-
     stateMachine.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return stateMachine;
 	}
@@ -245,13 +236,11 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Region createRegion() {
 		RegionImpl region = new RegionImpl();
     //begin-capella-code
-
     region.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return region;
 	}
@@ -261,13 +250,11 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public State createState() {
 		StateImpl state = new StateImpl();
     //begin-capella-code
-
     state.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return state;
 	}
@@ -277,13 +264,11 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Mode createMode() {
 		ModeImpl mode = new ModeImpl();
     //begin-capella-code
-
     mode.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return mode;
 	}
@@ -293,13 +278,11 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public FinalState createFinalState() {
 		FinalStateImpl finalState = new FinalStateImpl();
     //begin-capella-code
-
     finalState.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return finalState;
 	}
@@ -309,13 +292,11 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public StateTransition createStateTransition() {
 		StateTransitionImpl stateTransition = new StateTransitionImpl();
     //begin-capella-code
-
     stateTransition.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return stateTransition;
 	}
@@ -325,13 +306,11 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public InitialPseudoState createInitialPseudoState() {
 		InitialPseudoStateImpl initialPseudoState = new InitialPseudoStateImpl();
     //begin-capella-code
-
     initialPseudoState.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return initialPseudoState;
 	}
@@ -341,13 +320,11 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public JoinPseudoState createJoinPseudoState() {
 		JoinPseudoStateImpl joinPseudoState = new JoinPseudoStateImpl();
     //begin-capella-code
-
     joinPseudoState.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return joinPseudoState;
 	}
@@ -357,13 +334,11 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ForkPseudoState createForkPseudoState() {
 		ForkPseudoStateImpl forkPseudoState = new ForkPseudoStateImpl();
     //begin-capella-code
-
     forkPseudoState.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return forkPseudoState;
 	}
@@ -373,13 +348,11 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ChoicePseudoState createChoicePseudoState() {
 		ChoicePseudoStateImpl choicePseudoState = new ChoicePseudoStateImpl();
     //begin-capella-code
-
     choicePseudoState.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return choicePseudoState;
 	}
@@ -389,13 +362,11 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TerminatePseudoState createTerminatePseudoState() {
 		TerminatePseudoStateImpl terminatePseudoState = new TerminatePseudoStateImpl();
     //begin-capella-code
-
     terminatePseudoState.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return terminatePseudoState;
 	}
@@ -405,13 +376,11 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public AbstractStateRealization createAbstractStateRealization() {
 		AbstractStateRealizationImpl abstractStateRealization = new AbstractStateRealizationImpl();
     //begin-capella-code
-
     abstractStateRealization.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return abstractStateRealization;
 	}
@@ -421,13 +390,11 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public StateTransitionRealization createStateTransitionRealization() {
 		StateTransitionRealizationImpl stateTransitionRealization = new StateTransitionRealizationImpl();
     //begin-capella-code
-
     stateTransitionRealization.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return stateTransitionRealization;
 	}
@@ -437,13 +404,11 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ShallowHistoryPseudoState createShallowHistoryPseudoState() {
 		ShallowHistoryPseudoStateImpl shallowHistoryPseudoState = new ShallowHistoryPseudoStateImpl();
     //begin-capella-code
-
     shallowHistoryPseudoState.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return shallowHistoryPseudoState;
 	}
@@ -453,13 +418,11 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DeepHistoryPseudoState createDeepHistoryPseudoState() {
 		DeepHistoryPseudoStateImpl deepHistoryPseudoState = new DeepHistoryPseudoStateImpl();
     //begin-capella-code
-
     deepHistoryPseudoState.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return deepHistoryPseudoState;
 	}
@@ -469,13 +432,11 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EntryPointPseudoState createEntryPointPseudoState() {
 		EntryPointPseudoStateImpl entryPointPseudoState = new EntryPointPseudoStateImpl();
     //begin-capella-code
-
     entryPointPseudoState.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return entryPointPseudoState;
 	}
@@ -485,13 +446,11 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ExitPointPseudoState createExitPointPseudoState() {
 		ExitPointPseudoStateImpl exitPointPseudoState = new ExitPointPseudoStateImpl();
     //begin-capella-code
-
     exitPointPseudoState.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return exitPointPseudoState;
 	}
@@ -501,13 +460,11 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public StateEventRealization createStateEventRealization() {
 		StateEventRealizationImpl stateEventRealization = new StateEventRealizationImpl();
     //begin-capella-code
-
     stateEventRealization.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return stateEventRealization;
 	}
@@ -517,13 +474,11 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ChangeEvent createChangeEvent() {
 		ChangeEventImpl changeEvent = new ChangeEventImpl();
     //begin-capella-code
-
     changeEvent.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return changeEvent;
 	}
@@ -533,13 +488,11 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TimeEvent createTimeEvent() {
 		TimeEventImpl timeEvent = new TimeEventImpl();
     //begin-capella-code
-
     timeEvent.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return timeEvent;
 	}
@@ -609,6 +562,7 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CapellacommonPackage getCapellacommonPackage() {
 		return (CapellacommonPackage)getEPackage();
 	}
@@ -632,7 +586,7 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * @generated
 	 */
 	public StateMachine createStateMachine(String name_p) {
-	  StateMachine stateMachine = createStateMachine();
+		StateMachine stateMachine = createStateMachine();
 		stateMachine.setName(name_p);	  
 		return stateMachine;
 	}
@@ -645,7 +599,7 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * @generated
 	 */
 	public Region createRegion(String name_p) {
-	  Region region = createRegion();
+		Region region = createRegion();
 		region.setName(name_p);	  
 		return region;
 	}
@@ -658,7 +612,7 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * @generated
 	 */
 	public State createState(String name_p) {
-	  State state = createState();
+		State state = createState();
 		state.setName(name_p);	  
 		return state;
 	}
@@ -671,7 +625,7 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * @generated
 	 */
 	public Mode createMode(String name_p) {
-	  Mode mode = createMode();
+		Mode mode = createMode();
 		mode.setName(name_p);	  
 		return mode;
 	}
@@ -684,7 +638,7 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * @generated
 	 */
 	public FinalState createFinalState(String name_p) {
-	  FinalState finalState = createFinalState();
+		FinalState finalState = createFinalState();
 		finalState.setName(name_p);	  
 		return finalState;
 	}
@@ -697,7 +651,7 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * @generated
 	 */
 	public StateTransition createStateTransition(String name_p) {
-	  StateTransition stateTransition = createStateTransition();
+		StateTransition stateTransition = createStateTransition();
 		stateTransition.setName(name_p);	  
 		return stateTransition;
 	}
@@ -710,7 +664,7 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * @generated
 	 */
 	public InitialPseudoState createInitialPseudoState(String name_p) {
-	  InitialPseudoState initialPseudoState = createInitialPseudoState();
+		InitialPseudoState initialPseudoState = createInitialPseudoState();
 		initialPseudoState.setName(name_p);	  
 		return initialPseudoState;
 	}
@@ -723,7 +677,7 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * @generated
 	 */
 	public JoinPseudoState createJoinPseudoState(String name_p) {
-	  JoinPseudoState joinPseudoState = createJoinPseudoState();
+		JoinPseudoState joinPseudoState = createJoinPseudoState();
 		joinPseudoState.setName(name_p);	  
 		return joinPseudoState;
 	}
@@ -736,7 +690,7 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * @generated
 	 */
 	public ForkPseudoState createForkPseudoState(String name_p) {
-	  ForkPseudoState forkPseudoState = createForkPseudoState();
+		ForkPseudoState forkPseudoState = createForkPseudoState();
 		forkPseudoState.setName(name_p);	  
 		return forkPseudoState;
 	}
@@ -749,7 +703,7 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * @generated
 	 */
 	public ChoicePseudoState createChoicePseudoState(String name_p) {
-	  ChoicePseudoState choicePseudoState = createChoicePseudoState();
+		ChoicePseudoState choicePseudoState = createChoicePseudoState();
 		choicePseudoState.setName(name_p);	  
 		return choicePseudoState;
 	}
@@ -762,7 +716,7 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * @generated
 	 */
 	public TerminatePseudoState createTerminatePseudoState(String name_p) {
-	  TerminatePseudoState terminatePseudoState = createTerminatePseudoState();
+		TerminatePseudoState terminatePseudoState = createTerminatePseudoState();
 		terminatePseudoState.setName(name_p);	  
 		return terminatePseudoState;
 	}
@@ -775,7 +729,7 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * @generated
 	 */
 	public ShallowHistoryPseudoState createShallowHistoryPseudoState(String name_p) {
-	  ShallowHistoryPseudoState shallowHistoryPseudoState = createShallowHistoryPseudoState();
+		ShallowHistoryPseudoState shallowHistoryPseudoState = createShallowHistoryPseudoState();
 		shallowHistoryPseudoState.setName(name_p);	  
 		return shallowHistoryPseudoState;
 	}
@@ -788,7 +742,7 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * @generated
 	 */
 	public DeepHistoryPseudoState createDeepHistoryPseudoState(String name_p) {
-	  DeepHistoryPseudoState deepHistoryPseudoState = createDeepHistoryPseudoState();
+		DeepHistoryPseudoState deepHistoryPseudoState = createDeepHistoryPseudoState();
 		deepHistoryPseudoState.setName(name_p);	  
 		return deepHistoryPseudoState;
 	}
@@ -801,7 +755,7 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * @generated
 	 */
 	public EntryPointPseudoState createEntryPointPseudoState(String name_p) {
-	  EntryPointPseudoState entryPointPseudoState = createEntryPointPseudoState();
+		EntryPointPseudoState entryPointPseudoState = createEntryPointPseudoState();
 		entryPointPseudoState.setName(name_p);	  
 		return entryPointPseudoState;
 	}
@@ -814,7 +768,7 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * @generated
 	 */
 	public ExitPointPseudoState createExitPointPseudoState(String name_p) {
-	  ExitPointPseudoState exitPointPseudoState = createExitPointPseudoState();
+		ExitPointPseudoState exitPointPseudoState = createExitPointPseudoState();
 		exitPointPseudoState.setName(name_p);	  
 		return exitPointPseudoState;
 	}
@@ -827,7 +781,7 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * @generated
 	 */
 	public ChangeEvent createChangeEvent(String name_p) {
-	  ChangeEvent changeEvent = createChangeEvent();
+		ChangeEvent changeEvent = createChangeEvent();
 		changeEvent.setName(name_p);	  
 		return changeEvent;
 	}
@@ -840,7 +794,7 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * @generated
 	 */
 	public TimeEvent createTimeEvent(String name_p) {
-	  TimeEvent timeEvent = createTimeEvent();
+		TimeEvent timeEvent = createTimeEvent();
 		timeEvent.setName(name_p);	  
 		return timeEvent;
 	}

@@ -47,6 +47,7 @@ import org.polarsys.capella.core.data.fa.ExchangeLink;
  * @see org.polarsys.capella.core.data.cs.CsPackage#getComponentPkg()
  * @model abstract="true"
  *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='a package containing parts' constraints='none' comment/notes='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 
@@ -66,6 +67,7 @@ public interface ComponentPkg extends Structure {
 	 * @see org.polarsys.capella.core.data.cs.CsPackage#getComponentPkg_OwnedParts()
 	 * @model containment="true" resolveProxies="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Parts stored in this Component Package' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -87,6 +89,7 @@ public interface ComponentPkg extends Structure {
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='ownedConnector' featureOwner='StructuredClassifier'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the connections between components, contained in this structure\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which ComponentExchange stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -106,6 +109,7 @@ public interface ComponentPkg extends Structure {
 	 * @see org.polarsys.capella.core.data.cs.CsPackage#getComponentPkg_OwnedComponentExchangeCategories()
 	 * @model containment="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -126,6 +130,7 @@ public interface ComponentPkg extends Structure {
 	 * @model containment="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Component'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedFunctionalLinks'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the (functional) exchange links defined in the context of this structure\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which ExchangeLink stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
 	 * @generated
@@ -188,6 +193,7 @@ public interface ComponentPkg extends Structure {
 	 * @see org.polarsys.capella.core.data.cs.CsPackage#getComponentPkg_OwnedPhysicalLinks()
 	 * @model containment="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Physical Links contained in this Component Package' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -207,6 +213,7 @@ public interface ComponentPkg extends Structure {
 	 * @see org.polarsys.capella.core.data.cs.CsPackage#getComponentPkg_OwnedPhysicalLinkCategories()
 	 * @model containment="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Physical Links contained in this Component Package' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -226,6 +233,7 @@ public interface ComponentPkg extends Structure {
 	 * @see org.polarsys.capella.core.data.cs.CsPackage#getComponentPkg_OwnedStateMachines()
 	 * @model containment="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Physical Links contained in this Component Package' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

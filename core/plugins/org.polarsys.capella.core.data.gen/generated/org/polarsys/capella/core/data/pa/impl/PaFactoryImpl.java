@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.polarsys.capella.common.lib.IdGenerator;
+import org.polarsys.capella.core.data.pa.*;
 import org.polarsys.capella.core.data.pa.LogicalArchitectureRealization;
 import org.polarsys.capella.core.data.pa.LogicalInterfaceRealization;
 import org.polarsys.capella.core.data.pa.PaFactory;
@@ -130,13 +131,11 @@ public class PaFactoryImpl extends EFactoryImpl implements PaFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PhysicalArchitecturePkg createPhysicalArchitecturePkg() {
 		PhysicalArchitecturePkgImpl physicalArchitecturePkg = new PhysicalArchitecturePkgImpl();
     //begin-capella-code
-
     physicalArchitecturePkg.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return physicalArchitecturePkg;
 	}
@@ -146,13 +145,11 @@ public class PaFactoryImpl extends EFactoryImpl implements PaFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PhysicalArchitecture createPhysicalArchitecture() {
 		PhysicalArchitectureImpl physicalArchitecture = new PhysicalArchitectureImpl();
     //begin-capella-code
-
     physicalArchitecture.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return physicalArchitecture;
 	}
@@ -162,13 +159,11 @@ public class PaFactoryImpl extends EFactoryImpl implements PaFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PhysicalFunction createPhysicalFunction() {
 		PhysicalFunctionImpl physicalFunction = new PhysicalFunctionImpl();
     //begin-capella-code
-
     physicalFunction.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return physicalFunction;
 	}
@@ -178,13 +173,11 @@ public class PaFactoryImpl extends EFactoryImpl implements PaFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PhysicalFunctionPkg createPhysicalFunctionPkg() {
 		PhysicalFunctionPkgImpl physicalFunctionPkg = new PhysicalFunctionPkgImpl();
     //begin-capella-code
-
     physicalFunctionPkg.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return physicalFunctionPkg;
 	}
@@ -194,13 +187,11 @@ public class PaFactoryImpl extends EFactoryImpl implements PaFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PhysicalComponent createPhysicalComponent() {
 		PhysicalComponentImpl physicalComponent = new PhysicalComponentImpl();
     //begin-capella-code
-
     physicalComponent.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return physicalComponent;
 	}
@@ -210,13 +201,11 @@ public class PaFactoryImpl extends EFactoryImpl implements PaFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PhysicalComponentPkg createPhysicalComponentPkg() {
 		PhysicalComponentPkgImpl physicalComponentPkg = new PhysicalComponentPkgImpl();
     //begin-capella-code
-
     physicalComponentPkg.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return physicalComponentPkg;
 	}
@@ -226,13 +215,11 @@ public class PaFactoryImpl extends EFactoryImpl implements PaFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PhysicalNode createPhysicalNode() {
 		PhysicalNodeImpl physicalNode = new PhysicalNodeImpl();
     //begin-capella-code
-
     physicalNode.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return physicalNode;
 	}
@@ -242,13 +229,11 @@ public class PaFactoryImpl extends EFactoryImpl implements PaFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public LogicalArchitectureRealization createLogicalArchitectureRealization() {
 		LogicalArchitectureRealizationImpl logicalArchitectureRealization = new LogicalArchitectureRealizationImpl();
     //begin-capella-code
-
     logicalArchitectureRealization.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return logicalArchitectureRealization;
 	}
@@ -258,13 +243,11 @@ public class PaFactoryImpl extends EFactoryImpl implements PaFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public LogicalInterfaceRealization createLogicalInterfaceRealization() {
 		LogicalInterfaceRealizationImpl logicalInterfaceRealization = new LogicalInterfaceRealizationImpl();
     //begin-capella-code
-
     logicalInterfaceRealization.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return logicalInterfaceRealization;
 	}
@@ -314,6 +297,7 @@ public class PaFactoryImpl extends EFactoryImpl implements PaFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PaPackage getPaPackage() {
 		return (PaPackage)getEPackage();
 	}
@@ -337,7 +321,7 @@ public class PaFactoryImpl extends EFactoryImpl implements PaFactory {
 	 * @generated
 	 */
 	public PhysicalArchitecturePkg createPhysicalArchitecturePkg(String name_p) {
-	  PhysicalArchitecturePkg physicalArchitecturePkg = createPhysicalArchitecturePkg();
+		PhysicalArchitecturePkg physicalArchitecturePkg = createPhysicalArchitecturePkg();
 		physicalArchitecturePkg.setName(name_p);	  
 		return physicalArchitecturePkg;
 	}
@@ -350,7 +334,7 @@ public class PaFactoryImpl extends EFactoryImpl implements PaFactory {
 	 * @generated
 	 */
 	public PhysicalArchitecture createPhysicalArchitecture(String name_p) {
-	  PhysicalArchitecture physicalArchitecture = createPhysicalArchitecture();
+		PhysicalArchitecture physicalArchitecture = createPhysicalArchitecture();
 		physicalArchitecture.setName(name_p);	  
 		return physicalArchitecture;
 	}
@@ -363,7 +347,7 @@ public class PaFactoryImpl extends EFactoryImpl implements PaFactory {
 	 * @generated
 	 */
 	public PhysicalFunction createPhysicalFunction(String name_p) {
-	  PhysicalFunction physicalFunction = createPhysicalFunction();
+		PhysicalFunction physicalFunction = createPhysicalFunction();
 		physicalFunction.setName(name_p);	  
 		return physicalFunction;
 	}
@@ -376,7 +360,7 @@ public class PaFactoryImpl extends EFactoryImpl implements PaFactory {
 	 * @generated
 	 */
 	public PhysicalFunctionPkg createPhysicalFunctionPkg(String name_p) {
-	  PhysicalFunctionPkg physicalFunctionPkg = createPhysicalFunctionPkg();
+		PhysicalFunctionPkg physicalFunctionPkg = createPhysicalFunctionPkg();
 		physicalFunctionPkg.setName(name_p);	  
 		return physicalFunctionPkg;
 	}
@@ -389,7 +373,7 @@ public class PaFactoryImpl extends EFactoryImpl implements PaFactory {
 	 * @generated
 	 */
 	public PhysicalComponent createPhysicalComponent(String name_p) {
-	  PhysicalComponent physicalComponent = createPhysicalComponent();
+		PhysicalComponent physicalComponent = createPhysicalComponent();
 		physicalComponent.setName(name_p);	  
 		return physicalComponent;
 	}
@@ -402,7 +386,7 @@ public class PaFactoryImpl extends EFactoryImpl implements PaFactory {
 	 * @generated
 	 */
 	public PhysicalComponentPkg createPhysicalComponentPkg(String name_p) {
-	  PhysicalComponentPkg physicalComponentPkg = createPhysicalComponentPkg();
+		PhysicalComponentPkg physicalComponentPkg = createPhysicalComponentPkg();
 		physicalComponentPkg.setName(name_p);	  
 		return physicalComponentPkg;
 	}
@@ -415,7 +399,7 @@ public class PaFactoryImpl extends EFactoryImpl implements PaFactory {
 	 * @generated
 	 */
 	public PhysicalNode createPhysicalNode(String name_p) {
-	  PhysicalNode physicalNode = createPhysicalNode();
+		PhysicalNode physicalNode = createPhysicalNode();
 		physicalNode.setName(name_p);	  
 		return physicalNode;
 	}

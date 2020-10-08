@@ -483,6 +483,7 @@ public class FunctionSpecificationImpl extends NamedElementImpl implements Funct
 	 * @generated
 	 */
 
+	@Override
 	public void setIsControlOperator(boolean newIsControlOperator) {
 
 		boolean oldIsControlOperator = isControlOperator;
@@ -551,6 +552,7 @@ public class FunctionSpecificationImpl extends NamedElementImpl implements Funct
 	 * @generated
 	 */
 
+	@Override
 	public void setIsReadOnly(boolean newIsReadOnly) {
 
 		boolean oldIsReadOnly = isReadOnly;
@@ -583,6 +585,7 @@ public class FunctionSpecificationImpl extends NamedElementImpl implements Funct
 	 * @generated
 	 */
 
+	@Override
 	public void setIsSingleExecution(boolean newIsSingleExecution) {
 
 		boolean oldIsSingleExecution = isSingleExecution;
@@ -1097,7 +1100,7 @@ public class FunctionSpecificationImpl extends NamedElementImpl implements Funct
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (isControlOperator: "); //$NON-NLS-1$
 		result.append(isControlOperator);
 		result.append(", isReadOnly: "); //$NON-NLS-1$

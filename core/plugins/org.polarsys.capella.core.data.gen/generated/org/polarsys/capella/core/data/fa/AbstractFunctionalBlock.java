@@ -87,6 +87,7 @@ public interface AbstractFunctionalBlock extends ModellingBlock {
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='ownedConnector' featureOwner='StructuredClassifier'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the connections associated with this block\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::nearestpackage' explanation='none' constraints='In uml::Element::nearestPackage, exchanges between two elements contained by this block. Thoses exchanges are packaged elements on which ComponentExchange stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -112,6 +113,7 @@ public interface AbstractFunctionalBlock extends ModellingBlock {
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getAbstractFunctionalBlock_OwnedComponentExchangeCategories()
 	 * @model containment="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -194,6 +196,7 @@ public interface AbstractFunctionalBlock extends ModellingBlock {
 	 * @return the value of the '<em>In Exchange Links</em>' reference list.
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getAbstractFunctionalBlock_InExchangeLinks()
 	 * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='inFunctionalLinks'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the (functional) exchanges that have this block as their target/destination\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
 	 * @generated
@@ -220,6 +223,7 @@ public interface AbstractFunctionalBlock extends ModellingBlock {
 	 * @return the value of the '<em>Out Exchange Links</em>' reference list.
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getAbstractFunctionalBlock_OutExchangeLinks()
 	 * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='outFunctionalLinks'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the (functional) exchanges that have this block as their source\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
 	 * @generated

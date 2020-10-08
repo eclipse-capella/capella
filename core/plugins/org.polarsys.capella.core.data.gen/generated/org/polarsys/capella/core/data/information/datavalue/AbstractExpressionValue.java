@@ -52,8 +52,10 @@ public interface AbstractExpressionValue extends AbstractBooleanValue, AbstractC
 	 * @return the value of the '<em>Expression</em>' attribute.
 	 * @see org.polarsys.capella.core.data.information.datavalue.DatavaluePackage#getAbstractExpressionValue_Expression()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='textual specification of the expression\r\n[source: Capella study]' usage\040guideline='n/a' used\040in\040levels='n/a' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -79,6 +81,7 @@ public interface AbstractExpressionValue extends AbstractBooleanValue, AbstractC
 	 * @see org.polarsys.capella.core.data.information.datavalue.DatavaluePackage#getAbstractExpressionValue_UnparsedExpression()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='raw textual specification of the expression\r\n[source: Capella study]' usage\040guideline='n/a' used\040in\040levels='n/a' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -119,6 +122,7 @@ public interface AbstractExpressionValue extends AbstractBooleanValue, AbstractC
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='type' featureOwner='TypedElement'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='type'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='abstractType'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the type of the data being valued\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"

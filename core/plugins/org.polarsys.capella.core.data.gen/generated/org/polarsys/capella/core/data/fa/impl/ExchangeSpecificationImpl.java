@@ -253,6 +253,7 @@ public abstract class ExchangeSpecificationImpl extends NamedElementImpl impleme
 	 * @generated
 	 */
 
+	@Override
 	public void setRealizedFlow(AbstractInformationFlow newRealizedFlow) {
 
 		if (newRealizedFlow != realizedFlow) {
@@ -349,6 +350,7 @@ public abstract class ExchangeSpecificationImpl extends NamedElementImpl impleme
 	 * @generated
 	 */
 
+	@Override
 	public void setSource(InformationsExchanger newSource) {
 
 		InformationsExchanger oldSource = source;
@@ -402,6 +404,7 @@ public abstract class ExchangeSpecificationImpl extends NamedElementImpl impleme
 	 * @generated
 	 */
 
+	@Override
 	public void setTarget(InformationsExchanger newTarget) {
 
 		InformationsExchanger oldTarget = target;
@@ -581,6 +584,7 @@ public abstract class ExchangeSpecificationImpl extends NamedElementImpl impleme
 	 * @generated
 	 */
 
+	@Override
 	public void setLink(ExchangeContainment newLink) {
 
 		if (newLink != link) {

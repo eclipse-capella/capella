@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.polarsys.capella.common.data.activity.*;
 import org.polarsys.capella.common.data.activity.ActivityFactory;
 import org.polarsys.capella.common.data.activity.ActivityPackage;
 import org.polarsys.capella.common.data.activity.ObjectNodeKind;
@@ -151,6 +152,7 @@ public class ActivityFactoryImpl extends EFactoryImpl implements ActivityFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ActivityPackage getActivityPackage() {
 		return (ActivityPackage)getEPackage();
 	}

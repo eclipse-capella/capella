@@ -28,6 +28,7 @@ import org.eclipse.emf.common.util.Enumerator;
  *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping enum='AggregationKind'"
  *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='defines the specific kind of a relationship, as per UML definitions\r\n[source: Capella study]' constraints='none' comment/notes='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::AggregationKind' explanation='none' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public enum AggregationKind implements Enumerator {
@@ -252,6 +253,7 @@ public enum AggregationKind implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getValue() {
 	  return value;
 	}
@@ -261,6 +263,7 @@ public enum AggregationKind implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 	  return name;
 	}
@@ -270,6 +273,7 @@ public enum AggregationKind implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getLiteral() {
 	  return literal;
 	}

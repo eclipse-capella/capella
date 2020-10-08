@@ -438,6 +438,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ComposeableAdapterFactory getRootAdapterFactory() {
 		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
 	}
@@ -448,6 +449,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
 		this.parentAdapterFactory = parentAdapterFactory;
 	}
@@ -523,6 +525,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void addListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.addListener(notifyChangedListener);
 	}
@@ -533,6 +536,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void removeListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.removeListener(notifyChangedListener);
 	}
@@ -543,6 +547,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void fireNotifyChanged(Notification notification) {
 		changeNotifier.fireNotifyChanged(notification);
 
@@ -557,6 +562,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void dispose() {
 		if (literalBooleanValueItemProvider != null) literalBooleanValueItemProvider.dispose();
 		if (booleanReferenceItemProvider != null) booleanReferenceItemProvider.dispose();
@@ -1352,8 +1358,8 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
 		 */
 		public Collection<Object> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
 			ArrayList<Object> result = new ArrayList<Object>();
-		   new CreationSwitch(result, editingDomain).doSwitch((EObject)object);
-		   return result;
+			new CreationSwitch(result, editingDomain).doSwitch((EObject)object);
+			return result;
 		}
 
 		/**
@@ -2483,8 +2489,8 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
 		 */
 		public Collection<Object> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
 			ArrayList<Object> result = new ArrayList<Object>();
-		   new CreationSwitch(result, editingDomain).doSwitch((EObject)object);
-		   return result;
+			new CreationSwitch(result, editingDomain).doSwitch((EObject)object);
+			return result;
 		}
 
 		/**

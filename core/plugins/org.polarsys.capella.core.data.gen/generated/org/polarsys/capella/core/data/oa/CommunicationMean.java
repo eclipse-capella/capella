@@ -31,6 +31,7 @@ import org.polarsys.capella.core.data.fa.ComponentExchange;
  * @see org.polarsys.capella.core.data.oa.OaPackage#getCommunicationMean()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the mean by which two specific operational entities are able to exchange information\r\n[source: Capella study]' usage\040guideline='n/a' used\040in\040levels='operational' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='' explanation='not explicitly mapped to uml::InformationFlow, since its parent (ComponentExchange) is concrete and already mapped to uml::InformationFlow\r\n' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface CommunicationMean extends NamedRelationship, ComponentExchange {
@@ -52,6 +53,7 @@ public interface CommunicationMean extends NamedRelationship, ComponentExchange 
 	 * @see org.polarsys.capella.core.data.oa.OaPackage#getCommunicationMean_SourceEntity()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='source'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */
@@ -77,6 +79,7 @@ public interface CommunicationMean extends NamedRelationship, ComponentExchange 
 	 * @see org.polarsys.capella.core.data.oa.OaPackage#getCommunicationMean_TargetEntity()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='target'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */

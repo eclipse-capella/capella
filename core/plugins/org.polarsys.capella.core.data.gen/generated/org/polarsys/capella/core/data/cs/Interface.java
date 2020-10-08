@@ -52,6 +52,7 @@ import org.polarsys.capella.core.data.information.ExchangeItem;
  *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping metaclass='Interface' stereotype='eng.Interface'"
  *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='An interface is a kind of classifier that represents a declaration of a set of coherent public features and obligations. An\r\ninterface specifies a contract; any instance of a classifier that realizes the interface must fulfill that contract.\r\n[source: UML superstructure v2.2]\r\n\r\nInterfaces are defined by functional and physical characteristics that exist at a common boundary with co-functioning items and allow systems, equipment, software, and system data to be compatible.\r\n[source: not precised]\r\n\r\nThat design feature of one piece of equipment that affects a design feature of another piece of equipment. \r\nAn interface can extend beyond the physical boundary between two items. (For example, the weight and center of gravity of one item can affect the interfacing item; however, the center of gravity is rarely located at the physical boundary.\r\nAn electrical interface generally extends to the first isolating element rather than terminating at a series of connector pins.)' usage\040guideline='In Capella, Interfaces are created to declare the nature of interactions between the System and external actors.' used\040in\040levels='system/logical/physical' usage\040examples='../img/usage_examples/external_interface_example.png' constraints='none' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='uml::Interface' explanation='none' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface Interface extends GeneralClass, InterfaceAllocator {
@@ -75,6 +76,7 @@ public interface Interface extends GeneralClass, InterfaceAllocator {
 	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='mechanism' featureOwner='eng.Interface' fromStereotype='true'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='_todo_reviewed : cannot find the meaning of this attribute ? How to fill it ?' constraints='none' type='_todo_reviewed : to be precised' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -155,6 +157,7 @@ public interface Interface extends GeneralClass, InterfaceAllocator {
 	 * @see org.polarsys.capella.core.data.cs.Component#getImplementedInterfaces
 	 * @model opposite="implementedInterfaces" transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='implementorComponents'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='interfaceImplementations.interfaceImplementor'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='references to the components that implement this interface\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
@@ -186,6 +189,7 @@ public interface Interface extends GeneralClass, InterfaceAllocator {
 	 * @see org.polarsys.capella.core.data.cs.Component#getUsedInterfaces
 	 * @model opposite="usedInterfaces" transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='userComponents'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='interfaceUses.interfaceUser'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='references to the components that use this interface\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
@@ -215,6 +219,7 @@ public interface Interface extends GeneralClass, InterfaceAllocator {
 	 * @see org.polarsys.capella.core.data.cs.CsPackage#getInterface_InterfaceImplementations()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='interfaceImplementations'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='implementedInterface'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='references to the InterfaceImplementation elements, that act as mediators between this interface and its implementers\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Opposite reference of uml::InterfaceRealization::contract' constraints='uml::Element::ownedElement elements on which InterfaceImplementation stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
@@ -244,6 +249,7 @@ public interface Interface extends GeneralClass, InterfaceAllocator {
 	 * @see org.polarsys.capella.core.data.cs.CsPackage#getInterface_InterfaceUses()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='interfaceUses'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='usedInterface'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='references to the InterfaceUse elements, that act as mediator classes between this interface and its users\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Opposite reference of uml::Dependency::supplier' constraints='uml::Element::ownedElement elements on which InterfaceUse stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
@@ -385,6 +391,7 @@ public interface Interface extends GeneralClass, InterfaceAllocator {
 	 * @model containment="true" resolveProxies="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='References to allocations of exchange items' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -545,6 +552,7 @@ public interface Interface extends GeneralClass, InterfaceAllocator {
 	 * @see org.polarsys.capella.core.data.cs.CsPackage#getInterface_RealizedContextInterfaces()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='ContextInterfaceRealization.sourceElement(cir, self);\r\nContextInterfaceRealization.targetElement(cir, target);'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */
@@ -598,6 +606,7 @@ public interface Interface extends GeneralClass, InterfaceAllocator {
 	 * @see org.polarsys.capella.core.data.cs.CsPackage#getInterface_RealizedLogicalInterfaces()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='LogicalInterfaceRealization.sourceElement(cir, self);\r\nLogicalInterfaceRealization.targetElement(cir, target); '"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */

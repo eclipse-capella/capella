@@ -178,6 +178,7 @@ public class BooleanTypeImpl extends DataTypeImpl implements BooleanType {
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedDefaultValue(AbstractBooleanValue newOwnedDefaultValue) {
 
 		if (newOwnedDefaultValue != ownedDefaultValue) {

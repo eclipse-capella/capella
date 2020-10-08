@@ -29,6 +29,7 @@ package org.polarsys.capella.core.data.fa;
  * @see org.polarsys.capella.core.data.fa.FaPackage#getControlNode()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used to control the flow of executions of represented functions in a functional chain\r\n[source: Capella study]' usage\040guideline='n/a' used\040in\040levels='operational,system,logical,physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 

@@ -119,6 +119,7 @@ public class LocationImpl extends AbstractConceptItemImpl implements Location {
 	 * @generated
 	 */
 
+	@Override
 	public void setLocationDescription(String newLocationDescription) {
 
 		String oldLocationDescription = locationDescription;
@@ -232,7 +233,7 @@ public class LocationImpl extends AbstractConceptItemImpl implements Location {
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (locationDescription: "); //$NON-NLS-1$
 		result.append(locationDescription);
 		result.append(')');

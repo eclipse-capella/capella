@@ -118,6 +118,7 @@ public class UnaryExpressionImpl extends AbstractExpressionValueImpl implements 
 	 * @generated
 	 */
 
+	@Override
 	public void setOperator(UnaryOperator newOperator) {
 
 		UnaryOperator oldOperator = operator;
@@ -197,6 +198,7 @@ public class UnaryExpressionImpl extends AbstractExpressionValueImpl implements 
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedOperand(DataValue newOwnedOperand) {
 
 		if (newOwnedOperand != ownedOperand) {
@@ -312,7 +314,7 @@ public class UnaryExpressionImpl extends AbstractExpressionValueImpl implements 
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (operator: "); //$NON-NLS-1$
 		result.append(operator);
 		result.append(')');

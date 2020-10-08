@@ -34,6 +34,7 @@ import org.polarsys.capella.core.data.capellacore.TypedElement;
  * @see org.polarsys.capella.core.data.information.InformationPackage#getExchangeItemElement()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='a part of a structured exchange item\r\n[source: Capella study]' usage\040guideline='n/a' used\040in\040levels='operational, system, logical, physical, epbs' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='uml::Parameter' explanation='none' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface ExchangeItemElement extends NamedElement, MultiplicityElement, TypedElement {
@@ -58,6 +59,7 @@ public interface ExchangeItemElement extends NamedElement, MultiplicityElement, 
 	 * @see org.polarsys.capella.core.data.information.InformationPackage#getExchangeItemElement_Kind()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='refer to ElementKind description' constraints='none' type='refer to ElementKind definition' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -102,6 +104,7 @@ public interface ExchangeItemElement extends NamedElement, MultiplicityElement, 
 	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='direction' featureOwner='Parameter'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies whether the parameter is an input, an output, or both.\r\n[source: Capella study]' constraints='none' type='see ParameterDirection definition' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Parameter::direction' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -143,6 +146,7 @@ public interface ExchangeItemElement extends NamedElement, MultiplicityElement, 
 	 * @see org.polarsys.capella.core.data.information.InformationPackage#getExchangeItemElement_Composite()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='n/a' constraints='none' type='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -183,6 +187,7 @@ public interface ExchangeItemElement extends NamedElement, MultiplicityElement, 
 	 * @see org.polarsys.capella.core.data.information.InformationPackage#getExchangeItemElement_ReferencedProperties()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='n/a' constraints='none' type='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

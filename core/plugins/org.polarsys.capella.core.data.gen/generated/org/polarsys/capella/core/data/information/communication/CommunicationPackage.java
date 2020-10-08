@@ -35,6 +35,7 @@ import org.polarsys.capella.core.data.information.InformationPackage;
  * @model kind="package"
  *        annotation="http://www.polarsys.org/kitalpha/emde/1.0.0/extension trackResourceModification='true' useUUIDs='false' useIDAttributes='true' extensibleProviderFactory='true' childCreationExtenders='true'"
  *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='sub-package containing the elements invovled in communication between elements (messages, signals, ...)\r\n[source: Capella study]' usage\040guideline='none' used\040in\040levels='system,logical,physical' usage\040examples='none' constraints='none' comment/notes='none' reference\040documentation='n/a'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface CommunicationPackage extends EPackage {

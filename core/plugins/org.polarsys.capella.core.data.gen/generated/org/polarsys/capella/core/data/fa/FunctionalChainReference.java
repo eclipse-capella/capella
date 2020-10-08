@@ -27,6 +27,7 @@ package org.polarsys.capella.core.data.fa;
  *
  * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChainReference()
  * @model annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='' explanation='none' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface FunctionalChainReference extends FunctionalChainInvolvement {
@@ -48,6 +49,7 @@ public interface FunctionalChainReference extends FunctionalChainInvolvement {
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChainReference_ReferencedFunctionalChain()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='involved'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */

@@ -289,6 +289,7 @@ public class StateTransitionImpl extends NamedElementImpl implements StateTransi
 	 * @generated
 	 */
 
+	@Override
 	public void setRealizedFlow(AbstractInformationFlow newRealizedFlow) {
 
 		if (newRealizedFlow != realizedFlow) {
@@ -342,6 +343,7 @@ public class StateTransitionImpl extends NamedElementImpl implements StateTransi
 	 * @generated
 	 */
 
+	@Override
 	public void setGuard(Constraint newGuard) {
 
 		Constraint oldGuard = guard;
@@ -369,6 +371,7 @@ public class StateTransitionImpl extends NamedElementImpl implements StateTransi
 	 * @generated
 	 */
 
+	@Override
 	public void setKind(TransitionKind newKind) {
 
 		TransitionKind oldKind = kind;
@@ -401,6 +404,7 @@ public class StateTransitionImpl extends NamedElementImpl implements StateTransi
 	 * @generated
 	 */
 
+	@Override
 	public void setTriggerDescription(String newTriggerDescription) {
 
 		String oldTriggerDescription = triggerDescription;
@@ -454,6 +458,7 @@ public class StateTransitionImpl extends NamedElementImpl implements StateTransi
 	 * @generated
 	 */
 
+	@Override
 	public void setSource(AbstractState newSource) {
 
 		AbstractState oldSource = source;
@@ -507,6 +512,7 @@ public class StateTransitionImpl extends NamedElementImpl implements StateTransi
 	 * @generated
 	 */
 
+	@Override
 	public void setTarget(AbstractState newTarget) {
 
 		AbstractState oldTarget = target;
@@ -901,7 +907,7 @@ public class StateTransitionImpl extends NamedElementImpl implements StateTransi
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (kind: "); //$NON-NLS-1$
 		result.append(kind);
 		result.append(", triggerDescription: "); //$NON-NLS-1$

@@ -447,6 +447,7 @@ public abstract class TypedElementImpl extends AbstractTypedElementImpl implemen
 	 * @generated
 	 */
 
+	@Override
 	public void setVisibleInDoc(boolean newVisibleInDoc) {
 
 		boolean oldVisibleInDoc = visibleInDoc;
@@ -479,6 +480,7 @@ public abstract class TypedElementImpl extends AbstractTypedElementImpl implemen
 	 * @generated
 	 */
 
+	@Override
 	public void setVisibleInLM(boolean newVisibleInLM) {
 
 		boolean oldVisibleInLM = visibleInLM;
@@ -511,6 +513,7 @@ public abstract class TypedElementImpl extends AbstractTypedElementImpl implemen
 	 * @generated
 	 */
 
+	@Override
 	public void setSummary(String newSummary) {
 
 		String oldSummary = summary;
@@ -543,6 +546,7 @@ public abstract class TypedElementImpl extends AbstractTypedElementImpl implemen
 	 * @generated
 	 */
 
+	@Override
 	public void setDescription(String newDescription) {
 
 		String oldDescription = description;
@@ -575,6 +579,7 @@ public abstract class TypedElementImpl extends AbstractTypedElementImpl implemen
 	 * @generated
 	 */
 
+	@Override
 	public void setReview(String newReview) {
 
 		String oldReview = review;
@@ -718,6 +723,7 @@ public abstract class TypedElementImpl extends AbstractTypedElementImpl implemen
 	 * @generated
 	 */
 
+	@Override
 	public void setStatus(EnumerationPropertyLiteral newStatus) {
 
 		EnumerationPropertyLiteral oldStatus = status;
@@ -1168,7 +1174,7 @@ public abstract class TypedElementImpl extends AbstractTypedElementImpl implemen
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (visibleInDoc: "); //$NON-NLS-1$
 		result.append(visibleInDoc);
 		result.append(", visibleInLM: "); //$NON-NLS-1$

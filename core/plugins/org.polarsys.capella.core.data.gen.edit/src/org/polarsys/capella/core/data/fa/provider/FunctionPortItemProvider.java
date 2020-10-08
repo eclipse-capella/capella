@@ -237,8 +237,10 @@ public class FunctionPortItemProvider
 	 * This adds a property descriptor for the Represented Component Port feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @deprecated See {@link org.polarsys.capella.core.data.fa.FunctionPort#getRepresentedComponentPort() model documentation} for details.
 	 * @generated
 	 */
+	@Deprecated
 	protected void addRepresentedComponentPortPropertyDescriptor(Object object) {
 		// begin-extension-code
 		representedComponentPortPropertyDescriptor = createItemPropertyDescriptor

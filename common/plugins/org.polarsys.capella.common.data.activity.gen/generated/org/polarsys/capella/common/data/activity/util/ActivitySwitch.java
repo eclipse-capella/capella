@@ -15,6 +15,7 @@ package org.polarsys.capella.common.data.activity.util;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
+import org.polarsys.capella.common.data.activity.*;
 import org.polarsys.capella.common.data.activity.AbstractAction;
 import org.polarsys.capella.common.data.activity.AbstractActivity;
 import org.polarsys.capella.common.data.activity.AcceptEventAction;

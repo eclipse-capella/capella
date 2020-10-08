@@ -55,6 +55,7 @@ public interface SystemCommunication extends Relationship {
 	 * @model containment="true" resolveProxies="true" lower="2" upper="2"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='navigableOwnedEnd' featureOwner='Association'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='system'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the endpoints of this relationship link (there can be an arbitrary number of them for a given link)\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Association::ownedEnd' explanation='none' constraints='none'"
 	 * @generated

@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.polarsys.capella.common.lib.IdGenerator;
+import org.polarsys.capella.core.data.epbs.*;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
 import org.polarsys.capella.core.data.epbs.ConfigurationItemKind;
 import org.polarsys.capella.core.data.epbs.ConfigurationItemPkg;
@@ -119,13 +120,11 @@ public class EpbsFactoryImpl extends EFactoryImpl implements EpbsFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EPBSArchitecturePkg createEPBSArchitecturePkg() {
 		EPBSArchitecturePkgImpl epbsArchitecturePkg = new EPBSArchitecturePkgImpl();
     //begin-capella-code
-
     epbsArchitecturePkg.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return epbsArchitecturePkg;
 	}
@@ -135,13 +134,11 @@ public class EpbsFactoryImpl extends EFactoryImpl implements EpbsFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EPBSArchitecture createEPBSArchitecture() {
 		EPBSArchitectureImpl epbsArchitecture = new EPBSArchitectureImpl();
     //begin-capella-code
-
     epbsArchitecture.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return epbsArchitecture;
 	}
@@ -151,13 +148,11 @@ public class EpbsFactoryImpl extends EFactoryImpl implements EpbsFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ConfigurationItemPkg createConfigurationItemPkg() {
 		ConfigurationItemPkgImpl configurationItemPkg = new ConfigurationItemPkgImpl();
     //begin-capella-code
-
     configurationItemPkg.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return configurationItemPkg;
 	}
@@ -167,13 +162,11 @@ public class EpbsFactoryImpl extends EFactoryImpl implements EpbsFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ConfigurationItem createConfigurationItem() {
 		ConfigurationItemImpl configurationItem = new ConfigurationItemImpl();
     //begin-capella-code
-
     configurationItem.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return configurationItem;
 	}
@@ -183,13 +176,11 @@ public class EpbsFactoryImpl extends EFactoryImpl implements EpbsFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PhysicalArchitectureRealization createPhysicalArchitectureRealization() {
 		PhysicalArchitectureRealizationImpl physicalArchitectureRealization = new PhysicalArchitectureRealizationImpl();
     //begin-capella-code
-
     physicalArchitectureRealization.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return physicalArchitectureRealization;
 	}
@@ -199,13 +190,11 @@ public class EpbsFactoryImpl extends EFactoryImpl implements EpbsFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PhysicalArtifactRealization createPhysicalArtifactRealization() {
 		PhysicalArtifactRealizationImpl physicalArtifactRealization = new PhysicalArtifactRealizationImpl();
     //begin-capella-code
-
     physicalArtifactRealization.setId(IdGenerator.createId());
-
-
     //end-capella-code
 		return physicalArtifactRealization;
 	}
@@ -235,6 +224,7 @@ public class EpbsFactoryImpl extends EFactoryImpl implements EpbsFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EpbsPackage getEpbsPackage() {
 		return (EpbsPackage)getEPackage();
 	}
@@ -258,7 +248,7 @@ public class EpbsFactoryImpl extends EFactoryImpl implements EpbsFactory {
 	 * @generated
 	 */
 	public EPBSArchitecturePkg createEPBSArchitecturePkg(String name_p) {
-	  EPBSArchitecturePkg epbsArchitecturePkg = createEPBSArchitecturePkg();
+		EPBSArchitecturePkg epbsArchitecturePkg = createEPBSArchitecturePkg();
 		epbsArchitecturePkg.setName(name_p);	  
 		return epbsArchitecturePkg;
 	}
@@ -271,7 +261,7 @@ public class EpbsFactoryImpl extends EFactoryImpl implements EpbsFactory {
 	 * @generated
 	 */
 	public EPBSArchitecture createEPBSArchitecture(String name_p) {
-	  EPBSArchitecture epbsArchitecture = createEPBSArchitecture();
+		EPBSArchitecture epbsArchitecture = createEPBSArchitecture();
 		epbsArchitecture.setName(name_p);	  
 		return epbsArchitecture;
 	}
@@ -284,7 +274,7 @@ public class EpbsFactoryImpl extends EFactoryImpl implements EpbsFactory {
 	 * @generated
 	 */
 	public ConfigurationItemPkg createConfigurationItemPkg(String name_p) {
-	  ConfigurationItemPkg configurationItemPkg = createConfigurationItemPkg();
+		ConfigurationItemPkg configurationItemPkg = createConfigurationItemPkg();
 		configurationItemPkg.setName(name_p);	  
 		return configurationItemPkg;
 	}
@@ -297,7 +287,7 @@ public class EpbsFactoryImpl extends EFactoryImpl implements EpbsFactory {
 	 * @generated
 	 */
 	public ConfigurationItem createConfigurationItem(String name_p) {
-	  ConfigurationItem configurationItem = createConfigurationItem();
+		ConfigurationItem configurationItem = createConfigurationItem();
 		configurationItem.setName(name_p);	  
 		return configurationItem;
 	}

@@ -58,6 +58,7 @@ import org.polarsys.capella.core.data.information.impl.PortImpl;
  *
  * @generated
  */
+@SuppressWarnings("deprecation")
 public abstract class FunctionPortImpl extends PortImpl implements FunctionPort {
 
 	/**
@@ -83,9 +84,11 @@ public abstract class FunctionPortImpl extends PortImpl implements FunctionPort 
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getRepresentedComponentPort()
+	 * @deprecated See {@link org.polarsys.capella.core.data.fa.FunctionPort#getRepresentedComponentPort() model documentation} for details.
 	 * @generated
 	 * @ordered
 	 */
+	@Deprecated
 	protected ComponentPort representedComponentPort;
 
 
@@ -167,6 +170,7 @@ public abstract class FunctionPortImpl extends PortImpl implements FunctionPort 
 	 * @generated
 	 */
 
+	@Override
 	public void setAbstractType(AbstractType newAbstractType) {
 
 		AbstractType oldAbstractType = abstractType;
@@ -286,9 +290,11 @@ public abstract class FunctionPortImpl extends PortImpl implements FunctionPort 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @deprecated See {@link org.polarsys.capella.core.data.fa.FunctionPort#getRepresentedComponentPort() model documentation} for details.
 	 * @generated
 	 */
 
+	@Deprecated
 	public ComponentPort getRepresentedComponentPort() {
 
 		if (representedComponentPort != null && representedComponentPort.eIsProxy()) {
@@ -306,9 +312,11 @@ public abstract class FunctionPortImpl extends PortImpl implements FunctionPort 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @deprecated See {@link org.polarsys.capella.core.data.fa.FunctionPort#getRepresentedComponentPort() model documentation} for details.
 	 * @generated
 	 */
 
+	@Deprecated
 	public ComponentPort basicGetRepresentedComponentPort() {
 
 		return representedComponentPort;
@@ -319,9 +327,12 @@ public abstract class FunctionPortImpl extends PortImpl implements FunctionPort 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @deprecated See {@link org.polarsys.capella.core.data.fa.FunctionPort#getRepresentedComponentPort() model documentation} for details.
 	 * @generated
 	 */
 
+	@Deprecated
+		@Override
 	public void setRepresentedComponentPort(ComponentPort newRepresentedComponentPort) {
 
 		ComponentPort oldRepresentedComponentPort = representedComponentPort;

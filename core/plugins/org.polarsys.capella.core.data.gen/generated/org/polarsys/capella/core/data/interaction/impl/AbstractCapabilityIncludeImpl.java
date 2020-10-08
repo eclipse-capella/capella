@@ -125,6 +125,7 @@ public class AbstractCapabilityIncludeImpl extends RelationshipImpl implements A
 	 * @generated
 	 */
 
+	@Override
 	public void setIncluded(AbstractCapability newIncluded) {
 
 		AbstractCapability oldIncluded = included;

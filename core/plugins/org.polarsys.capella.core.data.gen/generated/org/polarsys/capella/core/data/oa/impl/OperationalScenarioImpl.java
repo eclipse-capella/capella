@@ -125,6 +125,7 @@ public abstract class OperationalScenarioImpl extends NamedElementImpl implement
 	 * @generated
 	 */
 
+	@Override
 	public void setContext(String newContext) {
 
 		String oldContext = context;
@@ -157,6 +158,7 @@ public abstract class OperationalScenarioImpl extends NamedElementImpl implement
 	 * @generated
 	 */
 
+	@Override
 	public void setObjective(String newObjective) {
 
 		String oldObjective = objective;
@@ -250,7 +252,7 @@ public abstract class OperationalScenarioImpl extends NamedElementImpl implement
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (context: "); //$NON-NLS-1$
 		result.append(context);
 		result.append(", objective: "); //$NON-NLS-1$

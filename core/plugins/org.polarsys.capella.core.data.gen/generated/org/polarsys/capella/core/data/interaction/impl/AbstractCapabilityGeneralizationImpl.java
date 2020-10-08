@@ -125,6 +125,7 @@ public class AbstractCapabilityGeneralizationImpl extends RelationshipImpl imple
 	 * @generated
 	 */
 
+	@Override
 	public void setSuper(AbstractCapability newSuper) {
 
 		AbstractCapability oldSuper = super_;

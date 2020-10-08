@@ -31,6 +31,7 @@ import org.polarsys.capella.core.data.capellacore.NamedElement;
  * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getConstraintDuration()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='n/a' constraints='none' comment/notes='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='' explanation='none' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface ConstraintDuration extends NamedElement {
@@ -52,6 +53,7 @@ public interface ConstraintDuration extends NamedElement {
 	 * @see #setDuration(String)
 	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getConstraintDuration_Duration()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='n/a' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

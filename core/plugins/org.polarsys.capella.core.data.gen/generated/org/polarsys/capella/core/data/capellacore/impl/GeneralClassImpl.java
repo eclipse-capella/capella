@@ -163,6 +163,7 @@ public abstract class GeneralClassImpl extends ClassifierImpl implements General
 	 * @generated
 	 */
 
+	@Override
 	public void setFinal(boolean newFinal) {
 
 		boolean oldFinal = final_;
@@ -195,6 +196,7 @@ public abstract class GeneralClassImpl extends ClassifierImpl implements General
 	 * @generated
 	 */
 
+	@Override
 	public void setVisibility(VisibilityKind newVisibility) {
 
 		VisibilityKind oldVisibility = visibility;
@@ -415,7 +417,7 @@ public abstract class GeneralClassImpl extends ClassifierImpl implements General
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (final: "); //$NON-NLS-1$
 		result.append(final_);
 		result.append(", visibility: "); //$NON-NLS-1$

@@ -57,6 +57,7 @@ public interface AbstractEnd extends InteractionFragment {
 	 * @model required="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='event' featureOwner='OccurrenceSpecification'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='event'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Event associated to this interaction endpoint\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::OccurrenceSpecification::event' explanation='none' constraints='none'"
 	 * @generated
@@ -101,6 +102,7 @@ public interface AbstractEnd extends InteractionFragment {
 	 * @model opposite="abstractEnds" required="true" transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='covered' featureOwner='InteractionFragment'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='instanceRole'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the instance role (lifeline) to which this interaction endpoint is attached\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::InteractionFragment::covered' explanation='none' constraints='Multiplicity must be [1..1]'"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='coveredInstanceRoles'"

@@ -127,6 +127,7 @@ public class GeneralizationImpl extends RelationshipImpl implements Generalizati
 	 * @generated
 	 */
 
+	@Override
 	public void setSuper(GeneralizableElement newSuper) {
 
 		GeneralizableElement oldSuper = super_;
@@ -180,6 +181,7 @@ public class GeneralizationImpl extends RelationshipImpl implements Generalizati
 	 * @generated
 	 */
 
+	@Override
 	public void setSub(GeneralizableElement newSub) {
 
 		GeneralizableElement oldSub = sub;

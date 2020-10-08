@@ -53,6 +53,7 @@ public interface EventReceiptOperation extends Event {
 	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getEventReceiptOperation_Operation()
 	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='operation' featureOwner='ReceiveOperationEvent'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='operation'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Operation triggered by the reception of this event\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ReceiveOperationEvent::operation' explanation='none' constraints='none'"
 	 * @generated

@@ -62,8 +62,10 @@ public interface Operation extends Feature, AbstractEvent, AbstractEventOperatio
 	 * @model containment="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='ownedParameter' featureOwner='BehavioralFeature'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='parameters'"
+	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the parameters associated to this operation\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Operation::ownedParameter' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -123,6 +125,7 @@ public interface Operation extends Feature, AbstractEvent, AbstractEventOperatio
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='Operation.outgoingTraces(self, oa);\r\nOperationAllocation.allocatedOperation(oa, target); '"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the operation allocation relationships that start from this Operation\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -203,6 +206,7 @@ public interface Operation extends Feature, AbstractEvent, AbstractEventOperatio
 	 * @model opposite="realizingOperations" transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='Operation.outgoingTraces(self, eir);\r\nExchangeItemRealization.realizedItem(eir, target); '"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='class(es) realized by this class' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
