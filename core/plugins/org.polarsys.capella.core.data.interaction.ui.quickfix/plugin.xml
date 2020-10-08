@@ -71,8 +71,17 @@
       </resolver>
       <resolver
             class="org.polarsys.capella.core.data.interaction.ui.quickfix.resolver.DWF_DS_23_ScenarioReferencedResolver"
-            desc="%quickFix2.DWF_DS_23.desc"
+            desc="%quickFix1.DWF_DS_23.desc"
             icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+            label="%quickFix1.DWF_DS_23.label">
+         <rules
+               ruleId="DWF_DS_23">
+         </rules>
+      </resolver>
+      <resolver
+            class="org.polarsys.capella.core.data.interaction.ui.quickfix.resolver.DWF_DS_23_DeleteReferenceResolver"
+            desc="%quickFix2.DWF_DS_23.desc"
+            icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_delete.gif"
             label="%quickFix2.DWF_DS_23.label">
          <rules
                ruleId="DWF_DS_23">

@@ -26,6 +26,7 @@ import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.interaction.InteractionUse;
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.interaction.TimeLapse;
+import org.polarsys.capella.core.data.interaction.validation.interactionUse.MDCHK_InteractionUse_ReferencedScenario;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.projection.common.AbstractTransform;
 import org.polarsys.capella.core.projection.common.AbstractTransitionCommand;
@@ -71,10 +72,7 @@ public class ESToISCommand extends AbstractTransitionCommand {
   protected Collection<EObject> searchScenarios(EObject selectedElement_p, boolean postRun) {
     Collection<EObject> result = new HashSet<EObject>();
     if (selectedElement_p instanceof Scenario) {
-      Set<EObject> referencesScenarios = new HashSet<EObject>();
-      searchReferencedScenarios((Scenario) selectedElement_p, referencesScenarios, result);
-      result.addAll(referencesScenarios);
-      result.add(selectedElement_p);
+      addAllScenarios((Scenario) selectedElement_p, result, postRun);
       return result; // nothing interesting under
     }
 
@@ -83,14 +81,7 @@ public class ESToISCommand extends AbstractTransitionCommand {
       EObject eObject = it.next();
 
       if (eObject instanceof Scenario) {
-        Scenario scenario = (Scenario) eObject;
-        if (postRun || isScenarioValid(scenario)) {
-          // add also the scenario referenced by this scenario
-          Set<EObject> referencesScenarios = new HashSet<EObject>();
-          searchReferencedScenarios(scenario, referencesScenarios, result);
-          result.addAll(referencesScenarios);
-          result.add(scenario);
-        }
+        addAllScenarios((Scenario) eObject, result, postRun);
         it.prune();
       }
       // TODO we can prune many objects to limit lookup
@@ -98,19 +89,37 @@ public class ESToISCommand extends AbstractTransitionCommand {
     return result;
   }
   
-/*
- * recursively, search for all referenced scenarios
- */
-  protected void searchReferencedScenarios(Scenario scenario, Set<EObject> references, Collection<EObject> analizedScenarios) {
-    if(analizedScenarios.contains(scenario))
-       return;
+  private void addAllScenarios(Scenario scenario, Collection<EObject> result, boolean postRun) {
+    if (postRun || isScenarioValid(scenario)) {
+      // add also the scenario referenced by this scenario
+      Set<EObject> referencesScenarios = new HashSet<EObject>();
+      searchReferencedScenarios(scenario, referencesScenarios, result, postRun);
+      result.addAll(referencesScenarios);
+      result.add(scenario);
+    }
+  }
+  
+  /*
+   * recursively, search for all referenced scenarios
+   */
+  protected void searchReferencedScenarios(Scenario scenario, Set<EObject> references,
+      Collection<EObject> analizedScenarios, boolean postRun) {
+    if (analizedScenarios.contains(scenario))
+      return;
     for (TimeLapse timelapse : scenario.getOwnedTimeLapses()) {
       if (timelapse instanceof InteractionUse) {
         InteractionUse interaction = (InteractionUse) timelapse;
         Scenario refScenario = interaction.getReferencedScenario();
-        if(refScenario != null && !references.contains(refScenario)) {
-          references.add(refScenario);
-          searchReferencedScenarios(refScenario, references, analizedScenarios);
+
+        // check if is a valid reference and the reference was not already processed
+        if (refScenario != null
+            && new MDCHK_InteractionUse_ReferencedScenario().isValidReference(interaction, scenario, refScenario)
+            && !references.contains(refScenario)) {
+          // check if is a valid scenario
+          if (postRun || isScenarioValid(scenario)) {
+            references.add(refScenario);
+            searchReferencedScenarios(refScenario, references, analizedScenarios, postRun);
+          }
         }
       }
     }
@@ -147,6 +156,8 @@ public class ESToISCommand extends AbstractTransitionCommand {
                       .filter(sc -> sc.getName().equals(refScenario.getName())).findFirst();
                   if (match.isPresent()) {
                     interaction.setReferencedScenario(match.get());
+                  } else {
+                    interaction.setReferencedScenario(null);
                   }
                 }
               }
