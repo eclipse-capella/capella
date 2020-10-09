@@ -25,6 +25,8 @@ import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.interaction.InteractionUse;
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.interaction.ScenarioKind;
+import org.polarsys.capella.core.data.oa.OperationalAnalysis;
+import org.polarsys.capella.core.model.helpers.ScenarioExt;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 
 public class GetAvailable_InteractionUse_ReferencedScenario extends AbstractQuery {
@@ -45,7 +47,7 @@ public class GetAvailable_InteractionUse_ReferencedScenario extends AbstractQuer
 		Scenario scenario = getAvailableRelatedScenario(element);
 		BlockArchitecture currentBlockArchitecture = SystemEngineeringExt.getRootBlockArchitecture(element);
 		if (currentBlockArchitecture != null && scenario != null) {
-			availableElements.addAll(getElementsFromBlockArchitecture(currentBlockArchitecture, scenario.getKind()));
+			availableElements.addAll(getElementsFromBlockArchitecture(currentBlockArchitecture, scenario));
 			availableElements.remove(scenario);
 		}
 		return availableElements;
@@ -64,13 +66,23 @@ public class GetAvailable_InteractionUse_ReferencedScenario extends AbstractQuer
 	 * @param arch
 	 * @return
 	 */
-	private List<CapellaElement> getElementsFromBlockArchitecture(BlockArchitecture arch, ScenarioKind kind) {
+	private List<CapellaElement> getElementsFromBlockArchitecture(BlockArchitecture arch, Scenario scenario) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
 		TreeIterator<Object> allContents = EcoreUtil.getAllContents(arch, true);
 		while (allContents.hasNext()) {
 			Object object = allContents.next();
-			if ((object instanceof Scenario) && ((Scenario) object).getKind().equals(kind)) {
-				availableElements.add((CapellaElement) object);
+			if ((object instanceof Scenario) && ((Scenario) object).getKind().equals(scenario.getKind())) {
+			  if(arch instanceof OperationalAnalysis) {
+			    // OAS shall propose only OAS references, OES shall propose only OES references
+			    boolean isFSScenario = ScenarioExt.isFunctionalScenario(scenario);
+			    boolean isFSScenarioAvailable = ScenarioExt.isFunctionalScenario((Scenario) object);
+			    if(isFSScenario == isFSScenarioAvailable) {
+			      availableElements.add((CapellaElement) object);
+			    }
+			  }
+			  else {
+			    availableElements.add((CapellaElement) object);
+			  }
 			}
 		}
 		return availableElements;
