@@ -22,8 +22,7 @@
         eType="#//ModelInformation"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="accessPolicy" lowerBound="1"
         eType="#//AccessPolicy"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="version" lowerBound="1"
-        eType="#//ModelVersion"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="version" eType="#//ModelVersion"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ModelVersion" eSuperTypes="#//LibraryAbstractElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="majorVersionNumber" lowerBound="1"
