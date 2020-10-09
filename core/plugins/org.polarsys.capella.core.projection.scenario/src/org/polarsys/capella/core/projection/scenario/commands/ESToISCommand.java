@@ -12,22 +12,18 @@
  *******************************************************************************/
 package org.polarsys.capella.core.projection.scenario.commands;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
-import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.interaction.InteractionUse;
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.interaction.TimeLapse;
 import org.polarsys.capella.core.data.interaction.validation.interactionUse.MDCHK_InteractionUse_ReferencedScenario;
-import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.projection.common.AbstractTransform;
 import org.polarsys.capella.core.projection.common.AbstractTransitionCommand;
 import org.polarsys.capella.core.projection.common.TransitionHelper;
@@ -93,7 +89,7 @@ public class ESToISCommand extends AbstractTransitionCommand {
     }
     return result;
   }
-  
+
   protected void addAllScenarios(Scenario scenario, Collection<EObject> result) {
     // add also the scenario referenced by this scenario
     Set<EObject> referencedScenarios = new HashSet<EObject>();
@@ -117,7 +113,7 @@ public class ESToISCommand extends AbstractTransitionCommand {
   protected void searchReferencedScenarios(Scenario scenario, Set<EObject> references, Collection<EObject> result) {
     if (result.contains(scenario))
       return;
-    
+
     MDCHK_InteractionUse_ReferencedScenario checkRule = new MDCHK_InteractionUse_ReferencedScenario();
     for (TimeLapse timelapse : scenario.getOwnedTimeLapses()) {
       if (timelapse instanceof InteractionUse) {
@@ -137,17 +133,17 @@ public class ESToISCommand extends AbstractTransitionCommand {
       }
     }
   }
-  
+
   protected boolean isScenarioValid(Scenario scenario_p) {
     return TransitionHelper.getService().isES2ISTransitionAvailable(scenario_p);
   }
-  
+
   @Override
   public void run() {
     super.run();
     setReferencedScenarios(elements);
   }
-  
+
   /**
    * set the referenced scenarios
    * 
