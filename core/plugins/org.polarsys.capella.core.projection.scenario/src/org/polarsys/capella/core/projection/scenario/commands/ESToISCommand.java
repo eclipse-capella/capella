@@ -32,6 +32,7 @@ import org.polarsys.capella.core.projection.common.AbstractTransform;
 import org.polarsys.capella.core.projection.common.AbstractTransitionCommand;
 import org.polarsys.capella.core.projection.common.TransitionHelper;
 import org.polarsys.capella.core.projection.scenario.Messages;
+import org.polarsys.capella.core.projection.scenario.ScenarioTransform;
 import org.polarsys.capella.core.projection.scenario.es2is.ES2ISTransform;
 
 /**
@@ -54,7 +55,7 @@ public class ESToISCommand extends AbstractTransitionCommand {
 
   @Override
   protected Collection<EObject> retrieveModelElements(EObject modelElement_p) {
-    return searchScenarios(modelElement_p, false);
+    return searchScenarios(modelElement_p);
   }
 
   /**
@@ -69,10 +70,10 @@ public class ESToISCommand extends AbstractTransitionCommand {
    * @param selectedElement_p
    * @return
    */
-  protected Collection<EObject> searchScenarios(EObject selectedElement_p, boolean postRun) {
+  protected Collection<EObject> searchScenarios(EObject selectedElement_p) {
     Collection<EObject> result = new HashSet<EObject>();
     if (selectedElement_p instanceof Scenario) {
-      addAllScenarios((Scenario) selectedElement_p, result, postRun);
+      addAllScenarios((Scenario) selectedElement_p, result);
       return result; // nothing interesting under
     }
 
@@ -81,7 +82,11 @@ public class ESToISCommand extends AbstractTransitionCommand {
       EObject eObject = it.next();
 
       if (eObject instanceof Scenario) {
-        addAllScenarios((Scenario) eObject, result, postRun);
+        Scenario scenario = (Scenario) eObject;
+        if (isScenarioValid(scenario)) {
+          // add also the scenario referenced by this scenario
+          addAllScenarios(scenario, result);
+        }
         it.prune();
       }
       // TODO we can prune many objects to limit lookup
@@ -89,36 +94,44 @@ public class ESToISCommand extends AbstractTransitionCommand {
     return result;
   }
   
-  private void addAllScenarios(Scenario scenario, Collection<EObject> result, boolean postRun) {
-    if (postRun || isScenarioValid(scenario)) {
-      // add also the scenario referenced by this scenario
-      Set<EObject> referencesScenarios = new HashSet<EObject>();
-      searchReferencedScenarios(scenario, referencesScenarios, result, postRun);
-      result.addAll(referencesScenarios);
-      result.add(scenario);
-    }
+  protected void addAllScenarios(Scenario scenario, Collection<EObject> result) {
+    // add also the scenario referenced by this scenario
+    Set<EObject> referencedScenarios = new HashSet<EObject>();
+    searchReferencedScenarios(scenario, referencedScenarios, result);
+    result.addAll(referencedScenarios);
+    result.add(scenario);
   }
-  
-  /*
+
+  /**
    * recursively, search for all referenced scenarios
+   * 
+   * @param scenario:
+   *          the current scenario, for which all his references are added in the references set given as parameter
+   * @param references:
+   *          the references found for each scenarios, we accumulate them in a set
+   * @param result:
+   *          the scenarios selected until now, for these scenarios the references are already processed so there is no
+   *          need to process the once again (in case we select multiple elements on transition, or the entire package)
+   * @return
    */
-  protected void searchReferencedScenarios(Scenario scenario, Set<EObject> references,
-      Collection<EObject> analizedScenarios, boolean postRun) {
-    if (analizedScenarios.contains(scenario))
+  protected void searchReferencedScenarios(Scenario scenario, Set<EObject> references, Collection<EObject> result) {
+    if (result.contains(scenario))
       return;
+    
+    MDCHK_InteractionUse_ReferencedScenario checkRule = new MDCHK_InteractionUse_ReferencedScenario();
     for (TimeLapse timelapse : scenario.getOwnedTimeLapses()) {
       if (timelapse instanceof InteractionUse) {
         InteractionUse interaction = (InteractionUse) timelapse;
         Scenario refScenario = interaction.getReferencedScenario();
 
         // check if is a valid reference and the reference was not already processed
-        if (refScenario != null
-            && new MDCHK_InteractionUse_ReferencedScenario().isValidReference(interaction, scenario, refScenario)
+        if (refScenario != null && checkRule.isValidReference(interaction, scenario, refScenario)
             && !references.contains(refScenario)) {
+
           // check if is a valid scenario
-          if (postRun || isScenarioValid(scenario)) {
+          if (isScenarioValid(refScenario)) {
             references.add(refScenario);
-            searchReferencedScenarios(refScenario, references, analizedScenarios, postRun);
+            searchReferencedScenarios(refScenario, references, result);
           }
         }
       }
@@ -132,13 +145,17 @@ public class ESToISCommand extends AbstractTransitionCommand {
   @Override
   public void run() {
     super.run();
-
-    // do some processing after transition of scenarios, to set the correct referenced scenario
-    Collection<EObject> elements = new ArrayList<EObject>();
-    for (EObject rootElement : rootElements) {
-      elements.addAll(searchScenarios(rootElement, true));
-    }
-
+    setReferencedScenarios(elements);
+  }
+  
+  /**
+   * set the referenced scenarios
+   * 
+   * @param elements:
+   *          the scenarios that were transitioned and that need to have set the referenced scenario
+   * @return
+   */
+  protected void setReferencedScenarios(Collection<EObject> elements) {
     for (EObject element : elements) {
       if (element instanceof Scenario) {
         for (Scenario scenario : ((Scenario) element).getRealizingScenarios()) {
@@ -148,17 +165,14 @@ public class ESToISCommand extends AbstractTransitionCommand {
             if (timelapse instanceof InteractionUse) {
               InteractionUse interaction = (InteractionUse) timelapse;
               Scenario refScenario = interaction.getReferencedScenario();
+
               if (refScenario != null) {
-                BlockArchitecture sourceBlock = BlockArchitectureExt.getRootBlockArchitecture(refScenario);
-                BlockArchitecture targetBlock = BlockArchitectureExt.getRootBlockArchitecture(scenario);
-                if (!sourceBlock.equals(targetBlock)) {
-                  Optional<Scenario> match = refScenario.getRealizingScenarios().stream()
-                      .filter(sc -> sc.getName().equals(refScenario.getName())).findFirst();
-                  if (match.isPresent()) {
-                    interaction.setReferencedScenario(match.get());
-                  } else {
-                    interaction.setReferencedScenario(null);
-                  }
+                AbstractTransform transform = getTransformation(refScenario);
+                if (transform instanceof ScenarioTransform) {
+                  ScenarioTransform scenarioTransform = (ScenarioTransform) transform;
+                  Scenario transitionedScenario = scenarioTransform.getTransitionedScenario((Scenario) refScenario,
+                      scenarioTransform.getTransfo());
+                  interaction.setReferencedScenario(transitionedScenario);
                 }
               }
             }
