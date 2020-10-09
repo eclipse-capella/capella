@@ -22,7 +22,9 @@ import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.information.InformationPackage;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.interaction.Scenario;
+import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.polarsys.capella.core.model.helpers.ScenarioExt;
 import org.polarsys.capella.core.projection.common.CapellaEngine;
 import org.polarsys.capella.core.projection.common.context.IContext;
 import org.polarsys.capella.core.projection.scenario.ScenarioTransfo;
@@ -102,7 +104,21 @@ public class TopDownTransform extends ScenarioTransform {
     BlockArchitecture sourceBlock = BlockArchitectureExt.getRootBlockArchitecture(contextElement_p);
     BlockArchitecture targetBlock = BlockArchitectureExt.getRootBlockArchitecture(scenario_p);
 
-    return (scenario_p.getKind() == contextElement_p.getKind()) && !sourceBlock.equals(targetBlock);
+    if(!sourceBlock.equals(targetBlock)) {
+      if(scenario_p.getKind() == contextElement_p.getKind()) {
+        return true;
+      }
+      if(sourceBlock instanceof OperationalAnalysis) {
+        // transition from OA towards same kind of scenario
+        boolean isFSScenarioSource = ScenarioExt.isFunctionalScenario(contextElement_p);
+        boolean isFSScenarioTarget = ScenarioExt.isFunctionalScenario(scenario_p);
+        if(isFSScenarioSource == isFSScenarioTarget) {
+          return true;
+        }
+      }
+    }
+
+    return false;
   }
 
 }

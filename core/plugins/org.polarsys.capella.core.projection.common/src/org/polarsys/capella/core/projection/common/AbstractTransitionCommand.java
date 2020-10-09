@@ -37,6 +37,9 @@ public abstract class AbstractTransitionCommand extends AbstractReadWriteCommand
 
   /** a progress monitor */
   private IProgressMonitor progressMonitor = null;
+  
+  /* elements that are transitioned */
+  protected Collection<EObject> elements = null;
 
   /**
    * @see org.polarsys.capella.common.ef.command.AbstractCommand#getName()
@@ -90,7 +93,7 @@ public abstract class AbstractTransitionCommand extends AbstractReadWriteCommand
 
       if ((rootElements != null) && (rootElements.size() > 0)) {
 
-        Collection<EObject> elements = new ArrayList<EObject>();
+        elements = new ArrayList<EObject>();
 
         for (EObject rootElement : rootElements) {
           elements.addAll(retrieveModelElements(rootElement));
