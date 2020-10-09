@@ -40,20 +40,24 @@ public class MDCHK_InteractionUse_ReferencedScenario extends AbstractValidationR
     if (eObj instanceof InteractionUse) {
       InteractionUse interaction = (InteractionUse) eObj;
       Scenario scenario = (Scenario) interaction.eContainer();
-
       Scenario refScenario = interaction.getReferencedScenario();
-      if (refScenario != null) {
-        IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(interaction.eClass(),
-            InteractionPackage.eINSTANCE.getInteractionUse_ReferencedScenario());
-        if (query != null) {
-          List<EObject> elements = query.getAvailableElements(interaction);
-          if (!elements.contains(refScenario)) {
-            return createCtxStatus(ctx_p, interaction, scenario, refScenario);
-          }
-        }
+      if(refScenario != null && !isValidReference(interaction, scenario, refScenario)) {
+        return createCtxStatus(ctx_p, interaction, scenario, refScenario);
       }
     }
     return ctx_p.createSuccessStatus();
+  }
+  
+  public boolean isValidReference(InteractionUse interaction, Scenario scenario, Scenario refScenario) {
+    IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(interaction.eClass(),
+        InteractionPackage.eINSTANCE.getInteractionUse_ReferencedScenario());
+    if (query != null) {
+      List<EObject> elements = query.getAvailableElements(interaction);
+      if (!elements.contains(refScenario)) {
+        return false;
+      }
+    }
+    return true;
   }
 
   private IStatus createCtxStatus(IValidationContext ctx, InteractionUse interaction, Scenario scenario,

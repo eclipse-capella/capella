@@ -26,6 +26,8 @@ import org.polarsys.capella.core.tiger.impl.TransfoEngine;
 /**
  */
 public abstract class ScenarioTransform extends AbstractTransform {
+  
+  private ITransfo transfo;
 
   /**
    * @see org.polarsys.capella.core.projection.common.ITransform#setContext(org.polarsys.capella.common.data.modellingcore.ModelElement)
@@ -51,6 +53,7 @@ public abstract class ScenarioTransform extends AbstractTransform {
 
     IContext context = IContext.getContext(transfo);
     IScenarioHelper.setInstance(context, createScenarioHandler(context));
+    this.transfo = transfo;
     return transfo;
   }
 
@@ -60,7 +63,7 @@ public abstract class ScenarioTransform extends AbstractTransform {
    * @param contextElement_p
    * @return
    */
-  protected Scenario getTransitionedScenario(Scenario contextElement_p, ITransfo transfo) {
+  public Scenario getTransitionedScenario(Scenario contextElement_p, ITransfo transfo) {
     for (AbstractTrace trace : contextElement_p.getIncomingTraces()) {
       if (trace.getSourceElement() instanceof Scenario) {
         Scenario scenario = (Scenario) trace.getSourceElement();
@@ -79,4 +82,7 @@ public abstract class ScenarioTransform extends AbstractTransform {
    */
   protected abstract boolean isValidTransitionedScenario(Scenario contextElement_p, Scenario scenario_p);
 
+  public ITransfo getTransfo() {
+    return transfo;
+  }
 }
