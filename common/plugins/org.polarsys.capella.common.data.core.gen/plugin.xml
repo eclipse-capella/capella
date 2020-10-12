@@ -20,7 +20,7 @@
 <!--@generated-->
   <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated ModellingCore -->
-      <package class="org.polarsys.capella.common.data.modellingcore.ModellingcorePackage" genModel="model/ModellingCore.genmodel" uri="http://www.polarsys.org/capella/common/core/1.4.0"/>
+      <package class="org.polarsys.capella.common.data.modellingcore.ModellingcorePackage" genModel="model/ModellingCore.genmodel" uri="http://www.polarsys.org/capella/common/core/5.0.0"/>
    </extension>
 
    

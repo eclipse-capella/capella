@@ -20,185 +20,185 @@
 <!--@generated-->
   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <!-- @generated CapellaModeller -->
-      <factory class="org.polarsys.capella.core.data.capellamodeller.provider.CapellamodellerItemProviderAdapterFactory" supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider                org.eclipse.emf.edit.provider.IStructuredItemContentProvider                org.eclipse.emf.edit.provider.ITreeItemContentProvider                org.eclipse.emf.edit.provider.IItemLabelProvider                org.eclipse.emf.edit.provider.IItemPropertySource" uri="http://www.polarsys.org/capella/core/modeller/1.4.0"/>
+      <factory class="org.polarsys.capella.core.data.capellamodeller.provider.CapellamodellerItemProviderAdapterFactory" supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider                org.eclipse.emf.edit.provider.IStructuredItemContentProvider                org.eclipse.emf.edit.provider.ITreeItemContentProvider                org.eclipse.emf.edit.provider.IItemLabelProvider                org.eclipse.emf.edit.provider.IItemPropertySource" uri="http://www.polarsys.org/capella/core/modeller/5.0.0"/>
    </extension>
 
    
 <!--@generated-->
   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <!-- @generated CapellaModeller -->
-      <factory class="org.polarsys.capella.core.data.capellacore.provider.CapellacoreItemProviderAdapterFactory" supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider                org.eclipse.emf.edit.provider.IStructuredItemContentProvider                org.eclipse.emf.edit.provider.ITreeItemContentProvider                org.eclipse.emf.edit.provider.IItemLabelProvider                org.eclipse.emf.edit.provider.IItemPropertySource" uri="http://www.polarsys.org/capella/core/core/1.4.0"/>
+      <factory class="org.polarsys.capella.core.data.capellacore.provider.CapellacoreItemProviderAdapterFactory" supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider                org.eclipse.emf.edit.provider.IStructuredItemContentProvider                org.eclipse.emf.edit.provider.ITreeItemContentProvider                org.eclipse.emf.edit.provider.IItemLabelProvider                org.eclipse.emf.edit.provider.IItemPropertySource" uri="http://www.polarsys.org/capella/core/core/5.0.0"/>
    </extension>
 
    
 <!--@generated-->
   <extension point="org.eclipse.emf.edit.childCreationExtenders">
       <!-- @generated CapellaModeller -->
-      <extender class="org.polarsys.capella.core.data.capellacore.provider.CapellacoreItemProviderAdapterFactory$ModellingcoreChildCreationExtender" uri="http://www.polarsys.org/capella/common/core/1.4.0"/>
-      <extender class="org.polarsys.capella.core.data.capellacore.provider.CapellacoreItemProviderAdapterFactory$ActivityChildCreationExtender" uri="http://www.polarsys.org/capella/common/activity/1.4.0"/>
+      <extender class="org.polarsys.capella.core.data.capellacore.provider.CapellacoreItemProviderAdapterFactory$ModellingcoreChildCreationExtender" uri="http://www.polarsys.org/capella/common/core/5.0.0"/>
+      <extender class="org.polarsys.capella.core.data.capellacore.provider.CapellacoreItemProviderAdapterFactory$ActivityChildCreationExtender" uri="http://www.polarsys.org/capella/common/activity/5.0.0"/>
    </extension>
 
    
 <!--@generated-->
   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <!-- @generated CapellaModeller -->
-      <factory class="org.polarsys.capella.core.data.oa.provider.OaItemProviderAdapterFactory" supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider                org.eclipse.emf.edit.provider.IStructuredItemContentProvider                org.eclipse.emf.edit.provider.ITreeItemContentProvider                org.eclipse.emf.edit.provider.IItemLabelProvider                org.eclipse.emf.edit.provider.IItemPropertySource" uri="http://www.polarsys.org/capella/core/oa/1.4.0"/>
+      <factory class="org.polarsys.capella.core.data.oa.provider.OaItemProviderAdapterFactory" supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider                org.eclipse.emf.edit.provider.IStructuredItemContentProvider                org.eclipse.emf.edit.provider.ITreeItemContentProvider                org.eclipse.emf.edit.provider.IItemLabelProvider                org.eclipse.emf.edit.provider.IItemPropertySource" uri="http://www.polarsys.org/capella/core/oa/5.0.0"/>
    </extension>
 
    
 <!--@generated-->
   <extension point="org.eclipse.emf.edit.childCreationExtenders">
       <!-- @generated CapellaModeller -->
-      <extender class="org.polarsys.capella.core.data.oa.provider.OaItemProviderAdapterFactory$ActivityChildCreationExtender" uri="http://www.polarsys.org/capella/common/activity/1.4.0"/>
+      <extender class="org.polarsys.capella.core.data.oa.provider.OaItemProviderAdapterFactory$ActivityChildCreationExtender" uri="http://www.polarsys.org/capella/common/activity/5.0.0"/>
    </extension>
 
    
 <!--@generated-->
   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <!-- @generated CapellaModeller -->
-      <factory class="org.polarsys.capella.core.data.ctx.provider.CtxItemProviderAdapterFactory" supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider                org.eclipse.emf.edit.provider.IStructuredItemContentProvider                org.eclipse.emf.edit.provider.ITreeItemContentProvider                org.eclipse.emf.edit.provider.IItemLabelProvider                org.eclipse.emf.edit.provider.IItemPropertySource" uri="http://www.polarsys.org/capella/core/ctx/1.4.0"/>
+      <factory class="org.polarsys.capella.core.data.ctx.provider.CtxItemProviderAdapterFactory" supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider                org.eclipse.emf.edit.provider.IStructuredItemContentProvider                org.eclipse.emf.edit.provider.ITreeItemContentProvider                org.eclipse.emf.edit.provider.IItemLabelProvider                org.eclipse.emf.edit.provider.IItemPropertySource" uri="http://www.polarsys.org/capella/core/ctx/5.0.0"/>
    </extension>
 
    
 <!--@generated-->
   <extension point="org.eclipse.emf.edit.childCreationExtenders">
       <!-- @generated CapellaModeller -->
-      <extender class="org.polarsys.capella.core.data.ctx.provider.CtxItemProviderAdapterFactory$ActivityChildCreationExtender" uri="http://www.polarsys.org/capella/common/activity/1.4.0"/>
+      <extender class="org.polarsys.capella.core.data.ctx.provider.CtxItemProviderAdapterFactory$ActivityChildCreationExtender" uri="http://www.polarsys.org/capella/common/activity/5.0.0"/>
    </extension>
 
    
 <!--@generated-->
   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <!-- @generated CapellaModeller -->
-      <factory class="org.polarsys.capella.core.data.la.provider.LaItemProviderAdapterFactory" supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider                org.eclipse.emf.edit.provider.IStructuredItemContentProvider                org.eclipse.emf.edit.provider.ITreeItemContentProvider                org.eclipse.emf.edit.provider.IItemLabelProvider                org.eclipse.emf.edit.provider.IItemPropertySource" uri="http://www.polarsys.org/capella/core/la/1.4.0"/>
+      <factory class="org.polarsys.capella.core.data.la.provider.LaItemProviderAdapterFactory" supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider                org.eclipse.emf.edit.provider.IStructuredItemContentProvider                org.eclipse.emf.edit.provider.ITreeItemContentProvider                org.eclipse.emf.edit.provider.IItemLabelProvider                org.eclipse.emf.edit.provider.IItemPropertySource" uri="http://www.polarsys.org/capella/core/la/5.0.0"/>
    </extension>
 
    
 <!--@generated-->
   <extension point="org.eclipse.emf.edit.childCreationExtenders">
       <!-- @generated CapellaModeller -->
-      <extender class="org.polarsys.capella.core.data.la.provider.LaItemProviderAdapterFactory$ActivityChildCreationExtender" uri="http://www.polarsys.org/capella/common/activity/1.4.0"/>
+      <extender class="org.polarsys.capella.core.data.la.provider.LaItemProviderAdapterFactory$ActivityChildCreationExtender" uri="http://www.polarsys.org/capella/common/activity/5.0.0"/>
    </extension>
 
    
 <!--@generated-->
   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <!-- @generated CapellaModeller -->
-      <factory class="org.polarsys.capella.core.data.pa.provider.PaItemProviderAdapterFactory" supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider                org.eclipse.emf.edit.provider.IStructuredItemContentProvider                org.eclipse.emf.edit.provider.ITreeItemContentProvider                org.eclipse.emf.edit.provider.IItemLabelProvider                org.eclipse.emf.edit.provider.IItemPropertySource" uri="http://www.polarsys.org/capella/core/pa/1.4.0"/>
+      <factory class="org.polarsys.capella.core.data.pa.provider.PaItemProviderAdapterFactory" supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider                org.eclipse.emf.edit.provider.IStructuredItemContentProvider                org.eclipse.emf.edit.provider.ITreeItemContentProvider                org.eclipse.emf.edit.provider.IItemLabelProvider                org.eclipse.emf.edit.provider.IItemPropertySource" uri="http://www.polarsys.org/capella/core/pa/5.0.0"/>
    </extension>
 
    
 <!--@generated-->
   <extension point="org.eclipse.emf.edit.childCreationExtenders">
       <!-- @generated CapellaModeller -->
-      <extender class="org.polarsys.capella.core.data.pa.provider.PaItemProviderAdapterFactory$ActivityChildCreationExtender" uri="http://www.polarsys.org/capella/common/activity/1.4.0"/>
+      <extender class="org.polarsys.capella.core.data.pa.provider.PaItemProviderAdapterFactory$ActivityChildCreationExtender" uri="http://www.polarsys.org/capella/common/activity/5.0.0"/>
    </extension>
 
    
 <!--@generated-->
   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <!-- @generated CapellaModeller -->
-      <factory class="org.polarsys.capella.core.data.pa.deployment.provider.DeploymentItemProviderAdapterFactory" supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider                org.eclipse.emf.edit.provider.IStructuredItemContentProvider                org.eclipse.emf.edit.provider.ITreeItemContentProvider                org.eclipse.emf.edit.provider.IItemLabelProvider                org.eclipse.emf.edit.provider.IItemPropertySource" uri="http://www.polarsys.org/capella/core/pa/deployment/1.4.0"/>
+      <factory class="org.polarsys.capella.core.data.pa.deployment.provider.DeploymentItemProviderAdapterFactory" supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider                org.eclipse.emf.edit.provider.IStructuredItemContentProvider                org.eclipse.emf.edit.provider.ITreeItemContentProvider                org.eclipse.emf.edit.provider.IItemLabelProvider                org.eclipse.emf.edit.provider.IItemPropertySource" uri="http://www.polarsys.org/capella/core/pa/deployment/5.0.0"/>
    </extension>
 
    
 <!--@generated-->
   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <!-- @generated CapellaModeller -->
-      <factory class="org.polarsys.capella.core.data.epbs.provider.EpbsItemProviderAdapterFactory" supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider                org.eclipse.emf.edit.provider.IStructuredItemContentProvider                org.eclipse.emf.edit.provider.ITreeItemContentProvider                org.eclipse.emf.edit.provider.IItemLabelProvider                org.eclipse.emf.edit.provider.IItemPropertySource" uri="http://www.polarsys.org/capella/core/epbs/1.4.0"/>
+      <factory class="org.polarsys.capella.core.data.epbs.provider.EpbsItemProviderAdapterFactory" supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider                org.eclipse.emf.edit.provider.IStructuredItemContentProvider                org.eclipse.emf.edit.provider.ITreeItemContentProvider                org.eclipse.emf.edit.provider.IItemLabelProvider                org.eclipse.emf.edit.provider.IItemPropertySource" uri="http://www.polarsys.org/capella/core/epbs/5.0.0"/>
    </extension>
 
    
 <!--@generated-->
   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <!-- @generated CapellaModeller -->
-      <factory class="org.polarsys.capella.core.data.sharedmodel.provider.SharedmodelItemProviderAdapterFactory" supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider                org.eclipse.emf.edit.provider.IStructuredItemContentProvider                org.eclipse.emf.edit.provider.ITreeItemContentProvider                org.eclipse.emf.edit.provider.IItemLabelProvider                org.eclipse.emf.edit.provider.IItemPropertySource" uri="http://www.polarsys.org/capella/core/sharedmodel/1.4.0"/>
+      <factory class="org.polarsys.capella.core.data.sharedmodel.provider.SharedmodelItemProviderAdapterFactory" supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider                org.eclipse.emf.edit.provider.IStructuredItemContentProvider                org.eclipse.emf.edit.provider.ITreeItemContentProvider                org.eclipse.emf.edit.provider.IItemLabelProvider                org.eclipse.emf.edit.provider.IItemPropertySource" uri="http://www.polarsys.org/capella/core/sharedmodel/5.0.0"/>
    </extension>
 
    
 <!--@generated-->
   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <!-- @generated CapellaModeller -->
-      <factory class="org.polarsys.capella.core.data.requirement.provider.RequirementItemProviderAdapterFactory" supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider                org.eclipse.emf.edit.provider.IStructuredItemContentProvider                org.eclipse.emf.edit.provider.ITreeItemContentProvider                org.eclipse.emf.edit.provider.IItemLabelProvider                org.eclipse.emf.edit.provider.IItemPropertySource" uri="http://www.polarsys.org/capella/core/requirement/1.4.0"/>
+      <factory class="org.polarsys.capella.core.data.requirement.provider.RequirementItemProviderAdapterFactory" supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider                org.eclipse.emf.edit.provider.IStructuredItemContentProvider                org.eclipse.emf.edit.provider.ITreeItemContentProvider                org.eclipse.emf.edit.provider.IItemLabelProvider                org.eclipse.emf.edit.provider.IItemPropertySource" uri="http://www.polarsys.org/capella/core/requirement/5.0.0"/>
    </extension>
 
    
 <!--@generated-->
   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <!-- @generated CapellaModeller -->
-      <factory class="org.polarsys.capella.core.data.capellacommon.provider.CapellacommonItemProviderAdapterFactory" supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider                org.eclipse.emf.edit.provider.IStructuredItemContentProvider                org.eclipse.emf.edit.provider.ITreeItemContentProvider                org.eclipse.emf.edit.provider.IItemLabelProvider                org.eclipse.emf.edit.provider.IItemPropertySource" uri="http://www.polarsys.org/capella/core/common/1.4.0"/>
+      <factory class="org.polarsys.capella.core.data.capellacommon.provider.CapellacommonItemProviderAdapterFactory" supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider                org.eclipse.emf.edit.provider.IStructuredItemContentProvider                org.eclipse.emf.edit.provider.ITreeItemContentProvider                org.eclipse.emf.edit.provider.IItemLabelProvider                org.eclipse.emf.edit.provider.IItemPropertySource" uri="http://www.polarsys.org/capella/core/common/5.0.0"/>
    </extension>
 
    
 <!--@generated-->
   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <!-- @generated CapellaModeller -->
-      <factory class="org.polarsys.capella.core.data.information.provider.InformationItemProviderAdapterFactory" supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider                org.eclipse.emf.edit.provider.IStructuredItemContentProvider                org.eclipse.emf.edit.provider.ITreeItemContentProvider                org.eclipse.emf.edit.provider.IItemLabelProvider                org.eclipse.emf.edit.provider.IItemPropertySource" uri="http://www.polarsys.org/capella/core/information/1.4.0"/>
+      <factory class="org.polarsys.capella.core.data.information.provider.InformationItemProviderAdapterFactory" supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider                org.eclipse.emf.edit.provider.IStructuredItemContentProvider                org.eclipse.emf.edit.provider.ITreeItemContentProvider                org.eclipse.emf.edit.provider.IItemLabelProvider                org.eclipse.emf.edit.provider.IItemPropertySource" uri="http://www.polarsys.org/capella/core/information/5.0.0"/>
    </extension>
 
    
 <!--@generated-->
   <extension point="org.eclipse.emf.edit.childCreationExtenders">
       <!-- @generated CapellaModeller -->
-      <extender class="org.polarsys.capella.core.data.information.provider.InformationItemProviderAdapterFactory$ModellingcoreChildCreationExtender" uri="http://www.polarsys.org/capella/common/core/1.4.0"/>
-      <extender class="org.polarsys.capella.core.data.information.provider.InformationItemProviderAdapterFactory$ActivityChildCreationExtender" uri="http://www.polarsys.org/capella/common/activity/1.4.0"/>
+      <extender class="org.polarsys.capella.core.data.information.provider.InformationItemProviderAdapterFactory$ModellingcoreChildCreationExtender" uri="http://www.polarsys.org/capella/common/core/5.0.0"/>
+      <extender class="org.polarsys.capella.core.data.information.provider.InformationItemProviderAdapterFactory$ActivityChildCreationExtender" uri="http://www.polarsys.org/capella/common/activity/5.0.0"/>
    </extension>
 
    
 <!--@generated-->
   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <!-- @generated CapellaModeller -->
-      <factory class="org.polarsys.capella.core.data.information.communication.provider.CommunicationItemProviderAdapterFactory" supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider                org.eclipse.emf.edit.provider.IStructuredItemContentProvider                org.eclipse.emf.edit.provider.ITreeItemContentProvider                org.eclipse.emf.edit.provider.IItemLabelProvider                org.eclipse.emf.edit.provider.IItemPropertySource" uri="http://www.polarsys.org/capella/core/information/communication/1.4.0"/>
+      <factory class="org.polarsys.capella.core.data.information.communication.provider.CommunicationItemProviderAdapterFactory" supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider                org.eclipse.emf.edit.provider.IStructuredItemContentProvider                org.eclipse.emf.edit.provider.ITreeItemContentProvider                org.eclipse.emf.edit.provider.IItemLabelProvider                org.eclipse.emf.edit.provider.IItemPropertySource" uri="http://www.polarsys.org/capella/core/information/communication/5.0.0"/>
    </extension>
 
    
 <!--@generated-->
   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <!-- @generated CapellaModeller -->
-      <factory class="org.polarsys.capella.core.data.information.datatype.provider.DatatypeItemProviderAdapterFactory" supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider                org.eclipse.emf.edit.provider.IStructuredItemContentProvider                org.eclipse.emf.edit.provider.ITreeItemContentProvider                org.eclipse.emf.edit.provider.IItemLabelProvider                org.eclipse.emf.edit.provider.IItemPropertySource" uri="http://www.polarsys.org/capella/core/information/datatype/1.4.0"/>
+      <factory class="org.polarsys.capella.core.data.information.datatype.provider.DatatypeItemProviderAdapterFactory" supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider                org.eclipse.emf.edit.provider.IStructuredItemContentProvider                org.eclipse.emf.edit.provider.ITreeItemContentProvider                org.eclipse.emf.edit.provider.IItemLabelProvider                org.eclipse.emf.edit.provider.IItemPropertySource" uri="http://www.polarsys.org/capella/core/information/datatype/5.0.0"/>
    </extension>
 
    
 <!--@generated-->
   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <!-- @generated CapellaModeller -->
-      <factory class="org.polarsys.capella.core.data.information.datavalue.provider.DatavalueItemProviderAdapterFactory" supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider                org.eclipse.emf.edit.provider.IStructuredItemContentProvider                org.eclipse.emf.edit.provider.ITreeItemContentProvider                org.eclipse.emf.edit.provider.IItemLabelProvider                org.eclipse.emf.edit.provider.IItemPropertySource" uri="http://www.polarsys.org/capella/core/information/datavalue/1.4.0"/>
+      <factory class="org.polarsys.capella.core.data.information.datavalue.provider.DatavalueItemProviderAdapterFactory" supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider                org.eclipse.emf.edit.provider.IStructuredItemContentProvider                org.eclipse.emf.edit.provider.ITreeItemContentProvider                org.eclipse.emf.edit.provider.IItemLabelProvider                org.eclipse.emf.edit.provider.IItemPropertySource" uri="http://www.polarsys.org/capella/core/information/datavalue/5.0.0"/>
    </extension>
 
    
 <!--@generated-->
   <extension point="org.eclipse.emf.edit.childCreationExtenders">
       <!-- @generated CapellaModeller -->
-      <extender class="org.polarsys.capella.core.data.information.datavalue.provider.DatavalueItemProviderAdapterFactory$ModellingcoreChildCreationExtender" uri="http://www.polarsys.org/capella/common/core/1.4.0"/>
-      <extender class="org.polarsys.capella.core.data.information.datavalue.provider.DatavalueItemProviderAdapterFactory$ActivityChildCreationExtender" uri="http://www.polarsys.org/capella/common/activity/1.4.0"/>
+      <extender class="org.polarsys.capella.core.data.information.datavalue.provider.DatavalueItemProviderAdapterFactory$ModellingcoreChildCreationExtender" uri="http://www.polarsys.org/capella/common/core/5.0.0"/>
+      <extender class="org.polarsys.capella.core.data.information.datavalue.provider.DatavalueItemProviderAdapterFactory$ActivityChildCreationExtender" uri="http://www.polarsys.org/capella/common/activity/5.0.0"/>
    </extension>
 
    
 <!--@generated-->
   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <!-- @generated CapellaModeller -->
-      <factory class="org.polarsys.capella.core.data.cs.provider.CsItemProviderAdapterFactory" supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider                org.eclipse.emf.edit.provider.IStructuredItemContentProvider                org.eclipse.emf.edit.provider.ITreeItemContentProvider                org.eclipse.emf.edit.provider.IItemLabelProvider                org.eclipse.emf.edit.provider.IItemPropertySource" uri="http://www.polarsys.org/capella/core/cs/1.4.0"/>
+      <factory class="org.polarsys.capella.core.data.cs.provider.CsItemProviderAdapterFactory" supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider                org.eclipse.emf.edit.provider.IStructuredItemContentProvider                org.eclipse.emf.edit.provider.ITreeItemContentProvider                org.eclipse.emf.edit.provider.IItemLabelProvider                org.eclipse.emf.edit.provider.IItemPropertySource" uri="http://www.polarsys.org/capella/core/cs/5.0.0"/>
    </extension>
 
    
 <!--@generated-->
   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <!-- @generated CapellaModeller -->
-      <factory class="org.polarsys.capella.core.data.fa.provider.FaItemProviderAdapterFactory" supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider                org.eclipse.emf.edit.provider.IStructuredItemContentProvider                org.eclipse.emf.edit.provider.ITreeItemContentProvider                org.eclipse.emf.edit.provider.IItemLabelProvider                org.eclipse.emf.edit.provider.IItemPropertySource" uri="http://www.polarsys.org/capella/core/fa/1.4.0"/>
+      <factory class="org.polarsys.capella.core.data.fa.provider.FaItemProviderAdapterFactory" supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider                org.eclipse.emf.edit.provider.IStructuredItemContentProvider                org.eclipse.emf.edit.provider.ITreeItemContentProvider                org.eclipse.emf.edit.provider.IItemLabelProvider                org.eclipse.emf.edit.provider.IItemPropertySource" uri="http://www.polarsys.org/capella/core/fa/5.0.0"/>
    </extension>
 
    
 <!--@generated-->
   <extension point="org.eclipse.emf.edit.childCreationExtenders">
       <!-- @generated CapellaModeller -->
-      <extender class="org.polarsys.capella.core.data.fa.provider.FaItemProviderAdapterFactory$ActivityChildCreationExtender" uri="http://www.polarsys.org/capella/common/activity/1.4.0"/>
+      <extender class="org.polarsys.capella.core.data.fa.provider.FaItemProviderAdapterFactory$ActivityChildCreationExtender" uri="http://www.polarsys.org/capella/common/activity/5.0.0"/>
    </extension>
 
    
 <!--@generated-->
   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <!-- @generated CapellaModeller -->
-      <factory class="org.polarsys.capella.core.data.interaction.provider.InteractionItemProviderAdapterFactory" supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider                org.eclipse.emf.edit.provider.IStructuredItemContentProvider                org.eclipse.emf.edit.provider.ITreeItemContentProvider                org.eclipse.emf.edit.provider.IItemLabelProvider                org.eclipse.emf.edit.provider.IItemPropertySource" uri="http://www.polarsys.org/capella/core/interaction/1.4.0"/>
+      <factory class="org.polarsys.capella.core.data.interaction.provider.InteractionItemProviderAdapterFactory" supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider                org.eclipse.emf.edit.provider.IStructuredItemContentProvider                org.eclipse.emf.edit.provider.ITreeItemContentProvider                org.eclipse.emf.edit.provider.IItemLabelProvider                org.eclipse.emf.edit.provider.IItemPropertySource" uri="http://www.polarsys.org/capella/core/interaction/5.0.0"/>
    </extension>
 
 </plugin>

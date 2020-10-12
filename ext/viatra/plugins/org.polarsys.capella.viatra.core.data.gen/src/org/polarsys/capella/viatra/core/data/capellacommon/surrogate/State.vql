@@ -15,11 +15,11 @@
 
 package org.polarsys.capella.viatra.core.data.capellacommon.surrogate
 
-import "http://www.polarsys.org/capella/core/common/1.4.0"
+import "http://www.polarsys.org/capella/core/common/5.0.0"
 
 // Start of user code for imports 
-import "http://www.polarsys.org/capella/core/fa/1.4.0"
-import "http://www.polarsys.org/capella/core/interaction/1.4.0"
+import "http://www.polarsys.org/capella/core/fa/5.0.0"
+import "http://www.polarsys.org/capella/core/interaction/5.0.0"
 
 // End of user code
 

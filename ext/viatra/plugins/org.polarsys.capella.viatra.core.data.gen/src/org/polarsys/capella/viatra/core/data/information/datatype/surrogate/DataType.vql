@@ -15,12 +15,12 @@
 
 package org.polarsys.capella.viatra.core.data.information.datatype.surrogate
 
-import "http://www.polarsys.org/capella/core/information/datatype/1.4.0"
+import "http://www.polarsys.org/capella/core/information/datatype/5.0.0"
 
 // Start of user code for imports 
-import "http://www.polarsys.org/capella/core/information/datavalue/1.4.0"
-import "http://www.polarsys.org/capella/core/information/1.4.0"
-import "http://www.polarsys.org/capella/common/core/1.4.0"
+import "http://www.polarsys.org/capella/core/information/datavalue/5.0.0"
+import "http://www.polarsys.org/capella/core/information/5.0.0"
+import "http://www.polarsys.org/capella/common/core/5.0.0"
 
 // End of user code
 

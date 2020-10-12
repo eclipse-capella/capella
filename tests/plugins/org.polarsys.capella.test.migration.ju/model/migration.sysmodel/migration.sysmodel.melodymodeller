@@ -3,28 +3,28 @@
 <!--Capella_Version_1.4.2-->
 <org.polarsys.capella.core.data.capellamodeller:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns:libraries="http://www.polarsys.org/capella/common/libraries/1.4.0" xmlns:org.eclipse.emf.diffmerge.patterns.core="http://org.eclipse.com/emf/diffmerge/patterns/core/1.0.0"
+    xmlns:libraries="http://www.polarsys.org/capella/common/libraries/5.0.0" xmlns:org.eclipse.emf.diffmerge.patterns.core="http://org.eclipse.com/emf/diffmerge/patterns/core/1.0.0"
     xmlns:org.eclipse.emf.diffmerge.patterns.support="http://org.eclipse.emf.patterns/support/1.0.0"
     xmlns:org.eclipse.emf.diffmerge.patterns.templates="http://org.eclipse.com/emf/diffmerge/patterns/templates/1.0.0"
-    xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/1.4.0"
-    xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/1.4.0"
-    xmlns:org.polarsys.capella.core.data.capellamodeller="http://www.polarsys.org/capella/core/modeller/1.4.0"
-    xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/1.4.0"
-    xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/1.4.0"
-    xmlns:org.polarsys.capella.core.data.epbs="http://www.polarsys.org/capella/core/epbs/1.4.0"
-    xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/1.4.0"
-    xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/1.4.0"
-    xmlns:org.polarsys.capella.core.data.information.communication="http://www.polarsys.org/capella/core/information/communication/1.4.0"
-    xmlns:org.polarsys.capella.core.data.information.datatype="http://www.polarsys.org/capella/core/information/datatype/1.4.0"
-    xmlns:org.polarsys.capella.core.data.information.datavalue="http://www.polarsys.org/capella/core/information/datavalue/1.4.0"
-    xmlns:org.polarsys.capella.core.data.interaction="http://www.polarsys.org/capella/core/interaction/1.4.0"
-    xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/1.4.0"
-    xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/1.4.0"
-    xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/1.4.0"
-    xmlns:org.polarsys.capella.core.data.pa.deployment="http://www.polarsys.org/capella/core/pa/deployment/1.4.0"
-    xmlns:org.polarsys.capella.core.data.requirement="http://www.polarsys.org/capella/core/requirement/1.4.0"
+    xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/5.0.0"
+    xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/5.0.0"
+    xmlns:org.polarsys.capella.core.data.capellamodeller="http://www.polarsys.org/capella/core/modeller/5.0.0"
+    xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/5.0.0"
+    xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/5.0.0"
+    xmlns:org.polarsys.capella.core.data.epbs="http://www.polarsys.org/capella/core/epbs/5.0.0"
+    xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/5.0.0"
+    xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/5.0.0"
+    xmlns:org.polarsys.capella.core.data.information.communication="http://www.polarsys.org/capella/core/information/communication/5.0.0"
+    xmlns:org.polarsys.capella.core.data.information.datatype="http://www.polarsys.org/capella/core/information/datatype/5.0.0"
+    xmlns:org.polarsys.capella.core.data.information.datavalue="http://www.polarsys.org/capella/core/information/datavalue/5.0.0"
+    xmlns:org.polarsys.capella.core.data.interaction="http://www.polarsys.org/capella/core/interaction/5.0.0"
+    xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/5.0.0"
+    xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/5.0.0"
+    xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/5.0.0"
+    xmlns:org.polarsys.capella.core.data.pa.deployment="http://www.polarsys.org/capella/core/pa/deployment/5.0.0"
+    xmlns:org.polarsys.capella.core.data.requirement="http://www.polarsys.org/capella/core/requirement/5.0.0"
     xmlns:org.polarsys.kitalpha.patterns.emde="http://www.polarsys.org/kitalpha/patterns/emde/1.0.0"
-    xmlns:re="http://www.polarsys.org/capella/common/re/1.4.0" id="ebd6a4dd-f1d3-4b5f-bb8b-c5ff6c5cfed2"
+    xmlns:re="http://www.polarsys.org/capella/common/re/5.0.0" id="ebd6a4dd-f1d3-4b5f-bb8b-c5ff6c5cfed2"
     name="migration">
   <ownedExtensions xsi:type="org.polarsys.kitalpha.patterns.emde:EmdePatternInstanceSet"
       id="be8fe691-00a7-4067-ae2a-10e3ef320e03">
@@ -39,7 +39,7 @@
             roleId="6fff5224-5a16-4101-af29-06d825236669"/>
         <location xsi:type="org.eclipse.emf.diffmerge.patterns.support:ReferenceLocation"
             id="7c18a2cf-c300-4b5a-a9f9-af958f7ee77a" elementId="e6f8a038-0fc9-48b7-9910-2f665c9fad74"
-            reference="ecore:EReference http://www.polarsys.org/capella/core/core/1.4.0#//Classifier/ownedFeatures"/>
+            reference="ecore:EReference http://www.polarsys.org/capella/core/core/5.0.0#//Classifier/ownedFeatures"/>
       </roleBindings>
       <roleBindings xsi:type="org.eclipse.emf.diffmerge.patterns.core:PatternRoleBinding"
           id="33dc4b1b-6856-45cc-9229-82bc7c7c728b">
@@ -1366,7 +1366,7 @@
             roleId="6fff5224-5a16-4101-af29-06d825236669"/>
         <location xsi:type="org.eclipse.emf.diffmerge.patterns.support:ReferenceLocation"
             id="845775c2-413b-4b2b-80c6-3cb59b49f6db" elementId="e6f8a038-0fc9-48b7-9910-2f665c9fad74"
-            reference="ecore:EReference http://www.polarsys.org/capella/core/core/1.4.0#//Classifier/ownedFeatures"/>
+            reference="ecore:EReference http://www.polarsys.org/capella/core/core/5.0.0#//Classifier/ownedFeatures"/>
       </roleBindings>
       <patternVersion xsi:type="org.eclipse.emf.diffmerge.patterns.core:PatternVersion"
           id="6c836d89-79b5-4c61-9f20-8ca6ab811897" version="1.0">
@@ -2679,7 +2679,7 @@
             roleId="c140d0ba-4044-4e82-8b8b-123182883117"/>
         <location xsi:type="org.eclipse.emf.diffmerge.patterns.support:ReferenceLocation"
             id="49541c96-6dd7-4f20-9b37-0912adf3301d" elementId="e0b20cc0-2fd6-4e26-bf20-0e6b1a090d01"
-            reference="ecore:EReference http://www.polarsys.org/capella/core/core/1.4.0#//Classifier/ownedFeatures"/>
+            reference="ecore:EReference http://www.polarsys.org/capella/core/core/5.0.0#//Classifier/ownedFeatures"/>
       </roleBindings>
       <roleBindings xsi:type="org.eclipse.emf.diffmerge.patterns.core:PatternRoleBinding"
           id="717a4426-28b6-4922-b783-1334d9aec35b">
@@ -2689,7 +2689,7 @@
             roleId="47297ad5-57d9-4be8-ba54-6ac4ecf56723"/>
         <location xsi:type="org.eclipse.emf.diffmerge.patterns.support:ReferenceLocation"
             id="af178598-6f62-4546-b456-79c01a545b96" elementId="e0b20cc0-2fd6-4e26-bf20-0e6b1a090d01"
-            reference="ecore:EReference http://www.polarsys.org/capella/core/core/1.4.0#//Classifier/ownedFeatures"/>
+            reference="ecore:EReference http://www.polarsys.org/capella/core/core/5.0.0#//Classifier/ownedFeatures"/>
       </roleBindings>
       <roleBindings xsi:type="org.eclipse.emf.diffmerge.patterns.core:PatternRoleBinding"
           id="d83ff687-cb96-4802-8904-9c2839fe8c25">
@@ -2699,7 +2699,7 @@
             roleId="53f998aa-470e-4270-911c-c4f48264eda1"/>
         <location xsi:type="org.eclipse.emf.diffmerge.patterns.support:ReferenceLocation"
             id="d2ffdc3a-d4a6-40c7-bce0-91c4b069452c" elementId="e0b20cc0-2fd6-4e26-bf20-0e6b1a090d01"
-            reference="ecore:EReference http://www.polarsys.org/capella/core/pa/1.4.0#//PhysicalComponent/ownedPhysicalComponents"/>
+            reference="ecore:EReference http://www.polarsys.org/capella/core/pa/5.0.0#//PhysicalComponent/ownedPhysicalComponents"/>
       </roleBindings>
       <roleBindings xsi:type="org.eclipse.emf.diffmerge.patterns.core:PatternRoleBinding"
           id="a5e8812f-7834-43b7-b615-14bea4260179">
@@ -2709,7 +2709,7 @@
             roleId="6330cf64-e758-4ff6-86da-c16bbe52b419"/>
         <location xsi:type="org.eclipse.emf.diffmerge.patterns.support:ReferenceLocation"
             id="8a6ac476-5425-4d39-872b-2a706ed989cf" elementId="e0b20cc0-2fd6-4e26-bf20-0e6b1a090d01"
-            reference="ecore:EReference http://www.polarsys.org/capella/core/pa/1.4.0#//PhysicalComponent/ownedPhysicalComponents"/>
+            reference="ecore:EReference http://www.polarsys.org/capella/core/pa/5.0.0#//PhysicalComponent/ownedPhysicalComponents"/>
       </roleBindings>
       <roleBindings xsi:type="org.eclipse.emf.diffmerge.patterns.core:PatternRoleBinding"
           id="cf04c9cb-2d4e-4d55-99d7-6dc311beae44">
@@ -2719,7 +2719,7 @@
             roleId="ed0e028d-5292-4675-a5b3-967f891786ca"/>
         <location xsi:type="org.eclipse.emf.diffmerge.patterns.support:ReferenceLocation"
             id="7ecd34b4-a3e2-4f04-aadc-d122a68de709" elementId="250d520b-e135-4089-97fc-83d502dd6d44"
-            reference="ecore:EReference http://www.polarsys.org/capella/core/fa/1.4.0#//AbstractFunction/ownedFunctions"/>
+            reference="ecore:EReference http://www.polarsys.org/capella/core/fa/5.0.0#//AbstractFunction/ownedFunctions"/>
       </roleBindings>
       <patternVersion xsi:type="org.eclipse.emf.diffmerge.patterns.core:PatternVersion"
           id="dc735bcb-56ba-4a3a-91f4-3780294103a3" version="1.0">
@@ -2916,7 +2916,7 @@
             roleId="75a6a446-bb86-471e-9224-abda4d3fdae2"/>
         <location xsi:type="org.eclipse.emf.diffmerge.patterns.support:ReferenceLocation"
             id="89981c09-fc9b-4c0a-8a60-cd008767cc86" elementId="e0b20cc0-2fd6-4e26-bf20-0e6b1a090d01"
-            reference="ecore:EReference http://www.polarsys.org/capella/core/core/1.4.0#//Classifier/ownedFeatures"/>
+            reference="ecore:EReference http://www.polarsys.org/capella/core/core/5.0.0#//Classifier/ownedFeatures"/>
       </roleBindings>
       <roleBindings xsi:type="org.eclipse.emf.diffmerge.patterns.core:PatternRoleBinding"
           id="74cee7c9-a569-46bd-b369-d31623056716">
@@ -2926,7 +2926,7 @@
             roleId="a71f87c2-fa27-466b-adc6-ee2b144400ac"/>
         <location xsi:type="org.eclipse.emf.diffmerge.patterns.support:ReferenceLocation"
             id="4d15f681-07de-4170-8d9b-e12c750c6a21" elementId="e0b20cc0-2fd6-4e26-bf20-0e6b1a090d01"
-            reference="ecore:EReference http://www.polarsys.org/capella/core/core/1.4.0#//Classifier/ownedFeatures"/>
+            reference="ecore:EReference http://www.polarsys.org/capella/core/core/5.0.0#//Classifier/ownedFeatures"/>
       </roleBindings>
       <roleBindings xsi:type="org.eclipse.emf.diffmerge.patterns.core:PatternRoleBinding"
           id="589b675b-a42a-4116-b901-6ae93287728b">
@@ -2936,7 +2936,7 @@
             roleId="d5ea35b1-64b4-48ce-a106-cfe314bf02da"/>
         <location xsi:type="org.eclipse.emf.diffmerge.patterns.support:ReferenceLocation"
             id="f8c26ec2-00f5-4d63-9cd2-7c2c8a43d72a" elementId="e0b20cc0-2fd6-4e26-bf20-0e6b1a090d01"
-            reference="ecore:EReference http://www.polarsys.org/capella/core/pa/1.4.0#//PhysicalComponent/ownedPhysicalComponents"/>
+            reference="ecore:EReference http://www.polarsys.org/capella/core/pa/5.0.0#//PhysicalComponent/ownedPhysicalComponents"/>
       </roleBindings>
       <roleBindings xsi:type="org.eclipse.emf.diffmerge.patterns.core:PatternRoleBinding"
           id="4925081f-ce79-42cd-bd8f-671585fd0b58">
@@ -2946,7 +2946,7 @@
             roleId="46552856-cbf8-4c0f-9377-1f770341351b"/>
         <location xsi:type="org.eclipse.emf.diffmerge.patterns.support:ReferenceLocation"
             id="1612becd-5dcc-45e3-b190-3f914a8f861d" elementId="3bb6744d-d92e-4588-b906-35ce65f0448b"
-            reference="ecore:EReference http://www.polarsys.org/capella/core/pa/1.3.0#//PhysicalComponentPkg/ownedComponents"/>
+            reference="ecore:EReference http://www.polarsys.org/capella/core/pa/5.0.0#//PhysicalComponentPkg/ownedComponents"/>
       </roleBindings>
       <roleBindings xsi:type="org.eclipse.emf.diffmerge.patterns.core:PatternRoleBinding"
           id="aa86a514-5429-4a05-b2a5-d69fe419a133">
@@ -2958,10 +2958,10 @@
             id="28c42a62-aad6-42bb-816f-ec74e2426b5b">
           <ownedLocations xsi:type="org.eclipse.emf.diffmerge.patterns.support:ReferenceLocation"
               id="20cdc3a7-553c-49eb-aa50-b7156592a47b" elementId="250d520b-e135-4089-97fc-83d502dd6d44"
-              reference="ecore:EReference http://www.polarsys.org/capella/core/fa/1.4.0#//AbstractFunction/ownedFunctions"/>
+              reference="ecore:EReference http://www.polarsys.org/capella/core/fa/5.0.0#//AbstractFunction/ownedFunctions"/>
           <ownedLocations xsi:type="org.eclipse.emf.diffmerge.patterns.support:ReferenceLocation"
               id="504f5850-a1f3-4bcc-9ff9-ae6cc776bb85" elementId="ae3a003c-8d81-4fc2-a31d-67d9e5f5de72"
-              reference="ecore:EReference http://www.polarsys.org/capella/core/fa/1.4.0#//AbstractFunction/ownedFunctions"/>
+              reference="ecore:EReference http://www.polarsys.org/capella/core/fa/5.0.0#//AbstractFunction/ownedFunctions"/>
         </location>
       </roleBindings>
       <patternVersion xsi:type="org.eclipse.emf.diffmerge.patterns.core:PatternVersion"
@@ -3595,10 +3595,10 @@
             id="aae65833-cead-49c1-b32a-7b301b17de01">
           <ownedLocations xsi:type="org.eclipse.emf.diffmerge.patterns.support:ReferenceLocation"
               id="bf21f9a2-4ac7-4444-bd32-ba2bfb87381d" elementId="59a80d7b-28df-4442-88ed-45ef7337173b"
-              reference="ecore:EReference http://www.polarsys.org/capella/core/fa/1.4.0#//AbstractFunction/ownedFunctions"/>
+              reference="ecore:EReference http://www.polarsys.org/capella/core/fa/5.0.0#//AbstractFunction/ownedFunctions"/>
           <ownedLocations xsi:type="org.eclipse.emf.diffmerge.patterns.support:ReferenceLocation"
               id="c77409ca-bddc-4bc5-abdc-ef8690e97a05" elementId="59a80d7b-28df-4442-88ed-45ef7337173b"
-              reference="ecore:EReference http://www.polarsys.org/capella/core/fa/1.4.0#//AbstractFunction/ownedFunctions"/>
+              reference="ecore:EReference http://www.polarsys.org/capella/core/fa/5.0.0#//AbstractFunction/ownedFunctions"/>
         </location>
       </roleBindings>
       <roleBindings xsi:type="org.eclipse.emf.diffmerge.patterns.core:PatternRoleBinding"
@@ -3611,10 +3611,10 @@
             id="066d2954-537d-460f-a7f3-2d8b430c224c">
           <ownedLocations xsi:type="org.eclipse.emf.diffmerge.patterns.support:ReferenceLocation"
               id="4eac4148-a97e-4e81-ad76-8ef1e6656430" elementId="e2edfd0a-2150-4c41-b6f2-69ada57bf6b5"
-              reference="ecore:EReference http://www.polarsys.org/capella/core/core/1.4.0#//Classifier/ownedFeatures"/>
+              reference="ecore:EReference http://www.polarsys.org/capella/core/core/5.0.0#//Classifier/ownedFeatures"/>
           <ownedLocations xsi:type="org.eclipse.emf.diffmerge.patterns.support:ReferenceLocation"
               id="12b3dd56-79ff-4df7-a197-5d37b4e708ef" elementId="e2edfd0a-2150-4c41-b6f2-69ada57bf6b5"
-              reference="ecore:EReference http://www.polarsys.org/capella/core/core/1.4.0#//Classifier/ownedFeatures"/>
+              reference="ecore:EReference http://www.polarsys.org/capella/core/core/5.0.0#//Classifier/ownedFeatures"/>
         </location>
       </roleBindings>
       <patternVersion xsi:type="org.eclipse.emf.diffmerge.patterns.core:PatternVersion"
@@ -3799,7 +3799,7 @@
             roleId="51247683-5f7c-43b8-8641-7c317bae656c"/>
         <location xsi:type="org.eclipse.emf.diffmerge.patterns.support:ReferenceLocation"
             id="b00030bd-f3ed-406e-8012-06d451b09ab4" elementId="e2edfd0a-2150-4c41-b6f2-69ada57bf6b5"
-            reference="ecore:EReference http://www.polarsys.org/capella/core/core/1.4.0#//Classifier/ownedFeatures"/>
+            reference="ecore:EReference http://www.polarsys.org/capella/core/core/5.0.0#//Classifier/ownedFeatures"/>
       </roleBindings>
       <patternVersion xsi:type="org.eclipse.emf.diffmerge.patterns.core:PatternVersion"
           id="1654c66a-d0c0-407c-bceb-cf8a49c182fd" version="1.0">

@@ -625,7 +625,7 @@ public class CapellacoreItemProviderAdapterFactory extends CapellacoreAdapterFac
 			@Override
 			public Object caseModelElement(ModelElement object) {
 				// begin-extension-code
-				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/core/1.4.0")) { //$NON-NLS-1$
+				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/core/5.0.0")) { //$NON-NLS-1$
 					return null;				
 				}
 				// end-extension-code
@@ -652,7 +652,7 @@ public class CapellacoreItemProviderAdapterFactory extends CapellacoreAdapterFac
 			@Override
 			public Object caseAbstractParameterSet(AbstractParameterSet object) {
 				// begin-extension-code
-				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/core/1.4.0")) { //$NON-NLS-1$
+				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/core/5.0.0")) { //$NON-NLS-1$
 					return null;				
 				}
 				// end-extension-code
@@ -752,7 +752,7 @@ public class CapellacoreItemProviderAdapterFactory extends CapellacoreAdapterFac
 			@Override
 			public Object caseAbstractAction(AbstractAction object) {
 				// begin-extension-code
-				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/core/1.4.0")) { //$NON-NLS-1$
+				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/core/5.0.0")) { //$NON-NLS-1$
 					return null;				
 				}
 				// end-extension-code

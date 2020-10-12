@@ -2,8 +2,8 @@
 
 <!--Capella_Version_5.0.0-->
 <org.polarsys.capella.core.data.la:LogicalFunctionPkg xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/1.4.0"
-    xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/1.4.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/5.0.0"
+    xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/5.0.0"
     id="ea8f951d-11c3-4265-ae7e-a18cb13a97bd"
     name="LogicalFunctionPkg 1">
   <ownedLogicalFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"

@@ -2,7 +2,7 @@
 
 <!--Capella_Version_5.0.0-->
 <org.polarsys.capella.core.data.ctx:Capability xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/1.4.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/5.0.0"
     id="c4f350d3-4e63-4599-ac6d-56f293c55e99"
     name="Capability_Fragmented">
   <ownedCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:CapabilityInvolvement"

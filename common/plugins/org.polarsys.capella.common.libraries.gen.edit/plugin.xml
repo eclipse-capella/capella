@@ -20,7 +20,7 @@
 <!--@generated-->
   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <!-- @generated libraries -->
-      <factory class="org.polarsys.capella.common.libraries.provider.LibrariesItemProviderAdapterFactory" supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider                org.eclipse.emf.edit.provider.IStructuredItemContentProvider                org.eclipse.emf.edit.provider.ITreeItemContentProvider                org.eclipse.emf.edit.provider.IItemLabelProvider                org.eclipse.emf.edit.provider.IItemPropertySource" uri="http://www.polarsys.org/capella/common/libraries/1.4.0"/>
+      <factory class="org.polarsys.capella.common.libraries.provider.LibrariesItemProviderAdapterFactory" supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider                org.eclipse.emf.edit.provider.IStructuredItemContentProvider                org.eclipse.emf.edit.provider.ITreeItemContentProvider                org.eclipse.emf.edit.provider.IItemLabelProvider                org.eclipse.emf.edit.provider.IItemPropertySource" uri="http://www.polarsys.org/capella/common/libraries/5.0.0"/>
    </extension>
 
    
