@@ -349,7 +349,6 @@ public interface Component extends Block, Classifier, InterfaceAllocator, Commun
 	 * @see org.polarsys.capella.core.data.cs.CsPackage#getComponent_OwnedComponentRealizations()
 	 * @model containment="true" resolveProxies="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Component Realization links owned by this Component' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
