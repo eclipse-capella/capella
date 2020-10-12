@@ -13,18 +13,20 @@
 package org.polarsys.capella.test.migration.ju.testcases.basic;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.diffmerge.api.Role;
-import org.eclipse.emf.diffmerge.api.diff.IDifference;
 import org.eclipse.emf.diffmerge.api.scopes.IEditableModelScope;
 import org.eclipse.emf.diffmerge.diffdata.EAttributeValuePresence;
 import org.eclipse.emf.diffmerge.diffdata.impl.EComparisonImpl;
+import org.eclipse.emf.diffmerge.generic.api.Role;
+import org.eclipse.emf.diffmerge.generic.api.diff.IDifference;
 import org.eclipse.emf.diffmerge.impl.scopes.FragmentedModelScope;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -106,10 +108,10 @@ public class FunctionalChainNonRegressionTest extends BasicTestCase {
    * @param projectName
    *          the project name
    */
-  public void assertOnlyProjectNameDifference(List<IDifference> differences, String projectName) {
+  public void assertOnlyProjectNameDifference(Collection<IDifference<EObject>> differences, String projectName) {
     assertEquals(1, differences.size());
 
-    IDifference difference = differences.get(0);
+    IDifference<EObject> difference = differences.iterator().next();
     assertTrue(difference instanceof EAttributeValuePresence);
     assertEquals(((EAttributeValuePresence) difference).getValue(), projectName);
   }

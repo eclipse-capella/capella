@@ -17,9 +17,9 @@ import java.util.Collection;
 import java.util.HashSet;
 
 import org.eclipse.core.runtime.ListenerList;
-import org.eclipse.emf.diffmerge.api.IMapping;
-import org.eclipse.emf.diffmerge.api.IMatch;
-import org.eclipse.emf.diffmerge.api.Role;
+import org.eclipse.emf.diffmerge.diffdata.EMapping;
+import org.eclipse.emf.diffmerge.diffdata.EMatch;
+import org.eclipse.emf.diffmerge.generic.api.Role;
 import org.eclipse.emf.diffmerge.impl.scopes.FilteredModelScope;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -55,7 +55,7 @@ public class SparseModelScope extends FilteredModelScope {
      * @param mapping
      *          - the underlying diffmerge mapping
      */
-    public void attachContainment(EObject toAttach, EObject source, Role targetRole, IMapping mapping);
+    public void attachContainment(EObject toAttach, EObject source, Role targetRole, EMapping mapping);
 
   }
 
@@ -78,9 +78,9 @@ public class SparseModelScope extends FilteredModelScope {
     attachHandler = (handler == null ? new NullHandler() : handler);
   }
 
-  private IMapping mapping;
+  private EMapping mapping;
 
-  public void setMapping(IMapping mapping) {
+  public void setMapping(EMapping mapping) {
     this.mapping = mapping;
   }
 
@@ -95,7 +95,7 @@ public class SparseModelScope extends FilteredModelScope {
     if (element.eContainer() == null) {
       EObject origin = null;
       Role targetRole = Role.REFERENCE;
-      IMatch match = mapping.getMatchFor(element, targetRole);
+      EMatch match = mapping.getMatchFor(element, targetRole);
       if (match != null) {
         origin = match.get(Role.TARGET);
       } else {
@@ -135,7 +135,7 @@ public class SparseModelScope extends FilteredModelScope {
   // the default attach handler does nothing
   private static class NullHandler implements AttachHandler {
     @Override
-    public void attachContainment(EObject toAttach, EObject source, Role role, IMapping mapping) {
+    public void attachContainment(EObject toAttach, EObject source, Role role, EMapping mapping) {
       // this does nothing.
     }
   }

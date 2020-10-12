@@ -12,8 +12,9 @@
  *******************************************************************************/
 package org.polarsys.capella.core.transition.common.handlers.merge;
 
-import org.eclipse.emf.diffmerge.api.diff.IDifference;
-import org.eclipse.emf.diffmerge.api.diff.IMergeableDifference;
+import org.eclipse.emf.diffmerge.generic.api.diff.IDifference;
+import org.eclipse.emf.diffmerge.generic.api.diff.IMergeableDifference;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
@@ -120,12 +121,12 @@ public class CategoryFilter implements ICategoryItem {
   }
 
   @Override
-  public boolean covers(IDifference difference) {
+  public boolean covers(IDifference<EObject> difference) {
     return false;
   }
 
   @Override
-  public void setDependencies(IMergeableDifference difference) {
+  public void setDependencies(IMergeableDifference<EObject> difference) {
     // Nothing
   }
 

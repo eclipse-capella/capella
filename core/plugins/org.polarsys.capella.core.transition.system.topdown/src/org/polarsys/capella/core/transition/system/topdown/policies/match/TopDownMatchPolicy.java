@@ -15,9 +15,8 @@ package org.polarsys.capella.core.transition.system.topdown.policies.match;
 import java.util.Collection;
 import java.util.HashSet;
 
-import org.eclipse.emf.diffmerge.api.scopes.IModelScope;
+import org.eclipse.emf.diffmerge.generic.api.scopes.ITreeDataScope;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
@@ -31,7 +30,6 @@ import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.oa.ActivityAllocation;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ComponentExchangeExt;
-import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.traceability.ITraceabilityHandler;
 import org.polarsys.capella.core.transition.common.handlers.traceability.ITraceabilityTraceHandler;
@@ -55,7 +53,7 @@ public class TopDownMatchPolicy
   }
 
   @Override
-  public Comparable<?> getMatchID(EObject element, IModelScope scope) {
+  public Comparable<?> getMatchID(EObject element, ITreeDataScope<EObject> scope) {
 
     IContext context = getContext();
 
@@ -101,7 +99,7 @@ public class TopDownMatchPolicy
    * @param scope
    * @param handler
    */
-  private String getTraceIdentifier(EObject element, IContext context, IModelScope scope,
+  private String getTraceIdentifier(EObject element, IContext context, ITreeDataScope<EObject> scope,
       ITraceabilityTraceHandler handler) {
     IContext icontext = getContext();
     String ID = "";
@@ -124,7 +122,7 @@ public class TopDownMatchPolicy
    * @param handler
    * @return
    */
-  private String getIdentifier(EObject element, IContext context, IModelScope scope, ITraceabilityHandler handler) {
+  private String getIdentifier(EObject element, IContext context, ITreeDataScope<EObject> scope, ITraceabilityHandler handler) {
 
     String ID = "";
 

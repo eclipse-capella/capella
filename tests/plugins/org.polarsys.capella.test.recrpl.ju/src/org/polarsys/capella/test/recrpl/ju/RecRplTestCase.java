@@ -20,7 +20,7 @@ import java.util.Optional;
 
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.emf.diffmerge.api.diff.IDifference;
+import org.eclipse.emf.diffmerge.generic.api.diff.IDifference;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.session.Session;
@@ -248,7 +248,7 @@ public abstract class RecRplTestCase extends BasicTestCase {
     command.addSharedParameter(
         new GenericParameter<IHandler>(ITransitionConstants.MERGE_DIFFERENCES_HANDLER, new DefaultMergeHandler(true) {
           @Override
-          public boolean isFiltered(IDifference difference) {
+          public boolean isFiltered(IDifference<EObject> difference) {
             return true;
           }
         }, "Merge")); //$NON-NLS-1$

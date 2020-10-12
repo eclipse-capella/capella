@@ -13,7 +13,7 @@
 
 package org.polarsys.capella.common.re.policies.merge;
 
-import org.eclipse.emf.diffmerge.api.scopes.IFeaturedModelScope;
+import org.eclipse.emf.diffmerge.generic.api.scopes.ITreeDataScope;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.re.constants.IReConstants;
 import org.polarsys.capella.common.re.handlers.replicable.ReplicableElementHandlerHelper;
@@ -50,12 +50,12 @@ public class ReMergePolicy extends org.polarsys.capella.core.transition.common.p
    * {@inheritDoc}
    */
   @Override
-  public boolean copyExtrinsicIDs(IFeaturedModelScope sourceScope, IFeaturedModelScope targetScope) {
+  protected boolean copyExtrinsicIDs(ITreeDataScope<EObject> sourceScope, ITreeDataScope<EObject> targetScope) {
     return false;
   }
-
+  
   @Override
-  protected boolean requiresNewIntrinsicID(EObject element, IFeaturedModelScope scope) {
+  protected boolean requiresNewIntrinsicID(EObject element, ITreeDataScope<EObject> scope) {
     return true;
   }
 

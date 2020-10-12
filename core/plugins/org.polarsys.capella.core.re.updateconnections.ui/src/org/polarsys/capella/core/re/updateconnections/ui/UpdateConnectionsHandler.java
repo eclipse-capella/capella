@@ -25,9 +25,9 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.diffmerge.api.IMatch;
-import org.eclipse.emf.diffmerge.api.Role;
 import org.eclipse.emf.diffmerge.diffdata.EComparison;
+import org.eclipse.emf.diffmerge.generic.api.IMatch;
+import org.eclipse.emf.diffmerge.generic.api.Role;
 import org.eclipse.emf.diffmerge.ui.util.DiffMergeDialog;
 import org.eclipse.emf.diffmerge.ui.viewers.ComparisonSideViewer;
 import org.eclipse.emf.diffmerge.ui.viewers.ComparisonViewer;
@@ -181,7 +181,7 @@ public class UpdateConnectionsHandler extends AbstractHandler {
       mainViewer.getInnerViewer().addFilter(new ViewerFilter() {
         @Override
         public boolean select(Viewer viewer, Object parentElement, Object element) {
-          IMatch match = (IMatch) element;
+          IMatch<EObject> match = (IMatch<EObject>) element;
           EMFDiffNode node = (EMFDiffNode) viewer.getInput();
           SparseModelScope referenceScope = (SparseModelScope) node.getActualComparison().getReferenceScope();
           SparseModelScope targetScope = (SparseModelScope) node.getActualComparison().getTargetScope();

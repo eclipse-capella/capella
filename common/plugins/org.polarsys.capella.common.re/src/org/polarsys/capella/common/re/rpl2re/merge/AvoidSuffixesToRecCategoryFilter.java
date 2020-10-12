@@ -15,9 +15,9 @@ package org.polarsys.capella.common.re.rpl2re.merge;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.emf.diffmerge.api.Role;
-import org.eclipse.emf.diffmerge.api.diff.IAttributeValuePresence;
-import org.eclipse.emf.diffmerge.api.diff.IDifference;
+import org.eclipse.emf.diffmerge.diffdata.EAttributeValuePresence;
+import org.eclipse.emf.diffmerge.generic.api.Role;
+import org.eclipse.emf.diffmerge.generic.api.diff.IDifference;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.polarsys.capella.common.re.CatalogElement;
@@ -40,7 +40,7 @@ public class AvoidSuffixesToRecCategoryFilter extends CategoryFilter {
   }
 
   @Override
-  public boolean covers(IDifference difference) {
+  public boolean covers(IDifference<EObject> difference) {
     // This rule is only applied when :
     // - Update REC from RPL
     // - merging from REFERENCE to TARGET
@@ -50,8 +50,8 @@ public class AvoidSuffixesToRecCategoryFilter extends CategoryFilter {
       return false;
     }
 
-    if (difference instanceof IAttributeValuePresence) {
-      IAttributeValuePresence diff = (IAttributeValuePresence) difference;
+    if (difference instanceof EAttributeValuePresence) {
+      EAttributeValuePresence diff = (EAttributeValuePresence) difference;
       EObject sourceElement = diff.getElementMatch().get(Role.REFERENCE);
 
       if (sourceElement != null) {
@@ -60,7 +60,7 @@ public class AvoidSuffixesToRecCategoryFilter extends CategoryFilter {
 
         // This filter only applies on the suffixable feature
         EStructuralFeature feature = AttributesHandlerHelper.getInstance(context).getSuffixableFeature(sourceElement, context);
-        if ((((IAttributeValuePresence) difference).getFeature() == null) || !((IAttributeValuePresence) difference).getFeature().equals(feature)) {
+        if ((diff.getFeature() == null) || !(diff.getFeature().equals(feature))) {
           return false;
         }
 

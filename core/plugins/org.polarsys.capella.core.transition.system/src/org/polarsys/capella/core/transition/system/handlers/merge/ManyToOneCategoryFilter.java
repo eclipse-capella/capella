@@ -15,11 +15,10 @@ package org.polarsys.capella.core.transition.system.handlers.merge;
 import java.util.Collection;
 import java.util.HashSet;
 
-import org.eclipse.emf.diffmerge.api.IMatch;
-import org.eclipse.emf.diffmerge.api.Role;
-import org.eclipse.emf.diffmerge.api.diff.IDifference;
-import org.eclipse.emf.diffmerge.api.diff.IElementPresence;
-import org.eclipse.emf.diffmerge.api.diff.IElementRelativeDifference;
+import org.eclipse.emf.diffmerge.diffdata.EElementPresence;
+import org.eclipse.emf.diffmerge.generic.api.IMatch;
+import org.eclipse.emf.diffmerge.generic.api.Role;
+import org.eclipse.emf.diffmerge.generic.api.diff.IDifference;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.merge.CategoryFilter;
@@ -37,15 +36,15 @@ public class ManyToOneCategoryFilter extends CategoryFilter {
   }
 
   @Override
-  public boolean covers(IDifference difference) {
+  public boolean covers(IDifference<EObject> difference) {
     // We exclude the difference if the source element or one of its parent is realized by an element realizing many
     // elements
 
-    if (difference instanceof IElementPresence) {
-      IElementPresence current = (IElementPresence) difference;
+    if (difference instanceof EElementPresence) {
+      EElementPresence current = (EElementPresence) difference;
 
       while (current != null) {
-        EObject container = ((IElementRelativeDifference) current).getElementMatch().get(Role.REFERENCE);
+        EObject container = current.getElementMatch().get(Role.REFERENCE);
         if (container == null) {
           break;
         }
@@ -67,10 +66,10 @@ public class ManyToOneCategoryFilter extends CategoryFilter {
           return true;
         }
 
-        IMatch containerMatch = current.getComparison().getMapping().getMatchFor(container.eContainer(),
+        IMatch<EObject> containerMatch = current.getComparison().getMapping().getMatchFor(container.eContainer(),
             Role.REFERENCE);
         if (containerMatch != null) {
-          current = containerMatch.getElementPresenceDifference();
+          current = (EElementPresence) containerMatch.getElementPresenceDifference();
         } else {
           current = null;
         }

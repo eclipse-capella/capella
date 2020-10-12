@@ -16,13 +16,14 @@ import java.util.Collection;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.emf.diffmerge.api.Role;
-import org.eclipse.emf.diffmerge.api.diff.IDifference;
+import org.eclipse.emf.diffmerge.generic.api.Role;
+import org.eclipse.emf.diffmerge.generic.api.diff.IDifference;
 import org.eclipse.emf.diffmerge.ui.util.DiffMergeDialog;
 import org.eclipse.emf.diffmerge.ui.viewers.AbstractComparisonViewer;
 import org.eclipse.emf.diffmerge.ui.viewers.ComparisonViewer;
 import org.eclipse.emf.diffmerge.ui.viewers.DefaultUserProperties;
 import org.eclipse.emf.diffmerge.ui.viewers.EMFDiffNode;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.util.IPropertyChangeListener;
@@ -41,8 +42,8 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 public class MergeUIDifferencesHandler extends DefaultMergeHandler {
 
   @Override
-  public IStatus processDifferences(IContext context, Collection<IDifference> diffSource,
-      Collection<IDifference> diffTarget) {
+  public IStatus processDifferences(IContext context, Collection<IDifference<EObject>> diffSource,
+      Collection<IDifference<EObject>> diffTarget) {
     MergeEMFDiffNode diffNode = createDiffNode(context);
     return displayDifferences(context, diffNode);
   }

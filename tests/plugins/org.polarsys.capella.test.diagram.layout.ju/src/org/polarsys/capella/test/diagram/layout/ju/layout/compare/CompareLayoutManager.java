@@ -27,10 +27,12 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.diffmerge.api.Role;
-import org.eclipse.emf.diffmerge.api.diff.IAttributeValuePresence;
-import org.eclipse.emf.diffmerge.api.diff.IDifference;
+import org.eclipse.emf.diffmerge.diffdata.EAttributeValuePresence;
+import org.eclipse.emf.diffmerge.diffdata.EComparison;
 import org.eclipse.emf.diffmerge.diffdata.impl.EComparisonImpl;
+import org.eclipse.emf.diffmerge.generic.api.Role;
+import org.eclipse.emf.diffmerge.generic.api.diff.IAttributeValuePresence;
+import org.eclipse.emf.diffmerge.generic.api.diff.IDifference;
 import org.eclipse.emf.diffmerge.impl.policies.DefaultMergePolicy;
 import org.eclipse.emf.diffmerge.impl.scopes.RootedModelScope;
 import org.eclipse.emf.diffmerge.ui.util.DiffMergeDialog;
@@ -76,7 +78,6 @@ import org.junit.Assert;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.ui.toolkit.viewers.menu.ModalContextMenuExtender;
-import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.shared.id.handler.IdManager;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
 import org.polarsys.capella.test.diagram.layout.ju.layout.DiagramLayout;
@@ -509,21 +510,21 @@ public class CompareLayoutManager {
 
   public void analysis(SessionLayout current, SessionLayout persisted) {
 
-    EComparisonImpl comparison = compare(current, persisted);
+    EComparison comparison = compare(current, persisted);
 
-    List<IDifference> diffs = comparison.getDifferences(Role.REFERENCE);
-    List<IDifference> diffs2 = comparison.getDifferences(Role.TARGET);
-    List<IDifference> allDiffs = new ArrayList<IDifference>();
+    Collection<IDifference<EObject>> diffs = comparison.getDifferences(Role.REFERENCE);
+    Collection<IDifference<EObject>> diffs2 = comparison.getDifferences(Role.TARGET);
+    List<IDifference<EObject>> allDiffs = new ArrayList<IDifference<EObject>>();
     allDiffs.addAll(diffs);
     allDiffs.addAll(diffs2);
-    List<IDifference> allAttributeValueDiffs = new ArrayList<IDifference>();
+    List<IDifference<EObject>> allAttributeValueDiffs = new ArrayList<IDifference<EObject>>();
 
     List<EClass> locations = Arrays.asList(LayoutPackage.Literals.BOUNDS, LayoutPackage.Literals.SIZE,
         LayoutPackage.Literals.LOCATION);
 
     // 2017/08/11 OFR Limit the differences to IAttributeValuePresence only not references changes since during
     // migration references may have been changed.
-    for (IDifference difference : diffs) {
+    for (IDifference<EObject> difference : diffs) {
       if (difference instanceof IAttributeValuePresence) {
         allAttributeValueDiffs.add(difference);
       }
@@ -539,12 +540,12 @@ public class CompareLayoutManager {
 
       LayoutAdapterFactory factory = new LayoutItemProviderAdapterFactory();
 
-      for (IDifference difference : allAttributeValueDiffs) {
-        if (difference instanceof IAttributeValuePresence) {
-          if (locations.contains(((IAttributeValuePresence) difference).getFeature().eContainer())) {
+      for (IDifference<EObject> difference : allAttributeValueDiffs) {
+        if (difference instanceof EAttributeValuePresence) {
+          if (locations.contains(((EAttributeValuePresence) difference).getFeature().eContainer())) {
 
-            EObject source = ((IAttributeValuePresence) difference).getElementMatch().get(Role.REFERENCE);
-            EObject target = ((IAttributeValuePresence) difference).getElementMatch().get(Role.TARGET);
+            EObject source = ((EAttributeValuePresence) difference).getElementMatch().get(Role.REFERENCE);
+            EObject target = ((EAttributeValuePresence) difference).getElementMatch().get(Role.TARGET);
 
             DiagramLayout layout = (DiagramLayout) EcoreUtil2.getFirstContainer(source,
                 LayoutPackage.Literals.DIAGRAM_LAYOUT);

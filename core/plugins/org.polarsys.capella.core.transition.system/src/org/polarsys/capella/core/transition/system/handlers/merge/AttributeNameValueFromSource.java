@@ -12,9 +12,9 @@
  *******************************************************************************/
 package org.polarsys.capella.core.transition.system.handlers.merge;
 
-import org.eclipse.emf.diffmerge.api.Role;
-import org.eclipse.emf.diffmerge.api.diff.IAttributeValuePresence;
-import org.eclipse.emf.diffmerge.api.diff.IDifference;
+import org.eclipse.emf.diffmerge.diffdata.EAttributeValuePresence;
+import org.eclipse.emf.diffmerge.generic.api.Role;
+import org.eclipse.emf.diffmerge.generic.api.diff.IDifference;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
@@ -34,13 +34,13 @@ public class AttributeNameValueFromSource extends CategoryFilter {
   }
 
   @Override
-  public boolean covers(IDifference difference) {
-    if (difference instanceof IAttributeValuePresence) {
-      EObject source = ((IAttributeValuePresence) difference).getElementMatch().get(Role.REFERENCE);
-      EObject target = ((IAttributeValuePresence) difference).getElementMatch().get(Role.TARGET);
+  public boolean covers(IDifference<EObject> difference) {
+    if (difference instanceof EAttributeValuePresence) {
+      EObject source = ((EAttributeValuePresence) difference).getElementMatch().get(Role.REFERENCE);
+      EObject target = ((EAttributeValuePresence) difference).getElementMatch().get(Role.TARGET);
 
       if (ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME
-          .equals(((IAttributeValuePresence) difference).getFeature())) {
+          .equals(((EAttributeValuePresence) difference).getFeature())) {
         if (source instanceof AbstractNamedElement) {
           return !isUpdatableValue(source, target, ((AbstractNamedElement) target).getName(),
               ((AbstractNamedElement) source).getName());

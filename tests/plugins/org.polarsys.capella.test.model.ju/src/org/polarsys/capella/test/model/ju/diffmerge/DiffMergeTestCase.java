@@ -16,18 +16,20 @@ import static org.polarsys.capella.common.mdsofa.common.constant.ICommonConstant
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.emf.diffmerge.api.Role;
-import org.eclipse.emf.diffmerge.api.diff.IDifference;
-import org.eclipse.emf.diffmerge.api.scopes.IEditableModelScope;
+import org.eclipse.emf.diffmerge.diffdata.EComparison;
 import org.eclipse.emf.diffmerge.diffdata.EMatch;
 import org.eclipse.emf.diffmerge.diffdata.impl.EComparisonImpl;
 import org.eclipse.emf.diffmerge.diffdata.impl.EElementPresenceImpl;
+import org.eclipse.emf.diffmerge.generic.api.Role;
+import org.eclipse.emf.diffmerge.generic.api.diff.IDifference;
+import org.eclipse.emf.diffmerge.generic.api.scopes.IEditableTreeDataScope;
 import org.eclipse.emf.diffmerge.ui.specification.IModelScopeDefinition;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.session.Session;
@@ -137,12 +139,12 @@ public abstract class DiffMergeTestCase extends NonDirtyTestCase {
     method.setVerbose(false);
 
     Role leftRole = method.getLeftRole();
-    IEditableModelScope _leftScope = leftScopeSpec.createScope(method.getResourceSet(leftRole));
+    IEditableTreeDataScope _leftScope = leftScopeSpec.createScope(method.getResourceSet(leftRole));
 
-    IEditableModelScope _rightScope = method.getModelScopeDefinition(leftRole.opposite())
+    IEditableTreeDataScope _rightScope = method.getModelScopeDefinition(leftRole.opposite())
         .createScope(method.getResourceSet(leftRole.opposite()));
 
-    EComparisonImpl comparison = new EComparisonImpl(_leftScope, _rightScope, null);
+    EComparison comparison = new EComparisonImpl(_leftScope, _rightScope, null);
     IStatus result = comparison.compute(getMatchPolicy(), new CapellaDiffPolicy(), new CapellaMergePolicy(),
         new NullProgressMonitor());
 
@@ -173,11 +175,11 @@ public abstract class DiffMergeTestCase extends NonDirtyTestCase {
    * @param checkAllDiffResults
    *          whether all elements in difference results must be checked
    */
-  public void assertCheckDifferences(EComparisonImpl comparison, Role role, List<ModelElement> elementsInDiff,
+  public void assertCheckDifferences(EComparison comparison, Role role, List<ModelElement> elementsInDiff,
       List<ModelElement> elementsNotInDiff, boolean checkAllDiffResults) {
     List<String> notFoundElements = new ArrayList<String>();
     List<String> foundElements = new ArrayList<String>();
-    List<IDifference> differences = comparison.getDifferences(role);
+    Collection<IDifference<EObject>> differences = comparison.getDifferences(role);
     List<ModelElement> diffModelElements = getModelElementsFromDiff(differences, role);
 
     for (ModelElement element : elementsInDiff) {
@@ -204,7 +206,7 @@ public abstract class DiffMergeTestCase extends NonDirtyTestCase {
         notFoundElements.isEmpty());
   }
 
-  protected List<ModelElement> getModelElementsFromDiff(List<IDifference> differences, Role role) {
+  protected List<ModelElement> getModelElementsFromDiff(Collection<IDifference<EObject>> differences, Role role) {
     List<ModelElement> elements = new ArrayList<ModelElement>();
     for (IDifference diff : differences) {
       if (diff instanceof EElementPresenceImpl) {
@@ -224,7 +226,7 @@ public abstract class DiffMergeTestCase extends NonDirtyTestCase {
     return elements;
   }
 
-  protected void checkDifferences(EComparisonImpl comparison) {
+  protected void checkDifferences(EComparison comparison) {
     assertCheckDifferences(comparison, Role.TARGET, getModelElementsSourceProject(getTargetDiffList()),
         getModelElementsSourceProject(getTargetNoDiffList()), true);
     assertCheckDifferences(comparison, Role.REFERENCE, getModelElementsTargetProject(getReferenceDiffList()),

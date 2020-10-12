@@ -13,8 +13,9 @@
 
 package org.polarsys.capella.common.re.activities;
 
-import org.eclipse.emf.diffmerge.api.IMatchPolicy;
-import org.eclipse.emf.diffmerge.api.IMergePolicy;
+import org.eclipse.emf.diffmerge.generic.api.IMatchPolicy;
+import org.eclipse.emf.diffmerge.generic.api.IMergePolicy;
+import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.re.policies.match.ReMatchPolicy;
 import org.polarsys.capella.common.re.policies.merge.ReMergePolicy;
 import org.polarsys.kitalpha.transposer.api.ITransposerWorkflow;
@@ -32,7 +33,7 @@ public class DifferencesComputingActivity extends
    * {@inheritDoc}
    */
   @Override
-  protected IMergePolicy createMergePolicy(IContext context) {
+  protected IMergePolicy<EObject> createMergePolicy(IContext context) {
     return new ReMergePolicy(context);
   }
 
@@ -40,7 +41,7 @@ public class DifferencesComputingActivity extends
    * {@inheritDoc}
    */
   @Override
-  protected IMatchPolicy createMatchPolicy(IContext context) {
+  protected IMatchPolicy<EObject> createMatchPolicy(IContext context) {
     return new ReMatchPolicy(context);
   }
 

@@ -18,18 +18,19 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.emf.diffmerge.api.IComparison;
-import org.eclipse.emf.diffmerge.api.IMatchPolicy;
-import org.eclipse.emf.diffmerge.api.Role;
-import org.eclipse.emf.diffmerge.api.diff.IDifference;
 import org.eclipse.emf.diffmerge.api.scopes.IEditableModelScope;
 import org.eclipse.emf.diffmerge.diffdata.EAttributeValuePresence;
+import org.eclipse.emf.diffmerge.diffdata.EComparison;
 import org.eclipse.emf.diffmerge.diffdata.EElementPresence;
 import org.eclipse.emf.diffmerge.diffdata.EReferenceValuePresence;
 import org.eclipse.emf.diffmerge.diffdata.impl.EComparisonImpl;
+import org.eclipse.emf.diffmerge.generic.api.IMatchPolicy;
+import org.eclipse.emf.diffmerge.generic.api.Role;
+import org.eclipse.emf.diffmerge.generic.api.diff.IDifference;
 import org.eclipse.emf.diffmerge.impl.policies.DefaultDiffPolicy;
 import org.eclipse.emf.diffmerge.impl.policies.DefaultMatchPolicy;
 import org.eclipse.emf.diffmerge.impl.policies.DefaultMergePolicy;
@@ -55,11 +56,11 @@ public class ComparisonHelper {
 	public static boolean doesModelFragmentsEqual(EObject rootElement1, EObject rootElement2) {
     IEditableModelScope sourceScope = new RootedModelScope(Arrays.asList(new EObject[] {rootElement1}));
     IEditableModelScope targetScope = new RootedModelScope(Arrays.asList(new EObject[] {rootElement2}));
-    IComparison comparison = new EComparisonImpl(sourceScope, targetScope);  	  	
+    EComparison comparison = new EComparisonImpl(sourceScope, targetScope);  	  	
 		StructureDiffComparison matchPolicy = new StructureDiffComparison();
   	comparison.compute(matchPolicy, new DefaultDiffPolicy(), new DefaultMergePolicy(), new NullProgressMonitor());
-    List<IDifference> diffInSource = comparison.getDifferences(Role.REFERENCE);
-    List<IDifference> diffInTarget= comparison.getDifferences(Role.TARGET);
+    Collection<IDifference<EObject>> diffInSource = comparison.getDifferences(Role.REFERENCE);
+    Collection<IDifference<EObject>> diffInTarget= comparison.getDifferences(Role.TARGET);
     return diffInSource.size() == 0 && diffInTarget.size() == 0;
 	}
 
@@ -69,20 +70,20 @@ public class ComparisonHelper {
 	public static boolean doesModelsEqual(Project project1, Project project2) {
     IEditableModelScope sourceScope = new RootedModelScope(Arrays.asList(new EObject[] {project1}));
     IEditableModelScope targetScope = new RootedModelScope(Arrays.asList(new EObject[] {project2}));
-    IComparison comparison = new EComparisonImpl(sourceScope, targetScope);  	  	
+    EComparison comparison = new EComparisonImpl(sourceScope, targetScope);  	  	
 		StructureDiffComparison matchPolicy = new StructureDiffComparison();
   	comparison.compute(matchPolicy, new DefaultDiffPolicy(), new DefaultMergePolicy(), new NullProgressMonitor());
-    List<IDifference> diffInSource = comparison.getDifferences(Role.REFERENCE);
-    List<IDifference> diffInTarget= comparison.getDifferences(Role.TARGET);
+  	Collection<IDifference<EObject>> diffInSource = comparison.getDifferences(Role.REFERENCE);
+  	Collection<IDifference<EObject>> diffInTarget= comparison.getDifferences(Role.TARGET);
     return diffInSource.size() == 0 && diffInTarget.size() == 0;
 	}
 	
 	/** @param diffs diff/merge differences
 	  * @param matchPolicy the match policy used to compute diff parameter
 	  * Prompt in console the diffs in a human readable manner. */
-  public static void promptDiff(List<IDifference> diffs, StructureDiffComparison matchPolicy) {
-  	IMatchPolicy defaultMathPolicy = new DefaultMatchPolicy();
-  	for (IDifference diff : diffs) {
+  public static void promptDiff(List<IDifference<EObject>> diffs, StructureDiffComparison matchPolicy) {
+  	IMatchPolicy<EObject> defaultMathPolicy = new DefaultMatchPolicy();
+  	for (IDifference<EObject> diff : diffs) {
 			if (diff instanceof EElementPresence) {				
 				EElementPresence p = (EElementPresence) diff;
 				EObject element = p.getElement();

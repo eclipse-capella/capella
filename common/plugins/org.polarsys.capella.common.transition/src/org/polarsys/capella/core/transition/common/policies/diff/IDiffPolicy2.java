@@ -13,15 +13,15 @@
 
 package org.polarsys.capella.core.transition.common.policies.diff;
 
-import org.eclipse.emf.diffmerge.api.IDiffPolicy;
-import org.eclipse.emf.diffmerge.api.IMatch;
+import org.eclipse.emf.diffmerge.generic.api.IDiffPolicy;
+import org.eclipse.emf.diffmerge.generic.api.IMatch;
 import org.eclipse.emf.ecore.EReference;
 
 /**
  *
  */
-public interface IDiffPolicy2 extends IDiffPolicy {
+public interface IDiffPolicy2<E> extends IDiffPolicy<E> {
 
-  boolean coverMatchOnReference(IMatch match, EReference reference);
+  boolean coverMatchOnReference(IMatch<E> match, EReference reference);
 
 }

@@ -14,9 +14,9 @@ package org.polarsys.capella.core.transition.system.topdown.handlers.merge;
 
 import java.util.Collection;
 
-import org.eclipse.emf.diffmerge.api.Role;
-import org.eclipse.emf.diffmerge.api.diff.IDifference;
-import org.eclipse.emf.diffmerge.api.diff.IElementRelativeDifference;
+import org.eclipse.emf.diffmerge.diffdata.EElementRelativePresence;
+import org.eclipse.emf.diffmerge.generic.api.Role;
+import org.eclipse.emf.diffmerge.generic.api.diff.IDifference;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
@@ -42,10 +42,10 @@ public class OutsideArchitectureCategoryFilter extends CategoryFilter {
   }
 
   @Override
-  public boolean covers(IDifference difference) {
+  public boolean covers(IDifference<EObject> difference) {
 
-    if (difference instanceof IElementRelativeDifference) {
-      IElementRelativeDifference diff = (IElementRelativeDifference) difference;
+    if (difference instanceof EElementRelativePresence) {
+      EElementRelativePresence diff = (EElementRelativePresence) difference;
       EObject reference = diff.getElementMatch().get(Role.REFERENCE);
       EObject blockArch = getTargetArchitecture(reference, context);
       EObject arch = BlockArchitectureExt.getRootBlockArchitecture(reference);

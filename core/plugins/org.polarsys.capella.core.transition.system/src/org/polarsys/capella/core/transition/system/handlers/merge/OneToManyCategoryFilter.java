@@ -15,10 +15,9 @@ package org.polarsys.capella.core.transition.system.handlers.merge;
 import java.util.Collection;
 import java.util.HashSet;
 
-import org.eclipse.emf.diffmerge.api.Role;
-import org.eclipse.emf.diffmerge.api.diff.IDifference;
-import org.eclipse.emf.diffmerge.api.diff.IElementRelativeDifference;
-import org.eclipse.emf.diffmerge.api.diff.IReferenceValuePresence;
+import org.eclipse.emf.diffmerge.diffdata.EReferenceValuePresence;
+import org.eclipse.emf.diffmerge.generic.api.Role;
+import org.eclipse.emf.diffmerge.generic.api.diff.IDifference;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.merge.CategoryFilter;
@@ -36,11 +35,11 @@ public class OneToManyCategoryFilter extends CategoryFilter {
   }
 
   @Override
-  public boolean covers(IDifference difference) {
+  public boolean covers(IDifference<EObject> difference) {
     // We merge ElementPresence only if it from source
 
-    if (difference instanceof IReferenceValuePresence) {
-      EObject container = ((IElementRelativeDifference) difference).getElementMatch().get(Role.REFERENCE);
+    if (difference instanceof EReferenceValuePresence) {
+      EObject container = ((EReferenceValuePresence) difference).getElementMatch().get(Role.REFERENCE);
       if (container != null) {
 
         ITraceabilityHandler sourceHandler = (ITraceabilityHandler) context

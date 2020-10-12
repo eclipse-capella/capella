@@ -15,9 +15,10 @@ package org.polarsys.capella.common.re.re2rpl.merge;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.emf.diffmerge.api.Role;
-import org.eclipse.emf.diffmerge.api.diff.IAttributeValuePresence;
-import org.eclipse.emf.diffmerge.api.diff.IDifference;
+import org.eclipse.emf.diffmerge.diffdata.EAttributeValuePresence;
+import org.eclipse.emf.diffmerge.generic.api.Role;
+import org.eclipse.emf.diffmerge.generic.api.diff.IAttributeValuePresence;
+import org.eclipse.emf.diffmerge.generic.api.diff.IDifference;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.polarsys.capella.common.re.CatalogElement;
@@ -41,15 +42,15 @@ public class SuffixedElementPropagationCategoryFilter extends CategoryFilter {
   }
 
   @Override
-  public boolean covers(IDifference difference) {
+  public boolean covers(IDifference<EObject> difference) {
 
     String value = (String) context.get(IReConstants.COMMAND__CURRENT_VALUE);
     if (!(IReConstants.COMMAND__CREATE_A_REPLICA_FROM_REPLICABLE.equals(value) || IReConstants.COMMAND__UPDATE_A_REPLICA_FROM_REPLICABLE.equals(value))) {
       return false;
     }
 
-    if (difference instanceof IAttributeValuePresence) {
-      IAttributeValuePresence diff = (IAttributeValuePresence) difference;
+    if (difference instanceof EAttributeValuePresence) {
+      EAttributeValuePresence diff = (EAttributeValuePresence) difference;
 
       EObject sourceElement = diff.getElementMatch().get(Role.REFERENCE);
       EObject targetElement = diff.getElementMatch().get(Role.TARGET);

@@ -12,8 +12,9 @@
  *******************************************************************************/
 package org.polarsys.capella.core.transition.system.topdown.activities;
 
-import org.eclipse.emf.diffmerge.api.IDiffPolicy;
-import org.eclipse.emf.diffmerge.api.IMatchPolicy;
+import org.eclipse.emf.diffmerge.generic.api.IDiffPolicy;
+import org.eclipse.emf.diffmerge.generic.api.IMatchPolicy;
+import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.core.transition.common.handlers.options.OptionsHandlerHelper;
 import org.polarsys.capella.core.transition.system.topdown.constants.ITopDownConstants;
 import org.polarsys.capella.core.transition.system.topdown.policies.diff.TopDownDiffPolicy;
@@ -32,18 +33,16 @@ public class DifferencesComputingActivity
    * @return
    */
   @Override
-  protected IMatchPolicy createMatchPolicy(IContext context) {
-    IMatchPolicy policy = new TopDownMatchPolicy(context);
-    return policy;
+  protected IMatchPolicy<EObject> createMatchPolicy(IContext context) {
+    return new TopDownMatchPolicy(context);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  protected IDiffPolicy createDiffPolicy(IContext context) {
-    IDiffPolicy policy = new TopDownDiffPolicy(context);
-    return policy;
+  protected IDiffPolicy<EObject> createDiffPolicy(IContext context) {
+    return new TopDownDiffPolicy(context);
   }
 
   /**

@@ -12,9 +12,9 @@
  *******************************************************************************/
 package org.polarsys.capella.core.re.handlers.merge;
 
-import org.eclipse.emf.diffmerge.api.diff.IDifference;
-import org.eclipse.emf.diffmerge.api.diff.IElementRelativeDifference;
-import org.eclipse.emf.diffmerge.api.diff.IReferenceValuePresence;
+import org.eclipse.emf.diffmerge.diffdata.EReferenceValuePresence;
+import org.eclipse.emf.diffmerge.generic.api.diff.IDifference;
+import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.merge.CategoryFilter;
@@ -31,16 +31,12 @@ public class PartOwnedTypeCategoryFilter extends CategoryFilter {
   }
 
   @Override
-  public boolean covers(IDifference difference) {
-    if (difference instanceof IElementRelativeDifference) {
-      IElementRelativeDifference diff = (IElementRelativeDifference) difference;
-      if (diff instanceof IReferenceValuePresence) {
-        if (CsPackage.Literals.PART__OWNED_ABSTRACT_TYPE.equals(((IReferenceValuePresence) diff).getFeature())) {
-          return true;
-        }
+  public boolean covers(IDifference<EObject> difference) {
+    if (difference instanceof EReferenceValuePresence) {
+      if (CsPackage.Literals.PART__OWNED_ABSTRACT_TYPE.equals(((EReferenceValuePresence) difference).getFeature())) {
+        return true;
       }
     }
-
     return false;
   }
 }

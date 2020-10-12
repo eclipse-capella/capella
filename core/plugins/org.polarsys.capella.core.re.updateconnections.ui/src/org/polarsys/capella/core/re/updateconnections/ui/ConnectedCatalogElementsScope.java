@@ -20,8 +20,8 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Map;
 
-import org.eclipse.emf.diffmerge.api.IMapping;
-import org.eclipse.emf.diffmerge.api.Role;
+import org.eclipse.emf.diffmerge.diffdata.EMapping;
+import org.eclipse.emf.diffmerge.generic.api.Role;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
 import org.polarsys.capella.common.data.modellingcore.AbstractInformationFlow;
@@ -181,7 +181,7 @@ public class ConnectedCatalogElementsScope implements SparseModelScope.AttachHan
   }
 
   @Override
-  public void attachContainment(EObject toAttach, EObject source, Role targetRole, IMapping mapping) {
+  public void attachContainment(EObject toAttach, EObject source, Role targetRole, EMapping mapping) {
     if (toAttach instanceof FunctionalExchange) {
       FunctionalExchange sourceFE = (FunctionalExchange) source;
       EObject out = getRoleElement(targetRole, sourceFE.getSourceFunctionOutputPort(), mapping);
@@ -238,7 +238,7 @@ public class ConnectedCatalogElementsScope implements SparseModelScope.AttachHan
   }
 
   // find the element for a given role in a given mapping, where the element for the opposite role is known
-  private EObject getRoleElement(Role role, EObject element, IMapping mapping) {
+  private EObject getRoleElement(Role role, EObject element, EMapping mapping) {
     return mapping.getMatchFor(element, role.opposite()).get(role);
   }
 

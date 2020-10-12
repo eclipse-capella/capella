@@ -20,10 +20,10 @@ import java.util.LinkedList;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.emf.diffmerge.api.IComparison;
-import org.eclipse.emf.diffmerge.api.Role;
-import org.eclipse.emf.diffmerge.api.diff.IDifference;
 import org.eclipse.emf.diffmerge.diffdata.EComparison;
+import org.eclipse.emf.diffmerge.generic.api.Role;
+import org.eclipse.emf.diffmerge.generic.api.diff.IDifference;
+import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
@@ -51,13 +51,13 @@ public class DefaultMergeHandler implements IMergeHandler {
     categories.add(filter);
   }
 
-  public IStatus processDifferences(IContext context, Collection<IDifference> diffSource,
-      Collection<IDifference> diffTarget) {
+  public IStatus processDifferences(IContext context, Collection<IDifference<EObject>> diffSource,
+      Collection<IDifference<EObject>> diffTarget) {
 
-    Collection<IDifference> differences = diffSource;
+    Collection<IDifference<EObject>> differences = diffSource;
 
     if (processTargetDifferences) {
-      differences = new ArrayList<IDifference>(differences);
+      differences = new ArrayList<IDifference<EObject>>(differences);
       differences.addAll(diffTarget);
     }
 
@@ -76,9 +76,9 @@ public class DefaultMergeHandler implements IMergeHandler {
    *          an unfiltered collection of differences
    * @return the filtered collection of differences
    */
-  protected Collection<IDifference> filterDifferences(IContext context, Collection<IDifference> differences) {
-    Collection<IDifference> result = new ArrayList<IDifference>();
-    for (IDifference difference : differences) {
+  protected Collection<IDifference<EObject>> filterDifferences(IContext context, Collection<IDifference<EObject>> differences) {
+    Collection<IDifference<EObject>> result = new ArrayList<IDifference<EObject>>();
+    for (IDifference<EObject> difference : differences) {
       if (!isFiltered(difference)) {
         result.add(difference);
       }
@@ -94,11 +94,11 @@ public class DefaultMergeHandler implements IMergeHandler {
    * @param differences
    *          a possibly empty collection of differences to merge
    */
-  protected void mergeDifferences(IComparison comparison, Collection<IDifference> differences) {
+  protected void mergeDifferences(EComparison comparison, Collection<IDifference<EObject>> differences) {
     comparison.merge(differences, Role.TARGET, true, new NullProgressMonitor());
   }
 
-  public boolean isFiltered(IDifference difference) {
+  public boolean isFiltered(IDifference<EObject> difference) {
     boolean globalFocus = false; // At least one category is in focus mode
     boolean diffFocus = false; // At least one covering category is in focus mode
     for (ICategoryItem category : categories) {

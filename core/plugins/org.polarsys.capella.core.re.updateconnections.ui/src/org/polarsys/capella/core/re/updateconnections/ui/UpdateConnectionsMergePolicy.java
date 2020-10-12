@@ -12,10 +12,10 @@
  *******************************************************************************/
 package org.polarsys.capella.core.re.updateconnections.ui;
 
-import org.eclipse.emf.diffmerge.api.scopes.IFeaturedModelScope;
+import org.eclipse.emf.diffmerge.generic.api.scopes.ITreeDataScope;
 import org.eclipse.emf.diffmerge.impl.policies.DefaultMergePolicy;
 import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * The diff/merge policy used to merge connections between pairs of REC/RPL elements.
@@ -26,10 +26,11 @@ public class UpdateConnectionsMergePolicy extends DefaultMergePolicy {
    * ID must not be copied, or the intrinsic ID to EObject cache in the containing resource will be corrupted. The new
    * ID is then set identically to all new model elements during resource attachHelper.
    */
-  public boolean copyFeature(EStructuralFeature feature, IFeaturedModelScope scope) {
-    if (feature instanceof EAttribute && ((EAttribute) feature).isID()) {
+  @Override
+  public boolean copyAttribute(Object attribute, ITreeDataScope<EObject> scope) {
+    if (attribute instanceof EAttribute && ((EAttribute) attribute).isID()) {
       return false;
     }
-    return super.copyFeature(feature, scope);
+    return super.copyAttribute(attribute, scope);
   }
 }

@@ -12,10 +12,9 @@
  *******************************************************************************/
 package org.polarsys.capella.core.re.policies.merge;
 
-import org.eclipse.emf.diffmerge.api.scopes.IFeaturedModelScope;
+import org.eclipse.emf.diffmerge.generic.api.scopes.ITreeDataScope;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.re.policies.merge.ReMergePolicy;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
@@ -30,15 +29,15 @@ public class CapellaMergePolicy extends ReMergePolicy {
   }
 
   @Override
-  public boolean copyFeature(EStructuralFeature feature, IFeaturedModelScope scope) {
-    if (feature instanceof EAttribute && ((EAttribute) feature).isID()) {
+  public boolean copyAttribute(Object attribute, ITreeDataScope<EObject> scope) {
+    if (attribute instanceof EAttribute && ((EAttribute) attribute).isID()) {
       return false;
     }
-    return super.copyFeature(feature, scope);
+    return super.copyAttribute(attribute, scope);
   }
 
   @Override
-  protected String getNewIntrinsicID(EObject element, IFeaturedModelScope scope) {
+  protected String getNewIntrinsicID(EObject element, ITreeDataScope<EObject> scope) {
     if (element instanceof ModelElement) {
       return ((ModelElement) element).getId();
     } else if (element != null && element.eClass() != null && element.eClass().getEIDAttribute() != null) {

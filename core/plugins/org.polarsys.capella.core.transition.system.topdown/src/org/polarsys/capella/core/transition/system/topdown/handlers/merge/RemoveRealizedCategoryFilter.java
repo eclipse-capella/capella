@@ -15,11 +15,12 @@ package org.polarsys.capella.core.transition.system.topdown.handlers.merge;
 import java.util.Collection;
 import java.util.Collections;
 
-import org.eclipse.emf.diffmerge.api.IMatch;
-import org.eclipse.emf.diffmerge.api.Role;
-import org.eclipse.emf.diffmerge.api.diff.IDifference;
-import org.eclipse.emf.diffmerge.api.diff.IMergeableDifference;
-import org.eclipse.emf.diffmerge.api.diff.IReferenceValuePresence;
+import org.eclipse.emf.diffmerge.diffdata.EReferenceValuePresence;
+import org.eclipse.emf.diffmerge.generic.api.IMatch;
+import org.eclipse.emf.diffmerge.generic.api.Role;
+import org.eclipse.emf.diffmerge.generic.api.diff.IDifference;
+import org.eclipse.emf.diffmerge.generic.api.diff.IMergeableDifference;
+import org.eclipse.emf.diffmerge.generic.api.diff.IReferenceValuePresence;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
@@ -63,21 +64,21 @@ public class RemoveRealizedCategoryFilter extends CategoryFilter {
   }
 
   @Override
-  public void setDependencies(IMergeableDifference difference) {
+  public void setDependencies(IMergeableDifference<EObject> difference) {
     super.setDependencies(difference);
 
-    if (difference instanceof IReferenceValuePresence) {
-      IReferenceValuePresence presence = (IReferenceValuePresence) difference;
+    if (difference instanceof EReferenceValuePresence) {
+      EReferenceValuePresence presence = (EReferenceValuePresence) difference;
 
-      IMatch element = presence.getElementMatch();
-      IMatch value = presence.getValueMatch();
+      IMatch<EObject> element = presence.getElementMatch();
+      IMatch<EObject> value = presence.getValueMatch();
       EObject valueElement = value.get(Role.REFERENCE);
       if (valueElement == null) {
         return;
       }
-      Collection<IReferenceValuePresence> diffs = element.getReferenceDifferences(presence.getFeature());
-      for (IReferenceValuePresence diff : diffs) {
-        IMatch ei2 = diff.getValueMatch();
+      Collection<IReferenceValuePresence<EObject>> diffs = element.getReferenceDifferences(presence.getFeature());
+      for (IReferenceValuePresence<EObject> diff : diffs) {
+        IMatch<EObject> ei2 = diff.getValueMatch();
         EObject eiTransfo2 = ei2.get(Role.TARGET);
         BlockArchitecture architecture = getSourceArchitecture(valueElement, context);
         BlockArchitecture current = BlockArchitectureExt.getRootBlockArchitecture(eiTransfo2);
@@ -99,9 +100,9 @@ public class RemoveRealizedCategoryFilter extends CategoryFilter {
   }
 
   @Override
-  public boolean covers(IDifference difference) {
-    return difference instanceof IReferenceValuePresence
-        && ((IReferenceValuePresence) difference).getElementMatch().get(Role.REFERENCE) != null;
+  public boolean covers(IDifference<EObject> difference) {
+    return difference instanceof EReferenceValuePresence
+        && ((EReferenceValuePresence) difference).getElementMatch().get(Role.REFERENCE) != null;
   }
 
 }

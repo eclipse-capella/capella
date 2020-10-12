@@ -12,9 +12,9 @@
  *******************************************************************************/
 package org.polarsys.capella.common.re.handlers.merge;
 
-import org.eclipse.emf.diffmerge.api.Role;
-import org.eclipse.emf.diffmerge.api.diff.IAttributeValuePresence;
-import org.eclipse.emf.diffmerge.api.diff.IDifference;
+import org.eclipse.emf.diffmerge.diffdata.EAttributeValuePresence;
+import org.eclipse.emf.diffmerge.generic.api.Role;
+import org.eclipse.emf.diffmerge.generic.api.diff.IDifference;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.re.CatalogElement;
 import org.polarsys.capella.common.re.CatalogElementLink;
@@ -35,14 +35,14 @@ public class AvoidUnsynchronizedFeatureCategoryFilter extends CategoryFilter {
   }
 
   @Override
-  public boolean covers(IDifference difference) {
+  public boolean covers(IDifference<EObject> difference) {
     return getDestinationRole(difference, Role.REFERENCE, context)
         || getDestinationRole(difference, Role.TARGET, context);
   }
 
-  public boolean getDestinationRole(IDifference difference, Role role, IContext context) {
-    if (difference instanceof IAttributeValuePresence) {
-      IAttributeValuePresence diff = (IAttributeValuePresence) difference;
+  public boolean getDestinationRole(IDifference<EObject> difference, Role role, IContext context) {
+    if (difference instanceof EAttributeValuePresence) {
+      EAttributeValuePresence diff = (EAttributeValuePresence) difference;
       EObject sourceElement = diff.getElementMatch().get(role);
 
       if (sourceElement != null) {

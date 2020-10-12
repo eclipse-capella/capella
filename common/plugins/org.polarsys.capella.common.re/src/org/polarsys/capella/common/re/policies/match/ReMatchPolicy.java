@@ -15,6 +15,7 @@ package org.polarsys.capella.common.re.policies.match;
 import java.util.Collection;
 
 import org.eclipse.emf.diffmerge.api.scopes.IModelScope;
+import org.eclipse.emf.diffmerge.generic.api.scopes.ITreeDataScope;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
@@ -50,7 +51,7 @@ public class ReMatchPolicy extends TraceabilityHandlerMatchPolicy {
    * {@inheritDoc}
    */
   @Override
-  public Comparable<?> getMatchID(EObject element, IModelScope scope) {
+  public Comparable<?> getMatchID(EObject element, ITreeDataScope<EObject> scope) {
     IContext context = getContext();
 
     //Retrieve handlers from context

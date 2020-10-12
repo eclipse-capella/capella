@@ -13,17 +13,18 @@
 
 package org.polarsys.capella.core.transition.common.activities;
 
-import java.util.List;
+import java.util.Collection;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.emf.diffmerge.api.IComparison;
-import org.eclipse.emf.diffmerge.api.IDiffPolicy;
-import org.eclipse.emf.diffmerge.api.IMatchPolicy;
-import org.eclipse.emf.diffmerge.api.IMergePolicy;
-import org.eclipse.emf.diffmerge.api.Role;
-import org.eclipse.emf.diffmerge.api.diff.IDifference;
 import org.eclipse.emf.diffmerge.api.scopes.IEditableModelScope;
+import org.eclipse.emf.diffmerge.diffdata.EComparison;
+import org.eclipse.emf.diffmerge.generic.api.IDiffPolicy;
+import org.eclipse.emf.diffmerge.generic.api.IMatchPolicy;
+import org.eclipse.emf.diffmerge.generic.api.IMergePolicy;
+import org.eclipse.emf.diffmerge.generic.api.Role;
+import org.eclipse.emf.diffmerge.generic.api.diff.IDifference;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.osgi.util.NLS;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.constants.Messages;
@@ -50,7 +51,6 @@ public class DifferencesComputingActivity extends AbstractActivity implements IT
    * ActivityParameters)
    */
   @Override
-  @SuppressWarnings("unchecked")
   public IStatus _run(ActivityParameters activityParams) {
     IContext context = (IContext) activityParams.getParameter(TRANSPOSER_CONTEXT).getValue();
 
@@ -68,7 +68,7 @@ public class DifferencesComputingActivity extends AbstractActivity implements IT
     IEditableModelScope targetScope = (IEditableModelScope) context.get(ITransitionConstants.MERGE_TARGET_SCOPE);
 
     // Defining comparison with target as TARGET and source as REFERENCE
-    IComparison comparison = createComparison(sourceScope, targetScope);
+    EComparison comparison = createComparison(sourceScope, targetScope);
 
     context.put(ITransitionConstants.MERGE_COMPARISON, comparison);
 
@@ -76,8 +76,8 @@ public class DifferencesComputingActivity extends AbstractActivity implements IT
     comparison.compute(createMatchPolicy(context), createDiffPolicy(context), createMergePolicy(context), null);
 
     // Getting differences to merge: all the presences in source
-    List<IDifference> toAnalyseFromSource = comparison.getDifferences(Role.REFERENCE);
-    List<IDifference> toAnalyseFromTarget = comparison.getDifferences(Role.TARGET);
+    Collection<IDifference<EObject>> toAnalyseFromSource = comparison.getDifferences(Role.REFERENCE);
+    Collection<IDifference<EObject>> toAnalyseFromTarget = comparison.getDifferences(Role.TARGET);
 
     context.put(ITransitionConstants.MERGE_REFERENCE_DIFFERENCES, toAnalyseFromSource);
     context.put(ITransitionConstants.MERGE_TARGET_DIFFERENCES, toAnalyseFromTarget);
@@ -87,14 +87,14 @@ public class DifferencesComputingActivity extends AbstractActivity implements IT
       // Logging
       LogHelper.getInstance().debug(NLS.bind("Differences from {0}", Role.REFERENCE.toString()),
           Messages.Activity_ComputingDifferenceActivity);
-      for (IDifference diff : toAnalyseFromSource) {
+      for (IDifference<EObject> diff : toAnalyseFromSource) {
         LogHelper.getInstance().debug(NLS.bind(" - {0}", diff.toString()),
             Messages.Activity_ComputingDifferenceActivity);
       }
 
       LogHelper.getInstance().debug(NLS.bind("Differences from {0}", Role.TARGET.toString()),
           Messages.Activity_ComputingDifferenceActivity);
-      for (IDifference diff : toAnalyseFromTarget) {
+      for (IDifference<EObject> diff : toAnalyseFromTarget) {
         LogHelper.getInstance().debug(NLS.bind(" - {0}", diff.toString()),
             Messages.Activity_ComputingDifferenceActivity);
       }
@@ -103,41 +103,24 @@ public class DifferencesComputingActivity extends AbstractActivity implements IT
 
   }
 
-  /**
-   * @param context
-   * @return
-   */
   protected boolean displayLog(IContext context) {
     return true;
   }
 
-  /**
-   * @param context
-   * @return
-   */
-  protected IMergePolicy createMergePolicy(IContext context) {
+  protected IMergePolicy<EObject> createMergePolicy(IContext context) {
     return new ExtMergePolicy(context);
   }
 
-  /**
-   * @param context
-   * @return
-   */
-  protected IDiffPolicy createDiffPolicy(IContext context) {
-    IDiffPolicy policy = new ExtDiffPolicy(context);
-    return policy;
+  protected IDiffPolicy<EObject> createDiffPolicy(IContext context) {
+    return new ExtDiffPolicy(context);
   }
 
-  protected IComparison createComparison(IEditableModelScope sourceScope, IEditableModelScope targetScope) {
+  protected EComparison createComparison(IEditableModelScope sourceScope, IEditableModelScope targetScope) {
     return new ExtendedComparison(targetScope, sourceScope);
   }
 
-  /**
-   * @return
-   */
-  protected IMatchPolicy createMatchPolicy(IContext context) {
-    IMatchPolicy policy = new TraceabilityHandlerMatchPolicy(context);
-    return policy;
+  protected IMatchPolicy<EObject> createMatchPolicy(IContext context) {
+    return new TraceabilityHandlerMatchPolicy(context);
   }
 
 }

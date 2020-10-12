@@ -12,9 +12,9 @@
  *******************************************************************************/
 package org.polarsys.capella.core.transition.system.topdown.handlers.merge;
 
-import org.eclipse.emf.diffmerge.api.Role;
-import org.eclipse.emf.diffmerge.api.diff.IAttributeValuePresence;
-import org.eclipse.emf.diffmerge.api.diff.IDifference;
+import org.eclipse.emf.diffmerge.diffdata.EAttributeValuePresence;
+import org.eclipse.emf.diffmerge.generic.api.Role;
+import org.eclipse.emf.diffmerge.generic.api.diff.IDifference;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.merge.CategoryFilter;
@@ -40,11 +40,11 @@ public class UpdatedAttributeCategoryFilter extends CategoryFilter {
   }
 
   @Override
-  public boolean covers(IDifference difference) {
+  public boolean covers(IDifference<EObject> difference) {
 
-    if (difference instanceof IAttributeValuePresence) {
+    if (difference instanceof EAttributeValuePresence) {
       IRulesHandler ruleHandler = (IRulesHandler) context.get(ITransitionConstants.RULES_HANDLER);
-      EObject source = ((IAttributeValuePresence) difference).getElementMatch().get(Role.REFERENCE);
+      EObject source = ((EAttributeValuePresence) difference).getElementMatch().get(Role.REFERENCE);
       if (source != null) {
         try {
           MappingPossibility mapping = ruleHandler.getApplicablePossibility(source);
@@ -52,7 +52,7 @@ public class UpdatedAttributeCategoryFilter extends CategoryFilter {
             IRule<?> rule = mapping.getCompleteRule();
             if ((rule != null) && (rule instanceof IRuleUpdateAttribute)) {
               IRuleUpdateAttribute deeperRule = (IRuleUpdateAttribute) rule;
-              return !deeperRule.isUpdatedAttribute(((IAttributeValuePresence) difference).getFeature());
+              return !deeperRule.isUpdatedAttribute(((EAttributeValuePresence) difference).getFeature());
             }
           }
         } catch (Exception exception) {
