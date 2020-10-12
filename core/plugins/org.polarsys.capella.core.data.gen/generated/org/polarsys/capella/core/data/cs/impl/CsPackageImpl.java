@@ -3818,11 +3818,6 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 		   new String[] {
 		   });
 		addAnnotation
-		  (getComponent_OwnedComponentRealizations(),
-		   source,
-		   new String[] {
-		   });
-		addAnnotation
 		  (getComponent_RealizedComponents(),
 		   source,
 		   new String[] {

@@ -132,7 +132,7 @@ public interface LibraryReference extends LibraryAbstractElement {
 	 * @return the value of the '<em>Version</em>' reference.
 	 * @see #setVersion(ModelVersion)
 	 * @see org.polarsys.capella.common.libraries.LibrariesPackage#getLibraryReference_Version()
-	 * @model required="true"
+	 * @model
 	 * @generated
 	 */
 

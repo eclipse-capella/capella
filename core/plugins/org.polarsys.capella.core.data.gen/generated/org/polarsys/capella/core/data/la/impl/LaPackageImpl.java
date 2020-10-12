@@ -1347,7 +1347,6 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 		  (getLogicalComponent_RealizedSystemComponents(),
 		   source,
 		   new String[] {
-			   "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 		addAnnotation
 		  (getLogicalComponent_RealizingPhysicalComponents(),
