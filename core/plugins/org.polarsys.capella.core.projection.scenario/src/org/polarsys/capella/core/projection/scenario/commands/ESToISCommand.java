@@ -152,6 +152,7 @@ public class ESToISCommand extends AbstractTransitionCommand {
    * @return
    */
   protected void setReferencedScenarios(Collection<EObject> elements) {
+    MDCHK_InteractionUse_ReferencedScenario checkRule = new MDCHK_InteractionUse_ReferencedScenario();
     for (EObject element : elements) {
       if (element instanceof Scenario) {
         for (Scenario scenario : ((Scenario) element).getRealizingScenarios()) {
@@ -168,7 +169,12 @@ public class ESToISCommand extends AbstractTransitionCommand {
                   ScenarioTransform scenarioTransform = (ScenarioTransform) transform;
                   Scenario transitionedScenario = scenarioTransform.getTransitionedScenario((Scenario) refScenario,
                       scenarioTransform.getTransfo());
-                  interaction.setReferencedScenario(transitionedScenario);
+                  if(transitionedScenario !=  null) {
+                    interaction.setReferencedScenario(transitionedScenario);
+                  }
+                  // if the referenced scenario is still invalid, change it to transitionedScenario (Can be null)
+                  if(!checkRule.isValidReference(interaction, scenario, refScenario))
+                    interaction.setReferencedScenario(transitionedScenario);
                 }
               }
             }
