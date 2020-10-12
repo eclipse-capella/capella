@@ -657,9 +657,9 @@ public final class PhysicalFunction__allocatorPhysicalComponents extends BaseGen
   private static class GeneratedPQuery extends BaseGeneratedEMFPQuery {
     private static final PhysicalFunction__allocatorPhysicalComponents.GeneratedPQuery INSTANCE = new GeneratedPQuery();
     
-    private final PParameter parameter_self = new PParameter("self", "org.polarsys.capella.core.data.pa.PhysicalFunction", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/pa/1.4.0", "PhysicalFunction")), PParameterDirection.INOUT);
+    private final PParameter parameter_self = new PParameter("self", "org.polarsys.capella.core.data.pa.PhysicalFunction", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/pa/5.0.0", "PhysicalFunction")), PParameterDirection.INOUT);
     
-    private final PParameter parameter_target = new PParameter("target", "org.polarsys.capella.core.data.pa.PhysicalComponent", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/pa/1.4.0", "PhysicalComponent")), PParameterDirection.INOUT);
+    private final PParameter parameter_target = new PParameter("target", "org.polarsys.capella.core.data.pa.PhysicalComponent", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/pa/5.0.0", "PhysicalComponent")), PParameterDirection.INOUT);
     
     private final List<PParameter> parameters = Arrays.asList(parameter_self, parameter_target);
     
@@ -691,23 +691,23 @@ public final class PhysicalFunction__allocatorPhysicalComponents extends BaseGen
           PVariable var_self = body.getOrCreateVariableByName("self");
           PVariable var_target = body.getOrCreateVariableByName("target");
           PVariable var_cfa = body.getOrCreateVariableByName("cfa");
-          new TypeConstraint(body, Tuples.flatTupleOf(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/pa/1.4.0", "PhysicalFunction")));
-          new TypeConstraint(body, Tuples.flatTupleOf(var_target), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/pa/1.4.0", "PhysicalComponent")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/pa/5.0.0", "PhysicalFunction")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_target), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/pa/5.0.0", "PhysicalComponent")));
           body.setSymbolicParameters(Arrays.<ExportedParameter>asList(
              new ExportedParameter(body, var_self, parameter_self),
              new ExportedParameter(body, var_target, parameter_target)
           ));
           // 	PhysicalFunction.incomingTraces(self, cfa)
-          new TypeConstraint(body, Tuples.flatTupleOf(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/pa/1.4.0", "PhysicalFunction")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/pa/5.0.0", "PhysicalFunction")));
           PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
-          new TypeConstraint(body, Tuples.flatTupleOf(var_self, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/common/core/1.4.0", "TraceableElement", "incomingTraces")));
-          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/common/core/1.4.0", "AbstractTrace")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_self, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/common/core/5.0.0", "TraceableElement", "incomingTraces")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/common/core/5.0.0", "AbstractTrace")));
           new Equality(body, var__virtual_0_, var_cfa);
           // ComponentFunctionalAllocation.sourceElement(cfa, target)
-          new TypeConstraint(body, Tuples.flatTupleOf(var_cfa), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.4.0", "ComponentFunctionalAllocation")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_cfa), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/5.0.0", "ComponentFunctionalAllocation")));
           PVariable var__virtual_1_ = body.getOrCreateVariableByName(".virtual{1}");
-          new TypeConstraint(body, Tuples.flatTupleOf(var_cfa, var__virtual_1_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/common/core/1.4.0", "AbstractTrace", "sourceElement")));
-          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_1_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/common/core/1.4.0", "TraceableElement")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_cfa, var__virtual_1_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/common/core/5.0.0", "AbstractTrace", "sourceElement")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_1_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/common/core/5.0.0", "TraceableElement")));
           new Equality(body, var__virtual_1_, var_target);
           bodies.add(body);
       }

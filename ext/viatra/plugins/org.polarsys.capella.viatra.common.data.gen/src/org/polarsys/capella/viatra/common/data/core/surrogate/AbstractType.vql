@@ -15,7 +15,7 @@
 
 package org.polarsys.capella.viatra.common.data.core.surrogate
 
-import "http://www.polarsys.org/capella/common/core/1.4.0"
+import "http://www.polarsys.org/capella/common/core/5.0.0"
 
 // Start of user code for imports 
 

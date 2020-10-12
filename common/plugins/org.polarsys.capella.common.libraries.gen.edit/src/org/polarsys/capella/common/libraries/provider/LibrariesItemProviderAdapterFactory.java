@@ -359,7 +359,7 @@ public class LibrariesItemProviderAdapterFactory extends LibrariesAdapterFactory
       @Override
       public Object caseExtensibleElement(ExtensibleElement object) {
 				// begin-extension-code
-				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/common/libraries/1.4.0")) { //$NON-NLS-1$
+				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/common/libraries/5.0.0")) { //$NON-NLS-1$
 					return null;				
 				}
 				// end-extension-code

@@ -659,9 +659,9 @@ public final class NumericValue__numericType extends BaseGeneratedEMFQuerySpecif
   private static class GeneratedPQuery extends BaseGeneratedEMFPQuery {
     private static final NumericValue__numericType.GeneratedPQuery INSTANCE = new GeneratedPQuery();
     
-    private final PParameter parameter_self = new PParameter("self", "org.polarsys.capella.core.data.information.datavalue.NumericValue", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/information/datavalue/1.4.0", "NumericValue")), PParameterDirection.INOUT);
+    private final PParameter parameter_self = new PParameter("self", "org.polarsys.capella.core.data.information.datavalue.NumericValue", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/information/datavalue/5.0.0", "NumericValue")), PParameterDirection.INOUT);
     
-    private final PParameter parameter_target = new PParameter("target", "org.polarsys.capella.core.data.information.datatype.NumericType", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/information/datatype/1.4.0", "NumericType")), PParameterDirection.INOUT);
+    private final PParameter parameter_target = new PParameter("target", "org.polarsys.capella.core.data.information.datatype.NumericType", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/information/datatype/5.0.0", "NumericType")), PParameterDirection.INOUT);
     
     private final List<PParameter> parameters = Arrays.asList(parameter_self, parameter_target);
     
@@ -692,17 +692,17 @@ public final class NumericValue__numericType extends BaseGeneratedEMFQuerySpecif
           PBody body = new PBody(this);
           PVariable var_self = body.getOrCreateVariableByName("self");
           PVariable var_target = body.getOrCreateVariableByName("target");
-          new TypeConstraint(body, Tuples.flatTupleOf(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/information/datavalue/1.4.0", "NumericValue")));
-          new TypeConstraint(body, Tuples.flatTupleOf(var_target), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/information/datatype/1.4.0", "NumericType")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/information/datavalue/5.0.0", "NumericValue")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_target), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/information/datatype/5.0.0", "NumericType")));
           body.setSymbolicParameters(Arrays.<ExportedParameter>asList(
              new ExportedParameter(body, var_self, parameter_self),
              new ExportedParameter(body, var_target, parameter_target)
           ));
           // 	NumericValue.abstractType(self, target)
-          new TypeConstraint(body, Tuples.flatTupleOf(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/information/datavalue/1.4.0", "NumericValue")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/information/datavalue/5.0.0", "NumericValue")));
           PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
-          new TypeConstraint(body, Tuples.flatTupleOf(var_self, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/common/core/1.4.0", "AbstractTypedElement", "abstractType")));
-          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/common/core/1.4.0", "AbstractType")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_self, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/common/core/5.0.0", "AbstractTypedElement", "abstractType")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/common/core/5.0.0", "AbstractType")));
           new Equality(body, var__virtual_0_, var_target);
           bodies.add(body);
       }

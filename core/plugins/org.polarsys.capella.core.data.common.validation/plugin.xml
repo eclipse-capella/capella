@@ -17,7 +17,7 @@
          point="org.eclipse.emf.validation.constraintProviders">
       <constraintProvider>
          <package
-               namespaceUri="http://www.polarsys.org/capella/core/common/1.4.0">
+               namespaceUri="http://www.polarsys.org/capella/core/common/5.0.0">
          </package>
          <constraints
                categories=" capella.category/transition/consistency/state_machines">
@@ -352,7 +352,7 @@
       </constraintProvider>
       <constraintProvider>
          <package
-               namespaceUri="http://www.polarsys.org/capella/core/modeller/1.4.0">
+               namespaceUri="http://www.polarsys.org/capella/core/modeller/5.0.0">
          </package>
          <constraints
                categories="capella.category/integrity">

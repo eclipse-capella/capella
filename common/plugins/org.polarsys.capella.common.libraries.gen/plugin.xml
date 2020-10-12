@@ -20,7 +20,7 @@
 <!--@generated-->
   <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated libraries -->
-      <package class="org.polarsys.capella.common.libraries.LibrariesPackage" genModel="model/libraries.genmodel" uri="http://www.polarsys.org/capella/common/libraries/1.4.0"/>
+      <package class="org.polarsys.capella.common.libraries.LibrariesPackage" genModel="model/libraries.genmodel" uri="http://www.polarsys.org/capella/common/libraries/5.0.0"/>
    </extension>
 
    

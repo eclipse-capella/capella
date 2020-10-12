@@ -18,10 +18,10 @@
 
 package org.polarsys.capella.viatra.core.data.ctx.surrogate
 
-import "http://www.polarsys.org/capella/core/ctx/1.4.0"
+import "http://www.polarsys.org/capella/core/ctx/5.0.0"
 
 // Start of user code for imports 
-import "http://www.polarsys.org/capella/core/core/1.4.0"
+import "http://www.polarsys.org/capella/core/core/5.0.0"
 
 // End of user code
 
