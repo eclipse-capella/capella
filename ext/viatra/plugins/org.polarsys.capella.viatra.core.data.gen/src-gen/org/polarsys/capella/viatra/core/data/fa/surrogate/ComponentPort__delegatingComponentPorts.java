@@ -98,9 +98,20 @@ public final class ComponentPort__delegatingComponentPorts extends BaseGenerated
     
     @Override
     public Object get(final String parameterName) {
-      if ("self".equals(parameterName)) return this.fSelf;
-      if ("target".equals(parameterName)) return this.fTarget;
-      return null;
+      switch(parameterName) {
+          case "self": return this.fSelf;
+          case "target": return this.fTarget;
+          default: return null;
+      }
+    }
+    
+    @Override
+    public Object get(final int index) {
+      switch(index) {
+          case 0: return this.fSelf;
+          case 1: return this.fTarget;
+          default: return null;
+      }
     }
     
     public ComponentPort getSelf() {
@@ -633,9 +644,9 @@ public final class ComponentPort__delegatingComponentPorts extends BaseGenerated
   }
   
   /**
-   * Inner class allowing the singleton instance of {@link JvmGenericType: org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentPort__delegatingComponentPorts (visibility: PUBLIC, simpleName: ComponentPort__delegatingComponentPorts, identifier: org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentPort__delegatingComponentPorts, deprecated: <unset>) (abstract: false, static: false, final: true, packageName: org.polarsys.capella.viatra.core.data.fa.surrogate) (interface: false, strictFloatingPoint: false, anonymous: false)} to be created 
+   * Inner class allowing the singleton instance of {@link ComponentPort__delegatingComponentPorts} to be created 
    *     <b>not</b> at the class load time of the outer class, 
-   *     but rather at the first call to {@link JvmGenericType: org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentPort__delegatingComponentPorts (visibility: PUBLIC, simpleName: ComponentPort__delegatingComponentPorts, identifier: org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentPort__delegatingComponentPorts, deprecated: <unset>) (abstract: false, static: false, final: true, packageName: org.polarsys.capella.viatra.core.data.fa.surrogate) (interface: false, strictFloatingPoint: false, anonymous: false)#instance()}.
+   *     but rather at the first call to {@link ComponentPort__delegatingComponentPorts#instance()}.
    * 
    * <p> This workaround is required e.g. to support recursion.
    * 
@@ -709,7 +720,7 @@ public final class ComponentPort__delegatingComponentPorts extends BaseGenerated
           new Equality(body, var__virtual_0_, var_ce);
           // ComponentExchange.kind(ce, ::DELEGATION)
           PVariable var__virtual_1_ = body.getOrCreateVariableByName(".virtual{1}");
-          new ConstantValue(body, var__virtual_1_, org.polarsys.capella.core.data.fa.ComponentExchangeKind.get("DELEGATION"));
+          new ConstantValue(body, var__virtual_1_, getEnumLiteral("http://www.polarsys.org/capella/core/fa/5.0.0", "ComponentExchangeKind", "DELEGATION").getInstance());
           new TypeConstraint(body, Tuples.flatTupleOf(var_ce), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/5.0.0", "ComponentExchange")));
           PVariable var__virtual_2_ = body.getOrCreateVariableByName(".virtual{2}");
           new TypeConstraint(body, Tuples.flatTupleOf(var_ce, var__virtual_2_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/fa/5.0.0", "ComponentExchange", "kind")));

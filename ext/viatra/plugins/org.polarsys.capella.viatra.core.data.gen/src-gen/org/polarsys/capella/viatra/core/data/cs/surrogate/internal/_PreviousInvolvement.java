@@ -68,9 +68,9 @@ public final class _PreviousInvolvement extends BaseGeneratedEMFQuerySpecificati
   }
   
   /**
-   * Inner class allowing the singleton instance of {@link JvmGenericType: org.polarsys.capella.viatra.core.data.cs.surrogate.internal._PreviousInvolvement (visibility: PUBLIC, simpleName: _PreviousInvolvement, identifier: org.polarsys.capella.viatra.core.data.cs.surrogate.internal._PreviousInvolvement, deprecated: <unset>) (abstract: false, static: false, final: true, packageName: org.polarsys.capella.viatra.core.data.cs.surrogate.internal) (interface: false, strictFloatingPoint: false, anonymous: false)} to be created 
+   * Inner class allowing the singleton instance of {@link _PreviousInvolvement} to be created 
    *     <b>not</b> at the class load time of the outer class, 
-   *     but rather at the first call to {@link JvmGenericType: org.polarsys.capella.viatra.core.data.cs.surrogate.internal._PreviousInvolvement (visibility: PUBLIC, simpleName: _PreviousInvolvement, identifier: org.polarsys.capella.viatra.core.data.cs.surrogate.internal._PreviousInvolvement, deprecated: <unset>) (abstract: false, static: false, final: true, packageName: org.polarsys.capella.viatra.core.data.cs.surrogate.internal) (interface: false, strictFloatingPoint: false, anonymous: false)#instance()}.
+   *     but rather at the first call to {@link _PreviousInvolvement#instance()}.
    * 
    * <p> This workaround is required e.g. to support recursion.
    * 

@@ -74,9 +74,9 @@ public final class _FunctionPkg__ownedFunctions extends BaseGeneratedEMFQuerySpe
   }
   
   /**
-   * Inner class allowing the singleton instance of {@link JvmGenericType: org.polarsys.capella.viatra.core.data.fa.surrogate.internal._FunctionPkg__ownedFunctions (visibility: PUBLIC, simpleName: _FunctionPkg__ownedFunctions, identifier: org.polarsys.capella.viatra.core.data.fa.surrogate.internal._FunctionPkg__ownedFunctions, deprecated: <unset>) (abstract: false, static: false, final: true, packageName: org.polarsys.capella.viatra.core.data.fa.surrogate.internal) (interface: false, strictFloatingPoint: false, anonymous: false)} to be created 
+   * Inner class allowing the singleton instance of {@link _FunctionPkg__ownedFunctions} to be created 
    *     <b>not</b> at the class load time of the outer class, 
-   *     but rather at the first call to {@link JvmGenericType: org.polarsys.capella.viatra.core.data.fa.surrogate.internal._FunctionPkg__ownedFunctions (visibility: PUBLIC, simpleName: _FunctionPkg__ownedFunctions, identifier: org.polarsys.capella.viatra.core.data.fa.surrogate.internal._FunctionPkg__ownedFunctions, deprecated: <unset>) (abstract: false, static: false, final: true, packageName: org.polarsys.capella.viatra.core.data.fa.surrogate.internal) (interface: false, strictFloatingPoint: false, anonymous: false)#instance()}.
+   *     but rather at the first call to {@link _FunctionPkg__ownedFunctions#instance()}.
    * 
    * <p> This workaround is required e.g. to support recursion.
    * 

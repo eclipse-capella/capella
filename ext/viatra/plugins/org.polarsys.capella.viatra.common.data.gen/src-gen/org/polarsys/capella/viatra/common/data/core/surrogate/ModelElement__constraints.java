@@ -98,9 +98,20 @@ public final class ModelElement__constraints extends BaseGeneratedEMFQuerySpecif
     
     @Override
     public Object get(final String parameterName) {
-      if ("self".equals(parameterName)) return this.fSelf;
-      if ("target".equals(parameterName)) return this.fTarget;
-      return null;
+      switch(parameterName) {
+          case "self": return this.fSelf;
+          case "target": return this.fTarget;
+          default: return null;
+      }
+    }
+    
+    @Override
+    public Object get(final int index) {
+      switch(index) {
+          case 0: return this.fSelf;
+          case 1: return this.fTarget;
+          default: return null;
+      }
     }
     
     public ModelElement getSelf() {
@@ -635,9 +646,9 @@ public final class ModelElement__constraints extends BaseGeneratedEMFQuerySpecif
   }
   
   /**
-   * Inner class allowing the singleton instance of {@link JvmGenericType: org.polarsys.capella.viatra.common.data.core.surrogate.ModelElement__constraints (visibility: PUBLIC, simpleName: ModelElement__constraints, identifier: org.polarsys.capella.viatra.common.data.core.surrogate.ModelElement__constraints, deprecated: <unset>) (abstract: false, static: false, final: true, packageName: org.polarsys.capella.viatra.common.data.core.surrogate) (interface: false, strictFloatingPoint: false, anonymous: false)} to be created 
+   * Inner class allowing the singleton instance of {@link ModelElement__constraints} to be created 
    *     <b>not</b> at the class load time of the outer class, 
-   *     but rather at the first call to {@link JvmGenericType: org.polarsys.capella.viatra.common.data.core.surrogate.ModelElement__constraints (visibility: PUBLIC, simpleName: ModelElement__constraints, identifier: org.polarsys.capella.viatra.common.data.core.surrogate.ModelElement__constraints, deprecated: <unset>) (abstract: false, static: false, final: true, packageName: org.polarsys.capella.viatra.common.data.core.surrogate) (interface: false, strictFloatingPoint: false, anonymous: false)#instance()}.
+   *     but rather at the first call to {@link ModelElement__constraints#instance()}.
    * 
    * <p> This workaround is required e.g. to support recursion.
    * 
