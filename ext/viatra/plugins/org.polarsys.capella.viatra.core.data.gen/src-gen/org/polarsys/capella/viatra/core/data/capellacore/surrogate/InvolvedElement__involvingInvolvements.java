@@ -98,9 +98,20 @@ public final class InvolvedElement__involvingInvolvements extends BaseGeneratedE
     
     @Override
     public Object get(final String parameterName) {
-      if ("self".equals(parameterName)) return this.fSelf;
-      if ("target".equals(parameterName)) return this.fTarget;
-      return null;
+      switch(parameterName) {
+          case "self": return this.fSelf;
+          case "target": return this.fTarget;
+          default: return null;
+      }
+    }
+    
+    @Override
+    public Object get(final int index) {
+      switch(index) {
+          case 0: return this.fSelf;
+          case 1: return this.fTarget;
+          default: return null;
+      }
     }
     
     public InvolvedElement getSelf() {
@@ -635,9 +646,9 @@ public final class InvolvedElement__involvingInvolvements extends BaseGeneratedE
   }
   
   /**
-   * Inner class allowing the singleton instance of {@link JvmGenericType: org.polarsys.capella.viatra.core.data.capellacore.surrogate.InvolvedElement__involvingInvolvements (visibility: PUBLIC, simpleName: InvolvedElement__involvingInvolvements, identifier: org.polarsys.capella.viatra.core.data.capellacore.surrogate.InvolvedElement__involvingInvolvements, deprecated: <unset>) (abstract: false, static: false, final: true, packageName: org.polarsys.capella.viatra.core.data.capellacore.surrogate) (interface: false, strictFloatingPoint: false, anonymous: false)} to be created 
+   * Inner class allowing the singleton instance of {@link InvolvedElement__involvingInvolvements} to be created 
    *     <b>not</b> at the class load time of the outer class, 
-   *     but rather at the first call to {@link JvmGenericType: org.polarsys.capella.viatra.core.data.capellacore.surrogate.InvolvedElement__involvingInvolvements (visibility: PUBLIC, simpleName: InvolvedElement__involvingInvolvements, identifier: org.polarsys.capella.viatra.core.data.capellacore.surrogate.InvolvedElement__involvingInvolvements, deprecated: <unset>) (abstract: false, static: false, final: true, packageName: org.polarsys.capella.viatra.core.data.capellacore.surrogate) (interface: false, strictFloatingPoint: false, anonymous: false)#instance()}.
+   *     but rather at the first call to {@link InvolvedElement__involvingInvolvements#instance()}.
    * 
    * <p> This workaround is required e.g. to support recursion.
    * 

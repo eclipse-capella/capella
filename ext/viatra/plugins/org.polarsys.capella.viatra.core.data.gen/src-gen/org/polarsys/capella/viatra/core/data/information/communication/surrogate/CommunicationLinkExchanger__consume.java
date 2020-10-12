@@ -98,9 +98,20 @@ public final class CommunicationLinkExchanger__consume extends BaseGeneratedEMFQ
     
     @Override
     public Object get(final String parameterName) {
-      if ("self".equals(parameterName)) return this.fSelf;
-      if ("target".equals(parameterName)) return this.fTarget;
-      return null;
+      switch(parameterName) {
+          case "self": return this.fSelf;
+          case "target": return this.fTarget;
+          default: return null;
+      }
+    }
+    
+    @Override
+    public Object get(final int index) {
+      switch(index) {
+          case 0: return this.fSelf;
+          case 1: return this.fTarget;
+          default: return null;
+      }
     }
     
     public CommunicationLinkExchanger getSelf() {
@@ -632,9 +643,9 @@ public final class CommunicationLinkExchanger__consume extends BaseGeneratedEMFQ
   }
   
   /**
-   * Inner class allowing the singleton instance of {@link JvmGenericType: org.polarsys.capella.viatra.core.data.information.communication.surrogate.CommunicationLinkExchanger__consume (visibility: PUBLIC, simpleName: CommunicationLinkExchanger__consume, identifier: org.polarsys.capella.viatra.core.data.information.communication.surrogate.CommunicationLinkExchanger__consume, deprecated: <unset>) (abstract: false, static: false, final: true, packageName: org.polarsys.capella.viatra.core.data.information.communication.surrogate) (interface: false, strictFloatingPoint: false, anonymous: false)} to be created 
+   * Inner class allowing the singleton instance of {@link CommunicationLinkExchanger__consume} to be created 
    *     <b>not</b> at the class load time of the outer class, 
-   *     but rather at the first call to {@link JvmGenericType: org.polarsys.capella.viatra.core.data.information.communication.surrogate.CommunicationLinkExchanger__consume (visibility: PUBLIC, simpleName: CommunicationLinkExchanger__consume, identifier: org.polarsys.capella.viatra.core.data.information.communication.surrogate.CommunicationLinkExchanger__consume, deprecated: <unset>) (abstract: false, static: false, final: true, packageName: org.polarsys.capella.viatra.core.data.information.communication.surrogate) (interface: false, strictFloatingPoint: false, anonymous: false)#instance()}.
+   *     but rather at the first call to {@link CommunicationLinkExchanger__consume#instance()}.
    * 
    * <p> This workaround is required e.g. to support recursion.
    * 
@@ -707,7 +718,7 @@ public final class CommunicationLinkExchanger__consume extends BaseGeneratedEMFQ
           new Equality(body, var__virtual_0_, var_target);
           // CommunicationLink.kind(target, ::CONSUME)
           PVariable var__virtual_1_ = body.getOrCreateVariableByName(".virtual{1}");
-          new ConstantValue(body, var__virtual_1_, org.polarsys.capella.core.data.information.communication.CommunicationLinkKind.get("CONSUME"));
+          new ConstantValue(body, var__virtual_1_, getEnumLiteral("http://www.polarsys.org/capella/core/information/communication/5.0.0", "CommunicationLinkKind", "CONSUME").getInstance());
           new TypeConstraint(body, Tuples.flatTupleOf(var_target), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/information/communication/5.0.0", "CommunicationLink")));
           PVariable var__virtual_2_ = body.getOrCreateVariableByName(".virtual{2}");
           new TypeConstraint(body, Tuples.flatTupleOf(var_target, var__virtual_2_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/information/communication/5.0.0", "CommunicationLink", "kind")));

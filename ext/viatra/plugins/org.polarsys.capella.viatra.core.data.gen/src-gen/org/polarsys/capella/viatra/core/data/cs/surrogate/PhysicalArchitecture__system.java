@@ -97,9 +97,20 @@ public final class PhysicalArchitecture__system extends BaseGeneratedEMFQuerySpe
     
     @Override
     public Object get(final String parameterName) {
-      if ("self".equals(parameterName)) return this.fSelf;
-      if ("target".equals(parameterName)) return this.fTarget;
-      return null;
+      switch(parameterName) {
+          case "self": return this.fSelf;
+          case "target": return this.fTarget;
+          default: return null;
+      }
+    }
+    
+    @Override
+    public Object get(final int index) {
+      switch(index) {
+          case 0: return this.fSelf;
+          case 1: return this.fTarget;
+          default: return null;
+      }
     }
     
     public PhysicalArchitecture getSelf() {
@@ -631,9 +642,9 @@ public final class PhysicalArchitecture__system extends BaseGeneratedEMFQuerySpe
   }
   
   /**
-   * Inner class allowing the singleton instance of {@link JvmGenericType: org.polarsys.capella.viatra.core.data.cs.surrogate.PhysicalArchitecture__system (visibility: PUBLIC, simpleName: PhysicalArchitecture__system, identifier: org.polarsys.capella.viatra.core.data.cs.surrogate.PhysicalArchitecture__system, deprecated: <unset>) (abstract: false, static: false, final: true, packageName: org.polarsys.capella.viatra.core.data.cs.surrogate) (interface: false, strictFloatingPoint: false, anonymous: false)} to be created 
+   * Inner class allowing the singleton instance of {@link PhysicalArchitecture__system} to be created 
    *     <b>not</b> at the class load time of the outer class, 
-   *     but rather at the first call to {@link JvmGenericType: org.polarsys.capella.viatra.core.data.cs.surrogate.PhysicalArchitecture__system (visibility: PUBLIC, simpleName: PhysicalArchitecture__system, identifier: org.polarsys.capella.viatra.core.data.cs.surrogate.PhysicalArchitecture__system, deprecated: <unset>) (abstract: false, static: false, final: true, packageName: org.polarsys.capella.viatra.core.data.cs.surrogate) (interface: false, strictFloatingPoint: false, anonymous: false)#instance()}.
+   *     but rather at the first call to {@link PhysicalArchitecture__system#instance()}.
    * 
    * <p> This workaround is required e.g. to support recursion.
    * 

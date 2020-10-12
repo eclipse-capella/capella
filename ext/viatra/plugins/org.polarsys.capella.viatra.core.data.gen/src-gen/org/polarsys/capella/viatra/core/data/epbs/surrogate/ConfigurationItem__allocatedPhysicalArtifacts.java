@@ -97,9 +97,20 @@ public final class ConfigurationItem__allocatedPhysicalArtifacts extends BaseGen
     
     @Override
     public Object get(final String parameterName) {
-      if ("self".equals(parameterName)) return this.fSelf;
-      if ("target".equals(parameterName)) return this.fTarget;
-      return null;
+      switch(parameterName) {
+          case "self": return this.fSelf;
+          case "target": return this.fTarget;
+          default: return null;
+      }
+    }
+    
+    @Override
+    public Object get(final int index) {
+      switch(index) {
+          case 0: return this.fSelf;
+          case 1: return this.fTarget;
+          default: return null;
+      }
     }
     
     public ConfigurationItem getSelf() {
@@ -633,9 +644,9 @@ public final class ConfigurationItem__allocatedPhysicalArtifacts extends BaseGen
   }
   
   /**
-   * Inner class allowing the singleton instance of {@link JvmGenericType: org.polarsys.capella.viatra.core.data.epbs.surrogate.ConfigurationItem__allocatedPhysicalArtifacts (visibility: PUBLIC, simpleName: ConfigurationItem__allocatedPhysicalArtifacts, identifier: org.polarsys.capella.viatra.core.data.epbs.surrogate.ConfigurationItem__allocatedPhysicalArtifacts, deprecated: <unset>) (abstract: false, static: false, final: true, packageName: org.polarsys.capella.viatra.core.data.epbs.surrogate) (interface: false, strictFloatingPoint: false, anonymous: false)} to be created 
+   * Inner class allowing the singleton instance of {@link ConfigurationItem__allocatedPhysicalArtifacts} to be created 
    *     <b>not</b> at the class load time of the outer class, 
-   *     but rather at the first call to {@link JvmGenericType: org.polarsys.capella.viatra.core.data.epbs.surrogate.ConfigurationItem__allocatedPhysicalArtifacts (visibility: PUBLIC, simpleName: ConfigurationItem__allocatedPhysicalArtifacts, identifier: org.polarsys.capella.viatra.core.data.epbs.surrogate.ConfigurationItem__allocatedPhysicalArtifacts, deprecated: <unset>) (abstract: false, static: false, final: true, packageName: org.polarsys.capella.viatra.core.data.epbs.surrogate) (interface: false, strictFloatingPoint: false, anonymous: false)#instance()}.
+   *     but rather at the first call to {@link ConfigurationItem__allocatedPhysicalArtifacts#instance()}.
    * 
    * <p> This workaround is required e.g. to support recursion.
    * 
