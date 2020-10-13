@@ -34,11 +34,14 @@ public class ReferencedScenarios_01 extends TopDownTransitionTestCase {
   public static final String OES_OPERATIONALCAPABILITY_1_A = "abbda34d-e670-4d31-a0ae-b2ffb713566f"; //$NON-NLS-1$
   public static final String OES_OPERATIONALCAPABILITY_2 = "14bb527d-0c12-4b1f-9798-3163c6189613"; //$NON-NLS-1$
   public static final String OAS_OPERATIONALCAPABILITY_2 = "d257c3dc-b4f2-4e7c-91f3-61c465e53a21"; //$NON-NLS-1$
-
+  public static final String OAS_OPERATIONALCAPABILITY_4 = "5f7bfff5-c03d-4292-864b-4feeaa9a2d78"; //$NON-NLS-1$
+  public static final String OES_OPERATIONALCAPABILITY_4 = "483fd0b3-f52e-4de4-b8d1-109d44649d59"; //$NON-NLS-1$
+  
   public static final String INTERACTIONUSE_OES_OPERATIONALCAPABILITY_1 = "20076cac-66b1-491e-abef-e2325f2d3b66"; //$NON-NLS-1$
   public static final String INTERACTIONUSE_OES_OPERATIONALCAPABILITY_1_A = "52e7a7f5-553b-48f1-88fd-5290bb572b01"; //$NON-NLS-1$
   public static final String INTERACTIONUSE_OES_OPERATIONALCAPABILITY_2 = "0c1ada3b-b6ec-45f8-b6bd-c5110e352a54"; //$NON-NLS-1$
   public static final String INTERACTIONUSE_OES_OPERATIONALCAPABILITY_2_1 = "fed23a79-5aa4-4dec-8bd5-f36833599e1f"; //$NON-NLS-1$
+  public static final String INTERACTIONUSE_OES_OPERATIONALCAPABILITY_4 = "fceda0ba-dda1-4664-8927-7ce6884d5e79"; //$NON-NLS-1$
 
   @Override
   public List<String> getRequiredTestModels() {
@@ -50,6 +53,7 @@ public class ReferencedScenarios_01 extends TopDownTransitionTestCase {
     step1();
     step2();
     step3();
+    step4();
   }
 
   /*
@@ -111,4 +115,19 @@ public class ReferencedScenarios_01 extends TopDownTransitionTestCase {
     checksStep1();
   }
 
+  /*
+   * OAS to FS (System), when an invalid scenario of OES kind is referenced
+   */
+  private void step4() {
+    performFStoFSTransition(Arrays.asList(getObject(OAS_OPERATIONALCAPABILITY_4)));
+
+    // test that an invalid referenced scenario (OAS_OPERATIONALCAPABILITY_4) is not transitioned
+    Scenario scenario1 = mustBeTransitioned(OAS_OPERATIONALCAPABILITY_4);
+    shouldNotBeTransitioned(OES_OPERATIONALCAPABILITY_4);
+
+    InteractionUse reference1 = (InteractionUse) mustBeTransitionedTo(INTERACTIONUSE_OES_OPERATIONALCAPABILITY_4,
+        InteractionPackage.Literals.INTERACTION_USE, scenario1);
+
+    assertTrue(reference1.getReferencedScenario() == null);
+  }
 }
