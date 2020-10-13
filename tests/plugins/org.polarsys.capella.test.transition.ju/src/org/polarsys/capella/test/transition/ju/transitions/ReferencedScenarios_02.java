@@ -39,6 +39,9 @@ public class ReferencedScenarios_02 extends TopDownTransitionTestCase {
   public static final String OAS_OPERATIONALCAPABILITY_5 = "faac6c0e-c4b6-4340-adea-c80991633cfc"; //$NON-NLS-1$
   public static final String OAS_OPERATIONALCAPABILITY_5_A = "f97bf3a9-13a5-4928-9f55-64769926721d"; //$NON-NLS-1$
   public static final String OAS_OPERATIONALCAPABILITY_5_B = "6f3cc51c-ae96-43db-8b8e-046d5492f915"; //$NON-NLS-1$
+  public static final String OES_OPERATIONALCAPABILITY_1 = "55ac5c1e-0d95-4fb0-98d7-8aa64ca18d57"; //$NON-NLS-1$
+  public static final String OES_OPERATIONALCAPABILITY_2 = "14bb527d-0c12-4b1f-9798-3163c6189613"; //$NON-NLS-1$
+  public static final String OAS_OPERATIONALCAPABILITY_2 = "d257c3dc-b4f2-4e7c-91f3-61c465e53a21"; //$NON-NLS-1$
 
   public static final String INTERACTIONUSE_OAS_OPERATIONALCAPABILITY_3 = "5b9533fa-c5ae-4a9e-9ab7-a2c9fa0f4e59"; //$NON-NLS-1$
   public static final String INTERACTIONUSE_OAS_OPERATIONALCAPABILITY_3_A = "5f423544-91d6-4438-b61c-39bd44c97fef"; //$NON-NLS-1$
@@ -49,6 +52,10 @@ public class ReferencedScenarios_02 extends TopDownTransitionTestCase {
   public static final String INTERACTIONUSE_OAS_OPERATIONALCAPABILITY_5_A = "d9ffa66d-8b1d-4353-84be-77f90ebb3691"; //$NON-NLS-1$
   public static final String INTERACTIONUSE_OAS_OPERATIONALCAPABILITY_5_B = "85ce5f6f-99b0-43fd-ad01-3228a7101032"; //$NON-NLS-1$
   public static final String INTERACTIONUSE_OAS_OPERATIONALCAPABILITY_5_B_1 = "9a28c3e0-410c-4077-bbd0-4ddb5f256a6b"; //$NON-NLS-1$
+  public static final String INTERACTIONUSE_OES_OPERATIONALCAPABILITY_1 = "20076cac-66b1-491e-abef-e2325f2d3b66"; //$NON-NLS-1$
+  public static final String INTERACTIONUSE_OES_OPERATIONALCAPABILITY_1_A = "52e7a7f5-553b-48f1-88fd-5290bb572b01"; //$NON-NLS-1$
+  public static final String INTERACTIONUSE_OES_OPERATIONALCAPABILITY_2 = "0c1ada3b-b6ec-45f8-b6bd-c5110e352a54"; //$NON-NLS-1$
+  public static final String INTERACTIONUSE_OES_OPERATIONALCAPABILITY_2_1 = "fed23a79-5aa4-4dec-8bd5-f36833599e1f"; //$NON-NLS-1$
 
   @Override
   public List<String> getRequiredTestModels() {
@@ -61,6 +68,7 @@ public class ReferencedScenarios_02 extends TopDownTransitionTestCase {
     step2();
     step3();
     step4();
+    step5();
   }
 
   /*
@@ -158,5 +166,24 @@ public class ReferencedScenarios_02 extends TopDownTransitionTestCase {
 
     // checks for OAS_OPERATIONALCAPABILITY_3
     checksStep1();
+  }
+  
+  /*
+   * OES to ES (System), when an invalid scenario is referenced
+   */
+  private void step5() {
+    performEStoESTransition(Arrays.asList(getObject(OES_OPERATIONALCAPABILITY_2)));
+    // test that an invalid referenced scenario (OAS_OPERATIONALCAPABILITY_2) is not transitioned
+    Scenario scenario1 = mustBeTransitioned(OES_OPERATIONALCAPABILITY_2);
+    Scenario scenario2 = mustBeTransitioned(OES_OPERATIONALCAPABILITY_1);
+    Scenario scenario3 = shouldNotBeTransitioned(OAS_OPERATIONALCAPABILITY_2);
+
+    InteractionUse reference1 = (InteractionUse) mustBeTransitionedTo(INTERACTIONUSE_OES_OPERATIONALCAPABILITY_2,
+        InteractionPackage.Literals.INTERACTION_USE, scenario1);
+    assertTrue(reference1.getReferencedScenario().equals(scenario2));
+
+    InteractionUse reference3 = (InteractionUse) mustBeTransitionedTo(INTERACTIONUSE_OES_OPERATIONALCAPABILITY_2_1,
+        InteractionPackage.Literals.INTERACTION_USE, scenario1);
+    assertTrue(reference3.getReferencedScenario() == null);
   }
 }
