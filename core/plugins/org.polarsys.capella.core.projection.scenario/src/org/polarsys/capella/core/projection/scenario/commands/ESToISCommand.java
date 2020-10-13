@@ -172,9 +172,9 @@ public class ESToISCommand extends AbstractTransitionCommand {
                   if(transitionedScenario !=  null) {
                     interaction.setReferencedScenario(transitionedScenario);
                   }
-                  // if the referenced scenario is still invalid, change it to transitionedScenario (Can be null)
-                  if(!checkRule.isValidReference(interaction, scenario, refScenario))
-                    interaction.setReferencedScenario(transitionedScenario);
+                  // if the referenced scenario is still invalid, unset the reference
+                  if(!checkRule.isValidReference(interaction, scenario, interaction.getReferencedScenario()))
+                    interaction.setReferencedScenario(null);
                 }
               }
             }
