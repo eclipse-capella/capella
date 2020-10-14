@@ -37,4 +37,12 @@
          id="org.polarsys.capella.core.properties.richtext.feature"
          version="0.0.0"/>
 
+   <!-- Workaround for https://bugs.eclipse.org/bugs/show_bug.cgi?id=548517 -->
+   <plugin
+         id="org.antlr.runtime"
+         download-size="0"
+         install-size="0"
+         version="3.2.0.v201101311130"
+         unpack="false"/>
+
 </feature>

@@ -114,3 +114,7 @@ location orbit-R20160221192158 "https://download.eclipse.org/tools/orbit/downloa
 	com.google.guava [15.0.0.v201403281430,15.0.0.v201403281430]
 }
 
+location orbit-R20140525021250 "http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository" {
+	org.antlr.runtime 3.2.0.v201101311130
+}
+
