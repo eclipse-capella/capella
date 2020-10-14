@@ -17,23 +17,23 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.eclipse.emf.diffmerge.api.IDiffPolicy;
-import org.eclipse.emf.diffmerge.api.IMapping;
-import org.eclipse.emf.diffmerge.api.IMatch;
-import org.eclipse.emf.diffmerge.api.IMergePolicy;
-import org.eclipse.emf.diffmerge.api.Role;
-import org.eclipse.emf.diffmerge.api.diff.IElementPresence;
-import org.eclipse.emf.diffmerge.api.diff.IReferenceValuePresence;
 import org.eclipse.emf.diffmerge.api.scopes.IEditableModelScope;
-import org.eclipse.emf.diffmerge.api.scopes.IFeaturedModelScope;
 import org.eclipse.emf.diffmerge.diffdata.impl.EComparisonImpl;
 import org.eclipse.emf.diffmerge.diffdata.impl.EMappingImpl;
-import org.eclipse.emf.diffmerge.impl.helpers.BidirectionalComparisonCopier;
-import org.eclipse.emf.diffmerge.impl.helpers.DiffOperation;
-import org.eclipse.emf.diffmerge.impl.helpers.UnidirectionalComparisonCopier;
+import org.eclipse.emf.diffmerge.generic.api.IDiffPolicy;
+import org.eclipse.emf.diffmerge.generic.api.IMapping;
+import org.eclipse.emf.diffmerge.generic.api.IMatch;
+import org.eclipse.emf.diffmerge.generic.api.IMergePolicy;
+import org.eclipse.emf.diffmerge.generic.api.Role;
+import org.eclipse.emf.diffmerge.generic.api.diff.IElementPresence;
+import org.eclipse.emf.diffmerge.generic.api.diff.IReferenceValuePresence;
+import org.eclipse.emf.diffmerge.generic.api.scopes.ITreeDataScope;
+import org.eclipse.emf.diffmerge.generic.impl.helpers.BidirectionalComparisonCopier;
+import org.eclipse.emf.diffmerge.generic.impl.helpers.DiffOperation;
+import org.eclipse.emf.diffmerge.generic.impl.helpers.UnidirectionalComparisonCopier;
+import org.eclipse.emf.diffmerge.generic.util.IExpensiveOperation;
 import org.eclipse.emf.diffmerge.structures.IEqualityTester;
 import org.eclipse.emf.diffmerge.structures.common.FArrayList;
-import org.eclipse.emf.diffmerge.util.IExpensiveOperation;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.polarsys.capella.core.transition.common.policies.diff.IDiffPolicy2;
@@ -47,7 +47,7 @@ public class ExtendedComparison extends EComparisonImpl {
   /**
    * An extension of the default copier that fixes the "add element + add children" dependency problem
    */
-  protected class FixedUnidirectionalComparisonCopier extends UnidirectionalComparisonCopier {
+  protected class FixedUnidirectionalComparisonCopier extends UnidirectionalComparisonCopier<EObject> {
 
     private static final long serialVersionUID = -3437137941200063000L;
 
@@ -73,41 +73,42 @@ public class ExtendedComparison extends EComparisonImpl {
     }
 
     @Override
-    protected void copyReference(EReference reference, EObject source, EObject destination) {
+    protected void copyReference(Object reference, EObject source, EObject destination) {
       // This implementation assumes that values need only be added
 
-      List<EObject> sourceValues = _sourceScope.get(source, reference);
+      EReference eReference = (EReference) reference;
+      List<EObject> sourceValues = _sourceScope.getReferenceValues(source, reference);
 
       for (EObject sourceValue : sourceValues) {
-        IMatch valueMatch = _mapping.getMatchFor(sourceValue, _sourceRole);
+        IMatch<EObject> valueMatch = _mapping.getMatchFor(sourceValue, _sourceRole);
         if (valueMatch != null) {
           // Value in scope
           // If value is in copier or ref is unidirectional, it is not handled
           // by a ref presence diff so it must be copied
           boolean mustCopy = getCompletedMatches().contains(valueMatch) ||
           // Being a containment means there is an implicit opposite
-                             ((reference.getEOpposite() == null) && !reference.isContainment());
+                             ((eReference.getEOpposite() == null) && !eReference.isContainment());
           if (!mustCopy) {
             // Otherwise, check if it is actually handled by a ref presence diff
             // (it may not be because the opposite ref may not be covered by the diff policy)
             IMatch holderMatch = _mapping.getMatchFor(source, _sourceRole);
             if (holderMatch != null) {
-              mustCopy = holderMatch.getReferenceValueDifference(reference, source) == null;
+              mustCopy = holderMatch.getReferenceValueDifference(eReference, source) == null;
             }
           }
-          if (mustCopy && reference.isContainment()) {
+          if (mustCopy && eReference.isContainment()) {
             mustCopy = valueMatch.getOwnershipDifference(_sourceRole.opposite()) == null;
           }
           if (mustCopy) {
             EObject destinationValue = valueMatch.get(_sourceRole.opposite());
             if (destinationValue != null) {
-              _destinationScope.add(destination, reference, destinationValue);
+              _destinationScope.addReferenceValue(destination, eReference, destinationValue);
             }
           } // Else handled by a ref presence diff
         } else {
           // Value out of scope: keep as is if no side effect due to bidirectionality or containment
-          if (useOriginalReferences && (reference.getEOpposite() == null) && !reference.isContainment() && !reference.isContainer()) {
-            _destinationScope.add(destination, reference, sourceValue);
+          if (eReference.getEOpposite() == null && !eReference.isContainment() && !eReference.isContainer()) {
+            _destinationScope.addReferenceValue(destination, eReference, sourceValue);
           }
         }
       }
@@ -123,15 +124,15 @@ public class ExtendedComparison extends EComparisonImpl {
     super(targetScope, referenceScope, ancestorScope);
 
     setMapping(new EMappingImpl() {
-      private BidirectionalComparisonCopier _copier = new BidirectionalComparisonCopier() {
-        private UnidirectionalComparisonCopier _referenceToTargetCopier = new FixedUnidirectionalComparisonCopier(Role.REFERENCE);
-        private UnidirectionalComparisonCopier _targetToReferenceCopier = new FixedUnidirectionalComparisonCopier(Role.TARGET);
+      private BidirectionalComparisonCopier<EObject> _copier = new BidirectionalComparisonCopier<EObject>() {
+        private UnidirectionalComparisonCopier<EObject> _referenceToTargetCopier = new FixedUnidirectionalComparisonCopier(Role.REFERENCE);
+        private UnidirectionalComparisonCopier<EObject> _targetToReferenceCopier = new FixedUnidirectionalComparisonCopier(Role.TARGET);
 
         @Override
         public EObject completeMatch(IMapping.Editable mapping, IMatch partialMatch) {
           assert partialMatch.isPartial();
           Role sourceRole = partialMatch.getUncoveredRole().opposite();
-          UnidirectionalComparisonCopier involvedCopier = (sourceRole == Role.REFERENCE) ? _referenceToTargetCopier : _targetToReferenceCopier;
+          UnidirectionalComparisonCopier<EObject> involvedCopier = (sourceRole == Role.REFERENCE) ? _referenceToTargetCopier : _targetToReferenceCopier;
           EObject result = involvedCopier.completeMatch(partialMatch, mapping.getComparison());
           return result;
         }
@@ -166,7 +167,7 @@ public class ExtendedComparison extends EComparisonImpl {
    */
   @Override
   protected IExpensiveOperation getDiffOperation(IDiffPolicy iDiffPolicy1, IMergePolicy mergePolicy) {
-    return new DiffOperation(this, iDiffPolicy1, mergePolicy) {
+    return new DiffOperation<EObject>(this, iDiffPolicy1, mergePolicy) {
       
       protected void setElementPresenceDependencies(IElementPresence presence) {
         super.setElementPresenceDependencies(presence);
@@ -187,27 +188,29 @@ public class ExtendedComparison extends EComparisonImpl {
        * @return whether at least one difference was detected
        */
       @Override
-      protected boolean detectReferenceDifferences(IMatch match, EReference reference, Role role1, Role role2,
+      protected boolean detectReferenceDifferences(IMatch<EObject> match, Object reference, Role role1, Role role2, Role roleOfReference,
           boolean create) {
         assert match != null && !match.isPartial() && reference != null;
-        assert !reference.isContainer();
+        EReference eReference = (EReference) reference;
+        assert !eReference.isContainer();
         boolean result = false;
         // Get reference values in different roles
-        IFeaturedModelScope targetScope = getComparison().getScope(Role.TARGET);
-        IFeaturedModelScope referenceScope = getComparison().getScope(Role.REFERENCE);
+        ITreeDataScope<EObject> targetScope = getComparison().getScope(Role.TARGET);
+        ITreeDataScope<EObject> referenceScope = getComparison().getScope(Role.REFERENCE);
         EObject targetElement = match.get(Role.TARGET);
         EObject referenceElement = match.get(Role.REFERENCE);
-        List<EObject> targetValues = targetScope.get(targetElement, reference);
-        List<EObject> referenceValues = referenceScope.get(referenceElement, reference);
+        ITreeDataScope<EObject> scopeOfReference = (roleOfReference == Role.TARGET)? targetScope: referenceScope;
+        List<EObject> targetValues = targetScope.getReferenceValues(targetElement, reference);
+        List<EObject> referenceValues = referenceScope.getReferenceValues(referenceElement, reference);
         List<EObject> remainingReferenceValues = new FArrayList<EObject>(
             referenceValues, IEqualityTester.BY_REFERENCE);
-        boolean checkOrder = reference.isMany() && getDiffPolicy().considerOrdered(reference);
+        boolean checkOrder = eReference.isMany() && getDiffPolicy().considerOrderedReference(reference, scopeOfReference);
         int maxIndex = -1;
         // Check which ones match
         Map<IMatch, EObject> isolatedTargetMatches = new HashMap<IMatch, EObject>();
         for (EObject targetValue : targetValues) {
           // For every value in TARGET, get its corresponding match (if none, uncovered)
-          IMatch targetValueMatch = getMapping().getMatchFor(targetValue, Role.TARGET);
+          IMatch<EObject> targetValueMatch = getMapping().getMatchFor(targetValue, Role.TARGET);
           if (targetValueMatch != null) {
             // Get the matching value in REFERENCE
             EObject matchReference = targetValueMatch.get(Role.REFERENCE);
@@ -250,10 +253,10 @@ public class ExtendedComparison extends EComparisonImpl {
         
         // Create differences for isolated values
         for (Entry<IMatch, EObject> entry : isolatedTargetMatches.entrySet()) {
-          IMatch isolatedTargetMatch = entry.getKey();
+          IMatch<EObject> isolatedTargetMatch = entry.getKey();
           EObject value = entry.getValue();
           if (diffPolicy instanceof IDiffPolicy2) {
-            if (((IDiffPolicy2) diffPolicy).coverMatchOnReference(isolatedTargetMatch, reference)) {
+            if (((IDiffPolicy2) diffPolicy).coverMatchOnReference(isolatedTargetMatch, eReference)) {
               createReferenceValueDifference(match, reference, value, isolatedTargetMatch, Role.TARGET, false);
               result = true;
             }
@@ -263,9 +266,9 @@ public class ExtendedComparison extends EComparisonImpl {
           }
         }
         for (Entry<IMatch, EObject> entry : isolatedReferenceMatches.entrySet()) {
-          IMatch isolatedReferenceMatch = entry.getKey();
+          IMatch<EObject> isolatedReferenceMatch = entry.getKey();
           EObject value = entry.getValue();
-          if (((IDiffPolicy2) diffPolicy).coverMatchOnReference(isolatedReferenceMatch, reference)) {
+          if (((IDiffPolicy2) diffPolicy).coverMatchOnReference(isolatedReferenceMatch, eReference)) {
             createReferenceValueDifference(match, reference, value, isolatedReferenceMatch, Role.REFERENCE, false);
             result = true;
           } else if (diffPolicy.coverMatch(isolatedReferenceMatch)) {

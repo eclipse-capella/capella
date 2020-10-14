@@ -17,8 +17,8 @@ import java.util.Collection;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.emf.diffmerge.api.IMatch;
-import org.eclipse.emf.diffmerge.api.Role;
+import org.eclipse.emf.diffmerge.diffdata.EMatch;
+import org.eclipse.emf.diffmerge.generic.api.Role;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -209,7 +209,7 @@ public class AttachmentActivity extends AbstractActivity {
     ExtendedComparison comparison = (ExtendedComparison) context.get(ITransitionConstants.MERGE_COMPARISON);
 
     EObject targetElement = link.getTarget();
-    IMatch match = comparison.getMapping().getMatchFor(targetElement, destinationRole);
+    EMatch match = comparison.getMapping().getMatchFor(targetElement, destinationRole);
 
     if (match == null) {
       return;
@@ -234,7 +234,7 @@ public class AttachmentActivity extends AbstractActivity {
     }
 
     if (location instanceof CatalogElementLink) {
-      IMatch match2 = comparison.getMapping().getMatchFor(((CatalogElementLink) location).getTarget(), oppositeRole);
+      EMatch match2 = comparison.getMapping().getMatchFor(((CatalogElementLink) location).getTarget(), oppositeRole);
       if (match2 == null) {
         match2 = comparison.getMapping().getMatchFor(((CatalogElementLink) location).getTarget(), destinationRole);
       }

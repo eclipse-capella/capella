@@ -12,7 +12,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.re.updateconnections.ui;
 
-import org.eclipse.emf.diffmerge.api.scopes.IModelScope;
+import org.eclipse.emf.diffmerge.generic.api.scopes.ITreeDataScope;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 /**
@@ -26,7 +27,7 @@ public class ByNameMatcher extends ConnectionMatcher {
   }
 
   @Override
-  public Object getMatchID(Connection connection, IModelScope scope, UpdateConnectionsMatchPolicy context) {
+  public Object getMatchID(Connection connection, ITreeDataScope<EObject> scope, UpdateConnectionsMatchPolicy context) {
 
     Object result = null;
 

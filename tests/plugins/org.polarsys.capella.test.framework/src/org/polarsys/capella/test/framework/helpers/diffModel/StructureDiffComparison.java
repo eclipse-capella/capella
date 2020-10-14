@@ -14,7 +14,7 @@ package org.polarsys.capella.test.framework.helpers.diffModel;
 
 import java.util.HashMap;
 
-import org.eclipse.emf.diffmerge.api.scopes.IModelScope;
+import org.eclipse.emf.diffmerge.generic.api.scopes.ITreeDataScope;
 import org.eclipse.emf.diffmerge.impl.policies.DefaultMatchPolicy;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
@@ -31,10 +31,10 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
  */
 public class StructureDiffComparison extends DefaultMatchPolicy {
 
-	private HashMap<IModelScope, HashMap<EObject, String>> scope2IdSpace = new HashMap<IModelScope, HashMap<EObject, String>>();
-	private HashMap<IModelScope, HashMap<String, Integer>> scope2EquivalentIdTable = new HashMap<IModelScope, HashMap<String, Integer>>();
+	private HashMap<ITreeDataScope<EObject>, HashMap<EObject, String>> scope2IdSpace = new HashMap<ITreeDataScope<EObject>, HashMap<EObject, String>>();
+	private HashMap<ITreeDataScope<EObject>, HashMap<String, Integer>> scope2EquivalentIdTable = new HashMap<ITreeDataScope<EObject>, HashMap<String, Integer>>();
 	
-	private HashMap<EObject, String> getIdSpace(IModelScope scope_p) {
+	private HashMap<EObject, String> getIdSpace(ITreeDataScope<EObject> scope_p) {
 		HashMap<EObject, String> res = scope2IdSpace.get(scope_p);
 		if (res == null) {
 			res = new HashMap<EObject, String>();
@@ -43,7 +43,7 @@ public class StructureDiffComparison extends DefaultMatchPolicy {
 		return res;
 	}
 	
-	private HashMap<String, Integer> getEquivalentIdTable(IModelScope scope_p) {
+	private HashMap<String, Integer> getEquivalentIdTable(ITreeDataScope<EObject> scope_p) {
 		HashMap<String, Integer> equivalentIdTable = scope2EquivalentIdTable.get(scope_p);
 		if (equivalentIdTable == null) {
 			equivalentIdTable = new HashMap<String, Integer>();
@@ -52,12 +52,12 @@ public class StructureDiffComparison extends DefaultMatchPolicy {
 		return equivalentIdTable;
 	}
 	
-	private String getIdentifier(EObject element_p, IModelScope scope_p) {
+	private String getIdentifier(EObject element_p, ITreeDataScope<EObject> scope_p) {
 		HashMap<EObject, String> idSpace = getIdSpace(scope_p);
 		return idSpace.get(element_p);
 	}
 	
-	private String saveIdentifier(EObject element_p, IModelScope scope_p, String identifier) {
+	private String saveIdentifier(EObject element_p, ITreeDataScope<EObject> scope_p, String identifier) {
 		HashMap<EObject, String> idSpace = getIdSpace(scope_p);
 		if (idSpace.values().contains(identifier)) {
 			HashMap<String, Integer> table = getEquivalentIdTable(scope_p);
@@ -73,7 +73,7 @@ public class StructureDiffComparison extends DefaultMatchPolicy {
 	}
 	
 	public String getIdentifier(EObject object) {
-		for (IModelScope key : scope2IdSpace.keySet()) {
+		for (ITreeDataScope<EObject> key : scope2IdSpace.keySet()) {
 			String identifier = scope2IdSpace.get(key).get(object);
 			if (identifier != null)
 				return identifier;
@@ -82,7 +82,7 @@ public class StructureDiffComparison extends DefaultMatchPolicy {
 	}
 	
 	@Override
-	public Object getMatchID(EObject element_p, IModelScope scope_p) {		
+	public Object getMatchID(EObject element_p, ITreeDataScope<EObject> scope_p) {		
 		String identifier = getIdentifier(element_p, scope_p);
 		if (identifier == null) {
 			identifier = getSpecificIdentifier(element_p, scope_p);						
@@ -109,7 +109,7 @@ public class StructureDiffComparison extends DefaultMatchPolicy {
 	private static final String NULL_VALUE = "[null]"; //$NON-NLS-1$
 	private static final String NO_NAME = "$$[NO_LOCAL_NAME]"; //$NON-NLS-1$
 	
-	private String getSpecificIdentifier(Object element, IModelScope scope_p) {
+	private String getSpecificIdentifier(Object element, ITreeDataScope<EObject> scope_p) {
 		if (element instanceof RequirementsTrace) {
 			RequirementsTrace trace = (RequirementsTrace) element;
 			TraceableElement source = trace.getSourceElement();

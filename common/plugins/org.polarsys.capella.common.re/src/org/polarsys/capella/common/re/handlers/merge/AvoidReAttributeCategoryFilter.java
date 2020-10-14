@@ -12,9 +12,9 @@
  *******************************************************************************/
 package org.polarsys.capella.common.re.handlers.merge;
 
-import org.eclipse.emf.diffmerge.api.diff.IAttributeValuePresence;
-import org.eclipse.emf.diffmerge.api.diff.IDifference;
-import org.eclipse.emf.diffmerge.api.diff.IElementRelativeDifference;
+import org.eclipse.emf.diffmerge.diffdata.EAttributeValuePresence;
+import org.eclipse.emf.diffmerge.generic.api.diff.IDifference;
+import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.re.RePackage;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.merge.CategoryFilter;
@@ -31,22 +31,18 @@ public class AvoidReAttributeCategoryFilter extends CategoryFilter {
   }
 
   @Override
-  public boolean covers(IDifference difference) {
-    if (difference instanceof IElementRelativeDifference) {
-      IElementRelativeDifference diff = (IElementRelativeDifference) difference;
-      if (diff instanceof IAttributeValuePresence) {
-        if (RePackage.Literals.CATALOG_ELEMENT__KIND.equals(((IAttributeValuePresence) diff).getFeature())) {
-          return true;
-        }
-        if (RePackage.Literals.RE_NAMED_ELEMENT__NAME.equals(((IAttributeValuePresence) diff).getFeature())) {
-          return true;
-        }
-        if (RePackage.Literals.CATALOG_ELEMENT__SUFFIX.equals(((IAttributeValuePresence) diff).getFeature())) {
-          return true;
-        }
+  public boolean covers(IDifference<EObject> difference) {
+    if (difference instanceof EAttributeValuePresence) {
+      if (RePackage.Literals.CATALOG_ELEMENT__KIND.equals(((EAttributeValuePresence) difference).getFeature())) {
+        return true;
+      }
+      if (RePackage.Literals.RE_NAMED_ELEMENT__NAME.equals(((EAttributeValuePresence) difference).getFeature())) {
+        return true;
+      }
+      if (RePackage.Literals.CATALOG_ELEMENT__SUFFIX.equals(((EAttributeValuePresence) difference).getFeature())) {
+        return true;
       }
     }
-
     return false;
   }
 }

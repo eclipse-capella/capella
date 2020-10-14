@@ -17,8 +17,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import org.eclipse.emf.diffmerge.api.IMatchPolicy;
-import org.eclipse.emf.diffmerge.api.scopes.IModelScope;
+import org.eclipse.emf.diffmerge.generic.api.IMatchPolicy;
+import org.eclipse.emf.diffmerge.generic.api.scopes.ITreeDataScope;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
@@ -32,7 +32,7 @@ import com.google.common.collect.Iterators;
 /**
  * The diff/merge match policy used to compare connections between pairs of REC/RPL.
  */
-public class UpdateConnectionsMatchPolicy implements IMatchPolicy {
+public class UpdateConnectionsMatchPolicy implements IMatchPolicy<EObject> {
 
   /* maps elements in rpl1 and rpl2 to their corresponding rec elements */
   private final Map<EObject, EObject> rpl2rec;
@@ -82,7 +82,7 @@ public class UpdateConnectionsMatchPolicy implements IMatchPolicy {
    * element is an connection in either the rplScope or the recScope, delegates to the connection match function.
    * Otherwise the argument is returned
    */
-  public Object getMatchID(EObject element, IModelScope scope) {
+  public Object getMatchID(EObject element, ITreeDataScope<EObject> scope) {
 
     Connection rplConnection = rplScope.adapt(element);
     if (rplConnection != null) {

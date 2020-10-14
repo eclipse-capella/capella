@@ -12,12 +12,11 @@
  *******************************************************************************/
 package org.polarsys.capella.core.transition.system.topdown.policies.diff;
 
-import org.eclipse.emf.diffmerge.api.IMatch;
-import org.eclipse.emf.diffmerge.api.Role;
+import org.eclipse.emf.diffmerge.generic.api.IMatch;
+import org.eclipse.emf.diffmerge.generic.api.Role;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
@@ -41,16 +40,11 @@ public class TopDownDiffPolicy extends org.polarsys.capella.core.transition.comm
     super(context_p2);
   }
   
-  @Override
-  public boolean considerOrdered(EStructuralFeature feature_p) {
-    return super.considerOrdered(feature_p);
-  }
-
   /**
    * {@inheritDoc}
    */
   @Override
-  public boolean coverMatch(IMatch match_p) {
+  public boolean coverMatch(IMatch<EObject> match_p) {
 
     IContext context = getContext();
     EClass clazz = LevelHandlerHelper.getInstance(context).getLevel(context, Level.TARGET);
@@ -78,7 +72,7 @@ public class TopDownDiffPolicy extends org.polarsys.capella.core.transition.comm
    * {@inheritDoc}
    */
   @Override
-  public boolean coverMatchOnReference(IMatch match_p, EReference reference_p) {
+  public boolean coverMatchOnReference(IMatch<EObject> match_p, EReference reference_p) {
 
     if (reference_p.isContainment()) {
       EObject source = match_p.get(Role.REFERENCE);

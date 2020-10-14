@@ -12,8 +12,9 @@
  *******************************************************************************/
 package org.polarsys.capella.core.transition.common.handlers.merge;
 
-import org.eclipse.emf.diffmerge.api.diff.IDifference;
-import org.eclipse.emf.diffmerge.api.diff.IMergeableDifference;
+import org.eclipse.emf.diffmerge.generic.api.diff.IDifference;
+import org.eclipse.emf.diffmerge.generic.api.diff.IMergeableDifference;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.validation.model.CategoryManager;
 
@@ -36,7 +37,7 @@ public interface ICategoryItem {
    * @param node_p
    *          a non-null diff node
    */
-  boolean covers(IDifference difference);
+  boolean covers(IDifference<EObject> difference);
 
   /**
    * Return a user-friendly description for this category in the context of the given diff node
@@ -136,7 +137,7 @@ public interface ICategoryItem {
   /**
    * Modify required and implied dependencies for the given difference
    */
-  public void setDependencies(IMergeableDifference difference);
+  public void setDependencies(IMergeableDifference<EObject> difference);
 
   /**
    * Returns whether a feature is covered by the filter

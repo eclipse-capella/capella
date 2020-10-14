@@ -47,7 +47,11 @@ public class TransitionContext extends GenericTransformationContext {
     for (Object key : getKeys()) {
       Object value = get(key);
       if ((value != null) && (value instanceof Collection<?>)) {
-        ((Collection<?>) value).clear();
+        try {
+          ((Collection<?>) value).clear();
+        } catch (UnsupportedOperationException e) {
+          //If the collection doesn't support clear(), we want to continue dispose anyhow
+        }
       }
     }
 

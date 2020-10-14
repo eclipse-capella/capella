@@ -13,17 +13,16 @@
 
 package org.polarsys.capella.core.transition.common.policies.diff;
 
-import org.eclipse.emf.diffmerge.api.IMatch;
+import org.eclipse.emf.diffmerge.generic.api.IMatch;
 import org.eclipse.emf.diffmerge.impl.policies.DefaultDiffPolicy;
-import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
  *
  */
-public class ExtDiffPolicy extends DefaultDiffPolicy implements IDiffPolicy2 {
+public class ExtDiffPolicy extends DefaultDiffPolicy implements IDiffPolicy2<EObject> {
 
   private IContext context;
 
@@ -35,23 +34,10 @@ public class ExtDiffPolicy extends DefaultDiffPolicy implements IDiffPolicy2 {
     this.context = context;
   }
 
-  @Override
-  public boolean coverMatch(IMatch match) {
-    return super.coverMatch(match);
-  }
-
   /**
    * {@inheritDoc}
    */
-  @Override
-  public boolean considerEqual(Object value1, Object value2, EAttribute attribute) {
-    return super.considerEqual(value1, value2, attribute);
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  public boolean coverMatchOnReference(IMatch match, EReference reference) {
+  public boolean coverMatchOnReference(IMatch<EObject> match, EReference reference) {
     //Default implementation
     return coverMatch(match);
   }

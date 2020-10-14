@@ -19,8 +19,8 @@ import static org.polarsys.capella.core.compare.CapellaMatchPolicy.CRITERION_INT
 import java.util.Arrays;
 import java.util.List;
 
-import org.eclipse.emf.diffmerge.api.Role;
-import org.eclipse.emf.diffmerge.diffdata.impl.EComparisonImpl;
+import org.eclipse.emf.diffmerge.diffdata.EComparison;
+import org.eclipse.emf.diffmerge.generic.api.Role;
 import org.polarsys.capella.core.compare.CapellaMatchPolicy;
 
 /* The testing environment was created by starting from a simple model, 
@@ -48,7 +48,7 @@ public class DiffMergeBetweenSubsystemModels extends DiffMergeTestCase {
   }
 
   @Override
-  protected void checkDifferences(EComparisonImpl comparison) {
+  protected void checkDifferences(EComparison comparison) {
     assertCheckDifferences(comparison, Role.TARGET, getModelElementsSourceProject(getTargetDiffList()),
         getModelElementsSourceProject(getTargetNoDiffList()), false);
     assertCheckDifferences(comparison, Role.REFERENCE,

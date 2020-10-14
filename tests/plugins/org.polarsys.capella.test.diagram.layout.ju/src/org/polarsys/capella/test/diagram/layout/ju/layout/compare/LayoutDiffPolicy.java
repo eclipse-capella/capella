@@ -22,10 +22,10 @@ import org.polarsys.capella.test.diagram.layout.ju.layout.LayoutPackage;
 public class LayoutDiffPolicy extends DefaultDiffPolicy {
 
   @Override
-  public boolean considerOrdered(EStructuralFeature feature_p) {
+  protected boolean considerOrderedFeature(EStructuralFeature feature_p) {
     return false;
   }
-
+  
   @Override
   public boolean coverFeature(EStructuralFeature feature_p) {
     return !(LayoutPackage.Literals.ISEMANTIC_LAYOUT__NAME.equals(feature_p))

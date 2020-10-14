@@ -17,13 +17,13 @@ import java.util.Collection;
 import java.util.Iterator;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.emf.diffmerge.api.IComparison;
-import org.eclipse.emf.diffmerge.api.IMatch;
-import org.eclipse.emf.diffmerge.api.Role;
-import org.eclipse.emf.diffmerge.api.diff.IDifference;
-import org.eclipse.emf.diffmerge.api.diff.IElementPresence;
 import org.eclipse.emf.diffmerge.api.scopes.IEditableModelScope;
+import org.eclipse.emf.diffmerge.diffdata.EComparison;
+import org.eclipse.emf.diffmerge.diffdata.EElementPresence;
 import org.eclipse.emf.diffmerge.diffdata.impl.EComparisonImpl;
+import org.eclipse.emf.diffmerge.generic.api.IMatch;
+import org.eclipse.emf.diffmerge.generic.api.Role;
+import org.eclipse.emf.diffmerge.generic.api.diff.IDifference;
 import org.eclipse.emf.diffmerge.impl.scopes.FragmentedModelScope;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -44,7 +44,7 @@ import org.polarsys.capella.core.model.skeleton.CapellaModelSkeleton;
 public class SkeletonUtil {
 
   private final EObject context;
-  private IComparison comparison;
+  private EComparison comparison;
 
   public SkeletonUtil(EObject context) {
     this.context = context;
@@ -54,7 +54,7 @@ public class SkeletonUtil {
     return new CapellaModelSkeleton.Builder(manager).setRootType(root).build().getProject();
   }
 
-  private IComparison getComparison() {
+  private EComparison getComparison() {
 
     if (comparison == null) {
 
@@ -90,9 +90,9 @@ public class SkeletonUtil {
    * @param element the element to test
    */
   public boolean isSkeletonElement(EObject element) {
-    IComparison c = getComparison();
-    for (Iterator<IMatch> matchIterator = c.getAllContents(Role.REFERENCE); matchIterator.hasNext();) {
-      IMatch next = matchIterator.next();
+    EComparison c = getComparison();
+    for (Iterator<IMatch<EObject>> matchIterator = c.getAllContents(Role.REFERENCE); matchIterator.hasNext();) {
+      IMatch<EObject> next = matchIterator.next();
       if (next.get(Role.TARGET) == element) {
         return true;
       }
@@ -122,9 +122,9 @@ public class SkeletonUtil {
    */
   public Collection<EObject> getSkeletonElements() {
     Collection<EObject> skeleton = new ArrayList<EObject>();
-    IComparison c = getComparison();
-    for (Iterator<IMatch> matchIterator = c.getAllContents(Role.REFERENCE); matchIterator.hasNext();) {
-      IMatch next = matchIterator.next();
+    EComparison c = getComparison();
+    for (Iterator<IMatch<EObject>> matchIterator = c.getAllContents(Role.REFERENCE); matchIterator.hasNext();) {
+      IMatch<EObject> next = matchIterator.next();
       if (next.get(Role.TARGET) != null) {
         skeleton.add(next.get(Role.TARGET));
       }
@@ -139,13 +139,12 @@ public class SkeletonUtil {
   public Collection<EObject> getUserRoots() {
 
     Collection<EObject> elementsForRec = new ArrayList<EObject>();
-    IComparison comparison = getComparison();
+    EComparison comparison = getComparison();
 
-    for (IDifference diff : comparison.getRemainingDifferences()) {
+    for (IDifference<EObject> diff : comparison.getRemainingDifferences()) {
 
-      if (diff instanceof IElementPresence && ((IElementPresence) diff).getPresenceRole() == Role.TARGET) {
-
-        IElementPresence presence = (IElementPresence) diff;
+      if (diff instanceof EElementPresence && ((EElementPresence) diff).getPresenceRole() == Role.TARGET) {
+        EElementPresence presence = (EElementPresence) diff;
         EObject element = presence.getElement();
         if (presence.getOwnerMatch() != null && presence.getOwnerMatch().get(Role.REFERENCE) != null) {
           elementsForRec.add(element);

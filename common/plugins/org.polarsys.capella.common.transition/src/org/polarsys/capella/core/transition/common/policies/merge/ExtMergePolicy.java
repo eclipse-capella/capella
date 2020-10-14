@@ -18,8 +18,8 @@ import java.util.HashSet;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.emf.diffmerge.api.diff.IMergeableDifference;
-import org.eclipse.emf.diffmerge.api.scopes.IFeaturedModelScope;
+import org.eclipse.emf.diffmerge.generic.api.diff.IMergeableDifference;
+import org.eclipse.emf.diffmerge.generic.api.scopes.ITreeDataScope;
 import org.eclipse.emf.diffmerge.impl.policies.DefaultMergePolicy;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -32,7 +32,7 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 /**
  *
  */
-public class ExtMergePolicy extends DefaultMergePolicy implements IHandler, IMergePolicy2 {
+public class ExtMergePolicy extends DefaultMergePolicy implements IHandler, IMergePolicy2<EObject> {
 
   protected static final String MERGE_POLICY__UNCOPY_FEATURES = "MERGE_POLICY__UNCOPY_FEATURES"; //$NON-NLS-1$
 
@@ -53,26 +53,41 @@ public class ExtMergePolicy extends DefaultMergePolicy implements IHandler, IMer
     this.context = context;
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
-  public boolean copyFeature(EStructuralFeature feature, IFeaturedModelScope scope) {
+  public boolean copyAttribute(Object attribute_p, ITreeDataScope<EObject> scope_p) {
     IContext context = getContext();
 
-    if (getUnwantedFeatures(context).contains(feature)) {
+    if (getUnwantedFeatures(context).contains(attribute_p)) {
       return false;
     }
 
     IMergeHandler handler = MergeHandlerHelper.getInstance(context);
     for (ICategoryItem item : ((IMergeHandler) handler).getCategories(context)) {
-      if (item.isActive() && !item.isInFocusMode() && item.covers(feature)) {
-        getUnwantedFeatures(context).add(feature);
+      if (item.isActive() && !item.isInFocusMode() && item.covers((EStructuralFeature) attribute_p)) {
+        getUnwantedFeatures(context).add((EStructuralFeature) attribute_p);
         return false;
       }
     }
 
-    return super.copyFeature(feature, scope);
+    return super.copyAttribute(attribute_p, scope_p);
+  }
+
+  @Override
+  public boolean copyReference(Object reference_p, ITreeDataScope<EObject> scope_p) {
+    IContext context = getContext();
+
+    if (getUnwantedFeatures(context).contains(reference_p)) {
+      return false;
+    }
+
+    IMergeHandler handler = MergeHandlerHelper.getInstance(context);
+    for (ICategoryItem item : ((IMergeHandler) handler).getCategories(context)) {
+      if (item.isActive() && !item.isInFocusMode() && item.covers((EStructuralFeature) reference_p)) {
+        getUnwantedFeatures(context).add((EStructuralFeature) reference_p);
+        return false;
+      }
+    }
+    return super.copyReference(reference_p, scope_p);
   }
 
   /**
@@ -98,7 +113,7 @@ public class ExtMergePolicy extends DefaultMergePolicy implements IHandler, IMer
   }
 
   @Override
-  public void setDependencies(IMergeableDifference difference) {
+  public void setDependencies(IMergeableDifference<EObject> difference) {
     IHandler handler = MergeHandlerHelper.getInstance(context);
     for (ICategoryItem item : ((IMergeHandler) handler).getCategories(context)) {
       if (item.covers(difference)) {

@@ -18,16 +18,14 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.eclipse.compare.CompareEditorInput;
-import org.eclipse.emf.diffmerge.api.IMatch;
-import org.eclipse.emf.diffmerge.api.scopes.IEditableModelScope;
 import org.eclipse.emf.diffmerge.diffdata.EComparison;
-import org.eclipse.emf.diffmerge.diffdata.EMatch;
+import org.eclipse.emf.diffmerge.generic.api.IMatch;
+import org.eclipse.emf.diffmerge.generic.api.scopes.ITreeDataScope;
 import org.eclipse.emf.diffmerge.ui.diffuidata.ComparisonSelection;
 import org.eclipse.emf.diffmerge.ui.viewers.ComparisonViewer;
 import org.eclipse.emf.diffmerge.ui.viewers.EMFDiffNode;
 import org.eclipse.emf.diffmerge.ui.viewers.HeaderViewer;
 import org.eclipse.emf.diffmerge.ui.viewers.MergeChoiceData;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IAction;
@@ -132,7 +130,7 @@ public class DiffComparisonViewer extends ComparisonViewer {
   protected Collection<IMatch> getExpandedElements(EMFDiffNode node) {
     LinkedList<IMatch> matches = new LinkedList<IMatch>();
     Collection<IMatch> result = new ArrayList<IMatch>();
-    EComparison comparison = node.getActualComparison();
+    EComparison comparison = (EComparison) node.getActualComparison();
     matches.addAll(comparison.getContents());
 
     while (!matches.isEmpty()) {
@@ -214,7 +212,7 @@ public class DiffComparisonViewer extends ComparisonViewer {
 
   @Override
   protected boolean interactionsRequiredForMerge(MergeChoiceData choices, EMFDiffNode input,
-      List<EMatch> selectedMatches) {
+      List<IMatch<?>> selectedMatches) {
     if (mergeAllInProgress) {
       return false;
     }
@@ -231,8 +229,8 @@ public class DiffComparisonViewer extends ComparisonViewer {
   }
   
   boolean mergeAll() {
-    IEditableModelScope scope = getComparison().getScope(getInput().getRoleForSide(true));
-    List<EObject> root = scope.getContents();
+    ITreeDataScope<?> scope = getComparison().getScope(getInput().getRoleForSide(true));
+    List<?> root = scope.getRoots();
     ComparisonSelection selection = asComparisonSelection(new StructuredSelection(root));
     mergeAllInProgress = true;
     mergeAllSucceed = false;

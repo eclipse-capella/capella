@@ -15,8 +15,10 @@ package org.polarsys.capella.core.compare;
 import java.util.Arrays;
 import java.util.Collection;
 
+import org.eclipse.emf.diffmerge.generic.api.scopes.ITreeDataScope;
 import org.eclipse.emf.diffmerge.sirius.SiriusDiffPolicy;
 import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 
 
@@ -34,16 +36,16 @@ public class CapellaDiffPolicy extends SiriusDiffPolicy {
     );
   
   /**
-   * @see org.eclipse.emf.diffmerge.sirius.SiriusDiffPolicy#coverValue(java.lang.Object, org.eclipse.emf.ecore.EAttribute)
+   * @see org.eclipse.emf.diffmerge.sirius.SiriusDiffPolicy#coverValue(java.lang.Object, java.lang.Object, org.eclipse.emf.diffmerge.generic.api.scopes.ITreeDataScope)
    */
   @Override
-  public boolean coverValue(Object value, EAttribute attribute) {
+  public boolean coverValue(Object value, Object attribute, ITreeDataScope<EObject> scope_p) {
     boolean result;
     if (IGNORING_EMPTY_STRING_ATTRIBUTES.contains(attribute)
         && ((String)value).length() == 0)
       result = false;
     else
-      result = super.coverValue(value, attribute);
+      result = super.coverValue(value, attribute, scope_p);
     return result;
   }
   

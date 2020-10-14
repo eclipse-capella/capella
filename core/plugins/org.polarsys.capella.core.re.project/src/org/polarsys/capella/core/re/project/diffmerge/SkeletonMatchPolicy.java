@@ -18,8 +18,8 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.eclipse.emf.diffmerge.api.IMatchPolicy;
-import org.eclipse.emf.diffmerge.api.scopes.IModelScope;
+import org.eclipse.emf.diffmerge.generic.api.IMatchPolicy;
+import org.eclipse.emf.diffmerge.generic.api.scopes.ITreeDataScope;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
@@ -74,7 +74,7 @@ import org.polarsys.capella.core.model.helpers.naming.NamingConstants;
  * FIXME this match policy exists also in the SSS Multiphase Transition Addon, as MultiphaseMatchpolicy. It's a pretty useful match policy,
  * so this should be unified and added to capella core.
  */
-public class SkeletonMatchPolicy implements IMatchPolicy {
+public class SkeletonMatchPolicy implements IMatchPolicy<EObject> {
 
   private final Map<Object, String> matchIDs = new HashMap<>();
 
@@ -243,7 +243,7 @@ public class SkeletonMatchPolicy implements IMatchPolicy {
   }
 
   @Override
-  public String getMatchID(final EObject element_p, IModelScope scope_p) {
+  public String getMatchID(final EObject element_p, ITreeDataScope<EObject> scope_p) {
 
     String result = null;
 

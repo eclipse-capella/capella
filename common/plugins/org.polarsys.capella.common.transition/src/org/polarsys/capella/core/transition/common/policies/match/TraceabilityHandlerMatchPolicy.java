@@ -16,7 +16,7 @@ package org.polarsys.capella.core.transition.common.policies.match;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import org.eclipse.emf.diffmerge.api.scopes.IModelScope;
+import org.eclipse.emf.diffmerge.generic.api.scopes.ITreeDataScope;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.traceability.ITraceabilityHandler;
@@ -47,7 +47,7 @@ public class TraceabilityHandlerMatchPolicy extends ContextMatchPolicy {
    * @param context
    * @return
    */
-  public boolean isMatchable(EObject element, IModelScope scope, IContext context) {
+  public boolean isMatchable(EObject element, ITreeDataScope<EObject> scope, IContext context) {
     return true;
   }
 
@@ -56,7 +56,7 @@ public class TraceabilityHandlerMatchPolicy extends ContextMatchPolicy {
    *      org.polarsys.capella.common.consonance.scopes.IModelScope)
    */
   @Override
-  public Comparable<?> getMatchID(EObject element, IModelScope scope) {
+  public Comparable<?> getMatchID(EObject element, ITreeDataScope<EObject> scope) {
     Collection<EObject> bounds = new ArrayList<EObject>();
 
     IContext context = getContext();

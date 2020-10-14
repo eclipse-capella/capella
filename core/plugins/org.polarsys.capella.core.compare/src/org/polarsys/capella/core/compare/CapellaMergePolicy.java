@@ -17,7 +17,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-import org.eclipse.emf.diffmerge.api.scopes.IFeaturedModelScope;
+import org.eclipse.emf.diffmerge.generic.api.scopes.ITreeDataScope;
 import org.eclipse.emf.diffmerge.sirius.SiriusMergePolicy;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -90,7 +90,7 @@ public class CapellaMergePolicy extends SiriusMergePolicy {
    * @param scope a non-null scope
    */
   protected void extendCapellaAssociationPropertyAdditionGroup(
-      Set<EObject> group, EObject element, IFeaturedModelScope scope) {
+      Set<EObject> group, EObject element, ITreeDataScope<EObject> scope) {
     if (element instanceof Association) {
       Association association = (Association)element;
       group.addAll((association.getOwnedMembers()));
@@ -117,7 +117,7 @@ public class CapellaMergePolicy extends SiriusMergePolicy {
    * @param scope a non-null scope
    */
   protected void extendCapellaGraphicalContainmentAdditionGroup(
-      Set<EObject> group, EObject element, IFeaturedModelScope scope) {
+      Set<EObject> group, EObject element, ITreeDataScope<EObject> scope) {
     if (element instanceof AbstractDNode) {
       EObject container = element.eContainer();
       if (container instanceof AbstractDNode) {
@@ -142,7 +142,7 @@ public class CapellaMergePolicy extends SiriusMergePolicy {
    * @param scope a non-null scope
    */
   protected void extendCapellaMultiplicityAdditionGroup(
-      Set<EObject> group, EObject element, IFeaturedModelScope scope) {
+      Set<EObject> group, EObject element, ITreeDataScope<EObject> scope) {
     if (element instanceof MultiplicityElement) {
       MultiplicityElement multi = (MultiplicityElement)element;
       EObject minCard = multi.getOwnedMinCard();
@@ -162,7 +162,7 @@ public class CapellaMergePolicy extends SiriusMergePolicy {
    * @param scope a non-null scope
    */
   protected void extendCapellaPartComponentAdditionGroup(
-      Set<EObject> group, EObject element, IFeaturedModelScope scope) {
+      Set<EObject> group, EObject element, ITreeDataScope<EObject> scope) {
     if (element instanceof Part) {
       Part part = (Part)element;
       AbstractType type = part.getAbstractType();
@@ -177,11 +177,11 @@ public class CapellaMergePolicy extends SiriusMergePolicy {
   }
   
   /**
-   * @see org.eclipse.emf.diffmerge.sirius.SiriusMergePolicy#getAdditionGroup(org.eclipse.emf.ecore.EObject, org.eclipse.emf.diffmerge.api.scopes.IFeaturedModelScope)
+   * @see org.eclipse.emf.diffmerge.sirius.SiriusMergePolicy#getAdditionGroup(org.eclipse.emf.ecore.EObject, org.eclipse.emf.diffmerge.generic.api.scopes.ITreeDataScope)
    */
   @Override
   public Set<EObject> getAdditionGroup(EObject element,
-      IFeaturedModelScope scope) {
+      ITreeDataScope<EObject> scope) {
     Set<EObject> result = super.getAdditionGroup(element, scope);
     extendCapellaPartComponentAdditionGroup(result, element, scope);
     extendCapellaAssociationPropertyAdditionGroup(result, element, scope);
@@ -242,24 +242,25 @@ public class CapellaMergePolicy extends SiriusMergePolicy {
   }
   
   /**
-   * @see org.eclipse.emf.diffmerge.impl.policies.DefaultMergePolicy#getNewIntrinsicID(org.eclipse.emf.ecore.EObject, org.eclipse.emf.diffmerge.api.scopes.IFeaturedModelScope)
+   * @see org.eclipse.emf.diffmerge.generic.impl.policies.DefaultMergePolicy#getNewIntrinsicID(java.lang.Object, org.eclipse.emf.diffmerge.generic.api.scopes.ITreeDataScope)
    */
   @Override
-  public String getNewIntrinsicID(EObject element, IFeaturedModelScope scope) {
-    String result;
-    if (element.eClass().getEIDAttribute() != null)
+  public Object getNewIntrinsicID(EObject element, ITreeDataScope<EObject> scope) {
+    Object result;
+    if (element.eClass().getEIDAttribute() != null) {
       result = IdGenerator.createId();
-    else
+    } else {
       result = super.getNewIntrinsicID(element, scope);
+    }
     return result;
   }
   
   /**
-   * @see org.eclipse.emf.diffmerge.impl.policies.DefaultMergePolicy#isSingleMandatory(org.eclipse.emf.ecore.EReference)
+   * @see org.eclipse.emf.diffmerge.sirius.SiriusMergePolicy#isSingleMandatory(java.lang.Object, org.eclipse.emf.diffmerge.generic.api.scopes.ITreeDataScope)
    */
   @Override
-  protected boolean isSingleMandatory(EReference reference) {
-    return super.isSingleMandatory(reference) ||
+  protected boolean isSingleMandatory(Object reference, ITreeDataScope<EObject> scope_p) {
+    return super.isSingleMandatory(reference, scope_p) ||
         MANDATORY_REFERENCES.contains(reference);
   }
   

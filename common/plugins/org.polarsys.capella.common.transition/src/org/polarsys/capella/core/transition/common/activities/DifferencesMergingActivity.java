@@ -17,8 +17,9 @@ import java.util.Collection;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.emf.diffmerge.api.diff.IDifference;
 import org.eclipse.emf.diffmerge.api.scopes.IEditableModelScope;
+import org.eclipse.emf.diffmerge.generic.api.diff.IDifference;
+import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.merge.MergeHandlerHelper;
 import org.polarsys.capella.core.transition.common.merge.scope.ITargetModelScope;
@@ -38,9 +39,9 @@ public class DifferencesMergingActivity extends AbstractActivity implements ITra
   public IStatus _run(ActivityParameters activityParams) {
     IContext context = (IContext) activityParams.getParameter(TRANSPOSER_CONTEXT).getValue();
 
-    Collection<IDifference> fromReference = (Collection<IDifference>) context
+    Collection<IDifference<EObject>> fromReference = (Collection<IDifference<EObject>>) context
         .get(ITransitionConstants.MERGE_REFERENCE_DIFFERENCES);
-    Collection<IDifference> fromTarget = (Collection<IDifference>) context
+    Collection<IDifference<EObject>> fromTarget = (Collection<IDifference<EObject>>) context
         .get(ITransitionConstants.MERGE_TARGET_DIFFERENCES);
 
     IStatus result = computeDifferences(fromReference, fromTarget, context);
@@ -61,7 +62,7 @@ public class DifferencesMergingActivity extends AbstractActivity implements ITra
 
   }
 
-  protected IStatus computeDifferences(Collection<IDifference> fromReference, Collection<IDifference> fromTarget,
+  protected IStatus computeDifferences(Collection<IDifference<EObject>> fromReference, Collection<IDifference<EObject>> fromTarget,
       IContext context) {
     return MergeHandlerHelper.getInstance(context).processDifferences(context, fromReference, fromTarget);
   }

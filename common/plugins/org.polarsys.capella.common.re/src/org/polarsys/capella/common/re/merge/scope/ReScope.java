@@ -15,8 +15,8 @@ package org.polarsys.capella.common.re.merge.scope;
 import java.util.Collection;
 import java.util.List;
 
-import org.eclipse.emf.diffmerge.api.IMatch;
-import org.eclipse.emf.diffmerge.api.Role;
+import org.eclipse.emf.diffmerge.diffdata.EMatch;
+import org.eclipse.emf.diffmerge.generic.api.Role;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -80,7 +80,7 @@ public abstract class ReScope extends ReferenceModelScope implements INotifyList
 
     if (shouldAddTraceability(value, destinationRole, context)) {
 
-      IMatch match = comparison.getMapping().getMatchFor(value, destinationRole);
+      EMatch match = comparison.getMapping().getMatchFor(value, destinationRole);
       EObject oppositeValue = match.get(oppositeRole);
 
       CatalogElementLink link = ReplicableElementHandlerHelper.getInstance(context).addLink(context, element, value, oppositeValue);

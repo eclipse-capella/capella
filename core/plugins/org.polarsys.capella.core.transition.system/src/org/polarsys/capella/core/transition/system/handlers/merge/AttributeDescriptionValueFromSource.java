@@ -12,9 +12,9 @@
  *******************************************************************************/
 package org.polarsys.capella.core.transition.system.handlers.merge;
 
-import org.eclipse.emf.diffmerge.api.Role;
-import org.eclipse.emf.diffmerge.api.diff.IAttributeValuePresence;
-import org.eclipse.emf.diffmerge.api.diff.IDifference;
+import org.eclipse.emf.diffmerge.diffdata.EAttributeValuePresence;
+import org.eclipse.emf.diffmerge.generic.api.Role;
+import org.eclipse.emf.diffmerge.generic.api.diff.IDifference;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
@@ -33,13 +33,13 @@ public class AttributeDescriptionValueFromSource extends CategoryFilter {
   }
 
   @Override
-  public boolean covers(IDifference difference) {
-    if (difference instanceof IAttributeValuePresence) {
-      EObject source = ((IAttributeValuePresence) difference).getElementMatch().get(Role.REFERENCE);
-      EObject target = ((IAttributeValuePresence) difference).getElementMatch().get(Role.TARGET);
+  public boolean covers(IDifference<EObject> difference) {
+    if (difference instanceof EAttributeValuePresence) {
+      EObject source = ((EAttributeValuePresence) difference).getElementMatch().get(Role.REFERENCE);
+      EObject target = ((EAttributeValuePresence) difference).getElementMatch().get(Role.TARGET);
 
       if (CapellacorePackage.Literals.CAPELLA_ELEMENT__DESCRIPTION
-          .equals(((IAttributeValuePresence) difference).getFeature())) {
+          .equals(((EAttributeValuePresence) difference).getFeature())) {
         if (source instanceof CapellaElement) {
           return !isUpdatableValue(source, target, ((CapellaElement) target).getDescription(),
               ((CapellaElement) source).getDescription());

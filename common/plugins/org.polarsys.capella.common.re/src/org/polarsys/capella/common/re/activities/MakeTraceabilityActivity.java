@@ -18,9 +18,9 @@ import java.util.List;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.TreeIterator;
-import org.eclipse.emf.diffmerge.api.IComparison;
-import org.eclipse.emf.diffmerge.api.IMatch;
-import org.eclipse.emf.diffmerge.api.Role;
+import org.eclipse.emf.diffmerge.diffdata.EComparison;
+import org.eclipse.emf.diffmerge.generic.api.IMatch;
+import org.eclipse.emf.diffmerge.generic.api.Role;
 import org.eclipse.emf.diffmerge.structures.common.FArrayList;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.re.CatalogElement;
@@ -46,18 +46,18 @@ public class MakeTraceabilityActivity extends AbstractActivity implements ITrans
   @Override
   public IStatus _run(ActivityParameters activityParams) {
     IContext context = (IContext) activityParams.getParameter(TRANSPOSER_CONTEXT).getValue();
-    IComparison comparison = (IComparison) context.get(ITransitionConstants.MERGE_COMPARISON);
+    EComparison comparison = (EComparison) context.get(ITransitionConstants.MERGE_COMPARISON);
 
-    TreeIterator<IMatch> targetMatches = comparison.getAllContents(Role.TARGET);
-    TreeIterator<IMatch> referenceMatches = comparison.getAllContents(Role.REFERENCE);
-    List<IMatch> result = new FArrayList<IMatch>();
+    TreeIterator<IMatch<EObject>> targetMatches = comparison.getAllContents(Role.TARGET);
+    TreeIterator<IMatch<EObject>> referenceMatches = comparison.getAllContents(Role.REFERENCE);
+    List<IMatch<EObject>> result = new FArrayList<IMatch<EObject>>();
 
     while (targetMatches.hasNext()) {
-      IMatch match = targetMatches.next();
+      IMatch<EObject> match = targetMatches.next();
       result.add(match);
     }
     while (referenceMatches.hasNext()) {
-      IMatch match = referenceMatches.next();
+      IMatch<EObject> match = referenceMatches.next();
       if (!result.contains(match)) {
         result.add(match);
       }
@@ -82,7 +82,7 @@ public class MakeTraceabilityActivity extends AbstractActivity implements ITrans
       }
     }
 
-    for (IMatch match : result) {
+    for (IMatch<EObject> match : result) {
       EObject mSource = match.get(Role.REFERENCE);
       EObject mTarget = match.get(Role.TARGET);
 

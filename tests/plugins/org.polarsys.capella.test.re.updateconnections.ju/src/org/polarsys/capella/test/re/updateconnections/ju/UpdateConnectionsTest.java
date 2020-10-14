@@ -20,11 +20,12 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.emf.diffmerge.api.IMergeSelector;
-import org.eclipse.emf.diffmerge.api.Role;
-import org.eclipse.emf.diffmerge.api.diff.IDifference;
-import org.eclipse.emf.diffmerge.api.diff.IElementPresence;
 import org.eclipse.emf.diffmerge.diffdata.EComparison;
+import org.eclipse.emf.diffmerge.diffdata.EElementPresence;
+import org.eclipse.emf.diffmerge.generic.api.IMergeSelector;
+import org.eclipse.emf.diffmerge.generic.api.Role;
+import org.eclipse.emf.diffmerge.generic.api.diff.IDifference;
+import org.eclipse.emf.diffmerge.generic.api.diff.IElementPresence;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -138,18 +139,18 @@ public abstract class UpdateConnectionsTest extends BasicCommandTestCase {
     assertTrue(comp.getDuplicateMatchIDs(Role.REFERENCE).isEmpty());
 
     Collection<EObject> remainingExpectedPresences = new ArrayList<EObject>(expectedPresences);
-    for (IDifference diff : comp.getRemainingDifferences()) {
-      if (diff instanceof IElementPresence) {
-        IElementPresence presence = (IElementPresence) diff;
+    for (IDifference<EObject> diff : comp.getRemainingDifferences()) {
+      if (diff instanceof EElementPresence) {
+        EElementPresence presence = (EElementPresence) diff;
         assertSame(Role.TARGET, presence.getPresenceRole());
         assertTrue(remainingExpectedPresences.remove(presence.getElement()));
       }
     }
     assertTrue(remainingExpectedPresences.isEmpty());
 
-    IMergeSelector sel = new IMergeSelector() {
+    IMergeSelector<EObject> sel = new IMergeSelector<EObject>() {
       @Override
-      public Role getMergeDirection(IDifference difference) {
+      public Role getMergeDirection(IDifference<EObject> difference) {
         if (difference instanceof IElementPresence) {
           return Role.REFERENCE;
         }
@@ -157,12 +158,12 @@ public abstract class UpdateConnectionsTest extends BasicCommandTestCase {
       }
     };
 
-    Collection<IDifference> allMergedDifferences = comp.merge(sel, true, new NullProgressMonitor());
+    Collection<IDifference<EObject>> allMergedDifferences = comp.merge(sel, true, new NullProgressMonitor());
     assertSame(expectedPresences.size(), allMergedDifferences.size());
 
     // all merged presences have been attached into the containment tree
-    for (IDifference diff : allMergedDifferences) {
-      EObject copy = ((IElementPresence) diff).getElementMatch().get(Role.REFERENCE);
+    for (IDifference<EObject> diff : allMergedDifferences) {
+      EObject copy = ((EElementPresence) diff).getElementMatch().get(Role.REFERENCE);
       assertTrue(copy.eContainer() != null);
     }
 
@@ -170,7 +171,7 @@ public abstract class UpdateConnectionsTest extends BasicCommandTestCase {
     handler = new DiffmergeHandler(rpl1, rpl2, new SingleUsePortsMatcher());
     comp = handler.computeDifferences(new NullProgressMonitor());
 
-    for (IDifference diff : comp.getRemainingDifferences()) {
+    for (IDifference<EObject> diff : comp.getRemainingDifferences()) {
       if (diff instanceof IElementPresence) {
         fail("Found unexpected element presence differences after merge"); //$NON-NLS-1$
       }
