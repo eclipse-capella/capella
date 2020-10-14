@@ -284,7 +284,7 @@ public class ConfirmDeleteCapellaElementDialog extends ImpactAnalysisDialog {
 
   private void updateMessageAndButtons() {
     IStatus status = getStatus();
-    if (!status.isOK()) {
+    if (status.getSeverity() == IStatus.ERROR) {
       getButton(OK).setEnabled(false);
       getShell().setDefaultButton(getButton(CANCEL));
     } else {
