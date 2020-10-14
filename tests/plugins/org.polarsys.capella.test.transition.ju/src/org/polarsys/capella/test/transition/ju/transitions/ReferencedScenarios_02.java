@@ -15,9 +15,13 @@ package org.polarsys.capella.test.transition.ju.transitions;
 import java.util.Arrays;
 import java.util.List;
 
+import org.eclipse.emf.common.util.EList;
+import org.polarsys.capella.core.data.capellacore.Involvement;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.interaction.InteractionUse;
 import org.polarsys.capella.core.data.interaction.Scenario;
+import org.polarsys.capella.core.data.interaction.validation.interactionUse.MDCHK_InteractionUse_ReferencedScenario;
+import org.polarsys.capella.core.data.la.CapabilityRealization;
 import org.polarsys.capella.test.transition.ju.TopDownTransitionTestCase;
 
 /**
@@ -57,6 +61,9 @@ public class ReferencedScenarios_02 extends TopDownTransitionTestCase {
   public static final String INTERACTIONUSE_OES_OPERATIONALCAPABILITY_2 = "0c1ada3b-b6ec-45f8-b6bd-c5110e352a54"; //$NON-NLS-1$
   public static final String INTERACTIONUSE_OES_OPERATIONALCAPABILITY_2_1 = "fed23a79-5aa4-4dec-8bd5-f36833599e1f"; //$NON-NLS-1$
 
+  Scenario prevScenario;
+  InteractionUse prevReference;
+
   @Override
   public List<String> getRequiredTestModels() {
     return Arrays.asList("CreateRule_Scenario");
@@ -69,6 +76,9 @@ public class ReferencedScenarios_02 extends TopDownTransitionTestCase {
     step3();
     step4();
     step5();
+    step6();
+    step7();
+    step8();
   }
 
   /*
@@ -103,6 +113,9 @@ public class ReferencedScenarios_02 extends TopDownTransitionTestCase {
     InteractionUse reference4 = (InteractionUse) mustBeTransitionedTo(INTERACTIONUSE_OAS_OPERATIONALCAPABILITY_3_B_1,
         InteractionPackage.Literals.INTERACTION_USE, scenario3);
     assertTrue(reference4.getReferencedScenario().equals(scenario1));
+
+    prevScenario = scenario1;
+    prevReference = reference1;
   }
 
   /*
@@ -167,7 +180,7 @@ public class ReferencedScenarios_02 extends TopDownTransitionTestCase {
     // checks for OAS_OPERATIONALCAPABILITY_3
     checksStep1();
   }
-  
+
   /*
    * OES to ES (System), when an invalid scenario is referenced
    */
@@ -185,5 +198,49 @@ public class ReferencedScenarios_02 extends TopDownTransitionTestCase {
     InteractionUse reference3 = (InteractionUse) mustBeTransitionedTo(INTERACTIONUSE_OES_OPERATIONALCAPABILITY_2_1,
         InteractionPackage.Literals.INTERACTION_USE, scenario1);
     assertTrue(reference3.getReferencedScenario() == null);
+  }
+
+  /*
+   * continue the transition started at step1 FS (System) to FS Logical
+   */
+  private void step6() {
+    performFStoFSTransition(Arrays.asList(prevScenario));
+
+    Scenario scenario = mustBeTransitioned(prevScenario.getId());
+
+    InteractionUse reference1 = (InteractionUse) mustBeTransitionedTo(prevReference.getId(),
+        InteractionPackage.Literals.INTERACTION_USE, scenario);
+
+    assertTrue(reference1.getReferencedScenario() != null);
+    assertTrue(new MDCHK_InteractionUse_ReferencedScenario().isValidReference(reference1, scenario,
+        reference1.getReferencedScenario()));
+
+    prevScenario = scenario;
+    prevReference = reference1;
+  }
+
+  /*
+   * continue the transition started at step6 FS (Logical) to FS Physical
+   */
+  private void step7() {
+    step6();
+  }
+
+  /*
+   * continue the transition started at step7 FS (Physical) to IS, then IS to EPBS
+   */
+  private void step8() {
+    performFStoESTransition(Arrays.asList(prevScenario));
+    Scenario scenario = mustBeTransitioned(prevScenario.getId());
+
+    performEStoISTransition(Arrays.asList(scenario));
+    Scenario scenarioIS = mustBeTransitioned(scenario.getId());
+
+    performIStoISTransition(Arrays.asList(scenarioIS));
+    Scenario scenarioEPBS = mustBeTransitioned(scenarioIS.getId());
+  
+    // AbstractFunctionAbstractCapabilityInvolvement shall not be transited to EPBS
+    EList<Involvement> involvements = ((CapabilityRealization) scenarioEPBS.eContainer()).getInvolvedInvolvements();
+    assertTrue(involvements.isEmpty());
   }
 }

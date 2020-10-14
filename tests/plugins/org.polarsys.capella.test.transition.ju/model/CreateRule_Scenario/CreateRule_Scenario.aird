@@ -103,7 +103,7 @@
         <description xmi:type="description_2:SequenceDiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Activity%20Interaction%20Scenario']"/>
         <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="CreateRule_Scenario.melodymodeller#d257c3dc-b4f2-4e7c-91f3-61c465e53a21"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_8CNPUApBEeuRHtXv-7vWfA" name="[OAS] OperationalCapability 3" repPath="#_8CKMAApBEeuRHtXv-7vWfA" changeId="694445b4-c321-4d2a-a214-3e4560e9ea19">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_8CNPUApBEeuRHtXv-7vWfA" name="[OAS] OperationalCapability 3" repPath="#_8CKMAApBEeuRHtXv-7vWfA" changeId="fda2de73-b023-4e9c-a5fa-94add6db8a6e">
         <description xmi:type="description_2:SequenceDiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Activity%20Interaction%20Scenario']"/>
         <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="CreateRule_Scenario.melodymodeller#b02a5f31-328b-4639-828e-a156aaeb2adf"/>
       </ownedRepresentationDescriptors>
@@ -27103,7 +27103,7 @@
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_AioGhApCEeuRHtXv-7vWfA"/>
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_AilqQQpCEeuRHtXv-7vWfA" fontColor="4210779" fontName="Segoe UI" fontHeight="8"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_AilqQgpCEeuRHtXv-7vWfA" x="358" y="50" width="100" height="50"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_AilqQgpCEeuRHtXv-7vWfA" x="395" y="50" width="100" height="50"/>
         </children>
         <children xmi:type="notation:Node" xmi:id="_UNXLwApCEeuRHtXv-7vWfA" type="2002" element="_UM1AQApCEeuRHtXv-7vWfA">
           <children xmi:type="notation:Node" xmi:id="_UNXy0ApCEeuRHtXv-7vWfA" type="5006"/>
@@ -27112,7 +27112,7 @@
             <styles xmi:type="notation:FilteringStyle" xmi:id="_UNXy0wpCEeuRHtXv-7vWfA"/>
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_UNXLwQpCEeuRHtXv-7vWfA" fontName="Segoe UI" fontHeight="8"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_UNXLwgpCEeuRHtXv-7vWfA" x="358" y="244" width="100" height="50"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_UNXLwgpCEeuRHtXv-7vWfA" x="395" y="244" width="100" height="50"/>
         </children>
         <styles xmi:type="notation:DiagramStyle" xmi:id="_8CN2YgpBEeuRHtXv-7vWfA"/>
       </data>
@@ -27124,7 +27124,7 @@
       <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="CreateRule_Scenario.melodymodeller#0b85dd80-bcf8-48cc-91da-e593b7248470"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="CreateRule_Scenario.melodymodeller#0b85dd80-bcf8-48cc-91da-e593b7248470"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="CreateRule_Scenario.melodymodeller#323e08e4-0d7d-4775-a7ac-a9bdba0b22dc"/>
-      <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_AiAbcApCEeuRHtXv-7vWfA" x="358" y="50" height="50" width="100"/>
+      <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_AiAbcApCEeuRHtXv-7vWfA" x="395" y="50" height="50" width="100"/>
       <ownedBorderedNodes xmi:type="diagram:DNode" uid="_Ah_0YApCEeuRHtXv-7vWfA" width="1" height="40" resizeKind="NSEW">
         <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="CreateRule_Scenario.melodymodeller#0b85dd80-bcf8-48cc-91da-e593b7248470"/>
         <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="CreateRule_Scenario.melodymodeller#0b85dd80-bcf8-48cc-91da-e593b7248470"/>
@@ -27153,7 +27153,7 @@
       <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InteractionUse" href="CreateRule_Scenario.melodymodeller#5b9533fa-c5ae-4a9e-9ab7-a2c9fa0f4e59"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="CreateRule_Scenario.melodymodeller#2341b930-cc46-43d3-84c5-fb87723b6b3f"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalCapability" href="CreateRule_Scenario.melodymodeller#b1a280cf-99c6-4706-8aa9-e3de47fe03c1"/>
-      <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_UM1nUQpCEeuRHtXv-7vWfA" x="358" y="244" height="50" width="100"/>
+      <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_UM1nUQpCEeuRHtXv-7vWfA" x="395" y="244" height="50" width="100"/>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_UM1AQQpCEeuRHtXv-7vWfA" showIcon="false" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="1" foregroundColor="242,242,242">
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Activity%20Interaction%20Scenario']/@defaultLayer/@containerMappings[name='InteractionUse%20AIS']/@style"/>
       </ownedStyle>
