@@ -59,13 +59,9 @@ public class CapellaResourceHelper {
 
   public static final String CAPELLA_FRAGMENT_FILE_EXTENSION = "capellafragment"; //$NON-NLS-1$
 
-  private static final String CAPELLA_CONNECTOR_FILE_EXTENSION = "capellaconnector"; //$NON-NLS-1$
-
   public static final String LEGACY_CAPELLA_MODEL_FILE_EXTENSION = "melodymodeller"; //$NON-NLS-1$
 
   public static final String LEGACY_CAPELLA_FRAGMENT_FILE_EXTENSION = "melodyfragment"; //$NON-NLS-1$
-
-  private static final String LEGACY_CAPELLA_CONNECTOR_FILE_EXTENSION = "melodyconnector"; //$NON-NLS-1$
 
   public static final Map<String, String> LEGACY_TO_MODERN_FILE_EXTENSIONS;
 
@@ -74,7 +70,6 @@ public class CapellaResourceHelper {
 
     temp.put(LEGACY_CAPELLA_FRAGMENT_FILE_EXTENSION, CAPELLA_FRAGMENT_FILE_EXTENSION);
     temp.put(LEGACY_CAPELLA_MODEL_FILE_EXTENSION, CAPELLA_MODEL_FILE_EXTENSION);
-    temp.put(LEGACY_CAPELLA_CONNECTOR_FILE_EXTENSION, CAPELLA_CONNECTOR_FILE_EXTENSION);
 
     LEGACY_TO_MODERN_FILE_EXTENSIONS = Collections.unmodifiableMap(temp);
   }
@@ -246,9 +241,7 @@ public class CapellaResourceHelper {
    */
   public static boolean isLegacyCapellaResource(IResource resource, boolean ignoreCapellaFragment) {
     return hasFileExtension(resource, ignoreCapellaFragment, LEGACY_CAPELLA_FRAGMENT_FILE_EXTENSION,
-        LEGACY_CAPELLA_MODEL_FILE_EXTENSION)
-        || hasFileExtension(resource, ignoreCapellaFragment, LEGACY_CAPELLA_FRAGMENT_FILE_EXTENSION,
-            LEGACY_CAPELLA_CONNECTOR_FILE_EXTENSION);
+        LEGACY_CAPELLA_MODEL_FILE_EXTENSION);
   }
 
   /**
