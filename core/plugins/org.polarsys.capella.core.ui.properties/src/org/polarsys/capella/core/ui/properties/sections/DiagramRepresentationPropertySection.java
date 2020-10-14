@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -86,8 +86,8 @@ public class DiagramRepresentationPropertySection extends AbstractSection {
    */
   protected void commitNameChanged() {
     // Precondition : name must be different to execute the command.
-    if (_nameTextField.getText().equals(_descriptor.get().getName())) {
-      return;
+    if (_descriptor.get() == null || _nameTextField.getText().equals(_descriptor.get().getName())) {
+          return;
     }
     executeCommmand(new AbstractReadWriteCommand() {
       /**
@@ -371,7 +371,10 @@ public class DiagramRepresentationPropertySection extends AbstractSection {
 
         if (firstElement instanceof IDDiagramEditPart) {
           IDDiagramEditPart diagramEditPart = (IDDiagramEditPart) firstElement;
-          firstElement = ((DRepresentation) ((Diagram) diagramEditPart.getModel()).getElement());
+          Diagram gmfDiagram = (Diagram) diagramEditPart.getModel();
+          if (gmfDiagram != null) {
+            firstElement = (DRepresentation) gmfDiagram.getElement();
+          }
         }
         if (firstElement instanceof DRepresentation) {
           firstElement = RepresentationHelper.getRepresentationDescriptor((DRepresentation) firstElement);
