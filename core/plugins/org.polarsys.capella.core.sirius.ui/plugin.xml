@@ -31,12 +31,6 @@
             id="org.polarsys.capella.core.sirius.ui.editor.CapellaDashboardEditorInputFactory">
       </factory>
    </extension>
-    <extension
-         point="org.eclipse.sirius.analysisSelectorProvider">
-      <provider id="org.polarsys.capella.core.sirius.ui.danalysis.CapellaAnalysisSelectorProvider"
-            providerClass="org.polarsys.capella.core.sirius.ui.danalysis.CapellaAnalysisSelectorProvider">
-      </provider>
-   </extension>
    <extension point="org.eclipse.emf.ecore.extension_parser">
       <parser
          type="airdfragment"

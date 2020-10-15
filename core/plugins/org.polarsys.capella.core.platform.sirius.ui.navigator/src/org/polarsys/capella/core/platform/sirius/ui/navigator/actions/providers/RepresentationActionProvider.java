@@ -16,6 +16,7 @@ package org.polarsys.capella.core.platform.sirius.ui.navigator.actions.providers
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.viewers.ISelectionProvider;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
@@ -26,11 +27,12 @@ import org.eclipse.ui.navigator.ICommonActionExtensionSite;
 import org.eclipse.ui.navigator.ICommonMenuConstants;
 import org.eclipse.ui.navigator.ICommonViewerSite;
 import org.eclipse.ui.navigator.ICommonViewerWorkbenchSite;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.CloneAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.SelectionHelper;
-import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.move.representation.MoveRepresentationMenuManager;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
 import org.polarsys.capella.core.sirius.ui.actions.DeleteRepresentationAction;
+import org.polarsys.capella.core.sirius.ui.actions.MoveRepresentationsAction;
 import org.polarsys.capella.core.sirius.ui.actions.OpenRepresentationsAction;
 import org.polarsys.capella.core.sirius.ui.actions.RenameRepresentationAction;
 
@@ -45,7 +47,7 @@ public class RepresentationActionProvider extends CommonActionProvider {
   // The action to open representations.
   private OpenRepresentationsAction _openRepresentation;
   // The action to move representations.
-  private MoveRepresentationMenuManager moveRepresentationMenu;
+  private MoveRepresentationsAction _moveRepresentation;
   // The action to clone a representation.
   private CloneAction _cloneAction;
 
@@ -83,8 +85,9 @@ public class RepresentationActionProvider extends CommonActionProvider {
     _openRepresentation = new OpenRepresentationsAction();
     SelectionHelper.registerToSelectionChanges(_openRepresentation, selectionProvider);
 
-    moveRepresentationMenu = new MoveRepresentationMenuManager();
-    SelectionHelper.registerToSelectionChanges(moveRepresentationMenu, selectionProvider);
+    _moveRepresentation = new MoveRepresentationsAction();
+    _moveRepresentation.setImageDescriptor(AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/others/forward.gif"));
+    SelectionHelper.registerToSelectionChanges(_moveRepresentation, selectionProvider);
 
     _cloneAction = new CloneAction(activePart.getCommonViewer());
     _cloneAction.setImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_COPY));
@@ -111,7 +114,7 @@ public class RepresentationActionProvider extends CommonActionProvider {
     menu_p.appendToGroup(ICommonMenuConstants.GROUP_EDIT, _cloneAction);
     menu_p.appendToGroup(ICommonMenuConstants.GROUP_EDIT, _deleteRepresentationAction);
     menu_p.appendToGroup(ICommonMenuConstants.GROUP_PORT, new Separator());
-    menu_p.appendToGroup(ICommonMenuConstants.GROUP_PORT, moveRepresentationMenu);
+    menu_p.appendToGroup(ICommonMenuConstants.GROUP_PORT, _moveRepresentation);
     
     menu_p.appendToGroup(ICommonMenuConstants.GROUP_PORT, _renameRepresentationAction);
   }
@@ -134,11 +137,10 @@ public class RepresentationActionProvider extends CommonActionProvider {
       selectionProvider.removeSelectionChangedListener(_openRepresentation);
       _openRepresentation = null;
     }
-    if (null != moveRepresentationMenu) {
-      selectionProvider.removeSelectionChangedListener(moveRepresentationMenu);
-      moveRepresentationMenu.dispose();
-      moveRepresentationMenu = null;
-    }
+    if (null != _moveRepresentation) {
+        selectionProvider.removeSelectionChangedListener(_moveRepresentation);
+        _moveRepresentation = null;
+      }
     if (null != _cloneAction) {
       selectionProvider.removeSelectionChangedListener(_cloneAction);
       _cloneAction = null;
