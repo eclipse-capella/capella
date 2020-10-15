@@ -5,14 +5,15 @@ Element-Type: testsuite
 Element-Version: 2.0
 Id: _H2g9YMEUEeWqb6y2_gGIKQ
 Manually-Ordered: true
-Runtime-Version: 2.3.0.201806262310
-Save-Time: 4/26/19 11:05 AM
+Save-Time: 10/15/20 5:23 PM
 
 ------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8
 Content-Type: text/testcase
 Entry-Name: testcase-items
 
-_yFxMUJ6BEeWcU-ojRg-Rxw	// kind: 'test' name: 'SearchAndReplace' path: 'SearchAndReplace.test'
+_YjzF8PfIEeiaU_LTMcHjMQ	// kind: 'test' name: 'RecRplSetSuffix' path: 'RecRpl/RecRplSetSuffix.test'
+_QblmIKj2Eee0yuaysMB3Rg	// kind: 'test' name: 'RecRpl' path: 'RecRpl/RecRpl.test'
+_g1Gg0MVfEei8vKj86crSrA	// kind: 'test' name: 'RecRplFragmentedModel' path: 'RecRpl/FragmentedModel.test'
 _Ub3nIGYiEeaVsIgvj-cA7g	// kind: 'suite' name: 'ActivityExplorerSuite' path: 'ActivityExplorer/ActivityExplorerSuite.suite'
 _m1bcAPyxEeWcsI4k6xXMnQ	// kind: 'test' name: 'FunctionalExchangeWhenAllocationWithoutTarget' path: 'Sequence/FunctionalExchangeWhenAllocationWithoutTarget.test'
 _g6DIAFpOEeaZtZLaGPKybA	// kind: 'test' name: 'CheckAFMFilePresenceAfterMigration' path: 'Migration/CheckAFMFilePresenceAfterMigration.test'
@@ -37,14 +38,13 @@ _yKF9QK86Eee2vO1UksePLw	// kind: 'test' name: 'TriggerEvent' path: 'ModeAndState
 _T-55YMCcEeidDq4eRTARFA	// kind: 'test' name: 'TransitionUI' path: 'Transition/TransitionUI.test'
 _GJay8KkbEee0yuaysMB3Rg	// kind: 'test' name: 'CommandConfigurability' path: 'ValidationProfile/CommandConfigurability.test'
 _4W6WAKnCEee0yuaysMB3Rg	// kind: 'test' name: 'ProjectConfiguration' path: 'ValidationProfile/ProjectConfiguration.test'
-_8tBCsOSeEeeF_6848eoV8Q	// kind: 'test' name: 'HidePartsByDefaultInProjectExplorer' path: 'ProjectExplorer/HidePartsByDefaultInProjectExplorer.test'
+_8tBCsOSeEeeF_6848eoV8Q	// kind: 'test' name: 'QuickFiltersMenuTest' path: 'ProjectExplorer/QuickFiltersMenuTest.test'
 _r_UEYOSgEeeF_6848eoV8Q	// kind: 'test' name: 'LocatedElementIsFilteredInCapellaExplorer' path: 'ProjectExplorer/LocatedElementIsFilteredInCapellaExplorer.test'
 _-NK48OTBEee98IEkL9YSZg	// kind: 'test' name: 'LocatedElementIsFilteredInCapellaExplorer_GoTo' path: 'ProjectExplorer/LocatedElementIsFilteredInCapellaExplorer_GoTo.test'
 _j7W34AXEEeiIZY68FD204w	// kind: 'suite' name: 'RefreshAllSubRepresentations_Suite' path: 'SiriusUiNavigator/RefreshAllSubRepresentations_Suite.suite'
 _HHJUwEMREeiEYaQR9fY4DQ	// kind: 'suite' name: 'DiffMerge' path: 'DiffMerge/DiffMerge.suite'
 _wlapMHoDEeiaPKaUZLw7uw	// kind: 'test' name: 'RepresentationElementsOfInterest' path: 'RepresentationElementsOfInterest.test'
 _vpoagHrAEeiFH4aXYyDXfw	// kind: 'test' name: 'RepresentationPackage' path: 'RepresentationPackage.test'
-_UcVhUPfIEeiaU_LTMcHjMQ	// kind: 'suite' name: 'RecRpl' path: 'RecRpl/RecRpl.suite'
 _BiAI4MsTEei-lPwnfaLAUA	// kind: 'suite' name: 'Menu' path: 'Menu/Menu.suite'
 _7G5xkMxuEeiPxbJ-SrbizA	// kind: 'suite' name: 'MassActionsTestSuite' path: 'MassActions/MassActionsTestSuite.suite'
 _1BG1wOzgEeighIRKUyQgZw	// kind: 'test' name: 'RenameCapellaProject' path: 'ProjectExplorer/RenameCapellaProject.test'

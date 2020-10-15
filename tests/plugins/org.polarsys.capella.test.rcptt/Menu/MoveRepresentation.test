@@ -6,8 +6,7 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _tBkd0NdfEeiFia3ZpEwxKw
-Runtime-Version: 2.5.0.M2
-Save-Time: 9/11/19 11:09 AM
+Save-Time: 10/14/20 3:52 PM
 Testcase-Type: ecl
 
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
@@ -51,7 +50,7 @@ get-view "Project Explorer" | get-tree
     | get-menu -path "Move Diagrams/Move to platform:\\/resource\\/Bug2242\\/Bug2242.aird" | click
     
 // Save
-get-button "Save All (M1+M2+S)" | click
+get-eclipse-window | key-type "M1+s"
 
 // Select the diagram on the explorer then check in the tab Expert of view Properties. 
 get-view Properties | click

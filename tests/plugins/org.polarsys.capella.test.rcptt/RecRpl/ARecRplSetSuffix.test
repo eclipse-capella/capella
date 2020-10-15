@@ -1,13 +1,12 @@
 --- RCPTT testcase ---
 Format-Version: 1.0
 Contexts: _4Zi_gEkPEeaoOLXB8A2oPA
-Element-Name: RecRplSetSuffix
+Element-Name: ARecRplSetSuffix
 Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _YjzF8PfIEeiaU_LTMcHjMQ
-Runtime-Version: 2.5.0.M2
-Save-Time: 9/11/19 4:57 PM
+Save-Time: 10/15/20 5:39 PM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa

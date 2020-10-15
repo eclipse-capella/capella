@@ -5,8 +5,7 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _LlxPcInOEeiZnJxeOaTCng
-Runtime-Version: 2.1.0.201606221726
-Save-Time: 10/1/18 10:42 AM
+Save-Time: 10/15/20 3:46 PM
 Tags: constraint, Diagram_FS
 Testcase-Type: ecl
 
@@ -86,6 +85,13 @@ get-view Properties |  get-group -index 2 | get-text-viewer
     -after [get-label "Post-condition :"] | get-property text | equals "Hello Root System Function, how are you?" 
     | verify-true
 
+// Refresh diagram
+with [get-editor "[FS] Capability 1"] {
+    with [get-diagram -index 1] {
+        key-type F5
+    }
+}
+
 // Check on diagram preCondition and postCondition
 with [get-editor "[FS] Capability 1" | get-diagram -index 1 | get-edit-part -name "[FS] Capability 1"] {
     get-edit-part -name "pre:Hello Root System Function, how are you?\r\n" | get-edit-part -className NoteEditPart 
@@ -95,4 +101,5 @@ with [get-editor "[FS] Capability 1" | get-diagram -index 1 | get-edit-part -nam
         | get-figure "0/0" | get-property "getText()" | equals "post:Hello Root System Function, how are you?" 
         | verify-true
 }
+
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

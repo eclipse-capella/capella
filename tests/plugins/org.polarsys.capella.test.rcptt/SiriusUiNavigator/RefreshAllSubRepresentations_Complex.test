@@ -6,8 +6,7 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _t6hPsAXEEeiIZY68FD204w
-Runtime-Version: 2.3.0.201803290557
-Save-Time: 6/26/18 10:09 AM
+Save-Time: 10/14/20 4:06 PM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -64,8 +63,8 @@ get-window "Save Resource Before Refreshing" | get-button OK | click
 // Make sure other dialog showed up to ask for proceeding the refresh
 get-window "Confirm Capella Representation Refresh" | get-button OK | click
 
-// Save all
-get-button "Save All (M1+M2+S)" | click
+// Save 
+get-eclipse-window | key-type "M1+s"
 
 // Open the diagram to verify
 get-view "Project Explorer" | get-tree 

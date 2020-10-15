@@ -5,8 +5,7 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _7NrmAK8sEee2vO1UksePLw
-Runtime-Version: 2.5.0.M2
-Save-Time: 9/10/19 3:25 PM
+Save-Time: 10/15/20 5:01 PM
 Tags: Diagram_IS
 Testcase-Type: ecl
 
@@ -166,6 +165,19 @@ get-window "Selection Dialog" | get-tree | select project
     | select "project/project/System Analysis/Capabilities/Capability 1/Constraint1" 
     | select "project/project/System Analysis/Capabilities/Capability 1/Constraint1" | double-click
 
+
+with [get-editor "[IS] Capability 1"] {
+    with [get-diagram -index 1] {
+        with [get-edit-part -name "[IS] Capability 1"] {
+            mouse-move 567 455 button1 -height 584 -width 1286
+            mouse-press 567 455 button1 -height 584 -width 1286
+            mouse-release 567 455 button1 "" -height 584 -width 1286
+            mouse-hover 567 455 -height 584 -width 1286
+        }
+        key-type F5
+    }
+    get-diagram -index 1 | get-edit-part -name "[IS] Capability 1" | mouse-move 43 437 -height 584 -width 1286
+}
 
 with [get-editor "[IS] Capability 1" | get-diagram -index 1 | get-edit-part -name "[IS] Capability 1" | get-edit-part 
     -name Constraint1 | get-target-connection 0] {
