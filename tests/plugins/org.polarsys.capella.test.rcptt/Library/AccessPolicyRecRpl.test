@@ -5,8 +5,7 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _tEBy8KkGEee0yuaysMB3Rg
-Runtime-Version: 2.5.0.201909302000
-Save-Time: 8/28/20 7:24 AM
+Save-Time: 10/15/20 12:57 PM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -443,7 +442,8 @@ get-view Properties |  get-group "Kind :" | get-button GATHER | get-property sel
     
 
 
-get-button "Save All (M1+M2+S)" | click
+// Save the model
+get-eclipse-window | key-type "M1+s"
 
 with [get-view "Project Explorer"] {
     get-button "Collapse All  (M1+M2+Numpad_Divide)" | click

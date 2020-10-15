@@ -6,8 +6,7 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _P21C4MEUEeWqb6y2_gGIKQ
-Runtime-Version: 2.5.0.201909172034
-Save-Time: 5/11/20 10:48 AM
+Save-Time: 10/15/20 11:08 AM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -45,7 +44,8 @@ get-window "New Operational Capabilities Blank" | get-button OK | click
 get-editor "[OCB] Operational Capabilities" | get-diagram -index 1 | get-edit-part 
     -name "[OCB] Operational Capabilities"
 
-get-button "Save All (M1+M2+S)" | click
+// Save the model
+get-eclipse-window | key-type "M1+s"
 
 find-tab-folder "[OCB] Operational Capabilities" | get-tab-item "P2" | click
 with [get-editor "P2"] {

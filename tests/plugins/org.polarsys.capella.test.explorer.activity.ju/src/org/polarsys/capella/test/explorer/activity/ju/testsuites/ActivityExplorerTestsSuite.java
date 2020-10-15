@@ -15,17 +15,18 @@ package org.polarsys.capella.test.explorer.activity.ju.testsuites;
 import java.util.ArrayList;
 import java.util.List;
 
-import junit.framework.Test;
-
 import org.polarsys.capella.test.explorer.activity.ju.testcases.AutoOpen;
+import org.polarsys.capella.test.explorer.activity.ju.testcases.CheckRightClickActions;
 import org.polarsys.capella.test.explorer.activity.ju.testcases.ManualOpen;
 import org.polarsys.capella.test.explorer.activity.ju.testcases.MultipleModels;
 import org.polarsys.capella.test.explorer.activity.ju.testcases.ScenarioName;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 
+import junit.framework.Test;
+
 /**
- * Test Suite - Activity Explorer (integration in Capella). 
+ * Test Suite - Activity Explorer (integration in Capella).
  */
 public class ActivityExplorerTestsSuite extends BasicTestSuite {
 
@@ -39,11 +40,13 @@ public class ActivityExplorerTestsSuite extends BasicTestSuite {
     tests.add(new ManualOpen());
     tests.add(new MultipleModels());
     tests.add(new ScenarioName());
+    tests.add(new CheckRightClickActions());
     return tests;
   }
 
   /**
    * Added in order to launch this test suite without the Capella test framework.
+   * 
    * @return
    */
   public static Test suite() {
