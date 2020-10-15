@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -22,6 +22,10 @@ public class Messages extends NLS {
   public static String CapellaCloneDiagramCommand_CommandLabel;
   public static String CapellaDeleteCommand_CancelDeletionMessage;
   public static String CapellaDeleteCommand_ConfirmDeletionQuestion;
+  public static String CapellaDeleteCommand_ConfirmDeletionWithOneSemanticElement;
+  public static String CapellaDeleteCommand_ConfirmDeletionWithManySemanticElement;
+  public static String CapellaDeleteCommand_ConfirmDeletionWithOneRepresentation;
+  public static String CapellaDeleteCommand_ConfirmDeletionWithManyRepresentations;
   public static String CapellaDeleteCommand_ProtectedElementsError;
   public static String CapellaDeleteCommand_ControlledElementsError_Message;
   public static String CapellaDeleteCommand_DeleteCommandError_Message;

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -23,6 +23,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.dialogs.IDialogConstants;
+import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.DecoratingLabelProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
@@ -176,6 +177,7 @@ public class ConfirmDeleteCapellaElementDialog extends ImpactAnalysisDialog {
       /**
        * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
        */
+      @Override
       @SuppressWarnings("synthetic-access")
       public void selectionChanged(SelectionChangedEvent event_p) {
         IStructuredSelection ssel = (IStructuredSelection) event_p.getSelection();
@@ -192,7 +194,6 @@ public class ConfirmDeleteCapellaElementDialog extends ImpactAnalysisDialog {
         // Compute the referencing elements.
         referencingElementsViewer.setInput(getTreeViewerItems(resourceCheckReferencingElemntButton.getSelection(),
             new ArrayList<Object>(referencingElements)));
-        ;
       }
     });
   }
@@ -273,7 +274,7 @@ public class ConfirmDeleteCapellaElementDialog extends ImpactAnalysisDialog {
   protected void doCreateDialogArea(Composite dialogAreaComposite) {
     createCustomArea(dialogAreaComposite);
   }
-  
+
   @Override
   protected Control createContents(Composite parent) {
     Control control = super.createContents(parent);
@@ -283,13 +284,23 @@ public class ConfirmDeleteCapellaElementDialog extends ImpactAnalysisDialog {
 
   private void updateMessageAndButtons() {
     IStatus status = getStatus();
-    if (!status.isOK()) {
-      setErrorMessage(status.getMessage());
+    if (status.getSeverity() == IStatus.ERROR) {
       getButton(OK).setEnabled(false);
       getShell().setDefaultButton(getButton(CANCEL));
     } else {
       getShell().setDefaultButton(getButton(OK));
     }
+
+    int intStatus = IMessageProvider.NONE;
+    if (status.getSeverity() == IStatus.INFO) {
+      intStatus = IMessageProvider.INFORMATION;
+    } else if (status.getSeverity() == IStatus.WARNING) {
+      intStatus = IMessageProvider.WARNING;
+    } else if (status.getSeverity() == IStatus.ERROR) {
+      intStatus = IMessageProvider.ERROR;
+    }
+
+    setMessage(status.getMessage(), intStatus);
   }
 
   protected IStatus getStatus() {
