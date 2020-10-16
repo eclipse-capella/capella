@@ -21,7 +21,7 @@
     <relativePath>../../../</relativePath>
   </parent>
   <groupId>org.polarsys</groupId>
-  <artifactId>org.polarsys.capella.rcp.feature</artifactId>
+  <artifactId>org.polarsys.capella.rcp</artifactId>
   <version>5.0.0-SNAPSHOT</version>
   <packaging>eclipse-feature</packaging>
   <properties>

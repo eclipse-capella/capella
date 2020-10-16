@@ -40,7 +40,7 @@
    </plugins>
 
    <features>
-      <feature id="org.polarsys.capella.rcp.feature.source"/>
+      <feature id="org.polarsys.capella.rcp.source"/>
    </features>
 
    <configurations>
