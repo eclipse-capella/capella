@@ -188,7 +188,7 @@ public class BasicCapellaDeleteCommand extends AbstractCommand {
       return;
     }
 
-    if (status != null && !status.isOK()) {
+    if (status != null && (status.getSeverity() == IStatus.ERROR || status.getSeverity() == IStatus.CANCEL)) {
       return;
     }
     
