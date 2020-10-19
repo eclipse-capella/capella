@@ -24,9 +24,5 @@
             file="reference.xml"
             primary="false">
       </toc>
-      <toc
-            file="api_docs.xml"
-            primary="false">
-      </toc>
    </extension>
 </plugin>
