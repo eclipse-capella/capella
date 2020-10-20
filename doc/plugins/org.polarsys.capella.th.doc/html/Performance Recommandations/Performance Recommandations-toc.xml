@@ -13,7 +13,7 @@
 		<topic href="html/Performance Recommandations/Performance Recommandations.html#Avoid_source_control_when_generating_HTML_documentation_add-on" label="Avoid source control when generating HTML documentation add-on"></topic>
 		<topic href="html/Performance Recommandations/Performance Recommandations.html#In_clearcase_SCM_context.2C_focus_on_snapshot_view" label="In clearcase SCM context, focus on snapshot view"></topic>
 		<topic href="html/Performance Recommandations/Performance Recommandations.html#Fragment_Capella_Model" label="Fragment Capella Model"></topic>
-		<topic href="html/Performance Recommandations/Performance Recommandations.html#Adapt_Eclipse.ini_configuration" label="Adapt Eclipse.ini configuration">
+		<topic href="html/Performance Recommandations/Performance Recommandations.html#Adapt_capella.ini_configuration" label="Adapt capella.ini configuration">
 			<topic href="html/Performance Recommandations/Performance Recommandations.html#JVM_Tuning" label="JVM Tuning">
 				<topic href="html/Performance Recommandations/Performance Recommandations.html#Heap_Size" label="Heap Size"></topic>
 				<topic href="html/Performance Recommandations/Performance Recommandations.html#Stack_Size" label="Stack Size"></topic>

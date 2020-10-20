@@ -47,7 +47,7 @@
 		<ul>
 			<li> The Capella folder should contain two folders:
 				<ul>
-					<li>eclipse: the Capella modeling workbench with the .exe of Capella </li>
+					<li>capella: the Capella modeling workbench with the .exe of Capella </li>
 					<li>samples: the sample models</li>
 				</ul>
 			</li>
@@ -87,7 +87,7 @@
 		<h5 id="Setup:_2">Setup:</h5>
 		<ul>
 			<li>Either in 
-				<b>eclipse.ini</b> or 
+				<b>capella.ini</b> or 
 				<b>config.ini</b> file, add the argument 
 				<b>osgi.configuration.area=@user.home/path/to/user/configuration</b> .
 			</li>
@@ -112,12 +112,12 @@
 		<h5 id="Setup:_3">Setup:</h5>
 		<ul>
 			<li>For normal users: In 
-				<b>eclipse.ini</b> add the argument 
+				<b>capella.ini</b> add the argument 
 				<b>osgi.configuration.area=@user.home/path/to/user/configuration</b> . 
 			</li>
 			<li>For administrator: create a 
 				<b>admin.ini</b> file, having the same content as 
-				<b>eclipse.ini</b> in which the line  
+				<b>capella.ini</b> in which the line  
 				<b>osgi.configuration.area</b> is removed, and launch Capella referencing the 
 				<b>admin.ini</b> file.
 			</li>
@@ -143,7 +143,7 @@
 		</ul>
 		<ul>
 			<li>Users configure their 
-				<b>eclipse.ini</b> to point to the shared configuration area of the working environment that they belong to, as follows:
+				<b>capella.ini</b> to point to the shared configuration area of the working environment that they belong to, as follows:
 				<ul>
 					<li>
 						<b>-Dosgi.sharedConfiguration.area=path/to/shared/configuration</b>
@@ -177,15 +177,15 @@
 				</ul>
 				<ol>
 					<li>Unzip the archive of the addon in a directory</li>
-					<li>Add -Dorg.eclipse.equinox.p2.reconciler.dropins.directory=&lt;myAddonsDirectory&gt; at the end of the eclipse.ini file (after -vm)</li>
+					<li>Add -Dorg.eclipse.equinox.p2.reconciler.dropins.directory=&lt;myAddonsDirectory&gt; at the end of the capella.ini file (after -vm)</li>
 				</ol>
 			</li>
 			<li>Multiple contexts installation 
 				<ul>
 					<li>Create several contexts with specific addons and allow users to launch Capella on one or another context :
 						<ol>
-							<li>Create contexts directories (copy eclipse.ini from Capella and unzip the needed addons in a dropins folder). </li>
-							<li>For each context, change the eclipse.ini file as follows:</li>
+							<li>Create contexts directories (copy capella.ini from Capella and unzip the needed addons in a dropins folder). </li>
+							<li>For each context, change the capella.ini file as follows:</li>
 						</ol>
 					</li>
 				</ul>
@@ -195,7 +195,7 @@
 			<img height="330" width="588" border="0" src="Images/3.9.%20How%20to%20install%20Cappela%20and%20Addons_Multicontext_Install.png"/>
 		</p>
 		<ul>
-			<li>For Context_A, add the following lines at the end of the eclipse.ini file (afer -vm)-(Example)</li>
+			<li>For Context_A, add the following lines at the end of the capella.ini file (afer -vm)-(Example)</li>
 		</ul>
 		<table border="1">
 			<tr>
@@ -217,7 +217,7 @@
 			</tr>
 		</table>
 		<ul>
-			<li>For Context_B, add the following lines at the end of the eclipse.ini file (afer -vm)-(Example)</li>
+			<li>For Context_B, add the following lines at the end of the capella.ini file (afer -vm)-(Example)</li>
 		</ul>
 		<table border="1">
 			<tr>
@@ -239,10 +239,10 @@
 			</tr>
 		</table>
 		<ul>
-			<li>Create shortcuts to launch Capella using the eclipse.ini file stored in the expected context:
+			<li>Create shortcuts to launch Capella using the capella.ini file stored in the expected context:
 				<ul>
-					<li>For context A: &lt;CAPELLA_INSTALLATION_DIR&gt;\eclipse\eclipse.exe --launcher.ini D:\CapellaContexts\Context_A\eclipse.ini</li>
-					<li>For context B: &lt;CAPELLA_INSTALLATION_DIR&gt;\eclipse\eclipse.exe --launcher.ini D:\CapellaContexts\Context_B\eclipse.ini</li>
+					<li>For context A: &lt;CAPELLA_INSTALLATION_DIR&gt;\capella\capella.exe --launcher.ini D:\CapellaContexts\Context_A\capella.ini</li>
+					<li>For context B: &lt;CAPELLA_INSTALLATION_DIR&gt;\capella\capella.exe --launcher.ini D:\CapellaContexts\Context_B\capella.ini</li>
 				</ul>
 			</li>
 		</ul>
@@ -259,7 +259,7 @@
 		<p>To manually install your addon:</p>
 		<ul>
 			<li> Download the addon as a dropin</li>
-			<li> Extract the contents of the downloaded archive into &lt;CAPELLA_INSTALLATION_DIR&gt;/eclipse/dropins directory</li>
+			<li> Extract the contents of the downloaded archive into &lt;CAPELLA_INSTALLATION_DIR&gt;/capella/dropins directory</li>
 		</ul>
 		<p>Check that the extraction process has finished without error.</p>
 		<ul>
@@ -368,7 +368,7 @@
 						<a href="/wiki/../help/topic/org.polarsys.capella.ui.doc/html/04.%20User%20Interface/4.06.%20Properties%20View.html#Description_Section" title="../help/topic/org.polarsys.capella.ui.doc/html/04.%20User%20Interface/4.06.%20Properties%20View.html#Description_Section">Description Section </a>.
 					</p>
 					<p>The limit is 
-						<b>115</b> characters in the path of the Capella directory to the eclipse folder: &lt;CAPELLA_INSTALLATION_DIR&gt;/eclipse.
+						<b>115</b> characters in the path of the Capella directory to the capella folder: &lt;CAPELLA_INSTALLATION_DIR&gt;/capella.
 					</p>
 					<p>
 						<b>Note: the "space" character is counted like three characters (%20)</b>.

@@ -86,7 +86,7 @@ See dedicated Model Configuration Management guidelines
 Fragment Capella models to avoid Capella files (*.capella, *.aird, *.capellafragment, *.airdfragment) to be larger than about 50 MB.
 
 
-== Adapt Eclipse.ini configuration ==
+== Adapt capella.ini configuration ==
 
 === JVM Tuning ===
 
@@ -97,24 +97,24 @@ When a Capella starts, Java Virtual Machine gets some memory from Operating Syst
 {|
 !style="text-align:left;"| JVM Option
 !style="text-align:left;"| Meaning
+!style="text-align:left;"| Default Value
+
+
+
 |-
 |Xms
 |Initial java heap size
+|1000m
 |-
 |Xmx
 |Maximum java heap size
-|-
-|XX:MaxPermSize
-|Set maximum size for Permanent Generation
+|3000m
 |}
 
 
-It is a good practice to increase Xms, Xmx and XX:MaxPermSize values with model size and platform memory resources (eclipse.ini file).
+You can always adapt these values to your machine specification and model size, by modifying the '''capella.ini''' file.
 
-[[Image:Images/Perf_REC9.png|750x150px]]<br>
-
-
-''Notes: another way to launch Capella with more memory is to create a new shortcut of eclipse.exe program and add for instance -vm "C:\...\Java\...\bin\javaw.exe" -clean -vmargs -Xms128m –Xmx1208m -XX:MaxPermSize=128m -XX:+CMSPermGenSweepingEnabled -XX:+CMSClassUnloadingEnabled , adapting the suitable JRE path.''
+A different approach is to create a new shortcut of '''capella.exe''' and pass the updated arguments and values directly in the '''target''' field of its '''properties''' like so:  '''-vm "C:\...\Java\...\bin\javaw.exe" -clean -vmargs -Xms128m –Xmx1208m'''.
 
 ==== Stack Size ====
 
@@ -123,14 +123,14 @@ Each thread in the JVM get’s a stack. The stack size will limit the number of th
 {|
 !style="text-align:left;"| JVM Option
 !style="text-align:left;"| Meaning
+!style="text-align:left;"| Default Value
 |-
 |Xss
 |Stack size for each thread
+|4m
 |}
 
-In case your model contains nested elements on a lot of levels, a StackOverFlow exception can occur, i.e. when using Capella in 32 bits or in functional transition (see the “Error Log” view), To avoid this, you can increase the stack size by adding the Xss argument at the end of all *.ini files as shown below (Start with a small value and increase it on needs):
-
--Xss3m
+In case your model contains nested elements on a lot of levels, a StackOverFlow exception can occur in functional transition for example (see the “Error Log” view). To avoid this, you can increase the stack size. Please check the previous '''Heap Size''' section for more information in regards to the file that you should modify.
 
 
 == Create AIRD analysis and isolate table representation ==

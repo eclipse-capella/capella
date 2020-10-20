@@ -283,4 +283,3 @@ Perf_REC5.png
 Perf_REC6.png
 Perf_REC7.png
 Perf_REC8.png
-Perf_REC9.png
