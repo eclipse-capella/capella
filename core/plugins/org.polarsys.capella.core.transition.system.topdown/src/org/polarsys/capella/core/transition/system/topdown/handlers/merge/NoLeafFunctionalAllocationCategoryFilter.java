@@ -12,11 +12,11 @@
  *******************************************************************************/
 package org.polarsys.capella.core.transition.system.topdown.handlers.merge;
 
-import org.eclipse.emf.diffmerge.api.IMatch;
-import org.eclipse.emf.diffmerge.api.Role;
-import org.eclipse.emf.diffmerge.api.diff.IDifference;
-import org.eclipse.emf.diffmerge.api.diff.IElementPresence;
-import org.eclipse.emf.diffmerge.api.diff.IElementRelativeDifference;
+import org.eclipse.emf.diffmerge.generic.api.IMatch;
+import org.eclipse.emf.diffmerge.generic.api.Role;
+import org.eclipse.emf.diffmerge.generic.api.diff.IDifference;
+import org.eclipse.emf.diffmerge.generic.api.diff.IElementPresence;
+import org.eclipse.emf.diffmerge.generic.api.diff.IElementRelativeDifference;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.ComponentFunctionalAllocation;
@@ -43,17 +43,18 @@ public class NoLeafFunctionalAllocationCategoryFilter extends CategoryFilter {
   }
 
   @Override
-  public boolean covers(IDifference difference) {
+  public boolean covers(IDifference<EObject> difference) {
 
     if (difference instanceof IElementRelativeDifference) {
-      IElementRelativeDifference diff = (IElementRelativeDifference) difference;
+      IElementRelativeDifference<EObject> diff = (IElementRelativeDifference<EObject>) difference;
 
       if (diff instanceof IElementPresence && diff.getElementMatch().coversRole(Role.REFERENCE)) {
         EObject source = diff.getElementMatch().get(Role.REFERENCE);
         if (source instanceof ComponentFunctionalAllocation) {
           ComponentFunctionalAllocation allocation = (ComponentFunctionalAllocation) source;
           if (allocation.getTargetElement() != null) {
-            IMatch match = diff.getComparison().getMapping().getMatchFor(allocation.getTargetElement(), Role.REFERENCE);
+            IMatch<EObject> match = diff.getComparison().getMapping().getMatchFor(allocation.getTargetElement(),
+                Role.REFERENCE);
             AbstractFunction target = (AbstractFunction) match.get(Role.TARGET);
             if (target != null && !FunctionExt.isLeaf(target)) {
               return true;
