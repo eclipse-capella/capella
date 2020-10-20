@@ -130,7 +130,7 @@ If not activated, there are two possibilities:
 ----
 '''Disable Richtext'''
 
-In case you encounter some blocking issues using the rich text editor, you can disable rich text which will be replaced by a simple field to edit directly XHTML, to do so please open the eclipse.ini file located
+In case you encounter some blocking issues using the rich text editor, you can disable rich text which will be replaced by a simple field to edit directly XHTML, to do so please open the capella.ini file located
 in the Capella installation directory and add the java property -Ddisable.nebula.richtext=true as shown below:
 
 

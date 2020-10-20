@@ -70,7 +70,7 @@
 		<p>See dedicated Model Configuration Management guidelines</p>
 		<h2 id="Fragment_Capella_Model">Fragment Capella Model</h2>
 		<p>Fragment Capella models to avoid Capella files (*.capella, *.aird, *.capellafragment, *.airdfragment) to be larger than about 50 MB.</p>
-		<h2 id="Adapt_Eclipse.ini_configuration">Adapt Eclipse.ini configuration</h2>
+		<h2 id="Adapt_capella.ini_configuration">Adapt capella.ini configuration</h2>
 		<h3 id="JVM_Tuning">JVM Tuning</h3>
 		<h4 id="Heap_Size">Heap Size</h4>
 		<p>When a Capella starts, Java Virtual Machine gets some memory from Operating System. Java Virtual Machine or JVM uses this memory for all its need and part of this memory is called Java Heap Memory. Whenever we create object using new operator or by any another means, object is allocated memory from Heap and when object dies or garbage collected, memory goes back to Heap space in Java.</p>
@@ -78,27 +78,27 @@
 			<tr>
 				<th style="text-align:left;">JVM Option</th>
 				<th style="text-align:left;">Meaning</th>
+				<th style="text-align:left;">Default Value</th>
 			</tr>
 			<tr>
 				<td>Xms</td>
 				<td>Initial java heap size</td>
+				<td>1000m</td>
 			</tr>
 			<tr>
 				<td>Xmx</td>
 				<td>Maximum java heap size</td>
-			</tr>
-			<tr>
-				<td>XX:MaxPermSize</td>
-				<td>Set maximum size for Permanent Generation</td>
+				<td>3000m</td>
 			</tr>
 		</table>
-		<p>It is a good practice to increase Xms, Xmx and XX:MaxPermSize values with model size and platform memory resources (eclipse.ini file).</p>
-		<p>
-			<img height="150" width="750" border="0" src="Images/Perf_REC9.png"/>
-			<br/>
+		<p>You can always adapt these values to your machine specification and model size, by modifying the 
+			<b>capella.ini</b> file.
 		</p>
-		<p>
-			<i>Notes: another way to launch Capella with more memory is to create a new shortcut of eclipse.exe program and add for instance -vm "C:\...\Java\...\bin\javaw.exe" -clean -vmargs -Xms128m –Xmx1208m -XX:MaxPermSize=128m -XX:+CMSPermGenSweepingEnabled -XX:+CMSClassUnloadingEnabled , adapting the suitable JRE path.</i>
+		<p>A different approach is to create a new shortcut of 
+			<b>capella.exe</b> and pass the updated arguments and values directly in the 
+			<b>target</b> field of its 
+			<b>properties</b> like so:  
+			<b>-vm "C:\...\Java\...\bin\javaw.exe" -clean -vmargs -Xms128m –Xmx1208m</b>.
 		</p>
 		<h4 id="Stack_Size">Stack Size</h4>
 		<p>Each thread in the JVM get’s a stack. The stack size will limit the number of threads that you can have. Using a too big stack size will augment the risk to run into an out of memory exception as each thread is allocated more memory than it needs.</p>
@@ -106,14 +106,17 @@
 			<tr>
 				<th style="text-align:left;">JVM Option</th>
 				<th style="text-align:left;">Meaning</th>
+				<th style="text-align:left;">Default Value</th>
 			</tr>
 			<tr>
 				<td>Xss</td>
 				<td>Stack size for each thread</td>
+				<td>4m</td>
 			</tr>
 		</table>
-		<p>In case your model contains nested elements on a lot of levels, a StackOverFlow exception can occur, i.e. when using Capella in 32 bits or in functional transition (see the “Error Log” view), To avoid this, you can increase the stack size by adding the Xss argument at the end of all *.ini files as shown below (Start with a small value and increase it on needs):</p>
-		<p>-Xss3m</p>
+		<p>In case your model contains nested elements on a lot of levels, a StackOverFlow exception can occur in functional transition for example (see the “Error Log” view). To avoid this, you can increase the stack size. Please check the previous 
+			<b>Heap Size</b> section for more information in regards to the file that you should modify.
+		</p>
 		<h2 id="Create_AIRD_analysis_and_isolate_table_representation">Create AIRD analysis and isolate table representation</h2>
 		<p>Create separated representation analysis (aird files) and isolate Table representation.</p>
 		<p>

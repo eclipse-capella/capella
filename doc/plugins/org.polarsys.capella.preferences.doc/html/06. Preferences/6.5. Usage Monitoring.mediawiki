@@ -9,7 +9,7 @@ Preference is available from the '''Window / Preferences menu/ Capella'''.
 [[Image:Images/6.5_Usage%20monitoring2.png|616x539px]]
 
 This preference is related to the logger "Usage Monitoring". This logger is aimed to track Capella usage (Project creation, Diagram creation, ...) then generate tracking information into a log file named "Usage.log".<br>
-By default, this file is generated into the current workspace. However the file location can be set in the eclipse.ini configuration file as following :
+By default, this file is generated into the current workspace. However the file location can be set in the capella.ini configuration file as following :
 
  -DUsagePath=D:\APP\<UsagePath>
 

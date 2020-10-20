@@ -86,8 +86,6 @@
 					<p><ul>
 <li>Default behaviour of command line support checks that the workspace specified for use in command line is not in use by another instance of Eclipse.</li>
 						<br/>
-<li>Be careful to use a Capella version that is compatible with the Java Runtime Environment (i.e. run Capella 32 bits on a 32 bits JVM and Capella 64 bits on 64 bits JVM).</li>
-						<br/>
 <li>If the path to the aird file or the path to the workspace or the path to the log file contains white space, it should be in quotes (eg: 
 						<b>-data &ldquo;D: /Application Data/workspace&rdquo;)</b></li>
 						<br/>
@@ -129,7 +127,7 @@
 			<b>Simple use case:</b></u>
 		</p>
 		<pre>
-&lt;CapellaInstallationPath&gt;/eclipsec.exe -nosplash
+&lt;CapellaInstallationPath&gt;/capellac.exe -nosplash
 -application org.polarsys.capella.core.commandline.core
 -appid org.polarsys.capella.core.validation.commandline
 -data &lt;workspacePath&gt;
@@ -163,7 +161,7 @@
 			<b>Complex use case:</b></u>
 		</p>
 		<pre>
-&lt;CapellaInstallationPath&gt;/eclipsec.exe -nosplash
+&lt;CapellaInstallationPath&gt;/capellac.exe -nosplash
 -application org.polarsys.capella.core.commandline.core
 -appid org.polarsys.capella.core.validation.commandline
 -input /EOLE_AF/EOLE_AF.aird
@@ -227,7 +225,7 @@
 			<b>Simple use case:</b></u>
 		</p>
 		<pre>
-&lt;CapellaInstallationPath&gt;/eclipsec.exe -nosplash
+&lt;CapellaInstallationPath&gt;/capellac.exe -nosplash
 -application org.polarsys.capella.core.commandline.core
 -appid org.polarsys.kitalpha.doc.gen.business.capella.commandline
 -data &lt;workspacePath&gt;
@@ -251,7 +249,7 @@
 			<b>Import Capella project and generate inside it</b>
 		</p>
 		<pre>
-&lt;CapellaInstallationPath&gt;/eclipsec.exe -nosplash
+&lt;CapellaInstallationPath&gt;/capellac.exe -nosplash
 -application org.polarsys.capella.core.commandline.core
 -appid org.polarsys.kitalpha.doc.gen.business.capella.commandline
 -data &lt;targetWorkspacePath&gt;
@@ -268,7 +266,7 @@
 			<b>Import Capella project and generate inside a new project</b>
 		</p>
 		<pre>
-&lt;CapellaInstallationPath&gt;/eclipsec.exe -nosplash
+&lt;CapellaInstallationPath&gt;/capellac.exe -nosplash
 -application org.polarsys.capella.core.commandline.core
 -appid org.polarsys.kitalpha.doc.gen.business.capella.commandline
 -data &lt;targetWorkspacePath&gt;
@@ -285,7 +283,7 @@
 			<b>Import Capella project and a Doc project to generate inside it</b>
 		</p>
 		<pre>
-&lt;CapellaInstallationPath&gt;/eclipsec.exe -nosplash
+&lt;CapellaInstallationPath&gt;/capellac.exe -nosplash
 -application org.polarsys.capella.core.commandline.core
 -appid org.polarsys.kitalpha.doc.gen.business.capella.commandline
 -data &lt;targetWorkspacePath&gt;
@@ -319,7 +317,7 @@
 			<b>Simple use case:</b></u>
 		</p>
 		<pre>
-&lt;CapellaInstallationPath&gt;/eclipsec.exe -nosplash
+&lt;CapellaInstallationPath&gt;/capellac.exe -nosplash
 -application org.polarsys.capella.core.commandline.core
 -appid org.polarsys.capella.core.commandline.core.exportZip
 -data &lt;workspacePath&gt;
@@ -353,7 +351,7 @@
 			<b>Simple use case:</b></u>
 		</p>
 		<pre>
-&lt;CapellaInstallationPath&gt;/eclipsec.exe -nosplash
+&lt;CapellaInstallationPath&gt;/capellac.exe -nosplash
 -application org.polarsys.capella.core.commandline.core
 -appid org.polarsys.capella.migration
 -data &lt;workspacePath&gt;
@@ -386,7 +384,7 @@
 			<b>Complex use case:</b></u>
 		</p>
 		<pre>
-&lt;CapellaInstallationPath&gt;/eclipsec.exe -nosplash
+&lt;CapellaInstallationPath&gt;/capellac.exe -nosplash
 -application org.polarsys.capella.core.commandline.core
 -appid org.polarsys.capella.migration
 -import "D:/Projects/Library3 | D:/Projects/Library1 | D:/Projects/Library2 | D:/Projects/Project1"
@@ -403,7 +401,7 @@
 			<b>Simple use case:</b></u>
 		</p>
 		<pre>
-&lt;CapellaInstallationPath&gt;/eclipsec.exe -nosplash
+&lt;CapellaInstallationPath&gt;/capellac.exe -nosplash
 -application org.polarsys.capella.core.commandline.core
 -appid org.polarsys.capella.refreshRepresentations
 -data &lt;workspacePath&gt;
@@ -430,7 +428,7 @@
 			<b>Simple use case:</b></u>
 		</p>
 		<pre>
-&lt;CapellaInstallationPath&gt;/eclipsec.exe -nosplash
+&lt;CapellaInstallationPath&gt;/capellac.exe -nosplash
 -application org.polarsys.capella.core.commandline.core
 -appid org.polarsys.capella.removeHiddenElements
 -data &lt;workspacePath&gt;
@@ -472,7 +470,7 @@
 			<b>Simple use case:</b></u>
 		</p>
 		<pre>
-&lt;CapellaInstallationPath&gt;/eclipsec.exe -nosplash
+&lt;CapellaInstallationPath&gt;/capellac.exe -nosplash
 -application org.polarsys.capella.core.commandline.core
 -appid org.polarsys.capella.exportRepresentations
 -data &lt;workspacePath&gt;

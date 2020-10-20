@@ -66,7 +66,6 @@ The core mechanism provides the following parameters:
 |
 <ul>
 <li>Default behaviour of command line support checks that the workspace specified for use in command line is not in use by another instance of Eclipse.</li><br/>
-<li>Be careful to use a Capella version that is compatible with the Java Runtime Environment (i.e. run Capella 32 bits on a 32 bits JVM and Capella 64 bits on 64 bits JVM).</li><br/>
 <li>If the path to the aird file or the path to the workspace or the path to the log file contains white space, it should be in quotes (eg: '''-data &ldquo;D: /Application Data/workspace&rdquo;)'''</li><br/>
 <li>When Capella is run in command line, logs levels INFO, WARN, ERROR, FATAL are automatically activated for File and Console appender (regardless of the current log configuration stored in %USERPROFILE%/ReportConfiguration.xml)</li><br/>
 <li>Before running below commands make sure to not have newline between each parameters to avoid copy/paste errors.</li>
@@ -102,7 +101,7 @@ The model validation command line provides the following additional parameters:
 <u>'''Simple use case:'''</u>
 
 <pre>
-<CapellaInstallationPath>/eclipsec.exe -nosplash
+<CapellaInstallationPath>/capellac.exe -nosplash
 -application org.polarsys.capella.core.commandline.core
 -appid org.polarsys.capella.core.validation.commandline
 -data <workspacePath>
@@ -123,7 +122,7 @@ A log file can be also specified with the parameter '''''-logfile'''''
 <u>'''Complex use case:'''</u>
 
 <pre>
-<CapellaInstallationPath>/eclipsec.exe -nosplash
+<CapellaInstallationPath>/capellac.exe -nosplash
 -application org.polarsys.capella.core.commandline.core
 -appid org.polarsys.capella.core.validation.commandline
 -input /EOLE_AF/EOLE_AF.aird
@@ -165,7 +164,7 @@ A log file is also specified.
 <u>'''Simple use case:'''</u>
 
 <pre>
-<CapellaInstallationPath>/eclipsec.exe -nosplash
+<CapellaInstallationPath>/capellac.exe -nosplash
 -application org.polarsys.capella.core.commandline.core
 -appid org.polarsys.kitalpha.doc.gen.business.capella.commandline
 -data <workspacePath>
@@ -185,7 +184,7 @@ This command will generate ''HTML'' report from the EOLE-AF aird file specified 
 '''Import Capella project and generate inside it'''
 
 <pre>
-<CapellaInstallationPath>/eclipsec.exe -nosplash
+<CapellaInstallationPath>/capellac.exe -nosplash
 -application org.polarsys.capella.core.commandline.core
 -appid org.polarsys.kitalpha.doc.gen.business.capella.commandline
 -data <targetWorkspacePath>
@@ -200,7 +199,7 @@ This command will import the EOLE_AF project from ''&lt;absolutePath&gt;'' works
 '''Import Capella project and generate inside a new project'''
 
 <pre>
-<CapellaInstallationPath>/eclipsec.exe -nosplash
+<CapellaInstallationPath>/capellac.exe -nosplash
 -application org.polarsys.capella.core.commandline.core
 -appid org.polarsys.kitalpha.doc.gen.business.capella.commandline
 -data <targetWorkspacePath>
@@ -215,7 +214,7 @@ This command will import the EOLE_AF project from ''&lt;absolutePath&gt;'' works
 '''Import Capella project and a Doc project to generate inside it'''
 
 <pre>
-<CapellaInstallationPath>/eclipsec.exe -nosplash
+<CapellaInstallationPath>/capellac.exe -nosplash
 -application org.polarsys.capella.core.commandline.core
 -appid org.polarsys.kitalpha.doc.gen.business.capella.commandline
 -data <targetWorkspacePath>
@@ -251,7 +250,7 @@ Mandatory parameters:
 <u>'''Simple use case:'''</u>
 
 <pre>
-<CapellaInstallationPath>/eclipsec.exe -nosplash
+<CapellaInstallationPath>/capellac.exe -nosplash
 -application org.polarsys.capella.core.commandline.core
 -appid org.polarsys.capella.core.commandline.core.exportZip
 -data <workspacePath>
@@ -282,7 +281,7 @@ For a migration and post-migration script example, please check: [[../help/topic
 
 
 <pre>
-<CapellaInstallationPath>/eclipsec.exe -nosplash
+<CapellaInstallationPath>/capellac.exe -nosplash
 -application org.polarsys.capella.core.commandline.core
 -appid org.polarsys.capella.migration
 -data <workspacePath>
@@ -313,7 +312,7 @@ In such a case, the migration sequence can be done either by launching several u
 <u>'''Complex use case:'''</u>
 
 <pre>
-<CapellaInstallationPath>/eclipsec.exe -nosplash
+<CapellaInstallationPath>/capellac.exe -nosplash
 -application org.polarsys.capella.core.commandline.core
 -appid org.polarsys.capella.migration
 -import "D:/Projects/Library3 | D:/Projects/Library1 | D:/Projects/Library2 | D:/Projects/Project1"
@@ -331,7 +330,7 @@ This command will refresh all representations. More information here: [[../help/
 <u>'''Simple use case:'''</u>
 
 <pre>
-<CapellaInstallationPath>/eclipsec.exe -nosplash
+<CapellaInstallationPath>/capellac.exe -nosplash
 -application org.polarsys.capella.core.commandline.core
 -appid org.polarsys.capella.refreshRepresentations
 -data <workspacePath>
@@ -356,7 +355,7 @@ This command will remove all hidden elements of all representations. More inform
 <u>'''Simple use case:'''</u>
 
 <pre>
-<CapellaInstallationPath>/eclipsec.exe -nosplash
+<CapellaInstallationPath>/capellac.exe -nosplash
 -application org.polarsys.capella.core.commandline.core
 -appid org.polarsys.capella.removeHiddenElements
 -data <workspacePath>
@@ -393,7 +392,7 @@ This command will export images of all representations to the given outputfolder
 <u>'''Simple use case:'''</u>
 
 <pre>
-<CapellaInstallationPath>/eclipsec.exe -nosplash
+<CapellaInstallationPath>/capellac.exe -nosplash
 -application org.polarsys.capella.core.commandline.core
 -appid org.polarsys.capella.exportRepresentations
 -data <workspacePath>
