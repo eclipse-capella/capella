@@ -90,7 +90,7 @@ location diffmerge-core "https://download.eclipse.org/diffmerge/nightly/generic-
 	org.eclipse.emf.diffmerge.egit.feature.source.feature.group
 }
 
-location amalgam "https://download.eclipse.org/modeling/amalgam/updates/stable/1.11.0-S20191007/capella" {
+location amalgam "https://download.eclipse.org/modeling/amalgam/updates/stable/1.12.0-S20201020/capella" {
 	org.eclipse.amalgam.explorer.activity.source.feature.group
 }
 
