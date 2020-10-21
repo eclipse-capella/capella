@@ -17,7 +17,7 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.common.ui,
  org.polarsys.capella.common.queries,
  org.polarsys.capella.common.model,
- com.google.guava;bundle-version="11.0.2",
- org.apache.commons.lang;bundle-version="2.4.0"
+ com.google.guava,
+ org.apache.commons.lang
 Export-Package: org.polarsys.capella.common.linkedtext.ui
 Bundle-Localization: plugin
