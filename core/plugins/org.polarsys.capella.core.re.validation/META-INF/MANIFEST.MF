@@ -8,7 +8,7 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.polarsys.capella.common.re,
  org.polarsys.capella.common.re.gen,
  org.polarsys.capella.core.validation,
- com.google.guava;bundle-version="15.0.0"
+ com.google.guava
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
 Export-Package: org.polarsys.capella.core.re.validation.design.consistency

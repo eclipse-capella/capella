@@ -12,7 +12,7 @@ Require-Bundle: org.polarsys.capella.core.data.information.properties;visibility
  org.polarsys.capella.common.linkedtext.ui,
  org.polarsys.capella.common.libraries.gen,
  org.polarsys.capella.core.linkedtext.ui,
- com.google.guava;bundle-version="11.0.2"
+ com.google.guava
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.data.information.datavalue.properties,
  org.polarsys.capella.core.data.information.datavalue.properties.controllers,
