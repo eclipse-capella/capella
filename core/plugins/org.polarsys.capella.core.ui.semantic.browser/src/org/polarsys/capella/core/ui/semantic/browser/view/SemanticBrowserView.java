@@ -120,11 +120,19 @@ import org.polarsys.capella.core.ui.semantic.browser.model.SemanticBrowserModel;
  */
 public abstract class SemanticBrowserView extends ViewPart implements ISemanticBrowserViewPart,
     ITabbedPropertySheetPageContributor, IEditingDomainProvider, IReadOnlyListener {
-
+  
   /**
    * Listener that listens to closing and closed session events.
    */
   protected class CloseSessionListener extends SessionManagerListener.Stub {
+    
+    Runnable cleaner = new Runnable() {
+      @Override
+      public void run() {
+        clean();
+      }
+    };
+    
     @Override
     public void notify(final Session updated, final int notification) {
       switch (notification) {
@@ -134,7 +142,11 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
           // Get the session of current displayed object.
           Session session = SessionManager.INSTANCE.getSession((EObject) currentInput);
           if (updated.equals(session)) {
-            clean();
+            if (Display.getCurrent() == null) {
+              EclipseUIUtil.displayAsyncExec(cleaner);
+            } else {
+              cleaner.run();
+            }
           }
         }
         for (BrowserHistory.BrowserNavigationHistoryEntry entry : getHistory().getAllNavigationEntries()) {
@@ -399,20 +411,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
     // No need to set focus.
     boolean restoreState = shouldSetFocus ? true : false;
     shouldSetFocus = false;
-
-    // Ensure execution of setInput in UI thread.
-    if (Display.getCurrent() == null) {
-        EclipseUIUtil.displayAsyncExec(new Runnable() {
-            public void run() {
-                if (!PlatformUI.getWorkbench().isClosing()) {
-                    setInput(null);
-                }
-            }
-        });
-    } else {
-        setInput(null);
-    }
-
+    setInput(null);
     if (restoreState) {
       shouldSetFocus = true;
     }
@@ -1108,7 +1107,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
 
   @Override
   public void refresh(boolean forceRefresh) {
-    if (getSite().getPage().isPartVisible(this)) {
+    if (!PlatformUI.getWorkbench().isClosing() && getSite().getPage().isPartVisible(this)) {
       // Precondition: do not set the same input twice, except during refreshing.
       TreeViewer currentTreeViewer = getCurrentViewer();
       Object lastInput = currentTreeViewer.getInput();
