@@ -48,6 +48,7 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionManagerListener;
+import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.swt.SWT;
@@ -75,6 +76,7 @@ import org.eclipse.ui.IViewSite;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.WorkbenchException;
 import org.eclipse.ui.XMLMemento;
 import org.eclipse.ui.internal.views.properties.tabbed.view.TabbedPropertyTitle;
@@ -118,11 +120,19 @@ import org.polarsys.capella.core.ui.semantic.browser.model.SemanticBrowserModel;
  */
 public abstract class SemanticBrowserView extends ViewPart implements ISemanticBrowserViewPart,
     ITabbedPropertySheetPageContributor, IEditingDomainProvider, IReadOnlyListener {
-
+  
   /**
    * Listener that listens to closing and closed session events.
    */
   protected class CloseSessionListener extends SessionManagerListener.Stub {
+    
+    Runnable cleaner = new Runnable() {
+      @Override
+      public void run() {
+        clean();
+      }
+    };
+    
     @Override
     public void notify(final Session updated, final int notification) {
       switch (notification) {
@@ -132,7 +142,11 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
           // Get the session of current displayed object.
           Session session = SessionManager.INSTANCE.getSession((EObject) currentInput);
           if (updated.equals(session)) {
-            clean();
+            if (Display.getCurrent() == null) {
+              EclipseUIUtil.displayAsyncExec(cleaner);
+            } else {
+              cleaner.run();
+            }
           }
         }
         for (BrowserHistory.BrowserNavigationHistoryEntry entry : getHistory().getAllNavigationEntries()) {
@@ -1093,7 +1107,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
 
   @Override
   public void refresh(boolean forceRefresh) {
-    if (getSite().getPage().isPartVisible(this)) {
+    if (!PlatformUI.getWorkbench().isClosing() && getSite().getPage().isPartVisible(this)) {
       // Precondition: do not set the same input twice, except during refreshing.
       TreeViewer currentTreeViewer = getCurrentViewer();
       Object lastInput = currentTreeViewer.getInput();
