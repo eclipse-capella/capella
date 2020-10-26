@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -45,6 +45,7 @@ public class Messages extends NLS {
   public static String CapellaSessionHelper_SemanticModel_Error_Message_WrongVersion_Part2;
   public static String CapellaSessionHelper_SemanticModel_ErrorDialog_Title;
   public static String CapellaSessionHelper_UnknownError_Message;
+  public static String MoveRepresentationsAction_move;
   public static String OpenSessionAction_Title;
   public static String RenameRepresentationAction_Title;
   public static String SelectRepresentationsWizard_Title;

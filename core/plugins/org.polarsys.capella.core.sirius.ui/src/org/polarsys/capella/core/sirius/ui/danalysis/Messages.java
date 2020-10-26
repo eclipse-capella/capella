@@ -19,9 +19,7 @@ import org.eclipse.osgi.util.NLS;
  */
 public class Messages extends NLS {
   private static final String BUNDLE_NAME = "org.polarsys.capella.core.sirius.ui.danalysis.messages"; //$NON-NLS-1$
-  public static String CapellaAnalysisSelector_SelectionDialog_Message;
-  public static String CapellaAnalysisSelector_SelectionDialog_Title;
-  public static String CapellaAnalysisSelector_SelectionDialog_OthersFragments;
+
   public static String CapellaAnalysisSelector_Cancel;
 
   static {
