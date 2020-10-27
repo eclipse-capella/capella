@@ -12,54 +12,20 @@
  *******************************************************************************/
 package org.polarsys.capella.core.commands.preferences.ui;
 
-import java.io.IOException;
-
-import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.jface.preference.IPersistentPreferenceStore;
-import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
-import org.eclipse.ui.IWorkbench;
-import org.eclipse.ui.IWorkbenchPreferencePage;
-
 import org.polarsys.capella.core.commands.preferences.service.AbstractDefaultPreferencePage;
 
 /**
  */
-public class AbstractCapellaCommandsPreferencePage extends AbstractDefaultPreferencePage implements IWorkbenchPreferencePage {
+public class AbstractCapellaCommandsPreferencePage extends AbstractDefaultPreferencePage {
   /**
    * Constructor.
    */
   public AbstractCapellaCommandsPreferencePage() {
     super(GRID);
-  }
-
-  /**
-   * @see org.eclipse.ui.IWorkbenchPreferencePage#init(org.eclipse.ui.IWorkbench)
-   */
-  @Override
-  public void init(IWorkbench workbench_p) {
-    // Nothing to do.
-  }
-
-  /**
-   * @see org.eclipse.jface.preference.FieldEditorPreferencePage#performOk()
-   */
-  @Override
-  public boolean performOk() {
-    boolean ok = super.performOk();
-    IPreferenceStore store = getPreferenceStore();
-    if (store instanceof IPersistentPreferenceStore) {
-      try {
-        ((IPersistentPreferenceStore) store).save();
-      } catch (IOException e) {
-        MessageDialog.openError(getShell(), "Could not save preferences", e.getMessage());
-        return false;
-      }
-    }
-    return ok;
   }
 
   /**
@@ -81,13 +47,6 @@ public class AbstractCapellaCommandsPreferencePage extends AbstractDefaultPrefer
     gridData.grabExcessVerticalSpace = false;
     group.setLayoutData(gridData);
     return group;
-  }
-
-  @Override
-  protected void performDefaults() {
-    super.performDefaults();
-
-    return;
   }
 
   /**

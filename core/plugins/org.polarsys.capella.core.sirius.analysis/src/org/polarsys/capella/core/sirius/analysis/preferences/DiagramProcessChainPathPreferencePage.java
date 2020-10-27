@@ -11,13 +11,11 @@
 package org.polarsys.capella.core.sirius.analysis.preferences;
 
 import org.eclipse.core.resources.ProjectScope;
-import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.polarsys.capella.core.commands.preferences.service.AbstractDefaultPreferencePage;
 import org.polarsys.capella.core.commands.preferences.service.PreferenceField;
 import org.polarsys.capella.core.commands.preferences.service.UserProfileModeEnum;
-import org.polarsys.capella.core.preferences.Activator;
 
 public class DiagramProcessChainPathPreferencePage extends AbstractDefaultPreferencePage {
 
@@ -114,8 +112,4 @@ public class DiagramProcessChainPathPreferencePage extends AbstractDefaultPrefer
         .setToolTipText(TOOLTIP_PREF_DISPLAY_INVALID_IN_PHYSICAL_PATH_LABEL);
   }
 
-  @Override
-  protected IPreferenceStore doGetPreferenceStore() {
-    return Activator.getDefault().getPreferenceStore();
-  }
 }

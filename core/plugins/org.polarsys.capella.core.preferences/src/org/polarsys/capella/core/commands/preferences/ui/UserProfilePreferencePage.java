@@ -12,7 +12,6 @@
  *******************************************************************************/
 package org.polarsys.capella.core.commands.preferences.ui;
 
-import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
@@ -24,7 +23,6 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.IWorkbench;
-
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.commands.preferences.internalization.l10n.PreferencesUIMessages;
 import org.polarsys.capella.core.commands.preferences.preferences.ConfigurabilityPreferences;
@@ -33,7 +31,6 @@ import org.polarsys.capella.core.commands.preferences.service.PreferencesItemsRe
 import org.polarsys.capella.core.commands.preferences.service.UserProfileModeEnum;
 import org.polarsys.capella.core.commands.preferences.util.IUserProfileDescriptor;
 import org.polarsys.capella.core.commands.preferences.util.XmlPreferencesConfig;
-import org.polarsys.capella.core.preferences.Activator;
 
 /**
  * The preference page for Modeler validation controls.
@@ -107,7 +104,6 @@ public class UserProfilePreferencePage extends AbstractDefaultPreferencePage {
   protected void performApply() {
     applyToPreferences();
     enablePreferencesPage(ConfigurabilityPreferences.isInstanceScopePreferenceItemEnabled(XmlPreferencesConfig.USER_PROFILE_MODE_ID));
-
   }
 
   @Override
@@ -245,15 +241,6 @@ public class UserProfilePreferencePage extends AbstractDefaultPreferencePage {
       userField.setSelection(true);
       expertUserField.setSelection(false);
     }
-  }
-
-  /**
-   * This method must be implemented to obtain the correct location of the preference store, as it is called by getPreferenceStore().
-   * @return IPreferenceStore the returned preference store
-   */
-  @Override
-  protected IPreferenceStore doGetPreferenceStore() {
-    return Activator.getDefault().getPreferenceStore();
   }
 
   /**

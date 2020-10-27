@@ -134,7 +134,7 @@
    <!--extension
          point="org.eclipse.ui.propertyPages">
       <page
-            class="org.polarsys.capella.core.platform.sirius.ui.preferences.CapellaPropertiesPage"
+            class="org.polarsys.capella.core.platform.sirius.ui.preferences.CapellaPreferencePage"
             id="org.polarsys.capella.core.platform.sirius.ui.preferences.CapellaPropertiesPage"
             name="Capella">
          <enabledWhen>
@@ -145,7 +145,7 @@
       </page>
       <page
             category="org.polarsys.capella.core.platform.sirius.ui.preferences.CapellaPropertiesPage"
-            class="org.polarsys.capella.core.platform.sirius.ui.preferences.DeletePropertiesPage"
+            class="org.polarsys.capella.core.platform.sirius.ui.preferences.DeletePreferencePage"
             id="org.polarsys.capella.core.platform.sirius.ui.preferences.DeletePropertiesPage"
             name="Delete">
          <enabledWhen>

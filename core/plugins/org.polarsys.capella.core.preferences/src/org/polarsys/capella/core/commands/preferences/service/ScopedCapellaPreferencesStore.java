@@ -28,7 +28,6 @@ import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.core.runtime.preferences.IPreferencesService;
 import org.eclipse.core.runtime.preferences.IScopeContext;
 import org.eclipse.core.runtime.preferences.InstanceScope;
-import org.eclipse.jface.preference.FieldEditor;
 import org.eclipse.ui.preferences.ScopedPreferenceStore;
 import org.osgi.service.prefs.BackingStoreException;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
@@ -47,8 +46,6 @@ public class ScopedCapellaPreferencesStore extends ScopedPreferenceStore {
 
   private static Map<String, String> options;
 
-  public static Map<FieldEditor, String> fields;
-
   private static final Map<IProject, IScopeContext> projectScopes = new HashMap<IProject, IScopeContext>(0);
 
   private static final String PREFERENCE_SEPARATOR = "."; //$NON-NLS-1$
@@ -56,7 +53,6 @@ public class ScopedCapellaPreferencesStore extends ScopedPreferenceStore {
   static {
     options = new HashMap<String, String>();
     DEFAULT_OPTIONS_MAP = Collections.unmodifiableMap(options);
-    fields = new HashMap<FieldEditor, String>(0);
   }
 
   private ScopedCapellaPreferencesStore(String pluginId) {

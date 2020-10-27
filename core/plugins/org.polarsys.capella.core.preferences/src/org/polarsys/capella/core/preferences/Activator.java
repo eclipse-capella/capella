@@ -34,7 +34,6 @@ import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.util.IPropertyChangeListener;
-import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.ui.preferences.ScopedPreferenceStore;
@@ -45,9 +44,7 @@ import org.polarsys.capella.core.commands.preferences.model.CategoryPreferencesM
 import org.polarsys.capella.core.commands.preferences.properties.PreferencesHandler;
 import org.polarsys.capella.core.commands.preferences.service.PreferencesItemsRegistry;
 import org.polarsys.capella.core.commands.preferences.service.PropertyStore;
-import org.polarsys.capella.core.commands.preferences.service.ScopedCapellaPreferencesStore;
 import org.polarsys.capella.core.commands.preferences.util.PreferencesExtensionHandler;
-import org.polarsys.capella.core.commands.preferences.util.PreferencesHelper;
 import org.polarsys.capella.core.commands.preferences.util.XmlPreferencesConfig;
 
 /**
@@ -134,9 +131,6 @@ public class Activator extends AbstractUIPlugin {
   }
 
   public IPreferenceStore getPropertyPreferenceStore(IResource project) {
-    if (propertiesStore.get(project) != null) {
-      return propertiesStore.get(project);
-    }
     return propertiesStore.get(project);
   }
 
@@ -395,21 +389,6 @@ public class Activator extends AbstractUIPlugin {
       }
 
     }
-  }
-
-  /**
-   * @param property
-   * @return
-   */
-  @Deprecated
-  public boolean existPropertyStore(PropertyChangeEvent event) {
-    final IProject project = PreferencesHelper.getSelectedCapellaProject();
-    if ((project != null) && !((event.getSource() != null) && (event.getSource() instanceof PropertyStore))) {
-      ScopedCapellaPreferencesStore.getInstance(PLUGIN_ID);
-      return ScopedCapellaPreferencesStore.getProjectValue(project, event.getProperty()) != null;
-    }
-
-    return false;
   }
 
 }

@@ -14,11 +14,9 @@ package org.polarsys.capella.core.sirius.analysis.preferences;
 
 import org.eclipse.core.resources.ProjectScope;
 import org.eclipse.jface.preference.FieldEditor;
-import org.eclipse.jface.preference.IPreferenceStore;
 import org.polarsys.capella.core.commands.preferences.service.AbstractDefaultPreferencePage;
 import org.polarsys.capella.core.commands.preferences.service.PreferenceField;
 import org.polarsys.capella.core.commands.preferences.service.UserProfileModeEnum;
-import org.polarsys.capella.core.preferences.Activator;
 
 public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
 
@@ -39,11 +37,6 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
   
   public TitleBlockPreferencePage() {
     super(PAGE_ID);
-  }
-
-  @Override
-  protected IPreferenceStore doGetPreferenceStore() {
-    return Activator.getDefault().getPreferenceStore();
   }
 
   @Override
@@ -71,16 +64,6 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
   private void createTable() {
     titleBlockEditor = new TitleBlockPreferenceField(getFieldEditorParent());
     addField(titleBlockEditor, UserProfileModeEnum.Expert, getFieldEditorParent(), ProjectScope.class);
-  }
-
-  @Override
-  public boolean performOk() {
-    return super.performOk();
-  }
-
-  @Override
-  protected void performDefaults() {
-    super.performDefaults();
   }
 
 }

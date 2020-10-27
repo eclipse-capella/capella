@@ -13,14 +13,12 @@
 package org.polarsys.capella.core.ui.properties.preferences;
 
 import org.eclipse.core.resources.ProjectScope;
-import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.polarsys.capella.common.ui.toolkit.fields.SpacerFieldEditor;
 import org.polarsys.capella.core.commands.preferences.service.AbstractDefaultPreferencePage;
 import org.polarsys.capella.core.commands.preferences.service.PreferenceField;
 import org.polarsys.capella.core.commands.preferences.service.UserProfileModeEnum;
-import org.polarsys.capella.core.preferences.Activator;
 
 /**
  */
@@ -33,14 +31,6 @@ public class TransfertViewerPreferencePage extends AbstractDefaultPreferencePage
    */
   public TransfertViewerPreferencePage() {
     super(PROPERTY_PAGE_ID);
-  }
-
-  /**
-   * @see org.eclipse.jface.preference.PreferencePage#doGetPreferenceStore()
-   */
-  @Override
-  protected IPreferenceStore doGetPreferenceStore() {
-    return Activator.getDefault().getPreferenceStore();
   }
 
   /**
