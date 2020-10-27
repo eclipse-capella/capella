@@ -23,6 +23,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
+import org.polarsys.capella.core.preferences.Activator;
 
 /**
  * Abstract default preference page for account manager UI.
@@ -72,33 +73,16 @@ public abstract class AbstractDefaultPreferencePage extends ConfigurableFieldEdi
    * @return
    */
   protected abstract String getPageDescription();
-
-  /**
-   * @see org.eclipse.jface.preference.FieldEditorPreferencePage#performOk()
-   */
-  @Override
-  public boolean performOk() {
-    boolean ok = super.performOk();
-    IPreferenceStore store = getPreferenceStore();
-    if (store instanceof IPersistentPreferenceStore) {
-      try {
-
-        ((IPersistentPreferenceStore) store).save();
-
-      } catch (IOException e) {
-        StringBuilder loggerMessage = new StringBuilder(Messages.AbstractDefaultPreferencePage_SavePreferences_ErrorMessage);
-        __logger.warn(loggerMessage.toString(), e);
-        return false;
-      }
-    }
-
-    return ok;
-  }
   
   public boolean performCancel() {
 	  return true;
   }
 
+  @Override
+  protected IPreferenceStore doGetPreferenceStore() {
+    return Activator.getDefault().getPreferenceStore();
+  }
+  
   /**
    * Create a new group in the page.
    * @param label_p

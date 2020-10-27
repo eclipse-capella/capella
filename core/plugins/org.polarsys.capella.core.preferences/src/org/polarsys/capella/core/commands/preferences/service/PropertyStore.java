@@ -26,52 +26,36 @@ import org.eclipse.core.runtime.QualifiedName;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.preference.PreferenceStore;
 import org.eclipse.jface.util.IPropertyChangeListener;
-import org.osgi.service.prefs.BackingStoreException;
-
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.core.preferences.Activator;
 
 /**
+ * Its overall complicated but mainly:
+ * 
+ * Unlike the default PreferenceStore, it stores all values even default ones. Indeed, Configuration projects and
+ * Capella projects can be shared between users and all preferences shall be shared between users even default ones.
+ * 
+ * It stores each preferences in the ProjectScope and as Properties using IProject.getPersistentProperty, which is idk
+ * why, used in ScopedCapellaPreferencesStore.getProjectValue(IProject, String)
  */
 public class PropertyStore extends PreferenceStore implements IPropertyPersistentPreferenceStore {
 
-  /*
-   * 
-   */
-  private static final Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.UI);
+  public static final String USEPROJECTSETTINGS = "useProjectSettings"; //$NON-NLS-1$
 
-  /*
-   * 
-   */
+  private static final Logger logger = ReportManagerRegistry.getInstance()
+      .subscribe(IReportManagerDefaultComponents.UI);
+
   private static Set<IPropertyChangeListener> guestListener = new HashSet<IPropertyChangeListener>();
 
-  /*
-   * 
-   */
   private IResource resource;
 
   public IResource getResource() {
     return resource;
   }
 
-  public void setResource(IResource resource) {
-    this.resource = resource;
-  }
-
-  /*
-   * 
-   */
   private IPreferenceStore workbenchStore;
 
-  /*
-   * 
-   */
-  private String pageId;
-
-  /*
-   * 
-   */
   private boolean inserting = false;
 
   private boolean isCanceled;
@@ -81,11 +65,11 @@ public class PropertyStore extends PreferenceStore implements IPropertyPersisten
    * @param _workbenchStore
    * @param id
    */
-  public PropertyStore(IResource _resource, IPreferenceStore _workbenchStore, String id) {
+  public PropertyStore(IResource _resource, IPreferenceStore _workbenchStore) {
     this.resource = _resource;
     this.workbenchStore = _workbenchStore;
-    this.pageId = id;
-
+    Activator.getDefault().setPropertyStore((IResource) _resource, this);
+    initilizeGuestListeners();
   }
 
   /**
@@ -98,35 +82,26 @@ public class PropertyStore extends PreferenceStore implements IPropertyPersisten
     }
   }
 
-  @Override
-  public void addPropertyChangeListener(org.eclipse.jface.util.IPropertyChangeListener listener) {
-    super.addPropertyChangeListener(listener);
-  }
-
-  @Override
-  public void firePropertyChangeEvent(String name, Object oldValue, Object newValue) {
-    super.firePropertyChangeEvent(name, oldValue, newValue);
-  }
-
   /*** Write modified values back to properties ***/
 
   /*
    * (non-Javadoc)
+   * 
    * @see org.eclipse.jface.preference.IPersistentPreferenceStore#save()
    */
   @Override
   public void save() throws IOException {
-
     try {
-
       // to bypass other capella modeller preference page
       if ((resource instanceof IProject) && !isCanceled) {
+        resource.setPersistentProperty(new QualifiedName(Activator.PLUGIN_ID, USEPROJECTSETTINGS), TRUE); // idk if its useful
+
         final ProjectScope project = new ProjectScope((IProject) resource);
         writeProperties(project);
         project.getNode(Activator.PLUGIN_ID).flush();
       }
 
-    } catch (BackingStoreException exception) {
+    } catch (Exception exception) {
       StringBuilder loggerMessage = new StringBuilder("PropertyStore : "); //$NON-NLS-1$
       logger.warn(loggerMessage.toString(), exception);
     }
@@ -134,6 +109,7 @@ public class PropertyStore extends PreferenceStore implements IPropertyPersisten
 
   /*
    * (non-Javadoc)
+   * 
    * @see org.eclipse.jface.preference.PreferenceStore#save(java.io.OutputStream, java.lang.String)
    */
   @Override
@@ -162,8 +138,8 @@ public class PropertyStore extends PreferenceStore implements IPropertyPersisten
     String[] preferences = super.preferenceNames();
     for (String name : preferences) {
       try {
-        setProperty(name, getString(name));
         project.getNode(Activator.PLUGIN_ID).put(name, getString(name));
+        setProperty(name, getString(name));
       } catch (CoreException e) {
         throw new IOException("PropertyStore.Cannot_write_resource_property" + name); //$NON-NLS-1$
       }
@@ -172,18 +148,22 @@ public class PropertyStore extends PreferenceStore implements IPropertyPersisten
 
   /**
    * Convenience method to set a property
-   * @param name - the preference name
-   * @param value - the property value or null to delete the property
+   * 
+   * @param name
+   *          - the preference name
+   * @param value
+   *          - the property value or null to delete the property
    * @throws CoreException
    */
   private void setProperty(String name, String value) throws CoreException {
-    resource.setPersistentProperty(new QualifiedName(pageId, name), value);
+    resource.setPersistentProperty(new QualifiedName(Activator.PLUGIN_ID, name), value);
   }
 
   /*** Get default values (Delegate to workbench store) ***/
 
   /*
    * (non-Javadoc)
+   * 
    * @see org.eclipse.jface.preference.IPreferenceStore#getDefaultBoolean(java.lang.String)
    */
   @Override
@@ -193,6 +173,7 @@ public class PropertyStore extends PreferenceStore implements IPropertyPersisten
 
   /*
    * (non-Javadoc)
+   * 
    * @see org.eclipse.jface.preference.IPreferenceStore#getDefaultDouble(java.lang.String)
    */
   @Override
@@ -202,6 +183,7 @@ public class PropertyStore extends PreferenceStore implements IPropertyPersisten
 
   /*
    * (non-Javadoc)
+   * 
    * @see org.eclipse.jface.preference.IPreferenceStore#getDefaultFloat(java.lang.String)
    */
   @Override
@@ -211,6 +193,7 @@ public class PropertyStore extends PreferenceStore implements IPropertyPersisten
 
   /*
    * (non-Javadoc)
+   * 
    * @see org.eclipse.jface.preference.IPreferenceStore#getDefaultInt(java.lang.String)
    */
   @Override
@@ -220,6 +203,7 @@ public class PropertyStore extends PreferenceStore implements IPropertyPersisten
 
   /*
    * (non-Javadoc)
+   * 
    * @see org.eclipse.jface.preference.IPreferenceStore#getDefaultLong(java.lang.String)
    */
   @Override
@@ -229,6 +213,7 @@ public class PropertyStore extends PreferenceStore implements IPropertyPersisten
 
   /*
    * (non-Javadoc)
+   * 
    * @see org.eclipse.jface.preference.IPreferenceStore#getDefaultString(java.lang.String)
    */
   @Override
@@ -240,6 +225,7 @@ public class PropertyStore extends PreferenceStore implements IPropertyPersisten
 
   /*
    * (non-Javadoc)
+   * 
    * @see org.eclipse.jface.preference.IPreferenceStore#getBoolean(java.lang.String)
    */
   @Override
@@ -250,6 +236,7 @@ public class PropertyStore extends PreferenceStore implements IPropertyPersisten
 
   /*
    * (non-Javadoc)
+   * 
    * @see org.eclipse.jface.preference.IPreferenceStore#getDouble(java.lang.String)
    */
   @Override
@@ -260,6 +247,7 @@ public class PropertyStore extends PreferenceStore implements IPropertyPersisten
 
   /*
    * (non-Javadoc)
+   * 
    * @see org.eclipse.jface.preference.IPreferenceStore#getFloat(java.lang.String)
    */
   @Override
@@ -270,6 +258,7 @@ public class PropertyStore extends PreferenceStore implements IPropertyPersisten
 
   /*
    * (non-Javadoc)
+   * 
    * @see org.eclipse.jface.preference.IPreferenceStore#getInt(java.lang.String)
    */
   @Override
@@ -280,6 +269,7 @@ public class PropertyStore extends PreferenceStore implements IPropertyPersisten
 
   /*
    * (non-Javadoc)
+   * 
    * @see org.eclipse.jface.preference.IPreferenceStore#getLong(java.lang.String)
    */
   @Override
@@ -290,6 +280,7 @@ public class PropertyStore extends PreferenceStore implements IPropertyPersisten
 
   /*
    * (non-Javadoc)
+   * 
    * @see org.eclipse.jface.preference.IPreferenceStore#getString(java.lang.String)
    */
   @Override
@@ -325,18 +316,21 @@ public class PropertyStore extends PreferenceStore implements IPropertyPersisten
 
   /**
    * Convenience method to fetch a property
-   * @param name - the preference name
+   * 
+   * @param name
+   *          - the preference name
    * @return - the property value
    * @throws CoreException
    */
   private String getProperty(String name) throws CoreException {
-    return resource.getPersistentProperty(new QualifiedName(pageId, name));
+    return resource.getPersistentProperty(new QualifiedName(Activator.PLUGIN_ID, name));
   }
 
   /*** Misc ***/
 
   /*
    * (non-Javadoc)
+   * 
    * @see org.eclipse.jface.preference.IPreferenceStore#contains(java.lang.String)
    */
   @Override
@@ -346,6 +340,7 @@ public class PropertyStore extends PreferenceStore implements IPropertyPersisten
 
   /*
    * (non-Javadoc)
+   * 
    * @see org.eclipse.jface.preference.IPreferenceStore#setToDefault(java.lang.String)
    */
   @Override
@@ -355,6 +350,7 @@ public class PropertyStore extends PreferenceStore implements IPropertyPersisten
 
   /*
    * (non-Javadoc)
+   * 
    * @see org.eclipse.jface.preference.IPreferenceStore#isDefault(java.lang.String)
    */
   @Override
@@ -378,7 +374,6 @@ public class PropertyStore extends PreferenceStore implements IPropertyPersisten
    */
   public void setCanceled(boolean b) {
     isCanceled = true;
-
   }
 
 }

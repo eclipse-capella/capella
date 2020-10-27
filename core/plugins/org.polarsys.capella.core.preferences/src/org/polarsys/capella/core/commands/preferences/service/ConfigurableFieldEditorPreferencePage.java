@@ -20,19 +20,15 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.core.runtime.ListenerList;
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.dialogs.IPageChangeProvider;
 import org.eclipse.jface.dialogs.IPageChangedListener;
 import org.eclipse.jface.dialogs.PageChangedEvent;
 import org.eclipse.jface.preference.FieldEditor;
-import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IWorkbench;
-import org.osgi.service.prefs.BackingStoreException;
 import org.polarsys.capella.core.commands.preferences.preferences.ConfigurabilityPreferences;
 import org.polarsys.capella.core.commands.preferences.util.XmlPreferencesConfig;
-import org.polarsys.capella.core.preferences.Activator;
 
 /**
  * A special abstract preference page to host field editors.
@@ -92,13 +88,11 @@ public abstract class ConfigurableFieldEditorPreferencePage extends FieldEditorP
       parent.setEnabled(
           ConfigurabilityPreferences.isInstanceScopePreferenceItemEnabled(XmlPreferencesConfig.USER_PROFILE_MODE_ID));
     }
-    editor.setPreferenceStore(Activator.getDefault().getPreferenceStore());
     super.addField(editor);
   }
 
-  @Override
   protected String getPageId() {
-    return this.pageId;
+    return pageId;
   }
 
   /**
@@ -118,13 +112,11 @@ public abstract class ConfigurableFieldEditorPreferencePage extends FieldEditorP
       editor.setEnabled(true, parent);
       parent.setEnabled(true);
     }
-    editor.setPreferenceStore(Activator.getDefault().getPreferenceStore());
     super.addField(editor);
   }
 
   @Override
   protected void addField(FieldEditor editor) {
-    editor.setPreferenceStore(Activator.getDefault().getPreferenceStore());
     this.addField(editor, UserProfileModeEnum.User, null);
   }
   
@@ -171,26 +163,6 @@ public abstract class ConfigurableFieldEditorPreferencePage extends FieldEditorP
   @Override
   public void removePageChangedListener(IPageChangedListener listener) {
     pageChangedListener.remove(listener);
-  }
-
-  @Override
-  protected IPreferenceStore doGetPreferenceStore() {
-    if (isPropertyPage()) {
-      return super.getPreferenceStore();
-    }
-    return Activator.getDefault().getPreferenceStore();
-  }
-
-  @Override
-  public boolean performOk() {
-    super.performOk();
-    try {
-      Platform.getPreferencesService().getRootNode().flush();
-    } catch (BackingStoreException exception) {
-      StringBuilder loggerMessage = new StringBuilder("ConfigurableFieldEditorPreferencePage.performOk(..) _ "); //$NON-NLS-1$
-    }
-    ScopedCapellaPreferencesStore.getInstance(Activator.PLUGIN_ID).save();
-    return super.performOk();
   }
 
   public void enablePreferencesPage(boolean isEnable) {
