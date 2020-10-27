@@ -13,7 +13,6 @@
 package org.polarsys.capella.common.ui.resources.prefs;
 
 import org.eclipse.core.resources.ProjectScope;
-import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.polarsys.capella.common.ui.toolkit.fields.SpacerFieldEditor;
@@ -26,7 +25,6 @@ import org.polarsys.capella.core.model.preferences.IInheritancePreferences;
 import org.polarsys.capella.core.model.preferences.IModeAndStateManagementPreferences;
 import org.polarsys.capella.core.model.preferences.IReuseComponentsPreferences;
 import org.polarsys.capella.core.model.preferences.ISynchronizationPreferences;
-import org.polarsys.capella.core.preferences.Activator;
 
 /**
  */
@@ -39,14 +37,6 @@ public class ModelPreferencePage extends AbstractDefaultPreferencePage {
    */
   public ModelPreferencePage() {
     super(PROPERTY_PAGE_ID);
-  }
-
-  /**
-   * @see org.eclipse.jface.preference.PreferencePage#doGetPreferenceStore()
-   */
-  @Override
-  protected IPreferenceStore doGetPreferenceStore() {
-    return Activator.getDefault().getPreferenceStore();
   }
 
   /**

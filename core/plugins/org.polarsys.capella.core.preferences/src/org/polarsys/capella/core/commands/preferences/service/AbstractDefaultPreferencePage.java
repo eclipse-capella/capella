@@ -15,26 +15,19 @@ package org.polarsys.capella.core.commands.preferences.service;
 import java.io.IOException;
 
 import org.apache.log4j.Logger;
-import org.eclipse.core.resources.IProject;
 import org.eclipse.jface.preference.IPersistentPreferenceStore;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
-import org.eclipse.ui.IWorkbenchPreferencePage;
-
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
-import org.polarsys.capella.core.commands.preferences.preferences.ConfigurabilityPreferences;
-import org.polarsys.capella.core.commands.preferences.util.PreferencesHelper;
-import org.polarsys.capella.core.commands.preferences.util.XmlPreferencesConfig;
 
 /**
  * Abstract default preference page for account manager UI.
  */
-public abstract class AbstractDefaultPreferencePage extends ConfigurableFieldEditorPreferencePage implements IAbstractDefaultPreferencePage,
-    IWorkbenchPreferencePage {
+public abstract class AbstractDefaultPreferencePage extends ConfigurableFieldEditorPreferencePage implements IAbstractDefaultPreferencePage {
 
   /*
    * 
@@ -67,20 +60,7 @@ public abstract class AbstractDefaultPreferencePage extends ConfigurableFieldEdi
     setTitle(getPageTitle());
     setDescription(getPageDescription());
   }
-
   
-  
-  
-  /**
-   * @see org.eclipse.ui.IWorkbenchPreferencePage#init(org.eclipse.ui.IWorkbench)
-   */
-  protected void setEnable(Composite parent, UserProfileModeEnum userMode) {
-	  parent.setEnabled(ConfigurabilityPreferences.isInstanceScopePreferenceItemEnabled(XmlPreferencesConfig.USER_PROFILE_MODE_ID));
-	  COMPOSITE_FIEL_EDITORS.add(parent);
-  }
-  
-  
-
   /**
    * Get the title of this page
    * @return
@@ -116,16 +96,7 @@ public abstract class AbstractDefaultPreferencePage extends ConfigurableFieldEdi
   }
   
   public boolean performCancel() {
-      
 	  return true;
-  }
-
-  public IPreferenceStore getProjectPreferenceStore() {
-    final IProject selectedCapellaProject = PreferencesHelper.getSelectedCapellaProject();
-    if (selectedCapellaProject != null) {
-      return PreferencesHelper.getProjectScope(selectedCapellaProject);
-    }
-    return super.getPreferenceStore();
   }
 
   /**
@@ -146,13 +117,6 @@ public abstract class AbstractDefaultPreferencePage extends ConfigurableFieldEdi
     gridData.grabExcessVerticalSpace = false;
     group.setLayoutData(gridData);
     return group;
-  }
-
-  @Override
-  protected void performDefaults() {
-    super.performDefaults();
-
-    return;
   }
 
 }

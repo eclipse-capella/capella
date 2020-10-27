@@ -13,12 +13,10 @@
 package org.polarsys.capella.core.platform.sirius.ui.navigator.preferences;
 
 import org.eclipse.jface.preference.BooleanFieldEditor;
-import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.swt.widgets.Group;
 import org.polarsys.capella.core.commands.preferences.service.AbstractDefaultPreferencePage;
 import org.polarsys.capella.core.commands.preferences.service.UserProfileModeEnum;
 import org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage;
-import org.polarsys.capella.core.preferences.Activator;
 
 /**
  * Preferences page for Capella Navigator.
@@ -34,14 +32,6 @@ public class CapellaNavigatorPreferencePage extends AbstractDefaultPreferencePag
    */
   public CapellaNavigatorPreferencePage() {
     super(PROPERTY_PAGE_ID);
-  }
-
-  /**
-   * @see org.eclipse.jface.preference.PreferencePage#doGetPreferenceStore()
-   */
-  @Override
-  protected IPreferenceStore doGetPreferenceStore() {
-    return Activator.getDefault().getPreferenceStore();
   }
 
   /**
