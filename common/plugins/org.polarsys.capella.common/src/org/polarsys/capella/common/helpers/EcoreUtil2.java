@@ -19,6 +19,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Predicate;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -35,7 +36,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
-import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
@@ -274,6 +274,30 @@ public class EcoreUtil2 {
     return getFirstContainer(container, cls);
   }
 
+  /**
+   * 
+   * @param eObj
+   * @param condition
+   * @return the first container that satisfies the given condition
+   */
+  public static EObject getFirstContainer(EObject eObj, Predicate<EObject> condition) {
+    EObject container = null;
+
+    if (eObj != null) {
+      container = eObj.eContainer();
+    }
+
+    if (container == null) {
+      return null;
+    }
+
+    if (condition.test(container)) {
+      return container;
+    }
+
+    return getFirstContainer(container, condition);
+  }
+  
   /**
    * Collect all elements that reference (containment relationships are not taken into account) given one.<br>
    * In fact that collects Non Navigable Inverse References for given element.<br>
