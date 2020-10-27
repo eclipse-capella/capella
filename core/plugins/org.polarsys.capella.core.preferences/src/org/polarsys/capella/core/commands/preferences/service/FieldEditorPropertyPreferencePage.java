@@ -12,15 +12,12 @@
  *******************************************************************************/
 package org.polarsys.capella.core.commands.preferences.service;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.IAdaptable;
-import org.eclipse.core.runtime.QualifiedName;
 import org.eclipse.jface.preference.FieldEditor;
 import org.eclipse.jface.preference.FieldEditorPreferencePage;
 import org.eclipse.jface.preference.IPreferenceStore;
@@ -29,8 +26,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.eclipse.ui.IWorkbenchPropertyPage;
-import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
-import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
+import org.eclipse.ui.preferences.ScopedPreferenceStore;
 import org.polarsys.capella.core.preferences.Activator;
 
 /**
@@ -38,24 +34,11 @@ import org.polarsys.capella.core.preferences.Activator;
 public abstract class FieldEditorPropertyPreferencePage extends FieldEditorPreferencePage
     implements IFieldEditorPropertyPreferencePage, IWorkbenchPropertyPage, IWorkbenchPreferencePage {
 
-  private static final Logger __logger = ReportManagerRegistry.getInstance()
-      .subscribe(IReportManagerDefaultComponents.UI);
-
-  public static final String USEPROJECTSETTINGS = "useProjectSettings"; //$NON-NLS-1$
-
-  private static final String TRUE = "true"; //$NON-NLS-1$
-
   // Stores all created field editors
   private List<FieldEditor> editors = new ArrayList<FieldEditor>();
 
   // Stores owning element of properties
   private IAdaptable element;
-
-  // Overlay preference store for property pages
-  private IPreferenceStore propertiesStore;
-
-  // Cache for page id
-  private String pageId;
 
   /**
    * Constructor
@@ -92,13 +75,6 @@ public abstract class FieldEditorPropertyPreferencePage extends FieldEditorPrefe
   public FieldEditorPropertyPreferencePage(String title, ImageDescriptor image, int style) {
     super(title, image, style);
   }
-
-  /**
-   * Returns the id of the current preference page as defined in plugin.xml Subclasses must implement.
-   * 
-   * @return - the qualifier
-   */
-  protected abstract String getPageId();
 
   /**
    * Receives the object that owns the properties shown in this property page.
@@ -149,42 +125,26 @@ public abstract class FieldEditorPropertyPreferencePage extends FieldEditorPrefe
   public void createControl(Composite parent) {
     // Special treatment for property pages
     if (isPropertyPage()) {
-      // Cache the page id
-      pageId = getPageId();
-      // Create an overlay preference store and fill it with properties
-      propertiesStore = new PropertyStore((IResource) getElement(), Activator.getDefault()
-          .getPreferenceStore() /*
-                                 * new ScopedPreferenceStore(new InstanceScope(), Activator.PLUGIN_ID)
-                                 */, pageId);
       // Set overlay store as current preference store
-
+      PropertyStore store = new PropertyStore((IResource) getElement(), Activator.getDefault().getPreferenceStore());
+      setPreferenceStore(store);
+      
+    } else {
+      ScopedPreferenceStore store = (ScopedPreferenceStore) doGetPreferenceStore();
+      setPreferenceStore(store);
     }
+    
     super.createControl(parent);
-    // Update state of all subclass controls
-    if (isPropertyPage()) {
-      updateFieldEditors();
-    }
   }
 
-  /**
-   * Returns in case of property pages the overlay store, in case of preference pages the standard preference store
-   * 
-   * @see org.eclipse.jface.preference.PreferencePage#getPreferenceStore()
-   */
-  @Override
-  public IPreferenceStore getPreferenceStore() {
-    if (isPropertyPage()) {
-      return propertiesStore;
-    }
-    return super.getPreferenceStore();
-  }
+  public void setPreferenceStore(IPreferenceStore store) {
+    super.setPreferenceStore(store);
 
-  /*
-   * Enables or disables the field editors and buttons of this page
-   */
-  private void updateFieldEditors() {
-    Activator.getDefault().setPropertyStore((IResource) getElement(), propertiesStore);
-    ((IPropertyPersistentPreferenceStore) this.propertiesStore).initilizeGuestListeners();
+    Iterator<FieldEditor> it = editors.iterator();
+    while (it.hasNext()) {
+      FieldEditor editor = it.next();
+      editor.setPreferenceStore(store);
+    }
   }
 
   /**
@@ -201,48 +161,14 @@ public abstract class FieldEditorPropertyPreferencePage extends FieldEditorPrefe
       editor.setEnabled(enabled, parent);
     }
   }
-
-  /**
-   * We override the performOk method. In case of property pages we copy the values in the overlay store into the
-   * property values of the selected project. We also save the state of the radio buttons.
-   * 
-   * @see org.eclipse.jface.preference.IPreferencePage#performOk()
-   */
-  @Override
-  public boolean performOk() {
-    boolean result = super.performOk();
-    if (isPropertyPage()) {
-
-      // Save state of radiobuttons in project properties
-      IResource resource = (IResource) getElement();
-      try {
-        resource.setPersistentProperty(new QualifiedName(pageId, USEPROJECTSETTINGS), TRUE);
-
-        resource.getPersistentProperty(new QualifiedName(pageId, USEPROJECTSETTINGS));
-        if ((this.propertiesStore != null) && (this.propertiesStore instanceof IPropertyPersistentPreferenceStore)) {
-          try {
-            ((IPropertyPersistentPreferenceStore) this.propertiesStore).save();
-
-          } catch (IOException exception_p) {
-            StringBuilder loggerMessage = new StringBuilder("FieldEditorPropertyPreferencePage.performOk(..) _ "); //$NON-NLS-1$
-            __logger.warn(loggerMessage.toString(), exception_p);
-          }
-        }
-      } catch (Exception exception_p) {
-
-      }
-
-    }
-
-    return result;
-  }
-
+  
   @Override
   public boolean performCancel() {
-    if (propertiesStore != null) {
-      ((PropertyStore) this.propertiesStore).setCanceled(true);
+    IPreferenceStore store = (IPreferenceStore) getPreferenceStore();
+    if (store instanceof PropertyStore) {
+      ((PropertyStore) store).setCanceled(true);
     }
-    return false;
+    return true;
   }
 
   public void init(IWorkbench workbench) {

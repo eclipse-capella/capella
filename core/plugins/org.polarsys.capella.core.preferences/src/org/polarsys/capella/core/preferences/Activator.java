@@ -378,17 +378,7 @@ public class Activator extends AbstractUIPlugin {
    * @param capellaCommonNavigator
    */
   public void addProjectsPropertyChangeListener(IPropertyChangeListener capellaCommonNavigator) {
-
-    IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
-
-    for (IProject project : projects) {
-      if (Activator.getDefault().getPropertyPreferenceStore(project) != null) {
-        getPropertyPreferenceStore(project).addPropertyChangeListener(capellaCommonNavigator);
-      } else {
-        PropertyStore.addToGuestListener(capellaCommonNavigator);
-      }
-
-    }
+    PropertyStore.addToGuestListener(capellaCommonNavigator);
   }
 
 }
