@@ -523,10 +523,74 @@
             pattern="org.polarsys.capella.core.platform.sirius.ui.project/capella.project.wizard">
       </activityPatternBinding>
 
+      <!-- Behavior deployment concept -->
+      <activityPatternBinding
+            activityId="org.polarsys.capella.activities.behaviorDeployment"
+            isEqualityPattern="true"
+            pattern="pa.pab.deploy.behavior.pc">
+      </activityPatternBinding>
+      <activityPatternBinding
+            activityId="org.polarsys.capella.activities.behaviorDeployment"
+            isEqualityPattern="true"
+            pattern="pa.pab.manage.behavior.pcs.deployment">
+      </activityPatternBinding>
+      <activityPatternBinding
+            activityId="org.polarsys.capella.activities.behaviorDeployment"
+            isEqualityPattern="true"
+            pattern="pa.pab.deployed.behaviour.pcs">
+      </activityPatternBinding>
+      <activityPatternBinding
+            activityId="org.polarsys.capella.activities.behaviorDeployment"
+            isEqualityPattern="true"
+            pattern="pa.pab.all.deployed.behaviour.pcs">
+      </activityPatternBinding>
+      <activity
+            description="Concepts related to behavior deployment"
+            id="org.polarsys.capella.activities.behaviorDeployment"
+            name="Behavior Deployment Concepts">
+      </activity>
+      <categoryActivityBinding
+            activityId="org.polarsys.capella.activities.behaviorDeployment"
+            categoryId="org.polarsys.capella.activities.categories.common">
+      </categoryActivityBinding>
+      <defaultEnablement
+            id="org.polarsys.capella.activities.behaviorDeployment">
+      </defaultEnablement>
 
-
-
-
+      <!-- Node deployment concept -->
+      <activityPatternBinding
+            activityId="org.polarsys.capella.activities.nodeDeployment"
+            isEqualityPattern="true"
+            pattern="pa.pab.deploy.node.pc">
+      </activityPatternBinding>
+      <activityPatternBinding
+            activityId="org.polarsys.capella.activities.nodeDeployment"
+            isEqualityPattern="true"
+            pattern="pa.pab.manage.node.pcs.deployment">
+      </activityPatternBinding>
+      <activityPatternBinding
+            activityId="org.polarsys.capella.activities.nodeDeployment"
+            isEqualityPattern="true"
+            pattern="pa.pab.deployed.node.pcs">
+      </activityPatternBinding>
+      <activityPatternBinding
+            activityId="org.polarsys.capella.activities.nodeDeployment"
+            isEqualityPattern="true"
+            pattern="pa.pab.all.deployed.node.pcs">
+      </activityPatternBinding>
+      <activity
+            description="Concepts related to node deployment"
+            id="org.polarsys.capella.activities.nodeDeployment"
+            name="Node Deployment Concepts">
+      </activity>
+      <categoryActivityBinding
+            activityId="org.polarsys.capella.activities.nodeDeployment"
+            categoryId="org.polarsys.capella.activities.categories.common">
+      </categoryActivityBinding>
+      <defaultEnablement
+            id="org.polarsys.capella.activities.nodeDeployment">
+      </defaultEnablement>
+      
    </extension>
    
    <!--extension point="org.eclipse.ui.splashHandlers">
