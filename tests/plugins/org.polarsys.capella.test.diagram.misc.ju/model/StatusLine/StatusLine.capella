@@ -43,7 +43,41 @@
       <ownedFunctionPkg xsi:type="org.polarsys.capella.core.data.oa:OperationalActivityPkg"
           id="86c3e745-1574-474f-b88d-db2fa111cd99" name="Operational Activities">
         <ownedOperationalActivities xsi:type="org.polarsys.capella.core.data.oa:OperationalActivity"
-            id="34097d08-be27-4326-9fcf-c7f7772c9f33" name="Root Operational Activity"/>
+            id="34097d08-be27-4326-9fcf-c7f7772c9f33" name="Root Operational Activity">
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.oa:OperationalActivity"
+              id="2ef974f7-69fc-478f-a0f1-6e473d145f1c" name="Root OA">
+            <ownedFunctions xsi:type="org.polarsys.capella.core.data.oa:OperationalActivity"
+                id="4ad0704e-029a-4646-ae13-5e4f35992c5f" name="OA 1"/>
+            <ownedFunctions xsi:type="org.polarsys.capella.core.data.oa:OperationalActivity"
+                id="f26b78a9-9109-4af6-840c-fc3d050e1f8e" name="OA 2"/>
+            <ownedFunctions xsi:type="org.polarsys.capella.core.data.oa:OperationalActivity"
+                id="e568b574-8c7c-4e46-9e24-d28f59e29051" name="OA 3"/>
+            <ownedFunctions xsi:type="org.polarsys.capella.core.data.oa:OperationalActivity"
+                id="308bbc45-8cda-45a2-886f-8adc208e3b7b" name="OA 4">
+              <ownedFunctions xsi:type="org.polarsys.capella.core.data.oa:OperationalActivity"
+                  id="71356c27-1fbc-49f5-b453-0a1aa3026863" name="OA 4_1"/>
+            </ownedFunctions>
+            <ownedFunctions xsi:type="org.polarsys.capella.core.data.oa:OperationalActivity"
+                id="f7fd076c-42d7-4ee6-9d22-edcddcef2853" name="OA 5"/>
+            <ownedFunctions xsi:type="org.polarsys.capella.core.data.oa:OperationalActivity"
+                id="b157b346-59b3-438a-91fe-481e9cf8853c" name="OA 6">
+              <ownedFunctions xsi:type="org.polarsys.capella.core.data.oa:OperationalActivity"
+                  id="c57618fa-d961-4670-8524-9434a0bb186e" name="OA 6_1"/>
+            </ownedFunctions>
+            <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+                id="f4756f78-ef42-4c35-9793-3c916bae710d" name="Interaction 1" target="#f26b78a9-9109-4af6-840c-fc3d050e1f8e"
+                source="#4ad0704e-029a-4646-ae13-5e4f35992c5f"/>
+            <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+                id="c2ce75ec-32fa-46d6-8557-f995b8f3ce44" name="Interaction 2" target="#e568b574-8c7c-4e46-9e24-d28f59e29051"
+                source="#f26b78a9-9109-4af6-840c-fc3d050e1f8e"/>
+            <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+                id="dd31bcfa-0c08-4984-8358-47f4dfd79f7a" name="Interaction 3" target="#f7fd076c-42d7-4ee6-9d22-edcddcef2853"
+                source="#71356c27-1fbc-49f5-b453-0a1aa3026863"/>
+            <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+                id="a96b1b95-47fd-4e76-9dc3-f8bb979ce15f" name="Interaction 4" target="#c57618fa-d961-4670-8524-9434a0bb186e"
+                source="#f7fd076c-42d7-4ee6-9d22-edcddcef2853"/>
+          </ownedFunctions>
+        </ownedOperationalActivities>
       </ownedFunctionPkg>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.oa:OperationalCapabilityPkg"
           id="a7009977-e9ad-48bb-82c4-05085e4776d4" name="Operational Capabilities"/>

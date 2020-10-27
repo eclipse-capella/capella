@@ -32,6 +32,7 @@ import org.polarsys.capella.test.diagram.misc.ju.testcases.DDiagramEditorUndoRed
 import org.polarsys.capella.test.diagram.misc.ju.testcases.DecompositionWizardTestCase;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.GraphTest;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.InsertRemoveComponentsWithNoParts;
+import org.polarsys.capella.test.diagram.misc.ju.testcases.InteractionSourceTarget;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.InterfacePortSizeTestCase;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.PABStyleChecksDiagramElements;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.StatusLineTestCase;
@@ -83,6 +84,7 @@ public class DiagramMiscTestSuite extends BasicTestSuite {
     tests.add(new AllocationManagementTest());
     tests.add(new ColorNameConstantsTest());
     tests.add(new UnsyncronizedSemanticBrowser());
+    tests.add(new InteractionSourceTarget());
     
     return tests;
   }
