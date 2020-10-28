@@ -267,4 +267,9 @@ public class SiriusUiCallBack implements UICallBack {
         defaultCallBack.askUserAndSaveMigratedSession(session);
     }
 
+    @Override
+    public boolean askUserToRefreshTheDiagram() {
+      return defaultCallBack.askUserToRefreshTheDiagram();
+    }
+
 }
