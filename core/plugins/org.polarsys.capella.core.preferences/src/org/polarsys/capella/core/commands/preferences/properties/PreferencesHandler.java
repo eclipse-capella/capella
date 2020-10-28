@@ -223,9 +223,6 @@ public class PreferencesHandler extends AbstractHandler implements IElementUpdat
       if ((commandDescriptor != null) && command.isDefined()) {
         PreferencesHandler.getInstance(command).activateHandler(command);
         commandService.refreshElements(command.getId(), null);
-
-      } else if (command.getId().equals("org.eclipse.ui.file.export")) {
-        ExportPreferencesHandler.getInstance(command);
       }
     }
   }

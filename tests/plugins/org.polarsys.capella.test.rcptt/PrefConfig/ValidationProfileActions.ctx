@@ -160,12 +160,12 @@ proc selectSomeConstraints_validation {
 		
 		checkPropertyButtonSelected "Show confirmation dialog" false
 		with [get-group "Reusable components" ] {
-	        checkPropertyButtonSelected "Delete parts when deleting components" true
+	        checkPropertyButtonSelected "Delete parts when deleting components" false
 	    }
 	    
 	    get-tree | select "Capella/Model"
 	    get-group "Inheritance Management" | checkPropertyButtonSelected "Multiple inheritance allowed" true
-	    get-group "Deployment Management" | checkPropertyButtonSelected "Multiple deployment allowed" true
+	    get-group "Deployment Management" | checkPropertyButtonSelected "Multiple deployment allowed" false
 	    
 		get-tree | select "Model Validation/Constraints"
 	    get-tree -after [get-label "Constraint categories:"] | select "Capella/Design/Completeness"
@@ -429,26 +429,26 @@ proc "checkUnchangedPreferencesProject1" [val projectName] {
 	// Check Capella Model Preferences (same as default)
 	get-window $prefWindow | get-tree | select "Capella/Model"
 	with [get-window $prefWindow] {
-	    get-group "Reuse of components" | get-button "Allow reuse of components" | get-property selected | equals true 
+	    get-group "Reuse of components" | get-button "Allow reuse of components" | get-property selected | equals false 
 	        | verify-true
 	    with [get-group "Inheritance Management"] {
-	        get-button "Multiple inheritance allowed" | get-property selected | equals true | verify-true
-	        get-button "Component Non Actor inheritance allowed" | get-property selected | equals true | verify-true
+	        get-button "Multiple inheritance allowed" | get-property selected | equals false | verify-true
+	        get-button "Component Non Actor inheritance allowed" | get-property selected | equals false | verify-true
 	    }
-	    get-group "Deployment Management" | get-button "Multiple deployment allowed" | get-property selected | equals true 
+	    get-group "Deployment Management" | get-button "Multiple deployment allowed" | get-property selected | equals false 
 	        | verify-true
 	    get-group "Data Management" | get-button "Delete related associations when a class becomes primitive" 
-	        | get-property selected | equals false | verify-true
+	        | get-property selected | equals true | verify-true
 	    with [get-group Synchronizations] {
 	        get-button "Synchronize Component Port to Function Port allocation when allocating Functional Exchanges to Component Exchanges" 
-	            | get-property selected | equals false | verify-true
+	            | get-property selected | equals true | verify-true
 	        get-button "Synchronize Physical Port to Component Port delegation when allocating Component Exchanges to Physical Links" 
-	            | get-property selected | equals false | verify-true
+	            | get-property selected | equals true | verify-true
 	        get-button "Synchronize Physical Port to Component Port delegation when allocating Component Exchanges to Physical Paths" 
-	            | get-property selected | equals false | verify-true
+	            | get-property selected | equals true | verify-true
 	    }
 	    get-group "Modes and States Management" | get-button "Mode/State mixed hierarchy allowed" | get-property selected 
-	        | equals true | verify-true
+	        | equals false | verify-true
 	}
 	
 	// Check Capella Transitions/Generation Preferences  (same as changed one)

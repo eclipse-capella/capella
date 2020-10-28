@@ -12,6 +12,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.commands.preferences.service;
 
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -397,6 +399,22 @@ public class ScopedCapellaPreferencesStore extends ScopedPreferenceStore {
     
   }
 
+  public void saveForExport() {
+    try {
+      IEclipsePreferences defaultPreferences = DefaultScope.INSTANCE.getNode(Activator.PLUGIN_ID);
+      IEclipsePreferences instancePreferences = InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID);
+      Collection<String> instanceKeys = Arrays.asList(instancePreferences.keys());
+      for (String name: defaultPreferences.keys()) {
+        if (!instanceKeys.contains(name)) {
+          instancePreferences.put(name, defaultPreferences.get(name, ""));
+        }
+      }
+    } catch (BackingStoreException e) {
+      getLogger().warn(e.getMessage(), e);
+    }
+    save();
+  }
+  
   /**
    * @throws BackingStoreException
    */

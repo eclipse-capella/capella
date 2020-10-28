@@ -72,6 +72,7 @@
      
 	 <activityPatternBinding activityId="org.polarsys.capella.core.hidden.activity" pattern=".*/org.eclipse.sirius.ui.modelingproject.wizard"/>
 	 <activityPatternBinding activityId="org.polarsys.capella.core.hidden.activity" pattern=".*/org.eclipse.sirius.ui.specificationproject.wizard"/>
+     <activityPatternBinding activityId="org.polarsys.capella.core.hidden.activity" pattern=".*/org.eclipse.ui.wizards.export.Preferences"/>
      
      <activityPatternBinding
             activityId="org.polarsys.capella.core.hidden.activity"
