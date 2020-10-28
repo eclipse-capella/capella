@@ -20,6 +20,7 @@ import java.util.Map;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.ProjectScope;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IConfigurationElement;
@@ -31,20 +32,26 @@ import org.eclipse.core.runtime.dynamichelpers.ExtensionTracker;
 import org.eclipse.core.runtime.dynamichelpers.IExtensionChangeHandler;
 import org.eclipse.core.runtime.dynamichelpers.IExtensionTracker;
 import org.eclipse.core.runtime.preferences.InstanceScope;
+import org.eclipse.e4.core.services.events.IEventBroker;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.util.IPropertyChangeListener;
 import org.eclipse.osgi.util.NLS;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.internal.wizards.preferences.PreferencesExportWizard;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.ui.preferences.ScopedPreferenceStore;
 import org.osgi.framework.BundleContext;
+import org.osgi.service.event.Event;
 import org.polarsys.capella.core.commands.preferences.internalization.l10n.CustomPreferencesMessages;
 import org.polarsys.capella.core.commands.preferences.model.CategoryPreferences;
 import org.polarsys.capella.core.commands.preferences.model.CategoryPreferencesManager;
 import org.polarsys.capella.core.commands.preferences.properties.PreferencesHandler;
 import org.polarsys.capella.core.commands.preferences.service.PreferencesItemsRegistry;
 import org.polarsys.capella.core.commands.preferences.service.PropertyStore;
+import org.polarsys.capella.core.commands.preferences.service.ScopedCapellaPreferencesStore;
 import org.polarsys.capella.core.commands.preferences.util.PreferencesExtensionHandler;
+import org.polarsys.capella.core.commands.preferences.util.PreferencesHelper;
 import org.polarsys.capella.core.commands.preferences.util.XmlPreferencesConfig;
 
 /**
@@ -114,6 +121,31 @@ public class Activator extends AbstractUIPlugin {
 
     CategoryPreferencesManager.getInstance().loadUserProfile();
     PreferencesHandler.initializePreferenceCommands();
+    
+    IEventBroker eventBroker = PlatformUI.getWorkbench().getService(IEventBroker.class);
+    if (eventBroker != null) {
+      eventBroker.subscribe(PreferencesExportWizard.EVENT_EXPORT_BEGIN, new org.osgi.service.event.EventHandler() {
+        
+        @Override
+        public void handleEvent(Event event) {
+          ScopedCapellaPreferencesStore.getInstance(Activator.PLUGIN_ID).saveForExport();
+
+          IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
+          for (IProject project : projects) {
+            if (PreferencesHelper.hasConfigurationProject(project)) {
+              try {
+                IProject configProject = PreferencesHelper.getReferencedProjectConfiguration(project);
+                new ProjectScope(configProject).getNode(Activator.PLUGIN_ID).flush();
+                configProject.refreshLocal(IResource.DEPTH_INFINITE, null);
+                project.refreshLocal(IResource.DEPTH_INFINITE, null);
+              } catch (Exception exception) {
+                getLog().error(exception.getMessage(), exception);
+              }
+            }
+          }
+        }
+      });
+    }
   }
 
   // Overlay preference store for property pages

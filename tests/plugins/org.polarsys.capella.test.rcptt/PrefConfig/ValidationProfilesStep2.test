@@ -6,7 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _nT3sgLijEeaZHIVFFjGffQ
-Save-Time: 10/15/20 5:58 PM
+Runtime-Version: 2.5.1.M3
+Save-Time: 10/28/20 10:28 PM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -36,22 +37,12 @@ Export / Import EPF File & Launch Melody With EPF file via import preferences.
 3) Relaunch Capella on a new workspace and perform the modification from column2
 4) Import preferences using the D:\user1Prefs.epf file.
 
-"Create 2 Projects. Project_1 and Project_2. And modify the default preference (Model, Transition/Generation).
-Click OK to finish.
-
-"Open the preference for Project 2.
-
-Note that the Transitions/Generation preference category has a workspace scope. Thus, it is not possible to configure this preference category for a specific project."
-Open Project 1 again.
-Perform Restore Default.
-Close Capella
-
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
 Content-Type: text/ecl
 Entry-Name: .content
 
-
+restoreDefaultPreferences ""
 checkDefaultPreferences ""
 
 // In model validation/constraints, do select/unselect some constraints
@@ -84,25 +75,5 @@ changePreferences ""
 checkChangedPreferences ""
 restoreDefaultPreferences ""
 checkDefaultPreferences ""
-
-// Create 2 Projects. Project_1 and Project_2. And modify the default preference (Model, Transition/Generation).
-// => The preferences are changed when the project preferences are reopened.
-create-project "Project_1"
-checkDefaultPreferences "Project_1"
-
-create-project "Project_2"
-changePreferences ""
-checkChangedPreferences "Project_2"
-
-// Open the preference for Project 2.
-// Note that the Transitions/Generation preference category has a workspace scope. Thus, it is not possible to configure this preference category for a specific project.
-// => The preferences are still the default preferences, i.e. not impacted by the changes made on Project 2 pref.
-
-// Open Project 1 again.
-// => The preferences are the one set in step 5.
-checkUnchangedPreferencesProject1  "Project_1" // Only Model Preferences are kept, the Transition/Generation preferences are at workspace level and so updated
-
-// End of the test
-
 
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

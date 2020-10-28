@@ -25,14 +25,15 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.dialogs.CheckedTreeSelectionDialog;
+import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 
 /**
  */
 public class PreferenceProjectSelectionDialog extends CheckedTreeSelectionDialog {
 
-  public static final String CONFUGRATION_PROJECT_NATURE_ID = "org.polarsys.capella.core.preferences.project.nature.configNature"; //$NON-NLS-1$
   private WizardPreferencesTransfererExportPage parentWizard;
-  private final String SUFFUX_EPF_FILE_NAME = "_preferences.epf"; //$NON-NLS-1$
+  
+  private final String SUFFIX_EPF_FILE_NAME = "_preferences.epf"; //$NON-NLS-1$
 
   /**
    * @param wizardPreferencesTransfererExportPage
@@ -40,8 +41,8 @@ public class PreferenceProjectSelectionDialog extends CheckedTreeSelectionDialog
    * @param labelProvider
    * @param contentProvider
    */
-  public PreferenceProjectSelectionDialog(WizardPreferencesTransfererExportPage wizardPreferencesTransfererExportPage, Shell parent,
-      ILabelProvider labelProvider, ITreeContentProvider contentProvider) {
+  public PreferenceProjectSelectionDialog(WizardPreferencesTransfererExportPage wizardPreferencesTransfererExportPage,
+      Shell parent, ILabelProvider labelProvider, ITreeContentProvider contentProvider) {
     super(parent, labelProvider, contentProvider);
     this.parentWizard = wizardPreferencesTransfererExportPage;
   }
@@ -53,23 +54,24 @@ public class PreferenceProjectSelectionDialog extends CheckedTreeSelectionDialog
     IProject project = (IProject) this.getFirstResult();
     IFile file = null;
     try {
-      IResource[] members = project.members();
-      for (IResource iResource : members) {
-        if (iResource instanceof IFolder) {
-          IFolder settingFolder = (IFolder) iResource;
-          settingFolder.getLocation().append(project.getName() + SUFFUX_EPF_FILE_NAME);
-          file = settingFolder.getFile(project.getName() + SUFFUX_EPF_FILE_NAME);
+      if (project != null) {
+        IResource[] members = project.members();
+        for (IResource iResource : members) {
+          if (iResource instanceof IFolder) {
+            IFolder settingFolder = (IFolder) iResource;
+            settingFolder.getLocation().append(project.getName() + SUFFIX_EPF_FILE_NAME);
+            file = settingFolder.getFile(project.getName() + SUFFIX_EPF_FILE_NAME);
+          }
         }
       }
     } catch (CoreException exception) {
       exception.printStackTrace();
-      StringBuilder loggerMessage = new StringBuilder("PreferenceProjectSelectionDialog.computeResult(..) _ "); //$NON-NLS-1$
     }
 
     if (parentWizard != null) {
       StringBuffer location = new StringBuffer();
       location.append(project.getLocation().toOSString());
-      location.append("/" + project.getName() + SUFFUX_EPF_FILE_NAME);
+      location.append("/" + project.getName() + SUFFIX_EPF_FILE_NAME);
       this.parentWizard.addDestinationItem(location.toString());
 
     }
@@ -84,9 +86,10 @@ public class PreferenceProjectSelectionDialog extends CheckedTreeSelectionDialog
       @Override
       public boolean select(Viewer viewer, Object parentElement, Object element) {
         try {
-          return (element instanceof IProject) && (((IProject) element).getNature(CONFUGRATION_PROJECT_NATURE_ID) != null);
+          return (element instanceof IProject)
+              && (((IProject) element).getNature(CapellaResourceHelper.CAPELLA_CONFIGURATION_PROJECT_NATURE) != null);
         } catch (CoreException exception) {
-          StringBuilder loggerMessage = new StringBuilder(".select(..) _ "); //$NON-NLS-1$
+          exception.printStackTrace();
         }
         return false;
       }

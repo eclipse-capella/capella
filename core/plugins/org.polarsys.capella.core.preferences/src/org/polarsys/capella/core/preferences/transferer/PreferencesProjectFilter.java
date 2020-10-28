@@ -19,7 +19,6 @@ import org.eclipse.core.resources.IProjectNature;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
-
 import org.polarsys.capella.core.commands.preferences.model.CategoryPreferencesManager;
 
 /**

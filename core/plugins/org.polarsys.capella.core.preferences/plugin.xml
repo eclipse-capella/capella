@@ -305,7 +305,7 @@
          <!--mapping scope="project"></mapping-->
          <mapping scope="instance"></mapping>
        <description>
-             Export all  Capella Preferences, exports all nodes for project scope
+             Export all Capella Preferences, exports all nodes for project scope
       </description>
            
       </transfer>
@@ -330,9 +330,9 @@
          <transfer
             icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella.png"
             id="org.polarsys.capella.core.model.preferences.transfer3"
-            name="ViewPoints Preferences">
+            name="Viewpoints Preferences">
          <description>
-            ViewPoints Preferences
+            Viewpoints Preferences
          </description>
          <mapping scope="instance">
             <entry node="org.eclipse.sirius.ui"/>
@@ -340,5 +340,24 @@
      </transfer>
      
    </extension>
+   
+   <extension
+         point="org.eclipse.ui.exportWizards">
+
+      <wizard
+            name="%ExportWizards.Preferences"
+            icon="platform:/plugin/org.eclipse.ui.ide/icons/full/obj16/exportpref_obj.png"
+            category="org.eclipse.ui.Basic"
+            class="org.polarsys.capella.core.preferences.transferer.CapellaPreferencesExportWizard"
+            id="org.polarsys.capella.core.model.preferences.export">
+         <description>
+            %ExportWizards.PreferencesDescription
+         </description>
+         <keywordReference
+               id="org.eclipse.ui.ide.settings">
+         </keywordReference>
+      </wizard>
+   </extension>
+      
    
 </plugin>
