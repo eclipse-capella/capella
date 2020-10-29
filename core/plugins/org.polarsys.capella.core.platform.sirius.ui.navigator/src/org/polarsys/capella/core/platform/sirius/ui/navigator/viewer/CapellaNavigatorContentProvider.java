@@ -65,7 +65,8 @@ import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.common.ui.toolkit.provider.GroupedAdapterFactoryContentProvider;
-import org.polarsys.capella.core.commands.preferences.service.AbstractPreferencesInitializer;
+import org.polarsys.capella.core.commands.preferences.service.ScopedCapellaPreferencesStore;
+import org.polarsys.capella.core.commands.preferences.util.PreferencesHelper;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.cs.Component;
@@ -286,10 +287,9 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
       parent = ((RepresentationPackage) element).getParent();
     } else if ((element instanceof EObject) && (((EObject) element).eContainer() instanceof Component)) {
       EObject eObject = (EObject) element;
-      Component component = (Component) eObject.eContainer();
-      if (isImplicitView(component)
-          && component.eContainingFeature().equals(CsPackage.Literals.PART__OWNED_ABSTRACT_TYPE)) {
-        return getParent(component);
+      EObject eContainer = eObject.eContainer();
+      if (CsPackage.Literals.PART__OWNED_ABSTRACT_TYPE.equals(eContainer.eContainingFeature()) && isImplicitView(eContainer)) {
+        return getParent(eContainer);
       }
       parent = sessionContentProvider.getParent(element);
     } else {
@@ -417,8 +417,8 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
         }
         return sessionContentProvider.getChildren(element);
 
-      } else if ((element instanceof Part) && isImplicitView(element)
-          && (((Part) element).getOwnedAbstractType() != null)) {
+      } else if ((element instanceof Part)
+          && (((Part) element).getOwnedAbstractType() != null && isImplicitView((EObject) element))) {
         ArrayList<Object> merged = new ArrayList<>();
         merged.addAll(Arrays.asList(sessionContentProvider.getChildren(element)));
         merged.addAll(Arrays.asList(getChildren(((Part) element).getOwnedAbstractType())));
@@ -440,10 +440,8 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
    * @param part
    * @return
    */
-  protected boolean isImplicitView(Object part) {
-    boolean explicit = AbstractPreferencesInitializer
-        .getBoolean(ICapellaNavigatorPreferences.PREFERENCE_PART_EXPLICIT_VIEW, true);
-    return !explicit;
+  protected boolean isImplicitView(EObject element) {
+    return ScopedCapellaPreferencesStore.getBoolean(ICapellaNavigatorPreferences.PREFERENCE_PART_EXPLICIT_VIEW, PreferencesHelper.getProject(element));
   }
 
   /**
@@ -454,23 +452,8 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
    * 
    * @return
    */
-  @Deprecated
-  protected boolean isCapellaProjectDisplayed() {
-    return AbstractPreferencesInitializer
-        .getBoolean(ICapellaNavigatorPreferences.PREFERENCE_SHOW_CAPELLA_PROJECT_CONCEPT, false);
-  }
-
-  /**
-   * @param contentChild
-   *          a Project
-   * @return
-   */
-  protected boolean isCapellaProjectDisplayed(EObject contentChild) {
-    if (contentChild instanceof Project) {
-      return AbstractPreferencesInitializer
-          .getBoolean(ICapellaNavigatorPreferences.PREFERENCE_SHOW_CAPELLA_PROJECT_CONCEPT, contentChild);
-    }
-    return isCapellaProjectDisplayed();
+  protected boolean isCapellaProjectDisplayed(Project contentChild) {
+    return ScopedCapellaPreferencesStore.getBoolean(ICapellaNavigatorPreferences.PREFERENCE_SHOW_CAPELLA_PROJECT_CONCEPT, PreferencesHelper.getProject(contentChild));
   }
 
   /**
@@ -603,14 +586,14 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
         }
       }
 
-      if ((notifier instanceof Project) && !isCapellaProjectDisplayed((EObject) notifier)) {
+      if ((notifier instanceof Project) && !isCapellaProjectDisplayed((Project) notifier)) {
         // Capella Project is not refresh, forward the notification on
         // Capella Project parent.
         localNotification = new ViewerNotification(localNotification, ((EObject) notifier).eContainer());
       }
 
       if (((notifier instanceof Component) && (((EObject) notifier).eContainer() instanceof Part))
-          && isImplicitView(notifier)) {
+          && isImplicitView((EObject) notifier)) {
         // Capella Project is not refresh, forward the notification on
         // parent part.
         localNotification = new ViewerNotification(localNotification, ((EObject) notifier).eContainer());
