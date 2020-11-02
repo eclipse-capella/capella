@@ -37,7 +37,7 @@ public class CommandLineRefreshAirdTest extends BasicTestCase {
     ModelProviderHelper.getInstance().importCapellaProject(projectName, sourceFolder);
     
     try {
-      StatusValidator removeSomething = new StatusValidator(s -> s.getMessage().contains("representation(s) refreshed"));
+      StatusValidator removeSomething = new StatusValidator(s -> s.getMessage().contains("representations refreshed"));
       Platform.addLogListener(removeSomething);
       refreshElements(projectName);
       Platform.removeLogListener(removeSomething);
