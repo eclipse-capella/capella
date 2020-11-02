@@ -16,7 +16,6 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.emf.ecore.EObject;
@@ -53,11 +52,11 @@ public class MoveRepresentationsAction extends BaseSelectionListenerAction {
   @Override
   protected boolean updateSelection(IStructuredSelection selection) {
     List<DRepresentationDescriptor> validRepresentationDescriptors = getValidRepresentationDescriptors(selection);
-    Stream<Session> sessions = validRepresentationDescriptors.stream()
-        .map(repDesc -> Session.of(repDesc).orElseGet(null)).filter(s -> s != null).distinct();
+    List<Session> sessions = validRepresentationDescriptors.stream().map(repDesc -> Session.of(repDesc).orElseGet(null))
+        .filter(s -> s != null).distinct().collect(Collectors.toList());
     // The move action should be available only if the selections corresponds to the same session.
-    if (sessions.count() == 1) {
-      Session session = sessions.findFirst().get();
+    if (sessions.size() == 1) {
+      Session session = sessions.get(0);
       // The move action should be available only if there is more than one Session resource (aird).
       return session.getAllSessionResources().size() > 1;
     }
