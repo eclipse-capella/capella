@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -27,7 +27,7 @@ import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 /**
- * Model Validation shall check that Exchange Items referenced by a Communication Link is delegated to one or many subcomponents of the source Component.
+ * Model Validationï¿½shall check that Exchange Items referenced by a Communication Link is delegated to one or many subcomponents of the source Component.
  */
 public class CommunicationLinkIsDelegatedByOneSubcomponentAtLeast extends AbstractValidationRule {
 

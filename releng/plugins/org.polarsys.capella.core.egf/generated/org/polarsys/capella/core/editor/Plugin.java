@@ -155,7 +155,7 @@ public class Plugin extends org.eclipse.egf.emf.pattern.editor.Plugin {
 	protected void method_doGenerate(final StringBuffer stringBuffer, final PatternContext ctx) throws Exception {
 
 		/**
-		 * Copyright (c) 2002-2004 IBM Corporation and others.
+		 * Copyright (c) 2002, 2020-2004 IBM Corporation and others.
 		 * All rights reserved.   This program and the accompanying materials
 		 * are made available under the terms of the Eclipse Public License v2.0
 		 * which accompanies this distribution, and is available at

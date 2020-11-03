@@ -1,5 +1,5 @@
 /*******************************************************************************
- *  Copyright (c) 2007, 2019 LCELB
+ *  Copyright (c) 2007, 2020 LCELB
  *  
  *  This program and the accompanying materials are made available under the
  *  terms of the Eclipse Public License 2.0 which is available at
