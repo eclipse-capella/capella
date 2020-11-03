@@ -15,6 +15,12 @@
 <toc label="Capella Guide" topic="html/toc.html" sort="false">
    <topic label="Release Note">
       <topic label="API changes">
+         <topic href="html/Release note/API_1.4.x_to_5.0.0.html" label="Capella 1.4.1 to 5.0.0">
+            <topic href="html/Release note/API_1.4.x_to_5.0.0.html#Major_changes" label="Major changes">
+            </topic>
+            <topic href="html/Release note/API_1.4.x_to_5.0.0.html#Raw_API_changes_from_1.4.1_to_5.0.0" label="Raw API changes from 1.4.1 to 5.0.0">
+            </topic>
+         </topic>
          <topic href="html/Release note/API_1.4.0_to_1.4.x.html" label="Capella 1.4.0 to 1.4.1">
             <topic href="html/Release note/API_1.4.0_to_1.4.x.html#Major_changes" label="Major changes">
                <topic href="html/Release note/API_1.4.0_to_1.4.x.html#No_backward_compatibility_with_Capella_1.4.0" label="No backward compatibility with Capella 1.4.0">
@@ -306,6 +312,8 @@
          </topic>
       </topic>
       <topic label="Metamodel changes">
+         <topic href="html/Release note/M2_1.4.x_to_5.0.0.html" label="Capella 1.4.x to 5.0.0">
+         </topic>
          <topic href="html/Release note/M2_1.3.x_to_1.4.x.html" label="Capella 1.3.x to 1.4.x">
          </topic>
          <topic href="html/Release note/M2_1.2.x_to_1.3.x.html" label="Capella 1.2.x to 1.3.x">
