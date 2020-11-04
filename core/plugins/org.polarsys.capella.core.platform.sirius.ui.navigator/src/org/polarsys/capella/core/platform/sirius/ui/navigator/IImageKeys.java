@@ -49,7 +49,7 @@ public interface IImageKeys {
   /**
    * Show In Capella Explorer image id.<br>
    */
-  public final static String IMG_SHOW_IN_CAPELLA_EXPLORER = "capella_16.png"; //$NON-NLS-1$
+  public final static String IMG_SHOW_IN_CAPELLA_EXPLORER = "eview16/project_explorer.png"; //$NON-NLS-1$
   /**
    * Validate enabled image id.<br>
    */
