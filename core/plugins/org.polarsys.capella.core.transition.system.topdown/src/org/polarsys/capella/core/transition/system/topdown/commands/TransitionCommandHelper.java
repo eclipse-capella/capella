@@ -291,15 +291,27 @@ public class TransitionCommandHelper {
   }
 
   public boolean isStateMachineTransitionAvailable(EObject object) {
-    return ((object instanceof BlockArchitecture)
-        || ((object instanceof Component) && !(((Component) object).getOwnedStateMachines().isEmpty()))
-        || ((object instanceof Part) && (((Part) object).getAbstractType() != null)
-            && (((Part) object).getAbstractType() instanceof Component)
-            && !(((Component) ((Part) object).getAbstractType()).getOwnedStateMachines().isEmpty()))
-        || (object instanceof StateMachine) || (object instanceof AbstractState) || (object instanceof StateTransition))
+    return ((object instanceof BlockArchitecture
+        && isSMTransitionAvailableOnBlockArchitecture((BlockArchitecture) object))
+        || ((object instanceof Component) && isSMTransitionAvailableOnComponent((Component) object))
+        || (object instanceof Part && isSMTransitionAvailableOnPart((Part) object)) || (object instanceof StateMachine)
+        || (object instanceof AbstractState) || (object instanceof StateTransition))
         && ((object instanceof CapellaElement) && !CapellaLayerCheckingExt.isAOrInEPBSLayer((CapellaElement) object)
             && !CapellaLayerCheckingExt.isAOrInPhysicalLayer((CapellaElement) object));
 
+  }
+
+  private boolean isSMTransitionAvailableOnComponent(Component comp) {
+    return !comp.getOwnedStateMachines().isEmpty();
+  }
+
+  private boolean isSMTransitionAvailableOnPart(Part part) {
+    return part.getAbstractType() instanceof Component
+        && isSMTransitionAvailableOnComponent((Component) part.getAbstractType());
+  }
+
+  private boolean isSMTransitionAvailableOnBlockArchitecture(BlockArchitecture arch) {
+    return arch.getSystem() != null && isSMTransitionAvailableOnComponent(arch.getSystem());
   }
 
   public boolean isDataTransitionAvailable(EObject object) {
