@@ -14,10 +14,11 @@ package org.polarsys.capella.core.platform.sirius.ui.navigator.filters;
 
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
-import org.eclipse.sirius.ui.tools.api.views.common.item.ViewpointsFolderItem;
+import org.eclipse.sirius.ui.tools.internal.views.common.item.ViewpointsFolderItemImpl;
 
 /**
- * Filter out SessionWrapperContentProvider.ViewpointsFolderItem
+ * Filter out SessionWrapperContentProvider.ViewpointsFolderItemImpl
+ * (ViewpointsFolderInvalidItemImpl is not filtered)
  */
 public class ViewpointsFolderItemFilter extends ViewerFilter {
 
@@ -26,7 +27,7 @@ public class ViewpointsFolderItemFilter extends ViewerFilter {
    */
   @Override
   public boolean select(Viewer viewer_p, Object parentElement_p, Object element_p) {
-    // Try to filter out ViewpointsFolderItem that is internal.
-    return !(element_p instanceof ViewpointsFolderItem);
+    // Try to filter out ViewpointsFolderItemImpl
+    return !(element_p instanceof ViewpointsFolderItemImpl );
   }
 }
