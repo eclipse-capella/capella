@@ -165,3 +165,10 @@ Whatever the level, UNSET Scenarios raise an error.
 |-
 | colspan="2"|Check that the interactionUse is referencing a Scenario that exists at the current Architectural Level.
 |}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/error.gif|ERROR]]
+|DWF_DS_24 - Instance role has different name compared to represented instance part
+|-
+| colspan="2"|Check that the Instance Role has the same name as its Represented Instance.
+|}
