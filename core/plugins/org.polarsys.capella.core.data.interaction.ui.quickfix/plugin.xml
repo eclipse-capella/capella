@@ -87,6 +87,15 @@
                ruleId="DWF_DS_23">
          </rules>
       </resolver>
+      <resolver
+            class="org.polarsys.capella.core.data.interaction.ui.quickfix.resolver.InstanceRoleHasDifferentNameThanRepresentedInstanceResolver"
+            desc="%quickFix.DWF_DS_24.desc"
+            icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+            label="%quickFix.DWF_DS_24.label">
+         <rules
+               ruleId="DWF_DS_24">
+         </rules>
+      </resolver>
    </extension>
    <extension
          point="org.eclipse.ui.ide.markerResolution">
