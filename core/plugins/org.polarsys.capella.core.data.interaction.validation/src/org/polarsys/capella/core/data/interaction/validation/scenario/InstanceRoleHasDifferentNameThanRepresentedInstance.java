@@ -31,7 +31,6 @@ import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.core.data.information.AbstractInstance;
 import org.polarsys.capella.core.data.interaction.InstanceRole;
 import org.polarsys.capella.core.data.interaction.Scenario;
-import org.polarsys.capella.core.sirius.analysis.tool.StringUtil;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 public class InstanceRoleHasDifferentNameThanRepresentedInstance extends AbstractValidationRule {
@@ -66,19 +65,17 @@ public class InstanceRoleHasDifferentNameThanRepresentedInstance extends Abstrac
       for (Map.Entry<AbstractInstance, Collection<InstanceRole>> entry : representedInstanceToInstanceRoleMap
           .entrySet()) {
         AbstractInstance representedInstance = entry.getKey();
-        String representedInstanceName = representedInstance.getName();
 
-        if (!StringUtil.isNullOrEmpty(representedInstanceName)) {
-          Collection<InstanceRole> instanceRoles = entry.getValue();
+        Collection<InstanceRole> instanceRoles = entry.getValue();
 
-          if (haveSingleLifeline(instanceRoles)) {
-            InstanceRole instanceRole = instanceRoles.iterator().next();
-            String instanceRoleName = instanceRole.getName();
+        if (haveSingleLifeline(instanceRoles)) {
+          String representedInstanceName = representedInstance.getName();
+          InstanceRole instanceRole = instanceRoles.iterator().next();
+          String instanceRoleName = instanceRole.getName();
 
-            if (!representedInstanceName.equals(instanceRoleName)) {
-              IStatus failureStatus = createFailureStatus(validationContext, instanceRole, representedInstance);
-              failureStatuses.add(failureStatus);
-            }
+          if (!representedInstanceName.equals(instanceRoleName)) {
+            IStatus failureStatus = createFailureStatus(validationContext, instanceRole, representedInstance);
+            failureStatuses.add(failureStatus);
           }
         }
       }

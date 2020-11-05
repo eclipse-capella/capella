@@ -1661,10 +1661,10 @@
                 id="645fb192-8881-41c0-bf8e-9f78fb302070" name="Broadcast Audio Video Streams"
                 representedInstance="#e1808524-dfa9-4883-a809-c44a87712d1b"/>
             <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
-                id="0498894b-ac03-4fe3-ac23-3a8c11977413" name="Elaborate VOD Movie Status and Parameters"
+                id="0498894b-ac03-4fe3-ac23-3a8c11977413" name="Manage Passenger Service Interruptions"
                 representedInstance="#d8b8c1bd-a2ea-47fd-a7a9-0239408db1a5"/>
             <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
-                id="c57176b6-0c17-4bb6-8695-9cde9d70d12e" name="Send Audio Streams"
+                id="c57176b6-0c17-4bb6-8695-9cde9d70d12e" name="Send Audio Announcement"
                 representedInstance="#8f279b07-26aa-46f6-8c9a-2a132f0b1177"/>
             <ownedMessages xsi:type="org.polarsys.capella.core.data.interaction:SequenceMessage"
                 id="edc72075-76ee-4438-afb0-8bca2536b695" name="Audio Stream" kind="ASYNCHRONOUS_CALL"
@@ -1752,13 +1752,11 @@
                   id="d3b394e7-e40c-4bb7-84b3-ca55350cab98" key="TransfoUID" value="Type='Transition' TargetId='1d30b780-f222-4794-9f78-5b70ce799bf0'"/>
             </ownedTraces>
             <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
-                id="902afeb8-03e2-422b-a8b5-04c8ac71c89b" name="Listen to Audio Announcement"
-                representedInstance="#e9c81b65-e5f7-4edd-be4d-4e6a08f5e825"/>
+                id="902afeb8-03e2-422b-a8b5-04c8ac71c89b" name="Passenger" representedInstance="#e9c81b65-e5f7-4edd-be4d-4e6a08f5e825"/>
             <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
                 id="f3303d9c-b76c-4ce0-9cf8-0c0e9e72a002" name="Aircraft" representedInstance="#95e89e0f-47fd-49a7-94af-de5125c6ffd9"/>
             <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
-                id="eb1241d3-164e-4bad-bcd0-8fb7958871d7" name="Trigger Audio Announcement"
-                representedInstance="#cb4b8f2d-7663-4d35-bc44-20080a8d3133"/>
+                id="eb1241d3-164e-4bad-bcd0-8fb7958871d7" name="IFE System" representedInstance="#cb4b8f2d-7663-4d35-bc44-20080a8d3133"/>
             <ownedMessages xsi:type="org.polarsys.capella.core.data.interaction:SequenceMessage"
                 id="d0c5d833-8486-4daa-af83-19c08e1974ab" name="Audio Stream" kind="ASYNCHRONOUS_CALL"
                 sendingEnd="#b5247a18-433c-49af-8d05-56ad1d6fe855" receivingEnd="#0a05823e-7fe8-4bd3-9d07-7e971735e4fc"/>
@@ -2522,7 +2520,7 @@
                 id="bbade6a9-79c2-44ce-a66f-309bd522e12b" name="Determine Operating Profiles"
                 representedInstance="#3f8567f2-5389-42c0-84a9-8a1360dc9572"/>
             <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
-                id="fe443e32-f9d6-48e2-b466-c178e8eb9ca6" name="Handle VOD Service Interactions"
+                id="fe443e32-f9d6-48e2-b466-c178e8eb9ca6" name="Retrieve VOD Movie Data"
                 representedInstance="#0a2099f5-2831-4beb-89ae-996a6f54d032"/>
             <ownedMessages xsi:type="org.polarsys.capella.core.data.interaction:SequenceMessage"
                 id="7f5d726b-a2c2-424f-ba08-c3fcd8b99714" name="IFE Operating Profile"
@@ -5435,22 +5433,22 @@
                 id="bc52cbd3-0092-4461-87bf-ffa364f61003" name="Interrupt Current Service"
                 representedInstance="#b4623d17-6e62-411d-839c-2d768664a920"/>
             <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
-                id="40b3dcf7-2f9b-4187-bcca-743bbddc96e9" name="Handle VOD Service Activation / Interruption"
+                id="40b3dcf7-2f9b-4187-bcca-743bbddc96e9" name="Handle VOD Service Activation and Interruption"
                 representedInstance="#910a61f1-3da0-404f-9db5-c226af9a3c47"/>
             <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
-                id="de4193fb-b901-40ca-9e87-5707b9673309" name="Store interrupted VOD Movie Status"
+                id="de4193fb-b901-40ca-9e87-5707b9673309" name="Store Interrupted VOD Movie Status"
                 representedInstance="#3136218c-bf14-437d-99c9-6593352eead9"/>
             <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
-                id="885494bc-4886-426b-8468-6ca59dafdbe6" name="Broadcast Live Audio"
+                id="885494bc-4886-426b-8468-6ca59dafdbe6" name="Process Audio Announcement"
                 representedInstance="#39f96e89-8ead-4742-bc1f-6eb0dd33990b"/>
             <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
-                id="143d63be-fce6-4983-80c2-a59333fe7b7a" name="Play Audio Video Stream on Seat TV"
+                id="143d63be-fce6-4983-80c2-a59333fe7b7a" name="Play Audio-Video Stream on Seat TV"
                 representedInstance="#7b604e03-85be-4d93-8035-8a84ef8086db"/>
             <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
                 id="a57336d1-26ce-4631-9f91-40cc393aae39" name="Display Audio Interruption Screen on Seat TV"
                 representedInstance="#4ff700ef-4f6b-4151-917b-e59064e5a225"/>
             <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
-                id="7ff582eb-8363-40f5-8063-04085d450636" name="Send Audio Signal on Aircraft Cabin Speakers"
+                id="7ff582eb-8363-40f5-8063-04085d450636" name="Forward Audio Stream to Aircraft Cabin Speakers"
                 representedInstance="#30d03eaa-2615-481c-bf1f-53f177d8147c"/>
             <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
                 id="0fe8aab1-efd1-4ad0-8b5c-c9a4d7d151b7" name="Listen to Audio Announcement"
@@ -6191,29 +6189,27 @@
                   id="26c7f730-76f6-4c13-bd22-f919aabbd11d" key="TransfoUID" value="Type='Transition' TargetId='cab89820-127c-4d24-bfe7-31b2000cc23c'"/>
             </ownedTraces>
             <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
-                id="8c54c533-8f79-4f9b-8d09-2dde3c8df6e5" name="Send Audio Announcements"
-                representedInstance="#47008f89-080b-41b5-9459-26f86ebc2243"/>
+                id="8c54c533-8f79-4f9b-8d09-2dde3c8df6e5" name="Aircraft" representedInstance="#47008f89-080b-41b5-9459-26f86ebc2243"/>
             <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
-                id="386cf506-4ec8-47a1-bb32-f7eccb97f527" name="Acquire Audio Stream from Aircraft"
+                id="386cf506-4ec8-47a1-bb32-f7eccb97f527" name="Aircraft-Specific Aircraft Interface"
                 representedInstance="#2d5dedaf-28d9-4022-bfb8-f82fde2dd890"/>
             <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
-                id="64eeecd9-dcba-4c97-89d1-8d03fab50592" name="Interrupt Current Service"
+                id="64eeecd9-dcba-4c97-89d1-8d03fab50592" name="Seat TV Services Manager"
                 representedInstance="#1e22a472-463d-4e6a-8444-d98f6faff347"/>
             <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
-                id="1f08b9ea-bd69-4049-a5c3-0db1b6a2a11d" name="Handle VOD Service Activation / Interruption"
+                id="1f08b9ea-bd69-4049-a5c3-0db1b6a2a11d" name="Seat TV Core Interactions Manager"
                 representedInstance="#2e1c82dd-cd92-4cbc-905f-42efb977082a"/>
             <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
-                id="4b18c884-8a96-491d-8b5d-f59551eb1224" name="Broadcast Live Audio"
+                id="4b18c884-8a96-491d-8b5d-f59551eb1224" name="Applications Server"
                 representedInstance="#632a53df-440f-424b-bab2-6e5752a0ce6b"/>
             <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
-                id="2364ee4b-d3ee-4247-9812-b9531041c68c" name="Store interrupted VOD Movie Status"
+                id="2364ee4b-d3ee-4247-9812-b9531041c68c" name="Seat TV Audio Video Player"
                 representedInstance="#9bea82bf-65bd-45cd-9237-f49564237aad"/>
             <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
-                id="2933a3c7-e94b-49a3-b31c-5c4c76778f8e" name="Display Audio Interruption Screen on Seat TV"
+                id="2933a3c7-e94b-49a3-b31c-5c4c76778f8e" name="Seat TV Airline-Specific Interactions Manager"
                 representedInstance="#a88de64d-899d-4f01-9111-ff14701fc596"/>
             <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
-                id="ccce7452-2e88-4267-a202-586899353aa1" name="Listen to Audio Announcement"
-                representedInstance="#e2f60d31-0adf-42df-9fe3-c1817690cd29"/>
+                id="ccce7452-2e88-4267-a202-586899353aa1" name="Passenger" representedInstance="#e2f60d31-0adf-42df-9fe3-c1817690cd29"/>
             <ownedMessages xsi:type="org.polarsys.capella.core.data.interaction:SequenceMessage"
                 id="200db697-eb4c-47a7-844f-070de17065af" name="Audio Stream" kind="ASYNCHRONOUS_CALL"
                 sendingEnd="#9876b7c4-a912-4600-8764-9dcd5c8b7c58" receivingEnd="#82569031-da43-498d-82cd-8adf41870e1c"/>
@@ -7865,7 +7861,7 @@
                 id="cd24e93c-9fb0-4a5f-b53a-3be81a9185ff" name="Determine Operating Profiles"
                 representedInstance="#1e812d3d-6c35-42c9-80fa-eb64dfc1a3a8"/>
             <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
-                id="4c384e27-8c09-4e04-9deb-44555b45a630" name="Determine Passenger Service Availability"
+                id="4c384e27-8c09-4e04-9deb-44555b45a630" name="Determine  Passenger Service Availability"
                 representedInstance="#5a58fd72-1b57-41dc-8b7b-b0b8cf577236"/>
             <ownedMessages xsi:type="org.polarsys.capella.core.data.interaction:SequenceMessage"
                 id="2539ec2f-50ae-4833-b6a0-993f758363da" name="Decompression Notification"
@@ -8039,13 +8035,13 @@
                 id="2b122d6a-40c1-458c-8e8e-c3069606c4e7" name="Capture Passenger Service Selection"
                 representedInstance="#2ea2703a-6dd1-4835-aaae-16179864ac1d"/>
             <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
-                id="eec21224-596b-4354-a1f2-5e56c21d41a0" name="Handle Service Start/Resume"
+                id="eec21224-596b-4354-a1f2-5e56c21d41a0" name="Start/Resume Service"
                 representedInstance="#c3b17f24-ae52-413f-ace7-6baab1287b02"/>
             <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
                 id="909e1493-cde7-4cf4-9f13-b94f1f09b9ed" name="Store Passenger Service State"
                 representedInstance="#3e9ccc30-596e-40e6-8941-64838248dcee"/>
             <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
-                id="cd084971-1072-48e9-b9e8-cf0756064851" name="Determine Passenger Service Availability"
+                id="cd084971-1072-48e9-b9e8-cf0756064851" name="Determine  Passenger Service Availability"
                 representedInstance="#5a58fd72-1b57-41dc-8b7b-b0b8cf577236"/>
             <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
                 id="aee06419-2594-4483-a3c1-25e48bf4f392" name="Determine Operating Profiles"
