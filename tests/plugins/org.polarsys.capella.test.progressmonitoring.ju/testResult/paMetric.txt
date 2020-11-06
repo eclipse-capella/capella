@@ -1,0 +1,37 @@
+ = <undefined>,108
+Boolean Type,1
+Capability Realization,10
+Capability Realization Pkg,1
+Class,15
+Component Exchange,11
+Component Port,28
+Data Pkg,6
+Enumeration,6
+Enumeration Literal,19
+Exchange Category,12
+Exchange Item,10
+Exchange Item Allocation,5
+Exchange Item Element,13
+Function Input Port,109
+Function Output Port,100
+Functional Chain,11
+Functional Exchange,110
+Generalization,3
+Interface,4
+Interface Pkg,2
+Key Value,6
+Numeric Type,3
+Part,63
+Physical Component,63
+Physical Component Pkg,1
+Physical Function,92
+Physical Function Pkg,2
+Physical Link,21
+Physical Path,2
+Physical Port,37
+Physical Quantity,3
+Requirements Pkg,1
+String Type,1
+System Non Functional Requirement,2
+Unit,3
+undefined,39
