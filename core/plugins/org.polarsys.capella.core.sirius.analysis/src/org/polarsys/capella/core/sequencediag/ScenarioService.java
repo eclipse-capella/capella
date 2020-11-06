@@ -29,6 +29,7 @@ import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.helpers.EObjectExt;
+import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.queries.filters.IQueryFilter;
 import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
@@ -243,10 +244,12 @@ public class ScenarioService {
 
   public String getInstanceRoleLabel(InstanceRole ir) {
     StringBuilder result = new StringBuilder();
-
+    
     AbstractInstance representedInstance = ir.getRepresentedInstance();
+    if (representedInstance == null) {
+      return "[" + EObjectLabelProviderHelper.getMetaclassLabel(ir, false) + "]";
+    }
     AbstractType type = representedInstance.getAbstractType();
-
     if (type == null || TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven(type))) {
       result.append(EObjectExt.getText(representedInstance));
     } else {
