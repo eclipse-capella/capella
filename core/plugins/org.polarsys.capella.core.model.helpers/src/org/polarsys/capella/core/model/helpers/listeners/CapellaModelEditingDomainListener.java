@@ -29,6 +29,7 @@ public class CapellaModelEditingDomainListener extends ResourceSetListenerImpl i
   private CapellaModelDataListenerForAbstractStates _dataListenerForAbstractStates;
   private CapellaModelDataListenerForSequenceMessages _dataListenerForSequenceMessages;
   private CapellaModelDataListenerForPartsAndComponents _dataListenerForPartsAndComponents;
+  private CapellaModelDataListenerForInstanceRole dataListenerForInstanceRole;
   private CapellaModelDataListenerForExchangeItemsAndCommunicationLinks _dataListenerForExchangeItemsAndCommunicationLinks;
 
   /**
@@ -55,8 +56,8 @@ public class CapellaModelEditingDomainListener extends ResourceSetListenerImpl i
     loadDataListenerForSequenceMessages(editingDomain);
     loadDataListenerForExchangeItemsAndCommunicationLinks(editingDomain);
     loadDataListenerForPartsAndComponents(editingDomain);
+    loadDataListenerForInstanceRoles(editingDomain);
     loadDataListenerForAbstractStates(editingDomain);
-
   }
 
   /**
@@ -103,6 +104,13 @@ public class CapellaModelEditingDomainListener extends ResourceSetListenerImpl i
         _dataListenerForPartsAndComponents = new CapellaModelDataListenerForPartsAndComponents();
         editingDomain.getDataNotifier().addAdapter(AbstractNamedElement.class, _dataListenerForPartsAndComponents);
       }
+    }
+  }
+
+  private void loadDataListenerForInstanceRoles(SemanticEditingDomain editingDomain) {
+    if (dataListenerForInstanceRole == null && editingDomain.getDataNotifier() != null) {
+      dataListenerForInstanceRole = new CapellaModelDataListenerForInstanceRole();
+      editingDomain.getDataNotifier().addAdapter(AbstractNamedElement.class, dataListenerForInstanceRole);
     }
   }
 

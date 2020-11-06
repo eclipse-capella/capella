@@ -17,6 +17,7 @@ import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.Iterator;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.Assert;
@@ -25,7 +26,9 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.data.cs.Component;
@@ -189,5 +192,18 @@ public class NamingHelper {
     if (str.length() == 0)
       return str;
     return str.substring(0, 1).toUpperCase() + str.substring(1).toLowerCase();
+  }
+  
+  /**
+   * Change the name of the given element to the given value
+   */
+  public static void synchronizeName(final AbstractNamedElement element, final String value) {
+    if ((element != null) && !StringUtils.equals(element.getName(), value)) {
+      TransactionHelper.getExecutionManager(element).execute(new AbstractReadWriteCommand() {
+        public void run() {
+          element.setName(value);
+        }
+      });
+    }
   }
 }
