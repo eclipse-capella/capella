@@ -16,6 +16,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
+import org.eclipse.emf.ecore.EObject;
+import org.polarsys.capella.core.ui.metric.dialog.MetricLabelProvider;
+
 public class MetricTree<T> {
 
   private MetricTree<T> parent = null;
@@ -95,6 +98,20 @@ public class MetricTree<T> {
     }
 
     return leafs;
+  }
+  
+  public void sortChildren() {
+    MetricLabelProvider labelProvider = new MetricLabelProvider();
+    children.sort((obj1, obj2) -> {
+      String text1 = labelProvider.getText(obj1);
+      String text2 = labelProvider.getText(obj2);
+      if (text1.equals(text2)) {
+        // In case of meta-classes with the same name, use the fully qualified name to have the exact order
+        return ((EObject) obj1.getElement()).eClass().getInstanceTypeName()
+            .compareTo(((EObject) obj2.getElement()).eClass().getInstanceTypeName());
+      }
+      return text1.compareTo(text2);
+    });
   }
 
 }

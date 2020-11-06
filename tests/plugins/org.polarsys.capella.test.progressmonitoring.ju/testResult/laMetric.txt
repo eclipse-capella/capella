@@ -1,0 +1,51 @@
+ = <undefined>,70
+Association,6
+Capability Realization,13
+Capability Realization Pkg,1
+Change Event,1
+Choice Pseudo State,2
+Class,12
+Combined Fragment,2
+Component Exchange,12
+Component Port,24
+Constraint,11
+Data Pkg,5
+Deep History Pseudo State,1
+Enumeration,2
+Enumeration Literal,6
+Exchange Category,13
+Exchange Item,7
+Exchange Item Element,9
+Execution,40
+Final State,2
+Fragment End,6
+Function Input Port,88
+Function Output Port,84
+Functional Chain,10
+Functional Exchange,88
+Generalization,4
+Initial Pseudo State,4
+Instance Role,37
+Interface Pkg,1
+Key Value,215
+Logical Component,23
+Logical Component Pkg,1
+Logical Function,64
+Logical Function Pkg,1
+Mode,24
+Numeric Type,2
+Opaque Expression,11
+Operand,4
+Part,23
+Physical Quantity,1
+Region,27
+Requirements Pkg,1
+Scenario,6
+Sequence Message,40
+State,46
+State Fragment,23
+State Machine,2
+State Transition,39
+Unit,1
+Use,1
+undefined,26

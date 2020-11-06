@@ -1,0 +1,31 @@
+Change Event,1
+Combined Fragment,2
+Communication Mean,2
+Constraint,4
+Data Pkg,2
+Entity Pkg,1
+Execution,15
+Fragment End,4
+Initial Pseudo State,1
+Instance Role,3
+Interaction,23
+Interface Pkg,1
+Opaque Expression,3
+Operand,4
+Operational Activity,24
+Operational Activity Pkg,1
+Operational Capability,3
+Operational Capability Pkg,1
+Operational Entity,8
+Operational Process,2
+Part,8
+Region,7
+Requirements Pkg,1
+Role Pkg,1
+Scenario,1
+Sequence Message,15
+State,6
+State,12
+State Fragment,6
+State Machine,1
+State Transition,7
