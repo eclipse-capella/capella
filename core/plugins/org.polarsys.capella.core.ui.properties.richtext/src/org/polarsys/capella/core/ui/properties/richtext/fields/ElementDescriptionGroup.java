@@ -329,7 +329,6 @@ public abstract class ElementDescriptionGroup {
       // If setEditable throws an exception, we schedule a deferred refresh
       scheduleDeferredRefresh();
     }
-    descriptionContainer.setEnabled(enabled);
   }
 
   protected void scheduleDeferredRefresh() {
