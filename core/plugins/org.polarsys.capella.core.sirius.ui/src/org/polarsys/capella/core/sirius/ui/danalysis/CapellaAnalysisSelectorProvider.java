@@ -15,12 +15,20 @@ package org.polarsys.capella.core.sirius.ui.danalysis;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSelector;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSelectorProvider;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
+import org.eclipse.sirius.ui.business.internal.session.analysis.SmartDialogAnalysisSelectorProvider;
 import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 
 /**
  * Provides a customized {@link DAnalysisSelector}.
  */
 public class CapellaAnalysisSelectorProvider implements DAnalysisSelectorProvider {
+
+  private int priority;
+
+  public CapellaAnalysisSelectorProvider() {
+    this.priority = new SmartDialogAnalysisSelectorProvider().getPriority() + 1;
+  }
+
   @Override
   public DAnalysisSelector getSelector(DAnalysisSession session) {
     return new CapellaAnalysisSelector();
@@ -32,5 +40,10 @@ public class CapellaAnalysisSelectorProvider implements DAnalysisSelectorProvide
       return true;
     }
     return false;
+  }
+
+  @Override
+  public int getPriority() {
+    return this.priority;
   }
 }
