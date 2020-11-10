@@ -28,10 +28,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
-import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
-import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
-import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.data.capellacommon.AbstractCapabilityPkg;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
@@ -42,7 +39,7 @@ import org.polarsys.capella.core.data.capellacommon.StateMachine;
 import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.cs.CsPackage;
+import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.cs.InterfaceAllocation;
 import org.polarsys.capella.core.data.cs.InterfacePkg;
@@ -57,7 +54,6 @@ import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.FunctionPkg;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.fa.FunctionalChainInvolvement;
-import org.polarsys.capella.core.data.information.Class;
 import org.polarsys.capella.core.data.information.datatype.BooleanType;
 import org.polarsys.capella.core.data.information.datatype.Enumeration;
 import org.polarsys.capella.core.data.information.datavalue.EnumerationLiteral;
@@ -67,19 +63,18 @@ import org.polarsys.capella.core.data.la.CapabilityRealization;
 import org.polarsys.capella.core.data.la.CapabilityRealizationPkg;
 import org.polarsys.capella.core.data.la.LaPackage;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
-import org.polarsys.capella.core.data.la.LogicalComponentPkg;
-import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.OaPackage;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.data.oa.OperationalCapability;
 import org.polarsys.capella.core.data.oa.OperationalCapabilityPkg;
 import org.polarsys.capella.core.data.pa.PaPackage;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
-import org.polarsys.capella.core.data.pa.PhysicalComponentPkg;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
+import org.polarsys.capella.core.model.helpers.ComponentPkgExt;
 import org.polarsys.capella.core.model.helpers.InterfaceExt;
+import org.polarsys.capella.core.model.helpers.PartExt;
 import org.polarsys.capella.core.model.helpers.StateExt;
 import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 
@@ -102,146 +97,100 @@ public class MoveHelper {
    * @param inputTargetElement
    * @return
    */
-  public IStatus checkSemanticRules(List<EObject> selectedElements, EObject targetElement) {
+  public IStatus checkSemanticRules(List<EObject> selectedElements, EObject targetObject) {
     boolean isOK = true;
 
-    if (!(targetElement instanceof ModelElement)) {
-      // There is no semantic rules below for non ModelElement
+    if (!(targetObject instanceof ModelElement)) {
+      // There are no semantic rules below for non ModelElement
       return Status.OK_STATUS;
     }
 
-    for (EObject elt : selectedElements) {
+    ModelElement target = (ModelElement) targetObject;
 
-      if (elt instanceof AbstractFunction) {
+    for (EObject selectedElement : selectedElements) {
+      if (selectedElement instanceof ModelElement) {
 
-        if (targetElement instanceof FunctionPkg) {
-          isOK = !(targetElement.eContainer() instanceof BlockArchitecture)
-              && areInSameLayer((ModelElement) elt, (ModelElement) targetElement);
+        // There are no semantic rules below for non ModelElement
+        ModelElement source = (ModelElement) selectedElement;
 
-        } else if (targetElement instanceof AbstractFunction) {
-          isOK = areInSameLayer((ModelElement) elt, (ModelElement) targetElement);
+        if (source instanceof AbstractFunction) {
+          if (target instanceof FunctionPkg) {
+            isOK = !(target.eContainer() instanceof BlockArchitecture) && areInSameLayer(source, target);
 
-        }
+          } else if (target instanceof AbstractFunction) {
+            isOK = areInSameLayer(source, target);
+          }
 
-      } else if (elt instanceof FunctionPkg) {
+        } else if (source instanceof FunctionPkg) {
 
-        if (targetElement instanceof FunctionPkg) {
-          isOK = !(targetElement.eContainer() instanceof BlockArchitecture)
-              && areInSameLayer((ModelElement) elt, (ModelElement) targetElement);
+          if (target instanceof FunctionPkg) {
+            isOK = !(target.eContainer() instanceof BlockArchitecture) && areInSameLayer(source, target);
 
-        } else if (targetElement instanceof EPBSArchitecture) {
-          isOK = false;
-
-        }
-
-      } else if (elt instanceof Component) {
-        isOK = canMoveComponent((Component) elt, targetElement);
-
-      } else if (elt instanceof LogicalComponentPkg || elt instanceof PhysicalComponentPkg) {
-        isOK = !(targetElement instanceof BlockArchitecture);
-
-      } else if (elt instanceof AbstractCapabilityPkg || elt instanceof AbstractCapability) {
-        BlockArchitecture architecture = BlockArchitectureExt.getRootBlockArchitecture(targetElement);
-
-        if (elt instanceof OperationalCapabilityPkg || elt instanceof OperationalCapability) {
-          isOK = architecture instanceof OperationalAnalysis;
-
-        } else if (elt instanceof CapabilityPkg || elt instanceof Capability) {
-          isOK = architecture instanceof SystemAnalysis;
-
-        } else if (elt instanceof CapabilityRealizationPkg || elt instanceof CapabilityRealization) {
-          isOK = architecture instanceof LogicalArchitecture || architecture instanceof PhysicalArchitecture
-              || architecture instanceof EPBSArchitecture;
-        }
-
-      } else if (elt instanceof Interface
-          && (targetElement instanceof InterfacePkg || targetElement instanceof Interface)) {
-        isOK = isLegalInterfaceMode((Interface) elt, (ModelElement) targetElement);
-
-      } else if (elt instanceof InterfacePkg) {
-        isOK = !(targetElement instanceof EPBSArchitecture);
-
-      } else if (elt instanceof Part) {
-        AbstractType type = ((Part) elt).getAbstractType();
-        if (type != null) {
-          if (type.equals(targetElement) || targetElement instanceof Class
-              || isDecomposedBy((ModelElement) targetElement, (ModelElement) type)
-              || (type instanceof Component && !canMoveComponent((Component) type, targetElement))) {
+          } else if (target instanceof EPBSArchitecture) {
             isOK = false;
           }
-        }
 
-      } else if (elt instanceof EnumerationLiteral) {
-        isOK = targetElement instanceof Enumeration;
+        } else if (source instanceof Component) {
+          isOK = areInSameLayer(source, target) && ComponentExt.canMoveInto((Component) source, target);
 
-      } else if (elt instanceof State) {
-        // If elt is a Mode or a State
-        if (!(targetElement instanceof Region)) {
+        } else if (source instanceof Part) {
+          isOK = areInSameLayer(source, target) && PartExt.canMoveInto((Part) source, target);
+
+        } else if (source instanceof ComponentPkg) {
+          isOK = areInSameLayer(source, target) && ComponentPkgExt.canMoveInto((ComponentPkg) source, target);
+
+        } else if (source instanceof AbstractCapabilityPkg || source instanceof AbstractCapability) {
+          BlockArchitecture architecture = BlockArchitectureExt.getRootBlockArchitecture(target);
+
+          if (source instanceof OperationalCapabilityPkg || source instanceof OperationalCapability) {
+            isOK = architecture instanceof OperationalAnalysis;
+
+          } else if (source instanceof CapabilityPkg || source instanceof Capability) {
+            isOK = architecture instanceof SystemAnalysis;
+
+          } else if (source instanceof CapabilityRealizationPkg || source instanceof CapabilityRealization) {
+            isOK = architecture instanceof LogicalArchitecture || architecture instanceof PhysicalArchitecture
+                || architecture instanceof EPBSArchitecture;
+          }
+
+        } else if (source instanceof Interface && (target instanceof InterfacePkg || target instanceof Interface)) {
+          isOK = isLegalInterfaceMode((Interface) source, target);
+
+        } else if (source instanceof InterfacePkg) {
+          isOK = !(target instanceof EPBSArchitecture);
+
+        } else if (source instanceof EnumerationLiteral) {
+          isOK = target instanceof Enumeration;
+
+        } else if (source instanceof State) {
+          // If elt is a Mode or a State
+          if (!(target instanceof Region)) {
+            isOK = false;
+
+          } else {
+            isOK = canMoveModeState((State) source, (Region) target);
+          }
+
+        } else if (source instanceof LiteralBooleanValue) {
+          isOK = target instanceof BooleanType;
+
+        } else if (source instanceof FunctionalChainInvolvement) {
           isOK = false;
 
-        } else {
-          isOK = canMoveModeState((State) elt, (Region) targetElement);
+        } else if (source instanceof FunctionalChain) {
+          // Involved elements shall be in the same level than targetElement
+          isOK = ((FunctionalChain) source).getInvolvedElements().stream().noneMatch(x -> !areInSameLayer(x, target));
         }
 
-      } else if (elt instanceof LiteralBooleanValue) {
-        isOK = targetElement instanceof BooleanType;
-
-      } else if (elt instanceof FunctionalChainInvolvement) {
-        isOK = false;
-
-      } else if (elt instanceof FunctionalChain) {
-        // Involved elements shall be in the same level than targetElement
-        isOK = ((FunctionalChain)elt).getInvolvedElements().stream().noneMatch(x -> !areInSameLayer(x, (ModelElement) targetElement));
-      }
-
-      if (!isOK) {
-        // We should explain why !
-        return new Status(IStatus.ERROR, "model.helpers", "Semantic rules failed.");
+        if (!isOK) {
+          // We should explain why !
+          return new Status(IStatus.ERROR, "model.helpers", "Semantic rules failed.");
+        }
       }
     }
 
     return Status.OK_STATUS;
-  }
 
-  protected boolean canMoveComponent(Component elt, EObject targetElement) {
-    boolean isOK = true;
-    // Prevent move of System
-    if (!(elt instanceof Entity) && BlockArchitectureExt.isRootComponent((Component) elt)) {
-      isOK = false;
-
-    } else if (!ComponentExt.isActor(elt) && !ComponentExt.canCreateABComponent(targetElement)) {
-      isOK = false;
-
-    } else if (ComponentExt.isActor(elt) && !ComponentExt.canCreateABActor(targetElement)) {
-      isOK = false;
-
-    } else if (targetElement instanceof Component) {
-      isOK = areInSameLayer((ModelElement) elt, (ModelElement) targetElement);
-    }
-    return isOK;
-  }
-
-  /**
-   * @param type1
-   * @param type2
-   * @return
-   */
-  protected boolean isDecomposedBy(ModelElement type1, ModelElement type2) {
-    for (EObject obj : EObjectExt.getReferencers(type1,
-        ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE)) {
-      if (obj instanceof Part) {
-        ModelElement cpnt = (ModelElement) obj.eContainer();
-        if (cpnt != null) {
-          if (cpnt.equals(type2)) {
-            return true;
-          }
-          if (isDecomposedBy(cpnt, type2)) {
-            return true;
-          }
-        }
-      }
-    }
-    return false;
   }
 
   /**
@@ -302,10 +251,9 @@ public class MoveHelper {
    * @return <code>True</code> if they are in the same layer else <code>false</code>.
    */
   protected boolean areInSameLayer(ModelElement element1, ModelElement element2) {
-    BlockArchitecture arch1 = (BlockArchitecture) EcoreUtil2.getFirstContainer(element1,
-        CsPackage.Literals.BLOCK_ARCHITECTURE);
-    BlockArchitecture arch2 = (BlockArchitecture) EcoreUtil2.getFirstContainer(element2,
-        CsPackage.Literals.BLOCK_ARCHITECTURE);
+    BlockArchitecture arch1 = BlockArchitectureExt.getRootBlockArchitecture(element1);
+    BlockArchitecture arch2 = BlockArchitectureExt.getRootBlockArchitecture(element2);
+
     if (arch1 == arch2) {
       return true;
     }
@@ -520,7 +468,7 @@ public class MoveHelper {
     }
 
     // Add itself
-    stateModeLst.add((State) state);
+    stateModeLst.add(state);
     return stateModeLst;
   }
 

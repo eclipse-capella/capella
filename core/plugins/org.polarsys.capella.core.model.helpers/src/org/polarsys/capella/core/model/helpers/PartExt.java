@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.data.modellingcore.AbstractInformationFlow;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.data.modellingcore.AbstractTypedElement;
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.AbstractDeploymentLink;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
@@ -287,11 +288,11 @@ public class PartExt {
     parents.addAll((Collection) getCache(PartExt::getDeployingElements, currentPart));
     Component directParent = ComponentExt.getDirectParent(currentPart);
     if (null != directParent) {
-      parents.addAll((Collection) directParent.getRepresentingParts());
+      parents.addAll(directParent.getRepresentingParts());
     }
     return parents;
   }
-  
+
   public static boolean isDeployable(Part part) {
     if (CapellaModelPreferencesPlugin.getDefault().isMultipleDeploymentAllowed()) {
       return true;
@@ -302,4 +303,62 @@ public class PartExt {
   public static boolean isDeployed(Part part) {
     return !part.getDeployingParts().isEmpty();
   }
+
+  /**
+   * Returns whether part source can be moved into target component
+   * 
+   * @param source
+   * @param target
+   * @return whether part source can be moved into target component
+   */
+  public static boolean canMoveInto(Part source, Component target) {
+    Collection<Part> representingParts = getCache(ComponentExt::getRepresentingParts, target);
+
+    for (Part part : representingParts) {
+      Collection<Part> parts = ComponentExt.getPartAncestors(part);
+      if (parts.contains(source)) {
+        return false;
+      }
+    }
+
+    return ComponentExt.canMoveInto((Component) source.getAbstractType(), target);
+  }
+
+  /**
+   * Returns whether part source can be moved into target component package
+   * 
+   * @param source
+   * @param target
+   * @return whether part source can be moved into target component package
+   */
+  public static boolean canMoveInto(Part source, ComponentPkg target) {
+    Component parentComponent = ComponentPkgExt.getParentComponent(target);
+
+    if (parentComponent != null) {
+      return canMoveInto(source, parentComponent);
+    }
+
+    return (ComponentExt.isActor(source) && ComponentExt.canCreateABActor(target))
+        || (!ComponentExt.isActor(source) && ComponentExt.canCreateABComponent(target));
+  }
+
+  /**
+   * Returns whether part source can be moved into target model element
+   * 
+   * @param source
+   * @param target
+   * @return whether part source can be moved into target model element
+   */
+  public static boolean canMoveInto(Part source, ModelElement target) {
+    if (target instanceof Component) {
+      return canMoveInto(source, (Component) target);
+    }
+
+    if (target instanceof ComponentPkg) {
+      return canMoveInto(source, (ComponentPkg) target);
+    }
+
+    return false;
+  }
+
 }

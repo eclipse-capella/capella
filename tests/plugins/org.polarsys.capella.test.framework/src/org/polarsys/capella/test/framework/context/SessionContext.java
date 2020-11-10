@@ -18,6 +18,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.session.Session;
@@ -101,6 +102,11 @@ public class SessionContext {
     return (T) map.get(objectIdentifier);
   }
 
+  public <T extends EObject> Collection<T> getSemanticElements(Collection<String> objectIdentifiers) {
+    String[] identifiers = objectIdentifiers.toArray(new String[0]);
+    return getSemanticElements(identifiers);
+  }
+
   public void removeSemanticElement(String objectIdentifier) {
     getSemanticObjectMap().remove(objectIdentifier);
   }
@@ -115,6 +121,7 @@ public class SessionContext {
 
   public void setReusableComponents(String id) {
     final AbstractCommand cmd = new AbstractReadWriteCommand() {
+      @Override
       public void run() {
         EObject obj = getSemanticElement(id);
         if (obj instanceof KeyValue) {
@@ -130,6 +137,7 @@ public class SessionContext {
 
   public void setSingletonComponents(String id) {
     final AbstractCommand cmd = new AbstractReadWriteCommand() {
+      @Override
       public void run() {
         EObject obj = getSemanticElement(id);
         if (obj instanceof KeyValue) {

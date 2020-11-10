@@ -1,11 +1,15 @@
 package org.polarsys.capella.core.model.helpers;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EObject;
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ComponentPkg;
@@ -179,23 +183,85 @@ public class ComponentPkgExt {
 
     return components;
   }
-  
+
   /**
-   * Returns whether component source can be moved into target component package
+   * Returns the component package ancestors.
+   * 
+   * @param componentPkg
+   * @return the component package ancestors.
+   */
+  public static Collection<ComponentPkg> getComponentPkgAncestors(ComponentPkg componentPkg) {
+
+    Set<ComponentPkg> ancestors = new LinkedHashSet<>();
+
+    for (EObject object = componentPkg.eContainer(); object != null; object = object.eContainer()) {
+      if (object instanceof ComponentPkg) {
+        ancestors.add((ComponentPkg) object);
+      }
+    }
+
+    return ancestors;
+  }
+
+  /**
+   * Returns whether component package source can be moved into target component package
    * 
    * @param source
    * @param target
-   * @return
+   * @return whether component package source can be moved into target component package
    */
-  public static boolean canMoveInto(Component source, ComponentPkg target) {
-    Component parentComponent = getParentComponent(target);
-    if (parentComponent != null) {
-      return ComponentExt.canMoveInto(source, parentComponent);
-    } else if ((ComponentExt.isActor(source) && !ComponentExt.canCreateABActor(target))
-        || (!ComponentExt.isActor(source) && !ComponentExt.canCreateABComponent(target))) {
+  public static boolean canMoveInto(ComponentPkg source, Component target) {
+    List<Component> allSubComponents = getAllSubDefinedComponents(source);
+
+    // We can create a Valid ComponentPkg that contain both Node and Behavior Components (under Root Structure for
+    // example).
+    // This is why we verify that during the move all of the children are valid.
+    // We do not perform this check for children of a Component, since a Component always contains children of the same
+    // nature as him.
+    return allSubComponents.stream().allMatch(subComponent -> ComponentExt.canMoveInto(subComponent, target));
+  }
+
+  /**
+   * Returns whether component package source can be moved into target component
+   * 
+   * @param source
+   * @param target
+   * @return whether component package source can be moved into target component
+   */
+  public static boolean canMoveInto(ComponentPkg source, ComponentPkg target) {
+
+    Collection<ComponentPkg> targetAncestors = getComponentPkgAncestors(target);
+
+    if (targetAncestors.contains(source)) {
       return false;
     }
-    return true;
+
+    // We can create a Valid ComponentPkg that contain both Node and Behavior Components (under Root Structure for
+    // example).
+    // This is why we verify that during the move all of the children are valid.
+    // We do not perform this check for children of a Component, since a Component always contains children of the same
+    // nature as him.
+    List<Component> allSubComponents = getAllSubDefinedComponents(source);
+    return allSubComponents.stream().allMatch(subComponent -> ComponentExt.canMoveInto(subComponent, target));
+  }
+
+  /**
+   * Returns whether component package source can be moved into target model element
+   * 
+   * @param source
+   * @param target
+   * @return whether component package source can be moved into target model element
+   */
+  public static boolean canMoveInto(ComponentPkg source, ModelElement target) {
+    if (target instanceof Component) {
+      return canMoveInto(source, (Component) target);
+    }
+
+    if (target instanceof ComponentPkg) {
+      return canMoveInto(source, (ComponentPkg) target);
+    }
+
+    return false;
   }
 
 }

@@ -647,16 +647,7 @@ public class ABServices {
    * @return
    */
   public boolean isValidDndComponent(Part source, Component target) {
-    for (Part part : getCache(ComponentExt::getRepresentingParts, target)) {
-      Collection<Part> parts = ComponentExt.getPartAncestors(part);
-      if (parts.contains(source)) {
-        return false;
-      }
-    }
-    if (!ComponentExt.canMoveInto((Component) source.getAbstractType(), target)) {
-      return false;
-    }
-    return true;
+    return PartExt.canMoveInto(source, target);
   }
 
   /**
@@ -686,14 +677,7 @@ public class ABServices {
    * @return whether part source can be moved into target component package
    */
   public boolean isValidDndComponent(Part sourcePart, ComponentPkg targetPkg) {
-    Component parentComponent = ComponentPkgExt.getParentComponent(targetPkg);
-
-    if (parentComponent != null) {
-      return isValidDndComponent(sourcePart, parentComponent);
-    }
-
-    return (ComponentExt.isActor(sourcePart) && ComponentExt.canCreateABActor(targetPkg))
-        || (!ComponentExt.isActor(sourcePart) && ComponentExt.canCreateABComponent(targetPkg));
+    return PartExt.canMoveInto(sourcePart, targetPkg);
   }
 
   /**
@@ -704,14 +688,7 @@ public class ABServices {
    * @return whether component source can be moved into target component package
    */
   public boolean isValidDndComponent(Component sourceComponent, ComponentPkg targetPkg) {
-    Component parentComponent = ComponentPkgExt.getParentComponent(targetPkg);
-
-    if (parentComponent != null) {
-      return isValidDndComponent(sourceComponent, parentComponent);
-    }
-
-    return (sourceComponent.isActor() && ComponentExt.canCreateABActor(targetPkg))
-        || (!sourceComponent.isActor() && ComponentExt.canCreateABComponent(targetPkg));
+    return ComponentExt.canMoveInto(sourceComponent, targetPkg);
   }
 
   /**
