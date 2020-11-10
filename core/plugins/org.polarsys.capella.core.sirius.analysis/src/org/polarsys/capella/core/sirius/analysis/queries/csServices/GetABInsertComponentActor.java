@@ -12,7 +12,6 @@
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.analysis.queries.csServices;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -23,7 +22,6 @@ import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
-import org.polarsys.capella.core.model.helpers.ComponentPkgExt;
 
 public abstract class GetABInsertComponentActor extends AbstractQuery {
   /**
@@ -35,7 +33,7 @@ public abstract class GetABInsertComponentActor extends AbstractQuery {
     if (target instanceof Component) {
       return component -> ComponentExt.canMoveInto(component, (Component) target);
     } else if (target instanceof ComponentPkg) {
-      return component -> ComponentPkgExt.canMoveInto(component, (ComponentPkg) target);
+      return component -> ComponentExt.canMoveInto(component, (ComponentPkg) target);
     }
     return component -> false;
   }

@@ -166,6 +166,7 @@ public class ComponentExt {
     component.getOwnedFeatures().add(stdPort);
     return stdPort;
   }
+
   /**
    * This method adds an interface usage.
    * 
@@ -991,7 +992,8 @@ public class ComponentExt {
    * common Component or ComponentPkg ancestor between source and target if source is target, return the c1 unlike
    * getCommonComponentAncestor
    */
-  public static EObject getFirstCommonComponentOrPkgAncestor(EObject source, EObject target, boolean useDeployementLinks) {
+  public static EObject getFirstCommonComponentOrPkgAncestor(EObject source, EObject target,
+      boolean useDeployementLinks) {
     if ((source == null) || (target == null)) {
       return null;
     }
@@ -1085,7 +1087,7 @@ public class ComponentExt {
     if (!(commonAncestor instanceof Component)) {
       commonAncestor = EcoreUtil2.getFirstContainer(commonAncestor, CsPackage.Literals.COMPONENT);
     }
-    
+
     return (Component) commonAncestor;
   }
 
@@ -1479,11 +1481,13 @@ public class ComponentExt {
           result.add(e);
         }
       } else {
-        result.add(EcoreUtil2.getFirstContainer(eobject, Arrays.asList(CsPackage.Literals.COMPONENT, CsPackage.Literals.COMPONENT_PKG)));
+        result.add(EcoreUtil2.getFirstContainer(eobject,
+            Arrays.asList(CsPackage.Literals.COMPONENT, CsPackage.Literals.COMPONENT_PKG)));
       }
 
     } else if (eobject instanceof ComponentPkg) {
-      result.add(EcoreUtil2.getFirstContainer(eobject, Arrays.asList(CsPackage.Literals.COMPONENT, CsPackage.Literals.COMPONENT_PKG)));
+      result.add(EcoreUtil2.getFirstContainer(eobject,
+          Arrays.asList(CsPackage.Literals.COMPONENT, CsPackage.Literals.COMPONENT_PKG)));
     }
 
     return result;
@@ -2864,6 +2868,66 @@ public class ComponentExt {
   }
 
   /**
+   * Returns whether component source can be moved into target model element.
+   * 
+   * @param source
+   * @param target
+   * @return whether component source can be moved into target model element.
+   */
+  public static boolean canMoveInto(Component source, ModelElement target) {
+    if (target instanceof Component) {
+      return canMoveInto(source, (Component) target);
+    }
+
+    if (target instanceof ComponentPkg) {
+      return canMoveInto(source, (ComponentPkg) target);
+    }
+
+    return false;
+  }
+
+  /**
+   * Returns whether component source can be moved into target component.
+   * 
+   * @param source
+   * @param target
+   * @param isSourceDeployed
+   * @return whether component source can be moved into target component
+   */
+  public static boolean canMoveInto(Component source, Component target, boolean isSourceDeployed) {
+    if (source.equals(target)) {
+      return false;
+    }
+
+    // We use the cache since this method is also used in ABServices
+    Collection<Component> targetAncestors = getCache(ComponentExt::getComponentAncestors, target);
+    if (targetAncestors.contains(source)) {
+      return false;
+    }
+
+    // This is the specification:
+    // Actors can be moved at any valid creation target, no matter what nature they might have
+    if (ComponentExt.isActor(source)) {
+      return ComponentExt.canCreateABActor(target);
+    }
+
+    if (source instanceof PhysicalComponent && target instanceof PhysicalComponent) {
+      PhysicalComponentNature sourceNature = ((PhysicalComponent) source).getNature();
+      PhysicalComponentNature targetNature = ((PhysicalComponent) target).getNature();
+
+      if (sourceNature == PhysicalComponentNature.NODE && targetNature == PhysicalComponentNature.BEHAVIOR) {
+        return false;
+      }
+      if (sourceNature == PhysicalComponentNature.BEHAVIOR && targetNature == PhysicalComponentNature.NODE
+          && !isSourceDeployed) {
+        return false;
+      }
+    }
+
+    return !ComponentExt.isActor(source) && ComponentExt.canCreateABComponent(target);
+  }
+
+  /**
    * Returns whether component source can be moved into target component
    * 
    * @param source
@@ -2874,28 +2938,22 @@ public class ComponentExt {
     return canMoveInto(source, target, false);
   }
 
-  public static boolean canMoveInto(Component source, Component target, boolean sourceIsDeployed) {
-    if (source.equals(target)) {
-      return false;
+  /**
+   * Returns whether component source can be moved into target component
+   * 
+   * @param source
+   * @param target
+   * @return whether component source can be moved into target component
+   */
+  public static boolean canMoveInto(Component source, ComponentPkg target) {
+    Component parentComponent = ComponentPkgExt.getParentComponent(target);
+
+    if (parentComponent != null) {
+      return ComponentExt.canMoveInto(source, parentComponent);
     }
-    if (ComponentExt.getComponentAncestors(target).contains(source)) {
-      return false;
-    }
-    if (source instanceof PhysicalComponent && target instanceof PhysicalComponent) {
-      PhysicalComponentNature nature1 = ((PhysicalComponent) source).getNature();
-      PhysicalComponentNature nature2 = ((PhysicalComponent) target).getNature();
-      if (nature1 == PhysicalComponentNature.NODE && nature2 == PhysicalComponentNature.BEHAVIOR) {
-        return false;
-      }
-      if (nature1 == PhysicalComponentNature.BEHAVIOR && nature2 == PhysicalComponentNature.NODE && !sourceIsDeployed) {
-        return false;
-      }
-    }
-    if ((ComponentExt.isActor(source) && !ComponentExt.canCreateABActor(target))
-        || (!ComponentExt.isActor(source) && !ComponentExt.canCreateABComponent(target))) {
-      return false;
-    }
-    return true;
+
+    return (ComponentExt.isActor(source) && ComponentExt.canCreateABActor(target))
+        || (!ComponentExt.isActor(source) && ComponentExt.canCreateABComponent(target));
   }
 
   /**
