@@ -2,5 +2,12 @@
 
 == From Capella 1.4.x to 5.0.0 ==
 
-* In order to give more flexibility in case a library does not need to have a version, the lowerBould attribute of the LibraryReference.version reference has been removed.
-* The annotation http://www.polarsys.org/capella/semantic has been added with '''<details key="excludefrom" value="xmlpivot"/>'''
+==== LibraryReference.version ====
+
+* In order to give more flexibility in case a library does not need to have a version, the lowerBould attribute of the '''LibraryReference.version''' reference has been removed.
+
+==== Semantic annotations adaptations from 1.4.x ====
+
+* '''Component.ownedComponentRealizations''' is no longer semantic
+
+* '''LogicalComponent.realizedSystemComponents''' shall have been semantic and not excluded from exports
