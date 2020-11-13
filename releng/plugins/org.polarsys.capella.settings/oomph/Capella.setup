@@ -270,10 +270,6 @@
               url="http://download.eclipse.org/sirius/updates/legacy/1.1.0"/>
           <repository
               url="http://download.eclipse.org/cbi/updates/license"/>
-          <repository
-              url="http://download.eclipse.org/tools/orbit/downloads/drops/R20130827064939/repository"/>
-          <repository
-              url="http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository"/>
         </repositoryList>
       </targlet>
       <targlet
@@ -297,6 +293,10 @@
               url="http://download.eclipse.org/diffmerge/releases/0.9.0/emf-diffmerge-site"/>
           <repository
               url="http://download.eclipse.org/modeling/amalgam/updates/stable/1.9.0-S20180528/capella"/>
+          <repository
+              url="http://download.eclipse.org/tools/orbit/downloads/drops/R20130827064939/repository"/>
+          <repository
+              url="http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository"/>
         </repositoryList>
         <repositoryList
             name="v1.3.x">
@@ -318,6 +318,10 @@
               url="http://download.eclipse.org/diffmerge/releases/0.11.2/emf-diffmerge-site"/>
           <repository
               url="http://download.eclipse.org/modeling/amalgam/updates/stable/1.10.1-S20190510/capella"/>
+          <repository
+              url="http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository"/>
+          <repository
+              url="http://download.eclipse.org/tools/orbit/downloads/drops/R20130827064939/repository"/>
         </repositoryList>
         <repositoryList
             name="v1.4.x">
@@ -334,13 +338,17 @@
           <repository
               url="http://download.eclipse.org/egf/updates/1.6.1/2019-06"/>
           <repository
-              url="https://download.eclipse.org/sirius/updates/stable/6.3.3-S20200806-045005/2019-06/"/>
+              url="https://download.eclipse.org/sirius/updates/releases/6.3.3/2019-06/"/>
           <repository
               url="http://download.eclipse.org/diffmerge/releases/0.12.0/emf-diffmerge-site"/>
           <repository
               url="https://download.eclipse.org/diffmerge/releases/0.12.0/edm-patterns-site"/>
           <repository
               url="http://download.eclipse.org/modeling/amalgam/updates/stable/1.11.0-S20191007/capella"/>
+          <repository
+              url="http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository"/>
+          <repository
+              url="http://download.eclipse.org/tools/orbit/downloads/drops/R20130827064939/repository"/>
         </repositoryList>
         <repositoryList
             name="master">
@@ -351,11 +359,11 @@
           <repository
               url="http://download.eclipse.org/modeling/gmp/gmf-runtime/updates/releases/R202004160913"/>
           <repository
-              url="https://download.eclipse.org/kitalpha/updates/stable/runtime/5.0.0.M1/"/>
+              url="https://download.eclipse.org/kitalpha/updates/stable/runtime/5.0.0-S202011241439"/>
           <repository
-              url="https://download.eclipse.org/kitalpha/updates/stable/sdk/5.0.0.M1/"/>
+              url="https://download.eclipse.org/kitalpha/updates/stable/sdk/5.0.0-S202011241439"/>
           <repository
-              url="http://download.eclipse.org/egf/updates/1.6.1/2019-06"/>
+              url="http://download.eclipse.org/egf/updates/1.6.2/2019-06"/>
           <repository
               url="https://download.eclipse.org/sirius/updates/stable/6.4.0-S20201119-043506/2020-06/"/>
           <repository
@@ -697,7 +705,7 @@
         <setupTask
             xsi:type="setup:PreferenceTask"
             key="/instance/org.eclipse.releng.tools/org.eclipse.releng.tools.copyrightTemplate"
-            value="Copyright (c) $${date} THALES GLOBAL SERVICES.&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html&#xA;  &#xA;Contributors:&#xA;   Thales - initial API and implementation"/>
+            value="Copyright (c) $${date} THALES GLOBAL SERVICES.&#xA; &#xA;This program and the accompanying materials are made available under the&#xA;terms of the Eclipse Public License 2.0 which is available at&#xA;http://www.eclipse.org/legal/epl-2.0&#xA;&#xA;SPDX-License-Identifier: EPL-2.0&#xA;&#xA;Contributors:&#xA;   Thales - initial API and implementation"/>
         <setupTask
             xsi:type="setup:PreferenceTask"
             key="/instance/org.eclipse.releng.tools/org.eclipse.releng.tools.replaceAllExisting"
