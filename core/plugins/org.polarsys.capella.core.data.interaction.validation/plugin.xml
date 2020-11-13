@@ -263,7 +263,7 @@ Whatever the level, UNSET Scenarios raise an error.
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DWF_DS_24 - Instance role has different name compared to represented instance part"
+                  name="DWF_DS_24 - Instance role has different name compared to represented instance"
                   severity="ERROR"
                   statusCode="1">
                <message>
