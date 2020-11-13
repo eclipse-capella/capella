@@ -13,7 +13,6 @@
 package org.polarsys.capella.core.commands.preferences.service;
 
 import java.io.IOException;
-import java.io.OutputStream;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -23,9 +22,12 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ProjectScope;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.QualifiedName;
+import org.eclipse.core.runtime.preferences.IEclipsePreferences.IPreferenceChangeListener;
+import org.eclipse.core.runtime.preferences.IEclipsePreferences.PreferenceChangeEvent;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.preference.PreferenceStore;
 import org.eclipse.jface.util.IPropertyChangeListener;
+import org.eclipse.jface.util.PropertyChangeEvent;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.core.preferences.Activator;
@@ -39,7 +41,8 @@ import org.polarsys.capella.core.preferences.Activator;
  * It stores each preferences in the ProjectScope and as Properties using IProject.getPersistentProperty, which is idk
  * why, used in ScopedCapellaPreferencesStore.getProjectValue(IProject, String)
  */
-public class PropertyStore extends PreferenceStore implements IPropertyPersistentPreferenceStore {
+public class PropertyStore extends PreferenceStore
+    implements IPropertyPersistentPreferenceStore, IPreferenceChangeListener {
 
   public static final String USEPROJECTSETTINGS = "useProjectSettings"; //$NON-NLS-1$
 
@@ -50,15 +53,17 @@ public class PropertyStore extends PreferenceStore implements IPropertyPersisten
 
   private IResource resource;
 
-  public IResource getResource() {
-    return resource;
-  }
-
   private IPreferenceStore workbenchStore;
 
   private boolean inserting = false;
 
   private boolean isCanceled;
+
+  private ProjectScope scope;
+
+  public IResource getResource() {
+    return resource;
+  }
 
   /**
    * @param _resource
@@ -67,9 +72,17 @@ public class PropertyStore extends PreferenceStore implements IPropertyPersisten
    */
   public PropertyStore(IResource _resource, IPreferenceStore _workbenchStore) {
     this.resource = _resource;
+
     this.workbenchStore = _workbenchStore;
     Activator.getDefault().setPropertyStore((IResource) _resource, this);
+
+    scope = new ProjectScope((IProject) resource);
+    scope.getNode(Activator.PLUGIN_ID).addPreferenceChangeListener(this);
     initilizeGuestListeners();
+  }
+
+  public void dispose() {
+    scope.getNode(Activator.PLUGIN_ID).removePreferenceChangeListener(this);
   }
 
   /**
@@ -77,8 +90,25 @@ public class PropertyStore extends PreferenceStore implements IPropertyPersisten
    */
   @Override
   public void initilizeGuestListeners() {
+    addPropertyChangeListener(new IPropertyChangeListener() {
+
+      @Override
+      public void propertyChange(PropertyChangeEvent event) {
+        String name = event.getProperty();
+        try {
+          setProperty(name, getString(name));
+        } catch (IOException exception) {
+          logger.warn("PropertyStore : ", exception);
+        }
+      }
+    });
+  }
+
+  @Override
+  public void preferenceChange(PreferenceChangeEvent event) {
     for (IPropertyChangeListener iPropertyChangeListener : guestListener) {
-      this.addPropertyChangeListener(iPropertyChangeListener);
+      iPropertyChangeListener.propertyChange(
+          new PropertyChangeEvent(event.getSource(), event.getKey(), event.getOldValue(), event.getNewValue()));
     }
   }
 
@@ -95,54 +125,22 @@ public class PropertyStore extends PreferenceStore implements IPropertyPersisten
       // to bypass other capella modeller preference page
       if ((resource instanceof IProject) && !isCanceled) {
         resource.setPersistentProperty(new QualifiedName(Activator.PLUGIN_ID, USEPROJECTSETTINGS), TRUE); // idk if its useful
-
-        final ProjectScope project = new ProjectScope((IProject) resource);
-        writeProperties(project);
-        project.getNode(Activator.PLUGIN_ID).flush();
+        writeProperties();
+        scope.getNode(Activator.PLUGIN_ID).flush();
       }
 
     } catch (Exception exception) {
-      StringBuilder loggerMessage = new StringBuilder("PropertyStore : "); //$NON-NLS-1$
-      logger.warn(loggerMessage.toString(), exception);
+      logger.warn("PropertyStore : ", exception);
     }
-  }
-
-  /*
-   * (non-Javadoc)
-   * 
-   * @see org.eclipse.jface.preference.PreferenceStore#save(java.io.OutputStream, java.lang.String)
-   */
-  @Override
-  public void save(OutputStream out, String header) throws IOException {
-    writeProperties();
   }
 
   /**
    * Writes modified preferences into resource properties.
    */
   private void writeProperties() throws IOException {
-    String[] preferences = super.preferenceNames();
-    for (String name : preferences) {
-      try {
-        setProperty(name, getString(name));
-      } catch (CoreException e) {
-        throw new IOException("PropertyStore.Cannot_write_resource_property" + name); //$NON-NLS-1$
-      }
-    }
-  }
-
-  /**
-   * Writes modified preferences into resource properties.
-   */
-  private void writeProperties(ProjectScope project) throws IOException {
-    String[] preferences = super.preferenceNames();
-    for (String name : preferences) {
-      try {
-        project.getNode(Activator.PLUGIN_ID).put(name, getString(name));
-        setProperty(name, getString(name));
-      } catch (CoreException e) {
-        throw new IOException("PropertyStore.Cannot_write_resource_property" + name); //$NON-NLS-1$
-      }
+    for (String name : preferenceNames()) {
+      scope.getNode(Activator.PLUGIN_ID).put(name, getString(name));
+      setProperty(name, getString(name));
     }
   }
 
@@ -155,8 +153,13 @@ public class PropertyStore extends PreferenceStore implements IPropertyPersisten
    *          - the property value or null to delete the property
    * @throws CoreException
    */
-  private void setProperty(String name, String value) throws CoreException {
-    resource.setPersistentProperty(new QualifiedName(Activator.PLUGIN_ID, name), value);
+  private void setProperty(String name, String value) throws IOException {
+    try {
+      scope.getNode(Activator.PLUGIN_ID).put(name, value);
+      resource.setPersistentProperty(new QualifiedName(Activator.PLUGIN_ID, name), value);
+    } catch (CoreException e) {
+      throw new IOException("PropertyStore.Cannot_write_resource_property" + name, e); //$NON-NLS-1$
+    }
   }
 
   /*** Get default values (Delegate to workbench store) ***/
