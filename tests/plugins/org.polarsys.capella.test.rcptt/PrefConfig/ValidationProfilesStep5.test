@@ -1,0 +1,58 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _ZR3fQKKHEeaAAPJPtfviTA,_0keAwAMFEeaSHsy4D5kUow
+Element-Name: ValidationProfilesStep5
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _gy3zICW_EeuG_ouOd-u8qw
+Runtime-Version: 2.5.1.M3
+Save-Time: 11/13/20 3:54 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+"Create 2 Projects. Project_1 and Project_2. And modify the default preference (Model, Transition/Generation).
+Click OK to finish.
+
+"Open the preference for Project 2.
+
+Note that the Transitions/Generation preference category has a workspace scope. Thus, it is not possible to configure this preference category for a specific project."
+Open Project 1 again.
+Perform Restore Default.
+Close Capella
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+restoreDefaultPreferences ""
+checkDefaultPreferences ""
+
+// Create 2 Projects. Project_1 and Project_2. And modify the default preference (Model, Transition/Generation).
+// => The preferences are changed when the project preferences are reopened.
+create-project "Project_1"
+
+// Check that SystemEngineering is displayed
+get-view "Project Explorer" | get-tree | get-item -path "Project_1/Project_1.aird/Project_1" 
+    | get-property "image.path" 
+    | equals "org.polarsys.capella.core.data.res.edit/icons/full/obj16/SystemEngineering.gif" | verify-true
+    
+// Enable Project display and Click on Apply button, then close the wizard 
+get-view "Project Explorer" | get-tree | select "Project_1" | get-menu -path Properties | click
+with [get-window "Properties for Project_1"] {
+    get-tree | select "Capella/Project Explorer"
+    get-group "Displayable Capella Concepts" | get-button Project | check
+    get-button Apply | click
+}
+
+get-window "Properties for Project_1" | get-button Cancel | click
+
+// Check that Project is displayed
+get-view "Project Explorer" | get-tree | get-item -path "Project_1/Project_1.aird/Project_1" 
+    | get-property "image.path" 
+    | equals "org.polarsys.capella.core.data.res.edit/icons/full/obj16/Project.gif" | verify-true
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

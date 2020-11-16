@@ -5,7 +5,8 @@ Element-Name: ValidationProfileActions
 Element-Type: context
 Element-Version: 2.0
 Id: _ZR3fQKKHEeaAAPJPtfviTA
-Save-Time: 10/15/20 5:57 PM
+Runtime-Version: 2.5.1.M3
+Save-Time: 11/13/20 3:47 PM
 
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
 Content-Type: text/ecl
@@ -46,7 +47,7 @@ proc exportEPFFileToDir [val filename] {
 	    get-group "" | get-tree | get-item "Capella Preferences" | check  
 	    
 	    set-dialog-result File $filename
-	    get-window Export | get-button "File System..." | click
+	    get-window "Export Preferences" | get-button "File System..." | click
     	get-button Finish | click 
     	if [get-window | get-text | equals Question] {
     		get-window Question | get-button Yes | click
@@ -87,7 +88,7 @@ proc exportEPFFileToConfigProject [val configProjectName] {
 	}
 	
 	
-	with [get-window Export] {
+	with [get-window "Export Preferences"] {
 	    get-button "Overwrite existing files without warning" | check
 	    get-button Finish | click
 	}

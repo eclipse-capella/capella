@@ -136,6 +136,18 @@ public abstract class FieldEditorPropertyPreferencePage extends FieldEditorPrefe
     
     super.createControl(parent);
   }
+  
+  @Override
+  public void dispose() {
+    super.dispose();
+    
+    if (isPropertyPage()) {
+      IPreferenceStore store = getPreferenceStore();
+      if (store instanceof PropertyStore) {
+        ((PropertyStore) store).dispose();
+      }
+    }
+  }
 
   public void setPreferenceStore(IPreferenceStore store) {
     super.setPreferenceStore(store);
