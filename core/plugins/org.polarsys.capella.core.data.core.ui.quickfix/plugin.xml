@@ -96,6 +96,15 @@
                ruleId="I_44">
          </rules>
       </resolver>
+      <resolver
+            class="org.polarsys.capella.core.data.core.ui.quickfix.resolver.TypedElementHasDifferentNameThanTypeResolver"
+            desc="%quickFix.I_45.desc"
+            icon="icons/search16.gif"
+            label="%quickFix.I_45.label">
+         <rules
+               ruleId="I_45">
+         </rules>
+      </resolver>
    </extension>
 
 </plugin>

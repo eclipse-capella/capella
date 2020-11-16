@@ -31,6 +31,7 @@ public class CapellaModelEditingDomainListener extends ResourceSetListenerImpl i
   private CapellaModelDataListenerForPartsAndComponents _dataListenerForPartsAndComponents;
   private CapellaModelDataListenerForInstanceRole dataListenerForInstanceRole;
   private CapellaModelDataListenerForExchangeItemsAndCommunicationLinks _dataListenerForExchangeItemsAndCommunicationLinks;
+  private CapellaModelDataListenerForExchangeItemAndExchangeItemInstance dataListenerForExchangeItemAndExchangeItemInstance;
 
   /**
    * @see org.polarsys.capella.common.ef.domain.IEditingDomainListener#createdEditingDomain(EditingDomain)
@@ -58,6 +59,7 @@ public class CapellaModelEditingDomainListener extends ResourceSetListenerImpl i
     loadDataListenerForPartsAndComponents(editingDomain);
     loadDataListenerForInstanceRoles(editingDomain);
     loadDataListenerForAbstractStates(editingDomain);
+    loadDataListenerForExchangeItemAndExchangeItemInstance(editingDomain);
   }
 
   /**
@@ -123,6 +125,16 @@ public class CapellaModelEditingDomainListener extends ResourceSetListenerImpl i
         _dataListenerForExchangeItemsAndCommunicationLinks = new CapellaModelDataListenerForExchangeItemsAndCommunicationLinks();
         editingDomain.getDataNotifier().addAdapter(AbstractNamedElement.class,
             _dataListenerForExchangeItemsAndCommunicationLinks);
+      }
+    }
+  }
+
+  private void loadDataListenerForExchangeItemAndExchangeItemInstance(SemanticEditingDomain editingDomain) {
+    if (dataListenerForExchangeItemAndExchangeItemInstance == null) {
+      if (editingDomain.getDataNotifier() != null) {
+        dataListenerForExchangeItemAndExchangeItemInstance = new CapellaModelDataListenerForExchangeItemAndExchangeItemInstance();
+        editingDomain.getDataNotifier().addAdapter(AbstractNamedElement.class,
+            dataListenerForExchangeItemAndExchangeItemInstance);
       }
     }
   }
