@@ -20,6 +20,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -40,6 +41,7 @@ import org.polarsys.capella.core.data.helpers.capellacore.services.Generalizable
 import org.polarsys.capella.core.data.information.ElementKind;
 import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.information.ExchangeItemElement;
+import org.polarsys.capella.core.data.information.ExchangeItemInstance;
 import org.polarsys.capella.core.data.information.ExchangeMechanism;
 import org.polarsys.capella.core.data.information.InformationFactory;
 import org.polarsys.capella.core.data.information.ParameterDirection;
@@ -97,7 +99,9 @@ public class ExchangeItemExt {
 
   /**
    * Gets the parameters.
-   * @param item the given exchangeItem
+   * 
+   * @param item
+   *          the given exchangeItem
    * @return the type of parameters associated to the exchange item
    */
   public static List<AbstractType> getData(AbstractExchangeItem item) {
@@ -130,7 +134,9 @@ public class ExchangeItemExt {
 
   /**
    * Gets the parameters.
-   * @param item the given exchangeItem
+   * 
+   * @param item
+   *          the given exchangeItem
    * @return the type of parameters associated to the exchange item
    */
   public static List<AbstractType> getExceptions(ExchangeItem item) {
@@ -149,7 +155,8 @@ public class ExchangeItemExt {
   /**
    * @see #getExchangeItemDependencies(AbstractExchangeItem)
    */
-  public static Map<AbstractDependenciesPkg, Collection<EObject>> getExchangeItemDependencies2(AbstractExchangeItem exchangeItem) {
+  public static Map<AbstractDependenciesPkg, Collection<EObject>> getExchangeItemDependencies2(
+      AbstractExchangeItem exchangeItem) {
 
     Map<AbstractDependenciesPkg, Collection<EObject>> result = new HashMap<>();
 
@@ -161,10 +168,13 @@ public class ExchangeItemExt {
   }
 
   /** for internal use */
-  private static void checkDependenciesAndAddToResult(Map<AbstractDependenciesPkg, Collection<EObject>> map, EObject eobject) {
-    // TODO we'd like to use AbstractDependenciesPkgExt.checkDependenciesAndAddToResult, but that would cause a plugin-dependency cycle.
+  private static void checkDependenciesAndAddToResult(Map<AbstractDependenciesPkg, Collection<EObject>> map,
+      EObject eobject) {
+    // TODO we'd like to use AbstractDependenciesPkgExt.checkDependenciesAndAddToResult, but that would cause a
+    // plugin-dependency cycle.
     if (null != eobject) {
-      AbstractDependenciesPkg adp = (AbstractDependenciesPkg) EcoreUtil2.getFirstContainer(eobject, CapellacorePackage.Literals.ABSTRACT_DEPENDENCIES_PKG);
+      AbstractDependenciesPkg adp = (AbstractDependenciesPkg) EcoreUtil2.getFirstContainer(eobject,
+          CapellacorePackage.Literals.ABSTRACT_DEPENDENCIES_PKG);
       if (adp != null) {
         if (!map.containsKey(adp)) {
           Set<EObject> set = new HashSet<>();
@@ -204,7 +214,8 @@ public class ExchangeItemExt {
   public static List<ExchangeItem> getOperations(List<? extends AbstractExchangeItem> exchangeItems) {
     List<ExchangeItem> types = new ArrayList<>();
     for (AbstractExchangeItem item : exchangeItems) {
-      if ((item instanceof ExchangeItem) && (((ExchangeItem) item).getExchangeMechanism() == ExchangeMechanism.OPERATION)) {
+      if ((item instanceof ExchangeItem)
+          && (((ExchangeItem) item).getExchangeMechanism() == ExchangeMechanism.OPERATION)) {
         types.add((ExchangeItem) item);
       }
     }
@@ -213,7 +224,9 @@ public class ExchangeItemExt {
 
   /**
    * Gets the parameters.
-   * @param item the given exchangeItem
+   * 
+   * @param item
+   *          the given exchangeItem
    * @return the type of parameters associated to the exchange item
    */
   public static List<AbstractType> getParameters(AbstractExchangeItem item) {
@@ -264,6 +277,7 @@ public class ExchangeItemExt {
 
   /**
    * Returns all communication exchanger which are related to the exchange item. Include also childs by generalization
+   * 
    * @param item
    * @return
    */
@@ -275,7 +289,8 @@ public class ExchangeItemExt {
         result.add(exchanger);
 
         if (exchanger instanceof GeneralizableElement) {
-          for (GeneralizableElement child : GeneralizableElementExt.getAllSubGeneralizableElements((GeneralizableElement) exchanger)) {
+          for (GeneralizableElement child : GeneralizableElementExt
+              .getAllSubGeneralizableElements((GeneralizableElement) exchanger)) {
             if (child instanceof CommunicationLinkExchanger) {
               result.add((CommunicationLinkExchanger) child);
             }
@@ -288,7 +303,9 @@ public class ExchangeItemExt {
 
   /**
    * Gets the types.
-   * @param item the given exchangeItem
+   * 
+   * @param item
+   *          the given exchangeItem
    * @return the types associated to the exchange item
    */
   public static List<AbstractType> getTypes(AbstractExchangeItem item) {
@@ -298,8 +315,8 @@ public class ExchangeItemExt {
       for (ExchangeItemElement element : ((ExchangeItem) item).getOwnedElements()) {
         if (ElementKind.TYPE.equals(element.getKind())) {
           Type type = element.getType();
-          if(type != null) {
-            types.add(type);            
+          if (type != null) {
+            types.add(type);
           }
         }
       }
@@ -310,28 +327,38 @@ public class ExchangeItemExt {
 
   /**
    * Checks if the exchange item is ACCESS by the component (including inheritance links)
-   * @param sndCpnt the given component
-   * @param sndItem the given abstractExchangeItem
+   * 
+   * @param sndCpnt
+   *          the given component
+   * @param sndItem
+   *          the given abstractExchangeItem
    * @return true, if is produce
    */
   public static boolean isAccess(Component sndCpnt, AbstractExchangeItem sndItem) {
-    return CommunicationLinkExt.getExchangeItemsByKind(CommunicationLinkExt.getAllCommunicationLinks(sndCpnt), CommunicationLinkKind.ACCESS)
+    return CommunicationLinkExt
+        .getExchangeItemsByKind(CommunicationLinkExt.getAllCommunicationLinks(sndCpnt), CommunicationLinkKind.ACCESS)
         .contains(sndItem);
   }
 
   /**
    * Checks if the exchange item is CALL by the component (including inheritance links)
-   * @param sndCpnt the given component
-   * @param sndItem the given abstractExchangeItem
+   * 
+   * @param sndCpnt
+   *          the given component
+   * @param sndItem
+   *          the given abstractExchangeItem
    * @return true, if is produce
    */
   public static boolean isCall(Component sndCpnt, AbstractExchangeItem sndItem) {
-    return CommunicationLinkExt.getExchangeItemsByKind(CommunicationLinkExt.getAllCommunicationLinks(sndCpnt), CommunicationLinkKind.CALL).contains(sndItem);
+    return CommunicationLinkExt
+        .getExchangeItemsByKind(CommunicationLinkExt.getAllCommunicationLinks(sndCpnt), CommunicationLinkKind.CALL)
+        .contains(sndItem);
   }
 
   /**
-   * Checks if both sndItem is produce/call/send/write by the sndCpnt and if rcvItem is consume/execute/receive/access by rcvCpnt with cohesion between
-   * CommunicaionLinks
+   * Checks if both sndItem is produce/call/send/write by the sndCpnt and if rcvItem is consume/execute/receive/access
+   * by rcvCpnt with cohesion between CommunicaionLinks
+   * 
    * @param sndCpnt
    * @param sndItem
    * @param rcvCpnt
@@ -339,7 +366,8 @@ public class ExchangeItemExt {
    * @return
    */
   @SuppressWarnings({ "unchecked", "rawtypes" })
-  public static boolean isCoherentExchangeItem(Component sndCpnt, AbstractExchangeItem sndItem, Component rcvCpnt, AbstractExchangeItem rcvItem) {
+  public static boolean isCoherentExchangeItem(Component sndCpnt, AbstractExchangeItem sndItem, Component rcvCpnt,
+      AbstractExchangeItem rcvItem) {
     List<GeneralizableElement> sndComponents = GeneralizableElementExt.getAllSuperGeneralizableElements(sndCpnt);
     List<GeneralizableElement> rcvComponents = GeneralizableElementExt.getAllSuperGeneralizableElements(rcvCpnt);
 
@@ -377,97 +405,136 @@ public class ExchangeItemExt {
       }
     }
 
-    return (sndProduce.contains(sndItem) && rcvConsume.contains(rcvItem)) || (sndCall.contains(sndItem) && rcvExecute.contains(rcvItem))
-           || (sndSend.contains(sndItem) && rcvReceive.contains(rcvItem)) || (sndWrite.contains(sndItem) && rcvAccess.contains(rcvItem));
+    return (sndProduce.contains(sndItem) && rcvConsume.contains(rcvItem))
+        || (sndCall.contains(sndItem) && rcvExecute.contains(rcvItem))
+        || (sndSend.contains(sndItem) && rcvReceive.contains(rcvItem))
+        || (sndWrite.contains(sndItem) && rcvAccess.contains(rcvItem));
   }
 
   /**
    * Checks if the exchange item is CONSUME by the component (including inheritance links)
-   * @param sndCpnt the given component
-   * @param sndItem the given abstractExchangeItem
+   * 
+   * @param sndCpnt
+   *          the given component
+   * @param sndItem
+   *          the given abstractExchangeItem
    * @return true, if is produce
    */
   public static boolean isConsume(Component sndCpnt, AbstractExchangeItem sndItem) {
-    return CommunicationLinkExt.getExchangeItemsByKind(CommunicationLinkExt.getAllCommunicationLinks(sndCpnt), CommunicationLinkKind.CONSUME).contains(
-        sndItem);
+    return CommunicationLinkExt
+        .getExchangeItemsByKind(CommunicationLinkExt.getAllCommunicationLinks(sndCpnt), CommunicationLinkKind.CONSUME)
+        .contains(sndItem);
   }
 
   /**
    * Checks if the exchange item is EXECUTE by the component (including inheritance links)
-   * @param sndCpnt the given component
-   * @param sndItem the given abstractExchangeItem
+   * 
+   * @param sndCpnt
+   *          the given component
+   * @param sndItem
+   *          the given abstractExchangeItem
    * @return true, if is produce
    */
   public static boolean isExecute(Component sndCpnt, AbstractExchangeItem sndItem) {
-    return CommunicationLinkExt.getExchangeItemsByKind(CommunicationLinkExt.getAllCommunicationLinks(sndCpnt), CommunicationLinkKind.EXECUTE).contains(
-        sndItem);
+    return CommunicationLinkExt
+        .getExchangeItemsByKind(CommunicationLinkExt.getAllCommunicationLinks(sndCpnt), CommunicationLinkKind.EXECUTE)
+        .contains(sndItem);
   }
 
   /**
    * Checks if the exchange item is PRODUCE by the component (including inheritance links)
-   * @param sndCpnt the given component
-   * @param sndItem the given abstractExchangeItem
+   * 
+   * @param sndCpnt
+   *          the given component
+   * @param sndItem
+   *          the given abstractExchangeItem
    * @return true, if is produce
    */
   public static boolean isProduce(Component sndCpnt, AbstractExchangeItem sndItem) {
-    return CommunicationLinkExt.getExchangeItemsByKind(CommunicationLinkExt.getAllCommunicationLinks(sndCpnt), CommunicationLinkKind.PRODUCE).contains(
-        sndItem);
+    return CommunicationLinkExt
+        .getExchangeItemsByKind(CommunicationLinkExt.getAllCommunicationLinks(sndCpnt), CommunicationLinkKind.PRODUCE)
+        .contains(sndItem);
   }
 
   /**
    * Checks if the exchange item is RECEIVE by the component (including inheritance links)
-   * @param sndCpnt the given component
-   * @param sndItem the given abstractExchangeItem
+   * 
+   * @param sndCpnt
+   *          the given component
+   * @param sndItem
+   *          the given abstractExchangeItem
    * @return true, if is produce
    */
   public static boolean isReceive(Component sndCpnt, AbstractExchangeItem sndItem) {
-    return CommunicationLinkExt.getExchangeItemsByKind(CommunicationLinkExt.getAllCommunicationLinks(sndCpnt), CommunicationLinkKind.RECEIVE).contains(
-        sndItem);
+    return CommunicationLinkExt
+        .getExchangeItemsByKind(CommunicationLinkExt.getAllCommunicationLinks(sndCpnt), CommunicationLinkKind.RECEIVE)
+        .contains(sndItem);
   }
 
   /**
    * Checks if the exchange item is SEND by the component (including inheritance links)
-   * @param sndCpnt the given component
-   * @param sndItem the given abstractExchangeItem
+   * 
+   * @param sndCpnt
+   *          the given component
+   * @param sndItem
+   *          the given abstractExchangeItem
    * @return true, if is produce
    */
   public static boolean isSend(Component sndCpnt, AbstractExchangeItem sndItem) {
-    return CommunicationLinkExt.getExchangeItemsByKind(CommunicationLinkExt.getAllCommunicationLinks(sndCpnt), CommunicationLinkKind.SEND).contains(sndItem);
+    return CommunicationLinkExt
+        .getExchangeItemsByKind(CommunicationLinkExt.getAllCommunicationLinks(sndCpnt), CommunicationLinkKind.SEND)
+        .contains(sndItem);
   }
 
   /**
    * Checks if the exchange item is CONSUME, EXECUTE, RECEIVE, ACCESS by the component (including inheritance links)
-   * @param sndCpnt the given component
-   * @param sndItem the given abstractExchangeItem
+   * 
+   * @param sndCpnt
+   *          the given component
+   * @param sndItem
+   *          the given abstractExchangeItem
    * @return true, if is produce
    */
   public static boolean isSendingByLinks(CommunicationLinkExchanger sndCpnt, AbstractExchangeItem sndItem) {
-    return CommunicationLinkExt
-        .getExchangeItemsByKinds(
-            CommunicationLinkExt.getAllCommunicationLinks(sndCpnt),
-            new CommunicationLinkKind[] { CommunicationLinkKind.CONSUME, CommunicationLinkKind.EXECUTE, CommunicationLinkKind.RECEIVE,
-                                         CommunicationLinkKind.ACCESS }).contains(sndItem);
+    return CommunicationLinkExt.getExchangeItemsByKinds(CommunicationLinkExt.getAllCommunicationLinks(sndCpnt),
+        new CommunicationLinkKind[] { CommunicationLinkKind.CONSUME, CommunicationLinkKind.EXECUTE,
+            CommunicationLinkKind.RECEIVE, CommunicationLinkKind.ACCESS })
+        .contains(sndItem);
   }
 
   /**
    * Checks if the exchange item is PRODUCE, CALL, SEND, WRITE by the component (including inheritance links)
-   * @param sndCpnt the given component
-   * @param sndItem the given abstractExchangeItem
+   * 
+   * @param sndCpnt
+   *          the given component
+   * @param sndItem
+   *          the given abstractExchangeItem
    * @return true, if is produce
    */
   public static boolean isUsingByLinks(CommunicationLinkExchanger sndCpnt, AbstractExchangeItem sndItem) {
     return CommunicationLinkExt.getExchangeItemsByKinds(CommunicationLinkExt.getAllCommunicationLinks(sndCpnt),
-        new CommunicationLinkKind[] { CommunicationLinkKind.PRODUCE, CommunicationLinkKind.CALL, CommunicationLinkKind.SEND, CommunicationLinkKind.WRITE })
+        new CommunicationLinkKind[] { CommunicationLinkKind.PRODUCE, CommunicationLinkKind.CALL,
+            CommunicationLinkKind.SEND, CommunicationLinkKind.WRITE })
         .contains(sndItem);
   }
 
   /**
    * Checks if the exchange item is WRITE by the component (including inheritance links)
-   * @param sndCpnt the given component
-   * @param sndItem the given abstractExchangeItem
+   * 
+   * @param sndCpnt
+   *          the given component
+   * @param sndItem
+   *          the given abstractExchangeItem
    * @return true, if is produce
    */
   public static boolean isWrite(Component sndCpnt, AbstractExchangeItem sndItem) {
-    return CommunicationLinkExt.getExchangeItemsByKind(CommunicationLinkExt.getAllCommunicationLinks(sndCpnt), CommunicationLinkKind.WRITE).contains(sndItem);
+    return CommunicationLinkExt
+        .getExchangeItemsByKind(CommunicationLinkExt.getAllCommunicationLinks(sndCpnt), CommunicationLinkKind.WRITE)
+        .contains(sndItem);
+  }
+
+  public static List<ExchangeItemInstance> getTypedExchangeItemInstances(ExchangeItem exchangeItem) {
+    return exchangeItem.getTypedElements().stream().filter(ExchangeItemInstance.class::isInstance)
+        .map(ExchangeItemInstance.class::cast).collect(Collectors.toList());
   }
 }

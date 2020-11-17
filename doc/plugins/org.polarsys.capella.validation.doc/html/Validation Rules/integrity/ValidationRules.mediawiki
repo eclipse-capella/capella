@@ -268,3 +268,19 @@ In Case the ComponentExchange is of kind DELEGATION
 |-
 | colspan="2"|This rule checks if a model Element references aird element (e.g. gmf)
 |}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../Images/error.gif|ERROR]]
+|I_44 - Check existence of unknown model features
+|-
+| colspan="2"|This rule checks the existence of unkown model features. 
+An unkown model feature is a feature that is persisted in your textual model representation, but is not recognised by the metamodel and therefore is not loaded during model opening.
+Its existence does not add any corruption risk to your model, but it does represent an anomaly so it should be removed.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../Images/error.gif|ERROR]]
+|I_45 - Typed Element has different name than its type
+|-
+| colspan="2"|This rule checks the Typed Element (Part, Exchange Item Instance) has the same name as its Type (Component, Exchange Item).
+|}
