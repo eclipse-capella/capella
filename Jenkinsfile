@@ -29,7 +29,7 @@ pipeline {
 		        	
 		        	sh 'env'
 		        	sh 'mvn clean verify -f releng/plugins/org.polarsys.capella.targets/pom.xml'
-	       		}         
+	       		}
 	     	}
 	    }
 	    
@@ -54,11 +54,7 @@ pipeline {
 					withCredentials([string(credentialsId: 'sonar-token-capella', variable: 'SONARCLOUD_TOKEN')]) {
 						withEnv(['MAVEN_OPTS=-Xmx4g']) {
 							def sign = github.isPullRequest() ? '' : '-Psign'
-							def sonarCommon = 'sonar:sonar -Dsonar.projectKey=eclipse_capella -Dsonar.organization=eclipse -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${SONARCLOUD_TOKEN} '
-							def sonarBranchAnalysis = '-Dsonar.branch.name=${BRANCH_NAME}'
-							def sonarPullRequestAnalysis = '-Dsonar.pullrequest.provider=GitHub -Dsonar.pullrequest.github.repository=eclipse/capella -Dsonar.pullrequest.key=${CHANGE_ID} -Dsonar.pullrequest.branch=${CHANGE_BRANCH}'
-							def sonar = sonarCommon + (github.isPullRequest() ? sonarPullRequestAnalysis : sonarBranchAnalysis)
-	      					sh "mvn clean verify -f pom.xml -Djacoco.skip=true -DjavaDocPhase=none -Pfull ${sign} ${sonar}"
+							sh "mvn clean verify -f pom.xml -DjavaDocPhase=none -Pfull ${sign}"
 						}
 					}
       			}
@@ -114,7 +110,7 @@ pipeline {
         			github.isPullRequest() 
         		}
       		}
-    		
+      		
         	steps {
         		script {
 	        		sh "chmod 755 ${CAPELLA_PRODUCT_PATH}"
@@ -146,60 +142,35 @@ pipeline {
 		        			  'org.polarsys.capella.test.transition.ju.testsuites.main.TransitionTestSuite',
 		        			  'org.polarsys.capella.test.re.updateconnections.ju.UpdateConnectionsTestSuite'])
 		        		
-		        		tester.runUITests("${CAPELLA_PRODUCT_PATH}", 'DiagramTools1', 'org.polarsys.capella.test.suites.ju', 
-		        			['org.polarsys.capella.test.diagram.tools.ju.testsuites.main.DiagramToolsStep1TestSuite'])
-		        			
-		        		tester.runUITests("${CAPELLA_PRODUCT_PATH}", 'DiagramTools2', 'org.polarsys.capella.test.suites.ju', 
-		        			['org.polarsys.capella.test.diagram.tools.ju.testsuites.main.DiagramToolsStep2TestSuite'])
-		        			        			
-		        		tester.runUITests("${CAPELLA_PRODUCT_PATH}", 'DiagramMiscFilters', 'org.polarsys.capella.test.suites.ju', 
-		        			['org.polarsys.capella.test.diagram.misc.ju.testsuites.DiagramMiscTestSuite',
-		        			  'org.polarsys.capella.test.diagram.filters.ju.testsuites.DiagramFiltersTestSuite',
-		        			  'org.polarsys.capella.test.table.ju.testsuite.TableTestSuite'])
-		        			    
-		        		tester.runUITests("${CAPELLA_PRODUCT_PATH}", 'Fragmentation', 'org.polarsys.capella.test.suites.ju', 
-		        			['org.polarsys.capella.test.fragmentation.ju.testsuites.FragmentationTestSuite'])
-							
-						tester.runUITests("${CAPELLA_PRODUCT_PATH}", 'Odesign', 'org.polarsys.capella.test.suites.ju', 
-		        			['org.polarsys.capella.test.odesign.ju.maintestsuite.ODesignTestSuite'])
-		   
-		        		tester.runUITests("${CAPELLA_PRODUCT_PATH}", 'Views', 'org.polarsys.capella.test.suites.ju', 
-		        			['org.polarsys.capella.test.model.ju.testsuites.main.ModelTestSuite', 
-		        			 'org.polarsys.capella.test.massactions.ju.testsuites.MassActionsTestSuite',
-		        			 'org.polarsys.capella.test.platform.ju.testsuites.PlatformTestSuite', 
-		        			 'org.polarsys.capella.test.richtext.ju.testsuites.RichtextTestSuite',
-		        			 'org.polarsys.capella.test.fastlinker.ju.testsuites.FastLinkerTestsSuite',
-		        			 'org.polarsys.capella.test.explorer.activity.ju.testsuites.ActivityExplorerTestsSuite',
-		        			 'org.polarsys.capella.test.progressmonitoring.ju.testsuites.SetProgressTestSuite',
-		        			 'org.polarsys.capella.test.navigator.ju.testsuites.main.NavigatorUITestSuite'])
-		        			 
-		        		tester.runUITests("${CAPELLA_PRODUCT_PATH}", 'MigrationCommandLine', 'org.polarsys.capella.test.suites.ju', 
-		        			['org.polarsys.capella.test.migration.ju.testsuites.main.MigrationTestSuite',
-		        			 'org.polarsys.capella.test.diagram.layout.ju.testsuites.LayoutTestSuite',
-		        			 'org.polarsys.capella.test.commandline.ju.testsuites.CommandLineTestSuite'])
-		 	
-		        		tester.runUITests("${CAPELLA_PRODUCT_PATH}", 'Benchmark', 'org.polarsys.capella.test.suites.ju', 
-		        			['org.polarsys.capella.test.benchmarks.ju.suites.AllBenchmarksTestSuite'])
-		   
-		  				tester.runUITests("${CAPELLA_PRODUCT_PATH}", 'Detach', 'org.polarsys.capella.test.suites.ju', 
-		        			['org.polarsys.capella.test.model.ju.testsuites.partial.DetachTestSuite'])
-		        			
-		        		tester.runUITests("${CAPELLA_PRODUCT_PATH}", 'Documentation', 'org.polarsys.capella.test.doc.ju', 
-		        			['org.polarsys.capella.test.doc.ju.testsuites.DocTestSuite'])
-		        			
-		        		tester.runNONUITests("${CAPELLA_PRODUCT_PATH}", 'NotUINavigator', 'org.polarsys.capella.test.suites.ju', 
-		        			['org.polarsys.capella.test.navigator.ju.testsuites.main.NavigatorTestSuite'])
 	        		}
-	        		
 	        		junit '*.xml'
+	        		tester.generateJacocoReport()
 				}
 			}
 		}
+		
+    	stage('Sonar') {
+      		steps {
+      			script {
+					withCredentials([string(credentialsId: 'sonar-token-capella', variable: 'SONARCLOUD_TOKEN')]) {
+						withEnv(['MAVEN_OPTS=-Xmx4g']) {
+							def jacocoParameters = '-Dsonar.java.coveragePlugin=jacoco -Dsonar.core.codeCoveragePlugin=jacoco '
+							def sonarCommon = 'sonar:sonar -Dsonar.projectKey=eclipse_capella -Dsonar.organization=eclipse -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${SONARCLOUD_TOKEN} -Dsonar.skipDesign=true -Dsonar.dynamic=reuseReports -Dsonar.java.source=8 '
+							def sonarBranchAnalysis = '-Dsonar.branch.name=${BRANCH_NAME}'
+							def sonarPullRequestAnalysis = '-Dsonar.pullrequest.provider=GitHub -Dsonar.pullrequest.github.repository=eclipse/capella -Dsonar.pullrequest.key=${CHANGE_ID} -Dsonar.pullrequest.branch=${CHANGE_BRANCH}'
+							def sonar = sonarCommon + jacocoParameters + (github.isPullRequest() ? sonarPullRequestAnalysis : sonarBranchAnalysis)
+	      					sh "mvn ${sonar}"
+						}
+					}
+      			}
+	     	}
+	    }
+	    
 	}
   
 	post {
     	always {
-       		archiveArtifacts artifacts: '**/*.log, *.log, *.xml, **/*.layout'
+       		archiveArtifacts artifacts: '**/*.log, *.log, *.xml, **/*.layout, *.exec'
        		
        		script {
        		    github.removeBuildStartedLabel()
