@@ -28,7 +28,6 @@
 		<rcptt-version>2.5.1</rcptt-version>
 		<rcptt-runner-version>2.5.1</rcptt-runner-version>
 		<sonar-version>3.0.2</sonar-version>
-		<jacoco-version>0.7.6.201602180812</jacoco-version>
 
 		<!-- for tycho -->
 		<tycho.scmUrl>scm:git:https://github.com/eclipse/capella.git</tycho.scmUrl>
@@ -42,15 +41,6 @@
 		<tycho.testArgLine>-Xms256m -Xmx3072m ${os-jvm-flags}</tycho.testArgLine>
 		<tests.ignoreFailures>true</tests.ignoreFailures>
 		<os-jvm-flags />
-
-		<!-- for sonar -->
-		<sonar.skipDesign>true</sonar.skipDesign>
-		<sonar.dynamic>reuseReports</sonar.dynamic>
-		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
-		<sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
-		<sonar.jacoco.reportPath>${project.basedir}/../../../target/jacoco.exec</sonar.jacoco.reportPath>
-		<sonar.jacoco.itReportPath>${project.basedir}/../../../target/jacoco-it.exec</sonar.jacoco.itReportPath>
-		<sonar.java.source>8</sonar.java.source>
 
 		<!-- for JavaDoc -->
 		<javaDocPhase>generate-resources</javaDocPhase>
@@ -102,30 +92,6 @@
 						</environment>
 					</environments>
 				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.jacoco</groupId>
-				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>${jacoco-version}</version>
-				<configuration>
-					<append>true</append>
-					<destFile>${sonar.jacoco.reportPath}</destFile>
-				</configuration>
-				<executions>
-					<execution>
-						<id>agent-for-ut</id>
-						<goals>
-							<goal>prepare-agent</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>jacoco-site</id>
-						<phase>verify</phase>
-						<goals>
-							<goal>report</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 			<!-- enable source feature generation -->
 			<plugin>
