@@ -136,15 +136,8 @@ pipeline {
 		        			 'org.polarsys.capella.test.semantic.queries.ju.testsuites.SemanticQueriesTestSuite', 
 		        			 'org.polarsys.capella.test.validation.rules.ju.testsuites.main.ValidationRulesTestSuite'])
 		        			 
-		        		tester.runUITests("${CAPELLA_PRODUCT_PATH}", 'LibRecTransition', 'org.polarsys.capella.test.suites.ju', 
-		        			['org.polarsys.capella.test.libraries.ju.testsuites.main.LibrariesTestSuite',
-		        			  'org.polarsys.capella.test.recrpl.ju.testsuites.main.RecRplTestSuite',
-		        			  'org.polarsys.capella.test.transition.ju.testsuites.main.TransitionTestSuite',
-		        			  'org.polarsys.capella.test.re.updateconnections.ju.UpdateConnectionsTestSuite'])
-		        		
 	        		}
-	        		junit '*.xml'
-	        		tester.generateJacocoReport()
+	        		tester.publishTests()
 				}
 			}
 		}
@@ -152,16 +145,7 @@ pipeline {
     	stage('Sonar') {
       		steps {
       			script {
-					withCredentials([string(credentialsId: 'sonar-token-capella', variable: 'SONARCLOUD_TOKEN')]) {
-						withEnv(['MAVEN_OPTS=-Xmx4g']) {
-							def jacocoParameters = '-Dsonar.java.coveragePlugin=jacoco -Dsonar.core.codeCoveragePlugin=jacoco '
-							def sonarCommon = 'sonar:sonar -Dsonar.projectKey=eclipse_capella -Dsonar.organization=eclipse -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${SONARCLOUD_TOKEN} -Dsonar.skipDesign=true -Dsonar.dynamic=reuseReports -Dsonar.java.source=8 '
-							def sonarBranchAnalysis = '-Dsonar.branch.name=${BRANCH_NAME}'
-							def sonarPullRequestAnalysis = '-Dsonar.pullrequest.provider=GitHub -Dsonar.pullrequest.github.repository=eclipse/capella -Dsonar.pullrequest.key=${CHANGE_ID} -Dsonar.pullrequest.branch=${CHANGE_BRANCH}'
-							def sonar = sonarCommon + jacocoParameters + (github.isPullRequest() ? sonarPullRequestAnalysis : sonarBranchAnalysis)
-	      					sh "mvn ${sonar}"
-						}
-					}
+					sonar.runSonar("eclipse_capella", "eclipse/capella")
       			}
 	     	}
 	    }
