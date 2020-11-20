@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--Capella_Version_5.0.0-->
+<org.polarsys.capella.core.data.oa:OperationalAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/5.0.0"
+    xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/5.0.0"
+    xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/5.0.0"
+    xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/5.0.0"
+    id="6f77073d-ef4e-4bbb-baca-14b2fc4267e2"
+    name="Operational Analysis" appliedPropertyValues="#1a0e2b76-612c-4a28-bc4b-c5dd6251cf85">
+  <ownedPropertyValues xsi:type="org.polarsys.capella.core.data.capellacore:BooleanPropertyValue"
+      id="1a0e2b76-612c-4a28-bc4b-c5dd6251cf85" name="BooleanPropertyValue FRAG"/>
+  <ownedFunctionPkg xsi:type="org.polarsys.capella.core.data.oa:OperationalActivityPkg"
+      id="d03320b9-c0df-40ad-a599-53b83fd692b8" name="Operational Activities">
+    <ownedOperationalActivities xsi:type="org.polarsys.capella.core.data.oa:OperationalActivity"
+        id="9374868d-ad3f-4651-831a-e303c3056d2a" name="Root Operational Activity"/>
+  </ownedFunctionPkg>
+  <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.oa:OperationalCapabilityPkg"
+      id="3b01871f-ff9e-4dda-9c42-d890d6eee0c5" name="Operational Capabilities"/>
+  <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg" id="5f721ade-1cf5-4429-baeb-e1b5757ac8c2"
+      name="Interfaces"/>
+  <ownedDataPkg xsi:type="org.polarsys.capella.core.data.information:DataPkg" id="f1a76c5f-d883-4dad-bb0b-f26157f093a4"
+      name="Data"/>
+  <ownedRolePkg xsi:type="org.polarsys.capella.core.data.oa:RolePkg" id="3915ce55-106a-4e8c-8515-c5668c0a3256"
+      name="Roles"/>
+  <ownedEntityPkg xsi:type="org.polarsys.capella.core.data.oa:EntityPkg" id="2a3aa20f-fed3-49cb-a5c5-52d14f80107e"
+      name="Operational Entities">
+    <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="c39c8c3c-9134-4cd1-af9b-6d21b7061ee0"
+        name="OE 1 FRAG" abstractType="#4a802b12-60f6-49f5-a89c-6f3d65eb23ed"/>
+    <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="a67f4cc3-6132-410b-9a65-7b70f5e0bfe2"
+        name="OE 2 FRAG" abstractType="#88aa22a3-2de8-4d33-b27d-2a7387169bb9"/>
+    <ownedEntities xsi:type="org.polarsys.capella.core.data.oa:Entity" id="4a802b12-60f6-49f5-a89c-6f3d65eb23ed"
+        name="OE 1 FRAG" appliedPropertyValues="#1a0e2b76-612c-4a28-bc4b-c5dd6251cf85"/>
+    <ownedEntities xsi:type="org.polarsys.capella.core.data.oa:Entity" id="88aa22a3-2de8-4d33-b27d-2a7387169bb9"
+        name="OE 2 FRAG" appliedPropertyValues="org.polarsys.capella.core.data.capellacore:BooleanPropertyValue ../%5Brename%20model%5D.capella#1827f11e-13c6-47af-bf22-8b6118c5d070"/>
+  </ownedEntityPkg>
+</org.polarsys.capella.core.data.oa:OperationalAnalysis>
