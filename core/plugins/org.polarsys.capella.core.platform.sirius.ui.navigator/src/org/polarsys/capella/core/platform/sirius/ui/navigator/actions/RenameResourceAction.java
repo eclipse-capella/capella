@@ -77,7 +77,16 @@ import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
  * This class may be instantiated; it is not intended to be subclassed.
  * </p>
  */
-public class RenameResourceAction extends WorkspaceAction {
+public class RenameResourceAction extends WorkspaceAction {    
+  
+  /**
+   * Regex patterns used in the replacement methods.
+   * See each the method documentation for more details.
+   */
+  private static final String START_COMMON_REGEX_PATTERN = "(>|\\/|\\\")";
+  private static final String END_ENCODED_REGEX_PATTERN = "(#|<)";
+  private static final String END_RAW_REGEX_PATTERN = "(&)";
+  
   private static final String AND_HTML_REPRESENTATION = "&amp;"; //$NON-NLS-1$
   /**
    * Capella Project name attribute.
@@ -841,7 +850,7 @@ public class RenameResourceAction extends WorkspaceAction {
     String oldNameRaw = normalizeForName(oldName);
     String newNameRaw = normalizeForName(newName);
 
-    String regex = "(>|\\/|\\\")" + Pattern.quote(oldNameRaw) + "(&)";
+    String regex = START_COMMON_REGEX_PATTERN + Pattern.quote(oldNameRaw) + END_RAW_REGEX_PATTERN;
     String replacement = "$1" + newNameRaw + "$2";
 
     return content.replaceAll(regex, replacement);
@@ -866,7 +875,7 @@ public class RenameResourceAction extends WorkspaceAction {
     String oldNameEncoded = normalizeForContent(oldName);
     String newNameEncoded = normalizeForContent(newName);
 
-    String regex = "(>|\\/|\\\")" + Pattern.quote(oldNameEncoded) + "(#|<)";
+    String regex = START_COMMON_REGEX_PATTERN + Pattern.quote(oldNameEncoded) + END_ENCODED_REGEX_PATTERN;
     String replacement = "$1" + newNameEncoded + "$2";
 
     return content.replaceAll(regex, replacement);
@@ -889,7 +898,7 @@ public class RenameResourceAction extends WorkspaceAction {
       oldNameEncoded = replaceSpecialCharacter(oldNameEncoded, '&', AND_HTML_REPRESENTATION);
       String newNameEncoded = normalizeForContent(newName);
 
-      String regex = "(>|\\/|\\\")" + Pattern.quote(oldNameEncoded) + "(#|<)";
+      String regex = START_COMMON_REGEX_PATTERN + Pattern.quote(oldNameEncoded) + END_ENCODED_REGEX_PATTERN;
       String replacement = "$1" + newNameEncoded + "$2";
 
       return content.replaceAll(regex, replacement);

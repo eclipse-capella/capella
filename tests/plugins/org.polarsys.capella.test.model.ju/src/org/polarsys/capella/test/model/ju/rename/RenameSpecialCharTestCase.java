@@ -60,10 +60,10 @@ public class RenameSpecialCharTestCase extends BasicTestCase {
   public void test() throws Exception {
 
     List<RenameData> firstRenameData = Arrays.asList( //
-        new RenameData("[rename model].capella", "superman.capella"), //
-        new RenameData("[rename model].aird", "hulk.aird"), //
-        new RenameData("[OA].airdfragment", "batman.airdfragment", "fragments"), //
-        new RenameData("[OA].capellafragment", "hawkeye.capellafragment", "fragments"), //
+        new RenameData("[rename model].capella", "boringName1.capella"), //
+        new RenameData("[rename model].aird", "boringName2.aird"), //
+        new RenameData("[OA].airdfragment", "boringName3.airdfragment", "fragments"), //
+        new RenameData("[OA].capellafragment", "boringName4.capellafragment", "fragments"), //
 
         new RenameData("[rename model].capella", "-!@^()[].capella"), //
         new RenameData("[rename model].aird", "-!@^()[].aird"), //
@@ -127,7 +127,7 @@ public class RenameSpecialCharTestCase extends BasicTestCase {
     Session session = SessionManager.INSTANCE.getSession(airdFileUri, new NullProgressMonitor());
 
     assertNotNull(MessageFormat.format("Invalid Session for renamed file {0}", renamedFile.getName()), session);
-    session.close(new NullProgressMonitor());
+    GuiActions.closeSession(session);
   }
 
   private void assertRenamedFileExistence(RenameData renameData, IFile renamedFile) {
