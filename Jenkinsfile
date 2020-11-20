@@ -105,12 +105,7 @@ pipeline {
 		}
 
     	stage('Install test features') {
-    		when {
-        		expression { 
-        			github.isPullRequest() 
-        		}
-      		}
-      		
+    		
         	steps {
         		script {
 	        		sh "chmod 755 ${CAPELLA_PRODUCT_PATH}"
@@ -121,12 +116,7 @@ pipeline {
 	    }
 	    
     	stage('Run tests') {
-    		when {
-        		expression { 
-        			github.isPullRequest() 
-        		}
-      		}
-      		
+    		
         	steps {
         		script {
         			wrap([$class: 'Xvnc', takeScreenshot: false, useXauthority: true]) {
@@ -193,14 +183,14 @@ pipeline {
 			}
 		}
 		
-    	stage('Sonar') {
-      		steps {
-      			script {
-					sonar.runSonar("eclipse_capella", "eclipse/capella")
-      			}
-	     	}
-	    }
-	    
+		stage('Sonar') {
+			steps {
+				script {
+					sonar.runSonar("eclipse_capella", "eclipse/capella", "sonar-token-capella")
+				}
+			}
+		}
+		
 	}
   
 	post {
