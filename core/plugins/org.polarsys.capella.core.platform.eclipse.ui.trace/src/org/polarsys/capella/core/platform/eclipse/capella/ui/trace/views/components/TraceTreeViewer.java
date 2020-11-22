@@ -69,6 +69,7 @@ import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views.provide
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views.providers.SourceElementContentProvider;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views.providers.TargetElementContentProvider;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views.providers.TypeElementFilter;
+import org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlugin;
 
 /**
  * <code>TraceTreeViewer</code> render a composite containing a tree structure and a combo to filter
@@ -439,6 +440,9 @@ public class TraceTreeViewer implements IDoubleClickListener {
     CapellaModelTreeContentProvider contentProvider = new CapellaModelTreeContentProvider();
     contentProvider.setRootPkg((ModelElement) root);
 
+    boolean expandViewer = CapellaUIPropertiesPlugin.getDefault().isAllowedExpandSingleViewerContent();
+    int viewerExpandLevel = expandViewer ? AbstractTreeViewer.ALL_LEVELS : 0;
+    
     TraceTreeSelectionDialog dlg =
         new TraceTreeSelectionDialog(_treeViewer.getControl().getShell(), new CapellaModelLabelProvider((CapellaElement) _currentNamedElement, isNewTrace_p),
             contentProvider, _currentNamedElement, isNewTrace_p);
@@ -447,6 +451,7 @@ public class TraceTreeViewer implements IDoubleClickListener {
     dlg.setHelpAvailable(true);
     dlg.setTitle(Messages.getString("TraceTreeViewer.window_title")); //$NON-NLS-1$
     dlg.setAllowMultiple(false);
+    dlg.setViewerExpandLevel(viewerExpandLevel);
     // dlg.setDoubleClickSelects(false);
     if (Window.OK == dlg.open()) {
       if (dlg.getResult().length > 0) {
