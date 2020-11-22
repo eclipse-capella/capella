@@ -101,15 +101,17 @@ public class CapellaModelFilter extends ViewerFilter implements ModifyListener {
         if (element_p instanceof AbstractNamedElement) {
           AbstractNamedElement element = (AbstractNamedElement) element_p;
           String name = element.getName();
-          matcher = _expPattern.matcher(name);
-          if (_expPattern.pattern().startsWith(".*") && !flag) { //$NON-NLS-1$
+          if (name != null) {
+            matcher = _expPattern.matcher(name);
+            if (_expPattern.pattern().startsWith(".*") && !flag) { //$NON-NLS-1$
               flag = matcher.find();
+            }
+            if (!flag)
+              flag = matcher.matches();
+            if (flag)
+              return true;
+            flag = checkPattern(viewer_p, obj, name);
           }
-          if (!flag)
-            flag = matcher.matches();
-          if (flag)
-            return true;
-          flag = checkPattern(viewer_p, obj, name);
         }
       }
     }
@@ -197,6 +199,7 @@ public class CapellaModelFilter extends ViewerFilter implements ModifyListener {
       //
     }
     if (_viewer != null) {
+      _viewer.setSelection(null);
       _viewer.refresh();
     }
   }

@@ -15,6 +15,7 @@ package org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.util.Util;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ISelection;
@@ -55,6 +56,7 @@ public class TraceTreeSelectionDialog extends ElementTreeSelectionDialog {
 
   private CapellaModelFilter filter = new CapellaModelFilter();
   private boolean _isNewTrace = false;
+  private int viewerExpandLevel;
 
   /**
    * @param parent_p
@@ -102,6 +104,8 @@ public class TraceTreeSelectionDialog extends ElementTreeSelectionDialog {
 
     TreeViewer treeViewer = super.createTreeViewer(parent_p);
     treeViewer.addFilter(filter);
+    
+    treeViewer.expandToLevel(viewerExpandLevel);
 
     treeViewer.addSelectionChangedListener(new ISelectionChangedListener() {
 
@@ -112,15 +116,7 @@ public class TraceTreeSelectionDialog extends ElementTreeSelectionDialog {
           Object elem = ((IStructuredSelection) selection).getFirstElement();
           updateStatusBar(elem);
           if (elem instanceof TraceableElement) {
-            if (_currentElement.equals(elem)) {
-              updateStatus(new Status(IStatus.WARNING, MDTrace.PLUGIN_ID, IStatus.WARNING, Messages.getString("AddTraceWizard.warning_element_already_exists"), //$NON-NLS-1$
-                                      null));
-            } else if (!_isNewTrace && TraceUtil.containsTraceElement(_currentElement, (TraceableElement) elem)) {
-              updateStatus(new Status(IStatus.WARNING, MDTrace.PLUGIN_ID, IStatus.WARNING, Messages.getString("AddTraceWizard.warning_element_already_exists"), //$NON-NLS-1$
-                                      null));
-            } else {
-              updateStatus(new Status(IStatus.OK, MDTrace.PLUGIN_ID, IStatus.OK, "", null)); //$NON-NLS-1$
-            }
+            updateButtons(selection);
           }
         }
 
@@ -130,19 +126,62 @@ public class TraceTreeSelectionDialog extends ElementTreeSelectionDialog {
     return treeViewer;
   }
 
+  /**
+   * Update Ok and Cancel buttons.
+   * @param selection
+   */
+  protected void updateButtons(ISelection selection) {
+    boolean isOkEnabled = isOkToClose(selection);
+    // Update the OK button.
+    Button okButton = getButton(IDialogConstants.OK_ID);
+    if ((null != okButton) && !okButton.isDisposed()) {
+      okButton.setEnabled(isOkEnabled);
+    }
+  }
+  
+  /**
+   * Are conditions met to enable the OK button.
+   * @param selection
+   * @return <code>true</code> means OK button can be enabled.
+   */
+  protected boolean isOkToClose(ISelection selection) {
+    boolean isOkEnabled = false;
+    // Precondition.
+    if ((null != selection) && !selection.isEmpty()) {
+      // Something selected.
+      Object elem = ((IStructuredSelection) selection).getFirstElement();
+      // Loop over selected elements to check validity.
+      if (_currentElement.equals(elem)
+          || (!_isNewTrace && TraceUtil.containsTraceElement(_currentElement, (TraceableElement) elem))) {
+        updateStatus(new Status(IStatus.WARNING, MDTrace.PLUGIN_ID, IStatus.WARNING,
+            Messages.getString("AddTraceWizard.warning_element_already_exists"), //$NON-NLS-1$
+            null));
+        isOkEnabled = false;
+      } else {
+        updateStatus(new Status(IStatus.OK, MDTrace.PLUGIN_ID, IStatus.OK, "", null)); //$NON-NLS-1$
+        isOkEnabled = true;
+      }
+    }
+    return isOkEnabled;
+  }
+  
   ISelectionStatusValidator _validator = new ISelectionStatusValidator() {
 
     @SuppressWarnings("synthetic-access")
     public IStatus validate(Object[] selection_p) {
       if (selection_p.length == 1) {
         if (selection_p[0] instanceof NamedElement) {
-          if (_currentElement.equals(selection_p[0])) {
-            updateStatus(new Status(IStatus.WARNING, MDTrace.PLUGIN_ID, IStatus.WARNING, Messages.getString("AddTraceWizard.warning_element_already_exists"), //$NON-NLS-1$
-                                    null));
-          } else if (!_isNewTrace && TraceUtil.containsTraceElement(_currentElement, (NamedElement) selection_p[0])) {
-            return new Status(IStatus.WARNING, MDTrace.PLUGIN_ID, IStatus.WARNING, Messages.getString("AddTraceWizard.warning_element_already_exists"), null); //$NON-NLS-1$
+          if (_currentElement.equals(selection_p[0]) || 
+              (!_isNewTrace && TraceUtil.containsTraceElement(_currentElement, (NamedElement) selection_p[0]))) {
+            Status status = new Status(IStatus.WARNING, MDTrace.PLUGIN_ID, IStatus.WARNING, Messages.getString("AddTraceWizard.warning_element_already_exists"), //$NON-NLS-1$
+                                    null);
+            updateStatus(status);
+            return status;
           }
         }
+      } else if (selection_p.length == 0) {
+        return new Status(IStatus.WARNING, MDTrace.PLUGIN_ID, IStatus.WARNING, Messages.getString("AddTraceWizard.warning_named_element"),
+            null);
       }
       return new Status(IStatus.OK, MDTrace.PLUGIN_ID, IStatus.OK, "", null); //$NON-NLS-1$
     }
@@ -197,5 +236,9 @@ public class TraceTreeSelectionDialog extends ElementTreeSelectionDialog {
       return;
     }
     _statusBarText.setText(getElementPath(element_p));
+  }
+
+  public void setViewerExpandLevel(int value) {
+    this.viewerExpandLevel = value;
   }
 }
