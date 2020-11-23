@@ -14,7 +14,8 @@ Require-Bundle: com.google.guava,
  org.polarsys.kitalpha.ad.metadata.model.edit,
  org.polarsys.capella.common.libraries,
  org.eclipse.sirius,
- org.eclipse.gmf.runtime.notation.edit
+ org.eclipse.gmf.runtime.notation.edit,
+ org.eclipse.ui.ide
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.model.handler,

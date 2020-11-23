@@ -27,6 +27,7 @@ import org.polarsys.capella.test.model.ju.derivedfeature.DerivedFeatureTestCase;
 import org.polarsys.capella.test.model.ju.diffmerge.DiffMergeTestSuite;
 import org.polarsys.capella.test.model.ju.dnd.DnDTestSuite;
 import org.polarsys.capella.test.model.ju.helpers.CapellaAdapterHelperTestCase;
+import org.polarsys.capella.test.model.ju.helpers.CapellaResourceNamingHelperTestCase;
 import org.polarsys.capella.test.model.ju.helpers.ChildrenFeaturesItemProviderTest;
 import org.polarsys.capella.test.model.ju.helpers.ComponentExtTestCase;
 import org.polarsys.capella.test.model.ju.helpers.ComponentPkgExtTestCase;
@@ -76,6 +77,7 @@ public class ModelTestSuite extends BasicTestSuite {
     tests.add(new DeleteElementTestSuite());
     tests.add(new DataListenerTestSuite());
     tests.add(new CapellaAdapterHelperTestCase());
+    tests.add(new CapellaResourceNamingHelperTestCase());
     tests.add(new ChildrenFeaturesItemProviderTest());
     tests.add(new CopyPasteLayout());
     tests.add(new InvalidCapellaCopyPaste());
@@ -86,7 +88,7 @@ public class ModelTestSuite extends BasicTestSuite {
     tests.add(new TraceableElementDerivedFeaturesTest());
     tests.add(new DerivedFeatureTestCase());
     tests.add(new DnDTestSuite());
-   
+
     tests.add(new ComponentExtTestCase());
     tests.add(new ComponentPkgExtTestCase());
     tests.add(new PartExtTestCase());
