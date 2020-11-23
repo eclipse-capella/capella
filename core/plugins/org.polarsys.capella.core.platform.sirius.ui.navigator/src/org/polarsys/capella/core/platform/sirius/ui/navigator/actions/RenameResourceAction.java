@@ -70,6 +70,7 @@ import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
+import org.polarsys.capella.core.model.handler.command.CapellaResourceNamingHelper;
 
 /**
  * Standard action for renaming the selected resources.
@@ -546,7 +547,7 @@ public class RenameResourceAction extends WorkspaceAction {
         if (resource.getName().equals(string)) {
           return IDEWorkbenchMessages.RenameResourceAction_nameMustBeDifferent;
         }
-        IStatus status = workspace.validateName(string, resource.getType());
+        IStatus status = CapellaResourceNamingHelper.validateName(string, resource.getType());            
         if (!status.isOK()) {
           return status.getMessage();
         }
@@ -677,9 +678,8 @@ public class RenameResourceAction extends WorkspaceAction {
       @SuppressWarnings("synthetic-access")
       public void run() {
         try {
-          if (!newName.equals(inlinedResource.getName())) {
-            IWorkspace workspace = IDEWorkbenchPlugin.getPluginWorkspace();
-            IStatus status = workspace.validateName(newName, inlinedResource.getType());
+          if (!newName.equals(inlinedResource.getName())) {            
+            IStatus status = CapellaResourceNamingHelper.validateName(newName, inlinedResource.getType());                 
             if (!status.isOK()) {
               displayError2(status.getMessage());
             } else {

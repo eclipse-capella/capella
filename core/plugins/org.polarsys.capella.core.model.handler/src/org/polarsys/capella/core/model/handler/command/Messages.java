@@ -22,6 +22,7 @@ public class Messages extends NLS {
   public static String CapellaDeleteCommand_Label;
   public static String DeleteRepresentationCommand_DeleteRepresentationCommandLabel;
   public static String DeleteRepresentationCommand_DeleteRepresentationCommandText;
+  public static String CapellaResourceNamingHelper_invalidCharInName;
 
   static {
     // initialize resource bundle
