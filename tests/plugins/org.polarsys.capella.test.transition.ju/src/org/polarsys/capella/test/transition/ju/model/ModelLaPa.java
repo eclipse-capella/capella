@@ -165,5 +165,12 @@ public class ModelLaPa {
   public static String leafRegionId = "c91a8917-0c2a-4d09-b864-b102fbe2fdfc";
 
   public static String physicalSystemId = "e3c2031f-f4be-40b4-954e-b2d8070ec6ab";
+  
+  public static final String PA_LC1 = "4fec699d-fefb-42fc-9a35-3e6e7d44c6a4"; //$NON-NLS-1$
+  public static final String PA_LA1 = "b874943b-5951-4556-898d-4a6402e889e4"; //$NON-NLS-1$
+  public static final String CR1 = "9ec8790b-f979-452e-a26e-489463483422"; //$NON-NLS-1$
+  public static final String CR2 = "d0ff6399-63fb-4a17-bbc5-1d46693947d9"; //$NON-NLS-1$
+  public static final String CR3 = "63510412-f54a-4a4c-aadb-2faec518a043"; //$NON-NLS-1$
+  public static final String CR4 = "595018b2-fbf4-4fc6-b542-b58a6e3456f7"; //$NON-NLS-1$
 
 }

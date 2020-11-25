@@ -91,6 +91,10 @@ public class AbstractCapabilityRule extends org.polarsys.capella.core.transition
 
       result_p.addAll(element.getOwnedAbstractFunctionAbstractCapabilityInvolvements());
       result_p.addAll(element.getOwnedFunctionalChainAbstractCapabilityInvolvements());
+      result_p.addAll(element.getInvolvedInvolvements());
+      result_p.addAll(element.getExtends());
+      result_p.addAll(element.getIncludes());
+      result_p.addAll(element.getSuperGeneralizations());
 
       ContextScopeHandlerHelper.getInstance(context_p).addAll(ITransitionConstants.SOURCE_SCOPE,
           element.getOwnedFunctionalChainAbstractCapabilityInvolvements(), context_p);

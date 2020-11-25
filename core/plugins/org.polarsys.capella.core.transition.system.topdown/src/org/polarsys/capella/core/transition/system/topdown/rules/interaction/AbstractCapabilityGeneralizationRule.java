@@ -17,6 +17,7 @@ import java.util.List;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.osgi.util.NLS;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
@@ -37,12 +38,17 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IPremise;
 public class AbstractCapabilityGeneralizationRule extends AbstractCapellaElementRule {
 
   @Override
-  public IStatus transformRequired(EObject element_p, IContext context_p) {
-    IStatus result = super.transformRequired(element_p, context_p);
+  protected EClass getSourceType() {
+    return InteractionPackage.Literals.ABSTRACT_CAPABILITY_GENERALIZATION;
+  }
+  
+  @Override
+  public IStatus transformRequired(EObject element, IContext context) {
+    IStatus result = super.transformRequired(element, context);
     if (result.isOK()) {
-      AbstractCapabilityGeneralization ce = (AbstractCapabilityGeneralization) element_p;
+      AbstractCapabilityGeneralization ce = (AbstractCapabilityGeneralization) element;
 
-      if (ContextScopeHandlerHelper.getInstance(context_p).contains(ITransitionConstants.SOURCE_SCOPE, element_p, context_p)) {
+      if (ContextScopeHandlerHelper.getInstance(context).contains(ITransitionConstants.SOURCE_SCOPE, element, context)) {
         return result;
       }
 
@@ -53,11 +59,11 @@ public class AbstractCapabilityGeneralizationRule extends AbstractCapellaElement
         return new Status(IStatus.WARNING, Messages.Activity_Transformation, ".TargetNull");
       }
 
-      if (!TransformationHandlerHelper.getInstance(context_p).isOrWillBeTransformed(ce.getSuper(), context_p).isOK()) {
+      if (!TransformationHandlerHelper.getInstance(context).isOrWillBeTransformed(ce.getSuper(), context).isOK()) {
         return new Status(IStatus.WARNING, Messages.Activity_Transformation,
             NLS.bind(".SourceBoundNotTransitioned", EObjectLabelProviderHelper.getText(ce.getSuper())));
       }
-      if (!TransformationHandlerHelper.getInstance(context_p).isOrWillBeTransformed(ce.getSub(), context_p).isOK()) {
+      if (!TransformationHandlerHelper.getInstance(context).isOrWillBeTransformed(ce.getSub(), context).isOK()) {
         return new Status(IStatus.WARNING, Messages.Activity_Transformation, NLS.bind(".Target bound not transitioned", EObjectLabelProviderHelper.getText(ce.getSub())));
       }
     }
@@ -68,17 +74,12 @@ public class AbstractCapabilityGeneralizationRule extends AbstractCapellaElement
    * {@inheritDoc}
    */
   @Override
-  protected void retrieveGoDeep(EObject source_p, List<EObject> result_p, IContext context_p) {
-    super.retrieveGoDeep(source_p, result_p, context_p);
+  protected void retrieveGoDeep(EObject source, List<EObject> result, IContext context) {
+    super.retrieveGoDeep(source, result, context);
 
-    if (ContextScopeHandlerHelper.getInstance(context_p).contains(ITransitionConstants.SOURCE_SCOPE, source_p, context_p)) {
-      AbstractCapabilityGeneralization sourceElement = (AbstractCapabilityGeneralization) source_p;
-      if (sourceElement.getSub() != null) {
-        result_p.add(sourceElement.getSub());
-      }
-      if (sourceElement.getSuper() != null) {
-        result_p.add(sourceElement.getSuper());
-      }
+    AbstractCapabilityGeneralization sourceElement = (AbstractCapabilityGeneralization) source;
+    if (sourceElement.getSuper() != null) {
+      result.add(sourceElement.getSuper());
     }
   }
 
@@ -86,21 +87,21 @@ public class AbstractCapabilityGeneralizationRule extends AbstractCapellaElement
    * {@inheritDoc}
    */
   @Override
-  protected void attachRelated(EObject element_p, EObject result_p, IContext context_p) {
-    super.attachRelated(element_p, result_p, context_p);
+  protected void attachRelated(EObject element, EObject result, IContext context) {
+    super.attachRelated(element, result, context);
 
-    AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p, InteractionPackage.Literals.ABSTRACT_CAPABILITY_GENERALIZATION__SUPER,
-        context_p);
-    AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p, InteractionPackage.Literals.ABSTRACT_CAPABILITY_GENERALIZATION__SUB,
-        context_p);
+    AttachmentHelper.getInstance(context).attachTracedElements(element, result, InteractionPackage.Literals.ABSTRACT_CAPABILITY_GENERALIZATION__SUPER,
+        context);
+    AttachmentHelper.getInstance(context).attachTracedElements(element, result, InteractionPackage.Literals.ABSTRACT_CAPABILITY_GENERALIZATION__SUB,
+        context);
 
   }
 
   @Override
-  protected void premicesRelated(EObject element_p, ArrayList<IPremise> needed_p) {
-    super.premicesRelated(element_p, needed_p);
-    needed_p.addAll(createDefaultPrecedencePremices(element_p, InteractionPackage.Literals.ABSTRACT_CAPABILITY_GENERALIZATION__SUPER));
-    needed_p.addAll(createDefaultPrecedencePremices(element_p, InteractionPackage.Literals.ABSTRACT_CAPABILITY_GENERALIZATION__SUB));
+  protected void premicesRelated(EObject element, ArrayList<IPremise> needed) {
+    super.premicesRelated(element, needed);
+    needed.addAll(createDefaultPrecedencePremices(element, InteractionPackage.Literals.ABSTRACT_CAPABILITY_GENERALIZATION__SUPER));
+    needed.addAll(createDefaultPrecedencePremices(element, InteractionPackage.Literals.ABSTRACT_CAPABILITY_GENERALIZATION__SUB));
   }
 
 }

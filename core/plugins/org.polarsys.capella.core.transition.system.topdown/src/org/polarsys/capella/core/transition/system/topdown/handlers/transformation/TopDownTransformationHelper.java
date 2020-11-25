@@ -19,6 +19,8 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.osgi.util.NLS;
+import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.constants.Messages;
 import org.polarsys.capella.core.transition.common.handlers.IHandler;
@@ -119,6 +121,20 @@ public class TopDownTransformationHelper extends CapellaTransformationHandler {
     if (sourceHandler instanceof ITraceabilityTraceHandler) {
       ITraceabilityTraceHandler tH = (ITraceabilityTraceHandler) sourceHandler;
       if (tH.isTrace(element_p, context_p)) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  /**
+   * Return whether the traced object in the target model is a System
+   */
+  public boolean isTargetASystem(EObject object, IContext context) {
+    Collection<EObject> targets = retrieveTargetTracedElements(object, context);
+    if (targets.size() == 1) {
+      EObject target = targets.iterator().next();
+      if (target instanceof Component && BlockArchitectureExt.isRootComponent((Component) target)) {
         return true;
       }
     }
