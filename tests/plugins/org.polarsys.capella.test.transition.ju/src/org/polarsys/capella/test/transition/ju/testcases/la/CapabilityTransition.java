@@ -13,6 +13,7 @@
 package org.polarsys.capella.test.transition.ju.testcases.la;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.osgi.util.NLS;
@@ -20,6 +21,7 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.polarsys.capella.core.data.la.CapabilityRealization;
 import org.polarsys.capella.core.data.la.CapabilityRealizationPkg;
 import org.polarsys.capella.core.data.la.LaFactory;
+import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.test.framework.context.SessionContext;
 import org.polarsys.capella.test.transition.ju.CodeHelper;
 import org.polarsys.capella.test.transition.ju.Messages;
@@ -51,6 +53,7 @@ public class CapabilityTransition extends TopDownTransitionTestCase {
   private CapabilityRealization laCR11;
   private CapabilityRealization laCR3;
   private CapabilityRealization laSubCR1;
+  private CapabilityRealization CR1;
 
   private CapabilityRealizationPkg paRootCRPkg;
   private CapabilityRealizationPkg paSubCRPkg;
@@ -59,6 +62,9 @@ public class CapabilityTransition extends TopDownTransitionTestCase {
   private CapabilityRealization paCR2;
   private CapabilityRealization paCR3;
   private CapabilityRealization paSubCR1;
+  
+  private PhysicalComponent PA_LC1;
+  private PhysicalComponent PA_LA1;
 
   private void initSession() {
     Session session = getSessionForTestModel(getRequiredTestModels().get(0));
@@ -68,6 +74,9 @@ public class CapabilityTransition extends TopDownTransitionTestCase {
     laCR2 = getObject(ModelLaPa.CR2Id);
     laCR11 = getObject(ModelLaPa.CR11Id);
     paRootCRPkg = getObject(ModelLaPa.rootPACRPkgId);
+    CR1 = getObject(ModelLaPa.CR1);
+    PA_LC1 = (PhysicalComponent) getObject(ModelLaPa.PA_LC1);
+    PA_LA1 = (PhysicalComponent) getObject(ModelLaPa.PA_LA1);
   }
 
   @Override
@@ -94,6 +103,7 @@ public class CapabilityTransition extends TopDownTransitionTestCase {
     rootCRPkgProjection1Test();
     rootcapaPkgProjection2Test();
     rootcapaPkgProjection3Test();
+    performTestOnCR1();
   }
 
   /**
@@ -220,6 +230,31 @@ public class CapabilityTransition extends TopDownTransitionTestCase {
     mustNotBeNull(paSubCR1);
     assertTrue(NLS.bind(Messages.RealizationError, paSubCR1.getName(), laSubCR1.getName()),
         (ProjectionTestUtils.getRealizedTargetElement(paSubCR1) == laSubCR1));
+  }
+  
+  /**
+   * Run the projection test from CR4
+   * 
+   * <pre>
+   * Expected Result:\
+   *               1. CR1, CR2, CR3, CR4 are projected towards PA Layer.\
+   *               2. Involvements exist between CR1 and the transitioned LC1 and LA1
+   *               3. Extension, inclusion and generalization links exist between CR1 and CR2, CR3, CR4
+   * </pre>
+   */
+  public void performTestOnCR1() throws Exception {
+    performCapabilityTransition(Collections.singletonList(CR1));
+    CapabilityRealization paCR1 = mustBeTransitioned(ModelLaPa.CR1);
+    assertTrue("There must be an involvement between the transitioned CR3 and the transitioned LC1 ",
+        paCR1.getOwnedCapabilityRealizationInvolvements().stream().filter(i -> i.getInvolved() == PA_LC1).count() == 1);
+    assertTrue("There must be an involvement between the transitioned CR3 and the transitioned LA1 ",
+        paCR1.getOwnedCapabilityRealizationInvolvements().stream().filter(i -> i.getInvolved() == PA_LA1).count() == 1);
+    CapabilityRealization laCR2 = mustBeTransitioned(ModelLaPa.CR2);
+    CapabilityRealization laCR3 = mustBeTransitioned(ModelLaPa.CR3);
+    CapabilityRealization laCR4 = mustBeTransitioned(ModelLaPa.CR4);
+    paCR1.getExtendedAbstractCapabilities().contains(laCR2);
+    paCR1.getIncludedAbstractCapabilities().contains(laCR3);
+    paCR1.getSuper().contains(laCR4);
   }
 
 }

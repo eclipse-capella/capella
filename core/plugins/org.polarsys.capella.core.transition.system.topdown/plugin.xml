@@ -1395,7 +1395,28 @@
                      name="AbstractFunctionAbstractCapabilityInvolvement">
                </defaultMappingPossibility>
             </mappingElement>
-            
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.interaction.AbstractCapabilityExtend"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.topdown.rules.interaction.AbstractCapabilityExtendRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.topdown.rules.interaction.AbstractCapabilityExtendRule"
+                     enabled="true"
+                     name="AbstractCapabilityExtend">
+               </defaultMappingPossibility>
+            </mappingElement>
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.interaction.AbstractCapabilityInclude"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.topdown.rules.interaction.AbstractCapabilityIncludeRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.topdown.rules.interaction.AbstractCapabilityIncludeRule"
+                     enabled="true"
+                     name="AbstractCapabilityInclude">
+               </defaultMappingPossibility>
+            </mappingElement>
          </mappingPackage>
          
          <mappingPackage
@@ -1612,4 +1633,31 @@
    </mapping>
 </extension>
 
+<extension
+      id="org.polarsys.capella.core.transition.system.topdown.capability"
+      name="Capability"
+      point="org.polarsys.kitalpha.transposer.rules.handler.mapping">
+   <mapping
+         context="org.polarsys.capella.core.transition.common.context.TransitionContext"
+         description="A system topdown transition"
+         domainHelper="org.polarsys.capella.core.transition.system.domain.CapellaTransitionDomainHelper"
+         extendedMappingExtensionID="org.polarsys.capella.core.transition.system.topdown"
+         mappingName="System IntraModel Transition"
+         mappingPurpose="org.polarsys.capella.core.transition">
+      <mappingPackage
+            name="oa">
+         <mappingElement
+               domainMetaClass="org.polarsys.capella.core.data.oa.Entity"
+               reuseExtendedElementDefaultPossibility="true"
+               reuseExtendedElementPossibilities="true">
+            <defaultMappingPossibility
+                  completeRule="org.polarsys.capella.core.transition.system.topdown.rules.oa.capability.EntityRule"
+                  enabled="true"
+                  incompleteRule="org.polarsys.capella.core.transition.system.topdown.rules.oa.capability.EntityRule"
+                  name="Entity">
+            </defaultMappingPossibility>
+         </mappingElement>
+      </mappingPackage>
+   </mapping>
+</extension>
 </plugin>

@@ -20,6 +20,7 @@ import org.eclipse.osgi.util.NLS;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.core.data.ctx.Capability;
 import org.polarsys.capella.core.data.ctx.CapabilityPkg;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.oa.OaFactory;
 import org.polarsys.capella.core.data.oa.OperationalCapability;
 import org.polarsys.capella.core.data.oa.OperationalCapabilityPkg;
@@ -54,6 +55,7 @@ public class CapabilityTransition extends TopDownTransitionTestCase {
   private OperationalCapability _oaOC2;
   private OperationalCapability _oaOC3;
   private OperationalCapability _oaSubOC1;
+  private OperationalCapability OC1;
 
   private CapabilityPkg _rootCapabilityPkg;
   private CapabilityPkg _subCapabilityPkg;
@@ -62,6 +64,10 @@ public class CapabilityTransition extends TopDownTransitionTestCase {
   private Capability _ctxOC2;
   private Capability _ctxOC3;
   private Capability _ctxSubOC1;
+  
+  private SystemComponent SA_SYSTEM;
+  private SystemComponent SA_OE3;
+  private SystemComponent SA_OA1;
 
   @Override
   public List<String> getRequiredTestModels() {
@@ -75,11 +81,16 @@ public class CapabilityTransition extends TopDownTransitionTestCase {
     _oaOC11 = (OperationalCapability) getObject(ModelOaSa.oc11Id);
     _oaOC2 = (OperationalCapability) getObject(ModelOaSa.oc2Id);
     _rootCapabilityPkg = (CapabilityPkg) getObject(ModelOaSa.rootCapabilityPkgId);
-
+    OC1 = (OperationalCapability) getObject(ModelOaSa.OC1);
+    SA_SYSTEM = (SystemComponent) getObject(ModelOaSa.SA_SYSTEM);
+    SA_OE3 = (SystemComponent) getObject(ModelOaSa.SA_OE3);
+    SA_OA1 = (SystemComponent) getObject(ModelOaSa.SA_OA1);
+    
     performTest1();
     performTest2();
     performTest3();
     performTest4();
+    performTest5();
   }
 
   /**
@@ -93,8 +104,7 @@ public class CapabilityTransition extends TopDownTransitionTestCase {
    */
   public void performTest1() throws Exception {
     performCapabilityTransition(Collections.singletonList(_oaOC11));
-    _ctxOC11 = _rootCapabilityPkg.getOwnedCapabilities().get(0);
-    mustNotBeNull(_ctxOC11);
+    _ctxOC11 = mustBeTransitioned(ModelOaSa.oc11Id);
 
     assertTrue(NLS.bind(Messages.RealizationError, _ctxOC11.getName(), _oaOC11.getName()),
         (ProjectionTestUtils.getRealizedTargetElement(_ctxOC11) == _oaOC11));
@@ -215,6 +225,34 @@ public class CapabilityTransition extends TopDownTransitionTestCase {
     mustNotBeNull(_ctxSubOC1);
     assertTrue(NLS.bind(Messages.RealizationError, _ctxSubOC1.getName(), _oaSubOC1.getName()),
         (ProjectionTestUtils.getRealizedTargetElement(_ctxSubOC1) == _oaSubOC1));
+  }
+  
+  /**
+   * Run the projection test "OA Capability to SA Capability" from OC3
+   * 
+   * <pre>
+   * Expected Result:\
+   *               1. OC1, OC2, OC3, OC4 are projected towards Ctx Layer.\
+   *               2. Only one involvement is created between the transitioned OC1 and the System
+   *               3. Involvements exist between OC1 and the transitioned OE3 and OA1
+   *               4. Extension, inclusion and generalization links exist between OC1 and OC2, OC3, OC4
+   * </pre>
+   */
+  public void performTest5() throws Exception {
+    performCapabilityTransition(Collections.singletonList(OC1));
+    Capability ctxOC1 = mustBeTransitioned(ModelOaSa.OC1);
+    assertTrue("There must be only one involvement between the transitioned OC3 and the System ",
+        ctxOC1.getOwnedCapabilityInvolvements().stream().filter(i -> i.getInvolved() == SA_SYSTEM).count() == 1);
+    assertTrue("There must be an involvement between the transitioned OC3 and the transitioned OE3 ",
+        ctxOC1.getOwnedCapabilityInvolvements().stream().filter(i -> i.getInvolved() == SA_OE3).count() == 1);
+    assertTrue("There must be an involvement between the transitioned OC3 and the transitioned OA1 ",
+        ctxOC1.getOwnedCapabilityInvolvements().stream().filter(i -> i.getInvolved() == SA_OA1).count() == 1);
+    Capability ctxOC2 = mustBeTransitioned(ModelOaSa.OC2);
+    Capability ctxOC3 = mustBeTransitioned(ModelOaSa.OC3);
+    Capability ctxOC4 = mustBeTransitioned(ModelOaSa.OC4);
+    ctxOC1.getExtendedAbstractCapabilities().contains(ctxOC2);
+    ctxOC1.getIncludedAbstractCapabilities().contains(ctxOC3);
+    ctxOC1.getSuper().contains(ctxOC4);
   }
 
 }

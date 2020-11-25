@@ -100,4 +100,11 @@ public class ModelOaSa {
   public static String leafStateMachineId = "4fc6dad0-f3ec-4a4a-b63e-7b01bdd90f07";
   public static String leafRegionId = "663bff87-cded-4bd2-8c2e-b50c4097873e";
 
+  public static final String OC1 = "9fd52848-ca2b-4c52-a6d5-ced8a04fb83e"; //$NON-NLS-1$
+  public static final String OC4 = "b69d0f31-5cbe-4ec4-bf1c-cad7b94cec08"; //$NON-NLS-1$
+  public static final String OC3 = "d60b1a48-5048-475f-b17a-1c85055cd310"; //$NON-NLS-1$
+  public static final String OC2 = "8b4ee168-aad2-493d-8b0e-df15a1ab570b"; //$NON-NLS-1$
+  public static final String SA_SYSTEM = "50bb7f6f-96a9-41f9-a97c-4a5f1306734f"; //$NON-NLS-1$
+  public static final String SA_OE3 = "182730a6-438d-45bc-a0e3-e947805e5389"; //$NON-NLS-1$
+  public static final String SA_OA1 = "14e523bd-7e1a-4745-9563-18223acf1e07"; //$NON-NLS-1$
 }

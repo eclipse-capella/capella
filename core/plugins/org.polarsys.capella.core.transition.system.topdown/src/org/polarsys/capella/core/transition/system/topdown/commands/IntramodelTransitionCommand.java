@@ -21,7 +21,6 @@ import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.Part;
-import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.ctx.SystemComponentPkg;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
@@ -73,6 +72,7 @@ public class IntramodelTransitionCommand extends LauncherCommand {
     case ITopDownConstants.TRANSITION_TOPDOWN_OA2SC:
     case ITopDownConstants.TRANSITION_TOPDOWN_OA2SM:
     case ITopDownConstants.TRANSITION_TOPDOWN_PC2CI:
+    case ITopDownConstants.TRANSITION_TOPDOWN_CAPABILITY:
       return "org.polarsys." + kind;
 
     default:

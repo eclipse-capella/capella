@@ -134,9 +134,8 @@ public class ActorTransition extends TopDownTransitionTestCase {
    */
   private void actor3TransitionTest() {
     performActorTransition(Arrays.asList(laActor3));
-    paActor3 = paRootActorPkg.getOwnedPhysicalComponents().get(1);
+    paActor3 = mustBeTransitioned(ModelLaPa.actor3Id);
     mustNotBeNull(paActor3);
-
     assertTrue(NLS.bind(Messages.RealizationError, paActor3.getName(), laActor3.getName()),
         (ProjectionTestUtils.getRealizedTargetElement(paActor3) == laActor3));
   }
