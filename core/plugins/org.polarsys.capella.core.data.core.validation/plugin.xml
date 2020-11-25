@@ -566,6 +566,25 @@ This rule checks that an capella element doesn&apos;t contain any naming conflic
                      class="AbstractTrace">
                </target>
             </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.core.validation.capellaelement.TypedElementHasDifferentNameThanType"
+                  id="I_45"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="I_45 - Typed Element has different name than its Type"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  {0} ({1}) should have the same name as its type {2} ({3})
+               </message>
+               <description>
+                  This rule checks the Typed Element (Part, Exchange Item Instance) has the same name as its Type (Component, Exchange Item).
+               </description>
+               <target
+                     class="AbstractTypedElement">
+               </target>
+            </constraint>
          </constraints>
       </constraintProvider>
       <constraintProvider>
@@ -591,25 +610,6 @@ This rule checks that an capella element doesn&apos;t contain any naming conflic
                </description>
                <target
                      class="Involvement">
-               </target>
-            </constraint>
-            <constraint
-                  class="org.polarsys.capella.core.data.core.validation.capellaelement.TypedElementHasDifferentNameThanType"
-                  id="I_45"
-                  isEnabledByDefault="true"
-                  lang="Java"
-                  mode="Batch"
-                  name="I_45 - Typed Element has different name than its Type"
-                  severity="ERROR"
-                  statusCode="1">
-               <message>
-                  {0} ({1}) should have the same name as its type {2} ({3})
-               </message>
-               <description>
-                  This rule checks the Typed Element (Part, Exchange Item Instance) has the same name as its Type (Component, Exchange Item).
-               </description>
-               <target
-                     class="AbstractTypedElement">
                </target>
             </constraint>
          </constraints>
