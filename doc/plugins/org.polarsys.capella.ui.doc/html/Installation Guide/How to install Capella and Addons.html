@@ -21,7 +21,7 @@
 			Having a Java environment on your machine is no longer a requirement.</p>
 		<p>If however you want to use a different JDK version, you need to modify the 
 			<b>capella.ini</b> file at 2 places. The first one is to add a -vm argument that points to your JDK location. The second one is to modify -Dosgi.requiredJavaVersion argument to point to your JDK version. Please refer to the 
-			<a href="https://wiki.eclipse.org/Eclipse.ini">following link</a> for more information. Notice that the minimum supported version of JDK is JDK 8.
+			<a href="https://wiki.eclipse.org/Eclipse.ini">following link</a> for more information. Notice that only the embedded JDK has been field-tested.
 		</p>
 		<h4 id="Trouble_shooting">Trouble shooting</h4>
 		<p>If launching Capella in Windows OS ends up with the following pop-up, it means that your OS misses some libraries to be compatible with JDK 14.</p>
@@ -162,45 +162,47 @@
 		</ul>
 		<h2 id="Addons_Installation">Addons Installation</h2>
 		<p>There are 3 ways to install addons :</p>
-		<ol>
+		<ul>
 			<li>Simple installation 
 				<ul>
-					<li>Install the addons directly in the dropins folder of Capella :</li>
+					<li>Install the addons directly in the dropins folder of Capella :
+						<ul>
+							<li>Unzip the archive of the addon in your Capella "dropins" directory</li>
+						</ul>
+					</li>
 				</ul>
-				<ol>
-					<li>Unzip the archive of the addon in your Capella "dropins" directory</li>
-				</ol>
 			</li>
 			<li>External installation 
 				<ul>
-					<li>Install the addons in an external directory and configure Capella to get them from this specific directory :</li>
+					<li>Install the addons in an external directory and configure Capella to get them from this specific directory :
+						<ul>
+							<li>Unzip the archive of the addon in a directory</li>
+							<li>Add -Dorg.eclipse.equinox.p2.reconciler.dropins.directory=&lt;myAddonsDirectory&gt; at the end of the capella.ini file (after -vm)</li>
+						</ul>
+					</li>
 				</ul>
-				<ol>
-					<li>Unzip the archive of the addon in a directory</li>
-					<li>Add -Dorg.eclipse.equinox.p2.reconciler.dropins.directory=&lt;myAddonsDirectory&gt; at the end of the capella.ini file (after -vm)</li>
-				</ol>
 			</li>
 			<li>Multiple contexts installation 
 				<ul>
 					<li>Create several contexts with specific addons and allow users to launch Capella on one or another context :
-						<ol>
+						<ul>
 							<li>Create contexts directories (copy capella.ini from Capella and unzip the needed addons in a dropins folder). </li>
 							<li>For each context, change the capella.ini file as follows:</li>
-						</ol>
+						</ul>
 					</li>
 				</ul>
 			</li>
-		</ol>
+		</ul>
 		<p>
 			<img height="330" width="588" border="0" src="Images/3.9.%20How%20to%20install%20Cappela%20and%20Addons_Multicontext_Install.png"/>
 		</p>
 		<ul>
-			<li>For Context_A, add the following lines at the end of the capella.ini file (afer -vm)-(Example)</li>
+			<li>For Context_A, add the following lines at the end of the capella.ini file (after -vm)</li>
 		</ul>
 		<table border="1">
 			<tr>
-				<td></td>
 				<td>
+					<p>(Example)</p>
 					<ul>
 						<li>Dropins location in Context_A directory</li>
 					</ul>
@@ -217,18 +219,18 @@
 			</tr>
 		</table>
 		<ul>
-			<li>For Context_B, add the following lines at the end of the capella.ini file (afer -vm)-(Example)</li>
+			<li>For Context_B, add the following lines at the end of the capella.ini file (after -vm)</li>
 		</ul>
 		<table border="1">
 			<tr>
-				<td></td>
 				<td>
+					<p>(Example)</p>
 					<ul>
-						<li>Dropins location in Context_A directory</li>
+						<li>Dropins location in Context_B directory</li>
 					</ul>
 					<p>-Dorg.eclipse.equinox.p2.reconciler.dropins.directory=D:\CapellaContexts\Context_B\dropins</p>
 					<ul>
-						<li>Configuration location for Context_A in user's specific directory</li>
+						<li>Configuration location for Context_B in user's specific directory</li>
 					</ul>
 					<p>-Dosgi.configuration.area=@user.home/.../Capella/Context_B/configuration</p>
 					<ul>
