@@ -6,7 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _tBkd0NdfEeiFia3ZpEwxKw
-Save-Time: 10/14/20 3:52 PM
+Runtime-Version: 2.5.1.M3
+Save-Time: 12/2/20 11:20 AM
 Testcase-Type: ecl
 
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
@@ -19,36 +20,24 @@ with [get-view "Project Explorer" | get-tree] {
     select "Bug2242/Bug2242.aird/Bug2242/Operational Analysis/Operational Activities/Root Operational Activity/Diagram 1" 
         | double-click
     select "Bug2242/Bug2242.aird/Bug2242/Operational Analysis/Operational Activities/Root Operational Activity/Diagram 1"
-}
-// Select the diagram and then check the menu Move Diagrams contain 3 items.
-with [get-view "Project Explorer" | get-tree] {
-    get-menu -path "Move Diagrams/Move to platform:\\/resource\\/Bug2242\\/Bug2242.aird" | get-property caption 
-        | equals "Move to platform:/resource/Bug2242/Bug2242.aird" | verify-true
- 	get-menu -path "Move Diagrams/Move to platform:\\/resource\\/Bug2242\\/Bug2242.aird" 
-        | get-property enablement | equals true | verify-true
-    get-menu -path "Move Diagrams/Move to platform:\\/resource\\/Bug2242\\/Bug2242.aird" | get-property index 
-        | equals 0 | verify-true
-        
-    get-menu -path "Move Diagrams/Move to platform:\\/resource\\/Bug2242\\/fragments\\/SA.airdfragment" 
-        | get-property caption | equals "Move to platform:/resource/Bug2242/fragments/SA.airdfragment" | verify-true
-    get-menu -path "Move Diagrams/Move to platform:\\/resource\\/Bug2242\\/fragments\\/SA.airdfragment" 
-        | get-property enablement | equals true | verify-true
-    get-menu -path "Move Diagrams/Move to platform:\\/resource\\/Bug2242\\/fragments\\/SA.airdfragment" 
-        | get-property index | equals 1 | verify-true
-        
-    get-menu -path "Move Diagrams/Move to platform:\\/resource\\/Bug2242\\/fragments\\/LA.airdfragment" 
-        | get-property caption | equals "Move to platform:/resource/Bug2242/fragments/LA.airdfragment" | verify-true
-    get-menu -path "Move Diagrams/Move to platform:\\/resource\\/Bug2242\\/fragments\\/LA.airdfragment" 
-        | get-property enablement | equals true | verify-true
-    get-menu -path "Move Diagrams/Move to platform:\\/resource\\/Bug2242\\/fragments\\/LA.airdfragment" 
-        | get-property index | equals 2 | verify-true
+    get-menu -path Move | click
 }
 
+// Select the diagram and then check the menu Move Diagrams contain 3 items.
+with [get-window "Location selection for \"Diagram 1\"" | get-table] {
+    get-property itemCount | equals 3 | verify-true
+    get-property "getItems().TableItem[0].getText()" | equals "Local (in /Bug2242/Bug2242.aird)" | verify-true
+    get-property "getItems().TableItem[1].getText()" | equals "Local (in /Bug2242/fragments/LA.airdfragment)" 
+        | verify-true
+    get-property "getItems().TableItem[2].getText()" | equals "Local (in /Bug2242/fragments/SA.airdfragment)" 
+        | verify-true
+}
 // Move the diagram to resource Bug2242.aird
-get-view "Project Explorer" | get-tree 
-    | select "Bug2242/Bug2242.aird/Bug2242/Operational Analysis/Operational Activities/Root Operational Activity/Diagram 1" 
-    | get-menu -path "Move Diagrams/Move to platform:\\/resource\\/Bug2242\\/Bug2242.aird" | click
-    
+with [get-window "Location selection for \"Diagram 1\""] {
+    get-table | select "Local \\(in \\/Bug2242\\/Bug2242.aird\\)"
+    get-button OK | click
+}
+
 // Save
 get-eclipse-window | key-type "M1+s"
 

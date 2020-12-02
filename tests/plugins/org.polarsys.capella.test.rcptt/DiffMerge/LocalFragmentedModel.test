@@ -6,8 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _s0WTkLfUEea5ZpGbd-RfXw
-Runtime-Version: 2.5.0.201909172034
-Save-Time: 5/11/20 12:18 PM
+Runtime-Version: 2.5.1.M3
+Save-Time: 12/2/20 11:28 AM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -67,8 +67,8 @@ with [get-editor fragmentedModel] {
     }
 }
 get-window "New System Data Flow Blank" | get-button OK | click
-get-window "Analysis Selection" | get-table 
-    | select "platform:\\/resource\\/fragmentedModel\\/fragments\\/SA.airdfragment" | double-click
+get-window "Location selection" | get-table 
+    | select "Local \\(in \\/fragmentedModel\\/fragments\\/SA.airdfragment\\)" | double-click
 with [get-editor "[SDFB] Root System Function"] {
     with [get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function"] {
         mouse-release 268 38 button1 524288 -height 389 -width 598
@@ -123,8 +123,8 @@ with [get-editor "[SDFB] Root System Function"] {
 get-editor "fragmentedModel" | get-section "Refine System Functions, describe Functional Exchanges" 
     | get-link "[FS] Create a new Functional Scenario" | click
 get-window "New Function Scenario" | get-button OK | click
-get-window "Analysis Selection" | get-table 
-    | select "platform:\\/resource\\/fragmentedModel\\/fragments\\/SA.airdfragment" | double-click
+get-window "Location selection" | get-table 
+    | select "Local \\(in \\/fragmentedModel\\/fragments\\/SA.airdfragment\\)" | double-click
 with [get-editor "[FS] Capability 1"] {
     with [get-diagram -index 1 | get-edit-part -name "[FS] Capability 1"] {
         mouse-release 302 22 button1 524288 -height 365 -width 598
@@ -189,8 +189,8 @@ with [get-editor "fragmentedModel" | get-section "Transition From Operational Ac
     get-link "Create a System Functions / Operational Activities Traceability Matrix" | click
 }
 get-window "New System Functions - Operational Activities" | get-button OK | click
-get-window "Analysis Selection" | get-table 
-    | select "platform:\\/resource\\/fragmentedModel\\/fragments\\/SA.airdfragment" | double-click
+get-window "Location selection" | get-table 
+    | select "Local \\(in \\/fragmentedModel\\/fragments\\/SA.airdfragment\\)" | double-click
 with [get-editor "New System Functions - Operational Activities"] {
     with [get-tree] {
         get-cell 2 1 | mouse up -count 2
@@ -214,7 +214,7 @@ with [get-editor "fragmentedModel"] {
     }
 }
 get-window "New Logical Data Flow Blank" | get-button OK | click
-get-window "Analysis Selection" | get-table | select "platform:\\/resource\\/fragmentedModel\\/fragmentedModel.aird" 
+get-window "Location selection" | get-table | select "Local \\(in \\/fragmentedModel\\/fragmentedModel.aird\\)" 
     | double-click
 with [get-editor "[LDFB] Root Logical Function"] {
     with [get-diagram -index 1 | get-edit-part -name "[LDFB] Root Logical Function"] {
@@ -277,7 +277,7 @@ with [get-window "New Function Scenario"] {
     get-editbox -after [get-label "Name:"] | set-text "[FS] Capability 2"
     get-button OK | click
 }
-get-window "Analysis Selection" | get-table | select "platform:\\/resource\\/fragmentedModel\\/fragmentedModel.aird" 
+get-window "Location selection" | get-table | select "Local \\(in \\/fragmentedModel\\/fragmentedModel.aird\\)" 
     | double-click
 with [get-editor "[FS] Capability 2"] {
     with [get-diagram -index 1 | get-edit-part -name "[FS] Capability 2"] {
@@ -342,7 +342,7 @@ with [get-editor "fragmentedModel"] {
 }
 get-menu "Logical Functions \\/ System Functions" | click
 get-window "New Logical Functions - System Functions" | get-button OK | click
-get-window "Analysis Selection" | get-table | select "platform:\\/resource\\/fragmentedModel\\/fragmentedModel.aird" 
+get-window "Location selection" | get-table | select "Local \\(in \\/fragmentedModel\\/fragmentedModel.aird\\)" 
     | double-click
 with [get-editor "New Logical Functions - System Functions"] {
     with [get-tree] {
