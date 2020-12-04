@@ -19,6 +19,13 @@ import org.polarsys.capella.test.semantic.queries.ju.AbstractSemanticQueryTestCa
 
 public abstract class SemanticQueries extends AbstractSemanticQueryTestCase {
 
+  public static final String LDFB_ROOT_LOGICAL_FUNCTION = "_5G0I8B6ZEeeOZc6PowOyKg"; //$NON-NLS-1$
+  public static final String LDFB_ROOT_LOGICAL_FUNCTION_2 = "_xO7W8DYHEeuB6_JYQc-3oQ"; //$NON-NLS-1$
+  public static final String IDB_LOGICAL_SYSTEM = "_tdG0Q_PwEei8puOdtcnyOw"; //$NON-NLS-1$
+  public static final String LAB_LOGICAL_SYSTEM__LOGICAL_ARCHITECTURE_BLANK = "_1sUD4FjLEea_Bs2eLgK85w"; //$NON-NLS-1$
+  public static final String LAB_LOGICAL_ARCHITECTURE_DIAGRAM = "_RDtOwN6dEem-ItbQX6Y5xA"; //$NON-NLS-1$
+  public static final String TABLE_LOGICAL_FUNCTIONS__SYSTEM_FUNCTIONS = "_D4esADYIEeuB6_JYQc-3oQ"; //$NON-NLS-1$
+  
   public static final String PROJECT_SEMANTICQUERIES = "2cd4b848-b363-455f-a7c8-c5eb4079e32b";
   public static final String PROJECT_SEMANTICQUERIES__LIBRARY_DEPENDENCIES = "786f4d49-5c42-4da5-8658-e506a110adf7";
   public static final String PROJECT_SEMANTICQUERIES__PROGRESSSTATUS = "affce18f-848a-4676-9dd8-2fce1229f298";

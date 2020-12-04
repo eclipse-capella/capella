@@ -93,6 +93,11 @@ public class SemanticQueriesTestSuite extends BasicTestSuite {
     tests.add(new DataValueRefReferencedProperty());
     tests.add(new StateTransition_realizedStateTransition());
     tests.add(new StateTransition_realizingStateTransition());
+    tests.add(new AllRelatedDiagrams());
+    tests.add(new AllRelatedTables());
+    tests.add(new ContextualElements());
+    tests.add(new ElementOfInterests());
+    tests.add(new ElementOfInterestOfRepresentations());
     tests.add(new OperationParent());
     tests.add(new OperationParameters());
     tests.add(new ParameterParent());
