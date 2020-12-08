@@ -25,6 +25,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.emf.common.util.EList;
@@ -838,13 +839,30 @@ public class PhysicalServices {
         customizeInternalLinksEdgeStyle(internalLink, physicalPathColor);
       }
 
-      // Customize physical paths
-      for (PhysicalLink link : PhysicalPathExt.getFlatPhysicalLinks(physicalPath)) {
-        if (displayedPhysicalLinks.containsKey(link)) {
-          DEdge currentEdge = displayedPhysicalLinks.get(link);
-          RGBValues color = (coloredLinks.get(currentEdge).size() == 1) ? physicalPathColor : ShapeUtil.getBlackColor();
-          customizePhysicalLinkEdgeStyle(currentEdge, color);
-        }
+    }
+
+    for (Map.Entry<DEdge, Set<PhysicalPath>> entry : coloredLinks.entrySet()) {
+      DEdge edge = entry.getKey();
+      Set<PhysicalPath> paths = entry.getValue();
+
+      RGBValues[] pathColors = paths.stream().map(path -> displayedPaths.get(path))
+          .map(node -> ShapeUtil.getNodeColorStyle(node)).toArray(RGBValues[]::new);
+
+      RGBValues blendedColor = ColorManager.getInstance().blend(pathColors, 0.6);
+      // ShapeUtil.getBlackColor();
+
+      customizePhysicalLinkEdgeStyle(edge, blendedColor);
+
+      if (paths.size() > 1) {
+        // TODO change this and put into
+        // org.polarsys.capella.core.sirius.analysis.FaServices.getPhysicalLinkCenterLabel(EObject, DDiagram)
+
+        // TODO Use a cache of chains
+        String edgeName = edge.getName();
+        String pathNames = paths.stream().map(PhysicalPath::getName).sorted()
+            .collect(Collectors.joining(",", "[", "]"));
+        String concatenatedName = edgeName + " " + pathNames;
+        // edge.setName(concatenatedName);
       }
     }
 

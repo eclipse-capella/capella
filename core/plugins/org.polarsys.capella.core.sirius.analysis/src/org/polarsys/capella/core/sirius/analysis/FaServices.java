@@ -5074,6 +5074,11 @@ public class FaServices {
   }
 
   public String getPhysicalLinkCenterLabel(EObject exchange, DDiagram diagram) {
+
+    // TODO Activate the cache here
+    // compute everytghing
+    // TODO deactivate cache in post refresh
+
     // why white space char
     // The manual refresh of the diagram does not take into account the
     // EmptySting

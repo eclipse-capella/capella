@@ -12,9 +12,12 @@
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.analysis;
 
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.swt.graphics.RGB;
 
 public class ColorManager {
@@ -28,6 +31,17 @@ public class ColorManager {
   private final RGB BLUE_RGB_COLOR = new RGB(24, 114, 248);
 
   private static ColorManager instance = null;
+
+  private static Comparator<RGBValues> comparator = (l, r) -> {
+    if (l.getRed() != r.getRed()) {
+      return l.getRed() - r.getRed();
+
+    } else if (l.getGreen() != r.getGreen()) {
+      return l.getGreen() - r.getGreen();
+
+    }
+    return l.getRed() - r.getRed();
+  };
 
   public static ColorManager getInstance() {
     if (instance == null) {
@@ -58,6 +72,49 @@ public class ColorManager {
 
   public RGB getGrayColor() {
     return GRAY_RGB_COLOR;
+  }
+
+  public RGBValues blend(RGBValues value1, RGBValues value2, double ratio) {
+    float r = (float) ratio;
+    float ir = (float) 1.0 - r;
+
+    float r1 = value1.getRed();
+    float g1 = value1.getGreen();
+    float b1 = value1.getBlue();
+
+    float r2 = value2.getRed();
+    float g2 = value2.getGreen();
+    float b2 = value2.getBlue();
+
+    int mr = (int) (r1 * r + r2 * ir);
+    int mg = (int) (g1 * r + g2 * ir);
+    int mb = (int) (b1 * r + b2 * ir);
+
+    return RGBValues.create(mr, mg, mb);
+  }
+
+  public RGBValues blend(RGBValues[] values, double ratio) {
+    if (values == null || values.length == 0) {
+      return null;
+    }
+
+    if (values.length == 1) {
+      return values[0];
+    }
+
+    // make sure we always compute the colors in the same order
+    Arrays.sort(values, comparator);
+    RGBValues blendedValue = blend(values[0], values[1], ratio);
+
+    if (values.length == 2) {
+      return blendedValue;
+    }
+
+    for (int i = 2; i < values.length; i++) {
+      blendedValue = blend(blendedValue, values[i], ratio);
+    }
+
+    return blendedValue;
   }
 
 }
