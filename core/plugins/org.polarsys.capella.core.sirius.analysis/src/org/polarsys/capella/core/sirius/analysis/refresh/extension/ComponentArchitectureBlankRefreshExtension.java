@@ -55,6 +55,7 @@ import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
 import org.polarsys.capella.core.sirius.analysis.PhysicalServices;
 import org.polarsys.capella.core.sirius.analysis.cache.FunctionalChainCache;
+import org.polarsys.capella.core.sirius.analysis.cache.PhysicalPathCache;
 import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
 import org.polarsys.capella.core.sirius.analysis.constants.MappingConstantsHelper;
 import org.polarsys.capella.core.sirius.analysis.helpers.FilterHelper;
@@ -74,6 +75,7 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractCacheAwa
     super.beforeRefresh(diagram);
 
     FunctionalChainCache.getInstance().reset();
+    PhysicalPathCache.getInstance().reset();
 
     DRepresentationDescriptor descriptor = RepresentationHelper.getRepresentationDescriptor(diagram);
 
@@ -486,6 +488,7 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractCacheAwa
     }
 
     FunctionalChainCache.getInstance().reset();
+    PhysicalPathCache.getInstance().reset();
     super.postRefresh(diagram);
   }
 

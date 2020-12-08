@@ -27,6 +27,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import org.eclipse.core.resources.IProject;
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.AbstractDNode;
@@ -96,6 +97,7 @@ import org.polarsys.capella.core.model.helpers.PartExt;
 import org.polarsys.capella.core.model.helpers.PhysicalComponentExt;
 import org.polarsys.capella.core.model.helpers.PhysicalPathExt;
 import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
+import org.polarsys.capella.core.sirius.analysis.cache.PhysicalPathCache;
 import org.polarsys.capella.core.sirius.analysis.constants.MappingConstantsHelper;
 import org.polarsys.capella.core.sirius.analysis.preferences.DiagramProcessChainPathPreferencePage;
 import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
@@ -978,10 +980,12 @@ public class PhysicalServices {
       Part currentPart = (Part) partInvolvement.getInvolvedElement();
 
       // The previous link involvements if any
-      EList<PhysicalPathInvolvement> previousLinkInvolvements = partInvolvement.getPreviousInvolvements();
+      EList<PhysicalPathInvolvement> previousLinkInvolvements = new BasicEList<>(
+          PhysicalPathCache.getInstance().getPreviousInvolvements(partInvolvement, path));
 
       // The next link involvements if any
-      EList<PhysicalPathInvolvement> nextLinkInvolvements = partInvolvement.getNextInvolvements();
+      EList<PhysicalPathInvolvement> nextLinkInvolvements = new BasicEList<>(
+          PhysicalPathCache.getInstance().getNextInvolvements(partInvolvement, path));
 
       // Case 1: only next involvements are available, in this case all ports for the link on the current part should be
       // connected together
