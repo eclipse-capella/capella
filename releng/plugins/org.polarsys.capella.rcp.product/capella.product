@@ -7,6 +7,9 @@
    </configIni>
 
    <launcherArgs>
+      <programArgsMac>-vm
+../jre/Contents/Home/bin
+      </programArgsMac>
       <vmArgs>-Dosgi.requiredJavaVersion=14
 -Xms1000m
 -Xmx3000m

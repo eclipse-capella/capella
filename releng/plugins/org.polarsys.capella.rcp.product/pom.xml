@@ -43,6 +43,16 @@
 						</goals>
 					</execution>
 				</executions>
+				<configuration>
+					<products>
+						<product>
+							<id>org.polarsys.capella.rcp.product</id>
+							<rootFolders>
+								<macosx>Capella.app</macosx>
+							</rootFolders>
+						</product>
+					</products>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -59,7 +69,7 @@
 								<target>
 									<!-- Create the dropins folder -->
 									<mkdir dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/linux/gtk/x86_64/dropins"/>
-									<mkdir dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/x86_64/Eclipse.app/Contents/Eclipse/dropins"/>
+									<mkdir dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/x86_64/Capella.app/Contents/Eclipse/dropins"/>
 									<mkdir dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/win32/win32/x86_64/dropins"/>
 									
 									<!-- Modify Nebula Richtext's template to fix IE compatibility bug. To remove if Nebula patches this -->
@@ -67,7 +77,7 @@
 										<include name="org.eclipse.nebula.widgets.richtext_*/org/eclipse/nebula/widgets/richtext/resources/template.html"/>
 								        <replacefilter token="&lt;meta charset=&quot;utf-8&quot;&gt;" value="&lt;meta charset=&quot;utf-8&quot;&gt;${line.separator}&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=EDGE&quot;&gt;"/>
 								    </replace>
-									<replace dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/x86_64/Eclipse.app/Contents/Eclipse/plugins">
+									<replace dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/x86_64/Capella.app/Contents/Eclipse/plugins">
 										<include name="org.eclipse.nebula.widgets.richtext_*/org/eclipse/nebula/widgets/richtext/resources/template.html"/>
 								        <replacefilter token="&lt;meta charset=&quot;utf-8&quot;&gt;" value="&lt;meta charset=&quot;utf-8&quot;&gt;${line.separator}&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=EDGE&quot;&gt;"/>
 								    </replace>
@@ -107,16 +117,16 @@
 									
 									
 									<!--  Move the Mac JRE into the product -->
-									<move todir="${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/x86_64/jre" includeEmptyDirs="yes" verbose="true">
+									<move todir="${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/x86_64/Capella.app/Contents/jre" includeEmptyDirs="yes" verbose="true">
 										<fileset dir="../../../macJRE/jre">
 											<include name="**/*" />
 										</fileset>
 									</move>
 									
 									<!-- Zip the Mac product -->
-									<zip destfile="${project.build.directory}/products/capella-${unqualifiedVersion}.${buildQualifier}-macosx-cocoa-x86_64.zip">
-										<zipfileset dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/x86_64" prefix="capella"/>
-										<zipfileset dir="../../../samples" prefix="samples">
+									<zip destfile="${project.build.directory}/products/capella-${unqualifiedVersion}.${buildQualifier}-macosx-cocoa-x86_64.tar.gz" compression="gzip" longfile="gnu">
+										<zipfileset dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/x86_64"/>
+										<zipfileset dir="../../../samples" prefix="Capella.app/Contents/samples">
 											<exclude name="target/**"/>
 											<exclude name="pom.xml"/>
 										</zipfileset>
