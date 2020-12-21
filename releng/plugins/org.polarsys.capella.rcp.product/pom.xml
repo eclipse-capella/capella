@@ -105,16 +105,24 @@
 										</fileset>
 									</move>
 									
-									<!-- Zip the Linux product -->
-									<zip destfile="${project.build.directory}/products/capella-${unqualifiedVersion}.${buildQualifier}-linux-gtk-x86_64.zip">
-										<zipfileset dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/linux/gtk/x86_64" prefix="capella"/>
-										<zipfileset dir="../../../samples" prefix="samples">
+									<!-- Tar.gz the Linux product -->
+									<tar destfile="${project.build.directory}/products/capella-${unqualifiedVersion}.${buildQualifier}-linux-gtk-x86_64.tar.gz" compression="gzip" longfile="gnu">
+										<tarfileset dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/linux/gtk/x86_64" prefix="capella">
+											<include name="**/*" />
+											<exclude name="capella"/>
+											<exclude name="jre/bin/*"/>
+											<exclude name="jre/lib/jspawnhelper"/>
+										</tarfileset>
+										<tarfileset dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/linux/gtk/x86_64" prefix="capella" filemode="755">
+											<include name="capella"/>
+											<include name="jre/bin/*"/>
+											<include name="jre/lib/jspawnhelper"/>
+										</tarfileset>
+										<tarfileset dir="../../../samples" prefix="samples">
 											<exclude name="target/**"/>
 											<exclude name="pom.xml"/>
-										</zipfileset>
-									</zip>
-									
-									
+										</tarfileset>
+									</tar>
 									
 									<!--  Move the Mac JRE into the product -->
 									<move todir="${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/x86_64/Capella.app/Contents/jre" includeEmptyDirs="yes" verbose="true">
@@ -123,14 +131,23 @@
 										</fileset>
 									</move>
 									
-									<!-- Zip the Mac product -->
-									<zip destfile="${project.build.directory}/products/capella-${unqualifiedVersion}.${buildQualifier}-macosx-cocoa-x86_64.tar.gz" compression="gzip" longfile="gnu">
-										<zipfileset dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/x86_64"/>
-										<zipfileset dir="../../../samples" prefix="Capella.app/Contents/samples">
+									<!-- Tar.gz the Mac product -->
+									<tar destfile="${project.build.directory}/products/capella-${unqualifiedVersion}.${buildQualifier}-macosx-cocoa-x86_64.tar.gz" compression="gzip" longfile="gnu">
+										<tarfileset dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/x86_64">
+											<include name="**/*" />
+											<exclude name="Capella.app/Contents/MacOS/capella"/>
+											<exclude name="Capella.app/Contents/jre/Contents/Home/bin/*"/>
+											<exclude name="Capella.app/Contents/jre/Contents/Home/lib/jspawnhelper"/>
+										</tarfileset>
+										<tarfileset dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/x86_64" filemode="755">
+											<include name="Capella.app/Contents/MacOS/capella"/>
+											<include name="Capella.app/Contents/jre/Contents/Home/bin/*"/>
+											<include name="Capella.app/Contents/jre/Contents/Home/lib/jspawnhelper"/>
+										</tarfileset><tarfileset dir="../../../samples" prefix="Capella.app/Contents/samples">
 											<exclude name="target/**"/>
 											<exclude name="pom.xml"/>
-										</zipfileset>
-									</zip>
+										</tarfileset>
+									</tar>
 																		
 									
 									<!--  Rename the product exe -->
