@@ -22,8 +22,6 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.window.Window;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.handlers.HandlerUtil;
-
 import org.polarsys.capella.common.flexibility.properties.loader.PropertiesLoader;
 import org.polarsys.capella.common.flexibility.properties.property.PropertyContext;
 import org.polarsys.capella.common.flexibility.properties.schema.IProperties;
@@ -31,7 +29,6 @@ import org.polarsys.capella.common.flexibility.properties.schema.IProperty;
 import org.polarsys.capella.common.flexibility.properties.schema.IPropertyContext;
 import org.polarsys.capella.common.flexibility.wizards.loader.RenderersLoader;
 import org.polarsys.capella.common.flexibility.wizards.renderer.RendererContext;
-import org.polarsys.capella.common.flexibility.wizards.schema.IRenderer;
 import org.polarsys.capella.common.flexibility.wizards.schema.IRendererContext;
 import org.polarsys.capella.common.flexibility.wizards.schema.IRenderers;
 import org.polarsys.capella.common.flexibility.wizards.ui.FlatPropertyWizard;
@@ -50,57 +47,53 @@ public class SelectionCommandHandler extends SubCommandHandler {
   @Override
   public Object execute(ExecutionEvent event) throws ExecutionException {
     ISelection selection = getSelection(event);
-    if(selection != null && selection instanceof IStructuredSelection){
-      IRendererContext context = ExecutionEventUtil.getRendererContext(event);
-      
+    if (selection instanceof IStructuredSelection) {
       String scope = getScope();
       String propertyId = scope;
-      
-      if ((scope == null) || scope.isEmpty()) {
-        return null;
-      }
-      IProperties delegatedProperties = new PropertiesLoader().getProperties(scope);
-      
-      Object source = getPropertySource(selection, context);
-      IPropertyContext delegatedContext = new PropertyContext(delegatedProperties, source);
-      
-      final IProperty delegatedProperty = delegatedProperties.getProperty(propertyId);
-      
-      IRenderers delegatedRenderers = new RenderersLoader().getRenderers(delegatedContext.getProperties());
-      IRendererContext delegatedRendererContext = new RendererContext(delegatedRenderers, delegatedContext);
-      
-      delegatedContext.setCurrentValue(delegatedProperty, delegatedContext.getCurrentValue(delegatedProperty));
-      
-      // initialize(selection, renderer, context, delegatedRendererContext, delegatedProperty);
-      // Instantiates and initializes the wizard
-      FlatPropertyWizard wizard = new FlatPropertyWizard(delegatedContext, delegatedRendererContext) {
-        
-        @Override
-        protected String getTitle() {
-          return delegatedProperty.getName();
+      if (scope != null && !scope.isEmpty()) {
+        IRendererContext context = ExecutionEventUtil.getRendererContext(event);
+        IProperties delegatedProperties = new PropertiesLoader().getProperties(scope);
+
+        Object source = getPropertySource(selection, context);
+        IPropertyContext delegatedContext = new PropertyContext(delegatedProperties, source);
+
+        final IProperty delegatedProperty = delegatedProperties.getProperty(propertyId);
+
+        IRenderers delegatedRenderers = new RenderersLoader().getRenderers(delegatedContext.getProperties());
+        IRendererContext delegatedRendererContext = new RendererContext(delegatedRenderers, delegatedContext);
+
+        delegatedContext.setCurrentValue(delegatedProperty, delegatedContext.getCurrentValue(delegatedProperty));
+
+        // Instantiates and initializes the wizard
+        FlatPropertyWizard wizard = new FlatPropertyWizard(delegatedContext, delegatedRendererContext) {
+
+          @Override
+          protected String getTitle() {
+            return delegatedProperty.getName();
+          }
+
+          @Override
+          protected String getDescription() {
+            return delegatedProperty.getDescription();
+          }
+        };
+
+        // Instantiates the wizard container with the wizard and opens it
+        PropertyDialog dialog = new PropertyDialog(PlatformUI.getWorkbench().getDisplay().getActiveShell(), wizard);
+        dialog.setHelpAvailable(false);
+        dialog.create();
+        int result = dialog.open();
+
+        if (result == Window.OK) {
+          // Store the result of dialog as current value
+          IProperty property = context.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__SCOPE);
+          Object currentValue = delegatedContext.getCurrentValue(delegatedProperty);
+
+          Collection values = (Collection) context.getPropertyContext().getCurrentValue(property);
+          fillValue(values, (Collection) currentValue);
+
+          context.getPropertyContext().setCurrentValue(property, values);
         }
-        
-        @Override
-        protected String getDescription() {
-          return delegatedProperty.getDescription();
-        }
-      };
-      
-      // Instantiates the wizard container with the wizard and opens it
-      PropertyDialog dialog = new PropertyDialog(PlatformUI.getWorkbench().getDisplay().getActiveShell(), wizard);
-      dialog.setHelpAvailable(false);
-      dialog.create();
-      int result = dialog.open();
-      
-      if (result == Window.OK) {
-        //Store the result of dialog as current value
-        IProperty property = context.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__SCOPE);
-        Object currentValue = delegatedContext.getCurrentValue(delegatedProperty);
-        
-        Collection values = (Collection) context.getPropertyContext().getCurrentValue(property);
-        fillValue(values, (Collection) currentValue);
-        
-        context.getPropertyContext().setCurrentValue(property, values);
       }
     }
     return null;

@@ -357,16 +357,6 @@ public class AbstractCommandLine implements ICommandLine {
   }
 
   /**
-   * use logInfo(String message) instead.
-   *
-   * @param message
-   */
-  @Deprecated
-  protected void LogInfo(String message) {
-    logInfo(message);
-  }
-
-  /**
    * @param mode
    *          the mode to set
    */

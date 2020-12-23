@@ -83,8 +83,8 @@ public class CustomPreferencesMessages extends NLS {
 	public static String mode_batch;
 	public static String mode_unknown;
 	public static String severity_info;
-	public static String severity_warning;
-	public static String severity_error;
+	public static String severityWarning;
+	public static String severityError;
 	public static String severity_cancel;
 	public static String severity_null;
 	public static String progress_task_validating;

@@ -67,28 +67,27 @@ public class RemoveHiddenElementsHandler extends AbstractDiagramCommandHandler {
       // No representation -> processing is over.
       MessageDialog.openInformation(PlatformUI.getWorkbench().getDisplay().getActiveShell(), Messages.RemoveHiddenElementsHandler_ConfirmRefreshDialog_Title,
           Messages.RemoveHiddenElementsHandler_NoDiagramDialog_Text);
-      return null;
+    } else {
+      // Ask user confirmation.
+      MessageDialogWithToggle messageDialogWithToggle =
+          new MessageDialogWithToggle(PlatformUI.getWorkbench().getDisplay().getActiveShell(), Messages.RemoveHiddenElementsHandler_ConfirmRefreshDialog_Title,
+              null, Messages.RemoveHiddenElementsHandler_ConfirmRefreshDialog_Text, 0, new String[] { IDialogConstants.OK_LABEL, IDialogConstants.CANCEL_LABEL },
+              1, "Unsynchronize diagrams", true); //$NON-NLS-1$
+      
+      int returnCode = messageDialogWithToggle.open();
+      boolean deleteHiddenConfirmed = (IDialogConstants.OK_ID == returnCode);
+      boolean unsyncDiagrams = messageDialogWithToggle.getToggleState();
+      
+      if (deleteHiddenConfirmed) {
+        //
+        // Create refresh job and schedule it.
+        //
+        Job job = new DeleteHiddenElementsJob(representationsToRefresh, session, unsyncDiagrams);
+        job.setThread(Display.getDefault().getThread());
+        job.setUser(true);
+        job.schedule();
+      }
     }
-    // Ask user confirmation.
-    MessageDialogWithToggle messageDialogWithToggle =
-        new MessageDialogWithToggle(PlatformUI.getWorkbench().getDisplay().getActiveShell(), Messages.RemoveHiddenElementsHandler_ConfirmRefreshDialog_Title,
-            null, Messages.RemoveHiddenElementsHandler_ConfirmRefreshDialog_Text, 0, new String[] { IDialogConstants.OK_LABEL, IDialogConstants.CANCEL_LABEL },
-            1, "Unsynchronize diagrams", true); //$NON-NLS-1$
-
-    int returnCode = messageDialogWithToggle.open();
-    boolean deleteHiddenConfirmed = (IDialogConstants.OK_ID == returnCode);
-    boolean unsyncDiagrams = messageDialogWithToggle.getToggleState();
-
-    if (!deleteHiddenConfirmed) {
-      return null;
-    }
-    //
-    // Create refresh job and schedule it.
-    //
-    Job job = new DeleteHiddenElementsJob(representationsToRefresh, session, unsyncDiagrams);
-    job.setThread(Display.getDefault().getThread());
-    job.setUser(true);
-    job.schedule();
 
     return null;
   }

@@ -17,7 +17,7 @@ import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-public class LogLevel implements Cloneable {
+public class LogLevel {
 
     protected String _name;
     protected boolean _value;
@@ -26,6 +26,11 @@ public class LogLevel implements Cloneable {
       // Do nothing
     }
 
+    public LogLevel(LogLevel source) {
+      this._name = source._name;
+      this._value = source._value;
+    }
+    
     public LogLevel(Element element) {
       setName(element.getAttribute("name"));
       setValue(Boolean.parseBoolean(element.getAttribute("value")));
@@ -84,13 +89,4 @@ public class LogLevel implements Cloneable {
       
       return element;
     }
-    
-    @Override
-    protected LogLevel clone() {
-      LogLevel clone = new LogLevel();
-      clone._name = _name;
-      clone._value = _value;
-      return clone;
-    }
-
 }

@@ -21,7 +21,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
-public class ConfigurationInstance implements Cloneable {
+public class ConfigurationInstance {
 
   protected List<OutputConfiguration> outputConfiguration;
   protected String componentName;
@@ -30,6 +30,13 @@ public class ConfigurationInstance implements Cloneable {
     // Do nothing
   }
   
+  public ConfigurationInstance(ConfigurationInstance source) {
+    this.componentName = source.getComponentName();
+    for (OutputConfiguration config : source.getOutputConfiguration()) {
+      this.getOutputConfiguration().add(new OutputConfiguration(config));
+    }
+  }
+
   public ConfigurationInstance(Element element) {
     setComponentName(element.getAttribute("ComponentName"));
     NodeList outputConfigList = element.getElementsByTagName("OutputConfiguration");
@@ -41,7 +48,7 @@ public class ConfigurationInstance implements Cloneable {
 
   public List<OutputConfiguration> getOutputConfiguration() {
     if (outputConfiguration == null) {
-      outputConfiguration = new ArrayList<OutputConfiguration>(1);
+      outputConfiguration = new ArrayList<>(1);
     }
     return this.outputConfiguration;
   }
@@ -80,17 +87,6 @@ public class ConfigurationInstance implements Cloneable {
     });
     
     return element;
-  }
-
-  @Override
-  public ConfigurationInstance clone() {
-    ConfigurationInstance clone = new ConfigurationInstance();
-    clone.componentName = componentName;
-    
-    for (OutputConfiguration config : getOutputConfiguration()) {
-      clone.getOutputConfiguration().add((OutputConfiguration)config.clone());
-    }
-    return clone;
   }
 
   /**

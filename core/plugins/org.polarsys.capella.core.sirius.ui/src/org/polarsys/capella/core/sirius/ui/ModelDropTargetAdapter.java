@@ -85,7 +85,7 @@ public class ModelDropTargetAdapter extends ViewerDropAdapter {
   @Override
   public boolean performDrop(Object data) {
     try {
-      return tryToCreateSession(data);
+      tryToCreateSession(data);
     } catch (final PartInitException e) {
       SiriusPlugin.getDefault().error(ERROR_CREATING_SESSION, e);
     } catch (final IOException e) {
@@ -99,9 +99,7 @@ public class ModelDropTargetAdapter extends ViewerDropAdapter {
   }
 
   // CHECKSTYLE:OFF
-  private boolean tryToCreateSession(Object data) throws IOException, PartInitException, InvocationTargetException, InterruptedException {
-    boolean result = false;
-
+  private void tryToCreateSession(Object data) throws IOException, PartInitException, InvocationTargetException, InterruptedException {
     // CHECKSTYLE:ON
     TreeSelection currentTreeSelection = null;
     if (data instanceof TreeSelection) {
@@ -133,7 +131,6 @@ public class ModelDropTargetAdapter extends ViewerDropAdapter {
       }
 
     }
-    return result;
   }
 
   private Collection<URI> getURIs(TreeSelection currentTreeSelection) {

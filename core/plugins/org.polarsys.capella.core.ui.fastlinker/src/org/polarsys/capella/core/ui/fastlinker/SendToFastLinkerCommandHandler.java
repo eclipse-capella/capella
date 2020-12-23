@@ -41,11 +41,10 @@ public class SendToFastLinkerCommandHandler extends AbstractHandler {
     ISelection selection = getCurrentSelection(event.getApplicationContext());
     // Get selected model element.
     Collection selectedModelElement = getSelectedModelElement(selection);
-    if (null == selectedModelElement) {
-      return null;
+    if (selectedModelElement != null) {
+      // Put it in FastLinker.
+      FastLinkerActivator.getDefault().getFastLinkerManager().putElementInFastLinker(selectedModelElement);
     }
-    // Put it in FastLinker.
-    FastLinkerActivator.getDefault().getFastLinkerManager().putElementInFastLinker(selectedModelElement);
     return null;
   }
 

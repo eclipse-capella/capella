@@ -60,7 +60,7 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
    */
   protected HashMap<BrowserElementWrapper, BrowserElementWrapper> semanticParentHashMap;
 
-  protected boolean refreshRequired = false;
+  protected boolean isRefreshRequired = false;
 
   protected ISemanticBrowserModel model;
 
@@ -277,7 +277,7 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
   protected boolean refreshRequired(ResourceSetChangeEvent event) {
     boolean result = false;
     synchronized (this) {
-      if (refreshRequired) {
+      if (isRefreshRequired) {
         result = true;
       }
     }
@@ -305,8 +305,8 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
         // Let's refresh completely the viewer.
         // refresh fails here due to the poor content provider implementation based on EObjectWrapper & co.
         synchronized (this) {
-          if (!refreshRequired) {
-            refreshRequired = true;
+          if (!isRefreshRequired) {
+            isRefreshRequired = true;
           }
         }
       }
@@ -319,8 +319,8 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
 
     // If we need to refresh complete view, we refresh it and don't perform any refresh for all others notifications
     synchronized (this) {
-      refresh = refreshRequired;
-      refreshRequired = false;
+      refresh = isRefreshRequired;
+      isRefreshRequired = false;
 
       if (refresh) {
         notifications = null;

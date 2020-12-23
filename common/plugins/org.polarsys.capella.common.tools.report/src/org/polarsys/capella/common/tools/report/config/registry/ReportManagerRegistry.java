@@ -252,7 +252,7 @@ public class ReportManagerRegistry {
         cfgInstance = loadFromFile(defaultConfigurationPath, componentName);
       }
       if (null == cfgInstance) {
-        cfgInstance = configurations.get(IReportManagerDefaultComponents.DEFAULT).clone();
+        cfgInstance = new ConfigurationInstance(configurations.get(IReportManagerDefaultComponents.DEFAULT));
         cfgInstance.setComponentName(componentName);
       }
 

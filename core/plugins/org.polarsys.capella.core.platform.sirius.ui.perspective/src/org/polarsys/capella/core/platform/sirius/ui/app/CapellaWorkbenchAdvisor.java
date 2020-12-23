@@ -21,7 +21,6 @@ import java.lang.reflect.Field;
 import java.time.Year;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
 import org.eclipse.core.commands.operations.IUndoContext;
 import org.eclipse.core.commands.operations.OperationHistoryFactory;
 import org.eclipse.core.internal.jobs.JobManager;
@@ -34,16 +33,10 @@ import org.eclipse.core.runtime.IProduct;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.core.runtime.jobs.IJobChangeEvent;
-import org.eclipse.core.runtime.jobs.IJobChangeListener;
-import org.eclipse.core.runtime.jobs.Job;
-import org.eclipse.core.runtime.jobs.JobChangeAdapter;
 import org.eclipse.emf.validation.service.ModelValidationService;
-import org.eclipse.jface.resource.CompositeImageDescriptor;
 import org.eclipse.jface.viewers.ILabelDecorator;
 import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.graphics.Point;
 import org.eclipse.ui.application.IWorkbenchWindowConfigurer;
 import org.eclipse.ui.application.WorkbenchWindowAdvisor;
 import org.eclipse.ui.ide.undo.WorkspaceUndoUtil;
@@ -57,9 +50,6 @@ import org.eclipse.ui.statushandlers.WorkbenchStatusDialogManager;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.platform.sirius.customisation.SiriusCustomizationPlugin;
 import org.polarsys.capella.common.tools.report.appenders.usage.UsageMonitoringLogger;
-import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
-import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
-import org.polarsys.capella.common.tools.report.util.LogExt;
 import org.polarsys.capella.core.commands.preferences.util.PreferencesHelper;
 import org.polarsys.capella.core.model.handler.advisor.DelegateWorkbenchAdvisor;
 import org.polarsys.capella.core.platform.sirius.ui.perspective.CapellaPerspective;
@@ -184,17 +174,15 @@ public class CapellaWorkbenchAdvisor extends IDEWorkbenchAdvisor {
       Properties configFileAsProperties = new Properties();
       try {
         // Create a stream to load config.ini from installation.
-        InputStream openStream = new FileInputStream(installationConfigFile);
-        configFileAsProperties.load(openStream);
-        // Close the stream.
-        openStream.close();
-        // Create a stream to save loaded config.ini as runtime one : to replace the one tweaked by p2 where keys are
-        // replaced with bad values e.g product,
-        // application,...
-        OutputStream out = new FileOutputStream(configFileUsedByRuntime.toFile());
-        configFileAsProperties.store(out, "This configuration file was written by Capella"); //$NON-NLS-1$
-        // Close the stream.
-        out.close();
+        try (InputStream openStream = new FileInputStream(installationConfigFile)) {
+          configFileAsProperties.load(openStream);
+        }
+        try (OutputStream out = new FileOutputStream(configFileUsedByRuntime.toFile())) {
+          // Create a stream to save loaded config.ini as runtime one : to replace the one tweaked by p2 where keys are
+          // replaced with bad values e.g product,
+          // application,...
+          configFileAsProperties.store(out, "This configuration file was written by Capella"); //$NON-NLS-1$
+        }
       } catch (Exception exception_p) {
         exception_p.printStackTrace();
       }
