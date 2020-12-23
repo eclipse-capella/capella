@@ -106,12 +106,12 @@ public class WorkspaceImagePathChange extends Change {
         openSession(project, pm);
         existingSessions = SessionHelper.getExistingSessions(project);
       }
-      return performChange(existingSessions, pm);
+      performChange(existingSessions, pm);
     }
     return null;
   }
 
-  private Change performChange(Collection<Session> sessions, IProgressMonitor pm) {
+  private void performChange(Collection<Session> sessions, IProgressMonitor pm) {
 
     for (Session session : sessions) {
       ExecutionManager manager = TransactionHelper.getExecutionManager(session);
@@ -140,7 +140,6 @@ public class WorkspaceImagePathChange extends Change {
 
       saveSession(session, pm);
     }
-    return null;
   }
   
   private void renameRelevantCapellaObjects(Session session) {

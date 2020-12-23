@@ -33,16 +33,12 @@ public abstract class AbstractLocateInWorkbenchPartHandler extends
   public Object execute(ExecutionEvent event) throws ExecutionException {
     // Get the active part.
     IWorkbenchPart activePart = (IWorkbenchPart) getVariableValue(event, ACTIVE_PART_VARIABLE);
-    if (null == activePart) {
-      return null;
+    if (activePart != null) {
+      ISelection selection = HandlerUtil.getCurrentSelection(event);
+      if (selection != null) {
+        handleSelection(selection, activePart, event);
+      }
     }
-    
-    ISelection selection = HandlerUtil.getCurrentSelection(event);
-    if (null == selection) {
-      return null;
-    }
-    
-		handleSelection(selection, activePart, event);
     return null;
   }
 

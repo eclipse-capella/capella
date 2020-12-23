@@ -17,7 +17,7 @@ import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 /**
  * Key, value object.
  */
-public class Couple<K, V> implements Cloneable {
+public class Couple<K, V> {
   // Key reference.
   private K _key;
   // Value reference.
@@ -31,6 +31,11 @@ public class Couple<K, V> implements Cloneable {
   public Couple(K key_p, V value_p) {
     _key = key_p;
     _value = value_p;
+  }
+  
+  public Couple(Couple<K, V> source) {
+    this._key = source._key;
+    this._value = source._value;
   }
 
   /**
@@ -63,19 +68,6 @@ public class Couple<K, V> implements Cloneable {
    */
   public void setValue(V value_p) {
     _value = value_p;
-  }
-
-  /**
-   * @see java.lang.Object#clone()
-   */
-  @SuppressWarnings("unchecked")
-  @Override
-  public Couple<K, V> clone() {
-    try {
-      return (Couple<K, V>) super.clone();
-    } catch (CloneNotSupportedException exception_p) {
-      return null;
-    }
   }
 
   /**

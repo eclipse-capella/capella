@@ -21,13 +21,20 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
-public class OutputConfiguration implements Cloneable {
+public class OutputConfiguration {
 
   protected List<LogLevel> logLevel;
   protected String outputName;
 
   public OutputConfiguration() {
     // Do nothing
+  }
+  
+  public OutputConfiguration(OutputConfiguration source) {
+    this.outputName = source.outputName;
+    for (LogLevel level : getLogLevel()) {
+      this.getLogLevel().add(new LogLevel(level));
+    }
   }
   
   public OutputConfiguration(Element element) {
@@ -81,15 +88,4 @@ public class OutputConfiguration implements Cloneable {
     
     return element;
   }
-  
-  @Override
-  protected OutputConfiguration clone() {
-    OutputConfiguration clone = new OutputConfiguration();
-    clone.outputName = outputName;
-    for (LogLevel level : getLogLevel()) {
-      clone.getLogLevel().add(level.clone());
-    }
-    return clone;
-  }
-
 }
