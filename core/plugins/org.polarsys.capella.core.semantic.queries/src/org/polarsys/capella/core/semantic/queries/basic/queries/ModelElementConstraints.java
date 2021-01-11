@@ -77,6 +77,9 @@ public class ModelElementConstraints implements IQuery {
       for (AbstractConstraint constraint : part.getConstraints())
         result.add(constraint);
     }
+    for (AbstractConstraint constraint : component.getConstraints()) {
+      result.add(constraint);
+    }
 
     return result;
   }
