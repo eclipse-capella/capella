@@ -85,7 +85,7 @@ location kitalpha-sdk-master "https://download.eclipse.org/kitalpha/updates/stab
 	org.polarsys.kitalpha.emde.sdk.feature.source.feature.group
 }
 
-location diffmerge-core "https://download.eclipse.org/diffmerge/stable/0.14.0-M1/emf-diffmerge-site" {
+location diffmerge-core "https://download.eclipse.org/diffmerge/stable/0.13.0-M4/emf-diffmerge-site" {
 	org.eclipse.emf.diffmerge.feature.source.feature.group
 	org.eclipse.emf.diffmerge.sirius.feature.source.feature.group
 	org.eclipse.emf.diffmerge.gmf.feature.source.feature.group

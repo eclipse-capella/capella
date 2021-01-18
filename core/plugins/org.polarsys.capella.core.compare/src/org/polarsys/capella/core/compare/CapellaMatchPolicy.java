@@ -181,6 +181,15 @@ public class CapellaMatchPolicy extends SiriusMatchPolicy {
   }
   
   /**
+   * @see java.lang.Object#clone()
+   */
+  @Override
+  public CapellaMatchPolicy clone() throws CloneNotSupportedException {
+    // Override in subclasses if the configurable state is extended or modified
+    return new CapellaMatchPolicy(this);
+  }
+  
+  /**
   /**
    * @see org.eclipse.emf.diffmerge.sirius.SiriusMatchPolicy#getAvailableFineGrainedCriteria()
    */
