@@ -165,7 +165,7 @@
                   lang="Java"
                   mode="Batch"
                   name="DWF_SM_06 - Mode and State should&apos;nt be in same hierarchy"
-                  severity="WARNING"
+                  severity="ERROR"
                   statusCode="1">
                <message>
                   {1} ({0}) has at least a {2} in his hierarchy.
@@ -175,6 +175,25 @@
                </target>
                <description>
                   This rule depends on the Preference option &quot;Mode/State mixed hierarchy allowed&quot;. If this option is set to false, the rule checks that  a state is not in a mode hierarchy or a mode is not in a state hierarchy. In this case, hierarchy includes siblings.
+               </description>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.common.validation.statetransition.MDCHK_State_Mode_Siblings"
+                  id="DWF_SM_16"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_SM_16 - Mode and State can not be mixed in the same State Machine"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  StateMachine ({0}) has mixed Modes and States.
+               </message>
+               <target
+                     class="StateMachine">
+               </target>
+               <description>
+                  This rule depends on the Preference option &quot;Mode/State mixed hierarchy allowed&quot;. If this option is set to false, the rule checks that a State Machine has no mixed States and Modes.
                </description>
             </constraint>
             <constraint
