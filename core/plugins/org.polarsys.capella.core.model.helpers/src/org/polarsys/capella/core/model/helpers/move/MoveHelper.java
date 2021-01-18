@@ -19,6 +19,7 @@ import java.util.List;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -31,6 +32,7 @@ import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.data.capellacommon.AbstractCapabilityPkg;
+import org.polarsys.capella.core.data.capellacommon.AbstractState;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.capellacommon.FinalState;
 import org.polarsys.capella.core.data.capellacommon.Region;
@@ -171,6 +173,19 @@ public class MoveHelper {
             isOK = canMoveModeState((State) source, (Region) target);
           }
 
+        } else if (source instanceof Region) {
+          if (target instanceof AbstractState) {
+            isOK = canMoveRegion((Region) source, (AbstractState) target);
+          }
+          
+          if (target instanceof StateMachine) {
+            isOK = canMoveRegion((Region) source, (StateMachine) target);
+          }
+          
+          if (target instanceof Region) {
+            isOK = canMoveRegion((Region) source, (Region) target);
+          }
+          
         } else if (source instanceof LiteralBooleanValue) {
           isOK = target instanceof BooleanType;
 
@@ -334,6 +349,183 @@ public class MoveHelper {
       areCompatible &= isElementCompatible;
     }
     return areCompatible;
+  }
+  
+  /**
+   * Populate 'states' parameter with all states of a region
+   * 
+   * @param region
+   *          Region
+   * @param states
+   *          List with all encountered states - at the beginning is empty - it will be updated by appending all the
+   *          states of the region
+   */
+  private void populateListWithAllRegionStates(Region region, EList<AbstractState> states) {
+    EList<AbstractState> ownedRegionStates = region.getOwnedStates();
+    if (ownedRegionStates == null || ownedRegionStates.isEmpty())
+      return;
+    states.addAll(ownedRegionStates);
+    for (AbstractState state : ownedRegionStates) {
+      if (state instanceof State) {
+        EList<Region> ownedRegions = ((State) state).getOwnedRegions();
+        if (!(ownedRegions.isEmpty()) && (ownedRegions != null)) {
+          for (Region ownedRegion : ownedRegions) {
+            populateListWithAllRegionStates(ownedRegion, states);
+          }
+        }
+      }
+    }
+  }
+  
+  /**
+   * Get all states of a region
+   * 
+   * @param region
+   *          Region
+   * @return all states of a region
+   */
+  private EList<AbstractState> getAllRegionStates(Region region) {
+    EList<AbstractState> states = new BasicEList<>();
+    populateListWithAllRegionStates(region, states);
+    return states;
+  }
+  
+  /**
+   * Get all states from the same hierarchy as the object parameter
+   * 
+   * @param object
+   *         
+   * @return all states of the same hierarchy or an empty list if the rootRegion is null
+   */
+  public List<AbstractState> getAllStatesFromTheSameHierarchy(EObject object) {
+    Region rootRegion = getRootRegion(object);
+    if (rootRegion != null) {
+      return getAllRegionStates(rootRegion);
+    }
+    return new BasicEList<AbstractState>();
+  }
+  
+  /**
+   * Get the first region (the "root" region = first region under StateMachine) of a State or a Region
+   * 
+   * @param object
+   *          Region or State
+   * @return the root region or null
+   */
+  public Region getRootRegion(EObject object) {
+    if (object.eContainer() != null) {
+      if (!(object.eContainer() instanceof StateMachine)) {
+        return getRootRegion(object.eContainer());
+      }
+      if (object instanceof Region)
+        return (Region) object;
+    }
+    return null;
+  }
+  
+  /**
+   * Depending on mixed hierarchy mode state preference, determine if we can move a region into a State Machine
+   * @param sourceRegion
+   *          The region to be moved
+   * @param stateMachine
+   *          The state machine where the region should be moved
+   * @return true if the region could be moved, false if not
+   */
+  public boolean canMoveRegion(Region sourceRegion, StateMachine stateMachine) {
+    List<AbstractState> regionStates = getAllRegionStates(sourceRegion);
+    EList<Region> machineRegions = stateMachine.getOwnedRegions();
+    for (Region machineRegion : machineRegions) {
+      if (!canMoveStatesInRegion(regionStates, machineRegion)) {
+        return false;
+      }
+    }
+    return true;
+  }
+  
+  
+  /**
+   * Depending on mixed hierarchy mode state preference, determine if we can move a region into a State
+   * 
+   * @param sourceRegion
+   *          The region to be moved
+   * @param targetRegion
+   *          The State or the Mode where the region should be moved
+   * @return true if the region could be moved, false if not
+   */
+  public boolean canMoveRegion(Region sourceRegion, AbstractState targetState) {
+    if (!CapellaModelPreferencesPlugin.getDefault().isMixedModeStateAllowed()) {
+      EList<AbstractState> sourceRegionStates = getAllRegionStates(sourceRegion);
+      return canMoveStatesInState(sourceRegionStates, targetState);
+    }
+    return true;
+  }
+  
+  /**
+   * Depending on mixed hierarchy mode state preference, determine if we can move a region into a Region
+   * 
+   * @param sourceRegion
+   *          The region to be moved
+   * @param targetRegion
+   *          The region where the region should be moved
+   * @return true if the region could be moved, false if not
+   */
+  public boolean canMoveRegion(Region sourceRegion, Region targetRegion) {
+    if (!CapellaModelPreferencesPlugin.getDefault().isMixedModeStateAllowed()) {
+      EList<AbstractState> sourceRegionStates = getAllRegionStates(sourceRegion);
+      return canMoveStatesInRegion(sourceRegionStates, targetRegion);
+    }
+    return true;
+  }
+  
+  /**
+   * Determine if we can move a list of states into a State
+   * 
+   * @param states
+   *          The states to be moved
+   * @param state
+   *          The State or the Mode where the states should be moved
+   * @return true if the states could be moved, false if not
+   */
+  private boolean canMoveStatesInState(List<AbstractState> states, AbstractState state) {
+    Region rootRegion = getRootRegion(state);
+    return canMoveStatesInRegion(states, rootRegion);
+  }
+  
+  /**
+   * Determine if we can move a list of states into a Region
+   * 
+   * @param states
+   *          The states to be moved
+   * @param region
+   *          The region where the states should be moved
+   * @return true if the states could be moved, false if not
+   */
+  private boolean canMoveStatesInRegion(List<AbstractState> states, Region region) {
+    for (AbstractState state : states) {
+      if (!canMoveStateInRegion(state, region)) {
+        return false;
+      }
+    }
+    return true;
+  }
+  
+  /**
+   * Determine if we can move a state into a Region
+   * 
+   * @param state
+   *          The state to be moved
+   * @param region
+   *          The region where the state should be moved
+   * @return true if the state could be moved, false if not
+   */
+  private boolean canMoveStateInRegion(AbstractState state, Region region) {
+    List<AbstractState> regionStates = getAllStatesFromTheSameHierarchy(region);
+    for (AbstractState regionState : regionStates) {
+      if (regionState.getClass() != state.getClass()) {
+        return false;
+      }
+    }
+    return true;
   }
 
   /**
