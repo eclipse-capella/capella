@@ -20,7 +20,6 @@ import org.eclipse.core.resources.IMarker;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.core.data.capellacommon.AbstractState;
-import org.polarsys.capella.core.data.capellacommon.Mode;
 import org.polarsys.capella.core.data.capellacommon.Region;
 import org.polarsys.capella.core.data.capellacommon.State;
 import org.polarsys.capella.core.data.capellacommon.impl.ModeImpl;
@@ -52,26 +51,22 @@ public class DWF_SM_06Resolver extends AbstractDeleteCommandResolver {
   }
 
   private List<AbstractState> getChildrenMixedStates(Object obj) {
-    if (obj instanceof Mode) {
-      List<AbstractState> lstStates = new ArrayList<AbstractState>();
-      EList<Region> regions = ((Mode) obj).getOwnedRegions();
+    List<AbstractState> lstStates = new ArrayList<>();
+    if (obj instanceof State) {
+      EList<Region> regions = ((State) obj).getOwnedRegions();
       for (Region region : regions) {
         for (AbstractState state : region.getOwnedStates()) {
-          if (state.getClass() == StateImpl.class)
+          if (areMixedStateMode(obj, state)) {
             lstStates.add(state);
+          }
         }
-      } 
-      return lstStates;
-    }
-
-    List<AbstractState> lstModes = new ArrayList<AbstractState>();
-    EList<Region> regions = ((State) obj).getOwnedRegions();
-    for (Region region : regions) {
-      for (AbstractState mode : region.getOwnedStates()) {
-        if (mode.getClass() == ModeImpl.class)
-          lstModes.add(mode);
       }
     }
-    return lstModes;
+    return lstStates;
+  }
+  
+  private boolean areMixedStateMode(Object object, AbstractState state) {
+    return ((object.getClass().equals(StateImpl.class) && state.getClass().equals(ModeImpl.class))
+        || (object.getClass().equals(ModeImpl.class) && state.getClass().equals(StateImpl.class)));
   }
 }
