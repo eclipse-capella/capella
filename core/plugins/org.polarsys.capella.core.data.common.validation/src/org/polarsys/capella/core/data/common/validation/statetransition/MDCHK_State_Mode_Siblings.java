@@ -1,3 +1,15 @@
+/*******************************************************************************
+ * Copyright (c) 2021 THALES GLOBAL SERVICES.
+ * 
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0
+ * 
+ * SPDX-License-Identifier: EPL-2.0
+ * 
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
 package org.polarsys.capella.core.data.common.validation.statetransition;
 
 import java.util.ArrayList;
@@ -29,8 +41,8 @@ public class MDCHK_State_Mode_Siblings extends AbstractModelConstraint {
     
     // check if state/mode has no mode/state as "brother"
     EList<Region> regions = stateMachine.getOwnedRegions();
-    Collection<AbstractState> states = new ArrayList<AbstractState>();
-    Collection<AbstractState> modes = new ArrayList<AbstractState>();
+    Collection<AbstractState> states = new ArrayList<>();
+    Collection<AbstractState> modes = new ArrayList<>();
     for (Region region : regions) {
       for (AbstractState st : region.getOwnedStates()) {
         if (st instanceof Mode) {
@@ -51,7 +63,7 @@ public class MDCHK_State_Mode_Siblings extends AbstractModelConstraint {
    * @param state
    */
   private IStatus createFailureStatus(IValidationContext ctx, StateMachine stateMachine) {
-    return ctx.createFailureStatus(new Object[] {stateMachine.getName()});
+    return ctx.createFailureStatus(stateMachine.getName());
   }
 }
 
