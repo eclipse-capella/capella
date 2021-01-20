@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--Capella_Version_5.0.0-->
+<!--Capella_Version_null-->
 <org.polarsys.capella.core.data.capellamodeller:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/5.0.0"
     xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/5.0.0"
@@ -334,6 +334,28 @@
                   </ownedSpecification>
                 </ownedConstraints>
               </ownedTransitions>
+            </ownedRegions>
+          </ownedStateMachines>
+          <ownedStateMachines xsi:type="org.polarsys.capella.core.data.capellacommon:StateMachine"
+              id="199c547f-bbc4-4777-95dd-d394e2dd514b" name="StateMachine 2">
+            <ownedRegions xsi:type="org.polarsys.capella.core.data.capellacommon:Region"
+                id="de5cfc64-9f52-41c4-8883-132dcaa37d6d" name="Default Region" involvedStates="#6b01bdc1-096a-4cc2-9329-fe9b0ddd8bc5">
+              <ownedStates xsi:type="org.polarsys.capella.core.data.capellacommon:State"
+                  id="6b01bdc1-096a-4cc2-9329-fe9b0ddd8bc5" name="State 1">
+                <ownedRegions xsi:type="org.polarsys.capella.core.data.capellacommon:Region"
+                    id="b341f231-2f15-4343-a9ec-e11172e98df3" name="region"/>
+              </ownedStates>
+            </ownedRegions>
+          </ownedStateMachines>
+          <ownedStateMachines xsi:type="org.polarsys.capella.core.data.capellacommon:StateMachine"
+              id="2bd00e18-a03b-46b1-8acf-a1f0d3d8fc58" name="StateMachine 3">
+            <ownedRegions xsi:type="org.polarsys.capella.core.data.capellacommon:Region"
+                id="540670b4-1cd2-4dad-9c25-39e8da85ab89" name="Default Region" involvedStates="#0da70fc6-efc8-4645-a854-67d7fcb37feb">
+              <ownedStates xsi:type="org.polarsys.capella.core.data.capellacommon:Mode"
+                  id="0da70fc6-efc8-4645-a854-67d7fcb37feb" name="Mode 1">
+                <ownedRegions xsi:type="org.polarsys.capella.core.data.capellacommon:Region"
+                    id="09873d88-fc70-43c1-a0fa-473a4e5eb1b9" name="region"/>
+              </ownedStates>
             </ownedRegions>
           </ownedStateMachines>
         </ownedSystemComponents>

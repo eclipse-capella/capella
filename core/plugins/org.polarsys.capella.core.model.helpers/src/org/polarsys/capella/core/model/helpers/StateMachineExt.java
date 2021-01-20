@@ -18,6 +18,7 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.polarsys.capella.core.data.cs.Block;
 import org.polarsys.capella.core.data.cs.Component;
@@ -91,6 +92,24 @@ public class StateMachineExt {
     List<Region> regions = getAllStateMachinesRegions(comp);
     if (!regions.isEmpty()) {
       return regions.get(0);
+    }
+    return null;
+  }
+  
+  /**
+   * Get the first region (the "root" region = first region under StateMachine) of a State or a Region
+   * 
+   * @param object
+   *          Region or State
+   * @return the root region or null
+   */
+  public static Region getRootRegion(EObject object) {
+    if (object.eContainer() != null) {
+      if (!(object.eContainer() instanceof StateMachine)) {
+        return getRootRegion(object.eContainer());
+      }
+      if (object instanceof Region)
+        return (Region) object;
     }
     return null;
   }
