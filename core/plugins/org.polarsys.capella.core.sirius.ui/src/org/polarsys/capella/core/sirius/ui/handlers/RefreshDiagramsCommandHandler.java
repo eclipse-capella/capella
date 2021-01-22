@@ -58,6 +58,7 @@ import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.util.IJobConstants;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.sirius.ui.SiriusUIPlugin;
 import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 
@@ -91,12 +92,11 @@ public class RefreshDiagramsCommandHandler extends AbstractDiagramCommandHandler
         @Override
         public void running(IJobChangeEvent event) {
           // Activate the preference of Sirius: Open refresh on representation opening.
-          currentValueOfSiriusPrefRefreshOnOpening = SiriusEditPlugin.getPlugin().getPreferenceStore()
-              .getBoolean(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name());
-          SiriusEditPlugin.getPlugin().getPreferenceStore()
-              .setValue(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name(), true);
-
-          // avoid dialog box to be displayed
+          if (SessionHelper.hasSpecificSettingRefreshOnRepresentationOpening(session)) {
+            currentValueOfSiriusPrefRefreshOnOpening = session.getSiriusPreferences().isRefreshOnRepresentationOpening();
+          }
+          session.getSiriusPreferences().setRefreshOnRepresentationOpening(true);
+          // Avoid dialog box to be displayed
           uiCallback = SiriusEditPlugin.getPlugin().getUiCallback();
           SiriusEditPlugin.getPlugin().setUiCallback(new NoUICallback());
         }
@@ -106,9 +106,11 @@ public class RefreshDiagramsCommandHandler extends AbstractDiagramCommandHandler
          */
         @Override
         public void done(IJobChangeEvent event) {
-          SiriusEditPlugin.getPlugin().getPreferenceStore().setValue(
-              SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name(),
-              currentValueOfSiriusPrefRefreshOnOpening);
+          if (currentValueOfSiriusPrefRefreshOnOpening == null) {
+            session.getSiriusPreferences().unsetRefreshOnRepresentationOpening();
+          } else {
+            session.getSiriusPreferences().setRefreshOnRepresentationOpening(currentValueOfSiriusPrefRefreshOnOpening.booleanValue());
+          }
           SiriusEditPlugin.getPlugin().setUiCallback(uiCallback);
         }
 

@@ -15,8 +15,12 @@ package org.polarsys.capella.test.diagram.tools.ju.testsuites.partial;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.polarsys.capella.test.diagram.tools.ju.diagram.actions.RefreshAllOnDisabledProject;
+import org.polarsys.capella.test.diagram.tools.ju.diagram.actions.RefreshAllOnEnabledProject;
+import org.polarsys.capella.test.diagram.tools.ju.diagram.actions.RefreshAllOnNonCustomizedProject;
 import org.polarsys.capella.test.diagram.tools.ju.diagram.actions.RefreshAllSubRepresentations;
 import org.polarsys.capella.test.diagram.tools.ju.diagram.actions.RemoveHiddenElements;
+import org.polarsys.capella.test.diagram.tools.ju.diagram.actions.SpecificSettings;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 
@@ -38,6 +42,10 @@ public class DiagramActionsTestSuite extends BasicTestSuite {
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
     tests.add(new RefreshAllSubRepresentations());
+    tests.add(new SpecificSettings());
+    tests.add(new RefreshAllOnEnabledProject());
+    tests.add(new RefreshAllOnDisabledProject());
+    tests.add(new RefreshAllOnNonCustomizedProject());
     tests.add(new RemoveHiddenElements());
     return tests;
   }

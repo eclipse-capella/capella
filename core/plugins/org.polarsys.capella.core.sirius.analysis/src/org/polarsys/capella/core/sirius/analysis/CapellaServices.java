@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2021 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -42,6 +42,7 @@ import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.helper.task.DeleteEObjectTask;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
@@ -441,7 +442,7 @@ public class CapellaServices {
   }
 
   public EObject forceRefresh(DDiagram diagram) {
-    if (null != diagram && !RefreshHelper.isAutoRefresh()) {
+    if (null != diagram && !new DRepresentationQuery(diagram).isAutoRefresh()) {
 
       if (!diagram.getActivatedFilters().isEmpty()) {
         CompositeFilterApplicationBuilder builder = new CompositeFilterApplicationBuilder(diagram);

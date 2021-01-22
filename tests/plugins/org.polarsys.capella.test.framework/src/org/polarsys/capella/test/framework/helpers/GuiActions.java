@@ -27,8 +27,10 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.jobs.IJobChangeEvent;
 import org.eclipse.core.runtime.jobs.IJobManager;
 import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.core.runtime.jobs.JobChangeAdapter;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -395,13 +397,23 @@ public class GuiActions {
     job.schedule();
   }
 
-  public static void refreshAllSubRepresentations(IFile airdFile, Session session) {
+  public static void refreshAllSubRepresentations(IFile airdFile, Session session, Runnable atEnd) {
     Collection<DRepresentationDescriptor> representationsToRefresh = DialectManager.INSTANCE
         .getAllRepresentationDescriptors(session);
     Job job = new RefreshDiagramsCommandHandler().new RefreshDiagramsJob(representationsToRefresh, session,
         Display.getDefault());
     job.setUser(true);
     job.schedule();
+    job.addJobChangeListener(new JobChangeAdapter() {
+      
+      @Override
+      public void done(IJobChangeEvent event) {
+        if (atEnd != null) {
+          atEnd.run();
+        }
+      }
+      
+    });
   }
 
   public static void closeAllOpenedEditors() {
