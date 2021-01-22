@@ -122,6 +122,8 @@ public class DiagramHelper {
   /**
    * Set the auto refresh preference for diagram
    * 
+   * @apiNote that this method will affect the running instance (not specific to a given project)
+   * @see org.eclipse.sirius.business.api.session.Session.getSiriusPreferences
    * @param value
    */
   public static void setPreferenceAutoRefresh(final boolean value) {
@@ -132,6 +134,8 @@ public class DiagramHelper {
   /**
    * Set the refresh on opening preference for diagram
    * 
+   * @apiNote that this method will affect the running instance (not specific to a given project)
+   * @see org.eclipse.sirius.business.api.session.Session.getSiriusPreferences
    * @param value
    */
   public static void setPrefereneRefreshOnOpening(final boolean value) {

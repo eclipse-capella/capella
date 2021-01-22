@@ -18,14 +18,7 @@ import java.util.stream.Collectors;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
-import org.eclipse.core.runtime.preferences.IEclipsePreferences;
-import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.equinox.app.IApplicationContext;
-import org.eclipse.jface.preference.IPreferenceStore;
-import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
-import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
@@ -53,8 +46,6 @@ import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 public class MigrationCommandLine extends DefaultCommandLine {
 
   private Display display;
-  private boolean initialValue_RefreshOnOpening;
-  private boolean initialValue_AutoRefresh;
 
   /**
    * {@inheritDoc}
@@ -73,11 +64,7 @@ public class MigrationCommandLine extends DefaultCommandLine {
       @Override
       public void postStartup() {
         super.postStartup();
-
-        setRefreshPrefs();
         migrateAllImportedProjects(display.getActiveShell());
-        resetRefreshPrefs();
-
         PlatformUI.getWorkbench().close();
       }
     });
@@ -104,34 +91,14 @@ public class MigrationCommandLine extends DefaultCommandLine {
   }
 
   /**
-   * Set the refresh preference to true for diagrams
-   *
+   * Refresh preferences have to be set explicitly within the MigrationContributor opening a Session.
+   * @see org.eclipse.sirius.business.api.session.Session.getSiriusPreferences
    */
+  @Deprecated
   public void setRefreshPrefs() {
-    IPreferenceStore preferenceStore = SiriusEditPlugin.getPlugin().getPreferenceStore();
-    initialValue_RefreshOnOpening = preferenceStore
-        .getBoolean(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name());
-    preferenceStore = SiriusEditPlugin.getPlugin().getCorePreferenceStore();
-    initialValue_AutoRefresh = preferenceStore.getBoolean(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name());
-
-    doSetSiriusPrefs(true, true);
-
-    return;
+    //Do nothing
   }
 
-  private void resetRefreshPrefs() {
-    doSetSiriusPrefs(initialValue_RefreshOnOpening, initialValue_AutoRefresh);
-  }
-
-  private void doSetSiriusPrefs(boolean refreshOnOpening, boolean autoRefresh) {
-    IEclipsePreferences siriusUIPluginPreferences = InstanceScope.INSTANCE.getNode(SiriusEditPlugin.ID);
-    siriusUIPluginPreferences.putBoolean(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name(),
-        refreshOnOpening);
-
-    IEclipsePreferences siriusPluginPreferences = InstanceScope.INSTANCE.getNode(SiriusPlugin.ID);
-    siriusPluginPreferences.putBoolean(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), autoRefresh);
-  }
-  
   @Override
   public void printHelp() {
     super.printHelp();
