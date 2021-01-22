@@ -53,8 +53,6 @@ import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 public class MigrationCommandLine extends DefaultCommandLine {
 
   private Display display;
-  private boolean initialValue_RefreshOnOpening;
-  private boolean initialValue_AutoRefresh;
 
   /**
    * {@inheritDoc}
@@ -74,9 +72,7 @@ public class MigrationCommandLine extends DefaultCommandLine {
       public void postStartup() {
         super.postStartup();
 
-        setRefreshPrefs();
         migrateAllImportedProjects(display.getActiveShell());
-        resetRefreshPrefs();
 
         PlatformUI.getWorkbench().close();
       }
@@ -103,35 +99,6 @@ public class MigrationCommandLine extends DefaultCommandLine {
     }
   }
 
-  /**
-   * Set the refresh preference to true for diagrams
-   *
-   */
-  public void setRefreshPrefs() {
-    IPreferenceStore preferenceStore = SiriusEditPlugin.getPlugin().getPreferenceStore();
-    initialValue_RefreshOnOpening = preferenceStore
-        .getBoolean(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name());
-    preferenceStore = SiriusEditPlugin.getPlugin().getCorePreferenceStore();
-    initialValue_AutoRefresh = preferenceStore.getBoolean(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name());
-
-    doSetSiriusPrefs(true, true);
-
-    return;
-  }
-
-  private void resetRefreshPrefs() {
-    doSetSiriusPrefs(initialValue_RefreshOnOpening, initialValue_AutoRefresh);
-  }
-
-  private void doSetSiriusPrefs(boolean refreshOnOpening, boolean autoRefresh) {
-    IEclipsePreferences siriusUIPluginPreferences = InstanceScope.INSTANCE.getNode(SiriusEditPlugin.ID);
-    siriusUIPluginPreferences.putBoolean(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name(),
-        refreshOnOpening);
-
-    IEclipsePreferences siriusPluginPreferences = InstanceScope.INSTANCE.getNode(SiriusPlugin.ID);
-    siriusPluginPreferences.putBoolean(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), autoRefresh);
-  }
-  
   @Override
   public void printHelp() {
     super.printHelp();
