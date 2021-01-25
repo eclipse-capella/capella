@@ -105,7 +105,7 @@ There are 3 ways to install addons :
 * External installation 
 ** Install the addons in an external directory and configure Capella to get them from this specific directory :
 *** Unzip the archive of the addon in a directory
-*** Add -Dorg.eclipse.equinox.p2.reconciler.dropins.directory=<myAddonsDirectory> at the end of the capella.ini file (after -vm)
+*** Add -Dorg.eclipse.equinox.p2.reconciler.dropins.directory=&lt;myAddonsDirectory&gt; at the end of the capella.ini file (after -vm)
 * Multiple contexts installation 
 ** Create several contexts with specific addons and allow users to launch Capella on one or another context :
 *** Create contexts directories (copy capella.ini from Capella and unzip the needed addons in a dropins folder). 
@@ -138,8 +138,8 @@ There are 3 ways to install addons :
 -Dosgi.instance.area.default=@user.home/../Capella/Context_B/workspace
 |}
 * Create shortcuts to launch Capella using the capella.ini file stored in the expected context:
-** For context A: <CAPELLA_INSTALLATION_DIR>\capella\capella.exe --launcher.ini D:\CapellaContexts\Context_A\capella.ini
-** For context B: <CAPELLA_INSTALLATION_DIR>\capella\capella.exe --launcher.ini D:\CapellaContexts\Context_B\capella.ini
+** For context A: &lt;CAPELLA_INSTALLATION_DIR&gt;\capella\capella.exe --launcher.ini D:\CapellaContexts\Context_A\capella.ini
+** For context B: &lt;CAPELLA_INSTALLATION_DIR&gt;\capella\capella.exe --launcher.ini D:\CapellaContexts\Context_B\capella.ini
 The extensions for Capella requires the installation of the following software:
 
 * Capella : For the Capella installation, please refer to this guide
@@ -151,7 +151,7 @@ The installation procedure is the same for all addons.
 To manually install your addon:
 
 *  Download the addon as a dropin
-*  Extract the contents of the downloaded archive into <CAPELLA_INSTALLATION_DIR>/capella/dropins directory
+*  Extract the contents of the downloaded archive into &lt;CAPELLA_INSTALLATION_DIR&gt;/capella/dropins directory
 Check that the extraction process has finished without error.
 *  Start Capella
 
@@ -164,8 +164,8 @@ Check that the extraction process has finished without error.
 
 | 
 - Make sure that the installed addon as dropin has a valid structure. The structure is similar to:
-* '''<addon name>\eclipse\plugins\*''' 
-* '''<addon name>\eclipse\features\* '''
+* '''&lt;addon name&gt;\eclipse\plugins\*''' 
+* '''&lt;addon name&gt;\eclipse\features\* '''
 
 - The structure is different from the one of an '''update site'''. The '''update site''' does have the '''artifacts.jar''' and '''content.jar''' which might cause problems for installing a plug-in.
 
@@ -227,7 +227,7 @@ In case the path is too long, some files can not be opened by Capella and this w
 
 Example in the [[../help/topic/org.polarsys.capella.ui.doc/html/04.%20User%20Interface/4.06.%20Properties%20View.html#Description_Section |Description Section ]].
 
-The limit is '''115''' characters in the path of the Capella directory to the capella folder: <CAPELLA_INSTALLATION_DIR>/capella.
+The limit is '''115''' characters in the path of the Capella directory to the capella folder: &lt;CAPELLA_INSTALLATION_DIR&gt;/capella.
 
 
 '''Note: the "space" character is counted like three characters (%20)'''.
