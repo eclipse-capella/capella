@@ -4522,8 +4522,16 @@
             <targetViewVariable name="targetView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:If" conditionExpression="aql:source->filter(capellacore::Constraint)->size() = 1">
-                <subModelOperations xsi:type="tool:If" conditionExpression="true">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source.createConstraintElement(target,targetView)"/>
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:source.constrainedElements->size() = 0">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="constrainedElements" valueExpression="aql:target"/>
+                    <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="aql:target" featureName="ownedConstraints"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:source.constrainedElements->size() != 0">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="constrainedElements" valueExpression="aql:target"/>
+                  </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
