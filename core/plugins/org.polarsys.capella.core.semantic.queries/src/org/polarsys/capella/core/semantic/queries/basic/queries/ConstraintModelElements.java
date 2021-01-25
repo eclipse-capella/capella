@@ -15,12 +15,15 @@ package org.polarsys.capella.core.semantic.queries.basic.queries;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.polarsys.capella.core.data.capellacore.Constraint;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.helpers.query.IQuery;
+import org.polarsys.capella.core.data.cs.Part;
+import org.polarsys.capella.core.sirius.analysis.CsServices;
 
 /**
  * Return the contained model element of current constraint
@@ -47,7 +50,15 @@ public class ConstraintModelElements implements IQuery {
 			Constraint current = (Constraint) object;
 			EList<ModelElement> constrainedElements = current.getConstrainedElements();
 			if (!constrainedElements.isEmpty()) {
-			      result.addAll(constrainedElements);				
+        if (CsServices.getService().isMultipartMode(constrainedElements.get(0))) {
+          result.addAll(constrainedElements);
+        } else {
+          // in monopart mode, if element is part, we display the related component
+          List<ModelElement> constrainedElementsForMonopart = constrainedElements.stream()
+              .map(element -> (element instanceof Part) ? ((Part) element).getAbstractType() : element).distinct()
+              .collect(Collectors.toList());
+          result.addAll(constrainedElementsForMonopart);
+        }
 			}
 		}
 		return result;
