@@ -131,9 +131,12 @@ public class CapellaWorkbenchAdvisor extends IDEWorkbenchAdvisor {
     // for both 1.x & 2.x releases.
     IProduct product = Platform.getProduct();
     if (product != null) {
-      String bundleVersion = ((String) product.getDefiningBundle().getHeaders().get("Bundle-version")); //$NON-NLS-1$
-      System.setProperty(CAPELLA_VERSION_TAG, bundleVersion.substring(0, 5));
-      System.setProperty(BUILD_ID_TAG, bundleVersion.substring(6));
+      String bundleVersion = product.getDefiningBundle().getHeaders().get("Bundle-version"); //$NON-NLS-1$
+      int index = bundleVersion.lastIndexOf('.');
+      if (index >= 0) {
+        System.setProperty(CAPELLA_VERSION_TAG, bundleVersion.substring(0, index));
+        System.setProperty(BUILD_ID_TAG, bundleVersion.substring(index + 1));
+      }
     }
     System.setProperty(CURRENT_YEAR, Year.now().toString());
 
