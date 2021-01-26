@@ -187,7 +187,7 @@
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  StateMachine ({0}) has mixed Modes and States.
+                  {0} (StateMachine) has mixed Modes and States.
                </message>
                <target
                      class="StateMachine">

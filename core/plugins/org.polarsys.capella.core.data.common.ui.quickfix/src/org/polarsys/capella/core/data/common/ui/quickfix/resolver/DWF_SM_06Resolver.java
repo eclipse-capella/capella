@@ -20,6 +20,8 @@ import org.eclipse.core.resources.IMarker;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.core.data.capellacommon.AbstractState;
+import org.polarsys.capella.core.data.capellacommon.FinalState;
+import org.polarsys.capella.core.data.capellacommon.Pseudostate;
 import org.polarsys.capella.core.data.capellacommon.Region;
 import org.polarsys.capella.core.data.capellacommon.State;
 import org.polarsys.capella.core.data.capellacommon.impl.ModeImpl;
@@ -66,7 +68,11 @@ public class DWF_SM_06Resolver extends AbstractDeleteCommandResolver {
   }
   
   private boolean areMixedStateMode(Object object, AbstractState state) {
-    return ((object.getClass().equals(StateImpl.class) && state.getClass().equals(ModeImpl.class))
-        || (object.getClass().equals(ModeImpl.class) && state.getClass().equals(StateImpl.class)));
-  }
+      if ((state instanceof Pseudostate) || (state instanceof FinalState)) {
+        return false;
+      }
+       
+      return !object.getClass().equals(state.getClass());
+    }
+  
 }
