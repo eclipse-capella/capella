@@ -31,6 +31,7 @@ import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.data.capellacommon.AbstractCapabilityPkg;
+import org.polarsys.capella.core.data.capellacommon.AbstractState;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.capellacommon.FinalState;
 import org.polarsys.capella.core.data.capellacommon.Region;
@@ -76,6 +77,7 @@ import org.polarsys.capella.core.model.helpers.ComponentPkgExt;
 import org.polarsys.capella.core.model.helpers.InterfaceExt;
 import org.polarsys.capella.core.model.helpers.PartExt;
 import org.polarsys.capella.core.model.helpers.StateExt;
+import org.polarsys.capella.core.model.helpers.StateMachineExt;
 import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 
 /**
@@ -169,6 +171,19 @@ public class MoveHelper {
 
           } else {
             isOK = canMoveModeState((State) source, (Region) target);
+          }   
+        
+        } else if (source instanceof Region) {
+          if (target instanceof AbstractState) {
+            isOK = canMoveRegion((Region) source, (AbstractState) target);
+          }
+
+          if (target instanceof StateMachine) {
+            isOK = canMoveRegion((Region) source, (StateMachine) target);
+          }
+
+          if (target instanceof Region) {
+            isOK = canMoveRegion((Region) source, (Region) target);
           }
 
         } else if (source instanceof LiteralBooleanValue) {
@@ -334,6 +349,94 @@ public class MoveHelper {
       areCompatible &= isElementCompatible;
     }
     return areCompatible;
+  }
+
+  /**
+   * Depending on mixed hierarchy mode state preference, determine if we can move a region into a State Machine
+   * @param sourceRegion
+   *          The region to be moved
+   * @param stateMachine
+   *          The state machine where the region should be moved
+   * @return true if the region could be moved, false if not
+   */
+  public boolean canMoveRegion(Region sourceRegion, StateMachine stateMachine) {
+    if (!CapellaModelPreferencesPlugin.getDefault().isMixedModeStateAllowed()) {
+      List<State> regionStates = getAllModeState(sourceRegion);
+      EList<Region> machineRegions = stateMachine.getOwnedRegions();
+      for (Region machineRegion : machineRegions) {
+        if (!canMoveStatesInRegion(regionStates, machineRegion)) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+
+
+  /**
+   * Depending on mixed hierarchy mode state preference, determine if we can move a region into a State
+   * 
+   * @param sourceRegion
+   *          The region to be moved
+   * @param targetRegion
+   *          The State or the Mode where the region should be moved
+   * @return true if the region could be moved, false if not
+   */
+  public boolean canMoveRegion(Region sourceRegion, AbstractState targetState) {
+    if (!CapellaModelPreferencesPlugin.getDefault().isMixedModeStateAllowed()) {
+      List<State> sourceRegionStates = getAllModeState(sourceRegion);
+      return canMoveStatesInState(sourceRegionStates, targetState);
+    }
+    return true;
+  }
+
+  /**
+   * Depending on mixed hierarchy mode state preference, determine if we can move a region into a Region
+   * 
+   * @param sourceRegion
+   *          The region to be moved
+   * @param targetRegion
+   *          The region where the region should be moved
+   * @return true if the region could be moved, false if not
+   */
+  public boolean canMoveRegion(Region sourceRegion, Region targetRegion) {
+    if (!CapellaModelPreferencesPlugin.getDefault().isMixedModeStateAllowed()) {
+      List<State> sourceRegionStates = getAllModeState(sourceRegion);
+      return canMoveStatesInRegion(sourceRegionStates, targetRegion);
+    }
+    return true;
+  }
+
+  /**
+   * Determine if we can move a list of states into a State
+   * 
+   * @param states
+   *          The states to be moved
+   * @param state
+   *          The State or the Mode where the states should be moved
+   * @return true if the states could be moved, false if not
+   */
+  private boolean canMoveStatesInState(List<State> states, AbstractState state) {
+    Region rootRegion = StateMachineExt.getRootRegion(state);
+    return canMoveStatesInRegion(states, rootRegion);
+  }
+
+  /**
+   * Determine if we can move a list of states into a Region
+   * 
+   * @param states
+   *          The states to be moved
+   * @param region
+   *          The region where the states should be moved
+   * @return true if the states could be moved, false if not
+   */
+  private boolean canMoveStatesInRegion(List<State> states, Region region) {
+    for (State state : states) {
+      if (!canMoveModeState(state, region)) {
+        return false;
+      }
+    }
+    return true;
   }
 
   /**
