@@ -41,7 +41,7 @@
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.information:DataPkg" href="Context_I01.capella#0e25b332-ae04-4d61-869e-6244f5418ab4"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_MwKb-W9zEeaRiLEB1c1Ygg" name="[M&amp;S] Default Region - Modes &amp; States" repPath="#_4PI8ULLTEeCutKVPtKy8bQ">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_MwKb-W9zEeaRiLEB1c1Ygg" name="[M&amp;S] Default Region - Modes &amp; States" repPath="#_4PI8ULLTEeCutKVPtKy8bQ" changeId="0698c4c3-f3ae-40be-92c3-574d764fc7a8">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']"/>
         <target xmi:type="org.polarsys.capella.core.data.capellacommon:Region" href="Context_I01.capella#dd19a302-cbc8-4bed-bd9a-4141e23adf91"/>
       </ownedRepresentationDescriptors>
@@ -1382,7 +1382,7 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@containerMappings[name='SM_ModeState_Container']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_NBcZMG9zEeaRiLEB1c1Ygg" name="SF2 / SF1" sourceNode="_NBTPQG9zEeaRiLEB1c1Ygg" targetNode="_NBTPQm9zEeaRiLEB1c1Ygg">
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_NBcZMG9zEeaRiLEB1c1Ygg" name="SF2, SF1 / SF2 / SF1" sourceNode="_NBTPQG9zEeaRiLEB1c1Ygg" targetNode="_NBTPQm9zEeaRiLEB1c1Ygg">
       <target xmi:type="org.polarsys.capella.core.data.capellacommon:StateTransition" href="Context_I01.capella#cd74df8f-4436-4d17-91f3-507b873a328e"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.capellacommon:StateTransition" href="Context_I01.capella#cd74df8f-4436-4d17-91f3-507b873a328e"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_NBcZMW9zEeaRiLEB1c1Ygg" strokeColor="0,0,0">

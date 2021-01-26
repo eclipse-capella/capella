@@ -46,3 +46,5 @@ logo_capella_big.png
 6.5_Usage%20monitoring1.png
 6.5_Usage%20monitoring2.png
 DiagramsPreference.PNG
+Capella_Preferences_Transitions_1.png
+Capella_Preferences_Transitions_2.png

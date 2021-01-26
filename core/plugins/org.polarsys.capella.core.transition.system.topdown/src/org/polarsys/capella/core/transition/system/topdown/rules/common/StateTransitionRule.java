@@ -16,12 +16,6 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.data.behavior.AbstractEvent;
-import org.polarsys.capella.core.data.capellacommon.StateEvent;
-import org.polarsys.capella.core.data.capellacommon.StateTransition;
-import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
-import org.polarsys.capella.core.transition.common.handlers.contextscope.ContextScopeHandlerHelper;
-import org.polarsys.capella.core.transition.system.topdown.constants.ITopDownConstants;
-import org.polarsys.capella.core.transition.system.topdown.handlers.transformation.TopDownTransformationHelper;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 public class StateTransitionRule extends org.polarsys.capella.core.transition.system.rules.common.StateTransitionRule {
@@ -34,44 +28,25 @@ public class StateTransitionRule extends org.polarsys.capella.core.transition.sy
     super.retrieveContainer(element_p, result_p, context_p);
   }
 
+  /**
+   * For topdown transition, all effected elements should be added in to the scope
+   * 
+   * @param effect
+   * @return
+   */
   @Override
-  protected void retrieveGoDeep(EObject source_p, List<EObject> result_p, IContext context_p) {
+  protected boolean shouldAddEffectInScope(AbstractEvent effect) {
+    return true;
+  }
 
-    super.retrieveGoDeep(source_p, result_p, context_p);
-
-    // but we return children
-    StateTransition element = (StateTransition) source_p;
-
-    if (ContextScopeHandlerHelper.getInstance(context_p).contains(ITransitionConstants.SOURCE_SCOPE, element,
-        context_p)) {
-
-      // Transition only already transitioned functions
-      for (AbstractEvent effect : element.getEffect()) {
-        if (effect != null) {
-          if (TopDownTransformationHelper.getInstance(context_p).isTracedInTarget(effect, context_p)) {
-            ContextScopeHandlerHelper.getInstance(context_p).add(ITopDownConstants.CONTEXT_SCOPE__AVOID_DIFF_ELEMENTS,
-                effect, context_p);
-            result_p.add(effect);
-          }
-        }
-      }
-
-      // Transition only already transitioned functions
-      for (AbstractEvent trigger : element.getTriggers()) {
-        if (trigger != null) {
-          if (trigger instanceof StateEvent) {
-            result_p.add(trigger);
-          }
-          if (TopDownTransformationHelper.getInstance(context_p).isTracedInTarget(trigger, context_p)) {
-            ContextScopeHandlerHelper.getInstance(context_p).add(ITopDownConstants.CONTEXT_SCOPE__AVOID_DIFF_ELEMENTS,
-                trigger, context_p);
-
-            result_p.add(trigger);
-          }
-        }
-      }
-
-    }
-
+  /**
+   * For topdown transition, all triggering elements should be added in to the scope
+   * 
+   * @param trigger
+   * @return
+   */
+  @Override
+  protected boolean shouldAddTriggerInScope(AbstractEvent trigger) {
+    return true;
   }
 }
