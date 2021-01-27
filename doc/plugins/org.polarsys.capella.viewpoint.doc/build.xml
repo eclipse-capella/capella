@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+  
+  This program and the accompanying materials are made available under the
+  terms of the Eclipse Public License 2.0 which is available at
+  http://www.eclipse.org/legal/epl-2.0
+  
+  SPDX-License-Identifier: EPL-2.0
+  
+  Contributors:
+       Thales - initial API and implementation
+-->
+
+<project name="project" default="generate-html">
+	
+	<!-- This property should be set to the path to wikitext standalone package or it can be run inside the current eclipse 
+	 platform if it contains mylyn/mediawiki plugins.
+        
+     	Set to ${eclipse.home}/plugins and run the build.xml with the following option checked 
+	 RunAs/ExternalToolsConfiguration/JRE/RunInTheSameJREThanWorkspace
+	-->
+	<property name="wikitext.standalone" value="${eclipse.home}/plugins"/>
+	
+	<path id="wikitext.classpath">
+        <fileset dir="${wikitext.standalone}">
+			<include name="*.jar"/>
+		</fileset>
+	</path>
+
+    <taskdef classpathref="wikitext.classpath" resource="org/eclipse/mylyn/wikitext/ant/tasks.properties" />
+    <!--
+	
+	<taskdef classpathref="wikitext.classpath" resource="org/eclipse/mylyn/wikitext/core/ant/tasks.properties" />
+	<taskdef classpathref="wikitext.classpath" resource="org/eclipse/mylyn/wikitext/core/util/anttask/tasks.properties" />
+    -->	
+	<target name="generate-html" description="Generate HTML from textile source">
+		<wikitext-to-html markupLanguage="MediaWiki" formatOutput="true">
+			<fileset dir="${basedir}">
+				<include name="**/*.mediawiki"/>
+			</fileset>
+			<stylesheet url="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css" />
+		</wikitext-to-html>
+	</target>
+
+</project>

@@ -6,53 +6,133 @@
 		<link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/>
 	</head>
 	<body>
-		<h1 id="How_to_install_Capella_and_Addons_.3F">How to install Capella and Addons ?</h1>
-		<h2 id="Capella_Installation">Capella Installation</h2>
-		<h3 id="Prerequisites_Needed_for_Install">Prerequisites Needed for Install</h3>
+		<h1 id="Prerequisites">Prerequisites</h1>
 		<p>For a successful installation of Capella, your computer must meet the following recommended requirements:</p>
 		<ul>
-			<li> 64 bit computer running Windows 7/8/10, Windows Server 2008/2012/2016</li>
-			<li> An unzip software such as 7Zip or equivalent</li>
+			<li> 64 bit computer with Windows, Linux or Mac Operating System. (Linux and Mac have not yet been field-proven tested).</li>
+			<li> An unzip software such as 7-Zip or equivalent</li>
 			<li> 2 GHz processor</li>
 			<li> 4 Go RAM</li>
 			<li> 15 GB of available hard disk space</li>
 		</ul>
-		<p>Starting with Capella 5.0, Open JDK 14 is directly embedded in the product.
-			Having a Java environment on your machine is no longer a requirement.</p>
-		<p>If however you want to use a different JDK version, you need to modify the 
-			<b>capella.ini</b> file at 2 places. The first one is to add a -vm argument that points to your JDK location. The second one is to modify -Dosgi.requiredJavaVersion argument to point to your JDK version. Please refer to the 
-			<a href="https://wiki.eclipse.org/Eclipse.ini">following link</a> for more information. Notice that only the embedded JDK has been field-tested.
+		<p>Starting from Capella 5.0, 
+			<a href="https://jdk.java.net">Open JDK</a> is directly embedded in the product. Having a Java environment on your machine is no longer a requirement.
 		</p>
-		<h4 id="Trouble_shooting">Trouble shooting</h4>
-		<p>If launching Capella in Windows OS ends up with the following pop-up, it means that your OS misses some libraries to be compatible with JDK 14.</p>
-		<p>
-			<img border="0" src="Images/LaunchingPopup.png"/>
+		<p>If however you want to use a different JDK version, you need to modify the <code>capella.ini</code> file at 2 places. The first one is to add on two lines <code>-vm</code> and a reference to your JDK location. The second one is to modify <code>-Dosgi.requiredJavaVersion</code> argument to point to your JDK version. Please refer to the following 
+			<a href="https://wiki.eclipse.org/Eclipse.ini">link</a> for more information. Notice that only the embedded JDK has been field-tested.
 		</p>
-		<p>The solution is to install this Microsoft's update according to your OS version: 
-			<a href="https://support.microsoft.com/en-us/help/2999226/update-for-universal-c-runtime-in-windows">https://support.microsoft.com/en-us/help/2999226/update-for-universal-c-runtime-in-windows</a>
+		<p><i>
+			<b>Note:</b> If you intend to install a previous Capella release, follow installation instructions below but please consult the 
+			<a href="#Previous_releases_installation">Previous releases installation</a> section as there are some slight differences on previous Capella releases</i>
 		</p>
-		<h3 id="Capella_Installation_Procedure">Capella Installation Procedure</h3>
+		<h1 id="Installation_from_previous_version">Installation from previous version</h1>
 		<p>Before starting the installation, the target location of Capella must be cleaned:</p>
-		<ol>
-			<li>The previous Capella version must be correctly uninstalled (See related section)</li>
-			<li>All manual patches/extensions must be removed    </li>
-			<li>Download Capella and extract it in a given directory </li>
-		</ol>
-		<p>
-			<b>Note</b> : 
-			<b>See Restriction</b> 
-		</p>
-		<h3 id="Verification_Installation_Procedure">Verification Installation Procedure</h3>
-		<p>The Capella installation is successful  if the archive extraction finished without errors.</p>
 		<ul>
-			<li> The Capella folder should contain two folders:
+			<li>The previous Capella version must be correctly uninstalled (See related section)</li>
+			<li>All manual patches/extensions must be removed</li>
+		</ul>
+		<h1 id="Windows_and_Linux">Windows and Linux</h1>
+		<ol>
+			<li>Download Capella and extract it in a given directory.</li>
+			<li>Installation shall be complete as long as it is extracted successfully.</li>
+		</ol>
+		<p><i>
+			<b>Note:</b> See 
+			<a href="#Restrictions_and_Troubleshooting">Restrictions and Troubleshooting</a> section below. (Some installation issues can occurs. e.g. due to 'Folder Long Path limitation' or 'Missing libraries')</i>
+		</p>
+		<ul>
+			<li>The Capella folder should contain two folders:
 				<ul>
-					<li>capella: the Capella modeling workbench with the .exe of Capella </li>
+					<li>capella: the Capella modeling workbench with the executable of Capella</li>
 					<li>samples: the sample models</li>
 				</ul>
 			</li>
 		</ul>
-		<h3 id="Multi-user_installation">Multi-user installation</h3>
+		<h1 id="Mac">Mac</h1>
+		<p>Since Capella hasn't been installed from Apple Store, it might not be runnable directly once downloaded and you will have to follow some additional instructions to make it runnable.</p>
+		<ol>
+			<li>Depending on you Mac configuration you may need to double click on the downloaded archive to extract or it will have extracted automatically when the download completes.</li>
+			<li>Using Finder drag the Capella to your applications folder.</li>
+			<li>Launch Terminal from your Applications &gt; Utilities or using a spotlight search (CMD + Space)</li>
+			<li>In Terminal window, type: <code>xattr -d com.apple.quarantine /Applications/Capella.app</code></li>
+		</ol>
+		<p><span id="Addons-Installation"/><span id="Addons_Installation"/><span id="Addons Installation"/></p>
+		<h1 id="Configuration_and_Extensibility">Configuration and Extensibility</h1>
+		<p>Capella is extensible with addons that can be installed onto Capella to enrich its functionalities.
+			Addons are installable as "update sites" or as "dropins".</p>
+		<p>Before installing an addon, you shall think about how the Capella installation will be used. A common question is whether the installation is supposed to support several users or not. If it's the case, a possible configuration is to share the same installation of Capella with several users using independently different set of addons. Another possible configuration is to allow users to work on several contexts where they share common set of addons and configuration. To set up these configurations, several strategies are described in the 
+			<a href="#Configuration_strategies">Configuration strategies</a>.
+		</p>
+		<p><i>
+			<b>Note:</b> Make sure that the addon/extension is compatible with your current version of Capella. This shall be provided by the addon provider.</i>
+		</p>
+		<h2 id="Update_Sites">Update Sites</h2>
+		<p>Update sites can be distributed as archive or with an URL. While archives allow by definition the offline installation capability, accessing update-sites via URL may require access to the Internet. It is not the case with dropins since they are self-contained artefacts. Behind a proxy you may face some issues and require specific configuration on Capella Preferences &gt; General &gt; Network connections.</p>
+		<p>To install an update site:</p>
+		<ul>
+			<li>Launch Capella (based on the expected configuration, see 
+				<a href="#Configuration_strategies">Configuration strategies</a>)
+			</li>
+			<li>Open Help using the menu toolbar</li>
+			<li>Select Install New Software</li>
+			<li>A wizard is displayed</li>
+			<li>Click on Add button</li>
+			<li>Click on Archive if the update site is packaged as a ZIP, or set URL if you have an URL link then Press OK</li>
+			<li>Click on the expected features to be installed, then Next.
+				<ul>
+					<li>
+						<i>Sometimes update sites provide several functionalities for a same addon and you can choose not to install some functionalities to your Capella installation. For instance, a XHTML Docgen contribution may not be installed unless you already have installed the XHTML Generation addon, or a Collaborative Feature should not be installed because it will not work without Team for Capella. Not selecting all the features of an update site doesn't prevent main functionalities to be fully working as expected.</i>
+					</li>
+				</ul>
+			</li>
+			<li>Agree license agreement and click on Finish</li>
+			<li>Restart when prompted</li>
+		</ul>
+		<h3 id="Command_line_update_site_installation">Command line update site installation</h3>
+		<p>An update site can also be installed through command line. (replace {xxx} by corresponding values without brackets)</p>
+		<p><code>{capellaExecutable} -repository {file://updateSite.zip|
+			<a href="https://updateSiteUrl">https://updateSiteUrl</a>} -installIU {featureName} -application org.eclipse.equinox.p2.director -noSplash</code>
+		</p>
+		<p>In that case, start once Capella with <code>-clean</code> command line parameter to ensure that installation is properly updated.</p>
+		<h2 id="Dropins">Dropins</h2>
+		<p>Dropins are self-contained addons.</p>
+		<ul>
+			<li>Download the addon as a dropin.</li>
+			<li>Extract the contents of the downloaded archive into the expected dropins folder (see 
+				<a href="#Configuration_strategies">Configuration strategies</a>)
+			</li>
+			<li>Start once Capella with <code>-clean</code> command line parameter to ensure that installation is properly updated.</li>
+		</ul>
+		<p>Make sure that the installed addon as dropin has a valid structure. </p>
+		<p>The structure is similar to:</p>
+		<ul>
+			<li><code>addonName\eclipse\plugins\*</code></li>
+			<li><code>addonName\eclipse\features\*</code></li>
+		</ul>
+		<p><i>
+			<b>Note:</b> The structure of dropin is different from an update site, preventing an update site from being installed as dropin as is. (There is some additional files <code>artifacts.jar</code> and <code>content.jar</code> or the folder hierarchy is different)</i>
+		</p>
+		<h2 id="Verification">Verification</h2>
+		<p>The following procedure for verifying the successful installation of addons</p>
+		<ul>
+			<li>Open 
+				<b>Help</b> &gt; 
+				<b>About Capella</b>
+			</li>
+			<li>Select 
+				<b>Installation Details</b>, you shall see features related to the newly installed addon.
+			</li>
+			<li>Open 
+				<b>Window</b> &gt; 
+				<b>Show View</b> &gt; 
+				<b> Others </b> &gt; 
+				<b>General</b> &gt; 
+				<b>Error Log</b> view and verify there is not any error message relating to the installed add-on.
+			</li>
+		</ul>
+		<p><span id="Configuration strategies"/>
+<span id="Multiuser_installation"/></p>
+		<h2 id="Configuration_strategies">Configuration strategies</h2>
 		<p>Capella provides different strategies for supporting multi-user installs. Each strategy is deployed based on three important locations: </p>
 		<ul>
 			<li>
@@ -65,318 +145,203 @@
 				<b>The instance area</b>: the place where users store data.
 			</li>
 		</ul>
-		<h4 id="Strategy_1_-_Private_install">Strategy 1 - Private install</h4>
-		<p>Single user install. This is the most basic configuration. Nothing needs to be set up.</p>
-		<h5 id="Particularities:">Particularities:</h5>
+		<h3 id="Strategy_1:_Single_user_installation">Strategy 1: Single user installation</h3>
+		<p>Single installation. This is the most basic configuration.
+			An user can use Capella, install some addons, that will be installed in the 
+			<b>configuration</b> folder of the Capella installation.
+		</p>
+		<p>
+			<img border="0" src="Images/single.png"/>
+		</p>
+		<p>
+			<b>Particularities</b>
+		</p>
 		<ul>
-			<li>The configuration area is by default the 
-				<b>configuration</b> directory in the Capella installation folder.
-			</li>
+			<li>User shall have write access in installation folder when Capella is used.</li>
+			<li>Not applicable if several users are intended to use the installation.</li>
 		</ul>
-		<h5 id="Setup:">Setup:</h5>
+		<p>
+			<b>Setup</b>
+		</p>
 		<ul>
 			<li>Enabled by default, nothing to do.</li>
-		</ul>
-		<h4 id="Strategy_2_-_Shared_install">Strategy 2 - Shared install</h4>
-		<p>Multi user shared install.</p>
-		<h5 id="Particularities:_2">Particularities:</h5>
-		<ul>
-			<li>The users share the same install area, but manage themselves the configuration area. </li>
-			<li>The users must clean their configuration area each time the set of plugins is modified.</li>
-		</ul>
-		<h5 id="Setup:_2">Setup:</h5>
-		<ul>
-			<li>Either in 
-				<b>capella.ini</b> or 
-				<b>config.ini</b> file, add the argument 
-				<b>osgi.configuration.area=@user.home/path/to/user/configuration</b> .
+			<li>If you choose to install add-ons using update sites, install them as described in 
+				<a href="#Update_Sites">Update Sites</a> section.
 			</li>
+			<li>If you choose to install add-ons using dropins, install them on <code>dropins</code> folder of Capella installation or in another location by adding the <code>-Dorg.eclipse.equinox.p2.reconciler.dropins.directory=path/to/dropins</code> (no quotes) at the end of the <code>capella.ini</code> file.</li>
 		</ul>
-		<h4 id="Strategy_3_-_Shared_configuration">Strategy 3 - Shared configuration</h4>
-		<p>Multi user shared configuration install.</p>
-		<h5 id="Particularities:_3">Particularities:</h5>
+		<h3 id="Strategy_2:_Shared_installation">Strategy 2: Shared installation</h3>
+		<p>Multi users with a shared installation. Users will share a same installation of Capella which can be provided to them with a predefined-set of addons.</p>
+		<p>
+			<img border="0" src="Images/multiuser-simple.png"/> 
+			<img border="0" src="Images/multiuser.png"/>
+		</p>
+		<p>
+			<b>Setup</b>
+		</p>
 		<ul>
-			<li>The users share the same install area and a common configuration area (called master configuration area), and have 
-				<b>read only</b> rights.
-			</li>
-			<li>The system administrator must initialize the master configuration area (by default the 
-				<b>configuration</b> directory in the Capella installation folder). 
-			</li>
-		</ul>
-		<h5 id="Prerequisites:">Prerequisites:</h5>
-		<ul>
-			<li> The administrator must do the setup operations with 
-				<b>administrator rights</b>!
-			</li>
-		</ul>
-		<h5 id="Setup:_3">Setup:</h5>
-		<ul>
-			<li>For normal users: In 
-				<b>capella.ini</b> add the argument 
-				<b>osgi.configuration.area=@user.home/path/to/user/configuration</b> . 
-			</li>
-			<li>For administrator: create a 
-				<b>admin.ini</b> file, having the same content as 
-				<b>capella.ini</b> in which the line  
-				<b>osgi.configuration.area</b> is removed, and launch Capella referencing the 
-				<b>admin.ini</b> file.
-			</li>
-		</ul>
-		<h4 id="Strategy_4_-_Multi-level_shared_configuration">Strategy 4 - Multi-level shared configuration</h4>
-		<p>Multi level user shared configuration install.</p>
-		<h5 id="Particularities:_4">Particularities:</h5>
-		<ul>
-			<li>This is similar to Strategy 3, except that instead of sharing the master configuration area, we can share intermediate configuration areas.</li>
-			<li>Each configuration area is suitable for a specific working environment (e.g. with different plugins install). </li>
-		</ul>
-		<h5 id="Setup:_4">Setup:</h5>
-		<ul>
-			<li>The system administrator initializes the master configuration area (by default the 
-				<b>configuration</b> directory in the Capella installation folder). 
-			</li>
-		</ul>
-		<ul>
-			<li>The working environment administrators initialize their local shared configurations by adding the argument 
-				<b>-Dosgi.configuration.area=path/to/shared/configuration</b> to their own custom 
-				<b>.ini</b> file. 
-			</li>
-		</ul>
-		<ul>
-			<li>Users configure their 
-				<b>capella.ini</b> to point to the shared configuration area of the working environment that they belong to, as follows:
+			<li>In <code>capella.ini</code> file, add the argument <code>-Dosgi.configuration.area=@user.home/xxx/capella/configuration</code>. (each user shall have a dedicated folder)</li>
+			<li>An administrator can install addons in the main installation of Capella that will be available for all users.
 				<ul>
-					<li>
-						<b>-Dosgi.sharedConfiguration.area=path/to/shared/configuration</b>
+					<li>Create a dedicated <code>admin.ini</code> file, having the same content than <code>capella.ini</code> without the previously add line <code>-Dosgi.configuration.area</code></li>
+					<li>Launch Capella referencing the <code>admin.ini</code> file by using <code>--launcher.ini admin.ini</code> command line parameter. </li>
+					<li>If you choose to install add-ons using update sites, install them as described in 
+						<a href="#Update_Sites">Update Sites</a> section, they will be installed in <code>capellaInstallation/(configuration|p2|plugins|features)</code>
 					</li>
-					<li>
-						<b>-Dosgi.configuration.cascaded=true</b>
-					</li>
+					<li>If you choose to install add-ons using dropins, install them on <code>dropins</code> folder of Capella installation or in another location by adding the <code>-Dorg.eclipse.equinox.p2.reconciler.dropins.directory=path/to/folder</code> (path without quotes) at the end of the <code>capella.ini</code> and <code>admin.ini</code> files.</li>
 				</ul>
 			</li>
 		</ul>
-		<h3 id="Workaround_to_open_the_Help_Content_when_there_is_problem_with_the_browser">Workaround to open the Help Content when there is problem with the browser</h3>
-		<p>Sometimes due to security policy, the web browser has problem on opening local host web pages. This is the case of the Help Content page when it is accessed via the 127.0.0.1 IP address. Here are 2 possible workarounds to overcome this problem:</p>
 		<ul>
-			<li> In the URL, replace 127.0.0.1 by localhost.</li>
-			<li> Copy the URL and paste it in another web browser without restriction.</li>
+			<li>Users can now use the setup properly. If afterwards, you want to install new addons to users, just run Capella with <code>admin.ini</code> and install them.</li>
 		</ul>
-		<h2 id="Addons_Installation">Addons Installation</h2>
-		<p>There are 3 ways to install addons :</p>
+		<p><span id="Strategy_4_Multilevel_shared_configuration"/></p>
+		<h3 id="Strategy_3:_Several_contexts_with_a_shared_installation">Strategy 3: Several contexts with a shared installation</h3>
+		<p>A same installation of Capella can be used for several contexts (several teams, several separated models, etc) where users share a different set of addons per context.
+			An user can also be part of / working on several contexts.</p>
+		<p>
+			<img border="0" src="Images/multicontext-simple.png"/> 
+		</p>
+		<p>
+			<b>Setup</b>
+		</p>
 		<ul>
-			<li>Simple installation 
+			<li>The administrator can install a predefined list of addons in the installation of Capella. Just launch capella and install them, from update sites or in dropins folder.</li>
+		</ul>
+		<ul>
+			<li>For each context, an administrator will define a dedicated folder to store configuration for the given context. <code>somewhere/contextX/capella/configuration</code>
 				<ul>
-					<li>Install the addons directly in the dropins folder of Capella :
-						<ul>
-							<li>Unzip the archive of the addon in your Capella "dropins" directory</li>
-						</ul>
-					</li>
+					<li>Create a dedicated <code>contextX_admin.ini</code> with an added line: <code>-Dosgi.configuration.area=somewhere/contextX/capella/configuration</code>. This file will be used by administrators when installing a new add-on for the <code>contextX</code></li>
+					<li>Create another dedicated <code>contextX.ini</code> with added lines <code>-Dosgi.sharedConfiguration.area=somewhere/contextX/capella/configuration</code> and <code>-Dosgi.configuration.area=@user.home/xxx/contextX/capella/configuration</code>. This file will be used by users is referring to the configuration of the contextX with <code>osgi.sharedConfiguration.area</code></li>
 				</ul>
 			</li>
-			<li>External installation 
+		</ul>
+		<p>An administrator can install addons that will be available only for a working context:</p>
+		<ul>
+			<li>
 				<ul>
-					<li>Install the addons in an external directory and configure Capella to get them from this specific directory :
-						<ul>
-							<li>Unzip the archive of the addon in a directory</li>
-							<li>Add -Dorg.eclipse.equinox.p2.reconciler.dropins.directory=&lt;myAddonsDirectory&gt; at the end of the capella.ini file (after -vm)</li>
-						</ul>
+					<li>Launch Capella referencing the <code>contextX_admin.ini</code> file by using <code>--launcher.ini contextX_admin.ini</code> command line parameter.</li>
+					<li>If you choose to install add-ons using update sites, install them as described in 
+						<a href="#Update_Sites">Update Sites</a> section, they will be installed in <code>somewhere/contextX/capella/(configuration|p2|plugins|features)</code>
 					</li>
-				</ul>
-			</li>
-			<li>Multiple contexts installation 
-				<ul>
-					<li>Create several contexts with specific addons and allow users to launch Capella on one or another context :
+					<li>If you choose to install add-ons using dropins, install them on <code>somewhere/contextX/capella/dropins</code> location.
 						<ul>
-							<li>Create contexts directories (copy capella.ini from Capella and unzip the needed addons in a dropins folder). </li>
-							<li>For each context, change the capella.ini file as follows:</li>
+							<li>In <code>contextX.ini</code>, add also <code>-Dorg.eclipse.equinox.p2.reconciler.dropins.directory=somewhere/contextX/capella/dropins</code> to refer to the dropin location.</li>
 						</ul>
 					</li>
 				</ul>
 			</li>
 		</ul>
+		<ul>
+			<li>For each users and its working contexts, create a shortcut to <code>capella.exe</code> with <code>--launcher.ini path/to/contextX.ini</code> command line parameter. The user will be able to launch Capella with the set of addons predefined for all its working contexts.</li>
+			<li>Users can now use the setup properly. If afterwards, you want to install new addons to all contexts, just run Capella and install them, for one particular context, run Capella with one of the <code>contextX_admin.ini</code>.</li>
+		</ul>
+		<h3 id="Recommendations_for_setting_up_multi-users_configurations">Recommendations for setting up multi-users configurations</h3>
 		<p>
-			<img height="330" width="588" border="0" src="Images/3.9.%20How%20to%20install%20Cappela%20and%20Addons_Multicontext_Install.png"/>
+			<b>Ensure that addons are properly installed before users encounter installation errors</b>
 		</p>
+		<p>After updating the installation of Capella or addons</p>
 		<ul>
-			<li>For Context_A, add the following lines at the end of the capella.ini file (after -vm)</li>
+			<li>Do not forget to restart the application as requested while installation of Update sites, or by adding the option <code>-clean</code> in command line parameter.</li>
 		</ul>
-		<table border="1">
-			<tr>
-				<td>
-					<p>(Example)</p>
-					<ul>
-						<li>Dropins location in Context_A directory</li>
-					</ul>
-					<p>-Dorg.eclipse.equinox.p2.reconciler.dropins.directory=D:\CapellaContexts\Context_A\dropins</p>
-					<ul>
-						<li>Configuration location for Context_A in the user's specific directory</li>
-					</ul>
-					<p>-Dosgi.configuration.area=@user.home/.../Capella/Context_A/configuration</p>
-					<ul>
-						<li>Default workspace location for Context_A in user's specific directory</li>
-					</ul>
-					<p>-Dosgi.instance.area.default=@user.home/../Capella/Context_A/workspace</p>
-				</td>
-			</tr>
-		</table>
 		<ul>
-			<li>For Context_B, add the following lines at the end of the capella.ini file (after -vm)</li>
+			<li>It is recommended to launch once all your users client by adding a <code>-clean</code> in command line argument to ensure that configurations are updated properly for each users then check Error Log messages. Do not forget to remove this <code>-clean</code> parameter after this test to avoid starting performance issues.</li>
 		</ul>
-		<table border="1">
-			<tr>
-				<td>
-					<p>(Example)</p>
-					<ul>
-						<li>Dropins location in Context_B directory</li>
-					</ul>
-					<p>-Dorg.eclipse.equinox.p2.reconciler.dropins.directory=D:\CapellaContexts\Context_B\dropins</p>
-					<ul>
-						<li>Configuration location for Context_B in user's specific directory</li>
-					</ul>
-					<p>-Dosgi.configuration.area=@user.home/.../Capella/Context_B/configuration</p>
-					<ul>
-						<li>Default workspace location for Context_B in user's specific directory</li>
-					</ul>
-					<p>-Dosgi.instance.area.default=@user.home/../Capella/Context_B/workspace</p>
-				</td>
-			</tr>
-		</table>
 		<ul>
-			<li>Create shortcuts to launch Capella using the capella.ini file stored in the expected context:
-				<ul>
-					<li>For context A: &lt;CAPELLA_INSTALLATION_DIR&gt;\capella\capella.exe --launcher.ini D:\CapellaContexts\Context_A\capella.ini</li>
-					<li>For context B: &lt;CAPELLA_INSTALLATION_DIR&gt;\capella\capella.exe --launcher.ini D:\CapellaContexts\Context_B\capella.ini</li>
-				</ul>
-			</li>
+			<li>It is recommended to start the application once with <code>-checkConfiguration</code> to ensure that the cache is up to date with the respect to the contents of the installed bundles.</li>
 		</ul>
-		<p>The extensions for Capella requires the installation of the following software:</p>
 		<ul>
-			<li>Capella : For the Capella installation, please refer to this guide</li>
+			<li>It is recommended to switch to a new workspace, some information might have been cached in it (Java version, etc...).</li>
 		</ul>
 		<p>
-			<b>Note</b>:Make sure that the addon/extension is compatible with your current version of Capella.
+			<b>One user can be part of several working contexts</b>
 		</p>
-		<h3 id="Addons">Addons</h3>
-		<p>The installation procedure is the same for all addons.   </p>
-		<h4 id="As_Dropin">As Dropin</h4>
-		<p>To manually install your addon:</p>
+		<p>When working with several contexts, it is important to avoid mixing configuration between contexts for both <code>-Dosgi.sharedConfiguration.area</code> and <code>-Dosgi.configuration.area</code>. Both path must contain a <code>contextX</code> information. Afterwards, if a user is part of a new <code>contextY</code>, administrator will just have to provide a new launcher with <code>--launcher.ini contextY.ini</code> and the configuration will be located in a dedicated <code>contextY</code> folder and will not be mixed up with previous contexts.</p>
+		<p>
+			<b>Parent folder of configuration shall be dedicated to capella</b>
+		</p>
 		<ul>
-			<li> Download the addon as a dropin</li>
-			<li> Extract the contents of the downloaded archive into &lt;CAPELLA_INSTALLATION_DIR&gt;/capella/dropins directory</li>
-		</ul>
-		<p>Check that the extraction process has finished without error.</p>
-		<ul>
-			<li> Start Capella</li>
-		</ul>
-		<table border="1">
-			<tr>
-				<td>
-					<p>
-						<img height="34" width="34" border="0" src="Images/Warning.png"/>
-					</p>
-				</td>
-				<td>
-					<p>- Make sure that the installed addon as dropin has a valid structure. The structure is similar to:</p>
-					<ul>
-						<li>
-							<b>&lt;addon name&gt;\eclipse\plugins\*</b> 
-						</li>
-						<li>
-							<b>&lt;addon name&gt;\eclipse\features\* </b>
-						</li>
-					</ul>
-					<p>- The structure is different from the one of an 
-						<b>update site</b>. The 
-						<b>update site</b> does have the 
-						<b>artifacts.jar</b> and 
-						<b>content.jar</b> which might cause problems for installing a plug-in.
-					</p>
-				</td>
-			</tr>
-		</table>
-		<h4 id="As_Update_Site">As Update Site</h4>
-		<ul>
-			<li> Download the addon as an update site</li>
-			<li> Start Capella</li>
-			<li> Open Help using the menu toolbar</li>
-			<li> Select Install New Software</li>
-			<li> A wizard is displayed</li>
-			<li> Click on Add button</li>
-			<li> Click on Archive... button</li>
-			<li> Select the downloaded addon archive and press OK</li>
-			<li> Give it a name and press OK</li>
-			<li> Click on Select All button then Next</li>
-			<li> Agree and click on Finish</li>
-			<li> Restart when prompted</li>
+			<li>Addons will be installed in the parent folder of the configuration area. When setting up <code>-Dosgi.configuration.area</code> or <code>-Dosgi.sharedConfiguration.area</code>, it is important to have a parent folder dedicated to capella. (<code>@user.home/capella-configuration</code> is a bad choice as <code>@user.home</code> will be polluted with other folders, whereas setting up <code>-Dosgi.configuration.area=somewhere/capella/configuration</code> is recommended, as addons will be installed in <code>somewhere/capella/(configuration|p2|plugins|features)</code>.</li>
 		</ul>
 		<p>
-			<b>Verification</b> 
+			<b>Users can install its own addons</b>
 		</p>
-		<p>The following procedure for verifying the successful installation of addons, assumes that Capella is well installed and fully functional.</p>
+		<p>It is important to keep in mind that with all the described configurations above, an user can install its own addons in its configuration area. This can be useful, but sometimes not an expected installation. This can't be prevented by setting up the configuration, but administrators can setup read-only permissions to some predefined folders such as <code>@user.home/xxx/capella/(p2|plugins|features|dropins)</code>.</p>
 		<p>
-			<b>Plugins Verification</b>
+			<img border="0" src="Images/multicontext.png"/>
 		</p>
+		<p><span id="Previous releases installation"/></p>
+		<h1 id="Previous_releases_installation">Previous releases installation</h1>
+		<p>For older Capella releases, Capella will requires a Java Runtime Environment 64 bits 1.8 installed on the computer: the recommended version is <code>jre-8u121-windows-X64.exe</code> or later.</p>
+		<p>Some changes since then:</p>
+		<p>- Execution and configuration files are called <code>eclipse.exe</code> (resp. <code>eclipse.ini</code>) rather than <code>capella.exe</code> (resp. <code>capella.ini</code>)</p>
+		<p>- In case Capella does not start, edit the eclipse.ini file and add two new lines before <code>-vmargs</code>:</p>
 		<ul>
-			<li> Start Capella with the option 
-				<b>-clean</b>. It forces the application to clear the cached data and to rebuild its configuration after installing a plug-in.
-			</li>
-			<li> Open 
-				<b>Help</b> using the menu toolbar
-			</li>
-			<li> Select 
-				<b>About Capella</b>
-			</li>
-			<li> Select 
-				<b>Installation Details</b>
-			</li>
-			<li> Select 
-				<b>Plugins</b> tab
-			</li>
-			<li> Scroll down the list</li>
-			<li>Check that the plugins that correspond to the add-on are displayed.</li>
-			<li>Open 
-				<b>Error Log</b> view and verify there is not any error message relating to the installed add-on.
-			</li>
-			<li>If no problem happens, remove this 
-				<b>-clean</b> parameter to avoid starting performance issues for next times.
+			<li><code>-vm</code></li>
+			<li><code>&lt;ABSOLUTE_PATH_TO_JAVA.EXE&gt;</code> (JRE/JDK 32 or 64-bits according to the version of Capella)</li>
+		</ul>
+		<h1 id="Embed_additional_sample_models">Embed additional sample models</h1>
+		<p>You can configure Capella to embed additional sample models.</p>
+		<p>Sample models are located aside the capella installation folder, in a <code>sample</code> folder. If you package some additional samples here, they will be available to your users using Import &gt; Capella Example &gt; Capella Project Example.</p>
+		<h1 id="Post-installation_steps">Post-installation steps</h1>
+		<h2 id="Migration_of_models">Migration of models</h2>
+		<p>If upgrading from a previous version, please read the model migration guide, as your older models may not be compatible right away with this new version.</p>
+		<ul>
+			<li>
+				<a href="/wiki/../help/topic/org.polarsys.capella.ui.doc/html/03.%20First%20steps%20with%20Capella/3.5.%20How%20to%20migrate%20Capella%20projects.html" title="../help/topic/org.polarsys.capella.ui.doc/html/03.%20First%20steps%20with%20Capella/3.5.%20How%20to%20migrate%20Capella%20projects.html">How to migrate Capella projects</a> <span class="github-link">
+				<a href="/wiki/../03._First_steps_with_Capella/3.5._How_to_migrate_Capella_projects.mediawiki" title="../03. First steps with Capella/3.5. How to migrate Capella projects.mediawiki">(online documentation)</a></span>
 			</li>
 		</ul>
-		<table border="1">
-			<tr>
-				<td>
-					<p>
-						<img height="34" width="34" border="0" src="Images/Warning.png"/>
-					</p>
-				</td>
-				<td>
-					<p>- After updating the installation of Capella, do not forget to restart the application with the option 
-						<b>-clean</b>. Remove this option for the next times to avoid starting performance issues.
-					</p>
-					<p>- Do not forget to switch to a new workspace when the configuration is modified, since some information are cached by Eclipse (Java version, etc...).</p>
-				</td>
-			</tr>
-		</table>
-		<h2 id="Restriction">Restriction</h2>
-		<table border="1">
-			<tr>
-				<td>
-					<p>
-						<img height="34" width="34" border="0" src="Images/Warning.png"/>
-					</p>
-				</td>
-				<td>
-					<p>Capella is based on Eclipse: folder hierarchy and namespace of Capella and Eclipse plugins are quite long. Because of Windows folder path restriction, avoid entering a long installation location. </p>
-					<p>In case the path is too long, some files can not be opened by Capella and this will cause errors. Since the extraction will raise an error you should delete the partially extracted files and re-extract it.</p>
-					<p>Example in the 
-						<a href="/wiki/../help/topic/org.polarsys.capella.ui.doc/html/04.%20User%20Interface/4.06.%20Properties%20View.html#Description_Section" title="../help/topic/org.polarsys.capella.ui.doc/html/04.%20User%20Interface/4.06.%20Properties%20View.html#Description_Section">Description Section </a>.
-					</p>
-					<p>The limit is 
-						<b>115</b> characters in the path of the Capella directory to the capella folder: &lt;CAPELLA_INSTALLATION_DIR&gt;/capella.
-					</p>
-					<p>
-						<b>Note: the "space" character is counted like three characters (%20)</b>.
-					</p>
-				</td>
-			</tr>
-		</table>
+		<ul>
+			<li>If some viewpoints are no longer useful, you can look at 
+				<a href="/wiki/../help/topic/org.polarsys.capella.ui.doc/html/03.%20First%20steps%20with%20Capella/3.6.%20How%20to%20detach%20viewpoints.html" title="../help/topic/org.polarsys.capella.ui.doc/html/03.%20First%20steps%20with%20Capella/3.6.%20How%20to%20detach%20viewpoints.html">How to detach viewpoints</a> <span class="github-link">
+				<a href="/wiki/../03._First_steps_with_Capella/3.6._How_to_detach_viewpoints.mediawiki" title="../03. First steps with Capella/3.6. How to detach viewpoints.mediawiki">(online documentation)</a></span>
+			</li>
+		</ul>
+		<h2 id="Additional_Documentation_References">Additional Documentation References</h2>
+		<p>Some additional documentation references :</p>
+		<ul>
+			<li>
+				<a href="/wiki/../help/topic/org.polarsys.capella.ui.doc/html/03.%20First%20steps%20with%20Capella/3.1.%20Starting%20Capella.html" title="../help/topic/org.polarsys.capella.ui.doc/html/03.%20First%20steps%20with%20Capella/3.1.%20Starting%20Capella.html">Starting Capella</a> <span class="github-link">
+				<a href="/wiki/../03._First_steps_with_Capella/3.1._Starting_Capella.mediawiki" title="../03. First steps with Capella/3.1. Starting Capella.mediawiki">(online documentation)</a></span>
+			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="/wiki/../help/topic/org.polarsys.capella.viewpoint.doc/html/activation/activation.html" title="../help/topic/org.polarsys.capella.viewpoint.doc/html/activation/activation.html">Viewpoints activation</a> <span class="github-link">
+				<a href="/wiki/../../../org.polarsys.capella.viewpoint.doc/html/activation/activation.mediawiki" title="../../../org.polarsys.capella.viewpoint.doc/html/activation/activation.mediawiki">(online documentation)</a></span>
+			</li>
+		</ul>
+		<h2 id="Addon_User_Guide">Addon User Guide</h2>
+		<p>Please refer to the Addon User Guide, there is maybe an additional How to install guide or some post installation steps in it.</p>
+		<p><span id="Restrictions and Troubleshooting"/></p>
+		<h1 id="Restrictions_and_Troubleshooting">Restrictions and Troubleshooting</h1>
+		<h2 id="Windows_-_Folder_Long_Path_limitation">Windows - Folder Long Path limitation</h2>
+		<p>Capella is based on Eclipse: folder hierarchy and namespace of Capella and Eclipse plugins are quite long. Because of Windows folder path restriction, avoid entering a long installation location. </p>
+		<p>In case the path is too long, some files can not be opened by Capella and this will cause errors (for instance Description editor may not work). Since the extraction will raise an error you should delete the partially extracted files and re-extract it.</p>
+		<p><i>
+			<b><b>Note:</b></b> To avoid unexpected errors, path of the Capella directory to the capella folder is limited to 
+			<b>115</b> characters (<code>&lt;CAPELLA_INSTALLATION_DIR&gt;/capella</code>). (a "space" character is counted like three characters (%20)''').</i>
+		</p>
+		<h2 id="Windows_-_Missing_libraries">Windows - Missing libraries</h2>
+		<p>If launching Capella in Windows OS ends up with the following pop-up, it means that your OS misses some libraries to be compatible with JDK 14.</p>
+		<p>
+			<img border="0" src="Images/LaunchingPopup.png"/>
+		</p>
+		<p>The solution is to install this Microsoft's update according to your OS version: 
+			<a href="https://support.microsoft.com/en-us/help/2999226/update-for-universal-c-runtime-in-windows">https://support.microsoft.com/en-us/help/2999226/update-for-universal-c-runtime-in-windows</a>
+		</p>
+		<h2 id="Mac_-_Quarantine_Procedure">Mac - Quarantine Procedure</h2>
+		<p><i>
+			<b>Note:</b> As stated on the download page the Mac version has not been field-tested.</i>
+		</p>
+		<p>The following instructions are applicable to macOS Big Sur:</p>
+		<h2 id="Workaround_to_open_the_Help_Content_when_there_is_problem_with_the_browser">Workaround to open the Help Content when there is problem with the browser</h2>
+		<p>Sometimes due to security policy, the web browser has problem on opening local host web pages. This is the case of the Help Content page when it is accessed via the <code>127.0.0.1</code> IP address. </p>
+		<p>Here are 2 possible workarounds to overcome this problem:</p>
+		<ul>
+			<li>In the URL, replace <code>127.0.0.1</code> by <code>localhost</code>.</li>
+			<li>Copy the URL and paste it in another web browser without restriction.</li>
+		</ul>
 	</body>
 </html>

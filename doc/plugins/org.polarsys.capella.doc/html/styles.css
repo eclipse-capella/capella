@@ -135,7 +135,9 @@ table.VALIDATION-RULE tbody  {
 	color: white;
 }
 
-
+.github-link {
+	display: none;
+}
 
 .VALIDATION-RULE TD {
 	PADDING: 6px;
@@ -143,3 +145,4 @@ table.VALIDATION-RULE tbody  {
 
 .VALIDATION-RULE TR TH {
 	WIDTH: 30px;
+}

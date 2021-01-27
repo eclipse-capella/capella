@@ -1,0 +1,14 @@
+== Overview ==
+
+There is two scenarios for migration:
+
+* New Capella version: When a new version of Capella is available, the viewpoint data may need to be migrated.
+* New viewpoint version : Within the current version of Capella is available, the viewpoint can be updated to a new version. In this case the viewpoint data may need to be migrated.data may need to be migrated.
+
+Version numbers follow the usual eclipse convention: major.minor.micro.qualifier For example: 1.1.0.20161004114119
+When a viewpoint is updated in the platform, if its version major or minor number is upgraded the existing models will need a migration. 
+
+The migration is orchestrated by Capella in both cases.
+
+See [[../help/topic/org.polarsys.capella.ui.doc/html/03.%20First%20steps%20with%20Capella/3.5.%20How%20to%20migrate%20Capella%20projects.html|How to migrate Capella projects]] <span class="github-link">[[../03. First steps with Capella/3.5. How to migrate Capella projects.mediawiki|(online documentation)]]</span>
+ 
