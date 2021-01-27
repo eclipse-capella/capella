@@ -18,9 +18,13 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.polarsys.capella.common.data.behavior.AbstractEvent;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.capellacommon.StateTransition;
+import org.polarsys.capella.core.data.information.ExchangeItem;
+import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.attachment.AttachmentHelper;
+import org.polarsys.capella.core.transition.common.handlers.contextscope.ContextScopeHandlerHelper;
 import org.polarsys.capella.core.transition.system.rules.AbstractCapellaElementRule;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IPremise;
@@ -71,6 +75,43 @@ public class StateTransitionRule extends AbstractCapellaElementRule {
     if (source instanceof StateTransition) {
       StateTransition element = (StateTransition) source;
       result.add(element.getGuard());
+      if (ContextScopeHandlerHelper.getInstance(context).contains(ITransitionConstants.SOURCE_SCOPE, element,
+          context)) {
+        // Add effect elements to scope
+        for (AbstractEvent effect : element.getEffect()) {
+          if (shouldAddEffectInScope(effect)) {
+            ContextScopeHandlerHelper.getInstance(context).add(ITransitionConstants.SOURCE_SCOPE, effect, context);
+            result.add(effect);
+          }
+        }
+        // Add trigger elements to scope
+        for (AbstractEvent trigger : element.getTriggers()) {
+          if (shouldAddTriggerInScope(trigger)) {
+            ContextScopeHandlerHelper.getInstance(context).add(ITransitionConstants.SOURCE_SCOPE, trigger, context);
+            result.add(trigger);
+          }
+        }
+      }
     }
+  }
+
+  /**
+   * By default, only triggering EIs should be added in to the scope
+   * 
+   * @param effect
+   * @return
+   */
+  protected boolean shouldAddEffectInScope(AbstractEvent effect) {
+    return effect instanceof ExchangeItem;
+  }
+
+  /**
+   * By default, only effected EIs should be added in to the scope
+   * 
+   * @param trigger
+   * @return
+   */
+  protected boolean shouldAddTriggerInScope(AbstractEvent trigger) {
+    return trigger instanceof ExchangeItem;
   }
 }
