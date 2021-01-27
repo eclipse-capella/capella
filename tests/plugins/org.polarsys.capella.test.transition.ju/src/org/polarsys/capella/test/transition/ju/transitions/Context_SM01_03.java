@@ -43,6 +43,7 @@ public class Context_SM01_03 extends TopDownTransitionTestCase {
 
   private String id_SF1 = "92574d6e-1b96-4807-9b56-35f5aac2aeb6";
   private String id_SF2 = "ecfb8427-ea46-4d0e-9937-e3872dd9e123";
+  private String id_SF3 = "0f2bb4df-81bf-4472-aa7a-13c40d69cea9";
   private String id_FE_SF1_SF2 = "de7933db-a0fc-446f-b1c8-81a8917b7228";
   
   private String id_SM1 = "02e279c5-ab9d-4802-a7ce-9a860e758a22";
@@ -62,6 +63,7 @@ public class Context_SM01_03 extends TopDownTransitionTestCase {
 
   private String id_e1 = "ce4cdd11-ccdb-47f9-ba8e-5be4ccef0518";
   private String id_e2 = "ae3a2433-90a7-4f00-9a27-7bfcb28ceac6";
+  private String id_e3 = "695ba580-08d3-4871-884d-de666544377a";
 
   private String id_data = "f7fd2415-a37d-47aa-8e9e-f8ba9b59c644";
 
@@ -88,6 +90,7 @@ public class Context_SM01_03 extends TopDownTransitionTestCase {
     // test ISTATE__REFERENCED_STATES
     mustBeTransitioned(id_SM1);
     mustBeTransitioned(id_R11);
+    EObject M111 = getObject(id_M111);
     EObject M111t = mustBeTransitioned(id_M111);
     EObject M112t = mustBeTransitioned(id_M112);
 
@@ -137,6 +140,27 @@ public class Context_SM01_03 extends TopDownTransitionTestCase {
     mustBeLinkedTo(ST113, E2, CapellacommonPackage.Literals.STATE_TRANSITION__TRIGGERS);
     mustBeLinkedTo(ST113t, E1, CapellacommonPackage.Literals.STATE_TRANSITION__EFFECT);
     mustBeLinkedTo(ST113t, E2, CapellacommonPackage.Literals.STATE_TRANSITION__TRIGGERS);
+    
+    // test Do Activity / Entry / Exit
+    EObject SF3 = getObject(id_SF3);
+    EObject SF3t = mustBeTransitioned(id_SF3);
+    mustBeLinkedTo(M111, SF3, CapellacommonPackage.Literals.STATE__DO_ACTIVITY);
+    mustBeLinkedTo(M111, SF3, CapellacommonPackage.Literals.STATE__ENTRY);
+    mustBeLinkedTo(M111, SF3, CapellacommonPackage.Literals.STATE__EXIT);
+    mustNotBeLinkedTo(M111t, SF3, CapellacommonPackage.Literals.STATE__DO_ACTIVITY);
+    mustNotBeLinkedTo(M111t, SF3, CapellacommonPackage.Literals.STATE__ENTRY);
+    mustNotBeLinkedTo(M111t, SF3, CapellacommonPackage.Literals.STATE__EXIT);
+    mustBeLinkedTo(M111t, SF3t, CapellacommonPackage.Literals.STATE__DO_ACTIVITY);
+    mustBeLinkedTo(M111t, SF3t, CapellacommonPackage.Literals.STATE__ENTRY);
+    mustBeLinkedTo(M111t, SF3t, CapellacommonPackage.Literals.STATE__EXIT);
+    
+    EObject E3 = getObject(id_e3);
+    mustBeLinkedTo(M111, E3, CapellacommonPackage.Literals.STATE__DO_ACTIVITY);
+    mustBeLinkedTo(M111, E3, CapellacommonPackage.Literals.STATE__ENTRY);
+    mustBeLinkedTo(M111, E3, CapellacommonPackage.Literals.STATE__EXIT);
+    mustBeLinkedTo(M111t, E3, CapellacommonPackage.Literals.STATE__DO_ACTIVITY);
+    mustBeLinkedTo(M111t, E3, CapellacommonPackage.Literals.STATE__ENTRY);
+    mustBeLinkedTo(M111t, E3, CapellacommonPackage.Literals.STATE__EXIT);
   }
 
   private void step2() {
