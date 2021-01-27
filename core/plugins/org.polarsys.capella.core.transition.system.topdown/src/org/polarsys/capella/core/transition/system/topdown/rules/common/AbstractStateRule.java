@@ -15,16 +15,14 @@ package org.polarsys.capella.core.transition.system.topdown.rules.common;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-
+import org.polarsys.capella.common.data.behavior.AbstractEvent;
+import org.polarsys.capella.common.data.modellingcore.IState;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.data.cs.CsPackage;
-import org.polarsys.capella.core.data.capellacommon.State;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.contextscope.ContextScopeHandlerHelper;
 import org.polarsys.capella.core.transition.system.topdown.constants.ITopDownConstants;
 import org.polarsys.capella.core.transition.system.topdown.handlers.transformation.TopDownTransformationHelper;
-import org.polarsys.capella.common.data.behavior.AbstractEvent;
-import org.polarsys.capella.common.data.modellingcore.IState;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 public class AbstractStateRule extends org.polarsys.capella.core.transition.system.rules.common.AbstractStateRule {
@@ -44,18 +42,6 @@ public class AbstractStateRule extends org.polarsys.capella.core.transition.syst
 
     //but we return children
     if (ContextScopeHandlerHelper.getInstance(context_p).contains(ITransitionConstants.SOURCE_SCOPE, source_p, context_p)) {
-      if (source_p instanceof State) {
-        State element = (State) source_p;
-
-        //Transition only already transitioned functions
-        List<AbstractEvent> activities = element.getDoActivity();
-        for (AbstractEvent activity : activities) {
-          if (TopDownTransformationHelper.getInstance(context_p).isTracedInTarget(activity, context_p)) {
-            result_p.add(activity);
-          }
-        }
-      }
-
       if (source_p instanceof IState) {
         IState state = (IState) source_p;
         EObject containerCurrent = EcoreUtil2.getFirstContainer(state, CsPackage.Literals.COMPONENT);
@@ -74,5 +60,38 @@ public class AbstractStateRule extends org.polarsys.capella.core.transition.syst
 
     }
 
+  }
+  
+  /**
+   * For topdown transition, all Do Activities should be added in to the scope
+   * 
+   * @param effect
+   * @return
+   */
+  @Override
+  protected boolean shouldAddDoActivityInScope(AbstractEvent effect) {
+    return true;
+  }
+
+  /**
+   * For topdown transition, all Entries should be added in to the scope
+   * 
+   * @param trigger
+   * @return
+   */
+  @Override
+  protected boolean shouldAddEntryInScope(AbstractEvent trigger) {
+    return true;
+  }
+  
+  /**
+   * For topdown transition, all Exits should be added in to the scope
+   * 
+   * @param trigger
+   * @return
+   */
+  @Override
+  protected boolean shouldAddExitInScope(AbstractEvent trigger) {
+    return true;
   }
 }

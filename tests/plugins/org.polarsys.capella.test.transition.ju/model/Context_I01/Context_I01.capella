@@ -4507,6 +4507,8 @@
             <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
                 id="cd2fba90-95dd-4f72-82ba-46ea3a041a47" name="FIP 1"/>
           </ownedFunctions>
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
+              id="0f2bb4df-81bf-4472-aa7a-13c40d69cea9" name="SF3"/>
           <ownedFunctionRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionRealization"
               id="8ff9a4c4-a094-43d6-ae09-a710e9d60481" targetElement="#ca23d5ae-9582-4c06-be3d-fd94849309af"
               sourceElement="#117be734-c397-431f-8f85-d05801bfe0d3"/>
@@ -4525,6 +4527,8 @@
             id="ce4cdd11-ccdb-47f9-ba8e-5be4ccef0518" name="E1"/>
         <ownedExchangeItems xsi:type="org.polarsys.capella.core.data.information:ExchangeItem"
             id="ae3a2433-90a7-4f00-9a27-7bfcb28ceac6" name="E2"/>
+        <ownedExchangeItems xsi:type="org.polarsys.capella.core.data.information:ExchangeItem"
+            id="695ba580-08d3-4871-884d-de666544377a" name="E3"/>
       </ownedDataPkg>
       <ownedSystemComponentPkg xsi:type="org.polarsys.capella.core.data.ctx:SystemComponentPkg"
           id="63fcc505-29d8-452d-aac0-34a89c0c3077" name="Structure">
@@ -4570,12 +4574,18 @@
           <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
               id="9171e79e-8088-499b-b97f-f8d78301694c" targetElement="#92574d6e-1b96-4807-9b56-35f5aac2aeb6"
               sourceElement="#dab93d07-7637-4669-a0f4-648f1e749fc9"/>
+          <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
+              id="e0b6e3ee-8bfa-49db-ba1a-1638f5dd8fe5" targetElement="#0f2bb4df-81bf-4472-aa7a-13c40d69cea9"
+              sourceElement="#dab93d07-7637-4669-a0f4-648f1e749fc9"/>
           <ownedStateMachines xsi:type="org.polarsys.capella.core.data.capellacommon:StateMachine"
               id="02e279c5-ab9d-4802-a7ce-9a860e758a22" name="SM1">
             <ownedRegions xsi:type="org.polarsys.capella.core.data.capellacommon:Region"
                 id="dd19a302-cbc8-4bed-bd9a-4141e23adf91" name="R11" involvedStates="#4e32329b-7f36-4710-8e3d-127a5355cb2e #0dc7b156-c0e2-47e5-8c20-c598057cd5ef #cb28b36a-183c-4bce-8575-d08774305a19 #f8d09150-ac07-4732-b36b-f8032e5d8bb4 #9b267f7b-e54d-46f3-96d0-d1bf0eb2e368">
               <ownedStates xsi:type="org.polarsys.capella.core.data.capellacommon:Mode"
-                  id="4e32329b-7f36-4710-8e3d-127a5355cb2e" name="M111" referencedStates="#4e32329b-7f36-4710-8e3d-127a5355cb2e #0dc7b156-c0e2-47e5-8c20-c598057cd5ef #f8d09150-ac07-4732-b36b-f8032e5d8bb4 #9b267f7b-e54d-46f3-96d0-d1bf0eb2e368">
+                  id="4e32329b-7f36-4710-8e3d-127a5355cb2e" name="M111" referencedStates="#4e32329b-7f36-4710-8e3d-127a5355cb2e #0dc7b156-c0e2-47e5-8c20-c598057cd5ef #f8d09150-ac07-4732-b36b-f8032e5d8bb4 #9b267f7b-e54d-46f3-96d0-d1bf0eb2e368"
+                  entry="#695ba580-08d3-4871-884d-de666544377a #0f2bb4df-81bf-4472-aa7a-13c40d69cea9"
+                  doActivity="#695ba580-08d3-4871-884d-de666544377a #0f2bb4df-81bf-4472-aa7a-13c40d69cea9"
+                  exit="#695ba580-08d3-4871-884d-de666544377a #0f2bb4df-81bf-4472-aa7a-13c40d69cea9">
                 <ownedRegions xsi:type="org.polarsys.capella.core.data.capellacommon:Region"
                     id="1e13e87b-e48e-439d-a71f-802ed3e2a52b" name="R1111"/>
               </ownedStates>

@@ -18,10 +18,14 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.polarsys.capella.common.data.behavior.AbstractEvent;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.capellacommon.State;
+import org.polarsys.capella.core.data.information.ExchangeItem;
+import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.attachment.AttachmentHelper;
+import org.polarsys.capella.core.transition.common.handlers.contextscope.ContextScopeHandlerHelper;
 import org.polarsys.capella.core.transition.system.rules.AbstractCapellaElementRule;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IPremise;
@@ -44,8 +48,37 @@ public class AbstractStateRule extends AbstractCapellaElementRule {
   protected void retrieveGoDeep(EObject source, List<EObject> result, IContext context) {
     super.retrieveGoDeep(source, result, context);
     if (source instanceof State) {
-
       result.addAll(((State) source).getOwnedRegions());
+      // but we return children
+      if (ContextScopeHandlerHelper.getInstance(context).contains(ITransitionConstants.SOURCE_SCOPE, source, context)) {
+        if (source instanceof State) {
+          State element = (State) source;
+          // // Add Do Activity to scope
+          List<AbstractEvent> activities = element.getDoActivity();
+          for (AbstractEvent activity : activities) {
+            if (shouldAddDoActivityInScope(activity)) {
+              ContextScopeHandlerHelper.getInstance(context).add(ITransitionConstants.SOURCE_SCOPE, activity, context);
+              result.add(activity);
+            }
+          }
+          
+          // Add effect elements to scope
+          for (AbstractEvent entry : element.getEntry()) {
+            if (shouldAddEntryInScope(entry)) {
+              ContextScopeHandlerHelper.getInstance(context).add(ITransitionConstants.SOURCE_SCOPE, entry, context);
+              result.add(entry);
+            }
+          }
+          // Add trigger elements to scope
+          for (AbstractEvent exit : element.getExit()) {
+            if (shouldAddExitInScope(exit)) {
+              ContextScopeHandlerHelper.getInstance(context).add(ITransitionConstants.SOURCE_SCOPE, exit, context);
+              result.add(exit);
+            }
+          }
+          
+        }
+      }
     }
   }
 
@@ -72,5 +105,35 @@ public class AbstractStateRule extends AbstractCapellaElementRule {
       AttachmentHelper.getInstance(context).attachTracedElements(element, result, CapellacommonPackage.Literals.STATE__ENTRY, context);
       AttachmentHelper.getInstance(context).attachTracedElements(element, result, CapellacommonPackage.Literals.STATE__EXIT, context);
     }
+  }
+  
+  /**
+   * By default, only EI Do Activities should be added in to the scope
+   * 
+   * @param effect
+   * @return
+   */
+  protected boolean shouldAddDoActivityInScope(AbstractEvent activity) {
+    return activity instanceof ExchangeItem;
+  }
+
+  /**
+   * By default, only EI entries should be added in to the scope
+   * 
+   * @param trigger
+   * @return
+   */
+  protected boolean shouldAddEntryInScope(AbstractEvent entry) {
+    return entry instanceof ExchangeItem;
+  }
+  
+  /**
+   * By default, only EI exits should be added in to the scope
+   * 
+   * @param trigger
+   * @return
+   */
+  protected boolean shouldAddExitInScope(AbstractEvent exit) {
+    return exit instanceof ExchangeItem;
   }
 }
