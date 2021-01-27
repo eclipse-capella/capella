@@ -36,6 +36,7 @@ import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingWithInterpreterHelper;
@@ -464,18 +465,18 @@ public class FunctionalChainServices {
   public void resetFunctionalExchangeStyle(DEdge aEdge) {
     DiagramElementMapping mapping = DiagramServices.getDiagramServices().getEdgeMapping(aEdge);
     if (mapping != null) {
-      // get default style size of an edge
-      EdgeStyleDescription desc = (EdgeStyleDescription) getMappingHelper(aEdge).getBestStyleDescription(mapping,
-          aEdge.getTarget(), aEdge, aEdge.eContainer(), CapellaServices.getService().getDiagramContainer(aEdge));
-      String defaultStyleSize = desc.getSizeComputationExpression();
-      // get current style size of an edge
       EdgeStyle edgeStyle = aEdge.getOwnedStyle();
       Integer currentSize = edgeStyle.getSize();
 
-      if ((null != currentSize) && (null != defaultStyleSize)) {
-        // apply style & color : if currentSize is equal to default size + if current size is equal to default size of
-        // Functional Chain
-        if (currentSize.equals(THICK_EDGE_FUNCTIONAL_CHAIN) || currentSize.equals(defaultStyleSize)) {
+      // reset style & color : if current size is the default size of Functional Chain applied by FunctionalChains (e.g. as custom feature)
+      if ((null != currentSize) && currentSize.equals(THICK_EDGE_FUNCTIONAL_CHAIN) && ShapeUtil.isCustomisation(edgeStyle, DiagramPackage.Literals.EDGE_STYLE__SIZE)) {
+        
+        // get default style size of an edge
+        EdgeStyleDescription desc = (EdgeStyleDescription) getMappingHelper(aEdge).getBestStyleDescription(mapping,
+            aEdge.getTarget(), aEdge, aEdge.eContainer(), CapellaServices.getService().getDiagramContainer(aEdge));
+        String defaultStyleSize = desc.getSizeComputationExpression();
+        if (defaultStyleSize != null) {
+          
           if (ShapeUtil.resetEdgeThickStyle(aEdge, Integer.valueOf(defaultStyleSize))) {
             ShapeUtil.resetEdgeColorStyle(aEdge, ShapeUtil.getDefaultColor(aEdge, desc, desc.getStrokeColor()));
           }
