@@ -1,0 +1,3 @@
+== Introduction ==
+
+See [[../help/topic/org.polarsys.kitalpha.doc/html/common/kitalpha.html|See Kitalpha User Guide]] <span class="github-link">[[https://github.com/eclipse/kitalpha/wiki/User-manual|(online documentation)]]</span>

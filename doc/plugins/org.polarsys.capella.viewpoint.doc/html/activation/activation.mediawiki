@@ -1,0 +1,25 @@
+== Activation ==
+
+To use Viewpoints, each projects must activate them by using the Viewpoint Manager view:
+
+Windows > Show View > Other... > Kitalpha > Viewpoint Manager
+
+[[Image:../Images/Windows_ShowView_Other.png]]
+
+[[Image:../Images/ShowView_ViewpointManager.png]]
+
+All Viewpoints installed are listed in this view:
+
+[[Image:../Images/ViewpointManager_noContext.png]]
+
+To activate a viewpoint: open the session of a project, and select a model element to set the context of the view on this project.
+
+Then, Right-click > Reference, to activate this specific viewpoint for this given project.
+
+[[Image:../Images/ViewpointManager_reference.png]]
+
+To detach and remove all elements added by this viewpoint in this project, you can unreference it.
+
+For more informations:
+
+See [[/wiki/../help/topic/org.polarsys.kitalpha.ad.doc/html/usersguide/viewpointmanager.html|Kitalpha - Architecture Framework Technology Guide > Viewpoint Technology > User's Guide]] <span class="github-link">[[https://github.com/eclipse/kitalpha/blob/master/architecture%20description/doc/plugins/org.polarsys.kitalpha.ad.doc/html/usersguide/viewpointmanager.mediawiki|(online documentation)]]</span>

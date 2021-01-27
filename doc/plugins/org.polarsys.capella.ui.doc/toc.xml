@@ -13,21 +13,39 @@
        Thales - initial API and implementation
 -->
 <toc label="User Interface" link_to="PLUGINS_ROOT/org.polarsys.capella.doc/toc.xml#main" sort="true">
+   
+   
    <topic href="html/Installation Guide/How to install Capella and Addons.html" label="Installation Guide">
-      <topic href="html/Installation Guide/How to install Capella and Addons.html#Capella_Installation" label="Capella Installation">
-         <topic href="html/Installation Guide/How to install Capella and Addons.html#Prerequisites_Needed_for_Install" label="Prerequisites Needed for Install">
-         </topic>
-         <topic href="html/Installation Guide/How to install Capella and Addons.html#Capella_Installation_Procedure" label="Capella Installation Procedure">
-         </topic>
-         <topic href="html/Installation Guide/How to install Capella and Addons.html#Verification_Installation_Procedure" label="Verification Installation Procedure">
-         </topic>
-         <topic href="html/Installation Guide/How to install Capella and Addons.html#Multi-user_installation" label="Multi-user installation">
-         </topic>
-      </topic>
-      <topic href="html/Installation Guide/How to install Capella and Addons.html#Addons_Installation" label="Addons Installation">
-      </topic>
-      <topic href="html/Installation Guide/How to install Capella and Addons.html#Restriction" label="Restriction">
-      </topic>
+     <topic href="html/Installation Guide/How to install Capella and Addons.html" label="Prerequisites"></topic>
+	<topic href="html/Installation Guide/How to install Capella and Addons.html#Installation_from_previous_version" label="Installation from previous version"></topic>
+	<topic href="html/Installation Guide/How to install Capella and Addons.html#Windows_and_Linux" label="Windows and Linux"></topic>
+	<topic href="html/Installation Guide/How to install Capella and Addons.html#Mac" label="Mac"></topic>
+	<topic href="html/Installation Guide/How to install Capella and Addons.html#Configuration_and_Extensibility" label="Configuration and Extensibility">
+		<topic href="html/Installation Guide/How to install Capella and Addons.html#Update_Sites" label="Update Sites">
+			<topic href="html/Installation Guide/How to install Capella and Addons.html#Command_line_update_site_installation" label="Command line update site installation"></topic>
+		</topic>
+		<topic href="html/Installation Guide/How to install Capella and Addons.html#Dropins" label="Dropins"></topic>
+		<topic href="html/Installation Guide/How to install Capella and Addons.html#Verification" label="Verification"></topic>
+		<topic href="html/Installation Guide/How to install Capella and Addons.html#Configuration_strategies" label="Configuration strategies">
+			<topic href="html/Installation Guide/How to install Capella and Addons.html#Strategy_1:_Single_user_installation" label="Strategy 1: Single user installation"></topic>
+			<topic href="html/Installation Guide/How to install Capella and Addons.html#Strategy_2:_Shared_installation" label="Strategy 2: Shared installation"></topic>
+			<topic href="html/Installation Guide/How to install Capella and Addons.html#Strategy_3:_Several_contexts_with_a_shared_installation" label="Strategy 3: Several contexts with a shared installation"></topic>
+			<topic href="html/Installation Guide/How to install Capella and Addons.html#Some_recommendations_for_setting_up_configurations" label="Some recommendations for setting up configurations"></topic>
+		</topic>
+	</topic>
+	<topic href="html/Installation Guide/How to install Capella and Addons.html#Previous_releases_installation" label="Previous releases installation"></topic>
+	<topic href="html/Installation Guide/How to install Capella and Addons.html#Embed_additional_sample_models" label="Embed additional sample models"></topic>
+	<topic href="html/Installation Guide/How to install Capella and Addons.html#Post-installation_steps" label="Post-installation steps">
+		<topic href="html/Installation Guide/How to install Capella and Addons.html#Migration_of_models" label="Migration of models"></topic>
+		<topic href="html/Installation Guide/How to install Capella and Addons.html#Additional_Documentation_References" label="Additional Documentation References"></topic>
+		<topic href="html/Installation Guide/How to install Capella and Addons.html#Addon_User_Guide" label="Addon User Guide"></topic>
+	</topic>
+	<topic href="html/Installation Guide/How to install Capella and Addons.html#Restrictions_and_Troubleshooting" label="Restrictions and Troubleshooting">
+		<topic href="html/Installation Guide/How to install Capella and Addons.html#Windows_-_Folder_Long_Path_limitation" label="Windows - Folder Long Path limitation"></topic>
+		<topic href="html/Installation Guide/How to install Capella and Addons.html#Windows_-_Missing_libraries" label="Windows - Missing libraries"></topic>
+		<topic href="html/Installation Guide/How to install Capella and Addons.html#Mac_-_Quarantine_Procedure" label="Mac - Quarantine Procedure"></topic>
+		<topic href="html/Installation Guide/How to install Capella and Addons.html#Workaround_to_open_the_Help_Content_when_there_is_problem_with_the_browser" label="Workaround to open the Help Content when there is problem with the browser"></topic>
+	</topic>
    </topic>
    <topic label="Overview">
    <topic href="html/01. Overview/1.1. Introduction to Capella.html" label="Introduction to Capella">

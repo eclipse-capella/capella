@@ -349,3 +349,6 @@ warning.png
 SaveButton.png
 RefreshButton.png
 LaunchingPopup.png
+
+otherprojects_workingsets - org.eclipse.ui.navigator.resources - /icons/full/obj16/otherprojects_workingsets.png
+UserAccount - org.eclipse.userstorage.oauth - /icons/UserAccount.png
