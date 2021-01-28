@@ -25,7 +25,16 @@
          </rules>
       </resolver>
       <resolver
-            class="org.polarsys.capella.core.data.common.ui.quickfix.resolver.DWF_SM_06Resolver"
+            class="org.polarsys.capella.core.data.common.ui.quickfix.resolver.DWF_SM_06SiblingResolver"
+            desc="Delete all siblings mixed States/Modes "
+            icon="icons/delete_element.gif"
+            label="Delete all siblings mixed States/Modes ">
+         <rules
+               ruleId="DWF_SM_06">
+         </rules>
+      </resolver>
+      <resolver
+            class="org.polarsys.capella.core.data.common.ui.quickfix.resolver.DWF_SM_06ChildrenResolver"
             desc="Delete all children mixed States/Modes "
             icon="icons/delete_element.gif"
             label="Delete all children mixed States/Modes ">
