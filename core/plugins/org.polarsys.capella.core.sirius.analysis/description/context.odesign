@@ -5097,7 +5097,7 @@
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:source.constrainedElements->size() = 0">
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:source">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="constrainedElements" valueExpression="aql:target"/>
-                    <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="aql:target" featureName="ownedConstraints"/>
+                    <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="aql:self.getConstraintLocation(target)" featureName="ownedConstraints"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:source.constrainedElements->size() != 0">
