@@ -225,14 +225,14 @@ Sample models are located aside the capella installation folder, in a <code>samp
 
 If upgrading from a previous version, please read the model migration guide, as your older models may not be compatible right away with this new version.
 
-* [[../help/topic/org.polarsys.capella.ui.doc/html/03.%20First%20steps%20with%20Capella/3.5.%20How%20to%20migrate%20Capella%20projects.html|How to migrate Capella projects]] <span class="github-link">[[../03. First steps with Capella/3.5. How to migrate Capella projects.mediawiki|(online documentation)]]</span>
+* [[../help/topic/org.polarsys.capella.ui.doc/html/First%20steps%20with%20Capella/3.5.%20How%20to%20migrate%20Capella%20projects.html|How to migrate Capella projects]] <span class="github-link">[[../First steps with Capella/3.5. How to migrate Capella projects.mediawiki|(online documentation)]]</span>
 
-* If some viewpoints are no longer useful, you can look at [[../help/topic/org.polarsys.capella.ui.doc/html/03.%20First%20steps%20with%20Capella/3.6.%20How%20to%20detach%20viewpoints.html|How to detach viewpoints]] <span class="github-link">[[../03. First steps with Capella/3.6. How to detach viewpoints.mediawiki|(online documentation)]]</span>
+* If some viewpoints are no longer useful, you can look at [[../help/topic/org.polarsys.capella.ui.doc/html/First%20steps%20with%20Capella/3.6.%20How%20to%20detach%20viewpoints.html|How to detach viewpoints]] <span class="github-link">[[../First steps with Capella/3.6. How to detach viewpoints.mediawiki|(online documentation)]]</span>
 
 == Additional Documentation References ==
 
 Some additional documentation references :
-* [[../help/topic/org.polarsys.capella.ui.doc/html/03.%20First%20steps%20with%20Capella/3.1.%20Starting%20Capella.html|Starting Capella]] <span class="github-link">[[../03. First steps with Capella/3.1. Starting Capella.mediawiki|(online documentation)]]</span>
+* [[../help/topic/org.polarsys.capella.ui.doc/html/First%20steps%20with%20Capella/3.1.%20Starting%20Capella.html|Starting Capella]] <span class="github-link">[[../First steps with Capella/3.1. Starting Capella.mediawiki|(online documentation)]]</span>
 
 * [[../help/topic/org.polarsys.capella.viewpoint.doc/html/activation/activation.html|Viewpoints activation]] <span class="github-link">[[../../../org.polarsys.capella.viewpoint.doc/html/activation/activation.mediawiki|(online documentation)]]</span>
 
