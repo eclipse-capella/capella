@@ -14,7 +14,7 @@ We strongly recommend that you baseline your model in a version control system b
 In order to launch the migration process of a Capella Project you must right click on the <u>'''project'''</u> and choose ''Migration &gt; Migrate Project toward current version''. The same steps apply to libraries as well.
 
  
-[[Image:Images/3.5.%20How%20to%20migrate%20Melody%20Advance%20projects_html_m55692da5.png|675x430px]]
+[[Image:Images/3.5.%20How%20to%20migrate%20Melody%20Advance%20projects_html_m55692da5.png]]
 
  
 The displayed dialog allows you to to make a versioned backup (baseline) of the model before running the migration.
@@ -23,7 +23,7 @@ These backup files will allow you to recover your model in case of any migration
 We highly advise you to enable the option &ldquo;Backup models before the migration&rdquo;.
 
  
-[[Image:Images/3.5.%20How%20to%20migrate%20Melody%20Advance%20projects_html_m381b2efb.png|567x210px]]
+[[Image:Images/3.5.%20How%20to%20migrate%20Melody%20Advance%20projects_html_m381b2efb.png]]
 
 
 Some additional migration commands are available on semantic and diagram files allowing advanced migration processes by triggering a migration on each of these files kind separately. For more details see the [[../help/topic/org.polarsys.capella.preferences.doc/html/06.%20Preferences/6.4.%20Commands%20preferences.html?cp=6_1_21_1_11_0_0| Commands & User Profiles]] <span class="github-link">[[../../../org.polarsys.capella.preferences.doc/html/06. Preferences/6.4. Commands preferences.mediawiki|(online documentation)]]</span> section.

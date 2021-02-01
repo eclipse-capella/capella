@@ -98,21 +98,21 @@
       <anchor id="Workbench Basics"/>
    </topic>
      <topic label="First steps with Capella">
-     <topic href="html/03. First steps with Capella/3.1. Starting Capella.html" label="Starting Capella"></topic>
-     <topic href="html/03. First steps with Capella/3.2. How to create a new Capella Project.html" label="How to Create a New Capella Project?"></topic>
-     <topic href="html/03. First steps with Capella/3.3. How to import an existing Capella Project.html" label="How to Import an Existing Project in a Workspace?"></topic>
-     <topic href="html/03. First steps with Capella/3.4. How to copy or export a Capella Project.html" label="How to Copy or Export a Capella Project?">
-		<topic href="html/03. First steps with Capella/3.4. How to copy or export a Capella Project.html#Copying_a_Project" label="Copying a Project"></topic>
-		<topic href="html/03. First steps with Capella/3.4. How to copy or export a Capella Project.html#Exporting_a_Capella_Project" label="Exporting a Capella Project"></topic>
+     <topic href="html/First steps with Capella/3.1. Starting Capella.html" label="Starting Capella"></topic>
+     <topic href="html/First steps with Capella/3.2. How to create a new Capella Project.html" label="How to Create a New Capella Project?"></topic>
+     <topic href="html/First steps with Capella/3.3. How to import an existing Capella Project.html" label="How to Import an Existing Project in a Workspace?"></topic>
+     <topic href="html/First steps with Capella/3.4. How to copy or export a Capella Project.html" label="How to Copy or Export a Capella Project?">
+		<topic href="html/First steps with Capella/3.4. How to copy or export a Capella Project.html#Copying_a_Project" label="Copying a Project"></topic>
+		<topic href="html/First steps with Capella/3.4. How to copy or export a Capella Project.html#Exporting_a_Capella_Project" label="Exporting a Capella Project"></topic>
 	</topic>
-	<topic href="html/03. First steps with Capella/3.5. How to migrate Capella projects.html" label="How to Migrate Capella Project"></topic>
-	<topic href="html/03. First steps with Capella/3.6. How to detach viewpoints.html" label="How to Detach Viewpoints from Capella Project?">
-		<topic href="html/03. First steps with Capella/3.6. How to detach viewpoints.html#The_Viewpoints_are_Available_and_Installed_in_the_Source_Version" label="The Viewpoints are Available and Installed in the Source Version"></topic>
-		<topic href="html/03. First steps with Capella/3.6. How to detach viewpoints.html#The_viewpoints_are_not_available_and_installed_in_the_source_version" label="The viewpoints are not available and installed in the source version"></topic>
+	<topic href="html/First steps with Capella/3.5. How to migrate Capella projects.html" label="How to Migrate Capella Project"></topic>
+	<topic href="html/First steps with Capella/3.6. How to detach viewpoints.html" label="How to Detach Viewpoints from Capella Project?">
+		<topic href="html/First steps with Capella/3.6. How to detach viewpoints.html#The_Viewpoints_are_Available_and_Installed_in_the_Source_Version" label="The Viewpoints are Available and Installed in the Source Version"></topic>
+		<topic href="html/First steps with Capella/3.6. How to detach viewpoints.html#The_viewpoints_are_not_available_and_installed_in_the_source_version" label="The viewpoints are not available and installed in the source version"></topic>
 	</topic>
-	<topic href="html/03. First steps with Capella/3.7. How to rename a Capella Project.html" label="How to rename a Capella Project?"></topic>
+	<topic href="html/First steps with Capella/3.7. How to rename a Capella Project.html" label="How to rename a Capella Project?"></topic>
       <anchor id="First steps with Capella"/>
-      <topic href="html/03. First steps with Capella/3.8. How to import Capella Project Example.html" label="How to import/create a Capella Project Example?">
+      <topic href="html/First steps with Capella/3.8. How to import Capella Project Example.html" label="How to import/create a Capella Project Example?">
       </topic>
    </topic>
      <topic label="User Interface">

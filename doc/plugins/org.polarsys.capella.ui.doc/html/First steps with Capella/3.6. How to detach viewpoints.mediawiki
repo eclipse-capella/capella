@@ -41,7 +41,7 @@ In this case, it&rsquo;s recommended to :
  
 
  
-[[Image:Images/3.06_Detach_Viewpoint3.png|300x550px]]
+[[Image:Images/3.06_Detach_Viewpoint3.png]]
 
  
 Fig. Launching Viewpoint detachment wizard
@@ -55,15 +55,15 @@ Fig. Launching Viewpoint detachment wizard
  
 In this case, while the openning of the project the following Pop-up windows will appear:
 
-<center>[[Image:Images/3.06_Detach_Viewpoint4.png|350x150px]]</center>
+<center>[[Image:Images/3.06_Detach_Viewpoint4.png]]</center>
 
 
 *Once you clicked on "''OK'' "  you can directly launch the Detachment tool by using the &ldquo;Model Detachment&rdquo; contextual menu.<br>''Remark: The &ldquo;Model Detachment&rdquo; contextual menu is only available when your project is closed .''<br>
 *The Detachment tool will analyse the project model and list all unknown elements (Viewpoints) and unresolved resources (Libraries).<br><br>
-**If some unknown elements are detected, they will be listed in the ''Unknown references'' menu and you could use the &ldquo;Launch Detachment&rdquo; button. This action will remove all the unknown elements from the project. <br><br>[[Image:Images/3.06_Detach_Viewpoint2.png|750x400px]]<br><br><br>
+**If some unknown elements are detected, they will be listed in the ''Unknown references'' menu and you could use the &ldquo;Launch Detachment&rdquo; button. This action will remove all the unknown elements from the project. <br><br>[[Image:Images/3.06_Detach_Viewpoint2.png]]<br><br><br>
 **If some unresolved resources are detected, they will be listed in the ''Model resource/Unknown resources'' menu and you could use the &ldquo;Launch Detachment&rdquo; button. This action will remove all the wanted unresolved resources from the project by '''deselecting them''' . <br><br> 
 
-<center>[[Image:Images/3.06_Detach_Viewpoint5.png|750x400px]]</center>
+<center>[[Image:Images/3.06_Detach_Viewpoint5.png]]</center>
  
 
 

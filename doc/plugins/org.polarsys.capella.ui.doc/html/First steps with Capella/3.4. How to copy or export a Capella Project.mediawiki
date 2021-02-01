@@ -49,18 +49,18 @@ Using the contextual menu from the Project Explorer, select &ldquo;Export&rdquo;
 A dialog opens. Select &ldquo;General / Archive File&rdquo;.
 
  
-[[Image:Images/3.4.%20How%20to%20copy%20or%20export%20a%20Melody%20Advance%20Project_html_156e45ae.png|350x348px]]
+[[Image:Images/3.4.%20How%20to%20copy%20or%20export%20a%20Melody%20Advance%20Project_html_156e45ae.png]]
 
  
 In the following dialog, give a name and a path to the Project archive and select all of its content.
 
  
-[[Image:Images/3.4.%20How%20to%20copy%20or%20export%20a%20Melody%20Advance%20Project_html_m2db46078.png|554x481px]]
+[[Image:Images/3.4.%20How%20to%20copy%20or%20export%20a%20Melody%20Advance%20Project_html_m2db46078.png]]
 
  
 Click on &ldquo;Finish&rdquo;. The archive is created on the file system.
 
  
-[[Image:Images/3.4.%20How%20to%20copy%20or%20export%20a%20Melody%20Advance%20Project_html_m2e64895e.png|395x16px]]
+[[Image:Images/3.4.%20How%20to%20copy%20or%20export%20a%20Melody%20Advance%20Project_html_m2e64895e.png]]
 
    
