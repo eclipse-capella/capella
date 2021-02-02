@@ -1,7 +1,7 @@
 = Aql queries =
 
 == Basic Model Queries ==
- 
+
 {| cellpadding="7" valign="TOP"
 !'''Description'''
 !'''Workbench Selection'''
@@ -290,4 +290,4 @@ One easiest way to retrieve references or attributes is to open the Properties V
 <br><br>
 [[Image:Images/12_5_ Acceleo Queries_html_m44230212.png|800x250px]]<br><br>
 You just have to write the reference name in a camelCaseFormat to use it with Aql (e.g. Available In States => availableInStates) or in some case with the corresponding getter function
- 
+

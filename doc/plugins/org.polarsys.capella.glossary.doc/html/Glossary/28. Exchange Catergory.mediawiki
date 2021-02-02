@@ -1,16 +1,15 @@
-            
+
 = EXCHANGE CATEGORY =
- 
+
 === DEFINITION ===
- 
+
 An Exchange Category is a mean to represent of set of Functional Exchanges as a whole.
 
- 
+
 When several Functional Exchanges between the same source and target Functions belong to the same Category , it is possible to display only one link between the two Functions instead of each Functional Exchanges. This is particularly useful when displaying abstract Functions.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/28.%20Exchange%20Catergory_html_m46e1ade.png|54x49px]]
 
-   

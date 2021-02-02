@@ -1,19 +1,18 @@
-            
+
 = BOOLEAN TYPE =
- 
+
 === DEFINITION ===
- 
+
 Boolean is a kind of Datatype. A Boolean Type defines an enumeration that denotes a logical condition.
 
- 
+
 Its Enumeration Literals are:
 
- 
+
 * true &mdash; The Boolean condition is satisfied.
 * false &mdash; The Boolean condition is not satisfied.
- 
+
 === ICONS ===
- 
+
 [[Image:Images/5.%20Boolean%20Type_html_m6e2f03c2.png|75x60px]]
 
-   

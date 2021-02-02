@@ -1,13 +1,12 @@
-            
+
 = ENUMERATION =
- 
+
 === DEFINITION ===
- 
+
 An Enumeration is a Datatype whose possible values are enumerated in the model as Enumeration Literals.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/26.%20Enumeration_html_4ed18dd0.png|75x66px]]
 
-   

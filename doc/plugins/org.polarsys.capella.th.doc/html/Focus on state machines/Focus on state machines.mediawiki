@@ -1,8 +1,8 @@
-            
+
 = Focus on the news of state machines =
- 
+
 == State and mode definition ==
- 
+
 A '''mode''' or a '''state''' characterizes the (internal or external) context of an element, which determines the behavior of the element at a given time.
 
 

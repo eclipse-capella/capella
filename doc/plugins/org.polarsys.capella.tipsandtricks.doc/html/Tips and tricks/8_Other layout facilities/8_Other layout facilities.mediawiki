@@ -30,17 +30,17 @@ In addition to the standard automatic layout, this specific action allows '''to 
 
 <br>
 
-         
+
 {| border="1"
 |-
 | 
 [[Image:../../Images/InfoIcon.png|48x48px]]
 
- 
+
 | 
 Graphical elements have to be unpinned before running this action. To unpin an element, choose "Unpin selected elements on the diagram menu"
 
- 
+
 |}  
 <br>
 
@@ -69,11 +69,11 @@ When you '''select an edge or a label''', graphical link appears between them:
 
 
 ==Copy Paste Of Notes==
- 
+
 To quickly copy paste Notes on a diagram, '''click on CTRL and move the Notes''': new Notes are created.
 
 [[File:../../Images/TipsCopyNote.png|thumbnail|500px|]]
- 
+
 ==Add vertical blank space on sequence diagrams==
 On a sequence diagram, instead of moving vertically each graphical element in order to have more space, it is possible to do it more easily by using the combination:
 
@@ -82,5 +82,5 @@ On a sequence diagram, instead of moving vertically each graphical element in or
 * Hold '''Left-Mouse'''
 * Move the mouse downwards. 
 
- 
+
 [[File:../../Images/Tips91.png|thumbnail|900px|]]

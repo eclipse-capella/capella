@@ -1,4 +1,4 @@
-            
+
 = How to import a Capella Project Example? =
 
 # '''File -> New -> Example ...'''
@@ -8,7 +8,6 @@
 [[Image:Images/3.8.%20How%20to%20import%20Capella%20Project%20Example_1.png]]
 [[Image:Images/3.8.%20How%20to%20import%20Capella%20Project%20Example_2.png]]
 
-<br>
 = How to add an existing Capella project as an example? =
 # The sample project must be a zip containing the project folder
 # The sample project shall be placed in sample folder like '''CAPELLA_INSTALLATION_PATH/samples/model.zip''' or located under a sub folder like '''CAPELLA_INSTALLATION_PATH/samples/model/model.zip'''

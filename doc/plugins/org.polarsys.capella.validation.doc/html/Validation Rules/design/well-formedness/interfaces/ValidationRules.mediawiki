@@ -1,4 +1,4 @@
-      
+
 = Design > Well-formedness > Interfaces =
 <br>
 {| class="VALIDATION-RULE"

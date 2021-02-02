@@ -1,34 +1,34 @@
-            
+
 = Progress Monitoring =
- 
+
 == Steps for Creating Project-Specific Progress Status ==
- 
+
 Configure the Capella browser so that the ''Project'' element is displayed (see ''Project Explorer ''section of Preferences).
 
- 
+
 <center>[[Image:Images/12.4.%20Progress%20Monitoring_html_4f09dd6.png|475x445px]]</center>
 
- 
+
 Using the contextual menu on this ''Project'' element, create a new ''EnumerationPropertyType'' element and name it &quot;ProgressStatus&quot;.
 
- 
+
 <center>[[Image:Images/12.4.%20Progress%20Monitoring_html_73c7c6df.png|335x385px]]</center>
 
- 
+
 Under &quot;ProgressStatus&quot;, create as many ''EnumerationPropertyLiteral'' elements as needed. Rename these literals with the appropriate values using ''F2'' in the project explorer or using the dedicated editors.
 
- 
+
 <center>[[Image:Images/12.4.%20Progress%20Monitoring_html_1366c180.png|437x569px]]</center>
 
- 
+
 It is recommended to hide again the ''Project'' element in the project explorer so that end-users will not be tempted to modify it
 
- 
+
 == Setting Progress Status on Elements ==
 
 To tag elements with a given progress status, use from the contextual menu of any element the command Progress Monitoring -> Set Progress.
- 
- 
+
+
 <center>[[Image:Images/12.4.%20Progress%20Monitoring_html_72c054c1.png|900x458px]]</center>
 
   === Propagate Progress Status to only Business Elements ===
@@ -65,57 +65,56 @@ Only following model elements are taken into account:
 * Unit
 
   === Propagate Progress Status to all Capella Elements ===
-  
+
   To propagate the progress status to all Capella elements in the scope of the selection and without any filtering, you can check the corresponding button in the wizard as shown in the picture below. 
-  
-  
+
+
   <center>[[Image:Images/12.4.%20Progress%20Monitoring_html_12d478a0.png|385x304px]]</center>
-  
-  
+
+
   === Propagate Progress Status to Sub Representations ===
-  
+
   It's also possible to propagate the progress status to all Sub Representations (Diagrams and Tables) under the selected elements by checking the corresponding button in the wizard as shown in the picture below.
-  
-  
+
+
   <center>[[Image:Images/12.4.%20Progress%20Monitoring_html_81b291e7.png|384x303px]]</center>
-  
+
     It is possible to only propagate on sub representations without propagate on model elements by selecting "Do not propagate to Model Elements".
-    
+
     === Change only elements with Status ===
-  
+
   This option allow to change the progress status only on elements which have the selected status.
   For instance, it is possible to update all the Status from TO BE REVIEWED to REVIEWED.
-  
+
    <center>[[Image:Images/12.4.%20Progress%20Monitoring_Change_.png|388x313px]]</center>
-  
+
 == Clear Progress Status on Elements ==
- 
+
  To clear the progress status, you can select in the combo of the set progress wizard the empty value as shown in the picture below.
- 
+
  <center>[[Image:Images/12.4.%20Progress%20Monitoring_html_32a787d3.png|384x303px]]</center>
- 
+
 == Clear Review Field ==
- 
+
  When the Clear Review field options is checked, the review field will be cleared as the status is propagated. 
  <center>[[Image:Images/12.4.%20Progress%20Monitoring_Clear%20Review.png|386x345px]]</center>
-  
+
 == Modification logged in Information View ==
 
 The number of elements and representations (diagrams and tables) impacted are logged in the Information View. Both number of modified Progress Status and Review field cleared appeared.
 
 <center>[[Image:Images/12.4.%20Progress%20Monitoring_InformationView.png|668x110px]]</center>
-  
+
 == Visualization of Progress Monitoring Information ==
- 
+
  A dialog allowing to visualize all elements and representations with a progress status or a review attribute is available from the contextual menu (Progress Monitoring / Progress Overview). 
 
- 
+
 <center>[[Image:Images/12.4.%20Progress%20Monitoring_html_34e72a1c.png|838x632px]]</center>
 
- 
+
 From this dialog, it is possible to export the results as CSV files.
 
- 
+
 <center>[[Image:Images/12.4.%20Progress%20Monitoring_html_27a38b50.png|950x120px]]</center>
 
-   

@@ -1,23 +1,22 @@
-            
+
 = PROPERTY VALUE =
- 
+
 === DEFINITION ===
- 
+
 Property Values are kinds of free annotations on Capella elements. They are usually used to store specific (possibly domain-related) information not managed natively by Capella.
 
- 
+
 Among others, Property Values are often used for Viewpoints (in order to annotate models with Safety, Performance, IVVQ data).
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/73.%20Property%20Value_html_79e23142.png|75x66px]]
 
- 
+
 <br>
 <br>
 
- 
+
 <br>
 
-   

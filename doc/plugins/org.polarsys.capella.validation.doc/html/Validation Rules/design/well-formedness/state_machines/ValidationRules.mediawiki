@@ -1,4 +1,4 @@
-      
+
 = Design > Well-formedness > State Machines =
 <br>
 {| class="VALIDATION-RULE"

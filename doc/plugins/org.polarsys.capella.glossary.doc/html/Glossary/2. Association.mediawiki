@@ -1,23 +1,22 @@
-            
+
 = ASSOCIATION (ASSOCIATION, AGGREGATION, COMPOSITION) =
- 
+
 === DEFINITION ===
- 
+
 An Association is a semantic relationship between two Types (Classes, Unions, etc.). It connects two Properties (each of which typed by one end of the Association) that are located on the Association itself or on the Types, according to the navigability characteristics.
 
- 
+
 * &ldquo;''Association&rdquo;'' 	represents the static relationship shared among the objects of two 	classes.
 * &ldquo;''Aggregation&rdquo;'' 	is a variant of the &ldquo;has a&rdquo; or association relationship; 	aggregation is more specific than association. It is an association 	that represents a part-of relationship.
 * &ldquo;''Composition&rdquo;'' 	is a stronger variant of the &quot;owns a&quot; or association 	relationship; composition is more specific than aggregation.
- 
+
 Composition usually has a strong life cycle dependency between instances of the container class and instances of the contained class(es): If the container is destroyed, normally every instance that it contains is destroyed as well.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/2.%20Association_html_m7606379b.png|75x66px]]
 
- 
+
 <br>
 
-   

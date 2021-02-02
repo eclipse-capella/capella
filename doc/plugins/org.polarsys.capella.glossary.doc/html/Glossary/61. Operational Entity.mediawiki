@@ -1,13 +1,12 @@
-            
+
 = OPERATIONAL ENTITY =
- 
+
 === DEFINITION ===
- 
+
 An Operational Entity is a real world entity (other System, device, group or organization...), interacting with the System (or software, equipment, hardware...) under study, or with its users.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/61.%20Operational%20Entity_html_m62fa6ae5.png|62x54px]]
 
-   

@@ -1,16 +1,15 @@
-            
+
 = LOGICAL COMPONENT =
- 
+
 === DEFINITION ===
- 
+
 Logical Components are the artifacts enabling a notional decomposition of the system as a &quot;white box&quot;, independently from any technological solutions, but dealing with major system decomposition constraints.
 
- 
+
 Also see Component
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/50.%20Logical%20Component_html_m46dfecb5.png|75x66px]]
 
-   

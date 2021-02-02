@@ -1,4 +1,4 @@
-      
+
 = Design > Well-formedness > Scenarios =
 <br>
 {| class="VALIDATION-RULE"

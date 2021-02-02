@@ -1,4 +1,4 @@
-      
+
 = Transition > Consistency > State Machines =
 <br>
 {| class="VALIDATION-RULE"

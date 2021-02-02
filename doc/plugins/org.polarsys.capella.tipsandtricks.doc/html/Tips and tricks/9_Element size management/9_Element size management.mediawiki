@@ -24,8 +24,8 @@ The Auto size tool is available in the diagram editor toolbar.
 | 
 [[Image:../../Images/InfoIcon.png|48x48px]]
 
- 
+
 | 
 If you add a lot of elements, you can first use the "Auto Size" and then the "Arrange All" tool to improve your diagram.
- 
+
 |} 

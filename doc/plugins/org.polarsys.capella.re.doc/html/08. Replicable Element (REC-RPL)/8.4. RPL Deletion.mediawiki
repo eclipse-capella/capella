@@ -1,58 +1,57 @@
-            
+
 = Deletion of RPL =
- 
+
 <br>
 <br>
 
- 
+
 Different deletion mechanisms are available for a RPL.
 
- 
+
 * '''Delete RPL and related model elements''': this command allows 	deleting a RPL as well as the list of elements it embeds.
 * '''Delete RPL but preserve related model elements''': this command 	allows deleting a RPL without deleting the list of elements it 	embeds.
- 
+
 == Delete RPL and Related Model Elements ==
- 
+
 Right click on a RPL, a RPL instance or an element embedded in the RPL. In this example the RPL is pointing towards a list of two physical components and a physical function.
 
- 
+
 [[Image:Images/8.4.%20RPL%20Deletion_html_68be8879.png|292x196px]]
 
- 
+
 Select the submenu &ldquo;'''Delete RPL and related elements'''&rdquo;.
 
- 
+
 [[Image:Images/8.4.%20RPL%20Deletion_html_mee7301f.png|726x436px]]
 
- 
+
 The deletion dialog appears, containing the RPL to be deleted as well as the elements embedded in this RPL.
 
- 
+
 [[Image:Images/8.4.%20RPL%20Deletion_html_3674b33f.png|648x548px]]
 
- 
+
 <br>
 <br>
 
- 
+
 == Delete RPL and Preserve Related Model Elements ==
- 
+
 <br>
 <br>
 
- 
+
 To delete a RPL but not the embedded elements, right click on a RPL, a RPL instance or an element embedded in the RPL.
 
- 
+
 Select the submenu &ldquo;'''Delete RPL but preserve related model elements'''&rdquo;.
 
- 
+
 [[Image:Images/8.4.%20RPL%20Deletion_html_m49c9cef7.png|706x415px]]
 
- 
+
 The deletion dialog appears, containing only the RPL to be deleted.
 
- 
+
 [[Image:Images/8.4.%20RPL%20Deletion_html_m4fc14ba4.png|614x552px]]
 
-   

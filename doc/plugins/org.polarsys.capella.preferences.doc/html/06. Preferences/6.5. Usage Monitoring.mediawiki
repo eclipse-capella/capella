@@ -1,7 +1,7 @@
 = Usage Monitoring Preference =
- 
+
 Preference is available from the '''Window / Preferences menu/ Capella'''.
- 
+
 [[Image:Images/6.5_Usage%20monitoring1.png|399x217px]]
 
 == General ==

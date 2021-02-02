@@ -1,22 +1,21 @@
-            
+
 = FUNCTION PORT =
- 
+
 === DEFINITION ===
- 
+
 A Function receives inputs and delivers outputs via Function Ports. Each Input Port describes an expected input (Exchange Items), each Output Port describes an available output.
 
- 
+
 A Function Port is usually identified by its name (e.g. &lsquo;tuning parameters&rsquo;, &lsquo;equalized signal&rsquo;).
 
- 
+
 Function Ports can be given non functional properties characterizing the input needs or output capabilities of the Function it belongs to: e.g. specifying that a sampling function can deliver x samples per second, and compare it to a playback function needing y samples per second at input. Such non-functional properties allow securing the external use of the Function w.r.t. input and output flows: no consistency check would be possible when reusing it elsewhere in the system or from one system to another.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/35.%20Function%20Port_html_mb471f13.png|75x66px]][[Image:Images/35.%20Function%20Port_html_e035d14.png|75x66px]]
 
- 
+
 <br>
 
-   

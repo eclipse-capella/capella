@@ -1,16 +1,15 @@
-            
+
 = STRING TYPE =
- 
+
 === DEFINITION ===
- 
+
 String Type is a kind of Datatype, representing a sequence of characters. A String defines a piece of text. The semantics of the string itself depends on its purpose, it can be a comment, computational language expression, OCL expression, etc.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/85.%20String%20Type_html_53d9e6d8.png|75x66px]]
 
- 
+
 <br>
 
-   

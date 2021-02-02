@@ -1,16 +1,15 @@
-            
+
 = VALUE PART =
- 
+
 === DEFINITION ===
- 
+
 See ''Complex Value''
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/97.%20Value%20Part_html_69c1ea97.png|75x66px]]
 
- 
+
 <br>
 
-   

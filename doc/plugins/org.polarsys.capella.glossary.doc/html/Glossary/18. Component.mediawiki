@@ -1,21 +1,21 @@
-            
+
 = COMPONENT (GENERIC) =
- 
+
 === DEFINITION ===
- 
+
 A Component is a constituent part of either the System or Internal Actors.
 
 He contributes to their behavior, properties and characteristics, by interacting with other Components and with both Internal and External Actors.
 
- 
+
 Example: radio receiver, graphical user interface&hellip;
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/18.%20Component_System_Component.png|75x66px]]
 
- 
+
 [[Image:Images/18.%20Component_Logical_Component.png|75x66px]]
 
 
@@ -38,4 +38,3 @@ Example: radio receiver, graphical user interface&hellip;
 
 
 
-   

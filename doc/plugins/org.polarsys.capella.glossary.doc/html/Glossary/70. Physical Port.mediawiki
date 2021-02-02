@@ -1,23 +1,22 @@
-            
+
 = PHYSICAL FUNCTION =
- 
+
 === DEFINITION ===
- 
+
 A Physical Function is a Function in the Physical Architecture. It usually refines one or several Logical Function(s).
 
- 
+
 Also see Function.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/70.%20Physical%20Port_html_3dae1090.png|75x60px]]
 
- 
+
 <br>
 <br>
 
- 
+
 <br>
 
-   

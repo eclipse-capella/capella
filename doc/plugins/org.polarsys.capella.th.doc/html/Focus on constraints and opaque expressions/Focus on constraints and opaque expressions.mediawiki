@@ -1,6 +1,6 @@
-            
+
 = Focus on constraints and opaque expressions =
- 
+
 == Constraints ==
 
 Constraints are expression to define the role or the scope of an element. They can be defined under every model elements. The same constraint can be applied on every element using the Constrained Elements reference. The element on which the constraint is applied is called the context of a constraint. Constraints always have only one context which is the owner of this constraint.

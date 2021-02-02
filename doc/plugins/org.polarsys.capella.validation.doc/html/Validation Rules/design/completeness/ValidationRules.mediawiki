@@ -1,4 +1,4 @@
-      
+
 = Design > Completeness =
 <br>
 {| class="VALIDATION-RULE"

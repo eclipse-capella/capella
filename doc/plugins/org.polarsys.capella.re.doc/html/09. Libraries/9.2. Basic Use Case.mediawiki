@@ -1,132 +1,131 @@
-            
+
 = Basic Use Case =
- 
+
 == Creation of a Library ==
- 
+
 Libraries are created the same way as standard Capella Projects. From the Project Explorer, create a new Library using the Contextual Menu
 
- 
+
 [[Image:Images/9.2.%20Basic%20Use%20Case_html_m723a4595.png|627x264px]]
 
- 
+
 The result is a new model, with the Methodological Overview opened.
 
- 
+
 [[Image:Images/9.2.%20Basic%20Use%20Case_html_3ee7966e.png|627x300px]]
 
- 
+
 In this library, create diagrams and model elements. Here for example, a data model.
 
- 
+
 [[Image:Images/9.2.%20Basic%20Use%20Case_html_306dcc4f.png|339x235px]]
 
- 
+
 Close the Library.
 
- 
+
 == Referencing a Library ==
- 
+
 Select the &ldquo;Libraries | Manage References&rdquo; item in the contextual menu on the &ldquo;aird&rdquo; file of a standard Project Model.
 
- 
+
 [[Image:Images/9.2.%20Basic%20Use%20Case_html_m74f004a7.png|491x42px]]
 
- 
+
 A dialog opens.
 
- 
+
 [[Image:Images/9.2.%20Basic%20Use%20Case_html_m1004a0b5.png|476x233px]]
 
- 
+
 The first tab of this dialog displays all the accessible Libraries in the current workspace (A Library in a closed Eclipse Project will not be proposed).
 
- 
+
 Note that the actual Library files do not have to be physically located in the workspace itself, see the section explaining the Eclipse difference between Workspace and actual Project files.
 
- 
+
 Ticking the checkbox will create a physical reference between the current Project Model and the Library.
 
- 
+
 [[Image:Images/9.2.%20Basic%20Use%20Case_html_52f4a83e.png|481x220px]]
 
- 
+
 The second tab of the dialog displays which Library is currently active. When a Library is not active, queries in Editors for example will not display the content located in the Library.
 
- 
+
 [[Image:Images/9.2.%20Basic%20Use%20Case_html_m3ec8a6b5.png|489x268px]]
 
- 
+
 The third tab allows specifying whether the content of a referenced Library can be directly modified from the Project itself. The default is &ldquo;Read only&rdquo;.
 
- 
+
 Once the Project Model is opened, the referenced Library can be seen directly from the Project itself.
 
- 
+
 [[Image:Images/9.2.%20Basic%20Use%20Case_html_m74ed6e65.png|361x530px]]
 
- 
+
 == Using Library Elements from a Project ==
- 
+
 Elements from the referenced library are accessible from elements in the Project model.
 
- 
+
 <u>'''Example with the allocation of Exchange Items to a Functional Exchange'''</u>
 
- 
+
 [[Image:Images/9.2.%20Basic%20Use%20Case_html_m67c8a76c.png|420x97px]]
 
- 
+
 The transfer dialog display both elements coming from the current Project and elements from the Library.
 
- 
+
 [[Image:Images/9.2.%20Basic%20Use%20Case_html_71e0fc21.png|750x350px]]
 
- 
+
 Once the allocation is performed, the result can be seen in the Semantic Browser.
 
- 
+
 [[Image:Images/9.2.%20Basic%20Use%20Case_html_491bebef.png|756x160px]]
 
- 
+
 <u>'''Example with Components and Interfaces'''</u>
 
- 
+
 From an interface diagram, use the Insertion tool to select and display an Interface located in the Library.
 
- 
+
 <br>
 <br>
 
- 
+
 [[Image:Images/9.2.%20Basic%20Use%20Case_html_m130884f.png|388x281px]]
 
- 
+
 The selection wizard proposes the Interface located in the Library.
 
- 
+
 [[Image:Images/9.2.%20Basic%20Use%20Case_html_m3dffabd5.png|174x90px]]
 
- 
+
 The Interface appears on the diagram.
 
- 
+
 [[Image:Images/9.2.%20Basic%20Use%20Case_html_m54bda30d.png|336x179px]]
 
- 
+
 The Component in the Project Model can now &ldquo;provide&rdquo; the Interface located in the Library.
 
- 
+
 [[Image:Images/9.2.%20Basic%20Use%20Case_html_m47a0445d.png|336x186px]]
 
- 
+
 <br>
 <br>
 
- 
+
 <br>
 <br>
 
- 
+
 [[Image:Images/9.2.%20Basic%20Use%20Case_html_m2f4cc7f5.jpg|92x92px]][[Image:Images/9.2.%20Basic%20Use%20Case_html_733c5d5d.jpg|92x92px]]
 
-   

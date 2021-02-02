@@ -1,13 +1,12 @@
-            
+
 = MISSION =
- 
+
 === DEFINITION ===
- 
+
 A purpose to which the System is tasked. A Mission generally exploits several System Capabilities.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/53.%20Mission_html_m41b489c1.png|75x66px]]
 
-   

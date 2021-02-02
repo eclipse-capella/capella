@@ -1,4 +1,4 @@
-      
+
 = Design > Well-formedness > Capabilities =
 <br>
 {| class="VALIDATION-RULE"

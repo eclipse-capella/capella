@@ -1,192 +1,192 @@
 =Functional Chain=
 
- 
+
 This wizard helps you setting the properties of a Functional Chain.
 
- 
+
 '''Base'''
 
-                           
+
 {| border="1"
 |-
 | 
 '''Field'''
 
- 
+
 | 
 '''Description'''
 
- 
+
 | 
 '''Default'''
 
- 
+
 |-
 | 
 '''Name'''
 
- 
+
 | 
 The name of the current Element.
 
- 
+
 | 
 &lt;generic name&gt;
 
- 
+
 |-
 | 
 '''Summary'''
 
- 
+
 | 
 A short headline about the role of the current Element.
 
- 
+
 | 
 &lt;blank&gt;
 
- 
+
 |-
 | 
 '''Available in Modes and States'''
 
- 
+
 | 
 One or several Modes and / or States in which the current Functional Chain is relevant.
 
- 
+
 | 
 &lt;blank&gt;
 
- 
+
 |-
 | 
 '''Functional Chain Realizations'''
 
- 
+
 | 
 One or several Functional Chains from which the current Functional Chain is a refinement.
 
- 
+
 | 
 &lt;blank&gt;
 
- 
+
 |}  
 '''Description'''
 
- 
+
 This field contains the business description of the current element. Links towards other model elements or diagrams can be created in this description using the &quot;Add Link&quot; button.
 
- 
+
 By default this field in read-only, so that hyperlinks can be navigated. To start editing the description, click first on the &quot;Edit&quot; button at the very left side of the toolbar.
 
-  
+
 '''Extensions'''
 
-                 
+
 {| border="1"
 |-
 | 
 '''Field'''
 
- 
+
 | 
 '''Description'''
 
- 
+
 | 
 '''Default'''
 
- 
+
 |-
 | 
 '''Applied Property Values'''
 
- 
+
 | 
 One or several Property Values related to the current Element. These Property Values might be located right under the current Element or anywhere else in the Model.
 
- 
+
 The &quot;browse&quot; button allows associating an already existing Property Value (not necessarily located under the current Element). The &quot;cross&quot; button allows removing the association between the selected Property Value and the current Element. This action does not delete the Property Value itself.
 
- 
+
 | 
 &lt;blank&gt;
 
- 
+
 |-
 | 
 '''Applied Property Value Group'''
 
- 
+
 | 
 One or several Property Value Groups related to the current Element. These Property Values Group and the Property Values they contain might be located right under the current Element or anywhere else in the Model.
 
- 
+
 The &quot;browse&quot; button allows associating an already existing Property Group (not necessarily located under the current Element). The &quot;cross&quot; button allows removing the association between the selected Property Value and the current Element. This action does not delete the Property Value itself.
 
- 
+
 | 
 &lt;blank&gt;
 
- 
+
 |}  
 '''Management'''
 
-                      
+
 {| border="1"
 |-
 | 
 '''Field'''
 
- 
+
 | 
 '''Description'''
 
- 
+
 | 
 '''Default'''
 
- 
+
 |-
 | 
 '''Visible in Documentation'''
 
- 
+
 | 
 Specifies whether this element is exposed to the Documentation Generation tool.
 
- 
+
 | 
 True
 
- 
+
 |-
 | 
 '''Visible in Link Manager'''
 
- 
+
 | 
 Specifies whether the current element is exposed to the Link Manager tool, for example for traceability with Requirements.
 
- 
+
 | 
 True
 
- 
+
 |-
 | 
 '''Progress Status'''
 
- 
+
 | 
 Not all elements in the design phase of a System have the same maturity (some are Drafts, some need to be reviewed, etc.). This field allows setting the maturity level of the current Element.
 
- 
+
 | 
 &lt;blank&gt;
 
- 
+
 |}       

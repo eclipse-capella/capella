@@ -1,16 +1,15 @@
-            
+
 = END PRODUCT BREAKDOWN STRUCTURE =
- 
+
 === DEFINITION ===
- 
+
 The Organization of the System-of-Interest (end products components) in a tree frame is the End Product Breakdown Structure (EPBS).
 
- 
+
 The EPBS is the part of the PBS related to the operational system.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/22.%20End%20Product%20Breakdown%20Structure_html_m5da03533.png|75x66px]]
 
-   

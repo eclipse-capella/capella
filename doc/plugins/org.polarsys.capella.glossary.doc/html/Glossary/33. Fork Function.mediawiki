@@ -1,19 +1,18 @@
-            
+
 = FORK FUNCTION =
- 
+
 === DEFINITION ===
- 
+
 The Fork control Function realizes a synchronized broadcast:
 
- 
+
 * The same fork input flow content is transmitted to all receivers of 	output flows,
 * This receiving is simultaneous for each receiver (as opposed to 	sequential).
- 
+
 === ICONS ===
- 
+
 [[Image:Images/33.%20Fork%20Function_html_330e3f20.png|75x40px]]
 
- 
+
 <br>
 
-   

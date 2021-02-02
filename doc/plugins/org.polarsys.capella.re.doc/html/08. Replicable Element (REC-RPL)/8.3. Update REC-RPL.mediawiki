@@ -1,17 +1,17 @@
-            
+
 = Updates Between REC and RPL =
- 
+
 == Update of a REC from its SOURCE ==
- 
+
 Perform a change on elements that are part of the REC. Here, a Function and two Functional Exchanges are added.
 
- 
+
 [[Image:Images/8.3.%20Update%20REC-RPL_html_5cad7f32.png|627x231px]]
 
- 
+
 Select at least one original element of the REC and from the contextual menu, choose &lsquo;Update REC from selection&rdquo;
 
- 
+
 [[Image:Images/8.3.%20Update%20REC-RPL_html_518bd489.png|627x111px]]
 
 {| border="1"
@@ -24,7 +24,7 @@ The Semantic Browser can be useful to identify the selection of the right REC.
 
 The REC definition dialog appears, including the new elements
 
- 
+
 [[Image:Images/8.3.%20Update%20REC-RPL_html_2e9a447c.png|627x801px]]
 
 Click on OK. This will open the DiffMerge view. Press 'Apply' to update the rec to include all additional changes to the REC (additional information about this dialog is available in the Model DiffMerge section)
@@ -38,24 +38,24 @@ to discard changes and return to the merge view.
 [[Image:Images/8.3.update_rec_from_rec_merge_impact.png|518x592]]
 
 Validate the new REC content and check the result in the Semantic Browser for example.
- 
+
 [[Image:Images/8.3.%20Update%20REC-RPL_html_57991499.png|750x200px]]
 
 === Add/remove suffix on elements of the REC ===
 
 In the wizard "Update REC from selection" select one or more REC elements and press the button available on the right side of the wizard.
- 
+
 [[Image:Images/8.3.%20add_remove_suffix.png|81x90px]]
 
 It is also possible to do the same via properties view by selecting "Catalog Element Link" contained by REC in Project Explorer.
 
 [[Image:Images/8.3.%20add_remove_suffix_via_properties_view.png|255x136px]]
- 
+
 == Update of a RPL from its REC ==
- 
+
 Select a RPL element and in the contextual menu:
 
- 
+
 [[Image:Images/8.3.%20Update%20REC-RPL_html_m2fb5616b.png|627x154px]]
 
 
@@ -70,32 +70,32 @@ The contextual menu is also available directly on the RPL in the Semantic Browse
 
 The REC instantiation wizard opens and in the left tree, the new elements appear.
 
- 
+
 [[Image:Images/8.3.%20Update%20REC-RPL_html_m1039a7d0.png|357x409px]]
 
- 
+
 Perform modifications if needed (e.g. choosing specific locations for the new elements, modifying the suffix) and click on OK. This will open the merge dialog. Select 'Apply' to update the RPL with additional changes or merge selected changes individually. Confirm the following merge impact dialog to perform the update.
 
 
 If the suffix is modified, all elements that are intended to be renamed will be updated to have the name of the corresponding REC element with the new suffix. Similarly, if a REC element was renamed, the corresponding RPL elements will be updated with the new REC name and the current RPL suffix. Also, if an existing element has no suffix but its corresponding REC element was marked as having to be renamed, it will be updated with the RPL suffix.
- 
+
 Update the diagram to see the result.
 
- 
+
 [[Image:Images/8.3.%20Update%20REC-RPL_html_25dc09c.png|627x208px]]
 
- 
+
 == Update of a REC from its RPL ==
- 
+
 Perform a few modifications on elements belonging to a RPL.
 
- 
+
 [[Image:Images/8.3.%20Update%20REC-RPL_html_2b539e6f.png|360x290px]]
 
- 
+
 From the contextual menu, select:
 
- 
+
 [[Image:Images/8.3.%20Update%20REC-RPL_html_m41eba791.png|627x114px]]
 
 {| border="1"
@@ -109,10 +109,9 @@ The contextual menu is also available directly on the RPL in the Semantic Browse
 
 This opens the REC definition dialog. The changes are visible in the tree.
 
- 
+
 [[Image:Images/8.3.%20Update%20REC-RPL_html_4875b314.png|622x607px]]
 
- 
+
 From here, the behavior is the same as when the definition update was created directly from the REC elements.
 
-   

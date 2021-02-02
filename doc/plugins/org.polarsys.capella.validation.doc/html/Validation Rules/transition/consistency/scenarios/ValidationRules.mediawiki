@@ -1,4 +1,4 @@
-      
+
 = Transition > Consistency > Scenarios =
 <br>
 {| class="VALIDATION-RULE"

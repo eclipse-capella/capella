@@ -1,29 +1,28 @@
-            
+
 = CONFIGURATION ITEM =
- 
+
 === DEFINITION ===
- 
+
 A configuration item (CI) is a part of the System:
 
- 
+
 * Designed and produced, or purchased
 * Duplicated as much as it is used in the System
 * Assembled with others in order to build each copy of the System.
- 
+
 Examples of configuration items are cabinets, racks, electronic boards, wiring &amp; plugs, software components... CI are usually qualified as
 
- 
+
 * Hardware (HWCI),
 * Computer Software (CSCI): A group of software treated as a single 	entity by a configuration management system.
 * Commercial off the Shelf (COTS, purchased item): A COTS is an item 	that is both commercial and sold in substantial quantities in the 	commercial marketplace.
 * Non-Developed Item (NDI): A Non-Developmental Item is any previously 	developed item of supply.
 * Prime Item...
- 
+
 The EPBS is a hierarchical tree structure listing all the Configuration Items and organized by composition links.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/19.%20Configuration%20Item_html_6d6dd934.png|75x40px]]
 
-   

@@ -1,13 +1,12 @@
-            
+
 = ENUMERATION PROPERTY TYPE =
- 
+
 === DEFINITION ===
- 
+
 An Enumeration Property Type stores the possible values for Enumeration Property Values it types.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/25.%20Enumeration%20Property%20Type_html_m606a1e97.png|75x66px]]
 
-   

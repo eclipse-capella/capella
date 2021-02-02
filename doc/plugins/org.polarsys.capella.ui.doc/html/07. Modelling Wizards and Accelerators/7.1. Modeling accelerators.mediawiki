@@ -1,91 +1,91 @@
-            
+
 = Modeling Accelerators =
- 
+
 Between engineering phases or within one, some modeling tasks can be tedious. Capella provides a few tools allowing automated synchronization or generations of model elements. These tools are all available contextually under the Modeling Accelerators menu.
 
- 
+
 == Component and Functional Exchanges ==
- 
+
 '''Source element''': Components (System, Logical Components, Physical Components)
 
- 
+
 '''Command''': Modeling Accelerators / Component Exchanges
 
- 
+
 '''Effect''': Creates Component Exchanges between Components according to the Function they implement and the Functional Exchanges between them. Also creates the Component Ports and Port Allocations.
 
- 
+
 === Illustration ===
- 
+
 Model before generation
 
- 
+
 [[Image:Images/7.1.%20Modeling%20accelerators_html_67e6a41c.png|553x329px]]
 
- 
+
 Model after generation of Component Exchanges on LC 1
 
- 
+
 [[Image:Images/7.1.%20Modeling%20accelerators_html_5e22a0cd.png|553x328px]]
 
- 
+
 The Semantic Browser shows the Functional Exchanges are correctly allocated to their corresponding Component Exchanges.
 
- 
+
 [[Image:Images/7.1.%20Modeling%20accelerators_html_m6212ede3.png|553x148px]]
 
- 
+
 Note: For example in the case of LF1 and LF2, the tool cannot decide whether one single Component Exchange should carry both Functional Exchanges or one Component Exchange is necessary for each. The latter solution is the one applied; it is up to the system engineer to refactor this result if needed.
 
- 
+
 == Physical Links and Component Exchanges ==
- 
+
 '''Source element''': Node Physical Components
 
- 
+
 '''Command:''' Modeling Accelerators / Physical Links
 
- 
+
 '''Effect:''' Creates Physical Links between Node Physical Components according to the existing Component Exchanges between the Behaviour Physical Components they deploy. This generation also creates Physical Ports and Delegations.
 
- 
+
 === Illustration ===
- 
+
 Model before generation
 
- 
+
 [[Image:Images/7.1.%20Modeling%20accelerators_html_m662553b3.png|553x194px]]
 
- 
+
 Model after generation of Physical Links on PC3
 
- 
+
 [[Image:Images/7.1.%20Modeling%20accelerators_html_md0f733b.png|554x199px]]
 
- 
+
 The Semantic Browser shows the Component Exchanges are correctly allocated to their corresponding Physical Links.
 
- 
+
 [[Image:Images/7.1.%20Modeling%20accelerators_html_77412d6b.png|553x109px]]
 
- 
+
 <br>
 <br>
 
- 
+
 == Exchange Item Propagation to Ports ==
- 
+
 '''Source element''': Functions or Functional Exchanges
 
- 
+
 '''Command:''' Modeling Accelerators / Propagate Exchange Items to Function Ports
 
- 
+
 '''Effect:''' Adds references from input and output Function Ports to the Exchange Items associated to the current Functional Exchange. When launched on a Function, this command applies recursively for all Functional Exchanges of the Function hierarchy.
 
- 
+
 === Illustration ===
- 
+
 Model before propagation: EI 1 and EI 2 are referenced by the Functional Exchange whereas the Function Input Port on Physical Function 2 references EI 3 and EI 4:
 
 [[Image:Images/propagate_ei_diagram.png|483x85px]]
@@ -94,25 +94,25 @@ Model before propagation: EI 1 and EI 2 are referenced by the Functional Exchang
 Model after propagation: Exchange Item references to EI 1 and EI 2 have been added to the Function Input Port:
 
 [[Image:Images/propagate_ei_port_after.png|981x221px]]
- 
+
 The same change is applied to the Function Output Port.
 
 <br>
 <br>
 
 == Synchronization of Exchange Items on Functional Exchanges and Ports ==
- 
+
 '''Source element''': Functional Exchange
 
- 
+
 '''Command:''' Modeling Accelerators / Synchronize Exchange Items and Function Ports
 
 
 '''Effect:''' Adds references from input and output Function Ports to the Exchange Items associated to the selected Functional Exchange, and removes any other Exchange Item reference from these Function Ports.
 
- 
+
 === Illustration ===
- 
+
 Model before synchronization: EI 1 and EI 2 are referenced by the Functional Exchange whereas the Function Input Port on Physical Function 2 references EI 3 and EI 4:
 
 [[Image:Images/propagate_ei_diagram.png|483x85px]]
@@ -127,112 +127,112 @@ The same change is applied to the Function Output Port.
 <br>
 <br>
 
- 
+
 == Port Realization According to Realizations Between Functional Exchanges ==
- 
+
 '''Source element''': Functions or Functional Exchanges
 
- 
+
 '''Command:''' Modeling Accelerators / Propagate Port Realizations from realized Functional Exchange
 
- 
+
 '''Effect:''' Adds a Realization link between Function Ports of two successive engineering phases, according to the existing Functional Exchange realizations. When launched on a Function, this command applies recursively for all Functional Exchanges of the Function hierarchy.
 
- 
+
 === Illustration ===
- 
+
 Model before generation
 
- 
+
 [[Image:Images/7.1.%20Modeling%20accelerators_html_5f97dea6.png|553x193px]]
 
- 
+
 At Physical level, the Functional Exchange is moved towards a new Function. The Port of the Physical Function PF 7 does not realize the one of the Logical Function LF 6.
 
- 
+
 [[Image:Images/7.1.%20Modeling%20accelerators_html_m437e70f8.png|553x319px]]
 
- 
+
 After generation of Function Port realizations, the traceability between Function Ports is set.
 
- 
+
 [[Image:Images/7.1.%20Modeling%20accelerators_html_m665442c6.png|553x159px]]
 
- 
+
 <br>
 <br>
 
- 
+
 == Port Realization According to Realizations Between Component Exchanges ==
- 
+
 '''Source element''': Components or Component Exchanges
 
- 
+
 '''Command:''' Modeling Accelerators / Propagate Port Realizations from realized Component Exchange
 
- 
+
 '''Effect:''' Adds a Realization link between Component Ports of two successive engineering phases, according to the existing Component Exchange realizations. When launched on a Component, this command applies recursively for all Component Exchanges of the Component hierarchy.
 
- 
+
 === Illustration ===
- 
+
 Model before generation
 
- 
+
 [[Image:Images/7.1.%20Modeling%20accelerators_html_5f97dea6.png|553x193px]]
 
- 
+
 At Physical level, the Component Exchange is moved towards a new Component. The Port of the Physical Component New PC does not realize the one of the Logical Component LC 4.
 
- 
+
 [[Image:Images/7.1.%20Modeling%20accelerators_html_m4ca6bbc5.png|553x349px]]
 
- 
+
 After generation of Component Port realizations, the traceability between Component Ports is set.
 
- 
+
 [[Image:Images/7.1.%20Modeling%20accelerators_html_a37b1aa.png|553x145px]]
 
- 
+
 == Interface Generation from Allocated Functions ==
- 
+
 '''Source element''': Components (System, Logical Components, Physical Components)
 
- 
+
 '''Command:''' Modeling Accelerators / Interfaces from allocated Functions
 
- 
+
 '''Effect:''' Analyze the Component Exchanges, the Functional Exchanges they carry and the Exchange Items associated to the Functional Exchanges to generate a set of Interfaces between Components
 
- 
+
 === Illustration 1 ===
- 
+
 Source model: Two components, three Component Exchanges, four Functional Exchanges associated to Exchange Items.
 
- 
+
 [[Image:Images/7.1.%20Modeling%20accelerators_html_m52977986.png|554x253px]]
 
- 
+
 Same elements with Functional Exchange displaying the referenced Exchange Items and Component Exchanges displaying allocated Functional Exchanges.
 
- 
+
 [[Image:Images/7.1.%20Modeling%20accelerators_html_m34764e20.png|553x248px]]
 
- 
+
 Result of the generation of Interfaces: One Interface is created per Component Exchange. All Exchange Items coming from different Functional Exchanges are aggregated in the same Interface.
 
- 
+
 [[Image:Images/7.1.%20Modeling%20accelerators_html_m652c731a.png|554x282px]]
 
 === Illustration 2 ===
- 
+
 This example demonstrates interface generation in the following cases:
 * A functional exchange which is allocated to a component exchange.
 * A functional exchange with function ports that are allocated to component ports. The functional exchange itself is not allocated to the component exchange.
 * A functional exchange without a corresponding component exchange.
 
 [[Image:Images/interface_from_allocated_functions_before.png|522x484px]]
- 
+
 Three interfaces will be generated:
- 
+
 [[Image:Images/interface_from_allocated_functions_after.png|684x171px]]

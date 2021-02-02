@@ -1,76 +1,75 @@
-            
+
 = Understanding the Differences Between Models, Projects and Workspaces =
-         
+
 {| border="1"
 |-
 | 
 [[Image:Images/2.2.%20Understanding%20the%20difference%20between%20Models%20Projects%20and%20Workspaces_html_723ed3f9.png|34x34px]]
 
- 
+
 | 
 '''It is really important to understand the differences between 				Models, Projects, Workspaces, and Perspectives. See the Eclipse 				and Workspace management section with'''
 
- 
+
 * '''Official definitions of Eclipse basic concepts.'''
 * '''Tips 					and tricks about common graphical manipulations such as closing, 					restoring, minimizing views or rearranging the perspective.'''
- 
+
 |}  
 == Capella Model ==
- 
+
 When not fragmented, a Capella model consists in two files: one for the model itself and another one for the representations (diagrams and matrices).
 
- 
+
 * &lt;model name&gt;.capella (semantic model)
 * &lt;model name&gt;.aird (representations)
- 
+
 <br>
 <br>
 
- 
+
 [[Image:Images/2.2.%20Understanding%20the%20difference%20between%20Models%20Projects%20and%20Workspaces_html_m78be4302.png|305x228px]]
 
- 
+
 == Capella Project ==
- 
+
 All Eclipse resources are managed in Projects. Projects map to directories on the file system.
 
- 
+
 Most of the time in Capella, a Project contains only one Model. A Capella Project thus contains all the resources for a given project (for example fragments when the model is fragmented, images, etc.).
 
- 
+
 [[Image:Images/2.2.%20Understanding%20the%20difference%20between%20Models%20Projects%20and%20Workspaces_html_m7438dc9.png]]
 
 Using the contextual menu on the Project element, one can display the properties of the Project, including its physical location on the file system.
 
- 
+
 [[Image:Images/2.2.%20Understanding%20the%20difference%20between%20Models%20Projects%20and%20Workspaces_html_32efc2f5.png|610x300px]]
 
- 
+
 Project directory on the file system:
 
- 
+
 [[Image:Images/2.2.%20Understanding%20the%20difference%20between%20Models%20Projects%20and%20Workspaces_html_7bdda0fe.png|550x170px]]
 
- 
+
 == Eclipse Workspace ==
- 
+
 The workspace is the central hub for the user&rsquo;s file. The workspace allows storing global settings and preferences (in an hidden file called .metadata).
 
- 
+
 Projects can be physically located in a Workspace or be referenced through a Workspace. The following scheme illustrates a typical organisation where several users access one Capella Project through different Workspaces.
 
- 
+
 [[Image:Images/2.2.%20Understanding%20the%20difference%20between%20Models%20Projects%20and%20Workspaces_html_2e93d00b.png|456x347px]]
 
- 
+
 Many alternatives are possible:
 
- 
+
 * A given user could access the same Project through two different 	Workspaces, each one having a specific set of settings and 	preferences.
 * A user could mix in his Workspace referenced Projects and locally 	stored ones.
 * Etc.
- 
+
 <br>
 <br>
 
-   

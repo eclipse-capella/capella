@@ -1,13 +1,12 @@
-            
+
 = COLLECTION VALUE =
- 
+
 === DEFINITION ===
- 
+
 Collection Value is the valuation of a Collection. It corresponds to a succession of Values for the type of the Collection.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/10.%20Collection%20Value_html_10a52fd4.png|75x66px]]
 
-   

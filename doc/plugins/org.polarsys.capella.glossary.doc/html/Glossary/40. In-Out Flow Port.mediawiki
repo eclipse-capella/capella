@@ -1,19 +1,18 @@
-            
+
 = IN-OUT FLOW PORT =
- 
+
 === DEFINITION ===
- 
+
 Kind of Component Port, with a nature FLOW and a direction INOUT (bidirectional port).
 
- 
+
 Also see Component Port.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/40.%20In-Out%20Flow%20Port_html_m7c18ed19.png|75x60px]]
 
- 
+
 <br>
 
-   

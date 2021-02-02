@@ -1,19 +1,18 @@
-            
+
 = TRANSITION =
- 
+
 === DEFINITION ===
- 
+
 &#91;State Machine&#93; A Transition is the change from one State (resp. Mode) to another State (resp. Mode).
 
- 
+
 Transitions can be textually described or be associated to concrete model elements: Functions, Functional Exchanges, Exchange Items, etc.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/92.%20Transition_html_m34489713.png|75x60px]]
 
- 
+
 <br>
 
-   

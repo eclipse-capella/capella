@@ -1,13 +1,12 @@
-            
+
 = JOIN PSEUDO STATE =
- 
+
 === DEFINITION ===
- 
+
 &#91;State Machine&#93; A Join Pseudo State is used to merge two or several incoming Transitions into one single Transition towards one given State / Mode.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/47.%20Join%20Pseudo%20State_html_m6a30a3fb.png|75x66px]]
 
-   

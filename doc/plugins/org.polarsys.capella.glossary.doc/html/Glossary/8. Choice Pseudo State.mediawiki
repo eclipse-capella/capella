@@ -1,13 +1,12 @@
-            
+
 = CHOICE PSEUDO STATE =
- 
+
 === DEFINITION ===
- 
+
 &#91;State Machine&#93; Choice pseudo-state realizes a dynamic conditional branch. It evaluates the guards of the triggers of its outgoing Transitions to select only one outgoing Transition.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/8.%20Choice%20Pseudo%20State_html_m3e95ad1e.png|75x66px]]
 
-   

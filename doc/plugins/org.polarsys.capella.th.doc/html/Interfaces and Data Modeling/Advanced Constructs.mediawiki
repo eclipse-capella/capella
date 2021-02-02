@@ -365,7 +365,7 @@ Simple values were explained in the Basic Constructs chapter:
 
 Complex Value is the valuation of a structured element (for example, [ Class] or [ Union]). It contains one Value Part per Property owned by the structured element typing the Complex Value.
 
- 
+
 
 A Value Part is thus a valuation of one specific Property of the structured element. The type of the Value Part is the same as the type of the Property.
 
@@ -381,7 +381,7 @@ Collection Value is the valuation of a [ Collection]. It corresponds to a succes
 
 Unlike Literals, References (Numeric, String, Expression, Enumeration, Boolean, Complex Value) allow defining Data Values related to other Data Values.
 
- 
+
 
 A Reference Data Value can target another Reference Data Value, A Literal Data Value or a Class Property.
 

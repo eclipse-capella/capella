@@ -1,31 +1,30 @@
-            
+
 = Outline View =
- 
+
 The Outline view (not displayed by default) enables to see the focus of the current diagram view compared to the entire diagram, when this one is too big to fit in the diagram view window.
 
- 
+
 [[Image:Images/4.09.%20Outline_html_m69cb5c97.png|606x361px]]
 
- 
+
 Moving the selected area in the Outline scrolls the diagram Editor accordingly.
 
-         
+
 {| border="1"
 |-
 | 
 [[Image:Images/4.09.%20Outline_html_723ed3f9.png|34x34px]]
 
- 
+
 | 
 When 				experimenting performance issues with big models and big 				diagrams, try closing the Outline. Manipulating elements in the 				Diagram Editor often becomes smoother.
 
- 
+
 |}  
 <br>
 <br>
 
- 
+
 <br>
 <br>
 
-   

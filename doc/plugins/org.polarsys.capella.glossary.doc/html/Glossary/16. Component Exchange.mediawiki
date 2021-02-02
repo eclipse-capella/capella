@@ -1,19 +1,18 @@
-            
+
 = COMPONENT EXCHANGE =
- 
+
 === DEFINITION ===
- 
+
 Component Exchanges have a slightly different meaning according to the followed model strategy.
 
- 
+
 * When following Arcadia, Component Exchanges basically connect 	Components (through Component Ports) and carry Functional Exchanges 	between the source and target Components. Their Kind in that case is 	set to FLOW.
 * In a context where Components are reusable (i.e. can be used to type 	several Parts), Component Exchanges also serve to connect Parts (and 	thus, not directly Components at Type level). Their Kind in that 	case is set to ASSEMBLY.
- 
+
 Component Exchanges are also used technically to model Delegation between Component Ports (in that case, their Kind is set to DELEGATION).
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/16.%20Component%20Exchange_html_m70d9f5b1.png|75x60px]]
 
-   

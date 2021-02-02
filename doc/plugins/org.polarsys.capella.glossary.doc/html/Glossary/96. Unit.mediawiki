@@ -1,19 +1,18 @@
-            
+
 = UNIT =
- 
+
 === DEFINITION ===
- 
+
 A Unit of measurement is a definite magnitude of a physical quantity, defined and adopted by convention and/or by law, that is used as a standard for measurement of the same physical quantity.
 
- 
+
 Units are used in Physical Quantity Datatypes and Numeric Values.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/96.%20Unit_html_m2645e1ea.png|75x66px]]
 
- 
+
 <br>
 
-   

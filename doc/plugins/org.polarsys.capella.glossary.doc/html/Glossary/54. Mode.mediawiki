@@ -1,19 +1,18 @@
-            
+
 = MODE =
- 
+
 === DEFINITION ===
- 
+
 The Mode of an element defines the kind of element exploitation expected in given use conditions. A Mode is activated by operators. It is usually the result of a design decision and is an expected behavior feature of the element.
 
- 
+
 Mode changes are described with Transitions.
 
- 
+
 Example : Online test, Maintenance, Daily Servicing, nominal/operational, training...
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/54.%20Mode_html_771ef661.png|75x66px]]
 
-   

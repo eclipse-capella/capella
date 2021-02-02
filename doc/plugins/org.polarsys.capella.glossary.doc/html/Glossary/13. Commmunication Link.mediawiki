@@ -1,16 +1,15 @@
-            
+
 = COMMUNICATION LINK =
- 
+
 === DEFINITION ===
- 
+
 A Communication Link is a link between a Component and an Exchange Item. When following an Interaction-driven approach, Communication Links help specifying the interactions between Components without having to structure these interactions in concrete Interfaces.
 
- 
+
 Communication Links fall in two generic categories: Transmit and Acquire. According to the Communication Mechanism of the involved Exchange Item, these two categories are refined (Send/Receive fro Event, Call/Execute for Operations, Write/Read for Shared Data, Produce /Consume for Flows). Protocol scan be defined on Communication Links.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/13.%20Commmunication%20Link_html_348edf84.png|75x66px]]
 
-   

@@ -1,350 +1,350 @@
-            
+
 = Wizards =
- 
+
 == Requirement Manager ==
- 
+
 <br>
 <br>
 
 '''Capella offers lightweight requirement management capabilities'''. Allocation is performed through matrices or using the dedicated wizard. On any element, using the contextual menu, select the Requirements Manager as shown below to open the requirement allocation dialog.
 
- 
+
 [[Image:Images/7.3_Wizard_Requirement_Manager.png|600x550px]]
 
- 
+
 A double pane dialog appears, proposing all requirements.
 
- 
+
 [[Image:Images/7.3.%20Modeling%20Wizards_html_m1460320e.png|715x482px]]
 
- 
+
 In this panel, the user can allocate requirements on selected element of the model. The result of the allocation can be seen in a dedicated matrice matrix or in the Semantic Browser.
 
- 
+
 [[Image:Images/7.3.%20Modeling%20Wizards_html_7cc837b4.png|1040x378px]]
 
- 
+
 Note that this requirement allocation capability can be used for requirements in successive engineering phases, '''allowing refinement of requirements'''.
 
- 
+
 == Generic Traceability Wizard ==
- 
+
 Capella offers a lot of semantic justification means from one engineering phase to another (realization of Functions, Exchanges, Components, etc.). In addition, '''a generic traceability capability is also provided.''' '''Such traceability links can be used to''' '''link elements with additional relationships that are not available in Capella'''. Such traceability relies on the concept of '''Generic Traces'''. A dedicated wizard helps creating such Traces, although Capella does not further exploit them.
 
-         
+
 {| border="1"
 |-
 | 
 [[Image:Images/7.3.%20Modeling%20Wizards_html_3c78e109.png|48x48px]]
 
- 
+
 | 
 '''The semantics of 				these additional relationships and their exploitation are of the 				responsibility of the system engineer / project management'''.
 
- 
+
 |}  
 On any Capella element, one can open the Trace Manager tool using the contextual menu.
 
- 
+
 [[Image:Images/7.3.%20Modeling%20Wizards_html_2a4469c8.png|689x100px]]
 
- 
+
 The wizard displays all incoming and outgoing traceability for the selected element. On the capture below, built-in Capella relationships are presented in their technical form. The selected element is of type Physical Component and is:
 
- 
+
 * the target of a realization link coming from a Configuration Item 	(left pane),
 * the source of an allocation link towards a Physical Function,
 * the source of a realization link towards a Logical Component.
- 
+
 [[Image:Images/7.3.%20Modeling%20Wizards_html_70097a10.png|687x473px]]
 
- 
+
 Use the &ldquo;+&rdquo; button to create a new incoming or outgoing traceability link. '''When prompted for the kind of Trace, choose Generic Trace'''.
 
- 
+
 [[Image:Images/7.3.%20Modeling%20Wizards_html_86ec03b.png|463x213px]]
 
- 
+
 A selection dialog appears, proposing all the elements of the Model.
 
- 
+
 [[Image:Images/7.3.%20Modeling%20Wizards_html_3c16a2da.png|373x501px]]
 
- 
+
 In this example, we create a Generic Trace between a Physical Component and a System Function (note that this is not a standard Capella relationship). In the Traceability wizard, the link has been added. Double-clicking of on one source or target elements make these this elements the new current element of the wizard. This is what has been done on the wizard shown below: from the System Function, a new incoming Generic Trace exists, coming from the original Physical Component.
 
- 
+
 [[Image:Images/7.3.%20Modeling%20Wizards_html_3e5a6208.png|687x474px]]
 
- 
+
 <br>
 <br>
 
- 
+
 <br>
 <br>
 
- 
+
 <br>
 <br>
 
- 
+
 == Logical Component Breakdown Decomposition Wizard ==
- 
+
 While it is possible to use diagram to delegate communication links and the used / implemented links by from a Component to its Sub Components, a the logical component decomposition wizard also helps performing this task. On the following example, the element &ldquo;Logical System&rdquo; is implementing two Interfaces and using three
 
- 
+
 This section provides a use case about communication delegations.
 
-         
+
 {| border="1"
 |-
 | 
 [[Image:Images/7.3.%20Modeling%20Wizards_html_3c78e109.png|48x48px]]
 
- 
+
 | 
 See document &ldquo;07. 				Communication Mechanisms with Interface and Communication Link&rdquo; 				for conceptual definitions.
 
- 
+
 |}  
 <br>
 
-         
+
 {| border="1"
 |-
 | 
 [[Image:Images/7.3.%20Modeling%20Wizards_html_3c78e109.png|48x48px]]
 
- 
+
 | 
 Note this wizard is 				not adapted for Interfaces provided and required by Ports.
 
- 
+
 |}  
 <br>
 <br>
- 
+
 === Use case ===
- 
+
 On the following example, the element &ldquo;Logical System&rdquo; is implementing two Interfaces, is using two other interfaces and can send a &ldquo;TimeOut&rdquo; event.
 
- 
+
 [[Image:Images/7.3.%20Modeling%20Wizards_html_371dbcf8.png|553x419px]] [[Image:Images/7.3.%20Modeling%20Wizards_html_m32233f16.png|747x366px]]
 
- 
+
 The Logical Component Interface delegation wizard can be open using the contextual menu.
 
- 
+
 <br>
 <br>
 
- 
+
 [[Image:Images/7.3.%20Modeling%20Wizards_html_m32ab2f86.png|637x102px]]
 
- 
+
 This wizard allows the user to:
 
- 
+
 * Create new Sub Components (using the &ldquo;+&rdquo; button on the 	right side)
 * Drag and dropping Interfaces or communication links from the parent 	Component in the left Pane to one given Sub Component in the right 	pane.
- 
+
 Red Interfaces or communication links are the one that have not yet been delegated, green ones are the ones which delegation has already been taken into consideration.
 
- 
+
 <br>
 <br>
 
- 
+
 [[Image:Images/7.3.%20Modeling%20Wizards_html_52b2765f.png|627x534px]] [[Image:Images/7.3.%20Modeling%20Wizards_html_m7ed31874.png|580x574px]]
 
- 
+
 <br>
 <br>
 
- 
+
 The following CII diagram shows the result The result of the delegation after validation the user validatesof the previous wizard by the user with the displayed configuration. can be the followingAll interfaces and communication links have been delegated for the component &ldquo;Logical System&rdquo;, except for the use link from &ldquo;Logical System&rdquo; to the interface &ldquo;I_ImageCapture&rdquo;.
 
- 
+
 [[Image:Images/7.3.%20Modeling%20Wizards_html_m417c4c64.png|406x366px]] [[Image:Images/7.3.%20Modeling%20Wizards_html_m904ea44.png|646x373px]]
 
- 
+
 <br>
 <br>
 
-         
+
 {| border="1"
 |-
 | 
 [[Image:Images/7.3.%20Modeling%20Wizards_html_3c78e109.png|48x48px]]
 
- 
+
 | 
 Note this wizard is 				not adapted for Interfaces provided and required by Ports.
 
- 
+
 |}  
 <br>
 <br>
 
- 
+
 == Sequence Message Creation Wizard for Interface Scenario ==
- 
+
 This section provides a use case about sequence message creation and communications. It presents first the context of the use case and describes then the use of the sequence message creation wizard in &ldquo;creation&rdquo; and &ldquo;reuse&rdquo; modes.
 
-         
+
 {| border="1"
 |-
 | 
 [[Image:Images/7.3.%20Modeling%20Wizards_html_3c78e109.png|48x48px]]
 
- 
+
 | 
 See document &ldquo;07. 				Communication Mechanisms with Interface and Communication Link&rdquo; 				for conceptual definitions.
 
- 
+
 |}  
 === Use case context ===
- 
+
 Following picture presents the initial context of the use case. The interface diagram displays all elements related to communication concern that are involved in the definition of the four messages defined in the interface scenario.
 
- 
+
 [[Image:Images/7.3.%20Modeling%20Wizards_html_2fe6c3a7.png|578x313px]]
 
- 
+
 <br>
 <br>
 
- 
+
 === Reuse mode ===
- 
+
 In the palette of the interface scenario, select &ldquo;Sequence Message with Return Branch&rdquo;, and create one message from &ldquo;System&rdquo; to &ldquo;Actor 2&rdquo;. By default, no selectable elements are proposed because there are no complete communications defined between these two components.
 
- 
+
 [[Image:Images/7.3.%20Modeling%20Wizards_html_20372dd4.png|340x68px]]
 
- 
+
 Uncheck the filter option &ldquo;Restrict to existing static communication compatibilities&rdquo;. The wizard proposes now several partial communications:
 
- 
+
 [[Image:Images/7.3.%20Modeling%20Wizards_html_m1bb276f1.png|554x189px]]
 
- 
+
 All these communications are compatible with the message under creation. Set message kind to &ldquo;Asynchronous call&rdquo;. Selectable communications change to satisfy compatibility. Both communication with interfaces disappear (&ldquo;method1&rdquo; and &ldquo;method2&rdquo;) and value of sender link protocols switch to &ldquo;ASYNCHRONOUS&rdquo; for both communications with CLs.
 
- 
+
 [[Image:Images/7.3.%20Modeling%20Wizards_html_mf319315.png|553x125px]]
 
- 
+
 Go back to &ldquo;Synchronous call&rdquo; value. Select &ldquo;method1&rdquo; under interface &ldquo;Interface3&rdquo; and click on &ldquo;Finish&rdquo;. A new message is displayed in the interface scenario. In the interface diagram, new Use link between &ldquo;System&rdquo; and &ldquo;Interface3&rdquo; has been created to complete communication by interfaces.
 
- 
+
 [[Image:Images/7.3.%20Modeling%20Wizards_html_m6dc3155c.png|299x235px]]
 
- 
+
 Try to create another message with return between the same components. We can notice that the wizard proposes both &ldquo;method1&rdquo; and &ldquo;method2&rdquo; by default with the filter option &ldquo;Restrict to existing static communication compatibilities&rdquo; activated since there exists now a complete communication by interfaces between this pair of components.
 
- 
+
 In the palette of the interface scenario, select &ldquo;Sequence Message&rdquo; and create one message from &ldquo;Actor 2&rdquo; to &ldquo;System&rdquo;. Deactivates filter option &ldquo;Restrict to existing static communication compatibilities&rdquo; and select the communication with CLs under &ldquo;system&rdquo;.
 
- 
+
 [[Image:Images/7.3.%20Modeling%20Wizards_html_3b8ac738.png|554x140px]]
 
- 
+
 Set the name of the interface to &ldquo;MyInterface&rdquo; and click on &ldquo;Finish&rdquo; to create the message. In the interface diagram, deactivate the filter &ldquo;Hide technical Interface&rdquo; and use the &ldquo;insert/remove interface&rdquo; tool in the palette to display &ldquo;MyInterface&rdquo;. Use and implements links has been created so that a communication with technical interface &ldquo;MyInterface&rdquo; is established between &ldquo;Actor 2&rdquo; and &ldquo;System&rdquo;. Communication with CLs has been also completed (creation of the &ldquo;SEND&rdquo; link).
 
- 
+
 [[Image:Images/7.3.%20Modeling%20Wizards_html_6b0bb32.png|424x301px]]
 
- 
+
 Try to create another message without return between Actor2 and System. Wizard provides now two possible communications, one under a technical interface whose the name is hidden. Deactivate filter option &ldquo;Hide the Name of Technical Interfaces&rdquo; to see it. Activate the filter option &ldquo;Show other Exchange Items&rdquo;. Three new items appears.
 
- 
+
 [[Image:Images/7.3.%20Modeling%20Wizards_html_1052ecae.png|553x216px]]
 
- 
+
 In creation options, activate both options &ldquo;Create Port Realization instead of direct Implementation&rdquo; and &ldquo;Create Communication Links&rdquo;, select &ldquo;method1&rdquo; under package &ldquo;Interfaces&rdquo; and click on &ldquo;Finish&rdquo;.
 
- 
+
 [[Image:Images/7.3.%20Modeling%20Wizards_html_m481de745.png|351x69px]]
 
- 
+
 In the interface diagram, use the &ldquo;insert/remove interface&rdquo; tool in the palette to display the newly created interface &ldquo;Actor 2_to_System&rdquo;. Two new communications has been created: one with new interface &ldquo;Actor 2_to_System&rdquo; and one with CLs involving Exchange Item &ldquo;method1&rdquo;. Notice that the created CL that plays the role of sender link is asynchronous.
 
- 
+
 [[Image:Images/7.3.%20Modeling%20Wizards_html_m95137e6.png|543x249px]]
 
-  
+
 === Create mode ===
- 
+
 Create a message without return from &ldquo;Actor1&rdquo; to &ldquo;Actor2&rdquo;. Set the wizard in creation mode (check &ldquo;Create a new exchange item&rdquo;). Set the name of the Exchange Item as &ldquo;data&rdquo; and set its Exchange Mechanism as &ldquo;Shared data&rdquo;.
 
- 
+
 [[Image:Images/7.3.%20Modeling%20Wizards_html_4f6cb139.png|543x173px]]
 
- 
+
 By default, the selected interface is &ldquo;Interface3&rdquo;. The user can choose another one (in that case among &ldquo;Interface1&rdquo;, &ldquo;Interface2&rdquo;) by using the browse button. Validate the creation by clicking on &ldquo;Finish&rdquo;. In the interface diagram, the new Exchange Item &ldquo;data&rdquo; has been allocated to &ldquo;Interface3&rdquo;. Display &ldquo;data&rdquo; in the diagram. Following pictures present the final state of interface diagram and interface scenario for the use case.
 
- 
+
 [[Image:Images/7.3.%20Modeling%20Wizards_html_34b702bc.png|598x404px]]
 
- 
+
 <br>
 <br>
 
- 
+
 == Function Port and Exchange Item Allocation Wizard ==
- 
+
 === Principles ===
 
- 
+
 Capella Function Port and EI Allocation tool provides means manage Function / Port / Exchange Item traceability and allocations between two engineering phases.
 
- 
+
 With this tool a user can perform Exchange item allocation from one or several functions located in the source engineering phase to other functions in the following engineering phase, by launching a dedicated wizard via the &ldquo;Function Port and EI Traceability Wizard&rdquo; command of the contextual menu (see the following figure).
 
- 
 
- 
+
+
 [[Image:Images/7.3_Modeling%20Wizard_Principles.png|470x500px]]
 
- 
+
 === Source Engineering Phase (SEP) ===
 
- 
+
 The left pane of the following wizard represent all elements to be refined / enriched between the source architecture (SEP) and the target Architecture (TEP).
 
 <br>
- 
+
 [[Image:Images/7.3.%20Modeling%20Wizards_html_md5d81bf.png|500x450px]]
 
- 
+
 In the above figure, the Function &ldquo;LogicalFunction 1&rdquo; has one Port &ldquo;FOP1&rdquo; which exposes the Exchange Item &ldquo;ExchangeItem1&rdquo;.
 
- 
+
 <br>
 <br>
 
- 
+
 === Target Engineering Phase (TEP) ===
 
- 
+
 The right pane contains all the TEP elements contributing to the realization of the SEP elements.
 
- 
+
 [[Image:Images/7.3.%20Modeling%20Wizards_html_m7cfae2ea.png|500x450px]]
 
- 
+
 In the above figure, the Function &ldquo;PhysicalFunction 1&rdquo; gets a new Exchange Item provided by &ldquo;LogicalFunction 1&rdquo;.
 
- 
+
 <br>
 <br>
 
- 
+
 === Features ===
 
- 
+
 * All displayed SEP Functions without one 	traceability link coming from the TEP is shown to user with RED 	color.
 * All displayed SEP Ports without one 	traceability link coming from the TEP is shown to user with RED 	color.
 * When an Exchange Item allocated to one Port FP located in the SEP is 	not allocated to at least one of the port realization in the TEP, 	the Exchange Item line will be displayed with red color in the left 	pane.
@@ -352,10 +352,10 @@ In the above figure, the Function &ldquo;PhysicalFunction 1&rdquo; gets a new Ex
 * A user can drag and drop all displayed Exchange Items from left to 	right or from right to left pane.
 * When performing drag and drop of Exchange Item allocations from a 	SEP Port to a TEP Port, a traceability link between the two Ports is 	created automatically if it does not exist yet
 * All elements displayed in the wizard can be shown in Project Explorer 	or Semantic Browser by using a contextual menu &ldquo; Show in Project Explorer&rdquo;
- 
+
 
 ===Creation of elements in the TEP (Right pane of the wizard) ===
- 
+
 * '''Elements creation or modification'''
 **The wizard provides a button to create a new Function under an existing one.
 **User can rename directly a source or target element in the wizard.
@@ -364,7 +364,7 @@ In the above figure, the Function &ldquo;PhysicalFunction 1&rdquo; gets a new Ex
 **By using a contextual menu, the user can delete a Function or create a new Function under an existing one.
 
 
- 
+
 * '''Creation of Traceability link'''
 **The wizard provides mean to manually create traceability between Functions in SEP and TEP.
 **The wizard provides mean to manually create 1-N and N-1 traceability link between Functions in SEP and TEP.
@@ -375,194 +375,193 @@ In the above figure, the Function &ldquo;PhysicalFunction 1&rdquo; gets a new Ex
 ****Then user can select one or more elements from SEP and select the menu entry “make link” to create one or more link towards others elements of the TEP
 
 
-  
+
 [[Image:Images/7.3_Modeling%20Wizard_Features2.png|570x520px]]
 
- 
+
 <br>
 <br>
 
- 
+
 === Validation Rules and Resolutions ===
 
- 
+
 <br>
 <br>
 
-                                                        
+
 {| border="1"
 |-
 | 
 '''Constraint 			ID'''
 
- 
+
 | 
 '''Model 			Validation'''
 
- 
+
 | 
 '''Applied 			to source'''
 
- 
+
 | 
 '''Applied 			to target'''
 
- 
+
 | 
 '''Quick 			Fix'''
 
- 
+
 | 
 '''Rule 			Description'''
 
- 
+
 |-
 | 
 '''TC_DF_02'''
 
- 
+
 | 
 Y
 
- 
+
 | 
 --
 
- 
+
 | 
 --
 
- 
+
 | 
 Y
 
- 
+
 | 
 When 			a realization link exists between System Function Port and Logical 			Function Port, another realization link should exist between 			System Function and Logical Function.
 
- 
+
 |-
 | 
 '''TC_DF_10'''
 
- 
+
 | 
 Y
 
- 
+
 | 
 Y
 
- 
+
 | 
 N
 
- 
+
 | 
 Y
 
- 
+
 | 
 Every 			System Function Port must be realized by at least one Logical 			Function Port.
 
- 
+
 |-
 | 
 '''TC_DF_11 			&amp; TC_DF_12'''
 
- 
+
 | 
 Y
 
- 
+
 | 
 Y
 
- 
+
 | 
 Y
 
- 
+
 | 
 Y
 
- 
+
 | 
 When 			an Exchange Item is allocated to a System Function Port and a 			Logical Function Port, with an existing realization link between 			System Function and Logical Function, another realization link 			between System Function Port and Logical Function Port must exist.
 
- 
+
 |-
 | 
 '''TC_DF_13'''
 
- 
+
 | 
 Y
 
- 
+
 | 
 Y
 
- 
+
 | 
 Y
 
- 
+
 | 
 Y
 
- 
+
 | 
 If 			a realization link between a System Function Port (SFP) and a 			Logical Function Port (LFP) exists, it shall exist at least one 			System Analysis Exchange Item allocated by SFP who is realized by 			a Logical Analysis Exchange Item allocated by LFP.
 
- 
+
 |-
 | 
 '''TC_DF_14'''
 
- 
+
 | 
 Y
 
- 
+
 | 
 Y
 
- 
+
 | 
 Y
 
- 
+
 | 
 Y
 
- 
+
 | 
 If 			a realization link between a System Function Port and a Logical 			Function Port exist, then the System Function shall be realized by 			the Logical Function.
 
- 
+
 |} 
 <br>
 <br>
 
- 
+
 <br>
 <br>
 
- 
+
 <br>
 <br>
 
- 
+
 <br>
 <br>
 
- 
+
 <br>
 <br>
 
- 
+
 <br>
 <br>
 
-   

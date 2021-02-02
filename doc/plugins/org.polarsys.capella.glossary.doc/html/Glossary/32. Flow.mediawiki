@@ -1,19 +1,18 @@
-            
+
 = FLOW =
- 
+
 === DEFINITION ===
- 
+
 Exchange Item with a communication mechanism set to FLOW.
 
- 
+
 Continuous or discrete Flow of information / material (fluid, electric power, calories, etc.) produced by a Component / Function and consumed by one or several others.
 
- 
+
 Also see Exchange Item.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/32.%20Flow_html_m42dd1bee.png|75x40px]]
 
-   

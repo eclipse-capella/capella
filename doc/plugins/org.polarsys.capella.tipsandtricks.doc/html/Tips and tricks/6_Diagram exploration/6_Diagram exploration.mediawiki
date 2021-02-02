@@ -72,7 +72,7 @@ Another way to organize diagrams is via package tag. Several diagrams can be gro
 
 * Create a new package
 * Add a diagram to an existing package
-    
+
 [[File:../../Images/Tips85.png|thumbnail|]]
 
 ==Visibility Mode - new Sirius layer to manage hidden graphical elements==
@@ -97,10 +97,10 @@ If the '''Visibility Mode''' is active, double-clicking on a graphical element w
 | 
 [[Image:../../Images/InfoIcon.png|48x48px]]
 
- 
+
 | 
 This '''Visibility Mode''' is not persisted: when a diagram is closed, the mode is automatically disabled.
- 
+
 |} 
 
 ==Note as graphical link toward other diagram==

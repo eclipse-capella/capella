@@ -1,19 +1,18 @@
-            
+
 = IN FLOW PORT =
- 
+
 === DEFINITION ===
- 
+
 Kind of Component Port, with a nature FLOW and a direction OUT.
 
- 
+
 Also see Component Port.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/63.%20Out%20Flow%20Port_html_50dcece3.png|75x40px]]
 
- 
+
 <br>
 
-   

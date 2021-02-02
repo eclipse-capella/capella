@@ -1,35 +1,34 @@
-            
+
 = LITERAL (NUMERIC, STRING, BOOLEAN, ENUMERATION) =
- 
+
 === DEFINITION ===
- 
+
 Literals allow defining fixed Data Values.
 
- 
+
 Examples of Numeric Literals for a Numeric Type of Kind FLOAT:
 
- 
+
 * 25
 * +6.34
 * 0.5
 * 2,50E-02
 * -1
- 
+
 Examples of String Literals:
 
- 
+
 * 'Alex Ovechkin'
 * 'NONE'
 * 'January 2002'
- 
+
 Examples of Boolean Literals:
 
- 
+
 * YES, TRUE, ON
 * NO, FALSE, OFF
- 
+
 === ICONS ===
- 
+
 [[Image:Images/48.%20Literal_html_244473aa.png|75x40px]]
 
-   

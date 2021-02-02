@@ -1,20 +1,15 @@
-            
+
 = How to rename a Capella Project? =
- 
+
 Either the session is closed or the session is open, you can rename the project.
 
 
 The following sequence must be respected:
 
- 
-# On the '''project''', type '''F2''' (or contextual menu &ldquo;Rename&rdquo;): this action will rename the folder of the project and modify the 	&ldquo;.project&rdquo; file inside this folder. It will rename also the Project root element of the model and the System Engineering element. If the project contains images referenced in the diagram, the paths also to those images in the aird will be updated.
-# On the &ldquo;'''.capella'''&rdquo; file, type '''F2''' (or contextual 	menu &ldquo;Rename&rdquo;): this action will rename the 	&ldquo;.capella&rdquo; file and update all references from the &ldquo;.aird&rdquo; files to the &ldquo;.capella&rdquo; file.
-# On the &ldquo;'''.aird'''&rdquo; file, type '''F2''' (or contextual menu 	&ldquo;Rename&rdquo;): this action will rename the &ldquo;.aird&rdquo; 	file and also the associated &ldquo;.afm&rdquo; file and update all references in the &ldquo;.aird&rdquo; files 	to the &ldquo;.afm&rdquo; file.
-# On the &ldquo;'''.melodyconnector'''&rdquo; file, type '''F2''' (or contextual 	menu &ldquo;Rename&rdquo;): this action will rename the 	&ldquo;.melodyconnector&rdquo; file.
-<br>
-
-
- 
+# On the '''project''', type '''F2''' (or contextual menu &ldquo;Rename&rdquo;): this action will rename the folder of the project and modify the &ldquo;.project&rdquo; file inside this folder. It will rename also the Project root element of the model and the System Engineering element. If the project contains images referenced in the diagram, the paths also to those images in the aird will be updated.
+# On the &ldquo;'''.capella'''&rdquo; file, type '''F2''' (or contextual menu &ldquo;Rename&rdquo;): this action will rename the &ldquo;.capella&rdquo; file and update all references from the &ldquo;.aird&rdquo; files to the &ldquo;.capella&rdquo; file.
+# On the &ldquo;'''.aird'''&rdquo; file, type '''F2''' (or contextual menu &ldquo;Rename&rdquo;): this action will rename the &ldquo;.aird&rdquo; file and also the associated &ldquo;.afm&rdquo; file and update all references in the &ldquo;.aird&rdquo; files to the &ldquo;.afm&rdquo; file.
+# On the &ldquo;'''.melodyconnector'''&rdquo; file, type '''F2''' (or contextual menu &ldquo;Rename&rdquo;): this action will rename the &ldquo;.melodyconnector&rdquo; file.
 
 {| border="1"
 |-
@@ -23,31 +18,16 @@ The following sequence must be respected:
 | 
 The same process can be applied on Library projects.
 |} 
- 
-<br>
 
 
-         
 {| border="1"
 |-
 | 
 [[Image:Images/3.7.%20How%20to%20rename%20a%20Melody%20Advance%20Project_html_723ed3f9.png|34x34px]]
 
- 
+
 | 
-If 				you rename a Library project, all the references to this library 				will be lost. Libraries renaming must be done very carefully.
+If you rename a Library project, all the references to this library will be lost. Libraries renaming must be done very carefully.
 
- 
+
 |}  
-
-<br>
-
-
-<br>
-<br>
-
- 
-<br>
-<br>
-
-   

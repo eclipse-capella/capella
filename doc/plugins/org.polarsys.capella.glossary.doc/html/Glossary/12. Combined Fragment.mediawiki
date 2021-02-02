@@ -1,16 +1,15 @@
-            
+
 = COMBINED FRAGMENT =
- 
+
 === DEFINITION ===
- 
+
 In Sequence Diagrams, Combined Fragments are used to model Loops, Branches, and other kinds of alternatives.
 
- 
+
 A Combined Fragment consists of one or more interaction Operands, and each of these encloses one or more messages, Interaction Uses (References), or sub Combined Fragments.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/12.%20Combined%20Fragment_html_m73d3b16d.png|75x66px]]
 
-   

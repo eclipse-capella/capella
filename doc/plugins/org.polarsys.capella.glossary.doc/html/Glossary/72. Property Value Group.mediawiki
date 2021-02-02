@@ -1,20 +1,19 @@
-            
+
 = PROPERTY VALUE GROUP =
- 
+
 === DEFINITION ===
- 
+
 A Property Value Group allows gathering a set a semantically close Property Values (for example, 3 or 4 Property Values characterizing the Safety information for a given Function or Component).
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/72.%20Property%20Value%20Group_html_bdfb489.png|75x66px]]
 
- 
+
 <br>
 <br>
 
- 
+
 <br>
 
-   

@@ -1,37 +1,37 @@
-            
+
 = Capella Properties View =
- 
+
 == Introduction ==
- 
+
 The Properties View is the place where the characteristics of each Capella elements are entered and displayed. This view is synchronized with the current selection on the diagram or in the project explorer.
 
- 
+
 <br>
 
- 
+
 [[Image:Images/4.06_Properties_View1.png|650x570px]]
 
 <br>
- 
+
 '''Capella Editors are also available as dialogs''', accessed with a double-click on any element. The content is exactly the same as in the Properties Views.
 
- 
+
 [[Image:Images/4.06_Properties_View2.png|600x400px]]
 
- 
+
 Capella editors contain 4 sections: semantic properties, description, extensions, management.
 
- 
+
 == Capella Section (Semantic Properties) ==
- 
+
 This section displays the most important semantic information about the current element. It also allows defining relationships between elements.
 
- 
+
 [[Image:Images/4.06_Properties_View3.png|600x300px]]
 
- 
+
 == Description Section ==
- 
+
 The Descriptions section allows editing text descriptions for model elements.
 {| border="1"
 |-
@@ -41,10 +41,10 @@ The Descriptions section allows editing text descriptions for model elements.
 If the description section doesn't work, for example the buttons are missing and you can't edit nothing in the text area, please check the log error, the cause can be due to a long installation path.
 |}  
 
- 
+
 [[Image:Images/4.06.%20Properties%20View_html_m602830a9.png]]
 
- 
+
 {| border="1"
 |-
 | 
@@ -83,16 +83,16 @@ The second mechanism is embed directly in the editor and is accessible via a ded
 
 It is also possible to insert images by using the dedicated button of the toolbar.
 
- 
+
 [[Image:Images/4.06.%20Properties%20View_html_3563deb9.png]]
 
- 
+
 To get more editing options, open the Description in a dedicated Editor. To do so, click on the second button of the toolbar. A new Editor will open.
 
- 
+
 [[Image:Images/4.06.%20Properties%20View_html_3a2738b6.png]]
 
- 
+
 [[Image:Images/4.06.%20Properties%20View_html_598f5164.png]]
 
 
@@ -106,7 +106,7 @@ To avoid synchronization problems between the Description field of the Propertie
 
 
 Right-clicking on the hyperlinks to open the referenced diagram.
- 
+
 [[Image:Images/4.06.%20Properties%20View_html_35d5a95e.png]]
 
 '''Spellchecking'''
@@ -157,102 +157,102 @@ in the Capella installation directory and add the java property -Ddisable.nebula
 Fore more information, please refer to [[../help/topic/org.polarsys.kitalpha.richtext.widget.doc/html/usersGuide/usersguide.html | the user's guide of MDE Rich Text Widget]] provided by Kitalpha.
 |}
 == Extensions Section ==
- 
+
 The Extensions section allows defining which Property Values apply to the current element. Explicitly setting this relationship is useful when applied Property Values are not contained by the current element.
 
- 
+
 For example, one could imagine storing all the non functional properties of all elements in thematic packages (safety, performance, human factors, etc.) instead of having these properties spread all over the model.
 
- 
+
 [[Image:Images/4.06_Properties_View_Extensions.png|900x230px]]
 
- 
+
 Capella properties are also available in dialog boxes, using a double-click on elements in the diagrams. The Capella properties are a simplified version of the Eclipse ones.
 
- 
+
 == Management Section ==
- 
+
 The Management section contains non semantic information about the current element.
 
- 
+
 [[Image:Images/4.06.%20Properties%20View_html_82fa288.png|530x268px]]
 
- 
+
 <br>
 <br>
 
-                                   
+
 {| border="1"
 |-
 | 
 '''Field'''
 
- 
+
 | 
 '''Description'''
 
- 
+
 | 
 '''Default'''
 
- 
+
 |-
 | 
 '''Visible in 					Documentation'''
 
- 
+
 | 
 Specifies whether 					this element is exposed to the Documentation Generation tool.
 
- 
+
 | 
 True
 
- 
+
 |-
 | 
 '''Visible in Link 					Manager'''
 
- 
+
 | 
 Specifies whether 					the current element is exposed to the Link Manager tool, for 					example for traceability with Requirements.
 
- 
+
 | 
 True
 
- 
+
 |-
 | 
 '''Progress Status'''
 
- 
+
 | 
 Not all elements 					in the design phase of a System have the same maturity (some are 					Drafts, some need to be reviewed, etc.). This field allows 					setting the maturity level of the current Element.
 
- 
+
 | 
 &lt;blank&gt;
 
- 
+
 |-
 | 
 '''Review'''
 
- 
+
 | 
 This field allows adding a comment on the progress status of the 					current element.
 
- 
+
 When this field is 					not empty a validation rule throws a warning.
 
- 
+
 | 
 empty
 
- 
+
 |}   
 <br>
 <br>
 
-   
+

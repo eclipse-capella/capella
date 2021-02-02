@@ -1,16 +1,15 @@
-            
+
 = SYSTEM (OF INTEREST) =
- 
+
 === DEFINITION ===
- 
+
 The term &ldquo;the system&rdquo; should be understood as the object under study. It is an organized set of elements functioning as a unit.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/90.%20System_html_45e9fcbb.png|75x66px]]
 
- 
+
 <br>
 
-   

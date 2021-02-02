@@ -5,8 +5,8 @@ Since Capella 1.4.0, Actors are implemented in a more generic and flexible way. 
 :- separate the concepts of ''location'' and scope of ''responsibility'' of components and actors 
 :- reuse components as actors, and vice-versa
 The purpose of this chapter is to provide guidance on taking advantage of these enhancements and on highlighting the consequences of these enhancements on LA to PA transitions.
- 
- 
+
+
 == Definition of Components / Actors ==
 All structural elements (actors, logical components, physical components) now have two attributes:
 

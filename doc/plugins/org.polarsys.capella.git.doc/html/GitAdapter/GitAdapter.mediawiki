@@ -130,13 +130,13 @@ Tags can also be created from the team menu, click '''Team > Advanced > Tag...''
 Conflicts arise when contradicting changes have been made in parallel and an attempt is made to integrate (merge) them. With Git, this may happen for example when two branches are '''merged''', when a branch is '''rebased''' on another, or when a '''pull''' is done.
 
 *Commit the changes done before with the message "Added Transmit", including the renaming of the function. Be sure to select both .aird and .capella files.
- 
+
 *Right-click the project > Team > Switch to > New branch..., type "maintenance" and validate.<br>
 '''You are now in branch "maintenance"'''.<br><br>
 :-[[Image:images/SwitchNewBranch.png|500x400px]]
 <br>
 *Close the session (right-click the .aird file and select "Close"). This is because we are going to modify the content of the filesystem.
- 
+
 *In the History view, right-click the "First changes" commit, right-click "Reset" > "Hard". Branch "maintenance" has been moved back to this past commit.<br>This will reset the current branch head to "First changes" commit. It resets the index and working tree. Any changes to tracked files in the working tree since "First changes" commit are discarded.<br><br>
 
 :-[[Image:images/ResetHard.png|500x400px]]
@@ -176,7 +176,7 @@ Conflicts arise when contradicting changes have been made in parallel and an att
 
 *'''Let us report all elements that were added in the "master" branch'''. Set the "Added elements" with the right-to-left blue arrow icon to "Focused" mode and click OK: only those differences are now shown.<br><br>
 :-[[Image:images/DifferenceCategories.png|550x400px]]
- 
+
 *Select all root elements in the "Synthesis" section and click the "Copy to the left" merge button, the one with the left-to-right arrow icon. Done!<br><br>
 :-[[Image:images/CopyToLeft.png|1000x300px]]
 

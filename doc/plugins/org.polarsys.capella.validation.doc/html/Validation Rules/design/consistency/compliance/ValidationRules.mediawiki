@@ -1,4 +1,4 @@
-      
+
 = Design > Consistency > Compliance =
 <br>
 {| class="VALIDATION-RULE"

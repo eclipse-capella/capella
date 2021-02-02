@@ -1,32 +1,32 @@
-            
+
 = Fast Linker View =
- 
+
 == Introduction ==
- 
+
 The Fast Linker View enables to create links between elements of the opened Capella Model.
 
- 
+
 [[Image:Images/4.11.%20FastLinker_html_m2597ecec.png|322x271px]]
 
- 
+
 == How to Put a Model Element in the Fast Linker? ==
- 
+
 There are several ways to send elements in the Fast Linker:
 
- 
+
 * Drag &amp; Drop from viewers (Project Explorer, 	Semantic Browser),
 * Contextual menu (Viewers and Diagrams), with the &ldquo;Send to Fast 	Linker View&rdquo; command,
- 
+
 [[Image:Images/4.11_Fast_Linker_1.png|450x130px]]
 
- 
+
 * F6 shortcut (Viewers and Diagrams).
- 
+
 == Link Creation Procedure ==
- 
+
 The following things happen when the user put an element in the Fast Linker:
 
- 
+
 * If the Fast Linker is empty, it checks whether this element can be 	part of a link (as source or target),
 ** If no link is possible, the Fast Linker rejects the model element,
 ** If at least one link is possible, the Fast Linker accepts the model 		element and it becomes visible in the Fast Linker view,
@@ -36,22 +36,22 @@ The following things happen when the user put an element in the Fast Linker:
 ** If one link is possible, it is created,
 ** If several links are possible, a menu is displayed to allow the 		user to make a choice:
 
- 
+
 [[Image:Images/4.11_Fast_Linker_Link-Creation_Procedure1.png|400x200px]]
 
- 
+
 * Once a link is created, a message is added in the Information View:
- 
+
 [[Image:Images/4.11_Fast_Linker_Link-Creation_Procedure2.png|400x60px]]
 
- 
+
 * If a model element is once again put in the Fast Linker, the 	procedure restarts as if the Fast Linker was empty.
- 
+
 == Additional Features ==
- 
+
 The Fast Linker offers some features to ease its usage:
 
- 
+
 * A clear command ([[Image:Images/4.11.%20FastLinker_html_m46b0819d.png|16x16px]]),
 * A pin command ([[Image:Images/4.11.%20FastLinker_html_m6358d111.png|30x17px]]) 	allowing to keep an element in the Fast Linker in order to create 	several links involving it,
 ** There is two ways to pin an element:
@@ -60,27 +60,26 @@ The Fast Linker offers some features to ease its usage:
 ** The pinned element is displayed in bold,
 ** The same procedures can be used to unpin a pinned element
 
-  
+
 == Multiple Selection ==
- 
+
 The Fast Linker view supports multiple sources and multiple targets to create links between each couple of source and target when possible.
 
- 
+
 [[Image:Images/4.11.%20FastLinker_html_32990aa2.png|627x127px]]
 
-         
+
 {| border="1"
 |-
 | 
 [[Image:Images/4.11.%20FastLinker_html_m262394d3.png|45x45px]]
 
- 
+
 | 
 * This feature 					is not yet implemented for every link but works 					with classes associations and generalizations.
 * Note 					that multiple sources can have only one target for a 					generalization link.
- 
+
 |}  
 <br>
 <br>
 
-   

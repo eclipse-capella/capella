@@ -1,83 +1,83 @@
-            
+
 = Iterative Transitions Concepts =
- 
+
 == Overview ==
- 
+
 The Capella Iterative Transition is a model transformation within a Capella Model. It aims to transform concepts into other concepts. For instance, transforming Operational Activities into Functions.
 
- 
+
 Most of Iterative Model Transformation engines are destructive. The Capella Model Transformation engine is conservative. It means that it is not one shot, it is possible to rerun the transformation after changes in the source and/or target models. It requires traceability links between transformed elements.
 
- 
+
 == What is Done During an Iterative Transformation? ==
- 
+
 An Iterative Transition considers the following rules:
 
- 
+
 * If there is a source element but not traced to a target element, the 	target element is created.
 * If the source element is moved (no more linked to the transformed 	related element), the target element is moved too.
 * If the source element is deleted, the target element is kept.
 * If the target element is moved, the target element is moved to its 	original location.
 * If the target element is deleted, the transformation process will 	create the target element again.
-         
+
 {| border="1"
 |-
 | 
 [[Image:Images/11.1.%20Concepts_html_3c78e109.png|48x48px]]
 
- 
+
 | 
 This is a general 				idea of what happens in the engine but it may vary depending on 				the implemented rules.
 
- 
+
 |}  
 == More About Iterative Transformation ==
- 
+
 === The Tranformation Engine ===
- 
+
 The transformation engine takes 2 models as input: a source model and a target model.
 
- 
+
 The engine is rule-based, i.e. it is implemented with transformation rules.
 
- 
+
 The engine builds an agenda of transformed elements based on model element dependencies. The rules detect the relevant dependencies for the transformation.
 
- 
+
 [[Image:Images/11.1.%20Concepts_html_65bc7c12.png|730x243px]]
 
- 
+
 After the agenda building, the agenda is parsed and rules are applied. The result is a set of transformed elements.
 
- 
+
 During a second parse, these elements are attached and linked to existing elements in the target model part. No element is destroyed (it is conservative).
 
- 
+
 === Automated Changes Detection ===
- 
+
 There is a way to perform changes detection in most cases when performing a 1-to-1-concept mapping: '''&quot;The linked transformed element shall be the transformed linked element.&quot;'''
 
- 
+
 This rule is applicable for containment and other relationships. But the containment is considered as mandatory in most cases, that is why it is named the 'Clone/Ownership Clone' process.
 
- 
+
 A and B are in the source model. A' and B' are in the target model.
 
- 
+
 [[Image:Images/11.1.%20Concepts_html_m40e77d1e.png|761x362px]]
 
 
- 
+
 == Update ==
- 
+
 The iterative transition is using the DiffMerge tooling to display changes between the result of the transition and the targeted architecture.
 
 * On the left panel, a synthesis of modifications which may be propagated to the targeted architecture.
 * On the middle panel, the candidate model resulting of the transition operation
 * On the right side, the target architecture.
- 
+
 Additional documentation is available in the section "Model DiffMerge"
- 
+
 {| border="1"
 |-
 | 
@@ -85,6 +85,6 @@ Additional documentation is available in the section "Model DiffMerge"
 | 
 During the merge, it is recommended to not uncheck the "incremental mode" option, as this leads to undesirable behavior (removal of other elements on the targeted architecture).
 |}
- 
+
 <br>
 <br>

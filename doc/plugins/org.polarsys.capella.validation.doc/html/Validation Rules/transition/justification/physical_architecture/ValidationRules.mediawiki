@@ -1,4 +1,4 @@
-      
+
 = Transition > Justification > Physical Architecture =
 <br>
 {| class="VALIDATION-RULE"

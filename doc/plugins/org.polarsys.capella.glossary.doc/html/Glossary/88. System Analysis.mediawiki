@@ -1,16 +1,15 @@
-            
+
 = SYSTEM ANALYSIS =
- 
+
 === DEFINITION ===
- 
+
 The System Analysis phase focuses on the System/Software itself, in order to define how it can satisfy the former Operational need, along with its expected behavior and qualities: system/software Functions to be supported, related Exchanges, non functional constraints (safety, security&hellip;), performances allocated to system boundary, role sharing and interactions between System and Operators.
 
- 
+
 Outputs of System Analysis mainly consist of system/software functional need description, interoperability and interaction with the users and external Systems (functions, exchanges plus non-functional constraints, external interfaces), and System/Software requirements.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/88.%20System%20Analysis_html_m5da03533.png|75x66px]]
 
-   

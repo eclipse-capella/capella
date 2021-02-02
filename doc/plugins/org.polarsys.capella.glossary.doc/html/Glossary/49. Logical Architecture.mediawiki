@@ -1,19 +1,18 @@
-            
+
 = LOGICAL ARCHITECTURE =
- 
+
 === DEFINITION ===
- 
+
 The main objective of the Logical Architecture is to identify the System/Software parts (hereafter called Components), their contents, relationships and properties, excluding implementation or technical/technological issues or specificities.
 
- 
+
 In order for this breakdown in components to be stable in further steps, all major &#91;non-functional&#93; constraints (safety, security, performance, IVV&hellip;) are taken into account so as to find the best compromise between them.
 
- 
+
 Outputs of the Logical Architecture are: Components &amp; Interfaces definition, including formalization of all viewpoints and the way they are taken into account in the components design.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/49.%20Logical%20Architecture_html_m5da03533.png|75x66px]]
 
-   

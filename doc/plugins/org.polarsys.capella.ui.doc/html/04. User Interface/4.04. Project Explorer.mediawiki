@@ -1,77 +1,77 @@
-            
+
 = Project Explorer =
- 
+
 == Opening, Visualizing and Closing a Model ==
- 
+
 When not fragmented, a Capella model is composed of one file containing the model elements (the semantic model) and one or more AIRD files containing the representations (diagrams and matrices).
 
- 
+
 It can also contain additional resources such as images.
 
- 
+
 <center>[[Image:Images/4.04.%20Project%20Explorer_html_m50c8ab23.png|213x200px]]</center>
 
- 
+
 Double-clicking on the AIRD file opens the model. While the AIRD file technically contains the diagrams, once opened, it also shows the hierarchical view of the semantic model.
 
- 
+
 This hierarchy represents how the model elements are organized in terms of containment. Diagrams attached to a specific element are located under this element.
 
- 
+
 <center>[[Image:Images/4.04.%20Project%20Explorer_html_m3aa67aa3.png]]</center>
 
- 
+
 An additional folder shows all diagrams sorted by categories.
 
- 
+
 <center>[[Image:Images/4.04.%20Project%20Explorer_html_301b63e9.png]]</center>
 
- 
+
 Optionally, another folder displaying diagrams sorted by resources is available. Viewing diagrams sorted by resources can be helpful when models are fragmented or when several AIRD files are referencing a unique semantic model. as a folder in which diagrams are sorted by categories.
 
- 
+
 <center>[[Image:Images/4.04.%20Project%20Explorer_html_3a7d651e.png|348x122px]]</center>
 
- 
+
 Clicking on &ldquo;Customize View&rdquo; opens a dialog where &ldquo;Representations per category&rdquo; can be hidden.
 
- 
+
 <center>[[Image:Images/4.04_Project_Explorer2.png|400x350px]]</center>
 
- 
+
 <br>
 <br>
 
- 
+
 <center>[[Image:Images/4.04.%20Project%20Explorer_html_m5da49805.png|237x207px]]</center>
 
- 
+
 '''Fig'''. Project explorer with a filtered &laquo; Representations per category &raquo; element.
 
- 
+
 On an opened AIRD file, the contextual menu allows to close the model, activate or deactivate viewpoints.
 
- 
+
 <center>[[Image:Images/4.04_Project_Explorer1.png|500x523px]]</center>
 
- 
+
 Saving the model can be performed from the toolbar or using the CTRL+S shortcut.
 
-         
+
 {| border="1"
 |-
 | 
 <center>[[Image:Images/4.04.%20Project%20Explorer_html_3c78e109.png|48x48px]]</center>
 
- 
+
 | 
 The * character in 				front of the project explorer View title indicates the model has 				changed since the last save. One says the model is in a &laquo; dirty &raquo; 				state.
 
- 
+
 |}  
 <center>[[Image:Images/4.04.%20Project%20Explorer_html_2a59bdef.png|300x270px]]</center>
 
- 
+
 <br>
 <br>
 
@@ -93,21 +93,21 @@ Some representations may be displayed as gray, meaning that the representation i
 
 - or its url is malformed (representationDescriptor.repPath links towards an invalid representation) 
 
- 
+
 == Customizing the Content of the Project Explorer ==
- 
+
 It is possible to filter some of the elements displayed in the hierarchical view of the model. This can be particularly useful for hiding &ldquo;technical&rdquo; model elements such as transformation links, etc.
 
- 
+
 <center>[[Image:Images/4.04.%20Project%20Explorer_html_3a7d651e.png|348x150px]]</center>
 
- 
+
 <center>[[Image:Images/4.04.%20Project%20Explorer_html_dd6dd4d.png|239x420px]]</center>
 
- 
+
 For example, when masking Trace elements, the difference is the following. The Project Explorer get clearer when &ldquo;technical&rdquo; elements are hidden. Dedicated Properties View and Diagrams usually allow to see in a more ergonomic way the same information.
 
- 
+
 <center>[[Image:Images/4.04.%20Project%20Explorer_html_116eb088.png|900px]]</center>
 
 {| border="1"
@@ -115,26 +115,26 @@ For example, when masking Trace elements, the difference is the following. The P
 | 
 <center>[[Image:Images/4.04.%20Project%20Explorer_html_3c78e109.png|48x48px]]</center>
 
- 
+
 | 
 Note that the elements below are hidden by default with Capella:
 
 * Functional Exchanges
 * Part
- 
+
 |}  
 
- 
- 
- 
+
+
+
 == Commands of the Contextual Menu ==
- 
+
 In the hierarchical view of the model, a contextual menu allows launching all kinds of commands (model validation, model transformation, creation of diagrams, etc.).
 
- 
+
 The functionality of each of these applicative commands is described in other sections of this documentation.
 
- 
+
 <center>[[Image:Images/4.04_Project_Explorer3.png|530x436px]]</center>
 
 
@@ -146,22 +146,22 @@ The &ldquo;Sort Selection&rdquo; command sorts the list of selected elements whi
 
 <center>[[Image:Images/4.04.%20Project%20Explorer_Sort%20Selection.png|500x250px]]</center>
 
- 
+
 The &ldquo;Add Capella Element&rdquo; command creates new semantic elements.
 
- 
+
 <center>[[Image:Images/4.04_Project_Explorer4.png|550x250px]]</center>
 
- 
+
 The &ldquo;New Diagram / Table&rdquo; command creates new diagrams or matrices.
 
- 
+
 <center>[[Image:Images/4.04.%20Project%20Explorer_html_40cc432b.png|570x150px]]</center>
 
- 
+
 The &ldquo;Show Related Element(s) in Project Explorer&rdquo; command provides a quick navigation shortcut towards related elements. For example, the type of a property, the allocated functions of a component, etc.
 
- 
+
 <center>[[Image:Images/4.04_Project_Explorer5.png|900px]]</center>
 
 <br>
@@ -169,19 +169,19 @@ The &ldquo;Show Related Element(s) in Project Explorer&rdquo; command provides a
 
 <center>[[Image:Images/4.04_Project_Explorer6.png|900px]]</center>
 
- 
+
 The contextual menu on a diagram allows to rename or clone an existing diagram (a new diagram is initiated with the same content and layout, which can be very helpful).
 
- 
+
 <center>[[Image:Images/4.04.%20Project%20Explorer_html_m6179049.png|516x176px]]</center>
 
- 
+
 <br>
 <br>
 
- 
+
 == Synchronization with other Views ==
- 
+
 # Some other views, such as the Semantic Browser and the Properties view, are automatically updated regarding the element that is currently selected in the Project Explorer.
 # From the Diagram Editor, the Semantic Browser and the Information View, we can navigate a selected element or its related elements in the Project Explorer by choosing one of the options below from the right-click contextual menu:
 #* Show in Project Explorer (F8)
@@ -194,50 +194,49 @@ If the quick fix is not possible, an information dialog will be displayed.
 
 
 == Search Field ==
- 
+
 A research field based on regular expressions is available on the top of the Project Explorer. It is convenient to quickly locate elements in the hierarchy, based on just a part of their name.
 
- 
+
 <center>[[Image:Images/4.04.%20Project%20Explorer_html_14f2f514.png|400x370px]]</center>
 
- 
+
 <br>
 <br>
 
-         
+
 {| border="1"
 |-
 | 
 <center>[[Image:Images/4.04.%20Project%20Explorer_html_3c78e109.png|48x48px]]</center>
 
- 
+
 | 
 Clicking 				on the small magnifier next to the search field allows searching 				not only in names but also in descriptions.
 
- 
+
 |}  
 <br>
 <br>
 
-         
+
 {| border="1"
 |-
 | 
 <center>[[Image:Images/4.04.%20Project%20Explorer_html_3c78e109.png|48x48px]]</center>
 
- 
+
 | 
 A wildcard character can be used to substitute 				for any other character or characters in a string.
 
- 
+
 * : the asterisk character substitutes for 				zero or more of the characters. For example, ab*c 				matches &quot;ac&quot;, &quot;abc&quot;, &quot;abbc&quot;, 				&quot;abbbc&quot;, and so on.
 
- 
+
 ? 				: the question mark substitutes for exactly one character. For 				example, colo?r matches only &quot;colour&quot; 				and not &quot;color&quot;.
 
- 
+
 |}  
 <br>
 <br>
 
-   

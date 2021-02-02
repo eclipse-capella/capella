@@ -1,248 +1,247 @@
 = Advanced Management of Diagrams =        
-            
+
 == Synchronized and Unsynchronized Diagrams ==
- 
+
 Synchronized/Unsynchronized Diagrams, Insert/Remove tools, Show/Hide wizard. The Capella diagram editor is rich and flexible, but at first, the basic concepts may be hard to get. Here, a new Class Diagram Blank is used as an example.
 
- 
+
 '''First, we set the diagram Unsynchronized'''. This means all elements will not be shown automatically.
 
- 
+
 [[Image:Images/5.2.%20Advanced%20Managenement%20of%20Diagrams_html_m42fd3f45.png|344x111px]]
 
- 
+
 <br>
 <br>
 
- 
+
 Using the Type Insert/Remove tool, selection of the Class &ldquo;''PictureRequest''&rdquo;
 
- 
+
 [[Image:Images/5.2.%20Advanced%20Managenement%20of%20Diagrams_html_m1f9a28ae.png|170x70px]]<br>
 <br>
 <br>
 
- 
+
 [[Image:Images/5.2.%20Advanced%20Managenement%20of%20Diagrams_html_20ac0b99.png|157x89px]]
 
- 
+
 The Properties of &ldquo;''PictureRequest''&rdquo; are not displayed. This is because the diagram is unsynchronized. Because elements like Properties are not displayed automatically, new tools appear in the diagram palette when switching from Synchronized to Unsynchronized
 
- 
+
 [[Image:Images/5.2.%20Advanced%20Managenement%20of%20Diagrams_html_m64a62184.png|299x105px]]
 
- 
+
 Using the Insert/Remove Properties tool, selection of one of the Properties of &ldquo;''PictureRequest''&rdquo;
 
- 
+
 [[Image:Images/5.2.%20Advanced%20Managenement%20of%20Diagrams_html_30547e9b.png|184x79px]]
 
- 
+
 The selected (and only the selected) Properties are displayed on the diagram
 
-         
+
 {| border="1"
 |-
 | 
 [[Image:Images/5.2.%20Advanced%20Managenement%20of%20Diagrams_html_3c78e109.png|48x48px]]
 
- 
+
 | 
 '''Synchronizing diagrams''' 				is the default behaviour of Capella.
 
- 
+
 '''Un''''''-synchronizing 				a diagram''' is especially useful to 				manage big models:
 
- 
+
 * Physical Components with hundreds of Ports,
 * Classes with dozens of Attributes,
 * Functions 					with dozens of Exchanges, etc.
- 
+
 |}  
 '''Insert/Remove tools for relationships are helpful:''' they both allow displaying links between elements already on the diagram and displaying the source / target of the link if not yet on the diagram. Using the Relationships Insert/Remove tool on &ldquo;''CaptureRequest''&rdquo;, selection of the generalization relationship.
 
- 
+
 <br>
 <br>
 
- 
+
 [[Image:Images/5.2.%20Advanced%20Managenement%20of%20Diagrams_html_34821f4c.png|381x102px]]
 
- 
+
 <br>
 <br>
 
- 
+
 [[Image:Images/5.2.%20Advanced%20Managenement%20of%20Diagrams_html_607b747c.png|198x132px]]
 
- 
+
 The target of the relationship (&ldquo;''CaptureRequest''&rdquo;) is automatically displayed on the diagram, but not its Properties.
 
-         
+
 {| border="1"
 |-
 | 
 [[Image:Images/5.2.%20Advanced%20Managenement%20of%20Diagrams_html_3c78e109.png|48x48px]]
 
- 
+
 | 
 '''This kind of Insert/Remove tool for 				relationships is particularly useful for blank diagram as they 				help building the diagram''' 				(Functional Exchanges in dataflow diagrams, Connections in 				architecture diagrams, etc.).
 
- 
+
 They 				are less relevant for Contextual Diagrams, which are usually 				based on an automatic analyse and display of relationships given 				one contextual element.
 
- 
+
 |}  
 '''We now set the diagram Synchronized'''. The diagram palette is back to its original state, meaning the Properties Insert/Remove tool for example is not present anymore.
 
- 
+
 [[Image:Images/5.5_Advanced_Management.png|400x220px]]
 
- 
+
 After a Refresh, all Properties of both classes are displayed. And any new Property added by any mean (editors for example) will be automatically displayed after a Refresh of the diagram.
 
- 
+
 [[Image:Images/5.2.%20Advanced%20Managenement%20of%20Diagrams_html_m5ff89f63.png|300x160px]]
 
- 
+
 Here is a non-exhaustive list of elements in different diagrams that are likely to appear automatically when the diagram is Synchronized: Function Ports, Component Ports, Properties of Classes, Exchange Item Allocations of Interfaces, any existing relationship between two elements on a diagram, Deployed Components, etc.
 
- 
+
 Using the '''Show/Hide wizard''', selection of the Properties &ldquo;''hResolution''&rdquo; and &ldquo;''vResolution''&rdquo; of &ldquo;''PictureRequest''&rdquo;.
 
- 
+
 [[Image:Images/5.2.%20Advanced%20Managenement%20of%20Diagrams_html_26d60da9.png|350x300px]]
 
- 
+
 <br>
 <br>
 
- 
+
 [[Image:Images/5.2.%20Advanced%20Managenement%20of%20Diagrams_html_7ea48f9f.png|300x160px]]
 
- 
+
 <br>
 <br>
 
- 
+
 The &rdquo;''hResolution''&rdquo; and &ldquo;''vResolution''&rdquo; Properties are not displayed anymore. <u>Their graphical representations still exist on the diagram, but they are not visible anymore</u>. They will not be back after a Refresh.
 
- 
+
 <br>
 <br>
 
- 
+
 == Removing Hidden Elements from Diagrams ==
- 
+
 <br>
 <br>
 
- 
+
 Working with complex diagrams can be very hard and may slow down user workflows. To enable a better complexity management when dealing with diagrams, Capella provide a &ldquo;Remove hidden elements&rdquo; command. It is accessible from contextual menu on aird files or any model element.
 
- 
+
 [[Image:Images/5.2.%20Advanced%20Managenement%20of%20Diagrams_html_m3f7bce52.png|490x337px]]
 
- 
+
 <br>
 <br>
 
- 
+
 If the command is launched from the ''aird'' it will process all the underlying diagrams. If it is launched from a model element it will process all diagrams under this specific model element. When launched, the command will remove <u>non visible elements</u>. This includes hidden elements but also non visible elements like a FunctionalExchange between a visible Function and a hidden one. A popup window opens inviting user to choose to unsynchronise diargrams.
 
- 
+
 [[Image:Images/5.2.%20Advanced%20Managenement%20of%20Diagrams_html_m5af8c4ec.png|490x146px]]
 
- 
+
 <br>
 <br>
 
- 
+
 In the case of &ldquo;Unsynchronize diagrams&rdquo; is checked, all the elements with ''Unsynchronizable'' and ''Not synchronized'' mappings will be removed from diagrams.
 
- 
+
 In the case of &ldquo;Unsynchronize diagrams&rdquo; is unchecked, only elements with ''Not synchronized'' mappings will be removed from diagrams.
 
- 
+
 At the end, the command will report information messages into the Information View. Messages have the following format: Removing &lt;nb_of_elements&gt; elements from diagram: &lt;diagram_name&gt; e.g. Removing 5 elements from diagram: &#91;LAB&#93; Logical System - Logical Architecture Blank
 
- 
+
 <br>
 <br>
 
- 
+
 == Example ==
- 
+
 Let us consider the following LAB diagram:
 
- 
+
 [[Image:Images/5.2.%20Advanced%20Managenement%20of%20Diagrams_html_m18897851.png|627x419px]]
 
- 
+
 If we hide LC1 and C1 we get the following result :
 
- 
+
 [[Image:Images/5.2.%20Advanced%20Managenement%20of%20Diagrams_html_m686bc252.png|868x476px]]
 
- 
+
 <br>
 <br>
 
- 
+
 LC1 and C1 are now hidden elements.
 
- 
+
 Let us now launch the contextual command on Logical System element.
 
- 
+
 <br>
 <br>
 
- 
+
 [[Image:Images/5.2.%20Advanced%20Managenement%20of%20Diagrams_html_me90e433.png|454x449px]]
 
- 
+
 <br>
 <br>
 
- 
+
 If we launch the command with &ldquo;Unsynchronize diagrams&rdquo; checked, LC1 and C1 will be removed from diagram.
 
- 
+
 [[Image:Images/5.2.%20Advanced%20Managenement%20of%20Diagrams_html_5ad072f.png|868x550px]]
 
- 
+
 <br>
 <br>
 
- 
+
 But if we launch it with &ldquo;Unsynchronize diagrams&rdquo; unchecked, only C1 will be removed from diagram. This is due to the level of synchronisation of the mappings, LC1 has a Not synchronised level and CE1 has an Unsynchronisable level.
 
- 
+
 <br>
 <br>
 
- 
+
 [[Image:Images/5.2.%20Advanced%20Managenement%20of%20Diagrams_html_93bd649.png|868x550px]]
 
- 
+
 <br>
 <br>
 
- 
+
 <br>
 <br>
 
- 
+
 <br>
 <br>
 
- 
+
 <br>
 <br>
 
- 
+
 <br>
 <br>
 
-   

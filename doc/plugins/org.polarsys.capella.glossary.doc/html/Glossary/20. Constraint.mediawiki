@@ -1,13 +1,12 @@
-            
+
 = CONFIGURATION ITEM =
- 
+
 === DEFINITION ===
- 
+
 A constraint is a textual piece of information related to one or several elements. Constraints can be displayed on diagrams. Constraints can be used for description purpose but if a specific syntax is used, they can also be used when processing the model (for example at generation time).
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/20.%20Constraint_html_6b154bbc.png|75x66px]]
 
-   

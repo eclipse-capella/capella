@@ -16,7 +16,7 @@ When the Transfer View (Window->Show View->Transfer) is opened for the first tim
 4. The reset button will reset the view to its initial empty state.
 
 === Illegal Backreferences ===
- 
+
 It is rarely ever possible to move an element in isolation. Usually, an element is part of a graph, connected to other elements that belong together: For example a Class B that extends another Class A cannot be moved without moving A too, since that would introduce a reference cycle between the source project and the target library. The Transfer View detects this and visualizes it as follows: When Class B is dropped onto the Selection Area, the Generalization child of A will be marked red. Hovering over the marked element will show additional informations about this ''illegal backreference'':
 
 [[Image:Images//9.5_MoveElementsView_2.png|1054x300px]] 
@@ -127,13 +127,13 @@ The execute button is again enabled. Select it to execute the move. This time, t
 
 This concludes the example.
 
-  
 
 
 
 
 
- 
+
+
 
 
 

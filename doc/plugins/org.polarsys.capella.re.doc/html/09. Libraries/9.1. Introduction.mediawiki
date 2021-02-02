@@ -1,46 +1,45 @@
-            
+
 = Introduction =
-          
+
 {| border="1"
 |-
 | 
 [[Image:Images/9.1.%20Introduction_html_723ed3f9.png|34x34px]]
 
- 
+
 | 
 Only nominal cases are supported by the 				current implementation of libraries for now. Please check section &ldquo;Usage Restrictions&rdquo; for more details. 
 
- 
+
 |}  
 <br>
 <br>
 
- 
+
 == Concepts ==
- 
+
 A Library is a Capella model intended to be shared between several Projects.
 
- 
+
 [[Image:Images/9.1.%20Introduction_html_65396e1a.png|533x246px]]
 
- 
+
 A Project can reference a Library with READ or READ/WRITE mode. In the latter case, this means the Library content can be modified from the Project itself, without having to specifically open the Library.
 
- 
+
 A library can have references towards other Libraries, but a Library cannot have a reference towards a Project.
 
- 
+
 What are Libraries intended for?
 
- 
+
 * Allow reuse of model elements across different models (for example, 	several Projects in one domain often need to share the same data 	model).
 * Enhance organization (avoid duplication and references between 	models)
 * Host catalogs of Replicable Elements
- 
+
 Libraries benefit of same tooling than models.
 
- 
+
 * Edition of library&rsquo;s content via diagrams and editors
 * Semantic browser
 * Validation rules &amp; quick fixes[[Image:Images/9.1.%20Introduction_html_m2f4cc7f5.jpg|92x92px]][[Image:Images/9.1.%20Introduction_html_733c5d5d.jpg|92x92px]]
-   

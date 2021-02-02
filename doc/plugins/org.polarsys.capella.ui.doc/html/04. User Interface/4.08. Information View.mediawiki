@@ -1,72 +1,71 @@
-            
+
 = Information View =
- 
+
 The Information view displays information that provides feedback to a set of Capella treatments (validation, transitions, etc.). To open the Information view select Window-&gt;Show View-&gt;Information View from the Capella menu.
 
- 
+
 [[Image:Images/4.08_Information_View.png|800x220px]]
 
-         
+
 {| border="1"
 |-
 | 
 [[Image:Images/4.08.%20Information%20View_html_3c78e109.png|48x48px]]
 
- 
+
 | 
 Most of the time, 				messages in the Information view are associated to one specific 				model element. Double-clicking on the message brings the focus on 				this element in the Project Explorer.
 
- 
+
 |}  
 
 ===Categorization===
 
- 
+
 The Information View displays messages organized by different criteria in a tree structure. Messages can be organized by validation rule category, severity or validation rule id. You can also completely turn off categorization, so that messages are displayed in purely tabular form. These options are available from the Information View Menu Bar and the Context Menu via the &ldquo;Group by&rdquo; submenu.
 
- 
+
 The Expand to default button ([[Image:Images/4.08.%20Information%20View_html_3a378b57.png|24x21px]]) will expand the tree to a reasonable configuration. To expand the entire tree, use the &ldquo;Expand all&rdquo; button ([[Image:Images/4.08.%20Information%20View_html_232a7c9e.png|20x22px]]). To collapse the tree use the &ldquo;Collapse all&rdquo; button ([[Image:Images/4.08.%20Information%20View_html_m50e2c89c.png|22x23px]]). You can also expand and collapse parts of the tree by double-clicking on a tree folder.
 
- 
+
 <br>
 <br>
 
- 
+
 ===Deleting Elements===
 
- 
+
 You can delete one or more elements from the view by selecting them and using the delete button ([[Image:Images/4.08.%20Information%20View_html_219f74e.png|24x22px]]) or the &ldquo;Delete&rdquo; option from the context menu. You can easily delete all model validation messages for a specific validation rule by choosing &ldquo;Delete similar&rdquo; from the context menu. To delete all messages for a given validation rule and deactivate the rule, select &ldquo;Disable permanently&rdquo; from the context menu. (You can later re-enable the rule under Window-&gt;Preferences-&gt;Model Validation-&gt;Constraints).
 
- 
+
 <br>
 <br>
 
- 
+
 ===Filters===
 
- 
+
 Each message is associated with a severity: DEBUG, INFORMATION, WARNING, ERROR and FATAL. You can filter the displayed messages by using the filter buttons in the Information View Toolbar:
 
- 
+
 [[Image:Images/4.08.%20Information%20View_html_6b21981f.png|120x28px]]
 
- 
+
 The Information View also provides two contextual filters: &ldquo;Elements for active Project&rdquo; filters messages so that only messages for the currently active project are shown. (The currently active project is the project that contains the current selection). &ldquo;Elements for active Selection&rdquo; filters messages so that only messages for the currently active selection are shown. To activate these filters use the &ldquo;Show-&gt;Elements for active Project&rdquo; or &ldquo;Show-&gt;Elements for active Selection&rdquo; from the context menu. To disable the contextual filtering choose &ldquo;Show-&gt;All elements&rdquo;.
 
- 
+
 <br>
 <br>
 
 ===Export===
 
- 
+
 It is possible to export the content of the Information View to an html file, using the Save button ([[Image:Images/4.08.%20Information%20View_html_m12fc73d3.png|24x24px]]) in the Views toolbar. In the case of a Model Validation, the html export of the Information View looks like the following example.
 
- 
+
 [[Image:Images/4.08.%20Information%20View_html_2ca1937.png|873x468px]]
 
- 
+
 <br>
 <br>
 
-   

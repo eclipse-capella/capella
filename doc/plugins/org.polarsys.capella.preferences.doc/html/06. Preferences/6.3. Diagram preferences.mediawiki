@@ -1,27 +1,27 @@
-            
+
 = Diagram Preferences =
- 
+
 By default, &ldquo;'''Automatic Refresh'''&rdquo; is set to true (see the Eclipse Window / Preferences / Viewpoint page): this means diagrams always display the latest state of the model. There are at least two cases where it is recommended to rely on manual rather than automatic refresh:
 
- 
+
 * When diagrams size grows, it might be necessary to disable automatic 	refresh in order to improve performance. In that case, new 	calculated elements can be displayed on a diagram by performing a 	manual refresh through the specific toolbar Refresh button or by 	reopening the diagram.
 * When several users collaborate on the same model using Clearcase or 	SVN.
- 
+
 &ldquo;'''Do refresh on representation opening'''&rdquo; specifies whether a refresh is systematically performed when opening a diagram. Unless working in a collaborative environment with Clearcase or SVN, this option should be set to True.
 
- 
+
 The option &ldquo;'''Always create a aird fragment on control'''&rdquo; should always be activated. It allows keeping the model and representation files fragmented accordingly.
 
- 
+
 ''The two other options in this page are irrelevant in the context of Capella.''
 
- 
+
 [[Image:Images/6.3.%20Diagram%20preferences_html_a39feff.png|637x462px]]
 
- 
+
 The &ldquo;'''Viewpoint Diagram'''&rdquo; subsection contains a set of preferences specifically related to diagrams.
 
- 
+
 [[Image:Images/6.3.%20Diagram%20preferences_html_m348d4ffe.png|641x467px]]
 
 Then, you can manage diagrams settings such as diagrams appearances, connection style, general printing settings and rulers & grids options.
@@ -32,4 +32,3 @@ Then, you can manage diagrams settings such as diagrams appearances, connection 
 <br>
 <br>
 
-   

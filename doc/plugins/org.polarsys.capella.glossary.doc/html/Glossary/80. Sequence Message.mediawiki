@@ -1,19 +1,18 @@
-            
+
 = SEQUENCE MESSAGE =
- 
+
 === DEFINITION ===
- 
+
 A Sequence Message carry an interaction between the element represented by the source lifeline and the one represented by the target lifeline.
 
- 
+
 In Capella, according to the kind of Scenario, Sequence Messages can refer to Functional Exchanges, Component Exchanges, Exchange Items.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/80.%20Sequence%20Message_html_3603fde4.png|75x66px]]
 
- 
+
 <br>
 
-   

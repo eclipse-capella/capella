@@ -1,26 +1,25 @@
-            
+
 = STATE MACHINE =
- 
+
 === DEFINITION ===
- 
+
 Each set of Modes or States linked to each other by transitions is named a finite State Machine.
 
- 
+
 A Mode or State &lsquo;A&rsquo; can be decomposed into sub-modes (and possibly sub-states) Ai.
 
- 
+
 Entering a Mode or State can:
 
- 
+
 * Enable or disable the activation of Functions (which might be only 	available in some Modes or States)
 * Modify some attributes of Functions or Components (e.g. non 	functional properties)
 * Modify global Data in the model.
- 
+
 === ICONS ===
- 
+
 [[Image:Images/83.%20State%20Machine_html_2612dab2.png|75x60px]]
 
- 
+
 <br>
 
-   

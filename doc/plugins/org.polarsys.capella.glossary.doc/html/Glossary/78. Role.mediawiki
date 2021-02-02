@@ -1,16 +1,15 @@
-            
+
 = ROLE =
- 
+
 === DEFINITION ===
- 
+
 An Operational Role is a set of coherent Operational Activities that can be realized by one or more Operational Entities or Actors, and should be considered as a whole. It is a mean to structure these Activities, and to share them between several Operational Entities or Actors.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/78.%20Role_html_6d44413b.png|65x57px]]
 
- 
+
 <br>
 
-   

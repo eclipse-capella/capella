@@ -1,17 +1,17 @@
-            
+
 = Validation of RPL =
- 
+
 == RPL Compliance ==
- 
+
 Different kinds of conformance are possible between a RPL and its REC. Capella defines three default kinds of conformance, but end-user can define their own ones.
 
- 
+
 * Blackbox: No modification is allowed on the Replica. Elements of the 	RPL should not be edited, but only connected via existing port and 	interfaces with other elements of the model. <br> It should not be 	possible to add internal elements, modify the external constraints 	(ports, interfaces) of elements of the RPL.<br>
 
 * Constrained Reuse: Internal elements can be added inside a RPL, but 	constraints and Interfaces (Function and Component Ports for 	example) defined in REC cannot be modified.<br>
 
 * Inheritance: Any element can be added in the RPL, including new 	Interfaces, ports or functions
- 
+
 Capella currently provides a validation rule for RPL with Blackbox compliance. In live validation mode, the rule prevents all non REC conformant modifications on a RPL, with the exception that it is allowed to add realization links to RPL elements. In batch mode the rule verifies Blackbox compliance partially by checking that no external content was added to any of the validated RPLs elements (with the above mentioned exception for realization links). To verify if required RPL elements have been changed or deleted, use the REC/RPL conformance check DCON_02. Note that the validation rule is by default disabled. It can be enabled in the Capella preferences:
 
 [[Image:Images/8.5.enable_blackbox_rule.png|754x596px]]

@@ -1,20 +1,19 @@
-            
+
 = SUB SYSTEM =
- 
+
 === DEFINITION ===
- 
+
 When viewing the architectural levels of a system, a subsystem is a level that is intermediate between the system (top level) and the components (bottom level).
 
- 
+
 &#91;ISO/IEC CD 15288&#93;
 
- 
+
 === ICONS ===
- 
+
 <br>
 <br>
 
- 
+
 <br>
 
-   

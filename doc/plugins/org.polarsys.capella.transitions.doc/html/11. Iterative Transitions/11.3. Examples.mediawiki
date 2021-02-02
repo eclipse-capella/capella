@@ -1,91 +1,90 @@
-            
+
 = Examples of Iterative Transitions Between Engineering Phases =
- 
+
 == Basics (Containment and Property Changes) ==
- 
+
 === Overview ===
- 
+
 Let's consider the following analysis at Operational Analysis:
 
- 
+
 [[Image:Images/11.3.%20Examples_html_368977cf.png|240x106px]]
 
- 
+
 It can be described in a Operational Activity Interaction Blank:
 
- 
+
 [[Image:Images/11.3.%20Examples_html_m5a934b99.png|385x273px]]
 
- 
+
 === Performing the First Transition ===
- 
+
 Let&rsquo;s perform the first transition (the System Analysis is considered empty, except default model elements)
 
-                  
+
 
 [[Image:Images/11.3_Exemple1.png|1000x530px]]
 
 
 === Adding an Element in the Source ===
-                        
+
 
 [[Image:Images/11.3_Exemple2.png|1000x700px]]
 
- 
+
 === Removing an Element in the Source ===
-                        
+
 
 [[Image:Images/11.3_Exemple3.png|1000x700px]]
 
- 
+
 
 === Removing an Element in the Target ===
-                        
+
 
 [[Image:Images/11.3_Exemple4.png|1000x700px]]
 
- 
+
 
 === Renaming an Element in the Source ===
-                        
+
 
 [[Image:Images/11.3_Exemple5.png|1000x700px]]
 
- 
+
 === Moving an Element in the Source ===
-                        
+
 
 [[Image:Images/11.3_Exemple6.png|1000x700px]]
 
- 
+
 
 == Advanced (Linked Elements i.e. Out of Containment) ==
- 
+
 === Overview ===
- 
+
 Let&rsquo;s consider the following situation:
 
- 
+
 [[Image:Images/11.3.%20Examples_html_6ac74814.png|634x341px]]
 
- 
+
 The '''High command''' is '''realized by System''' and the '''Soldier''' is a '''System Actor''' (see the contextual menu):
 
- 
+
 [[Image:Images/11.3.%20Examples_html_m29c1a900.png|497x48px]]
 
- 
 
- 
+
+
 === Performing the First Transition ===
- 
+
 The focus is on the transition to Operational Activity allocations to System Function allocations.
 
- 
+
 The Operational Activities to System Functions are automatically performs during the Realized by System and System Actor transitions.
 
 
 
 [[Image:Images/11.3_Performing_The_First_Transition.png|1000x500px]]
 
- 

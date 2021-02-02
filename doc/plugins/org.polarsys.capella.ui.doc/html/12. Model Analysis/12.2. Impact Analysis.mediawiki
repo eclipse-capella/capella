@@ -1,36 +1,35 @@
-            
+
 = Impact Analysis =
-         
+
 {| border="1"
 |-
 | 
 [[Image:Images/12.2.%20Impact%20Analysis_html_723ed3f9.png|34x34px]]
 
- 
+
 | 
 This 				tool is going to be integrally refactored in one of the next 				version of Capella
 
- 
+
 |}  
 It is possible to perform an impact analysis on any Capella element, using the contextual menu. The result of this impact analysis shows in blue all the elements having a direct relationship with the current element. The following is an example on a Logical Function. It shows for example which Physical Function is related and which is the Logical Component on which the function is allocated.
 
- 
+
 [[Image:Images/12.2_Impact_Analysis.png|450x570px]]
 
- 
+
 [[Image:Images/12.2_Impact_Analysis2.png|495x530px]]
 
- 
+
 When activating the &ldquo;Show containing resources&rdquo; check box, the elements are sorted according to the actual file they belong to. This is useful when working a fragmented model, in configuration management for example.
 
- 
+
 An impact analysis is also available on the Delete confirmation dialog. The left pane shows the elements that are going to be deleted. The right pane shows the references and is contextual to the selection in the left pane.
 
- 
+
 [[Image:Images/12.2.%20Impact%20Analysis_html_597b3feb.png|900x600px]]
 
- 
+
 <br>
 <br>
 
-   

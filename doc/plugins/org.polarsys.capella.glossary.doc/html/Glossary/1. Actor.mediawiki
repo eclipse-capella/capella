@@ -1,19 +1,19 @@
-            
+
 = ACTOR (SYSTEM, LOGICAL, PHYSICAL) =
- 
+
 === DEFINITION ===
- 
+
 External entity (user, operator or other system) interacting directly with the System under study.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/1.%20Actor_html_m4fe49c3e.png|75x66px]]
 
- 
+
 [[Image:Images/1.%20Actor_html_1e1f4151.png|75x66px]]
 
- 
+
 [[Image:Images/1.%20Actor_html_m16fb01c8.png|75x66px]]
 
 
@@ -21,4 +21,3 @@ External entity (user, operator or other system) interacting directly with the S
 
 <br>
 
-   

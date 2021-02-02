@@ -1,26 +1,25 @@
-            
+
 = PART =
- 
+
 === DEFINITION ===
- 
+
 Parts for Components are similar to Properties for Classes. They allow reusing Component definitions (Type) in several contexts.
 
- 
+
 Parts help defining assembly of Components. Parts might have cardinalities.
 
- 
+
 Note: Parts should not be used when following the Arcadia methodology, as Components in that case are considered as unique Instances. Reuse in Arcadia is managed with Model Patterns.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/65.%20Part_html_19bbfed7.png|75x66px]][[Image:Images/65.%20Part_html_m79fce328.png|75x66px]][[Image:Images/65.%20Part_html_282e0220.png|75x66px]][[Image:Images/65.%20Part_html_m4d022fd7.png|75x66px]]
 
- 
+
 <br>
 <br>
 
- 
+
 <br>
 
-   

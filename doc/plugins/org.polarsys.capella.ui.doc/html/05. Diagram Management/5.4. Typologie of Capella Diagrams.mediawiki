@@ -1,45 +1,44 @@
-            
+
 = Typology of Capella Diagrams =
- 
+
 == Class Diagrams ==
- 
+
 [[Image:Images/5.4.%20Typologie%20of%20Melody%20Diagrams_html_479f9bb0.png|392x234px]]
 
- 
+
 == Mode State Diagrams ==
- 
+
 [[Image:Images/5.4.%20Typologie%20of%20Melody%20Diagrams_html_m4bdfca4a.png|354x259px]]
 
- 
+
 == Breakdown Diagrams ==
- 
+
 [[Image:Images/5.4.%20Typologie%20of%20Melody%20Diagrams_html_m58700682.png|582x202px]]
 
- 
+
 == Dataflow Diagrams ==
- 
+
 [[Image:Images/5.4.%20Typologie%20of%20Melody%20Diagrams_html_57102121.png|518x234px]]
 
- 
+
 == Architecture Diagrams ==
- 
+
 [[Image:Images/5.4.%20Typologie%20of%20Melody%20Diagrams_html_77fa1253.png|554x373px]]
 
- 
+
 <br>
 <br>
 
- 
+
 == Interface Diagrams ==
- 
+
 [[Image:Images/5.4.%20Typologie%20of%20Melody%20Diagrams_html_2b3dfb13.png|553x273px]]
 
- 
+
 == Scenarios ==
- 
+
 [[Image:Images/5.4.%20Typologie%20of%20Melody%20Diagrams_html_m5d9f02c6.png|477x383px]]
 
- 
+
 <br>
 
-   

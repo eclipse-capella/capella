@@ -1,19 +1,18 @@
-            
+
 = EVENT =
- 
+
 === DEFINITION ===
- 
+
 Exchange Item with a communication mechanism set to EVENT.
 
- 
+
 Structured Data sent from one Component / Function and received by a unique receiver (unicast), a defined set of receivers (multicast) or an undefined set of receivers (broadcast).
 
- 
+
 Also see Exchange Item.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/27.%20Event_html_67e2c224.png|83x40px]]
 
-   

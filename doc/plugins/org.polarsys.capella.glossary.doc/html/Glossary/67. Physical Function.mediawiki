@@ -1,20 +1,19 @@
-            
+
 = PHYSICAL PORT =
- 
+
 === DEFINITION ===
- 
+
 A Physical Port is a kind of Component Port having a real, material existence (wiring, plumbing&hellip; usually). Physical Ports connect Node Physical Components through Physical Links.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/67.%20Physical%20Function_html_m1592649.png|75x66px]]
 
- 
+
 <br>
 <br>
 
- 
+
 <br>
 
-   

@@ -1,19 +1,18 @@
-            
+
 = OPERATION =
- 
+
 === DEFINITION ===
- 
+
 Exchange Item with a communication mechanism set to OPERATION.
 
- 
+
 Piece of behavior with input and output parameters, executed by one Component / Function and requested by others. Operations can be synchronous or asynchronous.
 
- 
+
 Also see Exchange Item.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/57.%20Operation_html_b03f329.png|53x40px]]
 
-   

@@ -1,21 +1,21 @@
-            
+
 = Usage Restrictions =
- 
+
 == Libraries Usage Restriction ==
- 
+
 * Try to open a model (library or project) while 	one of its referenced libraries is not present in the workspace is 	not possible.<br>If you want to use a project without referenced 	libraries you can use the Detach tool to remove references of missing libraries <br>
 
 * Downgraded use cases are not properly supported. Please be aware of 	the constraints described in the following section.
- 
+
 <br>
 <br>
 
- 
+
 == Nominal Case vs Downgraded Case ==
- 
+
 Violation of one of these rules might shift the user into downgraded use cases:
 
- 
+
 * Replace a library by another version while a referencing project is 	opened (for instance through an update from Clearcase)
 
 * Perform a fragmentation or an unfragmentation of a library while a 	referencing project is opened.
@@ -24,7 +24,6 @@ Violation of one of these rules might shift the user into downgraded use cases:
 
 <br>
 <br>
- 
 
 
-   
+

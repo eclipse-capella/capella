@@ -72,7 +72,7 @@ These identifiers are often used in addons/viewpoints that are providing their o
      </propertyTab>
    </propertyTabs>
  </extension>
-   
+
 
 {|
 !org.eclipse.ui.views.properties.tabbed.propertyTabs

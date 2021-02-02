@@ -1,19 +1,18 @@
-            
+
 = EXCHANGE ITEM ELEMENT =
- 
+
 === DEFINITION ===
- 
+
 An Exchange Item Element is a reference from an Exchange Item towards one element of the Data model.
 
- 
+
 The semantics may vary according to the kind of Exchange Item: for an Operation for example, it should be read as one &ldquo;parameter&rdquo; while for an Event, it should be read as the &ldquo;type&rdquo;.
 
- 
+
 Exchange Item Elements can have names and cardinalities.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/29.%20Exchange%20Item%20Element_html_45672387.png|66x58px]]
 
-   
