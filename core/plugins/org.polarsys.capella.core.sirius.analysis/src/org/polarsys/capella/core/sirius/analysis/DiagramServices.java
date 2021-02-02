@@ -33,14 +33,17 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
+import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramGraphicalViewer;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.RefreshIdsHolder;
+import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -80,7 +83,10 @@ import org.eclipse.sirius.diagram.description.EdgeMappingImport;
 import org.eclipse.sirius.diagram.description.IEdgeMapping;
 import org.eclipse.sirius.diagram.description.MappingBasedDecoration;
 import org.eclipse.sirius.diagram.description.NodeMapping;
+import org.eclipse.sirius.diagram.ui.business.api.view.SiriusGMFHelper;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeBeginNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEndNameEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.part.IDiagramDialectGraphicalViewer;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
@@ -1854,6 +1860,43 @@ public class DiagramServices {
       DialectEditor siriusEditor = (DialectEditor) editor;
       DRepresentation representation = siriusEditor.getRepresentation();
       CapellaServices.getService().forceRefresh((DDiagram) representation);
+    }
+  }
+  
+  /**
+   * Returns the GraphicalEditPart of the given DDiagramElement
+   * 
+   * @param diagramElement
+   * @return
+   */
+  public EditPart getEditPart(DDiagramElement diagramElement) {
+    IEditorPart editor = EclipseUIUtil.getActiveEditor();
+    if (editor instanceof DiagramEditor) {
+      Session session = new EObjectQuery(diagramElement).getSession();
+      View gmfView = SiriusGMFHelper.getGmfView(diagramElement, session);
+
+      if (gmfView != null && editor instanceof DiagramEditor) {
+        final Map<?, ?> editPartRegistry = ((DiagramEditor) editor).getDiagramGraphicalViewer().getEditPartRegistry();
+        final Object editPart = editPartRegistry.get(gmfView);
+        if (editPart instanceof EditPart) {
+          return (EditPart) editPart;
+        }
+      }
+    }
+    return null;
+  }
+  
+  /**
+   * Refresh the begin EditPart and end EditPart of a DEdge 
+   */
+  @SuppressWarnings("unchecked")
+  public void refreshBeginEndLabels(DEdge edge) {
+    EditPart edgeEditPart = getEditPart(edge);
+    // Refresh BeginNameEditPart and EndNameEditPart
+    if (edgeEditPart != null) {
+      edgeEditPart.getChildren().stream()
+      .filter(child -> child instanceof DEdgeBeginNameEditPart || child instanceof DEdgeEndNameEditPart)
+      .forEach(editPart -> ((EditPart) editPart).refresh());
     }
   }
   
