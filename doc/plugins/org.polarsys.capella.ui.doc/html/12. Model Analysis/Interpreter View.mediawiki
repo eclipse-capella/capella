@@ -5,7 +5,7 @@ Using the Interpreter view (Window / Show View / Others... / Interpreter), you c
 Set it to 'Sirius interpreter' if not set by default and write queries in the 'Expression' .
 
 [[Image:Images/12_5_Interpreter_View.png]]
- 
+
 <br>
 The Interpreter view supports content assist to help you write queries (Ctrl + space).
 <br>

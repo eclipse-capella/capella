@@ -1,16 +1,15 @@
-            
+
 = COLLECTION =
- 
+
 === DEFINITION ===
- 
+
 A Collection is a data modeling construct allowing the definition of sets of elements. Collection can be Sequences or Arrays.
 
- 
+
 The type of the Collection specifies which kind of elements forms the set.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/11.%20Collection_html_m39889998.png|75x66px]]
 
-   

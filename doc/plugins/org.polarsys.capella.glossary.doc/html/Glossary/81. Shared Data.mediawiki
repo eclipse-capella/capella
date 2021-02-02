@@ -1,22 +1,21 @@
-            
+
 = SHARED DATA =
- 
+
 === DEFINITION ===
- 
+
 The data referenced by the Exchange Item is
 
- 
+
 * either shared and concurrently accessed by several Components / 	Functions (writers or readers),
 * either exchanged through a Publish/Subscribe mechanism.
- 
+
 Also see Exchange Item.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/81.%20Shared%20Data_html_20e9f6d0.png|75x40px]]
 
- 
+
 <br>
 
-   

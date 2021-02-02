@@ -1,25 +1,24 @@
-            
+
 = SCENARIO =
- 
+
 === DEFINITION ===
- 
+
 Scenarios describe dynamic, time-related interactions between elements: Operational Entities and Actors, the System itself, the System Components. These interactions are expressed through temporally ordered Sequence Messages.
 
- 
+
 Scenarios illustrate Capabilities. For example, they are useful to describe
 
- 
+
 * How Operational Entities and Actors cooperate, and how Operational 	Processes are chained
 * How the System is used under operational conditions, how it 	interacts with external Systems and Users
 * Use Cases of the system
 * Dynamic behavior of the system (either expected or designed): 	dynamicity, order, Modes &amp; States evolutions. etc.
 * Non functional constraints or situations: performance expectations 	(latency...), safety failure scenarios, security attacks...
- 
+
 === ICONS ===
- 
+
 [[Image:Images/79.%20Scenario_html_c2a9337.png|75x60px]]
 
- 
+
 <br>
 
-   

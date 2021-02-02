@@ -1,16 +1,15 @@
-            
+
 = BINARY EXPRESSION =
- 
+
 === DEFINITION ===
- 
+
 An Expression is a formula that yields values when evaluated in a context.
 
- 
+
 A Binary Expression is one specific kind of Expression consisting of one Operator (+, -, not, or, etc.) and exactly two Operands. Operands can themselves be Expressions.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/4.%20Binary%20Expression_html_m45e40b.png|75x50px]]
 
-   

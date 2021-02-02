@@ -1,23 +1,22 @@
-            
+
 = PROPERTY =
- 
+
 === DEFINITION ===
- 
+
 Also called Attribute. Properties are constituent members of structured elements such as Classes and Unions.
 
- 
+
 A Property has a name, cardinality and a type.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/74.%20Property_html_69efa2f4.png|75x60px]]
 
- 
+
 <br>
 <br>
 
- 
+
 <br>
 
-   

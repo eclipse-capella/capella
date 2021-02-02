@@ -1,53 +1,52 @@
-            
+
 = Contextual Allocations =
- 
+
 A specific dialog can be called contextually to one or several elements in order to manage their allocations to other elements.
 
- 
+
 [[Image:Images/7.2.%20Contextual%20Allocations_html_3b72ac99.png|333x90px]]
 
- 
+
 Possible allocations:
 
- 
+
 * '''Operational Activities to Operational Entities / Actors''' 	(allocation relationship)
 * '''Functions to Actor / System / Components''' (allocation 	relationship)
 * '''Exchange Items to Interfaces''' (reference relationship)
 * '''Functional Exchanges to Component Exchanges''' (allocation 	relationship)
 * '''Physical Component Parts to Physical Component Parts''' 	(deployment relationship)
- 
+
 <br>
 <br>
 
- 
+
 == Example: Allocation of Activities and Functions to Entities, Actors, Components ==
- 
+
 Most of the time, allocating a Function to a Component is achieved through an architecture diagram or through the Component Editor.
 
- 
+
 [[Image:Images/7.2_Contextual_Allocation.png|900x500px]]
 
- 
+
 The allocation can also be performed the other way round: by opening a contextual dialog on a Function or Activity, all possible Components proposed (according to the current engineering phase: Entities, Actors, System, Logical Components, Physical Components). This command is available both from the Project Explorer and the Diagrams.
 
- 
+
 One of the main advantage of this contextual allocation dialog is that is allows selecting several Functions / Activities at once and allocate them to the selected element.
 
- 
+
 [[Image:Images/7.2.%20Contextual%20Allocations_html_3fa439ce.png|420x518px]]
 
- 
+
 The possible choices are then proposed.
 
- 
+
 [[Image:Images/7.2.%20Contextual%20Allocations_html_m481776f5.png|385x512px]]
 
- 
+
 <br>
 <br>
 
- 
+
 <br>
 <br>
 
-   

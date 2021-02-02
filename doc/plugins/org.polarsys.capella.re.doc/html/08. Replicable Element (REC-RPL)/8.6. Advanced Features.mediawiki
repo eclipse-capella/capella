@@ -1,28 +1,28 @@
-            
+
 = REC-RPL Advanced Features =
- 
+
 == Management of Composition of REC-RPL ==
- 
+
 We are going to see how to use libraries and REC-RPL composition in order to create a set of elements based on library elements and data types through an example.
 
- 
+
 # Create a library to define the 	data types and elements types<br><br>[[Image:Images/8.6.%20Advanced%20Features_html_2284e832.png|676x159px]]<br>For this example, we call it '''lib_cps''' to express it's a library dedicated to define some components.<br><br>
 # Add some 	data types and create a physical node component '''Board''' 	containing the following physical attributes<br><br>[[Image:Images/8.6.%20Advanced%20Features_html_62ca2f9f.png|187x97px]] [[Image:Images/8.6.%20Advanced%20Features_html_m233d6be5.png|174x93px]]<br><br>
 # In the 	tree, select the component '''Board''', 	choose ''''REC 	/ RPL &gt; Create a REC from selection''''<br><br>[[Image:Images/8.6.%20Advanced%20Features_html_fecc182.png|660x176px]]<br><br>In the REC creation window, the component and its children are automatically added to the REC.<br><br>Notice the message &quot;REC have references to external elements&quot;, an additional window shows the elements that will not be instantiated in the destination model. Any RPL of the to be created REC Board will be linked to these elements<br><br>Remark: it is possible to add these external elements in the REC by pressing the button [[Image:Images/8.6.%20Advanced%20Features_html_c388e3a.png|24x20px]] and selecting them. In that case, these elements will be considered as &ldquo;part of&rdquo; the created REC and any RPL will have its own data types.<br><br>[[Image:Images/8.6.%20Advanced%20Features_html_7759190e.png|822x603px]]<br><br>Now we are going to create a Rack compound by two replicas of Board.<br><br>
 # Create a 	physical node component '''Rack'''<br><br>[[Image:Images/8.6.%20Advanced%20Features_html_m52755ad8.png|160x85px]]<br><br>
 # In the 	tree, right click on '''Rack''' 	and choose ''''REC/RPL 	&gt; Instantiate a RPL from a REC' '''<br><br>[[Image:Images/8.6.%20Advanced%20Features_html_25459aa1.png|656x176px]]<br><br>Then select '''REC_Board''' and add the suffix _1 and validate twice with no modifications.<br><br>[[Image:Images/8.6.%20Advanced%20Features_html_m5a8a33fd.png|546x632px]]<br><br>Repeat the operation another time to create a second '''Board''' on the '''Rack'''<br><br>Remark: is it possible to place the newly created RPL into the directory '''REC Catalog / RPL''' to ease the reading of the model.<br><br>[[Image:Images/8.6.%20Advanced%20Features_html_m5a294393.png|250x139px]]<br><br>Notice the message &quot;REC have references to external elements&quot;, the button trigger an additional window allowing to select from the elements linked to the REC elements which elements will be linked to elements of the RPL.<br><br> 
 # In the 	tree, right click on '''Rack''' 	and choose ''''REC/RPL 	&gt; Create a REC from selection&rsquo; '''
- 
+
 [[Image:Images/8.6.%20Advanced%20Features_html_m7754385b.png|713x206px]]
 
- 
+
 <br>
 <br>
 
- 
+
 [[Image:Images/8.6.%20Advanced%20Features_html_m1d2fb26.png|534x617px]]
 
- 
+
 # Two choices are possible to 	create the REC Rack:
 ## Simple 		REC linked to all elements viewed in the wizard, which will happen 		by clicking directly on OK (same process than REC Board creation, 		not detailed below)
 ### Pro: Simple way to create a 			REC
@@ -31,92 +31,91 @@ We are going to see how to use libraries and REC-RPL composition in order to cre
 ## Compound 		REC, where REC Rack is only a Component Rack with two Replica of 		Board (whatever elements are included in Board) (detailed below)
 ### Pro: all elements of a 			Replica of Board will be included automatically, even if REC_Board 			is updated
 
- 
+
 <br>
 <br>
 
- 
+
 For both '''Board''', select the related RPL like below. In the main dialog, RPL are added and components Board are now colored in purple, meaning that a related RPL have been added to the REC. These elements will be also added at RPL instanciation
 
- 
+
 [[Image:Images/8.6.%20Advanced%20Features_html_b1a38c3.png|1040x756px]]
 
- 
+
 <br>
 <br>
 
- 
+
 [[Image:Images/8.6.%20Advanced%20Features_html_m4e31a690.png|1015x756px]]
 
- 
+
 <br>
 <br>
 
- 
+
 At end of the wizard, created '''REC_Rack''' is linked to the Rack and both RPL of '''Board'''
 
- 
+
 [[Image:Images/8.6.%20Advanced%20Features_html_7b1766c3.png|303x140px]] [[Image:Images/8.6.%20Advanced%20Features_html_m793c1829.png|421x154px]]
 
- 
+
 <br>
 <br>
 
- 
+
 # In a 	model with dependencies to the '''lib_cps''':
- 
+
 [[Image:Images/8.6.%20Advanced%20Features_html_m6ec962dc.png|262x306px]]
 
- 
+
 Create a RPL of the '''REC_Rack''' in Physical System
 
- 
+
 [[Image:Images/8.6.%20Advanced%20Features_html_m1eb7c6e0.png|694x206px]]
 
- 
+
 <br>
 <br>
 
- 
+
 [[Image:Images/8.6.%20Advanced%20Features_html_4b18a5c9.png|530x612px]]
 
- 
+
 In the model, a component Rack has been created and two RPL of boards.
 
- 
+
 [[Image:Images/8.6.%20Advanced%20Features_html_3dbc82aa.png|220x247px]]
 
- 
+
 <br>
 <br>
 
- 
+
 ''Note: There is no component Board created. Both replica should have been created and initialized after the instantiation of the RPL_Rack. This is a current limitation of the tooling, but it should not be the case''.<br>
 For both RPL of Board, an &ldquo;Update selected RPL from its REC&rdquo; must be triggered. Once these Board have been initialized, another &ldquo;Update selected RPL from its REC&rdquo; on the RPL_Rack can be necessary if there is elements linking the two Board. (which is not the case here)
 
- 
+
 [[Image:Images/8.6.%20Advanced%20Features_html_3cc99ac0.png|245x70px]] [[Image:Images/8.6.%20Advanced%20Features_html_m1e59d7b.png|628x123px]]
 
- 
+
 We have now a full RPL of Rack
 
- 
+
 [[Image:Images/8.6.%20Advanced%20Features_html_4822ef4b.png|247x190px]]
 
- 
+
 <br>
 <br>
 
- 
+
 == Promotion of a REC to a Library ==
- 
+
 From elements of a model, it would be possible to create a REC into a referenced library. <br>
 Elements will be copied into the library and become a REC and initial selected elements will be considered as a RPL of the REC stored in the library.
 
- 
+
 '''This feature is not available yet '''
 
- 
 
 
-   
+

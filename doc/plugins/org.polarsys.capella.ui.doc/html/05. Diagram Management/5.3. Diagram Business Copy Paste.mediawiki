@@ -1,65 +1,64 @@
-            
+
 = The Diagram Business Copy-Paste =
- 
+
 Elements in a diagram can be copied and pasted via the usual CTRL-C and CTRL-V shortcuts, or via the &ldquo;Capella Copy/Paste&rdquo; contextual menu which pops up at right click.
 
- 
+
 This copy/paste mechanism duplicates both the selected elements in the underlying model and their graphical representations. Business rules ensure that the model remains consistent after a paste operation. The business rules both depend on which diagram is being edited and which elements are selected.
 
 Also available mechanisms are:
 * &ldquo;Paste with layout only&rdquo;: Pastes original layout but not style,
 * &ldquo;Paste with style only&rdquo;: Pastes original style but not layout,
 * &ldquo;Quick Paste&rdquo; (CTRL-SHIFT-V): Does not refresh the diagram after the paste operation (prevents edges from being drawn but saves time). It can be handy to paste elements multiple times and rearrange them by hand before refreshing the diagram (e.g. via the Refresh button in the toolbar).
- 
+
 == Example of Logical Architecture Diagram ==
- 
+
 To understand how the copy/paste mechanism works, let us consider the Logical Architecture Blank diagram as an example. In the figure below, the two subcomponents Sensor and Filter are selected.
 
- 
+
 [[Image:Images/5.3.%20Diagram%20Business%20Copy%20Paste_html_20311ae1.png|446x192px]]
 
- 
+
 Let us execute the following steps: press CTRL-C, click the diagram background, move the mouse cursor below component Sensor Unit, then press CTRL-V. We obtain the following diagram.
 
- 
+
 [[Image:Images/5.3.%20Diagram%20Business%20Copy%20Paste_html_m51ff35d9.png|401x273px]]
 
- 
+
 The selected subcomponents have been duplicated at the position of the mouse cursor (top-left corner). They have also been renamed. Components contain their input ports, so those have been duplicated. Note, however, that the functions have not been duplicated. This is because the sub components do not ''contain'' the functions, but the functions are just ''allocated'' to them. The allocations themselves could have been duplicated, so that Data reception would have been allocated to both Sensor and Sensor_1, but that would have been against the Capella Component to Functions allocation rules.
 
- 
+
 We may want to duplicate the allocated functions and corresponding exchanges as well. For that purpose, let us select the components as before, plus a subset of the functions and exchanges, as in the figure below.
 
- 
+
 [[Image:Images/5.3.%20Diagram%20Business%20Copy%20Paste_html_m4a16833b.png|477x200px]]
 
- 
+
 Let us execute the copy/paste steps as before: we then obtain the following diagram.
 
- 
+
 [[Image:Images/5.3.%20Diagram%20Business%20Copy%20Paste_html_33db2eed.png|476x320px]]
 
- 
+
 All selected functions have been duplicated, which is why Init is not present. The selected exchanges whose source and target have been duplicated are connected to the copies. When the source only or the target only is duplicated, the other end is connected to the original function, which is why filtered data_1 is connected to Interpretation.
 
- 
+
 == Example: Component External Interfaces Diagram ==
- 
+
 We have seen that whenever components are copy/pasted, their function allocations are not duplicated if the functions are not duplicated. This rule is specific to function allocations and Logical Architecture Blank diagrams. The behaviour can be different for other kinds of elements and diagrams.
 
- 
+
 Let us consider a Component Internal Interfaces diagram. In the figure below, the select component is being copy/pasted.
 
- 
+
 [[Image:Images/5.3.%20Diagram%20Business%20Copy%20Paste_html_m597582b4.png|500x300px]]
 
- 
+
 The resulting diagram is as follows.
 
- 
+
 [[Image:Images/5.3.%20Diagram%20Business%20Copy%20Paste_html_m5e9522c.png|500x300px]]
 
- 
+
 We can notice that the Interface Use / Require and Interface Implementation / Provide relations have been duplicated and are linked to the original interfaces. This is again a specific business rule which aims at obtaining the expected result in one step.
 
-   

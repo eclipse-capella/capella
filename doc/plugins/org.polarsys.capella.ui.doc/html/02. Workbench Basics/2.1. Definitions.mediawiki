@@ -1,96 +1,95 @@
-            
+
 = Capella Workbench Concepts =
-         
+
 {| border="1"
 |-
 | 
 [[Image:Images/2.1.%20Definitions_html_3c78e109.png|48x48px]]
 
- 
+
 | 
 These 				definitions are an extract from Eclipse&rsquo;s own embedded 				documentation: Workbench User Guide / Concepts. Capella is 				called a Workbench in the sense that it integrates a set of 				different Views and Editors, permanently kept synced with each 				other.
 
- 
+
 |}  
 == Resources ==
- 
+
 From the user perspective there are three different types of resources:
 
- 
+
 * Files: comparable to files in the file system. In its most basic 	form, a Capella model consists in two files, one for the real 	model elements (the semantic model) and one for the representations 	(views on the model, through diagrams or tables).
 * Folders: comparable to directories in the file system. In the 	workbench, folders are contained in projects or other folders. 	Folders can contain files and other folders.
 * Projects: contain folders and files.
- 
+
 == Projects ==
- 
+
 Projects are created in a workspace and can have a nature (Capella projects, Java projects &hellip;). They are used for builds, version management, sharing and resource organization. Like folders, Projects map to directories in the file system. A location in the file system is specified during the project creation.
 
- 
+
 A project is either open or closed. A closed project cannot be changed in the workbench: its resources will not appear in the workbench, but they still reside on the local file system. Closing unused projects can improve the platform performances: closed projects require less memory and are not examined during builds. The structure of an open project can be changed and displayed.
 
- 
+
 == Workspaces ==
- 
+
 The workspace is the Eclipse central hub for user&rsquo;s files. The platform and several plug-ins use workspace to store global settings and preferences in a hidden sub-folder &ldquo;.metadata&rdquo;. Start Eclipse with the &ldquo;-clean&rdquo; option erases these parameters.
 
- 
+
 When the workbench is launched, a dialog allows the user to select a workspace. The workbench manages only a single workspace at once but it is possible to switch between several workspaces.
 
- 
+
 Arrange projects in several workspaces can be useful: a too large number of opened projects can considerably slow down Eclipse. Projects can be physically located in the Workspace or be referenced.
 
- 
+
 == Perspectives ==
- 
+
 Perspective defines the initial set of actions and parts that appears in the workbench window. A perspective is a group of views and editors in the workbench window. One or more perspectives can exist in a single workbench window. Within a window, each perspective may have a different set of views but all perspectives share the same set of editors.
 
- 
+
 Each perspective provides a set of functionality aimed at accomplishing a specific task or works with specific types of resources. For example, the Java perspective combines view commonly used for editing Java source files, while the Capella perspective contains views for Model Driven Engineering.
 
- 
+
 Capella consists in one single Perspective, which is loaded by default when Capella is started.
 
- 
+
 == Views ==
- 
+
 A view is a visual component within the workbench. It is typically used to navigate a list or hierarchy of information (such as the resources in the workbench), or display properties for the active editor. It can support editors and provides information and alternative presentation. Modifications made in a view are saved immediately if the view is not attached to an editor.
 
- 
+
 For example, the Project Explorer and other navigation views display projects and other resources the user is working with, while the Information view displays information that provides feedback to several Capella &ldquo;complex&rdquo; processes.
 
- 
+
 == Editors ==
- 
+
 An editor is also a visual component within the workbench. It is typically used to edit or browse a resource. Editors are launched by (double-)clicking on a resource in a view. Modifications mad in an editor follow an open-save-close lifecycle model.
 
- 
+
 Editors are associated with types of files. Double-clicking a file in a navigation view will opens the associated editor in the workbench.
 
- 
+
 Depending on the type of file being edited, the appropriate editor is displayed in the editor area. For example, a text editor is displayed in order to edit a .TXT file. The name of the file appears in the editor tab. An asterisk (*) at the left side of this tab indicates that the editor has unsaved changes.
 
-             
+
 {| border="1"
 |-
 | 
 [[Image:Images/2.1.%20Definitions_html_3c78e109.png|48x48px]]
 
- 
+
 | 
 Some 				features are common to both views and editors. The term &ldquo;'''part'''&rdquo; 				is used to mean either a view or an editor. Parts can be active 				or inactive, but only one part can be active at any one time, its 				title bar is then highlighted. The active part is the target for 				common operations like cut, copy, paste. It also determines the 				contents of the status line.
 
- 
+
 |-
 | 
 <br>
 
- 
+
 | 
 If an 				editor part is not highlighted it indicates the editor is not 				active; however views may show information based on the last 				active editor.
 
- 
+
 |}  
 <br>
 <br>
 
-   

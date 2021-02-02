@@ -1,6 +1,6 @@
-            
+
 = Model Diff/Merge =
- 
+
 Comparing and merging models is a fundamental activity when modeling in the large.
 A general guide to the Capella Diff/Merge tool is available here: [[../help/topic/org.eclipse.emf.diffmerge.doc/html/EMF-DiffMerge.html|Diff/Merge User's Guide]].
 

@@ -1,16 +1,15 @@
-            
+
 = TERMINATE PSEUDO STATE =
- 
+
 === DEFINITION ===
- 
+
 &#91;State Machine&#93; Terminate pseudostate implies that the execution of the current State Machine by means of its context object is terminated.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/91.%20Terminate%20Pseudo%20State_html_36dc4faf.png|75x66px]]
 
- 
+
 <br>
 
-   

@@ -1,113 +1,112 @@
-            
+
 = Introduction =
- 
+
 == Definitions ==
- 
+
 Replicable Elements are mechanisms allowing the easy reuse of model parts.
 
- 
+
 * A 	'''Replicable 	Elements Collection (REC)''' 	is a definition of an element / set of elements which can be used in 	multiple contexts / configurations / models.
 * A '''Replica 	(RPL)''' 	is a use (instantiation) of a Replicable Elements Collection in a 	given context / configuration / model.
- 
+
 A REC can be viewed as a &ldquo;contract&rdquo; to which all its RPLs must comply. REC can embed RPLs of other RECs.
 
- 
+
 [[Image:Images/8.1.%20Introduction_html_m1e0a2884.png|414x229px]]
 
- 
+
 '''REC and RPL are located in Catalogs'''. Technically, REC and RPL are technical objects pointing towards the list of the elements they embed.
 
- 
+
 Capella provides tooling to manage the creation of REC and their instantiation, as well as update mechanisms (from REC to RPL and from RPL to REC) and validation rules.
 
- 
+
 [[Image:Images/8.1.%20Introduction_html_376a226f.png|402x222px]]
 
- 
+
 Different kinds of conformance are possible between a RPL and its REC. Capella defines three default kinds of conformance, but end-user can define their own ones.
 
- 
+
 * Blackbox: No modification is allowed on the Replica.
 * Constrained Reuse: Internal elements can be added inside a RPL, but 	constraints and Interfaces (Function and Component Ports for 	example) defined in REC cannot be modified.
 * Inheritance: Any element can be added in the RPL, including new 	Interfaces.
- 
+
 == Examples ==
- 
+
 Non-exhaustive list of possible REC.
 
- 
+
 <br>
 <br>
 
-                                 
+
 {| border="1"
 |-
 | 
 A 				Function and its sub functions <br>
 (mono-root)
 
- 
+
 | 
 [[Image:Images/8.1.%20Introduction_html_3324fafd.png|173x205px]]
 
- 
+
 |-
 | 
 A 				Functional Chain and the Functions it involves (multi-root)
 
- 
+
 | 
 [[Image:Images/8.1.%20Introduction_html_m5c3968fa.png|392x111px]]
 
- 
+
 |-
 | 
 Two 				Functions and a Functional Exchange between them (multi-root)
 
- 
+
 | 
 [[Image:Images/8.1.%20Introduction_html_d0bdda9.png|268x84px]]
 
- 
+
 |-
 | 
 A 				Component and its Sub Components (mono-root)
 
- 
+
 | 
 [[Image:Images/8.1.%20Introduction_html_c2765af.png|186x138px]]
 
- 
+
 |-
 | 
 A 				Component and its allocated Functions (mono-root)
 
- 
+
 | 
 [[Image:Images/8.1.%20Introduction_html_4213b083.png|205x140px]]
 
- 
+
 |-
 | 
 A 				Component providing and requiring Interfaces located outside the 				REC <br>
 (mono-root)
 
- 
+
 | 
 [[Image:Images/8.1.%20Introduction_html_m7f6c6090.png|218x191px]]
 
- 
+
 |-
 | 
 A 				Physical Component and the Logical Components it realizes, 				including Functions and any other element<br>
 (multi-root)
 
- 
+
 | 
 [[Image:Images/8.1.%20Introduction_html_43025a01.png|193x266px]]
 
- 
+
 |}  
 
 
-   

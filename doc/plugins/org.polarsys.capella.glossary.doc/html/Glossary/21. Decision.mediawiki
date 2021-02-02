@@ -1,29 +1,28 @@
-            
+
 = DECISION =
- 
+
 === DEFINITION ===
- 
+
 The Decision control Function expresses a conditional course from input flow towards one of the output flows, according to a condition expression, usually based on flow contents.
 
- 
+
 * A Decision Function in a dataflow selects one output exchange among 	many, depending on its entries and the condition
 * One condition is defined for each output; it is a logical 	combination of Boolean expressions (resulting in true or false 	value)
- 
+
 Condition might involve:
 
- 
+
 * Input exchanges or port contents (data in exchange items)
 * Attributes of source function (e.g. non functional properties)
 * Some global data in the model, such as active states or modes.
- 
+
 Only one output exchange is activated, depending on the condition that is satisfied.
 
- 
+
 Care should be taken to ensure that at least one output could be activated under any condition.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/21.%20Decision_html_390f2d5b.png|75x66px]]
 
-   

@@ -1,13 +1,12 @@
-            
+
 = INTERATION (OPERATIONAL EXCHANGE) =
- 
+
 === DEFINITION ===
- 
+
 Interactions between Operational Entities or Operational Actors are expressed through Operational Exchanges between Operational Activities. These Operational Exchanges can carry information (Exchange Items). This notion is similar to Functional Exchanges.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/44.%20Interaction_html_m38bb0f2f.png|75x66px]]
 
-   

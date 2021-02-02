@@ -1,21 +1,21 @@
-            
+
 = Basic Search & Replace =
- 
+
 == Overview ==
- 
+
 Capella provides Search &amp; Replace functionalities on model elements that follow the Eclipse Search &amp; Replace convention. Several options are provided to enable fine grained Search &amp; Replace on Capella models.
- 
+
 To open the Search &amp; Replace window dialog, go to the '''Search''' toolbar (Ctrl + H).
- 
+
 [[Image:Images/20.1Search_and_Replace_Open.png]]
- 
+
 '''Fig.''' Search &amp; Replace toolbar menu.
 
 
 == Search Options ==
 
 === Model Element Scope ===
- 
+
 Model element scope can be customized in the '''Search For''' section which allows us to specify the granularity  of content to search for:
 * Search in specific features of selected meta-classes
 * Search in diagram (attributes of diagrams or notes)
@@ -26,49 +26,49 @@ We have the option to apply the default search for granularity by pressing the '
 
 [[Image:Images/20.1Search_and_Replace_Search_For.png]]
 
- 
+
 '''Fig.''' Model element search for scope options.
 
 === Find Pattern ===
- 
+
 The user can type a text which will be used to match model elements according to the search for selection when performing the search. As in Eclipse, the user has several options which can be selected when searching:
- 
+
 * '''Case sensitive'''.
 * '''Regular expression''': enables the use of * and ? in the find expression 	i.e. * matches zero or more characters and ? matches zero or one 	character.
 * '''Whole word''': only model elements that starts by the find 	expressions (e.g. &ldquo;ABC DEF&rdquo; matches &ldquo;ABC DEF GHI&rdquo; 	but not &ldquo;ABC DEFG&rdquo;)
- 
+
 [[Image:Images/20.1Search_and_Replace_Text_Options.png]]
 
- 
+
 '''Fig.''' Find pattern options.
 
- 
+
 '''Note:''' selecting &ldquo;''Wildcards&rdquo;'' options disables &ldquo;''Whole expression''&rdquo; option.
 
 
 === Search Scope ===
- 
+
 The Capella Search dialog provides a section to define the search scope which only concerns opened sessions:
 * The '''Workspace''' scope applies on all projects in the workspace
 * The '''Selected model elements''' scope applies on selected elements
 * The '''Enclosing project''' scope applies on current project
 
- 
+
 [[Image:Images/20.1Search_and_Replace_Scope.png]]
 
- 
+
 '''Fig.''' Model scope options
 
 
 === Search and Replace Operations ===
- 
+
 From the Capella Search dialog we have the option to fill a text pattern and then perform:
 * '''Search''': pressing the search button will close the current dialog and will display the search results in a separate window.
 * '''Replace''' will open a dialog box that will have the possibility to enter a replacement text pattern.
 
 
 === Search Result ===
- 
+
 When performing a search in Capella, the matching model elements according to the selected criteria in the search dialog will be found. The result will be displayed in separate view as below, following the Eclipse Search &amp; Result conventions.
 
 [[Image:Images/20.1Search_and_Replace_Search_Result.png]]
@@ -86,14 +86,14 @@ By default, the Capella search result is displayed as a tree but the user can us
 In the Capella search result view we will be able to perform operations on the results (text replacement, navigation to the element in Project Explorer, next match, previous match etc).
 
 [[Image:Images/20.1Search_and_Replace_ResultOperations.png]] 
- 
+
 '''Fig. '''Search result operations
 
 
 <br>
 <br>
 
- 
+
 == Replace Text Pattern ==
 
 We can replace a text pattern from the Capella search result view or from the Capella search dialog. 
@@ -101,7 +101,6 @@ The user has the possibility to replace a text pattern, a single occurrence or r
 
 [[Image:Images/20.1Search_and_Replace_Replace_Occurrence.png]]
 
- 
+
 '''Fig.''' Model replace text pattern
 
-   

@@ -1,16 +1,15 @@
-            
+
 = FUNCTION INPUT PORT =
- 
+
 === DEFINITION ===
- 
+
 See Function Port.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/42.%20Input%20Function%20Port_html_e035d14.png|75x66px]]
 
- 
+
 <br>
 
-   

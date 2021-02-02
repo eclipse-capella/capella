@@ -1,18 +1,17 @@
-            
+
 = BEHAVIORAL PHYSICAL COMPONENT =
- 
+
 === DEFINITION ===
- 
+
 A Behavior Component is a Physical Component in charge of implementing / realizing parts of the functions allocated to the system.
 
- 
+
 === EXAMPLE ===
- 
+
 software component, VHDL program (for a programmable device), hardware selector
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/3.%20Behavioral%20Physical%20Component_html_m116e0dfc.png|75x66px]]
 
-   

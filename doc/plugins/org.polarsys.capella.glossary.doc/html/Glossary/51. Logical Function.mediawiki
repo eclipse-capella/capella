@@ -1,16 +1,15 @@
-            
+
 = LOGICAL FUNCTION =
- 
+
 === DEFINITION ===
- 
+
 A Logical Function is a Function in the Logical Architecture. It usually refines one or several System Function(s).
 
- 
+
 Also see Function.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/51.%20Logical%20Function_html_m1e9c8035.png|75x60px]]
 
-   

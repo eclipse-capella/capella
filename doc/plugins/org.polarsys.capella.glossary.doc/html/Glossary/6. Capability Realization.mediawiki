@@ -1,16 +1,15 @@
-            
+
 = CAPABILITY REALIZATION =
- 
+
 === DEFINITION ===
- 
+
 Capability Realizations are the equivalent of System Capabilities in Logical and Physical Architectures.
 
- 
+
 Also see Capability (Operational and System)
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/6.%20Capability%20Realization_html_7f1a85e8.png|75x60px]]
 
-   

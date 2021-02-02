@@ -1,4 +1,4 @@
-      
+
 = Transition > Justification > System Analysis =
 <br>
 {| class="VALIDATION-RULE"

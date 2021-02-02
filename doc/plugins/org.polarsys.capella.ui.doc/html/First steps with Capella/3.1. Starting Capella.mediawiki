@@ -1,40 +1,39 @@
-            
+
 = Starting Capella =
- 
+
 When launching Capella, the Eclipse workbench is started. A splash screen is displayed, showing the current version of the tool.
 
- 
-[[Image:../First%20steps%20with%20Capella/Images/3.1.%20Starting%20Melody%20Advance_html_59ef72a4.png]]
 
- 
+[[Image:Images/3.1.%20Starting%20Melody%20Advance_html_59ef72a4.png]]
+
+
 Select a workspace.
 
- 
+
 [[Image:Images/3.1.%20Starting%20Melody%20Advance_html_m73a6ba84.png]]
 
- 
+
 When launched on a new workspace, a Welcome screen is displayed. From there, one can
 
- 
+
 * Create a new Project,
 * Import a new Project,
 * Get a quick access to embedded documentation / wiki / forum
- 
+
 [[Image:Images/3.1.%20Starting%20Melody%20Advance_html_m292ffacc.png]]
 
- 
+
 Once the Welcome screen is closed, the Capella perspective is opened by default. The default setting the Perspective contains the following views: Project Explorer, Fast Linker, Diagram Editor, Semantic Browser, Properties, and Information View.
 
- 
+
 [[Image:Images/3.1.%20Starting%20Melody%20Advance_html_m39d6061f.png]]
 
- 
+
 If ever one of these views is not displayed, it can be reopened using the Window menu.
 
- 
+
 [[Image:Images/3.1.%20Starting%20Melody%20Advance_html_15a02c99.png]]
 
- 
+
 The next step if to create a new Project or import an existing one.
 
-   

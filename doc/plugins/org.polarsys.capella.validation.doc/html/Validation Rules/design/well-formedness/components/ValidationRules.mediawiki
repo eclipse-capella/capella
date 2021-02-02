@@ -1,4 +1,4 @@
-      
+
 = Design > Well-formedness > Components =
 <br>
 {| class="VALIDATION-RULE"
@@ -139,7 +139,7 @@
 |DWF_DC_21 - PhysicalComponent check deployment/containment of Sub-PhysicalComponents 
 |-
 | colspan="2"|This rule ensures that PC is correctly deploying/containing other child PC.
-                 
+
 Node Components (actor or not) can contain Node and deploy Node or Behavior.
 Behavior Components (actor or not) can contain Behavior and deploy behavior.
 NodePC=Physical Component of nature NODE
@@ -151,7 +151,7 @@ BehaviourPC=Physical Component of nature BEHAVIOUR
 |DWF_DC_22 - PhysicalComponent check deployment/containment in Parent-PhysicalComponent 
 |-
 | colspan="2"|This rule ensures that PC is correctly deployed/contained in parent PC.
-                   
+
 NODE PC cannot be deployed/contained by a  BEHAVIOUR PC
 BEHAVIOUR PC cannot be contained by a NODE PC
 |}

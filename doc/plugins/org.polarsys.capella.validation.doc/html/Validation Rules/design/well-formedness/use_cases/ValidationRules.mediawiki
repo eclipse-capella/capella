@@ -1,4 +1,4 @@
-      
+
 = Design > Well-formedness > Use Cases =
 <br>
 {| class="VALIDATION-RULE"

@@ -42,7 +42,7 @@ We will use the simple example of a car to further illustrate data modeling cons
 
 Numeric Type is a kind of simple data type, representing numbers.
 
- 
+
 
 Numeric Types can be of Kind Float or Integer; their min and max Values define the range of the possible Values for the Numeric Type.
 
@@ -220,7 +220,7 @@ A Class is a complex classifier.
 
 The purpose of a Class is to specify a classification of objects and to specify the features that characterize the structure and behavior of those objects. 
 
- 
+
 
 Classes have properties, typed by other Classes, [ Unions], [ Collections], data types, etc. Objects of a class must contain values for each property of that class, in accordance with the characteristics of the property, for example its type and multiplicity.
 
@@ -340,7 +340,7 @@ Properties of a class can be held directly by the class itself or by the navigab
 
 Properties are constituent members of structured elements such as Classes and Unions.
 
- 
+
 
 A Property has mainly a name and a type. A property is complex or simple depending whether its type is complex (class or complex data type) or simple (simple data type).
 

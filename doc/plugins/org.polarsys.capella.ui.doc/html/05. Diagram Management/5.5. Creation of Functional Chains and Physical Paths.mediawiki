@@ -1,48 +1,48 @@
-            
+
 = Creation of Functional Chains and Physical Paths =
- 
+
 == Functional Chains and Operational Processes ==
- 
+
 On an existing dataflow diagram, select all the Functional Exchanges contributing to your Functional Chain.
 
-         
+
 {| border="1"
 |-
 | 
 [[Image:Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_m262394d3.png|45x45px]]
 
- 
+
 | 
 * The selected elements must form a uninterrupted path of Functional Exchanges.
 * The path of selected elements shall only have two ends, which means that it can be composed by only one branch.
 * Only Functional Exchanges must be selected.
- 
+
 |}  
 <br>
 <br>
 
- 
+
 [[Image:Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_3267dbc1.png|900x300px]]
 
- 
+
 Using the contextual menu on this multiple selection, click on Functional Chain / Create a Functional Chain
 
- 
+
 A new Functional Chain is created and displayed.
 
- 
+
 [[Image:Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_3e1821f9.png|900x200px]]
 
- 
+
 If you want to edit a Functional Chain, you have to create a Functional Chain Description diagram. You can create this diagram from a Navigate command in the contextual menu from a Functional Chain.
 
- 
+
 A new diagram is created, representing your Functional Chain. What you see on this diagram are not Functions and Exchanges but Functional Chain Involvement elements. There are 3 types of Involvements:
 
 * Functional Chain Involvement Function: an involvement that references a Function.
 * Functional Chain Involvement Link: an involvement that references either a Functional Exchange or a Function (please refer to the  '''Assembling Functional Chains''' section below for more information).
 * Functional Reference: an involvement that references a Functional Chain.
- 
+
 [[Image:Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_cd38218.png|700px]]
 
 All the modifications done to the Functional Chain Description diagram are visible on the respective Dataflow Diagram as illustrated below:
@@ -66,7 +66,7 @@ Functional Chain Description diagrams can be combined with Sequence Links and Co
 | 
 [[Image:Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_m262394d3.png|45x45px]]
 
- 
+
 | 
 * Sequence Links express a precedence between the execution of the represented Functions.
 * A Sequence Link indicates that in the context of this Functional Chain, the source Function should operate before the target Function. More precisely, the target Function cannot produce its expected outputs before receiving the inputs produced by the source Function.
@@ -74,7 +74,7 @@ Functional Chain Description diagrams can be combined with Sequence Links and Co
 |}  
 
   [[Image:Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_SL1.png|700px]]
- 
+
 [[Image:Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_SL2.png|800px]]
 
 The sequencing information can also be displayed in '''xAB diagrams'''. By default the associated elements are hidden, but they can be displayed by unchecking the '''Hide Sequencing Information''' filter.
@@ -85,7 +85,7 @@ For a complete overview of the available diagram tools you can consult these sec
 
 *[[../help/topic/org.polarsys.capella.diagrams.doc/html/Diagrams/diagrams.html?cp=6_3_18#Functional_Chain_Description | Functional Chain Description Tools]].
 *[[../help/topic/org.polarsys.capella.diagrams.doc/html/Diagrams/diagrams.html?cp=6_3_36#Operational_Process_Description | Operational Process Description Tools]].
- 
+
 <br>
 <br>
 
@@ -98,7 +98,7 @@ Functional Chains can be assembled and reused in order to express more complex s
 | 
 [[Image:Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_m262394d3.png|45x45px]]
 
- 
+
 | 
 * Functional chains can be assembled through the means of a Functional Exchange. This implies that each Functional Chain contains a Involvement Function that can be used as source and target for a Involvement Link. The Involvement Functions are not necessarily required to be starting or ending.
 * Functional chains can be assembled through the means of a common Function. This implies that each Functional Chain contains a Involvement Function that references the same Function.
@@ -123,7 +123,7 @@ In order to do so, you must first select the the region of the Functional chain 
 
 Once the Functional Chain is folded, all the displayed Involvement Links and Sequence Links having as source or target the now hidden involvements will be displayed directly on the Functional Chain. Please note how the '''Functional Exchange 2''' edge has now as source the '''Functional Chain 1''' instead of the previous '''System Function 2'''.
  [[Image:Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_FC3.png|800px]]
-  
+
 === Composite Functional Chains ===
 Functional Chains can be involved in other Functional Chains, and thus producing Composite Functional Chains. 
 
@@ -136,40 +136,39 @@ Please note how '''Functional Chain 1''' and '''Functional Chain 2''' are involv
 <br>
 
 == Physical Paths ==
- 
+
 The same strategy applies for Physical Paths on System Architecture Blank and Logical Architecture Blank and Physical Architecture Blank diagrams.
 Please note that Sequencing and Control concepts are not possible in this diagram.
 
-         
+
 {| border="1"
 |-
 | 
 [[Image:Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_m262394d3.png|45x45px]]
 
- 
+
 | 
 * The selected elements must form a 					uninterrupted path of Physical Links.
 * This path shall only have two 					end, which means that it can be composed by only one branch.
 * Only 					Physical Links must be selected.
- 
+
 |}  
 <br>
 <br>
 
- 
+
 [[Image:Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_m5845eb00.png|843x392px]]
 
- 
+
 [[Image:Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_52c61c52.png|827x236px]]
 
- 
+
 Corresponding Physical Path Description diagram.
 
- 
+
 [[Image:Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_32613eaf.png|645x106px]]
 
- 
+
 <br>
 <br>
 
-   

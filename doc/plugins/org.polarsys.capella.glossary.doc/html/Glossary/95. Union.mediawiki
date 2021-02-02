@@ -1,22 +1,21 @@
-            
+
 = UNION =
- 
+
 === DEFINITION ===
- 
+
 Unions are structures that can take different formats according to the values of a Discriminator.
 
- 
+
 Like Classes, Unions have Properties (called Union Properties). Union Properties might (or have to) be associated to possible Values of the Union Discriminator.
 
- 
+
 Instances of a given Union type do not have Values for all Properties defined in the Union but only for the ones that are &ldquo;active&rdquo; for a given Discriminator Value.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/95.%20Union_html_3b1d8b05.png|75x60px]]
 
- 
+
 <br>
 
-   

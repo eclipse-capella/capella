@@ -51,7 +51,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 
 
 == Activity Scenario ==
-                                                                                                                                                                                                                                    
+
 {| border="1"
 |-
 | 	Exchange Context 	
@@ -110,7 +110,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 [[Image:Images/diagrams/EOLE/OAS_Operational Activity Scenario.jpg|Sample will be available soon]]    
 
 == Capability Realization Blank ==
-                                                                                                                                                                                                                                                                                                    
+
 {| border="1"
 |-
 | 	Capability Realization  	
@@ -189,9 +189,9 @@ This section lists tools that are available on all Capella diagrams. These tools
 [[Image:Images/diagrams/EOLE/CRB_Capability Realization Blank.jpg|Sample will be available soon]]    
 
 == Capability Realization Refinement [DEPRECATED] ==
-   
+
 == Class Diagram Blank ==
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+
 {| border="1"
 |-
 | 	Data Package 	
@@ -405,7 +405,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 === Sample ===
 [[Image:Images/diagrams/EOLE/CDB_Class Diagram Blank.jpg|Sample will be available soon]]    
 == Exchange Scenario ==
-                                                                                                                                                                                                                                                                                                                                                                                                                              
+
 {| border="1"
 |-
 | 	Exchange Context 	
@@ -525,7 +525,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 === Sample ===
 [[Image:Images/diagrams/EOLE/ES_Exchange Scenario.jpg|Sample will be available soon]]    
 == Interface Scenario ==
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+
 {| border="1"
 |-
 | 	Component 	
@@ -661,7 +661,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 === Sample ===
 [[Image:Images/diagrams/EOLE/IS_Interface Scenario.jpg|Sample will be available soon]]    
 == Configuration Items Breakdown ==
-                                                                                                                                                                
+
 {| border="1"
 |-
 | 	COTS 	
@@ -699,7 +699,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 === Sample ===
 [[Image:Images/diagrams/EOLE/CIBD_Configuration Items Breakdown.jpg|Sample will be available soon]]    
 == Contextual Capability ==
-                                                                                                                                                                                                                           
+
 {| border="1"
 |-
 | 	Actor 	
@@ -753,7 +753,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 === Sample ===
 [[Image:Images/diagrams/EOLE/CC_Contextual Capabilty.jpg|Sample will be available soon]]    
 == Contextual Capability Realization Involvement ==
-                                                                                 
+
 {| border="1"
 |-
 | 	Involve Component 	
@@ -763,7 +763,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 === Sample ===
 [[Image:Images/diagrams/EOLE/CRI_Contextual Capability Realization Involvement.jpg|Sample will be available soon]]    
 == Contextual Component Detailed Interfaces ==
-                                                                                                                                                                                                                                                                                                                                                                                                                         
+
 {| border="1"
 |-
 | 	Interface 	
@@ -861,7 +861,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 === Sample ===
 [[Image:Images/diagrams/EOLE/CDI_Contextual Component Detailed Interfaces.jpg|Sample will be available soon]]    
 == Contextual Component External Interfaces ==
-                                                                                                                                                                                                                                                                                                                                                                                                                                           
+
 {| border="1"
 |-
 | 	Component 	
@@ -963,7 +963,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 === Sample ===
 [[Image:Images/diagrams/EOLE/CEI_Contextual Component External Interfaces.jpg|Sample will be available soon]]    
 == Contextual Component Internal Interfaces ==
-                                                                                                                                                                                                                                                                                                                                                                                                                            
+
 {| border="1"
 |-
 | 	Component 	
@@ -1061,7 +1061,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 === Sample ===
 [[Image:Images/diagrams/EOLE/CII_Contextual Component Internal Interfaces.jpg|Sample will be available soon]]    
 == Contextual Mission ==
-                                                                                                                                                                       
+
 {| border="1"
 |-
 | 	Actor 	
@@ -1099,7 +1099,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 === Sample ===
 [[Image:Images/diagrams/EOLE/CM_Contextual Mission.jpg|Sample will be available soon]]    
 == Contextual Operational Capability ==
-                                                                                                                                                                               
+
 {| border="1"
 |-
 | 	Operational Entity 	
@@ -1147,7 +1147,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 | 		Insert/Remove Relationships 	
 |}    
 == Contextual System Actors ==
-                                                                                        
+
 {| border="1"
 |-
 | 	Actor 	
@@ -1160,7 +1160,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 === Sample ===
 [[Image:Images/diagrams/EOLE/CSA_Contextual System Actors.jpg|Sample will be available soon]]    
 == EPBS Architecture Blank ==
-                                                                                                                                                                                                                          
+
 {| border="1"
 |-
 | 	COTS  	
@@ -1210,7 +1210,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 === Sample ===
 [[Image:Images/diagrams/EOLE/EAB_EPBS Architecture Blank.jpg|Sample will be available soon]]    
 == Functional Chain Description ==
-                                                                                                                                 
+
 {| border="1"
 |-
 | 	Function	
@@ -1272,7 +1272,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 === Sample ===
 [[Image:Images/diagrams/EOLE/FCD_Functional Chain Description.png|800px]]    
 == Functional Scenario ==
-                                                                                                                                                                                                                                                                                                                                            
+
 {| border="1"
 |-
 | 	Exchange Context 	
@@ -1358,7 +1358,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 === Sample ===
 [[Image:Images/diagrams/EOLE/FS_Function Scenario.jpg|Sample will be available soon]]    
 == Interface Diagram ==
-                                                                                                                                                                                                   
+
 {| border="1"
 |-
 | 	Event 	
@@ -1392,7 +1392,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 === Sample ===
 [[Image:Images/diagrams/EOLE/ID_Interface Diagram.jpg|Sample will be available soon]]    
 == Interfaces Diagram Blank ==
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+
 {| border="1"
 |-
 | 	Component 	
@@ -1526,7 +1526,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 === Sample ===
 [[Image:Images/diagrams/EOLE/IDB_Interfaces Diagram Blank.jpg|Sample will be available soon]]    
 == Logical Architecture Blank ==
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+
 {| border="1"
 |-
 | 	Logical Component 	
@@ -1720,7 +1720,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 === Sample ===
 [[Image:Images/diagrams/EOLE/LAB_Logical Architecture Blank.jpg|Sample will be available soon]]    
 == Logical Component Breakdown ==
-                                                                                               
+
 {| border="1"
 |-
 | 	Logical Component 	
@@ -1734,7 +1734,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 === Sample ===
 [[Image:Images/diagrams/EOLE/LCBD_Logical Component Breakdown.jpg|Sample will be available soon]]    
 == Logical Data Flow Blank ==
-                                                                                                                                                                                                                                                                                                                                                                                          
+
 {| border="1"
 |-
 | 	Logical Function 	
@@ -1816,7 +1816,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 === Sample ===
 [[Image:Images/diagrams/EOLE/LDFB_Logical Data Flow Blank.jpg|Sample will be available soon]]    
 == Logical Function Breakdown ==
-                                                                                                                                                     
+
 {| border="1"
 |-
 | 	Logical Function 	
@@ -1850,7 +1850,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 === Sample ===
 [[Image:Images/diagrams/EOLE/LFBD_Logical Function Breakdown.jpg|Sample will be available soon]]    
 == Missions Blank ==
-                                                                                                                                                                                             
+
 {| border="1"
 |-
 | 	Actor 	
@@ -1896,7 +1896,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 === Sample ===
 [[Image:Images/diagrams/EOLE/MB_Missions Blank.jpg|Sample will be available soon]]    
 == Missions Capabilities Blank ==
-                                                                                                                                                                                                                           
+
 {| border="1"
 |-
 | 	Actor 	
@@ -1950,7 +1950,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 === Sample ===
 [[Image:Images/diagrams/EOLE/MCB_Mission Capabilities Blank.jpg|Sample will be available soon]]    
 == Modes & States [DEPRECATED] ==
-                                                                                                                                                                                                                                                                               
+
 {| border="1"
 |-
 | 	Initialization from existing diagram 	
@@ -2024,7 +2024,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 === Sample ===
 [[Image:Images/diagrams/EOLE/M-S_Modes and States.jpg|Sample will be available soon]]    
 == Mode State Machine ==
-                                                                                                                                                                                                                                                                               
+
 {| border="1"
 |-
 | 	Initialization from existing diagram 	
@@ -2090,7 +2090,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 === Sample ===
 [[Image:Images/diagrams/EOLE/MSM_Mode State Machine.jpg|Sample will be available soon]]    
 == Operational Activity Breakdown ==
-                                                                            
+
 {| border="1"
 |-
 | 	Operational Activity 	
@@ -2104,7 +2104,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 === Sample ===
 [[Image:Images/diagrams/EOLE/OABD_Operational Activity Breakdown.jpg|Sample will be available soon]]    
 == Operational Activity Interaction Blank ==
-                                                                                                                                                                                  
+
 {| border="1"
 |-
 | 	Operational Activity 	
@@ -2142,7 +2142,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 === Sample ===
 [[Image:Images/diagrams/EOLE/OAIB_Operational Activity Interaction Blank.jpg|Sample will be available soon]]    
 == Operational Capabilities Blank ==
-                                                                                                                                                                             
+
 {| border="1"
 |-
 | 	Operational Entity 	
@@ -2196,7 +2196,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 === Sample ===
 [[Image:Images/diagrams/EOLE/OCB_Operational Capabilities Blank.jpg|Sample will be available soon]]    
 == Operational Entity Blank ==
-                                                                                                                                                                                                                                                                                                                                                                     
+
 {| border="1"
 |-
 | 	Operational Entity 	
@@ -2282,7 +2282,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 === Sample ===
 [[Image:Images/diagrams/EOLE/OAB_Operational Architecture Blank.jpg|Sample will be available soon]]    
 == Operational Entity Breakdown ==
-                                                                                          
+
 {| border="1"
 |-
 | 	Operational Entity 	
@@ -2300,7 +2300,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 === Sample ===
 [[Image:Images/diagrams/EOLE/OEBD_Operational Entity Breakdown.jpg|Sample will be available soon]]    
 == Operational Interaction Scenario ==
-                                                                                                                                                                                                                                                                                                                                    
+
 {| border="1"
 |-
 | 	Exchange Context 	
@@ -2460,7 +2460,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 === Sample ===
 [[Image:Images/diagrams/EOLE/OPD_Operational Process Description.png|700px]]    
 == Operational Role Blank ==
-                                                                                                                                                                      
+
 {| border="1"
 |-
 | 	Operational Role 	
@@ -2498,7 +2498,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 === Sample ===
 [[Image:Images/diagrams/EOLE/ORB_Operational Role Blank.jpg|Sample will be available soon]]    
 == Package Dependencies ==
-                                                                                        
+
 {| border="1"
 |-
 | 	Data Packages 	
@@ -2516,7 +2516,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 === Sample ===
 [[Image:Images/diagrams/EOLE/PD_Package Dependencies.jpg|Sample will be available soon]]    
 == Physical Architecture Blank ==
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+
 {| border="1"
 |-
 | 	Node PC 	
@@ -2766,7 +2766,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 === Sample ===
 [[Image:Images/diagrams/EOLE/PAB_Physical Architecture Blank.jpg|Sample will be available soon]]    
 == Physical Component Breakdown ==
-                                                                                                             
+
 {| border="1"
 |-
 | 	Node PC 	
@@ -2784,7 +2784,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 === Sample ===
 [[Image:Images/diagrams/EOLE/PCBD_Physical Component Breakdown.jpg|Sample will be available soon]]    
 == Physical Data Flow Blank ==
-                                                                                                                                                                                                                                                                                                                                                                                          
+
 {| border="1"
 |-
 | 	Physical Function 	
@@ -2866,7 +2866,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 === Sample ===
 [[Image:Images/diagrams/EOLE/PDFB_Physical Data Flow Blank.jpg|Sample will be available soon]]    
 == Physical Function Breakdown ==
-                                                                                                                                                     
+
 {| border="1"
 |-
 | 	Physical Function 	
@@ -2900,7 +2900,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 === Sample ===
 [[Image:Images/diagrams/EOLE/PFBD_Physical Function Breakdown.jpg|Sample will be available soon]]    
 == Physical Path Description ==
-                                                                                                                                               
+
 {| border="1"
 |-
 | 	Involve Component 	
@@ -2928,7 +2928,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 | 		Creates two new steps respectively referencing one existing outgoing Physical Link and a target Physical Path. 	
 |}    
 == System Architecture Blank ==
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+
 {| border="1"
 |-
 | 	Actor 	
@@ -3098,7 +3098,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 === Sample ===
 [[Image:Images/diagrams/EOLE/SAB_System Architecture Blank.jpg|Sample will be available soon]]    
 == System Data Flow Blank ==
-                                                                                                                                                                                                                                                                                                                                                                                    
+
 {| border="1"
 |-
 | 	System Function 	
@@ -3180,7 +3180,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 === Sample ===
 [[Image:Images/diagrams/EOLE/SDFB_System Data Flow Blank.jpg|Sample will be available soon]]    
 == System Function Breakdown ==
-                                                                                                                                                     
+
 {| border="1"
 |-
 | 	System Function 	
@@ -3213,4 +3213,3 @@ This section lists tools that are available on all Capella diagrams. These tools
 |}    
 === Sample ===
 [[Image:Images/diagrams/EOLE/SFBD_System Function Breakdown.jpg|Sample will be available soon]] 
- 

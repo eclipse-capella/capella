@@ -1,4 +1,4 @@
-      
+
 = Design > Well-formedness > Dataflows =
 <br>
 {| class="VALIDATION-RULE"

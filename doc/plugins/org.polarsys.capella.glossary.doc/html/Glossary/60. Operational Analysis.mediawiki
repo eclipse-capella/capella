@@ -1,16 +1,15 @@
-            
+
 = OPERATIONAL ANALYSIS =
- 
+
 === DEFINITION ===
- 
+
 Before and beyond System/Software requirements, Operational Analysis focuses on the customer needs and goals. Its objective is to ensure good adequacy of System/Software definition with regards to its real operational use.
 
- 
+
 Outputs of Operational Analysis consist mainly in an &lsquo;operational architecture&rsquo; describing and structuring this need in terms of Actors/Users, their Operational Capabilities and Activities, operational use Scenarios giving dimensioning parameters, operational constraints including safety, security, system life cycle&hellip;.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/60.%20Operational%20Analysis_html_m5da03533.png|75x66px]]
 
-   

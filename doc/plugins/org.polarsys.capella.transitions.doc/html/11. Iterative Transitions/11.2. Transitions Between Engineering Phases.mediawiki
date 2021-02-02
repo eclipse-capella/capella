@@ -1,14 +1,14 @@
 
 = Iterative Transitions Between Engineering Phases =
- 
+
 == Overview ==
- 
+
 An automated transition should not always include all modeling elements from a phase to a lower phase.
 
- 
+
 To offer flexibility to the user and to allow performing transition of specific parts from a phase into a lower phase, modeling concepts have been categorized into activities, which are:
 
- 
+
 * Data transition
 * Exchange Item transition
 * State machine transition
@@ -20,233 +20,233 @@ To offer flexibility to the user and to allow performing transition of specific 
 * System to Logical System transition
 * LC / LA to PC / PA transition
 * Port transition
- 
+
 An activity is (of course) linked to others activities but categorizing modelling elements into these activities defines entry points for the user to trigger the automated transition.
 
- 
+
 == Transition Entry Points ==
- 
+
 This section provides a simplified version of transition graph for each entry points to trigger transition and determines scope of transition for these entry points.
 
- 
+
 === Data Transition ===
- 
+
 The transition is available at:
 
- 
+
 * '''Operational Analysis to System Analysis''',
 * '''System Analysis to Logical Architecture''',
 * '''Logical Architecture to Physical Architecture'''.
- 
+
 The involved element types are:
 
- 
+
 <br>
 <br>
 
- 
+
 [[Image:Images/11.2.%20Transitions%20Between%20Engineering%20Phases_html_3d2d9676.png|241x150px]]
 
- 
+
 The transition tool performed on data should follow this sub-graph:
 
- 
+
 All data contained into a package is transitioned into the targeted phase.
 
- 
+
 === Exchange Item Transition ===
- 
+
 The involved element types are:
 
- 
+
 [[Image:Images/11.2.%20Transitions%20Between%20Engineering%20Phases_html_m65251ec4.png|480x31px]]
 
-         
+
 {| border="1"
 |-
 | 
 [[Image:Images/11.2.%20Transitions%20Between%20Engineering%20Phases_html_3c78e109.png|48x48px]]
 
- 
+
 | 
 Data types defined in a phase can be used in a lower phase. According to preference '''Transit Data Types handled by Exchange Items while transition of Exchange Items''', perform a transition of Exchange items can also trigger a transition of related datatypes. If a related datatype is not transitioned, exchange item will be linked to the data type from the upper phase.
 
 |}  
 === State Machine Transition ===
- 
+
 The involved element types are:
 
- 
+
 [[Image:Images/11.2.%20Transitions%20Between%20Engineering%20Phases_html_m4f637982.png|360x112px]]
 
-         
+
 {| border="1"
 |-
 | 
 [[Image:Images/11.2.%20Transitions%20Between%20Engineering%20Phases_html_3c78e109.png|48x48px]]
 
- 
+
 | 
 According to preference '''Transit State Machines owned by a Component while transition of Components''', perform a transition of Components/actors can also trigger a transition of related State Machines.
 
 Exchange items defined in a phase can be used in a lower phase. According to preference '''Transit allocated Exchange Items while transition of Interfaces, Functions, Components or State Machines''', perform a transition of State Machines can also trigger a transition of conveyed exchange items. If a conveyed exchange item of States/Modes or State Transitions is not transitioned, the States/Modes or State Transitions will convey the exchange item from the upper phase. 
 |}  
 === Interface Transition ===
- 
+
 The transition is available at:
 
 * '''System Analysis to Logical Architecture'''
 * '''Logical Architecture to Physical Architecture'''
- 
+
 The involved element types are:
 
- 
+
 [[Image:Images/11.2.%20Transitions%20Between%20Engineering%20Phases_html_3bd434f8.png|384x143px]]
 
-             
+
 {| border="1"
 |-
 | 
 [[Image:Images/11.2.%20Transitions%20Between%20Engineering%20Phases_html_3c78e109.png|48x48px]]
 
- 
+
 | 
 Exchange items defined in a phase can be used in a lower phase. According to preference '''Transit allocated Exchange Items while transition of Interfaces, Functions, Components or State Machines''', perform a transition of Interface can also trigger a transition of allocated exchange items. If an allocated exchange item is not transitioned, interface will allocate the exchange item from the upper phase.
 
 |}  
 === Operational Activity Transition ===
- 
+
 The transition is available at:
 
- 
+
 * '''Operational Analysis to System Analysis'''
- 
+
 The involved element types are:
 
- 
+
 [[Image:Images/11.2.%20Transitions%20Between%20Engineering%20Phases_html_ca8a06e.png|480x440px]]
 
-             
+
 {| border="1"
 |-
 | 
 [[Image:Images/11.2.%20Transitions%20Between%20Engineering%20Phases_html_3c78e109.png|48x48px]]
 
- 
+
 | 
 State/Modes are owned by Components/Actors and can&rsquo;t be used between phases. Perform a Functional Transition without having triggered a State Machine transition will lose links between functions and defined state modes. After having transitioned state machine, a new functional transition will set missing links to mode/states into transitioned functions.
 
- 
+
 |-
 | 
 [[Image:Images/11.2.%20Transitions%20Between%20Engineering%20Phases_html_3c78e109.png|48x48px]]
 
- 
+
 | 
 Exchange items defined in a phase can be used in a lower phase. According to preference '''Transit allocated Exchange Items while transition of Interfaces, Functions, Components or State Machines''', perform a transition of Operational activities can also trigger a transition of conveyed exchange items. If a conveyed exchange item of functional exchanges is not transitioned, functional exchanges will convey exchange item from the upper phase.
 
 |}  
 === Operational Entity Transition ===
- 
+
 The transition is available at:
 
- 
+
 * '''Operational Analysis to System Analysis'''
- 
+
 The involved element types are:
 
- 
+
 [[Image:Images/11.2.%20Transitions%20Between%20Engineering%20Phases_html_6e22e817.png|527x389px]]
 
-             
+
 {| border="1"
 |-
 | 
 [[Image:Images/11.2.%20Transitions%20Between%20Engineering%20Phases_html_3c78e109.png|48x48px]]
 
- 
+
 | 
 An operational entity can be transitioned to an Actor or to the System.
 
- 
+
 |-
 | 
 [[Image:Images/11.2.%20Transitions%20Between%20Engineering%20Phases_html_3c78e109.png|48x48px]]
 
- 
+
 | 
 While transition of an operational entity, if an allocated operational activity or an allocated interaction has not yet been transitioned, the transition tool triggers a transition of the given element.
 
- 
+
 |}  
 === Operational Capability Transition ===
- 
+
 An operational capability can be transitioned to a capability or a mission.
 
- 
+
 === Functional Transition ===
- 
+
 The transition is available at:
 
- 
+
 * '''System Analysis to Logical Architecture'''
 * '''Logical Architecture to Physical Architecture'''
- 
+
 The involved element types are:
 
- 
+
 <br>
 <br>
 
- 
+
 [[Image:Images/11.2.%20Transitions%20Between%20Engineering%20Phases_html_38f69a63.png|633x315px]]
 
-             
+
 {| border="1"
 |-
 | 
 [[Image:Images/11.2.%20Transitions%20Between%20Engineering%20Phases_html_3c78e109.png|48x48px]]
 
- 
+
 | 
 State/Modes are owned by Components/Actors and can&rsquo;t be used between phases. Perform a Functional Transition without having triggered a State Machine transition will lose links between functions and defined state modes. After having transitioned state machine, a new functional transition will set missing links to mode/states into transitioned functions.
 
- 
+
 |-
 | 
 [[Image:Images/11.2.%20Transitions%20Between%20Engineering%20Phases_html_3c78e109.png|48x48px]]
 
- 
+
 | 
 Exchange items defined in a phase can be used in a lower phase. According to preference '''Transit allocated Exchange Items while transition of Interfaces, Functions, Components or State Machines''', perform a transition of Functions can also trigger a transition of conveyed exchange items. If a conveyed exchange item of functional exchanges or function ports is not transitioned, functional exchanges or function ports will convey exchange item from the upper phase.
 
 |}  
 === Actor Transition ===
- 
+
 The transition is available at:
 
- 
+
 * '''System Analysis to Logical Architecture'''
 * '''Logical Architecture to Physical Architecture'''
- 
+
 [[Image:Images/11.2.%20Transitions%20Between%20Engineering%20Phases_html_m626b79f2.png|552x292px]]
 
-                         
+
 {| border="1"
 |-
 | 
 [[Image:Images/11.2.%20Transitions%20Between%20Engineering%20Phases_html_3c78e109.png|48x48px]]
 
- 
+
 | 
 State/Modes are owned by Components/Actors and cannot be used between phases. Perform an Actor Transition without having triggered a State Machine transition will lose links between actors and defined state modes. After having transitioned state machine, a new functional transition will set missing links to mode/states into transitioned functions.
 
- 
+
 |-
 | 
 [[Image:Images/11.2.%20Transitions%20Between%20Engineering%20Phases_html_3c78e109.png|48x48px]]
 
- 
+
 | 
 Exchange items defined in a phase can be used in a lower phase. According to preference '''Transit allocated Exchange Items while transition of Interfaces, Functions, Components or State Machines''', perform a transition of actors can also trigger a transition of related exchange items. If a related exchange item is not transitioned, actors will convey exchange item from the upper phase.
 
@@ -254,7 +254,7 @@ Exchange items defined in a phase can be used in a lower phase. According to pre
 | 
 [[Image:Images/11.2.%20Transitions%20Between%20Engineering%20Phases_html_3c78e109.png|48x48px]]
 
- 
+
 | 
 Interfaces defined in a phase can be used in a lower phase. According to preference '''Transit allocated Exchange Items while transition of Interfaces, Functions, Components or State Machines''', perform a transition of interfaces can also trigger a transition of related exchange items. If a related exchange item is not transitioned, interface will allocate exchange item from the upper phase.
 
@@ -262,46 +262,46 @@ Interfaces defined in a phase can be used in a lower phase. According to prefere
 | 
 [[Image:Images/11.2.%20Transitions%20Between%20Engineering%20Phases_html_3c78e109.png|48x48px]]
 
- 
+
 | 
 If a related function or a functional exchange has not yet been transitioned, the transition tool triggers a transition of the given element.
 
- 
+
 |-
 | 
 [[Image:Images/11.2.%20Transitions%20Between%20Engineering%20Phases_html_3c78e109.png|48x48px]]
 
- 
+
 | 
 In the Logical Architecture to Physical Architecture transition, connections between actors and internal system components should not be transitioned if component is not transitioned.
 
- 
+
 |}  
 === System to Logical System Transition ===
- 
+
 The transition is available at:
 
- 
+
 * '''System Analysis to Logical Architecture'''
- 
+
 [[Image:Images/11.2.%20Transitions%20Between%20Engineering%20Phases_html_m626b79f3.png|552x210px]]
 
-                         
+
 {| border="1"
 |-
 | 
 [[Image:Images/11.2.%20Transitions%20Between%20Engineering%20Phases_html_3c78e109.png|48x48px]]
 
- 
+
 | 
 State/Modes are owned by Components/Actors and cannot be used between phases. Perform an System to Logical System Transition without having triggered a State Machine transition will lose links between actors and defined state modes. After having transitioned state machine, a new functional transition will set missing links to mode/states into transitioned functions.
 
- 
+
 |-
 | 
 [[Image:Images/11.2.%20Transitions%20Between%20Engineering%20Phases_html_3c78e109.png|48x48px]]
 
- 
+
 | 
 Exchange items defined in a phase can be used in a lower phase. According to preference '''Transit allocated Exchange Items while transition of Interfaces, Functions, Components or State Machines''', perform a transition of actors can also trigger a transition of related exchange items. If a related exchange item is not transitioned, actors will convey exchange item from the upper phase.
 
@@ -309,7 +309,7 @@ Exchange items defined in a phase can be used in a lower phase. According to pre
 | 
 [[Image:Images/11.2.%20Transitions%20Between%20Engineering%20Phases_html_3c78e109.png|48x48px]]
 
- 
+
 | 
 Interfaces defined in a phase can be used in a lower phase. According to preference '''Transit allocated Exchange Items while transition of Interfaces, Functions, Components or State Machines''', perform a transition of interfaces can also trigger a transition of related exchange items. If a related exchange item is not transitioned, interface will allocate exchange item from the upper phase.
 
@@ -317,53 +317,53 @@ Interfaces defined in a phase can be used in a lower phase. According to prefere
 | 
 [[Image:Images/11.2.%20Transitions%20Between%20Engineering%20Phases_html_3c78e109.png|48x48px]]
 
- 
+
 | 
 If a related function or a functional exchange has not yet been transitioned, the transition tool triggers a transition of the given element.
 
- 
+
 |}  
 === LC / LA to PC / PA Transition ===
- 
+
 The transition is available at:
 
- 
+
 * '''Logical Architecture to Physical Architecture'''
- 
+
 The involved element types are:
 
- 
+
 [[Image:Images/11.2.%20Transitions%20Between%20Engineering%20Phases_html_2ce7f015.png|585x309px]]
 
- 
+
 Two kind of transition should be available: Breakdown Strategy and Leaf Strategy
 
- 
+
 ==== Breakdown Strategy ====
- 
+
 Propagate the logical component/actor breakdown in physical architecture
 
- 
+
 ==== Leaf Strategy ====
- 
+
 Propagate only leaf logical components/actors in physical architecture (this strategy seems inconsistent with a system modelling allowing reuse of component/actor through parts).
 
-                              
+
 {| border="1"
 |-
 | 
 [[Image:Images/11.2.%20Transitions%20Between%20Engineering%20Phases_html_3c78e109.png|48x48px]]
 
- 
+
 | 
 State/Modes are owned by Components/Actors and can&rsquo;t be used between phases. Perform a Component/Actor Transition without having triggered a State Machine transition will lose links between components/actors and defined state modes.
 
- 
+
 |-
 | 
 [[Image:Images/11.2.%20Transitions%20Between%20Engineering%20Phases_html_3c78e109.png|48x48px]]
 
- 
+
 | 
 Exchange items defined in a phase can be used in a lower phase. According to preference '''Transit allocated Exchange Items while transition of Interfaces, Functions, Components or State Machines''', perform a transition of components/actors can also trigger a transition of related exchange items. If a related exchange item is not transitioned, components/actors will convey exchange item from the upper phase.
 
@@ -371,7 +371,7 @@ Exchange items defined in a phase can be used in a lower phase. According to pre
 | 
 [[Image:Images/11.2.%20Transitions%20Between%20Engineering%20Phases_html_3c78e109.png|48x48px]]
 
- 
+
 | 
 Interfaces defined in a phase can be used in a lower phase. According to preference '''Transit allocated Exchange Items while transition of Interfaces, Functions, Components or State Machines''', perform a transition of interfaces can also trigger a transition of related exchange items. If a related exchange item is not transitioned, interface will allocate exchange item from the upper phase.
 
@@ -379,16 +379,16 @@ Interfaces defined in a phase can be used in a lower phase. According to prefere
 | 
 [[Image:Images/11.2.%20Transitions%20Between%20Engineering%20Phases_html_3c78e109.png|48x48px]]
 
- 
+
 | 
 If a related function or a functional exchange has not yet been transitioned, the transition tool triggers a transition of the given element.
 
- 
+
 |-
 | 
 [[Image:Images/11.2.%20Transitions%20Between%20Engineering%20Phases_html_3c78e109.png|48x48px]]
 
- 
+
 | 
 See the Capella preferences for choosing the strategy of Logical to Physical Components/Actors transition.
 
@@ -399,7 +399,7 @@ See the Capella preferences for choosing the strategy of Logical to Physical Com
 | 
 [[Image:Images/11.2.%20Transitions%20Between%20Engineering%20Phases_html_3c78e109.png|48x48px]]
 
- 
+
 | 
 According to preference '''Transit interfaces handled by Components''', perform a transition of components/actors can also trigger a transition of related interfaces.
 
@@ -407,14 +407,13 @@ According to preference '''Transit interfaces handled by Components''', perform 
 | 
 [[Image:Images/11.2.%20Transitions%20Between%20Engineering%20Phases_html_3c78e109.png|48x48px]]
 
- 
+
 | 
 To perform a transition of Components or Actors only, you can filter theses elements using Diff/Merge filters:
 
- 
+
 [[Image:Images/11.2.%20Transitions%20Between%20Engineering%20Phases_html_diffmerge_filter.png|548x340px]]
 
- 
+
 |}  
 
-   

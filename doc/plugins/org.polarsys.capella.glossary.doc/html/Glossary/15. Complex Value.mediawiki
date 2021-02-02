@@ -1,16 +1,15 @@
-            
+
 = COMPLEX VALUE =
- 
+
 === DEFINITION ===
- 
+
 Complex Value is the valuation of a structured element (for example, Class or Union). It contains one Value Part per Property owned by the structured element typing the Complex Value.
 
- 
+
 A Value Part is thus a valuation of one specific Property of the structured element. The type of the Value Part is the same as the type of the Property.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/15.%20Complex%20Value_html_m21a5ba2b.png|75x66px]]
 
-   

@@ -1,4 +1,4 @@
-      
+
 = Design > Well-formedness > Data =
 <br>
 {| class="VALIDATION-RULE"

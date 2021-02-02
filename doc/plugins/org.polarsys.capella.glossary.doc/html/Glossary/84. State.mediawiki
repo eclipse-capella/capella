@@ -1,19 +1,18 @@
-            
+
 = STATE =
- 
+
 === DEFINITION ===
- 
+
 The State of an element characterizes the element behavior in given environmental conditions. A State is activated mainly by external conditions, or by operators. It may be unexpected and even suffered.
 
- 
+
 State changes are described by Transitions.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/84.%20State_html_mcba3911.png|75x66px]]
 
- 
+
 <br>
 
-   

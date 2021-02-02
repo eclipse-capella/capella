@@ -1,19 +1,18 @@
-            
+
 = Capella Perspective Overview =
- 
+
 Capella is en Eclipse workbench. It comes with a specific Perspective aggregating all the Views required while modeling.
 
- 
+
 The Capella Perspective contains:
 
- 
+
 * The '''Project Explorer''' that is a file system explorer showing all the resources available in the current 	Workspace.
 * The '''Editor''' containing both the diagrams and the Activity Browser
 * The '''Properties View''' displaying the features of the model 	element currently selected in the model explorer or in a diagram.
 * The '''Information View''' displaying Validation results and 	miscellaneous additional messages
 * The '''Semantic Browser''' displaying all relationships outgoing 	and incoming from / to the model element currently selected in the model explorer or in a diagram.
 * The '''Fast Linker''' view enabling to create links between two elements from the opened model.
- 
+
 [[Image:Images/4.01_Capella_Perspective.png|900x570px]]
 
-   

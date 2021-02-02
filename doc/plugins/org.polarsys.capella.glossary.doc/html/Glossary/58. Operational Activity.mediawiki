@@ -1,13 +1,12 @@
-            
+
 = OPERATIONAL ACTIVITY =
- 
+
 === DEFINITION ===
- 
+
 An Operational Activity is a Process step or function performed by an Operational Entity on order to achieve some objective.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/58.%20Operational%20Activity_html_m49ab9de3.png|75x66px]]
 
-   

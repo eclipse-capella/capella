@@ -1,70 +1,70 @@
 
 = Model Preferences =
- 
+
 Preferences are available from the '''Window / Preferences menu'''. A section is dedicated to Capella.
 
- 
+
 [[Image:Images/6.2.%20Model%20preferences_html_1f594e63.png|250x300px]]
 
- 
- 
+
+
 <br>
 <br>
 
- 
+
 == General ==
- 
+
 [[Image:Images/6.2.%20Model%20preferences_html_mcdd659.png|627x522px]]
- 
+
 The &ldquo;Check model version at load time&rdquo; provides a security when opening a model. It checks whether the model has been produced with the current version and thus '''whether it needs to be migrated or not'''. '''The drawback of activating this check is that the opening of models takes twice as long'''.
 
- 
+
 The AIRD Fragment File Extension option allows specifying the expected file suffix for AIRD fragments.
 
-         
+
 {| border="1"
 |-
 | 
 [[Image:Images/6.2.%20Model%20preferences_html_3c78e109.png|48x48px]]
 
- 
+
 | 
 It is strongly recommended to use &ldquo;airdfragment&rdquo;.
 
- 
+
 |}  
 == Delete ==
- 
+
 On the sub section of '''Capella / Delete preferences''', it is possible to specify deletion options:
 
- 
+
 * If &ldquo;'''Confirm deletions'''&rdquo; is activated, then a confirmation dialog will be prompted for each deletion attempt. This dialog show a live impact analysis of the deletion.
 * If &ldquo;'''If reusing components is allowed, synchronize &hellip;'''&rdquo; is activated, then when deleting a Component, all the Parts that are typed by this component will be deleted as well.
- 
+
 '''Protected Elements''': It is possible to prohibit the deletion of certain critical elements (enabled by default). In that case, it will not be possible to delete these elements.
 
 It is possible to identify protected elements in Project Explorer by enabling a decorator '''Capella Protected Elements''' under the General > Appearance > Label and Decorators section.
 
- 
+
 [[Image:Images/6.2.%20Model%20preferences_html_497e9b20.png|699x513px]]
 
- 
+
 The following figure illustrates the prompted dialog when deleting the System Actor &ldquo;Mission Control Operator&rdquo;. All the elements in red will be deleted if the deletion is confirmed. The blue elements are the references towards the elements that are going to be deleted.
 
- 
+
 [[Image:Images/6.2.%20Model%20preferences_html_597b3feb.png|877x595px]]
 
 == Diagram ==
- 
+
 On the sub section of '''Capella / Diagram''', it is possible to specify preferences for displaying diagrams:
- 
+
 === Process/Chain/Path Display ===
- 
+
 On the sub section of '''Capella / Diagram / Process/Chain/Path Display''', it is possible to specify preferences for displaying processes, Chains, paths in diagrams:
 
 * If &ldquo;'''Show 'Incomplete' in the chain/path/process's label'''&rdquo; is activated, then incomplete chain/path/process's labels are annotated with ''Incomplete''.
 * If &ldquo;'''Show 'Invalid' in the chain/path/process's label'''&rdquo; is activated, then invalid chain/path/process's labels are annotated with ''Invalid''.
- 
+
 [[Image:Images/Process_Chain_Path_DiagramPreferences.png]]
 
 === Title Block ===
@@ -96,10 +96,10 @@ Sample of Title Block:
 [[Image:Images/Title_Block_DiagramPreferences_Updated.png]]
 
 == Model ==
- 
+
 On the sub section '''Model''' of Capella preferences, it is possible to specify global behavior regarding the management of specific elements.
 
- 
+
 [[Image:Images/6.2.%20Model%20preferences_html_m2492a832.png|874x633px]]
 
 When &ldquo;'''Reuse of components'''&rdquo; is activated, it activates to enable the reuse of components, creating several Parts from a Type. During a project creation, it activate a performance to reuse components.
@@ -110,32 +110,32 @@ When &ldquo;'''Reuse of components'''&rdquo; is activated, it activates to enabl
 
 In diagrams, you can use the '''Reuse Components''' palette tool. In Properties, selecting the '''Part''' will provide a way to select an available Type (e.g. Logical Component, Physical Components...).
 
- 
+
 When &ldquo;'''Multiple inheritance allowed'''&rdquo; is activated, a Class can inherit from several other Classes. Otherwise, it can only have one inheritance ancestor.
 
 When &ldquo;'''Component Non Actor inheritance allowed'''&rdquo; is activated, a Component Non Actor can generalize other Components Non Actor (via Properties View or using Diagram Generalization tools). Otherwise, only Actors are allowed to generalize other Actors.
- 
+
 When &ldquo;'''Multiple deployment allowed'''&rdquo; is activated, one given Behaviour Physical Component can be deployed on several Node Physical Components.
 
- 
+
 When &ldquo;'''Delete related associations when a class becomes primitive'''&rdquo; is activated, existing associations towards the class which primitive status has changed is deleted automatically. If this option is not activated, then model validation is such cases will raise an error and the end user will be able to manually delete the obsolete association.
 
- 
+
 '''The three synchronization options define whether Port allocations and delegations are automatically set''' when performing allocations from editors. Activating this option helps improving the productivity.
 
- 
+
 <br>
 <br>
 
 == Model Change Recorder ==
- 
- 
+
+
 On the sub section of '''Capella / Model Change Recorder preferences''', it is possible to activate the model changer recording to log technical model or diagram modification .
 
 [[Image:Images/6.2_Model preferences2.png|550x250px]]
 
 You can configure it thanks to features such as the maximum file size or the number of day to keep files.
- 
+
 == Model Validation ==
 
 
@@ -143,58 +143,58 @@ On the sub section of '''Capella / Model Valdation preferences''', it is possibl
 
 
 [[Image:Images/6.2_Model preferences3.png|300x90px]]
- 
+
 == Project Explorer ==
 
 
 On the sub section of '''Capella / Project Explorer preferences''', when the &ldquo;'''Project'''&rdquo; option is activated, the semantic element &ldquo;Project&rdquo; is displayed (see illustration below). By default, this option is not active.
 
 In order to modify configuration property values located on the Project element (reusable components or not, default values for progress monitoring, etc.).), you can activate temporary this option.
- 
+
 [[Image:Images/6.2_Model preferences.png|440x152px]]
 
- 
+
 If the preference is activated, the tree will be displayed. For significant model, it can be useful to not display entire trees and use the Regex to find a specific model.
 
- 
+
 [[Image:Images/6.2.%20Model%20preferences_html_mc875712.png|250x200px]]
 
- 
+
 == Refinement ==
- 
+
 This section '''Capella / Refinement preferences''' is dedicated to delegation-based refinement of interface sequence diagrams. '''It is not relevant when exploiting Functional Analysis.'''
 
- 
+
 [[Image:Images/6.2.%20Model%20preferences_html_3df4739.png|640x215px]]
 
- 
+
 The checkbox &ldquo;'''Allow diagram creation'''&rdquo; specifies whether a diagram shall be automatically created for the target scenario of the refinement.
 
- 
+
 The checkbox &ldquo;'''Allow diagram opening'''&rdquo; specifies whether the diagram corresponding to the target scenario of the refinement shall be automatically opened or not.
 
- 
+
 The checkbox &ldquo;'''Perform a pre-validation'''&rdquo; specifies whether the refinement tool shall perform a set of elementary check verifying the source scenario are ready for refinement. It is strongly recommended to activate this option as well as the following one &ldquo;'''Stop Refinement on pre-validation error'''&rdquo;.
 
- 
+
 == SCM ==
- 
+
 [[Image:Images/6.2.%20Model%20preferences_html_3d6d7194.png|360x136px]]
 
- 
+
 This section '''Capella / SCM preferences''' is related to the behaviour of Capella regarding the Software Configuration Management tool (e.g. Clearcase). The configuration option allows setting an automatic synchronization delay with the File System.
 
-         
+
 {| border="1"
 |-
 | 
 [[Image:Images/6.2.%20Model%20preferences_html_3c78e109.png|48x48px]]
 
- 
+
 | 
 Activating this configuration option is mandatory when working with Clearcase Dynamic Views, in order to be notified immediately of changes performed by other users.
 
- 
+
 |}  
 
 
@@ -210,7 +210,7 @@ If the preference is activated, the tree will be displayed. For significant mode
 
 
 == Transitions/Generation ==
- 
+
 On the sub section of '''Capella / Transitions/Generation preferences''', it is possible to specify the scope of automatic transitions.
 
 
@@ -231,4 +231,3 @@ On the sub section of '''Capella / Transitions/Generation preferences''', it is 
 <br>
 <br>
 
- 

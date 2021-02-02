@@ -35,5 +35,5 @@ By combining with the '''ALT''' button, the selection will ignore the parent-com
 
 |
 Moving mouse '''Right to Left''' or '''Left to Right''' and pushing the '''ALT''' button will combine the two ways of selecting.
- 
+
 |} 

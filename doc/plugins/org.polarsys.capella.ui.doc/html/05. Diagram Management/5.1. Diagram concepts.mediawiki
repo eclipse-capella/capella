@@ -1,6 +1,6 @@
-            
+
 = Diagram Concepts =
- 
+
 A diagram is a partial (exhaustive in some cases) view of the model content with a graphical representation of nodes and links.
 
 == Common Diagram Properties ==
@@ -31,122 +31,121 @@ The ''Elements of Interest'' property allows to associate a Diagram with an arbi
 to the diagram. The Semantic Browser view displays the relation between a Diagram and its Elements of Interest.
 
 == Diagram Refreshing Strategies ==
- 
+
 Diagrams may no represent the latest state the model they represent. For instance, if the model is modified directly in the Project Explorer, the related diagrams may not represent the model anymore (because of addition, deletion, renaming, &hellip;).
 
- 
+
 There are several refresh strategies:
 
- 
+
 * '''At opening''' (i.e. the diagrams are systematically refreshed 	when being opened).
 * '''Automatic Refresh''' (i.e. the diagrams are refreshed 	automatically if they are open, they always represent the latest 	state of the model).
 * '''Manual Refresh '''(i.e. refreshing a diagram is an explicit 	action performed by the user when necessary.)
- 
+
 To manually refresh diagrams, two methods are available:
 
- 
+
 * The button 	[[Image:Images/5.1.%20Diagram%20concepts_html_35899bf3.png|39x28px]] 	in the diagram toolbar to refresh the currently displayed diagram.
 * The contextual menu command of the Project Explorer to refresh all 	diagrams in the model or a subset of diagrams below a model element:
- 
+
 [[Image:Images/5.1.%20Diagram%20concepts_html_2651df52.png|529x444px]]
 
- 
+
 To change the refreshing strategy, see the diagram-related Preferences.
 
- 
+
 == Blank and Contextual Diagrams, Contextual Diagram Elements ==
- 
+
 <br>
 <br>
 
-         
+
 {| border="1"
 |-
 | 
 [[Image:Images/5.1.%20Diagram%20concepts_html_3c78e109.png|48x48px]]
 
- 
+
 | 
 The 				strategy in Capella is slowly moving from having a clear 				distinction between blank and contextual diagrams towards having 				only blank diagrams with selected contextual elements. This trend 				starts with version 2.2.0 in the end of 2011 and will continue in 				the first semester of 2012.
 
- 
+
 |}  
 <br>
 <br>
 
- 
+
 === Blank Diagrams ===
- 
+
 '''Blank diagrams are the most common diagrams in Capella. Blank means the user decides which elements should appear on the diagram'''. This allows him to build focused diagrams, with specific purposes.
 
- 
+
 === Contextual Diagrams ===
- 
+
 '''Contextual diagram are focused on one specific element. These diagrams have specific refresh rues'''. Examples:
 
- 
+
 * A contextual dataflow diagram is centered on one specific Function 	(which label appears in bold). The refresh strategy is to 	automatically display all the other Functions exchanging information 	with the current Function.
 * A contextual external interface diagram is centered on one specific 	Component. The refresh strategy is to automatically display all 	Interfaces provided by the current Component, and all the Components 	providing / requiring these Interfaces.
- 
+
 === Contextual Diagram Elements ===
- 
+
 '''The idea of diagrams with contextual elements is to unify Blank and Contextual diagrams'''. '''All diagrams are blank, but the user can decide that a given diagram is going to be contextual to a selected subset of elements'''.
 
- 
+
 Example of elements in Physical Architecture: A Functional Chain goes through three sets of Functions / Behaviour Components / Nodes.
 
- 
+
 [[Image:Images/5.1.%20Diagram%20concepts_html_4bcfe8db.png|714x241px]]
 
- 
+
 Using the Properties View of the diagram, the Functional Chain FC1 is set as a contextual element for the current diagram (several elements could be set as contextual). At this stage, the new diagram only contains two pieces of the Functional Chain and does not even display the Functional Chain.
 
- 
+
 [[Image:Images/5.1_Contextual_Diagram_Elements.png|950x500px]]
 
- 
+
 The result is seen in the Properties View.
 
- 
+
 [[Image:Images/5.1_Contextual_Diagram_Elements2.png|600x50px]]
 
- 
+
 The next refresh [[Image:Images/5.1.%20Diagram%20concepts_html_35899bf3.png|39x28px]] on the diagram automatically creates the missing pieces of the Functional Chain. Any semantic change of the Functional Chain (addition of steps, etc.) will automatically be taken into account in this diagram.
 
- 
+
 [[Image:Images/5.1.%20Diagram%20concepts_html_m67259d01.png|558x429px]]
 
- 
+
 Below is another example. The Behaviour Component BC2 is set as contextual: the other Components it is communicating with are automatically displayed.
 
- 
+
 [[Image:Images/5.1.%20Diagram%20concepts_html_68c21683.png|1036x247px]]
 
- 
+
 == Layout Management ==
- 
+
 === Pin / Unpin Diagram Elements ===
- 
+
 Diagram element pinning allows marking specific elements in a diagram as having a fixed location so that they are not moved by the Arrange All action. Once the end user has performed a first layout effort, the Arrange All action can still be called for new elements without risking harming the positioning of existing elements.
 
- 
+
 When diagram elements are selected the diagram toolbar contains two dedicated buttons to pin / unpin selected elements.
 
- 
+
 [[Image:Images/5.1.%20Diagram%20concepts_html_5a167562.png|467x180px]]
 
- 
+
 When no diagram element is selected, the diagram toolbar contains a button for displaying a dialog showing the pin / unpin status of all elements.
 
- 
+
 [[Image:Images/5.1.%20Diagram%20concepts_html_m17eb4be9.png|370x535px]]
 
- 
+
 === Arrange All Bordered Nodes ===
- 
+
 In addition to the standard automatic layout, this specific action allows to arrange the edges so that they are as short as possible. This action moves the ports of a node / container when necessary. It is useful when the position of the nodes and containers has already been defined and edges still need a better layout.
 
- 
+
 [[Image:Images/5.1.%20Diagram%20concepts_html_m12b23fb.png|900x250px]]
 
-   

@@ -1,174 +1,173 @@
-            
+
 = FUNCTION (GENERIC) =
- 
+
 === DEFINITION ===
- 
+
 A System/Logical/Physical Function is an action, an operation or a service fulfilled by one Component or Actor. It has input and output Ports, respectively targets and sources of Functional Exchanges (information, data, material, fluid, etc.).
 
- 
+
 The behavior of a Function itself can be defined in a recursive manner using Sub-Functions and internal Functional Exchanges. These Sub-Functions are represented &quot;inside&quot; the Function itself. When splitting a Function into Sub-Functions, Input and output Ports shall be moved / allocated to the Sub-Functions.
 
- 
+
 <br>
 <br>
 
- 
+
 Some particular functional computation nodes are defined:
 
- 
+
 <u>'''Duplicate:'''</u>
 
- 
+
 [[Image:Images/36.%20Function_html_12f54f40.png|528x163px]]
 
- 
+
 This figure depicts a case where both Function 2 and 3 depend on the same result produced by Function 1 (Two data dependencies). Operator '''duplicate''' is purely functional and simply duplicates the data provided by Function 1. It has no value of synchronization but only, as all the functions presented here, a purpose to capture data dependencies.
 
- 
+
 The behavior of this computation node can be simply described in terms of sequence of actions:
 
- 
+
 '''iterate''' &#91;true&#93;			''// repeating infinitely often''
 
- 
+
 &#9474;	in = '''Read''' input		''// read data from the input port and store it in variable in''
 
- 
+
 &#9474; '''Write''' output1 in	''// write the data on the first output port''
 
- 
+
 &#9474; '''Write''' output2 in	''// write the data on the second output port''
 
- 
+
 &#9492;
 
- 
+
 <br>
 
- 
+
 <u>'''Gather:'''</u>
 
- 
+
 [[Image:Images/36.%20Function_html_57cea38e.png|528x163px]]
 
- 
+
 This figure shows a pure data flow with a purely functional computation node: '''gather'''. It depicts a case where Function3 needs data from both Functions 1 and 2 to execute. There is no need for an explicit join operator in a pure dataflow graph.
 
- 
+
 '''iterate''' &#91;true&#93;				''// repeating infinitely often''
 
- 
+
 &#9474;	re = '''Read''' input1		''// read data from the first input port and store it in variable re''
 
- 
+
 &#9474;	im = '''Read''' input2		''// read data from the second input port and store it in variable im''
 
- 
+
 &#9474; '''Write''' output Complex(re, im)	''// write the data on the output port''
 
- 
+
 &#9492;
 
- 
+
 <br>
 
- 
+
 <u>'''Route:'''</u>
 
- 
+
 [[Image:Images/36.%20Function_html_4903588a.png|528x163px]]
 
- 
+
 This figure shows a pure data flow node called '''route'''. Function3 depends on the data produced by Function 1 and Function 2. However only one of the two functions produces a data for each computation of Function3. The choice of the branch must not depend on the availability of the data on an input port and must only depend on a local condition.
 
- 
+
 '''iterate''' &#91;true&#93;			''// repeating infinitely often''
 
- 
+
 &#9474;	in = '''Read''' input1	''// read data from the first input port and store it in variable in''
 
- 
+
 &#9474; '''Write''' output in		''// write the data on the output port''
 
- 
+
 &#9474;	in = '''Read''' input2	''// read data from the second input port and store it in variable in''
 
- 
+
 &#9474; '''Write''' output in		''// write the data on the output port''
 
- 
+
 &#9492;
 
- 
+
 <br>
 
- 
+
 <u>'''Select:'''</u>
 
- 
+
 [[Image:Images/36.%20Function_html_7d99c09f.png|528x163px]]
 
- 
+
 This figure shows a pure data flow with a predefined computation node called '''select'''. It depicts a case where both Functions 2 and 3 depend on the same result produced by Function 1 (Two data dependencies). The choice operator is purely functional and simply routes the data provided by Function 1. It has no value of synchronization but only, as all the functions presented here, a purpose to capture data dependencies. It differs from duplicate since only one of the two functions uses the data produced by Function1 during one single computation. Different executions of Function1 lead to either the execution of Function2 or Function3. The choice of the branch must not depend on the availability of the data on an input port and must only depend on a local condition.
 
- 
+
 '''iterate''' &#91;true&#93;			''// repeating infinitely often''
 
- 
+
 &#9474;	in = '''Read''' input		''// read data from the input port and store it in variable in''
 
- 
+
 &#9474; '''Write''' output1 in	''// write the data on the first output port''
 
- 
+
 &#9474;	in = '''Read''' input		''// read data from the input port and store it in variable in''
 
- 
+
 &#9474; '''Write''' output2 in	''// write the data on the second output port''
 
- 
+
 &#9492;
 
- 
+
 <u>'''Split:'''</u>
 
- 
+
 [[Image:Images/36.%20Function_html_m4f0e1fe3.png|528x163px]]
 
- 
+
 This figure shows a pure data flow with a fork computation node. It depicts a case where both Functions 2 and 3 depend on the same result produced by Function1 (Two data dependencies). The main difference with the duplicate is that each function uses only one part of the structured data produced by Function1. It has no value of synchronization but only, as all the functions presented here, a purpose to capture data dependencies.
 
- 
+
 The behavior of this computation node can be simply described in terms of sequence of actions:
 
- 
+
 '''iterate''' &#91;true&#93;				''// repeating infinitely often''
 
- 
+
 &#9474;	in = '''Read''' input			''// read data from the input port and store it in variable in''
 
- 
+
 &#9474; '''Write''' output1 in.real		''// write the data on the first output port''
 
- 
+
 &#9474; '''Write''' output2 in.imaginary	''// write the data on the second output port''
 
- 
+
 &#9492;
 
- 
+
 This example assumes that the data produced by Function1 is a structured data of type Complex and that Function2 and 3 use part of this data (the real and imaginary parts)
 
- 
+
 <br>
 <br>
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/36.%20Function_html_159223fa.png|75x53px]][[Image:Images/36.%20Function_html_4d4fd6d3.png|75x51px]][[Image:Images/36.%20Function_html_2c7fd338.png|75x51px]][[Image:Images/36.%20Function_html_32921c88.png|75x54px]][[Image:Images/36.%20Function_html_m4c7482fa.png|75x54px]][[Image:Images/36.%20Function_html_79978ef6.png|75x54px]][[Image:Images/36.%20Function_html_2709aa19.png|75x54px]][[Image:Images/36.%20Function_html_35daebe4.png|75x54px]]
 
- 
+
 <br>
 
-   

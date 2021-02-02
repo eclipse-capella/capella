@@ -1,19 +1,18 @@
-            
+
 = UNARY EXPRESSION =
- 
+
 === DEFINITION ===
- 
+
 An Expression is a formula that yields values when evaluated in a context.
 
- 
+
 An Unary Expression is one specific kind of Expression consisting of one Operator (+, -,not, or, etC.) and exactly one Operand. The Operand can itself be an Expression.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/93.%20Unary%20Expression_html_342e6f4d.png|75x40px]]
 
- 
+
 <br>
 
-   

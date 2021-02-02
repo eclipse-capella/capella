@@ -1,20 +1,19 @@
-            
+
 = PHYSICAL PATH =
- 
+
 === DEFINITION ===
- 
+
 A Physical Path is an ordered set of Physical Links conveying a Component Exchange.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/69.%20Physical%20Path_html_m4bff5742.png|62x54px]]
 
- 
+
 <br>
 <br>
 
- 
+
 <br>
 
-   

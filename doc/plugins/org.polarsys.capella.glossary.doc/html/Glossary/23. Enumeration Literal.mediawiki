@@ -1,13 +1,12 @@
-            
+
 = ENUMERATION LITERAL =
- 
+
 === DEFINITION ===
- 
+
 An Enumeration Literal is a user-defined possible value of an Enumeration instance.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/23.%20Enumeration%20Literal_html_244473aa.png|75x66px]]
 
-   

@@ -1,48 +1,47 @@
-            
+
 = How to Import an Existing Project in a Workspace? =
- 
+
 From the Project Explorer, select Import&hellip;
 
- 
+
 [[Image:Images/3.3.%20How%20to%20import%20an%20existing%20Melody%20Advance%20Project_html_m618030b9.png]]
 
- 
+
 In the dialog box, select &ldquo;Existing Projects into Workspace&rdquo;.
 
- 
+
 [[Image:Images/3.3.%20How%20to%20import%20an%20existing%20Melody%20Advance%20Project_html_m2c1e06a6.png]]
 
- 
+
 Then, &ldquo;select archive file&rdquo; if the project you want to import is a zip, or &ldquo;root directory&rdquo; if it is not.
 
- 
+
 [[Image:Images/3.3.%20How%20to%20import%20an%20existing%20Melody%20Advance%20Project_html_m43239c7f.png]]
 
- 
+
 When choosing &ldquo;Select archive file&rdquo;, the following dialog box opens:
 
- 
+
 [[Image:Images/3.3.%20How%20to%20import%20an%20existing%20Melody%20Advance%20Project_html_78863ecb.png]]
 
- 
+
 The archive of the Project will be extracted inside the Workspace (i.e. the physical location of the imported will be the same as the location of the Workspace).
 
- 
+
 When choosing &ldquo;Select Root Directory&rdquo;, the following dialog box opens:
 
- 
+
 [[Image:Images/3.3.%20How%20to%20import%20an%20existing%20Melody%20Advance%20Project_html_1e9ba319.png]]
 
- 
+
 For each project in the selected directory, one can select whether the Project should be copied within the Workspace or not.
 
- 
+
 When choosing the copy option:
 
- 
+
 * The original Project will be duplicated in the file system
 * Modifications will be applied on the copy inside the Workspace and 	not on the original Project files (see documentation about 	relationships between Projects and Workspaces).
- 
+
 Click on Finish. The selected projects are opened in the current workspace.
 
-   

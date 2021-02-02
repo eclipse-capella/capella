@@ -1,556 +1,555 @@
-            
+
 = Commands & User Profiles =
- 
+
 Capella provides a mechanism to disable commands categories and user profile management facility. <u>'''Those preferences are common to all projects in a workspace'''</u> (i.e. they have only one scope: the workspace) even if they are set on a specific project or referenced from a configuration project.
 
- 
+
 <br>
 <br>
 
- 
+
 == Capella Commands Preferences ==
- 
+
 The visibility of several commands can be controlled using the commands preferences page.
 
- 
+
 [[Image:Images/6.4.%20Commands%20preferences_html_m67bd7302.png|627x540px]]
 
- 
+
 '''Figure 1''': Preference dialog showing Commands configurability preference page.
 
- 
+
 <br>
 <br>
 
- 
+
 When the user disable one or more commands, displayed on the above dialog, this command will be automatically disabled on Capella Contextual menu, see the following figure.
 
- 
+
 <br>
 <br>
 
- 
+
 [[Image:Images/6.4.%20Commands%20preferences_html_509bf49a.png|600x500px]]
 
- 
+
 '''Figure 2''': the Functional transition, Data, and Capability was deactivated in the command preference dialog.
 
- 
+
 <br>
 <br>
 
- 
+
 == Capella User Profiles Management ==
- 
+
 Capella offers two kind of user profiles. The ''User Profile'' preference page allows to switch from '''Standard''' User mode to '''Expert''' User mode and vice-versa.
 
- 
+
 In Standard User mode, expert preferences are not editable, see Expert preference scope in table below.
 
- 
+
 [[Image:Images/6.4.%20Commands%20preferences_html_m146bfcb1.png|627x463px]]
 
- 
+
 '''Fig.''': Selecting a user profile in Capella Preferences
 
- 
+
 <br>
 <br>
 
- 
+
 The following table shows the access mode for each preference:
 
- 
+
 <br>
 <br>
 
-                                                                                                                                                                                                                     
+
 {| border="1"
 |-
 | 
 '''Preference'''
 
- 
+
 | 
 '''Mode'''
 
- 
+
 |-
 | 
 Capella 				Preference
 
- 
+
 | 
 <br>
 
- 
+
 |-
 | 
 Check version 				at load time
 
- 
+
 | 
 Expert
 
- 
+
 |-
 | 
 file 				 extension
 
- 
+
 | 
 Expert
 
- 
+
 |-
 | 
 Delete
 
- 
+
 | 
 <br>
 
- 
+
 |-
 | 
 Confirm 				deletions
 
- 
+
 | 
 Expert
 
- 
+
 |-
 | 
 deletion 				of reused components
 
- 
+
 | 
 Expert
 
- 
+
 |-
 | 
 Protected 				Elements
 
- 
+
 | 
 Expert
 
- 
+
 |-
 | 
 Model
 
- 
+
 | 
 <br>
 
- 
+
 |-
 | 
 Reuse 				of Components
 
- 
+
 | 
 Expert
 
- 
+
 |-
 | 
 Inheritance 				Management
 
- 
+
 | 
 Expert
 
- 
+
 |-
 | 
 Deployment 				Management
 
- 
+
 | 
 Expert
 
- 
+
 |-
 | 
 Data Management 				(Delete association when class becomes primitive)
 
- 
+
 | 
 Expert
 
- 
+
 |-
 | 
 Synchronization 				 (port allocation synchronization)
 
- 
+
 | 
 Expert
 
- 
+
 |-
 | 
 Model 				Change Recorder
 
- 
+
 | 
 <br>
 
- 
+
 |-
 | 
 Activate 				model change recording
 
- 
+
 | 
 Expert
 
- 
+
 |-
 | 
 History
 
- 
+
 | 
 Expert
 
- 
+
 |-
 | 
 Content
 
- 
+
 | 
 Expert
 
- 
+
 |-
 | 
 Model 				Validation
 
- 
+
 | 
 <br>
 
- 
+
 |-
 | 
 Delete 				previous validation
 
- 
+
 | 
 User
 
- 
+
 |-
 | 
 Overview
 
- 
+
 | 
 <br>
 
- 
+
 |-
 | 
 Capella Overview preferences
 
- 
+
 | 
 Expert
 
- 
+
 |-
 | 
 Operational 				Analysis
 
- 
+
 | 
 Expert
 
- 
+
 |-
 | 
 System 				Analysis
 
- 
+
 | 
 Expert
 
- 
+
 |-
 | 
 Logical 				Architecture
 
- 
+
 | 
 Expert
 
- 
+
 |-
 | 
 Physical 				Architecture
 
- 
+
 | 
 Expert
 
- 
+
 |-
 | 
 EPBS 				Architecture
 
- 
+
 | 
 Expert
 
- 
+
 |-
 | 
 Project 				Explorer
 
- 
+
 | 
 <br>
 
- 
+
 |-
 | 
 Project 				concepts display
 
- 
+
 | 
 Expert
 
- 
+
 |-
 | 
 case 				sensitive search
 
- 
+
 | 
 User
 
- 
+
 |-
 | 
 Refinement
 
- 
+
 | 
 <br>
 
- 
+
 |-
 | 
 Refined 				Diagram Management
 
- 
+
 | 
 Expert
 
- 
+
 |-
 | 
 Merge 				step management
 
- 
+
 | 
 Expert
 
- 
+
 |-
 | 
 SCM
 
- 
+
 | 
 <br>
 
- 
+
 |-
 | 
 synchronization 				with Local File System
 
- 
+
 | 
 Expert
 
- 
+
 |-
 | 
 Transfer 				viewer
 
- 
+
 | 
 <br>
 
- 
+
 |-
 | 
 Multiple 				Selection Dialog
 
- 
+
 | 
 User
 
- 
+
 |-
 | 
 Single 				Selection Dialog
 
- 
+
 | 
 User
 
- 
+
 |-
 | 
 Transition 				Log Preferences
 
- 
+
 | 
 <br>
 
- 
+
 |-
 | 
 ALL
 
- 
+
 | 
 User
 
- 
+
 |-
 | 
 Transition 				Generation
 
- 
+
 | 
 <br>
 
- 
+
 |-
 | 
 ALL
 
- 
+
 | 
 Expert
 
- 
+
 |-
 | 
 Team
 
- 
+
 | 
 <br>
 
- 
+
 |-
 | 
 ClearCase 				SCM Adaptor
 
- 
+
 | 
 Expert
 
- 
+
 |-
 | 
 Diff 				Merge Patterns
 
- 
+
 | 
 Expert
 
- 
+
 |-
 | 
 Viewpoint
 
- 
+
 | 
 <br>
 
- 
+
 |-
 | 
 Refresh
 
- 
+
 | 
 User
 
- 
+
 |-
 | 
 Files
 
- 
+
 | 
 User
 
- 
+
 |-
 | 
 Profiler
 
- 
+
 | 
 User
 
- 
+
 |-
 | 
 Viewpoint 				diagram
 
- 
+
 | 
 User
 
- 
+
 |-
 | 
 MDE 				Reporting
 
- 
+
 | 
 <br>
 
- 
+
 |-
 | 
 ALL
 
- 
+
 | 
 User
 
- 
+
 |}  
 '''Tab.''': Expert/Standard preferences
 
- 
+
 <br>
 <br>
 
- 
+
 <br>
 <br>
 
- 
+
 <br>
 <br>
 
- 
+
 <br>
 <br>
 
-   

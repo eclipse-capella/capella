@@ -1,22 +1,21 @@
-            
+
 = COMPONENT PORT =
- 
+
 === DEFINITION ===
- 
+
 A Component Port characterizes for its owning Component:
 
- 
+
 * its input needs (&ldquo;what it needs to work&rdquo;)
 * its supply capabilities (&ldquo;what it can deliver&rdquo;)
- 
+
 Component Ports can have different orientations: IN, OUT, INOUT. Unlike Function Ports, Component Ports can be bi-directional: an INOUT Port can be used either as an entry or as an output for the component (e.g. a single &lsquo;printer&rsquo; computer port can send printing commands and documents to be printed, and receiving &lsquo;paper out&rsquo; alerts from the printer; this is the same for electricity or fluids). This helps in synthesizing the use of the Component with a limited number of Ports.
 
- 
+
 In SysML, a distinction is made between FLOW Ports and STANDARD Ports. While the first one are intended to be directly associated to Exchange Items (typically of kind FLOW), the second ones are intended to provide/require Interfaces. In Capella, the distinction between FLOW and STANDARD is not as meaningful: the only difference lies in the graphical representation.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/17.%20Component%20Port_html_119cf761.png|116x62px]]
 
-   

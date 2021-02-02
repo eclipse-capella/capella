@@ -1,86 +1,86 @@
-            
+
 = Capella Diagram Editor =
- 
+
 == Introduction ==
- 
+
 The diagram View is the main View in Capella. The palette on the right side of the diagram area is different according to the current diagram.
 
- 
+
 [[Image:Images/4.05.%20Diagram%20Editor_html_m35738deb.png|573x247px]]
 
-         
+
 {| border="1"
 |-
 | 
 [[Image:Images/4.05.%20Diagram%20Editor_html_3c78e109.png|48x48px]]
 
- 
+
 | 
 Once a 				tool is selected in the palette, holding the &ldquo;CTRL&rdquo; 				key while clicking in the diagram area will keep the tool active, 				so that is it possible to create several elements or links in a 				raw. If the &ldquo;CTRL&rdquo; click is not hold, then the focus 				is automatically set on the new created element.
 
- 
+
 |}  
 
 Two kinds of diagrams are distinguished:
 
- 
+
 * '''Contextual''' diagrams are focused on one specific element; the 	update of the diagram obeys to a set of predefined rules. For 	example, a Contextual Function Dataflow diagram will always display 	the current Function as well as the other Functions with which it 	has Functional Exchanges.
 * '''Blank''' diagrams are not focused on any specific element; the 	user is free to select the elements that should appear on the 	diagram. Nevertheless, some calculated elements will still appear 	automatically on blank diagrams: for example, Ports on Functions 	still appear automatically on the diagram if the Function is 	displayed.
-         
+
 {| border="1"
 |-
 | 
 [[Image:Images/4.05.%20Diagram%20Editor_html_3c78e109.png|48x48px]]
 
- 
+
 | 
 Note: Blank 				diagrams can be '''unsynchronized''': in that case for example, 				Ports on Functions would not appear automatically. When a diagram 				is unsynchronized, new Insert / Remove tools become available in 				the diagram palette. This is convenient for management of very 				big models. See Embedded DoReMi User Guide.
 
- 
+
 |}  
 Creation of new diagrams or navigation between diagrams can be achieved through the &ldquo;New&rdquo; and &ldquo;Open&rdquo; commands of the contextual menu on the elements appearing on the diagram, directly from the browser, or from the methodological Activity Browser.
 
- 
+
 [[Image:Images/4.05.%20Diagram%20Editor_html_684687b7.png|627x190px]]
 
- 
+
 <br>
 <br>
 
- 
+
 [[Image:Images/4.05.%20Diagram%20Editor_html_m65836cbf.png|627x166px]]
 
- 
+
 Default name of diagrams is prefixed with an acronym standing for the diagram type (for example SFBD for System Function Breakdown).
 
- 
+
 == Diagram Palettes ==
- 
+
 * All the palettes of Capella diagrams are organized according 	to the same pattern.
 * Sections are dedicated to a specific theme (for example, Components, 	Functions, Deployment, etc.) and can be folded / unfolded for a 	better visibility
 * Element creation tools are typically represented by the icon of the 	concerned element.
 * Insert/Remove tools ([[Image:Images/4.05.%20Diagram%20Editor_html_3a2f0e04.jpg|21x23px]]) 	are typically available on Blank diagrams. For example, if a 	component in the model is made of two sub components, the 	Insert/Remove tool applied on this component will allow selecting 	which one(s) of its sub components shall be displayed. '''Insert/Remove 	tools modify the content of the diagram but do not modify the model 	itself'''. They are displaying a 	double-list dialog box.
 * Allocation Management tools ([[Image:Images/4.05.%20Diagram%20Editor_html_m7c4f8528.jpg|24x21px]]) 	allow creating relationships between elements, for example the 	allocation of a Function on a Component. '''Allocation 	Management tool modify the model.''' They 	are displaying a double-list dialog box.
- 
+
 <br>
 <br>
 
- 
+
 [[Image:Images/4.05.%20Diagram%20Editor_html_m5de5d199.png|636x499px]]
 
- 
+
 <br>
 <br>
 
- 
+
 == Diagram Toolbar ==
- 
+
 The diagram toolbar is contextual: different tools are available if a diagram or a diagram element is currently selected.
 
- 
+
 [[Image:Images/4.05.%20Diagram%20Editor_html_a4de74b.png|547x31px]]
 
- 
+
 # Arrange All tools (automatic layouts)
 # Selection tools
 # The refresh diagram button allows to update the diagram according to 	the content of the model when the automated synchronization is not 	activated (Control+R)
@@ -94,43 +94,43 @@ The diagram toolbar is contextual: different tools are available if a diagram or
 # Zoom factor
 # Export the current diagram as an image
 # Switch on/off the layout mode on the diagram
-         
+
 {| border="1"
 |-
 | 
 [[Image:Images/4.05.%20Diagram%20Editor_html_3c78e109.png|48x48px]]
 
- 
+
 | 
 The 				'''diagram &ldquo;layout&rdquo; 				mode''' '''disables 				operations likely to modify the semantic model''' 				(for example the semantic drag and drop) so that the end user can 				focus on layout tasks without being afraid to trigger an 				unexpected model update.
 
- 
+
 |}  
 Focus on 5, selection of active filters
 
- 
+
 [[Image:Images/4.05.%20Diagram%20Editor_html_507951c5.png|403x219px]]
 
- 
+
 <br>
 <br>
 
- 
+
 Focus on 4, selection of active layers
 
- 
+
 [[Image:Images/4.05.%20Diagram%20Editor_html_m2017f59a.png|414x84px]]
 
- 
+
 <br>
 <br>
 
- 
+
 == Diagram Element Toolbar ==
- 
+
 [[Image:Images/4.05.%20Diagram%20Editor_html_m1ec848c1.png|628x25px]]
 
- 
+
 # Arrange selected elements (partial layout)
 # Alignment tools
 # Pin selected elements
@@ -151,55 +151,55 @@ Focus on 4, selection of active layers
 # Apply the applicable custom settings of the first element to other 	selected elements
 # Make height and width identical for all selected elements (the 	referenced element is the last selected one)
 # Auto size
-         
+
 {| border="1"
 |-
 | 
 [[Image:Images/Warning_ExclamationPoint.png|34x34px]]
 
- 
+
 | 
 In both Bank and Contextual diagrams, some elements appear 				automatically. It is not possible to delete from diagram 				calculated elements (for example, a Function Port owned by a 				Function, or a Functional Exchange between two Function Ports).
 
- 
+
 If the user wants 				to hide a calculated element on a contextual diagram, he must use 				the &ldquo;Show/Hide&rdquo; tools.
 
- 
+
 |}  
 Focus on 16: It is possible to customize the presentation of elements shown in diagrams using external images. The first step is to import image resources in the current Eclipse project. This can be achieved easily using a drag and drop in Windows.
 
- 
+
 [[Image:Images/4.05_Diagram_Editor.png|550x300px]]
 
- 
+
 The next step is to select in the diagram the model element to be customized and click on the &ldquo;Insert image tool&rdquo; of the toolbar. A dialog appears, allowing to chose among the images already present in the workspace:
 
- 
+
 <br>
 <br>
 
- 
+
 [[Image:Images/4.05.%20Diagram%20Editor_html_m77e9f963.png|422x155px]]
 
- 
+
 [[Image:Images/4.05.%20Diagram%20Editor_html_39791356.png|230x209px]]
 
- 
+
 The result can be the following:
 
- 
+
 [[Image:Images/4.05.%20Diagram%20Editor_html_m1f9f7ba3.png|301x173px]]
 
- 
+
 <br>
 <br>
 
- 
+
 == Matrixes ==
- 
+
 The Diagram View is also used for Simple and Cross Tables. A CSV export tool is provided for these tables, allowing for example to retrieving allocation matrices in Excel.
 
- 
+
 [[Image:Images/4.05.%20Diagram%20Editor_html_m4ecd8e82.png|700x550px]]
 
-   
+

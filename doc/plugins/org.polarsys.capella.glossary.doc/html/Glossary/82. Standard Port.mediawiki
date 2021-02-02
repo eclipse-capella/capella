@@ -1,19 +1,18 @@
-            
+
 = STANDARD PORT =
- 
+
 === DEFINITION ===
- 
+
 Kind of Component Port, with a nature STANDARD.
 
- 
+
 Also see Component Port.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/82.%20Standard%20Port_html_m6baea051.png|75x40px]]
 
- 
+
 <br>
 
-   

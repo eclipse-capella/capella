@@ -1,134 +1,133 @@
-            
+
 = Categories Management =
- 
+
 A specific dialog can be called contextually to one or several elements in order to manage their assigned categories.
 
- 
+
 [[Image:Images/7.5.%20Categories%20Management_html_m3bb20f50.png|740x630px]]
 
- 
+
 This contextual menu is available for '''functional exchanges, component exchanges, and physical links'''.
 
- 
+
 <br>
 <br>
 
- 
+
 == Example: Creating a Component Exchange Category from a Selection of Component Exchanges ==
- 
+
 One of the main advantages of this contextual category creation dialog is that is allows selecting several Exchanges / Links at once and add them to a newly created category.
 
- 
+
 <br>
 <br>
 
- 
+
 [[Image:Images/7.5.%20Categories%20Management_html_63b85f83.png|721x437px]]
 
- 
+
 Fig.: Start by selecting a set of component exchanges and right click to choose &laquo; Create category &raquo; menu.
 
- 
+
 <br>
 <br>
 
- 
+
 <br>
 <br>
 
- 
+
 [[Image:Images/7.5.%20Categories%20Management_html_m70b69cf1.png|592x429px]]
 
- 
+
 Fig.: The wizard proposes a default nape for the new category
 
- 
+
 <br>
 <br>
 
- 
+
 [[Image:Images/7.5.%20Categories%20Management_html_m54efebb1.png|829x294px]]
 
- 
+
 Fig. : Once created, the new category is populated with the initial selection (C1 and C2 in the example)
 
- 
+
 <br>
 <br>
 
- 
+
 [[Image:Images/7.5.%20Categories%20Management_html_me1f6095.png|850x519px]]
 
- 
+
 Fig. : A message is reported on the information view explaining what was done. A &ldquo;Go to&rdquo; menu enables to navigate to the newly created category in the explorer view.
 
- 
+
 <br>
 <br>
 
- 
+
 == Example: Updating a Physical Link Category from a Selection of Physical Links ==
- 
+
 This example shows an update of existing physical links involvement in physical link categories.
 
- 
+
 <br>
 <br>
 
- 
+
 [[Image:Images/7.5.%20Categories%20Management_html_m40dbbf55.png|513x391px]]
 
- 
+
 Fig. Start by selecting a set of physical links and choose &laquo; Update categories &raquo; in the Categories menu
 
- 
+
 <br>
 <br>
 
- 
+
 [[Image:Images/7.5.%20Categories%20Management_html_m46cfd1d4.png|866x587px]]
 
- 
+
 Fig. : A wizard opens with a transfer dialog. At the right side you have all the available physical links categories in the current architecture layer. And at the left side you have the common category to all the selected physical links (PhysicalLinkCategory 2 in the above example)
 
- 
+
 <br>
 <br>
 
- 
+
 Let&rsquo;s assume that we want to remove the selected links from the ''PhysicalLinkCategory 2 and add them to PhysicalLinkCategory 3'' and ''PhysicalLinkCategory 5. All we have to do is first: to double click on the ''PhysicalLinkCategory 2 in the right side to remove it from the common categories. And second: to double click on ''PhysicalLinkCategory 3 and PhysicalLinkCategory 5 on the right side to add them to the common categories.''
 
- 
+
 [[Image:Images/7.5.%20Categories%20Management_html_m1baf1be6.png|914x614px]]
 
- 
+
 Fig. : Updating physical links involvement in categories
 
- 
+
 <br>
 <br>
 
- 
+
 After validating the choice with the &ldquo;OK&rdquo; button we can see that the physical links has been removed from'' PhysicalLinkCategory 2 ''and added to'' PhysicalLinkCategory 3 ''and ''PhysicalLinkCategory 5.''
 
- 
+
 [[Image:Images/7.5.%20Categories%20Management_html_mb71576b.png|618x535px]]
 
- 
+
 Fig. : physical link categories after the update
 
- 
+
 <br>
 <br>
 
- 
+
 [[Image:Images/7.5.%20Categories%20Management_html_m799e9436.png|1082x561px]]
 
- 
+
 Fig. : A message is reported on the information view detailing the updates done. A &ldquo;Go to&rdquo; menu enables to navigate to the impacted categories in the explorer view.
 
- 
+
 <br>
 <br>
 
-   

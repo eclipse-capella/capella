@@ -1,112 +1,72 @@
-            
 = How to Create a New Capella Project? =
- 
+
 When starting Capella for the first time, it is necessary to create a new project in which a model will be initialized. A dedicated wizard is provided. In the Project Explorer View, right click on the background and select New Capella Project&hellip;
 
- 
 [[Image:Images/How%20to%20create%20a%20new%20Melody%20Advance%20Project_html_m2f6e72b2.png]]
 
- 
 This opens a wizard asking for the name of the project and its location.
 
- 
 [[Image:Images/3.2.%20How%20to%20create%20a%20new%20Melody%20Advance%20Project_html_a409509.png]]
 
- 
-<br>
-<br>
-
- 
 To enable &ldquo;allow the reuse of components through parts&rdquo; check the corresponding option in the preferences window:
 
- 
-<br>
-<br>
-
- 
 [[Image:Images/3.2.%20How%20to%20create%20a%20new%20Melody%20Advance%20Project_html_19372ef5.png]]
 
- 
 '''Fig'''. Enabling the selection of component reuse option on projects.
 
- 
-<br>
-<br>
-
- 
 [[Image:Images/3.2.%20How%20to%20create%20a%20new%20Melody%20Advance%20Project_html_7de602d5.png]]
 
- 
 '''Fig'''. Component reuse option enabled on new project wizard.
 
-         
 {| border="1"
 |-
 | 
 [[Image:Images/3.2.%20How%20to%20create%20a%20new%20Melody%20Advance%20Project_html_3c78e109.png|48x48px]]
 
- 
+
 | 
-On this page of the wizard, the strategy regarding the management 				of Components and Parts has to be defined.
+On this page of the wizard, the strategy regarding the management of Components and Parts has to be defined.
 
- 
-When reuse of components is allowed, it means Components are seen 				as &ldquo;types&rdquo;. Several Parts can be typed by a same 				Component. While this alternative may be closer to UML / SysML 				way of managing of Components / Blocks, it also requires a deeper 				understanding of the relationships between Types, Parts and 				Instances.
+* When reuse of components is allowed, it means Components are seen as &ldquo;types&rdquo;. Several Parts can be typed by a same Component. While this alternative may be closer to UML / SysML way of managing of Components / Blocks, it also requires a deeper understanding of the relationships between Types, Parts and Instances.
 
- 
-When reuse of components though Parts is not allowed, Components 				are seen as &ldquo;instances&rdquo;. Concretely, the &ldquo;Part&rdquo; 				concept is almost hidden by the tool, letting the end user focus 				only on Components. Reuse is managed using Patterns (see 				dedicated documentation).
+* When reuse of components though Parts is not allowed, Components are seen as &ldquo;instances&rdquo;. Concretely, the &ldquo;Part&rdquo; concept is almost hidden by the tool, letting the end user focus only on Components. Reuse is managed using Patterns (see dedicated documentation).
 
- 
-<br>
-<br>
+* The default setting is No. Unless having motivated reasons, this default choice is the one make when following the Arcadia methodology.
 
- 
-The default setting is No. Unless having motivated reasons, this 				default choice is the one make when following the Arcadia 				methodology.
+* Once a model has been started with one of these two alternatives, it requires an advanced level of expertise to switch back to the other alternative. Should this be needed, please contact Capella support.
 
- 
-<br>
-<br>
-
- 
-Once a model has 				been started with one of these two alternatives, it requires an 				advanced level of expertise to switch back to the other 				alternative. Should this be needed, please contact Capella 				support.
-
- 
 |}  
 When a new project is created, the model structure is automatically initialized. This page of the wizard allows specifying whether the default model structure should include Operational Analysis and EPBS Architecture.
 
- 
+
 [[Image:Images/3.2.%20How%20to%20create%20a%20new%20Melody%20Advance%20Project_html_1c3d37be.png]]
 
-         
+
 {| border="1"
 |-
 | 
 [[Image:Images/3.2.%20How%20to%20create%20a%20new%20Melody%20Advance%20Project_html_3c78e109.png|48x48px]]
 
- 
-| 
-Whatever the choice made in this page of the 				wizard, it remains possible to modify this selection after 				the creation of the project:
 
- 
+| 
+Whatever the choice made in this page of the wizard, it remains possible to modify this selection after the creation of the project:
+
+
 * Either by adding manually Operational Analysis or EPBS
-* Either by 					removing Operational Analysis or EPBS. This case leads to 					deletion of the associated parts of the model. A confirmation 					request is raised to protect the user against accidental 					deletion.
- 
+* Either by removing Operational Analysis or EPBS. This case leads to deletion of the associated parts of the model. A confirmation request is raised to protect the user against accidental deletion.
+
 |}  
 The following page proposes the list of available Viewpoints. Capella diagrams are ordered in one Viewpoint per engineering phase, plus a common one. Depending on the planned activities for a given session, it may not be systematically useful to load all the viewpoints. A dedicated tool allows activating / deactivating Viewpoints at any moment later on.
 
- 
+
 Clicking on Finish will create the basic model structure.
 
- 
+
 [[Image:Images/3.2.%20How%20to%20create%20a%20new%20Melody%20Advance%20Project_html_m156d26b.png]]
 
- 
+
 The Capella Overview is automatically displayed.
 
- 
+
 [[Image:Images/3.2.%20How%20to%20create%20a%20new%20Melody%20Advance%20Project_html_m873f5a6.png]]
 
- 
-<br>
-<br>
-
-   

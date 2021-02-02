@@ -1,4 +1,4 @@
-      
+
 = Transition > Justification > Logical Architecture =
 <br>
 {| class="VALIDATION-RULE"

@@ -1,271 +1,271 @@
-            
+
 = Capella Configurability and Validation Profiles =
- 
+
 == Principles ==
- 
+
 Capella Configurability feature allows to configure the application for a custom usage. Commands, validation rules and other Capella features can be customized using the standard Eclipse preferences mechanism.
 
- 
+
 There are three possible solutions to set a custom configuration:
 
- 
+
 # Using '''Workspace preferences'''
 # Setting '''Capella Project specific preferences'''
 # Referencing a '''Capella Configuration Project'''
- 
+
 The second solution overrides the first one. The third solution overrides the second one.
 
- 
+
 The basic idea is to disable/enable Eclipse preferences in the standard dedicated pages and then rely on export/import mechanisms to share them or configure a selected Capella Project.
 
- 
+
 The following preferences are available:
 
- 
+
 * Capella preferences, in particular customization of 	contextual menu entries depending on his role (Expert or Standard)
 * Viewpoint Preferences (among others for Refresh management policy 	and diagram settings)
 * Model Validation, in particular to create multiple validation rules 	sets
 * Commands enablement and user profile management. Please notice that 	Commands and User Profiles preferences are only workspace scope 	preferences and cannot be set on a specific project or referenced 	from a configuration project (cf. 6.4. Commands &amp; User Profiles)
- 
+
 [[Image:Images/6.1.%20Configurability%20and%20Validation%20Profile_html_6d2e0df.jpg|33x33px]] Migration features from one version to another are not supported for preferences configuration files (workspace preferences, Capella project specific preferences or Capella configuration project). Between minor versions (no modification of interfaces) these files shall be compatible (except if a validation rule referenced in a validation profile for instance is updated after a problem correction for instance).
 
- 
+
 <br>
 <br>
 
- 
+
 <br>
 <br>
 
- 
+
 == Workspace Preferences ==
- 
+
 === Setting Workspace Preferences ===
- 
+
 Workspace preferences are set using the standard Eclipse preferences page Editor available from menu ''window &gt; Preferences.''
 
- 
+
 Capella projects use by default Workspace preferences.
 
- 
+
 <br>
 <br>
 
- 
+
 [[Image:Images/6.1.%20Configurability%20and%20Validation%20Profile_html_m3c126a56.png|900x437px]]
 
- 
+
 '''Fig.1:''' Setting Workspace preferences
 
- 
+
 <br>
 <br>
 
- 
+
 === Importing/Exporting Workspace Preferences from workbench ===
- 
+
 <br>
 <br>
 
- 
+
 ==== Exporting Workspace Preferences ====
- 
+
 Workspace preferences can be exported using the Export wizard. Right click in the Project Explorer and choose ''Export''.
 
- 
+
 [[Image:Images/6.1.%20Configurability%20and%20Validation%20Profile_html_658237e5.png|900x540px]]
 
- 
+
 '''Fig.''' Lauching the export wizard
 
- 
+
 <br>
 <br>
 
- 
+
 In the export page choose ''Preferences'' and click ''Next.''
 
- 
+
 [[Image:Images/6.1.%20Configurability%20and%20Validation%20Profile_html_m427c425e.png|700x550px]]
 
- 
+
 '''Fig.''' Export Preferences Wizard
 
- 
+
 Choose the preferences to export and click on Finish to save them to a file in a Capella configuration project or in the file system.
 
- 
+
 ==== Exporting Validation Preferences ====
- 
+
 Validation preferences can be exported only if there are different from the default settings. If you change validation workspace preferences you can export them.
 
- 
+
 [[Image:Images/6.1.%20Configurability%20and%20Validation%20Profile_html_3e4be95c.png|627x531px]]
 
- 
+
 '''Fig'''. Setting validation preferences
 
- 
+
 [[Image:Images/6.1.%20Configurability%20and%20Validation%20Profile_html_10d0b870.png|556x553px]]
 
- 
+
 '''Fig'''. Exporting validation preferences
 
- 
+
 <br>
 <br>
 
- 
+
 ==== Importing Workspace Preferences ====
- 
+
 Preferences can be imported using the Import wizard. Right click in the Project Explorer and choose ''Import''.
 
- 
+
 [[Image:Images/6.1.%20Configurability%20and%20Validation%20Profile_html_19779b8b.png|650x300px]]
 
- 
+
 '''Fig.''' Launching the import wizard
 
- 
+
 In the export page choose ''Preferences'' and click ''Next''. In the next page you can choose which preferences you want to import.
 
- 
+
 [[Image:Images/6.1.%20Configurability%20and%20Validation%20Profile_html_629e8a60.png|470x550px]]
 
- 
+
 '''Fig'''. Choosing preferences to import into the workspace
 
- 
+
 ==== Example of export/import mechanism ====
- 
+
 To show how the workspace preference export/import mechanism works let&rsquo;s consider the following scenario:
 
- 
+
 # User 1 exports a set of preferences to ''&ldquo;user1_preferences.epf&rdquo;''
 # User 2 starts Capella on a clean workspace (i.e. having 	default preferences) and make some changes
 # User 2 imports the ''&ldquo;user1_preferences.epf&rdquo;''
- 
+
 <br>
 <br>
 
- 
+
 The following table gives the set of preferences in each step.
 
-                                                                                     
+
 [[Image:Images/ExportImportEPF.PNG]]
 <br>
 <br>
 
- 
+
 # This is the default behavior of 	Eclipse: the exported file stores only the preferences that differs 	from default, unchanged preferences are not exported.
- 
+
 [[Image:Images/6.1.%20Configurability%20and%20Validation%20Profile_html_m654d581e.png|532x227px]]
 
- 
+
 <br>
 <br>
 
- 
+
 <br>
 <br>
 
- 
+
 You can choose to import only MA preferences and not validation ones to let the latter unchanged. You can also use a validation profile to get exactly the validation preferences that was exported.
 
- 
+
 <br>
 <br>
 
- 
+
 ==== Initializing Workspace Preferences with launch arguments (-EPF) ====
- 
+
 Workspaces can be initialized at Capella startup using the following command line argument:
 
- 
+
 -EPF &lt;absolute/path/to/file.epf&gt;
 
- 
+
 Capella will initialize the Workspace with the preferences stored in the provided file.
 
- 
+
 ==== Example of initialization with -EPF ====
- 
+
 To show how the workspace initialization with &ndash;EPF argument works let&rsquo;s consider the following scenario:
 
- 
+
 # User 1 exports a set of preferences to ''&ldquo;user1_preferences.epf&rdquo;''
 # User 2 starts Capella on a '''clean or dirty''' workspace 	with &ndash;EPF ''&ldquo;user1_preferences.epf&rdquo;''
- 
+
 <br>
 <br>
 
- 
+
 The following table gives the preferences in each step
-                                                                             
+
 [[Image:Images/ExportImportEPF.PNG]]  
 <br>
 <br>
 
- 
+
 <br>
 <br>
 
- 
+
 == Capella Project specific preferences ==
- 
+
 Capella Project specific preferences can be set on a Capella project to override Workspace preferences.
 
- 
+
 Capella Project specific preferences are set by right clicking on the project in Project Explorer, and choosing ''properties'' menu.
 
-                    
+
 {| border="1"
 |-
 | 
 [[Image:Images/6.1.%20Configurability%20and%20Validation%20Profile_html_3c78e109.png|48x48px]]
 
- 
+
 | 
 To see 				.settings folder containing these local preferences, filtered by 				default, go to Project Explorer and select 				&ldquo;Customize View&hellip;&rdquo; dialog, uncheck 				&ldquo;*.resources&rdquo; choice.
 
- 
+
 | 
 <br>
 
- 
+
 |-
 | 
 [[Image:Images/6.1.%20Configurability%20and%20Validation%20Profile_html_3c78e109.png|48x48px]]
 
- 
+
 | 
 Capella 				Project specific preferences will 				'''override''' 				Workspace preferences.
 
- 
+
 | 
 <br>
 
- 
+
 |-
 | 
 <br>
 
- 
+
 | 
 <br>
 
- 
+
 |}  
 <br>
 <br>
 
- 
+
 [[Image:Images/6.1.%20Configurability%20and%20Validation%20Profile_html_m5ee4e886.png|800x438px]]
 
- 
+
 '''Fig.2:''' Setting Capella Project specific preferences
 
- 
+
 <br>
 <br>
 
@@ -274,133 +274,132 @@ Capella 				Project specific preferences will 				'''override''' 				Workspace p
 | 
 [[Image:Images/6.1.%20Configurability%20and%20Validation%20Profile_html_3c78e109.png|48x48px]]
 
- 
+
 | 
 
 Note that the Transitions/Generation preference category has a workspace scope. Thus, it is not possible to configure this preference category for a specific project.
- 
+
 |}  
 <br>
 <br>
-         
+
 {| border="1"
 |-
 | 
 [[Image:Images/6.1.%20Configurability%20and%20Validation%20Profile_html_3c78e109.png|48x48px]]
 
- 
+
 | 
 Creating project specific preferences overrides workspace 				preferences.
 
- 
+
 To go 				back to Workspace preferences all you need is to delete the 				&ldquo;.settings&rdquo; folder from the project.
 
- 
+
 |}  
 <br>
 <br>
 
- 
+
 <br>
 <br>
 
- 
+
 == Capella Configuration Project ==
- 
+
 Capella Configuration Projects can be used to externalize preferences settings, thus enabling to reuse them on several projects. They can be referenced by any Capella projects to reuse the saved preferences saved in this configuration.
 
- 
+
 === Creating Capella Configuration Project ===
- 
+
 Capella Configuration Projects can be created by right clicking in the Capella project explorer and choosing &quot;Capella Configuration Project&quot; menu.
 
- 
+
 [[Image:Images/6.1.%20Configurability%20and%20Validation%20Profile_html_271afec5.png|900x400px]]
 
- 
+
 '''Fig.''': Capella Configuration Project creation wizard
 
- 
+
 <br>
 <br>
 
- 
+
 === Referencing Capella Configuration Project ===
- 
+
 Capella Configuration Project is used to store a specific configuration of preferences. Capella projects can reuse the preferences set on the Capella Configuration Project by referencing it.
 
- 
+
 Referencing a Capella Configuration Project is done by right clicking on a Capella project, choosing ''properties'' and selecting projects to reference in ''Capella Project References'' option.
 
- 
+
 [[Image:Images/6.1.%20Configurability%20and%20Validation%20Profile_html_73841760.png|900x450px]]
 
- 
+
 '''Fig.''': Referencing Capella Configuration project
 
- 
+
 <br>
 <br>
 
-         
+
 {| border="1"
 |-
 | 
 [[Image:Images/6.1.%20Configurability%20and%20Validation%20Profile_html_3c78e109.png|48x48px]]
 
- 
+
 | 
 Referencing 				a Capella Configuration Project from a Capella project will 				'''override''' 				Capella Project specific preferences and Workspace preferences for 				this project.
 
- 
+
 |}  
 <br>
 <br>
 
- 
+
 == Validation Profiles ==
- 
+
 Validation profile is a mean to specify validation rule sets, thus enabling configuration reuse during validation of Capella model elements.
 
- 
+
 === Creating Validation Profiles ===
- 
+
 Validation profiles are created via Capella Export Preferences wizard and stored in standard Eclipse preferences files (with &ldquo;.epf&rdquo; file extension). Validation rule sets can be configured via ''Window &gt; Preferences'' menu and exported with the Export Preferences wizard.
 
- 
+
 Exported preferences (Validation profiles) can be stored into a Capella Configuration Project or to another path into the file system. Storing exported preferences to Capella Configuration Project enables reusing them for Capella model validation.
 
- 
+
 <br>
 <br>
 <br>
 <br>
 [[Image:Images/6.1.%20Configurability%20and%20Validation%20Profile_html_m5d2e3203.png|662x450px]]
 
- 
+
 '''Fig.''': storing exported validation preferences to a Capella Configuration Project
 
- 
+
 <br>
 <br>
 
- 
+
 <br>
 <br>
 
- 
+
 === Using Validation Profiles ===
- 
+
 Validation profiles (preferences files stored into Capella Configuration Project) can be used during validation of Capella model elements. To enable this usage on a Capella project, a Capella Configuration Project containing at least one preferences file has to be referenced. All referenced validation profiles are then available during validation.
 
- 
+
 [[Image:Images/6.1.%20Configurability%20and%20Validation%20Profile_html_352efd77.png|643x612px]]
 
- 
+
 '''Fig.''': Using Validation profiles preferences for validation
 
- 
+
 <br>
 <br>
 
-   

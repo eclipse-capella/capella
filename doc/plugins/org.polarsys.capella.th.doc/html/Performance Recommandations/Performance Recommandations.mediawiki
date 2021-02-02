@@ -1,5 +1,5 @@
 = Capella Performance Recommandations =
- 
+
 == Desynchronize semantic browser ==
 
 By default, the Semantic Browser is always synchronized with the current selection in the Diagram Editor or in the Project Explorer.  

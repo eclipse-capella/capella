@@ -1,22 +1,21 @@
-            
+
 = CAPABILITY (OPERATIONAL AND SYSTEM) =
- 
+
 === DEFINITION ===
- 
+
 A Capability is the ability of the System to provide a service that supports the achievement of high-level operational goals.
 
- 
+
 A Capability is described by scenarios and functional chains, all illustrating possible use cases. Capabilities can be used to structure the Functional Analysis.
 
- 
+
 In Logical and Physical Architectures, Capabilities are called &quot;Capability Realizations&quot;.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/7.%20Capability_html_461a4db.png|75x66px]]
 
- 
+
 [[Image:Images/7.%20Capability_html_m23cf2fa5.png|75x66px]]
 
-   

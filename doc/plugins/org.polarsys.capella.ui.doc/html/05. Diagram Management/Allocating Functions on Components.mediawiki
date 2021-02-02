@@ -1,6 +1,6 @@
-            
+
 = Allocating Functions on Components =
- 
+
  == Allocating Leaves Functions ==
 
 Allocating Functions (or Operational Activities) on System, Actors and Components (or Entities, Operational Actors and Roles for Operational Activities) can be done using the reference in the property view, or via the tool Manage Function Allocation in a diagram.
@@ -13,21 +13,21 @@ In both case, only leaves functions (i.e. functions without child functions) can
 
 
 Allocating those functions will modify the selected diagram and the model by completing the "allocated functions" reference for the selected component.
- 
+
 [[Image:Images/AllocatingFunctions_AllocatedFunctionReference.png|481x297px]]
 
  == Insert/Remove Allocated Functions ==
- 
+
 Let's consider that we have the following functions tree.
  [[Image:Images/AllocatingFunctions_FunctionalBreakdown.png|380x331px]]
- 
+
 We have seen that the leaves functions can be allocated that way.
 [[Image:Images/AllocatingFunctions_FunctionAllocatedOnComponents.png|575x180px]]
- 
+
   === Represent parent Functions allocation ===
- 
+
 When a parent function have all its leaves allocated on the same component, and/or on its sub component, it is possible to represent this parent function as an allocated one.
- 
+
 For instance, in the last picture,  ''"LF A 1"'' and ''"LF A 2"'' are two child functions of ''"LF A"''. As both ''"LF A 1"'' and ''"LF A 2"'' are allocated on ''"LC A 1"'', it is possible to represent ''"LF A"'' as allocated on ''"LC A"''.
 
 [[Image:Images/AllocatingFunctions_RepresentParentFunction_LF_A.png|1024x688px]]
@@ -44,11 +44,11 @@ The resulting diagram displays ''"LF A"'' as allocated in ''"LC A"''.
 
 [[Image:Images/5.1. Diagram concepts_html_3c78e109.png|16x16px]] As a parent function ''"LF A"'' appears in italic to differenciate it from allocated leaves.
 
- 
+
   === Represent Allocated Functions on parent Components ===
 
 When the component allocating a function is not represented in the diagram, the allocated function can also be represented on one of its parent component.
- 
+
 For instance, in the last picture,  ''"LF B 1"'' and ''"LF B 2"'' are allocated respectively on ''"LC B 1"'' and ''"LC B 2"''. If we hide on this component, then the corresponding function can be represented in ''"LC B"''.
 
 To do this, we shall use the "Allocated Component" tool in ''"LC B"'' and remove ''"LF B 1"'' and ''"LF B 2"''. Hence, we can use the "Allocated Function" tool in ''"LC B"'' and add ''"LF B 1"'' and ''"LF B 2"''.
@@ -56,7 +56,7 @@ To do this, we shall use the "Allocated Component" tool in ''"LC B"'' and remove
 The resulting diagram displays ''"LF A"'' as allocated in ''"LC A"''.
 
 [[Image:Images/AllocatingFunctions_LF_B_1_and_LF_B_2_displayed_on_LC_B.png|576x174px]]
-  
+
 [[Image:Images/5.1. Diagram concepts_html_3c78e109.png|16x16px]] As Functions allocated on a subcomponent, ''"LF B 1"'' and ''"LF B 2"'' appears with a dashed border to differenciate them from functions allocated on this component.
 
 We can also chose to display ''"LF B"'' in ''"LC B"''.
@@ -73,7 +73,7 @@ And finally if we hide both ''"LC A"'' and ''"LC B"'' it is possible to represen
 | 
 [[Image:Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_m262394d3.png|45x45px]]
 
- 
+
 | 
 Dotted Style rules :
 * A leaf function (graphically contained in a container component) has dash border style if it is allocated to at least one of the container's sub-components.
@@ -81,4 +81,3 @@ Dotted Style rules :
 |}
 
 
- 

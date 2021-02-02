@@ -1,6 +1,6 @@
-            
+
 = Capella Ecosystem =
- 
+
 Capella fits into a wider engineering landscape, as bridges can be developed to:
 
 * Initialize Capella models from upstream engineering outputs (typically coming from Architecture Frameworks such as NAF)
@@ -8,7 +8,6 @@ Capella fits into a wider engineering landscape, as bridges can be developed to:
 * Iteratively populate downstream engineering (subsystems, code generation, etc.)
 
 
- 
+
 [[Image:Images/1.2.%20Ecosystem_html_2d1b6334.jpg|1066x553px]]
 
-   

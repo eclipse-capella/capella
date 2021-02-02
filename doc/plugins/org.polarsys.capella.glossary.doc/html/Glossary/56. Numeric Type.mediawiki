@@ -1,16 +1,15 @@
-            
+
 = NUMERIC TYPE =
- 
+
 === DEFINITION ===
- 
+
 Numeric Type is a kind of Datatype, representing numbers.
 
- 
+
 Numeric Types can be of Kind Float or Integer; their min and max Values define the range of the possible Values for the Numeric Type.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/56.%20Numeric%20Type_html_m4dd00f4f.png|75x40px]]
 
-   

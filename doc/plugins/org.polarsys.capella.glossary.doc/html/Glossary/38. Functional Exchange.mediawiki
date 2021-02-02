@@ -1,17 +1,16 @@
-            
+
 = FUNCTIONAL EXCHANGE =
- 
+
 === DEFINITION ===
- 
+
 Functional Exchanges represent the Data exchanged between Functions. Functional Exchanges
 
- 
+
 * have a name summarizing what is exchanged,
 * connect Functions Ports,
 * and carry one or several Exchange Items (references to sets of 	Data).
- 
+
 === ICONS ===
- 
+
 [[Image:Images/38.%20Functional%20Exchange_html_2669ce0f.png|75x60px]]
 
-   

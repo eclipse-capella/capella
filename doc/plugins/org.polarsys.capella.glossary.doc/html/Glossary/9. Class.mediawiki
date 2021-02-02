@@ -1,19 +1,18 @@
-            
+
 = CLASS =
- 
+
 === DEFINITION ===
- 
+
 The purpose of a Class is to specify a classification of objects and to specify the features that characterize the structure and behavior of those objects.
 
- 
+
 Classes contain Properties, typed by other Classes, Union, Collection, Datatypes, etc.
 
- 
+
 Some of these Properties may represent the navigable ends of Binary Associations
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/9.%20Class_html_40ee2677.png|75x66px]]
 
-   

@@ -11,4 +11,3 @@ When a viewpoint is updated in the platform, if its version major or minor numbe
 The migration is orchestrated by Capella in both cases.
 
 See [[../help/topic/org.polarsys.capella.ui.doc/html/First%20steps%20with%20Capella/3.5.%20How%20to%20migrate%20Capella%20projects.html|How to migrate Capella projects]] <span class="github-link">[[../../../org.polarsys.capella.ui.doc/html/First steps with Capella/3.5. How to migrate Capella projects.mediawiki|(online documentation)]]</span>
- 

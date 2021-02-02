@@ -1,20 +1,20 @@
-            
+
 = Usage with Replicable Elements =
- 
+
 == Concepts ==
- 
+
 Create a library
 
- 
+
 [[Image:Images/9.3_Usage_with_Replicable_Elements.png|500x196px]]
 
- 
+
 In the Logical Architecture, create some elements and create a REC from them.
 
- 
+
 [[Image:Images/9.3.%20Usage%20With%20Replicable%20Elements_html_4777aa1e.png|414x142px]]<!--LibraryREC/[LAB] Logical System-->
 
- 
+
 [[Image:Images/9.3.%20Usage%20With%20Replicable%20Elements_html_7bfa792f.png|627x442px]]
 
 Alternatively, select &ldquo;REC/RPL->Create REC->With whole library contents...&rdquo; from the project explorer context menu to automatically add all library elements to the REC.
@@ -23,84 +23,83 @@ The dialog displays the content of the REC.
 
 [[Image:Images/9.3.%20Usage%20With%20Replicable%20Elements_html_488a3e08.png|627x732px]]
 
- 
+
 Notice the message at the end of the dialog : Functional Exchange is associated to some Exchange Items defined in the library:
 
- 
+
 [[Image:Images/9.3.%20Usage%20With%20Replicable%20Elements_html_7b9ca0f3.png|215x121px]]
 
- 
+
 After creation, the REC is available In the library.
 
- 
+
 [[Image:Images/9.3.%20Usage%20With%20Replicable%20Elements_html_2fad9421.png|235x95px]]
 
 
 Ensure your library is saved.
 
- 
+
 <br>
 <br>
 
- 
+
 Create a new Capella Project and add reference to this library
 
- 
+
 [[Image:Images/9.3_Usage_with_Replicable_Elements2.png|550x101px]]
 
- 
+
 [[Image:Images/9.3.%20Usage%20With%20Replicable%20Elements_html_70371d33.png|627x42px]]
 
- 
+
 [[Image:Images/9.3.%20Usage%20With%20Replicable%20Elements_html_m756e5c5c.png|236x200px]]
 
- 
+
 In a Logical Architecture Blank diagram, instantiate a new RPL
 
- 
+
 [[Image:Images/9.3.%20Usage%20With%20Replicable%20Elements_html_m5ac174b.png|627x83px]]
 
- 
+
 <br>
 <br>
 
- 
+
 In the dialog, select the REC located in the referenced library:
 
- 
+
 [[Image:Images/9.3.%20Usage%20With%20Replicable%20Elements_html_7e54700a.png|627x41px]]
 
- 
+
 [[Image:Images/9.3.%20Usage%20With%20Replicable%20Elements_html_4e22fc21.png|527x280px]]
 
- 
+
 <br>
 <br>
 
- 
+
 [[Image:Images/9.3.%20Usage%20With%20Replicable%20Elements_html_5bc6f.png|627x737px]]
 
- 
+
 <br>
 <br>
 
- 
+
 Display all elements of the RPL in the diagram
 
- 
+
 [[Image:Images/9.3.%20Usage%20With%20Replicable%20Elements_html_4c273205.png|443x139px]]
 
- 
+
 FE1 from the RPL is linked to Exchange Items located in the library.
 
- 
+
 [[Image:Images/9.3.%20Usage%20With%20Replicable%20Elements_html_4579c80.png|857x176px]]
 
- 
+
 <br>
 <br>
 
-  
+
 [[Image:Images/9.3.%20Usage%20With%20Replicable%20Elements_html_m2f4cc7f5.jpg|92x92px]][[Image:Images/9.3.%20Usage%20With%20Replicable%20Elements_html_733c5d5d.jpg|92x92px]]
 
-   

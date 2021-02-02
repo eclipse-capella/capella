@@ -1,16 +1,15 @@
-            
+
 = JOIN FUNCTION =
- 
+
 === DEFINITION ===
- 
+
 The Join control Function realizes a merge and synchronization between the flows that it collects (join input flows):
 
- 
+
 * The join output flow is the union of entry flows
 * This output flow is transmitted to next Function only when all join 	input flows have been received.
- 
+
 === ICONS ===
- 
+
 [[Image:Images/46.%20Join%20Function_html_m6a30a3fb.png|75x66px]]
 
-   

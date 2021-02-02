@@ -1,19 +1,18 @@
-            
+
 = FUNCTION (GENERIC) =
- 
+
 === DEFINITION ===
- 
+
 A Functional Chain is a mean to describe one specific path among all possible paths traversing the dataflow,
 
- 
+
 * either to describe an expected behavior of the System in a given 	context,
 * or in order to express some non functional properties along this 	functional path (latency, criticality, confidentiality, 	redundancy...).
- 
+
 An elementary Functional Chain is made of a succession of Functions and Exchanges across a functional dataflow, starting and ending with a Function (allocated to the System or to an Actor).
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/37.%20Functional%20Chain_html_m16f5d009.png|68x60px]]
 
-   

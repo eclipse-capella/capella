@@ -1,6 +1,6 @@
-            
+
 = Computed Links between Parent Components =
- 
+
 This feature is only available on Logical Architecture Blank [LAB] and Physical Architecture Blank [PAB] diagrams.
 
 Both mentioned diagrams are able to display links between parent components that are defined between their children when children are not displayed on diagrams.

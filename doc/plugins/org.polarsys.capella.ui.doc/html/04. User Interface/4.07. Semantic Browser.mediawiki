@@ -1,81 +1,80 @@
-            
+
 = Semantic Browser =
- 
+
 == View ==
- 
+
 The objective of the Semantic Browser is to provide a summary of all meaningful relationships for one given element.
 
- 
+
 [[Image:Images/4.07.%20Semantic%20Browser_html_m2d24d060.png|900x300px]]
 
- 
+
 <br>
 <br>
 
-         
+
 {| border="1"
 |-
 | 
 [[Image:Images/4.07.%20Semantic%20Browser_html_3c78e109.png|48x48px]]
 
- 
+
 | 
 Control 				double-click (or typing F9) on an element in the Semantic Browser 				automatically makes it the &ldquo;current element&rdquo;. Typing 				F9 on an element on a diagram or in the 				Project Explorer instantaneously brings the Semantic Browser 				focused on this element.
 
- 
+
 |}  
 With the upper right toolbar, it is possible to navigate in the history of the Semantic Browser (Back / Next buttons).
 
- 
+
 [[Image:Images/4.07.%20Semantic%20Browser_html_fbc69c2.png|311x233px]]
 
- 
+
 By default, the Semantic Browser is always synchronized with the current selection in the Diagram Editor or in the Project Explorer. However, with big models, performing all the requests might introduce lag between selections and make the environment less smooth. It is possible to deactivate this synchronization (and only rely on F9 when necessary).
 
- 
+
 [[Image:Images/4.07.%20Semantic%20Browser_html_111420cd.png|230x54px]]
 
- 
+
 == Display Options ==
- 
+
 '''Show/hide diagrams'''
 
- 
+
 If this option is toggled, all diagrams related to the current element are displayed by the Semantic Browser (in category named &ldquo;All Related Diagrams&rdquo;). Disabling it is likely to improve performances since computation of all related diagrams for an element is time-consuming (especially if the Semantic Browser is synchronized). This option is enabled by default.
 
- 
+
 [[Image:Images/4.07.%20Semantic%20Browser_html_m5a6e68c9.png|230x54px]]
 
- 
+
 '''Show/hide Pattern Instances'''
 
- 
+
 If this option is toggled, all pattern instances related to the current element are displayed by the Semantic Browser (in category named &ldquo;All Related Pattern Instances&rdquo;). Disabling it is likely to improve performances since computation of all related pattern instances for an element is time-consuming (especially if the Semantic Browser is synchronized). This option is disabled by default.
 
- 
+
 [[Image:Images/4.07.%20Semantic%20Browser_html_1b801b62.png|230x54px]]
 
- 
+
 '''Collapsed/Expanded Mode'''
 
- 
+
 By default, the Semantic Browser works in the &ldquo;expanded mode&rdquo; which means that tree nodes are all expanded (children are visible). If this option is toggled, the Semantic Browser switches to the &ldquo;collapsed mode&rdquo;. In that case, all category nodes are not expanded by default and the Semantic Browser will remember which categories have been manually expanded and keep them expanded for future display (until they are manually collapsed). This option is useful when the user want to focus on particular relationships when dealing with complex models.
 
- 
+
 [[Image:Images/4.07.%20Semantic%20Browser_html_508676fd.png|900x230px]]
 
- 
+
 == Actions ==
- 
+
 Double-clicking on an element in the Semantic Browser opens the editor of this element. F8, F9, F10 keys allow selecting the current element in other Views. All other applicative commands are still available through the contextual menu.
 
- 
+
 [[Image:Images/4.07_Semantic_Browser.png|900x280px]]
 
- 
+
 Finally, opening a diagram from the Semantic Browser is also possible. In that case, the focus in the Diagram Editor is set on the current element.
 
- 
+
 [[Image:Images/4.07.%20Semantic%20Browser_html_m7ad4cfca.png|765x240px]]
 
-   

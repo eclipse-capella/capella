@@ -1,13 +1,12 @@
-            
+
 = Merge Function =
- 
+
 === DEFINITION ===
- 
+
 ''In contruction''
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/52.%20Merge%20Function_html_m41b489c1.png|75x66px]]
 
-   

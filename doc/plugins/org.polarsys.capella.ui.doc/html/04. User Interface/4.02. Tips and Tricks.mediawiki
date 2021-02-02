@@ -1,222 +1,221 @@
-             
+
 <br>
 <br>
 
-  
+
 = Workbench Manipulation - Tips and Tricks =
-         
+
 {| border="1"
 |-
 | 
 [[Image:Images/4.02.%20Tips%20and%20Tricks_html_3c78e109.png|48x48px]]
 
- 
+
 | 
 Through the normal course of using the workbench, views will be 				opened, moved, resized, and closed. The perspective can be 				restored to its original state with the '''Window &gt; Reset 				Perspective''' menu operation.
 
- 
+
 These 				definitions are an extract from Eclipse&rsquo;s own embedded 				documentation: Workbench User Guide / Concepts.
 
- 
+
 |}  
 == Rearranging Parts ==
- 
+
 The workbench allows for the creation of two or more sets of editors in the editor area. The editor area can also be resized but views cannot be dragged into the editor area.
 
- 
+
 By default, editors are stacked in the editor area, but it is possible to tile them side-by-side in order to view different editor simultaneously.
 
- 
+
 The layout behaviour is slightly different for views: a view might appear by itself, or stacked with other view in a tabbed notebook. Several tabbed notebooks can be arranged around the editor area. The layout of a perspective can be changed by opening and closing views and by docking them in different positions in the workbench window.
 
- 
+
 Drop cursors indicate where it is possible to dock views or editors in the workbench window. Several drop cursors may be displayed when rearranging views or tiling editors. The following array shows the drop cursor and their corresponding moves for views.
 
-                                     
+
 {| border="1"
 |-
 | 
 '''Drop 				Cursor'''
 
- 
+
 | 
 '''Where 				the view will be moved to'''
 
- 
+
 |-
 | 
 [[Image:Images/4.02.%20Tips%20and%20Tricks_html_m52904c17.png|16x19px]]
 
- 
+
 | 
 Dock above: The 				view is docked above the view underneath the cursor.
 
- 
+
 |-
 | 
 [[Image:Images/4.02.%20Tips%20and%20Tricks_html_m194516d0.png|19x19px]]
 
- 
+
 | 
 Dock below: The 				view is docked below the view underneath.
 
- 
+
 |-
 | 
 [[Image:Images/4.02.%20Tips%20and%20Tricks_html_m32c62d15.png|20x20px]]
 
- 
+
 | 
 Dock to the right: 				The view is docked to the right of the view underneath the 				cursor.
 
- 
+
 |-
 | 
 [[Image:Images/4.02.%20Tips%20and%20Tricks_html_m24d0f72a.png|20x20px]]
 
- 
+
 | 
 Dock to the left: 				The view is docked to the left of the view underneath the cursor.
 
- 
+
 |-
 | 
 [[Image:Images/4.02.%20Tips%20and%20Tricks_html_752d5868.png|20x20px]]
 
- 
+
 | 
 Stack: The view is 				docked as a Tab in the same pane as the view underneath the 				cursor.
 
- 
+
 |-
 | 
 [[Image:Images/4.02.%20Tips%20and%20Tricks_html_3297b071.png|21x21px]]
 
- 
+
 | 
 Restricted: You 				cannot dock the view in this area.
 
- 
+
 |-
 | 
 [[Image:Images/4.02.%20Tips%20and%20Tricks_html_m50cb0206.png|19x19px]]
 
- 
+
 | 
 Detached: The view 				is detached from the workbench window and is shown in its own 				separate window. (This behaviour is only available for views)
 
- 
+
 |}  
 Editors and views can be moved in the same way with a simple drag and drop :
 
- 
+
 * Click in the title bar of a part and drag the part across the 	Workbench window
 * While still dragging the part, drop cursors appear indicating the 	possibility to dock the part
 * Release the mouse button to dock the part.
- 
+
 [[Image:Images/4.02.%20Tips%20and%20Tricks_html_m4a1c7e6.png]]
 
- 
+
 [[Image:Images/4.02.%20Tips%20and%20Tricks_html_m7ecbe661.png]]
 
- 
+
 <br>
 <br>
 
- 
+
 == Maximizing and Minimizing Parts ==
- 
+
 The workbench window basically consists in an ''Editor Area'' (containing one or more stacks showing the open editors) surrounded by one or more ''View Stacks'' (each containing one ore more views). These various parts compete for valuable screen real-estate and correctly managing the amount of screen given to each can greatly enhance the productivity within the workbench.
 
- 
+
 The two most common mechanisms for managing this issue are &lsquo;minimize&rsquo; (i.e. make me use as little space as possible) and &lsquo;maximise&rsquo; (i.e. give me as much space as possible). Several ways are provided to access these operations:
 
- 
+
 * Using the minimize and maximize buttons provided on stack&rsquo;s 	border: 	[[Image:Images/4.02.%20Tips%20and%20Tricks_html_m4752b235.png|32x14px]]
 * Selecting the &lsquo;Minimize&rsquo; or &lsquo;Maximize&rsquo; item 	on the contextual menu for a stack.
 * Double-clicking on a stack.
 * Using &lsquo;CTRL+M&rsquo;: this is a key binding for a command that 	will toggle the currently active part between its &lsquo;maximized&rsquo; 	and &lsquo;restored&rsquo; (i.e. normal) states.
-         
+
 {| border="1"
 |-
 | 
 [[Image:Images/4.02.%20Tips%20and%20Tricks_html_3c78e109.png|48x48px]]
 
- 
+
 | 
 The 				behaviour for managing editor maximization operates on the 				complete Editor Area, allowing for &rsquo;compare&rsquo; 				workflows which require the ability to see both files in a split 				editor area at the same time.
 
- 
+
 |}  
 A minimized stack will be moved into the trim area at the edges of the workbench window, creating a ''Trim Stack''. View Stacks get minimized into a trim representation that contains the icons for each view in the stack. A minimized view can be quickly opened and closed by clicking on the corresponding icon.
 
- 
+
 [[Image:Images/4.02.%20Tips%20and%20Tricks_html_52c4b770.png|689x172px]]
 
- 
+
 The minimize behaviour for the Editor Area is somewhat different: it get minimized into a trim stack containing only a placeholder icon representing the entire editor area rather than icons for each open editor (since in most cases all the icons would be the same, making them useless).
 
- 
+
 [[Image:Images/4.02.%20Tips%20and%20Tricks_html_m4abcd89a.png|27x59px]]
 
-         
+
 {| border="1"
 |-
 | 
 [[Image:Images/4.02.%20Tips%20and%20Tricks_html_3c78e109.png|48x48px]]
 
- 
+
 | 
 There are two ways to end up with a stack in the trim area:
 
- 
+
 * Directly minimizing the stack
 * As 					the result of another stack being maximized
- 
+
 |}  
 == View Manipulations ==
- 
+
 A view can be displayed by selecting it from the '''Windows &gt; Show View''' menu. A perspective determines which views may be required and displays these on the '''Show View''' sub-menu. Additional views are available by choosing '''Other&hellip;''' at the bottom of the sub-menu.
 
- 
+
 Fast views are hidden views that can be quickly opened and closed. They work like other views except they do not take up space in the workbench window. There are three ways to create fast views:
 
- 
+
 * Drag and drop the view to the Fast View bar
 * Click the button 	[[Image:Images/4.02.%20Tips%20and%20Tricks_html_29213549.png|25x22px]] 	located on the left side of the Fast View bar which will present a 	selection of views and an '''Other&hellip; '''menu item
 * Right-click a view title bar and select the '''Fast View''' menu 	item.
- 
+
 Fast views can be restored to their original location and removed from the Fast View bar by deselecting the '''Fast View''' menu item in the view button&rsquo;s contextual menu.
 
-         
+
 {| border="1"
 |-
 | 
 [[Image:Images/4.02.%20Tips%20and%20Tricks_html_3c78e109.png|48x48px]]
 
- 
+
 | 
 Fast 				views and minimized views have the same behaviour.
 
- 
+
 |}  
 Views can also be detached from the workbench window. Detached views are shown in a separate window with a smaller trim. They work like other views except they are always shown in front of the workbench window. A new detached view can be created by dragging any open view outside of the workbench window or by selecting '''Detached''' from the menu that opens when you right-click the view&rsquo;s tab. Reversing the previous manipulations allows to reattach views to the workbench window.
 
- 
+
 [[Image:Images/4.02.%20Tips%20and%20Tricks_html_72049881.png|459x183px]]
 
- 
+
 == Perspective Manipulation ==
- 
+
 Additional perspectives can be opened using the '''Open Perspective''' button on the shortcut bar on the right side of the workbench window or the '''Window &gt; Open Perspective''' menu on the menu bar. When the perspective opens, the title bar of the current window changes in order to display the name of the perspective. In addition an icon is added to the shortcut bar, allowing to quickly switch between opened perspective by clicking the icons.
 
- 
+
 [[Image:Images/4.02.%20Tips%20and%20Tricks_html_m51be7e90.png|358x42px]]
 
- 
+
 In the diagram editor, it is possible to go from one diagram to the other using the Back Next buttons.
 
- 
+
 [[Image:Images/4.02.%20Tips%20and%20Tricks_html_22ef5f2.png|689x276px]]
 
-   

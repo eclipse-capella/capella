@@ -1,24 +1,23 @@
-            
+
 = EXCHANGE ITEM =
- 
+
 === DEFINITION ===
- 
+
 An Exchange Item describes a set of Data semantically coherent with regards to their usage in a given context:
 
- 
+
 * same communication principles
 * simultaneity of transportation
 * same non functional properties (e.g. security level, integrity 	requirement, expected performance...)
 * indivisibility (an Exchange Item is monolithic)
- 
+
 Exchange Items can be directly attached to Functional and Component Exchanges, directly attached to Function or Component Ports, or referenced by Interfaces (which are themselves provided/required by Component Ports).
 
- 
+
 Possible communication mechanisms for Exchange Items are: OPERATION, EVENT, FLOW, SHARED DATA.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/30.%20Exchange%20Item_html_168cf700.png|75x66px]]
 
-   

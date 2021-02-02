@@ -1,20 +1,19 @@
-            
+
 = PHYSICAL QUANTITY =
- 
+
 === DEFINITION ===
- 
+
 Physical Quantity is a specific kind of Numeric Type. It represents a physical &ldquo;dimension&rdquo; and is associated to unit (meter, gram, volt, etc.).
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/71.%20Physical%20Quantity_html_m75d49d64.png|64x56px]]
 
- 
+
 <br>
 <br>
 
- 
+
 <br>
 
-   

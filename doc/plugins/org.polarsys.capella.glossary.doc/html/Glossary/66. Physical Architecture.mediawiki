@@ -1,26 +1,25 @@
-            
+
 = PHYSICAL ARCHITECTURE =
- 
+
 === DEFINITION ===
- 
+
 Physical Architecture has the same intents as Logical Architecture design, except that it defines the &ldquo;final&rdquo; architecture of the System/Software at this level of engineering, ready to develop (at lower engineering levels). Therefore, it introduces rationalization, architectural patterns, new technical services and components, and makes the Logical Architecture evolve according to implementation, technical &amp; technological constraints &amp; choices (at this level of engineering).
 
- 
+
 Note that the same &lsquo;Viewpoints-driven&rsquo; method as for Logical Architecture design is used for Physical Architecture definition.
 
- 
+
 Outputs the Physical Architecture consists in: Components to be produced, including formalization of all viewpoints and the way they are taken into account in the components design.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/66.%20Physical%20Architecture_html_m5da03533.png|75x66px]]
 
- 
+
 <br>
 <br>
 
- 
+
 <br>
 
-   

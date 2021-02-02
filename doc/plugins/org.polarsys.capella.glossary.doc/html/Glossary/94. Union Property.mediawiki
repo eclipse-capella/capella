@@ -1,16 +1,15 @@
-            
+
 = UNION =
- 
+
 === DEFINITION ===
- 
+
 See Union.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/94.%20Union%20Property_html_m34623b5c.png|75x66px]]
 
- 
+
 <br>
 
-   

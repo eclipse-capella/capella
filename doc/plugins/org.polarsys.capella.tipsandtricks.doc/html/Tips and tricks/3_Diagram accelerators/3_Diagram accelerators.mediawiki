@@ -40,10 +40,10 @@ In order to save time when information can be deduced from the model, Capella is
 | 
 [[Image:../../Images/InfoIcon.png|48x48px]]
 
- 
+
 | 
 For better results, graphical elements have to be unpinned before running this action. On the diagram menu choose "Select All" then "Unpin selected elements".
- 
+
 |}
 
 ===Initialize FS from a FC and OAS from an OP===
@@ -65,13 +65,13 @@ On an Operational Process, you can run the command from the Transitions menu "Op
 | 
 [[Image:../../Images/InfoIcon.png|48x48px]]
 
- 
+
 |
 In the Capella Transition/Generation preference page, you can control the creation of interactions between instance roles  during initialization (with or without return branch).
 
 
 [[Image:../../Images/Pref_FC2FS.png|500x150px]]
- 
+
 |}
 
 
@@ -101,7 +101,7 @@ From each Capella modeling level, you can initialize an [IS] Interface Scenario 
 This initialization is controlled by some preferences. You can find more informations about them in the sections Capella Guide > User Manual > Preferences > Capella > Transitions/Generation
 
 We provide the following IS initializations :
- 
+
 * IS to IS from System Analysis level to Logical Architecture level
 
 [[File:../../Images/IS2IS_SALA.png|thumbnail|800px|]]

@@ -1,16 +1,15 @@
-            
+
 = SYSTEM FUNCTION =
- 
+
 === DEFINITION ===
- 
+
 A System Function is a Function in the System Analysis. It usually refines one or several Operational Activity(ies).
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/89.%20System%20Function_html_54e33068.png|75x66px]]
 
- 
+
 <br>
 
-   

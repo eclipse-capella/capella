@@ -1,16 +1,15 @@
-            
+
 = OPERATIONAL ENTITY =
- 
+
 === DEFINITION ===
- 
+
 An Operational Process is made of a succession of Operational Activities and Interactions (Exchanges) across an Operational Dataflow.
 
- 
+
 Operational Processes are the equivalent of Functional Chain in System Analysis / Logical Architecture / Physical Architecture.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/62.%20Operational%20Process_html_m44054298.png|68x61px]]
 
-   

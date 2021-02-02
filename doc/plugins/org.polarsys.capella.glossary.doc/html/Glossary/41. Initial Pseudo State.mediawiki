@@ -1,16 +1,15 @@
-            
+
 = INITIAL PSEUDO STATE =
- 
+
 === DEFINITION ===
- 
+
 &#91;State Machine&#93; An Initial Pseudo State represents a default entry point that is the source for a single Transition one State or Mode.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/41.%20Initial%20Pseudo%20State_html_3c430ed9.png|75x66px]]
 
- 
+
 <br>
 
-   

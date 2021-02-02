@@ -1,13 +1,12 @@
-            
+
 = ENUMERATION PROPERTY LITERAL =
- 
+
 === DEFINITION ===
- 
+
 Enumeration Property Literal is a user-defined possible value of an Enumeration Property Value type by an Enumeration Property Type.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/24.%20Enumeration%20Property%20Literal_html_62aa8504.png|75x66px]]
 
-   

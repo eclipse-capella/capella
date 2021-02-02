@@ -1,35 +1,34 @@
-            
+
 = Change Recorder View =
-         
+
 {| border="1"
 |-
 | 
 [[Image:Images/4.10.%20Change%20Recorder%20View_html_723ed3f9.png|34x34px]]
 
- 
+
 | 
 The 				Change Recorder View is essentially a debug tool. The recording 				configuration is defined in the Capella User Preferences
 
- 
+
 |}  
 By default, this view is not displayed in the Capella perspective. Its purpose is to display the log of the changes on a model, when the logger has been activated in the Preferences.
 
- 
+
 To display this view, click on Window / Show View / Capella Change Recorder.
 
- 
+
 [[Image:Images/4.10_Change_Recorder2.png|700x200px]]
 
- 
+
 To open a log file, click on the dedicated button on the right side of the view:
 
- 
+
 [[Image:Images/4.10.%20Change%20Recorder%20View_html_55cbf3ec.png|149x68px]]
 
- 
+
 The recorded changes are displayed in the view.
 
- 
+
 [[Image:Images/4.10_Change_Recorder1.png|700x210px]]
 
-   

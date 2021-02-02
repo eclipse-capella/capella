@@ -5,4 +5,3 @@ AQL is a language used to navigate and query an EMF model.
 For more information about AQL, have a look at the embedded documentation [[../help/topic/org.eclipse.acceleo.query.doc/pages/index.html|Acceleo Query Language Documentation]]
 or the online documentation (http://www.eclipse.org/acceleo/documentation/)
 
- 

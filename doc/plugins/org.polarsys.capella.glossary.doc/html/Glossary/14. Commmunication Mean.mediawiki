@@ -1,13 +1,12 @@
-            
+
 = COMMUNICATION MEAN =
- 
+
 === DEFINITION ===
- 
+
 A Communication Mean is the media linking Operational Entities and Operational Actors. Communication Means carry Operational Interactions (Operational Exchanges).
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/14.%20Commmunication%20Mean_html_m70d9f5b1.png|75x66px]]
 
-   

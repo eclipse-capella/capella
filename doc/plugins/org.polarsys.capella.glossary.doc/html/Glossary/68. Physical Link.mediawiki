@@ -1,20 +1,19 @@
-            
+
 = PHYSICAL LINK =
- 
+
 === DEFINITION ===
- 
+
 Physical Links are the communication/transportation means linking Node Physical Components. They carry the Component Exchanges existing between the Behavior Physical Components.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/68.%20Physical%20Link_html_1bf0b94.png|73x21px]]
 
- 
+
 <br>
 <br>
 
- 
+
 <br>
 
-   

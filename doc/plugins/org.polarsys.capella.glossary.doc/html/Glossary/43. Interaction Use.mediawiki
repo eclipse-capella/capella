@@ -1,16 +1,15 @@
-            
+
 = INTERATION USE (REFERENCE) =
- 
+
 === DEFINITION ===
- 
+
 Also named Reference is Capella. The objective of an Interaction Use in a Scenario is to reference another sub Scenario.
 
- 
+
 Interaction Uses allows simpler sequence diagrams and prevent useless repetition of sequences.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/43.%20Interaction%20Use_html_7d1144e4.png|75x66px]]
 
-   

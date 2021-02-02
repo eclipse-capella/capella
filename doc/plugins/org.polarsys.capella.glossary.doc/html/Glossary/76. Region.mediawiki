@@ -1,20 +1,19 @@
-            
+
 = REGION =
- 
+
 === DEFINITION ===
- 
+
 &#91;State Machine&#93; Regions allow the definition of parallel sub State Machines within another State Machine.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/76.%20Region_html_m11df52e6.png|75x66px]]
 
- 
+
 <br>
 <br>
 
- 
+
 <br>
 
-   

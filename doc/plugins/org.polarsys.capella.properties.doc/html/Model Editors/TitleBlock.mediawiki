@@ -1,31 +1,31 @@
 =Title Block=
 
- 
+
 This wizard helps you setting the label of the cell and the content displayed in a cell of a Title Block.
 
- 
+
 '''Base '''
 
-                      
+
 {| border="1"
 |-
 | 
 '''Field'''
 
- 
+
 | 
 '''Description'''
 
- 
+
 | 
 '''Default'''
 
- 
+
 |-
 | 
 '''Name'''
 
- 
+
 | 
 The name of the label of the current Title Block cell.
 
@@ -34,12 +34,12 @@ If a Capella service is used in Content section, name is deduced from the contri
 | 
 &lt;Name&gt;
 
- 
+
 |-
 | 
 '''Content'''
 
- 
+
 | 
 A query that will provide the content that we need to display in the cell of the Title Block. The content of data fields can be customized via:
 
@@ -48,9 +48,9 @@ A query that will provide the content that we need to display in the cell of the
 * Semantic browser queries (capella:)
 
 Available services are proposed with the command Ctrl+Space on content text field.
- 
+
 | 
 &lt;feature:name&gt;
 
- 
+
 |}  

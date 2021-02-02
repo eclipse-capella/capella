@@ -1,16 +1,15 @@
-            
+
 = NODE PHYSICAL COMPONENT =
- 
+
 === DEFINITION ===
- 
+
 A Node Physical Component (aka &quot;implementation&quot; component in Arcadia) is a material Physical Component, resource embedding some behavior components. Node Physical Components deliver resources for behavioral components execution.
 
- 
+
 Example: Hardware computing board, computer, FPGA (programmable device).
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/55.%20Node%20Physical%20Component_html_1bc67289.png|75x66px]]
 
-   

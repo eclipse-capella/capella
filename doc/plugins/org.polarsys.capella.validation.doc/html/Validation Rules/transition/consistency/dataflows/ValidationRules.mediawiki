@@ -1,4 +1,4 @@
-      
+
 = Transition > Consistency > Dataflows =
 <br>
 {| class="VALIDATION-RULE"

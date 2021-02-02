@@ -5,7 +5,7 @@ Mylyn is the task and application lifecycle management (ALM) framework for Eclip
 * For more information about Mylyn and its usage, please refer to the section '''Mylyn Documentation''' in '''Capella Help''' or the online reference https://www.eclipse.org/mylyn/start/
 
 * If you are using the collaborative version '''Team for Capella''', you can use Mylyn in conjunction with the feature '''Change Management''' in order to use the description of current active task as the description for each commit made during modeling. For more information, please refer to the corresponding section in '''Team for Capella Guide'''
-     
+
 * If you are using '''JIRA''' in your organization, it is possible to query tasks from JIRA and visualize or edit them directly in Eclipse with Mylyn. Please refer to https://confluence.atlassian.com/ideplugin/atlassian-connector-for-eclipse/using-jira-in-the-eclipse-connector for more information about the installation and usage of JIRA Eclipse connector. 
 
 

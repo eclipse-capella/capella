@@ -1,20 +1,19 @@
-            
+
 = OUTPUT FUNCTION PORT =
- 
+
 === DEFINITION ===
- 
+
 See Function Port.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/64.%20Output%20Function%20Port_html_mb471f13.png|75x66px]]
 
- 
+
 <br>
 <br>
 
- 
+
 <br>
 
-   

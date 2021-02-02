@@ -1,13 +1,12 @@
-            
+
 = Metrics Computation =
- 
+
 Capella provides a basic model element counting tool. It can be called on each architecture package and the results can be exported in CSV files.
 
- 
+
 [[Image:Images/12.3_Metrics_Computation12.png|800x700px]]
 
- 
+
 <br>
 <br>
 
-   

@@ -1,23 +1,22 @@
-            
+
 = REFERENCE (NUMERIC, STRING, EXPRESSION, ENUMERATION, BOOLEAN, COMPLEX VALUE) =
- 
+
 === DEFINITION ===
- 
+
 Unlike Literals, References allow defining Data Values related to other Data Values.
 
- 
+
 A Reference Data Value can target another Reference Data Value, A Literal Data Value or a Class Property.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/75.%20Reference_html_38970915.png|69x60px]]
 
- 
+
 <br>
 <br>
 
- 
+
 <br>
 
-   

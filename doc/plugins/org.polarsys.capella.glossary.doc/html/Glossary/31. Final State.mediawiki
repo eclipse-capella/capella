@@ -1,13 +1,12 @@
-            
+
 = FINAL STATE =
- 
+
 === DEFINITION ===
- 
+
 &#91;State Machine&#93; Final state is a special kind of state signifying that the enclosing Region is completed.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/31.%20Final%20State_html_m7babe2f3.png|75x66px]]
 
-   

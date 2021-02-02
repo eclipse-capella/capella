@@ -1,16 +1,15 @@
-            
+
 = INTERFACE =
- 
+
 === DEFINITION ===
- 
+
 Interfaces are contracts specifying how components can interact with each other. Interfaces are defined by grouping (referencing) Exchange Items.
 
- 
+
 Interfaces are provided or required by Components or Components Ports. Each Component or Component Port can provide / require several Interfaces.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/45.%20Interface_html_m74e85df2.png|75x66px]]
 
-   

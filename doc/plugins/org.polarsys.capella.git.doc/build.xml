@@ -28,7 +28,7 @@
 		</fileset>
 	</path>
         
-	<taskdef classpathref="wikitext.classpath" resource="org/eclipse/mylyn/wikitext/core/ant/tasks.properties" />
+    <taskdef classpathref="wikitext.classpath" resource="org/eclipse/mylyn/wikitext/ant/tasks.properties" />
 
 	<target name="generate-html" description="Generate HTML from textile source">
 		<wikitext-to-html markupLanguage="MediaWiki">

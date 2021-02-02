@@ -1,4 +1,4 @@
-      
+
 = Transition > Justification > Epbs =
 <br>
 {| class="VALIDATION-RULE"

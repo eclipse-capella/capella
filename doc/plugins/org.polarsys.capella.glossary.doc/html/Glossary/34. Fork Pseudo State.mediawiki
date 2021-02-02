@@ -1,16 +1,15 @@
-            
+
 = FORK PSEUDO STATE =
- 
+
 === DEFINITION ===
- 
+
 &#91;State Machine&#93; A Fork Pseudo State is used to split an incoming Transition into two or more Transitions towards different States / Modes.
 
- 
+
 === ICONS ===
- 
+
 [[Image:Images/34.%20Fork%20Pseudo%20State_html_330e3f20.png|75x40px]]
 
- 
+
 <br>
 
-   
