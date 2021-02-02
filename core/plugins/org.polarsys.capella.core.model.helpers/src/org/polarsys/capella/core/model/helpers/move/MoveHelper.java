@@ -176,16 +176,11 @@ public class MoveHelper {
         } else if (source instanceof Region) {
           if (target instanceof AbstractState) {
             isOK = canMoveRegion((Region) source, (AbstractState) target);
-          }
-
-          if (target instanceof StateMachine) {
+            
+          } else if (target instanceof StateMachine) {
             isOK = canMoveRegion((Region) source, (StateMachine) target);
           }
-
-          if (target instanceof Region) {
-            isOK = canMoveRegion((Region) source, (Region) target);
-          }
-
+          
         } else if (source instanceof LiteralBooleanValue) {
           isOK = target instanceof BooleanType;
 
