@@ -19,6 +19,7 @@ import org.polarsys.capella.common.data.behavior.AbstractEvent;
 import org.polarsys.capella.common.data.modellingcore.IState;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.data.cs.CsPackage;
+import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.contextscope.ContextScopeHandlerHelper;
 import org.polarsys.capella.core.transition.system.topdown.constants.ITopDownConstants;
@@ -92,6 +93,17 @@ public class AbstractStateRule extends org.polarsys.capella.core.transition.syst
    */
   @Override
   protected boolean shouldAddExitInScope(AbstractEvent trigger) {
+    return true;
+  }
+  
+  /**
+   * For topdown transition, all available functions should be added to the scope
+   * 
+   * @param function
+   * @return
+   */
+  @Override
+  protected boolean shouldAddAvailableFunctionsInScope(AbstractFunction function) {
     return true;
   }
 }
