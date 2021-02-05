@@ -22,6 +22,7 @@ import org.polarsys.capella.common.data.behavior.AbstractEvent;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.capellacommon.State;
+import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.attachment.AttachmentHelper;
@@ -53,7 +54,7 @@ public class AbstractStateRule extends AbstractCapellaElementRule {
       if (ContextScopeHandlerHelper.getInstance(context).contains(ITransitionConstants.SOURCE_SCOPE, source, context)) {
         if (source instanceof State) {
           State element = (State) source;
-          // // Add Do Activity to scope
+          // Add Do Activity to scope
           List<AbstractEvent> activities = element.getDoActivity();
           for (AbstractEvent activity : activities) {
             if (shouldAddDoActivityInScope(activity)) {
@@ -61,7 +62,6 @@ public class AbstractStateRule extends AbstractCapellaElementRule {
               result.add(activity);
             }
           }
-          
           // Add effect elements to scope
           for (AbstractEvent entry : element.getEntry()) {
             if (shouldAddEntryInScope(entry)) {
@@ -76,7 +76,13 @@ public class AbstractStateRule extends AbstractCapellaElementRule {
               result.add(exit);
             }
           }
-          
+          // Add available functions to scope
+          for (AbstractFunction function : element.getAvailableAbstractFunctions()) {
+            if (shouldAddAvailableFunctionsInScope(function)) {
+              ContextScopeHandlerHelper.getInstance(context).add(ITransitionConstants.SOURCE_SCOPE, function, context);
+              result.add(function);
+            }
+          }
         }
       }
     }
@@ -135,5 +141,15 @@ public class AbstractStateRule extends AbstractCapellaElementRule {
    */
   protected boolean shouldAddExitInScope(AbstractEvent exit) {
     return exit instanceof ExchangeItem;
+  }
+  
+  /**
+   * By default, available functions are not added to the scope
+   * 
+   * @param trigger
+   * @return
+   */
+  protected boolean shouldAddAvailableFunctionsInScope(AbstractFunction function) {
+    return false;
   }
 }

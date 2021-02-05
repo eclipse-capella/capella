@@ -141,18 +141,21 @@ public class Context_SM01_03 extends TopDownTransitionTestCase {
     mustBeLinkedTo(ST113t, E1, CapellacommonPackage.Literals.STATE_TRANSITION__EFFECT);
     mustBeLinkedTo(ST113t, E2, CapellacommonPackage.Literals.STATE_TRANSITION__TRIGGERS);
     
-    // test Do Activity / Entry / Exit
+    // test Do Activity / Entry / Exit / Available functions
     EObject SF3 = getObject(id_SF3);
     EObject SF3t = mustBeTransitioned(id_SF3);
     mustBeLinkedTo(M111, SF3, CapellacommonPackage.Literals.STATE__DO_ACTIVITY);
     mustBeLinkedTo(M111, SF3, CapellacommonPackage.Literals.STATE__ENTRY);
     mustBeLinkedTo(M111, SF3, CapellacommonPackage.Literals.STATE__EXIT);
+    mustBeLinkedTo(M111, SF3, CapellacommonPackage.Literals.STATE__AVAILABLE_ABSTRACT_FUNCTIONS);
     mustNotBeLinkedTo(M111t, SF3, CapellacommonPackage.Literals.STATE__DO_ACTIVITY);
     mustNotBeLinkedTo(M111t, SF3, CapellacommonPackage.Literals.STATE__ENTRY);
     mustNotBeLinkedTo(M111t, SF3, CapellacommonPackage.Literals.STATE__EXIT);
+    mustNotBeLinkedTo(M111t, SF3, CapellacommonPackage.Literals.STATE__AVAILABLE_ABSTRACT_FUNCTIONS);
     mustBeLinkedTo(M111t, SF3t, CapellacommonPackage.Literals.STATE__DO_ACTIVITY);
     mustBeLinkedTo(M111t, SF3t, CapellacommonPackage.Literals.STATE__ENTRY);
     mustBeLinkedTo(M111t, SF3t, CapellacommonPackage.Literals.STATE__EXIT);
+    mustBeLinkedTo(M111t, SF3t, CapellacommonPackage.Literals.STATE__AVAILABLE_ABSTRACT_FUNCTIONS);
     
     EObject E3 = getObject(id_e3);
     mustBeLinkedTo(M111, E3, CapellacommonPackage.Literals.STATE__DO_ACTIVITY);

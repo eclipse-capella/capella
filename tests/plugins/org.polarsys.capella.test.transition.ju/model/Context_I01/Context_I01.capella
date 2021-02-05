@@ -4508,7 +4508,7 @@
                 id="cd2fba90-95dd-4f72-82ba-46ea3a041a47" name="FIP 1"/>
           </ownedFunctions>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
-              id="0f2bb4df-81bf-4472-aa7a-13c40d69cea9" name="SF3"/>
+              id="0f2bb4df-81bf-4472-aa7a-13c40d69cea9" name="SF3" availableInStates="#4e32329b-7f36-4710-8e3d-127a5355cb2e"/>
           <ownedFunctionRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionRealization"
               id="8ff9a4c4-a094-43d6-ae09-a710e9d60481" targetElement="#ca23d5ae-9582-4c06-be3d-fd94849309af"
               sourceElement="#117be734-c397-431f-8f85-d05801bfe0d3"/>
