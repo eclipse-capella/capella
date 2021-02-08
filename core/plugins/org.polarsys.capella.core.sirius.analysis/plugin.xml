@@ -26,6 +26,9 @@
       <styleConfigurationProvider
             providerClass="org.polarsys.capella.core.sirius.analysis.extension.style.PartComponentStyleConfiguration">
       </styleConfigurationProvider>
+      <styleConfigurationProvider
+            providerClass="org.polarsys.capella.core.sirius.analysis.extension.style.PhysicalLinkStyleConfiguration">
+      </styleConfigurationProvider>
    </extension>
    <extension
          point="org.eclipse.sirius.refreshExtensionProvider">

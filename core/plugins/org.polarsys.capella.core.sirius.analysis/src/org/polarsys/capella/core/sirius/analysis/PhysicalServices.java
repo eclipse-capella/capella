@@ -25,6 +25,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.emf.common.util.EList;
@@ -96,6 +97,7 @@ import org.polarsys.capella.core.model.helpers.PartExt;
 import org.polarsys.capella.core.model.helpers.PhysicalComponentExt;
 import org.polarsys.capella.core.model.helpers.PhysicalPathExt;
 import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
+import org.polarsys.capella.core.sirius.analysis.cache.DEdgeIconCache;
 import org.polarsys.capella.core.sirius.analysis.constants.MappingConstantsHelper;
 import org.polarsys.capella.core.sirius.analysis.preferences.DiagramProcessChainPathPreferencePage;
 import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
@@ -847,11 +849,39 @@ public class PhysicalServices {
         }
       }
     }
+    
+    customizePhysicalLinkEdgeLabels(coloredLinks, displayedPaths);
 
     // Reset physical links with no physical path
     for (DEdge aPL : displayedPhysicalLinks.values()) {
       if (!coloredLinks.containsKey(aPL)) {
         resetPhysicalLinkStyle(aPL);
+        resetPhysicalLinkEdgeLabels(aPL);
+      }
+    }
+  }
+
+  public void resetPhysicalLinkEdgeLabels(DEdge aPL) {
+    DEdgeIconCache.getInstance().removeIcon(aPL);
+    DiagramServices.getDiagramServices().refreshBeginEndLabels(aPL);
+  }
+
+  /**
+   * Add pie icons on the begin and the end labels of a Physical Link
+   * 
+   * @param coloredLinks
+   * @param displayedPaths
+   */
+  public void customizePhysicalLinkEdgeLabels(Map<DEdge, Set<PhysicalPath>> coloredLinks,
+      Map<PhysicalPath, DNode> displayedPaths) {
+    for (Map.Entry<DEdge, Set<PhysicalPath>> entry : coloredLinks.entrySet()) {
+      DEdge edge = entry.getKey();
+      Set<PhysicalPath> paths = entry.getValue();
+      List<RGBValues> pathColors = paths.stream().map(displayedPaths::get).map(ShapeUtil::getNodeColorStyle)
+          .collect(Collectors.toList());
+      if (pathColors.size() > 1) {
+        DEdgeIconCache.getInstance().setIcon(edge, pathColors);
+        DiagramServices.getDiagramServices().refreshBeginEndLabels(edge);
       }
     }
   }
