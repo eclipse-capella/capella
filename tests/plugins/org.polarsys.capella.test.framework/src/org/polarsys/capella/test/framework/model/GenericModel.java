@@ -22,6 +22,11 @@ public class GenericModel {
   public static String OBJECT_2 = "OBJECT 2";
   public static String OBJECT_3 = "OBJECT 3";
   public static String OBJECT_4 = "OBJECT 4";
+  
+  public static String ASSOCIATION_1 = "ASSOCIATION_1";
+  public static String ASSOCIATION_2 = "ASSOCIATION_2";
+  public static String ASSOCIATION_3 = "ASSOCIATION_3";
+  
   public static String PATH_1 = "PATH_1";
   public static String PATH_2 = "PATH_2";
 
@@ -289,6 +294,8 @@ public class GenericModel {
   public static String CL_6 = "CL_6";
 
   public static String PHYSICAL_LINK_1 = "PHYSICAL LINK 1";
+  public static String PHYSICAL_LINK_2 = "PHYSICAL LINK 2";
+  public static String PHYSICAL_LINK_3 = "PHYSICAL LINK 3";
   public static String NODE_COMPONENT_1 = "NODE COMPONENT 1";
   public static String DEPLOY_NODE_COMPONENT_1 = "DEPLOY NODE COMPONENT 2";
   public static String BEHAVIOR_PC_1 = "BEHAVIOR PC 1";

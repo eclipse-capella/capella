@@ -35,6 +35,8 @@ public class DnDTestSuite extends BasicTestSuite {
   @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<>();
+    tests.add(new DnDEMFConsistency());
+    tests.add(new DnDSemanticConsistency());
     tests.add(new DnDComponentAndPart());
     tests.add(new DnDMixedStatesModes());
     return tests;

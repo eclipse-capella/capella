@@ -22,17 +22,18 @@ import org.polarsys.capella.test.framework.helpers.GuiActions;
 import org.polarsys.capella.test.model.ju.model.MiscModel;
 
 public class DnDMixedStatesModes extends MiscModel {
-  private final String REGION_ID = "540670b4-1cd2-4dad-9c25-39e8da85ab89";
+  private final String REGION_WITH_MODE_ID = "540670b4-1cd2-4dad-9c25-39e8da85ab89";
   private final String STATE_ID = "6b01bdc1-096a-4cc2-9329-fe9b0ddd8bc5";
-  private final String STATE_MACHINE_ID = "199c547f-bbc4-4777-95dd-d394e2dd514b";
+  private final String STATE_MACHINE_WITH_STATE_ID = "199c547f-bbc4-4777-95dd-d394e2dd514b";
   
   @Override
   public void test() throws Exception {
     Session session = getSessionForTestModel(getRequiredTestModels().get(0));
     SessionContext context = new SessionContext(session);
-    EObject region = context.getSemanticElement(REGION_ID);
+    
+    EObject region = context.getSemanticElement(REGION_WITH_MODE_ID);
     EObject stateContainer = context.getSemanticElement(STATE_ID);
-    EObject stateMachineContainer = context.getSemanticElement(STATE_MACHINE_ID);
+    EObject stateMachineContainer = context.getSemanticElement(STATE_MACHINE_WITH_STATE_ID);
     
     context.setPreference(IModeAndStateManagementPreferences.PREFS_MIXED_MODE_STATE_ALLOWED, false);
     assertFalse(GuiActions.canDnD(stateContainer, Arrays.asList(region)));
