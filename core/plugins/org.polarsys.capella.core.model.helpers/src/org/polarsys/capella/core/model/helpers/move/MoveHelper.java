@@ -14,6 +14,8 @@
 package org.polarsys.capella.core.model.helpers.move;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -23,12 +25,15 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.data.capellacommon.AbstractCapabilityPkg;
 import org.polarsys.capella.core.data.capellacommon.AbstractState;
@@ -79,6 +84,7 @@ import org.polarsys.capella.core.model.helpers.PartExt;
 import org.polarsys.capella.core.model.helpers.StateExt;
 import org.polarsys.capella.core.model.helpers.StateMachineExt;
 import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
+import org.polarsys.kitalpha.emde.model.edit.provider.ExtensibleElementItemProvider;
 
 /**
  * This class checks if a list of elements can be moved into the target element
@@ -171,16 +177,16 @@ public class MoveHelper {
 
           } else {
             isOK = canMoveModeState((State) source, (Region) target);
-          }   
-        
+          }
+
         } else if (source instanceof Region) {
           if (target instanceof AbstractState) {
             isOK = canMoveRegion((Region) source, (AbstractState) target);
-            
+
           } else if (target instanceof StateMachine) {
             isOK = canMoveRegion((Region) source, (StateMachine) target);
           }
-          
+
         } else if (source instanceof LiteralBooleanValue) {
           isOK = target instanceof BooleanType;
 
@@ -304,8 +310,8 @@ public class MoveHelper {
 
     // 2. For every dropped object there must be a reference that will contain the dropped object
     if (result.isOK()) {
-      EList<EReference> allReferences = targetElement.eClass().getEAllContainments();
-      if (!checkCompatibility(selectedModelElements, allReferences, targetElement)) {
+      Collection<? extends EStructuralFeature> childFeatures = getChildrenFeatures(targetElement);
+      if (!checkCompatibility(selectedModelElements, childFeatures, targetElement)) {
         result = Status.CANCEL_STATUS;
       }
     }
@@ -314,9 +320,31 @@ public class MoveHelper {
   }
 
   /**
-   * Checks the compatibility between all specified references and all specified model elements.
+   * Returns all features that might contain children objects.
+   * 
+   * If the object has an org.polarsys.kitalpha.emde.model.edit.provider.ExtensibleElementItemProvider it returns
+   * org.eclipse.emf.edit.provider.ItemProviderAdapter.getChildrenFeatures as this method is public.
+   * 
+   * Otherwise, it returns eClass().getEAllContainments
+   * 
+   * @see org.eclipse.emf.edit.provider.ItemProviderAdapter.getChildrenFeatures
    */
-  protected boolean checkCompatibility(List<EObject> modelElements, EList<EReference> references, EObject target) {
+  private Collection<? extends EStructuralFeature> getChildrenFeatures(EObject targetElement) {
+    Collection<? extends EStructuralFeature> childFeatures = targetElement.eClass().getEAllContainments();
+    ItemProviderAdapter provider = EObjectLabelProviderHelper.getItemProvider(targetElement);
+
+    if (provider instanceof ExtensibleElementItemProvider) {
+      childFeatures = ((ExtensibleElementItemProvider) provider).getChildrenFeatures(targetElement);
+    }
+
+    return childFeatures;
+  }
+
+  /**
+   * Checks the compatibility between all specified childrenFeatures and all specified model elements.
+   */
+  protected boolean checkCompatibility(List<EObject> modelElements,
+      Collection<? extends EStructuralFeature> childrenFeatures, EObject target) {
     boolean areCompatible = true;
 
     Iterator<EObject> elementsIterator = modelElements.iterator();
@@ -324,30 +352,35 @@ public class MoveHelper {
       EObject modelElement = elementsIterator.next();
 
       boolean isElementCompatible = false;
-      Iterator<EReference> referencesIterator = references.iterator();
-      while (referencesIterator.hasNext() && !isElementCompatible) {
-        EReference reference = referencesIterator.next();
-        if (reference.getEType().isInstance(modelElement) && (reference != modelElement)) {
-          Integer upperBound = reference.getUpperBound();
+      Iterator<? extends EStructuralFeature> it = childrenFeatures.iterator();
+      while (it.hasNext() && !isElementCompatible) {
+        EStructuralFeature childrenFeature = it.next();
+
+        if (childrenFeature.getEType() != null && childrenFeature.getEType().isInstance(modelElement)
+            && (childrenFeature != modelElement)) {
+          Integer upperBound = childrenFeature.getUpperBound();
           if (upperBound == -1
-              || (upperBound == 1 && target.eGet(reference) == null) && modelElements.size() <= upperBound) {
+              || (upperBound == 1 && target.eGet(childrenFeature) == null) && modelElements.size() <= upperBound) {
             isElementCompatible = true;
+
           } else if (upperBound > 1) {
             @SuppressWarnings("unchecked")
-            EObjectContainmentEList<EObject> contList = (EObjectContainmentEList<EObject>) target.eGet(reference);
+            EObjectContainmentEList<EObject> contList = (EObjectContainmentEList<EObject>) target.eGet(childrenFeature);
             if (contList.size() < upperBound) {
               isElementCompatible = true;
             }
           }
+
         }
       }
       areCompatible &= isElementCompatible;
     }
     return areCompatible;
   }
-
+  
   /**
    * Depending on mixed hierarchy mode state preference, determine if we can move a region into a State Machine
+   * 
    * @param sourceRegion
    *          The region to be moved
    * @param stateMachine
@@ -366,7 +399,6 @@ public class MoveHelper {
     }
     return true;
   }
-
 
   /**
    * Depending on mixed hierarchy mode state preference, determine if we can move a region into a State

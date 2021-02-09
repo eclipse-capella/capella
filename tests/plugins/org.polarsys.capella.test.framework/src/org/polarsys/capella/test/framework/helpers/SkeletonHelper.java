@@ -23,12 +23,14 @@ import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
+import org.polarsys.capella.core.data.cs.Block;
+import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Part;
+import org.polarsys.capella.core.data.ctx.CapabilityPkg;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
-import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.ctx.SystemComponentPkg;
 import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.data.ctx.SystemFunctionPkg;
@@ -45,6 +47,7 @@ import org.polarsys.capella.core.data.interaction.InstanceRole;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.interaction.MessageEnd;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
+import org.polarsys.capella.core.data.la.CapabilityRealizationPkg;
 import org.polarsys.capella.core.data.la.LaPackage;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalComponent;
@@ -56,6 +59,7 @@ import org.polarsys.capella.core.data.oa.OaPackage;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.oa.OperationalActivityPkg;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
+import org.polarsys.capella.core.data.oa.OperationalCapabilityPkg;
 import org.polarsys.capella.core.data.pa.PaPackage;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
@@ -91,6 +95,38 @@ public class SkeletonHelper {
       createObject(elementId, containerId, FaPackage.Literals.ABSTRACT_FUNCTIONAL_ARCHITECTURE__OWNED_FUNCTION_PKG,
           PaPackage.Literals.PHYSICAL_FUNCTION_PKG, NamingConstants.CreatePhysicalArchCmd_physicalFunctions_pkg_name,
           context);
+
+    } else if (container instanceof OperationalActivity) {
+      createObject(elementId, containerId, OaPackage.Literals.OPERATIONAL_ACTIVITY__OWNED_OPERATIONAL_ACTIVITY_PKGS,
+          OaPackage.Literals.OPERATIONAL_ACTIVITY_PKG, elementId, context);
+
+    } else if (container instanceof SystemFunction) {
+      createObject(elementId, containerId, CtxPackage.Literals.SYSTEM_FUNCTION__OWNED_SYSTEM_FUNCTION_PKGS,
+          CtxPackage.Literals.SYSTEM_FUNCTION_PKG, elementId, context);
+
+    } else if (container instanceof LogicalFunction) {
+      createObject(elementId, containerId, LaPackage.Literals.LOGICAL_FUNCTION__OWNED_LOGICAL_FUNCTION_PKGS,
+          LaPackage.Literals.LOGICAL_FUNCTION_PKG, elementId, context);
+
+    } else if (container instanceof PhysicalFunction) {
+      createObject(elementId, containerId, PaPackage.Literals.PHYSICAL_FUNCTION__OWNED_PHYSICAL_FUNCTION_PKGS,
+          PaPackage.Literals.PHYSICAL_FUNCTION_PKG, elementId, context);
+
+    } else if (container instanceof OperationalActivityPkg) {
+      createObject(elementId, containerId, OaPackage.Literals.OPERATIONAL_ACTIVITY_PKG__OWNED_OPERATIONAL_ACTIVITIES,
+          OaPackage.Literals.OPERATIONAL_ACTIVITY_PKG, elementId, context);
+
+    } else if (container instanceof SystemFunctionPkg) {
+      createObject(elementId, containerId, CtxPackage.Literals.SYSTEM_FUNCTION_PKG__OWNED_SYSTEM_FUNCTIONS,
+          CtxPackage.Literals.SYSTEM_FUNCTION_PKG, elementId, context);
+
+    } else if (container instanceof LogicalFunctionPkg) {
+      createObject(elementId, containerId, LaPackage.Literals.LOGICAL_FUNCTION_PKG__OWNED_LOGICAL_FUNCTIONS,
+          LaPackage.Literals.LOGICAL_FUNCTION_PKG, elementId, context);
+
+    } else if (container instanceof PhysicalFunctionPkg) {
+      createObject(elementId, containerId, PaPackage.Literals.PHYSICAL_FUNCTION_PKG__OWNED_PHYSICAL_FUNCTIONS,
+          PaPackage.Literals.PHYSICAL_FUNCTION_PKG, elementId, context);
     }
 
   }
@@ -137,7 +173,7 @@ public class SkeletonHelper {
     } else if (container instanceof PhysicalFunctionPkg) {
       createObject(elementId, containerId, PaPackage.Literals.PHYSICAL_FUNCTION_PKG__OWNED_PHYSICAL_FUNCTIONS,
           PaPackage.Literals.PHYSICAL_FUNCTION, elementId, context);
-      
+
     } else if (container instanceof OperationalActivity) {
       createObject(elementId, containerId, FaPackage.Literals.ABSTRACT_FUNCTION__OWNED_FUNCTIONS,
           OaPackage.Literals.OPERATIONAL_ACTIVITY, elementId, context);
@@ -178,6 +214,21 @@ public class SkeletonHelper {
       createObject(elementId, containerId, CsPackage.Literals.BLOCK_ARCHITECTURE__OWNED_ABSTRACT_CAPABILITY_PKG,
           LaPackage.Literals.CAPABILITY_REALIZATION_PKG,
           NamingConstants.CreateCommonCmd_capability_realisation_pkg_name, context);
+
+    } else if (container instanceof OperationalCapabilityPkg) {
+      createObject(elementId, containerId,
+          OaPackage.Literals.OPERATIONAL_CAPABILITY_PKG__OWNED_OPERATIONAL_CAPABILITY_PKGS,
+          OaPackage.Literals.OPERATIONAL_CAPABILITY_PKG, elementId, context);
+
+    } else if (container instanceof CapabilityPkg) {
+      createObject(elementId, containerId, CtxPackage.Literals.CAPABILITY_PKG__OWNED_CAPABILITY_PKGS,
+          CtxPackage.Literals.CAPABILITY_PKG, elementId, context);
+
+    } else if (container instanceof CapabilityRealizationPkg) {
+      createObject(elementId, containerId,
+          LaPackage.Literals.CAPABILITY_REALIZATION_PKG__OWNED_CAPABILITY_REALIZATION_PKGS,
+          LaPackage.Literals.CAPABILITY_REALIZATION_PKG, elementId, context);
+
     }
   }
 
@@ -235,9 +286,26 @@ public class SkeletonHelper {
         InformationPackage.Literals.DATA_PKG, NamingConstants.CreateCommonCmd_data_pkg_name, context);
   }
 
+  public static void createAssociation(String containerId, String elementId, SessionContext context) {
+    createObject(elementId, containerId, InformationPackage.Literals.ASSOCIATION_PKG__OWNED_ASSOCIATIONS,
+        InformationPackage.Literals.ASSOCIATION, elementId, context);
+  }
+
+  public static void createAssociationProperty(String containerId, String elementId, SessionContext context) {
+    createObject(elementId, containerId, InformationPackage.Literals.ASSOCIATION__OWNED_MEMBERS,
+        InformationPackage.Literals.PROPERTY, elementId, context);
+  }
+
   public static void createInterfacePkg(String containerId, String elementId, SessionContext context) {
-    createObject(elementId, containerId, CsPackage.Literals.BLOCK_ARCHITECTURE__OWNED_INTERFACE_PKG,
-        CsPackage.Literals.INTERFACE_PKG, NamingConstants.CreateCommonCmd_interfaces_pkg_name, context);
+    EObject container = context.getSemanticElement(containerId);
+    if (container instanceof Block) {
+      createObject(elementId, containerId, CsPackage.Literals.BLOCK__OWNED_INTERFACE_PKG,
+          CsPackage.Literals.INTERFACE_PKG, elementId, context);
+
+    } else if (container instanceof BlockArchitecture) {
+      createObject(elementId, containerId, CsPackage.Literals.BLOCK_ARCHITECTURE__OWNED_INTERFACE_PKG,
+          CsPackage.Literals.INTERFACE_PKG, elementId, context);
+    }
   }
 
   public static <T> T createObject(final String id, final String containerId, final EStructuralFeature feature,
@@ -418,8 +486,23 @@ public class SkeletonHelper {
   }
 
   public static void createCapability(String containerId, String elementId, SessionContext context) {
-    createObject(elementId, containerId, CtxPackage.Literals.CAPABILITY_PKG__OWNED_CAPABILITIES,
-        CtxPackage.Literals.CAPABILITY, elementId, context);
+    EObject container = context.getSemanticElement(containerId);
+
+    if (container instanceof OperationalCapabilityPkg) {
+      createObject(elementId, containerId,
+          OaPackage.Literals.OPERATIONAL_CAPABILITY_PKG__OWNED_OPERATIONAL_CAPABILITIES,
+          OaPackage.Literals.OPERATIONAL_CAPABILITY, elementId, context);
+
+    } else if (container instanceof CapabilityPkg) {
+      createObject(elementId, containerId, CtxPackage.Literals.CAPABILITY_PKG__OWNED_CAPABILITIES,
+          CtxPackage.Literals.CAPABILITY, elementId, context);
+
+    } else if (container instanceof CapabilityRealizationPkg) {
+      createObject(elementId, containerId, LaPackage.Literals.CAPABILITY_REALIZATION_PKG__OWNED_CAPABILITY_REALIZATIONS,
+          LaPackage.Literals.CAPABILITY_REALIZATION, elementId, context);
+
+    }
+
   }
 
   public static void createScenario(String containerId, String elementId, SessionContext context) {
@@ -455,7 +538,8 @@ public class SkeletonHelper {
 
   public static void createActor(final String containerId, final String elementId, String partId,
       final SessionContext context) {
-    BlockArchitectureExt.Type type = BlockArchitectureExt.getBlockArchitectureType(BlockArchitectureExt.getRootBlockArchitecture(context.getSemanticElement(containerId)));
+    BlockArchitectureExt.Type type = BlockArchitectureExt.getBlockArchitectureType(
+        BlockArchitectureExt.getRootBlockArchitecture(context.getSemanticElement(containerId)));
     createComponent(containerId, elementId, partId, context, type, true);
   }
 

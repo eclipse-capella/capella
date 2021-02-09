@@ -18,7 +18,9 @@ import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.CsPackage;
 
 /**
- *
+ * Used in REC/RPL and Transfer View.
+ * 
+ * Unlike MoveHelper used in DragAndDrop, we allow move of elements between different resources
  */
 public class CapellaMoveHelper extends MoveHelper {
   /**
