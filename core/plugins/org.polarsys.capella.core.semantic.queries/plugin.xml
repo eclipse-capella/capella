@@ -3133,6 +3133,38 @@
                   </basicQuery>
                </categoryQuery>
             </category>
+	      <category
+	            id="org.polarsys.capella.core.semantic.queries.basic.queries.StateTransitionRealizedStateTransition"
+	            isTopLevel="true"
+	            name="Realized State Transition">
+	         <availableForType
+	               class="org.polarsys.capella.core.data.capellacommon.StateTransition">
+	         </availableForType>
+	         <targetBrowserId
+	               id="ReferencedElementBrowser">
+	         </targetBrowserId>
+	         <categoryQuery>
+	            <basicQuery
+	                  class="org.polarsys.capella.core.semantic.queries.basic.queries.StateTransition_RealizedStateTransition">
+	            </basicQuery>
+	         </categoryQuery>
+	      </category>
+	      <category
+	            id="org.polarsys.capella.core.semantic.queries.basic.queries.StateTransitionRealizingStateTransition"
+	            isTopLevel="true"
+	            name="Realizing State Transition">
+	         <availableForType
+	               class="org.polarsys.capella.core.data.capellacommon.StateTransition">
+	         </availableForType>
+	         <targetBrowserId
+	               id="ReferencingElementBrowser">
+	         </targetBrowserId>
+	         <categoryQuery>
+	            <basicQuery
+	                  class="org.polarsys.capella.core.semantic.queries.basic.queries.StateTransition_RealizingStateTransition">
+	            </basicQuery>
+	         </categoryQuery>
+	      </category>
             <category
                   id="------------ IState ---------------"
                   isTopLevel="false">

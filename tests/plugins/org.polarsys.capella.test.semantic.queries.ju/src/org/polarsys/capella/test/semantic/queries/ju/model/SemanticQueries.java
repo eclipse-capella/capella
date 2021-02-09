@@ -299,7 +299,8 @@ public abstract class SemanticQueries extends AbstractSemanticQueryTestCase {
   public static final String BOOLEAN_REF_1 = "3fe8b5d4-5dc9-45a0-a319-fcc709cf5d03"; //$NON-NLS-1$
   public static final String BOOLEAN_REF1_PROPERTY = "4ff8c716-cf61-4448-b286-3c7c0c0eafee"; //$NON-NLS-1$
   public static final String ROLE_3 = "Ia32606de-335a-4794-b28f-40bed6da4c26"; //$NON-NLS-1$
-   
+  public static final String LA_MODE_1_TO_MODE_2 = "eb7ef4a7-f6ee-42d2-92b0-61150539561f"; //$NON-NLS-1$
+  public static final String PA_MODE_1_TO_MODE_2 = "e6aaca4d-5132-4223-9dd8-74499479397b"; //$NON-NLS-1$
   
   @Override
   public List<String> getRequiredTestModels() {
