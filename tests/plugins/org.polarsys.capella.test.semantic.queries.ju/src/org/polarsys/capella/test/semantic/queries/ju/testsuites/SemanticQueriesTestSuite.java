@@ -80,6 +80,8 @@ import org.polarsys.capella.test.semantic.queries.ju.testcases.SequenceMessageFu
 import org.polarsys.capella.test.semantic.queries.ju.testcases.SequenceMessageFunctionTarget;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.SequenceMessagePartSource;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.SequenceMessagePartTarget;
+import org.polarsys.capella.test.semantic.queries.ju.testcases.StateTransition_realizedStateTransition;
+import org.polarsys.capella.test.semantic.queries.ju.testcases.StateTransition_realizingStateTransition;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.State_OwnedEntryExitPointsTest;
 
 import junit.framework.Test;
@@ -152,7 +154,9 @@ public class SemanticQueriesTestSuite extends BasicTestSuite {
     tests.add(new AbstractStateParentActiveElements());
     tests.add(new ComponentRepresentingParts());
     tests.add(new DataValueRefReferencedProperty());
-
+    tests.add(new StateTransition_realizedStateTransition());
+    tests.add(new StateTransition_realizingStateTransition());
+    
     return tests;
   }
 
