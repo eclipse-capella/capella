@@ -117,7 +117,7 @@ import com.google.common.collect.Lists;
 public class DiagramServices {
   private static DiagramServices singleton = null;
   public static final int OVERLLAPING_LABEL_MAX_LENGTH = 30;
-  
+
   public static DiagramServices getDiagramServices() {
     if (singleton == null) {
       singleton = new DiagramServices();
@@ -459,8 +459,8 @@ public class DiagramServices {
     return (DNode) elementSync.createNewNode(getMappingManager((DSemanticDiagram) diag), nodeCandidate, true);
   }
 
-  public AbstractDNode createDNodeListElement(AbstractNodeMapping mapping, EObject modelElement, DragAndDropTarget container,
-      DDiagram diagram) {
+  public AbstractDNode createDNodeListElement(AbstractNodeMapping mapping, EObject modelElement,
+      DragAndDropTarget container, DDiagram diagram) {
     final DDiagram diag = diagram;
 
     ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(modelElement);
@@ -1477,6 +1477,45 @@ public class DiagramServices {
   }
 
   /**
+   * Return the internal link of the given mapping between given two ports.
+   * 
+   * (It returns the same internal link between 2 ports regardless of orientation of both ports)
+   */
+  public DEdge findInternalLinkEdge(DDiagram pDiagram, EdgeTarget firstPort, EdgeTarget secondPort,
+      EdgeMapping mapping) {
+    // As there might have several internal links between two ports (prior 5.1.x),
+    // we need to ensure that we look always in the same order the ports looking for an internal link.
+    // This 'if' might be removed when we are sure there is at most one internal link between two ports.
+
+    // We can also use diagram.getAllEdges(mapping) looking for the correct one, but with poorer 
+    // performances than a small comparison then outgoing/incoming edges
+    if (firstPort.getUid().compareTo(secondPort.getUid()) < 0) {
+      EdgeTarget tmp = secondPort;
+      secondPort = firstPort;
+      firstPort = tmp;
+    }
+
+    // Looking for an link directly oriented
+    for (DEdge anEdge : firstPort.getOutgoingEdges()) {
+      if (anEdge.getTarget() != null && anEdge.getTargetNode().equals(secondPort)) {
+        if (mapping.equals(anEdge.getActualMapping())) {
+          return anEdge;
+        }
+      }
+    }
+
+    // Looking for an link in the other orientation
+    for (DEdge anEdge : firstPort.getIncomingEdges()) {
+      if (anEdge.getTarget() != null && anEdge.getSourceNode().equals(secondPort)) {
+        if (mapping.equals(anEdge.getActualMapping())) {
+          return anEdge;
+        }
+      }
+    }
+    return null;
+  }
+
+  /**
    * @param pDiagram
    * @param sourceNode
    * @param targetNode
@@ -1484,6 +1523,7 @@ public class DiagramServices {
    * @param mapping
    * @return
    */
+  @Deprecated
   public DEdge findDEdgeElement(DDiagram pDiagram, EdgeTarget sourceNode, EdgeTarget targetNode, EObject semanticObject,
       EdgeMapping mapping) {
     for (DEdge anEdge : DDiagramSpecOperations.getEdgesFromMapping(pDiagram, mapping)) {
@@ -1867,7 +1907,7 @@ public class DiagramServices {
       CapellaServices.getService().forceRefresh((DDiagram) representation);
     }
   }
-  
+
   /**
    * Returns the GraphicalEditPart of the given DDiagramElement
    * 
@@ -1890,9 +1930,9 @@ public class DiagramServices {
     }
     return null;
   }
-  
+
   /**
-   * Refresh the begin EditPart and end EditPart of a DEdge 
+   * Refresh the begin EditPart and end EditPart of a DEdge
    */
   @SuppressWarnings("unchecked")
   public void refreshBeginEndLabels(DEdge edge) {
@@ -1900,11 +1940,11 @@ public class DiagramServices {
     // Refresh BeginNameEditPart and EndNameEditPart
     if (edgeEditPart != null) {
       edgeEditPart.getChildren().stream()
-      .filter(child -> child instanceof DEdgeBeginNameEditPart || child instanceof DEdgeEndNameEditPart)
-      .forEach(editPart -> ((EditPart) editPart).refresh());
+          .filter(child -> child instanceof DEdgeBeginNameEditPart || child instanceof DEdgeEndNameEditPart)
+          .forEach(editPart -> ((EditPart) editPart).refresh());
     }
   }
-  
+
   /**
    * 
    * @return the currently opening diagram
@@ -1927,10 +1967,7 @@ public class DiagramServices {
   }
 
   public String getOverlappedLabels(List<String> names) {
-    return names.stream().sorted()
-        .map(name -> StringUtils.abbreviate(name, OVERLLAPING_LABEL_MAX_LENGTH))
-        .map(name -> StringUtils.rightPad(name, OVERLLAPING_LABEL_MAX_LENGTH))
-        .collect(Collectors.joining("\n"));
+    return names.stream().sorted().map(name -> StringUtils.abbreviate(name, OVERLLAPING_LABEL_MAX_LENGTH))
+        .map(name -> StringUtils.rightPad(name, OVERLLAPING_LABEL_MAX_LENGTH)).collect(Collectors.joining("\n"));
   }
-
 }

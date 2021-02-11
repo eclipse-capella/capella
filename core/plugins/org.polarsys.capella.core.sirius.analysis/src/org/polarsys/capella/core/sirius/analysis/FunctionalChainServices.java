@@ -61,7 +61,6 @@ import org.polarsys.capella.core.commands.preferences.service.ScopedCapellaPrefe
 import org.polarsys.capella.core.commands.preferences.util.PreferencesHelper;
 import org.polarsys.capella.core.data.capellacore.InvolvedElement;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
-import org.polarsys.capella.core.data.cs.PhysicalPath;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalChainContainer;
 import org.polarsys.capella.core.data.fa.ControlNode;
@@ -241,6 +240,8 @@ public class FunctionalChainServices {
     HashMapSet<DSemanticDecorator, RGBValues> colors = new HashMapSet<>();
     Map<DEdge, Set<FunctionalChain>> coloredLinks = new HashMap<>();
 
+    Collection<DEdge> internalLinks = new ArrayList<DEdge>();
+
     for (Entry<FunctionalChain, DNode> entry : functionalChains.entrySet()) {
       FunctionalChain chain = entry.getKey();
       DNode chainView = entry.getValue();
@@ -296,11 +297,22 @@ public class FunctionalChainServices {
           if (sourceNode != null && targetNode != null) {
             DEdge link = createInternalLink((EdgeTarget) sourceNode, (EdgeTarget) targetNode, chain);
             if (link != null) {
-              customizeFunctionalChainEdgeStyle(link, color);
+              internalLinks.add(link);
             }
           }
         }
       }
+    }
+
+    for (DEdge link : internalLinks) {
+      ArrayList<RGBValues> chainColors = new ArrayList<RGBValues>();
+      for (EObject fc : link.getSemanticElements()) {
+        if (functionalChains.containsKey(fc)) {
+          RGBValues color = ShapeUtil.getNodeColorStyle(functionalChains.get(fc));
+          chainColors.add(color);
+        }
+      }
+      customizeFunctionalChainEdgeStyle(link, chainColors.size() == 1 ? chainColors.get(0) : ShapeUtil.getBlackColor());
     }
 
     // Browse all nodes/containers looking for functions
@@ -316,7 +328,7 @@ public class FunctionalChainServices {
     }
 
     customizeFunctionalExchangeEdgeLabels(coloredLinks, functionalChains);
-    
+
     // Update all functional exchanges and sequence links
     for (DEdge view : diagram.getEdges()) {
       EObject target = view.getTarget();
@@ -357,7 +369,7 @@ public class FunctionalChainServices {
       CapellaServices.getService().refreshElement(edge);
     }
   }
-  
+
   public void resetFunctionalExchangeEdgeLabels(DEdge edge) {
     DEdgeIconCache.getInstance().removeIcon(edge);
     DEdgeIconCache.getInstance().setLabel(edge, ICommonConstants.EMPTY_STRING);
@@ -391,6 +403,11 @@ public class FunctionalChainServices {
     return functionalChains;
   }
 
+  public Collection<EObject> getFCInternalLinkSemanticElements(DEdge view) {
+    Collection<FunctionalChain> displayedChains = getDisplayedFunctionalChainsOnDiagram(view.getParentDiagram());
+    return view.getSemanticElements().stream().filter(x -> displayedChains.contains(x)).collect(Collectors.toList());
+  }
+  
   /**
    * returns whether an internal link can be created between given both bordered nodes
    * 
@@ -430,8 +447,16 @@ public class FunctionalChainServices {
     InvolvementGraph g = FunctionalChainCache.getInstance().getInvolvementGraph(chain);
     InternalLinksGraph g2 = FunctionalChainCache.getInstance().getInternalLinksGraph(g);
 
-    return g2.hasInternalLink(((DDiagramElement) currentSourceNode).getTarget(),
-        ((DDiagramElement) currentTargetNode).getTarget());
+    if (!g2.hasInternalLink(((DDiagramElement) currentSourceNode).getTarget(),
+        ((DDiagramElement) currentTargetNode).getTarget())) {
+      return false;
+    }
+
+    DDiagram diagram = ((DDiagramElement) currentSourceNode).getParentDiagram();
+    DEdge anotherEdge = DiagramServices.getDiagramServices().findInternalLinkEdge(diagram, currentSourceNode,
+        currentTargetNode, getInternLinkEdgeMapping(diagram));
+    boolean hasAnotherEdge = anotherEdge != null && !(chain.equals(anotherEdge.getTarget()));
+    return !hasAnotherEdge;
   }
 
   private boolean hasVisibleEdge(EList<DEdge> edges) {
@@ -486,18 +511,17 @@ public class FunctionalChainServices {
    */
   public DEdge createInternalLink(EdgeTarget sourceNode, EdgeTarget targetNode, FunctionalChain fc) {
     // Before creating, check if the internal link is possible to display, depending on conditions of their 2 ports.
-    if (isValidInternalLinkEdge(fc, sourceNode, targetNode)) {
-      DDiagram diagram = CapellaServices.getService().getDiagramContainer(sourceNode);
-      EdgeMapping mapping = getInternLinkEdgeMapping(diagram);
-      DEdge newEdge = DiagramServices.getDiagramServices().findDEdgeElement(diagram, sourceNode, targetNode, fc,
-          mapping);
-      if (newEdge == null) {
-        DiagramServices.getDiagramServices().createEdge(mapping, sourceNode, targetNode, fc);
-        newEdge = DiagramServices.getDiagramServices().findDEdgeElement(diagram, sourceNode, targetNode, fc, mapping);
-      }
-      return newEdge;
+    DDiagram diagram = CapellaServices.getService().getDiagramContainer(sourceNode);
+    EdgeMapping mapping = getInternLinkEdgeMapping(diagram);
+    DEdge newEdge = DiagramServices.getDiagramServices().findInternalLinkEdge(diagram, sourceNode, targetNode, mapping);
+    if (newEdge == null && isValidInternalLinkEdge(fc, sourceNode, targetNode)) {
+      DiagramServices.getDiagramServices().createEdge(mapping, sourceNode, targetNode, fc);
+      newEdge = DiagramServices.getDiagramServices().findInternalLinkEdge(diagram, sourceNode, targetNode, mapping);
     }
-    return null;
+    if (newEdge != null && !newEdge.getSemanticElements().contains(fc)) {
+      newEdge.getSemanticElements().add(fc);
+    }
+    return newEdge;
   }
 
   public EdgeMapping getInternLinkEdgeMapping(DDiagram diagram) {
@@ -514,15 +538,17 @@ public class FunctionalChainServices {
       EdgeStyle edgeStyle = aEdge.getOwnedStyle();
       Integer currentSize = edgeStyle.getSize();
 
-      // reset style & color : if current size is the default size of Functional Chain applied by FunctionalChains (e.g. as custom feature)
-      if ((null != currentSize) && currentSize.equals(THICK_EDGE_FUNCTIONAL_CHAIN) && ShapeUtil.isCustomisation(edgeStyle, DiagramPackage.Literals.EDGE_STYLE__SIZE)) {
-        
+      // reset style & color : if current size is the default size of Functional Chain applied by FunctionalChains (e.g.
+      // as custom feature)
+      if ((null != currentSize) && currentSize.equals(THICK_EDGE_FUNCTIONAL_CHAIN)
+          && ShapeUtil.isCustomisation(edgeStyle, DiagramPackage.Literals.EDGE_STYLE__SIZE)) {
+
         // get default style size of an edge
         EdgeStyleDescription desc = (EdgeStyleDescription) getMappingHelper(aEdge).getBestStyleDescription(mapping,
             aEdge.getTarget(), aEdge, aEdge.eContainer(), CapellaServices.getService().getDiagramContainer(aEdge));
         String defaultStyleSize = desc.getSizeComputationExpression();
         if (defaultStyleSize != null) {
-          
+
           if (ShapeUtil.resetEdgeThickStyle(aEdge, Integer.valueOf(defaultStyleSize))) {
             ShapeUtil.resetEdgeColorStyle(aEdge, ShapeUtil.getDefaultColor(aEdge, desc, desc.getStrokeColor()));
           }
