@@ -304,7 +304,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Operational Activity Interaction Blank" label="%oa.oaib" titleExpression="aql:'[OAIB] ' + self.name" domainClass="AbstractFunctionalChainContainer" preconditionExpression="aql:self.oclIsKindOf(oa::OperationalActivity) or self.oclIsKindOf(oa::OperationalCapability)">
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Operational Activity Interaction Blank" label="%oa.oaib" titleExpression="aql:'[OAIB] ' + self.name" domainClass="AbstractFunctionalChainContainer" preconditionExpression="aql:self.oclIsKindOf(oa::OperationalActivity) or self.oclIsKindOf(oa::OperationalCapability)" defaultConcern="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@concerns/@ownedConcernDescriptions.0">
       <dropDescriptions href="#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD%20DF%20AbstractFunction']"/>
       <dropDescriptions href="#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20OperationalActivity%20From%20Project%20Explorer']"/>
       <dropDescriptions href="#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']"/>
@@ -379,6 +379,11 @@
           <mappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']"/>
         </filters>
       </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.overlappedfunctional.chains.icon.filter" label="%hide.overlappedoperational.processes.icon.filter"/>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.overlappedfunctional.chains.label.filter" label="%hide.overlappedoperational.processes.label.filter"/>
+      <concerns>
+        <ownedConcernDescriptions name="oaib.defaut" filters="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@filters[name='hide.overlappedfunctional.chains.label.filter']"/>
+      </concerns>
       <defaultLayer name="default layer">
         <nodeMappings name="OAIB_OperationalProcessEnd" detailDescriptions="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Process%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Operational%20Process%20Description']" deletionDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" semanticCandidatesExpression="" createElements="false" semanticElements="" domainClass="OperationalProcess">
           <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="aql:self.getFunctionalChainLabel(diagram)" sizeComputationExpression="1" resizeKind="NSEW" width="2" height="2">
@@ -391,9 +396,15 @@
         <edgeMappings name="OAIB Interaction" preconditionExpression="aql:self.getInteractionSourceInDiagram(diagram) != self.getInteractionTargetInDiagram(diagram)" deletionDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" semanticCandidatesExpression="service:diagram.getDFFunctionalExchangeSemanticCandidates" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@containerMappings[name='OAIB%20Operational%20Activity']" targetMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@containerMappings[name='OAIB%20Operational%20Activity']" targetFinderExpression="service:getInteractionTargetInDiagram(diagram)" sourceFinderExpression="service:getInteractionSourceInDiagram(diagram)" domainClass="FunctionalExchange" useDomainElement="true" reconnections="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='OAIB%20Reconnect%20Exchanges']">
           <style>
             <strokeColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Border_Orange']"/>
+            <beginLabelStyleDescription labelExpression="aql:self.getOverlappedFunctionalChainsLabel(view, diagram)">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </beginLabelStyleDescription>
             <centerLabelStyleDescription labelExpression="aql:self.getFunctionalExchangeLabel(diagram)">
               <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Border_Orange']"/>
             </centerLabelStyleDescription>
+            <endLabelStyleDescription labelExpression="aql:self.getOverlappedFunctionalChainsLabel(view, diagram)">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </endLabelStyleDescription>
           </style>
         </edgeMappings>
         <containerMappings name="OAIB Operational Activity" deletionDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" semanticCandidatesExpression="" createElements="false" semanticElements="" domainClass="OperationalActivity" dropDescriptions="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD%20DF%20AbstractFunction'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20OperationalActivity%20From%20Project%20Explorer']" reusedContainerMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@containerMappings[name='OAIB%20Operational%20Activity']">
@@ -752,6 +763,20 @@
           <reusedTools xsi:type="tool_1:ToolGroup" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='TitleBlock']"/>
           <reusedTools xsi:type="tool:ToolDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='title.blocks']"/>
         </toolSections>
+        <customization>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="aql:not self.isHideOverlappedFunctionalChainsLabelEnable(diagram)">
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@edgeMappings[name='OAIB%20Interaction']/@style/@beginLabelStyleDescription" referenceName="labelColor">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </featureCustomizations>
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@edgeMappings[name='OAIB%20Interaction']/@style/@endLabelStyleDescription" referenceName="labelColor">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </featureCustomizations>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="aql:self.isHideOverlappedFunctionalChainsIconEnable(diagram)">
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@edgeMappings[name='OAIB%20Interaction']/@style/@beginLabelStyleDescription" attributeName="showIcon" value="false"/>
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@edgeMappings[name='OAIB%20Interaction']/@style/@endLabelStyleDescription" attributeName="showIcon" value="false"/>
+          </vsmElementCustomizations>
+        </customization>
       </defaultLayer>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Operational Entity Blank" label="%oa.oab" titleExpression="aql:'[OAB] ' + self.name" domainClass="Namespace" preconditionExpression="aql:self.oclIsKindOf(oa::Entity) or self.oclIsKindOf(oa::EntityPkg)" defaultConcern="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@concerns/@ownedConcernDescriptions.0">
@@ -842,8 +867,10 @@
           <mappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']"/>
         </filters>
       </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.overlappedfunctional.chains.icon.filter" label="%hide.overlappedoperational.processes.icon.filter"/>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.overlappedfunctional.chains.label.filter" label="%hide.overlappedoperational.processes.label.filter"/>
       <concerns>
-        <ownedConcernDescriptions name="Activate filters" filters="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@filters[name='hide.sequencing.information.filter']"/>
+        <ownedConcernDescriptions name="Activate filters" filters="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@filters[name='hide.sequencing.information.filter'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@filters[name='hide.overlappedfunctional.chains.label.filter']"/>
       </concerns>
       <defaultLayer name="default layer">
         <nodeMappings name="OAB_OperationalProcessEnd" detailDescriptions="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Process%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Operational%20Process%20Description']" deletionDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" semanticCandidatesExpression="" createElements="false" semanticElements="" domainClass="OperationalProcess">
@@ -886,9 +913,15 @@
         <edgeMappings name="OAB Interaction" preconditionExpression="service:isValidABInteractionEdge(sourceView, targetView)" deletionDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" semanticCandidatesExpression="service:diagram.getABFunctionalExchangeSemanticCandidates" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']/@subNodeMappings[name='OAB_Activity']" targetMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']/@subNodeMappings[name='OAB_Activity']" targetFinderExpression="service:getInteractionTargetInDiagram(diagram)" sourceFinderExpression="service:getInteractionSourceInDiagram(diagram)" domainClass="FunctionalExchange" useDomainElement="true" reconnections="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@toolSections.2/@ownedTools[name='OAIB%20Reconnect%20Exchanges']">
           <style targetArrow="InputFillClosedArrow">
             <strokeColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Border_Orange']"/>
+            <beginLabelStyleDescription labelExpression="aql:self.getOverlappedFunctionalChainsLabel(view, diagram)">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </beginLabelStyleDescription>
             <centerLabelStyleDescription labelExpression="aql:self.getFunctionalExchangeLabel(diagram)">
               <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Border_Orange']"/>
             </centerLabelStyleDescription>
+            <endLabelStyleDescription labelExpression="aql:self.getOverlappedFunctionalChainsLabel(view, diagram)">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </endLabelStyleDescription>
           </style>
         </edgeMappings>
         <edgeMappings name="OAB_FC_SequenceLink" semanticCandidatesExpression="aql:diagram.getAvailableSequenceLinks()" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']/@subNodeMappings[name='OAB_Activity'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@nodeMappings[name='FC_ControlNode']" targetMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']/@subNodeMappings[name='OAB_Activity'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@nodeMappings[name='FC_ControlNode']" targetFinderExpression="aql:self.getSequenceLinkTarget()" sourceFinderExpression="aql:self.getSequenceLinkSource()" domainClass="SequenceLink" useDomainElement="true">
@@ -1810,6 +1843,18 @@
         <customization>
           <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="aql:self.isDashedFunction(container.getComponentType())">
             <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']/@subNodeMappings[name='OAB_Activity']/@conditionnalStyles.0/@style //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']/@subNodeMappings[name='OAB_Activity']/@style" attributeName="borderLineStyle" value="dash"/>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="aql:not self.isHideOverlappedFunctionalChainsLabelEnable(diagram)">
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@edgeMappings[name='OAB%20Interaction']/@style/@beginLabelStyleDescription" referenceName="labelColor">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </featureCustomizations>
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@edgeMappings[name='OAB%20Interaction']/@style/@endLabelStyleDescription" referenceName="labelColor">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </featureCustomizations>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="aql:self.isHideOverlappedFunctionalChainsIconEnable(diagram)">
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@edgeMappings[name='OAB%20Interaction']/@style/@beginLabelStyleDescription" attributeName="showIcon" value="false"/>
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@edgeMappings[name='OAB%20Interaction']/@style/@endLabelStyleDescription" attributeName="showIcon" value="false"/>
           </vsmElementCustomizations>
         </customization>
       </defaultLayer>

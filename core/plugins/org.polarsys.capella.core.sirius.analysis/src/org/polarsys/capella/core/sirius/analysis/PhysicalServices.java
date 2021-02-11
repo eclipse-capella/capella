@@ -50,11 +50,13 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.swt.graphics.RGB;
+import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.helpers.SimpleOrientedGraph;
+import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
 import org.polarsys.capella.core.commands.preferences.service.ScopedCapellaPreferencesStore;
@@ -863,7 +865,9 @@ public class PhysicalServices {
 
   public void resetPhysicalLinkEdgeLabels(DEdge aPL) {
     DEdgeIconCache.getInstance().removeIcon(aPL);
+    DEdgeIconCache.getInstance().setLabel(aPL, ICommonConstants.EMPTY_STRING);
     DiagramServices.getDiagramServices().refreshBeginEndLabels(aPL);
+    CapellaServices.getService().refreshElement(aPL);
   }
 
   /**
@@ -881,8 +885,14 @@ public class PhysicalServices {
           .collect(Collectors.toList());
       if (pathColors.size() > 1) {
         DEdgeIconCache.getInstance().setIcon(edge, pathColors);
-        DiagramServices.getDiagramServices().refreshBeginEndLabels(edge);
+        DEdgeIconCache.getInstance().setLabel(edge, DiagramServices.getDiagramServices()
+            .getOverlappedLabels(paths.stream().map(AbstractNamedElement::getName).collect(Collectors.toList())));
+      } else {
+        DEdgeIconCache.getInstance().removeIcon(edge);
+        DEdgeIconCache.getInstance().setLabel(edge, ICommonConstants.EMPTY_STRING);
       }
+      DiagramServices.getDiagramServices().refreshBeginEndLabels(edge);
+      CapellaServices.getService().refreshElement(edge);
     }
   }
 

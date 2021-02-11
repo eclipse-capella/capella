@@ -2521,7 +2521,7 @@
         </customization>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="System Data Flow Blank" label="%sa.sdfb" titleExpression="aql:'[SDFB] ' + self.name" domainClass="AbstractFunctionalChainContainer" preconditionExpression="aql:self.oclIsKindOf(ctx::SystemFunction) or self.oclIsKindOf(ctx::Capability)">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="System Data Flow Blank" label="%sa.sdfb" titleExpression="aql:'[SDFB] ' + self.name" domainClass="AbstractFunctionalChainContainer" preconditionExpression="aql:self.oclIsKindOf(ctx::SystemFunction) or self.oclIsKindOf(ctx::Capability)" defaultConcern="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@concerns/@ownedConcernDescriptions.0">
       <dropDescriptions href="#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD%20DF%20AbstractFunction']"/>
       <dropDescriptions href="#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Function%20From%20Project%20Explorer']"/>
       <dropDescriptions href="#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']"/>
@@ -2595,6 +2595,11 @@
           <mappings xsi:type="description_1:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']"/>
         </filters>
       </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.overlappedfunctional.chains.icon.filter" label="%hide.overlappedfunctional.chains.icon.filter"/>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.overlappedfunctional.chains.label.filter" label="%hide.overlappedfunctional.chains.label.filter"/>
+      <concerns>
+        <ownedConcernDescriptions name="sdfb.default" filters="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@filters[name='hide.overlappedfunctional.chains.label.filter']"/>
+      </concerns>
       <layout xsi:type="description_1:CompositeLayout" direction="LeftToRight"/>
       <defaultLayer name="default">
         <nodeMappings name="SDFB_Node" preconditionExpression="false" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" semanticCandidatesExpression="" createElements="false" documentation="precondition : (filter(&quot;ForkFunction&quot;)+filter(&quot;JoinFunction&quot;)+filter(&quot;DecisionFunction&quot;)).nSize > 0 &amp;&amp; eContainer(&quot;SystemFunctionPkg&quot;).eAllContents().filter(&quot;FunctionalExchange&quot;)[(source == current(1) &amp;&amp; $viewpoint.target.eAllContents().nContains(target)) || (target == current(1) &amp;&amp; $viewpoint.target.eAllContents().nContains(source))].nSize() > 0" domainClass="AbstractFunction">
@@ -2616,16 +2621,28 @@
         <edgeMappings name="SDFB_Exchange" preconditionExpression="service:isValidDFFunctionalExchangeEdge(sourceView, targetView)" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" semanticCandidatesExpression="service:diagram.getDFFunctionalExchangeSemanticCandidates" semanticElements="aql:self" sourceMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']/@borderedNodeMappings[name='SDFB_Pin'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@nodeMappings[name='SDFB_Node']" targetMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']/@borderedNodeMappings[name='SDFB_Pin'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@nodeMappings[name='SDFB_Node']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="FunctionalExchange" useDomainElement="true" reconnections="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='SDFB%20Reconnect%20Exchanges']">
           <style targetArrow="InputFillClosedArrow" centeredSourceMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']/@borderedNodeMappings[name='SDFB_Pin']" centeredTargetMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']/@borderedNodeMappings[name='SDFB_Pin']">
             <strokeColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']"/>
+            <beginLabelStyleDescription labelExpression="aql:self.getOverlappedFunctionalChainsLabel(view, diagram)">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </beginLabelStyleDescription>
             <centerLabelStyleDescription labelExpression="aql:self.getFunctionalExchangeLabel(diagram)">
               <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']"/>
             </centerLabelStyleDescription>
+            <endLabelStyleDescription labelExpression="aql:self.getOverlappedFunctionalChainsLabel(view, diagram)">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </endLabelStyleDescription>
           </style>
           <conditionnalStyles predicateExpression="aql:diagram.activatedFilters->select(activatedFilter | activatedFilter.name = 'collapse.ports.filter')->size() = 0">
             <style targetArrow="NoDecoration" centeredSourceMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']/@borderedNodeMappings[name='SDFB_Pin']" centeredTargetMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']/@borderedNodeMappings[name='SDFB_Pin']">
               <strokeColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']"/>
+              <beginLabelStyleDescription labelExpression="aql:self.getOverlappedFunctionalChainsLabel(view, diagram)">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              </beginLabelStyleDescription>
               <centerLabelStyleDescription labelExpression="aql:self.getFunctionalExchangeLabel(diagram)">
                 <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']"/>
               </centerLabelStyleDescription>
+              <endLabelStyleDescription labelExpression="aql:self.getOverlappedFunctionalChainsLabel(view, diagram)">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              </endLabelStyleDescription>
             </style>
           </conditionnalStyles>
         </edgeMappings>
@@ -3292,6 +3309,28 @@
           <reusedTools xsi:type="tool:ToolGroup" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='TitleBlock']"/>
           <reusedTools xsi:type="tool_1:ToolDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='title.blocks']"/>
         </toolSections>
+        <customization>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="aql:not self.isHideOverlappedFunctionalChainsLabelEnable(diagram)">
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='SDFB_Exchange']/@conditionnalStyles.0/@style/@beginLabelStyleDescription" referenceName="labelColor">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </featureCustomizations>
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='SDFB_Exchange']/@conditionnalStyles.0/@style/@endLabelStyleDescription" referenceName="labelColor">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </featureCustomizations>
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='SDFB_Exchange']/@style/@beginLabelStyleDescription" referenceName="labelColor">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </featureCustomizations>
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='SDFB_Exchange']/@style/@endLabelStyleDescription" referenceName="labelColor">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </featureCustomizations>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="aql:self.isHideOverlappedFunctionalChainsIconEnable(diagram)">
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='SDFB_Exchange']/@conditionnalStyles.0/@style/@beginLabelStyleDescription" attributeName="showIcon" value="false"/>
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='SDFB_Exchange']/@conditionnalStyles.0/@style/@endLabelStyleDescription" attributeName="showIcon" value="false"/>
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='SDFB_Exchange']/@style/@beginLabelStyleDescription" attributeName="showIcon" value="false"/>
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='SDFB_Exchange']/@style/@endLabelStyleDescription" attributeName="showIcon" value="false"/>
+          </vsmElementCustomizations>
+        </customization>
       </defaultLayer>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="System Architecture Blank" label="%sa.sab" titleExpression="aql:'[SAB] ' + self.name" domainClass="NamedElement" preconditionExpression="aql:self.oclIsKindOf(ctx::SystemComponentPkg) or self.oclIsKindOf(ctx::SystemComponent)" defaultConcern="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@concerns/@ownedConcernDescriptions.0">
@@ -3404,8 +3443,12 @@
           <mappings xsi:type="description_1:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']"/>
         </filters>
       </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.overlappedphysical.paths.icon.filter" label="%hide.overlappedphysical.paths.icon.filter"/>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.overlappedphysical.paths.label.filter" label="%hide.overlappedphysical.paths.label.filter"/>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.overlappedfunctional.chains.icon.filter" label="%hide.overlappedfunctional.chains.icon.filter"/>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.overlappedfunctional.chains.label.filter" label="%hide.overlappedfunctional.chains.label.filter"/>
       <concerns>
-        <ownedConcernDescriptions name="default" filters="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@filters[name='hide.simplified.group.of.component.exchanges.filter'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@filters[name='hide.simplified.oriented.grouped.component.exchanges.filter'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@filters[name='hide.sequencing.information.filter']"/>
+        <ownedConcernDescriptions name="default" filters="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@filters[name='hide.simplified.group.of.component.exchanges.filter'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@filters[name='hide.simplified.oriented.grouped.component.exchanges.filter'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@filters[name='hide.sequencing.information.filter'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@filters[name='hide.overlappedfunctional.chains.label.filter'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@filters[name='hide.overlappedphysical.paths.label.filter']"/>
       </concerns>
       <layout xsi:type="description_1:CompositeLayout" direction="LeftToRight"/>
       <defaultLayer name="default">
@@ -3429,9 +3472,15 @@
         <edgeMappings name="SAB_PhysicalLink" preconditionExpression="service:isValidPhysicalLinkEdge(sourceView, targetView)" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='change%20name']" semanticCandidatesExpression="service:diagram.getABPhysicalLinkSemanticCandidates()" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='SAB_PhysicalPort']" targetMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='SAB_PhysicalPort']" targetFinderExpression="service:getPhysicalLinkTarget()" sourceFinderExpression="service:getPhysicalLinkSource()" domainClass="PhysicalLink" useDomainElement="true" reconnections="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Reconnect%20PhysicalLink%20Source'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Reconnect%20PhysicalLink%20Target']">
           <style targetArrow="NoDecoration" centeredSourceMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='SAB_PhysicalPort']" centeredTargetMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='SAB_PhysicalPort']">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+            <beginLabelStyleDescription labelExpression="aql:self.getOverlappedPhysicalPathsLabel(view, diagram)">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </beginLabelStyleDescription>
             <centerLabelStyleDescription labelExpression="aql:self.getPhysicalLinkCenterLabel(diagram)">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
             </centerLabelStyleDescription>
+            <endLabelStyleDescription labelExpression="aql:self.getOverlappedPhysicalPathsLabel(view, diagram)">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </endLabelStyleDescription>
           </style>
         </edgeMappings>
         <edgeMappings name="SAB_PhysicalCategory" preconditionExpression="service:isValidABPhysicalCategoryEdge(sourceView, targetView)" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20category']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='change%20name']" createElements="false" sourceMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20System'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='SAB_PhysicalPort'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='SAB_PhysicalCategory_Pin']" targetMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20System'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='SAB_PhysicalPort'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='SAB_PhysicalCategory_Pin']" targetFinderExpression="service:getPhysicalCategoryTargets()" sourceFinderExpression="service:getPhysicalCategorySources()" domainClass="PhysicalLinkCategory" useDomainElement="true">
@@ -3501,16 +3550,28 @@
         <edgeMappings name="CA DataFlow between Function" label="SAB_FunctionalExchange" preconditionExpression="service:isValidABFunctionalExchangeEdge(sourceView, targetView)" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='change%20name']" semanticCandidatesExpression="service:diagram.getABFunctionalExchangeSemanticCandidates()" semanticElements="aql:self" sourceMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']/@borderedNodeMappings[name='CA%20Flow%20Port%20on%20System%20Function'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Node']" targetMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']/@borderedNodeMappings[name='CA%20Flow%20Port%20on%20System%20Function'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Node']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="FunctionalExchange" useDomainElement="true" reconnections="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='SAB%20Reconnect%20Function%20Exchanges']">
           <style targetArrow="InputFillClosedArrow" centeredSourceMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']/@borderedNodeMappings[name='CA%20Flow%20Port%20on%20System%20Function']" centeredTargetMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']/@borderedNodeMappings[name='CA%20Flow%20Port%20on%20System%20Function']">
             <strokeColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']"/>
+            <beginLabelStyleDescription labelExpression="aql:self.getOverlappedFunctionalChainsLabel(view, diagram)">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </beginLabelStyleDescription>
             <centerLabelStyleDescription labelExpression="aql:self.getFunctionalExchangeLabel(diagram)">
               <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']"/>
             </centerLabelStyleDescription>
+            <endLabelStyleDescription labelExpression="aql:self.getOverlappedFunctionalChainsLabel(view, diagram)">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </endLabelStyleDescription>
           </style>
           <conditionnalStyles predicateExpression="aql:diagram.activatedFilters->select(activatedFilter | activatedFilter.name = 'collapse.function.ports.filter')->size() = 0">
             <style targetArrow="NoDecoration" centeredSourceMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']/@borderedNodeMappings[name='CA%20Flow%20Port%20on%20System%20Function']" centeredTargetMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']/@borderedNodeMappings[name='CA%20Flow%20Port%20on%20System%20Function']">
               <strokeColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']"/>
+              <beginLabelStyleDescription labelExpression="aql:self.getOverlappedFunctionalChainsLabel(view, diagram)">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              </beginLabelStyleDescription>
               <centerLabelStyleDescription labelExpression="aql:self.getFunctionalExchangeLabel(diagram)">
                 <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']"/>
               </centerLabelStyleDescription>
+              <endLabelStyleDescription labelExpression="aql:self.getOverlappedFunctionalChainsLabel(view, diagram)">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              </endLabelStyleDescription>
             </style>
           </conditionnalStyles>
         </edgeMappings>
@@ -5151,6 +5212,38 @@
           </vsmElementCustomizations>
           <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="aql:self.getComponentType().abstract = true">
             <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@style //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20System']/@style" attributeName="labelFormat" value="italic"/>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="aql:not self.isHideOverlappedPhysicalPathsLabelEnable(diagram)">
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='SAB_PhysicalLink']/@style/@beginLabelStyleDescription" referenceName="labelColor">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </featureCustomizations>
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='SAB_PhysicalLink']/@style/@endLabelStyleDescription" referenceName="labelColor">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </featureCustomizations>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="aql:self.isHideOverlappedPhysicalPathsIconEnable(diagram)">
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='SAB_PhysicalLink']/@style/@beginLabelStyleDescription" attributeName="showIcon" value="false"/>
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='SAB_PhysicalLink']/@style/@endLabelStyleDescription" attributeName="showIcon" value="false"/>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="aql:not self.isHideOverlappedFunctionalChainsLabelEnable(diagram)">
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='CA%20DataFlow%20between%20Function']/@conditionnalStyles.0/@style/@beginLabelStyleDescription" referenceName="labelColor">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </featureCustomizations>
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='CA%20DataFlow%20between%20Function']/@conditionnalStyles.0/@style/@endLabelStyleDescription" referenceName="labelColor">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </featureCustomizations>
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='CA%20DataFlow%20between%20Function']/@style/@beginLabelStyleDescription" referenceName="labelColor">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </featureCustomizations>
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='CA%20DataFlow%20between%20Function']/@style/@endLabelStyleDescription" referenceName="labelColor">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </featureCustomizations>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="aql:self.isHideOverlappedFunctionalChainsIconEnable(diagram)">
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='CA%20DataFlow%20between%20Function']/@conditionnalStyles.0/@style/@beginLabelStyleDescription" attributeName="showIcon" value="false"/>
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='CA%20DataFlow%20between%20Function']/@conditionnalStyles.0/@style/@endLabelStyleDescription" attributeName="showIcon" value="false"/>
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='CA%20DataFlow%20between%20Function']/@style/@beginLabelStyleDescription" attributeName="showIcon" value="false"/>
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='CA%20DataFlow%20between%20Function']/@style/@endLabelStyleDescription" attributeName="showIcon" value="false"/>
           </vsmElementCustomizations>
         </customization>
       </defaultLayer>

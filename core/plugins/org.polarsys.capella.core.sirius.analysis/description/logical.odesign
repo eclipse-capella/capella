@@ -1050,7 +1050,7 @@
         </customization>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Logical Data Flow Blank" label="%la.ldfb" titleExpression="aql:'[LDFB] ' + self.name" domainClass="AbstractFunctionalChainContainer" preconditionExpression="aql:self.oclIsKindOf(la::LogicalFunction) or (self.oclIsKindOf(la::CapabilityRealization) and self.eContainerOrSelf(cs::BlockArchitecture).oclIsKindOf(la::LogicalArchitecture))">
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Logical Data Flow Blank" label="%la.ldfb" titleExpression="aql:'[LDFB] ' + self.name" domainClass="AbstractFunctionalChainContainer" preconditionExpression="aql:self.oclIsKindOf(la::LogicalFunction) or (self.oclIsKindOf(la::CapabilityRealization) and self.eContainerOrSelf(cs::BlockArchitecture).oclIsKindOf(la::LogicalArchitecture))" defaultConcern="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@concerns/@ownedConcernDescriptions.0">
       <dropDescriptions href="#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD%20DF%20AbstractFunction']"/>
       <dropDescriptions href="#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Function%20From%20Project%20Explorer']"/>
       <dropDescriptions href="#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']"/>
@@ -1128,6 +1128,11 @@
           <mappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']"/>
         </filters>
       </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.overlappedfunctional.chains.icon.filter" label="%hide.overlappedfunctional.chains.icon.filter"/>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.overlappedfunctional.chains.label.filter" label="%hide.overlappedfunctional.chains.label.filter"/>
+      <concerns>
+        <ownedConcernDescriptions name="ldfb.default" filters="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@filters[name='hide.overlappedfunctional.chains.label.filter']"/>
+      </concerns>
       <layout xsi:type="description_2:CompositeLayout" direction="LeftToRight"/>
       <defaultLayer name="default">
         <nodeMappings name="LDFB_Node" preconditionExpression="false" deletionDescription="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20element']" labelDirectEdit="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='node']" semanticCandidatesExpression="" createElements="false" documentation="precondition : (filter(&quot;ForkFunction&quot;)+filter(&quot;JoinFunction&quot;)+filter(&quot;DecisionFunction&quot;)).nSize > 0 &amp;&amp; eContainer(&quot;LogicalFunctionPkg&quot;).eAllContents().filter(&quot;FunctionalExchange&quot;)[(source == current(1) &amp;&amp; $viewpoint.target.eAllContents().nContains(target)) || (target == current(1) &amp;&amp; $viewpoint.target.eAllContents().nContains(source))].nSize() > 0" domainClass="AbstractFunction">
@@ -1149,16 +1154,28 @@
         <edgeMappings name="LDFB_Exchange" preconditionExpression="service:isValidDFFunctionalExchangeEdge(sourceView, targetView)" deletionDescription="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20element']" labelDirectEdit="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='rename%20exchanges']" semanticCandidatesExpression="service:diagram.getDFFunctionalExchangeSemanticCandidates" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='LDFB_Function']/@borderedNodeMappings[name='LDFB_Pin'] //@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@nodeMappings[name='LDFB_Node']" targetMapping="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='LDFB_Function']/@borderedNodeMappings[name='LDFB_Pin'] //@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@nodeMappings[name='LDFB_Node']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="FunctionalExchange" useDomainElement="true" reconnections="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='LDFB%20Reconnect%20Exchanges']">
           <style targetArrow="InputFillClosedArrow" centeredSourceMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='LDFB_Function']/@borderedNodeMappings[name='LDFB_Pin']" centeredTargetMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='LDFB_Function']/@borderedNodeMappings[name='LDFB_Pin']">
             <strokeColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']"/>
+            <beginLabelStyleDescription labelExpression="aql:self.getOverlappedFunctionalChainsLabel(view, diagram)">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </beginLabelStyleDescription>
             <centerLabelStyleDescription labelExpression="aql:self.getFunctionalExchangeLabel(diagram)">
               <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']"/>
             </centerLabelStyleDescription>
+            <endLabelStyleDescription labelExpression="aql:self.getOverlappedFunctionalChainsLabel(view, diagram)">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </endLabelStyleDescription>
           </style>
           <conditionnalStyles predicateExpression="aql:diagram.activatedFilters->select(activatedFilter | activatedFilter.name = 'collapse.ports.filter')->size() = 0">
             <style targetArrow="NoDecoration" centeredSourceMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='LDFB_Function']/@borderedNodeMappings[name='LDFB_Pin']" centeredTargetMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='LDFB_Function']/@borderedNodeMappings[name='LDFB_Pin']">
               <strokeColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']"/>
+              <beginLabelStyleDescription labelExpression="aql:self.getOverlappedFunctionalChainsLabel(view, diagram)">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              </beginLabelStyleDescription>
               <centerLabelStyleDescription labelExpression="aql:self.getFunctionalExchangeLabel(diagram)">
                 <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']"/>
               </centerLabelStyleDescription>
+              <endLabelStyleDescription labelExpression="aql:self.getOverlappedFunctionalChainsLabel(view, diagram)">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              </endLabelStyleDescription>
             </style>
           </conditionnalStyles>
         </edgeMappings>
@@ -1840,6 +1857,28 @@
           <reusedTools xsi:type="tool_1:ToolGroup" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='TitleBlock']"/>
           <reusedTools xsi:type="tool:ToolDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='title.blocks']"/>
         </toolSections>
+        <customization>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="aql:not self.isHideOverlappedFunctionalChainsLabelEnable(diagram)">
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='LDFB_Exchange']/@conditionnalStyles.0/@style/@beginLabelStyleDescription" referenceName="labelColor">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </featureCustomizations>
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='LDFB_Exchange']/@conditionnalStyles.0/@style/@endLabelStyleDescription" referenceName="labelColor">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </featureCustomizations>
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='LDFB_Exchange']/@style/@beginLabelStyleDescription" referenceName="labelColor">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </featureCustomizations>
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='LDFB_Exchange']/@style/@endLabelStyleDescription" referenceName="labelColor">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </featureCustomizations>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="aql:self.isHideOverlappedFunctionalChainsIconEnable(diagram)">
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='LDFB_Exchange']/@conditionnalStyles.0/@style/@beginLabelStyleDescription" attributeName="showIcon" value="false"/>
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='LDFB_Exchange']/@conditionnalStyles.0/@style/@endLabelStyleDescription" attributeName="showIcon" value="false"/>
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='LDFB_Exchange']/@style/@beginLabelStyleDescription" attributeName="showIcon" value="false"/>
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='LDFB_Exchange']/@style/@endLabelStyleDescription" attributeName="showIcon" value="false"/>
+          </vsmElementCustomizations>
+        </customization>
       </defaultLayer>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Logical Architecture Blank" label="%la.lab" titleExpression="aql:'[LAB] ' + self.name" domainClass="NamedElement" preconditionExpression="aql:self.oclIsKindOf(la::LogicalComponentPkg) or self.oclIsKindOf(la::LogicalComponent) or (self.oclIsKindOf(cs::Part) and self.getComponentType().oclIsKindOf(la::LogicalComponent))" defaultConcern="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@concerns/@ownedConcernDescriptions.0">
@@ -1970,8 +2009,12 @@
           <mappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']"/>
         </filters>
       </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.overlappedphysical.paths.icon.filter" label="%hide.overlappedphysical.paths.icon.filter"/>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.overlappedphysical.paths.label.filter" label="%hide.overlappedphysical.paths.label.filter"/>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.overlappedfunctional.chains.icon.filter" label="%hide.overlappedfunctional.chains.icon.filter"/>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.overlappedfunctional.chains.label.filter" label="%hide.overlappedfunctional.chains.label.filter"/>
       <concerns>
-        <ownedConcernDescriptions name="default" filters="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@filters[name='hide.simplified.diagram.based.component.exchanges.filter'] //@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@filters[name='hide.simplified.oriented.grouped.component.exchanges.filter'] //@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@filters[name='hide.simplified.group.of.component.exchanges.filter'] //@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@filters[name='hide.sequencing.information.filter']"/>
+        <ownedConcernDescriptions name="default" filters="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@filters[name='hide.simplified.diagram.based.component.exchanges.filter'] //@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@filters[name='hide.simplified.oriented.grouped.component.exchanges.filter'] //@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@filters[name='hide.simplified.group.of.component.exchanges.filter'] //@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@filters[name='hide.sequencing.information.filter'] //@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@filters[name='hide.overlappedfunctional.chains.label.filter'] //@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@filters[name='hide.overlappedphysical.paths.label.filter']"/>
       </concerns>
       <layout xsi:type="description_2:CompositeLayout" direction="LeftToRight"/>
       <defaultLayer name="default">
@@ -1995,16 +2038,28 @@
         <edgeMappings name="LAB DataFlow between Function" label="LAB_FunctionalExchange" preconditionExpression="service:isValidABFunctionalExchangeEdge(sourceView, targetView)" deletionDescription="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='delete%20capella%20element']" labelDirectEdit="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='name']" semanticCandidatesExpression="service:diagram.getABFunctionalExchangeSemanticCandidates" semanticElements="aql:self" sourceMapping="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']/@borderedNodeMappings[name='LAB%20Flow%20Port%20on%20Logical%20Function']" targetMapping="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']/@borderedNodeMappings[name='LAB%20Flow%20Port%20on%20Logical%20Function']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="FunctionalExchange" useDomainElement="true" reconnections="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='LAB%20Reconnect%20Function%20Exchanges']">
           <style targetArrow="InputFillClosedArrow" centeredSourceMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']/@borderedNodeMappings[name='LAB%20Flow%20Port%20on%20Logical%20Function']" centeredTargetMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']/@borderedNodeMappings[name='LAB%20Flow%20Port%20on%20Logical%20Function']">
             <strokeColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']"/>
+            <beginLabelStyleDescription labelExpression="aql:self.getOverlappedFunctionalChainsLabel(view, diagram)">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </beginLabelStyleDescription>
             <centerLabelStyleDescription labelExpression="aql:self.getFunctionalExchangeLabel(diagram)">
               <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']"/>
             </centerLabelStyleDescription>
+            <endLabelStyleDescription labelExpression="aql:self.getOverlappedFunctionalChainsLabel(view, diagram)">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </endLabelStyleDescription>
           </style>
           <conditionnalStyles predicateExpression="aql:diagram.activatedFilters->select(activatedFilter | activatedFilter.name = 'collapse.function.ports.filter')->size() = 0">
             <style targetArrow="NoDecoration" centeredSourceMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']/@borderedNodeMappings[name='LAB%20Flow%20Port%20on%20Logical%20Function']" centeredTargetMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']/@borderedNodeMappings[name='LAB%20Flow%20Port%20on%20Logical%20Function']">
               <strokeColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']"/>
+              <beginLabelStyleDescription labelExpression="aql:self.getOverlappedFunctionalChainsLabel(view, diagram)">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              </beginLabelStyleDescription>
               <centerLabelStyleDescription labelExpression="aql:self.getFunctionalExchangeLabel(diagram)">
                 <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']"/>
               </centerLabelStyleDescription>
+              <endLabelStyleDescription labelExpression="aql:self.getOverlappedFunctionalChainsLabel(view, diagram)">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              </endLabelStyleDescription>
             </style>
           </conditionnalStyles>
         </edgeMappings>
@@ -2163,9 +2218,15 @@
         <edgeMappings name="LAB_PhysicalLink" preconditionExpression="service:isValidPhysicalLinkEdge(sourceView, targetView)" deletionDescription="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='delete%20capella%20element']" labelDirectEdit="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='name']" semanticCandidatesExpression="service:diagram.getABPhysicalLinkSemanticCandidates" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@borderedNodeMappings[name='LAB_PhysicalPort']" targetMapping="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@borderedNodeMappings[name='LAB_PhysicalPort']" targetFinderExpression="service:getPhysicalLinkTarget()" sourceFinderExpression="service:getPhysicalLinkSource()" domainClass="PhysicalLink" useDomainElement="true" reconnections="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Reconnect%20PhysicalLink%20Source'] //@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Reconnect%20PhysicalLink%20Target']">
           <style targetArrow="NoDecoration" centeredSourceMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@borderedNodeMappings[name='LAB_PhysicalPort']" centeredTargetMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@borderedNodeMappings[name='LAB_PhysicalPort']">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+            <beginLabelStyleDescription labelExpression="aql:self.getOverlappedPhysicalPathsLabel(view, diagram)">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </beginLabelStyleDescription>
             <centerLabelStyleDescription labelExpression="aql:self.getPhysicalLinkCenterLabel(diagram)">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
             </centerLabelStyleDescription>
+            <endLabelStyleDescription labelExpression="aql:self.getOverlappedPhysicalPathsLabel(view, diagram)">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </endLabelStyleDescription>
           </style>
         </edgeMappings>
         <edgeMappings name="LAB_InternPhysicalPathLink" preconditionExpression="service:isValidABPhysicalPathInternalLinkEdge(sourceView, targetView)" deletionDescription="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='delete%20capella%20element']" createElements="false" sourceMapping="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@borderedNodeMappings[name='LAB_PhysicalPort']" targetMapping="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@borderedNodeMappings[name='LAB_PhysicalPort']" targetFinderExpression="service:getPhysicalPathTargets()" sourceFinderExpression="service:getPhysicalPathSources()" domainClass="PhysicalPath" useDomainElement="true">
@@ -3943,6 +4004,38 @@
           </vsmElementCustomizations>
           <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="aql:self.getComponentType().abstract = true">
             <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@conditionnalStyles.0/@style //@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@style" attributeName="labelFormat" value="italic"/>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="aql:not self.isHideOverlappedPhysicalPathsLabelEnable(diagram)">
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB_PhysicalLink']/@style/@beginLabelStyleDescription" referenceName="labelColor">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </featureCustomizations>
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB_PhysicalLink']/@style/@endLabelStyleDescription" referenceName="labelColor">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </featureCustomizations>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="aql:self.isHideOverlappedPhysicalPathsIconEnable(diagram)">
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB_PhysicalLink']/@style/@beginLabelStyleDescription" attributeName="showIcon" value="false"/>
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB_PhysicalLink']/@style/@endLabelStyleDescription" attributeName="showIcon" value="false"/>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="aql:not self.isHideOverlappedFunctionalChainsLabelEnable(diagram)">
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB%20DataFlow%20between%20Function']/@conditionnalStyles.0/@style/@beginLabelStyleDescription" referenceName="labelColor">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </featureCustomizations>
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB%20DataFlow%20between%20Function']/@conditionnalStyles.0/@style/@endLabelStyleDescription" referenceName="labelColor">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </featureCustomizations>
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB%20DataFlow%20between%20Function']/@style/@beginLabelStyleDescription" referenceName="labelColor">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </featureCustomizations>
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB%20DataFlow%20between%20Function']/@style/@endLabelStyleDescription" referenceName="labelColor">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </featureCustomizations>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="aql:self.isHideOverlappedFunctionalChainsIconEnable(diagram)">
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB%20DataFlow%20between%20Function']/@conditionnalStyles.0/@style/@beginLabelStyleDescription" attributeName="showIcon" value="false"/>
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB%20DataFlow%20between%20Function']/@conditionnalStyles.0/@style/@endLabelStyleDescription" attributeName="showIcon" value="false"/>
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB%20DataFlow%20between%20Function']/@style/@beginLabelStyleDescription" attributeName="showIcon" value="false"/>
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB%20DataFlow%20between%20Function']/@style/@endLabelStyleDescription" attributeName="showIcon" value="false"/>
           </vsmElementCustomizations>
         </customization>
       </defaultLayer>

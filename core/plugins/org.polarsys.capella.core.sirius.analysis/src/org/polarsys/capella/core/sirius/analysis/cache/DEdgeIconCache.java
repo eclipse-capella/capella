@@ -28,6 +28,7 @@ import org.eclipse.swt.graphics.Image;
  * {@link org.eclipse.sirius.diagram.ui.tools.internal.editor.DDiagramEditorImpl#initializeGraphicalViewer
  * initializeGraphicalViewer})
  */
+@SuppressWarnings("restriction")
 public class DEdgeIconCache {
 
   private static DEdgeIconCache instance;
@@ -40,6 +41,7 @@ public class DEdgeIconCache {
   }
 
   private Map<DEdge, Image> edge2Icon = new HashMap<>();
+  private Map<DEdge, String> edge2Label = new HashMap<>();
 
   private DEdgeIconCache() {
   }
@@ -52,11 +54,24 @@ public class DEdgeIconCache {
     return edge2Icon.get(plEdge);
   }
 
+  public String setLabel(DEdge plEdge, String label) {
+    return edge2Label.computeIfAbsent(plEdge, k -> label);
+  }
+
+  public String getLabel(DEdge plEdge) {
+    return edge2Label.get(plEdge);
+  }
+  
   public void reset() {
     edge2Icon.clear();
+    edge2Label.clear();
   }
   
   public void removeIcon(DEdge dEdge) {
     edge2Icon.remove(dEdge);
+  }
+  
+  public void removeLabel(DEdge dEdge) {
+    edge2Label.remove(dEdge);
   }
 }
