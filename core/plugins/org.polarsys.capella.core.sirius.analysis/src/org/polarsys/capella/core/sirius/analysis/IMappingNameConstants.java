@@ -477,7 +477,11 @@ public interface IMappingNameConstants {
   String HIDE_CE_BY_DELEGATION = "hide.simplified.diagram.based.component.exchanges.filter";
   String HIDE_CE_BY_GROUP = "hide.simplified.group.of.component.exchanges.filter";
   String HIDE_CE_BY_GROUP_ORIENTED = "hide.simplified.oriented.grouped.component.exchanges.filter";
-
+  String HIDE_OVERLAPPED_PHYSICAL_PATHS_ICON = "hide.overlappedphysical.paths.icon.filter";
+  String HIDE_OVERLAPPED_PHYSICAL_PATHS_LABEL = "hide.overlappedphysical.paths.label.filter";
+  String HIDE_OVERLAPPED_FUNCTIONAL_CHAINS_ICON = "hide.overlappedfunctional.chains.icon.filter";
+  String HIDE_OVERLAPPED_FUNCTIONAL_CHAINS_LABEL = "hide.overlappedfunctional.chains.label.filter";
+  
   String SHOW_FUNCTIONAL_EXCHANGES_PARAMS = "show.functional.exchanges.parameters.filter";
   String SHOW_FUNCTIONAL_EXCHANGES_ECHANGE_ITEMS_PARAMS = "show.functional.exchanges.exchange.items.parameters.filter";
   String CDB_SHOW_FULL_PATH = "show.full.path.filter";

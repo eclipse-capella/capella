@@ -75,7 +75,11 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractCacheAwa
     super.beforeRefresh(diagram);
 
     FunctionalChainCache.getInstance().reset();
-    DEdgeIconCache.getInstance().reset();
+    DDiagram openingDiagram = DiagramServices.getDiagramServices().getOpeningDiagram();
+    // Avoid resetting the icon cache if it's not on the diagram currently being opened
+    if (openingDiagram == null || openingDiagram == diagram) {
+      DEdgeIconCache.getInstance().reset();
+    }
 
     DRepresentationDescriptor descriptor = RepresentationHelper.getRepresentationDescriptor(diagram);
 

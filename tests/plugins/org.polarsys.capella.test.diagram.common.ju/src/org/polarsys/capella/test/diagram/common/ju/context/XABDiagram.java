@@ -21,6 +21,7 @@ import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
@@ -625,7 +626,7 @@ public class XABDiagram extends CommonDiagram {
   }
 
   public PhysicalPath createPhysicalPath(final String path, final String... links) {
-    return (PhysicalPath) ((DEdge) new CreatePathTool(this, IToolNameConstants.TOOL_CREATE_PHYSICAL_PATH, path, links)
+    return (PhysicalPath) ((DDiagramElement) new CreatePathTool(this, IToolNameConstants.TOOL_CREATE_PHYSICAL_PATH, path, links)
         .run()).getTarget();
   }
 

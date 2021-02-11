@@ -27,8 +27,10 @@ import org.polarsys.capella.core.data.fa.ExchangeCategory;
 import org.polarsys.capella.core.diagram.helpers.ContextualDiagramHelper;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.sirius.analysis.DDiagramContents;
+import org.polarsys.capella.core.sirius.analysis.DiagramServices;
 import org.polarsys.capella.core.sirius.analysis.FaServices;
 import org.polarsys.capella.core.sirius.analysis.FunctionalChainServices;
+import org.polarsys.capella.core.sirius.analysis.cache.DEdgeIconCache;
 import org.polarsys.capella.core.sirius.analysis.cache.FunctionalChainCache;
 
 /**
@@ -44,6 +46,11 @@ public class DataFlowBlankRefreshExtension extends AbstractCacheAwareRefreshExte
     super.beforeRefresh(diagram);
 
     FunctionalChainCache.getInstance().reset();
+    DDiagram openingDiagram = DiagramServices.getDiagramServices().getOpeningDiagram();
+    // Avoid resetting the icon cache if it's not on the diagram currently being opened
+    if (openingDiagram == null || openingDiagram == diagram) {
+      DEdgeIconCache.getInstance().reset();
+    }
     
     // -------------------------------------
     // Show in diagram related contextual elements

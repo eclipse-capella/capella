@@ -16,6 +16,7 @@ import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
 
 import java.util.AbstractMap;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -153,6 +154,7 @@ import org.polarsys.capella.core.model.helpers.PartExt;
 import org.polarsys.capella.core.model.helpers.PortExt;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 import org.polarsys.capella.core.model.utils.CapellaLayerCheckingExt;
+import org.polarsys.capella.core.sirius.analysis.cache.DEdgeIconCache;
 import org.polarsys.capella.core.sirius.analysis.constants.MappingConstantsHelper;
 import org.polarsys.capella.core.sirius.analysis.showhide.AbstractShowHide;
 import org.polarsys.capella.core.sirius.analysis.showhide.AbstractShowHide.DiagramContext;
@@ -5059,6 +5061,22 @@ public class FaServices {
     return isDiagramFilterEnable(pl, view, IMappingNameConstants.HIDE_PHYSICAL_LINKS_NAMES);
   }
 
+  public boolean isHideOverlappedPhysicalPathsIconEnable(EObject pl, EObject view) {
+    return isDiagramFilterEnable(pl, view, IMappingNameConstants.HIDE_OVERLAPPED_PHYSICAL_PATHS_ICON);
+  }
+  
+  public boolean isHideOverlappedPhysicalPathsLabelEnable(EObject pl, EObject view) {
+    return isDiagramFilterEnable(pl, view, IMappingNameConstants.HIDE_OVERLAPPED_PHYSICAL_PATHS_LABEL);
+  }
+  
+  public boolean isHideOverlappedFunctionalChainsIconEnable(EObject pl, EObject view) {
+    return isDiagramFilterEnable(pl, view, IMappingNameConstants.HIDE_OVERLAPPED_FUNCTIONAL_CHAINS_ICON);
+  }
+  
+  public boolean isHideOverlappedFunctionalChainsLabelEnable(EObject pl, EObject view) {
+    return isDiagramFilterEnable(pl, view, IMappingNameConstants.HIDE_OVERLAPPED_FUNCTIONAL_CHAINS_LABEL);
+  }
+  
   public String getExchangeCenterLabel(EObject exchange, DDiagram diagram) {
     // why white space char
     // The manual refresh of the diagram does not take into account the
@@ -5087,6 +5105,38 @@ public class FaServices {
     return centerLabel;
   }
 
+  public String getOverlappedPhysicalPathsLabel(EObject exchange, EObject view, DDiagram diagram) {
+    if (exchange instanceof PhysicalLink && view instanceof DEdge) {
+      DEdge edge = (DEdge) view;
+      String oldLabel = edge.getBeginLabel();
+      // Label calculation is called when the cache is not ready (outside of the refresh), return the old label
+      if (DEdgeIconCache.getInstance().getLabel(edge) == null) {
+        return oldLabel;
+      }
+      if (isHideOverlappedPhysicalPathsLabelEnable(exchange, diagram)) {
+        return Character.toString(ICommonConstants.POINT_CHARACTER);
+      }
+      return DEdgeIconCache.getInstance().getLabel(edge);
+    }
+    return ICommonConstants.EMPTY_STRING;
+  }
+  
+  public String getOverlappedFunctionalChainsLabel(EObject exchange, EObject view, DDiagram diagram) {
+    if (exchange instanceof FunctionalExchange && view instanceof DEdge) {
+      DEdge edge = (DEdge) view;
+      String oldLabel = edge.getBeginLabel();
+      // Label calculation is called when the cache is not ready (outside of the refresh), return the old label
+      if (DEdgeIconCache.getInstance().getLabel(edge) == null) {
+        return oldLabel;
+      }
+      if (isHideOverlappedFunctionalChainsLabelEnable(exchange, diagram)) {
+        return Character.toString(ICommonConstants.POINT_CHARACTER);
+      }
+      return DEdgeIconCache.getInstance().getLabel(edge);
+    }
+    return ICommonConstants.EMPTY_STRING;
+  }
+  
   /**
    * Get the Node mapping for Functional Exchange category pin
    * 

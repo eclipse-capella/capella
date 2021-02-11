@@ -28,6 +28,7 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
@@ -87,6 +88,7 @@ import org.eclipse.sirius.diagram.ui.business.api.view.SiriusGMFHelper;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeBeginNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEndNameEditPart;
+import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.api.part.IDiagramDialectGraphicalViewer;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
@@ -97,6 +99,8 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration;
 import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
@@ -112,7 +116,8 @@ import com.google.common.collect.Lists;
 @SuppressWarnings("restriction")
 public class DiagramServices {
   private static DiagramServices singleton = null;
-
+  public static final int OVERLLAPING_LABEL_MAX_LENGTH = 30;
+  
   public static DiagramServices getDiagramServices() {
     if (singleton == null) {
       singleton = new DiagramServices();
@@ -1900,4 +1905,32 @@ public class DiagramServices {
     }
   }
   
+  /**
+   * 
+   * @return the currently opening diagram
+   */
+  public DDiagram getOpeningDiagram() {
+    IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+    if (window != null) {
+      IWorkbenchPage activePage = window.getActivePage();
+      if (activePage != null) {
+        IEditorPart activeEditor = activePage.getActiveEditor();
+        if (activeEditor instanceof DDiagramEditor) {
+          DDiagramEditor ddiagramEditor = (DDiagramEditor) activeEditor;
+          if (ddiagramEditor.getRepresentation() instanceof DDiagram) {
+            return (DDiagram) ddiagramEditor.getRepresentation();
+          }
+        }
+      }
+    }
+    return null;
+  }
+
+  public String getOverlappedLabels(List<String> names) {
+    return names.stream().sorted()
+        .map(name -> StringUtils.abbreviate(name, OVERLLAPING_LABEL_MAX_LENGTH))
+        .map(name -> StringUtils.rightPad(name, OVERLLAPING_LABEL_MAX_LENGTH))
+        .collect(Collectors.joining("\n"));
+  }
+
 }

@@ -19,6 +19,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -52,12 +53,15 @@ import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
+import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.SimpleOrientedGraph;
+import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.commands.preferences.service.ScopedCapellaPreferencesStore;
 import org.polarsys.capella.core.commands.preferences.util.PreferencesHelper;
 import org.polarsys.capella.core.data.capellacore.InvolvedElement;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
+import org.polarsys.capella.core.data.cs.PhysicalPath;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalChainContainer;
 import org.polarsys.capella.core.data.fa.ControlNode;
@@ -91,6 +95,7 @@ import org.polarsys.capella.core.model.helpers.graph.InvolvementGraph.Involvemen
 import org.polarsys.capella.core.model.helpers.graph.InvolvementGraph.InvolvementNode;
 import org.polarsys.capella.core.sirius.analysis.accelerators.SelectOrCreateFunctionalExchangeDialog;
 import org.polarsys.capella.core.sirius.analysis.accelerators.SelectOrCreateFunctionalExchangeDialog.NewFEData;
+import org.polarsys.capella.core.sirius.analysis.cache.DEdgeIconCache;
 import org.polarsys.capella.core.sirius.analysis.cache.FunctionalChainCache;
 import org.polarsys.capella.core.sirius.analysis.constants.MappingConstantsHelper;
 import org.polarsys.capella.core.sirius.analysis.helpers.FunctionalChainReferenceHierarchyHelper;
@@ -234,6 +239,7 @@ public class FunctionalChainServices {
 
     HashMap<FunctionalChain, DNode> functionalChains = getDisplayedFunctionalChains(diagram);
     HashMapSet<DSemanticDecorator, RGBValues> colors = new HashMapSet<>();
+    Map<DEdge, Set<FunctionalChain>> coloredLinks = new HashMap<>();
 
     for (Entry<FunctionalChain, DNode> entry : functionalChains.entrySet()) {
       FunctionalChain chain = entry.getKey();
@@ -271,6 +277,10 @@ public class FunctionalChainServices {
         if (semantic != null) {
           for (DSemanticDecorator view : DiagramServices.getDiagramServices().getDiagramElements(diagram, semantic)) {
             colors.put(view, color);
+            if (semantic instanceof FunctionalExchange && view instanceof DEdge) {
+              Set<FunctionalChain> chains = coloredLinks.computeIfAbsent((DEdge) view, k -> new HashSet<>());
+              chains.add(chain);
+            }
           }
         }
       }
@@ -305,6 +315,8 @@ public class FunctionalChainServices {
       }
     }
 
+    customizeFunctionalExchangeEdgeLabels(coloredLinks, functionalChains);
+    
     // Update all functional exchanges and sequence links
     for (DEdge view : diagram.getEdges()) {
       EObject target = view.getTarget();
@@ -313,10 +325,44 @@ public class FunctionalChainServices {
           customizeFunctionalChainEdgeStyle(view, ShapeUtil.getColor(colors.get(view)));
         } else {
           resetFunctionalExchangeStyle(view);
+          resetFunctionalExchangeEdgeLabels(view);
         }
       }
     }
 
+  }
+
+  /**
+   * Add pie icons on the begin and the end labels of a Functional Exchange
+   * 
+   * @param coloredLinks
+   * @param displayedFCs
+   */
+  public void customizeFunctionalExchangeEdgeLabels(Map<DEdge, Set<FunctionalChain>> coloredLinks,
+      Map<FunctionalChain, DNode> displayedFCs) {
+    for (Map.Entry<DEdge, Set<FunctionalChain>> entry : coloredLinks.entrySet()) {
+      DEdge edge = entry.getKey();
+      Set<FunctionalChain> chains = entry.getValue();
+      List<RGBValues> fcColors = chains.stream().map(displayedFCs::get).map(ShapeUtil::getNodeColorStyle)
+          .collect(Collectors.toList());
+      if (fcColors.size() > 1) {
+        DEdgeIconCache.getInstance().setIcon(edge, fcColors.stream().collect(Collectors.toList()));
+        DEdgeIconCache.getInstance().setLabel(edge, DiagramServices.getDiagramServices()
+            .getOverlappedLabels(chains.stream().map(AbstractNamedElement::getName).collect(Collectors.toList())));
+      } else {
+        DEdgeIconCache.getInstance().removeIcon(edge);
+        DEdgeIconCache.getInstance().setLabel(edge, ICommonConstants.EMPTY_STRING);
+      }
+      DiagramServices.getDiagramServices().refreshBeginEndLabels(edge);
+      CapellaServices.getService().refreshElement(edge);
+    }
+  }
+  
+  public void resetFunctionalExchangeEdgeLabels(DEdge edge) {
+    DEdgeIconCache.getInstance().removeIcon(edge);
+    DEdgeIconCache.getInstance().setLabel(edge, ICommonConstants.EMPTY_STRING);
+    DiagramServices.getDiagramServices().refreshBeginEndLabels(edge);
+    CapellaServices.getService().refreshElement(edge);
   }
 
   /**

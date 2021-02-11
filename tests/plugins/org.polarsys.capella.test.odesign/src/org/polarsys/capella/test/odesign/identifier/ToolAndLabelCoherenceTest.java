@@ -14,6 +14,7 @@ package org.polarsys.capella.test.odesign.identifier;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.PropertyResourceBundle;
 import java.util.stream.Collectors;
@@ -24,11 +25,13 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelection;
+import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.platform.sirius.ui.services.IElementIdentifierService;
+import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
 import org.polarsys.capella.core.sirius.analysis.activator.SiriusViewActivator;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
 
@@ -60,14 +63,13 @@ public class ToolAndLabelCoherenceTest extends BasicTestCase {
                 errors.add(NLS.bind("Element {0} is not internationalized.", element.getName()));
               } else {
                 String label = tokens[1];
-                if (!label.equals(toolIdentifier)) {
-                  errors.add(
-                      NLS.bind("Element {0} doesn't use the correct label identifier. {1} instead of {2}", new String[] { viewpoint.getName() + "::" + element.getLabel(), label, toolIdentifier }));
+                if (!isCommonTool(element) && !label.equals(toolIdentifier)) {
+                  errors.add(NLS.bind("Element {0} doesn't use the correct label identifier. {1} instead of {2}",
+                      new String[] { viewpoint.getName() + "::" + element.getLabel(), label, toolIdentifier }));
                 }
-
                 if (!pluginProperties.containsKey(label)) {
-                  errors.add(
-                      NLS.bind("Element {0} doesn't use a label identifier defined in the properties file {1}.", new String[] { viewpoint.getName() + "::" + element.getLabel(), PLUGIN_PROPERTIES }));
+                  errors.add(NLS.bind("Element {0} doesn't use a label identifier defined in the properties file {1}.",
+                      new String[] { viewpoint.getName() + "::" + element.getLabel(), PLUGIN_PROPERTIES }));
                 }
               }
             }
@@ -80,6 +82,19 @@ public class ToolAndLabelCoherenceTest extends BasicTestCase {
       assertTrue(errors.stream().collect(Collectors.joining("\n")), errors.isEmpty());
     }
 
+  }
+
+  /**
+   * 
+   * @param element
+   * @return if this is a common tool for many diagrams. In this case, no need to prefix the tool with
+   *         viewpoint.diagramName.
+   */
+  private boolean isCommonTool(IdentifiedElement element) {
+    return Arrays.asList(IMappingNameConstants.HIDE_OVERLAPPED_FUNCTIONAL_CHAINS_ICON,
+        IMappingNameConstants.HIDE_OVERLAPPED_FUNCTIONAL_CHAINS_LABEL,
+        IMappingNameConstants.HIDE_OVERLAPPED_PHYSICAL_PATHS_ICON,
+        IMappingNameConstants.HIDE_OVERLAPPED_PHYSICAL_PATHS_LABEL).contains(element.getName());
   }
 
   private PropertyResourceBundle getPluginProperties() {
