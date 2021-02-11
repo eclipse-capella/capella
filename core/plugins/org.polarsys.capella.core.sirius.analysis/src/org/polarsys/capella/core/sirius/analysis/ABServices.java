@@ -1505,7 +1505,7 @@ public class ABServices {
 
   public boolean isValidABPhysicalPathInternalLinkEdge(PhysicalPath path, DSemanticDecorator source,
       DSemanticDecorator target) {
-    return PhysicalServices.getService().isValidInternalLinkEdge((EdgeTarget) source, (EdgeTarget) target);
+    return PhysicalServices.getService().isValidInternalLinkEdge(path, (EdgeTarget) source, (EdgeTarget) target);
   }
 
   public boolean isValidFunctionalExchangeCategoryEdge(ExchangeCategory category, DSemanticDecorator source,
@@ -1522,7 +1522,6 @@ public class ABServices {
     AbstractFunction targetTarget = (AbstractFunction) targetPartView.getTarget();
 
     return isSourceTargetCategoryFunction(sourceTarget, targetTarget, category);
-
   }
 
   public boolean isSourceTargetCategoryFunction(AbstractFunction source, AbstractFunction target,

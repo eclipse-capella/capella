@@ -15,6 +15,7 @@ package org.polarsys.capella.test.diagram.tools.ju.testsuites.partial;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.polarsys.capella.test.diagram.tools.ju.common.BlackInternalLinks;
 import org.polarsys.capella.test.diagram.tools.ju.common.CommonToolsTest;
 import org.polarsys.capella.test.diagram.tools.ju.common.SelectToolsTest;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
@@ -39,6 +40,8 @@ public class CommonToolsTestSuite extends BasicTestSuite {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
     tests.add(new CommonToolsTest());
     tests.add(new SelectToolsTest());
+    tests.add(new BlackInternalLinks());
+    
     return tests;
   }
 

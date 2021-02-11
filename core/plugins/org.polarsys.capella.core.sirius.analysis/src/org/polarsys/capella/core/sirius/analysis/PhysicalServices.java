@@ -40,6 +40,7 @@ import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingWithInterpreterHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.operations.DDiagramSpecOperations;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
@@ -789,28 +790,39 @@ public class PhysicalServices {
       if (!displayedPaths.containsKey(physicalPath)) {
         Set<DEdge> physicalPathEdges = entry.getValue();
         for (DEdge edge : physicalPathEdges) {
-          diagram.getOwnedDiagramElements().remove(edge);
+          edge.getSemanticElements().remove(physicalPath);
+          if (edge.getSemanticElements().isEmpty()) {
+            diagram.getOwnedDiagramElements().remove(edge);
+          }
         }
       }
     }
 
     for (Entry<PhysicalPath, DNode> entry : displayedPaths.entrySet()) {
       PhysicalPath physicalPath = entry.getKey();
-      Set<DEdge> internalLinks = updatePhysicalPathInternalLinks(physicalPath, displayedPhysicalLinks);
+      updatePhysicalPathInternalLinks(physicalPath, displayedPhysicalLinks);
     }
 
     // Remove INVALID internal link edge
     for (Entry<PhysicalPath, Set<DEdge>> entry : physicalPathToVisibleInternalEdges.entrySet()) {
       Set<DEdge> edges = entry.getValue();
       for (DEdge edge : edges) {
-        if (!isValidInternalLinkEdge(edge.getSourceNode(), edge.getTargetNode())) {
-          DiagramServices.getDiagramServices().removeEdgeView(edge);
+        if (!isValidInternalLinkEdge(entry.getKey(), edge.getSourceNode(), edge.getTargetNode()) && entry.getKey().equals(edge.getTarget())) {
+          edge.getSemanticElements().remove(entry.getKey());
+          if (edge.getSemanticElements().isEmpty()) {
+            DiagramServices.getDiagramServices().removeEdgeView(edge); // We remove the edge view here, on FC this is done in precondition of the edge
+          }
         }
       }
     }
 
   }
 
+  public Collection<EObject> getPPInternalLinkSemanticElements(DEdge view) {
+    Collection<PhysicalPath> displayedPaths = getDisplayedPhysicalPaths(view.getParentDiagram());
+    return view.getSemanticElements().stream().filter(x -> displayedPaths.contains(x)).collect(Collectors.toList());
+  }
+  
   public void updatePhysicalPathStyles(DDiagram diagram) {
     // Internal edges representing the physical path
     HashMap<PhysicalPath, Set<DEdge>> physicalPathToEdgesMap = computePhysicalPathToEdgesMap(diagram);
@@ -825,22 +837,14 @@ public class PhysicalServices {
     HashMap<DEdge, Set<PhysicalPath>> coloredLinks = computeEdgeToPhysicalPathsMap(displayedPaths,
         displayedPhysicalLinks);
 
+    ArrayList<DEdge> displayedLinks = new ArrayList<DEdge>();
+    
     for (Entry<PhysicalPath, DNode> entry : displayedPaths.entrySet()) {
       DNode node = entry.getValue();
       PhysicalPath physicalPath = entry.getKey();
 
       updatePhysicalPathNodeColor(node, displayedPaths.values());
       RGBValues physicalPathColor = ShapeUtil.getNodeColorStyle(node);
-
-      // Customize internal links
-      // TODO: should we use updatePhysicalPathInternalLinks?
-      // Set<DEdge> internalLinks = updatePhysicalPathInternalLinks(physicalPath, displayedPhysicalLinks);
-      Set<DEdge> internalLinks = physicalPathToEdgesMap.get(physicalPath);
-      internalLinks = (internalLinks == null) ? new HashSet<>() : internalLinks;
-      internalLinks.remove(null);
-      for (DEdge internalLink : internalLinks) {
-        customizeInternalLinksEdgeStyle(internalLink, physicalPathColor);
-      }
 
       // Customize physical paths
       for (PhysicalLink link : PhysicalPathExt.getFlatPhysicalLinks(physicalPath)) {
@@ -850,6 +854,21 @@ public class PhysicalServices {
           customizePhysicalLinkEdgeStyle(currentEdge, color);
         }
       }
+      
+      if (physicalPathToEdgesMap.containsKey(physicalPath)) {
+        displayedLinks.addAll(physicalPathToEdgesMap.get(physicalPath));
+      }
+    }
+
+    for (DEdge link : displayedLinks) {
+      ArrayList<RGBValues> pathColors = new ArrayList<RGBValues>();
+      for (EObject pp: link.getSemanticElements()) {
+        if (displayedPaths.containsKey(pp)) {
+          RGBValues color = ShapeUtil.getNodeColorStyle(displayedPaths.get(pp));
+          pathColors.add(color);
+        }
+      }
+      customizeInternalLinksEdgeStyle(link, pathColors.size() == 1 ? pathColors.get(0): ShapeUtil.getBlackColor());
     }
     
     customizePhysicalLinkEdgeLabels(coloredLinks, displayedPaths);
@@ -917,20 +936,19 @@ public class PhysicalServices {
     return coloredLinks;
   }
 
+  /**
+   * Returns the displayed internal links per PhysicalPath
+   */
   private HashMap<PhysicalPath, Set<DEdge>> computePhysicalPathToEdgesMap(DDiagram diagram) {
-    // Displayed Internal Links
     HashMap<PhysicalPath, Set<DEdge>> displayedIL = new HashMap<>();
-    for (DEdge anEdge : diagram.getEdges()) {
-      if (anEdge.getTarget() instanceof PhysicalPath) {
-        if (!displayedIL.containsKey(anEdge.getTarget())) {
-          Set<DEdge> newSet = new HashSet<>();
-          newSet.add(anEdge);
-          displayedIL.put((PhysicalPath) anEdge.getTarget(), newSet);
-        } else {
-          displayedIL.get(anEdge.getTarget()).add(anEdge);
+    for (DEdge anEdge : DDiagramSpecOperations.getEdgesFromMapping(diagram, getPhysicalPathInternLinkEdgeMapping(diagram))) {
+      for (EObject semantic : anEdge.getSemanticElements()) {
+        if (semantic instanceof PhysicalPath) {
+            displayedIL.computeIfAbsent((PhysicalPath) semantic, x -> new HashSet<>()).add(anEdge);
         }
       }
     }
+    
     return displayedIL;
   }
 
@@ -1048,9 +1066,11 @@ public class PhysicalServices {
                 EdgeTarget firstNode = getPortOnInvolved(previousEdge, currentPart);
                 // Get port node from the next edge which is on the current part
                 EdgeTarget secondNode = getPortOnInvolved(nextEdge, currentPart);
-                if (isValidNodeForInternalLink(firstNode) && isValidNodeForInternalLink(secondNode)
-                    && isValidInternalLinkEdge(firstNode, secondNode)) {
-                  internalLinks.add(retrieveInternalLink((DNode) firstNode, (DNode) secondNode, path));
+                if (isValidNodeForInternalLink(firstNode) && isValidNodeForInternalLink(secondNode)) {
+                  DEdge link = createInternalLink((DNode) firstNode, (DNode) secondNode, path);
+                  if (link != null) {
+                    internalLinks.add(link);
+                  }
                 }
               }
             }
@@ -1087,8 +1107,8 @@ public class PhysicalServices {
               DEdge nextEdge = displayedPhysicalLinks.get(nextLink);
               if (nextEdge != null) {
                 EdgeTarget secondNode = getPortOnInvolved(nextEdge, currentPart);
-                if (isValidNodeForInternalLink(secondNode) && isValidInternalLinkEdge(firstNode, secondNode)) {
-                  internalLinks.add(retrieveInternalLink((DNode) firstNode, (DNode) secondNode, path));
+                if (isValidNodeForInternalLink(secondNode)) {
+                  internalLinks.add(createInternalLink((DNode) firstNode, (DNode) secondNode, path));
                 }
               }
             }
@@ -1113,7 +1133,7 @@ public class PhysicalServices {
     return null;
   }
 
-  public boolean isValidInternalLinkEdge(EdgeTarget currentSourceNode, EdgeTarget currentTargetNode) {
+  public boolean isValidInternalLinkEdge(PhysicalPath path, EdgeTarget currentSourceNode, EdgeTarget currentTargetNode) {
     if (currentSourceNode == null) {
       return false;
     }
@@ -1134,10 +1154,15 @@ public class PhysicalServices {
     EObject sourceParent = currentSourceNode.eContainer();
     EObject targetParent = currentTargetNode.eContainer();
     // Internal links are valid on same parent
-    if ((sourceParent != null) && (targetParent != null)) {
-      return sourceParent.equals(targetParent);
+    if (sourceParent == null || targetParent == null || !sourceParent.equals(targetParent)) {
+      return false;
     }
-    return true;
+    
+    DDiagram diagram = ((DDiagramElement) currentSourceNode).getParentDiagram();
+    DEdge anotherEdge = DiagramServices.getDiagramServices().findInternalLinkEdge(diagram, currentSourceNode,
+        currentTargetNode, getPhysicalPathInternLinkEdgeMapping(diagram));
+    boolean hasAnotherEdge = anotherEdge != null && !(path.equals(anotherEdge.getTarget()));
+    return !hasAnotherEdge;
   }
 
   private boolean hasAtLeastOneVisibleEdgeNotPhysicalPath(List<DEdge> edgesRelatedToSource) {
@@ -1168,54 +1193,18 @@ public class PhysicalServices {
   /**
    * Create or return an internal link between both nodes.
    */
-  protected DEdge retrieveInternalLink(DNode sourceNode, DNode targetNode, PhysicalPath physicalPath) {
+  public DEdge createInternalLink(DNode sourceNode, DNode targetNode, PhysicalPath physicalPath) {
     if (sourceNode == targetNode) {
       return null;
     }
-
-    DEdge internalLink = null;
-    for (DEdge anEdge : DiagramServices.getDiagramServices().getOutgoingEdges(sourceNode)) {
-      if (anEdge.getTarget() instanceof PhysicalPath && anEdge.getTarget().equals(physicalPath)
-          && anEdge.getSourceNode() != null && anEdge.getTargetNode() != null) {
-        if (anEdge.getSourceNode().equals(sourceNode) && anEdge.getTargetNode().equals(targetNode)
-            || anEdge.getSourceNode().equals(targetNode) && anEdge.getTargetNode().equals(sourceNode)) {
-          internalLink = anEdge;
-          break;
-        }
-      }
-    }
-
-    for (DEdge anEdge : DiagramServices.getDiagramServices().getIncomingEdges(sourceNode)) {
-      if (anEdge.getTarget() instanceof PhysicalPath && anEdge.getTarget().equals(physicalPath)
-          && anEdge.getSourceNode() != null && anEdge.getTargetNode() != null) {
-        if (anEdge.getSourceNode().equals(sourceNode) && anEdge.getTargetNode().equals(targetNode)
-            || anEdge.getSourceNode().equals(targetNode) && anEdge.getTargetNode().equals(sourceNode)) {
-          internalLink = anEdge;
-          break;
-        }
-      }
-    }
-
-    if (internalLink == null) {
-      internalLink = createInternalLink(sourceNode, targetNode, physicalPath);
-    }
-    return internalLink;
-  }
-
-  /**
-   * @param sourceNode
-   * @param targetNode
-   * @param physicalPath
-   * @param color
-   * @return
-   */
-  public DEdge createInternalLink(DNode sourceNode, DNode targetNode, PhysicalPath physicalPath) {
     DDiagram diagram = CapellaServices.getService().getDiagramContainer(sourceNode);
     EdgeMapping mapping = getPhysicalPathInternLinkEdgeMapping(diagram);
-    DEdge newEdge = DiagramServices.getDiagramServices().findDEdgeElement(diagram, sourceNode, targetNode, physicalPath,
-        mapping);
-    if (newEdge == null) {
+    DEdge newEdge = DiagramServices.getDiagramServices().findInternalLinkEdge(diagram, sourceNode, targetNode, mapping);
+    if (newEdge == null && isValidInternalLinkEdge(physicalPath, sourceNode, targetNode)) {
       newEdge = DiagramServices.getDiagramServices().createEdge(mapping, sourceNode, targetNode, physicalPath);
+    }
+    if (newEdge != null && !newEdge.getSemanticElements().contains(physicalPath)) {
+      newEdge.getSemanticElements().add(physicalPath);
     }
     return newEdge;
   }
