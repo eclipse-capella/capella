@@ -163,6 +163,9 @@
       <migrationContribution 
             class="org.polarsys.capella.core.data.migration.contribution.PatternInstanceDeletionContribution">
       </migrationContribution>
+      <migrationContribution
+            class="org.polarsys.capella.core.data.migration.contribution.EnableFCAndPPFiltersMigrationContribution">
+      </migrationContribution>
    </extension>
    
    
