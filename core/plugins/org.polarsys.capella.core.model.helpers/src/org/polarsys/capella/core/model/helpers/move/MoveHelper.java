@@ -31,12 +31,12 @@ import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.data.capellacommon.AbstractCapabilityPkg;
-import org.polarsys.capella.core.data.capellacommon.AbstractState;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.capellacommon.FinalState;
 import org.polarsys.capella.core.data.capellacommon.Region;
 import org.polarsys.capella.core.data.capellacommon.State;
 import org.polarsys.capella.core.data.capellacommon.StateMachine;
+import org.polarsys.capella.core.data.capellacommon.impl.StateMachineImpl;
 import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
@@ -174,8 +174,8 @@ public class MoveHelper {
           }   
         
         } else if (source instanceof Region) {
-          if (target instanceof AbstractState) {
-            isOK = canMoveRegion((Region) source, (AbstractState) target);
+          if (target instanceof State) {
+            isOK = canMoveRegion((Region) source, (State) target);
             
           } else if (target instanceof StateMachine) {
             isOK = canMoveRegion((Region) source, (StateMachine) target);
@@ -377,7 +377,7 @@ public class MoveHelper {
    *          The State or the Mode where the region should be moved
    * @return true if the region could be moved, false if not
    */
-  public boolean canMoveRegion(Region sourceRegion, AbstractState targetState) {
+  public boolean canMoveRegion(Region sourceRegion, State targetState) {
     if (!CapellaModelPreferencesPlugin.getDefault().isMixedModeStateAllowed()) {
       List<State> sourceRegionStates = getAllModeState(sourceRegion);
       return canMoveStatesInState(sourceRegionStates, targetState);
@@ -385,22 +385,6 @@ public class MoveHelper {
     return true;
   }
 
-  /**
-   * Depending on mixed hierarchy mode state preference, determine if we can move a region into a Region
-   * 
-   * @param sourceRegion
-   *          The region to be moved
-   * @param targetRegion
-   *          The region where the region should be moved
-   * @return true if the region could be moved, false if not
-   */
-  public boolean canMoveRegion(Region sourceRegion, Region targetRegion) {
-    if (!CapellaModelPreferencesPlugin.getDefault().isMixedModeStateAllowed()) {
-      List<State> sourceRegionStates = getAllModeState(sourceRegion);
-      return canMoveStatesInRegion(sourceRegionStates, targetRegion);
-    }
-    return true;
-  }
 
   /**
    * Determine if we can move a list of states into a State
@@ -411,9 +395,18 @@ public class MoveHelper {
    *          The State or the Mode where the states should be moved
    * @return true if the states could be moved, false if not
    */
-  private boolean canMoveStatesInState(List<State> states, AbstractState state) {
-    Region rootRegion = StateMachineExt.getRootRegion(state);
-    return canMoveStatesInRegion(states, rootRegion);
+
+  //  private boolean canMoveStatesInState(List<State> states, AbstractState state) {
+//    Region rootRegion = StateMachineExt.getRootRegion(state);
+//    return canMoveStatesInRegion(states, rootRegion);
+//  }
+  private boolean canMoveStatesInState(List<State> states, State state) {
+    for (State s : states) {
+      if (!canMoveModeState(s, state)) {
+        return false;
+      }
+    }
+    return true;
   }
 
   /**
@@ -433,6 +426,8 @@ public class MoveHelper {
     }
     return true;
   }
+  
+  
 
   /**
    * Depending on mixed hierarchy mode state preference, determine if we can move a mode into a region of state and vice
@@ -442,6 +437,29 @@ public class MoveHelper {
    * @param target
    * @return
    */
+//  public boolean canMoveModeState(State source, Region targetElement) {
+//    boolean result = true;
+//
+//    if (targetElement.eContainer() != null && !(source instanceof FinalState)) {
+//      EObject targetContainer = targetElement.eContainer();
+//
+//      if (!CapellaModelPreferencesPlugin.getDefault().isMixedModeStateAllowed()) {
+//        boolean isSameType = true;
+//        // Check source/target type compatibility if target is a Mode/State
+//        if (targetContainer instanceof State) {
+//          isSameType = targetContainer.eClass() == source.eClass();
+//
+//        } else if (targetContainer instanceof StateMachine) {
+//          List<State> states = getAllModeState(((StateMachine) targetContainer).getOwnedRegions().get(0));
+//          isSameType = !states.isEmpty() ? states.get(0).eClass() == source.eClass() : true;
+//        }
+//        // Move is allowed only when source and target are not mixed
+//        return isSameType && !isDownwardModeStateHierarchyMixed(source) && !isModeStateHierarchyMixed(targetContainer);
+//      }
+//    }
+//    return result;
+//  }
+  
   public boolean canMoveModeState(State source, Region targetElement) {
     boolean result = true;
 
@@ -455,14 +473,23 @@ public class MoveHelper {
           isSameType = targetContainer.eClass() == source.eClass();
 
         } else if (targetContainer instanceof StateMachine) {
-          List<State> states = getAllModeState(((StateMachine) targetContainer).getOwnedRegions().get(0));
+          List<State> states = getAllModeState(targetElement);
           isSameType = !states.isEmpty() ? states.get(0).eClass() == source.eClass() : true;
         }
         // Move is allowed only when source and target are not mixed
-        return isSameType && !isDownwardModeStateHierarchyMixed(source) && !isModeStateHierarchyMixed(targetContainer);
+        return isSameType && !isDownwardModeStateHierarchyMixed(source) && !isUpwardModeStateHierarchyMixed(targetElement, source) && !isModeStateHierarchyMixed(targetElement);
+
+        //return isSameType && !isDownwardModeStateHierarchyMixed(source) && !isUpperModeStateHierarchyMixed(targetElement, source) && !isModeStateHierarchyMixed(targetElement);
       }
     }
     return result;
+  }
+  
+  public boolean canMoveModeState(State source, State target) {
+    if (!CapellaModelPreferencesPlugin.getDefault().isMixedModeStateAllowed()) {
+      return !isUpwardModeStateHierarchyMixed(source, target);
+    }
+    return true;
   }
 
   /**
@@ -503,6 +530,33 @@ public class MoveHelper {
 
     return false;
   }
+  
+  public static boolean isUpwardModeStateHierarchyMixed(Region region, State inputState) {
+    List<State> stateModeLst = getUpwardModeStateHierarchy(region);
+    
+    for (State state : stateModeLst) {
+      if (state.eClass() != inputState.eClass()) {
+        return true;
+      }
+    }
+
+    return false;
+    
+  }
+
+  
+  public static boolean isUpwardModeStateHierarchyMixed(State inputState, State s) {
+    List<State> stateModeLst = getUpwardModeStateHierarchy(s);
+    
+    for (State state : stateModeLst) {
+      if (state.eClass() != inputState.eClass()) {
+        return true;
+      }
+    }
+
+    return false;
+    
+  }
 
   /**
    * This method returns all modes/states in a Mode/State/StateMachine's hierarchy
@@ -512,6 +566,9 @@ public class MoveHelper {
    */
   public static List<State> getModeStateHierarchy(EObject container) {
     List<State> stateModeLst = new ArrayList<>();
+    if (container instanceof Region) {
+      stateModeLst.addAll(getAllModeState((Region)container));
+    }
     if (container instanceof State) {
       // Add contained modes/states
       Iterator<EObject> iter = EcoreUtil.getAllContents(container, true);
@@ -568,6 +625,40 @@ public class MoveHelper {
     // Add itself
     stateModeLst.add(state);
     return stateModeLst;
+  }
+  
+  public static List<State> getUpwardModeStateHierarchy(State state) {
+    List<State> stateModeLst = new ArrayList<>();
+    getUpwardModeStateHierarchyRecursive(state, stateModeLst);
+    stateModeLst.add(state);
+    return stateModeLst;
+  }
+  
+  public static List<State> getUpwardModeStateHierarchy(Region region) {
+    List<State> stateModeLst = new ArrayList<>();
+    getUpwardModeStateHierarchyRecursive(region, stateModeLst);
+    return stateModeLst;
+  }
+  
+  public static void getUpwardModeStateHierarchyRecursive(Region region, List<State> stateModeLst) {
+    if (region.eContainer() != null) {
+      
+      EObject container = region.eContainer();
+      if (container.getClass() != StateMachineImpl.class) {
+        stateModeLst.add((State) container);
+        getUpwardModeStateHierarchyRecursive((Region) container.eContainer(), stateModeLst);
+      }
+    }
+  }
+  
+  public static void getUpwardModeStateHierarchyRecursive(State state, List<State> stateModeLst) {
+    if (state.eContainer() != null) {
+      EObject container = state.eContainer();
+      if (container.eContainer().getClass() != StateMachineImpl.class) {
+        stateModeLst.add((State) container.eContainer());
+        getUpwardModeStateHierarchyRecursive((State) container.eContainer(), stateModeLst);
+      }
+    }
   }
 
   /**
