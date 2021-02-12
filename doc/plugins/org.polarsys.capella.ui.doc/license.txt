@@ -354,3 +354,7 @@ otherprojects_workingsets - org.eclipse.ui.navigator.resources - /icons/full/obj
 UserAccount - org.eclipse.userstorage.oauth - /icons/UserAccount.png
 migrate16 - org.eclipse.ui.intro.universal - /themes/circles/graphics/launchbar/migrate16.png
 file_obj - org.eclipse.ui.editors - \icons\full\obj16\file_obj
+
+OverlappedPPFilters.png
+OverlappedPPLabels.png
+OverlappedPPs.png

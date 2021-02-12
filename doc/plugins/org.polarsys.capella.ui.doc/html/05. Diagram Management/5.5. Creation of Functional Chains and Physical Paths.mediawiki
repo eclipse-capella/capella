@@ -172,3 +172,16 @@ Corresponding Physical Path Description diagram.
 <br>
 <br>
 
+== Icon and label for overlapped Physical Paths/Functional Chains ==
+
+Physical links and functional exchanges are colored in black if there are multiple physical paths or functional chains passing through. To help users better distinguish which physical paths or functional chains are involving in a physical link or a functional exchange, a pie icon with colors of physical paths/functional chains is displayed by default on the beginning and on the end of the physical link/functional exchange as shown in the following image.
+
+[[Image:Images/OverlappedPPs.png|900px]]
+
+Users can also choose to display the name of involving physical paths/functional chains next to the pie icon.
+
+[[Image:Images/OverlappedPPLabels.png|500px]]
+
+Besides, filters are also provided to hide the pie icon or the label of involving physical paths/functional chains according to user's need.
+
+[[Image:Images/OverlappedPPFilters.png|600px]]
