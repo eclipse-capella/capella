@@ -83,9 +83,9 @@
 		<table class="VALIDATION-RULE">
 			<tr>
 				<th>
-					<img title="WARNING" alt="WARNING" border="0" src="../../../../Images/warning.gif"/>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../../Images/error.gif"/>
 				</th>
-				<td>DWF_SM_06 - Mode and State should'nt be in same hierarchy </td>
+				<td>DWF_SM_06 - Mode and State shouldn't be in same hierarchy </td>
 			</tr>
 			<tr>
 				<td colspan="2">This rule depends on the Preference option "Mode/State mixed hierarchy allowed". If this option is set to false, the rule checks that  a state is not in a mode hierarchy or a mode is not in a state hierarchy. In this case, hierarchy includes siblings.</td>
@@ -217,5 +217,22 @@
 				<td colspan="2">This rule depends on the Preference option"Mode/State mixed hierarchy allowed". If this option is set to false, the rule checks that a state does not reuse a mode or a mode does not reuse a state.</td>
 			</tr>
 		</table>
+		<p>
+			<br/>
+		</p>
+		<table class="VALIDATION-RULE">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../../Images/error.gif"/>
+				</th>
+				<td>DWF_SM_16 - State Machine shouldn't have mixed states/modes in different regions </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule depends on the Preference option "Mode/State mixed hierarchy allowed". If this option is set to false, the rule checks that a State Machine has not mixed states/modes in different regions.</td>
+			</tr>
+		</table>
+		<p>
+			<br/>
+		</p>
 	</body>
 </html>
