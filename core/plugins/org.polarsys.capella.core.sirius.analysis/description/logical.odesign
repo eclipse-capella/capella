@@ -1082,6 +1082,9 @@
       <filters xsi:type="filter:CompositeFilterDescription" name="hide.exchange.categories.filter" label="%la.ldfb.hide.exchange.categories.filter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='LDFB_Exchange%20by%20Categorie']" semanticConditionExpression=""/>
       </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.functional.chains.internal.links.filter" label="%hide.functional.chains.internal.links.filter">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='LDFB_InternLink']"/>
+      </filters>
       <filters xsi:type="filter:CompositeFilterDescription" name="show.exchange.items.filter" label="%la.ldfb.show.exchange.items.filter">
         <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" semanticConditionExpression="">
           <mappings xsi:type="description_2:NodeMapping" href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@nodeMappings[name='SDFB_Dummy']"/>
@@ -1941,6 +1944,12 @@
       </filters>
       <filters xsi:type="filter:CompositeFilterDescription" name="hide.realized.ports.filter" label="%la.lab.hide.realized.ports.filter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']/@borderedNodeMappings[name='LAB%20Flow%20Port%20on%20Logical%20Function'] //@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']/@borderedNodeMappings[name='LAB%20InputPin%20by%20Categorie'] //@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']/@borderedNodeMappings[name='LAB%20OutputPin%20by%20Categorie']" semanticConditionExpression="aql:self.incomingPortAllocations->size() = 0"/>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.functional.chains.internal.links.filter" label="%hide.functional.chains.internal.links.filter">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB_InternLink']"/>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.physical.paths.internal.links.filter" label="%hide.physical.paths.internal.links.filter">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB_InternPhysicalPathLink']"/>
       </filters>
       <filters xsi:type="filter:CompositeFilterDescription" name="show.exchange.items.filter" label="%la.lab.show.exchange.items.filter">
         <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" mappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='LAB_Dummy']" semanticConditionExpression=""/>

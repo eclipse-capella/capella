@@ -18,8 +18,10 @@ import java.util.List;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 
-public class XABDiagramFiltersTestSuite extends BasicTestSuite {
+import junit.framework.Test;
 
+public class XABDiagramFiltersTestSuite extends BasicTestSuite {
+  
   @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<>();
@@ -39,6 +41,19 @@ public class XABDiagramFiltersTestSuite extends BasicTestSuite {
     tests.add(new HideByDefaultSequencingInformationSAB());
     tests.add(new HideByDefaultSequencingInformationLAB());
     tests.add(new HideByDefaultSequencingInformationPAB());
+
+    tests.add(new HideFCInternalLinksSAB());
+    tests.add(new HideFCInternalLinksSDFB());
+    tests.add(new HidePPInternalLinksSAB());
+    
+    tests.add(new HideFCInternalLinksLAB());
+    tests.add(new HideFCInternalLinksLDFB());
+    tests.add(new HidePPInternalLinksLAB());
+    
+    tests.add(new HideFCInternalLinksPAB());
+    tests.add(new HideFCInternalLinksPDFB());
+    tests.add(new HidePPInternalLinksPAB());
+
     return tests;
   }
 }

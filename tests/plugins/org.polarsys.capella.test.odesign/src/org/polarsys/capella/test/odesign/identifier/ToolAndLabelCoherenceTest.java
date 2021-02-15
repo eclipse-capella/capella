@@ -33,6 +33,7 @@ import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.platform.sirius.ui.services.IElementIdentifierService;
 import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
 import org.polarsys.capella.core.sirius.analysis.activator.SiriusViewActivator;
+import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
 
 public class ToolAndLabelCoherenceTest extends BasicTestCase {
@@ -94,13 +95,17 @@ public class ToolAndLabelCoherenceTest extends BasicTestCase {
     return Arrays.asList(IMappingNameConstants.HIDE_OVERLAPPED_FUNCTIONAL_CHAINS_ICON,
         IMappingNameConstants.HIDE_OVERLAPPED_FUNCTIONAL_CHAINS_LABEL,
         IMappingNameConstants.HIDE_OVERLAPPED_PHYSICAL_PATHS_ICON,
-        IMappingNameConstants.HIDE_OVERLAPPED_PHYSICAL_PATHS_LABEL).contains(element.getName());
+        IMappingNameConstants.HIDE_OVERLAPPED_PHYSICAL_PATHS_LABEL,
+        IMappingNameConstants.HIDE_OVERLAPPED_PHYSICAL_PATHS_LABEL,
+        IFilterNameConstants.FILTER_PHYSICAL_PATHS_INTERNAL_LINKS_ID,
+        IFilterNameConstants.FILTER_FUNCTIONAL_CHAINS_INTERNAL_LINKS_ID).contains(element.getName());
   }
 
   private PropertyResourceBundle getPluginProperties() {
     PropertyResourceBundle propertyBundle = null;
     try {
-      propertyBundle = new PropertyResourceBundle(FileLocator.openStream(SiriusViewActivator.getInstance().getBundle(), new Path(PLUGIN_PROPERTIES), false));
+      propertyBundle = new PropertyResourceBundle(
+          FileLocator.openStream(SiriusViewActivator.getInstance().getBundle(), new Path(PLUGIN_PROPERTIES), false));
     } catch (IOException e) {
       fail(NLS.bind("Property file {0} doesn't exist.", new String[] { PLUGIN_PROPERTIES }));
     }

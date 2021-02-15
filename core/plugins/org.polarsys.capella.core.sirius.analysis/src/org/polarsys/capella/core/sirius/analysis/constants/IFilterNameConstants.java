@@ -589,6 +589,9 @@ public interface IFilterNameConstants {
   String FILTER_SHOW_CE_EXCHANGE_CONTEXT_ID = "show.ce.exchange.context.filter";
   String FILTER_SHOW_FE_EXCHANGE_CONTEXT_ID = "show.fe.exchange.context.filter";
   String FILTER_SHOW_EI_EXCHANGE_CONTEXT_ID = "show.ei.exchange.context.filter";
+  
+  String FILTER_FUNCTIONAL_CHAINS_INTERNAL_LINKS_ID = "hide.functional.chains.internal.links.filter";
+  String FILTER_PHYSICAL_PATHS_INTERNAL_LINKS_ID = "hide.physical.paths.internal.links.filter";
 
   String FILTER_MERGE_ASSOCIATED_FE_AND_SL = "merge.associated.functional.exchange.involvements.and.sequence.links.without.control.node.filter";
 }

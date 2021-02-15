@@ -2553,6 +2553,9 @@
       <filters xsi:type="filter:CompositeFilterDescription" name="hide.exchange.categories.filter" label="%sa.sdfb.hide.exchange.categories.filter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='SDFB_Exchange%20by%20Categorie']" semanticConditionExpression=""/>
       </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.functional.chains.internal.links.filter" label="%hide.functional.chains.internal.links.filter">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='SDFB_InternLink']"/>
+      </filters>
       <filters xsi:type="filter:CompositeFilterDescription" name="show.exchange.items.filter" label="%sa.sdfb.show.exchange.items.filter">
         <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@nodeMappings[name='SDFB_Dummy']" semanticConditionExpression=""/>
       </filters>
@@ -3390,6 +3393,12 @@
       </filters>
       <filters xsi:type="filter:CompositeFilterDescription" name="hide.realized.ports.filter" label="%sa.sab.hide.realized.ports.filter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']/@borderedNodeMappings[name='CA%20Flow%20Port%20on%20System%20Function'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']/@borderedNodeMappings[name='CA_OutputPin%20by%20Categorie'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']/@borderedNodeMappings[name='CA_InputPin%20by%20Categorie']" semanticConditionExpression="aql:self.incomingPortAllocations->size() = 0"/>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.functional.chains.internal.links.filter" label="%hide.functional.chains.internal.links.filter">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='CA_InternLink']"/>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.physical.paths.internal.links.filter" label="%hide.physical.paths.internal.links.filter">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='SAB_InternPhysicalPathLink']"/>
       </filters>
       <filters xsi:type="filter:CompositeFilterDescription" name="show.exchange.items.filter" label="%sa.sab.show.exchange.items.filter">
         <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='CA%20Dummy']" semanticConditionExpression=""/>
