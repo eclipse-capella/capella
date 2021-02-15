@@ -2,4 +2,4 @@
 
 Some online tutorials are available to ease creation of Capella Extensions.
 
-Please visit the online documentation on polarsys.org : https://wiki.polarsys.org/Capella/Tutorials
+Please visit the online documentation: https://github.com/eclipse/capella/wiki/Tutorials

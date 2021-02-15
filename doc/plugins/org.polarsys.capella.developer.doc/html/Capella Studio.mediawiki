@@ -2,7 +2,7 @@
 
 Capella Studio provides a full-integrated development environment which aims at facilitating the development of extensions for Capella.
 
-It can be downloaded on [https://polarsys.org/capella/download.html Capella project site].
+It can be downloaded on [https://www.eclipse.org/capella/download.html Capella project site].
 
 It embeds several tools such as VPDSL, a textual definition helping to extends Capella core elements and generate automatically a skeleton Viewpoint with Model and Diagram extensions, Semantic Browser, Property views.
 
@@ -12,5 +12,5 @@ With some slight modifications, the skeleton viewpoint can be customized to crea
 
 [[File:Images/sample_diagram.png|thumbnail|600px]]
 
-See also the main [https://www.polarsys.org/kitalpha/ Kitalpha project site] and the [https://wiki.polarsys.org/Kitalpha top-level wiki page].
+See also the main [https://www.eclipse.org/kitalpha/ Kitalpha project site] and the [https://wiki.eclipse.org/Kitalpha top-level wiki page].
 

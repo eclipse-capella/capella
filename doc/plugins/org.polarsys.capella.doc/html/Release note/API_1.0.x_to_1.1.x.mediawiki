@@ -5,4 +5,4 @@
 * Code adaption for developed addons managing representations, have a look to Sirius Descriptors
 * AFM implementation for Viewpoints,
 ** Any viewpoint extending capella models must be registered through AFM mecanism (and be visible in the Viewpoint Manager view)
-** Have a look to related kitalpha documentation (https://wiki.polarsys.org/Kitalpha/viewpoint) to have the correct how-to for viewpoint migration
+** Have a look to related kitalpha documentation (https://wiki.eclipse.org/Kitalpha/viewpoint) to have the correct how-to for viewpoint migration
