@@ -18,12 +18,12 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.core.data.capellacore.Constraint;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
 import org.polarsys.capella.core.data.pa.deployment.PartDeploymentLink;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
-import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.sirius.analysis.CsServices;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
@@ -44,7 +44,7 @@ public class ConstraintAssignmentRule extends AbstractValidationRule {
       for (ModelElement element : constrainedElements) {
         if ((element instanceof Part || element instanceof PartDeploymentLink) 
             && !(BlockArchitectureExt.getRootBlockArchitecture(eObj) instanceof EPBSArchitecture)) {
-          return ctx.createFailureStatus(CapellaElementExt.getValidationRuleMessagePrefix(constraint) , element.eClass().getName());
+          return ctx.createFailureStatus(EObjectLabelProviderHelper.getText(constraint), element.eClass().getName());
         }
       }
     }
