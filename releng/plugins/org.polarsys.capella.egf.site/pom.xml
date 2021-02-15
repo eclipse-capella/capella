@@ -18,13 +18,13 @@
 	<parent>
 		<groupId>org.polarsys</groupId>
 		<artifactId>org.polarsys.capella</artifactId>
-		<version>5.0.0-SNAPSHOT</version>
+		<version>5.1.0-SNAPSHOT</version>
 		<relativePath>../../../</relativePath>
 	</parent>
 
 	<artifactId>org.polarsys.capella.egf.site</artifactId>
 	<packaging>eclipse-repository</packaging>
-	<version>5.0.0-SNAPSHOT</version>
+	<version>5.1.0-SNAPSHOT</version>
 
 	<properties>
     	<sonar.skip>true</sonar.skip>

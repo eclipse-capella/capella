@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-Vendor: %providerName
 Bundle-SymbolicName: org.polarsys.capella.ui.views
-Bundle-Version: 5.0.0.qualifier
+Bundle-Version: 5.1.0.qualifier
 Fragment-Host: org.eclipse.ui.views;bundle-version="3.2.101"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Localization: plugin

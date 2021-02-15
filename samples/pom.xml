@@ -19,7 +19,7 @@
 	<parent>
 		<groupId>org.polarsys</groupId>
 		<artifactId>org.polarsys.capella</artifactId>
-		<version>5.0.0-SNAPSHOT</version>
+		<version>5.1.0-SNAPSHOT</version>
 		<relativePath>../</relativePath>
 	</parent>
 	
@@ -29,7 +29,7 @@
 	
 	<groupId>org.polarsys</groupId>
 	<artifactId>org.polarsys.capella.samples</artifactId>
-	<version>5.0.0-SNAPSHOT</version>
+	<version>5.1.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<build>

@@ -15,10 +15,10 @@
    <description url="http://www.polarsys.org/capella">
       Capella tests
    </description>
-   <feature id="org.polarsys.capella.test.feature" version="5.0.0.qualifier">
+   <feature id="org.polarsys.capella.test.feature" version="5.1.0.qualifier">
       <category name="org.polarsys.capella.test"/>
    </feature>
-   <feature id="org.polarsys.capella.test.feature.source" version="5.0.0.qualifier">
+   <feature id="org.polarsys.capella.test.feature.source" version="5.1.0.qualifier">
       <category name="org.polarsys.capella.test"/>
    </feature>
    <category-def name="org.polarsys.capella.test" label="Capella Tests"/>

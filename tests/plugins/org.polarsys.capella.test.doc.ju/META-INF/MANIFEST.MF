@@ -4,7 +4,7 @@ Bundle-Name: %pluginName
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-SymbolicName: org.polarsys.capella.test.doc.ju
-Bundle-Version: 5.0.0.qualifier
+Bundle-Version: 5.1.0.qualifier
 Bundle-Activator: org.polarsys.capella.test.doc.ju.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,

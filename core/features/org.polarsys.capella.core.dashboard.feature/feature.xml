@@ -14,7 +14,7 @@
 <feature
       id="org.polarsys.capella.core.dashboard.feature"
       label="%featureName"
-      version="5.0.0.qualifier"
+      version="5.1.0.qualifier"
       provider-name="%providerName">
 
    <description url="http://www.example.com/description">

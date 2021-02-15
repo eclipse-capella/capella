@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.data.res.edit
-Bundle-Version: 5.0.0.qualifier
+Bundle-Version: 5.1.0.qualifier
 Bundle-Vendor: %providerName
 Fragment-Host: org.polarsys.capella.core.data.gen.edit
 Bundle-Localization: plugin

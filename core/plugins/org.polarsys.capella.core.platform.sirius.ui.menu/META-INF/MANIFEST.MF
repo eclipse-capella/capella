@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.platform.sirius.ui.menu;singleton:=true
-Bundle-Version: 5.0.0.qualifier
+Bundle-Version: 5.1.0.qualifier
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.sirius.diagram,
  org.eclipse.gmf.runtime.diagram.ui.resources.editor;visibility:=reexport,
