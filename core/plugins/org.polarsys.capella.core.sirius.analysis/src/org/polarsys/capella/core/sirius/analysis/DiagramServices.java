@@ -790,6 +790,25 @@ public class DiagramServices {
   }
 
   /**
+   * Returns the first element on the diagram target that has the specified semantic and mapping target.
+   * 
+   * @param diagramTarget
+   *          the diagram target
+   * @param mappingTarget
+   *          the mapping target
+   * @param semanticTarget
+   *          the semantic target
+   * @return the first element on the diagram target that has the specified semantic and mapping target.
+   */
+  public DDiagramElement getDiagramElement(DDiagram diagramTarget, DiagramElementMapping mappingTarget,
+      EObject semanticTarget) {
+
+    return getDiagramElementsStream(diagramTarget, semanticTarget).filter(DDiagramElement.class::isInstance)
+        .map(DDiagramElement.class::cast).filter(element -> element.getMapping().equals(mappingTarget)).findFirst()
+        .orElse(null);
+  }
+  
+  /**
    * Returns the elements on the diagram target that have the specified semantic and mapping target.
    * 
    * @param diagramTarget
@@ -800,12 +819,12 @@ public class DiagramServices {
    *          the semantic target
    * @return the elements on the diagram target that have the specified semantic and mapping target.
    */
-  public DDiagramElement getDiagramElements(DDiagram diagramTarget, DiagramElementMapping mappingTarget,
+  public Collection<DDiagramElement> getDiagramElements(DDiagram diagramTarget, DiagramElementMapping mappingTarget,
       EObject semanticTarget) {
 
     return getDiagramElementsStream(diagramTarget, semanticTarget).filter(DDiagramElement.class::isInstance)
-        .map(DDiagramElement.class::cast).filter(element -> element.getMapping().equals(mappingTarget)).findFirst()
-        .orElse(null);
+        .map(DDiagramElement.class::cast).filter(element -> element.getMapping().equals(mappingTarget))
+        .collect(Collectors.toSet());
   }
 
   /**

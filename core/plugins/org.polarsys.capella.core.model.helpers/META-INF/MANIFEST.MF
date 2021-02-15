@@ -15,7 +15,8 @@ Require-Bundle: org.apache.commons.lang,
  com.google.guava;bundle-version="15.0.0",
  org.eclipse.sirius.diagram,
  org.polarsys.kitalpha.ad.common,
- org.polarsys.kitalpha.ad.services
+ org.polarsys.kitalpha.ad.services,
+ org.polarsys.capella.core.data.gen
 Export-Package: org.polarsys.capella.core.model.helpers,
  org.polarsys.capella.core.model.helpers.delete,
  org.polarsys.capella.core.model.helpers.graph,
