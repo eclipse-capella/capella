@@ -117,6 +117,44 @@
                <target
                      class="AbstractDependenciesPkg"></target>
             </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.capellamodeller.validation.ConstraintAssignmentRule"
+                  id="DWF_D_58"
+                  isEnabledByDefault="true"
+                  lang="java"
+                  mode="Batch"
+                  name="DWF_D_58 - ConstraintName (Constraint) should constrain the Component"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} should constrain the Component instead of the {1}.
+               </message>
+               <target
+                     class="Constraint">
+               </target>
+               <description>
+                  This rule ensures that in monopart mode a constraint constrains the Component and not the Part or PartDeploymentLink.
+               </description>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.capellamodeller.validation.ConstraintLocationRule"
+                  id="DWF_D_59"
+                  isEnabledByDefault="true"
+                  lang="java"
+                  mode="Batch"
+                  name="DWF_D_59 - ConstraintName (Constraint) should be located under Component"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} should be located under {1}.
+               </message>
+               <target
+                     class="Constraint">
+               </target>
+               <description>
+                  This rule ensures that if a constraint is applied to only one element then the constraint is located under Component.
+               </description>
+            </constraint>
          </constraints>
          <constraints
                categories="capella.category/quality">

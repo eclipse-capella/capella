@@ -6185,20 +6185,32 @@ public class CsServices {
    */
   public List<EObject> targeFinderExpressionForConstraint(Constraint context) {
     List<EObject> result = new ArrayList<>();
-    EList<ModelElement> constrainedElements = context.getConstrainedElements();
-    for (ModelElement modelElement : constrainedElements) {
-      // get deployed element for each partDeploymentLink
-      if (modelElement instanceof PartDeploymentLink) {
-        PartDeploymentLink link = (PartDeploymentLink) modelElement;
+    // Retrieve all contrainedElements for a given constraint
+    // If applied on a deployment, retrieve the part and its component
+    // If applied on a part, then retrieve also its component
+    // If applied on a component, then retrieve all its parts
+
+    LinkedList<EObject> toVisit = new LinkedList<>();
+    toVisit.addAll(context.getConstrainedElements());
+    while (!toVisit.isEmpty()) {
+      EObject object = toVisit.removeFirst();
+      if (result.contains(object)) {
+        continue;
+      }
+      result.add(object);    
+
+      if (object instanceof PartDeploymentLink) {
+        PartDeploymentLink link = (PartDeploymentLink) object;
         DeployableElement deployedElement = link.getDeployedElement();
         if (null != deployedElement) {
-          result.add(deployedElement);
+          toVisit.add(deployedElement);
         }
-      } else {
-        result.add(modelElement);
+      } else if (object instanceof Component) {
+        toVisit.addAll(((Component) object).getRepresentingParts());
+      } else if (object instanceof Part) {
+        result.add(((Part) object).getAbstractType());
       }
     }
-
     return result;
   }
 
