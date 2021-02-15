@@ -55,6 +55,7 @@ import org.polarsys.capella.test.diagram.tools.ju.xab.ManageFunctionAllocation;
 import org.polarsys.capella.test.diagram.tools.ju.xab.ManageNodePCsDeployment;
 import org.polarsys.capella.test.diagram.tools.ju.xab.ManageRoleAllocation;
 import org.polarsys.capella.test.diagram.tools.ju.xab.PhysicalLinkIconAndLabel;
+import org.polarsys.capella.test.diagram.tools.ju.xab.PhysicalPathDisplay;
 import org.polarsys.capella.test.diagram.tools.ju.xab.ReconnectComponentExchange;
 import org.polarsys.capella.test.diagram.tools.ju.xab.ReconnectFunctionalExchange;
 import org.polarsys.capella.test.diagram.tools.ju.xab.ReconnectPhysicalLink;
@@ -133,6 +134,7 @@ public class XABDiagramToolsTestSuite extends BasicTestSuite {
 
     tests.add(new DiagramPartIcon());
     tests.add(new PhysicalLinkIconAndLabel());
+    tests.add(new PhysicalPathDisplay());
 
     tests.add(new CreateBehaviorPCGroup());
     tests.add(new CreateComponent());

@@ -15,8 +15,11 @@ package org.polarsys.capella.core.model.helpers.graph;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.stream.Collectors;
 
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
+
+import com.google.common.collect.Streams;
 
 /**
  * A node. A node can be connected to other nodes through edges
@@ -45,6 +48,10 @@ public class GraphNode<NS, E extends GraphEdge> {
     return Collections.unmodifiableCollection(incomingEdges);
   }
 
+  public Collection<E> getConnectedEdges() {
+    return Streams.concat(incomingEdges.stream(), outgoingEdges.stream()).collect(Collectors.toList());
+  }
+  
   public String toString() {
     return "n(" + EObjectLabelProviderHelper.getText(semantic) + ")";
   }

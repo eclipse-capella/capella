@@ -48,7 +48,7 @@ public class ContextualCapabilityRealizationInvolvementRefreshExtension extends 
     // Get the main CapabilityRealization semantic object and its corresponding
     // graphical object
     final CapabilityRealization mainCapability = (CapabilityRealization) ((DSemanticDecorator) diagram).getTarget();
-    DDiagramElement mainCapabilityGraphicalNode = DiagramServices.getDiagramServices().getDiagramElements(diagram,
+    DDiagramElement mainCapabilityGraphicalNode = DiagramServices.getDiagramServices().getDiagramElement(diagram,
         capabilityRealizationMapping, mainCapability);
 
     // If the graphical node is not already on the diagram, we create it
@@ -83,7 +83,7 @@ public class ContextualCapabilityRealizationInvolvementRefreshExtension extends 
           if (!DiagramServices.getDiagramServices().isOnDiagram(diagram, inv)) {
             // If the target of the Involvement is not present on the diagram, we create it
             if (null == graphicalNode) {
-              graphicalNode = DiagramServices.getDiagramServices().getDiagramElements(diagram, componentNodeMapping,
+              graphicalNode = DiagramServices.getDiagramServices().getDiagramElement(diagram, componentNodeMapping,
                   involvedElement);
             }
             final DDiagramElement graphicalEdge = DiagramServices.getDiagramServices().createEdge(

@@ -94,6 +94,8 @@ public class Bug1917TestCase extends BasicTestCase {
 	//[PAB] Physical System 8: Internal Link 4
 	private String[] diag8InternalLink4Ids = {"bfff6a9c-53ef-43f1-9333-3100a6bad3d8", "0081811c-c036-491b-b591-1528567efa63"};
 	
+	 //[PAB] Physical System 8: Internal Link 5
+  private String[] diag8InternalLink5Ids = {"b5d33fd7-8c2b-4808-96f6-2e106c157503", "3c6eccae-502a-48f1-98d9-5dd54cafb287"};
 	
 	@Override
   public List<String> getRequiredTestModels() {
@@ -135,11 +137,12 @@ public class Bug1917TestCase extends BasicTestCase {
     testInternalLink(session, diagramName7, diag7InternalLink3Ids);
     testInternalLink(session, diagramName7, diag7InternalLink4Ids);
     
-    testDiagram(session, diagramName8, 9);
+    testDiagram(session, diagramName8, 10);
     testInternalLink(session, diagramName8, diag8InternalLink1Ids);
     testInternalLink(session, diagramName8, diag8InternalLink2Ids);
     testInternalLink(session, diagramName8, diag8InternalLink3Ids);
     testInternalLink(session, diagramName8, diag8InternalLink4Ids);
+    testInternalLink(session, diagramName8, diag8InternalLink5Ids);
   }
 
   private void testDiagram(Session session, String diagramName, int expectedNbOfEdges) {

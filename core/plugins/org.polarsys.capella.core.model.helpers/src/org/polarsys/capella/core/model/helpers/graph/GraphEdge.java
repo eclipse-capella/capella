@@ -12,6 +12,9 @@
  *******************************************************************************/
 package org.polarsys.capella.core.model.helpers.graph;
 
+import java.util.Arrays;
+import java.util.Collection;
+
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 
 /**
@@ -39,6 +42,10 @@ public class GraphEdge<ES, N extends GraphNode> {
 
   public N getTarget() {
     return target;
+  }
+  
+  public Collection<N> getConnectedNodes() {
+    return Arrays.asList(source, target);
   }
 
   public void setSource(N newSource) {
