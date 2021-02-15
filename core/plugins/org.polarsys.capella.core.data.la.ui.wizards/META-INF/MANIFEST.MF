@@ -14,7 +14,7 @@ Require-Bundle: org.polarsys.capella.core.ui.toolkit,
  org.polarsys.capella.core.data.gen,
  org.eclipse.sirius.diagram,
  org.polarsys.capella.core.model.handler
-Bundle-Version: 5.0.0.qualifier
+Bundle-Version: 5.1.0.qualifier
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.polarsys.capella.core.common.ui.wizards.LCDWizardPlugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8

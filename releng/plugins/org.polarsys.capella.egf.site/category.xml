@@ -15,10 +15,10 @@
    <description url="http://www.polarsys.org/capella">
       Capella EGF Patterns
    </description>
-   <feature id="org.polarsys.capella.core.egf.feature" version="5.0.0.qualifier">
+   <feature id="org.polarsys.capella.core.egf.feature" version="5.1.0.qualifier">
       <category name="org.polarsys.capella.egf"/>
    </feature>
-   <feature id="org.polarsys.capella.core.egf.feature.source" version="5.0.0.qualifier">
+   <feature id="org.polarsys.capella.core.egf.feature.source" version="5.1.0.qualifier">
       <category name="org.polarsys.capella.egf"/>
    </feature>
    <category-def name="org.polarsys.capella.egf" label="Capella EGF Patterns"/>

@@ -15,19 +15,19 @@
    <description url="http://www.polarsys.org/capella">
       Capella
    </description>
-   <feature id="org.polarsys.capella.rcp" version="5.0.0.qualifier">
+   <feature id="org.polarsys.capella.rcp" version="5.1.0.qualifier">
       <category name="org.polarsys.capella.rcp"/>
    </feature>
-   <feature id="org.polarsys.capella.rcp.source" version="5.0.0.qualifier">
+   <feature id="org.polarsys.capella.rcp.source" version="5.1.0.qualifier">
       <category name="org.polarsys.capella.rcp"/>
    </feature>
-   <feature id="org.polarsys.capella.doc.feature" version="5.0.0.qualifier">
+   <feature id="org.polarsys.capella.doc.feature" version="5.1.0.qualifier">
       <category name="org.polarsys.capella.rcp"/>
    </feature>
-   <feature id="org.polarsys.capella.cdo.mock.feature" version="5.0.0.qualifier">
+   <feature id="org.polarsys.capella.cdo.mock.feature" version="5.1.0.qualifier">
       <category name="org.polarsys.capella.rcp"/>
    </feature>
-   <feature id="org.polarsys.capella.viatra.core.feature" version="5.0.0.qualifier">
+   <feature id="org.polarsys.capella.viatra.core.feature" version="5.1.0.qualifier">
       <category name="org.polarsys.capella.rcp"/>
    </feature>
    <category-def name="org.polarsys.capella.rcp" label="Capella"/>

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.model.helpers;singleton:=true
-Bundle-Version: 5.0.0.qualifier
+Bundle-Version: 5.1.0.qualifier
 Bundle-Vendor: %providerName
 Require-Bundle: org.apache.commons.lang,
  org.eclipse.emf.codegen.ecore,
@@ -12,7 +12,7 @@ Require-Bundle: org.apache.commons.lang,
  org.polarsys.capella.core.data.helpers;visibility:=reexport,
  org.polarsys.capella.core.model.preferences,
  org.polarsys.capella.common.libraries,
- com.google.guava;bundle-version="15.0.0",
+ com.google.guava;bundle-version="15.1.0",
  org.eclipse.sirius.diagram,
  org.polarsys.kitalpha.ad.common,
  org.polarsys.kitalpha.ad.services,

@@ -4,7 +4,7 @@ Bundle-Name: %pluginName
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-SymbolicName: org.polarsys.capella.core.af.integration;singleton:=true
-Bundle-Version: 5.0.0.qualifier
+Bundle-Version: 5.1.0.qualifier
 Bundle-Activator: org.polarsys.capella.core.af.integration.AFIntegrationPlugin
 Require-Bundle: org.polarsys.capella.core.model.handler,
  org.polarsys.kitalpha.ad.metadata;visibility:=reexport,
