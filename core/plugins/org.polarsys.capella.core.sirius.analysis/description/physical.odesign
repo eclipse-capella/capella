@@ -672,6 +672,9 @@
       <filters xsi:type="filter:CompositeFilterDescription" name="hide.exchange.categories.filter" label="%pa.pdfb.hide.exchange.categories.filter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='PDFB_Exchange%20by%20Categorie']" semanticConditionExpression=""/>
       </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.functional.chains.internal.links.filter" label="%hide.functional.chains.internal.links.filter">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='PDFB_InternLink']"/>
+      </filters>
       <filters xsi:type="filter:CompositeFilterDescription" name="show.exchange.items.filter" label="%pa.pdfb.show.exchange.items.filter">
         <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" semanticConditionExpression="">
           <mappings xsi:type="description_2:NodeMapping" href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@nodeMappings[name='SDFB_Dummy']"/>
@@ -2011,6 +2014,12 @@
       </filters>
       <filters xsi:type="filter:CompositeFilterDescription" name="hide.deployed.pcs.filter" label="%pa.pab.hide.deployed.pcs.filter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Deployment']"/>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.functional.chains.internal.links.filter" label="%hide.functional.chains.internal.links.filter">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='PAB_InternLink']"/>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.physical.paths.internal.links.filter" label="%hide.physical.paths.internal.links.filter">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='PAB_InternPhysicalPathLink']"/>
       </filters>
       <filters xsi:type="filter:CompositeFilterDescription" name="show.exchange.items.filter" label="%pa.pab.show.exchange.items.filter">
         <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" mappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_Dummy']" semanticConditionExpression=""/>
