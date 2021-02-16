@@ -304,7 +304,7 @@ public class SkeletonHelper {
 
     } else if (container instanceof BlockArchitecture) {
       createObject(elementId, containerId, CsPackage.Literals.BLOCK_ARCHITECTURE__OWNED_INTERFACE_PKG,
-          CsPackage.Literals.INTERFACE_PKG, elementId, context);
+          CsPackage.Literals.INTERFACE_PKG, NamingConstants.CreateCommonCmd_interfaces_pkg_name, context);
     }
   }
 
