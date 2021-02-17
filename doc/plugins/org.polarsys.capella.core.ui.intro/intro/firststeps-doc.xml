@@ -26,7 +26,7 @@
                 <text>Watch "how-to" and demonstration screencasts, learn more about the next evolutions and roadmaps, access to development resources, etc.</text>
             </link>
             <link style-id="content-link" label="Visit Capella Forum"
-                url="https://forum.mbse-capella.org/" id="visitCapellaForum">
+                url="http://org.eclipse.ui.intro/openBrowser?url=https://forum.mbse-capella.org/" id="visitCapellaForum">
                 <text>
                 Access the discussion board and post a general question about Capella tooling, Arcadia methodology, about how to model some specific parts of your system, etc.
                 </text>
