@@ -214,6 +214,21 @@
 
 			<br/>
 		</p>
+		<h3 id="Display_of_multi-branch_physical_path">Display of multi-branch physical path</h3>
+		<p>Physical paths can be composed in a way that there are many branches in the same physical path. For example, in the below image, if the physical path begins with PL 1, at PC 2 it is separated into 2 branches, either it can go to PC 3 via PL 2 or it can go to PC 4 via PL 3. </p>
+		<p>
+			<img width="500" border="0" src="Images/MultibranchPP.png"/>
+		</p>
+		<p>There is no orientation in physical path, in other words, depending on which physical component the physical path begins with that we have a different way to interpret the physical path. For example, for the above image, we can also understand that the path begins with PC 3, via PL 2 it reaches PC 2 and then dispatches into PC 1 and PC 4 via PL 1 and PL 3 accordingly. Therefore, when displaying a physical path in diagrams, in case of having different ways to track a physical path, we illustrate all of them.</p>
+		<p>
+			<img width="600" border="0" src="Images/MultibranchPPDisplay.png"/>
+		</p>
+		<p>For example, in the above image, inside PC 2 there are 3 internal links that form the physical path. They allow the continuity of the physical path regardless of whatever way the physical path is interpreted.</p>
+		<h3 id="Internal_link_filters">Internal link filters</h3>
+		<p>Two filters are provided to hide physical path internal links and functional chain internal links. For the same above example, if the "Hide Physical Path Internal Links" filter is applied, internal links related to the physical path "Physical Path 1" will be hidden in the diagram.</p>
+		<p>
+			<img width="600" border="0" src="Images/PPInternalLinkFilter.png"/>
+		</p>
 		<h2 id="Icon_and_label_for_overlapped_Physical_Paths.2FFunctional_Chains">Icon and label for overlapped Physical Paths/Functional Chains</h2>
 		<p>Physical links and functional exchanges are colored in black if there are multiple physical paths or functional chains passing through. To help users better distinguish which physical paths or functional chains are involving in a physical link or a functional exchange, a pie icon with colors of physical paths/functional chains is displayed by default on the beginning and on the end of the physical link/functional exchange as shown in the following image.</p>
 		<p>

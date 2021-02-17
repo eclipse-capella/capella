@@ -358,3 +358,6 @@ file_obj - org.eclipse.ui.editors - \icons\full\obj16\file_obj
 OverlappedPPFilters.png
 OverlappedPPLabels.png
 OverlappedPPs.png
+MultibranchPP.png
+MultibranchPPDisplay.png
+PPInternalLinkFilter.png
