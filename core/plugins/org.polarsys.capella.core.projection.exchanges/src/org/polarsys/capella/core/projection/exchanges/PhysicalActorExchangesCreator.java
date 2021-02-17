@@ -41,6 +41,5 @@ public class PhysicalActorExchangesCreator implements IExchangesCreator {
    */
   public void createExchanges() {
     new DefaultExchangesCreator(component).createExchanges();
-    new NodePhysicalComponentExchangesCreator(component, part).createExchanges();
   }
 }
