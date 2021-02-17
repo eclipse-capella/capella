@@ -16,6 +16,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.OperationCanceledException;
@@ -75,12 +77,26 @@ public class SequenceDiagramServices {
     if (eObject instanceof InstanceRole) {
       return (InstanceRole) eObject;
     } else if (eObject instanceof Execution) {
-      return ScenarioCache.getInstance().getInteractionCache(Execution::getCovered, (Execution) eObject);
+      return ScenarioCache.getInstance().getInteractionCache(new Function<EObject, InstanceRole>() {
+        @Override
+        public InstanceRole apply(EObject execution) {
+          return ((Execution) execution).getCovered();
+        }
+      }, (Execution) eObject);
     } else if (eObject instanceof AbstractEnd) {
-      return ScenarioCache.getInstance().getInteractionCache(AbstractEnd::getCovered, (AbstractEnd) eObject);
+      return ScenarioCache.getInstance().getInteractionCache(new Function<EObject, InstanceRole>() {
+        @Override
+        public InstanceRole apply(EObject end) {
+          return ((AbstractEnd) end).getCovered();
+        }
+      }, (AbstractEnd) eObject);
     } else if (eObject instanceof StateFragment) {
-      return ScenarioCache.getInstance()
-          .getInteractionCache(state -> currentInstanceRole(((StateFragment) state).getStart()), eObject);
+      return ScenarioCache.getInstance().getInteractionCache(new Function<EObject, InstanceRole>() {
+        @Override
+        public InstanceRole apply(EObject state) {
+          return currentInstanceRole(((StateFragment) state).getStart());
+        }
+      }, eObject);
     } else {
       return null;
     }
@@ -105,30 +121,42 @@ public class SequenceDiagramServices {
     return message.getReceivingEnd();
   }
 
-  public static EObject getSendingEnd(SequenceMessage message) {
+  public static EObject getSendingEnd(final SequenceMessage message) {
     MessageEnd end = message.getSendingEnd();
     if (end == null) {
       return message; // found message case
     }
     InstanceRole currentInstanceRole = currentInstanceRole(end);
-    List<SemanticCandidateContext> semanticCandidateContexts = ScenarioCache.getInstance().getSemanticCandidateContexts(currentInstanceRole);
+    List<SemanticCandidateContext> semanticCandidateContexts = ScenarioCache.getInstance()
+        .getSemanticCandidateContexts(currentInstanceRole);
 
     Optional<SemanticCandidateContext> sendingEvent = semanticCandidateContexts.stream()
-        .filter(ec -> ec.isStart() && ec.getElement().equals(message)).findFirst();
+        .filter(new Predicate<SemanticCandidateContext>() {
+          @Override
+          public boolean test(SemanticCandidateContext ec) {
+            return ec.isStart() && ec.getElement().equals(message);
+          }
+        }).findFirst();
     return sendingEvent.isPresent() ? sendingEvent.get().getParent() : currentInstanceRole;
 
   }
 
-  public static EObject getReceivingEnd(SequenceMessage message) {
+  public static EObject getReceivingEnd(final SequenceMessage message) {
     MessageEnd end = message.getReceivingEnd();
     if (end == null) {
       return message; // lost message case
     }
     InstanceRole currentInstanceRole = currentInstanceRole(end);
-    List<SemanticCandidateContext> semanticCandidateContexts = ScenarioCache.getInstance().getSemanticCandidateContexts(currentInstanceRole);
+    List<SemanticCandidateContext> semanticCandidateContexts = ScenarioCache.getInstance()
+        .getSemanticCandidateContexts(currentInstanceRole);
 
     Optional<SemanticCandidateContext> receivingEvent = semanticCandidateContexts.stream()
-        .filter(ec -> !ec.isStart() && ec.getElement().equals(message)).findFirst();
+        .filter(new Predicate<SemanticCandidateContext>() {
+          @Override
+          public boolean test(SemanticCandidateContext ec) {
+            return !ec.isStart() && ec.getElement().equals(message);
+          }
+        }).findFirst();
     return receivingEvent.isPresent() ? receivingEvent.get().getParent() : currentInstanceRole;
 
   }

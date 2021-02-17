@@ -18,13 +18,13 @@ import java.util.Deque;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Consumer;
 import java.util.function.Function;
-import java.util.stream.Collectors;
+import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.helpers.cache.Cache;
 import org.polarsys.capella.core.data.interaction.AbstractEnd;
 import org.polarsys.capella.core.data.interaction.AbstractFragment;
 import org.polarsys.capella.core.data.interaction.Execution;
@@ -38,6 +38,10 @@ import org.polarsys.capella.core.data.interaction.SequenceMessage;
 import org.polarsys.capella.core.data.interaction.StateFragment;
 import org.polarsys.capella.core.data.interaction.TimeLapse;
 import org.polarsys.capella.core.sirius.analysis.SequenceDiagramServices;
+
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 
 /**
  * Compute Scenario cache structure for sequence diagram.
@@ -240,15 +244,34 @@ public class ScenarioCache {
    *          EObject
    * @return Collection<EObject>
    */
-  private Collection<EObject> getSemanticCandidates(InstanceRole instanceRole, EObject element) {
+  private Collection<EObject> getSemanticCandidates(InstanceRole instanceRole, final EObject element) {
     Collection<EObject> semanticCandidates = getSemanticCandidatesFromCache(element);
     if (semanticCandidates == null) {
       // compute result from SemanticCandidateContext structure
       List<SemanticCandidateContext> semanticCandidateContexts = getSemanticCandidateContexts(instanceRole);
 
-      semanticCandidates = semanticCandidateContexts.stream().filter(scc -> element.equals(scc.getParent()))
-          .map(SemanticCandidateContext::getElement).filter(candidate -> candidate != element).distinct()
-          .collect(Collectors.toList());
+      com.google.common.base.Predicate<SemanticCandidateContext> pred = new com.google.common.base.Predicate<ScenarioCache.SemanticCandidateContext>() {
+
+        @Override
+        public boolean apply(SemanticCandidateContext scc) {
+          return element.equals(scc.getParent());
+        }
+      };
+      com.google.common.base.Function<? super SemanticCandidateContext, EObject> func = new com.google.common.base.Function<SemanticCandidateContext, EObject>() {
+        @Override
+        public EObject apply(SemanticCandidateContext scc) {
+          return scc.getElement();
+        };
+      };
+      com.google.common.base.Predicate<EObject> pred2 = new com.google.common.base.Predicate<EObject>() {
+
+        @Override
+        public boolean apply(EObject candidate) {
+          return candidate != element;
+        }
+      };
+      semanticCandidates = Sets.newLinkedHashSet(
+          Iterables.filter(Iterables.transform(Iterables.filter(semanticCandidateContexts, pred), func), pred2));
       if (isRefreshCacheEnabled()) {
         putSemanticCandidatesInCache(element, semanticCandidates);
       }
@@ -265,14 +288,14 @@ public class ScenarioCache {
    *          EObject
    * @return Collection<EObject>
    */
-  public Collection<Execution> getExecutionSemanticCandidates(InstanceRole instanceRole, EObject element) {
-    return getSemanticCandidates(instanceRole, element).stream().filter(Execution.class::isInstance)
-        .map(Execution.class::cast).collect(Collectors.toList());
+  public Collection<Execution> getExecutionSemanticCandidates(InstanceRole instanceRole, final EObject element) {
+    Collection<EObject> semanticCandidates = getSemanticCandidates(instanceRole, element);
+    return Lists.newArrayList(Iterables.filter(semanticCandidates, Execution.class));
   }
 
   /**
    * Get StateFragment semantic candidates on element.
-   * 
+   *
    * @param element
    *          EObject
    * @param instanceRole
@@ -280,8 +303,8 @@ public class ScenarioCache {
    * @return Collection<EObject>
    */
   public List<StateFragment> getStateFragmentSemanticCandidates(InstanceRole instanceRole, EObject element) {
-    return getSemanticCandidates(instanceRole, element).stream().filter(StateFragment.class::isInstance)
-        .map(StateFragment.class::cast).collect(Collectors.toList());
+    Collection<EObject> semanticCandidates = getSemanticCandidates(instanceRole, element);
+    return Lists.newArrayList(Iterables.filter(semanticCandidates, StateFragment.class));
   }
 
   /**
@@ -292,16 +315,16 @@ public class ScenarioCache {
    * @return List<SemanticCandidateContext>
    */
   private List<SemanticCandidateContext> computeInstanceRoleSemanticCandidateContextStructure(
-      InstanceRole instanceRole) {
+      final InstanceRole instanceRole) {
     if (instanceRole == null || !(instanceRole.eContainer() instanceof Scenario)) {
       return Collections.emptyList();
     }
     Scenario scenario = SequenceDiagramServices.getScenario(instanceRole);
 
     // initialize ancestors
-    Deque<CapellaElement> ancestors = new ArrayDeque<>();
+    final Deque<CapellaElement> ancestors = new ArrayDeque<>();
     ancestors.push(instanceRole);
-    List<SemanticCandidateContext> result = new ArrayList<>();
+    final List<SemanticCandidateContext> result = new ArrayList<>();
 
     // Cache missing info from M2 :
     // - cache Execution.start -> Execution and Execution.finish -> Execution when the end is a MessageEnd
@@ -311,27 +334,35 @@ public class ScenarioCache {
 
     // compute Execution/StateFragment and InteractionFragment structure
     Stream<InteractionFragment> interactionFragments = scenario.getOwnedInteractionFragments().stream()
-        .filter(frag -> frag instanceof AbstractEnd || frag instanceof InteractionState);
-    interactionFragments.forEachOrdered(end -> {
-      InstanceRole coveredInstanceRole = getCoveredInstanceRole(end);
-      if (coveredInstanceRole != null && coveredInstanceRole.equals(instanceRole)) {
-        TimeLapse timeLapse = getTimeLapseFromCache(end);
+        .filter(new Predicate<InteractionFragment>() {
+          @Override
+          public boolean test(InteractionFragment frag) {
+            return frag instanceof AbstractEnd || frag instanceof InteractionState;
+          }
+        });
+    interactionFragments.forEachOrdered(new Consumer<InteractionFragment>() {
+      @Override
+      public void accept(InteractionFragment end) {
+        InstanceRole coveredInstanceRole = getCoveredInstanceRole(end);
+        if (coveredInstanceRole != null && coveredInstanceRole.equals(instanceRole)) {
+          TimeLapse timeLapse = getTimeLapseFromCache(end);
 
-        // Execution End case
-        if (end instanceof ExecutionEnd) {
-          visit(ancestors, timeLapse, (ExecutionEnd) end, result);
+          // Execution End case
+          if (end instanceof ExecutionEnd) {
+            visit(ancestors, timeLapse, (ExecutionEnd) end, result);
+          }
+
+          // Interaction State case
+          if (end instanceof InteractionState) {
+            visit(ancestors, timeLapse, (InteractionState) end, result);
+          }
+
+          // Message End case
+          if (end instanceof MessageEnd) {
+            visit(ancestors, timeLapse, (MessageEnd) end, result);
+          }
+
         }
-
-        // Interaction State case
-        if (end instanceof InteractionState) {
-          visit(ancestors, timeLapse, (InteractionState) end, result);
-        }
-
-        // Message End case
-        if (end instanceof MessageEnd) {
-          visit(ancestors, timeLapse, (MessageEnd) end, result);
-        }
-
       }
     });
     return result;
@@ -475,9 +506,19 @@ public class ScenarioCache {
   private InstanceRole getCoveredInstanceRole(InteractionFragment end) {
     InstanceRole covered = null;
     if (end instanceof AbstractEnd) {
-      covered = getInteractionCache(AbstractEnd::getCovered, (AbstractEnd) end);
+      covered = getInteractionCache(new Function<AbstractEnd, InstanceRole>() {
+        @Override
+        public InstanceRole apply(AbstractEnd e) {
+          return e.getCovered();
+        }
+      }, (AbstractEnd) end);
     } else if (end instanceof InteractionState) {
-      covered = getInteractionCache(InteractionState::getCovered, (InteractionState) end);
+      covered = getInteractionCache(new Function<InteractionState, InstanceRole>() {
+        @Override
+        public InstanceRole apply(InteractionState e) {
+          return e.getCovered();
+        }
+      }, (InteractionState) end);
     }
     return covered;
   }
@@ -492,16 +533,23 @@ public class ScenarioCache {
     // cache Execution.start -> Execution and Execution.finish -> Execution
     // scan timelapse only one time
     if (getInteractionFragmentToTimeLapseCache().isEmpty()) {
-      Stream<TimeLapse> timeLapses = scenario.getOwnedTimeLapses().stream()
-          .filter(tl -> !(tl instanceof AbstractFragment));
-      timeLapses.forEach(e -> {
-        // Keep Interaction to TimeLapse info in cache
-        // M2 allows to retrieve an Execution from an ExecutionEnd (execution.getFinish() when there is no
-        // return branch : ASyncCall)
-        // but not an Execution from a MessagEnd (SyncCall and ASyncCall) or a StateFragment from an
-        // InteractionState.
-        putTimeLapseInCache(e.getStart(), e);
-        putTimeLapseInCache(e.getFinish(), e);
+      Stream<TimeLapse> timeLapses = scenario.getOwnedTimeLapses().stream().filter(new Predicate<TimeLapse>() {
+        @Override
+        public boolean test(TimeLapse tl) {
+          return !(tl instanceof AbstractFragment);
+        }
+      });
+      timeLapses.forEach(new Consumer<TimeLapse>() {
+        @Override
+        public void accept(TimeLapse e) {
+          // Keep Interaction to TimeLapse info in cache
+          // M2 allows to retrieve an Execution from an ExecutionEnd (execution.getFinish() when there is no
+          // return branch : ASyncCall)
+          // but not an Execution from a MessagEnd (SyncCall and ASyncCall) or a StateFragment from an
+          // InteractionState.
+          putTimeLapseInCache(e.getStart(), e);
+          putTimeLapseInCache(e.getFinish(), e);
+        }
       });
     }
   }
