@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2021 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -16,6 +16,7 @@ import java.util.List;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.business.api.session.Session;
@@ -45,9 +46,12 @@ public abstract class AbstractDiagramCommandHandler extends AbstractUiHandler {
     }
 
     if (activePart != null) {
-      ISelection selection = activePart.getSite().getSelectionProvider().getSelection();
-      if (selection instanceof IStructuredSelection) {
-        return (IStructuredSelection) selection;
+      ISelectionProvider selectionProvider = activePart.getSite().getSelectionProvider();
+      if (selectionProvider != null) {
+        ISelection selection = selectionProvider.getSelection();
+        if (selection instanceof IStructuredSelection) {
+          return (IStructuredSelection) selection;
+        }
       }
     }
     return new StructuredSelection();

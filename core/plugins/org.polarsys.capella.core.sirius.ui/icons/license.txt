@@ -6,3 +6,4 @@ http://www.eclipse.org/legal/epl-2.0
 
 /icons/newDiagram.png - capella.sirius.ui - capella.sirius.ui/icons/newDiagram.png
 /icons/viewpoint.gif - org.eclipse.gmf.runtime.common.ui - org.eclipse.gmf.runtime.common.ui/icons/topic.gif
+/icons/copy.gif - org.eclipse.ui - org.eclipse.ui/icons/full/etool16/copy_edit.gif

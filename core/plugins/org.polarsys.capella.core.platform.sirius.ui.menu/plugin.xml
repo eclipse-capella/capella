@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2021 THALES GLOBAL SERVICES.
   
   This program and the accompanying materials are made available under the
   terms of the Eclipse Public License 2.0 which is available at
@@ -15,6 +15,16 @@
 <plugin>
    
     <extension point="org.eclipse.ui.menus">
+    
+    	<!-- Interpreter View -->
+       <menuContribution
+                locationURI="popup:org.eclipse.acceleo.ui.interpreter.view?after=additions">
+                
+              <separator name="group.semantic" visible="true" />
+              <separator name="group.showIn" visible="true" />
+              <separator name="group.sendTo" visible="true" />
+              
+       </menuContribution>
     
     	<!-- Sirius contribution. We want all our menu available on the diagram menu. Navigation on top. -->
        <menuContribution
