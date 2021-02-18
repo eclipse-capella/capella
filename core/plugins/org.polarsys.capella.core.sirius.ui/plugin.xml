@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2021 THALES GLOBAL SERVICES.
   
   This program and the accompanying materials are made available under the
   terms of the Eclipse Public License 2.0 which is available at
@@ -167,12 +167,31 @@
             name="%command.removeHiddenElements"
             description="%command.removeHiddenElements.description">
       </command>
+      <command
+            categoryId="org.polarsys.capella.core.sirius.ui"
+            defaultHandler="org.polarsys.capella.core.sirius.ui.handlers.CopyTextHandler"
+            description="%command.copyAsText.description"
+            id="org.polarsys.capella.core.sirius.ui.copyAsText"
+            name="%command.copyAsText">
+      </command>
       
    </extension>
    
    
    <extension
          point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="popup:org.eclipse.acceleo.ui.interpreter.view?after=additions">
+         <command
+               commandId="org.polarsys.capella.core.sirius.ui.copyAsText"
+               icon="icons/copy.gif"
+               label="%command.copyAsText"
+               style="push">
+            <visibleWhen
+                  checkEnabled="true">
+            </visibleWhen>
+         </command>
+      </menuContribution>
          
       <menuContribution 
       		locationURI="popup:capella.project.explorer#PopupMenu?after=group.project">
