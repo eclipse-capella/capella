@@ -28,9 +28,6 @@ import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.pa.deployment.PartDeploymentLink;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarkerResolution;
 
-/**
- * Show details for package dependency cycles.
- */
 public class ConstraintAssignmentRule_Resolver extends AbstractCapellaMarkerResolution {
 
   /**

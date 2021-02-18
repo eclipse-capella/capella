@@ -6962,12 +6962,15 @@ public class CsServices {
     return ComponentExt.isActor(context);
   }
   
-  public Object getConstraintLocation(EObject context, Part target) {
+  public Object getConstraintLocation(EObject context, EObject target) {
     if (null == context) {
       return null;
     }
     if (isMultipartMode((ModelElement) target))
       return target;
-    return target.getAbstractType();
+    if (target instanceof Part) {
+      return ((Part) target).getAbstractType();
+    }
+    return target;
   }
 }

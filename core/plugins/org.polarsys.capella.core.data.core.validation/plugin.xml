@@ -152,7 +152,8 @@
                      class="Constraint">
                </target>
                <description>
-                  This rule ensures that if a constraint is applied to only one element then the constraint is located under Component.
+                  This rule ensures that a constraint constraining elements is not stored unexpectedly. 
+                  (A constraint shall not be stored under a part if not constraining parts or under a deployment link if not constraining deployment links.)
                </description>
             </constraint>
          </constraints>

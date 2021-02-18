@@ -20,7 +20,9 @@ import org.eclipse.emf.validation.IValidationContext;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.core.data.capellacore.Constraint;
 import org.polarsys.capella.core.data.cs.Part;
+import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
 import org.polarsys.capella.core.data.pa.deployment.PartDeploymentLink;
+import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.sirius.analysis.CsServices;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
@@ -40,7 +42,8 @@ public class ConstraintAssignmentRule extends AbstractValidationRule {
       //if one of the constrained elements is a Part or PartDeploymentLink, WARNING
       EList<ModelElement> constrainedElements = constraint.getConstrainedElements();
       for (ModelElement element : constrainedElements) {
-        if (element instanceof Part || element instanceof PartDeploymentLink) {
+        if ((element instanceof Part || element instanceof PartDeploymentLink) 
+            && !(BlockArchitectureExt.getRootBlockArchitecture(eObj) instanceof EPBSArchitecture)) {
           return ctx.createFailureStatus(CapellaElementExt.getValidationRuleMessagePrefix(constraint) , element.eClass().getName());
         }
       }

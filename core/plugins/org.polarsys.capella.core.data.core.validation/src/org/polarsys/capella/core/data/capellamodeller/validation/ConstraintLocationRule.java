@@ -12,6 +12,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.capellamodeller.validation;
 
+import java.util.stream.Collectors;
+
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -19,7 +21,6 @@ import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.core.data.capellacore.Constraint;
-import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.pa.deployment.PartDeploymentLink;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
@@ -39,30 +40,15 @@ public class ConstraintLocationRule extends AbstractValidationRule {
       Constraint constraint = (Constraint) eObj;
       EList<ModelElement> constrainedElements = constraint.getConstrainedElements();
       
-      //if constraint is applied to only one Component/PartDeploymentLink AND constraint not stored under Component, then WARNING
-      if (constrainedElements != null && constrainedElements.size() == 1) {
-        ModelElement element = constrainedElements.get(0);
-        ModelElement comp = getComponentFromElement(element);
-        if (comp == null || comp.getOwnedConstraints() == null || !comp.getOwnedConstraints().contains(constraint)) {
-          return ctx.createFailureStatus(CapellaElementExt.getValidationRuleMessagePrefix(constraint) , "Component");
-        }
+      boolean isConstrainingParts = constrainedElements.stream().filter(element -> element instanceof Part)
+          .collect(Collectors.toList()).size() > 0;
+      boolean isConstrainingDeployments = constrainedElements.stream().filter(element -> element instanceof PartDeploymentLink)
+          .collect(Collectors.toList()).size() > 0;
+      if ((constraint.eContainer() instanceof Part && !isConstrainingParts && !isConstrainingDeployments) ||
+          (constraint.eContainer() instanceof PartDeploymentLink && !isConstrainingDeployments)) {
+        return ctx.createFailureStatus(CapellaElementExt.getValidationRuleMessagePrefix(constraint) , "Component");
       }
     }
     return ctx.createSuccessStatus();
-  }
-
-  private ModelElement getComponentFromElement(ModelElement element) {
-    ModelElement comp = null;
-    if (element instanceof Component) {
-      comp = (Component) element;
-    } else if (element instanceof Part) {
-      comp = ((Part) element).getAbstractType();
-    } else if (element instanceof PartDeploymentLink) {
-      comp = ((PartDeploymentLink) element).getDeployedElement();
-      if (comp instanceof Part) {
-        comp = ((Part) comp).getAbstractType();
-      }
-    }
-    return comp;
   }
 }
