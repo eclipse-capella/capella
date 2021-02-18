@@ -80,8 +80,6 @@ public class NodePhysicalComponentExchangesCreator extends DefaultExchangesCreat
       // Casts the component as a physical component
       PhysicalComponent node = (PhysicalComponent) _component;
       createExchangesForPhysicalComponents(node);
-      // Creates the exchanges for directly allocated functions
-      super.createExchanges();
     }
   }
 

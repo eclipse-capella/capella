@@ -12,8 +12,12 @@
  *******************************************************************************/
 package org.polarsys.capella.core.projection.exchanges;
 
-import java.util.Collection;
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
 
+import java.util.Collection;
+import java.util.List;
+
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
@@ -21,12 +25,15 @@ import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.polarsys.capella.common.data.modellingcore.InformationsExchanger;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
+import org.polarsys.capella.core.data.capellacore.Type;
+import org.polarsys.capella.core.data.cs.AbstractDeploymentLink;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsFactory;
+import org.polarsys.capella.core.data.cs.DeployableElement;
+import org.polarsys.capella.core.data.cs.DeploymentTarget;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
-import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.ComponentExchangeAllocation;
 import org.polarsys.capella.core.data.fa.ComponentExchangeKind;
@@ -35,9 +42,11 @@ import org.polarsys.capella.core.data.fa.ComponentPortAllocation;
 import org.polarsys.capella.core.data.fa.FaFactory;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionalExt;
 import org.polarsys.capella.core.data.information.AbstractEventOperation;
-import org.polarsys.capella.core.data.la.LogicalComponent;
+import org.polarsys.capella.core.data.pa.PhysicalComponent;
+import org.polarsys.capella.core.data.pa.deployment.PartDeploymentLink;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
+import org.polarsys.capella.core.model.helpers.PartExt;
 import org.polarsys.capella.core.model.helpers.PhysicalLinkExt;
 
 /**
@@ -45,13 +54,16 @@ import org.polarsys.capella.core.model.helpers.PhysicalLinkExt;
  * This implementation creates physical links.
  */
 public class PhysicalLinksCreator extends DefaultExchangesCreator {
-
+  
+  private Part part = null;
+  
   /**
    * Constructor
    * @param component_p
    */
   public PhysicalLinksCreator(Component component_p, Part part_p) {
     super(component_p);
+    this.part = part_p;
   }
 
   /**
@@ -60,7 +72,7 @@ public class PhysicalLinksCreator extends DefaultExchangesCreator {
    */
   @Override
   public void createExchanges() {
-    if (_component instanceof LogicalComponent || _component instanceof SystemComponent) {
+    if (isValidBound(_component)) {
       createPhysicalLinksFromCExchanges(_component);
     }
   }
@@ -73,44 +85,101 @@ public class PhysicalLinksCreator extends DefaultExchangesCreator {
   protected boolean isValidCreation(AbstractEventOperation fe_p, Component component_p, Component allocating_p) {
     return isValidBound(component_p) && isValidBound(allocating_p);
   }
+  
+  /**
+   * @param container
+   * 
+   * This method check all subcomponent and try to create physical links and allocate them to a CE at the
+   * contained level component exchanges If the container hasn't subcomponent, it will try to create a PL and
+   * allocate to a CE at the same level
+   */
+  protected void createPhysicalLinksFromCExchanges(Component container) {
+    if (container != null) {
+      if(container instanceof PhysicalComponent) {
+        // Gets the deployments of the node
+        EList<AbstractDeploymentLink> deployments = part.getDeploymentLinks();
+
+        for (AbstractDeploymentLink deployment : deployments) {
+          if (deployment instanceof PartDeploymentLink) {
+            PartDeploymentLink deploymentLink = (PartDeploymentLink) deployment;
+            DeployableElement deployedElement = deploymentLink.getDeployedElement();
+            if (deployedElement instanceof Part) {
+              Type containedPC = ((Part) deployedElement).getType();
+              if (containedPC instanceof PhysicalComponent) {
+                createPhysicalLinksFromCExchanges(container, (PhysicalComponent)containedPC);
+              }
+            } else if (deployedElement instanceof PhysicalComponent) {
+              createPhysicalLinksFromCExchanges(container, (PhysicalComponent) deployedElement);
+            }
+          }
+        }
+      }
+      // Process contained actors
+      List<Component> subComponents = ComponentExt.getSubDefinedComponents(container);
+      if (!subComponents.isEmpty()) {
+        subComponents.stream().filter(c -> ComponentExt.isActor(c)).forEach(actor -> {
+          createPhysicalLinksFromCExchanges(container, actor);
+        });
+      } 
+      if (ComponentExt.isActor(container)) {
+        createPhysicalLinksFromCExchanges(container, container);
+      }
+    }
+  }
 
   /**
-   * @param lc
-   * @param type
+   * @param sourceContainer
+   * @param sourceContained
    */
-  private void createPhysicalLinksFromCExchanges(Component lc) {
-    if ((lc != null)) {
-      // Process each lc
+  private void createPhysicalLinksFromCExchanges(Component sourceContainer, Component sourceContained) {
+    if (isValidBound(sourceContainer) && isValidBound(sourceContained)) {
+      // Process the contained component
       // This reference will allows to handle the processed connections
-      for (ComponentPort port : ComponentExt.getOwnedComponentPort(lc)) {
-        // Process the flow ports of the deployed PC
-        // filter inValid port
-        // if (PortExt.isOut(port)) {
+      for (ComponentPort port : ComponentExt.getOwnedComponentPort(sourceContained)) {
         // get all the connection of the port
         for (ComponentExchange connection : port.getComponentExchanges()) {
           // filter delegation and unSet type of connection
-          if ((connection.getKind() != ComponentExchangeKind.DELEGATION) && (connection.getKind() != ComponentExchangeKind.UNSET)) {
-            // proceed only if port is a source of current
-            // Connection
-            // if (connection.getSource().equals(port)) {
+          if ((connection.getKind() != ComponentExchangeKind.DELEGATION)
+              && (connection.getKind() != ComponentExchangeKind.UNSET)) {
             // check if physicalLink creation is necessary
-            if (!doesNodeAlreadyHaveAPhysicalLinkForComponentExchange(lc, connection)) {
+            if (!doesNodeAlreadyHaveAPhysicalLinkForComponentExchange(sourceContainer, connection)) {
               // get the opposite port [which could be
               // source or target of the Connection]
               InformationsExchanger target = FunctionalExt.getOtherBound(connection, port);
-              if ((target != null) && (target instanceof ComponentPort)) {
+              if (target instanceof ComponentPort) {
                 // get the container of the target port
-                EObject container = target.eContainer();
+                EObject targetContained = target.eContainer();
                 // find the target Node
-                if (container instanceof LogicalComponent || container instanceof SystemComponent) {
-                  doCreatePhysicalLink(connection, lc, (Component) container);
+
+                if (targetContained instanceof Component && isValidBound((Component) targetContained)) {
+                  if (targetContained instanceof PhysicalComponent) {
+                    // For all parts, find the deploying component
+                    for (Part partition : ((PhysicalComponent) targetContained).getRepresentingParts()) {
+                      for (DeploymentTarget deploying : getCache(PartExt::getDeployingElements, (Part) partition)) {
+                        if (deploying instanceof Part) {
+                          Part deployingPart = (Part) deploying;
+                          if (deployingPart.getAbstractType() instanceof PhysicalComponent) {
+                            PhysicalComponent targetContainerPC = (PhysicalComponent) deployingPart.getAbstractType();
+                            doCreatePhysicalLink(connection, sourceContainer, targetContainerPC);
+                          }
+                        }
+                      }
+                    }
+                  }
+                  // if the container is the same as contained (if the component doesn't have subcomponents)
+                  if (sourceContainer.equals(sourceContained) && ComponentExt.isActor(sourceContained)) {
+                    doCreatePhysicalLink(connection, sourceContainer, (Component) targetContained);
+                  } else if (ComponentExt.isActor(targetContained)
+                      && targetContained.eContainer() instanceof Component) {
+                    Component targetContainer = (Component) targetContained.eContainer();
+                    doCreatePhysicalLink(connection, sourceContainer, targetContainer);
+                  }
                 }
               }
             }
           }
         }
       }
-
     }
   }
 
@@ -178,10 +247,12 @@ public class PhysicalLinksCreator extends DefaultExchangesCreator {
    * @param componentExchange_p the component exchange
    * @return true if its has already been allocated, false otherwise
    */
-  protected boolean doesNodeAlreadyHaveAPhysicalLinkForComponentExchange(Component physicalComponent_p, ComponentExchange componentExchange_p) {
+  protected boolean doesNodeAlreadyHaveAPhysicalLinkForComponentExchange(Component physicalComponent_p,
+      ComponentExchange componentExchange_p) {
     boolean result = false;
     // Get the semantic editing domain to access the cross referencer.
-    SemanticEditingDomain editingDomain = (SemanticEditingDomain) AdapterFactoryEditingDomain.getEditingDomainFor(componentExchange_p);
+    SemanticEditingDomain editingDomain = (SemanticEditingDomain) AdapterFactoryEditingDomain
+        .getEditingDomainFor(componentExchange_p);
     // Get the cross referencer.
     ECrossReferenceAdapter crossReferencer = editingDomain.getCrossReferencer();
     // Search inverses relations on given component exchange.
