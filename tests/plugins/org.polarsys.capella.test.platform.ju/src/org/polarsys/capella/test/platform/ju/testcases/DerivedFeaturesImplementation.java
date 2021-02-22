@@ -57,7 +57,8 @@ public class DerivedFeaturesImplementation extends BasicTestCase {
       // If there is several, the viatra expression shall be freeform with an 'or' inside.
       for (EReference reference : getDerived(clazz)) {
         boolean isFreefrom = false;
-        int freefromAlternative = 0;
+        // Always at least 1 implementation
+        int freefromAlternative = 1;
         EAnnotation annotation = reference
             .getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
         if (annotation != null) {
