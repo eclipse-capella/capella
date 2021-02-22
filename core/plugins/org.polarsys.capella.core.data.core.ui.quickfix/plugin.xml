@@ -105,6 +105,22 @@
                ruleId="I_45">
          </rules>
       </resolver>
+      <resolver
+            class="org.polarsys.capella.core.data.core.ui.quickfix.resolver.ConstraintAssignmentRule_Resolver"
+            desc="%quickFix.DWF_D_58.desc"
+            label="%quickFix.DWF_D_58.label">
+         <rules
+               ruleId="DWF_D_58">
+         </rules>
+      </resolver>
+      <resolver
+            class="org.polarsys.capella.core.data.core.ui.quickfix.resolver.ConstraintLocationRule_Resolver"
+            desc="%quickFix.DWF_D_59.desc"
+            label="%quickFix.DWF_D_59.label">
+         <rules
+               ruleId="DWF_D_59">
+         </rules>
+      </resolver>
    </extension>
 
 </plugin>

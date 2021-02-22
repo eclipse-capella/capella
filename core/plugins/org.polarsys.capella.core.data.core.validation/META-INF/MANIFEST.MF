@@ -12,7 +12,8 @@ Require-Bundle: org.polarsys.capella.core.validation,
  org.polarsys.capella.core.model.helpers,
  org.polarsys.capella.common.libraries,
  org.eclipse.sirius,
- org.polarsys.capella.core.data.business.queries
+ org.polarsys.capella.core.data.business.queries,
+ org.polarsys.capella.core.sirius.analysis
 Export-Package: org.polarsys.capella.core.data.capellamodeller.validation,
  org.polarsys.capella.core.data.core.validation.capellaelement,
  org.polarsys.capella.core.data.core.validation.capellaelement.nameconflict,

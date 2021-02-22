@@ -117,6 +117,45 @@
                <target
                      class="AbstractDependenciesPkg"></target>
             </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.capellamodeller.validation.ConstraintAssignmentRule"
+                  id="DWF_D_58"
+                  isEnabledByDefault="true"
+                  lang="java"
+                  mode="Batch"
+                  name="DWF_D_58 - ConstraintName (Constraint) should constrain the Component"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} should constrain the Component instead of the {1}.
+               </message>
+               <target
+                     class="Constraint">
+               </target>
+               <description>
+                  This rule ensures that in monopart mode a constraint constrains the Component and not the Part or PartDeploymentLink.
+               </description>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.capellamodeller.validation.ConstraintLocationRule"
+                  id="DWF_D_59"
+                  isEnabledByDefault="true"
+                  lang="java"
+                  mode="Batch"
+                  name="DWF_D_59 - ConstraintName (Constraint) should be located under Component"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} should be located under {1}.
+               </message>
+               <target
+                     class="Constraint">
+               </target>
+               <description>
+                  This rule ensures that a constraint constraining elements is not stored unexpectedly. 
+                  (A constraint shall not be stored under a part if not constraining parts or under a deployment link if not constraining deployment links.)
+               </description>
+            </constraint>
          </constraints>
          <constraints
                categories="capella.category/quality">

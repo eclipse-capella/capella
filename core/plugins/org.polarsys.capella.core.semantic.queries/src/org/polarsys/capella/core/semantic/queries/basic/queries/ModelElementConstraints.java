@@ -27,8 +27,10 @@ import org.polarsys.capella.common.data.modellingcore.AbstractConstraint;
 import org.polarsys.capella.common.data.modellingcore.AbstractTypedElement;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.helpers.query.IQuery;
+import org.polarsys.capella.core.data.cs.AbstractDeploymentLink;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
+import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 
 /**
@@ -56,6 +58,9 @@ public class ModelElementConstraints implements IQuery {
       EList<AbstractConstraint> constraints = ECollections.newBasicEList();
       if (object instanceof Component)
         constraints.addAll(compute((Component) object));
+      else if (object instanceof Part) {
+        constraints.addAll(compute((Part) object));
+      }
       else {
         ModelElement current = (ModelElement) object;
         constraints.addAll(current.getConstraints());
@@ -80,7 +85,31 @@ public class ModelElementConstraints implements IQuery {
     for (AbstractConstraint constraint : component.getConstraints()) {
       result.add(constraint);
     }
-
+    if (component instanceof PhysicalComponent) {
+      for (AbstractTypedElement part : parts) {
+        EList<AbstractDeploymentLink> partDeploymentLinks = ((Part) part).getDeployingLinks();
+        for (AbstractDeploymentLink deploymentLink : partDeploymentLinks) {
+          result.addAll(deploymentLink.getConstraints());
+        }
+      }
+    }
+    return result;
+  }
+  
+  /**
+   * If the element is a part, get the constraints and the constraints applied on part deployment links
+   */
+  private Set<AbstractConstraint> compute(Part part) {
+    Set<AbstractConstraint> result = new HashSet<>();
+    for (AbstractConstraint constraint : part.getConstraints()) {
+      result.add(constraint);
+    }
+    if (part.getAbstractType() instanceof PhysicalComponent) {
+      EList<AbstractDeploymentLink> partDeploymentLinks = ((Part) part).getDeployingLinks();
+      for (AbstractDeploymentLink deploymentLink : partDeploymentLinks) {
+        result.addAll(deploymentLink.getConstraints());
+      }
+    }
     return result;
   }
 }
