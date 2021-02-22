@@ -23,7 +23,8 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.core.ui.semantic.browser.sirius,
  org.polarsys.capella.common.tools.report.appenders.reportlogview,
  org.polarsys.capella.core.compare,
- org.polarsys.capella.core.explorer.activity.ui
+ org.polarsys.capella.core.explorer.activity.ui,
+ org.eclipse.gmf.runtime.emf.clipboard.core
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: %providerName
