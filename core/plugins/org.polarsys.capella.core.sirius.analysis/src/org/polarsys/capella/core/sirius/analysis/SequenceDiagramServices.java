@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2021 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -62,6 +62,7 @@ import org.polarsys.capella.core.model.helpers.SequenceMessageExt;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaDeleteCommand;
 import org.polarsys.capella.core.sirius.analysis.activator.SiriusViewActivator;
 import org.polarsys.capella.core.sirius.analysis.cache.ScenarioCache;
+import org.polarsys.capella.core.sirius.analysis.cache.ScenarioCache.OperandContext;
 import org.polarsys.capella.core.sirius.analysis.cache.ScenarioCache.SemanticCandidateContext;
 
 public class SequenceDiagramServices {
@@ -587,15 +588,8 @@ public class SequenceDiagramServices {
     }
     if (context instanceof InteractionOperand) {
       // Search the CF that contains the InteractionOperand
-      Scenario scenario = (Scenario) context.eContainer();
-      for (TimeLapse tl : scenario.getOwnedTimeLapses()) {
-        if (tl instanceof CombinedFragment) {
-          CombinedFragment cf = (CombinedFragment) tl;
-          if (cf.getReferencedOperands().contains(context)) {
-            return cf;
-          }
-        }
-      }
+      OperandContext operandContext = ScenarioCache.getInstance().getOperandContext((InteractionOperand) context);
+      return operandContext.getCombinedFragment();
     }
     return null;
   }

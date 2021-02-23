@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2020, 2021 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Deque;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -29,10 +30,12 @@ import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.helpers.cache.Cache;
 import org.polarsys.capella.core.data.interaction.AbstractEnd;
 import org.polarsys.capella.core.data.interaction.AbstractFragment;
+import org.polarsys.capella.core.data.interaction.CombinedFragment;
 import org.polarsys.capella.core.data.interaction.Execution;
 import org.polarsys.capella.core.data.interaction.ExecutionEnd;
 import org.polarsys.capella.core.data.interaction.InstanceRole;
 import org.polarsys.capella.core.data.interaction.InteractionFragment;
+import org.polarsys.capella.core.data.interaction.InteractionOperand;
 import org.polarsys.capella.core.data.interaction.InteractionState;
 import org.polarsys.capella.core.data.interaction.MessageEnd;
 import org.polarsys.capella.core.data.interaction.Scenario;
@@ -76,6 +79,11 @@ public class ScenarioCache {
   private Map<InstanceRole, List<SemanticCandidateContext>> instanceRoleToSemanticCandidateContextsCache = new ConcurrentHashMap<>();
 
   /**
+   * Cache for InteractionOperand -> OperandContext(CombinedFragment, OperandEnd).
+   */
+  private Map<InteractionOperand, OperandContext> operandToOperandContextCache = new ConcurrentHashMap<>();
+
+  /**
    * Is InteractionRefreshExtension caches enabled ?
    */
   private boolean isCacheEnabled;
@@ -103,6 +111,7 @@ public class ScenarioCache {
     interactionCache.clearCache();
     semanticCandidatesCache.clear();
     instanceRoleToSemanticCandidateContextsCache.clear();
+    operandToOperandContextCache.clear();
     interactionFragmentToTimeLapseCache.clear();
   }
 
@@ -139,6 +148,17 @@ public class ScenarioCache {
   public void putInstanceRoleToSemanticCandidateContextsCache(InstanceRole instanceRole,
       List<SemanticCandidateContext> structure) {
     instanceRoleToSemanticCandidateContextsCache.put(instanceRole, structure);
+  }
+
+  /**
+   * Get OperandContext(CombinedFragment, OperandEnd) for operand
+   *
+   * @param operand
+   *          InteractionOperand
+   * @return OperandContext
+   */
+  public OperandContext getOperandToOperandContextCache(InteractionOperand operand) {
+    return operandToOperandContextCache.get(operand);
   }
 
   /**
@@ -233,8 +253,28 @@ public class ScenarioCache {
   }
 
   /**
-   * Get semantic candidate on element. (InstanceRole -> Executions + StateFragment, Execution -> Execution
-   * children + StateFragment)
+   * Compute structure for combined fragment and operand if needed and put it in cache.
+   *
+   * @param operand
+   *          InteractionOperand
+   */
+  public OperandContext getOperandContext(InteractionOperand operand) {
+    OperandContext operandContext = getOperandToOperandContextCache(operand);
+    if (operandContext == null) {
+      Scenario scenario = SequenceDiagramServices.getScenario(operand);
+      Map<InteractionOperand, OperandContext> operandToOperandContextStructure = computeOperandToOperandContextStructure(
+          scenario);
+      operandContext = operandToOperandContextStructure.get(operand);
+      if (isRefreshCacheEnabled()) {
+        operandToOperandContextCache = operandToOperandContextStructure;
+      }
+    }
+    return operandContext;
+  }
+
+  /**
+   * Get semantic candidate on element. (InstanceRole -> Executions + StateFragment, Execution -> Execution children +
+   * StateFragment)
    * 
    * @param instanceRole
    *          InstanceRole
@@ -337,6 +377,89 @@ public class ScenarioCache {
       }
     });
     return result;
+  }
+
+  /**
+   * Compute combined fragments and operands structure for Scenario
+   * 
+   * @param scenario
+   *          Scenario
+   * @return Map<InteractionOperand, OperandContext>
+   */
+  private Map<InteractionOperand, OperandContext> computeOperandToOperandContextStructure(Scenario scenario) {
+    // initialize map
+    Map<InteractionOperand, OperandContext> operandToOperandContext = new ConcurrentHashMap<>();
+
+    // Compute combined fragment and InteractionOperand structure.
+    List<CombinedFragment> combinedFragments = scenario.getOwnedTimeLapses().stream()
+        .filter(CombinedFragment.class::isInstance).map(CombinedFragment.class::cast).collect(Collectors.toList());
+    combinedFragments.forEach(combinedFragment -> {
+      combinedFragment.getReferencedOperands().forEach(op -> {
+        operandToOperandContext.put(op, new OperandContext(combinedFragment));
+      });
+    });
+
+    // Compute InteractionOperand -> InteractionOperand End
+    Map<CombinedFragment, LinkedList<InteractionOperand>> combinedFragmentToSortedReferencedOperands = new ConcurrentHashMap<>();
+    Stream<InteractionFragment> interactionFragments = scenario.getOwnedInteractionFragments().stream()
+        .filter(InteractionOperand.class::isInstance);
+    interactionFragments.forEachOrdered(end -> {
+      // Interaction Operand case
+      visit(operandToOperandContext, (InteractionOperand) end, combinedFragmentToSortedReferencedOperands);
+    });
+
+    // Add operand end to operand context
+    combinedFragmentToSortedReferencedOperands.values().forEach(sortedOperands -> {
+      sortedOperands.forEach(operand -> {
+        computeOperandEnds(operandToOperandContext, sortedOperands, operand);
+      });
+    });
+
+    return operandToOperandContext;
+  }
+
+  /**
+   * Compute operand end for operands.
+   * 
+   * @param operandToOperandContext
+   *          Map<InteractionOperand, OperandContext>
+   * @param sortedOperands
+   *          LinkedList<InteractionOperand>
+   * @param operand
+   *          InteractionOperand
+   */
+  private void computeOperandEnds(Map<InteractionOperand, OperandContext> operandToOperandContext,
+      LinkedList<InteractionOperand> sortedOperands, InteractionOperand operand) {
+    OperandContext operandContext = operandToOperandContext.get(operand);
+    int currentOperandIndex = sortedOperands.indexOf(operand);
+    int nextOperandIndex = currentOperandIndex + 1;
+    if (nextOperandIndex < sortedOperands.size()) {
+      operandContext.setOperandEnd(sortedOperands.get(nextOperandIndex));
+    } else {
+      operandContext.setOperandEnd(operandContext.getCombinedFragment().getFinish());
+    }
+  }
+
+  /**
+   * Compute operand context for InteractionOperand.
+   * 
+   * @param operandToOperandContext
+   *          Map<InteractionOperand, OperandContext>
+   * @param end
+   *          InteractionOperand
+   * @param combinedFragmentToSortedReferencedOperands
+   *          Map<CombinedFragment, LinkedList<InteractionOperand>>
+   */
+  private void visit(Map<InteractionOperand, OperandContext> operandToOperandContext, InteractionOperand end,
+      Map<CombinedFragment, LinkedList<InteractionOperand>> combinedFragmentToSortedReferencedOperands) {
+    OperandContext operandContext = operandToOperandContext.get(end);
+    LinkedList<InteractionOperand> sortedOperands = combinedFragmentToSortedReferencedOperands
+        .get(operandContext.getCombinedFragment());
+    if (sortedOperands == null) {
+      sortedOperands = new LinkedList<InteractionOperand>();
+    }
+    sortedOperands.addLast(end);
+    combinedFragmentToSortedReferencedOperands.put(operandContext.getCombinedFragment(), sortedOperands);
   }
 
   /**
@@ -549,6 +672,50 @@ public class ScenarioCache {
     public String toString() {
       return String.format("%02d\t%s\t%s", getLevel(), element, parent);
     }
+  }
+
+  public static final class OperandContext {
+
+    private InteractionOperand operand;
+
+    private CombinedFragment combinedFragment;
+
+    private InteractionFragment operandEnd;
+
+    public OperandContext(CombinedFragment combinedFragment) {
+      this.combinedFragment = combinedFragment;
+      this.operandEnd = null;
+      this.operand = null;
+    }
+
+    public OperandContext(InteractionOperand operand, CombinedFragment combinedFragment,
+        InteractionFragment operandEnd) {
+      this.operand = operand;
+      this.combinedFragment = combinedFragment;
+      this.operandEnd = operandEnd;
+    }
+
+    public InteractionOperand getOperand() {
+      return operand;
+    }
+
+    public CombinedFragment getCombinedFragment() {
+      return combinedFragment;
+    }
+
+    public InteractionFragment getOperandEnd() {
+      return operandEnd;
+    }
+
+    public void setOperandEnd(InteractionFragment operandEnd) {
+      this.operandEnd = operandEnd;
+    }
+
+    @Override
+    public String toString() {
+      return String.format("%02d\t%s\t%s", combinedFragment, operandEnd);
+    }
+
   }
 
 }
