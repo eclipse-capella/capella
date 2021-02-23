@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2021 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -72,7 +72,6 @@ import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.interaction.ScenarioKind;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
 import org.polarsys.capella.core.data.interaction.StateFragment;
-import org.polarsys.capella.core.data.interaction.TimeLapse;
 import org.polarsys.capella.core.data.interaction.properties.controllers.InterfaceHelper;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
@@ -91,6 +90,7 @@ import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
 import org.polarsys.capella.core.sirius.analysis.InformationServices;
 import org.polarsys.capella.core.sirius.analysis.SequenceDiagramServices;
 import org.polarsys.capella.core.sirius.analysis.cache.ScenarioCache;
+import org.polarsys.capella.core.sirius.analysis.cache.ScenarioCache.OperandContext;
 
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
@@ -891,8 +891,8 @@ public class ScenarioService {
   }
 
   public Collection<StateFragment> getInteractionStatesOnExecution(Execution exec) {
-    return ScenarioCache.getInstance().getStateFragmentSemanticCandidates(SequenceDiagramServices.currentInstanceRole(exec),
-        exec);
+    return ScenarioCache.getInstance()
+        .getStateFragmentSemanticCandidates(SequenceDiagramServices.currentInstanceRole(exec), exec);
   }
 
   public List<InstanceRole> getCoveredFromAbstractFragment(AbstractFragment af) {
@@ -912,40 +912,8 @@ public class ScenarioService {
   }
 
   public InteractionFragment getOperandEnd(InteractionOperand operand) {
-    CombinedFragment cf = null;
-    Scenario s = (Scenario) operand.eContainer();
-    // Find the CombinedFragment containing the given operand.
-    for (TimeLapse tl : s.getOwnedTimeLapses()) {
-      if (tl instanceof CombinedFragment) {
-        CombinedFragment cftmp = (CombinedFragment) tl;
-        if (cftmp.getReferencedOperands().contains(operand)) {
-          cf = cftmp;
-          break;
-        }
-      }
-    }
-    // Can not find a CombinedFragment containing the operand -> Stop here.
-    // FIXME this null value can not be returned in our context, but if it was returned, the diagram would be
-    // corrupted...
-    if (null == cf) {
-      return null;
-    }
-    // we can't use referencedOperand to check order, we must look
-    // in ownedInteractionFragment
-    boolean nextWillBeGood = false;
-    for (InteractionFragment fragment : s.getOwnedInteractionFragments()) {
-      if (fragment instanceof InteractionOperand) {
-        if (cf.getReferencedOperands().contains(fragment) && nextWillBeGood) {
-          return fragment;
-        }
-      }
-      if (fragment == operand) {
-        nextWillBeGood = true;
-      }
-    }
-    // if we are here, we cannot found a next, so next will be the end of
-    // the CF.
-    return cf.getFinish();
+    OperandContext operandContext = ScenarioCache.getInstance().getOperandContext(operand);
+    return operandContext.getOperandEnd();
   }
 
   public boolean isFunctionalExecution(Execution execution) {
