@@ -123,7 +123,7 @@
                   isEnabledByDefault="true"
                   lang="java"
                   mode="Batch"
-                  name="DWF_D_58 - ConstraintName (Constraint) should constrain the Component"
+                  name="DWF_D_58 - Constraint should constrain the Component"
                   severity="WARNING"
                   statusCode="1">
                <message>
@@ -142,7 +142,7 @@
                   isEnabledByDefault="true"
                   lang="java"
                   mode="Batch"
-                  name="DWF_D_59 - ConstraintName (Constraint) should be located under Component"
+                  name="DWF_D_59 - Constraint should be located under Component"
                   severity="WARNING"
                   statusCode="1">
                <message>
