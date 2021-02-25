@@ -109,6 +109,12 @@
       </editingDomainListener>
    </extension>
    <extension
+         point="org.eclipse.sirius.sessionManagerListener">
+      <listener
+            class="org.polarsys.capella.core.sirius.ui.listener.DAnnotationPrecommitListener">
+      </listener>
+   </extension>
+   <extension
          point="org.eclipse.ltk.core.refactoring.renameParticipants">
       <renameParticipant
             class="org.polarsys.capella.core.sirius.ui.refactoring.CapellaRenameParticipant"
