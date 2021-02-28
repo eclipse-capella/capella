@@ -20,11 +20,16 @@ import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.test.framework.api.OracleDefinition;
 import org.polarsys.capella.test.validation.rules.ju.testcases.AbstractRulesOnDesignTest;
 
+/*
+ *  DWF_SM_16: Mode and State can not be mixed in the same State Machine
+ */
 public class Rule_DWF_SM_16 extends AbstractRulesOnDesignTest {
+  public final static String SYSTEM_STATE_MACHINE = "e52917a6-5a3f-42d4-96e3-f0820f31742b";
+  public final static String STATE_MACHINE_2 = "aa9d99d6-d9ad-4efc-95a3-f41482af466c";
 
   @Override
   protected List<String> getScopeDefinition() {
-    return Arrays.asList(new String[] { "e52917a6-5a3f-42d4-96e3-f0820f31742b" });
+    return Arrays.asList(new String[] { SYSTEM_STATE_MACHINE, STATE_MACHINE_2 });
   }
 
   @Override
@@ -40,7 +45,8 @@ public class Rule_DWF_SM_16 extends AbstractRulesOnDesignTest {
   @Override
   protected List<OracleDefinition> getOracleDefinitions() {
     return Arrays.asList(new OracleDefinition[] {
-        new OracleDefinition("e52917a6-5a3f-42d4-96e3-f0820f31742b", 1) });
+        new OracleDefinition(SYSTEM_STATE_MACHINE, 1),
+        new OracleDefinition(STATE_MACHINE_2, 0)});
   }
 
 }

@@ -32021,6 +32021,32 @@
               </ownedStates>
             </ownedRegions>
           </ownedStateMachines>
+          <ownedStateMachines xsi:type="org.polarsys.capella.core.data.capellacommon:StateMachine"
+              id="aa9d99d6-d9ad-4efc-95a3-f41482af466c" name="StateMachine 2">
+            <ownedRegions xsi:type="org.polarsys.capella.core.data.capellacommon:Region"
+                id="02a0f16f-26d8-4b32-8662-d14d72bf715c" name="Default Region" involvedStates="#628ac6d8-4688-4a72-a2ad-2935e9d6228d">
+              <ownedStates xsi:type="org.polarsys.capella.core.data.capellacommon:Mode"
+                  id="628ac6d8-4688-4a72-a2ad-2935e9d6228d" name="Mode 1">
+                <ownedRegions xsi:type="org.polarsys.capella.core.data.capellacommon:Region"
+                    id="cc9e565c-192f-4f76-8ed2-4d814c9b0916" name="region"/>
+              </ownedStates>
+            </ownedRegions>
+            <ownedRegions xsi:type="org.polarsys.capella.core.data.capellacommon:Region"
+                id="be1a1246-d6d4-44a6-bff6-b7503c7575a7" name="Region 2" involvedStates="#e421ad16-02e6-410c-ab8e-0be3dac13f3f #a302f711-3ac9-4fa8-81c9-6f375cf7dba7 #828897ad-9d38-40a4-b08a-1c02f508b7b5 #4bb156bd-8297-47e0-bcab-c23c420cd163 #4ab026b7-cd7e-4e86-8387-56614e17c541 #05f82ef5-569b-4f61-aca0-aa331531753a">
+              <ownedStates xsi:type="org.polarsys.capella.core.data.capellacommon:FinalState"
+                  id="e421ad16-02e6-410c-ab8e-0be3dac13f3f" name="Final 2"/>
+              <ownedStates xsi:type="org.polarsys.capella.core.data.capellacommon:InitialPseudoState"
+                  id="a302f711-3ac9-4fa8-81c9-6f375cf7dba7" name="Initial 3"/>
+              <ownedStates xsi:type="org.polarsys.capella.core.data.capellacommon:ForkPseudoState"
+                  id="828897ad-9d38-40a4-b08a-1c02f508b7b5" name="Fork 7"/>
+              <ownedStates xsi:type="org.polarsys.capella.core.data.capellacommon:ExitPointPseudoState"
+                  id="4bb156bd-8297-47e0-bcab-c23c420cd163" name="ExitPoint 6"/>
+              <ownedStates xsi:type="org.polarsys.capella.core.data.capellacommon:TerminatePseudoState"
+                  id="4ab026b7-cd7e-4e86-8387-56614e17c541" name="Terminate 4"/>
+              <ownedStates xsi:type="org.polarsys.capella.core.data.capellacommon:EntryPointPseudoState"
+                  id="05f82ef5-569b-4f61-aca0-aa331531753a" name="EntryPoint 5"/>
+            </ownedRegions>
+          </ownedStateMachines>
         </ownedSystemComponents>
       </ownedSystemComponentPkg>
       <ownedMissionPkg xsi:type="org.polarsys.capella.core.data.ctx:MissionPkg" id="38063ef8-8d59-4cb2-8c46-de46107c43ce"
