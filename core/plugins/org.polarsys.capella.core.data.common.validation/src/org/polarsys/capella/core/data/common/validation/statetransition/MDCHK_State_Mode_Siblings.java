@@ -20,12 +20,15 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.validation.AbstractModelConstraint;
 import org.eclipse.emf.validation.IValidationContext;
 import org.polarsys.capella.core.data.capellacommon.AbstractState;
+import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.capellacommon.Mode;
 import org.polarsys.capella.core.data.capellacommon.Region;
-import org.polarsys.capella.core.data.capellacommon.State;
 import org.polarsys.capella.core.data.capellacommon.StateMachine;
 import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 
+/*
+ *  DWF_SM_16: Mode and State can not be mixed in the same State Machine
+ */
 public class MDCHK_State_Mode_Siblings extends AbstractModelConstraint {
   
   public boolean isMixedHierarchyAllowed() {
@@ -47,23 +50,15 @@ public class MDCHK_State_Mode_Siblings extends AbstractModelConstraint {
       for (AbstractState st : region.getOwnedStates()) {
         if (st instanceof Mode) {
           modes.add(st);
-        } else if (st instanceof State) {
+        } else if (st.eClass() == CapellacommonPackage.eINSTANCE.getState()) {
           states.add(st);
         }
       }
     }
-    if (modes.size() != 0 && states.size() != 0) {
-      return createFailureStatus(ctx, stateMachine);
+    if (!modes.isEmpty() && !states.isEmpty()) {
+      return ctx.createFailureStatus(stateMachine.getName());
     }
     return ctx.createSuccessStatus();
-  }
-  
-  /**
-   * @param ctx
-   * @param state
-   */
-  private IStatus createFailureStatus(IValidationContext ctx, StateMachine stateMachine) {
-    return ctx.createFailureStatus(stateMachine.getName());
   }
 }
 
