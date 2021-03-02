@@ -13,7 +13,6 @@
 package org.polarsys.capella.test.diagram.tools.ju.diagram.actions;
 
 import org.eclipse.sirius.business.api.session.Session;
-import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 import org.polarsys.capella.test.diagram.common.ju.api.AbstractDiagramTestCase;
 import org.polarsys.capella.test.framework.helpers.GuiActions;
 
@@ -40,11 +39,11 @@ public class RefreshAllOnDisabledProject extends AbstractDiagramTestCase {
 
   private void testOptions(Session session, boolean b) {
     session.getSiriusPreferences().setRefreshOnRepresentationOpening(b);
-    assertTrue(SessionHelper.hasSpecificSettingRefreshOnRepresentationOpening(session));
+    assertTrue(session.getSiriusPreferences().hasSpecificSettingRefreshOnRepresentationOpening());
     
     GuiActions.refreshAllSubRepresentations(getAirdFileForLoadedModel(getRequiredTestModel()), session, () -> {
       assertEquals(b, session.getSiriusPreferences().isRefreshOnRepresentationOpening());
-      assertTrue(SessionHelper.hasSpecificSettingRefreshOnRepresentationOpening(session));
+      assertTrue(session.getSiriusPreferences().hasSpecificSettingRefreshOnRepresentationOpening());
     });
   }
 }
