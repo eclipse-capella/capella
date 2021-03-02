@@ -46,7 +46,7 @@ public class LinkCreatorFactory {
         return new PhysicalLinksCreator(component_p, part_p);
       }
       if (pc.getNature() == PhysicalComponentNature.NODE) {
-        return new NodePhysicalComponentExchangesCreator(component_p, part_p);
+        return new NodePhysicalLinkCreator(component_p, part_p);
       }
     }
     return new DefaultExchangesCreator(component_p);

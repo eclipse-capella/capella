@@ -202,9 +202,6 @@ public class ABServices {
     if ((parentTarget == null) || (parentSource == null)) {
       return false;
     }
-    if (!parentSource.equals(parentTarget.eContainer())) {
-      return false;
-    }
 
     return true;
 

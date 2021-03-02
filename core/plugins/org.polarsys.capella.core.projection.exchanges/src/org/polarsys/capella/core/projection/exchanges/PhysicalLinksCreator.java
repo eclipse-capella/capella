@@ -115,23 +115,38 @@ public class PhysicalLinksCreator extends DefaultExchangesCreator {
         }
       }
       // Process contained actors
-      List<Component> subComponents = ComponentExt.getSubDefinedComponents(container);
-      if (!subComponents.isEmpty()) {
-        subComponents.stream().filter(c -> ComponentExt.isActor(c)).forEach(actor -> {
-          createPhysicalLinksFromCExchanges(container, actor);
-        });
-      } 
-      if (ComponentExt.isActor(container)) {
-        createPhysicalLinksFromCExchanges(container, container);
-      }
+      createPLsFromCEDiffLevels(container);
+      createPLsFromCESameLevel(container);
+      
     }
   }
 
   /**
+   * Create Physical Links from Component Exchanges at different levels
+   */
+  protected void createPLsFromCEDiffLevels(Component container) {
+    List<Component> subComponents = ComponentExt.getSubDefinedComponents(container);
+    if (!subComponents.isEmpty()) {
+      subComponents.stream().filter(c -> ComponentExt.isActor(c)).forEach(actor -> {
+        createPhysicalLinksFromCExchanges(container, actor);
+      });
+    }
+  }
+  
+  /**
+   * Create Physical Links from Component Exchanges at the same level
+   */
+  protected void createPLsFromCESameLevel(Component container) {
+    if (ComponentExt.isActor(container)) {
+      createPhysicalLinksFromCExchanges(container, container);
+    }
+  }
+  
+  /**
    * @param sourceContainer
    * @param sourceContained
    */
-  private void createPhysicalLinksFromCExchanges(Component sourceContainer, Component sourceContained) {
+  protected void createPhysicalLinksFromCExchanges(Component sourceContainer, Component sourceContained) {
     if (isValidBound(sourceContainer) && isValidBound(sourceContained)) {
       // Process the contained component
       // This reference will allows to handle the processed connections
@@ -168,7 +183,7 @@ public class PhysicalLinksCreator extends DefaultExchangesCreator {
                   }
                   // if the container is the same as contained (if the component doesn't have subcomponents)
                   if (sourceContainer.equals(sourceContained) && ComponentExt.isActor(sourceContained)) {
-                    doCreatePhysicalLink(connection, sourceContainer, (Component) targetContained);
+                    doCreatePhysicalLink(connection, sourceContainer, (Component) targetContained, port);
                   } else if (ComponentExt.isActor(targetContained)
                       && targetContained.eContainer() instanceof Component) {
                     Component targetContainer = (Component) targetContained.eContainer();
@@ -180,6 +195,16 @@ public class PhysicalLinksCreator extends DefaultExchangesCreator {
           }
         }
       }
+    }
+  }
+  
+  
+  private void doCreatePhysicalLink(ComponentExchange componentExchange_p, Component exchangeOutput_p,
+      Component exchangeInput_p, ComponentPort sourcePort_p) {
+    if (componentExchange_p.getSource().equals(sourcePort_p)) {
+      doCreatePhysicalLink(componentExchange_p, exchangeOutput_p, exchangeInput_p);
+    } else {
+      doCreatePhysicalLink(componentExchange_p, exchangeInput_p, exchangeOutput_p);
     }
   }
 
