@@ -13,7 +13,6 @@
 package org.polarsys.capella.core.sirius.ui.helper;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -24,7 +23,6 @@ import java.util.Set;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
-import org.eclipse.core.resources.ProjectScope;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -34,21 +32,17 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
-import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
-import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelectionCallback;
-import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.ui.IReusableEditor;
-import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.command.AbstractNonDirtyingCommand;
 import org.polarsys.capella.common.helpers.EObjectExt;
@@ -381,44 +375,4 @@ public class SessionHelper {
     }
   }
 
-  /**
-   * Returns whether the session has Sirius preference Refresh at Opening Representation defined at project level
-   */
-  public static boolean hasSpecificSettingRefreshOnRepresentationOpening(Session session) {
-    return hasSpecificSetting(session, FrameworkUtil.getBundle(SiriusUIPreferencesKeys.class).getSymbolicName(),
-        SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name());
-  }
-
-  /**
-   * Returns whether the session has Sirius preference Automatic Refresh defined at project level
-   */
-  public static boolean hasSpecificSettingAutoRefresh(Session session) {
-    return hasSpecificSetting(session, FrameworkUtil.getBundle(SiriusPreferencesKeys.class).getSymbolicName(),
-        SiriusPreferencesKeys.PREF_AUTO_REFRESH.name());
-  }
-
-  /**
-   * Returns whether the session has Sirius preference at the project level.
-   * 
-   * @implNote As a custom implementation, Sirius is storing it in the Project Scope of the owning project with addition
-   *           of uid of the root DAnalysis as the nodeId.
-   */
-  private static boolean hasSpecificSetting(Session session, String bundleId, String prefKey) {
-    Resource aird = session.getSessionResource();
-    IFile airdFile = EcoreUtil2.getFile(aird);
-    if (airdFile != null) {
-      IProject project = airdFile.getProject();
-      if (project != null) {
-        ProjectScope projectScope = new ProjectScope(project);
-        try {
-          DAnalysis analysis = (DAnalysis) aird.getContents().get(0);
-          String nodeId = bundleId + analysis.getUid();
-          return Arrays.asList(projectScope.getNode(nodeId).keys()).contains(prefKey);
-        } catch (Exception e) {
-          // Nothing here
-        }
-      }
-    }
-    return false;
-  }
 }
