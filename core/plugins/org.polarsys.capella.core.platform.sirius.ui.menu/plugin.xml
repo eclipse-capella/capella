@@ -23,6 +23,7 @@
               <separator name="group.semantic" visible="true" />
               <separator name="group.showIn" visible="true" />
               <separator name="group.sendTo" visible="true" />
+              <separator name="group.delete" visible="true" />
               
        </menuContribution>
     
@@ -82,9 +83,18 @@
        <menuContribution
                 locationURI="popup:org.polarsys.capella.core.ui.semantic.browser.view.SemanticBrowserID?after=additions">
                 
+              <separator name="group.open" visible="true"/>
               <separator name="group.showIn" visible="true" />
               <separator name="group.sendTo" visible="true" />
               <separator name="group.semantic" visible="true" />
+              <separator name="group.delete" visible="false" />
+              <separator name="group.validation" visible="true" />
+              <separator name="group.rec" visible="false" />
+              <separator name="group.pattern" visible="false" />
+              <separator name="group.transition" visible="false" />
+              <separator name="group.wizard" visible="false" />
+              <separator name="group.allocation" visible="false" />
+              <separator name="group.accelerator" visible="false" />
               
        </menuContribution>
        
@@ -302,6 +312,15 @@
          </menu>
          
          
+      </menuContribution>
+      
+      <menuContribution
+            locationURI="popup:org.eclipse.ui.popup.any?after=group.semantic">
+         <menu
+               id="org.polarsys.capella.core.copyAs" label="%copyAsGroup_label">
+               <separator name="group.copyAs">
+		       </separator>
+         </menu>
       </menuContribution>
       
       </extension>

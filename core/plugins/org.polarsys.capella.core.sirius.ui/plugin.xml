@@ -181,7 +181,7 @@
    <extension
          point="org.eclipse.ui.menus">
       <menuContribution
-            locationURI="popup:org.eclipse.acceleo.ui.interpreter.view?after=additions">
+            locationURI="popup:org.polarsys.capella.core.copyAs?after=org.polarsys.capella.core.ui.properties.richtext.CopyAsDescriptionLink">
          <command
                commandId="org.polarsys.capella.core.sirius.ui.copyAsText"
                icon="icons/copy.gif"

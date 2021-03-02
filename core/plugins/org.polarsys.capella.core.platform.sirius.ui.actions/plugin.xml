@@ -179,7 +179,7 @@
     <extension point="org.eclipse.ui.menus">
     
        <menuContribution
-                locationURI="popup:org.eclipse.ui.popup.any?after=group.semantic">
+                locationURI="popup:org.polarsys.capella.core.copyAs?after=group.copyAs">
            <command
                  commandId="org.polarsys.capella.core.platform.sirius.ui.actions.CopyPath">
                  <visibleWhen
@@ -190,9 +190,21 @@
                  </visibleWhen>
            </command>
        </menuContribution>
-      
+       
+       <menuContribution
+                locationURI="popup:org.eclipse.ui.popup.any?after=group.delete">
+           <command
+                 commandId="org.polarsys.capella.core.platform.sirius.ui.actions.Delete">
+                 <visibleWhen
+                       checkEnabled="false">
+                       <reference
+                                 definitionId="org.polarsys.capella.core.platform.sirius.ui.actions.Delete.expression">
+                       </reference>
+                 </visibleWhen>
+           </command>
+       </menuContribution>
+       
    </extension>
-   
    
       <extension
          point="org.eclipse.core.expressions.definitions">
@@ -255,10 +267,30 @@
                   </iterate>
             </with>
       </definition>
-      
-      
-      
-      
+
+      <definition
+            id="org.polarsys.capella.core.platform.sirius.ui.actions.Delete.expression">
+         <with
+               variable="selection">
+               <iterate 
+                   ifEmpty="false">
+                   <and>
+                       <or>
+                           <instanceof
+                               value="org.eclipse.emf.ecore.EObject">
+                           </instanceof>
+                           <adapt
+                               type="org.polarsys.kitalpha.emde.model.Element">
+                           </adapt>
+                           <adapt
+                               type="org.eclipse.sirius.viewpoint.DRepresentationDescriptor">
+                           </adapt>
+                      </or>
+                  </and>
+              </iterate>
+         </with>
+      </definition>
+
       <definition
             id="org.polarsys.capella.core.platform.sirius.ui.actions.accelerator.ConvertClassPrimitive.expression">
             <with
@@ -518,7 +550,14 @@
    <extension
          point="org.eclipse.ui.commands">
          
-         <command
+      <command
+         	   categoryId="org.polarsys.capella.core.semantic"
+               defaultHandler="org.polarsys.capella.core.platform.sirius.ui.handlers.DeleteHandler"
+               id="org.polarsys.capella.core.platform.sirius.ui.actions.Delete"
+               name="%Delete">
+      </command>
+      
+      <command
          	   categoryId="org.polarsys.capella.core.semantic"
                defaultHandler="org.polarsys.capella.core.platform.sirius.ui.handlers.CopyPathHandler"
                id="org.polarsys.capella.core.platform.sirius.ui.actions.CopyPath"
@@ -637,9 +676,12 @@
             commandId="org.polarsys.capella.core.platform.sirius.ui.actions.CopyPath"
                icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_copy_path.gif">
       </image>
+      <image
+            commandId="org.polarsys.capella.core.platform.sirius.ui.actions.Delete"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_delete.gif">
+      </image>
                
    </extension>
-   
    
    <extension
          point="org.polarsys.capella.core.preferences.capellaPreferences">
@@ -687,6 +729,15 @@
             state="false">
             <description>%ProtectedElementsDecorator_description</description>
       </decorator>
-   </extension>   
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="org.polarsys.capella.core.platform.sirius.ui.actions.Delete"
+            schemeId="org.polarsys.capella.core.defaultAcceleratorConfiguration"
+            sequence="DELETE">
+      </key>
+   </extension>
    
 </plugin>

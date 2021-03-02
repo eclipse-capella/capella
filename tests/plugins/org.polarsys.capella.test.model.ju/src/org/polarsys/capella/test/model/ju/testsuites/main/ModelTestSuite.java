@@ -33,6 +33,7 @@ import org.polarsys.capella.test.model.ju.helpers.ComponentExtTestCase;
 import org.polarsys.capella.test.model.ju.helpers.ComponentPkgExtTestCase;
 import org.polarsys.capella.test.model.ju.helpers.PartExtTestCase;
 import org.polarsys.capella.test.model.ju.helpers.PhysicalComponentExtTestCase;
+import org.polarsys.capella.test.model.ju.menu.CapellaMenusTestCase;
 import org.polarsys.capella.test.model.ju.obfuscate.ObfuscateModelTestCase;
 import org.polarsys.capella.test.model.ju.propertyviews.PropertyViewsTest;
 import org.polarsys.capella.test.model.ju.rename.RenameModelTestSuite;
@@ -97,6 +98,8 @@ public class ModelTestSuite extends BasicTestSuite {
     tests.add(new DiffMergeTestSuite());
     tests.add(new CompositionTestSuite());
     tests.add(new ActivityExplorerTestSuite());
+    
+    tests.add(new CapellaMenusTestCase());
     return tests;
   }
 
