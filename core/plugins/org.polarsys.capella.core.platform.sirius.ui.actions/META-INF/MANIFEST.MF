@@ -18,7 +18,8 @@ Require-Bundle: com.google.guava,
  org.polarsys.capella.core.af.integration,
  org.polarsys.capella.common.libraries,
  org.polarsys.capella.common.tools.report.appenders.usage,
- org.polarsys.capella.core.platform.sirius.ui.menu
+ org.polarsys.capella.core.platform.sirius.ui.menu,
+ org.eclipse.core.expressions
 Export-Package: org.polarsys.capella.core.platform.sirius.ui.actions,
  org.polarsys.capella.core.platform.sirius.ui.commands,
  org.polarsys.capella.core.platform.sirius.ui.handlers,

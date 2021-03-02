@@ -89,7 +89,7 @@
 
       
       <menuContribution
-            locationURI="popup:org.polarsys.capella.core.ui.semantic.browser.view.SemanticBrowserID?after=additions">
+            locationURI="popup:org.polarsys.capella.core.ui.semantic.browser.view.SemanticBrowserID?after=group.open">
          <command
                commandId="org.polarsys.capella.core.ui.semantic.browser.sirius.openRepresentationCommand"
                style="push">

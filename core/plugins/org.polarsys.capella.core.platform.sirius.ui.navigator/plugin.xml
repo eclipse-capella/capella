@@ -38,7 +38,7 @@
          </insertionPoint>
          <insertionPoint
                name="group.open"
-               separator="true">
+               separator="false">
          </insertionPoint>
          <insertionPoint
                name="group.openWith"
@@ -392,26 +392,6 @@
             </enablement>
    		</actionProvider>
    		
-   		
-         <actionProvider
-               class="org.polarsys.capella.core.platform.sirius.ui.navigator.actions.providers.NewRepresentationActionProvider"
-               id="capella.project.explorer.newRepresentationContributor">
-               <!--enablement>
-                   	   <and>
-		                  <test forcePluginActivation="false"
-					               property="org.polarsys.capella.core.commands.preferences.properties.capellaCommandsPreferences"
-					               args="addCapellaDiagram"
-					               value="capella.project.explorer.newRepresentationContributor">
-				       	  </test>
-				       </and>
-            	</enablement-->
-                     
-         </actionProvider>
-                  <actionProvider
-               class="org.polarsys.capella.core.platform.sirius.ui.navigator.actions.providers.OpenRepresentationActionProvider"
-               id="capella.project.explorer.openRepresentationContributor">
-                     
-         </actionProvider>
          <actionProvider
                class="org.polarsys.capella.core.platform.sirius.ui.navigator.actions.providers.EditCommonActionProvider"
                id="capella.project.explorer.editContributor">
@@ -1359,6 +1339,16 @@
          </command>
          
       </menuContribution>
+      
+      <menuContribution allPopups="false" locationURI="popup:org.eclipse.ui.popup.any?after=group.open">
+         <dynamic class="org.polarsys.capella.core.platform.sirius.ui.navigator.actions.providers.DynamicNewRepresentationContributionItem"
+               id="capella.project.explorer.newRepresentationContributor">
+         </dynamic>
+         <dynamic class="org.polarsys.capella.core.platform.sirius.ui.navigator.actions.providers.DynamicOpenRepresentationContributionItem"
+               id="capella.project.explorer.openRepresentationContributor">
+         </dynamic>
+      </menuContribution>
+      
    </extension>
       
    <extension

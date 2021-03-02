@@ -19,6 +19,7 @@ Require-Bundle: org.eclipse.sirius.diagram.ui,
 Export-Package: org.polarsys.capella.core.ui.properties.richtext,
  org.polarsys.capella.core.ui.properties.richtext.clipboard,
  org.polarsys.capella.core.ui.properties.richtext.fields,
+ org.polarsys.capella.core.ui.properties.richtext.handlers,
  org.polarsys.capella.core.ui.properties.richtext.navigation,
  org.polarsys.capella.core.ui.properties.richtext.propertysheet,
  org.polarsys.capella.core.ui.properties.richtext.sections
