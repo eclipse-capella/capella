@@ -42,11 +42,8 @@ public class LinkCreatorFactory {
       
     } else if (component_p instanceof PhysicalComponent) {
       PhysicalComponent pc = (PhysicalComponent) component_p;
-      if (ComponentExt.isActor(pc)) {
+      if (ComponentExt.isActor(pc) || pc.getNature() == PhysicalComponentNature.NODE) {
         return new PhysicalLinksCreator(component_p, part_p);
-      }
-      if (pc.getNature() == PhysicalComponentNature.NODE) {
-        return new NodePhysicalLinkCreator(component_p, part_p);
       }
     }
     return new DefaultExchangesCreator(component_p);

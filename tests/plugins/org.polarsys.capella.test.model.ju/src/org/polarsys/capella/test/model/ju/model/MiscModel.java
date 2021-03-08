@@ -98,6 +98,8 @@ public abstract class MiscModel extends NonDirtyTestCase {
   public static final String SA__MISSIONS = "35874327-16e7-4055-a9a2-c1c41599234d";
   public static final String SA__OPERATIONAL_ANALYSIS_REALIZATION_TO_OPERATIONAL_ANALYSIS = "6379ce8e-2b11-4ea4-bd2e-325317025e30";
   public static final String LA = "6423fb82-eda3-42be-a0ad-bb121fee03ce";
+  public static final String LA_1 = "0f0c9802-be91-4cb7-8ba8-15a5c8f5e965";
+  public static final String LA_2 = "4f190174-7f6a-4c70-a554-fae57aae67a4";
   public static final String LA__LOGICAL_FUNCTIONS = "36db5f49-cc83-49d1-95d0-69c24f9fa1ef";
   public static final String LA__ROOT_LF = "835edbff-fad4-4cfa-8574-82663347ad7d";
   public static final String LA__ROOT_LF__FUNCTION_REALIZATION_TO_ROOT_SYSTEM_FUNCTION = "c0d2471e-87c5-473a-a134-f8d850be47c2";
@@ -128,6 +130,11 @@ public abstract class MiscModel extends NonDirtyTestCase {
   public static final String PA__LOGICAL_COMPONENT_REALIZATION_TO_LOGICAL_SYSTEM = "a88f156f-f4b4-48df-9569-89b9312fbfaa";
   public static final String PA__PHYSICAL_ACTORS = "baa584da-3464-4150-b612-1cbb63169482";
   public static final String PA__LOGICAL_ARCHITECTURE_REALIZATION_TO_LOGICAL_ARCHITECTURE = "65800a74-3da3-46d9-ac2e-dd2af59a25d7";
+  public static final String PA_1 = "f3bffaa0-f29d-43b4-bd02-d8acf2c4efa8";
+  public static final String PA_2 = "b5fe9222-5075-4ccf-9ceb-4f1211fcf917";
+  public static final String PA_3 = "26b4dec4-0ffe-4905-8f7d-9b8f52e6562c";
+  public static final String PC_1 = "7a0bd881-61c9-45fb-87dc-03d4abc7cc13";
+  public static final String PC_2 = "28ad3c5c-16a2-4aef-a6af-5ddc1a90ca56";
   public static final String EPBS = "e4e1c7e9-9174-4c56-8375-65cecab211a1";
   public static final String EPBS__CAPABILITIES = "5eaa4a48-a354-41b4-bade-9c9958ee275d";
   public static final String EPBS__EPBS_CONTEXT = "cdb07a6b-0e1a-40dc-897a-fb891add8d88";
