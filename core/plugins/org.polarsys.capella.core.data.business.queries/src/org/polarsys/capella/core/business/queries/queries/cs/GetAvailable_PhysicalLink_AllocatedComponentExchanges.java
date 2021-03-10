@@ -105,6 +105,7 @@ public class GetAvailable_PhysicalLink_AllocatedComponentExchanges extends Abstr
       } else if (component instanceof LogicalComponent) {
         sourceDeployedElements.addAll(LogicalComponentExt.getAllSubComponents((LogicalComponent) component));
       } else if (component instanceof PhysicalComponent) {
+        sourceDeployedElements.add(component);
         for (AbstractTypedElement abstractTypedElement : component.getAbstractTypedElements()) {
           if (abstractTypedElement instanceof Part) {
             for (DeployableElement deployableElement : Stream
@@ -128,6 +129,7 @@ public class GetAvailable_PhysicalLink_AllocatedComponentExchanges extends Abstr
       } else if (component instanceof LogicalComponent) {
         targetDeployedElements.addAll(LogicalComponentExt.getAllSubComponents((LogicalComponent) component));
       } else if (component instanceof PhysicalComponent) {
+        targetDeployedElements.add(component);
         for (AbstractTypedElement abstractTypedElement : component.getAbstractTypedElements()) {
           if (abstractTypedElement instanceof Part) {
             for (DeployableElement deployableElement : Stream

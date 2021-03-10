@@ -63,7 +63,7 @@ public class ComponentPkgExtTestCase extends BasicTestCase {
     
     List<String> externalActors = ComponentPkgExt.getExternalActors((ComponentPkg) IdManager.getInstance().getEObject(STRUCTURE, scope)).stream().map(e -> e.getId()).collect(Collectors.toList());
     assertTrue(externalActors.containsAll(Arrays.asList(EXTERNAL_ACTOR_1, EXTERNAL_ACTOR_2, EXTERNAL_ACTOR_3, EXTERNAL_ACTOR_4, EXTERNAL_ACTOR_5, EXTERNAL_ACTOR_6)));
-    assertEquals(externalActors.size(), 6);
+    assertEquals(externalActors.size(), 12);
     
     externalActors = ComponentPkgExt.getExternalActors((ComponentPkg) IdManager.getInstance().getEObject(EXTERNAL_LOGICALCOMPONENTPKG_2, scope)).stream().map(e -> e.getId()).collect(Collectors.toList());
     assertTrue(externalActors.containsAll(Arrays.asList(EXTERNAL_ACTOR_4, EXTERNAL_ACTOR_5, EXTERNAL_ACTOR_6)));

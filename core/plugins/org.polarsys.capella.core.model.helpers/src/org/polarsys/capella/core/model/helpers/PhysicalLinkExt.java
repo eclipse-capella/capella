@@ -336,6 +336,7 @@ public class PhysicalLinkExt extends org.polarsys.capella.core.data.helpers.cs.s
         EObject ppOwner = pp.eContainer();
         if (ppOwner instanceof Component) {
           List<Component> allSubUsedAndDeployedComponents = ComponentExt.getSubUsedAndDeployedComponents((Component) ppOwner);
+          allSubUsedAndDeployedComponents.add((Component) ppOwner);
           if (allSubUsedAndDeployedComponents.contains(cPortOwner)) {
             return pp;
           }
