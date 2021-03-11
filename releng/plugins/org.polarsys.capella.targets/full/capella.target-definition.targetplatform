@@ -108,3 +108,7 @@ location nebula "http://download.eclipse.org/nebula/releases/1.4.0/" {
 location eclipse-shared-license "http://download.eclipse.org/cbi/updates/license" {
 	org.eclipse.license.feature.group lazy
 }
+
+location "https://download.eclipse.org/tools/orbit/downloads/drops/R20210223232630/repository/" {
+    org.apache.felix.gogo.shell
+}
