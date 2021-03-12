@@ -96,7 +96,10 @@ public class DynamicCreateContributionItem extends CompoundContributionItem impl
   @Override
   protected IContributionItem[] getContributionItems() {
     IContributionItem item = new DynamicProvider().getItem();
-    return new IContributionItem[] { item };
+    if(item != null) {
+      return new IContributionItem[] { item };
+    }
+    return new IContributionItem[] { };
   }
 
 }

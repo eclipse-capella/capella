@@ -12,8 +12,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.platform.sirius.ui.handlers;
 
+import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -24,6 +24,7 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaDeleteCommand;
 
 public class DeleteHandler extends AbstractHandler {
@@ -36,14 +37,11 @@ public class DeleteHandler extends AbstractHandler {
 
     if (selection instanceof IStructuredSelection) {
       List<?> elementsToRemove = ((IStructuredSelection) selection).toList();
-      List<EObject> eObjectsToRemove = elementsToRemove.stream()//
-          .filter(EObject.class::isInstance) //
-          .map(EObject.class::cast).collect(Collectors.toList());
-
+      Collection<EObject> eObjectsToRemove = CapellaAdapterHelper.resolveDescriptorsOrBusinessObjects(elementsToRemove);
       if (!eObjectsToRemove.isEmpty()) {
 
         ExecutionManager executionManager = TransactionHelper.getExecutionManager(eObjectsToRemove);
-        CapellaDeleteCommand deleteCommand = new CapellaDeleteCommand(executionManager, elementsToRemove, true,
+        CapellaDeleteCommand deleteCommand = new CapellaDeleteCommand(executionManager, eObjectsToRemove, true,
             withConfirmDeletion(), true);
         deleteCommand.setPreventProtectedElementsDeletion(true);
 
