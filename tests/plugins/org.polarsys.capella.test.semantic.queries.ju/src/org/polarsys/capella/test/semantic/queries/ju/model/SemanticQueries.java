@@ -302,6 +302,49 @@ public abstract class SemanticQueries extends AbstractSemanticQueryTestCase {
   public static final String LA_MODE_1_TO_MODE_2 = "eb7ef4a7-f6ee-42d2-92b0-61150539561f"; //$NON-NLS-1$
   public static final String PA_MODE_1_TO_MODE_2 = "e6aaca4d-5132-4223-9dd8-74499479397b"; //$NON-NLS-1$
   
+  public static final String SA_SERVICE_1 = "c5659ad6-4b50-4378-b785-894c4b8b84ef"; //$NON-NLS-1$
+  public static final String SA_PARAMETER_1 = "e639de8b-7b2f-428d-a557-54de20a78767"; //$NON-NLS-1$
+  public static final String SA_PARAMETER_2 = "77afc633-8445-4371-adcf-fccd7c9751e1"; //$NON-NLS-1$
+  public static final String SA_CLASS_5 = "e9aa60dc-d29f-4ce9-a511-a448627b45be"; //$NON-NLS-1$
+  public static final String SA_UNION_6 = "9a9a88fa-d7b5-4758-80de-b7760c1422ef"; //$NON-NLS-1$
+  public static final String SA_UNION_7_UNION_7 = "ff2a7a96-707d-4559-aecd-d2834400eff2"; //$NON-NLS-1$
+  public static final String SA_UNIONPROPERTY_2 = "ee72e76c-ba43-4ddc-8689-e8db1617fbf5"; //$NON-NLS-1$
+  public static final String SA_CLASS_9_CLASS_9 = "2829f387-055d-46c9-b17c-11031e174f1b"; //$NON-NLS-1$
+  public static final String SA_COLLECTION_1_COLLECTION_1 = "9b87c882-86b4-4b75-bc3e-f1c7a04477ed"; //$NON-NLS-1$
+  public static final String SA_COLLECTION_1 = "f4e67ea1-e03c-4e4e-bf2b-cd60875a1184"; //$NON-NLS-1$
+  public static final String SA_SERVICE_2 = "8d3b5161-351a-4b90-9d5a-c0d590ee4770"; //$NON-NLS-1$
+  public static final String SA_PHYSICALQUANTITY_2_UNIT_1 = "a2f14501-d006-4424-ba10-3a253fc99311"; //$NON-NLS-1$
+  public static final String SA_UNIT_1 = "54109f57-ab0f-40e7-bc42-5fc08daa2918"; //$NON-NLS-1$
+  public static final String SA_NUMERICREFERENCE_1_UNIT_1 = "7fde7725-9ba0-4574-aee2-0738d9fa6e4b"; //$NON-NLS-1$
+  public static final String SA_ALLOCATION_EXCHANGEITEM_2 = "027ee67c-df80-40f7-a941-48e67ad46fa8"; //$NON-NLS-1$
+  public static final String SA_BINARYEXPRESSION_1_UNIT_1 = "ec4dfb2e-aa30-4026-aebd-998a72ad8883"; //$NON-NLS-1$
+  public static final String SA_ENUMERATIONLITERAL_1 = "2fb6bb5b-1ac7-4b4b-988c-b03b80bf53ee"; //$NON-NLS-1$
+  public static final String SA_ENUMERATION_4 = "12d5a89a-c4c4-4091-92ad-56596fbdf187"; //$NON-NLS-1$
+  public static final String SA_EXCHANGEITEM_2 = "525961bb-0763-4b92-b9b4-557e3addee61"; //$NON-NLS-1$
+  public static final String SA_EXCHANGEITEMELEMENT_1_CLASS_9 = "e890eefa-9606-4988-b72e-2148dac96f6c"; //$NON-NLS-1$
+  public static final String SA_VALUE_CLASS_8_PROPERTY_1 = "08e4ed91-8edc-4045-a3a0-418d7fd048a4"; //$NON-NLS-1$
+  public static final String SA_LITERALBOOLEANVALUE_1 = "37cbd172-d052-4a7e-9418-fd916fb72ae6"; //$NON-NLS-1$
+  public static final String SA_BOOLEANTYPE_5 = "79ea4b37-3595-45a5-aa2a-76f16a05e43a"; //$NON-NLS-1$
+  public static final String SA_LEFTOPERAND_BINARYEXPRESSION_1 = "95290c2b-3e05-4ee7-acb4-734f131c16b4"; //$NON-NLS-1$
+  public static final String SA_RIGHTOPERAND_UNARYEXPRESSION_2 = "d9579a2a-e865-4c55-a4e8-2170a6ea1f69"; //$NON-NLS-1$
+  public static final String SA_BINARYEXPRESSION_1 = "ec4dfb2e-aa30-4026-aebd-998a72ad8883"; //$NON-NLS-1$
+  public static final String SA_UNARYEXPRESSION_2 = "9fd16369-7aaa-445b-9d8a-98f19b25aa30"; //$NON-NLS-1$
+  public static final String SA_OPERAND_BINARYEXPRESSION_1 = "e7dcd627-0a8c-49ee-907a-974607030987"; //$NON-NLS-1$
+  public static final String SA_COLLECTION_2 = "68082615-d367-4cb5-87dc-4c9b9d5453dc"; //$NON-NLS-1$
+  public static final String SA_UNARYEXPRESSION_1 = "99d0ebb1-630f-4b54-b356-ed95718b556d"; //$NON-NLS-1$
+  public static final String SA_MAX_UNARYEXPRESSION_1 = "eb4029b5-35db-4090-adf2-bce18d6c5d10"; //$NON-NLS-1$
+  public static final String SA_MAXCARD_UNARYEXPRESSION_2 = "c82d56dd-e106-4365-a719-b96b88290dd3"; //$NON-NLS-1$
+  public static final String SA_MIN_UNARYEXPRESSION_2 = "c2cd2645-ba63-4851-bcc0-dbd7fcd58574"; //$NON-NLS-1$
+  public static final String SA_MINCARD_UNARYEXPRESSION_1 = "252665c6-f4e6-42d4-8773-26e4be4c886c"; //$NON-NLS-1$
+  public static final String SA_BOOLEANTYPE_1 = "5406988c-eee3-47f1-81f0-75014d4f4242"; //$NON-NLS-1$
+  public static final String SA_NUMERICTYPE_3 = "1cd0267f-a32b-4cad-a0c0-e4a7610b01b0"; //$NON-NLS-1$
+  public static final String SA_MAXLENGTH_UNARYEXPRESSION_1 = "d00a2b87-12c0-45d4-a55a-b654114b4c6a"; //$NON-NLS-1$
+  public static final String SA_MINLENGTH_UNARYEXPRESSION_2 = "dc3d2687-2de6-4927-9853-d0e56079d49d"; //$NON-NLS-1$
+  public static final String SA_NULL_UNARYEXPRESSION_1 = "804134bd-8351-4ffa-a784-7ea195276095"; //$NON-NLS-1$
+  public static final String SA_INTERFACE_1 = "d228cb3e-8f3e-41a8-9d37-605dd947f70b"; //$NON-NLS-1$
+  public static final String SA_CLASS_8_PROPERTY_1 = "7ea710ec-c38d-4a8e-bdd5-a40e86058b85"; //$NON-NLS-1$
+  public static final String SA__COLLECTION_2_COLLECTION_2 = "8fa45549-ab96-4b46-b026-36c4edef1d7e"; //$NON-NLS-1$
+  
   @Override
   public List<String> getRequiredTestModels() {
     return Collections.singletonList("SemanticQueries");

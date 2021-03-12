@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
 
 import org.polarsys.capella.core.data.information.InformationPackage;
 import org.polarsys.capella.core.data.information.Property;
+import org.polarsys.capella.core.data.information.UnionProperty;
 import org.polarsys.capella.common.helpers.query.IQuery;
 
 /**
@@ -29,31 +30,32 @@ import org.polarsys.capella.common.helpers.query.IQuery;
  */
 public class PropertyOwner implements IQuery {
 
-	/**
-	 * 
-	 */
-	public PropertyOwner() {
-	  // do nothing
-	}
+  /**
+   * 
+   */
+  public PropertyOwner() {
+    // do nothing
+  }
 
-	/** 
-	 *  
-	 * current.eContainer
-	 * 
-	 * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
-	 */
-	public List<Object> compute(Object object) {
-		List<Object> result = new ArrayList<Object>();
-		if (object instanceof Property) {
-		  Property pro = (Property) object;
-		  if (pro.eClass().getName().equalsIgnoreCase(InformationPackage.Literals.PROPERTY.getName())) {
-		    EObject container = pro.eContainer();
-	      if (container != null) {
-	        result.add(container);        
-	      }  
+  /**
+   * 
+   * current.eContainer
+   * 
+   * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
+   */
+  public List<Object> compute(Object object) {
+    List<Object> result = new ArrayList<Object>();
+    if (object instanceof Property) {
+      Property pro = (Property) object;
+      if (pro.eClass().getName().equalsIgnoreCase(InformationPackage.Literals.PROPERTY.getName())
+          || pro instanceof UnionProperty) {
+        EObject container = pro.eContainer();
+        if (container != null) {
+          result.add(container);
+        }
       }
-			
-		}
-		return result;
-	}
+
+    }
+    return result;
+  }
 }
