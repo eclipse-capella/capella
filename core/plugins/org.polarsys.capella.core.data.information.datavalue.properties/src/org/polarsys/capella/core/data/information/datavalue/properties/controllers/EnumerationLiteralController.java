@@ -14,6 +14,7 @@ package org.polarsys.capella.core.data.information.datavalue.properties.controll
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.core.data.information.Property;
 import org.polarsys.capella.core.data.information.datatype.BooleanType;
@@ -46,21 +47,23 @@ public class EnumerationLiteralController extends AbstractSimpleEditableSemantic
     else if (value instanceof NumericValue) {
       ref = DatavalueFactory.eINSTANCE.createNumericReference(defaultName);
       ref.eSet(DatavaluePackage.eINSTANCE.getNumericReference_ReferencedValue(), value);
-      ref.eSet(ModellingcorePackage.eINSTANCE.getAbstractTypedElement_AbstractType(), semanticElement);
     }
     else if (value instanceof AbstractBooleanValue) {
       ref = DatavalueFactory.eINSTANCE.createBooleanReference(defaultName);
       ref.eSet(DatavaluePackage.eINSTANCE.getBooleanReference_ReferencedValue(), value);
-      ref.eSet(ModellingcorePackage.eINSTANCE.getAbstractTypedElement_AbstractType(), semanticElement);
     }
     else if (value instanceof AbstractStringValue) {
       ref = DatavalueFactory.eINSTANCE.createStringReference(defaultName);
       ref.eSet(DatavaluePackage.eINSTANCE.getStringReference_ReferencedValue(), value);
-      ref.eSet(ModellingcorePackage.eINSTANCE.getAbstractTypedElement_AbstractType(), semanticElement);
     }
     else if (value instanceof EnumerationLiteral) {
       ref = DatavalueFactory.eINSTANCE.createEnumerationReference(defaultName);
       ref.eSet(DatavaluePackage.eINSTANCE.getEnumerationReference_ReferencedValue(), value);
+    }
+    
+    if (ref != null && semanticElement instanceof AbstractType && (value instanceof NumericValue
+        || value instanceof AbstractBooleanValue || value instanceof AbstractStringValue)) {
+      ref.eSet(ModellingcorePackage.eINSTANCE.getAbstractTypedElement_AbstractType(), semanticElement);
     }
 
     if (ref != null) {

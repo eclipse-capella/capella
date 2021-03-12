@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018, 2021 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -24,6 +24,8 @@ import org.polarsys.capella.test.semantic.queries.ju.testcases.AbstractFunction_
 import org.polarsys.capella.test.semantic.queries.ju.testcases.AbstractStateParentActiveElements;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.AbstractTypeTypingElements;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.AvailableForTypeClassExistTest;
+import org.polarsys.capella.test.semantic.queries.ju.testcases.BinaryExpressionLeftOperand;
+import org.polarsys.capella.test.semantic.queries.ju.testcases.BinaryExpressionRightOperand;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.CapabilityExtendedCapabilities;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.CapabilityExtendingCapabilities;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.CapabilityGeneralizedCapabilities;
@@ -54,12 +56,20 @@ import org.polarsys.capella.test.semantic.queries.ju.testcases.CapellaRelationsh
 import org.polarsys.capella.test.semantic.queries.ju.testcases.CapellaRelationshipsInvolvementTarget;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.CapellaRelationshipsTraceSource;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.CapellaRelationshipsTraceTarget;
+import org.polarsys.capella.test.semantic.queries.ju.testcases.ClassProperties;
+import org.polarsys.capella.test.semantic.queries.ju.testcases.CollectionOperations;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.ComponentAllocatingPhysicalPorts;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.ComponentRepresentingParts;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.DataValueRefReferencedProperty;
+import org.polarsys.capella.test.semantic.queries.ju.testcases.DataValueType;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.EntryExitPoint_ParentRegionTest;
+import org.polarsys.capella.test.semantic.queries.ju.testcases.EnumerationLiteralDomainValue;
+import org.polarsys.capella.test.semantic.queries.ju.testcases.EnumerationLiteralParent;
+import org.polarsys.capella.test.semantic.queries.ju.testcases.ExchangeItemElementReferencedProperties;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.ExchangeItem_realizedEI;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.ExchangeItem_realizingEI;
+import org.polarsys.capella.test.semantic.queries.ju.testcases.ExchangesItemAllocationParent;
+import org.polarsys.capella.test.semantic.queries.ju.testcases.ExchangesItemExchangeItemElements;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.FragmentAllocatedFunction;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.FragmentAllocatedState;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.GeneralizedComponents;
@@ -68,7 +78,22 @@ import org.polarsys.capella.test.semantic.queries.ju.testcases.InterfaceExchange
 import org.polarsys.capella.test.semantic.queries.ju.testcases.InterfaceGeneralizedElements;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.InterfaceGeneralizingElements;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.InterfaceInheritedExchangedItems;
+import org.polarsys.capella.test.semantic.queries.ju.testcases.LiteralBooleanValueParent;
+import org.polarsys.capella.test.semantic.queries.ju.testcases.MultiplicityElementDefaultValue;
+import org.polarsys.capella.test.semantic.queries.ju.testcases.MultiplicityElementIndexes;
+import org.polarsys.capella.test.semantic.queries.ju.testcases.MultiplicityElementMax;
+import org.polarsys.capella.test.semantic.queries.ju.testcases.MultiplicityElementMaxCard;
+import org.polarsys.capella.test.semantic.queries.ju.testcases.MultiplicityElementMaxLength;
+import org.polarsys.capella.test.semantic.queries.ju.testcases.MultiplicityElementMin;
+import org.polarsys.capella.test.semantic.queries.ju.testcases.MultiplicityElementMinCard;
+import org.polarsys.capella.test.semantic.queries.ju.testcases.MultiplicityElementMinLength;
+import org.polarsys.capella.test.semantic.queries.ju.testcases.MultiplicityElementNull;
+import org.polarsys.capella.test.semantic.queries.ju.testcases.NumericValueUnit;
+import org.polarsys.capella.test.semantic.queries.ju.testcases.OperationParameters;
+import org.polarsys.capella.test.semantic.queries.ju.testcases.OperationParent;
+import org.polarsys.capella.test.semantic.queries.ju.testcases.ParameterParent;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.PhysicalAllocatedComponentPorts;
+import org.polarsys.capella.test.semantic.queries.ju.testcases.PhysicalQuantityUnit;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.PropertyAssociation;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.PropertyTypeElements;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.PropertyValueGroup_applying_valued_element;
@@ -83,6 +108,12 @@ import org.polarsys.capella.test.semantic.queries.ju.testcases.SequenceMessagePa
 import org.polarsys.capella.test.semantic.queries.ju.testcases.StateTransition_realizedStateTransition;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.StateTransition_realizingStateTransition;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.State_OwnedEntryExitPointsTest;
+import org.polarsys.capella.test.semantic.queries.ju.testcases.UnaryExpressionOperand;
+import org.polarsys.capella.test.semantic.queries.ju.testcases.UnionDefaultProperty;
+import org.polarsys.capella.test.semantic.queries.ju.testcases.UnionDiscriminant;
+import org.polarsys.capella.test.semantic.queries.ju.testcases.UnionProperties;
+import org.polarsys.capella.test.semantic.queries.ju.testcases.UnitReferencingNumericValues;
+import org.polarsys.capella.test.semantic.queries.ju.testcases.UnitReferencingPhysicalQuantities;
 
 import junit.framework.Test;
 
@@ -156,6 +187,37 @@ public class SemanticQueriesTestSuite extends BasicTestSuite {
     tests.add(new DataValueRefReferencedProperty());
     tests.add(new StateTransition_realizedStateTransition());
     tests.add(new StateTransition_realizingStateTransition());
+    tests.add(new OperationParent());
+    tests.add(new OperationParameters());
+    tests.add(new ParameterParent());
+    tests.add(new UnionDiscriminant());
+    tests.add(new UnionDefaultProperty());
+    tests.add(new UnionProperties());
+    tests.add(new ClassProperties());
+    tests.add(new CollectionOperations());
+    tests.add(new PhysicalQuantityUnit());
+    tests.add(new NumericValueUnit());
+    tests.add(new DataValueType());
+    tests.add(new UnitReferencingPhysicalQuantities());
+    tests.add(new UnitReferencingNumericValues());
+    tests.add(new ExchangesItemExchangeItemElements());
+    tests.add(new ExchangeItemElementReferencedProperties());
+    tests.add(new ExchangesItemAllocationParent());
+    tests.add(new EnumerationLiteralParent());
+    tests.add(new EnumerationLiteralDomainValue());
+    tests.add(new LiteralBooleanValueParent());
+    tests.add(new BinaryExpressionLeftOperand());
+    tests.add(new BinaryExpressionRightOperand());
+    tests.add(new UnaryExpressionOperand());
+    tests.add(new MultiplicityElementDefaultValue());
+    tests.add(new MultiplicityElementMaxCard());
+    tests.add(new MultiplicityElementMinCard());
+    tests.add(new MultiplicityElementMax());
+    tests.add(new MultiplicityElementMin());
+    tests.add(new MultiplicityElementNull());
+    tests.add(new MultiplicityElementIndexes());
+    tests.add(new MultiplicityElementMaxLength());
+    tests.add(new MultiplicityElementMinLength());
     
     return tests;
   }
