@@ -759,7 +759,7 @@
 				<td>DWF_D_58 - Constraint Assignment </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule ensures that in monopart mode a constraint constrains the Component and not the Part or PartDeploymentLink. Exception for EAB diagrams.</td>
+				<td colspan="2">In monopart mode, this rule ensures that ConstrainedElements value is not Part/PartDeploymentLink. Exception for EAB diagrams.</td>
 			</tr>
 		</table>
 		<p>
@@ -773,8 +773,10 @@
 				<td>DWF_D_59 - Constraint Location </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule ensures that a constraint constraining elements is not stored unexpectedly. 
-					<p>(A constraint shall not be stored under a part if not constraining parts or under a deployment link if not constraining deployment links.)</p>
+				<td colspan="2">In monopart mode : This rule ensures that a constraint is not stored under and doesn't have ConstrainedElements values as a Part/PartDeploymentLink.
+					<p>Exception : In EPBS Layer constraint's can be stored under Part</p>
+					<p>In multipart mode : This rule ensures that a constraint is not stored under PartDeploymentlink.
+						Exception : If first ConstraintElements value is container PartDeploymentlink or empty ConstraintElements value</p>
 				</td>
 			</tr>
 		</table>

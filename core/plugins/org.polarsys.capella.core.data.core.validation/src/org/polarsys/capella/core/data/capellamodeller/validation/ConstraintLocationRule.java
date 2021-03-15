@@ -20,10 +20,13 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
-import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.core.data.capellacore.Constraint;
 import org.polarsys.capella.core.data.cs.Part;
+import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
 import org.polarsys.capella.core.data.pa.deployment.PartDeploymentLink;
+import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.polarsys.capella.core.model.helpers.CapellaElementExt;
+import org.polarsys.capella.core.sirius.analysis.CsServices;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 /**
@@ -40,13 +43,29 @@ public class ConstraintLocationRule extends AbstractValidationRule {
       Constraint constraint = (Constraint) eObj;
       EList<ModelElement> constrainedElements = constraint.getConstrainedElements();
       
-      boolean isConstrainingParts = constrainedElements.stream().filter(element -> element instanceof Part)
-          .collect(Collectors.toList()).size() > 0;
-      boolean isConstrainingDeployments = constrainedElements.stream().filter(element -> element instanceof PartDeploymentLink)
-          .collect(Collectors.toList()).size() > 0;
-      if ((constraint.eContainer() instanceof Part && !isConstrainingParts && !isConstrainingDeployments) ||
-          (constraint.eContainer() instanceof PartDeploymentLink && !isConstrainingDeployments)) {
-        return ctx.createFailureStatus(EObjectLabelProviderHelper.getText(constraint), "Component");
+      if (CsServices.getService().isMultipartMode((ModelElement) eObj)) {
+        //multipart mode
+        // A constraint should not be stored under PartDeploymentlink
+        // Exception : If first ConstrainedElements value is container PartDeploymentlink or empty ConstraintElements value
+        if (constraint.eContainer() instanceof PartDeploymentLink && 
+            (constrainedElements != null && !constrainedElements.isEmpty()) &&
+            !constrainedElements.get(0).equals(constraint.eContainer())) {
+          return ctx.createFailureStatus(CapellaElementExt.getValidationRuleMessagePrefix(constraint), "first value of ConstrainedElements");         
+        }
+      } else {
+        //monopart mode
+        // Constraint should not be stored under Part/PartDeploymentLink and have ConstrainedElements values as Part/PartDeploymentLinks
+        // Exception : In EPBS Layer constraint's can be stored under Part
+        if (BlockArchitectureExt.getRootBlockArchitecture(constraint) instanceof EPBSArchitecture) {
+          return ctx.createSuccessStatus();
+        }
+        boolean isConstrainingPartOrPDL = !constrainedElements.stream()
+            .filter(element -> (element instanceof Part) || (element instanceof PartDeploymentLink))
+            .collect(Collectors.toList()).isEmpty();
+        if ((constraint.eContainer() instanceof Part || constraint.eContainer() instanceof PartDeploymentLink) &&
+            !isConstrainingPartOrPDL) {
+          return ctx.createFailureStatus(CapellaElementExt.getValidationRuleMessagePrefix(constraint), "Component");
+        }
       }
     }
     return ctx.createSuccessStatus();

@@ -114,15 +114,14 @@
                ruleId="DWF_D_58">
          </rules>
       </resolver>
-      <resolver
-            class="org.polarsys.capella.core.data.core.ui.quickfix.resolver.ConstraintLocationRule_Resolver"
-            desc="%quickFix.DWF_D_59.desc"
-            icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
-            label="%quickFix.DWF_D_59.label">
-         <rules
-               ruleId="DWF_D_59">
-         </rules>
-      </resolver>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.ide.markerResolution">
+      <markerResolutionGenerator
+            class="org.polarsys.capella.core.data.core.ui.quickfix.resolver.ConstraintLocationRule_Generator"
+            markerType="org.polarsys.capella.core.validation.markers">
+      </markerResolutionGenerator>
    </extension>
 
 </plugin>
