@@ -19,4 +19,8 @@ public class PrimitiveWrapper extends BrowserElementWrapper {
     super(element);
   }
 
+  @Override
+  public String toString() {
+    return getElement().toString();
+  }
 }

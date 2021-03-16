@@ -33,4 +33,9 @@ public class CategoryWrapper extends BrowserElementWrapper {
   public CategoryImpl getElement() {
     return (CategoryImpl) super.getElement();
   }
+  
+  @Override
+  public String toString() {
+    return getElement().getName();
+  }
 }
