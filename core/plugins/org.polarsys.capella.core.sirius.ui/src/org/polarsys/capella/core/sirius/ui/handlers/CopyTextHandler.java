@@ -43,7 +43,7 @@ public class CopyTextHandler extends AbstractDiagramCommandHandler {
   /**
    * @return the current selection represented as text
    */
-  private String getSelectionAsText() {
+  public String getSelectionAsText() {
     StringBuilder builder = new StringBuilder();
     String result = null;
     IStructuredSelection selection = getSelection();

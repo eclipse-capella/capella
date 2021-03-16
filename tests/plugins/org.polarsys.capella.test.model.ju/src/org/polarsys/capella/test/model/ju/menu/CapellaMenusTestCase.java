@@ -20,8 +20,10 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.expressions.EvaluationContext;
 import org.eclipse.core.expressions.IEvaluationContext;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.ui.ISources;
+import org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper.PrimitiveWrapper;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.libraries.model.ICapellaModel;
 import org.polarsys.capella.core.libraries.utils.ScopeModelWrapper;
@@ -49,6 +51,8 @@ public class CapellaMenusTestCase extends MiscModel {
     String pabDiagramID = "_HY2uQekKEem8xqbBNWv2mQ";
     EObject pabDiagram = IdManager.getInstance().getEObject(pabDiagramID, scope);
     testDiagramMenus(pabDiagramID, pabDiagram);
+    
+    testCopyAsTextNumericValue(5);
   }
   
   protected void init() {
@@ -109,6 +113,22 @@ public class CapellaMenusTestCase extends MiscModel {
       new CopyTextHandler().execute(createExecutionEvent(selectedElement));
     } catch (ExecutionException e) {
     }
+  }
+  
+  protected void testCopyAsTextNumericValue(Integer value) {
+    PrimitiveWrapper wrapper = new PrimitiveWrapper(value);
+    ExecutionEvent event = createExecutionEvent(wrapper);
+    String result = new CopyTextHandler() {
+      protected IStructuredSelection getSelection() {
+        IEvaluationContext context = (IEvaluationContext) event.getApplicationContext();
+        return (IStructuredSelection) context.getVariable("selection");
+      }
+    }.getSelectionAsText();
+    
+    result = result.replace("\r", "");
+    result = result.replace("\n", "");
+
+    assertEquals("5", result);
   }
 
   private ExecutionEvent createExecutionEvent(Object element) {
