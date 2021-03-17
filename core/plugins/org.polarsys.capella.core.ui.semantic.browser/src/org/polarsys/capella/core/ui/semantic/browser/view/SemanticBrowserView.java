@@ -79,6 +79,7 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.WorkbenchException;
 import org.eclipse.ui.XMLMemento;
+import org.eclipse.ui.contexts.IContextService;
 import org.eclipse.ui.internal.views.properties.tabbed.view.TabbedPropertyTitle;
 import org.eclipse.ui.part.IPageSite;
 import org.eclipse.ui.part.ViewPart;
@@ -120,19 +121,19 @@ import org.polarsys.capella.core.ui.semantic.browser.model.SemanticBrowserModel;
  */
 public abstract class SemanticBrowserView extends ViewPart implements ISemanticBrowserViewPart,
     ITabbedPropertySheetPageContributor, IEditingDomainProvider, IReadOnlyListener {
-  
+
   /**
    * Listener that listens to closing and closed session events.
    */
   protected class CloseSessionListener extends SessionManagerListener.Stub {
-    
+
     Runnable cleaner = new Runnable() {
       @Override
       public void run() {
         clean();
       }
     };
-    
+
     @Override
     public void notify(final Session updated, final int notification) {
       switch (notification) {
@@ -195,6 +196,11 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
    * Memento persistence tag.
    */
   private static final String TAG_MEMENTO = "memento"; //$NON-NLS-1$
+
+  /**
+   * The id of the Semantic Browser View context, that allows bindings to be active only when this context is active.
+   */
+  private static final String BINDING_CONTEXT_ID = "org.polarsys.capella.core.ui.semantic.browser.context"; //$NON-NLS-1$
 
   /**
    * Default viewers embedded into the view.
@@ -485,7 +491,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
            * @return
            */
           private boolean isRepresentationCategory(CategoryWrapper categoryWrapper) {
-            ICategory category = (ICategory) (categoryWrapper).getElement();
+            ICategory category = (categoryWrapper).getElement();
             String categoryName = category.getName();
             return categoryName.equals(ALL_RELATED_DIAGRAMS) || categoryName.equals(ALL_RELATED_TABLES);
           }
@@ -517,6 +523,9 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
     getSite().getPage().addSelectionListener(getSelectionListener());
 
     makeActions();
+
+    IContextService contextService = getSite().getService(IContextService.class);
+    contextService.activateContext(BINDING_CONTEXT_ID);
   }
 
   /**
