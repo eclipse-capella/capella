@@ -735,6 +735,13 @@
          point="org.eclipse.ui.bindings">
       <key
             commandId="org.polarsys.capella.core.platform.sirius.ui.actions.Delete"
+            contextId="org.polarsys.capella.core.ui.semantic.browser.context"
+            schemeId="org.polarsys.capella.core.defaultAcceleratorConfiguration"
+            sequence="DELETE">
+      </key>
+      <key
+            commandId="org.polarsys.capella.core.platform.sirius.ui.actions.Delete"
+            contextId="org.eclipse.acceleo.ui.interpreter.interpreterview"
             schemeId="org.polarsys.capella.core.defaultAcceleratorConfiguration"
             sequence="DELETE">
       </key>

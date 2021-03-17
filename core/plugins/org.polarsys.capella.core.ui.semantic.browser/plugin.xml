@@ -51,4 +51,13 @@
             sequence="CTRL+ARROW_RIGHT">
       </key>
    </extension>
+   <extension
+         point="org.eclipse.ui.contexts">
+      <context
+            description="%contextDescription"
+            id="%contextId"
+            name="%contextName"
+            parentId="org.eclipse.ui.contexts.window">
+      </context>
+   </extension>
 </plugin>
