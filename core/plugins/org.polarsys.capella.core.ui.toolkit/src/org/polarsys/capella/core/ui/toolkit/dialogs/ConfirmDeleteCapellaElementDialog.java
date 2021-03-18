@@ -13,6 +13,7 @@
 package org.polarsys.capella.core.ui.toolkit.dialogs;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -162,6 +163,8 @@ public class ConfirmDeleteCapellaElementDialog extends ImpactAnalysisDialog {
     // Add a button to display EMF resource as root nodes.
     resourceCheckReferencingElemntButton = createResourceCheckButton(referencingElementsGroup,
         referencingElementsViewer);
+    referencingElementsViewer.setInput(getTreeViewerItems(resourceCheckReferencingElemntButton.getSelection(),
+        new ArrayList<Object>(getReferencingElements(Arrays.asList(expendedElements)))));
     registerElementsToDeleteListener();
   }
 
@@ -182,20 +185,25 @@ public class ConfirmDeleteCapellaElementDialog extends ImpactAnalysisDialog {
       public void selectionChanged(SelectionChangedEvent event_p) {
         IStructuredSelection ssel = (IStructuredSelection) event_p.getSelection();
         List<?> selectedElements = ssel.toList();
-        Set<EObject> referencingElements = new HashSet<EObject>(0);
-        for (Object currentSelectedElement : selectedElements) {
-          if (((TreeData) elementsToDeleteViewer.getInput()).isValid(currentSelectedElement)) {
-            // Be careful, selected element could be an EMF Resource (if displayed).
-            if (currentSelectedElement instanceof EObject) {
-              referencingElements.addAll(getReferencingElements(currentSelectedElement));
-            }
-          }
-        }
+        
         // Compute the referencing elements.
         referencingElementsViewer.setInput(getTreeViewerItems(resourceCheckReferencingElemntButton.getSelection(),
-            new ArrayList<Object>(referencingElements)));
+            new ArrayList<Object>(getReferencingElements(selectedElements))));
       }
     });
+  }
+  
+  private Set<EObject> getReferencingElements(List<?> selectedElements) {
+    Set<EObject> referencingElements = new HashSet<EObject>(0);
+    for (Object currentSelectedElement : selectedElements) {
+      if (((TreeData) elementsToDeleteViewer.getInput()).isValid(currentSelectedElement)) {
+        // Be careful, selected element could be an EMF Resource (if displayed).
+        if (currentSelectedElement instanceof EObject) {
+          referencingElements.addAll(getReferencingElements(currentSelectedElement));
+        }
+      }
+    }
+    return referencingElements;
   }
 
   /**
@@ -305,6 +313,10 @@ public class ConfirmDeleteCapellaElementDialog extends ImpactAnalysisDialog {
 
   protected IStatus getStatus() {
     return Status.OK_STATUS;
+  }
+  
+  public TreeViewer getReferencingElementsViewer() {
+    return referencingElementsViewer;
   }
 
 }
