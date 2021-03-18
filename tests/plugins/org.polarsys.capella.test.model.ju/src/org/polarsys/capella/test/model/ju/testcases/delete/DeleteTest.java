@@ -12,15 +12,19 @@
 *******************************************************************************/
 package org.polarsys.capella.test.model.ju.testcases.delete;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.swt.widgets.Shell;
 import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.common.ui.toolkit.viewers.data.TreeData;
 import org.polarsys.capella.core.libraries.utils.ScopeModelWrapper;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaDeleteCommand;
+import org.polarsys.capella.core.ui.toolkit.dialogs.ConfirmDeleteCapellaElementDialog;
 import org.polarsys.capella.shared.id.handler.IScope;
 import org.polarsys.capella.shared.id.handler.IdManager;
-import org.polarsys.capella.test.framework.helpers.EObjectHelper;
 import org.polarsys.capella.test.model.ju.model.MiscModel;
 
 public abstract class DeleteTest extends MiscModel {
@@ -66,5 +70,32 @@ public abstract class DeleteTest extends MiscModel {
     } else {
       assertTrue("cannot remove an element", false);
     }
+  }
+  
+  List<Object> getReferencingElements(String ...objectIds) {
+    List<Object> references = new ArrayList<Object>();
+    
+    List<EObject> selectedElements = new ArrayList<EObject>();
+    for(String objectId : objectIds) {
+      EObject object = IdManager.getInstance().getEObject(objectId, scope);
+      selectedElements.add(object);
+    }
+
+    ConfirmDeleteCapellaElementDialog confirmDeletionDialog = new ConfirmDeleteCapellaElementDialog(selectedElements,
+        true, selectedElements.toArray()) {
+      public void create() {
+        Shell composite = new Shell();
+        createElementsToDeleteViewer(composite);
+        createReferencingElementViewer(composite);
+        Object referencingInput = getReferencingElementsViewer().getInput();
+        if (referencingInput instanceof TreeData) {
+          references.addAll(((TreeData) referencingInput).getValidElements());
+        }
+      }
+    };
+
+    confirmDeletionDialog.create();
+
+    return references;
   }
 }

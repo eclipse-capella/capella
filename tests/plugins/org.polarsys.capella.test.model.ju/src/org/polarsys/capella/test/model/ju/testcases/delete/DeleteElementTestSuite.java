@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2021 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -43,6 +43,7 @@ public class DeleteElementTestSuite extends BasicTestSuite {
     tests.add(new DeleteGuard());
     tests.add(new DeleteProtectedElements());
     tests.add(new DeleteDoNotDeletePropertyValue());
+    tests.add(new DeleteShowReferencingImpact());
 
     return tests;
   }
