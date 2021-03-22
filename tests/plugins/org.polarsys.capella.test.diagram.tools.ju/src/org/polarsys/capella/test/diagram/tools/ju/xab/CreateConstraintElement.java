@@ -26,12 +26,15 @@ public class CreateConstraintElement extends XABDiagramsProject {
     Session session = getSession(getRequiredTestModel());
     SessionContext context = new SessionContext(session);
     
-    String [] epbsTargets = {EPBS__EAB_CONFIGURATION_ITEM1, EPBS__EAB_CONFIGURATION_ITEM1_1, EPBS__EAB_CONFIGURATION_ITEM2};
-    String [] oaTargets = {OA__OAB_FUNCTION_1, OA__OAB_OA1, OA__OAB_OA3};
-    String [] saTargets = {SA__SAB_A1, SA__SAB_FUNCTION_1, SA__SAB_FUNCTION_PORT_1, SA__SAB_COMPONENT_PORT_A3_CP1};
-    String [] laTargets = {LA__LAB_A1, LA__LAB_COMPONENT_PORT_1, LA__LAB_FUNCTION_1};
-    String [] paTargets = {PA__PAB_COMPONENT_PC3, PA__PAB_FUNCTION_1, PA__PAB_COMPONENT_PORT_PC4_CP1,
-        PA__PAB_PHYSICAL_PORT_PC1_PP1};
+    String[] epbsTargets = { EPBS__EAB_CONFIGURATION_ITEM1, EPBS__EAB_CONFIGURATION_ITEM1_1,
+        EPBS__EAB_CONFIGURATION_ITEM2, EPBS_EAB_PHYSICAL_LINK, EPBS_EAB_PHYSICAL_PORT };
+    String[] oaTargets = { OA__OAB_FUNCTION_1, OA__OAB_OA1, OA__OAB_OA3 };
+    String[] saTargets = { SA__SAB_A1, SA__SAB_FUNCTION_1, SA__SAB_FUNCTION_PORT_1, SA__SAB_COMPONENT_PORT_A3_CP1,
+        SA__SAB_PHYSICAL_LINK_PL1, SA__SAB_PHYSICAL_PORT_A1_PP1, SA__SAB_COMPONENT_PORT_ALLOCATION };
+    String[] laTargets = { LA__LAB_A1, LA__LAB_COMPONENT_PORT_1, LA__LAB_FUNCTION_1, LA__LAB_COMPONENT_PORT_ALLOCATION,
+        LA__LAB_PHYSICAL_LINK_PL1, LA__LAB_PHYSICAL_PORT_A1_PP1};
+    String[] paTargets = { PA__PAB_COMPONENT_PC3, PA__PAB_FUNCTION_1, PA__PAB_COMPONENT_PORT_PC4_CP1,
+        PA__PAB_PHYSICAL_PORT_PC1_PP1, PA__PAB_COMPONENT_PORT_ALLOCATION };
     
     testOnXAB(context, EPBS__EAB_DIAGRAM, BlockArchitectureExt.Type.EPBS, epbsTargets);
     testOnXAB(context, OA__OAB_DIAGRAM, BlockArchitectureExt.Type.OA, oaTargets);

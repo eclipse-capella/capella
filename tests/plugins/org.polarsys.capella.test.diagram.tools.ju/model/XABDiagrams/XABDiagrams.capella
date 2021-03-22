@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--Capella_Version_5.0.0-->
+<!--Capella_Version_null-->
 <org.polarsys.capella.core.data.capellamodeller:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:libraries="http://www.polarsys.org/capella/common/libraries/5.0.0"
     xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/5.0.0"
@@ -1672,6 +1672,12 @@
                 name="CSCI 1" abstractType="#4c7fbba4-3b04-4c58-8f55-dabcf1ff7e5a"/>
             <ownedConfigurationItems xsi:type="org.polarsys.capella.core.data.epbs:ConfigurationItem"
                 id="4c7fbba4-3b04-4c58-8f55-dabcf1ff7e5a" name="CSCI 1" kind="CSCI"/>
+            <ownedPhysicalArtifactRealizations xsi:type="org.polarsys.capella.core.data.epbs:PhysicalArtifactRealization"
+                id="bcbb1ea9-aff2-4a09-89f0-a0fcd1edd8d7" targetElement="#3724a688-bdd7-469e-a0c8-21de49945ddd"
+                sourceElement="#6ffa67ff-1bf1-4ccf-99aa-89623c99a253"/>
+            <ownedPhysicalArtifactRealizations xsi:type="org.polarsys.capella.core.data.epbs:PhysicalArtifactRealization"
+                id="b30b7b15-a16e-4dae-bae5-a34367c7381c" targetElement="#c1cc636b-9254-4fe3-93e0-02f9040ba270"
+                sourceElement="#6ffa67ff-1bf1-4ccf-99aa-89623c99a253"/>
           </ownedConfigurationItems>
           <ownedConfigurationItems xsi:type="org.polarsys.capella.core.data.epbs:ConfigurationItem"
               id="9874cae1-5b98-4d78-bc3a-611bb3899b24" name="HWCI 2" kind="HWCI">
