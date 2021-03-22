@@ -99,7 +99,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_N-l8sB4mEemefoIC0oWX6A">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_We5IgyR2EemVioM9H9rqLA" name="[EAB] System" repPath="#_WevXgCR2EemVioM9H9rqLA" changeId="ee103705-3621-483a-ac77-7b3932e1256e">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_We5IgyR2EemVioM9H9rqLA" name="[EAB] System" repPath="#_WevXgCR2EemVioM9H9rqLA" changeId="d18a7c78-d091-4e42-99b1-be08df606a1f">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.epbs:ConfigurationItem" href="XABDiagrams.capella#8ab05f21-eecb-4957-ac14-f76023e6b17d"/>
       </ownedRepresentationDescriptors>
@@ -5336,6 +5336,28 @@
               <styles xmi:type="notation:ShapeStyle" xmi:id="_b-tnOSR2EemVioM9H9rqLA" fontName="Segoe UI" fontHeight="8"/>
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_b-tnOiR2EemVioM9H9rqLA" x="105" y="24"/>
             </children>
+            <children xmi:type="notation:Node" xmi:id="_sHSYQI2qEeu8L9SJsAWg-g" type="3007" element="_rH4JsI2qEeu8L9SJsAWg-g">
+              <children xmi:type="notation:Node" xmi:id="_sHXQwI2qEeu8L9SJsAWg-g" type="5003">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_sHXQwY2qEeu8L9SJsAWg-g" y="15"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_sHmhUI2qEeu8L9SJsAWg-g" type="3005" element="_rH5X0I2qEeu8L9SJsAWg-g">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_sHmhUY2qEeu8L9SJsAWg-g" fontName="Segoe UI"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_sHmhUo2qEeu8L9SJsAWg-g"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_sHSYQY2qEeu8L9SJsAWg-g" fontName="Segoe UI" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_sHSYQo2qEeu8L9SJsAWg-g" x="35" y="51" width="50" height="14"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_v7LgoI2qEeu8L9SJsAWg-g" type="3007" element="_vMnxgI2qEeu8L9SJsAWg-g">
+              <children xmi:type="notation:Node" xmi:id="_v7MHsI2qEeu8L9SJsAWg-g" type="5003">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_v7MHsY2qEeu8L9SJsAWg-g" x="21" y="1"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_v7TccI2qEeu8L9SJsAWg-g" type="3005" element="_vMnxgY2qEeu8L9SJsAWg-g">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_v7TccY2qEeu8L9SJsAWg-g" fontName="Segoe UI"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_v7Tcco2qEeu8L9SJsAWg-g"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_v7LgoY2qEeu8L9SJsAWg-g" fontName="Segoe UI" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_v7Lgoo2qEeu8L9SJsAWg-g" x="75" y="91" width="20" height="20"/>
+            </children>
             <styles xmi:type="notation:SortingStyle" xmi:id="_bsiSFSR2EemVioM9H9rqLA"/>
             <styles xmi:type="notation:FilteringStyle" xmi:id="_bsiSFiR2EemVioM9H9rqLA"/>
           </children>
@@ -5414,6 +5436,25 @@
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" uid="_rH4JsI2qEeu8L9SJsAWg-g" name="PL 3" width="5" height="5">
+        <target xmi:type="org.polarsys.capella.core.data.cs:PhysicalLink" href="XABDiagrams.capella#3724a688-bdd7-469e-a0c8-21de49945ddd"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:PhysicalLink" href="XABDiagrams.capella#3724a688-bdd7-469e-a0c8-21de49945ddd"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_rH5X0I2qEeu8L9SJsAWg-g" showIcon="false" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/PhysicalLink.png">
+          <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']/@subNodeMappings[name='PhysicalLinkInCI%20mapping']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']/@subNodeMappings[name='PhysicalLinkInCI%20mapping']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" uid="_vMnxgI2qEeu8L9SJsAWg-g" name="PP 1" width="2" height="2">
+        <target xmi:type="org.polarsys.capella.core.data.cs:PhysicalPort" href="XABDiagrams.capella#c1cc636b-9254-4fe3-93e0-02f9040ba270"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:PhysicalPort" href="XABDiagrams.capella#c1cc636b-9254-4fe3-93e0-02f9040ba270"/>
+        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_vMnxgY2qEeu8L9SJsAWg-g" showIcon="false" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/PhysicalPort.png">
+          <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']/@subNodeMappings[name='PhysicalPortInCI%20mapping']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']/@subNodeMappings[name='PhysicalPortInCI%20mapping']"/>
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_cS02ACR2EemVioM9H9rqLA" name="[HWCI] HWCI 2" incomingEdges="_n6tfICR2EemVioM9H9rqLA">

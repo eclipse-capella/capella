@@ -23,6 +23,7 @@ import org.polarsys.capella.test.diagram.tools.ju.sequence.CreateArmTimer;
 import org.polarsys.capella.test.diagram.tools.ju.sequence.CreateCombinedFragmentGroupOperand;
 import org.polarsys.capella.test.diagram.tools.ju.sequence.CreateComponent;
 import org.polarsys.capella.test.diagram.tools.ju.sequence.CreateComponentExchange;
+import org.polarsys.capella.test.diagram.tools.ju.sequence.CreateConstrainedElement;
 import org.polarsys.capella.test.diagram.tools.ju.sequence.CreateConstraint;
 import org.polarsys.capella.test.diagram.tools.ju.sequence.CreateConstraintElement;
 import org.polarsys.capella.test.diagram.tools.ju.sequence.CreateDuration;
@@ -99,6 +100,7 @@ public class SequenceDiagramToolsTestSuite extends BasicTestSuite {
 
     tests.add(new CreateConstraint());
     tests.add(new CreateConstraintElement());
+    tests.add(new CreateConstrainedElement());
     tests.add(new InsertRemoveConstraints());
     tests.add(new DragAndDropTest());
 

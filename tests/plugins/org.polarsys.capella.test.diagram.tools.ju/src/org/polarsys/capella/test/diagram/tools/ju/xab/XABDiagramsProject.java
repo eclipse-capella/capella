@@ -27,6 +27,8 @@ public abstract class XABDiagramsProject extends AbstractDiagramTestCase {
   public static final String EPBS__EAB_CONSTRAINT = "7ae23b1a-8f42-4722-8d0a-ab97f4666f8b";
   public static final String EPBS__EAB_PROPERTY_VALUE1 = "306362c3-1b64-4f45-a520-31bd3cc5a04f";
   public static final String EPBS__EAB_PROPERTY_VALUE_GROUP1 = "7fe89aef-e34c-4859-bb68-6b0689792888";
+  public static final String EPBS_EAB_PHYSICAL_LINK = "3724a688-bdd7-469e-a0c8-21de49945ddd";
+  public static final String EPBS_EAB_PHYSICAL_PORT = "c1cc636b-9254-4fe3-93e0-02f9040ba270";
 
   // oa
   public static final String OA__OAB_OPERATIONAL_CONTEXT = "64605af7-0cfd-47f4-99ef-0c0afa52304e";
