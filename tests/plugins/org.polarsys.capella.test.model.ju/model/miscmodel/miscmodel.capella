@@ -399,6 +399,12 @@
             name="LA 6" abstractType="#1daee4ef-ca60-4079-ab8f-f1646406d8ad"/>
         <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="e037238e-79da-4337-958c-3e0db5ee87df"
             name="LA 7" abstractType="#35e3e334-298b-4464-ae4a-ed961d6f3c3e"/>
+        <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="ea81d0f2-caab-400c-8f67-4f01e68cc816"
+            name="LA 8" abstractType="#92c17863-8a3f-4385-bc7b-63f1813fa4c4"/>
+        <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="d6ff9a41-196f-4499-a76c-b7b552d103b8"
+            name="LA 9" abstractType="#4f57bafd-5d8e-4b7a-a940-13a7489120c6"/>
+        <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="01da7421-34b7-48c7-9157-c1dcfcf4dcf7"
+            name="LA 10" abstractType="#6feaff22-c4c7-4894-b693-7750d20ccdf2"/>
         <ownedComponentExchanges xsi:type="org.polarsys.capella.core.data.fa:ComponentExchange"
             id="0c8ea9c4-4bc7-4610-898f-4f5fbad8ee03" name="C 1" source="#b61d6081-0e72-430c-adad-64804f663945"
             target="#6ded6d52-e873-44a7-9ddf-855a62173d7d" kind="FLOW"/>
@@ -408,6 +414,12 @@
         <ownedComponentExchanges xsi:type="org.polarsys.capella.core.data.fa:ComponentExchange"
             id="ddc6dcf2-d77a-46e2-b35f-5017f692eca4" name="C 3" source="#73039b25-7f47-45a1-bc7b-189ee020cf83"
             target="#ed477057-d166-46a8-b669-40ebbfdfe204" kind="FLOW"/>
+        <ownedComponentExchanges xsi:type="org.polarsys.capella.core.data.fa:ComponentExchange"
+            id="7dec307d-8fed-435b-85b6-912ce72872e0" name="C 4" source="#d2ae27c1-59a0-4025-a7ea-870e8009be5f"
+            target="#39d20830-c56f-46d1-b639-6fb31d3ad66f" kind="FLOW"/>
+        <ownedComponentExchanges xsi:type="org.polarsys.capella.core.data.fa:ComponentExchange"
+            id="3bbb6cfb-645a-4866-908f-cb97a790c883" name="C 5" source="#7a587ad1-1a9d-4a78-add1-04c50452a17c"
+            target="#e8c2ff22-2fe2-44ca-b8ac-5e02eca06027" kind="FLOW"/>
         <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
             id="030e91dc-441e-4107-b0ea-0b08acaccf13" name="Logical System">
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="1f8aefd5-6ce2-4d5c-a734-254d1ddde797"
@@ -416,6 +428,9 @@
               name="Internal LC 2" abstractType="#a30cf2b5-48d1-407e-9967-1e20e64e8e88"/>
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="49a5f546-40b5-4fa7-86fb-a84bfffd0f5f"
               name="Internal Actor 2" abstractType="#e2928bb7-f1a7-4429-9a87-0c8e79a5363f"/>
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.fa:ComponentPort"
+              id="d2ae27c1-59a0-4025-a7ea-870e8009be5f" name="CP 4" orientation="OUT"
+              kind="FLOW"/>
           <ownedComponentRealizations xsi:type="org.polarsys.capella.core.data.cs:ComponentRealization"
               id="46c8ffc6-7028-441d-b48c-f394235c4823" targetElement="#4630572f-7502-4263-a994-89ced76f21a8"
               sourceElement="#030e91dc-441e-4107-b0ea-0b08acaccf13"/>
@@ -510,6 +525,42 @@
                 id="ed477057-d166-46a8-b669-40ebbfdfe204" name="CP 1" orientation="IN"
                 kind="FLOW"/>
           </ownedLogicalComponents>
+        </ownedLogicalComponents>
+        <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
+            id="92c17863-8a3f-4385-bc7b-63f1813fa4c4" name="LA 8" actor="true">
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.fa:ComponentPort"
+              id="39d20830-c56f-46d1-b639-6fb31d3ad66f" name="CP 1" orientation="IN"
+              kind="FLOW"/>
+        </ownedLogicalComponents>
+        <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
+            id="4f57bafd-5d8e-4b7a-a940-13a7489120c6" name="LA 9" actor="true">
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="b447b1cd-1397-4d10-9550-87ca4147dfa4"
+              name="LC 1" abstractType="#55905ec3-7248-476e-8696-9be1d4cbe590"/>
+          <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
+              id="55905ec3-7248-476e-8696-9be1d4cbe590" name="LC 1">
+            <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="c469a8d3-52c8-44bb-b029-6dd660a94f45"
+                name="LA 1" abstractType="#3c6a94a6-5a8b-41e2-ae55-2391618c6a98"/>
+            <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
+                id="3c6a94a6-5a8b-41e2-ae55-2391618c6a98" name="LA 1" actor="true">
+              <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="039e135a-e3ec-4a6e-83c4-68249002b84e"
+                  name="LA 1" abstractType="#6e2f5597-6437-44e1-a7a6-7d7e4e5d7652"/>
+              <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
+                  id="6e2f5597-6437-44e1-a7a6-7d7e4e5d7652" name="LA 1" actor="true">
+                <ownedFeatures xsi:type="org.polarsys.capella.core.data.fa:ComponentPort"
+                    id="7652630a-2169-402e-a707-c535d5c2b0a3" name="CP 1" orientation="OUT"
+                    kind="FLOW"/>
+                <ownedFeatures xsi:type="org.polarsys.capella.core.data.fa:ComponentPort"
+                    id="7a587ad1-1a9d-4a78-add1-04c50452a17c" name="CP 2" orientation="OUT"
+                    kind="FLOW"/>
+              </ownedLogicalComponents>
+            </ownedLogicalComponents>
+          </ownedLogicalComponents>
+        </ownedLogicalComponents>
+        <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
+            id="6feaff22-c4c7-4894-b693-7750d20ccdf2" name="LA 10" actor="true">
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.fa:ComponentPort"
+              id="e8c2ff22-2fe2-44ca-b8ac-5e02eca06027" name="CP 1" orientation="IN"
+              kind="FLOW"/>
         </ownedLogicalComponents>
         <ownedLogicalComponentPkgs xsi:type="org.polarsys.capella.core.data.la:LogicalComponentPkg"
             id="0e081fe7-60c4-4fdc-ac9b-f2c9c420f10a" name="External LogicalComponentPkg 2">
