@@ -22,18 +22,6 @@
             name="%export.validation.pref.page.name">
       </page>
    </extension>
-  <extension
-         point="org.eclipse.ui.navigator.navigatorContent">
-      <actionProvider
-            class="org.polarsys.capella.core.validation.ui.actions.ValidationActionProvider"
-            id="capella.project.explorer.actions.ocdvalidation">
-         <enablement>
-                <instanceof value="org.eclipse.emf.ecore.EObject"/>
-         </enablement>
-      </actionProvider>
-   </extension>
-   
-   
    
    <!--extension id="ValidationContributionItemProvider" name="Validation"
       point="org.eclipse.gmf.runtime.common.ui.services.action.contributionItemProviders">
@@ -68,8 +56,7 @@
    
    
    <extension point="org.eclipse.ui.menus">
-      <menuContribution allPopups="false" locationURI="popup:org.eclipse.gmf.runtime.diagram.ui.DiagramEditorContextMenu?before=org.polarsys.capella.common.re">
-
+      <menuContribution locationURI="popup:org.eclipse.ui.popup.any?after=group.validation"> 
          <dynamic class="org.polarsys.capella.core.validation.ui.DynamicCreateContributionItem"
                id="org.polarsys.capella.core.validation.ui.dynamicCreateItems">
          </dynamic>
@@ -80,8 +67,5 @@
       </group>
    
     </extension>
-   
- 
-   
    
 </plugin>

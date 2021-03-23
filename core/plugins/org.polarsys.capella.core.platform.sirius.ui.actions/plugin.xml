@@ -274,10 +274,9 @@
                variable="selection">
                <iterate 
                    ifEmpty="false">
-                   <and>
                        <or>
                            <instanceof
-                               value="org.eclipse.emf.ecore.EObject">
+                               value="org.polarsys.kitalpha.emde.model.Element">
                            </instanceof>
                            <adapt
                                type="org.polarsys.kitalpha.emde.model.Element">
@@ -286,7 +285,6 @@
                                type="org.eclipse.sirius.viewpoint.DRepresentationDescriptor">
                            </adapt>
                       </or>
-                  </and>
               </iterate>
          </with>
       </definition>

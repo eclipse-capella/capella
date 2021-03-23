@@ -17,6 +17,7 @@ import java.util.List;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.edit.ui.action.ValidateAction;
+import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.IMenuManager;
@@ -114,10 +115,11 @@ public class DynamicActionProvider extends AbstractActionProvider {
    * @return
    */
   protected IContributionItem createContributionItem() {
-
     if (userValidationActions.size() > 0) {
       IMenuManager menuManager = new MenuManager("Validate Model", imageDescriptor, "ID"); //$NON-NLS-1$ //$NON-NLS-2$
-      menuManager.add(defaultValidationAction);
+      if (defaultValidationAction.isEnabled()) {
+        menuManager.add(defaultValidationAction);
+      }
       menuManager.add(new Separator());
       for (ValidateAction action : userValidationActions) {
         menuManager.add(action);
@@ -127,13 +129,12 @@ public class DynamicActionProvider extends AbstractActionProvider {
 
     imageDescriptor = CapellaValidationUIActivator.getDefault().getImageDescriptor(CapellaValidationUIActivator.IMG_ENABLED_VALIDATE);
     userValidationActions = new ArrayList<ValidateAction>();
-    defaultValidationAction = createDefaultValidation(); // createValidationAction(true, null, selectionProvider, imageDescriptor);
+    defaultValidationAction = createDefaultValidation();
 
-    IMenuManager menu = new MenuManager("Validate Model", imageDescriptor, "ID"); //$NON-NLS-1$ //$NON-NLS-2$
-    menu.add(new Separator());
-    menu.add(defaultValidationAction);
-    return menu;
-
+    if (defaultValidationAction.isEnabled()) {
+      return new ActionContributionItem(defaultValidationAction);
+    }
+    return null;
   }
 
   /**

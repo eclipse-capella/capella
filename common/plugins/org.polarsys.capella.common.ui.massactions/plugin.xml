@@ -101,7 +101,7 @@
 		             <and>
 		                  <or>
 		                     <instanceof
-		                           value="org.eclipse.emf.ecore.EObject">
+		                           value="org.polarsys.kitalpha.emde.model.Element">
 		                     </instanceof>
 		                     <adapt
 		                           type="org.polarsys.kitalpha.emde.model.Element">

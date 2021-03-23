@@ -230,9 +230,17 @@
         <activeWhen>
            <iterate
                  ifEmpty="false">
-              <adapt
-                    type="org.eclipse.emf.ecore.EObject">
-              </adapt>
+                   <or>
+                 			   <instanceof
+		                             value="org.polarsys.kitalpha.emde.model.Element">
+		                       </instanceof>
+		                       <adapt
+		                             type="org.polarsys.kitalpha.emde.model.Element">
+		                       </adapt>
+		                       <adapt
+		                             type="org.eclipse.sirius.viewpoint.DRepresentationDescriptor">
+		                       </adapt>
+		            </or>          
            </iterate>
         </activeWhen>
      </handler>

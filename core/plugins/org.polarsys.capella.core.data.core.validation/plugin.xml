@@ -153,10 +153,10 @@
                </target>
                <description>
                   In monopart mode: This rule ensures that a constraint is not stored under and have ConstrainedElements values as a Part/PartDeploymentLink.
-                  Exception : In EPBS Layer constraint's can be stored under Part
+Exception : In EPBS Layer constraint's can be stored under Part.
 
-                  In multipart mode : This rule ensures that a constraint is not stored under PartDeploymentlink.
-                  Exception : If first ConstraintElements value is container PartDeploymentlink or empty ConstraintElements value
+In multipart mode : This rule ensures that a constraint is not stored under PartDeploymentlink.
+Exception : If first ConstraintElements value is container PartDeploymentlink or empty ConstraintElements value.
                </description>
             </constraint>
          </constraints>
