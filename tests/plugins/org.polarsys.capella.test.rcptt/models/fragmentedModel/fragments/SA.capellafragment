@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--Capella_Version_5.0.0-->
+<!--Capella_Version_5.1.0-->
 <org.polarsys.capella.core.data.ctx:SystemAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/5.0.0"
     xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/5.0.0"
@@ -9,6 +9,7 @@
     xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/5.0.0"
     xmlns:org.polarsys.capella.core.data.information.datatype="http://www.polarsys.org/capella/core/information/datatype/5.0.0"
     xmlns:org.polarsys.capella.core.data.information.datavalue="http://www.polarsys.org/capella/core/information/datavalue/5.0.0"
+    xmlns:org.polarsys.capella.core.data.interaction="http://www.polarsys.org/capella/core/interaction/5.0.0"
     xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/5.0.0"
     id="7f702cce-64d4-4e26-80fd-c246696fcf22"
     name="System Analysis">
@@ -22,7 +23,15 @@
     </ownedSystemFunctions>
   </ownedFunctionPkg>
   <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.ctx:CapabilityPkg"
-      id="95de612a-1a8d-4faf-9174-3eac8a15505f" name="Capabilities"/>
+      id="95de612a-1a8d-4faf-9174-3eac8a15505f" name="Capabilities">
+    <ownedCapabilities xsi:type="org.polarsys.capella.core.data.ctx:Capability" id="19f948a0-3696-4651-8599-d6240dd59066"
+        name="Capability 1">
+      <ownedScenarios xsi:type="org.polarsys.capella.core.data.interaction:Scenario"
+          id="a9b3ebc7-e321-42bb-9dca-86d70e28b51e" name="[FS] Capability 1" kind="FUNCTIONAL"/>
+      <ownedCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:CapabilityInvolvement"
+          id="f4bcf3a0-a1fe-47fa-bc18-69e69ed2b1ae" involved="#f2c7337d-2967-4390-a6aa-7173a41177db"/>
+    </ownedCapabilities>
+  </ownedAbstractCapabilityPkg>
   <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg" id="944c0dbb-a671-4c1c-ba84-956da4f41e35"
       name="Interfaces"/>
   <ownedDataPkg xsi:type="org.polarsys.capella.core.data.information:DataPkg" id="1aed30b0-bc53-4869-aa17-cb0d665f69d4"

@@ -5,22 +5,20 @@ Element-Type: testsuite
 Element-Version: 2.0
 Id: _6DCJACmvEeeLMJ-eLKwAnw
 Manually-Ordered: true
-Runtime-Version: 2.3.0.201806262310
-Save-Time: 7/18/18 11:17 AM
+Save-Time: 3/25/21, 1:52 PM
 Tags: constraint
 
 ------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8
 Content-Type: text/testcase
 Entry-Name: testcase-items
 
-_xRGoECmpEeeLMJ-eLKwAnw	// kind: 'test' name: 'NamedConstraint' path: 'NamedConstraint.test'
-_vE9zkCmcEeeLMJ-eLKwAnw	// kind: 'test' name: 'NoConstraint' path: 'NoConstraint.test'
-_Yyy3YCmvEeeLMJ-eLKwAnw	// kind: 'test' name: 'NoLinkedText' path: 'NoLinkedText.test'
-_nSnzcCmuEeeLMJ-eLKwAnw	// kind: 'test' name: 'NoOpaqueExpression' path: 'NoOpaqueExpression.test'
-_vM7qoK5gEee2vO1UksePLw	// kind: 'test' name: 'ConstraintCtrlSpace' path: 'ConstraintCtrlSpace.test'
-_c4SbkK3REee2vO1UksePLw	// kind: 'test' name: 'Sequence_Message_Exchange_Context' path: 'Sequence_Message_Exchange_Context.test'
-_QExxYInOEeiZnJxeOaTCng	// kind: 'test' name: 'Guard_MSM_diagram' path: 'Guard_MSM_diagram.test'
-_Tu4EkInOEeiZnJxeOaTCng	// kind: 'test' name: 'Guard_Operand_FS_diagram' path: 'Guard_Operand_FS_diagram.test'
-_LlxPcInOEeiZnJxeOaTCng	// kind: 'test' name: 'Pre_Post_Conditions_FS_diagram' path: 'Pre_Post_Conditions_FS_diagram.test'
+_xRGoECmpEeeLMJ-eLKwAnw	//
+_vE9zkCmcEeeLMJ-eLKwAnw	//
+_Yyy3YCmvEeeLMJ-eLKwAnw	//
+_nSnzcCmuEeeLMJ-eLKwAnw	//
+_vM7qoK5gEee2vO1UksePLw	//
+_c4SbkK3REee2vO1UksePLw	//
+_Tu4EkInOEeiZnJxeOaTCng	//
+_LlxPcInOEeiZnJxeOaTCng	//
 
 ------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8--

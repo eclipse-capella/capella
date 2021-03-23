@@ -6,7 +6,7 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _QblmIKj2Eee0yuaysMB3Rg
-Save-Time: 10/15/20 3:18 PM
+Save-Time: 3/23/21 10:41 AM
 Testcase-Type: ecl
 
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
@@ -610,8 +610,8 @@ with [get-editor "[SDFB] Root System Function" -index 2 | get-diagram -index 1 |
     -className DNodeContainerViewNodeContainerCompartmentEditPart | get-figure 1] {
     get-property x | equals 110 | verify-true
     get-property y | equals 81 | verify-true
-    get-property width | equals 186 | verify-true
-    get-property height | equals 115 | verify-true
+    get-property width | equals 148 | verify-true
+    get-property height | equals 67 | verify-true
 }
 with [get-editor "[SDFB] Root System Function" -index 2 | get-diagram -index 1 | get-edit-part 
     -name "[SDFB] Root System Function"] {

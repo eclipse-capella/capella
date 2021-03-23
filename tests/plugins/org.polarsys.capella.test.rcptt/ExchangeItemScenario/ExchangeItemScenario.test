@@ -5,7 +5,7 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _7NrmAK8sEee2vO1UksePLw
-Save-Time: 10/15/20 5:01 PM
+Save-Time: 3/23/21 1:33 PM
 Tags: Diagram_IS
 Testcase-Type: ecl
 
@@ -223,6 +223,17 @@ get-window "Show View" | get-tree | select "Other/Interpreter" | select "Other/I
 with [get-view Interpreter | get-section Expression | get-text-viewer] {
     set-text "aql:self.nodes->select(n | n.name == 'Constraint1')"
 }
+
+// Click on the diagram to force the target of the Interpreter expression
+
+with [get-editor "[IS] Capability 1" | get-diagram -index 1 | get-edit-part -name "[IS] Capability 1"] {
+    mouse-move 634 384 button1 -height 584 -width 1286
+    mouse-press 634 384 button1 -height 584 -width 1286
+    mouse-release 634 384 button1 "" -height 584 -width 1286
+    mouse-hover 634 384 -height 584 -width 1286
+    mouse-move 630 565 -height 584 -width 1286
+}
+
 wait 1000
 get-view Interpreter | get-label "Result of type Sequence and size 0" | get-property caption 
     | equals "Result of type Sequence and size 0" | verify-true
