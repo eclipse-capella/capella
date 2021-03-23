@@ -5,8 +5,7 @@ Element-Name: ValidationProfileActions
 Element-Type: context
 Element-Version: 2.0
 Id: _ZR3fQKKHEeaAAPJPtfviTA
-Runtime-Version: 2.5.1.M3
-Save-Time: 11/13/20 3:47 PM
+Save-Time: 3/23/21 5:12 PM
 
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
 Content-Type: text/ecl
@@ -232,7 +231,7 @@ proc "checkDefaultPreferences" [val projectName] {
 	            checkPropertyButtonSelected "Include owned Property Values" true
 	        }
 	        checkPropertyButtonSelected "Transit Interfaces handled by Components" false
-	        checkPropertyButtonSelected "Transit allocated Exchange Items while transition of Interfaces, Functions or Components" false
+	        checkPropertyButtonSelected "Transit allocated Exchange Items while transition of Interfaces, Functions, Components or State Machines" false
 	        checkPropertyButtonSelected "Transit Datatypes handled by Exchanges items while transition of Exchange Items" false
 	        checkPropertyButtonSelected "Transit State Machines owned by a Component while transition of Components" false
 	        checkPropertyButtonSelected "Transit Functional elements allocated by an Operational Entity or Operational Actor while their transition" true
@@ -304,7 +303,7 @@ proc "changePreferences" [val projectName] {
 	        }
 	        get-button "Transit Interfaces handled by Components" 
 	            | check
-	        get-button "Transit allocated Exchange Items while transition of Interfaces, Functions or Components" 
+	        get-button "Transit allocated Exchange Items while transition of Interfaces, Functions, Components or State Machines"
 	            | check
 	        get-button "Transit Datatypes handled by Exchanges items while transition of Exchange Items" 
 	            | check
@@ -380,7 +379,7 @@ proc "checkChangedPreferences" [val projectName] {
 	        }
 	        get-button "Transit Interfaces handled by Components" 
 	            | get-property selected | equals true | verify-true
-	        get-button "Transit allocated Exchange Items while transition of Interfaces, Functions or Components" 
+	        get-button "Transit allocated Exchange Items while transition of Interfaces, Functions, Components or State Machines" 
 	            | get-property selected | equals true | verify-true
 	        get-button "Transit Datatypes handled by Exchanges items while transition of Exchange Items" 
 	            | get-property selected | equals true | verify-true
@@ -462,7 +461,7 @@ proc "checkUnchangedPreferencesProject1" [val projectName] {
 	        }
 	        get-button "Transit Interfaces handled by Components" 
 	            | get-property selected | equals true | verify-true
-	        get-button "Transit allocated Exchange Items while transition of Interfaces, Functions or Components" 
+	        get-button "Transit allocated Exchange Items while transition of Interfaces, Functions, Components or State Machines" 
 	            | get-property selected | equals true | verify-true
 	        get-button "Transit Datatypes handled by Exchanges items while transition of Exchange Items" 
 	            | get-property selected | equals true | verify-true
