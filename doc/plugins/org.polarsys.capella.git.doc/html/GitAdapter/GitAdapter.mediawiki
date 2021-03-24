@@ -129,6 +129,19 @@ Tags can also be created from the team menu, click '''Team > Advanced > Tag...''
 
 Conflicts arise when contradicting changes have been made in parallel and an attempt is made to integrate (merge) them. With Git, this may happen for example when two branches are '''merged''', when a branch is '''rebased''' on another, or when a '''pull''' is done.
 
+{| border="1"
+|-
+| 
+[[Image:images/Flag.jpg|32x34px]]
+
+
+| 
+In any case, the session must be closed before the conflict resolving step. This is because during this step, the model contains elements in conflict state, further actions on the session would make the model become completely corrupted.
+There are two mechanisms implemented in Capella to make sure that the session is closed during this step:
+* When a model is in conflict state, the session cannot be opened, a popup is displayed to inform users about resources being in conflict.
+* An already opened session will automatically be closed if a concerning resource enters the conflict state (e.g. following a Git action).
+|} 
+
 *Commit the changes done before with the message "Added Transmit", including the renaming of the function. Be sure to select both .aird and .capella files.
 
 *Right-click the project > Team > Switch to > New branch..., type "maintenance" and validate.<br>
@@ -197,6 +210,17 @@ Conflicts arise when contradicting changes have been made in parallel and an att
 :-[[Image:images/ModelMerged.png|1000x300px]]
 
 *'''You may now consider the model as merged'''. Press Ctrl-S to save then close the diff/merge editor. You now have to inform Git that the merge is finished. 
+
+{| border="1"
+|-
+| 
+[[Image:images/Flag.jpg|32x34px]]
+
+
+| 
+Please make sure that all the conflicts have been resolved before leaving the Merge Tool editor. Any unresolved conflict could lead to a corrupted model.
+If somehow the conflict resolving process ends up with a corrupted model and you want to get back to the previous commit, you could just commit the current modification and apply a "Reset" > "Hard" action (an example of this action has been shown in one of previous steps in this tutorial).
+|} 
 
 *Switch back to the Git perspective, select the repository and select the "Git Staging" view at the bottom. You should see the .aird and .capella files in the "Unstaged Changes" section.<br><br>
 :-[[Image:images/GitStaging.png|1000x375px]]
