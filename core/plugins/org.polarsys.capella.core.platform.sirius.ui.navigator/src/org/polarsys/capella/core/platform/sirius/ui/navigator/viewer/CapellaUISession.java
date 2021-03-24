@@ -16,7 +16,10 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.tools.api.command.ui.RefreshFilter;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.internal.session.EditingSession;
+import org.eclipse.sirius.ui.tools.internal.util.SessionCallBackWithUI;
 import org.eclipse.ui.ISaveablesSource;
+import org.polarsys.capella.core.platform.sirius.ui.session.GitConflictHelper;
+import org.polarsys.capella.core.platform.sirius.ui.session.GitReloadingPolicy;
 
 /**
  * {@link IEditingSession} used by Capella to provide the {@link Saveable}
@@ -29,8 +32,13 @@ import org.eclipse.ui.ISaveablesSource;
  */
 public class CapellaUISession extends EditingSession implements IEditingSession, ISaveablesSource, RefreshFilter {
 
-	public CapellaUISession(Session session) {
-		super(session);
-		super.saveable = new CapellaSaveable(session);
-	}
+  public CapellaUISession(Session session) {
+    super(session);
+    super.saveable = new CapellaSaveable(session);
+
+    // If the session is related to a Git repository, set a customized session loading policy
+    if (GitConflictHelper.isInGitRepository(session)) {
+      session.setReloadingPolicy(new GitReloadingPolicy(new SessionCallBackWithUI()));
+    }
+  }
 }

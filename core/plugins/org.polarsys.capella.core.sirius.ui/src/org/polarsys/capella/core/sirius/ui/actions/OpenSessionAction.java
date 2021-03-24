@@ -43,6 +43,7 @@ import org.polarsys.capella.common.tools.report.appenders.usage.util.UsageMonito
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.core.platform.sirius.ui.session.CapellaSessionHelper;
+import org.polarsys.capella.core.platform.sirius.ui.session.GitConflictHelper;
 import org.polarsys.capella.core.sirius.ui.Messages;
 import org.polarsys.capella.core.sirius.ui.SiriusUIPlugin;
 import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
@@ -94,8 +95,14 @@ public class OpenSessionAction extends BaseSelectionListenerAction {
         continue;
       }
       IFile selectedFile = (IFile) selectedElement;
-      Session session = null;
 
+      IStatus conflictFilesStatus = GitConflictHelper.checkConflictFiles(selectedFile.getProject());
+      if (!conflictFilesStatus.isOK()) {
+        CapellaSessionHelper.reportError(conflictFilesStatus);
+        continue;
+      }
+      
+      Session session = null;
       String eventName = "Open Session";
       String eventContext = selectedFile.getName();
       UsageMonitoringLogger.getInstance().log(eventName, eventContext, EventStatus.NONE);
@@ -115,6 +122,13 @@ public class OpenSessionAction extends BaseSelectionListenerAction {
           continue;
         }
 
+        IStatus conflictSemanticResourcesStatus = GitConflictHelper.checkConflictFiles(session);
+        if (!conflictSemanticResourcesStatus.isOK()) {
+          failedOpeningSessions.put(selectedFile, conflictSemanticResourcesStatus);
+          CapellaSessionHelper.reportError(conflictSemanticResourcesStatus);
+          continue;
+        }
+        
         IStatus checkLibraryCompliancyResult = CapellaSessionHelper.checkLibrariesAvailability(session);
         if (!checkLibraryCompliancyResult.isOK()) {
           failedOpeningSessions.put(selectedFile, checkLibraryCompliancyResult);
