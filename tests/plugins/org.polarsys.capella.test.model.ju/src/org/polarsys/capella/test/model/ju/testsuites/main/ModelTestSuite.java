@@ -25,6 +25,7 @@ import org.polarsys.capella.test.model.ju.crossreferencer.MoveElementToNewResour
 import org.polarsys.capella.test.model.ju.crossreferencer.TraceableElementDerivedFeaturesTest;
 import org.polarsys.capella.test.model.ju.crossreferencer.TypeDerivedFeaturesTest;
 import org.polarsys.capella.test.model.ju.derivedfeature.DerivedFeatureTestCase;
+import org.polarsys.capella.test.model.ju.dialog.CapellaTreeDataTestCase;
 import org.polarsys.capella.test.model.ju.diffmerge.DiffMergeTestSuite;
 import org.polarsys.capella.test.model.ju.dnd.DnDTestSuite;
 import org.polarsys.capella.test.model.ju.helpers.CapellaAdapterHelperTestCase;
@@ -101,6 +102,7 @@ public class ModelTestSuite extends BasicTestSuite {
     tests.add(new ActivityExplorerTestSuite());
     
     tests.add(new CapellaMenusTestCase());
+    tests.add(new CapellaTreeDataTestCase());
     
     tests.add(new PhysicalLinkAcceleratorTest());
     return tests;

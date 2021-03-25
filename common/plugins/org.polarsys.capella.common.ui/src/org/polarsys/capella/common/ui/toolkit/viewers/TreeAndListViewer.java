@@ -23,7 +23,6 @@ import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.TreeViewer;
-import org.eclipse.jface.viewers.ViewerSorter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -219,7 +218,6 @@ public class TreeAndListViewer extends RegExpTreeViewer {
       }
     });
     // Install a sorter which uses the default collator to sort strings.
-    viewer.setSorter(new ViewerSorter());
     viewer.setAutoExpandLevel(_viewerExpandLevel);
 
     return viewer;
