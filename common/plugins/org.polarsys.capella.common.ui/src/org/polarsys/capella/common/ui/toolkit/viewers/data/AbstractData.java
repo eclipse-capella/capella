@@ -15,7 +15,6 @@ package org.polarsys.capella.common.ui.toolkit.viewers.data;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 
@@ -162,7 +161,7 @@ public abstract class AbstractData {
    * Default implementation uses {@link HashSet} to avoid duplicated elements.
    */
   protected Collection<Object> initializeRootElementCollection() {
-    return new HashSet<>(0);
+    return new LinkedHashSet<>(0);
   }
 
   /**
