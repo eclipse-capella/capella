@@ -17,6 +17,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.stream.StreamSupport;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -29,9 +30,12 @@ import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.DeploymentTarget;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.oa.Entity;
+import org.polarsys.capella.core.data.pa.PhysicalComponent;
+import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.PartExt;
+import org.polarsys.capella.core.sirius.analysis.CsServices;
 import org.polarsys.capella.core.sirius.analysis.DDiagramContents;
 import org.polarsys.capella.core.sirius.analysis.constants.MappingConstantsHelper;
 import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
@@ -47,7 +51,8 @@ public class ShowHideABComponent extends AbstractShowHide {
   public static final String SOURCE_PARTS = "sourceParts"; //$NON-NLS-1$
   public static final String TARGET_PARTS = "targetParts"; //$NON-NLS-1$
 
-  boolean containsDeployment = true;
+  boolean containsNodeDeployment = true; //yellow
+  boolean containsBehavioralDeployment = true; //blue
 
   /**
    * @param content_p
@@ -56,7 +61,10 @@ public class ShowHideABComponent extends AbstractShowHide {
     super(content_p);
     DiagramElementMapping mapping = getContent()
         .getMapping(MappingConstantsHelper.getMappingABDeployedElement(getContent().getDDiagram()));
-    containsDeployment = (mapping != null) && getContent().getDiagramElements(mapping).iterator().hasNext();
+    containsNodeDeployment = StreamSupport.stream(getContent().getDiagramElements(mapping).spliterator(), false)
+        .anyMatch(x -> getNature(x.getTarget()) == PhysicalComponentNature.NODE);
+    containsBehavioralDeployment = StreamSupport.stream(getContent().getDiagramElements(mapping).spliterator(), false)
+        .anyMatch(x -> getNature(x.getTarget()) == PhysicalComponentNature.BEHAVIOR);
   }
 
   /**
@@ -94,7 +102,7 @@ public class ShowHideABComponent extends AbstractShowHide {
       // Retrieve all parts containing the given part
       Collection<EObject> result3 = new HashSet<EObject>();
 
-      if (containsDeployment) {
+      if (containsNodeDeployment || containsBehavioralDeployment) {
         result3.addAll(getCache(PartExt::getDeployingElements, part));
       }
 
@@ -208,7 +216,10 @@ public class ShowHideABComponent extends AbstractShowHide {
     } else if (semantic instanceof Part) {
       Part part = (Part) semantic;
       List<DeploymentTarget> deployingElements = getCache(PartExt::getDeployingElements, part);
-      if (containsDeployment && !deployingElements.isEmpty()) {
+      PhysicalComponentNature nature = getNature(part);
+      if (((containsBehavioralDeployment && nature == PhysicalComponentNature.BEHAVIOR) ||
+          (containsNodeDeployment && nature == PhysicalComponentNature.NODE)) &&
+          !deployingElements.isEmpty()) {
         Collection<DSemanticDecorator> targetViews = relatedViews.get(CONTAINER);
         if (!targetViews.isEmpty() && deployingElements.contains((targetViews.iterator().next().getTarget()))) {
           return getContent()
@@ -220,6 +231,22 @@ public class ShowHideABComponent extends AbstractShowHide {
 
     }
     return mapping;
+  }
+  
+  /**
+   * Returns the component nature for the target (only for Physical Component)
+   * 
+   * @param object
+   *          the part.
+   * @return the component nature, if type is a Physical Component.
+   */
+  protected PhysicalComponentNature getNature(EObject object) {
+    EObject type = CsServices.getService().getComponentType(object);
+    PhysicalComponentNature nature = null;
+    if(type instanceof PhysicalComponent) {
+      nature = ((PhysicalComponent) type).getNature();
+    }
+    return nature;
   }
 
   @Override

@@ -20,6 +20,7 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.polarsys.capella.core.diagram.helpers.IRepresentationAnnotationConstants;
 
 import com.google.common.base.Predicate;
 
@@ -35,17 +36,34 @@ public class DAnnotationPrecommitListener implements SessionManagerListener {
 
     public Predicate<Notification> considerDAnnotationForAutomaticRefreshPredicate = notification -> {
         if (notification != null) {
+            if (isChangeOnFilters(notification)) {
+              return false;
+            }
             if (notification.getNotifier() instanceof DAnnotation) {
-                // A DAnnotation has been updated
-                return true;
-            } else if ((notification.getNotifier() instanceof DRepresentation || notification.getNotifier() instanceof DRepresentationDescriptor)
+              // A DAnnotation has been updated
+              return true;
+            }
+            if ((notification.getNotifier() instanceof DRepresentation || notification.getNotifier() instanceof DRepresentationDescriptor)
                     && (notification.getOldValue() instanceof DAnnotation || notification.getNewValue() instanceof DAnnotation)) {
-                // A DAnnotation has been added or removed from a representation
-                return true;
+              // A DAnnotation has been added or removed from a representation
+              return true;
             }
         }
         return false;
     };
+    
+    private boolean isChangeOnFilters(Notification notification) {
+      DAnnotation annotation = null;
+      if (notification.getNotifier() instanceof DAnnotation) {
+        annotation = (DAnnotation) notification.getNotifier();
+      } else if (notification.getOldValue() instanceof DAnnotation) {
+        annotation = (DAnnotation) notification.getOldValue();
+      } else if (notification.getNewValue() instanceof DAnnotation) {
+        annotation = (DAnnotation) notification.getNewValue();
+      }
+      
+      return annotation != null && IRepresentationAnnotationConstants.DesactivatedFilters.equals(annotation.getSource());
+    }
 
     @Override
     public void notifyAddSession(Session newSession) {
