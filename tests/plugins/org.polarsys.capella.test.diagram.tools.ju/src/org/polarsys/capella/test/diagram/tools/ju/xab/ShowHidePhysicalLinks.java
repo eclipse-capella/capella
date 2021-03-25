@@ -68,4 +68,8 @@ public class ShowHidePhysicalLinks extends ShowHideComponentExchanges {
   protected String getFilterName() {
     return IFilterNameConstants.FILTER_PAB_HIDE_COMPUTED_PL;
   }
+  
+  @Override
+  protected void testCE(SessionContext context) {
+  }
 }

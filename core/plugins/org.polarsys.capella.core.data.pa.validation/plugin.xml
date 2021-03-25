@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2020, 2020 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2021 THALES GLOBAL SERVICES.
   
   This program and the accompanying materials are made available under the
   terms of the Eclipse Public License 2.0 which is available at
@@ -165,6 +165,26 @@ BEHAVIOUR PC cannot be contained by a NODE PC
                       class="PhysicalComponent">
                 </target>
              </constraint>
+             <constraint
+                   class="org.polarsys.capella.core.data.pa.validation.physicalComponent.PhysicalComponentContainedAndDeployed"
+                   id="DWF_DC_44"
+                   isEnabledByDefault="true"
+                   lang="Java"
+                   mode="Batch"
+                   name="DWF_DC_44 - Physical Component NODE/BEHAVIOUR is contained and deployed inside the same parent Component"
+                   severity="WARNING"
+                   statusCode="1">
+                <message>
+                   {0} (PhysicalComponent) of Nature {1} should not be contained and deployed in the same parent {2} (PhysicalComponent)
+                </message>
+                <description>
+                   This rule ensures that a Physical Component of nature NODE or BEHAVIOUR is not contained and deployed inside the same parent Component.
+                </description>
+                <target
+                      class="PhysicalComponent">
+                </target>
+             </constraint>
+             
          </constraints>
          <constraints
                categories="capella.category/transition/consistency/components">

@@ -24,7 +24,6 @@ import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.core.diagram.helpers.DAnnotationHelper;
 import org.polarsys.capella.core.diagram.helpers.IRepresentationAnnotationConstants;
-import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt.Type;
 import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
@@ -83,6 +82,11 @@ public class ShowHideComponentExchanges extends EmptyProject {
     testOnActors(context, PA__PHYSICAL_SYSTEM);
     testOnLogicalComponents(context, LA__LOGICAL_SYSTEM);
 
+    testCE(context);
+  }
+  
+  protected void testCE(SessionContext context) {
+    testCEOnDeployedPhysicalComponents(context, PA__PHYSICAL_SYSTEM);
   }
 
   /**
@@ -232,6 +236,36 @@ public class ShowHideComponentExchanges extends EmptyProject {
     removeLink(xab, GenericModel.CL_1, GenericModel.LC_2);
     DiagramHelper.setSynchronized(xab.getDiagram(), true);
   }
+  
+  protected void testCEOnDeployedPhysicalComponents(SessionContext context, String idSource) {
+    PABDiagram xab = PABDiagram.createDiagram(context, idSource);
+    activateComponentExchangeFilters(xab);
+    
+    // Create a component exchange between two deployments
+    xab.createNodeComponent(GenericModel.LC_1, xab.getDiagramId());
+    createDeployedSubComponent(xab, GenericModel.LC_2, GenericModel.LC_1);
+    xab.createNodeComponent(GenericModel.LC_3, xab.getDiagramId());
+    createDeployedSubComponent(xab, GenericModel.LC_4, GenericModel.LC_3);
+    
+    // test styles, check that if another deployed behavior component is not present in diagram,
+    // mapping is PAB_PHYSICAL_COMPONENT_MAPPING_NAME
+    // even when we have a node deployed component in diagram
+    xab.createBehaviorComponent(GenericModel.PC_2_1, xab.getDiagramId());
+    xab.createDeployedNodeComponent(GenericModel.PC_3_1, GenericModel.LC_1);
+    createLink(xab, GenericModel.LC_2, GenericModel.PC_2_1, GenericModel.CL_4);
+    xab.removeDeployedBehaviorComponent(GenericModel.LC_2, GenericModel.LC_1);
+    xab.hasntView(GenericModel.LC_2);
+    // a deployed behavior (LC4) is present in diagram, mapping is PAB_PHYSICAL_COMPONENT_DEPLOYMENT_MAPPING_NAME
+    insertLink(xab, GenericModel.CL_4, GenericModel.PC_2_1);
+    xab.hasView(GenericModel.LC_2, IMappingNameConstants.PAB_PHYSICAL_COMPONENT_DEPLOYMENT_MAPPING_NAME);
+    xab.removeDeployedBehaviorComponent(GenericModel.LC_2, GenericModel.LC_1);
+    xab.hasntView(GenericModel.LC_2);
+    xab.removeDeployedBehaviorComponent(GenericModel.LC_4, GenericModel.LC_3);
+    // a deployed behavior (LC4) is not present in diagram, mapping is PAB_PHYSICAL_COMPONENT_MAPPING_NAME
+    xab.hasntView(GenericModel.LC_4);
+    insertLink(xab, GenericModel.CL_4, GenericModel.PC_2_1);
+    xab.hasView(GenericModel.LC_2, IMappingNameConstants.PAB_PHYSICAL_COMPONENT_MAPPING_NAME);
+  }
 
   protected void testOnUnDeployedPhysicalComponents(SessionContext context, String idSource) {
     PABDiagram xab = PABDiagram.createDiagram(context, idSource);
@@ -244,7 +278,6 @@ public class ShowHideComponentExchanges extends EmptyProject {
     createDeployedSubComponent(xab, GenericModel.LC_3, GenericModel.LC_2);
     createLink(xab, GenericModel.LC_1, GenericModel.LC_3, GenericModel.CL_1);
     removeDeployedSubComponent(xab, GenericModel.LC_3, GenericModel.LC_2);
-    
     
     insertLink(xab, GenericModel.CL_1, GenericModel.LC_1);
     xab.hasView(GenericModel.LC_3, IMappingNameConstants.PAB_PHYSICAL_COMPONENT_MAPPING_NAME);
