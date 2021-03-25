@@ -12,6 +12,9 @@
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.ui.handlers;
 
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -44,22 +47,20 @@ public class CopyTextHandler extends AbstractDiagramCommandHandler {
    * @return the current selection represented as text
    */
   public String getSelectionAsText() {
-    StringBuilder builder = new StringBuilder();
     String result = null;
     IStructuredSelection selection = getSelection();
-    for (Object o : selection.toArray()) {
-      if (o instanceof ModelElement) {
-        builder.append(((ModelElement) o).getLabel());
-      } else {
-        builder.append(o.toString());
-      }
-      builder.append(ICommonConstants.LINE_SEPARATOR);
-    }
-
-    if (builder.length() > 0) {
-      result = builder.toString();
+    if (!selection.isEmpty()) {
+      result = Arrays.stream(selection.toArray()).map(CopyTextHandler::getLabel)
+          .collect(Collectors.joining(ICommonConstants.LINE_SEPARATOR));
     }
     return result;
+  }
+  
+  private static String getLabel(Object o) {
+    if (o instanceof ModelElement) {
+      return ((ModelElement) o).getLabel();
+    }
+    return o != null ? o.toString() : null;
   }
 
   @Override
