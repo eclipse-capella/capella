@@ -12,8 +12,10 @@
  *******************************************************************************/
 package org.polarsys.capella.test.model.ju.menu;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
@@ -23,6 +25,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.ui.ISources;
+import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper.PrimitiveWrapper;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.libraries.model.ICapellaModel;
@@ -53,6 +56,7 @@ public class CapellaMenusTestCase extends MiscModel {
     testDiagramMenus(pabDiagramID, pabDiagram);
     
     testCopyAsTextNumericValue(5);
+    testCopyAsTextNumericValue(5, 8, 9);
   }
   
   protected void init() {
@@ -115,28 +119,31 @@ public class CapellaMenusTestCase extends MiscModel {
     }
   }
   
-  protected void testCopyAsTextNumericValue(Integer value) {
-    PrimitiveWrapper wrapper = new PrimitiveWrapper(value);
-    ExecutionEvent event = createExecutionEvent(wrapper);
+  protected void testCopyAsTextNumericValue(Integer... values) {
+    Object[] wrappers = Arrays.stream(values).map(value -> new PrimitiveWrapper(value)).toArray();
+    String valuesStr = Arrays.stream(values).map(value -> String.valueOf(value))
+        .collect(Collectors.joining(ICommonConstants.LINE_SEPARATOR));
+    assertEquals(valuesStr, getCopyAsText(wrappers));
+  }
+
+  private String getCopyAsText(Object... values) {
+    ExecutionEvent event = createExecutionEvent(values);
     String result = new CopyTextHandler() {
       protected IStructuredSelection getSelection() {
         IEvaluationContext context = (IEvaluationContext) event.getApplicationContext();
         return (IStructuredSelection) context.getVariable("selection");
       }
     }.getSelectionAsText();
-    
-    result = result.replace("\r", "");
-    result = result.replace("\n", "");
 
-    assertEquals("5", result);
+    return result;
   }
 
-  private ExecutionEvent createExecutionEvent(Object element) {
+  private ExecutionEvent createExecutionEvent(Object ...elements) {
     IEvaluationContext context = new EvaluationContext(null, new Object());
     Map<String, String> parameters = new HashMap<>();
     ExecutionEvent event = new ExecutionEvent(null, parameters, null, context);
 
-    context.addVariable(ISources.ACTIVE_CURRENT_SELECTION_NAME, new StructuredSelection(element));
+    context.addVariable(ISources.ACTIVE_CURRENT_SELECTION_NAME, new StructuredSelection(Arrays.asList(elements)));
 
     return event;
   }
