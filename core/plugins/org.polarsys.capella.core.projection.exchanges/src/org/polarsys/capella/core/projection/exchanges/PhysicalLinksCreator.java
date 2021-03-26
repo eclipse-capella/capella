@@ -27,6 +27,7 @@ import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
 import org.polarsys.capella.core.data.capellacore.Type;
 import org.polarsys.capella.core.data.cs.AbstractDeploymentLink;
+import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsFactory;
 import org.polarsys.capella.core.data.cs.DeployableElement;
@@ -42,6 +43,8 @@ import org.polarsys.capella.core.data.fa.ComponentPortAllocation;
 import org.polarsys.capella.core.data.fa.FaFactory;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionalExt;
 import org.polarsys.capella.core.data.information.AbstractEventOperation;
+import org.polarsys.capella.core.data.la.LogicalComponent;
+import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
 import org.polarsys.capella.core.data.pa.deployment.PartDeploymentLink;
@@ -115,9 +118,11 @@ public class PhysicalLinksCreator extends DefaultExchangesCreator {
           }
         }
       }
-      // Process contained actors
-      createPLsFromCEDiffLevels(container);
-      createPLsFromCESameLevel(container);
+      if (!isContainedByALogicalNonActorComponent(container)) {
+        // Process contained actors
+        createPLsFromCEDiffLevels(container);
+        createPLsFromCESameLevel(container);
+      }
     }
   }
 
@@ -160,6 +165,20 @@ public class PhysicalLinksCreator extends DefaultExchangesCreator {
     }
   }
   
+  /**
+   * @param component
+   * @return true if the component is contained by a non actor component
+   */
+  private boolean isContainedByALogicalNonActorComponent(Component component) {
+    if (!(component instanceof LogicalComponent))
+      return false;
+    EObject container = component.eContainer();
+    if (container instanceof LogicalComponent) {
+      return !ComponentExt.isActor(container) || isContainedByALogicalNonActorComponent((Component) container);
+    }
+    return false;
+  }
+
   private void processComponentExchange(Component sourceContainer, Component sourceContained, ComponentPort port,
       ComponentExchange componentExchange) {
     if ((componentExchange.getKind() == ComponentExchangeKind.DELEGATION)
@@ -167,35 +186,62 @@ public class PhysicalLinksCreator extends DefaultExchangesCreator {
         || doesNodeAlreadyHaveAPhysicalLinkForComponentExchange(sourceContainer, componentExchange)) {
       return;
     }
-    // get the opposite port [which could be source or target of the CE]
-    InformationsExchanger target = FunctionalExt.getOtherBound(componentExchange, port);
-    if (target instanceof ComponentPort) {
-      EObject targetContained = target.eContainer();
-      // find the target Node
-      if (targetContained instanceof Component && isValidBound((Component) targetContained)) {
-
-        if (targetContained instanceof PhysicalComponent) {
-          PhysicalComponent targetContainerPC = findDeployingComponent(sourceContainer, componentExchange,
-              (PhysicalComponent) targetContained);
-          if (targetContainerPC != null) {
-            doCreatePhysicalLink(componentExchange, sourceContainer, targetContainerPC);
-          }
+    Component targetContained = findTheTargetComponent(componentExchange, port);
+    if (targetContained != null) {
+      if (targetContained instanceof PhysicalComponent) {
+        PhysicalComponent targetContainerPC = findDeployingComponent((PhysicalComponent) targetContained);
+        if (targetContainerPC != null) {
+          doCreatePhysicalLink(componentExchange, sourceContainer, targetContainerPC, port);
         }
-
-        // if the container is the same as contained (if the component doesn't have subcomponents)
-        if (sourceContainer.equals(sourceContained) && ComponentExt.isActor(sourceContained)) {
+      }
+      // if the container is the same as contained (if the component doesn't have subcomponents)
+      if (sourceContainer.equals(sourceContained)
+          && (ComponentExt.isActor(sourceContained) || isSystemOrLogicalSystem(sourceContained))) {
+        // if the target is contained by a logical component (non actor), the PL should not be created
+        if (!isContainedByALogicalNonActorComponent(targetContained))
           doCreatePhysicalLink(componentExchange, sourceContainer, (Component) targetContained, port);
-        } else if (ComponentExt.isActor(targetContained) && targetContained.eContainer() instanceof Component) {
-          Component targetContainer = (Component) targetContained.eContainer();
-          doCreatePhysicalLink(componentExchange, sourceContainer, targetContainer);
-        }
+      } else if (ComponentExt.isActor(targetContained) && targetContained.eContainer() instanceof Component) {
+        Component targetContainer = (Component) targetContained.eContainer();
+        if (!isContainedByALogicalNonActorComponent(targetContainer))
+          doCreatePhysicalLink(componentExchange, sourceContainer, targetContainer, port);
       }
     }
   }
   
-  private PhysicalComponent findDeployingComponent(Component sourceContainer, ComponentExchange componentExchange,
-      PhysicalComponent targetContained) {
-    for (Part partition : ((PhysicalComponent) targetContained).getRepresentingParts()) {
+  /**
+   * Find the target component of the CE
+   * @param componentExchange the source component exchange
+   * @param port 
+   * @return the component if it's a valid target (instanceof Component, validBound, etc), null otherwise
+   */
+  private Component findTheTargetComponent(ComponentExchange componentExchange, ComponentPort port) {
+    // get the opposite port [which could be source or target of the CE]
+    InformationsExchanger target = FunctionalExt.getOtherBound(componentExchange, port);
+    if (!(target instanceof ComponentPort))
+      return null;
+
+    EObject targetContained = target.eContainer();
+    // the target is not valid if it's not a Physical, Logical or System Component
+    if (!(targetContained instanceof Component && isValidBound((Component) targetContained)))
+      return null;
+
+    // for LogicalComponent, the target is not valid if it's not an actor or the logical system
+    if (targetContained instanceof LogicalComponent
+        && (!ComponentExt.isActor(targetContained) && !isSystemOrLogicalSystem((Component) targetContained)))
+      return null;
+
+    return (Component) targetContained;
+  }
+  
+  private boolean isSystemOrLogicalSystem(Component component) {
+    if (component instanceof PhysicalComponent || component instanceof Entity)
+      return false;
+    BlockArchitecture architecture = ComponentExt.getRootBlockArchitecture(component);
+    return architecture.getSystem().equals(component);
+  }
+  
+  private PhysicalComponent findDeployingComponent(PhysicalComponent targetContained) {
+    for (Part partition : targetContained.getRepresentingParts()) {
       for (DeploymentTarget deploying : getCache(PartExt::getDeployingElements, (Part) partition)) {
         if (deploying instanceof Part) {
           Part deployingPart = (Part) deploying;
