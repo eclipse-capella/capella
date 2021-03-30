@@ -2887,6 +2887,108 @@
 		            </basicQuery>
 		         </categoryQuery>
 		    </category>
+		    <category
+                  id="org.polarsys.capella.core.semantic.queries.DataTypeElements_minValue"
+                  isTopLevel="true"
+                  name="Min. Value"
+                  usedInShowRelated="true">
+               <availableForType
+                     class="org.polarsys.capella.core.data.information.datatype.DataType">
+               </availableForType>
+               <targetBrowserId
+                     id="CurrentElementBrowser">
+               </targetBrowserId>
+               <categoryQuery>
+                  <basicQuery
+                        class="org.polarsys.capella.core.semantic.queries.basic.queries.DataTypeElementsMinValue">
+                  </basicQuery>
+               </categoryQuery>
+            </category>
+            <category
+                  id="org.polarsys.capella.core.semantic.queries.DataTypeElements_maxValue"
+                  isTopLevel="true"
+                  name="Max. Value"
+                  usedInShowRelated="true">
+               <availableForType
+                     class="org.polarsys.capella.core.data.information.datatype.DataType">
+               </availableForType>
+               <targetBrowserId
+                     id="CurrentElementBrowser">
+               </targetBrowserId>
+               <categoryQuery>
+                  <basicQuery
+                        class="org.polarsys.capella.core.semantic.queries.basic.queries.DataTypeElementsMaxValue">
+                  </basicQuery>
+               </categoryQuery>
+            </category>
+            <category
+                  id="org.polarsys.capella.core.semantic.queries.DataTypeElements_nullValue"
+                  isTopLevel="true"
+                  name="Null Value"
+                  usedInShowRelated="true">
+               <availableForType
+                     class="org.polarsys.capella.core.data.information.datatype.DataType">
+               </availableForType>
+               <targetBrowserId
+                     id="CurrentElementBrowser">
+               </targetBrowserId>
+               <categoryQuery>
+                  <basicQuery
+                        class="org.polarsys.capella.core.semantic.queries.basic.queries.DataTypeElementsNullValue">
+                  </basicQuery>
+               </categoryQuery>
+            </category>
+            <category
+                  id="org.polarsys.capella.core.semantic.queries.DataTypeElements_domainType"
+                  isTopLevel="true"
+                  name="Domain Type"
+                  usedInShowRelated="true">
+               <availableForType
+                     class="org.polarsys.capella.core.data.information.datatype.DataType">
+               </availableForType>
+               <targetBrowserId
+                     id="CurrentElementBrowser">
+               </targetBrowserId>
+               <categoryQuery>
+                  <basicQuery
+                        class="org.polarsys.capella.core.semantic.queries.basic.queries.DataTypeElementsDomainType">
+                  </basicQuery>
+               </categoryQuery>
+            </category>
+            <category
+                  id="org.polarsys.capella.core.semantic.queries.DataTypeElements_maxLength"
+                  isTopLevel="true"
+                  name="Max. Length"
+                  usedInShowRelated="true">
+               <availableForType
+                     class="org.polarsys.capella.core.data.information.datatype.DataType">
+               </availableForType>
+               <targetBrowserId
+                     id="CurrentElementBrowser">
+               </targetBrowserId>
+               <categoryQuery>
+                  <basicQuery
+                        class="org.polarsys.capella.core.semantic.queries.basic.queries.DataTypeElementsMaxLength">
+                  </basicQuery>
+               </categoryQuery>
+            </category>
+            <category
+                  id="org.polarsys.capella.core.semantic.queries.DataTypeElements_minLength"
+                  isTopLevel="true"
+                  name="Min. Length"
+                  usedInShowRelated="true">
+               <availableForType
+                     class="org.polarsys.capella.core.data.information.datatype.DataType">
+               </availableForType>
+               <targetBrowserId
+                     id="CurrentElementBrowser">
+               </targetBrowserId>
+               <categoryQuery>
+                  <basicQuery
+                        class="org.polarsys.capella.core.semantic.queries.basic.queries.DataTypeElementsMinLength">
+                  </basicQuery>
+               </categoryQuery>
+            </category>
             <category
                   id="org.polarsys.capella.core.semantic.queries.PhysicalLinkSouce"
                   isTopLevel="true"
@@ -7111,6 +7213,54 @@
          <categoryQuery>
             <basicQuery
                   class="org.polarsys.capella.core.semantic.queries.basic.queries.CollectionIndexes">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.DataType_realizedInformation"
+            isTopLevel="true"
+            name="Realized Datatypes">
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <availableForType
+               class="org.polarsys.capella.core.data.information.datatype.DataType">
+         </availableForType>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.DataTypeRealizedInformation">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+       <category
+            id="org.polarsys.capella.core.semantic.queries.DataType_realizingInformation"
+            isTopLevel="true"
+            name="Realizing Datatypes">
+         <targetBrowserId
+               id="ReferencingElementBrowser">
+         </targetBrowserId>
+         <availableForType
+               class="org.polarsys.capella.core.data.information.datatype.DataType">
+         </availableForType>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.DataTypeRealizingInformation">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.DataType_defaultValue"
+            isTopLevel="true"
+            name="Default Value">
+         <targetBrowserId
+               id="CurrentElementBrowser">
+         </targetBrowserId>
+         <availableForType
+               class="org.polarsys.capella.core.data.information.datatype.DataType">
+         </availableForType>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.DataTypeDefaultValue">
             </basicQuery>
          </categoryQuery>
       </category>

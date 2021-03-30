@@ -344,6 +344,33 @@ public abstract class SemanticQueries extends AbstractSemanticQueryTestCase {
   public static final String SA_INTERFACE_1 = "d228cb3e-8f3e-41a8-9d37-605dd947f70b"; //$NON-NLS-1$
   public static final String SA_CLASS_8_PROPERTY_1 = "7ea710ec-c38d-4a8e-bdd5-a40e86058b85"; //$NON-NLS-1$
   public static final String SA__COLLECTION_2_COLLECTION_2 = "8fa45549-ab96-4b46-b026-36c4edef1d7e"; //$NON-NLS-1$
+  public static final String SA_REALIZATION_TO_BOOLEAN = "96fd2a9f-d61a-4b53-970c-3726b113164b"; //$NON-NLS-1$
+  public static final String SA_DEFAULT_BOOLEANREFERENCE_1 = "85d681e8-0b80-43f8-8db0-734c8491017d"; //$NON-NLS-1$
+  
+  public static final String SA_DEFAULT_UNARYEXPRESSION_2 = "b0abc4c7-de5a-4e06-bc25-7be09b28c4fa"; //$NON-NLS-1$
+  public static final String SA_DOMAIN_TYPE_BOOLEANTYPE_1 = "7eadc13e-efe1-4435-bbe2-ab983b2b2ff9"; //$NON-NLS-1$
+  public static final String SA_MAX_ENUM_UNARYEXPRESSION_1 = "b845a15a-cba9-4d44-a65d-b9e5d96779a3"; //$NON-NLS-1$
+  public static final String SA_MIN_BINARYEXPRESSION_1 = "7455c439-da50-4e89-9996-6e9c71b33caa"; //$NON-NLS-1$
+  public static final String SA_NULL_ENUMERATIONLITERAL_1 = "157a516c-b51a-44b9-a6b3-a9138e19cc06"; //$NON-NLS-1$
+  
+  public static final String SA_NUMERIC_TYPE_DEFAULT_UNARYEXPRESSION_1 = "c58a8f16-c714-4def-8d0d-e7abf59dd7e3"; //$NON-NLS-1$
+  public static final String SA_NUMERIC_TYPE_MAX_BINARYEXPRESSION_1 = "52ba1458-42a2-45b9-b5ba-1e134ac2df73"; //$NON-NLS-1$
+  public static final String SA_NUMERIC_TYPE_MIN_NUMERICREFERENCE_1 = "31527fde-7663-4626-ae5c-b6c5fd5a33f1"; //$NON-NLS-1$
+  public static final String SA_NUMERIC_TYPE_NULL_NUMERICREFERENCE_1 = "b4c84b45-7f5b-43b1-8c5c-e3955f1d8be1"; //$NON-NLS-1$
+
+  public static final String SA_PHYSICAL_QUANTITY_DEFAULT_UNARYEXPRESSION_1 = "42a1fe48-0298-4304-84c1-bc99e8d1be28"; //$NON-NLS-1$
+  public static final String SA_PHYSICAL_QUANTITY_MAX_NUMERICREFERENCE_1 = "4f0ed2c2-bcf4-4540-b653-d4c83a7a6ed0"; //$NON-NLS-1$
+  public static final String SA_PHYSICAL_QUANTITY_MIN_BINARYEXPRESSION_1 = "9010ca1b-8e28-44fe-9418-d761a195404d"; //$NON-NLS-1$
+  public static final String SA_PHYSICAL_QUANTITY_NULL_NUMERICREFERENCE_1 = "303ccd73-327f-4fd9-a938-0dad772e3fd5"; //$NON-NLS-1$
+  public static final String SA_PHYSICALQUANTITY_7 = "6d7122bf-6a5b-4445-a463-f0989eee76b0"; //$NON-NLS-1$
+  
+  public static final String SA_STRINGTYPE_8 = "cde04e2b-b8a2-49f0-bcee-2c59422aae9a"; //$NON-NLS-1$
+  public static final String SA_STRINGTYPE_DEFAULT_LITERALSTRINGVALUE_1 = "72ab5002-0035-48f8-9f82-80b1151d9b44"; //$NON-NLS-1$
+  public static final String SA_STRINGTYPE_MAXLENGTH = "bad57192-3cf8-49c8-929c-12de214a7f41"; //$NON-NLS-1$
+  public static final String SA_STRINGTYPE_MINLENGTH = "abe89df4-9ff9-40dc-bae0-c4885d30446f"; //$NON-NLS-1$
+  public static final String SA_STRINGTYPE_NULL= "aa9d6709-50a5-49d3-88ca-9a181619ad93"; //$NON-NLS-1$
+  
+  public static final String SA_ENUMERATION_6 = "171df66d-e689-4aa0-92c9-f0393c469051"; //$NON-NLS-1$
   
   @Override
   public List<String> getRequiredTestModels() {
