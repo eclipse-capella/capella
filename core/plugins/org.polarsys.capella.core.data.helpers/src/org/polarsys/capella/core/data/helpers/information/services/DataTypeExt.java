@@ -58,6 +58,7 @@ public class DataTypeExt {
       InformationRealization realization = InformationFactory.eINSTANCE.createInformationRealization();
       dataType.getOwnedInformationRealizations().add(realization);
       realization.setTargetElement(elt);
+      realization.setSourceElement(dataType);
     }
   }
 
