@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2021 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -132,6 +132,9 @@ public class SiriusCustomizationPlugin extends AbstractUIPlugin {
 
     // Don't use colors from odesign in diagram palettes
     editPreferences.putBoolean(SiriusUIPreferencesKeys.PREF_DISPLAY_VSM_USER_FIXED_COLOR_IN_PALETTE.name(), false);
+
+    // Activate the SVG Traceability (the target semantic id is exported in the SVG file)
+    editPreferences.putBoolean(SiriusUIPreferencesKeys.PREF_EXPORT_SEMANTIC_TRACEABILITY.name(), true);
 
     // Re-apply command line customizations
     applyCommandLineCustomizations(editPreferences);
