@@ -59,6 +59,23 @@
       <menuContribution locationURI="popup:org.eclipse.ui.popup.any?after=group.validation"> 
          <dynamic class="org.polarsys.capella.core.validation.ui.DynamicCreateContributionItem"
                id="org.polarsys.capella.core.validation.ui.dynamicCreateItems">
+               <visibleWhen
+                  checkEnabled="false">
+                  <with
+		               variable="selection">
+		               <iterate 
+		                   ifEmpty="false">
+		                       <or>
+		                           <instanceof
+		                               value="org.polarsys.kitalpha.emde.model.Element">
+		                           </instanceof>
+		                           <adapt
+		                               type="org.polarsys.kitalpha.emde.model.Element">
+		                           </adapt>
+		                      </or>
+		              </iterate>
+		         </with>
+            </visibleWhen>
          </dynamic>
       </menuContribution>
       <group

@@ -24,6 +24,7 @@ import org.eclipse.core.expressions.IEvaluationContext;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.ui.ISources;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper.PrimitiveWrapper;
@@ -53,7 +54,8 @@ public class CapellaMenusTestCase extends MiscModel {
     // PAB Structure
     String pabDiagramID = "_HY2uQekKEem8xqbBNWv2mQ";
     EObject pabDiagram = IdManager.getInstance().getEObject(pabDiagramID, scope);
-    testDiagramMenus(pabDiagramID, pabDiagram);
+    assertTrue(pabDiagram instanceof DRepresentationDescriptor);
+    testDiagramMenus(pabDiagramID, (DRepresentationDescriptor) pabDiagram);
     
     testCopyAsTextNumericValue(5);
     testCopyAsTextNumericValue(5, 8, 9);
@@ -71,10 +73,11 @@ public class CapellaMenusTestCase extends MiscModel {
     testCopyAsTextCommand(selectedElement);
   }
   
-  protected void testDiagramMenus(String selectedElementId, EObject selectedElement) {
+  protected void testDiagramMenus(String selectedElementId, DRepresentationDescriptor selectedElement) {
     testDeleteCommand(selectedElementId, selectedElement);
     testCopyAsDescriptionLinkCommand(selectedElement);
     testCopyAsTextCommand(selectedElement);
+    testCopyAsTextValue(selectedElement, selectedElement.getName());
   }
   
   protected void testDeleteCommand(String selectedElementId, EObject selectedElement) {
@@ -117,6 +120,10 @@ public class CapellaMenusTestCase extends MiscModel {
       new CopyTextHandler().execute(createExecutionEvent(selectedElement));
     } catch (ExecutionException e) {
     }
+  }
+  
+  protected void testCopyAsTextValue(EObject selectedElement, String checkLabel) {
+    assertTrue("Copied label should be: " + checkLabel, checkLabel.equals(getCopyAsText(selectedElement)));
   }
   
   protected void testCopyAsTextNumericValue(Integer... values) {

@@ -18,6 +18,7 @@ import java.util.stream.Collectors;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.swt.dnd.Clipboard;
 import org.eclipse.swt.dnd.TextTransfer;
 import org.eclipse.swt.dnd.Transfer;
@@ -59,6 +60,9 @@ public class CopyTextHandler extends AbstractDiagramCommandHandler {
   private static String getLabel(Object o) {
     if (o instanceof ModelElement) {
       return ((ModelElement) o).getLabel();
+    }
+    if(o instanceof DRepresentationDescriptor) {
+      return ((DRepresentationDescriptor) o).getName();
     }
     return o != null ? o.toString() : null;
   }
