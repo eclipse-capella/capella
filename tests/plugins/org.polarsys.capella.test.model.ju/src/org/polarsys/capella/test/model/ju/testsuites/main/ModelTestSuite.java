@@ -33,6 +33,7 @@ import org.polarsys.capella.test.model.ju.helpers.CapellaResourceNamingHelperTes
 import org.polarsys.capella.test.model.ju.helpers.ChildrenFeaturesItemProviderTest;
 import org.polarsys.capella.test.model.ju.helpers.ComponentExtTestCase;
 import org.polarsys.capella.test.model.ju.helpers.ComponentPkgExtTestCase;
+import org.polarsys.capella.test.model.ju.helpers.DataTypeRealizedInformationTest;
 import org.polarsys.capella.test.model.ju.helpers.PartExtTestCase;
 import org.polarsys.capella.test.model.ju.helpers.PhysicalComponentExtTestCase;
 import org.polarsys.capella.test.model.ju.menu.CapellaMenusTestCase;
@@ -105,6 +106,8 @@ public class ModelTestSuite extends BasicTestSuite {
     tests.add(new CapellaTreeDataTestCase());
     
     tests.add(new PhysicalLinkAcceleratorTest());
+    
+    tests.add(new DataTypeRealizedInformationTest());
     return tests;
   }
 

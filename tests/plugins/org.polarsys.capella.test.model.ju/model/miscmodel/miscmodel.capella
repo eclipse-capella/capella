@@ -10,6 +10,7 @@
     xmlns:org.polarsys.capella.core.data.epbs="http://www.polarsys.org/capella/core/epbs/5.0.0"
     xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/5.0.0"
     xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/5.0.0"
+    xmlns:org.polarsys.capella.core.data.information.datatype="http://www.polarsys.org/capella/core/information/datatype/5.0.0"
     xmlns:org.polarsys.capella.core.data.information.datavalue="http://www.polarsys.org/capella/core/information/datavalue/5.0.0"
     xmlns:org.polarsys.capella.core.data.interaction="http://www.polarsys.org/capella/core/interaction/5.0.0"
     xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/5.0.0"
@@ -134,6 +135,10 @@
           id="f579edce-3fa3-4d6b-9540-6dfd16418db3" name="Data">
         <ownedClasses xsi:type="org.polarsys.capella.core.data.information:Class"
             id="c8fdd007-bef1-4b5a-b35d-a11969aa5e85" name="Class 1" appliedPropertyValues="#ae83a8ca-a114-4ed6-b260-31c88aa90a76"/>
+        <ownedDataTypes xsi:type="org.polarsys.capella.core.data.information.datatype:BooleanType"
+            id="09dc7956-5dee-44b8-b8b4-7ee623a3a343" name="BooleanType 1"/>
+        <ownedDataTypes xsi:type="org.polarsys.capella.core.data.information.datatype:BooleanType"
+            id="a9491dd0-cc6e-407f-987e-c82b132ce601" name="BooleanType 2"/>
       </ownedDataPkg>
       <ownedRolePkg xsi:type="org.polarsys.capella.core.data.oa:RolePkg" id="0eae0d46-5721-4476-a3d5-5dff228ec9ae"
           name="Roles"/>
