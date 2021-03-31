@@ -195,6 +195,12 @@
                style="push">
             <visibleWhen
                   checkEnabled="true">
+                  <with
+		               variable="selection">
+		               <iterate 
+		                   ifEmpty="false">
+		              </iterate>
+		         </with>
             </visibleWhen>
          </command>
       </menuContribution>
