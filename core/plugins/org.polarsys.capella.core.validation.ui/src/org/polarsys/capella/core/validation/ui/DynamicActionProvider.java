@@ -105,6 +105,8 @@ public class DynamicActionProvider extends AbstractActionProvider {
     ISelection selection = selectionProvider.getSelection();
     if (!selection.isEmpty()) {
       validationAction.selectionChanged(new SelectionChangedEvent(selectionProvider, selection));
+    } else {
+      validationAction.setEnabled(false);
     }
 
     return validationAction;

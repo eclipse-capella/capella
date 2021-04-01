@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2021 THALES GLOBAL SERVICES.
   
   This program and the accompanying materials are made available under the
   terms of the Eclipse Public License 2.0 which is available at
@@ -86,22 +86,27 @@
             locationURI="popup:capella.project.explorer#PopupMenu?after=group.migration">
             <menu id="org.polarsys.capella.core.data.migration" label="%migrationMenu">
             
-            <command
-                  commandId="org.polarsys.capella.core.data.migration.project">
-               <visibleWhen
-                     checkEnabled="true">
-               </visibleWhen>
-            </command>
-            <command
-                  commandId="org.polarsys.capella.core.data.migration.model">
-                <visibleWhen checkEnabled="true">
-                </visibleWhen> 
-            </command>
-            <command
-                  commandId="org.polarsys.capella.core.data.migration.aird">
-                <visibleWhen checkEnabled="true">
-                </visibleWhen> 
-            </command>
+	            <command
+	                  commandId="org.polarsys.capella.core.data.migration.project">
+	                  	<visibleWhen checkEnabled="false">
+			              <reference
+	                        definitionId="org.polarsys.capella.core.data.migration.visibilityMigration.project.expression" />
+	           		    </visibleWhen>
+	            </command>
+	            <command
+	                  commandId="org.polarsys.capella.core.data.migration.model">
+	                  	<visibleWhen checkEnabled="false">
+			              <reference
+	                        definitionId="org.polarsys.capella.core.data.migration.visibilityMigration.model.expression" />
+	           		    </visibleWhen>
+	            </command>
+	            <command
+	                  commandId="org.polarsys.capella.core.data.migration.aird">
+	                  	<visibleWhen checkEnabled="false">
+			              <reference
+	                        definitionId="org.polarsys.capella.core.data.migration.visibilityMigration.aird.expression" />
+	           		    </visibleWhen>
+	            </command>
             
             </menu>
          
@@ -206,6 +211,70 @@
  
    </extension>
    
+   <extension
+         point="org.eclipse.core.expressions.propertyTesters">
+		 <propertyTester
+    		class="org.polarsys.capella.core.data.migration.handlers.MigrationPropertyTester"
+            id="org.polarsys.capella.core.data.migration.isValidMigrationProject"
+            namespace="org.polarsys.capella.core.data.migration"
+            properties="isValidMigrationProject"
+            type="java.lang.Object">
+		  </propertyTester>
+		  <propertyTester
+    		class="org.polarsys.capella.core.data.migration.handlers.MigrationPropertyTester"
+            id="org.polarsys.capella.core.data.migration.isValidMigrationModel"
+            namespace="org.polarsys.capella.core.data.migration"
+            properties="isValidMigrationModel"
+            type="java.lang.Object">
+		  </propertyTester>
+		  <propertyTester
+    		class="org.polarsys.capella.core.data.migration.handlers.MigrationPropertyTester"
+            id="org.polarsys.capella.core.data.migration.isValidMigrationAird"
+            namespace="org.polarsys.capella.core.data.migration"
+            properties="isValidMigrationAird"
+            type="java.lang.Object">
+		  </propertyTester>
+  </extension>
+   
+  <extension
+         point="org.eclipse.core.expressions.definitions"> 
+         <definition
+            id="org.polarsys.capella.core.data.migration.visibilityMigration.project.expression">
+              <with
+                  variable="selection">
+                  <iterate ifEmpty="false">
+	        		<test
+	                	forcePluginActivation="true"
+	                		property="org.polarsys.capella.core.data.migration.isValidMigrationProject">
+	          		</test>
+                  </iterate>
+            </with>
+      </definition>
+      <definition
+            id="org.polarsys.capella.core.data.migration.visibilityMigration.model.expression">
+              <with
+                  variable="selection">
+                  <iterate ifEmpty="false">
+	        		<test
+	                	forcePluginActivation="true"
+	                		property="org.polarsys.capella.core.data.migration.isValidMigrationModel">
+	          		</test>
+                  </iterate>
+            </with>
+      </definition>
+      <definition
+            id="org.polarsys.capella.core.data.migration.visibilityMigration.aird.expression">
+              <with
+                  variable="selection">
+                  <iterate ifEmpty="false">
+	        		<test
+	                	forcePluginActivation="true"
+	                		property="org.polarsys.capella.core.data.migration.isValidMigrationAird">
+	          		</test>
+                  </iterate>
+            </with>
+      </definition>
+   </extension>
    
    
 </plugin>

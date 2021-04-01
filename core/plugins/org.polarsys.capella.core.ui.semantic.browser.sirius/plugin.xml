@@ -144,7 +144,7 @@
             id="org.polarsys.capella.core.ui.semantic.browser.sirius.openRepresentationDefinition">
          <with
                variable="activeMenuSelection">
-            <iterate>
+            <iterate ifEmpty="false">
                <instanceof
                      value="org.eclipse.sirius.viewpoint.DRepresentationDescriptor">
                </instanceof>
