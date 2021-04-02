@@ -34,6 +34,7 @@ import org.polarsys.capella.test.model.ju.helpers.ChildrenFeaturesItemProviderTe
 import org.polarsys.capella.test.model.ju.helpers.ComponentExtTestCase;
 import org.polarsys.capella.test.model.ju.helpers.ComponentPkgExtTestCase;
 import org.polarsys.capella.test.model.ju.helpers.DataTypeRealizedInformationTest;
+import org.polarsys.capella.test.model.ju.helpers.GitConflictHelperTest;
 import org.polarsys.capella.test.model.ju.helpers.PartExtTestCase;
 import org.polarsys.capella.test.model.ju.helpers.PhysicalComponentExtTestCase;
 import org.polarsys.capella.test.model.ju.menu.CapellaMenusTestCase;
@@ -108,6 +109,7 @@ public class ModelTestSuite extends BasicTestSuite {
     tests.add(new PhysicalLinkAcceleratorTest());
     
     tests.add(new DataTypeRealizedInformationTest());
+    tests.add(new GitConflictHelperTest());
     return tests;
   }
 

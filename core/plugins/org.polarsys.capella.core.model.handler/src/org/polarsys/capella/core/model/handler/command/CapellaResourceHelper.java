@@ -157,6 +157,10 @@ public class CapellaResourceHelper {
     return hasFileExtension(resource, ignoreAirdFragment, AIRD_FRAGMENT_FILE_EXTENSION, AIRD_FILE_EXTENSION);
   }
 
+  public static boolean isAfmResource(IResource resource) {
+    return hasFileExtension(resource, true, AFM_FILE_EXTENSION, AFM_FILE_EXTENSION);
+  }
+  
   /**
    * Whether or not given URI represents an AIRD one i.e a model or a fragment.
    * 
