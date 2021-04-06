@@ -634,7 +634,8 @@
             category="org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page"
             class="org.polarsys.capella.core.commands.preferences.ui.AbstractCapellaCommandsPreferencePage"
             id="org.polarsys.capella.common.ui.preferences.diagram"
-            name="%Diagram_Page_Name">
+            name="%Diagram_Page_Name"
+            objectClass="org.eclipse.core.resources.IProject">
     </page>
     <page
           category="org.polarsys.capella.common.ui.preferences.diagram"
