@@ -105,7 +105,7 @@
 	                  	<visibleWhen checkEnabled="false">
 			              <reference
 	                        definitionId="org.polarsys.capella.core.data.migration.visibilityMigration.aird.expression" />
-	           		    </visibleWhen>
+		          		</visibleWhen>
 	            </command>
             
             </menu>
@@ -213,27 +213,13 @@
    
    <extension
          point="org.eclipse.core.expressions.propertyTesters">
-		 <propertyTester
-    		class="org.polarsys.capella.core.data.migration.handlers.MigrationPropertyTester"
-            id="org.polarsys.capella.core.data.migration.isValidMigrationProject"
+         <propertyTester
+            class="org.polarsys.capella.core.data.migration.handlers.MigrationPropertyTester"
+            id="org.polarsys.capella.core.data.migration.isValidMigrationCommand"
             namespace="org.polarsys.capella.core.data.migration"
-            properties="isValidMigrationProject"
-            type="java.lang.Object">
-		  </propertyTester>
-		  <propertyTester
-    		class="org.polarsys.capella.core.data.migration.handlers.MigrationPropertyTester"
-            id="org.polarsys.capella.core.data.migration.isValidMigrationModel"
-            namespace="org.polarsys.capella.core.data.migration"
-            properties="isValidMigrationModel"
-            type="java.lang.Object">
-		  </propertyTester>
-		  <propertyTester
-    		class="org.polarsys.capella.core.data.migration.handlers.MigrationPropertyTester"
-            id="org.polarsys.capella.core.data.migration.isValidMigrationAird"
-            namespace="org.polarsys.capella.core.data.migration"
-            properties="isValidMigrationAird"
-            type="java.lang.Object">
-		  </propertyTester>
+            properties="isValidMigrationCommand"
+            type="org.eclipse.core.resources.IResource">
+          </propertyTester>
   </extension>
    
   <extension
@@ -243,10 +229,11 @@
               <with
                   variable="selection">
                   <iterate ifEmpty="false">
-	        		<test
-	                	forcePluginActivation="true"
-	                		property="org.polarsys.capella.core.data.migration.isValidMigrationProject">
-	          		</test>
+                    <test
+                        forcePluginActivation="true"
+                        args="org.polarsys.capella.core.data.migration.project"
+                        property="org.polarsys.capella.core.data.migration.isValidMigrationCommand">
+                      </test>
                   </iterate>
             </with>
       </definition>
@@ -255,10 +242,11 @@
               <with
                   variable="selection">
                   <iterate ifEmpty="false">
-	        		<test
-	                	forcePluginActivation="true"
-	                		property="org.polarsys.capella.core.data.migration.isValidMigrationModel">
-	          		</test>
+                    <test
+                        forcePluginActivation="true"
+                        args="org.polarsys.capella.core.data.migration.model"
+                        property="org.polarsys.capella.core.data.migration.isValidMigrationCommand">
+                    </test>
                   </iterate>
             </with>
       </definition>
@@ -267,10 +255,11 @@
               <with
                   variable="selection">
                   <iterate ifEmpty="false">
-	        		<test
-	                	forcePluginActivation="true"
-	                		property="org.polarsys.capella.core.data.migration.isValidMigrationAird">
-	          		</test>
+                    <test
+                        forcePluginActivation="true"
+                        args="org.polarsys.capella.core.data.migration.aird"
+                        property="org.polarsys.capella.core.data.migration.isValidMigrationCommand">
+                    </test>
                   </iterate>
             </with>
       </definition>

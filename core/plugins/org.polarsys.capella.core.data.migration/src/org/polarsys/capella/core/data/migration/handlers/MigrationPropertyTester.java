@@ -12,9 +12,11 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.migration.handlers;
 
-import java.util.Arrays;
-
+import org.eclipse.core.commands.Command;
+import org.eclipse.core.commands.IHandler;
 import org.eclipse.core.expressions.PropertyTester;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.commands.ICommandService;
 
 /**
  * 
@@ -23,16 +25,16 @@ public class MigrationPropertyTester extends PropertyTester {
 
   @Override
   public boolean test(Object receiver, String property, Object[] args, Object expectedValue) {
-    // check if is project, aird or model migration
-    switch(property) {
-    case "isValidMigrationProject":
-      return new ProjectMigrationHandler().isValidSelection(Arrays.asList(receiver));
-    case "isValidMigrationModel":
-      return new ModelMigrationHandler().isValidSelection(Arrays.asList(receiver));
-    case "isValidMigrationAird":
-      return new AirdMigrationHandler().isValidSelection(Arrays.asList(receiver));
-    default:
+    
+    if ("isValidMigrationCommand".equals(property) && args.length == 1) {
+      ICommandService service = PlatformUI.getWorkbench().getService(ICommandService.class);
+      Command command = service.getCommand((String) args[0]);
+      if (command != null) {
+        IHandler handler = command.getHandler();
+        return handler.isEnabled();
+      }
     }
+    
     return false;
   }
 }
