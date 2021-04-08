@@ -14,6 +14,9 @@ Require-Bundle: org.polarsys.capella.core.model.handler,
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.semantic.queries,
  org.polarsys.capella.core.semantic.queries.basic.queries,
- org.polarsys.capella.core.semantic.queries.basic.queries.utils
+ org.polarsys.capella.core.semantic.queries.basic.queries.utils,
+ org.polarsys.capella.core.semantic.queries.sirius.annotation,
+ org.polarsys.capella.core.semantic.queries.sirius.annotation.eoi,
+ org.polarsys.capella.core.semantic.queries.sirius.diagram
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Localization: plugin
