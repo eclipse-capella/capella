@@ -37,6 +37,7 @@ import org.polarsys.capella.test.model.ju.helpers.DataTypeRealizedInformationTes
 import org.polarsys.capella.test.model.ju.helpers.GitConflictHelperTest;
 import org.polarsys.capella.test.model.ju.helpers.PartExtTestCase;
 import org.polarsys.capella.test.model.ju.helpers.PhysicalComponentExtTestCase;
+import org.polarsys.capella.test.model.ju.logger.CapellaLoggerConfigTestCase;
 import org.polarsys.capella.test.model.ju.menu.CapellaMenusTestCase;
 import org.polarsys.capella.test.model.ju.obfuscate.ObfuscateModelTestCase;
 import org.polarsys.capella.test.model.ju.propertyviews.PropertyViewsTest;
@@ -110,6 +111,7 @@ public class ModelTestSuite extends BasicTestSuite {
     
     tests.add(new DataTypeRealizedInformationTest());
     tests.add(new GitConflictHelperTest());
+    tests.add(new CapellaLoggerConfigTestCase());
     return tests;
   }
 
