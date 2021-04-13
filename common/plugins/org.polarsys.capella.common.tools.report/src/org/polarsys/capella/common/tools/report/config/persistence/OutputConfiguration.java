@@ -32,7 +32,7 @@ public class OutputConfiguration {
   
   public OutputConfiguration(OutputConfiguration source) {
     this.outputName = source.outputName;
-    for (LogLevel level : getLogLevel()) {
+    for (LogLevel level : source.getLogLevel()) {
       this.getLogLevel().add(new LogLevel(level));
     }
   }

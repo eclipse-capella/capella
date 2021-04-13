@@ -21,6 +21,7 @@ import org.polarsys.capella.test.platform.ju.testcases.AboutInfoTest;
 import org.polarsys.capella.test.platform.ju.testcases.CapellaCDOGenerationOfDerivedFeature;
 import org.polarsys.capella.test.platform.ju.testcases.CapellaCheckAcceleo2NotUsed;
 import org.polarsys.capella.test.platform.ju.testcases.CapellaDefaultEditorEnabled;
+import org.polarsys.capella.test.platform.ju.testcases.CapellaLoggerConfigTestCase;
 import org.polarsys.capella.test.platform.ju.testcases.CapellaPlatformVersionNotNull;
 import org.polarsys.capella.test.platform.ju.testcases.CapellaSiriusCustomisationEnabled;
 import org.polarsys.capella.test.platform.ju.testcases.CapellaVersionConsistencyTest;
@@ -30,6 +31,7 @@ import org.polarsys.capella.test.platform.ju.testcases.DiffmergeExternalReferenc
 import org.polarsys.capella.test.platform.ju.testcases.ExportCSVPreferencesTest;
 import org.polarsys.capella.test.platform.ju.testcases.InvalidPreferencesInitializer;
 import org.polarsys.capella.test.platform.ju.testcases.InvalidRepresentationDescriptorAdapterFactory;
+import org.polarsys.capella.test.platform.ju.testcases.JobLogTest;
 import org.polarsys.capella.test.platform.ju.testcases.LicenceTest;
 import org.polarsys.capella.test.platform.ju.testcases.ProjectSelectionDialogTest;
 import org.polarsys.capella.test.platform.ju.testcases.PropertiesWizardIconTest;
@@ -72,6 +74,8 @@ public class PlatformTestSuite extends BasicTestSuite {
     tests.add(new DataNotifierBeforeTransactionRecorder());
     tests.add(new AboutInfoTest());
     tests.add(new LicenceTest());
+    tests.add(new JobLogTest());
+    tests.add(new CapellaLoggerConfigTestCase());
 
     return tests;
   }
