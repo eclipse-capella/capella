@@ -71,46 +71,46 @@ public class ModelTestSuite extends BasicTestSuite {
   @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
-    tests.add(new CopyPasteModelTestSuite());
-    tests.add(new LCDecompositionWithCommunicationLink());
-    tests.add(new LCDecompositionWithInternalInterface());
-    tests.add(new ISMessage());
-    tests.add(new SortSelectionTestSuite());
-    tests.add(new SortContentTestSuite());
-    tests.add(new NewDiagramDialogLabel());
-    tests.add(new RenameModelTestSuite());
-    tests.add(new ObfuscateModelTestCase());
-    tests.add(new DeleteElementTestSuite());
-    tests.add(new DataListenerTestSuite());
-    tests.add(new CapellaAdapterHelperTestCase());
-    tests.add(new CapellaResourceNamingHelperTestCase());
-    tests.add(new ChildrenFeaturesItemProviderTest());
-    tests.add(new CopyPasteLayout());
-    tests.add(new InvalidCapellaCopyPaste());
-    tests.add(new PropertyViewsTest());
-    tests.add(new MoveElementToNewResourceTest());
-    tests.add(new InvolverInvolvedDerivedFeaturesTest());
-    tests.add(new TypeDerivedFeaturesTest());
-    tests.add(new TraceableElementDerivedFeaturesTest());
-    tests.add(new DerivedFeatureTestCase());
-    tests.add(new DnDTestSuite());
-
-    tests.add(new ComponentExtTestCase());
-    tests.add(new ComponentPkgExtTestCase());
-    tests.add(new PartExtTestCase());
-    tests.add(new PhysicalComponentExtTestCase());
-
-    tests.add(new DiffMergeTestSuite());
-    tests.add(new CompositionTestSuite());
-    tests.add(new ActivityExplorerTestSuite());
-    
-    tests.add(new CapellaMenusTestCase());
-    tests.add(new CapellaTreeDataTestCase());
-    
-    tests.add(new PhysicalLinkAcceleratorTest());
-    
-    tests.add(new DataTypeRealizedInformationTest());
-    tests.add(new GitConflictHelperTest());
+//    tests.add(new CopyPasteModelTestSuite());
+//    tests.add(new LCDecompositionWithCommunicationLink());
+//    tests.add(new LCDecompositionWithInternalInterface());
+//    tests.add(new ISMessage());
+//    tests.add(new SortSelectionTestSuite());
+//    tests.add(new SortContentTestSuite());
+//    tests.add(new NewDiagramDialogLabel());
+//    tests.add(new RenameModelTestSuite());
+//    tests.add(new ObfuscateModelTestCase());
+//    tests.add(new DeleteElementTestSuite());
+//    tests.add(new DataListenerTestSuite());
+//    tests.add(new CapellaAdapterHelperTestCase());
+//    tests.add(new CapellaResourceNamingHelperTestCase());
+//    tests.add(new ChildrenFeaturesItemProviderTest());
+//    tests.add(new CopyPasteLayout());
+//    tests.add(new InvalidCapellaCopyPaste());
+//    tests.add(new PropertyViewsTest());
+//    tests.add(new MoveElementToNewResourceTest());
+//    tests.add(new InvolverInvolvedDerivedFeaturesTest());
+//    tests.add(new TypeDerivedFeaturesTest());
+//    tests.add(new TraceableElementDerivedFeaturesTest());
+//    tests.add(new DerivedFeatureTestCase());
+//    tests.add(new DnDTestSuite());
+//
+//    tests.add(new ComponentExtTestCase());
+//    tests.add(new ComponentPkgExtTestCase());
+//    tests.add(new PartExtTestCase());
+//    tests.add(new PhysicalComponentExtTestCase());
+//
+//    tests.add(new DiffMergeTestSuite());
+//    tests.add(new CompositionTestSuite());
+//    tests.add(new ActivityExplorerTestSuite());
+//    
+//    tests.add(new CapellaMenusTestCase());
+//    tests.add(new CapellaTreeDataTestCase());
+//    
+//    tests.add(new PhysicalLinkAcceleratorTest());
+//    
+//    tests.add(new DataTypeRealizedInformationTest());
+//    tests.add(new GitConflictHelperTest());
     tests.add(new CapellaLoggerConfigTestCase());
     return tests;
   }

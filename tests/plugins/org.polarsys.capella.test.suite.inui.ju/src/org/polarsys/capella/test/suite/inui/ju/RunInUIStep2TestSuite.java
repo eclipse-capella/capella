@@ -40,9 +40,9 @@ public class RunInUIStep2TestSuite extends BasicTestSuite {
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
     tests.add(new ModelTestSuite());
-    tests.add(new FastLinkerTestsSuite());
-    tests.add(new ActivityExplorerTestsSuite());
-    tests.add(new SetProgressTestSuite());
+//    tests.add(new FastLinkerTestsSuite());
+//    tests.add(new ActivityExplorerTestsSuite());
+//    tests.add(new SetProgressTestSuite());
     return tests;
   }
 

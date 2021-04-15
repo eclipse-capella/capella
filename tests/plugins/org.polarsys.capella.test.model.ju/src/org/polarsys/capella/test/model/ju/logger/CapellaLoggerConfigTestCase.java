@@ -55,7 +55,6 @@ public class CapellaLoggerConfigTestCase extends NonDirtyTestCase {
    */
   private String getInformationViewContent() {
     StringBuilder elementsList = new StringBuilder();
-    List<IMarker> markersToRemove = new ArrayList<>();
     for (IMarker marker : LightMarkerRegistry.getInstance().getMarkers()) {
       try {
         if (marker.getType().equals(INFORMATIONVIEW)) {
@@ -63,18 +62,17 @@ public class CapellaLoggerConfigTestCase extends NonDirtyTestCase {
             elementsList.append("\n");
           }
           elementsList.append(marker.getAttribute(IMarker.MESSAGE));
-          markersToRemove.add(marker);
         }
       } catch (CoreException e) {
       }
     }
 
     // remove the markers
-    markersToRemove.forEach(marker -> {
+    new ArrayList<IMarker>(LightMarkerRegistry.getInstance().getMarkers()).stream().forEach(marker -> {
       try {
         marker.delete();
       } catch (CoreException e) {
-        e.printStackTrace();
+        // Nothing here
       }
     });
 

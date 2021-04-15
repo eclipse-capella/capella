@@ -36,13 +36,13 @@ public class RunInUITestSuite extends BasicTestSuite {
   @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
-    tests.add(new RunInUIStep1TestSuite());
+    //tests.add(new RunInUIStep1TestSuite());
     tests.add(new RunInUIStep2TestSuite());
-    tests.add(new RunInUIStep3TestSuite());
-    tests.add(new RunInUIStep4TestSuite());
-    tests.add(new RunInUIStep5TestSuite());
-    tests.add(new RunInUIStep6TestSuite());
-    tests.add(new AllBenchmarksTestSuite());
+//    tests.add(new RunInUIStep3TestSuite());
+//    tests.add(new RunInUIStep4TestSuite());
+//    tests.add(new RunInUIStep5TestSuite());
+//    tests.add(new RunInUIStep6TestSuite());
+//    tests.add(new AllBenchmarksTestSuite());
     return tests;
   }
 
