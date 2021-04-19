@@ -15,15 +15,24 @@
 			<li> 4 Go RAM</li>
 			<li> 15 GB of available hard disk space</li>
 		</ul>
-		<p>Starting from Capella 5.0, 
-			<a href="https://jdk.java.net">Open JDK</a> is directly embedded in the product. Having a Java environment on your machine is no longer a requirement.
+		<p>
+			<b>Note:</b> If you intend to install a previous Capella release, follow installation instructions below but please consult the 
+			<a href="#Previous_releases_installation">Previous releases installation</a> as there are some slight differences on previous Capella releases
+		</p>
+		<h2 id="Java_Development_Kit">Java Development Kit</h2>
+		<p>Starting from Capella 5.0, a Java Development Kit 
+			<a href="https://jdk.java.net">OpenJDK (from jdk.java.net)</a> is directly embedded in the product. Having an additional Java environment on your machine is no longer a requirement.
+		</p>
+		<p>
+			<b>Note:</b> This JDK is a production-ready open-source build without legal requirement to subscribe to a commercial support contract and distributed under 
+			<a href="https://openjdk.java.net/legal/gplv2+ce.html">GNU General Public License, version 2, with the Classpath Exception</a>.
+		</p>
+		<p>
+			<b>Note:</b> Notice that only the embedded JDK has been field-tested.
 		</p>
 		<p>If however you want to use a different JDK version, you need to modify the <code>capella.ini</code> file at 2 places. The first one is to add on two lines <code>-vm</code> and a reference to your JDK location. The second one is to modify <code>-Dosgi.requiredJavaVersion</code> argument to point to your JDK version. Please refer to the following 
-			<a href="https://wiki.eclipse.org/Eclipse.ini">link</a> for more information. Notice that only the embedded JDK has been field-tested.
-		</p>
-		<p><i>
-			<b>Note:</b> If you intend to install a previous Capella release, follow installation instructions below but please consult the 
-			<a href="#Previous_releases_installation">Previous releases installation</a> as there are some slight differences on previous Capella releases</i>
+			<a href="https://wiki.eclipse.org/Eclipse.ini">link</a> for more information and 
+			<a href="https://github.com/eclipse/capella/wiki/Dependency%20versions">compatibility</a> page.
 		</p>
 		<h1 id="Installation_from_previous_version">Installation from previous version</h1>
 		<p>Before starting the installation, the target location of Capella must be cleaned:</p>
@@ -398,7 +407,7 @@
 			<a href="/wiki//wiki/../help/topic/org.polarsys.kitalpha.ad.doc/html/usersguide/viewpointmanager.html#Unreference" title="/wiki/../help/topic/org.polarsys.kitalpha.ad.doc/html/usersguide/viewpointmanager.html#Unreference">Kitalpha - Architecture Framework Technology Guide &gt; Viewpoint Technology &gt; User's Guide &gt; Viewpoint Manager</a> <span class="github-link">
 			<a href="/wiki/https://github.com/eclipse/kitalpha/blob/master/architecture%20description/doc/plugins/org.polarsys.kitalpha.ad.doc/html/usersguide/viewpointmanager.mediawiki#Unreference" title="https://github.com/eclipse/kitalpha/blob/master/architecture%20description/doc/plugins/org.polarsys.kitalpha.ad.doc/html/usersguide/viewpointmanager.mediawiki#Unreference">(online documentation)</a></span>
 		</p>
-		<h3 id="Update_site">Update site</h3>
+		<h3 id="Update_Sites_2">Update Sites</h3>
 		<p>To uninstall an update site:</p>
 		<ul>
 			<li>Open 

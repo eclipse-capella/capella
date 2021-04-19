@@ -16,7 +16,9 @@
    
    
    <topic href="html/Installation Guide/How to install Capella and Addons.html" label="Installation Guide">
-     <topic href="html/Installation Guide/How to install Capella and Addons.html" label="Prerequisites"></topic>
+     <topic href="html/Installation Guide/How to install Capella and Addons.html" label="Prerequisites">
+     	<topic href="html/Installation Guide/How to install Capella and Addons.html#Java_Development_Kit" label="Java Development Kit"></topic>
+     </topic>
 	<topic href="html/Installation Guide/How to install Capella and Addons.html#Installation_from_previous_version" label="Installation from previous version"></topic>
 	<topic href="html/Installation Guide/How to install Capella and Addons.html#Windows_and_Linux" label="Windows and Linux"></topic>
 	<topic href="html/Installation Guide/How to install Capella and Addons.html#Mac" label="Mac"></topic>
@@ -30,7 +32,7 @@
 			<topic href="html/Installation Guide/How to install Capella and Addons.html#Strategy_1:_Single_user_installation" label="Strategy 1: Single user installation"></topic>
 			<topic href="html/Installation Guide/How to install Capella and Addons.html#Strategy_2:_Shared_installation" label="Strategy 2: Shared installation"></topic>
 			<topic href="html/Installation Guide/How to install Capella and Addons.html#Strategy_3:_Several_contexts_with_a_shared_installation" label="Strategy 3: Several contexts with a shared installation"></topic>
-			<topic href="html/Installation Guide/How to install Capella and Addons.html#Some_recommendations_for_setting_up_configurations" label="Some recommendations for setting up configurations"></topic>
+			<topic href="html/Installation Guide/How to install Capella and Addons.html#Recommendations_for_setting_up_multi-users_configurations" label="Recommendations for setting up multi-users configurations"></topic>
 		</topic>
 	</topic>
 	<topic href="html/Installation Guide/How to install Capella and Addons.html#Previous_releases_installation" label="Previous releases installation"></topic>
@@ -43,8 +45,15 @@
 	<topic href="html/Installation Guide/How to install Capella and Addons.html#Restrictions_and_Troubleshooting" label="Restrictions and Troubleshooting">
 		<topic href="html/Installation Guide/How to install Capella and Addons.html#Windows_-_Folder_Long_Path_limitation" label="Windows - Folder Long Path limitation"></topic>
 		<topic href="html/Installation Guide/How to install Capella and Addons.html#Windows_-_Missing_libraries" label="Windows - Missing libraries"></topic>
-		<topic href="html/Installation Guide/How to install Capella and Addons.html#Mac_-_Quarantine_Procedure" label="Mac - Quarantine Procedure"></topic>
 		<topic href="html/Installation Guide/How to install Capella and Addons.html#Workaround_to_open_the_Help_Content_when_there_is_problem_with_the_browser" label="Workaround to open the Help Content when there is problem with the browser"></topic>
+	</topic>
+	<topic href="html/Installation Guide/How to install Capella and Addons.html#Uninstallation" label="Uninstallation">
+		<topic href="html/Installation Guide/How to install Capella and Addons.html#Addon" label="Addon">
+			<topic href="html/Installation Guide/How to install Capella and Addons.html#Viewpoint" label="Viewpoint"></topic>
+			<topic href="html/Installation Guide/How to install Capella and Addons.html#Update_Sites_2" label="Update Sites"></topic>
+			<topic href="html/Installation Guide/How to install Capella and Addons.html#Dropins_2" label="Dropins"></topic>
+		</topic>
+		<topic href="html/Installation Guide/How to install Capella and Addons.html#Capella" label="Capella"></topic>
 	</topic>
    </topic>
    <topic label="Overview">

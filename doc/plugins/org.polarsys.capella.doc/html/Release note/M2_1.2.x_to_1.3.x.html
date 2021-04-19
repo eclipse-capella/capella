@@ -1,12 +1,170 @@
-<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>M2_1.2.x_to_1.3.x</title><link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/></head><body><h1 id="Metamodel_changes">Metamodel changes</h1><h2 id="From_Capella_1.2.x_to_1.3.x">From Capella 1.2.x to 1.3.x</h2><h3 id="Modification_of_all_NSURI">Modification of all NSURI</h3><ul><li><a href="http://www.polarsys.org/capella/core/.../1.2.0">http://www.polarsys.org/capella/core/.../1.2.0</a> to <a href="http://www.polarsys.org/capella/core/.../1.3.0">http://www.polarsys.org/capella/core/.../1.3.0</a></li><li><a href="http://www.polarsys.org/capella/common/.../1.2.0">http://www.polarsys.org/capella/common/.../1.2.0</a> to <a href="http://www.polarsys.org/capella/common/.../1.3.0">http://www.polarsys.org/capella/common/.../1.3.0</a></li></ul><h3 id=".5BBugzilla_2092.5D.5BM2.5D_Add_annotations_in_Capella_M2_to_specify_queries_for_derived_features">[Bugzilla 2092][M2] Add annotations in Capella M2 to specify queries for derived features</h3><p>The existing annotation <a href="http://www.polarsys.org/capella/derived">http://www.polarsys.org/capella/derived</a> as been enhanced by adding Viatra implementation information. It describes how the derived reference can be computed using Viatra queries.</p><p>It is based on two added details on the annotation:</p><ul><li>viatra.expression, describing how the derived reference is implemented.</li><li>viatra.variant, describing which kind of implementation is described in the expression. (alias, opposite, patternbody, freeform, unimplemented)</li></ul><p>According to the value of viatra.variant, a Viatra pattern can be created for the given derived reference:</p><p><img border="0" src="../Images/viatra.png"/></p><p>For a TypeA, referencing TypeB by the derived reference containing such annotation. TypeA.reference:TypeB, reference is computed by:</p><table><tr><th>viatra.variant</th><th>viatra.expression</th><th>implied pattern</th></tr><tr><td>alias</td><td>referenceName</td><td><pre>pattern (self: TypeA, target: TypeB) { 
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>M2_1.2.x_to_1.3.x</title>
+		<link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/>
+	</head>
+	<body>
+		<h1 id="Metamodel_changes">Metamodel changes</h1>
+		<h2 id="From_Capella_1.2.x_to_1.3.x">From Capella 1.2.x to 1.3.x</h2>
+		<h3 id="Modification_of_all_NSURI">Modification of all NSURI</h3>
+		<ul>
+			<li>
+				<a href="http://www.polarsys.org/capella/core/.../1.2.0">http://www.polarsys.org/capella/core/.../1.2.0</a> to 
+				<a href="http://www.polarsys.org/capella/core/.../1.3.0">http://www.polarsys.org/capella/core/.../1.3.0</a>
+			</li>
+			<li>
+				<a href="http://www.polarsys.org/capella/common/.../1.2.0">http://www.polarsys.org/capella/common/.../1.2.0</a> to 
+				<a href="http://www.polarsys.org/capella/common/.../1.3.0">http://www.polarsys.org/capella/common/.../1.3.0</a>
+			</li>
+		</ul>
+		<h3 id=".5BBugzilla_2092.5D.5BM2.5D_Add_annotations_in_Capella_M2_to_specify_queries_for_derived_features">[Bugzilla 2092][M2] Add annotations in Capella M2 to specify queries for derived features</h3>
+		<p>The existing annotation 
+			<a href="http://www.polarsys.org/capella/derived">http://www.polarsys.org/capella/derived</a> as been enhanced by adding Viatra implementation information. It describes how the derived reference can be computed using Viatra queries.
+		</p>
+		<p>It is based on two added details on the annotation:</p>
+		<ul>
+			<li>viatra.expression, describing how the derived reference is implemented.</li>
+			<li>viatra.variant, describing which kind of implementation is described in the expression. (alias, opposite, patternbody, freeform, unimplemented)</li>
+		</ul>
+		<p>According to the value of viatra.variant, a Viatra pattern can be created for the given derived reference:</p>
+		<p>
+			<img border="0" src="../Images/viatra.png"/>
+		</p>
+		<p>For a TypeA, referencing TypeB by the derived reference containing such annotation. TypeA.reference:TypeB, reference is computed by:</p>
+		<table>
+			<tr>
+				<th>viatra.variant</th>
+				<th>viatra.expression</th>
+				<th>implied pattern</th>
+			</tr>
+			<tr>
+				<td>alias</td>
+				<td>referenceName</td>
+				<td>
+					<pre>pattern (self: TypeA, target: TypeB) { 
  TypeA.referenceName(self, target) 
 }
-</pre></td></tr><tr><td>opposite</td><td>referenceName </td><td><pre>pattern (self: TypeA, target: TypeB) {
+</pre>
+				</td>
+			</tr>
+			<tr>
+				<td>opposite</td>
+				<td>referenceName </td>
+				<td>
+					<pre>pattern (self: TypeA, target: TypeB) {
   TypeB.referenceName(target, self) 
 }
-</pre></td></tr><tr><td>patternbody</td><td>expression </td><td><pre>pattern (self: TypeA, target: TypeB) {
+</pre>
+				</td>
+			</tr>
+			<tr>
+				<td>patternbody</td>
+				<td>expression </td>
+				<td>
+					<pre>pattern (self: TypeA, target: TypeB) {
  expression
 } 
-</pre></td></tr><tr><td>freeform</td><td>expression</td><td><pre>expression
-</pre></td></tr><tr><td>unimplemented</td><td>N/A </td><td><pre>N/A (this reference is not implemented/implementable by a Viatra pattern) 
-</pre></td></tr></table><h3 id=".5BBugzilla_2392.5D.5BM2.5D_Add_new_concepts_in_Capella.27s_meta-model_for_the_enhancements_of_Functional_Chain">[Bugzilla 2392][M2] Add new concepts in Capella's meta-model for the enhancements of Functional Chain</h3><ul><li>The meta-class <b>SequenceLinkEnd</b> has been added.</li><li>The meta-class <b>ReferenceHierarchyContext</b> has been added.</li><li>The meta-class <b>FunctionalChainInvolvementLink</b> that inherits from <i>FunctionalChainInvolvement</i> and <i>ReferenceHierarchyContext</i> meta-class has been added.</li><li>The meta-class <b>FunctionalChainInvolvementFunction</b> that inherits from <i>FunctionalChainInvolvement</i> and <i>SequenceLinkEnd</i> meta-class has been added.</li><li>The meta-class <b>SequenceLink</b> that inherits from <i>ReferenceHierarchyContext</i> meta-class has been added.</li><li>The meta-class <b>ControlNode</b> that inherits from <i>SequenceLinkEnd</i> has been added.</li><li>The enumeration <b>ControlNodeKind</b> with 3 values OR, AND and ITERATE has been added.</li><li>The reference <b>FunctionalChain.preCondition</b> has been added.</li><li>The reference <b>FunctionalChain.postCondition</b> has been added.</li><li>The containment reference <b>FunctionalChain.ownedSequenceNodes</b> has been added.</li><li>The containment reference <b>FunctionalChain.ownedSequenceLinks</b> has been added.</li><li>The derived reference <b>FunctionalChainInvolvementFunction.outgoingInvolvementLinks</b> has been added.</li><li>The derived reference <b>FunctionalChainInvolvementFunction.incomingInvolvementLinks</b> has been added.</li><li>The reference <b>FunctionalChainInvolvementLink.source</b> has been added.</li><li>The reference <b>FunctionalChainInvolvementLink.target</b> has been added.</li><li>The reference <b>FunctionalChainInvolvementLink.exchangeContext</b> has been added.</li><li>The reference <b>FunctionalChainInvolvement.exchangedItems</b> has been moved to the concrete meta-class <i>FunctionalChainInvolvementLink.exchangedItems</i>.</li><li>The reference <b>FunctionalChainInvolvement.previousFunctionalChainInvolvements</b> has been set as <i>derived</i>.</li><li>The reference <b>SequenceLink.links</b> has been added.</li><li>The reference <b>SequenceLink.source</b> has been added.</li><li>The reference <b>SequenceLink.target</b> has been added.</li><li>The reference <b>ReferenceHierarchyContext.sourceReferenceHierarchy</b> has been added.</li><li>The reference <b>ReferenceHierarchyContext.targetReferenceHierarchy</b> has been added.</li></ul></body></html>
+</pre>
+				</td>
+			</tr>
+			<tr>
+				<td>freeform</td>
+				<td>expression</td>
+				<td>
+					<pre>expression
+</pre>
+				</td>
+			</tr>
+			<tr>
+				<td>unimplemented</td>
+				<td>N/A </td>
+				<td>
+					<pre>N/A (this reference is not implemented/implementable by a Viatra pattern) 
+</pre>
+				</td>
+			</tr>
+		</table>
+		<h3 id=".5BBugzilla_2392.5D.5BM2.5D_Add_new_concepts_in_Capella.27s_meta-model_for_the_enhancements_of_Functional_Chain">[Bugzilla 2392][M2] Add new concepts in Capella's meta-model for the enhancements of Functional Chain</h3>
+		<ul>
+			<li>The meta-class 
+				<b>SequenceLinkEnd</b> has been added.
+			</li>
+			<li>The meta-class 
+				<b>ReferenceHierarchyContext</b> has been added.
+			</li>
+			<li>The meta-class 
+				<b>FunctionalChainInvolvementLink</b> that inherits from 
+				<i>FunctionalChainInvolvement</i> and 
+				<i>ReferenceHierarchyContext</i> meta-class has been added.
+			</li>
+			<li>The meta-class 
+				<b>FunctionalChainInvolvementFunction</b> that inherits from 
+				<i>FunctionalChainInvolvement</i> and 
+				<i>SequenceLinkEnd</i> meta-class has been added.
+			</li>
+			<li>The meta-class 
+				<b>SequenceLink</b> that inherits from 
+				<i>ReferenceHierarchyContext</i> meta-class has been added.
+			</li>
+			<li>The meta-class 
+				<b>ControlNode</b> that inherits from 
+				<i>SequenceLinkEnd</i> has been added.
+			</li>
+			<li>The enumeration 
+				<b>ControlNodeKind</b> with 3 values OR, AND and ITERATE has been added.
+			</li>
+			<li>The reference 
+				<b>FunctionalChain.preCondition</b> has been added.
+			</li>
+			<li>The reference 
+				<b>FunctionalChain.postCondition</b> has been added.
+			</li>
+			<li>The containment reference 
+				<b>FunctionalChain.ownedSequenceNodes</b> has been added.
+			</li>
+			<li>The containment reference 
+				<b>FunctionalChain.ownedSequenceLinks</b> has been added.
+			</li>
+			<li>The derived reference 
+				<b>FunctionalChainInvolvementFunction.outgoingInvolvementLinks</b> has been added.
+			</li>
+			<li>The derived reference 
+				<b>FunctionalChainInvolvementFunction.incomingInvolvementLinks</b> has been added.
+			</li>
+			<li>The reference 
+				<b>FunctionalChainInvolvementLink.source</b> has been added.
+			</li>
+			<li>The reference 
+				<b>FunctionalChainInvolvementLink.target</b> has been added.
+			</li>
+			<li>The reference 
+				<b>FunctionalChainInvolvementLink.exchangeContext</b> has been added.
+			</li>
+			<li>The reference 
+				<b>FunctionalChainInvolvement.exchangedItems</b> has been moved to the concrete meta-class 
+				<i>FunctionalChainInvolvementLink.exchangedItems</i>.
+			</li>
+			<li>The reference 
+				<b>FunctionalChainInvolvement.previousFunctionalChainInvolvements</b> has been set as 
+				<i>derived</i>.
+			</li>
+			<li>The reference 
+				<b>SequenceLink.links</b> has been added.
+			</li>
+			<li>The reference 
+				<b>SequenceLink.source</b> has been added.
+			</li>
+			<li>The reference 
+				<b>SequenceLink.target</b> has been added.
+			</li>
+			<li>The reference 
+				<b>ReferenceHierarchyContext.sourceReferenceHierarchy</b> has been added.
+			</li>
+			<li>The reference 
+				<b>ReferenceHierarchyContext.targetReferenceHierarchy</b> has been added.
+			</li>
+		</ul>
+	</body>
+</html>
