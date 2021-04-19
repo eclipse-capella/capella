@@ -20,6 +20,7 @@ import org.polarsys.capella.test.framework.api.BasicTestSuite;
 import org.polarsys.capella.test.migration.ju.testcases.basic.EnableFCAndPPFiltersMigrationTest;
 import org.polarsys.capella.test.migration.ju.testcases.basic.FunctionalChainNonRegressionTest;
 import org.polarsys.capella.test.migration.ju.testcases.basic.InvalidAirdReferenceMigrationTest;
+import org.polarsys.capella.test.migration.ju.testcases.basic.MigrationDelegatedHandlerTest;
 import org.polarsys.capella.test.migration.ju.testcases.basic.MigrationEnabledTest;
 import org.polarsys.capella.test.migration.ju.testcases.basic.RepresentationDescriptionNonRegressionTest;
 import org.polarsys.capella.test.migration.ju.testcases.basic.SysmodelFilterMigration;
@@ -39,6 +40,7 @@ public class MigrationTestSuite extends BasicTestSuite {
   @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
+    tests.add(new MigrationDelegatedHandlerTest());
     tests.add(new RepresentationDescriptionNonRegressionTest());
     tests.add(new FunctionalChainNonRegressionTest());
     tests.add(new SysmodelFilterMigration());

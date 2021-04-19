@@ -81,7 +81,7 @@ public class AirdMigrationRunnable extends ModelMigrationRunnable {
 
             @Override
             protected XMIExtensionHelperImpl createXMLHelper() {
-              return createCapellaXMLHelper(this);
+              return createAirdXMLHelper(this);
             }
 
             @Override
@@ -118,8 +118,7 @@ public class AirdMigrationRunnable extends ModelMigrationRunnable {
     return super.doCreateResource(uri, context);
   }
 
-  @Override
-  public XMIExtensionHelperImpl createCapellaXMLHelper(XMLResource resource) {
+  public XMIExtensionHelperImpl createAirdXMLHelper(XMLResource resource) {
     // Ideally, the XMLHelper used should be inherited from RepresentationsFileXMIHelper. But, as
     // XMIExtensionHelperImpl and RepresentationsFileXMIHelper are not in the same inheritance branch we do
     // inheritance by composition instantiating RepresentationsFileXMIHelper as delegate.
@@ -152,10 +151,10 @@ public class AirdMigrationRunnable extends ModelMigrationRunnable {
         return type;
       }
 
-          @Override
-          public void setValue(EObject object, EStructuralFeature feature, Object value, int position) {
-              delegateXMLHelper.setValue(object, feature, value, position);
-          }
+      @Override
+      public void setValue(EObject object, EStructuralFeature feature, Object value, int position) {
+        delegateXMLHelper.setValue(object, feature, value, position);
+      }
 
       @Override
       public EObject createObject(EFactory eFactory, EClassifier type) {
