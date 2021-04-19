@@ -39,7 +39,10 @@ import org.xml.sax.Attributes;
 public class SiriusMigrationContribution extends AbstractMigrationContribution {
 
   public static final String SIRIUS_VERSION = "VERSION"; //$NON-NLS-1$
-  
+
+  /**
+   * <aird, siriusVersion>
+   */
   HashMap<Resource, String> versions = null;
 
   protected void addVersion(Resource resource, String version) {
@@ -53,12 +56,25 @@ public class SiriusMigrationContribution extends AbstractMigrationContribution {
   public void newResource(Resource resource, MigrationContext context) {
     super.newResource(resource, context);
 
-    if (CapellaResourceHelper.AIRD_FILE_EXTENSION.equals(resource.getURI().fileExtension())
-        || CapellaResourceHelper.AIRD_FRAGMENT_FILE_EXTENSION.equals(resource.getURI().fileExtension())) {
+    if (CapellaResourceHelper.isAirdResource(resource.getURI())) {
       String version = (String) ((XMLResource) resource).getDefaultLoadOptions().get(SIRIUS_VERSION);
       addVersion(resource, version);
     }
 
+  }
+
+  /**
+   * This method returns whether the given resource is an aird or not.
+   * 
+   * @apiNote this method shall not be called until the newResource has been called for a given resource.
+   * 
+   * @implNote this method could have been replaced by CapellaResourceHelper.isAirdResource but since each
+   *           AbstractMigrationContribution is called on every EObject of all resources, its 10x quicker to check if
+   *           version map has been filled by newResource method rather than looking for fileExtension substrings by
+   *           CapellaResourceHelper.isAirdResource
+   */
+  private boolean isAirdResource(Resource resource) {
+    return versions != null && versions.containsKey(resource);
   }
 
   private String getLoadedVersion(Resource resource) {
@@ -104,17 +120,26 @@ public class SiriusMigrationContribution extends AbstractMigrationContribution {
   @Override
   public void endElement(EObject peekEObject, Attributes attribs, String uri, String localName, String name,
       Resource resource, MigrationContext context) {
+
     // since we override the xmlHandler of airdResource, we need to call it here.
-    RepresentationsFileMigrationService.getInstance().postXMLEndElement(peekEObject, attribs, uri, name, name,
-        getLoadedVersion(resource));
+    if (isAirdResource(resource)) {
+      String version = getLoadedVersion(resource);
+      RepresentationsFileMigrationService.getInstance().postXMLEndElement(peekEObject, attribs, uri, name, name,
+          version);
+    }
   }
 
   @Override
   public Object getValue(EObject peekObject, EStructuralFeature feature, Object value, int position, Resource resource,
       MigrationContext context) {
+
     // since we override the xmlHelper of airdResource, we need to call it here.
-    String version = getLoadedVersion(resource);
-    return RepresentationsFileMigrationService.getInstance().getValue(peekObject, feature, value, version);
+    if (isAirdResource(resource)) {
+      String version = getLoadedVersion(resource);
+      return RepresentationsFileMigrationService.getInstance().getValue(peekObject, feature, value, version);
+    }
+
+    return super.getValue(peekObject, feature, value, position, resource, context);
   }
 
   @Override
@@ -128,9 +153,13 @@ public class SiriusMigrationContribution extends AbstractMigrationContribution {
   @Override
   public void updateElement(EObject peekObject, String typeName, EObject result, EStructuralFeature feature,
       Resource resource, MigrationContext context) {
+
     // since we override the xmlHelper of airdResource, we need to call it here.
-    String version = getLoadedVersion(resource);
-    RepresentationsFileMigrationService.getInstance().updateCreatedObject(result, version);
+    if (isAirdResource(resource)) {
+      String version = getLoadedVersion(resource);
+      RepresentationsFileMigrationService.getInstance().updateCreatedObject(result, version);
+    }
+
   }
 
   @Override
