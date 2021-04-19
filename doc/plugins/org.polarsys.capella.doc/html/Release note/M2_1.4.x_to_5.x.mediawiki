@@ -1,6 +1,6 @@
 = Metamodel changes =
 
-== From Capella 1.4.x to 5.0.0 ==
+== From Capella 1.4.x to 5.x ==
 
 ==== LibraryReference.version ====
 

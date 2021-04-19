@@ -1,1 +1,27 @@
-<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>API_1.1.x-1.2.0_to_1.2.x</title><link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/></head><body><h1 id="API_changes_from_Capella_1.1.x.2F1.2.0_to_1.2.x">API changes from Capella 1.1.x/1.2.0 to 1.2.x</h1><h3 id="Uid_is_used_instead_of_xmiid_to_identify_a_representation_.28.27.27org.eclipse.sirius.viewpoint.DRepresentation.27.27.29">Uid is used instead of xmiid to identify a representation (<i>org.eclipse.sirius.viewpoint.DRepresentation</i>)</h3><ul><li>Since Capella 1.2.1, <i>uid</i> should be used to identify a representation (diagram/table) instead of <i>xmiid</i>. The convenient class <i>org.polarsys.capella.shared.id.handler.IdManager</i> which is used to obtain an EObject from its id and vice versa has been implemented to take into account representation's <i>uid</i>. Consumers of this class should not have any impact on existing code. Otherwise, one should migrate their code to use this class when trying to obtain a representation from its id and vice versa.</li><li>A migration of Capella 1.1.x/1.2.0 models is needed to update representations' <i>uid</i> based on their <i>xmiid</i>. This assures that references to representations via their <i>xmiids</i> in previous versions still work in migrated models.</li></ul></body></html>
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>API_1.1.x-1.2.0_to_1.2.x</title>
+		<link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/>
+	</head>
+	<body>
+		<h1 id="API_changes_from_Capella_1.1.x.2F1.2.0_to_1.2.x">API changes from Capella 1.1.x/1.2.0 to 1.2.x</h1>
+		<h3 id="Uid_is_used_instead_of_xmiid_to_identify_a_representation_.28.27.27org.eclipse.sirius.viewpoint.DRepresentation.27.27.29">Uid is used instead of xmiid to identify a representation (
+			<i>org.eclipse.sirius.viewpoint.DRepresentation</i>)
+		</h3>
+		<ul>
+			<li>Since Capella 1.2.1, 
+				<i>uid</i> should be used to identify a representation (diagram/table) instead of 
+				<i>xmiid</i>. The convenient class 
+				<i>org.polarsys.capella.shared.id.handler.IdManager</i> which is used to obtain an EObject from its id and vice versa has been implemented to take into account representation's 
+				<i>uid</i>. Consumers of this class should not have any impact on existing code. Otherwise, one should migrate their code to use this class when trying to obtain a representation from its id and vice versa.
+			</li>
+			<li>A migration of Capella 1.1.x/1.2.0 models is needed to update representations' 
+				<i>uid</i> based on their 
+				<i>xmiid</i>. This assures that references to representations via their 
+				<i>xmiids</i> in previous versions still work in migrated models.
+			</li>
+		</ul>
+	</body>
+</html>

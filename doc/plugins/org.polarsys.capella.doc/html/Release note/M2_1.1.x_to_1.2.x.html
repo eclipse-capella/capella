@@ -1,1 +1,103 @@
-<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>M2_1.1.x_to_1.2.x</title><link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/></head><body><h1 id="Metamodel_changes">Metamodel changes</h1><h2 id="From_Capella_1.1.x_to_1.2.x">From Capella 1.1.x to 1.2.x</h2><h3 id="Modification_of_all_NSURI">Modification of all NSURI</h3><ul><li><a href="http://www.polarsys.org/capella/core/.../1.1.0">http://www.polarsys.org/capella/core/.../1.1.0</a> to <a href="http://www.polarsys.org/capella/core/.../1.2.0">http://www.polarsys.org/capella/core/.../1.2.0</a></li><li><a href="http://www.polarsys.org/capella/common/.../1.1.0">http://www.polarsys.org/capella/common/.../1.1.0</a> to <a href="http://www.polarsys.org/capella/common/.../1.2.0">http://www.polarsys.org/capella/common/.../1.2.0</a></li></ul><h3 id=".5BBugzilla_1724.5D.5BM2.5D_Use_derived_method_instead_of_eOpposite">[Bugzilla 1724][M2] Use derived method instead of eOpposite</h3><ul><li>The reference <b>Involvement.involver</b> has been set <i>derived</i> (the implementation returns the <i>eContainer</i> of the involvement link)</li><li>The reference <b>FunctionalExchange.categories</b> has been set <i>derived</i> (the implementation returns the referencing <i>ExchangeCategory</i> through the reference <i>ExchangeCategory.exchanges</i>)</li><li>The reference <b>ComponentExchange.categories</b> has been set <i>derived</i> (the implementation returns the referencing <i>ComponentExchangeCategory</i> through the reference <i>ComponentExchangeCategory.exchanges</i>)</li><li>The reference <b>PhysicalLink.categories</b> has been set <i>derived</i> (the implementation returns the referencing <i>PhysicalLinkCategory</i> through the reference  <i>PhysicalLinkCategory.links</i>)</li><li>The reference <b>AbstractState.incoming</b> has been set <i>derived</i> (the implementation returns the referencing <i>StateTransition</i> through the reference  <i>StateTransition.target</i>)</li><li>The reference <b>AbstractState.outgoing</b> has been set <i>derived</i> (the implementation returns the referencing <i>StateTransition</i> through the reference  <i>StateTransition.source</i>)</li><li>The reference <b>Capability.purposes</b> has been set <i>derived</i> (the implementation returns the referencing <i>CapabilityExploitation</i> through the reference  <i>CapabilityExploitation.capability</i>)</li><li>The reference <b>CapabilityExploitation.mission</b> has been set <i>derived</i> (the implementation returns the <i>eContainer</i> of the exploitation link)</li><li>The reference <b>ComponentPortAllocationEnd.owningComponentPortAllocation</b> has been set <i>derived</i> (the implementation returns the <i>eContainer</i> of the allocation link)</li></ul><h3 id=".5BBugzilla_1747.5D.5BREC-RPL.5D.5BM2.5D_add_new_properties_on_CatalogElement">[Bugzilla 1747][REC-RPL][M2] add new properties on CatalogElement</h3><ul><li>A property <b>readOnly</b> (EBoolean) has been added to <i>re.CatalogElement</i> metaclass</li><li>A property <b>version</b> (EString) has been added to <i>re.CatalogElement</i> metaclass</li></ul><h3 id=".5BBugzilla_2020.5D.5BM2.5D_Add_semantic_annotation_to_InstanceRole.2C_ConstraintDuration.2C_StateFragment">[Bugzilla 2020][M2] Add semantic annotation to InstanceRole, ConstraintDuration, StateFragment</h3><ul><li>The <b>InstanceRole</b> metaclass has been annotated as <i>semantic</i></li><li>The <b>ConstraintDuration</b> metaclass has been annotated as <i>semantic</i></li><li>The <b>StateFragment</b> metaclass has been annotated as <i>semantic</i></li></ul></body></html>
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>M2_1.1.x_to_1.2.x</title>
+		<link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/>
+	</head>
+	<body>
+		<h1 id="Metamodel_changes">Metamodel changes</h1>
+		<h2 id="From_Capella_1.1.x_to_1.2.x">From Capella 1.1.x to 1.2.x</h2>
+		<h3 id="Modification_of_all_NSURI">Modification of all NSURI</h3>
+		<ul>
+			<li>
+				<a href="http://www.polarsys.org/capella/core/.../1.1.0">http://www.polarsys.org/capella/core/.../1.1.0</a> to 
+				<a href="http://www.polarsys.org/capella/core/.../1.2.0">http://www.polarsys.org/capella/core/.../1.2.0</a>
+			</li>
+			<li>
+				<a href="http://www.polarsys.org/capella/common/.../1.1.0">http://www.polarsys.org/capella/common/.../1.1.0</a> to 
+				<a href="http://www.polarsys.org/capella/common/.../1.2.0">http://www.polarsys.org/capella/common/.../1.2.0</a>
+			</li>
+		</ul>
+		<h3 id=".5BBugzilla_1724.5D.5BM2.5D_Use_derived_method_instead_of_eOpposite">[Bugzilla 1724][M2] Use derived method instead of eOpposite</h3>
+		<ul>
+			<li>The reference 
+				<b>Involvement.involver</b> has been set 
+				<i>derived</i> (the implementation returns the 
+				<i>eContainer</i> of the involvement link)
+			</li>
+			<li>The reference 
+				<b>FunctionalExchange.categories</b> has been set 
+				<i>derived</i> (the implementation returns the referencing 
+				<i>ExchangeCategory</i> through the reference 
+				<i>ExchangeCategory.exchanges</i>)
+			</li>
+			<li>The reference 
+				<b>ComponentExchange.categories</b> has been set 
+				<i>derived</i> (the implementation returns the referencing 
+				<i>ComponentExchangeCategory</i> through the reference 
+				<i>ComponentExchangeCategory.exchanges</i>)
+			</li>
+			<li>The reference 
+				<b>PhysicalLink.categories</b> has been set 
+				<i>derived</i> (the implementation returns the referencing 
+				<i>PhysicalLinkCategory</i> through the reference  
+				<i>PhysicalLinkCategory.links</i>)
+			</li>
+			<li>The reference 
+				<b>AbstractState.incoming</b> has been set 
+				<i>derived</i> (the implementation returns the referencing 
+				<i>StateTransition</i> through the reference  
+				<i>StateTransition.target</i>)
+			</li>
+			<li>The reference 
+				<b>AbstractState.outgoing</b> has been set 
+				<i>derived</i> (the implementation returns the referencing 
+				<i>StateTransition</i> through the reference  
+				<i>StateTransition.source</i>)
+			</li>
+			<li>The reference 
+				<b>Capability.purposes</b> has been set 
+				<i>derived</i> (the implementation returns the referencing 
+				<i>CapabilityExploitation</i> through the reference  
+				<i>CapabilityExploitation.capability</i>)
+			</li>
+			<li>The reference 
+				<b>CapabilityExploitation.mission</b> has been set 
+				<i>derived</i> (the implementation returns the 
+				<i>eContainer</i> of the exploitation link)
+			</li>
+			<li>The reference 
+				<b>ComponentPortAllocationEnd.owningComponentPortAllocation</b> has been set 
+				<i>derived</i> (the implementation returns the 
+				<i>eContainer</i> of the allocation link)
+			</li>
+		</ul>
+		<h3 id=".5BBugzilla_1747.5D.5BREC-RPL.5D.5BM2.5D_add_new_properties_on_CatalogElement">[Bugzilla 1747][REC-RPL][M2] add new properties on CatalogElement</h3>
+		<ul>
+			<li>A property 
+				<b>readOnly</b> (EBoolean) has been added to 
+				<i>re.CatalogElement</i> metaclass
+			</li>
+			<li>A property 
+				<b>version</b> (EString) has been added to 
+				<i>re.CatalogElement</i> metaclass
+			</li>
+		</ul>
+		<h3 id=".5BBugzilla_2020.5D.5BM2.5D_Add_semantic_annotation_to_InstanceRole.2C_ConstraintDuration.2C_StateFragment">[Bugzilla 2020][M2] Add semantic annotation to InstanceRole, ConstraintDuration, StateFragment</h3>
+		<ul>
+			<li>The 
+				<b>InstanceRole</b> metaclass has been annotated as 
+				<i>semantic</i>
+			</li>
+			<li>The 
+				<b>ConstraintDuration</b> metaclass has been annotated as 
+				<i>semantic</i>
+			</li>
+			<li>The 
+				<b>StateFragment</b> metaclass has been annotated as 
+				<i>semantic</i>
+			</li>
+		</ul>
+	</body>
+</html>

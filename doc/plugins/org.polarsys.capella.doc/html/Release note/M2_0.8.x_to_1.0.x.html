@@ -1,1 +1,51 @@
-<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>M2_0.8.x_to_1.0.x</title><link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/></head><body><h1 id="Metamodel_changes">Metamodel changes</h1><h2 id="From_Capella_0.8.x_to_1.0.x">From Capella 0.8.x to 1.0.x</h2><h3 id="Modification_of_all_NSURI">Modification of all NSURI</h3><ul><li><a href="http://www.polarsys.org/capella/core/.../0.8.0">http://www.polarsys.org/capella/core/.../0.8.0</a> to <a href="http://www.polarsys.org/capella/core/.../1.0.0">http://www.polarsys.org/capella/core/.../1.0.0</a></li><li><a href="http://www.polarsys.org/capella/common/.../0.8.0">http://www.polarsys.org/capella/common/.../0.8.0</a> to <a href="http://www.polarsys.org/capella/common/.../1.0.0">http://www.polarsys.org/capella/common/.../1.0.0</a></li></ul><h3 id=".5BM2.5D.5BMIGRATION.5DUpdate_RPL_and_suffix_management">[M2][MIGRATION]Update RPL and suffix management</h3><ul><li>Add suffix on CatalogElement</li><li>Add suffixed on CatalogElementLink</li></ul><h3 id=".5BM.26S.5D_State_mode_.2F_state_minimal_improvements">[M&amp;S] State mode / state minimal improvements</h3><ul><li>Rename IState.availableInStates to IState.exploitedStates</li><li>Remove time from TimeEvent</li><li>Rename StateEvent.condition to StateEvent.expression</li></ul><h3 id="Export_does_not_provide_information_to_get_Entry.2Fexit_from_Modes_and_States">Export does not provide information to get Entry/exit from Modes and States</h3><ul><li>add semantic annotation on State.entry</li><li>add semantic annotation on State.exit</li></ul><h3 id="Removed_eOpposite_.26_made_derived_the_following_features">Removed eOpposite &amp; made derived the following features</h3><ul><li>AbstractCapability#including</li><li>AbstractCapability#extending</li><li>AbstractCapability#subGeneralizations</li><li>AbstractCapabilityExtend#extension</li><li>AbstractCapabilityInclude#inclusion</li><li>DeploymentTarget#deploymentLinks</li><li>AbstractCapabilityGeneralization#sub</li><li>AbstractCapabilityExtensionPoint#abstractCapability</li><li>Removed class communication.CommunicationLinkAllocation</li></ul></body></html>
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>M2_0.8.x_to_1.0.x</title>
+		<link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/>
+	</head>
+	<body>
+		<h1 id="Metamodel_changes">Metamodel changes</h1>
+		<h2 id="From_Capella_0.8.x_to_1.0.x">From Capella 0.8.x to 1.0.x</h2>
+		<h3 id="Modification_of_all_NSURI">Modification of all NSURI</h3>
+		<ul>
+			<li>
+				<a href="http://www.polarsys.org/capella/core/.../0.8.0">http://www.polarsys.org/capella/core/.../0.8.0</a> to 
+				<a href="http://www.polarsys.org/capella/core/.../1.0.0">http://www.polarsys.org/capella/core/.../1.0.0</a>
+			</li>
+			<li>
+				<a href="http://www.polarsys.org/capella/common/.../0.8.0">http://www.polarsys.org/capella/common/.../0.8.0</a> to 
+				<a href="http://www.polarsys.org/capella/common/.../1.0.0">http://www.polarsys.org/capella/common/.../1.0.0</a>
+			</li>
+		</ul>
+		<h3 id=".5BM2.5D.5BMIGRATION.5DUpdate_RPL_and_suffix_management">[M2][MIGRATION]Update RPL and suffix management</h3>
+		<ul>
+			<li>Add suffix on CatalogElement</li>
+			<li>Add suffixed on CatalogElementLink</li>
+		</ul>
+		<h3 id=".5BM.26S.5D_State_mode_.2F_state_minimal_improvements">[M&amp;S] State mode / state minimal improvements</h3>
+		<ul>
+			<li>Rename IState.availableInStates to IState.exploitedStates</li>
+			<li>Remove time from TimeEvent</li>
+			<li>Rename StateEvent.condition to StateEvent.expression</li>
+		</ul>
+		<h3 id="Export_does_not_provide_information_to_get_Entry.2Fexit_from_Modes_and_States">Export does not provide information to get Entry/exit from Modes and States</h3>
+		<ul>
+			<li>add semantic annotation on State.entry</li>
+			<li>add semantic annotation on State.exit</li>
+		</ul>
+		<h3 id="Removed_eOpposite_.26_made_derived_the_following_features">Removed eOpposite &amp; made derived the following features</h3>
+		<ul>
+			<li>AbstractCapability#including</li>
+			<li>AbstractCapability#extending</li>
+			<li>AbstractCapability#subGeneralizations</li>
+			<li>AbstractCapabilityExtend#extension</li>
+			<li>AbstractCapabilityInclude#inclusion</li>
+			<li>DeploymentTarget#deploymentLinks</li>
+			<li>AbstractCapabilityGeneralization#sub</li>
+			<li>AbstractCapabilityExtensionPoint#abstractCapability</li>
+			<li>Removed class communication.CommunicationLinkAllocation</li>
+		</ul>
+	</body>
+</html>
