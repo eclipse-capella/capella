@@ -63,6 +63,10 @@ public class CapellaSiriusCustomisationEnabled extends BasicTestCase {
 
     assertFalse("Preference value for 'Use viewpoint colors' is not the intended one",
         defaultScope.getBoolean(SiriusUIPreferencesKeys.PREF_DISPLAY_VSM_USER_FIXED_COLOR_IN_PALETTE.name(), true));
+    
+    assertTrue("Preference value for 'Export semantic id on SVG' is not the intended one",
+        defaultScope.getBoolean(SiriusUIPreferencesKeys.PREF_EXPORT_SEMANTIC_TRACEABILITY.name(), false));
+
   }
 
   private void assertSiriusCommonUIPluginPreferences() {
