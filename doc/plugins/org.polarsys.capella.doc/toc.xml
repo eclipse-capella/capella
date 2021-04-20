@@ -91,6 +91,8 @@
       </topic>
       <topic href="html/Release note/KnownIssues.html" label="Known issues">
       </topic>
+      <topic href="html/Release note/DependencyVersions.html" label="Dependency versions">
+      </topic>
    </topic>
    <topic label="User Manual">
       <anchor id="main"/>

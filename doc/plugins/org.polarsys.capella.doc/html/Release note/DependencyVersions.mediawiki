@@ -1,0 +1,5 @@
+= Dependency versions =
+
+Capella uses the following dependencies and versions:
+
+* [https://github.com/eclipse/capella/wiki/Dependency%20versions Dependency versions]
