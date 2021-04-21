@@ -70,7 +70,6 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.Feature
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
-import org.eclipse.sirius.tools.api.ui.RefreshHelper;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -2785,13 +2784,6 @@ public class CapellaServices {
         }
       }
     }
-  }
-
-  public EObject setComponentDiagramTarget(DSemanticDiagram diagram) {
-    if (diagram.getTarget() instanceof Part) {
-      diagram.setTarget(((Part) diagram.getTarget()).getType());
-    }
-    return diagram;
   }
 
   public EObject show(DDiagramElement context) {

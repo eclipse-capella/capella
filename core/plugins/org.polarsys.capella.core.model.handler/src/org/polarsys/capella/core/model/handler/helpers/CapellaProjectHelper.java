@@ -133,6 +133,16 @@ public class CapellaProjectHelper {
   public static TriStateBoolean isReusableComponentsDriven(EObject capellaElement_p) {
     return hasGivenApproach(ProjectApproach.ReusableComponents, getProject(capellaElement_p));
   }
+  
+  /**
+   * Returns the current project approach.
+   * @param project the project.
+   * @return the current project approach.
+   */
+  public static ProjectApproach getProjectApproach(Project project) {
+    TriStateBoolean singletonComponentsDriven = isSingletonComponentsDriven(project);
+    return TriStateBoolean.True.equals(singletonComponentsDriven) ? ProjectApproach.SingletonComponents : ProjectApproach.ReusableComponents;
+  }
 
   /**
    * Remove deprecated project approach content.
