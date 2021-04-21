@@ -30,6 +30,7 @@ import org.polarsys.capella.test.diagram.misc.ju.testcases.CloneDiagramTestCase;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.ColorNameConstantsTest;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.DDiagramEditorUndoRedoHandlerTest;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.DecompositionWizardTestCase;
+import org.polarsys.capella.test.diagram.misc.ju.testcases.DiagramTargetUpdateDuringRefreshTest;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.GraphTest;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.InsertRemoveComponentsWithNoParts;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.InteractionSourceTarget;
@@ -85,6 +86,7 @@ public class DiagramMiscTestSuite extends BasicTestSuite {
     tests.add(new ColorNameConstantsTest());
     tests.add(new UnsyncronizedSemanticBrowser());
     tests.add(new InteractionSourceTarget());
+    tests.add(new DiagramTargetUpdateDuringRefreshTest());
     
     return tests;
   }

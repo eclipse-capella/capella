@@ -89,15 +89,13 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractCacheAwa
     // Monitor some filters desactivation
     // -------------------------------------
 
-    FilterHelper.monitorDesactivation(monitoredFilters, descriptor);
-
-    Collection<EObject> contextualElements = ContextualDiagramHelper.getService().getContextualElements(descriptor);
+    FilterHelper.monitorDesactivation(monitoredFilters, descriptor);    
 
     // -------------------------------------
     // Change target of diagram to the related part
     // -------------------------------------
 
-    updateTargetDiagram(diagram, !contextualElements.isEmpty());
+    updateTargetDiagram(diagram, descriptor);
 
     // -------------------------------------
     // Remove all functions added directly on diagram.
@@ -122,6 +120,7 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractCacheAwa
     // -------------------------------------
 
     DDiagramContents context = FaServices.getFaServices().getDDiagramContents(diagram);
+    Collection<EObject> contextualElements = ContextualDiagramHelper.getService().getContextualElements(descriptor);
 
     try {
       CsServices.getService().showABContextualElements(context, contextualElements);
@@ -179,32 +178,32 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractCacheAwa
   }
 
   /**
+   * Updates the diagram target according to business rules.
+   * <ol>
+   * <li>If the target is a Component, the associated part is created if absent.</li>
+   * <li>If the target is a Part, in monopart mode the diagram is moved to the type component, in multipart the target is untouched.</li>
+   * </ol>
+   * 
    * @param diagram
-   * @param hasContextualElements
+   * @param descriptor
    */
-  protected void updateTargetDiagram(DDiagram diagram, boolean hasContextualElements) {
+  protected void updateTargetDiagram(DDiagram diagram, DRepresentationDescriptor descriptor) {
+    if (diagram instanceof DSemanticDiagram) {
+      DSemanticDiagram semanticDiagram = (DSemanticDiagram) diagram;
+      EObject target = semanticDiagram.getTarget();
 
-    // In architecture blank,
-    // in one part mode or when diagram is applied to one part, the part should be displayed
+      if (target instanceof Component) {
+        CsServices.getService().createRepresentingPartIfNone((Component) target);
 
-    // getting the root of the diagram
-    EObject root = ((DSemanticDecorator) diagram).getTarget();
+      } else if (target instanceof Part) {
+        Part part = (Part) target;
 
-    // create a default part if none
-    if (root instanceof Component) {
-      Component rootComponent = (Component) root;
-      CsServices.getService().createRepresentingPartIfNone(rootComponent);
-      if (!CsServices.getService().isMultipartMode(rootComponent)) {
-        root = rootComponent.getRepresentingParts().get(0);
-      }
-
-    } else if (root instanceof Part) {
-      // replace the diagram in the component if one-part-mode and diagram previously
-      // settled to the part
-      if (!CsServices.getService().isMultipartMode((Part) root)) {
-        EObject type = CsServices.getService().getComponentType((Part) root);
-        if (type instanceof Component) {
-          ((DSemanticDiagram) diagram).setTarget(type);
+        if (!CsServices.getService().isMultipartMode(part)) {
+          EObject type = CsServices.getService().getComponentType(part);
+          
+          if (type instanceof Component) {
+            RepresentationHelper.setTarget(descriptor, semanticDiagram, type);            
+          }
         }
       }
     }

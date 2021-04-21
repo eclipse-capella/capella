@@ -23,9 +23,6 @@ import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.ProjectScope;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -43,7 +40,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
@@ -483,5 +480,36 @@ public class RepresentationHelper {
         + RepresentationHelper.getRepresentationStatusText(descriptor);
     return fullPathText;
   }
+       
+  /**
+   * Sets the target for the representation and its descriptor.
+   * @param representationDescriptor the representation descriptor.
+   * @param representation the representation.
+   * @param target the new target.
+   */
+  public static void setTarget(DRepresentationDescriptor representationDescriptor, DRepresentation representation, EObject target) {            
+    if (representation instanceof DSemanticDecorator) {      
+      ((DSemanticDecorator) representation).setTarget(target);
+      representationDescriptor.setTarget(target);
+    }    
+  }
 
+  /**
+   * Sets the target for the representation and synchronizes it with its descriptor.
+   * @param representation the representation.
+   * @param target the new target.
+   */
+  public static void setTarget(DRepresentation representation, EObject target) {
+    setTarget(getRepresentationDescriptor(representation), representation, target);
+  }
+
+  /**
+   * Sets the target for the representation descriptor and synchronizes it with its representation.
+   * @param representationDescriptor the representation.
+   * @param target the new target.
+   */
+  public static void setTarget(DRepresentationDescriptor representationDescriptor, EObject target) {
+    setTarget(representationDescriptor, representationDescriptor.getRepresentation(), target);
+  }
+  
 }

@@ -322,5 +322,14 @@ public class TestHelper {
       }
     }
   }
+  
+  public static void setProjectApproach(Project project, ProjectApproach approach) {
+    TransactionHelper.getExecutionManager(project).execute(new AbstractReadWriteCommand() {      
+      @Override
+      public void run() {
+        CapellaProjectHelper.setProjectWithApproach(project, approach);    
+      }
+    });    
+  }
 
 }
