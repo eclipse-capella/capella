@@ -296,17 +296,13 @@ public class LightMarkerRegistry implements IMarkerSource {
       }
 
       if (MarkerViewUtil.PATH_ATTRIBUTE.equals(attributeName)) {
-        String pathAttributes = ICommonConstants.EMPTY_STRING;
+        StringBuilder sb = new StringBuilder(ICommonConstants.EMPTY_STRING);
         for (Object data : diagnostic.getData()) {
           if (data instanceof ModelElement) {
-            ModelElement element = (ModelElement) data;
-            Session session = SessionManager.INSTANCE.getSession(element);
-            if (session != null) {
-              pathAttributes += element.getFullLabel() + ICommonConstants.LINE_SEPARATOR;
-            }
+            sb.append(((ModelElement) data).getFullLabel() + ICommonConstants.LINE_SEPARATOR);
           }
         }
-        return pathAttributes;
+        return sb.toString();
       }
 
       return attributes.get(attributeName);

@@ -20,7 +20,6 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.equinox.app.IApplicationContext;
 import org.polarsys.capella.core.commandline.core.CommandLineConstants;
-import org.polarsys.capella.core.commandline.core.CommandLineMode;
 import org.polarsys.capella.core.validation.commandline.Messages;
 import org.polarsys.capella.core.validation.commandline.ValidationCommandLine;
 import org.polarsys.capella.test.commandline.ju.utils.MockApplicationContext;
@@ -60,6 +59,8 @@ public class CommandLineValidationTest extends BasicTestCase {
     IPath validationResultFile = workspaceLocation.append(projectName).append("ValidationResult").append(projectName).append(projectName + ".aird").append(Messages.resultsFileName);
     byte[] fileContentInBytes = Files.readAllBytes(Paths.get(validationResultFile.toOSString()));
     String fileContentInString = new String(fileContentInBytes);
-    assertTrue(fileContentInString.contains("DCOM_03") && fileContentInString.contains("TJ_SA_01")); 
+    assertTrue(fileContentInString.contains("DCOM_03") && fileContentInString.contains("TJ_SA_01"));
+    // check the content on the resources column
+    assertTrue(fileContentInString.contains("/Test Command Line Validation/TestCommandLineValidation/Operational Analysis/Operational Activities/Root Operational Activity/OperationalActivity 1"));
   }
 }
