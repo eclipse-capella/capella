@@ -57,7 +57,7 @@ location sirius "https://download.eclipse.org/sirius/updates/stable/6.5.0-S20210
 	org.eclipse.sirius.runtime.ide.ui.acceleo.source.feature.group
 }
 
-location kitalpha-runtime-core-master "https://download.eclipse.org/kitalpha/updates/stable/runtime/5.1.0-S202103301208" {	
+location kitalpha-runtime-core-master "https://download.eclipse.org/kitalpha/updates/stable/runtime/5.1.0-S202104201726" {	
 	org.polarsys.kitalpha.ad.runtime.feature.source.feature.group
 	org.polarsys.kitalpha.cadence.feature.source.feature.group
 	org.polarsys.kitalpha.common.feature.source.feature.group
@@ -80,12 +80,12 @@ location kitalpha-runtime-core-master "https://download.eclipse.org/kitalpha/upd
 	org.polarsys.kitalpha.richtext.widget.ext.feature.source.feature.group
 	org.polarsys.kitalpha.transposer.feature.source.feature.group
 }
-location kitalpha-sdk-master "https://download.eclipse.org/kitalpha/updates/stable/sdk/5.1.0-S202103301208" {
+location kitalpha-sdk-master "https://download.eclipse.org/kitalpha/updates/stable/sdk/5.1.0-S202104201726" {
 	org.polarsys.kitalpha.doc.feature.feature.group
 	org.polarsys.kitalpha.emde.sdk.feature.source.feature.group
 }
 
-location diffmerge-core "https://download.eclipse.org/diffmerge/stable/0.13.1-M1/emf-diffmerge-site" {
+location diffmerge-core "https://download.eclipse.org/diffmerge/stable/0.13.1-M2/emf-diffmerge-site" {
 	org.eclipse.emf.diffmerge.feature.source.feature.group
 	org.eclipse.emf.diffmerge.sirius.feature.source.feature.group
 	org.eclipse.emf.diffmerge.gmf.feature.source.feature.group
