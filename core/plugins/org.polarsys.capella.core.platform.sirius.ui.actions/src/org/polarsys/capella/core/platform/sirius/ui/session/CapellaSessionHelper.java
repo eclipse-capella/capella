@@ -218,10 +218,10 @@ public class CapellaSessionHelper {
 
   /**
    * @param resourceSet
-   * @return
+   * @implNote For Capella, warnings are raised by org.polarsys.kitalpha.emde.xmi.SAXHelper.analyseExtensionMap
    */
   public static Diagnostic checkModelCompliant(ResourceSet resourceSet) {
-    BasicDiagnostic diagnostics = new BasicDiagnostic("source", Diagnostic.OK, "Some extensions are missing", null); //$NON-NLS-1$ //$NON-NLS-2$
+    BasicDiagnostic diagnostics = new BasicDiagnostic("source", Diagnostic.OK, Messages.CapellaSessionHelper_MissingExtensions_Message, null); //$NON-NLS-1$ //$NON-NLS-2$
     for (Resource resource : resourceSet.getResources()) {
       if ("odesign".equals(resource.getURI().fileExtension())) { //$NON-NLS-1$
         for (Resource.Diagnostic diagnostic : resource.getErrors()) {
