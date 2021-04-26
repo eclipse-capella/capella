@@ -18,6 +18,7 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Export-Package: org.polarsys.capella.test.migration.ju,
+ org.polarsys.capella.test.migration.ju.fwk,
  org.polarsys.capella.test.migration.ju.helpers,
  org.polarsys.capella.test.migration.ju.model,
  org.polarsys.capella.test.migration.ju.testcases.basic,

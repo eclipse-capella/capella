@@ -27,6 +27,7 @@ public class Messages extends NLS {
   public static String CapellaSessionHelper_SemanticModel_Error_Message_WrongVersion_Part2;
   public static String CapellaSessionHelper_SemanticModel_ErrorDialog_Title;
   public static String CapellaSessionHelper_UnknownError_Message;
+  public static String CapellaSessionHelper_MissingExtensions_Message;
   public static String CapellaSessionHelper_MissingLibraries_Message;
   public static String GitConflictHelper_ResourcesInConflictState;
   public static String GitConflictSessionListener_ResourcesInConflictState;
