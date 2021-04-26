@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--Capella_Version_5.0.0-->
+<!--Capella_Version_5.1.0-->
 <org.polarsys.capella.core.data.capellamodeller:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:libraries="http://www.polarsys.org/capella/common/libraries/5.0.0"
     xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/5.0.0"
@@ -203,6 +203,8 @@
           id="2e8b8841-f194-4ba4-954a-d35b4bc8ec62" name="Interfaces">
         <ownedExchangeItems xsi:type="org.polarsys.capella.core.data.information:ExchangeItem"
             id="e6f4abc5-95bf-4791-8eb3-ff86f35e7bc8" name="ExchangeItem 1"/>
+        <ownedInterfaces xsi:type="org.polarsys.capella.core.data.cs:Interface" id="fcc89368-2b1e-45cf-8024-bf3317f70301"
+            name="Interface 1"/>
       </ownedInterfacePkg>
       <ownedDataPkg xsi:type="org.polarsys.capella.core.data.information:DataPkg"
           id="15f402d7-7ad6-464c-9cec-b696ff2c65af" name="Data"/>
@@ -216,6 +218,8 @@
               name="LogicalComponent 1" abstractType="#6d9c518e-0510-4d0d-8568-fdc7a3aa46ea"/>
           <ownedCommunicationLinks xsi:type="org.polarsys.capella.core.data.information.communication:CommunicationLink"
               id="df58225c-dd71-4455-8748-7d73e9413117" kind="ACQUIRE" exchangeItem="#e6f4abc5-95bf-4791-8eb3-ff86f35e7bc8"/>
+          <ownedInterfaceUses xsi:type="org.polarsys.capella.core.data.cs:InterfaceUse"
+              id="092f15c4-370f-47be-ac69-f750d76fc2ee" usedInterface="#fcc89368-2b1e-45cf-8024-bf3317f70301"/>
           <ownedComponentRealizations xsi:type="org.polarsys.capella.core.data.cs:ComponentRealization"
               id="db1066f4-8557-4655-8767-1961153802c3" targetElement="#bd2e7e1b-8d3a-4ce9-a0d8-0342b689cec8"
               sourceElement="#7fbff2ab-afe1-4f39-8813-c40b31d66077"/>
@@ -223,6 +227,8 @@
               id="6d9c518e-0510-4d0d-8568-fdc7a3aa46ea" name="LogicalComponent 1">
             <ownedCommunicationLinks xsi:type="org.polarsys.capella.core.data.information.communication:CommunicationLink"
                 id="a9c9583b-5a20-45ff-b2df-88e34cc53a84" kind="ACQUIRE" exchangeItem="#e6f4abc5-95bf-4791-8eb3-ff86f35e7bc8"/>
+            <ownedInterfaceUses xsi:type="org.polarsys.capella.core.data.cs:InterfaceUse"
+                id="1379ea4d-dc21-4eb8-bf47-43b4dc294b22" usedInterface="#fcc89368-2b1e-45cf-8024-bf3317f70301"/>
           </ownedLogicalComponents>
         </ownedLogicalComponents>
       </ownedLogicalComponentPkg>
