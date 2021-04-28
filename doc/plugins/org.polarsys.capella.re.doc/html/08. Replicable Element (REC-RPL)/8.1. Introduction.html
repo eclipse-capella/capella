@@ -1,5 +1,126 @@
-<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>8.1. Introduction</title><link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/></head><body><h1 id="Introduction">Introduction</h1><h2 id="Definitions">Definitions</h2><p>Replicable Elements are mechanisms allowing the easy reuse of model parts.</p><ul><li>A 	<b>Replicable 	Elements Collection (REC)</b> 	is a definition of an element / set of elements which can be used in 	multiple contexts / configurations / models.</li><li>A <b>Replica 	(RPL)</b> 	is a use (instantiation) of a Replicable Elements Collection in a 	given context / configuration / model.</li></ul><p>A REC can be viewed as a &ldquo;contract&rdquo; to which all its RPLs must comply. REC can embed RPLs of other RECs.</p><p><img height="229" width="414" border="0" src="Images/8.1.%20Introduction_html_m1e0a2884.png"/></p><p><b>REC and RPL are located in Catalogs</b>. Technically, REC and RPL are technical objects pointing towards the list of the elements they embed.</p><p>Capella provides tooling to manage the creation of REC and their instantiation, as well as update mechanisms (from REC to RPL and from RPL to REC) and validation rules.</p><p><img height="222" width="402" border="0" src="Images/8.1.%20Introduction_html_376a226f.png"/></p><p>Different kinds of conformance are possible between a RPL and its REC. Capella defines three default kinds of conformance, but end-user can define their own ones.</p><ul><li>Blackbox: No modification is allowed on the Replica.</li><li>Constrained Reuse: Internal elements can be added inside a RPL, but 	constraints and Interfaces (Function and Component Ports for 	example) defined in REC cannot be modified.</li><li>Inheritance: Any element can be added in the RPL, including new 	Interfaces.</li></ul><h2 id="Examples">Examples</h2><p>Non-exhaustive list of possible REC.</p><p><br/>
-<br/></p><table border="1"><tr><td><p>A 				Function and its sub functions <br/>
-(mono-root)</p></td><td><p><img height="205" width="173" border="0" src="Images/8.1.%20Introduction_html_3324fafd.png"/></p></td></tr><tr><td><p>A 				Functional Chain and the Functions it involves (multi-root)</p></td><td><p><img height="111" width="392" border="0" src="Images/8.1.%20Introduction_html_m5c3968fa.png"/></p></td></tr><tr><td><p>Two 				Functions and a Functional Exchange between them (multi-root)</p></td><td><p><img height="84" width="268" border="0" src="Images/8.1.%20Introduction_html_d0bdda9.png"/></p></td></tr><tr><td><p>A 				Component and its Sub Components (mono-root)</p></td><td><p><img height="138" width="186" border="0" src="Images/8.1.%20Introduction_html_c2765af.png"/></p></td></tr><tr><td><p>A 				Component and its allocated Functions (mono-root)</p></td><td><p><img height="140" width="205" border="0" src="Images/8.1.%20Introduction_html_4213b083.png"/></p></td></tr><tr><td><p>A 				Component providing and requiring Interfaces located outside the 				REC <br/>
-(mono-root)</p></td><td><p><img height="191" width="218" border="0" src="Images/8.1.%20Introduction_html_m7f6c6090.png"/></p></td></tr><tr><td><p>A 				Physical Component and the Logical Components it realizes, 				including Functions and any other element<br/>
-(multi-root)</p></td><td><p><img height="266" width="193" border="0" src="Images/8.1.%20Introduction_html_43025a01.png"/></p></td></tr></table></body></html>
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>8.1. Introduction</title>
+		<link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/>
+	</head>
+	<body>
+		<h1 id="Introduction">Introduction</h1>
+		<h2 id="Definitions">Definitions</h2>
+		<p>Replicable Elements are mechanisms allowing the easy reuse of model parts.</p>
+		<ul>
+			<li>A 	
+				<b>Replicable 	Elements Collection (REC)</b> 	is a definition of an element / set of elements which can be used in 	multiple contexts / configurations / models.
+			</li>
+			<li>A 
+				<b>Replica 	(RPL)</b> 	is a use (instantiation) of a Replicable Elements Collection in a 	given context / configuration / model.
+			</li>
+		</ul>
+		<p>A REC can be viewed as a &ldquo;contract&rdquo; to which all its RPLs must comply. REC can embed RPLs of other RECs.</p>
+		<p>
+			<img height="229" width="414" border="0" src="Images/8.1.%20Introduction_html_m1e0a2884.png"/>
+		</p>
+		<p>
+			<b>REC and RPL are located in Catalogs</b>. Technically, REC and RPL are technical objects pointing towards the list of the elements they embed.
+		</p>
+		<p>Capella provides tooling to manage the creation of REC and their instantiation, as well as update mechanisms (from REC to RPL and from RPL to REC) and validation rules.</p>
+		<p>
+			<img height="222" width="402" border="0" src="Images/8.1.%20Introduction_html_376a226f.png"/>
+		</p>
+		<p>Different kinds of conformance are possible between a RPL and its REC. Capella defines three default kinds of conformance, but end-user can define their own ones.</p>
+		<ul>
+			<li>Blackbox: No modification is allowed on the Replica.</li>
+			<li>Constrained Reuse: Internal elements can be added inside a RPL, but 	constraints and Interfaces (Function and Component Ports for 	example) defined in REC cannot be modified.</li>
+			<li>Inheritance: Any element can be added in the RPL, including new 	Interfaces.</li>
+		</ul>
+		<h2 id="Examples">Examples</h2>
+		<p>Non-exhaustive list of possible REC.</p>
+		<p>
+			<br/>
+
+			<br/>
+		</p>
+		<table border="1">
+			<tr>
+				<td>
+					<p>A 				Function and its sub functions 
+						<br/>
+						(mono-root)
+					</p>
+				</td>
+				<td>
+					<p>
+						<img height="205" width="173" border="0" src="Images/8.1.%20Introduction_html_3324fafd.png"/>
+					</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>A 				Functional Chain and the Functions it involves (multi-root)</p>
+				</td>
+				<td>
+					<p>
+						<img height="111" width="392" border="0" src="Images/8.1.%20Introduction_html_m5c3968fa.png"/>
+					</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Two 				Functions and a Functional Exchange between them (multi-root)</p>
+				</td>
+				<td>
+					<p>
+						<img height="84" width="268" border="0" src="Images/8.1.%20Introduction_html_d0bdda9.png"/>
+					</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>A 				Component and its Sub Components (mono-root)</p>
+				</td>
+				<td>
+					<p>
+						<img height="138" width="186" border="0" src="Images/8.1.%20Introduction_html_c2765af.png"/>
+					</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>A 				Component and its allocated Functions (mono-root)</p>
+				</td>
+				<td>
+					<p>
+						<img height="140" width="205" border="0" src="Images/8.1.%20Introduction_html_4213b083.png"/>
+					</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>A 				Component providing and requiring Interfaces located outside the 				REC 
+						<br/>
+						(mono-root)
+					</p>
+				</td>
+				<td>
+					<p>
+						<img height="191" width="218" border="0" src="Images/8.1.%20Introduction_html_m7f6c6090.png"/>
+					</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>A 				Physical Component and the Logical Components it realizes, 				including Functions and any other element
+						<br/>
+						(multi-root)
+					</p>
+				</td>
+				<td>
+					<p>
+						<img height="266" width="193" border="0" src="Images/8.1.%20Introduction_html_43025a01.png"/>
+					</p>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

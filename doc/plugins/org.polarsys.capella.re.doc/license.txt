@@ -139,13 +139,9 @@ org.polarsys.capella.doc/html/**/Images
 9.4. Usage Restrictions_html_733c5d5d.jpg
 9.4. Usage Restrictions_html_m2f4cc7f5.jpg
 9.4. Usage Restrictions_html_m9524248.png
-9.5_MoveElementsView_1.png
-9.5_MoveElementsView_2.png
-9.5_MoveElementsView_addAllRequired.png
-9.5_MoveElementsView_addRequired.png
-9.5_MoveElementsView_collapseAll.png
-9.5_MoveElementsView_expandAll.png
-9.5_MoveElementsView_unstage.png
-9.5_MoveElementsView_cancelExample.png
-9.5_MoveElementsView_forceExample.png
+Unreference-1.png
+Unreference-2.png
+Unreference-3.png
+Unreference-4.png
+Unreference-5.png
 InfoIcon.png

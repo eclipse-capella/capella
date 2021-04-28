@@ -1,4 +1,89 @@
-<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>9.2. Basic Use Case</title><link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/></head><body><h1 id="Basic_Use_Case">Basic Use Case</h1><h2 id="Creation_of_a_Library">Creation of a Library</h2><p>Libraries are created the same way as standard Capella Projects. From the Project Explorer, create a new Library using the Contextual Menu</p><p><img height="264" width="627" border="0" src="Images/9.2.%20Basic%20Use%20Case_html_m723a4595.png"/></p><p>The result is a new model, with the Methodological Overview opened.</p><p><img height="300" width="627" border="0" src="Images/9.2.%20Basic%20Use%20Case_html_3ee7966e.png"/></p><p>In this library, create diagrams and model elements. Here for example, a data model.</p><p><img height="235" width="339" border="0" src="Images/9.2.%20Basic%20Use%20Case_html_306dcc4f.png"/></p><p>Close the Library.</p><h2 id="Referencing_a_Library">Referencing a Library</h2><p>Select the &ldquo;Libraries | Manage References&rdquo; item in the contextual menu on the &ldquo;aird&rdquo; file of a standard Project Model.</p><p><img height="42" width="491" border="0" src="Images/9.2.%20Basic%20Use%20Case_html_m74f004a7.png"/></p><p>A dialog opens.</p><p><img height="233" width="476" border="0" src="Images/9.2.%20Basic%20Use%20Case_html_m1004a0b5.png"/></p><p>The first tab of this dialog displays all the accessible Libraries in the current workspace (A Library in a closed Eclipse Project will not be proposed).</p><p>Note that the actual Library files do not have to be physically located in the workspace itself, see the section explaining the Eclipse difference between Workspace and actual Project files.</p><p>Ticking the checkbox will create a physical reference between the current Project Model and the Library.</p><p><img height="220" width="481" border="0" src="Images/9.2.%20Basic%20Use%20Case_html_52f4a83e.png"/></p><p>The second tab of the dialog displays which Library is currently active. When a Library is not active, queries in Editors for example will not display the content located in the Library.</p><p><img height="268" width="489" border="0" src="Images/9.2.%20Basic%20Use%20Case_html_m3ec8a6b5.png"/></p><p>The third tab allows specifying whether the content of a referenced Library can be directly modified from the Project itself. The default is &ldquo;Read only&rdquo;.</p><p>Once the Project Model is opened, the referenced Library can be seen directly from the Project itself.</p><p><img height="530" width="361" border="0" src="Images/9.2.%20Basic%20Use%20Case_html_m74ed6e65.png"/></p><h2 id="Using_Library_Elements_from_a_Project">Using Library Elements from a Project</h2><p>Elements from the referenced library are accessible from elements in the Project model.</p><p><u><b>Example with the allocation of Exchange Items to a Functional Exchange</b></u></p><p><img height="97" width="420" border="0" src="Images/9.2.%20Basic%20Use%20Case_html_m67c8a76c.png"/></p><p>The transfer dialog display both elements coming from the current Project and elements from the Library.</p><p><img height="350" width="750" border="0" src="Images/9.2.%20Basic%20Use%20Case_html_71e0fc21.png"/></p><p>Once the allocation is performed, the result can be seen in the Semantic Browser.</p><p><img height="160" width="756" border="0" src="Images/9.2.%20Basic%20Use%20Case_html_491bebef.png"/></p><p><u><b>Example with Components and Interfaces</b></u></p><p>From an interface diagram, use the Insertion tool to select and display an Interface located in the Library.</p><p><br/>
-<br/></p><p><img height="281" width="388" border="0" src="Images/9.2.%20Basic%20Use%20Case_html_m130884f.png"/></p><p>The selection wizard proposes the Interface located in the Library.</p><p><img height="90" width="174" border="0" src="Images/9.2.%20Basic%20Use%20Case_html_m3dffabd5.png"/></p><p>The Interface appears on the diagram.</p><p><img height="179" width="336" border="0" src="Images/9.2.%20Basic%20Use%20Case_html_m54bda30d.png"/></p><p>The Component in the Project Model can now &ldquo;provide&rdquo; the Interface located in the Library.</p><p><img height="186" width="336" border="0" src="Images/9.2.%20Basic%20Use%20Case_html_m47a0445d.png"/></p><p><br/>
-<br/></p><p><br/>
-<br/></p><p><img height="92" width="92" border="0" src="Images/9.2.%20Basic%20Use%20Case_html_m2f4cc7f5.jpg"/><img height="92" width="92" border="0" src="Images/9.2.%20Basic%20Use%20Case_html_733c5d5d.jpg"/></p></body></html>
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>9.2. Basic Use Case</title>
+		<link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/>
+	</head>
+	<body>
+		<h1 id="Basic_Use_Case">Basic Use Case</h1>
+		<h2 id="Creation_of_a_Library">Creation of a Library</h2>
+		<p>Libraries are created the same way as standard Capella Projects. From the Project Explorer, create a new Library using the Contextual Menu</p>
+		<p>
+			<img border="0" src="Images/9.2.%20Basic%20Use%20Case_html_m723a4595.png"/>
+		</p>
+		<p>The result is a new model, with the Methodological Overview opened.</p>
+		<p>
+			<img border="0" src="Images/9.2.%20Basic%20Use%20Case_html_3ee7966e.png"/>
+		</p>
+		<p>In this library, create diagrams and model elements. Here for example, a data model.</p>
+		<p>
+			<img border="0" src="Images/9.2.%20Basic%20Use%20Case_html_306dcc4f.png"/>
+		</p>
+		<p>Close the Library.</p>
+		<h2 id="Referencing_a_Library">Referencing a Library</h2>
+		<p>Select the &ldquo;Libraries | Manage References&rdquo; item in the contextual menu on the &ldquo;aird&rdquo; file of a standard Project Model.</p>
+		<p>
+			<img border="0" src="Images/9.2.%20Basic%20Use%20Case_html_m74f004a7.png"/>
+		</p>
+		<p>A dialog opens.</p>
+		<p>
+			<img border="0" src="Images/9.2.%20Basic%20Use%20Case_html_m1004a0b5.png"/>
+		</p>
+		<p>The first tab of this dialog displays all the accessible Libraries in the current workspace (A Library in a closed Eclipse Project will not be proposed).</p>
+		<p>Note that the actual Library files do not have to be physically located in the workspace itself, see the section explaining the Eclipse difference between Workspace and actual Project files.</p>
+		<p>Ticking the checkbox will create a physical reference between the current Project Model and the Library.</p>
+		<p>
+			<img border="0" src="Images/9.2.%20Basic%20Use%20Case_html_52f4a83e.png"/>
+		</p>
+		<p>The second tab of the dialog displays which Library is currently active. When a Library is not active, queries in Editors for example will not display the content located in the Library.</p>
+		<p>
+			<img border="0" src="Images/9.2.%20Basic%20Use%20Case_html_m3ec8a6b5.png"/>
+		</p>
+		<p>The third tab allows specifying whether the content of a referenced Library can be directly modified from the Project itself. The default is &ldquo;Read only&rdquo;.</p>
+		<p>Once the Project Model is opened, the referenced Library can be seen directly from the Project itself.</p>
+		<p>
+			<img border="0" src="Images/9.2.%20Basic%20Use%20Case_html_m74ed6e65.png"/>
+		</p>
+		<p>
+			<b> Notice : </b> This wizard seems to provide the functionality to 
+			<i>Unreference a Library from a Project</i>. Unckeck the Library in this wizard is only the first-step to perform while unreferencing a library. This operation has a dedicated How-to procedure in the 
+			<i>Advanced Operations &gt; Unreference a Library</i> section.
+		</p>
+		<h2 id="Using_Library_Elements_from_a_Project">Using Library Elements from a Project</h2>
+		<p>Elements from the referenced library are accessible from elements in the Project model.</p>
+		<p><u>
+			<b>Example with the allocation of Exchange Items to a Functional Exchange</b></u>
+		</p>
+		<p>
+			<img border="0" src="Images/9.2.%20Basic%20Use%20Case_html_m67c8a76c.png"/>
+		</p>
+		<p>The transfer dialog display both elements coming from the current Project and elements from the Library.</p>
+		<p>
+			<img border="0" src="Images/9.2.%20Basic%20Use%20Case_html_71e0fc21.png"/>
+		</p>
+		<p>Once the allocation is performed, the result can be seen in the Semantic Browser.</p>
+		<p>
+			<img border="0" src="Images/9.2.%20Basic%20Use%20Case_html_491bebef.png"/>
+		</p>
+		<p><u>
+			<b>Example with Components and Interfaces</b></u>
+		</p>
+		<p>From an interface diagram, use the Insertion tool to select and display an Interface located in the Library.</p>
+		<p>
+			<img border="0" src="Images/9.2.%20Basic%20Use%20Case_html_m130884f.png"/>
+		</p>
+		<p>The selection wizard proposes the Interface located in the Library.</p>
+		<p>
+			<img border="0" src="Images/9.2.%20Basic%20Use%20Case_html_m3dffabd5.png"/>
+		</p>
+		<p>The Interface appears on the diagram.</p>
+		<p>
+			<img border="0" src="Images/9.2.%20Basic%20Use%20Case_html_m54bda30d.png"/>
+		</p>
+		<p>The Component in the Project Model can now &ldquo;provide&rdquo; the Interface located in the Library.</p>
+		<p>
+			<img border="0" src="Images/9.2.%20Basic%20Use%20Case_html_m47a0445d.png"/>
+		</p>
+	</body>
+</html>

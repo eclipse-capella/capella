@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>9.5. Advanced Operations</title>
+		<link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/>
+	</head>
+	<body>
+		<h1 id="Advanced_Operations">Advanced Operations</h1>
+		<h2 id="Unreference_a_Library">Unreference a Library</h2>
+		<p>Notice that unreferencing a Library is a destructive operation where you will delete all uses of a Library in the given Project.</p>
+		<p>For instance, Components implementing Interfaces defined in a Library will not implement it afterwards, Exchange items on Library will no longer be referenced, or RPL on project will be detached from their REC in the Library (without easy way to reattach them afterwards).</p>
+		<h3 id="Backup_your_model_and_library">Backup your model and library</h3>
+		<p>Before doing this operation, it is advised to backup your project and referenced libraries</p>
+		<h3 id="Unreference_Library_through_Library_Wizard">Unreference Library through Library Wizard</h3>
+		<p>
+			<i>Right Click on the Project.aird</i> then 
+			<i>Libraries</i> &gt; 
+			<i>Manage references</i>
+		</p>
+		<p>In this wizard, uncheck the Library and close the wizard</p>
+		<p>
+			<img border="0" src="Images/Unreference-1.png"/>
+		</p>
+		<p>Save the Project</p>
+		<p>You shall notice that the Library disappear from the elements located under the Project.</p>
+		<p>
+			<img border="0" src="Images/Unreference-2.png"/>
+		</p>
+		<p>
+			<b> Notice : </b> Removal of the library reference in this wizard is only a first step and your project model elements are still referencing the library elements at this point.'''
+		</p>
+		<h3 id="Remove_Library_from_Workspace">Remove Library from Workspace</h3>
+		<p>Now, you can remove the Library from the Workspace. (The library must not be visible in the Project Explorer, not closed)</p>
+		<p>
+			<img border="0" src="Images/Unreference-3.png"/>
+		</p>
+		<h3 id="Reopen_the_Project">Reopen the Project</h3>
+		<p>Close the Project Session and Reopen it. (or restart Capella)</p>
+		<p>
+			<i>Right Click on the Project.aird</i> &gt; 
+			<i>Close</i>, then 
+			<i>Right Click on the Project.aird</i> &gt; 
+			<i>Open Session</i>
+		</p>
+		<h3 id="Validate_model_to_detect_unreferenced_elements">Validate model to detect unreferenced elements</h3>
+		<p>
+			<i>Right Click on the Root Model Element under Project.aird</i> &gt; 
+			<i>Validate Model</i>
+		</p>
+		<p>This shall raises several errors called "EMF" detecting unresolved elements (<code>EMF.4</code>, <code>EMF.16</code>)</p>
+		<p>
+			<img border="0" src="Images/Unreference-4.png"/>
+		</p>
+		<p>On one line for each kind of rules, do 
+			<i>Right click</i> &gt; 
+			<i>Quick fix all similar &gt; Delete invalid references</i>
+		</p>
+		<p>If you redo a validation, you shall not see such 'EMF' errors anymore.</p>
+		<p>If you have used RPL in your project, you will also notice some warnings raised by the <code>Capella/Design/Consistency/DCON_04</code> rule. 
+			It is possible to transform the RPL to a REC by using the corresponding quickfix.</p>
+		<p>
+			<img border="0" src="Images/Unreference-5.png"/>
+		</p>
+		<h3 id="Refresh_representations">Refresh representations</h3>
+		<p>On the Project root model elements, refresh all diagrams</p>
+		<h3 id="Save_your_project">Save your project</h3>
+		<p>Then you can Save your project and use it without references to this library.</p>
+	</body>
+</html>

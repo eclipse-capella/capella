@@ -1,3 +1,27 @@
-<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>9.4. Usage Restrictions</title><link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/></head><body><h1 id="Usage_Restrictions">Usage Restrictions</h1><h2 id="Libraries_Usage_Restriction">Libraries Usage Restriction</h2><ul><li>Try to open a model (library or project) while 	one of its referenced libraries is not present in the workspace is 	not possible.<br/>If you want to use a project without referenced 	libraries you can use the Detach tool to remove references of missing libraries <br/></li></ul><ul><li>Downgraded use cases are not properly supported. Please be aware of 	the constraints described in the following section.</li></ul><p><br/>
-<br/></p><h2 id="Nominal_Case_vs_Downgraded_Case">Nominal Case vs Downgraded Case</h2><p>Violation of one of these rules might shift the user into downgraded use cases:</p><ul><li>Replace a library by another version while a referencing project is 	opened (for instance through an update from Clearcase)</li></ul><ul><li>Perform a fragmentation or an unfragmentation of a library while a 	referencing project is opened.</li></ul><ul><li>Perform action that creates a reference between two objects from 	different models M1, M2 (project or library) where M2 is referencing 	M1. For instance, if a project is referencing a library, create a 	generalization from a class in the library to a class in the 	project. Such a situation can be obtained when moving graphically elements between diagrams. Future version of Capella will provide an automatic check to prevent such a situation. <br/></li></ul><p><br/>
-<br/></p></body></html>
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>9.4. Usage Restrictions</title>
+		<link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/>
+	</head>
+	<body>
+		<h1 id="Usage_Restrictions">Usage Restrictions</h1>
+		<h2 id="Libraries_Usage_Restriction">Libraries Usage Restriction</h2>
+		<ul>
+			<li>Try to open a model (library or project) while one of its referenced libraries is not present in the workspace is not possible.</li>
+		</ul>
+		<h2 id="Nominal_Case_vs_Downgraded_Case">Nominal Case vs Downgraded Case</h2>
+		<p>Downgraded use cases are not properly supported. Please be aware of the constraints described in the following section.</p>
+		<p>Violation of one of these rules might shift the user into downgraded use cases:</p>
+		<ul>
+			<li>Replace a library by another version while a referencing project is opened (for instance through an update from Clearcase)</li>
+		</ul>
+		<ul>
+			<li>Perform a fragmentation or an unfragmentation of a library while a referencing project is opened.</li>
+		</ul>
+		<ul>
+			<li>Perform action that creates a reference between two objects from	different models M1, M2 (project or library) where M2 is referencing M1. For instance, if a project is referencing a library, create a generalization from a class in the library to a class in the project. Such a situation can be obtained when moving graphically elements between diagrams.</li>
+		</ul>
+	</body>
+</html>
