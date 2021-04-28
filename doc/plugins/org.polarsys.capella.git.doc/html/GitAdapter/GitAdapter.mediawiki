@@ -237,7 +237,7 @@ If somehow the conflict resolving process ends up with a corrupted model and you
 
 ==== Fragmented Model ====
 
-If you are not familiar with Capella model fragmentation, you can refer to [http://127.0.0.1:52231/help/topic/org.polarsys.capella.doc/html/Fragment%20management/Fragment%20management.html Fragment Management]
+If you are not familiar with Capella model fragmentation, you can refer to [../help/topic/org.polarsys.capella.doc/html/Fragment%20management/Fragment%20management.html Fragment Management]
 
 When your model is fragmented, you have to select all your fragments in your commits and always use the root aird for compare operation.
 

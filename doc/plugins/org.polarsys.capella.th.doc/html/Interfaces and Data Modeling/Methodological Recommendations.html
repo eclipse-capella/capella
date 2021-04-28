@@ -14,25 +14,25 @@
 		<p>A common practice, but not a mandatory one, is to describe all external data at System Analysis level (starting possibly at Operational Analysis), and to describe further internal data at Logical Architecture and/or Physical Architecture levels.</p>
 		<p>With Capella, you are used to transition Actors, Functions, etc. from one Arcadia level to the next one down, and you cannot refer to a System function at Logical Architecture level, for instance. It is not the same with data: from a given level, you can refer to any Class, Basic Type, etc. defined in an upper level.</p>
 		<p><center>
-			<img border="0" src="Images\image154.jpg"/></center>
+			<img border="0" src="Images/image154.jpg"/></center>
 		</p>
 		<p>The main idea is to facilitate maintenance: if classes and types evolve at a given level, as we only reference them, there is nothing special to do. On the contrary, if we choose to transition manually the data, which is possible in Capella , we will need to update all lower levels as soon as there is a modification at a higher level. So the common recommendation is not to transition data, unless you really need to separate very strongly the different levels of a specific model.</p>
 		<h2 id="Data_Normalization">Data Normalization</h2>
 		<h3 id="1NF">1NF</h3>
 		<p>Attribute types are primitive classes.  Value of each attribute is atomic, there is no embedded class.</p>
 		<p><center>
-			<img border="0" src="Images\image155.jpg"/></center>
+			<img border="0" src="Images/image155.jpg"/></center>
 		</p>
 		<h3 id="2NF">2NF</h3>
 		<p>The model shall be 1NF and every property (attribute or association) that does not belong to the key structure shall be dependent on the complete key: the key is the smallest key for the properties of this class.</p>
 		<p><center>
-			<img border="0" src="Images\image156.jpg"/></center>
+			<img border="0" src="Images/image156.jpg"/></center>
 		</p>
 		<h3 id="3NF">3NF</h3>
 		<p>The model shall be 2NF and there is no transitive dependence: X -&gt; Y -&gt; Z</p>
 		<p>A property (attribute or association role) ‘Y’ is functionally dependent on a group of properties ‘X’ = (X1, .., xn) if and only if its value is by nature determined as soon as the value ‘V’ = (V1, .., Vn) from group ‘X’ is known. We note X - &gt;Y.</p>
 		<p><center>
-			<img border="0" src="Images\image157.png"/></center>
+			<img border="0" src="Images/image157.png"/></center>
 		</p>
 		<p>Contrary to preconceived ideas, in most cases, only one 3NF model exists.</p>
 		<p>More precisely, the greater the degree of normalization is required, the more the possible interpretations of the model are reduced.</p>
@@ -44,13 +44,13 @@
 			<i>Data </i>group:
 		</p>
 		<p><center>
-			<img border="0" src="Images\image158.jpg"/></center>
+			<img border="0" src="Images/image158.jpg"/></center>
 		</p>
 		<p>There is also an 
 			<i>Interfaces</i> group:
 		</p>
 		<p><center>
-			<img border="0" src="Images\image159.jpg"/></center>
+			<img border="0" src="Images/image159.jpg"/></center>
 		</p>
 		<p>Some rules are nevertheless still missing and get progressively integrated on user suggestion.</p>
 		<h2 id="Basic_Best_Practices">Basic Best Practices</h2>
@@ -86,7 +86,7 @@
 			<i>Description</i> tab:
 		</p>
 		<p><center>
-			<img border="0" src="Images\image160.png"/></center>
+			<img border="0" src="Images/image160.png"/></center>
 		</p>
 	</body>
 </html>

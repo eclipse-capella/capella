@@ -7,7 +7,7 @@ A data type is a special kind of classifier, similar to a class. It differs from
 
 
 
-<center>[[image:Images\image004.png]]</center>
+<center>[[image:Images/image004.png]]</center>
 
 
 
@@ -18,7 +18,7 @@ Capella provides five different families of simple data types: [ Boolean Type], 
 
 
 
-<center>[[image:Images\image005.jpg]]</center>
+<center>[[image:Images/image005.jpg]]</center>
 
 
 
@@ -26,7 +26,7 @@ By default a new Capella project comes with a set of predefined simple data type
 
 
 
-<center>[[image:Images\image006.png]]</center>
+<center>[[image:Images/image006.png]]</center>
 
 
 
@@ -52,11 +52,11 @@ Let us create a first Numeric Type of Kind Integer called Mileage, for our car d
 
 
 
-<center>[[image:Images\image007.png]]</center>
+<center>[[image:Images/image007.png]]</center>
 
 
 
-<center>[[image:Images\image008.png]]</center>
+<center>[[image:Images/image008.png]]</center>
 
 
 
@@ -76,7 +76,7 @@ The speed of a car, for instance, can be expressed in terms of km/h (or mile/h, 
 
 
 
-<center>[[image:Images\image009.png]]</center>
+<center>[[image:Images/image009.png]]</center>
 
 
 
@@ -84,7 +84,7 @@ The Mileage of a car is more precisely expressed in terms of kilometers or miles
 
 
 
-<center>[[image:Images\image010.png]]</center>
+<center>[[image:Images/image010.png]]</center>
 
 
 
@@ -92,7 +92,7 @@ Speed can also be a Physical Quantity, with another Unit. We could even define t
 
 
 
-<center>[[image:Images\image011.png]]</center>
+<center>[[image:Images/image011.png]]</center>
 
 ====Enumeration====
 
@@ -104,7 +104,7 @@ For instance, when you buy a car, you can choose its color in a predefined set.
 
 
 
-<center>[[image:Images\image012.png]]</center>
+<center>[[image:Images/image012.png]]</center>
 
 
 
@@ -112,7 +112,7 @@ For instance, when you buy a car, you can choose its color in a predefined set.
 
 
 
-<center>[[image:Images\image013.png]]</center>
+<center>[[image:Images/image013.png]]</center>
 
 
 
@@ -122,7 +122,7 @@ A Boolean Type is a kind of simple data type. A Boolean type defines two named v
 
 
 
-<center>[[image:Images\image014.png]]</center>
+<center>[[image:Images/image014.png]]</center>
 
 
 
@@ -136,7 +136,7 @@ In our example, the owner of the car could be a person, with a first name and a 
 
 
 
-<center>[[image:Images\image015.png]]</center>
+<center>[[image:Images/image015.png]]</center>
 
 
 
@@ -176,7 +176,7 @@ In our example, the owner of the car could be a person, with a first name and a 
 
 In Capella , simple types cannot own [ Properties]. So if we need structured data types, we have to create Classes, but then we have to specify that these classes are “[ primitive]”. These primitive classes play the role of complex types.
 
-<center>[[image:Images\image016.png]]</center>
+<center>[[image:Images/image016.png]]</center>
 
 
 
@@ -190,7 +190,7 @@ Let us give an example. If we need a Date type containing three properties like 
 
 
 
-<center>[[image:Images\image017.png]]</center>
+<center>[[image:Images/image017.png]]</center>
 
 
 
@@ -198,11 +198,11 @@ A simple solution consists in creating three properties with the Integer type. W
 
 
 
-<center>[[image:Images\image018.png]]</center>
+<center>[[image:Images/image018.png]]</center>
 
 
 
-<center>[[image:Images\image019.png]]</center>
+<center>[[image:Images/image019.png]]</center>
 
 
 
@@ -226,7 +226,7 @@ Classes have properties, typed by other Classes, [ Unions], [ Collections], data
 
 
 
-<center>[[image:Images\image020.png]]</center>
+<center>[[image:Images/image020.png]]</center>
 
 
 
@@ -236,7 +236,7 @@ Classes are the Capella declination of the UML concept of “Class”. So, many poss
 
 
 
-<center>[[image:Images\image021.png]]</center>
+<center>[[image:Images/image021.png]]</center>
 
 
 
@@ -334,7 +334,7 @@ Properties of a class can be held directly by the class itself or by the navigab
 
 
 
-<center>[[image:Images\image022.png]]</center>
+<center>[[image:Images/image022.png]]</center>
 
 
 
@@ -346,7 +346,7 @@ A Property has mainly a name and a type. A property is complex or simple dependi
 
 
 
-<center>[[image:Images\image023.png]]</center>
+<center>[[image:Images/image023.png]]</center>
 
 
 
@@ -360,7 +360,7 @@ For instance, assuming there are no homonyms, we could say that both properties 
 
 
 
-<center>[[image:Images\image024.png]]</center>
+<center>[[image:Images/image024.png]]</center>
 
 
 
@@ -376,7 +376,7 @@ Let us give a simple example of an association role being part of a key: a Groun
 
 
 
-<center>[[image:Images\image025.png]]</center>
+<center>[[image:Images/image025.png]]</center>
 
 
 
@@ -390,7 +390,7 @@ We can specify that a property is optional, by setting its Min. Card to “0” inst
 
 In France, for instance, when a child is born and declared, the parents must give him/her at least one first name, but there is no official number limit. The order of declaration is important, and the first one is the official first name. Let us also specify an optional middle name …
 
-<center>[[image:Images\image026.png]]</center>
+<center>[[image:Images/image026.png]]</center>
 
 
 
@@ -402,7 +402,7 @@ where &lt;lower-bound&gt; is an integer and &lt;upper-bound&gt; is an unlimited 
 
 
 
-<center>[[image:Images\image027.png]]</center>
+<center>[[image:Images/image027.png]]</center>
 
 
 
@@ -529,7 +529,7 @@ The default value can be overwritten in a subtype.
 
 Example: Numeric Type 1 redefines to 9 the default value of Numeric Type 2 (45).
 
-<center>[[image:Images\image028.png]]</center>
+<center>[[image:Images/image028.png]]</center>
 
 =====Null Value=====
 
@@ -557,7 +557,7 @@ Property ordering may be considered for data detailed definition.
 
 Note that, with Capella , ordering can be changed inside the model explorer, but not directly from diagrams.
 
-<center>[[image:Images\image029.png]]</center>
+<center>[[image:Images/image029.png]]</center>
 
 ====Operation====
 
@@ -587,7 +587,7 @@ In our example, let us speak also about motorbikes. Cars and motorbikes are “veh
 
 
 
-<center>[[image:Images\image030.png]]</center>
+<center>[[image:Images/image030.png]]</center>
 
 
 
@@ -595,7 +595,7 @@ In our example, let us speak also about motorbikes. Cars and motorbikes are “veh
 
 
 
-<center>[[image:Images\image031.png]]</center>
+<center>[[image:Images/image031.png]]</center>
 
 
 
@@ -603,7 +603,7 @@ Take care that all properties of the generalized class (super-class) must be mea
 
 
 
-<center>[[image:Images\image032.png]]</center>
+<center>[[image:Images/image032.png]]</center>
 
 
 
@@ -661,7 +661,7 @@ In our example, we just wanted to express that the minimum mileage value is “0”.
 
 
 
-<center>[[image:Images\image033.png]]</center>
+<center>[[image:Images/image033.png]]</center>
 
 
 
@@ -675,13 +675,13 @@ We can specify the precise list of available colors for cars. Let us begin…
 
 
 
-<center>[[image:Images\image034.png]]</center>
+<center>[[image:Images/image034.png]]</center>
 
 
 
 
 
-<center>[[image:Images\image035.jpg]]</center>
+<center>[[image:Images/image035.jpg]]</center>
 
 
 
@@ -715,7 +715,7 @@ Each Enumeration literal can be associated optionally with an Domain value, enab
 
 Literal Boolean values are used to define the names of true and false values of a Boolean type. 
 
-<center>[[image:Images\image036.png]]</center>
+<center>[[image:Images/image036.png]]</center>
 
 
 
@@ -726,7 +726,7 @@ Examples of Boolean Literals:
 * YES, NO 
 * ON, OFF
 
-<center>[[image:Images\image037.png]]</center>
+<center>[[image:Images/image037.png]]</center>
 
 A good practice is to have only one Boolean type in a model. If there is a need of defining other values (Yes/No, etc.), it is strongly recommended to create an Enumeration simple type owning two Enumeration literals, and then to associate each of the literals to either false of true value of the Boolean type. 
 
@@ -748,7 +748,7 @@ Examples of String Literals:
 
 
 
-<center>[[image:Images\image038.png]]</center>
+<center>[[image:Images/image038.png]]</center>
 
 
 
@@ -760,7 +760,7 @@ These String Literals can then be used in default and null values of properties 
 
 An Association is a semantic relationship between two Classes (or Unions and Collections). “Association” represents a relationship shared among the instances of two classes.
 
-<center>[[image:Images\image039.png]]</center>
+<center>[[image:Images/image039.png]]</center>
 
 An association is normally drawn as a solid line connecting two types, or a solid line connecting a single classifier to itself (the two ends are distinct).
 
@@ -777,13 +777,13 @@ As a consequence, it is neither possible to create an association towards a Data
 
 In our example, imagine we just need the last name for the owner of a car, assuming there are no homonyms, the following simple model would be sufficient.
 
-<center>[[image:Images\image040.png]]</center>
+<center>[[image:Images/image040.png]]</center>
 
 But as soon as we need more information on the owner, the best is to add a Class Person, and create an association between Car and Person, as in the next figure.
 
 
 
-<center>[[image:Images\image041.png]]</center>
+<center>[[image:Images/image041.png]]</center>
 
 
 
@@ -793,7 +793,7 @@ But as soon as we need more information on the owner, the best is to add a Class
 
 An association end is the connection between the line depicting an association and the box depicting the connected class. A name string may be placed near the end of the line to show the name of the association end. The name is optional and suppressible.
 
-<center>[[image:Images\image042.png]]</center>
+<center>[[image:Images/image042.png]]</center>
 
 There can be several associations between two classes, each representing a specific relationship (with its own properties). For instance, let us assume that a car always has one and exactly one owner, whereas it can have zero or one driver at a time.  The Person class plays two roles with respect to class Car: owner and driver roles. Conversely, a person can own several cars simultaneously, but cannot drive more than one car.
 
@@ -824,15 +824,15 @@ Typical cardinalities are:
 
 A cardinality with zero as the lower bound and an unspecified upper bound may use the alternative notation containing a single star “*” instead of “0..*”. In Capella , as for Properties, the default is supposed to be “1..1”, and is not displayed.
 
-<center>[[image:Images\image043.png]]</center>
+<center>[[image:Images/image043.png]]</center>
 
 If the lower bound is equal to the upper bound, then an alternate notation is to use the string containing just the upper bound. For example, “4” is semantically equivalent to “4..4” (exactly 4). 
 
-<center>[[image:Images\image044.png]]</center>
+<center>[[image:Images/image044.png]]</center>
 
 The lower and upper bounds for cardinality may be specified by [ Literal values] or [ References] (it is also true for attribute cardinalities).
 
-<center>[[image:Images\image045.png]]</center>
+<center>[[image:Images/image045.png]]</center>
 
 For instance in our example, the Constellation contains both operational and spare satellites. To be more flexible, we do not want to fix the number of operational and spare satellites once and for all in the cardinality ranges. We prefer to refer to named constants or references, so that if they appear in multiple diagrams, we only have to change the unique definitions.
 
@@ -849,7 +849,7 @@ A good practice to name classes that are not collections is to always use singul
 
 Take care also not to abuse of [0..*] or [*] cardinalities: they are never wrong but often too imprecise
 
-<center>[[image:Images\image046.png]]</center>
+<center>[[image:Images/image046.png]]</center>
 
 ====Navigability====
 
@@ -859,8 +859,8 @@ Navigability means instances participating in links at runtime (instances of an 
 
 An open arrowhead on the end of an association indicates the end is navigable. In the following example, the Person can access directly to his/her owned cars, and the Car can access to its owner.
 
-<center>[[image:Images\image047.png]]</center>
-<center>[[image:Images\image048.png]]</center>
+<center>[[image:Images/image047.png]]</center>
+<center>[[image:Images/image048.png]]</center>
 
 
 
@@ -872,7 +872,7 @@ Specially when a modeling objective is code generation, it is strongly advised t
 
 If the role is not navigable, its name is optional, and is not displayed on the diagram. Conversely, the role name must be filled in the navigable role side.
 
-<center>[[image:Images\image049.png]]</center>
+<center>[[image:Images/image049.png]]</center>
 
 
 
@@ -883,7 +883,7 @@ Note also that:
 
 
 
-<center>[[image:Images\image050.jpg]]</center>
+<center>[[image:Images/image050.jpg]]</center>
 
 
 
@@ -893,13 +893,13 @@ It is also possible to give a name to the association itself, instead of or in a
 
 
 
-<center>[[image:Images\image051.png]]</center>
+<center>[[image:Images/image051.png]]</center>
 
 
 
 
 
-<center>[[image:Images\image052.png]]</center>
+<center>[[image:Images/image052.png]]</center>
 
 
 
@@ -917,7 +917,7 @@ And do not forget that navigability (arrows on associations) and direction of th
 
 
 
-<center>[[image:Images\image053.png]]</center>
+<center>[[image:Images/image053.png]]</center>
 
 ====Associations in Project Explorer====
 
@@ -927,7 +927,7 @@ Properties of a class (attributes or navigable roles) are shown in the same way 
 
 A first example is given by the next figure, where the class Car is shown in the Project explorer with 3 attributes and two navigable roles.
 
-<center>[[image:Images\image054.png]]</center>
+<center>[[image:Images/image054.png]]</center>
 
 
 
@@ -935,13 +935,13 @@ As soon as we reverse the navigability of the first association, one property di
 
 
 
-<center>[[image:Images\image055.png]]</center>
+<center>[[image:Images/image055.png]]</center>
 
 
 
 When an association is navigable in both directions, one property for each navigable role is visible under each class.
 
-<center>[[image:Images\image056.png]]</center>
+<center>[[image:Images/image056.png]]</center>
 
 
 
@@ -959,7 +959,7 @@ When Aggregation Kind of a role is ASSOCIATION, the association is a simple asso
 
 “Aggregation” is a variant of the "has a" association relationship; aggregation is more specific than association. It is an association that represents a part-of relationship. 
 
-<center>[[image:Images\image057.png]]</center>
+<center>[[image:Images/image057.png]]</center>
 
 Take care: as this concept does not have a universally agreed semantics (it is a semantic variation point in UML), it is advised not to use it unless you define a clear semantics for your project.
 
@@ -969,9 +969,9 @@ Take care: as this concept does not have a universally agreed semantics (it is a
 
 Composition is represented by a black diamond on the origin end of the association.
 
-<center>[[image:Images\image058.png]]</center>
+<center>[[image:Images/image058.png]]</center>
 
-<center>[[image:Images\image059.png]]</center>
+<center>[[image:Images/image059.png]]</center>
 
 
 
@@ -979,7 +979,7 @@ An association with Aggregation Kind = AGGREGATION (shared association in UML) d
 
 
 
-<center>[[image:Images\image060.png]]</center>
+<center>[[image:Images/image060.png]]</center>
 
 
 
@@ -989,27 +989,27 @@ In our example, we have expressed the fact that a car always contains four wheel
 
 Take care not to create multiple compositions where the same Class is involved as a part. It is very often the symptom of a wrong analysis. At least, pay attention to the cardinality on the composite side: the same element cannot belong to several composites! For instance, the following diagram is correct when you read it from top to bottom. But when you read it from bottom to top, it expresses the false assertion that a Wheel belongs both to a Car and a Motorbike!
 
-<center>[[image:Images\image061.png]]</center>
+<center>[[image:Images/image061.png]]</center>
 
 A better solution is to specifiy [0..1] cardinalities on the composite sides
 
-<center>[[image:Images\image062.png]]</center>
+<center>[[image:Images/image062.png]]</center>
 
 An even better model is the following one (with the XOR constraint):
 
-<center>[[image:Images\image063.png]]</center>
+<center>[[image:Images/image063.png]]</center>
 
 Refrain absolutely from circular compositions (or aggregations). 
 
 Note also that Aggregation type, navigability, and end ownership are orthogonal concepts, each with their own explicit notation.
 
-<center>[[image:Images\image064.png]]</center>
+<center>[[image:Images/image064.png]]</center>
 
 ===Generalization===
 
 Where a generalization relates a specific class to a general class, each instance of the specific class is also an instance of the general class. Therefore, properties specified for instances of the general class are implicitly specified for instances of the specific class. Any constraint applying to instances of the general class also applies to instances of the specific class.
 
-<center>[[image:Images\image065.png]]</center>
+<center>[[image:Images/image065.png]]</center>
 
 
 
@@ -1017,7 +1017,7 @@ A Generalization is shown as a line with a hollow triangle as an arrowhead betwe
 
 
 
-<center>[[image:Images\image066.png]]</center>
+<center>[[image:Images/image066.png]]</center>
 
 
 
@@ -1028,7 +1028,7 @@ Mutual generalizations between classes A and B are impossible and Capella  preve
 
 A package is used to group elements, and provides a namespace for the grouped elements. A package may contain other packages. A package owns its members, with the implication that if a package is deleted from a model, so are its owned elements. In Capella , packages are shown as rectangles.
 
-<center>[[image:Images\image067.png]]</center>
+<center>[[image:Images/image067.png]]</center>
 
 In our example, we have organized all the System Analysis Types into three packages:
 
@@ -1038,13 +1038,13 @@ In our example, we have organized all the System Analysis Types into three packa
 
 
 
-<center>[[image:Images\image068.jpg]]</center>
+<center>[[image:Images/image068.jpg]]</center>
 
 
 
 It is highly recommended not to put all the types «&nbsp;flat&nbsp;» in the ''Data'' existing package. Inside ''Classes'', and ''Basic Types'', we could have created subpackages to better structure the Data Model. Usually classes and basic types are mixed in packages for the structuration in packages shall rely on business criteria and not on type kind (class vs datatype). A useful recommendation is to limit the number of datatypes and classes in a package to 20.
 
-<center>[[image:Images\image069.jpg]]</center>
+<center>[[image:Images/image069.jpg]]</center>
 
 
 
@@ -1067,13 +1067,13 @@ For instance, in the next figure, we see that Capella  detects the dependency be
 
 
 
-<center>[[image:Images\image070.png]]</center>
+<center>[[image:Images/image070.png]]</center>
 
 
 
 
 
-<center>[[image:Images\image071.png]]</center>
+<center>[[image:Images/image071.png]]</center>
 
 
 
@@ -1085,7 +1085,7 @@ A very interesting feature of Capella  is the ability to calculate and draw depe
 
 
 
-<center>[[image:Images\image072.png]]</center>
+<center>[[image:Images/image072.png]]</center>
 
 
 
@@ -1093,7 +1093,7 @@ On our example, Capella  was able to calculate that ''Classes'' depends on ''Bas
 
 
 
-<center>[[image:Images\image073.png]]</center>
+<center>[[image:Images/image073.png]]</center>
 
 
 
@@ -1107,7 +1107,7 @@ All definitions of Classes, Types and Exchange items are done in Capella  throug
 
 
 
-<center>[[image:Images\image074.png]]</center>
+<center>[[image:Images/image074.png]]</center>
 
 ====Filters====
 
@@ -1117,7 +1117,7 @@ There are several filters available in the CDB.
 
 
 
-<center>[[image:Images\image075.jpg]]</center>
+<center>[[image:Images/image075.jpg]]</center>
 
 Only the “Hide Association Labels” filter is activated by default. We have given examples of this filter and the following one: “Hide Role Labels” in the [ Association Name §].
 
@@ -1125,7 +1125,7 @@ Only the “Hide Association Labels” filter is activated by default. We have given
 
 This filter hides the properties inside classes. But it does not hide the literals inside the basic types.
 
-<center>[[image:Images\image076.png]]</center>
+<center>[[image:Images/image076.png]]</center>
 
 =====Hide Operations=====
 
@@ -1139,7 +1139,7 @@ This filter hides the associations between classes, including aggregations and c
 
 
 
-<center>[[image:Images\image077.png]]</center>
+<center>[[image:Images/image077.png]]</center>
 
 
 
@@ -1163,7 +1163,7 @@ This filter hides the generalizations between classes.
 
 
 
-<center>[[image:Images\image078.png]]</center>
+<center>[[image:Images/image078.png]]</center>
 
 =====Show Full Path=====
 
@@ -1171,7 +1171,7 @@ This filter shows the full path of owning packages.
 
 
 
-<center>[[image:Images\image079.png]]</center>
+<center>[[image:Images/image079.png]]</center>
 
 
 
@@ -1179,7 +1179,7 @@ This filter shows the full path of owning packages.
 
 This filter hides the [ derived] properties inside classes.
 
-<center>[[image:Images\image080.png]]</center>
+<center>[[image:Images/image080.png]]</center>
 
 
 
@@ -1205,7 +1205,7 @@ All Classes, Primitive Classes and Basic Types are managed through the same tool
 
 
 
-<center>[[image:Images\image081.png]]</center>
+<center>[[image:Images/image081.png]]</center>
 
 ==Communication Model ==
 ===Main Communication Concepts===
@@ -1216,7 +1216,7 @@ The following figure gives a summary of Exchange concepts throughout the Arcadia
 
 
 
-<center>[[image:Images\image082.jpg]]</center>
+<center>[[image:Images/image082.jpg]]</center>
 
 
 
@@ -1243,7 +1243,7 @@ Note that:
 
 
 
-<center>[[image:Images\image083.jpg]]</center>
+<center>[[image:Images/image083.jpg]]</center>
 
 ===Exchange Item===
 
@@ -1269,7 +1269,7 @@ Exchange Items help in:
 
 
 
-<center>[[image:Images\image084.png]]</center>
+<center>[[image:Images/image084.png]]</center>
 
 
 
@@ -1347,19 +1347,19 @@ Structured Data sent from one Component / Function and received by a unique rece
 
 It is possible to represent explicitly the Event in an IDB, along with Communication Links.
 
-<center>[[image:Images\image085.png]]</center>
+<center>[[image:Images/image085.png]]</center>
 
 Using the Communication Link editor, it is possible to specify the SEND  protocol. Here, BROADCAST is selected.
 
 
 
-<center>[[image:Images\image086.png]]</center>
+<center>[[image:Images/image086.png]]</center>
 
 
 
 The Communication Link label on the Interface diagram is then updated.
 
-<center>[[image:Images\image087.png]]</center>
+<center>[[image:Images/image087.png]]</center>
 
 ====Operation====
 
@@ -1371,7 +1371,7 @@ Piece of behavior with input and output parameters, executed by one Component / 
 
 It is possible to represent explicitly the Operation in an IDB, along with Communication Links.
 
-<center>[[image:Images\image088.png]]</center>
+<center>[[image:Images/image088.png]]</center>
 
 
 
@@ -1379,11 +1379,11 @@ Using the Communication Link editor, it is possible to specify the CALL protocol
 
 
 
-<center>[[image:Images\image089.png]]</center>
+<center>[[image:Images/image089.png]]</center>
 
 The Communication Link label on the Interface diagram is then updated.
 
-<center>[[image:Images\image090.png]]</center>
+<center>[[image:Images/image090.png]]</center>
 
 ====Flow====
 
@@ -1397,11 +1397,11 @@ It is possible to represent explicitly the Flow in an IDB, along with Communicat
 
 
 
-<center>[[image:Images\image091.png]]</center>
+<center>[[image:Images/image091.png]]</center>
 
 
 
-<center>[[image:Images\image092.png]]</center>
+<center>[[image:Images/image092.png]]</center>
 
 Using the Communication Link editor, it is not possible to specify the PRODUCE protocol, contrarily to the other kinds of Exchange Items.
 
@@ -1418,7 +1418,7 @@ The data referenced by the Exchange Item is:
 
 It is possible to represent explicitly the Shared Data in an IDB, along with Communication Links.
 
-<center>[[image:Images\image093.png]]</center>
+<center>[[image:Images/image093.png]]</center>
 
 
 
@@ -1426,13 +1426,13 @@ Using the Communication Link editor, it is possible to specify the ACCESS protoc
 
 
 
-<center>[[image:Images\image094.png]]</center>
+<center>[[image:Images/image094.png]]</center>
 
 
 
 The Shared Data can also be grouped in an Interface.
 
-<center>[[image:Images\image095.png]]</center>
+<center>[[image:Images/image095.png]]</center>
 
 
 
@@ -1440,7 +1440,7 @@ It is also possible to change the ACCESS protocol using the editor of Exchange I
 
 
 
-<center>[[image:Images\image096.png]]</center>
+<center>[[image:Images/image096.png]]</center>
 
 
 
@@ -1450,7 +1450,7 @@ Exchange Items are structured through Exchange Items Elements in the same way as
 
 
 
-<center>[[image:Images\image097.png]]</center>
+<center>[[image:Images/image097.png]]</center>
 
 
 
@@ -1470,7 +1470,7 @@ It has the following features:
 
 
 
-<center>[[image:Images\image098.png]]</center>
+<center>[[image:Images/image098.png]]</center>
 
 
 
@@ -1478,17 +1478,17 @@ When an Exchange Item has a communication mechanism of type OPERATION, its Excha
 
 
 
-<center>[[image:Images\image099.png]]</center>
+<center>[[image:Images/image099.png]]</center>
 
 Naming Exchange Item Elements is mandatory when kind = MEMBER.
 
 
 
-<center>[[image:Images\image100.png]]</center>
+<center>[[image:Images/image100.png]]</center>
 
 
 
-<center>[[image:Images\image101.png]]</center>
+<center>[[image:Images/image101.png]]</center>
 
 
 
@@ -1502,9 +1502,9 @@ Note that for p11, isComposite must be true as Class1 does not have a key proper
 
 Observe also that it is possible to restrain the Exchange Item Element to a subset of the Class (or data type) properties. In our example, parameter p 21 of Operation 2 could reference only property Class4::a21 through the “Referenced Properties” field.
 
-<center>[[image:Images\image102.png]]</center>
+<center>[[image:Images/image102.png]]</center>
 
-<center>[[image:Images\image103.png]]</center>
+<center>[[image:Images/image103.png]]</center>
 
 
 
@@ -1532,17 +1532,17 @@ Interfaces are contracts specifying how components can interact with each other.
 
 
 
-<center>[[image:Images\image104.png]]</center>
+<center>[[image:Images/image104.png]]</center>
 
 
 
-<center>[[image:Images\image105.png]]</center>
+<center>[[image:Images/image105.png]]</center>
 
 
 
 Interfaces are implemented/provided or used/required by Components/ Components Ports. Each Component/ Component Port can implement - provide / use - require several Interfaces.
 
-<center>[[image:Images\image106.png]]</center>
+<center>[[image:Images/image106.png]]</center>
 
 
 
@@ -1564,7 +1564,7 @@ An Interface Definition Blank (IDB) enables to create (/insert) Components, Port
 
 
 
-<center>[[image:Images\image107.png]]</center>
+<center>[[image:Images/image107.png]]</center>
 
 
 
@@ -1582,13 +1582,13 @@ The Contextual Component External Interfaces (CEI) diagram shows all the Interfa
 
 
 
-<center>[[image:Images\image108.png]]</center>
+<center>[[image:Images/image108.png]]</center>
 
 
 
 The Contextual Component Detailed Interfaces (CDI) diagram shows all the Interfaces of a Component as well as their contained Exchange Items.
 
-<center>[[image:Images\image109.png]]</center>
+<center>[[image:Images/image109.png]]</center>
 
 
 
@@ -1600,7 +1600,7 @@ To illustrate the differences between the three different kinds of Scenarios, le
 
 
 
-<center>[[image:Images\image110.jpg]]</center>
+<center>[[image:Images/image110.jpg]]</center>
 
 
 
@@ -1608,7 +1608,7 @@ A Functional Scenario enables to draw sequence messages representing Functional 
 
 
 
-<center>[[image:Images\image111.png]]</center>
+<center>[[image:Images/image111.png]]</center>
 
 
 
@@ -1616,7 +1616,7 @@ It is nevertheless possible to show directly the conveyed Exchange Items instead
 
 
 
-<center>[[image:Images\image112.png]]</center>
+<center>[[image:Images/image112.png]]</center>
 
 
 
@@ -1624,7 +1624,7 @@ An Exchange Interface Scenario enables to draw sequence messages representing Fu
 
 
 
-<center>[[image:Images\image113.png]]</center>
+<center>[[image:Images/image113.png]]</center>
 
 
 
@@ -1632,7 +1632,7 @@ An Interface Scenario enables to draw sequence messages representing directly Ex
 
 
 
-<center>[[image:Images\image114.png]]</center>
+<center>[[image:Images/image114.png]]</center>
 
 
 
@@ -1640,7 +1640,7 @@ Note that it is possible to create new Exchange Items on the fly, and even new I
 
 
 
-<center>[[image:Images\image115.png]]</center>
+<center>[[image:Images/image115.png]]</center>
 
 
 
@@ -1648,7 +1648,7 @@ Note that it is possible to create new Exchange Items on the fly, and even new I
 
 A big difference between Scenario and Data Flow Blank diagrams is that you can specify duration constraints on scenarios, and also loops, alternatives or optional conditions with the “combined fragment” concept.
 
-<center>[[image:Images\image116.png]]</center>
+<center>[[image:Images/image116.png]]</center>
 
 
 
@@ -1660,7 +1660,7 @@ Note that it is also possible to display [ Shared Data] as Lifelines in Interfac
 
 
 
-<center>[[image:Images\image117.png]]</center>
+<center>[[image:Images/image117.png]]</center>
 
 
 
@@ -1668,4 +1668,4 @@ The same is true for the [ Events].
 
 
 
-<center>[[image:Images\image118.png]]</center>
+<center>[[image:Images/image118.png]]</center>
