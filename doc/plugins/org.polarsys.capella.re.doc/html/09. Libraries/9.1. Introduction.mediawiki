@@ -42,4 +42,4 @@ Libraries benefit of same tooling than models.
 
 * Edition of library&rsquo;s content via diagrams and editors
 * Semantic browser
-* Validation rules &amp; quick fixes[[Image:Images/9.1.%20Introduction_html_m2f4cc7f5.jpg|92x92px]][[Image:Images/9.1.%20Introduction_html_733c5d5d.jpg|92x92px]]
+* Validation rules &amp; quick fixes

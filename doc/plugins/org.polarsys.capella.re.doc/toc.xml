@@ -59,6 +59,9 @@
 		<topic href="html/09. Libraries/9.4. Usage Restrictions.html#Libraries_Usage_Restriction" label="Libraries Usage Restriction"></topic>
 		<topic href="html/09. Libraries/9.4. Usage Restrictions.html#Nominal_Case_vs_Downgraded_Case" label="Nominal Case vs Downgraded Case"></topic>
 	</topic>
+	<topic href="html/09. Libraries/9.5. Advanced Operations.html" label="Advanced Operations">
+		<topic href="html/09. Libraries/9.5. Advanced Operations.html#Unreference_a_Library" label="Unreference a Library"></topic>
+	</topic>
       <anchor id="lib"/>
    </topic>
 </toc>
