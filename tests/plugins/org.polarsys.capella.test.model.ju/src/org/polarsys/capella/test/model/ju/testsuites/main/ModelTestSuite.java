@@ -43,6 +43,7 @@ import org.polarsys.capella.test.model.ju.propertyviews.PropertyViewsTest;
 import org.polarsys.capella.test.model.ju.rename.RenameModelTestSuite;
 import org.polarsys.capella.test.model.ju.sortContent.SortContentTestSuite;
 import org.polarsys.capella.test.model.ju.sortSelection.SortSelectionTestSuite;
+import org.polarsys.capella.test.model.ju.testcase.LCDecomposition.LCDecompositionAttachDetachCommunicationLinkInterface;
 import org.polarsys.capella.test.model.ju.testcase.LCDecomposition.LCDecompositionWithCommunicationLink;
 import org.polarsys.capella.test.model.ju.testcase.LCDecomposition.LCDecompositionWithInternalInterface;
 import org.polarsys.capella.test.model.ju.testcase.copyPasteLayout.CopyPasteLayout;
@@ -73,6 +74,7 @@ public class ModelTestSuite extends BasicTestSuite {
     tests.add(new CopyPasteModelTestSuite());
     tests.add(new LCDecompositionWithCommunicationLink());
     tests.add(new LCDecompositionWithInternalInterface());
+    tests.add(new LCDecompositionAttachDetachCommunicationLinkInterface());
     tests.add(new ISMessage());
     tests.add(new SortSelectionTestSuite());
     tests.add(new SortContentTestSuite());
