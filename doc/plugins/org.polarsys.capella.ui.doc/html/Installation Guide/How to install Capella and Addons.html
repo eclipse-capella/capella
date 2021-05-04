@@ -21,18 +21,18 @@
 		</p>
 		<h2 id="Java_Development_Kit">Java Development Kit</h2>
 		<p>Starting from Capella 5.0, a Java Development Kit 
-			<a href="https://jdk.java.net">OpenJDK (from jdk.java.net)</a> is directly embedded in the product. Having an additional Java environment on your machine is no longer a requirement.
+			<a href="https://jdk.java.net" target="_blank">OpenJDK (from jdk.java.net)</a> is directly embedded in the product. Having an additional Java environment on your machine is no longer a requirement.
 		</p>
 		<p>
 			<b>Note:</b> This JDK is a production-ready open-source build without legal requirement to subscribe to a commercial support contract and distributed under 
-			<a href="https://openjdk.java.net/legal/gplv2+ce.html">GNU General Public License, version 2, with the Classpath Exception</a>.
+			<a href="https://openjdk.java.net/legal/gplv2+ce.html" target="_blank">GNU General Public License, version 2, with the Classpath Exception</a>.
 		</p>
 		<p>
 			<b>Note:</b> Notice that only the embedded JDK has been field-tested.
 		</p>
 		<p>If however you want to use a different JDK version, you need to modify the <code>capella.ini</code> file at 2 places. The first one is to add on two lines <code>-vm</code> and a reference to your JDK location. The second one is to modify <code>-Dosgi.requiredJavaVersion</code> argument to point to your JDK version. Please refer to the following 
-			<a href="https://wiki.eclipse.org/Eclipse.ini">link</a> for more information and 
-			<a href="https://github.com/eclipse/capella/wiki/Dependency%20versions">compatibility</a> page.
+			<a href="https://wiki.eclipse.org/Eclipse.ini" target="_blank">link</a> for more information and 
+			<a href="https://github.com/eclipse/capella/wiki/Dependency%20versions" target="_blank">compatibility</a> page.
 		</p>
 		<h1 id="Installation_from_previous_version">Installation from previous version</h1>
 		<p>Before starting the installation, the target location of Capella must be cleaned:</p>
@@ -89,7 +89,7 @@
 			<b>Note:</b> In both cases, dropins or update sites, make sure that the addon/extension is compatible with your current version of Capella and Capella projects lifecycle. (even if update sites seem to provide some consistency for a Capella installation, a ProjectX may require a dedicated x.y.z version of addon, and administrators shall manage their own Compatibility map per projects, to prevent unexpected updates of a shared Capella installation)</i>
 		</p>
 		<p><i>Compatibility information is commonly provided by the addon provider or for open source addons, marked aside the download release information (ex: 
-			<a href="https://github.com/eclipse/capella-requirements-vp/releases">Requirement addon</a>)</i>
+			<a href="https://github.com/eclipse/capella-requirements-vp/releases" target="_blank">Requirement addon</a>)</i>
 		</p>
 		<p><i>
 			<b>Note:</b> After installation, please see 
@@ -130,7 +130,7 @@
 			<li><code>jar:file:/updatesite.zip!/</code></li>
 			<li><code>file://unzipped-updatesite-folder/</code></li>
 			<li><code>
-				<a href="https://update-site.url">https://update-site.url</a></code>
+				<a href="https://update-site.url" target="_blank">https://update-site.url</a></code>
 			</li>
 		</ul>
 		<p><code>{featureName}</code> is the name of a feature (see below)</p>
@@ -139,7 +139,7 @@
 		</p>
 		<p><code>capellac.exe -application org.eclipse.equinox.p2.director -repository {repository} -list "Q:everything.select(x | x.properties ~= filter('(org.eclipse.equinox.p2.type.group=true)'))"</code></p>
 		<p>(See additional query definition for -list at 
-			<a href="https://wiki.eclipse.org/Equinox/p2/Query_Language_for_p2">Query Language</a>)
+			<a href="https://wiki.eclipse.org/Equinox/p2/Query_Language_for_p2" target="_blank">Query Language</a>)
 		</p>
 		<h2 id="Dropins">Dropins</h2>
 		<p>Dropins are self-contained addons.</p>
@@ -386,7 +386,7 @@
 			<img border="0" src="Images/LaunchingPopup.png"/>
 		</p>
 		<p>The solution is to install this Microsoft's update according to your OS version: 
-			<a href="https://support.microsoft.com/en-us/help/2999226/update-for-universal-c-runtime-in-windows">https://support.microsoft.com/en-us/help/2999226/update-for-universal-c-runtime-in-windows</a>
+			<a href="https://support.microsoft.com/en-us/help/2999226/update-for-universal-c-runtime-in-windows" target="_blank">https://support.microsoft.com/en-us/help/2999226/update-for-universal-c-runtime-in-windows</a>
 		</p>
 		<h2 id="Workaround_to_open_the_Help_Content_when_there_is_problem_with_the_browser">Workaround to open the Help Content when there is problem with the browser</h2>
 		<p>Sometimes due to security policy, the web browser has problem on opening local host web pages. This is the case of the Help Content page when it is accessed via the <code>127.0.0.1</code> IP address. </p>

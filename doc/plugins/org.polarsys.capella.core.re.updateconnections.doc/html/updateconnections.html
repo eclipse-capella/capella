@@ -1,1 +1,42 @@
-<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>updateconnections</title><link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/></head><body><h1 id="Update_Connections_between_pairs_of_REC.2FRPL">Update Connections between pairs of REC/RPL</h1><h2 id="Introduction">Introduction</h2><p>When a pair of REC elements is connected to each other via Component Exchanges/Functional Exchanges or Physical Links, it is possible to propagate/synchronize these elements (subsequently generalized as 'connections') to a related pair of RPL elements via the "Update Connections" command.</p><p>In the sample below, there is 2 REC (Client/Server) and some related RPL. REC have been connected with some connections. RPL doesn't have them.</p><p>By selecting one element from both RPL, Client 1 and Server 1, it is possible to propagate connections made through REC elements towards RPL elements. (resp. Client 2, Server 1)</p><p><img height="535" width="500" border="0" src="Images/model.png"/><br/></p><p><img height="670" width="500" border="0" src="Images/result.png"/><br/></p><h2 id="Usage">Usage</h2><p>To execute the command, select two RPL elements and choose "REC/RPL"-&gt;"Update Connections" from the context menu. This will open a wizard to configure the synchronization. The first tab displays the RPL pair between which connections should be synchronized from their originating REC pair. The second tab allows to chose a strategy that will be used to match existing connections between the pair of RPL elements against connections between the corresponding pair of REC elements. Currently two match strategies are available: 'By name' matches connections by their name. This works well if the connections between REC elements have the same name as the connections between RPL elements, and if these names are unique in the comparison context. The second strategy "Singleton Ports" works well if there is at most one connection associated to each port.</p><p>To start the synchronization press 'OK' in the wizard. The Diff/Merge comparison dialog will then show all connection differences between the REC/RPL pairs:</p><ul><li>Component exchanges</li><li>Functional exchanges</li><li>Physical links</li><li>Exchange item allocations</li><li>ComponentExchange allocations</li><li>FunctionalExchange allocations</li></ul><p>These differences can then be merged in both directions, i.e. it is possible to create an component exchange between a pair of RPL and then propagate this exchange to the corresponding pair of RECs, as well as to create a component exchange between a pair of REC and then propagate this exchange to any corresponding pair of RPL.</p><h2 id="Limitations">Limitations</h2><ul><li>The synchronization command expects that the pair of REC/RPL elements is fully synchronized. Especially, a prerequisite is that all involved ports in the REC elements have corresponding ports in the RPL elements.</li></ul><ul><li>Connection children are not included in the comparison. E.g. if a PhysicalLink has a Constraint element as a child, that Constraint element will be ignored in the comparison. </li></ul></body></html>
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>updateconnections</title>
+		<link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/>
+	</head>
+	<body>
+		<h1 id="Update_Connections_between_pairs_of_REC.2FRPL">Update Connections between pairs of REC/RPL</h1>
+		<h2 id="Introduction">Introduction</h2>
+		<p>When a pair of REC elements is connected to each other via Component Exchanges/Functional Exchanges or Physical Links, it is possible to propagate/synchronize these elements (subsequently generalized as 'connections') to a related pair of RPL elements via the "Update Connections" command.</p>
+		<p>In the sample below, there is 2 REC (Client/Server) and some related RPL. REC have been connected with some connections. RPL doesn't have them.</p>
+		<p>By selecting one element from both RPL, Client 1 and Server 1, it is possible to propagate connections made through REC elements towards RPL elements. (resp. Client 2, Server 1)</p>
+		<p>
+			<img height="535" width="500" border="0" src="Images/model.png"/>
+			<br/>
+		</p>
+		<p>
+			<img height="670" width="500" border="0" src="Images/result.png"/>
+			<br/>
+		</p>
+		<h2 id="Usage">Usage</h2>
+		<p>To execute the command, select two RPL elements and choose "REC/RPL"-&gt;"Update Connections" from the context menu. This will open a wizard to configure the synchronization. The first tab displays the RPL pair between which connections should be synchronized from their originating REC pair. The second tab allows to chose a strategy that will be used to match existing connections between the pair of RPL elements against connections between the corresponding pair of REC elements. Currently two match strategies are available: 'By name' matches connections by their name. This works well if the connections between REC elements have the same name as the connections between RPL elements, and if these names are unique in the comparison context. The second strategy "Singleton Ports" works well if there is at most one connection associated to each port.</p>
+		<p>To start the synchronization press 'OK' in the wizard. The Diff/Merge comparison dialog will then show all connection differences between the REC/RPL pairs:</p>
+		<ul>
+			<li>Component exchanges</li>
+			<li>Functional exchanges</li>
+			<li>Physical links</li>
+			<li>Exchange item allocations</li>
+			<li>ComponentExchange allocations</li>
+			<li>FunctionalExchange allocations</li>
+		</ul>
+		<p>These differences can then be merged in both directions, i.e. it is possible to create an component exchange between a pair of RPL and then propagate this exchange to the corresponding pair of RECs, as well as to create a component exchange between a pair of REC and then propagate this exchange to any corresponding pair of RPL.</p>
+		<h2 id="Limitations">Limitations</h2>
+		<ul>
+			<li>The synchronization command expects that the pair of REC/RPL elements is fully synchronized. Especially, a prerequisite is that all involved ports in the REC elements have corresponding ports in the RPL elements.</li>
+		</ul>
+		<ul>
+			<li>Connection children are not included in the comparison. E.g. if a PhysicalLink has a Constraint element as a child, that Constraint element will be ignored in the comparison. </li>
+		</ul>
+	</body>
+</html>
