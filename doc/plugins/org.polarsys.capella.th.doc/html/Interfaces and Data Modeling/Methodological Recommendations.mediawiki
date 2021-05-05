@@ -21,7 +21,7 @@ With Capella, you are used to transition Actors, Functions, etc. from one Arcadi
 
 
 
-<center>[[image:Images\image154.jpg]]</center>
+<center>[[image:Images/image154.jpg]]</center>
 
 
 
@@ -32,7 +32,7 @@ The main idea is to facilitate maintenance: if classes and types evolve at a giv
 
 Attribute types are primitive classes.  Value of each attribute is atomic, there is no embedded class.
 
-<center>[[image:Images\image155.jpg]]</center>
+<center>[[image:Images/image155.jpg]]</center>
 
 ===2NF===
 
@@ -40,7 +40,7 @@ The model shall be 1NF and every property (attribute or association) that does n
 
 
 
-<center>[[image:Images\image156.jpg]]</center>
+<center>[[image:Images/image156.jpg]]</center>
 
 ===3NF===
 
@@ -52,7 +52,7 @@ A property (attribute or association role) ‘Y’ is functionally dependent on a gr
 
 
 
-<center>[[image:Images\image157.png]]</center>
+<center>[[image:Images/image157.png]]</center>
 
 
 
@@ -68,13 +68,13 @@ A large number of rules checked by Capella  apply to the Interface and Data Mode
 
 For instance, in the ''Design ''– ''Well-Formedness ''category, there is a big ''Data ''group:
 
-<center>[[image:Images\image158.jpg]]</center>
+<center>[[image:Images/image158.jpg]]</center>
 
 
 
 There is also an ''Interfaces'' group:
 
-<center>[[image:Images\image159.jpg]]</center>
+<center>[[image:Images/image159.jpg]]</center>
 
 
 
@@ -147,7 +147,7 @@ This should be done via the ''Description'' tab:
 
 
 
-<center>[[image:Images\image160.png]]</center>
+<center>[[image:Images/image160.png]]</center>
 
 
 

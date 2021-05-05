@@ -16,7 +16,7 @@ When the type is declared discrete, it means that it defines non continuous or s
 
 
 
-<center>[[image:Images\image119.png]]</center>
+<center>[[image:Images/image119.png]]</center>
 
 
 
@@ -26,13 +26,13 @@ Specifies whether the property or association is derived from other model elemen
 
 For instance, a common derived property is the age of a Person, derived from the birthDate. The notation of a derived property is “/ derivedProperty”. 
 
-<center>[[image:Images\image120.png]]</center>
+<center>[[image:Images/image120.png]]</center>
 
 A good practice is to explain how the property is derived within the description field of the property or its summary. 
 
 
 
-<center>[[image:Images\image121.jpg]]</center>
+<center>[[image:Images/image121.jpg]]</center>
 
 
 
@@ -40,11 +40,11 @@ Association roles can also be derived as in the following example. A person may 
 
 
 
-<center>[[image:Images\image122.png]]</center>
+<center>[[image:Images/image122.png]]</center>
 
 
 
-<center>[[image:Images\image123.jpg]]</center>
+<center>[[image:Images/image123.jpg]]</center>
 
 
 
@@ -54,13 +54,13 @@ For multivalued elements (Max. Card &gt; 1), this feature specifies whether the 
 
 For instance, when you play chess, a game consists in a sequence of moves:
 
-<center>[[image:Images\image124.png]]</center>
+<center>[[image:Images/image124.png]]</center>
 
 
 
 
 
-<center>[[image:Images\image125.jpg]]</center>
+<center>[[image:Images/image125.jpg]]</center>
 
 
 
@@ -70,7 +70,7 @@ If the element is specified as unordered (i.e., isOrdered is false), then no ass
 
 
 
-<center>[[image:Images\image126.png]]</center>
+<center>[[image:Images/image126.png]]</center>
 
 
 
@@ -84,7 +84,7 @@ For multivalued elements (Max. Card &gt; 1), this feature specifies whether the 
 
 When isUnique is true, the collection of values may not contain duplicates. This is the most common case, as in the next figure (A person may own several cars, which are all different!).
 
-<center>[[image:Images\image127.png]]</center>
+<center>[[image:Images/image127.png]]</center>
 
 When one or more ends of the association have isUnique=false, it is possible to have several links associating the same set of instances. In such a case, links carry an additional identifier apart from their end values. For instance if one wants to record a log of user connections, and count the number of times a specific user logged in during a specific duration, isUnique should be false. In this case, an additional attribute (such as connection time) may be needed.
 
@@ -94,7 +94,7 @@ Another simple example is shown on the next figure. In the game of chess, a game
 
 
 
-<center>[[image:Images\image128.png]]</center>
+<center>[[image:Images/image128.png]]</center>
 
 
 
@@ -102,7 +102,7 @@ In combination with the feature [ isOrdered], the following table (from UML 2.4 
 
 
 
-<center>[[image:Images\image129.jpg]]</center>
+<center>[[image:Images/image129.jpg]]</center>
 
 
 
@@ -130,7 +130,7 @@ For instance, the birthdate of a Person is normally readOnly, unlike the age or 
 
 
 
-<center>[[image:Images\image130.jpg]]</center>
+<center>[[image:Images/image130.jpg]]</center>
 
 
 
@@ -172,7 +172,7 @@ This field indicates the super-types (or generalized types) of the current type.
 
 
 
-<center>[[image:Images\image131.jpg]]</center>
+<center>[[image:Images/image131.jpg]]</center>
 
 
 
@@ -180,11 +180,11 @@ As soon as a Generalization relationship is established, the “Super” field is au
 
 
 
-<center>[[image:Images\image132.jpg]]</center>
+<center>[[image:Images/image132.jpg]]</center>
 
 
 
-<center>[[image:Images\image133.png]]</center>
+<center>[[image:Images/image133.png]]</center>
 
 
 
@@ -192,7 +192,7 @@ It is possible to allow multiple inheritance to define several super types.
 
 
 
-<center>[[image:Images\image134.jpg]]</center>
+<center>[[image:Images/image134.jpg]]</center>
 
 
 
@@ -214,9 +214,9 @@ We can for instance create a Factorial Unary Expression to calculate the factori
 
 
 
-<center>[[image:Images\image135.png]]</center>
+<center>[[image:Images/image135.png]]</center>
 
-<center>[[image:Images\image136.jpg]]</center>
+<center>[[image:Images/image136.jpg]]</center>
 
 
 
@@ -224,13 +224,13 @@ We can for instance create a Factorial Unary Expression to calculate the factori
 
 A Binary Expression is one specific kind of Expression consisting of one Operator (+, -, not, or, etc.) and exactly two Operands. Operands can themselves be Expressions.
 
-<center>[[image:Images\image137.png]]</center>
+<center>[[image:Images/image137.png]]</center>
 
 Let us give a simple example with an expression calculating the total number of satellites in the constellation&nbsp;: 
 
 
 
-<center>[[image:Images\image138.png]]</center>
+<center>[[image:Images/image138.png]]</center>
 
 
 
@@ -238,7 +238,7 @@ It is then possible to create a [ Reference] from the Expression, and to use thi
 
 
 
-<center>[[image:Images\image139.png]]</center>
+<center>[[image:Images/image139.png]]</center>
 
 
 
@@ -246,13 +246,13 @@ It is then possible to create a [ Reference] from the Expression, and to use thi
 
 A Collection is a data modeling construct allowing the definition of sets of elements. 
 
-<center>[[image:Images\image140.png]]</center>
+<center>[[image:Images/image140.png]]</center>
 
 To properly define a Collection, you have to choose the type of its elements. It can be a class, a complex type or a simple type. Min and max cardinalities should be indicated and they appear in diagrams. 
 
 
 
-<center>[[image:Images\image141.jpg]]</center>
+<center>[[image:Images/image141.jpg]]</center>
 
 
 
@@ -262,11 +262,11 @@ Collections can be indexed. The type of an index should be discrete. Very often,
 
 For example, a chess board consists in exactly 64 squares, indexed by the couple (column, row).
 
-<center>[[image:Images\image142.png]]</center>
+<center>[[image:Images/image142.png]]</center>
 
 
 
-<center>[[image:Images\image143.jpg]]</center>
+<center>[[image:Images/image143.jpg]]</center>
 
 
 
@@ -286,7 +286,7 @@ Cardinalities of Exchange Item Elements can also stbe used to prevent creating u
 
 
 
-<center>[[image:Images\image144.jpg]]</center>
+<center>[[image:Images/image144.jpg]]</center>
 
 
 
@@ -302,9 +302,9 @@ Unions and Variants are advanced structures that can take different forms accord
 
 The first thing we have to define on the Union is which ''UnionProperty'' will be the discriminant. We have to create an [ Enumeration], and type one ''UnionProperty'' by this Enumeration, and specify on the Union that we want to use it as a discriminant.
 
-<center>[[image:Images\image145.png]]</center>
+<center>[[image:Images/image145.png]]</center>
 
-<center>[[image:Images\image146.jpg]]</center>
+<center>[[image:Images/image146.jpg]]</center>
 
 
 
@@ -314,7 +314,7 @@ We just have to specify two new ''UnionProperties'', of types ''Login'' or ''Pro
 
 
 
-<center>[[image:Images\image147.png]]</center>
+<center>[[image:Images/image147.png]]</center>
 
 
 
@@ -387,13 +387,13 @@ A Reference Data Value can target another Reference Data Value, A Literal Data V
 
 
 
-<center>[[image:Images\image148.png]]</center>
+<center>[[image:Images/image148.png]]</center>
 
 
 
 
 
-<center>[[image:Images\image149.jpg]]</center>
+<center>[[image:Images/image149.jpg]]</center>
 
 ==Modeling Accelerators==
 ===Exchange Items Propagation to Function Ports===
@@ -404,11 +404,11 @@ This is interesting mainly when you want to get an autonomous specification of i
 
 
 
-<center>[[image:Images\image150.jpg]]</center>
+<center>[[image:Images/image150.jpg]]</center>
 
 
 
-<center>[[image:Images\image151.jpg]]</center>
+<center>[[image:Images/image151.jpg]]</center>
 
 ===Interface Generation from Allocated Functions===
 
@@ -418,10 +418,10 @@ Effect: Analyze the Component Exchanges, the Functional Exchanges they carry and
 
 Example: Two components, three Component Exchanges, four Functional Exchanges associated to Exchange Items.
 
-<center>[[image:Images\image152.png]]</center>
+<center>[[image:Images/image152.png]]</center>
 
 
 
 Result of the generation of Interfaces: One Interface is created per Component Exchange. All Exchange Items coming from different Functional Exchanges are aggregated in the same Interface.
 
-<center>[[image:Images\image153.png]]</center>
+<center>[[image:Images/image153.png]]</center>

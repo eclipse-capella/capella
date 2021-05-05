@@ -11,16 +11,16 @@
 		<p>There are three kinds of classifiers in Capella : classes (including unions and collections), complex types and simple types.</p>
 		<p>A data type is a special kind of classifier, similar to a class. It differs from a class in that instances of a data type are identified only by their value. All copies of an instance of a data type and any instances of that data type with the same value are considered to be equal instances. There are two kinds of data types: simple or [ complex types].</p>
 		<p><center>
-			<img border="0" src="Images\image004.png"/></center>
+			<img border="0" src="Images/image004.png"/></center>
 		</p>
 		<h3 id="Simple_Type">Simple Type</h3>
 		<p>Capella provides five different families of simple data types: [ Boolean Type], [ Enumeration], [ Numeric Type], [ String Type] and [ Physical Quantity]. </p>
 		<p><center>
-			<img border="0" src="Images\image005.jpg"/></center>
+			<img border="0" src="Images/image005.jpg"/></center>
 		</p>
 		<p>By default a new Capella project comes with a set of predefined simple data types. These predefined types can be completely redefined, removed or replaced. The best practice being to build-up a library from which all these data types would be reused. </p>
 		<p><center>
-			<img border="0" src="Images\image006.png"/></center>
+			<img border="0" src="Images/image006.png"/></center>
 		</p>
 		<p>Capella provides advanced editors for specifying simple data types. For example, it is possible to define [ min, max, default and null values], to specify whether a simple data type is discrete (countable) or not, etc.</p>
 		<p>We will use the simple example of a car to further illustrate data modeling constructs.</p>
@@ -29,10 +29,10 @@
 		<p>Numeric Types can be of Kind Float or Integer; their min and max Values define the range of the possible Values for the Numeric Type.</p>
 		<p>Let us create a first Numeric Type of Kind Integer called Mileage, for our car description. </p>
 		<p><center>
-			<img border="0" src="Images\image007.png"/></center>
+			<img border="0" src="Images/image007.png"/></center>
 		</p>
 		<p><center>
-			<img border="0" src="Images\image008.png"/></center>
+			<img border="0" src="Images/image008.png"/></center>
 		</p>
 		<h4 id="PhysicalQuantity">PhysicalQuantity</h4>
 		<p>Physical Quantity is a specific kind of Numeric Type. It represents a physical “dimension” and is associated to Unit (meter, gram, volt, etc.).</p>
@@ -40,52 +40,52 @@
 		<p>A Unit of measurement is a definite magnitude of a physical quantity, defined and adopted by convention and/or by law, that is used as a standard for measurement of the same physical quantity. Units are used in Physical Quantity data types and [ Numeric Values].</p>
 		<p>The speed of a car, for instance, can be expressed in terms of km/h (or mile/h, depending on the country).</p>
 		<p><center>
-			<img border="0" src="Images\image009.png"/></center>
+			<img border="0" src="Images/image009.png"/></center>
 		</p>
 		<p>The Mileage of a car is more precisely expressed in terms of kilometers or miles. If we wish to add this Unit concept, we need to use a Physical Quantity Type instead of a Numeric Type. </p>
 		<p><center>
-			<img border="0" src="Images\image010.png"/></center>
+			<img border="0" src="Images/image010.png"/></center>
 		</p>
 		<p>Speed can also be a Physical Quantity, with another Unit. We could even define two different Speed types, with different units…</p>
 		<p><center>
-			<img border="0" src="Images\image011.png"/></center>
+			<img border="0" src="Images/image011.png"/></center>
 		</p>
 		<h4 id="Enumeration">Enumeration</h4>
 		<p>An Enumeration is a simple data type whose possible values are enumerated in the model as Enumeration Literals.</p>
 		<p>For instance, when you buy a car, you can choose its color in a predefined set.</p>
 		<p><center>
-			<img border="0" src="Images\image012.png"/></center>
+			<img border="0" src="Images/image012.png"/></center>
 		</p>
 		<p><center>
-			<img border="0" src="Images\image013.png"/></center>
+			<img border="0" src="Images/image013.png"/></center>
 		</p>
 		<h4 id="BooleanType">BooleanType</h4>
 		<p>A Boolean Type is a kind of simple data type. A Boolean type defines two named values which hold the semantics of truth and falsehood. </p>
 		<p><center>
-			<img border="0" src="Images\image014.png"/></center>
+			<img border="0" src="Images/image014.png"/></center>
 		</p>
 		<h4 id="StringType">StringType</h4>
 		<p>A String Type is a kind of simple data type, representing a sequence of characters. A String defines a piece of text. The semantics of the string itself depends on its purpose; it can be a comment, computational language expression, OCL expression, etc.</p>
 		<p>In our example, the owner of the car could be a person, with a first name and a last name. The first name and the last name are of kind String Type. Hence we define a specific String Type named “Name”.</p>
 		<p><center>
-			<img border="0" src="Images\image015.png"/></center>
+			<img border="0" src="Images/image015.png"/></center>
 		</p>
 		<h3 id="Complex_Type">Complex Type</h3>
 		<p>In Capella , simple types cannot own [ Properties]. So if we need structured data types, we have to create Classes, but then we have to specify that these classes are “[ primitive]”. These primitive classes play the role of complex types.</p>
 		<p><center>
-			<img border="0" src="Images\image016.png"/></center>
+			<img border="0" src="Images/image016.png"/></center>
 		</p>
 		<p>Primitive Classes can be used to type other Class Properties, but cannot be the source or target of [ associations]. Primitive means instances of the class have no identity in the context of the system.</p>
 		<p>Let us give an example. If we need a Date type containing three properties like year, month, and day, we have to create a “primitive” class. </p>
 		<p><center>
-			<img border="0" src="Images\image017.png"/></center>
+			<img border="0" src="Images/image017.png"/></center>
 		</p>
 		<p>A simple solution consists in creating three properties with the Integer type. We can further specify that Min and Max values for month are 1 and 12, and that Min and Max values for day are 1 and 31.</p>
 		<p><center>
-			<img border="0" src="Images\image018.png"/></center>
+			<img border="0" src="Images/image018.png"/></center>
 		</p>
 		<p><center>
-			<img border="0" src="Images\image019.png"/></center>
+			<img border="0" src="Images/image019.png"/></center>
 		</p>
 		<p>Two instances of the Date Class with the same property values cannot be distinguished&nbsp;; A date does not have any intrinsic identity, contrary to a car or a person, it is a «&nbsp;primitive&nbsp;» class or complex type.</p>
 		<h3 id="Class">Class</h3>
@@ -93,12 +93,12 @@
 		<p>The purpose of a Class is to specify a classification of objects and to specify the features that characterize the structure and behavior of those objects. </p>
 		<p>Classes have properties, typed by other Classes, [ Unions], [ Collections], data types, etc. Objects of a class must contain values for each property of that class, in accordance with the characteristics of the property, for example its type and multiplicity.</p>
 		<p><center>
-			<img border="0" src="Images\image020.png"/></center>
+			<img border="0" src="Images/image020.png"/></center>
 		</p>
 		<p>Classes are the Capella declination of the UML concept of “Class”. So, many possibilities given by the UML Class Diagram are available here: classes can be associated and generalized, etc.</p>
 		<h4 id="Class_Editor">Class Editor</h4>
 		<p><center>
-			<img border="0" src="Images\image021.png"/></center>
+			<img border="0" src="Images/image021.png"/></center>
 		</p>
 		<table class="prettytable">
 			<tr>
@@ -213,37 +213,37 @@
 		<h4 id="Property">Property</h4>
 		<p>Properties of a class can be held directly by the class itself or by the navigable [ role] of an [ association] from this class. When held by a class, a property is also called attribute.</p>
 		<p><center>
-			<img border="0" src="Images\image022.png"/></center>
+			<img border="0" src="Images/image022.png"/></center>
 		</p>
 		<p>Properties are constituent members of structured elements such as Classes and Unions.</p>
 		<p>A Property has mainly a name and a type. A property is complex or simple depending whether its type is complex (class or complex data type) or simple (simple data type).</p>
 		<p><center>
-			<img border="0" src="Images\image023.png"/></center>
+			<img border="0" src="Images/image023.png"/></center>
 		</p>
 		<h4 id="Key">Key</h4>
 		<p>A Property (attribute or association role) can be part of key. It means that the values of this property enable to distinguish different instances of the Class.</p>
 		<p>For instance, assuming there are no homonyms, we could say that both properties (firstName + lastName) make the key for the class Person. Of course, weight, height or birthday, would not be valid keys. But this is highly domain-dependent.</p>
 		<p><center>
-			<img border="0" src="Images\image024.png"/></center>
+			<img border="0" src="Images/image024.png"/></center>
 		</p>
 		<p>Key properties are noted with a “&amp;” prefix.</p>
 		<p>Note that a key is said to be composite when it is made of several parts or a unique complex part, whereas simple keys are specified by a unique simple property.</p>
 		<p>Let us give a simple example of an association role being part of a key: a Ground Antenna is both identified by its own antenna number and the Ground Station it is related to (Ground Antennas are numbered by: Ground Antenna 1, 2 3 … of Ground Station STA1).</p>
 		<p><center>
-			<img border="0" src="Images\image025.png"/></center>
+			<img border="0" src="Images/image025.png"/></center>
 		</p>
 		<h4 id="Cardinality">Cardinality</h4>
 		<p>By default, each instance of a Class will bear exactly one value for each Property of the Class: Min. Card = Max. Card = 1.</p>
 		<p>We can specify that a property is optional, by setting its Min. Card to “0” instead of “1”. We can also specify that a property may have several values by setting the Max. Card to more than 1.</p>
 		<p>In France, for instance, when a child is born and declared, the parents must give him/her at least one first name, but there is no official number limit. The order of declaration is important, and the first one is the official first name. Let us also specify an optional middle name …</p>
 		<p><center>
-			<img border="0" src="Images\image026.png"/></center>
+			<img border="0" src="Images/image026.png"/></center>
 		</p>
 		<p>The cardinality bounds are typically shown in the format: </p>
 		<p>&lt;lower-bound&gt; ‘..’ &lt;upper-bound&gt;</p>
 		<p>where &lt;lower-bound&gt; is an integer and &lt;upper-bound&gt; is an unlimited natural number. The star character (*) is used as part of a cardinality specification to represent the unlimited (or infinite) upper bound.</p>
 		<p><center>
-			<img border="0" src="Images\image027.png"/></center>
+			<img border="0" src="Images/image027.png"/></center>
 		</p>
 		<p>Note that for a multi-valued property to be part of a key, it shall be ordered.</p>
 		<p>The usual practice is to allow only properties with [1..1] multiplicity as being part of a key</p>
@@ -374,7 +374,7 @@
 		<p>The default value can be overwritten in a subtype.</p>
 		<p>Example: Numeric Type 1 redefines to 9 the default value of Numeric Type 2 (45).</p>
 		<p><center>
-			<img border="0" src="Images\image028.png"/></center>
+			<img border="0" src="Images/image028.png"/></center>
 		</p>
 		<h5 id="Null_Value">Null Value</h5>
 		<p>If the null value is defined for a type, wherever a value of this type is expected, the null value shall be provided to actually specify “no value”. The null value of a type is the concrete (physical) value to specify “no value” from a logical point of view.</p>
@@ -390,7 +390,7 @@
 		<p>Property ordering may be considered for data detailed definition.</p>
 		<p>Note that, with Capella , ordering can be changed inside the model explorer, but not directly from diagrams.</p>
 		<p><center>
-			<img border="0" src="Images\image029.png"/></center>
+			<img border="0" src="Images/image029.png"/></center>
 		</p>
 		<h4 id="Operation">Operation</h4>
 		<p>An operation is a behavioral feature of a class that specifies the name, type, parameters, and constraints for invoking an associated behavior. </p>
@@ -403,17 +403,17 @@
 		</p>
 		<p>In our example, let us speak also about motorbikes. Cars and motorbikes are “vehicles”. We can create an abstract Class “Vehicle” that will factorize all the common properties for cars and motorbikes.</p>
 		<p><center>
-			<img border="0" src="Images\image030.png"/></center>
+			<img border="0" src="Images/image030.png"/></center>
 		</p>
 		<p>
 			<i>isAbstract</i>: Boolean. Default value is false.
 		</p>
 		<p><center>
-			<img border="0" src="Images\image031.png"/></center>
+			<img border="0" src="Images/image031.png"/></center>
 		</p>
 		<p>Take care that all properties of the generalized class (super-class) must be meaningful for all the subclasses! If we wish to add the bicycles to our model, it would not be a good idea just to add a third subclass, as it would imply that bicycles have also registration numbers and mileage. A better model would be the following one:</p>
 		<p><center>
-			<img border="0" src="Images\image032.png"/></center>
+			<img border="0" src="Images/image032.png"/></center>
 		</p>
 		<h4 id="isPrimitive">isPrimitive</h4>
 		<p>When a class is tagged “isPrimitive”, it becomes a [ Complex Type].</p>
@@ -442,22 +442,22 @@
 		</ul>
 		<p>In our example, we just wanted to express that the minimum mileage value is “0”.</p>
 		<p><center>
-			<img border="0" src="Images\image033.png"/></center>
+			<img border="0" src="Images/image033.png"/></center>
 		</p>
 		<h4 id="Enumeration_Literal">Enumeration Literal</h4>
 		<p>An Enumeration Literal is a user-defined possible [ Enumeration] instance.</p>
 		<p>We can specify the precise list of available colors for cars. Let us begin…</p>
 		<p><center>
-			<img border="0" src="Images\image034.png"/></center>
+			<img border="0" src="Images/image034.png"/></center>
 		</p>
 		<p><center>
-			<img border="0" src="Images\image035.jpg"/></center>
+			<img border="0" src="Images/image035.jpg"/></center>
 		</p>
 		<p>Each Enumeration literal can be associated optionally with an Domain value, enabling to treat them as an ordered set (next, previous). This Domain Value field should be consistent with the Domain Type declared in the owning Enumeration data type.</p>
 		<h4 id="Literal_Boolean_Value">Literal Boolean Value</h4>
 		<p>Literal Boolean values are used to define the names of true and false values of a Boolean type. </p>
 		<p><center>
-			<img border="0" src="Images\image036.png"/></center>
+			<img border="0" src="Images/image036.png"/></center>
 		</p>
 		<p>Examples of Boolean Literals:</p>
 		<ul>
@@ -465,7 +465,7 @@
 			<li>ON, OFF</li>
 		</ul>
 		<p><center>
-			<img border="0" src="Images\image037.png"/></center>
+			<img border="0" src="Images/image037.png"/></center>
 		</p>
 		<p>A good practice is to have only one Boolean type in a model. If there is a need of defining other values (Yes/No, etc.), it is strongly recommended to create an Enumeration simple type owning two Enumeration literals, and then to associate each of the literals to either false of true value of the Boolean type. </p>
 		<h4 id="Literal_String_Value">Literal String Value</h4>
@@ -477,13 +477,13 @@
 			<li>‘John Doe’</li>
 		</ul>
 		<p><center>
-			<img border="0" src="Images\image038.png"/></center>
+			<img border="0" src="Images/image038.png"/></center>
 		</p>
 		<p>These String Literals can then be used in default and null values of properties typed by a String data type.</p>
 		<h3 id="Association">Association</h3>
 		<p>An Association is a semantic relationship between two Classes (or Unions and Collections). “Association” represents a relationship shared among the instances of two classes.</p>
 		<p><center>
-			<img border="0" src="Images\image039.png"/></center>
+			<img border="0" src="Images/image039.png"/></center>
 		</p>
 		<p>An association is normally drawn as a solid line connecting two types, or a solid line connecting a single classifier to itself (the two ends are distinct).</p>
 		<p>Note: Distinction between “attribute” and “association” properties should be made upon the basis of the type of the element linked to the class:</p>
@@ -494,16 +494,16 @@
 		<p>As a consequence, it is neither possible to create an association towards a Datatype / primitive Class, neither possible to type a single Property with a non-primitive Class.</p>
 		<p>In our example, imagine we just need the last name for the owner of a car, assuming there are no homonyms, the following simple model would be sufficient.</p>
 		<p><center>
-			<img border="0" src="Images\image040.png"/></center>
+			<img border="0" src="Images/image040.png"/></center>
 		</p>
 		<p>But as soon as we need more information on the owner, the best is to add a Class Person, and create an association between Car and Person, as in the next figure.</p>
 		<p><center>
-			<img border="0" src="Images\image041.png"/></center>
+			<img border="0" src="Images/image041.png"/></center>
 		</p>
 		<h4 id="Role">Role</h4>
 		<p>An association end is the connection between the line depicting an association and the box depicting the connected class. A name string may be placed near the end of the line to show the name of the association end. The name is optional and suppressible.</p>
 		<p><center>
-			<img border="0" src="Images\image042.png"/></center>
+			<img border="0" src="Images/image042.png"/></center>
 		</p>
 		<p>There can be several associations between two classes, each representing a specific relationship (with its own properties). For instance, let us assume that a car always has one and exactly one owner, whereas it can have zero or one driver at a time.  The Person class plays two roles with respect to class Car: owner and driver roles. Conversely, a person can own several cars simultaneously, but cannot drive more than one car.</p>
 		<h4 id="Cardinality_2">Cardinality</h4>
@@ -527,15 +527,15 @@
 		</ul>
 		<p>A cardinality with zero as the lower bound and an unspecified upper bound may use the alternative notation containing a single star “*” instead of “0..*”. In Capella , as for Properties, the default is supposed to be “1..1”, and is not displayed.</p>
 		<p><center>
-			<img border="0" src="Images\image043.png"/></center>
+			<img border="0" src="Images/image043.png"/></center>
 		</p>
 		<p>If the lower bound is equal to the upper bound, then an alternate notation is to use the string containing just the upper bound. For example, “4” is semantically equivalent to “4..4” (exactly 4). </p>
 		<p><center>
-			<img border="0" src="Images\image044.png"/></center>
+			<img border="0" src="Images/image044.png"/></center>
 		</p>
 		<p>The lower and upper bounds for cardinality may be specified by [ Literal values] or [ References] (it is also true for attribute cardinalities).</p>
 		<p><center>
-			<img border="0" src="Images\image045.png"/></center>
+			<img border="0" src="Images/image045.png"/></center>
 		</p>
 		<p>For instance in our example, the Constellation contains both operational and spare satellites. To be more flexible, we do not want to fix the number of operational and spare satellites once and for all in the cardinality ranges. We prefer to refer to named constants or references, so that if they appear in multiple diagrams, we only have to change the unique definitions.</p>
 		<p>Notice the difference:</p>
@@ -546,20 +546,20 @@
 		<p>A good practice to name classes that are not collections is to always use singular. Do not forget that cardinalities are there to express multiplicity!</p>
 		<p>Take care also not to abuse of [0..*] or [*] cardinalities: they are never wrong but often too imprecise</p>
 		<p><center>
-			<img border="0" src="Images\image046.png"/></center>
+			<img border="0" src="Images/image046.png"/></center>
 		</p>
 		<h4 id="Navigability">Navigability</h4>
 		<p>Navigability means instances participating in links at runtime (instances of an association) can be accessed efficiently from instances participating in links at the other ends of the association. The precise mechanism by which such access is achieved is implementation specific. If an end is not navigable, access from the other ends may or may not be possible, and if it is, it might not be efficient.</p>
 		<p>An open arrowhead on the end of an association indicates the end is navigable. In the following example, the Person can access directly to his/her owned cars, and the Car can access to its owner.</p>
 		<p><center>
-			<img border="0" src="Images\image047.png"/></center>
+			<img border="0" src="Images/image047.png"/></center>
 <center>
-			<img border="0" src="Images\image048.png"/></center>
+			<img border="0" src="Images/image048.png"/></center>
 		</p>
 		<p>Specially when a modeling objective is code generation, it is strongly advised to reduce the navigability of associations to only one direction to minimize coupling. In the following diagram, for instance each Car knows directly its owner, but a person cannot access directly to ownedCars. This does not mean that the system does not have the capability to access the cars owned by a person, but it will not be performed directly from the person side.</p>
 		<p>If the role is not navigable, its name is optional, and is not displayed on the diagram. Conversely, the role name must be filled in the navigable role side.</p>
 		<p><center>
-			<img border="0" src="Images\image049.png"/></center>
+			<img border="0" src="Images/image049.png"/></center>
 		</p>
 		<p>Note also that:</p>
 		<ul>
@@ -567,34 +567,34 @@
 			<li>whereas non navigable roles appear as properties of the association itself</li>
 		</ul>
 		<p><center>
-			<img border="0" src="Images\image050.jpg"/></center>
+			<img border="0" src="Images/image050.jpg"/></center>
 		</p>
 		<h4 id="Name">Name</h4>
 		<p>It is also possible to give a name to the association itself, instead of or in addition to the role names. Take care: by default, the name of the association does not appear on the diagram! You have to deactivate the default filter called “association label”.</p>
 		<p><center>
-			<img border="0" src="Images\image051.png"/></center>
+			<img border="0" src="Images/image051.png"/></center>
 		</p>
 		<p><center>
-			<img border="0" src="Images\image052.png"/></center>
+			<img border="0" src="Images/image052.png"/></center>
 		</p>
 		<p>Take care that if you change the layout of the diagram, for instance if you put Car on the left and Person on the right, the verbs will read in the wrong direction! Very often, the reading direction of each verb is obvious from the domain knowledge, but it may not be the case. Two possibilities are available: either prefer the role names, or use additional symbols such as &lt; or ^ (but you will have to modify them if you change again the layout).</p>
 		<p>And do not forget that navigability (arrows on associations) and direction of the verb naming the association are completely distinct notions&nbsp;!</p>
 		<p><center>
-			<img border="0" src="Images\image053.png"/></center>
+			<img border="0" src="Images/image053.png"/></center>
 		</p>
 		<h4 id="Associations_in_Project_Explorer">Associations in Project Explorer</h4>
 		<p>Properties of a class (attributes or navigable roles) are shown in the same way under their owning class in Project Explorer.</p>
 		<p>A first example is given by the next figure, where the class Car is shown in the Project explorer with 3 attributes and two navigable roles.</p>
 		<p><center>
-			<img border="0" src="Images\image054.png"/></center>
+			<img border="0" src="Images/image054.png"/></center>
 		</p>
 		<p>As soon as we reverse the navigability of the first association, one property disappears (owner: Person).</p>
 		<p><center>
-			<img border="0" src="Images\image055.png"/></center>
+			<img border="0" src="Images/image055.png"/></center>
 		</p>
 		<p>When an association is navigable in both directions, one property for each navigable role is visible under each class.</p>
 		<p><center>
-			<img border="0" src="Images\image056.png"/></center>
+			<img border="0" src="Images/image056.png"/></center>
 		</p>
 		<p>Remember that non navigable roles appear as properties of the association itself.</p>
 		<p>Take care also that if you ever change the name of a Class, the names of the roles pointing to it will not be changed automatically!</p>
@@ -602,54 +602,54 @@
 		<p>When Aggregation Kind of a role is ASSOCIATION, the association is a simple association. For this role, the origin class has a reference to the target class which shall own or inherit a key.</p>
 		<p>“Aggregation” is a variant of the "has a" association relationship; aggregation is more specific than association. It is an association that represents a part-of relationship. </p>
 		<p><center>
-			<img border="0" src="Images\image057.png"/></center>
+			<img border="0" src="Images/image057.png"/></center>
 		</p>
 		<p>Take care: as this concept does not have a universally agreed semantics (it is a semantic variation point in UML), it is advised not to use it unless you define a clear semantics for your project.</p>
 		<p>“Composition” (or composite aggregation) is a strong form of aggregation that requires a part instance be included in at most one composite at a time. If a composite is deleted, all of its parts are normally deleted with it. Note that a part can (where allowed) be removed from a composite before the composite is deleted, and thus not be deleted as part of the composite. Compositions may be linked in a directed acyclic graph with transitive deletion characteristics; that is, deleting an element in one part of the graph will also result in the deletion of all elements of the composition subgraph below that element.</p>
 		<p>Composition is represented by a black diamond on the origin end of the association.</p>
 		<p><center>
-			<img border="0" src="Images\image058.png"/></center>
+			<img border="0" src="Images/image058.png"/></center>
 		</p>
 		<p><center>
-			<img border="0" src="Images\image059.png"/></center>
+			<img border="0" src="Images/image059.png"/></center>
 		</p>
 		<p>An association with Aggregation Kind = AGGREGATION (shared association in UML) differs in notation from simple associations in adding a hollow diamond as a terminal adornment at the aggregate end of the association line. An association with Aggregation Kind = COMPOSITION has also a diamond at the aggregate end, but differs in having the diamond filled in.</p>
 		<p><center>
-			<img border="0" src="Images\image060.png"/></center>
+			<img border="0" src="Images/image060.png"/></center>
 		</p>
 		<p>In our example, we have expressed the fact that a car always contains four wheels and a boot. These elements are present when you buy the car; they belong to the product definition (EPBS). On the contrary, there may be luggage in the boot from time to time, but luggage does not belong to the product definition.</p>
 		<p>Take care not to create multiple compositions where the same Class is involved as a part. It is very often the symptom of a wrong analysis. At least, pay attention to the cardinality on the composite side: the same element cannot belong to several composites! For instance, the following diagram is correct when you read it from top to bottom. But when you read it from bottom to top, it expresses the false assertion that a Wheel belongs both to a Car and a Motorbike!</p>
 		<p><center>
-			<img border="0" src="Images\image061.png"/></center>
+			<img border="0" src="Images/image061.png"/></center>
 		</p>
 		<p>A better solution is to specifiy [0..1] cardinalities on the composite sides</p>
 		<p><center>
-			<img border="0" src="Images\image062.png"/></center>
+			<img border="0" src="Images/image062.png"/></center>
 		</p>
 		<p>An even better model is the following one (with the XOR constraint):</p>
 		<p><center>
-			<img border="0" src="Images\image063.png"/></center>
+			<img border="0" src="Images/image063.png"/></center>
 		</p>
 		<p>Refrain absolutely from circular compositions (or aggregations). </p>
 		<p>Note also that Aggregation type, navigability, and end ownership are orthogonal concepts, each with their own explicit notation.</p>
 		<p><center>
-			<img border="0" src="Images\image064.png"/></center>
+			<img border="0" src="Images/image064.png"/></center>
 		</p>
 		<h3 id="Generalization">Generalization</h3>
 		<p>Where a generalization relates a specific class to a general class, each instance of the specific class is also an instance of the general class. Therefore, properties specified for instances of the general class are implicitly specified for instances of the specific class. Any constraint applying to instances of the general class also applies to instances of the specific class.</p>
 		<p><center>
-			<img border="0" src="Images\image065.png"/></center>
+			<img border="0" src="Images/image065.png"/></center>
 		</p>
 		<p>A Generalization is shown as a line with a hollow triangle as an arrowhead between the symbols representing the involved classes. The arrowhead points to the symbol representing the general class. The Generalization relationship is also shown in the Properties sheet under the topic “Super”, which indicates the super-class.</p>
 		<p><center>
-			<img border="0" src="Images\image066.png"/></center>
+			<img border="0" src="Images/image066.png"/></center>
 		</p>
 		<p>Mutual generalizations between classes A and B are impossible and Capella  prevents to create the second generalization in the opposite direction. Moreover, Capella  even detects circular generalizations and prevents them.</p>
 		<h3 id="Package">Package</h3>
 		<h4 id="Definition">Definition</h4>
 		<p>A package is used to group elements, and provides a namespace for the grouped elements. A package may contain other packages. A package owns its members, with the implication that if a package is deleted from a model, so are its owned elements. In Capella , packages are shown as rectangles.</p>
 		<p><center>
-			<img border="0" src="Images\image067.png"/></center>
+			<img border="0" src="Images/image067.png"/></center>
 		</p>
 		<p>In our example, we have organized all the System Analysis Types into three packages:</p>
 		<ul>
@@ -664,7 +664,7 @@
 			</li>
 		</ul>
 		<p><center>
-			<img border="0" src="Images\image068.jpg"/></center>
+			<img border="0" src="Images/image068.jpg"/></center>
 		</p>
 		<p>It is highly recommended not to put all the types «&nbsp;flat&nbsp;» in the 
 			<i>Data</i> existing package. Inside 
@@ -672,7 +672,7 @@
 			<i>Basic Types</i>, we could have created subpackages to better structure the Data Model. Usually classes and basic types are mixed in packages for the structuration in packages shall rely on business criteria and not on type kind (class vs datatype). A useful recommendation is to limit the number of datatypes and classes in a package to 20.
 		</p>
 		<p><center>
-			<img border="0" src="Images\image069.jpg"/></center>
+			<img border="0" src="Images/image069.jpg"/></center>
 		</p>
 		<p>A package can contain Types, Exchange Items, but also Associations and diagrams.</p>
 		<h4 id="Dependencies">Dependencies</h4>
@@ -684,14 +684,14 @@
 		<p>Package dependencies can be deduced from crossing navigable associations or generalizations between types (this is why it is already important to restrict the navigability of associations to only one direction), and also from the fact that properties are typed by elements belonging to another package.</p>
 		<p>For instance, in the next figure, we see that Capella  detects the dependency between packages, because an association exists between classes owned by these packages.</p>
 		<p><center>
-			<img border="0" src="Images\image070.png"/></center>
+			<img border="0" src="Images/image070.png"/></center>
 		</p>
 		<p><center>
-			<img border="0" src="Images\image071.png"/></center>
+			<img border="0" src="Images/image071.png"/></center>
 		</p>
 		<p>A very interesting feature of Capella  is the ability to calculate and draw dependencies between packages based on associations and generalizations between owned Types. </p>
 		<p><center>
-			<img border="0" src="Images\image072.png"/></center>
+			<img border="0" src="Images/image072.png"/></center>
 		</p>
 		<p>On our example, Capella  was able to calculate that 
 			<i>Classes</i> depends on 
@@ -701,58 +701,58 @@
 			<i>Predefined Types</i>. In the Package Dependencies diagram, if we insert all packages, the following diagram is automatically displayed:
 		</p>
 		<p><center>
-			<img border="0" src="Images\image073.png"/></center>
+			<img border="0" src="Images/image073.png"/></center>
 		</p>
 		<p>We can check easily that there are no mutual dependencies, nor circular ones.</p>
 		<h3 id="CDB_.28Class_Diagram_Blank.29">CDB (Class Diagram Blank)</h3>
 		<p>All definitions of Classes, Types and Exchange items are done in Capella  through Class Diagrams. These CDB (Class Diagram Blank) are available at each Arcadia abstraction level.</p>
 		<p><center>
-			<img border="0" src="Images\image074.png"/></center>
+			<img border="0" src="Images/image074.png"/></center>
 		</p>
 		<h4 id="Filters">Filters</h4>
 		<p>There are several filters available in the CDB. </p>
 		<p><center>
-			<img border="0" src="Images\image075.jpg"/></center>
+			<img border="0" src="Images/image075.jpg"/></center>
 		</p>
 		<p>Only the “Hide Association Labels” filter is activated by default. We have given examples of this filter and the following one: “Hide Role Labels” in the [ Association Name §].</p>
 		<h5 id="Hide_Properties">Hide Properties</h5>
 		<p>This filter hides the properties inside classes. But it does not hide the literals inside the basic types.</p>
 		<p><center>
-			<img border="0" src="Images\image076.png"/></center>
+			<img border="0" src="Images/image076.png"/></center>
 		</p>
 		<h5 id="Hide_Operations">Hide Operations</h5>
 		<p>This filter hides the operations inside classes. Remember we strongly advise not to use operations inside classes.</p>
 		<h5 id="Hide_Associations">Hide Associations</h5>
 		<p>This filter hides the associations between classes, including aggregations and compositions.</p>
 		<p><center>
-			<img border="0" src="Images\image077.png"/></center>
+			<img border="0" src="Images/image077.png"/></center>
 		</p>
 		<h5 id="Hide_Generalizations">Hide Generalizations</h5>
 		<p>This filter hides the generalizations between classes.</p>
 		<p><center>
-			<img border="0" src="Images\image078.png"/></center>
+			<img border="0" src="Images/image078.png"/></center>
 		</p>
 		<h5 id="Show_Full_Path">Show Full Path</h5>
 		<p>This filter shows the full path of owning packages.</p>
 		<p><center>
-			<img border="0" src="Images\image079.png"/></center>
+			<img border="0" src="Images/image079.png"/></center>
 		</p>
 		<h5 id="Hide_Derived_Properties">Hide Derived Properties</h5>
 		<p>This filter hides the [ derived] properties inside classes.</p>
 		<p><center>
-			<img border="0" src="Images\image080.png"/></center>
+			<img border="0" src="Images/image080.png"/></center>
 		</p>
 		<h4 id="Toolbox">Toolbox</h4>
 		<h5 id="Insert_.2F_Remove_Types">Insert / Remove Types</h5>
 		<p>All Classes, Primitive Classes and Basic Types are managed through the same tool: Insert/Remove Types.</p>
 		<p><center>
-			<img border="0" src="Images\image081.png"/></center>
+			<img border="0" src="Images/image081.png"/></center>
 		</p>
 		<h2 id="Communication_Model">Communication Model</h2>
 		<h3 id="Main_Communication_Concepts">Main Communication Concepts</h3>
 		<p>The following figure gives a summary of Exchange concepts throughout the Arcadia abstraction levels:</p>
 		<p><center>
-			<img border="0" src="Images\image082.jpg"/></center>
+			<img border="0" src="Images/image082.jpg"/></center>
 		</p>
 		<p>Why are additional concepts necessary? The reason is the purpose of each concept:</p>
 		<ul>
@@ -765,7 +765,7 @@
 		<p>- An Exchange or port can implement many Exchange Items for complex communication;</p>
 		<p>- Data to be allocated to a port or exchange are in fact allocated to it through one or more Exchange items.</p>
 		<p><center>
-			<img border="0" src="Images\image083.jpg"/></center>
+			<img border="0" src="Images/image083.jpg"/></center>
 		</p>
 		<h3 id="Exchange_Item">Exchange Item</h3>
 		<p>An Exchange Item defines a communication media and a set of data</p>
@@ -790,7 +790,7 @@
 			<li>carrying a requested communication principle if necessary (e.g. event, dataflow, message, service, shared data, continuous flow…).</li>
 		</ul>
 		<p><center>
-			<img border="0" src="Images\image084.png"/></center>
+			<img border="0" src="Images/image084.png"/></center>
 		</p>
 		<table class="prettytable">
 			<tr>
@@ -881,40 +881,40 @@
 		<p>Structured Data sent from one Component / Function and received by a unique receiver (unicast), a defined set of receivers (multicast) or an undefined set of receivers (broadcast).</p>
 		<p>It is possible to represent explicitly the Event in an IDB, along with Communication Links.</p>
 		<p><center>
-			<img border="0" src="Images\image085.png"/></center>
+			<img border="0" src="Images/image085.png"/></center>
 		</p>
 		<p>Using the Communication Link editor, it is possible to specify the SEND  protocol. Here, BROADCAST is selected.</p>
 		<p><center>
-			<img border="0" src="Images\image086.png"/></center>
+			<img border="0" src="Images/image086.png"/></center>
 		</p>
 		<p>The Communication Link label on the Interface diagram is then updated.</p>
 		<p><center>
-			<img border="0" src="Images\image087.png"/></center>
+			<img border="0" src="Images/image087.png"/></center>
 		</p>
 		<h4 id="Operation_2">Operation</h4>
 		<p>Exchange Item with a communication mechanism set to OPERATION. </p>
 		<p>Piece of behavior with input and output parameters, executed by one Component / Function and requested by others. Operations can be synchronous or asynchronous.</p>
 		<p>It is possible to represent explicitly the Operation in an IDB, along with Communication Links.</p>
 		<p><center>
-			<img border="0" src="Images\image088.png"/></center>
+			<img border="0" src="Images/image088.png"/></center>
 		</p>
 		<p>Using the Communication Link editor, it is possible to specify the CALL protocol. Here, ASYNCHRONOUS  is selected.</p>
 		<p><center>
-			<img border="0" src="Images\image089.png"/></center>
+			<img border="0" src="Images/image089.png"/></center>
 		</p>
 		<p>The Communication Link label on the Interface diagram is then updated.</p>
 		<p><center>
-			<img border="0" src="Images\image090.png"/></center>
+			<img border="0" src="Images/image090.png"/></center>
 		</p>
 		<h4 id="Flow">Flow</h4>
 		<p>Exchange Item with a communication mechanism set to FLOW.</p>
 		<p>Continuous or discrete Flow of information / material (fluid, electric power, calories, etc.) produced by a Component / Function and consumed by one or several others.</p>
 		<p>It is possible to represent explicitly the Flow in an IDB, along with Communication Links.</p>
 		<p><center>
-			<img border="0" src="Images\image091.png"/></center>
+			<img border="0" src="Images/image091.png"/></center>
 		</p>
 		<p><center>
-			<img border="0" src="Images\image092.png"/></center>
+			<img border="0" src="Images/image092.png"/></center>
 		</p>
 		<p>Using the Communication Link editor, it is not possible to specify the PRODUCE protocol, contrarily to the other kinds of Exchange Items.</p>
 		<h4 id="Shared_Data">Shared Data</h4>
@@ -925,24 +925,24 @@
 		</ul>
 		<p>It is possible to represent explicitly the Shared Data in an IDB, along with Communication Links.</p>
 		<p><center>
-			<img border="0" src="Images\image093.png"/></center>
+			<img border="0" src="Images/image093.png"/></center>
 		</p>
 		<p>Using the Communication Link editor, it is possible to specify the ACCESS protocol. Here, READ is selected.</p>
 		<p><center>
-			<img border="0" src="Images\image094.png"/></center>
+			<img border="0" src="Images/image094.png"/></center>
 		</p>
 		<p>The Shared Data can also be grouped in an Interface.</p>
 		<p><center>
-			<img border="0" src="Images\image095.png"/></center>
+			<img border="0" src="Images/image095.png"/></center>
 		</p>
 		<p>It is also possible to change the ACCESS protocol using the editor of Exchange Item Allocations. Here, ACCEPT is selected.</p>
 		<p><center>
-			<img border="0" src="Images\image096.png"/></center>
+			<img border="0" src="Images/image096.png"/></center>
 		</p>
 		<h3 id="Exchange_Item_Element">Exchange Item Element</h3>
 		<p>Exchange Items are structured through Exchange Items Elements in the same way as classes are structured in Properties. These elements are in turn defined by classes, complex types and simple types.</p>
 		<p><center>
-			<img border="0" src="Images\image097.png"/></center>
+			<img border="0" src="Images/image097.png"/></center>
 		</p>
 		<p>An Exchange Item Element is either of Kind MEMBER or TYPE. </p>
 		<p>It has the following features:</p>
@@ -952,26 +952,26 @@
 			<li>Is unique. For a multivalued multiplicity (cardinality max &gt; 1), this attribute specifies whether the values in an instantiation of this element are unique (Default is true).</li>
 		</ul>
 		<p><center>
-			<img border="0" src="Images\image098.png"/></center>
+			<img border="0" src="Images/image098.png"/></center>
 		</p>
 		<p>When an Exchange Item has a communication mechanism of type OPERATION, its Exchange Item Elements are mandatorily of type MEMBER, and are used to define the parameters of this operation. It is also mandatory then to specify each parameter direction.</p>
 		<p><center>
-			<img border="0" src="Images\image099.png"/></center>
+			<img border="0" src="Images/image099.png"/></center>
 		</p>
 		<p>Naming Exchange Item Elements is mandatory when kind = MEMBER.</p>
 		<p><center>
-			<img border="0" src="Images\image100.png"/></center>
+			<img border="0" src="Images/image100.png"/></center>
 		</p>
 		<p><center>
-			<img border="0" src="Images\image101.png"/></center>
+			<img border="0" src="Images/image101.png"/></center>
 		</p>
 		<p>Note that for p11, isComposite must be true as Class1 does not have a key property, but p12 can be a reference (isComposite = False), as Class2 inherits its key from Class4.</p>
 		<p>Observe also that it is possible to restrain the Exchange Item Element to a subset of the Class (or data type) properties. In our example, parameter p 21 of Operation 2 could reference only property Class4::a21 through the “Referenced Properties” field.</p>
 		<p><center>
-			<img border="0" src="Images\image102.png"/></center>
+			<img border="0" src="Images/image102.png"/></center>
 		</p>
 		<p><center>
-			<img border="0" src="Images\image103.png"/></center>
+			<img border="0" src="Images/image103.png"/></center>
 		</p>
 		<p>When an Exchange Item has a communication mechanism of type EVENT, FLOW, or SHARED _DATA, its Exchange Item Elements are either of type MEMBER or TYPE,</p>
 		<p>If the Exchange Item Element is of Kind TYPE, the Exchange Item only owns this Exchange Item Element, and the structure of the Exchange Item is completely defined by the type of the Exchange Item Element, and its features: cardinality, ’is composite’, ‘is ordered’ and ‘is unique’.</p>
@@ -979,14 +979,14 @@
 		<h3 id="Interface">Interface</h3>
 		<p>Interfaces are contracts specifying how components can interact with each other. Interfaces are defined by grouping Exchange Items.</p>
 		<p><center>
-			<img border="0" src="Images\image104.png"/></center>
+			<img border="0" src="Images/image104.png"/></center>
 		</p>
 		<p><center>
-			<img border="0" src="Images\image105.png"/></center>
+			<img border="0" src="Images/image105.png"/></center>
 		</p>
 		<p>Interfaces are implemented/provided or used/required by Components/ Components Ports. Each Component/ Component Port can implement - provide / use - require several Interfaces.</p>
 		<p><center>
-			<img border="0" src="Images\image106.png"/></center>
+			<img border="0" src="Images/image106.png"/></center>
 		</p>
 		<p>Interface building rules are:</p>
 		<ul>
@@ -997,54 +997,54 @@
 		<h4 id="Interface_Definition_Blank_.28IDB.29_diagram">Interface Definition Blank (IDB) diagram</h4>
 		<p>An Interface Definition Blank (IDB) enables to create (/insert) Components, Ports, Interfaces, etc.</p>
 		<p><center>
-			<img border="0" src="Images\image107.png"/></center>
+			<img border="0" src="Images/image107.png"/></center>
 		</p>
 		<h4 id="CEI_and_CDI_diagrams">CEI and CDI diagrams</h4>
 		<p>These two related diagrams are contextual diagrams, created from one specific Component (or from the System at System Analysis level).</p>
 		<p>The Contextual Component External Interfaces (CEI) diagram shows all the Interfaces of a Component ( / System) as well as all the relationship of these Interfaces with other Components / Actors.</p>
 		<p><center>
-			<img border="0" src="Images\image108.png"/></center>
+			<img border="0" src="Images/image108.png"/></center>
 		</p>
 		<p>The Contextual Component Detailed Interfaces (CDI) diagram shows all the Interfaces of a Component as well as their contained Exchange Items.</p>
 		<p><center>
-			<img border="0" src="Images\image109.png"/></center>
+			<img border="0" src="Images/image109.png"/></center>
 		</p>
 		<h4 id="Interface_Scenario_.28Vs._Functional_Scenario_and_Exchange_Scenario.29">Interface Scenario (Vs. Functional Scenario and Exchange Scenario)</h4>
 		<p>To illustrate the differences between the three different kinds of Scenarios, let us consider again the simple architecture represented by the following diagram:</p>
 		<p><center>
-			<img border="0" src="Images\image110.jpg"/></center>
+			<img border="0" src="Images/image110.jpg"/></center>
 		</p>
 		<p>A Functional Scenario enables to draw sequence messages representing Functional Exchanges between lifelines representing Functions.</p>
 		<p><center>
-			<img border="0" src="Images\image111.png"/></center>
+			<img border="0" src="Images/image111.png"/></center>
 		</p>
 		<p>It is nevertheless possible to show directly the conveyed Exchange Items instead of the Functional Exchanges on the diagram, by applying a specific filter.</p>
 		<p><center>
-			<img border="0" src="Images\image112.png"/></center>
+			<img border="0" src="Images/image112.png"/></center>
 		</p>
 		<p>An Exchange Interface Scenario enables to draw sequence messages representing Functional or Component Exchanges between lifelines representing Components. It is also possible to see the conveyed Exchange Items by applying the same filter.</p>
 		<p><center>
-			<img border="0" src="Images\image113.png"/></center>
+			<img border="0" src="Images/image113.png"/></center>
 		</p>
 		<p>An Interface Scenario enables to draw sequence messages representing directly Exchange Items between lifelines representing also Components.</p>
 		<p><center>
-			<img border="0" src="Images\image114.png"/></center>
+			<img border="0" src="Images/image114.png"/></center>
 		</p>
 		<p>Note that it is possible to create new Exchange Items on the fly, and even new Interfaces, instead of selecting existing ones.</p>
 		<p><center>
-			<img border="0" src="Images\image115.png"/></center>
+			<img border="0" src="Images/image115.png"/></center>
 		</p>
 		<p>A big difference between Scenario and Data Flow Blank diagrams is that you can specify duration constraints on scenarios, and also loops, alternatives or optional conditions with the “combined fragment” concept.</p>
 		<p><center>
-			<img border="0" src="Images\image116.png"/></center>
+			<img border="0" src="Images/image116.png"/></center>
 		</p>
 		<p>Note that it is also possible to display [ Shared Data] as Lifelines in Interface Scenarios, to explicitly show the READ / WRITE access to them.</p>
 		<p><center>
-			<img border="0" src="Images\image117.png"/></center>
+			<img border="0" src="Images/image117.png"/></center>
 		</p>
 		<p>The same is true for the [ Events].</p>
 		<p><center>
-			<img border="0" src="Images\image118.png"/></center>
+			<img border="0" src="Images/image118.png"/></center>
 		</p>
 	</body>
 </html>

@@ -67,7 +67,7 @@ Addons are installable as "update sites" or as "dropins".
 
 <i>'''Note:''' In both cases, dropins or update sites, make sure that the addon/extension is compatible with your current version of Capella and Capella projects lifecycle. (even if update sites seem to provide some consistency for a Capella installation, a ProjectX may require a dedicated x.y.z version of addon, and administrators shall manage their own Compatibility map per projects, to prevent unexpected updates of a shared Capella installation)</i>
 
-<i>Compatibility information is commonly provided by the addon provider or for open source addons, marked aside the download release information (ex: [[https://github.com/eclipse/capella-requirements-vp/releases|Requirement addon]])</i>
+<i>Compatibility information is commonly provided by the addon provider or for open source addons, marked aside the download release information (ex: [https://github.com/eclipse/capella-requirements-vp/releases|Requirement addon])</i>
 
 <i>'''Note:''' After installation, please see [[#Post-installation steps]]</i>
 
@@ -102,7 +102,7 @@ An update site can also be installed through command line.
 <code>{repository}</code> is one of the following format
 * <code>jar:file:/updatesite.zip!/</code>
 * <code>file://unzipped-updatesite-folder/</code>
-* <code>https://update-site-url</code>
+* <code>https://update-site.url</code>
 
 <code>{featureName}</code> is the name of a feature (see below)
 
@@ -110,7 +110,7 @@ An update site can also be installed through command line.
 
 <code>capellac.exe -application org.eclipse.equinox.p2.director -repository {repository} -list "Q:everything.select(x | x.properties ~= filter('(org.eclipse.equinox.p2.type.group=true)'))"</code>
 
-(See additional query definition for -list at [[https://wiki.eclipse.org/Equinox/p2/Query_Language_for_p2|Query Language]])
+(See additional query definition for -list at [https://wiki.eclipse.org/Equinox/p2/Query_Language_for_p2|Query Language])
 
 == Dropins ==
 
@@ -322,7 +322,7 @@ Notice that you can uninstall a viewpoint on a Capella installation, but your mo
 
 If your model no longer need this part of modeling capability, you can consider to 'unreference' the viewpoint from your model.
 
-See [[/wiki/../help/topic/org.polarsys.kitalpha.ad.doc/html/usersguide/viewpointmanager.html#Unreference|Kitalpha - Architecture Framework Technology Guide > Viewpoint Technology > User's Guide > Viewpoint Manager]] <span class="github-link">[[https://github.com/eclipse/kitalpha/blob/master/architecture%20description/doc/plugins/org.polarsys.kitalpha.ad.doc/html/usersguide/viewpointmanager.mediawiki#Unreference|(online documentation)]]</span>
+See [[../help/topic/org.polarsys.kitalpha.ad.doc/html/usersguide/viewpointmanager.html#Unreference|Kitalpha - Architecture Framework Technology Guide > Viewpoint Technology > User's Guide > Viewpoint Manager]] <span class="github-link">[[https://github.com/eclipse/kitalpha/blob/master/architecture%20description/doc/plugins/org.polarsys.kitalpha.ad.doc/html/usersguide/viewpointmanager.mediawiki#Unreference|(online documentation)]]</span>
 
 === Update Sites ===
 

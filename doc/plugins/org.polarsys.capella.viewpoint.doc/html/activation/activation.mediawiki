@@ -22,4 +22,4 @@ To detach and remove all elements added by this viewpoint in this project, you c
 
 For more informations:
 
-See [[/wiki/../help/topic/org.polarsys.kitalpha.ad.doc/html/usersguide/viewpointmanager.html|Kitalpha - Architecture Framework Technology Guide > Viewpoint Technology > User's Guide]] <span class="github-link">[[https://github.com/eclipse/kitalpha/blob/master/architecture%20description/doc/plugins/org.polarsys.kitalpha.ad.doc/html/usersguide/viewpointmanager.mediawiki|(online documentation)]]</span>
+See [[../help/topic/org.polarsys.kitalpha.ad.doc/html/usersguide/viewpointmanager.html|Kitalpha - Architecture Framework Technology Guide > Viewpoint Technology > User's Guide]] <span class="github-link">[[https://github.com/eclipse/kitalpha/blob/master/architecture%20description/doc/plugins/org.polarsys.kitalpha.ad.doc/html/usersguide/viewpointmanager.mediawiki|(online documentation)]]</span>

@@ -63,14 +63,14 @@ Possible communication mechanisms for Exchange Items are: OPERATION, EVENT, FLOW
 
 Exchange Items are structured through Exchange Items Elements in the same way as classes are structured in Properties. These elements are in turn defined by classes, complex types and simple types.
 
-<center>[[image:Images\image001.png]]</center>
+<center>[[image:Images/image001.png]]</center>
 
 
 
-<center>[[image:Images\image002.jpg]]</center>
+<center>[[image:Images/image002.jpg]]</center>
 
 Definitions of Interfaces, Exchange Items, Exchange Item Elements and Types, are mostly done in Capella through Class Diagrams. These CDBs (Class Diagram Blank) are available at each Arcadia abstraction level, and can be found under the ''Transverse Modeling'' topic.
 
 
 
-<center>[[image:Images\image003.jpg]]</center>
+<center>[[image:Images/image003.jpg]]</center>
