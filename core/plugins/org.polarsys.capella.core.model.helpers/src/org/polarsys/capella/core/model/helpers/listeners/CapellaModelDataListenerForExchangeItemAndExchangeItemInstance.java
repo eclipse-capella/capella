@@ -18,6 +18,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.core.data.helpers.information.services.ExchangeItemExt;
 import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.information.ExchangeItemInstance;
@@ -52,7 +53,11 @@ public class CapellaModelDataListenerForExchangeItemAndExchangeItemInstance exte
 
         if (exchangeItemInstances.size() == 1) {
           ExchangeItemInstance exchangeItemInstance = exchangeItemInstances.get(0);
-          NamingHelper.synchronizeName(exchangeItemInstance, newName);
+          executeCommand(exchangeItemInstance, new AbstractReadWriteCommand() {
+            public void run() {
+              NamingHelper.synchronizeName(exchangeItemInstance, newName);
+            }
+          });
         }
 
       } else if (notifier instanceof ExchangeItemInstance) {
@@ -64,7 +69,11 @@ public class CapellaModelDataListenerForExchangeItemAndExchangeItemInstance exte
               .getTypedExchangeItemInstances(exchangeItem);
 
           if (exchangeItemInstances.size() == 1) {
-            NamingHelper.synchronizeName(exchangeItem, newName);
+            executeCommand(exchangeItem, new AbstractReadWriteCommand() {
+              public void run() {
+                NamingHelper.synchronizeName(exchangeItem, newName);
+              }
+            });
           }
 
         }

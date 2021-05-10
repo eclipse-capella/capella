@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--Capella_Version_5.0.0-->
+<!--Capella_Version_5.1.0-->
 <org.polarsys.capella.core.data.capellamodeller:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:libraries="http://www.polarsys.org/capella/common/libraries/5.0.0"
     xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/5.0.0"
@@ -268,7 +268,7 @@
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="7ba0c519-1570-4d6a-b38a-e04afc30a622"
               name="LC 1" abstractType="#a576a905-d888-41c5-b453-3547174079a8"/>
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="44394260-1494-487b-94f1-659ace72ab84"
-              name="LC XXX" abstractType="#3db263f8-bace-480f-9338-06d1727ff895"/>
+              name="LC 2" abstractType="#3db263f8-bace-480f-9338-06d1727ff895"/>
           <ownedComponentRealizations xsi:type="org.polarsys.capella.core.data.cs:ComponentRealization"
               id="2552dee7-8dd0-4ad3-9fc7-73e8f44f38c5" targetElement="#78aabbe6-82e0-49e0-9f4c-9be0f0fcc430"
               sourceElement="#b92d6429-54c0-4f31-a33a-cd1148483fab"/>
