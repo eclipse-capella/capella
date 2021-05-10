@@ -16,6 +16,8 @@ import org.eclipse.core.resources.IMarker;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.data.modellingcore.AbstractTypedElement;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewHelper;
 import org.polarsys.capella.core.model.utils.NamingHelper;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarkerResolution;
@@ -29,8 +31,12 @@ public class TypedElementHasDifferentNameThanTypeResolver extends AbstractCapell
         AbstractTypedElement typedElement = (AbstractTypedElement) element;
         AbstractType type = typedElement.getAbstractType();
         String newName = type.getName();
-
-        NamingHelper.synchronizeName(typedElement, newName);
+        
+        TransactionHelper.getExecutionManager(typedElement).execute(new AbstractReadWriteCommand() {
+          public void run() {
+            NamingHelper.synchronizeName(typedElement, newName);
+          }
+        });
       }
     }
   }

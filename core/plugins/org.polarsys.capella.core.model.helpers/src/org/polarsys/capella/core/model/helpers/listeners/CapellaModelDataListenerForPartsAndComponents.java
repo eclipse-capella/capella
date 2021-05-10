@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.core.data.capellacore.Type;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
@@ -55,17 +56,28 @@ public class CapellaModelDataListenerForPartsAndComponents extends CapellaModelD
         Object notifier = notification.getNotifier();
 
         // In Reusable Components mode, we disable name synchronization between type and parts
-        if (!TriStateBoolean.True
-            .equals(CapellaProjectHelper.isReusableComponentsDriven((ModelElement) notifier))) {
- 
+        if (!TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven((ModelElement) notifier))) {
+
           if (notifier instanceof Component) {
             for (final Part part : ((Component) notifier).getRepresentingParts()) {
-              NamingHelper.synchronizeName(part, value);
+              if (part != null) {
+                executeCommand(part, new AbstractReadWriteCommand() {
+                  public void run() {
+                    NamingHelper.synchronizeName(part, value);
+                  }
+                });
+              }
             }
 
           } else if (notifier instanceof Part) {
             final Type type = ((Part) notifier).getType();
-            NamingHelper.synchronizeName(type, value);
+            if (type != null) {
+              executeCommand(type, new AbstractReadWriteCommand() {
+                public void run() {
+                  NamingHelper.synchronizeName(type, value);
+                }
+              });
+            }
           }
         }
       } else if (feature.equals(ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE)) {
@@ -78,7 +90,11 @@ public class CapellaModelDataListenerForPartsAndComponents extends CapellaModelD
         if ((notifier instanceof Part) && (value instanceof AbstractType)) {
           final Part part = (Part) notifier;
           final AbstractType type = (AbstractType) value;
-          NamingHelper.synchronizeName(part, type.getName());
+          executeCommand(part, new AbstractReadWriteCommand() {
+            public void run() {
+              NamingHelper.synchronizeName(part, type.getName());
+            }
+          });
         }
       }
     }

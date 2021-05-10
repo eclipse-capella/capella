@@ -17,6 +17,15 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
+import org.polarsys.capella.common.ef.ExecutionManager;
+import org.polarsys.capella.common.ef.ExecutionManagerRegistry;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.platform.sirius.ted.DataNotifier;
+import org.polarsys.capella.core.data.cs.Part;
+import org.polarsys.capella.core.libraries.model.CapellaModel;
+import org.polarsys.capella.core.libraries.utils.ScopeModelWrapper;
+import org.polarsys.capella.shared.id.handler.IScope;
+import org.polarsys.capella.shared.id.handler.IdManager;
 import org.polarsys.capella.test.framework.api.OracleDefinition;
 import org.polarsys.capella.test.validation.rules.ju.testcases.ValidationRulePartialTestCase;
 
@@ -52,6 +61,30 @@ public class Rule_I_45 extends ValidationRulePartialTestCase {
         new OracleDefinition(VALID_EXCHANGE_ITEM_INSTANCE_1, 0),
         new OracleDefinition(VALID_EXCHANGE_ITEM_INSTANCE_2, 0), new OracleDefinition(INVALID_EXCHANGE_ITEM, 1),
         new OracleDefinition(VALID_LC1_PART, 0), new OracleDefinition(INVALID_LC2_PART, 1));
+  }
+
+  @Override
+  public void test() throws Exception {
+    prepareI45();
+    super.test();
+  }
+
+  /**
+   * To check that I45 is raising an error, we modify the model. Indeed, there is a DataNotifier while migration
+   * preventing to have an "invalid" model after model being migrated.
+   */
+  private void prepareI45() {
+    CapellaModel model = getTestModel(getRequiredTestModel());
+    IScope scope = new ScopeModelWrapper(model);
+    Part part = (Part) IdManager.getInstance().getEObject(INVALID_LC2_PART, scope);
+    part.eResource().eAdapters().removeIf(DataNotifier.class::isInstance);
+    ExecutionManager manager = ExecutionManagerRegistry.getInstance().getExecutionManager(model.getEditingDomain());
+    manager.execute(new AbstractReadWriteCommand() {
+      @Override
+      public void run() {
+        part.setName("differentName");
+      }
+    });
   }
 
   @Override
