@@ -359,15 +359,15 @@
           <repository
               url="http://download.eclipse.org/modeling/gmp/gmf-runtime/updates/releases/R202004160913"/>
           <repository
-              url="https://download.eclipse.org/kitalpha/updates/stable/runtime/5.0.0-S202011241439"/>
+              url="https://download.eclipse.org/kitalpha/updates/stable/runtime/5.1.0-S202105111408"/>
           <repository
-              url="https://download.eclipse.org/kitalpha/updates/stable/sdk/5.0.0-S202011241439"/>
+              url="https://download.eclipse.org/kitalpha/updates/stable/sdk/5.1.0-S202105111408"/>
           <repository
               url="http://download.eclipse.org/egf/updates/1.6.2/2019-06"/>
           <repository
               url="https://download.eclipse.org/sirius/updates/milestones/6.5.0rc2/2020-06/"/>
           <repository
-              url="https://download.eclipse.org/diffmerge/stable/0.13.0-M4/emf-diffmerge-site"/>
+              url="https://download.eclipse.org/diffmerge/stable/0.13.1-M3/emf-diffmerge-site"/>
           <repository
               url="https://download.eclipse.org/modeling/amalgam/updates/stable/1.12.0-S20201020/capella"/>
         </repositoryList>
