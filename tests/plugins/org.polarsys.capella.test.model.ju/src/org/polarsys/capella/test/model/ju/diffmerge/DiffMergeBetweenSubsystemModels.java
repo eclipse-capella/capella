@@ -41,19 +41,17 @@ public class DiffMergeBetweenSubsystemModels extends DiffMergeTestCase {
     // Configurator CONFIGURATOR_P2L
     CapellaMatchPolicy policy_p = new CapellaMatchPolicy();
     policy_p.setAllUsedCriteria(Arrays.asList(INTRINSIC_ID, EXTRINSIC_ID));
-    policy_p.setAllUsedFineGrainedCriteria(
-        Arrays.asList(CRITERION_INTRINSIC_ID_SID));
+    policy_p.setAllUsedFineGrainedCriteria(Arrays.asList(CRITERION_INTRINSIC_ID_SID));
     policy_p.setUseCache(false);
     return policy_p;
   }
 
   @Override
   protected void checkDifferences(EComparison comparison) {
-    assertCheckDifferences(comparison, Role.TARGET, getModelElementsSourceProject(getTargetDiffList()),
-        getModelElementsSourceProject(getTargetNoDiffList()), false);
-    assertCheckDifferences(comparison, Role.REFERENCE,
-        getModelElementsTargetProject(getReferenceDiffList()), getModelElementsSourceProject(getReferenceNoDiffList()),
-        false);
+    assertCheckDifferences(comparison, Role.TARGET, getElements(getTargetDiffList(), Role.TARGET),
+        getElements(getTargetNoDiffList(), Role.TARGET), false);
+    assertCheckDifferences(comparison, Role.REFERENCE, getElements(getReferenceDiffList(), Role.REFERENCE),
+        getElements(getReferenceNoDiffList(), Role.REFERENCE), false);
   }
 
   @Override
@@ -77,12 +75,12 @@ public class DiffMergeBetweenSubsystemModels extends DiffMergeTestCase {
   }
 
   @Override
-  protected String getSourcePrjName() {
+  protected String getSourceProjectName() {
     return "test_B";
   }
 
   @Override
-  protected String getTargetPrjName() {
+  protected String getTargetProjectName() {
     return "test_C";
   }
 
