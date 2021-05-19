@@ -12,17 +12,16 @@
  *******************************************************************************/
 package org.polarsys.capella.core.model.helpers.listeners;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
-import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.core.data.helpers.information.services.ExchangeItemExt;
 import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.information.ExchangeItemInstance;
-import org.polarsys.capella.core.model.utils.NamingHelper;
 
 /**
  * 
@@ -53,11 +52,7 @@ public class CapellaModelDataListenerForExchangeItemAndExchangeItemInstance exte
 
         if (exchangeItemInstances.size() == 1) {
           ExchangeItemInstance exchangeItemInstance = exchangeItemInstances.get(0);
-          executeCommand(exchangeItemInstance, new AbstractReadWriteCommand() {
-            public void run() {
-              NamingHelper.synchronizeName(exchangeItemInstance, newName);
-            }
-          });
+          renameElements(Arrays.asList(exchangeItemInstance), newName);
         }
 
       } else if (notifier instanceof ExchangeItemInstance) {
@@ -69,11 +64,7 @@ public class CapellaModelDataListenerForExchangeItemAndExchangeItemInstance exte
               .getTypedExchangeItemInstances(exchangeItem);
 
           if (exchangeItemInstances.size() == 1) {
-            executeCommand(exchangeItem, new AbstractReadWriteCommand() {
-              public void run() {
-                NamingHelper.synchronizeName(exchangeItem, newName);
-              }
-            });
+            renameElements(Arrays.asList(exchangeItem), newName);
           }
 
         }

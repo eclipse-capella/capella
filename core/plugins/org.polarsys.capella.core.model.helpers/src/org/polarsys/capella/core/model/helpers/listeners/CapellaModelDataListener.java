@@ -15,6 +15,7 @@ package org.polarsys.capella.core.model.helpers.listeners;
 
 import java.util.Collection;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
@@ -22,7 +23,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.impl.InternalTransaction;
 import org.eclipse.emf.transaction.impl.InternalTransactionalEditingDomain;
+import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.ef.ExecutionManager;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.ef.command.ICommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
@@ -89,5 +92,50 @@ public class CapellaModelDataListener extends AdapterImpl {
     	executionManager.execute(command);
       }
     }
+  }
+  
+  /**
+   * Rename given elements with the given name.<br>
+   * An element is renamed only if :
+   * <ul>
+   * <li>it is an instance of AbstractNamedElement,</li>
+   * <li>it doesn't already has the new name.</li>
+   * </ul>
+   * One command is used to rename all given elements.
+   * @param elementsToRename
+   * @param newName
+   */
+  protected void renameElements(final Collection<? extends EObject> elementsToRename, final String newName) {
+    // Precondition : doesn't execute a command if nothing to rename (avoid unwanted Ctrl+z...).
+    boolean renameNeeded = false;
+    for (EObject elementToRename : elementsToRename) {
+      if (!(elementToRename instanceof AbstractNamedElement)) {
+        // Ignore elements which are null or not instance of AbstractNamedElement.
+        continue;
+      }
+      AbstractNamedElement namedElementToRename = (AbstractNamedElement) elementToRename;
+      if (!StringUtils.equals(namedElementToRename.getName(), newName)) {
+        renameNeeded = true;
+        break;
+      }
+    }
+    if (!renameNeeded) {
+      return;
+    }
+    // Execute command.
+    executeCommand(elementsToRename, new AbstractReadWriteCommand() {
+      public void run() {
+        for (EObject elementToRename : elementsToRename) {
+          if (!(elementToRename instanceof AbstractNamedElement)) {
+            // Ignore elements which are null or not instance of AbstractNamedElement.
+            continue;
+          }
+          AbstractNamedElement namedElementToRename = (AbstractNamedElement) elementToRename;
+          if (!StringUtils.equals(namedElementToRename.getName(), newName)) {
+            namedElementToRename.setName(newName);
+          }
+        }
+      }
+    });
   }
 }

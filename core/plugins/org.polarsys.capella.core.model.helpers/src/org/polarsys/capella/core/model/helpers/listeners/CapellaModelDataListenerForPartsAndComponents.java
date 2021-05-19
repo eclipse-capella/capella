@@ -12,18 +12,18 @@
  *******************************************************************************/
 package org.polarsys.capella.core.model.helpers.listeners;
 
+import java.util.Arrays;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
-import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.core.data.capellacore.Type;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
-import org.polarsys.capella.core.model.utils.NamingHelper;
 
 /**
  */
@@ -59,25 +59,11 @@ public class CapellaModelDataListenerForPartsAndComponents extends CapellaModelD
         if (!TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven((ModelElement) notifier))) {
 
           if (notifier instanceof Component) {
-            for (final Part part : ((Component) notifier).getRepresentingParts()) {
-              if (part != null) {
-                executeCommand(part, new AbstractReadWriteCommand() {
-                  public void run() {
-                    NamingHelper.synchronizeName(part, value);
-                  }
-                });
-              }
-            }
+            renameElements(((Component) notifier).getRepresentingParts(), value);
 
           } else if (notifier instanceof Part) {
             final Type type = ((Part) notifier).getType();
-            if (type != null) {
-              executeCommand(type, new AbstractReadWriteCommand() {
-                public void run() {
-                  NamingHelper.synchronizeName(type, value);
-                }
-              });
-            }
+            renameElements(Arrays.asList(type), value);
           }
         }
       } else if (feature.equals(ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE)) {
@@ -90,11 +76,7 @@ public class CapellaModelDataListenerForPartsAndComponents extends CapellaModelD
         if ((notifier instanceof Part) && (value instanceof AbstractType)) {
           final Part part = (Part) notifier;
           final AbstractType type = (AbstractType) value;
-          executeCommand(part, new AbstractReadWriteCommand() {
-            public void run() {
-              NamingHelper.synchronizeName(part, type.getName());
-            }
-          });
+          renameElements(Arrays.asList(part), type.getName());
         }
       }
     }
