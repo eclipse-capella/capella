@@ -13,6 +13,7 @@
 package org.polarsys.capella.core.model.helpers.listeners;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -23,13 +24,11 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
-import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.core.data.information.AbstractInstance;
 import org.polarsys.capella.core.data.interaction.InstanceRole;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.interaction.Scenario;
-import org.polarsys.capella.core.model.utils.NamingHelper;
 
 /**
  * 
@@ -75,13 +74,7 @@ public class CapellaModelDataListenerForInstanceRole extends CapellaModelDataLis
             Collection<InstanceRole> iRs = entry.getValue();
             if (iRs.size() == 1) {
               InstanceRole role = iRs.iterator().next();
-              if (role != null) {
-                executeCommand(role, new AbstractReadWriteCommand() {
-                  public void run() {
-                    NamingHelper.synchronizeName(role, value);
-                  }
-                });
-              }
+              renameElements(Arrays.asList(role), value);
             }
           }
         }
@@ -98,13 +91,7 @@ public class CapellaModelDataListenerForInstanceRole extends CapellaModelDataLis
           }
         }
         AbstractInstance instance = ir.getRepresentedInstance();
-        if (instance != null) {
-          executeCommand(instance, new AbstractReadWriteCommand() {
-            public void run() {
-              NamingHelper.synchronizeName(instance, value);
-            }
-          });
-        }
+        renameElements(Arrays.asList(instance), value);
       }
 
     }
