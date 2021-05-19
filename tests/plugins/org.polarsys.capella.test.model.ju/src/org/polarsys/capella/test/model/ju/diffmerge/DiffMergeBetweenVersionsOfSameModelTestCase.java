@@ -22,6 +22,7 @@ import java.util.List;
 
 import org.eclipse.emf.diffmerge.impl.policies.ConfigurableMatchPolicy.FineGrainedMatchCriterion;
 import org.polarsys.capella.core.compare.CapellaMatchPolicy;
+import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 
 public class DiffMergeBetweenVersionsOfSameModelTestCase extends DiffMergeTestCase {
   @Override
@@ -57,17 +58,17 @@ public class DiffMergeBetweenVersionsOfSameModelTestCase extends DiffMergeTestCa
   }
 
   @Override
-  protected String getSourcePrjName() {
+  protected String getSourceProjectName() {
     return "DiffMergeSourcePrj";
   }
 
   @Override
-  protected String getTargetPrjName() {
+  protected String getTargetProjectName() {
     return "DiffMergeSourceV1Prj";
   }
 
   @Override
   protected String getTargetResourceName() {
-    return sourceModel + ".aird";
+    return sourceModel + "." + CapellaResourceHelper.AIRD_FILE_EXTENSION;
   }
 }

@@ -41,6 +41,8 @@ public class DiffMergeTestSuite extends BasicTestSuite {
     tests.add(new DiffMergeBetweenSubsystemModels());
     tests.add(new TransferBetweenModelsCreatedIndepentlyTestCase());
     tests.add(new TransferOfElementsBetweenCapellaProjectAndLibTestCase());
+    tests.add(new DiffMergeBetweenVersionsOfSameModelCapellaFile());
+    tests.add(new DiffmergeDomain());
     return tests;
   }
 

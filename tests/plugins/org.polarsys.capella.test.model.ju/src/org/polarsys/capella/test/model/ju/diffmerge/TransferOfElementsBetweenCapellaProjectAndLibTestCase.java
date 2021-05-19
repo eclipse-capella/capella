@@ -62,12 +62,12 @@ public class TransferOfElementsBetweenCapellaProjectAndLibTestCase extends DiffM
   }
 
   @Override
-  protected String getSourcePrjName() {
+  protected String getSourceProjectName() {
     return "DiffMergeSourcePrj";
   }
 
   @Override
-  protected String getTargetPrjName() {
+  protected String getTargetProjectName() {
     return "CopyPasteTestCase_Lib";
   }
 }

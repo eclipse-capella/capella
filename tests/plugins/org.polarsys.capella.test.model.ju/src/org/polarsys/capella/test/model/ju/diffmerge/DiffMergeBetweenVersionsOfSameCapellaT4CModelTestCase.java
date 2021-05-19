@@ -23,6 +23,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.polarsys.capella.core.compare.CapellaMatchPolicy;
+import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 
 public class DiffMergeBetweenVersionsOfSameCapellaT4CModelTestCase extends DiffMergeTestCase {
   @Override
@@ -61,17 +62,17 @@ public class DiffMergeBetweenVersionsOfSameCapellaT4CModelTestCase extends DiffM
   }
 
   @Override
-  protected String getSourcePrjName() {
+  protected String getSourceProjectName() {
     return "DiffMergeSourcePrj";
   }
 
   @Override
-  protected String getTargetPrjName() {
+  protected String getTargetProjectName() {
     return "DiffMergeSourceT4CPrj";
   }
 
   @Override
   protected String getTargetResourceName() {
-    return sourceModel + ".aird";
+    return sourceModel + "." + CapellaResourceHelper.AIRD_FILE_EXTENSION;
   }
 }

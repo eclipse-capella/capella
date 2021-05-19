@@ -30,9 +30,10 @@ import org.eclipse.emf.diffmerge.diffdata.impl.EElementPresenceImpl;
 import org.eclipse.emf.diffmerge.generic.api.Role;
 import org.eclipse.emf.diffmerge.generic.api.diff.IDifference;
 import org.eclipse.emf.diffmerge.generic.api.scopes.IEditableTreeDataScope;
+import org.eclipse.emf.diffmerge.generic.api.scopes.IPersistentDataScope;
 import org.eclipse.emf.diffmerge.ui.specification.IModelScopeDefinition;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.mdsofa.common.helper.FileHelper;
 import org.polarsys.capella.core.compare.CapellaComparisonMethod;
@@ -41,8 +42,10 @@ import org.polarsys.capella.core.compare.CapellaDiffPolicy;
 import org.polarsys.capella.core.compare.CapellaMatchPolicy;
 import org.polarsys.capella.core.compare.CapellaMergePolicy;
 import org.polarsys.capella.core.compare.CapellaScopeFactory;
+import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
+import org.polarsys.capella.core.model.handler.helpers.SemanticResourcesScope;
+import org.polarsys.capella.shared.id.handler.IdManager;
 import org.polarsys.capella.test.framework.api.NonDirtyTestCase;
-import org.polarsys.capella.test.framework.context.SessionContext;
 import org.polarsys.capella.test.framework.helpers.IResourceHelpers;
 
 public abstract class DiffMergeTestCase extends NonDirtyTestCase {
@@ -52,8 +55,8 @@ public abstract class DiffMergeTestCase extends NonDirtyTestCase {
   protected IProject sourceModelProject;
   protected IProject targetMigratedModelProject;
 
-  protected SessionContext sourcePrjContext;
-  protected SessionContext targetPrjContext;
+  EComparison comparison;
+  CapellaComparisonMethod method;
 
   // model DiffMergeDourcePrj
   protected static final String sourceSystemFunction1Id = "aae39f34-777e-4b43-bca6-c3138251ad77";
@@ -115,13 +118,10 @@ public abstract class DiffMergeTestCase extends NonDirtyTestCase {
   protected void setUp() throws Exception {
     super.setUp();
 
-    sourceModel = getSourcePrjName();
-    targetModel = getTargetPrjName();
+    sourceModel = getSourceProjectName();
+    targetModel = getTargetProjectName();
     sourceModelProject = IResourceHelpers.getEclipseProjectInWorkspace(sourceModel);
     targetMigratedModelProject = IResourceHelpers.getEclipseProjectInWorkspace(targetModel);
-
-    sourcePrjContext = getSessionContextSourceProject();
-    targetPrjContext = getSessionContextTargetProject();
   }
 
   @Override
@@ -134,21 +134,22 @@ public abstract class DiffMergeTestCase extends NonDirtyTestCase {
     IModelScopeDefinition rightScopeSpec = scopFct.createScopeDefinition(file2, null, true);
 
     CapellaComparisonMethodFactory compFactory = new CapellaComparisonMethodFactory();
-    CapellaComparisonMethod method = (CapellaComparisonMethod) compFactory.createComparisonMethod(leftScopeSpec,
-        rightScopeSpec, null);
+    method = (CapellaComparisonMethod) compFactory.createComparisonMethod(leftScopeSpec, rightScopeSpec, null);
     method.setVerbose(false);
 
     Role leftRole = method.getLeftRole();
     IEditableTreeDataScope _leftScope = leftScopeSpec.createScope(method.getResourceSet(leftRole));
+    IEditableTreeDataScope _rightScope = rightScopeSpec.createScope(method.getResourceSet(leftRole.opposite()));
+    if (_leftScope instanceof IPersistentDataScope<?>) {
+      ((IPersistentDataScope<?>) _leftScope).load();
+    }
+    if (_rightScope instanceof IPersistentDataScope<?>) {
+      ((IPersistentDataScope<?>) _rightScope).load();
+    }
 
-    IEditableTreeDataScope _rightScope = method.getModelScopeDefinition(leftRole.opposite())
-        .createScope(method.getResourceSet(leftRole.opposite()));
-
-    EComparison comparison = new EComparisonImpl(_leftScope, _rightScope, null);
+    comparison = new EComparisonImpl(_leftScope, _rightScope, null);
     IStatus result = comparison.compute(getMatchPolicy(), new CapellaDiffPolicy(), new CapellaMergePolicy(),
         new NullProgressMonitor());
-
-    method.dispose();
 
     if (result.isOK()) {
       if (comparison.hasRemainingDifferences()) {
@@ -163,7 +164,13 @@ public abstract class DiffMergeTestCase extends NonDirtyTestCase {
 
   @Override
   public List<String> getRequiredTestModels() {
-    return Arrays.asList(getSourcePrjName(), getTargetPrjName());
+    return Arrays.asList(getSourceProjectName(), getTargetProjectName());
+  }
+
+  @Override
+  protected void tearDown() throws Exception {
+    method.dispose();
+    super.tearDown();
   }
 
   /**
@@ -200,7 +207,7 @@ public abstract class DiffMergeTestCase extends NonDirtyTestCase {
     }
 
     assertTrue("The following elements should not be found in the diff result: " + foundElements,
-          foundElements.isEmpty());
+        foundElements.isEmpty());
 
     assertTrue("The following elements are not found in the diff result: " + notFoundElements,
         notFoundElements.isEmpty());
@@ -227,10 +234,12 @@ public abstract class DiffMergeTestCase extends NonDirtyTestCase {
   }
 
   protected void checkDifferences(EComparison comparison) {
-    assertCheckDifferences(comparison, Role.TARGET, getModelElementsSourceProject(getTargetDiffList()),
-        getModelElementsSourceProject(getTargetNoDiffList()), true);
-    assertCheckDifferences(comparison, Role.REFERENCE, getModelElementsTargetProject(getReferenceDiffList()),
-        getModelElementsSourceProject(getReferenceNoDiffList()), true);
+
+    assertCheckDifferences(comparison, Role.TARGET, getElements(getTargetDiffList(), Role.TARGET),
+        getElements(getTargetNoDiffList(), Role.TARGET), true);
+
+    assertCheckDifferences(comparison, Role.REFERENCE, getElements(getReferenceDiffList(), Role.REFERENCE),
+        getElements(getReferenceNoDiffList(), Role.REFERENCE), true);
   }
 
   protected abstract CapellaMatchPolicy getMatchPolicy();
@@ -243,45 +252,26 @@ public abstract class DiffMergeTestCase extends NonDirtyTestCase {
 
   protected abstract List<String> getReferenceNoDiffList();
 
-  protected abstract String getSourcePrjName();
+  protected abstract String getSourceProjectName();
 
-  protected abstract String getTargetPrjName();
+  protected abstract String getTargetProjectName();
 
   protected String getSourceResourceName() {
-    return getSourcePrjName() + ".aird";
+    return getSourceProjectName() + "." + CapellaResourceHelper.AIRD_FILE_EXTENSION;
   }
 
   protected String getTargetResourceName() {
-    return getTargetPrjName() + ".aird";
+    return getTargetProjectName() + "." + CapellaResourceHelper.AIRD_FILE_EXTENSION;
   }
 
-  protected SessionContext getSessionContextSourceProject() {
-    Session session = getSession(getSourcePrjName());
-    return new SessionContext(session);
-  }
-
-  protected SessionContext getSessionContextTargetProject() {
-    Session session = getSession(getTargetPrjName());
-    return new SessionContext(session);
-  }
-
-  protected List<ModelElement> getModelElementsSourceProject(List<String> ids) {
+  protected List<ModelElement> getElements(List<String> ids, Role role) {
+    SemanticResourcesScope scope = new SemanticResourcesScope(
+        ((IEditingDomainProvider) comparison.getScope(role)).getEditingDomain().getResourceSet());
     List<ModelElement> elements = new ArrayList<ModelElement>();
     for (String id : ids) {
-      elements.add(getModelElement(id, sourcePrjContext));
+      EObject object = IdManager.getInstance().getEObject(id, scope);
+      elements.add((ModelElement) object);
     }
     return elements;
-  }
-
-  protected List<ModelElement> getModelElementsTargetProject(List<String> ids) {
-    List<ModelElement> elements = new ArrayList<ModelElement>();
-    for (String id : ids) {
-      elements.add(getModelElement(id, targetPrjContext));
-    }
-    return elements;
-  }
-
-  protected ModelElement getModelElement(String id, SessionContext context) {
-    return context.getSemanticElement(id);
   }
 }

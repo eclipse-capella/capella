@@ -38,7 +38,8 @@ import org.eclipse.emf.diffmerge.ui.specification.IModelScopeDefinition;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.jface.viewers.ILabelProvider;
-import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory;
+import org.polarsys.capella.common.ef.ExecutionManager;
+import org.polarsys.capella.common.ef.ExecutionManagerRegistry;
 
 
 /**
@@ -111,9 +112,8 @@ public class CapellaComparisonMethod extends SiriusComparisonMethod {
    */
   @Override
   protected EditingDomain createEditingDomain() {
-    SemanticEditingDomainFactory factory = new SemanticEditingDomainFactory();
-    EditingDomain result = factory.createEditingDomain();
-    return result;
+    ExecutionManager manager = ExecutionManagerRegistry.getInstance().addNewManager();
+    return manager.getEditingDomain();
   }
   
   /**

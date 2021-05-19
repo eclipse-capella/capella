@@ -60,12 +60,12 @@ public class TransferBetweenModelsCreatedIndepentlyTestCase extends DiffMergeTes
   }
 
   @Override
-  protected String getSourcePrjName() {
+  protected String getSourceProjectName() {
     return "DiffMergeSourcePrj";
   }
 
   @Override
-  protected String getTargetPrjName() {
+  protected String getTargetProjectName() {
     return "DiffMergeTargetPrj";
   }
 }
