@@ -840,7 +840,7 @@
         <repositoryList
             name="master">
           <repository
-              url="http://dist.springsource.org/release/GRECLIPSE/e4.12/"/>
+              url="https://dist.springsource.org/release/GRECLIPSE/e4.16"/>
         </repositoryList>
         <repositoryList
             name="v1.4.x">
@@ -896,21 +896,15 @@
       <requirement
           name="org.codehaus.groovy25.feature.feature.group"/>
       <repository
-          url="https://dist.springsource.org/release/GRECLIPSE/e4.12"/>
-      <repository
-          url="https://dist.springsource.org/release/GRECLIPSE/e4.13"/>
-      <repository
-          url="https://dist.springsource.org/release/GRECLIPSE/e4.14"/>
-      <repository
-          url="https://dist.springsource.org/snapshot/GRECLIPSE/e4.15"/>
+          url="https://dist.springsource.org/snapshot/GRECLIPSE/e4.19"/>
     </setupTask>
     <stream
         name="master">
       <setupTask
           xsi:type="setup:VariableTask"
           name="eclipse.target.platform"
-          value="2019-06"
-          defaultValue="2019-06"
+          value="2020-06"
+          defaultValue="2020-06"
           storageURI="scope://Workspace"/>
     </stream>
     <stream
