@@ -12,7 +12,7 @@
  *******************************************************************************/
 target "Capella"
 
-include "https://download.eclipse.org/sirius/updates/milestones/6.5.0rc2/2020-06/targets/modules/gmf-runtime-1.13.tpd"
+include "https://download.eclipse.org/sirius/updates/releases/6.5.1/2020-06/targets/modules/gmf-runtime-1.13.tpd"
 
 with source, requirements
 
@@ -44,7 +44,7 @@ location eclipse "http://download.eclipse.org/releases/2020-06" {
 	com.google.guava
 }
 
-location sirius "https://download.eclipse.org/sirius/updates/milestones/6.5.0rc2/2020-06" {
+location sirius "https://download.eclipse.org/sirius/updates/releases/6.5.1/2020-06" {
 	org.eclipse.sirius.doc.feature.feature.group
 	org.eclipse.sirius.doc.feature.source.feature.group
 	org.eclipse.sirius.runtime.source.feature.group
