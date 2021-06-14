@@ -359,9 +359,9 @@
           <repository
               url="http://download.eclipse.org/modeling/gmp/gmf-runtime/updates/releases/R202004160913"/>
           <repository
-              url="https://download.eclipse.org/kitalpha/updates/stable/runtime/5.1.0-S202105111408"/>
+              url="https://download.eclipse.org/kitalpha/updates/stable/runtime/5.1.0-S202106140930"/>
           <repository
-              url="https://download.eclipse.org/kitalpha/updates/stable/sdk/5.1.0-S202105111408"/>
+              url="https://download.eclipse.org/kitalpha/updates/stable/sdk/5.1.0-S202106140930"/>
           <repository
               url="http://download.eclipse.org/egf/updates/1.6.2/2019-06"/>
           <repository
