@@ -70,7 +70,6 @@
           categoryId="org.polarsys.capella.activities.categories.advanced">
      </categoryActivityBinding>
      
-	 <activityPatternBinding activityId="org.polarsys.capella.core.hidden.activity" pattern=".*/org.eclipse.sirius.ui.modelingproject.wizard"/>
 	 <activityPatternBinding activityId="org.polarsys.capella.core.hidden.activity" pattern=".*/org.eclipse.sirius.ui.specificationproject.wizard"/>
      <activityPatternBinding activityId="org.polarsys.capella.core.hidden.activity" pattern=".*/org.eclipse.ui.wizards.export.Preferences"/>
      
@@ -99,6 +98,8 @@
 			</with>
 		</enabledWhen>
 	 </activity>
+	 
+	 <activityPatternBinding activityId="org.polarsys.capella.core.perspective.hidden.activity" pattern=".*/org.eclipse.sirius.ui.modelingproject.wizard"/>
 	 
      <!-- Hide Sirius close contextual menu in Capella perspective -->
 	 <activityPatternBinding activityId="org.polarsys.capella.core.perspective.hidden.activity" isEqualityPattern="true" pattern="org.eclipse.sirius.ui.editor/org.eclipse.sirius.ui.closeSessionMenuContribution"/>
