@@ -21,6 +21,7 @@ import org.polarsys.capella.test.transition.ju.model.AlreadyTransitionedActorTes
 import org.polarsys.capella.test.transition.ju.model.functionalchain.FunctionalChainTestCase;
 import org.polarsys.capella.test.transition.ju.model.modestate.StateMachineTransitionTestCase;
 import org.polarsys.capella.test.transition.ju.testcases.CommunicationMeanTestCase;
+import org.polarsys.capella.test.transition.ju.testcases.DataPkgReconciliation;
 import org.polarsys.capella.test.transition.ju.testcases.FC2FSInitializationTestCase;
 import org.polarsys.capella.test.transition.ju.testcases.LcWithPropertyValueTestCase;
 import org.polarsys.capella.test.transition.ju.testcases.LogicalActorTransition;
@@ -52,6 +53,7 @@ public class TransitionTestSuite extends BasicTestSuite {
     tests.add(new IncrementalModeTest());
     tests.add(new ReconciliationCommunicationLinks());
     tests.add(new ReconciliationInterfaceUsesImplements());
+    tests.add(new DataPkgReconciliation());
     tests.add(new SkeletonElementsNames());
     tests.add(new StateMachineTransitionTestCase());
     tests.add(new AlreadyTransitionedActorTestCase());

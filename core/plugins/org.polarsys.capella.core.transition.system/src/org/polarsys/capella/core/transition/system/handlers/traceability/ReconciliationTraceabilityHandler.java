@@ -13,6 +13,8 @@
 
 package org.polarsys.capella.core.transition.system.handlers.traceability;
 
+import java.util.Optional;
+
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -29,6 +31,7 @@ import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.fa.FunctionPkg;
 import org.polarsys.capella.core.data.information.DataPkg;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.polarsys.capella.core.model.helpers.naming.NamingConstants;
 import org.polarsys.capella.core.transition.common.handlers.traceability.ITraceabilityHandler;
 import org.polarsys.capella.core.transition.common.handlers.traceability.LevelBasedTraceabilityHandler;
 import org.polarsys.capella.core.transition.common.handlers.traceability.TraceabilityHandlerHelper;
@@ -81,8 +84,32 @@ public class ReconciliationTraceabilityHandler extends LevelBasedTraceabilityHan
 
   }
 
+  /**
+   * Map the Data package and its Predefined Types package if possible
+   * @param source
+   * @param target
+   * @param context
+   * @param map
+   */
   protected void initializeDataPkg(DataPkg source, DataPkg target, IContext context, LevelMappingTraceability map) {
-    initializeDataType(source, target, context, map);
+    BlockArchitecture sourceBlockArchitecture = BlockArchitectureExt.getRootBlockArchitecture(source);
+    BlockArchitecture targetBlockArchitecture = BlockArchitectureExt.getRootBlockArchitecture(target);
+    if (sourceBlockArchitecture != null && targetBlockArchitecture != null) {
+      DataPkg sourceDataPkg = BlockArchitectureExt.getDataPkg(sourceBlockArchitecture);
+      DataPkg targetDataPkg = BlockArchitectureExt.getDataPkg(targetBlockArchitecture);
+      if (source == sourceDataPkg && target == targetDataPkg) {
+        addMapping(map, sourceDataPkg, targetDataPkg, context);
+        Optional<DataPkg> sourcePredefinedTypes = sourceDataPkg.getOwnedDataPkgs().stream()
+            .filter(pkg -> NamingConstants.PredefinedTypesCmd_predefinedDataTypePkg_name.equals(pkg.getName()))
+            .findFirst();
+        Optional<DataPkg> targetPredefinedTypes = targetDataPkg.getOwnedDataPkgs().stream()
+            .filter(pkg -> NamingConstants.PredefinedTypesCmd_predefinedDataTypePkg_name.equals(pkg.getName()))
+            .findFirst();
+        if (sourcePredefinedTypes.isPresent() && targetPredefinedTypes.isPresent()) {
+          initializeDataType(sourcePredefinedTypes.get(), targetPredefinedTypes.get(), context, map);
+        }
+      }
+    }
   }
 
   protected void initializeDataType(EObject source, EObject target, IContext context, LevelMappingTraceability map) {

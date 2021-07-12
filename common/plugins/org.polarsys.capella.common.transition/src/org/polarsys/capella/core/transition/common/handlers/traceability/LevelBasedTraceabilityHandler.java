@@ -30,7 +30,7 @@ public class LevelBasedTraceabilityHandler extends TwoSideTraceabilityHandler {
     super(identifier);
   }
 
-  protected class LevelMappingTraceability extends MappingTraceability {
+  public class LevelMappingTraceability extends MappingTraceability {
 
     private static final long serialVersionUID = 1605638569527611797L;
 
