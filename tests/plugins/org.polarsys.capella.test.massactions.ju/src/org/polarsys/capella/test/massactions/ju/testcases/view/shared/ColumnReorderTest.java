@@ -112,18 +112,19 @@ public class ColumnReorderTest extends AbstractCapellaMATestCase {
 
     assertEquals(beforeIndexOrder, afterIndexOrder);
 
-    // add a CAT and check that the order has been reseted
+    // save current reordered elements order
+    beforeIndexOrder = new ArrayList<>(afterIndexOrder);
+    
+    // add a CAT and check that the order is kept
     data.add(getObject(CAT_DISPLAYED_IMPOSED_VIDEO_DATA));
     view.dataChanged(data);
 
-    afterIndexOrder = new ArrayList<>(columnReorderLayer.getColumnIndexOrder());
-    // we expect everything to be reseted (meaning that at position X we
-    // have the index X)
-    expectedIndexOrder = IntStream.range(0, columnPropertyAccessor.getColumnCount()).boxed()
-        .collect(Collectors.toList());
-
-    assertEquals(expectedIndexOrder, afterIndexOrder);
-
+    final List<Integer> finalAfterIndexOrder = new ArrayList<>(columnReorderLayer.getColumnIndexOrder());
+    
+    // we expect the new indexOrder to be a subset of the old indexOrder with the elements in the same order
+    List<Integer> collected = beforeIndexOrder.stream().filter(index -> finalAfterIndexOrder.contains(index)).collect(Collectors.toList());
+    assertEquals(collected, finalAfterIndexOrder);
+    
     ViewHelper.resetViews(view);
   }
 
