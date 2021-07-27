@@ -11,6 +11,7 @@
 ../jre/Contents/Home/bin
       </programArgsMac>
       <vmArgs>-Dosgi.requiredJavaVersion=14
+-Dosgi.dataAreaRequiresExplicitInit=true
 -Xms1000m
 -Xmx3000m
 -Xss4m
