@@ -39,6 +39,7 @@ api_docs.xml
 ## Sonar
 ########
 #org.sonar.ide.eclipse.core.prefs
+org.sonarlint.eclipse.core.prefs
 .scannerwork
 
 #########
