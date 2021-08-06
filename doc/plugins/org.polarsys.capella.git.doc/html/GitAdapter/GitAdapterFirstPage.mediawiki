@@ -1,0 +1,3 @@
+= Version Control with GIT =
+
+Git is a Version Control System (VCS) for tracking changes in computer files and coordinating work on those files among multiple users.<br>As with most other distributed version control systems, and unlike SVN and CC, every Git directory on every computer is a full-fledged repository with complete history and full version tracking abilities, independent of network access or a central server.
