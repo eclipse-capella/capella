@@ -3,7 +3,16 @@
 
 == View ==
 
-The objective of the Semantic Browser is to provide a summary of all meaningful relationships for one given element.
+{| border="1"
+|-
+| 
+[[Image:Images/Information.png|48x48px]]
+|
+<ul>
+<li>The Semantic Browser lists all the existing relations one element has with other elements and diagrams.</li>
+<li>It is highly valuable to explore and understand the content of a model.</li>
+</ul>
+|}
 
 
 [[Image:Images/4.07.%20Semantic%20Browser_html_m2d24d060.png|900x300px]]

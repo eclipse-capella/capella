@@ -1,5 +1,20 @@
 
 = How to Import an Existing Project in a Workspace? =
+<br>
+{| border="1"
+|-
+| 
+[[Image:Images/Flag.jpg|32x34px]]
+
+
+| 
+<li>In order to import a Capella project, you need to have the same version as the one used to create / edit the model.</li>
+<li>If you have a more recent version, a migration of the project is required.</li>
+<li>In any case, a Capella project cannot be open with an older version. If a migration is performed, it will not be possible to open the model with older version anymore.</li>
+<li>Finally, you also need to be careful about the extensions (add-ons / viewpoints) used to edit the model.</li>
+<li>Some extensions enrich Capella with new concepts or new graphical representations. In this case, it is required to have the same extensions installed in order to be able to open the model.</li>
+<li>If not the case, it is possible to perform a model detachment. This detachment will irreversibly delete all the information about the missing extensions.</li>
+|}<br>
 
 From the Project Explorer, select Import&hellip;
 

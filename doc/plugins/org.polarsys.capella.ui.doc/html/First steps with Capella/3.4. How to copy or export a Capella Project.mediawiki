@@ -63,3 +63,12 @@ Click on &ldquo;Finish&rdquo;. The archive is created on the file system.
 
 [[Image:Images/3.4.%20How%20to%20copy%20or%20export%20a%20Melody%20Advance%20Project_html_m2e64895e.png]]
 
+{| border="1"
+|-
+| 
+[[Image:images/Flag.jpg|32x34px]]
+
+
+| 
+In order to be properly exported, all the files of a Capella Project shall be selected (In order to be properly exported, all the files of a Capella Project shall be selected (.project, .aird and .capella in the above screenshot)
+|}<br>

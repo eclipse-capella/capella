@@ -1,6 +1,10 @@
 
 = Project Explorer =
 
+The Project Explorer provides a tree-view of the content of the model.<br>
+Model is first organized following the Arcadia perspectives (Operational Analysis, System Analysis, Logical Architecture, Physical Architecture and EPBS).<br>
+Model elements are then stored in different packages depending on their type.<br>
+
 == Opening, Visualizing and Closing a Model ==
 
 When not fragmented, a Capella model is composed of one file containing the model elements (the semantic model) and one or more AIRD files containing the representations (diagrams and matrices).

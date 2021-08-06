@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?NLS TYPE="org.eclipse.help.toc"?>
 <!--
-  Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2020, 2021 THALES GLOBAL SERVICES.
   
   This program and the accompanying materials are made available under the
   terms of the Eclipse Public License 2.0 which is available at
@@ -13,15 +13,44 @@
        Thales - initial API and implementation
 -->
 <toc label="Version Control with GIT" link_to="PLUGINS_ROOT/org.polarsys.capella.doc/toc.xml#contribution" sort="true">
-   <topic href="html/GitAdapter/GitAdapter.html" label="Version Control with GIT">
+   <topic href="html/GitAdapter/GitAdapterFirstPage.html" label="Version Control with GIT">
+   <topic href="html/GitAdapter/GitAdapterintro.html" label="Introduction">
+   		<topic href="html/GitAdapter/GitAdapterIntro.html#Introduction_to_Git" label="Introduction to Git">
+			<topic href="html/GitAdapter/GitAdapterIntro.html#Clone_an_existing_Git_repository" label="Clone an existing Git repository"></topic>
+			<topic href="html/GitAdapter/GitAdapterIntro.html#Commit_.2F_check_out_and_push_.2F_fetch" label="Commit / check out and push / fetch"></topic>
+			<topic href="html/GitAdapter/GitAdapterIntro.html#Working_with_several_people" label= "Working with several people"></topic>
+			
+		</topic>
+		<topic href="html/GitAdapter/GitAdapterIntro.html#Introduction_to_eGit" label="Introduction to eGit">
+			<topic href="html/GitAdapter/GitAdapterIntro.html#Git_Repositories" label="Git Repositories"></topic>
+			<topic href="html/GitAdapter/GitAdapterIntro.html#Git_Staging" label="Git Staging"></topic>
+			<topic href="html/GitAdapter/GitAdapterIntro.html#History" label= "History"></topic>
+			<topic href="html/GitAdapter/GitAdapterIntro.html#Capella_Project_Explorer" label= "Capella Project Explore"></topic>
+		</topic>
+		<topic href="html/GitAdapter/GitAdapterIntro.html#Capella_GIT_adapter" label="Capella GIT adapter"></topic>
+		<topic href="html/GitAdapter/GitAdapterIntro.html#Compatible_versions" label="Compatible versions"></topic>
+   </topic>
 		<topic href="html/GitAdapter/GitAdapter.html#Tutorials" label="Tutorials">
-			<topic href="html/GitAdapter/GitAdapter.html#Basic_Tutorial" label="Basic Tutorial"></topic>
-			<topic href="html/GitAdapter/GitAdapter.html#Advanced_Tutorial" label="Advanced Tutorial"></topic>
-	</topic>
+			<topic href="html/GitAdapter/GitAdapter.html#Basic_Tutorial" label="Basic Tutorial">
+				<topic href="html/GitAdapter/GitAdapter.html#Git_perspective" label="Git perspective"></topic>
+				<topic href="html/GitAdapter/GitAdapter.html#Creating_Repositories" label="Creating Repositories"></topic>
+				<topic href="html/GitAdapter/GitAdapter.html#Clone_a_Git_repository" label="Clone a Git repository"></topic>
+				<topic href="html/GitAdapter/GitAdapter.html#Share_a_Capella_model_on_Git_and_commit_a_first_version" label="Share a Capella model on Git and commit a first version"></topic>
+				<topic href="html/GitAdapter/GitAdapter.html#Retrieve_model_from_a_Git_repository" label="Retrieve model from a Git repository"></topic>
+				<topic href="html/GitAdapter/GitAdapter.html#Perform_a_new_commit.2C_retrieve_history.2C_compare_versions" label="Perform a new commit, retrieve history, compare versions"></topic>
+				<topic href="html/GitAdapter/GitAdapter.html#Retrieve_a_new_version" label="Retrieve a new version"></topic>
+				<topic href="html/GitAdapter/GitAdapter.html#Merge_conflicts" label="Merge conflicts"></topic>
+			</topic>
+			<topic href="html/GitAdapter/GitAdapter.html#Advanced_Tutorial" label="Advanced Tutorial">
+				<topic href="html/GitAdapter/GitAdapter.html#Create_a_tag" label="Create a tag"></topic>
+				<topic href="html/GitAdapter/GitAdapter.html#Resolve_Conflicts" label="Resolve Conflicts"></topic>
+				<topic href="html/GitAdapter/GitAdapter.html#Fragmented_Model" label="Fragmented Model"></topic>
+				<topic href="html/GitAdapter/GitAdapter.html#Model_with_libraries" label="Model with libraries"></topic>
+			</topic>
+		</topic>
       <topic href="html/GitAdapter/GitAdapter.html#Limitations_.2F_Known_Issues" label="Limitations / Known Issues">
          <anchor id="limitationsContribution"/>
       </topic>
       <anchor id="contribution"/>
-     
    </topic>
 </toc>
