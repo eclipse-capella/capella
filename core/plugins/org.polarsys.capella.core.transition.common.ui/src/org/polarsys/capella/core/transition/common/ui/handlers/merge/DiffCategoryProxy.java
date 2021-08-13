@@ -19,6 +19,7 @@ import org.eclipse.emf.diffmerge.ui.viewers.IDifferenceCategory;
 import org.eclipse.emf.diffmerge.ui.viewers.IDifferenceCategorySet;
 import org.eclipse.emf.diffmerge.ui.viewers.categories.AbstractDifferenceCategory;
 import org.eclipse.emf.diffmerge.ui.viewers.categories.AbstractDifferenceCategoryItem;
+import org.eclipse.emf.diffmerge.ui.viewers.categories.ConflictCategory;
 import org.eclipse.swt.graphics.Image;
 import org.polarsys.capella.core.transition.common.handlers.merge.ICategoryItem;
 
@@ -143,10 +144,31 @@ public class DiffCategoryProxy extends AbstractDifferenceCategoryItem implements
     }
 
     @Override
-    public boolean covers(IDifference difference, EMFDiffNode node) {
+    public boolean covers(IDifference<?> difference, EMFDiffNode node) {
       return false;
     }
 
+    /**
+     * @see org.eclipse.emf.diffmerge.ui.viewers.IDifferenceCategory#copy()
+     */
+    @Override
+    public IDifferenceCategory copy() {
+      CategoryState copied = new CategoryState();
+      copied.copyState(this);
+      return copied;
+    }
+
+  }
+
+
+  /**
+   * @see org.eclipse.emf.diffmerge.ui.viewers.IDifferenceCategory#copy()
+   */
+  @Override
+  public IDifferenceCategory copy() {
+    DiffCategoryProxy copied = new DiffCategoryProxy(item);
+    copied.copyState(this);
+    return copied;
   }
 
 }
