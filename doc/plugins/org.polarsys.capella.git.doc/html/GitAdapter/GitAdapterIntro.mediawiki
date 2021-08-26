@@ -10,7 +10,7 @@ Basic operations when working with git are summarized below:
 ===Working with several people===
 [[Image:images/WorkingSeveralPeople.png|center|531x380px]]
 ==Introduction to eGit==
-eGit is an adapter for Eclipse to support git operations directly from the Eclipse environment.</br>
+eGit is an adapter for Eclipse to support git operations directly from the Eclipse environment.<br>
 eGit provides several additional windows:
 ===Git Repositories===
 To see the different repositories on which you are working and their content (branches, tags, files...)
