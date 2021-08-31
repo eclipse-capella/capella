@@ -16,6 +16,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.util.LocalSelectionTransfer;
@@ -38,6 +39,7 @@ import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
  */
 public class DiagramDropAdapterAssistant extends AbstractCapellaDropAdapterAssistant {
 
+  public static final String CAPELLA_CORE_SIRIUS = "org.polarsys.capella.core.sirius.analysis";
   /**
    * {@inheritDoc}
    */
@@ -98,19 +100,23 @@ public class DiagramDropAdapterAssistant extends AbstractCapellaDropAdapterAssis
    */
   private boolean isDroppable(DRepresentationDescriptor descriptor, EObject targetElement) {
     RepresentationDescription description = descriptor.getDescription();
-    String diagramId = description.getName();
+    String diagramName = description.getName();
+    boolean isValid = true;
 
-    boolean isValid = DiagramDescriptionConstants.CLASS_BLANK_DIAGRAM_NAME.equals(diagramId)
-        || IDiagramNameConstants.INTERFACES_BLANK_DIAGRAM_NAME.equals(diagramId)
-        || IDiagramNameConstants.MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME.equals(diagramId)
-        || IDiagramNameConstants.MISSIONS_BLANK_DIAGRAM_NAME.equals(diagramId) || diagramId.contains("Data Flow Blank") //$NON-NLS-1$
-        || IDiagramNameConstants.OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME.equals(diagramId)
-        || IDiagramNameConstants.OPERATIONAL_ROLE_BLANK_DIAGRAM_NAME.equals(diagramId)
-        || IDiagramNameConstants.OPERATIONAL_ACTIVITY_INTERACTION_BLANK_DIAGRAM_NAME.equals(diagramId)
-        || IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME.equals(diagramId)
-        || IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME.equals(diagramId)
-        || IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME.equals(diagramId)
-        || IDiagramNameConstants.EPBS_ARCHITECTURE_BLANK_DIAGRAM_NAME.equals(diagramId);
+    if (EcoreUtil.getURI(description).toString().contains(CAPELLA_CORE_SIRIUS)) {
+      isValid = DiagramDescriptionConstants.CLASS_BLANK_DIAGRAM_NAME.equals(diagramName)
+          || IDiagramNameConstants.INTERFACES_BLANK_DIAGRAM_NAME.equals(diagramName)
+          || IDiagramNameConstants.MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME.equals(diagramName)
+          || IDiagramNameConstants.MISSIONS_BLANK_DIAGRAM_NAME.equals(diagramName)
+          || diagramName.contains("Data Flow Blank") //$NON-NLS-1$
+          || IDiagramNameConstants.OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME.equals(diagramName)
+          || IDiagramNameConstants.OPERATIONAL_ROLE_BLANK_DIAGRAM_NAME.equals(diagramName)
+          || IDiagramNameConstants.OPERATIONAL_ACTIVITY_INTERACTION_BLANK_DIAGRAM_NAME.equals(diagramName)
+          || IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME.equals(diagramName)
+          || IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME.equals(diagramName)
+          || IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME.equals(diagramName)
+          || IDiagramNameConstants.EPBS_ARCHITECTURE_BLANK_DIAGRAM_NAME.equals(diagramName);
+    }
 
     if (isValid && description instanceof DiagramDescription) {
       return DialectManager.INSTANCE.canCreate(targetElement, description);
