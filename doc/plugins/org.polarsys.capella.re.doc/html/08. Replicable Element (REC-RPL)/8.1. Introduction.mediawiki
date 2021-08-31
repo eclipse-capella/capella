@@ -30,7 +30,9 @@ Different kinds of conformance are possible between a RPL and its REC. Capella d
 * Blackbox: No modification is allowed on the Replica.
 * Constrained Reuse: Internal elements can be added inside a RPL, but 	constraints and Interfaces (Function and Component Ports for 	example) defined in REC cannot be modified.
 * Inheritance: Any element can be added in the RPL, including new 	Interfaces.
-
+<br>
+More details can be found [https://www.youtube.com/watch?v=h-ax61eVlxM here]
+<br>
 == Examples ==
 
 Non-exhaustive list of possible REC.

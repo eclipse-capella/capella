@@ -1,0 +1,13 @@
+= Properties =
+<br>
+The Properties view allow to retrieve and modify the attributes of the current selected element (model element or diagram).<br>
+
+It provides different tabs in order to access to all the attributes of the selected element:<br>
+<ul>
+<li>Capella: main Capella attributes and relations of the selected element</li>
+<li>Management: additional attributes for review, visibility in documentation and Traceability</li>
+<li>Description: a rich text description of the element. Can include images, links toward diagrams and model elements...</li>
+<li>Extensions: link with Property Values and Property Group. Users might use PVMT add-on instead of this tab (download link)</li>
+<li>Expert: all attributes and relation defined within Capella. To be used with extreme caution</li>
+</ul>
+[[Image:Images/PropertiesView.png|center|600x300px]]<br><br>

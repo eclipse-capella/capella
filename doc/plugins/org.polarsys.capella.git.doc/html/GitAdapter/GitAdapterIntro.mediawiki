@@ -1,0 +1,49 @@
+= Introduction =
+==Introduction to Git==
+Git is one solution to support management of versions for any kind of files.<br/>
+Git works with a central repository, and local repositories for each users.<br/>
+Basic operations when working with git are summarized below:
+===Clone an existing Git repository===
+[[Image:images/CloneGitRepository.png|center|531x380px]]
+=== Commit / check out and push / fetch ===
+[[Image:images/CommitCheckOutPushFetch.png|center|531x380px]]
+===Working with several people===
+[[Image:images/WorkingSeveralPeople.png|center|531x380px]]
+==Introduction to eGit==
+eGit is an adapter for Eclipse to support git operations directly from the Eclipse environment.<br>
+eGit provides several additional windows:
+===Git Repositories===
+To see the different repositories on which you are working and their content (branches, tags, files...)
+<br/>
+[[Image:images/GitRepositories.png|center|600x270px]]
+===Git Staging===
+To define which files will have to be committed and provide a commit description
+<br/>
+[[Image:images/GitStaging2.png|center|800x400px]]
+===History===
+To see the history of commits
+<br/>
+[[Image:images/History2.png|center|800x400px]]
+===Capella Project Explorer===
+Moreover, additional information is provided by the Capella Project Explorer:
+<br/>
+[[Image:images/CapellaProjectExplorer.png|center|400x270px]]
+<br/>
+And new commands are available on projects:
+<br/>
+[[Image:images/CapellaProjectExplorer2.png|center|300x400px]]
+
+==Capella GIT integration==
+
+The Capella Git includes a version of eGit.<br/>
+
+In addition, it provides a functionality customized for Capella: <br/>
+
+Indeed, when using the command "Compare With" of eGit, the default configuration mode is a textual comparison of files. <br/>
+
+The Capella GIT adapter allows eGit to support the Capella diff/merge when using this command on Capella files. <br/>
+
+<b>Textual comparison</b> <br/>
+[[Image:images/TextualComparasion.png|center|650x300px]] <br/>
+<b>Capella diff/merge</b> <br/>
+[[Image:images/CapellaDiffMerge.png|center|650x300px]] <br/>

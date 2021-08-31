@@ -1,7 +1,7 @@
 
-= Capella Overview / Activity Browser =
+= Activity Explorer =
 
-The Activity Browser provides a methodological access to all key activities in Capella. The Activity Browser is displayed automatically each time a Capella model is opened. It can also be launched with the contextual menu.
+The Activity Explorer provides a methodological access to all key activities in Capella. The Activity Explorer is displayed automatically each time a Capella model is opened. It can also be launched with the contextual menu.
 
 
 [[Image:Images/4.03.%20Activity%20Browser_html_2a49622d.png|400x253px]]
@@ -10,38 +10,28 @@ The Activity Browser provides a methodological access to all key activities in C
 <br>
 <br>
 
-
-[[Image:Images/4.03_Activity_Browser.png|700x500px]]
-
-
-Clicking on one of the five items opens the corresponding tab, here the Functional Analysis.
-
-
-[[Image:Images/4.03.%20Activity%20Browser_html_20069444.png|1149x691px]]
-
-
-The Activity Browser embeds a documentation tab. This tab displays the current description of the System Engineering root element.
+[[Image:Images/4.03_Activity_Browser.png|700x500px]] <br>
 
 
 {| border="1"
 |-
 | 
-[[Image:Images/4.03.%20Activity%20Browser_html_3c78e109.png|48x48px]]
+[[Image:Images/Flag.jpg|32x34px]]
 
 
-| 
-As 				descriptions of elements in Capella can embed html links 				towards specific elements of the model and towards diagrams, it 				is a good idea to use the description tab of the Activity Browser 				to create a kind of reader guide for the current model. The idea 				is to explain the model organization, provide fast access to key 				diagrams, focus on specific areas, etc.
+| R
+The Activity Explorer is the main interaction point with a Capella model.
+|}<br>
+After selecting one of the Arcadia perspective, it allows to:<br>
+<ul>
+<li>create new diagrams depending on the type of activity the user want to address</li>
+<li>and open the already existing diagrams</li>
+</ul>
+<br><br>
+[[Image:Images/ActivityExplorerPhoto.png|700x400px]] <br><br>
+There is also a special tab dedicated to the Documentation of the project. You can use it for multiple purposes, e.g. to provide a guidance to model readers on where to start and how to navigate the model for let's say a review of it.
 
-Fore more information, please refer to [[../help/topic/org.polarsys.kitalpha.richtext.widget.doc/html/usersGuide/usersguide.html | the user's guide of MDE Rich Text Widget]] provided by Kitalpha.
-|}
-[[Image:Images/4.03.%20Activity%20Browser_html_1e4d9238.png]]
-
-
-Despite Capella comes with a strong methodological background, it is often necessary to customize the modelling strategy and objectives for a given system. It is therefore possible to customize the sections appearing on the Activity Browser, using the Capella Preferences (see specific documentation).
-
-
-[[Image:Images/4.03.%20Activity%20Browser_html_m773def8a.png|514x448px]]
-
-
-[[Image:Images/4.03.%20Activity%20Browser_html_m66708e1c.png|499x435px]]
-
+== Customization ==
+Despite Capella comes with a strong methodological background, it is often necessary to customize the modelling strategy and objectives for a given system. It is therefore possible to customize the activities appearing on the Activity Explorer, using below Capella Preferences.
+<br><br>
+[[Image:Images/Management.png|650x300px]]

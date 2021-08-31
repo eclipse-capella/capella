@@ -6,11 +6,7 @@
 		<link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/>
 	</head>
 	<body>
-		<h1 id="Version_Control_with_GIT">Version Control with GIT</h1>
-		<p>Git is a Version Control System (VCS) for tracking changes in computer files and coordinating work on those files among multiple users.
-			<br/>As with most other distributed version control systems, and unlike SVN and CC, every Git directory on every computer is a full-fledged repository with complete history and full version tracking abilities, independent of network access or a central server.
-		</p>
-		<h2 id="Tutorials">Tutorials</h2>
+		<h1 id="Tutorials">Tutorials</h1>
 		<p>These tutorials assume that you are familiar with Git and you know how it works.
 			<br/>
 			If you are new to Git or to distributed version control systems generally, then you might want to read 
@@ -96,105 +92,601 @@
 				<br/>
 			</li>
 		</ul>
-		<h4 id="Put_the_Capella_project_under_source_control_on_the_Git_Repository">Put the Capella project under source control on the Git Repository</h4>
-		<ul>
-			<li>Now, switch back to the Capella perspective ("Capella" button in the top right-hand corner) and create a new Capella Project.</li>
-			<li>Right-click the project in the Project Explorer &gt; Team &gt; Share Project...
-				<br/>
-				<br/>-
-				<img border="0" src="images/ShareProject.png"/>
-			</li>
-		</ul>
+		<h4 id="Clone_a_Git_repository">Clone a Git repository</h4>
+		<p>In order to be able to work in a Git repository if you do not want to create a new repository, the first thing to do is to clone this repository. 
+			<br/>
+			To clone a remote repository, in Capella, you need to select Window / Show view / Other. 
+			<br/>
+			Then find "Git Repositories" under Git and select Open.
+			<br/>
+			<br/>
+
+			<img height="350" width="300" align="middle" border="0" src="images/ShortViewGit.png"/>
+			<br/>
+			<br/>
+			This will open a new view in the Capella environment.
+			<br/>
+			<br/>
+
+			<img height="300" width="850" align="middle" border="0" src="images/GitRepoViewAdd.png"/>
+			<br/>
+			<br/>
+			From this view, it is possible to:
+<ul>
+				<li>clone a remote Git repository</li>
+				<li>create a new local Git repository (not connected to a remote repository)</li>
+				<li>add an existing local Git repository (add to the view a repository which have already been cloned locally, or a local repository with no remote)</li>
+</ul>
+		</p>
+		<table border="1">
+			<tr>
+				<td>
+					<p>
+						<img height="48" width="48" border="0" src="images/Information.png"/>
+					</p>
+				</td>
+				<td>
+					<p><ul>
+<li>Creating a local Git repository can be a good way to perform some version control even without having access to a remote repository</li>
+<li>If you create a local git repository, do not check the option "Create as bare repository"</li>
+</ul></p>
+				</td>
+			</tr>
+		</table>
+		<p>To clone a remote repository, choose "Clone a Git repository".
+			<br/>
+			Then, Capella will ask for the information about the remote repository: 
+			<br/>
+<b>This information should be provided to you by the people managing the remote repositories</b> 
+			<br/>
+			<br/>
+
+			<img height="400" width="440" border="0" src="images/CloneGitRepositoryVersionControl.png"/>
+
+			<br/> 
+			<br/>
+			When all information is provided, select Next.
+			<br/>
+			Capella will contact the remote repository and retrieve information regarding the existing branches.
+			<br/>
+			<br/>
+
+			<img height="400" width="440" border="0" src="images/CloneGitRepositoryVersionControl2.png"/>
+			<br/> 
+			<br/>
+			After selecting the branches to clone, use Next.
+			<br/>
+			Capella will then ask to define where to create the local repository:
+			<br/>
+			<br/>
+
+			<img height="400" width="440" border="0" src="images/CloneGitRepositoryVersionControl3.png"/>
+			<br/> 
+			<br/>
+		</p>
+		<table border="1">
+			<tr>
+				<td>
+					<p>
+						<img height="48" width="48" border="0" src="images/Information.png"/>
+					</p>
+				</td>
+				<td>
+					<p><ul>
+<li>The local repository can be created wherever you want on your computer.</li>
+<li>It does not need to be located in MyApp or any specific location.</li>
+<li>However, It should not be located in your Capella workspace (projects from the Git repository will then be imported in the workspace if necessary - see below)</li>
+</ul></p>
+				</td>
+			</tr>
+		</table>
+		<p>Define the target directory then select Finish. 
+			<br/>
+			Capella will then clone the remote repository and add the repository to the view.
+			<br/>
+			This view (which can display several Git repositories), display information about:
+<ul>
+<li>Local and remote branches</li>
+<li>Tags</li>
+<li>URL of the remote repository</li>
+<li>Working Tree (the files and folders which are managed in version)</li>
+</ul>
+
+			<img height="400" width="720" border="0" src="images/GitRepoView.png"/>
+		</p>
+		<h4 id="Share_a_Capella_model_on_Git_and_commit_a_first_version">Share a Capella model on Git and commit a first version</h4>
+		<p>Now that we have cloned the remote repository, we are going to add a Capella model to the Git repository for version control. 
+			<br/>
+			For this, in the Capella Project Explorer, select the Project (folder containing the Capella model) and use right click, Team / Share Project
+			<br/> 
+			<br/>
+
+			<img height="400" width="500" border="0" src="images/ShareProject2.png"/> 
+			<br/>
+			<br/>
+			This will open a window where we have to define:
+<ul>
+<li>the repository in which we want to store the Capella model (several options may be possible if you have several repositories in the view "Git Repositories")</li>
+<li>define the path within the target repository (if empty, the project will be stored at the root of the repository)</li>
+</ul>
+
+			<img height="400" width="640" border="0" src="images/ShareProject3.png"/>
+			<br/>
+			<br/>
+			When done, select Finish. 
+			<br/>
+			The Project Explorer will now display the name of the repository and the current branch next to the name of the Capella Project.
+			<br/>
+			<br/>
+
+			<img height="150" width="300" border="0" src="images/RepositoryBranch.png"/>
+			<br/>
+			<br/>
+			Moreover, we can see some question mark on the file and folder icon. This is because so far those files have not yet been committed to the repository.
+			<br/>
+			To commit a first version of the files, we need to use: Window / Show view / Other
+			<br/>
+			Then find "Git Staging" under Git and select Open.
+			<br/>
+			<br/>
+
+			<img height="375" width="300" border="0" src="images/ShowViewGitStaging2.png"/>
+			<br/>
+			<br/>
+			This will open a new view in the Capella environment
+			<br/>
+			<br/>
+
+			<img height="300" width="758" border="0" src="images/GitStagingView.png"/>
+			<br/>
+			<br/>
+			In this view, we can:
+<ul>
+<li>select files to be committed (by moving them from Unstaged Changes to Staged Changes)</li>
+<li>provide a Commit Message</li>
+<li>provide information about the Author and Committer</li>
+</ul>
+			Here we are going to commit all of the files and provide a description "First commit"
+			<br/>
+
+			<img height="300" width="800" border="0" src="images/GitStagingCommit.png"/>
+			<br/>
+			<br/>
+		</p>
+		<table border="1">
+			<tr>
+				<td>
+					<p>
+						<img height="34" width="32" border="0" src="images/Flag.jpg"/>
+					</p>
+				</td>
+				<td>
+					<p>When committing a Capella model, all of the files (*.project, *.afm, *.aird and *.capella) need to be committed consistently in order to avoid corruption of the model!</p>
+				</td>
+			</tr>
+		</table>
+		<p>
+			<br/>
+			Finally, here we have two different options:
+<ul>
+<li>either Commit (create a new version in the local repository only)</li>
+<li>or Commit and Push (create a new version in the local repository, then push the new version in the remote repository as well)</li>
+</ul>
+			We are going to use the second option here.
+			<br/>
+			When the push is completed, Capella display a confirmation window.
+			<br/>
+			<br/>
+
+			<img height="400" width="600" border="0" src="images/PushResult.png"/>
+			<br/>
+			<br/>
+			No action is required here and we can select Close.
+			<br/>
+		</p>
+		<table border="1">
+			<tr>
+				<td>
+					<p>
+						<img height="48" width="48" border="0" src="images/Information.png"/>
+					</p>
+				</td>
+				<td>
+					<p><ul>
+<li>If we choose "Commit" instead of "Commit and Push" then the new version is only defined in the local repository and the remote repository is not updated.</li>
+<li>To update the remote repository, we can go in the "Git Repositories" view, select origin under Remotes, and use right click, Push.</li>
+<li>This will trigger the push action toward the remote repositor 
+						<br/>
+						<br/>
+
+						<img height="300" width="700" border="0" src="images/RemoteRepo.png"/>
+						<br/>
+						<br/>
+</li>
+</ul>
+					</p>
+				</td>
+			</tr>
+		</table>
+		<p>Now we can see that the icons in the Project Explorer are modified and display a yellow cylinder to show that the files are committed in the repository
+			<br/>
+			<br/>
+
+			<img height="150" width="300" border="0" src="images/YellowCilinder.png"/>
+			<br/>
+			<br/>
+			Also, the Capella model can now be found in the Git Repositories view in the Working Tree
+			<br/>
+			<br/>
+
+			<img height="300" width="540" border="0" src="images/WorkingTree.png"/>
+			<br/>
+			<br/>
+		</p>
+		<h4 id="Retrieve_model_from_a_Git_repository">Retrieve model from a Git repository</h4>
+		<p>If we initially clone a non-empty repository, we will directly see all its content in the Working Tree.
+			<br/>
+			If the Working Tree contains Capella models, they can be imported in the Workspace in order to be able to open / modify thembr&gt;
+			To do so, you need to select the project in the Working Tree, then use right click, Import Projects
+			<br/>
+
+			<img height="300" width="700" border="0" src="images/ImportProject.png"/>
+			<br/>
+			<br/>
+		</p>
+		<h4 id="Perform_a_new_commit.2C_retrieve_history.2C_compare_versions">Perform a new commit, retrieve history, compare versions</h4>
+		<p>Now lets modify our Capella model to commit a new version of the model.
+			<br/>
+		</p>
+		<p>Once the model is modify, we will see a "&gt;" icon next to the name of the files in the Project Explorer.
+			<br/>
+			<br/>
+		</p>
+		<p>This indicate that the files have been modified compared to the last committed version.
+			<br/>
+			<br/>
+
+			<img height="150" width="300" border="0" src="images/YellowCilinder.png"/>
+			<br/>
+			<br/>
+			At any time, we can use a right click on the aird file, then Compare With to compare the current definition of the model with:
+			<br/>
+<ul>
+<li>HEAD Revision : the last commit in the current branch</li>
+<li>Branch, Tag or Reference: to select one specific branch or tag</li>
+<li>Commit : to select one specific commit in the history of the repository</li>
+</ul>
+
+			<img height="400" width="600" border="0" src="images/CompareHead.png"/>
+			<br/>
+			<br/>
+		</p>
+		<table border="1">
+			<tr>
+				<td>
+					<p>
+						<img height="34" width="32" border="0" src="images/Flag.jpg"/>
+					</p>
+				</td>
+				<td>
+					<p><ul>
+<li>Here we see that we can also use the command Replace With.</li>
+<li>However, we need to be careful with this command because it will replace the selected file with a previous version.</li>
+<li>To ensure the consistency of the model, all files need to be in a consistent state (*.aird, *.capella, *.afm).</li>
+<li>As a result, it is recommended to use the command Replace With on the project (folder) instead of on the files to ensure that all files are in a consistent state.</li>
+</ul></p>
+				</td>
+			</tr>
+		</table>
+		<p>
+			<br/>
+			When comparing with the HEAD Revision for example, Capella will first display a configuration window:
+			<br/>
+			<br/>
+
+			<img height="250" width="400" border="0" src="images/DiffMerge.png"/>
+			<br/>
+			<br/>
+			Nothing need to be modified here and we can select Finish. Capella will then open the diff / merge window
+			<br/>
+			<br/>
+
+			<img height="400" width="650" border="0" src="images/DiffMergeWindow.png"/>
+			<br/>
+			<br/>
+			As a remember we can see here:
+<ul>
+<li>the current version of the model in the middle panel</li>
+<li>the previous commit on the right panel</li>
+<li>the list of differences in the left panel</li>
+</ul>
+			From this window, we can review differences between the versions, and even revert modifications by transferring elements.
+			<br/>
+		</p>
+		<table border="1">
+			<tr>
+				<td>
+					<p>
+						<img height="48" width="48" border="0" src="images/Information.png"/>
+					</p>
+				</td>
+				<td>
+					<p><ul>
+<li>If we select the capella file then use Compare With, we will only see the differences in the model element definitions.</li>
+<li>As if we select the aird file, we see the differences in the model element definitions + the differences in the diagrams</li>
+</ul></p>
+				</td>
+			</tr>
+		</table>
+		<p>To commit a new version in the repository, we need to use the "Git Staging" view again, move the files from Unstaged Changes to Staged Changes and provide a Commit Message.
+			<br/>
+			<br/>
+
+			<img height="300" width="700" border="0" src="images/GitStagingCommit3.png"/>
+			<br/>
+			<br/>
+			Finally we can use Commit and Push again. The new version is committed in the local and remote repository.
+			<br/>
+			<br/>
+			To see the history of the repository containing the model, we need to use the view "Git Repositories", select the local branch on which we are working and use right click, Show In / History
+
+			<img height="250" width="550" border="0" src="images/ShowHistory.png"/>
+			<br/>
+			<br/>
+			This will open a new window with the list of commits in the branch and the main information.
+			<br/>
+			When selecting a commit, the full commit message is displayed below with the committed files.
+			<br/>
+
+			<img height="300" width="700" border="0" src="images/HistoryView.png"/>
+			<br/>
+			<br/>
+		</p>
+		<h4 id="Retrieve_a_new_version">Retrieve a new version</h4>
+		<p>Now lets consider that someone else has been working on the model and has pushed a new version.
+			<br/>
+			This mean that the remote repository has been updated with the new version.
+			<br/>
+			However, our local repository has not yet been updated.
+			<br/>
+		</p>
+		<table border="1">
+			<tr>
+				<td>
+					<p>
+						<img height="34" width="32" border="0" src="images/Flag.jpg"/>
+					</p>
+				</td>
+				<td>
+					<p><ul>
+<li>There is no notification in Capella that a new version has been pushed to the remote repository!</li>
+</ul></p>
+				</td>
+			</tr>
+		</table>
 		<p>
 			<br/>
 		</p>
-		<ul>
-			<li>Select Git and click Next.
-				<br/>
-				<br/>-
-				<img height="410" width="460" border="0" src="images/ShareProjectGit.png"/>
-			</li>
-		</ul>
-		<p>
+		<p>The first step is to resynchronize our local repository with the updated remote repository.
+			<br/>
+			For this, we need to use the window "Git Repositories", select origin in Remotes and use right click, Fetch. 
+			<br/>
+			<br/>
+
+			<img height="250" width="550" border="0" src="images/FetchImg.png"/>
+			<br/>
+			<br/>
+			This will open a confirmation window with the result of the Fetch
+			<br/>
+			<br/>
+
+			<img height="250" width="400" border="0" src="images/ConfirmationFetch.png"/>
+			<br/>
+			<br/>
+			Here we have only one new commit in the branch master performed by ADE.
+			<br/>
+<b>Here we need to be careful!</b>
+			The local repository has retrieved the new commits performed. However, our local branch (on which we are working) does not yet integrate all the new commits.
+			<br/>
+			We can see here that the local branch master and the remote branch origin/master are not at the same state.
+			<br/>
+			<br/>
+
+			<img height="150" width="500" border="0" src="images/DiffStatesRemoteLocal.png"/>
+			<br/>
 			<br/>
 		</p>
-		<ul>
-			<li>Select your repository and click Finish.
-				<br/>
-				<br/>-
-				<img height="450" width="590" border="0" src="images/ConfigureGitRepo.png"/>
-			</li>
-		</ul>
-		<h4 id="Commit_the_project">Commit the project</h4>
-		<ul>
-			<li>Right-click the project in the Project Explorer &gt; Team &gt; Commit...
-				<br/>
-				<br/>-
-				<img height="800" width="530" border="0" src="images/Commit.png"/>
-			</li>
-		</ul>
-		<p>
+		<p>We can see that our local branch is one commit late with the indication 
+			<br/>
+			There is also this indication in the Project Explorer next to the project name
+			<br/>
+			<br/>
+
+			<img height="150" width="300" border="0" src="images/IndicationNext.png"/>
+			<br/>
+			<br/>
+			To integrate the new commits in our local branch (and be able to see the new version of the model), we need to select the remote origin/master branch, then use right click, Merge
+			<br/>
+			<br/>
+
+			<img height="400" width="650" border="0" src="images/SelectRemoteBranch.png"/>
+			<br/>
+			<br/>
+			In this case, it result in a Fast-forward and the local branch integrate the new definitions of the remote branch
+			<br/>
+			<br/>
+
+			<img height="200" width="400" border="0" src="images/MergeResult2.png"/>
+			<br/>
 			<br/>
 		</p>
-		<ul>
-			<li>Type "Initial commit" in the message field, select all files, click "Commit".A "master" branch is being created.
-				<br/>
-				<br/>-
-				<img height="620" width="630" border="0" src="images/CommitMessage.png"/>
-			</li>
-		</ul>
-		<p>
+		<h4 id="Merge_conflicts">Merge conflicts</h4>
+		<p>In this last case, we are going to consider two different users working on the same model at the same time.
+			<br/>
+			Both User A and User B start from version 3 of the model and perform modification.
+			<br/>
+			User A perform his commit and push first. His version is integrated into the remote repository as the new reference version (version 4).
+			<br/>
+			User B then tries to push is modification. Here the remote repository will not accept his modification because his new version does not use the latest version of the repository (version 4) as starting point, but uses an old version (version 3).
+			<br/>
+			<br/>
+
+			<img height="250" width="550" border="0" src="images/ConflictImg.png"/>
+			<br/>
+			<br/>
+			Lets see what happen from the point of view of User B.
+			<br/>
+			User B perform his modification, and then tries to commit and push his modification as usual.
+			<br/>
+			However, when selecting Commit and Push, he gets the following message:
+			<br/>
+			<br/>
+
+			<img height="340" width="500" border="0" src="images/PushConflictMessage.png"/>
+			<br/>
+			<br/>
+			His modification cannot be pushed to the remote branch because they are not following the last commit of the remote branch.
 			<br/>
 		</p>
-		<ul>
-			<li>Create for example a System Data Flow Blank diagram, create a few functions and exchanges, save.</li>
-			<li>Commit the changes like above, for example with the "First changes" message.</li>
-		</ul>
-		<h4 id="Check_the_History">Check the History</h4>
-		<ul>
-			<li>Right-click the .capella file &gt; Team &gt; Show in History. You can now see your two commit in the History view.
-				<br/>
-				<br/>-
-				<img height="215" width="666" border="0" src="images/History.png"/>
-			</li>
-		</ul>
+		<table border="1">
+			<tr>
+				<td>
+					<p>
+						<img height="48" width="48" border="0" src="images/Information.png"/>
+					</p>
+				</td>
+				<td>
+					<p>Note: with the command Commit and Push, only the push is rejected. But our modifications have been committed toward the local repository</p>
+				</td>
+			</tr>
+		</table>
 		<p>
 			<br/>
-		</p>
-		<ul>
-			<li>In the History view, select the two commits and select "Compare with each other" then "Finish".You should see the differences between your commits with the Capella Diff/Merge tool. But you cannot modify them (merge), because you cannot modify the history.
-				<br/>
-				<br/>-
-				<img height="390" width="550" border="0" src="images/CompareCommit.png"/>
-			</li>
-		</ul>
-		<p>
+			So we are going to use the command Fetch to retrieve the last modifications performed on the remote repository.
+			<br/>
+			<br/>
+
+			<img height="250" width="550" border="0" src="images/FetchImg.png"/>
+			<br/>
+			<br/>
+			With this, we are able to retrieve the modifications performed by User A
+			<br/>
+			<br/>
+
+			<img height="250" width="400" border="0" src="images/FetchMessage.png"/>
+			<br/>
+			<br/>
+			We see now that we are 1 commit ahead of the remote branch, but also 1 commit late:
+			<br/>
+			<br/>
+
+			<img height="150" width="300" border="0" src="images/ProjectExplorerAird.png"/>
+			<br/>
+			<br/>
+			Now we are going to try to merge our local branch with the remote branch
+			<br/>
+			<br/>
+
+			<img height="250" width="550" border="0" src="images/MergeLocalWithRemote.png"/>
+			<br/>
 			<br/>
 		</p>
-		<dl>
-			<dd>-
-				<img height="670" width="840" border="0" src="images/CompareEditor.png"/>
-			</dd>
-		</dl>
-		<h4 id="Check_the_current_changes_with_the_last_commit">Check the current changes with the last commit</h4>
-		<ul>
-			<li>Make new changes in your diagram including the renaming of a function, save.</li>
-		</ul>
-		<ul>
-			<li>Right-click the .capella file &gt; Compare with &gt; Head revision &gt; Finish. You have the possibility to undo some of the current changes at a fine grain with the diff/merge tool.
-				<br/>
-				<br/>-
-				<img height="600" width="470" border="0" src="images/CompareWithHead.png"/>
-			</li>
-		</ul>
+		<table border="1">
+			<tr>
+				<td>
+					<p>
+						<img height="34" width="32" border="0" src="images/Flag.jpg"/>
+					</p>
+				</td>
+				<td>
+					<p>Before performing the Merge, we need to close the Capella model by selecting the aird file then right click, Close</p>
+				</td>
+			</tr>
+		</table>
 		<p>
 			<br/>
+			Here we see that the merge cannot be easily performed and result in a conflict.
+			<br/>
+			Capella detects that the same model has been modified by 2 different people and requires a user action in order to manually merge the modifications performed by the different users.
+			<br/>
+			<br/>
+
+			<img height="250" width="380" border="0" src="images/MergeConflictResult.png"/>
+			<br/>
+			<br/>
+			We can see the elements for which there is a conflict (elements with the double red arrow)
+			<br/>
+			<br/>
+
+			<img height="150" width="300" border="0" src="images/ViewConflicts.png"/>
+			<br/>
+			<br/>
+			To resolve the conflict, we are going to use a right click on the aird file, then Team / Merge Tool
+			<br/>
+			<br/>
+
+			<img height="400" width="700" border="0" src="images/MergeToolForConflict.png"/>
+			<br/>
+			<br/>
+			Again we will have a configuration window.
+			<br/>
+			<br/>
+
+			<img height="250" width="400" border="0" src="images/DiffMergeImg2.png"/>
+			<br/>
+			<br/>
+			Here we don't need to modify anything and we can just select Finish
+			<br/>
+			We have now a new diff / merge window from which we have to merge the modifications performed by both User A and User B.
+			<br/>
+			<br/>
+
+			<img height="400" width="700" border="0" src="images/MergeWindow.png"/>
+			<br/>
+			<br/>
+			We can also open the Capella model and perform the merge by modifying elements and diagrams by hand.
+			<br/>
 		</p>
-		<dl>
-			<dd>-
-				<img border="0" src="images/CompareHeadActions.png"/>
-			</dd>
-		</dl>
+		<table border="1">
+			<tr>
+				<td>
+					<p>
+						<img height="34" width="32" border="0" src="images/Flag.jpg"/>
+					</p>
+				</td>
+				<td>
+					<p><ul>
+<li>Resolving conflicts in Capella models can be a tedious task if different users have modified the same elements.</li>
+<li>This is why Team 4 Capella has been developed and should be used when requiring several people to modify the same model at the same time.</li>
+</ul></p>
+				</td>
+			</tr>
+		</table>
+		<p>
+			<br/>
+			When the merge is completed, User B can now perform a Commit and Push to validate the merge.
+			<br/>
+			Note that the Commit Message is automatically pre-filled to indicate that we have performed a merge.
+			<br/>
+
+			<img height="350" width="700" border="0" src="images/Pre-fieldCommit.png"/>
+			<br/>
+			<br/>
+			The Push will now succeed
+			<br/>
+			<br/>
+
+			<img height="300" width="400" border="0" src="images/SuccesPush.png"/>
+			<br/>
+			<br/>
+			We can now check the history of the local branch which describes that modifications have been performed in parallel
+			<br/>
+			<br/>
+
+			<img height="350" width="700" border="0" src="images/HistoryCheck.png"/>
+			<br/>
+			<br/>
+		</p>
 		<h3 id="Advanced_Tutorial">Advanced Tutorial</h3>
 		<p>This is a continuation of the above basic tutorial.</p>
 		<h4 id="Create_a_tag">Create a tag</h4>
@@ -476,7 +968,9 @@
 			<li>Open the System Data Flow diagram: you can see that the contributions of the two branches have been integrated and the rename conflict has been resolved in favor of the "master" branch. You can also see that the editor is in dirty mode (save is enabled): this is because the diagram has automatically updated itself to reflect the change to the name.</li>
 		</ul>
 		<h4 id="Fragmented_Model">Fragmented Model</h4>
-		<p>If you are not familiar with Capella model fragmentation, you can refer to [../help/topic/org.polarsys.capella.doc/html/Fragment%20management/Fragment%20management.html Fragment Management]</p>
+		<p>If you are not familiar with Capella model fragmentation, you can refer to 
+			<a href="/wiki/../help/topic/org.polarsys.capella.doc/html/Fragment%20management/Fragment%20management.html" title="../help/topic/org.polarsys.capella.doc/html/Fragment%20management/Fragment%20management.html">Fragment Management</a>
+		</p>
 		<p>When your model is fragmented, you have to select all your fragments in your commits and always use the root aird for compare operation.</p>
 		<h4 id="Model_with_libraries">Model with libraries</h4>
 		<p>If your model refers to libraries, you have to include manually your modified libraries in your commits in order to keep your model valid.</p>

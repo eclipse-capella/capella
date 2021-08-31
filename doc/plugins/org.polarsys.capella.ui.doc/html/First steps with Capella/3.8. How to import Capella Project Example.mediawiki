@@ -1,13 +1,21 @@
 
 = How to import a Capella Project Example? =
-
-# '''File -> New -> Example ...'''
-# Select '''Capella Project Example'''
-# The wizard dialog appears and proposes a list of available examples. An example decorated by a star means that it was already imported into your workspace, you have to click on the '''Rename''' button in order to be able to import it again. 
-
-[[Image:Images/3.8.%20How%20to%20import%20Capella%20Project%20Example_1.png]]
-[[Image:Images/3.8.%20How%20to%20import%20Capella%20Project%20Example_2.png]]
-
+Sample projects can be imported using File / Import, then Capella Project Example:
+<br><br>
+[[Image:Images/ImportCapellaProjectExample1.png|500x500px]]<br><br>
+So far the only sample model provided is the IFE sample model.<br>
+Select the sample model to import then select Finish.<br><br>
+[[Image:Images/ImportCapellaProjectExample2.png|500x500px]]<br><br>
+The sample model is imported and the Activity Explorer is automatically open.<br>
+{| border="1"
+|-
+| 
+[[Image:Images/Information.png|48x48px]]
+|
+<ul>
+The zip file for the sample model is provided in the Capella installation folder under the sub-folder samples.
+</ul>
+|}
 = How to add an existing Capella project as an example? =
 # The sample project must be a zip containing the project folder
 # The sample project shall be placed in sample folder like '''CAPELLA_INSTALLATION_PATH/samples/model.zip''' or located under a sub folder like '''CAPELLA_INSTALLATION_PATH/samples/model/model.zip'''
