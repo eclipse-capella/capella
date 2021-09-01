@@ -10,7 +10,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ILayout" abstract="true" interface="true"
-      eSuperTypes="platform:/plugin/org.eclipse.sirius/model/viewpoint.ecore#//DRefreshable"/>
+      eSuperTypes="platform:/plugin/org.eclipse.sirius.model/model/viewpoint.ecore#//DRefreshable"/>
   <eClassifiers xsi:type="ecore:EClass" name="ISemanticLayout" abstract="true" interface="true"
       eSuperTypes="#//ILayout">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>

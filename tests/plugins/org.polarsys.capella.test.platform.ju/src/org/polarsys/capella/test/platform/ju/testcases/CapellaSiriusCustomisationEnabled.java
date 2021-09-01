@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018, 2021 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -43,7 +43,7 @@ public class CapellaSiriusCustomisationEnabled extends BasicTestCase {
   }
 
   private void assertSiriusPluginPreferences() {
-    IEclipsePreferences defaultScope = DefaultScope.INSTANCE.getNode(org.eclipse.sirius.viewpoint.SiriusPlugin.ID);
+    IEclipsePreferences defaultScope = DefaultScope.INSTANCE.getNode(org.eclipse.sirius.tools.api.SiriusPlugin.ID);
     
     assertTrue("Preference value for 'Empty aird fragmentation' is not the intended one",
         defaultScope.getBoolean(SiriusPreferencesKeys.PREF_EMPTY_AIRD_FRAGMENT_ON_CONTROL.name(), false));
