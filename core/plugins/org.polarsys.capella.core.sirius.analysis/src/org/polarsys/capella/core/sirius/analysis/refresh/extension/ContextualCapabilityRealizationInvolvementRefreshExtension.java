@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2019, 2021 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -17,17 +17,14 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.EdgeTarget;
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.extensions.INodeMappingExt;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.NodeMappingHelper;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.NodeMapping;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvement;
 import org.polarsys.capella.core.data.capellacore.InvolvedElement;
-import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.la.CapabilityRealization;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.sirius.analysis.DiagramServices;
 import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
 
@@ -55,7 +52,7 @@ public class ContextualCapabilityRealizationInvolvementRefreshExtension extends 
     if (null == mainCapabilityGraphicalNode) {
 
       mainCapabilityGraphicalNode = getNodeMappingHelper(mainCapability)
-          .createNode((INodeMappingExt) capabilityRealizationMapping, mainCapability, mainCapability, diagram);
+          .createNode(capabilityRealizationMapping, mainCapability, mainCapability, diagram);
       diagram.getOwnedDiagramElements().add(mainCapabilityGraphicalNode);
     }
 
@@ -76,7 +73,7 @@ public class ContextualCapabilityRealizationInvolvementRefreshExtension extends 
         for (CapabilityRealizationInvolvement inv : involvements) {
           final InvolvedElement involvedElement = inv.getInvolved();
           if (!DiagramServices.getDiagramServices().isOnDiagram(diagram, involvedElement)) {
-            graphicalNode = getNodeMappingHelper(involvedElement).createNode((INodeMappingExt) componentNodeMapping,
+            graphicalNode = getNodeMappingHelper(involvedElement).createNode(componentNodeMapping,
                 involvedElement, mainCapability, diagram);
             diagram.getOwnedDiagramElements().add(graphicalNode);
           }

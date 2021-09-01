@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2021 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -16,17 +16,17 @@ import java.util.Iterator;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.UnexecutableCommand;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContainerMappingHelper;
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingHelper;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.tool.NodeCreationDescription;
+import org.eclipse.sirius.diagram.model.business.internal.helper.MappingHelper;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.polarsys.capella.core.data.oa.Entity;
@@ -93,10 +93,11 @@ public class NodeCreationDescriptionWrapper extends AbstractSingleSelectionWrapp
         DDiagramElementContainer viewNodeContainer = (DDiagramElementContainer) container;
         final ContainerMapping containerMapping = viewNodeContainer.getActualMapping();
         if (containerMapping != null) {
+             EList<NodeMapping> subNodeMappings = MappingHelper.getAllNodeMappings(containerMapping);
           final Iterator<NodeMapping> it = tool.getNodeMappings().iterator();
           while (it.hasNext()) {
             final NodeMapping curMapping = it.next();
-            if (ContainerMappingHelper.getAllNodeMappings(containerMapping).contains(curMapping)) {
+            if (subNodeMappings.contains(curMapping)) {
               shouldCreate = true;
               break;
             } else if (MappingHelper.getAllBorderedNodeMappings(containerMapping).contains(curMapping)) {
