@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2021 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -18,11 +18,10 @@ import java.util.List;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.extensions.INodeMappingExt;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.NodeMappingHelper;
 import org.eclipse.sirius.diagram.description.NodeMapping;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
 import org.polarsys.capella.core.data.capellacore.InvolvedElement;
 import org.polarsys.capella.core.data.capellacore.Involvement;
@@ -78,7 +77,7 @@ public class ContextualMissionRefreshExtension extends AbstractCacheAwareRefresh
 
     for (final Component actor : actors) {
       if (!DiagramServices.getDiagramServices().isOnDiagram(diagram, actor)) {
-        final DDiagramElement container = nodeMappingHelper.createNode((INodeMappingExt) actorNodeMapping, actor,
+        final DDiagramElement container = nodeMappingHelper.createNode(actorNodeMapping, actor,
             currentMission, diagram);
         diagram.getOwnedDiagramElements().add(container);
       }
@@ -86,7 +85,7 @@ public class ContextualMissionRefreshExtension extends AbstractCacheAwareRefresh
 
     for (final Capability cap : capabilities) {
       if (!DiagramServices.getDiagramServices().isOnDiagram(diagram, cap)) {
-        final DDiagramElement container = nodeMappingHelper.createNode((INodeMappingExt) capaNodeMapping, cap,
+        final DDiagramElement container = nodeMappingHelper.createNode(capaNodeMapping, cap,
             currentMission, diagram);
         diagram.getOwnedDiagramElements().add(container);
       }
@@ -94,7 +93,7 @@ public class ContextualMissionRefreshExtension extends AbstractCacheAwareRefresh
 
     for (final Mission mission : missions) {
       if (!DiagramServices.getDiagramServices().isOnDiagram(diagram, mission)) {
-        final DDiagramElement container = nodeMappingHelper.createNode((INodeMappingExt) missionNodeMapping, mission,
+        final DDiagramElement container = nodeMappingHelper.createNode(missionNodeMapping, mission,
             currentMission, diagram);
         diagram.getOwnedDiagramElements().add(container);
       }

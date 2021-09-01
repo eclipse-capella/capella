@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2021 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -29,7 +29,7 @@ import org.eclipse.sirius.diagram.sequence.description.tool.InstanceRoleCreation
 import org.eclipse.sirius.diagram.sequence.internal.tool.command.builders.InstanceRoleCreationCommandBuilder;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.AbstractToolWrapper;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.NodeCreationDescriptionWrapper;
