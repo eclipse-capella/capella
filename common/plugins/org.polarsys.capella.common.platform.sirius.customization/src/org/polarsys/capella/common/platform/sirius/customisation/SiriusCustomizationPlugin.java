@@ -25,7 +25,7 @@ import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.common.tools.api.constant.CommonPreferencesConstants;
 import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
 import org.eclipse.sirius.common.ui.SiriusTransPlugin;
-import org.eclipse.sirius.diagram.DiagramPlugin;
+import org.eclipse.sirius.diagram.tools.api.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramCorePreferences;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
@@ -100,7 +100,7 @@ public class SiriusCustomizationPlugin extends AbstractUIPlugin {
     // ----------------
     
     // Preference customization for plugin "org.eclipse.sirius"
-    IEclipsePreferences siriusPreferences = DefaultScope.INSTANCE.getNode(org.eclipse.sirius.viewpoint.SiriusPlugin.ID);
+    IEclipsePreferences siriusPreferences = DefaultScope.INSTANCE.getNode(org.eclipse.sirius.tools.api.SiriusPlugin.ID);
     
     // Allow by default aird fragment with no representation creation
     siriusPreferences.putBoolean(SiriusPreferencesKeys.PREF_EMPTY_AIRD_FRAGMENT_ON_CONTROL.name(), true);

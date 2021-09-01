@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2021 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -20,9 +20,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNodeContainer;
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContainerMappingHelper;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription;
+import org.eclipse.sirius.diagram.model.business.internal.helper.MappingHelper;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ArgumentType;
@@ -88,10 +88,10 @@ public class ContainerCreationDescriptionWrapper extends AbstractSingleSelection
           shouldCreate = false;
           while (it.hasNext()) {
             final ContainerMapping curMapping = it.next();
-            if (ContainerMappingHelper.getAllNodeMappings(containerMapping).contains(curMapping)) {
+            if (MappingHelper.getAllNodeMappings(containerMapping).contains(curMapping)) {
               shouldCreate = true;
               break;
-            } else if (ContainerMappingHelper.getAllContainerMappings(containerMapping).contains(curMapping)) {
+            } else if (MappingHelper.getAllContainerMappings(containerMapping).contains(curMapping)) {
               shouldCreate = true;
               break;
             }
