@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2019, 2021 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -13,10 +13,12 @@
 package org.polarsys.capella.test.odesign.typereferencename;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.sirius.diagram.business.api.query.DiagramDescriptionQuery;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.table.metamodel.table.description.CrossTableDescription;
 import org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping;
@@ -46,7 +48,7 @@ public class CheckTypeReferenceNameTestSuite extends BasicTestSuite {
         // look for CreateInstance in diagrams
         if (_representationDescription instanceof DiagramDescription) {
           DiagramDescription des = (DiagramDescription) _representationDescription;
-          EList<AbstractToolDescription> desTools = des.getAllTools();
+          Collection<AbstractToolDescription> desTools = new DiagramDescriptionQuery(des).getAllTools();
 
           // for every tool of every diagram, find instances of CreateInstance in operation and sub operations
           for (AbstractToolDescription adesTool : desTools) {

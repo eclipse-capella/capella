@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2019, 2021 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -17,11 +17,11 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContentHelper;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.NodeMapping;
+import org.eclipse.sirius.diagram.model.business.internal.helper.ContentHelper;
 import org.eclipse.sirius.table.metamodel.table.description.CrossTableDescription;
 import org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping;
 import org.eclipse.sirius.table.metamodel.table.description.LineMapping;
@@ -61,7 +61,7 @@ public class CheckDomainClassTestSuite extends BasicTestSuite {
           }
 
           // Relation and Element based edges
-          EList<EdgeMapping> allEdgeMappings = des.getAllEdgeMappings();
+          EList<EdgeMapping> allEdgeMappings = ContentHelper.getAllEdgeMappings(des, false);
           for (EdgeMapping edgeMapping : allEdgeMappings) {
             final String domainClass = edgeMapping.getDomainClass();
             createDomainClassTest(des, domainClass, tests);

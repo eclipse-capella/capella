@@ -5,7 +5,7 @@
     modelPluginID="org.polarsys.capella.test.diagram.layout.ju" modelName="Layout"
     rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
     complianceLevel="7.0" copyrightFields="false" editPluginID="org.polarsys.capella.test.diagram.layout.ju"
-    usedGenPackages="../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.eclipse.sirius/model/viewpoint.genmodel#//viewpoint" operationReflection="true"
+    usedGenPackages="../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.eclipse.sirius.model/model/viewpoint.genmodel#//viewpoint" operationReflection="true"
     importOrganizing="true">
   <foreignModel>layout.ecore</foreignModel>
   <genPackages prefix="Layout" basePackage="org.polarsys.capella.test.diagram.layout.ju"
