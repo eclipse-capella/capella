@@ -19,7 +19,7 @@ The Activity Explorer provides a methodological access to all key activities in 
 [[Image:Images/Flag.jpg|32x34px]]
 
 
-| R
+|
 The Activity Explorer is the main interaction point with a Capella model.
 |}<br>
 After selecting one of the Arcadia perspective, it allows to:<br>
