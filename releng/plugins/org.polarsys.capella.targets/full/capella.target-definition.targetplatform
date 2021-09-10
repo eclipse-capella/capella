@@ -61,7 +61,7 @@ location Orbit "https://download.eclipse.org/tools/orbit/downloads/drops/R202106
 	org.apache.batik.script.source lazy
 }
 
-location kitalpha-runtime-core-master "https://download.eclipse.org/kitalpha/updates/stable/runtime/6.0.0-S202108251324" {	
+location kitalpha-runtime-core-master "https://download.eclipse.org/kitalpha/updates/stable/runtime/6.0.0-S202109200942" {	
 	org.polarsys.kitalpha.ad.runtime.feature.source.feature.group
 	org.polarsys.kitalpha.cadence.feature.source.feature.group
 	org.polarsys.kitalpha.common.feature.source.feature.group
@@ -85,12 +85,12 @@ location kitalpha-runtime-core-master "https://download.eclipse.org/kitalpha/upd
 	org.polarsys.kitalpha.transposer.feature.source.feature.group
 }
 
-location kitalpha-sdk-master "https://download.eclipse.org/kitalpha/updates/stable/sdk/6.0.0-S202108251324" {
+location kitalpha-sdk-master "https://download.eclipse.org/kitalpha/updates/stable/sdk/6.0.0-S202109200942/" {
 	org.polarsys.kitalpha.doc.feature.feature.group
 	org.polarsys.kitalpha.emde.sdk.feature.source.feature.group
 }
 
-location diffmerge-core "https://download.eclipse.org/diffmerge/stable/0.14.0-S20210823/emf-diffmerge-site" {
+location diffmerge-core "https://download.eclipse.org/diffmerge/stable/0.14.0-S20210917/emf-diffmerge-site/" {
 	org.eclipse.emf.diffmerge.feature.source.feature.group
 	org.eclipse.emf.diffmerge.sirius.feature.source.feature.group
 	org.eclipse.emf.diffmerge.gmf.feature.source.feature.group
@@ -98,7 +98,7 @@ location diffmerge-core "https://download.eclipse.org/diffmerge/stable/0.14.0-S2
 	org.eclipse.emf.diffmerge.egit.feature.source.feature.group
 }
 
-location amalgam "https://download.eclipse.org/modeling/amalgam/updates/stable/1.13.0-S20210824/capella" {
+location amalgam "https://download.eclipse.org/modeling/amalgam/updates/stable/1.13.0-S20210909/capella/" {
 	org.eclipse.amalgam.explorer.activity.source.feature.group
 }
 
