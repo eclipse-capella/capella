@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <metadata:Metadata xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:metadata="http://www.polarsys.org/kitalpha/ad/metadata/1.0.0" id="_NvZUoJO8Eeub39hF3nbpBA">
-  <viewpointReferences id="_NwDb8JO8Eeub39hF3nbpBA" vpId="org.polarsys.capella.core.viewpoint" version="5.1.0"/>
+  <viewpointReferences id="_NwDb8JO8Eeub39hF3nbpBA" vpId="org.polarsys.capella.core.viewpoint" version="5.2.0"/>
   <additionalMetadata href="../gch-library/gch-library.afm#_PK1X4JO8Eeub39hF3nbpBA"/>
 </metadata:Metadata>
