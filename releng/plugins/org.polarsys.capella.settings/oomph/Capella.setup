@@ -357,19 +357,40 @@
           <repository
               url="http://download.eclipse.org/modeling/gmp/gmf-notation/updates/releases/R202004160913"/>
           <repository
-              url="http://download.eclipse.org/modeling/gmp/gmf-runtime/updates/releases/R202004160913"/>
+              url="http://download.eclipse.org/modeling/gmp/gmf-runtime/updates/releases/R202107090702"/>
           <repository
-              url="https://download.eclipse.org/kitalpha/updates/stable/runtime/5.1.0-S202106140930"/>
+              url="https://download.eclipse.org/kitalpha/updates/stable/runtime/5.2.0.S202109131249"/>
           <repository
-              url="https://download.eclipse.org/kitalpha/updates/stable/sdk/5.1.0-S202106140930"/>
+              url="https://download.eclipse.org/kitalpha/updates/stable/sdk/5.2.0.S202109131249"/>
           <repository
               url="http://download.eclipse.org/egf/updates/1.6.2/2019-06"/>
           <repository
-              url="https://download.eclipse.org/sirius/updates/releases/6.5.1/2020-06/"/>
+              url="https://download.eclipse.org/sirius/updates/stable/6.6.0-S20210906-045606/2020-06/"/>
           <repository
               url="https://download.eclipse.org/diffmerge/stable/0.13.1-M3/emf-diffmerge-site"/>
           <repository
-              url="https://download.eclipse.org/modeling/amalgam/updates/stable/1.12.0-S20201020/capella"/>
+              url="https://download.eclipse.org/modeling/amalgam/updates/stable/1.12.1-S20210330/capella"/>
+        </repositoryList>
+        <repositoryList
+            name="master-6.0">
+          <repository
+              url="http://download.eclipse.org/releases/2021-06"/>
+          <repository
+              url="http://download.eclipse.org/modeling/gmp/gmf-notation/updates/releases/R202107090702"/>
+          <repository
+              url="http://download.eclipse.org/modeling/gmp/gmf-runtime/updates/releases/R202004160913"/>
+          <repository
+              url="https://download.eclipse.org/kitalpha/updates/stable/runtime/6.0.0-S202109200942"/>
+          <repository
+              url="https://download.eclipse.org/kitalpha/updates/stable/sdk/6.0.0-S202109200942"/>
+          <repository
+              url="http://download.eclipse.org/egf/updates/1.6.2/2019-06"/>
+          <repository
+              url="https://download.eclipse.org/sirius/updates/stable/7.0.0-S20210908-102403/2021-06/"/>
+          <repository
+              url="https://download.eclipse.org/diffmerge/stable/0.14.0-S20210917/emf-diffmerge-site"/>
+          <repository
+              url="https://download.eclipse.org/modeling/amalgam/updates/stable/1.13.0-S20210909/capella"/>
         </repositoryList>
       </targlet>
       <targlet
