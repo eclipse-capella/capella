@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--Capella_Version_1.4.2-->
+<!--Capella_Version_5.1.0-->
 <org.polarsys.capella.core.data.information:DataPkg xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/5.0.0"
     xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/5.0.0"
@@ -29,7 +29,7 @@
   <ownedPropertyValues xsi:type="org.polarsys.capella.core.data.capellacore:BooleanPropertyValue"
       id="fe330f62-7f75-4cc5-8c34-0520710e82ec" name="SAMigrationTestPropertyValue"/>
   <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
-      id="75f85321-48eb-4495-9af5-963d4b50f24c" targetElement="org.polarsys.capella.core.data.information:DataPkg ../migration.sysmodel.melodymodeller#36ef9fe8-68b3-47ab-9a6a-e91f9869fee1"
+      id="75f85321-48eb-4495-9af5-963d4b50f24c" targetElement="org.polarsys.capella.core.data.information:DataPkg ../migration.sysmodel.capella#36ef9fe8-68b3-47ab-9a6a-e91f9869fee1"
       sourceElement="#fb7840a4-2ac6-46f2-9547-a3368dd320a0">
     <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue"
         id="41e55653-0ec4-4bd5-9061-0c346594a18e" key="TransfoUID" value="Type='Transition' TargetId='ff511f88-3a54-47d2-96b6-fb3ca3cf10b9'"/>
@@ -45,13 +45,13 @@
           id="54bb873a-a8b1-4191-8da3-2205b1e68874" name="" value="1"/>
     </ownedElements>
     <ownedInformationRealizations xsi:type="org.polarsys.capella.core.data.information:InformationRealization"
-        id="8bb40d1e-678d-4483-9f59-bdb4338462be" targetElement="org.polarsys.capella.core.data.information:ExchangeItem ../migration.sysmodel.melodymodeller#151aad4d-910a-479b-b375-66c94b9f2e33"
+        id="8bb40d1e-678d-4483-9f59-bdb4338462be" targetElement="org.polarsys.capella.core.data.information:ExchangeItem ../migration.sysmodel.capella#151aad4d-910a-479b-b375-66c94b9f2e33"
         sourceElement="#cf34ab02-e54a-41fc-8e29-c6ca9d17b550"/>
   </ownedExchangeItems>
   <ownedExchangeItems xsi:type="org.polarsys.capella.core.data.information:ExchangeItem"
       id="defb208d-b5be-4627-ae2f-602478a809ce" name="ei2" exchangeMechanism="FLOW">
     <ownedInformationRealizations xsi:type="org.polarsys.capella.core.data.information:InformationRealization"
-        id="9a83a7c5-d055-45cb-9dd3-a097b34bfd71" targetElement="org.polarsys.capella.core.data.information:ExchangeItem ../migration.sysmodel.melodymodeller#857c688f-5c57-4e2c-ab3e-d8d6ad4bb1a7"
+        id="9a83a7c5-d055-45cb-9dd3-a097b34bfd71" targetElement="org.polarsys.capella.core.data.information:ExchangeItem ../migration.sysmodel.capella#857c688f-5c57-4e2c-ab3e-d8d6ad4bb1a7"
         sourceElement="#defb208d-b5be-4627-ae2f-602478a809ce"/>
   </ownedExchangeItems>
   <ownedExchangeItems xsi:type="org.polarsys.capella.core.data.information:ExchangeItem"

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--Capella_Version_1.4.2-->
+<!--Capella_Version_5.1.0-->
 <org.polarsys.capella.core.data.ctx:Capability xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/5.0.0"
     xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/5.0.0"
@@ -17,157 +17,157 @@
   <ownedScenarios xsi:type="org.polarsys.capella.core.data.interaction:Scenario" id="ace1a80f-ee24-45e8-8289-bcd5bb1f027c"
       name="OES1" description="" kind="DATA_FLOW">
     <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
-        id="1699fb73-f375-4ed1-b793-2de3d4ed99c6" targetElement="org.polarsys.capella.core.data.interaction:SequenceMessage ../migration.sysmodel.melodymodeller#378c1c91-579c-473e-ac3e-2cc326faa57f"
+        id="1699fb73-f375-4ed1-b793-2de3d4ed99c6" targetElement="org.polarsys.capella.core.data.interaction:SequenceMessage ../migration.sysmodel.capella#378c1c91-579c-473e-ac3e-2cc326faa57f"
         sourceElement="#91ef9203-8abf-44a0-b03f-8ad211c48fd0">
       <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue"
           id="522f9b6a-2562-4ddb-9160-9e2fb4b1ed12" key="TransfoUID" value="Type='Transition' TargetId='ff511f88-3a54-47d2-96b6-fb3ca3cf10b9'"/>
     </ownedTraces>
     <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
-        id="853dce38-578b-44d9-a22b-12580981dec5" targetElement="org.polarsys.capella.core.data.interaction:SequenceMessage ../migration.sysmodel.melodymodeller#c56dc2e7-2903-4aa1-9993-04b6f10114b9"
+        id="853dce38-578b-44d9-a22b-12580981dec5" targetElement="org.polarsys.capella.core.data.interaction:SequenceMessage ../migration.sysmodel.capella#c56dc2e7-2903-4aa1-9993-04b6f10114b9"
         sourceElement="#1ae25c3e-a9cf-4cc5-ad92-10cc2a2d549b">
       <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue"
           id="ecc7c57c-22dc-4c79-9533-686da9282e98" key="TransfoUID" value="Type='Transition' TargetId='ff511f88-3a54-47d2-96b6-fb3ca3cf10b9'"/>
     </ownedTraces>
     <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
-        id="fb2213dc-fec2-4362-904d-4f68683e6003" targetElement="org.polarsys.capella.core.data.interaction:SequenceMessage ../migration.sysmodel.melodymodeller#21b8f1d9-2cc3-470d-9181-62903278a6ca"
+        id="fb2213dc-fec2-4362-904d-4f68683e6003" targetElement="org.polarsys.capella.core.data.interaction:SequenceMessage ../migration.sysmodel.capella#21b8f1d9-2cc3-470d-9181-62903278a6ca"
         sourceElement="#2ea59a1c-bdfd-4d33-9243-b06922dd2506">
       <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue"
           id="d5e01182-b442-4e63-bcc9-c44a747ba8b7" key="TransfoUID" value="Type='Transition' TargetId='ff511f88-3a54-47d2-96b6-fb3ca3cf10b9'"/>
     </ownedTraces>
     <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
-        id="66de98c8-9002-4755-8904-7fd293e4ac07" targetElement="org.polarsys.capella.core.data.interaction:EventSentOperation ../migration.sysmodel.melodymodeller#5f005769-a827-49dd-b28b-51cbacf3f96f"
+        id="66de98c8-9002-4755-8904-7fd293e4ac07" targetElement="org.polarsys.capella.core.data.interaction:EventSentOperation ../migration.sysmodel.capella#5f005769-a827-49dd-b28b-51cbacf3f96f"
         sourceElement="#9c7a66db-a825-46b6-9704-4ea7343bc80f">
       <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue"
           id="4bf14087-77cf-482e-97e7-03935f10b753" key="TransfoUID" value="Type='Transition' TargetId='ff511f88-3a54-47d2-96b6-fb3ca3cf10b9'"/>
     </ownedTraces>
     <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
-        id="67397c1c-ceee-436f-8649-7ece7c349ba8" targetElement="org.polarsys.capella.core.data.interaction:EventReceiptOperation ../migration.sysmodel.melodymodeller#1ce71bc0-3efc-4e08-84b6-ec9a678570ae"
+        id="67397c1c-ceee-436f-8649-7ece7c349ba8" targetElement="org.polarsys.capella.core.data.interaction:EventReceiptOperation ../migration.sysmodel.capella#1ce71bc0-3efc-4e08-84b6-ec9a678570ae"
         sourceElement="#86678315-f50b-4f3f-a3cf-e181ba4f8c36">
       <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue"
           id="938ce229-a381-46d6-84c0-9e6a638167f1" key="TransfoUID" value="Type='Transition' TargetId='ff511f88-3a54-47d2-96b6-fb3ca3cf10b9'"/>
     </ownedTraces>
     <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
-        id="50d8d5c8-085c-4055-bc20-e730cf43d406" targetElement="org.polarsys.capella.core.data.interaction:EventSentOperation ../migration.sysmodel.melodymodeller#4d73b00c-095e-4921-9d0b-3f90ef8d72cc"
+        id="50d8d5c8-085c-4055-bc20-e730cf43d406" targetElement="org.polarsys.capella.core.data.interaction:EventSentOperation ../migration.sysmodel.capella#4d73b00c-095e-4921-9d0b-3f90ef8d72cc"
         sourceElement="#2b60337e-92b8-4c62-8957-c27befe74a3e">
       <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue"
           id="cb5496c3-0cb3-4ac5-98b1-73c0e8688727" key="TransfoUID" value="Type='Transition' TargetId='ff511f88-3a54-47d2-96b6-fb3ca3cf10b9'"/>
     </ownedTraces>
     <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
-        id="43fe36a8-6987-4180-9609-49471d854b16" targetElement="org.polarsys.capella.core.data.interaction:EventReceiptOperation ../migration.sysmodel.melodymodeller#d7900d1c-df9b-417a-a13b-c6c67e5bb5dc"
+        id="43fe36a8-6987-4180-9609-49471d854b16" targetElement="org.polarsys.capella.core.data.interaction:EventReceiptOperation ../migration.sysmodel.capella#d7900d1c-df9b-417a-a13b-c6c67e5bb5dc"
         sourceElement="#e2902572-2c84-4a67-8437-1c4d19832fc7">
       <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue"
           id="a3ff0936-05d6-4ad8-bfd3-8c03e813bde8" key="TransfoUID" value="Type='Transition' TargetId='ff511f88-3a54-47d2-96b6-fb3ca3cf10b9'"/>
     </ownedTraces>
     <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
-        id="e273c8f0-7faa-4c9f-9445-35b8e6eb3bbf" targetElement="org.polarsys.capella.core.data.interaction:EventSentOperation ../migration.sysmodel.melodymodeller#59a5b67e-25ef-460d-b151-d4fe19251037"
+        id="e273c8f0-7faa-4c9f-9445-35b8e6eb3bbf" targetElement="org.polarsys.capella.core.data.interaction:EventSentOperation ../migration.sysmodel.capella#59a5b67e-25ef-460d-b151-d4fe19251037"
         sourceElement="#889a9e10-b713-4e85-aeec-aa28a24e2f58">
       <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue"
           id="c3805939-1415-4000-ad91-c8ab9a35d655" key="TransfoUID" value="Type='Transition' TargetId='ff511f88-3a54-47d2-96b6-fb3ca3cf10b9'"/>
     </ownedTraces>
     <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
-        id="3610eec0-0950-4eb4-b78f-c23d30d6fd74" targetElement="org.polarsys.capella.core.data.interaction:EventReceiptOperation ../migration.sysmodel.melodymodeller#b42bc890-58a8-46fa-9665-56d42142f7b7"
+        id="3610eec0-0950-4eb4-b78f-c23d30d6fd74" targetElement="org.polarsys.capella.core.data.interaction:EventReceiptOperation ../migration.sysmodel.capella#b42bc890-58a8-46fa-9665-56d42142f7b7"
         sourceElement="#566eedc8-e363-4201-8ab5-081c12990459">
       <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue"
           id="9608fcd8-5bd2-4296-8a87-4e915785b8ba" key="TransfoUID" value="Type='Transition' TargetId='ff511f88-3a54-47d2-96b6-fb3ca3cf10b9'"/>
     </ownedTraces>
     <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
-        id="78e082d2-75ef-4730-ab7f-d7485ab5bbf1" targetElement="org.polarsys.capella.core.data.interaction:ExecutionEvent ../migration.sysmodel.melodymodeller#0a6e38da-ada2-4760-8c68-49168eaf32a8"
+        id="78e082d2-75ef-4730-ab7f-d7485ab5bbf1" targetElement="org.polarsys.capella.core.data.interaction:ExecutionEvent ../migration.sysmodel.capella#0a6e38da-ada2-4760-8c68-49168eaf32a8"
         sourceElement="#5c4f9a00-d90b-483d-b553-a6842c3602f5">
       <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue"
           id="a017290c-e604-4fa1-bbf0-bb671b6f64b3" key="TransfoUID" value="Type='Transition' TargetId='ff511f88-3a54-47d2-96b6-fb3ca3cf10b9'"/>
     </ownedTraces>
     <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
-        id="af233b39-aba2-4796-87a7-1807676a85e5" targetElement="org.polarsys.capella.core.data.interaction:MessageEnd ../migration.sysmodel.melodymodeller#a332df42-fcbd-4011-93ed-6d88327571e4"
+        id="af233b39-aba2-4796-87a7-1807676a85e5" targetElement="org.polarsys.capella.core.data.interaction:MessageEnd ../migration.sysmodel.capella#a332df42-fcbd-4011-93ed-6d88327571e4"
         sourceElement="#923d4cde-f43e-4dbc-a881-42b7f4c12aa2">
       <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue"
           id="3c5368d9-6652-4480-8785-eab614f80c51" key="TransfoUID" value="Type='Transition' TargetId='ff511f88-3a54-47d2-96b6-fb3ca3cf10b9'"/>
     </ownedTraces>
     <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
-        id="fb603cf0-6104-435f-8a73-eba256746c19" targetElement="org.polarsys.capella.core.data.interaction:MessageEnd ../migration.sysmodel.melodymodeller#4420c679-72eb-4068-aedd-9af0289ac927"
+        id="fb603cf0-6104-435f-8a73-eba256746c19" targetElement="org.polarsys.capella.core.data.interaction:MessageEnd ../migration.sysmodel.capella#4420c679-72eb-4068-aedd-9af0289ac927"
         sourceElement="#b76ccdc9-936f-47fd-a664-5f93e2173f89">
       <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue"
           id="aa58879b-60df-45ce-b320-b2e001bf7664" key="TransfoUID" value="Type='Transition' TargetId='ff511f88-3a54-47d2-96b6-fb3ca3cf10b9'"/>
     </ownedTraces>
     <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
-        id="e6bf7d23-82d3-452e-a018-c4a8bcc1b4d0" targetElement="org.polarsys.capella.core.data.interaction:MessageEnd ../migration.sysmodel.melodymodeller#6b717308-87ec-4474-95de-d1661af3c185"
+        id="e6bf7d23-82d3-452e-a018-c4a8bcc1b4d0" targetElement="org.polarsys.capella.core.data.interaction:MessageEnd ../migration.sysmodel.capella#6b717308-87ec-4474-95de-d1661af3c185"
         sourceElement="#cf905bc8-e928-4470-9885-c7637190e072">
       <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue"
           id="9c16190e-24c4-4aa9-93ca-d4a5b1ad7b53" key="TransfoUID" value="Type='Transition' TargetId='ff511f88-3a54-47d2-96b6-fb3ca3cf10b9'"/>
     </ownedTraces>
     <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
-        id="9936864c-3692-4b56-9ead-8b264ae983d3" targetElement="org.polarsys.capella.core.data.interaction:MessageEnd ../migration.sysmodel.melodymodeller#16af634f-bc6d-48f5-afe2-577c0bcb9fe4"
+        id="9936864c-3692-4b56-9ead-8b264ae983d3" targetElement="org.polarsys.capella.core.data.interaction:MessageEnd ../migration.sysmodel.capella#16af634f-bc6d-48f5-afe2-577c0bcb9fe4"
         sourceElement="#9083cc57-9f2b-43c8-8c3e-605fe8a402a5">
       <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue"
           id="821ffc1b-bc38-4558-b132-661e2f81c5e0" key="TransfoUID" value="Type='Transition' TargetId='ff511f88-3a54-47d2-96b6-fb3ca3cf10b9'"/>
     </ownedTraces>
     <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
-        id="14ecca3c-2257-4ed2-8717-1fc59a289498" targetElement="org.polarsys.capella.core.data.interaction:ExecutionEnd ../migration.sysmodel.melodymodeller#c3638e19-04ad-4273-9c09-3dc65c8c9151"
+        id="14ecca3c-2257-4ed2-8717-1fc59a289498" targetElement="org.polarsys.capella.core.data.interaction:ExecutionEnd ../migration.sysmodel.capella#c3638e19-04ad-4273-9c09-3dc65c8c9151"
         sourceElement="#0f262387-f40c-4f6c-87f8-e8e1737b1717">
       <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue"
           id="088e6be2-568e-41b4-a5d2-504bf16ccb4e" key="TransfoUID" value="Type='Transition' TargetId='ff511f88-3a54-47d2-96b6-fb3ca3cf10b9'"/>
     </ownedTraces>
     <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
-        id="d493523a-ada1-4903-8263-979d85309151" targetElement="org.polarsys.capella.core.data.interaction:MessageEnd ../migration.sysmodel.melodymodeller#96df7f10-e78a-4119-a796-195307630d07"
+        id="d493523a-ada1-4903-8263-979d85309151" targetElement="org.polarsys.capella.core.data.interaction:MessageEnd ../migration.sysmodel.capella#96df7f10-e78a-4119-a796-195307630d07"
         sourceElement="#225841e8-de7f-47c2-b73a-accf57676eb8">
       <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue"
           id="b7ef6ec6-363d-46b1-9f0b-29525a9fc285" key="TransfoUID" value="Type='Transition' TargetId='ff511f88-3a54-47d2-96b6-fb3ca3cf10b9'"/>
     </ownedTraces>
     <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
-        id="7d5cc3e6-ab14-4c58-bc8e-30b800d29490" targetElement="org.polarsys.capella.core.data.interaction:MessageEnd ../migration.sysmodel.melodymodeller#71fc3245-70f1-48e4-b81e-6d0e8ec4dcdd"
+        id="7d5cc3e6-ab14-4c58-bc8e-30b800d29490" targetElement="org.polarsys.capella.core.data.interaction:MessageEnd ../migration.sysmodel.capella#71fc3245-70f1-48e4-b81e-6d0e8ec4dcdd"
         sourceElement="#36f18a28-ad48-47f8-b1c6-9be90c2ee445">
       <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue"
           id="76147b4e-a471-4c03-9380-a756f8ff4f23" key="TransfoUID" value="Type='Transition' TargetId='ff511f88-3a54-47d2-96b6-fb3ca3cf10b9'"/>
     </ownedTraces>
     <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
-        id="95ae222d-afe5-4cfa-b70c-13071847e68c" targetElement="org.polarsys.capella.core.data.interaction:Execution ../migration.sysmodel.melodymodeller#e54099e9-74c5-421e-abc2-29dcd057697f"
+        id="95ae222d-afe5-4cfa-b70c-13071847e68c" targetElement="org.polarsys.capella.core.data.interaction:Execution ../migration.sysmodel.capella#e54099e9-74c5-421e-abc2-29dcd057697f"
         sourceElement="#306ce635-07f0-46a3-bebf-77990b00c08f">
       <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue"
           id="c06a19c7-11cf-49a0-bb3d-1aebb1975a9b" key="TransfoUID" value="Type='Transition' TargetId='ff511f88-3a54-47d2-96b6-fb3ca3cf10b9'"/>
     </ownedTraces>
     <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
-        id="f7e2c996-bbef-4fc4-9349-f5e5d931e851" targetElement="org.polarsys.capella.core.data.interaction:Execution ../migration.sysmodel.melodymodeller#290a98a9-9b46-4566-a40c-565f073dec8e"
+        id="f7e2c996-bbef-4fc4-9349-f5e5d931e851" targetElement="org.polarsys.capella.core.data.interaction:Execution ../migration.sysmodel.capella#290a98a9-9b46-4566-a40c-565f073dec8e"
         sourceElement="#a01f42ce-9814-4e00-bdf9-1bd347f07fc1">
       <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue"
           id="62e61f97-eea3-4ae1-9e36-6becfe72f616" key="TransfoUID" value="Type='Transition' TargetId='ff511f88-3a54-47d2-96b6-fb3ca3cf10b9'"/>
     </ownedTraces>
     <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
-        id="b370da3f-d9f5-46a3-941a-e862e1c5909c" targetElement="org.polarsys.capella.core.data.interaction:InstanceRole ../migration.sysmodel.melodymodeller#208d5d54-6677-46a2-95e6-086b8b6780db"
+        id="b370da3f-d9f5-46a3-941a-e862e1c5909c" targetElement="org.polarsys.capella.core.data.interaction:InstanceRole ../migration.sysmodel.capella#208d5d54-6677-46a2-95e6-086b8b6780db"
         sourceElement="#8aca8c16-6c6e-4646-9a72-aa697d9e341c">
       <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue"
           id="6de5b702-05c7-4a4f-a885-fb80f1d8d7b3" key="TransfoUID" value="Type='Transition' TargetId='ff511f88-3a54-47d2-96b6-fb3ca3cf10b9'"/>
     </ownedTraces>
     <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
-        id="4478db9f-dc12-4b5a-8080-6a6c7509c529" targetElement="org.polarsys.capella.core.data.interaction:InstanceRole ../migration.sysmodel.melodymodeller#a0214ad4-a807-4da0-8b3f-27b8600b51ca"
+        id="4478db9f-dc12-4b5a-8080-6a6c7509c529" targetElement="org.polarsys.capella.core.data.interaction:InstanceRole ../migration.sysmodel.capella#a0214ad4-a807-4da0-8b3f-27b8600b51ca"
         sourceElement="#c4d9de12-6ba6-402f-8a08-93161b2aed44">
       <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue"
           id="582163e8-6ce7-4411-933e-ab6e0efa7a94" key="TransfoUID" value="Type='Transition' TargetId='ff511f88-3a54-47d2-96b6-fb3ca3cf10b9'"/>
     </ownedTraces>
     <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
-        id="103ed1ee-f3f9-4e5c-a195-a208d2595d00" targetElement="org.polarsys.capella.core.data.interaction:InstanceRole ../migration.sysmodel.melodymodeller#97b00dea-adf3-4891-a942-6ae740632f2f"
+        id="103ed1ee-f3f9-4e5c-a195-a208d2595d00" targetElement="org.polarsys.capella.core.data.interaction:InstanceRole ../migration.sysmodel.capella#97b00dea-adf3-4891-a942-6ae740632f2f"
         sourceElement="#d3a90586-acc2-465d-b5d3-8538f4e46066">
       <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue"
           id="c3ffd017-6a20-476a-91da-f2d3ad3a5bcc" key="TransfoUID" value="Type='Transition' TargetId='ff511f88-3a54-47d2-96b6-fb3ca3cf10b9'"/>
     </ownedTraces>
     <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
-        id="c4d9de12-6ba6-402f-8a08-93161b2aed44" name="OA1" representedInstance="org.polarsys.capella.core.data.cs:Part ../migration.sysmodel.melodymodeller#96dc1f45-deb3-4d45-8b05-25e6597c2db8">
+        id="c4d9de12-6ba6-402f-8a08-93161b2aed44" name="OA1" representedInstance="org.polarsys.capella.core.data.cs:Part ../migration.sysmodel.capella#96dc1f45-deb3-4d45-8b05-25e6597c2db8">
       <ownedConstraints xsi:type="org.polarsys.capella.core.data.capellacore:Constraint"
           id="88355bf6-df70-4b79-984c-2c254302d8c4" name="" description="" constrainedElements="#c4d9de12-6ba6-402f-8a08-93161b2aed44 #306ce635-07f0-46a3-bebf-77990b00c08f #48f372c4-045d-479b-bb34-f46eaa390af6 #164fe780-11b3-425f-ada2-9fd726e3d292">
         <ownedSpecification xsi:type="org.polarsys.capella.core.data.information.datavalue:BooleanReference"
-            id="65a21ef7-75be-42b2-afc4-af12d3ff1cd2" description="Mandatory" abstractType="org.polarsys.capella.core.data.information.datatype:BooleanType SA-Data.melodyfragment#f940caf7-79d8-4250-8613-25c2601a7a72"
-            referencedValue="org.polarsys.capella.core.data.information.datavalue:BinaryExpression SA-Data.melodyfragment#b35dbae3-5367-45bc-b6d7-739b63a1a36d"/>
+            id="65a21ef7-75be-42b2-afc4-af12d3ff1cd2" description="Mandatory" abstractType="org.polarsys.capella.core.data.information.datatype:BooleanType SA-Data.capellafragment#f940caf7-79d8-4250-8613-25c2601a7a72"
+            referencedValue="org.polarsys.capella.core.data.information.datavalue:BinaryExpression SA-Data.capellafragment#b35dbae3-5367-45bc-b6d7-739b63a1a36d"/>
       </ownedConstraints>
     </ownedInstanceRoles>
     <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
-        id="8aca8c16-6c6e-4646-9a72-aa697d9e341c" name="System" representedInstance="org.polarsys.capella.core.data.cs:Part ../migration.sysmodel.melodymodeller#ff831d51-234b-4ea0-8a5d-afb459c8bf7b"/>
+        id="8aca8c16-6c6e-4646-9a72-aa697d9e341c" name="System" representedInstance="org.polarsys.capella.core.data.cs:Part ../migration.sysmodel.capella#ff831d51-234b-4ea0-8a5d-afb459c8bf7b"/>
     <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
-        id="d3a90586-acc2-465d-b5d3-8538f4e46066" name="OE3" representedInstance="org.polarsys.capella.core.data.cs:Part ../migration.sysmodel.melodymodeller#18258c12-395f-483a-97dd-e053608ab182"/>
+        id="d3a90586-acc2-465d-b5d3-8538f4e46066" name="OE3" representedInstance="org.polarsys.capella.core.data.cs:Part ../migration.sysmodel.capella#18258c12-395f-483a-97dd-e053608ab182"/>
     <ownedMessages xsi:type="org.polarsys.capella.core.data.interaction:SequenceMessage"
         id="91ef9203-8abf-44a0-b03f-8ad211c48fd0" name="Sysi1" kind="SYNCHRONOUS_CALL"
         sendingEnd="#923d4cde-f43e-4dbc-a881-42b7f4c12aa2" receivingEnd="#b76ccdc9-936f-47fd-a664-5f93e2173f89"/>
     <ownedMessages xsi:type="org.polarsys.capella.core.data.interaction:SequenceMessage"
         id="1ae25c3e-a9cf-4cc5-ad92-10cc2a2d549b" name="Sysfe1_1" kind="ASYNCHRONOUS_CALL"
         sendingEnd="#cf905bc8-e928-4470-9885-c7637190e072" receivingEnd="#9083cc57-9f2b-43c8-8c3e-605fe8a402a5"
-        exchangedItems="org.polarsys.capella.core.data.information:ExchangeItem SA-Data.melodyfragment#cf34ab02-e54a-41fc-8e29-c6ca9d17b550">
+        exchangedItems="org.polarsys.capella.core.data.information:ExchangeItem SA-Data.capellafragment#cf34ab02-e54a-41fc-8e29-c6ca9d17b550">
       <ownedConstraints xsi:type="org.polarsys.capella.core.data.capellacore:Constraint"
           id="033b96d9-58fd-48a0-b098-eb5d1cfe1ad0" name="" constrainedElements="#1ae25c3e-a9cf-4cc5-ad92-10cc2a2d549b #c89ac498-4636-4939-a837-72cd9c64281f #d3a90586-acc2-465d-b5d3-8538f4e46066">
         <ownedSpecification xsi:type="org.polarsys.capella.core.data.information.datavalue:OpaqueExpression"
@@ -191,10 +191,10 @@
     </ownedMessages>
     <ownedInteractionFragments xsi:type="org.polarsys.capella.core.data.interaction:InteractionState"
         id="c38e6b0b-7887-4169-a0a5-055020eecc0e" name="" coveredInstanceRoles="#8aca8c16-6c6e-4646-9a72-aa697d9e341c"
-        relatedAbstractState="org.polarsys.capella.core.data.capellacommon:Mode ../migration.sysmodel.melodymodeller#7e970ef4-dec9-4629-8204-7c481ed99ddd"/>
+        relatedAbstractState="org.polarsys.capella.core.data.capellacommon:Mode ../migration.sysmodel.capella#7e970ef4-dec9-4629-8204-7c481ed99ddd"/>
     <ownedInteractionFragments xsi:type="org.polarsys.capella.core.data.interaction:InteractionState"
         id="7c442b2d-1007-46b0-a5b5-53ee7265e6f5" name="" coveredInstanceRoles="#8aca8c16-6c6e-4646-9a72-aa697d9e341c"
-        relatedAbstractState="org.polarsys.capella.core.data.capellacommon:Mode ../migration.sysmodel.melodymodeller#7e970ef4-dec9-4629-8204-7c481ed99ddd"/>
+        relatedAbstractState="org.polarsys.capella.core.data.capellacommon:Mode ../migration.sysmodel.capella#7e970ef4-dec9-4629-8204-7c481ed99ddd"/>
     <ownedInteractionFragments xsi:type="org.polarsys.capella.core.data.interaction:MessageEnd"
         id="923d4cde-f43e-4dbc-a881-42b7f4c12aa2" name="" coveredInstanceRoles="#c4d9de12-6ba6-402f-8a08-93161b2aed44"
         event="#9c7a66db-a825-46b6-9704-4ea7343bc80f"/>
@@ -209,7 +209,7 @@
         coveredInstanceRoles="#d3a90586-acc2-465d-b5d3-8538f4e46066" event="#566eedc8-e363-4201-8ab5-081c12990459"/>
     <ownedInteractionFragments xsi:type="org.polarsys.capella.core.data.interaction:InteractionState"
         id="781d8c64-5be2-4791-8a28-7198faaed0cb" name="SysOA2_1_1" coveredInstanceRoles="#8aca8c16-6c6e-4646-9a72-aa697d9e341c"
-        relatedAbstractFunction="org.polarsys.capella.core.data.ctx:SystemFunction ../migration.sysmodel.melodymodeller#1bb3b800-830b-4db9-ba2a-fe1756cceca1"/>
+        relatedAbstractFunction="org.polarsys.capella.core.data.ctx:SystemFunction ../migration.sysmodel.capella#1bb3b800-830b-4db9-ba2a-fe1756cceca1"/>
     <ownedInteractionFragments xsi:type="org.polarsys.capella.core.data.interaction:MessageEnd"
         id="ec2f295f-7f79-4d60-b00b-e54e035cb86d" name="Receive Call Message Call"
         coveredInstanceRoles="#d3a90586-acc2-465d-b5d3-8538f4e46066" event="#b5f966ff-bcc7-4387-a979-f59001f70255"/>
@@ -218,13 +218,13 @@
         event="#95d5edaf-8c9f-4950-82a0-8d6d54a62dd0"/>
     <ownedInteractionFragments xsi:type="org.polarsys.capella.core.data.interaction:InteractionState"
         id="0a0aada5-8428-4cd5-bfb8-319e6b9fc867" name="SysOA2_1_1" coveredInstanceRoles="#8aca8c16-6c6e-4646-9a72-aa697d9e341c"
-        relatedAbstractFunction="org.polarsys.capella.core.data.ctx:SystemFunction ../migration.sysmodel.melodymodeller#1bb3b800-830b-4db9-ba2a-fe1756cceca1"/>
+        relatedAbstractFunction="org.polarsys.capella.core.data.ctx:SystemFunction ../migration.sysmodel.capella#1bb3b800-830b-4db9-ba2a-fe1756cceca1"/>
     <ownedInteractionFragments xsi:type="org.polarsys.capella.core.data.interaction:InteractionState"
         id="c5ab8752-f448-47e4-8032-84a3657afb89" name="SysFork2_1_1" coveredInstanceRoles="#8aca8c16-6c6e-4646-9a72-aa697d9e341c"
-        relatedAbstractFunction="org.polarsys.capella.core.data.ctx:SystemFunction ../migration.sysmodel.melodymodeller#7f7dceb3-065c-45e0-a54f-e4d0eb2a504d"/>
+        relatedAbstractFunction="org.polarsys.capella.core.data.ctx:SystemFunction ../migration.sysmodel.capella#7f7dceb3-065c-45e0-a54f-e4d0eb2a504d"/>
     <ownedInteractionFragments xsi:type="org.polarsys.capella.core.data.interaction:InteractionState"
         id="1b02914d-c3e9-411e-b7c9-ef1c81405871" name="SysFork2_1_1" coveredInstanceRoles="#8aca8c16-6c6e-4646-9a72-aa697d9e341c"
-        relatedAbstractFunction="org.polarsys.capella.core.data.ctx:SystemFunction ../migration.sysmodel.melodymodeller#7f7dceb3-065c-45e0-a54f-e4d0eb2a504d"/>
+        relatedAbstractFunction="org.polarsys.capella.core.data.ctx:SystemFunction ../migration.sysmodel.capella#7f7dceb3-065c-45e0-a54f-e4d0eb2a504d"/>
     <ownedInteractionFragments xsi:type="org.polarsys.capella.core.data.interaction:ExecutionEnd"
         id="0f262387-f40c-4f6c-87f8-e8e1737b1717" name="endExec" coveredInstanceRoles="#d3a90586-acc2-465d-b5d3-8538f4e46066"
         event="#5c4f9a00-d90b-483d-b553-a6842c3602f5"/>
@@ -245,188 +245,188 @@
         finish="#0f262387-f40c-4f6c-87f8-e8e1737b1717"/>
     <ownedTimeLapses xsi:type="org.polarsys.capella.core.data.interaction:StateFragment"
         id="c75d12c0-b26a-4764-9d97-dda43b845fcf" name="" start="#c5ab8752-f448-47e4-8032-84a3657afb89"
-        finish="#1b02914d-c3e9-411e-b7c9-ef1c81405871" relatedAbstractFunction="org.polarsys.capella.core.data.ctx:SystemFunction ../migration.sysmodel.melodymodeller#7f7dceb3-065c-45e0-a54f-e4d0eb2a504d"/>
+        finish="#1b02914d-c3e9-411e-b7c9-ef1c81405871" relatedAbstractFunction="org.polarsys.capella.core.data.ctx:SystemFunction ../migration.sysmodel.capella#7f7dceb3-065c-45e0-a54f-e4d0eb2a504d"/>
     <ownedTimeLapses xsi:type="org.polarsys.capella.core.data.interaction:StateFragment"
         id="48f372c4-045d-479b-bb34-f46eaa390af6" name="" start="#781d8c64-5be2-4791-8a28-7198faaed0cb"
-        finish="#0a0aada5-8428-4cd5-bfb8-319e6b9fc867" relatedAbstractFunction="org.polarsys.capella.core.data.ctx:SystemFunction ../migration.sysmodel.melodymodeller#1bb3b800-830b-4db9-ba2a-fe1756cceca1"/>
+        finish="#0a0aada5-8428-4cd5-bfb8-319e6b9fc867" relatedAbstractFunction="org.polarsys.capella.core.data.ctx:SystemFunction ../migration.sysmodel.capella#1bb3b800-830b-4db9-ba2a-fe1756cceca1"/>
     <ownedTimeLapses xsi:type="org.polarsys.capella.core.data.interaction:StateFragment"
         id="164fe780-11b3-425f-ada2-9fd726e3d292" name="" start="#c38e6b0b-7887-4169-a0a5-055020eecc0e"
-        finish="#7c442b2d-1007-46b0-a5b5-53ee7265e6f5" relatedAbstractState="org.polarsys.capella.core.data.capellacommon:Mode ../migration.sysmodel.melodymodeller#7e970ef4-dec9-4629-8204-7c481ed99ddd"/>
+        finish="#7c442b2d-1007-46b0-a5b5-53ee7265e6f5" relatedAbstractState="org.polarsys.capella.core.data.capellacommon:Mode ../migration.sysmodel.capella#7e970ef4-dec9-4629-8204-7c481ed99ddd"/>
     <ownedTimeLapses xsi:type="org.polarsys.capella.core.data.interaction:Execution"
         id="6661f306-dc76-4b6f-82e9-16502efc8f62" name="" start="#ec2f295f-7f79-4d60-b00b-e54e035cb86d"
         finish="#d2fabf57-87af-4516-ac2f-13a61e4d8cce"/>
     <ownedEvents xsi:type="org.polarsys.capella.core.data.interaction:EventSentOperation"
-        id="9c7a66db-a825-46b6-9704-4ea7343bc80f" name="" operation="org.polarsys.capella.core.data.fa:FunctionalExchange ../migration.sysmodel.melodymodeller#91020070-173d-46a7-8831-4093244d7b48"/>
+        id="9c7a66db-a825-46b6-9704-4ea7343bc80f" name="" operation="org.polarsys.capella.core.data.fa:FunctionalExchange ../migration.sysmodel.capella#91020070-173d-46a7-8831-4093244d7b48"/>
     <ownedEvents xsi:type="org.polarsys.capella.core.data.interaction:EventReceiptOperation"
-        id="86678315-f50b-4f3f-a3cf-e181ba4f8c36" name="" operation="org.polarsys.capella.core.data.fa:FunctionalExchange ../migration.sysmodel.melodymodeller#91020070-173d-46a7-8831-4093244d7b48"/>
+        id="86678315-f50b-4f3f-a3cf-e181ba4f8c36" name="" operation="org.polarsys.capella.core.data.fa:FunctionalExchange ../migration.sysmodel.capella#91020070-173d-46a7-8831-4093244d7b48"/>
     <ownedEvents xsi:type="org.polarsys.capella.core.data.interaction:EventSentOperation"
-        id="2b60337e-92b8-4c62-8957-c27befe74a3e" name="" operation="org.polarsys.capella.core.data.fa:FunctionalExchange ../migration.sysmodel.melodymodeller#91020070-173d-46a7-8831-4093244d7b48"/>
+        id="2b60337e-92b8-4c62-8957-c27befe74a3e" name="" operation="org.polarsys.capella.core.data.fa:FunctionalExchange ../migration.sysmodel.capella#91020070-173d-46a7-8831-4093244d7b48"/>
     <ownedEvents xsi:type="org.polarsys.capella.core.data.interaction:EventReceiptOperation"
-        id="e2902572-2c84-4a67-8437-1c4d19832fc7" name="" operation="org.polarsys.capella.core.data.fa:FunctionalExchange ../migration.sysmodel.melodymodeller#91020070-173d-46a7-8831-4093244d7b48"/>
+        id="e2902572-2c84-4a67-8437-1c4d19832fc7" name="" operation="org.polarsys.capella.core.data.fa:FunctionalExchange ../migration.sysmodel.capella#91020070-173d-46a7-8831-4093244d7b48"/>
     <ownedEvents xsi:type="org.polarsys.capella.core.data.interaction:EventSentOperation"
-        id="889a9e10-b713-4e85-aeec-aa28a24e2f58" name="" operation="org.polarsys.capella.core.data.fa:FunctionalExchange ../migration.sysmodel.melodymodeller#1f9ae54b-7baf-436b-ab58-6da2ab6527d0"/>
+        id="889a9e10-b713-4e85-aeec-aa28a24e2f58" name="" operation="org.polarsys.capella.core.data.fa:FunctionalExchange ../migration.sysmodel.capella#1f9ae54b-7baf-436b-ab58-6da2ab6527d0"/>
     <ownedEvents xsi:type="org.polarsys.capella.core.data.interaction:EventReceiptOperation"
-        id="566eedc8-e363-4201-8ab5-081c12990459" name="" operation="org.polarsys.capella.core.data.fa:FunctionalExchange ../migration.sysmodel.melodymodeller#1f9ae54b-7baf-436b-ab58-6da2ab6527d0"/>
+        id="566eedc8-e363-4201-8ab5-081c12990459" name="" operation="org.polarsys.capella.core.data.fa:FunctionalExchange ../migration.sysmodel.capella#1f9ae54b-7baf-436b-ab58-6da2ab6527d0"/>
     <ownedEvents xsi:type="org.polarsys.capella.core.data.interaction:ExecutionEvent"
         id="5c4f9a00-d90b-483d-b553-a6842c3602f5" name=""/>
     <ownedEvents xsi:type="org.polarsys.capella.core.data.interaction:EventReceiptOperation"
-        id="b5f966ff-bcc7-4387-a979-f59001f70255" name="" operation="org.polarsys.capella.core.data.fa:FunctionalExchange ../migration.sysmodel.melodymodeller#1f9ae54b-7baf-436b-ab58-6da2ab6527d0"/>
+        id="b5f966ff-bcc7-4387-a979-f59001f70255" name="" operation="org.polarsys.capella.core.data.fa:FunctionalExchange ../migration.sysmodel.capella#1f9ae54b-7baf-436b-ab58-6da2ab6527d0"/>
     <ownedEvents xsi:type="org.polarsys.capella.core.data.interaction:ExecutionEvent"
         id="95d5edaf-8c9f-4950-82a0-8d6d54a62dd0" name=""/>
     <ownedEvents xsi:type="org.polarsys.capella.core.data.interaction:EventSentOperation"
-        id="ddf5d816-0227-4437-8521-53f01663470c" name="" operation="org.polarsys.capella.core.data.fa:FunctionalExchange ../migration.sysmodel.melodymodeller#abd34b88-82cc-44e8-b992-8069cb26b990"/>
+        id="ddf5d816-0227-4437-8521-53f01663470c" name="" operation="org.polarsys.capella.core.data.fa:FunctionalExchange ../migration.sysmodel.capella#abd34b88-82cc-44e8-b992-8069cb26b990"/>
     <ownedScenarioRealization xsi:type="org.polarsys.capella.core.data.interaction:ScenarioRealization"
-        id="adbf4768-87b6-4bf9-a30a-3d2d12a2a250" targetElement="org.polarsys.capella.core.data.interaction:Scenario ../migration.sysmodel.melodymodeller#846f0de7-30f7-473a-8c30-792acde12fee"
+        id="adbf4768-87b6-4bf9-a30a-3d2d12a2a250" targetElement="org.polarsys.capella.core.data.interaction:Scenario ../migration.sysmodel.capella#846f0de7-30f7-473a-8c30-792acde12fee"
         sourceElement="#ace1a80f-ee24-45e8-8289-bcd5bb1f027c"/>
   </ownedScenarios>
   <ownedScenarios xsi:type="org.polarsys.capella.core.data.interaction:Scenario" id="ed9cb2fd-2126-4f38-a2af-fed14e328a40"
       name="OAS1" kind="FUNCTIONAL">
     <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
-        id="5517c440-a7d4-4d7b-a092-c6270602bf85" targetElement="org.polarsys.capella.core.data.interaction:SequenceMessage ../migration.sysmodel.melodymodeller#757cb3d3-2941-45a3-9ba7-f2fe253432c1"
+        id="5517c440-a7d4-4d7b-a092-c6270602bf85" targetElement="org.polarsys.capella.core.data.interaction:SequenceMessage ../migration.sysmodel.capella#757cb3d3-2941-45a3-9ba7-f2fe253432c1"
         sourceElement="#0c40760d-8ab9-4d6d-b301-0459bf3da0af">
       <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue"
           id="0c93fbab-7954-42be-b93c-6781bba4cb68" key="TransfoUID" value="Type='Transition' TargetId='ff511f88-3a54-47d2-96b6-fb3ca3cf10b9'"/>
     </ownedTraces>
     <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
-        id="cbeab29d-0804-44c6-a651-a7746d6b8243" targetElement="org.polarsys.capella.core.data.interaction:SequenceMessage ../migration.sysmodel.melodymodeller#7f8d0800-24a4-4890-961b-88bc81978140"
+        id="cbeab29d-0804-44c6-a651-a7746d6b8243" targetElement="org.polarsys.capella.core.data.interaction:SequenceMessage ../migration.sysmodel.capella#7f8d0800-24a4-4890-961b-88bc81978140"
         sourceElement="#09d382fc-08a7-47de-bd6c-a586228bcf9a">
       <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue"
           id="5b409b60-c46f-4bde-9bf1-50603c0f2790" key="TransfoUID" value="Type='Transition' TargetId='ff511f88-3a54-47d2-96b6-fb3ca3cf10b9'"/>
     </ownedTraces>
     <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
-        id="af2f5f83-acb0-4d52-ba27-584f9f87d208" targetElement="org.polarsys.capella.core.data.interaction:SequenceMessage ../migration.sysmodel.melodymodeller#5144718c-7269-4f84-8140-1482e0675824"
+        id="af2f5f83-acb0-4d52-ba27-584f9f87d208" targetElement="org.polarsys.capella.core.data.interaction:SequenceMessage ../migration.sysmodel.capella#5144718c-7269-4f84-8140-1482e0675824"
         sourceElement="#832e9771-d4a6-4cc6-866b-2b07481f0c8c">
       <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue"
           id="90e63e13-f4ad-4af9-94d0-830c99bc7a94" key="TransfoUID" value="Type='Transition' TargetId='ff511f88-3a54-47d2-96b6-fb3ca3cf10b9'"/>
     </ownedTraces>
     <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
-        id="a1123a4b-bd07-4c97-bd26-7795b1bcbcef" targetElement="org.polarsys.capella.core.data.interaction:EventSentOperation ../migration.sysmodel.melodymodeller#d4743d8e-720c-4c30-b8ae-ce0702d2a8bc"
+        id="a1123a4b-bd07-4c97-bd26-7795b1bcbcef" targetElement="org.polarsys.capella.core.data.interaction:EventSentOperation ../migration.sysmodel.capella#d4743d8e-720c-4c30-b8ae-ce0702d2a8bc"
         sourceElement="#799c3f12-b845-4948-b95b-fbf28a98af5b">
       <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue"
           id="71ff25bf-39a0-45a7-ba15-cdf5d0219757" key="TransfoUID" value="Type='Transition' TargetId='ff511f88-3a54-47d2-96b6-fb3ca3cf10b9'"/>
     </ownedTraces>
     <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
-        id="3135bfc0-6f32-4ed3-bfd9-fc1bd5715a22" targetElement="org.polarsys.capella.core.data.interaction:EventReceiptOperation ../migration.sysmodel.melodymodeller#b3f1157a-e328-42a5-9398-1ee85c279ab6"
+        id="3135bfc0-6f32-4ed3-bfd9-fc1bd5715a22" targetElement="org.polarsys.capella.core.data.interaction:EventReceiptOperation ../migration.sysmodel.capella#b3f1157a-e328-42a5-9398-1ee85c279ab6"
         sourceElement="#b530a08b-53b5-4511-9f75-899db01f1063">
       <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue"
           id="be83f32d-7db5-485f-9560-6be165ee9fef" key="TransfoUID" value="Type='Transition' TargetId='ff511f88-3a54-47d2-96b6-fb3ca3cf10b9'"/>
     </ownedTraces>
     <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
-        id="88bd1040-a98c-442d-b469-8b19ceeb8c20" targetElement="org.polarsys.capella.core.data.interaction:EventSentOperation ../migration.sysmodel.melodymodeller#f71586bc-cd12-4852-8134-7af827516d56"
+        id="88bd1040-a98c-442d-b469-8b19ceeb8c20" targetElement="org.polarsys.capella.core.data.interaction:EventSentOperation ../migration.sysmodel.capella#f71586bc-cd12-4852-8134-7af827516d56"
         sourceElement="#fcc35a38-da71-4f7c-aa5c-84e5750f6476">
       <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue"
           id="28bb89dc-7d2e-4e4c-956b-20c0c13ade92" key="TransfoUID" value="Type='Transition' TargetId='ff511f88-3a54-47d2-96b6-fb3ca3cf10b9'"/>
     </ownedTraces>
     <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
-        id="08299a49-9612-4f56-8ec0-ffc841cd28d5" targetElement="org.polarsys.capella.core.data.interaction:EventReceiptOperation ../migration.sysmodel.melodymodeller#7790cadd-ba4f-4764-81c0-b898b1fdc10e"
+        id="08299a49-9612-4f56-8ec0-ffc841cd28d5" targetElement="org.polarsys.capella.core.data.interaction:EventReceiptOperation ../migration.sysmodel.capella#7790cadd-ba4f-4764-81c0-b898b1fdc10e"
         sourceElement="#13c325a6-60f9-4735-99b9-836e948d6303">
       <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue"
           id="54740eda-a804-40d0-97c1-529c9b729621" key="TransfoUID" value="Type='Transition' TargetId='ff511f88-3a54-47d2-96b6-fb3ca3cf10b9'"/>
     </ownedTraces>
     <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
-        id="64948ae3-003d-452a-945a-2bf0b31c0d2b" targetElement="org.polarsys.capella.core.data.interaction:EventSentOperation ../migration.sysmodel.melodymodeller#4e2470bb-3c09-4010-b8f2-fd00ca5e4d54"
+        id="64948ae3-003d-452a-945a-2bf0b31c0d2b" targetElement="org.polarsys.capella.core.data.interaction:EventSentOperation ../migration.sysmodel.capella#4e2470bb-3c09-4010-b8f2-fd00ca5e4d54"
         sourceElement="#62d131a8-72f0-4ef4-8e27-d7b10d1daccb">
       <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue"
           id="4dd852ef-4312-459a-b932-d705977f4ae5" key="TransfoUID" value="Type='Transition' TargetId='ff511f88-3a54-47d2-96b6-fb3ca3cf10b9'"/>
     </ownedTraces>
     <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
-        id="92c615e0-4a0f-4477-820c-b9f1d2fa461a" targetElement="org.polarsys.capella.core.data.interaction:EventReceiptOperation ../migration.sysmodel.melodymodeller#ba2429fe-d93d-4bba-864a-1fb77ba95a96"
+        id="92c615e0-4a0f-4477-820c-b9f1d2fa461a" targetElement="org.polarsys.capella.core.data.interaction:EventReceiptOperation ../migration.sysmodel.capella#ba2429fe-d93d-4bba-864a-1fb77ba95a96"
         sourceElement="#09fa5fff-6878-40eb-8799-e97e8a67113e">
       <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue"
           id="5b520e07-0632-444d-a4fa-230ee28efe73" key="TransfoUID" value="Type='Transition' TargetId='ff511f88-3a54-47d2-96b6-fb3ca3cf10b9'"/>
     </ownedTraces>
     <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
-        id="708a1ae9-1b2a-4494-b290-984fb278f27c" targetElement="org.polarsys.capella.core.data.interaction:ExecutionEvent ../migration.sysmodel.melodymodeller#49cc900e-2531-4766-97ed-bc437c531bf2"
+        id="708a1ae9-1b2a-4494-b290-984fb278f27c" targetElement="org.polarsys.capella.core.data.interaction:ExecutionEvent ../migration.sysmodel.capella#49cc900e-2531-4766-97ed-bc437c531bf2"
         sourceElement="#3c16498d-649b-4ce0-a333-dab35687280e">
       <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue"
           id="6183e8b3-3cc4-4083-bda2-8cd6d4dfa687" key="TransfoUID" value="Type='Transition' TargetId='ff511f88-3a54-47d2-96b6-fb3ca3cf10b9'"/>
     </ownedTraces>
     <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
-        id="e6556984-ba5c-4629-89a7-2c7e982c35db" targetElement="org.polarsys.capella.core.data.interaction:MessageEnd ../migration.sysmodel.melodymodeller#70106107-300c-468b-9838-038c6ee7e5dd"
+        id="e6556984-ba5c-4629-89a7-2c7e982c35db" targetElement="org.polarsys.capella.core.data.interaction:MessageEnd ../migration.sysmodel.capella#70106107-300c-468b-9838-038c6ee7e5dd"
         sourceElement="#d50ab3af-1edf-4d3f-af33-628b6e8f9c8f">
       <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue"
           id="ffd21a17-8188-44cd-bd1a-8406e6847a16" key="TransfoUID" value="Type='Transition' TargetId='ff511f88-3a54-47d2-96b6-fb3ca3cf10b9'"/>
     </ownedTraces>
     <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
-        id="c2d153b8-6a4f-46a5-bb7d-7d2acf904f91" targetElement="org.polarsys.capella.core.data.interaction:MessageEnd ../migration.sysmodel.melodymodeller#44484eec-c3e8-416f-b94f-a12fa01e6c04"
+        id="c2d153b8-6a4f-46a5-bb7d-7d2acf904f91" targetElement="org.polarsys.capella.core.data.interaction:MessageEnd ../migration.sysmodel.capella#44484eec-c3e8-416f-b94f-a12fa01e6c04"
         sourceElement="#6cf362f0-ca05-4ab2-888c-179f772d1e74">
       <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue"
           id="0df6d1b2-4296-45fb-baef-48086ab27202" key="TransfoUID" value="Type='Transition' TargetId='ff511f88-3a54-47d2-96b6-fb3ca3cf10b9'"/>
     </ownedTraces>
     <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
-        id="33b1df28-200e-4594-85eb-c7148ea8c2c0" targetElement="org.polarsys.capella.core.data.interaction:MessageEnd ../migration.sysmodel.melodymodeller#3b8b9253-8d49-4293-ada7-6aa5b9aab4b3"
+        id="33b1df28-200e-4594-85eb-c7148ea8c2c0" targetElement="org.polarsys.capella.core.data.interaction:MessageEnd ../migration.sysmodel.capella#3b8b9253-8d49-4293-ada7-6aa5b9aab4b3"
         sourceElement="#bf4b2fb3-47f8-4877-b4d6-5db95b7675af">
       <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue"
           id="436905a3-b5b2-4324-af0e-901ce05255dc" key="TransfoUID" value="Type='Transition' TargetId='ff511f88-3a54-47d2-96b6-fb3ca3cf10b9'"/>
     </ownedTraces>
     <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
-        id="acf2b67c-fca9-4fa7-8209-5b35b4cce579" targetElement="org.polarsys.capella.core.data.interaction:MessageEnd ../migration.sysmodel.melodymodeller#af71a1f0-6b69-4831-b198-4b402294d80e"
+        id="acf2b67c-fca9-4fa7-8209-5b35b4cce579" targetElement="org.polarsys.capella.core.data.interaction:MessageEnd ../migration.sysmodel.capella#af71a1f0-6b69-4831-b198-4b402294d80e"
         sourceElement="#a7d0d4c5-bfad-4d5e-b840-fdba796152bf">
       <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue"
           id="75f5de22-c530-4a20-ae57-33468fc7b3d6" key="TransfoUID" value="Type='Transition' TargetId='ff511f88-3a54-47d2-96b6-fb3ca3cf10b9'"/>
     </ownedTraces>
     <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
-        id="5af1d244-f0a7-4e54-8a00-1e46d980ac0b" targetElement="org.polarsys.capella.core.data.interaction:ExecutionEnd ../migration.sysmodel.melodymodeller#9467ee8a-2e0b-483e-b198-471c2e397f89"
+        id="5af1d244-f0a7-4e54-8a00-1e46d980ac0b" targetElement="org.polarsys.capella.core.data.interaction:ExecutionEnd ../migration.sysmodel.capella#9467ee8a-2e0b-483e-b198-471c2e397f89"
         sourceElement="#705e6f55-a98b-45dc-b651-2babd83d0100">
       <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue"
           id="7197d4b9-2e43-4dd8-acf4-52e957151a61" key="TransfoUID" value="Type='Transition' TargetId='ff511f88-3a54-47d2-96b6-fb3ca3cf10b9'"/>
     </ownedTraces>
     <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
-        id="ddd3193e-17a7-4331-9684-d861cfb043d2" targetElement="org.polarsys.capella.core.data.interaction:MessageEnd ../migration.sysmodel.melodymodeller#1085301e-1010-4221-b5a8-a75e85dff823"
+        id="ddd3193e-17a7-4331-9684-d861cfb043d2" targetElement="org.polarsys.capella.core.data.interaction:MessageEnd ../migration.sysmodel.capella#1085301e-1010-4221-b5a8-a75e85dff823"
         sourceElement="#7501e1b7-a348-4557-be5d-35b671da70c7">
       <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue"
           id="6db49a6f-8baa-4636-96f9-49a358cd2bbd" key="TransfoUID" value="Type='Transition' TargetId='ff511f88-3a54-47d2-96b6-fb3ca3cf10b9'"/>
     </ownedTraces>
     <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
-        id="fddb8781-3efd-4d77-84f9-9b5fd23c5b99" targetElement="org.polarsys.capella.core.data.interaction:MessageEnd ../migration.sysmodel.melodymodeller#84313ce6-95f0-4e5a-a781-cd3d1f68d968"
+        id="fddb8781-3efd-4d77-84f9-9b5fd23c5b99" targetElement="org.polarsys.capella.core.data.interaction:MessageEnd ../migration.sysmodel.capella#84313ce6-95f0-4e5a-a781-cd3d1f68d968"
         sourceElement="#cec62926-0b65-4f95-93d2-1363d00ba5d9">
       <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue"
           id="92d0a396-4d22-4df3-8d59-7030ac5555a2" key="TransfoUID" value="Type='Transition' TargetId='ff511f88-3a54-47d2-96b6-fb3ca3cf10b9'"/>
     </ownedTraces>
     <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
-        id="694d8161-5a79-441a-a890-861b95f5530c" targetElement="org.polarsys.capella.core.data.interaction:Execution ../migration.sysmodel.melodymodeller#c900ec05-5c23-4ee5-9d06-8e6bf874e1f5"
+        id="694d8161-5a79-441a-a890-861b95f5530c" targetElement="org.polarsys.capella.core.data.interaction:Execution ../migration.sysmodel.capella#c900ec05-5c23-4ee5-9d06-8e6bf874e1f5"
         sourceElement="#abcac053-66ac-401d-8247-958c377ff2dd">
       <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue"
           id="5ab47de4-73c2-4f2e-b9e6-72785c478ead" key="TransfoUID" value="Type='Transition' TargetId='ff511f88-3a54-47d2-96b6-fb3ca3cf10b9'"/>
     </ownedTraces>
     <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
-        id="df74bc1e-5bc3-4c29-a1a6-094880259161" targetElement="org.polarsys.capella.core.data.interaction:Execution ../migration.sysmodel.melodymodeller#213125e0-6dd4-48a7-b4ef-9e67c6a9c33f"
+        id="df74bc1e-5bc3-4c29-a1a6-094880259161" targetElement="org.polarsys.capella.core.data.interaction:Execution ../migration.sysmodel.capella#213125e0-6dd4-48a7-b4ef-9e67c6a9c33f"
         sourceElement="#7ca43c3b-a049-4e67-a4f3-c9593daaf18c">
       <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue"
           id="68ba3c8e-c1f4-461b-b9e6-f16c081b2196" key="TransfoUID" value="Type='Transition' TargetId='ff511f88-3a54-47d2-96b6-fb3ca3cf10b9'"/>
     </ownedTraces>
     <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
-        id="04fc1ba5-c172-44fb-a40a-3b0f8fe06b05" targetElement="org.polarsys.capella.core.data.interaction:InstanceRole ../migration.sysmodel.melodymodeller#d58cce4b-c945-4a49-8f05-117ef266481d"
+        id="04fc1ba5-c172-44fb-a40a-3b0f8fe06b05" targetElement="org.polarsys.capella.core.data.interaction:InstanceRole ../migration.sysmodel.capella#d58cce4b-c945-4a49-8f05-117ef266481d"
         sourceElement="#1eee85b0-60d8-4687-b33c-a54d23c1488a">
       <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue"
           id="b4b88d9c-83b4-4592-9d5a-5ccbb9ae6018" key="TransfoUID" value="Type='Transition' TargetId='ff511f88-3a54-47d2-96b6-fb3ca3cf10b9'"/>
     </ownedTraces>
     <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
-        id="eaf2bd1b-b2c3-4a36-8aae-4bf2fb8e421a" targetElement="org.polarsys.capella.core.data.interaction:InstanceRole ../migration.sysmodel.melodymodeller#d58cce4b-c945-4a49-8f05-117ef266481d"
+        id="eaf2bd1b-b2c3-4a36-8aae-4bf2fb8e421a" targetElement="org.polarsys.capella.core.data.interaction:InstanceRole ../migration.sysmodel.capella#d58cce4b-c945-4a49-8f05-117ef266481d"
         sourceElement="#ca989acf-662e-4dc5-9809-ccd59a1ed13c">
       <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue"
           id="75bee50e-114c-44e3-8f07-d1e60a0d3ed3" key="TransfoUID" value="Type='Transition' TargetId='ff511f88-3a54-47d2-96b6-fb3ca3cf10b9'"/>
     </ownedTraces>
     <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
-        id="0e04342f-298b-4309-a383-f7f988963120" targetElement="org.polarsys.capella.core.data.interaction:InstanceRole ../migration.sysmodel.melodymodeller#93d3e19f-2057-4691-ae7f-4220c2dc31fc"
+        id="0e04342f-298b-4309-a383-f7f988963120" targetElement="org.polarsys.capella.core.data.interaction:InstanceRole ../migration.sysmodel.capella#93d3e19f-2057-4691-ae7f-4220c2dc31fc"
         sourceElement="#2deed153-ded4-4a3d-867c-4da24a7b841d">
       <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue"
           id="9b8eaa63-2f14-4f1f-91ee-4427748e434c" key="TransfoUID" value="Type='Transition' TargetId='ff511f88-3a54-47d2-96b6-fb3ca3cf10b9'"/>
     </ownedTraces>
     <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
-        id="2eb54d4c-4354-4b3b-b7c3-9aa6a936ea58" targetElement="org.polarsys.capella.core.data.interaction:InstanceRole ../migration.sysmodel.melodymodeller#1cce8571-b0ad-4fe5-84d0-07c35eb3ffa5"
+        id="2eb54d4c-4354-4b3b-b7c3-9aa6a936ea58" targetElement="org.polarsys.capella.core.data.interaction:InstanceRole ../migration.sysmodel.capella#1cce8571-b0ad-4fe5-84d0-07c35eb3ffa5"
         sourceElement="#986df674-ec76-4fdd-868e-67efe037997e">
       <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue"
           id="adc69f26-0b08-4e0b-82e9-564f637cb894" key="TransfoUID" value="Type='Transition' TargetId='ff511f88-3a54-47d2-96b6-fb3ca3cf10b9'"/>
     </ownedTraces>
     <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
-        id="2deed153-ded4-4a3d-867c-4da24a7b841d" name="SysOA1_1" representedInstance="org.polarsys.capella.core.data.ctx:SystemFunction ../migration.sysmodel.melodymodeller#e4469587-419f-4b29-921a-06d7dc09907f"/>
+        id="2deed153-ded4-4a3d-867c-4da24a7b841d" name="SysOA1_1" representedInstance="org.polarsys.capella.core.data.ctx:SystemFunction ../migration.sysmodel.capella#e4469587-419f-4b29-921a-06d7dc09907f"/>
     <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
-        id="1eee85b0-60d8-4687-b33c-a54d23c1488a" name="SysOA2_1_1" representedInstance="org.polarsys.capella.core.data.ctx:SystemFunction ../migration.sysmodel.melodymodeller#1bb3b800-830b-4db9-ba2a-fe1756cceca1"/>
+        id="1eee85b0-60d8-4687-b33c-a54d23c1488a" name="SysOA2_1_1" representedInstance="org.polarsys.capella.core.data.ctx:SystemFunction ../migration.sysmodel.capella#1bb3b800-830b-4db9-ba2a-fe1756cceca1"/>
     <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
-        id="ca989acf-662e-4dc5-9809-ccd59a1ed13c" name="SysFork2_1_1" representedInstance="org.polarsys.capella.core.data.ctx:SystemFunction ../migration.sysmodel.melodymodeller#7f7dceb3-065c-45e0-a54f-e4d0eb2a504d"/>
+        id="ca989acf-662e-4dc5-9809-ccd59a1ed13c" name="SysFork2_1_1" representedInstance="org.polarsys.capella.core.data.ctx:SystemFunction ../migration.sysmodel.capella#7f7dceb3-065c-45e0-a54f-e4d0eb2a504d"/>
     <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
-        id="986df674-ec76-4fdd-868e-67efe037997e" name="SysOA2_2" representedInstance="org.polarsys.capella.core.data.ctx:SystemFunction ../migration.sysmodel.melodymodeller#6d5ffe28-699b-4f54-a3e6-3ffb3b8a64d6"/>
+        id="986df674-ec76-4fdd-868e-67efe037997e" name="SysOA2_2" representedInstance="org.polarsys.capella.core.data.ctx:SystemFunction ../migration.sysmodel.capella#6d5ffe28-699b-4f54-a3e6-3ffb3b8a64d6"/>
     <ownedMessages xsi:type="org.polarsys.capella.core.data.interaction:SequenceMessage"
         id="0c40760d-8ab9-4d6d-b301-0459bf3da0af" name="Sysi1" kind="SYNCHRONOUS_CALL"
         sendingEnd="#d50ab3af-1edf-4d3f-af33-628b6e8f9c8f" receivingEnd="#6cf362f0-ca05-4ab2-888c-179f772d1e74"/>
@@ -485,38 +485,38 @@
         id="09c49128-f275-490c-b342-8bd5f1233c54" name="" start="#0f449ac2-97e9-460f-9403-f7a4ade18019"
         finish="#6eb35569-bc88-4026-9e55-9a2936e9ba57"/>
     <ownedEvents xsi:type="org.polarsys.capella.core.data.interaction:EventSentOperation"
-        id="799c3f12-b845-4948-b95b-fbf28a98af5b" name="" operation="org.polarsys.capella.core.data.fa:FunctionalExchange ../migration.sysmodel.melodymodeller#91020070-173d-46a7-8831-4093244d7b48"/>
+        id="799c3f12-b845-4948-b95b-fbf28a98af5b" name="" operation="org.polarsys.capella.core.data.fa:FunctionalExchange ../migration.sysmodel.capella#91020070-173d-46a7-8831-4093244d7b48"/>
     <ownedEvents xsi:type="org.polarsys.capella.core.data.interaction:EventReceiptOperation"
-        id="b530a08b-53b5-4511-9f75-899db01f1063" name="" operation="org.polarsys.capella.core.data.fa:FunctionalExchange ../migration.sysmodel.melodymodeller#91020070-173d-46a7-8831-4093244d7b48"/>
+        id="b530a08b-53b5-4511-9f75-899db01f1063" name="" operation="org.polarsys.capella.core.data.fa:FunctionalExchange ../migration.sysmodel.capella#91020070-173d-46a7-8831-4093244d7b48"/>
     <ownedEvents xsi:type="org.polarsys.capella.core.data.interaction:EventSentOperation"
-        id="fcc35a38-da71-4f7c-aa5c-84e5750f6476" name="" operation="org.polarsys.capella.core.data.fa:FunctionalExchange ../migration.sysmodel.melodymodeller#91020070-173d-46a7-8831-4093244d7b48"/>
+        id="fcc35a38-da71-4f7c-aa5c-84e5750f6476" name="" operation="org.polarsys.capella.core.data.fa:FunctionalExchange ../migration.sysmodel.capella#91020070-173d-46a7-8831-4093244d7b48"/>
     <ownedEvents xsi:type="org.polarsys.capella.core.data.interaction:EventReceiptOperation"
-        id="13c325a6-60f9-4735-99b9-836e948d6303" name="" operation="org.polarsys.capella.core.data.fa:FunctionalExchange ../migration.sysmodel.melodymodeller#91020070-173d-46a7-8831-4093244d7b48"/>
+        id="13c325a6-60f9-4735-99b9-836e948d6303" name="" operation="org.polarsys.capella.core.data.fa:FunctionalExchange ../migration.sysmodel.capella#91020070-173d-46a7-8831-4093244d7b48"/>
     <ownedEvents xsi:type="org.polarsys.capella.core.data.interaction:EventSentOperation"
-        id="62d131a8-72f0-4ef4-8e27-d7b10d1daccb" name="" operation="org.polarsys.capella.core.data.fa:FunctionalExchange ../migration.sysmodel.melodymodeller#1f9ae54b-7baf-436b-ab58-6da2ab6527d0"/>
+        id="62d131a8-72f0-4ef4-8e27-d7b10d1daccb" name="" operation="org.polarsys.capella.core.data.fa:FunctionalExchange ../migration.sysmodel.capella#1f9ae54b-7baf-436b-ab58-6da2ab6527d0"/>
     <ownedEvents xsi:type="org.polarsys.capella.core.data.interaction:EventReceiptOperation"
-        id="09fa5fff-6878-40eb-8799-e97e8a67113e" name="" operation="org.polarsys.capella.core.data.fa:FunctionalExchange ../migration.sysmodel.melodymodeller#1f9ae54b-7baf-436b-ab58-6da2ab6527d0"/>
+        id="09fa5fff-6878-40eb-8799-e97e8a67113e" name="" operation="org.polarsys.capella.core.data.fa:FunctionalExchange ../migration.sysmodel.capella#1f9ae54b-7baf-436b-ab58-6da2ab6527d0"/>
     <ownedEvents xsi:type="org.polarsys.capella.core.data.interaction:ExecutionEvent"
         id="3c16498d-649b-4ce0-a333-dab35687280e" name=""/>
     <ownedEvents xsi:type="org.polarsys.capella.core.data.interaction:EventSentOperation"
-        id="9a1c1f71-f84d-4ff0-9222-2961a1be412c" name="" operation="org.polarsys.capella.core.data.fa:FunctionalExchange ../migration.sysmodel.melodymodeller#abd34b88-82cc-44e8-b992-8069cb26b990"/>
+        id="9a1c1f71-f84d-4ff0-9222-2961a1be412c" name="" operation="org.polarsys.capella.core.data.fa:FunctionalExchange ../migration.sysmodel.capella#abd34b88-82cc-44e8-b992-8069cb26b990"/>
     <ownedEvents xsi:type="org.polarsys.capella.core.data.interaction:EventReceiptOperation"
-        id="e177b789-d3ad-4685-ad88-5ede8a4bdc20" name="" operation="org.polarsys.capella.core.data.fa:FunctionalExchange ../migration.sysmodel.melodymodeller#abd34b88-82cc-44e8-b992-8069cb26b990"/>
+        id="e177b789-d3ad-4685-ad88-5ede8a4bdc20" name="" operation="org.polarsys.capella.core.data.fa:FunctionalExchange ../migration.sysmodel.capella#abd34b88-82cc-44e8-b992-8069cb26b990"/>
     <ownedEvents xsi:type="org.polarsys.capella.core.data.interaction:EventSentOperation"
-        id="214c7a3b-4597-4810-a336-478c3aa22281" name="" operation="org.polarsys.capella.core.data.fa:FunctionalExchange ../migration.sysmodel.melodymodeller#abd34b88-82cc-44e8-b992-8069cb26b990"/>
+        id="214c7a3b-4597-4810-a336-478c3aa22281" name="" operation="org.polarsys.capella.core.data.fa:FunctionalExchange ../migration.sysmodel.capella#abd34b88-82cc-44e8-b992-8069cb26b990"/>
     <ownedEvents xsi:type="org.polarsys.capella.core.data.interaction:EventReceiptOperation"
-        id="77e1150c-912b-4b59-a062-ef77e0d754ea" name="" operation="org.polarsys.capella.core.data.fa:FunctionalExchange ../migration.sysmodel.melodymodeller#abd34b88-82cc-44e8-b992-8069cb26b990"/>
+        id="77e1150c-912b-4b59-a062-ef77e0d754ea" name="" operation="org.polarsys.capella.core.data.fa:FunctionalExchange ../migration.sysmodel.capella#abd34b88-82cc-44e8-b992-8069cb26b990"/>
     <ownedScenarioRealization xsi:type="org.polarsys.capella.core.data.interaction:ScenarioRealization"
-        id="87f54929-444f-4457-86d8-781e038e6c5c" targetElement="org.polarsys.capella.core.data.interaction:Scenario ../migration.sysmodel.melodymodeller#a591fd6d-1fc5-4422-acab-724c726108e5"
+        id="87f54929-444f-4457-86d8-781e038e6c5c" targetElement="org.polarsys.capella.core.data.interaction:Scenario ../migration.sysmodel.capella#a591fd6d-1fc5-4422-acab-724c726108e5"
         sourceElement="#ed9cb2fd-2126-4f38-a2af-fed14e328a40"/>
   </ownedScenarios>
   <ownedAbstractCapabilityRealizations xsi:type="org.polarsys.capella.core.data.interaction:AbstractCapabilityRealization"
-      id="d5a08823-3cff-4be2-bb0e-6d8d0086e179" targetElement="org.polarsys.capella.core.data.oa:OperationalCapability ../migration.sysmodel.melodymodeller#4b46f4a1-5bdf-4df4-8394-e3f4fb99a829"
+      id="d5a08823-3cff-4be2-bb0e-6d8d0086e179" targetElement="org.polarsys.capella.core.data.oa:OperationalCapability ../migration.sysmodel.capella#4b46f4a1-5bdf-4df4-8394-e3f4fb99a829"
       sourceElement="#9b2735da-e950-4ca7-b7d4-8aa4c0cafbb1"/>
   <ownedCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:CapabilityInvolvement"
-      id="4ad68102-f6d9-41b0-a43e-c290f15c0141" involved="org.polarsys.capella.core.data.ctx:SystemComponent ../migration.sysmodel.melodymodeller#7b8aa28d-cd04-4e96-b580-609605af9143"/>
+      id="4ad68102-f6d9-41b0-a43e-c290f15c0141" involved="org.polarsys.capella.core.data.ctx:SystemComponent ../migration.sysmodel.capella#7b8aa28d-cd04-4e96-b580-609605af9143"/>
   <ownedCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:CapabilityInvolvement"
-      id="8eee2500-4444-48dc-9427-2aa2e7eea1ae" involved="org.polarsys.capella.core.data.ctx:SystemComponent ../migration.sysmodel.melodymodeller#1f350ba9-d062-46ec-b85a-edc9d82b31b1"/>
+      id="8eee2500-4444-48dc-9427-2aa2e7eea1ae" involved="org.polarsys.capella.core.data.ctx:SystemComponent ../migration.sysmodel.capella#1f350ba9-d062-46ec-b85a-edc9d82b31b1"/>
   <ownedCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:CapabilityInvolvement"
-      id="daf9b354-e50f-4cc5-aec8-7c6805d1e314" involved="org.polarsys.capella.core.data.ctx:SystemComponent ../migration.sysmodel.melodymodeller#d8c47314-238b-4bc6-a945-bd76c26b5a9b"/>
+      id="daf9b354-e50f-4cc5-aec8-7c6805d1e314" involved="org.polarsys.capella.core.data.ctx:SystemComponent ../migration.sysmodel.capella#d8c47314-238b-4bc6-a945-bd76c26b5a9b"/>
 </org.polarsys.capella.core.data.ctx:Capability>
