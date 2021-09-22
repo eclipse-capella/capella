@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--Capella_Version_5.0.0-->
+<!--Capella_Version_6.0.0-->
 <org.polarsys.capella.core.data.capellamodeller:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:libraries="http://www.polarsys.org/capella/common/libraries/5.0.0"
-    xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/5.0.0"
-    xmlns:org.polarsys.capella.core.data.capellamodeller="http://www.polarsys.org/capella/core/modeller/5.0.0"
-    xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/5.0.0"
-    xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/5.0.0"
-    xmlns:org.polarsys.capella.core.data.epbs="http://www.polarsys.org/capella/core/epbs/5.0.0"
-    xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/5.0.0"
-    xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/5.0.0"
-    xmlns:org.polarsys.capella.core.data.information.datatype="http://www.polarsys.org/capella/core/information/datatype/5.0.0"
-    xmlns:org.polarsys.capella.core.data.information.datavalue="http://www.polarsys.org/capella/core/information/datavalue/5.0.0"
-    xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/5.0.0"
-    xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/5.0.0"
-    xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/5.0.0"
-    xmlns:re="http://www.polarsys.org/capella/common/re/5.0.0" id="05b6f9ba-3cbc-42dd-9ef5-e0ef7f7240bd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:libraries="http://www.polarsys.org/capella/common/libraries/6.0.0"
+    xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/6.0.0"
+    xmlns:org.polarsys.capella.core.data.capellamodeller="http://www.polarsys.org/capella/core/modeller/6.0.0"
+    xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/6.0.0"
+    xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/6.0.0"
+    xmlns:org.polarsys.capella.core.data.epbs="http://www.polarsys.org/capella/core/epbs/6.0.0"
+    xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/6.0.0"
+    xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/6.0.0"
+    xmlns:org.polarsys.capella.core.data.information.datatype="http://www.polarsys.org/capella/core/information/datatype/6.0.0"
+    xmlns:org.polarsys.capella.core.data.information.datavalue="http://www.polarsys.org/capella/core/information/datavalue/6.0.0"
+    xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/6.0.0"
+    xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/6.0.0"
+    xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/6.0.0"
+    xmlns:re="http://www.polarsys.org/capella/common/re/6.0.0" id="05b6f9ba-3cbc-42dd-9ef5-e0ef7f7240bd"
     name="updatelinksTest2">
   <ownedExtensions xsi:type="libraries:ModelInformation" id="d7e28b2b-d34c-4d4e-a881-7de66db2309b">
     <ownedReferences xsi:type="libraries:LibraryReference" id="a6d8aa8b-a07d-4094-a8b4-69dc67d9eff3"
-        library="libraries:ModelInformation platform:/resource/updatelinksTest2Lib/updatelinksTest2Lib.capella#5af0a92c-98e4-4611-8695-fc229b267a0c"/>
+        library="libraries:ModelInformation ../updatelinksTest2Lib/updatelinksTest2Lib.capella#5af0a92c-98e4-4611-8695-fc229b267a0c"/>
   </ownedExtensions>
   <ownedEnumerationPropertyTypes xsi:type="org.polarsys.capella.core.data.capellacore:EnumerationPropertyType"
       id="9a8346c3-9dc1-4eea-b40e-bc546c8c784d" name="ProgressStatus">
@@ -43,68 +43,68 @@
     <ownedExtensions xsi:type="re:RecCatalog" id="f333c76f-c931-490e-be6f-0c7f036c0283"
         name="REC Catalog">
       <ownedElements xsi:type="re:CatalogElement" id="d67f1640-4259-4c08-acbb-0605bdda4f4a"
-          name="RPL1" kind="RPL" suffix="" origin="re:CatalogElement platform:/resource/updatelinksTest2Lib/updatelinksTest2Lib.capella#a929cec8-7100-4e6a-b667-c94ed7f76ab2"
-          currentCompliancy="re:CompliancyDefinition platform:/resource/updatelinksTest2Lib/updatelinksTest2Lib.capella#e4a633a8-2d81-455e-b138-a50eb2e2f3a4"
-          defaultReplicaCompliancy="re:CompliancyDefinition platform:/resource/updatelinksTest2Lib/updatelinksTest2Lib.capella#e4a633a8-2d81-455e-b138-a50eb2e2f3a4">
+          name="RPL1" kind="RPL" suffix="" origin="re:CatalogElement ../updatelinksTest2Lib/updatelinksTest2Lib.capella#a929cec8-7100-4e6a-b667-c94ed7f76ab2"
+          currentCompliancy="re:CompliancyDefinition ../updatelinksTest2Lib/updatelinksTest2Lib.capella#e4a633a8-2d81-455e-b138-a50eb2e2f3a4"
+          defaultReplicaCompliancy="re:CompliancyDefinition ../updatelinksTest2Lib/updatelinksTest2Lib.capella#e4a633a8-2d81-455e-b138-a50eb2e2f3a4">
         <ownedLinks xsi:type="re:CatalogElementLink" id="9d2c77cb-8113-4353-80e3-1072b6e61f9a"
             source="#d67f1640-4259-4c08-acbb-0605bdda4f4a" target="#3c87090c-2a62-4176-8acc-89ee7fa44ef5"
-            origin="re:CatalogElementLink platform:/resource/updatelinksTest2Lib/updatelinksTest2Lib.capella#109bbd72-e550-4e11-9c9d-b80144ff8c2d"/>
+            origin="re:CatalogElementLink ../updatelinksTest2Lib/updatelinksTest2Lib.capella#109bbd72-e550-4e11-9c9d-b80144ff8c2d"/>
         <ownedLinks xsi:type="re:CatalogElementLink" id="38d1eb1d-3066-473b-9ec5-14954eda160a"
-            source="#d67f1640-4259-4c08-acbb-0605bdda4f4a" origin="re:CatalogElementLink platform:/resource/updatelinksTest2Lib/updatelinksTest2Lib.capella#935990dc-bf57-46f8-ac86-4d5d9f94ea84"
+            source="#d67f1640-4259-4c08-acbb-0605bdda4f4a" origin="re:CatalogElementLink ../updatelinksTest2Lib/updatelinksTest2Lib.capella#935990dc-bf57-46f8-ac86-4d5d9f94ea84"
             suffixed="true"/>
         <ownedLinks xsi:type="re:CatalogElementLink" id="3e96d0f0-b41f-4058-a0fe-ead229b4d748"
-            source="#d67f1640-4259-4c08-acbb-0605bdda4f4a" origin="re:CatalogElementLink platform:/resource/updatelinksTest2Lib/updatelinksTest2Lib.capella#7486114a-457e-4579-9106-682a8f2a6c6c"/>
+            source="#d67f1640-4259-4c08-acbb-0605bdda4f4a" origin="re:CatalogElementLink ../updatelinksTest2Lib/updatelinksTest2Lib.capella#7486114a-457e-4579-9106-682a8f2a6c6c"/>
         <ownedLinks xsi:type="re:CatalogElementLink" id="ffc8ec11-97de-4939-adf4-2985e9fcc432"
-            source="#d67f1640-4259-4c08-acbb-0605bdda4f4a" origin="re:CatalogElementLink platform:/resource/updatelinksTest2Lib/updatelinksTest2Lib.capella#613107f2-1307-44bf-b484-60ebe7391070"
+            source="#d67f1640-4259-4c08-acbb-0605bdda4f4a" origin="re:CatalogElementLink ../updatelinksTest2Lib/updatelinksTest2Lib.capella#613107f2-1307-44bf-b484-60ebe7391070"
             suffixed="true"/>
         <ownedLinks xsi:type="re:CatalogElementLink" id="36dd2e97-7b4c-4e77-ba19-1899aed419eb"
-            source="#d67f1640-4259-4c08-acbb-0605bdda4f4a" origin="re:CatalogElementLink platform:/resource/updatelinksTest2Lib/updatelinksTest2Lib.capella#4a7d26be-9faa-4cc5-bd6b-6d07efc8c3c8"
+            source="#d67f1640-4259-4c08-acbb-0605bdda4f4a" origin="re:CatalogElementLink ../updatelinksTest2Lib/updatelinksTest2Lib.capella#4a7d26be-9faa-4cc5-bd6b-6d07efc8c3c8"
             suffixed="true"/>
         <ownedLinks xsi:type="re:CatalogElementLink" id="da8420ce-993a-439e-a1c3-8bce4a1a4827"
-            source="#d67f1640-4259-4c08-acbb-0605bdda4f4a" origin="re:CatalogElementLink platform:/resource/updatelinksTest2Lib/updatelinksTest2Lib.capella#28d7505b-03f8-4124-b10b-880c3c17391e"/>
+            source="#d67f1640-4259-4c08-acbb-0605bdda4f4a" origin="re:CatalogElementLink ../updatelinksTest2Lib/updatelinksTest2Lib.capella#28d7505b-03f8-4124-b10b-880c3c17391e"/>
         <ownedLinks xsi:type="re:CatalogElementLink" id="e8b1b0e1-882a-4176-ad52-8b5ee35c0473"
-            source="#d67f1640-4259-4c08-acbb-0605bdda4f4a" origin="re:CatalogElementLink platform:/resource/updatelinksTest2Lib/updatelinksTest2Lib.capella#a0e8a404-d2f1-4b1f-bc5b-9a1ee746526f"/>
+            source="#d67f1640-4259-4c08-acbb-0605bdda4f4a" origin="re:CatalogElementLink ../updatelinksTest2Lib/updatelinksTest2Lib.capella#a0e8a404-d2f1-4b1f-bc5b-9a1ee746526f"/>
         <ownedLinks xsi:type="re:CatalogElementLink" id="de602512-0c96-4bd4-98b4-8b8577a15e77"
             source="#d67f1640-4259-4c08-acbb-0605bdda4f4a" target="#0b678400-a0b0-4923-8710-0e1c73fab9c2"
-            origin="re:CatalogElementLink platform:/resource/updatelinksTest2Lib/updatelinksTest2Lib.capella#85374276-2186-4971-9d37-e462a76f7172"
+            origin="re:CatalogElementLink ../updatelinksTest2Lib/updatelinksTest2Lib.capella#85374276-2186-4971-9d37-e462a76f7172"
             suffixed="true"/>
         <ownedLinks xsi:type="re:CatalogElementLink" id="7ac8ad72-c1a3-4c98-ae7c-e7c3d94620dc"
-            source="#d67f1640-4259-4c08-acbb-0605bdda4f4a" origin="re:CatalogElementLink platform:/resource/updatelinksTest2Lib/updatelinksTest2Lib.capella#d4443f65-b724-4748-9f17-2055e6e3ac15"
+            source="#d67f1640-4259-4c08-acbb-0605bdda4f4a" origin="re:CatalogElementLink ../updatelinksTest2Lib/updatelinksTest2Lib.capella#d4443f65-b724-4748-9f17-2055e6e3ac15"
             suffixed="true"/>
         <ownedLinks xsi:type="re:CatalogElementLink" id="6c0e40ba-871b-4094-8140-4234dd183833"
-            source="#d67f1640-4259-4c08-acbb-0605bdda4f4a" origin="re:CatalogElementLink platform:/resource/updatelinksTest2Lib/updatelinksTest2Lib.capella#33467801-2855-4c31-8a85-665ec9fc186f"/>
+            source="#d67f1640-4259-4c08-acbb-0605bdda4f4a" origin="re:CatalogElementLink ../updatelinksTest2Lib/updatelinksTest2Lib.capella#33467801-2855-4c31-8a85-665ec9fc186f"/>
       </ownedElements>
       <ownedElements xsi:type="re:CatalogElement" id="bbb1880b-39ee-4a77-9210-304a14f8d68e"
-          name="RPL2" kind="RPL" suffix="" origin="re:CatalogElement platform:/resource/updatelinksTest2Lib/updatelinksTest2Lib.capella#7e4fa397-65e8-479c-9fda-c100a562b306"
-          currentCompliancy="re:CompliancyDefinition platform:/resource/updatelinksTest2Lib/updatelinksTest2Lib.capella#e4a633a8-2d81-455e-b138-a50eb2e2f3a4"
-          defaultReplicaCompliancy="re:CompliancyDefinition platform:/resource/updatelinksTest2Lib/updatelinksTest2Lib.capella#e4a633a8-2d81-455e-b138-a50eb2e2f3a4">
+          name="RPL2" kind="RPL" suffix="" origin="re:CatalogElement ../updatelinksTest2Lib/updatelinksTest2Lib.capella#7e4fa397-65e8-479c-9fda-c100a562b306"
+          currentCompliancy="re:CompliancyDefinition ../updatelinksTest2Lib/updatelinksTest2Lib.capella#e4a633a8-2d81-455e-b138-a50eb2e2f3a4"
+          defaultReplicaCompliancy="re:CompliancyDefinition ../updatelinksTest2Lib/updatelinksTest2Lib.capella#e4a633a8-2d81-455e-b138-a50eb2e2f3a4">
         <ownedLinks xsi:type="re:CatalogElementLink" id="3affa8f8-42b7-4d83-9c75-0f5a019ffd0e"
-            source="#bbb1880b-39ee-4a77-9210-304a14f8d68e" origin="re:CatalogElementLink platform:/resource/updatelinksTest2Lib/updatelinksTest2Lib.capella#b2237557-61fd-49b7-806d-6eae6dbbbb6a"
+            source="#bbb1880b-39ee-4a77-9210-304a14f8d68e" origin="re:CatalogElementLink ../updatelinksTest2Lib/updatelinksTest2Lib.capella#b2237557-61fd-49b7-806d-6eae6dbbbb6a"
             suffixed="true"/>
         <ownedLinks xsi:type="re:CatalogElementLink" id="26f3cf31-bb05-41be-826c-724af6d213a2"
             source="#bbb1880b-39ee-4a77-9210-304a14f8d68e" target="#cfcbd00a-989e-439c-b0a2-6009b042c016"
-            origin="re:CatalogElementLink platform:/resource/updatelinksTest2Lib/updatelinksTest2Lib.capella#1cd75f3d-80cc-4fc4-a476-da8e7ac43581"
+            origin="re:CatalogElementLink ../updatelinksTest2Lib/updatelinksTest2Lib.capella#1cd75f3d-80cc-4fc4-a476-da8e7ac43581"
             suffixed="true"/>
         <ownedLinks xsi:type="re:CatalogElementLink" id="126ed250-e649-40e0-993f-74a22b68dc0f"
-            source="#bbb1880b-39ee-4a77-9210-304a14f8d68e" origin="re:CatalogElementLink platform:/resource/updatelinksTest2Lib/updatelinksTest2Lib.capella#df287cd2-830c-4c23-8c2d-614d6b225f0e"
+            source="#bbb1880b-39ee-4a77-9210-304a14f8d68e" origin="re:CatalogElementLink ../updatelinksTest2Lib/updatelinksTest2Lib.capella#df287cd2-830c-4c23-8c2d-614d6b225f0e"
             suffixed="true"/>
         <ownedLinks xsi:type="re:CatalogElementLink" id="26faaf12-12b6-45e3-8bd0-a43945b01130"
-            source="#bbb1880b-39ee-4a77-9210-304a14f8d68e" origin="re:CatalogElementLink platform:/resource/updatelinksTest2Lib/updatelinksTest2Lib.capella#bbafc4d8-f823-4c2d-8f02-b83ddb86aa43"
+            source="#bbb1880b-39ee-4a77-9210-304a14f8d68e" origin="re:CatalogElementLink ../updatelinksTest2Lib/updatelinksTest2Lib.capella#bbafc4d8-f823-4c2d-8f02-b83ddb86aa43"
             suffixed="true"/>
         <ownedLinks xsi:type="re:CatalogElementLink" id="723a3183-94be-4aab-bc01-a84a0a262a35"
-            source="#bbb1880b-39ee-4a77-9210-304a14f8d68e" origin="re:CatalogElementLink platform:/resource/updatelinksTest2Lib/updatelinksTest2Lib.capella#dc6ee0ec-666a-4716-a13c-84fe76ada384"
+            source="#bbb1880b-39ee-4a77-9210-304a14f8d68e" origin="re:CatalogElementLink ../updatelinksTest2Lib/updatelinksTest2Lib.capella#dc6ee0ec-666a-4716-a13c-84fe76ada384"
             suffixed="true"/>
         <ownedLinks xsi:type="re:CatalogElementLink" id="bcacd722-4d08-4581-b4d3-b11d387b1d5a"
-            source="#bbb1880b-39ee-4a77-9210-304a14f8d68e" origin="re:CatalogElementLink platform:/resource/updatelinksTest2Lib/updatelinksTest2Lib.capella#ff96ce11-9249-45d6-9cab-bbe952743752"/>
+            source="#bbb1880b-39ee-4a77-9210-304a14f8d68e" origin="re:CatalogElementLink ../updatelinksTest2Lib/updatelinksTest2Lib.capella#ff96ce11-9249-45d6-9cab-bbe952743752"/>
         <ownedLinks xsi:type="re:CatalogElementLink" id="d327eadf-2a8c-49a0-a51e-e16b1c9094f0"
-            source="#bbb1880b-39ee-4a77-9210-304a14f8d68e" origin="re:CatalogElementLink platform:/resource/updatelinksTest2Lib/updatelinksTest2Lib.capella#215e3da4-5bc5-40e1-8382-dc0b412b8f07"/>
+            source="#bbb1880b-39ee-4a77-9210-304a14f8d68e" origin="re:CatalogElementLink ../updatelinksTest2Lib/updatelinksTest2Lib.capella#215e3da4-5bc5-40e1-8382-dc0b412b8f07"/>
         <ownedLinks xsi:type="re:CatalogElementLink" id="e6fb315e-8fbc-4057-88b4-76491f27b638"
             source="#bbb1880b-39ee-4a77-9210-304a14f8d68e" target="#19be87c8-c274-46a7-bcde-9355e041bf42"
-            origin="re:CatalogElementLink platform:/resource/updatelinksTest2Lib/updatelinksTest2Lib.capella#ad31b424-0758-4e57-9828-a65934cec39d"/>
+            origin="re:CatalogElementLink ../updatelinksTest2Lib/updatelinksTest2Lib.capella#ad31b424-0758-4e57-9828-a65934cec39d"/>
         <ownedLinks xsi:type="re:CatalogElementLink" id="930a44fd-5654-4730-be32-c44e2baefaed"
-            source="#bbb1880b-39ee-4a77-9210-304a14f8d68e" origin="re:CatalogElementLink platform:/resource/updatelinksTest2Lib/updatelinksTest2Lib.capella#5cb9faf3-1fd0-42fe-889b-96da55d89f66"/>
+            source="#bbb1880b-39ee-4a77-9210-304a14f8d68e" origin="re:CatalogElementLink ../updatelinksTest2Lib/updatelinksTest2Lib.capella#5cb9faf3-1fd0-42fe-889b-96da55d89f66"/>
         <ownedLinks xsi:type="re:CatalogElementLink" id="22b31c84-9189-4d2b-9dff-845d855ae43d"
-            source="#bbb1880b-39ee-4a77-9210-304a14f8d68e" origin="re:CatalogElementLink platform:/resource/updatelinksTest2Lib/updatelinksTest2Lib.capella#c31ac504-5345-44b4-8988-f8a7f20f415d"/>
+            source="#bbb1880b-39ee-4a77-9210-304a14f8d68e" origin="re:CatalogElementLink ../updatelinksTest2Lib/updatelinksTest2Lib.capella#c31ac504-5345-44b4-8988-f8a7f20f415d"/>
       </ownedElements>
     </ownedExtensions>
     <ownedArchitectures xsi:type="org.polarsys.capella.core.data.oa:OperationalAnalysis"

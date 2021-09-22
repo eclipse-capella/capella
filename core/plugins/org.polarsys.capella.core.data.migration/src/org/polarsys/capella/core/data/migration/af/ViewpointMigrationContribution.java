@@ -153,7 +153,7 @@ public class ViewpointMigrationContribution extends AbstractMigrationContributio
 
     if (!isMigrationPossible(fileVersion, currentVersion)) {
       String formattedMessage = NLS.bind(Messages.MigrationAction_ErrorDialog_TooOldMessage,
-          new String[] { context.getResourceName(), currentVersion.toString(), fileVersion.toString() });
+          new String[] { context.getResourceName(), currentVersion.toString() });
       return new Status(IStatus.ERROR, Activator.PLUGIN_ID, formattedMessage);
     }
 
@@ -194,17 +194,18 @@ public class ViewpointMigrationContribution extends AbstractMigrationContributio
   /**
    * Returns whether the file with the given version can be migrated towards to current version. Only n-1 version can be
    * migrated
-   * The migration of the Capella model 1.4.x to 5 is managed is a deticated case.
-   * @param fileVersion the version of the Capella model
-   * @param currentVersion the version of Capella platform
-   * @return <code>true</code> if the migration is allowed, <code>false</code> otherwise
    */
   private boolean isMigrationPossible(Version fileVersion, Version currentVersion) {
-	// This allow migration from any 1.4.x version to 5.0, 5.1 and 5.2 to support the change of the versioning strategy (Issue #2278)
-	// This behavior should be removed from the migration process starting from the version 6.0
-	if ((fileVersion.getMajor() == 1 && fileVersion.getMinor() == 4) && (currentVersion.getMajor() == 5 && currentVersion.getMinor() <= 2)) {
-		return true;
-	}
-	return currentVersion.getMajor() - fileVersion.getMajor() <= 1;
+    boolean sameMajor = (currentVersion.getMajor() == fileVersion.getMajor());
+
+    if (sameMajor) {
+      // Only n-1 to n migrations are handled
+      if ((currentVersion.getMinor() - fileVersion.getMinor()) <= 1) {
+        return true;
+      }
+    }
+
+    // Allow migration from 5.x to 6.x
+    return fileVersion.getMajor() == 5 && currentVersion.getMajor() == 6;
   }
 }

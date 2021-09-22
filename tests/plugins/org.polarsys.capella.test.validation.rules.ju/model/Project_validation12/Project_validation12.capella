@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--Capella_Version_5.0.0-->
+<!--Capella_Version_6.0.0-->
 <org.polarsys.capella.core.data.capellamodeller:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:libraries="http://www.polarsys.org/capella/common/libraries/5.0.0"
-    xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/5.0.0"
-    xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/5.0.0"
-    xmlns:org.polarsys.capella.core.data.capellamodeller="http://www.polarsys.org/capella/core/modeller/5.0.0"
-    xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/5.0.0"
-    xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/5.0.0"
-    xmlns:org.polarsys.capella.core.data.epbs="http://www.polarsys.org/capella/core/epbs/5.0.0"
-    xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/5.0.0"
-    xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/5.0.0"
-    xmlns:org.polarsys.capella.core.data.information.datatype="http://www.polarsys.org/capella/core/information/datatype/5.0.0"
-    xmlns:org.polarsys.capella.core.data.information.datavalue="http://www.polarsys.org/capella/core/information/datavalue/5.0.0"
-    xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/5.0.0"
-    xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/5.0.0"
-    xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/5.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:libraries="http://www.polarsys.org/capella/common/libraries/6.0.0"
+    xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/6.0.0"
+    xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/6.0.0"
+    xmlns:org.polarsys.capella.core.data.capellamodeller="http://www.polarsys.org/capella/core/modeller/6.0.0"
+    xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/6.0.0"
+    xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/6.0.0"
+    xmlns:org.polarsys.capella.core.data.epbs="http://www.polarsys.org/capella/core/epbs/6.0.0"
+    xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/6.0.0"
+    xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/6.0.0"
+    xmlns:org.polarsys.capella.core.data.information.datatype="http://www.polarsys.org/capella/core/information/datatype/6.0.0"
+    xmlns:org.polarsys.capella.core.data.information.datavalue="http://www.polarsys.org/capella/core/information/datavalue/6.0.0"
+    xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/6.0.0"
+    xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/6.0.0"
+    xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/6.0.0"
     id="3b054455-7296-4ad5-aca5-3fcccdb6d35a"
     name="Project_validation12">
   <ownedExtensions xsi:type="libraries:ModelInformation" id="2e7d161c-9d9c-41ed-9d67-44f55608570d">
     <ownedReferences xsi:type="libraries:LibraryReference" id="6328b6bb-4c22-42b0-ab64-a3b08b166059"
-        library="libraries:ModelInformation platform:/resource/Library_validation12/Library_validation12.capella#3290ae41-56b1-4e42-94c6-697ed8c710fc"
+        library="libraries:ModelInformation ../Library_validation12/Library_validation12.capella#3290ae41-56b1-4e42-94c6-697ed8c710fc"
         accessPolicy="readAndWrite"/>
   </ownedExtensions>
   <ownedEnumerationPropertyTypes xsi:type="org.polarsys.capella.core.data.capellacore:EnumerationPropertyType"
@@ -207,9 +207,9 @@
       <ownedDataPkg xsi:type="org.polarsys.capella.core.data.information:DataPkg"
           id="8c440b26-99be-47d4-a94f-483032857212" name="Data">
         <ownedAssociations xsi:type="org.polarsys.capella.core.data.information:Association"
-            id="5254fc72-a65c-4929-b649-cc172dd784ab" name="DataAssociation1" navigableMembers="org.polarsys.capella.core.data.information:Property platform:/resource/Library_validation12/Library_validation12.capella#8197563c-5d48-4d99-97d2-91f15cbdd7ad">
+            id="5254fc72-a65c-4929-b649-cc172dd784ab" name="DataAssociation1" navigableMembers="org.polarsys.capella.core.data.information:Property ../Library_validation12/Library_validation12.capella#8197563c-5d48-4d99-97d2-91f15cbdd7ad">
           <ownedMembers xsi:type="org.polarsys.capella.core.data.information:Property"
-              id="4dccd8cd-97b6-46d6-9f49-e9591b8de403" name="class 3" abstractType="org.polarsys.capella.core.data.information:Class platform:/resource/Library_validation12/Library_validation12.capella#b13f0d73-dcbf-4f49-998a-a98d77e8333e"
+              id="4dccd8cd-97b6-46d6-9f49-e9591b8de403" name="class 3" abstractType="org.polarsys.capella.core.data.information:Class ../Library_validation12/Library_validation12.capella#b13f0d73-dcbf-4f49-998a-a98d77e8333e"
               unique="true" aggregationKind="ASSOCIATION">
             <ownedMinCard xsi:type="org.polarsys.capella.core.data.information.datavalue:LiteralNumericValue"
                 id="aa691b85-8b02-4640-99fb-efa4b177f40d" value="1"/>
@@ -253,7 +253,7 @@
         <ownedClasses xsi:type="org.polarsys.capella.core.data.information:Class"
             id="6ad281b8-a44b-4ca0-ac8d-03662240aab7" name="Class 2">
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.information:Property"
-              id="470bcf62-9fce-4300-b1d3-27f7ef636ba9" name="class 3" abstractType="org.polarsys.capella.core.data.information:Class platform:/resource/Library_validation12/Library_validation12.capella#b13f0d73-dcbf-4f49-998a-a98d77e8333e"
+              id="470bcf62-9fce-4300-b1d3-27f7ef636ba9" name="class 3" abstractType="org.polarsys.capella.core.data.information:Class ../Library_validation12/Library_validation12.capella#b13f0d73-dcbf-4f49-998a-a98d77e8333e"
               unique="true" aggregationKind="ASSOCIATION">
             <ownedMinCard xsi:type="org.polarsys.capella.core.data.information.datavalue:LiteralNumericValue"
                 id="a68813c7-74bf-4019-a9e8-8df4ac7eab30" value="1"/>

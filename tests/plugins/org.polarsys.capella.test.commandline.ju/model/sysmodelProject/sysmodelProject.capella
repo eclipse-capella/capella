@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--Capella_Version_5.0.0-->
+<!--Capella_Version_6.0.0-->
 <org.polarsys.capella.core.data.capellamodeller:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:libraries="http://www.polarsys.org/capella/common/libraries/5.0.0"
-    xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/5.0.0"
-    xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/5.0.0"
-    xmlns:org.polarsys.capella.core.data.capellamodeller="http://www.polarsys.org/capella/core/modeller/5.0.0"
-    xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/5.0.0"
-    xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/5.0.0"
-    xmlns:org.polarsys.capella.core.data.epbs="http://www.polarsys.org/capella/core/epbs/5.0.0"
-    xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/5.0.0"
-    xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/5.0.0"
-    xmlns:org.polarsys.capella.core.data.information.communication="http://www.polarsys.org/capella/core/information/communication/5.0.0"
-    xmlns:org.polarsys.capella.core.data.information.datatype="http://www.polarsys.org/capella/core/information/datatype/5.0.0"
-    xmlns:org.polarsys.capella.core.data.information.datavalue="http://www.polarsys.org/capella/core/information/datavalue/5.0.0"
-    xmlns:org.polarsys.capella.core.data.interaction="http://www.polarsys.org/capella/core/interaction/5.0.0"
-    xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/5.0.0"
-    xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/5.0.0"
-    xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/5.0.0"
-    xmlns:org.polarsys.capella.core.data.pa.deployment="http://www.polarsys.org/capella/core/pa/deployment/5.0.0"
-    xmlns:org.polarsys.capella.core.data.requirement="http://www.polarsys.org/capella/core/requirement/5.0.0"
-    xmlns:re="http://www.polarsys.org/capella/common/re/5.0.0" id="ebd6a4dd-f1d3-4b5f-bb8b-c5ff6c5cfed2"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:libraries="http://www.polarsys.org/capella/common/libraries/6.0.0"
+    xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/6.0.0"
+    xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/6.0.0"
+    xmlns:org.polarsys.capella.core.data.capellamodeller="http://www.polarsys.org/capella/core/modeller/6.0.0"
+    xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/6.0.0"
+    xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/6.0.0"
+    xmlns:org.polarsys.capella.core.data.epbs="http://www.polarsys.org/capella/core/epbs/6.0.0"
+    xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/6.0.0"
+    xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/6.0.0"
+    xmlns:org.polarsys.capella.core.data.information.communication="http://www.polarsys.org/capella/core/information/communication/6.0.0"
+    xmlns:org.polarsys.capella.core.data.information.datatype="http://www.polarsys.org/capella/core/information/datatype/6.0.0"
+    xmlns:org.polarsys.capella.core.data.information.datavalue="http://www.polarsys.org/capella/core/information/datavalue/6.0.0"
+    xmlns:org.polarsys.capella.core.data.interaction="http://www.polarsys.org/capella/core/interaction/6.0.0"
+    xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/6.0.0"
+    xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/6.0.0"
+    xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/6.0.0"
+    xmlns:org.polarsys.capella.core.data.pa.deployment="http://www.polarsys.org/capella/core/pa/deployment/6.0.0"
+    xmlns:org.polarsys.capella.core.data.requirement="http://www.polarsys.org/capella/core/requirement/6.0.0"
+    xmlns:re="http://www.polarsys.org/capella/common/re/6.0.0" id="ebd6a4dd-f1d3-4b5f-bb8b-c5ff6c5cfed2"
     name="sysmodelProject">
   <ownedExtensions xsi:type="libraries:ModelInformation" id="4c8e4d9e-92bc-4dca-a6b4-6af23b11da71">
     <ownedReferences xsi:type="libraries:LibraryReference" id="873bbbee-6d2c-468a-beb8-de19feb13f79"
-        library="libraries:ModelInformation platform:/resource/sysmodelLibrary_Sub/sysmodelLibrary_Sub.capella#fb319cd8-e11e-4685-a5d6-5811394d46bb"
+        library="libraries:ModelInformation ../sysmodelLibrary_Sub/sysmodelLibrary_Sub.capella#fb319cd8-e11e-4685-a5d6-5811394d46bb"
         accessPolicy="readAndWrite"/>
   </ownedExtensions>
   <ownedEnumerationPropertyTypes xsi:type="org.polarsys.capella.core.data.capellacore:EnumerationPropertyType"
@@ -129,65 +129,65 @@
             origin="#b1fb7caf-77d6-4825-85c9-c42a38e2ac15" suffixed="true"/>
       </ownedElements>
       <ownedElements xsi:type="re:CatalogElement" id="c08ff02e-c772-4d67-8159-6d2b6c10ef0e"
-          name="RPL1_RPL_SysModel" kind="RPL" suffix="_RPL_SysModel" origin="re:CatalogElement platform:/resource/sysmodelLibrary_Super/sysmodelLibrary_Super.capella#3db40c15-f095-46f8-a3c2-cac91ed14985"
-          currentCompliancy="re:CompliancyDefinition platform:/resource/sysmodelLibrary_Super/sysmodelLibrary_Super.capella#14658832-3778-4344-8846-440b60d9174f"
-          defaultReplicaCompliancy="re:CompliancyDefinition platform:/resource/sysmodelLibrary_Super/sysmodelLibrary_Super.capella#14658832-3778-4344-8846-440b60d9174f">
+          name="RPL1_RPL_SysModel" kind="RPL" suffix="_RPL_SysModel" origin="re:CatalogElement ../sysmodelLibrary_Super/sysmodelLibrary_Super.capella#3db40c15-f095-46f8-a3c2-cac91ed14985"
+          currentCompliancy="re:CompliancyDefinition ../sysmodelLibrary_Super/sysmodelLibrary_Super.capella#14658832-3778-4344-8846-440b60d9174f"
+          defaultReplicaCompliancy="re:CompliancyDefinition ../sysmodelLibrary_Super/sysmodelLibrary_Super.capella#14658832-3778-4344-8846-440b60d9174f">
         <ownedLinks xsi:type="re:CatalogElementLink" id="760d63c3-dc75-4fde-b0b0-55b8421228f1"
             source="#c08ff02e-c772-4d67-8159-6d2b6c10ef0e" target="#a976312c-660b-4ad4-a04a-de9d167d10e4"
-            origin="re:CatalogElementLink platform:/resource/sysmodelLibrary_Super/sysmodelLibrary_Super.capella#b2c13057-f4b9-44ee-82b7-673754cb0b65"/>
+            origin="re:CatalogElementLink ../sysmodelLibrary_Super/sysmodelLibrary_Super.capella#b2c13057-f4b9-44ee-82b7-673754cb0b65"/>
         <ownedLinks xsi:type="re:CatalogElementLink" id="f926064f-4ab2-4eaa-8474-83955b95f949"
             source="#c08ff02e-c772-4d67-8159-6d2b6c10ef0e" target="#2d6b6ad4-c480-4f14-ae86-395406d0e3f7"
-            origin="re:CatalogElementLink platform:/resource/sysmodelLibrary_Super/sysmodelLibrary_Super.capella#dc0db86d-3bc9-4fbb-aacb-1f42623835fb"
+            origin="re:CatalogElementLink ../sysmodelLibrary_Super/sysmodelLibrary_Super.capella#dc0db86d-3bc9-4fbb-aacb-1f42623835fb"
             suffixed="true"/>
         <ownedLinks xsi:type="re:CatalogElementLink" id="0585f99c-3483-4548-acaf-1779931dbcfe"
             source="#c08ff02e-c772-4d67-8159-6d2b6c10ef0e" target="#a8010345-848e-44b7-9a03-b290f40319bd"
-            origin="re:CatalogElementLink platform:/resource/sysmodelLibrary_Super/sysmodelLibrary_Super.capella#595ec297-02e1-4609-9453-9841dcfcef98"
+            origin="re:CatalogElementLink ../sysmodelLibrary_Super/sysmodelLibrary_Super.capella#595ec297-02e1-4609-9453-9841dcfcef98"
             suffixed="true"/>
         <ownedLinks xsi:type="re:CatalogElementLink" id="1fc8226b-4c05-4333-bdac-a38136f18eaf"
             source="#c08ff02e-c772-4d67-8159-6d2b6c10ef0e" target="#da99e00e-a818-4b20-b14d-d46856415250"
-            origin="re:CatalogElementLink platform:/resource/sysmodelLibrary_Super/sysmodelLibrary_Super.capella#dc50dfd3-7a67-49c6-a4bf-2184596284ea"/>
+            origin="re:CatalogElementLink ../sysmodelLibrary_Super/sysmodelLibrary_Super.capella#dc50dfd3-7a67-49c6-a4bf-2184596284ea"/>
         <ownedLinks xsi:type="re:CatalogElementLink" id="cc715b39-f024-4caf-a9ed-c450f44f2d7c"
             source="#c08ff02e-c772-4d67-8159-6d2b6c10ef0e" target="#3f0bf52e-f49b-4b71-a67d-4d8aa9419e90"
-            origin="re:CatalogElementLink platform:/resource/sysmodelLibrary_Super/sysmodelLibrary_Super.capella#a4673fda-4112-4d7f-b752-b9ae20d1e922"/>
+            origin="re:CatalogElementLink ../sysmodelLibrary_Super/sysmodelLibrary_Super.capella#a4673fda-4112-4d7f-b752-b9ae20d1e922"/>
         <ownedLinks xsi:type="re:CatalogElementLink" id="a43a34c4-5562-412f-8616-7708c5fed24e"
             source="#c08ff02e-c772-4d67-8159-6d2b6c10ef0e" target="#f1a6d070-2acc-4f81-9ef6-bc958d2a2d12"
-            origin="re:CatalogElementLink platform:/resource/sysmodelLibrary_Super/sysmodelLibrary_Super.capella#12c1e9f4-43a2-49b5-b82c-c1f63e452033"/>
+            origin="re:CatalogElementLink ../sysmodelLibrary_Super/sysmodelLibrary_Super.capella#12c1e9f4-43a2-49b5-b82c-c1f63e452033"/>
         <ownedLinks xsi:type="re:CatalogElementLink" id="6747b3c7-5c16-4f75-8b55-21a0a6c86c4d"
             source="#c08ff02e-c772-4d67-8159-6d2b6c10ef0e" target="#699630f3-e80e-47d3-b9d7-239ec963a99d"
-            origin="re:CatalogElementLink platform:/resource/sysmodelLibrary_Super/sysmodelLibrary_Super.capella#be0f0617-8818-44b1-abcf-af478472b2b2"/>
+            origin="re:CatalogElementLink ../sysmodelLibrary_Super/sysmodelLibrary_Super.capella#be0f0617-8818-44b1-abcf-af478472b2b2"/>
         <ownedLinks xsi:type="re:CatalogElementLink" id="8259b381-5d2d-4d55-a1aa-8c40d2aba38b"
             source="#c08ff02e-c772-4d67-8159-6d2b6c10ef0e" target="#b6625d9b-37f4-43fb-aeec-a1c6af08c2e7"
-            origin="re:CatalogElementLink platform:/resource/sysmodelLibrary_Super/sysmodelLibrary_Super.capella#e3453c16-c5d3-4fef-9ff3-f1b03759142d"
+            origin="re:CatalogElementLink ../sysmodelLibrary_Super/sysmodelLibrary_Super.capella#e3453c16-c5d3-4fef-9ff3-f1b03759142d"
             suffixed="true"/>
         <ownedLinks xsi:type="re:CatalogElementLink" id="5a860ff7-cec4-4bc1-9e63-dcc6ada4bf4f"
             source="#c08ff02e-c772-4d67-8159-6d2b6c10ef0e" target="#62d784fd-de61-431c-b44a-10ec6c08c911"
-            origin="re:CatalogElementLink platform:/resource/sysmodelLibrary_Super/sysmodelLibrary_Super.capella#73c012c4-9df5-4962-bc92-f6ff4a664c11"/>
+            origin="re:CatalogElementLink ../sysmodelLibrary_Super/sysmodelLibrary_Super.capella#73c012c4-9df5-4962-bc92-f6ff4a664c11"/>
         <ownedLinks xsi:type="re:CatalogElementLink" id="4d6c6530-a9c4-47db-b7b9-0d68563e894c"
             source="#c08ff02e-c772-4d67-8159-6d2b6c10ef0e" target="#88f330e4-29c6-42e9-ab8b-6c4c55f7e45b"
-            origin="re:CatalogElementLink platform:/resource/sysmodelLibrary_Super/sysmodelLibrary_Super.capella#a31fdaa5-2562-454f-b36e-760fd7dbd540"/>
+            origin="re:CatalogElementLink ../sysmodelLibrary_Super/sysmodelLibrary_Super.capella#a31fdaa5-2562-454f-b36e-760fd7dbd540"/>
         <ownedLinks xsi:type="re:CatalogElementLink" id="8ebfa1d7-3db3-4ee4-a0cc-e4a4f780dedc"
             source="#c08ff02e-c772-4d67-8159-6d2b6c10ef0e" target="#980eed57-d80f-432a-abbc-4d13c1ed8844"
-            origin="re:CatalogElementLink platform:/resource/sysmodelLibrary_Super/sysmodelLibrary_Super.capella#21738d53-4188-44d9-9dec-537d25b95fc2"
+            origin="re:CatalogElementLink ../sysmodelLibrary_Super/sysmodelLibrary_Super.capella#21738d53-4188-44d9-9dec-537d25b95fc2"
             suffixed="true"/>
         <ownedLinks xsi:type="re:CatalogElementLink" id="625492f4-0fa0-4510-98a4-3b34c43773c0"
             source="#c08ff02e-c772-4d67-8159-6d2b6c10ef0e" target="#ba6096cf-7fec-41b8-98f5-f725e113938d"
-            origin="re:CatalogElementLink platform:/resource/sysmodelLibrary_Super/sysmodelLibrary_Super.capella#c05ce1cd-9570-4721-92e0-1e9cf501fb7a"/>
+            origin="re:CatalogElementLink ../sysmodelLibrary_Super/sysmodelLibrary_Super.capella#c05ce1cd-9570-4721-92e0-1e9cf501fb7a"/>
         <ownedLinks xsi:type="re:CatalogElementLink" id="dea9ea43-8174-4c7a-982a-76f943460c11"
             source="#c08ff02e-c772-4d67-8159-6d2b6c10ef0e" target="#aac5e6e3-7001-4285-96fc-042e247ac883"
-            origin="re:CatalogElementLink platform:/resource/sysmodelLibrary_Super/sysmodelLibrary_Super.capella#b546f3c1-746a-4995-85da-4d0e0d20f4f6"/>
+            origin="re:CatalogElementLink ../sysmodelLibrary_Super/sysmodelLibrary_Super.capella#b546f3c1-746a-4995-85da-4d0e0d20f4f6"/>
         <ownedLinks xsi:type="re:CatalogElementLink" id="c2ec3ec1-dd68-4353-b36e-9281f696e75d"
             source="#c08ff02e-c772-4d67-8159-6d2b6c10ef0e" target="#2cf879af-1e04-4120-acd6-8f9a10379d0d"
-            origin="re:CatalogElementLink platform:/resource/sysmodelLibrary_Super/sysmodelLibrary_Super.capella#b5e35da2-4cef-4ee2-aea2-d08c4cfab18b"/>
+            origin="re:CatalogElementLink ../sysmodelLibrary_Super/sysmodelLibrary_Super.capella#b5e35da2-4cef-4ee2-aea2-d08c4cfab18b"/>
         <ownedLinks xsi:type="re:CatalogElementLink" id="5a0330a9-7fc0-478c-ba26-afb738ab10b8"
             source="#c08ff02e-c772-4d67-8159-6d2b6c10ef0e" target="#e0e7ec0c-e03a-4d53-996f-b6ff4cee684e"
-            origin="re:CatalogElementLink platform:/resource/sysmodelLibrary_Super/sysmodelLibrary_Super.capella#9b1dd0ec-431d-46f6-96d5-7416554c5359"
+            origin="re:CatalogElementLink ../sysmodelLibrary_Super/sysmodelLibrary_Super.capella#9b1dd0ec-431d-46f6-96d5-7416554c5359"
             suffixed="true"/>
         <ownedLinks xsi:type="re:CatalogElementLink" id="31b4b1df-850f-4146-b9a2-745f10f36a1a"
             source="#c08ff02e-c772-4d67-8159-6d2b6c10ef0e" target="#7c6cbb1d-d6b7-4489-b9e7-10a3286eb501"
-            origin="re:CatalogElementLink platform:/resource/sysmodelLibrary_Super/sysmodelLibrary_Super.capella#67101c48-4dca-42f1-9291-bf5567b03e41"/>
+            origin="re:CatalogElementLink ../sysmodelLibrary_Super/sysmodelLibrary_Super.capella#67101c48-4dca-42f1-9291-bf5567b03e41"/>
         <ownedLinks xsi:type="re:CatalogElementLink" id="a27b81f7-dead-4859-ac24-e68c5f8f3322"
             source="#c08ff02e-c772-4d67-8159-6d2b6c10ef0e" target="#c6ba3e2d-3fce-41be-bba3-6b60efbf265a"
-            origin="re:CatalogElementLink platform:/resource/sysmodelLibrary_Super/sysmodelLibrary_Super.capella#a357e6c5-3ab9-43d2-8d22-94365a17602d"
+            origin="re:CatalogElementLink ../sysmodelLibrary_Super/sysmodelLibrary_Super.capella#a357e6c5-3ab9-43d2-8d22-94365a17602d"
             suffixed="true"/>
       </ownedElements>
       <ownedCompliancyDefinitionPkg xsi:type="re:CompliancyDefinitionPkg" id="66235a5b-5445-4adb-a188-b5c25b0c5a3e"
@@ -1363,7 +1363,7 @@
         <ownedClasses xsi:type="org.polarsys.capella.core.data.information:Class"
             id="660c12b0-165d-4eb0-a112-f5199ccbb0c7" name="MyClass">
           <ownedGeneralizations xsi:type="org.polarsys.capella.core.data.capellacore:Generalization"
-              id="38092940-a456-4160-b25e-d1d295856ce9" super="org.polarsys.capella.core.data.information:Class platform:/resource/sysmodelLibrary_Sub/sysmodelLibrary_Sub.capella#b5af3fbf-6e2e-49d7-93f3-5f32c3a55a0b"
+              id="38092940-a456-4160-b25e-d1d295856ce9" super="org.polarsys.capella.core.data.information:Class ../sysmodelLibrary_Sub/sysmodelLibrary_Sub.capella#b5af3fbf-6e2e-49d7-93f3-5f32c3a55a0b"
               sub="#660c12b0-165d-4eb0-a112-f5199ccbb0c7"/>
         </ownedClasses>
         <ownedDataTypes xsi:type="org.polarsys.capella.core.data.information.datatype:NumericType"
