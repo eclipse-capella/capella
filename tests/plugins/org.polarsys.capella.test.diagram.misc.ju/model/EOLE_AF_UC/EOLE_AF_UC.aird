@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:concern="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:description_3="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/5.0.0" xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/5.0.0" xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/5.0.0" xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/5.0.0" xmlns:org.polarsys.capella.core.data.epbs="http://www.polarsys.org/capella/core/epbs/5.0.0" xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/5.0.0" xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/5.0.0" xmlns:org.polarsys.capella.core.data.information.communication="http://www.polarsys.org/capella/core/information/communication/5.0.0" xmlns:org.polarsys.capella.core.data.interaction="http://www.polarsys.org/capella/core/interaction/5.0.0" xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/5.0.0" xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/5.0.0" xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/5.0.0" xmlns:sequence="http://www.eclipse.org/sirius/diagram/sequence/2.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:table="http://www.eclipse.org/sirius/table/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/concern http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0 http://www.eclipse.org/sirius/diagram/sequence/2.0.0#//description http://www.eclipse.org/sirius/table/description/1.1.0 http://www.eclipse.org/sirius/table/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.polarsys.org/capella/core/information/communication/5.0.0 http://www.polarsys.org/capella/core/information/5.0.0#//communication http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:concern="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:description_3="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/6.0.0" xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/6.0.0" xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/6.0.0" xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/6.0.0" xmlns:org.polarsys.capella.core.data.epbs="http://www.polarsys.org/capella/core/epbs/6.0.0" xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/6.0.0" xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/6.0.0" xmlns:org.polarsys.capella.core.data.information.communication="http://www.polarsys.org/capella/core/information/communication/6.0.0" xmlns:org.polarsys.capella.core.data.interaction="http://www.polarsys.org/capella/core/interaction/6.0.0" xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/6.0.0" xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/6.0.0" xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/6.0.0" xmlns:sequence="http://www.eclipse.org/sirius/diagram/sequence/2.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:table="http://www.eclipse.org/sirius/table/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/concern http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0 http://www.eclipse.org/sirius/diagram/sequence/2.0.0#//description http://www.eclipse.org/sirius/table/description/1.1.0 http://www.eclipse.org/sirius/table/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.polarsys.org/capella/core/information/communication/6.0.0 http://www.polarsys.org/capella/core/information/6.0.0#//communication http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
   <viewpoint:DAnalysis uid="_aTnXINK3Ed6YKeC37n_2sw" selectedViews="_aYUQ8NK3Ed6YKeC37n_2sw _aksgENK3Ed6YKeC37n_2sw _aku8UNK3Ed6YKeC37n_2sw _akxYkNK3Ed6YKeC37n_2sw _akymsNK3Ed6YKeC37n_2sw _ak0b4NK3Ed6YKeC37n_2sw _91uf4LCcEeKDGeY5N3uQgw" version="14.5.1.202106111100">
     <semanticResources>EOLE_AF_UC.capella</semanticResources>
     <semanticResources>EOLE_AF_UC.afm</semanticResources>
@@ -1747,7 +1747,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNode" uid="_Y7xOkIPqEeakXr_OCO8ayA" width="4" height="4" resizeKind="NSEW">
+      <ownedDiagramElements xmi:type="diagram:DNode" uid="_Y7xOkIPqEeakXr_OCO8ayA" width="5" height="5" resizeKind="NSEW">
         <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="EOLE_AF_UC.capella#90efd536-7676-4e59-a19a-ba7a334f0352"/>
         <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="EOLE_AF_UC.capella#90efd536-7676-4e59-a19a-ba7a334f0352"/>
         <ownedBorderedNodes xmi:type="diagram:DNode" uid="_Y7xOkYPqEeakXr_OCO8ayA" name="Meteorological  Measurements" outgoingEdges="_Y72uIIPqEeakXr_OCO8ayA" incomingEdges="_Y8kf0IPqEeakXr_OCO8ayA" width="1" height="1">
@@ -1782,7 +1782,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNode" uid="_Y7ycsIPqEeakXr_OCO8ayA" width="4" height="4" resizeKind="NSEW">
+      <ownedDiagramElements xmi:type="diagram:DNode" uid="_Y7ycsIPqEeakXr_OCO8ayA" width="5" height="5" resizeKind="NSEW">
         <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="EOLE_AF_UC.capella#df9c77d2-d3bc-4f3f-a268-d3fa9ac9624b"/>
         <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="EOLE_AF_UC.capella#df9c77d2-d3bc-4f3f-a268-d3fa9ac9624b"/>
         <ownedBorderedNodes xmi:type="diagram:DNode" uid="_Y7ycsYPqEeakXr_OCO8ayA" name="Captured Images" outgoingEdges="_Y72HE4PqEeakXr_OCO8ayA" incomingEdges="_Y8lt8IPqEeakXr_OCO8ayA" width="1" height="1">
@@ -1904,7 +1904,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNode" uid="_Y7zq0IPqEeakXr_OCO8ayA" width="4" height="4" resizeKind="NSEW">
+      <ownedDiagramElements xmi:type="diagram:DNode" uid="_Y7zq0IPqEeakXr_OCO8ayA" width="5" height="5" resizeKind="NSEW">
         <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="EOLE_AF_UC.capella#c390b71f-6f9f-4cd9-a6af-9886f4eaa86e"/>
         <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="EOLE_AF_UC.capella#c390b71f-6f9f-4cd9-a6af-9886f4eaa86e"/>
         <ownedBorderedNodes xmi:type="diagram:DNode" uid="_Y7zq0YPqEeakXr_OCO8ayA" name="Campaign Request" outgoingEdges="_Y72HEIPqEeakXr_OCO8ayA _Y72HFoPqEeakXr_OCO8ayA" incomingEdges="_Y8jRsIPqEeakXr_OCO8ayA" width="1" height="1">
@@ -2729,7 +2729,7 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="__yOo2rCcEeKDGeY5N3uQgw" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="77,137,20" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionDuplicateDiagram.svg">
+        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="__yOo2rCcEeKDGeY5N3uQgw" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="77,137,20" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Duplicate.png">
           <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']/@conditionnalStyles.0/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']"/>
@@ -3405,7 +3405,7 @@
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_33mJsCOyEeC1P5vFD4IuOQ" name="Actor 1" incomingEdges="_Y4iUYIPqEeakXr_OCO8ayA" width="7" height="7" resizeKind="NSEW">
       <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="EOLE_AF_UC.capella#a9b79af3-8456-4dd5-a887-06289707510c"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="EOLE_AF_UC.capella#a9b79af3-8456-4dd5-a887-06289707510c"/>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_8XdIA-mmEemp_oSm2KeDCQ" showIcon="false" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/svg/SystemActor.svg">
+      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_8XdIA-mmEemp_oSm2KeDCQ" showIcon="false" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/png/SystemActor.png">
         <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@nodeMappings[name='ActorNode2']/@conditionnalStyles.1/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@nodeMappings[name='ActorNode2']"/>
@@ -3673,7 +3673,7 @@
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_vf--hiOyEeC1P5vFD4IuOQ" name="Mission Control Operator" incomingEdges="_Y42dc4PqEeakXr_OCO8ayA" width="7" height="7" resizeKind="NSEW">
       <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="EOLE_AF_UC.capella#937ec7ea-9c83-4f47-b0de-2415b897a8ce"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="EOLE_AF_UC.capella#937ec7ea-9c83-4f47-b0de-2415b897a8ce"/>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_bWmWMOmmEemp_oSm2KeDCQ" showIcon="false" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/svg/SystemActor.svg">
+      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_bWmWMOmmEemp_oSm2KeDCQ" showIcon="false" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/png/SystemActor.png">
         <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@nodeMappings[name='ActorNode']/@conditionnalStyles.1/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@nodeMappings[name='ActorNode']"/>
@@ -3681,7 +3681,7 @@
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_vf--gCOyEeC1P5vFD4IuOQ" name="Scientific User" incomingEdges="_Y412YIPqEeakXr_OCO8ayA" width="7" height="7" resizeKind="NSEW">
       <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="EOLE_AF_UC.capella#a4c78b77-3bf6-4a13-a94b-a26e7ae59cde"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="EOLE_AF_UC.capella#a4c78b77-3bf6-4a13-a94b-a26e7ae59cde"/>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_bWmWM-mmEemp_oSm2KeDCQ" showIcon="false" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/svg/SystemActor.svg">
+      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_bWmWM-mmEemp_oSm2KeDCQ" showIcon="false" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/png/SystemActor.png">
         <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@nodeMappings[name='ActorNode']/@conditionnalStyles.1/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@nodeMappings[name='ActorNode']"/>
@@ -3689,7 +3689,7 @@
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_vf--gyOyEeC1P5vFD4IuOQ" name="Terrestrial Environment" incomingEdges="_Y42dcIPqEeakXr_OCO8ayA" width="7" height="7" resizeKind="NSEW">
       <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="EOLE_AF_UC.capella#441721cd-83b0-44b3-be0f-bb3d33eee506"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="EOLE_AF_UC.capella#441721cd-83b0-44b3-be0f-bb3d33eee506"/>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_bWmWNummEemp_oSm2KeDCQ" showIcon="false" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/svg/SystemActor.svg">
+      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_bWmWNummEemp_oSm2KeDCQ" showIcon="false" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/png/SystemActor.png">
         <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@nodeMappings[name='ActorNode']/@conditionnalStyles.1/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@nodeMappings[name='ActorNode']"/>
@@ -3919,7 +3919,7 @@
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_GdCJGCOzEeC1P5vFD4IuOQ" name="Mission Control Operator" incomingEdges="_Y5KmgYPqEeakXr_OCO8ayA" width="7" height="7" resizeKind="NSEW">
       <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="EOLE_AF_UC.capella#937ec7ea-9c83-4f47-b0de-2415b897a8ce"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="EOLE_AF_UC.capella#937ec7ea-9c83-4f47-b0de-2415b897a8ce"/>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_8damFemmEemp_oSm2KeDCQ" showIcon="false" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/svg/SystemActor.svg">
+      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_8damFemmEemp_oSm2KeDCQ" showIcon="false" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/png/SystemActor.png">
         <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@nodeMappings[name='ActorNode3']/@conditionnalStyles.1/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@nodeMappings[name='ActorNode3']"/>
@@ -3927,7 +3927,7 @@
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_GdCJFSOzEeC1P5vFD4IuOQ" name="Terrestrial Environment" incomingEdges="_Y5J_cIPqEeakXr_OCO8ayA" width="7" height="7" resizeKind="NSEW">
       <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="EOLE_AF_UC.capella#441721cd-83b0-44b3-be0f-bb3d33eee506"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="EOLE_AF_UC.capella#441721cd-83b0-44b3-be0f-bb3d33eee506"/>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_8dkXEummEemp_oSm2KeDCQ" showIcon="false" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/svg/SystemActor.svg">
+      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_8dkXEummEemp_oSm2KeDCQ" showIcon="false" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/png/SystemActor.png">
         <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@nodeMappings[name='ActorNode3']/@conditionnalStyles.1/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@nodeMappings[name='ActorNode3']"/>
@@ -4106,7 +4106,7 @@
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_RTII4COzEeC1P5vFD4IuOQ" name="Actor 1" width="7" height="7" resizeKind="NSEW">
       <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="EOLE_AF_UC.capella#a9b79af3-8456-4dd5-a887-06289707510c"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="EOLE_AF_UC.capella#a9b79af3-8456-4dd5-a887-06289707510c"/>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_8iCnZ-mmEemp_oSm2KeDCQ" showIcon="false" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/svg/SystemActor.svg">
+      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_8iCnZ-mmEemp_oSm2KeDCQ" showIcon="false" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/png/SystemActor.png">
         <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@nodeMappings[name='ActorNode4']/@conditionnalStyles.1/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@nodeMappings[name='ActorNode4']"/>
@@ -4114,7 +4114,7 @@
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_lpAc4COzEeC1P5vFD4IuOQ" name="Actor 2" width="7" height="7" resizeKind="NSEW">
       <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="EOLE_AF_UC.capella#badef4a3-c403-47bd-8b63-a88635c3d3ec"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="EOLE_AF_UC.capella#badef4a3-c403-47bd-8b63-a88635c3d3ec"/>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_8iCnaummEemp_oSm2KeDCQ" showIcon="false" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/svg/SystemActor.svg">
+      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_8iCnaummEemp_oSm2KeDCQ" showIcon="false" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/png/SystemActor.png">
         <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@nodeMappings[name='ActorNode4']/@conditionnalStyles.1/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@nodeMappings[name='ActorNode4']"/>
@@ -4697,7 +4697,7 @@
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_Y6QysIPqEeakXr_OCO8ayA" name="Scientific User" incomingEdges="_Y6SA0IPqEeakXr_OCO8ayA" width="7" height="7" resizeKind="NSEW">
       <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="EOLE_AF_UC.capella#135d189f-d848-4a9d-ad32-45286b16ef3d"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="EOLE_AF_UC.capella#135d189f-d848-4a9d-ad32-45286b16ef3d"/>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_8q1XBemmEemp_oSm2KeDCQ" showIcon="false" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/svg/SystemActor.svg">
+      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_8q1XBemmEemp_oSm2KeDCQ" showIcon="false" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/png/SystemActor.png">
         <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@nodeMappings[name='SC_System']/@conditionnalStyles.1/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@nodeMappings[name='SC_System']"/>
@@ -4705,7 +4705,7 @@
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_Y6QysoPqEeakXr_OCO8ayA" name="Mission Control Operator" incomingEdges="_Y6SA04PqEeakXr_OCO8ayA" width="7" height="7" resizeKind="NSEW">
       <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="EOLE_AF_UC.capella#ee300cbe-5b53-4b70-a995-81fc90741de9"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="EOLE_AF_UC.capella#ee300cbe-5b53-4b70-a995-81fc90741de9"/>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_8q1XCOmmEemp_oSm2KeDCQ" showIcon="false" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/svg/SystemActor.svg">
+      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_8q1XCOmmEemp_oSm2KeDCQ" showIcon="false" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/png/SystemActor.png">
         <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@nodeMappings[name='SC_System']/@conditionnalStyles.1/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@nodeMappings[name='SC_System']"/>
@@ -4713,7 +4713,7 @@
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_Y6QytIPqEeakXr_OCO8ayA" name="Terrestrial Environment" incomingEdges="_Y6Sn4IPqEeakXr_OCO8ayA" width="7" height="7" resizeKind="NSEW">
       <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="EOLE_AF_UC.capella#9ce83fdd-6ca7-4288-a8e5-fd0e82977695"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="EOLE_AF_UC.capella#9ce83fdd-6ca7-4288-a8e5-fd0e82977695"/>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_8q1XC-mmEemp_oSm2KeDCQ" showIcon="false" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/svg/SystemActor.svg">
+      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_8q1XC-mmEemp_oSm2KeDCQ" showIcon="false" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/png/SystemActor.png">
         <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@nodeMappings[name='SC_System']/@conditionnalStyles.1/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@nodeMappings[name='SC_System']"/>
@@ -5419,7 +5419,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']/@borderedNodeMappings[name='SDFB_Pin']"/>
         </ownedBorderedNodes>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="__3aq-rCcEeKDGeY5N3uQgw" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="77,137,20" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionDuplicateDiagram.svg">
+        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="__3aq-rCcEeKDGeY5N3uQgw" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="77,137,20" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Duplicate.png">
           <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']/@conditionnalStyles.0/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']"/>
@@ -5454,7 +5454,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']/@borderedNodeMappings[name='SDFB_Pin']"/>
         </ownedBorderedNodes>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="__3aq_bCcEeKDGeY5N3uQgw" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="77,137,20" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionDuplicateDiagram.svg">
+        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="__3aq_bCcEeKDGeY5N3uQgw" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="77,137,20" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Duplicate.png">
           <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']/@conditionnalStyles.0/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']"/>
@@ -5777,7 +5777,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']/@borderedNodeMappings[name='SDFB_Pin']"/>
       </ownedBorderedNodes>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="__4AgsLCcEeKDGeY5N3uQgw" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="77,137,20" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionDuplicateDiagram.svg">
+      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="__4AgsLCcEeKDGeY5N3uQgw" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="77,137,20" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Duplicate.png">
         <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']/@conditionnalStyles.0/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']"/>
@@ -5812,7 +5812,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']/@borderedNodeMappings[name='SDFB_Pin']"/>
       </ownedBorderedNodes>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="__4Ags7CcEeKDGeY5N3uQgw" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="77,137,20" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionDuplicateDiagram.svg">
+      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="__4Ags7CcEeKDGeY5N3uQgw" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="77,137,20" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Duplicate.png">
         <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']/@conditionnalStyles.0/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']"/>
@@ -8473,7 +8473,7 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="__fG4gLCcEeKDGeY5N3uQgw" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="77,137,20" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionDuplicateDiagram.svg">
+        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="__fG4gLCcEeKDGeY5N3uQgw" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="77,137,20" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Duplicate.png">
           <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='LDFB_Function']/@conditionnalStyles.0/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='LDFB_Function']"/>
@@ -10551,7 +10551,7 @@
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']"/>
           </ownedDiagramElements>
-          <ownedDiagramElements xmi:type="diagram:DNode" uid="_XYGpSAiEEeKu5c4Qw6yE1g" width="4" height="4" resizeKind="NSEW">
+          <ownedDiagramElements xmi:type="diagram:DNode" uid="_XYGpSAiEEeKu5c4Qw6yE1g" width="5" height="5" resizeKind="NSEW">
             <target xmi:type="org.polarsys.capella.core.data.la:LogicalFunction" href="EOLE_AF_UC.capella#82aa1bc5-529b-4891-83e7-456b907bd85a"/>
             <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalFunction" href="EOLE_AF_UC.capella#82aa1bc5-529b-4891-83e7-456b907bd85a"/>
             <ownedBorderedNodes xmi:type="diagram:DNode" uid="_YwUzlIPqEeakXr_OCO8ayA" name="Meteorological Measurements" outgoingEdges="_Yxf4QoPqEeakXr_OCO8ayA" incomingEdges="_YwwRY4PqEeakXr_OCO8ayA" width="1" height="1">
@@ -10871,7 +10871,7 @@
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']"/>
           </ownedDiagramElements>
         </ownedDiagramElements>
-        <ownedDiagramElements xmi:type="diagram:DNode" uid="_XYGpIAiEEeKu5c4Qw6yE1g" tooltipText="" width="4" height="4" resizeKind="NSEW">
+        <ownedDiagramElements xmi:type="diagram:DNode" uid="_XYGpIAiEEeKu5c4Qw6yE1g" tooltipText="" width="5" height="5" resizeKind="NSEW">
           <target xmi:type="org.polarsys.capella.core.data.la:LogicalFunction" href="EOLE_AF_UC.capella#f0382c50-d380-4b4b-a615-8d036e2b1b87"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalFunction" href="EOLE_AF_UC.capella#f0382c50-d380-4b4b-a615-8d036e2b1b87"/>
           <ownedBorderedNodes xmi:type="diagram:DNode" uid="_YwjdEIPqEeakXr_OCO8ayA" name="Capture Trigger" outgoingEdges="_YxhGYIPqEeakXr_OCO8ayA" incomingEdges="_YwrY4IPqEeakXr_OCO8ayA" width="1" height="1">
@@ -12068,7 +12068,7 @@
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_YxyzMIPqEeakXr_OCO8ayA" name="Terrestrial Environment" outgoingEdges="_Yx-ZZYPqEeakXr_OCO8ayA" incomingEdges="_Yx9yVoPqEeakXr_OCO8ayA" width="4" height="4" resizeKind="NSEW">
       <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="EOLE_AF_UC.capella#c2c93443-c942-43a6-9e76-10f4f00150cd"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="EOLE_AF_UC.capella#c2c93443-c942-43a6-9e76-10f4f00150cd"/>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_2BFRRemlEemp_oSm2KeDCQ" showIcon="false" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/svg/LogicalActor.svg">
+      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_2BFRRemlEemp_oSm2KeDCQ" showIcon="false" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/png/LogicalActor.png">
         <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Capability%20Realization%20Refinement']/@defaultLayer/@nodeMappings[name='CRI_Actors']/@conditionnalStyles.1/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Capability%20Realization%20Refinement']/@defaultLayer/@nodeMappings[name='CRI_Actors']"/>
@@ -12076,7 +12076,7 @@
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_YxyzMoPqEeakXr_OCO8ayA" name="Mission Control Operator" outgoingEdges="_Yx_AcoPqEeakXr_OCO8ayA" incomingEdges="_Yx-ZYoPqEeakXr_OCO8ayA" width="4" height="4" resizeKind="NSEW">
       <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="EOLE_AF_UC.capella#e3612b0c-1d70-43bb-b541-cc2acfc3f7b3"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="EOLE_AF_UC.capella#e3612b0c-1d70-43bb-b541-cc2acfc3f7b3"/>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_2BFRSOmlEemp_oSm2KeDCQ" showIcon="false" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/svg/LogicalActor.svg">
+      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_2BFRSOmlEemp_oSm2KeDCQ" showIcon="false" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/png/LogicalActor.png">
         <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Capability%20Realization%20Refinement']/@defaultLayer/@nodeMappings[name='CRI_Actors']/@conditionnalStyles.1/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Capability%20Realization%20Refinement']/@defaultLayer/@nodeMappings[name='CRI_Actors']"/>
@@ -12084,7 +12084,7 @@
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_YxyzNIPqEeakXr_OCO8ayA" name="Terrestrial Environment" incomingEdges="_Yx9yUIPqEeakXr_OCO8ayA _Yx-ZZYPqEeakXr_OCO8ayA" width="4" height="4" resizeKind="NSEW">
       <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="EOLE_AF_UC.capella#441721cd-83b0-44b3-be0f-bb3d33eee506"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="EOLE_AF_UC.capella#441721cd-83b0-44b3-be0f-bb3d33eee506"/>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_2BPCQemlEemp_oSm2KeDCQ" showIcon="false" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/svg/LogicalActor.svg">
+      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_2BPCQemlEemp_oSm2KeDCQ" showIcon="false" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/png/LogicalActor.png">
         <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Capability%20Realization%20Refinement']/@defaultLayer/@nodeMappings[name='CRI_Actors']/@conditionnalStyles.1/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Capability%20Realization%20Refinement']/@defaultLayer/@nodeMappings[name='CRI_Actors']"/>
@@ -12092,7 +12092,7 @@
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_YxzaQIPqEeakXr_OCO8ayA" name="Mission Control Operator" incomingEdges="_Yx9yU4PqEeakXr_OCO8ayA _Yx_AcoPqEeakXr_OCO8ayA" width="4" height="4" resizeKind="NSEW">
       <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="EOLE_AF_UC.capella#937ec7ea-9c83-4f47-b0de-2415b897a8ce"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="EOLE_AF_UC.capella#937ec7ea-9c83-4f47-b0de-2415b897a8ce"/>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_2BPCROmlEemp_oSm2KeDCQ" showIcon="false" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/svg/LogicalActor.svg">
+      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_2BPCROmlEemp_oSm2KeDCQ" showIcon="false" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/png/LogicalActor.png">
         <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Capability%20Realization%20Refinement']/@defaultLayer/@nodeMappings[name='CRI_Actors']/@conditionnalStyles.1/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Capability%20Realization%20Refinement']/@defaultLayer/@nodeMappings[name='CRI_Actors']"/>
@@ -12131,7 +12131,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" uid="_Yx2dkIPqEeakXr_OCO8ayA" name="Capture Meteorological Data" outgoingEdges="_Yx6H8IPqEeakXr_OCO8ayA _Yx79IIPqEeakXr_OCO8ayA _Yx79I4PqEeakXr_OCO8ayA _Yx8kMIPqEeakXr_OCO8ayA" width="4" height="4" resizeKind="NSEW">
         <target xmi:type="org.polarsys.capella.core.data.la:CapabilityRealization" href="EOLE_AF_UC.capella#245f680e-8465-4481-938a-fd3d53816267"/>
         <semanticElements xmi:type="org.polarsys.capella.core.data.la:CapabilityRealization" href="EOLE_AF_UC.capella#245f680e-8465-4481-938a-fd3d53816267"/>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_Yx3EoIPqEeakXr_OCO8ayA" showIcon="false" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/CapabilityRealization.svg">
+        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_Yx3EoIPqEeakXr_OCO8ayA" showIcon="false" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/CapabilityRealization.png">
           <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Capability%20Realization%20Refinement']/@defaultLayer/@containerMappings[name='CRI_SystemComponent_top']/@subNodeMappings[name='CRI_CapabilityRealization_int']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Capability%20Realization%20Refinement']/@defaultLayer/@containerMappings[name='CRI_SystemComponent_top']/@subNodeMappings[name='CRI_CapabilityRealization_int']"/>
@@ -12171,7 +12171,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" uid="_Yx5g4IPqEeakXr_OCO8ayA" name="Capture Meteorological Data" outgoingEdges="_Yx6H84PqEeakXr_OCO8ayA _Yx79JoPqEeakXr_OCO8ayA _Yx8kM4PqEeakXr_OCO8ayA" width="4" height="4" resizeKind="NSEW">
         <target xmi:type="org.polarsys.capella.core.data.la:CapabilityRealization" href="EOLE_AF_UC.capella#ab738218-582c-4955-8f4c-3ce408a58447"/>
         <semanticElements xmi:type="org.polarsys.capella.core.data.la:CapabilityRealization" href="EOLE_AF_UC.capella#ab738218-582c-4955-8f4c-3ce408a58447"/>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_Yx5g4YPqEeakXr_OCO8ayA" showIcon="false" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/CapabilityRealization.svg">
+        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_Yx5g4YPqEeakXr_OCO8ayA" showIcon="false" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/CapabilityRealization.png">
           <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Capability%20Realization%20Refinement']/@defaultLayer/@containerMappings[name='CRI_SystemComponent_top']/@subNodeMappings[name='CRI_CapabilityRealization_int']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Capability%20Realization%20Refinement']/@defaultLayer/@containerMappings[name='CRI_SystemComponent_top']/@subNodeMappings[name='CRI_CapabilityRealization_int']"/>
@@ -12684,7 +12684,7 @@
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_YLvf0IPqEeakXr_OCO8ayA" name="Initial" outgoingEdges="_YMIhYIPqEeakXr_OCO8ayA" width="2" height="2">
       <target xmi:type="org.polarsys.capella.core.data.capellacommon:InitialPseudoState" href="EOLE_AF_UC.capella#bcc0ea20-becc-4392-98c2-b3b51044f0ed"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.capellacommon:InitialPseudoState" href="EOLE_AF_UC.capella#bcc0ea20-becc-4392-98c2-b3b51044f0ed"/>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_YLx8EIPqEeakXr_OCO8ayA" showIcon="false" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/initialState.svg">
+      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_YLx8EIPqEeakXr_OCO8ayA" showIcon="false" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/initialState.png">
         <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@nodeMappings[name='SM_ModeState']/@conditionnalStyles.7/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@nodeMappings[name='SM_ModeState']"/>
@@ -12732,7 +12732,7 @@
         <graphicalFilters xmi:type="diagram:AppliedCompositeFilters" uid="_YXmKgIPqEeakXr_OCO8ayA">
           <compositeFilterDescriptions xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@filters[name='hide.internal.states.filter']"/>
         </graphicalFilters>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_YL_XcYPqEeakXr_OCO8ayA" showIcon="false" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/initialState.svg">
+        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_YL_XcYPqEeakXr_OCO8ayA" showIcon="false" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/initialState.png">
           <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@containerMappings[name='SM_ModeState_Container']/@subNodeMappings[name='SM_InnerModeState']/@conditionnalStyles.7/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@containerMappings[name='SM_ModeState_Container']/@subNodeMappings[name='SM_InnerModeState']"/>
@@ -13078,7 +13078,7 @@
           <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="EOLE_AF_UC.capella#86419fba-c54d-48fb-9b28-ae7a8bd3b9ff"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="EOLE_AF_UC.capella#75e17135-2599-4f82-a460-b588faa5e148"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="EOLE_AF_UC.capella#9df31ee0-0d2a-4797-a3f8-2b826d7dc4a9"/>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_YMqF0IPqEeakXr_OCO8ayA" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.svg">
+          <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_YMqF0IPqEeakXr_OCO8ayA" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']/@borderedNodeMappings[name='default%20execution%20DF']/@borderedNodeMappings[name='endOfLifeDF']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_2:EndOfLifeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']/@borderedNodeMappings[name='default%20execution%20DF']/@borderedNodeMappings[name='endOfLifeDF']"/>
@@ -13118,7 +13118,7 @@
           <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="EOLE_AF_UC.capella#c5ff70d1-6568-4621-b6e7-0cd61a2b9f7b"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="EOLE_AF_UC.capella#37c04aee-9096-411e-837f-68af55b4d4c0"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="EOLE_AF_UC.capella#ee300cbe-5b53-4b70-a995-81fc90741de9"/>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_YMr7AYPqEeakXr_OCO8ayA" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.svg">
+          <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_YMr7AYPqEeakXr_OCO8ayA" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']/@borderedNodeMappings[name='default%20execution%20DF']/@borderedNodeMappings[name='endOfLifeDF']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_2:EndOfLifeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']/@borderedNodeMappings[name='default%20execution%20DF']/@borderedNodeMappings[name='endOfLifeDF']"/>
@@ -13149,7 +13149,7 @@
           <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="EOLE_AF_UC.capella#6ecaec8f-0aa0-4f67-8c85-5b324f60f875"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="EOLE_AF_UC.capella#95455b4f-5b79-4767-9b70-e9bebe13e97a"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="EOLE_AF_UC.capella#9ce83fdd-6ca7-4288-a8e5-fd0e82977695"/>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_YMtJIYPqEeakXr_OCO8ayA" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.svg">
+          <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_YMtJIYPqEeakXr_OCO8ayA" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']/@borderedNodeMappings[name='default%20execution%20DF']/@borderedNodeMappings[name='endOfLifeDF']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_2:EndOfLifeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']/@borderedNodeMappings[name='default%20execution%20DF']/@borderedNodeMappings[name='endOfLifeDF']"/>
@@ -13189,7 +13189,7 @@
           <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="EOLE_AF_UC.capella#80f73972-d24c-440e-8f4e-dd7b78977dec"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="EOLE_AF_UC.capella#3e02e735-5a1f-4c1a-896d-15c38e0ca306"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="EOLE_AF_UC.capella#135d189f-d848-4a9d-ad32-45286b16ef3d"/>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_YMu-UYPqEeakXr_OCO8ayA" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.svg">
+          <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_YMu-UYPqEeakXr_OCO8ayA" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']/@borderedNodeMappings[name='default%20execution%20DF']/@borderedNodeMappings[name='endOfLifeDF']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_2:EndOfLifeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']/@borderedNodeMappings[name='default%20execution%20DF']/@borderedNodeMappings[name='endOfLifeDF']"/>
@@ -13367,7 +13367,7 @@
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_YNBSMIPqEeakXr_OCO8ayA" name="Init" outgoingEdges="_YNHY0IPqEeakXr_OCO8ayA" width="2" height="2">
       <target xmi:type="org.polarsys.capella.core.data.capellacommon:InitialPseudoState" href="EOLE_AF_UC.capella#57062351-4da2-4df5-9a8b-3eb4cd6757c7"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.capellacommon:InitialPseudoState" href="EOLE_AF_UC.capella#57062351-4da2-4df5-9a8b-3eb4cd6757c7"/>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_YNB5QIPqEeakXr_OCO8ayA" showIcon="false" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/initialState.svg">
+      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_YNB5QIPqEeakXr_OCO8ayA" showIcon="false" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/initialState.png">
         <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@nodeMappings[name='SM_ModeState']/@conditionnalStyles.7/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@nodeMappings[name='SM_ModeState']"/>
@@ -14959,7 +14959,7 @@
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_kIplvBjkEemrI6vzXWKK3A" name="CampaignController" incomingEdges="_WL8C8BtEEemmR8aBMMRvsQ" width="7" height="7" resizeKind="NSEW">
       <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="EOLE_AF_UC.capella#a1fed974-5a2c-47bc-9d7a-922dc1508176"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="EOLE_AF_UC.capella#a1fed974-5a2c-47bc-9d7a-922dc1508176"/>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_uGMB1emmEemp_oSm2KeDCQ" showIcon="false" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/svg/LogicalComponent.svg">
+      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_uGMB1emmEemp_oSm2KeDCQ" showIcon="false" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/png/LogicalComponent.png">
         <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@nodeMappings[name='CCRI%20Component']/@conditionnalStyles.2/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@nodeMappings[name='CCRI%20Component']"/>
@@ -14967,7 +14967,7 @@
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_kIpltRjkEemrI6vzXWKK3A" name="Mission Control Operator" incomingEdges="_HNxOjSMbEemvQe5z795urQ" width="7" height="7" resizeKind="NSEW">
       <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="EOLE_AF_UC.capella#e3612b0c-1d70-43bb-b541-cc2acfc3f7b3"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="EOLE_AF_UC.capella#e3612b0c-1d70-43bb-b541-cc2acfc3f7b3"/>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_uGMB2OmmEemp_oSm2KeDCQ" showIcon="false" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/svg/LogicalActor.svg">
+      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_uGMB2OmmEemp_oSm2KeDCQ" showIcon="false" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/png/LogicalActor.png">
         <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@nodeMappings[name='CCRI%20Component']/@conditionnalStyles.1/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@nodeMappings[name='CCRI%20Component']"/>
@@ -14975,7 +14975,7 @@
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_kIf0shjkEemrI6vzXWKK3A" name="Terrestrial Environment" incomingEdges="_HNxOiCMbEemvQe5z795urQ" width="7" height="7" resizeKind="NSEW">
       <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="EOLE_AF_UC.capella#c2c93443-c942-43a6-9e76-10f4f00150cd"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="EOLE_AF_UC.capella#c2c93443-c942-43a6-9e76-10f4f00150cd"/>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_uGMB2-mmEemp_oSm2KeDCQ" showIcon="false" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/svg/LogicalActor.svg">
+      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_uGMB2-mmEemp_oSm2KeDCQ" showIcon="false" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/png/LogicalActor.png">
         <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@nodeMappings[name='CCRI%20Component']/@conditionnalStyles.1/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@nodeMappings[name='CCRI%20Component']"/>
@@ -14983,7 +14983,7 @@
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_kIplwxjkEemrI6vzXWKK3A" name="Acquisition" incomingEdges="_WMFz9BtEEemmR8aBMMRvsQ" width="7" height="7" resizeKind="NSEW">
       <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="EOLE_AF_UC.capella#8d2cb280-9ba8-4e12-bbe7-7c66f263d1e5"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="EOLE_AF_UC.capella#8d2cb280-9ba8-4e12-bbe7-7c66f263d1e5"/>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_uGVLwemmEemp_oSm2KeDCQ" showIcon="false" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/svg/LogicalComponent.svg">
+      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_uGVLwemmEemp_oSm2KeDCQ" showIcon="false" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/png/LogicalComponent.png">
         <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@nodeMappings[name='CCRI%20Component']/@conditionnalStyles.2/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@nodeMappings[name='CCRI%20Component']"/>
@@ -15447,11 +15447,11 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_AbstractFunction']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DNode" uid="_YTyBgYPqEeakXr_OCO8ayA" outgoingEdges="_YT-10IPqEeakXr_OCO8ayA" incomingEdges="_YT-OwIPqEeakXr_OCO8ayA" width="4" height="4" resizeKind="NSEW">
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_YTyBgYPqEeakXr_OCO8ayA" outgoingEdges="_YT-10IPqEeakXr_OCO8ayA" incomingEdges="_YT-OwIPqEeakXr_OCO8ayA" width="5" height="5" resizeKind="NSEW">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementFunction" href="EOLE_AF_UC.capella#a80589d8-93de-46c7-b245-19d27e6bf639"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementFunction" href="EOLE_AF_UC.capella#a80589d8-93de-46c7-b245-19d27e6bf639"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="EOLE_AF_UC.capella#c390b71f-6f9f-4cd9-a6af-9886f4eaa86e"/>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_YTyokIPqEeakXr_OCO8ayA" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="77,137,20" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionDuplicateDiagram.svg">
+      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_YTyokIPqEeakXr_OCO8ayA" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="77,137,20" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Duplicate.png">
         <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_AbstractFunction']/@conditionnalStyles.2/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_AbstractFunction']"/>
@@ -15492,11 +15492,11 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_AbstractFunction']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DNode" uid="_YT1r4IPqEeakXr_OCO8ayA" outgoingEdges="_YT_c4oPqEeakXr_OCO8ayA" incomingEdges="_YT-104PqEeakXr_OCO8ayA" width="4" height="4" resizeKind="NSEW">
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_YT1r4IPqEeakXr_OCO8ayA" outgoingEdges="_YT_c4oPqEeakXr_OCO8ayA" incomingEdges="_YT-104PqEeakXr_OCO8ayA" width="5" height="5" resizeKind="NSEW">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementFunction" href="EOLE_AF_UC.capella#b3eb8c92-cd56-4dc5-9133-350256d1b4f5"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementFunction" href="EOLE_AF_UC.capella#b3eb8c92-cd56-4dc5-9133-350256d1b4f5"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="EOLE_AF_UC.capella#90efd536-7676-4e59-a19a-ba7a334f0352"/>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_YT2S8IPqEeakXr_OCO8ayA" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="77,137,20" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionDuplicateDiagram.svg">
+      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_YT2S8IPqEeakXr_OCO8ayA" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="77,137,20" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Duplicate.png">
         <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_AbstractFunction']/@conditionnalStyles.2/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_AbstractFunction']"/>
@@ -16724,7 +16724,7 @@
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_YWiakIPqEeakXr_OCO8ayA" name="Initial" outgoingEdges="_YWvO5YPqEeakXr_OCO8ayA" width="2" height="2">
       <target xmi:type="org.polarsys.capella.core.data.capellacommon:InitialPseudoState" href="EOLE_AF_UC.capella#bcc0ea20-becc-4392-98c2-b3b51044f0ed"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.capellacommon:InitialPseudoState" href="EOLE_AF_UC.capella#bcc0ea20-becc-4392-98c2-b3b51044f0ed"/>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_YWjBoIPqEeakXr_OCO8ayA" showIcon="false" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/initialState.svg">
+      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_YWjBoIPqEeakXr_OCO8ayA" showIcon="false" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/initialState.png">
         <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@nodeMappings[name='MSM_ModeState']/@conditionnalStyles.7/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@nodeMappings[name='MSM_ModeState']"/>
@@ -16794,7 +16794,7 @@
         <ownedDiagramElements xmi:type="diagram:DNode" uid="_YWq9cIPqEeakXr_OCO8ayA" name="Init" outgoingEdges="_YWtZsIPqEeakXr_OCO8ayA" width="2" height="2">
           <target xmi:type="org.polarsys.capella.core.data.capellacommon:InitialPseudoState" href="EOLE_AF_UC.capella#57062351-4da2-4df5-9a8b-3eb4cd6757c7"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.capellacommon:InitialPseudoState" href="EOLE_AF_UC.capella#57062351-4da2-4df5-9a8b-3eb4cd6757c7"/>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_YWrkgIPqEeakXr_OCO8ayA" showIcon="false" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/initialState.svg">
+          <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_YWrkgIPqEeakXr_OCO8ayA" showIcon="false" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/initialState.png">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@nodeMappings[name='MSM_ModeState']/@conditionnalStyles.7/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@nodeMappings[name='MSM_ModeState']"/>
@@ -18435,7 +18435,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='PDFB_Function']/@borderedNodeMappings[name='PDFB_Pin']"/>
         </ownedBorderedNodes>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_--zA5bCcEeKDGeY5N3uQgw" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="77,137,20" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionDuplicateDiagram.svg">
+        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_--zA5bCcEeKDGeY5N3uQgw" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="77,137,20" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Duplicate.png">
           <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='PDFB_Function']/@conditionnalStyles.0/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='PDFB_Function']"/>
@@ -18757,7 +18757,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='PDFB_Function']/@borderedNodeMappings[name='PDFB_Pin']"/>
       </ownedBorderedNodes>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_--zAyrCcEeKDGeY5N3uQgw" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="77,137,20" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionDuplicateDiagram.svg">
+      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_--zAyrCcEeKDGeY5N3uQgw" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="77,137,20" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Duplicate.png">
         <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='PDFB_Function']/@conditionnalStyles.0/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='PDFB_Function']"/>
@@ -22309,7 +22309,7 @@
             <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Deployment']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Deployment']"/>
-          <ownedDiagramElements xmi:type="diagram:DNode" uid="_XomjXAiEEeKu5c4Qw6yE1g" width="4" height="4" resizeKind="NSEW">
+          <ownedDiagramElements xmi:type="diagram:DNode" uid="_XomjXAiEEeKu5c4Qw6yE1g" width="5" height="5" resizeKind="NSEW">
             <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalFunction" href="EOLE_AF_UC.capella#251eee00-ad0e-4d13-9eec-a46b52df3dd9"/>
             <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalFunction" href="EOLE_AF_UC.capella#251eee00-ad0e-4d13-9eec-a46b52df3dd9"/>
             <ownedBorderedNodes xmi:type="diagram:DNode" uid="_YgwtkYPqEeakXr_OCO8ayA" name="Capture Trigger" outgoingEdges="_YiRJcIPqEeakXr_OCO8ayA" incomingEdges="_Yh2SsIPqEeakXr_OCO8ayA" width="1" height="1">
@@ -22362,7 +22362,7 @@
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_PhysicalFunction']"/>
           </ownedDiagramElements>
-          <ownedDiagramElements xmi:type="diagram:DNode" uid="_XomjQAiEEeKu5c4Qw6yE1g" width="4" height="4" resizeKind="NSEW">
+          <ownedDiagramElements xmi:type="diagram:DNode" uid="_XomjQAiEEeKu5c4Qw6yE1g" width="5" height="5" resizeKind="NSEW">
             <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalFunction" href="EOLE_AF_UC.capella#e2b51939-1b56-4018-b795-206d2005ab41"/>
             <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalFunction" href="EOLE_AF_UC.capella#e2b51939-1b56-4018-b795-206d2005ab41"/>
             <ownedBorderedNodes xmi:type="diagram:DNode" uid="_YgvfcIPqEeakXr_OCO8ayA" name="Meteorological Measurements" outgoingEdges="_YiSXkIPqEeakXr_OCO8ayA" incomingEdges="_Yh7yQIPqEeakXr_OCO8ayA" width="1" height="1">
@@ -25571,7 +25571,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='PDFB_Function']/@borderedNodeMappings[name='PDFB_Pin']"/>
       </ownedBorderedNodes>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="__J6EmrCcEeKDGeY5N3uQgw" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="77,137,20" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionDuplicateDiagram.svg">
+      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="__J6EmrCcEeKDGeY5N3uQgw" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="77,137,20" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Duplicate.png">
         <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='PDFB_Function']/@conditionnalStyles.0/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='PDFB_Function']"/>
@@ -28752,7 +28752,7 @@
           <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="EOLE_AF_UC.capella#bd480102-cbc2-41ac-8738-21764e28fe46"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="EOLE_AF_UC.capella#c84825fa-923f-4c7f-a2a0-f7569b8918ac"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.oa:Entity" href="EOLE_AF_UC.capella#6419b67d-dcbd-41bb-9278-4e08df6bb3eb"/>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_ZDUBAYPqEeakXr_OCO8ayA" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.svg">
+          <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_ZDUBAYPqEeakXr_OCO8ayA" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20OA']/@borderedNodeMappings[name='default%20execution%20OA']/@borderedNodeMappings[name='endOfLifeOA']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_2:EndOfLifeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20OA']/@borderedNodeMappings[name='default%20execution%20OA']/@borderedNodeMappings[name='endOfLifeOA']"/>
@@ -28792,7 +28792,7 @@
           <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="EOLE_AF_UC.capella#92f6a423-af1a-4ce6-ae0b-8547583dffb9"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="EOLE_AF_UC.capella#35c0a79e-f6c8-42f8-bac6-a5db4e98aea0"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.oa:Entity" href="EOLE_AF_UC.capella#c37d7fd5-1150-4f00-9f15-0e0b1cddbb58"/>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_ZDVPIIPqEeakXr_OCO8ayA" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.svg">
+          <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_ZDVPIIPqEeakXr_OCO8ayA" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20OA']/@borderedNodeMappings[name='default%20execution%20OA']/@borderedNodeMappings[name='endOfLifeOA']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_2:EndOfLifeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20OA']/@borderedNodeMappings[name='default%20execution%20OA']/@borderedNodeMappings[name='endOfLifeOA']"/>
@@ -28832,7 +28832,7 @@
           <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="EOLE_AF_UC.capella#ebb60f41-0d55-4667-8a4a-c41945fbb9b5"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="EOLE_AF_UC.capella#478d73d3-ed87-462d-9898-58c92e0d81e7"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.oa:Entity" href="EOLE_AF_UC.capella#8d1ad9b5-717e-43e3-babc-31312a6cde66"/>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_ZDWdQYPqEeakXr_OCO8ayA" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.svg">
+          <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_ZDWdQYPqEeakXr_OCO8ayA" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20OA']/@borderedNodeMappings[name='default%20execution%20OA']/@borderedNodeMappings[name='endOfLifeOA']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_2:EndOfLifeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20OA']/@borderedNodeMappings[name='default%20execution%20OA']/@borderedNodeMappings[name='endOfLifeOA']"/>
@@ -28863,7 +28863,7 @@
           <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="EOLE_AF_UC.capella#5484d966-5ec1-4b18-ae89-1996fe608b04"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="EOLE_AF_UC.capella#3b67137e-df98-4b24-8eba-1aa2b1ece634"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.oa:Entity" href="EOLE_AF_UC.capella#8467bd16-e22a-483c-b2fd-83515bb74053"/>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_ZDXrYYPqEeakXr_OCO8ayA" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.svg">
+          <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_ZDXrYYPqEeakXr_OCO8ayA" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20OA']/@borderedNodeMappings[name='default%20execution%20OA']/@borderedNodeMappings[name='endOfLifeOA']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_2:EndOfLifeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20OA']/@borderedNodeMappings[name='default%20execution%20OA']/@borderedNodeMappings[name='endOfLifeOA']"/>

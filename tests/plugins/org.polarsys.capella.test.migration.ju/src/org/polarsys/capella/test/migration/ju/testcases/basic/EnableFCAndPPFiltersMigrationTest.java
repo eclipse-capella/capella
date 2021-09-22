@@ -41,9 +41,9 @@ import org.polarsys.capella.test.migration.ju.helpers.MigrationHelper;
  */
 public class EnableFCAndPPFiltersMigrationTest extends BasicTestCase {
 
-  private static final String MODEL_1_4_X = "activate-filters-1_4_x";
   private static final String MODEL_5_0_0 = "activate-filters-5_0_0";
   private static final String MODEL_5_1_0 = "activate-filters-5_1_0";
+  private static final String MODEL_6_0_0 = "activate-filters-6_0_0";
 
   private static final Set<String> FILTER_CANDIDATE_NAMES = new HashSet<>(
       Arrays.asList(IMappingNameConstants.HIDE_OVERLAPPED_PHYSICAL_PATHS_ICON,
@@ -64,10 +64,10 @@ public class EnableFCAndPPFiltersMigrationTest extends BasicTestCase {
 
     Collection<String> errors = new ArrayList<>();
 
-    assertFilterEnabledAfterMigration(MODEL_1_4_X, errors);
     assertFilterEnabledAfterMigration(MODEL_5_0_0, errors);
 
     assertFilterNotEnabledAfterMigration(MODEL_5_1_0, errors);
+    assertFilterNotEnabledAfterMigration(MODEL_6_0_0, errors);
 
     assertTrue(errors.stream().collect(Collectors.joining("\n")), errors.isEmpty());
   }
@@ -124,7 +124,7 @@ public class EnableFCAndPPFiltersMigrationTest extends BasicTestCase {
 
   @Override
   public List<String> getRequiredTestModels() {
-    return Arrays.asList(MODEL_1_4_X, MODEL_5_0_0, MODEL_5_1_0);
+    return Arrays.asList(MODEL_5_0_0, MODEL_5_1_0, MODEL_6_0_0);
   }
 
 }
