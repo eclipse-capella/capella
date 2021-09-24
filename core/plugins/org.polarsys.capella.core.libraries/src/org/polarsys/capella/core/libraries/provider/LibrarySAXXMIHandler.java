@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2021 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -12,14 +12,19 @@
  *******************************************************************************/
 package org.polarsys.capella.core.libraries.provider;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource.Diagnostic;
+import org.eclipse.emf.ecore.xmi.UnresolvedReferenceException;
 import org.eclipse.emf.ecore.xmi.XMLHelper;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.SAXXMIHandler;
 import org.polarsys.capella.common.libraries.LibrariesFactory;
+import org.polarsys.capella.common.libraries.LibrariesPackage;
 import org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage;
 
 /**
@@ -53,5 +58,17 @@ public class LibrarySAXXMIHandler extends SAXXMIHandler {
   @Override
   protected void validateCreateObjectFromFactory(EFactory factory, String typeName, EObject newObject) {
     //don't raise an error
+  }
+
+  @Override
+  protected void handleForwardReferences(boolean isEndDocument) {
+      super.handleForwardReferences(isEndDocument);
+      List<Diagnostic> diagnosticToIgnore = new ArrayList<>();
+      for (Diagnostic diagnostic : xmlResource.getErrors()) {
+          if (diagnostic instanceof UnresolvedReferenceException && !(LibrariesPackage.eNS_URI.equals(((UnresolvedReferenceException) diagnostic).getFeature().eResource().getURI().toString()))) {
+              diagnosticToIgnore.add(diagnostic);
+          }
+      }
+      xmlResource.getErrors().removeAll(diagnosticToIgnore);
   }
 }
