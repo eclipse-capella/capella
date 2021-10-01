@@ -18,15 +18,15 @@
 	<name>Capella</name>
 	<groupId>org.polarsys</groupId>
 	<artifactId>org.polarsys.capella</artifactId>
-	<version>5.2.0-SNAPSHOT</version>
+	<version>5.1.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<tycho-version>2.0.0</tycho-version>
 		<tycho-extras-version>2.0.0</tycho-extras-version>
 		<antrun-version>3.0.0</antrun-version>
-		<rcptt-version>2.5.1</rcptt-version>
-		<rcptt-runner-version>2.5.1</rcptt-runner-version>
+		<rcptt-version>2.5.2-SNAPSHOT</rcptt-version>
+		<rcptt-runner-version>2.5.2-SNAPSHOT</rcptt-runner-version>
 		<sonar-version>3.0.2</sonar-version>
 
 		<!-- for tycho -->
@@ -70,7 +70,7 @@
 						<artifact>
 							<groupId>org.polarsys</groupId>
 							<artifactId>org.polarsys.capella</artifactId>
-							<version>5.2.0-SNAPSHOT</version>
+							<version>5.1.0-SNAPSHOT</version>
 							<classifier>releng/plugins/org.polarsys.capella.targets/${target-platform-path}/capella.target-definition</classifier>
 						</artifact>
 					</target>
