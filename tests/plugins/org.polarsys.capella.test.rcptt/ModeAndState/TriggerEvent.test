@@ -5,8 +5,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _yKF9QK86Eee2vO1UksePLw
-Runtime-Version: 2.5.0.M2
-Save-Time: 9/11/19 3:17 PM
+Runtime-Version: 2.5.2.202109092356
+Save-Time: 10/6/21, 4:43 PM
 Testcase-Type: ecl
 
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
@@ -328,19 +328,9 @@ get-view "Project Explorer" | get-tree | select "project/*project.aird" | key-ty
 
 // On the Transition.trigger, it shall display all allocated functions, exchanges, operation, exchangeItems, as UPPER_LAYER & LIBRARY_UPPER_LAYERS access rule(i.e Same layer + All upper layer even of library model)
 
-with [get-editor "[MSM] Default Region"] {
-    click
-    with [get-diagram -index 1 | get-edit-part -name "[MSM] Default Region"] {
-        mouse-move 408 370 -height 687 -width 1042
-        with [get-edit-part -name "Mode 2" | get-target-connection 0] {
-            mouse-move 216 102 button1 -height 141 -width 324
-            mouse-press 216 102 button1 -height 141 -width 324
-            mouse-release 216 102 button1 524288 -height 141 -width 324
-        }
-        mouse-move 512 455 -height 687 -width 1042
-    }
-}
-
+get-view "Project Explorer" | get-tree 
+    | select "project/project.aird/project/System Analysis/Structure/System/System State Machine/Default Region/[State Transition]"
+    
 get-view Properties |  get-group -index 3 | get-button "Browse available elements" | click
 
 with [get-window "Transfer Dialog"] {
