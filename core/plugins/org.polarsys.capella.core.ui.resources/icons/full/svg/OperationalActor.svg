@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="26.458334mm"
+   height="23.283333mm"
+   viewBox="0 0 26.458334 23.283333"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   sodipodi:docname="OperationalActor.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="4"
+     inkscape:cx="16.625"
+     inkscape:cy="64.375"
+     inkscape:window-width="1920"
+     inkscape:window-height="1057"
+     inkscape:window-x="1912"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-33.769998,-99.621042)"
+     style="display:inline">
+    <g
+       id="g6123">
+      <g
+         id="g27174"
+         style="fill:#bdf7ff;fill-opacity:1;stroke-width:1.33145"
+         transform="matrix(0.90497727,0,0,0.96259316,-68.979206,-8.0274326)">
+        <rect
+           style="fill:#bdf7ff;fill-opacity:1;stroke:#000000;stroke-width:0.55766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           id="rect902"
+           width="21.127941"
+           height="15.095391"
+           x="119.08278"
+           y="116.74998" />
+      </g>
+      <rect
+         style="display:inline;fill:#e3ebf8;fill-opacity:1;stroke:#000000;stroke-width:0.520486;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect2465-5"
+         width="4.8985906"
+         height="2.5000894"
+         x="36.56324"
+         y="106.57853" />
+      <rect
+         style="display:inline;fill:#e3ebf8;fill-opacity:1;stroke:#000000;stroke-width:0.520486;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect2465-3-2"
+         width="4.8985906"
+         height="2.5000894"
+         x="36.588104"
+         y="109.90864" />
+      <text
+         xml:space="preserve"
+         style="font-size:11.7458px;line-height:1.25;font-family:'Myriad Pro';-inkscape-font-specification:'Myriad Pro';display:inline;stroke-width:0.328796"
+         x="43.096088"
+         y="115.29387"
+         id="text8837-0"
+         transform="scale(0.99554928,1.0044706)"><tspan
+           sodipodi:role="line"
+           id="tspan8835-0"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:11.7458px;font-family:'Myriad Pro';-inkscape-font-specification:'Myriad Pro Bold';stroke-width:0.328796"
+           x="43.096088"
+           y="115.29387">LA</tspan></text>
+    </g>
+  </g>
+</svg>

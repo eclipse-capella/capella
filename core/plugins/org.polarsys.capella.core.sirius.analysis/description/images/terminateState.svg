@@ -2,19 +2,19 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="3.5277777mm"
-   height="3.5277777mm"
-   viewBox="0 0 3.5277778 3.5277776"
+   width="10.160001mm"
+   height="10.160001mm"
+   viewBox="0 0 10.160001 10.160001"
    version="1.1"
-   id="svg2305"
+   id="svg34910"
    inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
-   sodipodi:docname="FunctionInputPort.svg"
+   sodipodi:docname="terminateState.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
   <sodipodi:namedview
-     id="namedview2307"
+     id="namedview34912"
      pagecolor="#ffffff"
      bordercolor="#666666"
      borderopacity="1.0"
@@ -27,9 +27,9 @@
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:zoom="7.2466938"
-     inkscape:cx="25.045905"
-     inkscape:cy="25.873868"
+     inkscape:zoom="14.493388"
+     inkscape:cx="26.115358"
+     inkscape:cy="22.596512"
      inkscape:window-width="1920"
      inkscape:window-height="1057"
      inkscape:window-x="1912"
@@ -37,30 +37,27 @@
      inkscape:window-maximized="1"
      inkscape:current-layer="layer1" />
   <defs
-     id="defs2302" />
+     id="defs34907" />
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-8.8471069,-191.42583)"
-     style="display:inline">
-    <g
-       id="g2390"
-       transform="matrix(0.07687576,0,0,0.07687576,7.71854,190.6432)">
-      <rect
-         x="14.875"
-         y="10.376"
-         fill="#c6480f"
-         stroke="#000000"
-         width="45.25"
-         height="45.249001"
-         id="rect2379" />
-      <polygon
-         fill="#ffffff"
-         stroke="#ffffff"
-         stroke-miterlimit="10"
-         points="24.831,47.688 24.831,17.927 53.444,32.207 "
-         id="polygon2381" />
-    </g>
+     transform="translate(-64.316383,-163.86714)">
+    <rect
+       style="fill:#000000;stroke:#000000;stroke-width:0.212939"
+       id="rect35517"
+       width="0.91825813"
+       height="13.02045"
+       x="-70.540344"
+       y="161.92627"
+       transform="matrix(0.70579607,-0.70841506,0.70579607,0.70841506,0,0)" />
+    <rect
+       style="fill:#000000;stroke:#000000;stroke-width:0.212939"
+       id="rect35517-3"
+       width="0.91825813"
+       height="13.02045"
+       x="168.23808"
+       y="64.195328"
+       transform="matrix(0.70841506,0.70579607,-0.70841506,0.70579607,0,0)" />
   </g>
 </svg>

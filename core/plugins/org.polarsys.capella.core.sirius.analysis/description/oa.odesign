@@ -115,7 +115,7 @@
             <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray']"/>
           </style>
           <conditionnalStyles predicateExpression="aql:self.isActor() and self.human = true">
-            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="7" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Actor.png">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="7" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Actor.svg">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
@@ -2652,14 +2652,14 @@
               </conditionnalStyles>
             </borderedNodeMappings>
             <borderedNodeMappings xsi:type="description_3:EndOfLifeMapping" name="Lifeline deletion mapping OA" preconditionExpression="aql:self.eContainer().ownedMessages->select(ownedMessage | ownedMessage.kind = interaction::MessageKind::DELETE).receivingEnd.covered->includes(self)" deletionDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='no%20delete%20OA']" semanticCandidatesExpression="aql:self" semanticElements="service:getAssociatedSemanticElements()" synchronizationLock="true" domainClass="interaction.InstanceRole">
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:''" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/eol.png">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:''" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/eol.svg">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </borderedNodeMappings>
             <borderedNodeMappings xsi:type="description_3:EndOfLifeMapping" name="endOfLifeOA" preconditionExpression="aql:not (self.eContainer().ownedMessages->select(ownedMessage | ownedMessage.kind = interaction::MessageKind::DELETE).receivingEnd.covered->includes(self))" semanticCandidatesExpression="aql:self" semanticElements="service:getAssociatedSemanticElements()" domainClass="interaction.InstanceRole">
               <deletionDescription href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@toolSections.0/@ownedTools[name='No%20Delete']"/>
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:''" sizeComputationExpression="1" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:''" sizeComputationExpression="1" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.svg">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
@@ -4296,14 +4296,14 @@
               </style>
             </borderedNodeMappings>
             <borderedNodeMappings xsi:type="description_3:EndOfLifeMapping" name="Lifeline deletion mapping AIS" preconditionExpression="aql:self.eContainer().ownedMessages->select(ownedMessage | ownedMessage.kind = interaction::MessageKind::DELETE).receivingEnd.covered->includes(self)" deletionDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Activity%20Interaction%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='no%20delete%20AIS']" semanticCandidatesExpression="aql:self" semanticElements="service:getAssociatedSemanticElements()" synchronizationLock="true" domainClass="interaction.InstanceRole">
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:''" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/eol.png">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:''" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/eol.svg">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </borderedNodeMappings>
             <borderedNodeMappings xsi:type="description_3:EndOfLifeMapping" name="endOfLifeAIS" preconditionExpression="aql:not (self.eContainer().ownedMessages->select(ownedMessage | ownedMessage.kind = interaction::MessageKind::DELETE).receivingEnd.covered->includes(self))" semanticCandidatesExpression="aql:self" semanticElements="service:getAssociatedSemanticElements()" domainClass="interaction.InstanceRole">
               <deletionDescription href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Package%20Dependencies']/@defaultLayer/@toolSections.0/@ownedTools[name='No%20Delete']"/>
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:''" sizeComputationExpression="1" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:''" sizeComputationExpression="1" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.svg">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>

@@ -6,12 +6,12 @@
    id="Layer_1"
    x="0px"
    y="0px"
-   width="13.333333"
-   height="13.333333"
-   viewBox="0 0 13.333333 13.333333"
+   width="12"
+   height="12"
+   viewBox="0 0 12 12"
    enable-background="new 0 0 75 66"
    xml:space="preserve"
-   sodipodi:docname="FunctionOutputPort.svg"
+   sodipodi:docname="CategoryOutput.svg"
    inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -38,8 +38,8 @@
    inkscape:pagecheckerboard="0"
    showgrid="false"
    inkscape:zoom="30.812714"
-   inkscape:cx="16.016116"
-   inkscape:cy="10.271734"
+   inkscape:cx="8.6165731"
+   inkscape:cy="9.0060227"
    inkscape:window-width="1920"
    inkscape:window-height="1057"
    inkscape:window-x="1912"
@@ -292,7 +292,7 @@ J/wAx8ML+Rxu/wAXaz/Mn/ADHwwv5HGlt9fXF9cGecgyEAbCgoMkBTkY8YgKD//Z</xmpGImg:image>
    inkscape:label="Layer 1"
    style="display:inline"><g
      id="g2580"
-     transform="matrix(0,-0.29465929,0.29466581,0,-3.0574526,17.71639)"><rect
+     transform="matrix(0,-0.26519337,0.26519923,0,-2.7517074,15.944752)"><rect
        x="14.875"
        y="10.376"
        fill="#0a5a2d"
@@ -303,5 +303,5 @@ J/wAx8ML+Rxu/wAXaz/Mn/ADHwwv5HGlt9fXF9cGecgyEAbCgoMkBTkY8YgKD//Z</xmpGImg:image>
        fill="#ffffff"
        stroke="#ffffff"
        stroke-miterlimit="10"
-       points="53.444,32.207 24.831,47.688 24.831,17.927 "
+       points="24.831,47.688 24.831,17.927 53.444,32.207 "
        id="polygon2508" /></g></g></svg>

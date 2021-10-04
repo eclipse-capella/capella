@@ -2,13 +2,13 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="3.5277777mm"
-   height="3.5277777mm"
-   viewBox="0 0 3.5277778 3.5277776"
+   width="3.175mm"
+   height="3.175mm"
+   viewBox="0 0 3.1750001 3.1749999"
    version="1.1"
    id="svg2305"
    inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
-   sodipodi:docname="FunctionInputPort.svg"
+   sodipodi:docname="CategoryInput.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -27,9 +27,9 @@
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:zoom="7.2466938"
-     inkscape:cx="25.045905"
-     inkscape:cy="25.873868"
+     inkscape:zoom="28.986775"
+     inkscape:cx="13.26467"
+     inkscape:cy="8.3658841"
      inkscape:window-width="1920"
      inkscape:window-height="1057"
      inkscape:window-x="1912"
@@ -42,11 +42,11 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-8.8471069,-191.42583)"
+     transform="translate(-8.8621059,-191.44083)"
      style="display:inline">
     <g
        id="g2390"
-       transform="matrix(0.07687576,0,0,0.07687576,7.71854,190.6432)">
+       transform="matrix(0,0.07016581,-0.0701673,0,12.765162,190.39711)">
       <rect
          x="14.875"
          y="10.376"
@@ -59,7 +59,7 @@
          fill="#ffffff"
          stroke="#ffffff"
          stroke-miterlimit="10"
-         points="24.831,47.688 24.831,17.927 53.444,32.207 "
+         points="53.444,32.207 24.831,47.688 24.831,17.927 "
          id="polygon2381" />
     </g>
   </g>
