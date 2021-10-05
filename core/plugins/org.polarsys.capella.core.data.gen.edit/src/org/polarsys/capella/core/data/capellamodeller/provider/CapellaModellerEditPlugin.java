@@ -114,7 +114,7 @@ public final class CapellaModellerEditPlugin extends EMFPlugin {
 		 */
 		@Override
 		public Object getImage(String key) {
-			return FileLocator.find(this.getBundle(), new Path("icons/" + key + ".gif"), null);
+			return FileLocator.find(this.getBundle(), new Path("icons/" + key + extensionFor(key)), null);
 		}
 		//end-capella-code
 	}

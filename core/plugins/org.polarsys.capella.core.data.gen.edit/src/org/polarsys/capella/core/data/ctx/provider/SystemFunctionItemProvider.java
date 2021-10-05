@@ -263,7 +263,7 @@ public class SystemFunctionItemProvider
 	 * @generated
 	 */
 	public Object getImageGen(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/SystemFunction")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/SystemFunction.png")); //$NON-NLS-1$
 	}
 
   /**
@@ -274,7 +274,7 @@ public class SystemFunctionItemProvider
   @Override
   public Object getImage(Object object) {
     SystemFunction fct = (SystemFunction) object;
-    String imagePath = "full/obj16/SystemFunction"; //$NON-NLS-1$
+    String imagePath = "full/obj16/SystemFunction.png"; //$NON-NLS-1$
     if (FunctionKind.DUPLICATE.equals(fct.getKind())) {
       imagePath = "full/obj16/FunctionKind_Duplicate"; //$NON-NLS-1$
     } else if (FunctionKind.GATHER.equals(fct.getKind())) {

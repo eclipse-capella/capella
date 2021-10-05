@@ -45,9 +45,9 @@ public class SystemComponentItemProviderDecorator extends ItemProviderAdapterDec
 
     if (component.isActor()) {
       if (component.isHuman()) {
-        imagePath = "full/obj16/SystemActorHuman";
+        imagePath = "full/obj16/SystemActorHuman.png";
       } else {
-        imagePath = "full/obj16/SystemActor";
+        imagePath = "full/obj16/SystemActor.png";
       }
     }
 

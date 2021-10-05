@@ -235,7 +235,7 @@ public class ClassItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Class")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Class.png")); //$NON-NLS-1$
 	}
 
 	/**
