@@ -151,6 +151,9 @@
       <migrationContribution
             class="org.polarsys.capella.core.data.migration.contribution.BackupResourceContribution">
       </migrationContribution>
+      <migrationContribution
+            class="org.polarsys.capella.core.data.migration.contribution.SVGMigrationContribution">
+      </migrationContribution>
       
       
       <migrationContribution 
