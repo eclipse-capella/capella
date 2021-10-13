@@ -158,7 +158,7 @@ public class GitConflictHelper {
    */
   @SuppressWarnings("restriction")
   public static boolean hasConflict(IFile file) {
-    if (file != null) {
+    if (file != null && file.getLocationURI() != null) {
       java.nio.file.Path filePath = Paths.get(file.getLocationURI());
       for (Repository repo : org.eclipse.egit.core.Activator.getDefault().getRepositoryCache().getAllRepositories()) {
         java.nio.file.Path repoPath = Paths.get(repo.getWorkTree().toURI());
