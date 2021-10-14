@@ -2,9 +2,9 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="26.458334mm"
-   height="23.283333mm"
-   viewBox="0 0 26.458334 23.283333"
+   width="19.84375mm"
+   height="17.4625mm"
+   viewBox="0 0 19.84375 17.4625"
    version="1.1"
    id="svg5"
    inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
@@ -27,15 +27,15 @@
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:zoom="1.4142136"
-     inkscape:cx="253.49778"
-     inkscape:cy="118.44039"
+     inkscape:zoom="8.0000001"
+     inkscape:cx="57.812499"
+     inkscape:cy="40.5625"
      inkscape:window-width="1920"
      inkscape:window-height="1057"
-     inkscape:window-x="1912"
+     inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer1" />
+     inkscape:current-layer="layer5" />
   <defs
      id="defs2">
     <radialGradient
@@ -98,160 +98,223 @@
          style="stop-color:#C69C6D"
          id="stop23068-8" />
     </radialGradient>
+    <radialGradient
+       id="SVGID_1_-1-6"
+       cx="43.766102"
+       cy="87.902298"
+       r="4.4296999"
+       gradientTransform="matrix(1.9728,0,0,-2.039,314.1896,402.5936)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         style="stop-color:#FDFCFA"
+         id="stop23044-8-3" />
+      <stop
+         offset="0"
+         style="stop-color:#FFFFFF"
+         id="stop23046-4-3" />
+      <stop
+         offset="0"
+         style="stop-color:#FFFFFF"
+         id="stop23048-9-6" />
+      <stop
+         offset="0"
+         style="stop-color:#F7F1EB"
+         id="stop23050-7-6" />
+      <stop
+         offset="0"
+         style="stop-color:#CFAC85"
+         id="stop23052-0-8" />
+      <stop
+         offset="0"
+         style="stop-color:#E0CAB0"
+         id="stop23054-3-0" />
+      <stop
+         offset="0"
+         style="stop-color:#FFFFFF"
+         id="stop23056-6-8" />
+      <stop
+         offset="0"
+         style="stop-color:#F2F6FA"
+         id="stop23058-6-1" />
+      <stop
+         offset="0"
+         style="stop-color:#E9F1F6"
+         id="stop23060-1-4" />
+      <stop
+         offset="0"
+         style="stop-color:#E6EFF5"
+         id="stop23062-0-1" />
+      <stop
+         offset="0"
+         style="stop-color:#CEDEEB"
+         id="stop23064-6-9" />
+      <stop
+         offset="1"
+         style="stop-color:#8B9BA7"
+         id="stop23066-4-2" />
+      <stop
+         offset="1"
+         style="stop-color:#C69C6D"
+         id="stop23068-8-7" />
+    </radialGradient>
   </defs>
   <g
-     inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     id="layer1"
-     transform="translate(-31.337843,-101.38704)"
+     id="layer5"
+     inkscape:label="Layer 2"
      style="display:inline">
     <g
-       id="g23483"
-       transform="translate(-24.746567,0.01604967)">
+       id="g4073"
+       transform="matrix(1.0853175,0,0,1.0853175,-0.11395573,-0.44633412)">
       <g
-         id="g23312"
-         transform="matrix(1.3115989,0,0,1.3115989,-20.974293,-34.482285)">
+         id="g23483"
+         transform="matrix(0.67096442,0,0,0.67096442,-37.162788,-67.492796)">
         <g
-           id="g27174"
-           style="fill:#fff426;fill-opacity:1;stroke-width:1.33145"
-           transform="matrix(0.75227475,0,0,0.74984345,-27.867648,19.424584)">
+           id="g23312-4"
+           transform="matrix(1.3115989,0,0,1.3115989,-20.974293,-34.482285)">
+          <g
+             id="g27174-8"
+             style="fill:#fff426;fill-opacity:1;stroke-width:1.33145"
+             transform="matrix(0.75227475,0,0,0.74984345,-27.867648,19.424584)">
+            <rect
+               style="fill:#fff426;fill-opacity:1;stroke:#000000;stroke-width:0.55766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+               id="rect902-3"
+               width="21.127941"
+               height="15.095391"
+               x="119.08278"
+               y="116.74998" />
+          </g>
           <rect
-             style="fill:#fff426;fill-opacity:1;stroke:#000000;stroke-width:0.55766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-             id="rect902"
-             width="21.127941"
-             height="15.095391"
-             x="119.08278"
-             y="116.74998" />
+             style="display:inline;fill:#fff426;fill-opacity:1;stroke:#000000;stroke-width:0.418835;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+             id="rect2465-5-2"
+             width="4.0720205"
+             height="1.9475266"
+             x="59.865955"
+             y="108.70065" />
+          <rect
+             style="display:inline;fill:#fff426;fill-opacity:1;stroke:#000000;stroke-width:0.418835;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+             id="rect2465-3-2-6"
+             width="4.0720205"
+             height="1.9475266"
+             x="59.886623"
+             y="111.29475" />
         </g>
-        <rect
-           style="display:inline;fill:#fff426;fill-opacity:1;stroke:#000000;stroke-width:0.418835;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-           id="rect2465-5"
-           width="4.0720205"
-           height="1.9475266"
-           x="59.865955"
-           y="108.70065" />
-        <rect
-           style="display:inline;fill:#fff426;fill-opacity:1;stroke:#000000;stroke-width:0.418835;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-           id="rect2465-3-2"
-           width="4.0720205"
-           height="1.9475266"
-           x="59.886623"
-           y="111.29475" />
-      </g>
-      <g
-         id="g23073-4"
-         transform="matrix(0.18993442,0,0,0.18993442,1.06647,66.165488)"
-         style="display:inline;fill:none">
-        <line
-           fill="none"
-           stroke="#000000"
-           stroke-width="2.4944"
-           x1="400.362"
-           y1="232.586"
-           x2="400.362"
-           y2="257.534"
-           id="line23036-3"
-           style="fill:none" />
-        <line
-           fill="none"
-           stroke="#000000"
-           stroke-width="2.4944"
-           x1="400.83401"
-           y1="254.299"
-           x2="388.423"
-           y2="275.009"
-           id="line23038-6"
-           style="fill:none" />
-        <line
-           fill="none"
-           stroke="#000000"
-           stroke-width="2.4944"
-           x1="400.25201"
-           y1="254.46001"
-           x2="413.97"
-           y2="274.987"
-           id="line23040-9"
-           style="fill:none" />
-        <line
-           fill="none"
-           stroke="#000000"
-           stroke-width="2.4944"
-           x1="385.634"
-           y1="244.569"
-           x2="415.703"
-           y2="244.49699"
-           id="line23042-1"
-           style="fill:none" />
-        <radialGradient
-           id="radialGradient23173"
-           cx="43.766102"
-           cy="87.902298"
-           r="4.4296999"
-           gradientTransform="matrix(1.9728,0,0,-2.039,314.1896,402.5936)"
-           gradientUnits="userSpaceOnUse">
-          <stop
-             offset="0"
-             style="stop-color:#FDFCFA"
-             id="stop23147" />
-          <stop
-             offset="0"
-             style="stop-color:#FFFFFF"
-             id="stop23149" />
-          <stop
-             offset="0"
-             style="stop-color:#FFFFFF"
-             id="stop23151" />
-          <stop
-             offset="0"
-             style="stop-color:#F7F1EB"
-             id="stop23153" />
-          <stop
-             offset="0"
-             style="stop-color:#CFAC85"
-             id="stop23155" />
-          <stop
-             offset="0"
-             style="stop-color:#E0CAB0"
-             id="stop23157" />
-          <stop
-             offset="0"
-             style="stop-color:#FFFFFF"
-             id="stop23159" />
-          <stop
-             offset="0"
-             style="stop-color:#F2F6FA"
-             id="stop23161" />
-          <stop
-             offset="0"
-             style="stop-color:#E9F1F6"
-             id="stop23163" />
-          <stop
-             offset="0"
-             style="stop-color:#E6EFF5"
-             id="stop23165" />
-          <stop
-             offset="0"
-             style="stop-color:#CEDEEB"
-             id="stop23167" />
-          <stop
-             offset="1"
-             style="stop-color:#8B9BA7"
-             id="stop23169" />
-          <stop
-             offset="1"
-             style="stop-color:#C69C6D"
-             id="stop23171" />
-        </radialGradient>
-        <ellipse
-           fill="url(#SVGID_1_)"
-           stroke="#000000"
-           stroke-width="2.0075"
-           cx="400.53201"
-           cy="223.35899"
-           rx="9.2180004"
-           ry="8.5080004"
-           id="ellipse23071-5"
-           style="fill:none" />
+        <g
+           id="g23073-4-4"
+           transform="matrix(0.18993442,0,0,0.18993442,1.06647,66.165488)"
+           style="display:inline;fill:none">
+          <line
+             fill="none"
+             stroke="#000000"
+             stroke-width="2.4944"
+             x1="400.362"
+             y1="232.586"
+             x2="400.362"
+             y2="257.534"
+             id="line23036-3-5"
+             style="fill:none" />
+          <line
+             fill="none"
+             stroke="#000000"
+             stroke-width="2.4944"
+             x1="400.83401"
+             y1="254.299"
+             x2="388.423"
+             y2="275.009"
+             id="line23038-6-0"
+             style="fill:none" />
+          <line
+             fill="none"
+             stroke="#000000"
+             stroke-width="2.4944"
+             x1="400.25201"
+             y1="254.46001"
+             x2="413.97"
+             y2="274.987"
+             id="line23040-9-4"
+             style="fill:none" />
+          <line
+             fill="none"
+             stroke="#000000"
+             stroke-width="2.4944"
+             x1="385.634"
+             y1="244.569"
+             x2="415.703"
+             y2="244.49699"
+             id="line23042-1-9"
+             style="fill:none" />
+          <radialGradient
+             id="radialGradient23173-7"
+             cx="43.766102"
+             cy="87.902298"
+             r="4.4296999"
+             gradientTransform="matrix(1.9728,0,0,-2.039,314.1896,402.5936)"
+             gradientUnits="userSpaceOnUse">
+            <stop
+               offset="0"
+               style="stop-color:#FDFCFA"
+               id="stop23147-3" />
+            <stop
+               offset="0"
+               style="stop-color:#FFFFFF"
+               id="stop23149-2" />
+            <stop
+               offset="0"
+               style="stop-color:#FFFFFF"
+               id="stop23151-2" />
+            <stop
+               offset="0"
+               style="stop-color:#F7F1EB"
+               id="stop23153-6" />
+            <stop
+               offset="0"
+               style="stop-color:#CFAC85"
+               id="stop23155-7" />
+            <stop
+               offset="0"
+               style="stop-color:#E0CAB0"
+               id="stop23157-6" />
+            <stop
+               offset="0"
+               style="stop-color:#FFFFFF"
+               id="stop23159-5" />
+            <stop
+               offset="0"
+               style="stop-color:#F2F6FA"
+               id="stop23161-2" />
+            <stop
+               offset="0"
+               style="stop-color:#E9F1F6"
+               id="stop23163-7" />
+            <stop
+               offset="0"
+               style="stop-color:#E6EFF5"
+               id="stop23165-2" />
+            <stop
+               offset="0"
+               style="stop-color:#CEDEEB"
+               id="stop23167-8" />
+            <stop
+               offset="1"
+               style="stop-color:#8B9BA7"
+               id="stop23169-4" />
+            <stop
+               offset="1"
+               style="stop-color:#C69C6D"
+               id="stop23171-1" />
+          </radialGradient>
+          <ellipse
+             fill="url(#SVGID_1_)"
+             stroke="#000000"
+             stroke-width="2.0075"
+             cx="400.53201"
+             cy="223.35899"
+             rx="9.2180004"
+             ry="8.5080004"
+             id="ellipse23071-5-7"
+             style="fill:none" />
+        </g>
       </g>
     </g>
   </g>
