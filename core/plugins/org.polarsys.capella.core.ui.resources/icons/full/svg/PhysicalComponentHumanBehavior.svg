@@ -2,9 +2,9 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="26.458334mm"
-   height="23.283333mm"
-   viewBox="0 0 26.458334 23.283333"
+   width="19.84375mm"
+   height="17.4625mm"
+   viewBox="0 0 19.84375 17.4625"
    version="1.1"
    id="svg5"
    inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
@@ -27,15 +27,15 @@
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:zoom="5.6568543"
-     inkscape:cx="99.967221"
-     inkscape:cy="63.374445"
+     inkscape:zoom="8"
+     inkscape:cx="35.0625"
+     inkscape:cy="38.0625"
      inkscape:window-width="1920"
      inkscape:window-height="1057"
-     inkscape:window-x="1912"
+     inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer1" />
+     inkscape:current-layer="layer2" />
   <defs
      id="defs2">
     <radialGradient
@@ -100,25 +100,24 @@
     </radialGradient>
   </defs>
   <g
-     inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     id="layer1"
-     transform="translate(-4.209691,-101.06367)"
+     id="layer6"
+     inkscape:label="Layer 5"
      style="display:inline">
     <g
        id="g34700"
-       transform="translate(-26.519819,0.18708867)">
+       transform="matrix(0.70228959,0,0,0.70228959,-21.183749,-70.408235)">
       <g
          id="g23312"
          transform="matrix(1.2549446,0,0,1.2549446,-42.341058,-28.417834)"
          style="fill:#a2b5c3;fill-opacity:1">
         <g
-           id="g27174"
+           id="g27174-5"
            style="fill:#a2b5c3;fill-opacity:1;stroke-width:1.33145"
            transform="matrix(0.75227475,0,0,0.74984345,-27.867648,19.424584)">
           <rect
              style="fill:#a2b5c3;fill-opacity:1;stroke:#000000;stroke-width:0.55766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-             id="rect902"
+             id="rect902-4"
              width="21.127941"
              height="15.095391"
              x="119.08278"
@@ -126,14 +125,14 @@
         </g>
         <rect
            style="display:inline;fill:#a2b5c3;fill-opacity:1;stroke:#000000;stroke-width:0.418835;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-           id="rect2465-5"
+           id="rect2465-5-6"
            width="4.0720205"
            height="1.9475266"
            x="59.865955"
            y="108.70065" />
         <rect
            style="display:inline;fill:#a2b5c3;fill-opacity:1;stroke:#000000;stroke-width:0.418835;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-           id="rect2465-3-2"
+           id="rect2465-3-2-5"
            width="4.0720205"
            height="1.9475266"
            x="59.886623"
@@ -255,5 +254,45 @@
            style="fill:none" />
       </g>
     </g>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Layer 2"
+     style="display:inline"
+     transform="translate(35.131377,8.6738565)">
+    <rect
+       style="fill:#a2b5c3;fill-opacity:1;stroke:#000000;stroke-width:0.418835;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect2465"
+       width="5.4129434"
+       height="2.5972443"
+       x="1.271909"
+       y="6.4582477" />
+    <rect
+       style="fill:#a2b5c3;fill-opacity:1;stroke:#000000;stroke-width:0.418835;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect2465-3"
+       width="5.4129434"
+       height="2.5972443"
+       x="1.2993798"
+       y="9.9177628" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer4"
+     inkscape:label="Layer 4"
+     style="display:none"
+     transform="translate(35.131377,8.6738565)">
+    <text
+       xml:space="preserve"
+       style="font-size:12.5847px;line-height:1.25;font-family:'Myriad Pro';-inkscape-font-specification:'Myriad Pro';stroke-width:0.264583"
+       x="121.5442"
+       y="131.9101"
+       id="text8837"
+       transform="matrix(1.0267514,0,0,0.97394559,-115.35251,-112.60136)"><tspan
+         sodipodi:role="line"
+         id="tspan8835"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.5847px;font-family:'Myriad Pro';-inkscape-font-specification:'Myriad Pro Bold';stroke-width:0.264583"
+         x="121.5442"
+         y="131.9101">CI</tspan></text>
   </g>
 </svg>

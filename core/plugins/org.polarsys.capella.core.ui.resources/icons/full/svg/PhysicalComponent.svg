@@ -2,9 +2,9 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="26.458334mm"
-   height="23.283333mm"
-   viewBox="0 0 26.458334 23.283333"
+   width="19.84375mm"
+   height="17.4625mm"
+   viewBox="0 0 19.84375 17.4625"
    version="1.1"
    id="svg5"
    inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
@@ -27,116 +27,121 @@
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:zoom="5.6568543"
-     inkscape:cx="6.4523494"
-     inkscape:cy="55.949824"
+     inkscape:zoom="8"
+     inkscape:cx="56.3125"
+     inkscape:cy="34.1875"
      inkscape:window-width="1920"
      inkscape:window-height="1057"
-     inkscape:window-x="1912"
+     inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer5" />
+     inkscape:current-layer="layer6" />
   <defs
      id="defs2" />
   <g
-     inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     id="layer1"
-     transform="translate(-73.23757,-103.16927)"
+     id="layer6"
+     inkscape:label="Layer 5"
      style="display:inline">
     <g
-       id="g22608"
-       transform="matrix(1.1875568,0,0,1.1875568,-21.910595,-19.171908)">
+       id="g2985"
+       transform="matrix(0.74294577,0,0,0.74294577,0.0377429,0.03946392)">
       <g
-         id="g27174"
-         style="fill:#e3ebf8;fill-opacity:1;stroke-width:1.33145"
-         transform="matrix(0.75227475,0,0,0.74984345,-5.6175109,19.821459)">
-        <rect
-           style="fill:#e3ebf8;fill-opacity:1;stroke:#000000;stroke-width:0.55766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-           id="rect902"
-           width="21.127941"
-           height="15.095391"
-           x="119.08278"
-           y="116.74998" />
+         inkscape:label="Layer 1"
+         id="layer1-4"
+         transform="translate(-73.23757,-103.16927)"
+         style="display:inline">
+        <g
+           id="g22608"
+           transform="matrix(1.1875568,0,0,1.1875568,-21.910595,-19.171908)">
+          <g
+             id="g27174-4"
+             style="fill:#e3ebf8;fill-opacity:1;stroke-width:1.33145"
+             transform="matrix(0.75227475,0,0,0.74984345,-5.6175109,19.821459)">
+            <rect
+               style="fill:#e3ebf8;fill-opacity:1;stroke:#000000;stroke-width:0.55766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+               id="rect902-0"
+               width="21.127941"
+               height="15.095391"
+               x="119.08278"
+               y="116.74998" />
+          </g>
+          <rect
+             style="display:inline;fill:#e7efff;fill-opacity:1;stroke:#000000;stroke-width:0.418835;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+             id="rect2465-5-7"
+             width="4.0720205"
+             height="1.9475266"
+             x="82.116096"
+             y="109.09753" />
+          <rect
+             style="display:inline;fill:#e7efff;fill-opacity:1;stroke:#000000;stroke-width:0.418835;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+             id="rect2465-3-2-5"
+             width="4.0720205"
+             height="1.9475266"
+             x="82.136765"
+             y="111.69162" />
+          <text
+             xml:space="preserve"
+             style="font-size:9.45184px;line-height:1.25;font-family:'Myriad Pro';-inkscape-font-specification:'Myriad Pro';display:inline;stroke-width:0.264582"
+             x="87.169319"
+             y="119.51464"
+             id="text8837-0-8"
+             transform="scale(1.0284146,0.97237047)"><tspan
+               sodipodi:role="line"
+               id="tspan8835-0-6"
+               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:9.45184px;font-family:'Myriad Pro';-inkscape-font-specification:'Myriad Pro Bold';stroke-width:0.264582"
+               x="87.169319"
+               y="119.51464">P</tspan></text>
+        </g>
       </g>
-      <rect
-         style="display:inline;fill:#e7efff;fill-opacity:1;stroke:#000000;stroke-width:0.418835;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         id="rect2465-5"
-         width="4.0720205"
-         height="1.9475266"
-         x="82.116096"
-         y="109.09753" />
-      <rect
-         style="display:inline;fill:#e7efff;fill-opacity:1;stroke:#000000;stroke-width:0.418835;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         id="rect2465-3-2"
-         width="4.0720205"
-         height="1.9475266"
-         x="82.136765"
-         y="111.69162" />
-      <text
-         xml:space="preserve"
-         style="font-size:9.45184px;line-height:1.25;font-family:'Myriad Pro';-inkscape-font-specification:'Myriad Pro';display:inline;stroke-width:0.264582"
-         x="87.169319"
-         y="119.51464"
-         id="text8837-0"
-         transform="scale(1.0284146,0.97237047)"><tspan
-           sodipodi:role="line"
-           id="tspan8835-0"
-           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:9.45184px;font-family:'Myriad Pro';-inkscape-font-specification:'Myriad Pro Bold';stroke-width:0.264582"
-           x="87.169319"
-           y="119.51464">P</tspan></text>
+      <g
+         id="layer5"
+         inkscape:label="Layer 5"
+         transform="translate(6.9835601,0.75824833)"
+         style="display:none" />
+      <g
+         id="layer2-7"
+         inkscape:label="Layer 2"
+         style="display:none"
+         transform="translate(42.114937,9.4321075)">
+        <rect
+           style="fill:#a2b5c3;fill-opacity:1;stroke:#000000;stroke-width:0.418835;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           id="rect2465-8"
+           width="5.4129434"
+           height="2.5972443"
+           x="1.271909"
+           y="6.4582477" />
+        <rect
+           style="fill:#a2b5c3;fill-opacity:1;stroke:#000000;stroke-width:0.418835;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           id="rect2465-3-5"
+           width="5.4129434"
+           height="2.5972443"
+           x="1.2993798"
+           y="9.9177628" />
+      </g>
+      <g
+         id="layer3-6"
+         inkscape:label="Layer 3"
+         style="display:none"
+         transform="translate(42.114937,9.4321075)" />
+      <g
+         id="layer4-5"
+         inkscape:label="Layer 4"
+         style="display:none"
+         transform="translate(42.114937,9.4321075)">
+        <text
+           xml:space="preserve"
+           style="font-size:12.5847px;line-height:1.25;font-family:'Myriad Pro';-inkscape-font-specification:'Myriad Pro';stroke-width:0.264583"
+           x="121.5442"
+           y="131.9101"
+           id="text8837-1"
+           transform="matrix(1.0267514,0,0,0.97394559,-115.35251,-112.60136)"><tspan
+             sodipodi:role="line"
+             id="tspan8835-9"
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.5847px;font-family:'Myriad Pro';-inkscape-font-specification:'Myriad Pro Bold';stroke-width:0.264583"
+             x="121.5442"
+             y="131.9101">CI</tspan></text>
+      </g>
     </g>
-  </g>
-  <g
-     inkscape:groupmode="layer"
-     id="layer5"
-     inkscape:label="Layer 5"
-     transform="translate(6.9835601,0.75824833)"
-     style="display:none" />
-  <g
-     inkscape:groupmode="layer"
-     id="layer2"
-     inkscape:label="Layer 2"
-     style="display:none"
-     transform="translate(42.114937,9.4321075)">
-    <rect
-       style="fill:#a2b5c3;fill-opacity:1;stroke:#000000;stroke-width:0.418835;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="rect2465"
-       width="5.4129434"
-       height="2.5972443"
-       x="1.271909"
-       y="6.4582477" />
-    <rect
-       style="fill:#a2b5c3;fill-opacity:1;stroke:#000000;stroke-width:0.418835;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="rect2465-3"
-       width="5.4129434"
-       height="2.5972443"
-       x="1.2993798"
-       y="9.9177628" />
-  </g>
-  <g
-     inkscape:groupmode="layer"
-     id="layer3"
-     inkscape:label="Layer 3"
-     style="display:none"
-     transform="translate(42.114937,9.4321075)" />
-  <g
-     inkscape:groupmode="layer"
-     id="layer4"
-     inkscape:label="Layer 4"
-     style="display:none"
-     transform="translate(42.114937,9.4321075)">
-    <text
-       xml:space="preserve"
-       style="font-size:12.5847px;line-height:1.25;font-family:'Myriad Pro';-inkscape-font-specification:'Myriad Pro';stroke-width:0.264583"
-       x="121.5442"
-       y="131.9101"
-       id="text8837"
-       transform="matrix(1.0267514,0,0,0.97394559,-115.35251,-112.60136)"><tspan
-         sodipodi:role="line"
-         id="tspan8835"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.5847px;font-family:'Myriad Pro';-inkscape-font-specification:'Myriad Pro Bold';stroke-width:0.264583"
-         x="121.5442"
-         y="131.9101">CI</tspan></text>
   </g>
 </svg>

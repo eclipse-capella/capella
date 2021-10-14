@@ -1,38 +1,159 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="55px" height="55px" viewBox="0.375 0.199 55 55" enable-background="new 0.375 0.199 55 55" xml:space="preserve">
-<metadata><?xpacket begin="﻿" id="W5M0MpCehiHzreSzNTczkc9d"?>
-<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.3-c011 66.145661, 2012/02/06-14:56:27        ">
-   <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-      <rdf:Description rdf:about=""
-            xmlns:xmp="http://ns.adobe.com/xap/1.0/"
-            xmlns:xmpGImg="http://ns.adobe.com/xap/1.0/g/img/">
+
+<svg
+   version="1.1"
+   id="Layer_1"
+   x="0px"
+   y="0px"
+   width="55px"
+   height="55px"
+   viewBox="0.375 0.199 55 55"
+   enable-background="new 0.375 0.199 55 55"
+   xml:space="preserve"
+   sodipodi:docname="FunctionDuplicateDiagram.svg"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:x="adobe:ns:meta/"
+   xmlns:xmp="http://ns.adobe.com/xap/1.0/"
+   xmlns:xmpGImg="http://ns.adobe.com/xap/1.0/g/img/"
+   xmlns:xmpTPg="http://ns.adobe.com/xap/1.0/t/pg/"
+   xmlns:stDim="http://ns.adobe.com/xap/1.0/sType/Dimensions#"
+   xmlns:xmpG="http://ns.adobe.com/xap/1.0/g/"
+   xmlns:xmpMM="http://ns.adobe.com/xap/1.0/mm/"
+   xmlns:stRef="http://ns.adobe.com/xap/1.0/sType/ResourceRef#"
+   xmlns:stEvt="http://ns.adobe.com/xap/1.0/sType/ResourceEvent#"><defs
+   id="defs1139" /><sodipodi:namedview
+   id="namedview1137"
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1.0"
+   inkscape:pageshadow="2"
+   inkscape:pageopacity="0.0"
+   inkscape:pagecheckerboard="0"
+   showgrid="false"
+   inkscape:zoom="13.072727"
+   inkscape:cx="27.5"
+   inkscape:cy="27.5"
+   inkscape:window-width="1920"
+   inkscape:window-height="1057"
+   inkscape:window-x="1912"
+   inkscape:window-y="-8"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="Layer_1" />
+<metadata
+   id="metadata1122"><?xpacket begin="﻿" id="W5M0MpCehiHzreSzNTczkc9d"?>
+<x:xmpmeta
+   x:xmptk="Adobe XMP Core 5.3-c011 66.145661, 2012/02/06-14:56:27        ">
+   <rdf:RDF>
+      <rdf:Description
+   rdf:about="">
          <xmp:CreateDate>2014-10-07T21:47:15+02:00</xmp:CreateDate>
          <xmp:ModifyDate>2014-10-07T21:47:15+02:00</xmp:ModifyDate>
          <xmp:CreatorTool>Adobe Illustrator CS6 (Macintosh)</xmp:CreatorTool>
          <xmp:MetadataDate>2014-10-07T21:47:15+02:00</xmp:MetadataDate>
          <xmp:Thumbnails>
             <rdf:Alt>
-               <rdf:li rdf:parseType="Resource">
+               <rdf:li
+   rdf:parseType="Resource">
                   <xmpGImg:width>256</xmpGImg:width>
                   <xmpGImg:height>256</xmpGImg:height>
                   <xmpGImg:format>JPEG</xmpGImg:format>
-                  <xmpGImg:image>/9j/4AAQSkZJRgABAgEASABIAAD/7QAsUGhvdG9zaG9wIDMuMAA4QklNA+0AAAAAABAASAAAAAEA&#xA;AQBIAAAAAQAB/+4ADkFkb2JlAGTAAAAAAf/bAIQABgQEBAUEBgUFBgkGBQYJCwgGBggLDAoKCwoK&#xA;DBAMDAwMDAwQDA4PEA8ODBMTFBQTExwbGxscHx8fHx8fHx8fHwEHBwcNDA0YEBAYGhURFRofHx8f&#xA;Hx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8f/8AAEQgBAAEAAwER&#xA;AAIRAQMRAf/EAaIAAAAHAQEBAQEAAAAAAAAAAAQFAwIGAQAHCAkKCwEAAgIDAQEBAQEAAAAAAAAA&#xA;AQACAwQFBgcICQoLEAACAQMDAgQCBgcDBAIGAnMBAgMRBAAFIRIxQVEGE2EicYEUMpGhBxWxQiPB&#xA;UtHhMxZi8CRygvElQzRTkqKyY3PCNUQnk6OzNhdUZHTD0uIIJoMJChgZhJRFRqS0VtNVKBry4/PE&#xA;1OT0ZXWFlaW1xdXl9WZ2hpamtsbW5vY3R1dnd4eXp7fH1+f3OEhYaHiImKi4yNjo+Ck5SVlpeYmZ&#xA;qbnJ2en5KjpKWmp6ipqqusra6voRAAICAQIDBQUEBQYECAMDbQEAAhEDBCESMUEFURNhIgZxgZEy&#xA;obHwFMHR4SNCFVJicvEzJDRDghaSUyWiY7LCB3PSNeJEgxdUkwgJChgZJjZFGidkdFU38qOzwygp&#xA;0+PzhJSktMTU5PRldYWVpbXF1eX1RlZmdoaWprbG1ub2R1dnd4eXp7fH1+f3OEhYaHiImKi4yNjo&#xA;+DlJWWl5iZmpucnZ6fkqOkpaanqKmqq6ytrq+v/aAAwDAQACEQMRAD8A77nNuC7FXYq7FXYq7FXY&#xA;q7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq&#xA;7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7&#xA;FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7F&#xA;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</xmpGImg:image>
+                  <xmpGImg:image>/9j/4AAQSkZJRgABAgEASABIAAD/7QAsUGhvdG9zaG9wIDMuMAA4QklNA+0AAAAAABAASAAAAAEA
+AQBIAAAAAQAB/+4ADkFkb2JlAGTAAAAAAf/bAIQABgQEBAUEBgUFBgkGBQYJCwgGBggLDAoKCwoK
+DBAMDAwMDAwQDA4PEA8ODBMTFBQTExwbGxscHx8fHx8fHx8fHwEHBwcNDA0YEBAYGhURFRofHx8f
+Hx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8f/8AAEQgBAAEAAwER
+AAIRAQMRAf/EAaIAAAAHAQEBAQEAAAAAAAAAAAQFAwIGAQAHCAkKCwEAAgIDAQEBAQEAAAAAAAAA
+AQACAwQFBgcICQoLEAACAQMDAgQCBgcDBAIGAnMBAgMRBAAFIRIxQVEGE2EicYEUMpGhBxWxQiPB
+UtHhMxZi8CRygvElQzRTkqKyY3PCNUQnk6OzNhdUZHTD0uIIJoMJChgZhJRFRqS0VtNVKBry4/PE
+1OT0ZXWFlaW1xdXl9WZ2hpamtsbW5vY3R1dnd4eXp7fH1+f3OEhYaHiImKi4yNjo+Ck5SVlpeYmZ
+qbnJ2en5KjpKWmp6ipqqusra6voRAAICAQIDBQUEBQYECAMDbQEAAhEDBCESMUEFURNhIgZxgZEy
+obHwFMHR4SNCFVJicvEzJDRDghaSUyWiY7LCB3PSNeJEgxdUkwgJChgZJjZFGidkdFU38qOzwygp
+0+PzhJSktMTU5PRldYWVpbXF1eX1RlZmdoaWprbG1ub2R1dnd4eXp7fH1+f3OEhYaHiImKi4yNjo
++DlJWWl5iZmpucnZ6fkqOkpaanqKmqq6ytrq+v/aAAwDAQACEQMRAD8A77nNuC7FXYq7FXYq7FXY
+q7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq
+7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7
+FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7F
+XYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FX
+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</xmpGImg:image>
                </rdf:li>
             </rdf:Alt>
          </xmp:Thumbnails>
       </rdf:Description>
-      <rdf:Description rdf:about=""
-            xmlns:dc="http://purl.org/dc/elements/1.1/">
+      <rdf:Description
+   rdf:about="">
          <dc:format>image/svg+xml</dc:format>
       </rdf:Description>
-      <rdf:Description rdf:about=""
-            xmlns:xmpTPg="http://ns.adobe.com/xap/1.0/t/pg/"
-            xmlns:stDim="http://ns.adobe.com/xap/1.0/sType/Dimensions#"
-            xmlns:xmpG="http://ns.adobe.com/xap/1.0/g/">
-         <xmpTPg:MaxPageSize rdf:parseType="Resource">
+      <rdf:Description
+   rdf:about="">
+         <xmpTPg:MaxPageSize
+   rdf:parseType="Resource">
             <stDim:w>55.000000</stDim:w>
             <stDim:h>55.000000</stDim:h>
             <stDim:unit>Points</stDim:unit>
@@ -50,18 +171,18 @@
          </xmpTPg:PlateNames>
          <xmpTPg:SwatchGroups>
             <rdf:Seq>
-               <rdf:li rdf:parseType="Resource">
+               <rdf:li
+   rdf:parseType="Resource">
                   <xmpG:groupName>Default Swatch Group</xmpG:groupName>
                   <xmpG:groupType>0</xmpG:groupType>
                </rdf:li>
             </rdf:Seq>
          </xmpTPg:SwatchGroups>
       </rdf:Description>
-      <rdf:Description rdf:about=""
-            xmlns:xmpMM="http://ns.adobe.com/xap/1.0/mm/"
-            xmlns:stRef="http://ns.adobe.com/xap/1.0/sType/ResourceRef#"
-            xmlns:stEvt="http://ns.adobe.com/xap/1.0/sType/ResourceEvent#">
-         <xmpMM:DerivedFrom rdf:parseType="Resource">
+      <rdf:Description
+   rdf:about="">
+         <xmpMM:DerivedFrom
+   rdf:parseType="Resource">
             <stRef:instanceID>xmp.iid:048011740720681180838C17A331E4C8</stRef:instanceID>
             <stRef:documentID>xmp.did:048011740720681180838C17A331E4C8</stRef:documentID>
             <stRef:originalDocumentID>xmp.did:07801174072068118083F8AD3FBDF3CE</stRef:originalDocumentID>
@@ -71,14 +192,16 @@
          <xmpMM:OriginalDocumentID>xmp.did:07801174072068118083F8AD3FBDF3CE</xmpMM:OriginalDocumentID>
          <xmpMM:History>
             <rdf:Seq>
-               <rdf:li rdf:parseType="Resource">
+               <rdf:li
+   rdf:parseType="Resource">
                   <stEvt:action>saved</stEvt:action>
                   <stEvt:instanceID>xmp.iid:07801174072068118083F8AD3FBDF3CE</stEvt:instanceID>
                   <stEvt:when>2011-07-16T11:13:21+02:00</stEvt:when>
                   <stEvt:softwareAgent>Adobe Illustrator CS5</stEvt:softwareAgent>
                   <stEvt:changed>/</stEvt:changed>
                </rdf:li>
-               <rdf:li rdf:parseType="Resource">
+               <rdf:li
+   rdf:parseType="Resource">
                   <stEvt:action>saved</stEvt:action>
                   <stEvt:instanceID>xmp.iid:058011740720681180838C17A331E4C8</stEvt:instanceID>
                   <stEvt:when>2014-10-07T21:47:15+02:00</stEvt:when>
@@ -113,10 +236,47 @@
                            
 <?xpacket end="w"?>
 	</metadata>
-<rect x="0.375" y="0.199" fill="#CBF2A3" width="55" height="55"/>
-<rect x="24.311" y="15.937" fill="#231F20" width="17.642" height="3.375"/>
-<rect x="24.311" y="35.84" fill="#231F20" width="17.642" height="3.39"/>
-<rect x="24.311" y="29.278" fill="#231F20" width="3.437" height="9.951"/>
-<rect x="24.311" y="15.937" fill="#231F20" width="3.437" height="9.95"/>
-<rect x="10.952" y="25.888" fill="#231F20" width="16.795" height="3.39"/>
+<rect
+   x="0.375"
+   y="0.199"
+   fill="#cbf2a3"
+   width="56"
+   height="55"
+   id="rect1124"
+   style="stroke-width:1.00905" />
+<rect
+   x="24.311"
+   y="15.937"
+   fill="#231F20"
+   width="17.642"
+   height="3.375"
+   id="rect1126" />
+<rect
+   x="24.311"
+   y="35.84"
+   fill="#231F20"
+   width="17.642"
+   height="3.39"
+   id="rect1128" />
+<rect
+   x="24.311"
+   y="29.278"
+   fill="#231F20"
+   width="3.437"
+   height="9.951"
+   id="rect1130" />
+<rect
+   x="24.311"
+   y="15.937"
+   fill="#231F20"
+   width="3.437"
+   height="9.95"
+   id="rect1132" />
+<rect
+   x="10.952"
+   y="25.888"
+   fill="#231F20"
+   width="16.795"
+   height="3.39"
+   id="rect1134" />
 </svg>
