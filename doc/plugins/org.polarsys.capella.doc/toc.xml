@@ -17,6 +17,8 @@
       <topic href="html/Release note/Whatsnew.html" label="What's new">
       </topic>
       <topic label="API changes">
+         <topic href="html/Release note/API_5.x_to_6.x.html" label="Capella 5.x to 6.x">
+         </topic>
          <topic href="html/Release note/API_1.4.x_to_5.x.html" label="Capella 1.4.x to 5.x">
 			<topic href="html/Release note/API_1.4.x_to_5.x.html#Major_changes" label="Major changes">
 				<topic href="html/Release note/API_1.4.x_to_5.x.html#Migration_to_Eclipse_2020-06" label="Migration to Eclipse 2020-06"></topic>
@@ -76,6 +78,8 @@
          </topic>
       </topic>
       <topic label="Metamodel changes">
+         <topic href="html/Release note/M2_5.x_to_6.x.html" label="Capella 5.x to 6.x">
+         </topic>
          <topic href="html/Release note/M2_1.4.x_to_5.x.html" label="Capella 1.4.x to 5.x">
          </topic>
          <topic href="html/Release note/M2_1.3.x_to_1.4.x.html" label="Capella 1.3.x to 1.4.x">
