@@ -773,6 +773,22 @@
           url="http://download.eclipse.org/eclipse/updates/4.15"/>
     </setupTask>
     <stream
+        name="master-6.0">
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="eclipse.target.platform"
+          value="2021-06"
+          defaultValue="2021-06"
+          storageURI="scope://Workspace"/>
+      <setupTask
+          xsi:type="setup:EclipseIniTask"
+          option="-Doomph.redirection.capella="
+          value="https://raw.githubusercontent.com/eclipse/capella/master-6.0/releng/plugins/org.polarsys.capella.settings/oomph/Capella.setup->${git.clone.capella.location|uri}/releng/plugins/org.polarsys.capella.settings/oomph/Capella.setup"
+          vm="true">
+        <description>Redirect to local setup file allows testing changes before pushing them back to git. Disabled atm because does not work with branches other than master.</description>
+      </setupTask>
+    </stream>
+    <stream
         name="master">
       <setupTask
           xsi:type="setup:VariableTask"
@@ -919,6 +935,15 @@
       <repository
           url="https://dist.springsource.org/snapshot/GRECLIPSE/e4.19"/>
     </setupTask>
+    <stream
+        name="master-6.0">
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="eclipse.target.platform"
+          value="2021-06"
+          defaultValue="2021-06"
+          storageURI="scope://Workspace"/>
+    </stream>
     <stream
         name="master">
       <setupTask
