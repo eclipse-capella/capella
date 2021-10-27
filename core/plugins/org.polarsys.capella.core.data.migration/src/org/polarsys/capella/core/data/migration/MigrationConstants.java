@@ -50,31 +50,31 @@ public class MigrationConstants {
   public static final String LIBRARIES_PREFIX = SHARED_PREFIX + "libraries";
   public static final String RE_PREFIX = SHARED_PREFIX + "re";
 
-  public static final String CAPELLA_COMMON_OLD_NSURI = "http://www.polarsys.org/capella/core/common/1.4.0";
-  public static final String CAPELLA_CORE_OLD_NSURI = "http://www.polarsys.org/capella/core/core/1.4.0";
-  public static final String COMPOSITE_STRUCTURE_OLD_NSURI = "http://www.polarsys.org/capella/core/cs/1.4.0";
-  public static final String CONTEXT_ARCHITECTURE_OLD_NSURI = "http://www.polarsys.org/capella/core/ctx/1.4.0";
-  public static final String EPBS_ARCHITECTURE_OLD_NSURI = "http://www.polarsys.org/capella/core/epbs/1.4.0";
-  public static final String FUNCTIONAL_ANALYSIS_OLD_NSURI = "http://www.polarsys.org/capella/core/fa/1.4.0";
-  public static final String INFORMATION_OLD_NSURI = "http://www.polarsys.org/capella/core/information/1.4.0";
-  public static final String INFORMATION_COMMUNICATION_OLD_NSURI = "http://www.polarsys.org/capella/core/information/communication/1.4.0";
-  public static final String INFORMATION_DATATYPE_OLD_NSURI = "http://www.polarsys.org/capella/core/information/datatype/1.4.0";
-  public static final String INFORMATION_DATAVALUE_OLD_NSURI = "http://www.polarsys.org/capella/core/information/datavalue/1.4.0";
-  public static final String INTERACTION_OLD_NSURI = "http://www.polarsys.org/capella/core/interaction/1.4.0";
-  public static final String LOGICAL_ARCHITECTURE_OLD_NSURI = "http://www.polarsys.org/capella/core/la/1.4.0";
-  public static final String CAPELLA_MODELLER_OLD_NSURI = "http://www.polarsys.org/capella/core/modeller/1.4.0";
-  public static final String OPERATIONAL_ANALYSIS_OLD_NSURI = "http://www.polarsys.org/capella/core/oa/1.4.0";
-  public static final String PHYSICAL_ARCHITECTURE_OLD_NSURI = "http://www.polarsys.org/capella/core/pa/1.4.0";
-  public static final String PHYSICAL_ARCHITECTURE_DEPLOYMENT_OLD_NSURI = "http://www.polarsys.org/capella/core/pa/deployment/1.4.0";
-  public static final String REQUIREMENT_OLD_NSURI = "http://www.polarsys.org/capella/core/requirement/1.4.0";
-  public static final String SHARED_MODEL_OLD_NSURI = "http://www.polarsys.org/capella/core/sharedmodel/1.4.0";
+  public static final String CAPELLA_COMMON_OLD_NSURI = "http://www.polarsys.org/capella/core/common/5.0.0";
+  public static final String CAPELLA_CORE_OLD_NSURI = "http://www.polarsys.org/capella/core/core/5.0.0";
+  public static final String COMPOSITE_STRUCTURE_OLD_NSURI = "http://www.polarsys.org/capella/core/cs/5.0.0";
+  public static final String CONTEXT_ARCHITECTURE_OLD_NSURI = "http://www.polarsys.org/capella/core/ctx/5.0.0";
+  public static final String EPBS_ARCHITECTURE_OLD_NSURI = "http://www.polarsys.org/capella/core/epbs/5.0.0";
+  public static final String FUNCTIONAL_ANALYSIS_OLD_NSURI = "http://www.polarsys.org/capella/core/fa/5.0.0";
+  public static final String INFORMATION_OLD_NSURI = "http://www.polarsys.org/capella/core/information/5.0.0";
+  public static final String INFORMATION_COMMUNICATION_OLD_NSURI = "http://www.polarsys.org/capella/core/information/communication/5.0.0";
+  public static final String INFORMATION_DATATYPE_OLD_NSURI = "http://www.polarsys.org/capella/core/information/datatype/5.0.0";
+  public static final String INFORMATION_DATAVALUE_OLD_NSURI = "http://www.polarsys.org/capella/core/information/datavalue/5.0.0";
+  public static final String INTERACTION_OLD_NSURI = "http://www.polarsys.org/capella/core/interaction/5.0.0";
+  public static final String LOGICAL_ARCHITECTURE_OLD_NSURI = "http://www.polarsys.org/capella/core/la/5.0.0";
+  public static final String CAPELLA_MODELLER_OLD_NSURI = "http://www.polarsys.org/capella/core/modeller/5.0.0";
+  public static final String OPERATIONAL_ANALYSIS_OLD_NSURI = "http://www.polarsys.org/capella/core/oa/5.0.0";
+  public static final String PHYSICAL_ARCHITECTURE_OLD_NSURI = "http://www.polarsys.org/capella/core/pa/5.0.0";
+  public static final String PHYSICAL_ARCHITECTURE_DEPLOYMENT_OLD_NSURI = "http://www.polarsys.org/capella/core/pa/deployment/5.0.0";
+  public static final String REQUIREMENT_OLD_NSURI = "http://www.polarsys.org/capella/core/requirement/5.0.0";
+  public static final String SHARED_MODEL_OLD_NSURI = "http://www.polarsys.org/capella/core/sharedmodel/5.0.0";
 
-  public static final String ACTIVITY_OLD_NSURI = "http://www.polarsys.org/capella/common/activity/1.4.0";
-  public static final String BEHAVIOR_OLD_NSURI = "http://www.polarsys.org/capella/common/behavior/1.4.0";
-  public static final String MODELLING_CORE_OLD_NSURI = "http://www.polarsys.org/capella/common/core/1.4.0";
+  public static final String ACTIVITY_OLD_NSURI = "http://www.polarsys.org/capella/common/activity/5.0.0";
+  public static final String BEHAVIOR_OLD_NSURI = "http://www.polarsys.org/capella/common/behavior/5.0.0";
+  public static final String MODELLING_CORE_OLD_NSURI = "http://www.polarsys.org/capella/common/core/5.0.0";
 
-  public static final String LIBRARIES_OLD_NSURI = "http://www.polarsys.org/capella/common/libraries/1.4.0";
-  public static final String RE_OLD_NSURI = "http://www.polarsys.org/capella/common/re/1.4.0";
+  public static final String LIBRARIES_OLD_NSURI = "http://www.polarsys.org/capella/common/libraries/5.0.0";
+  public static final String RE_OLD_NSURI = "http://www.polarsys.org/capella/common/re/5.0.0";
 
   // public static final String MAPPING_FOLDER = "/" + OLD_VERSION + "_" + NEW_VERSION + "/"; //$NON-NLS-1$
   // //$NON-NLS-2$ //$NON-NLS-3$

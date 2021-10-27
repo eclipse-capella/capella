@@ -1,0 +1,8 @@
+= Metamodel changes =
+
+== From Capella 5.x to 6.x ==
+
+=== Modification of all NSURI ===
+
+* http://www.polarsys.org/capella/core/.../5.0.0 to http://www.polarsys.org/capella/core/.../6.0.0
+* http://www.polarsys.org/capella/common/.../6.0.0 to http://www.polarsys.org/capella/common/.../6.0.0
