@@ -4,7 +4,7 @@
 
 ==== LibraryReference.version ====
 
-* In order to give more flexibility in case a library does not need to have a version, the lowerBould attribute of the '''LibraryReference.version''' reference has been removed.
+* In order to give more flexibility in case a library does not need to have a version, the lowerBound attribute of the '''LibraryReference.version''' reference has been removed.
 
 ==== Semantic annotations adaptations from 1.4.x ====
 
