@@ -12,7 +12,7 @@
  *******************************************************************************/
 target "Capella"
 
-include "https://download.eclipse.org/sirius/updates/stable/6.6.0-S20210906-045606/2020-06/targets/modules/gmf-runtime-1.13.tpd"
+include "https://download.eclipse.org/sirius/updates/stable/6.6.0-S20211026-113903/2020-06/targets/modules/gmf-runtime-1.13.tpd"
 
 with source, requirements
 
@@ -44,7 +44,7 @@ location eclipse "http://download.eclipse.org/releases/2020-06" {
 	com.google.guava
 }
 
-location sirius "https://download.eclipse.org/sirius/updates/stable/6.6.0-S20210906-045606/2020-06" {
+location sirius "https://download.eclipse.org/sirius/updates/stable/6.6.0-S20211026-113903/2020-06" {
 	org.eclipse.sirius.doc.feature.feature.group
 	org.eclipse.sirius.doc.feature.source.feature.group
 	org.eclipse.sirius.runtime.source.feature.group
@@ -57,7 +57,7 @@ location sirius "https://download.eclipse.org/sirius/updates/stable/6.6.0-S20210
 	org.eclipse.sirius.runtime.ide.ui.acceleo.source.feature.group
 }
 
-location kitalpha-runtime-core-master "https://download.eclipse.org/kitalpha/updates/stable/runtime/5.2.0.S202109131249" {	
+location kitalpha-runtime-core-master "https://download.eclipse.org/kitalpha/updates/stable/runtime/5.2.0.S202110291406" {	
 	org.polarsys.kitalpha.ad.runtime.feature.source.feature.group
 	org.polarsys.kitalpha.cadence.feature.source.feature.group
 	org.polarsys.kitalpha.common.feature.source.feature.group
@@ -80,12 +80,12 @@ location kitalpha-runtime-core-master "https://download.eclipse.org/kitalpha/upd
 	org.polarsys.kitalpha.richtext.widget.ext.feature.source.feature.group
 	org.polarsys.kitalpha.transposer.feature.source.feature.group
 }
-location kitalpha-sdk-master "https://download.eclipse.org/kitalpha/updates/stable/sdk/5.2.0.S202109131249" {
+location kitalpha-sdk-master "https://download.eclipse.org/kitalpha/updates/stable/sdk/5.2.0.S202110291406" {
 	org.polarsys.kitalpha.doc.feature.feature.group
 	org.polarsys.kitalpha.emde.sdk.feature.source.feature.group
 }
 
-location diffmerge-core "https://download.eclipse.org/diffmerge/stable/0.13.1-M3/emf-diffmerge-site" {
+location diffmerge-core "https://download.eclipse.org/diffmerge/releases/0.13.1/emf-diffmerge-site" {
 	org.eclipse.emf.diffmerge.feature.source.feature.group
 	org.eclipse.emf.diffmerge.sirius.feature.source.feature.group
 	org.eclipse.emf.diffmerge.gmf.feature.source.feature.group
@@ -93,7 +93,7 @@ location diffmerge-core "https://download.eclipse.org/diffmerge/stable/0.13.1-M3
 	org.eclipse.emf.diffmerge.egit.feature.source.feature.group
 }
 
-location amalgam "https://download.eclipse.org/modeling/amalgam/updates/stable/1.12.1-S20210330/capella" {
+location amalgam "https://download.eclipse.org/modeling/amalgam/updates/releases/1.12.1/capella" {
 	org.eclipse.amalgam.explorer.activity.source.feature.group
 }
 
