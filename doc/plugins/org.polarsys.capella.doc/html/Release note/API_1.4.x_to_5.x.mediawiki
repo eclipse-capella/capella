@@ -29,7 +29,7 @@ Capella code has been made compatible with Java 11
 BREE on Manifest.MF are still Java 1.8
 
 === No backward compatibility ===
-Models from 1.4.x and 5.0.0 have to be migrated to 5.1.0 and can no longer be opened in the previous version.
+Models from 1.4.x, 5.0.0 and 5.1.0 have to be migrated to 5.2.0 and can no longer be opened in the previous version.
 
 == Raw API changes from 1.4.0 to 5.0.0 ==
 
@@ -2070,4 +2070,11 @@ Models from 1.4.x and 5.0.0 have to be migrated to 5.1.0 and can no longer be op
 * <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.common.mdsofa.common.misc.Couple.Couple(Couple<K, V>)</code>
 * <span class="labels"><span class="label label-error">Removed</span></span>[[File:../Images/methpub_obj.png|16px]][[File:../Images/over_co.png|8px]] <code>org.polarsys.capella.common.mdsofa.common.misc.Couple.clone()</code>
 
+== Raw API changes from 5.1.0 to 5.2.0 ==
 
+==== Changes in <code>org.polarsys.capella.common.transition</code>====
+* <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/jcu_obj.png|16px]] <code>org.polarsys.capella.core.transition.common.handlers.traceability.LevelBasedTraceabilityHandler</code>
+
+==== Changes in <code>org.polarsys.capella.core.data.migration</code>====
+* <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/jcu_obj.png|16px]] <code>org.polarsys.capella.core.data.migration.contribution.SVGMigrationContribution</code>
+* <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]][[File:../Images/over_co.png|8px]] <code>org.polarsys.capella.core.data.migration.contribution.SVGMigrationContribution.unaryMigrationExecute(EObject, MigrationContext)</code>
