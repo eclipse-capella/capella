@@ -16,12 +16,6 @@ package org.polarsys.capella.viatra.core.data.pa.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.polarsys.capella.viatra.core.data.pa.surrogate.PhysicalComponent__allocatedPhysicalFunctions;
-import org.polarsys.capella.viatra.core.data.pa.surrogate.PhysicalComponent__deployedPhysicalComponents;
-import org.polarsys.capella.viatra.core.data.pa.surrogate.PhysicalComponent__deployingPhysicalComponents;
-import org.polarsys.capella.viatra.core.data.pa.surrogate.PhysicalComponent__logicalInterfaceRealizations;
-import org.polarsys.capella.viatra.core.data.pa.surrogate.PhysicalComponent__realizedLogicalComponents;
-import org.polarsys.capella.viatra.core.data.pa.surrogate.PhysicalComponent__subPhysicalComponents;
 
 /**
  * A pattern group formed of all public patterns defined in PhysicalComponent.vql.

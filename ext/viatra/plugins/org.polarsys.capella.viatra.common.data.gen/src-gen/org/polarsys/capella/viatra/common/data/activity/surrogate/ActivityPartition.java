@@ -16,8 +16,6 @@ package org.polarsys.capella.viatra.common.data.activity.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityPartition__subPartitions;
-import org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityPartition__superPartition;
 
 /**
  * A pattern group formed of all public patterns defined in ActivityPartition.vql.

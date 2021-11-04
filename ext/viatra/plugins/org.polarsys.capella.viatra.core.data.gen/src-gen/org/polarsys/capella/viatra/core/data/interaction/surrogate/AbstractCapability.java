@@ -16,19 +16,6 @@ package org.polarsys.capella.viatra.core.data.interaction.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.AbstractCapability__extendedAbstractCapabilities;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.AbstractCapability__extending;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.AbstractCapability__extendingAbstractCapabilities;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.AbstractCapability__includedAbstractCapabilities;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.AbstractCapability__including;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.AbstractCapability__includingAbstractCapabilities;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.AbstractCapability__incomingCapabilityAllocation;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.AbstractCapability__involvedAbstractFunctions;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.AbstractCapability__involvedFunctionalChains;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.AbstractCapability__outgoingCapabilityAllocation;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.AbstractCapability__sub;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.AbstractCapability__subGeneralizations;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.AbstractCapability__super;
 
 /**
  * A pattern group formed of all public patterns defined in AbstractCapability.vql.

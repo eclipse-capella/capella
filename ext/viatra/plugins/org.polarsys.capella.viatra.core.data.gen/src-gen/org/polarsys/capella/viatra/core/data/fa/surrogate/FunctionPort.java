@@ -16,9 +16,6 @@ package org.polarsys.capella.viatra.core.data.fa.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionPort__allocatorComponentPorts;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionPort__realizedFunctionPorts;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionPort__realizingFunctionPorts;
 
 /**
  * A pattern group formed of all public patterns defined in FunctionPort.vql.

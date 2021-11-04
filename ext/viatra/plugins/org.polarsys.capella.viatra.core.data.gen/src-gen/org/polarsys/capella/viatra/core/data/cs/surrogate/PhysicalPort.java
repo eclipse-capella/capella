@@ -16,9 +16,6 @@ package org.polarsys.capella.viatra.core.data.cs.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.PhysicalPort__allocatedComponentPorts;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.PhysicalPort__realizedPhysicalPorts;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.PhysicalPort__realizingPhysicalPorts;
 
 /**
  * A pattern group formed of all public patterns defined in PhysicalPort.vql.
