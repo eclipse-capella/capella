@@ -15,18 +15,18 @@
 
 package org.polarsys.capella.viatra.core.data.fa.surrogate
 
-import "http://www.polarsys.org/capella/core/fa/5.0.0"
+import "http://www.polarsys.org/capella/core/fa/6.0.0"
 
 // Start of user code for imports 
-import "http://www.polarsys.org/capella/core/oa/5.0.0"
-import "http://www.polarsys.org/capella/core/common/5.0.0"
-import "http://www.polarsys.org/capella/core/ctx/5.0.0"
-import "http://www.polarsys.org/capella/core/la/5.0.0"
-import "http://www.polarsys.org/capella/core/pa/5.0.0"
-import "http://www.polarsys.org/capella/common/core/5.0.0"
-import "http://www.polarsys.org/capella/core/core/5.0.0"
-import "http://www.polarsys.org/capella/core/interaction/5.0.0"
-import "http://www.polarsys.org/capella/common/activity/5.0.0"
+import "http://www.polarsys.org/capella/core/oa/6.0.0"
+import "http://www.polarsys.org/capella/core/common/6.0.0"
+import "http://www.polarsys.org/capella/core/ctx/6.0.0"
+import "http://www.polarsys.org/capella/core/la/6.0.0"
+import "http://www.polarsys.org/capella/core/pa/6.0.0"
+import "http://www.polarsys.org/capella/common/core/6.0.0"
+import "http://www.polarsys.org/capella/core/core/6.0.0"
+import "http://www.polarsys.org/capella/core/interaction/6.0.0"
+import "http://www.polarsys.org/capella/common/activity/6.0.0"
 
 // End of user code
 

@@ -16,8 +16,6 @@ package org.polarsys.capella.viatra.core.data.interaction.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.AbstractFunctionAbstractCapabilityInvolvement__capability;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.AbstractFunctionAbstractCapabilityInvolvement__function;
 
 /**
  * A pattern group formed of all public patterns defined in AbstractFunctionAbstractCapabilityInvolvement.vql.

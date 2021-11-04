@@ -16,9 +16,6 @@ package org.polarsys.capella.viatra.core.data.capellacommon.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.polarsys.capella.viatra.core.data.capellacommon.surrogate.State__availableAbstractCapabilities;
-import org.polarsys.capella.viatra.core.data.capellacommon.surrogate.State__availableAbstractFunctions;
-import org.polarsys.capella.viatra.core.data.capellacommon.surrogate.State__availableFunctionalChains;
 
 /**
  * A pattern group formed of all public patterns defined in State.vql.

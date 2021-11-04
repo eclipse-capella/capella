@@ -16,8 +16,6 @@ package org.polarsys.capella.viatra.core.data.cs.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.InterfaceAllocation__allocatedInterface;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.InterfaceAllocation__allocatingInterfaceAllocator;
 
 /**
  * A pattern group formed of all public patterns defined in InterfaceAllocation.vql.

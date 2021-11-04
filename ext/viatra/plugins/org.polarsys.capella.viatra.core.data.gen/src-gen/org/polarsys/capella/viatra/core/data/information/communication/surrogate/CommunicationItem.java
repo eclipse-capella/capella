@@ -16,7 +16,6 @@ package org.polarsys.capella.viatra.core.data.information.communication.surrogat
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.polarsys.capella.viatra.core.data.information.communication.surrogate.CommunicationItem__properties;
 
 /**
  * A pattern group formed of all public patterns defined in CommunicationItem.vql.

@@ -16,9 +16,6 @@ package org.polarsys.capella.viatra.common.data.activity.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityEdge__inActivityPartition;
-import org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityEdge__inInterruptibleRegion;
-import org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityEdge__inStructuredNode;
 
 /**
  * A pattern group formed of all public patterns defined in ActivityEdge.vql.

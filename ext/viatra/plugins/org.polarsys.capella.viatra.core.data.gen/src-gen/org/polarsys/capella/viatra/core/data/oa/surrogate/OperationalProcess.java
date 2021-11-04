@@ -16,7 +16,6 @@ package org.polarsys.capella.viatra.core.data.oa.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.polarsys.capella.viatra.core.data.oa.surrogate.OperationalProcess__involvingOperationalCapabilities;
 
 /**
  * A pattern group formed of all public patterns defined in OperationalProcess.vql.

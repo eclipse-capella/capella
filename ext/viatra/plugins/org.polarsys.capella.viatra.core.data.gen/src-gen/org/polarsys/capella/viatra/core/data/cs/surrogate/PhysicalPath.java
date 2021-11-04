@@ -16,9 +16,6 @@ package org.polarsys.capella.viatra.core.data.cs.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.PhysicalPath__firstPhysicalPathInvolvements;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.PhysicalPath__realizedPhysicalPaths;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.PhysicalPath__realizingPhysicalPaths;
 
 /**
  * A pattern group formed of all public patterns defined in PhysicalPath.vql.

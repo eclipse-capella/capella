@@ -16,8 +16,6 @@ package org.polarsys.capella.viatra.core.data.fa.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.ExchangeSpecificationRealization__realizedExchangeSpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.ExchangeSpecificationRealization__realizingExchangeSpecification;
 
 /**
  * A pattern group formed of all public patterns defined in ExchangeSpecificationRealization.vql.

@@ -666,9 +666,9 @@ public final class RequirementsTrace__target extends BaseGeneratedEMFQuerySpecif
   private static class GeneratedPQuery extends BaseGeneratedEMFPQuery {
     private static final RequirementsTrace__target.GeneratedPQuery INSTANCE = new GeneratedPQuery();
     
-    private final PParameter parameter_self = new PParameter("self", "org.polarsys.capella.core.data.requirement.RequirementsTrace", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/requirement/5.0.0", "RequirementsTrace")), PParameterDirection.INOUT);
+    private final PParameter parameter_self = new PParameter("self", "org.polarsys.capella.core.data.requirement.RequirementsTrace", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/requirement/6.0.0", "RequirementsTrace")), PParameterDirection.INOUT);
     
-    private final PParameter parameter_target = new PParameter("target", "org.polarsys.capella.common.data.modellingcore.TraceableElement", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/common/core/5.0.0", "TraceableElement")), PParameterDirection.INOUT);
+    private final PParameter parameter_target = new PParameter("target", "org.polarsys.capella.common.data.modellingcore.TraceableElement", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/common/core/6.0.0", "TraceableElement")), PParameterDirection.INOUT);
     
     private final List<PParameter> parameters = Arrays.asList(parameter_self, parameter_target);
     
@@ -699,17 +699,17 @@ public final class RequirementsTrace__target extends BaseGeneratedEMFQuerySpecif
           PBody body = new PBody(this);
           PVariable var_self = body.getOrCreateVariableByName("self");
           PVariable var_target = body.getOrCreateVariableByName("target");
-          new TypeConstraint(body, Tuples.flatTupleOf(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/requirement/5.0.0", "RequirementsTrace")));
-          new TypeConstraint(body, Tuples.flatTupleOf(var_target), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/common/core/5.0.0", "TraceableElement")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/requirement/6.0.0", "RequirementsTrace")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_target), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/common/core/6.0.0", "TraceableElement")));
           body.setSymbolicParameters(Arrays.<ExportedParameter>asList(
              new ExportedParameter(body, var_self, parameter_self),
              new ExportedParameter(body, var_target, parameter_target)
           ));
           // 	RequirementsTrace.targetElement(self, target)
-          new TypeConstraint(body, Tuples.flatTupleOf(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/requirement/5.0.0", "RequirementsTrace")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/requirement/6.0.0", "RequirementsTrace")));
           PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
-          new TypeConstraint(body, Tuples.flatTupleOf(var_self, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/common/core/5.0.0", "AbstractTrace", "targetElement")));
-          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/common/core/5.0.0", "TraceableElement")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_self, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/common/core/6.0.0", "AbstractTrace", "targetElement")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/common/core/6.0.0", "TraceableElement")));
           new Equality(body, var__virtual_0_, var_target);
           bodies.add(body);
       }

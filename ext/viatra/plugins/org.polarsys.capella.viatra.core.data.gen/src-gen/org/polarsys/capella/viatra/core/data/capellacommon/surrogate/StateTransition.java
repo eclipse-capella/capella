@@ -16,8 +16,6 @@ package org.polarsys.capella.viatra.core.data.capellacommon.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.polarsys.capella.viatra.core.data.capellacommon.surrogate.StateTransition__realizedStateTransitions;
-import org.polarsys.capella.viatra.core.data.capellacommon.surrogate.StateTransition__realizingStateTransitions;
 
 /**
  * A pattern group formed of all public patterns defined in StateTransition.vql.

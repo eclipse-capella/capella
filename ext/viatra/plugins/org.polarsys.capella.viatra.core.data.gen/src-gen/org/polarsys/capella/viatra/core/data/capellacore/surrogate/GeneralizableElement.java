@@ -16,10 +16,6 @@ package org.polarsys.capella.viatra.core.data.capellacore.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.polarsys.capella.viatra.core.data.capellacore.surrogate.GeneralizableElement__sub;
-import org.polarsys.capella.viatra.core.data.capellacore.surrogate.GeneralizableElement__subGeneralizations;
-import org.polarsys.capella.viatra.core.data.capellacore.surrogate.GeneralizableElement__super;
-import org.polarsys.capella.viatra.core.data.capellacore.surrogate.GeneralizableElement__superGeneralizations;
 
 /**
  * A pattern group formed of all public patterns defined in GeneralizableElement.vql.

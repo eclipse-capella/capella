@@ -16,11 +16,6 @@ package org.polarsys.capella.viatra.core.data.interaction.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.Scenario__containedFunctions;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.Scenario__containedParts;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.Scenario__realizedScenarios;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.Scenario__realizingScenarios;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.Scenario__referencedScenarios;
 
 /**
  * A pattern group formed of all public patterns defined in Scenario.vql.

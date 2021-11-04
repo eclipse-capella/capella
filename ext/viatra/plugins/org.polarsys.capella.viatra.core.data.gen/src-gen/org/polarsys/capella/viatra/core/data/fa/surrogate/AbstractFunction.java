@@ -16,16 +16,6 @@ package org.polarsys.capella.viatra.core.data.fa.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.AbstractFunction__allocationBlocks;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.AbstractFunction__componentFunctionalAllocations;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.AbstractFunction__inFunctionRealizations;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.AbstractFunction__involvingCapabilities;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.AbstractFunction__involvingCapabilityRealizations;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.AbstractFunction__involvingFunctionalChains;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.AbstractFunction__linkedFunctionSpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.AbstractFunction__linkedStateMachine;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.AbstractFunction__outFunctionRealizations;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.AbstractFunction__subFunctions;
 
 /**
  * A pattern group formed of all public patterns defined in AbstractFunction.vql.
