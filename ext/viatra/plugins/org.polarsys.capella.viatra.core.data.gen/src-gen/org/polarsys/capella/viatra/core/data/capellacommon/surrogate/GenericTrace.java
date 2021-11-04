@@ -16,8 +16,6 @@ package org.polarsys.capella.viatra.core.data.capellacommon.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.polarsys.capella.viatra.core.data.capellacommon.surrogate.GenericTrace__source;
-import org.polarsys.capella.viatra.core.data.capellacommon.surrogate.GenericTrace__target;
 
 /**
  * A pattern group formed of all public patterns defined in GenericTrace.vql.

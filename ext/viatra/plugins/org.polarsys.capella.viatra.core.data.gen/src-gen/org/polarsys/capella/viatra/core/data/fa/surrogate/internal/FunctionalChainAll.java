@@ -26,7 +26,6 @@ import org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChain__invol
 import org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChain__involvingCapabilityRealizations;
 import org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChain__realizedFunctionalChains;
 import org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChain__realizingFunctionalChains;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.internal._PreviousInvolvement;
 
 /**
  * A pattern group formed of all patterns defined in FunctionalChain.vql.

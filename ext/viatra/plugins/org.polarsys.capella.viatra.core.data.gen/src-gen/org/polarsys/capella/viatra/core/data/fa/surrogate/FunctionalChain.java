@@ -16,17 +16,6 @@ package org.polarsys.capella.viatra.core.data.fa.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChain__enactedFunctionalBlocks;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChain__enactedFunctions;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChain__firstFunctionalChainInvolvements;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChain__involvedElements;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChain__involvedFunctionalChainInvolvements;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChain__involvedFunctionalExchanges;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChain__involvedFunctions;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChain__involvingCapabilities;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChain__involvingCapabilityRealizations;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChain__realizedFunctionalChains;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChain__realizingFunctionalChains;
 
 /**
  * A pattern group formed of all public patterns defined in FunctionalChain.vql.

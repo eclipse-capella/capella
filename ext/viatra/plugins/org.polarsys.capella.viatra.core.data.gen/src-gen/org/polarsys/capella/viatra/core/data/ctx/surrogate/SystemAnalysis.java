@@ -16,11 +16,6 @@ package org.polarsys.capella.viatra.core.data.ctx.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemAnalysis__allocatedOperationalAnalyses;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemAnalysis__allocatedOperationalAnalysisRealizations;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemAnalysis__allocatingLogicalArchitectures;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemAnalysis__containedCapabilityPkg;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemAnalysis__containedSystemFunctionPkg;
 
 /**
  * A pattern group formed of all public patterns defined in SystemAnalysis.vql.

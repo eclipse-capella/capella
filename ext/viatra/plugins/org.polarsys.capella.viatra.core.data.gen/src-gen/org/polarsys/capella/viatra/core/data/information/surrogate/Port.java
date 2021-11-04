@@ -16,10 +16,6 @@ package org.polarsys.capella.viatra.core.data.information.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.polarsys.capella.viatra.core.data.information.surrogate.Port__incomingPortAllocations;
-import org.polarsys.capella.viatra.core.data.information.surrogate.Port__incomingPortRealizations;
-import org.polarsys.capella.viatra.core.data.information.surrogate.Port__outgoingPortAllocations;
-import org.polarsys.capella.viatra.core.data.information.surrogate.Port__outgoingPortRealizations;
 
 /**
  * A pattern group formed of all public patterns defined in Port.vql.

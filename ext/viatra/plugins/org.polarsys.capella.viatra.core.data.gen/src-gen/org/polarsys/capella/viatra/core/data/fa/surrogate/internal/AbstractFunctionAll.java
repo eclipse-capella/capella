@@ -25,9 +25,6 @@ import org.polarsys.capella.viatra.core.data.fa.surrogate.AbstractFunction__link
 import org.polarsys.capella.viatra.core.data.fa.surrogate.AbstractFunction__linkedStateMachine;
 import org.polarsys.capella.viatra.core.data.fa.surrogate.AbstractFunction__outFunctionRealizations;
 import org.polarsys.capella.viatra.core.data.fa.surrogate.AbstractFunction__subFunctions;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.internal._AbstractFunction__ownedFunctionPkgs;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.internal._FunctionPkg__ownedFunctionPkgs;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.internal._FunctionPkg__ownedFunctions;
 
 /**
  * A pattern group formed of all patterns defined in AbstractFunction.vql.

@@ -16,16 +16,6 @@ package org.polarsys.capella.viatra.core.data.fa.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalExchange__allocatingComponentExchanges;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalExchange__categories;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalExchange__incomingComponentExchangeFunctionalExchangeRealizations;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalExchange__incomingFunctionalExchangeRealizations;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalExchange__involvingFunctionalChains;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalExchange__outgoingFunctionalExchangeRealizations;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalExchange__realizedFunctionalExchanges;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalExchange__realizingFunctionalExchanges;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalExchange__sourceFunctionOutputPort;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalExchange__targetFunctionInputPort;
 
 /**
  * A pattern group formed of all public patterns defined in FunctionalExchange.vql.

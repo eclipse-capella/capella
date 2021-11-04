@@ -16,7 +16,6 @@ package org.polarsys.capella.viatra.core.data.pa.deployment.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.polarsys.capella.viatra.core.data.pa.deployment.surrogate.ComponentInstance__portInstances;
 
 /**
  * A pattern group formed of all public patterns defined in ComponentInstance.vql.

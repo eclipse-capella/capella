@@ -16,7 +16,6 @@ package org.polarsys.capella.viatra.core.data.information.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.polarsys.capella.viatra.core.data.information.surrogate.Property__association;
 
 /**
  * A pattern group formed of all public patterns defined in Property.vql.
