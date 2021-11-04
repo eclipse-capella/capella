@@ -16,15 +16,6 @@ package org.polarsys.capella.viatra.core.data.cs.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.BlockArchitecture__allocatedArchitectures;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.BlockArchitecture__allocatingArchitectures;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.BlockArchitecture__provisionedArchitectureAllocations;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.BlockArchitecture__provisioningArchitectureAllocations;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.BlockArchitecture__system;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.EPBSArchitecture__system;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.LogicalArchitecture__system;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.PhysicalArchitecture__system;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.SystemAnalysis__system;
 
 /**
  * A pattern group formed of all public patterns defined in BlockArchitecture.vql.

@@ -16,18 +16,6 @@ package org.polarsys.capella.viatra.core.data.fa.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentExchange__allocatedFunctionalExchanges;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentExchange__allocatorPhysicalLinks;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentExchange__categories;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentExchange__incomingComponentExchangeRealizations;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentExchange__outgoingComponentExchangeFunctionalExchangeAllocations;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentExchange__outgoingComponentExchangeRealizations;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentExchange__realizedComponentExchanges;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentExchange__realizingComponentExchanges;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentExchange__sourcePart;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentExchange__sourcePort;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentExchange__targetPart;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentExchange__targetPort;
 
 /**
  * A pattern group formed of all public patterns defined in ComponentExchange.vql.

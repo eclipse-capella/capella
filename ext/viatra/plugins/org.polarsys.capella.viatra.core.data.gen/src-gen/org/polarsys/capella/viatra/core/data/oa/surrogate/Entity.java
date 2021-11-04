@@ -16,12 +16,6 @@ package org.polarsys.capella.viatra.core.data.oa.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.polarsys.capella.viatra.core.data.oa.surrogate.Entity__allocatedOperationalActivities;
-import org.polarsys.capella.viatra.core.data.oa.surrogate.Entity__allocatedRoles;
-import org.polarsys.capella.viatra.core.data.oa.surrogate.Entity__involvingOperationalCapabilities;
-import org.polarsys.capella.viatra.core.data.oa.surrogate.Entity__realizingSystemComponents;
-import org.polarsys.capella.viatra.core.data.oa.surrogate.Entity__roleAllocations;
-import org.polarsys.capella.viatra.core.data.oa.surrogate.Entity__subEntities;
 
 /**
  * A pattern group formed of all public patterns defined in Entity.vql.

@@ -16,11 +16,6 @@ package org.polarsys.capella.viatra.core.data.interaction.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.SequenceMessage__invokedOperation;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.SequenceMessage__receivingFunction;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.SequenceMessage__receivingPart;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.SequenceMessage__sendingFunction;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.SequenceMessage__sendingPart;
 
 /**
  * A pattern group formed of all public patterns defined in SequenceMessage.vql.

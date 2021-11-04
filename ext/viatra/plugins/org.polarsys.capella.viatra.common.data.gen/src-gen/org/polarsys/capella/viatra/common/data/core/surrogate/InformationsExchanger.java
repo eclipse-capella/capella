@@ -16,9 +16,6 @@ package org.polarsys.capella.viatra.common.data.core.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.polarsys.capella.viatra.common.data.core.surrogate.InformationsExchanger__incomingInformationFlows;
-import org.polarsys.capella.viatra.common.data.core.surrogate.InformationsExchanger__informationFlows;
-import org.polarsys.capella.viatra.common.data.core.surrogate.InformationsExchanger__outgoingInformationFlows;
 
 /**
  * A pattern group formed of all public patterns defined in InformationsExchanger.vql.

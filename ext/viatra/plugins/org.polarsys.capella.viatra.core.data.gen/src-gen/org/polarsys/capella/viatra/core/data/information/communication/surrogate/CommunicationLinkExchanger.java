@@ -16,16 +16,6 @@ package org.polarsys.capella.viatra.core.data.information.communication.surrogat
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.polarsys.capella.viatra.core.data.information.communication.surrogate.CommunicationLinkExchanger__access;
-import org.polarsys.capella.viatra.core.data.information.communication.surrogate.CommunicationLinkExchanger__acquire;
-import org.polarsys.capella.viatra.core.data.information.communication.surrogate.CommunicationLinkExchanger__call;
-import org.polarsys.capella.viatra.core.data.information.communication.surrogate.CommunicationLinkExchanger__consume;
-import org.polarsys.capella.viatra.core.data.information.communication.surrogate.CommunicationLinkExchanger__execute;
-import org.polarsys.capella.viatra.core.data.information.communication.surrogate.CommunicationLinkExchanger__produce;
-import org.polarsys.capella.viatra.core.data.information.communication.surrogate.CommunicationLinkExchanger__receive;
-import org.polarsys.capella.viatra.core.data.information.communication.surrogate.CommunicationLinkExchanger__send;
-import org.polarsys.capella.viatra.core.data.information.communication.surrogate.CommunicationLinkExchanger__transmit;
-import org.polarsys.capella.viatra.core.data.information.communication.surrogate.CommunicationLinkExchanger__write;
 
 /**
  * A pattern group formed of all public patterns defined in CommunicationLinkExchanger.vql.

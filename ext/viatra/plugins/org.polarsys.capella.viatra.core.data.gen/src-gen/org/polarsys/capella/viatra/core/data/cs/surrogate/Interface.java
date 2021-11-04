@@ -16,22 +16,6 @@ package org.polarsys.capella.viatra.core.data.cs.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.Interface__allocatingComponents;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.Interface__allocatingInterfaces;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.Interface__exchangeItems;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.Interface__implementorComponents;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.Interface__interfaceImplementations;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.Interface__interfaceUses;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.Interface__providingComponentPorts;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.Interface__providingComponents;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.Interface__provisioningInterfaceAllocations;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.Interface__realizedContextInterfaces;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.Interface__realizedLogicalInterfaces;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.Interface__realizingLogicalInterfaces;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.Interface__realizingPhysicalInterfaces;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.Interface__requiringComponentPorts;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.Interface__requiringComponents;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.Interface__userComponents;
 
 /**
  * A pattern group formed of all public patterns defined in Interface.vql.
