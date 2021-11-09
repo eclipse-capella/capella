@@ -167,7 +167,7 @@ import org.polarsys.capella.core.data.la.LogicalComponentPkg;
 import org.polarsys.capella.core.data.oa.ActivityAllocation;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
-import org.polarsys.capella.core.data.oa.OperationalCapability;
+import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.data.oa.Role;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
@@ -2558,10 +2558,12 @@ public class CapellaServices {
    * used
    */
   public boolean isOperationalContext(Scenario scenario) {
-    if (scenario.eContainer() instanceof OperationalCapability) {
-      return true;
-    }
-    return false;
+    return (scenario.eContainer() instanceof AbstractCapability)
+        && BlockArchitectureExt.getRootBlockArchitecture(scenario) instanceof OperationalAnalysis;
+  }
+  
+  public boolean isOperationalContext(AbstractCapability capability) {
+    return BlockArchitectureExt.getRootBlockArchitecture(capability) instanceof OperationalAnalysis;
   }
 
   public boolean isPrimitiveTypeForAttribute(EObject object) {
