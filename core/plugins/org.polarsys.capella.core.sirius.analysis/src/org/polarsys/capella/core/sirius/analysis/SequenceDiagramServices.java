@@ -56,7 +56,6 @@ import org.polarsys.capella.core.data.interaction.SequenceMessage;
 import org.polarsys.capella.core.data.interaction.StateFragment;
 import org.polarsys.capella.core.data.interaction.TimeLapse;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
-import org.polarsys.capella.core.data.oa.OperationalCapability;
 import org.polarsys.capella.core.model.helpers.ScenarioExt;
 import org.polarsys.capella.core.model.helpers.SequenceMessageExt;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaDeleteCommand;
@@ -673,11 +672,8 @@ public class SequenceDiagramServices {
         return (s.getOwnedInstanceRoles().size() == 0) || !containsOaActivity(s);
       }
       return false;
-
-    } else {
-      AbstractCapability capa = (AbstractCapability) ctx;
-      return capa instanceof OperationalCapability;
     }
+    return CapellaServices.getService().isOperationalContext((AbstractCapability) ctx);
   }
 
   public static boolean isValidActivityScenario(EObject ctx) {
@@ -688,10 +684,8 @@ public class SequenceDiagramServices {
         return (s.getOwnedInstanceRoles().size() == 0) || containsOaActivity(s);
       }
       return false;
-    } else {
-      AbstractCapability capa = (AbstractCapability) ctx;
-      return capa instanceof OperationalCapability;
     }
+    return CapellaServices.getService().isOperationalContext((AbstractCapability) ctx);
   }
 
   public static boolean isValidIS(EObject ctx) {
@@ -699,10 +693,8 @@ public class SequenceDiagramServices {
       Scenario s = (Scenario) ctx;
       return (!CapellaServices.getService().isOperationalContext(s))
           && (s.getKind().equals(ScenarioKind.INTERFACE) || s.getKind().equals(ScenarioKind.UNSET));
-    } else {
-      AbstractCapability capa = (AbstractCapability) ctx;
-      return !(capa instanceof OperationalCapability);
     }
+    return !(CapellaServices.getService().isOperationalContext((AbstractCapability) ctx));
   }
 
   public static boolean isValidES(EObject ctx) {
@@ -710,10 +702,10 @@ public class SequenceDiagramServices {
       Scenario s = (Scenario) ctx;
       return (!CapellaServices.getService().isOperationalContext(s)) && (!CapellaServices.getService().isEPBSContext(s))
           && (s.getKind().equals(ScenarioKind.DATA_FLOW) || s.getKind().equals(ScenarioKind.UNSET));
-    } else {
-      AbstractCapability capa = (AbstractCapability) ctx;
-      return !(capa instanceof OperationalCapability) && (!CapellaServices.getService().isEPBSContext(capa));
     }
+    AbstractCapability capa = (AbstractCapability) ctx;
+    return !(CapellaServices.getService().isOperationalContext(capa))
+        && (!CapellaServices.getService().isEPBSContext(capa));
   }
 
   public static boolean isValidFS(EObject ctx) {
@@ -721,10 +713,10 @@ public class SequenceDiagramServices {
       Scenario s = (Scenario) ctx;
       return (!CapellaServices.getService().isOperationalContext(s)) && (!CapellaServices.getService().isEPBSContext(s))
           && (s.getKind().equals(ScenarioKind.FUNCTIONAL) || s.getKind().equals(ScenarioKind.UNSET));
-    } else {
-      AbstractCapability capa = (AbstractCapability) ctx;
-      return !(capa instanceof OperationalCapability) && (!CapellaServices.getService().isEPBSContext(capa));
     }
+    AbstractCapability capa = (AbstractCapability) ctx;
+    return !(CapellaServices.getService().isOperationalContext(capa))
+        && (!CapellaServices.getService().isEPBSContext(capa));
   }
 
   private static boolean isSameInstanceRole(InteractionFragment a, InteractionFragment b) {
