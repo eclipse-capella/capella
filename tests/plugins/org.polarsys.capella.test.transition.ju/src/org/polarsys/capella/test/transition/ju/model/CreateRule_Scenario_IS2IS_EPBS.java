@@ -15,7 +15,6 @@ package org.polarsys.capella.test.transition.ju.model;
 import java.util.Arrays;
 import java.util.List;
 
-import org.polarsys.capella.core.transition.system.topdown.constants.ITopDownConstants;
 import org.polarsys.capella.test.transition.ju.TopDownTransitionTestCase;
 
 public abstract class CreateRule_Scenario_IS2IS_EPBS extends TopDownTransitionTestCase {
@@ -44,6 +43,10 @@ public abstract class CreateRule_Scenario_IS2IS_EPBS extends TopDownTransitionTe
   public static final String PC_6 = "6348ddc7-e84f-491c-acd3-85c0856017c1"; //$NON-NLS-1$
   public static final String COTSCI_COTSCI_1 = "e8e40fc0-4650-4002-b34e-7bdc1d6762e3"; //$NON-NLS-1$
   public static final String COTSCI_COTSCI_2 = "bda958aa-7b7f-494f-be9f-fb5e54f89edf"; //$NON-NLS-1$
+  
+  public static final String CAPABILITYREALIZATION_2 = "d6565430-c89f-48f5-a8ac-bbe897bb1999"; //$NON-NLS-1$
+  public static final String IS_CAPABILITYREALIZATION_2 = "9309a27d-5285-4941-a07c-8da83af7e1c4"; //$NON-NLS-1$
+  public static final String IR_PA_3 = "2716e19f-f5c8-4262-b40f-ddd7507a0ad3"; //$NON-NLS-1$
   
   @Override
   public List<String> getRequiredTestModels() {

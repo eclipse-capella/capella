@@ -1589,47 +1589,18 @@
                      name="PhysicalArchitecture">
                </defaultMappingPossibility>
             </mappingElement>
-         </mappingPackage>
-         
-         
-     </mapping>
-</extension>
-<extension
-      id="org.polarsys.capella.core.transition.system.topdown.pc2ci"
-      name="PC to CI"
-      point="org.polarsys.kitalpha.transposer.rules.handler.mapping">
-   <mapping
-         context="org.polarsys.capella.core.transition.common.context.TransitionContext"
-         description="Transition for Physical Components to Configuration Items"
-         domainHelper="org.polarsys.capella.core.transition.system.domain.CapellaTransitionDomainHelper"
-         extendedMappingExtensionID="org.polarsys.capella.core.transition.system.topdown"
-         mappingName="PC to CI"
-         mappingPurpose="org.polarsys.capella.core.transition">
-      <mappingPackage
-            name="pa">
-         <mappingElement
-               domainMetaClass="org.polarsys.capella.core.data.pa.PhysicalArchitecture"
-               reuseExtendedElementDefaultPossibility="true"
-               reuseExtendedElementPossibilities="true">
-            <defaultMappingPossibility
-                  completeRule="org.polarsys.capella.core.transition.system.topdown.rules.pa.PhysicalArchitectureRule"
-                  enabled="true"
-                  incompleteRule="org.polarsys.capella.core.transition.system.topdown.rules.pa.PhysicalArchitectureRule"
-                  name="PhysicalArchitecture">
-            </defaultMappingPossibility>
-         </mappingElement>
-         <mappingElement
-               domainMetaClass="org.polarsys.capella.core.data.pa.PhysicalComponent"
-               reuseExtendedElementDefaultPossibility="true"
-               reuseExtendedElementPossibilities="true">
-            <defaultMappingPossibility
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.pa.PhysicalComponent"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
                   completeRule="org.polarsys.capella.core.transition.system.topdown.rules.pa.PhysicalComponentRule"
                   enabled="true"
                   incompleteRule="org.polarsys.capella.core.transition.system.topdown.rules.pa.PhysicalComponentRule"
                   name="PhysicalComponent">
-            </defaultMappingPossibility>
-         </mappingElement>
-      </mappingPackage>
+               </defaultMappingPossibility>
+            </mappingElement>
+         </mappingPackage>
    </mapping>
 </extension>
 

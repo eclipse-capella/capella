@@ -51,7 +51,9 @@ public class Messages extends NLS {
   public static String Rule_InteractionState_FailMsg;
   public static String Rule_StateFragment_FailMsg;
   public static String Rule_InteractionFunctionState_FailMsg;
-
+  public static String PC2CI_Actor;
+  public static String PC2CI_Preferences;
+  
   static {
     // initialize resource bundle
     NLS.initializeMessages(BUNDLE_NAME, Messages.class);
