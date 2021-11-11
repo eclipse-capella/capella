@@ -18,8 +18,10 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.domain.EditingDomain;
 
 import org.polarsys.capella.core.data.fa.FaPackage;
+import org.polarsys.capella.core.data.interaction.AbstractCapability;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
-import org.polarsys.capella.core.data.oa.OperationalCapability;
+import org.polarsys.capella.core.data.oa.OperationalAnalysis;
+import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.menu.dynamic.contributions.IMDEMenuItemContribution;
 
@@ -33,7 +35,8 @@ public class FunctionalChainItemContribution implements IMDEMenuItemContribution
    */
   public boolean selectionContribution(ModelElement modelElement, EClass cls, EStructuralFeature feature) {
     return !(modelElement instanceof OperationalActivity) &&
-            !(modelElement instanceof OperationalCapability);
+            !(modelElement instanceof AbstractCapability && 
+                BlockArchitectureExt.getRootBlockArchitecture(modelElement) instanceof OperationalAnalysis);
   }
 
   /**
