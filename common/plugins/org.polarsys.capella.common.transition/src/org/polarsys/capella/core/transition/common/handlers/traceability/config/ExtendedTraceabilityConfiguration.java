@@ -109,6 +109,9 @@ public abstract class ExtendedTraceabilityConfiguration extends TraceabilityConf
     if (result) {
       for (ITraceabilityConfiguration configuration : getDefinedConfigurations(context)) {
         result = configuration.useHandlerForAttachment(source, target, handler, context);
+        if (!result) {
+          return false;
+        }
       }
     }
     return result;
@@ -124,6 +127,9 @@ public abstract class ExtendedTraceabilityConfiguration extends TraceabilityConf
     if (result) {
       for (ITraceabilityConfiguration configuration : getDefinedConfigurations(context)) {
         result = configuration.useHandlerForTracedElements(source, handler, context);
+        if (!result) {
+          return false;
+        }
       }
     }
     return result;
@@ -139,6 +145,9 @@ public abstract class ExtendedTraceabilityConfiguration extends TraceabilityConf
     if (result) {
       for (ITraceabilityConfiguration configuration : getDefinedConfigurations(context)) {
         result = configuration.useHandlerForSourceElements(source, handler, context);
+        if (!result) {
+          return false;
+        }
       }
     }
     return result;
