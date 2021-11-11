@@ -71,7 +71,6 @@ public class IntramodelTransitionCommand extends LauncherCommand {
     case ITopDownConstants.TRANSITION_TOPDOWN_OC2SM:
     case ITopDownConstants.TRANSITION_TOPDOWN_OA2SC:
     case ITopDownConstants.TRANSITION_TOPDOWN_OA2SM:
-    case ITopDownConstants.TRANSITION_TOPDOWN_PC2CI:
     case ITopDownConstants.TRANSITION_TOPDOWN_CAPABILITY:
       return "org.polarsys." + kind;
 

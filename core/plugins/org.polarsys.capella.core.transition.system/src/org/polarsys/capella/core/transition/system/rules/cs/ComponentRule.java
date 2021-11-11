@@ -13,7 +13,6 @@
 
 package org.polarsys.capella.core.transition.system.rules.cs;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -38,6 +37,7 @@ import org.polarsys.capella.core.data.ctx.SystemAnalysis;
 import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.ctx.SystemComponentPkg;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
+import org.polarsys.capella.core.data.epbs.ConfigurationItemPkg;
 import org.polarsys.capella.core.data.epbs.EpbsPackage;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
 import org.polarsys.capella.core.data.la.LaPackage;
@@ -288,14 +288,25 @@ public class ComponentRule extends AbstractCapellaElementRule {
         return PaPackage.Literals.PHYSICAL_COMPONENT__OWNED_PHYSICAL_COMPONENT_PKGS;
       }
 
-    } else if (container instanceof Part) {
-      return CsPackage.Literals.PART__OWNED_ABSTRACT_TYPE;
+    } else if (container instanceof ConfigurationItemPkg) {
+      if (EpbsPackage.Literals.CONFIGURATION_ITEM.isSuperTypeOf(targetType)) {
+        return EpbsPackage.Literals.CONFIGURATION_ITEM_PKG__OWNED_CONFIGURATION_ITEMS;
+      } else if (EpbsPackage.Literals.CONFIGURATION_ITEM_PKG.isSuperTypeOf(targetType)) {
+        return EpbsPackage.Literals.CONFIGURATION_ITEM_PKG__OWNED_CONFIGURATION_ITEM_PKGS;
+      }
 
     } else if (container instanceof ConfigurationItem) {
       if (EpbsPackage.Literals.CONFIGURATION_ITEM.isSuperTypeOf(targetType)) {
         return EpbsPackage.Literals.CONFIGURATION_ITEM__OWNED_CONFIGURATION_ITEMS;
+      } else if (EpbsPackage.Literals.CONFIGURATION_ITEM_PKG.isSuperTypeOf(targetType)) {
+        return EpbsPackage.Literals.CONFIGURATION_ITEM__OWNED_CONFIGURATION_ITEM_PKGS;
       }
+
+    } else if (container instanceof Part) {
+      return CsPackage.Literals.PART__OWNED_ABSTRACT_TYPE;
+
     }
+    
     return element.eContainingFeature();
   }
 
