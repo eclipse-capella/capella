@@ -24,9 +24,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -365,7 +363,7 @@ public class MoveHelper {
 
           } else if (upperBound > 1) {
             @SuppressWarnings("unchecked")
-            EObjectContainmentEList<EObject> contList = (EObjectContainmentEList<EObject>) target.eGet(childrenFeature);
+            EList<EObject> contList = (EList<EObject>) target.eGet(childrenFeature);
             if (contList.size() < upperBound) {
               isElementCompatible = true;
             }
