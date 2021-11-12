@@ -44,7 +44,10 @@ import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementFunction;
 import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink;
 import org.polarsys.capella.core.data.fa.FunctionalChainReference;
+import org.polarsys.capella.core.data.information.Association;
 import org.polarsys.capella.core.data.information.DataPkg;
+import org.polarsys.capella.core.data.information.InformationPackage;
+import org.polarsys.capella.core.data.information.Property;
 import org.polarsys.capella.core.data.information.datatype.BooleanType;
 import org.polarsys.capella.core.data.information.datatype.DatatypePackage;
 import org.polarsys.capella.core.data.information.datatype.Enumeration;
@@ -75,6 +78,11 @@ public class DragDropTest extends NavigatorEmptyProject {
    */
   void checkMoveAllowed(EObject current, EObject newTarget) {
     checkMoveAllowed(current, newTarget, "");
+  }
+
+  void checkEMFRules(EObject current, EObject newTarget) {
+    assertTrue("EMF Rules shall be followed",
+        MoveHelper.getInstance().checkEMFRules(Arrays.asList(current), newTarget).isOK());
   }
 
   void checkMoveAllowed(EObject current, EObject newTarget, String rule) {
@@ -211,6 +219,13 @@ public class DragDropTest extends NavigatorEmptyProject {
     checkMoveAllowed(boolLiteral, bool2, "Literals of Boolean can be moved to another Boolean");
     checkMoveDisabled(boolLiteral, enum1, "Literals of Boolean can't be moved to Enum");
 
+    Association assoc1 = createAssociation(SA_DATA);
+    Property property1 = createProperty(assoc1);
+
+    Association assoc2 = createAssociation(SA_DATA);
+    checkMoveAllowed(property1, assoc2, "Property can be moved to Association");
+    checkEMFRules(property1, assoc2);
+
   }
 
   private void checkCopyDisabled(EObject current, EObject newTarget, String rule) {
@@ -257,6 +272,14 @@ public class DragDropTest extends NavigatorEmptyProject {
 
   private Enumeration createEnumeration(DataPkg container) {
     return create(container, DatatypePackage.Literals.ENUMERATION);
+  }
+
+  private Association createAssociation(DataPkg container) {
+    return create(container, InformationPackage.Literals.ASSOCIATION);
+  }
+
+  private Property createProperty(Association association) {
+    return create(association, InformationPackage.Literals.PROPERTY);
   }
 
   private EnumerationLiteral createEnumerationLiteral(Enumeration container) {
