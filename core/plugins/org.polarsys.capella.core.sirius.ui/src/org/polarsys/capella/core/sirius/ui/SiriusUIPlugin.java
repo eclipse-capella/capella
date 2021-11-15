@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2021 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -19,12 +19,14 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
+import org.eclipse.sirius.business.api.image.RichTextAttributeRegistry;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.statushandlers.StatusManager;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ui.services.AbstractUIActivator;
+import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 
 /**
  * The viewpoint UI plugin activator.
@@ -40,6 +42,8 @@ public class SiriusUIPlugin extends AbstractUIActivator {
   public void start(BundleContext context_p) throws Exception {
     super.start(context_p);
     __plugin = this;
+    
+    RichTextAttributeRegistry.INSTANCE.add(CapellacorePackage.eINSTANCE.getCapellaElement_Description());
   }
 
   /**
