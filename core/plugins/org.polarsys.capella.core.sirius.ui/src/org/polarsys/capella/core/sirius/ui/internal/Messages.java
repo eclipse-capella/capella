@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2021 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -25,6 +25,7 @@ public class Messages extends NLS {
   public static String update_workspace_image_paths;
   public static String collecting_diagrams;
   public static String updating_diagram;
+  public static String updating_richtext_description;
   static {
     // initialize resource bundle
     NLS.initializeMessages(BUNDLE_NAME, Messages.class);
