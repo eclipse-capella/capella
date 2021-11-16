@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018, 2021 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -23,6 +23,7 @@ import org.polarsys.capella.test.migration.ju.fwk.PackageRegistryTest;
 import org.polarsys.capella.test.migration.ju.fwk.TestOfTest;
 import org.polarsys.capella.test.migration.ju.testcases.basic.EnableFCAndPPFiltersMigrationTest;
 import org.polarsys.capella.test.migration.ju.testcases.basic.FunctionalChainNonRegressionTest;
+import org.polarsys.capella.test.migration.ju.testcases.basic.ImagePathInRichTextAttributeMigrationTest;
 import org.polarsys.capella.test.migration.ju.testcases.basic.InvalidAirdReferenceMigrationTest;
 import org.polarsys.capella.test.migration.ju.testcases.basic.MigrationDelegatedHandlerTest;
 import org.polarsys.capella.test.migration.ju.testcases.basic.MigrationEnabledTest;
@@ -48,7 +49,7 @@ public class MigrationTestSuite extends BasicTestSuite {
     tests.add(new NsPrefixTest());
     tests.add(new PackageRegistryTest());
     tests.add(new TestOfTest());
-    
+
     tests.add(new MigrationDelegatedHandlerTest());
     tests.add(new RepresentationDescriptionNonRegressionTest());
     tests.add(new FunctionalChainNonRegressionTest());
@@ -57,6 +58,7 @@ public class MigrationTestSuite extends BasicTestSuite {
     tests.add(new InvalidAirdReferenceMigrationTest());
     tests.add(new MigrationEnabledTest());
     tests.add(new EnableFCAndPPFiltersMigrationTest());
+    tests.add(new ImagePathInRichTextAttributeMigrationTest());
     return tests;
   }
 }
