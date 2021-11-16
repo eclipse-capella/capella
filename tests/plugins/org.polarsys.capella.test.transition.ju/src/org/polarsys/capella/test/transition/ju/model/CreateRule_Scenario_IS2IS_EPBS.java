@@ -44,9 +44,9 @@ public abstract class CreateRule_Scenario_IS2IS_EPBS extends TopDownTransitionTe
   public static final String COTSCI_COTSCI_1 = "e8e40fc0-4650-4002-b34e-7bdc1d6762e3"; //$NON-NLS-1$
   public static final String COTSCI_COTSCI_2 = "bda958aa-7b7f-494f-be9f-fb5e54f89edf"; //$NON-NLS-1$
   
-  public static final String CAPABILITYREALIZATION_2 = "d6565430-c89f-48f5-a8ac-bbe897bb1999"; //$NON-NLS-1$
-  public static final String IS_CAPABILITYREALIZATION_2 = "9309a27d-5285-4941-a07c-8da83af7e1c4"; //$NON-NLS-1$
-  public static final String IR_PA_3 = "2716e19f-f5c8-4262-b40f-ddd7507a0ad3"; //$NON-NLS-1$
+  public static final String CAPABILITYREALIZATION_2 = "1cc8d4fe-b338-4f96-952e-9e3bfb6eab4c"; //$NON-NLS-1$
+  public static final String IS_CAPABILITYREALIZATION_2 = "3bf0e036-bcd0-411c-9878-bf5be221f95b"; //$NON-NLS-1$
+  public static final String IR_PA_3 = "e117ef4f-0c4a-4dfa-ae88-1af22f2c9fbc"; //$NON-NLS-1$
   
   @Override
   public List<String> getRequiredTestModels() {
