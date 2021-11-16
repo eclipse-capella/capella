@@ -12,7 +12,6 @@
  *******************************************************************************/
 package org.polarsys.capella.test.table.ju.requirements;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -316,30 +315,4 @@ public abstract class RequirementsTableTestFramework extends TableTestFramework 
 
   }
 
-  public void deleteRequirement(DTable table, Requirement req) {
-    new AbstractTableToolStep(context, null, DescriptionPackage.Literals.DELETE_LINE_TOOL, table) {
-
-      @Override
-      protected void initToolArguments() {
-        EObject container = TableTestingHelper.getLine(table, req);
-        _toolWrapper.setArgumentValue(ArgumentType.CONTAINER_VIEW, container);
-      }
-
-      @Override
-      protected void postRunTest() {
-        super.postRunTest();
-        List<EObject> list = new ArrayList<EObject>();
-        list.add(req);
-        TableTestingHelper.assertCheckObjectOnTable(table, list, false);
-        assertNull(reqNullErrMsg, req.eContainer());
-      }
-
-      @Override
-      public Object getResult() {
-        return null;
-      }
-
-    }.run();
-
-  }
 }

@@ -12202,18 +12202,9 @@
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <ownedLineMappings name="Requirement Pkg" domainClass="RequirementsPkg" semanticCandidatesExpression="aql:self" headerLabelExpression="feature:name">
         <ownedSubLines name="requirements 1" reusedInMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='Sub%20Requirement%20Pkg']" domainClass="Requirement" semanticCandidatesExpression="aql:self.ownedRequirements" headerLabelExpression="aql:if (self.eClass().name = 'SystemUserRequirement') then 'SUR' else if (self.eClass().name = 'SystemFunctionalInterfaceRequirement') then 'SFIR' else if (self.eClass().name = 'SystemFunctionalRequirement') then 'SFR' else if (self.eClass().name = 'SystemNonFunctionalInterfaceRequirement') then 'SNFIR' else if (self.eClass().name = 'SystemNonFunctionalRequirement') then 'SNFR' else self.eClass().name endif endif endif endif endif">
-          <delete name="delete requirement">
+          <delete name="delete requirement" precondition="false">
             <variables name="element" documentation="The currently edited element."/>
             <variables name="root" documentation="The semantic element corresponding to the current table."/>
-            <firstModelOperation xsi:type="tool_1:ChangeContext" browseExpression="aql:self">
-              <subModelOperations xsi:type="tool_1:For" expression="feature:incomingTraces">
-                <subModelOperations xsi:type="tool_1:RemoveElement"/>
-              </subModelOperations>
-              <subModelOperations xsi:type="tool_1:For" expression="feature:outgoingTraces">
-                <subModelOperations xsi:type="tool_1:RemoveElement"/>
-              </subModelOperations>
-              <subModelOperations xsi:type="tool_1:RemoveElement"/>
-            </firstModelOperation>
           </delete>
         </ownedSubLines>
         <ownedSubLines name="Sub Requirement Pkg" reusedSubLines="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='requirements%201'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='Sub%20Requirement%20Pkg']" reusedInMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='Sub%20Requirement%20Pkg']" domainClass="RequirementsPkg" semanticCandidatesExpression="aql:self.ownedRequirementPkgs" headerLabelExpression="feature:name">
@@ -12275,18 +12266,9 @@
               <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Req Pkg"/>
             </firstModelOperation>
           </create>
-          <delete name="delete sub requirement pkg" forceRefresh="true">
+          <delete name="delete sub requirement pkg" precondition="false">
             <variables name="element" documentation="The currently edited element."/>
             <variables name="root" documentation="The semantic element corresponding to the current table."/>
-            <firstModelOperation xsi:type="tool_1:ChangeContext" browseExpression="aql:self">
-              <subModelOperations xsi:type="tool_1:For" expression="aql:self.eAllContents()->filter(requirement::Requirement)">
-                <subModelOperations xsi:type="tool_1:RemoveElement"/>
-              </subModelOperations>
-              <subModelOperations xsi:type="tool_1:For" expression="aql:self.eAllContents()->filter(requirement::RequirementsPkg)">
-                <subModelOperations xsi:type="tool_1:RemoveElement"/>
-              </subModelOperations>
-              <subModelOperations xsi:type="tool_1:RemoveElement"/>
-            </firstModelOperation>
           </delete>
         </ownedSubLines>
         <create name="Requirement Pkg" forceRefresh="true" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='Sub%20Requirement%20Pkg']">
@@ -13732,8 +13714,18 @@
         <containerViewVariable name="containerView"/>
         <representationNameVariable name="tableName"/>
       </ownedRepresentationCreationDescriptions>
-      <ownedLineMappings name="TID line" domainClass="Component" semanticCandidatesExpression="aql:self.getSubUsedComponents()" headerLabelExpression="feature:name"/>
-      <ownedColumnMappings name="TID column" headerLabelExpression="aql:self.getTIDInterfaceLabel()" domainClass="Interface" semanticCandidatesExpression="aql:viewpoint.target.getTIDInterfaces()"/>
+      <ownedLineMappings name="TID line" domainClass="Component" semanticCandidatesExpression="aql:self.getSubUsedComponents()" headerLabelExpression="feature:name">
+        <delete name="No delete" precondition="false">
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="root" documentation="The semantic element corresponding to the current table."/>
+        </delete>
+      </ownedLineMappings>
+      <ownedColumnMappings name="TID column" headerLabelExpression="aql:self.getTIDInterfaceLabel()" domainClass="Interface" semanticCandidatesExpression="aql:viewpoint.target.getTIDInterfaces()">
+        <delete name="No delete" precondition="false">
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="root" documentation="The semantic element corresponding to the current table."/>
+        </delete>
+      </ownedColumnMappings>
       <intersection name="TID Cell Value" canEdit="false" lineMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interface%20Delegations']/@ownedLineMappings[name='TID%20line']" columnMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interface%20Delegations']/@ownedColumnMappings.0" labelExpression="aql:self.getTIDLabel(column,line)" columnFinderExpression="aql:self.getRelatedInterfaces()"/>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']" name="Interface Diagram" label="%common.id" titleExpression="aql:'[ID] ' + self.name" domainClass="Interface">
@@ -20483,7 +20475,12 @@
     <ownedRepresentations xsi:type="description_3:CrossTableDescription" name="Contextual State And Mode - Matrix" label="Capability Function and State Machine Matrix" domainClass="StateMachine">
       <ownedLineMappings name="CSAM Root Function" reusedSubLines="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20State%20And%20Mode%20-%20Matrix']/@ownedLineMappings[name='CSAM%20Root%20Function']/@ownedSubLines[name='CSAM%20Sub%20Functions']/@ownedSubLines[name='CSAM%20function%20package']" domainClass="AbstractFunction" semanticCandidatesExpression="aql:self.ownedRegions.getRootFunction()" headerLabelExpression="feature:name">
         <ownedSubLines name="CSAM Sub Functions" reusedSubLines="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20State%20And%20Mode%20-%20Matrix']/@ownedLineMappings[name='CSAM%20Root%20Function']/@ownedSubLines[name='CSAM%20Sub%20FunctionalChains%201'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20State%20And%20Mode%20-%20Matrix']/@ownedLineMappings[name='CSAM%20Root%20Function']/@ownedSubLines[name='CSAM%20Sub%20Functions']" reusedInMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20State%20And%20Mode%20-%20Matrix']/@ownedLineMappings[name='CSAM%20Root%20Function']/@ownedSubLines[name='CSAM%20Sub%20Functions']/@ownedSubLines[name='CSAM%20function%20package'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20State%20And%20Mode%20-%20Matrix']/@ownedLineMappings[name='CSAM%20Root%20Function']/@ownedSubLines[name='CSAM%20Sub%20Functions']" domainClass="AbstractFunction" semanticCandidatesExpression="feature:eContents" headerLabelExpression="feature:name">
-          <ownedSubLines name="CSAM function package" reusedSubLines="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20State%20And%20Mode%20-%20Matrix']/@ownedLineMappings[name='CSAM%20Root%20Function']/@ownedSubLines[name='CSAM%20Sub%20Functions'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20State%20And%20Mode%20-%20Matrix']/@ownedLineMappings[name='CSAM%20Root%20Function']/@ownedSubLines[name='CSAM%20Sub%20Functions']/@ownedSubLines[name='CSAM%20function%20package']" reusedInMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20State%20And%20Mode%20-%20Matrix']/@ownedLineMappings[name='CSAM%20Root%20Function'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20State%20And%20Mode%20-%20Matrix']/@ownedLineMappings[name='CSAM%20Root%20Function']/@ownedSubLines[name='CSAM%20Sub%20Functions']/@ownedSubLines[name='CSAM%20function%20package']" domainClass="FunctionPkg" semanticCandidatesExpression="feature:eContents" headerLabelExpression="feature:name"/>
+          <ownedSubLines name="CSAM function package" reusedSubLines="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20State%20And%20Mode%20-%20Matrix']/@ownedLineMappings[name='CSAM%20Root%20Function']/@ownedSubLines[name='CSAM%20Sub%20Functions'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20State%20And%20Mode%20-%20Matrix']/@ownedLineMappings[name='CSAM%20Root%20Function']/@ownedSubLines[name='CSAM%20Sub%20Functions']/@ownedSubLines[name='CSAM%20function%20package']" reusedInMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20State%20And%20Mode%20-%20Matrix']/@ownedLineMappings[name='CSAM%20Root%20Function'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20State%20And%20Mode%20-%20Matrix']/@ownedLineMappings[name='CSAM%20Root%20Function']/@ownedSubLines[name='CSAM%20Sub%20Functions']/@ownedSubLines[name='CSAM%20function%20package']" domainClass="FunctionPkg" semanticCandidatesExpression="feature:eContents" headerLabelExpression="feature:name">
+            <delete name="No delete" precondition="false">
+              <variables name="element" documentation="The currently edited element."/>
+              <variables name="root" documentation="The semantic element corresponding to the current table."/>
+            </delete>
+          </ownedSubLines>
           <delete name="No delete" precondition="false">
             <variables name="element" documentation="The currently edited element."/>
             <variables name="root" documentation="The semantic element corresponding to the current table."/>
@@ -20622,8 +20619,18 @@
       </intersection>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_3:CrossTableDescription" name="Modes and States Reference Matrix" domainClass="StateMachine">
-      <ownedLineMappings name="States and Modes" reusedSubLines="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20and%20States%20Reference%20Matrix']/@ownedLineMappings[name='States%20and%20Modes']" reusedInMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20and%20States%20Reference%20Matrix']/@ownedLineMappings[name='States%20and%20Modes']" domainClass="IState" semanticCandidatesExpression="aql:self.ownedRegions.ownedStates"/>
-      <ownedColumnMappings name="Represented states and modes" domainClass="IState" semanticCandidatesExpression="aql:self.getAllReferencedStatesInSM()"/>
+      <ownedLineMappings name="States and Modes" reusedSubLines="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20and%20States%20Reference%20Matrix']/@ownedLineMappings[name='States%20and%20Modes']" reusedInMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20and%20States%20Reference%20Matrix']/@ownedLineMappings[name='States%20and%20Modes']" domainClass="IState" semanticCandidatesExpression="aql:self.ownedRegions.ownedStates">
+        <delete name="No delete" precondition="false">
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="root" documentation="The semantic element corresponding to the current table."/>
+        </delete>
+      </ownedLineMappings>
+      <ownedColumnMappings name="Represented states and modes" domainClass="IState" semanticCandidatesExpression="aql:self.getAllReferencedStatesInSM()">
+        <delete name="No delete" precondition="false">
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="root" documentation="The semantic element corresponding to the current table."/>
+        </delete>
+      </ownedColumnMappings>
       <intersection name="involded on" lineMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20and%20States%20Reference%20Matrix']/@ownedLineMappings[name='States%20and%20Modes']" columnMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20and%20States%20Reference%20Matrix']/@ownedColumnMappings.0" labelExpression="aql:lineSemantic.displayCharX(columnSemantic)" columnFinderExpression="aql:self.getStateReferenced()"/>
     </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="org.polarsys.capella.core.sequencediag.ScenarioService"/>

@@ -60,19 +60,5 @@ public class InterfaceCapabilityScenarioTestCase extends InterfaceTableTestFrame
      */
     showAllLines(context, table, Arrays.asList(_interface1, _interface2, _oper1ExItem1, _flow1ExItem1, _oper1ExItem1));
 
-    /**
-     * Delete column containing sub capability 1
-     * <P>
-     * Column containing sub capability 1 is deleted and Sub Cap1 is removed from Sub Capability Pkg
-     */
-    deleteColumn(context, table, _subCapability1, _capabilityPkg, _subCapabilityPkg);
-
-    /**
-     * Delete line containing Operation1
-     * <P>
-     * Line containing Operation1 is deleted and Operation1 is removed from InterfacePkg; \ Exchange Item Allocation is
-     * also removed; Sequence Message in Scenario has a null Operation
-     */
-    deleteLine(context, table, _oper1ExItem1, _oper1SeqMsgCall, _oper1SeqMsgReply);
   }
 }

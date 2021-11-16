@@ -64,18 +64,5 @@ public class RequirementsTableTestCase extends RequirementsTableTestFramework {
      */
     createRequirementREQPKG(table, _rootReqPkg);
 
-    /**
-     * Delete the System User Requirement SUR in Root Req Pkg
-     * <P>
-     * System User Requirement is deleted from Root Req Pkg
-     */
-    deleteRequirement(table, _systemUserReq);
-
-    /**
-     * Delete the System Functional Requirement SFR in Root Req Pkg
-     * <P>
-     * System Functional Requirement SFRt is deleted from Root Req Pkg
-     */
-    deleteRequirement(table, _systemFuncReq);
   }
 }

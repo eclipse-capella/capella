@@ -18,13 +18,15 @@ import java.util.Spliterators;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
-import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping;
+import org.eclipse.sirius.table.metamodel.table.description.LineMapping;
+import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ODesignHelper;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
 
@@ -36,7 +38,9 @@ public class CheckDeletionDescriptionTest extends BasicTestCase {
 
     Set<Viewpoint> test = ViewpointRegistry.getInstance().getViewpoints();
     for (Viewpoint viewpoint : test) {
-      checkMappingsHasDeletionDescription(viewpoint.eResource());
+      if (CapellaResourceHelper.CAPELLA_MODEL_FILE_EXTENSION.equals(viewpoint.getModelFileExtension())) {
+        checkMappingsHasDeletionDescription(viewpoint.eResource());
+      }
     }
 
     if (this.failedTest.length() == 0) {
@@ -48,31 +52,45 @@ public class CheckDeletionDescriptionTest extends BasicTestCase {
   }
 
   protected void checkMappingsHasDeletionDescription(Resource resource) {
-    List<DiagramElementMapping> diamap = StreamSupport
+    List<RepresentationElementMapping> mappings = StreamSupport
         .stream(Spliterators.spliteratorUnknownSize(resource.getAllContents(), 0), false)
-        .filter(DiagramElementMapping.class::isInstance).map(x -> (DiagramElementMapping) x)
+        .filter(RepresentationElementMapping.class::isInstance).map(x -> (RepresentationElementMapping) x)
         .filter(ODesignHelper::isNotDeprecatedMapping).collect(Collectors.toList());
-    for (EObject diagramElementMapping : diamap) {
-      checkHasDeletionDescription((DiagramElementMapping) diagramElementMapping);
+
+    for (RepresentationElementMapping mapping : mappings) {
+      checkHasDeletionDescription((RepresentationElementMapping) mapping);
     }
   }
 
-  private void checkHasDeletionDescription(DiagramElementMapping diagramElementMapping) {
-    if (diagramElementMapping instanceof AbstractNodeMapping) {
-      AbstractNodeMapping nodeMapping = (AbstractNodeMapping) diagramElementMapping;
-      if (nodeMapping.getDomainClass() != null) {
-        if (nodeMapping.getDeletionDescription() == null) {
-          this.failedTest
-              .append("No Deletion Description for: " + ODesignHelper.computeModelPath(diagramElementMapping) + "\n");
-        }
+  private void checkHasDeletionDescription(RepresentationElementMapping mapping) {
+    if (mapping instanceof AbstractNodeMapping) {
+      AbstractNodeMapping nodeMapping = (AbstractNodeMapping) mapping;
+      if (nodeMapping.getDomainClass() != null && nodeMapping.getDeletionDescription() == null) {
+        this.failedTest.append("No Deletion Description for: " + ODesignHelper.computeModelPath(mapping) + "\n");
       }
-    } else if (diagramElementMapping instanceof EdgeMapping) {
-      EdgeMapping edgeMapping = (EdgeMapping) diagramElementMapping;
+
+    } else if (mapping instanceof EdgeMapping) {
+      EdgeMapping edgeMapping = (EdgeMapping) mapping;
       if (edgeMapping.isUseDomainElement() && edgeMapping.getDeletionDescription() == null) {
-        if (edgeMapping.getDeletionDescription() == null) {
-          this.failedTest
-              .append("No Deletion Description for: " + ODesignHelper.computeModelPath(diagramElementMapping) + "\n");
-        }
+        this.failedTest.append("No Deletion Description for: " + ODesignHelper.computeModelPath(mapping) + "\n");
+      }
+      
+    } else if (mapping instanceof LineMapping) {
+      LineMapping lineMapping = (LineMapping) mapping;
+      if (lineMapping.getDelete() == null) {
+        this.failedTest.append("No Deletion Description for: " + ODesignHelper.computeModelPath(mapping) + "\n");
+        
+      } else if (!"false".equals(lineMapping.getDelete().getPrecondition())) {
+        this.failedTest.append("Capella Deletion on tables is not supported. Deletion shall be disabled with a 'false' precondition for: " + ODesignHelper.computeModelPath(mapping) + "\n");
+      }
+
+    } else if (mapping instanceof ElementColumnMapping) {
+      ElementColumnMapping columnMapping = (ElementColumnMapping) mapping;
+      if (columnMapping.getDelete() == null) {
+        this.failedTest.append("No Deletion Description for: " + ODesignHelper.computeModelPath(mapping) + "\n");
+        
+      } else if (!"false".equals(columnMapping.getDelete().getPrecondition())) {
+        this.failedTest.append("Capella Deletion on tables is not supported. Deletion shall be disabled with a 'false' precondition for: " + ODesignHelper.computeModelPath(mapping) + "\n");
       }
     }
   }
