@@ -327,6 +327,10 @@
             <variables name="root" documentation="The semantic element corresponding to the current table."/>
           </delete>
         </ownedSubLines>
+        <delete name="No delete" precondition="false">
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="root" documentation="The semantic element corresponding to the current table."/>
+        </delete>
       </ownedLineMappings>
       <ownedColumnMappings name="LACA Context Actor column" initialWidth="50" domainClass="SystemComponent" semanticCandidatesExpression="aql:self.eContainer().containedSystemAnalysis.eAllContents()->filter(ctx::SystemComponent)->select(c | c.isActor())">
         <delete name="No delete" precondition="false">

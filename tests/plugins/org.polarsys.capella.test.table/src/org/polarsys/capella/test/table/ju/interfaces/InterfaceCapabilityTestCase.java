@@ -58,18 +58,5 @@ public class InterfaceCapabilityTestCase extends InterfaceTableTestFramework {
      */
     showAllLines(context, table);
     
-    /**
-     * Delete column containing sub capability 1
-     * <P>
-     * Column containing sub capability 1 is deleted and Sub Cap1 is removed from Sub Capability Pkg
-     */
-    deleteColumn(context, table, _subCapability1, _capabilityPkg, _subCapabilityPkg);
-
-    /**
-     * Delete line containing Flow1
-     * <P>
-     * Line containing Flow1 is deleted and Flow1 is removed from InterfacePkg; Exchange Item Allocation is also removed
-     */
-    deleteLine(context, table, _flow1ExItem1);
   }
 }

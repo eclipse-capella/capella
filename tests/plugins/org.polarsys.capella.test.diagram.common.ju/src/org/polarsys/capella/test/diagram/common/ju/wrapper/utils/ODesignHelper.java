@@ -24,6 +24,7 @@ import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.test.framework.helpers.EObjectHelper;
 
@@ -96,7 +97,7 @@ public class ODesignHelper {
    * @param mappingToolDescription
    * @return path of the element in odesign
    */
-  public static String computeModelPath(DiagramElementMapping mappingToolDescription) {
+  public static String computeModelPath(RepresentationElementMapping mappingToolDescription) {
     StringBuilder sb = new StringBuilder(mappingToolDescription.getName());
     EObject container = mappingToolDescription.eContainer();
     while ((null != container) && (container instanceof IdentifiedElement)) {
@@ -106,8 +107,8 @@ public class ODesignHelper {
     return sb.toString();
   }
 
-  public static boolean isNotDeprecatedMapping(DiagramElementMapping mapping) {
-    if ("false".equalsIgnoreCase(mapping.getPreconditionExpression())) {
+  public static boolean isNotDeprecatedMapping(RepresentationElementMapping mapping) {
+    if (mapping instanceof DiagramElementMapping && "false".equalsIgnoreCase(((DiagramElementMapping)mapping).getPreconditionExpression())) {
       return false;
     }
     if (mapping.getName().contains("Dummy")) {

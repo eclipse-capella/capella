@@ -5594,9 +5594,23 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_2:CrossTableDescription" name="Interfaces - Capabilities" preconditionExpression="aql:self.oclIsKindOf(ctx::SystemAnalysis) or self.oclIsKindOf(la::LogicalArchitecture)" domainClass="BlockArchitecture">
       <ownedLineMappings name="TIC Interfaces line" domainClass="Interface" semanticCandidatesExpression="aql:self.getAllInterfacesInvolved()" headerLabelExpression="feature:name">
-        <ownedSubLines name="TIC Services line" domainClass="ExchangeItemAllocation" semanticCandidatesExpression="aql:self.getDefinedExchangeItems()" headerLabelExpression="aql:self.allocatedItem.name"/>
+        <ownedSubLines name="TIC Services line" domainClass="ExchangeItemAllocation" semanticCandidatesExpression="aql:self.getDefinedExchangeItems()" headerLabelExpression="aql:self.allocatedItem.name">
+          <delete name="No delete" precondition="false">
+            <variables name="element" documentation="The currently edited element."/>
+            <variables name="root" documentation="The semantic element corresponding to the current table."/>
+          </delete>
+        </ownedSubLines>
+        <delete name="No delete" precondition="false">
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="root" documentation="The semantic element corresponding to the current table."/>
+        </delete>
       </ownedLineMappings>
-      <ownedColumnMappings name="TIC Capabilities column" headerLabelExpression="feature:name" domainClass="AbstractCapability" semanticCandidatesExpression="aql:self.getAllCapabilities()"/>
+      <ownedColumnMappings name="TIC Capabilities column" headerLabelExpression="feature:name" domainClass="AbstractCapability" semanticCandidatesExpression="aql:self.getAllCapabilities()">
+        <delete name="No delete" precondition="false">
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="root" documentation="The semantic element corresponding to the current table."/>
+        </delete>
+      </ownedColumnMappings>
       <intersection name="TIC Cell Value" canEdit="false" lineMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Interfaces%20-%20Capabilities']/@ownedLineMappings[name='TIC%20Interfaces%20line']/@ownedSubLines[name='TIC%20Services%20line']" columnMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Interfaces%20-%20Capabilities']/@ownedColumnMappings.0" labelExpression="X" columnFinderExpression="aql:self.isUsedInCapabilities()"/>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_2:CrossTableDescription" name="Interfaces - Scenarios" domainClass="AbstractCapability">
@@ -5605,16 +5619,44 @@
         <representationNameVariable name="tableName"/>
       </ownedRepresentationCreationDescriptions>
       <ownedLineMappings name="TIS Interfaces line" domainClass="Interface" semanticCandidatesExpression="aql:self.getAllInterfacesInvolved()" headerLabelExpression="feature:name">
-        <ownedSubLines name="TIS Services line" domainClass="ExchangeItemAllocation" semanticCandidatesExpression="aql:self.getDefinedExchangeItems()" headerLabelExpression="aql:self.allocatedItem.name"/>
+        <ownedSubLines name="TIS Services line" domainClass="ExchangeItemAllocation" semanticCandidatesExpression="aql:self.getDefinedExchangeItems()" headerLabelExpression="aql:self.allocatedItem.name">
+          <delete name="No delete" precondition="false">
+            <variables name="element" documentation="The currently edited element."/>
+            <variables name="root" documentation="The semantic element corresponding to the current table."/>
+          </delete>
+        </ownedSubLines>
+        <delete name="No delete" precondition="false">
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="root" documentation="The semantic element corresponding to the current table."/>
+        </delete>
       </ownedLineMappings>
-      <ownedColumnMappings name="TIS Scenarios column" headerLabelExpression="feature:name" domainClass="Scenario" semanticCandidatesExpression="aql:self.ownedScenarios"/>
+      <ownedColumnMappings name="TIS Scenarios column" headerLabelExpression="feature:name" domainClass="Scenario" semanticCandidatesExpression="aql:self.ownedScenarios">
+        <delete name="No delete" precondition="false">
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="root" documentation="The semantic element corresponding to the current table."/>
+        </delete>
+      </ownedColumnMappings>
       <intersection name="TIS Cell Value" canEdit="false" lineMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Interfaces%20-%20Scenarios']/@ownedLineMappings[name='TIS%20Interfaces%20line']/@ownedSubLines[name='TIS%20Services%20line']" columnMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Interfaces%20-%20Scenarios']/@ownedColumnMappings.0" labelExpression="X" columnFinderExpression="aql:self.isUsedInScenarios()"/>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_2:CrossTableDescription" name="Interfaces - Capabilities and Scenarios" preconditionExpression="aql:self.oclIsKindOf(ctx::SystemAnalysis) or self.oclIsKindOf(la::LogicalArchitecture)" domainClass="BlockArchitecture">
       <ownedLineMappings name="TICS Interfaces line" domainClass="Interface" semanticCandidatesExpression="aql:self.getAllInterfacesInvolved()" headerLabelExpression="feature:name">
-        <ownedSubLines name="TICS Services line" domainClass="ExchangeItemAllocation" semanticCandidatesExpression="aql:self.getDefinedExchangeItems()" headerLabelExpression="aql:self.allocatedItem.name"/>
+        <ownedSubLines name="TICS Services line" domainClass="ExchangeItemAllocation" semanticCandidatesExpression="aql:self.getDefinedExchangeItems()" headerLabelExpression="aql:self.allocatedItem.name">
+          <delete name="No delete" precondition="false">
+            <variables name="element" documentation="The currently edited element."/>
+            <variables name="root" documentation="The semantic element corresponding to the current table."/>
+          </delete>
+        </ownedSubLines>
+        <delete name="No delete" precondition="false">
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="root" documentation="The semantic element corresponding to the current table."/>
+        </delete>
       </ownedLineMappings>
-      <ownedColumnMappings name="TICS Capabilities column" headerLabelExpression="feature:name" domainClass="AbstractCapability" semanticCandidatesExpression="aql:self.getAllCapabilities()"/>
+      <ownedColumnMappings name="TICS Capabilities column" headerLabelExpression="feature:name" domainClass="AbstractCapability" semanticCandidatesExpression="aql:self.getAllCapabilities()">
+        <delete name="No delete" precondition="false">
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="root" documentation="The semantic element corresponding to the current table."/>
+        </delete>
+      </ownedColumnMappings>
       <intersection name="TICS Cell Value" canEdit="false" lineMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Interfaces%20-%20Capabilities%20and%20Scenarios']/@ownedLineMappings[name='TICS%20Interfaces%20line']/@ownedSubLines[name='TICS%20Services%20line']" columnMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Interfaces%20-%20Capabilities%20and%20Scenarios']/@ownedColumnMappings.0" labelExpression="aql:lineSemantic.getScenariosUsingService(columnSemantic)" columnFinderExpression="aql:self.isUsedInCapabilities()"/>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_2:CrossTableDescription" name="System/Actors - System Functions" domainClass="SystemAnalysis">
@@ -5625,6 +5667,10 @@
             <variables name="root" documentation="The semantic element corresponding to the current table."/>
           </delete>
         </ownedSubLines>
+        <delete name="No delete" precondition="false">
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="root" documentation="The semantic element corresponding to the current table."/>
+        </delete>
       </ownedLineMappings>
       <ownedColumnMappings name="Functions 1" headerLabelExpression="feature:name" domainClass="AbstractFunction" semanticCandidatesExpression="aql:self.getAllLeafAbstractFunctions()">
         <delete name="No delete" precondition="false">

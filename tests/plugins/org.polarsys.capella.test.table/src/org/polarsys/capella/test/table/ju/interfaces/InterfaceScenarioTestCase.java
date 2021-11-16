@@ -67,21 +67,6 @@ public class InterfaceScenarioTestCase extends InterfaceTableTestFramework {
     showAllLines(context, table, Arrays.asList(_interface2, _interface3, _oper1ExItem1, _oper2ExItem1, _flow1ExItem1));
 
     /**
-     * Delete line containing Operation2
-     * <P>
-     * Line containing Operation2 is deleted and Operation2 is removed from InterfacePkg; \ Exchange Item Allocation is
-     * also removed; Sequence Message in Scenario has a null Operation
-     */
-    deleteLine(context, table, _oper2ExItem1, _oper2SeqMsgCall, _oper2SeqMsgReply);
-
-    /**
-     * Delete column containing scenario 1
-     * <P>
-     * Column containing scenario 1 is deleted and scenario 1 is removed from Capability 1
-     */
-    deleteColumn(context, table, _scenario1);
-
-    /**
      * Create a new table "Interfaces - Scenarios" for Capability 2
      * <P>
      * New table "Interfaces - Scenarios" is created for Capability 2

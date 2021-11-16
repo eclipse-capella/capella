@@ -15,19 +15,12 @@ package org.polarsys.capella.test.table.ju.interfaces;
 import java.util.Arrays;
 import java.util.List;
 
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.table.metamodel.table.DTable;
-import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.ctx.Capability;
 import org.polarsys.capella.core.data.ctx.CapabilityPkg;
-import org.polarsys.capella.core.data.helpers.interaction.services.MessageEndExt;
-import org.polarsys.capella.core.data.information.AbstractEventOperation;
 import org.polarsys.capella.core.data.information.ExchangeItem;
-import org.polarsys.capella.core.data.interaction.MessageEnd;
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
 import org.polarsys.capella.test.framework.context.SessionContext;
@@ -139,34 +132,8 @@ public abstract class InterfaceTableTestFramework extends TableTestFramework {
     _scenario2 = (Scenario) context.getSemanticElement(scenario2Id);
   }
 
-  public void deleteLine(SessionContext context, DTable table, EObject obj, SequenceMessage seqMsgCall,
-      SequenceMessage seqMsgReply) {
-    super.deleteLine(context, table, obj);
-    MessageEnd receivingEnd = seqMsgCall.getReceivingEnd();
-    AbstractEventOperation receivedOperation = MessageEndExt.getOperation(receivingEnd);
-    MessageEnd sendingEnd = seqMsgCall.getSendingEnd();
-    AbstractEventOperation sentOperation = MessageEndExt.getOperation(sendingEnd);
-    assertNull(receivedOperation);
-    assertNull(sentOperation);
-
-    receivingEnd = seqMsgReply.getReceivingEnd();
-    receivedOperation = MessageEndExt.getOperation(receivingEnd);
-    sendingEnd = seqMsgReply.getSendingEnd();
-    sentOperation = MessageEndExt.getOperation(sendingEnd);
-    assertNull(receivedOperation);
-    assertNull(sentOperation);
-  }
-
   @Override
   public List<String> getRequiredTestModels() {
     return Arrays.asList(modelName);
-  }
-
-  public void deleteColumn(SessionContext context, DTable table, EObject obj, CapabilityPkg pkg, CapabilityPkg subPkg) {
-    super.deleteColumn(context, table, obj);
-    if (pkg != null)
-      assertFalse(NLS.bind(existErrMsg, EObjectExt.getText(obj)), pkg.getOwnedCapabilities().contains(obj));
-    if (subPkg != null)
-      assertTrue(NLS.bind(existErrMsg, EObjectExt.getText(obj)), subPkg.getOwnedCapabilities().isEmpty());
   }
 }
