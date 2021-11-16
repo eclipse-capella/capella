@@ -96,6 +96,7 @@ public class CapellaMDERichTextFactory extends MDERichTextFactory {
     KeyAdapter keyListener = new KeyAdapter() {
 
       private static final int SHIFT_AND_CTRL_KEY_CODE = SWT.CTRL | SWT.SHIFT;
+
       private static final int V_KEY_CODE = 86;
 
       private boolean isPasteElementLinkEvent(KeyEvent event) {
@@ -110,7 +111,7 @@ public class CapellaMDERichTextFactory extends MDERichTextFactory {
           widget.insertRawText(RichTextLinksClipboard.getInstance().getCopiedElementsLinksHtml());
         }
       }
-      
+
     };
 
     widget.addKeyListener(keyListener);
