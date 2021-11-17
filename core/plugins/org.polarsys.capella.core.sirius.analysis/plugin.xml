@@ -216,16 +216,6 @@
             id="org.polarsys.capella.core.sirius.analysis.delete.CapellaDeleteActionHook">
       </deleteHook>
    </extension>
-
-	<extension
-        point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders">
-     <editpartProvider
-           class="org.polarsys.capella.core.sirius.analysis.editpart.RotativeImageEditPartProvider">
-        <Priority
-              name="Highest">
-        </Priority>
-     </editpartProvider>
-  </extension>
   
   <extension
         point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders">
@@ -676,5 +666,48 @@
      <decoratorAdapterFactory
            class="org.polarsys.capella.core.sirius.analysis.providers.TitleBlockItemDecoratorAdapterFactory">
      </decoratorAdapterFactory>
+ </extension>
+ <extension
+       point="org.polarsys.kitalpha.sirius.rotativeimage">
+    <imageid
+          id="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_providedrequired.svg"
+          kind="4images">
+    </imageid>
+    <imageid
+          id="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_required.svg"
+          kind="4images">
+    </imageid>
+    <imageid
+          id="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_provided.svg"
+          kind="4images">
+    </imageid>
+    <imageid
+          id="/org.polarsys.capella.core.sirius.analysis/description/images/InFlowPort.svg"
+          kind="4images">
+    </imageid>
+    <imageid
+          id="/org.polarsys.capella.core.sirius.analysis/description/images/OutFlowPort.svg"
+          kind="4images">
+    </imageid>
+    <imageid
+          id="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPortSmall.svg"
+          kind="4images">
+    </imageid>
+    <imageid
+          id="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionInputPort.svg"
+          kind="4images">
+    </imageid>
+    <imageid
+          id="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionOutputPort.svg"
+          kind="4images">
+    </imageid>
+    <imageid
+          id="/org.polarsys.capella.core.sirius.analysis/description/images/CategoryInput.svg"
+          kind="4images">
+    </imageid>
+    <imageid
+          id="/org.polarsys.capella.core.sirius.analysis/description/images/CategoryOutput.svg"
+          kind="4images">
+    </imageid>
  </extension>
 </plugin>

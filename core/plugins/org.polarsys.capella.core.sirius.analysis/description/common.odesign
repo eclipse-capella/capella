@@ -5869,36 +5869,36 @@
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Interfaces%20Diagram%20Blank']"/>
           <detailDescriptions xsi:type="description_3:TableCreationDescription" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interface%20Delegations']/@ownedRepresentationCreationDescriptions[name='Interface%20delegations']"/>
           <borderedNodeMappings name="CCDI_Port" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" semanticCandidatesExpression="aql:self.ownedFeatures->filter(fa::ComponentPort)" domainClass="ComponentPort">
-            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeLabel()" hideLabelByDefault="true" sizeComputationExpression="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPortSmall.png">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeLabel()" hideLabelByDefault="true" sizeComputationExpression="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPortSmall.svg">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
             <conditionnalStyles predicateExpression="aql:self.requiredInterfaces->size() > 0 and self.providedInterfaces->size() > 0 and self.kind = fa::ComponentPortKind::STANDARD">
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeLabel()" hideLabelByDefault="true" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_providedrequired.png">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeLabel()" hideLabelByDefault="true" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_providedrequired.svg">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="aql:self.requiredInterfaces->size() > 0 and self.providedInterfaces->size() = 0 and self.kind = fa::ComponentPortKind::STANDARD">
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeLabel()" hideLabelByDefault="true" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_required.png">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeLabel()" hideLabelByDefault="true" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_required.svg">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="aql:self.requiredInterfaces->size() = 0 and self.providedInterfaces->size() > 0 and self.kind = fa::ComponentPortKind::STANDARD">
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeLabel()" hideLabelByDefault="true" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_provided.png">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeLabel()" hideLabelByDefault="true" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_provided.svg">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="service:isInStrictFlowPort()">
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeLabel()" hideLabelByDefault="true" sizeComputationExpression="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/InFlowPort.png">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeLabel()" hideLabelByDefault="true" sizeComputationExpression="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/InFlowPort.svg">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="service:isOutStrictFlowPort()">
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeLabel()" hideLabelByDefault="true" sizeComputationExpression="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/OutFlowPort.png">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeLabel()" hideLabelByDefault="true" sizeComputationExpression="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/OutFlowPort.svg">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
@@ -7409,36 +7409,36 @@
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Interfaces%20Diagram%20Blank']"/>
           <detailDescriptions xsi:type="description_3:TableCreationDescription" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interface%20Delegations']/@ownedRepresentationCreationDescriptions[name='Interface%20delegations']"/>
           <borderedNodeMappings name="CCEI_Port" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" semanticCandidatesExpression="aql:self.ownedFeatures->filter(fa::ComponentPort)" domainClass="ComponentPort">
-            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeLabel()" hideLabelByDefault="true" sizeComputationExpression="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPortSmall.png">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeLabel()" hideLabelByDefault="true" sizeComputationExpression="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPortSmall.svg">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
             <conditionnalStyles predicateExpression="aql:self.requiredInterfaces->size() > 0 and self.providedInterfaces->size() > 0 and self.kind = fa::ComponentPortKind::STANDARD">
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeLabel()" hideLabelByDefault="true" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_providedrequired.png">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeLabel()" hideLabelByDefault="true" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_providedrequired.svg">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="aql:self.requiredInterfaces->size() > 0 and self.providedInterfaces->size() = 0 and self.kind = fa::ComponentPortKind::STANDARD">
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeLabel()" hideLabelByDefault="true" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_required.png">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeLabel()" hideLabelByDefault="true" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_required.svg">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="aql:self.requiredInterfaces->size() = 0 and self.providedInterfaces->size() > 0 and self.kind = fa::ComponentPortKind::STANDARD">
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeLabel()" hideLabelByDefault="true" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_provided.png">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeLabel()" hideLabelByDefault="true" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_provided.svg">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="aql:self.kind = fa::ComponentPortKind::FLOW and self.orientation = fa::OrientationPortKind::IN">
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeLabel()" hideLabelByDefault="true" sizeComputationExpression="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/InFlowPort.png">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeLabel()" hideLabelByDefault="true" sizeComputationExpression="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/InFlowPort.svg">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="aql:self.kind = fa::ComponentPortKind::FLOW and self.orientation = fa::OrientationPortKind::OUT">
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeLabel()" hideLabelByDefault="true" sizeComputationExpression="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/OutFlowPort.png">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeLabel()" hideLabelByDefault="true" sizeComputationExpression="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/OutFlowPort.svg">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
@@ -8946,36 +8946,36 @@
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20Component%20Internal%20Interfaces']"/>
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Interfaces%20Diagram%20Blank']"/>
           <borderedNodeMappings name="CCII_Port" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" semanticCandidatesExpression="aql:self.ownedFeatures->filter(fa::ComponentPort)" domainClass="ComponentPort">
-            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeLabel()" hideLabelByDefault="true" sizeComputationExpression="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPortSmall.png">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeLabel()" hideLabelByDefault="true" sizeComputationExpression="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPortSmall.svg">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
             <conditionnalStyles predicateExpression="aql:self.requiredInterfaces->size() > 0 and self.providedInterfaces->size() > 0 and self.kind = fa::ComponentPortKind::STANDARD">
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeLabel()" hideLabelByDefault="true" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_providedrequired.png">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeLabel()" hideLabelByDefault="true" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_providedrequired.svg">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="aql:self.requiredInterfaces->size() > 0 and self.providedInterfaces->size() = 0 and self.kind = fa::ComponentPortKind::STANDARD">
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeLabel()" hideLabelByDefault="true" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_required.png">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeLabel()" hideLabelByDefault="true" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_required.svg">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="aql:self.requiredInterfaces->size() = 0 and self.providedInterfaces->size() > 0 and self.kind = fa::ComponentPortKind::STANDARD">
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeLabel()" hideLabelByDefault="true" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_provided.png">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeLabel()" hideLabelByDefault="true" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_provided.svg">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="service:isInStrictFlowPort()">
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeLabel()" hideLabelByDefault="true" sizeComputationExpression="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/InFlowPort.png">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeLabel()" hideLabelByDefault="true" sizeComputationExpression="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/InFlowPort.svg">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="service:isOutStrictFlowPort()">
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeLabel()" hideLabelByDefault="true" sizeComputationExpression="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/OutFlowPort.png">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeLabel()" hideLabelByDefault="true" sizeComputationExpression="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/OutFlowPort.svg">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
@@ -10531,36 +10531,36 @@
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20Component%20Internal%20Interfaces']"/>
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Interfaces%20Diagram%20Blank']"/>
           <borderedNodeMappings name="IDB_Port" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" semanticCandidatesExpression="aql:self.ownedFeatures->filter(fa::ComponentPort)" domainClass="ComponentPort">
-            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeLabel()" hideLabelByDefault="true" sizeComputationExpression="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPortSmall.png">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeLabel()" hideLabelByDefault="true" sizeComputationExpression="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPortSmall.svg">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
             <conditionnalStyles predicateExpression="aql:self.requiredInterfaces->size() > 0 and self.providedInterfaces->size() > 0 and self.kind = fa::ComponentPortKind::STANDARD">
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeLabel()" hideLabelByDefault="true" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_providedrequired.png">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeLabel()" hideLabelByDefault="true" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_providedrequired.svg">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="aql:self.requiredInterfaces->size() > 0 and self.providedInterfaces->size() = 0 and self.kind = fa::ComponentPortKind::STANDARD">
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeLabel()" hideLabelByDefault="true" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_required.png">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeLabel()" hideLabelByDefault="true" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_required.svg">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="aql:self.requiredInterfaces->size() = 0 and self.providedInterfaces->size() > 0 and self.kind = fa::ComponentPortKind::STANDARD">
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeLabel()" hideLabelByDefault="true" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_provided.png">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeLabel()" hideLabelByDefault="true" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_provided.svg">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="service:isInStrictFlowPort()">
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeLabel()" hideLabelByDefault="true" sizeComputationExpression="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/InFlowPort.png">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeLabel()" hideLabelByDefault="true" sizeComputationExpression="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/InFlowPort.svg">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="service:isOutStrictFlowPort()">
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeLabel()" hideLabelByDefault="true" sizeComputationExpression="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/OutFlowPort.png">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeLabel()" hideLabelByDefault="true" sizeComputationExpression="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/OutFlowPort.svg">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
