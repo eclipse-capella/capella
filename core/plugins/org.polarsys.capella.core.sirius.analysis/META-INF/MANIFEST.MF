@@ -48,7 +48,12 @@ Require-Bundle: org.eclipse.core.expressions,
  org.eclipse.emf.ecore,
  org.eclipse.jface,
  org.eclipse.sirius.diagram,
- org.apache.commons.lang
+ org.apache.commons.lang,
+ org.apache.xerces,
+ org.apache.batik.transcoder;bundle-version="1.14.0",
+ org.apache.batik.dom;bundle-version="1.14.0",
+ org.apache.batik.bridge;bundle-version="1.14.0",
+ org.polarsys.kitalpha.sirius.rotativeimage;bundle-version="6.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Localization: plugin
