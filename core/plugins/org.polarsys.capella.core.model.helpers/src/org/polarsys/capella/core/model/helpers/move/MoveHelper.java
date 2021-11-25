@@ -15,10 +15,13 @@ package org.polarsys.capella.core.model.helpers.move;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+import org.eclipse.core.runtime.IConfigurationElement;
+import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
+import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.EList;
@@ -87,8 +90,11 @@ import org.polarsys.kitalpha.emde.model.edit.provider.ExtensibleElementItemProvi
 /**
  * This class checks if a list of elements can be moved into the target element
  */
-public class MoveHelper {
+public class MoveHelper implements IMoveHelper {
 
+  static String PLUGIN_ID = "org.polarsys.capella.core.model.helpers";
+  static String EP_MOVE_HELPER_ID = "moveHelper";
+  private List<IMoveHelper> moveHelpers;
   private static MoveHelper instance;
 
   public static MoveHelper getInstance() {
@@ -98,12 +104,29 @@ public class MoveHelper {
     return instance;
   }
 
+  @Override
+  public IStatus checkSemanticRules(List<EObject> selectedElements, EObject targetObject) {
+    IStatus status = doCheckSemanticRules(selectedElements, targetObject);
+
+    if (status != null && status.isOK()) {
+      for (IMoveHelper helper : getMoveHelpers()) {
+        status = helper.checkSemanticRules(selectedElements, targetObject);
+        if (status != null && !status.isOK()) {
+          return status;
+        }
+      }
+      return Status.OK_STATUS;
+    }
+
+    return status;
+  }
+  
   /**
    * @param selectedModelElements
    * @param inputTargetElement
    * @return
    */
-  public IStatus checkSemanticRules(List<EObject> selectedElements, EObject targetObject) {
+  protected IStatus doCheckSemanticRules(List<EObject> selectedElements, EObject targetObject) {
     boolean isOK = true;
 
     if (!(targetObject instanceof ModelElement)) {
@@ -286,11 +309,29 @@ public class MoveHelper {
     return false;
   }
 
+  @Override
+  public IStatus checkEMFRules(List<EObject> selectedModelElements, EObject targetElement) {
+    IStatus status = doCheckEMFRules(selectedModelElements, targetElement);
+
+    if (status != null && status.isOK()) {
+      // verify the status for each extension point
+      for (IMoveHelper helper : getMoveHelpers()) {
+        status = helper.checkEMFRules(selectedModelElements, targetElement);
+        if (status != null && !status.isOK()) {
+          return status;
+        }
+      }
+      return Status.OK_STATUS;
+    }
+
+    return status;
+  }
+  
   /**
    * @param selectedModelElements
    * @param targetElement
    */
-  public IStatus checkEMFRules(List<EObject> selectedModelElements, EObject targetElement) {
+  protected IStatus doCheckEMFRules(List<EObject> selectedModelElements, EObject targetElement) {
     IStatus result = Status.OK_STATUS;
 
     // 1. We are in a single editing domain
@@ -619,5 +660,25 @@ public class MoveHelper {
     }
 
     return stateModeLst;
+  }
+  
+  protected Collection<IMoveHelper> getMoveHelpers() {
+    if (moveHelpers == null) {
+      moveHelpers = new ArrayList<>();
+
+      //Read extension point looking for instances of IMoveHelper
+      for (IConfigurationElement element : ExtensionPointHelper
+          .getConfigurationElements(PLUGIN_ID, EP_MOVE_HELPER_ID)) {
+        try {
+          IMoveHelper helper = (IMoveHelper) element.createExecutableExtension("class");
+          if (helper != null) {
+            moveHelpers.add(helper);
+          }
+        } catch (Exception exception) {
+          Logger.getLogger(IReportManagerDefaultComponents.MODEL).error(exception.getMessage(), exception);
+        }
+      }
+    }
+    return moveHelpers;
   }
 }
