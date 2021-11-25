@@ -13,6 +13,7 @@
        Thales - initial API and implementation
 -->
 <plugin>
+   <extension-point id="moveHelper" name="Move Helper" schema="schema/moveHelper.exsd"/>
    <extension
          point="org.polarsys.capella.common.queries.query">
       <querySpecification
