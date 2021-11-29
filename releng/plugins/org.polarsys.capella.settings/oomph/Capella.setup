@@ -265,11 +265,11 @@
         <repositoryList
             name="">
           <repository
-              url="http://download.eclipse.org/nebula/releases/1.4.0"/>
+              url="https://download.eclipse.org/nebula/releases/1.4.0"/>
           <repository
-              url="http://download.eclipse.org/sirius/updates/legacy/1.1.0"/>
+              url="https://download.eclipse.org/sirius/updates/legacy/1.1.0"/>
           <repository
-              url="http://download.eclipse.org/cbi/updates/license"/>
+              url="https://download.eclipse.org/cbi/updates/license"/>
         </repositoryList>
       </targlet>
       <targlet
@@ -278,98 +278,98 @@
         <repositoryList
             name="v1.2.x">
           <repository
-              url="http://download.eclipse.org/releases/neon"/>
+              url="https://download.eclipse.org/releases/neon"/>
           <repository
-              url="https://ci.polarsys.org/kitalpha/job/Kitalpha-v1.2.x/88/artifact/releng/plugins/org.polarsys.kitalpha.releng.runtime.core.updatesite/target/repository"/>
+              url="https://download.eclipse.org/kitalpha/updates/release/runtimecore/1.2.2"/>
           <repository
-              url="https://ci.polarsys.org/kitalpha/job/Kitalpha-v1.2.x/88/artifact/releng/plugins/org.polarsys.kitalpha.releng.runtime.updatesite/target/repository"/>
+              url="https://download.eclipse.org/kitalpha/updates/release/runtime/1.2.2"/>
           <repository
-              url="https://ci.polarsys.org/kitalpha/job/Kitalpha-v1.2.x/88/artifact/releng/plugins/org.polarsys.kitalpha.releng.sdk.updatesite/target/repository"/>
+              url="https://download.eclipse.org/kitalpha/updates/release/sdk/1.2.2"/>
           <repository
-              url="http://download.eclipse.org/egf/updates/1.5.1/neon"/>
+              url="https://download.eclipse.org/egf/updates/1.5.1/neon"/>
           <repository
               url="https://download.eclipse.org/sirius/updates/releases/5.1.4/neon"/>
           <repository
-              url="http://download.eclipse.org/diffmerge/releases/0.9.0/emf-diffmerge-site"/>
+              url="https://download.eclipse.org/diffmerge/releases/0.9.0/emf-diffmerge-site"/>
           <repository
-              url="http://download.eclipse.org/modeling/amalgam/updates/stable/1.9.0-S20180528/capella"/>
+              url="https://download.eclipse.org/modeling/amalgam/updates/releases/1.9.0/capella"/>
           <repository
-              url="http://download.eclipse.org/tools/orbit/downloads/drops/R20130827064939/repository"/>
+              url="https://download.eclipse.org/tools/orbit/downloads/drops/R20130827064939/repository"/>
           <repository
-              url="http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository"/>
+              url="https://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository"/>
         </repositoryList>
         <repositoryList
             name="v1.3.x">
           <repository
-              url="http://download.eclipse.org/modeling/gmp/gmf-notation/updates/milestones/S201805221301"/>
+              url="https://download.eclipse.org/modeling/gmp/gmf-notation/updates/milestones/S201805221301"/>
           <repository
-              url="http://download.eclipse.org/modeling/gmp/gmf-runtime/updates/milestones/S201806010809"/>
+              url="https://download.eclipse.org/modeling/gmp/gmf-runtime/updates/milestones/S201806010809"/>
           <repository
-              url="https://ci.polarsys.org/kitalpha/job/Kitalpha-v1.3.x/239/artifact/releng/plugins/org.polarsys.kitalpha.releng.runtime.core.updatesite/target/repository"/>
+              url="https://download.eclipse.org/kitalpha/updates/release/runtime/1.3.3"/>
           <repository
-              url="https://ci.polarsys.org/kitalpha/job/Kitalpha-v1.3.x/239/artifact/releng/plugins/org.polarsys.kitalpha.releng.sdk.updatesite/target/repository"/>
+              url="https://download.eclipse.org/kitalpha/updates/release/sdk/1.3.3"/>
           <repository
-              url="http://download.eclipse.org/egf/updates/1.6.0/oxygen"/>
+              url="https://download.eclipse.org/egf/updates/1.6.0/oxygen"/>
           <repository
-              url="http://download.eclipse.org/releases/oxygen"/>
+              url="https://download.eclipse.org/releases/oxygen"/>
           <repository
-              url="http://download.eclipse.org/sirius/updates/releases/6.1.3/oxygen"/>
+              url="https://download.eclipse.org/sirius/updates/releases/6.1.3/oxygen"/>
           <repository
-              url="http://download.eclipse.org/diffmerge/releases/0.11.2/emf-diffmerge-site"/>
+              url="https://download.eclipse.org/diffmerge/releases/0.11.2/emf-diffmerge-site"/>
           <repository
-              url="http://download.eclipse.org/modeling/amalgam/updates/stable/1.10.1-S20190510/capella"/>
+              url="https://download.eclipse.org/modeling/amalgam/updates/releases/1.10.1/capella"/>
           <repository
-              url="http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository"/>
+              url="https://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository"/>
           <repository
-              url="http://download.eclipse.org/tools/orbit/downloads/drops/R20130827064939/repository"/>
+              url="https://download.eclipse.org/tools/orbit/downloads/drops/R20130827064939/repository"/>
         </repositoryList>
         <repositoryList
             name="v1.4.x">
           <repository
-              url="http://download.eclipse.org/releases/2019-06"/>
+              url="https://download.eclipse.org/releases/2019-06"/>
           <repository
-              url="http://download.eclipse.org/modeling/gmp/gmf-runtime/updates/milestones/S202003121028"/>
+              url="https://download.eclipse.org/modeling/gmp/gmf-runtime/updates/milestones/S202003121028"/>
           <repository
-              url="http://download.eclipse.org/modeling/gmp/gmf-notation/updates/milestones/S202003100829"/>
+              url="https://download.eclipse.org/modeling/gmp/gmf-notation/updates/milestones/S202003100829"/>
           <repository
-              url="https://download.eclipse.org/kitalpha/updates/stable/runtimecore/1.4.2it2_ter"/>
+              url="https://download.eclipse.org/kitalpha/updates/release/runtime/1.4.2"/>
           <repository
-              url="https://download.eclipse.org/kitalpha/updates/stable/sdk/1.4.2it2_ter"/>
+              url="https://download.eclipse.org/kitalpha/updates/release/sdk/1.4.2"/>
           <repository
-              url="http://download.eclipse.org/egf/updates/1.6.1/2019-06"/>
+              url="https://download.eclipse.org/egf/updates/1.6.1/2019-06"/>
           <repository
               url="https://download.eclipse.org/sirius/updates/releases/6.3.3/2019-06/"/>
           <repository
-              url="http://download.eclipse.org/diffmerge/releases/0.12.0/emf-diffmerge-site"/>
+              url="https://download.eclipse.org/diffmerge/releases/0.12.0/emf-diffmerge-site"/>
           <repository
               url="https://download.eclipse.org/diffmerge/releases/0.12.0/edm-patterns-site"/>
           <repository
-              url="http://download.eclipse.org/modeling/amalgam/updates/stable/1.11.0-S20191007/capella"/>
+              url="https://download.eclipse.org/modeling/amalgam/updates/releases/1.11.0/capella"/>
           <repository
-              url="http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository"/>
+              url="https://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository"/>
           <repository
-              url="http://download.eclipse.org/tools/orbit/downloads/drops/R20130827064939/repository"/>
+              url="https://download.eclipse.org/tools/orbit/downloads/drops/R20130827064939/repository"/>
         </repositoryList>
         <repositoryList
             name="master">
           <repository
-              url="http://download.eclipse.org/releases/2020-06"/>
+              url="https://download.eclipse.org/releases/2020-06"/>
           <repository
-              url="http://download.eclipse.org/modeling/gmp/gmf-notation/updates/releases/R202004160913"/>
+              url="https://download.eclipse.org/modeling/gmp/gmf-notation/updates/releases/R202004160913"/>
           <repository
-              url="http://download.eclipse.org/modeling/gmp/gmf-runtime/updates/releases/R202004160913"/>
+              url="https://download.eclipse.org/modeling/gmp/gmf-runtime/updates/releases/R202004160913"/>
           <repository
-              url="https://download.eclipse.org/kitalpha/updates/stable/runtime/5.1.0-S202106140930"/>
+              url="https://download.eclipse.org/kitalpha/updates/release/runtime/5.2.0"/>
           <repository
-              url="https://download.eclipse.org/kitalpha/updates/stable/sdk/5.1.0-S202106140930"/>
+              url="https://download.eclipse.org/kitalpha/updates/release/sdk/5.2.0"/>
           <repository
-              url="http://download.eclipse.org/egf/updates/1.6.2/2019-06"/>
+              url="https://download.eclipse.org/egf/updates/1.6.2/2019-06"/>
           <repository
-              url="https://download.eclipse.org/sirius/updates/releases/6.5.1/2020-06/"/>
+              url="https://download.eclipse.org/sirius/updates/releases/6.6.0/2020-06"/>
           <repository
-              url="https://download.eclipse.org/diffmerge/stable/0.13.1-M3/emf-diffmerge-site"/>
+              url="https://download.eclipse.org/diffmerge/releases/0.13.1/emf-diffmerge-site"/>
           <repository
-              url="https://download.eclipse.org/modeling/amalgam/updates/stable/1.12.0-S20201020/capella"/>
+              url="https://download.eclipse.org/modeling/amalgam/updates/releases/1.12.1/capella"/>
         </repositoryList>
       </targlet>
       <targlet
@@ -378,34 +378,34 @@
         <repositoryList
             name="v1.2.x">
           <repository
-              url="http://download.polarsys.org/capella/core/updates/nightly/1.2.x/org.polarsys.capella.rcp.site"/>
+              url="https://download.eclipse.org/capella/core/updates/nightly/1.2.x/org.polarsys.capella.rcp.site"/>
           <repository
-              url="http://download.polarsys.org/capella/core/updates/nightly/1.2.x/org.polarsys.capella.egf.site"/>
+              url="https://download.eclipse.org/capella/core/updates/nightly/1.2.x/org.polarsys.capella.egf.site"/>
           <repository
-              url="http://download.polarsys.org/capella/core/updates/nightly/1.2.x/org.polarsys.capella.richtext.site"/>
+              url="https://download.eclipse.org/capella/core/updates/nightly/1.2.x/org.polarsys.capella.richtext.site"/>
         </repositoryList>
         <repositoryList
             name="v1.3.x">
           <repository
-              url="http://download.polarsys.org/capella/core/updates/nightly/1.3.x/org.polarsys.capella.rcp.site"/>
+              url="https://download.eclipse.org/capella/core/updates/nightly/1.3.x/org.polarsys.capella.rcp.site"/>
           <repository
-              url="http://download.polarsys.org/capella/core/updates/nightly/1.3.x/org.polarsys.capella.egf.site"/>
+              url="https://download.eclipse.org/capella/core/updates/nightly/1.3.x/org.polarsys.capella.egf.site"/>
           <repository
-              url="http://download.polarsys.org/capella/core/updates/nightly/1.3.x/org.polarsys.capella.richtext.site"/>
+              url="https://download.eclipse.org/capella/core/updates/nightly/1.3.x/org.polarsys.capella.richtext.site"/>
         </repositoryList>
         <repositoryList
             name="v1.4.x">
           <repository
-              url="http://download.polarsys.org/capella/core/updates/nightly/1.4.x/org.polarsys.capella.rcp.site"/>
+              url="https://download.eclipse.org/capella/core/updates/nightly/1.4.x/org.polarsys.capella.rcp.site"/>
           <repository
-              url="http://download.polarsys.org/capella/core/updates/nightly/1.4.x/org.polarsys.capella.egf.site"/>
+              url="https://download.eclipse.org/capella/core/updates/nightly/1.4.x/org.polarsys.capella.egf.site"/>
         </repositoryList>
         <repositoryList
             name="master">
           <repository
-              url="http://download.polarsys.org/capella/core/updates/nightly/master/org.polarsys.capella.rcp.site"/>
+              url="https://download.eclipse.org/capella/core/updates/nightly/master/org.polarsys.capella.rcp.site"/>
           <repository
-              url="http://download.polarsys.org/capella/core/updates/nightly/master/org.polarsys.capella.egf.site"/>
+              url="https://download.eclipse.org/capella/core/updates/nightly/master/org.polarsys.capella.egf.site"/>
         </repositoryList>
       </targlet>
     </setupTask>
@@ -741,15 +741,15 @@
       <requirement
           name="org.eclipse.releng.tools.feature.group"/>
       <repository
-          url="http://download.eclipse.org/sirius/updates/releases/6.3.0/2019-06"/>
+          url="https://download.eclipse.org/sirius/updates/releases/6.3.0/2019-06"/>
       <repository
-          url="http://download.eclipse.org/releases/2019-06"/>
+          url="https://download.eclipse.org/releases/2019-06"/>
       <repository
-          url="http://download.eclipse.org/releases/2019-09"/>
+          url="https://download.eclipse.org/releases/2019-09"/>
       <repository
-          url="http://download.eclipse.org/releases/2020-03"/>
+          url="https://download.eclipse.org/releases/2020-03"/>
       <repository
-          url="http://download.eclipse.org/eclipse/updates/4.15"/>
+          url="https://download.eclipse.org/eclipse/updates/4.15"/>
     </setupTask>
     <stream
         name="master">
