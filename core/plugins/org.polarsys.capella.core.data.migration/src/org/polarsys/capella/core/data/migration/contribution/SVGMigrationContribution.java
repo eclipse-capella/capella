@@ -88,6 +88,30 @@ public class SVGMigrationContribution extends AbstractMigrationContribution {
         "/org.polarsys.capella.core.sirius.analysis/description/images/eol.svg");
     changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png",
         "/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.svg");
+    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/CategoryInput.png", 
+        "/org.polarsys.capella.core.sirius.analysis/description/images/CategoryInput.svg");
+    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/CategoryOutput.png",
+        "/org.polarsys.capella.core.sirius.analysis/description/images/CategoryOutput.svg");
+    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/FlowPort.png", 
+        "/org.polarsys.capella.core.sirius.analysis/description/images/FlowPort.svg");
+    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/FunctionInputPort.png", 
+        "/org.polarsys.capella.core.sirius.analysis/description/images/FunctionInputPort.svg");
+    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/FunctionOutputPort.png",
+        "/org.polarsys.capella.core.sirius.analysis/description/images/FunctionOutputPort.svg");
+    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/InFlowPort.png", 
+        "/org.polarsys.capella.core.sirius.analysis/description/images/InFlowPort.svg");
+    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/OutFlowPort.png", 
+        "/org.polarsys.capella.core.sirius.analysis/description/images/OutFlowPort.svg");
+    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort.png", 
+        "/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort.svg");
+    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/StandardPortSmall.png", 
+        "/org.polarsys.capella.core.sirius.analysis/description/images/StandardPortSmall.svg");
+    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_provided.png",
+        "/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_provided.svg");
+    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_providedrequired.png",
+        "/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_providedrequired.svg");
+    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_required.png",
+        "/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_required.svg");
     CHANGED_IMAGES = Collections.unmodifiableMap(changedImagesTemp);
 
     Map<String, Map<String, Dimension>> differentSizePerDiagram = new HashMap<>();
