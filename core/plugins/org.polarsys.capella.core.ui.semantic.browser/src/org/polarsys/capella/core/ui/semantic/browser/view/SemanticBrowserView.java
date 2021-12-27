@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -44,6 +44,7 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerComparator;
 import org.eclipse.jface.window.ToolTip;
+import org.eclipse.sirius.business.api.query.SiriusReferenceFinderCache;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
@@ -1124,6 +1125,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
         return;
       }
 
+      SiriusReferenceFinderCache.INSTANCE.enable();
       refreshTitleBar(input);
       // Set the selection provider with currentViewer as selection provider.
       delegateSelectionProvider.setActiveDelegate(this.currentViewer);
@@ -1142,6 +1144,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
         // Set focus in another thread UI processing.
         setFocusOnViewer();
       }
+      SiriusReferenceFinderCache.INSTANCE.disable();
     }
   }
 
