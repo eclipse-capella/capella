@@ -71,20 +71,6 @@
 									<mkdir dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/linux/gtk/x86_64/dropins"/>
 									<mkdir dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/x86_64/Capella.app/Contents/Eclipse/dropins"/>
 									<mkdir dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/win32/win32/x86_64/dropins"/>
-									
-									<!-- Modify Nebula Richtext's template to fix IE compatibility bug. To remove if Nebula patches this -->
-									<replace dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/linux/gtk/x86_64/plugins">
-										<include name="org.eclipse.nebula.widgets.richtext_*/org/eclipse/nebula/widgets/richtext/resources/template.html"/>
-								        <replacefilter token="&lt;meta charset=&quot;utf-8&quot;&gt;" value="&lt;meta charset=&quot;utf-8&quot;&gt;${line.separator}&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=EDGE&quot;&gt;"/>
-								    </replace>
-									<replace dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/x86_64/Capella.app/Contents/Eclipse/plugins">
-										<include name="org.eclipse.nebula.widgets.richtext_*/org/eclipse/nebula/widgets/richtext/resources/template.html"/>
-								        <replacefilter token="&lt;meta charset=&quot;utf-8&quot;&gt;" value="&lt;meta charset=&quot;utf-8&quot;&gt;${line.separator}&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=EDGE&quot;&gt;"/>
-								    </replace>
-									<replace dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/win32/win32/x86_64/plugins">
-										<include name="org.eclipse.nebula.widgets.richtext_*/org/eclipse/nebula/widgets/richtext/resources/template.html"/>
-								        <replacefilter token="&lt;meta charset=&quot;utf-8&quot;&gt;" value="&lt;meta charset=&quot;utf-8&quot;&gt;${line.separator}&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=EDGE&quot;&gt;"/>
-								    </replace>
 								</target>
 							</configuration>
 						</execution>
