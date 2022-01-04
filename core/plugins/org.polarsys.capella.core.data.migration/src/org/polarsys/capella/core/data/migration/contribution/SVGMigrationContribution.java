@@ -218,6 +218,6 @@ public class SVGMigrationContribution extends AbstractMigrationContribution {
 
   private boolean isValidModelVersion(MigrationContext context) {
     Version version = context.getCurrentVersion();
-    return version.getMajor() < 5 || (version.getMajor() == 5 && version.getMinor() <= 2);
+    return version.getMajor() < 5 || (version.getMajor() == 5 && version.getMinor() <= 2) || version.getMajor() == 6;
   }
 }
