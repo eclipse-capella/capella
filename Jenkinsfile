@@ -36,14 +36,18 @@ pipeline {
 	    stage('Download JDK') {
 	    	steps {        
 	        	script { 
-		            def jdkWinFolder = 'winJRE'
-		            downloader.downloadWindowsJDK(jdkWinFolder)
+	        		def os = 'win'
+	        		def jre = 'JRE'
+		            def jdkWinFolder = os + jre
+		            downloader.downloadTemurinJDK17(jdkWinFolder, os)
 		            
-		            def jdkLinuxFolder = 'linuxJRE'
-		            downloader.downloadLinuxJDK(jdkLinuxFolder)
+	        		os = 'linux'
+		            def jdkLinuxFolder = os + jre
+		            downloader.downloadTemurinJDK17(jdkLinuxFolder, os)
 		            
-		            def jdkMacFolder = 'macJRE'
-		            downloader.downloadMacJDK(jdkMacFolder)
+	        		os = 'mac'
+		            def jdkMacFolder = os + jre
+		            downloader.downloadTemurinJDK17(jdkMacFolder, os)		            
 	       		}
 	     	}
 	    }
