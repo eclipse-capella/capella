@@ -10,15 +10,15 @@ For a successful installation of Capella, your computer must meet the following 
 
 '''Note:''' If you intend to install a previous Capella release, follow installation instructions below but please consult the [[#Previous releases installation]] as there are some slight differences on previous Capella releases
 
-== Java Development Kit ==
+== Java Runtime Environment ==
 
-Starting from Capella 5.0, a Java Development Kit [https://jdk.java.net OpenJDK (from jdk.java.net)] is directly embedded in the product. Having an additional Java environment on your machine is no longer a requirement.
+Starting from Capella 6.0, a JRE [https://adoptium.net Temurin (from adoptium.net)] is directly embedded in the product. Having an additional Java environment on your machine is no longer a requirement.
 
-'''Note:''' This JDK is a production-ready open-source build without legal requirement to subscribe to a commercial support contract and distributed under [https://openjdk.java.net/legal/gplv2+ce.html GNU General Public License, version 2, with the Classpath Exception].
+'''Note:''' This distribution is a production-ready open-source build without legal requirement to subscribe to a commercial support contract and distributed under [https://openjdk.java.net/legal/gplv2+ce.html GNU General Public License, version 2, with the Classpath Exception].
 
-'''Note:''' Notice that only the embedded JDK has been field-tested.
+'''Note:''' Notice that only the embedded JRE has been field-tested.
 
-If however you want to use a different JDK version, you need to modify the <code>capella.ini</code> file at 2 places. The first one is to add on two lines <code>-vm</code> and a reference to your JDK location. The second one is to modify <code>-Dosgi.requiredJavaVersion</code> argument to point to your JDK version. Please refer to the following [https://wiki.eclipse.org/Eclipse.ini link] for more information and [https://github.com/eclipse/capella/wiki/Dependency%20versions compatibility] page.
+If however you want to use a different JRE version, you need to modify the <code>capella.ini</code> file at 2 places. The first one is to add on two lines <code>-vm</code> and a reference to your JRE location. The second one is to modify <code>-Dosgi.requiredJavaVersion</code> argument to point to your JRE version. Please refer to the following [https://wiki.eclipse.org/Eclipse.ini link] for more information and [https://github.com/eclipse/capella/wiki/Dependency%20versions compatibility] page.
 
 = Installation from previous version =
 
