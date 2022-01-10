@@ -205,7 +205,7 @@ public class ViewpointMigrationContribution extends AbstractMigrationContributio
       }
     }
 
-    // Allow migration from 5.x to 6.x
-    return fileVersion.getMajor() == 5 && currentVersion.getMajor() == 6;
+    // Allow migration from 1.4.x to 6.x and from 5.x to 6.x
+    return (fileVersion.getMajor() == 5 || (fileVersion.getMajor() == 1 && fileVersion.getMinor() == 4)) && currentVersion.getMajor() == 6;
   }
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2021, 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -41,6 +41,7 @@ import org.polarsys.capella.test.migration.ju.helpers.MigrationHelper;
  */
 public class EnableFCAndPPFiltersMigrationTest extends BasicTestCase {
 
+  private static final String MODEL_1_4_X = "activate-filters-1_4_x";
   private static final String MODEL_5_0_0 = "activate-filters-5_0_0";
   private static final String MODEL_5_1_0 = "activate-filters-5_1_0";
   private static final String MODEL_6_0_0 = "activate-filters-6_0_0";
@@ -64,6 +65,7 @@ public class EnableFCAndPPFiltersMigrationTest extends BasicTestCase {
 
     Collection<String> errors = new ArrayList<>();
 
+    assertFilterEnabledAfterMigration(MODEL_1_4_X, errors);
     assertFilterEnabledAfterMigration(MODEL_5_0_0, errors);
 
     assertFilterNotEnabledAfterMigration(MODEL_5_1_0, errors);
@@ -124,7 +126,7 @@ public class EnableFCAndPPFiltersMigrationTest extends BasicTestCase {
 
   @Override
   public List<String> getRequiredTestModels() {
-    return Arrays.asList(MODEL_5_0_0, MODEL_5_1_0, MODEL_6_0_0);
+    return Arrays.asList(MODEL_1_4_X, MODEL_5_0_0, MODEL_5_1_0, MODEL_6_0_0);
   }
 
 }
