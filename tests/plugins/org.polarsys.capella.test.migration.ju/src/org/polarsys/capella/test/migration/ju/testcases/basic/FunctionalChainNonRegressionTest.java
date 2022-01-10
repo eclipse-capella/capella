@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019, 2020, THALES GLOBAL SERVICES.
+ * Copyright (c) 2019, 2022, THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -42,6 +42,8 @@ import org.polarsys.capella.test.migration.ju.helpers.MigrationHelper;
 
 public class FunctionalChainNonRegressionTest extends BasicTestCase {
 
+  private static final String SOURCE_MODELV4 = "FunctionalChains_1_4_2";
+  private static final String SOURCE_MODELV5 = "FunctionalChains_5_2_0";
   private static final String SOURCE_MODEL = "FunctionalChains";
   private static final String TARGET_MIGRATED_MODEL = "FunctionalChainsNonRegression";
 
@@ -50,54 +52,63 @@ public class FunctionalChainNonRegressionTest extends BasicTestCase {
   private static final String TARGET_MIGRATED_MODEL_RESOURCE = TARGET_MIGRATED_MODEL + "."
       + CapellaResourceHelper.CAPELLA_MODEL_FILE_EXTENSION;;
 
-  private IProject sourceModelProject;
+  private IProject sourceModelProjectV4;
+  private IProject sourceModelProjectV5;
   private IProject targetMigratedModelProject;
 
   @Override
   public List<String> getRequiredTestModels() {
-    return Arrays.asList(SOURCE_MODEL, TARGET_MIGRATED_MODEL);
+    return Arrays.asList(SOURCE_MODELV4, SOURCE_MODELV5, TARGET_MIGRATED_MODEL);
   }
 
   @Override
   protected void setUp() throws Exception {
     super.setUp();
 
-    sourceModelProject = IResourceHelpers.getEclipseProjectInWorkspace(SOURCE_MODEL);
+    sourceModelProjectV4 = IResourceHelpers.getEclipseProjectInWorkspace(SOURCE_MODELV4);
+    sourceModelProjectV5 = IResourceHelpers.getEclipseProjectInWorkspace(SOURCE_MODELV5);
     targetMigratedModelProject = IResourceHelpers.getEclipseProjectInWorkspace(TARGET_MIGRATED_MODEL);
   }
 
   @Override
   public void test() throws Exception {
 
-    if (sourceModelProject.exists() && targetMigratedModelProject.exists()) {
+    if (sourceModelProjectV4.exists() && sourceModelProjectV5.exists() && targetMigratedModelProject.exists()) {
 
-      // migrate the project
-      MigrationHelper.migrateProject(sourceModelProject);
+      // migrate the projects
+      MigrationHelper.migrateProject(sourceModelProjectV4);
+      MigrationHelper.migrateProject(sourceModelProjectV5);
 
-      Resource sourceResource = getResourceToTest(sourceModelProject, SOURCE_MODEL_RESOURCE);
       Resource targetResource = getResourceToTest(targetMigratedModelProject, TARGET_MIGRATED_MODEL_RESOURCE);
+      IEditableModelScope targetProjectScope = new FragmentedModelScope(targetResource, true);
+
+      assessExpectedDifferences(sourceModelProjectV4, targetProjectScope);
+      assessExpectedDifferences(sourceModelProjectV5, targetProjectScope);
+    }
+
+  }
+
+  private void assessExpectedDifferences(IProject sourceModelProject, IEditableModelScope targetProjectScope) {
+      Resource sourceResource = getResourceToTest(sourceModelProject, SOURCE_MODEL_RESOURCE);
 
       IEditableModelScope sourceProjectScope = new FragmentedModelScope(sourceResource, true);
-      IEditableModelScope targetProjectScope = new FragmentedModelScope(targetResource, true);
 
       EComparisonImpl comparison = new EComparisonImpl(sourceProjectScope, targetProjectScope);
 
       // the order of elements for this particular feature is not relevant
       comparison.compute(new CapellaMatchPolicy(), new CapellaDiffPolicy() {
-        @Override
-        protected boolean doConsiderOrdered(EStructuralFeature feature_p) {
-          if (feature_p.equals(FaPackage.Literals.FUNCTIONAL_CHAIN__OWNED_FUNCTIONAL_CHAIN_INVOLVEMENTS)) {
-            return false;
+          @Override
+          protected boolean doConsiderOrdered(EStructuralFeature feature_p) {
+              if (feature_p.equals(FaPackage.Literals.FUNCTIONAL_CHAIN__OWNED_FUNCTIONAL_CHAIN_INVOLVEMENTS)) {
+                  return false;
+              }
+              return super.doConsiderOrdered(feature_p);
           }
-          return super.doConsiderOrdered(feature_p);
-        }
       }, new CapellaMergePolicy(), new NullProgressMonitor());
 
       assertOnlyProjectNameDifference(comparison.getDifferences(Role.TARGET), SOURCE_MODEL);
 
       assertOnlyProjectNameDifference(comparison.getDifferences(Role.REFERENCE), TARGET_MIGRATED_MODEL);
-    }
-
   }
 
   /**

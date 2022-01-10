@@ -128,7 +128,8 @@ public class MigrationHelpers implements IMigrationContribution {
 
     Collection<IResource> migrationCandidates = extractMigrationCandidates(resource);
 
-    // This is only required for Capella 5.0 since legacy resource must be migrated.
+    // This is required for Capella 5.0 and 6.0 (6.0 allows migrations from 1.4.x) since legacy
+    // resource must be migrated.
     // TODO remove this in the next version
     migrationCandidates = migrateCandidatesExtensions(migrationCandidates);
 

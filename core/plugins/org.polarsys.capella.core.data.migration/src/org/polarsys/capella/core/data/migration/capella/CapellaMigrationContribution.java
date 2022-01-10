@@ -110,6 +110,30 @@ public class CapellaMigrationContribution extends AbstractMigrationContribution 
     pkgs.put(MigrationConstants.MODELLING_CORE_OLD_NSURI, ModellingcorePackage.eINSTANCE);
     pkgs.put(MigrationConstants.LIBRARIES_OLD_NSURI, LibrariesPackage.eINSTANCE);
     pkgs.put(MigrationConstants.RE_OLD_NSURI, RePackage.eINSTANCE);
+    // Add 1.4.0 NSURI as we allow migration also from 1.4.x to 6.x
+    pkgs.put(MigrationConstants.COMPOSITE_STRUCTURE_OLD_1_4_NSURI, CsPackage.eINSTANCE);
+    pkgs.put(MigrationConstants.CONTEXT_ARCHITECTURE_OLD_1_4_NSURI, CtxPackage.eINSTANCE);
+    pkgs.put(MigrationConstants.EPBS_ARCHITECTURE_OLD_1_4_NSURI, EpbsPackage.eINSTANCE);
+    pkgs.put(MigrationConstants.FUNCTIONAL_ANALYSIS_OLD_1_4_NSURI, FaPackage.eINSTANCE);
+    pkgs.put(MigrationConstants.INFORMATION_OLD_1_4_NSURI, InformationPackage.eINSTANCE);
+    pkgs.put(MigrationConstants.INFORMATION_COMMUNICATION_OLD_1_4_NSURI, CommunicationPackage.eINSTANCE);
+    pkgs.put(MigrationConstants.INFORMATION_DATATYPE_OLD_1_4_NSURI, DatatypePackage.eINSTANCE);
+    pkgs.put(MigrationConstants.INFORMATION_DATAVALUE_OLD_1_4_NSURI, DatavaluePackage.eINSTANCE);
+    pkgs.put(MigrationConstants.INTERACTION_OLD_1_4_NSURI, InteractionPackage.eINSTANCE);
+    pkgs.put(MigrationConstants.LOGICAL_ARCHITECTURE_OLD_1_4_NSURI, LaPackage.eINSTANCE);
+    pkgs.put(MigrationConstants.CAPELLA_COMMON_OLD_1_4_NSURI, CapellacommonPackage.eINSTANCE);
+    pkgs.put(MigrationConstants.CAPELLA_CORE_OLD_1_4_NSURI, CapellacorePackage.eINSTANCE);
+    pkgs.put(MigrationConstants.CAPELLA_MODELLER_OLD_1_4_NSURI, CapellamodellerPackage.eINSTANCE);
+    pkgs.put(MigrationConstants.OPERATIONAL_ANALYSIS_OLD_1_4_NSURI, OaPackage.eINSTANCE);
+    pkgs.put(MigrationConstants.PHYSICAL_ARCHITECTURE_OLD_1_4_NSURI, PaPackage.eINSTANCE);
+    pkgs.put(MigrationConstants.PHYSICAL_ARCHITECTURE_DEPLOYMENT_OLD_1_4_NSURI, DeploymentPackage.eINSTANCE);
+    pkgs.put(MigrationConstants.REQUIREMENT_OLD_1_4_NSURI, RequirementPackage.eINSTANCE);
+    pkgs.put(MigrationConstants.SHARED_MODEL_OLD_1_4_NSURI, SharedmodelPackage.eINSTANCE);
+    pkgs.put(MigrationConstants.ACTIVITY_OLD_1_4_NSURI, ActivityPackage.eINSTANCE);
+    pkgs.put(MigrationConstants.BEHAVIOR_OLD_1_4_NSURI, BehaviorPackage.eINSTANCE);
+    pkgs.put(MigrationConstants.MODELLING_CORE_OLD_1_4_NSURI, ModellingcorePackage.eINSTANCE);
+    pkgs.put(MigrationConstants.LIBRARIES_OLD_1_4_NSURI, LibrariesPackage.eINSTANCE);
+    pkgs.put(MigrationConstants.RE_OLD_1_4_NSURI, RePackage.eINSTANCE);
 
   }
 

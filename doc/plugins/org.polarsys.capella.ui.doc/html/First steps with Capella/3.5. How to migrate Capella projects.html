@@ -13,10 +13,10 @@
 			<b>are not backwards compatible</b>. This means that once they are migrated to the new version, they 
 			<b>can not</b> be opened with the previous Capella versions. 
 		</p>
-		<p>A Capella version ensures project migration of model coming from the previous major release versions and if any, from previous patches of the current version. (For instance, Capella 5.1 version will be able to migrate models coming from previous major release version (any 1.4.x) and previous patches of the current version (5.x.y)). If your model is too old, then you will have to install an intermediate Capella release to perform the migration.</p>
+		<p>A Capella version ensures project migration of model coming from at least the previous major release versions and if any, from previous patches of the current version. (For instance, Capella 6.x version will be able to migrate models coming from previous major release versions (any 5.x) and previous patches of the current version). Capella 6.x also allows migration from models coming from version 1.4.x. If your model is too old, then you will have to install an intermediate Capella release to perform the migration.</p>
 		<p>We strongly recommend that you baseline your model in a version control system before performing the migration operation. Once this is done please continue with the following migration steps:</p>
 		<ol>
-			<li>Migrate any libraries towards wich you model has any dependencies. If your libraries have dependencies towards other libraries then they must be migrated first. You should start your migration process with the library that has no external dependencies, and continue progressively to the top dependency.</li>
+			<li>Migrate any libraries towards which you model has any dependencies. If your libraries have dependencies towards other libraries then they must be migrated first. You should start your migration process with the library that has no external dependencies, and continue progressively to the top dependency.</li>
 			<li>Migrate your projects.</li>
 		</ol>
 		<p>In order to launch the migration process of a Capella Project you must right click on the <u>
