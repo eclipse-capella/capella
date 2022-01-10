@@ -29,6 +29,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -565,6 +566,13 @@ public class MigrationHelpers implements IMigrationContribution {
       XMLResource resource, XMLHelper helper, MigrationContext context) {
     for (IMigrationContribution migration : migrations) {
       migration.updateCreatedObject(peekObject, eObject, typeQName, feature, resource, helper, context);
+    }
+  }
+
+  @Override
+  public void setValueFromId(EObject object, EReference eReference, String ids) {
+    for (IMigrationContribution migration : migrations) {
+      migration.setValueFromId(object, eReference, ids);
     }
   }
 }

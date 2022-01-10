@@ -16,6 +16,7 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -167,5 +168,10 @@ public interface IMigrationContribution {
 
   void updateCreatedObject(EObject peekObject, EObject eObject, String typeQName, EStructuralFeature feature,
       XMLResource resource, XMLHelper helper, MigrationContext context);
+  
+  /**
+   * This method allows to set the value from the received ids
+   */
+  void setValueFromId(EObject object, EReference eReference, String ids);
 
 }

@@ -17,6 +17,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EPackage.Registry;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -213,5 +214,10 @@ public class AbstractMigrationContribution implements IMigrationContribution {
   public void updateCreatedObject(EObject peekObject, EObject eObject, String typeQName, EStructuralFeature feature,
       XMLResource resource, XMLHelper helper, MigrationContext context) {
     
+  }
+  
+  @Override
+  public void setValueFromId(EObject object, EReference eReference, String ids) {
+
   }
 }

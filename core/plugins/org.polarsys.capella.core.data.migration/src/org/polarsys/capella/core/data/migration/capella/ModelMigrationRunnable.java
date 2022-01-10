@@ -414,7 +414,7 @@ public class ModelMigrationRunnable extends ContributoryMigrationRunnable {
            */
           @Override
           protected void setValueFromId(EObject object, EReference eReference, String ids) {
-
+            MigrationHelpers.getInstance().setValueFromId(object, eReference, ids);
             super.setValueFromId(object, eReference, ids);
           }
 
