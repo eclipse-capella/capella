@@ -10,7 +10,7 @@
       <programArgsMac>-vm
 ../jre/Contents/Home/bin
       </programArgsMac>
-      <vmArgs>-Dosgi.requiredJavaVersion=14
+      <vmArgs>-Dosgi.requiredJavaVersion=11
 -Dosgi.dataAreaRequiresExplicitInit=true
 -Xms1000m
 -Xmx3000m
@@ -38,7 +38,7 @@
       <linux include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-14</linux>
       <macos include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-14</macos>
       <solaris include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-14</solaris>
-      <windows include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-14</windows>
+      <windows include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-11</windows>
    </vm>
 
    <plugins>
