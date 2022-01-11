@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018, 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -138,7 +138,9 @@ public class SemanticQueriesTestSuite extends BasicTestSuite {
     tests.add(new DataTypeElementsDomainType());
     tests.add(new DataTypeElementsMinLength());
     tests.add(new DataTypeElementsMaxLength());
-    
+    tests.add(new OperationalActivity_InvolvingCapabilities());
+    tests.add(new OperationalCapability_InvolvedActivities());
+
     return tests;
   }
 

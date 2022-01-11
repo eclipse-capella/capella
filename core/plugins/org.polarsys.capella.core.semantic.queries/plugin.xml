@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2018, 2020 THALES GLOBAL SERVICES.
+  Copyright (c) 2018, 2022 THALES GLOBAL SERVICES.
   
   This program and the accompanying materials are made available under the
   terms of the Eclipse Public License 2.0 which is available at
@@ -1112,6 +1112,22 @@
          <availableForType
                class="org.polarsys.capella.core.data.oa.OperationalActivity">
          </availableForType>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.OperationalActivityInvolvingCapabilities"
+            isTopLevel="true"
+            name="Involving Capabilities">
+         <availableForType
+               class="org.polarsys.capella.core.data.oa.OperationalActivity">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencingElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+             <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.OperationalActivityInvolvingCapabilities">
+             </basicQuery>
+         </categoryQuery>
       </category>
       <category
             id="--------------- System Function -------------">
@@ -6327,6 +6343,22 @@
          <categoryQuery>
             <basicQuery
                   class="org.polarsys.capella.core.semantic.queries.basic.queries.AbstractCapabilityOwnedFunctionalChains">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.AbstractCapabilityInvolvedFunctionsOA"
+            isTopLevel="true"
+            name="Involved Activities">
+         <availableForType
+               class="org.polarsys.capella.core.data.oa.OperationalCapability">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.AbstractCapabilityInvolvedFunctions">
             </basicQuery>
          </categoryQuery>
       </category>
