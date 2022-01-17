@@ -1733,8 +1733,10 @@ public class ComponentExt {
    */
   public static List<Part> getSubParts(Component component) {
     List<Part> result = new ArrayList<Part>();
-    result.addAll(component.getContainedParts());
-    getContainedComponentPkgs(component).stream().forEach(pkg -> result.addAll(ComponentPkgExt.getSubParts(pkg)));
+    if (component != null) {
+      result.addAll(component.getContainedParts());
+      getContainedComponentPkgs(component).stream().forEach(pkg -> result.addAll(ComponentPkgExt.getSubParts(pkg)));
+    }
     return result;
   }
 
@@ -1743,12 +1745,14 @@ public class ComponentExt {
    */
   public static List<Part> getSubParts(Component component, boolean useDeploymentLinks) {
     List<Part> result = new ArrayList<Part>();
-    if (useDeploymentLinks) {
-      for (Part part : component.getRepresentingParts()) {
-        result.addAll(PartExt.getDeployedParts(part));
+    if (component != null) {
+      if (useDeploymentLinks) {
+        for (Part part : component.getRepresentingParts()) {
+          result.addAll(PartExt.getDeployedParts(part));
+        }
       }
+      result.addAll(getSubParts(component));
     }
-    result.addAll(getSubParts(component));
     return result;
   }
 
