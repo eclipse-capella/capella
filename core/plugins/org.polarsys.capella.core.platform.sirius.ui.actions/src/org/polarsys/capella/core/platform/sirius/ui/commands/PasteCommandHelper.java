@@ -16,7 +16,6 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -31,16 +30,14 @@ import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.model.copypaste.SharedCopyPasteElements;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Part;
-import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
-import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
 import org.polarsys.capella.core.model.handler.helpers.CrossReferencerHelper;
-import org.polarsys.capella.core.ui.toolkit.Activator;
 
 /**
  * Helper to ease paste commands to create when cut/copy/drag paste elements.
@@ -111,12 +108,12 @@ public class PasteCommandHelper {
           commands.append(command);
         } else {
           // It was not possible to create the command
-          status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, Messages.CapellaPasteCommand_error_command, null);
+          status = new Status(IStatus.ERROR, FrameworkUtil.getBundle(PasteCommandHelper.class).getSymbolicName(), Messages.CapellaPasteCommand_error_command, null);
           commands.append(UnexecutableCommand.INSTANCE);
         }
       } else {
         // Different session and no self contained element
-        status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, Messages.CapellaPasteCommand_error_session, null);
+        status = new Status(IStatus.ERROR, FrameworkUtil.getBundle(PasteCommandHelper.class).getSymbolicName(), Messages.CapellaPasteCommand_error_session, null);
         commands.append(UnexecutableCommand.INSTANCE);
       }
     }

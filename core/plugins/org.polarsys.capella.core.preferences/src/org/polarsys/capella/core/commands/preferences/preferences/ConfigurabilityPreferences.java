@@ -15,20 +15,20 @@ package org.polarsys.capella.core.commands.preferences.preferences;
 import org.eclipse.core.runtime.preferences.DefaultScope;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.core.runtime.preferences.InstanceScope;
+import org.osgi.framework.FrameworkUtil;
 import org.osgi.service.prefs.BackingStoreException;
 import org.polarsys.capella.core.commands.preferences.properties.PreferencesHandler;
 import org.polarsys.capella.core.commands.preferences.service.IItemDescriptor;
 import org.polarsys.capella.core.commands.preferences.service.PreferencesItemsRegistry;
-import org.polarsys.capella.core.preferences.Activator;
 
 /**
  * Preferences manager for the commands plug-in.
  */
 public class ConfigurabilityPreferences {
 
-  private static final IEclipsePreferences defaultScopPref = DefaultScope.INSTANCE.getNode(Activator.PLUGIN_ID);
+  private static final IEclipsePreferences defaultScopPref = DefaultScope.INSTANCE.getNode(FrameworkUtil.getBundle(ConfigurabilityPreferences.class).getSymbolicName());
 
-  private static final IEclipsePreferences instanceScopPrefs = InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID);
+  private static final IEclipsePreferences instanceScopPrefs = InstanceScope.INSTANCE.getNode(FrameworkUtil.getBundle(ConfigurabilityPreferences.class).getSymbolicName());
 
   /**
    * Not instantiable, as all features are static.
@@ -43,7 +43,7 @@ public class ConfigurabilityPreferences {
   public static void save() {
     try {
 
-      InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID).flush();
+      InstanceScope.INSTANCE.getNode(FrameworkUtil.getBundle(ConfigurabilityPreferences.class).getSymbolicName()).flush();
       instanceScopPrefs.flush();
 
     } catch (BackingStoreException exception) {

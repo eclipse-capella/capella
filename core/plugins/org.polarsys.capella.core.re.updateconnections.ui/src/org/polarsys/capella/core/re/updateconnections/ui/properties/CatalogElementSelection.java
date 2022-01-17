@@ -17,13 +17,13 @@ import java.util.Collection;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.flexibility.properties.property.AbstractProperty;
 import org.polarsys.capella.common.flexibility.properties.schema.IEditableProperty;
 import org.polarsys.capella.common.flexibility.properties.schema.IProperty;
 import org.polarsys.capella.common.flexibility.properties.schema.IPropertyContext;
 import org.polarsys.capella.common.flexibility.properties.schema.IRestraintProperty;
 import org.polarsys.capella.common.re.CatalogElement;
-import org.polarsys.capella.core.re.updateconnections.ui.UpdateConnectionsUIActivator;
 
 /**
  * Select one of all available catalog elements.
@@ -76,7 +76,7 @@ public class CatalogElementSelection extends AbstractProperty implements IRestra
     for (IProperty property : context.getProperties().getAllItems()) {
       if (property instanceof CatalogElementSelection && !this.equals(property)) {
         if (value.equals(context.getCurrentValue(property))) {
-          return new Status(IStatus.ERROR, UpdateConnectionsUIActivator.PLUGIN_ID, "Selected RPLs must be different");
+          return new Status(IStatus.ERROR, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), "Selected RPLs must be different");
         }
       }
     }

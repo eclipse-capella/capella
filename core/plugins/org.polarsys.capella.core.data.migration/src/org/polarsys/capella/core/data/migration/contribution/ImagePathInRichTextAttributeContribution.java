@@ -35,6 +35,7 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
@@ -45,9 +46,10 @@ import org.eclipse.sirius.business.api.image.Base64ImageHelper;
 import org.eclipse.sirius.business.api.image.ImageManager;
 import org.eclipse.sirius.business.api.image.RichTextAttributeRegistry;
 import org.eclipse.sirius.ext.emf.edit.EditingDomainServices;
+import org.osgi.framework.Bundle;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
-import org.polarsys.capella.core.data.migration.Activator;
 import org.polarsys.capella.core.data.migration.context.MigrationContext;
 
 /**
@@ -96,7 +98,8 @@ public class ImagePathInRichTextAttributeContribution extends AbstractMigrationC
           }
         }
       } else {
-        Activator.getDefault().getLog().error(MessageFormat.format(
+          Bundle bundle = FrameworkUtil.getBundle(this.getClass());
+          Platform.getLog(bundle).error(MessageFormat.format(
             Messages.MigrationAction_Image_ImpossibleToFindProject, resourceToMigrate.getURI().toPlatformString(true)));
       }
     }
@@ -194,17 +197,17 @@ public class ImagePathInRichTextAttributeContribution extends AbstractMigrationC
     Map<File, IFile> createdFiles = createFiles(imageFolder, filesToCreate, notifier, attribute);
 
     // Log what have been done
+    Bundle bundle = FrameworkUtil.getBundle(this.getClass());
     if (!createdFiles.isEmpty()) {
       String createdFilesPath = createdFiles.keySet().stream().map(File::getAbsolutePath)
           .collect(Collectors.joining(", "));
-      Activator.getDefault().getLog().info(MessageFormat.format(Messages.MigrationAction_Image_AsolutePathImageMigrated,
+      Platform.getLog(bundle).info(MessageFormat.format(Messages.MigrationAction_Image_AsolutePathImageMigrated,
           new EditingDomainServices().getLabelProviderText(notifier), attribute.getName(), createdFilesPath));
     }
     if (!nonCreatedFiles.isEmpty()) {
       String nonCreatedFilesPath = nonCreatedFiles.stream().map(File::getAbsolutePath)
           .collect(Collectors.joining(", "));
-      Activator.getDefault().getLog()
-          .warn(MessageFormat.format(Messages.MigrationAction_Image_AsolutePathImageNotMigrated,
+      Platform.getLog(bundle).warn(MessageFormat.format(Messages.MigrationAction_Image_AsolutePathImageNotMigrated,
               new EditingDomainServices().getLabelProviderText(notifier), attribute.getName(), nonCreatedFilesPath));
     }
     return createdFiles;
@@ -242,8 +245,8 @@ public class ImagePathInRichTextAttributeContribution extends AbstractMigrationC
       } catch (CoreException e) {
         String nonCreatedFilesPath = filesToCopy.values().stream().map(iFile -> iFile.getFullPath().toString())
             .collect(Collectors.joining(", "));
-        Activator.getDefault().getLog()
-            .error(MessageFormat.format(Messages.MigrationAction_Image_ImpossibleToCreateImageFolder,
+        Bundle bundle = FrameworkUtil.getBundle(this.getClass());
+        Platform.getLog(bundle).error(MessageFormat.format(Messages.MigrationAction_Image_ImpossibleToCreateImageFolder,
                 imageFolder.getFullPath(), new EditingDomainServices().getLabelProviderText(contextObject),
                 attribute.getName(), nonCreatedFilesPath), e);
       }
@@ -267,20 +270,19 @@ public class ImagePathInRichTextAttributeContribution extends AbstractMigrationC
 
         createdFiles.put(fileToCopy, targetFileToCreate);
       } catch (CoreException | IOException e) {
-        Activator.getDefault().getLog().error(
+          Bundle bundle = FrameworkUtil.getBundle(this.getClass());
+          Platform.getLog(bundle).error(
             MessageFormat.format(Messages.MigrationAction_Image_ImpossibleToCreateImage, fileToCopy.getAbsolutePath()),
             e);
-        nonCreatedFiles.add(fileToCopy);
+          nonCreatedFiles.add(fileToCopy);
       }
     }
 
     if (nonCreatedFiles.size() > 0) {
-      String nonCreatedFilesPath = nonCreatedFiles.stream().map(File::getAbsolutePath)
-          .collect(Collectors.joining(", "));
-      Activator.getDefault().getLog()
-          .error(MessageFormat.format(Messages.MigrationAction_Image_ImpossibleToCreateImages,
-              new EditingDomainServices().getLabelProviderText(contextObject), attribute.getName(),
-              nonCreatedFilesPath));
+        String nonCreatedFilesPath = nonCreatedFiles.stream().map(File::getAbsolutePath).collect(Collectors.joining(", "));
+        Bundle bundle = FrameworkUtil.getBundle(this.getClass());
+        Platform.getLog(bundle).error(MessageFormat.format(Messages.MigrationAction_Image_ImpossibleToCreateImages, new EditingDomainServices().getLabelProviderText(contextObject),
+                attribute.getName(), nonCreatedFilesPath));
     }
     return createdFiles;
   }

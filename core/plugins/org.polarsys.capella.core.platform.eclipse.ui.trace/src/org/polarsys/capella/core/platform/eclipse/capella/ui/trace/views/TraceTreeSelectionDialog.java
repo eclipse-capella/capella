@@ -36,16 +36,15 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.dialogs.ElementTreeSelectionDialog;
 import org.eclipse.ui.dialogs.ISelectionStatusValidator;
-
+import org.osgi.framework.FrameworkUtil;
+import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
-import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.MDTrace;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.messages.Messages;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.messages.TraceUtil;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views.providers.CapellaModelFilter;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views.providers.IImageKeys;
-import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 
 /**
  */
@@ -153,12 +152,12 @@ public class TraceTreeSelectionDialog extends ElementTreeSelectionDialog {
       // Loop over selected elements to check validity.
       if (_currentElement.equals(elem)
           || (!_isNewTrace && TraceUtil.containsTraceElement(_currentElement, (TraceableElement) elem))) {
-        updateStatus(new Status(IStatus.WARNING, MDTrace.PLUGIN_ID, IStatus.WARNING,
+        updateStatus(new Status(IStatus.WARNING, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), IStatus.WARNING,
             Messages.getString("AddTraceWizard.warning_element_already_exists"), //$NON-NLS-1$
             null));
         isOkEnabled = false;
       } else {
-        updateStatus(new Status(IStatus.OK, MDTrace.PLUGIN_ID, IStatus.OK, "", null)); //$NON-NLS-1$
+        updateStatus(new Status(IStatus.OK, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), IStatus.OK, "", null)); //$NON-NLS-1$
         isOkEnabled = true;
       }
     }
@@ -173,17 +172,17 @@ public class TraceTreeSelectionDialog extends ElementTreeSelectionDialog {
         if (selection_p[0] instanceof NamedElement) {
           if (_currentElement.equals(selection_p[0]) || 
               (!_isNewTrace && TraceUtil.containsTraceElement(_currentElement, (NamedElement) selection_p[0]))) {
-            Status status = new Status(IStatus.WARNING, MDTrace.PLUGIN_ID, IStatus.WARNING, Messages.getString("AddTraceWizard.warning_element_already_exists"), //$NON-NLS-1$
+            Status status = new Status(IStatus.WARNING, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), IStatus.WARNING, Messages.getString("AddTraceWizard.warning_element_already_exists"), //$NON-NLS-1$
                                     null);
             updateStatus(status);
             return status;
           }
         }
       } else if (selection_p.length == 0) {
-        return new Status(IStatus.WARNING, MDTrace.PLUGIN_ID, IStatus.WARNING, Messages.getString("AddTraceWizard.warning_named_element"),
+        return new Status(IStatus.WARNING, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), IStatus.WARNING, Messages.getString("AddTraceWizard.warning_named_element"),
             null);
       }
-      return new Status(IStatus.OK, MDTrace.PLUGIN_ID, IStatus.OK, "", null); //$NON-NLS-1$
+      return new Status(IStatus.OK, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), IStatus.OK, "", null); //$NON-NLS-1$
     }
 
   };

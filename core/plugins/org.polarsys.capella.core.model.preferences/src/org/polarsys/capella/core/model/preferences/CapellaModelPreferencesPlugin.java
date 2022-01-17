@@ -21,9 +21,6 @@ import org.polarsys.capella.core.commands.preferences.service.AbstractPreference
  */
 public class CapellaModelPreferencesPlugin extends Plugin {
 
-  // The plug-in ID
-  public static final String PLUGIN_ID = "org.polarsys.capella.core.model.preferences"; //$NON-NLS-1$
-
   // The shared instance
   private static CapellaModelPreferencesPlugin plugin;
 

@@ -34,6 +34,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.progress.UIJob;
 import org.eclipse.ui.views.properties.tabbed.ISection;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.ef.command.ICommand;
@@ -41,7 +42,6 @@ import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.model.handler.provider.CapellaReadOnlyHelper;
 import org.polarsys.capella.core.model.handler.provider.IReadOnlySectionHandler;
 import org.polarsys.capella.core.ui.properties.helpers.NotificationHelper;
-import org.polarsys.capella.core.ui.properties.richtext.CapellaUIPropertiesRichtextPlugin;
 import org.polarsys.capella.core.ui.properties.richtext.RichtextManager;
 import org.polarsys.kitalpha.richtext.common.intf.MDERichTextWidget;
 import org.polarsys.kitalpha.richtext.common.intf.SaveStrategy;
@@ -53,10 +53,10 @@ import org.polarsys.kitalpha.richtext.widget.helper.MDERichtextWidgetHelper;
  */
 public abstract class ElementDescriptionGroup {
 
-  private static final String FAMILY_DEFERRED_REFRESH = CapellaUIPropertiesRichtextPlugin.PLUGIN_ID
+  private static final String FAMILY_DEFERRED_REFRESH = FrameworkUtil.getBundle(ElementDescriptionGroup.class).getSymbolicName()
       + ".refreshJobFamily";
 
-  private static final String FAMILY_LOAD_DATA_REFRESH = CapellaUIPropertiesRichtextPlugin.PLUGIN_ID
+  private static final String FAMILY_LOAD_DATA_REFRESH = FrameworkUtil.getBundle(ElementDescriptionGroup.class).getSymbolicName()
       + ".loadDataJobFamily";
   
   /**

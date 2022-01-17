@@ -30,6 +30,7 @@ import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.swt.SWT;
 import org.eclipse.ui.PlatformUI;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.core.model.handler.command.BasicCapellaDeleteCommand;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
@@ -148,7 +149,7 @@ public class CapellaDeleteCommand extends BasicCapellaDeleteCommand {
   protected IStatus preDeleteChecks() {
     Set<?> elementsToDelete = getAllElementsToDelete();
     if (preventProtectedElementsDeletion && !CapellaDeleteAction.canDelete(elementsToDelete)) {
-      deletionStatus = new Status(Status.ERROR, CapellaActionsActivator.PLUGIN_ID,
+      deletionStatus = new Status(Status.ERROR, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(),
           Messages.CapellaDeleteCommand_ProtectedElementsError);
     } else {
       long nbRepresentations = elementsToDelete.stream().filter(DRepresentationDescriptor.class::isInstance).count();
@@ -174,7 +175,7 @@ public class CapellaDeleteCommand extends BasicCapellaDeleteCommand {
       }
       String message = MessageFormat.format(Messages.CapellaDeleteCommand_ConfirmDeletionQuestion,
           messageNbSemanticElement, messageNbRepresentation);
-      deletionStatus = new Status(status, CapellaActionsActivator.PLUGIN_ID, message);
+      deletionStatus = new Status(status, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), message);
     }
     return deletionStatus;
 

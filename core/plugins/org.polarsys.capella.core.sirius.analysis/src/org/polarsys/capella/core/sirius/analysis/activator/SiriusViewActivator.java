@@ -29,6 +29,7 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.core.sirius.analysis.helpers.DDiagramHelper;
 import org.polarsys.capella.core.sirius.analysis.preferences.DiagramPreferenceInitializer;
 import org.polarsys.capella.core.sirius.analysis.preferences.TitleBlockPreferencesInitializer;
@@ -36,7 +37,7 @@ import org.polarsys.capella.core.sirius.analysis.tool.ActivityEditorUpdater;
 
 public class SiriusViewActivator extends AbstractUIPlugin {
 
-  public static final String ID = "org.polarsys.capella.core.sirius.analysis"; //$NON-NLS-1$
+  public static final String ID = FrameworkUtil.getBundle(SiriusViewActivator.class).getSymbolicName(); //$NON-NLS-1$
 
   private static SiriusViewActivator instance;
 

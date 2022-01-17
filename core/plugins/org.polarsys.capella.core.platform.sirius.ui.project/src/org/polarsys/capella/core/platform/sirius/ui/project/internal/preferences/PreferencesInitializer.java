@@ -13,8 +13,8 @@
 package org.polarsys.capella.core.platform.sirius.ui.project.internal.preferences;
 
 import org.eclipse.jface.preference.IPreferenceStore;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.core.commands.preferences.service.AbstractPreferencesInitializer;
-import org.polarsys.capella.core.platform.sirius.ui.project.CapellaProjectActivator;
 import org.polarsys.capella.core.preferences.Activator;
 
 /**
@@ -25,7 +25,7 @@ public class PreferencesInitializer extends AbstractPreferencesInitializer {
    * @param pluginID_p
    */
   public PreferencesInitializer() {
-    super(CapellaProjectActivator.PLUGIN_ID);
+    super(FrameworkUtil.getBundle(PreferencesInitializer.class).getSymbolicName());
   }
 
   /**

@@ -26,11 +26,11 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.ui.statushandlers.StatusManager;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaDeleteCommand;
-import org.polarsys.capella.core.validation.ui.ide.PluginActivator;
 
 /**
  * Delete Element(s), with confirmation (ok:yes, cancel:no). Also delete the marker.
@@ -158,7 +158,7 @@ public abstract class AbstractDeleteCommandResolver extends AbstractCapellaMarke
           try {
             marker.delete();
           } catch (CoreException exception) {
-            StatusManager.getManager().handle(new Status(IStatus.ERROR, PluginActivator.getDefault().getPluginId(),
+            StatusManager.getManager().handle(new Status(IStatus.ERROR, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(),
                 exception.getMessage(), exception));
           }
         }

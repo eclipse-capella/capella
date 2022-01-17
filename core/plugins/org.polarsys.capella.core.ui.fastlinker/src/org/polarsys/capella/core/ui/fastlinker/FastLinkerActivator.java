@@ -15,13 +15,12 @@ package org.polarsys.capella.core.ui.fastlinker;
 import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
+import org.osgi.framework.FrameworkUtil;
 
 /**
  * The activator class controls the plug-in life cycle.
  */
 public class FastLinkerActivator extends AbstractUIPlugin {
-  // The plug-in ID
-  public static final String PLUGIN_ID = "org.polarsys.capella.core.ui.fastlinker"; //$NON-NLS-1$
   // The shared instance
   private static FastLinkerActivator plugin;
   /**
@@ -58,8 +57,8 @@ public class FastLinkerActivator extends AbstractUIPlugin {
   @SuppressWarnings("nls")
   protected void initializeImageRegistry(ImageRegistry imageRegistry) {
     // Enabled icons.
-    imageRegistry.put(IMG_PIN, imageDescriptorFromPlugin(PLUGIN_ID, "icons/elcl16/pin.gif"));
-    imageRegistry.put(IMG_CLEAR, imageDescriptorFromPlugin(PLUGIN_ID, "icons/elcl16/clear.gif"));
+    imageRegistry.put(IMG_PIN, imageDescriptorFromPlugin(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), "icons/elcl16/pin.gif"));
+    imageRegistry.put(IMG_CLEAR, imageDescriptorFromPlugin(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), "icons/elcl16/clear.gif"));
   }
 
   /*

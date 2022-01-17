@@ -19,8 +19,8 @@ import org.eclipse.emf.diffmerge.ui.viewers.EMFDiffNode;
 import org.eclipse.emf.diffmerge.ui.viewers.IDifferenceCategory;
 import org.eclipse.emf.diffmerge.ui.viewers.IDifferenceCategorySet;
 import org.eclipse.emf.diffmerge.ui.viewers.categories.DifferenceCategorySet;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.core.commands.preferences.service.ScopedCapellaPreferencesStore;
-import org.polarsys.capella.core.preferences.Activator;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.merge.ICategoryItem;
 import org.polarsys.capella.core.transition.common.handlers.merge.ICategorySet;
@@ -111,7 +111,7 @@ public class MergeCategoryManager extends CategoryManager {
     Object purposeValue = context.get(ITransitionConstants.TRANSPOSER_PURPOSE);
     if (purposeValue instanceof String) {
       String purpose = (String) purposeValue;
-      ScopedCapellaPreferencesStore scps = ScopedCapellaPreferencesStore.getInstance(Activator.PLUGIN_ID);
+      ScopedCapellaPreferencesStore scps = ScopedCapellaPreferencesStore.getInstance(FrameworkUtil.getBundle(this.getClass()).getSymbolicName());
 
       for (IDifferenceCategory category : getCategories()) {
         String isActiveKey = getIsActiveKey(purpose, category);
@@ -137,7 +137,7 @@ public class MergeCategoryManager extends CategoryManager {
     if (purposeValue instanceof String) {
       String purpose = (String) purposeValue;
       
-      ScopedCapellaPreferencesStore scps = ScopedCapellaPreferencesStore.getInstance(Activator.PLUGIN_ID);
+      ScopedCapellaPreferencesStore scps = ScopedCapellaPreferencesStore.getInstance(FrameworkUtil.getBundle(this.getClass()).getSymbolicName());
       
       for (IDifferenceCategory category : this.getCategories()) {
         String isActiveKey = getIsActiveKey(purpose, category);

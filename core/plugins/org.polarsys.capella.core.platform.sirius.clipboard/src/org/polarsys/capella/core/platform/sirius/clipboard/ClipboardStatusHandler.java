@@ -36,7 +36,7 @@ public class ClipboardStatusHandler extends AbstractStatusHandler {
           Shell activeShell = window.getShell();
           Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.DIAGRAM);
           logger.warn(new EmbeddedMessage(status.getMessage(), IReportManagerDefaultComponents.DIAGRAM), status.getException());
-          MessageDialog.openWarning(activeShell, Activator.LABEL, status.getMessage());
+          MessageDialog.openWarning(activeShell, Messages.Activator_Label, status.getMessage());
         }
       }
     }

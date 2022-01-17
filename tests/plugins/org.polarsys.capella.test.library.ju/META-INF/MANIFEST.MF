@@ -3,7 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.test.library.ju
 Bundle-Version: 6.0.0.qualifier
-Bundle-Activator: org.polarsys.capella.test.libraries.ju.TestLibrariesPlugin
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.polarsys.capella.test.framework,
@@ -12,7 +11,6 @@ Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Export-Package: org.polarsys.capella.test.libraries.ju,
- org.polarsys.capella.test.libraries.ju.testcases.basic,
+Export-Package: org.polarsys.capella.test.libraries.ju.testcases.basic,
  org.polarsys.capella.test.libraries.ju.testsuites.main,
  org.polarsys.capella.test.libraries.ju.testsuites.partial

@@ -29,6 +29,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.emf.core.resources.GMFResource;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.business.api.session.Session;
+import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.Version;
 import org.polarsys.capella.common.bundle.FeatureHelper;
 import org.polarsys.capella.common.ef.ExecutionManagerRegistry;
@@ -46,6 +47,9 @@ import org.polarsys.kitalpha.ad.services.manager.ViewpointManager;
  */
 public class CapellaMetadataProvider implements IMetadataProvider {
 
+  // The identifier of the Capella "virtual" viewpoint
+  public static final String CAPELLA_VIEWPOINT_ID = "org.polarsys.capella.core.viewpoint";
+    
   /**
    * Return the platform current version, based on the Capella Viewpoint. If performance are here, we shall use it as
    * the main way to retrieve capella version
@@ -54,7 +58,7 @@ public class CapellaMetadataProvider implements IMetadataProvider {
     // We try to load the capella viewpoint first.
     try {
       Version version = ViewpointManager
-          .readVersion(ViewpointManager.getViewpoint(AFIntegrationPlugin.CAPELLA_VIEWPOINT_ID));
+          .readVersion(ViewpointManager.getViewpoint(CAPELLA_VIEWPOINT_ID));
       return version;
 
     } catch (Exception e) {
@@ -118,7 +122,7 @@ public class CapellaMetadataProvider implements IMetadataProvider {
 
     // If there is no afm file, we raise an error
     if (!afm.exists()) {
-      return new Status(IStatus.ERROR, AFIntegrationPlugin.getSymbolicName(),
+      return new Status(IStatus.ERROR, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(),
           NLS.bind(Messages.NoMetadataException_Message, EcoreUtil2.getURI(file).toPlatformString(true)));
     }
 
@@ -131,7 +135,7 @@ public class CapellaMetadataProvider implements IMetadataProvider {
       return checkMetadata(uri, set);
 
     } catch (Exception e) {
-      return new Status(IStatus.ERROR, AFIntegrationPlugin.getSymbolicName(), e.getMessage());
+      return new Status(IStatus.ERROR, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), e.getMessage());
 
     } finally {
       for (Resource r : set.getResources()) {
@@ -150,14 +154,14 @@ public class CapellaMetadataProvider implements IMetadataProvider {
       // If there is no afm file but the current check is about a capella project, we must raise an exception because
       // the afm file is missing.
       if (CapellaResourceHelper.isCapellaProject(sessionResourceURI)) {
-        return new Status(IStatus.ERROR, AFIntegrationPlugin.getSymbolicName(),
+        return new Status(IStatus.ERROR, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(),
             NLS.bind(Messages.NoMetadataException_Message,
                 MetadataHelper.getViewpointMetadata(set).getExpectedMetadataStorageURI().toPlatformString(true)));
       }
     } else {
       // If there is an afm file, first we check if the capella viewpoint is present in the platform
       org.polarsys.kitalpha.resourcereuse.model.Resource vp = ViewpointManager
-          .getViewpoint(AFIntegrationPlugin.CAPELLA_VIEWPOINT_ID);
+          .getViewpoint(CAPELLA_VIEWPOINT_ID);
       if (vp != null) {
         // then, if the afm file has this capella viewpoint
         Version fileVersion = MetadataHelper.getViewpointMetadata(set).getVersion(vp);
@@ -190,14 +194,14 @@ public class CapellaMetadataProvider implements IMetadataProvider {
 
     // if not the same major/minor we requires a migration
     if (!(fileVersion.getMajor() == currentVersion.getMajor() && fileVersion.getMinor() == currentVersion.getMinor())) {
-      return new Status(IStatus.ERROR, AFIntegrationPlugin.getSymbolicName(),
+      return new Status(IStatus.ERROR, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(),
           Messages.WrongCapellaVersionException_Message);
     }
 
     // if model from 1.4.0 towards 1.3.x, we requires a migration
     if (fileVersion.getMajor() == 1 && fileVersion.getMinor() == 3 && fileVersion.getMicro() == 0) {
       if (currentVersion.getMajor() == 1 && currentVersion.getMinor() == 3 && currentVersion.getMicro() > 0) {
-        return new Status(IStatus.ERROR, AFIntegrationPlugin.getSymbolicName(),
+        return new Status(IStatus.ERROR, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(),
             NLS.bind(Messages.WrongCapellaVersionException_DetailedMessage, fileVersion));
       }
     }

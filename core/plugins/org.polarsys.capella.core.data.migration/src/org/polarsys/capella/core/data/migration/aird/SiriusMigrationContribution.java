@@ -25,8 +25,8 @@ import org.eclipse.emf.ecore.xmi.XMIException;
 import org.eclipse.emf.ecore.xmi.XMLHelper;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.sirius.business.internal.migration.RepresentationsFileMigrationService;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ef.ExecutionManager;
-import org.polarsys.capella.core.data.migration.Activator;
 import org.polarsys.capella.core.data.migration.context.MigrationContext;
 import org.polarsys.capella.core.data.migration.contribution.AbstractMigrationContribution;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
@@ -167,7 +167,7 @@ public class SiriusMigrationContribution extends AbstractMigrationContribution {
 
     // lower the unresolvedReferenceException to a lower priority. it's the repair-aird that will fix these issues.
     if (e instanceof UnresolvedReferenceException) {
-      return new Status(IStatus.WARNING, Activator.PLUGIN_ID, e.getMessage());
+      return new Status(IStatus.WARNING, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), e.getMessage());
     }
 
     return null;

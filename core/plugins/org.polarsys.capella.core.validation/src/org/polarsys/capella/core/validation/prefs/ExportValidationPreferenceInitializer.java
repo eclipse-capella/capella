@@ -15,8 +15,7 @@ package org.polarsys.capella.core.validation.prefs;
 import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
 import org.eclipse.core.runtime.preferences.DefaultScope;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
-
-import org.polarsys.capella.core.validation.CapellaValidationActivator;
+import org.osgi.framework.FrameworkUtil;
 
 /**
  * Preference initializer for this plugin
@@ -31,7 +30,7 @@ public class ExportValidationPreferenceInitializer extends AbstractPreferenceIni
   public void initializeDefaultPreferences() {
 
     
-    IEclipsePreferences node = new DefaultScope().getNode(CapellaValidationActivator.getDefault().getPluginId());
+    IEclipsePreferences node = new DefaultScope().getNode(FrameworkUtil.getBundle(this.getClass()).getSymbolicName());
     
     node.put(
         IExportValidationConstants.EXPORT_ONLY_CAPELLA_PREF_ID,

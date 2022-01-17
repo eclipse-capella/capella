@@ -23,9 +23,8 @@ import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.emf.validation.model.Category;
 import org.eclipse.emf.validation.service.IConstraintDescriptor;
-
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.helpers.export.DataExporter;
-import org.polarsys.capella.core.validation.CapellaValidationActivator;
 import org.polarsys.capella.core.validation.filter.CapellaConstraintFilter;
 import org.polarsys.capella.core.validation.prefs.IExportValidationConstants;
 import org.polarsys.capella.core.validation.utils.ValidationHelper;
@@ -61,7 +60,7 @@ public class ExportUtils {
 		List<String[]> data = new ArrayList<>();
 
 		IEclipsePreferences preferences = new InstanceScope()
-				.getNode(CapellaValidationActivator.getDefault().getPluginId());
+				.getNode(FrameworkUtil.getBundle(ExportUtils.class).getSymbolicName());
 
 		boolean onlyActiveRules = preferences
 				.getBoolean(

@@ -14,10 +14,13 @@ package org.polarsys.capella.common.flexibility.wizards.ui.util;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.swt.widgets.Label;
-import org.polarsys.capella.common.flexibility.wizards.Activator;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 
 public class StatusLabelHelper {
+    
+  StatusLabelHelper() {}
 
   /**
    * This method allows to set an image to the given SWT label according to the status
@@ -25,16 +28,16 @@ public class StatusLabelHelper {
   public static void updateImage(IStatus status, Label label) {
     if (!label.isDisposed() && status != null) {
       if (status.isOK()) {
-        label.setImage(Activator.getDefault().getImage("full/etool16/empty.gif"));
+        label.setImage(AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(StatusLabelHelper.class).getSymbolicName(), "full/etool16/empty.gif").createImage());
 
       } else if (status.matches(IStatus.INFO)) {
-        label.setImage(Activator.getDefault().getImage("full/etool16/info_tsk.gif"));
+        label.setImage(AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(StatusLabelHelper.class).getSymbolicName(), "full/etool16/info_tsk.gif").createImage());
 
       } else if (status.matches(IStatus.WARNING)) {
-        label.setImage(Activator.getDefault().getImage("full/etool16/warn_tsk.gif"));
+        label.setImage(AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(StatusLabelHelper.class).getSymbolicName(), "full/etool16/warn_tsk.gif").createImage());
 
       } else if (status.matches(IStatus.ERROR)) {
-        label.setImage(Activator.getDefault().getImage("full/etool16/error_tsk.gif"));
+        label.setImage(AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(StatusLabelHelper.class).getSymbolicName(), "full/etool16/error_tsk.gif").createImage());
       }
     }
   }

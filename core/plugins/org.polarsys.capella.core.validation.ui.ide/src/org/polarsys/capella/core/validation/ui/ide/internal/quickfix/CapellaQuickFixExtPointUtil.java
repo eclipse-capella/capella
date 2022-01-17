@@ -18,9 +18,8 @@ import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IConfigurationElement;
-
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
-import org.polarsys.capella.core.validation.ui.ide.PluginActivator;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarkerResolution;
 
 /**
@@ -89,7 +88,7 @@ public class CapellaQuickFixExtPointUtil {
     
     IConfigurationElement[] configurationElements =
         ExtensionPointHelper.getConfigurationElements(
-            PluginActivator.getDefault().getPluginId(),
+            FrameworkUtil.getBundle(CapellaQuickFixExtPointUtil.class).getSymbolicName(),
             ICapellaQuickFixExtPointConstants.EXT_POINT_ID
         )
     ;

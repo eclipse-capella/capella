@@ -13,8 +13,9 @@
 package org.polarsys.capella.common.mdsofa.common.activator;
 
 import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.Plugin;
 import org.osgi.framework.BundleContext;
-
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
 import org.polarsys.capella.common.mdsofa.common.helper.IUserEnforcedHelper;
 import org.polarsys.capella.common.mdsofa.common.internal.helper.DefaultUserHelper;
@@ -22,7 +23,7 @@ import org.polarsys.capella.common.mdsofa.common.internal.helper.DefaultUserHelp
 /**
  * SolFa common plug-in activator.
  */
-public class SolFaCommonActivator extends AbstractActivator {
+public class SolFaCommonActivator extends Plugin {
   /**
    * Extension point "user_helper" short id.
    */
@@ -70,7 +71,7 @@ public class SolFaCommonActivator extends AbstractActivator {
     // Lazy loading. Search for the implementation.
     if (null == _userHelper) {
       // Get extensions abiding to user helper extension point.
-      IConfigurationElement[] configurationElements = ExtensionPointHelper.getConfigurationElements(getPluginId(), EXTENSION_POINT_SHORT_ID_USER_HELPER);
+      IConfigurationElement[] configurationElements = ExtensionPointHelper.getConfigurationElements(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), EXTENSION_POINT_SHORT_ID_USER_HELPER);
       if ((null != configurationElements) && (configurationElements.length > 0)) {
         // There should be one implementation only !
         // So take the first one, as expected.

@@ -45,6 +45,7 @@ import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.ToolBar;
 import org.eclipse.swt.widgets.ToolItem;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
@@ -260,12 +261,12 @@ public class TraceTreeViewer implements IDoubleClickListener {
 
     _addItem = new ToolItem(toolBar, SWT.DROP_DOWN);
     _addItem.setToolTipText(Messages.getString("TraceTreeViewer.addTrace_tooltip")); //$NON-NLS-1$
-    _addItem.setImage(AbstractUIPlugin.imageDescriptorFromPlugin(MDTrace.PLUGIN_ID, IImageKeys.ACTION_ADD).createImage());
+    _addItem.setImage(AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), IImageKeys.ACTION_ADD).createImage());
     prepareMenuItems();
 
     _removeItem = new ToolItem(toolBar, SWT.PUSH);
     _removeItem.setToolTipText(Messages.getString("TraceTreeViewer.removeTrace_tooltip")); //$NON-NLS-1$
-    _removeItem.setImage(MDTrace.imageDescriptorFromPlugin(MDTrace.PLUGIN_ID, IImageKeys.ACTION_REMOVE).createImage());
+    _removeItem.setImage(MDTrace.imageDescriptorFromPlugin(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), IImageKeys.ACTION_REMOVE).createImage());
 
     // disable the remove item
     _removeItem.setEnabled(false);
@@ -385,7 +386,7 @@ public class TraceTreeViewer implements IDoubleClickListener {
     for (String traceName : TraceNameHelper.getManualTraceTypes()) {
       MenuItem item = new MenuItem(_additionMenu, SWT.PUSH);
       item.setText(traceName);
-      item.setImage(AbstractUIPlugin.imageDescriptorFromPlugin(MDTrace.PLUGIN_ID, IImageKeys.MENU_ITEM).createImage());
+      item.setImage(AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), IImageKeys.MENU_ITEM).createImage());
       item.addSelectionListener(_menuSelectionListener);
     }
   }

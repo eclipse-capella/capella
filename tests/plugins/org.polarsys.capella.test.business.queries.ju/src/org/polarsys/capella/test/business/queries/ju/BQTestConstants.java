@@ -51,7 +51,7 @@ public class BQTestConstants {
   public static boolean isDiscardedBQ(String bqFqn) {
     if (discardedBQs == null) {
       try {
-        File fileConf = IResourceHelpers.getFileInPlugin(TestBusinessQueriesPlugin.class,
+        File fileConf = IResourceHelpers.getFileInPlugin(BQTestConstants.class,
             BQTestConstants.DISCARDED_BQ_CONFIGURATION_FILE_RELATIVE_PATH);
         String data = IResourceHelpers.readFileAsString(fileConf);
         discardedBQs = Arrays.asList(data.split("\\r?\\n")); //$NON-NLS-1$

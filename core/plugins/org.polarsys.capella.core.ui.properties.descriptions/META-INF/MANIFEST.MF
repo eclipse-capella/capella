@@ -8,7 +8,5 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Localization: plugin
 Require-Bundle: org.eclipse.sirius.diagram.ui,
  org.polarsys.capella.core.ui.properties
-Export-Package: org.polarsys.capella.core.ui.properties.descriptions,
- org.polarsys.capella.core.ui.properties.descriptions.fields,
+Export-Package: org.polarsys.capella.core.ui.properties.descriptions.fields,
  org.polarsys.capella.core.ui.properties.descriptions.sections
-Bundle-Activator: org.polarsys.capella.core.ui.properties.descriptions.CapellaUIPropertiesDescriptionPlugin

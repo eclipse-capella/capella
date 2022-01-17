@@ -19,8 +19,6 @@ import org.polarsys.capella.common.ui.services.AbstractUIActivator;
  */
 public class MdeCommonUiActivator extends AbstractUIActivator {
 
-  public static final String PLUGIN_ID = "org.polarsys.capella.common.ui";
-
   /**
    * Singleton instance.
    */

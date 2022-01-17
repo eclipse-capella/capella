@@ -23,7 +23,9 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.ui.providers.MDEAdapterFactoryLabelProvider;
@@ -36,7 +38,6 @@ import org.polarsys.capella.core.data.capellacommon.StateEvent;
 import org.polarsys.capella.core.data.capellacommon.StateTransition;
 import org.polarsys.capella.core.data.capellacommon.TimeEvent;
 import org.polarsys.capella.core.data.capellacore.Constraint;
-import org.polarsys.capella.core.data.common.properties.CommonPropertiesPlugin;
 import org.polarsys.capella.core.data.common.properties.IImageKeys;
 import org.polarsys.capella.core.linkedtext.ui.CapellaEmbeddedLinkedTextEditorInput;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
@@ -112,19 +113,21 @@ public class StateTransitionTriggerField extends ContainmentTableField {
   @SuppressWarnings("synthetic-access")
   protected void createCustomActions(Composite parent) {
 
-    _timeEventBtn = createTableButton(parent, CommonPropertiesPlugin.getDefault().getImage(IImageKeys.TIME_EVENT_IMG_16), new Runnable() {
-      @Override
-      public void run() {
-        handleStateEventButtonClick(CapellacommonPackage.Literals.TIME_EVENT);
-      }
+      _timeEventBtn = createTableButton(parent, AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), IImageKeys.TIME_EVENT_IMG_16).createImage(),
+              new Runnable() {
+                  @Override
+                  public void run() {
+                      handleStateEventButtonClick(CapellacommonPackage.Literals.TIME_EVENT);
+                  }
     });
     _timeEventBtn.setToolTipText("Create a Time Event");
 
-    _changeEventBtn = createTableButton(parent, CommonPropertiesPlugin.getDefault().getImage(IImageKeys.CHANGE_EVENT_IMG_16), new Runnable() {
-      @Override
-      public void run() {
-        handleStateEventButtonClick(CapellacommonPackage.Literals.CHANGE_EVENT);
-      }
+    _changeEventBtn = createTableButton(parent, AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), IImageKeys.CHANGE_EVENT_IMG_16).createImage(),
+            new Runnable() {
+                @Override
+                public void run() {
+                    handleStateEventButtonClick(CapellacommonPackage.Literals.CHANGE_EVENT);
+                }
     });
     _changeEventBtn.setToolTipText("Create a Change Event");
 

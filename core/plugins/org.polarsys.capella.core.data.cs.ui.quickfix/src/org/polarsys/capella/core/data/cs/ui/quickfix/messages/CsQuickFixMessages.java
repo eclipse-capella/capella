@@ -13,14 +13,13 @@
 package org.polarsys.capella.core.data.cs.ui.quickfix.messages;
 
 import org.eclipse.osgi.util.NLS;
-
-import org.polarsys.capella.core.data.cs.ui.quickfix.CsQuickFixActivator;
+import org.osgi.framework.FrameworkUtil;
 
 /**
  * I18n support for this plugin
  */
 public class CsQuickFixMessages extends NLS {
-  private static final String BUNDLE_NAME = CsQuickFixActivator.getDefault().getPluginId() + ".messages.messages"; //$NON-NLS-1$
+  private static final String BUNDLE_NAME = FrameworkUtil.getBundle(CsQuickFixMessages.class).getSymbolicName() + ".messages.messages"; //$NON-NLS-1$
 
   static {
     // initialize resource bundle

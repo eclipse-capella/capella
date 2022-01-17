@@ -42,6 +42,7 @@ import org.eclipse.ui.internal.wizards.preferences.PreferencesExportWizard;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.ui.preferences.ScopedPreferenceStore;
 import org.osgi.framework.BundleContext;
+import org.osgi.framework.FrameworkUtil;
 import org.osgi.service.event.Event;
 import org.polarsys.capella.core.commands.preferences.internalization.l10n.CustomPreferencesMessages;
 import org.polarsys.capella.core.commands.preferences.model.CategoryPreferences;
@@ -89,9 +90,6 @@ public class Activator extends AbstractUIPlugin {
    */
   public static final String PREFERENCES_PROVIDERS_EXT_P_NAME = "capellaPreferences"; //$NON-NLS-1$
 
-  // The plug-in ID
-  public static final String PLUGIN_ID = "org.polarsys.capella.core.preferences"; //$NON-NLS-1$
-
   // The shared instance
   private static Activator plugin;
 
@@ -128,14 +126,14 @@ public class Activator extends AbstractUIPlugin {
         
         @Override
         public void handleEvent(Event event) {
-          ScopedCapellaPreferencesStore.getInstance(Activator.PLUGIN_ID).saveForExport();
+          ScopedCapellaPreferencesStore.getInstance(FrameworkUtil.getBundle(this.getClass()).getSymbolicName()).saveForExport();
 
           IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
           for (IProject project : projects) {
             if (PreferencesHelper.hasConfigurationProject(project)) {
               try {
                 IProject configProject = PreferencesHelper.getReferencedProjectConfiguration(project);
-                new ProjectScope(configProject).getNode(Activator.PLUGIN_ID).flush();
+                new ProjectScope(configProject).getNode(FrameworkUtil.getBundle(this.getClass()).getSymbolicName()).flush();
                 configProject.refreshLocal(IResource.DEPTH_INFINITE, null);
                 project.refreshLocal(IResource.DEPTH_INFINITE, null);
               } catch (Exception exception) {
@@ -157,7 +155,7 @@ public class Activator extends AbstractUIPlugin {
   public IPreferenceStore getPreferenceStore() {
     // Create the preference store lazily.
     if (preferenceStore == null) {
-      preferenceStore = new ScopedPreferenceStore(InstanceScope.INSTANCE, Activator.PLUGIN_ID);
+      preferenceStore = new ScopedPreferenceStore(InstanceScope.INSTANCE, FrameworkUtil.getBundle(this.getClass()).getSymbolicName());
     }
     return preferenceStore;
   }
@@ -202,7 +200,7 @@ public class Activator extends AbstractUIPlugin {
 
     extensionTracker.registerHandler(extensionHandler, null);
 
-    IExtensionPoint extPoint = Platform.getExtensionRegistry().getExtensionPoint(Activator.PLUGIN_ID,
+    IExtensionPoint extPoint = Platform.getExtensionRegistry().getExtensionPoint(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(),
         Activator.PREFERENCES_PROVIDERS_EXT_P_NAME);
     IExtensionTracker extTracker = Activator.getExtensionTracker();
     if (extTracker != null) {
@@ -235,7 +233,7 @@ public class Activator extends AbstractUIPlugin {
   public void loadCategories() {
     if (Platform.isRunning()) {
 
-      IExtensionPoint extPoint = Platform.getExtensionRegistry().getExtensionPoint(Activator.PLUGIN_ID,
+      IExtensionPoint extPoint = Platform.getExtensionRegistry().getExtensionPoint(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(),
           Activator.PREFERENCES_PROVIDERS_EXT_P_NAME);
 
       IExtensionTracker extTracker = Activator.getExtensionTracker();

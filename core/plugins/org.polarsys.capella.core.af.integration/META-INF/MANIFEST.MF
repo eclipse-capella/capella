@@ -5,11 +5,11 @@ Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-SymbolicName: org.polarsys.capella.core.af.integration;singleton:=true
 Bundle-Version: 6.0.0.qualifier
-Bundle-Activator: org.polarsys.capella.core.af.integration.AFIntegrationPlugin
 Require-Bundle: org.polarsys.capella.core.model.handler,
  org.polarsys.kitalpha.ad.metadata;visibility:=reexport,
  org.polarsys.kitalpha.ad.viewpoint;visibility:=reexport,
- org.eclipse.gmf.runtime.emf.core
+ org.eclipse.gmf.runtime.emf.core,
+ org.eclipse.osgi
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.polarsys.capella.core.af.integration,
  org.polarsys.capella.core.af.integration.listener,

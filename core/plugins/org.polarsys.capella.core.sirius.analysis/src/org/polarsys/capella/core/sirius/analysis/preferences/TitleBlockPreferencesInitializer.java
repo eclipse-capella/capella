@@ -13,6 +13,7 @@
 package org.polarsys.capella.core.sirius.analysis.preferences;
 
 import org.eclipse.jface.preference.IPreferenceStore;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.core.commands.preferences.service.AbstractPreferencesInitializer;
 import org.polarsys.capella.core.commands.preferences.service.ScopedCapellaPreferencesStore;
 import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaActionsActivator;
@@ -20,12 +21,12 @@ import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaActionsActiva
 public class TitleBlockPreferencesInitializer extends AbstractPreferencesInitializer {
 
   public TitleBlockPreferencesInitializer() {
-    super(CapellaActionsActivator.PLUGIN_ID);
+    super(FrameworkUtil.getBundle(CapellaActionsActivator.class).getSymbolicName());
   }
 
   @Override
   public void initializeDefaultPreferences() {
-    IPreferenceStore preferenceStore = ScopedCapellaPreferencesStore.getInstance(CapellaActionsActivator.PLUGIN_ID);
+    IPreferenceStore preferenceStore = ScopedCapellaPreferencesStore.getInstance(FrameworkUtil.getBundle(CapellaActionsActivator.class).getSymbolicName());
     preferenceStore.setDefault(TitleBlockPreferencePage.COLUMNS_NUMBER_PREFERENCE_STORE, 2);
     preferenceStore.setDefault(TitleBlockPreferencePage.LINES_NUMBER_PREFERENCE_STORE, 2);
     preferenceStore.setDefault(TitleBlockPreferencePage.TABLE_CONTENT_PREFERENCE_STORE, TitleBlockPreferencePage.DEFAULT_TABLE);

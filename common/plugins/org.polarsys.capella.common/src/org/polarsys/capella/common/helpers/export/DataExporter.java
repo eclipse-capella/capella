@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -13,15 +13,15 @@
 package org.polarsys.capella.common.helpers.export;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.core.runtime.Status;
-import org.polarsys.capella.common.MdeCommonActivator;
+import org.eclipse.core.runtime.Platform;
+import org.osgi.framework.Bundle;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.helpers.ICommonConstants2;
 import org.polarsys.capella.common.helpers.export.utils.CSVWriterMessages;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
@@ -84,22 +84,18 @@ public class DataExporter {
       try {
         stream = new FileOutputStream(file);
         exporter.export(stream, data);
-      } catch (FileNotFoundException exception) {
-        MdeCommonActivator.getDefault().getLog()
-            .log(new Status(Status.ERROR, MdeCommonActivator.getDefault().getPluginId(), "Error", exception));
-        result = false;
       } catch (IOException exception) {
-        MdeCommonActivator.getDefault().getLog()
-            .log(new Status(Status.ERROR, MdeCommonActivator.getDefault().getPluginId(), "Error", exception));
-        result = false;
+          Bundle bundle = FrameworkUtil.getBundle(this.getClass());
+          Platform.getLog(bundle).error("Error", exception);
+          result = false;
       } finally {
         try {
           if (stream != null) {
             stream.close();
           }
         } catch (IOException exception) {
-          MdeCommonActivator.getDefault().getLog()
-              .log(new Status(Status.ERROR, MdeCommonActivator.getDefault().getPluginId(), "Error", exception));
+            Bundle bundle = FrameworkUtil.getBundle(this.getClass());
+            Platform.getLog(bundle).error("Error", exception);
         }
       }
     } else {

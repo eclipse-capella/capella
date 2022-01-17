@@ -20,6 +20,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.QualifiedName;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.SubMonitor;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.core.data.migration.context.MigrationContext;
 
 /**
@@ -27,7 +28,7 @@ import org.polarsys.capella.core.data.migration.context.MigrationContext;
  */
 public class MigrationJob extends WorkspaceJob {
 
-  public static final QualifiedName RESULT_PROPERTY = new QualifiedName(Activator.PLUGIN_ID, "result"); //$NON-NLS-1$
+  public static final QualifiedName RESULT_PROPERTY = new QualifiedName(FrameworkUtil.getBundle(MigrationJob.class).getSymbolicName(), "result"); //$NON-NLS-1$
 
   private boolean checkVersion;
   private MigrationContext context;
@@ -60,7 +61,7 @@ public class MigrationJob extends WorkspaceJob {
         try { // refresh output file.
           runnable.getFile().getProject().refreshLocal(IResource.DEPTH_INFINITE, SubMonitor.convert(monitor, 5));
         } catch (CoreException exception) {
-          result = new Status(IStatus.ERROR, Activator.PLUGIN_ID, exception.getMessage(), exception);
+          result = new Status(IStatus.ERROR, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), exception.getMessage(), exception);
         }
       }
 

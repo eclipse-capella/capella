@@ -14,9 +14,9 @@ package org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views.provid
 
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ui.providers.MDEAdapterFactoryLabelProvider;
 import org.polarsys.capella.core.data.capellacore.Trace;
-import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.MDTrace;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.messages.TraceNameHelper;
 
 /**
@@ -46,7 +46,7 @@ public class ElementLabelProvider extends MDEAdapterFactoryLabelProvider {
   @Override
   public Image getImage(Object element) {
     if (element instanceof Class) {
-      return AbstractUIPlugin.imageDescriptorFromPlugin(MDTrace.PLUGIN_ID, "icons/generic_value.gif").createImage();
+      return AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), "icons/generic_value.gif").createImage();
     } 
     return super.getImage(element);
   }

@@ -14,11 +14,10 @@
 package org.polarsys.capella.common.tools.report.appenders.reportlogview.extpoint;
 
 import org.eclipse.core.runtime.IConfigurationElement;
-
-import org.polarsys.capella.common.tools.report.appenders.reportlogview.IReportLogViewMarkerIdsProvider;
-import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewPlugin;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
+import org.polarsys.capella.common.tools.report.appenders.reportlogview.IReportLogViewMarkerIdsProvider;
 
 /**
  * Utility class for the filterOnReportView extension point.
@@ -37,7 +36,7 @@ public class ReportLogViewExtPointUtil {
     // Get all the contribution to the marker filtering on report log.
     IConfigurationElement[] configurationElements =
         ExtensionPointHelper.getConfigurationElements(
-            MarkerViewPlugin.PLUGIN_ID,
+            FrameworkUtil.getBundle(ReportLogViewExtPointUtil.class).getSymbolicName(),
             IReportLogViewExtPointConstants.EXT_POINT_ID
         );
     

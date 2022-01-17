@@ -40,6 +40,7 @@ import org.eclipse.ui.commands.IElementUpdater;
 import org.eclipse.ui.handlers.IHandlerActivation;
 import org.eclipse.ui.handlers.IHandlerService;
 import org.eclipse.ui.menus.UIElement;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.core.commands.preferences.service.IItemDescriptor;
 import org.polarsys.capella.core.commands.preferences.service.PreferencesItemsRegistry;
 import org.polarsys.capella.core.preferences.Activator;
@@ -87,7 +88,7 @@ public class PreferencesHandler extends AbstractHandler implements IElementUpdat
   }
 
   protected IEclipsePreferences getPreferences() {
-    return InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID);
+    return InstanceScope.INSTANCE.getNode(FrameworkUtil.getBundle(this.getClass()).getSymbolicName());
   }
 
   private List<IHandlerActivation> getRegisteredHandlerActivations(IHandlerService service, String commandId) {

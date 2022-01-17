@@ -20,11 +20,11 @@ import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EPackage;
-import org.polarsys.capella.core.transition.common.Activator;
+import org.osgi.framework.Bundle;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.core.transition.common.ExtensionHelper;
 import org.polarsys.capella.core.transition.common.constants.ISchemaConstants;
 import org.polarsys.capella.core.transition.common.context.TransitionContext;
@@ -74,8 +74,8 @@ public class DomainHelper extends EmfDomainHelper {
           // Nothing more
         }
       }
-      Activator.getDefault().getLog()
-          .log(new Status(IStatus.ERROR, TransposerEMFPlugin.PLUGIN_ID, "No Domain Class called : " + name, e)); //$NON-NLS-1$
+      Bundle bundle = FrameworkUtil.getBundle(TransposerEMFPlugin.class);
+      Platform.getLog(bundle).error("No Domain Class called : " + name, e); //$NON-NLS-1$
     }
 
     return null;

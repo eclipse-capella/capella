@@ -13,7 +13,8 @@ Require-Bundle: org.polarsys.capella.core.model.helpers;visibility:=reexport,
  org.polarsys.capella.common,
  org.polarsys.capella.common.libraries,
  org.polarsys.capella.core.libraries,
- org.polarsys.capella.common.libraries.gen
+ org.polarsys.capella.common.libraries.gen,
+ org.eclipse.osgi
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.business.abstractqueries,
  org.polarsys.capella.core.business.abstractqueries.helpers,
@@ -43,5 +44,4 @@ Export-Package: org.polarsys.capella.core.business.abstractqueries,
  org.polarsys.capella.core.business.queries.queries.oa,
  org.polarsys.capella.core.business.queries.queries.pa
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Bundle-Activator: org.polarsys.capella.core.business.queries.BusinessQueriesPlugin
 Bundle-Localization: plugin

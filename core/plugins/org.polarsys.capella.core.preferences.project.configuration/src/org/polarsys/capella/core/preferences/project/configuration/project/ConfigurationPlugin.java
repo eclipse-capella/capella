@@ -27,9 +27,6 @@ public class ConfigurationPlugin extends Plugin {
 
   private static ConfigurationPlugin plugin;
 
-  // The plug-in ID
-  public static final String PLUGIN_ID = "org.polarsys.capella.core.preferences.project.configuration";//$NON-NLS-1$
-
   private static final String ICONS = "icons/"; //$NON-NLS-1$
 
   public static final String PROJECT_WIZARD_CONFIGURATION_FOLDER_IMG = "config_project_wizard.gif"; //$NON-NLS-1$

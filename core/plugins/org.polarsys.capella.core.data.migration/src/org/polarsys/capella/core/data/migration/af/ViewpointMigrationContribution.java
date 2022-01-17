@@ -27,12 +27,11 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.business.api.resource.ResourceDescriptor;
 import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.Version;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
-import org.polarsys.capella.core.af.integration.AFIntegrationPlugin;
 import org.polarsys.capella.core.af.integration.CapellaMetadataProvider;
-import org.polarsys.capella.core.data.migration.Activator;
 import org.polarsys.capella.core.data.migration.capella.Messages;
 import org.polarsys.capella.core.data.migration.context.MigrationContext;
 import org.polarsys.capella.core.data.migration.contribution.AbstractMigrationContribution;
@@ -100,7 +99,7 @@ public class ViewpointMigrationContribution extends AbstractMigrationContributio
 
   private IStatus checkAFM(IResource fileToMigrate, MigrationContext context, boolean checkVersion) {
 
-    MultiStatus status = new MultiStatus(AFIntegrationPlugin.getSymbolicName(), IStatus.OK,
+    MultiStatus status = new MultiStatus(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), IStatus.OK,
         "Some viewpoints are missing", null);
 
     try {
@@ -109,7 +108,7 @@ public class ViewpointMigrationContribution extends AbstractMigrationContributio
         Map<String, Version> viewpointUsages = CapellaMetadataProvider.getViewpointsUsage((IFile) fileToMigrate);
 
         // We load the AFM file and check if there is an incompatibility with Capella version
-        Version fileVersion = viewpointUsages.get(AFIntegrationPlugin.CAPELLA_VIEWPOINT_ID);
+        Version fileVersion = viewpointUsages.get(CapellaMetadataProvider.CAPELLA_VIEWPOINT_ID);
         context.setFileVersion((IFile) fileToMigrate, fileVersion);
 
         if (checkVersion) {
@@ -123,7 +122,7 @@ public class ViewpointMigrationContribution extends AbstractMigrationContributio
         // We check for additional missing viewpoints
         for (String id : viewpointUsages.keySet()) {
           if (ViewpointManager.getViewpoint(id) == null) {
-            status.add(new Status(IStatus.ERROR, AFIntegrationPlugin.getSymbolicName(),
+            status.add(new Status(IStatus.ERROR, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(),
                 "The viewpoint '" + id + "' is missing"));
           }
         }
@@ -132,7 +131,7 @@ public class ViewpointMigrationContribution extends AbstractMigrationContributio
       }
     } catch (Exception e) {
       e.printStackTrace();
-      status.add(new Status(IStatus.ERROR, AFIntegrationPlugin.getSymbolicName(), e.getMessage()));
+      status.add(new Status(IStatus.ERROR, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), e.getMessage()));
       return status;
     }
 
@@ -148,13 +147,13 @@ public class ViewpointMigrationContribution extends AbstractMigrationContributio
     if (Version.emptyVersion.equals(fileVersion)) {
       String formattedMessage = NLS.bind(Messages.MigrationAction_ErrorDialog_CorruptedMessage,
           new String[] { context.getResourceName() });
-      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, formattedMessage);
+      return new Status(IStatus.ERROR, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), formattedMessage);
     }
 
     if (!isMigrationPossible(fileVersion, currentVersion)) {
       String formattedMessage = NLS.bind(Messages.MigrationAction_ErrorDialog_TooOldMessage,
           new String[] { context.getResourceName(), currentVersion.toString() });
-      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, formattedMessage);
+      return new Status(IStatus.ERROR, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), formattedMessage);
     }
 
     return Status.OK_STATUS;

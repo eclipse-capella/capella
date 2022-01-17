@@ -3,7 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.validation.ui.ide;singleton:=true
 Bundle-Version: 6.0.0.qualifier
-Bundle-Activator: org.polarsys.capella.core.validation.ui.ide.PluginActivator
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.ui;visibility:=reexport,
  org.eclipse.core.runtime,
@@ -15,11 +14,11 @@ Require-Bundle: org.eclipse.ui;visibility:=reexport,
  org.polarsys.capella.common.tools.report.appenders.reportlogview;visibility:=reexport,
  org.polarsys.capella.core.platform.sirius.ui.navigator,
  org.eclipse.emf.validation.ui,
- org.polarsys.capella.common.re.gen
+ org.polarsys.capella.common.re.gen,
+ org.eclipse.osgi
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
-Export-Package: org.polarsys.capella.core.validation.ui.ide,
- org.polarsys.capella.core.validation.ui.ide.internal.quickfix,
+Export-Package: org.polarsys.capella.core.validation.ui.ide.internal.quickfix,
  org.polarsys.capella.core.validation.ui.ide.messages,
  org.polarsys.capella.core.validation.ui.ide.quickfix

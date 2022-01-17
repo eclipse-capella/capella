@@ -1,0 +1,13 @@
+/AbstractConstraint.java
+/AbstractConstraint__context.java
+/InformationsExchanger.java
+/InformationsExchanger__incomingInformationFlows.java
+/InformationsExchanger__informationFlows.java
+/InformationsExchanger__outgoingInformationFlows.java
+/ModelElement.java
+/ModelElement__constraints.java
+/TraceableElement__incomingTraces.java
+/AbstractType.java
+/AbstractType__abstractTypedElements.java
+/TraceableElement.java
+/TraceableElement__outgoingTraces.java

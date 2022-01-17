@@ -25,7 +25,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.ui.preferences.ScopedPreferenceStore;
-
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.helpers.export.DataExporter;
 import org.polarsys.capella.common.helpers.export.IExporterProvider;
 import org.polarsys.capella.core.commands.preferences.service.AbstractDefaultPreferencePage;
@@ -48,8 +48,7 @@ public class ExportValidationPreferencePage extends
 	protected IPreferenceStore doGetPreferenceStore() {
 
 		IPreferenceStore preferences = new ScopedPreferenceStore(
-				new InstanceScope(), CapellaValidationActivator.getDefault()
-						.getPluginId());
+				new InstanceScope(), FrameworkUtil.getBundle(CapellaValidationActivator.class).getSymbolicName());
 
 		return preferences;
 	}

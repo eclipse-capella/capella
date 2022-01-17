@@ -24,7 +24,7 @@ import java.util.Map;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.osgi.framework.Bundle;
-import org.polarsys.capella.core.tiger.Activator;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.core.tiger.ITransfo;
 import org.polarsys.capella.core.tiger.ITransfoRule;
 import org.polarsys.capella.core.tiger.ITransfoRuleBase;
@@ -175,7 +175,7 @@ public class TransfoRuleBase implements ITransfoRuleBase {
    */
   public void loadRules(String rulePkgName, String[] classNames) 
     throws ClassNotFoundException {
-	 Bundle bundle =  Activator.getDefault().getBundle();
+	 Bundle bundle =  FrameworkUtil.getBundle(this.getClass());
     for (String className : classNames) {
     	Class<?> class_ = bundle.loadClass(rulePkgName + "." + className); //$NON-NLS-1$
       loadRule(class_);

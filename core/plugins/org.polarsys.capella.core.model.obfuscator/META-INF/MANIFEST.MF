@@ -15,7 +15,6 @@ Require-Bundle: org.polarsys.capella.core.platform.sirius.ui.navigator,
  org.eclipse.sirius.table,
  org.eclipse.sirius.diagram,
  org.polarsys.kitalpha.ad.metadata
-Bundle-Activator: org.polarsys.capella.core.model.obfuscator.CapellaModelObfuscatorActivator
 Export-Package: org.polarsys.capella.core.model.obfuscator,
  org.polarsys.capella.core.model.obfuscator.actions
 Bundle-Localization: plugin

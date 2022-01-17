@@ -15,15 +15,13 @@ package org.polarsys.capella.common.platform.eclipse.tools.report.ui;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
+import org.osgi.framework.FrameworkUtil;
 
 /**
  * The activator class controls the plug-in life cycle
  */
 public class ReportManagerUI extends AbstractUIPlugin {
-
-	// The plug-in ID
-	public static final String PLUGIN_ID = "org.polarsys.capella.common.platform.eclipse.tools.report.ui"; //$NON-NLS-1$
-											
+										
 	// The shared instance
 	private static ReportManagerUI plugin;
 	
@@ -71,6 +69,6 @@ public class ReportManagerUI extends AbstractUIPlugin {
 	 * @return the image descriptor
 	 */
 	public static ImageDescriptor getImageDescriptor(String path) {
-		return imageDescriptorFromPlugin(PLUGIN_ID, path);
+		return imageDescriptorFromPlugin(FrameworkUtil.getBundle(ReportManagerUI.class).getSymbolicName(), path);
 	}
 }

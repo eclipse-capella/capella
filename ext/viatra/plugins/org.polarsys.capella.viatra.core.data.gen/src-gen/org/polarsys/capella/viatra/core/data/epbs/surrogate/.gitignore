@@ -1,0 +1,9 @@
+/EPBSArchitecture.java
+/EPBSArchitecture__allocatedPhysicalArchitectureRealizations.java
+/EPBSArchitecture__allocatedPhysicalArchitectures.java
+/EPBSArchitecture__containedCapabilityRealizationPkg.java
+/PhysicalArtifactRealization.java
+/PhysicalArtifactRealization__realizedPhysicalArtifact.java
+/PhysicalArtifactRealization__realizingConfigurationItem.java
+/ConfigurationItem.java
+/ConfigurationItem__allocatedPhysicalArtifacts.java

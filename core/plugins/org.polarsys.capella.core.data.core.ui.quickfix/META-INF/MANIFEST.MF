@@ -3,7 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.data.core.ui.quickfix;singleton:=true
 Bundle-Version: 6.0.0.qualifier
-Bundle-Activator: org.polarsys.capella.core.data.core.ui.quickfix.CoreQuickFixActivator
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.core.resources,
  org.eclipse.core.runtime,
@@ -19,10 +18,10 @@ Require-Bundle: org.eclipse.core.resources,
  org.polarsys.capella.core.libraries.ui,
  org.polarsys.capella.core.data.common.validation,
  org.polarsys.capella.core.sirius.analysis,
- org.polarsys.capella.core.ui.resources
+ org.polarsys.capella.core.ui.resources,
+ org.eclipse.osgi
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
-Export-Package: org.polarsys.capella.core.data.core.ui.quickfix,
- org.polarsys.capella.core.data.core.ui.quickfix.messages,
+Export-Package: org.polarsys.capella.core.data.core.ui.quickfix.messages,
  org.polarsys.capella.core.data.core.ui.quickfix.resolver

@@ -25,9 +25,8 @@ import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EClass;
 import org.osgi.framework.Bundle;
-
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
-import org.polarsys.capella.core.tiger.Activator;
 import org.polarsys.capella.core.tiger.IResolver;
 
 /**
@@ -278,7 +277,7 @@ public class TransfoRuleLoader {
    */
   private void loadResolvers() {
     IExtensionRegistry extensionRegistry = Platform.getExtensionRegistry();
-    IConfigurationElement[] elementsForPlugin = extensionRegistry.getConfigurationElementsFor(Activator.PLUGIN_ID);
+    IConfigurationElement[] elementsForPlugin = extensionRegistry.getConfigurationElementsFor(FrameworkUtil.getBundle(this.getClass()).getSymbolicName());
     TreeSet<IConfigurationElement> elements = new TreeSet<IConfigurationElement>(new Comparator<IConfigurationElement>() {
 
       public int compare(IConfigurationElement arg0, IConfigurationElement arg1) {

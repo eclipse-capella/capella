@@ -23,8 +23,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
@@ -32,6 +31,8 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
+import org.osgi.framework.Bundle;
+import org.osgi.framework.FrameworkUtil;
 
 /**
  * Provides EMF model notification with an unique adapter.<br>
@@ -133,8 +134,8 @@ public class DataNotifier extends EContentAdapter implements IEditingDomainProvi
     try {
       super.notifyChanged(notification);
     } catch (Exception exception) {
-	  PlatformSiriusTedActivator.getDefault().getLog().log(
-          new Status(IStatus.ERROR, PlatformSiriusTedActivator.getDefault().getPluginId(), exception.getMessage(), exception));
+        Bundle bundle = FrameworkUtil.getBundle(this.getClass());
+        Platform.getLog(bundle).error(exception.getMessage(), exception);
       // TODO: must handle this case, ie. provide a CDO version adapted to CDO of DataNotifier.
       // DataNotifier is instantiated by our SemanticResourceSet. there is already an extension point that allows to override the capella cross referencer.
       // Must do the same thing here.

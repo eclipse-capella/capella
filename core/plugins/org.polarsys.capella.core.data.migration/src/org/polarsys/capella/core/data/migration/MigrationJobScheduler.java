@@ -30,6 +30,7 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.statushandlers.StatusManager;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.common.tools.report.util.LogExt;
 import org.polarsys.capella.core.data.migration.context.MigrationContext;
@@ -152,7 +153,7 @@ public class MigrationJobScheduler {
 
   protected void logStatus(MigrationContext context, IStatus status) {
     if (status.isOK()) {
-      status = new Status(IStatus.INFO, Activator.PLUGIN_ID, NLS.bind(Messages.MigrationAction_MigrationOK, context.getName()));
+      status = new Status(IStatus.INFO, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), NLS.bind(Messages.MigrationAction_MigrationOK, context.getName()));
     }
     
     StatusManager.getManager().handle(status, StatusManager.LOG);

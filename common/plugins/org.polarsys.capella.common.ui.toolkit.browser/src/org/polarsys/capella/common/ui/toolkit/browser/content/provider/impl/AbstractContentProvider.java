@@ -17,8 +17,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
@@ -27,8 +26,9 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.Viewer;
+import org.osgi.framework.Bundle;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ui.services.helper.ViewerHelper;
-import org.polarsys.capella.common.ui.toolkit.browser.BrowserActivator;
 import org.polarsys.capella.common.ui.toolkit.browser.category.CategoryRegistry;
 import org.polarsys.capella.common.ui.toolkit.browser.category.ICategory;
 import org.polarsys.capella.common.ui.toolkit.browser.content.provider.IBrowserContentProvider;
@@ -165,9 +165,9 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
         result = getChildren(new EObjectWrapper((EObject) parentElement));
       }
     } catch (Exception exception) {
-      BrowserActivator.getDefault().getLog().log(new Status(IStatus.ERROR, BrowserActivator.PLUGIN_ID,
-          "Error while getting children for " + parentElement, exception)); //$NON-NLS-1$
-      result = new Object[0];
+        Bundle bundle = FrameworkUtil.getBundle(this.getClass());
+        Platform.getLog(bundle).error("Error while getting children for " + parentElement, exception); //$NON-NLS-1$
+        result = new Object[0];
     }
     return result;
   }

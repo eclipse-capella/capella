@@ -15,13 +15,11 @@ package org.polarsys.capella.core.model.handler.validation;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.util.Diagnostician;
-
-import org.polarsys.capella.core.model.handler.ModelHandlerPlugin;
+import org.osgi.framework.Bundle;
+import org.osgi.framework.FrameworkUtil;
 
 /**
  * Provides diagnosticians by searching the extension registry for DiagnosticianProviders 
@@ -33,7 +31,7 @@ import org.polarsys.capella.core.model.handler.ModelHandlerPlugin;
  */
 public class PluggableDiagnosticianProvider extends AbstractDiagnosticianProvider {
 
-  public static final String DIAGNOSTICIAN_PROVIDER_EXTENSION = ModelHandlerPlugin.PLUGIN_ID + ".diagnosticianProviders"; //$NON-NLS-1$
+  public static final String DIAGNOSTICIAN_PROVIDER_EXTENSION = FrameworkUtil.getBundle(PluggableDiagnosticianProvider.class).getSymbolicName() + ".diagnosticianProviders"; //$NON-NLS-1$
 
   @Override
   public Diagnostician getDiagnostician(AdapterFactory adapterFactory_p, IProgressMonitor progressMonitor_p) {
@@ -44,7 +42,8 @@ public class PluggableDiagnosticianProvider extends AbstractDiagnosticianProvide
         AbstractDiagnosticianProvider provider = (AbstractDiagnosticianProvider) elems[0].createExecutableExtension("class"); //$NON-NLS-1$
         result = provider.getDiagnostician(adapterFactory_p, progressMonitor_p);
       } catch (CoreException e1) {
-        ModelHandlerPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, ModelHandlerPlugin.PLUGIN_ID, e1.getMessage(), e1));
+          Bundle bundle = FrameworkUtil.getBundle(this.getClass());
+          Platform.getLog(bundle).error(e1.getMessage(), e1);
       }
     }
     if (null == result) {

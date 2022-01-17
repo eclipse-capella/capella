@@ -41,9 +41,6 @@ import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
  */
 public class CapellaUIResourcesPlugin extends AbstractUIActivator {
 
-  // The plug-in ID
-  public static final String PLUGIN_ID = "org.polarsys.capella.core.ui.resources"; //$NON-NLS-1$
-
   // The shared instance
   private static CapellaUIResourcesPlugin __plugin;
 

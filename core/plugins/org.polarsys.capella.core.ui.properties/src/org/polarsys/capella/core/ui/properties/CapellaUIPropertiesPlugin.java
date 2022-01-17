@@ -28,9 +28,6 @@ import org.polarsys.capella.core.ui.properties.wizards.OpenCustomWizardCommand;
  * The activator class controls the plug-in life cycle
  */
 public class CapellaUIPropertiesPlugin extends AbstractUIActivator {
-
-  // The plug-in ID
-  public static final String PLUGIN_ID = "org.polarsys.capella.core.ui.properties"; //$NON-NLS-1$
   /**
    * Properties contributor ID.
    */

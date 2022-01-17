@@ -18,11 +18,11 @@ import java.util.stream.Collectors;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.osgi.util.NLS;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.flexibility.properties.property.AbstractProperty;
 import org.polarsys.capella.common.flexibility.properties.schema.IEditableProperty;
 import org.polarsys.capella.common.flexibility.properties.schema.IPropertyContext;
 import org.polarsys.capella.common.libraries.IModel;
-import org.polarsys.capella.core.libraries.Activator;
 
 public class ReferencesProperty extends AbstractProperty implements IEditableProperty {
 
@@ -50,20 +50,20 @@ public class ReferencesProperty extends AbstractProperty implements IEditablePro
   public IStatus validate(Object newValue_p, IPropertyContext context_p) {
     if (!model.getUnsavedModels().isEmpty()) {
       String unsavedTxt = model.getUnsavedModels().stream().map(m -> m.getIdentifier().getName()).collect(Collectors.joining(", "));
-      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, NLS.bind(
+      return new Status(IStatus.ERROR, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), NLS.bind(
           "There is other unsaved session(s) ({0}), this may lead to inconsistencies,\n You should save others sessions before manage references.", unsavedTxt));
     }
 
     boolean unsavedModel = model.isUnsavedRootModel();
     if (unsavedModel) {
-      return new Status(IStatus.WARNING, Activator.PLUGIN_ID,
+      return new Status(IStatus.WARNING, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(),
           "The session is unsaved. Manage references will save the session.");
     }
 
     if (!model.getUnresolvableReferencedLibraries().isEmpty()) {
       String unresolvableLibs = model.getUnresolvableReferencedLibraries().stream()
           .map(m -> m.getIdentifier().getName()).collect(Collectors.joining(", "));
-      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, NLS.bind(
+      return new Status(IStatus.ERROR, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), NLS.bind(
           "The following libraries are not properly referenced: ({0}). This may lead to inconsistencies.\n You should uncheck these dependencies, click OK and reference them again using the same wizard.",
           unresolvableLibs));
     }
@@ -72,7 +72,7 @@ public class ReferencesProperty extends AbstractProperty implements IEditablePro
       Collection<IModel> cycle = model.getCycles().iterator().next();
       String cycleLibTxt = cycle.stream()
           .map(m -> m.getIdentifier().getName()).collect(Collectors.joining(" "));
-      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, model.getCycles().size() + " cycles found. First one is [" + cycleLibTxt + "]");
+      return new Status(IStatus.ERROR, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), model.getCycles().size() + " cycles found. First one is [" + cycleLibTxt + "]");
     }
 
     return Status.OK_STATUS;

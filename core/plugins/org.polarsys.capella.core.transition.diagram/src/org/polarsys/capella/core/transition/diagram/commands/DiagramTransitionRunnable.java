@@ -12,8 +12,6 @@
  *******************************************************************************/
 package org.polarsys.capella.core.transition.diagram.commands;
 
-import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -82,6 +80,9 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.common.helpers.EObjectExt;
@@ -91,19 +92,15 @@ import org.polarsys.capella.common.utils.RunnableWithBooleanResult;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
-import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.diagram.helpers.DiagramHelper;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.sirius.analysis.CapellaServices;
 import org.polarsys.capella.core.sirius.analysis.DDiagramContents;
 import org.polarsys.capella.core.sirius.analysis.DiagramServices;
 import org.polarsys.capella.core.sirius.analysis.ShapeUtil;
 import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
-import org.polarsys.capella.core.transition.diagram.Activator;
-import org.polarsys.capella.core.transition.diagram.commands.DiagramTransitionRunnable.ExtendedViewRefactorHelper;
 import org.polarsys.capella.core.transition.diagram.handlers.DiagramDescriptionHelper;
 import org.polarsys.capella.core.transition.diagram.helpers.TraceabilityHelper;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
@@ -236,20 +233,20 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
     final IContext context = getContext();
 
     if (!(diagram instanceof DSemanticDecorator)) {
-      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Invalid source diagram");
+      return new Status(IStatus.ERROR, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), "Invalid source diagram");
     }
     context.put(SOURCE_DIAGRAM, diagram);
 
     // Retrieve semantic target of diagram
     final EObject sourceSemantic = ((DSemanticDecorator) diagram).getTarget();
     if ((sourceSemantic == null) || sourceSemantic.eIsProxy()) {
-      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Diagram with invalid semantic target");
+      return new Status(IStatus.ERROR, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), "Diagram with invalid semantic target");
     }
 
     // Retrieve the current session
     final Session session = DiagramHelper.getService().getSession(diagram);
     if (session == null) {
-      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Cannot retrieve session from the given diagram");
+      return new Status(IStatus.ERROR, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), "Cannot retrieve session from the given diagram");
     }
 
     context.put(ITransitionConstants.TRANSITION_SOURCE_EDITING_DOMAIN, session.getTransactionalEditingDomain());
@@ -258,7 +255,7 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
     // Retrieve the current description
     final RepresentationDescription description = DiagramHelper.getService().getDescription(diagram);
     if ((description == null) || description.eIsProxy()) {
-      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Invalid source diagram (maybe a missing viewpoint)");
+      return new Status(IStatus.ERROR, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), "Invalid source diagram (maybe a missing viewpoint)");
     }
     context.put(SOURCE_DESCRIPTION, description);
 
@@ -353,9 +350,9 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
 
     DRepresentation targetDiagram = (DRepresentation) getContext().get(TARGET_DIAGRAM);
     if (targetDiagram == null) {
-      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Invalid target diagram");
+      return new Status(IStatus.ERROR, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), "Invalid target diagram");
     }
-    return new Status(IStatus.OK, Activator.PLUGIN_ID, NLS.bind("Diagram initialized - {0}", diagramName));
+    return new Status(IStatus.OK, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), NLS.bind("Diagram initialized - {0}", diagramName));
   }
 
   /**
@@ -391,7 +388,7 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
           description);
     }
     if ((allocatingDescription == null) || allocatingDescription.eIsProxy()) {
-      return (new Status(IStatus.ERROR, Activator.PLUGIN_ID,
+      return (new Status(IStatus.ERROR, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(),
           NLS.bind("Diagram ''{0}'' is not yet supported by diagram initialization", EObjectExt.getText(diagram))));
     }
     context.put(TARGET_DESCRIPTION, allocatingDescription);
@@ -401,7 +398,7 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
       targetSemantic = getTargetSemantic(sourceSemantic, description, allocatingDescription);
     }
     if (targetSemantic == null) {
-      return (new Status(IStatus.ERROR, Activator.PLUGIN_ID,
+      return (new Status(IStatus.ERROR, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(),
           "No semantic element has been found to put the created diagram"));
     }
 
@@ -414,7 +411,7 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
     }
 
     if (targetDiagram == null) {
-      return (new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Cannot create the target diagram"));
+      return (new Status(IStatus.ERROR, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), "Cannot create the target diagram"));
     }
     return Status.OK_STATUS;
   }
@@ -423,7 +420,7 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
    * @return
    */
   protected Shell getShell() {
-    return Activator.getDefault().getWorkbench().getActiveWorkbenchWindow().getShell();
+      return PlatformUI.getWorkbench().getDisplay().getActiveShell();
   }
 
   /**
@@ -457,7 +454,7 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
     // Retrieve the current session
     final Session session = DiagramHelper.getService().getSession(diagram);
     if (session == null) {
-      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Cannot retrieve session from the given diagram");
+      return new Status(IStatus.ERROR, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), "Cannot retrieve session from the given diagram");
     }
 
     IStatus status = runCommand(session, NLS.bind("{0} - {1} (2/2)", getName(), EObjectExt.getText(diagram)),

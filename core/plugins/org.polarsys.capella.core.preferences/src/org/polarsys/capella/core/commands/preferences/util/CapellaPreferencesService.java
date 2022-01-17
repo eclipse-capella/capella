@@ -28,10 +28,10 @@ import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.emf.validation.preferences.EMFModelValidationPreferences;
 import org.eclipse.swt.widgets.Display;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
-import org.polarsys.capella.core.preferences.Activator;
 
 public class CapellaPreferencesService {
 
@@ -170,7 +170,7 @@ public class CapellaPreferencesService {
 
       }
       current.put(key, value);
-      InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID).put(key, value);
+      InstanceScope.INSTANCE.getNode(FrameworkUtil.getBundle(this.getClass()).getSymbolicName()).put(key, value);
       // new DefaultScope().getNode(Activator.PLUGIN_ID).put(key, value);
 
     }

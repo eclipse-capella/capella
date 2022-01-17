@@ -16,6 +16,7 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
+import org.osgi.framework.FrameworkUtil;
 
 /**
  * The activator class controls the plug-in life cycle
@@ -23,9 +24,6 @@ import org.osgi.framework.BundleContext;
 public class Activator extends AbstractUIPlugin {
 
   private static final String ICONS_PATH = "icons/";
-
-  // The plug-in ID
-  public static final String PLUGIN_ID = "org.polarsys.capella.core.libraries.ui"; //$NON-NLS-1$
 
   // The shared instance
   private static Activator plugin;
@@ -68,12 +66,8 @@ public class Activator extends AbstractUIPlugin {
   }
 
   protected ImageDescriptor createImageDescriptor(String key_p) {
-    ImageDescriptor imageDescriptor = AbstractUIPlugin.imageDescriptorFromPlugin(getPluginId(), ICONS_PATH + key_p);
+    ImageDescriptor imageDescriptor = AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), ICONS_PATH + key_p);
     return imageDescriptor;
-  }
-
-  public String getPluginId() {
-    return getBundle().getSymbolicName();
   }
 
   /**

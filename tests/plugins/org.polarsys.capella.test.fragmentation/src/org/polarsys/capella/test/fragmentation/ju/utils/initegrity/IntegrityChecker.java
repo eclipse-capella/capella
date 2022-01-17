@@ -33,11 +33,11 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DView;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.core.commandline.core.AbstractCommandLine;
 import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
-import org.polarsys.capella.test.fragmentation.ju.Activator;
 
 /**
  * This class retrieve elements which are duplicated in other resources of the session
@@ -114,7 +114,7 @@ public class IntegrityChecker implements IChecker {
             EObjectLabelProviderHelper.getText(objects.get(idDuplicate).iterator().next()), idDuplicate));
       }
 
-      statuses.add(new Status(AbstractCommandLine.FATAL, Activator.PLUGIN_ID, buffer.toString()));
+      statuses.add(new Status(AbstractCommandLine.FATAL, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), buffer.toString()));
     }
 
     submonitor.worked(1);
@@ -165,17 +165,17 @@ public class IntegrityChecker implements IChecker {
           }
         }
       }
-      statuses.add(new Status(AbstractCommandLine.FATAL, Activator.PLUGIN_ID, buffer.toString()));
+      statuses.add(new Status(AbstractCommandLine.FATAL, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), buffer.toString()));
     }
 
     submonitor.worked(1);
     submonitor.done();
     monitor_p.done();
     if (statuses.size() > 0) {
-      return new MultiStatus(Activator.PLUGIN_ID, IStatus.ERROR, statuses.toArray(new IStatus[0]),
+      return new MultiStatus(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), IStatus.ERROR, statuses.toArray(new IStatus[0]),
           IntegrityChecker_FailedDuplicateElements, null);
     }
 
-    return new Status(IStatus.OK, Activator.PLUGIN_ID, IntegrityChecker_OK);
+    return new Status(IStatus.OK, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), IntegrityChecker_OK);
   }
 }

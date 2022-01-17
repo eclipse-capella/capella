@@ -25,16 +25,16 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.BaseSelectionListenerAction;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
 import org.polarsys.capella.common.mdsofa.common.misc.Couple;
-import org.polarsys.capella.core.model.obfuscator.CapellaModelObfuscatorActivator;
 import org.polarsys.capella.core.model.obfuscator.IImageKeys;
 import org.polarsys.capella.core.model.obfuscator.IResourceObfuscator;
 import org.polarsys.capella.core.sirius.ui.actions.CloseSessionAction;
@@ -54,7 +54,7 @@ public class ObfuscateSessionAction extends BaseSelectionListenerAction {
    */
   public ObfuscateSessionAction() {
     super(Messages.ObfuscateModelAction_Title);
-    setImageDescriptor(CapellaModelObfuscatorActivator.getDefault().getImageDescriptor(IImageKeys.IMG_OBFUSCATE_MODEL));
+    setImageDescriptor(AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), IImageKeys.IMG_OBFUSCATE_MODEL));
   }
 
   @Override
@@ -144,7 +144,7 @@ public class ObfuscateSessionAction extends BaseSelectionListenerAction {
     executionManager_p.execute(new AbstractReadWriteCommand() {
       public void run() {
         IConfigurationElement[] element =
-            ExtensionPointHelper.getConfigurationElements(CapellaModelObfuscatorActivator.getDefault().getPluginId(), "Obfuscator");
+            ExtensionPointHelper.getConfigurationElements(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), "Obfuscator");
         for (IConfigurationElement ce : element) {
           IResourceObfuscator obfuscator = (IResourceObfuscator) ExtensionPointHelper.createInstance(ce, "obfuscatorClass");
           if ((obfuscator != null) && obfuscator.isApplicableOn(resource_p)) {

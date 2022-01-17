@@ -4,11 +4,12 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.Adapters;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ui.providers.MDEAdapterFactoryLabelProvider;
 import org.polarsys.capella.test.business.queries.ju.QueryResult;
 import org.polarsys.capella.test.business.queries.ju.ResultItem;
 import org.polarsys.capella.test.business.queries.ju.ResultItem.Kind;
-import org.polarsys.capella.test.business.queries.ju.TestBusinessQueriesPlugin;
 import org.polarsys.kitalpha.emde.model.Element;
 
 public class BqLabelProvider extends MDEAdapterFactoryLabelProvider {
@@ -48,11 +49,11 @@ public class BqLabelProvider extends MDEAdapterFactoryLabelProvider {
   @Override
   public Image getImage(Object object) {
     if (object instanceof IFile) {
-      return TestBusinessQueriesPlugin.getDefault().getImage("full/obj16/test.png");
+      return AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), "full/obj16/test.png").createImage();
     }
     if (object instanceof QueryResult) {
       if (((QueryResult) object).getBusinessQuery() == null) {
-        return TestBusinessQueriesPlugin.getDefault().getImage("full/obj16/error_tsk.png");
+        return AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), "full/obj16/error_tsk.png").createImage();
       }
       EObject adapt = Adapters.adapt(object, Element.class);
       if (adapt != null) {
@@ -60,10 +61,10 @@ public class BqLabelProvider extends MDEAdapterFactoryLabelProvider {
       }
     } else if (object instanceof ResultItem) {
       if (((ResultItem)object).getKind() == Kind.ADDED) {
-        return TestBusinessQueriesPlugin.getDefault().getImage("full/obj16/add_obj.png");
+        return AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), "full/obj16/add_obj.png").createImage();
       }
       if (((ResultItem)object).getKind() == Kind.MISSING) {
-        return TestBusinessQueriesPlugin.getDefault().getImage("full/obj16/delete_edit.png");
+        return AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), "full/obj16/delete_edit.png").createImage();
       }
       EObject adapt = Adapters.adapt(object, Element.class);
       if (adapt != null) {

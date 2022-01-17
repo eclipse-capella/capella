@@ -29,6 +29,8 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.BaseSelectionListenerAction;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.ExecutionManagerRegistry;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
@@ -46,7 +48,6 @@ import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.model.handler.helpers.HoldingResourceHelper;
 import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 import org.polarsys.capella.core.ui.metric.IImageKeys;
-import org.polarsys.capella.core.ui.metric.MetricActivator;
 import org.polarsys.capella.core.ui.metric.MetricMessages;
 import org.polarsys.capella.core.ui.metric.core.DefaultFilter;
 import org.polarsys.capella.core.ui.metric.core.Metric;
@@ -61,7 +62,7 @@ public class MetricAction extends BaseSelectionListenerAction {
 
   public MetricAction() {
     super(MetricMessages.metricAction_lbl);
-    setImageDescriptor(MetricActivator.getDefault().getImageDescriptor(IImageKeys.IMG_METRICS));
+    setImageDescriptor(AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), IImageKeys.IMG_METRICS));
   }
 
   @Override
