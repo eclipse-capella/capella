@@ -77,6 +77,11 @@ public class ComponentExtTestCase extends BasicTestCase {
     List<String> subActors = ComponentExt.getAllActors((Component) IdManager.getInstance().getEObject(LOGICAL_SYSTEM, scope)).stream().map(e -> e.getId()).collect(Collectors.toList());
     assertTrue(subActors.containsAll(Arrays.asList(INTERNAL_ACTOR_1, INTERNAL_ACTOR_2, INTERNAL_ACTOR_3, INTERNAL_ACTOR_4)));
     assertEquals(subActors.size(), 4);
+    
+    //null case scenarios
+    assertTrue(ComponentExt.getSubParts(null).size() == 0);
+    assertTrue(ComponentExt.getSubParts(null, true).size() == 0);
+    assertTrue(ComponentExt.getSubParts(null, false).size() == 0);
   }
   
 }
