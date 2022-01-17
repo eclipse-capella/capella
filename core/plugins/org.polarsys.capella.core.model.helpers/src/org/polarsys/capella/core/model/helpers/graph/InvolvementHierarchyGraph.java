@@ -61,6 +61,10 @@ public class InvolvementHierarchyGraph {
     }
   }
 
+  public Map<VertexKey, Vertex> getVertices() {
+    return vertices;
+  }
+
   protected void extractAllVertices(FunctionalChainInvolvement current,
       LinkedList<FunctionalChainReference> currentReferenceHierarchy) {
 
@@ -146,7 +150,8 @@ public class InvolvementHierarchyGraph {
 
   protected void createEdge(FunctionalChainInvolvementLink link, Vertex sourceVertex, Vertex targetVertex) {
     Edge edge = new Edge(link, sourceVertex, targetVertex);
-    sourceVertex.edges.add(edge);
+    sourceVertex.outgoingEdges.add(edge);
+    targetVertex.incomingEdges.add(edge);
   }
 
   protected Vertex getTargetVertex(LinkedList<FunctionalChainReference> currentReferenceHierarchy,
@@ -209,7 +214,7 @@ public class InvolvementHierarchyGraph {
 
     path.add(current);
 
-    for (Edge edge : current.edges) {
+    for (Edge edge : current.outgoingEdges) {
       Vertex target = edge.target;
       if (hasCycle(target, visited, path)) {
         return true;
@@ -221,13 +226,17 @@ public class InvolvementHierarchyGraph {
     return false;
   }
 
-  protected static class VertexKey {
+  public static class VertexKey {
     protected FunctionalChainInvolvementFunction function;
     protected List<FunctionalChainReference> referenceHierarchy;
 
     public VertexKey(FunctionalChainInvolvementFunction function, List<FunctionalChainReference> referenceHierarchy) {
       this.function = function;
       this.referenceHierarchy = referenceHierarchy;
+    }
+
+    public FunctionalChainInvolvementFunction getFunction() {
+      return function;
     }
 
     @Override
@@ -253,19 +262,32 @@ public class InvolvementHierarchyGraph {
     }
   }
 
-  protected static class Vertex extends VertexKey {
-    protected List<Edge> edges;
+  public static interface Element {
+  }
+
+  public static class Vertex extends VertexKey implements Element {
+    protected List<Edge> outgoingEdges;
+    protected List<Edge> incomingEdges;
 
     public Vertex(FunctionalChainInvolvementFunction function, List<FunctionalChainReference> referenceHierarchy) {
       super(function, referenceHierarchy);
-      this.edges = new ArrayList<>();
+      this.outgoingEdges = new ArrayList<>();
+      this.incomingEdges = new ArrayList<>();
+    }
+
+    public List<Edge> getOutgoingEdges() {
+      return outgoingEdges;
+    }
+
+    public List<Edge> getIncomingEdges() {
+      return incomingEdges;
     }
 
     @Override
     public int hashCode() {
       final int prime = 31;
       int result = super.hashCode();
-      result = prime * result + Objects.hash(edges);
+      result = prime * result + Objects.hash(outgoingEdges);
       return result;
     }
 
@@ -281,7 +303,7 @@ public class InvolvementHierarchyGraph {
         return false;
       }
       Vertex other = (Vertex) obj;
-      return Objects.equals(edges, other.edges);
+      return Objects.equals(outgoingEdges, other.outgoingEdges);
     }
 
     @Override
@@ -291,10 +313,22 @@ public class InvolvementHierarchyGraph {
 
   }
 
-  protected static class Edge {
+  public static class Edge implements Element {
     protected FunctionalChainInvolvementLink link;
     protected Vertex source;
     protected Vertex target;
+
+    public FunctionalChainInvolvementLink getLink() {
+      return link;
+    }
+
+    public Vertex getSource() {
+      return source;
+    }
+
+    public Vertex getTarget() {
+      return target;
+    }
 
     public Edge(FunctionalChainInvolvementLink link, Vertex source, Vertex target) {
       this.link = link;
