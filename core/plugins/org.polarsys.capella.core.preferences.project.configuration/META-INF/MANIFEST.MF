@@ -15,8 +15,6 @@ Export-Package: org.polarsys.capella.core.preferences.configuration.project,
  org.polarsys.capella.core.preferences.configuration.project.actions,
  org.polarsys.capella.core.preferences.configuration.project.nature,
  org.polarsys.capella.core.preferences.configuration.project.ui.wizards,
- org.polarsys.capella.core.preferences.project.configuration.project,
- org.polarsys.capella.core.preferences.trasferers
-Bundle-Activator: org.polarsys.capella.core.preferences.project.configuration.project.ConfigurationPlugin
+ org.polarsys.capella.core.preferences.transferers
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin

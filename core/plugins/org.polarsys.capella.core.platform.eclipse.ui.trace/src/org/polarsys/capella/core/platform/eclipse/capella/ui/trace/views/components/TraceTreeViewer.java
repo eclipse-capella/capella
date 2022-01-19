@@ -57,7 +57,6 @@ import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.data.requirement.RequirementsTrace;
 import org.polarsys.capella.core.data.sharedmodel.SharedmodelPackage;
 import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
-import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.MDTrace;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.messages.Messages;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.messages.TraceNameHelper;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.messages.TraceUtil;
@@ -266,7 +265,7 @@ public class TraceTreeViewer implements IDoubleClickListener {
 
     _removeItem = new ToolItem(toolBar, SWT.PUSH);
     _removeItem.setToolTipText(Messages.getString("TraceTreeViewer.removeTrace_tooltip")); //$NON-NLS-1$
-    _removeItem.setImage(MDTrace.imageDescriptorFromPlugin(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), IImageKeys.ACTION_REMOVE).createImage());
+    _removeItem.setImage(AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), IImageKeys.ACTION_REMOVE).createImage());
 
     // disable the remove item
     _removeItem.setEnabled(false);

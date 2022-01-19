@@ -27,17 +27,18 @@ public class StatusLabelHelper {
    */
   public static void updateImage(IStatus status, Label label) {
     if (!label.isDisposed() && status != null) {
+      final String ICONS_PATH = "icons/"; //$NON-NLS-1$
       if (status.isOK()) {
-        label.setImage(AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(StatusLabelHelper.class).getSymbolicName(), "full/etool16/empty.gif").createImage());
+        label.setImage(AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(StatusLabelHelper.class).getSymbolicName(), ICONS_PATH + "full/etool16/empty.gif").createImage());
 
       } else if (status.matches(IStatus.INFO)) {
-        label.setImage(AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(StatusLabelHelper.class).getSymbolicName(), "full/etool16/info_tsk.gif").createImage());
+        label.setImage(AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(StatusLabelHelper.class).getSymbolicName(), ICONS_PATH + "full/etool16/info_tsk.gif").createImage());
 
       } else if (status.matches(IStatus.WARNING)) {
-        label.setImage(AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(StatusLabelHelper.class).getSymbolicName(), "full/etool16/warn_tsk.gif").createImage());
+        label.setImage(AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(StatusLabelHelper.class).getSymbolicName(), ICONS_PATH + "full/etool16/warn_tsk.gif").createImage());
 
       } else if (status.matches(IStatus.ERROR)) {
-        label.setImage(AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(StatusLabelHelper.class).getSymbolicName(), "full/etool16/error_tsk.gif").createImage());
+        label.setImage(AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(StatusLabelHelper.class).getSymbolicName(), ICONS_PATH + "full/etool16/error_tsk.gif").createImage());
       }
     }
   }

@@ -46,9 +46,10 @@ public class CopyTextRenderer extends TextRenderer {
   protected void initializeControls(final Composite parent, IRendererContext context) {
 
     if (isCopyButton()) {
+      final String ICONS_PATH = "icons/"; //$NON-NLS-1$
       copyButton = new Label(rootTextControl, SWT.NONE);
-      copyButton.setToolTipText("Copy to clipboard");
-      copyButton.setImage(AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), "full/etool16/copy.gif").createImage());
+      copyButton.setToolTipText("Copy to clipboard"); //$NON-NLS-1$
+      copyButton.setImage(AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), ICONS_PATH + "full/etool16/copy.gif").createImage()); //$NON-NLS-1$
       copyButton.addMouseListener(new MouseListener() {
 
         @Override

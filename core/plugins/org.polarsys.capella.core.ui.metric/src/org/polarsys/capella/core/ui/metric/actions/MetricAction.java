@@ -62,7 +62,8 @@ public class MetricAction extends BaseSelectionListenerAction {
 
   public MetricAction() {
     super(MetricMessages.metricAction_lbl);
-    setImageDescriptor(AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), IImageKeys.IMG_METRICS));
+    final String ICONS_PATH = "icons/";
+    setImageDescriptor(AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), ICONS_PATH + IImageKeys.IMG_METRICS));
   }
 
   @Override

@@ -11,8 +11,7 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.common.ui,
  org.polarsys.capella.core.ui.properties
 Bundle-ActivationPolicy: lazy
-Export-Package: org.polarsys.capella.core.platform.eclipse.capella.ui.trace,
- org.polarsys.capella.core.platform.eclipse.capella.ui.trace.commands,
+Export-Package: org.polarsys.capella.core.platform.eclipse.capella.ui.trace.commands,
  org.polarsys.capella.core.platform.eclipse.capella.ui.trace.icons,
  org.polarsys.capella.core.platform.eclipse.capella.ui.trace.messages,
  org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views,

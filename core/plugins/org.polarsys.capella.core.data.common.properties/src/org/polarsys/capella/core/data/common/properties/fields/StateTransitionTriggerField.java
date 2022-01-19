@@ -112,8 +112,8 @@ public class StateTransitionTriggerField extends ContainmentTableField {
   @Override
   @SuppressWarnings("synthetic-access")
   protected void createCustomActions(Composite parent) {
-
-      _timeEventBtn = createTableButton(parent, AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), IImageKeys.TIME_EVENT_IMG_16).createImage(),
+      final String ICONS_PATH = "icons/"; //$NON-NLS-1$
+      _timeEventBtn = createTableButton(parent, AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), ICONS_PATH + IImageKeys.TIME_EVENT_IMG_16).createImage(),
               new Runnable() {
                   @Override
                   public void run() {
@@ -122,7 +122,7 @@ public class StateTransitionTriggerField extends ContainmentTableField {
     });
     _timeEventBtn.setToolTipText("Create a Time Event");
 
-    _changeEventBtn = createTableButton(parent, AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), IImageKeys.CHANGE_EVENT_IMG_16).createImage(),
+    _changeEventBtn = createTableButton(parent, AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), ICONS_PATH + IImageKeys.CHANGE_EVENT_IMG_16).createImage(),
             new Runnable() {
                 @Override
                 public void run() {

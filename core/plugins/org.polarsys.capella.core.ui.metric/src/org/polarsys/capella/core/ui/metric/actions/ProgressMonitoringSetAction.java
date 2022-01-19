@@ -60,7 +60,8 @@ public class ProgressMonitoringSetAction extends BaseSelectionListenerAction {
    */
   public ProgressMonitoringSetAction() {
     super(MetricMessages.progressMonitoring_setAction_lbl);
-    setImageDescriptor(AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), IImageKeys.IMG_PROGRESS_MONITORING));
+    final String ICONS_PATH = "icons/";
+    setImageDescriptor(AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), ICONS_PATH + IImageKeys.IMG_PROGRESS_MONITORING));
   }
 
   

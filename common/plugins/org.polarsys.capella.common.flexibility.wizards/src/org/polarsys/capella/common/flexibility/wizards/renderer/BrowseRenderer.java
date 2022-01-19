@@ -79,10 +79,11 @@ public class BrowseRenderer extends TextRenderer {
     super.initializeControls(parent, context);
 
     ToolBar toolbar = new ToolBar(parent, SWT.HORIZONTAL);
+    final String ICONS_PATH = "icons/"; //$NON-NLS-1$
     if (isBrowseButton()) {
       browse = new ToolItem(toolbar, SWT.PUSH);
       browse.setToolTipText(getBrowseText());
-      browse.setImage(AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), "full/etool16/browse.gif").createImage());
+      browse.setImage(AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), ICONS_PATH + "full/etool16/browse.gif").createImage());
       browse.addSelectionListener(new SelectionListener() {
 
         public void widgetSelected(SelectionEvent event) {
@@ -98,7 +99,7 @@ public class BrowseRenderer extends TextRenderer {
     if (isDeleteButton()) {
       delete = new ToolItem(toolbar, SWT.PUSH);
       delete.setToolTipText("Delete all elements");
-      delete.setImage(AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), "full/etool16/delete_edit.gif").createImage());
+      delete.setImage(AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), ICONS_PATH + "full/etool16/delete_edit.gif").createImage());
       delete.addSelectionListener(new SelectionListener() {
 
         public void widgetSelected(SelectionEvent event) {

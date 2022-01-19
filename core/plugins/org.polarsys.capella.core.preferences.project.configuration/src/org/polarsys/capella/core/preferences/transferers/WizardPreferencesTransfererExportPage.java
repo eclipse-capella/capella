@@ -10,7 +10,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.core.preferences.trasferers;
+package org.polarsys.capella.core.preferences.transferers;
 
 import java.io.File;
 import java.io.FileOutputStream;

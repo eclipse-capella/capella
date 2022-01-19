@@ -49,6 +49,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.equinox.app.IApplicationContext;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.FrameworkUtil;
+import org.polarsys.capella.commandline.doc.CommandLineDoc;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
@@ -233,7 +234,7 @@ public class DefaultCommandLine extends AbstractCommandLine {
   }
 
   protected void printArgumentsFromTable(String tableId, boolean printTitle, List<String> hiddenArguments) {
-    Bundle bundle = FrameworkUtil.getBundle(org.polarsys.capella.commandline.doc.Activator.class);
+    Bundle bundle = FrameworkUtil.getBundle(CommandLineDoc.class);
     URL fileURL = bundle.getEntry("html/19. Command Line Support/19.1. Core Mechanism and Applications.html");
     try {
       URL resolvedUrl = FileLocator.toFileURL(fileURL);

@@ -49,11 +49,11 @@ public class BqLabelProvider extends MDEAdapterFactoryLabelProvider {
   @Override
   public Image getImage(Object object) {
     if (object instanceof IFile) {
-      return AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), "full/obj16/test.png").createImage();
+      return AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), "icons/full/obj16/test.png").createImage();
     }
     if (object instanceof QueryResult) {
       if (((QueryResult) object).getBusinessQuery() == null) {
-        return AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), "full/obj16/error_tsk.png").createImage();
+        return AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), "icons/full/obj16/error_tsk.png").createImage();
       }
       EObject adapt = Adapters.adapt(object, Element.class);
       if (adapt != null) {
@@ -61,10 +61,10 @@ public class BqLabelProvider extends MDEAdapterFactoryLabelProvider {
       }
     } else if (object instanceof ResultItem) {
       if (((ResultItem)object).getKind() == Kind.ADDED) {
-        return AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), "full/obj16/add_obj.png").createImage();
+        return AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), "icons/full/obj16/add_obj.png").createImage();
       }
       if (((ResultItem)object).getKind() == Kind.MISSING) {
-        return AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), "full/obj16/delete_edit.png").createImage();
+        return AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), "icons/full/obj16/delete_edit.png").createImage();
       }
       EObject adapt = Adapters.adapt(object, Element.class);
       if (adapt != null) {

@@ -49,7 +49,7 @@ import org.polarsys.capella.core.platform.sirius.ui.project.internal.WizardNewPr
 import org.polarsys.capella.core.platform.sirius.ui.project.operations.ProjectSessionCreationHelper;
 import org.polarsys.capella.core.platform.sirius.ui.project.operations.SessionCreationHelper;
 import org.polarsys.capella.core.preferences.configuration.project.nature.ConfigurationProjectNature;
-import org.polarsys.capella.core.preferences.configuration.project.ui.wizards.ReferecedConfigurationProjectSelectionPage;
+import org.polarsys.capella.core.preferences.configuration.project.ui.wizards.ReferencedConfigurationProjectSelectionPage;
 import org.polarsys.capella.core.sirius.ui.actions.OpenSessionAction;
 
 /**
@@ -74,7 +74,7 @@ public class NewProjectWizard extends BasicNewResourceWizard {
 
   private WizardPage viewpointWizardPage;
 
-  private ReferecedConfigurationProjectSelectionPage referencedConfigurationProjectPage;
+  private ReferencedConfigurationProjectSelectionPage referencedConfigurationProjectPage;
 
   /**
    * Constructs the wizard allowing to initialize a new Capella project.
@@ -105,7 +105,7 @@ public class NewProjectWizard extends BasicNewResourceWizard {
   */
   protected void createReferencedConfigurationProjectsPage() {
     referencedConfigurationProjectPage =
-        new ReferecedConfigurationProjectSelectionPage(Messages.getString("NewModelWizard.title"), new String[] { ConfigurationProjectNature.NATURE_ID });
+        new ReferencedConfigurationProjectSelectionPage(Messages.getString("NewModelWizard.title"), new String[] { ConfigurationProjectNature.NATURE_ID });
     addPage(referencedConfigurationProjectPage);
 
   }

@@ -28,8 +28,10 @@ import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.jface.viewers.CheckboxCellEditor;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.jface.viewers.ColumnViewerToolTipSupport;
+import org.eclipse.jface.viewers.DecorationOverlayIcon;
 import org.eclipse.jface.viewers.IBaseLabelProvider;
 import org.eclipse.jface.viewers.ICellModifier;
+import org.eclipse.jface.viewers.IDecoration;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TableViewerColumn;
@@ -54,13 +56,14 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE.SharedImages;
 import org.polarsys.capella.core.preferences.configuration.project.ConfigurationProject;
+import org.polarsys.capella.core.preferences.configuration.project.ProjectWizard;
 import org.polarsys.capella.core.preferences.configuration.project.nature.ConfigurationProjectNature;
-import org.polarsys.capella.core.preferences.project.configuration.project.ConfigurationPlugin;
+import org.polarsys.capella.core.preferences.project.configuration.utils.Utils;
 
 /**
  * A class which to show swt widgets with available viewpoints.
  */
-public final class ReferecedConfigurationProjectSelectionPage extends WizardPage {
+public final class ReferencedConfigurationProjectSelectionPage extends WizardPage {
 
   /*
 	 * 
@@ -79,16 +82,16 @@ public final class ReferecedConfigurationProjectSelectionPage extends WizardPage
   /**
    * @param pageName_p
    */
-  public ReferecedConfigurationProjectSelectionPage(String pageName_p, String[] projectsNaturesIds) {
-    this(pageName_p, "Referenced Capella Configuration Project", ConfigurationPlugin
-        .getImageDescriptor(ConfigurationPlugin.PROJECT_WIZARD_CONFIGURATION_FOLDER_IMG), projectsNaturesIds);
+  public ReferencedConfigurationProjectSelectionPage(String pageName_p, String[] projectsNaturesIds) {
+    this(pageName_p, "Referenced Capella Configuration Project", Utils
+        .getImageDescriptor(ProjectWizard.PROJECT_WIZARD_CONFIGURATION_FOLDER_IMG), projectsNaturesIds);
     initilizeSelectedProject(projectsNaturesIds);
   }
 
   /**
    * @param pageName_p
    */
-  public ReferecedConfigurationProjectSelectionPage(String pageName_p, String title, ImageDescriptor imageDescriptor_p, String[] all) {
+  public ReferencedConfigurationProjectSelectionPage(String pageName_p, String title, ImageDescriptor imageDescriptor_p, String[] all) {
     super(pageName_p, title, imageDescriptor_p);
     initilizeSelectedProject(all);
     this.labelProvider = new WizardTableLabelProvider();
@@ -312,14 +315,16 @@ public final class ReferecedConfigurationProjectSelectionPage extends WizardPage
       IWorkbench workbench = PlatformUI.getWorkbench();
       ISharedImages sharedImages = workbench.getSharedImages();
       Image image = sharedImages.getImage(SharedImages.IMG_OBJ_PROJECT);
-      image = ConfigurationPlugin.getOverlayedDescriptor(image, "capella_8x8.png").createImage();
+      final ImageDescriptor decoratorDescriptor = Utils.getImageDescriptor("capella_8x8.png");
+      image = new DecorationOverlayIcon(image, decoratorDescriptor, IDecoration.TOP_RIGHT).createImage();
       return image;
     }
 
     private Image getConfigurationProjectIcon() {
       ISharedImages sharedImages = PlatformUI.getWorkbench().getSharedImages();
       Image image = sharedImages.getImage(SharedImages.IMG_OBJ_PROJECT);
-      image = ConfigurationPlugin.getOverlayedDescriptor(image, "config_8x8.gif").createImage();
+      final ImageDescriptor decoratorDescriptor = Utils.getImageDescriptor("config_8x8.gif");
+      image = new DecorationOverlayIcon(image, decoratorDescriptor, IDecoration.TOP_RIGHT).createImage();
       return image;
     }
 
@@ -334,9 +339,9 @@ public final class ReferecedConfigurationProjectSelectionPage extends WizardPage
         case 0:
           if (element instanceof ConfigurationProject) {
             final ConfigurationProject vp = (ConfigurationProject) element;
-            image = ConfigurationPlugin.getImageDescriptor("disabled_checkbox.gif").createImage();
+            image = Utils.getImageDescriptor("disabled_checkbox.gif").createImage();
             if (vp.getIsSelected()) {
-              image = ConfigurationPlugin.getImageDescriptor("enabled_checkbox.gif").createImage();
+              image = Utils.getImageDescriptor("enabled_checkbox.gif").createImage();
             }
           }
         break;
