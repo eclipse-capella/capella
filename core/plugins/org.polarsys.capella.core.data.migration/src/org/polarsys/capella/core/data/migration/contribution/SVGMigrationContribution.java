@@ -112,6 +112,10 @@ public class SVGMigrationContribution extends AbstractMigrationContribution {
         "/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_providedrequired.svg");
     changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_required.png",
         "/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_required.svg");
+    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/PhysicalPort.png",
+        "/org.polarsys.capella.core.sirius.analysis/description/images/PhysicalPort.svg");
+    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/PhysicalLink.png",
+        "/org.polarsys.capella.core.sirius.analysis/description/images/PhysicalLink.svg");
     CHANGED_IMAGES = Collections.unmodifiableMap(changedImagesTemp);
 
     Map<String, Map<String, Dimension>> differentSizePerDiagram = new HashMap<>();

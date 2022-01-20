@@ -2467,14 +2467,14 @@
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="service:isInoutStrictFlowPort()">
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeLabel()" hideLabelByDefault="true" sizeComputationExpression="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FlowPort.png">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeLabel()" hideLabelByDefault="true" sizeComputationExpression="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FlowPort.svg">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </conditionnalStyles>
           </borderedNodeMappings>
           <borderedNodeMappings name="PAB_ComponentCategory_Pin" preconditionExpression="service:isValidABComponentCategoryPort(containerView)" deletionDescription="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20category']" createElements="false" domainClass="ComponentExchangeCategory">
-            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeComponentCategoryLabel()" hideLabelByDefault="true" sizeComputationExpression="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FlowPort.png">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeComponentCategoryLabel()" hideLabelByDefault="true" sizeComputationExpression="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FlowPort.svg">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
@@ -2497,7 +2497,7 @@
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="service:isABComponentCategoryPortInOut(view)">
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeComponentCategoryLabel()" hideLabelByDefault="true" sizeComputationExpression="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FlowPort.png">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeComponentCategoryLabel()" hideLabelByDefault="true" sizeComputationExpression="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FlowPort.svg">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
