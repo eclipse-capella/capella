@@ -17,15 +17,13 @@ import org.eclipse.core.runtime.Plugin;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.osgi.framework.BundleContext;
+import org.osgi.framework.FrameworkUtil;
 import org.osgi.service.prefs.BackingStoreException;
 
 /**
  * The activator class controls the plug-in life cycle
  */
 public class Activator extends Plugin {
-
-  // The plug-in ID
-  public static final String PLUGIN_ID = "org.polarsys.capella.common.re"; //$NON-NLS-1$
 
   // The shared instance
   private static Activator plugin;
@@ -52,9 +50,9 @@ public class Activator extends Plugin {
   public void stop(BundleContext context) throws Exception {
     try {
       // persist parent locator option preference
-      InstanceScope.INSTANCE.getNode(PLUGIN_ID).flush();
+      InstanceScope.INSTANCE.getNode(FrameworkUtil.getBundle(this.getClass()).getSymbolicName()).flush();
     } catch (BackingStoreException e) {
-      getLog().log(new Status(IStatus.ERROR, PLUGIN_ID, e.getLocalizedMessage(), e));
+      getLog().log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), e.getLocalizedMessage(), e));
     } finally {
       plugin = null;
       super.stop(context);

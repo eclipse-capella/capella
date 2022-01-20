@@ -22,10 +22,10 @@ import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.ExecutionManagerRegistry;
 import org.polarsys.capella.common.helpers.EObjectExt;
-import org.polarsys.capella.common.re.Activator;
 import org.polarsys.capella.common.re.CatalogElement;
 import org.polarsys.capella.common.re.CatalogElementLink;
 import org.polarsys.capella.common.re.RePackage;
@@ -115,8 +115,8 @@ public abstract class CreateRPL_SpecificPackages extends RecRplTestCase {
   public void setUp() throws Exception {
 
     super.setUp();
-
-    InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID).put(IReConstants.PROPERTY__PARENT_LOCATOR, IReConstants.LOCATOR_OPTION_SPECIFIC_PACKAGES);
+    
+    InstanceScope.INSTANCE.getNode(FrameworkUtil.getBundle(CatalogElement.class).getSymbolicName()).put(IReConstants.PROPERTY__PARENT_LOCATOR, IReConstants.LOCATOR_OPTION_SPECIFIC_PACKAGES);
 
     manager = ExecutionManagerRegistry.getInstance().addNewManager();
     project = new CapellaModelSkeleton.Builder(manager).build();
@@ -134,7 +134,7 @@ public abstract class CreateRPL_SpecificPackages extends RecRplTestCase {
   public void tearDown() throws Exception {
     ExecutionManagerRegistry.getInstance().removeManager(manager);
 
-    InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID).put(IReConstants.PROPERTY__PARENT_LOCATOR, IReConstants.LOCATOR_OPTION_DEFAULT);
+    InstanceScope.INSTANCE.getNode(FrameworkUtil.getBundle(CatalogElement.class).getSymbolicName()).put(IReConstants.PROPERTY__PARENT_LOCATOR, IReConstants.LOCATOR_OPTION_DEFAULT);
 
     super.tearDown();
   }

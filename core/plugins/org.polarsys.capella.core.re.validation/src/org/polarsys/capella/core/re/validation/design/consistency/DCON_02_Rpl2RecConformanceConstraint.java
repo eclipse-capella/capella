@@ -25,8 +25,8 @@ import org.eclipse.emf.validation.IValidationContext;
 import org.eclipse.emf.validation.model.ConstraintStatus;
 import org.eclipse.emf.validation.service.ConstraintRegistry;
 import org.eclipse.emf.validation.service.IConstraintDescriptor;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.helpers.EObjectExt;
-import org.polarsys.capella.common.re.Activator;
 import org.polarsys.capella.common.re.CatalogElement;
 import org.polarsys.capella.common.re.CatalogElementKind;
 import org.polarsys.capella.common.re.RePackage;
@@ -43,7 +43,7 @@ public class DCON_02_Rpl2RecConformanceConstraint extends AbstractModelConstrain
     if (catalogElement.getKind() == CatalogElementKind.RPL) {
       CatalogElement rec = catalogElement.getOrigin();
       if (rec == null || rec.eIsProxy()) {
-        return new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Your RPL is invalid (no REC), please validate your model.");
+        return new Status(IStatus.ERROR, FrameworkUtil.getBundle(CatalogElement.class).getSymbolicName(), "Your RPL is invalid (no REC), please validate your model.");
       }
       // if rec is valid
       return validateRPL(ctx, catalogElement);
