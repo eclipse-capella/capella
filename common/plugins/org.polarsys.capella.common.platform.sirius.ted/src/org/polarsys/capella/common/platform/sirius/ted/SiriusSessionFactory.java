@@ -123,9 +123,9 @@ public class SiriusSessionFactory extends SessionFactoryImpl implements SessionF
     protected List<IDerivedSemanticResourceProvider> getAllDerivedSemanticResourceProviders() {
       if (null == _derivedSemanticResourceProviders) {
         _derivedSemanticResourceProviders = new ArrayList<IDerivedSemanticResourceProvider>();
-        List<IConfigurationElement> BQProvider = Arrays
+        List<IConfigurationElement> providers = Arrays
                 .asList(ExtensionPointHelper.getConfigurationElements(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), DERIVED_SEMANTIC_RESOURCE_PROVIDER_EXTENSION_ID));
-        for (IConfigurationElement configurationElement : BQProvider) {
+        for (IConfigurationElement configurationElement : providers) {
           IDerivedSemanticResourceProvider contrib = (IDerivedSemanticResourceProvider) ExtensionPointHelper
               .createInstance(configurationElement, ExtensionPointHelper.ATT_CLASS);
           if (contrib != null) {

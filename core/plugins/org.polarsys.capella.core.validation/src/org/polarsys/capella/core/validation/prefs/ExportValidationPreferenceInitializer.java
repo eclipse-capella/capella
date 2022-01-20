@@ -30,7 +30,7 @@ public class ExportValidationPreferenceInitializer extends AbstractPreferenceIni
   public void initializeDefaultPreferences() {
 
     
-    IEclipsePreferences node = new DefaultScope().getNode(FrameworkUtil.getBundle(this.getClass()).getSymbolicName());
+    IEclipsePreferences node = DefaultScope.INSTANCE.getNode(FrameworkUtil.getBundle(this.getClass()).getSymbolicName());
     
     node.put(
         IExportValidationConstants.EXPORT_ONLY_CAPELLA_PREF_ID,

@@ -172,7 +172,7 @@ public class CapellaSearchSettings {
             return new Status(IStatus.ERROR, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), CapellaSearchConstants.CapellaSearchPage_Validation_Message_SearchMetaClass_Selection);
         }
 
-        if (searchAttributeItems.isEmpty() && !searchMetaClassItems.stream().anyMatch(SearchForNoteItem.class::isInstance)) {
+        if (searchAttributeItems.isEmpty() && searchMetaClassItems.stream().noneMatch(SearchForNoteItem.class::isInstance)) {
             return new Status(IStatus.ERROR, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), CapellaSearchConstants.CapellaSearchPage_Validation_Message_SearchAttribute_Selection);
         }
 

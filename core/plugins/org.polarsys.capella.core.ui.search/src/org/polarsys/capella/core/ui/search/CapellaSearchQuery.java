@@ -157,66 +157,70 @@ public class CapellaSearchQuery implements ISearchQuery {
     protected void searchForAttribute(Pattern pattern, IProject project, EObject inputObject, SearchForAttributeItem attributeItem) {
 
         Object searchAttribute = attributeItem.getAttributeFor(inputObject);
-        if (searchAttribute != null) {
-            Object searchData = attributeItem.getRelevantSearchData(inputObject);
+        if (searchAttribute == null) {
+            return;
+        }
 
-            if (searchData instanceof String) {
-                String searchText = (String) searchData;
-                String[] searchTextLines = searchText.split("\n");
+        Object searchData = attributeItem.getRelevantSearchData(inputObject);
+        if (searchData instanceof String) {
+            searchForAttributeInStringSearchData(pattern, project, inputObject, searchAttribute, searchData);
+        }
 
-                if (searchTextLines.length == 1) {
-                    if (isMatchOccurrences(pattern, searchText)) {
-                        SearchMatch result = new SearchMatch(inputObject, searchText, project, searchAttribute);
-                        capellaSearchResult.addMatch(result);
-                        capellaSearchResult.getTreeData().addElement(inputObject);
-                    }
-                } else {
-                    SearchMatch parentSearchMatch = new SearchMatch(inputObject, null, project, searchAttribute);
-                    boolean matched = false;
-                    for (int number = 0; number < searchTextLines.length; number++) {
-                        String searchTextLine = searchTextLines[number];
+        else if (searchData instanceof List) {
+            searchForAttributeInListSearchData(pattern, project, inputObject, searchAttribute, searchData);
+        }
+    }
 
-                        if (isMatchOccurrences(pattern, searchTextLine)) {
-                            LineSearchMatchChild childSearchMatch = new LineSearchMatchChild(inputObject, searchTextLine, project, parentSearchMatch, number);
+    private void searchForAttributeInListSearchData(Pattern pattern, IProject project, EObject inputObject, Object searchAttribute, Object searchData) {
+        List<?> searchDataList = ((List<?>) searchData);
+        SearchMatch parentSearchMatch = new SearchMatch(inputObject, null, project, searchAttribute);
+        boolean matched = false;
 
-                            parentSearchMatch.getChildren().add(childSearchMatch);
-                            capellaSearchResult.addMatch(childSearchMatch);
-                            matched = true;
-                        }
-                    }
+        for (int index = 0; index < searchDataList.size(); index++) {
+            Object searchElement = searchDataList.get(index);
 
-                    if (matched) {
-                        capellaSearchResult.addMatch(parentSearchMatch);
-                        capellaSearchResult.getTreeData().addElement(inputObject);
-                    }
+            if (searchElement instanceof String && isMatchOccurrences(pattern, (String) searchElement)) {
+                ListElementSearchMatchChild childSearchMatch = new ListElementSearchMatchChild(inputObject, (String) searchElement, project, parentSearchMatch, index);
+                parentSearchMatch.getChildren().add(childSearchMatch);
+                capellaSearchResult.addMatch(childSearchMatch);
+                matched = true;
+            }
+        }
+
+        if (matched) {
+            capellaSearchResult.addMatch(parentSearchMatch);
+            capellaSearchResult.getTreeData().addElement(inputObject);
+        }
+    }
+
+    private void searchForAttributeInStringSearchData(Pattern pattern, IProject project, EObject inputObject, Object searchAttribute, Object searchData) {
+        String searchText = (String) searchData;
+        String[] searchTextLines = searchText.split("\n");
+
+        if (searchTextLines.length == 1) {
+            if (isMatchOccurrences(pattern, searchText)) {
+                SearchMatch result = new SearchMatch(inputObject, searchText, project, searchAttribute);
+                capellaSearchResult.addMatch(result);
+                capellaSearchResult.getTreeData().addElement(inputObject);
+            }
+        } else {
+            SearchMatch parentSearchMatch = new SearchMatch(inputObject, null, project, searchAttribute);
+            boolean matched = false;
+            for (int number = 0; number < searchTextLines.length; number++) {
+                String searchTextLine = searchTextLines[number];
+
+                if (isMatchOccurrences(pattern, searchTextLine)) {
+                    LineSearchMatchChild childSearchMatch = new LineSearchMatchChild(inputObject, searchTextLine, project, parentSearchMatch, number);
+
+                    parentSearchMatch.getChildren().add(childSearchMatch);
+                    capellaSearchResult.addMatch(childSearchMatch);
+                    matched = true;
                 }
-
             }
 
-            else if (searchData instanceof List) {
-                List<?> searchDataList = ((List<?>) searchData);
-                SearchMatch parentSearchMatch = new SearchMatch(inputObject, null, project, searchAttribute);
-                boolean matched = false;
-
-                for (int index = 0; index < searchDataList.size(); index++) {
-                    Object searchElement = searchDataList.get(index);
-
-                    if (searchElement instanceof String) {
-                        String searchText = (String) searchDataList.get(index);
-
-                        if (isMatchOccurrences(pattern, searchText)) {
-                            ListElementSearchMatchChild childSearchMatch = new ListElementSearchMatchChild(inputObject, searchText, project, parentSearchMatch, index);
-                            parentSearchMatch.getChildren().add(childSearchMatch);
-                            capellaSearchResult.addMatch(childSearchMatch);
-                            matched = true;
-                        }
-                    }
-                }
-
-                if (matched) {
-                    capellaSearchResult.addMatch(parentSearchMatch);
-                    capellaSearchResult.getTreeData().addElement(inputObject);
-                }
+            if (matched) {
+                capellaSearchResult.addMatch(parentSearchMatch);
+                capellaSearchResult.getTreeData().addElement(inputObject);
             }
         }
     }

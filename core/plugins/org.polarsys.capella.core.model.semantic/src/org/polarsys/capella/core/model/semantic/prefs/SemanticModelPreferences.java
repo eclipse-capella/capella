@@ -27,14 +27,14 @@ public class SemanticModelPreferences extends AbstractPreferenceInitializer impl
    */
   @Override
   public void initializeDefaultPreferences() {
-    new DefaultScope().getNode(FrameworkUtil.getBundle(this.getClass()).getSymbolicName()).putBoolean(ISemanticModelPreferences.KEY_SEMANTIC_MODE, true);
+    DefaultScope.INSTANCE.getNode(FrameworkUtil.getBundle(this.getClass()).getSymbolicName()).putBoolean(ISemanticModelPreferences.KEY_SEMANTIC_MODE, true);
   }
 
   /**
    * {@inheritDoc}
    */
   public void setSemanticMode(boolean enabled_p) {
-    new InstanceScope().getNode(FrameworkUtil.getBundle(this.getClass()).getSymbolicName()).putBoolean(ISemanticModelPreferences.KEY_SEMANTIC_MODE, enabled_p);
+      InstanceScope.INSTANCE.getNode(FrameworkUtil.getBundle(this.getClass()).getSymbolicName()).putBoolean(ISemanticModelPreferences.KEY_SEMANTIC_MODE, enabled_p);
   }
 
   /**
