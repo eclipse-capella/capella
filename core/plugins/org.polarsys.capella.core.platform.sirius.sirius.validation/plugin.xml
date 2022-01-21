@@ -33,6 +33,22 @@
                ruleId="I_23">
          </rules>
       </resolver>
+      <resolver
+            class="org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram.ImagePathResolver"
+            desc="%quickFix.ImagePath_Resolver.desc"
+            label="%quickFix.ImagePath_Resolver.label">
+         <rules
+               ruleId="I_46">
+         </rules>
+      </resolver>
+      <resolver
+            class="org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram.ImagePathResolver"
+            desc="%quickFix.ImagePath_Resolver.desc"
+            label="%quickFix.ImagePath_Resolver.label">
+         <rules
+               ruleId="I_47">
+         </rules>
+      </resolver>
    </extension>
    <extension point="org.eclipse.emf.validation.constraintProviders">
       <constraintProvider>
@@ -96,6 +112,44 @@
                </target>
                <description>
                   This rule ensures that hyperLinks to non existing capella element or diagram are removed from the description.
+               </description>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram.ImagePathInDiagramCheck"
+                  id="I_46"
+                  isEnabledByDefault="false"
+                  lang="java"
+                  mode="Batch"
+                  name="I_46 - Check that the image used for diagram nodes is found"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  {0}
+               </message>
+               <target
+                     class="CapellaElement">
+               </target>
+               <description>
+                  Warning: This rule applies on diagrams elements of diagram associated to the Capella element and will load the diagram. 
+It is recommended to uncheck this rule by default.
+
+This rule ensures that images, used as background of diagram elements, can be found.
+               </description>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram.ImagePathOnRichTextAttributeCheck"
+                  id="I_47"
+                  isEnabledByDefault="true"
+                  lang="java"
+                  mode="Batch"
+                  name="I_47 - Check that images used in rich text is found (Capella and diagram descriptions etc)"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  {0}
+               </message>
+               <description>
+                  This rule ensures that images, used in rich text editor, for attributes such as Capella elements description or diagram description, can be found.
                </description>
             </constraint>
          </constraints>
