@@ -82,7 +82,7 @@ import org.polarsys.capella.core.data.pa.deployment.DeploymentFactory;
 import org.polarsys.capella.core.data.pa.deployment.PartDeploymentLink;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
-import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
+import org.polarsys.capella.core.model.preferences.helpers.PreferencesHelper;
 
 /**
  * This class defines business-specific rules for managing Capella models
@@ -480,7 +480,7 @@ public class BusinessHelper {
    *          an element that defines a project context
    */
   private boolean isMultipleDeploymentAllowed(EObject element) {
-    return CapellaModelPreferencesPlugin.getDefault().isMultipleDeploymentAllowed();
+    return PreferencesHelper.isMultipleDeploymentAllowed();
   }
 
   /**

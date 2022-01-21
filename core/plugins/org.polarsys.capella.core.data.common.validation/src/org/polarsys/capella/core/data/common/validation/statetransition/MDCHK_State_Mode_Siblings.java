@@ -24,7 +24,7 @@ import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.capellacommon.Mode;
 import org.polarsys.capella.core.data.capellacommon.Region;
 import org.polarsys.capella.core.data.capellacommon.StateMachine;
-import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
+import org.polarsys.capella.core.model.preferences.helpers.PreferencesHelper;
 
 /*
  *  DWF_SM_16: Mode and State can not be mixed in the same State Machine
@@ -32,7 +32,7 @@ import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin
 public class MDCHK_State_Mode_Siblings extends AbstractModelConstraint {
   
   public boolean isMixedHierarchyAllowed() {
-    return CapellaModelPreferencesPlugin.getDefault().isMixedModeStateAllowed();
+    return PreferencesHelper.isMixedModeStateAllowed();
   }
   
   @Override

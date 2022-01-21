@@ -75,7 +75,7 @@ import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.StateExt;
 import org.polarsys.capella.core.model.helpers.move.MoveHelper;
-import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
+import org.polarsys.capella.core.model.preferences.helpers.PreferencesHelper;
 import org.polarsys.capella.core.sirius.analysis.constants.MappingConstantsHelper;
 import org.polarsys.capella.core.sirius.analysis.showhide.AbstractShowHide.DiagramContext;
 import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideSMStateMode;
@@ -737,7 +737,7 @@ public class StateMachineServices {
   public boolean canCreateMode(EObject context, EObject containerView) {
     Region testedRegion = getRegionFromView(containerView);
     if (testedRegion != null) {
-      if (!CapellaModelPreferencesPlugin.getDefault().isMixedModeStateAllowed()) {
+      if (!PreferencesHelper.isMixedModeStateAllowed()) {
         return MoveHelper.getInstance().canMoveModeState(CapellacommonFactory.eINSTANCE.createMode(), testedRegion);
       }
       //If there is a State, then can't create a Mode
@@ -809,7 +809,7 @@ public class StateMachineServices {
   public boolean canCreateState(EObject context, EObject containerView) {
     Region testedRegion = getRegionFromView(containerView);
     if (testedRegion != null) {
-      if (!CapellaModelPreferencesPlugin.getDefault().isMixedModeStateAllowed()) {
+      if (!PreferencesHelper.isMixedModeStateAllowed()) {
         return MoveHelper.getInstance().canMoveModeState(CapellacommonFactory.eINSTANCE.createState(), testedRegion);
       }
 

@@ -25,7 +25,7 @@ import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
 import org.polarsys.capella.core.data.pa.deployment.TypeDeploymentLink;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
-import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
+import org.polarsys.capella.core.model.preferences.helpers.PreferencesHelper;
 
 public class GetAvailable_PhysicalComponent_DeployedComponents extends AbstractQuery {
 
@@ -57,7 +57,7 @@ public class GetAvailable_PhysicalComponent_DeployedComponents extends AbstractQ
   }
 
 	public boolean isMultipleDeploymentAllowed() {
-		return CapellaModelPreferencesPlugin.getDefault().isMultipleDeploymentAllowed();
+		return PreferencesHelper.isMultipleDeploymentAllowed();
 	}
 
 	/** 

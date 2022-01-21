@@ -60,7 +60,6 @@ import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
 import org.polarsys.capella.core.commands.preferences.service.ScopedCapellaPreferencesStore;
-import org.polarsys.capella.core.commands.preferences.util.PreferencesHelper;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.AbstractDeploymentLink;
 import org.polarsys.capella.core.data.cs.AbstractPathInvolvedElement;
@@ -101,7 +100,7 @@ import org.polarsys.capella.core.model.helpers.graph.PhysicalPathInternalLinksGr
 import org.polarsys.capella.core.model.helpers.graph.PhysicalPathInternalLinksGraph.InternalLinkEdge;
 import org.polarsys.capella.core.model.helpers.graph.PhysicalPathInvolvementGraph;
 import org.polarsys.capella.core.model.helpers.graph.PhysicalPathInvolvementGraph.InvolvementEdge;
-import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
+import org.polarsys.capella.core.model.preferences.helpers.PreferencesHelper;
 import org.polarsys.capella.core.sirius.analysis.cache.DEdgeIconCache;
 import org.polarsys.capella.core.sirius.analysis.cache.PhysicalPathCache;
 import org.polarsys.capella.core.sirius.analysis.constants.MappingConstantsHelper;
@@ -126,7 +125,7 @@ public class PhysicalServices {
   private static final String INVALID_PHYSICAL_PATH_LABEL = "invalid"; //$NON-NLS-1$
 
   public boolean isMultipleDeploymentAllowed() {
-    return CapellaModelPreferencesPlugin.getDefault().isMultipleDeploymentAllowed();
+    return PreferencesHelper.isMultipleDeploymentAllowed();
   }
 
   /**
@@ -1160,7 +1159,7 @@ public class PhysicalServices {
     String label = EObjectExt.getText(path);
 
     boolean isComplete = isCompletePhysicalPath(path, diagram);
-    IProject project = PreferencesHelper.getProject(path);
+    IProject project = org.polarsys.capella.core.commands.preferences.util.PreferencesHelper.getProject(path);
     boolean displayIncompleteLabel = !isComplete && ScopedCapellaPreferencesStore
         .getBoolean(DiagramProcessChainPathPreferencePage.NAME_PREF_DISPLAY_INCOMPLETE_IN_PHYSICAL_PATH_LABEL, project);
     boolean isValid = PhysicalPathExt.isPhysicalPathValid(path);

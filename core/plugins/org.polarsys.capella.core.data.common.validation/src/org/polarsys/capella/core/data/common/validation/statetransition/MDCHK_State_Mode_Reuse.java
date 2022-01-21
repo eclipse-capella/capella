@@ -21,7 +21,7 @@ import org.polarsys.capella.core.data.capellacommon.FinalState;
 import org.polarsys.capella.core.data.capellacommon.Mode;
 import org.polarsys.capella.core.data.capellacommon.Pseudostate;
 import org.polarsys.capella.core.data.capellacommon.State;
-import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
+import org.polarsys.capella.core.model.preferences.helpers.PreferencesHelper;
 import org.polarsys.capella.core.sirius.analysis.StateMachineServices;
 
 public class MDCHK_State_Mode_Reuse extends AbstractModelConstraint {
@@ -31,7 +31,7 @@ public class MDCHK_State_Mode_Reuse extends AbstractModelConstraint {
   }
 
   public boolean isMixedHierarchyAllowed() {
-    return CapellaModelPreferencesPlugin.getDefault().isMixedModeStateAllowed();
+    return PreferencesHelper.isMixedModeStateAllowed();
   }
 
   @Override

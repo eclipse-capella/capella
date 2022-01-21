@@ -3,7 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.ui.semantic.browser;singleton:=true
 Bundle-Version: 6.0.0.qualifier
-Bundle-Activator: org.polarsys.capella.core.ui.semantic.browser.CapellaBrowserActivator
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-ActivationPolicy: lazy
@@ -19,3 +18,4 @@ Export-Package: org.polarsys.capella.core.ui.semantic.browser,
  org.polarsys.capella.core.ui.semantic.browser.model,
  org.polarsys.capella.core.ui.semantic.browser.view
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-Activator: org.polarsys.capella.core.ui.semantic.browser.CapellaBrowserActivator

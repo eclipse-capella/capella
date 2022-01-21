@@ -60,7 +60,6 @@ import org.polarsys.capella.core.model.handler.command.PreDeleteHandler;
 import org.polarsys.capella.core.model.handler.command.PreDeleteStructureCommand;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
-import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 
 /**
  * Helper to compute all deleted semantic elements from a collection of semantic elements to delete applying business delete rules.
@@ -259,7 +258,7 @@ private static void addElementsForAbstractState(
      * diagrams editor, this command is called twice : one only to get a deleted elements preview (through static method) and after end-user confirmation, a new
      * command (without confirmation) is run to really delete elements.
      */
-    boolean preferenceDeleteParts = CapellaModelPreferencesPlugin.getDefault().isDeletePartsAllowed();
+    boolean preferenceDeleteParts = PreferencesHelper.isDeletePartsAllowed();
     Collection<Object> eltsToDelete = (Collection<Object>) elementsToDelete;
     eltsToDelete.addAll(getAdditionalElementsForParts(eltsToDelete, preferenceDeleteParts));
 

@@ -30,7 +30,6 @@ import org.junit.Assert;
 import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.core.commands.preferences.service.ScopedCapellaPreferencesStore;
-import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 import org.polarsys.capella.core.model.preferences.IDeletePreferences;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.Messages;
@@ -75,8 +74,8 @@ public class DeleteElementTool extends AbstractToolStep<EObject> {
 
   private void disableConfirmation() {
     // ScopedCapellaPreferencesStore.setValue(boolean) doesn't work if setDefault has same value
-    ScopedCapellaPreferencesStore.getInstance(FrameworkUtil.getBundle(CapellaModelPreferencesPlugin.class).getSymbolicName()).setDefault(IDeletePreferences.PREFERENCE_CONFIRM_DELETE, true);
-    ScopedCapellaPreferencesStore.getInstance(FrameworkUtil.getBundle(CapellaModelPreferencesPlugin.class).getSymbolicName()).setValue(IDeletePreferences.PREFERENCE_CONFIRM_DELETE, false);
+    ScopedCapellaPreferencesStore.getInstance(FrameworkUtil.getBundle(IDeletePreferences.class).getSymbolicName()).setDefault(IDeletePreferences.PREFERENCE_CONFIRM_DELETE, true);
+    ScopedCapellaPreferencesStore.getInstance(FrameworkUtil.getBundle(IDeletePreferences.class).getSymbolicName()).setValue(IDeletePreferences.PREFERENCE_CONFIRM_DELETE, false);
   }
 
   public void deleteAll() {

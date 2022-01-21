@@ -20,8 +20,6 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.eclipse.core.runtime.IConfigurationElement;
-import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
-import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.EList;
@@ -36,6 +34,8 @@ import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
+import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.core.data.capellacommon.AbstractCapabilityPkg;
 import org.polarsys.capella.core.data.capellacommon.AbstractState;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
@@ -84,7 +84,7 @@ import org.polarsys.capella.core.model.helpers.InterfaceExt;
 import org.polarsys.capella.core.model.helpers.PartExt;
 import org.polarsys.capella.core.model.helpers.StateExt;
 import org.polarsys.capella.core.model.helpers.StateMachineExt;
-import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
+import org.polarsys.capella.core.model.preferences.helpers.PreferencesHelper;
 import org.polarsys.kitalpha.emde.model.edit.provider.ExtensibleElementItemProvider;
 
 /**
@@ -427,7 +427,7 @@ public class MoveHelper implements IMoveHelper {
    * @return true if the region could be moved, false if not
    */
   public boolean canMoveRegion(Region sourceRegion, StateMachine stateMachine) {
-    if (!CapellaModelPreferencesPlugin.getDefault().isMixedModeStateAllowed()) {
+    if (!PreferencesHelper.isMixedModeStateAllowed()) {
       List<State> regionStates = getAllModeState(sourceRegion);
       EList<Region> machineRegions = stateMachine.getOwnedRegions();
       for (Region machineRegion : machineRegions) {
@@ -449,7 +449,7 @@ public class MoveHelper implements IMoveHelper {
    * @return true if the region could be moved, false if not
    */
   public boolean canMoveRegion(Region sourceRegion, AbstractState targetState) {
-    if (!CapellaModelPreferencesPlugin.getDefault().isMixedModeStateAllowed()) {
+    if (!PreferencesHelper.isMixedModeStateAllowed()) {
       List<State> sourceRegionStates = getAllModeState(sourceRegion);
       return canMoveStatesInState(sourceRegionStates, targetState);
     }
@@ -466,7 +466,7 @@ public class MoveHelper implements IMoveHelper {
    * @return true if the region could be moved, false if not
    */
   public boolean canMoveRegion(Region sourceRegion, Region targetRegion) {
-    if (!CapellaModelPreferencesPlugin.getDefault().isMixedModeStateAllowed()) {
+    if (!PreferencesHelper.isMixedModeStateAllowed()) {
       List<State> sourceRegionStates = getAllModeState(sourceRegion);
       return canMoveStatesInRegion(sourceRegionStates, targetRegion);
     }
@@ -519,7 +519,7 @@ public class MoveHelper implements IMoveHelper {
     if (targetElement.eContainer() != null && !(source instanceof FinalState)) {
       EObject targetContainer = targetElement.eContainer();
 
-      if (!CapellaModelPreferencesPlugin.getDefault().isMixedModeStateAllowed()) {
+      if (!PreferencesHelper.isMixedModeStateAllowed()) {
         boolean isSameType = true;
         // Check source/target type compatibility if target is a Mode/State
         if (targetContainer instanceof State) {

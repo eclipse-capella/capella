@@ -25,8 +25,8 @@ import org.polarsys.capella.core.data.fa.ComponentPort;
 import org.polarsys.capella.core.data.fa.FunctionInputPort;
 import org.polarsys.capella.core.data.fa.FunctionOutputPort;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
-import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 import org.polarsys.capella.core.model.preferences.ISynchronizationPreferences;
+import org.polarsys.capella.core.model.preferences.helpers.PreferencesHelper;
 import org.polarsys.capella.core.platform.sirius.ui.actions.AllocationManagementAction;
 import org.polarsys.capella.core.preferences.Activator;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
@@ -116,7 +116,7 @@ public class AllocationManagementTest extends BasicTestCase {
         String.valueOf(syncFunctionPortsToComponentPorts));
 
     assertEquals(syncFunctionPortsToComponentPorts,
-        CapellaModelPreferencesPlugin.getDefault().isSynchronizationOfComponentPortToFunctionPortAllowed());
+            PreferencesHelper.isSynchronizationOfComponentPortToFunctionPortAllowed());
 
     TransactionHelper.getExecutionManager(functionalExchange).execute(new AbstractReadWriteCommand() {
       @Override
@@ -155,7 +155,7 @@ public class AllocationManagementTest extends BasicTestCase {
         ISynchronizationPreferences.PREFS_ALLOW_SYNC_PHYSICALPORT_TO_COMPONENTPORT_ON_PHYSICALLINK,
         String.valueOf(syncPhysicalPortsToComponentPorts));
 
-    assertEquals(syncPhysicalPortsToComponentPorts, CapellaModelPreferencesPlugin.getDefault()
+    assertEquals(syncPhysicalPortsToComponentPorts, PreferencesHelper
         .isSynchronizationOfPhysicalPortToComponentPortOnPhysicalLinkAllowed());
 
     TransactionHelper.getExecutionManager(componentExchange).execute(new AbstractReadWriteCommand() {

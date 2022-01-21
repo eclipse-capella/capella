@@ -45,8 +45,8 @@ import org.polarsys.capella.core.data.oa.OaPackage;
 import org.polarsys.capella.core.data.oa.RolePkg;
 import org.polarsys.capella.core.data.pa.PaPackage;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
-import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 import org.polarsys.capella.core.model.preferences.IDeletePreferences;
+import org.polarsys.capella.core.model.preferences.helpers.PreferencesHelper;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaDeleteCommand;
 import org.polarsys.capella.core.platform.sirius.ui.commands.Messages;
 import org.polarsys.capella.core.ui.toolkit.AbstractCommandActionHandler;
@@ -148,7 +148,7 @@ public class CapellaDeleteAction extends AbstractCommandActionHandler implements
    */
   public static boolean isElementProtected(Element element) {
 
-    boolean specialElementProtectionAllowed = CapellaModelPreferencesPlugin.getDefault()
+    boolean specialElementProtectionAllowed = PreferencesHelper
         .isSpecialElementProtectionAllowed();
 
     if (specialElementProtectionAllowed) {

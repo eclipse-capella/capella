@@ -22,8 +22,8 @@ import org.eclipse.ui.preferences.ScopedPreferenceStore;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.properties.fields.PhysicalComponentNatureGroup;
 import org.polarsys.capella.core.data.pa.properties.sections.PhysicalComponentSection;
-import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 import org.polarsys.capella.core.model.preferences.IDataPreferences;
+import org.polarsys.capella.core.model.preferences.helpers.PreferencesHelper;
 import org.polarsys.capella.core.preferences.Activator;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
@@ -42,14 +42,14 @@ public class CheckPhysCompNatureOptionTestCase extends BasicTestCase {
     assertNotNull(session);
 
     updateDataPreferences("true");
-    assertTrue(CapellaModelPreferencesPlugin.getDefault().isChangePhysicalComponentNatureAllowed());
+    assertTrue(PreferencesHelper.isChangePhysicalComponentNatureAllowed());
     SessionContext context = new SessionContext(session);
     String idPhysComp_01 = "6a369845-b31c-4c9f-b586-3b659d245b88";
     PhysicalComponent PC_01 = (PhysicalComponent) context.getSemanticElement(idPhysComp_01);
     checkPhysicalComponentSection(PC_01, true);
 
     updateDataPreferences("false");
-    assertFalse(CapellaModelPreferencesPlugin.getDefault().isChangePhysicalComponentNatureAllowed());
+    assertFalse(PreferencesHelper.isChangePhysicalComponentNatureAllowed());
     checkPhysicalComponentSection(PC_01, false);
   }
 

@@ -19,7 +19,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.swt,
  org.polarsys.capella.core.platform.sirius.clipboard,
  org.polarsys.capella.core.preferences,
- org.polarsys.capella.core.model.handler
+ org.polarsys.capella.core.model.handler,
+ org.polarsys.capella.core.model.preferences
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: %providerName

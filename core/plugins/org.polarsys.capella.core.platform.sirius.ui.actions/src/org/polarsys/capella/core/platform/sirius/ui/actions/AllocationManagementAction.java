@@ -39,7 +39,7 @@ import org.polarsys.capella.core.data.pa.deployment.PartDeploymentLink;
 import org.polarsys.capella.core.model.helpers.ComponentExchangeExt;
 import org.polarsys.capella.core.model.helpers.PhysicalComponentExt;
 import org.polarsys.capella.core.model.helpers.PhysicalLinkExt;
-import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
+import org.polarsys.capella.core.model.preferences.helpers.PreferencesHelper;
 
 /**
  */
@@ -183,7 +183,7 @@ public class AllocationManagementAction {
   public void allocatingFEsToComponentExchanges(List<EObject> targetElements, EObject sourceElement) {
     if (sourceElement instanceof ComponentExchange) {
       ComponentExchange componentExchange = (ComponentExchange) sourceElement;
-      boolean shouldSyncronize = CapellaModelPreferencesPlugin.getDefault()
+      boolean shouldSyncronize = PreferencesHelper
           .isSynchronizationOfComponentPortToFunctionPortAllowed();
 
       for (EObject object : targetElements) {
@@ -213,7 +213,7 @@ public class AllocationManagementAction {
   public void allocatingCEsToPhysicalLinks(List<EObject> targetElements, EObject sourceElement) {
     if (sourceElement instanceof PhysicalLink) {
       PhysicalLink physicalLink = (PhysicalLink) sourceElement;
-      boolean shouldSyncronize = CapellaModelPreferencesPlugin.getDefault()
+      boolean shouldSyncronize = PreferencesHelper
           .isSynchronizationOfPhysicalPortToComponentPortOnPhysicalLinkAllowed();
 
       for (EObject object : targetElements) {
