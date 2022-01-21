@@ -284,3 +284,20 @@ Its existence does not add any corruption risk to your model, but it does repres
 |-
 | colspan="2"|This rule checks the Typed Element (Part, Exchange Item Instance) has the same name as its Type (Component, Exchange Item).
 |}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../Images/error.gif|ERROR]]
+|I_46 - Check that the image used for diagram nodes is found
+|-
+| colspan="2"|[[Image:../../Images/warning.gif|WARNING]] This rule applies on diagrams elements of diagram associated to the Capella element and will load the diagram. 
+It is recommended to uncheck this rule by default.
+
+This rule ensures that images, used as background of diagram elements, can be found.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../Images/error.gif|ERROR]]
+|I_47 - Check that images used in rich text is found (Capella and diagram descriptions etc)
+|-
+| colspan="2"|This rule ensures that images, used in rich text editor, for attributes such as Capella elements description or diagram description, can be found.
+|}
