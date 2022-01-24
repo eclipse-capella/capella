@@ -31,9 +31,6 @@ import org.osgi.framework.BundleContext;
  */
 public class MACapellaActivator extends AbstractUIPlugin {
 
-  // The plug-in ID
-  public static final String PLUGIN_ID = "org.polarsys.capella.common.ui.massactions"; //$NON-NLS-1$
-
   public static final String ME_VIEW_ID = "org.polarsys.capella.common.ui.massactions.editing.view";
   public static final String MV_VIEW_ID = "org.polarsys.capella.common.ui.massactions.visualizing.view";
 
