@@ -31,9 +31,10 @@ import org.eclipse.search.ui.text.IFileMatchAdapter;
 import org.eclipse.search.ui.text.MatchFilter;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.TreeData;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
-import org.polarsys.capella.core.ui.search.Activator;
 import org.polarsys.capella.core.ui.search.CapellaSearchConstants;
 import org.polarsys.capella.core.ui.search.CapellaSearchQuery;
 import org.polarsys.capella.core.ui.search.match.SearchMatch;
@@ -99,7 +100,7 @@ public class CapellaSearchResult extends AbstractTextSearchResult {
 
   @Override
   public ImageDescriptor getImageDescriptor() {
-    return Activator.getDefault().getImageDescriptor("search.gif");
+    return AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), "icons/search.gif");
   }
 
   @Override
