@@ -27,6 +27,7 @@ public abstract class AbstractCommonActivator extends AbstractActivator {
    * @param message a human-readable message, localized to the current locale
    * @param exception a low-level exception, or <code>null</code> if not applicable
    */
+  @Deprecated
   public void log(int severity, String message, Throwable exception) {
     getLog().log(new Status(severity, getBundle().getSymbolicName(), message, exception));
   }

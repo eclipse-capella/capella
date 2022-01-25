@@ -20,7 +20,7 @@ import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 
 import org.eclipse.core.runtime.IStatus;
-
+import org.eclipse.core.runtime.Status;
 import org.polarsys.capella.common.MdeCommonActivator;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 
@@ -83,7 +83,7 @@ public class FileHelper2 {
   public static void writeFile(File file, byte[] content) {
     // Preconditions.
     if ((null == file) || (null == content)) {
-      MdeCommonActivator.getDefault().log(IStatus.ERROR, "Error while writing file", new IllegalArgumentException()); //$NON-NLS-1$
+      MdeCommonActivator.getDefault().getLog().log(new Status(IStatus.ERROR, MdeCommonActivator.getDefault().getBundle().getSymbolicName(), "Error while writing file", new IllegalArgumentException())); //$NON-NLS-1$
       return;
     }
     FileChannel channel = null;
@@ -93,14 +93,14 @@ public class FileHelper2 {
       // Write contents.
       channel.write(ByteBuffer.wrap(content));
     } catch (Exception exception) {
-      MdeCommonActivator.getDefault().log(IStatus.ERROR, "Error while writing file", exception); //$NON-NLS-1$
+      MdeCommonActivator.getDefault().getLog().log(new Status(IStatus.ERROR, MdeCommonActivator.getDefault().getBundle().getSymbolicName(), "Error while writing file", exception)); //$NON-NLS-1$
     } finally {
       if ((null != channel) && channel.isOpen()) {
         try {
           // Close the channel.
           channel.close();
         } catch (IOException exception) {
-          MdeCommonActivator.getDefault().log(IStatus.ERROR, "Error while closing file channel", exception); //$NON-NLS-1$
+          MdeCommonActivator.getDefault().getLog().log(new Status(IStatus.ERROR, MdeCommonActivator.getDefault().getBundle().getSymbolicName(), "Error while closing file channel", exception)); //$NON-NLS-1$
         }
       }
     }
