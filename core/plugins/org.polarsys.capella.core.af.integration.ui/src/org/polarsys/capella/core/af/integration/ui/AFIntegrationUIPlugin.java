@@ -67,7 +67,4 @@ public class AFIntegrationUIPlugin extends AbstractUIPlugin {
 		return plugin;
 	}
 
-	public static String getSymbolicName() {
-		return plugin.getBundle().getSymbolicName();
-	}
 }

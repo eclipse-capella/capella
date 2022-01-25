@@ -57,8 +57,4 @@ public class AFIntegrationPlugin extends Plugin {
 	public static AFIntegrationPlugin getDefault() {
 		return plugin;
 	}
-
-	public static String getSymbolicName() {
-		return plugin.getBundle().getSymbolicName();
-	}
 }
