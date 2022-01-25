@@ -34,7 +34,7 @@ import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
  */
 public class ReferentialConstraintsResourceSetListener extends ResourceSetListenerImpl {
 
-  private static final String PLUGIN_ID = "org.polarsys.capella.core.data.core.validation"; //$NON-NLS-1$
+  public static final String PLUGIN_ID = "org.polarsys.capella.core.data.core.validation"; //$NON-NLS-1$
 
   /**
    * A callback interface that allows to customize behaviour of the listener.

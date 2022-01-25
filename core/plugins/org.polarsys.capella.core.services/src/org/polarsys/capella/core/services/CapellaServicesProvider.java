@@ -27,7 +27,7 @@ public abstract class CapellaServicesProvider {
   // The extension point identifier.
   private static String EXT_POINT_ID = "capellaServicesProvider"; //$NON-NLS-1$
   // The plug-in identifier.
-  private static String PLUGIN_ID = "org.polarsys.capella.core.services"; //$NON-NLS-1$
+  public static final String PLUGIN_ID = "org.polarsys.capella.core.services"; //$NON-NLS-1$
 
   /**
    * Return set of services specific to edition.

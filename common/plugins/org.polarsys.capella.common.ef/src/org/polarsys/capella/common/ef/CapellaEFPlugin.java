@@ -24,7 +24,7 @@ public class CapellaEFPlugin extends AbstractActivator {
   /**
    * Plug-in id.
    */
-  static final String PLUGIN_ID = "org.polarsys.capella.common.ef"; //$NON-NLS-1$
+  public static final String PLUGIN_ID = "org.polarsys.capella.common.ef"; //$NON-NLS-1$
 
   /**
    * Singleton instance.

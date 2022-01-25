@@ -41,7 +41,7 @@ public class ItemProviderAdapterDecorator extends ItemProviderDecorator implemen
   private static Map<IDelegatedDecorator, String> contributorPositions;
 
   /** constants related to the delegatedDecorators extension point */
-  private static final String PLUGIN_ID = "org.polarsys.capella.core.data.gen.edit.decorators"; //$NON-NLS-1$
+  public static final String PLUGIN_ID = "org.polarsys.capella.core.data.gen.edit.decorators"; //$NON-NLS-1$
   private static final String EXTENSION_POINT_ID = "delegatedDecorator"; //$NON-NLS-1$
 
   protected static final String DECORATOR_POSITION_OVERRIDES = "overrides"; //$NON-NLS-1$
