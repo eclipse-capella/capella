@@ -57,8 +57,7 @@ public abstract class ActionResolver extends AbstractCapellaMarkerResolution {
 				marker.delete();
 			} catch (CoreException e) {
 				StatusManager.getManager().handle(
-						new Status(IStatus.ERROR, PluginActivator.getDefault()
-								.getPluginId(), e.getMessage(), e));
+						new Status(IStatus.ERROR, PluginActivator.getDefault().getBundle().getSymbolicName(), e.getMessage(), e));
 			}
 		}
 	}
@@ -89,7 +88,7 @@ public abstract class ActionResolver extends AbstractCapellaMarkerResolution {
 				} catch (CoreException e) {
 					StatusManager.getManager().handle(
 							new Status(IStatus.ERROR, PluginActivator
-									.getDefault().getPluginId(),
+									.getDefault().getBundle().getSymbolicName(),
 									e.getMessage(), e));
 				}
 			}

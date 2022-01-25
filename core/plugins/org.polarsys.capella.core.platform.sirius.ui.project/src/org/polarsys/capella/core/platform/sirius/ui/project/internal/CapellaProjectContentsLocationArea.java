@@ -73,7 +73,7 @@ public class CapellaProjectContentsLocationArea extends ProjectContentsLocationA
   protected IDefaultProjectLocationProvider getDefaultProjectLocationContribution() {
     IDefaultProjectLocationProvider contribution = null;
     IConfigurationElement[] configurationElements =
-        ExtensionPointHelper.getConfigurationElements(CapellaProjectActivator.getDefault().getPluginId(), PROJECT_LOCATION_PROVIDER_EXTENSION_POINT_ID);
+        ExtensionPointHelper.getConfigurationElements(CapellaProjectActivator.getDefault().getBundle().getSymbolicName(), PROJECT_LOCATION_PROVIDER_EXTENSION_POINT_ID);
     if (configurationElements.length > 0) {
       // There should be one implementation only !
       // So take the first one, as expected.

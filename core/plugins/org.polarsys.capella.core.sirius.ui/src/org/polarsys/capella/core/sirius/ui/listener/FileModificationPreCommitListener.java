@@ -502,7 +502,7 @@ public class FileModificationPreCommitListener extends AbstractEditingDomainReso
     for (File f : filesWithNoWritePermission) {
       sb.append(f.getAbsolutePath() + "\n");
     }
-    CapellaSessionHelper.reportError(new Status(IStatus.ERROR,SiriusUIPlugin.getDefault().getPluginId(), sb.toString()));
+    CapellaSessionHelper.reportError(new Status(IStatus.ERROR,SiriusUIPlugin.getDefault().getBundle().getSymbolicName(), sb.toString()));
     return Status.CANCEL_STATUS;
   } 
 

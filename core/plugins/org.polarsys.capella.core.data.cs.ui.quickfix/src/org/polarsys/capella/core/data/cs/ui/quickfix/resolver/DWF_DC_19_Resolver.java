@@ -71,7 +71,7 @@ public class DWF_DC_19_Resolver extends AbstractCapellaMarkerResolution {
 					} catch (CoreException exception) {
 						StatusManager.getManager().handle(
 								new Status(IStatus.ERROR, PluginActivator
-										.getDefault().getPluginId(),
+										.getDefault().getBundle().getSymbolicName(),
 										exception.getMessage(), exception));
 					}
 				}

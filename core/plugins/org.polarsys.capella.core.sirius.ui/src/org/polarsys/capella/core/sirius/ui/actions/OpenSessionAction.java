@@ -117,7 +117,7 @@ public class OpenSessionAction extends BaseSelectionListenerAction {
         session = SessionManager.INSTANCE.getSession(selectedUri, monitor);
         if (null == session) {
           // Session is null : open session failed.
-          failedOpeningSessions.put(selectedFile, new Status(IStatus.ERROR, SiriusUIPlugin.getDefault().getPluginId(),
+          failedOpeningSessions.put(selectedFile, new Status(IStatus.ERROR, SiriusUIPlugin.getDefault().getBundle().getSymbolicName(),
               "Session can't be opened (null session)")); //$NON-NLS-1$
           continue;
         }
@@ -138,7 +138,7 @@ public class OpenSessionAction extends BaseSelectionListenerAction {
         // Open session.
         session.open(monitor);
         if (!session.isOpen()) {
-          failedOpeningSessions.put(selectedFile, new Status(IStatus.ERROR, SiriusUIPlugin.getDefault().getPluginId(),
+          failedOpeningSessions.put(selectedFile, new Status(IStatus.ERROR, SiriusUIPlugin.getDefault().getBundle().getSymbolicName(),
               NLS.bind("Session can't be opened (null session)", selectedFile))); //$NON-NLS-1$
           continue;
         }
@@ -167,7 +167,7 @@ public class OpenSessionAction extends BaseSelectionListenerAction {
         UsageMonitoringLogger.getInstance().log(eventName, eventContext, EventStatus.ERROR);
         //
         // IStatus status =
-        // new Status(IStatus.ERROR, SiriusUIPlugin.getDefault().getPluginId(), NLS.bind("An error occured when opening
+        // new Status(IStatus.ERROR, SiriusUIPlugin.getDefault().getBundle().getSymbolicName(), NLS.bind("An error occured when opening
         // session ({0})", selectedFile), ex); //$NON-NLS-1$
         // failedOpeningSessions.put(selectedFile, status);
         // CapellaSessionHelper.reportError(status);

@@ -54,7 +54,7 @@ public class LinkSelectionProvider {
     if (null == _linkSelectionContributions) {
       _linkSelectionContributions = new ArrayList<ILinkSelection>();
       IConfigurationElement[] LinkSelectionContributions =
-          ExtensionPointHelper.getConfigurationElements(HelperPlugin.getDefault().getPluginId(), LINK_SELECT_EXTENSION_POINT_SHORT_ID);
+          ExtensionPointHelper.getConfigurationElements(HelperPlugin.getDefault().getBundle().getSymbolicName(), LINK_SELECT_EXTENSION_POINT_SHORT_ID);
       // Loop over found contributions.
       for (IConfigurationElement contribution : LinkSelectionContributions) {
         // Instantiate the contribution.

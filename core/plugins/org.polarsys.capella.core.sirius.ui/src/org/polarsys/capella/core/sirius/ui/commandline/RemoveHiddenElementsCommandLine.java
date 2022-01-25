@@ -50,7 +50,7 @@ public class RemoveHiddenElementsCommandLine extends AbstractWorkbenchCommandLin
 
       Session session = SessionManager.INSTANCE.getSession(uri, new NullProgressMonitor());
       if (session == null) {
-        return new Status(IStatus.ERROR, SiriusUIPlugin.getDefault().getPluginId(), "No aird model found!");
+        return new Status(IStatus.ERROR, SiriusUIPlugin.getDefault().getBundle().getSymbolicName(), "No aird model found!");
       }
       if (!session.isOpen()) {
         session.open(new NullProgressMonitor());

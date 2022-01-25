@@ -53,7 +53,7 @@ public class ExportRepresentationsCommandLine extends AbstractWorkbenchCommandLi
 
       Session session = SessionManager.INSTANCE.getSession(uri, new NullProgressMonitor());
       if (session == null) {
-        return new Status(IStatus.ERROR, SiriusUIPlugin.getDefault().getPluginId(), "No aird model found!");
+        return new Status(IStatus.ERROR, SiriusUIPlugin.getDefault().getBundle().getSymbolicName(), "No aird model found!");
       }
       if (!session.isOpen()) {
         session.open(new NullProgressMonitor());
@@ -74,10 +74,10 @@ public class ExportRepresentationsCommandLine extends AbstractWorkbenchCommandLi
           return Status.CANCEL_STATUS;
 
         } catch (InvocationTargetException e) {
-          return new Status(IStatus.ERROR, SiriusUIPlugin.getDefault().getPluginId(), e.getMessage(), e);
+          return new Status(IStatus.ERROR, SiriusUIPlugin.getDefault().getBundle().getSymbolicName(), e.getMessage(), e);
 
         } catch (Exception e) {
-          return new Status(IStatus.ERROR, SiriusUIPlugin.getDefault().getPluginId(), e.getMessage(), e);
+          return new Status(IStatus.ERROR, SiriusUIPlugin.getDefault().getBundle().getSymbolicName(), e.getMessage(), e);
         }
       }
 

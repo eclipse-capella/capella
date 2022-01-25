@@ -20,7 +20,7 @@ import org.polarsys.capella.core.data.cs.ui.quickfix.CsQuickFixActivator;
  * I18n support for this plugin
  */
 public class CsQuickFixMessages extends NLS {
-  private static final String BUNDLE_NAME = CsQuickFixActivator.getDefault().getPluginId() + ".messages.messages"; //$NON-NLS-1$
+  private static final String BUNDLE_NAME = CsQuickFixActivator.getDefault().getBundle().getSymbolicName() + ".messages.messages"; //$NON-NLS-1$
 
   static {
     // initialize resource bundle

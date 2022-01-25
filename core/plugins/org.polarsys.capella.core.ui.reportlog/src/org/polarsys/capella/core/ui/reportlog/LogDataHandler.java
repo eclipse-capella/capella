@@ -43,7 +43,7 @@ public class LogDataHandler extends AbstractHandler {
     d.open();
     if (d.getReturnCode() == InputDialog.OK) {
       String value = d.getValue();
-      IStatus status = new Status(IStatus.INFO, ReportLogActivator.getDefault().getPluginId(), value);
+      IStatus status = new Status(IStatus.INFO, ReportLogActivator.getDefault().getBundle().getSymbolicName(), value);
       Platform.getLog(ReportLogActivator.class).log(status);
     }
     return null;

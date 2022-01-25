@@ -64,7 +64,7 @@ public class DCON_04_Resolver extends AbstractCapellaMarkerResolution {
       marker.delete();
     } catch (CoreException exception) {
       StatusManager.getManager().handle(
-          new Status(IStatus.ERROR, PluginActivator.getDefault().getPluginId(), exception.getMessage(), exception));
+          new Status(IStatus.ERROR, PluginActivator.getDefault().getBundle().getSymbolicName(), exception.getMessage(), exception));
     }
   }
 }

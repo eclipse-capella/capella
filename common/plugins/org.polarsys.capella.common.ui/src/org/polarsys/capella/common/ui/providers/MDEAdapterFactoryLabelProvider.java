@@ -87,7 +87,7 @@ public class MDEAdapterFactoryLabelProvider extends AdapterFactoryLabelProvider 
     if (!__alreadyLookup && (null == __delegatedLabelProvider)) {
       // Load ITabbedPropertiesLabelProviderDelegation contributor if any.
       IConfigurationElement[] configurationElements =
-          ExtensionPointHelper.getConfigurationElements(MdeCommonUiActivator.getDefault().getPluginId(), "labelProviderDelegation"); //$NON-NLS-1$
+          ExtensionPointHelper.getConfigurationElements(MdeCommonUiActivator.getDefault().getBundle().getSymbolicName(), "labelProviderDelegation"); //$NON-NLS-1$
       // Loop over contributed ITabbedPropertiesLabelProviderDelegation contributor, must be only one.
       if (configurationElements.length > 0) {
         __delegatedLabelProvider =

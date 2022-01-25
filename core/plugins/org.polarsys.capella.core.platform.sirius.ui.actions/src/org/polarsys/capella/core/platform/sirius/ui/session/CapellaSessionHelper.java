@@ -121,11 +121,11 @@ public class CapellaSessionHelper {
       IModel model = ILibraryManager.INSTANCE.getModel(ILibraryManager.DEFAULT_EDITING_DOMAIN, modelId);
       Collection<IModelIdentifier> unavailable = LibraryManagerExt.getAllUnavailableReferences(model);
       if (!unavailable.isEmpty()) {
-        MultiStatus status = new MultiStatus(CapellaActionsActivator.getDefault().getPluginId(), IStatus.ERROR,
+        MultiStatus status = new MultiStatus(CapellaActionsActivator.getDefault().getBundle().getSymbolicName(), IStatus.ERROR,
             Messages.CapellaSessionHelper_MissingLibraries_Message, null);
         for (IModelIdentifier identifier : unavailable) {
           status.add(
-              new Status(IStatus.ERROR, CapellaActionsActivator.getDefault().getPluginId(), identifier.toString()));
+              new Status(IStatus.ERROR, CapellaActionsActivator.getDefault().getBundle().getSymbolicName(), identifier.toString()));
         }
         reportError(status);
         return status;
@@ -144,7 +144,7 @@ public class CapellaSessionHelper {
    * @return an IStatus with severity OK, WARNING or ERROR.
    */
   public static IStatus checkModelsFullCompliancy(URI uri) {
-    final String pluginId = CapellaActionsActivator.getDefault().getPluginId();
+    final String pluginId = CapellaActionsActivator.getDefault().getBundle().getSymbolicName();
     ResourceSet tempResourceSet = new ResourceSetImpl();
     tempResourceSet.getLoadOptions().put(GMFResource.OPTION_ABORT_ON_ERROR, Boolean.TRUE);
     tempResourceSet.getLoadOptions().put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.FALSE);
@@ -267,14 +267,14 @@ public class CapellaSessionHelper {
   private static void reportError(final Diagnostic diagnostic) {
     IStatus status = Status.OK_STATUS;
     if (diagnostic.getChildren().isEmpty()) {
-      status = new Status(IStatus.ERROR, CapellaActionsActivator.getDefault().getPluginId(), diagnostic.getMessage());
+      status = new Status(IStatus.ERROR, CapellaActionsActivator.getDefault().getBundle().getSymbolicName(), diagnostic.getMessage());
 
     } else {
-      status = new MultiStatus(CapellaActionsActivator.getDefault().getPluginId(), IStatus.ERROR,
+      status = new MultiStatus(CapellaActionsActivator.getDefault().getBundle().getSymbolicName(), IStatus.ERROR,
           diagnostic.getMessage(), null);
       for (Diagnostic identifier : diagnostic.getChildren()) {
         ((MultiStatus) status).add(
-            new Status(IStatus.ERROR, CapellaActionsActivator.getDefault().getPluginId(), identifier.getMessage()));
+            new Status(IStatus.ERROR, CapellaActionsActivator.getDefault().getBundle().getSymbolicName(), identifier.getMessage()));
       }
     }
     reportError(status);

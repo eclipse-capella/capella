@@ -219,7 +219,7 @@ public class RefreshDiagramsCommandHandler extends AbstractDiagramCommandHandler
           });
         }
       }
-      return new Status(severity, SiriusUIPlugin.getDefault().getPluginId(), strBuilder.toString());
+      return new Status(severity, SiriusUIPlugin.getDefault().getBundle().getSymbolicName(), strBuilder.toString());
     }
 
     private String addRepDescInfo(StringBuilder strBuilder, DRepresentationDescriptor repDesc) {
@@ -268,7 +268,7 @@ public class RefreshDiagramsCommandHandler extends AbstractDiagramCommandHandler
         return Status.OK_STATUS;
       } else {
         // INFO severity will not be logged in error log view
-        return new Status(Status.INFO, SiriusUIPlugin.getDefault().getPluginId(),
+        return new Status(Status.INFO, SiriusUIPlugin.getDefault().getBundle().getSymbolicName(),
             "Failed to refresh the representation " + dRepresentation.getName());
       }
     }

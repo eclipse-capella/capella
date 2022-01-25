@@ -85,6 +85,7 @@ public abstract class AbstractUIActivator extends AbstractUIPlugin {
    * Get the plug-in ID according to MANISFEST.MF definition.
    * @return a String containing the plug-in ID.
    */
+  @Deprecated
   public String getPluginId() {
     return getBundle().getSymbolicName();
   }

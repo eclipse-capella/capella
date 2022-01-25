@@ -80,7 +80,7 @@ public class DWF_DS_08_Resolver extends AbstractCapellaMarkerResolution {
 				} catch (CoreException exception) {
 					StatusManager.getManager().handle(
 							new Status(IStatus.ERROR, PluginActivator
-									.getDefault().getPluginId(), exception
+									.getDefault().getBundle().getSymbolicName(), exception
 									.getMessage(), exception));
 
 				}

@@ -89,7 +89,7 @@ public class CapellaQuickFixExtPointUtil {
     
     IConfigurationElement[] configurationElements =
         ExtensionPointHelper.getConfigurationElements(
-            PluginActivator.getDefault().getPluginId(),
+            PluginActivator.getDefault().getBundle().getSymbolicName(),
             ICapellaQuickFixExtPointConstants.EXT_POINT_ID
         )
     ;

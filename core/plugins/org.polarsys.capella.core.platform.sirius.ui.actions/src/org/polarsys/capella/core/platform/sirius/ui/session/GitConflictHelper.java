@@ -209,7 +209,7 @@ public class GitConflictHelper {
   public static IStatus checkConflictFiles(Session session) {
     Set<IFile> inConflictFiles = getFilesInConflict(session);
     if (!inConflictFiles.isEmpty()) {
-      return new Status(IStatus.ERROR, CapellaActionsActivator.getDefault().getPluginId(),
+      return new Status(IStatus.ERROR, CapellaActionsActivator.getDefault().getBundle().getSymbolicName(),
           NLS.bind(Messages.GitConflictHelper_ResourcesInConflictState,
               inConflictFiles.stream().map(IFile::getName).collect(Collectors.joining(", "))));
     }
@@ -254,7 +254,7 @@ public class GitConflictHelper {
   public static IStatus checkConflictFiles(IProject project) {
     Set<IFile> inConflictFiles = getFilesInConflict(project);
     if (!inConflictFiles.isEmpty()) {
-      return new Status(IStatus.ERROR, CapellaActionsActivator.getDefault().getPluginId(),
+      return new Status(IStatus.ERROR, CapellaActionsActivator.getDefault().getBundle().getSymbolicName(),
           NLS.bind(Messages.GitConflictHelper_ResourcesInConflictState,
               inConflictFiles.stream().map(IFile::getName).collect(Collectors.joining(", "))));
     }

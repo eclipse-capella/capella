@@ -61,7 +61,7 @@ public class DCOM_21_RemoveUnusedExchangeItemsResolver extends AbstractCapellaMa
       try {
         marker.delete();
       } catch (CoreException e) {
-        IStatus s = new Status(e.getStatus().getSeverity(), FaQuickFixActivator.getDefault().getPluginId(), e.getStatus().getMessage(), e);
+        IStatus s = new Status(e.getStatus().getSeverity(), FaQuickFixActivator.getDefault().getBundle().getSymbolicName(), e.getStatus().getMessage(), e);
         Platform.getLog(FaQuickFixActivator.class).log(s);
       }
     }

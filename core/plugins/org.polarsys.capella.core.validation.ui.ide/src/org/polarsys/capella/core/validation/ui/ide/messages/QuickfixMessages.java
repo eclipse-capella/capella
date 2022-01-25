@@ -32,7 +32,7 @@ public class QuickfixMessages extends NLS {
   
   static {
     // initialize resource bundle
-    NLS.initializeMessages(PluginActivator.getDefault().getPluginId() + ".messages.messages", QuickfixMessages.class); //$NON-NLS-1$
+    NLS.initializeMessages(PluginActivator.getDefault().getBundle().getSymbolicName() + ".messages.messages", QuickfixMessages.class); //$NON-NLS-1$
   }
 
   private QuickfixMessages() {

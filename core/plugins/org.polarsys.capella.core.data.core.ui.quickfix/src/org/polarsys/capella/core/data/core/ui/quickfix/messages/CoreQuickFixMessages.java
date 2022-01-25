@@ -19,7 +19,7 @@ import org.polarsys.capella.core.data.core.ui.quickfix.CoreQuickFixActivator;
  * I18n support for this plugin
  */
 public class CoreQuickFixMessages extends NLS {
-  private static final String BUNDLE_NAME = CoreQuickFixActivator.getDefault().getPluginId() + ".messages.messages"; //$NON-NLS-1$
+  private static final String BUNDLE_NAME = CoreQuickFixActivator.getDefault().getBundle().getSymbolicName() + ".messages.messages"; //$NON-NLS-1$
 
   public static String cycle_details_dialog_title;
   public static String cycle_details_dialog_message;

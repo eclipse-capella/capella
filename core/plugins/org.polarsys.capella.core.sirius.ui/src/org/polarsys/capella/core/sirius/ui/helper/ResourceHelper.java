@@ -93,7 +93,7 @@ public class ResourceHelper {
           }
         }
       } catch (CoreException e) {
-        IStatus status = new Status(e.getStatus().getSeverity(), SiriusUIPlugin.getDefault().getPluginId(),
+        IStatus status = new Status(e.getStatus().getSeverity(), SiriusUIPlugin.getDefault().getBundle().getSymbolicName(),
             "Erros while collecting files!", e);
         Platform.getLog(SiriusUIPlugin.class).log(status);
       }

@@ -144,7 +144,7 @@ public class ObfuscateSessionAction extends BaseSelectionListenerAction {
     executionManager_p.execute(new AbstractReadWriteCommand() {
       public void run() {
         IConfigurationElement[] element =
-            ExtensionPointHelper.getConfigurationElements(CapellaModelObfuscatorActivator.getDefault().getPluginId(), "Obfuscator");
+            ExtensionPointHelper.getConfigurationElements(CapellaModelObfuscatorActivator.getDefault().getBundle().getSymbolicName(), "Obfuscator");
         for (IConfigurationElement ce : element) {
           IResourceObfuscator obfuscator = (IResourceObfuscator) ExtensionPointHelper.createInstance(ce, "obfuscatorClass");
           if ((obfuscator != null) && obfuscator.isApplicableOn(resource_p)) {
