@@ -20,8 +20,6 @@ import org.osgi.framework.BundleContext;
  */
 public class BusinessQueriesPlugin extends Plugin {
 
-  public static final String PLUGIN_ID = "org.polarsys.capella.core.data.business.queries"; //$NON-NLS-1$
-
   /**
    * Single instance of the class
    */

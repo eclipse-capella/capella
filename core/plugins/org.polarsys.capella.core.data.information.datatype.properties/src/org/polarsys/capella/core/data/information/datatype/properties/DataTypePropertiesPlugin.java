@@ -20,9 +20,6 @@ import org.osgi.framework.BundleContext;
  */
 public class DataTypePropertiesPlugin extends AbstractUIPlugin {
 
-	// The plug-in ID
-	public static final String PLUGIN_ID = "org.polarsys.capella.core.data.information.datatype.properties"; //$NON-NLS-1$
-
 	// The shared instance
 	private static DataTypePropertiesPlugin plugin;
 	

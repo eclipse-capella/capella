@@ -20,9 +20,6 @@ import org.osgi.framework.BundleContext;
  */
 public class LinkedTextUIActivator extends AbstractUIPlugin {
 
-	// The plug-in ID
-	public static final String PLUGIN_ID = "org.polarsys.capella.common.linkedtext.ui"; //$NON-NLS-1$
-
 	// The shared instance
 	private static LinkedTextUIActivator plugin;
 

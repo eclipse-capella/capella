@@ -20,9 +20,6 @@ import org.osgi.framework.BundleContext;
  */
 public class TestDiagramFiltersPlugin extends AbstractUIPlugin {
 
-	// The plug-in ID
-	public static final String PLUGIN_ID = "org.polarsys.capella.test.diagram.filters.ju"; //$NON-NLS-1$
-
 	// The shared instance
 	private static TestDiagramFiltersPlugin plugin;
 	

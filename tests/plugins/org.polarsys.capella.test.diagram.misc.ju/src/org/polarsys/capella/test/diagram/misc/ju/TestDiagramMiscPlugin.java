@@ -21,9 +21,6 @@ import org.osgi.framework.BundleContext;
 @SuppressWarnings({"findbugs:ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD","squid:S2696"})
 public class TestDiagramMiscPlugin extends AbstractUIPlugin {
 
-	// The plug-in ID
-	public static final String PLUGIN_ID = "org.polarsys.capella.test.diagram.misc.ju"; //$NON-NLS-1$
-
 	// The shared instance
 	private static TestDiagramMiscPlugin plugin;
 	

@@ -28,10 +28,6 @@ import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
  */
 public class ImporterRegistry {
   /**
-   * Plug-in id constant.
-   */
-  public static final String PLUGIN_ID = "org.polarsys.capella.core.commandline.core"; //$NON-NLS-1$
-  /**
    * Contribution importer extension-point id.
    */
   static final String CONTRIBUTION_EXTENSION_ID = "fileimporter"; //$NON-NLS-1$

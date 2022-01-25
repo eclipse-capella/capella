@@ -20,9 +20,6 @@ import org.osgi.framework.BundleContext;
  */
 public class Activator extends Plugin {
 
-  // The plug-in ID
-  public static final String PLUGIN_ID = "org.polarsys.capella.common.libraries"; //$NON-NLS-1$
-
   /**
    * The constructor
    */

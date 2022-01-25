@@ -22,8 +22,6 @@ import org.osgi.framework.BundleContext;
  * @see CapellaPackage
  */
 public class ResourcePlugin extends AbstractUIPlugin {
-  /** The plug-in identifier */
-  public static final String PLUGIN_ID = "org.polarsys.capella.common.ui.resources"; //$NON-NLS-1$
 
   // The shared instance
   private static ResourcePlugin plugin;

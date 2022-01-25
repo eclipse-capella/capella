@@ -20,9 +20,6 @@ import org.osgi.framework.BundleContext;
  */
 public class TestValidationRulesPlugin extends Plugin {
 
-	// The plug-in ID
-	public static final String PLUGIN_ID = "org.polarsys.capella.test.validation.rules.ju"; //$NON-NLS-1$
-
 	// The shared instance
 	private static TestValidationRulesPlugin plugin;
 	

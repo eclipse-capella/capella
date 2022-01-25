@@ -20,9 +20,6 @@ import org.osgi.framework.BundleContext;
  * The activator class controls the plug-in life cycle
  */
 public class ReportManagerUI extends AbstractUIPlugin {
-
-	// The plug-in ID
-	public static final String PLUGIN_ID = "org.polarsys.capella.common.platform.eclipse.tools.report.ui"; //$NON-NLS-1$
 											
 	// The shared instance
 	private static ReportManagerUI plugin;

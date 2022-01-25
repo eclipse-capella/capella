@@ -21,11 +21,6 @@ import org.osgi.framework.BundleContext;
 public class ModelHandlerPlugin extends Plugin {
 
   /**
-   * The plugin id
-   */
-  public static final String PLUGIN_ID = "org.polarsys.capella.core.model.handler"; //$NON-NLS-1$
-
-  /**
    * The shared instance
    */
   private static ModelHandlerPlugin __plugin;

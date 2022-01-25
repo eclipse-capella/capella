@@ -21,10 +21,6 @@ import org.polarsys.capella.common.mdsofa.common.activator.AbstractActivator;
  * Controls org.polarsys.capella.common.ef plug-in life cycle.
  */
 public class CapellaEFPlugin extends AbstractActivator {
-  /**
-   * Plug-in id.
-   */
-  public static final String PLUGIN_ID = "org.polarsys.capella.common.ef"; //$NON-NLS-1$
 
   /**
    * Singleton instance.

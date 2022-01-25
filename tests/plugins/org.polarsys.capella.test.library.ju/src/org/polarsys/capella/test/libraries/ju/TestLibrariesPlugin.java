@@ -20,9 +20,6 @@ import org.osgi.framework.BundleContext;
  */
 public class TestLibrariesPlugin extends AbstractUIPlugin {
 
-	// The plug-in ID
-	public static final String PLUGIN_ID = "org.polarsys.capella.test.library.ju"; //$NON-NLS-1$
-
 	// The shared instance
 	private static TestLibrariesPlugin plugin;
 	

@@ -20,9 +20,6 @@ import org.osgi.framework.BundleContext;
  */
 public class InteractionPropertiesPlugin extends AbstractUIPlugin {
 
-	// The plug-in ID
-	public static final String PLUGIN_ID = "org.polarsys.capella.core.data.interaction.properties"; //$NON-NLS-1$
-
 	// The shared instance
 	private static InteractionPropertiesPlugin plugin;
 	

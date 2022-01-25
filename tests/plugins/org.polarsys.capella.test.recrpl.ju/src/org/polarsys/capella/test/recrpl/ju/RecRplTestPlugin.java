@@ -20,9 +20,6 @@ import org.osgi.framework.BundleContext;
  */
 public class RecRplTestPlugin extends AbstractUIPlugin {
 
-  // The plug-in ID
-  public static final String PLUGIN_ID = "org.polarsys.capella.test.recrpl.ju"; //$NON-NLS-1$
-
   // The shared instance
   private static RecRplTestPlugin plugin;
 

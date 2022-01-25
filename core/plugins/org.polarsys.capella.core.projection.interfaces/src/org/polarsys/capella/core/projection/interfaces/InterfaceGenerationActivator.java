@@ -19,8 +19,6 @@ import org.osgi.framework.BundleContext;
  * The activator class controls the plug-in life cycle
  */
 public class InterfaceGenerationActivator extends Plugin {
-	// The plug-in ID
-	public static final String PLUGIN_ID = "org.polarsys.capella.core.projection.interfaces"; //$NON-NLS-1$
 
 	// The shared instance
 	private static InterfaceGenerationActivator plugin;

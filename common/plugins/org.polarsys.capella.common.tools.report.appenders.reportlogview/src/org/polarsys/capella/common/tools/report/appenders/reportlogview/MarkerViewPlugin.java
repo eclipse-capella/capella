@@ -32,9 +32,6 @@ public class MarkerViewPlugin extends AbstractUIActivator {
   // Resource bundle.
   private ResourceBundle resourceBundle;
 
-  /** the plugin ID */
-  public static final String PLUGIN_ID = "org.polarsys.capella.common.tools.report.appenders.reportlogview"; //$NON-NLS-1$
-
   /**
    * The constructor.
    */

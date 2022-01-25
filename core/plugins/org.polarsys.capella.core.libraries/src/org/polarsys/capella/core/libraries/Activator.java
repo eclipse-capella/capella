@@ -18,9 +18,6 @@ import org.osgi.framework.BundleContext;
 
 public class Activator extends Plugin implements BundleActivator {
 
-  // The plug-in ID
-  public static final String PLUGIN_ID = "org.polarsys.capella.core.libraries"; //$NON-NLS-1$
-
   // The shared instance
   public static Activator plugin;
 

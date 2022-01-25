@@ -100,8 +100,6 @@ public class IReConstants {
   // All links to keep after tooling. Some links will be deleted
   public static final String CREATED_LINKS_TO_KEEP = "CREATED_LINKS_TO_KEEP";
   public static final String ADDITIONAL_ELEMENTS_TO_DELETE = "ADDITIONAL_ELEMENTS_TO_DELETE";
-
-  public static final String PLUGIN_ID = "org.polarsys.capella.common.re"; //$NON-NLS-1$
   public static final String PROPERTY__LOCATION_TARGET = "locationTarget"; //$NON-NLS-1$
   public static final String PROPERTY__LOCATION_SOURCE = "locationSource"; //$NON-NLS-1$
   public static final String PROPERTY__DEPENDENCIES = "dependencies";

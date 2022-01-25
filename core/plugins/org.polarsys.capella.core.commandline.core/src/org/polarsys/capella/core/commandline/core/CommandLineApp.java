@@ -32,9 +32,7 @@ import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultCompon
 import org.polarsys.capella.core.application.appstart.AbstractApplication;
 
 public class CommandLineApp extends AbstractApplication {
-  private static final String POINT = "org.polarsys.capella.core.commandline.core.commandline"; //$NON-NLS-1$
-
-  public static final String PLUGIN_ID = "org.polarsys.capella.core.commandline.core"; //$NON-NLS-1$
+  private static final String POINT = "org.polarsys.capella.core.commandline.core.commandline";
   private Logger __logger;
 
   /**

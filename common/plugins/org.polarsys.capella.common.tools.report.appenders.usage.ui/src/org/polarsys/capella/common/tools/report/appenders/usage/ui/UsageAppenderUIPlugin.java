@@ -20,8 +20,6 @@ import org.osgi.framework.BundleContext;
  */
 public class UsageAppenderUIPlugin extends Plugin {
   
-  public static final String PLUGIN_ID = "org.polarsys.capella.common.tools.report.appenders.usage.ui"; //$NON-NLS-1$
-  
   // The shared instance
   private static UsageAppenderUIPlugin plugin;
 

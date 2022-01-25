@@ -20,8 +20,6 @@ import org.polarsys.capella.common.ui.services.AbstractUIActivator;
  * The activator class controls the plug-in life cycle
  */
 public class Activator extends AbstractUIActivator {
-  // The plug-in ID
-  public static final String PLUGIN_ID = "org.polarsys.capella.core.ui.semantic.browser.sirius"; //$NON-NLS-1$
 
   // The shared instance
   private static Activator __plugin;

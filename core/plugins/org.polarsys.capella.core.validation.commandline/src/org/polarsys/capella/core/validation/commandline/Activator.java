@@ -16,8 +16,6 @@ import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
 public class Activator implements BundleActivator {
-  // The plug-in ID
-  public static final String PLUGIN_ID = "org.polarsys.capella.core.validation.commandline"; //$NON-NLS-1$
 
   private static BundleContext context;
 

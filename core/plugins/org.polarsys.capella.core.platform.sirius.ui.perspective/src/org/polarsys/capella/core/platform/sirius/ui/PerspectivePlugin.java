@@ -25,11 +25,6 @@ public class PerspectivePlugin extends AbstractUIPlugin {
    */
   private static PerspectivePlugin __plugin;
 
-  /*
-   * 
-   */
-  public static final String PLUGIN_ID = "org.polarsys.capella.core.platform.sirius.ui.perspective"; //$NON-NLS-1$
-
   /**
    * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
    */

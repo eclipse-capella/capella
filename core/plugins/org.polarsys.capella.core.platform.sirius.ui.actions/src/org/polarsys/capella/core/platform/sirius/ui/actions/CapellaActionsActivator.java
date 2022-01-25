@@ -23,11 +23,6 @@ import org.polarsys.capella.core.platform.sirius.ui.preferences.CapellaValidatio
  */
 public class CapellaActionsActivator extends AbstractUIActivator {
 
-  /*
-   * 
-   */
-  public static final String PLUGIN_ID = "org.polarsys.capella.core.platform.sirius.ui.actions"; //$NON-NLS-1$
-
   /**
    * Shared instance.
    */

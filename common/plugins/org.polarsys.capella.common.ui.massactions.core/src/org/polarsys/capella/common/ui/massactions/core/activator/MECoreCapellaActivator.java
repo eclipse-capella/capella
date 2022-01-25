@@ -25,9 +25,6 @@ import org.osgi.framework.FrameworkUtil;
  */
 public class MECoreCapellaActivator extends AbstractUIPlugin {
 
-  // The plug-in ID
-  public static final String PLUGIN_ID = "org.polarsys.capella.common.ui.massactions.core"; //$NON-NLS-1$
-
   public static final String IMAGE_BROWSE = "IMAGE_BROWSE";
 
   // The shared instance

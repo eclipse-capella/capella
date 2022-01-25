@@ -22,11 +22,6 @@ public class MDTrace extends AbstractUIPlugin {
   /**
    *
    */
-  public static final String PLUGIN_ID = "org.polarsys.capella.core.platform.eclipse.ui.trace"; //$NON-NLS-1$
-
-  /**
-   *
-   */
   public MDTrace() {
     // do nothing
   }

@@ -24,11 +24,6 @@ import org.polarsys.capella.core.platform.sirius.ui.navigator.preferences.Capell
  */
 public class CapellaNavigatorPlugin extends AbstractUIActivator {
 
-  /*
-   * 
-   */
-  public static final String PLUGIN_ID = "org.polarsys.capella.core.platform.sirius.ui.navigator"; //$NON-NLS-1$
-
   // The shared instance.
   private static CapellaNavigatorPlugin __plugin;
 

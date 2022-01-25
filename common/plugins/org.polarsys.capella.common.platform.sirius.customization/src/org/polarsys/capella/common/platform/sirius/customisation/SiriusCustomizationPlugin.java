@@ -43,9 +43,6 @@ import org.polarsys.capella.common.platform.sirius.customisation.uicallback.Siri
  */
 public class SiriusCustomizationPlugin extends AbstractUIPlugin {
 
-  /** The plug-in ID. */
-  public static final String PLUGIN_ID = "org.polarsys.capella.common.platform.sirius.customization"; //$NON-NLS-1$
-
   // The shared instance
   private static SiriusCustomizationPlugin plugin;
 

@@ -21,8 +21,6 @@ import org.osgi.framework.FrameworkUtil;
  * The activator class controls the plug-in life cycle.
  */
 public class FastLinkerActivator extends AbstractUIPlugin {
-  // The plug-in ID
-  public static final String PLUGIN_ID = "org.polarsys.capella.core.ui.fastlinker"; //$NON-NLS-1$
   // The shared instance
   private static FastLinkerActivator plugin;
   /**

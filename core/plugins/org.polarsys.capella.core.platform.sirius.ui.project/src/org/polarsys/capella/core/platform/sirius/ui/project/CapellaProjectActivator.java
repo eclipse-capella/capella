@@ -30,8 +30,6 @@ public class CapellaProjectActivator extends AbstractUIActivator implements ISta
   // The shared instance
   private static CapellaProjectActivator __plugin;
 
-  public static final String PLUGIN_ID = "org.polarsys.capella.core.platform.sirius.ui.project"; //$NON-NLS-1$
-
   private MonitorFileSyncJob monitorFileSyncJob = new MonitorFileSyncJob();
 
   /**

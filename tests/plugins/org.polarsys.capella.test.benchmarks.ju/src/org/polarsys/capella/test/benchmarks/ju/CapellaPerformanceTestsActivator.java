@@ -17,8 +17,6 @@ import org.osgi.framework.BundleContext;
 
 public class CapellaPerformanceTestsActivator extends Plugin {
 
-  public static final String PLUGIN_ID = "org.polarsys.capella.test.benchmarks.ju"; //$NON-NLS-1$
-
   public static CapellaPerformanceTestsActivator getDefault() {
     return plugin;
   }

@@ -20,9 +20,6 @@ import org.osgi.framework.BundleContext;
  */
 public class DeploymentPropertiesPlugin extends AbstractUIPlugin {
 
-	// The plug-in ID
-	public static final String PLUGIN_ID = "org.polarsys.capella.core.data.pa.deployment.properties"; //$NON-NLS-1$
-
 	// The shared instance
 	private static DeploymentPropertiesPlugin plugin;
 	

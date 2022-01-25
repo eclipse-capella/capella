@@ -88,10 +88,7 @@ public class Activator extends AbstractUIPlugin {
   /**
    * Extension point name for the constraint providers extension point.
    */
-  public static final String PREFERENCES_PROVIDERS_EXT_P_NAME = "capellaPreferences"; //$NON-NLS-1$
-
-  // The plug-in ID
-  public static final String PLUGIN_ID = "org.polarsys.capella.core.preferences"; //$NON-NLS-1$
+  public static final String PREFERENCES_PROVIDERS_EXT_P_NAME = "capellaPreferences";
 
   // The shared instance
   private static Activator plugin;

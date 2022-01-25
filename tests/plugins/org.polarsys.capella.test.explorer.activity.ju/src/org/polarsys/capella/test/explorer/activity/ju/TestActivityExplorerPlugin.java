@@ -17,9 +17,6 @@ import org.osgi.framework.BundleContext;
 
 public class TestActivityExplorerPlugin extends Plugin {
 
-  // The plug-in ID
-  public static final String PLUGIN_ID = "org.polarsys.capella.test.explorer.activity.ju"; //$NON-NLS-1$
-
   // The shared instance
   private static TestActivityExplorerPlugin plugin;
 

@@ -22,9 +22,6 @@ import org.polarsys.capella.common.ui.services.AbstractUIActivator;
  */
 public class CapellaUIPropertiesRichtextPlugin extends AbstractUIActivator {
 
-    // The plug-in ID
-    public static final String PLUGIN_ID = "org.polarsys.capella.core.ui.properties.richtext"; //$NON-NLS-1$
-
     /**
      * The shared instance
      */

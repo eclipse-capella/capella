@@ -30,9 +30,6 @@ public class ConsoleAppenderActivator extends Plugin {
   // The shared instance
   private static ConsoleAppenderActivator plugin;
 
-  // The plug-in ID
-  public static final String PLUGIN_ID = "org.polarsys.capella.common.tools.report.appenders.console"; //$NON-NLS-1$
-
   private IReportConsole consoleAppender;
 
   /**

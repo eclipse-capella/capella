@@ -23,9 +23,6 @@ public class Activator extends Plugin {
   // The shared instance
   private static Activator plugin;
 
-  // The plug-in ID
-  public static final String PLUGIN_ID = "org.polarsys.capella.common.platform.eclipse.tools.report.console"; //$NON-NLS-1$
-
   /**
    * The constructor
    */
