@@ -624,8 +624,7 @@ public class FunctionalChainExt {
 
     InvolvedElement involved = reference.getInvolved();
     if (!(involved instanceof FunctionalChain)) {
-      return new Status(IStatus.ERROR, PLUGIN_ID,
-          NLS.bind(Messages.FunctionalChainExt_InvolvedElementNot, functionalChainLabel));
+      return new Status(IStatus.ERROR, PLUGIN_ID, NLS.bind(Messages.FunctionalChainExt_InvolvedElementNot, functionalChainLabel));
     }
 
     return Status.OK_STATUS;
@@ -644,8 +643,7 @@ public class FunctionalChainExt {
 
     InvolvedElement involved = link.getInvolved();
     if (!(involved instanceof FunctionalExchange || involved instanceof AbstractFunction)) {
-      return new Status(IStatus.ERROR, PLUGIN_ID,
-          NLS.bind(Messages.FunctionalChainExt_InvolvedElementNotAndNot, exchangeLabel, functionLabel));
+      return new Status(IStatus.ERROR, PLUGIN_ID, NLS.bind(Messages.FunctionalChainExt_InvolvedElementNotAndNot, exchangeLabel, functionLabel));
     }
 
     // involvement link should have a source and target
@@ -659,8 +657,7 @@ public class FunctionalChainExt {
     for (FunctionalChainInvolvement nextInvolvement : link.getNextFunctionalChainInvolvements()) {
       // involvement link should have a function as next
       if (!(nextInvolvement instanceof FunctionalChainInvolvementFunction)) {
-        return new Status(IStatus.ERROR, PLUGIN_ID,
-            NLS.bind(Messages.FunctionalChainExt_IsButNextIsNotA, exchangeLabel, functionLabel));
+        return new Status(IStatus.ERROR, PLUGIN_ID, NLS.bind(Messages.FunctionalChainExt_IsButNextIsNotA, exchangeLabel, functionLabel));
       }
 
       FunctionalChainInvolvementFunction nextInvolvementFunction = (FunctionalChainInvolvementFunction) nextInvolvement;
@@ -669,13 +666,11 @@ public class FunctionalChainExt {
       // involved functional exchange should have the nextFunction as outgoing function
       if (involved instanceof FunctionalExchange
           && nextInvolved != FunctionExt.getOutGoingAbstractFunction((FunctionalExchange) involved)) {
-        return new Status(IStatus.ERROR, PLUGIN_ID,
-            NLS.bind(Messages.FunctionalChainExt_IsNotRelatedToSourceNext, exchangeLabel, functionType));
+        return new Status(IStatus.ERROR, PLUGIN_ID, NLS.bind(Messages.FunctionalChainExt_IsNotRelatedToSourceNext, exchangeLabel, functionType));
       }
       // involved function should be the same as the nextFunction
       else if (involved instanceof AbstractFunction && involved != nextInvolved) {
-        return new Status(IStatus.ERROR, PLUGIN_ID,
-            NLS.bind(Messages.FunctionalChainExt_IsNotRelatedToSourceNext, functionLabel, functionType));
+        return new Status(IStatus.ERROR, PLUGIN_ID, NLS.bind(Messages.FunctionalChainExt_IsNotRelatedToSourceNext, functionLabel, functionType));
       }
     }
 
@@ -696,22 +691,19 @@ public class FunctionalChainExt {
 
     InvolvedElement involved = involvementFunction.getInvolved();
     if (!(involved instanceof AbstractFunction)) {
-      return new Status(IStatus.ERROR, PLUGIN_ID,
-          NLS.bind(Messages.FunctionalChainExt_InvolvedElementNot, functionLabel));
+      return new Status(IStatus.ERROR, PLUGIN_ID, NLS.bind(Messages.FunctionalChainExt_InvolvedElementNot, functionLabel));
     }
 
     // involvement function should have at least one incoming or outgoing link
     if (involvementFunction.getIncomingInvolvementLinks().isEmpty()
         && involvementFunction.getOutgoingInvolvementLinks().isEmpty()) {
-      return new Status(IStatus.ERROR, PLUGIN_ID,
-          NLS.bind(Messages.FunctionalChainExt_InvolvementAlone, functionLabel));
+      return new Status(IStatus.ERROR, PLUGIN_ID, NLS.bind(Messages.FunctionalChainExt_InvolvementAlone, functionLabel));
     }
 
     for (FunctionalChainInvolvement nextInvolvement : involvementFunction.getNextFunctionalChainInvolvements()) {
       // involvement function should have a involvement link as next
       if (!(nextInvolvement instanceof FunctionalChainInvolvementLink)) {
-        return new Status(IStatus.ERROR, PLUGIN_ID,
-            NLS.bind(Messages.FunctionalChainExt_IsButNextIsNotA, functionLabel, exchangeLabel));
+        return new Status(IStatus.ERROR, PLUGIN_ID, NLS.bind(Messages.FunctionalChainExt_IsButNextIsNotA, functionLabel, exchangeLabel));
       }
 
       FunctionalChainInvolvementLink nextLink = (FunctionalChainInvolvementLink) nextInvolvement;
@@ -720,14 +712,12 @@ public class FunctionalChainExt {
       if (nextLink.getInvolved() instanceof FunctionalExchange) {
         FunctionalExchange nextExchange = (FunctionalExchange) nextLink.getInvolved();
         if (involved != FunctionExt.getIncomingAbstractFunction(nextExchange)) {
-          return new Status(IStatus.ERROR, PLUGIN_ID,
-              NLS.bind(Messages.FunctionalChainExt_IsNotRelatedToSourceNext, functionLabel, exchangeType));
+          return new Status(IStatus.ERROR, PLUGIN_ID, NLS.bind(Messages.FunctionalChainExt_IsNotRelatedToSourceNext, functionLabel, exchangeType));
         }
       }
       // the next function should be the same as the involved function
       else if (nextLink.getInvolved() instanceof AbstractFunction && involved != nextLink.getInvolved()) {
-        return new Status(IStatus.ERROR, PLUGIN_ID,
-            NLS.bind(Messages.FunctionalChainExt_IsNotRelatedToSourceNext, functionLabel, exchangeType));
+        return new Status(IStatus.ERROR, PLUGIN_ID, NLS.bind(Messages.FunctionalChainExt_IsNotRelatedToSourceNext, functionLabel, exchangeType));
       }
     }
 

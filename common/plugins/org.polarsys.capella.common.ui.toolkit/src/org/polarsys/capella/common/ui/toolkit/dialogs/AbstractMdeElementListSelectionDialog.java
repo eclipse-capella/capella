@@ -275,8 +275,7 @@ public abstract class AbstractMdeElementListSelectionDialog extends SelectionSta
       if (_validator != null) {
         status = _validator.validate(elements);
       } else {
-        status = new Status(IStatus.OK, PlatformUI.PLUGIN_ID, IStatus.OK, "", //$NON-NLS-1$
-                            null);
+        status = new Status(IStatus.OK, PlatformUI.PLUGIN_ID, IStatus.OK, "", //$NON-NLS-1$ null);
       }
     } else {
       if (_filteredList.isEmpty()) {

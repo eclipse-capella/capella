@@ -391,8 +391,7 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
           description);
     }
     if ((allocatingDescription == null) || allocatingDescription.eIsProxy()) {
-      return (new Status(IStatus.ERROR, Activator.PLUGIN_ID,
-          NLS.bind("Diagram ''{0}'' is not yet supported by diagram initialization", EObjectExt.getText(diagram))));
+      return (new Status(IStatus.ERROR, Activator.PLUGIN_ID, NLS.bind("Diagram ''{0}'' is not yet supported by diagram initialization", EObjectExt.getText(diagram))));
     }
     context.put(TARGET_DESCRIPTION, allocatingDescription);
 
@@ -401,8 +400,7 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
       targetSemantic = getTargetSemantic(sourceSemantic, description, allocatingDescription);
     }
     if (targetSemantic == null) {
-      return (new Status(IStatus.ERROR, Activator.PLUGIN_ID,
-          "No semantic element has been found to put the created diagram"));
+      return (new Status(IStatus.ERROR, Activator.PLUGIN_ID, "No semantic element has been found to put the created diagram"));
     }
 
     // Create a target diagram

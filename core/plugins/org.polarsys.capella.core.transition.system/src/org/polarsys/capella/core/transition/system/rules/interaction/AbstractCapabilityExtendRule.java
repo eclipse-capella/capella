@@ -63,12 +63,10 @@ public class AbstractCapabilityExtendRule extends AbstractCapellaElementRule {
       AbstractCapabilityExtend extend = (AbstractCapabilityExtend) element;
 
       if (extend.getExtension() == null) {
-        return new Status(IStatus.WARNING, Messages.Activity_Transformation,
-            org.polarsys.capella.core.transition.system.constants.Messages.SourceNull);
+        return new Status(IStatus.WARNING, Messages.Activity_Transformation, org.polarsys.capella.core.transition.system.constants.Messages.SourceNull);
       }
       if (extend.getExtended() == null) {
-        return new Status(IStatus.WARNING, Messages.Activity_Transformation,
-            org.polarsys.capella.core.transition.system.constants.Messages.TargetNull);
+        return new Status(IStatus.WARNING, Messages.Activity_Transformation, org.polarsys.capella.core.transition.system.constants.Messages.TargetNull);
       }
       if (!TransformationHandlerHelper.getInstance(context).isOrWillBeTransformed(extend.getExtension(), context)
           .isOK()) {

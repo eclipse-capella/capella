@@ -102,8 +102,7 @@ public class ReportManagerPrefPage extends PreferencePage implements IWorkbenchP
         String componentName = (String) f.get(null);
         registry.subscribe(componentName);
       } catch (Exception exception) {
-        Platform.getLog(ReportManagerActivator.class).log(new Status(IStatus.ERROR,
-            ReportManagerActivator.getDefault().getBundle().getSymbolicName(), exception.getMessage(), exception));
+        Platform.getLog(ReportManagerActivator.class).log(new Status(IStatus.ERROR, ReportManagerActivator.getDefault().getBundle().getSymbolicName(), exception.getMessage(), exception));
       }
     }
 

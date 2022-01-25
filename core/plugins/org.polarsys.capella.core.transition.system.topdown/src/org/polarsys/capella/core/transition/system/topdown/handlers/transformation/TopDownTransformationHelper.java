@@ -79,8 +79,7 @@ public class TopDownTransformationHelper extends CapellaTransformationHandler {
       return Status.OK_STATUS;
     }
 
-    return new Status(IStatus.WARNING, Messages.Activity_Transformation, NLS.bind("Element ''{0}'' will not be transitioned.",
-        LogHelper.getInstance().getText(source_p)));
+    return new Status(IStatus.WARNING, Messages.Activity_Transformation, NLS.bind("Element ''{0}'' will not be transitioned.", LogHelper.getInstance().getText(source_p)));
   }
 
   public boolean isTracedInTarget(EObject element_p, IContext context_p) {

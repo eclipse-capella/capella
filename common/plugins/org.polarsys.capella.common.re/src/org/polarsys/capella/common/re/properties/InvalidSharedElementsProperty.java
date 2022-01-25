@@ -67,8 +67,7 @@ public class InvalidSharedElementsProperty extends AbstractProperty implements I
 
     if (newValue instanceof Collection) {
       if (!((Collection) newValue).isEmpty()) {
-        return new Status(IStatus.WARNING, getId(),
-            "Some referenced elements are not available in the target location.\nReferences to such elements will be lost.");
+        return new Status(IStatus.WARNING, getId(), "Some referenced elements are not available in the target location.\nReferences to such elements will be lost.");
       }
     }
 

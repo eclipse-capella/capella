@@ -166,8 +166,7 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
         result = getChildren(new EObjectWrapper((EObject) parentElement));
       }
     } catch (Exception exception) {
-      Platform.getLog(BrowserActivator.class).log(new Status(IStatus.ERROR, BrowserActivator.PLUGIN_ID,
-          "Error while getting children for " + parentElement, exception)); //$NON-NLS-1$
+      Platform.getLog(BrowserActivator.class).log(new Status(IStatus.ERROR, BrowserActivator.PLUGIN_ID, "Error while getting children for " + parentElement, exception)); //$NON-NLS-1$
       result = new Object[0];
     }
     return result;

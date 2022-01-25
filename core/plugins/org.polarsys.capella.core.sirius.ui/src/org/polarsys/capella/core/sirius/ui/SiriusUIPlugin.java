@@ -94,8 +94,7 @@ public class SiriusUIPlugin extends AbstractUIActivator {
     } catch (InvocationTargetException ite) {
       // Log exception as it has been reported (not encapsulated through InvocationTargetException)
       StatusManager.getManager().handle(
-          new Status(IStatus.ERROR, getBundleId(ite.getCause()), ite.getCause().getMessage(), ite.getCause()),
-          StatusManager.BLOCK);
+          new Status(IStatus.ERROR, getBundleId(ite.getCause()), ite.getCause().getMessage(), ite.getCause()), StatusManager.BLOCK);
 
     } catch (InterruptedException ie) {
       // Not really useful for InterruptedException, but this is to be consistent with InvocationTargetException

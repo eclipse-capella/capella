@@ -87,12 +87,10 @@ public class InvolvementRule extends AbstractCapellaElementRule {
         return new Status(IStatus.WARNING, Messages.Activity_Transformation, org.polarsys.capella.core.transition.system.constants.Messages.TargetNull);
       }
       if (!TransformationHandlerHelper.getInstance(context).isOrWillBeTransformed(ce.getInvolved(), context).isOK()) {
-        return new Status(IStatus.WARNING, Messages.Activity_Transformation, NLS.bind(
-            org.polarsys.capella.core.transition.system.constants.Messages.SourceBoundNotTransitioned, EObjectLabelProviderHelper.getText(ce.getInvolved())));
+        return new Status(IStatus.WARNING, Messages.Activity_Transformation, NLS.bind( org.polarsys.capella.core.transition.system.constants.Messages.SourceBoundNotTransitioned, EObjectLabelProviderHelper.getText(ce.getInvolved())));
       }
       if (!TransformationHandlerHelper.getInstance(context).isOrWillBeTransformed(ce.getInvolver(), context).isOK()) {
-        return new Status(IStatus.WARNING, Messages.Activity_Transformation, NLS.bind(
-            org.polarsys.capella.core.transition.system.constants.Messages.TargetBoundNotTransitioned, EObjectLabelProviderHelper.getText(ce.getInvolver())));
+        return new Status(IStatus.WARNING, Messages.Activity_Transformation, NLS.bind( org.polarsys.capella.core.transition.system.constants.Messages.TargetBoundNotTransitioned, EObjectLabelProviderHelper.getText(ce.getInvolver())));
       }
     }
     return result;

@@ -241,8 +241,7 @@ public class CapellaDashboardEditorInput implements IEditorInput, IPersistableEl
         if (openSessionAction.getFailedOpeningSessions().containsKey(diagramFile)) {
           IStatus status = openSessionAction.getFailedOpeningSessions().get(diagramFile);
           _sessionStatus =
-              new Status(IStatus.ERROR, SiriusUIPlugin.getDefault().getBundle().getSymbolicName(), NLS.bind("Error while opening session {0} [{1}]", firstAnalysisFile,
-                  status.getMessage()), status.getException());
+              new Status(IStatus.ERROR, SiriusUIPlugin.getDefault().getBundle().getSymbolicName(), NLS.bind("Error while opening session {0} [{1}]", firstAnalysisFile, status.getMessage()), status.getException());
         }
 
         session = SessionHelper.getSession(diagramFile);
@@ -257,8 +256,7 @@ public class CapellaDashboardEditorInput implements IEditorInput, IPersistableEl
 
     } catch (Exception e) {
       _sessionStatus =
-          new Status(IStatus.ERROR, SiriusUIPlugin.getDefault().getBundle().getSymbolicName(), NLS.bind("Error while opening session {0} [{1}]", firstAnalysisFile,
-              e.getMessage()), e);
+          new Status(IStatus.ERROR, SiriusUIPlugin.getDefault().getBundle().getSymbolicName(), NLS.bind("Error while opening session {0} [{1}]", firstAnalysisFile, e.getMessage()), e);
       __logger.error(new EmbeddedMessage(e.getMessage(), IReportManagerDefaultComponents.UI), e);
     }
   }

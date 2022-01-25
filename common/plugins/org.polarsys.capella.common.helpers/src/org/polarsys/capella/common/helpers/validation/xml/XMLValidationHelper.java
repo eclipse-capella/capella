@@ -51,11 +51,9 @@ public class XMLValidationHelper {
     try {
       parser = SAXParserFactory.newInstance().newSAXParser();
     } catch (ParserConfigurationException exception) {
-      Platform.getLog(HelperPlugin.class).log(new Status(IStatus.ERROR, 
-          HelperPlugin.getDefault().getBundle().getSymbolicName(), exception.getMessage(), exception));
+      Platform.getLog(HelperPlugin.class).log(new Status(IStatus.ERROR,  HelperPlugin.getDefault().getBundle().getSymbolicName(), exception.getMessage(), exception));
     } catch (SAXException exception) {
-      Platform.getLog(HelperPlugin.class).log(new Status(IStatus.ERROR, 
-          HelperPlugin.getDefault().getBundle().getSymbolicName(), exception.getMessage(), exception));
+      Platform.getLog(HelperPlugin.class).log(new Status(IStatus.ERROR,  HelperPlugin.getDefault().getBundle().getSymbolicName(), exception.getMessage(), exception));
     } finally {
       if (parser == null){
         throw new RuntimeException("Cannot get a SAXParser instance"); //$NON-NLS-1$
@@ -74,13 +72,11 @@ public class XMLValidationHelper {
     try {
       parser.parse(new InputSource(new StringReader(text)), handler);
     } catch (IOException exception) {
-      Platform.getLog(HelperPlugin.class).log(new Status(IStatus.ERROR, 
-          HelperPlugin.getDefault().getBundle().getSymbolicName(), exception.getMessage(), exception));
+      Platform.getLog(HelperPlugin.class).log(new Status(IStatus.ERROR,  HelperPlugin.getDefault().getBundle().getSymbolicName(), exception.getMessage(), exception));
     } catch (SAXException exception) {
       if (!(exception instanceof SAXParseException)){
         // SAXParseExceptions are stored already in the handler, so skip them here.
-        Platform.getLog(HelperPlugin.class).log(new Status(IStatus.ERROR, 
-          HelperPlugin.getDefault().getBundle().getSymbolicName(), exception.getMessage(), exception));
+        Platform.getLog(HelperPlugin.class).log(new Status(IStatus.ERROR,  HelperPlugin.getDefault().getBundle().getSymbolicName(), exception.getMessage(), exception));
       }
     }
     return handler.getExceptions();

@@ -48,8 +48,7 @@ public class PhysicalComponentRule extends org.polarsys.capella.core.transition.
     IStatus transformRequired = super.transformRequired(element, context);
 
     if (!PreferenceHelper.getInstance().transitionPC2CIWhileScenarioTransition()) {
-      return new Status(IStatus.WARNING, Messages.Activity_Transformation,
-          org.polarsys.capella.core.transition.system.topdown.constants.Messages.PC2CI_Preferences);
+      return new Status(IStatus.WARNING, Messages.Activity_Transformation, org.polarsys.capella.core.transition.system.topdown.constants.Messages.PC2CI_Preferences);
 
     } else if (((PhysicalComponent) element).isActor()) {
       return new Status(IStatus.WARNING, Messages.Activity_Transformation,

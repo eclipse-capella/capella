@@ -60,8 +60,7 @@ public class AbstractCapabilityGeneralizationRule extends AbstractCapellaElement
       }
 
       if (!TransformationHandlerHelper.getInstance(context).isOrWillBeTransformed(ce.getSuper(), context).isOK()) {
-        return new Status(IStatus.WARNING, Messages.Activity_Transformation,
-            NLS.bind(".SourceBoundNotTransitioned", EObjectLabelProviderHelper.getText(ce.getSuper())));
+        return new Status(IStatus.WARNING, Messages.Activity_Transformation, NLS.bind(".SourceBoundNotTransitioned", EObjectLabelProviderHelper.getText(ce.getSuper())));
       }
       if (!TransformationHandlerHelper.getInstance(context).isOrWillBeTransformed(ce.getSub(), context).isOK()) {
         return new Status(IStatus.WARNING, Messages.Activity_Transformation, NLS.bind(".Target bound not transitioned", EObjectLabelProviderHelper.getText(ce.getSub())));

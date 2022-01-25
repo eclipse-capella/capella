@@ -118,8 +118,7 @@ public class CapellaMetadataProvider implements IMetadataProvider {
 
     // If there is no afm file, we raise an error
     if (!afm.exists()) {
-      return new Status(IStatus.ERROR, AFIntegrationPlugin.getSymbolicName(),
-          NLS.bind(Messages.NoMetadataException_Message, EcoreUtil2.getURI(file).toPlatformString(true)));
+      return new Status(IStatus.ERROR, AFIntegrationPlugin.getSymbolicName(), NLS.bind(Messages.NoMetadataException_Message, EcoreUtil2.getURI(file).toPlatformString(true)));
     }
 
     ResourceSet set = new ResourceSetImpl();
@@ -190,15 +189,13 @@ public class CapellaMetadataProvider implements IMetadataProvider {
 
     // if not the same major/minor we requires a migration
     if (!(fileVersion.getMajor() == currentVersion.getMajor() && fileVersion.getMinor() == currentVersion.getMinor())) {
-      return new Status(IStatus.ERROR, AFIntegrationPlugin.getSymbolicName(),
-          Messages.WrongCapellaVersionException_Message);
+      return new Status(IStatus.ERROR, AFIntegrationPlugin.getSymbolicName(), Messages.WrongCapellaVersionException_Message);
     }
 
     // if model from 1.4.0 towards 1.3.x, we requires a migration
     if (fileVersion.getMajor() == 1 && fileVersion.getMinor() == 3 && fileVersion.getMicro() == 0) {
       if (currentVersion.getMajor() == 1 && currentVersion.getMinor() == 3 && currentVersion.getMicro() > 0) {
-        return new Status(IStatus.ERROR, AFIntegrationPlugin.getSymbolicName(),
-            NLS.bind(Messages.WrongCapellaVersionException_DetailedMessage, fileVersion));
+        return new Status(IStatus.ERROR, AFIntegrationPlugin.getSymbolicName(), NLS.bind(Messages.WrongCapellaVersionException_DetailedMessage, fileVersion));
       }
     }
     return Status.OK_STATUS;

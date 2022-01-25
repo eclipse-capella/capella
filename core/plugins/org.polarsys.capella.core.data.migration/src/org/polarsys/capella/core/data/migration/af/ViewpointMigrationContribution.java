@@ -123,8 +123,7 @@ public class ViewpointMigrationContribution extends AbstractMigrationContributio
         // We check for additional missing viewpoints
         for (String id : viewpointUsages.keySet()) {
           if (ViewpointManager.getViewpoint(id) == null) {
-            status.add(new Status(IStatus.ERROR, AFIntegrationPlugin.getSymbolicName(),
-                "The viewpoint '" + id + "' is missing"));
+            status.add(new Status(IStatus.ERROR, AFIntegrationPlugin.getSymbolicName(), "The viewpoint '" + id + "' is missing"));
           }
         }
 

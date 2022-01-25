@@ -86,8 +86,7 @@ public abstract class GenerateInterfacesResolver extends AbstractCapellaMarkerRe
       try {
         marker.delete();
       } catch (CoreException e1) {
-        Platform.getLog(FaQuickFixActivator.class).log(new Status(IStatus.ERROR, FaQuickFixActivator.getDefault().getBundle().getSymbolicName(),
-                e1.getStatus().getMessage(), e1.getStatus().getException()));
+        Platform.getLog(FaQuickFixActivator.class).log(new Status(IStatus.ERROR, FaQuickFixActivator.getDefault().getBundle().getSymbolicName(), e1.getStatus().getMessage(), e1.getStatus().getException()));
       }
     }
   }

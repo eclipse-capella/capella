@@ -56,8 +56,7 @@ public class ResourceAccessPolicyListener extends ResourceSetListenerImpl {
           if (!modifiedModels.contains(model) && sourceModel.getAccess(model) == AccessPolicy.READ_ONLY) {
               Logger.getLogger(IReportManagerDefaultComponents.MODEL)
                   .error(Messages.ResourceAccessPolicyListener_RollbackReadOnly);
-              throw new RollbackException(new Status(IStatus.ERROR, Activator.PLUGIN_ID,
-                  Messages.ResourceAccessPolicyListener_RollbackReadOnly));
+              throw new RollbackException(new Status(IStatus.ERROR, Activator.PLUGIN_ID, Messages.ResourceAccessPolicyListener_RollbackReadOnly));
           }
           modifiedModels.add(model);
         }

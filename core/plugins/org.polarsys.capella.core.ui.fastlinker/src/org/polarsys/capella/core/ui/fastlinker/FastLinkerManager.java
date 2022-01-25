@@ -418,8 +418,7 @@ public class FastLinkerManager {
 							IWorkbenchPage.VIEW_VISIBLE);
 		} catch (PartInitException exception) {
 			// An error occurred -> log it.
-		  Platform.getLog(MarkerViewPlugin.class).log(new Status(IStatus.ERROR, MarkerViewPlugin.PLUGIN_ID,
-							exception.getLocalizedMessage(), exception));
+		  Platform.getLog(MarkerViewPlugin.class).log(new Status(IStatus.ERROR, MarkerViewPlugin.PLUGIN_ID, exception.getLocalizedMessage(), exception));
 		}
 	}
 	

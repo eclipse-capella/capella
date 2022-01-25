@@ -323,8 +323,7 @@ public class RenameResourceAction extends WorkspaceAction {
         updateReferencesToFile(oldResource.getProject(), resourceNameBeforeRenaming, newResourcePath.lastSegment(),
             updateCapellaProjectName);
       } catch (UnsupportedEncodingException e) {
-        errorStatus[0] = new Status(IStatus.ERROR, PlatformUI.PLUGIN_ID,
-            "Rename action failed to perform because UTF-8 encoding is not supported", e);
+        errorStatus[0] = new Status(IStatus.ERROR, PlatformUI.PLUGIN_ID, "Rename action failed to perform because UTF-8 encoding is not supported", e);
       } catch (ExecutionException e) {
         if (e.getCause() instanceof CoreException) {
           errorStatus[0] = ((CoreException) e.getCause()).getStatus();

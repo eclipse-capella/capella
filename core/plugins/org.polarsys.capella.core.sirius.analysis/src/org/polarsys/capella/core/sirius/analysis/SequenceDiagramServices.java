@@ -648,8 +648,7 @@ public class SequenceDiagramServices {
    */
   public static void orderingError(Scenario scenario) {
     OperationCanceledException exception = new OperationCanceledException(Messages.SequenceDiagramServices_3);
-    IStatus errorStatus = new Status(IStatus.ERROR, SiriusViewActivator.ID, 0, Messages.SequenceDiagramServices_0,
-        exception);
+    IStatus errorStatus = new Status(IStatus.ERROR, SiriusViewActivator.ID, 0, Messages.SequenceDiagramServices_0, exception);
     ErrorDialog.openError(PlatformUI.getWorkbench().getDisplay().getActiveShell(), Messages.SequenceDiagramServices_1,
         Messages.SequenceDiagramServices_2, errorStatus);
     throw exception;

@@ -42,8 +42,7 @@ public class CapellaReplaceQuery {
     replacedProjects = new HashSet<>();
     replacedOccurrenceCount = 0;
     if (replacement == null) {
-      return new Status(IStatus.ERROR, Activator.PLUGIN_ID,
-          CapellaSearchConstants.CapellaReplaceQuery_Validation_Replacement_Null);
+      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, CapellaSearchConstants.CapellaReplaceQuery_Validation_Replacement_Null);
     }
     try {
       Pattern searchPattern = capellaSearchSettings.createPattern();

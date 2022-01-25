@@ -148,8 +148,7 @@ public class CapellaDeleteCommand extends BasicCapellaDeleteCommand {
   protected IStatus preDeleteChecks() {
     Set<?> elementsToDelete = getAllElementsToDelete();
     if (preventProtectedElementsDeletion && !CapellaDeleteAction.canDelete(elementsToDelete)) {
-      deletionStatus = new Status(Status.ERROR, CapellaActionsActivator.PLUGIN_ID,
-          Messages.CapellaDeleteCommand_ProtectedElementsError);
+      deletionStatus = new Status(Status.ERROR, CapellaActionsActivator.PLUGIN_ID, Messages.CapellaDeleteCommand_ProtectedElementsError);
     } else {
       long nbRepresentations = elementsToDelete.stream().filter(DRepresentationDescriptor.class::isInstance).count();
       long nbSemanticElements = elementsToDelete.size() - nbRepresentations;

@@ -50,14 +50,12 @@ public class ReferencesProperty extends AbstractProperty implements IEditablePro
   public IStatus validate(Object newValue_p, IPropertyContext context_p) {
     if (!model.getUnsavedModels().isEmpty()) {
       String unsavedTxt = model.getUnsavedModels().stream().map(m -> m.getIdentifier().getName()).collect(Collectors.joining(", "));
-      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, NLS.bind(
-          "There is other unsaved session(s) ({0}), this may lead to inconsistencies,\n You should save others sessions before manage references.", unsavedTxt));
+      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, NLS.bind( "There is other unsaved session(s) ({0}), this may lead to inconsistencies,\n You should save others sessions before manage references.", unsavedTxt));
     }
 
     boolean unsavedModel = model.isUnsavedRootModel();
     if (unsavedModel) {
-      return new Status(IStatus.WARNING, Activator.PLUGIN_ID,
-          "The session is unsaved. Manage references will save the session.");
+      return new Status(IStatus.WARNING, Activator.PLUGIN_ID, "The session is unsaved. Manage references will save the session.");
     }
 
     if (!model.getUnresolvableReferencedLibraries().isEmpty()) {

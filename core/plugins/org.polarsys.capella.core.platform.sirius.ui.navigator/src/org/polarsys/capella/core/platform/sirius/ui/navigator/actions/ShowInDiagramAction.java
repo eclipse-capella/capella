@@ -87,8 +87,7 @@ public class ShowInDiagramAction extends BaseSelectionListenerAction implements 
     Set<DDiagramElement> viewsFromEditor = getViewsFromEditor(activeEditor, semanticElements);
 
     if (viewsFromEditor.isEmpty()) {
-      return new Status(IStatus.INFO, CapellaNavigatorPlugin.PLUGIN_ID,
-          Messages.ShowInDiagramAction_UnknownElement_Message);
+      return new Status(IStatus.INFO, CapellaNavigatorPlugin.PLUGIN_ID, Messages.ShowInDiagramAction_UnknownElement_Message);
     }
 
     List<DDiagramElement> availableElements = viewsFromEditor.stream().filter(isElementAvailable())

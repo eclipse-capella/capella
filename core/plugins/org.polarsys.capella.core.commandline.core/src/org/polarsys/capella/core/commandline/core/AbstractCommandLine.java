@@ -403,8 +403,7 @@ public class AbstractCommandLine implements ICommandLine {
         if (!argHelper.isForceImport()) {
           if (project.exists()) {
             // Log an error if a project exists already and -forceImport is not given
-            IStatus status = new Status(IStatus.ERROR, CommandLineApp.PLUGIN_ID,
-                "Problem while importing project into the workspace: A project with the same name is referenced from the workspace. This should be removed from the workspace.");
+            IStatus status = new Status(IStatus.ERROR, CommandLineApp.PLUGIN_ID, "Problem while importing project into the workspace: A project with the same name is referenced from the workspace. This should be removed from the workspace.");
             LogExt.log(IReportManagerDefaultComponents.MODEL, status);
           } else {
             project.create(description, null);

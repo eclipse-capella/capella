@@ -607,8 +607,7 @@ public abstract class AbstractRule implements IRule<EObject>, IRuleScope, IRuleT
 
     EClass clazz = getTargetType(source, context);
     if (clazz == null) {
-      return new Status(IStatus.WARNING, Messages.Activity_Transformation, NLS.bind("No rule is defined for the element ''{0}'' [{1}]", LogHelper.getInstance()
-          .getText(source), source.eClass().getName()));
+      return new Status(IStatus.WARNING, Messages.Activity_Transformation, NLS.bind("No rule is defined for the element ''{0}'' [{1}]", LogHelper.getInstance() .getText(source), source.eClass().getName()));
     }
 
     ISelectionContext sContext =
@@ -617,8 +616,7 @@ public abstract class AbstractRule implements IRule<EObject>, IRuleScope, IRuleT
 
     if (result != null) {
       if (clazz.isInstance(result)) {
-        return new Status(IStatus.WARNING, Messages.Activity_Transformation, NLS.bind("Element ''{0}'' is already transformed [{1}]", LogHelper.getInstance()
-            .getText(source), source.eClass().getName()));
+        return new Status(IStatus.WARNING, Messages.Activity_Transformation, NLS.bind("Element ''{0}'' is already transformed [{1}]", LogHelper.getInstance() .getText(source), source.eClass().getName()));
       }
     }
     return Status.OK_STATUS;
