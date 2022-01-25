@@ -14,7 +14,7 @@
 package org.polarsys.capella.core.services;
 
 import org.eclipse.core.runtime.IConfigurationElement;
-
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
 
 /**
@@ -26,8 +26,6 @@ public abstract class CapellaServicesProvider {
 
   // The extension point identifier.
   private static String EXT_POINT_ID = "capellaServicesProvider"; //$NON-NLS-1$
-  // The plug-in identifier.
-  public static final String PLUGIN_ID = "org.polarsys.capella.core.services"; //$NON-NLS-1$
 
   /**
    * Return set of services specific to edition.
@@ -47,7 +45,7 @@ public abstract class CapellaServicesProvider {
    */
   public static CapellaServicesProvider getReferencedElement() {
     if (null == _instance) {
-      IConfigurationElement[] configurationElements = ExtensionPointHelper.getConfigurationElements(PLUGIN_ID, EXT_POINT_ID);
+      IConfigurationElement[] configurationElements = ExtensionPointHelper.getConfigurationElements(FrameworkUtil.getBundle(CapellaServicesProvider.class).getSymbolicName(), EXT_POINT_ID);
       IConfigurationElement configurationElement = configurationElements[0];
       _instance = (CapellaServicesProvider) ExtensionPointHelper.createInstance(configurationElement, ExtensionPointHelper.ATT_CLASS);
     }

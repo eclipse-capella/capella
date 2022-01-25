@@ -32,6 +32,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
@@ -92,7 +93,6 @@ import org.polarsys.kitalpha.emde.model.edit.provider.ExtensibleElementItemProvi
  */
 public class MoveHelper implements IMoveHelper {
 
-  static String PLUGIN_ID = "org.polarsys.capella.core.model.helpers";
   static String EP_MOVE_HELPER_ID = "moveHelper";
   private List<IMoveHelper> moveHelpers;
   private static MoveHelper instance;
@@ -668,7 +668,7 @@ public class MoveHelper implements IMoveHelper {
 
       //Read extension point looking for instances of IMoveHelper
       for (IConfigurationElement element : ExtensionPointHelper
-          .getConfigurationElements(PLUGIN_ID, EP_MOVE_HELPER_ID)) {
+          .getConfigurationElements(FrameworkUtil.getBundle(MoveHelper.class).getSymbolicName(), EP_MOVE_HELPER_ID)) {
         try {
           IMoveHelper helper = (IMoveHelper) element.createExecutableExtension("class");
           if (helper != null) {

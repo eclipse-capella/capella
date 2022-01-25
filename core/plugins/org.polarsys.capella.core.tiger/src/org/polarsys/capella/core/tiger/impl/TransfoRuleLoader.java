@@ -99,7 +99,6 @@ public class TransfoRuleLoader {
   protected static final String FINALIZER_CLASS_ID = "class"; //$NON-NLS-1$
   protected static final String FINALIZER_ID = "finalizer"; //$NON-NLS-1$
   protected static final String PACKAGE_NAME_ID = "rulepackage"; //$NON-NLS-1$
-  public static final String PLUGIN_ID = "org.polarsys.capella.core.tiger"; //$NON-NLS-1$
   protected static final String PRIORITY_HIGH = "high"; //$NON-NLS-1$
   protected static final String PRIORITY_ID = "priority"; //$NON-NLS-1$
 
@@ -173,7 +172,7 @@ public class TransfoRuleLoader {
    */
   protected void initContextsFromRegistry() {
     IExtensionRegistry extensionRegistry = Platform.getExtensionRegistry();
-    IConfigurationElement[] elementsForPlugin = extensionRegistry.getConfigurationElementsFor(PLUGIN_ID);
+    IConfigurationElement[] elementsForPlugin = extensionRegistry.getConfigurationElementsFor(FrameworkUtil.getBundle(Activator.class).getSymbolicName());
 
     for (IConfigurationElement configurationElement : elementsForPlugin) {
       String contextName = configurationElement.getAttribute(CONTEXT_NAME_ID);

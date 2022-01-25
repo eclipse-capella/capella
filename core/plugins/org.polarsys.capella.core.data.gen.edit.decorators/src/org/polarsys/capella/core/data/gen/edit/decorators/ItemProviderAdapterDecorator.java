@@ -29,6 +29,7 @@ import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedImage;
 import org.eclipse.emf.edit.provider.ItemProviderDecorator;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
 
@@ -41,7 +42,6 @@ public class ItemProviderAdapterDecorator extends ItemProviderDecorator implemen
   private static Map<IDelegatedDecorator, String> contributorPositions;
 
   /** constants related to the delegatedDecorators extension point */
-  public static final String PLUGIN_ID = "org.polarsys.capella.core.data.gen.edit.decorators"; //$NON-NLS-1$
   private static final String EXTENSION_POINT_ID = "delegatedDecorator"; //$NON-NLS-1$
 
   protected static final String DECORATOR_POSITION_OVERRIDES = "overrides"; //$NON-NLS-1$
@@ -141,7 +141,7 @@ public class ItemProviderAdapterDecorator extends ItemProviderDecorator implemen
     contributorPositions = new HashMap<IDelegatedDecorator, String>();
     allContributors = new HashMap<String, List<IDelegatedDecorator>>();
 
-    for (IConfigurationElement provider : ExtensionPointHelper.getConfigurationElements(PLUGIN_ID, EXTENSION_POINT_ID)) {
+    for (IConfigurationElement provider : ExtensionPointHelper.getConfigurationElements(FrameworkUtil.getBundle(getClass()).getSymbolicName(), EXTENSION_POINT_ID)) {
       String type = provider.getAttribute(DECORATOR_ATTRIBUTE_TYPE);
       List<IDelegatedDecorator> labelProviders = directContributors.get(type);
       if (labelProviders == null) {

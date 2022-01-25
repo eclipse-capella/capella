@@ -16,6 +16,7 @@ import org.apache.log4j.Logger;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Plugin;
 import org.osgi.framework.BundleContext;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
 
 /**
@@ -48,7 +49,7 @@ public class ConsoleAppenderActivator extends Plugin {
   public IReportConsole getReportConsole() {
     if (consoleAppender == null) {
       try {
-        IConfigurationElement[] consoleProvider = ExtensionPointHelper.getConfigurationElements(PLUGIN_ID, CONSOLE_EXTENSION_ID);
+        IConfigurationElement[] consoleProvider = ExtensionPointHelper.getConfigurationElements(FrameworkUtil.getBundle(ConsoleAppenderActivator.class).getSymbolicName(), CONSOLE_EXTENSION_ID);
         for (IConfigurationElement configurationElement : consoleProvider) {
           consoleAppender = (IReportConsole) ExtensionPointHelper.createInstance(configurationElement, ExtensionPointHelper.ATT_CLASS);
         }

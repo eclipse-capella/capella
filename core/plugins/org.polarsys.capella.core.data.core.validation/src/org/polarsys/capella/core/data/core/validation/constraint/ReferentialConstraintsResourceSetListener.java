@@ -24,6 +24,7 @@ import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.RollbackException;
 import org.eclipse.osgi.util.NLS;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 
 /**
@@ -33,8 +34,6 @@ import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
  * @see ReferentialConstraintsValidationHelper
  */
 public class ReferentialConstraintsResourceSetListener extends ResourceSetListenerImpl {
-
-  public static final String PLUGIN_ID = "org.polarsys.capella.core.data.core.validation"; //$NON-NLS-1$
 
   /**
    * A callback interface that allows to customize behaviour of the listener.
@@ -75,7 +74,7 @@ public class ReferentialConstraintsResourceSetListener extends ResourceSetListen
     List<Diagnostic> results = helper.validate(targets);
 
     if (!results.isEmpty()) {
-      Diagnostic ms = new BasicDiagnostic(PLUGIN_ID, 0, results, results.get(0).getMessage(), null);
+      Diagnostic ms = new BasicDiagnostic(FrameworkUtil.getBundle(getClass()).getSymbolicName(), 0, results, results.get(0).getMessage(), null);
       callback.handle(ms);
     }
     return null;

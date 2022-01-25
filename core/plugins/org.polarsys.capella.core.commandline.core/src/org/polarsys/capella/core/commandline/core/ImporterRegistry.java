@@ -20,6 +20,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.eclipse.core.runtime.IConfigurationElement;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
 
 /**
@@ -60,7 +61,7 @@ public class ImporterRegistry {
     // Instantiate the map that holds all contributions.
     _importerContributions = new HashMap<String, List<IFileImporter>>(0);
     // Load contributions.
-    IConfigurationElement[] contributors = ExtensionPointHelper.getConfigurationElements(PLUGIN_ID, CONTRIBUTION_EXTENSION_ID);
+    IConfigurationElement[] contributors = ExtensionPointHelper.getConfigurationElements(FrameworkUtil.getBundle(ImporterRegistry.class).getSymbolicName(), CONTRIBUTION_EXTENSION_ID);
     for (IConfigurationElement contributorElement : contributors) {
       String extension = (String) contributorElement.getAttribute("extension");
       // Instantiate current contribution.

@@ -39,12 +39,6 @@ public class BusinessQueriesProvider {
   private static BusinessQueriesProvider _instance = null;
   public static final String BUSINESS_QUERIES_EXTENSION_ID = "MDEBusinessQueries"; //$NON-NLS-1$
 
-  /**
-   * @deprecated Use {@link BusinessQueriesPlugin#PLUGIN_ID} instead
-   */
-  @Deprecated
-  public static final String BUSINESS_QUERIES_PLUGIN_ID = FrameworkUtil.getBundle(BusinessQueriesPlugin.class).getSymbolicName();
-
   private List<IBusinessQuery> _businessQueriesCache = null;
   private Map<SimpleEntry<EClass, EStructuralFeature>, IBusinessQuery> businessQueriesMap;
 

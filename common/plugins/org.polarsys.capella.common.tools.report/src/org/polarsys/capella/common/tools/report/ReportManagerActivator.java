@@ -20,6 +20,7 @@ import org.apache.log4j.Logger;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Plugin;
 import org.osgi.framework.BundleContext;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
 import org.polarsys.capella.common.tools.report.appenders.IFlushableAppenders;
 
@@ -35,8 +36,6 @@ public class ReportManagerActivator extends Plugin {
   // The shared instance
   private static ReportManagerActivator plugin;
 
-  private static final String REPORT_PLUGIN_ID = "org.polarsys.capella.common.tools.report"; //$NON-NLS-1$
-
   private List<Appender> appenders;
   private List<IFlushableAppenders> flushableAppenders;
 
@@ -51,7 +50,7 @@ public class ReportManagerActivator extends Plugin {
     if ((appenders == null) || (appenders.isEmpty())) {
       try {
         appenders = new ArrayList<>();
-        IConfigurationElement[] appendersProvider = ExtensionPointHelper.getConfigurationElements(REPORT_PLUGIN_ID, APPENDERS_EXTENSION_ID);
+        IConfigurationElement[] appendersProvider = ExtensionPointHelper.getConfigurationElements(FrameworkUtil.getBundle(ReportManagerActivator.class).getSymbolicName(), APPENDERS_EXTENSION_ID);
         for (IConfigurationElement configurationElement : appendersProvider) {
           Appender newAppender = (Appender) ExtensionPointHelper.createInstance(configurationElement, ExtensionPointHelper.ATT_CLASS);
           if (null != newAppender) {
@@ -72,7 +71,7 @@ public class ReportManagerActivator extends Plugin {
     if ((flushableAppenders == null) || (flushableAppenders.isEmpty())) {
       try {
     	  flushableAppenders = new ArrayList<>();
-        IConfigurationElement[] appendersProvider = ExtensionPointHelper.getConfigurationElements(REPORT_PLUGIN_ID, FLUSHABLE_APPENDERS_EXTENSION_ID);
+        IConfigurationElement[] appendersProvider = ExtensionPointHelper.getConfigurationElements(FrameworkUtil.getBundle(ReportManagerActivator.class).getSymbolicName(), FLUSHABLE_APPENDERS_EXTENSION_ID);
         for (IConfigurationElement configurationElement : appendersProvider) {
           IFlushableAppenders newAppender = (IFlushableAppenders) ExtensionPointHelper.createInstance(configurationElement, ExtensionPointHelper.ATT_CLASS);
           flushableAppenders.add(newAppender);
