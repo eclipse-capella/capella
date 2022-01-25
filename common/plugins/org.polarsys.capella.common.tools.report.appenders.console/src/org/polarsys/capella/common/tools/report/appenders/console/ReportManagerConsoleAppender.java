@@ -139,8 +139,7 @@ public class ReportManagerConsoleAppender extends AppenderSkeleton {
           }
         }
       } catch (IOException e) {
-        ConsoleAppenderActivator.getDefault().getLog()
-            .log(new Status(IStatus.ERROR, ConsoleAppenderActivator.PLUGIN_ID, e.getMessage(), e));
+        ConsoleAppenderActivator.getDefault().getLog().log(new Status(IStatus.ERROR, ConsoleAppenderActivator.PLUGIN_ID, e.getMessage(), e));
       }
     }
   }

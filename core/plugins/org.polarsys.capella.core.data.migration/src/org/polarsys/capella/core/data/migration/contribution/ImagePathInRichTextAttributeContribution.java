@@ -203,8 +203,7 @@ public class ImagePathInRichTextAttributeContribution extends AbstractMigrationC
     if (!nonCreatedFiles.isEmpty()) {
       String nonCreatedFilesPath = nonCreatedFiles.stream().map(File::getAbsolutePath)
           .collect(Collectors.joining(", "));
-      Activator.getDefault().getLog()
-          .warn(MessageFormat.format(Messages.MigrationAction_Image_AsolutePathImageNotMigrated,
+      Activator.getDefault().getLog().warn(MessageFormat.format(Messages.MigrationAction_Image_AsolutePathImageNotMigrated,
               new EditingDomainServices().getLabelProviderText(notifier), attribute.getName(), nonCreatedFilesPath));
     }
     return createdFiles;
@@ -242,8 +241,7 @@ public class ImagePathInRichTextAttributeContribution extends AbstractMigrationC
       } catch (CoreException e) {
         String nonCreatedFilesPath = filesToCopy.values().stream().map(iFile -> iFile.getFullPath().toString())
             .collect(Collectors.joining(", "));
-        Activator.getDefault().getLog()
-            .error(MessageFormat.format(Messages.MigrationAction_Image_ImpossibleToCreateImageFolder,
+        Activator.getDefault().getLog().error(MessageFormat.format(Messages.MigrationAction_Image_ImpossibleToCreateImageFolder,
                 imageFolder.getFullPath(), new EditingDomainServices().getLabelProviderText(contextObject),
                 attribute.getName(), nonCreatedFilesPath), e);
       }
@@ -277,8 +275,7 @@ public class ImagePathInRichTextAttributeContribution extends AbstractMigrationC
     if (nonCreatedFiles.size() > 0) {
       String nonCreatedFilesPath = nonCreatedFiles.stream().map(File::getAbsolutePath)
           .collect(Collectors.joining(", "));
-      Activator.getDefault().getLog()
-          .error(MessageFormat.format(Messages.MigrationAction_Image_ImpossibleToCreateImages,
+      Activator.getDefault().getLog().error(MessageFormat.format(Messages.MigrationAction_Image_ImpossibleToCreateImages,
               new EditingDomainServices().getLabelProviderText(contextObject), attribute.getName(),
               nonCreatedFilesPath));
     }

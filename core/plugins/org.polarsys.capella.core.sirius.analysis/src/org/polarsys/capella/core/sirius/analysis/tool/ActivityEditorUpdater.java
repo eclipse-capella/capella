@@ -45,8 +45,7 @@ public class ActivityEditorUpdater implements IActivityManagerListener {
         tm.notifyToolChange();
         
       } catch (RollbackException | InterruptedException e) {
-        SiriusViewActivator.getInstance().getLog()
-            .log(new Status(IStatus.WARNING, SiriusViewActivator.ID, e.getMessage(), e));
+        SiriusViewActivator.getInstance().getLog().log(new Status(IStatus.WARNING, SiriusViewActivator.ID, e.getMessage(), e));
       }
     }
   }

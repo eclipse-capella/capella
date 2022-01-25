@@ -316,8 +316,7 @@ public class LightMarkerRegistry implements IMarkerSource {
       try {
         result = getAttribute(attributeName);
       } catch (CoreException e) {
-        MarkerViewPlugin.getDefault().getLog()
-            .log(new Status(e.getStatus().getSeverity(), MarkerViewPlugin.PLUGIN_ID, e.getMessage(), e));
+        MarkerViewPlugin.getDefault().getLog().log(new Status(e.getStatus().getSeverity(), MarkerViewPlugin.PLUGIN_ID, e.getMessage(), e));
       }
       if (result instanceof Integer) {
         return ((Integer) result).intValue();
@@ -333,8 +332,7 @@ public class LightMarkerRegistry implements IMarkerSource {
       try {
         result = getAttribute(attributeName);
       } catch (CoreException e) {
-        MarkerViewPlugin.getDefault().getLog()
-            .log(new Status(e.getStatus().getSeverity(), MarkerViewPlugin.PLUGIN_ID, e.getMessage(), e));
+        MarkerViewPlugin.getDefault().getLog().log(new Status(e.getStatus().getSeverity(), MarkerViewPlugin.PLUGIN_ID, e.getMessage(), e));
       }
       if (result instanceof String) {
         return (String) result;
@@ -350,8 +348,7 @@ public class LightMarkerRegistry implements IMarkerSource {
       try {
         result = getAttribute(attributeName);
       } catch (CoreException e) {
-        MarkerViewPlugin.getDefault().getLog()
-            .log(new Status(e.getStatus().getSeverity(), MarkerViewPlugin.PLUGIN_ID, e.getMessage(), e));
+        MarkerViewPlugin.getDefault().getLog().log(new Status(e.getStatus().getSeverity(), MarkerViewPlugin.PLUGIN_ID, e.getMessage(), e));
       }
       if (result instanceof Boolean) {
         return ((Boolean) result).booleanValue();

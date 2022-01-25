@@ -85,12 +85,10 @@ public class DataExporter {
         stream = new FileOutputStream(file);
         exporter.export(stream, data);
       } catch (FileNotFoundException exception) {
-        MdeCommonActivator.getDefault().getLog()
-            .log(new Status(Status.ERROR, MdeCommonActivator.getDefault().getBundle().getSymbolicName(), "Error", exception));
+        MdeCommonActivator.getDefault().getLog().log(new Status(Status.ERROR, MdeCommonActivator.getDefault().getBundle().getSymbolicName(), "Error", exception));
         result = false;
       } catch (IOException exception) {
-        MdeCommonActivator.getDefault().getLog()
-            .log(new Status(Status.ERROR, MdeCommonActivator.getDefault().getBundle().getSymbolicName(), "Error", exception));
+        MdeCommonActivator.getDefault().getLog().log(new Status(Status.ERROR, MdeCommonActivator.getDefault().getBundle().getSymbolicName(), "Error", exception));
         result = false;
       } finally {
         try {
@@ -98,8 +96,7 @@ public class DataExporter {
             stream.close();
           }
         } catch (IOException exception) {
-          MdeCommonActivator.getDefault().getLog()
-              .log(new Status(Status.ERROR, MdeCommonActivator.getDefault().getBundle().getSymbolicName(), "Error", exception));
+          MdeCommonActivator.getDefault().getLog().log(new Status(Status.ERROR, MdeCommonActivator.getDefault().getBundle().getSymbolicName(), "Error", exception));
         }
       }
     } else {

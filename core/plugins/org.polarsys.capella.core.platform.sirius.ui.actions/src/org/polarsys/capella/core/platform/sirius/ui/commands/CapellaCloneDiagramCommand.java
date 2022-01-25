@@ -135,8 +135,7 @@ public class CapellaCloneDiagramCommand extends AbstractCommand {
         }
       } catch (Exception exception) {
         CapellaActionsActivator activator = CapellaActionsActivator.getDefault();
-        activator.getLog()
-            .log(new Status(IStatus.ERROR, activator.getPluginId(), "Unable to notify listeners !", exception)); //$NON-NLS-1$
+        activator.getLog().log(new Status(IStatus.ERROR, activator.getPluginId(), "Unable to notify listeners !", exception)); //$NON-NLS-1$
       }
     }
   }

@@ -274,8 +274,7 @@ public class FastLinkerManager {
 			// An error occurred -> log it.
 			FastLinkerActivator
 					.getDefault()
-					.getLog()
-					.log(new Status(IStatus.ERROR,
+					.getLog().log(new Status(IStatus.ERROR,
 							FastLinkerActivator.PLUGIN_ID, exception
 									.getLocalizedMessage(), exception));
 			return null;
@@ -422,8 +421,7 @@ public class FastLinkerManager {
 			// An error occurred -> log it.
 			MarkerViewPlugin
 					.getDefault()
-					.getLog()
-					.log(new Status(IStatus.ERROR, MarkerViewPlugin.PLUGIN_ID,
+					.getLog().log(new Status(IStatus.ERROR, MarkerViewPlugin.PLUGIN_ID,
 							exception.getLocalizedMessage(), exception));
 		}
 	}

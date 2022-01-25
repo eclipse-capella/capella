@@ -74,8 +74,7 @@ public class DomainHelper extends EmfDomainHelper {
           // Nothing more
         }
       }
-      Activator.getDefault().getLog()
-          .log(new Status(IStatus.ERROR, TransposerEMFPlugin.PLUGIN_ID, "No Domain Class called : " + name, e)); //$NON-NLS-1$
+      Activator.getDefault().getLog().log(new Status(IStatus.ERROR, TransposerEMFPlugin.PLUGIN_ID, "No Domain Class called : " + name, e)); //$NON-NLS-1$
     }
 
     return null;
