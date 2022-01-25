@@ -28,6 +28,6 @@ public abstract class AbstractCommonActivator extends AbstractActivator {
    * @param exception a low-level exception, or <code>null</code> if not applicable
    */
   public void log(int severity, String message, Throwable exception) {
-    getLog().log(new Status(severity, getPluginId(), message, exception));
+    getLog().log(new Status(severity, getBundle().getSymbolicName(), message, exception));
   }
 }

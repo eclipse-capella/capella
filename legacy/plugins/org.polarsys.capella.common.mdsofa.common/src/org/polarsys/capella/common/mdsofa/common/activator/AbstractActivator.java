@@ -22,6 +22,7 @@ public abstract class AbstractActivator extends Plugin {
    * 
    * @return a String containing the plug-in ID.
    */
+  @Deprecated
   public String getPluginId() {
     return getBundle().getSymbolicName();
   }

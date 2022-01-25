@@ -61,7 +61,7 @@ public class ExportUtils {
 		List<String[]> data = new ArrayList<>();
 
 		IEclipsePreferences preferences = new InstanceScope()
-				.getNode(CapellaValidationActivator.getDefault().getPluginId());
+				.getNode(CapellaValidationActivator.getDefault().getBundle().getSymbolicName());
 
 		boolean onlyActiveRules = preferences
 				.getBoolean(

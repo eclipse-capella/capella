@@ -49,7 +49,7 @@ public class ExportValidationPreferencePage extends
 
 		IPreferenceStore preferences = new ScopedPreferenceStore(
 				new InstanceScope(), CapellaValidationActivator.getDefault()
-						.getPluginId());
+						.getBundle().getSymbolicName());
 
 		return preferences;
 	}

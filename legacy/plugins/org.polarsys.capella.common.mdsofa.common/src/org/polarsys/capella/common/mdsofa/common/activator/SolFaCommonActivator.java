@@ -70,7 +70,7 @@ public class SolFaCommonActivator extends AbstractActivator {
     // Lazy loading. Search for the implementation.
     if (null == _userHelper) {
       // Get extensions abiding to user helper extension point.
-      IConfigurationElement[] configurationElements = ExtensionPointHelper.getConfigurationElements(getPluginId(), EXTENSION_POINT_SHORT_ID_USER_HELPER);
+      IConfigurationElement[] configurationElements = ExtensionPointHelper.getConfigurationElements(getBundle().getSymbolicName(), EXTENSION_POINT_SHORT_ID_USER_HELPER);
       if ((null != configurationElements) && (configurationElements.length > 0)) {
         // There should be one implementation only !
         // So take the first one, as expected.

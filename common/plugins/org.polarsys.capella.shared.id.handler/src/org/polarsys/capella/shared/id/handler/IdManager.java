@@ -78,7 +78,7 @@ public class IdManager {
   private List<IIdHandler> getContributedIdHandlers() {
     if (null == __contributedIdHandlers) {
       __contributedIdHandlers = new ArrayList<IIdHandler>();
-      IConfigurationElement[] element = ExtensionPointHelper.getConfigurationElements(IdHandlerPlugin.getDefault().getPluginId(), "IdHandler"); //$NON-NLS-1$
+      IConfigurationElement[] element = ExtensionPointHelper.getConfigurationElements(IdHandlerPlugin.getDefault().getBundle().getSymbolicName(), "IdHandler"); //$NON-NLS-1$
       for (IConfigurationElement ce : element) {
         IIdHandler extension = (IIdHandler) ExtensionPointHelper.createInstance(ce, "handler"); //$NON-NLS-1$
         if (extension != null) {

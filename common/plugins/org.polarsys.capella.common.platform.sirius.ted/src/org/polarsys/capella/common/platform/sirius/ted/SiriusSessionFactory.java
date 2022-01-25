@@ -123,7 +123,7 @@ public class SiriusSessionFactory extends SessionFactoryImpl implements SessionF
       if (null == _derivedSemanticResourceProviders) {
         _derivedSemanticResourceProviders = new ArrayList<IDerivedSemanticResourceProvider>();
         List<IConfigurationElement> BQProvider = Arrays.asList(ExtensionPointHelper.getConfigurationElements(
-            PlatformSiriusTedActivator.getDefault().getPluginId(), DERIVED_SEMANTIC_RESOURCE_PROVIDER_EXTENSION_ID));
+            PlatformSiriusTedActivator.getDefault().getBundle().getSymbolicName(), DERIVED_SEMANTIC_RESOURCE_PROVIDER_EXTENSION_ID));
         for (IConfigurationElement configurationElement : BQProvider) {
           IDerivedSemanticResourceProvider contrib = (IDerivedSemanticResourceProvider) ExtensionPointHelper
               .createInstance(configurationElement, ExtensionPointHelper.ATT_CLASS);
@@ -146,7 +146,7 @@ public class SiriusSessionFactory extends SessionFactoryImpl implements SessionF
 
       if (loaded == Boolean.FALSE) {
         for (IConfigurationElement configurationElement : ExtensionPointHelper
-            .getConfigurationElements(PlatformSiriusTedActivator.getDefault().getPluginId(), "metadataProvider")) {
+            .getConfigurationElements(PlatformSiriusTedActivator.getDefault().getBundle().getSymbolicName(), "metadataProvider")) {
           IMetadataProvider contrib = (IMetadataProvider) ExtensionPointHelper.createInstance(configurationElement,
               ExtensionPointHelper.ATT_CLASS);
           if (contrib != null) {
