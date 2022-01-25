@@ -75,11 +75,6 @@ public class CapellaApplication extends AbstractApplication implements IExecutab
   private static final Integer EXIT_RELAUNCH = Integer.valueOf(24);
 
   /**
-   * The ID of the application plug-in
-   */
-  public static final String PLUGIN_ID = "org.eclipse.ui.ide.application"; //$NON-NLS-1$
-
-  /**
    * Creates a new IDE application.
    */
   public CapellaApplication() {

@@ -73,7 +73,7 @@ public class SharedInitializeCopyCommand extends InitializeCopyCommand {
 
   }
 
-  private static final String PLUGIN_ID = "org.polarsys.capella.common.model.DroppedReferencesOnCopy";
+  private static final String EXTENSION_ID = "org.polarsys.capella.common.model.DroppedReferencesOnCopy";
 
   private static Map<PendingQualification, Object> pendingReferences = new HashMap<PendingQualification, Object>();
   private static List<String> droppedReferences = null;
@@ -173,7 +173,7 @@ public class SharedInitializeCopyCommand extends InitializeCopyCommand {
 
 private void loadDroppedReferences() {
     IExtensionRegistry extensionRegistry = Platform.getExtensionRegistry();
-    IConfigurationElement[] elementsForPlugin = extensionRegistry.getConfigurationElementsFor(PLUGIN_ID);
+    IConfigurationElement[] elementsForPlugin = extensionRegistry.getConfigurationElementsFor(EXTENSION_ID);
 	droppedReferences = new ArrayList<String>(elementsForPlugin.length);
     for (IConfigurationElement configurationElement : elementsForPlugin) {
     	String refName = configurationElement.getAttribute(REFERENCE_NAME_ATTRIBUTE);

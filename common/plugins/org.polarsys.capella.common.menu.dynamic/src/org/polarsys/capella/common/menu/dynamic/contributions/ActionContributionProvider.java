@@ -32,7 +32,7 @@ public class ActionContributionProvider {
   /**
    * Plug-in id constant.
    */
-  public static final String CONTEXTUAL_MENU_PLUGIN_ID = "org.polarsys.capella.common.menu.dynamic"; //$NON-NLS-1$
+  public static final String PLUGIN_ID = "org.polarsys.capella.common.menu.dynamic"; //$NON-NLS-1$
   /**
    * Contribution menu item extension-point id.
    */
@@ -63,7 +63,7 @@ public class ActionContributionProvider {
     // Instantiate the map that holds all contributions.
     _menuContributions = new HashMap<EClass, List<IMDEMenuItemContribution>>(0);
     // Load contributions.
-    IConfigurationElement[] contributors = ExtensionPointHelper.getConfigurationElements(CONTEXTUAL_MENU_PLUGIN_ID, MENU_ITEM_CONTRIBUTION_EXTENSION_ID);
+    IConfigurationElement[] contributors = ExtensionPointHelper.getConfigurationElements(PLUGIN_ID, MENU_ITEM_CONTRIBUTION_EXTENSION_ID);
     for (IConfigurationElement contributorElement : contributors) {
       // Instantiate current contribution.
       IMDEMenuItemContribution contribution =
