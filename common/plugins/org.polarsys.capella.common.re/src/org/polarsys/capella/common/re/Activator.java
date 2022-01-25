@@ -18,6 +18,7 @@ import org.eclipse.core.runtime.Plugin;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.osgi.framework.BundleContext;
+import org.osgi.framework.FrameworkUtil;
 import org.osgi.service.prefs.BackingStoreException;
 
 /**
@@ -53,9 +54,9 @@ public class Activator extends Plugin {
   public void stop(BundleContext context) throws Exception {
     try {
       // persist parent locator option preference
-      InstanceScope.INSTANCE.getNode(PLUGIN_ID).flush();
+      InstanceScope.INSTANCE.getNode(FrameworkUtil.getBundle(Activator.class).getSymbolicName()).flush();
     } catch (BackingStoreException e) {
-      Platform.getLog(Activator.class).log(new Status(IStatus.ERROR, PLUGIN_ID, e.getLocalizedMessage(), e));
+      Platform.getLog(Activator.class).log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(Activator.class).getSymbolicName(), e.getLocalizedMessage(), e));
     } finally {
       plugin = null;
       super.stop(context);

@@ -34,6 +34,7 @@ import org.eclipse.ui.IWorkbenchPreferenceConstants;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.platform.sirius.customisation.uicallback.SiriusUiCallBack;
 
 /**
@@ -73,7 +74,7 @@ public class SiriusCustomizationPlugin extends AbstractUIPlugin {
 
       customizeSiriusDefaultPreferences();
     } catch (Exception e) {
-      Platform.getLog(SiriusCustomizationPlugin.class).log(new Status(IStatus.ERROR, PLUGIN_ID, IStatus.OK, e.getMessage(), e));
+      Platform.getLog(SiriusCustomizationPlugin.class).log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(SiriusCustomizationPlugin.class).getSymbolicName(), IStatus.OK, e.getMessage(), e));
     }
   }
 
@@ -172,7 +173,7 @@ public class SiriusCustomizationPlugin extends AbstractUIPlugin {
       try {
         ReflectionHelper.invokeMethod(preferencesNode, DefaultPreferences.class, "applyCommandLineDefaults", new Class[] {}, new Object[] {}, true); //$NON-NLS-1$
       } catch (SecurityException | NoSuchMethodException | IllegalArgumentException | IllegalAccessException | InvocationTargetException e) {
-        Platform.getLog(SiriusCustomizationPlugin.class).log(new Status(IStatus.ERROR, PLUGIN_ID, IStatus.ERROR, "Failed to apply plugin customization from command line arguments for plugin " + PLUGIN_ID, e)); //$NON-NLS-1$
+        Platform.getLog(SiriusCustomizationPlugin.class).log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(SiriusCustomizationPlugin.class).getSymbolicName(), IStatus.ERROR, "Failed to apply plugin customization from command line arguments for plugin " + FrameworkUtil.getBundle(SiriusCustomizationPlugin.class).getSymbolicName(), e)); //$NON-NLS-1$
       }
     }
   }
