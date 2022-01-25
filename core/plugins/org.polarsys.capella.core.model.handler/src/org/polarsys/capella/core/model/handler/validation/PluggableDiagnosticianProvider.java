@@ -44,7 +44,7 @@ public class PluggableDiagnosticianProvider extends AbstractDiagnosticianProvide
         AbstractDiagnosticianProvider provider = (AbstractDiagnosticianProvider) elems[0].createExecutableExtension("class"); //$NON-NLS-1$
         result = provider.getDiagnostician(adapterFactory_p, progressMonitor_p);
       } catch (CoreException e1) {
-        ModelHandlerPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, ModelHandlerPlugin.PLUGIN_ID, e1.getMessage(), e1));
+        Platform.getLog(ModelHandlerPlugin.class).log(new Status(IStatus.ERROR, ModelHandlerPlugin.PLUGIN_ID, e1.getMessage(), e1));
       }
     }
     if (null == result) {

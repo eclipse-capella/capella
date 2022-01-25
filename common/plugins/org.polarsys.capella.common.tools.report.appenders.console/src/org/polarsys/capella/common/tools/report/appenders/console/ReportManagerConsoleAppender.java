@@ -27,6 +27,7 @@ import org.apache.log4j.PatternLayout;
 import org.apache.log4j.spi.LoggingEvent;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.ui.console.MessageConsoleStream;
@@ -139,7 +140,7 @@ public class ReportManagerConsoleAppender extends AppenderSkeleton {
           }
         }
       } catch (IOException e) {
-        ConsoleAppenderActivator.getDefault().getLog().log(new Status(IStatus.ERROR, ConsoleAppenderActivator.PLUGIN_ID, e.getMessage(), e));
+        Platform.getLog(ConsoleAppenderActivator.class).log(new Status(IStatus.ERROR, ConsoleAppenderActivator.PLUGIN_ID, e.getMessage(), e));
       }
     }
   }

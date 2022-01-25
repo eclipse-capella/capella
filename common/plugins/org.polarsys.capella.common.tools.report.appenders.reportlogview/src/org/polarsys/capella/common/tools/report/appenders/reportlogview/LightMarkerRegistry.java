@@ -23,12 +23,11 @@ import java.util.Map;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.IContentProvider;
-import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.ui.views.markers.MarkerViewUtil;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.helpers.validation.IValidationConstants;
@@ -316,7 +315,7 @@ public class LightMarkerRegistry implements IMarkerSource {
       try {
         result = getAttribute(attributeName);
       } catch (CoreException e) {
-        MarkerViewPlugin.getDefault().getLog().log(new Status(e.getStatus().getSeverity(), MarkerViewPlugin.PLUGIN_ID, e.getMessage(), e));
+        Platform.getLog(MarkerViewPlugin.class).log(new Status(e.getStatus().getSeverity(), MarkerViewPlugin.PLUGIN_ID, e.getMessage(), e));
       }
       if (result instanceof Integer) {
         return ((Integer) result).intValue();
@@ -332,7 +331,7 @@ public class LightMarkerRegistry implements IMarkerSource {
       try {
         result = getAttribute(attributeName);
       } catch (CoreException e) {
-        MarkerViewPlugin.getDefault().getLog().log(new Status(e.getStatus().getSeverity(), MarkerViewPlugin.PLUGIN_ID, e.getMessage(), e));
+        Platform.getLog(MarkerViewPlugin.class).log(new Status(e.getStatus().getSeverity(), MarkerViewPlugin.PLUGIN_ID, e.getMessage(), e));
       }
       if (result instanceof String) {
         return (String) result;
@@ -348,7 +347,7 @@ public class LightMarkerRegistry implements IMarkerSource {
       try {
         result = getAttribute(attributeName);
       } catch (CoreException e) {
-        MarkerViewPlugin.getDefault().getLog().log(new Status(e.getStatus().getSeverity(), MarkerViewPlugin.PLUGIN_ID, e.getMessage(), e));
+        Platform.getLog(MarkerViewPlugin.class).log(new Status(e.getStatus().getSeverity(), MarkerViewPlugin.PLUGIN_ID, e.getMessage(), e));
       }
       if (result instanceof Boolean) {
         return ((Boolean) result).booleanValue();

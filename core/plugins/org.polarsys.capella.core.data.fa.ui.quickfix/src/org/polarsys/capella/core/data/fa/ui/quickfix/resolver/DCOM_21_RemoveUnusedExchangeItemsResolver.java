@@ -19,6 +19,7 @@ import java.util.Collections;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.transaction.RecordingCommand;
@@ -61,7 +62,7 @@ public class DCOM_21_RemoveUnusedExchangeItemsResolver extends AbstractCapellaMa
         marker.delete();
       } catch (CoreException e) {
         IStatus s = new Status(e.getStatus().getSeverity(), FaQuickFixActivator.getDefault().getPluginId(), e.getStatus().getMessage(), e);
-        FaQuickFixActivator.getDefault().getLog().log(s);
+        Platform.getLog(FaQuickFixActivator.class).log(s);
       }
     }
   }

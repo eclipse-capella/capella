@@ -18,6 +18,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
@@ -165,7 +166,7 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
         result = getChildren(new EObjectWrapper((EObject) parentElement));
       }
     } catch (Exception exception) {
-      BrowserActivator.getDefault().getLog().log(new Status(IStatus.ERROR, BrowserActivator.PLUGIN_ID,
+      Platform.getLog(BrowserActivator.class).log(new Status(IStatus.ERROR, BrowserActivator.PLUGIN_ID,
           "Error while getting children for " + parentElement, exception)); //$NON-NLS-1$
       result = new Object[0];
     }

@@ -14,6 +14,7 @@ package org.polarsys.capella.test.diagram.tools.ju.xab;
 
 import org.eclipse.core.runtime.ILogListener;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -81,7 +82,7 @@ public class DiagramPartIcon extends XABDiagramsProject {
         assertTrue("Icon on part without type shall not raise an error message", false);
       }
     };
-    DiagramPlugin.getDefault().getLog().addLogListener(listener);
+    Platform.getLog(DiagramPlugin.class).addLogListener(listener);
     
     try {
       updateApproach(ProjectApproach.SingletonComponents, diagram.getDiagramDescriptor().getTarget());
@@ -96,7 +97,7 @@ public class DiagramPartIcon extends XABDiagramsProject {
       assertTrue("Icon on part without type shall not raise an Exception", false);
     
     } finally {
-      DiagramPlugin.getDefault().getLog().removeLogListener(listener);
+      Platform.getLog(DiagramPlugin.class).removeLogListener(listener);
     }
   }
 

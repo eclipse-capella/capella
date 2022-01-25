@@ -20,11 +20,11 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.viewers.AbstractTreeViewer;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.StructuredSelection;
-
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerView;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewPlugin;
 
@@ -68,7 +68,7 @@ public class DeleteHandler extends AbstractViewHandler {
         try {
           m.delete();
         } catch (CoreException exception) {
-          MarkerViewPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, MarkerViewPlugin.PLUGIN_ID, exception.getMessage(), exception));
+          Platform.getLog(MarkerViewPlugin.class).log(new Status(IStatus.ERROR, MarkerViewPlugin.PLUGIN_ID, exception.getMessage(), exception));
         }
       }
     } 

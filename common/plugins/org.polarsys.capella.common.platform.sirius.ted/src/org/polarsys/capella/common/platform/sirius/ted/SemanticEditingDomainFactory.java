@@ -24,6 +24,7 @@ import org.eclipse.core.commands.operations.UndoContext;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.OperationCanceledException;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.command.AbstractCommand.NonDirtying;
 import org.eclipse.emf.common.command.Command;
@@ -281,7 +282,7 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
                 // Hopefully, the rollback is complete before this exception is thrown.
                 // Log this exception as a warning.
                 String message = "Error while executing a command:"; //$NON-NLS-1$
-                PlatformSiriusTedActivator.getDefault().getLog().log(new Status(IStatus.WARNING, PlatformSiriusTedActivator.getDefault().getBundle().getSymbolicName(), message, exception));
+                Platform.getLog(PlatformSiriusTedActivator.class).log(new Status(IStatus.WARNING, PlatformSiriusTedActivator.getDefault().getBundle().getSymbolicName(), message, exception));
                 throw new RollbackException(new Status(IStatus.CANCEL, PlatformSiriusTedActivator.getDefault().getBundle().getSymbolicName(), message, exception));
             }
         }

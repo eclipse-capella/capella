@@ -28,6 +28,7 @@ import java.util.Set;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.OperationCanceledException;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
@@ -218,7 +219,7 @@ public class CapellaDiagramPasteCommand extends AbstractResultCommand {
   }
 
   protected void log(IStatus validityStatus) {
-    Activator.getDefault().getLog().log(validityStatus);
+    Platform.getLog(Activator.class).log(validityStatus);
   }
 
   /**

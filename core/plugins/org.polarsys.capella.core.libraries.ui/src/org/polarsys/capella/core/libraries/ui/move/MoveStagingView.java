@@ -28,6 +28,7 @@ import java.util.function.Predicate;
 
 import org.apache.log4j.Priority;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.debug.internal.ui.DebugPluginImages;
 import org.eclipse.debug.ui.IDebugUIConstants;
@@ -1472,7 +1473,7 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
       try {
         window.getActivePage().showView(CapellaCommonNavigator.ID, null, IWorkbenchPage.VIEW_ACTIVATE);
       } catch (PartInitException e) {
-        Activator.getDefault().getLog().log(new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getLocalizedMessage(), e));
+        Platform.getLog(Activator.class).log(new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getLocalizedMessage(), e));
       }
       super.selectElementInCapellaExplorer(selection);
     }

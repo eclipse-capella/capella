@@ -24,6 +24,7 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.common.tools.api.resource.ImageFileFormat;
@@ -94,7 +95,7 @@ public class ResourceHelper {
       } catch (CoreException e) {
         IStatus status = new Status(e.getStatus().getSeverity(), SiriusUIPlugin.getDefault().getPluginId(),
             "Erros while collecting files!", e);
-        SiriusUIPlugin.getDefault().getLog().log(status);
+        Platform.getLog(SiriusUIPlugin.class).log(status);
       }
     }
     return result;

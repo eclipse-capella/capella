@@ -20,6 +20,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.AbstractModelConstraint;
@@ -98,7 +99,7 @@ public class DWF_I_23_GenerateInterfacesValidator extends AbstractModelConstrain
       } catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
         if (!loggedWorkaroundError){
           loggedWorkaroundError = true;
-          InterfaceGenerationActivator.getDefault().getLog().log(new Status(IStatus.ERROR, InterfaceGenerationActivator.PLUGIN_ID, 
+          Platform.getLog(InterfaceGenerationActivator.class).log(new Status(IStatus.ERROR, InterfaceGenerationActivator.PLUGIN_ID, 
             "Cannot use cache for rule DWF_I_23. Some results for this rule may appear multiple times.", e)); //$NON-NLS-1$
         }
       } finally {

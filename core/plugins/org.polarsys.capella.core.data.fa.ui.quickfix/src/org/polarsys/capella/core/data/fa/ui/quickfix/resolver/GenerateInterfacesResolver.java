@@ -19,6 +19,7 @@ import java.util.List;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
@@ -85,7 +86,7 @@ public abstract class GenerateInterfacesResolver extends AbstractCapellaMarkerRe
       try {
         marker.delete();
       } catch (CoreException e1) {
-        FaQuickFixActivator.getDefault().getLog().log(new Status(IStatus.ERROR, FaQuickFixActivator.getDefault().getBundle().getSymbolicName(),
+        Platform.getLog(FaQuickFixActivator.class).log(new Status(IStatus.ERROR, FaQuickFixActivator.getDefault().getBundle().getSymbolicName(),
                 e1.getStatus().getMessage(), e1.getStatus().getException()));
       }
     }

@@ -21,6 +21,7 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EPackage;
@@ -74,7 +75,7 @@ public class DomainHelper extends EmfDomainHelper {
           // Nothing more
         }
       }
-      Activator.getDefault().getLog().log(new Status(IStatus.ERROR, TransposerEMFPlugin.PLUGIN_ID, "No Domain Class called : " + name, e)); //$NON-NLS-1$
+      Platform.getLog(Activator.class).log(new Status(IStatus.ERROR, TransposerEMFPlugin.PLUGIN_ID, "No Domain Class called : " + name, e)); //$NON-NLS-1$
     }
 
     return null;

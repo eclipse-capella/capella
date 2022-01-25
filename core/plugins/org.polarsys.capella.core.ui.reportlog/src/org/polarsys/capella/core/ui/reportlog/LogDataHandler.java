@@ -16,6 +16,7 @@ import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.dialogs.IInputValidator;
 import org.eclipse.jface.dialogs.InputDialog;
@@ -43,7 +44,7 @@ public class LogDataHandler extends AbstractHandler {
     if (d.getReturnCode() == InputDialog.OK) {
       String value = d.getValue();
       IStatus status = new Status(IStatus.INFO, ReportLogActivator.getDefault().getPluginId(), value);
-      ReportLogActivator.getDefault().getLog().log(status);
+      Platform.getLog(ReportLogActivator.class).log(status);
     }
     return null;
   }

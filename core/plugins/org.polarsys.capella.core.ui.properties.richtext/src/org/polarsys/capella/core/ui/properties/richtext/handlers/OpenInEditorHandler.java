@@ -13,6 +13,7 @@
 package org.polarsys.capella.core.ui.properties.richtext.handlers;
 
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -40,7 +41,7 @@ public class OpenInEditorHandler implements MDERichTextToolbarItemHandler {
       activePage.openEditor(input, CapellaMDERichTextEditor.ID);
     } catch (PartInitException e) {
       Status status = new Status(IStatus.ERROR, CapellaUIPropertiesRichtextPlugin.PLUGIN_ID, e.getMessage(), e);
-      CapellaUIPropertiesRichtextPlugin.getDefault().getLog().log(status);
+      Platform.getLog(CapellaUIPropertiesRichtextPlugin.class).log(status);
     }
 
   }

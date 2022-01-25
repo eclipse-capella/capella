@@ -23,6 +23,7 @@ import java.util.Map;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.ILog;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -90,7 +91,7 @@ public class BusinessQueriesProvider {
               businessQueriesMap.put(key, query);
             } else {
               // keep the existing key and log error.
-              ILog log = BusinessQueriesPlugin.getDefault().getLog();
+              ILog log = Platform.getLog(BusinessQueriesPlugin.class);
               log.log(new Status(IStatus.WARNING, BusinessQueriesPlugin.PLUGIN_ID,
                   NLS.bind(Messages.BusinessQueriesProvider_duplicateQueryContributionKey,
                       new Object[] { key.getKey(), key.getValue(), query.getClass().getName(), dup.getClass().getName() })));

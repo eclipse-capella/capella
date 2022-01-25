@@ -35,6 +35,7 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
@@ -96,7 +97,7 @@ public class ImagePathInRichTextAttributeContribution extends AbstractMigrationC
           }
         }
       } else {
-        Activator.getDefault().getLog().error(MessageFormat.format(
+        Platform.getLog(Activator.class).error(MessageFormat.format(
             Messages.MigrationAction_Image_ImpossibleToFindProject, resourceToMigrate.getURI().toPlatformString(true)));
       }
     }
@@ -197,13 +198,13 @@ public class ImagePathInRichTextAttributeContribution extends AbstractMigrationC
     if (!createdFiles.isEmpty()) {
       String createdFilesPath = createdFiles.keySet().stream().map(File::getAbsolutePath)
           .collect(Collectors.joining(", "));
-      Activator.getDefault().getLog().info(MessageFormat.format(Messages.MigrationAction_Image_AsolutePathImageMigrated,
+      Platform.getLog(Activator.class).info(MessageFormat.format(Messages.MigrationAction_Image_AsolutePathImageMigrated,
           new EditingDomainServices().getLabelProviderText(notifier), attribute.getName(), createdFilesPath));
     }
     if (!nonCreatedFiles.isEmpty()) {
       String nonCreatedFilesPath = nonCreatedFiles.stream().map(File::getAbsolutePath)
           .collect(Collectors.joining(", "));
-      Activator.getDefault().getLog().warn(MessageFormat.format(Messages.MigrationAction_Image_AsolutePathImageNotMigrated,
+      Platform.getLog(Activator.class).warn(MessageFormat.format(Messages.MigrationAction_Image_AsolutePathImageNotMigrated,
               new EditingDomainServices().getLabelProviderText(notifier), attribute.getName(), nonCreatedFilesPath));
     }
     return createdFiles;
@@ -241,7 +242,7 @@ public class ImagePathInRichTextAttributeContribution extends AbstractMigrationC
       } catch (CoreException e) {
         String nonCreatedFilesPath = filesToCopy.values().stream().map(iFile -> iFile.getFullPath().toString())
             .collect(Collectors.joining(", "));
-        Activator.getDefault().getLog().error(MessageFormat.format(Messages.MigrationAction_Image_ImpossibleToCreateImageFolder,
+        Platform.getLog(Activator.class).error(MessageFormat.format(Messages.MigrationAction_Image_ImpossibleToCreateImageFolder,
                 imageFolder.getFullPath(), new EditingDomainServices().getLabelProviderText(contextObject),
                 attribute.getName(), nonCreatedFilesPath), e);
       }
@@ -265,7 +266,7 @@ public class ImagePathInRichTextAttributeContribution extends AbstractMigrationC
 
         createdFiles.put(fileToCopy, targetFileToCreate);
       } catch (CoreException | IOException e) {
-        Activator.getDefault().getLog().error(
+        Platform.getLog(Activator.class).error(
             MessageFormat.format(Messages.MigrationAction_Image_ImpossibleToCreateImage, fileToCopy.getAbsolutePath()),
             e);
         nonCreatedFiles.add(fileToCopy);
@@ -275,7 +276,7 @@ public class ImagePathInRichTextAttributeContribution extends AbstractMigrationC
     if (nonCreatedFiles.size() > 0) {
       String nonCreatedFilesPath = nonCreatedFiles.stream().map(File::getAbsolutePath)
           .collect(Collectors.joining(", "));
-      Activator.getDefault().getLog().error(MessageFormat.format(Messages.MigrationAction_Image_ImpossibleToCreateImages,
+      Platform.getLog(Activator.class).error(MessageFormat.format(Messages.MigrationAction_Image_ImpossibleToCreateImages,
               new EditingDomainServices().getLabelProviderText(contextObject), attribute.getName(),
               nonCreatedFilesPath));
     }

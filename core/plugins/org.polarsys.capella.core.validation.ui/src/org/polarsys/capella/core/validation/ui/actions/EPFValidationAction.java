@@ -29,6 +29,7 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
@@ -331,7 +332,7 @@ public class EPFValidationAction extends CapellaValidateAction {
             try {
               marker.setAttribute(IValidationConstants.TAG_PREFERENCE_EPF_FILE, epf);
             } catch (CoreException e) {
-              CapellaValidationUIActivator.getDefault().getLog().log(
+              Platform.getLog(CapellaValidationUIActivator.class).log(
                   new Status(e.getStatus().getSeverity(), CapellaValidationUIActivator.getDefault().getBundle().getSymbolicName(), e.getMessage(), e));
             }
           }

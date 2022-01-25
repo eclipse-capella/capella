@@ -104,7 +104,7 @@ public class ExtendedCadenceLauncher {
         ActivityParameters activityParameters = workflowActivityParameters != null ? workflowActivityParameters.getActivityParameters(activityID) : null;
         IStatus status = cadence(workflow_id, workflowElement_id, activityID, activityParameters, monitor);
         if (status == null) {
-          //  Activator.getDefault().getLog().log(new Status(IStatus.WARNING, Activator.PLUGIN_ID, "Activity : " + activityID + " has returned a null status."));
+          //  Platform.getLog(Activator.class).log(new Status(IStatus.WARNING, Activator.PLUGIN_ID, "Activity : " + activityID + " has returned a null status."));
         } else if (status.matches(IStatus.CANCEL) || status.matches(IStatus.ERROR)) {
           result.add(status);
           break;

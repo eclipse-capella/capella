@@ -21,6 +21,7 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.validation.service.IConstraintDescriptor;
 import org.eclipse.jface.viewers.ISelection;
@@ -30,7 +31,6 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
-
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.IMarkerSource;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerView;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewHelper;
@@ -64,7 +64,7 @@ public class DeleteConstraintMarkersHandler extends AbstractViewHandler {
         try {
           m.delete();
         } catch (CoreException e) {
-          MarkerViewPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, MarkerViewPlugin.PLUGIN_ID, e.getMessage(), e));
+          Platform.getLog(MarkerViewPlugin.class).log(new Status(IStatus.ERROR, MarkerViewPlugin.PLUGIN_ID, e.getMessage(), e));
         }
       }
     }

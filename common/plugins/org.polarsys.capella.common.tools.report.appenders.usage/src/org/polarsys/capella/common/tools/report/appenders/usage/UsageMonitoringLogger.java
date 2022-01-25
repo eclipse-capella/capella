@@ -61,7 +61,7 @@ public class UsageMonitoringLogger {
         String varValue = getVariableValue(variableName);
         if (varValue == null) {
           // Log warning about undefined environment variable or system property
-          UsageAppenderPlugin.getDefault().getLog().log(new Status(IStatus.WARNING, UsageAppenderPlugin.PLUGIN_ID, "Undefined environment variable: "
+          Platform.getLog(UsageAppenderPlugin.class).log(new Status(IStatus.WARNING, UsageAppenderPlugin.PLUGIN_ID, "Undefined environment variable: "
                   + variableName + " found in -DUsagePath configuration. The log file will be put in the workspace."));
           unresolvableVar = true;
           break;

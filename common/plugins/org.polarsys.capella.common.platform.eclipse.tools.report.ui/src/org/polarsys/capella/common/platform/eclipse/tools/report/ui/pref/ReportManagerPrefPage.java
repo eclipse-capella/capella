@@ -20,6 +20,7 @@ import java.util.Map;
 import java.util.Properties;
 
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.preference.PreferencePage;
 import org.eclipse.swt.SWT;
@@ -33,7 +34,6 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
-
 import org.polarsys.capella.common.tools.report.ReportManagerActivator;
 import org.polarsys.capella.common.tools.report.config.ReportManagerConstants;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
@@ -102,7 +102,7 @@ public class ReportManagerPrefPage extends PreferencePage implements IWorkbenchP
         String componentName = (String) f.get(null);
         registry.subscribe(componentName);
       } catch (Exception exception) {
-        ReportManagerActivator.getDefault().getLog().log(new Status(IStatus.ERROR,
+        Platform.getLog(ReportManagerActivator.class).log(new Status(IStatus.ERROR,
             ReportManagerActivator.getDefault().getBundle().getSymbolicName(), exception.getMessage(), exception));
       }
     }

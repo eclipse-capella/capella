@@ -88,7 +88,7 @@ public interface DelegateWorkbenchAdvisor {
 		}
 
 		private void logError(CoreException e) {
-			ModelHandlerPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, "org.polarsys.capella.core.model.handler", e.getMessage(), e));
+		  Platform.getLog(ModelHandlerPlugin.class).log(new Status(IStatus.ERROR, "org.polarsys.capella.core.model.handler", e.getMessage(), e));
 		}
 	}
 
