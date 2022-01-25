@@ -147,13 +147,13 @@ public class ViewpointMigrationContribution extends AbstractMigrationContributio
     if (Version.emptyVersion.equals(fileVersion)) {
       String formattedMessage = NLS.bind(Messages.MigrationAction_ErrorDialog_CorruptedMessage,
           new String[] { context.getResourceName() });
-      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, formattedMessage);
+      return new Status(IStatus.ERROR, Activator.getDefault().getBundle().getSymbolicName(), formattedMessage);
     }
 
     if (!isMigrationPossible(fileVersion, currentVersion)) {
       String formattedMessage = NLS.bind(Messages.MigrationAction_ErrorDialog_TooOldMessage,
           new String[] { context.getResourceName(), currentVersion.toString() });
-      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, formattedMessage);
+      return new Status(IStatus.ERROR, Activator.getDefault().getBundle().getSymbolicName(), formattedMessage);
     }
 
     return Status.OK_STATUS;

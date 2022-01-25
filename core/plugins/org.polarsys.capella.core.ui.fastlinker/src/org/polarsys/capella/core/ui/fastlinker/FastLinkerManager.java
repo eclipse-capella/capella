@@ -274,7 +274,7 @@ public class FastLinkerManager {
 		} catch (PartInitException exception) {
 			// An error occurred -> log it.
 		  Platform.getLog(FastLinkerActivator.class).log(new Status(IStatus.ERROR,
-							FastLinkerActivator.PLUGIN_ID, exception
+							FastLinkerActivator.getDefault().getBundle().getSymbolicName(), exception
 									.getLocalizedMessage(), exception));
 			return null;
 		}
@@ -418,7 +418,7 @@ public class FastLinkerManager {
 							IWorkbenchPage.VIEW_VISIBLE);
 		} catch (PartInitException exception) {
 			// An error occurred -> log it.
-		  Platform.getLog(MarkerViewPlugin.class).log(new Status(IStatus.ERROR, MarkerViewPlugin.PLUGIN_ID, exception.getLocalizedMessage(), exception));
+		  Platform.getLog(MarkerViewPlugin.class).log(new Status(IStatus.ERROR, MarkerViewPlugin.getDefault().getBundle().getSymbolicName(), exception.getLocalizedMessage(), exception));
 		}
 	}
 	

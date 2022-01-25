@@ -35,7 +35,7 @@ public class ConstraintLocationRule_Resolver extends AbstractCapellaMarkerResolu
 
   public ConstraintLocationRule_Resolver (String label) {
     this.setLabel(label);
-    super.setContributorId(CapellaUIResourcesPlugin.PLUGIN_ID);
+    super.setContributorId(CapellaUIResourcesPlugin.getDefault().getBundle().getSymbolicName());
     super.setImgKey(PROCESS_ICON);
   }
   

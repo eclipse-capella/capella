@@ -42,7 +42,7 @@ public class ExternalInclusion {
 
   public static Resource getExternalResource(EObject element) {
     Resource resource = ExternalResourceHelper.getExternalResource(TransactionUtil.getEditingDomain(element),
-        RecRplTestPlugin.PLUGIN_ID);
+        RecRplTestPlugin.getDefault().getBundle().getSymbolicName());
 
     getOrCreateActor(ExternalInclusion.ACTOR_1, resource);
     getOrCreateActor(ExternalInclusion.ACTOR_2, resource);

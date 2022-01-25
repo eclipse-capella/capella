@@ -246,7 +246,7 @@ public class BasicCapellaDeleteCommand extends AbstractCommand {
       } catch (Exception re) {
         // For other kind of Exception, we only log them.
         LogExt.log(IReportManagerDefaultComponents.MODEL,
-            new Status(IStatus.WARNING, ModelHandlerPlugin.PLUGIN_ID, re.getMessage(), re));
+            new Status(IStatus.WARNING, ModelHandlerPlugin.getDefault().getBundle().getSymbolicName(), re.getMessage(), re));
       }
     }
   }

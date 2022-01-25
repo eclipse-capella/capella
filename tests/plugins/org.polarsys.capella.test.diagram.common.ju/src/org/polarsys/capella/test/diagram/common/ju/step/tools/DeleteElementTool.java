@@ -74,8 +74,8 @@ public class DeleteElementTool extends AbstractToolStep<EObject> {
 
   private void disableConfirmation() {
     // ScopedCapellaPreferencesStore.setValue(boolean) doesn't work if setDefault has same value
-    ScopedCapellaPreferencesStore.getInstance(CapellaModelPreferencesPlugin.PLUGIN_ID).setDefault(IDeletePreferences.PREFERENCE_CONFIRM_DELETE, true);
-    ScopedCapellaPreferencesStore.getInstance(CapellaModelPreferencesPlugin.PLUGIN_ID).setValue(IDeletePreferences.PREFERENCE_CONFIRM_DELETE, false);
+    ScopedCapellaPreferencesStore.getInstance(CapellaModelPreferencesPlugin.getDefault().getBundle().getSymbolicName()).setDefault(IDeletePreferences.PREFERENCE_CONFIRM_DELETE, true);
+    ScopedCapellaPreferencesStore.getInstance(CapellaModelPreferencesPlugin.getDefault().getBundle().getSymbolicName()).setValue(IDeletePreferences.PREFERENCE_CONFIRM_DELETE, false);
   }
 
   public void deleteAll() {

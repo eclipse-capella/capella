@@ -66,7 +66,7 @@ public final class MiscUtil {
       if (e.getMessage() != null) {
         message = e.getMessage();
       }
-      StatusManager.getManager().handle(new Status(IStatus.WARNING, Activator.PLUGIN_ID, message, e));
+      StatusManager.getManager().handle(new Status(IStatus.WARNING, Activator.getDefault().getBundle().getSymbolicName(), message, e));
       result = false;
     }
     return result;

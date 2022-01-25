@@ -186,12 +186,12 @@ public class ReplicaRenderer extends EditListRenderer implements PropertyChangeL
         }
 
         if (!scopeElements.contains(element)) {
-          return new Status(IStatus.INFO, Activator.PLUGIN_ID, "");
+          return new Status(IStatus.INFO, Activator.getDefault().getBundle().getSymbolicName(), "");
         }
 
         IContext ctx = (IContext) context.getPropertyContext().getSource();
         if (AttributesHandlerHelper.getInstance(ctx).isSuffixable(element, ctx)) {
-          return new Status(IStatus.WARNING, Activator.PLUGIN_ID, "+SUFFIX");
+          return new Status(IStatus.WARNING, Activator.getDefault().getBundle().getSymbolicName(), "+SUFFIX");
         }
 
         return Status.OK_STATUS;
@@ -223,7 +223,7 @@ public class ReplicaRenderer extends EditListRenderer implements PropertyChangeL
     if (values.isEmpty()) {
       return Status.OK_STATUS;
     }
-    return new Status(IStatus.WARNING, Activator.PLUGIN_ID, "Missing dependencies");
+    return new Status(IStatus.WARNING, Activator.getDefault().getBundle().getSymbolicName(), "Missing dependencies");
   }
 
   @Override

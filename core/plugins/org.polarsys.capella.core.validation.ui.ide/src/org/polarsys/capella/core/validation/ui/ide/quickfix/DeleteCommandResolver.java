@@ -32,7 +32,7 @@ public class DeleteCommandResolver extends AbstractDeleteCommandResolver {
   public DeleteCommandResolver(String resolverLabel, Object elementToDelete) {
     label = resolverLabel;
     this.elementToDelete = elementToDelete;
-    setContributorId(org.polarsys.capella.core.ui.toolkit.Activator.PLUGIN_ID);
+    setContributorId(org.polarsys.capella.core.ui.toolkit.Activator.getDefault().getBundle().getSymbolicName());
     setImgKey(DELETE_ICON_PATH);
   }
 

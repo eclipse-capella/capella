@@ -162,7 +162,7 @@ public class PropertyWizardPage extends WizardPage implements PropertyChangeList
     status = null;
     
     if (context != null) {
-      MultiStatus multiStatus = new CompoundMultiStatus(Activator.PLUGIN_ID);
+      MultiStatus multiStatus = new CompoundMultiStatus(Activator.getDefault().getBundle().getSymbolicName());
       IProperties properties = context.getProperties();
       if (properties != null) {
         for (IProperty item : properties.getAllItems()) {

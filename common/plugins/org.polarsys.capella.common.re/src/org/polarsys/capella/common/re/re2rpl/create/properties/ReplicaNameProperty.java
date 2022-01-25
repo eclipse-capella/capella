@@ -90,7 +90,7 @@ public class ReplicaNameProperty extends AbstractProperty implements ICompoundPr
       isValid = false;
     }
     if (!isValid) {
-      return new Status(IStatus.WARNING, IReConstants.PLUGIN_ID, "Name should not be empty");
+      return new Status(IStatus.WARNING, IReConstants.getDefault().getBundle().getSymbolicName(), "Name should not be empty");
     }
     return Status.OK_STATUS;
   }

@@ -236,20 +236,20 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
     final IContext context = getContext();
 
     if (!(diagram instanceof DSemanticDecorator)) {
-      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Invalid source diagram");
+      return new Status(IStatus.ERROR, Activator.getDefault().getBundle().getSymbolicName(), "Invalid source diagram");
     }
     context.put(SOURCE_DIAGRAM, diagram);
 
     // Retrieve semantic target of diagram
     final EObject sourceSemantic = ((DSemanticDecorator) diagram).getTarget();
     if ((sourceSemantic == null) || sourceSemantic.eIsProxy()) {
-      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Diagram with invalid semantic target");
+      return new Status(IStatus.ERROR, Activator.getDefault().getBundle().getSymbolicName(), "Diagram with invalid semantic target");
     }
 
     // Retrieve the current session
     final Session session = DiagramHelper.getService().getSession(diagram);
     if (session == null) {
-      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Cannot retrieve session from the given diagram");
+      return new Status(IStatus.ERROR, Activator.getDefault().getBundle().getSymbolicName(), "Cannot retrieve session from the given diagram");
     }
 
     context.put(ITransitionConstants.TRANSITION_SOURCE_EDITING_DOMAIN, session.getTransactionalEditingDomain());
@@ -258,7 +258,7 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
     // Retrieve the current description
     final RepresentationDescription description = DiagramHelper.getService().getDescription(diagram);
     if ((description == null) || description.eIsProxy()) {
-      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Invalid source diagram (maybe a missing viewpoint)");
+      return new Status(IStatus.ERROR, Activator.getDefault().getBundle().getSymbolicName(), "Invalid source diagram (maybe a missing viewpoint)");
     }
     context.put(SOURCE_DESCRIPTION, description);
 
@@ -353,9 +353,9 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
 
     DRepresentation targetDiagram = (DRepresentation) getContext().get(TARGET_DIAGRAM);
     if (targetDiagram == null) {
-      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Invalid target diagram");
+      return new Status(IStatus.ERROR, Activator.getDefault().getBundle().getSymbolicName(), "Invalid target diagram");
     }
-    return new Status(IStatus.OK, Activator.PLUGIN_ID, NLS.bind("Diagram initialized - {0}", diagramName));
+    return new Status(IStatus.OK, Activator.getDefault().getBundle().getSymbolicName(), NLS.bind("Diagram initialized - {0}", diagramName));
   }
 
   /**
@@ -391,7 +391,7 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
           description);
     }
     if ((allocatingDescription == null) || allocatingDescription.eIsProxy()) {
-      return (new Status(IStatus.ERROR, Activator.PLUGIN_ID, NLS.bind("Diagram ''{0}'' is not yet supported by diagram initialization", EObjectExt.getText(diagram))));
+      return (new Status(IStatus.ERROR, Activator.getDefault().getBundle().getSymbolicName(), NLS.bind("Diagram ''{0}'' is not yet supported by diagram initialization", EObjectExt.getText(diagram))));
     }
     context.put(TARGET_DESCRIPTION, allocatingDescription);
 
@@ -400,7 +400,7 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
       targetSemantic = getTargetSemantic(sourceSemantic, description, allocatingDescription);
     }
     if (targetSemantic == null) {
-      return (new Status(IStatus.ERROR, Activator.PLUGIN_ID, "No semantic element has been found to put the created diagram"));
+      return (new Status(IStatus.ERROR, Activator.getDefault().getBundle().getSymbolicName(), "No semantic element has been found to put the created diagram"));
     }
 
     // Create a target diagram
@@ -412,7 +412,7 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
     }
 
     if (targetDiagram == null) {
-      return (new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Cannot create the target diagram"));
+      return (new Status(IStatus.ERROR, Activator.getDefault().getBundle().getSymbolicName(), "Cannot create the target diagram"));
     }
     return Status.OK_STATUS;
   }
@@ -455,7 +455,7 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
     // Retrieve the current session
     final Session session = DiagramHelper.getService().getSession(diagram);
     if (session == null) {
-      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Cannot retrieve session from the given diagram");
+      return new Status(IStatus.ERROR, Activator.getDefault().getBundle().getSymbolicName(), "Cannot retrieve session from the given diagram");
     }
 
     IStatus status = runCommand(session, NLS.bind("{0} - {1} (2/2)", getName(), EObjectExt.getText(diagram)),

@@ -25,7 +25,7 @@ public class PreferencesInitializer extends AbstractPreferencesInitializer {
    * @param pluginID_p
    */
   public PreferencesInitializer() {
-    super(CapellaProjectActivator.PLUGIN_ID);
+    super(CapellaProjectActivator.getDefault().getBundle().getSymbolicName());
   }
 
   /**

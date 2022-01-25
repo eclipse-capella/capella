@@ -77,12 +77,12 @@ public class PropertyStore extends PreferenceStore
     Activator.getDefault().setPropertyStore((IResource) _resource, this);
 
     scope = new ProjectScope((IProject) resource);
-    scope.getNode(Activator.PLUGIN_ID).addPreferenceChangeListener(this);
+    scope.getNode(Activator.getDefault().getBundle().getSymbolicName()).addPreferenceChangeListener(this);
     initilizeGuestListeners();
   }
 
   public void dispose() {
-    scope.getNode(Activator.PLUGIN_ID).removePreferenceChangeListener(this);
+    scope.getNode(Activator.getDefault().getBundle().getSymbolicName()).removePreferenceChangeListener(this);
   }
 
   /**
@@ -124,9 +124,9 @@ public class PropertyStore extends PreferenceStore
     try {
       // to bypass other capella modeller preference page
       if ((resource instanceof IProject) && !isCanceled) {
-        resource.setPersistentProperty(new QualifiedName(Activator.PLUGIN_ID, USEPROJECTSETTINGS), TRUE); // idk if its useful
+        resource.setPersistentProperty(new QualifiedName(Activator.getDefault().getBundle().getSymbolicName(), USEPROJECTSETTINGS), TRUE); // idk if its useful
         writeProperties();
-        scope.getNode(Activator.PLUGIN_ID).flush();
+        scope.getNode(Activator.getDefault().getBundle().getSymbolicName()).flush();
       }
 
     } catch (Exception exception) {
@@ -139,7 +139,7 @@ public class PropertyStore extends PreferenceStore
    */
   private void writeProperties() throws IOException {
     for (String name : preferenceNames()) {
-      scope.getNode(Activator.PLUGIN_ID).put(name, getString(name));
+      scope.getNode(Activator.getDefault().getBundle().getSymbolicName()).put(name, getString(name));
       setProperty(name, getString(name));
     }
   }
@@ -155,8 +155,8 @@ public class PropertyStore extends PreferenceStore
    */
   private void setProperty(String name, String value) throws IOException {
     try {
-      scope.getNode(Activator.PLUGIN_ID).put(name, value);
-      resource.setPersistentProperty(new QualifiedName(Activator.PLUGIN_ID, name), value);
+      scope.getNode(Activator.getDefault().getBundle().getSymbolicName()).put(name, value);
+      resource.setPersistentProperty(new QualifiedName(Activator.getDefault().getBundle().getSymbolicName(), name), value);
     } catch (CoreException e) {
       throw new IOException("PropertyStore.Cannot_write_resource_property" + name, e); //$NON-NLS-1$
     }
@@ -326,7 +326,7 @@ public class PropertyStore extends PreferenceStore
    * @throws CoreException
    */
   private String getProperty(String name) throws CoreException {
-    return resource.getPersistentProperty(new QualifiedName(Activator.PLUGIN_ID, name));
+    return resource.getPersistentProperty(new QualifiedName(Activator.getDefault().getBundle().getSymbolicName(), name));
   }
 
   /*** Misc ***/

@@ -38,7 +38,7 @@ public class CommandsPreferencesInitializer extends AbstractPreferenceInitialize
 
     Collection<IItemDescriptor> constraints = PreferencesItemsRegistry.getInstance().getAllDescriptors();
 
-    IEclipsePreferences eclipsePreferenceNode = new DefaultScope().getNode(Activator.PLUGIN_ID);
+    IEclipsePreferences eclipsePreferenceNode = new DefaultScope().getNode(Activator.getDefault().getBundle().getSymbolicName());
 
     for (IItemDescriptor capellaPreferenceNode : constraints) {
       eclipsePreferenceNode.put(capellaPreferenceNode.getId(), String.valueOf(capellaPreferenceNode.isEnabledByDefault()));

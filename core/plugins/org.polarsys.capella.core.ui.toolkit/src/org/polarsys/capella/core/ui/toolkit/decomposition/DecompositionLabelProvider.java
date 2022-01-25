@@ -40,10 +40,10 @@ public class DecompositionLabelProvider extends MDEAdapterFactoryLabelProvider i
   private Font boldFont = new Font(Display.getCurrent(), "Verdana", 8, SWT.BOLD); //$NON-NLS-1$;
   private Font normalFont = new Font(Display.getCurrent(), "Verdana", 8, SWT.NONE); //$NON-NLS-1$;
 
-  ImageDescriptor implImageDescriptorFromPlugin = AbstractUIPlugin.imageDescriptorFromPlugin(Activator.PLUGIN_ID,
+  ImageDescriptor implImageDescriptorFromPlugin = AbstractUIPlugin.imageDescriptorFromPlugin(Activator.getDefault().getBundle().getSymbolicName(),
       Messages.getString("LCDecomp.interface.icon.LCInterfaceImpl")); //$NON-NLS-1$
   Image implImage = implImageDescriptorFromPlugin.createImage();
-  ImageDescriptor useImageDescriptorFromPlugin = AbstractUIPlugin.imageDescriptorFromPlugin(Activator.PLUGIN_ID,
+  ImageDescriptor useImageDescriptorFromPlugin = AbstractUIPlugin.imageDescriptorFromPlugin(Activator.getDefault().getBundle().getSymbolicName(),
       Messages.getString("LCDecomp.interface.icon.LCInterfaceUse")); //$NON-NLS-1$
   Image useImage = useImageDescriptorFromPlugin.createImage();
 

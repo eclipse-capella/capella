@@ -111,12 +111,12 @@ public class PasteCommandHelper {
           commands.append(command);
         } else {
           // It was not possible to create the command
-          status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, Messages.CapellaPasteCommand_error_command, null);
+          status = new Status(IStatus.ERROR, Activator.getDefault().getBundle().getSymbolicName(), Messages.CapellaPasteCommand_error_command, null);
           commands.append(UnexecutableCommand.INSTANCE);
         }
       } else {
         // Different session and no self contained element
-        status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, Messages.CapellaPasteCommand_error_session, null);
+        status = new Status(IStatus.ERROR, Activator.getDefault().getBundle().getSymbolicName(), Messages.CapellaPasteCommand_error_session, null);
         commands.append(UnexecutableCommand.INSTANCE);
       }
     }

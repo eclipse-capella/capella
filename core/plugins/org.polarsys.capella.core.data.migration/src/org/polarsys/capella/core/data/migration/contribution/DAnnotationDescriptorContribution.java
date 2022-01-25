@@ -108,7 +108,7 @@ public class DAnnotationDescriptorContribution extends AbstractMigrationContribu
     }
     if (i > 0) {
       Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.DEFAULT);
-      IStatus status = new Status(IStatus.INFO, Activator.PLUGIN_ID,
+      IStatus status = new Status(IStatus.INFO, Activator.getDefault().getBundle().getSymbolicName(),
           NLS.bind(org.polarsys.capella.core.data.migration.contribution.Messages.MigrationAction_AnnotationMigration,
               context.getName(), i));
       LogExt.log(logger, status);
@@ -183,7 +183,7 @@ public class DAnnotationDescriptorContribution extends AbstractMigrationContribu
 
             } else {
               Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.DEFAULT);
-              IStatus status = new Status(IStatus.WARNING, Activator.PLUGIN_ID, NLS.bind(
+              IStatus status = new Status(IStatus.WARNING, Activator.getDefault().getBundle().getSymbolicName(), NLS.bind(
                   org.polarsys.capella.core.data.migration.contribution.Messages.MigrationAction_MissingStatusMigration,
                   descriptor.getName(), statusValue));
               LogExt.log(logger, status);
@@ -211,7 +211,7 @@ public class DAnnotationDescriptorContribution extends AbstractMigrationContribu
           
         } else {
           Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.DEFAULT);
-          IStatus status = new Status(IStatus.WARNING, Activator.PLUGIN_ID, NLS.bind(
+          IStatus status = new Status(IStatus.WARNING, Activator.getDefault().getBundle().getSymbolicName(), NLS.bind(
               org.polarsys.capella.core.data.migration.contribution.Messages.MigrationAction_MissingContextualElementMigration,
               descriptor.getName(), id));
           LogExt.log(logger, status);

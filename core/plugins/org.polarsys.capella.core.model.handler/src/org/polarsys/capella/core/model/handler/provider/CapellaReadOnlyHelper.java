@@ -79,7 +79,7 @@ public class CapellaReadOnlyHelper {
   private static IReadOnlySectionHandler getContributedReadOnlySectionHandler() {
     // Load IReadOnlySectionHandler contributor if any.
     IConfigurationElement[] configurationElements =
-        ExtensionPointHelper.getConfigurationElements(ModelHandlerPlugin.PLUGIN_ID, "readOnlySectionHandler"); //$NON-NLS-1$
+        ExtensionPointHelper.getConfigurationElements(ModelHandlerPlugin.getDefault().getBundle().getSymbolicName(), "readOnlySectionHandler"); //$NON-NLS-1$
     // Loop over contributed IReadOnlySectionHandler and add them to the delegate.
     if (configurationElements.length > 0) {
       ReadOnlySectionHandlerDelegate delegate = new ReadOnlySectionHandlerDelegate();

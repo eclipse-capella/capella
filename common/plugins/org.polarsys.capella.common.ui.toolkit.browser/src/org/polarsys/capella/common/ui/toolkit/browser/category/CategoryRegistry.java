@@ -204,7 +204,7 @@ public class CategoryRegistry {
     availableForTypeClassDescriptors = new HashSet<>();
 
     IConfigurationElement[] categories = org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper
-        .getConfigurationElements(BrowserActivator.PLUGIN_ID, CONTENT_PROVIDER_CATEGORY);
+        .getConfigurationElements(BrowserActivator.getDefault().getBundle().getSymbolicName(), CONTENT_PROVIDER_CATEGORY);
 
     for (IConfigurationElement categoryConfigurationElement : categories) {
       // Create simple instance of category

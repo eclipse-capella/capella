@@ -25,7 +25,7 @@ public class CapellaUIPropertiesPreferencesInitializer extends AbstractPreferenc
    * Default constructor.
    */
   public CapellaUIPropertiesPreferencesInitializer() {
-    super(CapellaUIPropertiesPlugin.PLUGIN_ID);
+    super(CapellaUIPropertiesPlugin.getDefault().getBundle().getSymbolicName());
   }
 
   /**

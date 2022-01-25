@@ -67,7 +67,7 @@ public class CapellaResourceNamingHelper {
         String message = NLS.bind(Messages.CapellaResourceNamingHelper_invalidCharInName, String.valueOf(invalidChar),
             name);
 
-        return new Status(IStatus.ERROR, ModelHandlerPlugin.PLUGIN_ID, message);
+        return new Status(IStatus.ERROR, ModelHandlerPlugin.getDefault().getBundle().getSymbolicName(), message);
       }
     }
 

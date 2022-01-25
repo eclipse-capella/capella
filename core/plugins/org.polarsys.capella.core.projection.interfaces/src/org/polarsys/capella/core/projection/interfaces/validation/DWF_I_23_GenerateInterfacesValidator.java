@@ -99,7 +99,7 @@ public class DWF_I_23_GenerateInterfacesValidator extends AbstractModelConstrain
       } catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
         if (!loggedWorkaroundError){
           loggedWorkaroundError = true;
-          Platform.getLog(InterfaceGenerationActivator.class).log(new Status(IStatus.ERROR, InterfaceGenerationActivator.PLUGIN_ID,  "Cannot use cache for rule DWF_I_23. Some results for this rule may appear multiple times.", e)); //$NON-NLS-1$
+          Platform.getLog(InterfaceGenerationActivator.class).log(new Status(IStatus.ERROR, InterfaceGenerationActivator.getDefault().getBundle().getSymbolicName(),  "Cannot use cache for rule DWF_I_23. Some results for this rule may appear multiple times.", e)); //$NON-NLS-1$
         }
       } finally {
         if (f != null) {

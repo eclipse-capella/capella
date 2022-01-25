@@ -42,7 +42,7 @@ public abstract class AbstractContentProviderFactory {
    */
   public static AbstractContentProviderFactory getInstance() {
     if (null == _instance) {
-      IConfigurationElement[] configurationElements = ExtensionPointHelper.getConfigurationElements(BrowserActivator.PLUGIN_ID, CONTENT_PROVIDER_FACTORY);
+      IConfigurationElement[] configurationElements = ExtensionPointHelper.getConfigurationElements(BrowserActivator.getDefault().getBundle().getSymbolicName(), CONTENT_PROVIDER_FACTORY);
       for (IConfigurationElement configurationElement : configurationElements) {
         AbstractContentProviderFactory contentProvider =
             (AbstractContentProviderFactory) ExtensionPointHelper.createInstance(configurationElement, ExtensionPointHelper.ATT_CLASS);

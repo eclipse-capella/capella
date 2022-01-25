@@ -52,7 +52,7 @@ public class ModelProviderHelper {
    */
   private void initExtensionListeners() {
     for (IConfigurationElement configElement : ExtensionPointHelper
-        .getConfigurationElements(CapellaTestFrameworkPlugin.PLUGIN_ID, MODEL_PROVIDER_EXT_POINT)) {
+        .getConfigurationElements(CapellaTestFrameworkPlugin.getDefault().getBundle().getSymbolicName(), MODEL_PROVIDER_EXT_POINT)) {
       modelProvider = (IModelProvider) ExtensionPointHelper.createInstance(configElement,
           ExtensionPointHelper.ATT_CLASS);
     }

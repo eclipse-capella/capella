@@ -209,7 +209,7 @@ public class FilteredSimplifiedCapellaMetaData implements SimplifiedCapellaMetad
   private void reloadFilteredPackagesFromRegistry(){
     packageFilters = new ArrayList<String>();
     unfilteredEPackages = Collections.synchronizedSet(new HashSet<EPackage>());
-    for (IConfigurationElement e : Platform.getExtensionRegistry().getConfigurationElementsFor(SemanticModelActivator.PLUGIN_ID, EXTENSION_SEMANTIC_METADATA)){
+    for (IConfigurationElement e : Platform.getExtensionRegistry().getConfigurationElementsFor(SemanticModelActivator.getDefault().getBundle().getSymbolicName(), EXTENSION_SEMANTIC_METADATA)){
       if (NAME_PACKAGE_FILTER_ELEMENT.equals(e.getName())){
         String nsURI = e.getAttribute(ATTRIBUTE_NS_URI);
         if (nsURI != null){

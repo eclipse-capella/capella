@@ -27,7 +27,7 @@ public class ActionsPreferenceInitializer extends AbstractPreferencesInitializer
    * @param pluginID
    */
   public ActionsPreferenceInitializer() {
-    super(CapellaActionsActivator.PLUGIN_ID);
+    super(CapellaActionsActivator.getDefault().getBundle().getSymbolicName());
 
   }
 

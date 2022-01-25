@@ -112,10 +112,10 @@ public class CapellaSearchQuery implements ISearchQuery {
     } catch (PatternSyntaxException e) {
       String message = String.format(CapellaSearchConstants.CapellaSearchQuery_Search_Pattern_Not_Validated_Message,
           e.getPattern(), e.getDescription());
-      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, message);
+      return new Status(IStatus.ERROR, Activator.getDefault().getBundle().getSymbolicName(), message);
     } catch (Exception e) {
       String message = e.getMessage();
-      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, message);
+      return new Status(IStatus.ERROR, Activator.getDefault().getBundle().getSymbolicName(), message);
     }
   }
 

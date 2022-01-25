@@ -43,7 +43,7 @@ public class RemoveSequenceLinksAssociationsResolver extends AbstractCapellaMark
     this.overridenLabel = label;
     this.multiMarkerQuickFix = multiMarkerQuickFix;
     this.ruleId = ruleId;
-    super.setContributorId(CapellaUIResourcesPlugin.PLUGIN_ID);
+    super.setContributorId(CapellaUIResourcesPlugin.getDefault().getBundle().getSymbolicName());
     super.setImgKey(PROCESS_ICON);
   }
 

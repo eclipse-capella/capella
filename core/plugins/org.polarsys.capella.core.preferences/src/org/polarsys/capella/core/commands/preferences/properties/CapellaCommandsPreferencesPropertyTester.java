@@ -42,7 +42,7 @@ public class CapellaCommandsPreferencesPropertyTester extends PropertyTester {
         || CAPELLA_CMD_MODELING_PREFERENCES_PROPERTY.equals(property)) {
       IItemDescriptor itemDescriptor = PreferencesItemsRegistry.getInstance().getDescriptor((String) expectedValue);
       boolean defaultValue = itemDescriptor != null ? itemDescriptor.isEnabledByDefault() : true;
-      IEclipsePreferences commandsPreferences = InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID);
+      IEclipsePreferences commandsPreferences = InstanceScope.INSTANCE.getNode(Activator.getDefault().getBundle().getSymbolicName());
       return commandsPreferences.getBoolean((String) expectedValue, defaultValue);
     }
     return false;

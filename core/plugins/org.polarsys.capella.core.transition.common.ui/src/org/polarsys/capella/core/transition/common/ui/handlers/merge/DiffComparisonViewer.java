@@ -147,7 +147,7 @@ public class DiffComparisonViewer extends ComparisonViewer {
   }
 
   protected ImageDescriptor getImageDescriptor(String key) {
-    ImageDescriptor desc = AbstractUIPlugin.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "icons/ctool16/" + key);
+    ImageDescriptor desc = AbstractUIPlugin.imageDescriptorFromPlugin(Activator.getDefault().getBundle().getSymbolicName(), "icons/ctool16/" + key);
     return desc;
   }
 

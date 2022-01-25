@@ -278,7 +278,7 @@ public class TransfoRuleLoader {
    */
   private void loadResolvers() {
     IExtensionRegistry extensionRegistry = Platform.getExtensionRegistry();
-    IConfigurationElement[] elementsForPlugin = extensionRegistry.getConfigurationElementsFor(Activator.PLUGIN_ID);
+    IConfigurationElement[] elementsForPlugin = extensionRegistry.getConfigurationElementsFor(Activator.getDefault().getBundle().getSymbolicName());
     TreeSet<IConfigurationElement> elements = new TreeSet<IConfigurationElement>(new Comparator<IConfigurationElement>() {
 
       public int compare(IConfigurationElement arg0, IConfigurationElement arg1) {

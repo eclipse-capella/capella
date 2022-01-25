@@ -167,7 +167,7 @@ public class SiriusMigrationContribution extends AbstractMigrationContribution {
 
     // lower the unresolvedReferenceException to a lower priority. it's the repair-aird that will fix these issues.
     if (e instanceof UnresolvedReferenceException) {
-      return new Status(IStatus.WARNING, Activator.PLUGIN_ID, e.getMessage());
+      return new Status(IStatus.WARNING, Activator.getDefault().getBundle().getSymbolicName(), e.getMessage());
     }
 
     return null;

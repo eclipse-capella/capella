@@ -312,14 +312,14 @@ public class CapellaModel extends AbstractCapellaModel implements IModel.Edit {
 
   @Override
   public boolean isActive(IModel library) {
-    Preferences activeLibraryPrefInfos = ConfigurationScope.INSTANCE.getNode(Activator.PLUGIN_ID).node(ACTIVE_STATE_PREF_ID);
+    Preferences activeLibraryPrefInfos = ConfigurationScope.INSTANCE.getNode(Activator.getDefault().getBundle().getSymbolicName()).node(ACTIVE_STATE_PREF_ID);
     Preferences libraryContextPref = activeLibraryPrefInfos.node(this.getIdentifier().getName());
     return libraryContextPref.getBoolean(library.getIdentifier().getName(), getDefaultActiveState(library));
   }
 
   @Override
   public void setActive(IModel library, boolean activeState) {
-    final Preferences activeLibraryPrefInfos = ConfigurationScope.INSTANCE.getNode(Activator.PLUGIN_ID).node(ACTIVE_STATE_PREF_ID);
+    final Preferences activeLibraryPrefInfos = ConfigurationScope.INSTANCE.getNode(Activator.getDefault().getBundle().getSymbolicName()).node(ACTIVE_STATE_PREF_ID);
     Preferences libraryContextPref = activeLibraryPrefInfos.node(this.getIdentifier().getName());
     libraryContextPref.putBoolean(library.getIdentifier().getName(), activeState);
 

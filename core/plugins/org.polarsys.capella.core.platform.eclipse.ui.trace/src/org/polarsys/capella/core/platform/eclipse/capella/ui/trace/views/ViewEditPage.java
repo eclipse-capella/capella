@@ -162,7 +162,7 @@ public class ViewEditPage extends WizardPage {
     gdData.horizontalSpan = 2;
     imageExplanation.setLayoutData(gdData);
     imageExplanation
-        .setImage(AbstractUIPlugin.imageDescriptorFromPlugin(MDTrace.PLUGIN_ID, IImageKeys.EXPLANATION).createImage());
+        .setImage(AbstractUIPlugin.imageDescriptorFromPlugin(MDTrace.getDefault().getBundle().getSymbolicName(), IImageKeys.EXPLANATION).createImage());
 
     // **Presentation of trace elements(source and target)
     Composite traceTreeComposite = new Composite(composite, SWT.FILL);

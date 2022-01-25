@@ -36,7 +36,7 @@ public class DWF_DF_16_Resolver extends AbstractCapellaMarkerResolution {
 
   public DWF_DF_16_Resolver(String label) {
     this.overridenLabel = label;
-    super.setContributorId(CapellaUIResourcesPlugin.PLUGIN_ID);
+    super.setContributorId(CapellaUIResourcesPlugin.getDefault().getBundle().getSymbolicName());
     super.setImgKey(PROCESS_ICON);
   }
 

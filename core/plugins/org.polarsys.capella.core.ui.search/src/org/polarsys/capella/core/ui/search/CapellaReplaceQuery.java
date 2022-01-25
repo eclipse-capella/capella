@@ -42,7 +42,7 @@ public class CapellaReplaceQuery {
     replacedProjects = new HashSet<>();
     replacedOccurrenceCount = 0;
     if (replacement == null) {
-      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, CapellaSearchConstants.CapellaReplaceQuery_Validation_Replacement_Null);
+      return new Status(IStatus.ERROR, Activator.getDefault().getBundle().getSymbolicName(), CapellaSearchConstants.CapellaReplaceQuery_Validation_Replacement_Null);
     }
     try {
       Pattern searchPattern = capellaSearchSettings.createPattern();
@@ -67,7 +67,7 @@ public class CapellaReplaceQuery {
         message = String.format(CapellaSearchConstants.CapellaSearchQuery_Search_Pattern_Not_Validated_Message,
             ((PatternSyntaxException) e).getPattern(), ((PatternSyntaxException) e).getDescription());
       }
-      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, message);
+      return new Status(IStatus.ERROR, Activator.getDefault().getBundle().getSymbolicName(), message);
     }
   }
 

@@ -43,7 +43,7 @@ public class DCON_02_Rpl2RecConformanceConstraint extends AbstractModelConstrain
     if (catalogElement.getKind() == CatalogElementKind.RPL) {
       CatalogElement rec = catalogElement.getOrigin();
       if (rec == null || rec.eIsProxy()) {
-        return new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Your RPL is invalid (no REC), please validate your model.");
+        return new Status(IStatus.ERROR, Activator.getDefault().getBundle().getSymbolicName(), "Your RPL is invalid (no REC), please validate your model.");
       }
       // if rec is valid
       return validateRPL(ctx, catalogElement);

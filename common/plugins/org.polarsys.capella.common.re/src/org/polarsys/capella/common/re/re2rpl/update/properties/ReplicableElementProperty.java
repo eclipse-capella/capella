@@ -53,7 +53,7 @@ public class ReplicableElementProperty extends org.polarsys.capella.common.re.re
   @Override
   public IStatus validate(Object newValue, IPropertyContext context) {
     if ((newValue == null) || !(newValue instanceof CatalogElement)) {
-      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Your RPL is invalid (no REC), please validate your model");
+      return new Status(IStatus.ERROR, Activator.getDefault().getBundle().getSymbolicName(), "Your RPL is invalid (no REC), please validate your model");
     }
     return Status.OK_STATUS;
   }

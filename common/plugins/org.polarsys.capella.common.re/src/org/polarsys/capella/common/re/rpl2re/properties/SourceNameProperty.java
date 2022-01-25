@@ -85,7 +85,7 @@ public class SourceNameProperty extends AbstractProperty implements ICompoundPro
         isValid = false;
       }
       if (!isValid) {
-        return new Status(IStatus.WARNING, IReConstants.PLUGIN_ID, "Name should not be empty");
+        return new Status(IStatus.WARNING, IReConstants.getDefault().getBundle().getSymbolicName(), "Name should not be empty");
       }
     }
     return Status.OK_STATUS;

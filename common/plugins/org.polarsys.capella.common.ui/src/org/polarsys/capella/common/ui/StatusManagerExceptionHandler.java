@@ -56,7 +56,7 @@ public class StatusManagerExceptionHandler implements ExceptionHandler {
    * Creates the fallback status to use if extractStatus could not find a a status for the exception.
    */
   protected IStatus createStatus(Exception e) {
-    return new Status(IStatus.ERROR, MdeCommonUiActivator.PLUGIN_ID, e.getLocalizedMessage(), e);
+    return new Status(IStatus.ERROR, MdeCommonUiActivator.getDefault().getBundle().getSymbolicName(), e.getLocalizedMessage(), e);
   }
 
   /**
@@ -79,7 +79,7 @@ public class StatusManagerExceptionHandler implements ExceptionHandler {
     } else if (e instanceof CoreException){
       CoreException ce = (CoreException) e;
       IStatus exceptionStatus = ce.getStatus();
-      return new Status(exceptionStatus.getSeverity(), MdeCommonUiActivator.PLUGIN_ID, ce.getLocalizedMessage(), ce);
+      return new Status(exceptionStatus.getSeverity(), MdeCommonUiActivator.getDefault().getBundle().getSymbolicName(), ce.getLocalizedMessage(), ce);
     }
     return null;
   }

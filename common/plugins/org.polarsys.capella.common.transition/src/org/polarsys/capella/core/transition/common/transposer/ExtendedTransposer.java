@@ -140,7 +140,7 @@ public class ExtendedTransposer extends GenericTransposer {
           getRulesHandler().apply(v.getContent(), scheduledTask.isCompletelyTransposable(), monitor);
           checkCancel(monitor);
         } catch (RuleExecutionException e) {
-          TransposerCorePlugin.getDefault().logError(TransposerCorePlugin.PLUGIN_ID,
+          TransposerCorePlugin.getDefault().logError(TransposerCorePlugin.getDefault().getBundle().getSymbolicName(),
               RuleExecutionException.class.getSimpleName() + " on " + e.getMessage(), e.getCause()); //$NON-NLS-1$
         }
 

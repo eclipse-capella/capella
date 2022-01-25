@@ -87,7 +87,7 @@ public class PreferencesHandler extends AbstractHandler implements IElementUpdat
   }
 
   protected IEclipsePreferences getPreferences() {
-    return InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID);
+    return InstanceScope.INSTANCE.getNode(Activator.getDefault().getBundle().getSymbolicName());
   }
 
   private List<IHandlerActivation> getRegisteredHandlerActivations(IHandlerService service, String commandId) {

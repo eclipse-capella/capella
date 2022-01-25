@@ -148,7 +148,7 @@ public class CapellaDeleteCommand extends BasicCapellaDeleteCommand {
   protected IStatus preDeleteChecks() {
     Set<?> elementsToDelete = getAllElementsToDelete();
     if (preventProtectedElementsDeletion && !CapellaDeleteAction.canDelete(elementsToDelete)) {
-      deletionStatus = new Status(Status.ERROR, CapellaActionsActivator.PLUGIN_ID, Messages.CapellaDeleteCommand_ProtectedElementsError);
+      deletionStatus = new Status(Status.ERROR, CapellaActionsActivator.getDefault().getBundle().getSymbolicName(), Messages.CapellaDeleteCommand_ProtectedElementsError);
     } else {
       long nbRepresentations = elementsToDelete.stream().filter(DRepresentationDescriptor.class::isInstance).count();
       long nbSemanticElements = elementsToDelete.size() - nbRepresentations;
@@ -173,7 +173,7 @@ public class CapellaDeleteCommand extends BasicCapellaDeleteCommand {
       }
       String message = MessageFormat.format(Messages.CapellaDeleteCommand_ConfirmDeletionQuestion,
           messageNbSemanticElement, messageNbRepresentation);
-      deletionStatus = new Status(status, CapellaActionsActivator.PLUGIN_ID, message);
+      deletionStatus = new Status(status, CapellaActionsActivator.getDefault().getBundle().getSymbolicName(), message);
     }
     return deletionStatus;
 

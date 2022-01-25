@@ -68,7 +68,7 @@ public class DeleteHandler extends AbstractViewHandler {
         try {
           m.delete();
         } catch (CoreException exception) {
-          Platform.getLog(MarkerViewPlugin.class).log(new Status(IStatus.ERROR, MarkerViewPlugin.PLUGIN_ID, exception.getMessage(), exception));
+          Platform.getLog(MarkerViewPlugin.class).log(new Status(IStatus.ERROR, MarkerViewPlugin.getDefault().getBundle().getSymbolicName(), exception.getMessage(), exception));
         }
       }
     } 

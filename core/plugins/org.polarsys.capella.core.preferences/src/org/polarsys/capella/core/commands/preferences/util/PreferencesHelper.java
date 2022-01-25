@@ -252,19 +252,19 @@ public class PreferencesHelper {
     IScopeContext scope = targetProject != null ? ScopedCapellaPreferencesStore.getProjectScope(targetProject) : null;
     try {
       if (scope != null) {
-        IEclipsePreferences node = scope.getNode(Activator.PLUGIN_ID);
+        IEclipsePreferences node = scope.getNode(Activator.getDefault().getBundle().getSymbolicName());
         node.flush();
         ScopedCapellaPreferencesStore.getProjectContexts().put(targetProject.getProject(), scope);
-        return new ScopedPreferenceStore(scope, Activator.PLUGIN_ID);
+        return new ScopedPreferenceStore(scope, Activator.getDefault().getBundle().getSymbolicName());
       }
     } catch (Exception exception) {
       StringBuilder loggerMessage = new StringBuilder("Activator.getProjectScope(..) _ "); //$NON-NLS-1$
       __logger.error(loggerMessage.toString(), exception);
 
-      return new ScopedPreferenceStore(scope, Activator.PLUGIN_ID);
+      return new ScopedPreferenceStore(scope, Activator.getDefault().getBundle().getSymbolicName());
     }
 
-    return new ScopedPreferenceStore(InstanceScope.INSTANCE, Activator.PLUGIN_ID);
+    return new ScopedPreferenceStore(InstanceScope.INSTANCE, Activator.getDefault().getBundle().getSymbolicName());
 
   }
 
@@ -277,16 +277,16 @@ public class PreferencesHelper {
     try {
       if (scope != null) {
         ScopedCapellaPreferencesStore.getProjectContexts().put(targetProject.getProject(), scope);
-        return ScopedCapellaPreferencesStore.getInstance(Activator.PLUGIN_ID);
+        return ScopedCapellaPreferencesStore.getInstance(Activator.getDefault().getBundle().getSymbolicName());
       }
     } catch (Exception exception) {
       StringBuilder loggerMessage = new StringBuilder("Activator.getProjectScope(..) _ "); //$NON-NLS-1$
       __logger.error(loggerMessage.toString(), exception);
 
-      return new ScopedPreferenceStore(scope, Activator.PLUGIN_ID);
+      return new ScopedPreferenceStore(scope, Activator.getDefault().getBundle().getSymbolicName());
     }
 
-    return new ScopedPreferenceStore(InstanceScope.INSTANCE, Activator.PLUGIN_ID);
+    return new ScopedPreferenceStore(InstanceScope.INSTANCE, Activator.getDefault().getBundle().getSymbolicName());
 
   }
 
@@ -298,19 +298,19 @@ public class PreferencesHelper {
     IScopeContext scope = targetProject != null ? ScopedCapellaPreferencesStore.getProjectScope(targetProject) : null;
     try {
       if (scope != null) {
-        IEclipsePreferences node = scope.getNode(Activator.PLUGIN_ID);
+        IEclipsePreferences node = scope.getNode(Activator.getDefault().getBundle().getSymbolicName());
         node.flush();
         ScopedCapellaPreferencesStore.getProjectContexts().put(targetProject.getProject(), scope);
-        return ScopedCapellaPreferencesStore.getInstance(Activator.PLUGIN_ID);
+        return ScopedCapellaPreferencesStore.getInstance(Activator.getDefault().getBundle().getSymbolicName());
       }
     } catch (Exception exception) {
       StringBuilder loggerMessage = new StringBuilder("Activator.getProjectScope(..) _ "); //$NON-NLS-1$
       __logger.error(loggerMessage.toString(), exception);
 
-      return new ScopedPreferenceStore(scope, Activator.PLUGIN_ID);
+      return new ScopedPreferenceStore(scope, Activator.getDefault().getBundle().getSymbolicName());
     }
 
-    return new ScopedPreferenceStore(InstanceScope.INSTANCE, Activator.PLUGIN_ID);
+    return new ScopedPreferenceStore(InstanceScope.INSTANCE, Activator.getDefault().getBundle().getSymbolicName());
 
   }
 
@@ -322,19 +322,19 @@ public class PreferencesHelper {
     IScopeContext scope = targetProject != null ? ScopedCapellaPreferencesStore.getProjectScope(targetProject) : null;
     try {
       if (scope != null) {
-        IEclipsePreferences node = scope.getNode(Activator.PLUGIN_ID);
+        IEclipsePreferences node = scope.getNode(Activator.getDefault().getBundle().getSymbolicName());
         node.flush();
         ScopedCapellaPreferencesStore.getProjectContexts().put(targetProject.getProject(), scope);
-        return new ScopedPreferenceStore(scope, Activator.PLUGIN_ID);
+        return new ScopedPreferenceStore(scope, Activator.getDefault().getBundle().getSymbolicName());
       }
     } catch (Exception exception) {
       StringBuilder loggerMessage = new StringBuilder("Activator.getProjectScope(..) _ "); //$NON-NLS-1$
       __logger.error(loggerMessage.toString(), exception);
 
-      return new ScopedPreferenceStore(scope, Activator.PLUGIN_ID);
+      return new ScopedPreferenceStore(scope, Activator.getDefault().getBundle().getSymbolicName());
     }
 
-    return new ScopedPreferenceStore(InstanceScope.INSTANCE, Activator.PLUGIN_ID);
+    return new ScopedPreferenceStore(InstanceScope.INSTANCE, Activator.getDefault().getBundle().getSymbolicName());
 
   }
 
@@ -350,7 +350,7 @@ public class PreferencesHelper {
         if (targetProject.isOpen() && targetProject.isAccessible()
             && (CapellaResourceHelper.isCapellaProject(targetProject))) {
           IScopeContext projectScope = ScopedCapellaPreferencesStore.getProjectScope(targetProject);
-          scopes.add(new ScopedPreferenceStore(projectScope, Activator.PLUGIN_ID));
+          scopes.add(new ScopedPreferenceStore(projectScope, Activator.getDefault().getBundle().getSymbolicName()));
         }
       } catch (Exception exception) {
         StringBuilder loggerMessage = new StringBuilder("PreferencesHelper.getAllStores(..) _ "); //$NON-NLS-1$

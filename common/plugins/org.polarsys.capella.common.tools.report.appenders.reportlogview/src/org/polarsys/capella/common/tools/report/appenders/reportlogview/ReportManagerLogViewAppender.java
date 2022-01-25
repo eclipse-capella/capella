@@ -166,7 +166,7 @@ public final class ReportManagerLogViewAppender extends WriterAppender {
 						}
 					}
 				} catch (CoreException e) {
-				  Platform.getLog(MarkerViewPlugin.class).log(new Status(IStatus.ERROR, MarkerViewPlugin.PLUGIN_ID, e.getLocalizedMessage(), e));
+				  Platform.getLog(MarkerViewPlugin.class).log(new Status(IStatus.ERROR, MarkerViewPlugin.getDefault().getBundle().getSymbolicName(), e.getLocalizedMessage(), e));
 				}
 			}
 		});
@@ -183,7 +183,7 @@ public final class ReportManagerLogViewAppender extends WriterAppender {
           marker.setAttribute(IMarker.SEVERITY, level); // violates IMarker API
           marker.setAttribute(IMarker.PRIORITY, IMarker.PRIORITY_HIGH);
         } catch (CoreException e) {
-          Platform.getLog(MarkerViewPlugin.class).log(new Status(IStatus.ERROR, MarkerViewPlugin.PLUGIN_ID, e.getLocalizedMessage(), e));
+          Platform.getLog(MarkerViewPlugin.class).log(new Status(IStatus.ERROR, MarkerViewPlugin.getDefault().getBundle().getSymbolicName(), e.getLocalizedMessage(), e));
         }
         if (additions != null) {
           additions.modify(marker);

@@ -50,7 +50,7 @@ public class PatternCatalogDeletionContributor extends AbstractMigrationContribu
             parent.delete(true, new NullProgressMonitor());
           }
         } catch (CoreException e) {
-          return new Status(IStatus.ERROR, org.polarsys.capella.core.data.migration.Activator.PLUGIN_ID, e.getMessage(), e);
+          return new Status(IStatus.ERROR, org.polarsys.capella.core.data.migration.Activator.getDefault().getBundle().getSymbolicName(), e.getMessage(), e);
         }
         return Status.OK_STATUS;
       }

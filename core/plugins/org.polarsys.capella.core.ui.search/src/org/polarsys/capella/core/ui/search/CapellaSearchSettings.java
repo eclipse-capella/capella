@@ -141,28 +141,28 @@ public class CapellaSearchSettings {
   // method used to check the search settings (that we entered text, selected at least one mettaclass or attribute etc)
   public IStatus validate() {
     if (textPattern == null || textPattern.isEmpty()) {
-      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, CapellaSearchConstants.CapellaSearchPage_Validation_Message_Pattern_Empty);
+      return new Status(IStatus.ERROR, Activator.getDefault().getBundle().getSymbolicName(), CapellaSearchConstants.CapellaSearchPage_Validation_Message_Pattern_Empty);
     }
 
     if (isRegExSearch) {
       if (isWholeWord) {
-        return new Status(IStatus.ERROR, Activator.PLUGIN_ID, CapellaSearchConstants.CapellaSearchPage_Validation_Message_Whole_Word_Same_Time_Regex);
+        return new Status(IStatus.ERROR, Activator.getDefault().getBundle().getSymbolicName(), CapellaSearchConstants.CapellaSearchPage_Validation_Message_Whole_Word_Same_Time_Regex);
       }
 
       try {
         CapellaSearchSettings.createPattern(textPattern, isCaseSensitive, isRegExSearch, isWholeWord);
       } catch (PatternSyntaxException e) {
-        return new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getDescription());
+        return new Status(IStatus.ERROR, Activator.getDefault().getBundle().getSymbolicName(), e.getDescription());
       }
     }
 
     if (searchMetaClassItems.isEmpty()) {
-      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, CapellaSearchConstants.CapellaSearchPage_Validation_Message_SearchMetaClass_Selection);
+      return new Status(IStatus.ERROR, Activator.getDefault().getBundle().getSymbolicName(), CapellaSearchConstants.CapellaSearchPage_Validation_Message_SearchMetaClass_Selection);
     }
 
     if (searchAttributeItems.isEmpty()
         && !searchMetaClassItems.stream().anyMatch(SearchForNoteItem.class::isInstance)) {
-      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, CapellaSearchConstants.CapellaSearchPage_Validation_Message_SearchAttribute_Selection);
+      return new Status(IStatus.ERROR, Activator.getDefault().getBundle().getSymbolicName(), CapellaSearchConstants.CapellaSearchPage_Validation_Message_SearchAttribute_Selection);
     }
 
     return Status.OK_STATUS;

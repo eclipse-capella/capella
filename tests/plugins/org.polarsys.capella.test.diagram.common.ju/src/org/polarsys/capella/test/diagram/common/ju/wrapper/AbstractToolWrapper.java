@@ -119,7 +119,7 @@ public abstract class AbstractToolWrapper {
 
   final public IStatus checkArguments() {
     boolean ret = true;
-    MultiStatus result = new MultiStatus(TestDiagramCommonPlugin.PLUGIN_ID, Status.OK, "isArgumentsAreSet", null);
+    MultiStatus result = new MultiStatus(TestDiagramCommonPlugin.getDefault().getBundle().getSymbolicName(), Status.OK, "isArgumentsAreSet", null);
     Iterator<ArgumentData> it = getArgumentTypes().iterator();
 
     while (it.hasNext() && ret) {
@@ -130,20 +130,20 @@ public abstract class AbstractToolWrapper {
           || (currentType.equals(ArgumentType.PREDECESSOR) && (_arguments.get(currentType) == null))
           || (currentType.equals(ArgumentType.STARTINGENDPREDECESSOR) && (_arguments.get(currentType) == null))
           || (currentType.equals(ArgumentType.FINISHINGENDPREDECESSOR) && (_arguments.get(currentType) == null))) {
-        result.add(new Status(Status.OK, TestDiagramCommonPlugin.PLUGIN_ID, currentType + " is ok"));
+        result.add(new Status(Status.OK, TestDiagramCommonPlugin.getDefault().getBundle().getSymbolicName(), currentType + " is ok"));
         return result;
       }
       
       if (!_arguments.containsKey(currentType) || (_arguments.get(currentType) == null)) {
-        result.add(new Status(Status.ERROR, TestDiagramCommonPlugin.PLUGIN_ID, currentType + " is not set or null"));
+        result.add(new Status(Status.ERROR, TestDiagramCommonPlugin.getDefault().getBundle().getSymbolicName(), currentType + " is not set or null"));
         
       } else {
         ret = checkValue(currentType);
         if (ret) {
-          result.add(new Status(Status.OK, TestDiagramCommonPlugin.PLUGIN_ID, currentType + " is ok"));
+          result.add(new Status(Status.OK, TestDiagramCommonPlugin.getDefault().getBundle().getSymbolicName(), currentType + " is ok"));
 
         } else {
-          result.add(new Status(Status.ERROR, TestDiagramCommonPlugin.PLUGIN_ID, currentType + " is not value"));
+          result.add(new Status(Status.ERROR, TestDiagramCommonPlugin.getDefault().getBundle().getSymbolicName(), currentType + " is not value"));
         }
       }
     }

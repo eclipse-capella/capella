@@ -156,7 +156,7 @@ public abstract class Rule_I37_38 extends BasicTestCase {
           it.remove();
         }
       }
-      throw new RollbackException(new Status(IStatus.ERROR, TestValidationRulesPlugin.PLUGIN_ID, "rolling back")); //$NON-NLS-1$
+      throw new RollbackException(new Status(IStatus.ERROR, TestValidationRulesPlugin.getDefault().getBundle().getSymbolicName(), "rolling back")); //$NON-NLS-1$
     }
 
     private Diagnostic findDiagnostic(String message, Collection<Diagnostic> diagnostics) {

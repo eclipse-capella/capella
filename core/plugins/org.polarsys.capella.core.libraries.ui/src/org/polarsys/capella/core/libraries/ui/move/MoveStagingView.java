@@ -334,7 +334,7 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
         referenceErrors.set(status);
         MyDiagnosticDialog dialog = new MyDiagnosticDialog(getViewSite().getShell(), status); 
         if (dialog.open() == Window.CANCEL) {
-          throw new RollbackException(new Status(IStatus.CANCEL, Activator.PLUGIN_ID, Messages.MoveStagingView_CancelStatusMessage));
+          throw new RollbackException(new Status(IStatus.CANCEL, Activator.getDefault().getBundle().getSymbolicName(), Messages.MoveStagingView_CancelStatusMessage));
         } else {
           forcedMove.set(true);
         }
@@ -1473,7 +1473,7 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
       try {
         window.getActivePage().showView(CapellaCommonNavigator.ID, null, IWorkbenchPage.VIEW_ACTIVATE);
       } catch (PartInitException e) {
-        Platform.getLog(Activator.class).log(new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getLocalizedMessage(), e));
+        Platform.getLog(Activator.class).log(new Status(IStatus.ERROR, Activator.getDefault().getBundle().getSymbolicName(), e.getLocalizedMessage(), e));
       }
       super.selectElementInCapellaExplorer(selection);
     }

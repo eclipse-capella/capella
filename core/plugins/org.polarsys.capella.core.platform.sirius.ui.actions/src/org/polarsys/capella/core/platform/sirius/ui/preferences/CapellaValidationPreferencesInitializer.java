@@ -23,7 +23,7 @@ import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaActionsActiva
 public class CapellaValidationPreferencesInitializer extends AbstractPreferencesInitializer {
 
   public CapellaValidationPreferencesInitializer() {
-    super(CapellaActionsActivator.PLUGIN_ID);
+    super(CapellaActionsActivator.getDefault().getBundle().getSymbolicName());
   }
 
   @Override

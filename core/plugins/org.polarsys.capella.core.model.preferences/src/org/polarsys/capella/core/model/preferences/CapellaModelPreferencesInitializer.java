@@ -23,7 +23,7 @@ public class CapellaModelPreferencesInitializer extends AbstractPreferencesIniti
    * Default constructor.
    */
   public CapellaModelPreferencesInitializer() {
-    super(CapellaModelPreferencesPlugin.PLUGIN_ID);
+    super(CapellaModelPreferencesPlugin.getDefault().getBundle().getSymbolicName());
   }
 
   @Override

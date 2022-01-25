@@ -64,7 +64,7 @@ public class DeleteConstraintMarkersHandler extends AbstractViewHandler {
         try {
           m.delete();
         } catch (CoreException e) {
-          Platform.getLog(MarkerViewPlugin.class).log(new Status(IStatus.ERROR, MarkerViewPlugin.PLUGIN_ID, e.getMessage(), e));
+          Platform.getLog(MarkerViewPlugin.class).log(new Status(IStatus.ERROR, MarkerViewPlugin.getDefault().getBundle().getSymbolicName(), e.getMessage(), e));
         }
       }
     }

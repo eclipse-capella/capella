@@ -37,7 +37,7 @@ public class UniqueIDInPluginsTest extends BasicTestCase {
     List<String> listofCategoryId = new ArrayList<String>();
     List<String> listofSubCategoryId = new ArrayList<String>();
 
-    IConfigurationElement[] categories = ExtensionPointHelper.getConfigurationElements(BrowserActivator.PLUGIN_ID,
+    IConfigurationElement[] categories = ExtensionPointHelper.getConfigurationElements(BrowserActivator.getDefault().getBundle().getSymbolicName(),
         CONTENT_PROVIDER_CATEGORY);
 
     for (IConfigurationElement categoryConfigurationElement : categories) {

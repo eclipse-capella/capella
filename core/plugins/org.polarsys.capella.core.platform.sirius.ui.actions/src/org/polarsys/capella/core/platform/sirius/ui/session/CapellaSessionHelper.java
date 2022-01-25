@@ -357,7 +357,7 @@ public class CapellaSessionHelper {
     if (errorMsg != null) {
       //Due to org.eclipse.ui.statushandlers.WorkbenchStatusDialogManager performing modification of 
       //displayed exception message, status message must be different of the exception message
-      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, errorMsg, new RuntimeException(exception));
+      return new Status(IStatus.ERROR, Activator.getDefault().getBundle().getSymbolicName(), errorMsg, new RuntimeException(exception));
     }
     return Status.OK_STATUS;
   }

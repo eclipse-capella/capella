@@ -343,7 +343,7 @@ public class MarkerViewFilter extends ViewerFilter {
       try {
         resource.accept(vis);
       } catch (CoreException e) {
-        Platform.getLog(MarkerViewPlugin.class).log(new Status(IStatus.ERROR, MarkerViewPlugin.PLUGIN_ID, e.getLocalizedMessage(), e));
+        Platform.getLog(MarkerViewPlugin.class).log(new Status(IStatus.ERROR, MarkerViewPlugin.getDefault().getBundle().getSymbolicName(), e.getLocalizedMessage(), e));
       }
       result = vis.getResult();
     }

@@ -41,7 +41,7 @@ public abstract class AbstractLabelProviderFactory {
    */
   public static AbstractLabelProviderFactory getInstance() {
     if (null == _instance) {
-      IConfigurationElement[] configurationElements = ExtensionPointHelper.getConfigurationElements(BrowserActivator.PLUGIN_ID, LABEL_PROVIDER_FACTORY);
+      IConfigurationElement[] configurationElements = ExtensionPointHelper.getConfigurationElements(BrowserActivator.getDefault().getBundle().getSymbolicName(), LABEL_PROVIDER_FACTORY);
       for (IConfigurationElement configurationElement : configurationElements) {
         AbstractLabelProviderFactory labelProvider =
             (AbstractLabelProviderFactory) ExtensionPointHelper.createInstance(configurationElement, ExtensionPointHelper.ATT_CLASS);

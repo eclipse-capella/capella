@@ -152,7 +152,7 @@ public class MigrationJobScheduler {
 
   protected void logStatus(MigrationContext context, IStatus status) {
     if (status.isOK()) {
-      status = new Status(IStatus.INFO, Activator.PLUGIN_ID, NLS.bind(Messages.MigrationAction_MigrationOK, context.getName()));
+      status = new Status(IStatus.INFO, Activator.getDefault().getBundle().getSymbolicName(), NLS.bind(Messages.MigrationAction_MigrationOK, context.getName()));
     }
     
     StatusManager.getManager().handle(status, StatusManager.LOG);

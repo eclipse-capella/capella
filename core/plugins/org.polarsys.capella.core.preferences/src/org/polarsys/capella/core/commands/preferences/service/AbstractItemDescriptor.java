@@ -228,7 +228,7 @@ public abstract class AbstractItemDescriptor implements IItemDescriptor {
 		if (value == null) {
 			CoreException ce = new CoreException( new Status(
 				IStatus.ERROR,
-				Activator.PLUGIN_ID,
+				Activator.getDefault().getBundle().getSymbolicName(),
 				CustomPreferencesStatusCodes.ITEM_NOT_INITED,Activator.getMessage(ITEM_INCOMPLETE,	missingItem),
 				null));
 			

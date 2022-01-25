@@ -111,7 +111,7 @@ public class MergeCategoryManager extends CategoryManager {
     Object purposeValue = context.get(ITransitionConstants.TRANSPOSER_PURPOSE);
     if (purposeValue instanceof String) {
       String purpose = (String) purposeValue;
-      ScopedCapellaPreferencesStore scps = ScopedCapellaPreferencesStore.getInstance(Activator.PLUGIN_ID);
+      ScopedCapellaPreferencesStore scps = ScopedCapellaPreferencesStore.getInstance(Activator.getDefault().getBundle().getSymbolicName());
 
       for (IDifferenceCategory category : getCategories()) {
         String isActiveKey = getIsActiveKey(purpose, category);
@@ -137,7 +137,7 @@ public class MergeCategoryManager extends CategoryManager {
     if (purposeValue instanceof String) {
       String purpose = (String) purposeValue;
       
-      ScopedCapellaPreferencesStore scps = ScopedCapellaPreferencesStore.getInstance(Activator.PLUGIN_ID);
+      ScopedCapellaPreferencesStore scps = ScopedCapellaPreferencesStore.getInstance(Activator.getDefault().getBundle().getSymbolicName());
       
       for (IDifferenceCategory category : this.getCategories()) {
         String isActiveKey = getIsActiveKey(purpose, category);

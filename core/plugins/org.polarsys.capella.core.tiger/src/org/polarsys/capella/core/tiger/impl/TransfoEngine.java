@@ -292,7 +292,7 @@ public abstract class TransfoEngine extends ITransfoEngine {
    */
   public void preExecute(ITransfo transfo) throws CoreException, Exception {
     IExtensionRegistry registry = Platform.getExtensionRegistry();
-    IConfigurationElement[] elements = registry.getConfigurationElementsFor(Activator.PLUGIN_ID);
+    IConfigurationElement[] elements = registry.getConfigurationElementsFor(Activator.getDefault().getBundle().getSymbolicName());
     for (final IConfigurationElement element : elements) {
       if (TRANSFO_EXTENSION.equals(element.getName())) {
         ITransfoEngineExecuteExt extension = (ITransfoEngineExecuteExt) element.createExecutableExtension("class"); //$NON-NLS-1$
@@ -314,7 +314,7 @@ public abstract class TransfoEngine extends ITransfoEngine {
 
     try {
       IExtensionRegistry registry = Platform.getExtensionRegistry();
-      IConfigurationElement[] elements = registry.getConfigurationElementsFor(Activator.PLUGIN_ID);
+      IConfigurationElement[] elements = registry.getConfigurationElementsFor(Activator.getDefault().getBundle().getSymbolicName());
       for (final IConfigurationElement element : elements) {
         if (TRANSFO_EXTENSION.equals(element.getName())) {
           ITransfoEngineExecuteExt extension = (ITransfoEngineExecuteExt) element.createExecutableExtension("class"); //$NON-NLS-1$

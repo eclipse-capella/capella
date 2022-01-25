@@ -275,13 +275,13 @@ public abstract class AbstractMdeElementListSelectionDialog extends SelectionSta
       if (_validator != null) {
         status = _validator.validate(elements);
       } else {
-        status = new Status(IStatus.OK, PlatformUI.PLUGIN_ID, IStatus.OK, "", //$NON-NLS-1$ null);
+        status = new Status(IStatus.OK, PlatformUI.getDefault().getBundle().getSymbolicName(), IStatus.OK, "", //$NON-NLS-1$ null);
       }
     } else {
       if (_filteredList.isEmpty()) {
-        status = new Status(IStatus.ERROR, PlatformUI.PLUGIN_ID, IStatus.ERROR, _emptyListMessage, null);
+        status = new Status(IStatus.ERROR, PlatformUI.getDefault().getBundle().getSymbolicName(), IStatus.ERROR, _emptyListMessage, null);
       } else {
-        status = new Status(IStatus.ERROR, PlatformUI.PLUGIN_ID, IStatus.ERROR, _emptySelectionMessage, null);
+        status = new Status(IStatus.ERROR, PlatformUI.getDefault().getBundle().getSymbolicName(), IStatus.ERROR, _emptySelectionMessage, null);
       }
     }
 

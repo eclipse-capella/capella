@@ -20,12 +20,12 @@ import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaActionsActiva
 public class TitleBlockPreferencesInitializer extends AbstractPreferencesInitializer {
 
   public TitleBlockPreferencesInitializer() {
-    super(CapellaActionsActivator.PLUGIN_ID);
+    super(CapellaActionsActivator.getDefault().getBundle().getSymbolicName());
   }
 
   @Override
   public void initializeDefaultPreferences() {
-    IPreferenceStore preferenceStore = ScopedCapellaPreferencesStore.getInstance(CapellaActionsActivator.PLUGIN_ID);
+    IPreferenceStore preferenceStore = ScopedCapellaPreferencesStore.getInstance(CapellaActionsActivator.getDefault().getBundle().getSymbolicName());
     preferenceStore.setDefault(TitleBlockPreferencePage.COLUMNS_NUMBER_PREFERENCE_STORE, 2);
     preferenceStore.setDefault(TitleBlockPreferencePage.LINES_NUMBER_PREFERENCE_STORE, 2);
     preferenceStore.setDefault(TitleBlockPreferencePage.TABLE_CONTENT_PREFERENCE_STORE, TitleBlockPreferencePage.DEFAULT_TABLE);

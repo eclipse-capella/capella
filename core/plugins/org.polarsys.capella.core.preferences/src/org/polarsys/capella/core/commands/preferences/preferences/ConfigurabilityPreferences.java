@@ -26,9 +26,9 @@ import org.polarsys.capella.core.preferences.Activator;
  */
 public class ConfigurabilityPreferences {
 
-  private static final IEclipsePreferences defaultScopPref = DefaultScope.INSTANCE.getNode(Activator.PLUGIN_ID);
+  private static final IEclipsePreferences defaultScopPref = DefaultScope.INSTANCE.getNode(Activator.getDefault().getBundle().getSymbolicName());
 
-  private static final IEclipsePreferences instanceScopPrefs = InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID);
+  private static final IEclipsePreferences instanceScopPrefs = InstanceScope.INSTANCE.getNode(Activator.getDefault().getBundle().getSymbolicName());
 
   /**
    * Not instantiable, as all features are static.
@@ -43,7 +43,7 @@ public class ConfigurabilityPreferences {
   public static void save() {
     try {
 
-      InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID).flush();
+      InstanceScope.INSTANCE.getNode(Activator.getDefault().getBundle().getSymbolicName()).flush();
       instanceScopPrefs.flush();
 
     } catch (BackingStoreException exception) {

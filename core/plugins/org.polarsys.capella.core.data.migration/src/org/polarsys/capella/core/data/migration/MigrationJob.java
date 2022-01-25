@@ -27,7 +27,7 @@ import org.polarsys.capella.core.data.migration.context.MigrationContext;
  */
 public class MigrationJob extends WorkspaceJob {
 
-  public static final QualifiedName RESULT_PROPERTY = new QualifiedName(Activator.PLUGIN_ID, "result"); //$NON-NLS-1$
+  public static final QualifiedName RESULT_PROPERTY = new QualifiedName(Activator.getDefault().getBundle().getSymbolicName(), "result"); //$NON-NLS-1$
 
   private boolean checkVersion;
   private MigrationContext context;
@@ -60,7 +60,7 @@ public class MigrationJob extends WorkspaceJob {
         try { // refresh output file.
           runnable.getFile().getProject().refreshLocal(IResource.DEPTH_INFINITE, SubMonitor.convert(monitor, 5));
         } catch (CoreException exception) {
-          result = new Status(IStatus.ERROR, Activator.PLUGIN_ID, exception.getMessage(), exception);
+          result = new Status(IStatus.ERROR, Activator.getDefault().getBundle().getSymbolicName(), exception.getMessage(), exception);
         }
       }
 

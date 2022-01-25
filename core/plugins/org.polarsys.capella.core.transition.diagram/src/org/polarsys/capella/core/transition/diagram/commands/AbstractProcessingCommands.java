@@ -63,7 +63,7 @@ public class AbstractProcessingCommands<T> extends AbstractProcessingRunnable<T>
          */
         @Override
         public void commandRolledBack() {
-          result[0] = new Status(IStatus.ERROR, Activator.PLUGIN_ID, getName());
+          result[0] = new Status(IStatus.ERROR, Activator.getDefault().getBundle().getSymbolicName(), getName());
         }
 
         public void run() {
@@ -75,7 +75,7 @@ public class AbstractProcessingCommands<T> extends AbstractProcessingRunnable<T>
             if (exception_p.getMessage() != null) {
               message += ": " + exception_p.getMessage();
             }
-            result[0] = new Status(IStatus.ERROR, Activator.PLUGIN_ID, message, exception_p);
+            result[0] = new Status(IStatus.ERROR, Activator.getDefault().getBundle().getSymbolicName(), message, exception_p);
           }
         }
       });
@@ -85,7 +85,7 @@ public class AbstractProcessingCommands<T> extends AbstractProcessingRunnable<T>
       if (exception_p.getMessage() != null) {
         message += ": " + exception_p.getMessage();
       }
-      result[0] = new Status(IStatus.ERROR, Activator.PLUGIN_ID, message, exception_p);
+      result[0] = new Status(IStatus.ERROR, Activator.getDefault().getBundle().getSymbolicName(), message, exception_p);
     }
     return result[0];
   }

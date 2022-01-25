@@ -37,7 +37,7 @@ public class ReportLogViewExtPointUtil {
     // Get all the contribution to the marker filtering on report log.
     IConfigurationElement[] configurationElements =
         ExtensionPointHelper.getConfigurationElements(
-            MarkerViewPlugin.PLUGIN_ID,
+            MarkerViewPlugin.getDefault().getBundle().getSymbolicName(),
             IReportLogViewExtPointConstants.EXT_POINT_ID
         );
     

@@ -27,7 +27,7 @@ public class TopDownPreferenceInitializer extends AbstractPreferencesInitializer
 	/**
 	 */
 	public TopDownPreferenceInitializer() {
-		super(org.polarsys.capella.core.transition.system.topdown.ui.Activator.PLUGIN_ID);
+		super(org.polarsys.capella.core.transition.system.topdown.ui.Activator.getDefault().getBundle().getSymbolicName());
 	}
 
 	/**
@@ -42,6 +42,6 @@ public class TopDownPreferenceInitializer extends AbstractPreferencesInitializer
 				((IDefaultValueProperty) property).initializeDefaultValue(context);
 			}
 		}
-		ScopedCapellaPreferencesStore.getInstance(Activator.PLUGIN_ID).save();
+		ScopedCapellaPreferencesStore.getInstance(Activator.getDefault().getBundle().getSymbolicName()).save();
 	}
 }

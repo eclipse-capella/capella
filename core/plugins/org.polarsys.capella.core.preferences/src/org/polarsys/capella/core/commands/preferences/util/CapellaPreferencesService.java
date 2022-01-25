@@ -170,8 +170,8 @@ public class CapellaPreferencesService {
 
       }
       current.put(key, value);
-      InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID).put(key, value);
-      // new DefaultScope().getNode(Activator.PLUGIN_ID).put(key, value);
+      InstanceScope.INSTANCE.getNode(Activator.getDefault().getBundle().getSymbolicName()).put(key, value);
+      // new DefaultScope().getNode(Activator.getDefault().getBundle().getSymbolicName()).put(key, value);
 
     }
 

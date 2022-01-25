@@ -32,8 +32,8 @@ public class UserProfileDescriptor extends AbstractItemDescriptor implements IUs
 	public UserProfileDescriptor(String userProfileModeId,String userProfileModeName) {
 
 		try {
-			assertNotNull(userProfileModeId, Activator.PLUGIN_ID);
-			assertNotNull(userProfileModeName, Activator.PLUGIN_ID);
+			assertNotNull(userProfileModeId, Activator.getDefault().getBundle().getSymbolicName());
+			assertNotNull(userProfileModeName, Activator.getDefault().getBundle().getSymbolicName());
 			
 			PreferencesItemsRegistry.getInstance().registerUserProfile(this); 
 			
@@ -77,7 +77,7 @@ public class UserProfileDescriptor extends AbstractItemDescriptor implements IUs
 	 */
 	@Override
 	public String getPluginId() {
-		return Activator.PLUGIN_ID;
+		return Activator.getDefault().getBundle().getSymbolicName();
 	}
 
 	/**

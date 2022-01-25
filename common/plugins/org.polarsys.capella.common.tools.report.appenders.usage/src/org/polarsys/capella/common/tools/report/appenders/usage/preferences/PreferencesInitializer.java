@@ -24,7 +24,7 @@ public class PreferencesInitializer extends AbstractPreferencesInitializer {
    *
    */
   public PreferencesInitializer() {
-    super(UsageAppenderPlugin.PLUGIN_ID);
+    super(UsageAppenderPlugin.getDefault().getBundle().getSymbolicName());
   }
 
   /**

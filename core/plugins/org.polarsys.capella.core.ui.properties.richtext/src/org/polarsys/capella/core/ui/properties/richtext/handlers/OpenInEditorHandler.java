@@ -40,7 +40,7 @@ public class OpenInEditorHandler implements MDERichTextToolbarItemHandler {
     try {
       activePage.openEditor(input, CapellaMDERichTextEditor.ID);
     } catch (PartInitException e) {
-      Status status = new Status(IStatus.ERROR, CapellaUIPropertiesRichtextPlugin.PLUGIN_ID, e.getMessage(), e);
+      Status status = new Status(IStatus.ERROR, CapellaUIPropertiesRichtextPlugin.getDefault().getBundle().getSymbolicName(), e.getMessage(), e);
       Platform.getLog(CapellaUIPropertiesRichtextPlugin.class).log(status);
     }
 

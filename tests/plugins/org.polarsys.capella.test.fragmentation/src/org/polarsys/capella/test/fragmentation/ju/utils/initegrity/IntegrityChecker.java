@@ -114,7 +114,7 @@ public class IntegrityChecker implements IChecker {
             EObjectLabelProviderHelper.getText(objects.get(idDuplicate).iterator().next()), idDuplicate));
       }
 
-      statuses.add(new Status(AbstractCommandLine.FATAL, Activator.PLUGIN_ID, buffer.toString()));
+      statuses.add(new Status(AbstractCommandLine.FATAL, Activator.getDefault().getBundle().getSymbolicName(), buffer.toString()));
     }
 
     submonitor.worked(1);
@@ -165,17 +165,17 @@ public class IntegrityChecker implements IChecker {
           }
         }
       }
-      statuses.add(new Status(AbstractCommandLine.FATAL, Activator.PLUGIN_ID, buffer.toString()));
+      statuses.add(new Status(AbstractCommandLine.FATAL, Activator.getDefault().getBundle().getSymbolicName(), buffer.toString()));
     }
 
     submonitor.worked(1);
     submonitor.done();
     monitor_p.done();
     if (statuses.size() > 0) {
-      return new MultiStatus(Activator.PLUGIN_ID, IStatus.ERROR, statuses.toArray(new IStatus[0]),
+      return new MultiStatus(Activator.getDefault().getBundle().getSymbolicName(), IStatus.ERROR, statuses.toArray(new IStatus[0]),
           IntegrityChecker_FailedDuplicateElements, null);
     }
 
-    return new Status(IStatus.OK, Activator.PLUGIN_ID, IntegrityChecker_OK);
+    return new Status(IStatus.OK, Activator.getDefault().getBundle().getSymbolicName(), IntegrityChecker_OK);
   }
 }

@@ -153,7 +153,7 @@ public class ReplicaContentProperty extends AbstractProperty implements ICompoun
     }
 
     if (!linksInvalid.isEmpty()) {
-      return new Status(IStatus.ERROR, IReConstants.PLUGIN_ID, "Some elements need to be stored in the model");
+      return new Status(IStatus.ERROR, IReConstants.getDefault().getBundle().getSymbolicName(), "Some elements need to be stored in the model");
     }
     return Status.OK_STATUS;
   }

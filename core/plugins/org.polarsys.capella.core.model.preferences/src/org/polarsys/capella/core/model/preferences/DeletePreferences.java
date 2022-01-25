@@ -24,7 +24,7 @@ public class DeletePreferences extends AbstractPreferencesInitializer implements
    * @param pluginID
    */
   public DeletePreferences() {
-    super(CapellaModelPreferencesPlugin.PLUGIN_ID);
+    super(CapellaModelPreferencesPlugin.getDefault().getBundle().getSymbolicName());
   }
 
   /**

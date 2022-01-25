@@ -33,7 +33,7 @@ public class CapellaValidationPreferencesPage extends AbstractDefaultPreferenceP
   public static final String PROPERTY_PAGE_ID = "org.polarsys.capella.core.platform.sirius.ui.actions.preferences.CapellaValidationPreferences"; //$NON-NLS-1$
 
   public CapellaValidationPreferencesPage() {
-    super(CapellaActionsActivator.PLUGIN_ID);
+    super(CapellaActionsActivator.getDefault().getBundle().getSymbolicName());
     setDescription(Messages.ModelValidationPreferencePage_Description);
   }
 

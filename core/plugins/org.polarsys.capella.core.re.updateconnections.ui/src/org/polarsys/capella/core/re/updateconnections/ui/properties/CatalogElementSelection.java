@@ -76,7 +76,7 @@ public class CatalogElementSelection extends AbstractProperty implements IRestra
     for (IProperty property : context.getProperties().getAllItems()) {
       if (property instanceof CatalogElementSelection && !this.equals(property)) {
         if (value.equals(context.getCurrentValue(property))) {
-          return new Status(IStatus.ERROR, UpdateConnectionsUIActivator.PLUGIN_ID, "Selected RPLs must be different");
+          return new Status(IStatus.ERROR, UpdateConnectionsUIActivator.getDefault().getBundle().getSymbolicName(), "Selected RPLs must be different");
         }
       }
     }

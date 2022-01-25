@@ -70,7 +70,7 @@ public class CapellaSiriusCustomisationEnabled extends BasicTestCase {
   }
 
   private void assertSiriusCommonUIPluginPreferences() {
-    IEclipsePreferences defaultScope = DefaultScope.INSTANCE.getNode(SiriusTransPlugin.PLUGIN_ID);
+    IEclipsePreferences defaultScope = DefaultScope.INSTANCE.getNode(SiriusTransPlugin.getDefault().getBundle().getSymbolicName());
 
     assertFalse("Preference value for 'Defensive edit validation' is not the intended one",
         defaultScope.getBoolean(CommonPreferencesConstants.PREF_DEFENSIVE_EDIT_VALIDATION, true));

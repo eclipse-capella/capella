@@ -46,7 +46,7 @@ public class Rule_StateFragment extends Rule_CapellaElement {
     StateFragment source = (StateFragment) element_p;
     List<EObject> relatedElements = IScenarioHelper.getInstance(context_p).getTargetRelatedElements(source, context_p);
     if (relatedElements.isEmpty()) {
-      return new Status(IStatus.WARNING, Activator.PLUGIN_ID, "State Fragment is not transitioned");
+      return new Status(IStatus.WARNING, Activator.getDefault().getBundle().getSymbolicName(), "State Fragment is not transitioned");
     }
     return super.transformRequired(element_p, context_p);
   }
