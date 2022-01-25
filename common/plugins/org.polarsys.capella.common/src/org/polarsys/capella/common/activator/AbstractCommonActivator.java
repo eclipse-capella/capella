@@ -13,6 +13,7 @@
 
 package org.polarsys.capella.common.activator;
 
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 
 import org.polarsys.capella.common.mdsofa.common.activator.AbstractActivator;
@@ -29,6 +30,6 @@ public abstract class AbstractCommonActivator extends AbstractActivator {
    */
   @Deprecated
   public void log(int severity, String message, Throwable exception) {
-    getLog().log(new Status(severity, getBundle().getSymbolicName(), message, exception));
+    Platform.getLog(getBundle()).log(new Status(severity, getBundle().getSymbolicName(), message, exception));
   }
 }

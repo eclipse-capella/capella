@@ -21,6 +21,7 @@ import java.util.Set;
 
 import org.eclipse.core.runtime.ILogListener;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.validation.internal.EMFModelValidationPlugin;
 import org.eclipse.emf.validation.internal.EMFModelValidationStatusCodes;
 import org.eclipse.emf.validation.service.IConstraintDescriptor;
@@ -60,8 +61,7 @@ public class NoDuplicateRuleIdsTest extends BasicTestCase {
    */
   public void test() throws Exception {
     final List<IStatus> logged = new ArrayList<IStatus>();
-    
-    EMFModelValidationPlugin.getPlugin().getLog().addLogListener(new ILogListener(){
+    Platform.getLog(EMFModelValidationPlugin.class).addLogListener(new ILogListener(){
      public void logging(IStatus status_p, String plugin_p) {
         if (status_p.getCode() == EMFModelValidationStatusCodes.PROVIDER_DUPLICATE_CONSTRAINT)
         logged.add(status_p);

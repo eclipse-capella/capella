@@ -13,6 +13,7 @@
 package org.polarsys.capella.common.re;
 
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Plugin;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.preferences.InstanceScope;
@@ -54,7 +55,7 @@ public class Activator extends Plugin {
       // persist parent locator option preference
       InstanceScope.INSTANCE.getNode(PLUGIN_ID).flush();
     } catch (BackingStoreException e) {
-      getLog().log(new Status(IStatus.ERROR, PLUGIN_ID, e.getLocalizedMessage(), e));
+      Platform.getLog(Activator.class).log(new Status(IStatus.ERROR, PLUGIN_ID, e.getLocalizedMessage(), e));
     } finally {
       plugin = null;
       super.stop(context);

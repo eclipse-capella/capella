@@ -15,6 +15,7 @@ package org.polarsys.capella.core.sirius.analysis.tool;
 import java.util.Collections;
 
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.transaction.RollbackException;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -45,7 +46,7 @@ public class ActivityEditorUpdater implements IActivityManagerListener {
         tm.notifyToolChange();
         
       } catch (RollbackException | InterruptedException e) {
-        SiriusViewActivator.getInstance().getLog().log(new Status(IStatus.WARNING, SiriusViewActivator.ID, e.getMessage(), e));
+        Platform.getLog(SiriusViewActivator.class).log(new Status(IStatus.WARNING, SiriusViewActivator.ID, e.getMessage(), e));
       }
     }
   }

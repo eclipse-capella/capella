@@ -16,6 +16,7 @@ import java.lang.reflect.InvocationTargetException;
 
 import org.eclipse.core.internal.preferences.DefaultPreferences;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.preferences.DefaultScope;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
@@ -72,7 +73,7 @@ public class SiriusCustomizationPlugin extends AbstractUIPlugin {
 
       customizeSiriusDefaultPreferences();
     } catch (Exception e) {
-      getLog().log(new Status(IStatus.ERROR, PLUGIN_ID, IStatus.OK, e.getMessage(), e));
+      Platform.getLog(SiriusCustomizationPlugin.class).log(new Status(IStatus.ERROR, PLUGIN_ID, IStatus.OK, e.getMessage(), e));
     }
   }
 
@@ -171,7 +172,7 @@ public class SiriusCustomizationPlugin extends AbstractUIPlugin {
       try {
         ReflectionHelper.invokeMethod(preferencesNode, DefaultPreferences.class, "applyCommandLineDefaults", new Class[] {}, new Object[] {}, true); //$NON-NLS-1$
       } catch (SecurityException | NoSuchMethodException | IllegalArgumentException | IllegalAccessException | InvocationTargetException e) {
-        getLog().log(new Status(IStatus.ERROR, PLUGIN_ID, IStatus.ERROR, "Failed to apply plugin customization from command line arguments for plugin " + PLUGIN_ID, e)); //$NON-NLS-1$
+        Platform.getLog(SiriusCustomizationPlugin.class).log(new Status(IStatus.ERROR, PLUGIN_ID, IStatus.ERROR, "Failed to apply plugin customization from command line arguments for plugin " + PLUGIN_ID, e)); //$NON-NLS-1$
       }
     }
   }

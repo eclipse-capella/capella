@@ -43,6 +43,7 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.ui.preferences.ScopedPreferenceStore;
 import org.osgi.framework.BundleContext;
 import org.osgi.service.event.Event;
+import org.polarsys.capella.common.platform.sirius.customisation.SiriusCustomizationPlugin;
 import org.polarsys.capella.core.commands.preferences.internalization.l10n.CustomPreferencesMessages;
 import org.polarsys.capella.core.commands.preferences.model.CategoryPreferences;
 import org.polarsys.capella.core.commands.preferences.model.CategoryPreferencesManager;
@@ -139,7 +140,7 @@ public class Activator extends AbstractUIPlugin {
                 configProject.refreshLocal(IResource.DEPTH_INFINITE, null);
                 project.refreshLocal(IResource.DEPTH_INFINITE, null);
               } catch (Exception exception) {
-                getLog().error(exception.getMessage(), exception);
+                Platform.getLog(Activator.class).error(exception.getMessage(), exception);
               }
             }
           }

@@ -97,7 +97,7 @@ public abstract class AbstractUIActivator extends AbstractUIPlugin {
    * @param exception a low-level exception, or <code>null</code> if not applicable
    */
   public void log(int severity, String message, Throwable exception) {
-    getLog().log(new Status(severity, getPluginId(), message, exception));
+    Platform.getLog(getBundle()).log(new Status(severity, getPluginId(), message, exception));
   }
 
   /**

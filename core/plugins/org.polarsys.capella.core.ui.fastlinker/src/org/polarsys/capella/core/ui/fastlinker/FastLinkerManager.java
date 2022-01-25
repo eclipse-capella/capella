@@ -20,6 +20,7 @@ import java.util.List;
 
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.ecore.EClass;
@@ -272,9 +273,7 @@ public class FastLinkerManager {
 							IWorkbenchPage.VIEW_VISIBLE);
 		} catch (PartInitException exception) {
 			// An error occurred -> log it.
-			FastLinkerActivator
-					.getDefault()
-					.getLog().log(new Status(IStatus.ERROR,
+		  Platform.getLog(FastLinkerActivator.class).log(new Status(IStatus.ERROR,
 							FastLinkerActivator.PLUGIN_ID, exception
 									.getLocalizedMessage(), exception));
 			return null;
@@ -419,9 +418,7 @@ public class FastLinkerManager {
 							IWorkbenchPage.VIEW_VISIBLE);
 		} catch (PartInitException exception) {
 			// An error occurred -> log it.
-			MarkerViewPlugin
-					.getDefault()
-					.getLog().log(new Status(IStatus.ERROR, MarkerViewPlugin.PLUGIN_ID,
+		  Platform.getLog(MarkerViewPlugin.class).log(new Status(IStatus.ERROR, MarkerViewPlugin.PLUGIN_ID,
 							exception.getLocalizedMessage(), exception));
 		}
 	}
