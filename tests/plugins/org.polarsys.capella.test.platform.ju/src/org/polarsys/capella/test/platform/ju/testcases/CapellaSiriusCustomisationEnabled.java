@@ -21,6 +21,7 @@ import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.ui.IWorkbenchPreferenceConstants;
 import org.eclipse.ui.PlatformUI;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
 
 public class CapellaSiriusCustomisationEnabled extends BasicTestCase {
@@ -70,7 +71,7 @@ public class CapellaSiriusCustomisationEnabled extends BasicTestCase {
   }
 
   private void assertSiriusCommonUIPluginPreferences() {
-    IEclipsePreferences defaultScope = DefaultScope.INSTANCE.getNode(SiriusTransPlugin.getDefault().getBundle().getSymbolicName());
+    IEclipsePreferences defaultScope = DefaultScope.INSTANCE.getNode(FrameworkUtil.getBundle(SiriusTransPlugin.class).getSymbolicName());
 
     assertFalse("Preference value for 'Defensive edit validation' is not the intended one",
         defaultScope.getBoolean(CommonPreferencesConstants.PREF_DEFENSIVE_EDIT_VALIDATION, true));

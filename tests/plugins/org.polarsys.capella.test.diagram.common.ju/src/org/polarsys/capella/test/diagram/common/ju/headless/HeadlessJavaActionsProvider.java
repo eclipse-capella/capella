@@ -25,6 +25,7 @@ import org.eclipse.sirius.tools.api.ui.ExternalJavaActionProvider;
 import org.eclipse.sirius.tools.internal.ui.ExternalJavaActionDescriptor;
 import org.eclipse.sirius.tools.internal.ui.ExternalJavaActionRegistryListener;
 import org.eclipse.ui.PlatformUI;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.test.diagram.common.ju.TestDiagramCommonPlugin;
 
 public class HeadlessJavaActionsProvider {
@@ -35,7 +36,7 @@ public class HeadlessJavaActionsProvider {
     IExtensionRegistry extensionRegistry = Platform.getExtensionRegistry();
     HashMap<String, String> headlessActionIds = new HashMap<String, String>();
     IExtension[] extensions = extensionRegistry
-        .getExtensions(ContributorFactoryOSGi.createContributor(TestDiagramCommonPlugin.getDefault().getBundle()));
+        .getExtensions(ContributorFactoryOSGi.createContributor(FrameworkUtil.getBundle(TestDiagramCommonPlugin.class)));
     for (IExtension extension : extensions) {
       if (ExternalJavaActionRegistryListener.EXTERNAL_JAVA_ACTION_EXTENSION_POINT
           .equals(extension.getExtensionPointUniqueIdentifier())) {

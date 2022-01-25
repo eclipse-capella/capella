@@ -123,6 +123,7 @@ import org.eclipse.ui.part.ViewPart;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.flexibility.wizards.ui.FlexibilityColors;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.libraries.IModel;
@@ -334,7 +335,7 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
         referenceErrors.set(status);
         MyDiagnosticDialog dialog = new MyDiagnosticDialog(getViewSite().getShell(), status); 
         if (dialog.open() == Window.CANCEL) {
-          throw new RollbackException(new Status(IStatus.CANCEL, Activator.getDefault().getBundle().getSymbolicName(), Messages.MoveStagingView_CancelStatusMessage));
+          throw new RollbackException(new Status(IStatus.CANCEL, FrameworkUtil.getBundle(Activator.class).getSymbolicName(), Messages.MoveStagingView_CancelStatusMessage));
         } else {
           forcedMove.set(true);
         }
@@ -1473,7 +1474,7 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
       try {
         window.getActivePage().showView(CapellaCommonNavigator.ID, null, IWorkbenchPage.VIEW_ACTIVATE);
       } catch (PartInitException e) {
-        Platform.getLog(Activator.class).log(new Status(IStatus.ERROR, Activator.getDefault().getBundle().getSymbolicName(), e.getLocalizedMessage(), e));
+        Platform.getLog(Activator.class).log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(Activator.class).getSymbolicName(), e.getLocalizedMessage(), e));
       }
       super.selectElementInCapellaExplorer(selection);
     }

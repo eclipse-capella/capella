@@ -20,6 +20,7 @@ import java.util.LinkedHashSet;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.flexibility.properties.property.AbstractProperty;
 import org.polarsys.capella.common.flexibility.properties.schema.ICompoundProperty;
 import org.polarsys.capella.common.flexibility.properties.schema.IEditableProperty;
@@ -153,7 +154,7 @@ public class ReplicaContentProperty extends AbstractProperty implements ICompoun
     }
 
     if (!linksInvalid.isEmpty()) {
-      return new Status(IStatus.ERROR, IReConstants.getDefault().getBundle().getSymbolicName(), "Some elements need to be stored in the model");
+      return new Status(IStatus.ERROR, FrameworkUtil.getBundle(IReConstants.class).getSymbolicName(), "Some elements need to be stored in the model");
     }
     return Status.OK_STATUS;
   }

@@ -13,6 +13,7 @@
 package org.polarsys.capella.test.benchmarks.ju;
 
 import org.eclipse.core.runtime.IConfigurationElement;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
 
 public class TestParameters implements ITestParameters {
@@ -26,7 +27,7 @@ public class TestParameters implements ITestParameters {
   public static ITestParameters getInstance() {
     if (instance == null) {
       for (IConfigurationElement configElement : ExtensionPointHelper
-          .getConfigurationElements(CapellaPerformanceTestsActivator.getDefault().getBundle().getSymbolicName(), TEST_PARAMETER_EXT_POINT)) {
+          .getConfigurationElements(FrameworkUtil.getBundle(CapellaPerformanceTestsActivator.class).getSymbolicName(), TEST_PARAMETER_EXT_POINT)) {
         instance = (ITestParameters) ExtensionPointHelper.createInstance(configElement, ExtensionPointHelper.ATT_CLASS);
       }
 

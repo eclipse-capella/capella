@@ -28,6 +28,7 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.commands.ICommandService;
 import org.eclipse.ui.handlers.IHandlerService;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ef.command.ICommand;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.common.tools.report.util.LogExt;
@@ -269,7 +270,7 @@ public class TransitionUICommandHelper
           MessageDialog.openWarning(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), getName(),
               message);
           LogExt.log(IReportManagerDefaultComponents.DEFAULT,
-              new Status(IStatus.WARNING, Activator.getDefault().getBundle().getSymbolicName(), message));
+              new Status(IStatus.WARNING, FrameworkUtil.getBundle(Activator.class).getSymbolicName(), message));
         } else {
           super.run();
         }

@@ -31,6 +31,7 @@ import org.eclipse.core.runtime.preferences.IPreferencesService;
 import org.eclipse.core.runtime.preferences.IScopeContext;
 import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.ui.preferences.ScopedPreferenceStore;
+import org.osgi.framework.FrameworkUtil;
 import org.osgi.service.prefs.BackingStoreException;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
@@ -68,7 +69,7 @@ public class ScopedCapellaPreferencesStore extends ScopedPreferenceStore {
   public static ScopedCapellaPreferencesStore getInstance(String pluginID_p) {
     if (instance == null) {
       // 1953: We share the same preference store. we don't want use the first one loaded.
-      instance = new ScopedCapellaPreferencesStore(Activator.getDefault().getBundle().getSymbolicName());
+      instance = new ScopedCapellaPreferencesStore(FrameworkUtil.getBundle(Activator.class).getSymbolicName());
     }
     return instance;
   }
@@ -88,8 +89,8 @@ public class ScopedCapellaPreferencesStore extends ScopedPreferenceStore {
   protected static void putBoolean(IProject project, String optionName, boolean value) {
     String key = project != null ? project.getName() + PREFERENCE_SEPARATOR + optionName : optionName;
 
-    IEclipsePreferences instanceNode = InstanceScope.INSTANCE.getNode(Activator.getDefault().getBundle().getSymbolicName());
-    IEclipsePreferences defaultNode = DefaultScope.INSTANCE.getNode(Activator.getDefault().getBundle().getSymbolicName());
+    IEclipsePreferences instanceNode = InstanceScope.INSTANCE.getNode(FrameworkUtil.getBundle(Activator.class).getSymbolicName());
+    IEclipsePreferences defaultNode = DefaultScope.INSTANCE.getNode(FrameworkUtil.getBundle(Activator.class).getSymbolicName());
 
     String instanceValue = Platform.getPreferencesService().get(optionName, null,
         new IEclipsePreferences[] { instanceNode });
@@ -115,8 +116,8 @@ public class ScopedCapellaPreferencesStore extends ScopedPreferenceStore {
   protected static void putInt(IProject project, String optionName, int value) {
     String key = project != null ? project.getName() + PREFERENCE_SEPARATOR + optionName : optionName;
 
-    IEclipsePreferences instanceNode = InstanceScope.INSTANCE.getNode(Activator.getDefault().getBundle().getSymbolicName());
-    IEclipsePreferences defaultNode = DefaultScope.INSTANCE.getNode(Activator.getDefault().getBundle().getSymbolicName());
+    IEclipsePreferences instanceNode = InstanceScope.INSTANCE.getNode(FrameworkUtil.getBundle(Activator.class).getSymbolicName());
+    IEclipsePreferences defaultNode = DefaultScope.INSTANCE.getNode(FrameworkUtil.getBundle(Activator.class).getSymbolicName());
 
     String instanceValue = Platform.getPreferencesService().get(optionName, null,
         new IEclipsePreferences[] { instanceNode });
@@ -143,8 +144,8 @@ public class ScopedCapellaPreferencesStore extends ScopedPreferenceStore {
 
     String key = project != null ? project.getName() + PREFERENCE_SEPARATOR + optionName : optionName;
 
-    IEclipsePreferences instanceNode = InstanceScope.INSTANCE.getNode(Activator.getDefault().getBundle().getSymbolicName());
-    IEclipsePreferences defaultNode = DefaultScope.INSTANCE.getNode(Activator.getDefault().getBundle().getSymbolicName());
+    IEclipsePreferences instanceNode = InstanceScope.INSTANCE.getNode(FrameworkUtil.getBundle(Activator.class).getSymbolicName());
+    IEclipsePreferences defaultNode = DefaultScope.INSTANCE.getNode(FrameworkUtil.getBundle(Activator.class).getSymbolicName());
 
     String instanceValue = Platform.getPreferencesService().get(optionName, null,
         new IEclipsePreferences[] { instanceNode });
@@ -360,16 +361,16 @@ public class ScopedCapellaPreferencesStore extends ScopedPreferenceStore {
       if (PreferencesHelper.hasConfigurationProject(project)) {
         IProject configuration = PreferencesHelper.getReferencedProjectConfiguration(project);
         if (getDefaultBoolean(name) == value) {
-          new ProjectScope(configuration).getNode(Activator.getDefault().getBundle().getSymbolicName()).remove(name);
+          new ProjectScope(configuration).getNode(FrameworkUtil.getBundle(Activator.class).getSymbolicName()).remove(name);
         } else {
-          new ProjectScope(configuration).getNode(Activator.getDefault().getBundle().getSymbolicName()).putBoolean(name, value);
+          new ProjectScope(configuration).getNode(FrameworkUtil.getBundle(Activator.class).getSymbolicName()).putBoolean(name, value);
         }
       }
     }
     if (getDefaultBoolean(name) == value) {
-      InstanceScope.INSTANCE.getNode(Activator.getDefault().getBundle().getSymbolicName()).remove(name);
+      InstanceScope.INSTANCE.getNode(FrameworkUtil.getBundle(Activator.class).getSymbolicName()).remove(name);
     } else {
-      InstanceScope.INSTANCE.getNode(Activator.getDefault().getBundle().getSymbolicName()).putBoolean(name, value);
+      InstanceScope.INSTANCE.getNode(FrameworkUtil.getBundle(Activator.class).getSymbolicName()).putBoolean(name, value);
     }
   }
 
@@ -384,25 +385,25 @@ public class ScopedCapellaPreferencesStore extends ScopedPreferenceStore {
         
         IProject configuration = PreferencesHelper.getReferencedProjectConfiguration(project);
         if (getDefaultString(name) == value) {
-          new ProjectScope(configuration).getNode(Activator.getDefault().getBundle().getSymbolicName()).remove(name);
+          new ProjectScope(configuration).getNode(FrameworkUtil.getBundle(Activator.class).getSymbolicName()).remove(name);
         } else {
-          new ProjectScope(configuration).getNode(Activator.getDefault().getBundle().getSymbolicName()).put(name, value);
+          new ProjectScope(configuration).getNode(FrameworkUtil.getBundle(Activator.class).getSymbolicName()).put(name, value);
         }
       }
     }
     
     if (getDefaultString(name) == value) {
-      InstanceScope.INSTANCE.getNode(Activator.getDefault().getBundle().getSymbolicName()).remove(name);
+      InstanceScope.INSTANCE.getNode(FrameworkUtil.getBundle(Activator.class).getSymbolicName()).remove(name);
     } else {
-      InstanceScope.INSTANCE.getNode(Activator.getDefault().getBundle().getSymbolicName()).put(name, value);
+      InstanceScope.INSTANCE.getNode(FrameworkUtil.getBundle(Activator.class).getSymbolicName()).put(name, value);
     }
     
   }
 
   public void saveForExport() {
     try {
-      IEclipsePreferences defaultPreferences = DefaultScope.INSTANCE.getNode(Activator.getDefault().getBundle().getSymbolicName());
-      IEclipsePreferences instancePreferences = InstanceScope.INSTANCE.getNode(Activator.getDefault().getBundle().getSymbolicName());
+      IEclipsePreferences defaultPreferences = DefaultScope.INSTANCE.getNode(FrameworkUtil.getBundle(Activator.class).getSymbolicName());
+      IEclipsePreferences instancePreferences = InstanceScope.INSTANCE.getNode(FrameworkUtil.getBundle(Activator.class).getSymbolicName());
       Collection<String> instanceKeys = Arrays.asList(instancePreferences.keys());
       for (String name: defaultPreferences.keys()) {
         if (!instanceKeys.contains(name)) {
@@ -460,7 +461,7 @@ public class ScopedCapellaPreferencesStore extends ScopedPreferenceStore {
       contexts = new IScopeContext[] { InstanceScope.INSTANCE, DefaultScope.INSTANCE };
     }
 
-    contains = service.getString(Activator.getDefault().getBundle().getSymbolicName(), key, null, contexts) != null;
+    contains = service.getString(FrameworkUtil.getBundle(Activator.class).getSymbolicName(), key, null, contexts) != null;
 
     return contains;
   }

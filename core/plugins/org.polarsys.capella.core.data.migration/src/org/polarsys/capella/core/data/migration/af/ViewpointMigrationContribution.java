@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.business.api.resource.ResourceDescriptor;
 import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.Version;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
@@ -147,13 +148,13 @@ public class ViewpointMigrationContribution extends AbstractMigrationContributio
     if (Version.emptyVersion.equals(fileVersion)) {
       String formattedMessage = NLS.bind(Messages.MigrationAction_ErrorDialog_CorruptedMessage,
           new String[] { context.getResourceName() });
-      return new Status(IStatus.ERROR, Activator.getDefault().getBundle().getSymbolicName(), formattedMessage);
+      return new Status(IStatus.ERROR, FrameworkUtil.getBundle(Activator.class).getSymbolicName(), formattedMessage);
     }
 
     if (!isMigrationPossible(fileVersion, currentVersion)) {
       String formattedMessage = NLS.bind(Messages.MigrationAction_ErrorDialog_TooOldMessage,
           new String[] { context.getResourceName(), currentVersion.toString() });
-      return new Status(IStatus.ERROR, Activator.getDefault().getBundle().getSymbolicName(), formattedMessage);
+      return new Status(IStatus.ERROR, FrameworkUtil.getBundle(Activator.class).getSymbolicName(), formattedMessage);
     }
 
     return Status.OK_STATUS;

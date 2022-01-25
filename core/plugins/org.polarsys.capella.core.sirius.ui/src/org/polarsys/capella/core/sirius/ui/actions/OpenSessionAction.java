@@ -36,6 +36,7 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.BaseSelectionListenerAction;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.appenders.usage.UsageMonitoringLogger;
@@ -117,7 +118,7 @@ public class OpenSessionAction extends BaseSelectionListenerAction {
         session = SessionManager.INSTANCE.getSession(selectedUri, monitor);
         if (null == session) {
           // Session is null : open session failed.
-          failedOpeningSessions.put(selectedFile, new Status(IStatus.ERROR, SiriusUIPlugin.getDefault().getBundle().getSymbolicName(), "Session can't be opened (null session)")); //$NON-NLS-1$
+          failedOpeningSessions.put(selectedFile, new Status(IStatus.ERROR, FrameworkUtil.getBundle(SiriusUIPlugin.class).getSymbolicName(), "Session can't be opened (null session)")); //$NON-NLS-1$
           continue;
         }
 
@@ -137,7 +138,7 @@ public class OpenSessionAction extends BaseSelectionListenerAction {
         // Open session.
         session.open(monitor);
         if (!session.isOpen()) {
-          failedOpeningSessions.put(selectedFile, new Status(IStatus.ERROR, SiriusUIPlugin.getDefault().getBundle().getSymbolicName(), NLS.bind("Session can't be opened (null session)", selectedFile))); //$NON-NLS-1$
+          failedOpeningSessions.put(selectedFile, new Status(IStatus.ERROR, FrameworkUtil.getBundle(SiriusUIPlugin.class).getSymbolicName(), NLS.bind("Session can't be opened (null session)", selectedFile))); //$NON-NLS-1$
           continue;
         }
 
@@ -165,7 +166,7 @@ public class OpenSessionAction extends BaseSelectionListenerAction {
         UsageMonitoringLogger.getInstance().log(eventName, eventContext, EventStatus.ERROR);
         //
         // IStatus status =
-        // new Status(IStatus.ERROR, SiriusUIPlugin.getDefault().getBundle().getSymbolicName(), NLS.bind("An error occured when opening // session ({0})", selectedFile), ex); //$NON-NLS-1$
+        // new Status(IStatus.ERROR, FrameworkUtil.getBundle(SiriusUIPlugin.class).getSymbolicName(), NLS.bind("An error occured when opening // session ({0})", selectedFile), ex); //$NON-NLS-1$
         // failedOpeningSessions.put(selectedFile, status);
         // CapellaSessionHelper.reportError(status);
 

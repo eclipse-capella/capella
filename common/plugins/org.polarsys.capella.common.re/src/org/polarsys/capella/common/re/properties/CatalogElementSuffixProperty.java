@@ -14,6 +14,7 @@ package org.polarsys.capella.common.re.properties;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.flexibility.properties.schema.IPropertyContext;
 import org.polarsys.capella.common.re.Activator;
 import org.polarsys.capella.common.re.CatalogElement;
@@ -44,10 +45,10 @@ public class CatalogElementSuffixProperty
       CatalogElement element = (CatalogElement)source;
       
       if (element.getKind() == CatalogElementKind.REC) {
-        return new Status(IStatus.INFO, Activator.getDefault().getBundle().getSymbolicName(), "This attribute should be changed in each RPL");
+        return new Status(IStatus.INFO, FrameworkUtil.getBundle(Activator.class).getSymbolicName(), "This attribute should be changed in each RPL");
         
       } else if (element.getKind() == CatalogElementKind.GROUPING) {
-        return new Status(IStatus.INFO, Activator.getDefault().getBundle().getSymbolicName(), "This attribute is not enabled on Grouping element");
+        return new Status(IStatus.INFO, FrameworkUtil.getBundle(Activator.class).getSymbolicName(), "This attribute is not enabled on Grouping element");
         
       }
     }

@@ -25,6 +25,7 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EPackage;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.core.transition.common.Activator;
 import org.polarsys.capella.core.transition.common.ExtensionHelper;
 import org.polarsys.capella.core.transition.common.constants.ISchemaConstants;
@@ -75,7 +76,7 @@ public class DomainHelper extends EmfDomainHelper {
           // Nothing more
         }
       }
-      Platform.getLog(Activator.class).log(new Status(IStatus.ERROR, TransposerEMFPlugin.getDefault().getBundle().getSymbolicName(), "No Domain Class called : " + name, e)); //$NON-NLS-1$
+      Platform.getLog(Activator.class).log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(TransposerEMFPlugin.class).getSymbolicName(), "No Domain Class called : " + name, e)); //$NON-NLS-1$
     }
 
     return null;

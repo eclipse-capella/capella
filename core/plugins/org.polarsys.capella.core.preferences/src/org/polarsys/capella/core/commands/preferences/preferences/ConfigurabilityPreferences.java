@@ -15,6 +15,7 @@ package org.polarsys.capella.core.commands.preferences.preferences;
 import org.eclipse.core.runtime.preferences.DefaultScope;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.core.runtime.preferences.InstanceScope;
+import org.osgi.framework.FrameworkUtil;
 import org.osgi.service.prefs.BackingStoreException;
 import org.polarsys.capella.core.commands.preferences.properties.PreferencesHandler;
 import org.polarsys.capella.core.commands.preferences.service.IItemDescriptor;
@@ -26,9 +27,9 @@ import org.polarsys.capella.core.preferences.Activator;
  */
 public class ConfigurabilityPreferences {
 
-  private static final IEclipsePreferences defaultScopPref = DefaultScope.INSTANCE.getNode(Activator.getDefault().getBundle().getSymbolicName());
+  private static final IEclipsePreferences defaultScopPref = DefaultScope.INSTANCE.getNode(FrameworkUtil.getBundle(Activator.class).getSymbolicName());
 
-  private static final IEclipsePreferences instanceScopPrefs = InstanceScope.INSTANCE.getNode(Activator.getDefault().getBundle().getSymbolicName());
+  private static final IEclipsePreferences instanceScopPrefs = InstanceScope.INSTANCE.getNode(FrameworkUtil.getBundle(Activator.class).getSymbolicName());
 
   /**
    * Not instantiable, as all features are static.
@@ -43,7 +44,7 @@ public class ConfigurabilityPreferences {
   public static void save() {
     try {
 
-      InstanceScope.INSTANCE.getNode(Activator.getDefault().getBundle().getSymbolicName()).flush();
+      InstanceScope.INSTANCE.getNode(FrameworkUtil.getBundle(Activator.class).getSymbolicName()).flush();
       instanceScopPrefs.flush();
 
     } catch (BackingStoreException exception) {

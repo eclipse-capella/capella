@@ -13,7 +13,7 @@
 package org.polarsys.capella.core.validation.ui.ide.messages;
 
 import org.eclipse.osgi.util.NLS;
-
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.core.validation.ui.ide.PluginActivator;
 
 /**
@@ -32,7 +32,7 @@ public class QuickfixMessages extends NLS {
   
   static {
     // initialize resource bundle
-    NLS.initializeMessages(PluginActivator.getDefault().getBundle().getSymbolicName() + ".messages.messages", QuickfixMessages.class); //$NON-NLS-1$
+    NLS.initializeMessages(FrameworkUtil.getBundle(PluginActivator.class).getSymbolicName() + ".messages.messages", QuickfixMessages.class); //$NON-NLS-1$
   }
 
   private QuickfixMessages() {

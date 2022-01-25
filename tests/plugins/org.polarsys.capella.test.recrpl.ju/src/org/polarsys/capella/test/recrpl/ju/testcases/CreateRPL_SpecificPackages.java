@@ -22,6 +22,7 @@ import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.ExecutionManagerRegistry;
 import org.polarsys.capella.common.helpers.EObjectExt;
@@ -116,7 +117,7 @@ public abstract class CreateRPL_SpecificPackages extends RecRplTestCase {
 
     super.setUp();
 
-    InstanceScope.INSTANCE.getNode(Activator.getDefault().getBundle().getSymbolicName()).put(IReConstants.PROPERTY__PARENT_LOCATOR, IReConstants.LOCATOR_OPTION_SPECIFIC_PACKAGES);
+    InstanceScope.INSTANCE.getNode(FrameworkUtil.getBundle(Activator.class).getSymbolicName()).put(IReConstants.PROPERTY__PARENT_LOCATOR, IReConstants.LOCATOR_OPTION_SPECIFIC_PACKAGES);
 
     manager = ExecutionManagerRegistry.getInstance().addNewManager();
     project = new CapellaModelSkeleton.Builder(manager).build();
@@ -134,7 +135,7 @@ public abstract class CreateRPL_SpecificPackages extends RecRplTestCase {
   public void tearDown() throws Exception {
     ExecutionManagerRegistry.getInstance().removeManager(manager);
 
-    InstanceScope.INSTANCE.getNode(Activator.getDefault().getBundle().getSymbolicName()).put(IReConstants.PROPERTY__PARENT_LOCATOR, IReConstants.LOCATOR_OPTION_DEFAULT);
+    InstanceScope.INSTANCE.getNode(FrameworkUtil.getBundle(Activator.class).getSymbolicName()).put(IReConstants.PROPERTY__PARENT_LOCATOR, IReConstants.LOCATOR_OPTION_DEFAULT);
 
     super.tearDown();
   }

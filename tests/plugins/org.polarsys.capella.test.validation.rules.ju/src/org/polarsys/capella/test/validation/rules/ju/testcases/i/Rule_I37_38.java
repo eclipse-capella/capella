@@ -27,6 +27,7 @@ import org.eclipse.emf.transaction.RollbackException;
 import org.eclipse.emf.transaction.TransactionalCommandStack;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.ui.IViewPart;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.ExecutionManagerRegistry;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
@@ -156,7 +157,7 @@ public abstract class Rule_I37_38 extends BasicTestCase {
           it.remove();
         }
       }
-      throw new RollbackException(new Status(IStatus.ERROR, TestValidationRulesPlugin.getDefault().getBundle().getSymbolicName(), "rolling back")); //$NON-NLS-1$
+      throw new RollbackException(new Status(IStatus.ERROR, FrameworkUtil.getBundle(TestValidationRulesPlugin.class).getSymbolicName(), "rolling back")); //$NON-NLS-1$
     }
 
     private Diagnostic findDiagnostic(String message, Collection<Diagnostic> diagnostics) {

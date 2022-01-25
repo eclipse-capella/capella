@@ -14,6 +14,7 @@ package org.polarsys.capella.core.ui.properties.richtext;
 
 import java.net.URL;
 
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.kitalpha.richtext.common.util.MDERichTextHelper;
 
 public class CapellaMDERichTextConstants {
@@ -22,14 +23,14 @@ public class CapellaMDERichTextConstants {
   
   public static final String PASTE_AS_LINK_LABEL = "Paste as Link (Ctrl + Shift + V)";
   
-  public static final URL PASTE_AS_LINK_ICON = MDERichTextHelper.getURL(CapellaUIPropertiesRichtextPlugin.getDefault().getBundle().getSymbolicName(),
+  public static final URL PASTE_AS_LINK_ICON = MDERichTextHelper.getURL(FrameworkUtil.getBundle(CapellaUIPropertiesRichtextPlugin.class).getSymbolicName(),
       "icons/full/obj16/paste_as_link.gif");
     
   public static final String OPEN_IN_EDITOR_KEY = "OpenInEditor";
   
   public static final String OPEN_IN_EDITOR_LABEL = "Open in Editor";
   
-  public static final URL OPEN_IN_EDITOR_ICON = MDERichTextHelper.getURL(CapellaUIPropertiesRichtextPlugin.getDefault().getBundle().getSymbolicName(),
+  public static final URL OPEN_IN_EDITOR_ICON = MDERichTextHelper.getURL(FrameworkUtil.getBundle(CapellaUIPropertiesRichtextPlugin.class).getSymbolicName(),
       "icons/full/obj16/open_in_editor.gif");
   
   

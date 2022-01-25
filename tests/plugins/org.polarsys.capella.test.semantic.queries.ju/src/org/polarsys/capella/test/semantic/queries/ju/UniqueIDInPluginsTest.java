@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IConfigurationElement;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
 import org.polarsys.capella.common.ui.toolkit.browser.BrowserActivator;
 import org.polarsys.capella.common.ui.toolkit.browser.category.Messages;
@@ -37,7 +38,7 @@ public class UniqueIDInPluginsTest extends BasicTestCase {
     List<String> listofCategoryId = new ArrayList<String>();
     List<String> listofSubCategoryId = new ArrayList<String>();
 
-    IConfigurationElement[] categories = ExtensionPointHelper.getConfigurationElements(BrowserActivator.getDefault().getBundle().getSymbolicName(),
+    IConfigurationElement[] categories = ExtensionPointHelper.getConfigurationElements(FrameworkUtil.getBundle(BrowserActivator.class).getSymbolicName(),
         CONTENT_PROVIDER_CATEGORY);
 
     for (IConfigurationElement categoryConfigurationElement : categories) {

@@ -26,6 +26,7 @@ import org.eclipse.emf.transaction.RollbackException;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.viewpoint.DRefreshable;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.libraries.AccessPolicy;
 import org.polarsys.capella.common.libraries.Activator;
 import org.polarsys.capella.common.libraries.ILibraryManager;
@@ -56,7 +57,7 @@ public class ResourceAccessPolicyListener extends ResourceSetListenerImpl {
           if (!modifiedModels.contains(model) && sourceModel.getAccess(model) == AccessPolicy.READ_ONLY) {
               Logger.getLogger(IReportManagerDefaultComponents.MODEL)
                   .error(Messages.ResourceAccessPolicyListener_RollbackReadOnly);
-              throw new RollbackException(new Status(IStatus.ERROR, Activator.getDefault().getBundle().getSymbolicName(), Messages.ResourceAccessPolicyListener_RollbackReadOnly));
+              throw new RollbackException(new Status(IStatus.ERROR, FrameworkUtil.getBundle(Activator.class).getSymbolicName(), Messages.ResourceAccessPolicyListener_RollbackReadOnly));
           }
           modifiedModels.add(model);
         }

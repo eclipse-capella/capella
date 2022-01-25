@@ -42,6 +42,7 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.common.ui.toolkit.viewers.menu.ModalContextMenuExtender;
@@ -162,7 +163,7 @@ public class ViewEditPage extends WizardPage {
     gdData.horizontalSpan = 2;
     imageExplanation.setLayoutData(gdData);
     imageExplanation
-        .setImage(AbstractUIPlugin.imageDescriptorFromPlugin(MDTrace.getDefault().getBundle().getSymbolicName(), IImageKeys.EXPLANATION).createImage());
+        .setImage(AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(MDTrace.class).getSymbolicName(), IImageKeys.EXPLANATION).createImage());
 
     // **Presentation of trace elements(source and target)
     Composite traceTreeComposite = new Composite(composite, SWT.FILL);

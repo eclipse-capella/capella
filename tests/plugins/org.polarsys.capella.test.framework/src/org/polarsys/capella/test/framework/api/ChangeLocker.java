@@ -18,6 +18,7 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.RollbackException;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.test.framework.CapellaTestFrameworkPlugin;
 
 /**
@@ -30,6 +31,6 @@ public class ChangeLocker extends ResourceSetListenerImpl {
 
   @Override
 	public Command transactionAboutToCommit(ResourceSetChangeEvent event) throws RollbackException {
-			throw new RollbackException(new Status(IStatus.CANCEL, CapellaTestFrameworkPlugin.getDefault().getBundle().getSymbolicName(), "Test model can not be modified by a test artefact which is not its owner."));
+			throw new RollbackException(new Status(IStatus.CANCEL, FrameworkUtil.getBundle(CapellaTestFrameworkPlugin.class).getSymbolicName(), "Test model can not be modified by a test artefact which is not its owner."));
 		}
 }

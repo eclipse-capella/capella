@@ -25,6 +25,7 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.core.data.fa.FunctionInputPort;
 import org.polarsys.capella.core.data.fa.FunctionOutputPort;
 import org.polarsys.capella.core.data.fa.FunctionPort;
@@ -61,7 +62,7 @@ public class DCOM_21_RemoveUnusedExchangeItemsResolver extends AbstractCapellaMa
       try {
         marker.delete();
       } catch (CoreException e) {
-        IStatus s = new Status(e.getStatus().getSeverity(), FaQuickFixActivator.getDefault().getBundle().getSymbolicName(), e.getStatus().getMessage(), e);
+        IStatus s = new Status(e.getStatus().getSeverity(), FrameworkUtil.getBundle(FaQuickFixActivator.class).getSymbolicName(), e.getStatus().getMessage(), e);
         Platform.getLog(FaQuickFixActivator.class).log(s);
       }
     }

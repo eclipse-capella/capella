@@ -19,6 +19,7 @@ import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
@@ -35,7 +36,7 @@ public class ConstraintLocationRule_Resolver extends AbstractCapellaMarkerResolu
 
   public ConstraintLocationRule_Resolver (String label) {
     this.setLabel(label);
-    super.setContributorId(CapellaUIResourcesPlugin.getDefault().getBundle().getSymbolicName());
+    super.setContributorId(FrameworkUtil.getBundle(CapellaUIResourcesPlugin.class).getSymbolicName());
     super.setImgKey(PROCESS_ICON);
   }
   

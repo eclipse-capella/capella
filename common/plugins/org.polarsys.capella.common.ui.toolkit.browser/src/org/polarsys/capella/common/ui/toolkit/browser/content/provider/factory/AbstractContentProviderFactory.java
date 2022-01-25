@@ -15,6 +15,7 @@ package org.polarsys.capella.common.ui.toolkit.browser.content.provider.factory;
 
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.jface.viewers.ITreeContentProvider;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
 import org.polarsys.capella.common.ui.toolkit.browser.BrowserActivator;
 import org.polarsys.capella.common.ui.toolkit.browser.model.ISemanticBrowserModel;
@@ -42,7 +43,7 @@ public abstract class AbstractContentProviderFactory {
    */
   public static AbstractContentProviderFactory getInstance() {
     if (null == _instance) {
-      IConfigurationElement[] configurationElements = ExtensionPointHelper.getConfigurationElements(BrowserActivator.getDefault().getBundle().getSymbolicName(), CONTENT_PROVIDER_FACTORY);
+      IConfigurationElement[] configurationElements = ExtensionPointHelper.getConfigurationElements(FrameworkUtil.getBundle(BrowserActivator.class).getSymbolicName(), CONTENT_PROVIDER_FACTORY);
       for (IConfigurationElement configurationElement : configurationElements) {
         AbstractContentProviderFactory contentProvider =
             (AbstractContentProviderFactory) ExtensionPointHelper.createInstance(configurationElement, ExtensionPointHelper.ATT_CLASS);

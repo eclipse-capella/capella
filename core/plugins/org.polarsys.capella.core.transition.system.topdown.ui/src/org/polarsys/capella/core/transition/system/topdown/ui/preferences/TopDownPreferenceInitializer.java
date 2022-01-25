@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.polarsys.capella.core.transition.system.topdown.ui.preferences;
 
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.flexibility.properties.loader.PropertiesLoader;
 import org.polarsys.capella.common.flexibility.properties.property.IDefaultValueProperty;
 import org.polarsys.capella.common.flexibility.properties.property.PropertyContext;
@@ -27,7 +28,7 @@ public class TopDownPreferenceInitializer extends AbstractPreferencesInitializer
 	/**
 	 */
 	public TopDownPreferenceInitializer() {
-		super(org.polarsys.capella.core.transition.system.topdown.ui.Activator.getDefault().getBundle().getSymbolicName());
+		super(FrameworkUtil.getBundle(org.polarsys.capella.core.transition.system.topdown.ui.Activator.class).getSymbolicName());
 	}
 
 	/**
@@ -42,6 +43,6 @@ public class TopDownPreferenceInitializer extends AbstractPreferencesInitializer
 				((IDefaultValueProperty) property).initializeDefaultValue(context);
 			}
 		}
-		ScopedCapellaPreferencesStore.getInstance(Activator.getDefault().getBundle().getSymbolicName()).save();
+		ScopedCapellaPreferencesStore.getInstance(FrameworkUtil.getBundle(Activator.class).getSymbolicName()).save();
 	}
 }

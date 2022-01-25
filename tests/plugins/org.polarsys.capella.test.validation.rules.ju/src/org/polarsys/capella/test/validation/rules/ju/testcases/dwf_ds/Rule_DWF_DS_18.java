@@ -29,6 +29,7 @@ import org.eclipse.ui.IMarkerResolution;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.navigator.CommonViewer;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.interaction.ui.quickfix.generator.DWF_DS_18_Resolutions;
@@ -141,7 +142,7 @@ public class Rule_DWF_DS_18 extends AbstractRulesOnDesignTest {
       status = Status.OK_STATUS;
     } else {
       String message = "Quick fix to navigate to elements for validation rule DWF_DS_18 does not work";
-      status = new Status(IStatus.ERROR, TestValidationRulesPlugin.getDefault().getBundle().getSymbolicName(), message);
+      status = new Status(IStatus.ERROR, FrameworkUtil.getBundle(TestValidationRulesPlugin.class).getSymbolicName(), message);
     }
     return status;
   }

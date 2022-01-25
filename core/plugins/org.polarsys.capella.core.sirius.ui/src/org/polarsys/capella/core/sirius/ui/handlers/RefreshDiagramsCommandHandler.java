@@ -53,6 +53,7 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPartSite;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.progress.IProgressConstants;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.util.IJobConstants;
@@ -219,7 +220,7 @@ public class RefreshDiagramsCommandHandler extends AbstractDiagramCommandHandler
           });
         }
       }
-      return new Status(severity, SiriusUIPlugin.getDefault().getBundle().getSymbolicName(), strBuilder.toString());
+      return new Status(severity, FrameworkUtil.getBundle(SiriusUIPlugin.class).getSymbolicName(), strBuilder.toString());
     }
 
     private String addRepDescInfo(StringBuilder strBuilder, DRepresentationDescriptor repDesc) {
@@ -268,7 +269,7 @@ public class RefreshDiagramsCommandHandler extends AbstractDiagramCommandHandler
         return Status.OK_STATUS;
       } else {
         // INFO severity will not be logged in error log view
-        return new Status(Status.INFO, SiriusUIPlugin.getDefault().getBundle().getSymbolicName(), "Failed to refresh the representation " + dRepresentation.getName());
+        return new Status(Status.INFO, FrameworkUtil.getBundle(SiriusUIPlugin.class).getSymbolicName(), "Failed to refresh the representation " + dRepresentation.getName());
       }
     }
 

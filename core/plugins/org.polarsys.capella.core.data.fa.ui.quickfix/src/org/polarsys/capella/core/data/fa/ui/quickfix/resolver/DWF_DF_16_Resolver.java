@@ -20,6 +20,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.ui.statushandlers.StatusManager;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.core.data.fa.SequenceLink;
 import org.polarsys.capella.core.sirius.analysis.CapellaServices;
 import org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlugin;
@@ -36,7 +37,7 @@ public class DWF_DF_16_Resolver extends AbstractCapellaMarkerResolution {
 
   public DWF_DF_16_Resolver(String label) {
     this.overridenLabel = label;
-    super.setContributorId(CapellaUIResourcesPlugin.getDefault().getBundle().getSymbolicName());
+    super.setContributorId(FrameworkUtil.getBundle(CapellaUIResourcesPlugin.class).getSymbolicName());
     super.setImgKey(PROCESS_ICON);
   }
 
@@ -70,7 +71,7 @@ public class DWF_DF_16_Resolver extends AbstractCapellaMarkerResolution {
       marker.delete();
     } catch (CoreException exception) {
       StatusManager.getManager().handle(
-          new Status(IStatus.ERROR, PluginActivator.getDefault().getBundle().getSymbolicName(), exception.getMessage(), exception));
+          new Status(IStatus.ERROR, FrameworkUtil.getBundle(PluginActivator.class).getSymbolicName(), exception.getMessage(), exception));
     }
   }
 

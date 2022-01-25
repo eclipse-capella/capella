@@ -24,6 +24,7 @@ import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.data.modellingcore.AbstractTypedElement;
 import org.polarsys.capella.common.ui.providers.MDEAdapterFactoryLabelProvider;
 import org.polarsys.capella.core.data.cs.Interface;
@@ -40,10 +41,10 @@ public class DecompositionLabelProvider extends MDEAdapterFactoryLabelProvider i
   private Font boldFont = new Font(Display.getCurrent(), "Verdana", 8, SWT.BOLD); //$NON-NLS-1$;
   private Font normalFont = new Font(Display.getCurrent(), "Verdana", 8, SWT.NONE); //$NON-NLS-1$;
 
-  ImageDescriptor implImageDescriptorFromPlugin = AbstractUIPlugin.imageDescriptorFromPlugin(Activator.getDefault().getBundle().getSymbolicName(),
+  ImageDescriptor implImageDescriptorFromPlugin = AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(Activator.class).getSymbolicName(),
       Messages.getString("LCDecomp.interface.icon.LCInterfaceImpl")); //$NON-NLS-1$
   Image implImage = implImageDescriptorFromPlugin.createImage();
-  ImageDescriptor useImageDescriptorFromPlugin = AbstractUIPlugin.imageDescriptorFromPlugin(Activator.getDefault().getBundle().getSymbolicName(),
+  ImageDescriptor useImageDescriptorFromPlugin = AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(Activator.class).getSymbolicName(),
       Messages.getString("LCDecomp.interface.icon.LCInterfaceUse")); //$NON-NLS-1$
   Image useImage = useImageDescriptorFromPlugin.createImage();
 

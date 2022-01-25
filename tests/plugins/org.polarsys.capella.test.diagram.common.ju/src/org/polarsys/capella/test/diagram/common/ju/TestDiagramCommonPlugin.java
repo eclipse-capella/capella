@@ -18,6 +18,7 @@ import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.BundleEvent;
 import org.osgi.framework.BundleListener;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.test.diagram.common.ju.headless.HeadlessJavaActionsProvider;
 
 /**
@@ -47,7 +48,7 @@ public class TestDiagramCommonPlugin extends AbstractUIPlugin {
     super.start(context);
     plugin = this;
 
-    Bundle siriusBundle = SiriusPlugin.getDefault().getBundle();
+    Bundle siriusBundle = FrameworkUtil.getBundle(SiriusPlugin.class);
     addStartedListener(siriusBundle);
 
     if (siriusBundle.getState() == Bundle.ACTIVE) {

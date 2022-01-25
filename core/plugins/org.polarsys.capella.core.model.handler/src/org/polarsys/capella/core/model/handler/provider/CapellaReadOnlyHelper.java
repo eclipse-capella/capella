@@ -14,6 +14,7 @@ package org.polarsys.capella.core.model.handler.provider;
 
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.emf.ecore.EObject;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
 import org.polarsys.capella.core.model.handler.ModelHandlerPlugin;
 
@@ -79,7 +80,7 @@ public class CapellaReadOnlyHelper {
   private static IReadOnlySectionHandler getContributedReadOnlySectionHandler() {
     // Load IReadOnlySectionHandler contributor if any.
     IConfigurationElement[] configurationElements =
-        ExtensionPointHelper.getConfigurationElements(ModelHandlerPlugin.getDefault().getBundle().getSymbolicName(), "readOnlySectionHandler"); //$NON-NLS-1$
+        ExtensionPointHelper.getConfigurationElements(FrameworkUtil.getBundle(ModelHandlerPlugin.class).getSymbolicName(), "readOnlySectionHandler"); //$NON-NLS-1$
     // Loop over contributed IReadOnlySectionHandler and add them to the delegate.
     if (configurationElements.length > 0) {
       ReadOnlySectionHandlerDelegate delegate = new ReadOnlySectionHandlerDelegate();

@@ -22,6 +22,7 @@ import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.widgets.Composite;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.flexibility.properties.PropertyChangeListener;
 import org.polarsys.capella.common.flexibility.properties.PropertyChangedEvent;
 import org.polarsys.capella.common.flexibility.properties.schema.IProperties;
@@ -162,7 +163,7 @@ public class PropertyWizardPage extends WizardPage implements PropertyChangeList
     status = null;
     
     if (context != null) {
-      MultiStatus multiStatus = new CompoundMultiStatus(Activator.getDefault().getBundle().getSymbolicName());
+      MultiStatus multiStatus = new CompoundMultiStatus(FrameworkUtil.getBundle(Activator.class).getSymbolicName());
       IProperties properties = context.getProperties();
       if (properties != null) {
         for (IProperty item : properties.getAllItems()) {

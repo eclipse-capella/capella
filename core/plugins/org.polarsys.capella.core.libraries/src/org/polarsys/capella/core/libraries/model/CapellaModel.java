@@ -27,6 +27,7 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
 import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.osgi.framework.FrameworkUtil;
 import org.osgi.service.prefs.BackingStoreException;
 import org.osgi.service.prefs.Preferences;
 import org.polarsys.capella.common.ef.ExecutionManagerRegistry;
@@ -312,14 +313,14 @@ public class CapellaModel extends AbstractCapellaModel implements IModel.Edit {
 
   @Override
   public boolean isActive(IModel library) {
-    Preferences activeLibraryPrefInfos = ConfigurationScope.INSTANCE.getNode(Activator.getDefault().getBundle().getSymbolicName()).node(ACTIVE_STATE_PREF_ID);
+    Preferences activeLibraryPrefInfos = ConfigurationScope.INSTANCE.getNode(FrameworkUtil.getBundle(Activator.class).getSymbolicName()).node(ACTIVE_STATE_PREF_ID);
     Preferences libraryContextPref = activeLibraryPrefInfos.node(this.getIdentifier().getName());
     return libraryContextPref.getBoolean(library.getIdentifier().getName(), getDefaultActiveState(library));
   }
 
   @Override
   public void setActive(IModel library, boolean activeState) {
-    final Preferences activeLibraryPrefInfos = ConfigurationScope.INSTANCE.getNode(Activator.getDefault().getBundle().getSymbolicName()).node(ACTIVE_STATE_PREF_ID);
+    final Preferences activeLibraryPrefInfos = ConfigurationScope.INSTANCE.getNode(FrameworkUtil.getBundle(Activator.class).getSymbolicName()).node(ACTIVE_STATE_PREF_ID);
     Preferences libraryContextPref = activeLibraryPrefInfos.node(this.getIdentifier().getName());
     libraryContextPref.putBoolean(library.getIdentifier().getName(), activeState);
 

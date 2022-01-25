@@ -24,6 +24,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.model.IConstraintStatus;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.helpers.validation.ConstraintStatusDiagnostic;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
@@ -86,7 +87,7 @@ public abstract class GenerateInterfacesResolver extends AbstractCapellaMarkerRe
       try {
         marker.delete();
       } catch (CoreException e1) {
-        Platform.getLog(FaQuickFixActivator.class).log(new Status(IStatus.ERROR, FaQuickFixActivator.getDefault().getBundle().getSymbolicName(), e1.getStatus().getMessage(), e1.getStatus().getException()));
+        Platform.getLog(FaQuickFixActivator.class).log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(FaQuickFixActivator.class).getSymbolicName(), e1.getStatus().getMessage(), e1.getStatus().getException()));
       }
     }
   }

@@ -22,6 +22,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.sirius.business.api.session.Session;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
 import org.polarsys.capella.common.mdsofa.common.helper.ProjectHelper;
 import org.polarsys.capella.test.framework.CapellaTestFrameworkPlugin;
@@ -52,7 +53,7 @@ public class ModelProviderHelper {
    */
   private void initExtensionListeners() {
     for (IConfigurationElement configElement : ExtensionPointHelper
-        .getConfigurationElements(CapellaTestFrameworkPlugin.getDefault().getBundle().getSymbolicName(), MODEL_PROVIDER_EXT_POINT)) {
+        .getConfigurationElements(FrameworkUtil.getBundle(CapellaTestFrameworkPlugin.class).getSymbolicName(), MODEL_PROVIDER_EXT_POINT)) {
       modelProvider = (IModelProvider) ExtensionPointHelper.createInstance(configElement,
           ExtensionPointHelper.ATT_CLASS);
     }

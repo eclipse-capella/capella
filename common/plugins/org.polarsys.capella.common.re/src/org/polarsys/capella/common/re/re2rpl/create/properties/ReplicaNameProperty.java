@@ -14,7 +14,7 @@ package org.polarsys.capella.common.re.re2rpl.create.properties;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.flexibility.properties.property.AbstractProperty;
 import org.polarsys.capella.common.flexibility.properties.schema.ICompoundProperty;
 import org.polarsys.capella.common.flexibility.properties.schema.IEditableProperty;
@@ -90,7 +90,7 @@ public class ReplicaNameProperty extends AbstractProperty implements ICompoundPr
       isValid = false;
     }
     if (!isValid) {
-      return new Status(IStatus.WARNING, IReConstants.getDefault().getBundle().getSymbolicName(), "Name should not be empty");
+      return new Status(IStatus.WARNING, FrameworkUtil.getBundle(IReConstants.class).getSymbolicName(), "Name should not be empty");
     }
     return Status.OK_STATUS;
   }

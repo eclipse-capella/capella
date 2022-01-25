@@ -25,7 +25,7 @@ public class CapellaNavigatorPreferencesInitializer extends AbstractPreferencesI
   /**
    */
   public CapellaNavigatorPreferencesInitializer() {
-    super(CapellaNavigatorPlugin.getDefault().getBundle().getSymbolicName());
+    super(FrameworkUtil.getBundle(CapellaNavigatorPlugin.class).getSymbolicName());
   }
 
   /**

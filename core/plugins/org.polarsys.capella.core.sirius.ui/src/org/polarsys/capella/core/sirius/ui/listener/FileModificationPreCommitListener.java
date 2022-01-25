@@ -54,6 +54,7 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.statushandlers.StatusManager;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ef.domain.AbstractEditingDomainResourceSetListenerImpl;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.helpers.IUserEnforcedHelper2;
@@ -502,7 +503,7 @@ public class FileModificationPreCommitListener extends AbstractEditingDomainReso
     for (File f : filesWithNoWritePermission) {
       sb.append(f.getAbsolutePath() + "\n");
     }
-    CapellaSessionHelper.reportError(new Status(IStatus.ERROR,SiriusUIPlugin.getDefault().getBundle().getSymbolicName(), sb.toString()));
+    CapellaSessionHelper.reportError(new Status(IStatus.ERROR,FrameworkUtil.getBundle(SiriusUIPlugin.class).getSymbolicName(), sb.toString()));
     return Status.CANCEL_STATUS;
   } 
 

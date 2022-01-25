@@ -26,6 +26,7 @@ import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IMemento;
 import org.eclipse.ui.IPersistableElement;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.mdsofa.common.helper.FileHelper;
@@ -241,7 +242,7 @@ public class CapellaDashboardEditorInput implements IEditorInput, IPersistableEl
         if (openSessionAction.getFailedOpeningSessions().containsKey(diagramFile)) {
           IStatus status = openSessionAction.getFailedOpeningSessions().get(diagramFile);
           _sessionStatus =
-              new Status(IStatus.ERROR, SiriusUIPlugin.getDefault().getBundle().getSymbolicName(), NLS.bind("Error while opening session {0} [{1}]", firstAnalysisFile, status.getMessage()), status.getException());
+              new Status(IStatus.ERROR, FrameworkUtil.getBundle(SiriusUIPlugin.class).getSymbolicName(), NLS.bind("Error while opening session {0} [{1}]", firstAnalysisFile, status.getMessage()), status.getException());
         }
 
         session = SessionHelper.getSession(diagramFile);
@@ -256,7 +257,7 @@ public class CapellaDashboardEditorInput implements IEditorInput, IPersistableEl
 
     } catch (Exception e) {
       _sessionStatus =
-          new Status(IStatus.ERROR, SiriusUIPlugin.getDefault().getBundle().getSymbolicName(), NLS.bind("Error while opening session {0} [{1}]", firstAnalysisFile, e.getMessage()), e);
+          new Status(IStatus.ERROR, FrameworkUtil.getBundle(SiriusUIPlugin.class).getSymbolicName(), NLS.bind("Error while opening session {0} [{1}]", firstAnalysisFile, e.getMessage()), e);
       __logger.error(new EmbeddedMessage(e.getMessage(), IReportManagerDefaultComponents.UI), e);
     }
   }

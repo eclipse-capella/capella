@@ -17,6 +17,7 @@ import java.util.UUID;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.core.data.ctx.CtxFactory;
 import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.test.framework.helpers.ExternalResourceHelper;
@@ -42,7 +43,7 @@ public class ExternalInclusion {
 
   public static Resource getExternalResource(EObject element) {
     Resource resource = ExternalResourceHelper.getExternalResource(TransactionUtil.getEditingDomain(element),
-        RecRplTestPlugin.getDefault().getBundle().getSymbolicName());
+        FrameworkUtil.getBundle(RecRplTestPlugin.class).getSymbolicName());
 
     getOrCreateActor(ExternalInclusion.ACTOR_1, resource);
     getOrCreateActor(ExternalInclusion.ACTOR_2, resource);

@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.ui.services.commands.AbstractUiHandler;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
@@ -71,7 +72,7 @@ public class SortQueriesHandler extends AbstractUiHandler {
 
           monitor.worked(1);
         }
-        return new Status(IStatus.WARNING, TestBusinessQueriesPlugin.getDefault().getBundle().getSymbolicName(), "Sorted in "+BQTestHelpers.getBqTestProject().getAbsolutePath());
+        return new Status(IStatus.WARNING, FrameworkUtil.getBundle(TestBusinessQueriesPlugin.class).getSymbolicName(), "Sorted in "+BQTestHelpers.getBqTestProject().getAbsolutePath());
       }
     };
 

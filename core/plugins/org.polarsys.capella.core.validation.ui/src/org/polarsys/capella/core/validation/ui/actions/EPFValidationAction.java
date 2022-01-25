@@ -45,6 +45,7 @@ import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.command.AbstractReadOnlyCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
@@ -333,7 +334,7 @@ public class EPFValidationAction extends CapellaValidateAction {
               marker.setAttribute(IValidationConstants.TAG_PREFERENCE_EPF_FILE, epf);
             } catch (CoreException e) {
               Platform.getLog(CapellaValidationUIActivator.class).log(
-                  new Status(e.getStatus().getSeverity(), CapellaValidationUIActivator.getDefault().getBundle().getSymbolicName(), e.getMessage(), e));
+                  new Status(e.getStatus().getSeverity(), FrameworkUtil.getBundle(CapellaValidationUIActivator.class).getSymbolicName(), e.getMessage(), e));
             }
           }
         });

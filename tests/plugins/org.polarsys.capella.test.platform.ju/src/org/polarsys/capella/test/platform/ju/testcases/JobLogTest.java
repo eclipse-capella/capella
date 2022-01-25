@@ -21,6 +21,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.LightMarkerRegistry;
 import org.polarsys.capella.common.tools.report.util.IJobConstants;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
@@ -38,7 +39,7 @@ public class JobLogTest extends BasicTestCase {
 
     MyJob(int severity, boolean log) {
       super(MyJob.class.getSimpleName());
-      this.status = new Status(severity, Activator.getDefault().getBundle().getSymbolicName(), "severity:" + severity);
+      this.status = new Status(severity, FrameworkUtil.getBundle(Activator.class).getSymbolicName(), "severity:" + severity);
       if (log) {
         setProperty(IJobConstants.ALWAYS_LOG_STATUS, true);
       }

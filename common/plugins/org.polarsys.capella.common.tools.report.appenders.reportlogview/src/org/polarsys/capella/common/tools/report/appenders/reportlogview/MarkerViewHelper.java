@@ -33,6 +33,7 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.model.Category;
 import org.eclipse.emf.validation.service.IConstraintDescriptor;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.helpers.validation.ConstraintStatusDiagnostic;
 import org.polarsys.capella.common.helpers.validation.IValidationConstants;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.extpoint.ReportLogViewExtPointUtil;
@@ -79,7 +80,7 @@ public class MarkerViewHelper {
         }
       }
     } catch (CoreException e) {
-      Platform.getLog(MarkerViewPlugin.class).log(new Status(IStatus.ERROR, MarkerViewPlugin.getDefault().getBundle().getSymbolicName(), e.getLocalizedMessage(), e));
+      Platform.getLog(MarkerViewPlugin.class).log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(MarkerViewPlugin.class).getSymbolicName(), e.getLocalizedMessage(), e));
     }
   }
 

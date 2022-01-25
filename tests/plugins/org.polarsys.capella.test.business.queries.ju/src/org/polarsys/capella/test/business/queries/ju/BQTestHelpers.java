@@ -32,6 +32,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.business.api.session.Session;
 import org.osgi.framework.Bundle;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 
 /**
@@ -130,7 +131,7 @@ public class BQTestHelpers {
    * Return the File location of this plugin. On a debug session, Generation will generate directly on it.
    */
   public static File getBqTestProject() {
-    Bundle bundle = TestBusinessQueriesPlugin.getDefault().getBundle();
+    Bundle bundle = FrameworkUtil.getBundle(TestBusinessQueriesPlugin.class);
     File file = new File(bundle.getLocation().substring("reference:file:/".length()));
     return file;
   }

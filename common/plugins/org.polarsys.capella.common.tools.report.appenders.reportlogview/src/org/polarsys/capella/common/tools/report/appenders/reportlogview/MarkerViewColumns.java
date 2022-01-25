@@ -56,6 +56,7 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
 import org.eclipse.ui.views.markers.MarkerViewUtil;
 import org.eclipse.ui.views.markers.WorkbenchMarkerResolution;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.helpers.validation.ConstraintStatusDiagnostic;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
@@ -351,7 +352,7 @@ class MarkerViewColumns {
             try {
               result = format.format(new Date(((IMarker) element).getCreationTime()));
             } catch (CoreException e) {
-              Platform.getLog(MarkerViewPlugin.class).log(new Status(IStatus.ERROR, MarkerViewPlugin.getDefault().getBundle().getSymbolicName(), e.getLocalizedMessage(), e));
+              Platform.getLog(MarkerViewPlugin.class).log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(MarkerViewPlugin.class).getSymbolicName(), e.getLocalizedMessage(), e));
             }
           }
           return result;

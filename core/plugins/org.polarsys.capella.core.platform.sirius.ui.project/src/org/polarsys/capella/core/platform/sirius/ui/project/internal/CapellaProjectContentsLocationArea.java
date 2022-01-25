@@ -19,7 +19,7 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.osgi.util.TextProcessor;
 import org.eclipse.swt.widgets.Composite;
-
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
 import org.polarsys.capella.core.platform.sirius.ui.project.CapellaProjectActivator;
@@ -73,7 +73,7 @@ public class CapellaProjectContentsLocationArea extends ProjectContentsLocationA
   protected IDefaultProjectLocationProvider getDefaultProjectLocationContribution() {
     IDefaultProjectLocationProvider contribution = null;
     IConfigurationElement[] configurationElements =
-        ExtensionPointHelper.getConfigurationElements(CapellaProjectActivator.getDefault().getBundle().getSymbolicName(), PROJECT_LOCATION_PROVIDER_EXTENSION_POINT_ID);
+        ExtensionPointHelper.getConfigurationElements(FrameworkUtil.getBundle(CapellaProjectActivator.class).getSymbolicName(), PROJECT_LOCATION_PROVIDER_EXTENSION_POINT_ID);
     if (configurationElements.length > 0) {
       // There should be one implementation only !
       // So take the first one, as expected.

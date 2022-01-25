@@ -15,7 +15,7 @@ package org.polarsys.capella.core.platform.sirius.ui.preferences;
 
 import org.eclipse.core.resources.ProjectScope;
 import org.eclipse.core.runtime.preferences.DefaultScope;
-
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.core.commands.preferences.service.AbstractPreferencesInitializer;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaActionsActivator;
@@ -27,7 +27,7 @@ public class ActionsPreferenceInitializer extends AbstractPreferencesInitializer
    * @param pluginID
    */
   public ActionsPreferenceInitializer() {
-    super(CapellaActionsActivator.getDefault().getBundle().getSymbolicName());
+    super(FrameworkUtil.getBundle(CapellaActionsActivator.class).getSymbolicName());
 
   }
 

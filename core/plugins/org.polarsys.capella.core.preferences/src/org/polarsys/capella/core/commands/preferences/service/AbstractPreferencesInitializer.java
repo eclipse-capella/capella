@@ -69,8 +69,8 @@ public abstract class AbstractPreferencesInitializer extends AbstractPreferenceI
 		  }
 	  }
     initializeAllOpenedProjects(key, value);
-//    new InstanceScope().getNode(Activator.getDefault().getBundle().getSymbolicName()).putBoolean(key, value);
-//    new DefaultScope().getNode(Activator.getDefault().getBundle().getSymbolicName()).putBoolean(key, value);
+//    new InstanceScope().getNode(FrameworkUtil.getBundle(Activator.class).getSymbolicName()).putBoolean(key, value);
+//    new DefaultScope().getNode(FrameworkUtil.getBundle(Activator.class).getSymbolicName()).putBoolean(key, value);
   }
 
   /**
@@ -90,8 +90,8 @@ public abstract class AbstractPreferencesInitializer extends AbstractPreferenceI
     
     initializeAllOpenedProjects(key, value);
 
-//    new InstanceScope().getNode(Activator.getDefault().getBundle().getSymbolicName()).put(key, String.valueOf(value));
-//    new DefaultScope().getNode(Activator.getDefault().getBundle().getSymbolicName()).put(key, String.valueOf(value));
+//    new InstanceScope().getNode(FrameworkUtil.getBundle(Activator.class).getSymbolicName()).put(key, String.valueOf(value));
+//    new DefaultScope().getNode(FrameworkUtil.getBundle(Activator.class).getSymbolicName()).put(key, String.valueOf(value));
   }
 
   /**
@@ -110,8 +110,8 @@ public abstract class AbstractPreferencesInitializer extends AbstractPreferenceI
     }
 
     initializeAllOpenedProjects(key, value);
-//    new InstanceScope().getNode(Activator.getDefault().getBundle().getSymbolicName()).putInt(key, value);
-//    new DefaultScope().getNode(Activator.getDefault().getBundle().getSymbolicName()).putInt(key, value);
+//    new InstanceScope().getNode(FrameworkUtil.getBundle(Activator.class).getSymbolicName()).putInt(key, value);
+//    new DefaultScope().getNode(FrameworkUtil.getBundle(Activator.class).getSymbolicName()).putInt(key, value);
   }
 
   /**

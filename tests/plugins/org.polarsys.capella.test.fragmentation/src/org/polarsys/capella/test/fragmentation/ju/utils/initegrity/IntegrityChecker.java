@@ -33,6 +33,7 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DView;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.core.commandline.core.AbstractCommandLine;
@@ -114,7 +115,7 @@ public class IntegrityChecker implements IChecker {
             EObjectLabelProviderHelper.getText(objects.get(idDuplicate).iterator().next()), idDuplicate));
       }
 
-      statuses.add(new Status(AbstractCommandLine.FATAL, Activator.getDefault().getBundle().getSymbolicName(), buffer.toString()));
+      statuses.add(new Status(AbstractCommandLine.FATAL, FrameworkUtil.getBundle(Activator.class).getSymbolicName(), buffer.toString()));
     }
 
     submonitor.worked(1);
@@ -165,17 +166,17 @@ public class IntegrityChecker implements IChecker {
           }
         }
       }
-      statuses.add(new Status(AbstractCommandLine.FATAL, Activator.getDefault().getBundle().getSymbolicName(), buffer.toString()));
+      statuses.add(new Status(AbstractCommandLine.FATAL, FrameworkUtil.getBundle(Activator.class).getSymbolicName(), buffer.toString()));
     }
 
     submonitor.worked(1);
     submonitor.done();
     monitor_p.done();
     if (statuses.size() > 0) {
-      return new MultiStatus(Activator.getDefault().getBundle().getSymbolicName(), IStatus.ERROR, statuses.toArray(new IStatus[0]),
+      return new MultiStatus(FrameworkUtil.getBundle(Activator.class).getSymbolicName(), IStatus.ERROR, statuses.toArray(new IStatus[0]),
           IntegrityChecker_FailedDuplicateElements, null);
     }
 
-    return new Status(IStatus.OK, Activator.getDefault().getBundle().getSymbolicName(), IntegrityChecker_OK);
+    return new Status(IStatus.OK, FrameworkUtil.getBundle(Activator.class).getSymbolicName(), IntegrityChecker_OK);
   }
 }

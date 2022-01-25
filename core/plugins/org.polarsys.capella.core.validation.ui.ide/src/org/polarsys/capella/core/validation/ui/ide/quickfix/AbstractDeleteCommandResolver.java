@@ -26,6 +26,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.ui.statushandlers.StatusManager;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
@@ -158,7 +159,7 @@ public abstract class AbstractDeleteCommandResolver extends AbstractCapellaMarke
           try {
             marker.delete();
           } catch (CoreException exception) {
-            StatusManager.getManager().handle(new Status(IStatus.ERROR, PluginActivator.getDefault().getBundle().getSymbolicName(), exception.getMessage(), exception));
+            StatusManager.getManager().handle(new Status(IStatus.ERROR, FrameworkUtil.getBundle(PluginActivator.class).getSymbolicName(), exception.getMessage(), exception));
           }
         }
       }

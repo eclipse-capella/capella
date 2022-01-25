@@ -113,7 +113,7 @@ public class ExplorerDropAdapterAssistant extends AbstractCapellaDropAdapterAssi
   public IStatus validateDrop(Object target_p, int operation_p, TransferData transferType_p) {
     // Checks the target object class.
     if (!(target_p instanceof EObject)) {
-      return new Status(IStatus.INFO, CapellaNavigatorPlugin.getDefault().getBundle().getSymbolicName(), "Target must be an EObject."); //$NON-NLS-1$
+      return new Status(IStatus.INFO, FrameworkUtil.getBundle(CapellaNavigatorPlugin.class).getSymbolicName(), "Target must be an EObject."); //$NON-NLS-1$
     }
 
     // Check the target object compatibility.
@@ -124,12 +124,12 @@ public class ExplorerDropAdapterAssistant extends AbstractCapellaDropAdapterAssi
       List<EObject> selectedModelElements = getSelectedElements();
 
       if (selectedModelElements.isEmpty()) {
-        return new Status(IStatus.INFO, CapellaNavigatorPlugin.getDefault().getBundle().getSymbolicName(), "An error occurred during the drop operation."); //$NON-NLS-1$
+        return new Status(IStatus.INFO, FrameworkUtil.getBundle(CapellaNavigatorPlugin.class).getSymbolicName(), "An error occurred during the drop operation."); //$NON-NLS-1$
       }
 
       boolean isSemanticallyCorrect = getMoveHelper().checkSemanticRules(selectedModelElements, targetElement).isOK();
       if (!isSemanticallyCorrect) {
-        return new Status(IStatus.INFO, CapellaNavigatorPlugin.getDefault().getBundle().getSymbolicName(), "Semantic rules failed."); //$NON-NLS-1$
+        return new Status(IStatus.INFO, FrameworkUtil.getBundle(CapellaNavigatorPlugin.class).getSymbolicName(), "Semantic rules failed."); //$NON-NLS-1$
       }
 
       // Checks all target eReferences compatibility with all selected model elements eClass.
@@ -138,7 +138,7 @@ public class ExplorerDropAdapterAssistant extends AbstractCapellaDropAdapterAssi
         return Status.OK_STATUS;
       }
     }
-    return new Status(IStatus.INFO, CapellaNavigatorPlugin.getDefault().getBundle().getSymbolicName(), "Needs to be drop onto a right container."); //$NON-NLS-1$
+    return new Status(IStatus.INFO, FrameworkUtil.getBundle(CapellaNavigatorPlugin.class).getSymbolicName(), "Needs to be drop onto a right container."); //$NON-NLS-1$
   }
 
   // Gets the selected model elements.

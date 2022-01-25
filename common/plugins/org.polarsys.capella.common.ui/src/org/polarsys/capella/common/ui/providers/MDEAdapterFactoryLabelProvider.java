@@ -17,6 +17,7 @@ import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.sirius.common.tools.api.query.IllegalStateExceptionQuery;
 import org.eclipse.swt.graphics.Image;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
 import org.polarsys.capella.common.ui.MdeCommonUiActivator;
 import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
@@ -87,7 +88,7 @@ public class MDEAdapterFactoryLabelProvider extends AdapterFactoryLabelProvider 
     if (!__alreadyLookup && (null == __delegatedLabelProvider)) {
       // Load ITabbedPropertiesLabelProviderDelegation contributor if any.
       IConfigurationElement[] configurationElements =
-          ExtensionPointHelper.getConfigurationElements(MdeCommonUiActivator.getDefault().getBundle().getSymbolicName(), "labelProviderDelegation"); //$NON-NLS-1$
+          ExtensionPointHelper.getConfigurationElements(FrameworkUtil.getBundle(MdeCommonUiActivator.class).getSymbolicName(), "labelProviderDelegation"); //$NON-NLS-1$
       // Loop over contributed ITabbedPropertiesLabelProviderDelegation contributor, must be only one.
       if (configurationElements.length > 0) {
         __delegatedLabelProvider =

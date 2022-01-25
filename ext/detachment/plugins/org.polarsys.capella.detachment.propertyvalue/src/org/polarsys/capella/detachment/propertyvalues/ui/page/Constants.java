@@ -82,16 +82,16 @@ public final class Constants {
 		url = FileLocator.find(ICON_BUNDLE, new Path(EL_ICON), null);
 		enumLiteralIcon = ImageDescriptor.createFromURL(url).createImage();
 		
-		url = FileLocator.find(Activator.getDefault().getBundle(), new Path("icons/full/collapseall.gif"), null); //$NON-NLS-1$
+		url = FileLocator.find(FrameworkUtil.getBundle(Activator.class), new Path("icons/full/collapseall.gif"), null); //$NON-NLS-1$
 		collapsAllIcon = ImageDescriptor.createFromURL(url).createImage();
 		
-		url = FileLocator.find(Activator.getDefault().getBundle(), new Path("icons/full/expandall.gif"), null); //$NON-NLS-1$
+		url = FileLocator.find(FrameworkUtil.getBundle(Activator.class), new Path("icons/full/expandall.gif"), null); //$NON-NLS-1$
 		expandAllIcon = ImageDescriptor.createFromURL(url).createImage();
 		
-		url = FileLocator.find(Activator.getDefault().getBundle(), new Path("icons/full/checked.gif"), null); //$NON-NLS-1$
+		url = FileLocator.find(FrameworkUtil.getBundle(Activator.class), new Path("icons/full/checked.gif"), null); //$NON-NLS-1$
 		checkAllIcon = ImageDescriptor.createFromURL(url).createImage();
 		
-		url = FileLocator.find(Activator.getDefault().getBundle(), new Path("icons/full/unchecked.gif"), null); //$NON-NLS-1$
+		url = FileLocator.find(FrameworkUtil.getBundle(Activator.class), new Path("icons/full/unchecked.gif"), null); //$NON-NLS-1$
 		uncheckAllIcon = ImageDescriptor.createFromURL(url).createImage();
 	}
 

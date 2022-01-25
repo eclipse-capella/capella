@@ -24,6 +24,7 @@ import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
@@ -108,7 +109,7 @@ public class DAnnotationDescriptorContribution extends AbstractMigrationContribu
     }
     if (i > 0) {
       Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.DEFAULT);
-      IStatus status = new Status(IStatus.INFO, Activator.getDefault().getBundle().getSymbolicName(),
+      IStatus status = new Status(IStatus.INFO, FrameworkUtil.getBundle(Activator.class).getSymbolicName(),
           NLS.bind(org.polarsys.capella.core.data.migration.contribution.Messages.MigrationAction_AnnotationMigration,
               context.getName(), i));
       LogExt.log(logger, status);
@@ -183,7 +184,7 @@ public class DAnnotationDescriptorContribution extends AbstractMigrationContribu
 
             } else {
               Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.DEFAULT);
-              IStatus status = new Status(IStatus.WARNING, Activator.getDefault().getBundle().getSymbolicName(), NLS.bind(
+              IStatus status = new Status(IStatus.WARNING, FrameworkUtil.getBundle(Activator.class).getSymbolicName(), NLS.bind(
                   org.polarsys.capella.core.data.migration.contribution.Messages.MigrationAction_MissingStatusMigration,
                   descriptor.getName(), statusValue));
               LogExt.log(logger, status);
@@ -211,7 +212,7 @@ public class DAnnotationDescriptorContribution extends AbstractMigrationContribu
           
         } else {
           Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.DEFAULT);
-          IStatus status = new Status(IStatus.WARNING, Activator.getDefault().getBundle().getSymbolicName(), NLS.bind(
+          IStatus status = new Status(IStatus.WARNING, FrameworkUtil.getBundle(Activator.class).getSymbolicName(), NLS.bind(
               org.polarsys.capella.core.data.migration.contribution.Messages.MigrationAction_MissingContextualElementMigration,
               descriptor.getName(), id));
           LogExt.log(logger, status);

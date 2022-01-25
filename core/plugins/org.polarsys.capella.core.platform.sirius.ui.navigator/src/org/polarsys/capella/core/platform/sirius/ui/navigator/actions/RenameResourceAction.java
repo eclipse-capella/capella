@@ -117,7 +117,7 @@ public class RenameResourceAction extends WorkspaceAction {
   /**
    * The id of this action.
    */
-  public static final String ID = PlatformUI.getDefault().getBundle().getSymbolicName() + ".RenameResourceAction";//$NON-NLS-1$
+  public static final String ID = FrameworkUtil.getBundle(PlatformUI.class).getSymbolicName() + ".RenameResourceAction";//$NON-NLS-1$
 
   /**
    * The new path.
@@ -323,12 +323,12 @@ public class RenameResourceAction extends WorkspaceAction {
         updateReferencesToFile(oldResource.getProject(), resourceNameBeforeRenaming, newResourcePath.lastSegment(),
             updateCapellaProjectName);
       } catch (UnsupportedEncodingException e) {
-        errorStatus[0] = new Status(IStatus.ERROR, PlatformUI.getDefault().getBundle().getSymbolicName(), "Rename action failed to perform because UTF-8 encoding is not supported", e);
+        errorStatus[0] = new Status(IStatus.ERROR, FrameworkUtil.getBundle(PlatformUI.class).getSymbolicName(), "Rename action failed to perform because UTF-8 encoding is not supported", e);
       } catch (ExecutionException e) {
         if (e.getCause() instanceof CoreException) {
           errorStatus[0] = ((CoreException) e.getCause()).getStatus();
         } else {
-          errorStatus[0] = new Status(IStatus.ERROR, PlatformUI.getDefault().getBundle().getSymbolicName(), getProblemsMessage(), e);
+          errorStatus[0] = new Status(IStatus.ERROR, FrameworkUtil.getBundle(PlatformUI.class).getSymbolicName(), getProblemsMessage(), e);
         }
       }
 

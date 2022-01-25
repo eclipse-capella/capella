@@ -30,6 +30,7 @@ import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.flexibility.properties.PropertyChangeListener;
 import org.polarsys.capella.common.flexibility.properties.PropertyChangedEvent;
 import org.polarsys.capella.common.flexibility.properties.schema.IProperty;
@@ -186,12 +187,12 @@ public class ReplicaRenderer extends EditListRenderer implements PropertyChangeL
         }
 
         if (!scopeElements.contains(element)) {
-          return new Status(IStatus.INFO, Activator.getDefault().getBundle().getSymbolicName(), "");
+          return new Status(IStatus.INFO, FrameworkUtil.getBundle(Activator.class).getSymbolicName(), "");
         }
 
         IContext ctx = (IContext) context.getPropertyContext().getSource();
         if (AttributesHandlerHelper.getInstance(ctx).isSuffixable(element, ctx)) {
-          return new Status(IStatus.WARNING, Activator.getDefault().getBundle().getSymbolicName(), "+SUFFIX");
+          return new Status(IStatus.WARNING, FrameworkUtil.getBundle(Activator.class).getSymbolicName(), "+SUFFIX");
         }
 
         return Status.OK_STATUS;
@@ -223,7 +224,7 @@ public class ReplicaRenderer extends EditListRenderer implements PropertyChangeL
     if (values.isEmpty()) {
       return Status.OK_STATUS;
     }
-    return new Status(IStatus.WARNING, Activator.getDefault().getBundle().getSymbolicName(), "Missing dependencies");
+    return new Status(IStatus.WARNING, FrameworkUtil.getBundle(Activator.class).getSymbolicName(), "Missing dependencies");
   }
 
   @Override

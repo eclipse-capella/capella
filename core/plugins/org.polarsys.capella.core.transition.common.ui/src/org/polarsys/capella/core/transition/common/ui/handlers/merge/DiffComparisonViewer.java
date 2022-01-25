@@ -45,6 +45,7 @@ import org.eclipse.swt.widgets.ToolBar;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IWorkbenchPartSite;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ui.toolkit.viewers.menu.ModalContextMenuExtender;
 import org.polarsys.capella.core.transition.common.ui.Activator;
 
@@ -147,7 +148,7 @@ public class DiffComparisonViewer extends ComparisonViewer {
   }
 
   protected ImageDescriptor getImageDescriptor(String key) {
-    ImageDescriptor desc = AbstractUIPlugin.imageDescriptorFromPlugin(Activator.getDefault().getBundle().getSymbolicName(), "icons/ctool16/" + key);
+    ImageDescriptor desc = AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(Activator.class).getSymbolicName(), "icons/ctool16/" + key);
     return desc;
   }
 

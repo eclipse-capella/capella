@@ -13,7 +13,7 @@
 package org.polarsys.capella.core.commands.preferences.util;
 
 import org.eclipse.core.runtime.CoreException;
-
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.core.commands.preferences.preferences.ConfigurabilityPreferences;
 import org.polarsys.capella.core.commands.preferences.service.AbstractItemDescriptor;
 import org.polarsys.capella.core.commands.preferences.service.PreferencesItemsRegistry;
@@ -32,8 +32,8 @@ public class UserProfileDescriptor extends AbstractItemDescriptor implements IUs
 	public UserProfileDescriptor(String userProfileModeId,String userProfileModeName) {
 
 		try {
-			assertNotNull(userProfileModeId, Activator.getDefault().getBundle().getSymbolicName());
-			assertNotNull(userProfileModeName, Activator.getDefault().getBundle().getSymbolicName());
+			assertNotNull(userProfileModeId, FrameworkUtil.getBundle(Activator.class).getSymbolicName());
+			assertNotNull(userProfileModeName, FrameworkUtil.getBundle(Activator.class).getSymbolicName());
 			
 			PreferencesItemsRegistry.getInstance().registerUserProfile(this); 
 			
@@ -77,7 +77,7 @@ public class UserProfileDescriptor extends AbstractItemDescriptor implements IUs
 	 */
 	@Override
 	public String getPluginId() {
-		return Activator.getDefault().getBundle().getSymbolicName();
+		return FrameworkUtil.getBundle(Activator.class).getSymbolicName();
 	}
 
 	/**

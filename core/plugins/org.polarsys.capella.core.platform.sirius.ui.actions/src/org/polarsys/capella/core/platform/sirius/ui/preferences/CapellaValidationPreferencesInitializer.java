@@ -13,7 +13,7 @@
 package org.polarsys.capella.core.platform.sirius.ui.preferences;
 
 import org.eclipse.core.resources.ProjectScope;
-
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.core.commands.preferences.service.AbstractPreferencesInitializer;
 import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaActionsActivator;
 
@@ -23,7 +23,7 @@ import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaActionsActiva
 public class CapellaValidationPreferencesInitializer extends AbstractPreferencesInitializer {
 
   public CapellaValidationPreferencesInitializer() {
-    super(CapellaActionsActivator.getDefault().getBundle().getSymbolicName());
+    super(FrameworkUtil.getBundle(CapellaActionsActivator.class).getSymbolicName());
   }
 
   @Override

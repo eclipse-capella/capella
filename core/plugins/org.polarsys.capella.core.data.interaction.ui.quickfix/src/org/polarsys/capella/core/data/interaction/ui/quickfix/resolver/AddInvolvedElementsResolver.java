@@ -21,6 +21,7 @@ import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
@@ -44,7 +45,7 @@ public class AddInvolvedElementsResolver extends AbstractCapellaMarkerResolution
     this.overridenLabel = label;
     this.multiMarkerQuickFix = multiMarkerQuickFix;
     this.ruleId = ruleId;
-    super.setContributorId(CapellaUIResourcesPlugin.getDefault().getBundle().getSymbolicName());
+    super.setContributorId(FrameworkUtil.getBundle(CapellaUIResourcesPlugin.class).getSymbolicName());
     super.setImgKey(PROCESS_ICON);
   }
 

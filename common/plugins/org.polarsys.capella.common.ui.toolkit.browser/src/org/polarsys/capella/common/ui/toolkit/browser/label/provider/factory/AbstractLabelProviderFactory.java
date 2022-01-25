@@ -14,6 +14,7 @@ package org.polarsys.capella.common.ui.toolkit.browser.label.provider.factory;
 
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.jface.viewers.ILabelProvider;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
 import org.polarsys.capella.common.ui.toolkit.browser.BrowserActivator;
 
@@ -41,7 +42,7 @@ public abstract class AbstractLabelProviderFactory {
    */
   public static AbstractLabelProviderFactory getInstance() {
     if (null == _instance) {
-      IConfigurationElement[] configurationElements = ExtensionPointHelper.getConfigurationElements(BrowserActivator.getDefault().getBundle().getSymbolicName(), LABEL_PROVIDER_FACTORY);
+      IConfigurationElement[] configurationElements = ExtensionPointHelper.getConfigurationElements(FrameworkUtil.getBundle(BrowserActivator.class).getSymbolicName(), LABEL_PROVIDER_FACTORY);
       for (IConfigurationElement configurationElement : configurationElements) {
         AbstractLabelProviderFactory labelProvider =
             (AbstractLabelProviderFactory) ExtensionPointHelper.createInstance(configurationElement, ExtensionPointHelper.ATT_CLASS);

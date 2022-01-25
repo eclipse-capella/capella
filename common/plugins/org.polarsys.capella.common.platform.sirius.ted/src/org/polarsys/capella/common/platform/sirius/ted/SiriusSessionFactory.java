@@ -35,6 +35,7 @@ import org.eclipse.sirius.business.api.session.factory.SessionFactory;
 import org.eclipse.sirius.business.internal.session.SessionFactoryImpl;
 import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
 import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
 
 /**
@@ -123,7 +124,7 @@ public class SiriusSessionFactory extends SessionFactoryImpl implements SessionF
       if (null == _derivedSemanticResourceProviders) {
         _derivedSemanticResourceProviders = new ArrayList<IDerivedSemanticResourceProvider>();
         List<IConfigurationElement> BQProvider = Arrays.asList(ExtensionPointHelper.getConfigurationElements(
-            PlatformSiriusTedActivator.getDefault().getBundle().getSymbolicName(), DERIVED_SEMANTIC_RESOURCE_PROVIDER_EXTENSION_ID));
+            FrameworkUtil.getBundle(PlatformSiriusTedActivator.class).getSymbolicName(), DERIVED_SEMANTIC_RESOURCE_PROVIDER_EXTENSION_ID));
         for (IConfigurationElement configurationElement : BQProvider) {
           IDerivedSemanticResourceProvider contrib = (IDerivedSemanticResourceProvider) ExtensionPointHelper
               .createInstance(configurationElement, ExtensionPointHelper.ATT_CLASS);
@@ -146,7 +147,7 @@ public class SiriusSessionFactory extends SessionFactoryImpl implements SessionF
 
       if (loaded == Boolean.FALSE) {
         for (IConfigurationElement configurationElement : ExtensionPointHelper
-            .getConfigurationElements(PlatformSiriusTedActivator.getDefault().getBundle().getSymbolicName(), "metadataProvider")) {
+            .getConfigurationElements(FrameworkUtil.getBundle(PlatformSiriusTedActivator.class).getSymbolicName(), "metadataProvider")) {
           IMetadataProvider contrib = (IMetadataProvider) ExtensionPointHelper.createInstance(configurationElement,
               ExtensionPointHelper.ATT_CLASS);
           if (contrib != null) {

@@ -17,6 +17,7 @@ import java.util.Collection;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.sirius.business.api.session.Session;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
@@ -63,7 +64,7 @@ public class AbstractProcessingCommands<T> extends AbstractProcessingRunnable<T>
          */
         @Override
         public void commandRolledBack() {
-          result[0] = new Status(IStatus.ERROR, Activator.getDefault().getBundle().getSymbolicName(), getName());
+          result[0] = new Status(IStatus.ERROR, FrameworkUtil.getBundle(Activator.class).getSymbolicName(), getName());
         }
 
         public void run() {
@@ -75,7 +76,7 @@ public class AbstractProcessingCommands<T> extends AbstractProcessingRunnable<T>
             if (exception_p.getMessage() != null) {
               message += ": " + exception_p.getMessage();
             }
-            result[0] = new Status(IStatus.ERROR, Activator.getDefault().getBundle().getSymbolicName(), message, exception_p);
+            result[0] = new Status(IStatus.ERROR, FrameworkUtil.getBundle(Activator.class).getSymbolicName(), message, exception_p);
           }
         }
       });
@@ -85,7 +86,7 @@ public class AbstractProcessingCommands<T> extends AbstractProcessingRunnable<T>
       if (exception_p.getMessage() != null) {
         message += ": " + exception_p.getMessage();
       }
-      result[0] = new Status(IStatus.ERROR, Activator.getDefault().getBundle().getSymbolicName(), message, exception_p);
+      result[0] = new Status(IStatus.ERROR, FrameworkUtil.getBundle(Activator.class).getSymbolicName(), message, exception_p);
     }
     return result[0];
   }

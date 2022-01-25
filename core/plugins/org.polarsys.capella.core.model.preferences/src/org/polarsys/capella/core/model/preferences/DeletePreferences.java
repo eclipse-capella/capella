@@ -14,6 +14,7 @@ package org.polarsys.capella.core.model.preferences;
 
 import org.eclipse.core.resources.ProjectScope;
 import org.eclipse.core.runtime.preferences.DefaultScope;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.core.commands.preferences.service.AbstractPreferencesInitializer;
 
 /**
@@ -24,7 +25,7 @@ public class DeletePreferences extends AbstractPreferencesInitializer implements
    * @param pluginID
    */
   public DeletePreferences() {
-    super(CapellaModelPreferencesPlugin.getDefault().getBundle().getSymbolicName());
+    super(FrameworkUtil.getBundle(CapellaModelPreferencesPlugin.class).getSymbolicName());
   }
 
   /**

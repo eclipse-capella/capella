@@ -15,6 +15,7 @@ package org.polarsys.capella.core.commands.preferences.properties;
 import org.eclipse.core.expressions.PropertyTester;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.core.runtime.preferences.InstanceScope;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.core.commands.preferences.service.IItemDescriptor;
 import org.polarsys.capella.core.commands.preferences.service.PreferencesItemsRegistry;
 import org.polarsys.capella.core.preferences.Activator;
@@ -42,7 +43,7 @@ public class CapellaCommandsPreferencesPropertyTester extends PropertyTester {
         || CAPELLA_CMD_MODELING_PREFERENCES_PROPERTY.equals(property)) {
       IItemDescriptor itemDescriptor = PreferencesItemsRegistry.getInstance().getDescriptor((String) expectedValue);
       boolean defaultValue = itemDescriptor != null ? itemDescriptor.isEnabledByDefault() : true;
-      IEclipsePreferences commandsPreferences = InstanceScope.INSTANCE.getNode(Activator.getDefault().getBundle().getSymbolicName());
+      IEclipsePreferences commandsPreferences = InstanceScope.INSTANCE.getNode(FrameworkUtil.getBundle(Activator.class).getSymbolicName());
       return commandsPreferences.getBoolean((String) expectedValue, defaultValue);
     }
     return false;
