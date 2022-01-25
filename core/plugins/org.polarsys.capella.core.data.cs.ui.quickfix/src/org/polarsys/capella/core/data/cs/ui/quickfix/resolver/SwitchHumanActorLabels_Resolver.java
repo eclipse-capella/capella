@@ -17,7 +17,10 @@ import java.util.List;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.ef.command.ICommand;
@@ -49,7 +52,7 @@ public abstract class SwitchHumanActorLabels_Resolver extends AbstractCapellaMar
           try {
             marker.delete();
           } catch (CoreException e) {
-            CsQuickFixActivator.getDefault().log(IStatus.ERROR, "Error while deleting marker", e);
+            Platform.getLog(CsQuickFixActivator.class).log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(CsQuickFixActivator.class).getSymbolicName(), "Error while deleting marker", e));
           }
         }
       };

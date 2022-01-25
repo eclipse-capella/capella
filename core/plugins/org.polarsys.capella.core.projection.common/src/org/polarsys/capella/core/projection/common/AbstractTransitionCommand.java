@@ -19,10 +19,12 @@ import java.util.Collections;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
-
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.operations.LongRunningListenersRegistry;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerView;
@@ -123,7 +125,7 @@ public abstract class AbstractTransitionCommand extends AbstractReadWriteCommand
       try {
         PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView(MarkerView.VIEW_ID);
       } catch (PartInitException e) {
-        CapellaActionsActivator.getDefault().log(IStatus.ERROR, e.getMessage(), e);
+        Platform.getLog(CapellaActionsActivator.class).log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(CapellaActionsActivator.class).getSymbolicName(), e.getMessage(), e));
       }
     }
   }

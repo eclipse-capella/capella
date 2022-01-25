@@ -22,6 +22,8 @@ import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
@@ -36,6 +38,7 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.command.AbstractReadOnlyCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
@@ -101,7 +104,7 @@ public class CapellaValidateAction extends ValidateAction {
                 marker.delete();
               }
             } catch (CoreException e) {
-              CapellaActionsActivator.getDefault().log(IStatus.ERROR, e.getMessage(), e);
+              Platform.getLog(CapellaActionsActivator.class).log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(CapellaActionsActivator.class).getSymbolicName(), e.getMessage(), e));
             }
           }
         }
@@ -166,7 +169,7 @@ public class CapellaValidateAction extends ValidateAction {
     try {
       PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView(MarkerView.VIEW_ID);
     } catch (PartInitException e) {
-      CapellaActionsActivator.getDefault().log(IStatus.ERROR, e.getMessage(), e);
+      Platform.getLog(CapellaActionsActivator.class).log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(CapellaActionsActivator.class).getSymbolicName(), e.getMessage(), e));
     }
 
   }

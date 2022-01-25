@@ -167,7 +167,7 @@ public class EPFValidationAction extends CapellaValidateAction {
         restoreOldPreference();
         
       } catch (PartInitException e) {
-        CapellaValidationUIActivator.getDefault().log(IStatus.ERROR, e.getMessage(), e);
+        Platform.getLog(CapellaValidationUIActivator.class).log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(CapellaValidationUIActivator.class).getSymbolicName(), e.getMessage(), e));
       }
 
     } finally {
@@ -179,7 +179,7 @@ public class EPFValidationAction extends CapellaValidateAction {
     try {
       PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView(MarkerView.VIEW_ID);
     } catch (PartInitException e) {
-      CapellaValidationUIActivator.getDefault().log(IStatus.ERROR, e.getMessage(), e);
+      Platform.getLog(CapellaValidationUIActivator.class).log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(CapellaValidationUIActivator.class).getSymbolicName(), e.getMessage(), e));
     }
   }
 
@@ -354,7 +354,7 @@ public class EPFValidationAction extends CapellaValidateAction {
                 marker.delete();
               }
             } catch (CoreException e) {
-              CapellaValidationUIActivator.getDefault().log(IStatus.ERROR, e.getMessage(), e);
+              Platform.getLog(CapellaValidationUIActivator.class).log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(CapellaValidationUIActivator.class).getSymbolicName(), e.getMessage(), e));
             }
           }
         }

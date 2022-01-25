@@ -19,17 +19,19 @@ import java.util.List;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewHelper;
+import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink;
+import org.polarsys.capella.core.data.fa.SequenceLink;
 import org.polarsys.capella.core.ui.resources.CapellaUIResourcesPlugin;
 import org.polarsys.capella.core.validation.ui.ide.PluginActivator;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarkerResolution;
-import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink;
-import org.polarsys.capella.core.data.fa.SequenceLink;
 
 public class RemoveSequenceLinksAssociationsResolver extends AbstractCapellaMarkerResolution {
   private final String PROCESS_ICON = "icons/full/obj16/capella_process.gif";
@@ -87,7 +89,7 @@ public class RemoveSequenceLinksAssociationsResolver extends AbstractCapellaMark
       try {
         marker.delete();
       } catch (CoreException e) {
-        PluginActivator.getDefault().log(IStatus.ERROR, e.getLocalizedMessage(), e);
+        Platform.getLog(PluginActivator.class).log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(PluginActivator.class).getSymbolicName(), e.getLocalizedMessage(), e));
       }
     }
   }

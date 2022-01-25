@@ -20,6 +20,8 @@ import java.util.Optional;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ef.ExecutionManager;
@@ -106,7 +108,7 @@ public class AddInvolvedElementsResolver extends AbstractCapellaMarkerResolution
       try {
         marker.delete();
       } catch (CoreException e) {
-        PluginActivator.getDefault().log(IStatus.ERROR, e.getLocalizedMessage(), e);
+        Platform.getLog(PluginActivator.class).log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(PluginActivator.class).getSymbolicName(), e.getLocalizedMessage(), e));
       }
     }
   }

@@ -77,7 +77,7 @@ public abstract class AbstractUIActivator extends AbstractUIPlugin {
    * @return an {@link ImageDescriptor} or null if error occurred
    */
   protected ImageDescriptor createImageDescriptor(String key) {
-    ImageDescriptor imageDescriptor = AbstractUIPlugin.imageDescriptorFromPlugin(getPluginId(), ICONS_PATH + key);
+    ImageDescriptor imageDescriptor = AbstractUIPlugin.imageDescriptorFromPlugin(getBundle().getSymbolicName(), ICONS_PATH + key);
     return imageDescriptor;
   }
 
@@ -97,8 +97,9 @@ public abstract class AbstractUIActivator extends AbstractUIPlugin {
    * @param message a human-readable message, localized to the current locale
    * @param exception a low-level exception, or <code>null</code> if not applicable
    */
+  @Deprecated
   public void log(int severity, String message, Throwable exception) {
-    Platform.getLog(getBundle()).log(new Status(severity, getPluginId(), message, exception));
+    Platform.getLog(getBundle()).log(new Status(severity, getBundle().getSymbolicName(), message, exception));
   }
 
   /**
@@ -108,7 +109,7 @@ public abstract class AbstractUIActivator extends AbstractUIPlugin {
    * @return null if image file not found.
    */
   public URL getImageURL(String key) {
-    Bundle bundle = Platform.getBundle(getPluginId());
+    Bundle bundle = Platform.getBundle(getBundle().getSymbolicName());
     if (!BundleUtility.isReady(bundle)) {
       return null;
     }

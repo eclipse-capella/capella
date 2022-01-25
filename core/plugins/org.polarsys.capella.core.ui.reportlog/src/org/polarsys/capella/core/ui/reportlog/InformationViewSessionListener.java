@@ -21,10 +21,13 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManagerListener;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.LightMarkerRegistry;
 
 /**
@@ -50,7 +53,7 @@ public class InformationViewSessionListener extends SessionManagerListener.Stub 
           try {
             marker.delete();
           } catch (CoreException exception) {
-            ReportLogActivator.getDefault().log(IStatus.ERROR, exception.getMessage(), exception);
+            Platform.getLog(ReportLogActivator.class).log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(ReportLogActivator.class).getSymbolicName(), exception.getMessage(), exception));
           }
         }
       }
