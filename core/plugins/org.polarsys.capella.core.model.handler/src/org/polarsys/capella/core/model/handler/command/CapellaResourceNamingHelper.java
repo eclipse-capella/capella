@@ -18,7 +18,6 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.ui.internal.ide.IDEWorkbenchPlugin;
-import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.core.model.handler.ModelHandlerPlugin;
 
 @SuppressWarnings("restriction")
@@ -68,7 +67,7 @@ public class CapellaResourceNamingHelper {
         String message = NLS.bind(Messages.CapellaResourceNamingHelper_invalidCharInName, String.valueOf(invalidChar),
             name);
 
-        return new Status(IStatus.ERROR, FrameworkUtil.getBundle(ModelHandlerPlugin.class).getSymbolicName(), message);
+        return Status.error(message);
       }
     }
 

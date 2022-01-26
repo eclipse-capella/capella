@@ -56,7 +56,6 @@ import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.Style;
-import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.platform.sirius.clipboard.Activator;
@@ -249,7 +248,7 @@ public class CapellaDiagramPasteCommand extends AbstractResultCommand {
       if (!abstractNodeMappingApplicabilityTester.canCreateIn(diagram)) {
         String statusMessage = NLS.bind(Messages.CapellaDiagramPasteAction_InvalidDiagramTarget,
             new String[] { elementName, elementTargetType, EObjectExt.getText(diagram) });
-        return new Status(Status.WARNING, FrameworkUtil.getBundle(Activator.class).getSymbolicName(), statusMessage);
+        return Status.warning(statusMessage);
       }
 
     } else if (pasteTarget instanceof DNodeContainer) {
@@ -258,7 +257,7 @@ public class CapellaDiagramPasteCommand extends AbstractResultCommand {
 
         String statusMessage = NLS.bind(Messages.CapellaDiagramPasteAction_InvalidNodeContainerTarget,
             new String[] { elementName, elementTargetType, nodeContainer.getName() });
-        return new Status(Status.WARNING, FrameworkUtil.getBundle(Activator.class).getSymbolicName(), statusMessage);
+        return Status.warning(statusMessage);
       }
 
     } else if (pasteTarget instanceof DNode) {
@@ -267,7 +266,7 @@ public class CapellaDiagramPasteCommand extends AbstractResultCommand {
 
         String statusMessage = NLS.bind(Messages.CapellaDiagramPasteAction_InvalidNodeTarget,
             new String[] { elementName, elementTargetType, node.getName() });
-        return new Status(Status.WARNING, FrameworkUtil.getBundle(Activator.class).getSymbolicName(), statusMessage);
+        return Status.warning(statusMessage);
       }
 
     }

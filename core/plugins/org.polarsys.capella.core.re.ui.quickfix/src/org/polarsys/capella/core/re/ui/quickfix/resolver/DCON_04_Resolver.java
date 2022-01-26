@@ -20,7 +20,6 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.ui.statushandlers.StatusManager;
-import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
@@ -65,7 +64,7 @@ public class DCON_04_Resolver extends AbstractCapellaMarkerResolution {
       marker.delete();
     } catch (CoreException exception) {
       StatusManager.getManager().handle(
-          new Status(IStatus.ERROR, FrameworkUtil.getBundle(PluginActivator.class).getSymbolicName(), exception.getMessage(), exception));
+          Status.error(exception.getMessage(), exception));
     }
   }
 }

@@ -25,7 +25,6 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
-import org.osgi.framework.FrameworkUtil;
 
 /**
  * The abstract base class for all content providers for the MarkerView in this package.
@@ -77,7 +76,7 @@ abstract class AbstractMarkerViewContentProvider implements ITreeContentProvider
       try {
         marker.delete();
       } catch (CoreException e) {
-        Platform.getLog(MarkerViewPlugin.class).log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(MarkerViewPlugin.class).getSymbolicName(), e.getLocalizedMessage(), e));
+        Platform.getLog(MarkerViewPlugin.class).log(Status.error(e.getLocalizedMessage(), e));
       }
     }
     viewerRefresh.refresh();

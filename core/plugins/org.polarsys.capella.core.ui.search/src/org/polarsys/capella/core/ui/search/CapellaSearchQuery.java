@@ -38,7 +38,6 @@ import org.eclipse.sirius.diagram.ui.business.api.query.DDiagramGraphicalQuery;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
-import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.core.commands.preferences.util.PreferencesHelper;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.viewer.CapellaNavigatorContentProvider;
 import org.polarsys.capella.core.ui.search.match.LineSearchMatchChild;
@@ -113,10 +112,10 @@ public class CapellaSearchQuery implements ISearchQuery {
     } catch (PatternSyntaxException e) {
       String message = String.format(CapellaSearchConstants.CapellaSearchQuery_Search_Pattern_Not_Validated_Message,
           e.getPattern(), e.getDescription());
-      return new Status(IStatus.ERROR, FrameworkUtil.getBundle(Activator.class).getSymbolicName(), message);
+      return Status.error(message);
     } catch (Exception e) {
       String message = e.getMessage();
-      return new Status(IStatus.ERROR, FrameworkUtil.getBundle(Activator.class).getSymbolicName(), message);
+      return Status.error(message);
     }
   }
 

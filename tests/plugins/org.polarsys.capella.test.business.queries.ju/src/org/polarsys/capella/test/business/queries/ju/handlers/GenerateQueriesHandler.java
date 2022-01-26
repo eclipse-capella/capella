@@ -30,7 +30,6 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
-import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.libraries.ILibraryManager;
 import org.polarsys.capella.common.libraries.IModel;
@@ -101,7 +100,7 @@ public class GenerateQueriesHandler extends AbstractUiHandler {
           }
           monitor.worked(1);
         }
-        return new Status(IStatus.WARNING, FrameworkUtil.getBundle(TestBusinessQueriesPlugin.class).getSymbolicName(), "Generated in " + BQTestHelpers.getBqTestProject().getAbsolutePath());
+        return Status.warning("Generated in " + BQTestHelpers.getBqTestProject().getAbsolutePath());
       }
     };
 

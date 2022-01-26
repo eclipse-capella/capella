@@ -18,7 +18,6 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Status;
-import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.core.data.migration.AbstractMigrationRunnable;
 import org.polarsys.capella.core.data.migration.MigrationConstants;
 import org.polarsys.capella.core.data.migration.context.MigrationContext;
@@ -51,7 +50,7 @@ public class PatternCatalogDeletionContributor extends AbstractMigrationContribu
             parent.delete(true, new NullProgressMonitor());
           }
         } catch (CoreException e) {
-          return new Status(IStatus.ERROR, FrameworkUtil.getBundle(org.polarsys.capella.core.data.migration.Activator.class).getSymbolicName(), e.getMessage(), e);
+          return Status.error(e.getMessage(), e);
         }
         return Status.OK_STATUS;
       }

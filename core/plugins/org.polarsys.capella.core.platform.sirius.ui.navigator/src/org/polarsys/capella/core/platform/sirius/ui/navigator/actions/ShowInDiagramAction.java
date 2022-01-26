@@ -48,7 +48,6 @@ import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
-import org.polarsys.capella.core.platform.sirius.ui.navigator.CapellaNavigatorPlugin;
 import org.polarsys.capella.core.sirius.analysis.DiagramServices;
 
 /**
@@ -87,7 +86,7 @@ public class ShowInDiagramAction extends BaseSelectionListenerAction implements 
     Set<DDiagramElement> viewsFromEditor = getViewsFromEditor(activeEditor, semanticElements);
 
     if (viewsFromEditor.isEmpty()) {
-      return new Status(IStatus.INFO, FrameworkUtil.getBundle(CapellaNavigatorPlugin.class).getSymbolicName(), Messages.ShowInDiagramAction_UnknownElement_Message);
+      return Status.info(Messages.ShowInDiagramAction_UnknownElement_Message);
     }
 
     List<DDiagramElement> availableElements = viewsFromEditor.stream().filter(isElementAvailable())
@@ -98,7 +97,7 @@ public class ShowInDiagramAction extends BaseSelectionListenerAction implements 
       // return a status containing the reason
       DDiagramElement diagramElement = viewsFromEditor.iterator().next();
       String message = getUnavailableElementMessage(diagramElement);
-      return new Status(IStatus.INFO, FrameworkUtil.getBundle(CapellaNavigatorPlugin.class).getSymbolicName(), message);
+      return Status.info(message);
     }
 
     if (activeEditor instanceof DialectEditor) {

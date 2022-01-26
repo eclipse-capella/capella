@@ -34,7 +34,6 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
-import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.tools.report.ReportManagerActivator;
 import org.polarsys.capella.common.tools.report.config.ReportManagerConstants;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
@@ -103,7 +102,7 @@ public class ReportManagerPrefPage extends PreferencePage implements IWorkbenchP
         String componentName = (String) f.get(null);
         registry.subscribe(componentName);
       } catch (Exception exception) {
-        Platform.getLog(ReportManagerActivator.class).log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(ReportManagerActivator.class).getSymbolicName(), exception.getMessage(), exception));
+        Platform.getLog(ReportManagerActivator.class).log(Status.error(exception.getMessage(), exception));
       }
     }
 

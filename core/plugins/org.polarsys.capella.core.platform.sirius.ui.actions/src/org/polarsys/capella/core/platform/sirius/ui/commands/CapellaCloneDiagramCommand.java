@@ -28,7 +28,6 @@ import org.eclipse.sirius.tools.internal.SiriusCopierHelper;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
-import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.mdsofa.common.helper.StringHelper;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
@@ -136,7 +135,7 @@ public class CapellaCloneDiagramCommand extends AbstractCommand {
           listener.cloneAboutToBeRemoved(clone, session);
         }
       } catch (Exception exception) {
-        Platform.getLog(CapellaActionsActivator.class).log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(CapellaActionsActivator.class).getSymbolicName(), "Unable to notify listeners !", exception)); //$NON-NLS-1$
+        Platform.getLog(CapellaActionsActivator.class).log(Status.error("Unable to notify listeners !", exception)); //$NON-NLS-1$
       }
     }
   }

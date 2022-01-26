@@ -17,7 +17,6 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
-import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.command.ICommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
@@ -61,7 +60,7 @@ public class CommandMarkerResolution extends AbstractCapellaMarkerResolution {
       try {
         marker.delete();
       } catch (CoreException e){
-        Platform.getLog(PluginActivator.class).log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(PluginActivator.class).getSymbolicName(), e.getLocalizedMessage(), e));
+        Platform.getLog(PluginActivator.class).log(Status.error(e.getLocalizedMessage(), e));
       }
     }
   }

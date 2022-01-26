@@ -283,7 +283,7 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
                 // Hopefully, the rollback is complete before this exception is thrown.
                 // Log this exception as a warning.
                 String message = "Error while executing a command:"; //$NON-NLS-1$
-                Platform.getLog(PlatformSiriusTedActivator.class).log(new Status(IStatus.WARNING, FrameworkUtil.getBundle(PlatformSiriusTedActivator.class).getSymbolicName(), message, exception));
+                Platform.getLog(PlatformSiriusTedActivator.class).log(Status.warning(message, exception));
                 throw new RollbackException(new Status(IStatus.CANCEL, FrameworkUtil.getBundle(PlatformSiriusTedActivator.class).getSymbolicName(), message, exception));
             }
         }

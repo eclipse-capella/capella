@@ -99,7 +99,7 @@ public class DWF_DF_18_Resolver extends AbstractCapellaMarkerResolution {
       marker.delete();
     } catch (CoreException exception) {
       StatusManager.getManager().handle(
-          new Status(IStatus.ERROR, FrameworkUtil.getBundle(PluginActivator.class).getSymbolicName(), exception.getMessage(), exception));
+          Status.error(exception.getMessage(), exception));
     }
   }
 

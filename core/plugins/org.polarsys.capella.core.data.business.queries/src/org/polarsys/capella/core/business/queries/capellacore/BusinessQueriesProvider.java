@@ -87,7 +87,7 @@ public class BusinessQueriesProvider {
             } else {
               // keep the existing key and log error.
               ILog log = Platform.getLog(BusinessQueriesPlugin.class);
-              log.log(new Status(IStatus.WARNING, FrameworkUtil.getBundle(BusinessQueriesPlugin.class).getSymbolicName(),
+              log.log(Status.warning(
                   NLS.bind(Messages.BusinessQueriesProvider_duplicateQueryContributionKey,
                       new Object[] { key.getKey(), key.getValue(), query.getClass().getName(), dup.getClass().getName() })));
             }

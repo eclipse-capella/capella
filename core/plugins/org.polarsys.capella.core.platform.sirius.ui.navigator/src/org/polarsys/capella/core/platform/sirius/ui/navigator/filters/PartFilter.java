@@ -19,7 +19,6 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 
 import org.polarsys.kitalpha.emde.extension.ModelExtensionHelper;
-import org.polarsys.kitalpha.emde.extension.ModelExtensionManager;
 import org.polarsys.capella.core.data.cs.Part;
 
 /**

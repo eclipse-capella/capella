@@ -53,7 +53,7 @@ public class Activator extends Plugin {
       // persist parent locator option preference
       InstanceScope.INSTANCE.getNode(FrameworkUtil.getBundle(Activator.class).getSymbolicName()).flush();
     } catch (BackingStoreException e) {
-      Platform.getLog(Activator.class).log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(Activator.class).getSymbolicName(), e.getLocalizedMessage(), e));
+      Platform.getLog(Activator.class).log(Status.error(e.getLocalizedMessage(), e));
     } finally {
       plugin = null;
       super.stop(context);

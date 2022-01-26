@@ -124,7 +124,7 @@ public class ViewpointMigrationContribution extends AbstractMigrationContributio
         // We check for additional missing viewpoints
         for (String id : viewpointUsages.keySet()) {
           if (ViewpointManager.getViewpoint(id) == null) {
-            status.add(new Status(IStatus.ERROR, FrameworkUtil.getBundle(AFIntegrationPlugin.class).getSymbolicName(), "The viewpoint '" + id + "' is missing"));
+            status.add(Status.error("The viewpoint '" + id + "' is missing"));
           }
         }
 
@@ -132,7 +132,7 @@ public class ViewpointMigrationContribution extends AbstractMigrationContributio
       }
     } catch (Exception e) {
       e.printStackTrace();
-      status.add(new Status(IStatus.ERROR, FrameworkUtil.getBundle(AFIntegrationPlugin.class).getSymbolicName(), e.getMessage()));
+      status.add(Status.error(e.getMessage()));
       return status;
     }
 
@@ -148,13 +148,13 @@ public class ViewpointMigrationContribution extends AbstractMigrationContributio
     if (Version.emptyVersion.equals(fileVersion)) {
       String formattedMessage = NLS.bind(Messages.MigrationAction_ErrorDialog_CorruptedMessage,
           new String[] { context.getResourceName() });
-      return new Status(IStatus.ERROR, FrameworkUtil.getBundle(Activator.class).getSymbolicName(), formattedMessage);
+      return Status.error(formattedMessage);
     }
 
     if (!isMigrationPossible(fileVersion, currentVersion)) {
       String formattedMessage = NLS.bind(Messages.MigrationAction_ErrorDialog_TooOldMessage,
           new String[] { context.getResourceName(), currentVersion.toString() });
-      return new Status(IStatus.ERROR, FrameworkUtil.getBundle(Activator.class).getSymbolicName(), formattedMessage);
+      return Status.error(formattedMessage);
     }
 
     return Status.OK_STATUS;

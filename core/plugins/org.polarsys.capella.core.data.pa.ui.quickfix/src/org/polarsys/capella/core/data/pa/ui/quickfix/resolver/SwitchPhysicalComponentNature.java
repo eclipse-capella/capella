@@ -20,7 +20,6 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
-import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.ef.command.ICommand;
@@ -54,7 +53,7 @@ public class SwitchPhysicalComponentNature extends AbstractPhysicalComponentNatu
           try {
             marker.delete();
           } catch (CoreException e) {
-            Platform.getLog(PaQuickFixActivator.class).log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(PaQuickFixActivator.class).getSymbolicName(), "Error while deleting marker", e));
+            Platform.getLog(PaQuickFixActivator.class).log(Status.error("Error while deleting marker", e));
           }
         }
       };

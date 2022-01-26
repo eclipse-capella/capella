@@ -16,9 +16,6 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.swt.dnd.DND;
-import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.cs.Part;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
 
 /**
  * Encapsulate basic constraints for a drag/drop operation.

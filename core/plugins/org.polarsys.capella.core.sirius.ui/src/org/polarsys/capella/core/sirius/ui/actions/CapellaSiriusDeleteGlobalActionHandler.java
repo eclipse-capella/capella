@@ -23,7 +23,6 @@ import org.eclipse.gmf.runtime.common.core.command.ICommand;
 import org.eclipse.gmf.runtime.common.ui.services.action.global.IGlobalActionContext;
 import org.eclipse.sirius.diagram.ui.tools.internal.delete.SiriusDeleteGlobalActionHandler;
 import org.eclipse.ui.IWorkbenchPart;
-import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.core.sirius.ui.SiriusUIPlugin;
 
 /**
@@ -42,7 +41,7 @@ public class CapellaSiriusDeleteGlobalActionHandler extends SiriusDeleteGlobalAc
       if (undoContext != null) {
         command.addContext(undoContext);
       } else {
-        Platform.getLog(SiriusUIPlugin.class).log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(SiriusUIPlugin.class).getSymbolicName(), "No undo context delete action. Flushing history to prevent corruption.", null)); //$NON-NLS-1$
+        Platform.getLog(SiriusUIPlugin.class).log(Status.error("No undo context delete action. Flushing history to prevent corruption.", null)); //$NON-NLS-1$
         getEditingDomain(cntxt).getCommandStack().flush();
       }
     }

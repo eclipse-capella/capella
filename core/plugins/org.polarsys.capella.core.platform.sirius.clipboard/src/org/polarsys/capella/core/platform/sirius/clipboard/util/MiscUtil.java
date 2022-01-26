@@ -34,7 +34,6 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.ui.statushandlers.StatusManager;
-import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.command.ICommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
@@ -67,7 +66,7 @@ public final class MiscUtil {
       if (e.getMessage() != null) {
         message = e.getMessage();
       }
-      StatusManager.getManager().handle(new Status(IStatus.WARNING, FrameworkUtil.getBundle(Activator.class).getSymbolicName(), message, e));
+      StatusManager.getManager().handle(Status.warning(message, e));
       result = false;
     }
     return result;

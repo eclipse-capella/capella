@@ -27,7 +27,6 @@ import org.eclipse.core.runtime.jobs.IJobChangeEvent;
 import org.eclipse.core.runtime.jobs.JobChangeAdapter;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.team.core.RepositoryProvider;
-import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
@@ -131,7 +130,7 @@ public class MonitorFileSyncJob extends RunInWorkspaceJob {
       // Force a refresh to re-synchronize the resource.
       resource_p.refreshLocal(IResource.DEPTH_ZERO, monitor_p);
       String message = resource_p.getFullPath().toString() + " resynchronized from local file system"; //$NON-NLS-1$
-      Platform.getLog(CapellaProjectActivator.class).log(new Status(IStatus.INFO, FrameworkUtil.getBundle(CapellaProjectActivator.class).getSymbolicName(), message, null));
+      Platform.getLog(CapellaProjectActivator.class).log(Status.info(message));
       if (__logger.isInfoEnabled()) {
         __logger.info(new EmbeddedMessage(message, IReportManagerDefaultComponents.UI));
       }

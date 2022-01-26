@@ -33,7 +33,6 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.eclipse.ui.handlers.IHandlerService;
-import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewHelper;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewPlugin;
 
@@ -53,11 +52,11 @@ public class DisableConstraintHandler extends AbstractHandler {
     try {
       service.executeCommand(DeleteConstraintMarkersHandler.COMMAND_ID, null);
     } catch (NotDefinedException exception) {
-      Platform.getLog(MarkerViewPlugin.class).log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(MarkerViewPlugin.class).getSymbolicName(), exception.getMessage(), exception));
+      Platform.getLog(MarkerViewPlugin.class).log(Status.error(exception.getMessage(), exception));
     } catch (NotEnabledException exception) {
-      Platform.getLog(MarkerViewPlugin.class).log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(MarkerViewPlugin.class).getSymbolicName(), exception.getMessage(), exception));
+      Platform.getLog(MarkerViewPlugin.class).log(Status.error(exception.getMessage(), exception));
     } catch (NotHandledException exception) {
-      Platform.getLog(MarkerViewPlugin.class).log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(MarkerViewPlugin.class).getSymbolicName(), exception.getMessage(), exception));
+      Platform.getLog(MarkerViewPlugin.class).log(Status.error(exception.getMessage(), exception));
     }
 
     IConstraintDescriptor descriptor = getConstraintDescriptor(HandlerUtil.getCurrentSelection(event));

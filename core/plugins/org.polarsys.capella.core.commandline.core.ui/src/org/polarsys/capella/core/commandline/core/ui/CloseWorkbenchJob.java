@@ -17,7 +17,6 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.progress.UIJob;
-import org.osgi.framework.FrameworkUtil;
 
 public class CloseWorkbenchJob extends UIJob {
 
@@ -30,7 +29,7 @@ public class CloseWorkbenchJob extends UIJob {
     if (PlatformUI.getWorkbench().close()) {
       return Status.OK_STATUS;
     }
-    return new Status(IStatus.WARNING, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), Messages.CloseWorkbenchJob_AutoCloseError);
+    return Status.warning(Messages.CloseWorkbenchJob_AutoCloseError);
   }
 
 }

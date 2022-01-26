@@ -24,7 +24,6 @@ import javax.xml.parsers.SAXParserFactory;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
-import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.helpers.HelperPlugin;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -52,9 +51,9 @@ public class XMLValidationHelper {
     try {
       parser = SAXParserFactory.newInstance().newSAXParser();
     } catch (ParserConfigurationException exception) {
-      Platform.getLog(HelperPlugin.class).log(new Status(IStatus.ERROR,  FrameworkUtil.getBundle(HelperPlugin.class).getSymbolicName(), exception.getMessage(), exception));
+      Platform.getLog(HelperPlugin.class).log(Status.error(exception.getMessage(), exception));
     } catch (SAXException exception) {
-      Platform.getLog(HelperPlugin.class).log(new Status(IStatus.ERROR,  FrameworkUtil.getBundle(HelperPlugin.class).getSymbolicName(), exception.getMessage(), exception));
+      Platform.getLog(HelperPlugin.class).log(Status.error(exception.getMessage(), exception));
     } finally {
       if (parser == null){
         throw new RuntimeException("Cannot get a SAXParser instance"); //$NON-NLS-1$
@@ -73,11 +72,11 @@ public class XMLValidationHelper {
     try {
       parser.parse(new InputSource(new StringReader(text)), handler);
     } catch (IOException exception) {
-      Platform.getLog(HelperPlugin.class).log(new Status(IStatus.ERROR,  FrameworkUtil.getBundle(HelperPlugin.class).getSymbolicName(), exception.getMessage(), exception));
+      Platform.getLog(HelperPlugin.class).log(Status.error(exception.getMessage(), exception));
     } catch (SAXException exception) {
       if (!(exception instanceof SAXParseException)){
         // SAXParseExceptions are stored already in the handler, so skip them here.
-        Platform.getLog(HelperPlugin.class).log(new Status(IStatus.ERROR,  FrameworkUtil.getBundle(HelperPlugin.class).getSymbolicName(), exception.getMessage(), exception));
+        Platform.getLog(HelperPlugin.class).log(Status.error(exception.getMessage(), exception));
       }
     }
     return handler.getExceptions();

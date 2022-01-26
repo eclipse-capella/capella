@@ -64,6 +64,7 @@ import org.eclipse.ui.ide.undo.WorkspaceUndoUtil;
 import org.eclipse.ui.internal.ide.IDEWorkbenchMessages;
 import org.eclipse.ui.internal.ide.IDEWorkbenchPlugin;
 import org.eclipse.ui.internal.ide.IIDEHelpContextIds;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.mdsofa.common.helper.FileHelper;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
@@ -323,12 +324,12 @@ public class RenameResourceAction extends WorkspaceAction {
         updateReferencesToFile(oldResource.getProject(), resourceNameBeforeRenaming, newResourcePath.lastSegment(),
             updateCapellaProjectName);
       } catch (UnsupportedEncodingException e) {
-        errorStatus[0] = new Status(IStatus.ERROR, FrameworkUtil.getBundle(PlatformUI.class).getSymbolicName(), "Rename action failed to perform because UTF-8 encoding is not supported", e);
+        errorStatus[0] = Status.error("Rename action failed to perform because UTF-8 encoding is not supported", e);
       } catch (ExecutionException e) {
         if (e.getCause() instanceof CoreException) {
           errorStatus[0] = ((CoreException) e.getCause()).getStatus();
         } else {
-          errorStatus[0] = new Status(IStatus.ERROR, FrameworkUtil.getBundle(PlatformUI.class).getSymbolicName(), getProblemsMessage(), e);
+          errorStatus[0] = Status.error(getProblemsMessage(), e);
         }
       }
 

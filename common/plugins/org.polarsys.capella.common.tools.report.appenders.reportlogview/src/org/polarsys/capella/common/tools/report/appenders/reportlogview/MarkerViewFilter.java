@@ -45,7 +45,6 @@ import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.commands.ICommandService;
 import org.eclipse.ui.handlers.RadioState;
-import org.osgi.framework.FrameworkUtil;
 
 /**
  */
@@ -344,7 +343,7 @@ public class MarkerViewFilter extends ViewerFilter {
       try {
         resource.accept(vis);
       } catch (CoreException e) {
-        Platform.getLog(MarkerViewPlugin.class).log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(MarkerViewPlugin.class).getSymbolicName(), e.getLocalizedMessage(), e));
+        Platform.getLog(MarkerViewPlugin.class).log(Status.error(e.getLocalizedMessage(), e));
       }
       result = vis.getResult();
     }

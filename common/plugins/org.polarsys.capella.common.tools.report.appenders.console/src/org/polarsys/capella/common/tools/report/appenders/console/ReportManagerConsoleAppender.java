@@ -31,7 +31,6 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.ui.console.MessageConsoleStream;
-import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.tools.report.config.ReportManagerConstants;
 
 /**
@@ -141,7 +140,7 @@ public class ReportManagerConsoleAppender extends AppenderSkeleton {
           }
         }
       } catch (IOException e) {
-        Platform.getLog(ConsoleAppenderActivator.class).log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(ConsoleAppenderActivator.class).getSymbolicName(), e.getMessage(), e));
+        Platform.getLog(ConsoleAppenderActivator.class).log(Status.error(e.getMessage(), e));
       }
     }
   }

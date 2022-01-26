@@ -26,7 +26,6 @@ import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.ui.statushandlers.StatusManager;
-import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ui.actions.AbstractTigAction;
 import org.polarsys.capella.core.validation.ui.ide.PluginActivator;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarkerResolution;
@@ -57,7 +56,7 @@ public abstract class ActionResolver extends AbstractCapellaMarkerResolution {
 				marker.delete();
 			} catch (CoreException e) {
 				StatusManager.getManager().handle(
-						new Status(IStatus.ERROR, FrameworkUtil.getBundle(PluginActivator.class).getSymbolicName(), e.getMessage(), e));
+						Status.error(e.getMessage(), e));
 			}
 		}
 	}

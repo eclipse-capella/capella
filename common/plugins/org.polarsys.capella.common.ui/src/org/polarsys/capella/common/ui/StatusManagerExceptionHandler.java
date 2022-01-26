@@ -57,7 +57,7 @@ public class StatusManagerExceptionHandler implements ExceptionHandler {
    * Creates the fallback status to use if extractStatus could not find a a status for the exception.
    */
   protected IStatus createStatus(Exception e) {
-    return new Status(IStatus.ERROR, FrameworkUtil.getBundle(MdeCommonUiActivator.class).getSymbolicName(), e.getLocalizedMessage(), e);
+    return Status.error(e.getLocalizedMessage(), e);
   }
 
   /**

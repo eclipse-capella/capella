@@ -13,7 +13,7 @@
 package org.polarsys.capella.core.platform.sirius.ui.navigator.preferences;
 
 import org.eclipse.jface.preference.IPreferenceStore;
-
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.core.commands.preferences.service.AbstractPreferencesInitializer;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.CapellaNavigatorPlugin;
 import org.polarsys.capella.core.preferences.Activator;

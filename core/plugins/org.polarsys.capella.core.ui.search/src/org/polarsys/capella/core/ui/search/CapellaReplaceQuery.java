@@ -23,7 +23,6 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.emf.ecore.EObject;
-import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.core.ui.search.match.SearchMatch;
 
 public class CapellaReplaceQuery {
@@ -43,7 +42,7 @@ public class CapellaReplaceQuery {
     replacedProjects = new HashSet<>();
     replacedOccurrenceCount = 0;
     if (replacement == null) {
-      return new Status(IStatus.ERROR, FrameworkUtil.getBundle(Activator.class).getSymbolicName(),
+      return Status.error(
           CapellaSearchConstants.CapellaReplaceQuery_Validation_Replacement_Null);
     }
     try {
@@ -69,7 +68,7 @@ public class CapellaReplaceQuery {
         message = String.format(CapellaSearchConstants.CapellaSearchQuery_Search_Pattern_Not_Validated_Message,
             ((PatternSyntaxException) e).getPattern(), ((PatternSyntaxException) e).getDescription());
       }
-      return new Status(IStatus.ERROR, FrameworkUtil.getBundle(Activator.class).getSymbolicName(), message);
+      return Status.error(message);
     }
   }
 

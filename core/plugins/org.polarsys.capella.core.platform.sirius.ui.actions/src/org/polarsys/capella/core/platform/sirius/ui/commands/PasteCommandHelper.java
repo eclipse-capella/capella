@@ -31,7 +31,6 @@ import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.model.copypaste.SharedCopyPasteElements;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.cs.Component;
@@ -112,12 +111,12 @@ public class PasteCommandHelper {
           commands.append(command);
         } else {
           // It was not possible to create the command
-          status = new Status(IStatus.ERROR, FrameworkUtil.getBundle(Activator.class).getSymbolicName(), Messages.CapellaPasteCommand_error_command, null);
+          status = Status.error(Messages.CapellaPasteCommand_error_command, null);
           commands.append(UnexecutableCommand.INSTANCE);
         }
       } else {
         // Different session and no self contained element
-        status = new Status(IStatus.ERROR, FrameworkUtil.getBundle(Activator.class).getSymbolicName(), Messages.CapellaPasteCommand_error_session, null);
+        status = Status.error(Messages.CapellaPasteCommand_error_session, null);
         commands.append(UnexecutableCommand.INSTANCE);
       }
     }

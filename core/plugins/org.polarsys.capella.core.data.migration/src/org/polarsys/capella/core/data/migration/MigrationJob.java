@@ -61,7 +61,7 @@ public class MigrationJob extends WorkspaceJob {
         try { // refresh output file.
           runnable.getFile().getProject().refreshLocal(IResource.DEPTH_INFINITE, SubMonitor.convert(monitor, 5));
         } catch (CoreException exception) {
-          result = new Status(IStatus.ERROR, FrameworkUtil.getBundle(Activator.class).getSymbolicName(), exception.getMessage(), exception);
+          result = Status.error(exception.getMessage(), exception);
         }
       }
 

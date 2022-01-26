@@ -28,7 +28,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.osgi.util.NLS;
-import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.data.modellingcore.InformationsExchanger;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.helpers.SimpleOrientedGraph;
@@ -550,25 +549,25 @@ public class PhysicalPathExt {
     String aPath = Messages.FunctionalChainExt_a + path;
 
     if (inv.getInvolvedElement() == null) {
-      return new Status(IStatus.ERROR, FrameworkUtil.getBundle(PhysicalPathExt.class).getSymbolicName(), Messages.Involvement_InvolvedNull);
+      return Status.error(Messages.Involvement_InvolvedNull);
     }
 
     // Check correct involved element
     if (inv instanceof PhysicalPathReference) {
       if (!(inv.getInvolved() instanceof PhysicalPath)) {
-        return new Status(IStatus.ERROR, FrameworkUtil.getBundle(PhysicalPathExt.class).getSymbolicName(), NLS.bind(Messages.FunctionalChainExt_InvolvedElementNot, aPath));
+        return Status.error(NLS.bind(Messages.FunctionalChainExt_InvolvedElementNot, aPath));
       }
     } else {
       if (!((inv.getInvolved() instanceof Part) || (inv.getInvolved() instanceof PhysicalLink))) {
-        return new Status(IStatus.ERROR, FrameworkUtil.getBundle(PhysicalPathExt.class).getSymbolicName(), NLS.bind(Messages.FunctionalChainExt_InvolvedElementNotAndNot, aElement, aLink));
+        return Status.error(NLS.bind(Messages.FunctionalChainExt_InvolvedElementNotAndNot, aElement, aLink));
       }
     }
 
     if (((inv.getInvolvedElement() instanceof PhysicalLink) && (inv.getNextInvolvements().size() != 1))) {
-      return new Status(IStatus.ERROR, FrameworkUtil.getBundle(PhysicalPathExt.class).getSymbolicName(), NLS.bind(Messages.FunctionalChainExt_InvolvedElementWithMultipleNext, aLink));
+      return Status.error(NLS.bind(Messages.FunctionalChainExt_InvolvedElementWithMultipleNext, aLink));
     }
     if (((inv.getInvolvedElement() instanceof Part) && inv.getNextInvolvements().isEmpty() && inv.getPreviousInvolvements().isEmpty())) {
-      return new Status(IStatus.ERROR, FrameworkUtil.getBundle(PhysicalPathExt.class).getSymbolicName(), NLS.bind(Messages.FunctionalChainExt_InvolvementAlone, aElement));
+      return Status.error(NLS.bind(Messages.FunctionalChainExt_InvolvementAlone, aElement));
     }
 
     for (PhysicalPathInvolvement aNext : inv.getNextInvolvements()) {
@@ -576,13 +575,13 @@ public class PhysicalPathExt {
       // A Part should be linked to a physical link
       if (inv.getInvolvedElement() instanceof Part) {
         if ((aNext.getInvolvedElement() == null) || !(aNext.getInvolvedElement() instanceof PhysicalLink)) {
-          return new Status(IStatus.ERROR, FrameworkUtil.getBundle(PhysicalPathExt.class).getSymbolicName(), NLS.bind(Messages.FunctionalChainExt_IsButNextIsNotA, aElement, aLink));
+          return Status.error(NLS.bind(Messages.FunctionalChainExt_IsButNextIsNotA, aElement, aLink));
         }
         Part currentPart = (Part) inv.getInvolvedElement();
         if (!currentPart.equals(org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt.getSourcePart((PhysicalLink) aNext.getInvolvedElement()))
             && !currentPart
                 .equals(org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt.getTargetPart((PhysicalLink) aNext.getInvolvedElement()))) {
-          return new Status(IStatus.ERROR, FrameworkUtil.getBundle(PhysicalPathExt.class).getSymbolicName(), NLS.bind(Messages.FunctionalChainExt_IsNotRelatedToSourceNext, aElement, link));
+          return Status.error(NLS.bind(Messages.FunctionalChainExt_IsNotRelatedToSourceNext, aElement, link));
         }
       }
 
@@ -590,27 +589,27 @@ public class PhysicalPathExt {
       else if (inv.getInvolvedElement() instanceof PhysicalLink) {
 
         if ((aNext.getInvolved() == null) || !((aNext.getInvolved() instanceof Part) || (aNext.getInvolved() instanceof PhysicalPath))) {
-          return new Status(IStatus.ERROR, FrameworkUtil.getBundle(PhysicalPathExt.class).getSymbolicName(), NLS.bind(Messages.FunctionalChainExt_NextIsNotOrNot, new Object[] { aLink, aElement, aPath }));
+          return Status.error(NLS.bind(Messages.FunctionalChainExt_NextIsNotOrNot, new Object[] { aLink, aElement, aPath }));
         }
 
         if (getFlatCommonPhysicalLinks(inv, aNext).isEmpty()) {
           if (aNext.getInvolved() instanceof PhysicalPath) {
-            return new Status(IStatus.ERROR, FrameworkUtil.getBundle(PhysicalPathExt.class).getSymbolicName(), NLS.bind(Messages.FunctionalChainExt_IsNotRelatedToTargetNextFunctionalChain, new Object[] { aLink,
+            return Status.error(NLS.bind(Messages.FunctionalChainExt_IsNotRelatedToTargetNextFunctionalChain, new Object[] { aLink,
                                                                                                                                                     element,
                                                                                                                                                     path }));
           }
-          return new Status(IStatus.ERROR, FrameworkUtil.getBundle(PhysicalPathExt.class).getSymbolicName(), NLS.bind(Messages.FunctionalChainExt_IsNotRelatedToTargetNext, new Object[] { aLink, element, element }));
+          return Status.error(NLS.bind(Messages.FunctionalChainExt_IsNotRelatedToTargetNext, new Object[] { aLink, element, element }));
         }
       }
       // A functional chain should be between both involvement
       else if (inv.getInvolved() instanceof PhysicalPath) {
         if (getFlatCommonPhysicalLinks(inv, aNext).isEmpty()) {
           if (aNext.getInvolved() instanceof PhysicalPath) {
-            return new Status(IStatus.ERROR, FrameworkUtil.getBundle(PhysicalPathExt.class).getSymbolicName(), NLS.bind(Messages.FunctionalChainExt_IsNotRelatedToTargetNextFunctionalChain, new Object[] { aPath,
+            return Status.error(NLS.bind(Messages.FunctionalChainExt_IsNotRelatedToTargetNextFunctionalChain, new Object[] { aPath,
                                                                                                                                                     element,
                                                                                                                                                     path }));
           }
-          return new Status(IStatus.ERROR, FrameworkUtil.getBundle(PhysicalPathExt.class).getSymbolicName(), NLS.bind(Messages.FunctionalChainExt_IsNotRelatedToOutgoingNext, new Object[] { aPath, link, link }));
+          return Status.error(NLS.bind(Messages.FunctionalChainExt_IsNotRelatedToOutgoingNext, new Object[] { aPath, link, link }));
         }
       }
 

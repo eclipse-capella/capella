@@ -13,8 +13,6 @@
 package org.polarsys.capella.core.platform.sirius.ui.navigator.viewer;
 
 import java.util.Collection;
-import java.util.Collections;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;

@@ -269,7 +269,7 @@ public class RefreshDiagramsCommandHandler extends AbstractDiagramCommandHandler
         return Status.OK_STATUS;
       } else {
         // INFO severity will not be logged in error log view
-        return new Status(Status.INFO, FrameworkUtil.getBundle(SiriusUIPlugin.class).getSymbolicName(), "Failed to refresh the representation " + dRepresentation.getName());
+        return Status.info("Failed to refresh the representation " + dRepresentation.getName());
       }
     }
 

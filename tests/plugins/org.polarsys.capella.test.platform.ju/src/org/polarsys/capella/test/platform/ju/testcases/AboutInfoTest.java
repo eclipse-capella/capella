@@ -36,7 +36,6 @@ import org.eclipse.pde.internal.core.ifeature.IFeatureModel;
 import org.eclipse.pde.internal.core.plugin.ExternalPluginModel;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.FrameworkUtil;
-import org.osgi.framework.Version;
 import org.polarsys.capella.common.mdsofa.common.helper.FileHelper;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
 

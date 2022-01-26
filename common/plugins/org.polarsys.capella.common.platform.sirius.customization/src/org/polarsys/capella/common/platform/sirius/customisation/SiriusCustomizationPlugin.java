@@ -71,7 +71,7 @@ public class SiriusCustomizationPlugin extends AbstractUIPlugin {
 
       customizeSiriusDefaultPreferences();
     } catch (Exception e) {
-      Platform.getLog(SiriusCustomizationPlugin.class).log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(SiriusCustomizationPlugin.class).getSymbolicName(), IStatus.OK, e.getMessage(), e));
+      Platform.getLog(SiriusCustomizationPlugin.class).log(Status.error(e.getMessage(), e));
     }
   }
 

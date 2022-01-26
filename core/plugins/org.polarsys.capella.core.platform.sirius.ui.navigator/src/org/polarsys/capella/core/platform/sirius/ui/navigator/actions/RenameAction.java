@@ -14,7 +14,6 @@ package org.polarsys.capella.core.platform.sirius.ui.navigator.actions;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -33,7 +32,6 @@ import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.ui.actions.RenameResourceAction;
 import org.eclipse.ui.actions.TextActionHandler;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
-import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;

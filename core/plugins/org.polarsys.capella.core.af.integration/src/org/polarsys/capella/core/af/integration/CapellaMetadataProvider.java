@@ -29,7 +29,6 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.emf.core.resources.GMFResource;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.business.api.session.Session;
-import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.Version;
 import org.polarsys.capella.common.bundle.FeatureHelper;
 import org.polarsys.capella.common.ef.ExecutionManagerRegistry;
@@ -119,7 +118,7 @@ public class CapellaMetadataProvider implements IMetadataProvider {
 
     // If there is no afm file, we raise an error
     if (!afm.exists()) {
-      return new Status(IStatus.ERROR, FrameworkUtil.getBundle(AFIntegrationPlugin.class).getSymbolicName(), NLS.bind(Messages.NoMetadataException_Message, EcoreUtil2.getURI(file).toPlatformString(true)));
+      return Status.error(NLS.bind(Messages.NoMetadataException_Message, EcoreUtil2.getURI(file).toPlatformString(true)));
     }
 
     ResourceSet set = new ResourceSetImpl();
@@ -131,7 +130,7 @@ public class CapellaMetadataProvider implements IMetadataProvider {
       return checkMetadata(uri, set);
 
     } catch (Exception e) {
-      return new Status(IStatus.ERROR, FrameworkUtil.getBundle(AFIntegrationPlugin.class).getSymbolicName(), e.getMessage());
+      return Status.error(e.getMessage());
 
     } finally {
       for (Resource r : set.getResources()) {
@@ -150,7 +149,7 @@ public class CapellaMetadataProvider implements IMetadataProvider {
       // If there is no afm file but the current check is about a capella project, we must raise an exception because
       // the afm file is missing.
       if (CapellaResourceHelper.isCapellaProject(sessionResourceURI)) {
-        return new Status(IStatus.ERROR, FrameworkUtil.getBundle(AFIntegrationPlugin.class).getSymbolicName(),
+        return Status.error(
             NLS.bind(Messages.NoMetadataException_Message,
                 MetadataHelper.getViewpointMetadata(set).getExpectedMetadataStorageURI().toPlatformString(true)));
       }
@@ -190,13 +189,13 @@ public class CapellaMetadataProvider implements IMetadataProvider {
 
     // if not the same major/minor we requires a migration
     if (!(fileVersion.getMajor() == currentVersion.getMajor() && fileVersion.getMinor() == currentVersion.getMinor())) {
-      return new Status(IStatus.ERROR, FrameworkUtil.getBundle(AFIntegrationPlugin.class).getSymbolicName(), Messages.WrongCapellaVersionException_Message);
+      return Status.error(Messages.WrongCapellaVersionException_Message);
     }
 
     // if model from 1.4.0 towards 1.3.x, we requires a migration
     if (fileVersion.getMajor() == 1 && fileVersion.getMinor() == 3 && fileVersion.getMicro() == 0) {
       if (currentVersion.getMajor() == 1 && currentVersion.getMinor() == 3 && currentVersion.getMicro() > 0) {
-        return new Status(IStatus.ERROR, FrameworkUtil.getBundle(AFIntegrationPlugin.class).getSymbolicName(), NLS.bind(Messages.WrongCapellaVersionException_DetailedMessage, fileVersion));
+        return Status.error(NLS.bind(Messages.WrongCapellaVersionException_DetailedMessage, fileVersion));
       }
     }
     return Status.OK_STATUS;

@@ -27,7 +27,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManagerListener;
-import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.LightMarkerRegistry;
 
 /**
@@ -53,7 +52,7 @@ public class InformationViewSessionListener extends SessionManagerListener.Stub 
           try {
             marker.delete();
           } catch (CoreException exception) {
-            Platform.getLog(ReportLogActivator.class).log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(ReportLogActivator.class).getSymbolicName(), exception.getMessage(), exception));
+            Platform.getLog(ReportLogActivator.class).log(Status.error(exception.getMessage(), exception));
           }
         }
       }

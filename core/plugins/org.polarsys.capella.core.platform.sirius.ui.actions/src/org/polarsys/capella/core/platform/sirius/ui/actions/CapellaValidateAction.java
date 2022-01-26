@@ -38,7 +38,6 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
-import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.command.AbstractReadOnlyCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
@@ -104,7 +103,7 @@ public class CapellaValidateAction extends ValidateAction {
                 marker.delete();
               }
             } catch (CoreException e) {
-              Platform.getLog(CapellaActionsActivator.class).log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(CapellaActionsActivator.class).getSymbolicName(), e.getMessage(), e));
+              Platform.getLog(CapellaActionsActivator.class).log(Status.error(e.getMessage(), e));
             }
           }
         }
@@ -169,7 +168,7 @@ public class CapellaValidateAction extends ValidateAction {
     try {
       PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView(MarkerView.VIEW_ID);
     } catch (PartInitException e) {
-      Platform.getLog(CapellaActionsActivator.class).log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(CapellaActionsActivator.class).getSymbolicName(), e.getMessage(), e));
+      Platform.getLog(CapellaActionsActivator.class).log(Status.error(e.getMessage(), e));
     }
 
   }

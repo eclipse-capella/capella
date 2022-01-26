@@ -31,7 +31,6 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
-import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.IMarkerSource;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerView;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewHelper;
@@ -65,7 +64,7 @@ public class DeleteConstraintMarkersHandler extends AbstractViewHandler {
         try {
           m.delete();
         } catch (CoreException e) {
-          Platform.getLog(MarkerViewPlugin.class).log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(MarkerViewPlugin.class).getSymbolicName(), e.getMessage(), e));
+          Platform.getLog(MarkerViewPlugin.class).log(Status.error(e.getMessage(), e));
         }
       }
     }

@@ -17,7 +17,6 @@ import java.util.Collection;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
-import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.flexibility.properties.property.AbstractProperty;
 import org.polarsys.capella.common.flexibility.properties.schema.IEditableProperty;
 import org.polarsys.capella.common.flexibility.properties.schema.IProperty;
@@ -77,7 +76,7 @@ public class CatalogElementSelection extends AbstractProperty implements IRestra
     for (IProperty property : context.getProperties().getAllItems()) {
       if (property instanceof CatalogElementSelection && !this.equals(property)) {
         if (value.equals(context.getCurrentValue(property))) {
-          return new Status(IStatus.ERROR, FrameworkUtil.getBundle(UpdateConnectionsUIActivator.class).getSymbolicName(), "Selected RPLs must be different");
+          return Status.error("Selected RPLs must be different");
         }
       }
     }

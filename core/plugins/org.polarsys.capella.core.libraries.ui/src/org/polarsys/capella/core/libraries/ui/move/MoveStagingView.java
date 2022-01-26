@@ -1474,7 +1474,7 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
       try {
         window.getActivePage().showView(CapellaCommonNavigator.ID, null, IWorkbenchPage.VIEW_ACTIVATE);
       } catch (PartInitException e) {
-        Platform.getLog(Activator.class).log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(Activator.class).getSymbolicName(), e.getLocalizedMessage(), e));
+        Platform.getLog(Activator.class).log(Status.error(e.getLocalizedMessage(), e));
       }
       super.selectElementInCapellaExplorer(selection);
     }

@@ -136,7 +136,7 @@ public abstract class AbstractToolWrapper {
       }
       
       if (!_arguments.containsKey(currentType) || (_arguments.get(currentType) == null)) {
-        result.add(new Status(Status.ERROR, FrameworkUtil.getBundle(TestDiagramCommonPlugin.class).getSymbolicName(), currentType + " is not set or null"));
+        result.add(Status.error(currentType + " is not set or null"));
         
       } else {
         ret = checkValue(currentType);
@@ -144,7 +144,7 @@ public abstract class AbstractToolWrapper {
           result.add(new Status(Status.OK, FrameworkUtil.getBundle(TestDiagramCommonPlugin.class).getSymbolicName(), currentType + " is ok"));
 
         } else {
-          result.add(new Status(Status.ERROR, FrameworkUtil.getBundle(TestDiagramCommonPlugin.class).getSymbolicName(), currentType + " is not value"));
+          result.add(Status.error(currentType + " is not value"));
         }
       }
     }

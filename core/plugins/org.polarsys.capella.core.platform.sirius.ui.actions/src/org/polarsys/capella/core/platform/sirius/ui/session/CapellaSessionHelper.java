@@ -126,7 +126,7 @@ public class CapellaSessionHelper {
             Messages.CapellaSessionHelper_MissingLibraries_Message, null);
         for (IModelIdentifier identifier : unavailable) {
           status.add(
-              new Status(IStatus.ERROR, FrameworkUtil.getBundle(CapellaActionsActivator.class).getSymbolicName(), identifier.toString()));
+              Status.error(identifier.toString()));
         }
         reportError(status);
         return status;
@@ -268,14 +268,14 @@ public class CapellaSessionHelper {
   private static void reportError(final Diagnostic diagnostic) {
     IStatus status = Status.OK_STATUS;
     if (diagnostic.getChildren().isEmpty()) {
-      status = new Status(IStatus.ERROR, FrameworkUtil.getBundle(CapellaActionsActivator.class).getSymbolicName(), diagnostic.getMessage());
+      status = Status.error(diagnostic.getMessage());
 
     } else {
       status = new MultiStatus(FrameworkUtil.getBundle(CapellaActionsActivator.class).getSymbolicName(), IStatus.ERROR,
           diagnostic.getMessage(), null);
       for (Diagnostic identifier : diagnostic.getChildren()) {
         ((MultiStatus) status).add(
-            new Status(IStatus.ERROR, FrameworkUtil.getBundle(CapellaActionsActivator.class).getSymbolicName(), identifier.getMessage()));
+            Status.error(identifier.getMessage()));
       }
     }
     reportError(status);
@@ -358,7 +358,7 @@ public class CapellaSessionHelper {
     if (errorMsg != null) {
       //Due to org.eclipse.ui.statushandlers.WorkbenchStatusDialogManager performing modification of 
       //displayed exception message, status message must be different of the exception message
-      return new Status(IStatus.ERROR, FrameworkUtil.getBundle(Activator.class).getSymbolicName(), errorMsg, new RuntimeException(exception));
+      return Status.error(errorMsg, new RuntimeException(exception));
     }
     return Status.OK_STATUS;
   }

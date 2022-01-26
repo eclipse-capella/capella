@@ -43,7 +43,6 @@ import org.eclipse.sirius.business.api.resource.ResourceDescriptor;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.resource.AirdResource;
 import org.eclipse.sirius.viewpoint.DAnalysis;
-import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaActionsActivator;
@@ -210,7 +209,7 @@ public class GitConflictHelper {
   public static IStatus checkConflictFiles(Session session) {
     Set<IFile> inConflictFiles = getFilesInConflict(session);
     if (!inConflictFiles.isEmpty()) {
-      return new Status(IStatus.ERROR, FrameworkUtil.getBundle(CapellaActionsActivator.class).getSymbolicName(),
+      return Status.error(
           NLS.bind(Messages.GitConflictHelper_ResourcesInConflictState,
               inConflictFiles.stream().map(IFile::getName).collect(Collectors.joining(", "))));
     }
@@ -255,7 +254,7 @@ public class GitConflictHelper {
   public static IStatus checkConflictFiles(IProject project) {
     Set<IFile> inConflictFiles = getFilesInConflict(project);
     if (!inConflictFiles.isEmpty()) {
-      return new Status(IStatus.ERROR, FrameworkUtil.getBundle(CapellaActionsActivator.class).getSymbolicName(),
+      return Status.error(
           NLS.bind(Messages.GitConflictHelper_ResourcesInConflictState,
               inConflictFiles.stream().map(IFile::getName).collect(Collectors.joining(", "))));
     }

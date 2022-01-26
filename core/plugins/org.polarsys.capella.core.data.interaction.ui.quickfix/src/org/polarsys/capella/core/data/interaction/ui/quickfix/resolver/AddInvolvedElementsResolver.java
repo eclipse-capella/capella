@@ -108,7 +108,7 @@ public class AddInvolvedElementsResolver extends AbstractCapellaMarkerResolution
       try {
         marker.delete();
       } catch (CoreException e) {
-        Platform.getLog(PluginActivator.class).log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(PluginActivator.class).getSymbolicName(), e.getLocalizedMessage(), e));
+        Platform.getLog(PluginActivator.class).log(Status.error(e.getLocalizedMessage(), e));
       }
     }
   }

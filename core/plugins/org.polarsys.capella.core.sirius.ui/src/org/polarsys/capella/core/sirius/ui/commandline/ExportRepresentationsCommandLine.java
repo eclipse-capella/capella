@@ -31,7 +31,6 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.api.resource.ImageFileFormat;
 import org.eclipse.sirius.ui.tools.api.actions.export.ExportAction;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.commandline.core.CommandLineException;
 import org.polarsys.capella.core.commandline.core.Messages;
@@ -54,7 +53,7 @@ public class ExportRepresentationsCommandLine extends AbstractWorkbenchCommandLi
 
       Session session = SessionManager.INSTANCE.getSession(uri, new NullProgressMonitor());
       if (session == null) {
-        return new Status(IStatus.ERROR, FrameworkUtil.getBundle(SiriusUIPlugin.class).getSymbolicName(), "No aird model found!");
+        return Status.error("No aird model found!");
       }
       if (!session.isOpen()) {
         session.open(new NullProgressMonitor());
@@ -75,10 +74,10 @@ public class ExportRepresentationsCommandLine extends AbstractWorkbenchCommandLi
           return Status.CANCEL_STATUS;
 
         } catch (InvocationTargetException e) {
-          return new Status(IStatus.ERROR, FrameworkUtil.getBundle(SiriusUIPlugin.class).getSymbolicName(), e.getMessage(), e);
+          return Status.error(e.getMessage(), e);
 
         } catch (Exception e) {
-          return new Status(IStatus.ERROR, FrameworkUtil.getBundle(SiriusUIPlugin.class).getSymbolicName(), e.getMessage(), e);
+          return Status.error(e.getMessage(), e);
         }
       }
 

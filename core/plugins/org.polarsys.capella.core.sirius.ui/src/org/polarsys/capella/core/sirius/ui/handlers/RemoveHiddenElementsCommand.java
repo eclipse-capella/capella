@@ -141,7 +141,7 @@ public class RemoveHiddenElementsCommand extends AbstractReadWriteCommand implem
     }
     
     if (childs.isEmpty()) {
-      return new Status(IStatus.INFO, FrameworkUtil.getBundle(SiriusUIPlugin.class).getSymbolicName(), NLS.bind("{0}: Nothing to do", getName()));
+      return Status.info(NLS.bind("{0}: Nothing to do", getName()));
     }
 
     MultiStatus status = new MultiStatus(FrameworkUtil.getBundle(SiriusUIPlugin.class).getSymbolicName(), IStatus.OK,

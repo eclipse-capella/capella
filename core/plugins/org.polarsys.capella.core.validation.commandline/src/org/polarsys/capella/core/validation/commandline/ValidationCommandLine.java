@@ -100,7 +100,7 @@ public class ValidationCommandLine extends AbstractWorkbenchCommandLine {
       // load
       Project semanticRootElement = loadSemanticRootElement(airdURI);
       if (semanticRootElement == null) {
-        return new Status(IStatus.ERROR, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), "No semantic model found!");
+        return Status.error("No semantic model found!");
       }
       Resource semanticRootResource = semanticRootElement.eResource();
       capellaValidateCLineAction.setResource(semanticRootResource);
@@ -135,10 +135,10 @@ public class ValidationCommandLine extends AbstractWorkbenchCommandLine {
       capellaValidateCLineAction.deleteMarkers();
 
     } catch (FileNotFoundException exception) {
-      status = new Status(IStatus.ERROR, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), exception.getMessage(), exception);
+      status = Status.error(exception.getMessage(), exception);
       
     } catch (CoreException exception) {
-      status = new Status(IStatus.ERROR, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), exception.getMessage(), exception);
+      status = Status.error(exception.getMessage(), exception);
     }
 
     return status;

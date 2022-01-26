@@ -33,7 +33,6 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.equinox.app.IApplicationContext;
-import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.application.CommonArgumentsConstants;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
@@ -404,7 +403,7 @@ public class AbstractCommandLine implements ICommandLine {
         if (!argHelper.isForceImport()) {
           if (project.exists()) {
             // Log an error if a project exists already and -forceImport is not given
-            IStatus status = new Status(IStatus.ERROR, FrameworkUtil.getBundle(CommandLineApp.class).getSymbolicName(), "Problem while importing project into the workspace: A project with the same name is referenced from the workspace. This should be removed from the workspace.");
+            IStatus status = Status.error("Problem while importing project into the workspace: A project with the same name is referenced from the workspace. This should be removed from the workspace.");
             LogExt.log(IReportManagerDefaultComponents.MODEL, status);
           } else {
             project.create(description, null);
