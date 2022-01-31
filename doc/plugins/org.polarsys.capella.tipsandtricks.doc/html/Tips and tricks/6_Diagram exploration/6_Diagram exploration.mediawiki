@@ -124,7 +124,6 @@ Additional details about title blocks (tools, customization) can be found below:
 * [[../help/topic/org.polarsys.capella.preferences.doc/html/06.%20Preferences/6.2.%20Model%20preferences.html#Title_Block | Preferences page]]
 
 [[File:../../Images/Tips610_TitleBlocks.png|961x562px]]
-===Easily select Title Blocks===
-Sometimes it's difficult to be able to select a title block in order to move it from one place to another. By selecting from right to left such as the following image, you can easily select the Title Blocks.
 
-[[File:../../Images/SelectTitleBlock.gif|500px]]
+===Easily select Title Blocks===
+Sometimes it's may seems to be difficult to select a title block in order to move it from one place to another. By pressing CTRL key while clicking onto it, the Title Block will be selected.
