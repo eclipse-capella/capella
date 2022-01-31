@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -36,8 +36,9 @@ import org.polarsys.capella.test.diagram.misc.ju.testcases.InsertRemoveComponent
 import org.polarsys.capella.test.diagram.misc.ju.testcases.InteractionSourceTarget;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.InterfacePortSizeTestCase;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.PABStyleChecksDiagramElements;
+import org.polarsys.capella.test.diagram.misc.ju.testcases.SemanticBrowserRefreshTest;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.StatusLineTestCase;
-import org.polarsys.capella.test.diagram.misc.ju.testcases.UnsyncronizedSemanticBrowser;
+import org.polarsys.capella.test.diagram.misc.ju.testcases.UnsynchronizedSemanticBrowser;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.delete.DeleteFromModelContainerSemanticTarget;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.delete.DeleteFromModelSemanticTarget;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
@@ -84,7 +85,8 @@ public class DiagramMiscTestSuite extends BasicTestSuite {
     tests.add(new DeleteFromModelContainerSemanticTarget());
     tests.add(new AllocationManagementTest());
     tests.add(new ColorNameConstantsTest());
-    tests.add(new UnsyncronizedSemanticBrowser());
+    tests.add(new UnsynchronizedSemanticBrowser());
+    tests.add(new SemanticBrowserRefreshTest());
     tests.add(new InteractionSourceTarget());
     tests.add(new DiagramTargetUpdateDuringRefreshTest());
     

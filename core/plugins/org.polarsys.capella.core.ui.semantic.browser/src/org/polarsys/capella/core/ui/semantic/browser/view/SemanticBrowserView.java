@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -211,6 +212,18 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
   private TreeViewer referencingViewer;
 
   private Object input;
+
+  /**
+   * The current original selection, ie without adaptation, to be used for the refresh of the view.
+   */
+  private ISelection currentOriginalSelection;
+
+  /**
+   * The original selection used during the last refresh. {@link #input} field is not enough. Indeed, input can be the
+   * same but if it has been moved from one container to another, the view needs to be refresh even if the "input" is
+   * the same.
+   */
+  private ISelection previousOriginalSelection;
 
   private DelegateSelectionProviderWrapper delegateSelectionProvider;
 
@@ -743,7 +756,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
         // Check the input is different from current one.
         try {
           shouldSetFocus = false;
-          saveInput(newInput);
+          saveInput(newInput, selection);
         } finally {
           shouldSetFocus = true;
         }
@@ -1106,8 +1119,10 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
   }
 
   @Override
-  public final void saveInput(final Object input) {
+  public final void saveInput(final Object input, final ISelection originalSelection) {
     this.input = input;
+    this.previousOriginalSelection = this.currentOriginalSelection;
+    this.currentOriginalSelection = originalSelection;
 
     if (isLinkedToSelection) {
       refresh();
@@ -1121,7 +1136,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
       // Precondition: do not set the same input twice, except during refreshing.
       TreeViewer currentTreeViewer = getCurrentViewer();
       Object lastInput = currentTreeViewer.getInput();
-      if (!forceRefresh && null != lastInput && lastInput.equals(input)) {
+      if (!forceRefresh && null != lastInput && lastInput.equals(input) && !hasOriginalSelectionChanged()) {
         return;
       }
 
@@ -1130,6 +1145,8 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
       // Set the selection provider with currentViewer as selection provider.
       delegateSelectionProvider.setActiveDelegate(this.currentViewer);
 
+      // Store the original selection to detect a further change
+      this.previousOriginalSelection = this.currentOriginalSelection;
       // Broadcast "set input" signal to all viewers.
       setInputOnViewers(input);
 
@@ -1146,6 +1163,23 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
       }
       SiriusReferenceFinderCache.INSTANCE.disable();
     }
+  }
+
+  /**
+   * Return true if the selection has changed since the last refresh, false otherwise.
+   * 
+   * @return true if the selection has changed since the last refresh, false otherwise.
+   */
+  private boolean hasOriginalSelectionChanged() {
+    boolean result = false;
+    if (this.previousOriginalSelection == null) {
+      if (this.currentOriginalSelection != null) {
+        result = true;
+      }
+    } else {
+      result = !previousOriginalSelection.equals(currentOriginalSelection);
+    }
+    return result;
   }
 
   /**
