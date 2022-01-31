@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -14,6 +14,7 @@
 package org.polarsys.capella.common.ui.toolkit.browser.view;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.ui.IViewPart;
 import org.polarsys.capella.common.ui.toolkit.browser.action.BrowserHistory;
@@ -40,8 +41,11 @@ public interface ISemanticBrowserViewPart extends IViewPart {
    * {@link ISemanticBrowserModel#isListeningToPageSelectionEvents()}
    * 
    * @param input
+   *            The input to used for the semantic browser view (adapted from the original selection).
+   * @param originalSelection
+   *            The original selection, ie without adaptation.
    */
-  void saveInput(Object input);
+  void saveInput(Object input, final ISelection originalSelection);
 
   /**
    * Retrieve element root (current element to whole viewers contained by the viewpart)

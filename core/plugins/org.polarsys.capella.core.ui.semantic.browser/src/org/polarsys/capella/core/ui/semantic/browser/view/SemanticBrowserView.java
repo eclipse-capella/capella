@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -210,6 +211,18 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
   private TreeViewer referencingViewer;
 
   private Object input;
+
+  /**
+   * The current original selection, ie without adaptation, to be used for the refresh of the view.
+   */
+  private ISelection currentOriginalSelection;
+
+  /**
+   * The original selection used during the last refresh. {@link #input} field is not enough. Indeed, input can be the
+   * same but if it has been moved from one container to another, the view needs to be refresh even if the "input" is
+   * the same.
+   */
+  private ISelection previousOriginalSelection;
 
   private DelegateSelectionProviderWrapper delegateSelectionProvider;
 
@@ -742,7 +755,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
         // Check the input is different from current one.
         try {
           shouldSetFocus = false;
-          saveInput(newInput);
+          saveInput(newInput, selection);
         } finally {
           shouldSetFocus = true;
         }
@@ -1105,8 +1118,10 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
   }
 
   @Override
-  public final void saveInput(final Object input) {
+  public final void saveInput(final Object input, final ISelection originalSelection) {
     this.input = input;
+    this.previousOriginalSelection = this.currentOriginalSelection;
+    this.currentOriginalSelection = originalSelection;
 
     if (isLinkedToSelection) {
       refresh();
@@ -1120,10 +1135,11 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
       // Precondition: do not set the same input twice, except during refreshing.
       TreeViewer currentTreeViewer = getCurrentViewer();
       Object lastInput = currentTreeViewer.getInput();
-      if (!forceRefresh && null != lastInput && lastInput.equals(input)) {
+      if (!forceRefresh && null != lastInput && lastInput.equals(input) && !hasOriginalSelectionChanged()) {
         return;
       }
 
+      this.previousOriginalSelection = this.currentOriginalSelection;
       refreshTitleBar(input);
       // Set the selection provider with currentViewer as selection provider.
       delegateSelectionProvider.setActiveDelegate(this.currentViewer);
@@ -1143,6 +1159,42 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
         setFocusOnViewer();
       }
     }
+  }
+
+  /**
+   * Return true if the selection has changed since the last refresh, false otherwise.
+   * 
+   * @return true if the selection has changed since the last refresh, false otherwise.
+   */
+  private boolean hasOriginalSelectionChanged() {
+    boolean result = false;
+    if (this.previousOriginalSelection == null) {
+      if (this.currentOriginalSelection != null) {
+        result = true;
+      }
+    } else if (this.currentOriginalSelection == null) {
+      result = true;
+    } else if (previousOriginalSelection instanceof StructuredSelection && this.currentOriginalSelection instanceof StructuredSelection) {
+      StructuredSelection previousStructuredSelection = (StructuredSelection) previousOriginalSelection;
+      StructuredSelection currentStructuredSelection = (StructuredSelection) currentOriginalSelection;
+      if (previousStructuredSelection.size() != currentStructuredSelection.size()) {
+        result = true;
+      } else {
+        @SuppressWarnings("unchecked")
+        Iterator<? extends Object> iteratorOnCurrent = currentStructuredSelection.iterator();
+        for (@SuppressWarnings("unchecked")
+          Iterator<? extends Object> iteratorOnPrevious = previousStructuredSelection.iterator(); iteratorOnPrevious.hasNext(); /* */) {
+          if (!(iteratorOnPrevious.next().equals(iteratorOnCurrent.next()))) {
+            result = true;
+            break;
+          }
+        }
+      }
+    } else {
+      // Case not really managed, we consider that the selection has been changed in this case.
+      result = true;
+    }
+    return result;
   }
 
   /**

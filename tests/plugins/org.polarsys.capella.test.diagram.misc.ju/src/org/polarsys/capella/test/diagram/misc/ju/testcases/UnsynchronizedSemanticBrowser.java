@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2020, 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -16,6 +16,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.core.libraries.model.ICapellaModel;
@@ -30,7 +31,7 @@ import org.polarsys.capella.test.framework.api.BasicTestCase;
  * Test that the SB does not update its input when the synchronization is deactivated
  *
  */
-public class UnsyncronizedSemanticBrowser extends BasicTestCase {
+public class UnsynchronizedSemanticBrowser extends BasicTestCase {
   public static String SA__DATAPKG = "1db63ef2-9d9d-4069-993a-0f6236f7454a"; //$NON-NLS-1$
   public static String SA__ROOTSF = "10ea7dd3-5406-4f0b-b083-95b3bce87a2f"; //$NON-NLS-1$
 
@@ -66,14 +67,16 @@ public class UnsyncronizedSemanticBrowser extends BasicTestCase {
 
     // Set input to DataPkg
     EObject dataPkg = IdManager.getInstance().getEObject(SA__DATAPKG, scope);
-    semanticBrowserViewer.saveInput(dataPkg);
+    semanticBrowserViewer.saveInput(dataPkg, null);
 
     // Deactivate synchronization on SB
     semanticBrowserViewer.deactivateListeningToPageSelectionEvents();
 
-    // Set input to RootSF
     EObject rootSF = IdManager.getInstance().getEObject(SA__ROOTSF, scope);
-    semanticBrowserViewer.saveInput(rootSF);
+    // Simulate a structured selection, in theory, it would be an EditPart, but here just a not
+    // null selection, different than before will be enough.
+    StructuredSelection fakeSelection = new StructuredSelection(new String("NotNull"));
+    semanticBrowserViewer.saveInput(rootSF, fakeSelection);
 
     // Focus on SB
     semanticBrowserViewer.setFocus();
