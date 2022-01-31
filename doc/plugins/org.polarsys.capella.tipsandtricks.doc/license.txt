@@ -118,4 +118,3 @@ IconCreateEdgeView.gif
 CapellaCapabilitiesEPFFile.png
 CapellaCapabilitiesPreferencePage.png
 DiagramsInPackage.png
-SelectTitleBlock.gif

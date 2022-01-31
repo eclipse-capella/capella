@@ -12,11 +12,12 @@
 
 There are specific shortcuts to change the resize behavior:
 
-* '''CTRL '''(or ALT for Mac users): Centered resize (expands the shape on both opposite sides)
+* '''CTRL''' (or ALT for Mac users): Centered resize (expands the shape on both opposite sides)
 * '''SHIFT''': Resize that keeps the ratio
 * '''ALT''' (or CTRL for Mac users): Resize without snap (temporarily disables the snap during the resize if it is activated). 
 * '''F3''': Resize with children location relative to the parent. If the shape is resized '''to the left, upwards, or both''', the children (contained nodes for container and border nodes for all shapes) are moved with the same offset than the resize.
-* '''F4:''' Resize with snap to all shapes (if the Snap to shapes is already activated for the current diagram) 
+* '''F4''': Resize with snap to all shapes (if the Snap to shapes is already activated for the current diagram) 
+
 ==Moving elements==
 
 There are specific shortcuts to change the move behavior:
@@ -26,5 +27,5 @@ There are specific shortcuts to change the move behavior:
 * '''F3''': Move the edge source and target if pressed during the edge move (more details in Chapter 8.4)
 * '''F4''': Move with snap to all shapes (if the Snap to shapes is already activated for the current diagram) (more details in Chapter 12.3)
 
-
-
+==Selecting elements==
+* '''CTRL''': Select a title block or a mode/state while clicking on one of its inner region
