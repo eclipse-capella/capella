@@ -13,6 +13,7 @@
 package org.polarsys.capella.test.migration.ju.testcases.basic;
 
 import java.net.MalformedURLException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -24,10 +25,14 @@ import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.ILogListener;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.sirius.business.api.image.ImageManager;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.core.data.migration.contribution.ImagePathInRichTextAttributeContribution;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
@@ -41,7 +46,7 @@ import org.polarsys.capella.test.migration.ju.helpers.MigrationHelper;
  * @author lfasani
  */
 public class ImagePathInRichTextAttributeMigrationTest extends BasicTestCase {
-  private static final String DINOSAUR_PNG = "capella.png";
+  private static final String CAPELLA_PNG = "capella.png";
 
   private static final String SOURCE_MODEL = "ImagePath InRichTextAttribute";
 
@@ -51,11 +56,35 @@ public class ImagePathInRichTextAttributeMigrationTest extends BasicTestCase {
 
   String HTML_IMAGE_PATH_PATTERN_RELATIVE = "<img.*?src=(\"" + SOURCE_MODEL + "/capella\\.png\").*?/>"; //$NON-NLS-1$
 
-  String HTML_IMAGE_INVALID_ABSOLUTE_PATH = "file:/C:/INVALID/PATH/IMAGE.png"; //$NON-NLS-1$
+  String HTML_IMAGE_INVALID_ABSOLUTE_PATH = "C:\\INVALID\\PATH\\IMAGE.png"; //$NON-NLS-1$
 
   private static final String OA_ELEMENT_ID = "b302cb2c-9ebb-4a79-a1cb-2cf8e46fe51b";
 
   private IProject sourceModelProject;
+
+  private ILogListener logListener;
+
+  private List<IStatus> statuses = new ArrayList<>();
+
+  @Override
+  public List<String> getRequiredTestModels() {
+    return Arrays.asList(SOURCE_MODEL);
+  }
+
+  @Override
+  protected void setUp() throws Exception {
+    super.setUp();
+
+    sourceModelProject = IResourceHelpers.getEclipseProjectInWorkspace(SOURCE_MODEL);
+
+    logListener = new ILogListener() {
+      @Override
+      public void logging(IStatus status, String plugin) {
+        statuses.add(status);
+      }
+    };
+    Platform.addLogListener(logListener);
+  }
 
   @Override
   public void test() throws Exception {
@@ -93,12 +122,13 @@ public class ImagePathInRichTextAttributeMigrationTest extends BasicTestCase {
     assertEquals(1, folders.size());
     assertEquals("Bad imagefolder name", ImageManager.IMAGE_FOLDER_NAME, folders.get(0).getName());
     IResource[] members = folders.get(0).members();
-    assertTrue("There should be only one image in the images folder",
-        members.length == 1 && members[0] instanceof IFile);
+    assertTrue(
+        "There should be only two images in the images folder: one from the OA description and one from the diagram description",
+        members.length == 2 && members[0] instanceof IFile);
 
     String imageName = members[0].getName();
 
-    // check that the description has been properly migrated
+    // check that the OA description has been properly migrated
     Pattern pattern = Pattern.compile(HTML_IMAGE_PATH_PATTERN_BASE64);
     Matcher matcher = pattern.matcher(oa.getDescription());
     assertTrue("The path to the image has not been found with pattern " + HTML_IMAGE_PATH_PATTERN_BASE64,
@@ -122,8 +152,8 @@ public class ImagePathInRichTextAttributeMigrationTest extends BasicTestCase {
           protected void doExecute() {
             String newDescription = "";
             try {
-              newDescription = oa.getDescription().replace(HTML_IMAGE_INVALID_ABSOLUTE_PATH,
-                  sourceModelProject.getFile(DINOSAUR_PNG).getLocationURI().toURL().toExternalForm());
+              newDescription = oa.getDescription().replace("file:/" + HTML_IMAGE_INVALID_ABSOLUTE_PATH,
+                  sourceModelProject.getFile(CAPELLA_PNG).getLocationURI().toURL().toExternalForm());
             } catch (MalformedURLException e) {
             }
             oa.setDescription(newDescription);
@@ -140,7 +170,7 @@ public class ImagePathInRichTextAttributeMigrationTest extends BasicTestCase {
 
     // Valid test
     OperationalActivity oa2 = context.getSemanticElement(OA_ELEMENT_ID);
-    String expectedPath = SOURCE_MODEL + "/" + ImageManager.IMAGE_FOLDER_NAME + "/" + DINOSAUR_PNG;
+    String expectedPath = SOURCE_MODEL + "/" + ImageManager.IMAGE_FOLDER_NAME + "/" + CAPELLA_PNG;
     Pattern pattern = Pattern.compile(HTML_IMAGE_PATH_PATTERN_COPIED);
     Matcher matcher = pattern.matcher(oa2.getDescription());
     assertTrue(HTML_IMAGE_INVALID_ABSOLUTE_PATH + " should have been migrated into " + expectedPath, matcher.find());
@@ -150,7 +180,10 @@ public class ImagePathInRichTextAttributeMigrationTest extends BasicTestCase {
         .filter(IFile.class::isInstance).map(IFile.class::cast).filter(file -> {
           return "png".equals(file.getFileExtension());
         }).count();
-    assertEquals("Bad number of images in the images foldes", 2, nbImageFiles);
+    assertEquals("Bad number of images in the images foldes", 3, nbImageFiles);
+
+    // check the log
+    checkLogs();
   }
 
   private void checkProjectRelativePathMigration(OperationalActivity oa) {
@@ -161,16 +194,30 @@ public class ImagePathInRichTextAttributeMigrationTest extends BasicTestCase {
         matcher.find());
   }
 
-  @Override
-  public List<String> getRequiredTestModels() {
-    return Arrays.asList(SOURCE_MODEL);
+  private void checkLogs() {
+    synchronizationWithUIThread();
+    List<IStatus> warnings = statuses.stream().filter(s -> s.getSeverity() == IStatus.WARNING)
+        .collect(Collectors.toList());
+    assertEquals("Bad number of warning logs", 1, warnings.size());
+    assertTrue("There should be a log that warns that an absolute path could not be migrated",
+        warnings.get(0).getMessage().contains(HTML_IMAGE_INVALID_ABSOLUTE_PATH));
+  }
+
+  /**
+   * Wait the end of the asynchronous calls waiting in UI thread.
+   */
+  private void synchronizationWithUIThread() {
+    while (PlatformUI.getWorkbench().getDisplay().readAndDispatch()) {
+      // Do nothing, just wait
+    }
   }
 
   @Override
-  protected void setUp() throws Exception {
-    super.setUp();
+  protected void tearDown() throws Exception {
+    super.tearDown();
+    if (logListener != null) {
+      Platform.removeLogListener(logListener);
+    }
 
-    sourceModelProject = IResourceHelpers.getEclipseProjectInWorkspace(SOURCE_MODEL);
   }
-
 }
