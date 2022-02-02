@@ -31,10 +31,13 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
@@ -47,6 +50,9 @@ import org.eclipse.sirius.business.api.image.RichTextAttributeRegistry;
 import org.eclipse.sirius.ext.emf.edit.EditingDomainServices;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
+import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
+import org.polarsys.capella.common.tools.report.util.LogExt;
 import org.polarsys.capella.core.data.migration.Activator;
 import org.polarsys.capella.core.data.migration.context.MigrationContext;
 
@@ -85,7 +91,7 @@ public class ImagePathInRichTextAttributeContribution extends AbstractMigrationC
             Object value = eObject.eGet(attr);
             if (value instanceof String) {
               // replace the image base64 encoded string
-              new Base64ImageHelper().createFileAndUpdateAttribute(eObject, (EAttribute) attr);
+              updateBase64Images(eObject, attr);
 
               // replace the absolute path
               createFileAndUpdateAttributeFromAbsoluteToRelativePath(eObject, (EAttribute) attr);
@@ -99,6 +105,16 @@ public class ImagePathInRichTextAttributeContribution extends AbstractMigrationC
         Activator.getDefault().getLog().error(MessageFormat.format(
             Messages.MigrationAction_Image_ImpossibleToFindProject, resourceToMigrate.getURI().toPlatformString(true)));
       }
+    }
+  }
+
+  private void updateBase64Images(EObject eObject, EStructuralFeature attr) {
+    Map<String, String> createdFiles = new Base64ImageHelper().createFileAndUpdateAttribute(eObject, (EAttribute) attr);
+    // Log what have been done
+    if (!createdFiles.isEmpty()) {
+      String createdFilesPath = createdFiles.keySet().stream().collect(Collectors.joining(", "));
+      Activator.getDefault().getLog().info(MessageFormat.format(Messages.MigrationAction_Image_Base64ImageMigrated,
+          new EditingDomainServices().getLabelProviderText(eObject), attr.getName(), createdFilesPath));
     }
   }
 
@@ -203,9 +219,13 @@ public class ImagePathInRichTextAttributeContribution extends AbstractMigrationC
     if (!nonCreatedFiles.isEmpty()) {
       String nonCreatedFilesPath = nonCreatedFiles.stream().map(File::getAbsolutePath)
           .collect(Collectors.joining(", "));
-      Activator.getDefault().getLog()
-          .warn(MessageFormat.format(Messages.MigrationAction_Image_AsolutePathImageNotMigrated,
-              new EditingDomainServices().getLabelProviderText(notifier), attribute.getName(), nonCreatedFilesPath));
+      String message = MessageFormat.format(Messages.MigrationAction_Image_AsolutePathImageNotMigrated,
+          new EditingDomainServices().getLabelProviderText(notifier), attribute.getName(), nonCreatedFilesPath);
+      Activator.getDefault().getLog().warn(message);
+
+      Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.DEFAULT);
+      IStatus status = new Status(IStatus.WARNING, Activator.PLUGIN_ID, message);
+      LogExt.log(logger, status);
     }
     return createdFiles;
   }
@@ -230,7 +250,7 @@ public class ImagePathInRichTextAttributeContribution extends AbstractMigrationC
       EAttribute attribute) {
     Map<File, IFile> createdFiles = new LinkedHashMap<>();
     if (filesToCopy.isEmpty()) {
-        return createdFiles;
+      return createdFiles;
     }
 
     List<File> nonCreatedFiles = new ArrayList<>();
@@ -277,10 +297,13 @@ public class ImagePathInRichTextAttributeContribution extends AbstractMigrationC
     if (nonCreatedFiles.size() > 0) {
       String nonCreatedFilesPath = nonCreatedFiles.stream().map(File::getAbsolutePath)
           .collect(Collectors.joining(", "));
-      Activator.getDefault().getLog()
-          .error(MessageFormat.format(Messages.MigrationAction_Image_ImpossibleToCreateImages,
-              new EditingDomainServices().getLabelProviderText(contextObject), attribute.getName(),
-              nonCreatedFilesPath));
+      String message = MessageFormat.format(Messages.MigrationAction_Image_ImpossibleToCreateImages,
+          new EditingDomainServices().getLabelProviderText(contextObject), attribute.getName(), nonCreatedFilesPath);
+      Activator.getDefault().getLog().error(message);
+
+      Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.DEFAULT);
+      IStatus status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, message);
+      LogExt.log(logger, status);
     }
     return createdFiles;
   }

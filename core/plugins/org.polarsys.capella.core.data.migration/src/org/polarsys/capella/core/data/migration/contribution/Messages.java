@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -33,6 +33,7 @@ public class Messages extends NLS {
   public static String MigrationAction_Image_ImpossibleToFindProject;
   public static String MigrationAction_Image_AsolutePathImageNotMigrated;
   public static String MigrationAction_Image_AsolutePathImageMigrated;
+  public static String MigrationAction_Image_Base64ImageMigrated;
   
 
   static {
