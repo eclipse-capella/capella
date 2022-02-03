@@ -102,11 +102,21 @@
               id="0638550c-1efa-49da-bbc8-a43ba995b847" extended="#a726e265-9829-4eab-b2d2-0ae956d1e6fb"/>
           <includes xsi:type="org.polarsys.capella.core.data.interaction:AbstractCapabilityInclude"
               id="c091c179-b6ff-415c-b647-106540ade86b" included="#c88a6c4f-8fd7-4e76-8b83-1d6fbced83b4"/>
+          <ownedAbstractFunctionAbstractCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.interaction:AbstractFunctionAbstractCapabilityInvolvement"
+              id="f4847b27-01d9-4250-bef5-a42b29b548c4" involved="#39283dd3-b3df-447d-838b-755bcf9b76a9"/>
+          <ownedAbstractFunctionAbstractCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.interaction:AbstractFunctionAbstractCapabilityInvolvement"
+              id="bdba4483-5667-4b70-b51a-8bd8608b71dd" involved="#d3097f37-0b6d-426f-998a-4a9bea539a24"/>
+          <ownedAbstractFunctionAbstractCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.interaction:AbstractFunctionAbstractCapabilityInvolvement"
+              id="0b7135fb-db1f-43e2-ae2c-82b4f89049fb" involved="#8007a12d-96bb-4257-a907-52847af71700"/>
         </ownedOperationalCapabilities>
         <ownedOperationalCapabilities xsi:type="org.polarsys.capella.core.data.oa:OperationalCapability"
             id="877258bf-6da9-4575-a791-bb627e8d9a8f" name="OperationalCapability 2">
           <superGeneralizations xsi:type="org.polarsys.capella.core.data.interaction:AbstractCapabilityGeneralization"
               id="10e331d2-a035-4a73-b32c-c5aaa3438782" super="#c88a6c4f-8fd7-4e76-8b83-1d6fbced83b4"/>
+          <ownedAbstractFunctionAbstractCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.interaction:AbstractFunctionAbstractCapabilityInvolvement"
+              id="7205e154-0cbd-45b6-a76f-f8ef0f657ed2" involved="#39283dd3-b3df-447d-838b-755bcf9b76a9"/>
+          <ownedAbstractFunctionAbstractCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.interaction:AbstractFunctionAbstractCapabilityInvolvement"
+              id="cab054d3-f423-491c-baf8-0d8949324d9b" involved="#d3097f37-0b6d-426f-998a-4a9bea539a24"/>
         </ownedOperationalCapabilities>
         <ownedOperationalCapabilities xsi:type="org.polarsys.capella.core.data.oa:OperationalCapability"
             id="c88a6c4f-8fd7-4e76-8b83-1d6fbced83b4" name="OperationalCapability 3">
