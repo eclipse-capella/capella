@@ -2,8 +2,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-		<title>ValidationRules</title>
-		<link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/>
 	</head>
 	<body>
 		<h1 id="Integrity">Integrity</h1>
@@ -572,6 +570,7 @@
 					<img title="WARNING" alt="WARNING" border="0" src="../../Images/warning.gif"/> This rule applies on diagrams elements of diagram associated to the Capella element and will load the diagram. 
 					<p>It is recommended to uncheck this rule by default.</p>
 					<p>This rule ensures that images, used as background of diagram elements, can be found.</p>
+					<p>Tip: If some cases are detected (validation markers), it is recommended to check the presence of the image and move it in the right folder according to the used expected image path location. Once done, you can restart the validation. If you have still validation markers, then use the "Quick fix" tool to select a new image.</p>
 				</td>
 			</tr>
 		</table>
@@ -586,7 +585,9 @@
 				<td>I_47 - Check that images used in rich text is found (Capella and diagram descriptions etc)</td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule ensures that images, used in rich text editor, for attributes such as Capella elements description or diagram description, can be found.</td>
+				<td colspan="2">This rule ensures that images, used in rich text editor, for attributes such as Capella elements description or diagram description, can be found.
+					<p>Tip: If some cases are detected (validation markers), it is recommended to check the existence of the image and move it in the right folder according to the used expected image path location. Once done, you can restart the validation. If you have still validation markers, then use the "Quick fix" tool to select a new image.</p>
+				</td>
 			</tr>
 		</table>
 	</body>
