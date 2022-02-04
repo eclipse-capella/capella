@@ -12,6 +12,7 @@
       </programArgsMac>
       <vmArgs>-Dosgi.requiredJavaVersion=11
 -Dosgi.dataAreaRequiresExplicitInit=true
+-Dpde.jreProfile=JavaSE-17
 -Xms1000m
 -Xmx3000m
 -Xss4m
