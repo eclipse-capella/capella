@@ -1,5 +1,7 @@
 
-= Computed Links between Parent Components =
+= Computed Links =
+
+== Computed Links between Parent Components ==
 
 This feature is only available on Logical Architecture Blank [LAB] and Physical Architecture Blank [PAB] diagrams.
 
@@ -9,7 +11,7 @@ You can show/hide those simplified links by activating/deactivating correspondin
 
 [[Image:Images/5.7.%20FiltersMenu.png|450x500px]]
 
-== Computed Component Exchanges ==
+=== Computed Component Exchanges ===
 
 Example 1
 
@@ -19,7 +21,7 @@ Example 2
 
 [[Image:Images/5.7.%20CE_ComputedLinks.png|320x460px]]
 
-== Computed Physical Links ==
+=== Computed Physical Links ===
 
 Example 1
 
@@ -28,3 +30,23 @@ Example 1
 Example 2
 
 [[Image:Images/5.7.%20PL_ComputedLinks_2.png|1000x250px]]
+
+== Computed Links between Parent Modes And States ==
+
+This feature is only available on Mode State Machine [MSM] diagram.
+
+This diagram is able to display links between parent modes and states that are defined between their children when children are not displayed on diagrams.
+
+You can show/hide those simplified links by activating/deactivating corresponding filter in the drop down filter menu in MSM diagrams.
+
+[[Image:Images/5.7.%20FiltersMenuMSM.png]]
+
+=== Computed Transitions ===
+
+Example 1
+
+[[Image:Images/5.7.%20Transition_ComputedSimplified.png|1000x220px]]
+
+Example 2
+
+[[Image:Images/5.7.%20Transition_ComputedLinks.png|1000x350px]]

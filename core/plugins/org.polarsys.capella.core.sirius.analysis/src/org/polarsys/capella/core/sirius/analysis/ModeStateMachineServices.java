@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2022 THALES GLOBAL SERVICES and others.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -9,12 +9,17 @@
  * 
  * Contributors:
  *    Thales - initial API and implementation
+ *    Obeo - 2303 Add computed transitions in M&S diagrams
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.analysis;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Stream;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -35,6 +40,7 @@ import org.polarsys.capella.common.data.behavior.AbstractEvent;
 import org.polarsys.capella.common.data.modellingcore.IState;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.core.data.capellacommon.AbstractState;
 import org.polarsys.capella.core.data.capellacommon.EntryPointPseudoState;
 import org.polarsys.capella.core.data.capellacommon.ExitPointPseudoState;
 import org.polarsys.capella.core.data.capellacommon.FinalState;
@@ -358,5 +364,92 @@ public class ModeStateMachineServices {
       mappingName = IMappingNameConstants.MSM_TRANSITION_MAPPING_NAME;
     }
     return DiagramServices.getDiagramServices().getEdgeMapping(diagram, mappingName);
+  }
+
+  /**
+   * Get all transitions displayed in the diagram
+   * 
+   * @param region
+   *          Region
+   * @param diagram
+   *          DDiagram
+   * @return all transitions displayed in the diagram
+   */
+  public List<StateTransition> getComputedTransitions(Region region, DDiagram diagram) {
+    List<StateTransition> transitions = new ArrayList<>();
+    region.eAllContents().forEachRemaining(el -> {
+      if (el instanceof StateTransition) {
+        StateTransition transition = (StateTransition) el;
+        Collection<DSemanticDecorator> sourceDiagramElements = DiagramServices.getDiagramServices()
+            .getDiagramElements(diagram, transition.getSource());
+        Collection<DSemanticDecorator> targetDiagramElements = DiagramServices.getDiagramServices()
+            .getDiagramElements(diagram, transition.getTarget());
+        Stream.concat(sourceDiagramElements.stream(), targetDiagramElements.stream()).forEach(diagElt -> {
+          if (diagElt instanceof DDiagramElement && !((DDiagramElement) diagElt).isVisible()) {
+            transitions.add(transition);
+          }
+        });
+      }
+    });
+    return transitions;
+  }
+
+  /**
+   * @param related
+   *          EObject
+   * @param diagram
+   *          DDiagram
+   * @return computed transition source.
+   */
+  public EObject getComputedTransitionSource(EObject related, DDiagram diagram) {
+    if (related instanceof StateTransition) {
+      StateTransition transition = (StateTransition) related;
+      AbstractState transitionSource = transition.getSource();
+      DDiagramElement sourceDiagramElement = DiagramServices.getDiagramServices().getDiagramElement(diagram,
+          transitionSource);
+      Optional<DDiagramElement> firstVisibleEdgeEnd = getFirstVisibleEdgeEnd(diagram, sourceDiagramElement);
+      if (firstVisibleEdgeEnd.isPresent()) {
+        return firstVisibleEdgeEnd.get().getTarget();
+      }
+    }
+    return null;
+  }
+
+  /**
+   * @param related
+   *          EObject
+   * @param diagram
+   *          DDiagram
+   * @return computed transition target.
+   */
+  public EObject getComputedTransitionTarget(EObject related, DDiagram diagram) {
+    if (related instanceof StateTransition) {
+      StateTransition transition = (StateTransition) related;
+      AbstractState transitionTarget = transition.getTarget();
+      DDiagramElement targetDiagramElement = DiagramServices.getDiagramServices().getDiagramElement(diagram,
+          transitionTarget);
+      Optional<DDiagramElement> firstVisibleEdgeEnd = getFirstVisibleEdgeEnd(diagram, targetDiagramElement);
+      if (firstVisibleEdgeEnd.isPresent()) {
+        return firstVisibleEdgeEnd.get().getTarget();
+      }
+    }
+    return null;
+  }
+
+  /**
+   * @param diagram
+   *          DDiagram
+   * @param diagramElement
+   *          DDiagramElement
+   * @return first visible transition end in diagram.
+   */
+  private Optional<DDiagramElement> getFirstVisibleEdgeEnd(DDiagram diagram, DDiagramElement diagramElement) {
+    if (diagramElement != null && diagramElement.getTarget() instanceof AbstractState && diagramElement.isVisible()) {
+      return Optional.of(diagramElement);
+    }
+    if (diagramElement != null && diagramElement.eContainer() instanceof DDiagramElement) {
+      return getFirstVisibleEdgeEnd(diagram, (DDiagramElement) diagramElement.eContainer());
+    }
+    return Optional.empty();
   }
 }

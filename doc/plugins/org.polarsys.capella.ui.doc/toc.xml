@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?NLS TYPE="org.eclipse.help.toc"?>
 <!--
-  Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2022 THALES GLOBAL SERVICES and others.
   
   This program and the accompanying materials are made available under the
   terms of the Eclipse Public License 2.0 which is available at
@@ -11,6 +11,7 @@
   
   Contributors:
        Thales - initial API and implementation
+       Obeo - 2303 Add computed transitions in M&S diagrams
 -->
 <toc label="User Interface" link_to="PLUGINS_ROOT/org.polarsys.capella.doc/toc.xml#main" sort="true">
    
@@ -231,13 +232,19 @@
     </topic>
     </topic>
 	</topic>
-      <topic href="html/05. Diagram Management/5.7. Computed simplified links.html" label="Computed Links between Parent Components">
+    <topic href="html/05. Diagram Management/5.7. Computed simplified links.html" label="Computed Links">
+      <topic href="html/05. Diagram Management/5.7. Computed simplified links.html#Computed_Links_Components" label="Computed Links between Parent Components">
          <topic href="html/05. Diagram Management/5.7. Computed simplified links.html#Computed_Component_Exchanges" label="Computed Component Exchanges">
          </topic>
          <topic href="html/05. Diagram Management/5.7. Computed simplified links.html#Computed_Physical_Links" label="Computed Physical Links">
          </topic>
       </topic>
-      <anchor id="Diagram Management"/>
+      <topic href="html/05. Diagram Management/5.7. Computed simplified links.html#Computed_Links_between_Parent_Modes_And_States" label="Computed Links between Parent Modes And States">
+         <topic href="html/05. Diagram Management/5.7. Computed simplified links.html#Computed_Transitions" label="Computed Transitions">
+         </topic>
+      </topic>
+    </topic>
+    <anchor id="Diagram Management"/>
    </topic>
     <topic label="Modelling Wizards and Accelerators">
     <topic href="html/07. Modelling Wizards and Accelerators/7.1. Modeling accelerators.html" label="Modeling Accelerators">

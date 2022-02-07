@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2022 THALES GLOBAL SERVICES and others.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -9,6 +9,7 @@
  * 
  * Contributors:
  *    Thales - initial API and implementation
+ *    Obeo - 2303 Add computed transitions in M&S diagrams
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.analysis;
 
@@ -43,6 +44,7 @@ public interface IMappingNameConstants {
   String MSM_MODE_STATE_MAPPING_NAME = "MSM_ModeState_Container";
   String MSM_PSEUDOSTATE_MAPPING_NAME = "MSM_ModeState";
   String MSM_TRANSITION_MAPPING_NAME = "MSM_Transition";
+  String MSM_COMPUTED_TRANSITION_MAPPING_NAME = "MSM_ComputedTransition";
   String MSM_REGION_MAPPING_NAME = "MSM_Region";
   String MSM_ACTIVITIES_MAPPING_NAME = "MSM_Activities";
   String MSM_DOACTIVITY_MAPPING_NAME = "MSM_DoActivity";
