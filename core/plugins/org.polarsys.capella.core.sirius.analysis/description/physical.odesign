@@ -2505,9 +2505,9 @@
           </borderedNodeMappings>
           <borderedNodeMappings name="PAB_PhysicalCategory_Pin" preconditionExpression="service:isValidABPhysicalCategoryPort(containerView)" deletionDescription="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20category']" createElements="false" domainClass="PhysicalLinkCategory">
             <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:self.computePhysicalCategoryLabel()" hideLabelByDefault="true" sizeComputationExpression="1">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+              <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Class_Border_Brown']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
+              <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_PhysicalPort_Yellow']"/>
             </style>
           </borderedNodeMappings>
           <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="aql:self.computePartLabel()" backgroundStyle="GradientTopToBottom">
