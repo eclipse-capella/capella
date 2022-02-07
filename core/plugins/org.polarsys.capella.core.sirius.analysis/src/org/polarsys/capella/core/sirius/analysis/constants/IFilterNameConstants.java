@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2022 THALES GLOBAL SERVICES and others.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -9,6 +9,7 @@
  * 
  * Contributors:
  *    Thales - initial API and implementation
+ *    Obeo - 2303 Add computed transitions in M&S diagrams
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.analysis.constants;
 
@@ -341,6 +342,7 @@ public interface IFilterNameConstants {
   // M&S filters - Modes and States
   String FILTER_MS_HIDE_INTERNAL_STATES = "hide.internal.states.filter";
   String FILTER_MS_HIDEINTERNALSTATES_ID = "HideInternalStates";
+  String FILTER_MSM_HIDECOMPUTEDTRANSITIONS_ID = "hide.computed.transitions.filter";
 
   // New Capability Realization Refinement
   String FILTER_NEWCAPABILITYREALIZATIONREFINEMENT_HIDE_ACTORS = "hide.actors.filter";
@@ -589,7 +591,7 @@ public interface IFilterNameConstants {
   String FILTER_SHOW_CE_EXCHANGE_CONTEXT_ID = "show.ce.exchange.context.filter";
   String FILTER_SHOW_FE_EXCHANGE_CONTEXT_ID = "show.fe.exchange.context.filter";
   String FILTER_SHOW_EI_EXCHANGE_CONTEXT_ID = "show.ei.exchange.context.filter";
-  
+
   String FILTER_FUNCTIONAL_CHAINS_INTERNAL_LINKS_ID = "hide.functional.chains.internal.links.filter";
   String FILTER_PHYSICAL_PATHS_INTERNAL_LINKS_ID = "hide.physical.paths.internal.links.filter";
 
