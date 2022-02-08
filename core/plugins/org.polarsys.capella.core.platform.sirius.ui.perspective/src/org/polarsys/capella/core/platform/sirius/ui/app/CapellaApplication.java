@@ -31,6 +31,7 @@ import org.eclipse.core.runtime.IExecutableExtension;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.equinox.app.IApplicationContext;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.osgi.service.datalocation.Location;
@@ -94,6 +95,12 @@ public class CapellaApplication extends AbstractApplication implements IExecutab
    */
   @Override
   public Object start(IApplicationContext appContext) throws Exception {
+    // Suspend the job manager to prevent background jobs from running. This
+    // is done to reduce resource contention during startup.
+    // The job manager will be resumed by the
+    // IDEWorkbenchAdvisor.postStartup method.
+    Job.getJobManager().suspend();
+    
     Display display = createDisplay();
 
     try {
