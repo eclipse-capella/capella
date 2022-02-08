@@ -41,6 +41,7 @@ import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.internal.WorkbenchPlugin;
 import org.eclipse.ui.internal.ide.ChooseWorkspaceData;
 import org.eclipse.ui.internal.ide.ChooseWorkspaceDialog;
 import org.eclipse.ui.internal.ide.IDEWorkbenchMessages;
@@ -100,7 +101,7 @@ public class CapellaApplication extends AbstractApplication implements IExecutab
 
       try {
         if (!checkInstanceLocation(shell)) {
-          Platform.endSplash();
+          appContext.applicationRunning();
           return EXIT_OK;
         }
       } finally {
@@ -193,8 +194,8 @@ public class CapellaApplication extends AbstractApplication implements IExecutab
         // 2. directory could not be created
         File workspaceDirectory = new File(instanceLoc.getURL().getFile());
         if (workspaceDirectory.exists()) {
-          MessageDialog.openError(shell, IDEWorkbenchMessages.IDEApplication_workspaceCannotLockTitle,
-              IDEWorkbenchMessages.IDEApplication_workspaceCannotLockMessage);
+          String message = NLS.bind(IDEWorkbenchMessages.IDEApplication_workspaceCannotLockMessage, workspaceDirectory.getAbsolutePath());
+          MessageDialog.openError(shell, IDEWorkbenchMessages.IDEApplication_workspaceCannotLockTitle, message);
         } else {
           MessageDialog.openError(shell, IDEWorkbenchMessages.IDEApplication_workspaceCannotBeSetTitle,
               IDEWorkbenchMessages.IDEApplication_workspaceCannotBeSetMessage);
@@ -224,7 +225,7 @@ public class CapellaApplication extends AbstractApplication implements IExecutab
       try {
         // the operation will fail if the url is not a valid
         // instance data area, so other checking is unneeded
-        if (instanceLoc.setURL(workspaceUrl, true)) {
+        if (instanceLoc.set(workspaceUrl, true)) {
           launchData.writePersistedData();
           writeWorkspaceVersion();
           return true;
@@ -233,12 +234,20 @@ public class CapellaApplication extends AbstractApplication implements IExecutab
         MessageDialog.openError(shell, IDEWorkbenchMessages.IDEApplication_workspaceCannotBeSetTitle,
             IDEWorkbenchMessages.IDEApplication_workspaceCannotBeSetMessage);
         return false;
-      }
+      } catch (IOException e) {
+        MessageDialog
+        .openError(
+            shell,
+            IDEWorkbenchMessages.IDEApplication_workspaceCannotBeSetTitle,
+            IDEWorkbenchMessages.IDEApplication_workspaceCannotBeSetMessage);
+    }
 
       // by this point it has been determined that the workspace is
       // already in use -- force the user to choose again
-      MessageDialog.openError(shell, IDEWorkbenchMessages.IDEApplication_workspaceInUseTitle,
-          IDEWorkbenchMessages.IDEApplication_workspaceInUseMessage);
+      String message = NLS.bind(IDEWorkbenchMessages.IDEApplication_workspaceInUseMessage, workspaceUrl.getFile());
+      MessageDialog.openError(shell, IDEWorkbenchMessages.IDEApplication_workspaceInUseTitle, message);
+      // Remember the locked workspace as recent workspace (default behavior of IDEApplication#checkInstanceLocation) 
+      launchData.writePersistedData();
     }
   }
 
