@@ -12,7 +12,7 @@
  *******************************************************************************/
 target "Capella"
 
-include "https://download.eclipse.org/sirius/updates/stable/7.0.0-S20220131-123510/2021-06/targets/modules/gmf-runtime-1.14.tpd"
+include "https://download.eclipse.org/sirius/updates/stable/7.0.0-S20220209-044536/2021-06/targets/modules/gmf-runtime-1.14.tpd"
 
 with source, requirements
 
@@ -43,7 +43,7 @@ location eclipse "http://download.eclipse.org/releases/2021-06" {
 	com.google.guava
 }
 
-location sirius "https://download.eclipse.org/sirius/updates/stable/7.0.0-S20220131-123510/2021-06" {
+location sirius "https://download.eclipse.org/sirius/updates/stable/7.0.0-S20220209-044536/2021-06" {
 	org.eclipse.sirius.doc.feature.feature.group
 	org.eclipse.sirius.doc.feature.source.feature.group
 	org.eclipse.sirius.runtime.source.feature.group
@@ -61,7 +61,7 @@ location Orbit "https://download.eclipse.org/tools/orbit/downloads/drops/R202106
 	org.apache.batik.script.source lazy
 }
 
-location kitalpha-runtime-core-master "https://download.eclipse.org/kitalpha/updates/stable/runtime/6.0.0.S202201140838/" {
+location kitalpha-runtime-core-master "https://download.eclipse.org/kitalpha/updates/stable/runtime/6.0.0.S202202160900/" {
 	org.polarsys.kitalpha.ad.runtime.feature.source.feature.group
 	org.polarsys.kitalpha.cadence.feature.source.feature.group
 	org.polarsys.kitalpha.common.feature.source.feature.group
@@ -86,7 +86,7 @@ location kitalpha-runtime-core-master "https://download.eclipse.org/kitalpha/upd
 	org.polarsys.kitalpha.sirius.rotativeimage.feature.feature.group
 }
 
-location kitalpha-sdk-master "https://download.eclipse.org/kitalpha/updates/stable/sdk/6.0.0.S202201140838/" {
+location kitalpha-sdk-master "https://download.eclipse.org/kitalpha/updates/stable/sdk/6.0.0.S202202160900/" {
 	org.polarsys.kitalpha.doc.feature.feature.group
 	org.polarsys.kitalpha.emde.sdk.feature.source.feature.group
 }
