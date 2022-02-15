@@ -21,11 +21,11 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.ui.statushandlers.StatusManager;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.model.helpers.PhysicalLinkExt;
-import org.polarsys.capella.core.validation.ui.ide.PluginActivator;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarkerResolution;
 
 /**
@@ -70,8 +70,7 @@ public class DWF_DC_19_Resolver extends AbstractCapellaMarkerResolution {
 						marker.delete();
 					} catch (CoreException exception) {
 						StatusManager.getManager().handle(
-								new Status(IStatus.ERROR, PluginActivator
-										.getDefault().getPluginId(),
+								new Status(IStatus.ERROR, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(),
 										exception.getMessage(), exception));
 					}
 				}

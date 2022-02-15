@@ -24,6 +24,7 @@ import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.data.modellingcore.AbstractTypedElement;
 import org.polarsys.capella.common.ui.providers.MDEAdapterFactoryLabelProvider;
 import org.polarsys.capella.core.data.cs.Interface;
@@ -32,7 +33,6 @@ import org.polarsys.capella.core.data.information.communication.provider.Communi
 import org.polarsys.capella.core.data.information.communication.provider.CommunicationLinkItemProvider;
 import org.polarsys.capella.core.data.la.LaFactory;
 import org.polarsys.capella.core.data.la.LogicalComponent;
-import org.polarsys.capella.core.ui.toolkit.Activator;
 
 public class DecompositionLabelProvider extends MDEAdapterFactoryLabelProvider implements IBaseLabelProvider,
     IColorProvider, IFontProvider {// extends ColumnLabelProvider
@@ -40,10 +40,10 @@ public class DecompositionLabelProvider extends MDEAdapterFactoryLabelProvider i
   private Font boldFont = new Font(Display.getCurrent(), "Verdana", 8, SWT.BOLD); //$NON-NLS-1$;
   private Font normalFont = new Font(Display.getCurrent(), "Verdana", 8, SWT.NONE); //$NON-NLS-1$;
 
-  ImageDescriptor implImageDescriptorFromPlugin = AbstractUIPlugin.imageDescriptorFromPlugin(Activator.PLUGIN_ID,
+  ImageDescriptor implImageDescriptorFromPlugin = AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(),
       Messages.getString("LCDecomp.interface.icon.LCInterfaceImpl")); //$NON-NLS-1$
   Image implImage = implImageDescriptorFromPlugin.createImage();
-  ImageDescriptor useImageDescriptorFromPlugin = AbstractUIPlugin.imageDescriptorFromPlugin(Activator.PLUGIN_ID,
+  ImageDescriptor useImageDescriptorFromPlugin = AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(),
       Messages.getString("LCDecomp.interface.icon.LCInterfaceUse")); //$NON-NLS-1$
   Image useImage = useImageDescriptorFromPlugin.createImage();
 

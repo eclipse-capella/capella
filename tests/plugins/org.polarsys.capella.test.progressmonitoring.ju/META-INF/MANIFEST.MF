@@ -3,7 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.test.progressmonitoring.ju
 Bundle-Version: 6.0.0.qualifier
-Bundle-Activator: org.polarsys.capella.test.progressmonitoring.ju.internal.Activator
 Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.capella.test.framework,
  org.polarsys.capella.core.ui.metric,
@@ -12,7 +11,6 @@ Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Export-Package: org.polarsys.capella.test.progressmonitoring.ju.internal,
- org.polarsys.capella.test.progressmonitoring.ju.testcases,
+Export-Package: org.polarsys.capella.test.progressmonitoring.ju.testcases,
  org.polarsys.capella.test.progressmonitoring.ju.testsuites,
  org.polarsys.capella.test.progressmonitoring.ju.util

@@ -28,6 +28,7 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.osgi.util.NLS;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.data.helpers.modellingcore.utils.HoldingResourceFilter;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.helpers.EObjectExt;
@@ -39,7 +40,6 @@ import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultCompon
 import org.polarsys.capella.core.data.capellacommon.GenericTrace;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.model.handler.helpers.HoldingResourceHelper;
-import org.polarsys.capella.core.tiger.Activator;
 import org.polarsys.capella.core.tiger.IFinalizer;
 import org.polarsys.capella.core.tiger.ITransfo;
 import org.polarsys.capella.core.tiger.ITransfoEngine;
@@ -292,7 +292,7 @@ public abstract class TransfoEngine extends ITransfoEngine {
    */
   public void preExecute(ITransfo transfo) throws CoreException, Exception {
     IExtensionRegistry registry = Platform.getExtensionRegistry();
-    IConfigurationElement[] elements = registry.getConfigurationElementsFor(Activator.PLUGIN_ID);
+    IConfigurationElement[] elements = registry.getConfigurationElementsFor(FrameworkUtil.getBundle(this.getClass()).getSymbolicName());
     for (final IConfigurationElement element : elements) {
       if (TRANSFO_EXTENSION.equals(element.getName())) {
         ITransfoEngineExecuteExt extension = (ITransfoEngineExecuteExt) element.createExecutableExtension("class"); //$NON-NLS-1$
@@ -314,7 +314,7 @@ public abstract class TransfoEngine extends ITransfoEngine {
 
     try {
       IExtensionRegistry registry = Platform.getExtensionRegistry();
-      IConfigurationElement[] elements = registry.getConfigurationElementsFor(Activator.PLUGIN_ID);
+      IConfigurationElement[] elements = registry.getConfigurationElementsFor(FrameworkUtil.getBundle(this.getClass()).getSymbolicName());
       for (final IConfigurationElement element : elements) {
         if (TRANSFO_EXTENSION.equals(element.getName())) {
           ITransfoEngineExecuteExt extension = (ITransfoEngineExecuteExt) element.createExecutableExtension("class"); //$NON-NLS-1$

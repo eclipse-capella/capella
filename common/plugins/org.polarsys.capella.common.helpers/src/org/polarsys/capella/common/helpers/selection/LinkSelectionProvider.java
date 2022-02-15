@@ -18,9 +18,8 @@ import java.util.List;
 
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.emf.ecore.EClass;
-
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
-import org.polarsys.capella.common.helpers.HelperPlugin;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
 
 /**
@@ -54,7 +53,7 @@ public class LinkSelectionProvider {
     if (null == _linkSelectionContributions) {
       _linkSelectionContributions = new ArrayList<ILinkSelection>();
       IConfigurationElement[] LinkSelectionContributions =
-          ExtensionPointHelper.getConfigurationElements(HelperPlugin.getDefault().getPluginId(), LINK_SELECT_EXTENSION_POINT_SHORT_ID);
+          ExtensionPointHelper.getConfigurationElements(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), LINK_SELECT_EXTENSION_POINT_SHORT_ID);
       // Loop over found contributions.
       for (IConfigurationElement contribution : LinkSelectionContributions) {
         // Instantiate the contribution.

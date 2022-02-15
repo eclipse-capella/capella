@@ -3,7 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.test.platform.ju
 Bundle-Version: 6.0.0.qualifier
-Bundle-Activator: org.polarsys.capella.test.platform.ju.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.polarsys.capella.test.framework;bundle-version="0.8.0",
@@ -20,8 +19,7 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.core.compare
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: org.polarsys.capella.test.platform.ju,
- org.polarsys.capella.test.platform.ju.testcases,
+Export-Package: org.polarsys.capella.test.platform.ju.testcases,
  org.polarsys.capella.test.platform.ju.testsuites
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin

@@ -18,7 +18,6 @@ import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
-import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.properties.controllers.Component_RealizedComponentsController;
 import org.polarsys.capella.core.data.cs.properties.sections.ComponentSection;
@@ -29,7 +28,7 @@ import org.polarsys.capella.core.data.pa.properties.Messages;
 import org.polarsys.capella.core.data.pa.properties.fields.PhysicalComponentKindGroup;
 import org.polarsys.capella.core.data.pa.properties.fields.PhysicalComponentNatureGroup;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
-import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
+import org.polarsys.capella.core.model.preferences.helpers.PreferencesHelper;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
 import org.polarsys.capella.core.ui.properties.fields.MultipleSemanticField;
 
@@ -61,7 +60,7 @@ public class PhysicalComponentSection extends ComponentSection {
     pcKindGroup = new PhysicalComponentKindGroup(parent, getWidgetFactory(), true);
     pcKindGroup.setDisplayedInWizard(displayedInWizard);
     pcNatureGroup = new PhysicalComponentNatureGroup(parent, getWidgetFactory(),
-        CapellaModelPreferencesPlugin.getDefault().isChangePhysicalComponentNatureAllowed());
+            PreferencesHelper.isChangePhysicalComponentNatureAllowed());
     pcNatureGroup.setDisplayedInWizard(displayedInWizard);
 
     logicalComponentRealizations = new MultipleSemanticField(getReferencesGroup(),
@@ -83,7 +82,7 @@ public class PhysicalComponentSection extends ComponentSection {
     if (capellaElement instanceof PhysicalComponent) {
       updateAllocatedFunctionsField((PhysicalComponent) capellaElement);
     }
-    pcNatureGroup.setEnabled(CapellaModelPreferencesPlugin.getDefault().isChangePhysicalComponentNatureAllowed());
+    pcNatureGroup.setEnabled(PreferencesHelper.isChangePhysicalComponentNatureAllowed());
   }
 
   /**

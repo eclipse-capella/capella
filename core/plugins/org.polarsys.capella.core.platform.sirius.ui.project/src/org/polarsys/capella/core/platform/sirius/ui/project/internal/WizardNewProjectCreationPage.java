@@ -46,7 +46,7 @@ import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceNamingHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.ProjectApproach;
-import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
+import org.polarsys.capella.core.model.preferences.helpers.PreferencesHelper;
 import org.polarsys.capella.core.platform.sirius.ui.project.internal.ProjectContentsLocationArea.IErrorMessageReporter;
 
 /**
@@ -204,7 +204,7 @@ public class WizardNewProjectCreationPage extends WizardPage {
     }
     selectedButton.setSelection(true);
 
-    boolean isReuseOfComponentsAllowed = CapellaModelPreferencesPlugin.getDefault().isReuseOfComponentsAllowed();
+    boolean isReuseOfComponentsAllowed = PreferencesHelper.isReuseOfComponentsAllowed();
     radioRC.setEnabled(isReuseOfComponentsAllowed);
     radioSC.setEnabled(isReuseOfComponentsAllowed);
     radioBox.setEnabled(isReuseOfComponentsAllowed);

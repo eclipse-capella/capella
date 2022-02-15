@@ -18,7 +18,7 @@ import java.util.Set;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.core.commands.preferences.internalization.l10n.CustomPreferencesMessages;
 import org.polarsys.capella.core.commands.preferences.internalization.l10n.CustomPreferencesStatusCodes;
 import org.polarsys.capella.core.commands.preferences.model.CategoryPreferences;
@@ -228,7 +228,7 @@ public abstract class AbstractItemDescriptor implements IItemDescriptor {
 		if (value == null) {
 			CoreException ce = new CoreException( new Status(
 				IStatus.ERROR,
-				Activator.PLUGIN_ID,
+				FrameworkUtil.getBundle(this.getClass()).getSymbolicName(),
 				CustomPreferencesStatusCodes.ITEM_NOT_INITED,Activator.getMessage(ITEM_INCOMPLETE,	missingItem),
 				null));
 			

@@ -15,6 +15,7 @@ package org.polarsys.capella.common.ui.massactions.core.activator;
 import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
+import org.osgi.framework.FrameworkUtil;
 
 /**
  * The activator class controls the plug-in life cycle
@@ -23,9 +24,6 @@ import org.osgi.framework.BundleContext;
  * 
  */
 public class MECoreCapellaActivator extends AbstractUIPlugin {
-
-  // The plug-in ID
-  public static final String PLUGIN_ID = "org.polarsys.capella.common.ui.massactions.core"; //$NON-NLS-1$
 
   public static final String IMAGE_BROWSE = "IMAGE_BROWSE";
 
@@ -67,7 +65,7 @@ public class MECoreCapellaActivator extends AbstractUIPlugin {
   protected void initializeImageRegistry(ImageRegistry reg) {
     super.initializeImageRegistry(reg);
 
-    reg.put(IMAGE_BROWSE, imageDescriptorFromPlugin(PLUGIN_ID, "icons/browse.gif"));
+    reg.put(IMAGE_BROWSE, imageDescriptorFromPlugin(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), "icons/browse.gif"));
   }
 
 }

@@ -41,7 +41,7 @@ import org.polarsys.capella.core.data.helpers.fa.services.FunctionalExt;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.deployment.PartDeploymentLink;
-import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
+import org.polarsys.capella.core.model.preferences.helpers.PreferencesHelper;
 
 /**
  * Part helpers
@@ -294,7 +294,7 @@ public class PartExt {
   }
 
   public static boolean isDeployable(Part part) {
-    if (CapellaModelPreferencesPlugin.getDefault().isMultipleDeploymentAllowed()) {
+    if (PreferencesHelper.isMultipleDeploymentAllowed()) {
       return true;
     }
     return part.getDeployingParts().isEmpty();

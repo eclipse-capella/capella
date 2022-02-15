@@ -21,8 +21,6 @@ import org.polarsys.capella.common.tools.report.appenders.usage.preferences.Pref
  */
 public class UsageAppenderPlugin extends Plugin {
   
-  public static final String PLUGIN_ID = "org.polarsys.capella.common.tools.report.appenders.usage"; //$NON-NLS-1$
-  
   // The shared instance
   private static UsageAppenderPlugin plugin;
 

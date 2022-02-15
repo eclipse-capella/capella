@@ -28,6 +28,7 @@ import java.util.function.Predicate;
 
 import org.apache.log4j.Priority;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.debug.internal.ui.DebugPluginImages;
 import org.eclipse.debug.ui.IDebugUIConstants;
@@ -119,9 +120,12 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.part.ViewPart;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
+import org.osgi.framework.Bundle;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.flexibility.wizards.ui.FlexibilityColors;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.libraries.IModel;
@@ -132,7 +136,6 @@ import org.polarsys.capella.common.tools.report.util.ReportManagerDefaultCompone
 import org.polarsys.capella.common.ui.toolkit.ToolkitPlugin;
 import org.polarsys.capella.core.data.core.validation.constraint.ReferentialConstraintsResourceSetListener;
 import org.polarsys.capella.core.libraries.model.ICapellaModel;
-import org.polarsys.capella.core.libraries.ui.Activator;
 import org.polarsys.capella.core.model.helpers.move.CapellaMoveHelper;
 import org.polarsys.capella.core.model.helpers.move.Stage;
 import org.polarsys.capella.core.model.helpers.move.StageListener;
@@ -333,7 +336,7 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
         referenceErrors.set(status);
         MyDiagnosticDialog dialog = new MyDiagnosticDialog(getViewSite().getShell(), status); 
         if (dialog.open() == Window.CANCEL) {
-          throw new RollbackException(new Status(IStatus.CANCEL, Activator.PLUGIN_ID, Messages.MoveStagingView_CancelStatusMessage));
+          throw new RollbackException(new Status(IStatus.CANCEL, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), Messages.MoveStagingView_CancelStatusMessage));
         } else {
           forcedMove.set(true);
         }
@@ -977,7 +980,8 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
 
     private AddRequiredAction() {
       super(Messages.MoveStagingView_addRequiredElementsLabel);
-      setImageDescriptor(Activator.getDefault().getImageDescriptor("full/etool16/add_dependencies.gif")); //$NON-NLS-1$
+      final String ICONS_PATH = "icons/";
+      setImageDescriptor(AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), ICONS_PATH + "full/etool16/add_dependencies.gif")); //$NON-NLS-1$
       setToolTipText(Messages.MoveStagingView_addRequiredElementsLabel);
     }
 
@@ -997,7 +1001,8 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
 
     protected AddAllRequiredAction() {
       super(Messages.MoveStagingView_addAllRequiredElementsLabel);
-      setImageDescriptor(Activator.getDefault().getImageDescriptor("full/etool16/add_alldependencies.gif")); //$NON-NLS-1$
+      final String ICONS_PATH = "icons/"; //$NON-NLS-1$
+      setImageDescriptor(AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), ICONS_PATH + "full/etool16/add_alldependencies.gif")); //$NON-NLS-1$
       setToolTipText(Messages.MoveStagingView_addAllRequiredElementsLabel);
     }
 
@@ -1472,7 +1477,8 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
       try {
         window.getActivePage().showView(CapellaCommonNavigator.ID, null, IWorkbenchPage.VIEW_ACTIVATE);
       } catch (PartInitException e) {
-        Activator.getDefault().getLog().log(new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getLocalizedMessage(), e));
+          Bundle bundle = FrameworkUtil.getBundle(this.getClass());
+          Platform.getLog(bundle).error(e.getLocalizedMessage(), e);
       }
       super.selectElementInCapellaExplorer(selection);
     }

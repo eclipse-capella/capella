@@ -48,6 +48,7 @@ import org.eclipse.sirius.business.api.session.factory.SessionFactory;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.statushandlers.StatusManager;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.helpers.TransactionHelper;
@@ -64,7 +65,6 @@ import org.polarsys.capella.common.tools.report.config.registry.ReportManagerReg
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaActionsActivator;
-import org.polarsys.capella.core.preferences.Activator;
 import org.polarsys.kitalpha.emde.xmi.UnknownEObject;
 
 /**
@@ -357,7 +357,7 @@ public class CapellaSessionHelper {
     if (errorMsg != null) {
       //Due to org.eclipse.ui.statushandlers.WorkbenchStatusDialogManager performing modification of 
       //displayed exception message, status message must be different of the exception message
-      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, errorMsg, new RuntimeException(exception));
+      return new Status(IStatus.ERROR, FrameworkUtil.getBundle(CapellaSessionHelper.class).getSymbolicName(), errorMsg, new RuntimeException(exception));
     }
     return Status.OK_STATUS;
   }

@@ -33,6 +33,7 @@ import org.eclipse.ui.IWorkbenchPreferenceConstants;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.platform.sirius.customisation.uicallback.SiriusUiCallBack;
 
 /**
@@ -42,7 +43,7 @@ import org.polarsys.capella.common.platform.sirius.customisation.uicallback.Siri
 public class SiriusCustomizationPlugin extends AbstractUIPlugin {
 
   /** The plug-in ID. */
-  public static final String PLUGIN_ID = "org.polarsys.capella.common.platform.sirius.customisation"; //$NON-NLS-1$
+  public static final String PLUGIN_ID = FrameworkUtil.getBundle(SiriusCustomizationPlugin.class).getSymbolicName();
 
   // The shared instance
   private static SiriusCustomizationPlugin plugin;

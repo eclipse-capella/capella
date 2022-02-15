@@ -34,13 +34,13 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.operations.LongRunningListenersRegistry;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.common.tools.report.util.LogExt;
-import org.polarsys.capella.core.model.handler.ModelHandlerPlugin;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 
 /**
@@ -246,7 +246,7 @@ public class BasicCapellaDeleteCommand extends AbstractCommand {
       } catch (Exception re) {
         // For other kind of Exception, we only log them.
         LogExt.log(IReportManagerDefaultComponents.MODEL,
-            new Status(IStatus.WARNING, ModelHandlerPlugin.PLUGIN_ID, re.getMessage(), re));
+            new Status(IStatus.WARNING, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), re.getMessage(), re));
       }
     }
   }

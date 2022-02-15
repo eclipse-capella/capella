@@ -12,15 +12,14 @@
  *******************************************************************************/
 package org.polarsys.capella.core.validation;
 
+import org.eclipse.core.runtime.Plugin;
 import org.eclipse.emf.validation.service.ConstraintRegistry;
 import org.osgi.framework.BundleContext;
-
-import org.polarsys.capella.common.mdsofa.common.activator.AbstractActivator;
 import org.polarsys.capella.core.validation.filter.CapellaConstraintFilter;
 
 /**
  */
-public class CapellaValidationActivator extends AbstractActivator {
+public class CapellaValidationActivator extends Plugin {
   /**
    * Singleton instance.
    */

@@ -10,7 +10,8 @@ Require-Bundle: org.apache.log4j;visibility:=reexport,
  org.eclipse.emf.common,
  org.eclipse.emf.ecore,
  org.eclipse.jdt.core;visibility:=reexport,
- org.eclipse.pde.core;visibility:=reexport
+ org.eclipse.pde.core;visibility:=reexport,
+ org.eclipse.osgi
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.common.mdsofa.common.activator,
  org.polarsys.capella.common.mdsofa.common.adapter,

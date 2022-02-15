@@ -19,15 +19,17 @@ import java.util.Collections;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.osgi.framework.Bundle;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.core.data.fa.FunctionInputPort;
 import org.polarsys.capella.core.data.fa.FunctionOutputPort;
 import org.polarsys.capella.core.data.fa.FunctionPort;
-import org.polarsys.capella.core.data.fa.ui.quickfix.FaQuickFixActivator;
 import org.polarsys.capella.core.data.fa.validation.functionPort.DCOM_21_UnusedExchangeItems;
 import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarkerResolution;
@@ -58,10 +60,11 @@ public class DCOM_21_RemoveUnusedExchangeItemsResolver extends AbstractCapellaMa
       };
       domain.getCommandStack().execute(removeCommand);
       try {
-        marker.delete();
+          marker.delete();
       } catch (CoreException e) {
-        IStatus s = new Status(e.getStatus().getSeverity(), FaQuickFixActivator.getDefault().getPluginId(), e.getStatus().getMessage(), e);
-        FaQuickFixActivator.getDefault().getLog().log(s);
+          Bundle bundle = FrameworkUtil.getBundle(this.getClass());
+          IStatus s = new Status(e.getStatus().getSeverity(), bundle.getSymbolicName(), e.getStatus().getMessage(), e);
+          Platform.getLog(bundle).log(s);
       }
     }
   }

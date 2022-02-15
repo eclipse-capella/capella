@@ -53,6 +53,7 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.preferences.ScopedPreferenceStore;
+import org.osgi.framework.FrameworkUtil;
 import org.osgi.service.prefs.BackingStoreException;
 import org.osgi.service.prefs.Preferences;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
@@ -63,7 +64,6 @@ import org.polarsys.capella.core.commands.preferences.service.ScopedCapellaPrefe
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
-import org.polarsys.capella.core.preferences.Activator;
 
 public class PreferencesHelper {
   private PreferencesHelper() {
@@ -252,19 +252,19 @@ public class PreferencesHelper {
     IScopeContext scope = targetProject != null ? ScopedCapellaPreferencesStore.getProjectScope(targetProject) : null;
     try {
       if (scope != null) {
-        IEclipsePreferences node = scope.getNode(Activator.PLUGIN_ID);
+        IEclipsePreferences node = scope.getNode(FrameworkUtil.getBundle(PreferencesHelper.class).getSymbolicName());
         node.flush();
         ScopedCapellaPreferencesStore.getProjectContexts().put(targetProject.getProject(), scope);
-        return new ScopedPreferenceStore(scope, Activator.PLUGIN_ID);
+        return new ScopedPreferenceStore(scope, FrameworkUtil.getBundle(PreferencesHelper.class).getSymbolicName());
       }
     } catch (Exception exception) {
       StringBuilder loggerMessage = new StringBuilder("Activator.getProjectScope(..) _ "); //$NON-NLS-1$
       __logger.error(loggerMessage.toString(), exception);
 
-      return new ScopedPreferenceStore(scope, Activator.PLUGIN_ID);
+      return new ScopedPreferenceStore(scope, FrameworkUtil.getBundle(PreferencesHelper.class).getSymbolicName());
     }
 
-    return new ScopedPreferenceStore(InstanceScope.INSTANCE, Activator.PLUGIN_ID);
+    return new ScopedPreferenceStore(InstanceScope.INSTANCE, FrameworkUtil.getBundle(PreferencesHelper.class).getSymbolicName());
 
   }
 
@@ -277,16 +277,16 @@ public class PreferencesHelper {
     try {
       if (scope != null) {
         ScopedCapellaPreferencesStore.getProjectContexts().put(targetProject.getProject(), scope);
-        return ScopedCapellaPreferencesStore.getInstance(Activator.PLUGIN_ID);
+        return ScopedCapellaPreferencesStore.getInstance(FrameworkUtil.getBundle(PreferencesHelper.class).getSymbolicName());
       }
     } catch (Exception exception) {
       StringBuilder loggerMessage = new StringBuilder("Activator.getProjectScope(..) _ "); //$NON-NLS-1$
       __logger.error(loggerMessage.toString(), exception);
 
-      return new ScopedPreferenceStore(scope, Activator.PLUGIN_ID);
+      return new ScopedPreferenceStore(scope, FrameworkUtil.getBundle(PreferencesHelper.class).getSymbolicName());
     }
 
-    return new ScopedPreferenceStore(InstanceScope.INSTANCE, Activator.PLUGIN_ID);
+    return new ScopedPreferenceStore(InstanceScope.INSTANCE, FrameworkUtil.getBundle(PreferencesHelper.class).getSymbolicName());
 
   }
 
@@ -298,19 +298,19 @@ public class PreferencesHelper {
     IScopeContext scope = targetProject != null ? ScopedCapellaPreferencesStore.getProjectScope(targetProject) : null;
     try {
       if (scope != null) {
-        IEclipsePreferences node = scope.getNode(Activator.PLUGIN_ID);
+        IEclipsePreferences node = scope.getNode(FrameworkUtil.getBundle(PreferencesHelper.class).getSymbolicName());
         node.flush();
         ScopedCapellaPreferencesStore.getProjectContexts().put(targetProject.getProject(), scope);
-        return ScopedCapellaPreferencesStore.getInstance(Activator.PLUGIN_ID);
+        return ScopedCapellaPreferencesStore.getInstance(FrameworkUtil.getBundle(PreferencesHelper.class).getSymbolicName());
       }
     } catch (Exception exception) {
       StringBuilder loggerMessage = new StringBuilder("Activator.getProjectScope(..) _ "); //$NON-NLS-1$
       __logger.error(loggerMessage.toString(), exception);
 
-      return new ScopedPreferenceStore(scope, Activator.PLUGIN_ID);
+      return new ScopedPreferenceStore(scope, FrameworkUtil.getBundle(PreferencesHelper.class).getSymbolicName());
     }
 
-    return new ScopedPreferenceStore(InstanceScope.INSTANCE, Activator.PLUGIN_ID);
+    return new ScopedPreferenceStore(InstanceScope.INSTANCE, FrameworkUtil.getBundle(PreferencesHelper.class).getSymbolicName());
 
   }
 
@@ -322,19 +322,19 @@ public class PreferencesHelper {
     IScopeContext scope = targetProject != null ? ScopedCapellaPreferencesStore.getProjectScope(targetProject) : null;
     try {
       if (scope != null) {
-        IEclipsePreferences node = scope.getNode(Activator.PLUGIN_ID);
+        IEclipsePreferences node = scope.getNode(FrameworkUtil.getBundle(PreferencesHelper.class).getSymbolicName());
         node.flush();
         ScopedCapellaPreferencesStore.getProjectContexts().put(targetProject.getProject(), scope);
-        return new ScopedPreferenceStore(scope, Activator.PLUGIN_ID);
+        return new ScopedPreferenceStore(scope, FrameworkUtil.getBundle(PreferencesHelper.class).getSymbolicName());
       }
     } catch (Exception exception) {
       StringBuilder loggerMessage = new StringBuilder("Activator.getProjectScope(..) _ "); //$NON-NLS-1$
       __logger.error(loggerMessage.toString(), exception);
 
-      return new ScopedPreferenceStore(scope, Activator.PLUGIN_ID);
+      return new ScopedPreferenceStore(scope, FrameworkUtil.getBundle(PreferencesHelper.class).getSymbolicName());
     }
 
-    return new ScopedPreferenceStore(InstanceScope.INSTANCE, Activator.PLUGIN_ID);
+    return new ScopedPreferenceStore(InstanceScope.INSTANCE, FrameworkUtil.getBundle(PreferencesHelper.class).getSymbolicName());
 
   }
 
@@ -350,7 +350,7 @@ public class PreferencesHelper {
         if (targetProject.isOpen() && targetProject.isAccessible()
             && (CapellaResourceHelper.isCapellaProject(targetProject))) {
           IScopeContext projectScope = ScopedCapellaPreferencesStore.getProjectScope(targetProject);
-          scopes.add(new ScopedPreferenceStore(projectScope, Activator.PLUGIN_ID));
+          scopes.add(new ScopedPreferenceStore(projectScope, FrameworkUtil.getBundle(PreferencesHelper.class).getSymbolicName()));
         }
       } catch (Exception exception) {
         StringBuilder loggerMessage = new StringBuilder("PreferencesHelper.getAllStores(..) _ "); //$NON-NLS-1$

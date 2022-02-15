@@ -24,8 +24,9 @@ import org.eclipse.jface.viewers.StyledString.Styler;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.navigator.INavigatorContentService;
 import org.eclipse.ui.navigator.NavigatorContentServiceFactory;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
-import org.polarsys.capella.core.ui.search.Activator;
 import org.polarsys.capella.core.ui.search.CapellaSearchConstants;
 import org.polarsys.capella.core.ui.search.match.SearchMatch;
 import org.polarsys.capella.core.ui.search.match.SearchMatchChild;
@@ -68,7 +69,7 @@ public class CapellaSearchResultLabelProvider extends LabelProvider {
     if (element instanceof SearchMatchChild) {
       return null;
     } else if (element instanceof SearchMatch) {
-      return Activator.getDefault().getImage("line_match.png");
+      return AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), "icons/line_match.png").createImage();
     } else if (element instanceof Shape && ViewType.NOTE.equals(((Shape) element).getType())) {
       return ExtendedImageRegistry.INSTANCE
           .getImage(DiagramUIPlugin.getInstance().getBundle().getEntry("icons/note.gif"));

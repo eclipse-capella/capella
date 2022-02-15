@@ -12,9 +12,9 @@
  *******************************************************************************/
 package org.polarsys.capella.core.ui.semantic.browser;
 
-import org.eclipse.core.runtime.preferences.DefaultScope;
 import org.osgi.framework.BundleContext;
 import org.polarsys.capella.common.ui.services.AbstractUIActivator;
+import org.polarsys.capella.core.ui.semantic.browser.preferences.PreferenceInitializer;
 
 /**
  * The activator class controls the plug-in life cycle
@@ -30,10 +30,8 @@ public class CapellaBrowserActivator extends AbstractUIActivator {
   public void start(BundleContext context) throws Exception {
     super.start(context);
     __plugin = this;
-
-    // enable semantic browser synchronization by default
-    DefaultScope.INSTANCE.getNode(getPluginId()).putBoolean(CapellaBrowserPreferences.PREFS_DISABLE_SEMANTIC_BROWSER_SYNC_ON_STARTUP, false);
-}
+    new PreferenceInitializer();
+  }
 
   /**
    * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)

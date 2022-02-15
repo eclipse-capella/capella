@@ -27,9 +27,9 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.helper.delete.DeleteHookHelper;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.junit.Assert;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.core.commands.preferences.service.ScopedCapellaPreferencesStore;
-import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 import org.polarsys.capella.core.model.preferences.IDeletePreferences;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.Messages;
@@ -74,8 +74,8 @@ public class DeleteElementTool extends AbstractToolStep<EObject> {
 
   private void disableConfirmation() {
     // ScopedCapellaPreferencesStore.setValue(boolean) doesn't work if setDefault has same value
-    ScopedCapellaPreferencesStore.getInstance(CapellaModelPreferencesPlugin.PLUGIN_ID).setDefault(IDeletePreferences.PREFERENCE_CONFIRM_DELETE, true);
-    ScopedCapellaPreferencesStore.getInstance(CapellaModelPreferencesPlugin.PLUGIN_ID).setValue(IDeletePreferences.PREFERENCE_CONFIRM_DELETE, false);
+    ScopedCapellaPreferencesStore.getInstance(FrameworkUtil.getBundle(IDeletePreferences.class).getSymbolicName()).setDefault(IDeletePreferences.PREFERENCE_CONFIRM_DELETE, true);
+    ScopedCapellaPreferencesStore.getInstance(FrameworkUtil.getBundle(IDeletePreferences.class).getSymbolicName()).setValue(IDeletePreferences.PREFERENCE_CONFIRM_DELETE, false);
   }
 
   public void deleteAll() {

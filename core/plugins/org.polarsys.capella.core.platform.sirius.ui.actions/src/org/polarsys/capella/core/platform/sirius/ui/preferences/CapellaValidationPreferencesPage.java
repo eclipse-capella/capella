@@ -13,9 +13,8 @@
 package org.polarsys.capella.core.platform.sirius.ui.preferences;
 
 import org.eclipse.jface.preference.BooleanFieldEditor;
-
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.core.commands.preferences.service.AbstractDefaultPreferencePage;
-import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaActionsActivator;
 
 /**
  * This class represents a preference page that is contributed to the Preferences dialog. By subclassing <samp>FieldEditorPreferencePage</samp>, we can use the
@@ -33,7 +32,7 @@ public class CapellaValidationPreferencesPage extends AbstractDefaultPreferenceP
   public static final String PROPERTY_PAGE_ID = "org.polarsys.capella.core.platform.sirius.ui.actions.preferences.CapellaValidationPreferences"; //$NON-NLS-1$
 
   public CapellaValidationPreferencesPage() {
-    super(CapellaActionsActivator.PLUGIN_ID);
+    super(FrameworkUtil.getBundle(CapellaValidationPreferencesPage.class).getSymbolicName());
     setDescription(Messages.ModelValidationPreferencePage_Description);
   }
 

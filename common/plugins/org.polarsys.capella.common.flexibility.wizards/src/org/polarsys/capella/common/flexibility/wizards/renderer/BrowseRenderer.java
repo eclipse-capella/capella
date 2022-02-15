@@ -27,10 +27,11 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.ToolBar;
 import org.eclipse.swt.widgets.ToolItem;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.flexibility.properties.schema.IProperty;
 import org.polarsys.capella.common.flexibility.properties.schema.IPropertyContext;
 import org.polarsys.capella.common.flexibility.properties.schema.IRestraintProperty;
-import org.polarsys.capella.common.flexibility.wizards.Activator;
 import org.polarsys.capella.common.flexibility.wizards.schema.IRendererContext;
 import org.polarsys.capella.common.ui.toolkit.dialogs.SelectElementsDialog;
 import org.polarsys.capella.common.ui.toolkit.dialogs.TransferTreeListDialog;
@@ -78,10 +79,11 @@ public class BrowseRenderer extends TextRenderer {
     super.initializeControls(parent, context);
 
     ToolBar toolbar = new ToolBar(parent, SWT.HORIZONTAL);
+    final String ICONS_PATH = "icons/"; //$NON-NLS-1$
     if (isBrowseButton()) {
       browse = new ToolItem(toolbar, SWT.PUSH);
       browse.setToolTipText(getBrowseText());
-      browse.setImage(Activator.getDefault().getImage("full/etool16/browse.gif"));
+      browse.setImage(AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), ICONS_PATH + "full/etool16/browse.gif").createImage());
       browse.addSelectionListener(new SelectionListener() {
 
         public void widgetSelected(SelectionEvent event) {
@@ -97,7 +99,7 @@ public class BrowseRenderer extends TextRenderer {
     if (isDeleteButton()) {
       delete = new ToolItem(toolbar, SWT.PUSH);
       delete.setToolTipText("Delete all elements");
-      delete.setImage(Activator.getDefault().getImage("full/etool16/delete_edit.gif"));
+      delete.setImage(AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), ICONS_PATH + "full/etool16/delete_edit.gif").createImage());
       delete.addSelectionListener(new SelectionListener() {
 
         public void widgetSelected(SelectionEvent event) {

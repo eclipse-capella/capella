@@ -17,6 +17,8 @@ import java.util.List;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.jface.dialogs.IDialogSettings;
+import org.eclipse.ui.PlatformUI;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.core.ui.search.searchfor.SearchForItemCache;
 import org.polarsys.capella.core.ui.search.searchfor.item.SearchForAttributeItem;
 import org.polarsys.capella.core.ui.search.searchfor.item.SearchForClassItem;
@@ -121,7 +123,7 @@ public abstract class AbstractCapellaHistory {
   }
 
   private IDialogSettings getDialogSettingsForCapellaSearch() {
-    IDialogSettings dialogSettings = Activator.getDefault().getDialogSettings();
+    IDialogSettings dialogSettings = PlatformUI.getDialogSettingsProvider(FrameworkUtil.getBundle(this.getClass())).getDialogSettings();
     IDialogSettings section = dialogSettings.getSection(SECTION_SEARCH);
     if (section == null) {
       section = dialogSettings.addNewSection(SECTION_SEARCH);

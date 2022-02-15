@@ -3,7 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.ui.search;singleton:=true
 Bundle-Version: 6.0.0.qualifier
-Bundle-Activator: org.polarsys.capella.core.ui.search.Activator
 Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Localization: plugin
@@ -21,7 +20,7 @@ Require-Bundle: org.eclipse.search,
  org.eclipse.sirius.ext.base,
  org.eclipse.gmf.runtime.diagram.ui,
  org.polarsys.kitalpha.ad.services,
- org.apache.commons.lang
+ org.apache.commons.lang,
+ org.eclipse.ui.workbench
 Export-Package: org.polarsys.capella.core.ui.search
- 
 

@@ -27,6 +27,7 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
 import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.osgi.framework.FrameworkUtil;
 import org.osgi.service.prefs.BackingStoreException;
 import org.osgi.service.prefs.Preferences;
 import org.polarsys.capella.common.ef.ExecutionManagerRegistry;
@@ -39,7 +40,6 @@ import org.polarsys.capella.common.libraries.LibrariesFactory;
 import org.polarsys.capella.common.libraries.LibraryReference;
 import org.polarsys.capella.common.libraries.ModelInformation;
 import org.polarsys.capella.core.data.capellamodeller.Project;
-import org.polarsys.capella.core.libraries.Activator;
 import org.polarsys.capella.core.model.handler.command.BasicCapellaDeleteCommand;
 import org.polarsys.capella.core.model.handler.helpers.CrossReferencerHelper;
 import org.polarsys.kitalpha.ad.metadata.helpers.LibraryHelper;
@@ -312,14 +312,14 @@ public class CapellaModel extends AbstractCapellaModel implements IModel.Edit {
 
   @Override
   public boolean isActive(IModel library) {
-    Preferences activeLibraryPrefInfos = ConfigurationScope.INSTANCE.getNode(Activator.PLUGIN_ID).node(ACTIVE_STATE_PREF_ID);
+    Preferences activeLibraryPrefInfos = ConfigurationScope.INSTANCE.getNode(FrameworkUtil.getBundle(this.getClass()).getSymbolicName()).node(ACTIVE_STATE_PREF_ID);
     Preferences libraryContextPref = activeLibraryPrefInfos.node(this.getIdentifier().getName());
     return libraryContextPref.getBoolean(library.getIdentifier().getName(), getDefaultActiveState(library));
   }
 
   @Override
   public void setActive(IModel library, boolean activeState) {
-    final Preferences activeLibraryPrefInfos = ConfigurationScope.INSTANCE.getNode(Activator.PLUGIN_ID).node(ACTIVE_STATE_PREF_ID);
+    final Preferences activeLibraryPrefInfos = ConfigurationScope.INSTANCE.getNode(FrameworkUtil.getBundle(this.getClass()).getSymbolicName()).node(ACTIVE_STATE_PREF_ID);
     Preferences libraryContextPref = activeLibraryPrefInfos.node(this.getIdentifier().getName());
     libraryContextPref.putBoolean(library.getIdentifier().getName(), activeState);
 

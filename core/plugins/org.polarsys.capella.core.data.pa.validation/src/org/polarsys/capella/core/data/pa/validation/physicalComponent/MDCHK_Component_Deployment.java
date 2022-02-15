@@ -18,13 +18,13 @@ import org.polarsys.capella.common.data.modellingcore.AbstractTypedElement;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
-import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
+import org.polarsys.capella.core.model.preferences.helpers.PreferencesHelper;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 public class MDCHK_Component_Deployment extends AbstractValidationRule {
 
   public boolean isMultipleDeploymentAllowed() {
-    return CapellaModelPreferencesPlugin.getDefault().isMultipleDeploymentAllowed();
+    return PreferencesHelper.isMultipleDeploymentAllowed();
   }
 
   @Override

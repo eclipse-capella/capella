@@ -18,7 +18,8 @@ import org.polarsys.capella.core.data.cs.PhysicalPath;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.properties.controllers.AllocatedComponentExchangesController;
 import org.polarsys.capella.core.model.helpers.PhysicalPathExt;
-import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
+import org.polarsys.capella.core.model.helpers.delete.DeleteHelper;
+import org.polarsys.capella.core.model.preferences.helpers.PreferencesHelper;
 
 /**
  */
@@ -31,7 +32,7 @@ public class PhysicalPathAllocatedComponentExchangesController extends Allocated
   protected void doAddOperationInWriteOpenValues(EObject semanticElement, EStructuralFeature semanticFeature, EObject object) {
     super.doAddOperationInWriteOpenValues(semanticElement, semanticFeature, object);
 
-    if (CapellaModelPreferencesPlugin.getDefault().isSynchronizationOfPhysicalPortToComponentPortOnPhysicalPathAllowed()
+    if (PreferencesHelper.isSynchronizationOfPhysicalPortToComponentPortOnPhysicalPathAllowed()
         && (semanticElement instanceof PhysicalPath) && (object instanceof ComponentExchange)) {
       PhysicalPathExt.synchronizeAllocations((PhysicalPath) semanticElement, (ComponentExchange) object);
     }

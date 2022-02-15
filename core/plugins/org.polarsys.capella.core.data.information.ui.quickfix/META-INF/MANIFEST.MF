@@ -3,7 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.data.information.ui.quickfix;singleton:=true
 Bundle-Version: 6.0.0.qualifier
-Bundle-Activator: org.polarsys.capella.core.data.information.ui.quickfix.InformationQuickFixActivator
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -20,6 +19,5 @@ Require-Bundle: org.eclipse.ui,
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: org.polarsys.capella.core.data.information.ui.quickfix,
- org.polarsys.capella.core.data.information.ui.quickfix.messages,
+Export-Package: org.polarsys.capella.core.data.information.ui.quickfix.messages,
  org.polarsys.capella.core.data.information.ui.quickfix.resolver

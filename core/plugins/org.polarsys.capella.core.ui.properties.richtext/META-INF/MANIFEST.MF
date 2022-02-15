@@ -23,4 +23,3 @@ Export-Package: org.polarsys.capella.core.ui.properties.richtext,
  org.polarsys.capella.core.ui.properties.richtext.navigation,
  org.polarsys.capella.core.ui.properties.richtext.propertysheet,
  org.polarsys.capella.core.ui.properties.richtext.sections
-Bundle-Activator: org.polarsys.capella.core.ui.properties.richtext.CapellaUIPropertiesRichtextPlugin

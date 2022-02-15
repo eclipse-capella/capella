@@ -3,7 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.test.migration.ju
 Bundle-Version: 6.0.0.qualifier
-Bundle-Activator: org.polarsys.capella.test.migration.ju.TestMigrationPlugin
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.polarsys.capella.test.framework,
@@ -17,8 +16,7 @@ Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Export-Package: org.polarsys.capella.test.migration.ju,
- org.polarsys.capella.test.migration.ju.fwk,
+Export-Package: org.polarsys.capella.test.migration.ju.fwk,
  org.polarsys.capella.test.migration.ju.helpers,
  org.polarsys.capella.test.migration.ju.model,
  org.polarsys.capella.test.migration.ju.testcases.basic,

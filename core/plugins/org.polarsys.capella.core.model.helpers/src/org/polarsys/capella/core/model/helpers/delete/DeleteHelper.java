@@ -82,8 +82,8 @@ import org.polarsys.capella.core.model.helpers.ComponentExchangeExt;
 import org.polarsys.capella.core.model.helpers.PhysicalLinkExt;
 import org.polarsys.capella.core.model.helpers.PhysicalPathExt;
 import org.polarsys.capella.core.model.helpers.SequenceLinkEndExt;
-import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 import org.polarsys.capella.core.model.preferences.IDeletePreferences;
+import org.polarsys.capella.core.model.preferences.helpers.PreferencesHelper;
 
 /**
  * 
@@ -310,14 +310,14 @@ public class DeleteHelper implements IDeleteHelper {
     // Special case for Sequence Link Ends.
     addElementsForSequenceLinkEnd(expandedSelection);
 
-    if (CapellaModelPreferencesPlugin.getDefault().isSynchronizationOfComponentPortToFunctionPortAllowed()) {
+    if (PreferencesHelper.isSynchronizationOfComponentPortToFunctionPortAllowed()) {
       addElementsForComponentExchangeFunctionalExchangeAllocation(expandedSelection);
     }
-    if (CapellaModelPreferencesPlugin.getDefault()
+    if (PreferencesHelper
         .isSynchronizationOfPhysicalPortToComponentPortOnPhysicalLinkAllowed()) {
       addElementsForComponentExchangeAllocationFromPL(expandedSelection);
     }
-    if (CapellaModelPreferencesPlugin.getDefault()
+    if (PreferencesHelper
         .isSynchronizationOfPhysicalPortToComponentPortOnPhysicalPathAllowed()) {
       addElementsForComponentExchangeAllocationFromPP(expandedSelection);
     }

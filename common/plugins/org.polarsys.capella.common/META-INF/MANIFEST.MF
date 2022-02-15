@@ -3,7 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.common
 Bundle-Version: 6.0.0.qualifier
-Bundle-Activator: org.polarsys.capella.common.MdeCommonActivator
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.core.runtime;visibility:=reexport,
  org.polarsys.capella.common.mdsofa.common;visibility:=reexport,
@@ -13,12 +12,11 @@ Require-Bundle: org.eclipse.core.runtime;visibility:=reexport,
  com.google.guava,
  org.eclipse.emf.ecore.xmi,
  org.eclipse.jface,
- org.eclipse.emf.edit.ui
+ org.eclipse.emf.edit.ui,
+ org.eclipse.osgi
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
-Export-Package: org.polarsys.capella.common,
- org.polarsys.capella.common.activator,
- org.polarsys.capella.common.application,
+Export-Package: org.polarsys.capella.common.application,
  org.polarsys.capella.common.helpers,
  org.polarsys.capella.common.helpers.argumentparser,
  org.polarsys.capella.common.helpers.export,

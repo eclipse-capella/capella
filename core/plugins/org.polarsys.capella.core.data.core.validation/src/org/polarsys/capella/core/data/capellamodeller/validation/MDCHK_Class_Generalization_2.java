@@ -17,9 +17,8 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
-
 import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
-import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
+import org.polarsys.capella.core.model.preferences.helpers.PreferencesHelper;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 /**
@@ -37,7 +36,7 @@ public class MDCHK_Class_Generalization_2 extends AbstractValidationRule {
       if (eObj instanceof GeneralizableElement) {
     	  GeneralizableElement clz = (GeneralizableElement) eObj;
     	EList<GeneralizableElement> superClasses = clz.getSuper();
-        if (!CapellaModelPreferencesPlugin.getDefault().isMultipleInheritanceAllowed()) {
+        if (!PreferencesHelper.isMultipleInheritanceAllowed()) {
         	if (superClasses.size() > 1) {
                 return createFailureStatus(ctx, new Object[] { clz.getName(),clz.eClass().getName() });
     		}	

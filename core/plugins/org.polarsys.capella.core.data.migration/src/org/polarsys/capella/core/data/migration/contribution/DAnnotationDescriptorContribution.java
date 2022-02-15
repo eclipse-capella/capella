@@ -24,6 +24,7 @@ import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
@@ -33,7 +34,6 @@ import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesPro
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellacore.EnumerationPropertyLiteral;
-import org.polarsys.capella.core.data.migration.Activator;
 import org.polarsys.capella.core.data.migration.context.MigrationContext;
 import org.polarsys.capella.core.diagram.helpers.DAnnotationHelper;
 import org.polarsys.capella.core.diagram.helpers.IRepresentationAnnotationConstants;
@@ -108,7 +108,7 @@ public class DAnnotationDescriptorContribution extends AbstractMigrationContribu
     }
     if (i > 0) {
       Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.DEFAULT);
-      IStatus status = new Status(IStatus.INFO, Activator.PLUGIN_ID,
+      IStatus status = new Status(IStatus.INFO, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(),
           NLS.bind(org.polarsys.capella.core.data.migration.contribution.Messages.MigrationAction_AnnotationMigration,
               context.getName(), i));
       LogExt.log(logger, status);
@@ -183,7 +183,7 @@ public class DAnnotationDescriptorContribution extends AbstractMigrationContribu
 
             } else {
               Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.DEFAULT);
-              IStatus status = new Status(IStatus.WARNING, Activator.PLUGIN_ID, NLS.bind(
+              IStatus status = new Status(IStatus.WARNING, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), NLS.bind(
                   org.polarsys.capella.core.data.migration.contribution.Messages.MigrationAction_MissingStatusMigration,
                   descriptor.getName(), statusValue));
               LogExt.log(logger, status);
@@ -211,7 +211,7 @@ public class DAnnotationDescriptorContribution extends AbstractMigrationContribu
           
         } else {
           Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.DEFAULT);
-          IStatus status = new Status(IStatus.WARNING, Activator.PLUGIN_ID, NLS.bind(
+          IStatus status = new Status(IStatus.WARNING, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), NLS.bind(
               org.polarsys.capella.core.data.migration.contribution.Messages.MigrationAction_MissingContextualElementMigration,
               descriptor.getName(), id));
           LogExt.log(logger, status);

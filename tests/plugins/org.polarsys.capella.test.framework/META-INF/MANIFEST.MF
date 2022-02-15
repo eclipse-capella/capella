@@ -37,6 +37,5 @@ Export-Package: org.polarsys.capella.test.framework,
  org.polarsys.capella.test.framework.model,
  org.polarsys.capella.test.framework.provider
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Bundle-Activator: org.polarsys.capella.test.framework.CapellaTestFrameworkPlugin
 Bundle-ClassPath: .
 Bundle-Localization: plugin

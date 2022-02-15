@@ -38,9 +38,6 @@ import org.osgi.framework.BundleContext;
 @SuppressWarnings("restriction")
 public class CapellaComparePlugin extends AbstractUIPlugin {
   
-	/** The plug-in ID */
-	public static final String PLUGIN_ID = "org.polarsys.capella.core.compare"; //$NON-NLS-1$
-  
 	/** The shared instance */
 	private static CapellaComparePlugin plugin;
 	

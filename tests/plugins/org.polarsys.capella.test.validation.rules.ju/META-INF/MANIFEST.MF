@@ -3,7 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.test.validation.rules.ju;singleton:=true
 Bundle-Version: 6.0.0.qualifier
-Bundle-Activator: org.polarsys.capella.test.validation.rules.ju.TestValidationRulesPlugin
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.capella.common.re.gen,
@@ -19,8 +18,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.capella.core.transition.system.topdown
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
-Export-Package: org.polarsys.capella.test.validation.rules.ju,
- org.polarsys.capella.test.validation.rules.ju.testcases,
+Export-Package: org.polarsys.capella.test.validation.rules.ju.testcases,
  org.polarsys.capella.test.validation.rules.ju.testcases.dc_cl,
  org.polarsys.capella.test.validation.rules.ju.testcases.dcom,
  org.polarsys.capella.test.validation.rules.ju.testcases.dcon,

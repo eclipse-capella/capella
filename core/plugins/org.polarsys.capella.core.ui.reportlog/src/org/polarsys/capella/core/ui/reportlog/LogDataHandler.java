@@ -15,11 +15,12 @@ package org.polarsys.capella.core.ui.reportlog;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.dialogs.IInputValidator;
 import org.eclipse.jface.dialogs.InputDialog;
 import org.eclipse.ui.PlatformUI;
+import org.osgi.framework.Bundle;
+import org.osgi.framework.FrameworkUtil;
 
 public class LogDataHandler extends AbstractHandler {
 
@@ -42,8 +43,8 @@ public class LogDataHandler extends AbstractHandler {
     d.open();
     if (d.getReturnCode() == InputDialog.OK) {
       String value = d.getValue();
-      IStatus status = new Status(IStatus.INFO, ReportLogActivator.getDefault().getPluginId(), value);
-      ReportLogActivator.getDefault().getLog().log(status);
+      Bundle bundle = FrameworkUtil.getBundle(this.getClass());
+      Platform.getLog(bundle).info(value);
     }
     return null;
   }

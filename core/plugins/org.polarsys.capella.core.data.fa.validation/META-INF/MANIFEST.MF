@@ -9,8 +9,7 @@ Require-Bundle: org.polarsys.capella.core.validation,
  org.apache.commons.lang,
  org.polarsys.capella.core.sirius.analysis,
  org.polarsys.capella.core.transition.system.topdown
-Export-Package: org.polarsys.capella.core.data.fa.validation,
- org.polarsys.capella.core.data.fa.validation.componentPort,
+Export-Package: org.polarsys.capella.core.data.fa.validation.componentPort,
  org.polarsys.capella.core.data.fa.validation.connection,
  org.polarsys.capella.core.data.fa.validation.function,
  org.polarsys.capella.core.data.fa.validation.functionPort,
@@ -18,5 +17,4 @@ Export-Package: org.polarsys.capella.core.data.fa.validation,
  org.polarsys.capella.core.data.fa.validation.functionalChainInvolvement,
  org.polarsys.capella.core.data.fa.validation.functionalExchange
 Bundle-ActivationPolicy: lazy
-Bundle-Activator: org.polarsys.capella.core.data.fa.validation.FaValidationActivator
 Bundle-Localization: plugin

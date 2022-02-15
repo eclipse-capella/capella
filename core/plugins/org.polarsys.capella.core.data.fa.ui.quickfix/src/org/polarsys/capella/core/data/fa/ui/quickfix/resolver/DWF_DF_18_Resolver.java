@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.statushandlers.StatusManager;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.data.fa.FaPackage;
@@ -31,7 +32,6 @@ import org.polarsys.capella.core.data.fa.properties.controllers.SequenceLinkLink
 import org.polarsys.capella.core.model.utils.NamingHelper;
 import org.polarsys.capella.core.ui.resources.CapellaUIResourcesPlugin;
 import org.polarsys.capella.core.ui.toolkit.helpers.SelectionDialogHelper;
-import org.polarsys.capella.core.validation.ui.ide.PluginActivator;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarkerResolution;
 
 /**
@@ -43,7 +43,7 @@ public class DWF_DF_18_Resolver extends AbstractCapellaMarkerResolution {
 
   public DWF_DF_18_Resolver(String label) {
     this.overridenLabel = label;
-    super.setContributorId(CapellaUIResourcesPlugin.PLUGIN_ID);
+    super.setContributorId(FrameworkUtil.getBundle(CapellaUIResourcesPlugin.class).getSymbolicName());
     super.setImgKey(PROCESS_ICON);
   }
 
@@ -98,7 +98,7 @@ public class DWF_DF_18_Resolver extends AbstractCapellaMarkerResolution {
       marker.delete();
     } catch (CoreException exception) {
       StatusManager.getManager().handle(
-          new Status(IStatus.ERROR, PluginActivator.getDefault().getPluginId(), exception.getMessage(), exception));
+          new Status(IStatus.ERROR, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), exception.getMessage(), exception));
     }
   }
 

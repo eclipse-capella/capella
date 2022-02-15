@@ -26,8 +26,7 @@ import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import org.polarsys.capella.core.model.semantic.internal.SemanticModelActivator;
+import org.osgi.framework.FrameworkUtil;
 
 /**
  * A SimplifiedCapellaMetadata implementation that uses an extension point mechanism that works
@@ -209,7 +208,7 @@ public class FilteredSimplifiedCapellaMetaData implements SimplifiedCapellaMetad
   private void reloadFilteredPackagesFromRegistry(){
     packageFilters = new ArrayList<String>();
     unfilteredEPackages = Collections.synchronizedSet(new HashSet<EPackage>());
-    for (IConfigurationElement e : Platform.getExtensionRegistry().getConfigurationElementsFor(SemanticModelActivator.PLUGIN_ID, EXTENSION_SEMANTIC_METADATA)){
+    for (IConfigurationElement e : Platform.getExtensionRegistry().getConfigurationElementsFor(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), EXTENSION_SEMANTIC_METADATA)){
       if (NAME_PACKAGE_FILTER_ELEMENT.equals(e.getName())){
         String nsURI = e.getAttribute(ATTRIBUTE_NS_URI);
         if (nsURI != null){

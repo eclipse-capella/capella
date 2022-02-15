@@ -33,10 +33,12 @@ import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.ui.wizards.newresource.BasicNewResourceWizard;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.core.preferences.configuration.project.nature.ConfigurationProjectNature;
-import org.polarsys.capella.core.preferences.configuration.project.ui.wizards.ReferecedConfigurationProjectSelectionPage;
-import org.polarsys.capella.core.preferences.project.configuration.project.ConfigurationPlugin;
+import org.polarsys.capella.core.preferences.configuration.project.ui.wizards.ReferencedConfigurationProjectSelectionPage;
+import org.polarsys.capella.core.preferences.project.configuration.utils.Utils;
 
 /**
  *
@@ -46,6 +48,8 @@ public class ProjectWizard extends BasicNewResourceWizard {
   private static final int STEP_TICK_COUNT = 100;
 
   private static final String CAPELLA_PROJECT_NATURE_ID = "org.polarsys.capella.project.nature";
+  
+  public static final String PROJECT_WIZARD_CONFIGURATION_FOLDER_IMG = "config_project_wizard.gif"; //$NON-NLS-1$
 
   // Reuse of the new project page provided by the platform UI dialogs.
   protected WizardProjectCreationPage _localProjectDescriptionPage;
@@ -53,7 +57,7 @@ public class ProjectWizard extends BasicNewResourceWizard {
   // The New Model wizard page.
   protected NewModelWizardPage _modelPage;
 
-  private ReferecedConfigurationProjectSelectionPage referencersProjectsPage;
+  private ReferencedConfigurationProjectSelectionPage referencersProjectsPage;
 
   public static ProjectScope projectScope;
 
@@ -74,8 +78,8 @@ public class ProjectWizard extends BasicNewResourceWizard {
   protected void createReferencersProjectsPages() {
 
     referencersProjectsPage =
-        new ReferecedConfigurationProjectSelectionPage("Capella Configuration Project", "Referencers Capella Project",
-            ConfigurationPlugin.getImageDescriptor(ConfigurationPlugin.PROJECT_WIZARD_CONFIGURATION_FOLDER_IMG),
+        new ReferencedConfigurationProjectSelectionPage("Capella Configuration Project", "Referencers Capella Project",
+            Utils.getImageDescriptor(PROJECT_WIZARD_CONFIGURATION_FOLDER_IMG),
             new String[] { CAPELLA_PROJECT_NATURE_ID });
     addPage(referencersProjectsPage);
 
@@ -108,7 +112,7 @@ public class ProjectWizard extends BasicNewResourceWizard {
     mainPage.setInitialProjectName(null);
     mainPage.setDescription("Create a new project configuration"); //$NON-NLS-1$
     mainPage.setTitle("Capella Configuration Project"); //$NON-NLS-1$
-    mainPage.setImageDescriptor(ConfigurationPlugin.getWizadrConfigurationProjectIcon());
+    mainPage.setImageDescriptor(AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), Utils.ICONS_PATH + PROJECT_WIZARD_CONFIGURATION_FOLDER_IMG));
     return mainPage;
   }
 

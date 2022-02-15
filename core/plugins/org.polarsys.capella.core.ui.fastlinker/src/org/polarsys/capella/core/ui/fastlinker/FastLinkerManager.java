@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.LightMarkerRegistry;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerView;
@@ -276,7 +277,7 @@ public class FastLinkerManager {
 					.getDefault()
 					.getLog()
 					.log(new Status(IStatus.ERROR,
-							FastLinkerActivator.PLUGIN_ID, exception
+					        FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), exception
 									.getLocalizedMessage(), exception));
 			return null;
 		}
@@ -423,7 +424,7 @@ public class FastLinkerManager {
 			MarkerViewPlugin
 					.getDefault()
 					.getLog()
-					.log(new Status(IStatus.ERROR, MarkerViewPlugin.PLUGIN_ID,
+					.log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(MarkerViewPlugin.class).getSymbolicName(),
 							exception.getLocalizedMessage(), exception));
 		}
 	}

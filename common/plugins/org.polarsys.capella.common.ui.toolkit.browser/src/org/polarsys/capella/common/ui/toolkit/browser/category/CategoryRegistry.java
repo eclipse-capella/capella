@@ -24,8 +24,8 @@ import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.emf.ecore.EObject;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.mdsofa.common.misc.ExtensionClassDescriptor;
-import org.polarsys.capella.common.ui.toolkit.browser.BrowserActivator;
 import org.polarsys.capella.common.ui.toolkit.browser.content.provider.IBrowserContentProvider;
 
 /**
@@ -204,7 +204,7 @@ public class CategoryRegistry {
     availableForTypeClassDescriptors = new HashSet<>();
 
     IConfigurationElement[] categories = org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper
-        .getConfigurationElements(BrowserActivator.PLUGIN_ID, CONTENT_PROVIDER_CATEGORY);
+        .getConfigurationElements(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), CONTENT_PROVIDER_CATEGORY);
 
     for (IConfigurationElement categoryConfigurationElement : categories) {
       // Create simple instance of category

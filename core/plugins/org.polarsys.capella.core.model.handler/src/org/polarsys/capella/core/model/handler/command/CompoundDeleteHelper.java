@@ -23,9 +23,9 @@ import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
-import org.polarsys.capella.core.model.handler.ModelHandlerPlugin;
 
 /**
  * Default implementation of the delete command helper, using extension mechanism 
@@ -42,7 +42,7 @@ class CompoundDeleteHelper implements IDeleteHelper {
 
       //Read extension point looking for instances of IDeleteHelper
       for (IConfigurationElement element : ExtensionPointHelper
-          .getConfigurationElements(ModelHandlerPlugin.PLUGIN_ID, "deleteCommandProvider")) {
+          .getConfigurationElements(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), "deleteCommandProvider")) {
         try {
           IDeleteHelper helper = (IDeleteHelper) element.createExecutableExtension("class");
           if (helper != null) {

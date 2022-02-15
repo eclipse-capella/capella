@@ -12,5 +12,4 @@ Require-Bundle: org.polarsys.capella.core.projection.common,
  org.polarsys.capella.core.transition.system.topdown
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
-Bundle-Activator: org.polarsys.capella.core.projection.interfaces.InterfaceGenerationActivator
 Bundle-Localization: plugin

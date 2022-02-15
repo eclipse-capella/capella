@@ -32,7 +32,7 @@ import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
-import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
+import org.polarsys.capella.core.model.preferences.helpers.PreferencesHelper;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
 import org.polarsys.capella.core.ui.properties.fields.MultipleSemanticField;
 
@@ -131,7 +131,7 @@ public abstract class ComponentSection extends GeneralizableElementSection {
     // if capellaElement is a component but not an actor, disable super
     if (null != superTypes) {
       superTypes.setEnabled(
-          component.isActor() || CapellaModelPreferencesPlugin.getDefault().isComponentNonActorInheritanceAllowed());
+          component.isActor() || PreferencesHelper.isComponentNonActorInheritanceAllowed());
     }
 
     // if the capellaElement is a component but not an actor, the IsAbstract checkbox must be disabled

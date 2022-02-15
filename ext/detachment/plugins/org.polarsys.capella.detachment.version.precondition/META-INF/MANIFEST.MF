@@ -3,7 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.detachment.version.precondition;singleton:=true
 Bundle-Version: 6.0.0.qualifier
-Bundle-Activator: org.polarsys.capella.detachment.version.precondition.Activator
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.kitalpha.model.common.precondition,
@@ -14,6 +13,5 @@ Require-Bundle: org.eclipse.core.runtime,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
-Export-Package: org.polarsys.capella.detachment.version.precondition,
- org.polarsys.capella.detachment.version.precondition.impl,
+Export-Package: org.polarsys.capella.detachment.version.precondition.impl,
  org.polarsys.capella.detachment.version.precondition.util

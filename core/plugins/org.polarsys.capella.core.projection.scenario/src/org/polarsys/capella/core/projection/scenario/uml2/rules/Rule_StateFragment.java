@@ -20,11 +20,11 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.core.data.information.AbstractInstance;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.interaction.StateFragment;
 import org.polarsys.capella.core.projection.common.context.IContext;
-import org.polarsys.capella.core.projection.scenario.Activator;
 import org.polarsys.capella.core.projection.scenario.common.rules.Rule_CapellaElement;
 import org.polarsys.capella.core.projection.scenario.helpers.IScenarioHelper;
 import org.polarsys.capella.core.tiger.ITransfo;
@@ -46,7 +46,7 @@ public class Rule_StateFragment extends Rule_CapellaElement {
     StateFragment source = (StateFragment) element_p;
     List<EObject> relatedElements = IScenarioHelper.getInstance(context_p).getTargetRelatedElements(source, context_p);
     if (relatedElements.isEmpty()) {
-      return new Status(IStatus.WARNING, Activator.PLUGIN_ID, "State Fragment is not transitioned");
+      return new Status(IStatus.WARNING, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), "State Fragment is not transitioned");
     }
     return super.transformRequired(element_p, context_p);
   }

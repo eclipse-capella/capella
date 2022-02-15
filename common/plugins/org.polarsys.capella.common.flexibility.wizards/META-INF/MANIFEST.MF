@@ -3,7 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.common.flexibility.wizards;singleton:=true
 Bundle-Version: 6.0.0.qualifier
-Bundle-Activator: org.polarsys.capella.common.flexibility.wizards.Activator
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.ui,
  org.eclipse.ui.views.properties.tabbed,
@@ -20,11 +19,12 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.core.model.helpers,
  org.polarsys.capella.common.flexibility.properties;visibility:=reexport,
  org.polarsys.capella.core.model.handler,
- javax.inject
+ javax.inject,
+ org.eclipse.ui.workbench,
+ org.eclipse.osgi
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
-Export-Package: org.polarsys.capella.common.flexibility.wizards,
- org.polarsys.capella.common.flexibility.wizards.constants,
+Export-Package: org.polarsys.capella.common.flexibility.wizards.constants,
  org.polarsys.capella.common.flexibility.wizards.group.renderer,
  org.polarsys.capella.common.flexibility.wizards.loader,
  org.polarsys.capella.common.flexibility.wizards.policy,

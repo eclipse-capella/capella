@@ -13,9 +13,8 @@
 package org.polarsys.capella.core.ui.properties.preferences;
 
 import org.eclipse.core.resources.ProjectScope;
-
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.core.commands.preferences.service.AbstractPreferencesInitializer;
-import org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlugin;
 
 /**
  */
@@ -25,7 +24,7 @@ public class CapellaUIPropertiesPreferencesInitializer extends AbstractPreferenc
    * Default constructor.
    */
   public CapellaUIPropertiesPreferencesInitializer() {
-    super(CapellaUIPropertiesPlugin.PLUGIN_ID);
+    super(FrameworkUtil.getBundle(CapellaUIPropertiesPreferencesInitializer.class).getSymbolicName());
   }
 
   /**

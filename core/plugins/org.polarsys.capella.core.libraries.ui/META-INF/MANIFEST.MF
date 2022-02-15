@@ -3,7 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.libraries.ui;singleton:=true
 Bundle-Version: 6.0.0.qualifier
-Bundle-Activator: org.polarsys.capella.core.libraries.ui.Activator
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.core.expressions,
  org.eclipse.ui.ide,
@@ -20,8 +19,7 @@ Require-Bundle: org.eclipse.core.expressions,
  org.polarsys.capella.common.ui.toolkit
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
-Export-Package: org.polarsys.capella.core.libraries.ui,
- org.polarsys.capella.core.libraries.ui.handlers,
+Export-Package: org.polarsys.capella.core.libraries.ui.handlers,
  org.polarsys.capella.core.libraries.ui.move,
  org.polarsys.capella.core.libraries.ui.propertyTester,
  org.polarsys.capella.core.libraries.ui.views.libraryManager,

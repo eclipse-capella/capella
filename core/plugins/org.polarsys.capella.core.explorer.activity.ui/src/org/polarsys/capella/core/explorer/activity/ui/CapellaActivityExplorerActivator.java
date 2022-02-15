@@ -21,9 +21,6 @@ public class CapellaActivityExplorerActivator extends AbstractUIActivator {
 
 	private static BundleContext context;
 
-	// The plug-in ID
-	public static final String PLUGIN_ID = "org.polarsys.capella.core.explorer.activity.ui.CapellaActivityExplorerActivator"; //$NON-NLS-1$
-
 	/**
 	 * The shared instance
 	 */

@@ -3,7 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.data.ctx.ui.quickfix;singleton:=true
 Bundle-Version: 6.0.0.qualifier
-Bundle-Activator: org.polarsys.capella.core.data.ctx.ui.quickfix.CtxQuickFixActivator
 Bundle-Vendor: %providerName
 Require-Bundle: org.polarsys.capella.core.validation.ui.ide,
  org.polarsys.capella.core.model.helpers,
@@ -20,5 +19,4 @@ Require-Bundle: org.polarsys.capella.core.validation.ui.ide,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
-Export-Package: org.polarsys.capella.core.data.ctx.ui.quickfix,
- org.polarsys.capella.core.data.ctx.ui.quickfix.resolver
+Export-Package: org.polarsys.capella.core.data.ctx.ui.quickfix.resolver

@@ -183,7 +183,7 @@ import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.FunctionalChainExt;
 import org.polarsys.capella.core.model.helpers.PartExt;
 import org.polarsys.capella.core.model.helpers.ScenarioExt;
-import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
+import org.polarsys.capella.core.model.preferences.helpers.PreferencesHelper;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaDeleteCommand;
 import org.polarsys.capella.core.sirius.analysis.tool.StringUtil;
 
@@ -2436,7 +2436,7 @@ public class CapellaServices {
         if (source instanceof Component) {
           Component sourceComp = (Component) source;
           if (!sourceComp.isActor()
-              && !CapellaModelPreferencesPlugin.getDefault().isComponentNonActorInheritanceAllowed()) {
+              && !PreferencesHelper.isComponentNonActorInheritanceAllowed()) {
             return false;
           }
           if (target instanceof Component) {
@@ -2547,7 +2547,7 @@ public class CapellaServices {
    * return the 'Allow Multiple Inheritance' preference value
    */
   private boolean isMultipleInheritanceAllowed() {
-    return CapellaModelPreferencesPlugin.getDefault().isMultipleInheritanceAllowed();
+    return PreferencesHelper.isMultipleInheritanceAllowed();
   }
 
   public boolean isNull(EObject current) {

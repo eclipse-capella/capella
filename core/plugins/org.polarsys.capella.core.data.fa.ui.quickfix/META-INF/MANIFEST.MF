@@ -3,7 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.data.fa.ui.quickfix;singleton:=true
 Bundle-Version: 6.0.0.qualifier
-Bundle-Activator: org.polarsys.capella.core.data.fa.ui.quickfix.FaQuickFixActivator
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.core.resources,
  org.eclipse.core.runtime,
@@ -22,12 +21,12 @@ Require-Bundle: org.eclipse.core.resources,
  org.eclipse.amalgam.explorer.activity.ui,
  org.eclipse.pde.core,
  org.polarsys.capella.common.libraries.gen,
- org.polarsys.capella.core.libraries
+ org.polarsys.capella.core.libraries,
+ org.eclipse.osgi
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
 Export-Package: org.polarsys.capella.core.data.fa.ui.quicfix.helpers,
- org.polarsys.capella.core.data.fa.ui.quickfix,
  org.polarsys.capella.core.data.fa.ui.quickfix.generator,
  org.polarsys.capella.core.data.fa.ui.quickfix.resolver,
  org.polarsys.capella.core.data.fa.ui.quickfix.resolver.command

@@ -13,13 +13,13 @@
 package org.polarsys.capella.core.data.information.ui.quickfix.messages;
 
 import org.eclipse.osgi.util.NLS;
-import org.polarsys.capella.core.data.information.ui.quickfix.InformationQuickFixActivator;
+import org.osgi.framework.FrameworkUtil;
 
 /**
  * I18n support for this plugin
  */
 public class InformationQuickFixMessages extends NLS {
-  private static final String BUNDLE_NAME = InformationQuickFixActivator.getDefault().getPluginId() + ".messages.messages"; //$NON-NLS-1$
+  private static final String BUNDLE_NAME = FrameworkUtil.getBundle(InformationQuickFixMessages.class).getSymbolicName() + ".messages.messages"; //$NON-NLS-1$
 
   public static String cycle_details_dialog_title;
   public static String cycle_details_dialog_message;

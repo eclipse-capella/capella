@@ -208,7 +208,7 @@ import org.polarsys.capella.core.model.helpers.PhysicalComponentExt;
 import org.polarsys.capella.core.model.helpers.PhysicalLinkCategoryExt;
 import org.polarsys.capella.core.model.helpers.PortExt;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
-import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
+import org.polarsys.capella.core.model.preferences.helpers.PreferencesHelper;
 import org.polarsys.capella.core.model.utils.CapellaLayerCheckingExt;
 import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
 import org.polarsys.capella.core.sirius.analysis.constants.MappingConstantsHelper;
@@ -1634,7 +1634,7 @@ public class CsServices {
         return superTargetsContainsSource;
       }
 
-      if (!CapellaModelPreferencesPlugin.getDefault().isMultipleInheritanceAllowed()) {
+      if (!PreferencesHelper.isMultipleInheritanceAllowed()) {
         if (CapellaServices.getService().getSuperClassifiers(newSourceClazz, generalization).size() == 1) {
           return true;
         }
@@ -1656,7 +1656,7 @@ public class CsServices {
       // check to avoid inheritance cycle
       boolean existCycle = !CapellaServices.getService().getSuperClassifiers(sourceClass).contains(targetClass)
           && !CapellaServices.getService().getSuperClassifiers(targetClass).contains(sourceClass);
-      if (!CapellaModelPreferencesPlugin.getDefault().isMultipleInheritanceAllowed()) {
+      if (!PreferencesHelper.isMultipleInheritanceAllowed()) {
         if (existCycle) {
           if (CapellaServices.getService().getSuperClassifiers(sourceClass).size() == 1) {
             return true;
@@ -1744,7 +1744,7 @@ public class CsServices {
       }
 
       if (subSourcesConatinsTarget) {
-        return CapellaModelPreferencesPlugin.getDefault().isMultipleInheritanceAllowed() && superTargetsContainsSource;
+        return PreferencesHelper.isMultipleInheritanceAllowed() && superTargetsContainsSource;
       }
 
       return notExistCycle;
@@ -1763,7 +1763,7 @@ public class CsServices {
       // check to avoid inheritance cycle
       boolean existCycle = !CapellaServices.getService().getSuperClassifiers(sourceClass).contains(targetClass)
           && !CapellaServices.getService().getSuperClassifiers(targetClass).contains(sourceClass);
-      if (!CapellaModelPreferencesPlugin.getDefault().isMultipleInheritanceAllowed()) {
+      if (!PreferencesHelper.isMultipleInheritanceAllowed()) {
         if (existCycle) {
           if (CapellaServices.getService().getSuperClassifiers(sourceClass).size() == 1) {
             return true;
@@ -1794,7 +1794,7 @@ public class CsServices {
    */
   public boolean preGeneralization(EObject generalization, EObject preSource) {
     if (preSource instanceof Component && !((Component) preSource).isActor()) {
-      return CapellaModelPreferencesPlugin.getDefault().isComponentNonActorInheritanceAllowed();
+      return PreferencesHelper.isComponentNonActorInheritanceAllowed();
     }
     return true;
   }
@@ -1843,7 +1843,7 @@ public class CsServices {
 
     if ((source instanceof Component) && (target instanceof Component)) {
       if (!(((Component) source).isActor() && ((Component) target).isActor())
-          && !CapellaModelPreferencesPlugin.getDefault().isComponentNonActorInheritanceAllowed()) {
+          && !PreferencesHelper.isComponentNonActorInheritanceAllowed()) {
         return false;
       }
 

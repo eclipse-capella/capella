@@ -20,6 +20,7 @@ import org.apache.log4j.Logger;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Plugin;
 import org.osgi.framework.BundleContext;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
 import org.polarsys.capella.common.tools.report.appenders.IFlushableAppenders;
 
@@ -35,7 +36,7 @@ public class ReportManagerActivator extends Plugin {
   // The shared instance
   private static ReportManagerActivator plugin;
 
-  private static final String REPORT_PLUGIN_ID = "org.polarsys.capella.common.tools.report"; //$NON-NLS-1$
+  private static final String REPORT_PLUGIN_ID = FrameworkUtil.getBundle(ReportManagerActivator.class).getSymbolicName();
 
   private List<Appender> appenders;
   private List<IFlushableAppenders> flushableAppenders;

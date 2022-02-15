@@ -16,6 +16,7 @@ import org.apache.log4j.Logger;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Plugin;
 import org.osgi.framework.BundleContext;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
 
 /**
@@ -28,9 +29,6 @@ public class ConsoleAppenderActivator extends Plugin {
   private static final String CONSOLE_EXTENSION_ID = "ConsoleExtension"; //$NON-NLS-1$
   // The shared instance
   private static ConsoleAppenderActivator plugin;
-
-  // The plug-in ID
-  public static final String PLUGIN_ID = "org.polarsys.capella.common.tools.report.appenders.console"; //$NON-NLS-1$
 
   private IReportConsole consoleAppender;
 
@@ -48,7 +46,7 @@ public class ConsoleAppenderActivator extends Plugin {
   public IReportConsole getReportConsole() {
     if (consoleAppender == null) {
       try {
-        IConfigurationElement[] consoleProvider = ExtensionPointHelper.getConfigurationElements(PLUGIN_ID, CONSOLE_EXTENSION_ID);
+        IConfigurationElement[] consoleProvider = ExtensionPointHelper.getConfigurationElements(FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), CONSOLE_EXTENSION_ID);
         for (IConfigurationElement configurationElement : consoleProvider) {
           consoleAppender = (IReportConsole) ExtensionPointHelper.createInstance(configurationElement, ExtensionPointHelper.ATT_CLASS);
         }

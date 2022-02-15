@@ -88,6 +88,7 @@ import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
@@ -616,7 +617,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
    * @return
    */
   private IDialogSettings getDialogSettingsSection() {
-    IDialogSettings dialogSettings = CapellaBrowserActivator.getDefault().getDialogSettings();
+    IDialogSettings dialogSettings = PlatformUI.getDialogSettingsProvider(FrameworkUtil.getBundle(this.getClass())).getDialogSettings();
     String sectionName = getClass().getName();
     // Get the dialog setting for this view.
     IDialogSettings section = dialogSettings.getSection(sectionName);

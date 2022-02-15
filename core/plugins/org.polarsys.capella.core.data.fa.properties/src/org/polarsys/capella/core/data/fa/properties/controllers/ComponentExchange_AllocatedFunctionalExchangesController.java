@@ -27,7 +27,8 @@ import org.polarsys.capella.core.data.fa.FaFactory;
 import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.model.helpers.ComponentExchangeExt;
-import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
+import org.polarsys.capella.core.model.helpers.delete.DeleteHelper;
+import org.polarsys.capella.core.model.preferences.helpers.PreferencesHelper;
 import org.polarsys.capella.core.ui.properties.controllers.AbstractMultipleSemanticFieldController;
 
 /**
@@ -72,7 +73,7 @@ public class ComponentExchange_AllocatedFunctionalExchangesController extends Ab
     link.setTargetElement((TraceableElement) object);
     ((List<EObject>) semanticElement.eGet(semanticFeature)).add(link);
 
-    if (CapellaModelPreferencesPlugin.getDefault().isSynchronizationOfComponentPortToFunctionPortAllowed() && (semanticElement instanceof ComponentExchange)
+    if (PreferencesHelper.isSynchronizationOfComponentPortToFunctionPortAllowed() && (semanticElement instanceof ComponentExchange)
         && (object instanceof FunctionalExchange)) {
       ComponentExchangeExt.synchronizePortAllocations((ComponentExchange) semanticElement, (FunctionalExchange) object);
     }

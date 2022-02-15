@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.polarsys.capella.core.transition.system.topdown.ui.preferences;
 
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.flexibility.properties.loader.PropertiesLoader;
 import org.polarsys.capella.common.flexibility.properties.property.IDefaultValueProperty;
 import org.polarsys.capella.common.flexibility.properties.property.PropertyContext;
@@ -20,14 +21,13 @@ import org.polarsys.capella.common.flexibility.properties.schema.IProperty;
 import org.polarsys.capella.common.flexibility.properties.schema.IPropertyContext;
 import org.polarsys.capella.core.commands.preferences.service.AbstractPreferencesInitializer;
 import org.polarsys.capella.core.commands.preferences.service.ScopedCapellaPreferencesStore;
-import org.polarsys.capella.core.preferences.Activator;
 import org.polarsys.capella.core.transition.system.topdown.constants.ITopDownConstants;
 
 public class TopDownPreferenceInitializer extends AbstractPreferencesInitializer {
 	/**
 	 */
 	public TopDownPreferenceInitializer() {
-		super(org.polarsys.capella.core.transition.system.topdown.ui.Activator.PLUGIN_ID);
+		super(FrameworkUtil.getBundle(TopDownPreferenceInitializer.class).getSymbolicName());
 	}
 
 	/**
@@ -42,6 +42,6 @@ public class TopDownPreferenceInitializer extends AbstractPreferencesInitializer
 				((IDefaultValueProperty) property).initializeDefaultValue(context);
 			}
 		}
-		ScopedCapellaPreferencesStore.getInstance(Activator.PLUGIN_ID).save();
+		ScopedCapellaPreferencesStore.getInstance(FrameworkUtil.getBundle(org.polarsys.capella.core.preferences.Activator.class).getSymbolicName()).save();
 	}
 }

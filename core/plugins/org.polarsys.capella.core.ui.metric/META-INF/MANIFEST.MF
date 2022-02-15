@@ -3,7 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.ui.metric;singleton:=true
 Bundle-Version: 6.0.0.qualifier
-Bundle-Activator: org.polarsys.capella.core.ui.metric.MetricActivator
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Require-Bundle: com.google.guava,

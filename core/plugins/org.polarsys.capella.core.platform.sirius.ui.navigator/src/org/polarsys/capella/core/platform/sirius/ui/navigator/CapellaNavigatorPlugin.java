@@ -14,7 +14,6 @@
 package org.polarsys.capella.core.platform.sirius.ui.navigator;
 
 import org.osgi.framework.BundleContext;
-
 import org.polarsys.capella.common.ui.services.AbstractUIActivator;
 import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.preferences.CapellaNavigatorPreferencesInitializer;
@@ -23,11 +22,6 @@ import org.polarsys.capella.core.platform.sirius.ui.navigator.preferences.Capell
  * The activator class controls the plug-in life cycle.
  */
 public class CapellaNavigatorPlugin extends AbstractUIActivator {
-
-  /*
-   * 
-   */
-  public static final String PLUGIN_ID = "org.polarsys.capella.core.platform.sirius.ui.navigator"; //$NON-NLS-1$
 
   // The shared instance.
   private static CapellaNavigatorPlugin __plugin;

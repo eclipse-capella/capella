@@ -35,7 +35,7 @@ import org.polarsys.capella.core.data.information.Class;
 import org.polarsys.capella.core.data.information.InformationPackage;
 import org.polarsys.capella.core.data.information.Property;
 import org.polarsys.capella.core.data.information.datatype.DataType;
-import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
+import org.polarsys.capella.core.model.preferences.helpers.PreferencesHelper;
 
 /**
  */
@@ -84,7 +84,7 @@ public class CapellaModelDataListenerForDatas extends CapellaModelDataListener {
         if (notifier instanceof Class) {
           Object value = notification.getNewValue();
           if ((value instanceof Boolean) && Boolean.TRUE.equals(value)
-           && CapellaModelPreferencesPlugin.getDefault().isPrimitiveSynchroAllowed())
+           && PreferencesHelper.isPrimitiveSynchroAllowed())
           {
             final List<Association> assocToBeRemoved = new ArrayList<Association>();
             for (EObject ref : EObjectExt.getReferencers((Class) notifier, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE)) {

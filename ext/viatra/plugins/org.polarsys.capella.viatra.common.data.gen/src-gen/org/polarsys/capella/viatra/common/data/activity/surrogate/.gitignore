@@ -1,0 +1,17 @@
+/AbstractActivity.java
+/AbstractActivity__ownedStructuredNodes.java
+/ActivityEdge.java
+/ActivityEdge__inActivityPartition.java
+/ActivityEdge__inInterruptibleRegion.java
+/ActivityEdge__inStructuredNode.java
+/ActivityExchange.java
+/ActivityExchange__realizingActivityFlows.java
+/ActivityNode.java
+/ActivityNode__inActivityPartition.java
+/ActivityNode__inInterruptibleRegion.java
+/ActivityNode__inStructuredNode.java
+/ActivityNode__incoming.java
+/ActivityNode__outgoing.java
+/ActivityPartition.java
+/ActivityPartition__subPartitions.java
+/ActivityPartition__superPartition.java

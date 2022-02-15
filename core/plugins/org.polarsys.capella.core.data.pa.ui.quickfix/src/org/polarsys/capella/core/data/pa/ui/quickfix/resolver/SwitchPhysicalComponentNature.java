@@ -16,15 +16,16 @@ import java.util.List;
 
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EObject;
+import org.osgi.framework.Bundle;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.ef.command.ICommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
-import org.polarsys.capella.core.data.pa.ui.quickfix.PaQuickFixActivator;
 
 /**
  * Open capella element editor to edit respected values
@@ -51,7 +52,8 @@ public class SwitchPhysicalComponentNature extends AbstractPhysicalComponentNatu
           try {
             marker.delete();
           } catch (CoreException e) {
-            PaQuickFixActivator.getDefault().log(IStatus.ERROR, "Error while deleting marker", e);
+              Bundle bundle = FrameworkUtil.getBundle(this.getClass());
+              Platform.getLog(bundle).error("Error while deleting marker", e);
           }
         }
       };

@@ -3,12 +3,13 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.data.common.properties;singleton:=true
 Bundle-Version: 6.0.0.qualifier
-Bundle-Activator: org.polarsys.capella.core.data.common.properties.CommonPropertiesPlugin
 Bundle-Vendor: %providerName
 Require-Bundle: org.polarsys.capella.core.data.core.properties;visibility:=reexport,
  org.polarsys.capella.common.linkedtext.ui,
  org.polarsys.capella.core.linkedtext.ui,
- org.polarsys.capella.common.ui
+ org.polarsys.capella.common.ui,
+ org.eclipse.osgi,
+ org.eclipse.ui.workbench
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.data.common.properties,
  org.polarsys.capella.core.data.common.properties.controllers,

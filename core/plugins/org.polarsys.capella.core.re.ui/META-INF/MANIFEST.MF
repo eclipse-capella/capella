@@ -3,7 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.re.ui;singleton:=true
 Bundle-Version: 6.0.0.qualifier
-Bundle-Activator: org.polarsys.capella.core.re.ui.Activator
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.core.ui.toolkit,
@@ -25,8 +24,7 @@ Require-Bundle: org.eclipse.ui,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
-Export-Package: org.polarsys.capella.core.re.ui,
- org.polarsys.capella.core.re.ui.copyformat,
+Export-Package: org.polarsys.capella.core.re.ui.copyformat,
  org.polarsys.capella.core.re.ui.handlers,
  org.polarsys.capella.core.re.ui.propertyTester,
  org.polarsys.capella.core.re.ui.renderers,

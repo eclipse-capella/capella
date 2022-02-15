@@ -20,6 +20,7 @@ package org.polarsys.capella.common.tools.report.appenders.reportlogview;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ui.services.AbstractUIActivator;
 
 /**
@@ -31,9 +32,6 @@ public class MarkerViewPlugin extends AbstractUIActivator {
   // Resource bundle.
   private ResourceBundle resourceBundle;
 
-  /** the plugin ID */
-  public static final String PLUGIN_ID = "org.polarsys.capella.common.tools.report.appenders.reportlogview"; //$NON-NLS-1$
-
   /**
    * The constructor.
    */
@@ -41,7 +39,7 @@ public class MarkerViewPlugin extends AbstractUIActivator {
     super();
     plugin = this;
     try {
-      resourceBundle = ResourceBundle.getBundle(PLUGIN_ID);
+      resourceBundle = ResourceBundle.getBundle(FrameworkUtil.getBundle(this.getClass()).getSymbolicName());
     } catch (MissingResourceException x) {
       resourceBundle = null;
     }

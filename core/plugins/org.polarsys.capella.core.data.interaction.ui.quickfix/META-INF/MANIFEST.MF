@@ -3,7 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.data.interaction.ui.quickfix;singleton:=true
 Bundle-Version: 6.0.0.qualifier
-Bundle-Activator: org.polarsys.capella.core.data.interaction.ui.quickfix.InteractionQuickFixActivator
 Bundle-Vendor: %providerName
 Require-Bundle: org.polarsys.capella.common.ui,
  org.polarsys.capella.core.model.handler,
@@ -16,6 +15,5 @@ Require-Bundle: org.polarsys.capella.common.ui,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
-Export-Package: org.polarsys.capella.core.data.interaction.ui.quickfix,
- org.polarsys.capella.core.data.interaction.ui.quickfix.generator,
+Export-Package: org.polarsys.capella.core.data.interaction.ui.quickfix.generator,
  org.polarsys.capella.core.data.interaction.ui.quickfix.resolver

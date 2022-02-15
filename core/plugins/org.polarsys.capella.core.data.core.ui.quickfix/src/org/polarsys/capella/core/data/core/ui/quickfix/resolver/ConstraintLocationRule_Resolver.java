@@ -19,6 +19,7 @@ import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
@@ -27,7 +28,6 @@ import org.polarsys.capella.core.data.cs.DeployableElement;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.pa.deployment.PartDeploymentLink;
 import org.polarsys.capella.core.sirius.analysis.CsServices;
-import org.polarsys.capella.core.ui.resources.CapellaUIResourcesPlugin;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarkerResolution;
 
 public class ConstraintLocationRule_Resolver extends AbstractCapellaMarkerResolution {
@@ -35,7 +35,7 @@ public class ConstraintLocationRule_Resolver extends AbstractCapellaMarkerResolu
 
   public ConstraintLocationRule_Resolver (String label) {
     this.setLabel(label);
-    super.setContributorId(CapellaUIResourcesPlugin.PLUGIN_ID);
+    super.setContributorId(FrameworkUtil.getBundle(this.getClass()).getSymbolicName());
     super.setImgKey(PROCESS_ICON);
   }
   

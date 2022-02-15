@@ -3,7 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.data.la.ui.quickfix;singleton:=true
 Bundle-Version: 6.0.0.qualifier
-Bundle-Activator: org.polarsys.capella.core.data.la.ui.quickfix.LaQuickFixActivator
 Bundle-Vendor: %providerName
 Require-Bundle: org.polarsys.capella.core.validation.ui.ide,
  org.polarsys.capella.core.model.helpers,

@@ -32,9 +32,9 @@ public class CapellaContribution extends Contribution {
   @Override
   public void update(ResourceSet context) {
     if (hasCapellaSemanticResource(context)) {
-      referenceViewpoint(context, AFIntegrationPlugin.CAPELLA_VIEWPOINT_ID);
+      referenceViewpoint(context, CapellaMetadataProvider.CAPELLA_VIEWPOINT_ID);
     } else {
-      unreferenceViewpoint(context, AFIntegrationPlugin.CAPELLA_VIEWPOINT_ID);
+      unreferenceViewpoint(context, CapellaMetadataProvider.CAPELLA_VIEWPOINT_ID);
     }
   }
 

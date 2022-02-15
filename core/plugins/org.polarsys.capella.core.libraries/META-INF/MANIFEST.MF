@@ -3,7 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.libraries;singleton:=true
 Bundle-Version: 6.0.0.qualifier
-Bundle-Activator: org.polarsys.capella.core.libraries.Activator
 Bundle-Vendor: %providerName
 Require-Bundle: org.polarsys.capella.common.flexibility.properties,
  org.polarsys.capella.common.libraries;visibility:=reexport,
@@ -13,8 +12,7 @@ Require-Bundle: org.polarsys.capella.common.flexibility.properties,
  org.polarsys.capella.common.queries
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
-Export-Package: org.polarsys.capella.core.libraries,
- org.polarsys.capella.core.libraries.model,
+Export-Package: org.polarsys.capella.core.libraries.model,
  org.polarsys.capella.core.libraries.nature,
  org.polarsys.capella.core.libraries.properties,
  org.polarsys.capella.core.libraries.provider,

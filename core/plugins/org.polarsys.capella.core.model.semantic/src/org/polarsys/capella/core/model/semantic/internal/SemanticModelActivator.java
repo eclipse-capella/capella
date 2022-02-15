@@ -20,8 +20,6 @@ import org.polarsys.capella.core.model.semantic.prefs.SemanticModelPreferences;
 
 public class SemanticModelActivator implements BundleActivator {
 
-  public static final String PLUGIN_ID = "org.polarsys.capella.core.model.semantic"; //$NON-NLS-1$
-
   private static BundleContext context;
   private static SemanticModelActivator defaultActivator;
   private ISemanticModelPreferences preferences = new SemanticModelPreferences();

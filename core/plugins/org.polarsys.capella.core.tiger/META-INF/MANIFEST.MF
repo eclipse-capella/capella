@@ -26,7 +26,6 @@ Export-Package: org.polarsys.capella.core.tiger;
    org.polarsys.capella.core.data.la,
    org.eclipse.emf.ecore",
  org.polarsys.capella.core.tiger.impl
-Bundle-Activator: org.polarsys.capella.core.tiger.Activator
 Bundle-ActivationPolicy: lazy
 Eclipse-BuddyPolicy: registered
 Bundle-Localization: plugin

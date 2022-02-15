@@ -18,8 +18,8 @@ import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.common.ui.services.commands.AbstractUiHandler;
-import org.polarsys.capella.core.transition.diagram.ui.Activator;
 
 /**
  *
@@ -51,7 +51,7 @@ public class AbstractRunnableHandler extends AbstractUiHandler {
   protected Shell getActiveShell(ExecutionEvent event_p) {
     IWorkbenchPart part = (IWorkbenchPart) getVariableValue(event_p, ACTIVE_PART_VARIABLE);
     if (part == null) {
-      return Activator.getDefault().getWorkbench().getActiveWorkbenchWindow().getShell();
+      return PlatformUI.getWorkbench().getDisplay().getActiveShell();
     }
     return part.getSite().getShell();
   }

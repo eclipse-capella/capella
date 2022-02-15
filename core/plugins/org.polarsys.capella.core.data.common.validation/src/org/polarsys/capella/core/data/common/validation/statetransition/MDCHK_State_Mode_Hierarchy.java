@@ -27,7 +27,7 @@ import org.polarsys.capella.core.data.capellacommon.Mode;
 import org.polarsys.capella.core.data.capellacommon.Pseudostate;
 import org.polarsys.capella.core.data.capellacommon.Region;
 import org.polarsys.capella.core.data.capellacommon.State;
-import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
+import org.polarsys.capella.core.model.preferences.helpers.PreferencesHelper;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
@@ -37,7 +37,7 @@ public class MDCHK_State_Mode_Hierarchy extends AbstractModelConstraint {
   }
 
   public boolean isMixedHierarchyAllowed() {
-    return CapellaModelPreferencesPlugin.getDefault().isMixedModeStateAllowed();
+    return PreferencesHelper.isMixedModeStateAllowed();
   }
 
   @Override

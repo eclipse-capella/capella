@@ -3,7 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.semantic.queries;singleton:=true
 Bundle-Version: 6.0.0.qualifier
-Bundle-Activator: org.polarsys.capella.core.semantic.queries.Activator
 Bundle-Vendor: %providerName
 Require-Bundle: org.polarsys.capella.core.model.handler,
  org.polarsys.capella.core.model.helpers,
@@ -12,8 +11,7 @@ Require-Bundle: org.polarsys.capella.core.model.handler,
  org.eclipse.sirius.table,
  org.polarsys.capella.core.sirius.analysis
 Bundle-ActivationPolicy: lazy
-Export-Package: org.polarsys.capella.core.semantic.queries,
- org.polarsys.capella.core.semantic.queries.basic.queries,
+Export-Package: org.polarsys.capella.core.semantic.queries.basic.queries,
  org.polarsys.capella.core.semantic.queries.basic.queries.utils,
  org.polarsys.capella.core.semantic.queries.sirius.annotation,
  org.polarsys.capella.core.semantic.queries.sirius.annotation.eoi,

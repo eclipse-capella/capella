@@ -3,7 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.test.diagram.tools.ju;singleton:=true
 Bundle-Version: 6.0.0.qualifier
-Bundle-Activator: org.polarsys.capella.test.diagram.tools.ju.TestDiagramToolsPlugin
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.capella.test.diagram.common.ju;visibility:=reexport,
@@ -17,8 +16,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.capella.common.queries
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
-Export-Package: org.polarsys.capella.test.diagram.tools.ju,
- org.polarsys.capella.test.diagram.tools.ju.cdb,
+Export-Package: org.polarsys.capella.test.diagram.tools.ju.cdb,
  org.polarsys.capella.test.diagram.tools.ju.diagram.actions,
  org.polarsys.capella.test.diagram.tools.ju.es,
  org.polarsys.capella.test.diagram.tools.ju.idb,

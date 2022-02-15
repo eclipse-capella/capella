@@ -25,9 +25,6 @@ import org.polarsys.capella.test.diagram.common.ju.headless.HeadlessJavaActionsP
  */
 public class TestDiagramCommonPlugin extends AbstractUIPlugin {
 
-  // The plug-in ID
-  public static final String PLUGIN_ID = "org.polarsys.capella.test.diagram.common.ju"; //$NON-NLS-1$
-
   // The shared instance
   private static TestDiagramCommonPlugin plugin;
 

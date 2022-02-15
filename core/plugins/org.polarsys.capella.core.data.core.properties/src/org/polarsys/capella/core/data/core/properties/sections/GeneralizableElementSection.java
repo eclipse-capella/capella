@@ -24,7 +24,7 @@ import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.core.properties.Messages;
 import org.polarsys.capella.core.data.core.properties.controllers.GeneralizableElementController;
 import org.polarsys.capella.core.data.core.properties.fields.GeneralizableElementBooleanPropertiesCheckbox;
-import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
+import org.polarsys.capella.core.model.preferences.helpers.PreferencesHelper;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
 import org.polarsys.capella.core.ui.properties.fields.CompositionMultipleSemanticField;
 import org.polarsys.capella.core.ui.toolkit.helpers.SelectionDialogHelper;
@@ -79,7 +79,7 @@ public abstract class GeneralizableElementSection extends NamedElementSection {
          */
         @Override
         protected List<EObject> openTransferDialog(Button button, List<EObject> currentElements, List<EObject> availableElements, String title, String message) {
-          if (CapellaModelPreferencesPlugin.getDefault().isMultipleInheritanceAllowed()) {
+          if (PreferencesHelper.isMultipleInheritanceAllowed()) {
             return super.openTransferDialog(button, currentElements, availableElements, title, message);
           }
           EObject firstResult = SelectionDialogHelper.simplePropertySelectionDialogWizard(availableElements, button.getShell());

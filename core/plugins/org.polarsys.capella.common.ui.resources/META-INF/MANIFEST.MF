@@ -3,7 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.common.ui.resources;singleton:=true
 Bundle-Version: 6.0.0.qualifier
-Bundle-Activator: org.polarsys.capella.common.ui.resources.ResourcePlugin
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.core.runtime;visibility:=reexport,
  org.eclipse.ui;visibility:=reexport,
@@ -13,7 +12,6 @@ Require-Bundle: org.eclipse.core.runtime;visibility:=reexport,
  org.polarsys.capella.core.model.preferences;visibility:=reexport,
  org.polarsys.capella.core.preferences
 Bundle-ActivationPolicy: lazy
-Export-Package: org.polarsys.capella.common.ui.resources,
- org.polarsys.capella.common.ui.resources.prefs
+Export-Package: org.polarsys.capella.common.ui.resources.prefs
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Localization: plugin

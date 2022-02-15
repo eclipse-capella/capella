@@ -164,19 +164,9 @@ public class ClassgetGenFeatureTODOoverride extends org.eclipse.egf.emf.pattern.
         //this pattern can only be called by another (i.e. it's not an entry point in execution)
         List<Object> genModelList = null;
         //this pattern can only be called by another (i.e. it's not an entry point in execution)
-        List<Object> isJDK50List = null;
-        //this pattern can only be called by another (i.e. it's not an entry point in execution)
         List<Object> isInterfaceList = null;
         //this pattern can only be called by another (i.e. it's not an entry point in execution)
         List<Object> isImplementationList = null;
-        //this pattern can only be called by another (i.e. it's not an entry point in execution)
-        List<Object> useInterfaceOverrideAnnotationList = null;
-        //this pattern can only be called by another (i.e. it's not an entry point in execution)
-        List<Object> isGWTList = null;
-        //this pattern can only be called by another (i.e. it's not an entry point in execution)
-        List<Object> forceDefaultCaseList = null;
-        //this pattern can only be called by another (i.e. it's not an entry point in execution)
-        List<Object> indentDefaultCaseList = null;
         //this pattern can only be called by another (i.e. it's not an entry point in execution)
         List<Object> publicStaticFinalFlagList = null;
         //this pattern can only be called by another (i.e. it's not an entry point in execution)
@@ -186,59 +176,34 @@ public class ClassgetGenFeatureTODOoverride extends org.eclipse.egf.emf.pattern.
         //this pattern can only be called by another (i.e. it's not an entry point in execution)
         List<Object> positiveOffsetCorrectionList = null;
         //this pattern can only be called by another (i.e. it's not an entry point in execution)
-        List<Object> negativeOperationOffsetCorrectionList = null;
-        //this pattern can only be called by another (i.e. it's not an entry point in execution)
-        List<Object> positiveOperationOffsetCorrectionList = null;
-        //this pattern can only be called by another (i.e. it's not an entry point in execution)
 
         for (Object genFeatureParameter : genFeatureList) {
             for (Object genClassParameter : genClassList) {
                 for (Object genPackageParameter : genPackageList) {
                     for (Object genModelParameter : genModelList) {
-                        for (Object isJDK50Parameter : isJDK50List) {
-                            for (Object isInterfaceParameter : isInterfaceList) {
-                                for (Object isImplementationParameter : isImplementationList) {
-                                    for (Object useInterfaceOverrideAnnotationParameter : useInterfaceOverrideAnnotationList) {
-                                        for (Object isGWTParameter : isGWTList) {
-                                            for (Object forceDefaultCaseParameter : forceDefaultCaseList) {
-                                                for (Object indentDefaultCaseParameter : indentDefaultCaseList) {
-                                                    for (Object publicStaticFinalFlagParameter : publicStaticFinalFlagList) {
-                                                        for (Object singleWildcardParameter : singleWildcardList) {
-                                                            for (Object negativeOffsetCorrectionParameter : negativeOffsetCorrectionList) {
-                                                                for (Object positiveOffsetCorrectionParameter : positiveOffsetCorrectionList) {
-                                                                    for (Object negativeOperationOffsetCorrectionParameter : negativeOperationOffsetCorrectionList) {
-                                                                        for (Object positiveOperationOffsetCorrectionParameter : positiveOperationOffsetCorrectionList) {
+                        for (Object isInterfaceParameter : isInterfaceList) {
+                            for (Object isImplementationParameter : isImplementationList) {
+                                for (Object publicStaticFinalFlagParameter : publicStaticFinalFlagList) {
+                                    for (Object singleWildcardParameter : singleWildcardList) {
+                                        for (Object negativeOffsetCorrectionParameter : negativeOffsetCorrectionList) {
+                                            for (Object positiveOffsetCorrectionParameter : positiveOffsetCorrectionList) {
 
-                                                                            this.genFeature = (org.eclipse.emf.codegen.ecore.genmodel.GenFeature) genFeatureParameter;
-                                                                            this.genClass = (org.eclipse.emf.codegen.ecore.genmodel.GenClass) genClassParameter;
-                                                                            this.genPackage = (org.eclipse.emf.codegen.ecore.genmodel.GenPackage) genPackageParameter;
-                                                                            this.genModel = (org.eclipse.emf.codegen.ecore.genmodel.GenModel) genModelParameter;
-                                                                            this.isJDK50 = (java.lang.Boolean) isJDK50Parameter;
-                                                                            this.isInterface = (java.lang.Boolean) isInterfaceParameter;
-                                                                            this.isImplementation = (java.lang.Boolean) isImplementationParameter;
-                                                                            this.useInterfaceOverrideAnnotation = (java.lang.Boolean) useInterfaceOverrideAnnotationParameter;
-                                                                            this.isGWT = (java.lang.Boolean) isGWTParameter;
-                                                                            this.forceDefaultCase = (java.lang.Boolean) forceDefaultCaseParameter;
-                                                                            this.indentDefaultCase = (java.lang.String) indentDefaultCaseParameter;
-                                                                            this.publicStaticFinalFlag = (java.lang.String) publicStaticFinalFlagParameter;
-                                                                            this.singleWildcard = (java.lang.String) singleWildcardParameter;
-                                                                            this.negativeOffsetCorrection = (java.lang.String) negativeOffsetCorrectionParameter;
-                                                                            this.positiveOffsetCorrection = (java.lang.String) positiveOffsetCorrectionParameter;
-                                                                            this.negativeOperationOffsetCorrection = (java.lang.String) negativeOperationOffsetCorrectionParameter;
-                                                                            this.positiveOperationOffsetCorrection = (java.lang.String) positiveOperationOffsetCorrectionParameter;
+                                                this.genFeature = (org.eclipse.emf.codegen.ecore.genmodel.GenFeature) genFeatureParameter;
+                                                this.genClass = (org.eclipse.emf.codegen.ecore.genmodel.GenClass) genClassParameter;
+                                                this.genPackage = (org.eclipse.emf.codegen.ecore.genmodel.GenPackage) genPackageParameter;
+                                                this.genModel = (org.eclipse.emf.codegen.ecore.genmodel.GenModel) genModelParameter;
+                                                this.isInterface = (java.lang.Boolean) isInterfaceParameter;
+                                                this.isImplementation = (java.lang.Boolean) isImplementationParameter;
+                                                this.publicStaticFinalFlag = (java.lang.String) publicStaticFinalFlagParameter;
+                                                this.singleWildcard = (java.lang.String) singleWildcardParameter;
+                                                this.negativeOffsetCorrection = (java.lang.String) negativeOffsetCorrectionParameter;
+                                                this.positiveOffsetCorrection = (java.lang.String) positiveOffsetCorrectionParameter;
 
-                                                                            if (preCondition(ctx)) {
-                                                                                ctx.setNode(new Node.Container(currentNode, getClass()));
-                                                                                orchestration(ctx);
-                                                                            }
-
-                                                                        }
-                                                                    }
-                                                                }
-                                                            }
-                                                        }
-                                                    }
+                                                if (preCondition(ctx)) {
+                                                    ctx.setNode(new Node.Container(currentNode, getClass()));
+                                                    orchestration(ctx);
                                                 }
+
                                             }
                                         }
                                     }
@@ -270,19 +235,12 @@ public class ClassgetGenFeatureTODOoverride extends org.eclipse.egf.emf.pattern.
             parameterValues.put("genClass", this.genClass);
             parameterValues.put("genPackage", this.genPackage);
             parameterValues.put("genModel", this.genModel);
-            parameterValues.put("isJDK50", this.isJDK50);
             parameterValues.put("isInterface", this.isInterface);
             parameterValues.put("isImplementation", this.isImplementation);
-            parameterValues.put("useInterfaceOverrideAnnotation", this.useInterfaceOverrideAnnotation);
-            parameterValues.put("isGWT", this.isGWT);
-            parameterValues.put("forceDefaultCase", this.forceDefaultCase);
-            parameterValues.put("indentDefaultCase", this.indentDefaultCase);
             parameterValues.put("publicStaticFinalFlag", this.publicStaticFinalFlag);
             parameterValues.put("singleWildcard", this.singleWildcard);
             parameterValues.put("negativeOffsetCorrection", this.negativeOffsetCorrection);
             parameterValues.put("positiveOffsetCorrection", this.positiveOffsetCorrection);
-            parameterValues.put("negativeOperationOffsetCorrection", this.negativeOperationOffsetCorrection);
-            parameterValues.put("positiveOperationOffsetCorrection", this.positiveOperationOffsetCorrection);
             String outputWithCallBack = OutputManager.computeLoopOutput(ictx);
             String loop = OutputManager.computeLoopOutputWithoutCallback(ictx);
             ictx.getReporter().loopFinished(loop, outputWithCallBack, ictx, parameterValues);
@@ -302,19 +260,12 @@ public class ClassgetGenFeatureTODOoverride extends org.eclipse.egf.emf.pattern.
         parameters.put("genClass", this.genClass);
         parameters.put("genPackage", this.genPackage);
         parameters.put("genModel", this.genModel);
-        parameters.put("isJDK50", this.isJDK50);
         parameters.put("isInterface", this.isInterface);
         parameters.put("isImplementation", this.isImplementation);
-        parameters.put("useInterfaceOverrideAnnotation", this.useInterfaceOverrideAnnotation);
-        parameters.put("isGWT", this.isGWT);
-        parameters.put("forceDefaultCase", this.forceDefaultCase);
-        parameters.put("indentDefaultCase", this.indentDefaultCase);
         parameters.put("publicStaticFinalFlag", this.publicStaticFinalFlag);
         parameters.put("singleWildcard", this.singleWildcard);
         parameters.put("negativeOffsetCorrection", this.negativeOffsetCorrection);
         parameters.put("positiveOffsetCorrection", this.positiveOffsetCorrection);
-        parameters.put("negativeOperationOffsetCorrection", this.negativeOperationOffsetCorrection);
-        parameters.put("positiveOperationOffsetCorrection", this.positiveOperationOffsetCorrection);
         return parameters;
     }
 

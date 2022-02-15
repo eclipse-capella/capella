@@ -20,7 +20,11 @@ import java.util.Optional;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
+import org.osgi.framework.Bundle;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
@@ -31,7 +35,6 @@ import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
 import org.polarsys.capella.core.model.helpers.AbstractCapabilityExt;
 import org.polarsys.capella.core.ui.resources.CapellaUIResourcesPlugin;
-import org.polarsys.capella.core.validation.ui.ide.PluginActivator;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarkerResolution;
 
 public class AddInvolvedElementsResolver extends AbstractCapellaMarkerResolution {
@@ -44,7 +47,7 @@ public class AddInvolvedElementsResolver extends AbstractCapellaMarkerResolution
     this.overridenLabel = label;
     this.multiMarkerQuickFix = multiMarkerQuickFix;
     this.ruleId = ruleId;
-    super.setContributorId(CapellaUIResourcesPlugin.PLUGIN_ID);
+    super.setContributorId(FrameworkUtil.getBundle(CapellaUIResourcesPlugin.class).getSymbolicName());
     super.setImgKey(PROCESS_ICON);
   }
 
@@ -105,7 +108,8 @@ public class AddInvolvedElementsResolver extends AbstractCapellaMarkerResolution
       try {
         marker.delete();
       } catch (CoreException e) {
-        PluginActivator.getDefault().log(IStatus.ERROR, e.getLocalizedMessage(), e);
+          Bundle bundle = FrameworkUtil.getBundle(this.getClass());
+          Platform.getLog(bundle).log(new Status(IStatus.ERROR, this.getClass(), e.getLocalizedMessage(), e));
       }
     }
   }
