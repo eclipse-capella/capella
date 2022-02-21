@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -32,6 +33,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariabl
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramComponentizationManager;
+import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription;
 import org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription;
 import org.eclipse.sirius.diagram.description.tool.NodeCreationDescription;
@@ -51,6 +53,7 @@ import org.eclipse.ui.IEditorPart;
 import org.junit.Assert;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.core.sirius.analysis.DiagramServices;
 import org.polarsys.capella.core.sirius.analysis.tool.StringUtil;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.OperationActionToolDescriptionWrapper;
 import org.polarsys.capella.test.framework.helpers.GuiActions;
@@ -89,11 +92,8 @@ public class ToolHelper {
     Assert.assertNotNull(_session);
     Assert.assertNotNull(_diagram);
 
-    final List<AbstractToolDescription> tools = new DiagramComponentizationManager()
-        .getAllTools(_session.getSelectedViewpoints(true), _diagram.getDescription());
     AbstractToolDescription theAbstractToolDescription = null;
-
-    for (AbstractToolDescription current : tools) {
+    for (AbstractToolDescription current : getTools(_diagram.getDescription())) {
       if (current.getName().equals(toolName)) {
         theAbstractToolDescription = current;
         break;
@@ -123,12 +123,8 @@ public class ToolHelper {
 
     Assert.assertNotNull(_session);
     Assert.assertNotNull(_diagram);
-
-    final List<AbstractToolDescription> tools = new DiagramComponentizationManager()
-        .getAllTools(_session.getSelectedViewpoints(true), _diagram.getDescription());
     AbstractToolDescription theAbstractToolDescription = null;
-
-    for (AbstractToolDescription current : tools) {
+    for (AbstractToolDescription current : getTools(_diagram.getDescription())) {
       if ((current.getLabel() != null) && current.getLabel().equals(toolName)) {
         theAbstractToolDescription = current;
         break;
@@ -164,6 +160,15 @@ public class ToolHelper {
     }
 
     return theAbstractToolDescription;
+  }
+
+  protected Collection<AbstractToolDescription> getTools(DiagramDescription description) {
+    final List<AbstractToolDescription> tools = new ArrayList<>();
+    tools.addAll(
+        new DiagramComponentizationManager().getAllTools(_session.getSelectedViewpoints(true), _diagram.getDescription()));
+    tools.addAll(DiagramServices.getDiagramServices().getAllMappingsByName(_diagram.getDescription()).values().stream()
+        .map(m -> m.getLabelDirectEdit()).filter(Objects::nonNull).distinct().collect(Collectors.toList()));
+    return tools;
   }
 
   /**
