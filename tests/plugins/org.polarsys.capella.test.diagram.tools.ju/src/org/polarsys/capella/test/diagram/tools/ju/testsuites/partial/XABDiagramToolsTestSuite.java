@@ -118,7 +118,7 @@ public class XABDiagramToolsTestSuite extends BasicTestSuite {
     tests.add(new ShowHideFunctionalChains());
     tests.add(new DragAndDropFunction());
     tests.add(new SwitchComponentExchangesCategories());
-//    tests.add(new ConstraintRename());
+    tests.add(new ConstraintRename());
 
     tests.add(new CreateNodePCGroup());
     tests.add(new CreatePhysicalPath());
