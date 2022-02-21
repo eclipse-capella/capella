@@ -13,14 +13,14 @@
 package org.polarsys.capella.test.diagram.tools.ju.xab;
 
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.diagram.description.tool.DirectEditLabel;
-import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.polarsys.capella.core.data.capellacore.Constraint;
-import org.polarsys.capella.test.diagram.common.ju.context.CDBDiagram;
+import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.polarsys.capella.test.diagram.common.ju.context.PABDiagram;
 import org.polarsys.capella.test.diagram.common.ju.context.XABDiagram;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.RenameTool;
-import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ToolHelper;
+import org.polarsys.capella.test.framework.api.ModelProviderHelper;
 import org.polarsys.capella.test.framework.context.SessionContext;
+import org.polarsys.capella.test.framework.helpers.GuiActions;
 import org.polarsys.capella.test.framework.model.GenericModel;
 
 public class ConstraintRename extends XABDiagramsProject {
@@ -32,30 +32,24 @@ public class ConstraintRename extends XABDiagramsProject {
     Session session = getSession(getRequiredTestModel());
     SessionContext context = new SessionContext(session);
 
-    testOnCDB(session, context);
-    testOnXAB(session, context, EPBS__EAB_COTSC1);
-    testOnXAB(session, context, OA__OAB_ENTITY1);
-    testOnXAB(session, context, SA__SAB_SYSTEM);
-    testOnXAB(session, context, LA__LAB_LOGICAL_SYSTEM);
-    testOnXAB(session, context, PA__PAB_PHYSICAL_SYSTEM);
+    testOnXAB(session, context, PA__PAB_DIAGRAM, BlockArchitectureExt.Type.PA);
   }
 
-  private void testOnCDB(Session session, SessionContext context) {
-    final CDBDiagram cdbDiagram = CDBDiagram.createDiagram(context, LA__DATA);
-    ToolHelper toolhelper = new ToolHelper(session, cdbDiagram.getDiagram());
-    AbstractToolDescription tool = toolhelper.getTool(RENAME_CONSTRAINT_TOOL);
-    assertTrue("Rename tool has not been found", tool != null && tool instanceof DirectEditLabel);
-    
-    DirectEditLabel renameTool = (DirectEditLabel) tool;
-    assertTrue("Constraint's name should be displayed when rename tool is applied",
-        renameTool.getInputLabelExpression() != null && renameTool.getInputLabelExpression().equals("feature:name"));
-  }
-
-  public void testOnXAB(Session session, SessionContext context, String element) {
-    XABDiagram xabDiagram = XABDiagram.createDiagram(context, element);
+  public void testOnXAB(Session session, SessionContext context, String diagramName, BlockArchitectureExt.Type type) {
+    XABDiagram xabDiagram = XABDiagram.openDiagram(context, diagramName, type);
     xabDiagram.createConstraint(GenericModel.CONSTRAINT_1);
     Constraint constraint = (Constraint) xabDiagram.getSessionContext().getSemanticElement(GenericModel.CONSTRAINT_1);
     new RenameTool(xabDiagram, RENAME_CONSTRAINT_TOOL, constraint, NEW_NAME).run();
     assertTrue("The constraint has not been renamed", constraint.getName().equals(NEW_NAME));
+
+    xabDiagram.close();
+
+    GuiActions.flushASyncGuiJobs();
+    GuiActions.flushASyncGuiThread();
+    if (ModelProviderHelper.getInstance().getModelProvider().undoTestCaseChanges()) {
+      undoAllChanges();
+    }
+
+    PABDiagram.openDiagram(context, PA__PAB_DIAGRAM);
   }
 }
