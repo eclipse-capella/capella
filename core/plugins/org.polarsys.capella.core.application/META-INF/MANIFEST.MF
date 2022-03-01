@@ -6,7 +6,7 @@ Bundle-Version: 6.0.0.qualifier
 Bundle-Activator: org.polarsys.capella.core.application.Activator
 Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.capella.common.mdsofa.common
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.application,
  org.polarsys.capella.core.application.appstart

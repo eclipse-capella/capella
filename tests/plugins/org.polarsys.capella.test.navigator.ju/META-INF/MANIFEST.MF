@@ -12,7 +12,7 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.core.ui.toolkit,
  org.polarsys.capella.core.ui.properties
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: org.polarsys.capella.test.navigator.ju,
  org.polarsys.capella.test.navigator.ju.testsuites.main
 Bundle-Vendor: %providerName

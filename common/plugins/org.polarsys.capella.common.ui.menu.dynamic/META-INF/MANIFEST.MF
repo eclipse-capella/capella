@@ -10,6 +10,6 @@ Require-Bundle: org.eclipse.ui.navigator;visibility:=reexport,
 Export-Package: org.polarsys.capella.common.ui.menu.dynamic,
  org.polarsys.capella.common.ui.menu.dynamic.utils
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-Activator: org.polarsys.capella.common.ui.menu.dynamic.DynamicMenuActivator
 Bundle-Localization: plugin

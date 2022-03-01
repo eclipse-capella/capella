@@ -10,7 +10,7 @@ Require-Bundle: org.polarsys.capella.core.model.handler,
  org.polarsys.kitalpha.ad.metadata;visibility:=reexport,
  org.polarsys.kitalpha.ad.viewpoint;visibility:=reexport,
  org.eclipse.gmf.runtime.emf.core
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: org.polarsys.capella.core.af.integration,
  org.polarsys.capella.core.af.integration.listener,
  org.polarsys.capella.core.af.integration.services

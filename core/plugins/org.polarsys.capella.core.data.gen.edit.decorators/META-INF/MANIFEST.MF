@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.data.gen.edit.decorators;singleton:=true
 Bundle-Version: 6.0.0.qualifier
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Require-Bundle: org.polarsys.capella.core.data.gen.edit;visibility:=reexport,
  org.polarsys.capella.core.model.handler,
  org.polarsys.capella.core.data.helpers,

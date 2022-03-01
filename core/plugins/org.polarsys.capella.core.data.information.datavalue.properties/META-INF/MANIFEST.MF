@@ -18,5 +18,5 @@ Export-Package: org.polarsys.capella.core.data.information.datavalue.properties,
  org.polarsys.capella.core.data.information.datavalue.properties.controllers,
  org.polarsys.capella.core.data.information.datavalue.properties.fields,
  org.polarsys.capella.core.data.information.datavalue.properties.sections
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-Localization: plugin

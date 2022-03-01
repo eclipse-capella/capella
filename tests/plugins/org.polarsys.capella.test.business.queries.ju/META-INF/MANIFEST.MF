@@ -8,7 +8,7 @@ Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.capella.core.data.business.queries;visibility:=reexport,
  org.polarsys.capella.test.framework;visibility:=reexport
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.test.business.queries.ju,
  org.polarsys.capella.test.business.queries.ju.errors,

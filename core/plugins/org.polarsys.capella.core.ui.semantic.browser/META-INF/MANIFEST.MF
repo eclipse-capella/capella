@@ -18,4 +18,4 @@ Export-Package: org.polarsys.capella.core.ui.semantic.browser,
  org.polarsys.capella.core.ui.semantic.browser.label.provider,
  org.polarsys.capella.core.ui.semantic.browser.model,
  org.polarsys.capella.core.ui.semantic.browser.view
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11

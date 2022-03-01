@@ -14,7 +14,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.capella.core.model.handler,
  org.polarsys.capella.core.ui.properties.richtext
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: org.polarsys.capella.core.explorer.activity.ui.richtext,
  org.polarsys.capella.core.explorer.activity.ui.richtext.page
 Bundle-Vendor: %providerName

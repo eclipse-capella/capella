@@ -9,5 +9,5 @@ Require-Bundle: org.eclipse.core.resources;visibility:=reexport,
  org.eclipse.emf.transaction;visibility:=reexport,
  org.polarsys.capella.core.model.helpers
 Export-Package: org.polarsys.capella.core.services
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-Localization: plugin
