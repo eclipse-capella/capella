@@ -7,7 +7,7 @@ Bundle-Activator: org.polarsys.capella.test.massactions.ju.activator.TestActivat
 Require-Bundle: org.polarsys.capella.test.framework,
  org.polarsys.capella.common.ui.massactions.core,
  org.polarsys.capella.common.ui.massactions
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Automatic-Module-Name: org.polarsys.capella.common.ui.massactions.tests.ju
 Export-Package: org.polarsys.capella.test.massactions.ju.testsuites

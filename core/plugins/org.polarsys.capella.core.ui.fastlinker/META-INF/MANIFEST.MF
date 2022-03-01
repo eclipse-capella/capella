@@ -14,7 +14,7 @@ Require-Bundle: org.polarsys.capella.core.model.links.helpers;visibility:=reexpo
  org.eclipse.ui.ide,
  org.eclipse.sirius.diagram.ui,
  org.eclipse.sirius.table
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.ui.fastlinker,
  org.polarsys.capella.core.ui.fastlinker.listeners,

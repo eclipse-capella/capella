@@ -12,6 +12,6 @@ Require-Bundle: org.eclipse.sirius.diagram,
  org.polarsys.capella.common.ui.services,
  org.eclipse.gmf.runtime.diagram.ui
 Export-Package: org.polarsys.capella.core.platform.sirius.ui
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin

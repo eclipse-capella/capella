@@ -30,7 +30,7 @@ Require-Bundle: org.polarsys.capella.core.ui.toolkit;visibility:=reexport,
  org.polarsys.capella.core.linkedtext.ui,
  org.polarsys.capella.common.linkedtext.ui,
  org.polarsys.capella.common.ui
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.ui.properties,
  org.polarsys.capella.core.ui.properties.controllers,

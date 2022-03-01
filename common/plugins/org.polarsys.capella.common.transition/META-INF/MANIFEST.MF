@@ -14,7 +14,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.capella.common.tools.report,
  org.polarsys.kitalpha.transposer.transformation.emf;visibility:=reexport,
  org.polarsys.capella.common.tools.report.appenders.usage
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.transition.common,
  org.polarsys.capella.core.transition.common.activities,

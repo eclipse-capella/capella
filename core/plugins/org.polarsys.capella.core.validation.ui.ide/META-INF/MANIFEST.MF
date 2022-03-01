@@ -16,7 +16,7 @@ Require-Bundle: org.eclipse.ui;visibility:=reexport,
  org.polarsys.capella.core.platform.sirius.ui.navigator,
  org.eclipse.emf.validation.ui,
  org.polarsys.capella.common.re.gen
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
 Export-Package: org.polarsys.capella.core.validation.ui.ide,
