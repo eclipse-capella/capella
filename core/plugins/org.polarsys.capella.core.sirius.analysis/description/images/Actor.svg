@@ -1,29 +1,101 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Generator: Adobe Illustrator 13.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 14948)  -->
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
-<svg version="1.0" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="75px" height="66px" viewBox="362.861 210.892 75 66" enable-background="new 362.861 210.892 75 66" xml:space="preserve">
-<g>
-	<line fill="none" stroke="#000000" stroke-width="2.4944" x1="400.362" y1="232.586" x2="400.362" y2="257.534"/>
-	<line fill="none" stroke="#000000" stroke-width="2.4944" x1="400.834" y1="254.299" x2="388.423" y2="275.009"/>
-	<line fill="none" stroke="#000000" stroke-width="2.4944" x1="400.252" y1="254.46" x2="413.97" y2="274.987"/>
-	<line fill="none" stroke="#000000" stroke-width="2.4944" x1="385.634" y1="244.569" x2="415.703" y2="244.497"/>
+
+<svg
+   version="1.0"
+   id="Layer_1"
+   x="0px"
+   y="0px"
+   width="75px"
+   height="66px"
+   viewBox="362.861 210.892 75 66"
+   enable-background="new 362.861 210.892 75 66"
+   xml:space="preserve"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+   id="defs44" />
+<g
+   id="g39">
+	<path
+   id="line2"
+   style="fill:none;stroke:#000000;stroke-width:2.4944"
+   d="m 400.362,232.586 v 24.948" />
+	<path
+   id="line4"
+   style="fill:none;stroke:#000000;stroke-width:2.4944"
+   d="M 400.83401,254.299 388.423,275.009" />
+	<path
+   id="line6"
+   style="fill:none;stroke:#000000;stroke-width:2.4944"
+   d="M 400.25201,254.46001 413.97,274.987" />
+	<path
+   id="line8"
+   style="fill:none;stroke:#000000;stroke-width:2.4944"
+   d="m 385.634,244.569 30.069,-0.072" />
 	
-		<radialGradient id="SVGID_1_" cx="43.7661" cy="87.9023" r="4.4297" gradientTransform="matrix(1.9728 0 0 -2.039 314.1896 402.5936)" gradientUnits="userSpaceOnUse">
-		<stop  offset="0" style="stop-color:#FDFCFA"/>
-		<stop  offset="0" style="stop-color:#FFFFFF"/>
-		<stop  offset="0" style="stop-color:#FFFFFF"/>
-		<stop  offset="0" style="stop-color:#F7F1EB"/>
-		<stop  offset="0" style="stop-color:#CFAC85"/>
-		<stop  offset="0" style="stop-color:#E0CAB0"/>
-		<stop  offset="0" style="stop-color:#FFFFFF"/>
-		<stop  offset="0" style="stop-color:#F2F6FA"/>
-		<stop  offset="0" style="stop-color:#E9F1F6"/>
-		<stop  offset="0" style="stop-color:#E6EFF5"/>
-		<stop  offset="0" style="stop-color:#CEDEEB"/>
-		<stop  offset="1" style="stop-color:#8B9BA7"/>
-		<stop  offset="1" style="stop-color:#C69C6D"/>
+		<radialGradient
+   id="SVGID_1_"
+   cx="43.766102"
+   cy="87.902298"
+   r="4.4296999"
+   gradientTransform="matrix(1.9728,0,0,-2.039,314.1896,402.5936)"
+   gradientUnits="userSpaceOnUse">
+		<stop
+   offset="0"
+   style="stop-color:#FDFCFA"
+   id="stop10" />
+		<stop
+   offset="0"
+   style="stop-color:#FFFFFF"
+   id="stop12" />
+		<stop
+   offset="0"
+   style="stop-color:#FFFFFF"
+   id="stop14" />
+		<stop
+   offset="0"
+   style="stop-color:#F7F1EB"
+   id="stop16" />
+		<stop
+   offset="0"
+   style="stop-color:#CFAC85"
+   id="stop18" />
+		<stop
+   offset="0"
+   style="stop-color:#E0CAB0"
+   id="stop20" />
+		<stop
+   offset="0"
+   style="stop-color:#FFFFFF"
+   id="stop22" />
+		<stop
+   offset="0"
+   style="stop-color:#F2F6FA"
+   id="stop24" />
+		<stop
+   offset="0"
+   style="stop-color:#E9F1F6"
+   id="stop26" />
+		<stop
+   offset="0"
+   style="stop-color:#E6EFF5"
+   id="stop28" />
+		<stop
+   offset="0"
+   style="stop-color:#CEDEEB"
+   id="stop30" />
+		<stop
+   offset="1"
+   style="stop-color:#8B9BA7"
+   id="stop32" />
+		<stop
+   offset="1"
+   style="stop-color:#C69C6D"
+   id="stop34" />
 	</radialGradient>
-	<ellipse fill="url(#SVGID_1_)" stroke="#000000" stroke-width="2.0075" cx="400.532" cy="223.359" rx="9.218" ry="8.508"/>
+	<path
+   id="ellipse37"
+   style="fill:url(#SVGID_1_);stroke:#000000;stroke-width:2.0075"
+   d="m 409.75001,223.35899 a 9.2180004,8.5080004 0 0 1 -9.218,8.508 9.2180004,8.5080004 0 0 1 -9.218,-8.508 9.2180004,8.5080004 0 0 1 9.218,-8.508 9.2180004,8.5080004 0 0 1 9.218,8.508 z" />
 </g>
 </svg>

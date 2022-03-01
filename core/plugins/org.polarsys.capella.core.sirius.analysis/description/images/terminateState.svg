@@ -7,57 +7,22 @@
    viewBox="0 0 10.160001 10.160001"
    version="1.1"
    id="svg34910"
-   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
-   sodipodi:docname="terminateState.svg"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
-  <sodipodi:namedview
-     id="namedview34912"
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1.0"
-     inkscape:pageshadow="2"
-     inkscape:pageopacity="0.0"
-     inkscape:pagecheckerboard="0"
-     inkscape:document-units="mm"
-     showgrid="false"
-     fit-margin-top="0"
-     fit-margin-left="0"
-     fit-margin-right="0"
-     fit-margin-bottom="0"
-     inkscape:zoom="14.493388"
-     inkscape:cx="26.115358"
-     inkscape:cy="22.596512"
-     inkscape:window-width="1920"
-     inkscape:window-height="1057"
-     inkscape:window-x="1912"
-     inkscape:window-y="-8"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="layer1" />
   <defs
      id="defs34907" />
   <g
-     inkscape:label="Layer 1"
-     inkscape:groupmode="layer"
      id="layer1"
      transform="translate(-64.316383,-163.86714)">
-    <rect
-       style="fill:#000000;stroke:#000000;stroke-width:0.212939"
+    <path
        id="rect35517"
-       width="0.91825813"
-       height="13.02045"
-       x="-70.540344"
-       y="161.92627"
-       transform="matrix(0.70579607,-0.70841506,0.70579607,0.70841506,0,0)" />
-    <rect
-       style="fill:#000000;stroke:#000000;stroke-width:0.212939"
+       style="stroke:#000000;stroke-width:0.212939"
+       transform="matrix(0.70579607,-0.70841506,0.70579607,0.70841506,0,0)"
+       d="m -70.540344,161.92627 h 0.918258 v 13.02045 h -0.918258 z" />
+    <path
        id="rect35517-3"
-       width="0.91825813"
-       height="13.02045"
-       x="168.23808"
-       y="64.195328"
-       transform="matrix(0.70841506,0.70579607,-0.70841506,0.70579607,0,0)" />
+       style="stroke:#000000;stroke-width:0.212939"
+       transform="matrix(0.70841506,0.70579607,-0.70841506,0.70579607,0,0)"
+       d="m 168.23808,64.195328 h 0.91826 v 13.020449 h -0.91826 z" />
   </g>
 </svg>

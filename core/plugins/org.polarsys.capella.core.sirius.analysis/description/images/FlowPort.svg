@@ -2,22 +2,6 @@
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 
 <svg
-   xmlns:stEvt="http://ns.adobe.com/xap/1.0/sType/ResourceEvent#"
-   xmlns:stRef="http://ns.adobe.com/xap/1.0/sType/ResourceRef#"
-   xmlns:xmpMM="http://ns.adobe.com/xap/1.0/mm/"
-   xmlns:xmpG="http://ns.adobe.com/xap/1.0/g/"
-   xmlns:stDim="http://ns.adobe.com/xap/1.0/sType/Dimensions#"
-   xmlns:xmpTPg="http://ns.adobe.com/xap/1.0/t/pg/"
-   xmlns:xmpGImg="http://ns.adobe.com/xap/1.0/g/img/"
-   xmlns:xmp="http://ns.adobe.com/xap/1.0/"
-   xmlns:x="adobe:ns:meta/"
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    version="1.1"
    id="Layer_1"
    x="0px"
@@ -27,37 +11,14 @@
    viewBox="0.375 0.199 10 10"
    enable-background="new 0.375 0.199 55 55"
    xml:space="preserve"
-   sodipodi:docname="FlowPort.svg"
-   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
-   inkscape:export-xdpi="96"
-   inkscape:export-ydpi="96"><defs
-   id="defs1139" /><sodipodi:namedview
-   id="namedview1137"
-   pagecolor="#ffffff"
-   bordercolor="#666666"
-   borderopacity="1.0"
-   inkscape:pageshadow="2"
-   inkscape:pageopacity="0.0"
-   inkscape:pagecheckerboard="0"
-   showgrid="true"
-   inkscape:zoom="34.330034"
-   inkscape:cx="2.8872178"
-   inkscape:cy="0.79293235"
-   inkscape:window-width="1483"
-   inkscape:window-height="941"
-   inkscape:window-x="2091"
-   inkscape:window-y="88"
-   inkscape:window-maximized="0"
-   inkscape:current-layer="Layer_1"
-   inkscape:snap-grids="false"><inkscape:grid
-     type="xygrid"
-     id="grid5888" /></sodipodi:namedview>
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+   id="defs1139" />
 
 <path
    style="fill:#ffffff;fill-opacity:1;stroke:#1a1d22;stroke-width:0.99994802;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
    d="M 0.87471396,5.1992589 V 0.69923401 H 5.3747402 9.874766 V 5.1992589 9.699286 H 5.3747402 0.87471396 Z"
-   id="path3996"
-   inkscape:connector-curvature="0" /><g
+   id="path3996" /><g
    id="g5886"
    transform="translate(-1.0325494,1.6828087)"
    style="fill:#ffffff;fill-opacity:1" /></svg>

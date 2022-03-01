@@ -2,13 +2,6 @@
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 
 <svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    version="1.1"
    id="Layer_1"
    x="0px"
@@ -18,8 +11,11 @@
    viewBox="9 2.833 60.5 60"
    enable-background="new 9 2.833 60.5 60"
    xml:space="preserve"
-   inkscape:version="0.48.5 r10040"
-   sodipodi:docname="Pseudostate_deepHistory_N.svg"><metadata
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"><metadata
    id="metadata64"><rdf:RDF><cc:Work
        rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
          rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><defs
@@ -112,27 +108,7 @@
 	
 	
 	
-</defs><sodipodi:namedview
-   pagecolor="#ffffff"
-   bordercolor="#666666"
-   borderopacity="1"
-   objecttolerance="10"
-   gridtolerance="10"
-   guidetolerance="10"
-   inkscape:pageopacity="0"
-   inkscape:pageshadow="2"
-   inkscape:window-width="744"
-   inkscape:window-height="598"
-   id="namedview60"
-   showgrid="false"
-   inkscape:snap-bbox="false"
-   inkscape:zoom="1"
-   inkscape:cx="30.25"
-   inkscape:cy="29.916"
-   inkscape:window-x="850"
-   inkscape:window-y="68"
-   inkscape:window-maximized="0"
-   inkscape:current-layer="Layer_1" />
+</defs>
 <font
    horiz-adv-x="1000"
    id="font3">
@@ -160,28 +136,24 @@
 </font>
 
 	<g
-   id="g3064"><circle
-     cx="39.25"
-     cy="32.917"
-     r="29.184"
+   id="g3064"><path
      id="circle54"
-     style="fill:url(#SVGID_1_);stroke:#000000;stroke-width:0.77069998"
-     sodipodi:cx="39.25"
-     sodipodi:cy="32.917"
-     sodipodi:rx="29.184"
-     sodipodi:ry="29.184" /></g><text
-   style="font-size:44.65578461px;fill:#ffffff;font-family:MyriadPro-Bold"
-   id="text56"
-   font-size="45.1668"
+     style="fill:url(#SVGID_1_);stroke:#000000;stroke-width:0.7707"
+     d="M 68.434,32.917 A 29.184,29.184 0 0 1 39.25,62.101 29.184,29.184 0 0 1 10.066,32.917 29.184,29.184 0 0 1 39.25,3.7329998 29.184,29.184 0 0 1 68.434,32.917 Z" /></g><g
+   aria-label="H"
    transform="scale(0.988686,1.0114435)"
-   x="19.652042"
-   y="48.197453">H</text>
-<text
-   style="font-size:27.41004372px;fill:#ffffff;font-family:MyriadPro-Bold"
-   id="text58"
-   font-size="28.7715"
+   id="text56"
+   style="font-size:44.6558px;line-height:0%;font-family:MyriadPro-Bold;fill:#ffffff"><path
+     d="m 22.599325,18.099443 h 6.832338 V 29.665296 H 40.640268 V 18.099443 h 6.787682 v 30.09801 H 40.640268 V 35.604517 H 29.431663 v 12.592936 h -6.832338 z"
+     style="font-size:44.6558px;line-height:0%;font-family:MyriadPro-Bold;fill:#ffffff"
+     id="path36" /></g>
+<g
+   aria-label="*"
    transform="scale(0.95268043,1.0496699)"
-   x="52.069401"
-   y="36.183281">*</text>
+   id="text58"
+   style="font-size:27.41px;line-height:0%;font-family:MyriadPro-Bold;fill:#ffffff"><path
+     d="m 59.853841,17.407431 2.41208,1.3705 -2.96028,3.48107 0.02741,0.08223 4.35819,-0.87712 v 2.76841 l -4.3856,-0.76748 -0.02741,0.08223 2.98769,3.37143 -2.43949,1.42532 -1.56237,-4.24855 -0.05482,0.02741 -1.58978,4.22114 -2.35726,-1.42532 2.93287,-3.42625 v -0.05482 l -4.30337,0.79489 v -2.76841 l 4.24855,0.84971 0.02741,-0.05482 -2.90546,-3.45366 2.43949,-1.39791 1.53496,4.19373 h 0.05482 z"
+     style="font-size:27.41px;line-height:0%;font-family:MyriadPro-Bold;fill:#ffffff"
+     id="path39" /></g>
 
 </svg>

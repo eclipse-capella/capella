@@ -7,41 +7,12 @@
    viewBox="0 0 19.84375 17.462496"
    version="1.1"
    id="svg5"
-   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
-   sodipodi:docname="ci with layers.svg"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
-  <sodipodi:namedview
-     id="namedview7"
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1.0"
-     inkscape:pageshadow="2"
-     inkscape:pageopacity="0.0"
-     inkscape:pagecheckerboard="0"
-     inkscape:document-units="mm"
-     showgrid="false"
-     fit-margin-top="0"
-     fit-margin-left="0"
-     fit-margin-right="0"
-     fit-margin-bottom="0"
-     inkscape:zoom="8"
-     inkscape:cx="27.75"
-     inkscape:cy="36.8125"
-     inkscape:window-width="1920"
-     inkscape:window-height="1051"
-     inkscape:window-x="-9"
-     inkscape:window-y="-9"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="layer1" />
   <defs
      id="defs2" />
   <g
-     inkscape:label="Layer 1"
-     inkscape:groupmode="layer"
      id="layer1"
      transform="translate(-80.22113,-103.92751)"
      style="display:inline">
@@ -61,86 +32,69 @@
       <g
          id="g27174"
          style="stroke-width:1.33145">
-        <rect
-           style="fill:#a2b5c3;fill-opacity:1;stroke:#000000;stroke-width:0.55766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+        <path
            id="rect902"
-           width="21.127941"
-           height="15.095391"
-           x="119.08278"
-           y="116.74998" />
+           style="fill:#a2b5c3;stroke:#000000;stroke-width:0.55766;stroke-linecap:round;stroke-linejoin:round"
+           d="m 119.08278,116.74998 h 21.12794 v 15.09539 h -21.12794 z" />
       </g>
-      <rect
-         style="display:inline;fill:#a2b5c3;fill-opacity:1;stroke:#000000;stroke-width:0.55766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+      <path
          id="rect2465-5"
-         width="5.4129434"
-         height="2.5972443"
-         x="116.62442"
-         y="119.05961" />
-      <rect
-         style="display:inline;fill:#a2b5c3;fill-opacity:1;stroke:#000000;stroke-width:0.55766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         style="display:inline;fill:#a2b5c3;stroke:#000000;stroke-width:0.55766;stroke-linecap:round;stroke-linejoin:round"
+         d="m 116.62442,119.05961 h 5.41294 v 2.59724 h -5.41294 z" />
+      <path
          id="rect2465-3-2"
-         width="5.4129434"
-         height="2.5972443"
-         x="116.65189"
-         y="122.51912" />
-      <text
-         xml:space="preserve"
-         style="font-size:12.5847px;line-height:1.25;font-family:'Myriad Pro';-inkscape-font-specification:'Myriad Pro';display:inline;stroke-width:0.352279"
-         x="121.53645"
-         y="131.89651"
+         style="display:inline;fill:#a2b5c3;stroke:#000000;stroke-width:0.55766;stroke-linecap:round;stroke-linejoin:round"
+         d="m 116.65189,122.51912 h 5.41295 v 2.59724 h -5.41295 z" />
+      <g
+         aria-label="CI"
+         transform="scale(1.0267514,0.97394559)"
          id="text8837-0"
-         transform="scale(1.0267514,0.97394559)"><tspan
-           sodipodi:role="line"
-           id="tspan8835-0"
-           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.5847px;font-family:'Myriad Pro';-inkscape-font-specification:'Myriad Pro Bold';stroke-width:0.352279"
-           x="121.53645"
-           y="131.89651">CI</tspan></text>
+         style="font-size:12.5847px;line-height:1.25;font-family:'Myriad Pro';-inkscape-font-specification:'Myriad Pro';display:inline;stroke-width:0.352279">
+        <path
+           d="m 128.30702,130.15983 0.28945,1.49758 q -0.75508,0.37754 -2.17715,0.37754 -2.12682,0 -3.28461,-1.18297 -1.15779,-1.18296 -1.15779,-3.07066 0,-2.10165 1.30881,-3.29719 1.32139,-1.20813 3.32236,-1.20813 1.35914,0 2.08906,0.37754 l -0.39013,1.52275 q -0.75508,-0.31462 -1.61084,-0.31462 -1.19555,0 -1.95063,0.72991 -0.75508,0.71733 -0.75508,2.07648 0,1.28364 0.71733,2.02613 0.72991,0.7425 2.00096,0.7425 0.9061,0 1.59826,-0.27686 z"
+           style="font-weight:bold;-inkscape-font-specification:'Myriad Pro Bold'"
+           id="path24" />
+        <path
+           d="m 129.85493,123.41443 h 1.92546 v 8.48208 h -1.92546 z"
+           style="font-weight:bold;-inkscape-font-specification:'Myriad Pro Bold'"
+           id="path26" />
+      </g>
     </g>
   </g>
   <g
-     inkscape:groupmode="layer"
      id="layer2"
-     inkscape:label="Layer 2"
      style="display:none"
      transform="translate(35.131377,8.6738596)">
-    <rect
-       style="fill:#a2b5c3;fill-opacity:1;stroke:#000000;stroke-width:0.418835;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+    <path
        id="rect2465"
-       width="5.4129434"
-       height="2.5972443"
-       x="1.271909"
-       y="6.4582477" />
-    <rect
-       style="fill:#a2b5c3;fill-opacity:1;stroke:#000000;stroke-width:0.418835;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:#a2b5c3;stroke:#000000;stroke-width:0.418835;stroke-linecap:round;stroke-linejoin:round"
+       d="M 1.271909,6.4582477 H 6.6848524 V 9.0554919 H 1.271909 Z" />
+    <path
        id="rect2465-3"
-       width="5.4129434"
-       height="2.5972443"
-       x="1.2993798"
-       y="9.9177628" />
+       style="fill:#a2b5c3;stroke:#000000;stroke-width:0.418835;stroke-linecap:round;stroke-linejoin:round"
+       d="M 1.2993798,9.9177628 H 6.7123232 V 12.515007 H 1.2993798 Z" />
   </g>
   <g
-     inkscape:groupmode="layer"
      id="layer3"
-     inkscape:label="Layer 3"
      style="display:none"
      transform="translate(35.131377,8.6738596)" />
   <g
-     inkscape:groupmode="layer"
      id="layer4"
-     inkscape:label="Layer 4"
      style="display:none"
      transform="translate(35.131377,8.6738596)">
-    <text
-       xml:space="preserve"
-       style="font-size:12.5847px;line-height:1.25;font-family:'Myriad Pro';-inkscape-font-specification:'Myriad Pro';stroke-width:0.264583"
-       x="121.5442"
-       y="131.9101"
+    <g
+       aria-label="CI"
+       transform="matrix(1.0267514,0,0,0.97394559,-115.35251,-112.60136)"
        id="text8837"
-       transform="matrix(1.0267514,0,0,0.97394559,-115.35251,-112.60136)"><tspan
-         sodipodi:role="line"
-         id="tspan8835"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.5847px;font-family:'Myriad Pro';-inkscape-font-specification:'Myriad Pro Bold';stroke-width:0.264583"
-         x="121.5442"
-         y="131.9101">CI</tspan></text>
+       style="font-size:12.5847px;line-height:1.25;font-family:'Myriad Pro';-inkscape-font-specification:'Myriad Pro';stroke-width:0.264583">
+      <path
+         d="m 128.31477,130.17341 0.28944,1.49758 q -0.75508,0.37754 -2.17715,0.37754 -2.12681,0 -3.28461,-1.18296 -1.15779,-1.18297 -1.15779,-3.07067 0,-2.10165 1.30881,-3.29719 1.32139,-1.20813 3.32236,-1.20813 1.35915,0 2.08906,0.37754 l -0.39012,1.52275 q -0.75509,-0.31462 -1.61085,-0.31462 -1.19554,0 -1.95062,0.72991 -0.75509,0.71733 -0.75509,2.07648 0,1.28364 0.71733,2.02613 0.72991,0.7425 2.00097,0.7425 0.9061,0 1.59826,-0.27686 z"
+         style="font-weight:bold;-inkscape-font-specification:'Myriad Pro Bold'"
+         id="path31" />
+      <path
+         d="m 129.86268,123.42801 h 1.92545 v 8.48209 h -1.92545 z"
+         style="font-weight:bold;-inkscape-font-specification:'Myriad Pro Bold'"
+         id="path33" />
+    </g>
   </g>
 </svg>
