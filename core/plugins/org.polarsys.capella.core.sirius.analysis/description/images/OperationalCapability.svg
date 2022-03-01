@@ -1,37 +1,121 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="72.667px" height="49px" viewBox="8.083 12.667 72.667 49" enable-background="new 8.083 12.667 72.667 49"
-	 xml:space="preserve">
-<font horiz-adv-x="1000">
+
+<svg
+   version="1.1"
+   id="Layer_1"
+   x="0px"
+   y="0px"
+   width="72.667px"
+   height="49px"
+   viewBox="8.083 12.667 72.667 49"
+   enable-background="new 8.083 12.667 72.667 49"
+   xml:space="preserve"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+   id="defs48" />
+<font
+   horiz-adv-x="1000"
+   id="font10">
 <!-- Copyright 1992, 1994, 1997, 2000, 2004 Adobe Systems Incorporated. All rights reserved. Myriad is either a registered trademark or a trademark of Adobe Systems Incorporated in the United States and/or other countries. -->
-<font-face font-family="MyriadPro-Bold" units-per-em="1000" underline-position="-100" underline-thickness="50"/>
-<missing-glyph horiz-adv-x="500" d="M0,0l500,0l0,700l-500,0M250,395l-170,255l340,0M280,350l170,255l0,-510M80,50l170,255l170,-255M50,605l170,-255l-170,-255z"/>
-<glyph unicode="C" horiz-adv-x="595" d="M538,138C508,126 457,116 411,116C275,116 195,201 195,336C195,486 289,559 410,559C464,559 507,547 538,534l31,121C542,669 482,685 403,685C199,685 35,557 35,327C35,135 155,-10 388,-10C470,-10 533,5 561,19z"/>
-<glyph unicode="O" horiz-adv-x="717" d="M363,685C164,685 35,534 35,332C35,140 152,-11 352,-11C549,-11 683,123 683,344C683,530 570,685 363,685M359,564C464,564 522,460 522,339C522,208 463,110 360,110C258,110 196,203 196,335C196,466 256,564 359,564z"/>
+<font-face
+   font-family="MyriadPro-Bold"
+   units-per-em="1000"
+   underline-position="-100"
+   underline-thickness="50"
+   id="font-face2" />
+<missing-glyph
+   horiz-adv-x="500"
+   d="M0,0l500,0l0,700l-500,0M250,395l-170,255l340,0M280,350l170,255l0,-510M80,50l170,255l170,-255M50,605l170,-255l-170,-255z"
+   id="missing-glyph4" />
+<glyph
+   unicode="C"
+   horiz-adv-x="595"
+   d="M538,138C508,126 457,116 411,116C275,116 195,201 195,336C195,486 289,559 410,559C464,559 507,547 538,534l31,121C542,669 482,685 403,685C199,685 35,557 35,327C35,135 155,-10 388,-10C470,-10 533,5 561,19z"
+   id="glyph6" />
+<glyph
+   unicode="O"
+   horiz-adv-x="717"
+   d="M363,685C164,685 35,534 35,332C35,140 152,-11 352,-11C549,-11 683,123 683,344C683,530 570,685 363,685M359,564C464,564 522,460 522,339C522,208 463,110 360,110C258,110 196,203 196,335C196,466 256,564 359,564z"
+   id="glyph8" />
 </font>
 
-	<g>
-	<g>
-		<g>
+	<g
+   id="g43">
+	<g
+   id="g41">
+		<g
+   id="g39">
 			
-				<radialGradient id="SVGID_1_" cx="-148.8613" cy="1082.8604" r="20.7589" gradientTransform="matrix(1.1749 0 0 1.4904 216.7324 -1579.927)" gradientUnits="userSpaceOnUse">
-				<stop  offset="0" style="stop-color:#FDFCFA"/>
-				<stop  offset="0" style="stop-color:#FFFFFF"/>
-				<stop  offset="0" style="stop-color:#F7F1EB"/>
-				<stop  offset="0" style="stop-color:#EBDDCC"/>
-				<stop  offset="0" style="stop-color:#E0CAB0"/>
-				<stop  offset="0" style="stop-color:#CFAC85"/>
-				<stop  offset="0.0038" style="stop-color:#FFFFFF"/>
-				<stop  offset="0.0076" style="stop-color:#FFFFFF"/>
-				<stop  offset="0.1952" style="stop-color:#F8F3ED"/>
-				<stop  offset="0.5698" style="stop-color:#E7D4C0"/>
-				<stop  offset="1" style="stop-color:#D0AB84"/>
+				<radialGradient
+   id="SVGID_1_"
+   cx="-148.8613"
+   cy="1082.8604"
+   r="20.7589"
+   gradientTransform="matrix(1.1749,0,0,1.4904,216.7324,-1579.927)"
+   gradientUnits="userSpaceOnUse">
+				<stop
+   offset="0"
+   style="stop-color:#FDFCFA"
+   id="stop12" />
+				<stop
+   offset="0"
+   style="stop-color:#FFFFFF"
+   id="stop14" />
+				<stop
+   offset="0"
+   style="stop-color:#F7F1EB"
+   id="stop16" />
+				<stop
+   offset="0"
+   style="stop-color:#EBDDCC"
+   id="stop18" />
+				<stop
+   offset="0"
+   style="stop-color:#E0CAB0"
+   id="stop20" />
+				<stop
+   offset="0"
+   style="stop-color:#CFAC85"
+   id="stop22" />
+				<stop
+   offset="0.0038"
+   style="stop-color:#FFFFFF"
+   id="stop24" />
+				<stop
+   offset="0.0076"
+   style="stop-color:#FFFFFF"
+   id="stop26" />
+				<stop
+   offset="0.1952"
+   style="stop-color:#F8F3ED"
+   id="stop28" />
+				<stop
+   offset="0.5698"
+   style="stop-color:#E7D4C0"
+   id="stop30" />
+				<stop
+   offset="1"
+   style="stop-color:#D0AB84"
+   id="stop32" />
 			</radialGradient>
-			<path fill="url(#SVGID_1_)" stroke="#563B18" stroke-width="1.1145" d="M72.568,33.969c0,10.969-13.759,19.861-30.731,19.861
-				c-16.976,0-30.734-8.896-30.734-19.861c0-10.971,13.758-19.863,30.734-19.863C58.81,14.105,72.568,22.996,72.568,33.969z"/>
-			<text transform="matrix(1.731 0 0 1 19.2832 40.6963)" font-family="'MyriadPro-Bold'" font-size="20.1345">OC</text>
+			<path
+   fill="url(#SVGID_1_)"
+   stroke="#563b18"
+   stroke-width="1.1145"
+   d="m 72.568,33.969 c 0,10.969 -13.759,19.861 -30.731,19.861 -16.976,0 -30.734,-8.896 -30.734,-19.861 0,-10.971 13.758,-19.863 30.734,-19.863 16.973,-10e-4 30.731,8.89 30.731,19.863 z"
+   id="path35" />
+			<g
+   aria-label="OC"
+   transform="matrix(1.731,0,0,1,19.2832,40.6963)"
+   id="text37"
+   style="font-size:20.1345px;font-family:MyriadPro-Bold"><path
+     d="m 7.3088237,-13.792133 q 3.0201753,0 4.7316073,1.973181 1.711433,1.9530468 1.711433,4.8926838 0,3.3020581 -1.83224,5.2349702 -1.832239,1.91277751 -4.8322798,1.91277751 -2.9396371,0 -4.6712041,-1.95304651 -1.71143258,-1.9731811 -1.71143258,-4.9530872 0,-3.100713 1.81210508,-5.0940288 1.8322395,-2.01345 4.7920111,-2.01345 z m 2.3154675,3.745017 q -0.8657835,-1.308742 -2.3960055,-1.308742 -1.5302221,0 -2.4161401,1.288608 -0.8657835,1.2886078 -0.8657835,3.3221923 0,2.0134501 0.885918,3.2819236 0.9060525,1.248339 2.4161401,1.248339 1.5100875,0 2.375871,-1.288608 0.8859178,-1.288608 0.8859178,-3.3221926 0,-1.9127775 -0.8859178,-3.2215203 z"
+     style="font-size:20.1345px;font-family:MyriadPro-Bold"
+     id="path50" /><path
+     d="m 25.268779,-2.7785611 0.463093,2.39600559 q -1.20807,0.60403502 -3.483268,0.60403502 -3.402731,0 -5.255105,-1.89264301 -1.852374,-1.8926431 -1.852374,-4.9128182 0,-3.3624615 2.093988,-5.2752393 2.114123,-1.932912 5.315508,-1.932912 2.174526,0 3.342327,0.604035 l -0.624169,2.436275 q -1.20807,-0.503363 -2.577216,-0.503363 -1.912778,0 -3.120848,1.167801 -1.20807,1.1476668 -1.20807,3.3221928 0,2.0537191 1.147667,3.2416546 1.167801,1.1879355 3.201385,1.1879355 1.449684,0 2.557082,-0.442959 z"
+     style="font-size:20.1345px;font-family:MyriadPro-Bold"
+     id="path52" /></g>
 		</g>
 	</g>
 </g>

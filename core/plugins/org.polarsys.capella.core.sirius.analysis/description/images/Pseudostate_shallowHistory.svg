@@ -2,13 +2,6 @@
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 
 <svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    version="1.1"
    id="Layer_1"
    x="0px"
@@ -18,31 +11,15 @@
    viewBox="9 2.833 60.5 60"
    enable-background="new 9 2.833 60.5 60"
    xml:space="preserve"
-   inkscape:version="0.48.5 r10040"
-   sodipodi:docname="Pseudostate_shallowHistory_N.svg"><metadata
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"><metadata
    id="metadata54"><rdf:RDF><cc:Work
        rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
          rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><defs
-   id="defs52" /><sodipodi:namedview
-   pagecolor="#ffffff"
-   bordercolor="#666666"
-   borderopacity="1"
-   objecttolerance="10"
-   gridtolerance="10"
-   guidetolerance="10"
-   inkscape:pageopacity="0"
-   inkscape:pageshadow="2"
-   inkscape:window-width="801"
-   inkscape:window-height="539"
-   id="namedview50"
-   showgrid="false"
-   inkscape:zoom="1"
-   inkscape:cx="30.25"
-   inkscape:cy="30"
-   inkscape:window-x="0"
-   inkscape:window-y="0"
-   inkscape:window-maximized="0"
-   inkscape:current-layer="Layer_1" />
+   id="defs52" />
 <font
    horiz-adv-x="1000"
    id="font3">
@@ -146,15 +123,14 @@
    r="29.351999"
    id="circle46"
    style="fill:url(#SVGID_1_);stroke:#000000;stroke-width:0.77069998"
-   sodipodi:cx="39.25"
-   sodipodi:cy="32.834"
-   sodipodi:rx="29.351999"
-   sodipodi:ry="29.351999"
    transform="matrix(0.99435561,0,0,0.99435561,0.22204234,0.26782835)" />
-<text
-   transform="matrix(1.022 0 0 1 22.3818 48.0898)"
-   font-family="'MyriadPro-Bold'"
-   font-size="45.2953"
-   id="text48">H</text>
+<g
+   aria-label="H"
+   transform="matrix(1.022,0,0,1,22.3818,48.0898)"
+   id="text48"
+   style="font-size:45.2953px;line-height:0%;font-family:MyriadPro-Bold"><path
+     d="m 2.9894898,-30.529032 h 6.9301808 v 11.731483 H 21.288791 v -11.731483 h 6.884885 V 0 H 21.288791 V -12.773274 H 9.9196706 V 0 H 2.9894898 Z"
+     style="font-size:45.2953px;line-height:0%;font-family:MyriadPro-Bold"
+     id="path30" /></g>
 
 </svg>

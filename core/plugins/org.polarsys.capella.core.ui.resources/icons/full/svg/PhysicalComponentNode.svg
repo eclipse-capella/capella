@@ -7,40 +7,11 @@
    viewBox="0 0 19.84375 17.4625"
    version="1.1"
    id="svg5"
-   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
-   sodipodi:docname="PhysicalComponentNode.svg"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
-  <sodipodi:namedview
-     id="namedview7"
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1.0"
-     inkscape:pageshadow="2"
-     inkscape:pageopacity="0.0"
-     inkscape:pagecheckerboard="0"
-     inkscape:document-units="mm"
-     showgrid="false"
-     fit-margin-top="0"
-     fit-margin-left="0"
-     fit-margin-right="0"
-     fit-margin-bottom="0"
-     inkscape:zoom="8.0000001"
-     inkscape:cx="47.1875"
-     inkscape:cy="40.5625"
-     inkscape:window-width="1920"
-     inkscape:window-height="1057"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="layer1" />
   <defs
      id="defs2" />
   <g
-     inkscape:label="Layer 1"
-     inkscape:groupmode="layer"
      id="layer1"
      transform="translate(-58.342097,-104.10422)"
      style="display:inline">
@@ -51,40 +22,29 @@
          id="g27174"
          style="fill:#fff426;fill-opacity:1;stroke-width:1.33145"
          transform="matrix(0.75227475,0,0,0.74984345,-27.867648,19.424584)">
-        <rect
-           style="fill:#fff426;fill-opacity:1;stroke:#000000;stroke-width:0.55766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+        <path
            id="rect902"
-           width="21.127941"
-           height="15.095391"
-           x="119.08278"
-           y="116.74998" />
+           style="stroke:#000000;stroke-width:0.55766;stroke-linecap:round;stroke-linejoin:round"
+           d="m 119.08278,116.74998 h 21.12794 v 15.09539 h -21.12794 z" />
       </g>
-      <rect
-         style="display:inline;fill:#fff426;fill-opacity:1;stroke:#000000;stroke-width:0.418835;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+      <path
          id="rect2465-5"
-         width="4.0720205"
-         height="1.9475266"
-         x="59.865955"
-         y="108.70065" />
-      <rect
-         style="display:inline;fill:#fff426;fill-opacity:1;stroke:#000000;stroke-width:0.418835;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         style="display:inline;fill:#fff426;stroke:#000000;stroke-width:0.418835;stroke-linecap:round;stroke-linejoin:round"
+         d="m 59.865955,108.70065 h 4.072021 v 1.94753 h -4.072021 z" />
+      <path
          id="rect2465-3-2"
-         width="4.0720205"
-         height="1.9475266"
-         x="59.886623"
-         y="111.29475" />
-      <text
-         xml:space="preserve"
-         style="font-size:9.45184px;line-height:1.25;font-family:'Myriad Pro';-inkscape-font-specification:'Myriad Pro';display:inline;stroke-width:0.264582"
-         x="65.183815"
-         y="119.08659"
+         style="display:inline;fill:#fff426;stroke:#000000;stroke-width:0.418835;stroke-linecap:round;stroke-linejoin:round"
+         d="m 59.886623,111.29475 h 4.072021 v 1.94752 h -4.072021 z" />
+      <g
+         aria-label="P"
+         transform="scale(1.0284146,0.97237048)"
          id="text8837-0"
-         transform="scale(1.0284146,0.97237048)"><tspan
-           sodipodi:role="line"
-           id="tspan8835-0"
-           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:9.45184px;font-family:'Myriad Pro';-inkscape-font-specification:'Myriad Pro Bold';stroke-width:0.264582"
-           x="65.183815"
-           y="119.08659">P</tspan></text>
+         style="font-size:9.45184px;line-height:1.25;font-family:'Myriad Pro';-inkscape-font-specification:'Myriad Pro';display:inline;stroke-width:0.264582">
+        <path
+           d="m 65.807636,119.08659 v -6.28547 q 0.775051,-0.13233 1.94708,-0.13233 1.304354,0 1.947079,0.5104 0.680532,0.53876 0.680532,1.47449 0,0.95464 -0.586014,1.51229 -0.708888,0.67109 -2.069953,0.67109 -0.293007,0 -0.491496,-0.0284 v 2.27789 z m 1.427228,-5.27412 v 1.88091 q 0.160682,0.0378 0.482044,0.0378 0.576562,0 0.907377,-0.2741 0.330814,-0.27411 0.330814,-0.7656 0,-0.44424 -0.293007,-0.68999 -0.293007,-0.24574 -0.831762,-0.24574 -0.387525,0 -0.595466,0.0567 z"
+           style="font-weight:bold;-inkscape-font-specification:'Myriad Pro Bold'"
+           id="path16" />
+      </g>
     </g>
   </g>
 </svg>

@@ -11,10 +11,6 @@
    viewBox="0.375 0.199 55 55"
    enable-background="new 0.375 0.199 55 55"
    xml:space="preserve"
-   sodipodi:docname="FunctionSplitDiagram.svg"
-   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -28,24 +24,7 @@
    xmlns:xmpMM="http://ns.adobe.com/xap/1.0/mm/"
    xmlns:stRef="http://ns.adobe.com/xap/1.0/sType/ResourceRef#"
    xmlns:stEvt="http://ns.adobe.com/xap/1.0/sType/ResourceEvent#"><defs
-   id="defs1547" /><sodipodi:namedview
-   id="namedview1545"
-   pagecolor="#ffffff"
-   bordercolor="#666666"
-   borderopacity="1.0"
-   inkscape:pageshadow="2"
-   inkscape:pageopacity="0.0"
-   inkscape:pagecheckerboard="0"
-   showgrid="false"
-   inkscape:zoom="13.072727"
-   inkscape:cx="27.5"
-   inkscape:cy="27.5"
-   inkscape:window-width="1920"
-   inkscape:window-height="1057"
-   inkscape:window-x="1912"
-   inkscape:window-y="-8"
-   inkscape:window-maximized="1"
-   inkscape:current-layer="Layer_1" />
+   id="defs1547" />
 <metadata
    id="metadata1526"><?xpacket begin="﻿" id="W5M0MpCehiHzreSzNTczkc9d"?>
 <x:xmpmeta
@@ -252,47 +231,29 @@ q7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq
    style="stroke-width:1.01818" />
 <g
    id="g1542">
-	<rect
-   x="25.961"
-   y="14.921"
-   fill="#231F20"
-   width="17.242"
-   height="3.391"
-   id="rect1530" />
-	<rect
-   x="25.961"
-   y="37.231"
-   fill="#231F20"
-   width="17.242"
-   height="3.39"
-   id="rect1532" />
-	<rect
-   x="25.961"
-   y="29.862"
-   fill="#231F20"
-   width="3.39"
-   height="10.759"
-   id="rect1534" />
-	<rect
-   x="12.547"
-   y="22.454"
-   fill="#231F20"
-   width="14.544"
-   height="3.391"
-   id="rect1536" />
-	<rect
-   x="12.547"
-   y="29.862"
-   fill="#231F20"
-   width="14.544"
-   height="3.39"
-   id="rect1538" />
-	<rect
-   x="25.961"
-   y="14.921"
-   fill="#231F20"
-   width="3.39"
-   height="10.923"
-   id="rect1540" />
+	<path
+   id="rect1530"
+   style="fill:#231f20"
+   d="m 25.961,14.921 h 17.242001 v 3.391 H 25.961 Z" />
+	<path
+   id="rect1532"
+   style="fill:#231f20"
+   d="m 25.961,37.230999 h 17.242001 v 3.39 H 25.961 Z" />
+	<path
+   id="rect1534"
+   style="fill:#231f20"
+   d="m 25.961,29.862 h 3.390001 V 40.620999 H 25.961 Z" />
+	<path
+   id="rect1536"
+   style="fill:#231f20"
+   d="m 12.547,22.454 h 14.544 v 3.391001 H 12.547 Z" />
+	<path
+   id="rect1538"
+   style="fill:#231f20"
+   d="m 12.547,29.862 h 14.544 v 3.39 H 12.547 Z" />
+	<path
+   id="rect1540"
+   style="fill:#231f20"
+   d="m 25.961,14.921 h 3.390001 V 25.844 H 25.961 Z" />
 </g>
 </svg>

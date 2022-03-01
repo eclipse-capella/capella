@@ -7,49 +7,17 @@
    viewBox="0 0 4.2490797 4.2489786"
    version="1.1"
    id="svg154996"
-   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
-   sodipodi:docname="finalState.svg"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
-  <sodipodi:namedview
-     id="namedview154998"
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1.0"
-     inkscape:pageshadow="2"
-     inkscape:pageopacity="0.0"
-     inkscape:pagecheckerboard="0"
-     inkscape:document-units="mm"
-     showgrid="false"
-     fit-margin-top="0"
-     fit-margin-left="0"
-     fit-margin-right="0"
-     fit-margin-bottom="0"
-     inkscape:zoom="10.248373"
-     inkscape:cx="-14.294953"
-     inkscape:cy="13.416764"
-     inkscape:window-width="1920"
-     inkscape:window-height="1057"
-     inkscape:window-x="1912"
-     inkscape:window-y="-8"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="layer1" />
   <defs
      id="defs154993" />
   <g
-     inkscape:label="Layer 1"
-     inkscape:groupmode="layer"
      id="layer1"
      transform="translate(-102.84548,-146.33526)">
-    <ellipse
-       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.250312;stroke-opacity:1"
+    <path
        id="path157892"
-       cx="104.97002"
-       cy="148.45975"
-       rx="1.9993821"
-       ry="1.9993345" />
+       style="fill:none;stroke:#000000;stroke-width:0.250312"
+       d="m 106.9694,148.45975 a 1.9993821,1.9993345 0 0 1 -1.99938,1.99933 1.9993821,1.9993345 0 0 1 -1.99939,-1.99933 1.9993821,1.9993345 0 0 1 1.99939,-1.99934 1.9993821,1.9993345 0 0 1 1.99938,1.99934 z" />
     <path
        style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.0120048;stroke-opacity:1"
        d="m 104.77204,149.80177 c -0.78637,-0.13208 -1.2807,-0.93819 -1.0547,-1.71972 0.0605,-0.20956 0.17753,-0.40337 0.34433,-0.57079 0.16978,-0.17039 0.3653,-0.28342 0.60078,-0.34729 0.10525,-0.0285 0.14231,-0.0325 0.31122,-0.0336 0.20551,-0.001 0.26634,0.008 0.43477,0.0651 0.19892,0.0675 0.39085,0.19296 0.53779,0.35149 0.10355,0.11158 0.16207,0.19912 0.23271,0.34761 0.17974,0.3778 0.17296,0.81384 -0.0186,1.19413 -0.25963,0.51543 -0.82766,0.80713 -1.38834,0.71293 z"
