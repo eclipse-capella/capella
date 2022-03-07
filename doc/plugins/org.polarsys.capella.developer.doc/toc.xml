@@ -14,6 +14,8 @@
 -->
 <toc label="Developer Manual" link_to="PLUGINS_ROOT/org.polarsys.capella.doc/toc.xml#developer" sort="false">
    <topic href="html/Introduction.html" label="Introduction"></topic>
+   <topic href="html/Development Environment.html" label="Development environment">
+   </topic>
    <topic href="html/Capella Studio.html" label="Capella Studio"></topic>
    <topic href="html/Tutorials.html" label="Tutorials"></topic>
    <topic href="html/Viewpoint Guidelines.html" label="Viewpoint Guidelines">
