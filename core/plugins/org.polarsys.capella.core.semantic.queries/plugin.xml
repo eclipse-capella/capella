@@ -7917,5 +7917,22 @@
             </basicQuery>
          </categoryQuery>
       </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.technical.queries.internalLinks"
+            isTopLevel="true"
+            name="Internal Links"
+            isTechnical="true">
+         <availableForType
+               class="org.polarsys.capella.core.data.fa.FunctionalChain">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.technical.queries.FunctionalChainInternalLinks">
+            </basicQuery>
+         </categoryQuery>
+      </category>
    </extension>
 </plugin>
