@@ -51,6 +51,11 @@ public class CategoryImpl implements ICategory {
    * If true, means category is a direct child of the root element.
    */
   protected boolean isTopLevel;
+  
+  /**
+   * If true, means the category content shall only be accessible through API calls.    
+   */
+  protected boolean isTechnical;
 
   /**
    * If true, means the category is used in the 'Show Related Elements' menu.
@@ -112,6 +117,17 @@ public class CategoryImpl implements ICategory {
   @Override
   public boolean isTopLevel() {
     return isTopLevel;
+  }
+
+  @Override
+  public void setIsTechnical(boolean isTechnical) {
+    this.isTechnical = isTechnical;
+  }
+
+
+  @Override
+  public boolean isTechnical() {
+    return isTechnical;
   }
 
   @Override
