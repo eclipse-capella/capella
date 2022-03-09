@@ -72,7 +72,7 @@ public class CategoryRegistry {
     for (Entry<String, ICategory> entry : entrySet) {
       ICategory category = entry.getValue();
       // top level category and type matching
-      if (category.isTopLevel() && category.isAvailableForType(currentElement)) {
+      if (category.isTopLevel() && category.isAvailableForType(currentElement) && !category.isTechnical()) {
         categories.add(category);
       }
     }
@@ -230,6 +230,15 @@ public class CategoryRegistry {
         category.setIsTopLevel(Boolean.parseBoolean(isTopLevelCategory));
       } else {
         category.setIsTopLevel(false);
+      }
+
+      // Retrieve isTechnical attribute.
+      String isTechnicalCategory = categoryConfigurationElement
+          .getAttribute(Messages.getString("CategoryRegistry.Technical")); //$NON-NLS-1$
+      if (isTechnicalCategory != null) {
+        category.setIsTechnical(Boolean.parseBoolean(isTechnicalCategory));
+      } else {
+        category.setIsTechnical(false);
       }
 
       // Retrieve isusedInShowRelated attribute.
