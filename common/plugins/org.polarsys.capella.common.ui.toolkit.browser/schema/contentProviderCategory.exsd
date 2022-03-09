@@ -87,14 +87,21 @@ A category is composed of :
          <attribute name="isTopLevel" type="boolean" use="default" value="false">
             <annotation>
                <documentation>
-                  
+                  If true, means category is a direct child of the root element.
                </documentation>
             </annotation>
          </attribute>
          <attribute name="usedInShowRelated" type="boolean">
             <annotation>
                <documentation>
-                  
+                  If true, means the category is used in the &apos;Show Related Elements&apos; menu.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="isTechnical" type="boolean" use="default" value="false">
+            <annotation>
+               <documentation>
+                  If true, means category content shall only be accessible through API calls.
                </documentation>
             </annotation>
          </attribute>

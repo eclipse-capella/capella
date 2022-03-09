@@ -36,6 +36,7 @@ import org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper.B
 import org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper.CategoryWrapper;
 import org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper.EObjectWrapper;
 import org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper.PrimitiveWrapper;
+import org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper.TechnicalCategoryWrapper;
 import org.polarsys.capella.common.ui.toolkit.browser.model.ISemanticBrowserModel;
 import org.polarsys.capella.common.ui.toolkit.browser.query.QueryAdapter;
 import org.polarsys.capella.common.ui.toolkit.provider.GroupedAdapterFactoryContentProvider;
@@ -357,7 +358,11 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
     if (gatherElement instanceof EObject) {
       wrapper = new EObjectWrapper((EObject) gatherElement);
     } else if (gatherElement instanceof ICategory) {
-      wrapper = new CategoryWrapper((ICategory) gatherElement);
+      if (((ICategory) gatherElement).isTechnical()) {
+        wrapper = new TechnicalCategoryWrapper((ICategory) gatherElement);  
+      } else {
+        wrapper = new CategoryWrapper((ICategory) gatherElement);
+      }
     } else if (gatherElement instanceof Object) {
       wrapper = new PrimitiveWrapper(gatherElement);
     }

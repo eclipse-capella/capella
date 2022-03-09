@@ -5221,7 +5221,7 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.FunctionalChain_enactedFunctions_log"
             isTopLevel="true"
-            name="Involved Functions">
+            name="Functions Involvements">
          <availableForType
                class="org.polarsys.capella.core.data.fa.FunctionalChain">
          </availableForType>
@@ -5242,7 +5242,7 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.FunctionalChainReference_enactedFunctions_log"
             isTopLevel="true"
-            name="Involved Functions">
+            name="Functions Involvements">
          <availableForType
                class="org.polarsys.capella.core.data.fa.FunctionalChainReference">
          </availableForType>
@@ -5829,7 +5829,7 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.FunctionalChain_enactedFunctions_oa"
             isTopLevel="true"
-            name="Involved Operational Activities"
+            name="Operational Activities Involvements"
             usedInShowRelated="true">
          <availableForType
                class="org.polarsys.capella.core.data.oa.OperationalProcess">
@@ -6350,7 +6350,7 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.AbstractCapabilityInvolvedFunctionsOA"
             isTopLevel="true"
-            name="Involved Operational Activities">
+            name="Operational Activities Involvements">
          <availableForType
                class="org.polarsys.capella.core.data.oa.OperationalCapability">
          </availableForType>
@@ -7843,6 +7843,98 @@
          <categoryQuery>
             <basicQuery
                   class="org.polarsys.capella.core.semantic.queries.basic.queries.DiagramTitleBlockReferencedElements">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+   </extension>
+   <extension
+         id="x"
+         point="org.polarsys.capella.common.ui.toolkit.browser.contentProviderCategory">
+      <category
+            id="---------- FunctionalChain ----------">
+      </category>
+      <category
+            id="flatFunctions"
+            isTopLevel="true"
+            name="Flat Functions"
+            isTechnical="true">
+         <availableForType
+               class="org.polarsys.capella.core.data.fa.FunctionalChain">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.technical.queries.FunctionalChainFlatFunctions">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="flatExchanges"
+            isTopLevel="true"
+            name="Flat Exchanges"
+            isTechnical="true">
+         <availableForType
+               class="org.polarsys.capella.core.data.fa.FunctionalChain">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.technical.queries.FunctionalChainFlatExchanges">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="startingFunctions"
+            isTopLevel="true"
+            name="Starting Functions"
+            isTechnical="true">
+         <availableForType
+               class="org.polarsys.capella.core.data.fa.FunctionalChain">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.technical.queries.FunctionalChainStartingFunctions">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="endingFunctions"
+            isTopLevel="true"
+            name="Ending Functions"
+            isTechnical="true">
+         <availableForType
+               class="org.polarsys.capella.core.data.fa.FunctionalChain">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.technical.queries.FunctionalChainEndingFunctions">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="internalLinks"
+            isTopLevel="true"
+            name="Internal Links"
+            isTechnical="true">
+         <availableForType
+               class="org.polarsys.capella.core.data.fa.FunctionalChain">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.technical.queries.FunctionalChainInternalLinks">
             </basicQuery>
          </categoryQuery>
       </category>

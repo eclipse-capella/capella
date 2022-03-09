@@ -89,6 +89,19 @@ public interface ICategory {
   public boolean isTopLevel();
   
   /**
+   * IsTechnical setter.
+   * @param isTechnical 
+   */
+  public void setIsTechnical(boolean isTechnical);
+  
+  /**
+   * Return true if Category is a technical category. 
+   * Means the category content shall only be accessible through API calls.
+   * @return
+   */
+  public boolean isTechnical();
+  
+  /**
    * usedInShowRelated setter.
    * @param usedInShowRelated 
    */
