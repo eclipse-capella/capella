@@ -20,6 +20,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.IConfigurationElement;
@@ -57,7 +58,7 @@ public class CategoryRegistry {
   }
 
   /**
-   * Returns the available categories for the current element, that can be displayed in the view.
+   * Returns the non technical available categories for the current element, that can be displayed in the view.
    * 
    * @param viewerId
    *          the view id.
@@ -66,13 +67,25 @@ public class CategoryRegistry {
    * @return the available categories for the current element, that can be displayed in the view.
    */
   public Set<ICategory> gatherCategories(String viewerId, EObject currentElement) {
+    return gatherCategories(viewerId, currentElement, e -> !e.isTechnical());
+  }
+  
+  /**
+   * Returns the available categories for the current element
+   * 
+   * @param viewerId
+   *          the view id.
+   * @param currentElement
+   *          the current element.
+   * @return the available categories for the current element, that can be displayed in the view.
+   */
+  public Set<ICategory> gatherCategories(String viewerId, EObject currentElement, Function<ICategory, Boolean> filter) {
     HashMap<String, ICategory> elementRegistry = getRegistry(viewerId);
     Set<ICategory> categories = new HashSet<>();
     Set<Entry<String, ICategory>> entrySet = elementRegistry.entrySet();
     for (Entry<String, ICategory> entry : entrySet) {
       ICategory category = entry.getValue();
-      // top level category and type matching
-      if (category.isTopLevel() && category.isAvailableForType(currentElement) && !category.isTechnical()) {
+      if (category.isTopLevel() && filter.apply(category) && category.isAvailableForType(currentElement)) {
         categories.add(category);
       }
     }
@@ -92,17 +105,14 @@ public class CategoryRegistry {
   }
 
   /**
-   * Returns all the available categories for the current element.
+   * Returns all the available categories
    * 
-   * @param currentElement
-   *          the current element.
-   * @return all the available categories for the current element.
+   * @param filter allows to make some filtering in the categories retrieval
    */
-  public Set<ICategory> gatherCategories(EObject currentElement) {
-
-    Set<ICategory> referencedCategories = gatherCategories(IBrowserContentProvider.ID_REFERENCED_CP, currentElement);
-    Set<ICategory> referencingCategories = gatherCategories(IBrowserContentProvider.ID_REFERENCING_CP, currentElement);
-    Set<ICategory> currentCategories = gatherCategories(IBrowserContentProvider.ID_CURRENT_CP, currentElement);
+  public Set<ICategory> gatherFilteredCategories(EObject currentElement, Function<ICategory, Boolean> filter) {
+    Set<ICategory> referencedCategories = gatherCategories(IBrowserContentProvider.ID_REFERENCED_CP, currentElement, filter);
+    Set<ICategory> referencingCategories = gatherCategories(IBrowserContentProvider.ID_REFERENCING_CP, currentElement, filter);
+    Set<ICategory> currentCategories = gatherCategories(IBrowserContentProvider.ID_CURRENT_CP, currentElement, filter);
 
     Set<ICategory> categories = new HashSet<>();
     categories.addAll(referencedCategories);
@@ -110,6 +120,17 @@ public class CategoryRegistry {
     categories.addAll(currentCategories);
 
     return categories;
+  }
+  
+  /**
+   * Returns all available non technical categories for the current element.
+   * 
+   * @param currentElement
+   *          the current element.
+   * @return all the available categories for the current element.
+   */
+  public Set<ICategory> gatherCategories(EObject currentElement) {
+    return gatherFilteredCategories(currentElement, e -> !e.isTechnical());
   }
 
   /**

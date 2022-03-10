@@ -61,8 +61,13 @@ public class FunctionalChainInternalLinks extends SemanticQueries {
         // Query has been found! We execute it.
         List<Object> objResult = category.compute(testObject);
 
+        // Ensure we have the correct number of elements
         assertEquals(3, objResult.size());
 
+        /**
+         * Assert those are indeed internal: Input Port to Output Port Edge and Input/Output Ports are from the same
+         * Function.
+         */
         for (int i = 0; i < objResult.size(); i++) {
             InternalLinkEdge edge = (InternalLinkEdge) objResult.get(i);
             assertTrue(edge.getSource().getSemantic() instanceof FunctionInputPort);
