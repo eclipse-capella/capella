@@ -141,6 +141,7 @@ public class SemanticQueriesTestSuite extends BasicTestSuite {
     tests.add(new DataTypeElementsMaxLength());
     tests.add(new OperationalActivity_InvolvingCapabilities());
     tests.add(new OperationalCapability_InvolvedActivities());
+    tests.add(new FunctionalChainInternalLinks());
 
     return tests;
   }
