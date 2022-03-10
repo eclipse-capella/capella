@@ -142,6 +142,14 @@ public class SemanticQueriesTestSuite extends BasicTestSuite {
     tests.add(new OperationalActivity_InvolvingCapabilities());
     tests.add(new OperationalCapability_InvolvedActivities());
     tests.add(new FunctionalChainInternalLinks());
+    tests.add(new FunctionalChainFlatFunctions());
+    tests.add(new FunctionalChainFlatExchanges());
+    tests.add(new FunctionalChainEndingFunctions());
+    tests.add(new FunctionalChainStartingFunctions());
+    tests.add(new OperationalProcessFlatOperationalActivities());
+    tests.add(new OperationalProcessFlatInteractions());
+    tests.add(new OperationalProcessEndingOperationalActivities());
+    tests.add(new OperationalProcessStartingOperationalActivities());
 
     return tests;
   }
