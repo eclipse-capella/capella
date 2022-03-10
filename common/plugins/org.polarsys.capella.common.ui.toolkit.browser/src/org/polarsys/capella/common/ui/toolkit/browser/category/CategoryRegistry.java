@@ -171,6 +171,30 @@ public class CategoryRegistry {
   }
 
   /**
+   * Returns the available technical categories for the current element. Meaning categories not displayed in the view.
+   * 
+   * @param viewerId
+   *          the view id.
+   * @param currentElement
+   *          the current element.
+   * @return the available tecnical categories for the current element.
+   */
+  public Set<ICategory> gatherTechnicalCategories(String viewerId, EObject currentElement) {
+    HashMap<String, ICategory> elementRegistry = getRegistry(viewerId);
+    Set<ICategory> categories = new HashSet<>();
+    Set<Entry<String, ICategory>> entrySet = elementRegistry.entrySet();
+    for (Entry<String, ICategory> entry : entrySet) {
+      ICategory category = entry.getValue();
+      // top level category and type matching
+      if (category.isTopLevel() && category.isAvailableForType(currentElement) && category.isTechnical()) {
+        categories.add(category);
+      }
+    }
+    removeOverriddenCategories(categories, currentElement);
+    return categories;
+  }
+
+  /**
    * Returns the appropriate category registry, for the current viewerId.
    * @param viewerId the viewer id.
    * @return the appropriate category registry, for the current viewerId.
