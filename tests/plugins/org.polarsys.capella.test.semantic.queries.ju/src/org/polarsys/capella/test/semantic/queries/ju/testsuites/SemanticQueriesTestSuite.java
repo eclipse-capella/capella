@@ -20,6 +20,8 @@ import java.util.List;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 import org.polarsys.capella.test.semantic.queries.ju.UniqueIDInPluginsTest;
+import org.polarsys.capella.test.semantic.queries.ju.categoryregistry.testcases.CategoryRegistry_GatherAllCategories;
+import org.polarsys.capella.test.semantic.queries.ju.categoryregistry.testcases.CategoryRegistry_GatherTechnicalCategories;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.*;
 
 import junit.framework.Test;
@@ -150,6 +152,9 @@ public class SemanticQueriesTestSuite extends BasicTestSuite {
     tests.add(new OperationalProcessFlatInteractions());
     tests.add(new OperationalProcessEndingOperationalActivities());
     tests.add(new OperationalProcessStartingOperationalActivities());
+    
+    tests.add(new CategoryRegistry_GatherTechnicalCategories());
+    tests.add(new CategoryRegistry_GatherAllCategories());
 
     return tests;
   }
