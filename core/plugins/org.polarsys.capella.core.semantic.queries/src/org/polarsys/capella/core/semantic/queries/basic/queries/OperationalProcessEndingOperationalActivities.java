@@ -12,28 +12,20 @@
  *******************************************************************************/
 package org.polarsys.capella.core.semantic.queries.basic.queries;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
-import org.polarsys.capella.common.helpers.query.IQuery;
-import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.oa.OperationalProcess;
-import org.polarsys.capella.core.model.helpers.FunctionalChainExt;
 
-public class FunctionalChainFlatExchanges implements IQuery {
+public class OperationalProcessEndingOperationalActivities extends FunctionalChainEndingFunctions {
 
-    @Override
-    public List<Object> compute(Object object) {
-        if (isValidInstanceOf(object)) {
-            return new ArrayList<>(FunctionalChainExt.getFlatFunctionalExchanges((FunctionalChain) object));
-        }
-        return Collections.emptyList();
-
+    /**
+     * 
+     */
+    public OperationalProcessEndingOperationalActivities() {
+        // do nothing
     }
 
+    @Override
     protected boolean isValidInstanceOf(Object object) {
-        return !(object instanceof OperationalProcess);
+        return object instanceof OperationalProcess;
     }
 
 }
