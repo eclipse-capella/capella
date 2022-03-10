@@ -257,6 +257,7 @@ public abstract class SemanticQueries extends AbstractSemanticQueryTestCase {
   public static final String LA__LOGICAL_CAPABILITY_TRACE_TARGET = "055865bd-7993-4d80-adc5-819088a2b53b";
   public static final String PA = "8f178984-e6cf-46de-870f-05dcdbaa0025";
   public static final String PA__PHYSICAL_FUNCTIONS = "31d0ecd3-6548-4a0a-b86c-85b43638d4e9";
+  public static final String PA__FUNCTIONAL_CHAIN = "29dc7bfc-e5c5-4db7-801c-3ccfa47c793e";
   public static final String PA__ROOT_PF = "c2f9b98e-b412-48ac-9f85-024d3309db0f";
   public static final String PA__ROOT_PF__FUNCTION_REALIZATION_TO_ROOT_LOGICAL_FUNCTION = "9d100c93-58b0-4be2-9251-d6aa829e7b85";
   public static final String PA__CAPABILITIES = "8ed4e297-7f45-44fd-a68d-dff446ee79fa";
