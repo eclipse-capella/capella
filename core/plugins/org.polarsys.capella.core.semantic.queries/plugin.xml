@@ -1858,7 +1858,7 @@
        <category
             id="org.polarsys.capella.core.semantic.queries.ReferencedScenario"
             isTopLevel="true"
-            name="Referenced Scenario">
+            name="Referenced Scenarios">
          <targetBrowserId
                id="ReferencedElementBrowser">
          </targetBrowserId>
