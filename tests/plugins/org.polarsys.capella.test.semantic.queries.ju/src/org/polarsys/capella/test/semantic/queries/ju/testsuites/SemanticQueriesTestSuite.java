@@ -152,7 +152,15 @@ public class SemanticQueriesTestSuite extends BasicTestSuite {
     tests.add(new OperationalProcessFlatInteractions());
     tests.add(new OperationalProcessEndingOperationalActivities());
     tests.add(new OperationalProcessStartingOperationalActivities());
+    tests.add(new StateFragment_RelatedFunctions());
+    tests.add(new StateFragment_RelatedOperationalActivities());
     
+    tests.add(new Scenario_InvokedMessages());
+    tests.add(new Scenario_RelatedStates());
+    tests.add(new Scenario_RelatedOperationalActivities());
+    tests.add(new Scenario_RelatedFunctions());
+    tests.add(new Scenario_ReferencedScenarios());
+    tests.add(new Scenario_RepresentedInstances());
     tests.add(new CategoryRegistry_GatherTechnicalCategories());
     tests.add(new CategoryRegistry_GatherAllCategories());
 
