@@ -15,7 +15,7 @@ package org.polarsys.capella.test.semantic.queries.ju.testcases;
 import org.polarsys.capella.test.semantic.queries.ju.model.SemanticQueries;
 
 public class FunctionalChainEndingFunctions extends SemanticQueries {
-  String QUERY = "org.polarsys.capella.core.semantic.queries.basic.queries.functionalChains.endingFunctions";
+  String QUERY = "org.polarsys.capella.core.semantic.queries.basic.queries.functionalChain.endingFunctions";
 
   @Override
   protected String getQueryCategoryIdentifier() {
