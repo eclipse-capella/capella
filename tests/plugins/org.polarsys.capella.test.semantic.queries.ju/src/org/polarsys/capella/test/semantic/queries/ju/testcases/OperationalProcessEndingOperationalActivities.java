@@ -24,6 +24,6 @@ public class OperationalProcessEndingOperationalActivities extends SemanticQueri
 
   @Override
   public void test() throws Exception {
-    testQuery(OA__OPERATIONAL_PROCESS_2, OA__OPERATIONAL_ACTIVITY_11, OA__OPERATIONAL_ACTIVITY_13);
+    testQuery(OA__OPERATIONAL_PROCESS_2, OA__OPERATIONAL_ACTIVITIES__ROOT_OA__OPERATIONALACTIVITY_11, OA__OPERATIONAL_ACTIVITY_13);
   }
 }

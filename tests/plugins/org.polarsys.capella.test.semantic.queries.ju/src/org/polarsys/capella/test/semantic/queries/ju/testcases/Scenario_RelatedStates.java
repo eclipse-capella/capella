@@ -8,14 +8,15 @@
  * SPDX-License-Identifier: EPL-2.0
  * 
  * Contributors:
- *    Thales - initial API and implementation
+ *    Thales Global Services - initial API and implementation
  *******************************************************************************/
 package org.polarsys.capella.test.semantic.queries.ju.testcases;
 
 import org.polarsys.capella.test.semantic.queries.ju.model.SemanticQueries;
 
-public class OperationalProcessFlatOperationalActivities extends SemanticQueries {
-  String QUERY = "org.polarsys.capella.core.semantic.queries.basic.queries.operationalProcess.flatOperationalActivities";
+public class Scenario_RelatedStates extends SemanticQueries {
+
+  String QUERY = "org.polarsys.capella.core.semantic.queries.basic.queries.scenario.RelatedStates";
 
   @Override
   protected String getQueryCategoryIdentifier() {
@@ -24,6 +25,11 @@ public class OperationalProcessFlatOperationalActivities extends SemanticQueries
 
   @Override
   public void test() throws Exception {
-    testQuery(OA__OPERATIONAL_PROCESS_2, OA__OPERATIONAL_ACTIVITY_9, OA__OPERATIONAL_ACTIVITY_10, OA__OPERATIONAL_ACTIVITIES__ROOT_OA__OPERATIONALACTIVITY_11, OA__OPERATIONAL_ACTIVITY_12, OA__OPERATIONAL_ACTIVITY_13);
+      testQuery(OA__SCENARIO_OAS, OA__MODE_1_1_1, OA__MODE_1_1, OA__STATE_1_1);
+      testQuery(OA__SCENARIO_OES);
+      testQuery(SA__SCENARIO_OC1_FS, SA__MODE_1_1_1, SA__STATE_1_1_1);
+      testQuery(SA__SCENARIO_CAPA1_ES_2);
+      testQuery(SA__SCENARIO_IS, SA__STATE_ENTRYPOINT_1);
+      testQuery(PA__SCENARIO_ES_COPY, PA__MODE_2);
   }
 }

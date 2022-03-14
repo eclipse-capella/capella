@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2022 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -8,14 +8,15 @@
  * SPDX-License-Identifier: EPL-2.0
  * 
  * Contributors:
- *    Thales - initial API and implementation
+ *    Thales Global Services - initial API and implementation
  *******************************************************************************/
 package org.polarsys.capella.test.semantic.queries.ju.testcases;
 
 import org.polarsys.capella.test.semantic.queries.ju.model.SemanticQueries;
 
-public class OperationalProcessFlatOperationalActivities extends SemanticQueries {
-  String QUERY = "org.polarsys.capella.core.semantic.queries.basic.queries.operationalProcess.flatOperationalActivities";
+public class Scenario_ReferencedScenarios extends SemanticQueries {
+
+  String QUERY = "org.polarsys.capella.core.semantic.queries.ReferencedScenario";
 
   @Override
   protected String getQueryCategoryIdentifier() {
@@ -24,6 +25,13 @@ public class OperationalProcessFlatOperationalActivities extends SemanticQueries
 
   @Override
   public void test() throws Exception {
-    testQuery(OA__OPERATIONAL_PROCESS_2, OA__OPERATIONAL_ACTIVITY_9, OA__OPERATIONAL_ACTIVITY_10, OA__OPERATIONAL_ACTIVITIES__ROOT_OA__OPERATIONALACTIVITY_11, OA__OPERATIONAL_ACTIVITY_12, OA__OPERATIONAL_ACTIVITY_13);
+      testQuery(OA__SCENARIO_OAS, OA__SCENARIO_OAS_OC2);
+      testQuery(OA__SCENARIO_OES);
+      testQuery(SA__SCENARIO_OC1_FS, SA__SCENARIO_FS_OCAPA2);
+      testQuery(SA__SCENARIO_OC1_ES_1);
+      testQuery(SA__SCENARIO_CAPA1_ES_1);
+      testQuery(PA__SCENARIO_ES_COPY, PA__SCENARIO_ES);
+      testQuery(EPBS_SCENARIO_CAPA1_IS, EPBS_SCENARIO_CAPA1_IS_COPY);
+      testQuery(EPBS_SCENARIO_CAPA1_IS_COPY);
   }
 }
