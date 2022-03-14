@@ -7848,7 +7848,6 @@
       </category>
    </extension>
    <extension
-         id="x"
          point="org.polarsys.capella.common.ui.toolkit.browser.contentProviderCategory">
       <category
             id="---------- FunctionalChain ----------">
@@ -7950,7 +7949,7 @@
          </categoryQuery>
       </category>
       <category
-            id="org.polarsys.capella.core.semantic.queries.basic.queries.functionalChains.endingFunctions"
+            id="org.polarsys.capella.core.semantic.queries.basic.queries.functionalChain.endingFunctions"
             isTopLevel="true"
             name="Ending Functions">
          <availableForType
