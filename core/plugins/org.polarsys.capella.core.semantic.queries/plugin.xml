@@ -2109,7 +2109,7 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.StateFragmentRelatedFunctions"
             isTopLevel="true"
-            name="Related Function"
+            name="Related Functions"
             usedInShowRelated="true">
          <targetBrowserId
                id="ReferencedElementBrowser">
@@ -2120,6 +2120,23 @@
          <categoryQuery>
             <basicQuery
                   class="org.polarsys.capella.core.semantic.queries.basic.queries.StateFragmentRelatedFunctions">
+            </basicQuery>
+         </categoryQuery>         
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.StateFragmentRelatedOperationalActivities"
+            isTopLevel="true"
+            name="Related Operational Activities"
+            usedInShowRelated="true">
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <availableForType
+               class="org.polarsys.capella.core.data.interaction.StateFragment">
+         </availableForType>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.StateFragmentRelatedOperationalActivities">
             </basicQuery>
          </categoryQuery>         
       </category>
