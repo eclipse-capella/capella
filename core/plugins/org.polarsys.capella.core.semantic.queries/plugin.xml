@@ -7998,4 +7998,91 @@
          </categoryQuery>
       </category>
    </extension>
+   
+   <extension
+         point="org.polarsys.capella.common.ui.toolkit.browser.contentProviderCategory">
+      <category
+            id="---------- Scenarios ----------">
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.basic.queries.scenario.RepresentedInstances"
+            isTopLevel="true"
+            name="Represented Instances">
+         <availableForType
+               class="org.polarsys.capella.core.data.interaction.Scenario">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.Scenario_RepresentedInstances">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.basic.queries.scenario.InvokedMessages"
+            isTopLevel="true"
+            name="Invoked Messages">
+         <availableForType
+               class="org.polarsys.capella.core.data.interaction.Scenario">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.Scenario_InvokedMessages">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.basic.queries.scenario.RelatedStates"
+            isTopLevel="true"
+            name="Related States">
+         <availableForType
+               class="org.polarsys.capella.core.data.interaction.Scenario">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.Scenario_RelatedStates">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.basic.queries.scenario.RelatedFunctions"
+            isTopLevel="true"
+            name="Related Functions">
+         <availableForType
+               class="org.polarsys.capella.core.data.interaction.Scenario">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.Scenario_RelatedFunctions">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.basic.queries.scenario.RelatedOperationalActivities"
+            isTopLevel="true"
+            name="Related Operational Activities">
+         <availableForType
+               class="org.polarsys.capella.core.data.interaction.Scenario">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.Scenario_RelatedOperationalActivities">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+   </extension>
 </plugin>
