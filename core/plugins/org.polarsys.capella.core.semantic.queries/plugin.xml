@@ -3026,7 +3026,7 @@
             <category
                   id="org.polarsys.capella.core.semantic.queries.PhysicalLinkSouce"
                   isTopLevel="true"
-                  name="Physical Link Ends">
+                  name="Connected Node Components">
                <availableForType
                      class="org.polarsys.capella.core.data.cs.PhysicalLink">
                </availableForType>
@@ -4873,6 +4873,11 @@
                   class="org.polarsys.capella.core.semantic.queries.basic.queries.ComponentExchangeAllocatedFunctionalExchanges">
             </basicQuery>
          </categoryQuery>
+         <itemQueries>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.Connection_connectedFunctions">
+            </basicQuery>
+         </itemQueries>
       </category>
       <category
             id="org.polarsys.capella.core.semantic.queries.Connection_connectedComponents"
@@ -4887,6 +4892,54 @@
          <categoryQuery>
             <basicQuery
                   class="org.polarsys.capella.core.semantic.queries.basic.queries.Connection_connectedComponents">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.Connection_connectedEntities"
+            isTopLevel="true"
+            name="Connected Entities">
+         <availableForType
+               class="org.polarsys.capella.core.data.oa.CommunicationMean">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.Connection_connectedEntities">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.Connection_connectedFunctions"
+            isTopLevel="true"
+            name="Connected Functions">
+         <availableForType
+               class="org.polarsys.capella.core.data.fa.FunctionalExchange">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.Connection_connectedFunctions">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.Connection_connectedOperationalActivities"
+            isTopLevel="true"
+            name="Connected Operational Activities">
+         <availableForType
+               class="org.polarsys.capella.core.data.fa.FunctionalExchange">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.Connection_connectedOperationalActivities">
             </basicQuery>
          </categoryQuery>
       </category>
@@ -5070,6 +5123,11 @@
                   class="org.polarsys.capella.core.semantic.queries.basic.queries.ComponentExchangeAllocatingPhysicalLink">
             </basicQuery>
          </categoryQuery>
+         <itemQueries>
+			<basicQuery
+				class="org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalLinkSourceAndTarget">
+         	</basicQuery>
+         </itemQueries>
       </category>
       <category
             id="org.polarsys.capella.core.semantic.queries.ComponentExchangeAllocatingPhysicalPath1"
@@ -5183,6 +5241,11 @@
                   class="org.polarsys.capella.core.semantic.queries.basic.queries.CommunicationMean_AllocatedExchanges">
             </basicQuery>
          </categoryQuery>
+         <itemQueries>
+           <basicQuery
+                 class="org.polarsys.capella.core.semantic.queries.basic.queries.Connection_connectedOperationalActivities">
+           </basicQuery>
+         </itemQueries>
       </category>
       <category
             id="org.polarsys.capella.core.semantic.queries.CommunicationMean_source"
@@ -5910,7 +5973,7 @@
        <category
             id="org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalExchangeAllocatingCommunicationMean"
             isTopLevel="true"
-            name="Allocating Communication mean">
+            name="Allocating Communication Mean">
          <availableForType
                class="org.polarsys.capella.core.data.fa.FunctionalExchange">
          </availableForType>
@@ -5922,6 +5985,11 @@
                   class="org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalExchangeAllocatingCommunicationMean">
             </basicQuery>
          </categoryQuery>
+         <itemQueries>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.Connection_connectedEntities">
+            </basicQuery>
+         </itemQueries>
       </category>
       <category
             id="---------- Functional Exchanges ----------">
@@ -5941,6 +6009,11 @@
                    class="org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalExchangeAllocatingComponentExchange">
              </basicQuery>
           </categoryQuery>
+          <itemQueries>
+             <basicQuery
+                   class="org.polarsys.capella.core.semantic.queries.basic.queries.ComponentExchangeSourceAndTargetComponent">
+             </basicQuery>
+          </itemQueries>
        </category>
        <category
             id="org.polarsys.capella.core.semantic.queries.FunctionalExchange_realizingDataflowc"
@@ -6090,6 +6163,11 @@
                   class="org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalLinksRealizedConnection">
             </basicQuery>
          </categoryQuery>
+         <itemQueries>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.ComponentExchangeSourceAndTargetComponent">
+            </basicQuery>
+         </itemQueries>
       </category>
       <category
             id="org.polarsys.capella.core.semantic.queries.Function_referingPhysicalPaths11"
