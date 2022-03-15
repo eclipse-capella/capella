@@ -1,0 +1,43 @@
+
+= Managing images =
+
+Capella allows to use images to:
+* associate with nodes in diagrams
+* insert in the rich text editor
+
+== Selection dialog ==
+
+The image can be selected only from the workspace.
+
+[[Image:Images/imageSelectionDialog.png]]
+
+== Image in diagram ==
+
+The user clicks on the "Set style to workspace image" button to associate an image to a node 
+
+[[Image:Images/imageInDiagram.png]]
+
+== Image in rich text ==
+
+The user clicks on the "Add image" button to add an image in the rich text.
+
+[[Image:Images/imageInRichTextEditor.png]]
+
+If an image is pasted from the clipboard into the rich text editor, a new image is created in the '''images''' folder of the project.
+There is no base64 encoding.
+
+[[Image:Images/imagePastedInRichTextEditor.png]]
+
+== Images trouble shooting ==
+
+A special attention should be done about the images to ensure that they are '''properly located''' so that they can be '''properly displayed'''. 
+To check that, you can '''start the validation''' and  the [[../help/topic/org.polarsys.capella.validation.doc/html/Validation%20Rules/integrity/ValidationRules.html| I_46 and I_47 constraints]] will check that the images are reachable. 
+The quick fix allows to select a new image among the available one in the workspace.
+
+Before fixing the path to the image one by one
+* check that the set of images are properly located where it is supposed to
+* check that the project containing the images are opened.
+
+Then you can restart the validation to check again the images path
+
+If your are migrating the Capella project refer to [[../help/topic/org.polarsys.capella.ui.doc/html/First%20steps%20with%20Capella/3.5.%20How%20to%20migrate%20Capella%20projects.html#Special_attention_to_image_used_in_the_project|How to migrate Capella]].
