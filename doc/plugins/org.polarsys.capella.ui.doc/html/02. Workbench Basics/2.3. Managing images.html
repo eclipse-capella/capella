@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>2.3. Managing images</title>
+		<link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/>
+	</head>
+	<body>
+		<h1 id="Managing_images">Managing images</h1>
+		<p>Capella allows to use images to:</p>
+		<ul>
+			<li>associate with nodes in diagrams</li>
+			<li>insert in the rich text editor</li>
+		</ul>
+		<h2 id="Selection_dialog">Selection dialog</h2>
+		<p>The image can be selected only from the workspace.</p>
+		<p>
+			<img border="0" src="Images/imageSelectionDialog.png"/>
+		</p>
+		<h2 id="Image_in_diagram">Image in diagram</h2>
+		<p>The user clicks on the "Set style to workspace image" button to associate an image to a node </p>
+		<p>
+			<img border="0" src="Images/imageInDiagram.png"/>
+		</p>
+		<h2 id="Image_in_rich_text">Image in rich text</h2>
+		<p>The user clicks on the "Add image" button to add an image in the rich text.</p>
+		<p>
+			<img border="0" src="Images/imageInRichTextEditor.png"/>
+		</p>
+		<p>If an image is pasted from the clipboard into the rich text editor, a new image is created in the 
+			<b>images</b> folder of the project.
+			There is no base64 encoding.
+		</p>
+		<p>
+			<img border="0" src="Images/imagePastedInRichTextEditor.png"/>
+		</p>
+		<h2 id="Images_trouble_shooting">Images trouble shooting</h2>
+		<p>A special attention should be done about the images to ensure that they are 
+			<b>properly located</b> so that they can be 
+			<b>properly displayed</b>. 
+			To check that, you can 
+			<b>start the validation</b> and  the 
+			<a href="/wiki/../help/topic/org.polarsys.capella.validation.doc/html/Validation%20Rules/integrity/ValidationRules.html" title="../help/topic/org.polarsys.capella.validation.doc/html/Validation%20Rules/integrity/ValidationRules.html">I_46 and I_47 constraints</a> will check that the images are reachable. 
+			The quick fix allows to select a new image among the available one in the workspace.
+		</p>
+		<p>Before fixing the path to the image one by one</p>
+		<ul>
+			<li>check that the set of images are properly located where it is supposed to</li>
+			<li>check that the project containing the images are opened.</li>
+		</ul>
+		<p>Then you can restart the validation to check again the images path</p>
+		<p>If your are migrating the Capella project refer to 
+			<a href="/wiki/../help/topic/org.polarsys.capella.ui.doc/html/First%20steps%20with%20Capella/3.5.%20How%20to%20migrate%20Capella%20projects.html#Special_attention_to_image_used_in_the_project" title="../help/topic/org.polarsys.capella.ui.doc/html/First%20steps%20with%20Capella/3.5.%20How%20to%20migrate%20Capella%20projects.html#Special_attention_to_image_used_in_the_project">How to migrate Capella</a>.
+		</p>
+	</body>
+</html>

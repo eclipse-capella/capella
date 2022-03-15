@@ -84,7 +84,7 @@ The second mechanism is embed directly in the editor and is accessible via a ded
 It is also possible to insert images by using the dedicated button of the toolbar.
 
 
-[[Image:Images/4.06.%20Properties%20View_html_3563deb9.png]]
+[[Image:Images/imageInRichTextEditor.png]]
 
 
 To get more editing options, open the Description in a dedicated Editor. To do so, click on the second button of the toolbar. A new Editor will open.
