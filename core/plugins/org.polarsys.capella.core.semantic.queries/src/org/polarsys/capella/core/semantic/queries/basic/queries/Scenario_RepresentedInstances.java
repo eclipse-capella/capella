@@ -15,6 +15,7 @@ package org.polarsys.capella.core.semantic.queries.basic.queries;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.helpers.query.IQuery;
@@ -43,21 +44,18 @@ public class Scenario_RepresentedInstances implements IQuery {
             Scenario af = (Scenario) object;
             boolean reusableComponentsDriven = false;
             boolean reusableComponentsDrivenChecked = false;
-            for (InstanceRole role : af.getOwnedInstanceRoles()) {
-                AbstractInstance representedInstance = role.getRepresentedInstance();
-
-                if (representedInstance != null) {
-                    AbstractType abstractType = representedInstance.getAbstractType();
-                    // First time we get an abstract type, check for ReusableComponents configuration
-                    if (abstractType != null && !reusableComponentsDrivenChecked && representedInstance instanceof Part) {
-                        reusableComponentsDriven = CapellaProjectHelper.isReusableComponentsDriven(af).equals(TriStateBoolean.True);
-                        reusableComponentsDrivenChecked = true;
-                    }
-                    if (abstractType != null && !reusableComponentsDriven) {
-                        result.add(abstractType);
-                    } else {
-                        result.add(representedInstance);
-                    }
+            
+            for (AbstractInstance representedInstance : af.getOwnedInstanceRoles().stream().map(InstanceRole::getRepresentedInstance).collect(Collectors.toList())) {
+                AbstractType abstractType = representedInstance.getAbstractType();
+                // First time we get an abstract type, check for ReusableComponents configuration
+                if (abstractType != null && !reusableComponentsDrivenChecked && representedInstance instanceof Part) {
+                    reusableComponentsDriven = CapellaProjectHelper.isReusableComponentsDriven(af).equals(TriStateBoolean.True);
+                    reusableComponentsDrivenChecked = true;
+                }
+                if (abstractType != null && !reusableComponentsDriven) {
+                    result.add(abstractType);
+                } else {
+                    result.add(representedInstance);
                 }
             }
         }
