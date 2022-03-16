@@ -105,6 +105,7 @@ public abstract class SemanticQueries extends AbstractSemanticQueryTestCase {
   public static final String OA__OPERATIONAL_ENTITIES__OPERATIONALACTOR_6 = "3f98ced8-07bb-43bc-829a-07819a53debe";
   public static final String OA__OPERATIONAL_ENTITIES__OPERATIONALACTOR_6__COMPONENT_FUNCTIONAL_ALLOCATION_TO_MOTHER_ALLOC_ACTOR_OK = "d9a0587f-0884-4696-bade-1e6f78a302e7";
   public static final String OA__OPERATIONAL_ENTITIES__OPERATIONALACTOR_7 = "74cca88c-76ff-4d3e-857c-7b75c264ab21";
+  public static final String OA__COMM_MEANS_4 = "cfcf391f-59a3-4a23-ad91-c285000c5165";
   public static final String OA__OPERATIONAL_ACTIVITY_OA7 = "c1feb001-66ae-42d5-a63f-aff0c44b7335";
   public static final String OA__OPERATIONAL_ACTIVITY_OA8 = "8007a12d-96bb-4257-a907-52847af71700";
   public static final String OA__OPERATIONAL_CAPABILITY_OC5 = "02e5ae3f-4df2-4ab2-a7b6-c8922bca3819";
@@ -117,6 +118,7 @@ public abstract class SemanticQueries extends AbstractSemanticQueryTestCase {
   public static final String OA__INTERACTION_1 = "247de160-a79d-4326-b56f-19de24d0342a";
   public static final String OA__INTERACTION_2 = "3ebb4439-7850-4302-b230-2a217a5afc8d";
   public static final String OA__INTERACTION_3 = "a5022be5-7fdf-4fb9-ba5e-59bc3f242eca";
+  public static final String OA__INTERACTION_4 = "a6b42553-3db9-4408-9547-b9bae68e4a79";
   public static final String OA__INTERACTION_5 = "7bb37ad8-0468-40ab-9764-560ced5fed17";
   public static final String OA__STATE_1 = "9a8ce82a-5b6e-446b-9c1b-eb61daa5bd4d";
   public static final String OA__STATE_1_1 = "f6f2e13a-9e27-4d95-82e4-a3f1418c1d2d";
@@ -144,6 +146,7 @@ public abstract class SemanticQueries extends AbstractSemanticQueryTestCase {
   public static final String SA__ROOT_SF_SYSTEMFUNCTION_11 = "a759d66b-c0e2-4bb9-9bb9-316792afad1f";
   public static final String SA__ROOT_SF_SYSTEMFUNCTION_12 = "2d6aca52-a824-4c38-961e-c92824169092";
   public static final String SA__ROOT_SF_SYSTEMFUNCTION_13 = "570038d7-4c02-4221-95cb-2f46e3775353";
+  public static final String SA__INTERACTION_1 = "e779a409-bcb3-47c4-a704-71c460d8eb01";
   public static final String SA__ROOT_SF__FRAGMENT_ALLOCATED_FUNCTION = "74e18359-c9b9-4f8d-9161-50e924b69749";
   public static final String SA__ROOT_SF__FUNCTION_REALIZATION_TO_ROOT_OPERATIONAL_ACTIVITY = "54d60ce3-91f0-4c7f-87fd-c7cdc5033de1";
   public static final String SA__ROOT_SF__FUNCTIONALEXCHANGE_1 = "3d9cd590-fc65-4519-b683-b20b85662218";
@@ -309,6 +312,7 @@ public abstract class SemanticQueries extends AbstractSemanticQueryTestCase {
   public static final String PA__FUNCTIONAL_EXCHANGE_2 = "568784e4-2e0c-45f2-8b70-adef2e94dab3";
   public static final String PA__FUNCTIONAL_EXCHANGE_3 = "738c9f6f-dff9-44e6-8be0-c6686885b7f6";
   public static final String PA__FUNCTIONAL_EXCHANGE_5 = "80c31274-9a29-45a8-80bf-d520bc55d72d";
+  public static final String PA__COMPONENT_EXCHANGE_C2 = "c21b80a9-961a-4c16-b5c9-e77a8b5d64c6";
   public static final String PA__ROOT_PF = "c2f9b98e-b412-48ac-9f85-024d3309db0f";
   public static final String PA__ROOT_PF__FUNCTION_REALIZATION_TO_ROOT_LOGICAL_FUNCTION = "9d100c93-58b0-4be2-9251-d6aa829e7b85";
   public static final String PA__CAPABILITIES = "8ed4e297-7f45-44fd-a68d-dff446ee79fa";
@@ -322,9 +326,11 @@ public abstract class SemanticQueries extends AbstractSemanticQueryTestCase {
   public static final String PA__LOGICAL_ARCHITECTURE_REALIZATION_TO_LOGICAL_ARCHITECTURE = "559504e6-1991-4eef-822f-e2348a55ab42";
   public static final String PA__PHYSICAL_PORT_1 = "23580f9d-8883-40e2-93ed-47be496d140b";
   public static final String PA__PHYSICAL_PORT_2 = "7c85547a-e09f-4c93-8882-0ee9607c7bbd";
+  public static final String PA__PHYSICAL_LINK_1 = "a203d254-45d6-4158-b68c-e0988cff609f";
   public static final String PA__COMPONENT_PORT_1 = "378f9900-ac6c-4802-8256-07cdaa7208d1";
   public static final String PA__COMPONENT_PORT_2 = "2bc832d1-7e63-46c8-a6a1-c76f4e1170d0";
   public static final String PA__COMPONENT_PORT_3 = "b3fc4de1-0617-4f0c-90ef-3b9797b982f0";
+  public static final String PA__COMPONENT_PORT_4 = "8f89a487-2e03-4e2d-aab0-14299e46b59e";
   public static final String PA__MODE_2 = "0000d40e-9b17-448c-bf94-4136b484af22";
   public static final String PA__PC1 = "dc6a9822-ef9f-46e5-a608-582c6993c767";
   public static final String PA__PC2 = "f0c6b3f1-e04d-4a92-95a4-5385f51375c8";
