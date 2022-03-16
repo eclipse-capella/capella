@@ -34,12 +34,10 @@ public class Connection_connectedEntities implements IQuery {
 
 	/**
 	 * 
-	 * ownedCommunicationEnds.connectedPart(select "Standard Port").ownerElement (select "Physical Component" AND "not current Component") 
-	 * 
 	 * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
 	 */
     public List<Object> compute(Object object) {
-        List<Object> result = new ArrayList<Object>();
+        List<Object> result = new ArrayList<>();
         if (object instanceof CommunicationMean) {
             CommunicationMean comm = (CommunicationMean) object;
             EObject source = comm.getSourceEntity();

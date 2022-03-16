@@ -27,13 +27,11 @@ public class FunctionalChainInternalLinks implements IQuery {
     InvolvementGraph graph = new InvolvementGraph((FunctionalChain) object);
     if (!(object instanceof OperationalProcess)) {
       InternalLinksGraph iGraph = new InternalLinksGraph(graph);
-      
-      List<Object> result = iGraph.getEdges().values().stream().distinct()
+      return iGraph.getEdges().values().stream().distinct()
           .collect(Collectors.toCollection(() -> new TreeSet<>(
               Comparator.comparing((InternalLinksGraph.InternalLinkEdge e) -> EcoreUtil.getID(e.getSource().getSemantic()))
                   .thenComparing((InternalLinksGraph.InternalLinkEdge e) -> EcoreUtil.getID(e.getTarget().getSemantic())))))
           .stream().collect(Collectors.toList());
-      return result;
     }
     return Collections.emptyList();
   }
