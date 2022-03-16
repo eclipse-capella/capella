@@ -2274,7 +2274,7 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.OperationalEntity_OutgoingCommunicationMean"
             isTopLevel="true"
-            name="Outgoing Communication Mean">
+            name="Outgoing Communication Means">
          <targetBrowserId
                id="ReferencedElementBrowser">
          </targetBrowserId>
@@ -2288,14 +2288,14 @@
          </categoryQuery>
          <itemQueries>
             <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.ItemQuery_Flow_targetOwner">
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.ComponentExchangeTargetComponent">
             </basicQuery>
          </itemQueries>
       </category>
       <category
             id="org.polarsys.capella.core.semantic.queries.OperationalEntity_IncomingCommunicationMean"
             isTopLevel="true"
-            name="Incoming Communication Mean">
+            name="Incoming Communication Means">
          <targetBrowserId
                id="ReferencingElementBrowser">
          </targetBrowserId>
@@ -2309,7 +2309,7 @@
          </categoryQuery>
          <itemQueries>
             <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.ItemQuery_Flow_targetOwner">
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.ComponentExchangeSourceComponent">
             </basicQuery>
          </itemQueries>
       </category>
