@@ -147,6 +147,8 @@ public abstract class SemanticQueries extends AbstractSemanticQueryTestCase {
   public static final String SA__ROOT_SF_SYSTEMFUNCTION_12 = "2d6aca52-a824-4c38-961e-c92824169092";
   public static final String SA__ROOT_SF_SYSTEMFUNCTION_13 = "570038d7-4c02-4221-95cb-2f46e3775353";
   public static final String SA__INTERACTION_1 = "e779a409-bcb3-47c4-a704-71c460d8eb01";
+  public static final String SA__INTERACTION_2 = "6805dde8-e01e-41dc-9582-5cac0eaa75b2";
+  public static final String SA__COMPONENT_EXCHANGE_COMPEXCH1 = "aa8f92bc-d09c-4c72-a181-e6048df5b0ca";
   public static final String SA__ROOT_SF__FRAGMENT_ALLOCATED_FUNCTION = "74e18359-c9b9-4f8d-9161-50e924b69749";
   public static final String SA__ROOT_SF__FUNCTION_REALIZATION_TO_ROOT_OPERATIONAL_ACTIVITY = "54d60ce3-91f0-4c7f-87fd-c7cdc5033de1";
   public static final String SA__ROOT_SF__FUNCTIONALEXCHANGE_1 = "3d9cd590-fc65-4519-b683-b20b85662218";
@@ -255,6 +257,7 @@ public abstract class SemanticQueries extends AbstractSemanticQueryTestCase {
   public static final String LA__LOGICAL_FUNCTIONS = "7b1116f0-775f-4fb7-b190-e3020a4b8f55";
   public static final String LA__ROOT_LF = "e6a86efd-1b45-416c-80e7-1e424788b0ec";
   public static final String LA__ROOT_LF__LOGICALFUNCTION_1 = "3cb38702-d351-48a7-8e7f-27700bc83ff8";
+  public static final String LA__ROOT_LF__LOGICALFUNCTION_2 = "b87a57f7-c590-4d10-8604-c233669ebcc7";
   public static final String LA__ROOT_LF__FUNCTION_REALIZATION_TO_ROOT_SYSTEM_FUNCTION = "e133ade4-c80f-421f-8fd2-a8a8e0fa6fa5";
   public static final String LA__CAPABILITIES = "7f696210-08b4-492f-b9f4-26912aa5b5fd";
   public static final String LA__INTERFACES = "afab6515-dea4-409b-9df4-78c073828d8d";
@@ -290,6 +293,8 @@ public abstract class SemanticQueries extends AbstractSemanticQueryTestCase {
   public static final String LA__LOGICAL_ACTORS__LA_4 = "d908dd6d-1bcc-4512-87f5-581c3e661af2";
   public static final String LA__LOGICAL_ACTORS__LA_5 = "bbb1fb19-0836-46e3-bcee-fda7b89b1bda"; 
   public static final String LA__LOGICAL_ACTORS__LA_1__COMPONENT_FUNCTIONAL_ALLOCATION_TO_LOGICALFUNCTION_1 = "164051ff-7008-49fc-8ba0-286a23b8dae2";
+  public static final String LA__COMPONENT_EXCHANGE_C2 = "fc14617e-243a-4cd3-af57-98f53c6edfd9";
+  public static final String LA__FUNCTIONAL_EXCHANGE_1 = "32e7eb00-a4b4-4c59-b8db-f4a956b5dd32";
   public static final String LA__SYSTEM_ANALYSIS_REALIZATION_TO_SYSTEM_ANALYSIS = "198d7956-01f9-4acb-a7af-85be5958c0e3";
   public static final String LA__LOGICAL_INTERFACE_1 = "4b94444c-563b-48aa-8bfb-9e59615e973f";
   public static final String LA__LOGICAL_INTERFACE_2 = "b818ec8e-6cf0-4a5f-aad8-6468ef7653c2";
@@ -352,7 +357,6 @@ public abstract class SemanticQueries extends AbstractSemanticQueryTestCase {
   public static final String EPBS__INTERFACECI6 = "bc453745-cca1-4d70-8916-8979176655cc";
   public static final String SA__CAPABILITIES__CAPABILITY_1 = "c25c6355-166e-4d53-ba1d-627b047d7f9b"; //$NON-NLS-1$
   public static final String LA__ROOT_LF__FUNCTIONALCHAIN_1 = "776631b3-a5f6-4163-af86-4c4a11e2b2c0"; //$NON-NLS-1$
-  public static final String LA__ROOT_LF__LOGICALFUNCTION_2 = "b87a57f7-c590-4d10-8604-c233669ebcc7"; //$NON-NLS-1$
   public static final String LA__CAPABILITIES__CAPABILITY_1 = "aed377e4-51e3-46ff-9efd-21172936af86"; //$NON-NLS-1$
   public static final String LA__CAPABILITIES__CAPABILITY_1__FUNCTIONALCHAIN_1 = "437fc9bc-63f7-43fe-99f3-17e82f84b793"; //$NON-NLS-1$
   public static final String PA__CAPABILITIES__CAPABILITY_1 = "a51c707d-0591-43e7-8d87-3b49882745d9"; //$NON-NLS-1$

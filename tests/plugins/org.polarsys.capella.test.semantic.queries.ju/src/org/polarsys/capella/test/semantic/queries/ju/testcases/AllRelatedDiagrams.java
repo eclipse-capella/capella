@@ -24,6 +24,6 @@ public class AllRelatedDiagrams extends SemanticQueries {
 
   @Override
   public void test() throws Exception {
-    testQuery(LA__ROOT_LF__LOGICALFUNCTION_1, LDFB_ROOT_LOGICAL_FUNCTION, LDFB_ROOT_LOGICAL_FUNCTION_2);
+    testQuery(LA__ROOT_LF__LOGICALFUNCTION_1, LDFB_ROOT_LOGICAL_FUNCTION, LDFB_ROOT_LOGICAL_FUNCTION_2, LAB_LOGICAL_ARCHITECTURE_DIAGRAM);
   }
 }
