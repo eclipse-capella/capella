@@ -14,6 +14,7 @@
 package org.polarsys.capella.core.semantic.queries.basic.queries;
 
 import org.polarsys.capella.core.data.fa.ComponentExchange;
+import org.polarsys.capella.core.data.oa.CommunicationMean;
 import org.polarsys.capella.core.model.helpers.ComponentExchangeExt;
 
 /**
@@ -24,7 +25,7 @@ public class ComponentOutgoingComponentExchange extends AbstractComponentFiltere
 
   @Override
   protected boolean isValid(ComponentExchange exchange, Object object) {
-    return object.equals(ComponentExchangeExt.getSourceComponent(exchange)) && !ComponentExchangeExt.isDelegation(exchange);
+    return object.equals(ComponentExchangeExt.getSourceComponent(exchange)) && !ComponentExchangeExt.isDelegation(exchange) && !(exchange instanceof CommunicationMean);
   }
 
 }
