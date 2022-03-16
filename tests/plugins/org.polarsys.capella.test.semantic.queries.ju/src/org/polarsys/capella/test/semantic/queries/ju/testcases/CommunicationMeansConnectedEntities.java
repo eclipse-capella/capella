@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -14,8 +14,8 @@ package org.polarsys.capella.test.semantic.queries.ju.testcases;
 
 import org.polarsys.capella.test.semantic.queries.ju.model.SemanticQueries;
 
-public class PhysicalAllocatedComponentPorts extends SemanticQueries {
-  String QUERY = "org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalPortAllocatedComponentPorts";
+public class CommunicationMeansConnectedEntities extends SemanticQueries {
+  String QUERY = "org.polarsys.capella.core.semantic.queries.Connection_connectedEntities";
 
   @Override
   protected String getQueryCategoryIdentifier() {
@@ -24,9 +24,7 @@ public class PhysicalAllocatedComponentPorts extends SemanticQueries {
 
   @Override
   public void test() throws Exception {
-
-    testQuery(PA__PHYSICAL_PORT_1, PA__COMPONENT_PORT_1, PA__COMPONENT_PORT_4);
-
-    testQuery(PA__PHYSICAL_PORT_2, PA__COMPONENT_PORT_2, PA__COMPONENT_PORT_3);
+      testQueryIncludingItemQueries(OA__COMM_MEANS_4, OA__OPERATIONAL_ENTITIES__ENTITY_5, 
+              OA__OPERATIONAL_ENTITIES__OPERATIONALACTOR_4);
   }
 }

@@ -154,7 +154,6 @@ public class SemanticQueriesTestSuite extends BasicTestSuite {
     tests.add(new OperationalProcessStartingOperationalActivities());
     tests.add(new StateFragment_RelatedFunctions());
     tests.add(new StateFragment_RelatedOperationalActivities());
-    
     tests.add(new Scenario_InvokedMessages());
     tests.add(new Scenario_RelatedStates());
     tests.add(new Scenario_RelatedOperationalActivities());
@@ -163,7 +162,17 @@ public class SemanticQueriesTestSuite extends BasicTestSuite {
     tests.add(new Scenario_RepresentedInstances());
     tests.add(new CategoryRegistry_GatherTechnicalCategories());
     tests.add(new CategoryRegistry_GatherAllCategories());
-
+    tests.add(new CommunicationMeansAllocatedInteractions());
+    tests.add(new CommunicationMeansConnectedEntities());
+    tests.add(new ComponentExchangeAllocatingPhysicalLink());
+    tests.add(new ComponentExchangeAllocatedFunctionalExchanges());
+    tests.add(new FunctionalExchangeAllocatingComponentExchange());
+    tests.add(new FunctionalExchangeAllocatingCommunicationMean());
+    tests.add(new PhysicalLinkAllocatedComponentExchanges());
+    tests.add(new PhysicalPortIncomingPhysicalLinks());
+    tests.add(new FunctionalExchangeConnectedOperationalActivities());
+    tests.add(new FunctionalExchangeConnectedFunctions());
+    
     return tests;
   }
 
