@@ -24,6 +24,10 @@ public class ComponentExchangeAllocatedFunctionalExchanges extends SemanticQueri
 
   @Override
   public void test() throws Exception {
+      testQueryIncludingItemQueries(SA__COMPONENT_EXCHANGE_COMPEXCH1, SA__INTERACTION_2, SA__ROOT_SF_SYSTEMFUNCTION_10, 
+              SA__ROOT_SF_SYSTEMFUNCTION_12);
+      testQueryIncludingItemQueries(LA__COMPONENT_EXCHANGE_C2, LA__FUNCTIONAL_EXCHANGE_1, LA__ROOT_LF__LOGICALFUNCTION_1, 
+              LA__ROOT_LF__LOGICALFUNCTION_2);
       testQueryIncludingItemQueries(PA__COMPONENT_EXCHANGE_C2, PA__FUNCTIONAL_EXCHANGE_1, PA__FUNCTION_1, PA__FUNCTION_2);
   }
 }
