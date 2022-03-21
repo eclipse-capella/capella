@@ -18,6 +18,18 @@
       </topic>
       <topic label="API changes">
          <topic href="html/Release note/API_5.x_to_6.x.html" label="Capella 5.x to 6.x">
+            <topic href="html/Release note/API_5.x_to_6.x.html#Major_changes" label="Major changes">
+            	<topic href="html/Release note/API_5.x_to_6.x.html#Migration_to_Eclipse_2021-06" label="Migration to Eclipse 2021-06"></topic>
+            	<topic href="html/Release note/API_5.x_to_6.x.html#Version_major_increased" label="Version major increased"></topic>
+            	<topic href="html/Release note/API_5.x_to_6.x.html#A_JRE_is_now_embedded" label="A JRE is now embedded"></topic>
+            	<topic href="html/Release note/API_5.x_to_6.x.html#Capella_compatibility_with_Java_11" label="Capella compatibility with Java 11"></topic>
+            	<topic href="html/Release note/API_5.x_to_6.x.html#Image_management" label="Image management"></topic>
+            	<topic href="html/Release note/API_5.x_to_6.x.html#Rotative_SVG_images_in_diagrams" label="Rotative SVG images in diagrams"></topic>
+            	<topic href="html/Release note/API_5.x_to_6.x.html#Semantic_Browser" label="Semantic Browser"></topic>
+            	<topic href="html/Release note/API_5.x_to_6.x.html#No_backward_compatibility" label="No backward compatibility"></topic>
+            </topic>
+            <topic href="html/Release note/API_5.x_to_6.x.html#Raw_API_changes_from_5.2.0_to_6.0.0" label="Raw API changes from 5.2.0 to 6.0.0">
+			</topic>
          </topic>
          <topic href="html/Release note/API_1.4.x_to_5.x.html" label="Capella 1.4.x to 5.x">
 			<topic href="html/Release note/API_1.4.x_to_5.x.html#Major_changes" label="Major changes">

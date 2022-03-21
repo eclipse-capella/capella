@@ -15,5 +15,340 @@
 		<p>Capella 6.x is built with Eclipse 2021-06.</p>
 		<h3 id="Version_major_increased">Version major increased</h3>
 		<p>Metamodels have been updated to 6.0.0</p>
+		<h3 id="A_JRE_is_now_embedded">A JRE is now embedded</h3>
+		<p>A 
+			<b>JRE</b> Temurin Java 17 is now installed instead of a JDK under the jre folder in the capella folder.
+		</p>
+		<h3 id="Capella_compatibility_with_Java_11">Capella compatibility with Java 11</h3>
+		<p>BREE on Manifest.MF have been moved to JavaSE-11.</p>
+		<h3 id="Image_management">Image management</h3>
+		<p>A new image management UI has been integrated. Please refer to 
+			<a href="/wiki/../help/topic/org.polarsys.capella.ui.doc/html/02._Workbench_Basics/2.3._Managing_images.html" title="../help/topic/org.polarsys.capella.ui.doc/html/02. Workbench Basics/2.3. Managing images.html">Managing images</a>.
+		</p>
+		<h3 id="Rotative_SVG_images_in_diagrams">Rotative SVG images in diagrams</h3>
+		<p>Rotative image has been extended to handle SVG images on border nodes.</p>
+		<h3 id="Semantic_Browser">Semantic Browser</h3>
+		<p>Performances for the semantic browser have been improved. </p>
+		<p>Semantic Browser content has been completed and corrected. </p>
+		<p>A new flag 
+			<i>isTechnical</i> is available on the Category API to define queries not contributed to UI.
+		</p>
+		<h3 id="No_backward_compatibility">No backward compatibility</h3>
+		<p>Models from 1.4.x, 5.x have to be migrated to 6.0.0 and can no longer be opened in the previous version.</p>
+		<h2 id="Raw_API_changes_from_5.2.0_to_6.0.0">Raw API changes from 5.2.0 to 6.0.0</h2>
+		<h4 id="Changes_in_org.polarsys.capella.common.ui.toolkit.browser">Changes in <code>org.polarsys.capella.common.ui.toolkit.browser</code></h4>
+		<ul>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.common.ui.toolkit.browser.category.CategoryImpl.setIsTechnical(boolean)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.common.ui.toolkit.browser.category.CategoryImpl.isTechnical()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.common.ui.toolkit.browser.category.CategoryRegistry.gatherCategories(String, EObject, Function&lt;ICategory, Boolean&gt;)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.common.ui.toolkit.browser.category.CategoryRegistry.gatherFilteredCategories(EObject, Function&lt;ICategory, Boolean&gt;)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.common.ui.toolkit.browser.category.CategoryRegistry.gatherTechnicalCategories(String, EObject)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.common.ui.toolkit.browser.category.ICategory.setIsTechnical(boolean)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.common.ui.toolkit.browser.category.ICategory.isTechnical()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper.TechnicalCategoryWrapper</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper.TechnicalCategoryWrapper.TechnicalCategoryWrapper(ICategory)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper.TechnicalCategoryWrapper.getElement()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper.TechnicalCategoryWrapper.toString()</code>
+			</li>
+		</ul>
+		<h4 id="Changes_in_org.polarsys.capella.core.data.migration">Changes in <code>org.polarsys.capella.core.data.migration</code></h4>
+		<ul>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.data.migration.contribution.ActivateDiagramFiltersContribution</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.data.migration.contribution.ActivateDiagramFiltersContribution.unaryMigrationExecute(EObject, MigrationContext)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.data.migration.contribution.ImagePathInRichTextAttributeContribution</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.data.migration.contribution.ImagePathInRichTextAttributeContribution.postMigrationExecute(ExecutionManager, ResourceSet, MigrationContext)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.data.migration.contribution.ImagePathInRichTextAttributeContribution.createFileAndUpdateAttributeFromAbsoluteToRelativePath(EObject, EAttribute)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.data.migration.contribution.ImagePathInRichTextAttributeContribution.getFileToCreate(IFolder, File, EObject)</code>
+			</li>
+		</ul>
+		<h4 id="Changes_in_org.polarsys.capella.core.model.helpers">Changes in <code>org.polarsys.capella.core.model.helpers</code></h4>
+		<ul>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.model.helpers.graph.InvolvementHierarchyGraph</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.model.helpers.graph.InvolvementHierarchyGraph.getVertices()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.model.helpers.graph.InvolvementHierarchyGraph.getFunction()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.model.helpers.graph.InvolvementHierarchyGraph.getOutgoingEdges()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.model.helpers.graph.InvolvementHierarchyGraph.getIncomingEdges()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.model.helpers.graph.InvolvementHierarchyGraph.getLink()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.model.helpers.graph.InvolvementHierarchyGraph.getSource()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.model.helpers.graph.InvolvementHierarchyGraph.getTarget()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.model.helpers.move.IMoveHelper</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.model.helpers.move.IMoveHelper.checkSemanticRules(List&lt;EObject&gt;, EObject)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.model.helpers.move.IMoveHelper.checkEMFRules(List&lt;EObject&gt;, EObject)</code>
+			</li>
+		</ul>
+		<h4 id="Changes_in_org.polarsys.capella.core.platform.sirius.sirius.validation">Changes in <code>org.polarsys.capella.core.platform.sirius.sirius.validation</code></h4>
+		<ul>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram.ImagePathInDiagramCheck</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram.ImagePathInDiagramCheck.validate(final IValidationContext)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram.ImagePathOnRichTextAttributeCheck</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram.ImagePathOnRichTextAttributeCheck.validate(final IValidationContext)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram.ImagePathResolver</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram.ImagePathResolver.run(IMarker)</code>
+			</li>
+		</ul>
+		<h4 id="Changes_in_org.polarsys.capella.core.semantic.queries">Changes in <code>org.polarsys.capella.core.semantic.queries</code></h4>
+		<ul>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.Connection_connectedEntities</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.Connection_connectedEntities.Connection_connectedEntities()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.Connection_connectedEntities.compute(Object)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.Connection_connectedFunctions</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.Connection_connectedFunctions.Connection_connectedFunctions()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.Connection_connectedFunctions.compute(Object)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.Connection_connectedOperationalActivities</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.Connection_connectedOperationalActivities.Connection_connectedOperationalActivities()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChainEndingFunctions</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChainEndingFunctions.compute(Object)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChainFlatExchanges</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChainFlatExchanges.compute(Object)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChainFlatFunctions</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChainFlatFunctions.compute(Object)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChainStartingFunctions</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChainStartingFunctions.compute(Object)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.OperationalActivityInvolvingCapabilities</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.OperationalActivityInvolvingCapabilities.OperationalActivityInvolvingCapabilities()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.OperationalActivityInvolvingCapabilities.compute(Object)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.OperationalProcessEndingOperationalActivities</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.OperationalProcessEndingOperationalActivities.OperationalProcessEndingOperationalActivities()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.OperationalProcessFlatInteractions</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.OperationalProcessFlatInteractions.OperationalProcessFlatInteractions()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.OperationalProcessFlatOperationalActivities</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.OperationalProcessFlatOperationalActivities.OperationalProcessFlatOperationalActivities()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.OperationalProcessStartingOperationalActivities</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.OperationalProcessStartingOperationalActivities.OperationalProcessStartingOperationalActivities()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.Scenario_InvokedMessages</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.Scenario_InvokedMessages.Scenario_InvokedMessages()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.Scenario_InvokedMessages.compute(Object)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.Scenario_RelatedFunctions</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.Scenario_RelatedFunctions.Scenario_RelatedFunctions()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.Scenario_RelatedFunctions.compute(Object)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.Scenario_RelatedOperationalActivities</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.Scenario_RelatedOperationalActivities.Scenario_RelatedOperationalActivities()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.Scenario_RelatedStates</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.Scenario_RelatedStates.Scenario_RelatedStates()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.Scenario_RelatedStates.compute(Object)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.Scenario_RepresentedInstances</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.Scenario_RepresentedInstances.Scenario_RepresentedInstances()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.Scenario_RepresentedInstances.compute(Object)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.StateFragmentRelatedOperationalActivities</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.semantic.queries.technical.queries.FunctionalChainInternalLinks</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.semantic.queries.technical.queries.FunctionalChainInternalLinks.compute(Object)</code>
+			</li>
+		</ul>
+		<h4 id="Changes_in_org.polarsys.capella.core.sirius.analysis">Changes in <code>org.polarsys.capella.core.sirius.analysis</code></h4>
+		<ul>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.sirius.analysis.ModeStateMachineServices.getComputedTransitions(Region, DDiagram)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.sirius.analysis.ModeStateMachineServices.getComputedTransitionSource(EObject, DDiagram)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.sirius.analysis.ModeStateMachineServices.getComputedTransitionTarget(EObject, DDiagram)</code>
+			</li>
+			<li><span class="labels"><span class="label label-error">Removed</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.sirius.analysis.editpart.RotativeDNode4EditPart</code>
+			</li>
+			<li><span class="labels"><span class="label label-error">Removed</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.sirius.analysis.editpart.RotativeImageEditPart</code>
+			</li>
+			<li><span class="labels"><span class="label label-error">Removed</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.sirius.analysis.editpart.RotativeImageEditPartProvider</code>
+			</li>
+			<li><span class="labels"><span class="label label-error">Removed</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.sirius.analysis.editpart.RotativeWorkspaceImageFigure</code>
+			</li>
+			<li><span class="labels"><span class="label label-error">Removed</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.sirius.analysis.editpart.RotativeWorkspaceImageHelper</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.sirius.analysis.helpers.DDiagramHelper.isMSM(DDiagram)</code>
+			</li>
+		</ul>
+		<h4 id="Changes_in_org.polarsys.capella.core.transition.common.ui">Changes in <code>org.polarsys.capella.core.transition.common.ui</code></h4>
+		<ul>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.transition.common.ui.handlers.merge.DiffCategoryProxy.covers(IDifference&lt;?&gt;, EMFDiffNode)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.transition.common.ui.handlers.merge.DiffCategoryProxy.copy()</code>
+			</li>
+		</ul>
+		<h4 id="Changes_in_org.polarsys.capella.core.ui.semantic.browser">Changes in <code>org.polarsys.capella.core.ui.semantic.browser</code></h4>
+		<ul>
+			<li><span class="labels"><span class="label label-error">Removed</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.ui.semantic.browser.view.SemanticBrowserView.saveInput(final Object)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.ui.semantic.browser.view.SemanticBrowserView.saveInput(final Object, final ISelection)</code>
+			</li>
+		</ul>
 	</body>
 </html>
