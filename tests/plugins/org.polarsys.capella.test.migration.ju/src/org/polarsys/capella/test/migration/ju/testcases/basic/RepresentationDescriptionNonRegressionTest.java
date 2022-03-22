@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019, 2020, THALES GLOBAL SERVICES.
+ * Copyright (c) 2019, 2022, THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -30,7 +30,7 @@ import org.polarsys.capella.test.migration.ju.helpers.MigrationHelper;
  */
 public class RepresentationDescriptionNonRegressionTest extends BasicTestCase {
 
-  private static final String MODEL_NAME = "representationDescription";
+  protected static String MODEL_NAME = "representationDescription-1_4_x";
 
   /**
    * This model contains for each architecture level representations that have as documentation their own name.

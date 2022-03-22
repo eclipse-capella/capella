@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019, 2020, THALES GLOBAL SERVICES.
+ * Copyright (c) 2019, 2022, THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -25,7 +25,7 @@ import org.polarsys.capella.test.framework.helpers.IResourceHelpers;
 import org.polarsys.capella.test.migration.ju.helpers.MigrationHelper;
 
 public class InvalidAirdReferenceMigrationTest extends BasicTestCase {
-  private static final String SOURCE_MODEL = "InvalidAirdElement";
+  protected static String SOURCE_MODEL = "InvalidAirdElement-1_4_x";
 
   // list of catalogelementLINK list
   private static final String CATALOG_ELEMENT_LINK_VALID_ID = "aea43153-d429-40af-b4c6-e94b37938167";

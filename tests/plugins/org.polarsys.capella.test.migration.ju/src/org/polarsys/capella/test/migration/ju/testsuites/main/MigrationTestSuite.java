@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018, 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -25,9 +25,11 @@ import org.polarsys.capella.test.migration.ju.testcases.basic.EnableFCAndPPFilte
 import org.polarsys.capella.test.migration.ju.testcases.basic.FunctionalChainNonRegressionTest;
 import org.polarsys.capella.test.migration.ju.testcases.basic.ImagePathInRichTextAttributeMigrationTest;
 import org.polarsys.capella.test.migration.ju.testcases.basic.InvalidAirdReferenceMigrationTest;
+import org.polarsys.capella.test.migration.ju.testcases.basic.InvalidAirdReferenceMigrationV5Test;
 import org.polarsys.capella.test.migration.ju.testcases.basic.MigrationDelegatedHandlerTest;
 import org.polarsys.capella.test.migration.ju.testcases.basic.MigrationEnabledTest;
 import org.polarsys.capella.test.migration.ju.testcases.basic.RepresentationDescriptionNonRegressionTest;
+import org.polarsys.capella.test.migration.ju.testcases.basic.RepresentationDescriptionNonRegressionV5Test;
 import org.polarsys.capella.test.migration.ju.testcases.basic.SysmodelFilterMigration;
 import org.polarsys.capella.test.migration.ju.testcases.basic.SysmodelMigrationLayout;
 
@@ -52,10 +54,12 @@ public class MigrationTestSuite extends BasicTestSuite {
 
     tests.add(new MigrationDelegatedHandlerTest());
     tests.add(new RepresentationDescriptionNonRegressionTest());
+    tests.add(new RepresentationDescriptionNonRegressionV5Test());
     tests.add(new FunctionalChainNonRegressionTest());
     tests.add(new SysmodelFilterMigration());
     tests.add(new SysmodelMigrationLayout());
     tests.add(new InvalidAirdReferenceMigrationTest());
+    tests.add(new InvalidAirdReferenceMigrationV5Test());
     tests.add(new MigrationEnabledTest());
     tests.add(new EnableFCAndPPFiltersMigrationTest());
     tests.add(new ImagePathInRichTextAttributeMigrationTest());
