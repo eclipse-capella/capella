@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/6.0.0" xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/6.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_NLQrkApKEeeQwL0UBpxz_g" selectedViews="_NL8BAApKEeeQwL0UBpxz_g _NanWMApKEeeQwL0UBpxz_g _Na0KgApKEeeQwL0UBpxz_g _Nbh8MApKEeeQwL0UBpxz_g _Nb0QEApKEeeQwL0UBpxz_g _Nb2FQApKEeeQwL0UBpxz_g _NcSxMApKEeeQwL0UBpxz_g" version="14.5.1.202106111100">
+  <viewpoint:DAnalysis uid="_NLQrkApKEeeQwL0UBpxz_g" selectedViews="_NL8BAApKEeeQwL0UBpxz_g _NanWMApKEeeQwL0UBpxz_g _Na0KgApKEeeQwL0UBpxz_g _Nbh8MApKEeeQwL0UBpxz_g _Nb0QEApKEeeQwL0UBpxz_g _Nb2FQApKEeeQwL0UBpxz_g _NcSxMApKEeeQwL0UBpxz_g" version="15.0.0.202201261500">
     <semanticResources>bug1512.afm</semanticResources>
     <semanticResources>bug1512.capella</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_NL8BAApKEeeQwL0UBpxz_g">
@@ -8,11 +8,11 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_NanWMApKEeeQwL0UBpxz_g">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_QqfLgApKEeeQwL0UBpxz_g" name="[OABD] Root Operational Activity" repPath="#_QqhnwApKEeeQwL0UBpxz_g">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_QqfLgApKEeeQwL0UBpxz_g" name="[OABD] Root Operational Activity" repPath="#_QqhnwApKEeeQwL0UBpxz_g" changeId="e256b083-f941-437b-b07d-93173f9bf855">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Breakdown']"/>
         <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="bug1512.capella#752ca1b0-0b29-4682-8bf9-8e4100dee343"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Tw2fgApKEeeQwL0UBpxz_g" name="[OAIB] OperationalActivity 3" repPath="#_Tw6w8ApKEeeQwL0UBpxz_g">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Tw2fgApKEeeQwL0UBpxz_g" name="[OAIB] OperationalActivity 3" repPath="#_Tw6w8ApKEeeQwL0UBpxz_g" changeId="ffad1f14-73e7-472c-b3bb-3127c289a48c">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="bug1512.capella#e0280209-bff4-4490-bc06-67b8c4a4a485"/>
       </ownedRepresentationDescriptors>

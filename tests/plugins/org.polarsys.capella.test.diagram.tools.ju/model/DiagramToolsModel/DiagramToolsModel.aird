@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:concern="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/6.0.0" xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/6.0.0" xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/6.0.0" xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/6.0.0" xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/6.0.0" xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/6.0.0" xmlns:org.polarsys.capella.core.data.interaction="http://www.polarsys.org/capella/core/interaction/6.0.0" xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/6.0.0" xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/6.0.0" xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/6.0.0" xmlns:sequence="http://www.eclipse.org/sirius/diagram/sequence/2.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/concern http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0 http://www.eclipse.org/sirius/diagram/sequence/2.0.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_U8OCcD5tEemFMbQILueuVQ" selectedViews="_U9HaUD5tEemFMbQILueuVQ _VM6J0D5tEemFMbQILueuVQ _VNNr0D5tEemFMbQILueuVQ _VNW1wD5tEemFMbQILueuVQ _VNqXwD5tEemFMbQILueuVQ _VNzhsD5tEemFMbQILueuVQ _VOQNoD5tEemFMbQILueuVQ" version="14.5.1.202106111100">
+  <viewpoint:DAnalysis uid="_U8OCcD5tEemFMbQILueuVQ" selectedViews="_U9HaUD5tEemFMbQILueuVQ _VM6J0D5tEemFMbQILueuVQ _VNNr0D5tEemFMbQILueuVQ _VNW1wD5tEemFMbQILueuVQ _VNqXwD5tEemFMbQILueuVQ _VNzhsD5tEemFMbQILueuVQ _VOQNoD5tEemFMbQILueuVQ" version="15.0.0.202201261500">
     <semanticResources>DiagramToolsModel.afm</semanticResources>
     <semanticResources>DiagramToolsModel.capella</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_U9HaUD5tEemFMbQILueuVQ">
@@ -11,39 +11,39 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_VNNr0D5tEemFMbQILueuVQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_0e9iI3JPEemAwaOpjxlcHQ" name="OA Package Dependencies Tools Diagram" repPath="#_0e0YMHJPEemAwaOpjxlcHQ">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_0e9iI3JPEemAwaOpjxlcHQ" name="OA Package Dependencies Tools Diagram" repPath="#_0e0YMHJPEemAwaOpjxlcHQ" changeId="45bbeb27-bc10-4fee-9628-20a3c7a582fe">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Package%20Dependencies']"/>
         <target xmi:type="org.polarsys.capella.core.data.information:DataPkg" href="DiagramToolsModel.capella#c440b299-48fc-4357-b54c-a3a26a7ee496"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_8jv383JPEemAwaOpjxlcHQ" name="SA Package Dependencies Tools Diagram" repPath="#_8jpKQHJPEemAwaOpjxlcHQ">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_8jv383JPEemAwaOpjxlcHQ" name="SA Package Dependencies Tools Diagram" repPath="#_8jpKQHJPEemAwaOpjxlcHQ" changeId="8c00d270-ce5a-4fa9-94d6-fb9f220b3fca">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Package%20Dependencies']"/>
         <target xmi:type="org.polarsys.capella.core.data.information:DataPkg" href="DiagramToolsModel.capella#b0581dcc-10a3-4a9d-a27e-83a36ac0b5bc"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Ddbsk3JQEemAwaOpjxlcHQ" name="LA Package Dependencies Tools Diagram" repPath="#_DdSioHJQEemAwaOpjxlcHQ">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Ddbsk3JQEemAwaOpjxlcHQ" name="LA Package Dependencies Tools Diagram" repPath="#_DdSioHJQEemAwaOpjxlcHQ" changeId="fc9ddc43-a9f1-4ac1-876b-6d8f231cf58e">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Package%20Dependencies']"/>
         <target xmi:type="org.polarsys.capella.core.data.information:DataPkg" href="DiagramToolsModel.capella#9f700d5f-22f8-4020-9d5a-7233ebad61ad"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_IPg7hXJQEemAwaOpjxlcHQ" name="PA Package Dependencies Tools Diagram" repPath="#_IPg7gHJQEemAwaOpjxlcHQ">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_IPg7hXJQEemAwaOpjxlcHQ" name="PA Package Dependencies Tools Diagram" repPath="#_IPg7gHJQEemAwaOpjxlcHQ" changeId="0e43ba17-37cd-4981-9e5e-6880ba645bf6">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Package%20Dependencies']"/>
         <target xmi:type="org.polarsys.capella.core.data.information:DataPkg" href="DiagramToolsModel.capella#a808ecae-2cf9-486a-a193-46610b68eba9"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_uJ8CEXV2EemJj8Zl0ZGvoA" name="OA Dependencies Scenarios Test Diagram" repPath="#_uJy4IHV2EemJj8Zl0ZGvoA">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_uJ8CEXV2EemJj8Zl0ZGvoA" name="OA Dependencies Scenarios Test Diagram" repPath="#_uJy4IHV2EemJj8Zl0ZGvoA" changeId="32b5a749-2cd9-41a8-a2f0-223cdffc00d6">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Package%20Dependencies']"/>
         <target xmi:type="org.polarsys.capella.core.data.information:DataPkg" href="DiagramToolsModel.capella#c440b299-48fc-4357-b54c-a3a26a7ee496"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_FqwypXV4EemJj8Zl0ZGvoA" name="SA Dependencies Scenarios Test Diagram" repPath="#_FqwyoHV4EemJj8Zl0ZGvoA">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_FqwypXV4EemJj8Zl0ZGvoA" name="SA Dependencies Scenarios Test Diagram" repPath="#_FqwyoHV4EemJj8Zl0ZGvoA" changeId="a7889999-d770-48d7-85d7-f600c0357ae0">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Package%20Dependencies']"/>
         <target xmi:type="org.polarsys.capella.core.data.information:DataPkg" href="DiagramToolsModel.capella#b0581dcc-10a3-4a9d-a27e-83a36ac0b5bc"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_ko0mRXV4EemJj8Zl0ZGvoA" name="LA Dependencies Scenarios Test Diagram" repPath="#_ko0mQHV4EemJj8Zl0ZGvoA">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_ko0mRXV4EemJj8Zl0ZGvoA" name="LA Dependencies Scenarios Test Diagram" repPath="#_ko0mQHV4EemJj8Zl0ZGvoA" changeId="187c238a-7e83-4461-9bc2-19543d7e2286">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Package%20Dependencies']"/>
         <target xmi:type="org.polarsys.capella.core.data.information:DataPkg" href="DiagramToolsModel.capella#9f700d5f-22f8-4020-9d5a-7233ebad61ad"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_mBVRVXV4EemJj8Zl0ZGvoA" name="PA Dependencies Scenarios Test Diagram" repPath="#_mBVRUHV4EemJj8Zl0ZGvoA">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_mBVRVXV4EemJj8Zl0ZGvoA" name="PA Dependencies Scenarios Test Diagram" repPath="#_mBVRUHV4EemJj8Zl0ZGvoA" changeId="ebc052aa-74e7-43ea-9109-abdcd14de6fb">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Package%20Dependencies']"/>
         <target xmi:type="org.polarsys.capella.core.data.information:DataPkg" href="DiagramToolsModel.capella#a808ecae-2cf9-486a-a193-46610b68eba9"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_GdYEwXcMEemPuL79PYeVvQ" name="SA Mode State Machine Test Diagram" repPath="#_GbbkAHcMEemPuL79PYeVvQ">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_GdYEwXcMEemPuL79PYeVvQ" name="SA Mode State Machine Test Diagram" repPath="#_GbbkAHcMEemPuL79PYeVvQ" changeId="96c74fcb-cc37-43c4-b9f6-42ca79e821ef">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']"/>
         <target xmi:type="org.polarsys.capella.core.data.capellacommon:Region" href="DiagramToolsModel.capella#d1fd244c-5ae5-4440-a7d3-edc497715635"/>
       </ownedRepresentationDescriptors>
@@ -93,15 +93,15 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_VNqXwD5tEemFMbQILueuVQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_4qHFg4IJEemvxdjaRnCi5w" name="Test Operational Entity Breakdown Diagram" repPath="#_4p9UgIIJEemvxdjaRnCi5w">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_4qHFg4IJEemvxdjaRnCi5w" name="Test Operational Entity Breakdown Diagram" repPath="#_4p9UgIIJEemvxdjaRnCi5w" changeId="119e5237-335b-4971-bd7d-34713007d8c8">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']"/>
         <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="DiagramToolsModel.capella#e702501c-dc02-4c2a-865a-271febd1185c"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_L1XLsK33EemmUfOwDp-6NQ" name="Operational Roles Blank Test Diagram" repPath="#_Lz398K33EemmUfOwDp-6NQ">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_L1XLsK33EemmUfOwDp-6NQ" name="Operational Roles Blank Test Diagram" repPath="#_Lz398K33EemmUfOwDp-6NQ" changeId="426e7a43-2599-4f72-bce9-656196918aa4">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Role%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="DiagramToolsModel.capella#e702501c-dc02-4c2a-865a-271febd1185c"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_OzgX1a33EemmUfOwDp-6NQ" name="Test Operational Role Breakdown Diagram" repPath="#_OzgX0K33EemmUfOwDp-6NQ">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_OzgX1a33EemmUfOwDp-6NQ" name="Test Operational Role Breakdown Diagram" repPath="#_OzgX0K33EemmUfOwDp-6NQ" changeId="3933f093-bd75-4e84-b9d3-c282b4c4590f">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Role%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="DiagramToolsModel.capella#e702501c-dc02-4c2a-865a-271febd1185c"/>
       </ownedRepresentationDescriptors>
@@ -1516,22 +1516,6 @@
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_67sybnitEemPuL79PYeVvQ" x="1100" y="220" width="20" height="20"/>
         </children>
         <styles xmi:type="notation:DiagramStyle" xmi:id="_GdhOsncMEemPuL79PYeVvQ"/>
-        <edges xmi:type="notation:Edge" xmi:id="_5wSvPnitEemPuL79PYeVvQ" type="4001" element="_5wJlQHitEemPuL79PYeVvQ" source="_4Mdk-nitEemPuL79PYeVvQ" target="_0TmdBXitEemPuL79PYeVvQ">
-          <children xmi:type="notation:Node" xmi:id="_5wcgMHitEemPuL79PYeVvQ" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5wcgMXitEemPuL79PYeVvQ" y="-10"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_5wcgMnitEemPuL79PYeVvQ" type="6002">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5wcgM3itEemPuL79PYeVvQ" y="10"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_5wcgNHitEemPuL79PYeVvQ" type="6003">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5wcgNXitEemPuL79PYeVvQ" y="10"/>
-          </children>
-          <styles xmi:type="notation:ConnectorStyle" xmi:id="_5wSvP3itEemPuL79PYeVvQ"/>
-          <styles xmi:type="notation:FontStyle" xmi:id="_5wSvQHitEemPuL79PYeVvQ" fontName="Segoe UI" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_5wSvQXitEemPuL79PYeVvQ" points="[0, 0, 0, -77]$[0, 77, 0, 0]"/>
-          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5wcgNnitEemPuL79PYeVvQ" id="(0.9,1.0)"/>
-          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5wcgN3itEemPuL79PYeVvQ" id="(0.5384615384615384,0.0)"/>
-        </edges>
         <edges xmi:type="notation:Edge" xmi:id="_6f_GwHitEemPuL79PYeVvQ" type="4001" element="_6frkxHitEemPuL79PYeVvQ" source="_0TmdBXitEemPuL79PYeVvQ" target="_2-0tKXitEemPuL79PYeVvQ">
           <children xmi:type="notation:Node" xmi:id="_6f_GxHitEemPuL79PYeVvQ" type="6001">
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6f_GxXitEemPuL79PYeVvQ" y="-10"/>
@@ -1547,6 +1531,22 @@
           <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_6f_Gw3itEemPuL79PYeVvQ" points="[0, 0, -409, 0]$[409, 0, 0, 0]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_6f_GynitEemPuL79PYeVvQ" id="(1.0,0.5026178010471204)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_6f_Gy3itEemPuL79PYeVvQ" id="(0.0,0.5025125628140703)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_5wSvPnitEemPuL79PYeVvQ" type="4001" element="_5wJlQHitEemPuL79PYeVvQ" source="_4Mdk-nitEemPuL79PYeVvQ" target="_0TmdBXitEemPuL79PYeVvQ">
+          <children xmi:type="notation:Node" xmi:id="_5wcgMHitEemPuL79PYeVvQ" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5wcgMXitEemPuL79PYeVvQ" y="-10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_5wcgMnitEemPuL79PYeVvQ" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5wcgM3itEemPuL79PYeVvQ" y="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_5wcgNHitEemPuL79PYeVvQ" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5wcgNXitEemPuL79PYeVvQ" y="10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_5wSvP3itEemPuL79PYeVvQ"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_5wSvQHitEemPuL79PYeVvQ" fontName="Segoe UI" fontHeight="8"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_5wSvQXitEemPuL79PYeVvQ" points="[0, 0, 0, -77]$[0, 77, 0, 0]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5wcgNnitEemPuL79PYeVvQ" id="(0.9,1.0)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5wcgN3itEemPuL79PYeVvQ" id="(0.5384615384615384,0.0)"/>
         </edges>
         <edges xmi:type="notation:Edge" xmi:id="_7jyGKHitEemPuL79PYeVvQ" type="4001" element="_7joVGHitEemPuL79PYeVvQ" source="_2-0tKXitEemPuL79PYeVvQ" target="_67sybHitEemPuL79PYeVvQ">
           <children xmi:type="notation:Node" xmi:id="_7jyGLHitEemPuL79PYeVvQ" type="6001">
@@ -1606,7 +1606,7 @@
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_4MTz8XitEemPuL79PYeVvQ" showIcon="false" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/initialState.png">
+      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_4MTz8XitEemPuL79PYeVvQ" showIcon="false" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/initialState.svg">
         <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@nodeMappings[name='MSM_ModeState']/@conditionnalStyles.7/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@nodeMappings[name='MSM_ModeState']"/>
@@ -1617,7 +1617,7 @@
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_67jBYXitEemPuL79PYeVvQ" showIcon="false" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/finalState.png.png">
+      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_67jBYXitEemPuL79PYeVvQ" showIcon="false" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/finalState.svg">
         <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@nodeMappings[name='MSM_ModeState']/@conditionnalStyles.8/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@nodeMappings[name='MSM_ModeState']"/>
@@ -1906,7 +1906,7 @@
           <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="DiagramToolsModel.capella#49c9b49d-ac1e-4c56-9e92-980bb9c1b486"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="DiagramToolsModel.capella#a113abfd-43ef-426b-b1a8-6b838d2b8128"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="DiagramToolsModel.capella#3ad4fed9-269f-4d67-94d1-1afd311ca558"/>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_C-hGhZBPEeutAu7QjtERfQ" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png">
+          <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_C-hGhZBPEeutAu7QjtERfQ" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.svg">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']/@borderedNodeMappings[name='default%20execution']/@borderedNodeMappings[name='endOfLife']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_2:EndOfLifeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']/@borderedNodeMappings[name='default%20execution']/@borderedNodeMappings[name='endOfLife']"/>
@@ -1937,7 +1937,7 @@
           <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="DiagramToolsModel.capella#1f5f099a-1e2d-4f21-8332-91a63c34feaa"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="DiagramToolsModel.capella#6a1dda2d-539f-44bf-a06a-1d924bd3b463"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="DiagramToolsModel.capella#9b5f2e8b-098a-465c-9ab3-4630370d3a03"/>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_4SzVRZBPEeutAu7QjtERfQ" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png">
+          <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_4SzVRZBPEeutAu7QjtERfQ" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.svg">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']/@borderedNodeMappings[name='default%20execution']/@borderedNodeMappings[name='endOfLife']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_2:EndOfLifeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']/@borderedNodeMappings[name='default%20execution']/@borderedNodeMappings[name='endOfLife']"/>
@@ -2210,7 +2210,7 @@
           <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="DiagramToolsModel.capella#85397e3c-8354-4de1-a9a6-db9039a64070"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="DiagramToolsModel.capella#a113abfd-43ef-426b-b1a8-6b838d2b8128"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="DiagramToolsModel.capella#3ad4fed9-269f-4d67-94d1-1afd311ca558"/>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_lN8kRpBPEeutAu7QjtERfQ" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png">
+          <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_lN8kRpBPEeutAu7QjtERfQ" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.svg">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']/@borderedNodeMappings[name='default%20execution%20DF']/@borderedNodeMappings[name='endOfLifeDF']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_2:EndOfLifeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']/@borderedNodeMappings[name='default%20execution%20DF']/@borderedNodeMappings[name='endOfLifeDF']"/>
@@ -2241,7 +2241,7 @@
           <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="DiagramToolsModel.capella#3ff85d98-c60e-4154-91df-08746d8fe448"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="DiagramToolsModel.capella#94714c0a-d74d-4857-848f-0917d9c65b30"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="DiagramToolsModel.capella#c28baa58-3ce5-4fae-9fae-4ee94ff94aed"/>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_pu94Y5BPEeutAu7QjtERfQ" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png">
+          <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_pu94Y5BPEeutAu7QjtERfQ" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.svg">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']/@borderedNodeMappings[name='default%20execution%20DF']/@borderedNodeMappings[name='endOfLifeDF']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_2:EndOfLifeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']/@borderedNodeMappings[name='default%20execution%20DF']/@borderedNodeMappings[name='endOfLifeDF']"/>
@@ -2484,7 +2484,7 @@
           <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="DiagramToolsModel.capella#d56696ca-34d4-4646-bee7-a223430325f9"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="DiagramToolsModel.capella#d56696ca-34d4-4646-bee7-a223430325f9"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="DiagramToolsModel.capella#12a2f07b-690f-4d90-ab6d-3754493cda05"/>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_qMeTxZBPEeutAu7QjtERfQ" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png">
+          <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_qMeTxZBPEeutAu7QjtERfQ" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.svg">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']/@borderedNodeMappings[name='default%20execution%20FS']/@borderedNodeMappings[name='endOfLife%20FS']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_2:EndOfLifeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']/@borderedNodeMappings[name='default%20execution%20FS']/@borderedNodeMappings[name='endOfLife%20FS']"/>
@@ -2512,7 +2512,7 @@
           <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="DiagramToolsModel.capella#c50e232b-5a2b-494d-99f7-4cac043f86e9"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="DiagramToolsModel.capella#c50e232b-5a2b-494d-99f7-4cac043f86e9"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="DiagramToolsModel.capella#64f41756-e2dc-488a-8ec2-4d70a719a9dc"/>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_sdOOZpBPEeutAu7QjtERfQ" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png">
+          <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_sdOOZpBPEeutAu7QjtERfQ" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.svg">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']/@borderedNodeMappings[name='default%20execution%20FS']/@borderedNodeMappings[name='endOfLife%20FS']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_2:EndOfLifeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']/@borderedNodeMappings[name='default%20execution%20FS']/@borderedNodeMappings[name='endOfLife%20FS']"/>
@@ -2733,7 +2733,7 @@
           <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="DiagramToolsModel.capella#191645a6-d0b0-467f-a5b9-f397f6f3564c"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="DiagramToolsModel.capella#2d7b03de-6f19-4c63-b9c7-a29bd7dc9e20"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="DiagramToolsModel.capella#0d8f31be-0753-4a38-a02a-6a65fa469a3b"/>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_O894tpBTEeuKY9SLZ90kUw" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png">
+          <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_O894tpBTEeuKY9SLZ90kUw" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.svg">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']/@borderedNodeMappings[name='default%20execution']/@borderedNodeMappings[name='endOfLife']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_2:EndOfLifeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']/@borderedNodeMappings[name='default%20execution']/@borderedNodeMappings[name='endOfLife']"/>
@@ -2973,7 +2973,7 @@
           <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="DiagramToolsModel.capella#9a4865d9-4e7c-4d48-b4e4-1e262616e205"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="DiagramToolsModel.capella#2d0613a7-6461-48be-87b5-2bc257a5a5bd"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="DiagramToolsModel.capella#44509b13-b020-4de1-b4a4-557a4005755c"/>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_Z4LpFpBTEeuKY9SLZ90kUw" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png">
+          <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_Z4LpFpBTEeuKY9SLZ90kUw" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.svg">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']/@borderedNodeMappings[name='default%20execution%20DF']/@borderedNodeMappings[name='endOfLifeDF']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_2:EndOfLifeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']/@borderedNodeMappings[name='default%20execution%20DF']/@borderedNodeMappings[name='endOfLifeDF']"/>
@@ -3216,7 +3216,7 @@
           <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="DiagramToolsModel.capella#eb4d844e-1c7e-4779-8b81-a62e207d9acf"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="DiagramToolsModel.capella#eb4d844e-1c7e-4779-8b81-a62e207d9acf"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalFunction" href="DiagramToolsModel.capella#c6a7da46-69e2-45ea-856a-4c7d0acdf68c"/>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_gsmGtZBUEeuKY9SLZ90kUw" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png">
+          <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_gsmGtZBUEeuKY9SLZ90kUw" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.svg">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']/@borderedNodeMappings[name='default%20execution%20FS']/@borderedNodeMappings[name='endOfLife%20FS']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_2:EndOfLifeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']/@borderedNodeMappings[name='default%20execution%20FS']/@borderedNodeMappings[name='endOfLife%20FS']"/>
@@ -3244,7 +3244,7 @@
           <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="DiagramToolsModel.capella#41c6df42-f3cf-45a2-b066-df1b1e6b0c7b"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="DiagramToolsModel.capella#41c6df42-f3cf-45a2-b066-df1b1e6b0c7b"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalFunction" href="DiagramToolsModel.capella#4b6ad31a-be02-4a6f-a68e-a0632c8a3cc6"/>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_hHO0RpBUEeuKY9SLZ90kUw" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png">
+          <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_hHO0RpBUEeuKY9SLZ90kUw" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.svg">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']/@borderedNodeMappings[name='default%20execution%20FS']/@borderedNodeMappings[name='endOfLife%20FS']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_2:EndOfLifeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']/@borderedNodeMappings[name='default%20execution%20FS']/@borderedNodeMappings[name='endOfLife%20FS']"/>
@@ -3465,7 +3465,7 @@
           <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="DiagramToolsModel.capella#270ee22e-3d42-4003-8a31-de7906c7019d"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="DiagramToolsModel.capella#5681329f-825f-4eb5-a9f7-b4d4621931cb"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="DiagramToolsModel.capella#53405617-7684-4c7a-b48b-61d649469b88"/>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_DjhshZBZEeuKY9SLZ90kUw" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png">
+          <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_DjhshZBZEeuKY9SLZ90kUw" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.svg">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']/@borderedNodeMappings[name='default%20execution%20DF']/@borderedNodeMappings[name='endOfLifeDF']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_2:EndOfLifeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']/@borderedNodeMappings[name='default%20execution%20DF']/@borderedNodeMappings[name='endOfLifeDF']"/>
@@ -3705,7 +3705,7 @@
           <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="DiagramToolsModel.capella#74f61ecd-11d3-4865-8f26-5ce2e236bf3a"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="DiagramToolsModel.capella#df7d3fba-4017-4022-baf4-499c81bc63f6"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="DiagramToolsModel.capella#6b593340-25d1-4b6a-a4ac-1350c74ae728"/>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_swN3VpBZEeuKY9SLZ90kUw" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png">
+          <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_swN3VpBZEeuKY9SLZ90kUw" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.svg">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']/@borderedNodeMappings[name='default%20execution']/@borderedNodeMappings[name='endOfLife']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_2:EndOfLifeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']/@borderedNodeMappings[name='default%20execution']/@borderedNodeMappings[name='endOfLife']"/>
@@ -3948,7 +3948,7 @@
           <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="DiagramToolsModel.capella#db088fc0-3a6b-41c3-b549-124752e75ae3"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="DiagramToolsModel.capella#db088fc0-3a6b-41c3-b549-124752e75ae3"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalFunction" href="DiagramToolsModel.capella#86d56563-24b0-46e9-80ee-50b43e836113"/>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_hl1NFpBaEeuKY9SLZ90kUw" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png">
+          <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_hl1NFpBaEeuKY9SLZ90kUw" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.svg">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']/@borderedNodeMappings[name='default%20execution%20FS']/@borderedNodeMappings[name='endOfLife%20FS']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_2:EndOfLifeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']/@borderedNodeMappings[name='default%20execution%20FS']/@borderedNodeMappings[name='endOfLife%20FS']"/>
@@ -3976,7 +3976,7 @@
           <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="DiagramToolsModel.capella#cab1fb5c-f02e-406b-af2b-95eca1070c60"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="DiagramToolsModel.capella#cab1fb5c-f02e-406b-af2b-95eca1070c60"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalFunction" href="DiagramToolsModel.capella#20b4c303-9970-46c9-8796-dba1dd1be9bb"/>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_hzq0xpBaEeuKY9SLZ90kUw" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png">
+          <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_hzq0xpBaEeuKY9SLZ90kUw" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.svg">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']/@borderedNodeMappings[name='default%20execution%20FS']/@borderedNodeMappings[name='endOfLife%20FS']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_2:EndOfLifeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']/@borderedNodeMappings[name='default%20execution%20FS']/@borderedNodeMappings[name='endOfLife%20FS']"/>
@@ -4173,7 +4173,7 @@
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_2MHNMJBdEeuKY9SLZ90kUw" name="SA 5" outgoingEdges="_3bXOkJBdEeuKY9SLZ90kUw" width="7" height="7" resizeKind="NSEW">
       <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="DiagramToolsModel.capella#89416d1c-98fe-402d-8b8b-840881175cb6"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="DiagramToolsModel.capella#89416d1c-98fe-402d-8b8b-840881175cb6"/>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_2MH0QJBdEeuKY9SLZ90kUw" showIcon="false" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/png/SystemActor.png">
+      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_2MH0QJBdEeuKY9SLZ90kUw" showIcon="false" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/svg/SystemActor.svg">
         <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@nodeMappings[name='ActorNode2']/@conditionnalStyles.1/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@nodeMappings[name='ActorNode2']"/>
@@ -4181,7 +4181,7 @@
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_2_1JIJBdEeuKY9SLZ90kUw" name="SA 6" incomingEdges="_3bXOkJBdEeuKY9SLZ90kUw" width="7" height="7" resizeKind="NSEW">
       <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="DiagramToolsModel.capella#54138ca0-ff0c-49bd-84a0-9d9f580ba86c"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="DiagramToolsModel.capella#54138ca0-ff0c-49bd-84a0-9d9f580ba86c"/>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_2_1JIZBdEeuKY9SLZ90kUw" showIcon="false" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/png/SystemActor.png">
+      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_2_1JIZBdEeuKY9SLZ90kUw" showIcon="false" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/svg/SystemActor.svg">
         <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@nodeMappings[name='ActorNode2']/@conditionnalStyles.1/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@nodeMappings[name='ActorNode2']"/>

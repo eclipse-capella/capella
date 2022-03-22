@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_3="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/6.0.0" xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/6.0.0" xmlns:org.polarsys.capella.core.data.epbs="http://www.polarsys.org/capella/core/epbs/6.0.0" xmlns:org.polarsys.capella.core.data.interaction="http://www.polarsys.org/capella/core/interaction/6.0.0" xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/6.0.0" xmlns:sequence="http://www.eclipse.org/sirius/diagram/sequence/2.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:table="http://www.eclipse.org/sirius/table/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/table/description/1.1.0 http://www.eclipse.org/sirius/table/1.1.0#//description http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0 http://www.eclipse.org/sirius/diagram/sequence/2.0.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_cZXqUCS8EeWfo7_fq9gPVg" selectedViews="_cZXqUSS8EeWfo7_fq9gPVg _cZg0QCS8EeWfo7_fq9gPVg _ugwCIDdiEeWkdIQkgDWqdw _ugwCITdiEeWkdIQkgDWqdw _ugwCIjdiEeWkdIQkgDWqdw _ugwCIzdiEeWkdIQkgDWqdw _ugwCJDdiEeWkdIQkgDWqdw" version="14.5.1.202106111100">
+  <viewpoint:DAnalysis uid="_cZXqUCS8EeWfo7_fq9gPVg" selectedViews="_cZXqUSS8EeWfo7_fq9gPVg _cZg0QCS8EeWfo7_fq9gPVg _ugwCIDdiEeWkdIQkgDWqdw _ugwCITdiEeWkdIQkgDWqdw _ugwCIjdiEeWkdIQkgDWqdw _ugwCIzdiEeWkdIQkgDWqdw _ugwCJDdiEeWkdIQkgDWqdw" version="15.0.0.202201261500">
     <semanticResources>EPBSA.capellafragment</semanticResources>
     <semanticResources>../sysmodelProject.capella</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_cZXqUSS8EeWfo7_fq9gPVg">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_JxsUsI-pEeagLJRD2VnG3A" name="[EAB] System - EPBS Architecture Blank">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_JxsUsI-pEeagLJRD2VnG3A" name="[EAB] System - EPBS Architecture Blank" changeId="08aa4d97-aa62-4f0c-8e5c-6e19826cf995">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.epbs:ConfigurationItem" href="EPBSA.capellafragment#3865e169-2fa4-47de-a673-a1493d810915"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_JxsUsY-pEeagLJRD2VnG3A" name="[CIBD] System - Configuration Items Breakdown">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_JxsUsY-pEeagLJRD2VnG3A" name="[CIBD] System - Configuration Items Breakdown" changeId="3dd5dd20-a7fb-4a5e-a653-9df4255bc5a2">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']"/>
         <target xmi:type="org.polarsys.capella.core.data.epbs:ConfigurationItem" href="EPBSA.capellafragment#3865e169-2fa4-47de-a673-a1493d810915"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_JxsUso-pEeagLJRD2VnG3A" name="New Configuration Items - Physical Artifacts">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_JxsUso-pEeagLJRD2VnG3A" name="New Configuration Items - Physical Artifacts" changeId="d3f91ffa-52e1-4e37-81d5-8f60e8e03e49">
         <description xmi:type="description_2:CrossTableDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20-%20Physical%20Artifacts']"/>
         <target xmi:type="org.polarsys.capella.core.data.epbs:EPBSArchitecture" href="EPBSA.capellafragment#8e357f50-ebf2-4df3-a274-488e94528cf0"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_cZg0QCS8EeWfo7_fq9gPVg">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_JxsUs4-pEeagLJRD2VnG3A" name="[IS] SubIS2 - Interface Scenario">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_JxsUs4-pEeagLJRD2VnG3A" name="[IS] SubIS2 - Interface Scenario" changeId="2a872f7f-926f-45de-b565-c95f0ea00a95">
         <description xmi:type="description_3:SequenceDiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']"/>
         <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="EPBSA.capellafragment#4c57cc19-363c-44fe-b818-b05319a1ad06"/>
       </ownedRepresentationDescriptors>
@@ -223,7 +223,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" uid="_OhPNBI-pEeagLJRD2VnG3A" name="FIP 1" width="2" height="2">
         <target xmi:type="org.polarsys.capella.core.data.cs:PhysicalPort" href="../sysmodelProject.capella#7cb2b223-3ded-48f6-8dba-ffeb4265e241"/>
         <semanticElements xmi:type="org.polarsys.capella.core.data.cs:PhysicalPort" href="../sysmodelProject.capella#7cb2b223-3ded-48f6-8dba-ffeb4265e241"/>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_OhPNBY-pEeagLJRD2VnG3A" showIcon="false" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/PhysicalPort.png">
+        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_OhPNBY-pEeagLJRD2VnG3A" showIcon="false" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/PhysicalPort.svg">
           <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']/@subNodeMappings[name='PhysicalPortInCI%20mapping']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']/@subNodeMappings[name='PhysicalPortInCI%20mapping']"/>
@@ -291,7 +291,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" uid="_OhYW9I-pEeagLJRD2VnG3A" name="PL1" width="5" height="5">
         <target xmi:type="org.polarsys.capella.core.data.cs:PhysicalLink" href="../sysmodelProject.capella#6a358546-f5ff-4a77-971b-4fdc75ab21a3"/>
         <semanticElements xmi:type="org.polarsys.capella.core.data.cs:PhysicalLink" href="../sysmodelProject.capella#6a358546-f5ff-4a77-971b-4fdc75ab21a3"/>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_OhYW9Y-pEeagLJRD2VnG3A" showIcon="false" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/PhysicalLink.png">
+        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_OhYW9Y-pEeagLJRD2VnG3A" showIcon="false" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/PhysicalLink.svg">
           <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']/@subNodeMappings[name='PhysicalLinkInCI%20mapping']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']/@subNodeMappings[name='PhysicalLinkInCI%20mapping']"/>
@@ -299,7 +299,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" uid="_OhYW9o-pEeagLJRD2VnG3A" name="PL 2" width="5" height="5">
         <target xmi:type="org.polarsys.capella.core.data.cs:PhysicalLink" href="../sysmodelProject.capella#f661f5ea-db74-4dc5-8017-a56008da49c2"/>
         <semanticElements xmi:type="org.polarsys.capella.core.data.cs:PhysicalLink" href="../sysmodelProject.capella#f661f5ea-db74-4dc5-8017-a56008da49c2"/>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_OhYW94-pEeagLJRD2VnG3A" showIcon="false" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/PhysicalLink.png">
+        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_OhYW94-pEeagLJRD2VnG3A" showIcon="false" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/PhysicalLink.svg">
           <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']/@subNodeMappings[name='PhysicalLinkInCI%20mapping']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']/@subNodeMappings[name='PhysicalLinkInCI%20mapping']"/>
@@ -307,7 +307,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" uid="_OhYW-I-pEeagLJRD2VnG3A" name="PP 2" width="2" height="2">
         <target xmi:type="org.polarsys.capella.core.data.cs:PhysicalPort" href="../sysmodelProject.capella#33088d35-4f21-4218-b8db-31c4aa4cf65e"/>
         <semanticElements xmi:type="org.polarsys.capella.core.data.cs:PhysicalPort" href="../sysmodelProject.capella#33088d35-4f21-4218-b8db-31c4aa4cf65e"/>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_OhYW-Y-pEeagLJRD2VnG3A" showIcon="false" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/PhysicalPort.png">
+        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_OhYW-Y-pEeagLJRD2VnG3A" showIcon="false" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/PhysicalPort.svg">
           <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']/@subNodeMappings[name='PhysicalPortInCI%20mapping']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']/@subNodeMappings[name='PhysicalPortInCI%20mapping']"/>
@@ -315,7 +315,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" uid="_OhYW-o-pEeagLJRD2VnG3A" name="FOP 2" width="2" height="2">
         <target xmi:type="org.polarsys.capella.core.data.cs:PhysicalPort" href="../sysmodelProject.capella#46cbfa11-8dfb-4f65-8bbe-fac27139a364"/>
         <semanticElements xmi:type="org.polarsys.capella.core.data.cs:PhysicalPort" href="../sysmodelProject.capella#46cbfa11-8dfb-4f65-8bbe-fac27139a364"/>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_OhYW-4-pEeagLJRD2VnG3A" showIcon="false" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/PhysicalPort.png">
+        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_OhYW-4-pEeagLJRD2VnG3A" showIcon="false" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/PhysicalPort.svg">
           <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']/@subNodeMappings[name='PhysicalPortInCI%20mapping']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']/@subNodeMappings[name='PhysicalPortInCI%20mapping']"/>
@@ -1795,7 +1795,7 @@
         <ownedBorderedNodes xmi:type="diagram:DNode" uid="_Oi4Lxo-pEeagLJRD2VnG3A" width="1" height="1">
           <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="EPBSA.capellafragment#0ee1d909-5a5e-4504-baa5-2623e474ef3b"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="EPBSA.capellafragment#0ee1d909-5a5e-4504-baa5-2623e474ef3b"/>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_Oi4Lx4-pEeagLJRD2VnG3A" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png">
+          <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_Oi4Lx4-pEeagLJRD2VnG3A" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.svg">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']/@borderedNodeMappings[name='default%20execution']/@borderedNodeMappings[name='endOfLife']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_3:EndOfLifeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']/@borderedNodeMappings[name='default%20execution']/@borderedNodeMappings[name='endOfLife']"/>
@@ -1829,7 +1829,7 @@
         <ownedBorderedNodes xmi:type="diagram:DNode" uid="_OjBVtI-pEeagLJRD2VnG3A" width="1" height="1">
           <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="EPBSA.capellafragment#5844c935-fe54-4d09-8437-bf50c550f58c"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="EPBSA.capellafragment#5844c935-fe54-4d09-8437-bf50c550f58c"/>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_OjBVtY-pEeagLJRD2VnG3A" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png">
+          <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_OjBVtY-pEeagLJRD2VnG3A" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.svg">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']/@borderedNodeMappings[name='default%20execution']/@borderedNodeMappings[name='endOfLife']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_3:EndOfLifeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']/@borderedNodeMappings[name='default%20execution']/@borderedNodeMappings[name='endOfLife']"/>
