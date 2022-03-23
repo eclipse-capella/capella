@@ -35,8 +35,6 @@ public class TJLARulesTestSuite extends BasicTestSuite {
    */
 	protected List<BasicTestArtefact> getTests() {
 		List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
-		tests.add(new Rule_TJ_LA_01());
-    tests.add(new Rule_TJ_LA_02());
 		tests.add(new Rule_TJ_LA_03());
 		tests.add(new Rule_TJ_LA_05());
 		tests.add(new Rule_TJ_LA_06());

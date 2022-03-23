@@ -10,13 +10,6 @@
 <br>
 {| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/warning.gif|WARNING]]
-|TJ_EPBS_02 - Capability realization refinement check 3 
-|-
-| colspan="2"|This rule checks that a Capability Realization in PhysicalArchitecture layer is refined toward a CapabilityRealization in EPBS layer.
-|}
-<br>
-{| class="VALIDATION-RULE"
-!|[[Image:../../../../Images/warning.gif|WARNING]]
 |TJ_EPBS_03 - Configuration Physical Artifacts Realization check 
 |-
 | colspan="2"|This rule checks that a Configuration Item realizes at least one Physical Artifact.

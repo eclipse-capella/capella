@@ -36,7 +36,6 @@ public class TJEPBSRulesTestSuite extends BasicTestSuite {
 	protected List<BasicTestArtefact> getTests() {
 		List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
 		tests.add(new Rule_TJ_EPBS_01());
-    tests.add(new Rule_TJ_EPBS_02());
 		tests.add(new Rule_TJ_EPBS_03());
 		tests.add(new Rule_TJ_EPBS_04());
 		return tests;

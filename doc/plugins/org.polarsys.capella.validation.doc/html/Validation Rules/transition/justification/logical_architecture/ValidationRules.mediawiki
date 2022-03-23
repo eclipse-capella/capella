@@ -3,20 +3,6 @@
 <br>
 {| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/warning.gif|WARNING]]
-|TJ_LA_01 - Capability realization refinement check 1 
-|-
-| colspan="2"|This rule checks that a Capability Realization is linked from a source CapabilityRealization or Capability.
-|}
-<br>
-{| class="VALIDATION-RULE"
-!|[[Image:../../../../Images/warning.gif|WARNING]]
-|TJ_LA_02 - Capability refinement check 
-|-
-| colspan="2"|This rule checks that a Capability is refined toward a CapabilityRealization in LogicalArchitecture layer.
-|}
-<br>
-{| class="VALIDATION-RULE"
-!|[[Image:../../../../Images/warning.gif|WARNING]]
 |TJ_LA_03 - System Function Realization 
 |-
 | colspan="2"|This rule checks that a System Function is realized by at least one Logical Function.

@@ -79,13 +79,6 @@ ComponentExchangeFunctionalExchangeAllocation ComponentExchange and FunctionalEx
 <br>
 {| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/warning.gif|WARNING]]
-|TC_DC_11 - Logical Component Realization 
-|-
-| colspan="2"|This rule ensures that Logical Component always realizes a System Component.
-|}
-<br>
-{| class="VALIDATION-RULE"
-!|[[Image:../../../../Images/warning.gif|WARNING]]
 |TC_DC_12 - Root Logical Component Realization 
 |-
 | colspan="2"|This rule ensures that Root Logical Component always realizes a Root System Component.
