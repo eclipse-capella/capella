@@ -46,7 +46,6 @@ public class TCDCRulesTestSuite extends BasicTestSuite {
     tests.add(new Rule_TC_DC_08());
     tests.add(new Rule_TC_DC_09());
     tests.add(new Rule_TC_DC_10());
-    tests.add(new Rule_TC_DC_11());
     tests.add(new Rule_TC_DC_12());
     tests.add(new Rule_TC_DC_13());
     return tests;

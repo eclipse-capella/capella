@@ -78,25 +78,6 @@
                      class="LogicalFunction">
                </target>
             </constraint>
-            <constraint
-                  class="org.polarsys.capella.core.data.la.validation.capabilityRealization.MDCHK_CapabilityRealization_Refinement_2"
-                  id="TJ_PA_05"
-                  isEnabledByDefault="true"
-                  lang="Java"
-                  mode="Batch"
-                  name="TJ_PA_05 - Capability realization refinement check 2"
-                  severity="WARNING"
-                  statusCode="1">
-               <message>
-                  {0} (Capability Realization) should be refined towards Physical Architecture layer.
-               </message>
-               <description>
-                  This rule checks that the Capability Realization in LogicalArchitecture layer is refined toward CapabilityRealization in PhysicalArchitecture layer.
-               </description>
-               <target
-                     class="CapabilityRealization">
-               </target>
-            </constraint>
          </constraints>
          <constraints
                categories="capella.category/design/well-formedness/use_cases">
@@ -158,25 +139,6 @@
                </target>
                <description>
                   This rule ensures that Logical Actor always realizes a System Actor.
-               </description>
-            </constraint>
-            <constraint
-                  class="org.polarsys.capella.core.data.la.validation.logicalComponent.LogicalComponent_RealizedSystemComponents"
-                  id="TC_DC_11"
-                  isEnabledByDefault="true"
-                  lang="Java"
-                  mode="Batch"
-                  name="TC_DC_11 - Logical Component Realization"
-                  severity="WARNING"
-                  statusCode="1">
-               <message>
-                  {0}.
-               </message>
-               <target
-                     class="LogicalComponent">
-               </target>
-               <description>
-                  This rule ensures that Logical Component always realizes a System Component.
                </description>
             </constraint>
             <constraint
@@ -303,25 +265,6 @@
          <constraints
                categories="capella.category/transition/justification/logical_architecture">
             <constraint
-                  class="org.polarsys.capella.core.data.la.validation.capabilityRealization.MDCHK_CapabilityRealization_Refinement_1"
-                  id="TJ_LA_01"
-                  isEnabledByDefault="true"
-                  lang="Java"
-                  mode="Batch"
-                  name="TJ_LA_01 - Capability realization refinement check 1"
-                  severity="WARNING"
-                  statusCode="1">
-               <message>
-                  {0} (Capability Realization) should be linked with a source Capability or CapabilityRealization.
-               </message>
-               <description>
-                  This rule checks that a Capability Realization is linked from a source CapabilityRealization or Capability.
-               </description>
-               <target
-                     class="CapabilityRealization">
-               </target>
-            </constraint>
-            <constraint
                   class="org.polarsys.capella.core.data.la.validation.la.MDCHK_LogicalArchitecture_LaToSaRealization"
                   id="TJ_LA_07"
                   isEnabledByDefault="true"
@@ -339,28 +282,6 @@
                <description>
                   This rule ensures the realization consistency between Logical Architecture and System Analysis.
                </description>
-            </constraint>
-         </constraints>
-         <constraints
-               categories="capella.category/transition/justification/epbs">
-            <constraint
-                  class="org.polarsys.capella.core.data.la.validation.capabilityRealization.MDCHK_CapabilityRealization_Refinement_3"
-                  id="TJ_EPBS_02"
-                  isEnabledByDefault="true"
-                  lang="Java"
-                  mode="Batch"
-                  name="TJ_EPBS_02 - Capability realization refinement check 3"
-                  severity="WARNING"
-                  statusCode="1">
-               <message>
-                  {0} (Capability Realization) should be refined towards EPBS layer.
-               </message>
-               <description>
-                  This rule checks that a Capability Realization in PhysicalArchitecture layer is refined toward a CapabilityRealization in EPBS layer.
-               </description>
-               <target
-                     class="CapabilityRealization">
-               </target>
             </constraint>
          </constraints>
       </constraintProvider>

@@ -24,13 +24,6 @@
 <br>
 {| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/warning.gif|WARNING]]
-|TJ_PA_05 - Capability realization refinement check 2 
-|-
-| colspan="2"|This rule checks that the Capability Realization in LogicalArchitecture layer is refined toward CapabilityRealization in PhysicalArchitecture layer.
-|}
-<br>
-{| class="VALIDATION-RULE"
-!|[[Image:../../../../Images/warning.gif|WARNING]]
 |TJ_PA_06 - Physical component used and implemented interface check 1 
 |-
 | colspan="2"|This rule ensures that a Physical Component implements / uses a logical interface which is used / implemented / provided / required by its realized Logical Components. 

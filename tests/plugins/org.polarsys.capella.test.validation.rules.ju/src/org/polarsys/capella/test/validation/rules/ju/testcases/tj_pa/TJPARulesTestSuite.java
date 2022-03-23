@@ -38,7 +38,6 @@ public class TJPARulesTestSuite extends BasicTestSuite {
 		tests.add(new Rule_TJ_PA_01());
     tests.add(new Rule_TJ_PA_02());
 		tests.add(new Rule_TJ_PA_04());
-		tests.add(new Rule_TJ_PA_05());
 		tests.add(new Rule_TJ_PA_06());
 		tests.add(new Rule_TJ_PA_07());
 		tests.add(new Rule_TJ_PA_09());

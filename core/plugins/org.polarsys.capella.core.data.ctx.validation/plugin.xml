@@ -297,25 +297,6 @@
       <constraints
             categories="capella.category/transition/justification/logical_architecture">
          <constraint
-               class="org.polarsys.capella.core.data.ctx.validation.capability.MDCHK_Capability_Refinement_1"
-               id="TJ_LA_02"
-               isEnabledByDefault="true"
-               lang="Java"
-               mode="Batch"
-               name="TJ_LA_02 - Capability refinement check"
-               severity="WARNING"
-               statusCode="1">
-            <message>
-               {0} (Capability) should be refined towards the Logical Architecture.
-            </message>
-            <description>
-               This rule checks that a Capability is refined toward a CapabilityRealization in LogicalArchitecture layer.
-            </description>
-            <target
-                  class="Capability">
-            </target>
-         </constraint>
-         <constraint
                class="org.polarsys.capella.core.data.ctx.validation.systemFunction.MDCHK_SystemFunction_Realization_1"
                id="TJ_LA_03"
                isEnabledByDefault="true"
