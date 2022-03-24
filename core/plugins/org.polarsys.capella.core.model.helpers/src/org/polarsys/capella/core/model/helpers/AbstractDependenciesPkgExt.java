@@ -15,6 +15,7 @@ package org.polarsys.capella.core.model.helpers;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -27,8 +28,10 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.util.EcoreUtil.ContentTreeIterator;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.data.capellacore.AbstractDependenciesPkg;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
@@ -95,6 +98,41 @@ public class AbstractDependenciesPkgExt {
    * @param pkg an AbstractDependenciesPkg
    * @return The inverse dependencies of pkg, i.e. all packages that depend directly on pkg
    */
+  
+  private static class CapellaContentTreeIterator<E> extends ContentTreeIterator<E> {
+
+    private static final long serialVersionUID = 1L;
+
+    public CapellaContentTreeIterator(Collection<?> emfObjects) {
+      super(emfObjects);
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public Iterator<E> getChildren(Object object) {
+      if (object instanceof EObject && object instanceof CapellaElement) {
+        return (Iterator<E>) getEObjectChildren((EObject) object);
+      } else if (object instanceof Resource) {
+        return (Iterator<E>) getResourceChildren((Resource) object);
+      } else if (object instanceof ResourceSet) {
+        return (Iterator<E>) getResourceSetChildren((ResourceSet) object);
+      } else if (object == this.object) {
+        return ((Collection<E>) object).iterator();
+      } else {
+        return getObjectChildren(object);
+      }
+    }
+    
+    @SuppressWarnings("rawtypes")
+    public static CapellaContentTreeIterator buildIterator(ResourceSet rs) {
+      CapellaContentTreeIterator<Notifier> it = new CapellaContentTreeIterator<Notifier>(Collections.singleton(rs));
+      it.next();
+      return it;
+    }
+    
+  }
+  
+  
   public static Collection<AbstractDependenciesPkg> getInverseDependencies(AbstractDependenciesPkg pkg) {
 
     List<AbstractDependenciesPkg> result = new ArrayList<>();
@@ -104,7 +142,8 @@ public class AbstractDependenciesPkgExt {
     Resource res = pkg.eResource();
     if (res != null) {
       ResourceSet rs = res.getResourceSet();
-      for (Iterator<Notifier> it = rs.getAllContents(); it.hasNext();) {
+      for (@SuppressWarnings("unchecked")
+      Iterator<Notifier> it = CapellaContentTreeIterator.buildIterator(rs); it.hasNext();) {
         Notifier next = it.next();
         if (next instanceof AbstractDependenciesPkg) {
           all.add(((AbstractDependenciesPkg) next));
@@ -119,6 +158,7 @@ public class AbstractDependenciesPkgExt {
         }
       }
     }
+
     return result;
   }
 
