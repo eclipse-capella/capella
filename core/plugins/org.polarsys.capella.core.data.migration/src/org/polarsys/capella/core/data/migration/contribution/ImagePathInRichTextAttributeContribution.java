@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2021, 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -26,6 +26,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -38,6 +39,7 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.URIUtil;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
@@ -66,7 +68,7 @@ import org.polarsys.capella.core.data.migration.context.MigrationContext;
  * @author lfasani
  */
 public class ImagePathInRichTextAttributeContribution extends AbstractMigrationContribution {
-  private static final String HTML_IMAGE_ABSOLUTE_PATH_PATTERN = "<img.*?src=\"(file:/.*?)\".*?/>"; //$NON-NLS-1$
+  private static final String HTML_IMAGE_ABSOLUTE_PATH_PATTERN = "<img.*?src=\"((file:/|//|\\\\).*?)\".*?/>"; //$NON-NLS-1$
 
   private static final String IMAGE_NAME_FORMAT = "yyyyMMdd_HHmmssSSS"; //$NON-NLS-1$
 
@@ -94,10 +96,11 @@ public class ImagePathInRichTextAttributeContribution extends AbstractMigrationC
               updateBase64Images(eObject, attr);
 
               // replace the absolute path
-              createFileAndUpdateAttributeFromAbsoluteToRelativePath(eObject, (EAttribute) attr);
+              List<String> nonCreatedFiles = createFileAndUpdateAttributeFromAbsoluteToRelativePath(eObject,
+                  (EAttribute) attr);
 
               // update the project relative path according to the new path serialization
-              updateProjectRelativePath(resourceToMigrate, eObject, (EAttribute) attr);
+              updateProjectRelativePath(resourceToMigrate, eObject, (EAttribute) attr, nonCreatedFiles);
             }
           }
         }
@@ -122,7 +125,8 @@ public class ImagePathInRichTextAttributeContribution extends AbstractMigrationC
    * This migration adds the project at the beginning of the image path.<br/>
    * It converts the path from a project relative path to a workspace relative path.
    */
-  private void updateProjectRelativePath(Resource resource, EObject eObject, EAttribute attr) {
+  private void updateProjectRelativePath(Resource resource, EObject eObject, EAttribute attr,
+      List<String> nonCreatedFiles) {
     String oldValue = (String) eObject.eGet(attr);
     String newValue = (String) eObject.eGet(attr);
     if (newValue != null && !newValue.isEmpty()) {
@@ -133,7 +137,8 @@ public class ImagePathInRichTextAttributeContribution extends AbstractMigrationC
       while (matcher.find()) {
         if (matcher.groupCount() == 1) {
           String path = matcher.group(1);
-          if (!path.startsWith(project.getName()) && !path.startsWith("file:/")) {
+          if (!path.startsWith(project.getName()) && !path.startsWith("file:/") && !path.startsWith("http://")
+              && !path.startsWith("https://") && !path.startsWith("//") && !path.startsWith("\\\\")) {
             newValue = newValue.replace(path, project.getName() + "/" + path);
           }
         }
@@ -154,71 +159,60 @@ public class ImagePathInRichTextAttributeContribution extends AbstractMigrationC
    * @param attr
    *          the attribute that must be of type String
    */
-  public void createFileAndUpdateAttributeFromAbsoluteToRelativePath(EObject eObject, EAttribute attr) {
+  public List<String> createFileAndUpdateAttributeFromAbsoluteToRelativePath(EObject eObject, EAttribute attr) {
     String strValue = (String) eObject.eGet(attr);
+    List<String> nonCreatedFiles = new ArrayList<>();
     if (strValue != null) {
-      Map<File, IFile> createdFiles = createFiles(eObject, attr, strValue);
+      Map<String, IFile> createdFiles = createFiles(eObject, attr, strValue, nonCreatedFiles);
 
       updateField(eObject, attr, strValue, createdFiles);
     }
+    return nonCreatedFiles;
   }
 
-  private void updateField(EObject eObject, EAttribute attr, String strValue, Map<File, IFile> createdFiles) {
+  private void updateField(EObject eObject, EAttribute attr, String strValue, Map<String, IFile> createdFiles) {
     String newStringValue = strValue;
     // change the attribute value to replace with a path to the created file.
-    for (File absolutePathFile : createdFiles.keySet()) {
-      try {
-        // The following code produces the string the same way it was done in
-        // org.polarsys.kitalpha.richtext.widget.tools.ext.types.AbsoluteImageHandler
-        String pathToReplace = absolutePathFile.toURI().toURL().toExternalForm();
-        String replacementString = createdFiles.get(absolutePathFile).getFullPath().toString().replaceFirst("^/", "");
-        String quote = "\"";
-        newStringValue = newStringValue.replace(quote + pathToReplace + quote, quote + replacementString + quote);
-      } catch (MalformedURLException e) {
-        // should not be possible according to how this file is created
-      }
+    for (String absolutePathFile : createdFiles.keySet()) {
+      String replacementString = createdFiles.get(absolutePathFile).getFullPath().toString().replaceFirst("^/", "");
+      String quote = "\"";
+      newStringValue = newStringValue.replace(quote + absolutePathFile + quote, quote + replacementString + quote);
     }
     if (!Objects.equals(newStringValue, strValue)) {
       eObject.eSet(attr, newStringValue);
     }
   }
 
-  private Map<File, IFile> createFiles(EObject notifier, EAttribute attribute, String strValue) {
+  private Map<String, IFile> createFiles(EObject notifier, EAttribute attribute, String strValue,
+      List<String> nonCreatedFiles) {
+    Map<String, IFile> filesToCreate = new LinkedHashMap<>();
+
     Pattern pattern = Pattern.compile(HTML_IMAGE_ABSOLUTE_PATH_PATTERN);
     Matcher matcher = pattern.matcher(strValue);
-    Map<File, IFile> filesToCreate = new LinkedHashMap<>();
-    List<File> nonCreatedFiles = new ArrayList<>();
-
     IFolder imageFolder = EcoreUtil2.getProject(notifier).getFolder(ImageManager.IMAGE_FOLDER_NAME);
     while (matcher.find()) {
-      if (matcher.groupCount() == 1) {
-        try {
-          URI uri = new java.net.URL(matcher.group(1)).toURI();
-          File fileWithAbsolutePath = new File(uri);
-          if (fileWithAbsolutePath.exists()) {
-            IFile fileToCreate = getFileToCreate(imageFolder, fileWithAbsolutePath, notifier);
-            filesToCreate.put(fileWithAbsolutePath, fileToCreate);
-          } else {
-            nonCreatedFiles.add(fileWithAbsolutePath);
-          }
-        } catch (MalformedURLException | URISyntaxException e) {
-          nonCreatedFiles.add(new File(matcher.group(1)));
+      if (matcher.groupCount() >= 1) {
+
+        Optional<File> fileWithAbsolutePath = getFileFromString(matcher.group(1));
+        if (fileWithAbsolutePath.isPresent()) {
+          IFile fileToCreate = getFileToCreate(imageFolder, fileWithAbsolutePath.get(), notifier);
+          filesToCreate.put(matcher.group(1), fileToCreate);
+        } else {
+          nonCreatedFiles.add(matcher.group(1));
         }
       }
     }
 
-    Map<File, IFile> createdFiles = createFiles(imageFolder, filesToCreate, notifier, attribute);
+    Map<String, IFile> createdFiles = createFiles(imageFolder, filesToCreate, notifier, attribute);
 
     // Log what have been done
     if (!createdFiles.isEmpty()) {
-      String createdFilesPath = createdFiles.keySet().stream().map(File::getAbsolutePath)
-          .collect(Collectors.joining(", "));
+      String createdFilesPath = createdFiles.keySet().stream().collect(Collectors.joining(", "));
       Activator.getDefault().getLog().info(MessageFormat.format(Messages.MigrationAction_Image_AsolutePathImageMigrated,
           new EditingDomainServices().getLabelProviderText(notifier), attribute.getName(), createdFilesPath));
     }
     if (!nonCreatedFiles.isEmpty()) {
-      String nonCreatedFilesPath = nonCreatedFiles.stream().map(File::getAbsolutePath)
-          .collect(Collectors.joining(", "));
+      String nonCreatedFilesPath = nonCreatedFiles.stream().collect(Collectors.joining(", "));
       String message = MessageFormat.format(Messages.MigrationAction_Image_AsolutePathImageNotMigrated,
           new EditingDomainServices().getLabelProviderText(notifier), attribute.getName(), nonCreatedFilesPath);
       Activator.getDefault().getLog().warn(message);
@@ -228,6 +222,27 @@ public class ImagePathInRichTextAttributeContribution extends AbstractMigrationC
       LogExt.log(logger, status);
     }
     return createdFiles;
+  }
+
+  private Optional<File> getFileFromString(String fileString) {
+    Optional<File> fileOpt = Optional.empty();
+    File fileWithAbsolutePath = new File(fileString);
+    try {
+      if (!fileWithAbsolutePath.exists()) {
+        URI uri = new java.net.URL(fileString).toURI();
+        fileWithAbsolutePath = new File(uri);
+        if (!fileWithAbsolutePath.exists()) {
+          String decodedURI = URIUtil.toUnencodedString(uri);
+          fileWithAbsolutePath = new File(decodedURI);
+        }
+      }
+      if (fileWithAbsolutePath.exists()) {
+        fileOpt = Optional.of(fileWithAbsolutePath);
+      }
+    } catch (MalformedURLException | URISyntaxException | IllegalArgumentException | SecurityException e) {
+    }
+
+    return fileOpt;
   }
 
   /**
@@ -246,14 +261,14 @@ public class ImagePathInRichTextAttributeContribution extends AbstractMigrationC
    * @throws CoreException
    *           if the image folder can not be created
    */
-  private Map<File, IFile> createFiles(IFolder imageFolder, Map<File, IFile> filesToCopy, EObject contextObject,
+  private Map<String, IFile> createFiles(IFolder imageFolder, Map<String, IFile> filesToCopy, EObject contextObject,
       EAttribute attribute) {
-    Map<File, IFile> createdFiles = new LinkedHashMap<>();
+    Map<String, IFile> createdFiles = new LinkedHashMap<>();
     if (filesToCopy.isEmpty()) {
       return createdFiles;
     }
 
-    List<File> nonCreatedFiles = new ArrayList<>();
+    List<String> nonCreatedFiles = new ArrayList<>();
 
     // create the images folder if needed
     if (!imageFolder.exists()) {
@@ -269,7 +284,7 @@ public class ImagePathInRichTextAttributeContribution extends AbstractMigrationC
       }
     }
 
-    for (File fileToCopy : filesToCopy.keySet()) {
+    for (String fileToCopy : filesToCopy.keySet()) {
       IFile targetFileToCreate = filesToCopy.get(fileToCopy);
       if (targetFileToCreate.exists()) {
         Date date = new Date();
@@ -281,22 +296,23 @@ public class ImagePathInRichTextAttributeContribution extends AbstractMigrationC
         filesToCopy.put(fileToCopy, targetFileToCreate);
       }
 
-      try (FileInputStream fileInputStream = new FileInputStream(fileToCopy)) {
+      Optional<File> fileFromString = getFileFromString(fileToCopy);
+      if (fileFromString.isPresent()) {
+        try (FileInputStream fileInputStream = new FileInputStream(fileFromString.get())) {
 
-        targetFileToCreate.create(fileInputStream, false, null);
+          targetFileToCreate.create(fileInputStream, false, null);
 
-        createdFiles.put(fileToCopy, targetFileToCreate);
-      } catch (CoreException | IOException e) {
-        Activator.getDefault().getLog().error(
-            MessageFormat.format(Messages.MigrationAction_Image_ImpossibleToCreateImage, fileToCopy.getAbsolutePath()),
-            e);
-        nonCreatedFiles.add(fileToCopy);
+          createdFiles.put(fileToCopy, targetFileToCreate);
+        } catch (CoreException | IOException e) {
+          Activator.getDefault().getLog()
+              .error(MessageFormat.format(Messages.MigrationAction_Image_ImpossibleToCreateImage, fileToCopy), e);
+          nonCreatedFiles.add(fileToCopy);
+        }
       }
     }
 
     if (nonCreatedFiles.size() > 0) {
-      String nonCreatedFilesPath = nonCreatedFiles.stream().map(File::getAbsolutePath)
-          .collect(Collectors.joining(", "));
+      String nonCreatedFilesPath = nonCreatedFiles.stream().collect(Collectors.joining(", "));
       String message = MessageFormat.format(Messages.MigrationAction_Image_ImpossibleToCreateImages,
           new EditingDomainServices().getLabelProviderText(contextObject), attribute.getName(), nonCreatedFilesPath);
       Activator.getDefault().getLog().error(message);
