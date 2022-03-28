@@ -47,6 +47,11 @@ public class SemanticBrowserActionFactory {
     getToolBarManager(semanticBrowserViewPart).add(limitateTreeExpansionAction);
   }
 
+  public void createLexicographicSortTreeAction(ISemanticBrowserViewPart semanticBrowserViewPart) {
+      LexicographicSortTreeAction lexicographicSortTreeAction = new LexicographicSortTreeAction(semanticBrowserViewPart);
+    getToolBarManager(semanticBrowserViewPart).add(lexicographicSortTreeAction);
+  }
+
   public void createRefreshAction(ISemanticBrowserViewPart semanticBrowserViewPart) {
     RefreshAction refreshAction = new RefreshAction(semanticBrowserViewPart);
     getToolBarManager(semanticBrowserViewPart).add(refreshAction);
