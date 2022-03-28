@@ -27,6 +27,7 @@ public class SemanticBrowserModel implements ISemanticBrowserModel {
   protected boolean showPatterns = false; // default value
   protected boolean showDiagrams = true; // default value
   protected boolean limitateTreeExpansion = false; // default value
+  protected boolean lexicographicSortTree = false; // default value
   protected Hashtable<String, List<String>> browserID2ExpandedObjectHashcodes = new Hashtable<>();
 
   /**
@@ -62,6 +63,16 @@ public class SemanticBrowserModel implements ISemanticBrowserModel {
   @Override
   public void setLimitateTreeExpansion(boolean limitateTreeExpansion) {
     this.limitateTreeExpansion = limitateTreeExpansion;
+  }
+
+  @Override
+  public boolean doesLexicographicSortTree() {
+      return lexicographicSortTree;
+  }
+
+  @Override
+  public void setLexicographicSortTree(boolean lexicographicSortTree) {
+      this.lexicographicSortTree = lexicographicSortTree;
   }
 
   @Override

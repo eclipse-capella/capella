@@ -32,6 +32,10 @@ public interface ISemanticBrowserModel {
 
   public void setLimitateTreeExpansion(boolean limitateTreeExpansion);
 
+  public boolean doesLexicographicSortTree();
+
+  public void setLexicographicSortTree(boolean lexicographicSortTree);
+
   public boolean doesShowCategory(ICategory category);
 
   public void saveExpandedState(CategoryImpl category, String browserID, boolean expanded);

@@ -32,6 +32,7 @@ public class Messages extends NLS {
   public static String SemanticBrowserView_ShowPatternsAction_Tooltip;
   public static String SemanticBrowserView_ShowDiagramsAction_Tooltip;
   public static String SemanticBrowserView_LimitateTreeExpansionAction_Tooltip;
+  public static String SemanticBrowserView_LexicographicSortTreeAction_Tooltip;
   
   /**
    * Text of the label for Referenced Elements browser.

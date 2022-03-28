@@ -39,4 +39,13 @@ public interface IImageKeys {
    */
   public final static String IMG_PRIMITIVE_VARIABLES = "variable_tab.gif";
 
+  /**
+   * Image id used in semantic browser to action "lexicographic sort" when sorting is enabled.<br>
+   */
+  public final static String IMG_LEXICOGRAPHIC_SORT_ENABLED = "full/clcl16/capella_sort.gif"; //$NON-NLS-1$
+
+  /**
+   * Image id used in semantic browser to action "lexicographic sort" when sorting is disabled.<br>
+   */
+  public final static String IMG_LEXICOGRAPHIC_SORT_DISBLED = "full/clcl16/capella_sort_disabled.gif"; //$NON-NLS-1$
 }
