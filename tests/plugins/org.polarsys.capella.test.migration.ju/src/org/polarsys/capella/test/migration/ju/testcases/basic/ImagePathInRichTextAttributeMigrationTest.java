@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019, 2020, THALES GLOBAL SERVICES.
+ * Copyright (c) 2019, 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -49,6 +49,8 @@ public class ImagePathInRichTextAttributeMigrationTest extends BasicTestCase {
   private static final String CAPELLA_PNG = "capella.png";
 
   private static final String SOURCE_MODEL = "ImagePath InRichTextAttribute";
+
+  String HTML_IMAGE_PATH_PATTERN_HTTP = "<img.*?src=\"https?://(.*?)\".*?/>"; //$NON-NLS-1$
 
   String HTML_IMAGE_PATH_PATTERN_BASE64 = "<img.*?src=\"" + SOURCE_MODEL + "/images/(.*?)\".*?/>"; //$NON-NLS-1$
 
@@ -106,9 +108,20 @@ public class ImagePathInRichTextAttributeMigrationTest extends BasicTestCase {
       // check the absolute path migration
       checkAbsolutePathMigration(session, oa);
 
+      // check the path beginning with https
+      checkPathWithHttp(session, oa);
+
       // check the project path migration
       checkProjectRelativePathMigration(oa);
     }
+  }
+
+  private void checkPathWithHttp(Session session, OperationalActivity oa) {
+    // check that the OA description has been properly migrated
+    Pattern pattern = Pattern.compile(HTML_IMAGE_PATH_PATTERN_HTTP);
+    Matcher matcher = pattern.matcher(oa.getDescription());
+    assertTrue("The path to the image has not been found with pattern " + HTML_IMAGE_PATH_PATTERN_HTTP,
+        matcher.find() && matcher.find());
   }
 
   /**
@@ -173,7 +186,8 @@ public class ImagePathInRichTextAttributeMigrationTest extends BasicTestCase {
     String expectedPath = SOURCE_MODEL + "/" + ImageManager.IMAGE_FOLDER_NAME + "/" + CAPELLA_PNG;
     Pattern pattern = Pattern.compile(HTML_IMAGE_PATH_PATTERN_COPIED);
     Matcher matcher = pattern.matcher(oa2.getDescription());
-    assertTrue(HTML_IMAGE_INVALID_ABSOLUTE_PATH + " should have been migrated into " + expectedPath, matcher.find());
+    assertTrue("file:/xxxx/junit-workspace/ImagePath%20InRichTextAttribute/capella.png  should have been migrated into "
+        + expectedPath, matcher.find());
 
     // Check the copied file
     long nbImageFiles = Arrays.asList(sourceModelProject.getFolder(ImageManager.IMAGE_FOLDER_NAME).members()).stream()
