@@ -15,6 +15,7 @@ package org.polarsys.capella.common.ui.toolkit.browser.content.provider.impl;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IStatus;
@@ -91,7 +92,7 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
    * @param gatheredElements
    * @param gatheredCategories
    */
-  protected void getCategoryChildren(ICategory category, BrowserElementWrapper wrapper, Set<Object> gatheredElements) {
+  protected void getCategoryChildren(ICategory category, BrowserElementWrapper wrapper, LinkedHashSet<Object> gatheredElements) {
     // lookup for the element that we need to query on.
     EObject elementToQuery = lookUpModelElement(wrapper);
 
@@ -112,7 +113,7 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
         BrowserElementWrapper wrapper = (BrowserElementWrapper) parentElement;
         // retrieve referenced element by the wrapper.
         Object element = ((BrowserElementWrapper) parentElement).getElement();
-        Set<Object> gatheredElements = new HashSet<>(0);
+        LinkedHashSet<Object> gatheredElements = new LinkedHashSet<>(0);
         if (wrapper instanceof EObjectWrapper) {
           // Provide the root element to the CurrentElement Browser in purpose to display it.
           if ((element == rootElement) && inputHasChanged) {
@@ -131,7 +132,7 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
         /**
          * Wrap gathered elements & register each wrapper in cache.
          */
-        Set<Object> wrappers = new HashSet<>(0);
+        LinkedHashSet<Object> wrappers = new LinkedHashSet<>(0);
         for (Object gatherElement : gatheredElements) {
           // ignore queries result that returns a null object (reference with cardinality max 1)
           if (gatherElement != null) {
@@ -145,7 +146,7 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
               if (!model.doesShowCategory((ICategory) gatherElement)) {
                 shouldRemovedEmptyCategoryWrapper = true;
               } else {
-                Set<Object> categoryChildren = new HashSet<>(0);
+                  LinkedHashSet<Object> categoryChildren = new LinkedHashSet<>(0);
                 // Compute category children, if no child, remove this category from displayed elements.
                 getCategoryChildren((ICategory) gatherElement, elementWrapper, categoryChildren);
                 if (categoryChildren.isEmpty()) {

@@ -469,7 +469,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
     AbstractContentProviderFactory.getInstance().setModel(model);
 
     // Initialize referencing viewer as first element of the main sash form.
-    ViewerComparator comparator = new ViewerComparator();
+    ViewerComparator comparator = new SemanticBrowserViewerComparator();
     AbstractContentProvider treeProvider = (AbstractContentProvider) AbstractContentProviderFactory.getInstance()
         .getReferencingContentProvider();
     referencingViewer = createViewer(mainSashForm, REFERENCING_ELEMENTS_LABEL_TXT, 3, treeProvider.getBrowserId());
@@ -482,7 +482,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
     this.currentViewer = createViewer(mainSashForm, Messages.SemanticBrowserView_Current_Element_Title, 3,
         treeProvider.getBrowserId());
     initializeViewer(this.currentViewer, treeProvider,
-        AbstractLabelProviderFactory.getInstance().getCurrentLabelProvider(), new ViewerComparator() {
+        AbstractLabelProviderFactory.getInstance().getCurrentLabelProvider(), new SemanticBrowserViewerComparator() {
           /**
            * Overridden to force All Related Diagrams and All Related Tables to be located at the end of the tree.
            * {@inheritDoc}
