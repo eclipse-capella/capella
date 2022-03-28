@@ -4946,7 +4946,7 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.Connection_connectedParts"
             isTopLevel="true"
-            name="Connected parts">
+            name="Connected Parts">
          <availableForType
                class="org.polarsys.capella.core.data.fa.ComponentExchange">
          </availableForType>
