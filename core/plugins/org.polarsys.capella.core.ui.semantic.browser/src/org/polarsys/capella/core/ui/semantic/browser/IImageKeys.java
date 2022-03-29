@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -43,9 +43,4 @@ public interface IImageKeys {
    * Image id used in semantic browser to action "lexicographic sort" when sorting is enabled.<br>
    */
   public final static String IMG_LEXICOGRAPHIC_SORT_ENABLED = "full/clcl16/capella_sort.gif"; //$NON-NLS-1$
-
-  /**
-   * Image id used in semantic browser to action "lexicographic sort" when sorting is disabled.<br>
-   */
-  public final static String IMG_LEXICOGRAPHIC_SORT_DISBLED = "full/clcl16/capella_sort_disabled.gif"; //$NON-NLS-1$
 }

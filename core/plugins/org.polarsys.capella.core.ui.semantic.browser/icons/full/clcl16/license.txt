@@ -7,3 +7,4 @@ http://www.eclipse.org/legal/epl-2.0
 /icons/full/clcl16/refresh.gif - org.eclipse.pde.ui - org.eclipse.pde.ui/icons/elcl16/refresh.gif
 /icons/full/clcl16/synced.gif - org.eclipse.ant.ui - org.eclipse.ant.ui/icons/full/elcl16/synced.gif
 /icons/full/clcl16/collapseCategories.gif - org.polarsys.capella.core.ui.semantic.browser - org.polarsys.capella.core.ui.semantic.browser/icons/full/clcl16/collapseCategories.gif
+/icons/full/clcl16/capella_sort.gif - org.polarsys.capella.core.ui.resources - org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_sort.gif
