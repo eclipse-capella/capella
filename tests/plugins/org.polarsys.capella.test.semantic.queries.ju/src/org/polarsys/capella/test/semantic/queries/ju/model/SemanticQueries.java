@@ -341,6 +341,14 @@ public abstract class SemanticQueries extends AbstractSemanticQueryTestCase {
   public static final String PA__PC2 = "f0c6b3f1-e04d-4a92-95a4-5385f51375c8";
   public static final String PA__PC3 = "ab720153-5d1c-4e28-a370-0e813162e606";
   public static final String PA__PC4 = "bb8255ea-fa5d-4b4f-a00e-91ae2a1c3e9b";
+  public static final String PA__PHYSICAL_PATH = "fbf1e564-721e-4d98-bc49-f353778323b9";
+  public static final String PA__PC5 = "4a86e83d-e6a6-4c11-bd5f-af56c50ee473";
+  public static final String PA__PC6 = "079312e2-5a31-422a-a1dc-bffec29272af";
+  public static final String PA__PC7 = "11baccf1-04e6-464a-97f0-7656deb231d8";
+  public static final String PA__PC8 = "30ecad95-922c-4010-bbc8-8d0533dd54d3";
+  public static final String PA__PL2 = "251270d7-8c45-489e-b283-a504fc9d06a2";
+  public static final String PA__PL3 = "f9dad582-b443-4dc5-83f0-b0800706fb39";
+  public static final String PA__PL4 = "8b0f14b1-9b08-4ee8-9771-eabb9d99aa8b";
   public static final String EPBS = "1729bd4c-a4d2-48c2-ac5e-cf84172ae391";
   public static final String EPBS__CAPABILITIES = "51981734-92ce-4076-8ef2-702a1097fc2b";
   public static final String EPBS_SCENARIO_CAPA1_IS = "70eba49a-505f-469b-a830-5075967cbd9f";

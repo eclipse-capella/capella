@@ -6143,7 +6143,23 @@
                   class="org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalPath_RealisedConnection_PhysicalComponents">
             </basicQuery>
          </itemQueries>
-      </category>        
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.PhysicalPath_InvolvedComponents"
+            isTopLevel="true"
+            name="Involved Node Components">
+         <availableForType
+               class="org.polarsys.capella.core.data.cs.PhysicalPath">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalPath_PhysicalComponents">
+            </basicQuery>
+         </categoryQuery>
+      </category>
       <category
             id="------------ PhysicalLink---------------"
             isTopLevel="false">
