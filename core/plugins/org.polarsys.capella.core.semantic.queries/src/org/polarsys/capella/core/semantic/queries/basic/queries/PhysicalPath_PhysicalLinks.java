@@ -16,11 +16,10 @@ package org.polarsys.capella.core.semantic.queries.basic.queries;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.polarsys.capella.core.data.cs.AbstractPathInvolvedElement;
+import org.polarsys.capella.common.helpers.query.IQuery;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.data.cs.PhysicalPath;
 import org.polarsys.capella.core.model.helpers.PhysicalPathExt;
-import org.polarsys.capella.common.helpers.query.IQuery;
 
 /**
  */
@@ -32,11 +31,8 @@ public class PhysicalPath_PhysicalLinks implements IQuery {
     List<Object> result = new ArrayList<Object>(0);
     if (object instanceof PhysicalPath) {
       PhysicalPath path = (PhysicalPath) object;
-      List<AbstractPathInvolvedElement> involvedElements = PhysicalPathExt.getInvolvedElements(path);
-      for (AbstractPathInvolvedElement involvedElement : involvedElements) {
-        if (involvedElement instanceof PhysicalLink) {
-          result.add(involvedElement);
-        }
+      for (PhysicalLink involvedElement : PhysicalPathExt.getFlatPhysicalLinks(path)) {
+        result.add(involvedElement);
       }
     }
     return result;
