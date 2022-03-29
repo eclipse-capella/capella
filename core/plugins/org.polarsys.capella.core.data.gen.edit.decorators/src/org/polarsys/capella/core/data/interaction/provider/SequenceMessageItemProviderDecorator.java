@@ -21,17 +21,16 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.polarsys.capella.core.data.capellamodeller.provider.CapellaModellerEditPlugin;
 import org.polarsys.capella.core.data.gen.edit.decorators.ItemProviderAdapterDecorator;
 import org.polarsys.capella.core.data.interaction.ArmTimerEvent;
+import org.polarsys.capella.core.data.interaction.MessageEnd;
 import org.polarsys.capella.core.data.interaction.MessageKind;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
 
-public class SequenceMessageItemProviderDecorator extends
-		ItemProviderAdapterDecorator implements IEditingDomainItemProvider,
-		IStructuredItemContentProvider, ITreeItemContentProvider,
-		IItemLabelProvider, IItemPropertySource {
+public class SequenceMessageItemProviderDecorator extends ItemProviderAdapterDecorator
+        implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 
-	public SequenceMessageItemProviderDecorator(AdapterFactory adapterFactory) {
-		super(adapterFactory);
-	}
+    public SequenceMessageItemProviderDecorator(AdapterFactory adapterFactory) {
+        super(adapterFactory);
+    }
 
     @Override
     public String getText(Object object) {
@@ -41,8 +40,8 @@ public class SequenceMessageItemProviderDecorator extends
     @Override
     public Object getImage(Object object) {
         MessageKind kind = ((SequenceMessage) object).getKind();
-        
-        final String imagePath; //$NON-NLS-1$
+
+        final String imagePath; // $NON-NLS-1$
         switch (kind) {
         case REPLY:
             imagePath = "full/obj16/SequenceMessageReply"; //$NON-NLS-1$
@@ -54,7 +53,11 @@ public class SequenceMessageItemProviderDecorator extends
             imagePath = "full/obj16/SequenceMessageDelete"; //$NON-NLS-1$
             break;
         case TIMER:
-            if (((SequenceMessage) object).getReceivingEnd().getEvent() instanceof ArmTimerEvent) {
+            MessageEnd receivingEnd = ((SequenceMessage) object).getReceivingEnd();
+            MessageEnd sendingEnd = ((SequenceMessage) object).getSendingEnd();
+            if (receivingEnd == null && sendingEnd == null) {
+                imagePath = "full/obj16/SequenceMessage"; //$NON-NLS-1$
+            } else if ((receivingEnd != null && receivingEnd.getEvent() instanceof ArmTimerEvent) || (sendingEnd != null && sendingEnd.getEvent() instanceof ArmTimerEvent)) {
                 imagePath = "full/obj16/SequenceMessageArmTimer"; //$NON-NLS-1$
             } else {
                 imagePath = "full/obj16/SequenceMessageCancelTimer"; //$NON-NLS-1$
