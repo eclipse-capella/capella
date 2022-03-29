@@ -4,8 +4,8 @@ Element-Name: SemanticBrowser
 Element-Type: testsuite
 Element-Version: 2.0
 Id: _OtEBcGgCEem-1Zn8MbYLuw
-Runtime-Version: 2.3.0.201806262310
-Save-Time: 4/26/19 1:06 PM
+Runtime-Version: 2.5.2.202109092356
+Save-Time: 3/28/22, 4:25 PM
 
 ------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8
 Content-Type: text/testcase
@@ -15,5 +15,6 @@ _d6NhQLEMEeiU1LYbc1uWDg	// kind: 'test' name: 'SemanticBrowserDoubleClickOnEleme
 _sA0wEGf6Eem-1Zn8MbYLuw	// kind: 'test' name: 'SemanticBrowserSelection' path: 'SemanticBrowserSelection.test'
 _ouh_QGgCEem-1Zn8MbYLuw	// kind: 'test' name: 'SemanticBrowserShowIn' path: 'SemanticBrowserShowIn.test'
 _7vSWkGgGEem-1Zn8MbYLuw	// kind: 'test' name: 'SemanticBrowserHistory' path: 'SemanticBrowserHistory.test'
+_6Io3cK6iEeyXtKTRsZrSEg	// kind: 'test' name: 'SemanticBrowserSelectionOrder' path: 'SemanticBrowserSelectionOrder.test'
 
 ------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8--
