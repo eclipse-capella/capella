@@ -38,7 +38,13 @@ public interface ICategory {
 	 * @param id 
 	 */
 	public void addSubCategoryId(String id);
-	
+
+  /**
+   * Query object. Could be a basic query or a navigation query.
+   * @param query
+   */
+  public Object getQuery();
+  
 	/**
 	 * Set Query object. Could be a basic query or a navigation query.
 	 * @param query 
