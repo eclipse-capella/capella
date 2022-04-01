@@ -67,11 +67,11 @@ This section lists tools that are available on all Capella diagrams. These tools
 | 
 |-
 | 	Interaction 	
-| [[Image:Images/icons/full/obj16/AsyncSequenceMessage.gif]] 
+| [[Image:Images/icons/full/obj16/SequenceMessage.gif]] 
 | 		Creates a new Sequence Message invoking an Interaction without return branch between the Source and Target Lifelines representing existing Operational Activities. This tool opens a selection wizard to select an available existing Interaction or to create a new one between these Operational Activities. 	
 |-
 | 	Interaction with return branch 	
-| [[Image:Images/icons/full/obj16/SequenceMessage.gif]] 
+| [[Image:Images/icons/full/obj16/SequenceMessageWithReply.gif]] 
 | 		Creates a new Sequence Message invoking an Interaction with return branch between the Source and Target Lifelines representing existing Operational Activities. This tool opens a selection wizard to select an available existing Interaction or to create a new one between these Operational Activities. 	
 |-
 | 	Reference 	
@@ -447,27 +447,27 @@ This section lists tools that are available on all Capella diagrams. These tools
 | 
 |-
 | 	Functional Exchange 	
-| [[Image:Images/icons/full/obj16/AsyncSequenceMessage.gif]] 
+| [[Image:Images/icons/full/obj16/SequenceMessage.gif]] 
 | 		Creates a new Sequence Message invoking a Functional Exchange without return branch between the Source and Target Lifelines representing existing Component/Actor Parts. The kind of these Components/Actors is related to the Architecture. This tool opens a selection wizard to select an available existing Functional Exchange or to create a new one between existing/new allocated  Functions. This tool is masked as soon as a Component Exchange is displayed on the scenario. 	
 |-
 | 	Functional Exchange with Return Branch 	
-| [[Image:Images/icons/full/obj16/SequenceMessage.gif]] 
+| [[Image:Images/icons/full/obj16/SequenceMessageWithReply.gif]] 
 | 		Creates a new Sequence Message invoking a Functional Exchange with return branch between the Source and Target Lifelines representing existing Component/Actor Parts. The kind of these Components/Actors is related to the Architecture. This tool opens a selection wizard to select an available existing Functional Exchange or to create a new one between existing/new allocated  Functions. This tool is masked as soon as a Component Exchange is displayed on the scenario.  	
 |-
 | 	Component Exchange 	
-| [[Image:Images/icons/full/obj16/AsyncSequenceMessage.gif]] 
+| [[Image:Images/icons/full/obj16/SequenceMessage.gif]] 
 | 		Creates a new Sequence Message invoking a Component Exchange without return branch between the Source and Target Lifelines representing existing Component/Actor Parts. The kind of these Components/Actors is related to the Architecture. This tool opens a selection wizard to select an available existing Component Exchange or to create a new one between these Components/Actors.This tool is masked as soon as a Functional Exchange is displayed on the scenario. 	
 |-
 | 	Component Exchange with Return Branch 	
-| [[Image:Images/icons/full/obj16/SequenceMessage.gif]] 
+| [[Image:Images/icons/full/obj16/SequenceMessageWithReply.gif]] 
 | 		Creates a new Sequence Message invoking a Component Exchange with return branch between the Source and Target Lifelines representing existing Component/Actor Parts. The kind of these Components/Actors is related to the Architecture. This tool opens a selection wizard to select an available existing Component Exchange or to create a new one between these Components/Actors.This tool is masked as soon as a Functional Exchange is displayed on the scenario. 	
 |-
 | 	Arm timer 	
-| [[Image:Images/icons/full/obj16/SequenceMessage.gif]] 
+| [[Image:Images/icons/full/obj16/SequenceMessageArmTimer.gif]] 
 | 		Create a new sequence message to arm a timer. 	
 |-
 | 	Cancel timer 	
-| [[Image:Images/icons/full/obj16/SequenceMessage.gif]] 
+| [[Image:Images/icons/full/obj16/SequenceMessageCancelTimer.gif]] 
 | 		Create a new sequence message to cancel a prieviously armed timer. 	
 |-
 | 	Found Functional Exchange 	
@@ -587,11 +587,11 @@ This section lists tools that are available on all Capella diagrams. These tools
 | 
 |-
 | 	Sequence Message 	
-| [[Image:Images/icons/full/obj16/AsyncSequenceMessage.gif]] 
+| [[Image:Images/icons/full/obj16/SequenceMessage.gif]] 
 | 		Creates a new Sequence Message invoking a Interface Exchange Item allocation without return branch between the Source and Target Lifelines representing existing Component/Actor Parts. The kind of these Components/Actors is related to the Architecture. This tool opens a selection wizard to select an available existing Interface Exchange Item allocation or to create a new one to existing/new Interface. 	
 |-
 | 	Sequence Message with Return Branch 	
-| [[Image:Images/icons/full/obj16/SequenceMessage.gif]] 
+| [[Image:Images/icons/full/obj16/SequenceMessageWithReply.gif]] 
 | 		Creates a new Sequence Message invoking a Interface Exchange Item allocation with return branch between the Source and Target Lifelines representing existing Component/Actor Parts. The kind of these Components/Actors is related to the Architecture. This tool opens a selection wizard to select an available existing Interface Exchange Item allocation or to create a new one to existing/new Interface. 	
 |-
 | 	Create message 	
@@ -603,11 +603,11 @@ This section lists tools that are available on all Capella diagrams. These tools
 | 		Creates a new Delete Sequence Message invoking a Interface Exchange Item allocation between the Source and Target Lifelines representing existing Component/Actor Parts. The kind of these Components/Actors is related to the Architecture. This tool opens a selection wizard to select an available existing Interface Exchange Item allocation or to create a new one to existing/new Interface. 	
 |-
 | 	Arm timer 	
-| [[Image:Images/icons/full/obj16/SequenceMessage.gif]] 
+| [[Image:Images/icons/full/obj16/SequenceMessageArmTimer.gif]] 
 | 		Create a new sequence message to arm a timer. 	
 |-
 | 	Cancel timer 	
-| [[Image:Images/icons/full/obj16/SequenceMessage.gif]]  
+| [[Image:Images/icons/full/obj16/SequenceMessageCancelTimer.gif]]  
 | 		Create a new sequence message to cancel a prieviously armed timer. 	
 |-
 | 	Found Message 	
@@ -1316,11 +1316,11 @@ This section lists tools that are available on all Capella diagrams. These tools
 | 		Insert/Remove Functions. Creates or delete semantic Lifelines representing existing Functions. Removing a Lifeline from a scenario deletes incoming and outgoing sequence messages, but does not delete from model the represented Functions and related Functional Exchanges. 	
 |-
 | 	Functional Exchange with return branch 	
-| [[Image:Images/icons/full/obj16/SequenceMessage.gif]] 
+| [[Image:Images/icons/full/obj16/SequenceMessageWithReply.gif]] 
 | 		Creates a new Sequence Message invoking a  Functional Exchange with a return branch between the Source and Target Lifelines. This tool opens a selection wizard to select an available existing Functional Exchange or to create a new one. 	
 |-
 | 	Functional Exchange 	
-| [[Image:Images/icons/full/obj16/AsyncSequenceMessage.gif]] 
+| [[Image:Images/icons/full/obj16/SequenceMessage.gif]] 
 | 		Creates a new Sequence Message invoking a  Functional Exchange without return branch between the Source and Target Lifelines. This tool opens a selection wizard to select an available existing Functional Exchange or to create a new one.  	
 |-
 | 	Reference 	
@@ -2329,19 +2329,19 @@ This section lists tools that are available on all Capella diagrams. These tools
 | 
 |-
 | 	Interaction with Return Branch 	
-| [[Image:Images/icons/full/obj16/SequenceMessage.gif]] 
+| [[Image:Images/icons/full/obj16/SequenceMessageWithReply.gif]] 
 | 		Creates a new Sequence Message invoking an Operational Interaction with return branch between the Source and Target Lifelines (representing existing Operational Entities Parts). This tool opens a selection wizard to select an available existing Interaction or to create a new one between existing/new allocated  Operational Activities. This tool is masked as soon as a Communication Mean is displayed on the scenario.  	
 |-
 | 	Interaction 	
-| [[Image:Images/icons/full/obj16/AsyncSequenceMessage.gif]] 
+| [[Image:Images/icons/full/obj16/SequenceMessage.gif]] 
 | 		Creates a new Sequence Message invoking an Operational Interaction without return branch between the Source and Target Lifelines (representing existing Operational Entities Parts). This tool opens a selection wizard to select an available existing Interaction or to create a new one between existing/new allocated  Operational Activities. This tool is masked as soon as a Communication Mean is displayed on the scenario. 	
 |-
 | 	CommunicationMean Return Branch 	
-| [[Image:Images/icons/full/obj16/SequenceMessage.gif]] 
+| [[Image:Images/icons/full/obj16/SequenceMessageWithReply.gif]] 
 | 		Creates a new Sequence Message invoking a Communication Mean with return branch between the Source and Target Lifelines representing existing Operational Entities Parts. This tool opens a selection wizard to select an available existing Communication Mean or to create a new one between these Operational Entities. This tool is masked as soon as an Operational Interaction is displayed on the scenario. 	
 |-
 | 	Communication Mean 	
-| [[Image:Images/icons/full/obj16/AsyncSequenceMessage.gif]] 
+| [[Image:Images/icons/full/obj16/SequenceMessage.gif]] 
 | 		Creates a new Sequence Message invoking a Communication Mean with return branch between the Source and Target Lifelines representing existing Operational Entities Parts. This tool opens a selection wizard to select an available existing Communication Mean or to create a new one between these Operational Entities. 	
 |-
 | 	Create message 	
@@ -2353,11 +2353,11 @@ This section lists tools that are available on all Capella diagrams. These tools
 | 		Creates a new Create Sequence Message invoking an Operational Interaction or Communication Mean between the Source and Target Lifelines representing existing Operational Entities Parts. This tool opens a selection wizard to select an available existing Operational Interaction or Communication Mean. 	
 |-
 | 	Arm timer 	
-| [[Image:Images/icons/full/obj16/SequenceMessage.gif]] 
+| [[Image:Images/icons/full/obj16/SequenceMessageArmTimer.gif]] 
 | 		Create a new sequence message to arm a timer. 	
 |-
 | 	Cancel timer 	
-| [[Image:Images/icons/full/obj16/SequenceMessage.gif]] 
+| [[Image:Images/icons/full/obj16/SequenceMessageCancelTimer.gif]] 
 | 		Create a new sequence message to cancel a prieviously armed timer. 	
 |-
 | 	Reference 	
