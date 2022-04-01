@@ -323,3 +323,5 @@ http://www.eclipse.org/legal/epl-2.0
 /icons/full/obj16/CapabilityInvolvement.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/CapabilityInvolvement.gif
 /icons/full/obj16/CapabilityRealizationInvolvement.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/CapabilityRealizationInvolvement.gif
 /icons/full/obj16/MissionInvolvement.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/MissionInvolvement.gif 
+/icons/full/obj16/FoundMessage.gif - org.polarsys.capella.core.sirius.analysis - org.polarsys.capella.core.sirius.analysis/description/images/FoundMessage.gif
+/icons/full/obj16/LostMessage.gif - org.polarsys.capella.core.sirius.analysis - org.polarsys.capella.core.sirius.analysis/description/images/LostMessage.gif
