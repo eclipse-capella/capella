@@ -16,6 +16,7 @@ import org.eclipse.emf.edit.provider.IItemProviderDecorator;
 import org.polarsys.capella.core.data.gen.edit.decorators.CustomDecoratorAdapterFactory;
 import org.polarsys.capella.core.data.gen.edit.decorators.ForwardingItemProviderAdapterDecorator;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
+import org.polarsys.capella.core.data.interaction.StateFragment;
 
 public class InteractionItemProviderDecoratorAdapterFactory extends CustomDecoratorAdapterFactory {
 
@@ -27,6 +28,8 @@ public class InteractionItemProviderDecoratorAdapterFactory extends CustomDecora
 	protected IItemProviderDecorator createItemProviderDecorator(Object target, Object Type) {
 		if (target instanceof SequenceMessage) {
 			return new SequenceMessageItemProviderDecorator(this);
+		} else if (target instanceof StateFragment) {
+		    return new StateFragmentItemProviderDecorator(this);
 		}
 		return new ForwardingItemProviderAdapterDecorator(this);
 	}

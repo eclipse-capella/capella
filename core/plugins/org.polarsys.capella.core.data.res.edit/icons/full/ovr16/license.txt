@@ -5,3 +5,4 @@ http://www.eclipse.org/legal/epl-2.0
 <icon file path> - <original eclipse plug-in> - <original file path>
 
 /icons/full/over16/partOverlay.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/Property.gif
+/icons/full/over16/StateFragmentOverlay.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/StateFragment.gif

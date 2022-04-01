@@ -28,6 +28,8 @@ import org.polarsys.capella.core.data.interaction.SequenceMessage;
 public class SequenceMessageItemProviderDecorator extends ItemProviderAdapterDecorator
         implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 
+    private static final String FULL_OBJ16_SEQUENCE_MESSAGE = "full/obj16/SequenceMessage";
+
     public SequenceMessageItemProviderDecorator(AdapterFactory adapterFactory) {
         super(adapterFactory);
     }
@@ -56,7 +58,7 @@ public class SequenceMessageItemProviderDecorator extends ItemProviderAdapterDec
             MessageEnd receivingEnd = ((SequenceMessage) object).getReceivingEnd();
             MessageEnd sendingEnd = ((SequenceMessage) object).getSendingEnd();
             if (receivingEnd == null && sendingEnd == null) {
-                imagePath = "full/obj16/SequenceMessage"; //$NON-NLS-1$
+                imagePath = FULL_OBJ16_SEQUENCE_MESSAGE; //$NON-NLS-1$
             } else if ((receivingEnd != null && receivingEnd.getEvent() instanceof ArmTimerEvent) || (sendingEnd != null && sendingEnd.getEvent() instanceof ArmTimerEvent)) {
                 imagePath = "full/obj16/SequenceMessageArmTimer"; //$NON-NLS-1$
             } else {
@@ -71,11 +73,11 @@ public class SequenceMessageItemProviderDecorator extends ItemProviderAdapterDec
             } else if (sendingEnd1 == null && receivingEnd1 != null) {
                 imagePath = "full/obj16/FoundMessage"; //$NON-NLS-1$
             } else {
-                imagePath = "full/obj16/SequenceMessage"; //$NON-NLS-1$
+                imagePath = FULL_OBJ16_SEQUENCE_MESSAGE; //$NON-NLS-1$
             }
             break;
         default:
-            imagePath = "full/obj16/SequenceMessage"; //$NON-NLS-1$
+            imagePath = FULL_OBJ16_SEQUENCE_MESSAGE; //$NON-NLS-1$
             break;
         }
         return overlayImage(object, CapellaModellerEditPlugin.INSTANCE.getImage(imagePath));
