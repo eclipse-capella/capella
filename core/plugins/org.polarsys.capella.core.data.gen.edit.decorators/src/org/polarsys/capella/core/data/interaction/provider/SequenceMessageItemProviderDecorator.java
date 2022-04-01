@@ -63,6 +63,17 @@ public class SequenceMessageItemProviderDecorator extends ItemProviderAdapterDec
                 imagePath = "full/obj16/SequenceMessageCancelTimer"; //$NON-NLS-1$
             }
             break;
+        case ASYNCHRONOUS_CALL:
+            MessageEnd receivingEnd1 = ((SequenceMessage) object).getReceivingEnd();
+            MessageEnd sendingEnd1 = ((SequenceMessage) object).getSendingEnd();
+            if (receivingEnd1 == null && sendingEnd1 != null) {
+                imagePath = "full/obj16/LostMessage"; //$NON-NLS-1$
+            } else if (sendingEnd1 == null && receivingEnd1 != null) {
+                imagePath = "full/obj16/FoundMessage"; //$NON-NLS-1$
+            } else {
+                imagePath = "full/obj16/SequenceMessage"; //$NON-NLS-1$
+            }
+            break;
         default:
             imagePath = "full/obj16/SequenceMessage"; //$NON-NLS-1$
             break;
