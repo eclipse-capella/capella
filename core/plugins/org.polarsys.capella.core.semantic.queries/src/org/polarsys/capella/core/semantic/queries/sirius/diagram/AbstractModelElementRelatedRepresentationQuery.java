@@ -13,13 +13,14 @@
 package org.polarsys.capella.core.semantic.queries.sirius.diagram;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
+import org.polarsys.capella.common.helpers.query.IQuery;
 import org.polarsys.capella.common.utils.RunnableWithBooleanResult;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
-import org.polarsys.capella.common.helpers.query.IQuery;
 
 /**
  */
@@ -27,12 +28,17 @@ public abstract class AbstractModelElementRelatedRepresentationQuery implements 
   /**
    * {@inheritDoc}
    */
-  public List<Object> compute(Object object_p) {
-    List<Object> result = new ArrayList<Object>(0);
-    if (!(object_p instanceof EObject)) {
+public List<Object> compute(Object object) {
+    List<Object> result = new ArrayList<>(0);
+    if (!(object instanceof EObject)) {
       return result;
     }
-    result.addAll(RepresentationHelper.getAllRepresentationDescriptorsWhereSemanticElementIsDisplayed((EObject) object_p, filterRepresentationDescription()));
+    result.addAll(RepresentationHelper.getAllRepresentationDescriptorsWhereSemanticElementIsDisplayed((EObject) object, filterRepresentationDescription()));
+    Collections.sort(result, (o1, o2) -> {
+        DRepresentationDescriptor desc1 = (DRepresentationDescriptor) o1;
+        DRepresentationDescriptor desc2 = (DRepresentationDescriptor) o2;
+        return desc1.getName().compareTo(desc2.getName());
+    });
     return result;
   }
 
