@@ -17,12 +17,18 @@ import java.util.List;
 
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerComparator;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper.EObjectWrapper;
 import org.polarsys.capella.common.ui.toolkit.browser.model.ISemanticBrowserModel;
 
 /**
- * When SemanticBrowser LexicographicSortTree option is not active and the element to sort are {@code EObjectWrapper}s
- * then this comparator does nothing to prevent the default {@code ViewerComparator} comparison (lexicographic).
+ * When SemanticBrowser LexicographicSortTree option is active and the elements to sort are {@code EObjectWrapper}s
+ * containing {@code DRepresentationDescriptor}s then do not sort the content as the expected order is already provided
+ * by the query.
+ * 
+ * When SemanticBrowser LexicographicSortTree option is not active and the elements to sort are {@code EObjectWrapper}s
+ * then this comparator does nothing to prevent the default {@code ViewerComparator} comparison (lexicographic) and keep
+ * the order of elements provided by queries.
  */
 public class SemanticBrowserViewerComparator extends ViewerComparator {
 
@@ -34,11 +40,13 @@ public class SemanticBrowserViewerComparator extends ViewerComparator {
 
     @Override
     public void sort(Viewer viewer, Object[] elements) {
+        List<Object> elementsList = Arrays.asList(elements);
         if (!model.doesLexicographicSortTree()) {
-            List<Object> elementsList = Arrays.asList(elements);
             if (elementsList.isEmpty() || (elementsList.get(0) instanceof EObjectWrapper)) {
                 return;
             }
+        } else if (elementsList.isEmpty() || ((elementsList.get(0) instanceof EObjectWrapper) && (((EObjectWrapper) elementsList.get(0)).getElement() instanceof DRepresentationDescriptor))) {
+            return;
         }
         super.sort(viewer, elements);
     }
