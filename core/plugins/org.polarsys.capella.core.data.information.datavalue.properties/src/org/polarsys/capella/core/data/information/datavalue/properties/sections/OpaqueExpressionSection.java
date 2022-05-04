@@ -278,6 +278,7 @@ public class OpaqueExpressionSection extends NamedElementSection {
     GridData gd = new GridData(SWT.FILL, SWT.FILL, true, true);
     gd.horizontalSpan = 2;
     gd.heightHint = 200;
+    gd.widthHint = 150;
     opaqueExpressionGroup.setLayoutData(gd);
     
     Table table = getWidgetFactory().createTable(opaqueExpressionGroup, SWT.SINGLE);
