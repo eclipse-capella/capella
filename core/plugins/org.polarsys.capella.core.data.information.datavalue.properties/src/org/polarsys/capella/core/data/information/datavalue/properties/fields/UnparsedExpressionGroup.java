@@ -61,6 +61,7 @@ public class UnparsedExpressionGroup extends AbstractSemanticField {
     gd = new GridData(GridData.FILL_HORIZONTAL);
     gd.horizontalSpan = 2;
     gd.heightHint = 80;
+    gd.widthHint = 150;
     unparsedExpressionTextField.addFocusListener(this);
     unparsedExpressionTextField.addKeyListener(this);
     unparsedExpressionTextField.setLayoutData(gd);

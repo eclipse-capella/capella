@@ -76,8 +76,10 @@ public class BasicElementGroup extends AbstractSemanticField {
     Text textField = widgetFactory.createText(textGroup, ICommonConstants.EMPTY_STRING);
     textField.addFocusListener(this);
     textField.addKeyListener(this);
-    textField.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-
+    GridData gd = new GridData(GridData.FILL_HORIZONTAL);
+    gd.widthHint = 150;
+    gd.heightHint = 20;
+    textField.setLayoutData(gd);
     return textField;
   }
 

@@ -82,6 +82,7 @@ public class RequirementGroup extends AbstractSemanticField {
     gd = new GridData(GridData.FILL_HORIZONTAL);
     gd.horizontalSpan = 2;
     gd.heightHint = 80;
+    gd.widthHint = 150;
     additionalInformationField.setLayoutData(gd);
   }
 

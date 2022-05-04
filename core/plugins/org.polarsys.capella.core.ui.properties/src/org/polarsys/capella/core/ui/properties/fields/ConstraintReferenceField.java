@@ -87,6 +87,7 @@ public class ConstraintReferenceField extends AbstractSemanticField {
     Text t = widgetFactory.createText(_textArea, "", SWT.READ_ONLY);
     GridData gd = new GridData(GridData.FILL_HORIZONTAL);
     gd.heightHint = t.getLineHeight() * 3 + 5;
+    gd.widthHint = 150;
     _textArea.setLayoutData(gd);
     _textArea.setLayout(new FillLayout());
 

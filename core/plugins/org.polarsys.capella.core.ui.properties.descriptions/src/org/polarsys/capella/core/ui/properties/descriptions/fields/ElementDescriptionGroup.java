@@ -83,6 +83,8 @@ public abstract class ElementDescriptionGroup implements SelectionListener, Focu
   private void createDescriptionField(Group textGroup, TabbedPropertySheetWidgetFactory widgetFactory) {
     _descriptionTextField = createDescriptionField(textGroup);
     GridData gd = new GridData(SWT.FILL, SWT.FILL, true, true);
+    gd.heightHint = 150;
+    gd.widthHint = 150;
     _descriptionTextField.setLayoutData(gd);
     _descriptionTextField.setEditable(false);
     _descriptionTextField.addFocusListener(this);
