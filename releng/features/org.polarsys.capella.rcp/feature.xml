@@ -104,6 +104,7 @@
    	  	Adding them here avoid to maintain two features, with and without sources
    	  -->
    	  
+	  <import plugin="ch.qos.logback.slf4j"/>
       <import feature="org.eclipse.acceleo.query.source"/>
       <import feature="org.eclipse.acceleo.ui.interpreter.source"/>
       <import feature="org.eclipse.amalgam.explorer.activity.source"/>

@@ -59,6 +59,7 @@ location sirius "https://download.eclipse.org/sirius/updates/milestones/7.0.1rc2
 location Orbit "https://download.eclipse.org/tools/orbit/downloads/drops/R20210602031627/repository" {
 	org.apache.batik.bridge.source lazy
 	org.apache.batik.script.source lazy
+	ch.qos.logback.slf4j
 }
 
 location kitalpha-runtime-core-master "https://download.eclipse.org/kitalpha/updates/stable/runtime/6.0.0.S202203161338/" {
