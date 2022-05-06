@@ -175,7 +175,6 @@ public class EditCapellaCustomPropertyWizardPage extends WizardPage implements I
               int style = (section.shouldUseExtraSpace()) ? GridData.FILL_BOTH : GridData.FILL_HORIZONTAL;
               GridData data = new GridData(style);
               data.heightHint = section.getMinimumHeight();
-              data.widthHint = 150;
               sectionComposite.setLayoutData(data);
               section.createControls(sectionComposite, null);
               section.setInput(part, new StructuredSelection(object));
