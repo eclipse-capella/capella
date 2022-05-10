@@ -34,6 +34,7 @@ public class Messages extends NLS {
   public static String MigrationAction_Image_AsolutePathImageNotMigrated;
   public static String MigrationAction_Image_AsolutePathImageMigrated;
   public static String MigrationAction_Image_Base64ImageMigrated;
+  public static String MigrationAction_Image_RelativePathImageNotFound;
   
 
   static {

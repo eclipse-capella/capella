@@ -60,6 +60,8 @@ public class ImagePathInRichTextAttributeMigrationTest extends BasicTestCase {
 
   String HTML_IMAGE_INVALID_ABSOLUTE_PATH = "C:\\INVALID\\PATH\\IMAGE.png"; //$NON-NLS-1$
 
+  String HTML_IMAGE_INVALID_RELATIVE_PATH = "/RELATIVE_IMAGE_NOT_FOUND.png"; //$NON-NLS-1$
+
   private static final String OA_ELEMENT_ID = "b302cb2c-9ebb-4a79-a1cb-2cf8e46fe51b";
 
   private IProject sourceModelProject;
@@ -95,7 +97,9 @@ public class ImagePathInRichTextAttributeMigrationTest extends BasicTestCase {
           Arrays.asList(sourceModelProject.members()).stream().filter(IFolder.class::isInstance).count() == 0);
 
       // migrate the project
+      statuses.clear();
       MigrationHelper.migrateProject(sourceModelProject);
+      checkLogs();
 
       Session session = getSessionForTestModel(SOURCE_MODEL);
       SessionContext context = new SessionContext(session);
@@ -195,9 +199,6 @@ public class ImagePathInRichTextAttributeMigrationTest extends BasicTestCase {
           return "png".equals(file.getFileExtension());
         }).count();
     assertEquals("Bad number of images in the images foldes", 3, nbImageFiles);
-
-    // check the log
-    checkLogs();
   }
 
   private void checkProjectRelativePathMigration(OperationalActivity oa) {
@@ -212,9 +213,11 @@ public class ImagePathInRichTextAttributeMigrationTest extends BasicTestCase {
     synchronizationWithUIThread();
     List<IStatus> warnings = statuses.stream().filter(s -> s.getSeverity() == IStatus.WARNING)
         .collect(Collectors.toList());
-    assertEquals("Bad number of warning logs", 1, warnings.size());
+    assertEquals("Bad number of warning logs", 2, warnings.size());
     assertTrue("There should be a log that warns that an absolute path could not be migrated",
         warnings.get(0).getMessage().contains(HTML_IMAGE_INVALID_ABSOLUTE_PATH));
+    assertTrue("There should be a log that warns that an relative path has been migrated but the image is not found",
+        warnings.get(1).getMessage().contains(HTML_IMAGE_INVALID_RELATIVE_PATH));
   }
 
   /**
