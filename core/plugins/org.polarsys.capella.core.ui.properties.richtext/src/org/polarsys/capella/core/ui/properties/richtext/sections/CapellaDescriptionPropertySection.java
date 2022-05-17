@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -120,11 +120,13 @@ public class CapellaDescriptionPropertySection extends DescriptionPropertySectio
    */
   @Override
   public void loadData(EObject descriptorOrCapellaElement) {
-    super.loadData(descriptorOrCapellaElement);
-    mapDescriptionSectionToEObject.put(CapellaDescriptionPropertySection.this, descriptorOrCapellaElement);
+    if (descriptorOrCapellaElement != null && !descriptorOrCapellaElement.equals(job.current)) {
+      super.loadData(descriptorOrCapellaElement);
+      mapDescriptionSectionToEObject.put(CapellaDescriptionPropertySection.this, descriptorOrCapellaElement);
 
-    job.current = descriptorOrCapellaElement;
-    job.schedule(100);
+      job.current = descriptorOrCapellaElement;
+      job.schedule();
+    }
   }
 
   /**
