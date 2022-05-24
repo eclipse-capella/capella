@@ -54,6 +54,36 @@ Then you can start the validation, and the [[../help/topic/org.polarsys.capella.
 But before fixing the path to the image one by one, check that the set of images are properly located where it is supposed to be.
 Then you can restart the migration to properly copy the image from the full path location to the relative workspace path
 
+=== How to properly migrate images ===
+
+As usual, and not specifically for the images, prefer starting the migration by the Capella libraries. The image migration process is the same for the Capella libraries and for the Capella project.
+
+Most of the attention points are '''specific''' to the migration towards '''Capella 6.0.0'''.
+
+Nevertheless, '''the migration error log messages, the usage of the validation and the quick fixes will remain useful after 6.0.0'''
+
+1- Before starting the migration, make sure that the images, that are referenced by the Capella/aird model in the description tab, are at the proper location. The reference may be either an absolute path (used in 5.2.x) or a project relative path.
+
+2- Start the Capella migration
+* old base64 encoded images are converted into an image in the workspace (5.2.x to 6.x migration)
+* old "absolute path" image are copied in the workspace (5.2.x to 6.x migration)
+* old project relative path are made workspace relative (5.2.x to 6.x migration)
+-> check the error log to see information or errors about images
+
+3- (optional) you may restart 1-2 steps if needed.
+
+4- Make sure [[../help/topic/org.polarsys.capella.validation.doc/html/Validation%20Rules/integrity/ValidationRules.html| I_46 and I_47 constraints]] are checked according to your needs.
+
+5- Start validation on the root Capella element.
+
+6- Open "Information" view and check the errors about the image. (The messages start by "(Image)")
+
+7- You may consider to 1-2 steps again
+
+8- You can repair the image paths using the quick fix on the markers. It will allow to select a new image.
+
+In addition, consider using a versioning tool like Git to be sure to save the whole content of the workspace including the libraries and the contained images.
+
 == Project migration in command line==
 Please refer to the document at [[../help/topic/org.polarsys.capella.commandline.doc/html/19.%20Command%20Line%20Support/19.1.%20Core%20Mechanism%20and%20Applications.html?cp=6_1_13_1_3#Migration| Migration command line]] <span class="github-link">[[../../../org.polarsys.capella.commandline.doc/html/19. Command Line Support/19.1. Core Mechanism and Applications.mediawiki#Migration|(online documentation)]]</span> for more details about launching project migration in command line.
 An example of how to migrate projects in batch mode can be found at [[../help/topic/org.polarsys.capella.commandline.doc/html/19.%20Command%20Line%20Support/19.2.%20Migration%20and%20Post-Migration%20script%20example.html?cp=6_1_13_2| Migration command line in batch mode]] <span class="github-link">[[../../../org.polarsys.capella.commandline.doc/html/19. Command Line Support/19.2. Migration and Post-Migration script example.mediawiki|(online documentation)]]</span>.
