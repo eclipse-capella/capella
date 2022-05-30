@@ -117,7 +117,12 @@
 		<topic href="html/First steps with Capella/3.4. How to copy or export a Capella Project.html#Copying_a_Project" label="Copying a Project"></topic>
 		<topic href="html/First steps with Capella/3.4. How to copy or export a Capella Project.html#Exporting_a_Capella_Project" label="Exporting a Capella Project"></topic>
 	</topic>
-	<topic href="html/First steps with Capella/3.5. How to migrate Capella projects.html" label="How to Migrate Capella Project"></topic>
+	<topic href="html/First steps with Capella/3.5. How to migrate Capella projects.html" label="How to Migrate Capella Project">
+		<topic href="html/First steps with Capella/3.5. How to migrate Capella projects.html#Special_attention_to_image_used_in_the_project" label="Special attention to image used in the project">
+			<topic href="html/First steps with Capella/3.5. How to migrate Capella projects.html#How_to_properly_migrate_images" label="How to properly migrate images"></topic>
+		</topic>
+		<topic href="html/First steps with Capella/3.5. How to migrate Capella projects.html#Project_migration_in_command_line" label="Project migration in command line"></topic>
+	</topic>
 	<topic href="html/First steps with Capella/3.6. How to detach viewpoints.html" label="How to Detach Viewpoints from Capella Project?">
 		<topic href="html/First steps with Capella/3.6. How to detach viewpoints.html#The_Viewpoints_are_Available_and_Installed_in_the_Source_Version" label="The Viewpoints are Available and Installed in the Source Version"></topic>
 		<topic href="html/First steps with Capella/3.6. How to detach viewpoints.html#The_viewpoints_are_not_available_and_installed_in_the_source_version" label="The viewpoints are not available and installed in the source version"></topic>

@@ -21,7 +21,9 @@ BREE on Manifest.MF have been moved to JavaSE-11.
 
 === Image management ===
 
-A new image management UI has been integrated. Please refer to [[../help/topic/org.polarsys.capella.ui.doc/html/02. Workbench Basics/2.3. Managing images.html|Managing images]].
+A new image management UI has been integrated. Please refer to [[../help/topic/org.polarsys.capella.ui.doc/html/02.%20Workbench%20Basics/2.3.%20Managing%20images.html|Managing images]].
+
+Have a [[../help/topic/org.polarsys.capella.ui.doc/html/First%20steps%20with%20Capella/3.5.%20How%20to%20migrate%20Capella%20projects.html#Special_attention_to_image_used_in_the_project|special attention about the images during the migration.]]
 
 === Rotative SVG images in diagrams ===
 
