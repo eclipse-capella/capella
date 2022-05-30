@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018, 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -81,6 +81,11 @@ public class WorkspaceImagePathChange extends Change {
   private IContainer container;
 
   /**
+   * If this value is set, then it is used to replace the {@code container} name during the path change
+   */
+  private String overridenProjectName;
+  
+  /**
    * 
    * @param container
    * @param renameArguments
@@ -89,6 +94,21 @@ public class WorkspaceImagePathChange extends Change {
     this.container = container;
     this.renameArguments = renameArguments;
     this.position = getPosition();
+  }
+
+  /**
+   * This variation of the constructor assumes that the {@code container} has already been renamed and the original
+   * container name was {@code originalProjectName}
+   * 
+   * @param container
+   * @param originalProjectName value used instead of the {@code container} name
+   * @param renameArguments
+   */
+  public WorkspaceImagePathChange(IContainer container, String originalProjectName, RenameArguments renameArguments) {
+    this.container = container;
+    this.renameArguments = renameArguments;
+    this.position = getPosition();
+    this.overridenProjectName = originalProjectName;
   }
 
   @Override
@@ -253,7 +273,7 @@ public class WorkspaceImagePathChange extends Change {
     String newPath = oldPath;
     Path path = new Path(oldPath);
     String segment = path.segment(position);
-    String oldName = container.getName();
+    String oldName = (overridenProjectName != null && !overridenProjectName.equals("")) ? overridenProjectName : container.getName();
     if (oldName.equals(segment)) {
       newPath = oldPath.replace(oldName, renameArguments.getNewName());
     }
