@@ -44,6 +44,7 @@ Export-Package: org.polarsys.capella.core.sirius.ui,
  org.polarsys.capella.core.sirius.ui.helper,
  org.polarsys.capella.core.sirius.ui.internal,
  org.polarsys.capella.core.sirius.ui.listener,
+ org.polarsys.capella.core.sirius.ui.refactoring,
  org.polarsys.capella.core.sirius.ui.runnable,
  org.polarsys.capella.core.sirius.ui.session,
  org.polarsys.capella.core.sirius.ui.wizard
