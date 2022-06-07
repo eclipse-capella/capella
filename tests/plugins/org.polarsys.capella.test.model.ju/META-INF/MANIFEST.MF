@@ -28,7 +28,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.expressions,
  org.polarsys.capella.core.ui.properties.richtext,
  org.polarsys.capella.core.projection.exchanges,
- org.polarsys.capella.common.re
+ org.polarsys.capella.common.re,
+ org.eclipse.ltk.core.refactoring
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-Vendor: %providerName
