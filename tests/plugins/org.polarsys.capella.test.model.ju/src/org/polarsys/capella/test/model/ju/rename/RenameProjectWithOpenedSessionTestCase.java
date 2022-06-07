@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.polarsys.capella.test.model.ju.rename;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -23,24 +24,58 @@ import org.eclipse.core.commands.common.NotDefinedException;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.window.IShellProvider;
+import org.eclipse.ltk.core.refactoring.CheckConditionsOperation;
+import org.eclipse.ltk.core.refactoring.PerformRefactoringOperation;
+import org.eclipse.ltk.core.refactoring.Refactoring;
+import org.eclipse.ltk.core.refactoring.RefactoringContext;
+import org.eclipse.ltk.core.refactoring.RefactoringContribution;
+import org.eclipse.ltk.core.refactoring.RefactoringCore;
+import org.eclipse.ltk.core.refactoring.RefactoringStatus;
+import org.eclipse.ltk.core.refactoring.resource.RenameResourceDescriptor;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.RenameResourceAction;
 import org.eclipse.ui.commands.ICommandService;
+import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.core.data.capellamodeller.Project;
+import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
+import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
+import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 import org.polarsys.capella.test.framework.api.ModelProviderHelper;
+import org.polarsys.capella.test.framework.helpers.GuiActions;
+import org.polarsys.capella.test.framework.helpers.IFileRequestor;
 import org.polarsys.capella.test.framework.helpers.IResourceHelpers;
 import org.polarsys.capella.test.model.ju.model.RenameModel;
 
 public class RenameProjectWithOpenedSessionTestCase extends RenameModel {
 
-  private static final String LTK_RENAME_ID = "org.eclipse.ltk.ui.refactoring.commands.renameResource";
-
   private boolean isRenamedProject = false;
   private String newProjectName;
+  
+  private static final String LIB_IMAGE_PROJECT = "images_library";
+  
+  private static final String LOCAL_IMAGE_PATH = "/images/Capella128x128.png";
+  private static final String LIB_IMAGE_PATH = LIB_IMAGE_PROJECT + "/Capella256x256.png";
 
+  @Override
+  public List<String> getRequiredTestModels() {
+    if (isRenamedProject) {
+      return Arrays.asList(newProjectName, LIB_IMAGE_PROJECT);
+    }
+    
+    ArrayList<String> lstProjects = new ArrayList<String>();
+    for (String project: super.getRequiredTestModels()) {
+        lstProjects.add(project);
+    }
+    lstProjects.add(LIB_IMAGE_PROJECT);
+    return lstProjects;
+  }
+  
   /**
    * {@inheritDoc}
    * 
@@ -53,121 +88,74 @@ public class RenameProjectWithOpenedSessionTestCase extends RenameModel {
 
     IFile file = getCapellaFileForLoadedModel(oldProjectName);
     if (file.exists()) {
-      newProjectName = "renamed_" + oldProjectName;
+      newProjectName = oldProjectName + "_renamed";
 
       Session sessionBeforeRename = getSessionForTestModel(oldProjectName);
       assertTrue("Session is not loaded for old project", sessionBeforeRename != null);
 
       IProject oldProject = file.getProject();
 
-      // Undefine the Command in order not to open the input dialog when running the rename action.
-      RenameCommandStateToggle cmdStateToggle = new RenameCommandStateToggle();
-      cmdStateToggle.undefine();
+      RefactoringContribution contribution= RefactoringCore.getRefactoringContribution(RenameResourceDescriptor.ID);
+      RenameResourceDescriptor descriptor= (RenameResourceDescriptor) contribution.createDescriptor();
+      descriptor.setResourcePath(oldProject.getFullPath());
+      descriptor.setNewName(newProjectName);
+      descriptor.setUpdateReferences(true);
+      
+      RefactoringStatus status= new RefactoringStatus();
+      final RefactoringContext context= descriptor.createRefactoringContext(status);
       try {
-        renameResource(oldProject);
+          final Refactoring refactoring= context != null ? context.getRefactoring() : null;
+          assertTrue(status.isOK());
+
+          PerformRefactoringOperation op= new PerformRefactoringOperation(refactoring, CheckConditionsOperation.ALL_CONDITIONS);
+          op.run(null);
+          RefactoringStatus validationStatus= op.getValidationStatus();
+          assertFalse(validationStatus.hasFatalError());
+          assertFalse(validationStatus.hasError());
       } catch (Exception e) {
-        assertTrue("Exception while renaming the project\n" + e.getMessage(), false);
+          System.out.println(e.getLocalizedMessage());
+      } finally {
+          if (context != null)
+              context.dispose();
       }
 
       isRenamedProject = true;
-
-      // Define the Command again
-      cmdStateToggle.define();
 
       IProject renamedProject = IResourceHelpers.getEclipseProjectInWorkspace(newProjectName);
       assertNotNull(renamedProject);
       assertTrue("Renamed project does not exist", renamedProject.exists());
 
-      assertTrue(sessionBeforeRename.getAllSessionResources().size() == 0);
-      assertTrue(sessionBeforeRename.getSemanticResources().size() == 0);
+      // Open renamed project, get the session, model and SE element
+      renamedProject.open(new NullProgressMonitor());
+      IFile airdFile = new IFileRequestor().search(renamedProject, CapellaResourceHelper.AIRD_FILE_EXTENSION).get(0);
+      Session sessionAfterRename = SessionManager.INSTANCE.getSession(EcoreUtil2.getURI(airdFile), new NullProgressMonitor());
+
+      assertTrue("Session is not loaded for new project", sessionAfterRename != null);
+      sessionAfterRename.open(new NullProgressMonitor());
+      Project capellaProject = SessionHelper.getCapellaProject(sessionAfterRename);
+      capellaProject.getOwnedModelRoots().forEach(root -> {
+          if (root instanceof SystemEngineering) {
+              String rootSEDescription = ((SystemEngineering)root).getDescription();
+              // Check updated path
+              assertTrue("SystemEngineering element description does not contain new project path", rootSEDescription.contains(newProjectName + LOCAL_IMAGE_PATH));
+              assertTrue("SystemEngineering element description still contain old project path", !rootSEDescription.contains(oldProjectName + LOCAL_IMAGE_PATH));
+              // Check reference to external image and path not modified
+              assertTrue("SystemEngineering element description does not contain lib image path that should not be updated", rootSEDescription.contains(LIB_IMAGE_PATH));
+          }
+      });
+      
+      GuiActions.closeSession(sessionAfterRename);
+      GuiActions.deleteEclipseProject(renamedProject);
+
+      IProject libImageProject = IResourceHelpers.getEclipseProjectInWorkspace(LIB_IMAGE_PROJECT);
+      assertTrue("Lib image project is not present", libImageProject.exists());
+      GuiActions.deleteEclipseProject(libImageProject);
+      
     }
-  }
-
-  private void renameResource(IResource resource) {
-    RenameResourceAction renameResourceAction = new RenameResourceAction(getShellProvider()) {
-      @Override
-      protected String queryNewResourceName(IResource resource) {
-        return newProjectName;
-      }
-    };
-
-    renameResourceAction.selectionChanged(new StructuredSelection(resource));
-    renameResourceAction.run();
-  }
-
-  @Override
-  public List<String> getRequiredTestModels() {
-    if (isRenamedProject) {
-      return Arrays.asList(newProjectName);
-    }
-    return super.getRequiredTestModels();
   }
 
   @Override
   protected void tearDown() throws Exception {
-    // Release test models except the renamed one because session is already unloaded
-    List<String> projectNamesToLoad = getRequiredTestModels();
-    if (projectNamesToLoad != null) {
-      for (String modelName : projectNamesToLoad) {
-        if (!modelName.equals(newProjectName)) {
-          ModelProviderHelper.getInstance().getModelProvider().releaseTestModel(modelName, this);
-        }
-      }
-    }
-  }
-
-  private IShellProvider getShellProvider() {
-    return new IShellProvider() {
-
-      @Override
-      public Shell getShell() {
-        return null;
-      }
-    };
-  }
-
-  /**
-   * A helper class to toggle the definition state of the rename command.
-   * 
-   * @return
-   */
-  private class RenameCommandStateToggle {
-
-    private String name;
-    private Category category;
-    private IParameter[] parameters;
-    private ParameterType returnType;
-    private String description;
-
-    // This attribute to ensure that the method was undefined using an instance of this class before calling define
-    // again.
-    private boolean undefined = false;
-
-    protected void define() {
-      ICommandService commandService = PlatformUI.getWorkbench().getService(ICommandService.class);
-      Command cmd = commandService.getCommand(LTK_RENAME_ID);
-      if (cmd != null && undefined && !cmd.isDefined()) {
-        undefined = false;
-        cmd.define(name, description, category, parameters, returnType);
-      }
-    }
-
-    protected void undefine() {
-      ICommandService commandService = PlatformUI.getWorkbench().getService(ICommandService.class);
-      Command cmd = commandService.getCommand(LTK_RENAME_ID);
-      if (cmd != null && !undefined && cmd.isDefined()) {
-        undefined = true;
-        try {
-          name = cmd.getName();
-          category = cmd.getCategory();
-          parameters = cmd.getParameters();
-          returnType = cmd.getReturnType();
-          description = cmd.getDescription();
-          cmd.undefine();
-        } catch (NotDefinedException e) {
-          // Ignore exception
-        }
-      }
-    }
+    // Do nothing as the projects have already been deleted
   }
 }

@@ -37,7 +37,7 @@
   <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue" id="4589b813-0b1f-4ed4-ac3b-369cd163e377"
       key="projectApproach" value="SingletonComponents"/>
   <ownedModelRoots xsi:type="org.polarsys.capella.core.data.capellamodeller:SystemEngineering"
-      id="f442ab66-eb26-48d6-8ad4-fa87270d947a" name="RenameModel">
+      id="f442ab66-eb26-48d6-8ad4-fa87270d947a" name="RenameModel" description="&lt;p>Some documentation with an image&lt;img src=&quot;RenameModel/images/Capella128x128.png&quot; />&lt;/p>&#xD;&#xA;&#xD;&#xA;&lt;p>A link to an image in an external project &lt;img src=&quot;images_library/Capella256x256.png&quot; />&lt;/p>&#xD;&#xA;">
     <ownedArchitectures xsi:type="org.polarsys.capella.core.data.oa:OperationalAnalysis"
         id="73973464-7720-404b-b5b4-1c1ac9c0c89c" name="Operational Analysis" description="“Revert To Standby”">
       <ownedFunctionPkg xsi:type="org.polarsys.capella.core.data.oa:OperationalActivityPkg"
