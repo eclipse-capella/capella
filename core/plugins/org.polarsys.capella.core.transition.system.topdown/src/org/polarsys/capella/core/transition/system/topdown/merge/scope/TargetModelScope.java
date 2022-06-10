@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -17,7 +17,6 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-
 import org.polarsys.capella.core.transition.common.merge.scope.IModelScopeFilter;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
@@ -33,7 +32,13 @@ public class TargetModelScope extends org.polarsys.capella.core.transition.commo
   public TargetModelScope(List<? extends EObject> elements_p, IContext context_p) {
     super(elements_p, context_p);
   }
-
+  
+  @Override
+  protected void initializeSiriusImageHelper(IContext context, boolean active) {
+      // Force to deactivate the SiriusImageHelper as in TopDown we do not want to update images paths 
+      super.initializeSiriusImageHelper(context, false);
+  }
+  
   /**
    * {@inheritDoc}
    */
