@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -53,6 +53,12 @@ public abstract class ReScope extends ReferenceModelScope implements INotifyList
   
   public Collection<? extends EObject> getInitialElements() {
     return _initialElements;
+  }
+  
+  @Override
+  protected void initializeSiriusImageHelper(IContext context, boolean active) {
+      // Force to deactivate the SiriusImageHelper as in Re we do not want to update images paths 
+      super.initializeSiriusImageHelper(context, false);
   }
   
   /**
