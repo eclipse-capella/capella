@@ -5,7 +5,3 @@ http://www.eclipse.org/legal/epl-2.0
 <icon file path> - <original eclipse plug-in> - <original file path>
 
 org.polarsys.capella.doc/html/*/Images
-
-Documentation3.PNG
-Documentation5.PNG
-Documentation6.PNG
