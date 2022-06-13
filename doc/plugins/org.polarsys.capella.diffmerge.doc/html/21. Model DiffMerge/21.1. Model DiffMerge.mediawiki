@@ -3,15 +3,3 @@
 
 Comparing and merging models is a fundamental activity when modeling in the large.
 A general guide to the Capella Diff/Merge tool is available here: [[../help/topic/org.eclipse.emf.diffmerge.doc/html/EMF-DiffMerge.html|Diff/Merge User's Guide]].
-
-Since Capella 1.2.1, the UID is used to identify a representation (org.eclipse.sirius.viewpoint.drepresentation) instead of the XMIID. In order to take into account the use of UID for representations, there are some changes in the Diff/Merge algorithm for Capella models.
-
-If we select the two "'''.aird'''" files to "'''Compare with each other as models'''", an EMF Diff/Merge dialog is shown with the default option "'''Configurable comparison method supporting Capella models'''". If we click on the button "'''Configure'''", and then "'''Show advanced settings >>'''", we notice that on the tab "'''Matching'''", the new option "'''Prefer Sirius intrinsic ID when possible'''" is added and selected by default. 
-
-[[Image:Images/Documentation3.png]]
-
-Moreover, from now, the result dialog will not show by default any internal difference in terms of graphic inside two diagrams having the same UID. Those differences can always be shown by choosing a new filter option named "'''Show diagram contents'''" 
-
-[[Image:Images/Documentation5.png|750px]]
-
-[[Image:Images/Documentation6.png|750px]]
