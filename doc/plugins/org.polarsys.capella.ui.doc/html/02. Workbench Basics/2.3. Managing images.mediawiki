@@ -7,7 +7,7 @@ Capella allows to use images to:
 
 == Selection dialog ==
 
-The image can be selected only from the workspace.
+The image can be selected only from the project in the workspace (nevertheless the project can be either physically located in the workspace or located in other folder in the file system).
 
 [[Image:Images/imageSelectionDialog.png]]
 
