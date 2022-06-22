@@ -17,17 +17,20 @@ The following sequence must be respected:
 [[Image:Images/3.5.%20How%20to%20migrate%20Melody%20Advance%20projects_html_3c78e109.png|48x48px]]
 | 
 The same process can be applied on Library projects.
-|} 
-
-
-{| border="1"
 |-
 | 
-[[Image:Images/3.7.%20How%20to%20rename%20a%20Melody%20Advance%20Project_html_723ed3f9.png|34x34px]]
-
-
+[[Image:Images/3.7.%20How%20to%20rename%20a%20Melody%20Advance%20Project_html_723ed3f9.png|44x44px]]
 | 
 If you rename a Library project, all the references to this library will be lost. Libraries renaming must be done very carefully.
+|-
+| 
+[[Image:Images/3.7.%20How%20to%20rename%20a%20Melody%20Advance%20Project_html_723ed3f9.png|44x44px]]
+| 
+About images used in diagrams and in rich text editor<br/>
 
+In the same way, assuming that a referencing Capella project or a Library project is using images that are located in a referenced project (Capella project, a Library project or any project) then renaming the referenced project will break the images (images will not be seen anymore) in the referencing project.
 
-|}  
+More information about the [[../help/topic/org.polarsys.capella.validation.doc/html/Validation%20Rules/integrity/ValidationRules.html| validation for images]] or about the  [[../help/topic/org.polarsys.capella.ui.doc/html/First%20steps%20with%20Capella/3.5.%20How%20to%20migrate%20Capella%20projects.html#Special_attention_to_image_used_in_the_project|Capella project migration for images.]]
+
+Note that the images used in the renamed project and located in the renamed project will be properly migrated and will be properly displayed.
+|} 

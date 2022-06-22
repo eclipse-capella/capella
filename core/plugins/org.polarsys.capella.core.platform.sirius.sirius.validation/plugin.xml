@@ -49,6 +49,22 @@
                ruleId="I_47">
          </rules>
       </resolver>
+      <resolver
+            class="org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram.ImagePathMassResolver"
+            desc="%quickFix.ImagePath_MassResolver.desc"
+            label="%quickFix.ImagePath_MassResolver.label">
+         <rules
+               ruleId="I_46">
+         </rules>
+      </resolver>
+      <resolver
+            class="org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram.ImagePathMassResolver"
+            desc="%quickFix.ImagePath_MassResolver.desc"
+            label="%quickFix.ImagePath_MassResolver.label">
+         <rules
+               ruleId="I_47">
+         </rules>
+      </resolver>
    </extension>
    <extension point="org.eclipse.emf.validation.constraintProviders">
       <constraintProvider>

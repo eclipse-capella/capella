@@ -303,5 +303,10 @@ Tip: If some cases are detected (validation markers), it is recommended to check
 |-
 | colspan="2"|This rule ensures that images, used in rich text editor, for attributes such as Capella elements description or diagram description, can be found.
 
-Tip: If some cases are detected (validation markers), it is recommended to check the existence of the image and move it in the right folder according to the used expected image path location. Once done, you can restart the validation. If you have still validation markers, then use the "Quick fix" tool to select a new image.
+Tip: If some cases are detected (validation markers), it is recommended to check the existence of the image and move it in the right folder according to the used expected image path location. Once done, you can restart the validation.<br/>
+If you still have validation markers, then use the "Quick fix" tools. There are two "quick fix"
+<ul>
+<li>select a new image to replace the broken image</li>
+<li>replace all broken path by a new one. '''This "quick fix" will impact the whole model''' and not only the object associated to the marker</li>
+</ul>
 |}
