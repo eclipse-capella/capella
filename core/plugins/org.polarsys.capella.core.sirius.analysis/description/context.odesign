@@ -5482,7 +5482,7 @@
           <variables name="root" documentation="The semantic element corresponding to the current table."/>
         </delete>
       </ownedColumnMappings>
-      <intersection name="SAOA OperationalActor Realisation" lineMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Actor%20-%20Operational%20Actor']/@ownedLineMappings[name='SAOA%20System%20Actor%20Line']" columnMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Actor%20-%20Operational%20Actor']/@ownedColumnMappings.0" labelExpression="X" useDomainClass="true" columnFinderExpression="feature:targetElement" lineFinderExpression="feature:sourceElement" domainClass="ComponentAllocation">
+      <intersection name="SAOA OperationalActor Realisation" lineMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Actor%20-%20Operational%20Actor']/@ownedLineMappings[name='SAOA%20System%20Actor%20Line']" columnMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Actor%20-%20Operational%20Actor']/@ownedColumnMappings.0" labelExpression="X" useDomainClass="true" columnFinderExpression="feature:targetElement" lineFinderExpression="feature:sourceElement" domainClass="ComponentRealization">
         <directEdit>
           <variables name="table" documentation="The current DTable."/>
           <variables name="line" documentation="The DLine of the current DCell."/>
