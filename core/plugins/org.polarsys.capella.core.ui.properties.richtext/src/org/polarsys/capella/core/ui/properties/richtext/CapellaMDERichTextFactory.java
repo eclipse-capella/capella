@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2019, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -100,7 +100,8 @@ public class CapellaMDERichTextFactory extends MDERichTextFactory {
       private static final int V_KEY_CODE = 86;
 
       private boolean isPasteElementLinkEvent(KeyEvent event) {
-        return (((event.stateMask & SHIFT_AND_CTRL_KEY_CODE) > 0) && event.keyCode == V_KEY_CODE);
+        return (((event.stateMask & SHIFT_AND_CTRL_KEY_CODE) == SHIFT_AND_CTRL_KEY_CODE)
+            && event.keyCode == V_KEY_CODE);
       }
 
       @Override
