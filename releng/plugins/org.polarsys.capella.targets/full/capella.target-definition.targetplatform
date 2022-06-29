@@ -92,7 +92,7 @@ location kitalpha-sdk-master "https://download.eclipse.org/kitalpha/updates/stab
 	org.polarsys.kitalpha.emde.sdk.feature.source.feature.group
 }
 
-location diffmerge-core "https://download.eclipse.org/diffmerge/stable/0.14.0-S20220613/emf-diffmerge-site/" {
+location diffmerge-core "https://download.eclipse.org/diffmerge/stable/0.14.0-S20220629/emf-diffmerge-site/" {
 	org.eclipse.emf.diffmerge.feature.source.feature.group
 	org.eclipse.emf.diffmerge.sirius.feature.source.feature.group
 	org.eclipse.emf.diffmerge.gmf.feature.source.feature.group
@@ -100,7 +100,7 @@ location diffmerge-core "https://download.eclipse.org/diffmerge/stable/0.14.0-S2
 	org.eclipse.emf.diffmerge.egit.feature.source.feature.group
 }
 
-location amalgam "https://download.eclipse.org/modeling/amalgam/updates/stable/1.13.0-S20220524/capella/" {
+location amalgam "https://download.eclipse.org/modeling/amalgam/updates/stable/1.13.0-S20220629/capella/" {
 	org.eclipse.amalgam.explorer.activity.source.feature.group
 }
 
