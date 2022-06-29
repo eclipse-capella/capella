@@ -109,8 +109,10 @@ public class CapellaDataListenerForPropertySections {
     @Override
     public IStatus runInUIThread(IProgressMonitor monitor) {
       for (TabbedPropertySheetPage page : getPages()) {
-        page.refresh();
-        page.labelProviderChanged(new LabelProviderChangedEvent(new BaseLabelProvider(), null));
+    	  if (page.getCurrentTab() != null) {
+    		  page.refresh();
+    	  }
+    	  page.labelProviderChanged(new LabelProviderChangedEvent(new BaseLabelProvider(), null));
       }
       return Status.OK_STATUS;
     }
