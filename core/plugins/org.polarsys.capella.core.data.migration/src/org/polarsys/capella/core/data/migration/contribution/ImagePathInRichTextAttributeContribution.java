@@ -19,10 +19,12 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.text.MessageFormat;
-import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -38,6 +40,7 @@ import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.URIUtil;
 import org.eclipse.emf.common.util.TreeIterator;
@@ -70,7 +73,7 @@ import org.polarsys.capella.core.data.migration.context.MigrationContext;
 public class ImagePathInRichTextAttributeContribution extends AbstractMigrationContribution {
   private static final String HTML_IMAGE_ABSOLUTE_PATH_PATTERN = "<img.*?src=\"((file:/|//|\\\\).*?)\".*?/>"; //$NON-NLS-1$
 
-  private static final String IMAGE_NAME_FORMAT = "yyyyMMdd_HHmmssSSS"; //$NON-NLS-1$
+  private static final String IMAGE_NAME_FORMAT = "yyyyMMdd_HHmmssSSSSSS"; //$NON-NLS-1$
 
   @Override
   public void postMigrationExecute(ExecutionManager executionManager, ResourceSet resourceSet,
@@ -82,6 +85,7 @@ public class ImagePathInRichTextAttributeContribution extends AbstractMigrationC
       if (project != null) {
         Set<EAttribute> richTextAttributes = RichTextAttributeRegistry.INSTANCE.getEAttributes();
         TreeIterator<EObject> allContents = resourceToMigrate.getAllContents();
+        Set<String> nonFoundRelativeFiles = new LinkedHashSet<>();
         while (allContents.hasNext()) {
           EObject eObject = allContents.next();
           // keep only EAttributes that are declared as containing html content
@@ -96,13 +100,18 @@ public class ImagePathInRichTextAttributeContribution extends AbstractMigrationC
               updateBase64Images(eObject, attr);
 
               // replace the absolute path
-              List<String> nonCreatedFiles = createFileAndUpdateAttributeFromAbsoluteToRelativePath(eObject,
-                  (EAttribute) attr);
+              createFileAndUpdateAttributeFromAbsoluteToRelativePath(eObject, (EAttribute) attr);
 
               // update the project relative path according to the new path serialization
-              updateProjectRelativePath(resourceToMigrate, eObject, (EAttribute) attr, nonCreatedFiles);
+              updateProjectRelativePath(resourceToMigrate, eObject, (EAttribute) attr, nonFoundRelativeFiles);
             }
           }
+        }
+
+        if (!nonFoundRelativeFiles.isEmpty()) {
+          String notFoundFilesPath = nonFoundRelativeFiles.stream().collect(Collectors.joining(", "));
+          Activator.getDefault().getLog()
+              .warn(MessageFormat.format(Messages.MigrationAction_Image_RelativePathImageNotFound, notFoundFilesPath));
         }
       } else {
         Activator.getDefault().getLog().error(MessageFormat.format(
@@ -126,7 +135,7 @@ public class ImagePathInRichTextAttributeContribution extends AbstractMigrationC
    * It converts the path from a project relative path to a workspace relative path.
    */
   private void updateProjectRelativePath(Resource resource, EObject eObject, EAttribute attr,
-      List<String> nonCreatedFiles) {
+      Set<String> nonFoundRelativeFiles) {
     String oldValue = (String) eObject.eGet(attr);
     String newValue = (String) eObject.eGet(attr);
     if (newValue != null && !newValue.isEmpty()) {
@@ -137,9 +146,19 @@ public class ImagePathInRichTextAttributeContribution extends AbstractMigrationC
       while (matcher.find()) {
         if (matcher.groupCount() == 1) {
           String path = matcher.group(1);
+          String newPath = path;
+          // path starting with the project name are already considered as correct. Typically base64 image are converted
+          // to an image of this kind or the migration may be started a second time
           if (!path.startsWith(project.getName()) && !path.startsWith("file:/") && !path.startsWith("http://")
               && !path.startsWith("https://") && !path.startsWith("//") && !path.startsWith("\\\\")) {
-            newValue = newValue.replace(path, project.getName() + "/" + path);
+            newPath = project.getName() + "/" + path;
+            newValue = newValue.replace(path, newPath);
+          }
+
+          // log only relative paths with image not found
+          if (newPath.startsWith(project.getName())
+              && !project.getWorkspace().getRoot().getFile(new Path(newPath)).exists()) {
+            nonFoundRelativeFiles.add(newPath);
           }
         }
       }
@@ -287,9 +306,9 @@ public class ImagePathInRichTextAttributeContribution extends AbstractMigrationC
     for (String fileToCopy : filesToCopy.keySet()) {
       IFile targetFileToCreate = filesToCopy.get(fileToCopy);
       if (targetFileToCreate.exists()) {
-        Date date = new Date();
-        SimpleDateFormat formatter = new SimpleDateFormat(IMAGE_NAME_FORMAT);
-        String strDate = formatter.format(date);
+        Instant now = Instant.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(IMAGE_NAME_FORMAT).withZone(ZoneId.systemDefault());
+        String strDate = formatter.format(now);
         String newName = targetFileToCreate.getFullPath().lastSegment().replace(
             "." + targetFileToCreate.getFileExtension(), strDate + "." + targetFileToCreate.getFileExtension());
         targetFileToCreate = targetFileToCreate.getParent().getFile(new org.eclipse.core.runtime.Path(newName));

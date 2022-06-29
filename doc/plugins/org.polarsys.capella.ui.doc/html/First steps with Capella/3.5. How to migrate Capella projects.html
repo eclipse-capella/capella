@@ -64,6 +64,32 @@
 		</p>
 		<p>But before fixing the path to the image one by one, check that the set of images are properly located where it is supposed to be.
 			Then you can restart the migration to properly copy the image from the full path location to the relative workspace path</p>
+		<h3 id="How_to_properly_migrate_images">How to properly migrate images</h3>
+		<p>As usual, and not specifically for the images, prefer starting the migration by the Capella libraries. The image migration process is the same for the Capella libraries and for the Capella project.</p>
+		<p>Most of the attention points are 
+			<b>specific</b> to the migration towards 
+			<b>Capella 6.0.0</b>.
+		</p>
+		<p>Nevertheless, 
+			<b>the migration error log messages, the usage of the validation and the quick fixes will remain useful after 6.0.0</b>
+		</p>
+		<p>1- Before starting the migration, make sure that the images, that are referenced by the Capella/aird model in the description tab, are at the proper location. The reference may be either an absolute path (used in 5.2.x) or a project relative path.</p>
+		<p>2- Start the Capella migration</p>
+		<ul>
+			<li>old base64 encoded images are converted into an image in the workspace (5.2.x to 6.x migration)</li>
+			<li>old "absolute path" image are copied in the workspace (5.2.x to 6.x migration)</li>
+			<li>old project relative path are made workspace relative (5.2.x to 6.x migration)</li>
+		</ul>
+		<p>-&gt; check the error log to see information or errors about images</p>
+		<p>3- (optional) you may restart 1-2 steps if needed.</p>
+		<p>4- Make sure 
+			<a href="/wiki/../help/topic/org.polarsys.capella.validation.doc/html/Validation%20Rules/integrity/ValidationRules.html" title="../help/topic/org.polarsys.capella.validation.doc/html/Validation%20Rules/integrity/ValidationRules.html">I_46 and I_47 constraints</a> are checked according to your needs.
+		</p>
+		<p>5- Start validation on the root Capella element.</p>
+		<p>6- Open "Information" view and check the errors about the image. (The messages start by "(Image)")</p>
+		<p>7- You may consider to 1-2 steps again</p>
+		<p>8- You can repair the image paths using the quick fix on the markers. It will allow to select a new image.</p>
+		<p>In addition, consider using a versioning tool like Git to be sure to save the whole content of the workspace including the libraries and the contained images.</p>
 		<h2 id="Project_migration_in_command_line">Project migration in command line</h2>
 		<p>Please refer to the document at 
 			<a href="/wiki/../help/topic/org.polarsys.capella.commandline.doc/html/19.%20Command%20Line%20Support/19.1.%20Core%20Mechanism%20and%20Applications.html?cp=6_1_13_1_3#Migration" title="../help/topic/org.polarsys.capella.commandline.doc/html/19.%20Command%20Line%20Support/19.1.%20Core%20Mechanism%20and%20Applications.html?cp=6_1_13_1_3#Migration">Migration command line</a> <span class="github-link">

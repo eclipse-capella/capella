@@ -30,7 +30,7 @@ public class CategoryImpl implements ICategory {
   protected String id;
 
   protected String name;
-  
+
   /**
    * Qualified Name of type for which the category is enabled.
    */
@@ -39,7 +39,7 @@ public class CategoryImpl implements ICategory {
   protected List<String> subCategoriesIds;
 
   protected Object categoryQuery;
-  
+
   protected HashSet<Object> itemQueriesHashSet;
 
   /**
@@ -51,16 +51,16 @@ public class CategoryImpl implements ICategory {
    * If true, means category is a direct child of the root element.
    */
   protected boolean isTopLevel;
-  
+
   /**
-   * If true, means the category content shall only be accessible through API calls.    
+   * If true, means the category content shall only be accessible through API calls.
    */
   protected boolean isTechnical;
 
   /**
    * If true, means the category is used in the 'Show Related Elements' menu.
    */
-  protected boolean isUsedInShowRelated;  
+  protected boolean isUsedInShowRelated;
 
   public CategoryImpl() {
     subCategoriesIds = new ArrayList<>();
@@ -81,6 +81,11 @@ public class CategoryImpl implements ICategory {
   public void addSubCategoryId(String pId) {
     if (pId != null && !pId.isEmpty())
       subCategoriesIds.add(pId);
+  }
+
+  @Override
+  public Object getQuery() {
+    return categoryQuery;
   }
 
   @Override
@@ -124,7 +129,6 @@ public class CategoryImpl implements ICategory {
     this.isTechnical = isTechnical;
   }
 
-
   @Override
   public boolean isTechnical() {
     return isTechnical;
@@ -160,16 +164,16 @@ public class CategoryImpl implements ICategory {
   public String getCategoryId() {
     return this.id;
   }
-  
+
   @Override
   public String getTypeFullyQualifiedName() {
     return this.typeQualifiedName;
   }
-  
+
   @Override
   public boolean overrides(ICategory otherCategory, EObject current) {
-    return this.getName().equals(otherCategory.getName())
-        && TypeHelper.getInstance().isSubtype(this.typeQualifiedName, otherCategory.getTypeFullyQualifiedName(), current);
+    return this.getName().equals(otherCategory.getName()) && TypeHelper.getInstance().isSubtype(this.typeQualifiedName,
+        otherCategory.getTypeFullyQualifiedName(), current);
   }
 
   @Override

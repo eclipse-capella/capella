@@ -77,7 +77,10 @@ public class TextValueGroup extends AbstractSemanticGroup {
 
     widgetFactory.createCLabel(main, label);
     valueField = widgetFactory.createText(main, ""); //$NON-NLS-1$
-    valueField.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+    gd = new GridData(GridData.FILL_HORIZONTAL);
+    gd.widthHint = 150;
+    gd.heightHint = 20;
+    valueField.setLayoutData(gd);
     addListeners();
 
     if (hasResetBtn) {

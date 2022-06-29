@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -12,12 +12,10 @@
  *******************************************************************************/
 package org.polarsys.capella.core.transition.system.topdown.merge.scope;
 
-import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
@@ -28,7 +26,13 @@ public class ReferenceModelScope extends org.polarsys.capella.core.transition.co
   public ReferenceModelScope(List<? extends EObject> elements_p, IContext context_p) {
     super(elements_p, context_p);
   }
-
+  
+  @Override
+  protected void initializeSiriusImageHelper(IContext context, boolean active) {
+      // Force to deactivate the SiriusImageHelper as in TopDown we do not want to update images paths 
+      super.initializeSiriusImageHelper(context, false);
+  }
+  
   @Override
   protected List<EObject> get(EObject source_p, EReference reference_p, boolean resolveProxies_p) {
     List<EObject> originalValues = super.get(source_p, reference_p, resolveProxies_p);

@@ -63,10 +63,8 @@ public class CapellaDescriptionPropertySection extends DescriptionPropertySectio
       Set<CapellaDescriptionPropertySection> availableDescriptionSections = mapDescriptionSectionToEObject.keySet();
       for (CapellaDescriptionPropertySection descriptionSection : availableDescriptionSections) {
         if (descriptionSection != null && !descriptionSection.isDisplayedInWizard()) {
-          if (mapDescriptionSectionToEObject.get(descriptionSection) == element) {
-            descriptionSection.refresh();
-            descriptionSection.aboutToBeShown();
-          }
+          descriptionSection.refresh();
+          descriptionSection.aboutToBeShown();
         }
       }
     }

@@ -244,7 +244,10 @@ public class DiagramRepresentationPropertySection extends AbstractSection {
       protected void createValueTextField(String label, boolean hasResetBtn) {
         widgetFactory.createCLabel(parent, label);
         valueField = widgetFactory.createText(parent, ICommonConstants.EMPTY_STRING);
-        valueField.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+        GridData gd = new GridData(GridData.FILL_HORIZONTAL);
+        gd.heightHint = 20;
+        gd.widthHint = 150;
+        valueField.setLayoutData(gd);
         addListeners();
       }
 

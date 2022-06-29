@@ -57,6 +57,7 @@ public class TextAreaValueGroup extends TextValueGroup {
     gd = new GridData(GridData.FILL_HORIZONTAL);
     gd.horizontalSpan = ((GridLayout) parent.getLayout()).numColumns; //2;
     gd.heightHint = 80;
+    gd.widthHint = 150;
     valueField.setLayoutData(gd);
     addListeners();
   }
