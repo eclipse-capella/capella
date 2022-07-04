@@ -5567,8 +5567,8 @@
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column (only available for Intersection Mapping)."/>
           <variables name="root" documentation="The semantic element of the table."/>
-          <firstModelOperation xsi:type="tool_1:If" conditionExpression="aql:arg0 = '' and root.eAllContents()->filter(cs::ComponentAllocation)->select(x | x.targetElement = columnSemantic and x.sourceElement = lineSemantic)->size() > 0">
-            <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:root.eAllContents()->filter(cs::ComponentAllocation)->select(x | x.targetElement = columnSemantic and x.sourceElement = lineSemantic)->first()">
+          <firstModelOperation xsi:type="tool_1:If" conditionExpression="aql:arg0 = '' and root.eAllContents()->filter(cs::ComponentRealization)->select(x | x.targetElement = columnSemantic and x.sourceElement = lineSemantic)->size() > 0">
+            <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:root.eAllContents()->filter(cs::ComponentRealization)->select(x | x.targetElement = columnSemantic and x.sourceElement = lineSemantic)->first()">
               <subModelOperations xsi:type="tool_1:RemoveElement"/>
             </subModelOperations>
           </firstModelOperation>
