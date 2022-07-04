@@ -2001,11 +2001,11 @@
                 id="846025cd-44c6-4411-b873-918d8c0fe959" coveredInstanceRoles="#6a70fde6-530c-4138-9ad1-212af2a72337"
                 relatedAbstractState="#0b71ac24-f73d-4aac-a730-3d6c57ca62bc"/>
             <ownedInteractionFragments xsi:type="org.polarsys.capella.core.data.interaction:InteractionState"
-                id="b9538aa5-8870-487b-bef8-cc66ceb40221" coveredInstanceRoles="#6a70fde6-530c-4138-9ad1-212af2a72337"
-                relatedAbstractState="#0b71ac24-f73d-4aac-a730-3d6c57ca62bc"/>
-            <ownedInteractionFragments xsi:type="org.polarsys.capella.core.data.interaction:InteractionState"
                 id="d6ffb183-7a0d-4e74-a4fd-759946f6f520" name="Command Passenger Services"
                 coveredInstanceRoles="#874cc1ea-0968-4535-9373-e5a909697b2b" relatedAbstractFunction="#65787ee3-ab55-4200-91e3-d772a4ee3f28"/>
+            <ownedInteractionFragments xsi:type="org.polarsys.capella.core.data.interaction:InteractionState"
+                id="b9538aa5-8870-487b-bef8-cc66ceb40221" coveredInstanceRoles="#6a70fde6-530c-4138-9ad1-212af2a72337"
+                relatedAbstractState="#0b71ac24-f73d-4aac-a730-3d6c57ca62bc"/>
             <ownedInteractionFragments xsi:type="org.polarsys.capella.core.data.interaction:InteractionState"
                 id="ac7301e5-882a-4cc2-97bb-53e39e0d7ecc" name="Command Passenger Services"
                 coveredInstanceRoles="#874cc1ea-0968-4535-9373-e5a909697b2b" relatedAbstractFunction="#65787ee3-ab55-4200-91e3-d772a4ee3f28"/>
@@ -3240,19 +3240,14 @@
               </ownedStates>
               <ownedStates xsi:type="org.polarsys.capella.core.data.capellacommon:Mode"
                   id="ed01d361-f9cb-4c26-a0aa-e9338d4066ff" name="Seat TV - End-User Service Running"
-                  referencedStates="#bf9bce31-bcc2-43fa-8c87-cd511e2c2c34 #39e0c808-34e0-4c9e-b82a-85bd2d11b57c #07c746af-a76b-4466-820b-3773214be640 #e176b21f-d560-4bb2-8fda-f0ec8f9bdb87 #19998744-6825-4911-be1d-e1c973a04511 #49555c2f-b9c9-4ed5-b704-aab0ad79080f">
+                  referencedStates="#bf9bce31-bcc2-43fa-8c87-cd511e2c2c34 #39e0c808-34e0-4c9e-b82a-85bd2d11b57c #07c746af-a76b-4466-820b-3773214be640 #e176b21f-d560-4bb2-8fda-f0ec8f9bdb87 #19998744-6825-4911-be1d-e1c973a04511 #49555c2f-b9c9-4ed5-b704-aab0ad79080f #3c6b34c9-a875-4cc6-9cb6-02b1b4b94432">
                 <ownedRegions xsi:type="org.polarsys.capella.core.data.capellacommon:Region"
-                    id="8260a113-8dbe-40b6-bff0-b4802f463b2e" name="region" involvedStates="#39e0c808-34e0-4c9e-b82a-85bd2d11b57c #07c746af-a76b-4466-820b-3773214be640 #e176b21f-d560-4bb2-8fda-f0ec8f9bdb87 #19998744-6825-4911-be1d-e1c973a04511 #49555c2f-b9c9-4ed5-b704-aab0ad79080f #bf9bce31-bcc2-43fa-8c87-cd511e2c2c34">
+                    id="8260a113-8dbe-40b6-bff0-b4802f463b2e" name="region" involvedStates="#39e0c808-34e0-4c9e-b82a-85bd2d11b57c #07c746af-a76b-4466-820b-3773214be640 #e176b21f-d560-4bb2-8fda-f0ec8f9bdb87 #19998744-6825-4911-be1d-e1c973a04511 #49555c2f-b9c9-4ed5-b704-aab0ad79080f #bf9bce31-bcc2-43fa-8c87-cd511e2c2c34 #3c6b34c9-a875-4cc6-9cb6-02b1b4b94432">
                   <ownedStates xsi:type="org.polarsys.capella.core.data.capellacommon:Mode"
                       id="49555c2f-b9c9-4ed5-b704-aab0ad79080f" name="Seat TV - VOD Service Activated"
-                      referencedStates="#3c6b34c9-a875-4cc6-9cb6-02b1b4b94432 #13b3665b-619f-4678-8a6f-ccef076b3552 #ff567a76-0861-45b6-8d64-293758b0dd7f #4149fbf5-522e-42f2-b0a7-ccb8f98f6b61">
+                      referencedStates="#13b3665b-619f-4678-8a6f-ccef076b3552 #ff567a76-0861-45b6-8d64-293758b0dd7f #4149fbf5-522e-42f2-b0a7-ccb8f98f6b61">
                     <ownedRegions xsi:type="org.polarsys.capella.core.data.capellacommon:Region"
-                        id="049ea425-9c6a-4f46-ba6f-c5583026db6e" name="region" involvedStates="#3c6b34c9-a875-4cc6-9cb6-02b1b4b94432 #13b3665b-619f-4678-8a6f-ccef076b3552 #ff567a76-0861-45b6-8d64-293758b0dd7f #4149fbf5-522e-42f2-b0a7-ccb8f98f6b61">
-                      <ownedStates xsi:type="org.polarsys.capella.core.data.capellacommon:Mode"
-                          id="3c6b34c9-a875-4cc6-9cb6-02b1b4b94432" name="Seat TV - VOD Movie Paused">
-                        <ownedRegions xsi:type="org.polarsys.capella.core.data.capellacommon:Region"
-                            id="1594d2e9-bd45-456c-b6d0-0b5dfd91a7e7" name="region"/>
-                      </ownedStates>
+                        id="049ea425-9c6a-4f46-ba6f-c5583026db6e" name="region" involvedStates="#13b3665b-619f-4678-8a6f-ccef076b3552 #ff567a76-0861-45b6-8d64-293758b0dd7f #4149fbf5-522e-42f2-b0a7-ccb8f98f6b61">
                       <ownedStates xsi:type="org.polarsys.capella.core.data.capellacommon:Mode"
                           id="13b3665b-619f-4678-8a6f-ccef076b3552" name="Seat TV - VOD Movie Running">
                         <ownedRegions xsi:type="org.polarsys.capella.core.data.capellacommon:Region"
@@ -3273,10 +3268,6 @@
                           id="ad2aa322-f575-477d-9bb8-be77f40d5a81" triggerDescription=""
                           source="#13b3665b-619f-4678-8a6f-ccef076b3552" target="#3c6b34c9-a875-4cc6-9cb6-02b1b4b94432"
                           triggers="#136ac12c-9e93-43b9-bc3d-4253ea48233a"/>
-                      <ownedTransitions xsi:type="org.polarsys.capella.core.data.capellacommon:StateTransition"
-                          id="88ef9fad-5981-429d-97c4-ceb49a174c17" triggerDescription=""
-                          source="#3c6b34c9-a875-4cc6-9cb6-02b1b4b94432" target="#13b3665b-619f-4678-8a6f-ccef076b3552"
-                          triggers="#4125bbcd-f124-4bd5-9f40-aa73c538a3e4"/>
                       <ownedTransitions xsi:type="org.polarsys.capella.core.data.capellacommon:StateTransition"
                           id="b8184312-f720-4d38-980b-bc1e4440be45" triggerDescription=""
                           source="#4149fbf5-522e-42f2-b0a7-ccb8f98f6b61" target="#ff567a76-0861-45b6-8d64-293758b0dd7f"/>
@@ -3308,10 +3299,19 @@
                   </ownedStates>
                   <ownedStates xsi:type="org.polarsys.capella.core.data.capellacommon:DeepHistoryPseudoState"
                       id="bf9bce31-bcc2-43fa-8c87-cd511e2c2c34" name="Deep History"/>
+                  <ownedStates xsi:type="org.polarsys.capella.core.data.capellacommon:Mode"
+                      id="3c6b34c9-a875-4cc6-9cb6-02b1b4b94432" name="Seat TV - VOD Movie Paused">
+                    <ownedRegions xsi:type="org.polarsys.capella.core.data.capellacommon:Region"
+                        id="1594d2e9-bd45-456c-b6d0-0b5dfd91a7e7" name="region"/>
+                  </ownedStates>
                   <ownedTransitions xsi:type="org.polarsys.capella.core.data.capellacommon:StateTransition"
                       id="2f61a941-fb18-4ac9-ade0-22859e7814c7" triggerDescription=""
                       source="#49555c2f-b9c9-4ed5-b704-aab0ad79080f" target="#0b71ac24-f73d-4aac-a730-3d6c57ca62bc"
                       triggers="#604081d7-e597-4441-b2e9-e002a9cb1ccd"/>
+                  <ownedTransitions xsi:type="org.polarsys.capella.core.data.capellacommon:StateTransition"
+                      id="88ef9fad-5981-429d-97c4-ceb49a174c17" triggerDescription=""
+                      source="#3c6b34c9-a875-4cc6-9cb6-02b1b4b94432" target="#13b3665b-619f-4678-8a6f-ccef076b3552"
+                      triggers="#4125bbcd-f124-4bd5-9f40-aa73c538a3e4"/>
                 </ownedRegions>
               </ownedStates>
               <ownedStates xsi:type="org.polarsys.capella.core.data.capellacommon:Mode"
@@ -4142,7 +4142,7 @@
               </ownedFunctions>
               <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
                   id="d4ee89c8-dcf8-4fa5-b276-0afa03d409c9" name="Broadcast Stored Audio and Video"
-                  description="&lt;p>&#xD;&#xA;    This function is responsible for broadcasting existing audio&amp;nbsp;and video media. Transmitting audio and video streams&#xD;&#xA;    means:&#xD;&#xA;&lt;/p>&#xD;&#xA;&lt;p>&#xD;&#xA;    -&amp;nbsp;Sending them to each passenger (on Seat TVs)&#xD;&#xA;&lt;/p>&#xD;&#xA;&lt;p>&#xD;&#xA;    - Sending them to the cabin screens&#xD;&#xA;&lt;/p>">
+                  description="&lt;p>This function is responsible for broadcasting existing audio&amp;nbsp;and video media. Transmitting audio and video streams means:&lt;/p>&#xA;&#xA;&lt;p>-&amp;nbsp;Sending them to each passenger (on Seat TVs)&lt;/p>&#xA;&#xA;&lt;p>- Sending them to the cabin screens&lt;/p>&#xA;">
                 <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
                     id="61bf6852-3f28-425d-b8ed-4d38b2b4eebb" name="Broadcast Audio Video Stream"
                     description="&lt;p>&#xD;&#xA;    This function consists in transmitting audio and video streams&amp;nbsp;to one or several Seat TVs and or&amp;nbsp;to the cabin&#xD;&#xA;    screens. The implementation of this function is likely to be based on streaming solutions.&#xD;&#xA;&lt;/p>">
@@ -4278,7 +4278,7 @@
                 </ownedFunctions>
                 <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
                     id="4ff700ef-4f6b-4151-917b-e59064e5a225" name="Display Audio Interruption Screen on Seat TV"
-                    description="When an audio announcement is made, all IFE services on Seat TVs are interrupted. A message is then displayed on the&#xD;&#xA;screen, indicating that an audio annoucement is currently ongoing.">
+                    description="&lt;p>When an audio announcement is made, all IFE services on Seat TVs are interrupted. A message is then displayed on the screen, indicating that an audio annoucement is currently ongoing.&lt;/p>&#xA;">
                   <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
                       id="9d60ec03-c1fd-4896-a3f7-8d40d57d0f6f" name="FIP 1"/>
                   <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
