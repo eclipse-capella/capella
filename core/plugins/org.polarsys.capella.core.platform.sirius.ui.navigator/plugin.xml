@@ -836,6 +836,17 @@
             </instanceof>
          </filterExpression>
       </commonFilter>
+	  <commonFilter
+            activeByDefault="true"
+            description="Hides all Capella exchange categories."
+            id="capella.project.explorer.filters.exchangeCategories"
+            name="Exchange categories">
+         <filterExpression>
+            <instanceof
+                  value="org.polarsys.capella.core.data.fa.ExchangeCategory">
+            </instanceof>
+         </filterExpression>
+      </commonFilter>
       <commonFilter
             activeByDefault="true"
             description="Hides all Capella physical links."
