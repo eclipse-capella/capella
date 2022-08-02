@@ -83,7 +83,7 @@ public class TransitionSiriusImageHelper extends SiriusImageHelper {
 
     @Override
     protected String getMainProjectName(EObject source) {
-        return getProjectFromUri(scopeResource.getURI());
+        return getProjectFromUri(scopeResource.getURI(), scopeResource.getResourceSet().getURIConverter());
     }
 
 }
