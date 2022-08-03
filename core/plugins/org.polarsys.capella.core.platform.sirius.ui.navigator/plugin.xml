@@ -838,12 +838,78 @@
       </commonFilter>
 	  <commonFilter
             activeByDefault="true"
-            description="Hides all Capella exchange categories."
+            description="Hides all Capella functional exchange categories."
             id="capella.project.explorer.filters.exchangeCategories"
-            name="Exchange categories">
+            name="Functional Exchange Categories">
          <filterExpression>
             <instanceof
                   value="org.polarsys.capella.core.data.fa.ExchangeCategory">
+            </instanceof>
+         </filterExpression>
+      </commonFilter>
+      <commonFilter
+            activeByDefault="false"
+            description="Hides all Capella physical paths."
+            id="capella.project.explorer.filters.physicalPaths"
+            name="Physical Paths">
+         <filterExpression>
+            <instanceof
+                  value="org.polarsys.capella.core.data.cs.PhysicalPath">
+            </instanceof>
+         </filterExpression>
+      </commonFilter>
+      <commonFilter
+            activeByDefault="false"
+            description="Hides all Capella functional chains."
+            id="capella.project.explorer.filters.functionalChains"
+            name="Functional Chains">
+         <filterExpression>
+            <instanceof
+                  value="org.polarsys.capella.core.data.fa.FunctionalChain">
+            </instanceof>
+         </filterExpression>
+      </commonFilter>
+      <commonFilter
+            activeByDefault="false"
+            description="Hides all Capella operational processes."
+            id="capella.project.explorer.filters.operationalProcesses"
+            name="Operational Processes">
+         <filterExpression>
+            <instanceof
+                  value="org.polarsys.capella.core.data.oa.OperationalProcess">
+            </instanceof>
+         </filterExpression>
+      </commonFilter>
+      <commonFilter
+            activeByDefault="false"
+            description="Hides all Capella component exchange categories."
+            id="capella.project.explorer.filters.componentExchangeCategories"
+            name="Component Exchange Categories">
+         <filterExpression>
+            <instanceof
+                  value="org.polarsys.capella.core.data.fa.ComponentExchangeCategory">
+            </instanceof>
+         </filterExpression>
+      </commonFilter>
+      <commonFilter
+            activeByDefault="false"
+            description="Hides all Capella component physical link categories."
+            id="capella.project.explorer.filters.physicalLinkCategories"
+            name="Physical Link Categories">
+         <filterExpression>
+            <instanceof
+                  value="org.polarsys.capella.core.data.cs.PhysicalLinkCategory">
+            </instanceof>
+         </filterExpression>
+      </commonFilter>
+      <commonFilter
+            activeByDefault="false"
+            description="Hides all Capella component communication links."
+            id="capella.project.explorer.filters.communicationLinks"
+            name="Communication Links">
+         <filterExpression>
+            <instanceof
+                  value="org.polarsys.capella.core.data.information.communication.CommunicationLink">
             </instanceof>
          </filterExpression>
       </commonFilter>
