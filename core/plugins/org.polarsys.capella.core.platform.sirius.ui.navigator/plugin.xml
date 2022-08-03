@@ -837,7 +837,7 @@
          </filterExpression>
       </commonFilter>
 	  <commonFilter
-            activeByDefault="true"
+            activeByDefault="false"
             description="Hides all Capella functional exchange categories."
             id="capella.project.explorer.filters.exchangeCategories"
             name="Functional Exchange Categories">
@@ -893,7 +893,7 @@
       </commonFilter>
       <commonFilter
             activeByDefault="false"
-            description="Hides all Capella component physical link categories."
+            description="Hides all Capella physical link categories."
             id="capella.project.explorer.filters.physicalLinkCategories"
             name="Physical Link Categories">
          <filterExpression>
@@ -903,8 +903,8 @@
          </filterExpression>
       </commonFilter>
       <commonFilter
-            activeByDefault="false"
-            description="Hides all Capella component communication links."
+            activeByDefault="true"
+            description="Hides all Capella communication links."
             id="capella.project.explorer.filters.communicationLinks"
             name="Communication Links">
          <filterExpression>
