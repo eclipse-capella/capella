@@ -616,6 +616,7 @@
       <category
             id="org.polarsys.capella.common.re.ui.queries.CatalogElementLinkReferencedElement"
             isTopLevel="true"
+            usedInShowRelated="true"
             name="Referenced Element">
          <availableForType
                class="org.polarsys.capella.common.re.CatalogElementLink">
