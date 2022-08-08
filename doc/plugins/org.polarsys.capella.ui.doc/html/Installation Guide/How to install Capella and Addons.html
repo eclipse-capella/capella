@@ -20,7 +20,7 @@
 			<a href="#Previous_releases_installation">Previous releases installation</a> as there are some slight differences on previous Capella releases
 		</p>
 		<h2 id="Java_Runtime_Environment">Java Runtime Environment</h2>
-		<p>Starting from Capella 6.0, a JRE 
+		<p>Starting from Capella 6.0, a JDK 
 			<a href="https://adoptium.net" target="_blank">Temurin (from adoptium.net)</a> is directly embedded in the product. Having an additional Java environment on your machine is no longer a requirement.
 		</p>
 		<p>
@@ -28,11 +28,14 @@
 			<a href="https://openjdk.java.net/legal/gplv2+ce.html" target="_blank">GNU General Public License, version 2, with the Classpath Exception</a>.
 		</p>
 		<p>
-			<b>Note:</b> Notice that only the embedded JRE has been field-tested.
+			<b>Note:</b> Notice that only the embedded JDK has been field-tested.
 		</p>
-		<p>If however you want to use a different JRE version, you need to modify the <code>capella.ini</code> file at 3 places. The first one is to add on two lines <code>-vm</code> and a reference to your JRE location. The second one is to modify <code>-Dosgi.requiredJavaVersion</code> argument to point to your JRE version. The third one is to adapt the <code>-Dpde.jreProfile=JavaSE-17</code> line either to match the version of your JRE or to remove it if you use a JDK. Please refer to the following 
+		<p>If however you want to use a different JDK version, you need to modify the <code>capella.ini</code> file at 3 places. The first one is to add on two lines <code>-vm</code> and a reference to your JDK location. The second one is to modify <code>-Dosgi.requiredJavaVersion</code> argument to point to your JDK version. The third one is to adapt the <code>-Dpde.jreProfile=JavaSE-17</code> line either to match the version of your JDK. Please refer to the following 
 			<a href="https://wiki.eclipse.org/Eclipse.ini" target="_blank">link</a> for more information and 
 			<a href="https://github.com/eclipse/capella/wiki/Dependency%20versions" target="_blank">compatibility</a> page.
+		</p>
+		<p>
+			<b>Note:</b> If you decide to use a JRE instead of the embedded JDK, please note that some capabilities will be disabled (e.g. the Java development capability in Capella or some capabilities coming from add-ons)
 		</p>
 		<h1 id="Installation_from_previous_version">Installation from previous version</h1>
 		<p>Before starting the installation, the target location of Capella must be cleaned:</p>
