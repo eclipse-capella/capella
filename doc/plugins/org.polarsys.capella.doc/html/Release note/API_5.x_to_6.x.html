@@ -15,10 +15,8 @@
 		<p>Capella 6.x is built with Eclipse 2021-06.</p>
 		<h3 id="Version_major_increased">Version major increased</h3>
 		<p>Metamodels have been updated to 6.0.0</p>
-		<h3 id="A_JRE_is_now_embedded">A JRE is now embedded</h3>
-		<p>A 
-			<b>JRE</b> Temurin Java 17 is now installed instead of a JDK under the jre folder in the capella folder.
-		</p>
+		<h3 id="JDK_upgraded">JDK upgraded</h3>
+		<p>We moved to JDK 17.</p>
 		<h3 id="Capella_compatibility_with_Java_11">Capella compatibility with Java 11</h3>
 		<p>BREE on Manifest.MF have been moved to JavaSE-11.</p>
 		<h3 id="Image_management">Image management</h3>
@@ -39,6 +37,46 @@
 		<h3 id="No_backward_compatibility">No backward compatibility</h3>
 		<p>Models from 1.4.x, 5.x have to be migrated to 6.0.0 and can no longer be opened in the previous version.</p>
 		<h2 id="Raw_API_changes_from_5.2.0_to_6.0.0">Raw API changes from 5.2.0 to 6.0.0</h2>
+		<h4 id="Changes_in_org.polarsys.capella.common.transition">Changes in <code>org.polarsys.capella.common.transition</code></h4>
+		<ul>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.transition.common.merge.scope.ReferenceModelScope.get(EObject, EAttribute)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.transition.common.merge.scope.ReferenceModelScope.add(EObject, EAttribute, Object)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.transition.common.merge.scope.ReferenceModelScope.remove(EObject, EAttribute, Object)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.transition.common.merge.scope.TargetModelScope.get(EObject, EAttribute)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.transition.common.merge.scope.TransitionSiriusImageHelper</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.transition.common.merge.scope.TransitionSiriusImageHelper.TransitionSiriusImageHelper(IContext, Resource)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.transition.common.merge.scope.TransitionSiriusImageHelper.TransitionSiriusImageHelper(IContext, Resource, boolean)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.transition.common.merge.scope.TransitionSiriusImageHelper.adaptGetValue(EObject, EAttribute, List&lt;Object&gt;)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.transition.common.merge.scope.TransitionSiriusImageHelper.adaptAddValue(EObject, EAttribute, Object)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.transition.common.merge.scope.TransitionSiriusImageHelper.adaptRemoveValue(EObject, EAttribute, Object)</code>
+			</li>
+		</ul>
 		<h4 id="Changes_in_org.polarsys.capella.common.ui.toolkit.browser">Changes in <code>org.polarsys.capella.common.ui.toolkit.browser</code></h4>
 		<ul>
 			<li><span class="labels"><span class="label label-success">Added</span></span>
@@ -103,6 +141,20 @@
 			<li><span class="labels"><span class="label label-success">Added</span></span>
 				<img width="16" border="0" src="../Images/methpub_obj.png"/>
 				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.data.interaction.provider.SequenceMessageItemProviderDecorator.getImage(Object)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.data.interaction.provider.StateFragmentItemProviderDecorator</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.data.interaction.provider.StateFragmentItemProviderDecorator.StateFragmentItemProviderDecorator(AdapterFactory)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.data.interaction.provider.StateFragmentItemProviderDecorator.getText(Object)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.data.interaction.provider.StateFragmentItemProviderDecorator.getImage(Object)</code>
 			</li>
 		</ul>
 		<h4 id="Changes_in_org.polarsys.capella.core.data.la.validation">Changes in <code>org.polarsys.capella.core.data.la.validation</code></h4>
@@ -199,6 +251,13 @@
 				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram.ImagePathInDiagramCheck.validate(final IValidationContext)</code>
 			</li>
 			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram.ImagePathMassResolver</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram.ImagePathMassResolver.run(IMarker)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
 				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram.ImagePathOnRichTextAttributeCheck</code>
 			</li>
 			<li><span class="labels"><span class="label label-success">Added</span></span>
@@ -211,6 +270,9 @@
 			<li><span class="labels"><span class="label label-success">Added</span></span>
 				<img width="16" border="0" src="../Images/methpub_obj.png"/>
 				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram.ImagePathResolver.run(IMarker)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram.Messages</code>
 			</li>
 		</ul>
 		<h4 id="Changes_in_org.polarsys.capella.core.semantic.queries">Changes in <code>org.polarsys.capella.core.semantic.queries</code></h4>
@@ -301,6 +363,12 @@
 				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.OperationalProcessStartingOperationalActivities.OperationalProcessStartingOperationalActivities()</code>
 			</li>
 			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalPath_PhysicalComponents</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalPath_PhysicalComponents.compute(Object)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
 				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.Scenario_InvokedMessages</code>
 			</li>
 			<li><span class="labels"><span class="label label-success">Added</span></span>
@@ -378,6 +446,12 @@
 			</li>
 			<li><span class="labels"><span class="label label-success">Added</span></span>
 				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.sirius.analysis.helpers.DDiagramHelper.isMSM(DDiagram)</code>
+			</li>
+		</ul>
+		<h4 id="Changes_in_org.polarsys.capella.core.sirius.ui">Changes in <code>org.polarsys.capella.core.sirius.ui</code></h4>
+		<ul>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.sirius.ui.refactoring.WorkspaceImagePathChange.WorkspaceImagePathChange(IContainer, String, RenameArguments)</code>
 			</li>
 		</ul>
 		<h4 id="Changes_in_org.polarsys.capella.core.transition.common.ui">Changes in <code>org.polarsys.capella.core.transition.common.ui</code></h4>
