@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2013, 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -178,15 +178,6 @@ public class CapellaMatchPolicy extends SiriusMatchPolicy {
   public CapellaMatchPolicy(CapellaMatchPolicy policy_p) {
     this();
     update(policy_p);
-  }
-  
-  /**
-   * @see java.lang.Object#clone()
-   */
-  @Override
-  public CapellaMatchPolicy clone() throws CloneNotSupportedException {
-    // Override in subclasses if the configurable state is extended or modified
-    return new CapellaMatchPolicy(this);
   }
   
   /**
@@ -955,4 +946,11 @@ public class CapellaMatchPolicy extends SiriusMatchPolicy {
         isInDiscriminatingContainment(element_p, scope_p);
   }
   
+  /**
+   * @see org.eclipse.emf.diffmerge.generic.api.config.IConfigurablePolicy#copy()
+   */
+  @Override
+  public CapellaMatchPolicy copy() {
+    return new CapellaMatchPolicy(this);
+  }
 }
