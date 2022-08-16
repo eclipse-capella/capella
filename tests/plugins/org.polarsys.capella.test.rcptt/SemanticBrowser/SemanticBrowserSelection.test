@@ -6,7 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _sA0wEGf6Eem-1Zn8MbYLuw
-Save-Time: 10/15/20 10:36 AM
+Runtime-Version: 2.5.4.202208092355
+Save-Time: 8/11/22, 1:35 PM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -82,7 +83,7 @@ get-view "Semantic Browser" | get-tree -after [get-label "Current Element"] | ge
     | equals 0 | verify-true
 
 // Force refresh
-get-view "Semantic Browser" | get-button -index 4 | click
+get-view "Semantic Browser" | get-button -index 5 | click
 get-view "Semantic Browser" | get-tree -after [get-label "Current Element"] | get-item -path "Root System Function" 
     | get-property caption | equals "Root System Function" | verify-true
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
