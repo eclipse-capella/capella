@@ -6,8 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _1BG1wOzgEeighIRKUyQgZw
-Runtime-Version: 2.3.0.201806262310
-Save-Time: 11/28/18 2:02 PM
+Runtime-Version: 2.5.4.202208092355
+Save-Time: 8/12/22, 2:38 PM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -58,16 +58,11 @@ with [get-editor "[SDFB] Root System Function" | get-diagram -index 1] {
     }
 }
 
-// Open Properties View and go to Appearance tab to verify the path of the workspace image
+// Open Properties View and go to Style tab to verify the path of the workspace image
 with [get-view Properties] {
     click
-    get-property-tab Appearance | click
-    get-group "Fonts and Colors:" | get-button "Set style to workspace image" | click
+    get-property-tab Style | click
 }
-with [get-window "Select background image from workspace"] {
-    with [get-editbox -after [get-label "Path:"]] {
-        get-property text | equals "renameTest1/images/testMe.gif" | verify-true
-    }
-    get-button OK | click
-}
+get-view Properties | get-tree | get-item -path "General/Workspace Path" | get-property "getData().getValueAsString()" 
+    | equals "renameTest1/images/testMe.jpeg" | verify-true
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

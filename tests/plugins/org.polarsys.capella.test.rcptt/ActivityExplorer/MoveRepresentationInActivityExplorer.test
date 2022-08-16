@@ -6,8 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _Ey5g0NdnEeiFia3ZpEwxKw
-Runtime-Version: 2.5.1.M3
-Save-Time: 12/2/20 11:17 AM
+Runtime-Version: 2.5.4.202208092355
+Save-Time: 8/11/22, 1:49 PM
 Testcase-Type: ecl
 
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
@@ -25,14 +25,14 @@ get-editor Bug2242 | get-section "Diagrams Viewer" | get-tree
     | select "System Analysis/System Data Flow Blank/Diagram2" | get-menu -path Move | click
 with [get-window "Location selection for \"Diagram2\"" | get-table] {
     get-property itemCount | equals 3 | verify-true
-    get-property "getItems().TableItem[0].getText()" | equals "Local (in /Bug2242/Bug2242.aird)" | verify-true
-    get-property "getItems().TableItem[1].getText()" | equals "Local (in /Bug2242/fragments/LA.airdfragment)" 
+    get-property "getItems().TableItem[0].getText()" | equals "Local (resource /Bug2242/Bug2242.aird in the current workspace)" | verify-true
+    get-property "getItems().TableItem[1].getText()" | equals "Local (resource /Bug2242/fragments/LA.airdfragment in the current workspace)" 
         | verify-true
-    get-property "getItems().TableItem[2].getText()" | equals "Local (in /Bug2242/fragments/OA.airdfragment)" 
+    get-property "getItems().TableItem[2].getText()" | equals "Local (resource /Bug2242/fragments/OA.airdfragment in the current workspace)" 
         | verify-true
 }
 with [get-window "Location selection for \"Diagram2\""] {
-    get-table | select "Local \\(in \\/Bug2242\\/Bug2242.aird\\)"
+    get-table | select "Local \\(resource \\/Bug2242\\/Bug2242.aird in the current workspace\\)"
     get-button OK | click
 }
 

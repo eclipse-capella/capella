@@ -53,7 +53,7 @@
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_wySxIOzOEeiYm_kNG_G0NA" borderSizeComputationExpression="1" borderColor="77,137,20" workspacePath="renameTest/images/testMe.gif">
+      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_wySxIOzOEeiYm_kNG_G0NA" borderSizeComputationExpression="1" borderColor="77,137,20" workspacePath="renameTest/images/testMe.jpeg">
         <customFeatures>workspacePath</customFeatures>
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']/@style"/>
       </ownedStyle>
