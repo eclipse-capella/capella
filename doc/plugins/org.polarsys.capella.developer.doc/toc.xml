@@ -16,16 +16,10 @@
    <topic href="html/Introduction.html" label="Introduction"></topic>
    <topic href="html/Development Environment.html" label="Development environment">
    </topic>
-   <topic href="html/Capella Studio.html" label="Capella Studio"></topic>
+   <topic href="html/Capella Studio.html" label="Capella Studio">
+      <topic href="html/Capella Studio.html#Viewpoint_Development" label="Viewpoint Development">
+      </topic></topic>
    <topic href="html/Tutorials.html" label="Tutorials"></topic>
-   <topic href="html/Viewpoint Guidelines.html" label="Viewpoint Guidelines">
-		<topic href="html/Viewpoint Guidelines.html#Use_representation_descriptor_instead_of_representation" label="Use representation descriptor instead of representation"></topic>
-		<topic href="html/Viewpoint Guidelines.html#Diagram_extensions" label="Diagram extensions"></topic>
-  <topic href="html/Viewpoint Guidelines.html#Migrating_your_Viewpoints" label="Migrating your Viewpoints">
-  </topic>
-		<topic href="html/Viewpoint Guidelines.html#Avoid_EObject.eResource_calls" label="Avoid EObject.eResource calls"></topic>
-		<topic href="html/Viewpoint Guidelines.html#Contribute_an_ID_handler" label="Contribute an ID handler"></topic>
-	</topic>
 	<topic label="Reference">
 		<anchor id="reference"/>
 	</topic>
