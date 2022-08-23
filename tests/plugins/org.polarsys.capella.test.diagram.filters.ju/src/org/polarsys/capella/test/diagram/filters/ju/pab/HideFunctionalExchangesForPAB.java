@@ -26,7 +26,8 @@ public class HideFunctionalExchangesForPAB extends FiltersForPAB {
 
   @Override
   protected List<String> getFilteredObjetIDs() {
-    return Arrays.asList(new String[] { FUNCTIONAL_EXCHANGE_1_ID, FUNCTIONAL_EXCHANGE_2_ID });
+    return Arrays.asList(new String[] { FUNCTIONAL_EXCHANGE_1_ID, FUNCTIONAL_EXCHANGE_2_ID, FUNCTIONAL_EXCHANGE_6_ID,
+        FUNCTIONAL_EXCHANGE_7_ID });
   }
 
 }

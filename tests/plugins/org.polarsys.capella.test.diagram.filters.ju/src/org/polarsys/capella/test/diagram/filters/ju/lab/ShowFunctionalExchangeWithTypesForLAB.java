@@ -10,7 +10,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.diagram.filters.ju.oab;
+package org.polarsys.capella.test.diagram.filters.ju.lab;
 
 import java.util.Arrays;
 import java.util.List;
@@ -18,13 +18,10 @@ import java.util.List;
 import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
 import org.polarsys.capella.test.diagram.filters.ju.LabelFilterTestCase;
 
-public class ShowExchangeItemsOnInteractionsForOAB extends LabelFilterTestCase {
+public class ShowFunctionalExchangeWithTypesForLAB extends LabelFilterTestCase {
 
-  private final String INTERACTION_2_ID = "af2a78bd-81f7-44cd-b9f9-2d0a2bdbc701";
-  private final String INTERACTION_4_ID = "3e7ee01c-9a6d-4f79-827d-7fb2cd14ea64";
-  private final String INTERACTION_5_ID = "9a065225-bfae-4c36-97cc-82a9b5326663";
-  private final String INTERACTION_6_ID = "f2be3e58-70cc-406a-b936-0ffa8fc71309";
-  private final String INTERACTION_7_ID = "874db564-12de-44a8-9420-de5126a28192";
+  private final String FUNCTIONAL_EXCHANGE_6_ID = "4eb36193-c206-4600-88a3-0e8b7cf98b13";
+  private final String FUNCTIONAL_EXCHANGE_7_ID = "3ec6edf3-5863-41fa-9be5-640a454887ed";
 
   @Override
   protected String getTestProjectName() {
@@ -33,23 +30,22 @@ public class ShowExchangeItemsOnInteractionsForOAB extends LabelFilterTestCase {
 
   @Override
   protected String getDiagramName() {
-    return "[OAB] Operational Architecture Blank";
+    return "[LAB] Logical System 2";
   }
 
   @Override
   protected String getFilterName() {
-    return IFilterNameConstants.FILTER_OAB_SHOW_EXCHANGE_ITEMS_ON_INTERACTIONS_ID;
+    return IFilterNameConstants.FILTER_LAB_SHOW_FUNCTIONAL_EXCHANGES_PARAMETERS_ON_FUNCTIONAL_EXCHANGES_ID;
   }
 
   @Override
   protected List<String> getFilteredObjetIDs() {
-    return Arrays.asList(
-        new String[] { INTERACTION_2_ID, INTERACTION_4_ID, INTERACTION_5_ID, INTERACTION_6_ID, INTERACTION_7_ID });
+    return Arrays.asList(new String[] { FUNCTIONAL_EXCHANGE_6_ID, FUNCTIONAL_EXCHANGE_7_ID });
   }
 
   @Override
   protected List<String> getExpectedElementLabels() {
-    return Arrays.asList(new String[] { ";DEdge;", ";[ExchangeItem 3];", ";DEdge;", ";[ExchangeItem 1];", ";DEdge;" });
+    return Arrays.asList(new String[] { ";FunctionalExchange 6(Boolean);", ";FunctionalExchange 7();" });
   }
 
 }

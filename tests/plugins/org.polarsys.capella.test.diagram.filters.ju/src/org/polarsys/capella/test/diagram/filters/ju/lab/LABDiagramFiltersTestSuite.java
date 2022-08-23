@@ -46,7 +46,12 @@ public class LABDiagramFiltersTestSuite extends BasicTestSuite {
     tests.add(new ShowAllocatedFunctionalExchangesOnComponentExchangesForLAB());
     tests.add(new ShowExchangeItemsOnComponentExchangesForLAB());
     tests.add(new ShowExchangeItemsOnComponentExchangeWithoutFunctionalExchangesForLAB());
-    tests.add(new ShowExchangeItemsOnFunctionalExchangesForLAB());
+    tests.add(new ShowEI1EI2ForLAB());
+    tests.add(new ShowEI1EI2WithParametersForLAB());
+    tests.add(new ShowFunctionalExchangeE1E2ForLAB());
+    tests.add(new ShowFunctionalExchangeWithParametersForLAB());
+    tests.add(new ShowFunctionalExchangeWithTypesForLAB());
+
     return tests;
   }
 

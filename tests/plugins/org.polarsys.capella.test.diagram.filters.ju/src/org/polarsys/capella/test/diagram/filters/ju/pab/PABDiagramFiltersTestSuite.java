@@ -53,7 +53,11 @@ public class PABDiagramFiltersTestSuite extends BasicTestSuite {
     tests.add(new ShowAllocatedFunctionalExchangesOnComponentExchangesForPAB());
     tests.add(new ShowExchangeItemsOnComponentExchangesForPAB());
     tests.add(new ShowExchangeItemsOnComponentExchangeWithoutFunctionalExchangesForPAB());
-    tests.add(new ShowExchangeItemsOnFunctionalExchangesForPAB());
+    tests.add(new ShowEI1EI2ForPAB());
+    tests.add(new ShowEI1EI2WithParametersForPAB());
+    tests.add(new ShowFunctionalExchangeE1E2ForPAB());
+    tests.add(new ShowFunctionalExchangeWithParametersForPAB());
+    tests.add(new ShowFunctionalExchangeWithTypesForPAB());
 
     return tests;
   }

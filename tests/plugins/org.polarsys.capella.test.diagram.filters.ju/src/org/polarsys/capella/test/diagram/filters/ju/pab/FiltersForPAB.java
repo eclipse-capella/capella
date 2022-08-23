@@ -37,6 +37,10 @@ public abstract class FiltersForPAB extends DiagramObjectFilterTestCase {
   protected final String FUNCTION_INPUT_PORT_1_ID = "c73296a8-7e68-4f86-890a-a74b0c9e9e2b";
   protected final String FUNCTION_OUTPUT_PORT_2_ID = "4e501637-730f-463d-93e8-797ef895c136";
   protected final String FUNCTION_INPUT_PORT_2_ID = "0488e1d7-457d-4b04-b400-7edd41d7163e";
+  protected final String FUNCTION_OUTPUT_PORT_3_ID = "31d4d783-26d2-434e-a265-db1687bf1523";
+  protected final String FUNCTION_INPUT_PORT_3_ID = "ea5beb0d-0d9e-4632-8d7b-75802621a2a2";
+  protected final String FUNCTION_OUTPUT_PORT_4_ID = "b6b502a9-7f09-4247-85da-7ab63c740ebf";
+  protected final String FUNCTION_INPUT_PORT_4_ID = "26b5a38e-206a-4ee0-baf5-0dfc2572fac4";
   protected final String FUNCTION_INPUT_PORT_WITHOUT_EXCHANGES_ID = "8934e607-1597-4ec4-bbe7-18a7591fe278";
   protected final String COMPONENT_EXCHANGE_1_ID = "63d4dd01-c52f-4a74-85b4-dcece0ece82f";
   protected final String COMPONENT_EXCHANGE_2_ID = "471385c5-ac2e-44e2-a9f7-29dd3f458061";
@@ -52,6 +56,8 @@ public abstract class FiltersForPAB extends DiagramObjectFilterTestCase {
   protected final String PHYSICAL_COMPONENT_9_ID = "b92ee1dc-c1e4-4220-afb1-7724bfe9f38d";
   protected final String FUNCTIONAL_EXCHANGE_1_ID = "a875d373-e646-41fb-84d3-e4d331cf6ffd";
   protected final String FUNCTIONAL_EXCHANGE_2_ID = "31f5c3af-c543-4318-9d04-349f60776c0a";
+  protected final String FUNCTIONAL_EXCHANGE_6_ID = "1b2c20b1-8c60-48c6-8535-564b9c889897";
+  protected final String FUNCTIONAL_EXCHANGE_7_ID = "25f41c03-6ae6-44af-966c-bb831ba9f6e0";
   protected final String PHYSICAL_LINK_1_ID = "c2cb6453-5612-4546-9466-fbbf6051fedf";
   protected final String PHYSICAL_LINK_2_ID = "ef631259-8baf-436c-a1e7-655a5b0e958b";
   protected final String PHYSICAL_LINK_3_ID = "e9de7e34-ccf7-4b5f-a18b-6cce77799428";

@@ -14,29 +14,38 @@ package org.polarsys.capella.test.diagram.filters.ju.pab;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.Predicate;
 
-import org.eclipse.sirius.diagram.DDiagramElement;
 import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
-import org.polarsys.capella.test.diagram.filters.ju.DiagramFilterUtils;
+import org.polarsys.capella.test.diagram.filters.ju.LabelFilterTestCase;
 
-public class CollapseFunctionPortsForPAB extends FiltersForPAB {
+public class ShowEI1EI2ForPAB extends LabelFilterTestCase {
+
+  private final String FUNCTIONAL_EXCHANGE_6_ID = "1b2c20b1-8c60-48c6-8535-564b9c889897";
+  private final String FUNCTIONAL_EXCHANGE_7_ID = "25f41c03-6ae6-44af-966c-bb831ba9f6e0";
+
+  @Override
+  protected String getTestProjectName() {
+    return "StandardDiagramFiltersModel";
+  }
+
+  @Override
+  protected String getDiagramName() {
+    return "[PAB] Physical System";
+  }
 
   @Override
   protected String getFilterName() {
-    return IFilterNameConstants.FILTER_PAB_COLLAPSE_FUNCTION_PORTS;
+    return IFilterNameConstants.FILTER_PAB_SHOW_EXCHANGE_ITEMS_ON_FUNCTIONAL_EXCHANGES_ID;
   }
 
   @Override
   protected List<String> getFilteredObjetIDs() {
-    return Arrays.asList(FUNCTION_INPUT_PORT_1_ID, FUNCTION_OUTPUT_PORT_1_ID, FUNCTION_INPUT_PORT_2_ID,
-        FUNCTION_OUTPUT_PORT_2_ID, FUNCTION_INPUT_PORT_WITHOUT_EXCHANGES_ID, PORT_ALLOCATION_TO_FIP_2_ID,
-        UNKNOWN_COMPONENT_2_ID, UNKNOWN_COMPONENT_3_ID, FUNCTION_INPUT_PORT_3_ID, FUNCTION_OUTPUT_PORT_3_ID,
-        FUNCTION_INPUT_PORT_4_ID, FUNCTION_OUTPUT_PORT_4_ID);
+    return Arrays.asList(new String[] { FUNCTIONAL_EXCHANGE_6_ID, FUNCTIONAL_EXCHANGE_7_ID });
   }
 
   @Override
-  protected Predicate<DDiagramElement> getElementsToNotFilterExtraConditionPredicate() {
-    return DiagramFilterUtils.FUNCTIONAL_EXCHANGE_EDGE_DECORATOR_PREDICATE;
+  protected List<String> getExpectedElementLabels() {
+    return Arrays.asList(new String[] { ";[ExchangeItem 1, ExchangeItem 2];", ";DEdge;" });
   }
+
 }

@@ -3401,7 +3401,27 @@
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='SAB_InternPhysicalPathLink']"/>
       </filters>
       <filters xsi:type="filter:CompositeFilterDescription" name="show.exchange.items.filter" label="%sa.sab.show.exchange.items.filter">
-        <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='CA%20Dummy']" semanticConditionExpression=""/>
+        <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='CA%20Dummy']"/>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="show.exchange.items.parameters.filter" label="%sa.sab.show.exchange.items.parameters.filter">
+        <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE">
+          <mappings xsi:type="description_3:InstanceRoleMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='hideSequenceLabelDF']"/>
+        </filters>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="show.functional.exchanges.exchange.items.filter" label="%sa.sab.show.functional.exchanges.exchange.items.filter">
+        <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE">
+          <mappings xsi:type="description_3:InstanceRoleMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='hideSequenceLabelDF']"/>
+        </filters>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="show.functional.exchanges.parameters.filter" label="%sa.sab.show.functional.exchanges.parameters.filter">
+        <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE">
+          <mappings xsi:type="description_3:InstanceRoleMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='hideSequenceLabelDF']"/>
+        </filters>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="show.functional.exchanges.exchange.items.parameters.filter" label="%sa.sab.show.functional.exchanges.exchange.items.parameters.filter">
+        <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE">
+          <mappings xsi:type="description_3:InstanceRoleMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='hideSequenceLabelDF']"/>
+        </filters>
       </filters>
       <filters xsi:type="filter:CompositeFilterDescription" name="show.exchange.items.on.component.exchanges.filter" label="%sa.sab.show.exchange.items.on.component.exchanges.filter">
         <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='CA%20Dummy']" semanticConditionExpression=""/>

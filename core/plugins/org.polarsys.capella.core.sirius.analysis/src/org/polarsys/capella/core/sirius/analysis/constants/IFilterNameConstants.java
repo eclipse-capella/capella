@@ -242,6 +242,10 @@ public interface IFilterNameConstants {
   String FILTER_LAB_HIDE_PORT_DELEGATIONS = "hide.port.delegations.filter";
   String FILTER_LAB_HIDE_ALLOCATED_FUNCTION_PORTS = "hide.realized.ports.filter";
   String FILTER_LAB_SHOW_EXCHANGE_ITEMS_ON_FUNCTIONAL_EXCHANGES = "show.exchange.items.filter";
+  String FILTER_LAB_SHOW_EXCHANGEITEMS_PARAMETERS_ON_FUNCTIONAL_EXCHANGES = "show.exchange.items.parameters.filter";
+  String FILTER_LAB_SHOW_FUNCTIONAL_EXCHANGES_EXCHANGEITEMS_ON_FUNCTIONAL_EXCHANGES = "show.functional.exchanges.exchange.items.filter";
+  String FILTER_LAB_SHOW_FUNCTIONAL_EXCHANGES_PARAMETERS_ON_FUNCTIONAL_EXCHANGES = "show.functional.exchanges.parameters.filter";
+  String FILTER_LAB_SHOW_FUNCTIONAL_EXCHANGES_EXCHANGEITEMS_PARAMETERS_ON_FUNCTIONAL_EXCHANGES = "show.functional.exchanges.exchange.items.parameters.filter";
   String FILTER_LAB_SHOW_EXCHANGE_ITEMS_ON_COMPONENT_EXCHANGES = "show.exchange.items.on.component.exchanges.filter";
   String FILTER_LAB_SHOW_EXCHANGE_ITEMS_ON_COMPONENT_EXCHANGE_WITHOUT_FUNCTIONAL_EXCHANGES = "show.exchange.items.on.component.exchange.without.functional.exchanges.filter";
   String FILTER_LAB_SHOW_ALLOCATED_FUNCTIONAL_EXCHANGES_ON_COMPONENT_EXCHANGES = "show.allocated.functional.exchanges.on.component.exchanges.filter";
@@ -265,6 +269,10 @@ public interface IFilterNameConstants {
   String FILTER_LAB_HIDE_PORT_ALLOCATIONS_ID = "hide.port.realizations.filter";
   String FILTER_LAB_HIDE_ALLOCATED_FUNCTION_PORTS_ID = "hide.realized.ports.filter";
   String FILTER_LAB_SHOW_EXCHANGE_ITEMS_ON_FUNCTIONAL_EXCHANGES_ID = "show.exchange.items.filter";
+  String FILTER_LAB_SHOW_EXCHANGEITEMS_PARAMETERS_ON_FUNCTIONAL_EXCHANGES_ID = "show.exchange.items.parameters.filter";
+  String FILTER_LAB_SHOW_FUNCTIONAL_EXCHANGES_EXCHANGEITEMS_ON_FUNCTIONAL_EXCHANGES_ID = "show.functional.exchanges.exchange.items.filter";
+  String FILTER_LAB_SHOW_FUNCTIONAL_EXCHANGES_PARAMETERS_ON_FUNCTIONAL_EXCHANGES_ID = "show.functional.exchanges.parameters.filter";
+  String FILTER_LAB_SHOW_FUNCTIONAL_EXCHANGES_EXCHANGEITEMS_PARAMETERS_ON_FUNCTIONAL_EXCHANGES_ID = "show.functional.exchanges.exchange.items.parameters.filter";
   String FILTER_LAB_SHOW_EXCHANGE_ITEMS_ON_COMPONENT_EXCHANGE_WITHOUT_FUNCTIONAL_EXCHANGES_ID = "show.exchange.items.on.component.exchange.without.functional.exchanges.filter";
 
   // LCBD Filters
@@ -357,6 +365,10 @@ public interface IFilterNameConstants {
   String FILTER_OAB_HIDE_COMMUNICATION_MEANS = "hide.communication.means.filter";
   String FILTER_OAB_HIDE_COMMUNICATION_MEANS_NAMES = "hide.communication.means.names.filter";
   String FILTER_OAB_SHOW_EXCHANGE_ITEMS_ON_INTERACTIONS = "show.exchange.items.filter";
+  String FILTER_OAB_SHOW_EXCHANGEITEMS_PARAMETERS_ON_INTERACTIONS = "show.exchange.items.parameters.filter";
+  String FILTER_OAB_SHOW_FUNCTIONAL_EXCHANGES_EXCHANGEITEMS_ON_INTERACTIONS = "show.functional.exchanges.exchange.items.filter";
+  String FILTER_OAB_SHOW_FUNCTIONAL_EXCHANGES_PARAMETERS_ON_INTERACTIONS = "show.functional.exchanges.parameters.filter";
+  String FILTER_OAB_SHOW_FUNCTIONAL_EXCHANGES_EXCHANGEITEMS_PARAMETERS_ON_INTERACTIONS = "show.functional.exchanges.exchange.items.parameters.filter";
   String FILTER_OAB_SHOW_EXCHANGE_ITEM_ON_COMMUNICATION_MEANS = "show.exchange.items.on.component.exchanges.filter";
   String FILTER_OAB_SHOW_EXCHANGE_ITEM_ON_COMMUNICATION_MEANS_WITHOUT_INTERACTIONS = "show.exchange.items.on.component.exchange.without.functional.exchanges.filter";
   String FILTER_OAB_SHOW_ALLOCATED_INTERACTIONS_ON_COMMUNICATION_MEANS = "show.allocated.functional.exchanges.on.component.exchanges.filter";
@@ -366,6 +378,10 @@ public interface IFilterNameConstants {
 
   // filter id
   String FILTER_OAB_SHOW_EXCHANGE_ITEMS_ON_INTERACTIONS_ID = "show.exchange.items.filter";
+  String FILTER_OAB_SHOW_EXCHANGEITEMS_PARAMETERS_ON_INTERACTIONS_ID = "show.exchange.items.parameters.filter";
+  String FILTER_OAB_SHOW_FUNCTIONAL_EXCHANGES_EXCHANGEITEMS_ON_INTERACTIONS_ID = "show.functional.exchanges.exchange.items.filter";
+  String FILTER_OAB_SHOW_FUNCTIONAL_EXCHANGES_PARAMETERS_ON_INTERACTIONS_ID = "show.functional.exchanges.parameters.filter";
+  String FILTER_OAB_SHOW_FUNCTIONAL_EXCHANGES_EXCHANGEITEMS_PARAMETERS_ON_INTERACTIONS_ID = "show.functional.exchanges.exchange.items.parameters.filter";
   String FILTER_OAB_SHOW_EXCHANGE_ITEM_ON_COMMUNICATION_MEANS_ID = "show.exchange.items.on.component.exchanges.filter";
   String FILTER_OAB_SHOW_EXCHANGE_ITEM_ON_COMMUNICATION_MEANS_WITHOUT_INTERACTIONS_ID = "show.exchange.items.on.component.exchange.without.functional.exchanges.filter";
   String FILTER_OAB_SHOW_ALLOCATED_INTERACTIONS_ON_COMMUNICATION_MEANS_ID = "show.allocated.functional.exchanges.on.component.exchanges.filter";
@@ -485,6 +501,10 @@ public interface IFilterNameConstants {
   String FILTER_PAB_HIDE_PHYSICAL_ACTORS = "hide.physical.actors.filter";
   String FILTER_PAB_HIDE_DEPLOYED_PCS = "hide.deployed.pcs.filter";
   String FILTER_PAB_SHOW_EXCHANGE_ITEMS_ON_FUNCTIONAL_EXCHANGES = "show.exchange.items.filter";
+  String FILTER_PAB_SHOW_EXCHANGEITEMS_PARAMETERS_ON_FUNCTIONAL_EXCHANGES = "show.exchange.items.parameters.filter";
+  String FILTER_PAB_SHOW_FUNCTIONAL_EXCHANGES_EXCHANGEITEMS_ON_FUNCTIONAL_EXCHANGES = "show.functional.exchanges.exchange.items.filter";
+  String FILTER_PAB_SHOW_FUNCTIONAL_EXCHANGES_PARAMETERS_ON_FUNCTIONAL_EXCHANGES = "show.functional.exchanges.parameters.filter";
+  String FILTER_PAB_SHOW_FUNCTIONAL_EXCHANGES_EXCHANGEITEMS_PARAMETERS_ON_FUNCTIONAL_EXCHANGES = "show.functional.exchanges.exchange.items.parameters.filter";
   String FILTER_PAB_SHOW_EXCHANGE_ITEMS_ON_COMPONENT_EXCHANGES = "show.exchange.items.on.component.exchanges.filter";
   String FILTER_PAB_SHOW_EXCHANGE_ITEMS_ON_COMPONENT_EXCHANGE_WITHOUT_FUNCTIONAL_EXCHANGES = "show.exchange.items.on.component.exchange.without.functional.exchanges.filter";
   String FILTER_PAB_SHOW_ALLOCATED_FUNCTIONAL_EXCHANGES_ON_COMPONENT_EXCHANGES = "show.allocated.functional.exchanges.on.component.exchanges.filter";
@@ -505,6 +525,10 @@ public interface IFilterNameConstants {
   String FILTER_PAB_HIDE_PORT_ALLOCATIONS_ID = "hide.port.realizations.filter";
   String FILTER_PAB_HIDE_ALLOCATED_FUNCTION_PORTS_ID = "hide.realized.ports.filter";
   String FILTER_PAB_SHOW_EXCHANGE_ITEMS_ON_FUNCTIONAL_EXCHANGES_ID = "show.exchange.items.filter";
+  String FILTER_PAB_SHOW_EXCHANGEITEMS_PARAMETERS_ON_FUNCTIONAL_EXCHANGES_ID = "show.exchange.items.parameters.filter";
+  String FILTER_PAB_SHOW_FUNCTIONAL_EXCHANGES_EXCHANGEITEMS_ON_FUNCTIONAL_EXCHANGES_ID = "show.functional.exchanges.exchange.items.filter";
+  String FILTER_PAB_SHOW_FUNCTIONAL_EXCHANGES_PARAMETERS_ON_FUNCTIONAL_EXCHANGES_ID = "show.functional.exchanges.parameters.filter";
+  String FILTER_PAB_SHOW_FUNCTIONAL_EXCHANGES_EXCHANGEITEMS_PARAMETERS_ON_FUNCTIONAL_EXCHANGES_ID = "show.functional.exchanges.exchange.items.parameters.filter";
   String FILTER_PAB_SHOW_EXCHANGE_ITEMS_ON_COMPONENT_EXCHANGE_WITHOUT_FUNCTIONAL_EXCHANGES_ID = "show.exchange.items.on.component.exchange.without.functional.exchanges.filter";
 
   // PDFB filters - Physical Data Flow Blank
@@ -545,6 +569,10 @@ public interface IFilterNameConstants {
   String FILTER_SAB_HIDE_PORT_ALLOCATIONS = "hide.port.realizations.filter";
   String FILTER_SAB_HIDE_ALLOCATED_FUNCTION_PORTS = "hide.realized.ports.filter";
   String FILTER_SAB_SHOW_EXCHANGE_ITEMS_ON_FUNCTIONAL_EXCHANGES = "show.exchange.items.filter";
+  String FILTER_SAB_SHOW_EXCHANGEITEMS_PARAMETERS_ON_FUNCTIONAL_EXCHANGES = "show.exchange.items.parameters.filter";
+  String FILTER_SAB_SHOW_FUNCTIONAL_EXCHANGES_EXCHANGEITEMS_ON_FUNCTIONAL_EXCHANGES = "show.functional.exchanges.exchange.items.filter";
+  String FILTER_SAB_SHOW_FUNCTIONAL_EXCHANGES_PARAMETERS_ON_FUNCTIONAL_EXCHANGES = "show.functional.exchanges.parameters.filter";
+  String FILTER_SAB_SHOW_FUNCTIONAL_EXCHANGES_EXCHANGEITEMS_PARAMETERS_ON_FUNCTIONAL_EXCHANGES = "show.functional.exchanges.exchange.items.parameters.filter";
   String FILTER_SAB_SHOW_EXCHANGE_ITEMS_ON_COMPONENT_EXCHANGES = "show.exchange.items.on.component.exchanges.filter";
   String FILTER_SAB_SHOW_EXCHANGE_ITEMS_ON_COMPONENT_EXCHANGE_WITHOUT_FUNCTIONAL_EXCHANGES = "show.exchange.items.on.component.exchange.without.functional.exchanges.filter";
   String FILTER_SAB_SHOW_ALLOCATED_FUNCTIONAL_EXCHANGES_ON_COMPONENT_EXCHANGES = "show.allocated.functional.exchanges.on.component.exchanges.filter";
@@ -560,6 +588,10 @@ public interface IFilterNameConstants {
   String FILTER_SAB_HIDE_PORT_ALLOCATIONS_ID = "hide.port.realizations.filter";
   String FILTER_SAB_HIDE_ALLOCATED_FUNCTION_PORTS_ID = "hide.realized.ports.filter";
   String FILTER_SAB_SHOW_EXCHANGE_ITEMS_ON_FUNCTIONAL_EXCHANGES_ID = "show.exchange.items.filter";
+  String FILTER_SAB_SHOW_EXCHANGEITEMS_PARAMETERS_ON_FUNCTIONAL_EXCHANGES_ID = "show.exchange.items.parameters.filter";
+  String FILTER_SAB_SHOW_FUNCTIONAL_EXCHANGES_EXCHANGEITEMS_ON_FUNCTIONAL_EXCHANGES_ID = "show.functional.exchanges.exchange.items.filter";
+  String FILTER_SAB_SHOW_FUNCTIONAL_EXCHANGES_PARAMETERS_ON_FUNCTIONAL_EXCHANGES_ID = "show.functional.exchanges.parameters.filter";
+  String FILTER_SAB_SHOW_FUNCTIONAL_EXCHANGES_EXCHANGEITEMS_PARAMETERS_ON_FUNCTIONAL_EXCHANGES_ID = "show.functional.exchanges.exchange.items.parameters.filter";
   String FILTER_SAB_SHOW_EXCHANGE_ITEMS_ON_COMPONENT_EXCHANGE_WITHOUT_FUNCTIONAL_EXCHANGES_ID = "show.exchange.items.on.component.exchange.without.functional.exchanges.filter";
 
   // SDFB filters - System Data Flow Bank

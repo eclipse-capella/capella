@@ -29,9 +29,13 @@ public class OABDiagramFiltersTestSuite extends BasicTestSuite {
     tests.add(new HideOperationalActorsForOAB());
     tests.add(new HideInteractionsForOAB());
     tests.add(new HideCommunicationMeansForOAB());
-    tests.add(new ShowExchangeItemsOnInteractionsForOAB());
     tests.add(new ShowExchangeItemsOnCommunicationMeansForOAB());
     tests.add(new ShowExchangeItemsOnCommunicationMeansWithoutInteractionsForOAB());
+    tests.add(new ShowEI1EI2ForOAB());
+    tests.add(new ShowEI1EI2WithParametersForOAB());
+    tests.add(new ShowInteractionE1E2ForOAB());
+    tests.add(new ShowInteractionWithParametersForOAB());
+    tests.add(new ShowInteractionWithTypesForOAB());
     tests.add(new ShowAllocatedInteractionsOnCommunicationMeansForOAB());
     tests.add(new HideCrossInteractionsOfRolesForOAB());
     tests.add(new HideInteractionsNamesForOAB());

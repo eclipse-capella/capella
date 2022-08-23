@@ -10,7 +10,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.diagram.filters.ju.pab;
+package org.polarsys.capella.test.diagram.filters.ju.oab;
 
 import java.util.Arrays;
 import java.util.List;
@@ -18,9 +18,10 @@ import java.util.List;
 import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
 import org.polarsys.capella.test.diagram.filters.ju.LabelFilterTestCase;
 
-public class ShowExchangeItemsOnFunctionalExchangesForPAB extends LabelFilterTestCase {
+public class ShowInteractionWithTypesForOAB extends LabelFilterTestCase {
 
-  private final String FUNCTIONAL_EXCHANGE_1_ID = "a875d373-e646-41fb-84d3-e4d331cf6ffd";
+  private final String FUNCTIONAL_EXCHANGE_6_ID = "1b2c20b1-8c60-48c6-8535-564b9c889897";
+  private final String FUNCTIONAL_EXCHANGE_7_ID = "25f41c03-6ae6-44af-966c-bb831ba9f6e0";
 
   @Override
   protected String getTestProjectName() {
@@ -34,17 +35,17 @@ public class ShowExchangeItemsOnFunctionalExchangesForPAB extends LabelFilterTes
 
   @Override
   protected String getFilterName() {
-    return IFilterNameConstants.FILTER_PAB_SHOW_EXCHANGE_ITEMS_ON_FUNCTIONAL_EXCHANGES_ID;
+    return IFilterNameConstants.FILTER_PAB_SHOW_FUNCTIONAL_EXCHANGES_PARAMETERS_ON_FUNCTIONAL_EXCHANGES_ID;
   }
 
   @Override
   protected List<String> getFilteredObjetIDs() {
-    return Arrays.asList(new String[] { FUNCTIONAL_EXCHANGE_1_ID });
+    return Arrays.asList(new String[] { FUNCTIONAL_EXCHANGE_6_ID, FUNCTIONAL_EXCHANGE_7_ID });
   }
 
   @Override
   protected List<String> getExpectedElementLabels() {
-    return Arrays.asList(new String[] { ";[ExchangeItem 1];" });
+    return Arrays.asList(new String[] { ";FunctionalExchange 6(Double, Double);", ";FunctionalExchange 7();" });
   }
 
 }

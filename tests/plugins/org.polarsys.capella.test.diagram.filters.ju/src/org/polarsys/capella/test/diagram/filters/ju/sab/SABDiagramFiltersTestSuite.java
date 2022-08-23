@@ -44,7 +44,11 @@ public class SABDiagramFiltersTestSuite extends BasicTestSuite {
     tests.add(new ShowAllocatedFunctionalExchangesOnComponentExchangesForSAB());
     tests.add(new ShowExchangeItemsOnComponentExchangesForSAB());
     tests.add(new ShowExchangeItemsOnComponentExchangeWithoutFunctionalExchangesForSAB());
-    tests.add(new ShowExchangeItemsOnFunctionalExchangesForSAB());
+    tests.add(new ShowEI1EI2ForSAB());
+    tests.add(new ShowEI1EI2WithParametersForSAB());
+    tests.add(new ShowFunctionalExchangeE1E2ForSAB());
+    tests.add(new ShowFunctionalExchangeWithParametersForSAB());
+    tests.add(new ShowFunctionalExchangeWithTypesForSAB());
     return tests;
   }
 
