@@ -26,7 +26,8 @@ public class HideFunctionsForLAB extends FiltersForLAB {
 
   @Override
   protected List<String> getFilteredObjetIDs() {
-    return Arrays.asList(new String[] { LOGICAL_FUNCTION_1_ID, LOGICAL_FUNCTION_2_ID });
+    return Arrays.asList(
+        new String[] { LOGICAL_FUNCTION_1_ID, LOGICAL_FUNCTION_2_ID, LOGICAL_FUNCTION_7_ID, LOGICAL_FUNCTION_8_ID });
   }
 
 }

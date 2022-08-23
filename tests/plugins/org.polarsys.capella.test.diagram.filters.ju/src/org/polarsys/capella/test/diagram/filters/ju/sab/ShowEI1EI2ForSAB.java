@@ -14,29 +14,38 @@ package org.polarsys.capella.test.diagram.filters.ju.sab;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.Predicate;
 
-import org.eclipse.sirius.diagram.DDiagramElement;
 import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
-import org.polarsys.capella.test.diagram.filters.ju.DiagramFilterUtils;
+import org.polarsys.capella.test.diagram.filters.ju.LabelFilterTestCase;
 
-public class CollapseFunctionPortsForSAB extends FiltersForSAB {
+public class ShowEI1EI2ForSAB extends LabelFilterTestCase {
+
+  private final String FUNCTIONAL_EXCHANGE_5_ID = "5e91eb7d-ba1f-4f99-ac9b-8d07a3634c57";
+  private final String FUNCTIONAL_EXCHANGE_6_ID = "aecd20ce-8d4d-4bda-b91f-6dbd6a261c09";
+
+  @Override
+  protected String getTestProjectName() {
+    return "StandardDiagramFiltersModel";
+  }
+
+  @Override
+  protected String getDiagramName() {
+    return "[SAB] System";
+  }
 
   @Override
   protected String getFilterName() {
-    return IFilterNameConstants.FILTER_SAB_COLLAPSE_FUNCTION_PORTS;
+    return IFilterNameConstants.FILTER_SAB_SHOW_EXCHANGE_ITEMS_ON_FUNCTIONAL_EXCHANGES_ID;
   }
 
   @Override
   protected List<String> getFilteredObjetIDs() {
-    return Arrays.asList(FUNCTION_INPUT_PORT_1_ID, FUNCTION_OUTPUT_PORT_1_ID, FUNCTION_INPUT_PORT_WITHOUT_EXCHANGES_ID,
-        PORT_ALLOCATION_TO_FOP_1_ID, PORT_ALLOCATION_TO_FIP_1_ID, FUNCTION_INPUT_PORT_2_ID, FUNCTION_INPUT_PORT_3_ID,
-        FUNCTION_OUTPUT_PORT_2_ID, FUNCTION_OUTPUT_PORT_3_ID);
+    return Arrays.asList(new String[] { FUNCTIONAL_EXCHANGE_5_ID, FUNCTIONAL_EXCHANGE_6_ID });
   }
 
   @Override
-  protected Predicate<DDiagramElement> getElementsToNotFilterExtraConditionPredicate() {
-    return DiagramFilterUtils.FUNCTIONAL_EXCHANGE_EDGE_DECORATOR_PREDICATE;
+  protected List<String> getExpectedElementLabels() {
+    return Arrays.asList(new String[] { ";[ExchangeItem 1, ExchangeItem 3];", ";DEdge;" });
   }
 
 }

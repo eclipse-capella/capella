@@ -26,7 +26,7 @@ public class HideFunctionalExchangesForSAB extends FiltersForSAB {
 
   @Override
   protected List<String> getFilteredObjetIDs() {
-    return Arrays.asList(new String[] { FUNCTIONAL_EXCHANGE_1_ID });
+    return Arrays.asList(new String[] { FUNCTIONAL_EXCHANGE_1_ID, FUNCTIONAL_EXCHANGE_5_ID, FUNCTIONAL_EXCHANGE_6_ID });
   }
 
 }

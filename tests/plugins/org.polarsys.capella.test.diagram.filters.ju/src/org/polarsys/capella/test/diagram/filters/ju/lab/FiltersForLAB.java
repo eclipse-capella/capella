@@ -19,6 +19,8 @@ public abstract class FiltersForLAB extends DiagramObjectFilterTestCase {
   protected final String LOGICAL_SYSTEM_ID = "224cc8f5-e287-4cb4-91d4-f0f9dd61a38f";
   protected final String LOGICAL_FUNCTION_1_ID = "42799e8b-95a3-4ed1-a3e4-2ffa933b1952";
   protected final String LOGICAL_FUNCTION_2_ID = "8d2f7885-211e-45ca-84a6-53d706e78068";
+  protected final String LOGICAL_FUNCTION_7_ID = "880cc70f-445a-42dc-89a2-31e3f51dbb0d";
+  protected final String LOGICAL_FUNCTION_8_ID = "b4c2cf71-33b6-415b-b334-1e8b4fe1f922";
   protected final String COMPONENT_EXCHANGE_1_ID = "dc6a6a7d-1499-4d1f-9b38-4696840f5022";
   protected final String COMPONENT_EXCHANGE_2_ID = "72379f9d-35de-42de-bce7-9e8a0ed54f47";
   protected final String FUNCTIONAL_EXCHANGE_1_ID = "998a0b1e-5baa-4d8b-84e9-22c13dd22b55";
