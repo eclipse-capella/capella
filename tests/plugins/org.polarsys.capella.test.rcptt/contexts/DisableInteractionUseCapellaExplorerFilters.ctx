@@ -1,0 +1,24 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: DisableInteractionUseCapellaExplorerFilters
+Element-Type: context
+Element-Version: 2.0
+Id: __kc08ChpEe2Ke_QVPFchOA
+Runtime-Version: 2.5.2.202204252353
+Save-Time: 8/30/22, 4:19 PM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+get-button "View Menu" | click
+get-view "Project Explorer" | get-menu "Filters and Customization..." | click
+with [get-window "Filters and Customization"] {
+    get-tab-folder | get-tab-item "Pre-set filters" | click
+    with [get-table] {    
+    get-item "Interaction Uses" | uncheck
+    }
+    get-button OK | click
+}
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--

@@ -5,8 +5,8 @@ Element-Type: testsuite
 Element-Version: 2.0
 Id: _H2g9YMEUEeWqb6y2_gGIKQ
 Manually-Ordered: true
-Runtime-Version: 2.5.0.202001130103
-Save-Time: 5/14/21 1:43 PM
+Runtime-Version: 2.5.2.202204252353
+Save-Time: 8/31/22, 11:19 AM
 
 ------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8
 Content-Type: text/testcase
@@ -54,5 +54,6 @@ _OtEBcGgCEem-1Zn8MbYLuw	// kind: 'suite' name: 'SemanticBrowser' path: 'Semantic
 _YjzF8PfIEeiaU_LTMcHjMQ	// kind: 'test' name: 'ARecRplSetSuffix' path: 'RecRpl/ARecRplSetSuffix.test'
 _y2rYUI1xEeuK1_6BuWiAvg	// kind: 'suite' name: 'AValidationProfileSuite2' path: 'PrefConfig/AValidationProfileSuite2.suite'
 _Q-W1MLSQEeuG2MOxxJehjA	// kind: 'suite' name: 'TraceElements' path: 'TraceElements/TraceElements.suite'
+_BIscYCkOEe2IhIA7W7J-Mw	// kind: 'suite' name: 'DiagramNavigationSuite' path: 'DiagramNavigation/DiagramNavigationSuite.suite'
 
 ------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8--
