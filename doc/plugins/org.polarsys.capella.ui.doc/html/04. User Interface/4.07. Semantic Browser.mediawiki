@@ -78,6 +78,8 @@ By default, the Semantic Browser works in the &ldquo;expanded mode&rdquo; which 
 
 Double-clicking on an element in the Semantic Browser opens the editor of this element. F8, F9, F10 keys allow selecting the current element in other Views. All other applicative commands are still available through the contextual menu.
 
+If the "Navigate to related diagrams on double click" preference is enabled, double-clicking on a Scenario/Operational Process/Functional Chain/Physical Path will trigger a diagram navigation action instead.
+
 
 [[Image:Images/4.07_Semantic_Browser.png|900x340px]]
 

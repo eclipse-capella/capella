@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.polarsys.capella.core.ui.semantic.browser.sirius.view;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ITreeSelection;
@@ -19,6 +20,8 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.ui.IWorkbenchPart;
 import org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper.EObjectWrapper;
+import org.polarsys.capella.core.commands.preferences.ui.sirius.DoubleClickBehaviourUtil;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.OpenRelatedDiagramAction;
 import org.polarsys.capella.core.ui.semantic.browser.sirius.actions.DiagramOpenAction;
 import org.polarsys.capella.core.ui.semantic.browser.sirius.helpers.SiriusSelectionHelper;
 import org.polarsys.capella.core.ui.semantic.browser.view.SemanticBrowserView;
@@ -59,11 +62,21 @@ public class SiriusSemanticBrowserView extends SemanticBrowserView {
           // if it is DRepresentation; then open the representation and return immediately.
           // Do not run into super.handleDoubleClick in order to avoid opening the wizard properties
           callSuper = false;
-        }        
+        } else {	
+          if (selectedElement instanceof EObject) {						
+            EObject selectedElementAsEObject = (EObject) selectedElement;
+            if( DoubleClickBehaviourUtil.INSTANCE.shouldOpenRelatedDiagramsOnDoubleClick(selectedElementAsEObject)) {
+              OpenRelatedDiagramAction action = new OpenRelatedDiagramAction(selectedElementAsEObject);
+              action.run();
+              callSuper = false;
+            }
+          }
+          callSuper = false;
+        }
       }
     }
     if(callSuper) {
       super.handleDoubleClick(event);      
     }
-  }
+  }   
 }
