@@ -58,6 +58,33 @@ The following figure illustrates the prompted dialog when deleting the System Ac
 
 On the sub section of '''Capella / Diagram''', it is possible to specify preferences for displaying diagrams:
 
+When &ldquo;'''Navigate to related diagrams on double click'''&rdquo; is activated, double clicking on specific elements will navigate to related diagrams instead of opening the Properties dialog.
+
+This preference is enabled by default.
+
+[[Image:Images/6.2%20Diagram_preferences_diagrams_navigation.png|791x578px]]
+
+These specific elements are :
+* '''Scenarios''', '''InteractionUse'''
+* '''Functional Chain''', '''Functional Chain Reference''', '''Operational Process'''
+* '''Physical Path'''
+
+Double clicks in Semantic Browser view, Diagram editor and Project Explorer are affected.
+
+The behaviour differs whether the element has related diagrams or not :
+
+*If the '''element has only one related diagram''', navigation will be made towards this diagram.
+
+*If the '''element has multiple related diagrams''', a dialog will open and let the user choose which diagram to open.
+[[Image:Images/6.2%20Diagram_preferences_multiple_diagrams_navigation.png|498x153px]]
+
+*If the '''element has no diagram''', a diagram creation dialog is display
+**If there is '''only one diagram type available for that element''', the dialog let the user choose the new diagram name. 
+[[Image:Images/6.2%20Diagram_preferences_one_diagram_creation.png|469x220px]]
+**If there is '''multiple diagram type available for that element''', the dialog let the user choose which diagram to create and its name.
+[[Image:Images/6.2%20Diagram_preferences_multiple_diagrams_creation.png|484x269px]]
+
+
 === Process/Chain/Path Display ===
 
 On the sub section of '''Capella / Diagram / Process/Chain/Path Display''', it is possible to specify preferences for displaying processes, Chains, paths in diagrams:

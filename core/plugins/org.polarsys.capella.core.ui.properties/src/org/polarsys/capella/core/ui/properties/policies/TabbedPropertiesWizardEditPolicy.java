@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -23,6 +23,7 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.AbstractSiriusEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.api.command.GMFCommandWrapper;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.polarsys.capella.core.commands.preferences.ui.sirius.DoubleClickBehaviourUtil;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.ui.properties.wizards.Messages;
 import org.polarsys.capella.core.ui.properties.wizards.OpenCustomWizardCommand;
@@ -51,20 +52,23 @@ public class TabbedPropertiesWizardEditPolicy extends AbstractSiriusEditPolicy {
           && ((DDiagramElement) semanticDecorator).getDiagramElementMapping().getDoubleClickDescription() == null
           && CapellaResourceHelper.isSemanticElement(semanticDecorator.getTarget())) {
         final EObject modelElement = semanticDecorator.getTarget();
-        if (!((DDiagramElement) semanticDecorator).getParentDiagram().isIsInShowingMode()) {
-          return new ICommandProxy(new GMFCommandWrapper(getEditingDomain(), new IdentityCommand(getEditingDomain()) {
 
-            @Override
-            public void execute() {
-              new OpenCustomWizardCommand(modelElement).run();
-            }
+        if (!DoubleClickBehaviourUtil.INSTANCE.shouldOpenRelatedDiagramsOnDoubleClick(modelElement)) {
+          if (!((DDiagramElement) semanticDecorator).getParentDiagram().isIsInShowingMode()) {
+            return new ICommandProxy(new GMFCommandWrapper(getEditingDomain(), new IdentityCommand(getEditingDomain()) {
 
-            @Override
-            public String getLabel() {
-              return Messages.CustomWizardHandler_Command_Title;
-            }
+              @Override
+              public void execute() {
+                new OpenCustomWizardCommand(modelElement).run();
+              }
 
-          }));
+              @Override
+              public String getLabel() {
+                return Messages.CustomWizardHandler_Command_Title;
+              }
+
+            }));
+          }
         }
       }
     }

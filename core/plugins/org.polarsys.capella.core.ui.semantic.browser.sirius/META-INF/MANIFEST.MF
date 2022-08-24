@@ -13,7 +13,8 @@ Require-Bundle: org.polarsys.capella.core.ui.semantic.browser;visibility:=reexpo
  org.eclipse.sirius.table.ui,
  org.polarsys.capella.common.ui.services,
  org.polarsys.capella.core.model.preferences,
- org.eclipse.sirius
+ org.eclipse.sirius,
+ org.polarsys.capella.core.sirius.ui
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-Localization: plugin

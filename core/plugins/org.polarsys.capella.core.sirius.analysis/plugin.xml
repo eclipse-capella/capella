@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2022 THALES GLOBAL SERVICES.
   
   This program and the accompanying materials are made available under the
   terms of the Eclipse Public License 2.0 which is available at
@@ -592,7 +592,7 @@
        point="org.eclipse.ui.preferencePages">
      <page
             category="org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page"
-            class="org.eclipse.ui.internal.dialogs.EmptyPreferencePage"
+            class="org.polarsys.capella.core.commands.preferences.ui.sirius.CapellaDiagramPreferencePage"
             id="org.polarsys.capella.common.ui.preferences.diagram"
             name="%Diagram_Page_Name">
     </page>
@@ -710,4 +710,13 @@
           kind="4images">
     </imageid>
  </extension>
+ <extension
+         point="org.eclipse.gmf.runtime.diagram.ui.editpolicyProviders">
+      <editpolicyProvider
+            class="org.polarsys.capella.core.sirius.analysis.policies.OpenRelatedDiagramEditPolicyProvider">
+         <Priority
+               name="Highest">
+         </Priority>
+      </editpolicyProvider>
+   </extension>
 </plugin>
