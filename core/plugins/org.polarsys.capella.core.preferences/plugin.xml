@@ -231,6 +231,9 @@
       <initializer
             class="org.polarsys.capella.core.commands.preferences.CommandsPreferencesInitializer">
       </initializer>
+      <initializer
+            class="org.polarsys.capella.core.commands.preferences.CapellaDiagramPreferencesInitializer">
+      </initializer>
    </extension>
    
    <extension

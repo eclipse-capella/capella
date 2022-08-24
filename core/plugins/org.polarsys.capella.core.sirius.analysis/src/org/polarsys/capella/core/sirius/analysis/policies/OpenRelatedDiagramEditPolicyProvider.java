@@ -10,8 +10,9 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.core.ui.properties.policies;
+package org.polarsys.capella.core.sirius.analysis.policies;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gmf.runtime.common.core.service.IOperation;
@@ -24,9 +25,11 @@ import org.eclipse.sirius.diagram.ui.tools.api.policy.CompoundEditPolicy;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 
 /**
+ * This Policy provider add the @OpenRelatedDiagramEditPolicy to existing policies
  * 
+ * @author etraisnel
  */
-public class TabbedPropertiesEditPolicyProvider implements IEditPolicyProvider {
+public class OpenRelatedDiagramEditPolicyProvider implements IEditPolicyProvider {
 
 	/**
 	 * @see org.eclipse.gmf.runtime.diagram.ui.services.editpolicy.IEditPolicyProvider#createEditPolicies(org.eclipse.gef.EditPart)
@@ -34,7 +37,8 @@ public class TabbedPropertiesEditPolicyProvider implements IEditPolicyProvider {
 	public void createEditPolicies(final EditPart editPart) {
 		if (editPart instanceof IDiagramElementEditPart) {
 			final IDiagramElementEditPart diagramElementEditPart = (IDiagramElementEditPart) editPart;
-			if (CapellaResourceHelper.isSemanticElement(diagramElementEditPart.resolveTargetSemanticElement())) {
+			EObject targetSemanticElement = diagramElementEditPart.resolveTargetSemanticElement();
+			if (CapellaResourceHelper.isSemanticElement(targetSemanticElement)) {    	 
 				final CompoundEditPolicy compoundEditPolicy = new CompoundEditPolicy();
 				compoundEditPolicy.setAllowNullCommand(false);
 
@@ -43,8 +47,8 @@ public class TabbedPropertiesEditPolicyProvider implements IEditPolicyProvider {
 					compoundEditPolicy.addEditPolicy(existingPolicy);
 				}
 
-				compoundEditPolicy.addEditPolicy(new TabbedPropertiesWizardEditPolicy());
-				diagramElementEditPart.installEditPolicy(EditPolicyRoles.OPEN_ROLE, compoundEditPolicy);
+				compoundEditPolicy.addEditPolicy(new OpenRelatedDiagramEditPolicy());
+				diagramElementEditPart.installEditPolicy(EditPolicyRoles.OPEN_ROLE, compoundEditPolicy); 	         
 			}
 		}
 	}
@@ -58,7 +62,8 @@ public class TabbedPropertiesEditPolicyProvider implements IEditPolicyProvider {
 			final CreateEditPoliciesOperation createEditPoliciesOperation = (CreateEditPoliciesOperation) operation;
 			if (createEditPoliciesOperation.getEditPart() instanceof IDiagramElementEditPart) {
 				final IDiagramElementEditPart diagramElementEditPart = (IDiagramElementEditPart) createEditPoliciesOperation.getEditPart();
-				if (CapellaResourceHelper.isSemanticElement(diagramElementEditPart.resolveTargetSemanticElement())) {
+				EObject targetSemanticElement = diagramElementEditPart.resolveTargetSemanticElement();
+				if (CapellaResourceHelper.isSemanticElement(targetSemanticElement)) {
 					return true;
 				}
 			}
@@ -68,5 +73,7 @@ public class TabbedPropertiesEditPolicyProvider implements IEditPolicyProvider {
 
 	public void removeProviderChangeListener(IProviderChangeListener arg0) {
 		// empty
-	}
+	}  
 }
+
+
