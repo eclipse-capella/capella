@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018, 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -41,6 +41,7 @@ public class CommonToolsTestSuite extends BasicTestSuite {
     tests.add(new CommonToolsTest());
     tests.add(new SelectToolsTest());
     tests.add(new BlackInternalLinks());
+    tests.add(new DiagramNavigationTestSuite());
     
     return tests;
   }
