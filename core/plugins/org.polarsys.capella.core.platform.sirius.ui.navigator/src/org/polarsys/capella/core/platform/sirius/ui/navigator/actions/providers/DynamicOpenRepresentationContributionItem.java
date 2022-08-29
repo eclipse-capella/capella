@@ -36,6 +36,10 @@ import org.eclipse.ui.activities.IActivityManager;
 import org.eclipse.ui.activities.IIdentifier;
 import org.eclipse.ui.menus.IWorkbenchContribution;
 import org.eclipse.ui.services.IServiceLocator;
+import org.polarsys.capella.core.data.cs.PhysicalPath;
+import org.polarsys.capella.core.data.cs.PhysicalPathReference;
+import org.polarsys.capella.core.data.fa.FunctionalChain;
+import org.polarsys.capella.core.data.fa.FunctionalChainReference;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.menu.dynamic.DynamicActionProvider;
@@ -87,13 +91,22 @@ public class DynamicOpenRepresentationContributionItem extends CompoundContribut
         Session currentSession = SessionManager.INSTANCE.getSession(firstSelectedEObject);
 
         if (currentSession != null) {
-          createOpenDiagramMenu(firstSelectedEObject, menu, currentSession);
+          if (firstSelectedEObject instanceof FunctionalChainReference) {
+              FunctionalChain fc = ((FunctionalChainReference)firstSelectedEObject).getReferencedFunctionalChain();
+              createOpenDiagramMenu(fc, menu, currentSession);
+          } else if (firstSelectedEObject instanceof PhysicalPathReference) {
+              PhysicalPath pp = ((PhysicalPathReference)firstSelectedEObject).getReferencedPhysicalPath();
+              createOpenDiagramMenu(pp, menu, currentSession);
+          } else {
+              createOpenDiagramMenu(firstSelectedEObject, menu, currentSession);
+          }
         }
       }
     }
 
     private void createOpenDiagramMenu(EObject firstSelectedEObject, IMenuManager menu, Session currentSession) {
       Collection<Viewpoint> selectedViewpoints = currentSession.getSelectedViewpoints(false);
+      
       Collection<RepresentationDescription> descriptions = DialectManager.INSTANCE
           .getAvailableRepresentationDescriptions(selectedViewpoints, firstSelectedEObject);
 
