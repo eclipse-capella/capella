@@ -5709,6 +5709,39 @@
             <containerVariable name="container"/>
             <representationNameVariable name="diagramName"/>
           </ownedTools>
+          <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Existing Interface Scenario Use" label="Existing Interface Scenario Use" browseExpression="feature:referencedScenario" navigationNameExpression="var:diagramName" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']">
+            <containerViewVariable name="containerView"/>
+            <containerVariable name="container"/>
+            <representationNameVariable name="diagramName"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Existing Exchange Scenario Use" label="Existing Exchange Scenario Use" browseExpression="feature:referencedScenario" navigationNameExpression="var:diagramName" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']">
+            <containerViewVariable name="containerView"/>
+            <containerVariable name="container"/>
+            <representationNameVariable name="diagramName"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Existing Functional Scenario Use" label="Existing Functional Scenario Use" browseExpression="feature:referencedScenario" navigationNameExpression="var:diagramName" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']">
+            <containerViewVariable name="containerView"/>
+            <containerVariable name="container"/>
+            <representationNameVariable name="diagramName"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Existing Operational Entity Scenario Use" label="Existing Operational Entity Scenario Use" browseExpression="feature:referencedScenario" navigationNameExpression="var:diagramName">
+            <containerViewVariable name="containerView"/>
+            <containerVariable name="container"/>
+            <representationNameVariable name="diagramName"/>
+            <diagramDescription href="oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Existing Operational Activity Scenario Use" label="Existing Operational Activity Scenario Use" browseExpression="feature:referencedScenario" navigationNameExpression="var:diagramName">
+            <containerViewVariable name="containerView"/>
+            <containerVariable name="container"/>
+            <representationNameVariable name="diagramName"/>
+            <diagramDescription href="oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Activity%20Interaction%20Scenario']"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Existing Physical Path Ref" label="Existing Physical Path Ref" browseExpression="feature:referencedPhysicalPath" navigationNameExpression="var:diagramName">
+            <containerViewVariable name="containerView"/>
+            <containerVariable name="container"/>
+            <representationNameVariable name="diagramName"/>
+            <diagramDescription href="physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Path%20Description']"/>
+          </ownedTools>
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
@@ -14573,7 +14606,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings xsi:type="description_2:InteractionUseMapping" name="InteractionUse" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" semanticCandidatesExpression="aql:self.ownedTimeLapses->filter(interaction::InteractionUse)" semanticElements="aql:self.makeUnion(self, self.referencedScenario, self.referencedScenario.eContainerOrSelf(interaction::AbstractCapability))" synchronizationLock="true" domainClass="interaction.InteractionUse" startingEndFinderExpression="feature:start" finishingEndFinderExpression="feature:finish" coveredLifelinesExpression="aql:self.getCoveredFromAbstractFragment()" centerLabelExpression="aql:self.referencedScenario.name">
+        <containerMappings xsi:type="description_2:InteractionUseMapping" name="InteractionUse" navigationDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Existing%20Interface%20Scenario%20Use']" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" semanticCandidatesExpression="aql:self.ownedTimeLapses->filter(interaction::InteractionUse)" semanticElements="aql:self.makeUnion(self, self.referencedScenario, self.referencedScenario.eContainerOrSelf(interaction::AbstractCapability))" synchronizationLock="true" domainClass="interaction.InteractionUse" startingEndFinderExpression="feature:start" finishingEndFinderExpression="feature:finish" coveredLifelinesExpression="aql:self.getCoveredFromAbstractFragment()" centerLabelExpression="aql:self.referencedScenario.name">
           <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression=" ref" labelAlignment="LEFT" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_CombinedFragment_Gray']">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -16662,7 +16695,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings xsi:type="description_2:InteractionUseMapping" name="InteractionUseDF" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" semanticCandidatesExpression="aql:self.ownedTimeLapses->filter(interaction::InteractionUse)" semanticElements="aql:self.makeUnion(self, self.referencedScenario, self.referencedScenario.eContainerOrSelf(interaction::AbstractCapability))" domainClass="interaction.InteractionUse" startingEndFinderExpression="feature:start" finishingEndFinderExpression="feature:finish" coveredLifelinesExpression="aql:self.getCoveredFromAbstractFragment()" centerLabelExpression="aql:self.referencedScenario.name">
+        <containerMappings xsi:type="description_2:InteractionUseMapping" name="InteractionUseDF" navigationDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Existing%20Exchange%20Scenario%20Use']" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" semanticCandidatesExpression="aql:self.ownedTimeLapses->filter(interaction::InteractionUse)" semanticElements="aql:self.makeUnion(self, self.referencedScenario, self.referencedScenario.eContainerOrSelf(interaction::AbstractCapability))" domainClass="interaction.InteractionUse" startingEndFinderExpression="feature:start" finishingEndFinderExpression="feature:finish" coveredLifelinesExpression="aql:self.getCoveredFromAbstractFragment()" centerLabelExpression="aql:self.referencedScenario.name">
           <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression=" ref" labelAlignment="LEFT" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_CombinedFragment_Gray']">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -18451,7 +18484,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings xsi:type="description_2:InteractionUseMapping" name="InteractionUseFS" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" semanticCandidatesExpression="aql:self.ownedTimeLapses->filter(interaction::InteractionUse)" semanticElements="aql:self.makeUnion(self, self.referencedScenario, self.referencedScenario.eContainerOrSelf(interaction::AbstractCapability))" domainClass="interaction.InteractionUse" startingEndFinderExpression="feature:start" finishingEndFinderExpression="feature:finish" coveredLifelinesExpression="aql:self.getCoveredFromAbstractFragment()" centerLabelExpression="aql:self.referencedScenario.name">
+        <containerMappings xsi:type="description_2:InteractionUseMapping" name="InteractionUseFS" navigationDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Existing%20Functional%20Scenario%20Use']" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" semanticCandidatesExpression="aql:self.ownedTimeLapses->filter(interaction::InteractionUse)" semanticElements="aql:self.makeUnion(self, self.referencedScenario, self.referencedScenario.eContainerOrSelf(interaction::AbstractCapability))" domainClass="interaction.InteractionUse" startingEndFinderExpression="feature:start" finishingEndFinderExpression="feature:finish" coveredLifelinesExpression="aql:self.getCoveredFromAbstractFragment()" centerLabelExpression="aql:self.referencedScenario.name">
           <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression=" ref" labelAlignment="LEFT" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_CombinedFragment_Gray']">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
