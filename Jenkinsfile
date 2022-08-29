@@ -163,7 +163,8 @@ pipeline {
 		        			 'org.polarsys.capella.test.fastlinker.ju.testsuites.FastLinkerTestsSuite',
 		        			 'org.polarsys.capella.test.explorer.activity.ju.testsuites.ActivityExplorerTestsSuite',
 		        			 'org.polarsys.capella.test.progressmonitoring.ju.testsuites.SetProgressTestSuite',
-		        			 'org.polarsys.capella.test.navigator.ju.testsuites.main.NavigatorUITestSuite'])
+		        			 'org.polarsys.capella.test.navigator.ju.testsuites.main.NavigatorUITestSuite',
+		        			 'org.polarsys.capella.test.semantic.ui.ju.testsuites.SemanticUITestSuite'])
 		        			 
 		        		tester.runUITests("${CAPELLA_PRODUCT_PATH}", 'MigrationCommandLine', 'org.polarsys.capella.test.suites.ju', 
 		        			['org.polarsys.capella.test.migration.ju.testsuites.main.MigrationTestSuite',

@@ -2789,6 +2789,7 @@
           </style>
         </edgeMappings>
         <containerMappings xsi:type="description_3:InteractionUseMapping" name="InteractionUse OA" semanticCandidatesExpression="aql:self.ownedTimeLapses->filter(interaction::InteractionUse)" semanticElements="aql:self.makeUnion(self, self.referencedScenario, self.referencedScenario.eContainerOrSelf(interaction::AbstractCapability))" domainClass="interaction.InteractionUse" startingEndFinderExpression="aql:self.start" finishingEndFinderExpression="aql:self.finish" coveredLifelinesExpression="aql:self.getCoveredFromAbstractFragment()" centerLabelExpression="aql:self.referencedScenario.name">
+          <navigationDescriptions xsi:type="tool_1:DiagramNavigationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Existing%20Operational%20Entity%20Scenario%20Use']"/>
           <deletionDescription href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']"/>
           <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression=" ref" labelAlignment="LEFT">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -4402,6 +4403,7 @@
           </style>
         </edgeMappings>
         <containerMappings xsi:type="description_3:InteractionUseMapping" name="InteractionUse AIS" semanticCandidatesExpression="aql:self.ownedTimeLapses->filter(interaction::InteractionUse)" semanticElements="aql:self.makeUnion(self, self.referencedScenario, self.referencedScenario.eContainerOrSelf(interaction::AbstractCapability))" domainClass="interaction.InteractionUse" startingEndFinderExpression="aql:self.start" finishingEndFinderExpression="aql:self.finish" coveredLifelinesExpression="aql:self.getCoveredFromAbstractFragment()" centerLabelExpression="aql:self.referencedScenario.name">
+          <navigationDescriptions xsi:type="tool_1:DiagramNavigationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Existing%20Operational%20Activity%20Scenario%20Use']"/>
           <deletionDescription href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']"/>
           <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression=" ref" labelAlignment="LEFT">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.polarsys.capella.common.ui.toolkit.browser.contentProviderCategory">
+	    <category
+	          id="org.polarsys.capella.test.semantic.ui.ju.queries.Scenario_InteractionUses_Referenced"
+	          isTopLevel="true"
+	          name="Owned Interaction Uses">
+	       <availableForType
+	             class="org.polarsys.capella.core.data.interaction.Scenario">
+	       </availableForType>
+	       <targetBrowserId
+	             id="ReferencedElementBrowser">
+	       </targetBrowserId>
+	       <categoryQuery>
+	          <basicQuery
+                  class="org.polarsys.capella.test.semantic.ui.ju.queries.Scenario_InteractionUses">
+	          </basicQuery>
+	       </categoryQuery>
+	    </category>
+	    <category
+	          id="org.polarsys.capella.test.semantic.ui.ju.queries.Scenario_InteractionUses_Referencing"
+	          isTopLevel="true"
+	          name="Owned Interaction Uses">
+	       <availableForType
+	             class="org.polarsys.capella.core.data.interaction.Scenario">
+	       </availableForType>
+	       <targetBrowserId
+	             id="ReferencingElementBrowser">
+	       </targetBrowserId>
+	       <categoryQuery>
+	          <basicQuery
+                  class="org.polarsys.capella.test.semantic.ui.ju.queries.Scenario_InteractionUses">
+	          </basicQuery>
+	       </categoryQuery>
+	    </category>
+   </extension>
+
+</plugin>

@@ -8,6 +8,5 @@ Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Require-Bundle: org.apache.xerces,
- org.polarsys.capella.test.suites.ju,
- org.polarsys.capella.test.semantic.ui.ju
+ org.polarsys.capella.test.suites.ju
 Export-Package: org.polarsys.capella.test.suite.inui.ju
