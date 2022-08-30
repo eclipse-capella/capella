@@ -2071,9 +2071,11 @@
                 nextInvolvements="#231dda19-d36d-4f90-a4d8-c9762ba4acc1"/>
             <ownedPhysicalPathInvolvements xsi:type="org.polarsys.capella.core.data.cs:PhysicalPathInvolvement"
                 id="231dda19-d36d-4f90-a4d8-c9762ba4acc1" involved="#96931db1-6ba0-4e8f-a41c-385707b7f18b"/>
+            <ownedPhysicalPathInvolvements xsi:type="org.polarsys.capella.core.data.cs:PhysicalPathReference"
+                id="7a246568-537d-4c97-b404-a1be14e37cfa" involved="#3ba887f4-d8c6-449e-9bf8-72fbecc2e0c2"/>
           </ownedPhysicalPath>
           <ownedPhysicalPath xsi:type="org.polarsys.capella.core.data.cs:PhysicalPath"
-              id="3ba887f4-d8c6-449e-9bf8-72fbecc2e0c2" name="PhysicalPath 1">
+              id="3ba887f4-d8c6-449e-9bf8-72fbecc2e0c2" name="PhysicalPath 2">
             <ownedPhysicalPathInvolvements xsi:type="org.polarsys.capella.core.data.cs:PhysicalPathInvolvement"
                 id="cfec4602-11c9-429b-97b6-703036efab97" involved="#c1dc5d57-4bf9-4b07-9f1c-cae1a3d1fc32"
                 nextInvolvements="#474cb0bf-6498-4a52-a859-bea482bd2ede"/>

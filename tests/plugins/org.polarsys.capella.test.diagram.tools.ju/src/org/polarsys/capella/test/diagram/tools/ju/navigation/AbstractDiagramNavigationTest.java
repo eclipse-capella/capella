@@ -14,11 +14,11 @@ package org.polarsys.capella.test.diagram.tools.ju.navigation;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.common.ui.services.action.contributionitem.ContributionItemService;
 import org.eclipse.jface.action.ActionContributionItem;
@@ -26,13 +26,11 @@ import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
-import org.eclipse.jface.action.Separator;
 import org.eclipse.sirius.business.api.query.DRepresentationElementQuery;
 import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.ui.tools.api.decoration.DecorationDescriptor;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
@@ -43,9 +41,11 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 import org.junit.Assert;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.test.diagram.common.ju.api.AbstractDiagramTestCase;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
+import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
 import org.polarsys.capella.test.framework.context.SessionContext;
 
 public abstract class AbstractDiagramNavigationTest extends AbstractDiagramTestCase {
@@ -70,19 +70,19 @@ public abstract class AbstractDiagramNavigationTest extends AbstractDiagramTestC
         context = new SessionContext(session);
         ted = session.getTransactionalEditingDomain();
         
-        diagramContext = new OpenDiagramStep(context, diagramName).run();
-        synchronizationWithUIThread();
+        diagramContext = new OpenDiagramStep(context, diagramName).run().open();
         diagram = diagramContext.getDiagram();
-        
-        IEditorPart editor = EclipseUIUtil.getActiveEditor();
+        emptyEventsFromUIThread();
         IWorkbenchPage page = EclipseUIUtil.getActivePage();
+        IEditorPart editor = EclipseUIUtil.getActiveEditor();
+        
         assertNotNull("We should have an active page", page);
         
         assertTrue("We should have a DDiagramEditor", editor instanceof DDiagramEditor);
         
         // Set the focus
         final DDiagramEditor diagramEditor = (DDiagramEditor) editor;
-        DRepresentationElement scenarioUseNode = setDiagramFocusToElement(diagramEditor, focusElementId);
+        DRepresentationElement representationElement = setDiagramFocusToElement(diagramEditor, focusElementId);
         
         // Populate menu
         IMenuManager popupMenu = populateOpenMenu();
@@ -94,7 +94,7 @@ public abstract class AbstractDiagramNavigationTest extends AbstractDiagramTestC
         final List<DDiagramEditor> diagramEditors = checkNavigationAction(actionContributions, mapExpectedNavigationActions);
         
         // Check decorator
-        checkDecoratorPresence(scenarioUseNode, true);
+        checkDecoratorPresence(representationElement, true);
 
         // Cleanup
         DialectUIManager.INSTANCE.closeEditor(diagramEditor, false);
@@ -112,16 +112,36 @@ public abstract class AbstractDiagramNavigationTest extends AbstractDiagramTestC
             // Do nothing, just wait
         }
     }
+    
+    /**
+     * Wait the end of the asynchronous calls in UI Thread and ignore the Exception. <B>Use this exclusively</B> in the
+     * setup method to ensure a clean environment.
+     */
+    public static void emptyEventsFromUIThread() {
+        boolean shouldRetry = false;
+        do {
+            try {
+                synchronizationWithUIThread();
+                shouldRetry = false;
+                // CHECKSTYLE:OFF
+            } catch (final Exception e) {
+                // CHECKSTYLE:ON
+                shouldRetry = true;
+            }
+        } while (shouldRetry);
+    }
 
     protected DRepresentationElement setDiagramFocusToElement(final DDiagramEditor diagramEditor, final String elementId) {
-        DRepresentationElement scenarioUseNode = (DRepresentationElement) diagramContext.getView(elementId);
-        List<DRepresentationElement> representationElementList = List.of(scenarioUseNode);
+        EObject semanticElement = context.getSemanticElement(elementId);
+        DRepresentationElement representationElement = DiagramHelper.getOnDiagramNodeElement(diagram, semanticElement);
+        List<DRepresentationElement> representationElementList = List.of(representationElement);
         DialectUIManager.INSTANCE.setSelection(diagramEditor, representationElementList);
-        return scenarioUseNode;
+        return representationElement;
     }
 
     protected List<DDiagramEditor> checkNavigationAction(List<IContributionItem> actionContributions, Map<String, String> mapExpectedNavigationActions) {
         List<DDiagramEditor> lstEditors = new ArrayList<>();
+        assertTrue("ActionContributions count is not as expected", actionContributions.size() == mapExpectedNavigationActions.size());
         for (IContributionItem actionContribution: actionContributions) {
             assertTrue(actionContribution instanceof ActionContributionItem);
             final IAction action = ((ActionContributionItem)actionContribution).getAction();
@@ -129,7 +149,7 @@ public abstract class AbstractDiagramNavigationTest extends AbstractDiagramTestC
             String actionText = action.getText();
             String expectedNavigationUid = mapExpectedNavigationActions.get(actionText);
             
-            assertNotNull("Action does not ahve the expected text", expectedNavigationUid);
+            assertNotNull("Action does not have the expected text", expectedNavigationUid);
             action.run();
             IEditorPart editor2 = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
     
@@ -176,20 +196,20 @@ public abstract class AbstractDiagramNavigationTest extends AbstractDiagramTestC
     }
     
 
-    protected void checkDecoratorPresence(DRepresentationElement scenarioUseNode, boolean expectedPresence) {
-        Object decorationDescriptor = getDecorationDescriptor(scenarioUseNode);
-        Assert.assertEquals("There should " + (expectedPresence ? "" : "not ") + "be a DecorationDescriptor for " + scenarioUseNode.getName(), expectedPresence,
+    protected void checkDecoratorPresence(DRepresentationElement representationElement, boolean expectedPresence) {
+        Object decorationDescriptor = getDecorationDescriptor(representationElement);
+        Assert.assertEquals("There should " + (expectedPresence ? "" : "not ") + "be a DecorationDescriptor for " + ((CapellaElement)representationElement.getTarget()).getFullLabel(), expectedPresence,
                 decorationDescriptor instanceof DecorationDescriptor);
     }
 
-    private Object getDecorationDescriptor(DRepresentationElement scenarioUseNode) {
-        DRepresentationElementQuery dRepresentationElementQuery = new DRepresentationElementQuery(scenarioUseNode);
+    private Object getDecorationDescriptor(DRepresentationElement representationElement) {
+        DRepresentationElementQuery dRepresentationElementQuery = new DRepresentationElementQuery(representationElement);
         DRepresentation parentRepresentation = dRepresentationElementQuery.getParentRepresentation();
         Object decorationDescriptor = null;
         Map<Object, Object> subDiagramDecorationDescriptors = null;
         if (parentRepresentation != null) {
             subDiagramDecorationDescriptors = parentRepresentation.getUiState().getSubDiagramDecorationDescriptors();
-            decorationDescriptor = subDiagramDecorationDescriptors.get(scenarioUseNode);
+            decorationDescriptor = subDiagramDecorationDescriptors.get(representationElement);
         }
         return decorationDescriptor;
     }

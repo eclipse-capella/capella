@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.polarsys.capella.test.diagram.tools.ju.navigation.FCDiagramNavigationTest;
+import org.polarsys.capella.test.diagram.tools.ju.navigation.PPDiagramNavigationTest;
 import org.polarsys.capella.test.diagram.tools.ju.navigation.SequenceDiagramNavigationTest;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
@@ -33,6 +34,7 @@ public class DiagramNavigationTestSuite extends BasicTestSuite {
     List<BasicTestArtefact> tests = new ArrayList<>();
     tests.add(new SequenceDiagramNavigationTest());
     tests.add(new FCDiagramNavigationTest());
+    tests.add(new PPDiagramNavigationTest());
 
     return tests;
   }
