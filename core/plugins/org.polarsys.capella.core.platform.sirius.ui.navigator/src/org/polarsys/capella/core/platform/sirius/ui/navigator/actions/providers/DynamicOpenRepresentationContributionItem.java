@@ -14,8 +14,8 @@ package org.polarsys.capella.core.platform.sirius.ui.navigator.actions.providers
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.IMenuManager;
@@ -25,6 +25,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
@@ -36,12 +37,9 @@ import org.eclipse.ui.activities.IActivityManager;
 import org.eclipse.ui.activities.IIdentifier;
 import org.eclipse.ui.menus.IWorkbenchContribution;
 import org.eclipse.ui.services.IServiceLocator;
-import org.polarsys.capella.core.data.cs.PhysicalPath;
 import org.polarsys.capella.core.data.cs.PhysicalPathReference;
-import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.fa.FunctionalChainReference;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
-import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.menu.dynamic.DynamicActionProvider;
 import org.polarsys.capella.core.menu.dynamic.DynamicCreationAction;
 import org.polarsys.capella.core.sirius.ui.actions.OpenRepresentationsAction;
@@ -91,22 +89,13 @@ public class DynamicOpenRepresentationContributionItem extends CompoundContribut
         Session currentSession = SessionManager.INSTANCE.getSession(firstSelectedEObject);
 
         if (currentSession != null) {
-          if (firstSelectedEObject instanceof FunctionalChainReference) {
-              FunctionalChain fc = ((FunctionalChainReference)firstSelectedEObject).getReferencedFunctionalChain();
-              createOpenDiagramMenu(fc, menu, currentSession);
-          } else if (firstSelectedEObject instanceof PhysicalPathReference) {
-              PhysicalPath pp = ((PhysicalPathReference)firstSelectedEObject).getReferencedPhysicalPath();
-              createOpenDiagramMenu(pp, menu, currentSession);
-          } else {
-              createOpenDiagramMenu(firstSelectedEObject, menu, currentSession);
-          }
+          createOpenDiagramMenu(firstSelectedEObject, menu, currentSession);
         }
       }
     }
 
     private void createOpenDiagramMenu(EObject firstSelectedEObject, IMenuManager menu, Session currentSession) {
       Collection<Viewpoint> selectedViewpoints = currentSession.getSelectedViewpoints(false);
-      
       Collection<RepresentationDescription> descriptions = DialectManager.INSTANCE
           .getAvailableRepresentationDescriptions(selectedViewpoints, firstSelectedEObject);
 
@@ -125,42 +114,54 @@ public class DynamicOpenRepresentationContributionItem extends CompoundContribut
             }
           }
         }
+      }
 
-        // create scenarios from capabilities
-        if (firstSelectedEObject instanceof AbstractCapability) {
-          addScenariosFromCapabilitiesMenuEntries((AbstractCapability) firstSelectedEObject, menu, currentSession,
-              selectedViewpoints);
-        }
+      // create scenarios from capabilities
+      if (hasDerivedOpenRepresentationContribution(firstSelectedEObject)) {
+          addDerivedOpenRepresentationActions(firstSelectedEObject, menu, currentSession,
+            selectedViewpoints);
       }
     }
-  }
-
-  private void addScenariosFromCapabilitiesMenuEntries(AbstractCapability capa, IMenuManager menu,
-      Session currentSession, Collection<Viewpoint> selectedViewpoints) {
-    for (Viewpoint vp : selectedViewpoints) {
-      for (RepresentationDescription representationDescription : vp.getOwnedRepresentations()) {
-        if (representationDescription instanceof SequenceDiagramDescription) {
-          SequenceDiagramDescription sdd = (SequenceDiagramDescription) representationDescription;
-          Collection<DRepresentationDescriptor> descriptors = DialectManager.INSTANCE.getRepresentationDescriptors(sdd,
-              currentSession);
-          if (descriptors != null) {
-            // Select only scenarios belonging to the Capability
-            Collection<DRepresentationDescriptor> ownedDescriptors = new ArrayList<>();
-            EList<Scenario> lstScenarios = capa.getOwnedScenarios();
-            for (Scenario scenario : lstScenarios) {
-              Collection<DRepresentationDescriptor> repDescScenario = DialectManager.INSTANCE
-                  .getRepresentationDescriptors(scenario, currentSession);
-              ownedDescriptors.addAll(repDescScenario);
+    
+    private boolean hasDerivedOpenRepresentationContribution(EObject semanticElement) {
+        return (semanticElement instanceof AbstractCapability) || 
+                (semanticElement instanceof FunctionalChainReference) || 
+                (semanticElement instanceof PhysicalPathReference);
+    }
+    
+    private void addDerivedOpenRepresentationActions(EObject semanticElement, IMenuManager menu, Session currentSession, Collection<Viewpoint> selectedViewpoints) {
+        for (Viewpoint vp : selectedViewpoints) {
+            for (RepresentationDescription representationDescription : vp.getOwnedRepresentations()) {
+                Collection<DRepresentationDescriptor> descriptors = DialectManager.INSTANCE.getRepresentationDescriptors(representationDescription, currentSession);
+                if (descriptors != null) {
+                    createOpenRepresentationAction(semanticElement, menu, currentSession, representationDescription, descriptors);
+                }
             }
-
-            descriptors.retainAll(ownedDescriptors);
-
-            for (DRepresentationDescriptor descriptor : descriptors) {
-              menu.add(new OpenRepresentationsAction(descriptor));
-            }
-          }
         }
-      }
+    }
+
+    private void createOpenRepresentationAction(EObject semanticElement, IMenuManager menu, Session currentSession, RepresentationDescription representationDescription,
+            Collection<DRepresentationDescriptor> descriptors) {
+        Collection<DRepresentationDescriptor> ownedDescriptors = new ArrayList<>();
+        List<EObject> derivedElements = new ArrayList<>();
+        if (semanticElement instanceof AbstractCapability && representationDescription instanceof SequenceDiagramDescription) {
+            derivedElements.addAll(((AbstractCapability) semanticElement).getOwnedScenarios());
+        } else if ((semanticElement instanceof FunctionalChainReference || semanticElement instanceof PhysicalPathReference) && representationDescription instanceof DiagramDescription) {
+            if (semanticElement instanceof FunctionalChainReference) {
+                derivedElements.add(((FunctionalChainReference) semanticElement).getReferencedFunctionalChain());
+            } else if (semanticElement instanceof PhysicalPathReference) {
+                derivedElements.add(((PhysicalPathReference) semanticElement).getReferencedPhysicalPath());
+            }
+        }
+        for (EObject object : derivedElements) {
+            Collection<DRepresentationDescriptor> repDescScenario = DialectManager.INSTANCE.getRepresentationDescriptors(object, currentSession);
+            ownedDescriptors.addAll(repDescScenario);
+        }
+        descriptors.retainAll(ownedDescriptors);
+
+        for (DRepresentationDescriptor descriptor : descriptors) {
+            menu.add(new OpenRepresentationsAction(descriptor));
+        }
     }
   }
 
