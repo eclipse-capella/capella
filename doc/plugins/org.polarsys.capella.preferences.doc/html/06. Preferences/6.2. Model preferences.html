@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-		<title>6.2. Model preferences</title>
+				<title>6.2. Model preferences</title>
 		<link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/>
 	</head>
 	<body>
@@ -67,6 +67,68 @@
 		<h2 id="Diagram">Diagram</h2>
 		<p>On the sub section of 
 			<b>Capella / Diagram</b>, it is possible to specify preferences for displaying diagrams:
+		</p>
+		<p>When &ldquo;
+			<b>Navigate to related diagrams on double click</b>&rdquo; is activated, double clicking on specific elements will navigate to related diagrams instead of opening the Properties dialog.
+		</p>
+		<p>This preference is enabled by default.</p>
+		<p>
+			<img height="578" width="791" border="0" src="Images/6.2%20Diagram_preferences_diagrams_navigation.png"/>
+		</p>
+		<p>These specific elements are :</p>
+		<ul>
+			<li>
+				<b>Scenarios</b>, 
+				<b>InteractionUse</b>
+			</li>
+			<li>
+				<b>Functional Chain</b>, 
+				<b>Functional Chain Reference</b>, 
+				<b>Operational Process</b>
+			</li>
+			<li>
+				<b>Physical Path</b>
+			</li>
+		</ul>
+		<p>Double clicks in Semantic Browser view, Diagram editor and Project Explorer are affected.</p>
+		<p>The behaviour differs whether the element has related diagrams or not :</p>
+		<ul>
+			<li>If the 
+				<b>element has only one related diagram</b>, navigation will be made towards this diagram.
+			</li>
+		</ul>
+		<ul>
+			<li>If the 
+				<b>element has multiple related diagrams</b>, a dialog will open and let the user choose which diagram to open.
+			</li>
+		</ul>
+		<p>
+			<img height="153" width="498" border="0" src="Images/6.2%20Diagram_preferences_multiple_diagrams_navigation.png"/>
+		</p>
+		<ul>
+			<li>If the 
+				<b>element has no diagram</b>, a diagram creation dialog is display
+				<ul>
+					<li>If there is 
+						<b>only one diagram type available for that element</b>, the dialog let the user choose the new diagram name. 
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<p>
+			<img height="220" width="469" border="0" src="Images/6.2%20Diagram_preferences_one_diagram_creation.png"/>
+		</p>
+		<ul>
+			<li>
+				<ul>
+					<li>If there is 
+						<b>multiple diagram type available for that element</b>, the dialog let the user choose which diagram to create and its name.
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<p>
+			<img height="269" width="484" border="0" src="Images/6.2%20Diagram_preferences_multiple_diagrams_creation.png"/>
 		</p>
 		<h3 id="Process.2FChain.2FPath_Display">Process/Chain/Path Display</h3>
 		<p>On the sub section of 
