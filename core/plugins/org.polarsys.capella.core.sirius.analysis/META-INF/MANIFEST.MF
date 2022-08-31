@@ -53,7 +53,9 @@ Require-Bundle: org.eclipse.core.expressions,
  org.apache.batik.transcoder;bundle-version="1.14.0",
  org.apache.batik.dom;bundle-version="1.14.0",
  org.apache.batik.bridge;bundle-version="1.14.0",
- org.polarsys.kitalpha.sirius.rotativeimage;bundle-version="6.0.0"
+ org.polarsys.kitalpha.sirius.rotativeimage;bundle-version="6.0.0",
+ org.polarsys.capella.common.tools.report.appenders.usage,
+ org.polarsys.capella.common.ui.toolkit
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-Localization: plugin

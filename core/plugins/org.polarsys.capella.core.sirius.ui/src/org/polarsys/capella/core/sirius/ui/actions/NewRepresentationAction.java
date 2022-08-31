@@ -15,6 +15,7 @@ package org.polarsys.capella.core.sirius.ui.actions;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jface.dialogs.IInputValidator;
 import org.eclipse.jface.dialogs.InputDialog;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.window.Window;
@@ -46,198 +47,170 @@ import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.tools.report.appenders.usage.UsageMonitoringLogger;
 import org.polarsys.capella.common.tools.report.appenders.usage.util.UsageMonitoring.EventStatus;
 import org.polarsys.capella.core.data.interaction.Scenario;
+import org.polarsys.capella.core.sirius.analysis.NewRepresentationCommand;
 import org.polarsys.capella.shared.id.handler.IdManager;
 
 /**
  * The action allowing to create new representations.
  */
 public class NewRepresentationAction extends BaseSelectionListenerAction {
-  private EObject selectedEObject;
-  protected RepresentationDescription description;
-  protected Session session;
+	private EObject selectedEObject;
+	protected RepresentationDescription description;
+	protected Session session;
 
-  protected boolean forceDefaultName;
-  protected boolean openRepresentation;
-  private boolean isCanceled;
-  private String descriptionLabel;
+	protected boolean forceDefaultName;
+	protected boolean openRepresentation;
+	private boolean isCanceled;
+	private String descriptionLabel;
+	private String message;
 
-  public NewRepresentationAction(RepresentationDescription description, EObject selectedEObject, Session session) {
-    this(description, selectedEObject, session, false, true);
-  }
+	/**
+	 * Error message when name is blank
+	 */
+	private final String BLANK_NAME = "Representation name cannot be blank";
 
-  public NewRepresentationAction(RepresentationDescription description, EObject selectedEObject, Session session,
-      boolean forceDefaultName, boolean openRepresentation) {
-    super(description.getName());
+	public NewRepresentationAction(RepresentationDescription description, EObject selectedEObject, Session session, String message) {
+		this(description, selectedEObject, session, false, true);
+		this.message = message;
+	}
 
-    this.selectedEObject = selectedEObject;
-    this.description = description;
-    this.session = session;
-    this.forceDefaultName = forceDefaultName;
-    this.openRepresentation = openRepresentation;
+	public NewRepresentationAction(RepresentationDescription description, EObject selectedEObject, Session session) {
+		this(description, selectedEObject, session, false, true);
+	}
 
-    this.descriptionLabel = getDescriptionLabel(description);
-    if (!StringUtil.isEmpty(descriptionLabel)) {
-      setText(descriptionLabel);
-    }
+	public NewRepresentationAction(RepresentationDescription description, EObject selectedEObject, Session session,
+			boolean forceDefaultName, boolean openRepresentation) {
+		super(description.getName());
 
-    ImageDescriptor imageDescriptor = getDescriptionImageDescriptor(description);
-    setImageDescriptor(imageDescriptor);
-  }
+		this.selectedEObject = selectedEObject;
+		this.description = description;
+		this.session = session;
+		this.forceDefaultName = forceDefaultName;
+		this.openRepresentation = openRepresentation;
 
-  protected String getDescriptionLabel(RepresentationDescription description) {
-    return MessageTranslator.INSTANCE.getMessage(description, new IdentifiedElementQuery(description).getLabel());
-  }
+		this.descriptionLabel = getDescriptionLabel(description);
+		if (!StringUtil.isEmpty(descriptionLabel)) {
+			setText(descriptionLabel);
+		}
 
-  protected ImageDescriptor getDescriptionImageDescriptor(RepresentationDescription description) {
-    ImageDescriptor imageDescriptor = null;
+		ImageDescriptor imageDescriptor = getDescriptionImageDescriptor(description);
+		setImageDescriptor(imageDescriptor);
+	}
 
-    // Handle specific representations : Table ones.
-    if (description instanceof CrossTableDescription) {
-      imageDescriptor = AbstractUIPlugin.imageDescriptorFromPlugin(TableUIPlugin.ID,
-          "/icons/full/obj16/CrossTableDescription.gif"); //$NON-NLS-1$
+	protected String getDescriptionLabel(RepresentationDescription description) {
+		return MessageTranslator.INSTANCE.getMessage(description, new IdentifiedElementQuery(description).getLabel());
+	}
 
-    } else if (description instanceof EditionTableDescription) {
-      imageDescriptor = AbstractUIPlugin.imageDescriptorFromPlugin(TableUIPlugin.ID, "/icons/full/obj16/DTable.gif"); //$NON-NLS-1$
+	protected ImageDescriptor getDescriptionImageDescriptor(RepresentationDescription description) {
+		ImageDescriptor imageDescriptor = null;
 
-    } else if (description instanceof SequenceDiagramDescription) {
-      imageDescriptor = AbstractUIPlugin.imageDescriptorFromPlugin("org.eclipse.sirius.diagram.sequence.edit", //$NON-NLS-1$
-          "/icons/full/obj16/TSequenceDiagram.gif"); //$NON-NLS-1$
+		// Handle specific representations : Table ones.
+		if (description instanceof CrossTableDescription) {
+			imageDescriptor = AbstractUIPlugin.imageDescriptorFromPlugin(TableUIPlugin.ID,
+					"/icons/full/obj16/CrossTableDescription.gif"); //$NON-NLS-1$
 
-    } else {
-      // Standard diagram.
-      imageDescriptor = AbstractUIPlugin.imageDescriptorFromPlugin(DiagramUIPlugin.ID,
-          "/icons/full/obj16/DDiagram.gif"); //$NON-NLS-1$
-    }
+		} else if (description instanceof EditionTableDescription) {
+			imageDescriptor = AbstractUIPlugin.imageDescriptorFromPlugin(TableUIPlugin.ID, "/icons/full/obj16/DTable.gif"); //$NON-NLS-1$
 
-    if (null == imageDescriptor) {
-      imageDescriptor = ImageDescriptor.getMissingImageDescriptor();
-    }
-    return imageDescriptor;
-  }
+		} else if (description instanceof SequenceDiagramDescription) {
+			imageDescriptor = AbstractUIPlugin.imageDescriptorFromPlugin("org.eclipse.sirius.diagram.sequence.edit", //$NON-NLS-1$
+					"/icons/full/obj16/TSequenceDiagram.gif"); //$NON-NLS-1$
 
-  protected String computeDefaultName(EObject eObject, RepresentationDescription repDescription) {
+		} else {
+			// Standard diagram.
+			imageDescriptor = AbstractUIPlugin.imageDescriptorFromPlugin(DiagramUIPlugin.ID,
+					"/icons/full/obj16/DDiagram.gif"); //$NON-NLS-1$
+		}
 
-    IInterpreter interpreter = InterpreterUtil.getInterpreter(eObject);
+		if (null == imageDescriptor) {
+			imageDescriptor = ImageDescriptor.getMissingImageDescriptor();
+		}
+		return imageDescriptor;
+	}
 
-    String newName = "New "; //$NON-NLS-1$
+	protected String computeDefaultName(EObject eObject, RepresentationDescription repDescription) {
 
-    if (!StringUtil.isEmpty(descriptionLabel)) {
-      newName += descriptionLabel;
-    } else {
-      newName += repDescription.getName();
-    }
+		IInterpreter interpreter = InterpreterUtil.getInterpreter(eObject);
 
-    String titleExpression = repDescription.getTitleExpression();
-    if (!StringUtil.isEmpty(titleExpression)) {
-      try {
-        newName = interpreter.evaluateString(eObject, titleExpression);
-      } catch (EvaluationException e) {
-        SiriusPlugin.getDefault().error(IInterpreterMessages.EVALUATION_ERROR_ON_MODEL_MODIFICATION, e);
-      }
-    }
+		String newName = "New "; //$NON-NLS-1$
 
-    return newName;
-  }
+		if (!StringUtil.isEmpty(descriptionLabel)) {
+			newName += descriptionLabel;
+		} else {
+			newName += repDescription.getName();
+		}
 
-  @Override
-  public void run() {
-    // 1 - Computes the default representation name.
-    String defaultName = computeDefaultName(selectedEObject, description);
+		String titleExpression = repDescription.getTitleExpression();
+		if (!StringUtil.isEmpty(titleExpression)) {
+			try {
+				newName = interpreter.evaluateString(eObject, titleExpression);
+			} catch (EvaluationException e) {
+				SiriusPlugin.getDefault().error(IInterpreterMessages.EVALUATION_ERROR_ON_MODEL_MODIFICATION, e);
+			}
+		}
 
-    if (!forceDefaultName) {
+		return newName;
+	}
 
-      String dialogTitle = "New " + descriptionLabel; //$NON-NLS-1$
-      String dialogMessage = "Name:"; //$NON-NLS-1$
-      Shell activeShell = Display.getDefault().getActiveShell();
-      InputDialog representationNameDialog = new InputDialog(activeShell, dialogTitle, dialogMessage, defaultName, null);
-      isCanceled = Window.CANCEL == representationNameDialog.open();
+	@Override
+	public void run() {
+		// 1 - Computes the default representation name.
+		String defaultName = computeDefaultName(selectedEObject, description);
 
-      if (!isCanceled) {
-        defaultName = representationNameDialog.getValue();
-      } else {
-        return;
-      }
-    }
+		if (!forceDefaultName) {
 
-    // Do not call ToggleCanonicalRefresh anymore since Sirius 4.18.
-    // Executes the NewRepresentationCommand.
-    NewRepresentationCommand command = new NewRepresentationCommand(defaultName, selectedEObject, description, session);
-    TransactionHelper.getExecutionManager(session).execute(command);
+			String dialogTitle = "New " + descriptionLabel; //$NON-NLS-1$
+			String dialogMessage;
+			if(message != null) {
+				dialogMessage = message + "\n" + "Name:";
+			} else {
+				dialogMessage = "Name:"; //$NON-NLS-1$
+			}
 
-    if (null != command.getRepresentation()) {
-      SessionManager.INSTANCE.notifyRepresentationCreated(session);
-      if (openRepresentation) {
-        DialectUIManager.INSTANCE.openEditor(session, command.getRepresentation(), new NullProgressMonitor());
-      }
-    }
-  }
+			Shell activeShell = Display.getDefault().getActiveShell();
 
-  // The command allowing to create a new representation.
-  private class NewRepresentationCommand extends AbstractReadWriteCommand {
+			IInputValidator validator = new IInputValidator() {
 
-    private String newName;
+				@Override
+				public String isValid(String newText) {
+					if(newText.isBlank()) {
+						return BLANK_NAME;
+					} else {
+						return null;
+					}
+				}
+			};
 
-    private DRepresentation representation;
+			InputDialog representationNameDialog = new InputDialog(activeShell, dialogTitle, dialogMessage, defaultName, validator);
+			isCanceled = Window.CANCEL == representationNameDialog.open();
 
-    private EObject eObject;
-    private RepresentationDescription repDescription;
-    private Session currentSession;
+			if (!isCanceled) {
+				defaultName = representationNameDialog.getValue();
+			} else {
+				return;
+			}
+		}
 
-    public NewRepresentationCommand(String newName, EObject eObject, RepresentationDescription repDescription,
-        Session session) {
-      this.newName = newName;
-      this.eObject = eObject;
-      this.repDescription = repDescription;
-      this.currentSession = session;
-    }
+		// Do not call ToggleCanonicalRefresh anymore since Sirius 4.18.
+		// Executes the NewRepresentationCommand.
+		NewRepresentationCommand command = new NewRepresentationCommand(defaultName, selectedEObject, description, session);
+		TransactionHelper.getExecutionManager(session).execute(command);
 
-    @Override
-    public void commandInterrupted() {
-      commandRolledBack();
-    }
+		if (null != command.getRepresentation()) {
+			SessionManager.INSTANCE.notifyRepresentationCreated(session);
+			if (openRepresentation) {
+				DialectUIManager.INSTANCE.openEditor(session, command.getRepresentation(), new NullProgressMonitor());
+			}
+		}
+	}
 
-    @Override
-    public void commandRolledBack() {
-      representation = null;
-    }
 
-    /**
-     * Gets the new representation.
-     * 
-     * @return The new representation.
-     */
-    public DRepresentation getRepresentation() {
-      return representation;
-    }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    @SuppressWarnings("synthetic-access")
-    public void run() {
-      NullProgressMonitor monitor = new NullProgressMonitor();
-      if (selectedEObject instanceof Scenario) {
-        Scenario scenario = (Scenario) selectedEObject;
-        scenario.setName(newName);
-      }
+	public boolean isCanceled() {
+		return isCanceled;
+	}
 
-      String eventName = "Create Representation";
-      String eventContext = repDescription.getName();
-      String addendum = IdManager.getInstance().getId(eObject);
-      UsageMonitoringLogger.getInstance().log(eventName, eventContext, EventStatus.NONE, addendum);
-      representation = DialectManager.INSTANCE.createRepresentation(newName, eObject, repDescription, currentSession,
-          monitor);
-      UsageMonitoringLogger.getInstance().log(eventName, eventContext, EventStatus.OK, addendum);
-    }
-  }
-
-  public boolean isCanceled() {
-    return isCanceled;
-  }
-
-  public void setCanceled(boolean isCanceled) {
-    this.isCanceled = isCanceled;
-  }
-
+	public void setCanceled(boolean isCanceled) {
+		this.isCanceled = isCanceled;
+	}
 }
