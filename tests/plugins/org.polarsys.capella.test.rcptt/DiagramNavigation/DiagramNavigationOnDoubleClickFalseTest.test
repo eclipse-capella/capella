@@ -1,0 +1,243 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: __kc08ChpEe2Ke_QVPFchOA,_fs1gwCg1Ee2CZfMgvFH2cg,_b9OCICg6Ee2Ke_QVPFchOA
+Element-Name: DiagramNavigationOnDoubleClickFalseTest
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _Gv8a0Cg0Ee2CZfMgvFH2cg
+Runtime-Version: 2.5.2.202204252353
+Save-Time: 8/31/22, 4:40 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+This test checks navigation behaviour on double click, based on the preference "Navigate to Related Diagrams on Double-click"=false
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+//Open Capella model
+with [get-view "Project Explorer" | get-tree] {
+    select "OnDoubleClick/DiagramNavigationModel.aird" | double-click    
+}
+
+//======================================================
+//  Operational Analysis : Operational Process
+
+//Double click in navigator -> should open properties dialog
+with [get-view "Project Explorer" | get-tree] {
+    select "OnDoubleClick/DiagramNavigationModel.aird/DiagramNavigationModel/Operational Analysis/Operational Activities/Root Operational Activity/OperationalProcess 1" | double-click
+}
+get-window "Properties" | get-button Cancel | click
+
+//Select object in diagram - Double click in diagram -> should open properties dialog
+with [get-view "Project Explorer" | get-tree] {
+    select "OnDoubleClick/DiagramNavigationModel.aird/DiagramNavigationModel/Operational Analysis/Operational Activities/Root Operational Activity/[OAIB] Root Operational Activity" | double-click
+   	with [get-editor "[OAIB] Root Operational Activity" | get-diagram -index 1 | get-edit-part -name "[OAIB] Root Operational Activity"] {
+	    mouse-move 1007 410 -height 599 -width 1290
+	    with [get-edit-part -name "OperationalProcess 1"] {
+	        mouse-move 13 15 button1 -height 20 -width 20
+	        mouse-press 13 15 button1 -height 20 -width 20
+	        mouse-release 13 15 button1 "" -height 20 -width 20
+	        mouse-press 13 15 button1 -height 20 -width 20
+	        mouse-double-click 13 15 button1 -height 20 -width 20
+	    }
+	}
+}
+get-window "Properties" | get-button Cancel | click
+
+//F9 to select object in semantic browser - Double click in semantic browser -> should open properties dialog
+with [get-view "Project Explorer" | get-tree] {
+    select "OnDoubleClick/DiagramNavigationModel.aird/DiagramNavigationModel/Operational Analysis/Operational Activities/Root Operational Activity/OperationalProcess 1" |key-type F9 |
+    with [get-view "Semantic Browser"] {
+    click
+    get-tree -after [get-label "Current Element"] | select "OperationalProcess 1" | double-click
+	}
+}
+get-window "Properties" | get-button Cancel | click
+
+//select fc ref (upper part) in diagram - Double click in diagram -> should open properties dialog
+with [get-view "Project Explorer" | get-tree] {
+    select "OnDoubleClick/DiagramNavigationModel.aird/DiagramNavigationModel/Operational Analysis/Operational Activities/Root Operational Activity/OperationalProcess 2/[OPD] OperationalProcess 2" | double-click
+    with [get-editor "[OPD] OperationalProcess 2" | get-diagram -index 1 | get-edit-part -name "[OPD] OperationalProcess 2"] {
+	    mouse-move 114 130 -height 599 -width 1290
+	    with [get-edit-part -name "OperationalProcess 1 2"] {
+	        mouse-move 270 15 button1 -height 203 -width 302	        
+	        mouse-press 270 15 button1 -height 203 -width 302
+	        mouse-release 270 15 button1 "" -height 203 -width 302
+	        mouse-press 270 15 button1 -height 203 -width 302
+	        mouse-double-click 270 15 button1 -height 203 -width 302
+	    }
+	}
+}
+get-window "Properties" | get-button Cancel | click
+
+
+//select fc ref in semantic browser - Double click in diagram -> should open properties dialog
+with [get-view "Project Explorer" | get-tree] {
+    select "OnDoubleClick/DiagramNavigationModel.aird/DiagramNavigationModel/Operational Analysis/Operational Activities/Root Operational Activity/OperationalProcess 2/[OPD] OperationalProcess 2" | double-click
+    with [get-editor "[OPD] OperationalProcess 2" | get-diagram -index 1 | get-edit-part -name "[OPD] OperationalProcess 2"] {
+	    mouse-move 114 130 -height 599 -width 1290
+	    with [get-edit-part -name "OperationalProcess 1 2"] {
+	        mouse-move 270 15 button1 -height 203 -width 302	        
+	        mouse-press 270 15 button1 -height 203 -width 302
+	        mouse-release 270 15 button1 "" -height 203 -width 302
+	        key-type F9
+	        with [get-view "Semantic Browser"] {
+			    click
+			    get-tree -after [get-label "Current Element"] | select "[Functional Chain Reference] to OperationalProcess 1 2"
+			        | double-click
+			}						
+	    }
+	}
+}
+get-window "Properties" | get-button Cancel | click
+
+
+
+//select referenced operationalProcess in diagram - Double click in diagram -> should open properties dialog
+with [get-view "Project Explorer" | get-tree] {
+    select "OnDoubleClick/DiagramNavigationModel.aird/DiagramNavigationModel/Operational Analysis/Operational Activities/Root Operational Activity/OperationalProcess 2/[OPD] OperationalProcess 2" | double-click    
+    with [get-editor "[OPD] OperationalProcess 2" | get-diagram -index 1 | get-edit-part -name "[OPD] OperationalProcess 2" | get-edit-part -name "OperationalProcess 1 2"] {
+	    mouse-move 0 125 -height 203 -width 302
+	    with [get-edit-part -className FcrDNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part -name "" 
+	        | get-edit-part -className DNodeContainerViewNodeContainerCompartment2EditPart] {
+	        mouse-move 206 98 button1 -height 173 -width 298
+	        mouse-press 206 98 button1 -height 173 -width 298
+	        mouse-release 206 98 button1 "" -height 173 -width 298
+	        mouse-press 206 98 button1 -height 173 -width 298
+	        mouse-double-click 206 98 button1 -height 173 -width 298
+	    }
+	}
+}
+get-window "Properties" | get-button Cancel | click
+
+//======================================================
+//  System Analysis : Functional Chain
+
+//Double click in navigator -> should open properties dialog
+with [get-view "Project Explorer" | get-tree] {
+    select "OnDoubleClick/DiagramNavigationModel.aird/DiagramNavigationModel/System Analysis/System Functions/Root System Function/FunctionalChain 1" | double-click
+}
+get-window "Properties" | get-button Cancel | click
+
+//Select object in diagram - Double click in diagram -> should open properties dialog
+with [get-view "Project Explorer" | get-tree] {
+    select "OnDoubleClick/DiagramNavigationModel.aird/DiagramNavigationModel/System Analysis/System Functions/Root System Function/[SDFB] Root System Function" | double-click
+    with [get-editor "[SDFB] Root System Function" | get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function"] {
+	    mouse-move 1056 399 -height 610 -width 1290
+	    with [get-edit-part -name "FunctionalChain 1" | get-edit-part -className SquareEditPart] {
+	        mouse-move 5 7 button1 -height 20 -width 20
+	        mouse-press 5 7 button1 -height 20 -width 20
+	        mouse-release 5 7 button1 "" -height 20 -width 20
+	        mouse-press 5 7 button1 -height 20 -width 20
+	        mouse-double-click 5 7 button1 -height 20 -width 20
+	    }
+	}
+}
+get-window "Properties" | get-button Cancel | click
+
+//F9 to select object in semantic browser - Double click in semantic browser -> should open properties dialog
+with [get-view "Project Explorer" | get-tree] {
+    select "OnDoubleClick/DiagramNavigationModel.aird/DiagramNavigationModel/System Analysis/System Functions/Root System Function/FunctionalChain 1" |key-type F9 |
+    with [get-view "Semantic Browser"] {
+    click
+    get-tree -after [get-label "Current Element"] | select "FunctionalChain 1"
+        | double-click
+	}
+}
+get-window "Properties" | get-button Cancel | click
+
+//======================================================
+//  Physical System : Physical Path
+
+//Double click in navigator -> should open properties dialog
+with [get-view "Project Explorer" | get-tree] {
+    select "OnDoubleClick/DiagramNavigationModel.aird/DiagramNavigationModel/Physical Architecture/Structure/Physical System/PhysicalPath 2" | double-click
+}
+get-window "Properties" | get-button Finish | click
+
+//select object in diagram - Double click in diagram -> should open properties dialog
+with [get-view "Project Explorer" | get-tree] {
+    select "OnDoubleClick/DiagramNavigationModel.aird/DiagramNavigationModel/Physical Architecture/Structure/Physical System/[PAB] Physical System" | double-click
+    with [get-editor "[PAB] Physical System" | get-diagram -index 1 | get-edit-part -name "[PAB] Physical System"] {
+    	mouse-move 18 336 -height 599 -width 1332
+	    with [get-edit-part -name "PhysicalPath 2"] {
+	        mouse-move 8 8 button1 -height 20 -width 20
+	        mouse-press 8 8 button1 -height 20 -width 20
+	        mouse-release 8 8 button1 "" -height 20 -width 20
+	        mouse-press 8 8 button1 -height 20 -width 20
+	        mouse-double-click 8 8 button1 -height 20 -width 20
+	    }
+	}
+}
+get-window "Properties" | get-button Finish | click
+
+//F9 to select object in semantic browser - Double click in semantic browser -> should open properties dialog
+with [get-view "Project Explorer" | get-tree] {
+    select "OnDoubleClick/DiagramNavigationModel.aird/DiagramNavigationModel/Physical Architecture/Structure/Physical System/PhysicalPath 2" |key-type F9 |
+    with [get-view "Semantic Browser"] {
+    click
+    get-tree -after [get-label "Current Element"] | select "PhysicalPath 2" 
+        | double-click
+	}
+}
+get-window "Properties" | get-button Finish | click
+
+//======================================================
+// System Analysis : Scenario
+//Double click in navigator -> should open properties dialog
+with [get-view "Project Explorer" | get-tree] {
+    select "OnDoubleClick/DiagramNavigationModel.aird/DiagramNavigationModel/System Analysis/Capabilities/OperationalCapability/[FS] [OAS] OperationalProcess 1 1" | double-click
+}
+get-window "Properties" | get-button Finish | click
+
+//F9 to select scenario in semantic browser - Double click in semantic browser -> should open properties dialog
+with [get-view "Project Explorer" | get-tree] {
+    select "OnDoubleClick/DiagramNavigationModel.aird/DiagramNavigationModel/System Analysis/Capabilities/OperationalCapability/[FS] [OAS] OperationalProcess 1 1" |key-type F9 |
+    with [get-view "Semantic Browser"] {
+    click
+    get-tree -after [get-label "Current Element"] | select "[FS] [OAS] OperationalProcess 1 1" 
+        | double-click
+	}
+}
+get-window "Properties" | get-button Finish | click
+
+//Double click on interactionUse in navigator-> should open properties dialog
+with [get-view "Project Explorer" | get-tree] {
+    select "OnDoubleClick/DiagramNavigationModel.aird/DiagramNavigationModel/System Analysis/Capabilities/OperationalCapability/[FS] [OAS] OperationalProcess 1 1/interactionUse" | double-click
+}
+get-window "Properties" | get-button Finish | click
+
+//Double click on interactionUse (Scenario Ref) in diagram -> should open properties dialog
+with [get-view "Project Explorer" | get-tree] {
+    select "OnDoubleClick/DiagramNavigationModel.aird/DiagramNavigationModel/System Analysis/Capabilities/OperationalCapability/[FS] [OAS] OperationalProcess 1 1/[FS] [OAS] OperationalProcess 1 1" | double-click
+    with [get-editor "[FS] [OAS] OperationalProcess 1 1" | get-diagram -index 1 | get-edit-part -name "[FS] [OAS] OperationalProcess 1 1"] {
+	    mouse-move 74 379 -height 557 -width 1290
+	    with [get-edit-part -name " ref" | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+	        mouse-move 54 7 button1 -height 48 -width 358
+	        mouse-press 54 7 button1 -height 48 -width 358
+	        mouse-release 54 7 button1 "" -height 48 -width 358
+	        mouse-press 54 7 button1 -height 48 -width 358
+	        mouse-double-click 54 7 button1 -height 48 -width 358
+	    }
+	}
+}
+get-window "Properties" | get-button Finish | click
+
+//F9 to select interactionUse in semantic browser - Double click in semantic browser -> should open properties dialog
+with [get-view "Project Explorer" | get-tree] {
+    select "OnDoubleClick/DiagramNavigationModel.aird/DiagramNavigationModel/System Analysis/Capabilities/OperationalCapability/[FS] [OAS] OperationalProcess 1 1/interactionUse" |key-type F9 |
+    with [get-view "Semantic Browser"] {
+    click
+    get-tree -after [get-label "Current Element"] | select "interactionUse" 
+        | double-click
+	}
+}
+get-window "Properties" | get-button Finish | click
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
