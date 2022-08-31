@@ -20,7 +20,7 @@ import org.eclipse.ui.navigator.ICommonActionConstants;
 import org.eclipse.ui.navigator.ICommonActionExtensionSite;
 import org.eclipse.ui.navigator.ICommonViewerSite;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
-import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.OpenPropertiesAction;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.OpenAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.SelectionHelper;
 
 /**
@@ -29,39 +29,38 @@ import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.SelectionH
 public class ModelElementActionProvider extends CommonActionProvider {
 
 
-  private OpenPropertiesAction _openPropertiesAction;
+	private OpenAction _openAction;
 
 
-  /**
-   * @see org.eclipse.ui.actions.ActionGroup#dispose()
-   */
-  @Override
-  public void dispose() {
-    super.dispose();
-    
-    if (null != _openPropertiesAction) {
-      ISelectionProvider selectionProvider = getActionSite().getViewSite().getSelectionProvider();
-      selectionProvider.removeSelectionChangedListener(_openPropertiesAction);
-      _openPropertiesAction = null;
-    }
-  }
+	/**
+	 * @see org.eclipse.ui.actions.ActionGroup#dispose()
+	 */
+	@Override
+	public void dispose() {
+		super.dispose();
 
-  @Override
-  public void fillActionBars(IActionBars actionBars) {
-    super.fillActionBars(actionBars);
-    actionBars.setGlobalActionHandler(ICommonActionConstants.OPEN, _openPropertiesAction);
-    actionBars.setGlobalActionHandler(ActionFactory.PROPERTIES.getId(), _openPropertiesAction);
-  }
-  /**
-   * @see org.eclipse.ui.navigator.CommonActionProvider#init(org.eclipse.ui.navigator.ICommonActionExtensionSite)
-   */
-  @Override
-  public void init(ICommonActionExtensionSite site_p) {
-    super.init(site_p);
-    
-    ICommonViewerSite commonViewSite = site_p.getViewSite();
-    _openPropertiesAction = new OpenPropertiesAction();
-    SelectionHelper.registerToSelectionChanges(_openPropertiesAction, commonViewSite.getSelectionProvider());
+		if (null != _openAction) {
+			ISelectionProvider selectionProvider = getActionSite().getViewSite().getSelectionProvider();
+			selectionProvider.removeSelectionChangedListener(_openAction);
+			_openAction = null;
+		}
+	}
 
-  }
+	@Override
+	public void fillActionBars(IActionBars actionBars) {
+		super.fillActionBars(actionBars);
+		actionBars.setGlobalActionHandler(ICommonActionConstants.OPEN, _openAction);
+		actionBars.setGlobalActionHandler(ActionFactory.PROPERTIES.getId(), _openAction);
+	}
+	/**
+	 * @see org.eclipse.ui.navigator.CommonActionProvider#init(org.eclipse.ui.navigator.ICommonActionExtensionSite)
+	 */
+	@Override
+	public void init(ICommonActionExtensionSite site_p) {
+		super.init(site_p);
+
+		ICommonViewerSite commonViewSite = site_p.getViewSite();
+		_openAction = new OpenAction();
+		SelectionHelper.registerToSelectionChanges(_openAction, commonViewSite.getSelectionProvider());
+	}
 }
