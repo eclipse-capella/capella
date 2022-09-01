@@ -13,7 +13,14 @@ The Properties View is the place where the characteristics of each Capella eleme
 
 <br>
 
-'''Capella Editors are also available as dialogs''', accessed with a double-click on any element. The content is exactly the same as in the Properties Views.
+'''Capella Editors are also available as dialogs''', accessed with a double-click on any element.
+
+These dialogs can also be opened from the contextual menu, accessed with a right-click on any element.
+
+[[Image:Images/4.06_Properties_View_Contextual_Menu.png|458x576px]]
+
+
+The content is exactly the same as in the Properties Views.
 
 
 [[Image:Images/4.06_Properties_View2.png|600x400px]]
