@@ -1,3 +1,15 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2022 THALES GLOBAL SERVICES.
+ * 
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0
+ * 
+ * SPDX-License-Identifier: EPL-2.0
+ * 
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
 package org.polarsys.capella.core.commands.preferences.ui.sirius;
 
 import java.util.Collection;
@@ -11,7 +23,6 @@ import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.fa.FunctionalChainReference;
 import org.polarsys.capella.core.data.interaction.InteractionUse;
 import org.polarsys.capella.core.data.interaction.Scenario;
-import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.preferences.Activator;
 
@@ -23,40 +34,33 @@ import org.polarsys.capella.core.preferences.Activator;
  */
 public class DoubleClickBehaviourUtil {
 
-	public static DoubleClickBehaviourUtil INSTANCE = new DoubleClickBehaviourUtil();
+  public static DoubleClickBehaviourUtil INSTANCE = new DoubleClickBehaviourUtil();
 
-	private DoubleClickBehaviourUtil() {
+  private DoubleClickBehaviourUtil() {
 
-	}
+  }
 
-	public boolean shouldOpenRelatedDiagramsOnDoubleClick(EObject source) {
-		boolean navigateOnDoubleClick = Activator.getDefault().getPreferenceStore().getBoolean(CapellaDiagramPreferencePage.NAME_PREF_DISPLAY_NAVIGATE_ON_DOUBLECLICK);
-		if (navigateOnDoubleClick) {
-			return
-					(source instanceof FunctionalChain
-							|| source instanceof FunctionalChainReference
-							|| source instanceof PhysicalPath
-							|| source instanceof PhysicalPathReference
-							|| source instanceof InteractionUse
-							|| source instanceof Scenario)
-					;
-		} else {
-			return false;
-		}
-	}
+  public boolean shouldOpenRelatedDiagramsOnDoubleClick(EObject source) {
+    boolean navigateOnDoubleClick = Activator.getDefault().getPreferenceStore().getBoolean(Messages.NamePrefDisplayNavigateOnDoubleClick);
+    return navigateOnDoubleClick && 
+        (source instanceof FunctionalChain
+            || source instanceof FunctionalChainReference
+            || source instanceof PhysicalPath
+            || source instanceof PhysicalPathReference
+            || source instanceof InteractionUse
+            || source instanceof Scenario);		
+  }
 
-	public Collection<DRepresentationDescriptor> getRepresentationsDescriptors(EObject target){		
-		if (target instanceof FunctionalChain || target instanceof PhysicalPath || target instanceof Scenario) {
-			//OK
-		} else if(target instanceof FunctionalChainReference) {
-			target = ((FunctionalChainReference) target).getReferencedFunctionalChain();
-		} else if(target instanceof PhysicalPathReference) {
-			target = ((PhysicalPathReference) target).getReferencedPhysicalPath();	
-		} else if(target instanceof InteractionUse) {
-			target = ((InteractionUse) target).getReferencedScenario();
-		}
+  public Collection<DRepresentationDescriptor> getRepresentationsDescriptors(EObject target){				
+    if(target instanceof FunctionalChainReference) {
+      target = ((FunctionalChainReference) target).getReferencedFunctionalChain();
+    } else if(target instanceof PhysicalPathReference) {
+      target = ((PhysicalPathReference) target).getReferencedPhysicalPath();	
+    } else if(target instanceof InteractionUse) {
+      target = ((InteractionUse) target).getReferencedScenario();
+    }
 
-		return RepresentationHelper.getAllRepresentationDescriptorsTargetedBy(Collections.singleton(target));
-	}
+    return RepresentationHelper.getAllRepresentationDescriptorsTargetedBy(Collections.singleton(target));
+  }
 
 }

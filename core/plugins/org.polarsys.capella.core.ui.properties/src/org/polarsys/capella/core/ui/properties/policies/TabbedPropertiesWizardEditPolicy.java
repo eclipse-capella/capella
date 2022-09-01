@@ -33,56 +33,56 @@ import org.polarsys.capella.core.ui.properties.wizards.OpenCustomWizardCommand;
  */
 public class TabbedPropertiesWizardEditPolicy extends AbstractSiriusEditPolicy {
 
-	/**
-	 * @see org.eclipse.gef.editpolicies.AbstractEditPolicy#understandsRequest(org.eclipse.gef.Request)
-	 */
-	@Override
-	public boolean understandsRequest(Request request) {
-		return RequestConstants.REQ_OPEN.equals(request.getType());
-	}
+  /**
+   * @see org.eclipse.gef.editpolicies.AbstractEditPolicy#understandsRequest(org.eclipse.gef.Request)
+   */
+  @Override
+  public boolean understandsRequest(Request request) {
+    return RequestConstants.REQ_OPEN.equals(request.getType());
+  }
 
-	/**
-	 * @see org.eclipse.gef.editpolicies.AbstractEditPolicy#getCommand(org.eclipse.gef.Request)
-	 */
-	@Override
-	public Command getCommand(final Request request) {
-		if (RequestConstants.REQ_OPEN.equals(request.getType())) {
-			final DSemanticDecorator semanticDecorator = this.getFirstDecorateSemanticElement();
-			if (semanticDecorator instanceof DDiagramElement
-					&& ((DDiagramElement) semanticDecorator).getDiagramElementMapping().getDoubleClickDescription() == null
-					&& CapellaResourceHelper.isSemanticElement(semanticDecorator.getTarget())) {
-				final EObject modelElement = semanticDecorator.getTarget();
+  /**
+   * @see org.eclipse.gef.editpolicies.AbstractEditPolicy#getCommand(org.eclipse.gef.Request)
+   */
+  @Override
+  public Command getCommand(final Request request) {
+    if (RequestConstants.REQ_OPEN.equals(request.getType())) {
+      final DSemanticDecorator semanticDecorator = this.getFirstDecorateSemanticElement();
+      if (semanticDecorator instanceof DDiagramElement
+          && ((DDiagramElement) semanticDecorator).getDiagramElementMapping().getDoubleClickDescription() == null
+          && CapellaResourceHelper.isSemanticElement(semanticDecorator.getTarget())) {
+        final EObject modelElement = semanticDecorator.getTarget();
 
-				if (!DoubleClickBehaviourUtil.INSTANCE.shouldOpenRelatedDiagramsOnDoubleClick(modelElement)) {
-					if (!((DDiagramElement) semanticDecorator).getParentDiagram().isIsInShowingMode()) {
-						return new ICommandProxy(new GMFCommandWrapper(getEditingDomain(), new IdentityCommand(getEditingDomain()) {
+        if (!DoubleClickBehaviourUtil.INSTANCE.shouldOpenRelatedDiagramsOnDoubleClick(modelElement)) {
+          if (!((DDiagramElement) semanticDecorator).getParentDiagram().isIsInShowingMode()) {
+            return new ICommandProxy(new GMFCommandWrapper(getEditingDomain(), new IdentityCommand(getEditingDomain()) {
 
-							@Override
-							public void execute() {
-								new OpenCustomWizardCommand(modelElement).run();
-							}
+              @Override
+              public void execute() {
+                new OpenCustomWizardCommand(modelElement).run();
+              }
 
-							@Override
-							public String getLabel() {
-								return Messages.CustomWizardHandler_Command_Title;
-							}
+              @Override
+              public String getLabel() {
+                return Messages.CustomWizardHandler_Command_Title;
+              }
 
-						}));
-					}
-				}
-			}
-		}
-		return null;
-	}
+            }));
+          }
+        }
+      }
+    }
+    return null;
+  }
 
-	/**
-	 * @see org.eclipse.gef.editpolicies.AbstractEditPolicy#getTargetEditPart(org.eclipse.gef.Request)
-	 */
-	@Override
-	public EditPart getTargetEditPart(Request request) {
-		if (RequestConstants.REQ_OPEN.equals(request.getType())) {
-			return getHost();
-		}
-		return super.getTargetEditPart(request);
-	}
+  /**
+   * @see org.eclipse.gef.editpolicies.AbstractEditPolicy#getTargetEditPart(org.eclipse.gef.Request)
+   */
+  @Override
+  public EditPart getTargetEditPart(Request request) {
+    if (RequestConstants.REQ_OPEN.equals(request.getType())) {
+      return getHost();
+    }
+    return super.getTargetEditPart(request);
+  }
 }

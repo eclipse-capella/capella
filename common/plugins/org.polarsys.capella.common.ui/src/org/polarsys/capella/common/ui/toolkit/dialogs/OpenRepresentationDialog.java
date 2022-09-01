@@ -1,3 +1,15 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2022 THALES GLOBAL SERVICES.
+ * 
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0
+ * 
+ * SPDX-License-Identifier: EPL-2.0
+ * 
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
 package org.polarsys.capella.common.ui.toolkit.dialogs;
 
 import java.util.Collection;
@@ -31,100 +43,98 @@ import org.eclipse.swt.widgets.Shell;
  *
  */
 public class OpenRepresentationDialog extends AbstractSelectionDialog<DRepresentationDescriptor> {
-	
-	private static String OPEN_REPRESENTATION_MESSAGE = "Select a Representation to open :";
 
-	HashSet<DRepresentationDescriptor> descriptors;
-	/**
-	 * List to display the representations.
-	 */
-	private ComboViewer comboViewer;
+  HashSet<DRepresentationDescriptor> descriptors;
+  /**
+   * List to display the representations.
+   */
+  private ComboViewer comboViewer;
 
-	DRepresentationDescriptor selectedDescriptor;
+  DRepresentationDescriptor selectedDescriptor;
 
-	public OpenRepresentationDialog(Shell parentShell, Collection<DRepresentationDescriptor> descriptors) {
-		super(parentShell);			
-		this.descriptors = new HashSet<DRepresentationDescriptor>(descriptors);	
-	}		
-	@Override
-	public void create() {
-		setTitle("Open existing representation");
-		super.create();
-	}
+  public OpenRepresentationDialog(Shell parentShell, Collection<DRepresentationDescriptor> descriptors) {
+    super(parentShell);			
+    this.descriptors = new HashSet<DRepresentationDescriptor>(descriptors);	
+  }		
+  @Override
+  public void create() {
+    setTitle("Open existing representation");
+    super.create();
+  }
 
-	@Override
-	protected Control createDialogArea(Composite parent) {
-		Composite composite = (Composite) super.createDialogArea(parent);			
-		setMessage(OPEN_REPRESENTATION_MESSAGE);
-		// Create label
-		createMessageArea(composite);
-		
-		GridData data = new GridData(GridData.GRAB_HORIZONTAL
-				| GridData.GRAB_VERTICAL | GridData.HORIZONTAL_ALIGN_FILL
-				| GridData.VERTICAL_ALIGN_CENTER);
-		data.widthHint = convertHorizontalDLUsToPixels(IDialogConstants.MINIMUM_MESSAGE_AREA_WIDTH);
-		
-		// Create list viewer
-		comboViewer = new ComboViewer(composite, SWT.SINGLE | SWT.H_SCROLL
-				| SWT.V_SCROLL | SWT.BORDER |SWT.READ_ONLY);
-		comboViewer.getCombo().setFont(parent.getFont());
-		comboViewer.getCombo().setLayoutData(data);
-		// Set the label provider
-		comboViewer.setLabelProvider(new LabelProvider() {
-			@Override
-			public String getText(Object element) {
-				DRepresentationDescriptor descriptor = (DRepresentationDescriptor) element;					
-				IInterpreter interpreter = InterpreterUtil.getInterpreter(descriptor);
-				String newName = "";
+  @Override
+  protected Control createDialogArea(Composite parent) {
+    Composite composite = (Composite) super.createDialogArea(parent);			
+    setMessage(Messages.openRepresentationMessage);
+    // Create label
+    createMessageArea(composite);
 
-				String titleExpression = descriptor.getName();
-				if (!StringUtil.isEmpty(titleExpression)) {
-					try {
-						newName = interpreter.evaluateString(descriptor, titleExpression);
-					} catch (EvaluationException e) {
-						SiriusPlugin.getDefault().error(IInterpreterMessages.EVALUATION_ERROR_ON_MODEL_MODIFICATION, e);
-					}
-				}
-				return newName; //$NON-NLS-1$
-			}
-		});
+    GridData data = new GridData(GridData.GRAB_HORIZONTAL
+        | GridData.GRAB_VERTICAL | GridData.HORIZONTAL_ALIGN_FILL
+        | GridData.VERTICAL_ALIGN_CENTER);
+    data.widthHint = convertHorizontalDLUsToPixels(IDialogConstants.MINIMUM_MESSAGE_AREA_WIDTH);
 
-		// Set the content provider
-		comboViewer.setContentProvider(ArrayContentProvider.getInstance());
-		comboViewer.setInput(descriptors);
+    // Create list viewer
+    comboViewer = new ComboViewer(composite, SWT.SINGLE | SWT.H_SCROLL
+        | SWT.V_SCROLL | SWT.BORDER |SWT.READ_ONLY);
+    comboViewer.getCombo().setFont(parent.getFont());
+    comboViewer.getCombo().setLayoutData(data);
+    // Set the label provider
+    comboViewer.setLabelProvider(new LabelProvider() {
+      @Override
+      public String getText(Object element) {
+        DRepresentationDescriptor descriptor = (DRepresentationDescriptor) element;					
+        IInterpreter interpreter = InterpreterUtil.getInterpreter(descriptor);
+        String newName = "";
 
-		// Add a selection change listener
-		comboViewer.addSelectionChangedListener( new ISelectionChangedListener() {
-			@Override
-			public void selectionChanged(SelectionChangedEvent event) {
-				selectedDescriptor = (DRepresentationDescriptor) ((StructuredSelection)event.getSelection()).getFirstElement();
-			}
-		});
+        String titleExpression = descriptor.getName();
+        if (!StringUtil.isEmpty(titleExpression)) {
+          try {
+            newName = interpreter.evaluateString(descriptor, titleExpression);
+          } catch (EvaluationException e) {
+            SiriusPlugin.getDefault().error(IInterpreterMessages.EVALUATION_ERROR_ON_MODEL_MODIFICATION, e);
+          }
+        }
+        return newName; //$NON-NLS-1$
+      }
+    });
 
-		setInitialSelection(descriptors.iterator().next());
-		comboViewer.setSelection(new StructuredSelection(getInitialSelection()));
+    // Set the content provider
+    comboViewer.setContentProvider(ArrayContentProvider.getInstance());
+    comboViewer.setInput(descriptors);
 
-		// Add double-click listener
-		comboViewer.addDoubleClickListener(event -> okPressed());
-		return composite;
-	}
+    // Add a selection change listener
+    comboViewer.addSelectionChangedListener( new ISelectionChangedListener() {
+      @Override
+      public void selectionChanged(SelectionChangedEvent event) {
+        selectedDescriptor = (DRepresentationDescriptor) ((StructuredSelection)event.getSelection()).getFirstElement();
+      }
+    });
 
-	@Override
-	public boolean isHelpAvailable() {
-		return false;
-	}
+    setInitialSelection(descriptors.iterator().next());
+    comboViewer.setSelection(new StructuredSelection(getInitialSelection()));
 
-	@Override
-	protected boolean isResizable() {
-		return false;
-	}
+    // Add double-click listener
+    comboViewer.addDoubleClickListener(event -> okPressed());
+    return composite;
+  }
 
-	@Override
-	public DialogTray getTray() {
-		return null;
-	}
+  @Override
+  public boolean isHelpAvailable() {
+    return false;
+  }
 
-	public DRepresentationDescriptor getSelectedDescriptor() {
-		return selectedDescriptor;
-	}
+  @Override
+  protected boolean isResizable() {
+    return false;
+  }
+
+  @Override
+  public DialogTray getTray() {
+    return null;
+  }
+
+  public DRepresentationDescriptor getSelectedDescriptor() {
+    return selectedDescriptor;
+  }
 }

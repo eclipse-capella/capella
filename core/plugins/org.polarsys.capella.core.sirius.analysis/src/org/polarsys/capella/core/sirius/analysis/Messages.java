@@ -36,7 +36,9 @@ public class Messages extends NLS {
   public static String SequenceDiagramServices_1;
   public static String SequenceDiagramServices_2;
   public static String SequenceDiagramServices_3;
-
+  public static String OpenRelatedDiagram_Message;
+  public static String CreateRepresentationLabel;
+  
   static {
     // initialize resource bundle
     NLS.initializeMessages(BUNDLE_NAME, Messages.class);

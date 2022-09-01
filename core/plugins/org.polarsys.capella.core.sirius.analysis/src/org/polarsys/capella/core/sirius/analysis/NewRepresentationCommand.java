@@ -1,3 +1,15 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2022 THALES GLOBAL SERVICES.
+ * 
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0
+ * 
+ * SPDX-License-Identifier: EPL-2.0
+ * 
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
 package org.polarsys.capella.core.sirius.analysis;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -13,61 +25,61 @@ import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.shared.id.handler.IdManager;
 
 //The command allowing to create a new representation.
-	public class NewRepresentationCommand extends AbstractReadWriteCommand {
-		
-		private String newName;
+public class NewRepresentationCommand extends AbstractReadWriteCommand {
 
-		private DRepresentation representation;
+  private String newName;
 
-		private EObject eObject;
-		private RepresentationDescription repDescription;
-		private Session currentSession;
+  private DRepresentation representation;
 
-		public NewRepresentationCommand(String newName, EObject eObject, RepresentationDescription repDescription,
-				Session session) {
-			this.newName = newName;
-			this.eObject = eObject;
-			this.repDescription = repDescription;
-			this.currentSession = session;
-		}
+  private EObject eObject;
+  private RepresentationDescription repDescription;
+  private Session currentSession;
 
-		@Override
-		public void commandInterrupted() {
-			commandRolledBack();
-		}
+  public NewRepresentationCommand(String newName, EObject eObject, RepresentationDescription repDescription,
+      Session session) {
+    this.newName = newName;
+    this.eObject = eObject;
+    this.repDescription = repDescription;
+    this.currentSession = session;
+  }
 
-		@Override
-		public void commandRolledBack() {
-			representation = null;
-		}
+  @Override
+  public void commandInterrupted() {
+    commandRolledBack();
+  }
 
-		/**
-		 * Gets the new representation.
-		 * 
-		 * @return The new representation.
-		 */
-		public DRepresentation getRepresentation() {
-			return representation;
-		}
+  @Override
+  public void commandRolledBack() {
+    representation = null;
+  }
 
-		/**
-		 * {@inheritDoc}
-		 */
-		@Override
-		@SuppressWarnings("synthetic-access")
-		public void run() {
-			NullProgressMonitor monitor = new NullProgressMonitor();
-			if (eObject instanceof Scenario) {
-				Scenario scenario = (Scenario) eObject;
-				scenario.setName(newName);
-			}
+  /**
+   * Gets the new representation.
+   * 
+   * @return The new representation.
+   */
+  public DRepresentation getRepresentation() {
+    return representation;
+  }
 
-			String eventName = "Create Representation";
-			String eventContext = repDescription.getName();
-			String addendum = IdManager.getInstance().getId(eObject);
-			UsageMonitoringLogger.getInstance().log(eventName, eventContext, EventStatus.NONE, addendum);
-			representation = DialectManager.INSTANCE.createRepresentation(newName, eObject, repDescription, currentSession,
-					monitor);
-			UsageMonitoringLogger.getInstance().log(eventName, eventContext, EventStatus.OK, addendum);
-		}
-	}
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  @SuppressWarnings("synthetic-access")
+  public void run() {
+    NullProgressMonitor monitor = new NullProgressMonitor();
+    if (eObject instanceof Scenario) {
+      Scenario scenario = (Scenario) eObject;
+      scenario.setName(newName);
+    }
+
+    String eventName = Messages.CreateRepresentationLabel;
+    String eventContext = repDescription.getName();
+    String addendum = IdManager.getInstance().getId(eObject);
+    UsageMonitoringLogger.getInstance().log(eventName, eventContext, EventStatus.NONE, addendum);
+    representation = DialectManager.INSTANCE.createRepresentation(newName, eObject, repDescription, currentSession,
+        monitor);
+    UsageMonitoringLogger.getInstance().log(eventName, eventContext, EventStatus.OK, addendum);
+  }
+}

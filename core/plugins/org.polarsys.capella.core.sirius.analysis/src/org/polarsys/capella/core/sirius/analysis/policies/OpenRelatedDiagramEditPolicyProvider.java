@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -31,49 +31,49 @@ import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
  */
 public class OpenRelatedDiagramEditPolicyProvider implements IEditPolicyProvider {
 
-	/**
-	 * @see org.eclipse.gmf.runtime.diagram.ui.services.editpolicy.IEditPolicyProvider#createEditPolicies(org.eclipse.gef.EditPart)
-	 */
-	public void createEditPolicies(final EditPart editPart) {
-		if (editPart instanceof IDiagramElementEditPart) {
-			final IDiagramElementEditPart diagramElementEditPart = (IDiagramElementEditPart) editPart;
-			EObject targetSemanticElement = diagramElementEditPart.resolveTargetSemanticElement();
-			if (CapellaResourceHelper.isSemanticElement(targetSemanticElement)) {    	 
-				final CompoundEditPolicy compoundEditPolicy = new CompoundEditPolicy();
-				compoundEditPolicy.setAllowNullCommand(false);
+  /**
+   * @see org.eclipse.gmf.runtime.diagram.ui.services.editpolicy.IEditPolicyProvider#createEditPolicies(org.eclipse.gef.EditPart)
+   */
+  public void createEditPolicies(final EditPart editPart) {
+    if (editPart instanceof IDiagramElementEditPart) {
+      final IDiagramElementEditPart diagramElementEditPart = (IDiagramElementEditPart) editPart;
+      EObject targetSemanticElement = diagramElementEditPart.resolveTargetSemanticElement();
+      if (CapellaResourceHelper.isSemanticElement(targetSemanticElement)) {    	 
+        final CompoundEditPolicy compoundEditPolicy = new CompoundEditPolicy();
+        compoundEditPolicy.setAllowNullCommand(false);
 
-				final EditPolicy existingPolicy = diagramElementEditPart.getEditPolicy(EditPolicyRoles.OPEN_ROLE);
-				if (existingPolicy != null) {
-					compoundEditPolicy.addEditPolicy(existingPolicy);
-				}
+        final EditPolicy existingPolicy = diagramElementEditPart.getEditPolicy(EditPolicyRoles.OPEN_ROLE);
+        if (existingPolicy != null) {
+          compoundEditPolicy.addEditPolicy(existingPolicy);
+        }
 
-				compoundEditPolicy.addEditPolicy(new OpenRelatedDiagramEditPolicy());
-				diagramElementEditPart.installEditPolicy(EditPolicyRoles.OPEN_ROLE, compoundEditPolicy); 	         
-			}
-		}
-	}
+        compoundEditPolicy.addEditPolicy(new OpenRelatedDiagramEditPolicy());
+        diagramElementEditPart.installEditPolicy(EditPolicyRoles.OPEN_ROLE, compoundEditPolicy); 	         
+      }
+    }
+  }
 
-	public void addProviderChangeListener(IProviderChangeListener arg0) {
-		// empty.
-	}
+  public void addProviderChangeListener(IProviderChangeListener arg0) {
+    // empty.
+  }
 
-	public boolean provides(IOperation operation) {
-		if (operation instanceof CreateEditPoliciesOperation) {
-			final CreateEditPoliciesOperation createEditPoliciesOperation = (CreateEditPoliciesOperation) operation;
-			if (createEditPoliciesOperation.getEditPart() instanceof IDiagramElementEditPart) {
-				final IDiagramElementEditPart diagramElementEditPart = (IDiagramElementEditPart) createEditPoliciesOperation.getEditPart();
-				EObject targetSemanticElement = diagramElementEditPart.resolveTargetSemanticElement();
-				if (CapellaResourceHelper.isSemanticElement(targetSemanticElement)) {
-					return true;
-				}
-			}
-		}
-		return false;
-	}
+  public boolean provides(IOperation operation) {
+    if (operation instanceof CreateEditPoliciesOperation) {
+      final CreateEditPoliciesOperation createEditPoliciesOperation = (CreateEditPoliciesOperation) operation;
+      if (createEditPoliciesOperation.getEditPart() instanceof IDiagramElementEditPart) {
+        final IDiagramElementEditPart diagramElementEditPart = (IDiagramElementEditPart) createEditPoliciesOperation.getEditPart();
+        EObject targetSemanticElement = diagramElementEditPart.resolveTargetSemanticElement();
+        if (CapellaResourceHelper.isSemanticElement(targetSemanticElement)) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
 
-	public void removeProviderChangeListener(IProviderChangeListener arg0) {
-		// empty
-	}  
+  public void removeProviderChangeListener(IProviderChangeListener arg0) {
+    // empty
+  }  
 }
 
 

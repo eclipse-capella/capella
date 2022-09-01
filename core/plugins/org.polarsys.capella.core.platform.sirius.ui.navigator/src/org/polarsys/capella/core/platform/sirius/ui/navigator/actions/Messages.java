@@ -58,6 +58,9 @@ public class Messages extends NLS {
   public static String QuickFiltersMenu_SelectAll_Title;
   public static String QuickFiltersMenu_SelectDefault_Title;
   public static String QuickFiltersMenu_Title;
+  
+  public static String OpenRelatedDiagram_Message;
+  public static String OpenActionLabel;
   static {
     // initialize resource bundle
     NLS.initializeMessages(BUNDLE_NAME, Messages.class);

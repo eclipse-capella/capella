@@ -28,45 +28,45 @@ import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
  */
 public class TabbedPropertiesEditPolicyProvider implements IEditPolicyProvider {
 
-	/**
-	 * @see org.eclipse.gmf.runtime.diagram.ui.services.editpolicy.IEditPolicyProvider#createEditPolicies(org.eclipse.gef.EditPart)
-	 */
-	public void createEditPolicies(final EditPart editPart) {
-		if (editPart instanceof IDiagramElementEditPart) {
-			final IDiagramElementEditPart diagramElementEditPart = (IDiagramElementEditPart) editPart;
-			if (CapellaResourceHelper.isSemanticElement(diagramElementEditPart.resolveTargetSemanticElement())) {
-				final CompoundEditPolicy compoundEditPolicy = new CompoundEditPolicy();
-				compoundEditPolicy.setAllowNullCommand(false);
+  /**
+   * @see org.eclipse.gmf.runtime.diagram.ui.services.editpolicy.IEditPolicyProvider#createEditPolicies(org.eclipse.gef.EditPart)
+   */
+  public void createEditPolicies(final EditPart editPart) {
+    if (editPart instanceof IDiagramElementEditPart) {
+      final IDiagramElementEditPart diagramElementEditPart = (IDiagramElementEditPart) editPart;
+      if (CapellaResourceHelper.isSemanticElement(diagramElementEditPart.resolveTargetSemanticElement())) {
+        final CompoundEditPolicy compoundEditPolicy = new CompoundEditPolicy();
+        compoundEditPolicy.setAllowNullCommand(false);
 
-				final EditPolicy existingPolicy = diagramElementEditPart.getEditPolicy(EditPolicyRoles.OPEN_ROLE);
-				if (existingPolicy != null) {
-					compoundEditPolicy.addEditPolicy(existingPolicy);
-				}
+        final EditPolicy existingPolicy = diagramElementEditPart.getEditPolicy(EditPolicyRoles.OPEN_ROLE);
+        if (existingPolicy != null) {
+          compoundEditPolicy.addEditPolicy(existingPolicy);
+        }
 
-				compoundEditPolicy.addEditPolicy(new TabbedPropertiesWizardEditPolicy());
-				diagramElementEditPart.installEditPolicy(EditPolicyRoles.OPEN_ROLE, compoundEditPolicy);
-			}
-		}
-	}
+        compoundEditPolicy.addEditPolicy(new TabbedPropertiesWizardEditPolicy());
+        diagramElementEditPart.installEditPolicy(EditPolicyRoles.OPEN_ROLE, compoundEditPolicy);
+      }
+    }
+  }
 
-	public void addProviderChangeListener(IProviderChangeListener arg0) {
-		// empty.
-	}
+  public void addProviderChangeListener(IProviderChangeListener arg0) {
+    // empty.
+  }
 
-	public boolean provides(IOperation operation) {
-		if (operation instanceof CreateEditPoliciesOperation) {
-			final CreateEditPoliciesOperation createEditPoliciesOperation = (CreateEditPoliciesOperation) operation;
-			if (createEditPoliciesOperation.getEditPart() instanceof IDiagramElementEditPart) {
-				final IDiagramElementEditPart diagramElementEditPart = (IDiagramElementEditPart) createEditPoliciesOperation.getEditPart();
-				if (CapellaResourceHelper.isSemanticElement(diagramElementEditPart.resolveTargetSemanticElement())) {
-					return true;
-				}
-			}
-		}
-		return false;
-	}
+  public boolean provides(IOperation operation) {
+    if (operation instanceof CreateEditPoliciesOperation) {
+      final CreateEditPoliciesOperation createEditPoliciesOperation = (CreateEditPoliciesOperation) operation;
+      if (createEditPoliciesOperation.getEditPart() instanceof IDiagramElementEditPart) {
+        final IDiagramElementEditPart diagramElementEditPart = (IDiagramElementEditPart) createEditPoliciesOperation.getEditPart();
+        if (CapellaResourceHelper.isSemanticElement(diagramElementEditPart.resolveTargetSemanticElement())) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
 
-	public void removeProviderChangeListener(IProviderChangeListener arg0) {
-		// empty
-	}
+  public void removeProviderChangeListener(IProviderChangeListener arg0) {
+    // empty
+  }
 }

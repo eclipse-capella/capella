@@ -29,38 +29,38 @@ import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.SelectionH
 public class ModelElementActionProvider extends CommonActionProvider {
 
 
-	private OpenAction _openAction;
+  private OpenAction _openAction;
 
 
-	/**
-	 * @see org.eclipse.ui.actions.ActionGroup#dispose()
-	 */
-	@Override
-	public void dispose() {
-		super.dispose();
+  /**
+   * @see org.eclipse.ui.actions.ActionGroup#dispose()
+   */
+  @Override
+  public void dispose() {
+    super.dispose();
 
-		if (null != _openAction) {
-			ISelectionProvider selectionProvider = getActionSite().getViewSite().getSelectionProvider();
-			selectionProvider.removeSelectionChangedListener(_openAction);
-			_openAction = null;
-		}
-	}
+    if (null != _openAction) {
+      ISelectionProvider selectionProvider = getActionSite().getViewSite().getSelectionProvider();
+      selectionProvider.removeSelectionChangedListener(_openAction);
+      _openAction = null;
+    }
+  }
 
-	@Override
-	public void fillActionBars(IActionBars actionBars) {
-		super.fillActionBars(actionBars);
-		actionBars.setGlobalActionHandler(ICommonActionConstants.OPEN, _openAction);
-		actionBars.setGlobalActionHandler(ActionFactory.PROPERTIES.getId(), _openAction);
-	}
-	/**
-	 * @see org.eclipse.ui.navigator.CommonActionProvider#init(org.eclipse.ui.navigator.ICommonActionExtensionSite)
-	 */
-	@Override
-	public void init(ICommonActionExtensionSite site_p) {
-		super.init(site_p);
+  @Override
+  public void fillActionBars(IActionBars actionBars) {
+    super.fillActionBars(actionBars);
+    actionBars.setGlobalActionHandler(ICommonActionConstants.OPEN, _openAction);
+    actionBars.setGlobalActionHandler(ActionFactory.PROPERTIES.getId(), _openAction);
+  }
+  /**
+   * @see org.eclipse.ui.navigator.CommonActionProvider#init(org.eclipse.ui.navigator.ICommonActionExtensionSite)
+   */
+  @Override
+  public void init(ICommonActionExtensionSite site_p) {
+    super.init(site_p);
 
-		ICommonViewerSite commonViewSite = site_p.getViewSite();
-		_openAction = new OpenAction();
-		SelectionHelper.registerToSelectionChanges(_openAction, commonViewSite.getSelectionProvider());
-	}
+    ICommonViewerSite commonViewSite = site_p.getViewSite();
+    _openAction = new OpenAction();
+    SelectionHelper.registerToSelectionChanges(_openAction, commonViewSite.getSelectionProvider());
+  }
 }

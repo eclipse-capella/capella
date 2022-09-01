@@ -19,7 +19,6 @@ import org.eclipse.jface.dialogs.IInputValidator;
 import org.eclipse.jface.dialogs.InputDialog;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.window.Window;
-import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
@@ -36,19 +35,14 @@ import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.tools.api.interpreter.IInterpreterMessages;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
-import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.actions.BaseSelectionListenerAction;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
-import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
-import org.polarsys.capella.common.tools.report.appenders.usage.UsageMonitoringLogger;
-import org.polarsys.capella.common.tools.report.appenders.usage.util.UsageMonitoring.EventStatus;
-import org.polarsys.capella.core.data.interaction.Scenario;
+import org.polarsys.capella.common.ui.toolkit.dialogs.Messages;
 import org.polarsys.capella.core.sirius.analysis.NewRepresentationCommand;
-import org.polarsys.capella.shared.id.handler.IdManager;
 
 /**
  * The action allowing to create new representations.
@@ -63,11 +57,6 @@ public class NewRepresentationAction extends BaseSelectionListenerAction {
 	private boolean isCanceled;
 	private String descriptionLabel;
 	private String message;
-
-	/**
-	 * Error message when name is blank
-	 */
-	private final String BLANK_NAME = "Representation name cannot be blank";
 
 	public NewRepresentationAction(RepresentationDescription description, EObject selectedEObject, Session session, String message) {
 		this(description, selectedEObject, session, false, true);
@@ -162,7 +151,7 @@ public class NewRepresentationAction extends BaseSelectionListenerAction {
 			String dialogTitle = "New " + descriptionLabel; //$NON-NLS-1$
 			String dialogMessage;
 			if(message != null) {
-				dialogMessage = message + "\n" + "Name:";
+				dialogMessage = message + "\n" + "Name:"; //$NON-NLS-1$
 			} else {
 				dialogMessage = "Name:"; //$NON-NLS-1$
 			}
@@ -174,10 +163,9 @@ public class NewRepresentationAction extends BaseSelectionListenerAction {
 				@Override
 				public String isValid(String newText) {
 					if(newText.isBlank()) {
-						return BLANK_NAME;
-					} else {
-						return null;
+						return Messages.blankName;
 					}
+					return null;					
 				}
 			};
 

@@ -38,6 +38,10 @@ public class Messages extends NLS {
 
   public static String selectAll;
   public static String deselectAll;
+  
+  public static String blankName;
+  public static String newRepresentationFor;
+  public static String openRepresentationMessage;
 
   static {
     // initialize resource bundle
