@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <!--
-  Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2022 THALES GLOBAL SERVICES.
   
   This program and the accompanying materials are made available under the
   terms of the Eclipse Public License 2.0 which is available at
@@ -300,4 +300,51 @@
             class="org.polarsys.capella.core.ui.properties.CapellalEditingDomainListenerForPropertySections">
       </editingDomainListener>
    </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.ui.popup.any?after=group.showIn">
+         <command
+               commandId="org.polarsys.capella.core.ui.properties.showInPropertiesDialog"
+               icon="icons/property_page.gif"
+               label="Show In Properties dialog"
+               style="push">
+            <visibleWhen
+               checkEnabled="true">
+               <with
+                 variable="selection">
+                 <and>
+                  	<iterate>
+                  		<and>
+	              			<or>
+	                           <instanceof
+	                                 value="org.polarsys.kitalpha.emde.model.Element">
+	                           </instanceof>
+	                           <adapt
+	                                 type="org.polarsys.kitalpha.emde.model.Element">
+	                           </adapt>
+	                        </or>
+	                        <reference
+                          		definitionId="org.polarsys.capella.common.platform.sirius.ted.definition.checkElementOfOpenedSessionOnCompareEditorPartOnly">
+                        	</reference>
+                  		</and>
+                     </iterate>
+                     <count
+                           value="1">
+                     </count>
+                  </and>
+               </with>
+         </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>   
+      <extension
+            point="org.eclipse.ui.commands">
+         <command
+               defaultHandler="org.polarsys.capella.core.ui.properties.property.ShowInPropertiesDialogHandler"
+               id="org.polarsys.capella.core.ui.properties.showInPropertiesDialog"
+               name="Show In Properties dialog">
+         </command>
+      </extension>
 </plugin>
