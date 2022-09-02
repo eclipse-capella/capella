@@ -10,56 +10,24 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.core.sirius.analysis;
+package org.polarsys.capella.core.sirius.analysis.commands;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
-import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.tools.report.appenders.usage.UsageMonitoringLogger;
 import org.polarsys.capella.common.tools.report.appenders.usage.util.UsageMonitoring.EventStatus;
 import org.polarsys.capella.core.data.interaction.Scenario;
+import org.polarsys.capella.core.sirius.analysis.Messages;
 import org.polarsys.capella.shared.id.handler.IdManager;
 
 //The command allowing to create a new representation.
-public class NewRepresentationCommand extends AbstractReadWriteCommand {
+public class NewRepresentationCommand extends AbstractNewRepresentationCommand {
 
-  private String newName;
-
-  private DRepresentation representation;
-
-  private EObject eObject;
-  private RepresentationDescription repDescription;
-  private Session currentSession;
-
-  public NewRepresentationCommand(String newName, EObject eObject, RepresentationDescription repDescription,
-      Session session) {
-    this.newName = newName;
-    this.eObject = eObject;
-    this.repDescription = repDescription;
-    this.currentSession = session;
-  }
-
-  @Override
-  public void commandInterrupted() {
-    commandRolledBack();
-  }
-
-  @Override
-  public void commandRolledBack() {
-    representation = null;
-  }
-
-  /**
-   * Gets the new representation.
-   * 
-   * @return The new representation.
-   */
-  public DRepresentation getRepresentation() {
-    return representation;
+  public NewRepresentationCommand(String newName, EObject eObject, RepresentationDescription repDescription, Session session) {
+    super(newName,eObject,repDescription,session);
   }
 
   /**
