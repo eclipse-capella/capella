@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _VZhxMChyEe2Ke_QVPFchOA
 Runtime-Version: 2.5.2.202204252353
-Save-Time: 8/31/22, 4:40 PM
+Save-Time: 9/2/22, 12:26 PM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -270,5 +270,38 @@ with [get-view "Project Explorer" | get-tree] {
  
  //Save session , as a new diagram has been created
 get-button "Save (M1+S)" | click
-//#TODO Make a test for "No existing diagram : multiple representation descriptions available" (Embark a custom .odesign to allow this) 
+
+
+//Test that multi-selection works in navigator
+with [get-view "Project Explorer" | get-tree] {
+    select "OnDoubleClick/DiagramNavigationModel.aird/DiagramNavigationModel/Operational Analysis/Operational Activities/Root Operational Activity/OperationalProcess 2" "OnDoubleClick/DiagramNavigationModel.aird/DiagramNavigationModel/Operational Analysis/Operational Activities/Root Operational Activity/OperationalProcess 1"
+    key-type Enter
+    click -default
+}
+with [get-window "Open existing representation"] {
+    get-combo -after [get-label "Select a Representation to open :"] | select "[OPD] OperationalProcess 2 bis"
+    get-button OK | click
+}
+
+get-editor "[OPD] OperationalProcess 2 bis" | close
+
+get-editor "[OPD] OperationalProcess 1" | close
+
+//Test that multi-selection works in Semantic Browser
+get-view "Project Explorer" | get-tree | select "OnDoubleClick/DiagramNavigationModel.aird/DiagramNavigationModel/Operational Analysis/Operational Activities/Root Operational Activity"
+
+with [get-view "Semantic Browser" | get-tree -after [get-label "Current Element"]] {
+    select "Root Operational Activity/Owned Operational Processes/OperationalProcess 2" "Root Operational Activity/Owned Operational Processes/OperationalProcess 1"
+    key-type Enter
+    click -default
+}
+with [get-window "Open existing representation"] {
+    get-combo -after [get-label "Select a Representation to open :"] | select "[OPD] OperationalProcess 2 bis"
+    get-button OK | click
+}
+
+get-editor "[OPD] OperationalProcess 2 bis" | close
+
+get-editor "[OPD] OperationalProcess 1" | close
+//#TODO Make a test for "No existing diagram : multiple representation descriptions available" (Embark a custom .odesign to allow this ?) 
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
