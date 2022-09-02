@@ -12,6 +12,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.platform.sirius.ui.navigator.actions;
 
+import java.util.Iterator;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.actions.BaseSelectionListenerAction;
@@ -28,15 +30,19 @@ public class OpenAction extends BaseSelectionListenerAction {
   @Override
   public void run() {
     IStructuredSelection selection = getStructuredSelection();
-    Object element = selection.getFirstElement();
-
-    if (CapellaResourceHelper.isSemanticElement(element)) {
-      EObject elementAsEObject = (EObject) element;
-      if(!DoubleClickBehaviourUtil.INSTANCE.shouldOpenRelatedDiagramsOnDoubleClick(elementAsEObject)) {
-        CapellaUIPropertiesPlugin.getDefault().openWizard((EObject) element);
-      } else {   
-       OpenRelatedDiagramAction action = new OpenRelatedDiagramAction(elementAsEObject);
-       action.run();
+    if(! selection.isEmpty()) {
+      Iterator<Object> selectionIterator = selection.iterator();
+      while(selectionIterator.hasNext()) {    
+        Object element = selectionIterator.next();    
+        if (CapellaResourceHelper.isSemanticElement(element)) {
+          EObject elementAsEObject = (EObject) element;
+          if(!DoubleClickBehaviourUtil.INSTANCE.shouldOpenRelatedDiagramsOnDoubleClick(elementAsEObject)) {
+            CapellaUIPropertiesPlugin.getDefault().openWizard((EObject) element);
+          } else {   
+           OpenRelatedDiagramAction action = new OpenRelatedDiagramAction(elementAsEObject);
+           action.run();
+          }
+        }
       }
     }
   }
