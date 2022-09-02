@@ -51,7 +51,7 @@ public class SelectNewRepresentationAction extends AbstractNewRepresentationActi
     message = Messages.SelectNewRepresentation;
 
     this.selectedEObject = selectedEObject;
-    this.descriptions = new HashSet<RepresentationDescription>(descriptions);
+    this.descriptions = new HashSet<>(descriptions);
     this.session = session;
     this.openRepresentation = openRepresentation;
 

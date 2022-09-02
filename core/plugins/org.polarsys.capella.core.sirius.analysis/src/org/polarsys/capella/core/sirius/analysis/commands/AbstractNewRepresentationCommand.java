@@ -30,7 +30,7 @@ public class AbstractNewRepresentationCommand extends AbstractReadWriteCommand {
    * @param repDescription The current representation description.
    * @param session The current session.
    */
-  public AbstractNewRepresentationCommand(String newName, EObject eObject, RepresentationDescription repDescription, Session session) {
+  protected AbstractNewRepresentationCommand(String newName, EObject eObject, RepresentationDescription repDescription, Session session) {
     this.newName = newName;
     this.repDescription = repDescription;
     this.currentSession = session;
@@ -63,6 +63,7 @@ public class AbstractNewRepresentationCommand extends AbstractReadWriteCommand {
 
   @Override
   public void run() {
+    //To be overriden by subclasses
   }
   
  }

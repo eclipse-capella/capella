@@ -53,11 +53,7 @@ public class SelectNewRepresentationDialog extends AbstractSelectionDialog<Repre
   /**
    * List of available representation descriptions
    */
-  HashSet<RepresentationDescription> descriptions;
-  /**
-   * List to display the representations.
-   */
-  private ComboViewer comboViewer;
+  HashSet<RepresentationDescription> descriptions;  
 
   /**
    * selected representation description from combo
@@ -102,20 +98,15 @@ public class SelectNewRepresentationDialog extends AbstractSelectionDialog<Repre
   public SelectNewRepresentationDialog(Shell parentShell, String message, EObject selectedEObject, Collection<RepresentationDescription> descriptions) {
     super(parentShell);			
     this.selectedEObject = selectedEObject;
-    this.descriptions = new HashSet<RepresentationDescription>(descriptions);	
+    this.descriptions = new HashSet<>(descriptions);	
     this.message = message;
     setTitle(Messages.newRepresentationFor + ((NamedElement)selectedEObject).getName());
-    this.validator = new IInputValidator() {
-
-      @Override
-      public String isValid(String newText) {
-        if (newText.isBlank()) {
-          return Messages.blankName;
-        }
-        return null;        
-      }
-    };
-
+    this.validator = (newText ->
+    { if (newText.isBlank()) {
+      return Messages.blankName;
+    }
+    return null;        
+    });
   }	
 
   @Override
@@ -127,7 +118,7 @@ public class SelectNewRepresentationDialog extends AbstractSelectionDialog<Repre
     createMessageArea(composite);
 
     // Create list viewer
-    comboViewer = new ComboViewer(composite, SWT.SINGLE | SWT.H_SCROLL
+    ComboViewer comboViewer = new ComboViewer(composite, SWT.SINGLE | SWT.H_SCROLL
         | SWT.V_SCROLL | SWT.BORDER | SWT.READ_ONLY);
     comboViewer.getCombo().setFont(parent.getFont());
 
@@ -178,14 +169,11 @@ public class SelectNewRepresentationDialog extends AbstractSelectionDialog<Repre
     setInitialSelection(descriptions.iterator().next());
 
     // Add a selection change listener on the combo to update the default name in text field 
-    comboViewer.addSelectionChangedListener(
-        new ISelectionChangedListener() {						
-          @Override
-          public void selectionChanged(SelectionChangedEvent event) {
-            selectedRepresentationDescription = (RepresentationDescription) ((StructuredSelection)event.getSelection()).getFirstElement();
-            text.setText(computeDefaultName(selectedEObject,selectedRepresentationDescription));
-          }
-        });
+    comboViewer.addSelectionChangedListener( selectionChangedEvent ->
+    {
+      selectedRepresentationDescription = (RepresentationDescription) ((StructuredSelection)selectionChangedEvent.getSelection()).getFirstElement();
+      text.setText(computeDefaultName(selectedEObject,selectedRepresentationDescription));
+    });
 
     comboViewer.setSelection(new StructuredSelection(getInitialSelection()));		
 
@@ -261,13 +249,10 @@ public class SelectNewRepresentationDialog extends AbstractSelectionDialog<Repre
    * </p>
    */
   protected void validateInput() {
-    String errorMessage = null;
     newRepresentationName = text.getText();
     if (validator != null) {
       errorMessage = validator.isValid(text.getText());
     }
-    // Bug 16256: important not to treat "" (blank error) the same as null
-    // (no error)
     setErrorMessage(errorMessage);
   }
 

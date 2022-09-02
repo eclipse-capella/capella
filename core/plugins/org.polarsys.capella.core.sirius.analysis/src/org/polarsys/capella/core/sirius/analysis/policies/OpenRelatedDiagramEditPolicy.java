@@ -77,89 +77,80 @@ public class OpenRelatedDiagramEditPolicy extends OpenDiagramEditPolicy {
             DNodeSpec container = (DNodeSpec) element;
             targetSemanticElement = container.getTarget();
           }				
-          if (!((DDiagramElement) element).getParentDiagram().isIsInShowingMode()) {
-            if (DoubleClickBehaviourUtil.INSTANCE.shouldOpenRelatedDiagramsOnDoubleClick(targetSemanticElement)) {
-              if (targetSemanticElement != null) {					
-                Session session = SessionManager.INSTANCE.getSession(element);
-                Collection<DRepresentationDescriptor>  representations = DoubleClickBehaviourUtil.INSTANCE.getRepresentationsDescriptors(targetSemanticElement);
-                if (!representations.isEmpty()) {
-                  if (representations.size() > 1 ) {
-                    Shell activeShell = Display.getDefault().getActiveShell();
-                    OpenRepresentationDialog dialog = new OpenRepresentationDialog(activeShell, representations) ;					
-                    dialog.open();
-                    if (dialog.getReturnCode() == Window.OK) {
-                      return new ICommandProxy(
-                          new GMFCommandWrapper(session.getTransactionalEditingDomain(), new NavigateToCommand(session, dialog.getSelectedDescriptor().getRepresentation())));
-                    }							
-                  } else {
-                    DRepresentationDescriptor element1 = (DRepresentationDescriptor) representations.toArray()[0];
+          if (!((DDiagramElement) element).getParentDiagram().isIsInShowingMode() && targetSemanticElement != null && DoubleClickBehaviourUtil.INSTANCE.shouldOpenRelatedDiagramsOnDoubleClick(targetSemanticElement)) {              
+            Session session = SessionManager.INSTANCE.getSession(element);
+            Collection<DRepresentationDescriptor>  representations = DoubleClickBehaviourUtil.INSTANCE.getRepresentationsDescriptors(targetSemanticElement);
+            if (!representations.isEmpty()) {
+              if (representations.size() > 1 ) {
+                Shell activeShell = Display.getDefault().getActiveShell();
+                OpenRepresentationDialog dialog = new OpenRepresentationDialog(activeShell, representations) ;					
+                dialog.open();
+                if (dialog.getReturnCode() == Window.OK) {
+                  return new ICommandProxy(
+                      new GMFCommandWrapper(session.getTransactionalEditingDomain(), new NavigateToCommand(session, dialog.getSelectedDescriptor().getRepresentation())));
+                }							
+              } else {
+                DRepresentationDescriptor element1 = (DRepresentationDescriptor) representations.toArray()[0];
+                return new ICommandProxy(
+                    new GMFCommandWrapper(session.getTransactionalEditingDomain(), new NavigateToCommand(session, element1.getRepresentation())));
+              }
+            } else {
+              Session currentSession = SessionManager.INSTANCE.getSession(targetSemanticElement);
+              Collection<Viewpoint> selectedViewpoints = currentSession.getSelectedViewpoints(false);
+              Collection<RepresentationDescription> descriptions = DialectManager.INSTANCE.getAvailableRepresentationDescriptions(selectedViewpoints, targetSemanticElement);
+              if (!descriptions.isEmpty()) {
+                if (descriptions.size() > 1) {	
+                  Shell activeShell = Display.getDefault().getActiveShell();
+                  SelectNewRepresentationDialog dialog = new SelectNewRepresentationDialog(activeShell, Messages.OpenRelatedDiagram_Message, targetSemanticElement, descriptions);	
+                  dialog.open();
+                  if (dialog.getReturnCode() == Window.OK) {
+                    CreateRepresentationCommand createRepresentationCommand = new CreateRepresentationCommand(session, dialog.getSelectedRepresentationDescription(), targetSemanticElement,dialog.getName(), new NullProgressMonitor()) {
+                      @Override
+                      protected void doExecute() {
+                        super.doExecute();
+                        NavigateToCommand navCommand = new NavigateToCommand(session,getCreatedRepresentation());
+                        navCommand.execute();
+                      }
+                    };
                     return new ICommandProxy(
-                        new GMFCommandWrapper(session.getTransactionalEditingDomain(), new NavigateToCommand(session, element1.getRepresentation())));
+                        new GMFCommandWrapper(session.getTransactionalEditingDomain(), createRepresentationCommand));
+
                   }
                 } else {
-                  Session currentSession = SessionManager.INSTANCE.getSession(targetSemanticElement);
-                  Collection<Viewpoint> selectedViewpoints = currentSession.getSelectedViewpoints(false);
-                  Collection<RepresentationDescription> descriptions = DialectManager.INSTANCE.getAvailableRepresentationDescriptions(selectedViewpoints, targetSemanticElement);
-                  if (!descriptions.isEmpty()) {
-                    if (descriptions.size() > 1) {	
-                      Shell activeShell = Display.getDefault().getActiveShell();
-                      SelectNewRepresentationDialog dialog = new SelectNewRepresentationDialog(activeShell, Messages.OpenRelatedDiagram_Message, targetSemanticElement, descriptions);	
-                      dialog.open();
-                      if (dialog.getReturnCode() == Window.OK) {
-                        CreateRepresentationCommand createRepresentationCommand = new CreateRepresentationCommand(session, dialog.getSelectedRepresentationDescription(), targetSemanticElement,dialog.getName(), new NullProgressMonitor()) {
-                          @Override
-                          protected void doExecute() {
-                            super.doExecute();
-                            NavigateToCommand navCommand = new NavigateToCommand(session,getCreatedRepresentation());
-                            navCommand.execute();
-                          }
-                        };
-                        return new ICommandProxy(
-                            new GMFCommandWrapper(session.getTransactionalEditingDomain(), createRepresentationCommand));
+                  Shell activeShell = Display.getDefault().getActiveShell();
+                  RepresentationDescription description = descriptions.iterator().next();
+                  IInterpreter interpreter = InterpreterUtil.getInterpreter(targetSemanticElement);
+                  String titleExpression = description.getTitleExpression();
+                  String newName ="";
+                  try {
+                    newName = interpreter.evaluateString(targetSemanticElement, titleExpression);
+                  } catch (EvaluationException e) {
+                    e.printStackTrace();
+                  }
 
+                  IInputValidator validator = (newText -> {
+                      if(newText.isBlank()) {
+                        return org.polarsys.capella.common.ui.toolkit.dialogs.Messages.blankName;
                       }
-                    } else {
-                      Shell activeShell = Display.getDefault().getActiveShell();
-                      RepresentationDescription description = descriptions.iterator().next();
-                      IInterpreter interpreter = InterpreterUtil.getInterpreter(targetSemanticElement);
-                      String titleExpression = description.getTitleExpression();
-                      String newName ="";
-                      try {
-                        newName = interpreter.evaluateString(targetSemanticElement, titleExpression);
-                      } catch (EvaluationException e) {
-                        e.printStackTrace();
-                      }
-
-                      IInputValidator validator = new IInputValidator() {
-
-                        @Override
-                        public String isValid(String newText) {
-                          if(newText.isBlank()) {
-                            return org.polarsys.capella.common.ui.toolkit.dialogs.Messages.blankName;
-                          }
-                          return null;                         
-                        }
-                      };
-
-                      InputDialog dialog = new InputDialog(activeShell,"New " +  MessageTranslator.INSTANCE.getMessage(description, new IdentifiedElementQuery(description).getLabel()),Messages.OpenRelatedDiagram_Message+"\nName:", newName, validator);
-                      dialog.open();
-                      if (dialog.getReturnCode() == Window.OK) {								
-
-                        CreateRepresentationCommand createRepresentationCommand = new CreateRepresentationCommand(session, description, targetSemanticElement,dialog.getValue(), new NullProgressMonitor()) {
-                          @Override
-                          protected void doExecute() {
-                            super.doExecute();
-                            NavigateToCommand navCommand = new NavigateToCommand(session,getCreatedRepresentation());
-                            navCommand.execute();
-                          }
-                        };
-
-                        return new ICommandProxy(
-                            new GMFCommandWrapper(session.getTransactionalEditingDomain(),createRepresentationCommand));
-
-                      }
-
+                      return null;                         
                     }
+                  );
+
+                  InputDialog dialog = new InputDialog(activeShell,"New " +  MessageTranslator.INSTANCE.getMessage(description, new IdentifiedElementQuery(description).getLabel()),Messages.OpenRelatedDiagram_Message+"\nName:", newName, validator);
+                  dialog.open();
+                  if (dialog.getReturnCode() == Window.OK) {								
+
+                    CreateRepresentationCommand createRepresentationCommand = new CreateRepresentationCommand(session, description, targetSemanticElement,dialog.getValue(), new NullProgressMonitor()) {
+                      @Override
+                      protected void doExecute() {
+                        super.doExecute();
+                        NavigateToCommand navCommand = new NavigateToCommand(session,getCreatedRepresentation());
+                        navCommand.execute();
+                      }
+                    };
+
+                    return new ICommandProxy(
+                        new GMFCommandWrapper(session.getTransactionalEditingDomain(),createRepresentationCommand));
 
                   }
                 }

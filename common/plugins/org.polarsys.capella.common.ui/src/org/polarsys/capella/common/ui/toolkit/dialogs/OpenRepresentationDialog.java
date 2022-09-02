@@ -45,16 +45,12 @@ import org.eclipse.swt.widgets.Shell;
 public class OpenRepresentationDialog extends AbstractSelectionDialog<DRepresentationDescriptor> {
 
   HashSet<DRepresentationDescriptor> descriptors;
-  /**
-   * List to display the representations.
-   */
-  private ComboViewer comboViewer;
 
   DRepresentationDescriptor selectedDescriptor;
 
   public OpenRepresentationDialog(Shell parentShell, Collection<DRepresentationDescriptor> descriptors) {
     super(parentShell);			
-    this.descriptors = new HashSet<DRepresentationDescriptor>(descriptors);	
+    this.descriptors = new HashSet<>(descriptors);	
   }		
   @Override
   public void create() {
@@ -75,7 +71,7 @@ public class OpenRepresentationDialog extends AbstractSelectionDialog<DRepresent
     data.widthHint = convertHorizontalDLUsToPixels(IDialogConstants.MINIMUM_MESSAGE_AREA_WIDTH);
 
     // Create list viewer
-    comboViewer = new ComboViewer(composite, SWT.SINGLE | SWT.H_SCROLL
+    ComboViewer comboViewer = new ComboViewer(composite, SWT.SINGLE | SWT.H_SCROLL
         | SWT.V_SCROLL | SWT.BORDER |SWT.READ_ONLY);
     comboViewer.getCombo().setFont(parent.getFont());
     comboViewer.getCombo().setLayoutData(data);
@@ -102,15 +98,10 @@ public class OpenRepresentationDialog extends AbstractSelectionDialog<DRepresent
     // Set the content provider
     comboViewer.setContentProvider(ArrayContentProvider.getInstance());
     comboViewer.setInput(descriptors);
-
+    
     // Add a selection change listener
-    comboViewer.addSelectionChangedListener( new ISelectionChangedListener() {
-      @Override
-      public void selectionChanged(SelectionChangedEvent event) {
-        selectedDescriptor = (DRepresentationDescriptor) ((StructuredSelection)event.getSelection()).getFirstElement();
-      }
-    });
-
+    comboViewer.addSelectionChangedListener( selectionChangedEvent ->  selectedDescriptor = (DRepresentationDescriptor) ((StructuredSelection)selectionChangedEvent.getSelection()).getFirstElement());
+    
     setInitialSelection(descriptors.iterator().next());
     comboViewer.setSelection(new StructuredSelection(getInitialSelection()));
 

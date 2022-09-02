@@ -32,7 +32,6 @@ import org.polarsys.capella.core.sirius.analysis.commands.NewScenarioRepresentat
  * The action allowing to create new representations.
  */
 public class NewScenarioRepresentationAction extends NewRepresentationAction {
-  private AbstractCapability selectedEObject;
 
   /**
    * Constructs an action allowing to create new representations.
@@ -86,7 +85,7 @@ public class NewScenarioRepresentationAction extends NewRepresentationAction {
 
     // Do not call ToggleCanonicalRefresh anymore since Sirius 4.18.
     // Executes the NewRepresentationCommand.
-    NewScenarioRepresentationCommand command = new NewScenarioRepresentationCommand(defaultName, selectedEObject, description, session);
+    NewScenarioRepresentationCommand command = new NewScenarioRepresentationCommand(defaultName, (AbstractCapability)selectedEObject, description, session);
     TransactionHelper.getExecutionManager(session).execute(command);
 
     if (null != command.getRepresentation()) {

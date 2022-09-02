@@ -30,6 +30,7 @@ public class NewScenarioRepresentationCommand extends AbstractNewRepresentationC
  /**
   * {@inheritDoc}
   */
+ @Override
  @SuppressWarnings("synthetic-access")
  public void run() {
    NullProgressMonitor monitor = new NullProgressMonitor();

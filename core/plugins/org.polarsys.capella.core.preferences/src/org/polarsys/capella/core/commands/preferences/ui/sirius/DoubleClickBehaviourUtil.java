@@ -34,7 +34,7 @@ import org.polarsys.capella.core.preferences.Activator;
  */
 public class DoubleClickBehaviourUtil {
 
-  public static DoubleClickBehaviourUtil INSTANCE = new DoubleClickBehaviourUtil();
+  public final static DoubleClickBehaviourUtil INSTANCE = new DoubleClickBehaviourUtil();
 
   private DoubleClickBehaviourUtil() {
 
