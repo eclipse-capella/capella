@@ -1,18 +1,15 @@
 package org.polarsys.capella.core.sirius.ui.actions;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.util.MessageTranslator;
-import org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription;
-import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
-import org.eclipse.sirius.table.metamodel.table.description.CrossTableDescription;
-import org.eclipse.sirius.table.metamodel.table.description.EditionTableDescription;
-import org.eclipse.sirius.table.metamodel.table.provider.TableUIPlugin;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.ui.actions.BaseSelectionListenerAction;
-import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 
 public abstract class AbstractNewRepresentationAction extends BaseSelectionListenerAction{
 
@@ -31,25 +28,7 @@ public abstract class AbstractNewRepresentationAction extends BaseSelectionListe
   }
 
   protected ImageDescriptor getDescriptionImageDescriptor(RepresentationDescription description) {
-    ImageDescriptor imageDescriptor = null;
-
-    // Handle specific representations : Table ones.
-    if (description instanceof CrossTableDescription) {
-      imageDescriptor = AbstractUIPlugin.imageDescriptorFromPlugin(TableUIPlugin.ID,
-          "/icons/full/obj16/CrossTableDescription.gif"); //$NON-NLS-1$
-
-    } else if (description instanceof EditionTableDescription) {
-      imageDescriptor = AbstractUIPlugin.imageDescriptorFromPlugin(TableUIPlugin.ID, "/icons/full/obj16/DTable.gif"); //$NON-NLS-1$
-
-    } else if (description instanceof SequenceDiagramDescription) {
-      imageDescriptor = AbstractUIPlugin.imageDescriptorFromPlugin("org.eclipse.sirius.diagram.sequence.edit", //$NON-NLS-1$
-          "/icons/full/obj16/TSequenceDiagram.gif"); //$NON-NLS-1$
-
-    } else {
-      // Standard diagram.
-      imageDescriptor = AbstractUIPlugin.imageDescriptorFromPlugin(DiagramUIPlugin.ID,
-          "/icons/full/obj16/DDiagram.gif"); //$NON-NLS-1$
-    }
+    ImageDescriptor imageDescriptor = EObjectLabelProviderHelper.getImage(description.eClass(),(AdapterFactoryEditingDomain)TransactionUtil.getEditingDomain(description));
 
     if (null == imageDescriptor) {
       imageDescriptor = ImageDescriptor.getMissingImageDescriptor();
