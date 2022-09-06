@@ -55,6 +55,7 @@
         <module>org.polarsys.capella.test.re.updateconnections.ju</module>
         <module>org.polarsys.capella.test.recrpl.ju</module>
         <module>org.polarsys.capella.test.semantic.queries.ju</module>
+		<module>org.polarsys.capella.test.semantic.ui.ju</module>
         <module>org.polarsys.capella.test.suite.inui.ju</module>
         <module>org.polarsys.capella.test.suite.local.ju</module>
         <module>org.polarsys.capella.test.suite.notinui.ju</module>
