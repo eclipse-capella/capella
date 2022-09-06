@@ -12,14 +12,13 @@
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.analysis.preferences;
 
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.polarsys.capella.core.commands.preferences.service.AbstractPreferencesInitializer;
 import org.polarsys.capella.core.preferences.Activator;
-import org.eclipse.jface.preference.IPreferenceStore;
-import org.polarsys.capella.core.sirius.analysis.activator.SiriusViewActivator;
 
-public class DiagramPreferenceInitializer extends AbstractPreferencesInitializer {
-  public DiagramPreferenceInitializer() {
-    super(SiriusViewActivator.ID);
+public class DiagramProcessChainPathPreferenceInitializer extends AbstractPreferencesInitializer {
+  public DiagramProcessChainPathPreferenceInitializer() {
+    super(Activator.PLUGIN_ID);
   }
 
   @Override

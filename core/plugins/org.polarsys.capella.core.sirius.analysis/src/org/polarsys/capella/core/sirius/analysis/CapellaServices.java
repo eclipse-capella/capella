@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -14,10 +14,12 @@ package org.polarsys.capella.core.sirius.analysis;
 
 import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Iterator;
@@ -25,6 +27,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import java.util.TimeZone;
 import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -95,6 +98,8 @@ import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFact
 import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
+import org.polarsys.capella.core.commands.preferences.initializers.CapellaDiagramPreferencesInitializer;
+import org.polarsys.capella.core.commands.preferences.preferences.CapellaDiagramPreferences;
 import org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvedElement;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
@@ -1425,7 +1430,8 @@ public class CapellaServices {
   /**
    * used everywhere
    * 
-   * @param current a diagram element
+   * @param current
+   *          a diagram element
    * @return current if it is a diagram or the diagram that contains current if it is a DDiagramElement.
    * 
    *         May return null: If used in a style computation or a decoration, the expression will be called twice, the
@@ -2561,7 +2567,7 @@ public class CapellaServices {
     return (scenario.eContainer() instanceof AbstractCapability)
         && BlockArchitectureExt.getRootBlockArchitecture(scenario) instanceof OperationalAnalysis;
   }
-  
+
   public boolean isOperationalContext(AbstractCapability capability) {
     return BlockArchitectureExt.getRootBlockArchitecture(capability) instanceof OperationalAnalysis;
   }
@@ -2973,6 +2979,29 @@ public class CapellaServices {
     semanticElements.add(element);
     semanticElements.add(element.getInvolved());
     return semanticElements;
+  }
+
+  /**
+   * Return the formatted date of the last representation change.
+   */
+  public String getLastModificationDate(EObject representationDescriptor) {
+    Long timeStamp = System.currentTimeMillis();
+    if (representationDescriptor instanceof DRepresentationDescriptor) {
+      String changeId = ((DRepresentationDescriptor) representationDescriptor).getChangeId();
+      try {
+        timeStamp = Long.parseLong(changeId);
+      } catch (NumberFormatException e) {
+      }
+    }
+
+    Date date = new Date(timeStamp);
+    SimpleDateFormat sdf = new SimpleDateFormat(CapellaDiagramPreferencesInitializer.getFormatDate());
+    String timeZoneForDateFormatting = CapellaDiagramPreferencesInitializer.getTimeZoneForDateFormatting();
+    if (CapellaDiagramPreferences.PREF_DATE_TIMEZONE_SYSTEM.equals(timeZoneForDateFormatting)) {
+      timeZoneForDateFormatting = TimeZone.getDefault().getID();
+    }
+    sdf.setTimeZone(TimeZone.getTimeZone(timeZoneForDateFormatting));
+    return sdf.format(date);
   }
 
 }

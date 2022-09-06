@@ -43,6 +43,7 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.ui.preferences.ScopedPreferenceStore;
 import org.osgi.framework.BundleContext;
 import org.osgi.service.event.Event;
+import org.polarsys.capella.core.commands.preferences.initializers.CapellaDiagramPreferencesInitializer;
 import org.polarsys.capella.core.commands.preferences.internalization.l10n.CustomPreferencesMessages;
 import org.polarsys.capella.core.commands.preferences.model.CategoryPreferences;
 import org.polarsys.capella.core.commands.preferences.model.CategoryPreferencesManager;
@@ -122,6 +123,8 @@ public class Activator extends AbstractUIPlugin {
     CategoryPreferencesManager.getInstance().loadUserProfile();
     PreferencesHandler.initializePreferenceCommands();
     
+    new CapellaDiagramPreferencesInitializer(PLUGIN_ID);
+
     IEventBroker eventBroker = PlatformUI.getWorkbench().getService(IEventBroker.class);
     if (eventBroker != null) {
       eventBroker.subscribe(PreferencesExportWizard.EVENT_EXPORT_BEGIN, new org.osgi.service.event.EventHandler() {

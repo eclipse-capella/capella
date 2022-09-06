@@ -13,6 +13,7 @@
 package org.polarsys.capella.core.commands.preferences.ui.sirius;
 
 import org.eclipse.emf.ecore.EObject;
+import org.polarsys.capella.core.commands.preferences.preferences.CapellaDiagramPreferences;
 import org.polarsys.capella.core.data.cs.PhysicalPath;
 import org.polarsys.capella.core.data.cs.PhysicalPathReference;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
@@ -37,7 +38,7 @@ public class DoubleClickBehaviourUtil {
 
   public boolean shouldOpenRelatedDiagramsOnDoubleClick(EObject source) {
     boolean navigateOnDoubleClick = Activator.getDefault().getPreferenceStore()
-        .getBoolean(Messages.NamePrefDisplayNavigateOnDoubleClick);
+        .getBoolean(CapellaDiagramPreferences.PREF_DISPLAY_NAVIGATE_ON_DOUBLE_CLICK);
     return navigateOnDoubleClick && (source instanceof FunctionalChain || source instanceof FunctionalChainReference
         || source instanceof PhysicalPath || source instanceof PhysicalPathReference || source instanceof InteractionUse
         || source instanceof Scenario);

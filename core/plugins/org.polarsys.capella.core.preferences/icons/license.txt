@@ -5,3 +5,4 @@ http://www.eclipse.org/legal/epl-2.0
 <icon file path> - <original eclipse plug-in> - <original file path>
 
 /icons/preference.gif - org.eclipse.debug.ui - org.eclipse.debug.ui/icons/full/obj16/debugtt_obj.gif
+/icons/preference.gif - org.eclipse.m2m.atl.adt.editor - org.eclipse.m2m.atl.adt.editor/icons/condition.gif

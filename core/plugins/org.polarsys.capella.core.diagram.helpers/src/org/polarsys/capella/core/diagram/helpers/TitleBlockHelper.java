@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2020, 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -61,16 +61,27 @@ import org.polarsys.kitalpha.emde.model.Element;
  */
 public class TitleBlockHelper {
   public static final String TITLE_BLOCK_LINE = "TitleBlockLine";
+
   public static final String TITLE_BLOCK_CELL = "TitleBlockCell";
+
   public static final String ELEMENT_TITLE_BLOCK = "ElementTitleBlock";
+
   public static final String TITLE_BLOCK_CONTENT = "TitleBlockContent";
+
   public static final String TRUE = "True";
+
   public static final String NAME = "Name:";
+
   public static final String CONTENT = "Content:";
+
   public static final String DIAGRAM_TITLE_BLOCK = "DiagramTitleBlock";
+
   public static final String CAPELLA_PREFIX = "capella:";
+
   public static final String AQL_PREFIX = "aql:";
+
   public static final String FEATURE_PREFIX = "feature:";
+
   public static final String TITLE_BLOCK_MAPPING_PREFIX = "DT_TitleBlock";
 
   /**
@@ -649,13 +660,11 @@ public class TitleBlockHelper {
       semanticElement = descriptor;
     }
 
-    IInterpreterProvider provider = CompoundInterpreter.INSTANCE.getProviderForExpression(expression);
-
-    if (provider instanceof DefaultInterpreterProvider) {
+    IInterpreter interpreter = getInterpreter(semanticElement, expression);
+    if (interpreter == null) {
       return new EvaluationException();
     }
 
-    IInterpreter interpreter = provider.createInterpreter();
     Object result = null;
     try {
       result = interpreter.evaluate(semanticElement, expression);
@@ -669,6 +678,18 @@ public class TitleBlockHelper {
     }
 
     return sanitizeResultItem(result);
+  }
+
+  private static IInterpreter getInterpreter(EObject eObject, String expression) {
+    IInterpreter interpreter = Session.of(eObject).map(Session::getInterpreter).orElseGet(() -> {
+      IInterpreterProvider provider = CompoundInterpreter.INSTANCE.getProviderForExpression(expression);
+      if (!(provider instanceof DefaultInterpreterProvider)) {
+        return provider.createInterpreter();
+      }
+      return null;
+    });
+
+    return interpreter;
   }
 
   private static boolean isValidResultItem(Object item) {

@@ -590,12 +590,6 @@
  </extension>
  <extension
        point="org.eclipse.ui.preferencePages">
-     <page
-            category="org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page"
-            class="org.polarsys.capella.core.commands.preferences.ui.sirius.CapellaDiagramPreferencePage"
-            id="org.polarsys.capella.common.ui.preferences.diagram"
-            name="%Diagram_Page_Name">
-    </page>
     <page
           category="org.polarsys.capella.common.ui.preferences.diagram"
           class="org.polarsys.capella.core.sirius.analysis.preferences.DiagramProcessChainPathPreferencePage"
@@ -612,10 +606,10 @@
  <extension
        point="org.eclipse.core.runtime.preferences">
     <initializer
-          class="org.polarsys.capella.core.sirius.analysis.preferences.DiagramPreferenceInitializer">
-    </initializer>
-    <initializer
       		 class="org.polarsys.capella.core.sirius.analysis.preferences.TitleBlockPreferencesInitializer">
+      </initializer>
+      <initializer
+          class="org.polarsys.capella.core.sirius.analysis.preferences.DiagramProcessChainPathPreferenceInitializer">
       </initializer>
  </extension>
  <extension
@@ -719,4 +713,10 @@
          </Priority>
       </editpolicyProvider>
    </extension>
+ <extension
+       point="org.eclipse.sirius.sessionManagerListener">
+    <listener
+          class="org.polarsys.capella.core.sirius.analysis.titleblock.TitleBlockSessionManagerListener">
+    </listener>
+ </extension>
 </plugin>
