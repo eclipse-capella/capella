@@ -56,13 +56,15 @@ The following figure illustrates the prompted dialog when deleting the System Ac
 
 == Diagram ==
 
+[[Image:Images/6.2%20Diagram_preferences_diagrams_navigation.png]]
+
+=== Preferences for displaying diagrams ===
+
 On the sub section of '''Capella / Diagram''', it is possible to specify preferences for displaying diagrams:
 
 When &ldquo;'''Navigate to related diagrams on double click'''&rdquo; is activated, double clicking on specific elements will navigate to related diagrams instead of opening the Properties dialog.
 
 This preference is enabled by default.
-
-[[Image:Images/6.2%20Diagram_preferences_diagrams_navigation.png|791x578px]]
 
 These specific elements are :
 * '''Scenarios''', '''InteractionUse'''
@@ -84,6 +86,29 @@ The behaviour differs whether the element has related diagrams or not :
 **If there is '''multiple diagram type available for that element''', the dialog let the user choose which diagram to create and its name.
 [[Image:Images/6.2%20Diagram_preferences_multiple_diagrams_creation.png|484x269px]]
 
+=== Date preferences ===
+
+This section allows to define how the date is computed.
+
+The date format field allows to define the date format.
+
+The time zone field allows to define the time zone in two ways:
+* (default) '''SYSTEM''' : This value allows to take the system time zone. This is recommended if every users are working in the same time zone. It will not change the displayed date if the time goes from summer time to winter time.
+* The time zone can otherwise be defined either with an abbreviation such as "PST", a full name such as "America/Los_Angeles", or a customID such as "GMT+2". 
+ 
+
+{| border="1"
+|-
+| 
+[[Image:Images/6.2.%20Model%20preferences_html_3c78e109.png|48x48px]]
+| 
+The date can be computed using these preferences with ''org.polarsys.capella.core.sirius.analysis.CapellaServices.getLastModificationDate(EObject)''. For example you can use it in a "Title block" with the AQL expression ''aql:self.getLastModificationDate()''.
+|-
+| 
+[[Image:Images/Warning_ExclamationPoint.png|48x48px]]
+| 
+If one of theses preferences is changed the diagram displaying the date in a "Title block" will become dirty after a refresh.
+|} 
 
 === Process/Chain/Path Display ===
 

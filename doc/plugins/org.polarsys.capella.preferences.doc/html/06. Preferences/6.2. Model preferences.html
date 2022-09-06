@@ -65,6 +65,10 @@
 			<img height="595" width="877" border="0" src="Images/6.2.%20Model%20preferences_html_597b3feb.png"/>
 		</p>
 		<h2 id="Diagram">Diagram</h2>
+		<p>
+			<img border="0" src="Images/6.2%20Diagram_preferences_diagrams_navigation.png"/>
+		</p>
+		<h3 id="Preferences_for_displaying_diagrams">Preferences for displaying diagrams</h3>
 		<p>On the sub section of 
 			<b>Capella / Diagram</b>, it is possible to specify preferences for displaying diagrams:
 		</p>
@@ -72,9 +76,6 @@
 			<b>Navigate to related diagrams on double click</b>&rdquo; is activated, double clicking on specific elements will navigate to related diagrams instead of opening the Properties dialog.
 		</p>
 		<p>This preference is enabled by default.</p>
-		<p>
-			<img height="578" width="791" border="0" src="Images/6.2%20Diagram_preferences_diagrams_navigation.png"/>
-		</p>
 		<p>These specific elements are :</p>
 		<ul>
 			<li>
@@ -130,6 +131,41 @@
 		<p>
 			<img height="269" width="484" border="0" src="Images/6.2%20Diagram_preferences_multiple_diagrams_creation.png"/>
 		</p>
+		<h3 id="Date_preferences">Date preferences</h3>
+		<p>This section allows to define how the date is computed.</p>
+		<p>The date format field allows to define the date format.</p>
+		<p>The time zone field allows to define the time zone in two ways:</p>
+		<ul>
+			<li>(default) 
+				<b>SYSTEM</b> : This value allows to take the system time zone. This is recommended if every users are working in the same time zone. It will not change the displayed date if the time goes from summer time to winter time.
+			</li>
+			<li>The time zone can otherwise be defined either with an abbreviation such as "PST", a full name such as "America/Los_Angeles", or a customID such as "GMT+2". </li>
+		</ul>
+		<table border="1">
+			<tr>
+				<td>
+					<p>
+						<img height="48" width="48" border="0" src="Images/6.2.%20Model%20preferences_html_3c78e109.png"/>
+					</p>
+				</td>
+				<td>
+					<p>The date can be computed using these preferences with 
+						<i>org.polarsys.capella.core.sirius.analysis.CapellaServices.getLastModificationDate(EObject)</i>. For example you can use it in a "Title block" with the AQL expression 
+						<i>aql:self.getLastModificationDate()</i>.
+					</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>
+						<img height="48" width="48" border="0" src="Images/Warning_ExclamationPoint.png"/>
+					</p>
+				</td>
+				<td>
+					<p>If one of theses preferences is changed the diagram displaying the date in a "Title block" will become dirty after a refresh.</p>
+				</td>
+			</tr>
+		</table>
 		<h3 id="Process.2FChain.2FPath_Display">Process/Chain/Path Display</h3>
 		<p>On the sub section of 
 			<b>Capella / Diagram / Process/Chain/Path Display</b>, it is possible to specify preferences for displaying processes, Chains, paths in diagrams:

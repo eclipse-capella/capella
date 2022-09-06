@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -20,6 +20,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
+import org.eclipse.sirius.business.api.refresh.RepresentationTimeStampInformationSupplierRegistry;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
@@ -30,8 +31,9 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 import org.polarsys.capella.core.sirius.analysis.helpers.DDiagramHelper;
-import org.polarsys.capella.core.sirius.analysis.preferences.DiagramPreferenceInitializer;
+import org.polarsys.capella.core.sirius.analysis.preferences.DiagramProcessChainPathPreferenceInitializer;
 import org.polarsys.capella.core.sirius.analysis.preferences.TitleBlockPreferencesInitializer;
+import org.polarsys.capella.core.sirius.analysis.titleblock.TitleBlockRepresentationTimeStampInfoProvider;
 import org.polarsys.capella.core.sirius.analysis.tool.ActivityEditorUpdater;
 
 public class SiriusViewActivator extends AbstractUIPlugin {
@@ -71,7 +73,7 @@ public class SiriusViewActivator extends AbstractUIPlugin {
     Messages.ArrangeBorderNodesAction_toolbarActionText = CapellaMessages.ArrangeBorderNodesAction_toolbarActionText;
 
     // Initialize preference values
-    new DiagramPreferenceInitializer();
+    new DiagramProcessChainPathPreferenceInitializer();
     new TitleBlockPreferencesInitializer();
 
     // Register a predicate to consider Collapse/Uncollapse changes as impacting in "Functional Chain Description"
@@ -90,6 +92,9 @@ public class SiriusViewActivator extends AbstractUIPlugin {
     RefreshHelper.registerImpactingNotification(considerCollapseStateForAutomaticRefreshPredicate);
     PlatformUI.getWorkbench().getActivitySupport().getActivityManager()
         .addActivityManagerListener(new ActivityEditorUpdater());
+
+    RepresentationTimeStampInformationSupplierRegistry.INSTANCE
+        .add(new TitleBlockRepresentationTimeStampInfoProvider());
   }
 
   /**

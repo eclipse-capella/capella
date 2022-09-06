@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2020, 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -28,7 +28,8 @@ public class TitleBlockPreferencesInitializer extends AbstractPreferencesInitial
     IPreferenceStore preferenceStore = ScopedCapellaPreferencesStore.getInstance(CapellaActionsActivator.PLUGIN_ID);
     preferenceStore.setDefault(TitleBlockPreferencePage.COLUMNS_NUMBER_PREFERENCE_STORE, 2);
     preferenceStore.setDefault(TitleBlockPreferencePage.LINES_NUMBER_PREFERENCE_STORE, 2);
-    preferenceStore.setDefault(TitleBlockPreferencePage.TABLE_CONTENT_PREFERENCE_STORE, TitleBlockPreferencePage.DEFAULT_TABLE);
+    preferenceStore.setDefault(TitleBlockPreferencePage.TABLE_CONTENT_PREFERENCE_STORE,
+        TitleBlockPreferencePage.DEFAULT_TABLE);
     preferenceStore.setDefault(TitleBlockPreferencePage.DEFAULT_TITLEBLOCK_PREFERENCE_STORE, false);
   }
 
@@ -50,7 +51,8 @@ public class TitleBlockPreferencesInitializer extends AbstractPreferencesInitial
    * @return String[] the content of a Diagram Title Block
    */
   public static String[] getContentAsArray() {
-    return getString(TitleBlockPreferencePage.TABLE_CONTENT_PREFERENCE_STORE, true).split(TitleBlockPreferencePage.SEPARATOR, -1);
+    return getString(TitleBlockPreferencePage.TABLE_CONTENT_PREFERENCE_STORE, true)
+        .split(TitleBlockPreferencePage.SEPARATOR, -1);
   }
 
   /**

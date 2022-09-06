@@ -58,7 +58,7 @@ public abstract class ElementDescriptionGroup {
 
   private static final String FAMILY_LOAD_DATA_REFRESH = CapellaUIPropertiesRichtextPlugin.PLUGIN_ID
       + ".loadDataJobFamily";
-  
+
   /**
    * Current edited semantic element.
    */
@@ -84,17 +84,17 @@ public abstract class ElementDescriptionGroup {
   protected GridData infoLabelGridData;
 
   protected Label infoLabel;
-  
+
   protected Button reloadBtn;
 
   protected GridData reloadBtnGridData;
-  
+
   protected Composite parentComposite;
-  
+
   private String baseHrefPath;
 
   private static final String EXISTED_EDITOR_TEXT = "The description is currently opened in an editor. Please use this editor to edit your description."; //$NON-NLS-1$
-  
+
   private static final String EDITOR_LOADING_TEXT = "Attempt(s) loading the editor: "; //$NON-NLS-1$
 
   private class SavingStrategy implements SaveStrategy {
@@ -166,21 +166,21 @@ public abstract class ElementDescriptionGroup {
       public void widgetSelected(SelectionEvent e) {
         loadData(semanticElement, semanticFeature);
       }
-      
+
       @Override
       public void widgetDefaultSelected(SelectionEvent e) {
-        
+
       }
     });
-    
+
     infoLabelGridData = new GridData(SWT.FILL, SWT.CENTER, false, false);
     infoLabel.setLayoutData(infoLabelGridData);
     hideInfoText();
-    
+
     reloadBtnGridData = new GridData(SWT.BEGINNING, SWT.CENTER, false, false);
     reloadBtn.setLayoutData(reloadBtnGridData);
     hideReloadButton();
-    
+
     // Do not propagate the focus event to the embedded editor
     descriptionContainer = new Composite(parent, SWT.NONE) {
       @Override
@@ -457,7 +457,7 @@ public abstract class ElementDescriptionGroup {
     boolean isOn = RichtextManager.getInstance().isOnWidget(descriptionContainer);
     boolean isVisible = descriptionContainer.isVisible();
     boolean isValidState = ((isEditable && isVisible && isOn) || (!isEditable && !isVisible && !isOn));
-    
+
     // Here, we avoid to update the view if it is already in a valid state
     if (!isValidState) {
       descriptionContainer.setVisible(isEditable);
@@ -475,7 +475,7 @@ public abstract class ElementDescriptionGroup {
       }
       // Recalculate the layout
       isValidState = true;
-      
+
       if (descriptionTextField.isLoading()) {
         int[] counter = { 1 };
         Job[] jobs = Job.getJobManager().find(FAMILY_LOAD_DATA_REFRESH);
@@ -496,6 +496,7 @@ public abstract class ElementDescriptionGroup {
               }
               return Status.OK_STATUS;
             }
+
             @Override
             public boolean belongsTo(Object family) {
               return FAMILY_LOAD_DATA_REFRESH.equals(family);
@@ -509,6 +510,11 @@ public abstract class ElementDescriptionGroup {
       }
     }
 
+    // Make sure editor's base href path is always set
+    if (descriptionTextField != null) {
+      descriptionTextField.setBaseHrefPath(baseHrefPath);
+    }
+
     return isValidState && isEditable;
   }
 
@@ -518,26 +524,26 @@ public abstract class ElementDescriptionGroup {
     infoLabelGridData.exclude = false;
     parentComposite.layout(true);
   }
-  
+
   protected void showExistedEditorText() {
     infoLabel.setText(EXISTED_EDITOR_TEXT);
     infoLabel.setVisible(true);
     infoLabelGridData.exclude = false;
     parentComposite.layout(true);
   }
-  
+
   protected void hideInfoText() {
     infoLabel.setVisible(false);
     infoLabelGridData.exclude = true;
     parentComposite.layout(true);
   }
-  
+
   protected void showReloadButton() {
     reloadBtn.setVisible(true);
     reloadBtnGridData.exclude = false;
     parentComposite.layout(true);
   }
-  
+
   protected void hideReloadButton() {
     reloadBtn.setVisible(false);
     reloadBtnGridData.exclude = true;
@@ -551,8 +557,7 @@ public abstract class ElementDescriptionGroup {
     } else {
       widget = RichtextManager.getInstance().getRichtextWidget(descriptionContainer);
     }
-    // Make sure editor's base href path is always set
-    widget.setBaseHrefPath(baseHrefPath);
+
     return widget;
   }
 
@@ -565,7 +570,7 @@ public abstract class ElementDescriptionGroup {
   public boolean shouldRefresh() {
     return descriptionTextField == null || !descriptionTextField.hasFocus();
   }
-  
+
   public String getBaseHrefPath() {
     return baseHrefPath;
   }
@@ -573,5 +578,5 @@ public abstract class ElementDescriptionGroup {
   public void setBaseHrefPath(String baseHrefPath) {
     this.baseHrefPath = baseHrefPath;
   }
-  
+
 }

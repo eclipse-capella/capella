@@ -19,6 +19,7 @@ Require-Bundle: org.eclipse.core.expressions,
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.commands.preferences,
+ org.polarsys.capella.core.commands.preferences.initializers,
  org.polarsys.capella.core.commands.preferences.internalization.l10n,
  org.polarsys.capella.core.commands.preferences.model,
  org.polarsys.capella.core.commands.preferences.preferences,

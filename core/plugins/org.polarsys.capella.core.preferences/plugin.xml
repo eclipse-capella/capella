@@ -38,6 +38,12 @@
             objectClass="org.eclipse.core.resources.IProject"
             name="Commands">
       </page>
+      <page
+	        category="org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page"
+	        class="org.polarsys.capella.core.commands.preferences.ui.sirius.CapellaDiagramPreferencePage"
+	        id="org.polarsys.capella.common.ui.preferences.diagram"
+	        name="%Diagram_Page_Name">
+	  </page>
       
     </extension>
     
@@ -230,9 +236,6 @@
          point="org.eclipse.core.runtime.preferences">
       <initializer
             class="org.polarsys.capella.core.commands.preferences.CommandsPreferencesInitializer">
-      </initializer>
-      <initializer
-            class="org.polarsys.capella.core.commands.preferences.CapellaDiagramPreferencesInitializer">
       </initializer>
    </extension>
    
