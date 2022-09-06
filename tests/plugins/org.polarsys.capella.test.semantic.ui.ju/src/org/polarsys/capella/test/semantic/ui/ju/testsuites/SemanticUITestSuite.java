@@ -19,6 +19,7 @@ import java.util.List;
 
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
+import org.polarsys.capella.test.semantic.ui.ju.testcases.SBNavigationMenuPPTest;
 import org.polarsys.capella.test.semantic.ui.ju.testcases.SemanticBrowserReferencingElementNavigationTest;
 
 import junit.framework.Test;
@@ -30,6 +31,7 @@ public class SemanticUITestSuite extends BasicTestSuite {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
     
     tests.add(new SemanticBrowserReferencingElementNavigationTest());
+    tests.add(new SBNavigationMenuPPTest());
     
     return tests;
   }
