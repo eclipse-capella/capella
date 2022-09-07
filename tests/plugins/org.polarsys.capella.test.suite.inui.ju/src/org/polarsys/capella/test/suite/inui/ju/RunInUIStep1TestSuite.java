@@ -20,6 +20,7 @@ import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 import org.polarsys.capella.test.navigator.ju.testsuites.main.NavigatorUITestSuite;
 import org.polarsys.capella.test.semantic.queries.ju.testsuites.SemanticQueriesTestSuite;
+import org.polarsys.capella.test.semantic.ui.ju.testsuites.SemanticUITestSuite;
 import org.polarsys.capella.test.validation.rules.ju.testsuites.main.ValidationRulesTestSuite;
 
 import junit.framework.Test;
@@ -40,6 +41,7 @@ public class RunInUIStep1TestSuite extends BasicTestSuite {
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
     tests.add(new BusinessQueryTestSuite());
+    tests.add(new SemanticUITestSuite());
     tests.add(new SemanticQueriesTestSuite());
     tests.add(new ValidationRulesTestSuite());
     tests.add(new NavigatorUITestSuite());

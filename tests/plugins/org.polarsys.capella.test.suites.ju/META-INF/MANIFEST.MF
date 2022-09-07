@@ -32,4 +32,5 @@ Require-Bundle: org.apache.xerces,
  org.polarsys.capella.test.benchmarks.ju;visibility:=reexport,
  org.polarsys.capella.test.fragmentation;visibility:=reexport,
  org.polarsys.capella.test.odesign;visibility:=reexport,
- org.polarsys.capella.test.table;visibility:=reexport
+ org.polarsys.capella.test.table;visibility:=reexport,
+ org.polarsys.capella.test.semantic.ui.ju;visibility:=reexport
