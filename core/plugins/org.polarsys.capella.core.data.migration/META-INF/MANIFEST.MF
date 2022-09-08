@@ -33,7 +33,8 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.core.platform.sirius.clipboard,
  org.eclipse.emf.ecore,
  org.polarsys.capella.core.sirius.ui,
- org.eclipse.sirius.ext.emf.edit
+ org.eclipse.sirius.ext.emf.edit,
+ org.eclipse.sirius.ext.base
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-11
