@@ -61,13 +61,7 @@ public class CapellaWorkspaceImageGMFBoundsMigrationParticipant extends Abstract
     /**
      * Migration version.
      */
-    public static final Version MIGRATION_VERSION = new Version("15.0.0.202209061200"); //$NON-NLS-1$
-
-    /**
-     * The previous migration version of this participant. This one introduced a wrong size migration for collapsed
-     * nodes.
-     */
-    public static final Version PREVIOUS_MIGRATION_VERSION = new Version("15.0.0.202201261500"); //$NON-NLS-1$
+    public static final Version MIGRATION_VERSION = new Version("15.0.0.202201261500"); //$NON-NLS-1$
 
     @Override
     public Version getMigrationVersion() {
@@ -78,10 +72,6 @@ public class CapellaWorkspaceImageGMFBoundsMigrationParticipant extends Abstract
     @Override
     protected void postLoad(DAnalysis dAnalysis, Version loadedVersion) {
         if (loadedVersion.compareTo(MIGRATION_VERSION) < 0) {
-            // Whether the first version of this migration participant was already applied. In this case, we might need
-            // to fix a wrong GMF bounds modification.
-            boolean previousMigrationApplied = loadedVersion.compareTo(PREVIOUS_MIGRATION_VERSION) >= 0;
-
             StringBuilder sb = new StringBuilder(Messages.WorkspaceImageGMFBoundsMigrationParticipant_title);
             EList<DView> ownedViews = dAnalysis.getOwnedViews();
             boolean migrationOccurred = false;
@@ -96,7 +86,7 @@ public class CapellaWorkspaceImageGMFBoundsMigrationParticipant extends Abstract
                             boolean migrationOccurredInCurrentDiag = false;
                             String representationName = StringUtil.EMPTY_STRING;
                             for (Object child : gmfDiagram.get().getChildren()) {
-                                if (resizeWorkspaceImageGMFBounds(child, previousMigrationApplied)) {
+                                if (resizeWorkspaceImageGMFBounds(child)) {
                                     migrationOccurred = true;
                                     migrationOccurredInCurrentDiag = true;
                                     representationName = dDiagram.getName();
@@ -116,7 +106,7 @@ public class CapellaWorkspaceImageGMFBoundsMigrationParticipant extends Abstract
         }
     }
 
-    private boolean resizeWorkspaceImageGMFBounds(Object child, boolean previousMigrationApplied) {
+    private boolean resizeWorkspaceImageGMFBounds(Object child) {
         boolean resized = false;
         if (child instanceof Node && ((Node) child).getLayoutConstraint() instanceof Size) {
             Node node = (Node) child;
@@ -124,15 +114,15 @@ public class CapellaWorkspaceImageGMFBoundsMigrationParticipant extends Abstract
                 DNode dnode = (DNode) node.getElement();
                 if (dnode.getStyle() != null) {
                     StyleDescription description = dnode.getStyle().getDescription();
-                    resized = resizeGMFNode(previousMigrationApplied, node, description, dnode.getWidth(), dnode.getHeight());
+                    resized = resizeGMFNode(node, description, dnode.getWidth(), dnode.getHeight());
                 }
             } else if (node.getElement() instanceof DDiagramElementContainer) {
                 DDiagramElementContainer dDiagramElementContainer = (DDiagramElementContainer) node.getElement();
                 if (dDiagramElementContainer.getStyle() != null) {
                     StyleDescription description = dDiagramElementContainer.getStyle().getDescription();
-                    resized = resizeGMFNode(previousMigrationApplied, node, description, dDiagramElementContainer.getWidth(), dDiagramElementContainer.getHeight());
+                    resized = resizeGMFNode(node, description, dDiagramElementContainer.getWidth(), dDiagramElementContainer.getHeight());
                     for (Object o : node.getChildren()) {
-                        resized = resizeWorkspaceImageGMFBounds(o, previousMigrationApplied);
+                        resized = resizeWorkspaceImageGMFBounds(o);
                     }
                 }
             }
@@ -140,7 +130,7 @@ public class CapellaWorkspaceImageGMFBoundsMigrationParticipant extends Abstract
         return resized;
     }
 
-    private boolean resizeGMFNode(boolean previousMigrationApplied, Node node, StyleDescription description, Integer diagramElementWidth, Integer diagramElementHeight) {
+    private boolean resizeGMFNode(Node node, StyleDescription description, Integer diagramElementWidth, Integer diagramElementHeight) {
         boolean resized = false;
         LayoutConstraint layoutConstraint = node.getLayoutConstraint();
         if (description instanceof WorkspaceImageDescription && layoutConstraint instanceof Size) {
@@ -158,8 +148,8 @@ public class CapellaWorkspaceImageGMFBoundsMigrationParticipant extends Abstract
                 NodeQuery nodeQuery = new NodeQuery(node);
                 boolean isCollasped = nodeQuery.isCollapsed();
                 if (isCollasped) {
-                    resized = handleCollapsedResize(previousMigrationApplied, node, nodeSize, fixedDimension, nodeQuery);
-                } else if (!previousMigrationApplied && (nodeSize.getHeight() != fixedDimension.height || nodeSize.getWidth() != fixedDimension.width)) {
+                    resized = handleCollapsedResize(node, nodeSize, fixedDimension, nodeQuery);
+                } else if (nodeSize.getHeight() != fixedDimension.height || nodeSize.getWidth() != fixedDimension.width) {
                     nodeSize.setWidth(fixedDimension.width);
                     nodeSize.setHeight(fixedDimension.height);
                     resized = true;
@@ -203,20 +193,12 @@ public class CapellaWorkspaceImageGMFBoundsMigrationParticipant extends Abstract
         return fixedDimension;
     }
 
-    private boolean handleCollapsedResize(boolean previousMigrationApplied, Node node, Size nodeSize, Dimension fixedDimension, NodeQuery nodeQuery) {
+    private boolean handleCollapsedResize(Node node, Size nodeSize, Dimension fixedDimension, NodeQuery nodeQuery) {
         boolean resized = false;
         Optional<CollapseFilter> optionalCollapseFilter = getCollapseFilter(node);
         if (optionalCollapseFilter.isPresent()) {
             CollapseFilter collapseFilter = optionalCollapseFilter.get();
-            if (previousMigrationApplied) {
-                // The GMF size might have been directly modified instead of the Collapsed filter:
-                Dimension collapsedSize = nodeQuery.getCollapsedSize();
-                if (nodeSize.getHeight() != collapsedSize.height || nodeSize.getWidth() != collapsedSize.width) {
-                    nodeSize.setWidth(collapsedSize.width);
-                    nodeSize.setHeight(collapsedSize.height);
-                    resized = true;
-                }
-            }
+            
             if (collapseFilter.getHeight() != fixedDimension.height || collapseFilter.getWidth() != fixedDimension.width) {
                 collapseFilter.setWidth(fixedDimension.width);
                 collapseFilter.setHeight(fixedDimension.height);
