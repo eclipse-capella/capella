@@ -15,7 +15,7 @@ The Properties View is the place where the characteristics of each Capella eleme
 
 '''Capella Editors are also available as dialogs''', accessed with a double-click on any element. The content is exactly the same as in the Properties Views.
 
-If the "Navigate to related diagrams on double click" preference is enabled, double-clicking on a Scenario/Process/Chain/Path will trigger a diagram navigation action instead.
+If the "Navigate to related diagrams on double click" preference is enabled, double-clicking on a Scenario/Operational Process/Functional Chain/Physical Path will trigger a diagram navigation action instead.
 
 
 [[Image:Images/4.06_Properties_View2.png|600x400px]]

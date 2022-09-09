@@ -122,15 +122,14 @@ public class SelectNewRepresentationDialog extends AbstractSelectionDialog<Repre
 
 
     //Create Label next to name input
-    Label label = new Label(composite, SWT.WRAP);
-    label.setText("Name :");
+    Label label = new Label(composite, SWT.NONE);
+    label.setText("Name :");    
+    label.setFont(parent.getFont());
+
     GridData data = new GridData(GridData.GRAB_HORIZONTAL
         | GridData.GRAB_VERTICAL | GridData.HORIZONTAL_ALIGN_FILL
         | GridData.VERTICAL_ALIGN_CENTER);
     data.widthHint = convertHorizontalDLUsToPixels(IDialogConstants.MINIMUM_MESSAGE_AREA_WIDTH);
-    label.setLayoutData(data);
-    label.setFont(parent.getFont());
-
     //Create Name input
     text = new Text(composite, SWT.SINGLE | SWT.BORDER );
     text.setFont(parent.getFont());

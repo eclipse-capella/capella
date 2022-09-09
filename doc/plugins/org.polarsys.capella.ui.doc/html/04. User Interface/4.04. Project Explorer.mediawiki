@@ -244,3 +244,7 @@ A wildcard character can be used to substitute 				for any other character or ch
 <br>
 <br>
 
+== Actions ==
+
+If the "Navigate to related diagrams on double click" preference is enabled, double-clicking on a Scenario/Operational Process/Functional Chain/Physical Path will trigger a diagram navigation action.
+If it is disabled, double-clicking on a Scenario/Operational Process/Functional Chain/Physical Path will open the properties dialog instead.
