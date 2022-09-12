@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2022 THALES GLOBAL SERVICES.
   
   This program and the accompanying materials are made available under the
   terms of the Eclipse Public License 2.0 which is available at
@@ -152,5 +152,11 @@
          </with>
       </definition>
    </extension>
+<extension
+      point="org.polarsys.capella.common.ui.toolkit.browser.contentProviderFactory">
+   <contentProviderFactory
+         class="org.polarsys.capella.core.ui.semantic.browser.sirius.content.provider.SiriusSemanticBrowserContentProviderFactory">
+   </contentProviderFactory>
+</extension>
 
 </plugin>
