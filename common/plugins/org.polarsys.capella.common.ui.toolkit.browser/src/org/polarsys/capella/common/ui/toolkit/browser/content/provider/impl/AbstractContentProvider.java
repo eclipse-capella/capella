@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -14,7 +14,6 @@
 package org.polarsys.capella.common.ui.toolkit.browser.content.provider.impl;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -62,6 +61,21 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
    */
   protected HashMap<BrowserElementWrapper, BrowserElementWrapper> semanticParentHashMap;
 
+  /**
+   * Hashmap to cache category children for a given element, so that compute isn't called more than once
+   */
+  protected HashMap<EObject, HashMap<ICategory, Set<Object>>> categoryChildrenCache;
+
+  /**
+   * Hashmap to cache direct categories for a given element, so that compute isn't called more than once
+   */
+  protected HashMap<EObject, Set<ICategory>> directCategoriesCache;
+
+  /**
+   * Hashmap to cache item queries for a given element, so that compute isn't called more than once
+   */
+  protected HashMap<EObject, HashMap<ICategory, Set<Object>>> itemQueriesCache;
+
   protected boolean isRefreshRequired = false;
 
   protected ISemanticBrowserModel model;
@@ -73,6 +87,9 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
     super(adapterFactory);
     this.model = model;
     semanticParentHashMap = new HashMap<>(0);
+    categoryChildrenCache = new HashMap<>(0);
+    directCategoriesCache = new HashMap<>(0);
+    itemQueriesCache = new HashMap<>(0);
   }
 
   /**
@@ -81,6 +98,7 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
   @Override
   public void dispose() {
     semanticParentHashMap.clear();
+    clearCaches();
     super.dispose();
   }
 
@@ -92,14 +110,31 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
    * @param gatheredElements
    * @param gatheredCategories
    */
-  protected void getCategoryChildren(ICategory category, BrowserElementWrapper wrapper, LinkedHashSet<Object> gatheredElements) {
+  protected void getCategoryChildren(ICategory category, BrowserElementWrapper wrapper,
+      LinkedHashSet<Object> gatheredElements) {
     // lookup for the element that we need to query on.
     EObject elementToQuery = lookUpModelElement(wrapper);
 
-    // Gather subCategories & compute queries attached to the category.
-    gatheredElements.addAll(category.compute(elementToQuery));
-    gatheredElements
-        .addAll(CategoryRegistry.getInstance().gatherSubCategories(getBrowserId(), elementToQuery, category));
+    HashMap<ICategory, Set<Object>> modelElementCategoryChildren = categoryChildrenCache.get(elementToQuery);
+    if (modelElementCategoryChildren == null) {
+      modelElementCategoryChildren = new HashMap<ICategory, Set<Object>>();
+      categoryChildrenCache.put(elementToQuery, modelElementCategoryChildren);
+    }
+
+    // Try to get already computed values from cache
+    Set<Object> categoryChildren = modelElementCategoryChildren.get(category);
+    if (categoryChildren == null) {
+      categoryChildren = new LinkedHashSet<Object>();
+
+      // compute query attached to the category.
+      categoryChildren.addAll(category.compute(elementToQuery));
+
+      // Gather subCategories & compute queries attached to the category.
+      categoryChildren
+          .addAll(CategoryRegistry.getInstance().gatherSubCategories(getBrowserId(), elementToQuery, category));
+      modelElementCategoryChildren.put(category, categoryChildren);
+    }
+    gatheredElements.addAll(categoryChildren);
   }
 
   /**
@@ -146,7 +181,7 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
               if (!model.doesShowCategory((ICategory) gatherElement)) {
                 shouldRemovedEmptyCategoryWrapper = true;
               } else {
-                  LinkedHashSet<Object> categoryChildren = new LinkedHashSet<>(0);
+                LinkedHashSet<Object> categoryChildren = new LinkedHashSet<>(0);
                 // Compute category children, if no child, remove this category from displayed elements.
                 getCategoryChildren((ICategory) gatherElement, elementWrapper, categoryChildren);
                 if (categoryChildren.isEmpty()) {
@@ -190,10 +225,23 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
         Object semanticParent = semanticParentWrapper.getElement();
         if (semanticParent instanceof ICategory) {
           // temporary result (list typed)
-          for (Object query : ((ICategory) semanticParent).getItemQueries()) {
-            // compute item queries with model element as context.
-            gatheredElements.addAll(QueryAdapter.getInstance().compute(modelElement, query));
+          ICategory category = (ICategory) semanticParent;
+          HashMap<ICategory, Set<Object>> modelElementItemQueries = itemQueriesCache.get(modelElement);
+          if (modelElementItemQueries == null) {
+            modelElementItemQueries = new HashMap<ICategory, Set<Object>>();
+            itemQueriesCache.put(modelElement, modelElementItemQueries);
           }
+
+          Set<Object> itemQueries = modelElementItemQueries.get(category);
+          if (itemQueries == null) {
+            itemQueries = new LinkedHashSet<Object>();
+            for (Object query : category.getItemQueries()) {
+              // compute item queries with model element as context.
+              itemQueries.addAll(QueryAdapter.getInstance().compute(modelElement, query));
+            }
+            modelElementItemQueries.put(category, itemQueries);
+          }
+          gatheredElements.addAll(itemQueries);
         }
       }
     }
@@ -202,7 +250,14 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
     BrowserElementWrapper parentWrapper = semanticParentHashMap.get(wrapper);
     if (null == semanticParentHashMap.get(parentWrapper)) // for blocking recursion
     {
-      gatheredElements.addAll(CategoryRegistry.getInstance().gatherCategories(getBrowserId(), modelElement));
+      // Try to get already computed values from cache
+      Set<ICategory> categories = directCategoriesCache.get(modelElement);
+      if (categories == null) {
+        categories = new LinkedHashSet<ICategory>();
+        categories.addAll(CategoryRegistry.getInstance().gatherCategories(getBrowserId(), modelElement));
+        directCategoriesCache.put(modelElement, categories);
+      }
+      gatheredElements.addAll(categories);
     }
 
   }
@@ -251,6 +306,7 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
     } else if (newInput instanceof EObject) {
       // clear cache.
       semanticParentHashMap.clear();
+      clearCaches();
       inputHasChanged = true;
       rootElement = (EObject) newInput;
     } else if (null == newInput) {
@@ -258,6 +314,7 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
       inputHasChanged = false;
       rootElement = null;
       semanticParentHashMap.clear();
+      clearCaches();
     }
   }
 
@@ -360,7 +417,7 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
       wrapper = new EObjectWrapper((EObject) gatherElement);
     } else if (gatherElement instanceof ICategory) {
       if (((ICategory) gatherElement).isTechnical()) {
-        wrapper = new TechnicalCategoryWrapper((ICategory) gatherElement);  
+        wrapper = new TechnicalCategoryWrapper((ICategory) gatherElement);
       } else {
         wrapper = new CategoryWrapper((ICategory) gatherElement);
       }
@@ -377,5 +434,11 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
    */
   public EObject getRootElement() {
     return rootElement;
+  }
+
+  protected void clearCaches() {
+    categoryChildrenCache.clear();
+    directCategoriesCache.clear();
+    itemQueriesCache.clear();
   }
 }

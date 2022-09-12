@@ -139,6 +139,9 @@
         <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="DiagramNavigationModel.capella#f5e93af0-ab5f-4057-874a-82dfd7c9eb3e"/>
       </ownedRepresentationDescriptors>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_LFUMMCIsEe2ws6wdu8Wbow" name="[FS] [OAS] OperationalProcess 1 1" repPath="#_LFTlICIsEe2ws6wdu8Wbow" changeId="37ea4920-51fb-4e13-b9c5-d0345094a0cb">
+        <eAnnotations xmi:type="description:DAnnotation" uid="_P3F7IDWeEe2KeYKgiH0lUA" source="https://www.polarsys.org/capella/dannotation/eoi">
+          <references xmi:type="org.polarsys.capella.core.data.oa:OperationalProcess" href="DiagramNavigationModel.capella#f1d8cc48-7b7e-4a25-bc7d-25206e642098"/>
+        </eAnnotations>
         <description xmi:type="description_2:SequenceDiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']"/>
         <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="DiagramNavigationModel.capella#767afa48-728e-4035-bdd7-4afb2d2e1afe"/>
       </ownedRepresentationDescriptors>

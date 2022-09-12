@@ -20,6 +20,8 @@ Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-Localization: plugin
 Export-Package: org.polarsys.capella.core.ui.semantic.browser.sirius,
  org.polarsys.capella.core.ui.semantic.browser.sirius.actions,
+ org.polarsys.capella.core.ui.semantic.browser.sirius.content.provider,
  org.polarsys.capella.core.ui.semantic.browser.sirius.handlers,
  org.polarsys.capella.core.ui.semantic.browser.sirius.helpers,
- org.polarsys.capella.core.ui.semantic.browser.sirius.view
+ org.polarsys.capella.core.ui.semantic.browser.sirius.view,
+ org.polarsys.capella.core.ui.semantic.browser.sirius.wrapper
