@@ -6475,6 +6475,22 @@
          </categoryQuery>
       </category>
       <category
+            id="org.polarsys.capella.core.semantic.queries.OperationalCapabilityExternalReferencedOperationalProcesses"
+            isTopLevel="true"
+            name="External Referenced Operational Processes">
+         <availableForType
+               class="org.polarsys.capella.core.data.interaction.AbstractCapability">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.OperationalCapability_ExternalReferencedOperationalProcesses">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
             id="----------- Capability ----------">
       </category>
       <category
@@ -6539,6 +6555,38 @@
          <categoryQuery>
             <basicQuery
                   class="org.polarsys.capella.core.semantic.queries.basic.queries.AbstractCapabilityInvolvedFunctions">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.AbstractCapabilityExternalReferencedFunctionalChains"
+            isTopLevel="true"
+            name="External Referenced Functional Chains">
+         <availableForType
+               class="org.polarsys.capella.core.data.interaction.AbstractCapability">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.AbstractCapability_ExternalReferencedFunctionalChains">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.AbstractCapabilityExternalReferencedScenarios"
+            isTopLevel="true"
+            name="External Referenced Scenarios">
+         <availableForType
+               class="org.polarsys.capella.core.data.interaction.AbstractCapability">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.AbstractCapability_ExternalReferencedScenarios">
             </basicQuery>
          </categoryQuery>
       </category>
@@ -8108,8 +8156,49 @@
             </basicQuery>
          </categoryQuery>
       </category>
-   </extension>
-   
+      <category
+            id="org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChainExternalReferencedFunctionalChains"
+            isTopLevel="true"
+            name="External Referenced Functional Chains">
+         <availableForType
+               class="org.polarsys.capella.core.data.fa.FunctionalChain">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChain_ExternalReferencedFunctionalChains">
+            </basicQuery>
+         </categoryQuery>
+         <itemQueries>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsInvolvementTarget">
+            </basicQuery>
+         </itemQueries>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.basic.queries.OperationalProcessExternalReferencedOperationalProcesses"
+            isTopLevel="true"
+            name="External Referenced Operational Processes">
+         <availableForType
+               class="org.polarsys.capella.core.data.fa.FunctionalChain">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.OperationalProcess_ExternalReferencedOperationalProcesses">
+            </basicQuery>
+         </categoryQuery>
+         <itemQueries>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsInvolvementTarget">
+            </basicQuery>
+         </itemQueries>
+      </category>
+   </extension>         
    <extension
          point="org.polarsys.capella.common.ui.toolkit.browser.contentProviderCategory">
       <category
