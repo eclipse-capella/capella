@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -14,9 +14,13 @@
 package org.polarsys.capella.core.data.helpers.ctx.services;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
+import org.eclipse.emf.common.util.EList;
 import org.polarsys.capella.core.data.ctx.Capability;
 import org.polarsys.capella.core.data.ctx.CapabilityExploitation;
 import org.polarsys.capella.core.data.ctx.CapabilityInvolvement;
@@ -25,6 +29,8 @@ import org.polarsys.capella.core.data.ctx.Mission;
 import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.helpers.interaction.services.AbstractCapabilityExt;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
+import org.polarsys.capella.core.data.interaction.InteractionUse;
+import org.polarsys.capella.core.data.interaction.Scenario;
 
 /**
  * Capability helpers
@@ -154,6 +160,52 @@ public class CapabilityExt {
         .filter(involvement -> involvement.getSystemComponent() == component).collect(Collectors.toList());
     for (CapabilityInvolvement involvement : capabilityInvolvementsToRemove) {
       involvement.destroy();
+    }
+  }
+
+  /**
+   * Returns all related scenarios for a given capability, including those on recursive levels. This function is
+   * recursive.
+   * 
+   * @param capability
+   *          the capability.
+   * @return all the related scenarios for a capability, including those on recursive levels.
+   */
+  public static Set<Scenario> getAllRelatedScenarios(AbstractCapability capability) {
+    EList<Scenario> ownedScenarios = capability.getOwnedScenarios();
+    Set<Scenario> externalReferencedScenarios = new LinkedHashSet<Scenario>();
+    for (Scenario ownedScenario : ownedScenarios) {
+      recursiveGetExternalReferencedScenarios(ownedScenario, externalReferencedScenarios);
+    }
+    externalReferencedScenarios.removeAll(ownedScenarios);
+    return externalReferencedScenarios;
+  }
+
+  /**
+   * This is a recursive version that returns all related functional chains for a functional chain, including those on
+   * recursive levels.
+   * 
+   * @param fc
+   *          the functional chain.
+   * @param gatheredFunctionalChains
+   *          the functional chain accumulator.
+   */
+  private static void recursiveGetExternalReferencedScenarios(Scenario aScenario,
+      Set<Scenario> alreadyGatheredScenarios) {
+    EList<Scenario> referencedScenarios = aScenario.getReferencedScenarios();
+    List<InteractionUse> uses = aScenario.getOwnedTimeLapses().stream().filter(InteractionUse.class::isInstance)
+        .map(InteractionUse.class::cast).collect(Collectors.toList());
+    List<Scenario> usedScenarios = uses.stream().map(interactionUse -> interactionUse.getReferencedScenario())
+        .collect(Collectors.toList());
+
+    Set<Scenario> allReferencedScenarios = new HashSet<Scenario>(referencedScenarios);
+    allReferencedScenarios.addAll(usedScenarios);
+
+    for (Scenario aReferencedScenario : allReferencedScenarios) {
+      if (!alreadyGatheredScenarios.contains(aReferencedScenario)) {
+        alreadyGatheredScenarios.add(aReferencedScenario);
+        recursiveGetExternalReferencedScenarios(aReferencedScenario, alreadyGatheredScenarios);
+      }
     }
   }
 }

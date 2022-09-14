@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018, 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -16,18 +16,19 @@ package org.polarsys.capella.core.data.interaction.validation.abstractCapability
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
 import org.eclipse.emf.validation.model.ConstraintStatus;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
+import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
-import org.polarsys.capella.core.model.helpers.AbstractCapabilityExt;
+import org.polarsys.capella.core.model.helpers.FunctionalChainExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 public class MDCHK_Capability_FunctionalChains_Involvement extends AbstractValidationRule {
@@ -44,12 +45,17 @@ public class MDCHK_Capability_FunctionalChains_Involvement extends AbstractValid
       if (eObj instanceof AbstractCapability) {
 
         AbstractCapability capability = (AbstractCapability) eObj;
-        List<FunctionalChain> functionalChains = capability.getOwnedFunctionalChains();
-        Set<FunctionalChain> functionalChainsInvolved = new HashSet<FunctionalChain>(
-            AbstractCapabilityExt.getFunctionalChains(capability));
-        for (FunctionalChain functionalChain : functionalChains) {
+        Set<EObject> relatedFCs = new HashSet<EObject>();
+        EList<FunctionalChain> functionalChainsInvolved = capability.getInvolvedFunctionalChains();
+        EList<FunctionalChain> ownedFCs = capability.getOwnedFunctionalChains();
+        relatedFCs.addAll(ownedFCs);
+        for (FunctionalChain ownedFC : ownedFCs) {
+          relatedFCs.addAll(FunctionalChainExt.getFlatInvolvedElements(ownedFC, FaPackage.Literals.FUNCTIONAL_CHAIN));
+        }
+
+        for (EObject functionalChain : relatedFCs) {
           if (!functionalChainsInvolved.contains(functionalChain)) {
-            addCtxStatus(statuses, ctx, eObj, capability, functionalChain);
+            addCtxStatus(statuses, ctx, eObj, capability, (FunctionalChain) functionalChain);
           }
         }
       }

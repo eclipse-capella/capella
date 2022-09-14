@@ -34,7 +34,7 @@ public class SemanticQueriesTestSuite extends BasicTestSuite {
     tests.add(new UniqueIDInPluginsTest());
     tests.add(new AvailableForTypeClassExistTest());
     tests.add(new AbstractFunction_mother_activity_allocation());
-    tests.add(new AbstractFunction_mother_function_allocation());
+    tests.add(new AbstractFunction_mother_function_allocation());   
     tests.add(new CapellaElement_applied_property_value_groups());
     tests.add(new CapellaElement_applied_property_values());
     tests.add(new PropertyValue_applying_valued_element());
@@ -42,6 +42,8 @@ public class SemanticQueriesTestSuite extends BasicTestSuite {
     tests.add(new EntryExitPoint_ParentRegionTest());
     tests.add(new State_OwnedEntryExitPointsTest());
     tests.add(new Capability_InvolvedComponents());
+    tests.add(new Capability_ExternalReferencedFunctionalChains());
+    tests.add(new Capability_ExternalReferencedScenarios());
     tests.add(new CapabilityRealization_InvolvedFunctionalChains());
     tests.add(new CapabilityRealization_InvolvedFunctions());
     tests.add(new CapabilityRealization_OwnedFunctionalChains());
@@ -143,15 +145,18 @@ public class SemanticQueriesTestSuite extends BasicTestSuite {
     tests.add(new DataTypeElementsMaxLength());
     tests.add(new OperationalActivity_InvolvingCapabilities());
     tests.add(new OperationalCapability_InvolvedActivities());
+    tests.add(new OperationalCapability_ExternalReferencedOperationalProcesses());
     tests.add(new FunctionalChainInternalLinks());
     tests.add(new FunctionalChainFlatFunctions());
     tests.add(new FunctionalChainFlatExchanges());
     tests.add(new FunctionalChainEndingFunctions());
     tests.add(new FunctionalChainStartingFunctions());
+    tests.add(new FunctionalChain_ExternalReferencedFunctionalChains());
     tests.add(new OperationalProcessFlatOperationalActivities());
     tests.add(new OperationalProcessFlatInteractions());
     tests.add(new OperationalProcessEndingOperationalActivities());
     tests.add(new OperationalProcessStartingOperationalActivities());
+    tests.add(new OperationalProcess_ExternalReferencedOperationalProcesses());
     tests.add(new StateFragment_RelatedFunctions());
     tests.add(new StateFragment_RelatedOperationalActivities());
     tests.add(new Scenario_InvokedMessages());

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2019, 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -30,6 +30,8 @@ public class Rule_DWF_CA_09 extends AbstractRulesOnDesignTest {
 
   public static final String SYSTEM_CAPABILITY_1 = "4c4eb558-8251-44a9-9f06-9bbd20e3317e";
   public static final String SYSTEM_CAPABILITY_2 = "641da578-f417-4dc4-a675-94fb924d2050";
+  public static final String SYSTEM_CAPABILITY_3 = "5beef70b-8798-46b6-97d4-9217bd29ba62";
+  public static final String SYSTEM_CAPABILITY_4 = "86ff71a4-dc57-4584-a2d6-414d1f2a94b9";
 
   /**
    * @see org.polarsys.capella.test.validation.rules.ju.testcases.ValidationRuleTestCase#getTargetedEClass()
@@ -53,7 +55,7 @@ public class Rule_DWF_CA_09 extends AbstractRulesOnDesignTest {
    */
   protected List<String> getScopeDefinition() {
     // data to validate
-    return Arrays.asList(new String[] { SYSTEM_CAPABILITY_1, SYSTEM_CAPABILITY_2 });
+    return Arrays.asList(new String[] { SYSTEM_CAPABILITY_1, SYSTEM_CAPABILITY_2, SYSTEM_CAPABILITY_3, SYSTEM_CAPABILITY_4 });
   }
 
   /**
@@ -62,7 +64,9 @@ public class Rule_DWF_CA_09 extends AbstractRulesOnDesignTest {
    */
   protected List<OracleDefinition> getOracleDefinitions() {
     return Arrays.asList(new OracleDefinition[] { new OracleDefinition(SYSTEM_CAPABILITY_1, 1),
-        new OracleDefinition(SYSTEM_CAPABILITY_2, 0), });
+        new OracleDefinition(SYSTEM_CAPABILITY_2, 0),
+        new OracleDefinition(SYSTEM_CAPABILITY_3, 1),
+        new OracleDefinition(SYSTEM_CAPABILITY_4, 1),});
   }
 
 }

@@ -2,7 +2,7 @@
 
 <!--Capella_Version_6.0.0-->
 <org.polarsys.capella.core.data.capellamodeller:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation"
     xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/6.0.0"
     xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/6.0.0"
     xmlns:org.polarsys.capella.core.data.capellamodeller="http://www.polarsys.org/capella/core/modeller/6.0.0"
@@ -29492,18 +29492,44 @@
         <ownedCapabilities xsi:type="org.polarsys.capella.core.data.ctx:Capability"
             id="4c4eb558-8251-44a9-9f06-9bbd20e3317e" name="Capability 1">
           <ownedFunctionalChains xsi:type="org.polarsys.capella.core.data.fa:FunctionalChain"
-              id="8087d204-81d8-4e31-bba9-9a570feb29bf" name="FunctionalChain 1"/>
+              id="8087d204-81d8-4e31-bba9-9a570feb29bf" name="FunctionalChain Capa 1"/>
           <ownedCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:CapabilityInvolvement"
               id="509f50f6-0921-49b6-82d9-c891971cac89" involved="#65723dc5-53f5-41e1-ae50-bcdcd6480584"/>
         </ownedCapabilities>
         <ownedCapabilities xsi:type="org.polarsys.capella.core.data.ctx:Capability"
             id="641da578-f417-4dc4-a675-94fb924d2050" name="Capability 2">
           <ownedFunctionalChains xsi:type="org.polarsys.capella.core.data.fa:FunctionalChain"
-              id="15b09bce-fb4d-4fe4-b09b-848c76e08a8b" name="FunctionalChain 1"/>
+              id="15b09bce-fb4d-4fe4-b09b-848c76e08a8b" name="FunctionalChain Capa 2"/>
           <ownedFunctionalChainAbstractCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.interaction:FunctionalChainAbstractCapabilityInvolvement"
               id="400554d6-b8ad-4dc0-90cc-ef285bccc11d" involved="#15b09bce-fb4d-4fe4-b09b-848c76e08a8b"/>
           <ownedCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:CapabilityInvolvement"
               id="f940ef76-404e-49a4-9a75-8c304d2bc42e" involved="#65723dc5-53f5-41e1-ae50-bcdcd6480584"/>
+        </ownedCapabilities>
+        <ownedCapabilities xsi:type="org.polarsys.capella.core.data.ctx:Capability"
+            id="5beef70b-8798-46b6-97d4-9217bd29ba62" name="Capability 3">
+          <ownedFunctionalChains xsi:type="org.polarsys.capella.core.data.fa:FunctionalChain"
+              id="16b5cd53-9b60-4843-bb44-e8617f4933d4" name="FunctionalChain Capa 3">
+            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainReference"
+                id="a8638421-205d-47f6-96c9-de6c1f712497" involved="#15b09bce-fb4d-4fe4-b09b-848c76e08a8b"/>
+          </ownedFunctionalChains>
+          <ownedFunctionalChainAbstractCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.interaction:FunctionalChainAbstractCapabilityInvolvement"
+              id="23c758bb-9c16-4b20-b564-0ed6779eb0dc" involved="#16b5cd53-9b60-4843-bb44-e8617f4933d4"/>
+          <ownedCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:CapabilityInvolvement"
+              id="dbf598ce-4689-43c9-86d4-d15329a5e7e6" involved="#65723dc5-53f5-41e1-ae50-bcdcd6480584"/>
+        </ownedCapabilities>
+        <ownedCapabilities xsi:type="org.polarsys.capella.core.data.ctx:Capability"
+            id="86ff71a4-dc57-4584-a2d6-414d1f2a94b9" name="Capability 4">
+          <ownedFunctionalChains xsi:type="org.polarsys.capella.core.data.fa:FunctionalChain"
+              id="5f45d4d2-0ea1-47e5-9a6f-88a9892f2222" name="FunctionalChain Capa 4">
+            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainReference"
+                id="67795108-851b-4a5a-b156-e270c0c5e334" involved="#16b5cd53-9b60-4843-bb44-e8617f4933d4"/>
+          </ownedFunctionalChains>
+          <ownedFunctionalChainAbstractCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.interaction:FunctionalChainAbstractCapabilityInvolvement"
+              id="dd514e3d-8ca4-4c72-9314-e933caad198c" involved="#5f45d4d2-0ea1-47e5-9a6f-88a9892f2222"/>
+          <ownedFunctionalChainAbstractCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.interaction:FunctionalChainAbstractCapabilityInvolvement"
+              id="c1170155-eac9-40e9-b7bc-785a3873bc12" involved="#16b5cd53-9b60-4843-bb44-e8617f4933d4"/>
+          <ownedCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:CapabilityInvolvement"
+              id="394204ba-ba3d-4f8b-a56c-179992dd9f9c" involved="#65723dc5-53f5-41e1-ae50-bcdcd6480584"/>
         </ownedCapabilities>
       </ownedAbstractCapabilityPkg>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
