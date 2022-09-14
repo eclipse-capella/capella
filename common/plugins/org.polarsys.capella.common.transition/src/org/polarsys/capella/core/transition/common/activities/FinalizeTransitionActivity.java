@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -44,9 +44,12 @@ public class FinalizeTransitionActivity extends AbstractActivity implements ITra
   public String getActivityIdentifier() {
     return ITransitionSteps.FINALIZE_TRANSITION;
   }
+
   /*
    * (non-Javadoc)
-   * @see org.polarsys.kitalpha.cadence.core.api.IActivity#run(org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters)
+   * 
+   * @see org.polarsys.kitalpha.cadence.core.api.IActivity#run(org.polarsys.kitalpha.cadence.core.api.parameter.
+   * ActivityParameters)
    */
   @Override
   public IStatus _run(ActivityParameters activityParams) {
@@ -54,21 +57,30 @@ public class FinalizeTransitionActivity extends AbstractActivity implements ITra
 
     boolean shouldSave = Boolean.TRUE.equals(context.get(ITransitionConstants.SAVE_REQUIRED));
 
-    //Maybe with an option of configuration ?
-    //Save if it another resource than the source resource
+    // Maybe with an option of configuration ?
+    // Save if it another resource than the source resource
     Resource sourceResource = (Resource) context.get(ITransitionConstants.TRANSITION_SOURCE_RESOURCE);
     Resource targetResource = (Resource) context.get(ITransitionConstants.TRANSITION_TARGET_RESOURCE);
+
+    if (targetResource == null) {
+      // don't have anything to cleanup/save
+      return Status.OK_STATUS;
+    }
 
     if (targetResource != sourceResource || shouldSave) {
       Session session = SessionManager.INSTANCE.getSession(targetResource);
       if (session != null) {
         if (session.isOpen()) {
           session.save(new NullProgressMonitor());
-          LogHelper.getInstance().info(NLS.bind("Session for ''{0}'' has been saved automatically.", targetResource.getURI()), Messages.Activity_Transition);
+          LogHelper.getInstance().info(
+              NLS.bind("Session for ''{0}'' has been saved automatically.", targetResource.getURI()),
+              Messages.Activity_Transition);
         }
       } else {
         try {
-          LogHelper.getInstance().info(NLS.bind("Resource ''{0}'' has been saved automatically.", targetResource.getURI()), Messages.Activity_Transition);
+          LogHelper.getInstance().info(
+              NLS.bind("Resource ''{0}'' has been saved automatically.", targetResource.getURI()),
+              Messages.Activity_Transition);
           targetResource.save(Collections.EMPTY_MAP);
         } catch (IOException exception) {
           exception.printStackTrace();
@@ -78,7 +90,7 @@ public class FinalizeTransitionActivity extends AbstractActivity implements ITra
     }
 
     GenericParameter<?> parameter = activityParams.getParameter(IOptionsConstants.IS_DRY_RUN);
-    if(parameter == null || !Boolean.valueOf(parameter.getValue().toString())){
+    if (parameter == null || !Boolean.valueOf(parameter.getValue().toString())) {
       LogHelper.getInstance().info("Operation has been successful.", Messages.Activity_Transition);
     }
 
