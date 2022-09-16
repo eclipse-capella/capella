@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -146,38 +146,59 @@ public class CapellaDeleteCommand extends BasicCapellaDeleteCommand {
 
   @Override
   protected IStatus preDeleteChecks() {
-    Set<?> elementsToDelete = getAllElementsToDelete();
-    if (preventProtectedElementsDeletion && !CapellaDeleteAction.canDelete(elementsToDelete)) {
-      deletionStatus = new Status(Status.ERROR, CapellaActionsActivator.PLUGIN_ID,
-          Messages.CapellaDeleteCommand_ProtectedElementsError);
-    } else {
-      long nbRepresentations = elementsToDelete.stream().filter(DRepresentationDescriptor.class::isInstance).count();
-      long nbSemanticElements = elementsToDelete.size() - nbRepresentations;
-      int status = Status.INFO;
-      String messageNbSemanticElement = "";
-      String messageNbRepresentation = "";
-
-      if (nbSemanticElements == 1) {
-        messageNbSemanticElement = Messages.CapellaDeleteCommand_ConfirmDeletionWithOneSemanticElement;
-      } else {
-        messageNbSemanticElement = MessageFormat
-            .format(Messages.CapellaDeleteCommand_ConfirmDeletionWithManySemanticElement, nbSemanticElements);
-      }
-      if (nbRepresentations > 0) {
-        if (nbRepresentations == 1) {
-          messageNbRepresentation = Messages.CapellaDeleteCommand_ConfirmDeletionWithOneRepresentation;
-        } else {
-          messageNbRepresentation = MessageFormat
-              .format(Messages.CapellaDeleteCommand_ConfirmDeletionWithManyRepresentations, nbRepresentations);
-        }
-        status = Status.WARNING;
-      }
-      String message = MessageFormat.format(Messages.CapellaDeleteCommand_ConfirmDeletionQuestion,
-          messageNbSemanticElement, messageNbRepresentation);
-      deletionStatus = new Status(status, CapellaActionsActivator.PLUGIN_ID, message);
-    }
+    deletionStatus = getStatusMessage(false);
     return deletionStatus;
+  }
 
+  @Override
+  protected IStatus getInformationMessage() {
+    return getStatusMessage(true);
+  }
+
+  private IStatus getStatusMessage(boolean isInfoMessage) {
+    Set<?> elementsToDelete = getAllElementsToDelete();
+
+    if (preventProtectedElementsDeletion && !CapellaDeleteAction.canDelete(elementsToDelete)) {
+      return new Status(Status.ERROR, CapellaActionsActivator.PLUGIN_ID,
+          Messages.CapellaDeleteCommand_ProtectedElementsError);
+    }
+
+    long nbRepresentations = elementsToDelete.stream().filter(DRepresentationDescriptor.class::isInstance).count();
+    long nbSemanticElements = elementsToDelete.size() - nbRepresentations;
+    String messageNbSemanticElement = "";
+    String messageNbRepresentation = "";
+
+    // compute messages for semantic resources and representations
+    if (nbSemanticElements == 1) {
+      messageNbSemanticElement = Messages.CapellaDeleteCommand_ConfirmDeletionWithOneSemanticElement;
+    } else {
+      messageNbSemanticElement = MessageFormat
+          .format(Messages.CapellaDeleteCommand_ConfirmDeletionWithManySemanticElement, nbSemanticElements);
+    }
+    if (nbRepresentations > 0) {
+      if (nbRepresentations == 1) {
+        messageNbRepresentation = Messages.CapellaDeleteCommand_ConfirmDeletionWithOneRepresentation;
+      } else {
+        messageNbRepresentation = MessageFormat
+            .format(Messages.CapellaDeleteCommand_ConfirmDeletionWithManyRepresentations, nbRepresentations);
+      }
+    }
+
+    if (isInfoMessage) {
+      String message = null;
+      if (elementsToDelete.size() == 1) {
+        message = MessageFormat.format(Messages.CapellaDeleteCommand_ConfirmDeletionWithOneElementInfo,
+            messageNbSemanticElement.length() > 0 ? messageNbSemanticElement : messageNbRepresentation);
+      } else {
+        message = MessageFormat.format(Messages.CapellaDeleteCommand_ConfirmDeletionWithMultipleDifferentElementsInfo,
+            messageNbSemanticElement, messageNbRepresentation);
+      }
+      return new Status(Status.INFO, CapellaActionsActivator.PLUGIN_ID, message);
+    }
+
+    String message = MessageFormat.format(Messages.CapellaDeleteCommand_ConfirmDeletionQuestion,
+        messageNbSemanticElement, messageNbRepresentation);
+    return new Status(Status.WARNING, CapellaActionsActivator.PLUGIN_ID, message);
   }
 
   @Override

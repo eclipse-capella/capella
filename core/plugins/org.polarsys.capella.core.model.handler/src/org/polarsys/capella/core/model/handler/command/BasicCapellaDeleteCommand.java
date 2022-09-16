@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -160,10 +160,11 @@ public class BasicCapellaDeleteCommand extends AbstractCommand {
     this.sendLongRunningEvents = longOperationEvents;
     this.selection = new ArrayList<Object>(selection);
   }
-  
+
   /**
    * @see org.eclipse.emf.edit.command.DeleteCommand#execute()
    */
+  @Override
   public void execute() {
 
     /**
@@ -176,22 +177,25 @@ public class BasicCapellaDeleteCommand extends AbstractCommand {
       return;
     }
 
-    /**
-     * Preventive checks
-     */
-    IStatus status = preDeleteChecks();
-    if (status != null && !status.isOK()) {
-      LogExt.log(IReportManagerDefaultComponents.MODEL, status);
+    // show message in information window if deletion dialog is now shown
+    if (!isConfirmationRequired()) {
+      IStatus informationStatus = getInformationMessage();
+      if (informationStatus != null)
+        LogExt.log(IReportManagerDefaultComponents.MODEL, informationStatus);
     }
-
     if (confirmDelete && !confirmDeletion()) {
       return;
     }
 
+    /**
+     * Preventive checks
+     */
+    IStatus status = preDeleteChecks();
+
     if (status != null && (status.getSeverity() == IStatus.ERROR || status.getSeverity() == IStatus.CANCEL)) {
       return;
     }
-    
+
     // Should execution take place against the execution manager ?
     if (ensureTransaction) {
       // Execute deletion against the execution manager.
@@ -231,6 +235,7 @@ public class BasicCapellaDeleteCommand extends AbstractCommand {
         /**
          * @see java.lang.Runnable#run()
          */
+        @Override
         public void run() {
           doExecute();
         }
@@ -250,8 +255,13 @@ public class BasicCapellaDeleteCommand extends AbstractCommand {
       }
     }
   }
-  
+
   protected IStatus preDeleteChecks() {
+    return Status.OK_STATUS;
+  }
+
+  // to be displayed in the information log
+  protected IStatus getInformationMessage() {
     return Status.OK_STATUS;
   }
 
@@ -342,6 +352,7 @@ public class BasicCapellaDeleteCommand extends AbstractCommand {
   /**
    * @see org.eclipse.emf.common.command.Command#redo()
    */
+  @Override
   public void redo() {
     if (null != realCommand) {
       realCommand.redo();
