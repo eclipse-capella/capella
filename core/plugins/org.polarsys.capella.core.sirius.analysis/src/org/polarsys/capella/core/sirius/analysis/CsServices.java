@@ -2361,11 +2361,6 @@ public class CsServices {
     EObject sourceComponent = getComponentType(preSourceView);
     EObject targetComponent = getComponentType(preTargetView);
 
-    // disable same port connection in one part mode
-    if ((preSource == preTarget) && !isMultipartMode((ModelElement) sourceComponent)) {
-      return false;
-    }
-
     // allow only OutFlowPort with StandardPort/InFlowPort and StandardPort with StandardPort/OutFlowPort
     if (preSource instanceof ComponentPort) {
       ComponentPort port = (ComponentPort) preSource;
@@ -2448,7 +2443,7 @@ public class CsServices {
     EObject source = getComponentType(sourceView);
     EObject target = getComponentType(targetView);
 
-    return (source != target) && isAbstractActorOrNotNodeComponent(source) && isAbstractActorOrNotNodeComponent(target);
+    return isAbstractActorOrNotNodeComponent(source) && isAbstractActorOrNotNodeComponent(target);
   }
 
   public boolean isValidCreationPABDelegationExchange(EObject container, DSemanticDecorator sourceView) {
@@ -2556,9 +2551,6 @@ public class CsServices {
       return isNodeComponent(source) && isNodeComponent(target.eContainer());
 
     } else {
-      if (TriStateBoolean.False.equals(CapellaProjectHelper.isReusableComponentsDriven(source)) && (source == target)) {
-        return false;
-      }
       return isNodeComponent(source) && isNodeComponent(target);
     }
   }

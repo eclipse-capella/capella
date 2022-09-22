@@ -36,19 +36,35 @@ public class CreateComponentExchangeGroup extends XABDiagramsProject {
   public void testCreateComponentExchange(SessionContext context) {
     testOnXAB_CreateComponentExchange(context, OA__OAB_DIAGRAM,
         BlockArchitectureExt.Type.OA, OA__OAB_OA1, OA__OAB_OA2, null, null);
+    
+    testOnXAB_CreateComponentExchange(context, OA__OAB_DIAGRAM,
+            BlockArchitectureExt.Type.OA, OA__OAB_OA1, OA__OAB_OA1, null, null);
 
     testOnXAB_CreateComponentExchange(context, SA__SAB_DIAGRAM,
         BlockArchitectureExt.Type.SA, SA__SAB_A1, SA__SAB_A2,
         SA__SAB_COMPONENT_PORT_A1_CP1, SA__SAB_COMPONENT_PORT_A2_CP1);
+    
+    testOnXAB_CreateComponentExchange(context, SA__SAB_DIAGRAM,
+            BlockArchitectureExt.Type.SA, SA__SAB_A1, SA__SAB_A1,
+            null, null);
 
     testOnXAB_CreateComponentExchange(context, LA__LAB_DIAGRAM,
         BlockArchitectureExt.Type.LA, LA__LAB_A1, LA__LAB_A2,
         LA__LAB_COMPONENT_PORT_A1_CP1, LA__LAB_COMPONENT_PORT_A2_CP1);
+    
+    testOnXAB_CreateComponentExchange(context, LA__LAB_DIAGRAM,
+            BlockArchitectureExt.Type.LA, LA__LAB_A1, LA__LAB_A1,
+            null, null);
 
     testOnXAB_CreateComponentExchange(context, PA__PAB_DIAGRAM,
         BlockArchitectureExt.Type.PA, PA__PAB_COMPONENT_PC3,
         PA__PAB_COMPONENT_PC4, PA__PAB_COMPONENT_PORT_PC3_CP1,
         PA__PAB_COMPONENT_PORT_PC4_CP1);
+    
+    testOnXAB_CreateComponentExchange(context, PA__PAB_DIAGRAM,
+            BlockArchitectureExt.Type.PA, PA__PAB_COMPONENT_PC3,
+            PA__PAB_COMPONENT_PC3, null,
+            null);
   }
 
   public void testCreateComponentExchangeDelegation(SessionContext context) {
@@ -106,7 +122,7 @@ public class CreateComponentExchangeGroup extends XABDiagramsProject {
     // Create a delegation between 2 components
     diagram.createComponentExchange(compSourceId, compTargetId, GenericModel.COMPONENT_EXCHANGE_1);
 
-    if (type != BlockArchitectureExt.Type.OA) {
+    if (type != BlockArchitectureExt.Type.OA && (portTargetId != null || portSourceId != null)) {
       // Create a delegation between a component and a component port
       diagram.createComponentExchange(compSourceId, portTargetId, GenericModel.COMPONENT_EXCHANGE_2);
 
