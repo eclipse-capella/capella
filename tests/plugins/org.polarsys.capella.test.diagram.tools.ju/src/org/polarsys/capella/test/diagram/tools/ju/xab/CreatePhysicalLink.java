@@ -73,10 +73,14 @@ public class CreatePhysicalLink extends XABDiagramsProject {
     switch (type) {
     case SA:
       validLinks.add(new LinkInfo(SA__SAB_A1, SA__SAB_A2, SA_STRUCTURE));
+      validLinks.add(new LinkInfo(SA__SAB_A1, SA__SAB_A1, A_1));
+      validLinks.add(new LinkInfo(SA__SAB_PHYSICAL_PORT_A1_PP1, SA__SAB_A1, A_1));
       validLinks.add(new LinkInfo(SA__SAB_A1, SA__SAB_SYSTEM_PART, SA_STRUCTURE));
       break;
     case LA:
       validLinks.add(new LinkInfo(LA__LAB_A1, LA__LAB_A2, LA_STRUCTURE));
+      validLinks.add(new LinkInfo(LA__LAB_A1, LA__LAB_A1, LA_1));
+      validLinks.add(new LinkInfo(LA__LAB_PHYSICAL_PORT_A1_PP1, LA__LAB_A1, LA_1));
       validLinks.add(new LinkInfo(LA__LAB_LOGICAL_SYSTEM_PART, LA__LAB_A1, LA_STRUCTURE));
       validLinks.add(new LinkInfo(LA__LAB_A2, LA__LAB_LOGICAL_SYSTEM_PART, LA_STRUCTURE));
       validLinks.add(new LinkInfo(LA__LAB_A2, LA_7_1_PART, LA_STRUCTURE));
@@ -90,6 +94,10 @@ public class CreatePhysicalLink extends XABDiagramsProject {
       break;
     case PA:
       validLinks.add(new LinkInfo(PA__PAB_COMPONENT_PC1, PA__PAB_COMPONENT_PC2, PA__PAB_PHYSICAL_SYSTEM));
+      validLinks.add(new LinkInfo(PA__PAB_COMPONENT_PC1, PA__PAB_COMPONENT_PC1, PA__PAB_PHYSICAL_COMPONENT_PC1));
+      validLinks.add(new LinkInfo(PA__PORT_PP2, PA__PAB_COMPONENT_PC1, PA__PAB_PHYSICAL_COMPONENT_PC1));
+      validLinks.add(new LinkInfo(PA__PORT_PP2, PA__PORT_PP1, PA__PAB_PHYSICAL_COMPONENT_PC1));
+      validLinks.add(new LinkInfo(PA__PORT_PP2, PA__PORT_PP1, PA__PAB_PHYSICAL_COMPONENT_PC1));
       break;
     default:
       break;
