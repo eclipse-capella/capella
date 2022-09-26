@@ -13,6 +13,7 @@
 package org.polarsys.capella.core.platform.sirius.ui.navigator.actions;
 
 import java.util.Collection;
+import java.util.Collections;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.window.Window;
@@ -26,6 +27,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.polarsys.capella.common.ui.toolkit.dialogs.OpenRepresentationDialog;
 import org.polarsys.capella.core.commands.preferences.ui.sirius.DoubleClickBehaviourUtil;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.sirius.ui.actions.NewRepresentationAction;
 import org.polarsys.capella.core.sirius.ui.actions.OpenRepresentationsAction;
 import org.polarsys.capella.core.sirius.ui.actions.SelectNewRepresentationAction;
@@ -35,13 +37,12 @@ public class OpenRelatedDiagramAction {
   EObject target;
 
   public OpenRelatedDiagramAction(EObject target) {
-    this.target = target;
+    this.target = DoubleClickBehaviourUtil.INSTANCE.getTargetSemanticElement(target);
   }
 
   public void run() {
-
-    Collection<DRepresentationDescriptor> representations = DoubleClickBehaviourUtil.INSTANCE
-        .getRepresentationsDescriptors(target);
+    Collection<DRepresentationDescriptor> representations = RepresentationHelper
+        .getAllRepresentationDescriptorsTargetedBy(Collections.singleton(target));
     if (!representations.isEmpty()) {
       if (representations.size() > 1) {
         Shell activeShell = Display.getDefault().getActiveShell();

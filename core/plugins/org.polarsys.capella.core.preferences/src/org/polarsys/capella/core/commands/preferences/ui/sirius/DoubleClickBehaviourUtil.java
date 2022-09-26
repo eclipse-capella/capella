@@ -12,23 +12,18 @@
  *******************************************************************************/
 package org.polarsys.capella.core.commands.preferences.ui.sirius;
 
-import java.util.Collection;
-import java.util.Collections;
-
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.polarsys.capella.core.data.cs.PhysicalPath;
 import org.polarsys.capella.core.data.cs.PhysicalPathReference;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.fa.FunctionalChainReference;
 import org.polarsys.capella.core.data.interaction.InteractionUse;
 import org.polarsys.capella.core.data.interaction.Scenario;
-import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.preferences.Activator;
 
 /**
  * This util class is used to determine if navigation shall be made on double click, based on the preference
- * from @CapellaDiagramPreferencePage It also provides a method to get RepresentationDescriptors
+ * from @CapellaDiagramPreferencePage It also provides a method to get the target element of a reference
  * 
  * @author etraisnel
  */
@@ -48,7 +43,7 @@ public class DoubleClickBehaviourUtil {
         || source instanceof Scenario);
   }
 
-  public Collection<DRepresentationDescriptor> getRepresentationsDescriptors(EObject target) {
+  public EObject getTargetSemanticElement(EObject target) {
     if (target instanceof FunctionalChainReference) {
       target = ((FunctionalChainReference) target).getReferencedFunctionalChain();
     } else if (target instanceof PhysicalPathReference) {
@@ -56,8 +51,6 @@ public class DoubleClickBehaviourUtil {
     } else if (target instanceof InteractionUse) {
       target = ((InteractionUse) target).getReferencedScenario();
     }
-
-    return RepresentationHelper.getAllRepresentationDescriptorsTargetedBy(Collections.singleton(target));
+    return target;
   }
-
 }
