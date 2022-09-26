@@ -13,6 +13,7 @@
 package org.polarsys.capella.core.sirius.analysis.policies;
 
 import java.util.Collection;
+import java.util.Collections;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
@@ -50,6 +51,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.polarsys.capella.common.ui.toolkit.dialogs.OpenRepresentationDialog;
 import org.polarsys.capella.common.ui.toolkit.dialogs.SelectNewRepresentationDialog;
 import org.polarsys.capella.core.commands.preferences.ui.sirius.DoubleClickBehaviourUtil;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.sirius.analysis.Messages;
 
 /**
@@ -79,9 +81,10 @@ public class OpenRelatedDiagramEditPolicy extends OpenDiagramEditPolicy {
           }
           if (!((DDiagramElement) element).getParentDiagram().isIsInShowingMode() && targetSemanticElement != null
               && DoubleClickBehaviourUtil.INSTANCE.shouldOpenRelatedDiagramsOnDoubleClick(targetSemanticElement)) {
+            targetSemanticElement = DoubleClickBehaviourUtil.INSTANCE.getTargetSemanticElement(targetSemanticElement);
             Session session = SessionManager.INSTANCE.getSession(element);
-            Collection<DRepresentationDescriptor> representations = DoubleClickBehaviourUtil.INSTANCE
-                .getRepresentationsDescriptors(targetSemanticElement);
+            Collection<DRepresentationDescriptor> representations = RepresentationHelper
+                .getAllRepresentationDescriptorsTargetedBy(Collections.singleton(targetSemanticElement));
             if (!representations.isEmpty()) {
               if (representations.size() > 1) {
                 Shell activeShell = Display.getDefault().getActiveShell();
