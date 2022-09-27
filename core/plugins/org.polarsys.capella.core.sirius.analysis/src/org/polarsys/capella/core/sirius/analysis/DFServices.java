@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -33,6 +33,7 @@ import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.FunctionInputPort;
 import org.polarsys.capella.core.data.fa.FunctionOutputPort;
+import org.polarsys.capella.core.data.fa.FunctionPort;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
@@ -342,6 +343,11 @@ public class DFServices {
       }
     }
 
+    // do not allow to move an output/input port to a target that has a FE defined with the same input/output port
+    if (element instanceof FunctionPort && FunctionExt.isFlowPortInAnyFunctionalExchange((FunctionPort) element, targetFunction)) {
+      return false;
+    }
+
     return newContainer != null;
   }
 
@@ -483,15 +489,16 @@ public class DFServices {
     LinkedList<AbstractFunction> toVisit = new LinkedList<AbstractFunction>();
     Collection<FunctionalExchange> result = new ArrayList<FunctionalExchange>();
 
-    //Retrieve all Functions from diagram
+    // Retrieve all Functions from diagram
     for (DDiagramElement dNode : DiagramServices.getDiagramServices().getAllAbstractNodes(diagram, false)) {
-        EObject target = dNode.getTarget();
-        if (target instanceof AbstractFunction) {
-          toVisit.add((AbstractFunction)target);
-        }
+      EObject target = dNode.getTarget();
+      if (target instanceof AbstractFunction) {
+        toVisit.add((AbstractFunction) target);
+      }
     }
-    
-    //Retrieve all outgoing exchanges from displayed Functions (recursively since a parent function display sub-exchanges if subfunction is not displayed)
+
+    // Retrieve all outgoing exchanges from displayed Functions (recursively since a parent function display
+    // sub-exchanges if subfunction is not displayed)
     Collection<AbstractFunction> visited = new ArrayList<AbstractFunction>();
     while (!toVisit.isEmpty()) {
       AbstractFunction function = toVisit.removeFirst();

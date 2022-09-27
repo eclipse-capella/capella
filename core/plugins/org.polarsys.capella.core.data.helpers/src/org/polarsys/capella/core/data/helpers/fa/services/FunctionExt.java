@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -39,6 +39,7 @@ import org.polarsys.capella.core.data.fa.FunctionInputPort;
 import org.polarsys.capella.core.data.fa.FunctionKind;
 import org.polarsys.capella.core.data.fa.FunctionOutputPort;
 import org.polarsys.capella.core.data.fa.FunctionPkg;
+import org.polarsys.capella.core.data.fa.FunctionPort;
 import org.polarsys.capella.core.data.fa.FunctionRealization;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.information.Port;
@@ -223,7 +224,7 @@ public class FunctionExt {
 				// If the functional exchange of the sub-function goes out of
 				// the scope of the function
 				if (!EcoreUtil2.isContainedBy(activityEdge.getTarget(), function))
-					result.add((FunctionalExchange) activityEdge);
+					result.add(activityEdge);
 			}
 		}
 		return result;
@@ -249,7 +250,7 @@ public class FunctionExt {
 				// If the functional exchange of the sub-function goes out of
 				// the scope of the function
 				if (!EcoreUtil2.isContainedBy(activityEdge.getSource(), function))
-					result.add((FunctionalExchange) activityEdge);
+					result.add(activityEdge);
 			}
 		}
 		return result;
@@ -644,4 +645,35 @@ public class FunctionExt {
 
 		return false;
 	}
+
+  /**
+   * Return true if element is part of any Functional Exchanges defined on the targetFunction
+   * 
+   * @param element
+   * @param targetFunction
+   * @return boolean
+   */
+  public static boolean isFlowPortInAnyFunctionalExchange(FunctionPort element, AbstractFunction targetFunction) {
+    // do not allow to move an output port to a target that has a FE defined with the same output port
+    if (element instanceof FunctionOutputPort) {
+      List<FunctionalExchange> exchanges = FunctionExt.getIncomingExchange(targetFunction);
+      for (FunctionalExchange ex : exchanges) {
+        // check for a matching FE where element is used as output port
+        if (ex.getSourceFunctionOutputPort().equals(element)) {
+          return true;
+        }
+      }
+    }
+
+    // do not allow to move an input port to a target that has a FE defined with the same input port
+    if (element instanceof FunctionInputPort) {
+      List<FunctionalExchange> exchanges = FunctionExt.getOutGoingExchange(targetFunction);
+      for (FunctionalExchange ex : exchanges) {
+        if (ex.getTargetFunctionInputPort().equals(element)) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
 }
