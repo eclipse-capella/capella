@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <!--
-  Copyright (c) 2018, 2020, 2020 THALES GLOBAL SERVICES.
+  Copyright (c) 2018, 2022 THALES GLOBAL SERVICES.
   
   This program and the accompanying materials are made available under the
   terms of the Eclipse Public License 2.0 which is available at
@@ -305,6 +305,33 @@
                  label="%quickFix.TC_DF_15.label">
               <rules
                     ruleId="TC_DF_15">
+              </rules>
+           </resolver>
+           <resolver
+                 class="org.polarsys.capella.core.data.fa.ui.quickfix.resolver.DCOM_23_Resolver_Source"
+                 desc="%quickFix.DCOM_23_Resolver_Source.desc"
+                 icon="icons/search16.gif"
+                 label="%quickFix.DCOM_23_Resolver_Source.label">
+              <rules
+                    ruleId="DCOM_23">
+              </rules>
+           </resolver>
+           <resolver
+                 class="org.polarsys.capella.core.data.fa.ui.quickfix.resolver.DCOM_23_Resolver_Target"
+                 desc="%quickFix.DCOM_23_Resolver_Target.desc"
+                 icon="icons/search16.gif"
+                 label="%quickFix.DCOM_23_Resolver_Target.label">
+              <rules
+                    ruleId="DCOM_23">
+              </rules>
+           </resolver>
+           <resolver
+                 class="org.polarsys.capella.core.data.fa.ui.quickfix.resolver.DCOM_23_Resolver_Delete"
+                 desc="%quickFix.DCOM_23_Resolver_Delete.desc"
+                 icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_delete.gif"
+                 label="%quickFix.DCOM_23_Resolver_Delete.label">
+              <rules
+                    ruleId="DCOM_23">
               </rules>
            </resolver>
    </extension>

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -20,8 +20,6 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.eclipse.core.runtime.IConfigurationElement;
-import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
-import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.EList;
@@ -36,6 +34,8 @@ import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
+import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.core.data.capellacommon.AbstractCapabilityPkg;
 import org.polarsys.capella.core.data.capellacommon.AbstractState;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
@@ -59,8 +59,10 @@ import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
 import org.polarsys.capella.core.data.epbs.EpbsPackage;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.FunctionPkg;
+import org.polarsys.capella.core.data.fa.FunctionPort;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.fa.FunctionalChainInvolvement;
+import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
 import org.polarsys.capella.core.data.information.datatype.BooleanType;
 import org.polarsys.capella.core.data.information.datatype.Enumeration;
 import org.polarsys.capella.core.data.information.datavalue.EnumerationLiteral;
@@ -120,7 +122,7 @@ public class MoveHelper implements IMoveHelper {
 
     return status;
   }
-  
+
   /**
    * @param selectedModelElements
    * @param inputTargetElement
@@ -217,6 +219,13 @@ public class MoveHelper implements IMoveHelper {
         } else if (source instanceof FunctionalChain) {
           // Involved elements shall be in the same level than targetElement
           isOK = ((FunctionalChain) source).getInvolvedElements().stream().noneMatch(x -> !areInSameLayer(x, target));
+
+        } else if (source instanceof FunctionPort && target instanceof AbstractFunction) {
+          // do not allow to move an output/input port to a target that has a FE defined with the same input/output port
+          if (FunctionExt.isFlowPortInAnyFunctionalExchange((FunctionPort) source, (AbstractFunction) target)) {
+            isOK = false;
+          }
+
         }
 
         if (!isOK) {
@@ -326,7 +335,7 @@ public class MoveHelper implements IMoveHelper {
 
     return status;
   }
-  
+
   /**
    * @param selectedModelElements
    * @param targetElement
@@ -416,7 +425,7 @@ public class MoveHelper implements IMoveHelper {
     }
     return areCompatible;
   }
-  
+
   /**
    * Depending on mixed hierarchy mode state preference, determine if we can move a region into a State Machine
    * 
@@ -661,14 +670,14 @@ public class MoveHelper implements IMoveHelper {
 
     return stateModeLst;
   }
-  
+
   protected Collection<IMoveHelper> getMoveHelpers() {
     if (moveHelpers == null) {
       moveHelpers = new ArrayList<>();
 
-      //Read extension point looking for instances of IMoveHelper
-      for (IConfigurationElement element : ExtensionPointHelper
-          .getConfigurationElements(PLUGIN_ID, EP_MOVE_HELPER_ID)) {
+      // Read extension point looking for instances of IMoveHelper
+      for (IConfigurationElement element : ExtensionPointHelper.getConfigurationElements(PLUGIN_ID,
+          EP_MOVE_HELPER_ID)) {
         try {
           IMoveHelper helper = (IMoveHelper) element.createExecutableExtension("class");
           if (helper != null) {

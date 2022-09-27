@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2020, 2020 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2022 THALES GLOBAL SERVICES.
   
   This program and the accompanying materials are made available under the
   terms of the Eclipse Public License 2.0 which is available at
@@ -112,6 +112,25 @@
                             </target>
                             <description>
                                This rule generates a warning if a Function Port and all its connected Functional Exchanges do not have the exact same Exchange Items.
+                            </description>
+                         </constraint>
+                         <constraint
+                               class="org.polarsys.capella.core.data.fa.validation.functionalExchange.FunctionalExchange_loopsOnSameFunction"
+                               id="DCOM_23"
+                               isEnabledByDefault="true"
+                               lang="java"
+                               mode="Batch"
+                               name="DCOM_23 - Loops on same function check"
+                               severity="ERROR"
+                               statusCode="1">
+                            <message>
+                               {0} {1} {2} loops on same {3} {4}.
+                            </message>
+                            <target
+                                  class="FunctionalExchange">
+                            </target>
+                            <description>
+                               This rule generates an error if there are loops identified on the same Function or Operational Activity.
                             </description>
                          </constraint>
          </constraints> 
