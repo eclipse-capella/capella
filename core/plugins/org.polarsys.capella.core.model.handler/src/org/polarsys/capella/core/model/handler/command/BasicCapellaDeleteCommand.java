@@ -183,14 +183,15 @@ public class BasicCapellaDeleteCommand extends AbstractCommand {
       if (informationStatus != null)
         LogExt.log(IReportManagerDefaultComponents.MODEL, informationStatus);
     }
-    if (confirmDelete && !confirmDeletion()) {
-      return;
-    }
-
+    
     /**
      * Preventive checks
      */
     IStatus status = preDeleteChecks();
+    
+    if (confirmDelete && !confirmDeletion()) {
+      return;
+    }
 
     if (status != null && (status.getSeverity() == IStatus.ERROR || status.getSeverity() == IStatus.CANCEL)) {
       return;
