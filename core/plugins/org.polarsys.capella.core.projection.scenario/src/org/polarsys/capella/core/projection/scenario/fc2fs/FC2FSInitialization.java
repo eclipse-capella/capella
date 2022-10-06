@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018, 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -30,6 +30,7 @@ import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.fa.FunctionalChainInvolvement;
+import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.interaction.EventReceiptOperation;
 import org.polarsys.capella.core.data.interaction.EventSentOperation;
@@ -161,6 +162,10 @@ public class FC2FSInitialization {
         FaPackage.Literals.FUNCTIONAL_EXCHANGE)) {
       FunctionalExchange fe = (FunctionalExchange) fci.getInvolved();
       SequenceMessage sequenceMessage = createSequenceMessage(scenario, fe, MessageKind.ASYNCHRONOUS_CALL);
+      
+      if (fci instanceof FunctionalChainInvolvementLink) {
+          sequenceMessage.getExchangedItems().addAll(((FunctionalChainInvolvementLink)fci).getExchangedItems());
+      }
 
       // SendingEnd
       MessageEnd sendingEnd = createSendingEnd(scenario, fe, sequenceMessage);

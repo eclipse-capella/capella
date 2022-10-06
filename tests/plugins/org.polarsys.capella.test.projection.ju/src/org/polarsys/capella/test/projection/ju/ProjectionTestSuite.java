@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -42,7 +42,8 @@ public class ProjectionTestSuite extends BasicTestSuite {
         new GenerateInterfacesTest("test9.2"), //$NON-NLS-1$
         new GenerateInterfacesTest("test9.3"), //$NON-NLS-1$
         new GenerateInterfacesTest("test9.4"), //$NON-NLS-1$
-        new Rule_DWF_I_23()
+        new Rule_DWF_I_23(),
+        new FC2FSTest()
     );
   }
 
