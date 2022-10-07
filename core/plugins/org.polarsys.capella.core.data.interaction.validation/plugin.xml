@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2022 THALES GLOBAL SERVICES.
   
   This program and the accompanying materials are made available under the
   terms of the Eclipse Public License 2.0 which is available at
@@ -274,6 +274,25 @@ Whatever the level, UNSET Scenarios raise an error.
                </target>
                <description>
                   This rule checks that the Instance Role has the same name as its Represented Instance.
+               </description>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.interaction.validation.sequenceMessage.SequenceMessageInvokedOperationExchangeItems"
+                  id="DWF_DS_25"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_DS_25 - SequenceMessage has different ExchangeItem Elements as its Invoked Operation"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} (SequenceMessage) should have the same ExchangeItem Elements as its Invoked {1} ({2})
+               </message>
+               <target
+                     class="SequenceMessage">
+               </target>
+               <description>
+                  This rule checks that the SequenceMessage has the same ExchangeItem Elements as its Invoked Operation.
                </description>
             </constraint>
          </constraints>
