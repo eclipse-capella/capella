@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -57,7 +57,6 @@ public class Rule_DWF_DS_12 extends AbstractRulesOnDesignTest {
 	 * @generated
 	 */
 	protected List<OracleDefinition> getOracleDefinitions() {
-		return Arrays.asList(new OracleDefinition[] { new OracleDefinition(
-				"ac4abb41-f6fc-4bfc-bd0f-77c11c95fe4d", 1) });
+        return Arrays.asList(new OracleDefinition[] { new OracleDefinition("ac4abb41-f6fc-4bfc-bd0f-77c11c95fe4d", 1), new OracleDefinition("bd52149c-2e57-456b-b607-b2db5256653d", 1) });
 	}
 }
