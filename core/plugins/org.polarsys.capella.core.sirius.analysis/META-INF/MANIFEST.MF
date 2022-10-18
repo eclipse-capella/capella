@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-Vendor: %providerName
 Bundle-SymbolicName: org.polarsys.capella.core.sirius.analysis;singleton:=true
-Bundle-Version: 6.0.0.qualifier
+Bundle-Version: 6.1.0.qualifier
 Bundle-Activator: org.polarsys.capella.core.sirius.analysis.activator.SiriusViewActivator
 Export-Package: org.polarsys.capella.core.sequencediag,
  org.polarsys.capella.core.sequencediag.datas,
@@ -54,7 +54,7 @@ Require-Bundle: org.eclipse.core.expressions,
  org.apache.batik.transcoder;bundle-version="1.14.0",
  org.apache.batik.dom;bundle-version="1.14.0",
  org.apache.batik.bridge;bundle-version="1.14.0",
- org.polarsys.kitalpha.sirius.rotativeimage;bundle-version="6.0.0",
+ org.polarsys.kitalpha.sirius.rotativeimage,
  org.polarsys.capella.common.tools.report.appenders.usage,
  org.polarsys.capella.common.ui.toolkit
 Bundle-ActivationPolicy: lazy

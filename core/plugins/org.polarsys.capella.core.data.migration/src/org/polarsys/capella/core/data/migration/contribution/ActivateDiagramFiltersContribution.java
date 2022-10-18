@@ -26,7 +26,7 @@ import org.polarsys.capella.core.sirius.analysis.helpers.DDiagramHelper;
 
 /**
  * This class activate filters for computed transitions on MSM diagrams. This contribution is only active for model
- * version 6.0.0.
+ * version 6.1.0.
  */
 public class ActivateDiagramFiltersContribution extends AbstractMigrationContribution {
 
