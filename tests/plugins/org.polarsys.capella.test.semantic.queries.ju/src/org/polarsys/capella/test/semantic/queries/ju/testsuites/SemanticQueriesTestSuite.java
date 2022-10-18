@@ -34,7 +34,7 @@ public class SemanticQueriesTestSuite extends BasicTestSuite {
     tests.add(new UniqueIDInPluginsTest());
     tests.add(new AvailableForTypeClassExistTest());
     tests.add(new AbstractFunction_mother_activity_allocation());
-    tests.add(new AbstractFunction_mother_function_allocation());   
+    tests.add(new AbstractFunction_mother_function_allocation());
     tests.add(new CapellaElement_applied_property_value_groups());
     tests.add(new CapellaElement_applied_property_values());
     tests.add(new PropertyValue_applying_valued_element());
@@ -177,11 +177,13 @@ public class SemanticQueriesTestSuite extends BasicTestSuite {
     tests.add(new PhysicalPortIncomingPhysicalLinks());
     tests.add(new FunctionalExchangeConnectedOperationalActivities());
     tests.add(new FunctionalExchangeConnectedFunctions());
+    tests.add(new FunctionInputPort_IncomingFunctionalExchanges());
+    tests.add(new FunctionOutputPort_OutgoingFunctionalExchanges());
     tests.add(new EntityOutgoingCommunicationMeans());
     tests.add(new EntityIncomingCommunicationMeans());
     tests.add(new PhysicalPathInvolvedPhysicalLinks());
     tests.add(new PhysicalPathInvolvedComponents());
-    
+
     return tests;
   }
 
