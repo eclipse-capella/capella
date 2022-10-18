@@ -360,6 +360,9 @@ public abstract class SemanticQueries extends AbstractSemanticQueryTestCase {
   public static final String PA__PL2 = "251270d7-8c45-489e-b283-a504fc9d06a2";
   public static final String PA__PL3 = "f9dad582-b443-4dc5-83f0-b0800706fb39";
   public static final String PA__PL4 = "8b0f14b1-9b08-4ee8-9771-eabb9d99aa8b";
+  public static final String PA__PF1_FOP1 = "fdd9e69e-179c-43f7-a9f8-0e52b74a6fae";
+  public static final String PA__PF2_FIP1 = "a7f4d482-bb03-4302-aa03-b22c0506fcc8";
+  public static final String PA__FE1 = "6fd8df09-4eec-4b53-a6cd-38e5522c453a";
   public static final String EPBS = "1729bd4c-a4d2-48c2-ac5e-cf84172ae391";
   public static final String EPBS__CAPABILITIES = "51981734-92ce-4076-8ef2-702a1097fc2b";
   public static final String EPBS__CAPABILITIES__CAPABILITY_2 = "94e2e370-1828-4bf8-ad0b-80d8e6e22898";

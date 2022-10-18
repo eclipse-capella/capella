@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -16,38 +16,33 @@ package org.polarsys.capella.core.semantic.queries.basic.queries;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.polarsys.capella.core.data.fa.FunctionInputPort;
-import org.polarsys.capella.core.data.fa.FunctionOutputPort;
 import org.polarsys.capella.common.helpers.query.IQuery;
+import org.polarsys.capella.core.data.fa.FunctionOutputPort;
 
 /**
  *
  */
 public class Pin_outgoingDataflows implements IQuery {
 
-	/**
-	 * 
-	 */
-	public Pin_outgoingDataflows() {
+  /**
+   * 
+   */
+  public Pin_outgoingDataflows() {
     // do nothing
-	}
+  }
 
-	/** 
-	 * 
-	 * current.exchanges
-	 * 
-	 * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
-	 */
-	public List<Object> compute(Object object) {
-		List<Object> result = new ArrayList<Object>();
-		if (object instanceof FunctionInputPort) {
-			FunctionInputPort fp = (FunctionInputPort) object;
-			result.addAll(fp.getIncoming());
-		}
-		else if (object instanceof FunctionOutputPort) {
-			FunctionOutputPort fp = (FunctionOutputPort) object;
-			result.addAll(fp.getOutgoing());
-		}
-		return result;
-	}
+  /**
+   * 
+   * current.exchanges
+   * 
+   * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
+   */
+  public List<Object> compute(Object object) {
+    List<Object> result = new ArrayList<Object>();
+    if (object instanceof FunctionOutputPort) {
+      FunctionOutputPort fp = (FunctionOutputPort) object;
+      result.addAll(fp.getOutgoing());
+    }
+    return result;
+  }
 }
