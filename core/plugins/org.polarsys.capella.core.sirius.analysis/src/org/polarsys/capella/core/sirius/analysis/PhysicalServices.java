@@ -599,6 +599,13 @@ public class PhysicalServices {
     }
     return context instanceof PhysicalPort;
   }
+  
+  public boolean isValidCreationPhysicalLink(EObject source, EObject target) {
+    if (source instanceof PhysicalPort && source.equals(target)) {
+      return false;
+    }
+    return canBeInvolvedInPhysicalLink(source) && canBeInvolvedInPhysicalLink(target);
+  }
 
   public boolean isValidPhysicalPathSelection(EObject context, List<EObject> views) {
     SimpleOrientedGraph<Part> graph = new SimpleOrientedGraph<>();

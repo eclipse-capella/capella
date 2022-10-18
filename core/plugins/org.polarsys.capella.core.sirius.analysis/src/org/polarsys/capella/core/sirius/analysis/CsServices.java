@@ -2497,6 +2497,9 @@ public class CsServices {
 
     } else {
       if (preSource == preTarget) {
+        if (preSource instanceof PhysicalPort) {
+          return false;
+        }
         return true;
       }
     }
