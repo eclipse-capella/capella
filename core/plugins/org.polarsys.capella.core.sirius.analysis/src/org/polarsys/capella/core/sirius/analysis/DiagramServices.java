@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -461,6 +461,11 @@ public class DiagramServices {
 
   public AbstractDNode createDNodeListElement(AbstractNodeMapping mapping, EObject modelElement,
       DragAndDropTarget container, DDiagram diagram) {
+    return createDNodeListElement(mapping, modelElement, container, diagram, -1);
+  }
+
+  public AbstractDNode createDNodeListElement(AbstractNodeMapping mapping, EObject modelElement,
+      DragAndDropTarget container, DDiagram diagram, int index) {
     final DDiagram diag = diagram;
 
     ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(modelElement);
@@ -471,22 +476,28 @@ public class DiagramServices {
     RefreshIdsHolder rId = RefreshIdsHolder.getOrCreateHolder(diagram);
 
     DNodeCandidate nodeCandidate = new DNodeCandidate(mapping, modelElement, container, rId);
-    return elementSync.createNewNode(getMappingManager((DSemanticDiagram) diag), nodeCandidate, false, -1);
+    return elementSync.createNewNode(getMappingManager((DSemanticDiagram) diag), nodeCandidate, false, index);
+  }
+
+  public DNodeContainer createContainer(ContainerMapping mapping, EObject modelElement, DragAndDropTarget container,
+      DDiagram diagram, int index) {
+    final DDiagram diag = diagram;
+
+    ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(modelElement);
+    IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(modelElement);
+    final DDiagramSynchronizer diagramSync = new DDiagramSynchronizer(interpreter, diag.getDescription(), accessor);
+    diagramSync.setDiagram((DSemanticDiagram) diagram);
+    final DDiagramElementSynchronizer elementSync = diagramSync.getElementSynchronizer();
+    RefreshIdsHolder rId = RefreshIdsHolder.getOrCreateHolder(diagram);
+
+    DNodeCandidate nodeCandidate = new DNodeCandidate(mapping, modelElement, container, rId);
+    return (DNodeContainer) elementSync.createNewNode(getMappingManager((DSemanticDiagram) diag), nodeCandidate, false,
+        index);
   }
 
   public DNodeContainer createContainer(ContainerMapping mapping, EObject modelElement, DragAndDropTarget container,
       DDiagram diagram) {
-    final DDiagram diag = diagram;
-
-    ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(modelElement);
-    IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(modelElement);
-    final DDiagramSynchronizer diagramSync = new DDiagramSynchronizer(interpreter, diag.getDescription(), accessor);
-    diagramSync.setDiagram((DSemanticDiagram) diagram);
-    final DDiagramElementSynchronizer elementSync = diagramSync.getElementSynchronizer();
-    RefreshIdsHolder rId = RefreshIdsHolder.getOrCreateHolder(diagram);
-
-    DNodeCandidate nodeCandidate = new DNodeCandidate(mapping, modelElement, container, rId);
-    return (DNodeContainer) elementSync.createNewNode(getMappingManager((DSemanticDiagram) diag), nodeCandidate, false);
+    return createContainer(mapping, modelElement, container, diagram, -1);
   }
 
   @Deprecated

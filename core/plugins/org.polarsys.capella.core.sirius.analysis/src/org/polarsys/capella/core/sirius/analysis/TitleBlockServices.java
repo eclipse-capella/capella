@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2020, 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -285,7 +285,7 @@ public class TitleBlockServices {
       int indexLine = TitleBlockHelper.getLineIndexOfCell(cell, titleBlock);
       DAnnotation annotationLine = TitleBlockHelper.addTitleBlockLine(diagram, titleBlock, indexLine + 1, numCols);
       createTitleBlockLineView(DiagramServices.getDiagramServices().getDiagramElement(diagram, titleBlock),
-          annotationLine, diagram, diagram);
+          annotationLine, diagram, diagram, indexLine + 1);
     }
   }
 
@@ -305,7 +305,7 @@ public class TitleBlockServices {
       // Add new empty cell
       DAnnotation annotationColumn = TitleBlockHelper.addTitleBlockCell(diagram, line, "", "", indexCol + 1);
       createTitleBlockColumnView(DiagramServices.getDiagramServices().getDiagramElement(diagram, line),
-          annotationColumn, diagram, diagram);
+          annotationColumn, diagram, diagram, indexCol + 1);
     }
   }
 
@@ -902,10 +902,10 @@ public class TitleBlockServices {
    * @return DNodeContainer the created graphical node for the given mapping
    */
   private DNodeContainer createTitleBlockContainerNode(DAnnotation annotation, DDiagram diagram, EObject context,
-      String mappingName) {
+      String mappingName, int index) {
     ContainerMapping mapping = DiagramServices.getDiagramServices().getContainerMapping(diagram, mappingName);
     return DiagramServices.getDiagramServices().createContainer(mapping, annotation, (DragAndDropTarget) context,
-        diagram);
+        diagram, index);
   }
 
   /**
@@ -920,11 +920,13 @@ public class TitleBlockServices {
     try {
       // create the DT_TITLE_BLOCK_CONTAINER
       DNodeContainer nodeTitleBlock = createTitleBlockContainerNode(titleBlock, diagram, diagram,
-          IMappingNameConstants.DT_TITLE_BLOCK_CONTAINER);
+          IMappingNameConstants.DT_TITLE_BLOCK_CONTAINER, -1);
 
       for (EObject objLine : titleBlock.getReferences()) {
+        int i = 0;
         if (objLine instanceof DAnnotation) {
-          createTitleBlockLineView(nodeTitleBlock, (DAnnotation) objLine, diagram, context);
+          createTitleBlockLineView(nodeTitleBlock, (DAnnotation) objLine, diagram, context, i);
+          i++;
         }
       }
 
@@ -948,14 +950,15 @@ public class TitleBlockServices {
    * @return
    */
   protected void createTitleBlockLineView(DDiagramElement nodeTitleBlock, DAnnotation annotationLine, DDiagram diagram,
-      EObject context) {
+      EObject context, int index) {
     try {
       // create the DT_TITLE_BLOCK_LINE_CONTAINER
       DNodeContainer nodeLine = createTitleBlockContainerNode(annotationLine, diagram, nodeTitleBlock,
-          IMappingNameConstants.DT_TITLE_BLOCK_LINE_CONTAINER);
-
+          IMappingNameConstants.DT_TITLE_BLOCK_LINE_CONTAINER, index);
+      int i = 0;
       for (EObject annotationCol : annotationLine.getReferences()) {
-        createTitleBlockColumnView(nodeLine, (DAnnotation) annotationCol, diagram, context);
+        createTitleBlockColumnView(nodeLine, (DAnnotation) annotationCol, diagram, context, i);
+        i++;
       }
     } catch (RuntimeException e) {
     }
@@ -971,12 +974,12 @@ public class TitleBlockServices {
    * @return
    */
   protected void createTitleBlockColumnView(DDiagramElement nodeLine, DAnnotation annotationCol, DDiagram diagram,
-      EObject context) {
+      EObject context, int index) {
     try {
       ContainerMapping mappingCol = DiagramServices.getDiagramServices().getContainerMapping(diagram,
           IMappingNameConstants.DT_TITLE_BLOCK_COLUMN_CONTAINER);
       DiagramServices.getDiagramServices().createDNodeListElement(mappingCol, annotationCol,
-          (DragAndDropTarget) nodeLine, diagram);
+          (DragAndDropTarget) nodeLine, diagram, index);
     } catch (RuntimeException e) {
     }
   }
