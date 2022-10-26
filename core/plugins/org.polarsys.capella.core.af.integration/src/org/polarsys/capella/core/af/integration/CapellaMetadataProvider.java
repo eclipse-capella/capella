@@ -185,22 +185,24 @@ public class CapellaMetadataProvider implements IMetadataProvider {
 
   /**
    * Returns whether the file of the given fileVersion requires a migration to be compatible to currentVersion
+   * 
+   * @see See also org.polarsys.capella.core.data.migration.af.ViewpointMigrationContribution.isMigrationPossible
    */
   private IStatus isMigrationRequired(Version fileVersion, Version currentVersion) {
-
+    
+    // If model from <MAJOR>.x towards <MAJOR>.y, we requires a migration.
+    if (fileVersion.getMajor() == currentVersion.getMajor() && fileVersion.getMinor() != currentVersion.getMinor()) {
+      return new Status(IStatus.ERROR, AFIntegrationPlugin.getSymbolicName(),
+          NLS.bind(Messages.WrongCapellaVersionException_DetailedMessage, fileVersion));
+    }
+    
     // if not the same major/minor we requires a migration
     if (!(fileVersion.getMajor() == currentVersion.getMajor() && fileVersion.getMinor() == currentVersion.getMinor())) {
       return new Status(IStatus.ERROR, AFIntegrationPlugin.getSymbolicName(),
           Messages.WrongCapellaVersionException_Message);
     }
 
-    // if model from 1.4.0 towards 1.3.x, we requires a migration
-    if (fileVersion.getMajor() == 1 && fileVersion.getMinor() == 3 && fileVersion.getMicro() == 0) {
-      if (currentVersion.getMajor() == 1 && currentVersion.getMinor() == 3 && currentVersion.getMicro() > 0) {
-        return new Status(IStatus.ERROR, AFIntegrationPlugin.getSymbolicName(),
-            NLS.bind(Messages.WrongCapellaVersionException_DetailedMessage, fileVersion));
-      }
-    }
+    
     return Status.OK_STATUS;
   }
 
