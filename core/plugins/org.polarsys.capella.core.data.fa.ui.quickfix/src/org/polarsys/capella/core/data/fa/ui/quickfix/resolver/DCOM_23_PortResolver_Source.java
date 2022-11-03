@@ -27,7 +27,7 @@ import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarke
 /**
  * QuickFix allowing to show source Function Output Port in Project Explorer.
  */
-public class DCOM_23_Resolver_Source extends AbstractCapellaMarkerResolution {
+public class DCOM_23_PortResolver_Source extends AbstractCapellaMarkerResolution {
 
   @Override
   public void run(IMarker marker) {
@@ -44,7 +44,6 @@ public class DCOM_23_Resolver_Source extends AbstractCapellaMarkerResolution {
   protected boolean quickFixAllSimilarEnabled(Collection<IMarker> markers) {
     return false;
   }
-
 
   @Override
   protected boolean canResolve(IMarker marker) {

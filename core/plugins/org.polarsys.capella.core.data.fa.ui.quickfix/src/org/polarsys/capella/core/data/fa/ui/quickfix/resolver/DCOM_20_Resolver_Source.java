@@ -24,7 +24,7 @@ import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.model.helpers.FunctionalExchangeExt;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarkerResolution;
 
-public class DCOM_20_Resolver_Source extends AbstractCapellaMarkerResolution {
+public abstract class DCOM_20_Resolver_Source extends AbstractCapellaMarkerResolution {
   /**
    * {@inheritDoc}
    */
@@ -56,4 +56,6 @@ public class DCOM_20_Resolver_Source extends AbstractCapellaMarkerResolution {
   protected boolean quickFixAllSimilarEnabled(Collection<IMarker> markers) {
     return false;
   }
+
+  protected abstract boolean isEnabledAtThisLevel(AbstractFunction srcFunction);
 }

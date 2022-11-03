@@ -244,20 +244,47 @@
                ruleId="I_32">
          </rules>
       </resolver>
-           <resolver
-                 class="org.polarsys.capella.core.data.fa.ui.quickfix.resolver.DCOM_20_Resolver_Source"
-                 desc="%quickFix.DCOM_20_Resolver_Source.desc"
-                 icon="icons/search16.gif"
-                 label="%quickFix.DCOM_20_Resolver_Source.label">
+            <resolver
+                 class="org.polarsys.capella.core.data.fa.ui.quickfix.resolver.DCOM_20_Resolver_Delete"
+                 desc="%quickFix.DCOM_23_Resolver_Delete.desc"
+                 icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_delete.gif"
+                 label="%quickFix.DCOM_23_Resolver_Delete.label">
               <rules
                     ruleId="DCOM_20">
               </rules>
            </resolver>
            <resolver
-                 class="org.polarsys.capella.core.data.fa.ui.quickfix.resolver.DCOM_20_Resolver_Target"
-                 desc="%quickFix.DCOM_20_Resolver_Target.desc"
+                 class="org.polarsys.capella.core.data.fa.ui.quickfix.resolver.DCOM_20_Resolver_Source_Operational_Activity"
+                 desc="%quickFix.DCOM_20_Resolver_Source_Operational_Activity.desc"
                  icon="icons/search16.gif"
-                 label="%quickFix.DCOM_20_Resolver_Target.label">
+                 label="%quickFix.DCOM_20_Resolver_Source_Operational_Activity.label">
+              <rules
+                    ruleId="DCOM_20">
+              </rules>
+           </resolver>
+           <resolver
+                 class="org.polarsys.capella.core.data.fa.ui.quickfix.resolver.DCOM_20_Resolver_Target_Operational_Activity"
+                 desc="%quickFix.DCOM_20_Resolver_Target_Operational_Activity.desc"
+                 icon="icons/search16.gif"
+                 label="%quickFix.DCOM_20_Resolver_Target_Operational_Activity.label">
+              <rules
+                    ruleId="DCOM_20">
+              </rules>
+           </resolver>
+           <resolver
+                 class="org.polarsys.capella.core.data.fa.ui.quickfix.resolver.DCOM_20_Resolver_Source_Function"
+                 desc="%quickFix.DCOM_20_Resolver_Source_Function.desc"
+                 icon="icons/search16.gif"
+                 label="%quickFix.DCOM_20_Resolver_Source_Function.label">
+              <rules
+                    ruleId="DCOM_20">
+              </rules>
+           </resolver>
+           <resolver
+                 class="org.polarsys.capella.core.data.fa.ui.quickfix.resolver.DCOM_20_Resolver_Target_Function"
+                 desc="%quickFix.DCOM_20_Resolver_Target_Function.desc"
+                 icon="icons/search16.gif"
+                 label="%quickFix.DCOM_20_Resolver_Target_Function.label">
               <rules
                     ruleId="DCOM_20">
               </rules>
@@ -308,7 +335,7 @@
               </rules>
            </resolver>
            <resolver
-                 class="org.polarsys.capella.core.data.fa.ui.quickfix.resolver.DCOM_23_Resolver_Source"
+                 class="org.polarsys.capella.core.data.fa.ui.quickfix.resolver.DCOM_23_PortResolver_Source"
                  desc="%quickFix.DCOM_23_Resolver_Source.desc"
                  icon="icons/search16.gif"
                  label="%quickFix.DCOM_23_Resolver_Source.label">
@@ -317,12 +344,67 @@
               </rules>
            </resolver>
            <resolver
-                 class="org.polarsys.capella.core.data.fa.ui.quickfix.resolver.DCOM_23_Resolver_Target"
+                 class="org.polarsys.capella.core.data.fa.ui.quickfix.resolver.DCOM_23_PortResolver_Target"
                  desc="%quickFix.DCOM_23_Resolver_Target.desc"
                  icon="icons/search16.gif"
                  label="%quickFix.DCOM_23_Resolver_Target.label">
               <rules
                     ruleId="DCOM_23">
+              </rules>
+           </resolver>
+           <resolver
+                 class="org.polarsys.capella.core.data.fa.ui.quickfix.resolver.DCOM_20_23_Resolver_Functional_Exchange"
+                 desc="%quickFix.DCOM_20_23_Resolver_Functional_Exchange.desc"
+                 icon="icons/search16.gif"
+                 label="%quickFix.DCOM_20_23_Resolver_Functional_Exchange.label">
+              <rules
+                    ruleId="DCOM_23">
+              </rules>
+           </resolver>
+           
+           <resolver
+                 class="org.polarsys.capella.core.data.fa.ui.quickfix.resolver.DCOM_20_23_Resolver_Interaction"
+                 desc="%quickFix.DCOM_20_23_Resolver_Interaction.desc"
+                 icon="icons/search16.gif"
+                 label="%quickFix.DCOM_20_23_Resolver_Interaction.label">
+              <rules
+                    ruleId="DCOM_23">
+              </rules>
+           </resolver>
+           <resolver
+                 class="org.polarsys.capella.core.data.fa.ui.quickfix.resolver.DCOM_23_Resolver_Looping_Function"
+                 desc="%quickFix.DCOM_23_Looping_Function.desc"
+                 icon="icons/search16.gif"
+                 label="%quickFix.DCOM_23_Looping_Function.label">
+              <rules
+                    ruleId="DCOM_23">
+              </rules>
+           </resolver>
+           <resolver
+                 class="org.polarsys.capella.core.data.fa.ui.quickfix.resolver.DCOM_23_Resolver_Looping_Activity"
+                 desc="%quickFix.DCOM_23_Looping_Operational_Activity.desc"
+                 icon="icons/search16.gif"
+                 label="%quickFix.DCOM_23_Looping_Operational_Activity.label">
+              <rules
+                    ruleId="DCOM_23">
+              </rules>
+           </resolver>
+           <resolver
+                 class="org.polarsys.capella.core.data.fa.ui.quickfix.resolver.DCOM_20_23_Resolver_Functional_Exchange"
+                 desc="%quickFix.DCOM_20_23_Resolver_Functional_Exchange.desc"
+                 icon="icons/search16.gif"
+                 label="%quickFix.DCOM_20_23_Resolver_Functional_Exchange.label">
+              <rules
+                    ruleId="DCOM_20">
+              </rules>
+           </resolver>
+           <resolver
+                 class="org.polarsys.capella.core.data.fa.ui.quickfix.resolver.DCOM_20_23_Resolver_Interaction"
+                 desc="%quickFix.DCOM_20_23_Resolver_Interaction.desc"
+                 icon="icons/search16.gif"
+                 label="%quickFix.DCOM_20_23_Resolver_Interaction.label">
+              <rules
+                    ruleId="DCOM_20">
               </rules>
            </resolver>
            <resolver

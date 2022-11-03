@@ -64,7 +64,7 @@
                                lang="java"
                                mode="Batch"
                                name="DCOM_20 - Functional Exchange delegation check"
-                               severity="WARNING"
+                               severity="ERROR"
                                statusCode="1">
                             <message>
                                {0}
@@ -124,7 +124,7 @@
                                severity="ERROR"
                                statusCode="1">
                             <message>
-                               {0} {1} {2} loops on same {3} {4}.
+                               {0} {1} loops on same {2} {3}.
                             </message>
                             <target
                                   class="FunctionalExchange">

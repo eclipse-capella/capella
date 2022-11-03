@@ -40,7 +40,7 @@ public class FunctionalExchange_loopsOnSameFunction extends AbstractValidationRu
       EObject source = fe.getSource();
       EObject target = fe.getTarget();
 
-       if (source instanceof FunctionPort && target instanceof FunctionPort) {
+      if (source instanceof FunctionPort && target instanceof FunctionPort) {
         // get the AbstractFunction
         source = source.eContainer();
         target = target.eContainer();
@@ -54,8 +54,7 @@ public class FunctionalExchange_loopsOnSameFunction extends AbstractValidationRu
 
       if (source.equals(target)) {
         return ctx.createFailureStatus(EObjectLabelProviderHelper.getText(fe), elementType,
-            EObjectLabelProviderHelper.getMetaclassLabel(BlockArchitectureExt.getRootBlockArchitecture(target), false),
-            EObjectLabelProviderHelper.getText(source.eContainer()),
+            EObjectLabelProviderHelper.getText(source),
             EObjectLabelProviderHelper.getMetaclassLabel(eObj.eContainer(), true));
       }
     }
