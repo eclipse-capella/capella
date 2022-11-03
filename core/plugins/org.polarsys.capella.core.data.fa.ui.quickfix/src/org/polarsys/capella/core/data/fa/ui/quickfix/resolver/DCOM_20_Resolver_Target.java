@@ -20,11 +20,10 @@ import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.fa.ui.quicfix.helpers.QuickFixNavigationHelper;
-import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.model.helpers.FunctionalExchangeExt;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarkerResolution;
 
-public class DCOM_20_Resolver_Target extends AbstractCapellaMarkerResolution {
+public abstract class DCOM_20_Resolver_Target extends AbstractCapellaMarkerResolution {
   /**
    * {@inheritDoc}
    */
@@ -45,7 +44,7 @@ public class DCOM_20_Resolver_Target extends AbstractCapellaMarkerResolution {
       EObject modelElement = getModelElements(marker).get(0);
       if ((null != modelElement) && (modelElement instanceof FunctionalExchange)) {
         AbstractFunction tarFunc = FunctionalExchangeExt.getTargetFunction((FunctionalExchange) modelElement);
-        if (tarFunc instanceof OperationalActivity && tarFunc.getOwnedFunctions().size() > 0)
+        if (isEnabledAtThisLevel(tarFunc) && tarFunc.getOwnedFunctions().size() > 0)
           return true;
       }
     }
@@ -56,4 +55,6 @@ public class DCOM_20_Resolver_Target extends AbstractCapellaMarkerResolution {
   protected boolean quickFixAllSimilarEnabled(Collection<IMarker> markers) {
     return false;
   }
+
+  protected abstract boolean isEnabledAtThisLevel(AbstractFunction tarFunc);
 }

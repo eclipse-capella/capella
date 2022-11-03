@@ -27,7 +27,7 @@ import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarke
 /**
  * QuickFix allowing to show target Function Input Port in Project Explorer.
  */
-public class DCOM_23_Resolver_Target extends AbstractCapellaMarkerResolution {
+public class DCOM_23_PortResolver_Target extends AbstractCapellaMarkerResolution {
 
   @Override
   public void run(IMarker marker) {
