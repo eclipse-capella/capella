@@ -33,9 +33,9 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
 
   public static final String SEPARATOR = "SEPARATOR"; //$NON-NLS-1$
 
-  public static final String DEFAULT_TABLE = "Name" + SEPARATOR + "feature:name" + SEPARATOR + "Synchronized"
-      + SEPARATOR + "aql:self.representation.synchronized" + SEPARATOR + "Summary" + SEPARATOR
-      + "aql:self.target.summary" + SEPARATOR + "Description" + SEPARATOR + "feature:documentation";
+  public static final String DEFAULT_TABLE = "Name" + SEPARATOR + "feature:name" + SEPARATOR + "Last change date"
+      + SEPARATOR + "aql:self.getLastModificationDate()" + SEPARATOR + "Summary" + SEPARATOR + "aql:self.target.summary"
+      + SEPARATOR + "Description" + SEPARATOR + "feature:documentation";
 
   private PreferenceField defaultTitleBlockFieldEditor;
 
@@ -59,7 +59,7 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
 
   @Override
   protected void createFieldEditors() {
-      // createTimeZoneField();
+    // createTimeZoneField();
     createCheckBox();
     createTable();
   }
