@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018, 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -20,6 +20,7 @@ import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 import org.polarsys.capella.test.massactions.ju.model.AbstractCapellaMATestCase;
 import org.polarsys.capella.test.massactions.ju.testcases.view.shared.AddingElementsTest;
+import org.polarsys.capella.test.massactions.ju.testcases.view.shared.CollectionsInitializationTest;
 import org.polarsys.capella.test.massactions.ju.testcases.view.shared.ColumnFilterTest;
 import org.polarsys.capella.test.massactions.ju.testcases.view.shared.ColumnHideShowTest;
 import org.polarsys.capella.test.massactions.ju.testcases.view.shared.ColumnReorderTest;
@@ -50,6 +51,7 @@ public class MAViewsTestSuite extends BasicTestSuite {
     List<BasicTestArtefact> testSuite = new ArrayList<>();
 
     // shared
+    testSuite.add(new CollectionsInitializationTest());
     testSuite.add(new AddingElementsTest());
     testSuite.add(new ColumnFilterTest());
     testSuite.add(new ColumnHideShowTest());
