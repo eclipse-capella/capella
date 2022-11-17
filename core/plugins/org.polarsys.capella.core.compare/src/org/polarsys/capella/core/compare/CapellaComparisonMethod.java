@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -35,6 +35,7 @@ import org.eclipse.emf.diffmerge.impl.policies.ComparisonConfigurator;
 import org.eclipse.emf.diffmerge.ui.sirius.SiriusComparisonMethod;
 import org.eclipse.emf.diffmerge.ui.specification.IComparisonMethodFactory;
 import org.eclipse.emf.diffmerge.ui.specification.IModelScopeDefinition;
+import org.eclipse.emf.diffmerge.ui.viewers.IDifferenceCategoryProvider;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.jface.viewers.ILabelProvider;
@@ -163,6 +164,11 @@ public class CapellaComparisonMethod extends SiriusComparisonMethod {
   @Override
   public IComparisonConfigurator getDefaultConfigurator() {
     return CONFIGURATOR_CAPELLA_DEFAULT;
+  }
+
+  @Override
+  protected IDifferenceCategoryProvider getCustomCategoryProvider() {
+    return new CapellaDifferenceCategoryProvider();
   }
   
 }

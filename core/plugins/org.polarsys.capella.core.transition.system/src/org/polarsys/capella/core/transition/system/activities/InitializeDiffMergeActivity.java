@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -22,15 +22,11 @@ import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.transition.common.activities.InitializeDiffMergeFromTransformationActivity;
 import org.polarsys.capella.core.transition.common.handlers.IHandler;
 import org.polarsys.capella.core.transition.common.handlers.merge.IMergeHandler;
-import org.polarsys.capella.core.transition.common.handlers.traceability.CompoundTraceabilityHandler;
-import org.polarsys.capella.core.transition.common.handlers.traceability.config.ExtendedTraceabilityConfiguration;
-import org.polarsys.capella.core.transition.common.handlers.traceability.config.ITraceabilityConfiguration;
 import org.polarsys.capella.core.transition.common.handlers.transformation.TransformationHandlerHelper;
 import org.polarsys.capella.core.transition.common.merge.scope.IModelScopeFilter;
 import org.polarsys.capella.core.transition.system.handlers.merge.AttributeDescriptionValueFromSource;
 import org.polarsys.capella.core.transition.system.handlers.merge.AttributeNameValueFromSource;
 import org.polarsys.capella.core.transition.system.handlers.merge.AttributeSummaryValueFromSource;
-import org.polarsys.capella.core.transition.system.handlers.merge.CapellaClassFilters;
 import org.polarsys.capella.core.transition.system.handlers.merge.ManyToOneCategoryFilter;
 import org.polarsys.capella.core.transition.system.handlers.merge.OneToManyCategoryFilter;
 import org.polarsys.capella.core.transition.system.handlers.merge.PartPropagationCategoryFilter;
@@ -55,8 +51,6 @@ public abstract class InitializeDiffMergeActivity extends InitializeDiffMergeFro
   protected IStatus initializeCategoriesHandlers(IContext context, IMergeHandler handler,
       ActivityParameters activityParams) {
     super.initializeCategoriesHandlers(context, handler, activityParams);
-
-    CapellaClassFilters.addClassFilters(handler, context);
 
     handler.addCategory(new AttributeNameValueFromSource(context), context);
     handler.addCategory(new AttributeSummaryValueFromSource(context), context);

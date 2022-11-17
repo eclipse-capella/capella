@@ -41,7 +41,6 @@ public class TransitionDiffMergeDialog extends DiffMergeDialog {
           Messages.MergeUIDifferencesHandler_ApplyAllChanges, false);
       applyAllChangesButton.setEnabled(((MergeEMFDiffNode) _input).isMergeAllEnabled(true));
 
-      parent.getShell().setDefaultButton(applyAllChangesButton);
     }
 
     Button okButton = createOKButton(parent);
