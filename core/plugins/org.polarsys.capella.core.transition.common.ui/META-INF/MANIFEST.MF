@@ -15,7 +15,8 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.common.flexibility.wizards;visibility:=reexport,
  org.polarsys.capella.core.model.handler,
  org.polarsys.capella.core.preferences,
- org.polarsys.capella.common.ui
+ org.polarsys.capella.common.ui,
+ org.polarsys.capella.core.compare
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.transition.common.ui,
  org.polarsys.capella.core.transition.common.ui.actions,

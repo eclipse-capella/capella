@@ -17,7 +17,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.kitalpha.ad.services,
  org.polarsys.capella.common.libraries,
  org.eclipse.sirius,
- org.eclipse.emf.common
+ org.eclipse.emf.common,
+ org.eclipse.ui.navigator
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.compare

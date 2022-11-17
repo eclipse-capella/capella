@@ -410,9 +410,7 @@ According to preference '''Transit interfaces handled by Components''', perform 
 
 | 
 To perform a transition of Components or Actors only, you can filter theses elements using Diff/Merge filters:
-
-
-[[Image:Images/11.2.%20Transitions%20Between%20Engineering%20Phases_html_diffmerge_filter.png|548x340px]]
+'''Filters and Customization''' &gt; '''Semantic Criteria''' &gt; '''Actors''' and '''Components'''
 
 
 |}  

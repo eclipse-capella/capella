@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2019, 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -14,6 +14,7 @@ package org.polarsys.capella.core.transition.common.ui.handlers.merge;
 
 import org.eclipse.emf.diffmerge.ui.viewers.DefaultDifferenceCategoryProvider;
 import org.eclipse.emf.diffmerge.ui.viewers.EMFDiffNode;
+import org.polarsys.capella.core.compare.CapellaDifferenceCategoryUtil;
 import org.polarsys.capella.core.transition.common.handlers.merge.ICategoryItem;
 import org.polarsys.capella.core.transition.common.handlers.merge.ICategorySet;
 import org.polarsys.capella.core.transition.common.handlers.merge.IMergeHandler;
@@ -47,7 +48,7 @@ public class MergeCategoryProvider extends DefaultDifferenceCategoryProvider {
       // Load states from preferences
       node.getCategoryManager().initializeFromPreferences();
     }
-
+    CapellaDifferenceCategoryUtil.eINSTANCE.provideCapellaCategories(node_p);
   }
 
   protected void provideMergeHandlerCategories(MergeEMFDiffNode node) {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -14,7 +14,6 @@ package org.polarsys.capella.core.compare;
 
 import org.eclipse.osgi.util.NLS;
 
-
 /**
  * Message management.
  */
@@ -28,6 +27,8 @@ public class Messages extends NLS {
   public static String CapellaComparisonMethod_Usage_P2L_Tooltip;
   public static String CapellaComparisonMethod_Usage_Transition;
   public static String CapellaComparisonMethod_Usage_Transition_Tooltip;
+  public static String CapellaDifferenceCategoryProvider_CapellaSet_Description;
+  public static String CapellaDifferenceCategoryProvider_CapellaSet_Text;
   public static String CapellaMatchPolicy_Criterion_ExchangeEnds;
   public static String CapellaMatchPolicy_Criterion_ExchangeEnds_Tooltip;
   public static String CapellaMatchPolicy_Criterion_P2L;
@@ -62,7 +63,7 @@ public class Messages extends NLS {
     // initialize resource bundle
     NLS.initializeMessages(BUNDLE_NAME, Messages.class);
   }
-  
+
   /**
    * Constructor
    */
