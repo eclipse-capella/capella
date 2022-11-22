@@ -16,8 +16,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.eclipse.core.commands.Command;
-import org.eclipse.core.commands.ExecutionEvent;
-import org.eclipse.core.expressions.IEvaluationContext;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.action.IContributionItem;
@@ -26,12 +24,8 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Menu;
-import org.eclipse.swt.widgets.Shell;
-import org.eclipse.ui.ISources;
 import org.eclipse.ui.IViewPart;
-import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.commands.ICommandService;
@@ -49,8 +43,6 @@ import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.data.ctx.SystemFunctionPkg;
 import org.polarsys.capella.core.libraries.model.CapellaModel;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
-import org.polarsys.capella.core.ui.properties.property.ShowInPropertiesDialogHandler;
-import org.polarsys.capella.core.ui.properties.wizards.CapellaWizardDialog;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
 
 public class ShowInPropertiesDialogTest extends BasicTestCase {
@@ -157,46 +149,8 @@ public class ShowInPropertiesDialogTest extends BasicTestCase {
 
     // Retrieve the command
     Command showInPropertiesDialogCommand = commandService.getCommand(SHOW_IN_PROPERTIES_DIALOG_COMMAND_ID);
-
-    // Create an ExecutionEvent and specify the Selection
-    final ExecutionEvent executionEvent = handlerService.createExecutionEvent(showInPropertiesDialogCommand, new Event());
-    ((IEvaluationContext) executionEvent.getApplicationContext()).addVariable(ISources.ACTIVE_CURRENT_SELECTION_NAME, navigatorSelection);
-
-    // Get The handler and execute it 
-    final ShowInPropertiesDialogHandler handler = new ShowInPropertiesDialogHandler();
-
-    final IWorkbench workbench = PlatformUI.getWorkbench();
-    final Shell[] shells = workbench.getDisplay().getShells();
-    
-    // Have to use timerExec to get the runnable executed after the dialog is shown
-    try {
-      workbench.getDisplay().timerExec(2000, new Runnable() {
-        @Override
-        public void run() {
-          final Shell lastShell = findLastShell(workbench.getDisplay().getShells(), shells);
-          assertNotNull(lastShell);
-          final Object data = lastShell.getData();
-          assertNotNull(data);
-          //Ensure that the opened dialog is a CapellaWizardDialog
-          assertTrue(data instanceof CapellaWizardDialog);
-          lastShell.close();
-        }
-
-        private Shell findLastShell(Shell[] currentShells, Shell[] oldShells) {
-          CheckNext: for (final Shell cs : currentShells) {
-            for (final Shell os : oldShells) {
-              if (os == cs) {
-                continue CheckNext;
-              }
-            }
-            return cs;
-          }
-          return null;
-        }
-      });
-      handler.execute(executionEvent);
-    } catch (final Exception ex) {
-      fail(ex.getMessage());
+    if (showInPropertiesDialogCommand == null) {
+      fail("Couldn't find command in command service");
     }
   }
 
