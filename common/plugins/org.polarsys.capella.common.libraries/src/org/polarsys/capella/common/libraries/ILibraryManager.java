@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -31,7 +31,13 @@ public abstract class ILibraryManager {
   /**
    * Returns all available models
    */
+  @Deprecated
   public abstract Collection<IModelIdentifier> getAvailableModels();
+
+  /**
+   * Returns all available models for the given {@link TransactionalEditingDomain}
+   */
+  public abstract Collection<IModelIdentifier> getAvailableModels(TransactionalEditingDomain domain);
 
   /** 
    * Returns all models related to the given editing domain.

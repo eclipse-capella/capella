@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -42,11 +42,6 @@ public class LibraryManager extends ILibraryManager implements ILibraryProviderL
   Collection<ILibraryProvider> providers = null;
 
   /**
-   * A stored version of all model identifiers. it is cleared each time a provider notifies us.
-   */
-  Collection<IModelIdentifier> models = null;
-
-  /**
    * A stored version of model per editing domain.
    */
   HashMap<TransactionalEditingDomain, IModel> modelsPerDomain = null;
@@ -77,23 +72,25 @@ public class LibraryManager extends ILibraryManager implements ILibraryProviderL
 
   @Override
   public Collection<IModelIdentifier> getAvailableModels() {
-    if (models == null) {
-      models = new ArrayList<IModelIdentifier>();
-      for (ILibraryProvider provider : getProviders()) {
-        for (IModelIdentifier model : provider.getAvailableModels()) {
-          if (!models.contains(model)) {
-            models.add(model);
-          }
-        }
-      }
-    }
-    return models;
+      return getAvailableModels(null);
   }
+
+  @Override
+  public Collection<IModelIdentifier> getAvailableModels(TransactionalEditingDomain domain) {
+      Collection<IModelIdentifier> models = new ArrayList<IModelIdentifier>();
+      for (ILibraryProvider provider : getProviders()) {
+          for (IModelIdentifier model : provider.getAvailableModels(domain)) {
+              if (!models.contains(model)) {
+                  models.add(model);
+              }
+          }
+      }
+      return models;
+    }
 
   @Override
   public void onLibraryProviderChanged(LibraryProviderEvent event) {
     // We should clear cache (maybe we could do less)
-    models = null;
     modelsPerDomain = null;
   }
 
@@ -101,7 +98,7 @@ public class LibraryManager extends ILibraryManager implements ILibraryProviderL
   public Collection<IModel> getAllModels(TransactionalEditingDomain domain) {
     HashMap<IModelIdentifier, IModel> models = new HashMap<IModelIdentifier, IModel>();
 
-    for (IModelIdentifier identifier : getAvailableModels()) {
+    for (IModelIdentifier identifier : getAvailableModels(domain)) {
       IModel model = getModel(domain, identifier);
       if (model != null) {
         models.put(identifier, model);
