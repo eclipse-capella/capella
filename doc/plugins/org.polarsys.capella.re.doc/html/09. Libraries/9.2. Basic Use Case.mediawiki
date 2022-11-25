@@ -63,7 +63,9 @@ Once the Project Model is opened, the referenced Library can be seen directly fr
 
 [[Image:Images/9.2.%20Basic%20Use%20Case_html_m74ed6e65.png]]
 
-''' Notice : ''' This wizard seems to provide the functionality to ''Unreference a Library from a Project''. Unckeck the Library in this wizard is only the first-step to perform while unreferencing a library. This operation has a dedicated How-to procedure in the ''Advanced Operations > Unreference a Library'' section.
+''' Notices : ''' 
+# This wizard seems to provide the functionality to ''Unreference a Library from a Project''. Unckeck the Library in this wizard is only the first-step to perform while unreferencing a library. This operation has a dedicated How-to procedure in the ''Advanced Operations > Unreference a Library'' section.
+# As libraries may rely on additional viewpoints, adding reference to a library will make the project depend on those viewpoints. Make sure these viewpoints are also available and installed for all users of the current project.
 
 == Using Library Elements from a Project ==
 

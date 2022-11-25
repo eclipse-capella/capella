@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -19,6 +19,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.sirius.business.api.query.URIQuery;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.libraries.ILibraryManager;
 import org.polarsys.capella.common.libraries.IModel;
@@ -51,6 +52,15 @@ public abstract class AbstractCapellaProvider extends AbstractLibraryProvider {
 
   protected boolean isHandled(URI uri) {
     return false;
+  }
+
+  protected boolean isLocalProject(TransactionalEditingDomain domain) {
+      for (Resource resource : domain.getResourceSet().getResources()) {
+          if (resource.getURI().scheme().equals(URIQuery.CDO_URI_SCHEME)) {
+              return false;
+          }
+      }
+      return true;
   }
 
   @Override

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -18,6 +18,7 @@ import java.util.Collection;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.sirius.business.api.session.Session;
 import org.polarsys.capella.common.libraries.IModel;
 import org.polarsys.capella.common.libraries.IModelIdentifier;
 
@@ -30,7 +31,13 @@ public interface ILibraryProvider {
   /**
    * Returns all models available through the provider
    */
+  @Deprecated
   public Collection<IModelIdentifier> getAvailableModels();
+
+  /**
+   * Returns all models available for the given {@link Session} through the provider
+   */
+  public Collection<IModelIdentifier> getAvailableModels(TransactionalEditingDomain domain);
 
   /**
    * Returns the related model if the object is linked to a model provided by this provider or null otherwise
