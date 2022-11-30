@@ -863,7 +863,7 @@ function containing the bound which has been realized.
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="TC_DF_07 - Functional exchange convoyed exchange items check"
+                  name="TC_DF_07 - Functional exchange conveyed exchange items check"
                   severity="WARNING"
                   statusCode="1">
                <message>

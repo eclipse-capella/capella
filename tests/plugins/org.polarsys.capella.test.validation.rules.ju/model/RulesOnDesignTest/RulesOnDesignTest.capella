@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--Capella_Version_5.1.0-->
+<!--Capella_Version_6.1.0-->
 <org.polarsys.capella.core.data.capellamodeller:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation"
     xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/6.0.0"
@@ -33188,7 +33188,7 @@
     </ownedArchitectures>
   </ownedModelRoots>
   <ownedModelRoots xsi:type="org.polarsys.capella.core.data.capellamodeller:SystemEngineering"
-      id="c72bf948-9bc0-4a2c-a94e-90eb02adafe9" name="DWF_DS_25" summary="A state machine must have only one initial state">
+      id="c72bf948-9bc0-4a2c-a94e-90eb02adafe9" name="DCOM_24" summary="A state machine must have only one initial state">
     <ownedArchitectures xsi:type="org.polarsys.capella.core.data.oa:OperationalAnalysis"
         id="0d047236-2d9b-48d6-8113-bf41ff3560e3" name="Operational Analysis">
       <ownedFunctionPkg xsi:type="org.polarsys.capella.core.data.oa:OperationalActivityPkg"
@@ -33727,7 +33727,7 @@
             <ownedMessages xsi:type="org.polarsys.capella.core.data.interaction:SequenceMessage"
                 id="85aea90c-32a7-40e8-aed1-29e560a1d29d" name="FunctionalExchange 1"
                 kind="ASYNCHRONOUS_CALL" sendingEnd="#1b6381de-b04e-4fcb-bd25-a28e429abdcf"
-                receivingEnd="#8aa56df4-2de3-434d-a0a3-871bd83cc2bb" exchangedItems="#7052dda1-fc2a-4a19-b44a-0f72302b53f8 #38c6a2e9-6f49-4be3-8307-3dc0fbddeed6"/>
+                receivingEnd="#8aa56df4-2de3-434d-a0a3-871bd83cc2bb" exchangedItems="#38c6a2e9-6f49-4be3-8307-3dc0fbddeed6"/>
             <ownedMessages xsi:type="org.polarsys.capella.core.data.interaction:SequenceMessage"
                 id="0821d8e4-d299-4a03-b734-03d8a851e5bc" name="FunctionalExchange 2"
                 kind="ASYNCHRONOUS_CALL" sendingEnd="#8eb418a4-b259-4831-98c6-34a7f5c9126a"
@@ -33879,7 +33879,7 @@
             <ownedMessages xsi:type="org.polarsys.capella.core.data.interaction:SequenceMessage"
                 id="affe6248-ea74-4e21-9dcc-b8695139b031" name="C 1" kind="ASYNCHRONOUS_CALL"
                 sendingEnd="#3419cfc9-d628-407a-89d0-0c14ce885db9" receivingEnd="#7cfdb0e7-36b9-4ae0-a167-e9d31357d42c"
-                exchangedItems="#7052dda1-fc2a-4a19-b44a-0f72302b53f8 #38c6a2e9-6f49-4be3-8307-3dc0fbddeed6 #4b97348a-ec69-435c-9948-0d1a923b28a4"/>
+                exchangedItems="#7052dda1-fc2a-4a19-b44a-0f72302b53f8 #4b97348a-ec69-435c-9948-0d1a923b28a4"/>
             <ownedMessages xsi:type="org.polarsys.capella.core.data.interaction:SequenceMessage"
                 id="350def69-40f1-4912-a90c-0c3094a38d92" name="C 3" kind="ASYNCHRONOUS_CALL"
                 sendingEnd="#a37d78f8-52cc-4f7e-a2ca-44affcbcd9af" receivingEnd="#7ad6dd2d-f048-45d4-b9aa-c238a4d925a2"/>

@@ -21,17 +21,11 @@ import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
 import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
-import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
-import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.information.AbstractEventOperation;
-import org.polarsys.capella.core.data.information.Operation;
-import org.polarsys.capella.core.data.information.Service;
 import org.polarsys.capella.core.data.interaction.MessageKind;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
-import org.polarsys.capella.core.data.interaction.properties.dialogs.sequenceMessage.model.communications.InterfaceCommunication;
-import org.polarsys.capella.core.data.oa.CommunicationMean;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.model.helpers.FunctionalExchangeExt;
 import org.polarsys.capella.core.model.helpers.SequenceMessageExt;
@@ -63,7 +57,7 @@ public class SequenceMessageInvokedOperationExchangeItems extends AbstractModelC
         AbstractEventOperation invokedOperation = sequenceMessage.getInvokedOperation();
         if (null != invokedOperation) {
             Collection<AbstractExchangeItem> lstInvokedEI = SequenceMessageExt.getExchangeItemsFromOperation(sequenceMessage);
-            if (!sequenceMessage.getExchangedItems().containsAll(lstInvokedEI)) {
+            if (!lstInvokedEI.isEmpty() && sequenceMessage.getExchangedItems().isEmpty()) {
                 String invokedOperationDisplayName = computeDisplayNameForOperation(invokedOperation);
                 return ctx.createFailureStatus(sequenceMessage.getName(), invokedOperation.getName(), invokedOperationDisplayName);
             }

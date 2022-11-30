@@ -158,15 +158,22 @@
 |}
 <br>
 {| class="VALIDATION-RULE"
+!|[[Image:../../../Images/error.gif|WARNING]]
+|DCOM_24 - Sequence Message conveys no Exchange Item compared to its Invoked Operation
+|-
+| colspan="2"|This rule generates a warning if a Sequence Message has no Exchange Item while its Invoked Operation has some.
+|}
+<br>
+{| class="VALIDATION-RULE"
 !|[[Image:../../../Images/warning.gif|WARNING]]
 |DC_CL_01  Communication Link is delegated by one subcomponent at least 
 |-
-| colspan="2"|Model Validation�shall check that Exchange Items referenced by a Communication Link is delegated to one or many subcomponents of the source Component.
+| colspan="2"|Model Validation shall check that Exchange Items referenced by a Communication Link is delegated to one or many subcomponents of the source Component.
 |}
 <br>
 {| class="VALIDATION-RULE"
 !|[[Image:../../../Images/warning.gif|WARNING]]
 |DC_CL_02 Communication Link for a component is defined in its parent 
 |-
-| colspan="2"|Model Validation�shall check that an Exchange Item referenced by a Communication Link from a SubComponent is also referenced by a Communication Link from owning Components.
+| colspan="2"|Model Validation shall check that an Exchange Item referenced by a Communication Link from a SubComponent is also referenced by a Communication Link from owning Components.
 |}
