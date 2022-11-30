@@ -1054,14 +1054,10 @@
       </commonFilter>
       <commonFilter
             activeByDefault="false"
+            class="org.polarsys.capella.core.platform.sirius.ui.navigator.filters.ComponentFilter"
             description="%common.filter.component.filter.description"
             id="capella.project.explorer.filters.componentFilter"
             name="%common.filter.component.filter.name">
-         <filterExpression>
-            <instanceof
-                  value="org.polarsys.capella.core.data.cs.Component">
-            </instanceof>
-         </filterExpression>
       </commonFilter>
       <commonFilter
             activeByDefault="false"
@@ -1175,7 +1171,7 @@
          </filterExpression>
       </commonFilter>
       <commonFilter
-            activeByDefault="false"
+            activeByDefault="true"
             description="%common.filter.cfa.filter.description"
             id="capella.project.explorer.filters.cfaFilter"
             name="%common.filter.cfa.filter.name">
@@ -1186,7 +1182,7 @@
          </filterExpression>
       </commonFilter>
       <commonFilter
-            activeByDefault="false"
+            activeByDefault="true"
             description="%common.filter.cfa.filter.description"
             id="capella.project.explorer.filters.cfaFilter"
             name="%common.filter.cfa.filter.name">
@@ -1197,7 +1193,7 @@
          </filterExpression>
       </commonFilter>
       <commonFilter
-            activeByDefault="false"
+            activeByDefault="true"
             description="%common.filter.cefea.filter.description"
             id="capella.project.explorer.filters.cefeaFilter"
             name="%common.filter.cefea.filter.name">
