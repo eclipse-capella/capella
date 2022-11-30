@@ -20,12 +20,13 @@ import org.polarsys.capella.core.model.helpers.ComponentExt;
 /**
  */
 public class ActorFilter extends ViewerFilter {
-	/**
-   * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+  /**
+   * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object,
+   *      java.lang.Object)
    */
   @Override
-  public boolean select(Viewer viewer_p, Object parentElement_p, Object element_p) {
-    if(element_p instanceof Component && ComponentExt.isActor((Component) element_p)){
+  public boolean select(Viewer viewer, Object parentElement, Object element) {
+    if (element instanceof Component && ComponentExt.isActor((Component) element)) {
       return false;
     }
     return true;
