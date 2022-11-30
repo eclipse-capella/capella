@@ -10,7 +10,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.validation.rules.ju.testcases.dwf_ds;
+package org.polarsys.capella.test.validation.rules.ju.testcases.dcom;
 
 import java.util.Arrays;
 import java.util.List;
@@ -35,10 +35,11 @@ import org.polarsys.capella.test.framework.helpers.log.FormatedSysoutLogger;
 import org.polarsys.capella.test.validation.rules.ju.testcases.AbstractRulesOnDesignTest;
 
 /**
- * test on DWF_DS_25: This rule checks that Sequence Messages allocated ExchangeItems are consistent with their invoked
- * operation ExchangeItems.
+ * test on DCOM_24: This rule checks that Sequence Messages allocated ExchangeItems are consistent with their invoked
+ * operation ExchangeItems. Only raises a warning if none of the invoked operation ExchangeItems are allocated to the
+ * Sequence Message.
  */
-public class Rule_DWF_DS_25 extends AbstractRulesOnDesignTest {
+public class Rule_DCOM_24 extends AbstractRulesOnDesignTest {
 
     protected FormatedLogger logger = new FormatedSysoutLogger();
 
@@ -55,7 +56,7 @@ public class Rule_DWF_DS_25 extends AbstractRulesOnDesignTest {
      * @generated
      */
     protected String getRuleID() {
-        return "org.polarsys.capella.core.data.interaction.validation.DWF_DS_25";
+        return "org.polarsys.capella.core.data.interaction.validation.DCOM_24";
     }
     
     @Override
@@ -78,7 +79,11 @@ public class Rule_DWF_DS_25 extends AbstractRulesOnDesignTest {
                 // SequenceMessages invoking Interactions with correctly allocated EI
                 "c17be500-c92f-461c-a9d4-e679a3f5f7ea", 
                 // SequenceMessages invoking ComponentExchanges with correctly allocated EI
-                "affe6248-ea74-4e21-9dcc-b8695139b031");
+                "affe6248-ea74-4e21-9dcc-b8695139b031",
+                // SequenceMessages invoking Interactions with subset of allocated EI
+                "85aea90c-32a7-40e8-aed1-29e560a1d29d",
+                // SequenceMessages invoking ComponentExchanges with subset of allocated EI
+                "ff7785c8-6927-41e6-aab7-ecb7835827b2");
     }
 
     /**
@@ -90,6 +95,8 @@ public class Rule_DWF_DS_25 extends AbstractRulesOnDesignTest {
                 // SequenceMessages invoking FunctionalExchanges (1 = missing EI , 0 = no EI and non expected)
                 new OracleDefinition("c10f833f-84e7-4dbc-ade9-271b2cc3ff55", 1), new OracleDefinition("fa1de654-4a15-4bfb-8894-6463cf853843", 1),
                 new OracleDefinition("fabc8ba8-d847-446f-acf1-b5058b4f98a1", 0),
+                // SequenceMessages invoking Interactions and correctly allocated subset of EI (so expected 0)
+                new OracleDefinition("85aea90c-32a7-40e8-aed1-29e560a1d29d", 0),
                 // SequenceMessages invoking ComponentExchanges (1 = missing EI , 0 = no EI and non expected)
                 new OracleDefinition("c16b6582-fda0-444e-9f80-c53f5bcdcfa0", 1), new OracleDefinition("f3f9d688-35c9-41c1-a781-1d3cd1f48dac", 0),
                 new OracleDefinition("c0a51532-c307-4e97-b263-a0ec5f6bf159", 1),
@@ -99,7 +106,9 @@ public class Rule_DWF_DS_25 extends AbstractRulesOnDesignTest {
                 // SequenceMessages invoking Interactions and correctly allocated EI (so expected 0)
                 new OracleDefinition("c17be500-c92f-461c-a9d4-e679a3f5f7ea", 0),
                 // SequenceMessages invoking ComponentExchanges with correctly allocated EI (so expected 0)
-                new OracleDefinition("affe6248-ea74-4e21-9dcc-b8695139b031", 0));
+                new OracleDefinition("affe6248-ea74-4e21-9dcc-b8695139b031", 0),
+                // SequenceMessages invoking ComponentExchanges with correctly allocated subset of EI (so expected 0)
+                new OracleDefinition("ff7785c8-6927-41e6-aab7-ecb7835827b2", 0));
     }
     
     @Override
@@ -107,7 +116,7 @@ public class Rule_DWF_DS_25 extends AbstractRulesOnDesignTest {
         IStatus result = Status.OK_STATUS;
         for(IMarker marker: markers) {
             List<EObject> modelElements = MarkerViewHelper.getModelElementsFromMarker(marker);
-            if (!((modelElements.size() < 1) || !(modelElements.get(0) instanceof SequenceMessage))) {
+            if (!((modelElements.isEmpty()) || !(modelElements.get(0) instanceof SequenceMessage))) {
                 final SequenceMessage sequenceMessage = (SequenceMessage) modelElements.get(0);
                 AddAllExchangeItemsToSequenceMessageResolver resolver = new AddAllExchangeItemsToSequenceMessageResolver();
                 

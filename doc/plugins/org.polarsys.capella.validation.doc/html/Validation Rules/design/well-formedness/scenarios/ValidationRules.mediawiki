@@ -172,9 +172,3 @@ Whatever the level, UNSET Scenarios raise an error.
 |-
 | colspan="2"|Check that the Instance Role has the same name as its Represented Instance.
 |}
-{| class="VALIDATION-RULE"
-!|[[Image:../../../../Images/warning.gif|WARNING]]
-|DWF_DS_25 - SequenceMessage has different ExchangeItem Elements as its Invoked Operation
-|-
-| colspan="2"|Checks that the SequenceMessage has the same ExchangeItem Elements as its Invoked Operation.
-|}

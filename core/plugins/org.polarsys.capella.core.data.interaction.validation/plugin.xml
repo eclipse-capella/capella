@@ -278,21 +278,21 @@ Whatever the level, UNSET Scenarios raise an error.
             </constraint>
             <constraint
                   class="org.polarsys.capella.core.data.interaction.validation.sequenceMessage.SequenceMessageInvokedOperationExchangeItems"
-                  id="DWF_DS_25"
+                  id="DCOM_24"
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DWF_DS_25 - SequenceMessage has different ExchangeItem Elements as its Invoked Operation"
+                  name="DCOM_24 - Sequence Message conveys no Exchange Item compared to its Invoked Operation"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0} (SequenceMessage) should have the same ExchangeItem Elements as its Invoked {1} ({2})
+                  {0} (SequenceMessage) conveys no Exchange Item compared to its Invoked {1} ({2})
                </message>
                <target
                      class="SequenceMessage">
                </target>
                <description>
-                  This rule checks that the SequenceMessage has the same ExchangeItem Elements as its Invoked Operation.
+                  This rule generates a warning if a Sequence Message has no Exchange Item while its Invoked Operation has some.
                </description>
             </constraint>
          </constraints>

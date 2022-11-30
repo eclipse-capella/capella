@@ -60,7 +60,7 @@ function containing the bound which has been realized.
 <br>
 {| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/warning.gif|WARNING]]
-|TC_DF_07 - Functional exchange convoyed exchange items check 
+|TC_DF_07 - Functional exchange conveyed exchange items check 
 |-
 | colspan="2"|This rule checks that a FunctionalExchange isn't linked to an ExchangeItem from a previous level whereas it is realized in the same level than the FunctionalExchange. FunctionalExchange should be linked to the realized ExchangeItem.
 A warning can be raised if you have performed a transition of the FunctionalExchange before performing a transition of the linked ExchangeItem.

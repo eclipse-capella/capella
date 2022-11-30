@@ -57,6 +57,8 @@ public class DCOMRulesTestSuite extends BasicTestSuite {
     tests.add(new Rule_DCOM_20());
     tests.add(new Rule_DCOM_21());
     tests.add(new Rule_DCOM_22());
+    tests.add(new Rule_DCOM_23());
+    tests.add(new Rule_DCOM_24());
 		return tests;
 	}
 
