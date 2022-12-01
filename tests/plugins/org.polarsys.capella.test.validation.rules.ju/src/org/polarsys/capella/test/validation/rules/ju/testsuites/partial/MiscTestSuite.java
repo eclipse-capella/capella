@@ -21,6 +21,7 @@ import org.polarsys.capella.test.validation.rules.ju.testcases.misc.Bug2438TestC
 import org.polarsys.capella.test.validation.rules.ju.testcases.misc.CheckAllRulesCodeTest;
 import org.polarsys.capella.test.validation.rules.ju.testcases.misc.ComponentPortOrientationConsistencyTest;
 import org.polarsys.capella.test.validation.rules.ju.testcases.misc.I25_MoreDescriptionValidationTests;
+import org.polarsys.capella.test.validation.rules.ju.testcases.misc.InvalidQuickfixRegistration;
 import org.polarsys.capella.test.validation.rules.ju.testcases.misc.NoDuplicateRuleIdsTest;
 import org.polarsys.capella.test.validation.rules.ju.testcases.misc.NoStackoverflowErrorOnValidation;
 import org.polarsys.capella.test.validation.rules.ju.testcases.misc.PackageCycle1Test;
@@ -50,6 +51,7 @@ public class MiscTestSuite extends BasicTestSuite {
     tests.add(new ComponentPortOrientationConsistencyTest());
     tests.add(new I25_MoreDescriptionValidationTests());
     tests.add(new NoDuplicateRuleIdsTest());
+    tests.add(new InvalidQuickfixRegistration());
     tests.add(new NoStackoverflowErrorOnValidation());
     tests.add(new PackageCycle1Test());
     tests.add(new PackageCycle2Test());
