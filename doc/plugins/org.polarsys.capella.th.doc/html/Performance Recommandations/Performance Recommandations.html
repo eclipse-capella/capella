@@ -34,13 +34,6 @@
 			<img height="500" width="650" border="0" src="Images/Perf_REC4.png"/>
 			<br/>
 		</p>
-		<h2 id="Use_fast_linker_view">Use fast linker view</h2>
-		<p>The usage of the Fast Linker view frees from systematically displaying dialog boxes performing queries on the whole model. In Capella main menu \Window\Show View, select “Fast Linker” view.</p>
-		<p>See dedicated User Manual section User Interface.</p>
-		<p>
-			<img height="300" width="400" border="0" src="Images/Perf_REC5.png"/>
-			<br/>
-		</p>
 		<h2 id="Filter_Project_explorer_model_elements">Filter Project explorer model elements</h2>
 		<p>Hiding technical and “useless” elements in the tree helps have a clearer vision of the model main elements.
 			<br/> In the Project Explorer view toolbar \Customize View…\Filters, check technical model elements to be hidden.
@@ -124,11 +117,13 @@
 			<br/>
 		</p>
 		<h2 id="Close_outline_view">Close outline view</h2>
-		<p>This view generates graphic lags on big diagrams. It can be closed and reopen when necessary through Capella main toolbar \Window\Show View.</p>
+		<p>This view may cause performance issues on big diagrams. It can be closed and reopen when necessary through Capella main toolbar \Window\Show View.</p>
 		<p>
 			<img height="400" width="300" border="0" src="Images/Perf_REC11.png"/>
 			<br/>
 		</p>
+		<p>The Outline view can be hidden at Capella initialization using the preference /instance/org.polarsys.capella.core.preferences/hide.view.outline=true in an preference file.</p>
+		<p>(look at Capella Guide / User Manual / Workbench Basics / Capella Configurability)</p>
 		<h2 id="Customize_enabled_validation_rules">Customize enabled validation rules</h2>
 		<p>For instance, disable temporally pattern, cycles checks or others, in the main menu Window\Preferences\Model Validation\Constraints.</p>
 		<p>

@@ -12,7 +12,7 @@ The Capella Perspective contains:
 * The '''Properties View''' displaying the features of the model 	element currently selected in the model explorer or in a diagram.
 * The '''Information View''' displaying Validation results and 	miscellaneous additional messages
 * The '''Semantic Browser''' displaying all relationships outgoing 	and incoming from / to the model element currently selected in the model explorer or in a diagram.
-* The '''Fast Linker''' view enabling to create links between two elements from the opened model.
+* The '''Outline''' view enabling to see the focus of the current diagram view compared to the entire diagram.
 
 [[Image:Images/4.01_Capella_Perspective.png|900x570px]]
 

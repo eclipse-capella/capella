@@ -204,7 +204,6 @@
             </visibleWhen>
          </command>
       </menuContribution>
-         
       <menuContribution 
       		locationURI="popup:capella.project.explorer#PopupMenu?after=group.project">
          <command
