@@ -1,7 +1,7 @@
 
 = Outline View =
 
-The Outline view (not displayed by default) enables to see the focus of the current diagram view compared to the entire diagram, when this one is too big to fit in the diagram view window.
+The Outline view enables to see the focus of the current diagram view compared to the entire diagram, when this one is too big to fit in the diagram view window.
 
 
 [[Image:Images/4.09.%20Outline_html_m69cb5c97.png|606x361px]]
@@ -23,7 +23,9 @@ When 				experimenting performance issues with big models and big 				diagrams, 
 |}  
 <br>
 <br>
+The Outline view can be hidden at Capella initialization using the preference /instance/org.polarsys.capella.core.preferences/hide.view.outline=true in an preference file.
 
+(look at Capella Guide > User Manual > Workbench Basics > Capella Configurability)
 
 <br>
 <br>

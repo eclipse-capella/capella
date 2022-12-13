@@ -78,6 +78,22 @@
               
        </menuContribution>
        
+       <menuContribution
+           locationURI="popup:org.eclipse.ui.views.ContentOutline?after=additions">
+                
+              <separator name="group.showIn" visible="true" />
+              <separator name="group.sendTo" visible="true" />
+              <separator name="group.semantic" visible="true" />
+              <separator name="group.delete" visible="false" />
+              <separator name="group.validation" visible="true" />
+              <separator name="group.rec" visible="false" />
+              <separator name="group.pattern" visible="false" />
+              <separator name="group.transition" visible="false" />
+              <separator name="group.wizard" visible="false" />
+              <separator name="group.allocation" visible="false" />
+              <separator name="group.accelerator" visible="false" />
+              
+       </menuContribution>
                
        <!-- Semantic Browser -->
        <menuContribution

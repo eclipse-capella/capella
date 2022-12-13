@@ -32,16 +32,6 @@ In order to show up the dialog faster, it is recommended for huge models to disa
 [[Image:Images/Perf_REC4.png|650x500px]]<br>
 
 
-== Use fast linker view ==
-
-The usage of the Fast Linker view frees from systematically displaying dialog boxes performing queries on the whole model. In Capella main menu \Window\Show View, select “Fast Linker” view.
-
-See dedicated User Manual section User Interface.
-
-[[Image:Images/Perf_REC5.png|400x300px]]<br>
-
-
-
 == Filter Project explorer model elements ==
 
 Hiding technical and “useless” elements in the tree helps have a clearer vision of the model main elements.<br> In the Project Explorer view toolbar \Customize View…\Filters, check technical model elements to be hidden.
@@ -143,10 +133,14 @@ Create separated representation analysis (aird files) and isolate Table represen
 
 == Close outline view ==
 
-This view generates graphic lags on big diagrams. It can be closed and reopen when necessary through Capella main toolbar \Window\Show View.
+This view may cause performance issues on big diagrams. It can be closed and reopen when necessary through Capella main toolbar \Window\Show View.
 
 [[Image:Images/Perf_REC11.png|300x400px]]<br>
 
+
+The Outline view can be hidden at Capella initialization using the preference /instance/org.polarsys.capella.core.preferences/hide.view.outline=true in an preference file.
+
+(look at Capella Guide / User Manual / Workbench Basics / Capella Configurability)
 
 == Customize enabled validation rules ==
 

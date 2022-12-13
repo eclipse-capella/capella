@@ -23,7 +23,7 @@ When launched on a new workspace, a Welcome screen is displayed. From there, one
 [[Image:Images/3.1.%20Starting%20Melody%20Advance_html_m292ffacc.png]]
 
 
-Once the Welcome screen is closed, the Capella perspective is opened by default. The default setting the Perspective contains the following views: Project Explorer, Fast Linker, Diagram Editor, Semantic Browser, Properties, and Information View.
+Once the Welcome screen is closed, the Capella perspective is opened by default. The default setting the Perspective contains the following views: Project Explorer, Outline, Diagram Editor, Semantic Browser, Properties, and Information View.
 
 
 [[Image:Images/3.1.%20Starting%20Melody%20Advance_html_m39d6061f.png]]

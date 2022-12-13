@@ -18,6 +18,6 @@ public interface PerspectivePreferences {
 	
   public static final String PREFS_PRODUCT_VERSION = "product.version"; //$NON-NLS-1$
   
-  public static final String PREFS_DISPLAY_OUTLINE_VIEW_ON_STARTUP = "display.view.outline"; //$NON-NLS-1$
+  public static final String PREFS_HIDE_OUTLINE_VIEW_ON_STARTUP = "hide.view.outline"; //$NON-NLS-1$
   
 }

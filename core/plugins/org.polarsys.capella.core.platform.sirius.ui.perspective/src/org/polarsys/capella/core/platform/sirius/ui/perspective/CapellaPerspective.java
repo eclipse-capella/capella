@@ -83,21 +83,9 @@ public class CapellaPerspective implements IPerspectiveFactory {
 
     IFolderLayout bottomLeft = layout_p.createFolder(BOTTOMLEFT_AREA, IPageLayout.BOTTOM, (IPageLayout.DEFAULT_VIEW_RATIO / 0.7f), TOPLEFT_AREA);
 
-    if (AbstractPreferencesInitializer.getBoolean(PerspectivePreferences.PREFS_DISPLAY_OUTLINE_VIEW_ON_STARTUP, true)) {
+    //If the outline isn't explicitly disabled through the preference , add the view in default perspective
+    if (! AbstractPreferencesInitializer.getBoolean(PerspectivePreferences.PREFS_HIDE_OUTLINE_VIEW_ON_STARTUP, true)) {
       bottomLeft.addView(OUTLINE_ID);
-    }
-
-    // in case of Capella light we check the FastLinkerView presence (no fastr linker view is included MALight)
-    IViewDescriptor[] viewsDescriptors = PlatformUI.getWorkbench().getViewRegistry().getViews();
-    for (IViewDescriptor viewDescriptor : viewsDescriptors) {
-      if ((viewDescriptor != null) && (viewDescriptor.getId() != null)) {
-        if (viewDescriptor.getId().equals(FAST_LINKER_ID)) {
-          bottomLeft.addView(FAST_LINKER_ID);
-          break;
-        }
-
-      }
-
     }
 
     IFolderLayout bottom = layout_p.createFolder(BOTTOM_AREA, IPageLayout.BOTTOM, (IPageLayout.DEFAULT_VIEW_RATIO / 0.7f), IPageLayout.ID_EDITOR_AREA);
