@@ -195,6 +195,9 @@
       <migrationContributor
          class="org.polarsys.capella.core.data.migration.contribution.PatternCatalogDeletionContributor"> 
       </migrationContributor>
+      <migrationContributor
+            class="org.polarsys.capella.core.data.migration.aird.ImageDependenciesMigrationContributor">
+      </migrationContributor>
       
    </extension>
    
