@@ -22,7 +22,7 @@ public class Messages extends NLS {
   private static final String BUNDLE_NAME = "org.polarsys.capella.core.data.migration.aird.messages"; //$NON-NLS-1$
 
   public static String MigrationAction_DiagramMigration;
-  public static String MigrationAction_FCDDiagramMigration;
+  public static String MigrationAction_ImageProjectDependencies;
 
   static {
     // initialize resource bundle

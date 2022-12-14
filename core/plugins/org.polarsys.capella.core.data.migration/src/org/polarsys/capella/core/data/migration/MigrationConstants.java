@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -115,8 +115,9 @@ public class MigrationConstants {
   public static final String MIGRATION_KIND__DIAGRAM = "MIGRATION_KIND__DIAGRAM";
   public static final String MIGRATION_KIND__FCDDIAGRAM = "MIGRATION_KIND__FCDDIAGRAM";
   public static final String MIGRATION_KIND__VIEWPOINT = "MIGRATION_KIND__VIEWPOINT";
+  public static final String MIGRATION_KIND__IMAGE_DEPENDENCIES = "MIGRATION_KIND__IMAGE_DEPENDENCIES";
 
   public static final String[] DEFAULT_KIND_ORDER = { MIGRATION_KIND__CHECK_MISSING_VP, MIGRATION_KIND__PATTERN,
       MIGRATION_KIND__SEMANTIC, MIGRATION_KIND__DIAGRAM, MIGRATION_KIND__FCDDIAGRAM, MIGRATION_KIND__AFM,
-      MIGRATION_KIND__VIEWPOINT, MIGRATION_KIND__SCF };
+      MIGRATION_KIND__VIEWPOINT, MIGRATION_KIND__SCF, MIGRATION_KIND__IMAGE_DEPENDENCIES };
 }
