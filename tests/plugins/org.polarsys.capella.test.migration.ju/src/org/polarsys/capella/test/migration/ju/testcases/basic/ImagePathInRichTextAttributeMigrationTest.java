@@ -231,10 +231,9 @@ public class ImagePathInRichTextAttributeMigrationTest extends BasicTestCase {
 
   @Override
   protected void tearDown() throws Exception {
-    super.tearDown();
     if (logListener != null) {
       Platform.removeLogListener(logListener);
     }
-
+    super.tearDown();
   }
 }
