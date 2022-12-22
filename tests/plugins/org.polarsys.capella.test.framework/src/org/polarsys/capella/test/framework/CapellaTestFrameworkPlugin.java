@@ -12,6 +12,10 @@
  *******************************************************************************/
 package org.polarsys.capella.test.framework;
 
+import org.eclipse.core.runtime.preferences.IEclipsePreferences;
+import org.eclipse.core.runtime.preferences.InstanceScope;
+import org.eclipse.egit.core.GitCorePreferences;
+import org.eclipse.egit.ui.UIPreferences;
 import org.osgi.framework.BundleContext;
 import org.polarsys.capella.common.mdsofa.common.activator.AbstractActivator;
 
@@ -42,6 +46,14 @@ public class CapellaTestFrameworkPlugin extends AbstractActivator {
   public void start(BundleContext context_p) throws Exception {
     super.start(context_p);
     __instance = this;
+    
+    IEclipsePreferences pref = InstanceScope.INSTANCE.getNode(org.eclipse.egit.core.Activator.PLUGIN_ID);
+    pref.putBoolean(GitCorePreferences.core_autoShareProjects, false);
+    pref.putBoolean(GitCorePreferences.core_autoIgnoreDerivedResources, false);
+    pref.flush();
+    pref = InstanceScope.INSTANCE.getNode(org.eclipse.egit.ui.Activator.PLUGIN_ID);
+    pref.putInt(UIPreferences.REFRESH_INDEX_INTERVAL, 300000); //instead of each 5min
+    pref.flush();
   }
 
   /**
