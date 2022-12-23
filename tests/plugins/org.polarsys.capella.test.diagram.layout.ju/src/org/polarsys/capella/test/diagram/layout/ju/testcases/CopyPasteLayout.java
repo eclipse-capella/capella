@@ -25,10 +25,11 @@ public class CopyPasteLayout extends ModelCopyLayout {
   @Override
   public void test() throws Exception {
 
-    // Activate DOREMI refresh viewpoints
     DiagramHelper.setPreferenceAutoRefresh(true);
     DiagramHelper.setPrefereneRefreshOnOpening(true);
-
+    DiagramHelper.setPreferenceCopyLayoutPrompt(false);
+    DiagramHelper.setPreferenceCopyLayoutMode(true);
+    
     Session session = getSessionForTestModel(getRequiredTestModels().get(0));
     SessionContext context = new SessionContext(session);
 
