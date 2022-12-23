@@ -59,6 +59,8 @@ import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.diagram.ui.business.api.helper.graphicalfilters.CompositeFilterApplicationBuilder;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.CopyFormatAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.PasteFormatAction;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
@@ -142,6 +144,28 @@ public class DiagramHelper {
     IPreferenceStore preferenceStore = SiriusEditPlugin.getPlugin().getPreferenceStore();
     preferenceStore.setValue(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name(), value);
   }
+
+  /**
+   * Set the preference to display prompt dialog display
+   * 
+   * @apiNote that this method will affect the running instance (not specific to a given project)
+   */
+  public static void setPreferenceCopyLayoutPrompt(final boolean value) {
+    IPreferenceStore preferenceStore = DiagramUIPlugin.getPlugin().getPreferenceStore();
+    preferenceStore.setValue(SiriusDiagramUiPreferencesKeys.PREF_PROMPT_PASTE_MODE.name(), value);
+  }
+  
+  /**
+   * Set the preference for Copy Layout Mode
+   * 
+   * @param absolute: whether the copy paste is absolute or bounding box
+   * @apiNote that this method will affect the running instance (not specific to a given project)
+   */
+  public static void setPreferenceCopyLayoutMode(final boolean absolute) {
+    IPreferenceStore preferenceStore = DiagramUIPlugin.getPlugin().getPreferenceStore();
+    preferenceStore.setValue(SiriusDiagramUiPreferencesKeys.PREF_PASTE_MODE_ABSOLUTE.name(), absolute);
+  }
+  
 
   /**
    * Return the DRepresention with the given name, null otherwise
