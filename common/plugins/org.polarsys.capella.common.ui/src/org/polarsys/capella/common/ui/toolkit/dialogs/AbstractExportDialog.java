@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2023 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -108,6 +108,18 @@ public abstract class AbstractExportDialog extends AbstractViewerDialog {
     //
     String fileName = fd.open();
 
+    
+    int filterIndex = fd.getFilterIndex();
+    if (filterIndex != -1) {
+      // If a filter was selected
+      String selectedFilter = fd.getFilterExtensions()[filterIndex];
+      String fileExtension = selectedFilter.substring(1);
+      if (!fileName.endsWith(fileExtension)) {
+        // If the filename doesn't already have the extension, append it
+        fileName = fileName + fileExtension;
+      }
+    }
+    
     //
     // The export operation itself
     //
