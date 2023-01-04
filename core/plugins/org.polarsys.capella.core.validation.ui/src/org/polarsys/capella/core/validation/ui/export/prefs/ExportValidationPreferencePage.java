@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2023 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -25,7 +25,6 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.ui.preferences.ScopedPreferenceStore;
-
 import org.polarsys.capella.common.helpers.export.DataExporter;
 import org.polarsys.capella.common.helpers.export.IExporterProvider;
 import org.polarsys.capella.core.commands.preferences.service.AbstractDefaultPreferencePage;
@@ -125,6 +124,17 @@ public class ExportValidationPreferencePage extends
 		// File Dialog selection
 		//
 		String fileName = fd.open();
+		
+    int filterIndex = fd.getFilterIndex();
+    if (filterIndex != -1) {
+      // If a filter was selected
+      String selectedFilter = fd.getFilterExtensions()[filterIndex];
+      String fileExtension = selectedFilter.substring(1);
+      if (!fileName.endsWith(fileExtension)) {
+        // If the filename doesn't already have the extension, append it
+        fileName = fileName + fileExtension;
+      }
+    }
 
 		//
 		// The export operation itself
