@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2023 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -29,6 +29,8 @@ public class MetricMessages extends NLS {
   public static String metricDialogDefaultTitle;
   public static String metricDialogTitleFromEObj;
   public static String metricDialogTitleFromFile;
+  
+  public static String metricDialog_default_filename;
 
   public static String treeObjectColumnLabel;
   public static String treeResultColumnLabel;
@@ -56,6 +58,8 @@ public class MetricMessages extends NLS {
   public static String progressMonitoring_setAction_nochanges_info;
   public static String progressMonitoring_setAction_changes_info;
 
+  public static String progressMonitoring_dialog_default_filename;
+  
   public static String progressMonitoring_dialog_title;
   public static String progressMonitoring_dialog_msg;
 

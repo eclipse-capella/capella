@@ -100,6 +100,7 @@ public abstract class AbstractExportDialog extends AbstractViewerDialog {
     //
     FileDialog fd = new FileDialog(getParentShell(), SWT.SAVE);
     fd.setText(Messages.fileBrowserDialogTitle);
+    fd.setFileName(getDefaultFileName());
     fd.setFilterExtensions(dataExporter.getSupportedExtension());
     fd.setFilterNames(dataExporter.getSupportedDescription());
 
@@ -198,5 +199,9 @@ public abstract class AbstractExportDialog extends AbstractViewerDialog {
    */
   protected Viewer getViewer() {
     return _viewer;
+  }
+  
+  protected String getDefaultFileName() {
+    return "";//$NON-NLS-1$
   }
 }
