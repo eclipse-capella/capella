@@ -105,7 +105,7 @@
                ruleId="DCOV_09">
          </rules>
          <rules
-               ruleId="DWF_DF_10">
+               ruleId="DWF_DC_31">
          </rules>
       </resolver>
       <resolver
@@ -137,48 +137,12 @@
          </rules>
       </resolver>
       <resolver
-            class="org.polarsys.capella.core.data.fa.ui.quickfix.resolver.TC_DF_08_Resolver"
-            desc="%quickFix.DWF_DF_07.desc"
-            icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_delete.gif"
-            label="%quickFix.DWF_DF_07.label">
-         <rules
-               ruleId="DWF_DF_07">
-         </rules>
-      </resolver>
-      <resolver
             class="org.polarsys.capella.core.data.fa.ui.quickfix.resolver.I_27_Resolver"
             desc="%quickFix.I_27.desc"
             icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_delete.gif"
             label="%quickFix.I_27.label">
          <rules
                ruleId="I_27">
-         </rules>
-      </resolver>
-      <resolver
-            class="org.polarsys.capella.core.data.fa.ui.quickfix.resolver.I_28_Resolver"
-            desc="%quickFix.I_28.desc"
-            icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
-            label="%quickFix.I_28.label">
-         <rules
-               ruleId="I_28">
-         </rules>
-      </resolver>
-      <resolver
-            class="org.polarsys.capella.core.data.fa.ui.quickfix.resolver.EditContainterPCOfComponentPort"
-            desc="%quickFix.DWF_DF_10.desc"
-            icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_edit.gif"
-            label="%quickFix.DWF_DF_10.label">
-         <rules
-               ruleId="DWF_DF_10">
-         </rules>
-      </resolver>
-      <resolver
-            class="org.polarsys.capella.core.data.fa.ui.quickfix.resolver.DeleteComponentExchagne"
-            desc="%quickFix.DWF_DF_11.desc"
-            icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_delete.gif"
-            label="%quickFix.DWF_DF_11.label">
-         <rules
-               ruleId="DWF_DF_11">
          </rules>
       </resolver>
       <resolver
@@ -421,10 +385,6 @@
          point="org.eclipse.ui.ide.markerResolution">
       <markerResolutionGenerator
             class="org.polarsys.capella.core.data.fa.ui.quickfix.generator.ComponentPortOrientationResolutions"
-            markerType="org.polarsys.capella.core.validation.markers">
-      </markerResolutionGenerator>
-      <markerResolutionGenerator
-            class="org.polarsys.capella.core.data.fa.ui.quickfix.generator.ComponentExchangeFunctionalExchangeResoultions"
             markerType="org.polarsys.capella.core.validation.markers">
       </markerResolutionGenerator>
       <markerResolutionGenerator

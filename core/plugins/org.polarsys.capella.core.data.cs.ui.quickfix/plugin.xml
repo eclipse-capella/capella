@@ -90,7 +90,7 @@
                ruleId="DCOV_11">
          </rules>
          <rules
-               ruleId="DWF_DF_09">
+               ruleId="DWF_DC_30">
          </rules>
       </resolver>
       <resolver
@@ -99,14 +99,6 @@
             label="%quickFix.DWF_DC_19.label">
          <rules
                ruleId="DWF_DC_19">
-         </rules>
-      </resolver>
-      <resolver
-            class="org.polarsys.capella.core.data.cs.ui.quickfix.resolver.EditContainterPCOfPhysicalPort"
-            desc="%quickFix.DWF_DF_09.desc"
-            label="%quickFix.DWF_DF_09.label">
-         <rules
-               ruleId="DWF_DF_09">
          </rules>
       </resolver>
       <resolver
@@ -162,10 +154,6 @@
       </markerResolutionGenerator>
       <markerResolutionGenerator
             class="org.polarsys.capella.core.data.cs.ui.quickfix.generator.DWF_DC_36_Generator"
-            markerType="org.polarsys.capella.core.validation.markers">
-      </markerResolutionGenerator>
-	  <markerResolutionGenerator
-            class="org.polarsys.capella.core.data.cs.ui.quickfix.generator.DWF_DC_30_Generator"
             markerType="org.polarsys.capella.core.validation.markers">
       </markerResolutionGenerator>
    </extension>
