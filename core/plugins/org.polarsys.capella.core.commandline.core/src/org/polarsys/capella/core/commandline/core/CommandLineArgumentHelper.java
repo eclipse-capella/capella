@@ -97,6 +97,7 @@ public class CommandLineArgumentHelper {
   /**
    * @return the filePath
    */
+  @Deprecated
   public String getFilePath() {
     return filePath;
   }
@@ -146,6 +147,7 @@ public class CommandLineArgumentHelper {
   /**
    * @return the createFolder
    */
+  @Deprecated
   public boolean isCreateFolder() {
     return createFolder;
   }
@@ -167,6 +169,7 @@ public class CommandLineArgumentHelper {
   /**
    * @return the exportProject
    */
+  @Deprecated
   public String getExportProject() {
     return exportProject;
   }
@@ -174,6 +177,7 @@ public class CommandLineArgumentHelper {
   /**
    * @return the zipNameProject
    */
+  @Deprecated
   public String getZipNameProject() {
     return zipNameProject;
   }
