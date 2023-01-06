@@ -38,6 +38,7 @@ import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
@@ -85,7 +86,8 @@ public class ImagePathInRichTextAttributeContribution extends AbstractMigrationC
       if (project != null) {
         Set<EAttribute> richTextAttributes = RichTextAttributeRegistry.INSTANCE.getEAttributes();
         TreeIterator<EObject> allContents = resourceToMigrate.getAllContents();
-        Set<String> nonFoundRelativeFiles = new LinkedHashSet<>();
+        Set<String> notMigratedAndNotFoundRelativeFiles = new LinkedHashSet<>();
+        Set<String> migratedButNonFoundRelativeFiles = new LinkedHashSet<>();
         while (allContents.hasNext()) {
           EObject eObject = allContents.next();
           // keep only EAttributes that are declared as containing html content
@@ -103,15 +105,21 @@ public class ImagePathInRichTextAttributeContribution extends AbstractMigrationC
               createFileAndUpdateAttributeFromAbsoluteToRelativePath(eObject, (EAttribute) attr);
 
               // update the project relative path according to the new path serialization
-              updateProjectRelativePath(resourceToMigrate, eObject, (EAttribute) attr, nonFoundRelativeFiles);
+              updateProjectRelativePath(resourceToMigrate, eObject, (EAttribute) attr,
+                  notMigratedAndNotFoundRelativeFiles, migratedButNonFoundRelativeFiles);
             }
           }
         }
 
-        if (!nonFoundRelativeFiles.isEmpty()) {
-          String notFoundFilesPath = nonFoundRelativeFiles.stream().collect(Collectors.joining(", "));
+        if (!notMigratedAndNotFoundRelativeFiles.isEmpty()) {
+          String notFoundFilesPath = notMigratedAndNotFoundRelativeFiles.stream().collect(Collectors.joining(", "));
           Activator.getDefault().getLog()
               .warn(MessageFormat.format(Messages.MigrationAction_Image_RelativePathImageNotFound, notFoundFilesPath));
+        }
+        if (!migratedButNonFoundRelativeFiles.isEmpty()) {
+          String notFoundFilesPath = migratedButNonFoundRelativeFiles.stream().collect(Collectors.joining(", "));
+          Activator.getDefault().getLog().warn(MessageFormat
+              .format(Messages.MigrationAction_Image_RelativePathImageMigratedButNotFound, notFoundFilesPath));
         }
       } else {
         Activator.getDefault().getLog().error(MessageFormat.format(
@@ -135,7 +143,7 @@ public class ImagePathInRichTextAttributeContribution extends AbstractMigrationC
    * It converts the path from a project relative path to a workspace relative path.
    */
   private void updateProjectRelativePath(Resource resource, EObject eObject, EAttribute attr,
-      Set<String> nonFoundRelativeFiles) {
+      Set<String> notMigratedAndNotFoundRelativeFiles, Set<String> migratedButNonFoundRelativeFiles) {
     String oldValue = (String) eObject.eGet(attr);
     String newValue = (String) eObject.eGet(attr);
     if (newValue != null && !newValue.isEmpty()) {
@@ -147,18 +155,42 @@ public class ImagePathInRichTextAttributeContribution extends AbstractMigrationC
         if (matcher.groupCount() == 1) {
           String path = matcher.group(1);
           String newPath = path;
-          // path starting with the project name are already considered as correct. Typically base64 image are converted
-          // to an image of this kind or the migration may be started a second time
-          if (!path.startsWith(project.getName()) && !path.startsWith("file:/") && !path.startsWith("http://")
-              && !path.startsWith("https://") && !path.startsWith("//") && !path.startsWith("\\\\")) {
-            newPath = project.getName() + "/" + path;
-            newValue = newValue.replace(path, newPath);
+          // Excluded cases
+          if (path.startsWith("file:/") || path.startsWith("http://") || path.startsWith("https://")
+              || path.startsWith("//") || path.startsWith("\\\\")) {
+            continue;
           }
 
-          // log only relative paths with image not found
-          if (newPath.startsWith(project.getName())
-              && !project.getWorkspace().getRoot().getFile(new Path(newPath)).exists()) {
-            nonFoundRelativeFiles.add(newPath);
+          String[] splitPath = newPath.split("/");
+          // check if the path is just an image name
+          // In this case it should be expected in the current project
+          if (splitPath.length == 1) {
+            newPath = project.getName() + "/" + path;
+            newValue = newValue.replace("\"" + path + "\"", "\"" + newPath + "\"");
+
+            if (!project.getWorkspace().getRoot().getFile(new Path(newPath)).exists()) {
+              migratedButNonFoundRelativeFiles.add(newPath);
+            }
+          } else {
+            // The path may either a path to a folder inside the current project "folder/image.png" or a path to another
+            // project "otherProject/image.png".
+            // We check the potential existence of the former. If it succeeds we add the current project name to the
+            // path, otherwise we consider that it is the latter case and we do nothing.
+            IFile iFileInCurrentProject = ResourcesPlugin.getWorkspace().getRoot()
+                .getFile(new Path(project.getName() + "/" + path));
+            if (iFileInCurrentProject.exists()) {
+              newPath = project.getName() + "/" + path;
+              newValue = newValue.replace(path, newPath);
+            } else {
+              IFile iFileInOtherProject = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(path));
+              if (!iFileInOtherProject.exists()) {
+                notMigratedAndNotFoundRelativeFiles.add(newPath);
+              }
+            }
+            // Note that there is still an issue with the migration because we are not able to distinguish a path to
+            // migrate "folder/image.png" from a path to another project "otherProject/image.png" that should not be
+            // migrated. So if the image was supposed to be in the current project but not here during the migration,
+            // then the path "folder/image.png" will not be migrated to "currentProject/folder/image.png" as it should.
           }
         }
       }
