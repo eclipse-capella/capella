@@ -146,7 +146,7 @@
          </rules>
       </resolver>
       <resolver
-            class="org.polarsys.capella.core.data.fa.ui.quickfix.resolver.DWF_DF_09_Resolver"
+            class="org.polarsys.capella.core.data.fa.ui.quickfix.resolver.TC_DF_09_Resolver"
             desc="%quickFix.DWF_DF_09.desc"
             icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
             label="%quickFix.DWF_DF_09.label">
