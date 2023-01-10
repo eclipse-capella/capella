@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018, 2022 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018, 2023 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -12,7 +12,7 @@
  *******************************************************************************/
 target "Capella"
 
-include "https://download.eclipse.org/sirius/updates/stable/7.1.0-S20221221-073307/2021-06/targets/modules/gmf-runtime-1.14.tpd"
+include "https://download.eclipse.org/sirius/updates/stable/7.1.0-S20230111-043509/2021-06/targets/modules/gmf-runtime-1.15.tpd"
 
 with source, requirements
 
@@ -43,7 +43,7 @@ location eclipse "http://download.eclipse.org/releases/2021-06" {
 	com.google.guava
 }
 
-location sirius "https://download.eclipse.org/sirius/updates/stable/7.1.0-S20221221-073307/2021-06" {
+location sirius "https://download.eclipse.org/sirius/updates/stable/7.1.0-S20230111-043509/2021-06" {
 	org.eclipse.sirius.doc.feature.feature.group
 	org.eclipse.sirius.doc.feature.source.feature.group
 	org.eclipse.sirius.runtime.source.feature.group
