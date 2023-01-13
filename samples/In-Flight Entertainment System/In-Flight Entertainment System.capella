@@ -2740,7 +2740,7 @@
               id="57e53d45-596c-48a4-b6fc-d6af808e5370" name="Boolean"/>
         </ownedDataPkgs>
         <ownedDataPkgs xsi:type="org.polarsys.capella.core.data.information:DataPkg"
-            id="9306cfef-6456-45be-bd4a-62f0f92b301e" name="BusinessEntity">
+            id="9306cfef-6456-45be-bd4a-62f0f92b301e" name="BusinessEntity" description="&lt;p>&lt;a href=&quot;hlink://67bd0af1-6242-4dec-aeef-3f54a7d8ba47&quot;>Aircraft&lt;/a>&lt;/p>&#xA;">
           <ownedAssociations xsi:type="org.polarsys.capella.core.data.information:Association"
               id="0945715c-8c26-495b-ab84-8dd5f86ce7cb" name="has" navigableMembers="#87021491-c269-4df5-aeb4-1103a67a06d4">
             <ownedMembers xsi:type="org.polarsys.capella.core.data.information:Property"
@@ -3003,8 +3003,17 @@
         <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="213830fc-c679-44e9-89c2-73d5034d8029"
             name="Ground Operator" abstractType="#d475ed7d-4644-4461-97d4-b52772c9b425"/>
         <ownedSystemComponents xsi:type="org.polarsys.capella.core.data.ctx:SystemComponent"
-            id="e0a46739-7e50-4ea6-b198-0e5efb9ce68f" name="IFE System" description="&lt;p>It is an overly simplified vision of what a real in-flight entertainment system is: &lt;a href=&quot;hlink://e0a46739-7e50-4ea6-b198-0e5efb9ce68f&quot;>IFE System&lt;/a>&lt;strong>&amp;nbsp;&lt;/strong>described as a&lt;strong> backbox&lt;/strong>, interacting with Actors:&lt;/p>&#xA;&#xA;&lt;ul>&#xA;&#x9;&lt;li>&lt;a href=&quot;hlink://181a678c-dca9-46c1-9d18-b5a0c457c0de&quot;>Passenger&lt;/a>&lt;/li>&#xA;&#x9;&lt;li>&lt;a href=&quot;hlink://4890eae8-7a62-4d7b-bf8a-1590a199eebf&quot;>Cabin Crew&lt;/a>&lt;/li>&#xA;&#x9;&lt;li>&lt;a href=&quot;hlink://c8b78c78-5b11-4fc0-87b7-3ca84622efea&quot;>Aircraft&lt;/a>&lt;/li>&#xA;&#x9;&lt;li>&lt;a href=&quot;hlink://d475ed7d-4644-4461-97d4-b52772c9b425&quot;>Ground Operator&lt;/a>&lt;/li>&#xA;&lt;/ul>&#xA;&#xA;&lt;p>&lt;span id=&quot;cke_bm_368C&quot; style=&quot;display: none;&quot;>&amp;nbsp;&lt;/span>The system is globally organized as follows:&lt;/p>&#xA;&#xA;&lt;ul>&#xA;&#x9;&lt;li>Cabin crew services are always available, passenger services have to be activated. Their availability depends on the flying conditions and on the class the passengers&lt;br />&#xA;&#x9;are flying in&lt;/li>&#xA;&#x9;&lt;li>The system is able to store digital media content&lt;/li>&#xA;&#x9;&lt;li>Most of the interactions of the passengers with their services (navigating between menus, selecting movies, etc.) are captured in functions called &amp;ldquo;Run &amp;lt;xxx&amp;gt; service&amp;rdquo;&lt;/li>&#xA;&#x9;&lt;li>Services rely on audio and video broadcast means&lt;/li>&#xA;&#x9;&lt;li>Maintenance and configuration topics are only evoked&lt;/li>&#xA;&lt;/ul>&#xA;&#xA;&lt;p>The &lt;a href=&quot;hlink://_Q3xl4JTyEeSgObsjQ4XNVQ/&quot;>&lt;font color=&quot;#0066cc&quot;>[MCB] All Missions and Capabilities&lt;/font>&lt;/a> diagram&amp;nbsp;shows on the capabilities of the IFE system. Three other diagrams provide interesting entry points to the model:&lt;/p>&#xA;&#xA;&lt;ul>&#xA;&#x9;&lt;li>&lt;a href=&quot;hlink://_LzrP8LclEd6PZMYM-Vvo5g/&quot;>&lt;font color=&quot;#0066cc&quot;>[SC] System Actors&lt;/font>&lt;/a>&amp;nbsp;lists all the Actors (the aircraft is considered as an actor)&lt;/li>&#xA;&#x9;&lt;li>&lt;a href=&quot;hlink://_gaN78KyfEeSJ1PX7slxG4w/&quot;>&lt;font color=&quot;#0066cc&quot;>[SDFB] Top Level Functional Overview&lt;/font>&lt;/a>&amp;nbsp;provides a first functional overview of what the actors actually do and what kind of exchanges they have with the IFE system&lt;/li>&#xA;&#x9;&lt;li>&lt;a href=&quot;hlink://_xXSwEKv6EeSTJvLsyJitsw/&quot;>&lt;font color=&quot;#0066cc&quot;>[SAB] Top Level System Overview&lt;/font>&lt;/a>&amp;nbsp;and its&amp;nbsp;slightly refined version &lt;a href=&quot;hlink://_TGdI0JZDEeS1n7CBuZtEDQ/&quot;>&lt;font color=&quot;#0066cc&quot;>[SAB] High Level System Overview&lt;/font>&lt;/a>&amp;nbsp;are &lt;strong>very good entry points to further navigate in the model&lt;/strong>.&lt;/li>&#xA;&lt;/ul>&#xA;&#xA;&lt;p>Starting from these high level diagrams,&amp;nbsp;a typical&amp;nbsp;reading path&amp;nbsp;is to dive into the function to visualize their refinement. For example, &lt;a href=&quot;hlink://_Z-lO8LC1EeSAOqSI-4duBg/&quot;>&lt;font color=&quot;#0066cc&quot;>[SDFB] [CTX] Run Services&lt;/font>&lt;/a>. And recursively.&lt;/p>&#xA;&#xA;&lt;p>&lt;strong>Using capabilities as a&amp;nbsp;driver to browse the model is recommended&lt;/strong>. Some diagrams are specifically marked for that purpose, for instance &lt;a href=&quot;hlink://_EsbcMLKzEeSZM9DbsSoyxw/&quot;>&lt;font color=&quot;#0066cc&quot;>[SDFB] [CAPABILITY] Provide Video Entertainment Services&lt;/font>&lt;/a>. From this capability covering VOD services to the passengers,&amp;nbsp;browse the functional chains and scenarios to better understand how the capability is fulfilled.&lt;/p>&#xA;&#xA;&lt;ul>&#xA;&#x9;&lt;li>Functional chains: &lt;a href=&quot;hlink://_MOb7kJjJEeSFKIU85IonOQ/&quot;>&lt;font color=&quot;#0066cc&quot;>[SFCD] Start Playing VOD Movie&lt;/font>&lt;/a>, &lt;a href=&quot;hlink://_m1AKgJjJEeSFKIU85IonOQ/&quot;>&lt;font color=&quot;#0066cc&quot;>[SFCD] Resume VOD Movie&lt;/font>&lt;/a>&lt;/li>&#xA;&#x9;&lt;li>Scenarios: &lt;a href=&quot;hlink://_CekP8JWHEeSAToX6gykiew/&quot;>&lt;font color=&quot;#0066cc&quot;>[ES] Start VOD Service&lt;/font>&lt;/a>, &lt;a href=&quot;hlink://_bkAKcLD-EeSk6sURco8jXw/&quot;>&lt;font color=&quot;#0066cc&quot;>[ES] Start Playing VOD Movie&lt;/font>&lt;/a>&lt;/li>&#xA;&lt;/ul>&#xA;&#xA;&lt;p>Check the global mode machine of the system with &lt;a href=&quot;hlink://_M-eeYMIWEd6vqfXUNuD4FA/&quot;>&lt;font color=&quot;#0066cc&quot;>[M&amp;amp;S] IFE Operating Modes&lt;/font>&lt;/a>. Among others, this mode machine is intended to specify under which operational conditions the IFE system is running. Another Mode machine is specifically modelled for what will become the Seat TV: &lt;a href=&quot;hlink://_fp0LsJzmEeSwVo69k5d7ZA/&quot;>&lt;font color=&quot;#0066cc&quot;>[M&amp;amp;S] Seat TV - Movie Player Modes&lt;/font>&lt;/a>&lt;/p>&#xA;&#xA;&lt;p>&lt;u>Notes:&lt;/u>&lt;/p>&#xA;&#xA;&lt;ol>&#xA;&#x9;&lt;li>Not all the IFE system is modelled. Focus is put on VOD service, audio announcement and imposed videos (safety instructions, ads, etc.).&lt;/li>&#xA;&#x9;&lt;li>While interesting, the topic of the integration of the IFE with the aircraft is kept minimal (according to flying conditions, the IFE system is supposed to behave&lt;br />&#xA;&#x9;differently).&lt;/li>&#xA;&#x9;&lt;li>Not all possible Scenarios and Functional Chains have been created.&lt;/li>&#xA;&lt;/ol>&#xA;&#xA;&lt;p>&amp;nbsp;&lt;/p>&#xA;"
+            id="e0a46739-7e50-4ea6-b198-0e5efb9ce68f" name="IFE System" summary="In-Flight Entertainment System"
+            description="&lt;p>It is an overly simplified vision of what a real in-flight entertainment system is: &lt;a href=&quot;hlink://e0a46739-7e50-4ea6-b198-0e5efb9ce68f&quot;>IFE System&lt;/a>&lt;strong>&amp;nbsp;&lt;/strong>described as a&lt;strong> backbox&lt;/strong>, interacting with Actors:&lt;/p>&#xA;&#xA;&lt;ul>&#xA;&#x9;&lt;li>&lt;a href=&quot;hlink://181a678c-dca9-46c1-9d18-b5a0c457c0de&quot;>Passenger&lt;/a>&lt;/li>&#xA;&#x9;&lt;li>&lt;a href=&quot;hlink://4890eae8-7a62-4d7b-bf8a-1590a199eebf&quot;>Cabin Crew&lt;/a>&lt;/li>&#xA;&#x9;&lt;li>&lt;a href=&quot;hlink://c8b78c78-5b11-4fc0-87b7-3ca84622efea&quot;>Aircraft&lt;/a>&lt;/li>&#xA;&#x9;&lt;li>&lt;a href=&quot;hlink://d475ed7d-4644-4461-97d4-b52772c9b425&quot;>Ground Operator&lt;/a>&lt;/li>&#xA;&lt;/ul>&#xA;&#xA;&lt;p>&lt;span id=&quot;cke_bm_368C&quot; style=&quot;display: none;&quot;>&amp;nbsp;&lt;/span>The system is globally organized as follows:&lt;/p>&#xA;&#xA;&lt;ul>&#xA;&#x9;&lt;li>Cabin crew services are always available, passenger services have to be activated. Their availability depends on the flying conditions and on the class the passengers&lt;br />&#xA;&#x9;are flying in&lt;/li>&#xA;&#x9;&lt;li>The system is able to store digital media content&lt;/li>&#xA;&#x9;&lt;li>Most of the interactions of the passengers with their services (navigating between menus, selecting movies, etc.) are captured in functions called &amp;ldquo;Run &amp;lt;xxx&amp;gt; service&amp;rdquo;&lt;/li>&#xA;&#x9;&lt;li>Services rely on audio and video broadcast means&lt;/li>&#xA;&#x9;&lt;li>Maintenance and configuration topics are only evoked&lt;/li>&#xA;&lt;/ul>&#xA;&#xA;&lt;p>The &lt;a href=&quot;hlink://_Q3xl4JTyEeSgObsjQ4XNVQ/&quot;>&lt;font color=&quot;#0066cc&quot;>[MCB] All Missions and Capabilities&lt;/font>&lt;/a> diagram&amp;nbsp;shows on the capabilities of the IFE system. Three other diagrams provide interesting entry points to the model:&lt;/p>&#xA;&#xA;&lt;ul>&#xA;&#x9;&lt;li>&lt;a href=&quot;hlink://_LzrP8LclEd6PZMYM-Vvo5g/&quot;>&lt;font color=&quot;#0066cc&quot;>[SC] System Actors&lt;/font>&lt;/a>&amp;nbsp;lists all the Actors (the aircraft is considered as an actor)&lt;/li>&#xA;&#x9;&lt;li>&lt;a href=&quot;hlink://_gaN78KyfEeSJ1PX7slxG4w/&quot;>&lt;font color=&quot;#0066cc&quot;>[SDFB] Top Level Functional Overview&lt;/font>&lt;/a>&amp;nbsp;provides a first functional overview of what the actors actually do and what kind of exchanges they have with the IFE system&lt;/li>&#xA;&#x9;&lt;li>&lt;a href=&quot;hlink://_xXSwEKv6EeSTJvLsyJitsw/&quot;>&lt;font color=&quot;#0066cc&quot;>[SAB] Top Level System Overview&lt;/font>&lt;/a>&amp;nbsp;and its&amp;nbsp;slightly refined version &lt;a href=&quot;hlink://_TGdI0JZDEeS1n7CBuZtEDQ/&quot;>&lt;font color=&quot;#0066cc&quot;>[SAB] High Level System Overview&lt;/font>&lt;/a>&amp;nbsp;are &lt;strong>very good entry points to further navigate in the model&lt;/strong>.&lt;/li>&#xA;&lt;/ul>&#xA;&#xA;&lt;p>Starting from these high level diagrams,&amp;nbsp;a typical&amp;nbsp;reading path&amp;nbsp;is to dive into the function to visualize their refinement. For example, &lt;a href=&quot;hlink://_Z-lO8LC1EeSAOqSI-4duBg/&quot;>&lt;font color=&quot;#0066cc&quot;>[SDFB] [CTX] Run Services&lt;/font>&lt;/a>. And recursively.&lt;/p>&#xA;&#xA;&lt;p>&lt;strong>Using capabilities as a&amp;nbsp;driver to browse the model is recommended&lt;/strong>. Some diagrams are specifically marked for that purpose, for instance &lt;a href=&quot;hlink://_EsbcMLKzEeSZM9DbsSoyxw/&quot;>&lt;font color=&quot;#0066cc&quot;>[SDFB] [CAPABILITY] Provide Video Entertainment Services&lt;/font>&lt;/a>. From this capability covering VOD services to the passengers,&amp;nbsp;browse the functional chains and scenarios to better understand how the capability is fulfilled.&lt;/p>&#xA;&#xA;&lt;ul>&#xA;&#x9;&lt;li>Functional chains: &lt;a href=&quot;hlink://_MOb7kJjJEeSFKIU85IonOQ/&quot;>&lt;font color=&quot;#0066cc&quot;>[SFCD] Start Playing VOD Movie&lt;/font>&lt;/a>, &lt;a href=&quot;hlink://_m1AKgJjJEeSFKIU85IonOQ/&quot;>&lt;font color=&quot;#0066cc&quot;>[SFCD] Resume VOD Movie&lt;/font>&lt;/a>&lt;/li>&#xA;&#x9;&lt;li>Scenarios: &lt;a href=&quot;hlink://_CekP8JWHEeSAToX6gykiew/&quot;>&lt;font color=&quot;#0066cc&quot;>[ES] Start VOD Service&lt;/font>&lt;/a>, &lt;a href=&quot;hlink://_bkAKcLD-EeSk6sURco8jXw/&quot;>&lt;font color=&quot;#0066cc&quot;>[ES] Start Playing VOD Movie&lt;/font>&lt;/a>&lt;/li>&#xA;&lt;/ul>&#xA;&#xA;&lt;p>Check the global mode machine of the system with &lt;a href=&quot;hlink://_M-eeYMIWEd6vqfXUNuD4FA/&quot;>&lt;font color=&quot;#0066cc&quot;>[M&amp;amp;S] IFE Operating Modes&lt;/font>&lt;/a>. Among others, this mode machine is intended to specify under which operational conditions the IFE system is running. Another Mode machine is specifically modelled for what will become the Seat TV: &lt;a href=&quot;hlink://_fp0LsJzmEeSwVo69k5d7ZA/&quot;>&lt;font color=&quot;#0066cc&quot;>[M&amp;amp;S] Seat TV - Movie Player Modes&lt;/font>&lt;/a>&lt;/p>&#xA;&#xA;&lt;p>&lt;u>Notes:&lt;/u>&lt;/p>&#xA;&#xA;&lt;ol>&#xA;&#x9;&lt;li>Not all the IFE system is modelled. Focus is put on VOD service, audio announcement and imposed videos (safety instructions, ads, etc.).&lt;/li>&#xA;&#x9;&lt;li>While interesting, the topic of the integration of the IFE with the aircraft is kept minimal (according to flying conditions, the IFE system is supposed to behave&lt;br />&#xA;&#x9;differently).&lt;/li>&#xA;&#x9;&lt;li>Not all possible Scenarios and Functional Chains have been created.&lt;/li>&#xA;&lt;/ol>&#xA;&#xA;&lt;p>&amp;nbsp;&lt;/p>&#xA;"
             review="First proposal" status="#f063f762-fcf7-41d4-909e-9b43a477e774">
+          <ownedConstraints xsi:type="org.polarsys.capella.core.data.capellacore:Constraint"
+              id="1bf33f87-3d05-4151-bda8-3e0b151d7960" name="">
+            <ownedSpecification xsi:type="org.polarsys.capella.core.data.information.datavalue:OpaqueExpression"
+                id="3fda2b43-ca43-45d5-b18d-47099b9d32f9">
+              <bodies></bodies>
+              <languages>capella:linkedText</languages>
+            </ownedSpecification>
+          </ownedConstraints>
           <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
               id="2c041998-546d-4d46-be20-e99c3441a555" targetElement="#d8b8c1bd-a2ea-47fd-a7a9-0239408db1a5"
               sourceElement="#e0a46739-7e50-4ea6-b198-0e5efb9ce68f"/>
@@ -3450,8 +3459,8 @@
               sourceElement="#c8b78c78-5b11-4fc0-87b7-3ca84622efea"/>
         </ownedSystemComponents>
         <ownedSystemComponents xsi:type="org.polarsys.capella.core.data.ctx:SystemComponent"
-            id="d475ed7d-4644-4461-97d4-b52772c9b425" name="Ground Operator" actor="true"
-            human="true">
+            id="d475ed7d-4644-4461-97d4-b52772c9b425" name="Ground Operator" description="&lt;p>The Ground Operator is an actor interacting with the &lt;a href=&quot;hlink://e0a46739-7e50-4ea6-b198-0e5efb9ce68f&quot;>IFE System&lt;/a>&lt;a href=&quot;hlink://e0a46739-7e50-4ea6-b198-0e5efb9ce68f&quot;>&lt;font color=&quot;#0066cc&quot;>.&lt;/font>&lt;/a> According to the &lt;a href=&quot;hlink://_Q3xl4JTyEeSgObsjQ4XNVQ&quot;>[MCB] All Missions and Capabilities&lt;/a>, its main mission is to &lt;a href=&quot;hlink://cdfe2a5a-5069-4055-be2c-96be11552fa9&quot;>Provide Administration Means and Runtime Management&lt;/a>&amp;nbsp;and he has the following capabilities : &lt;a href=&quot;hlink://32ff49c3-04bc-476e-b03e-bb6ecbcfe554&quot;>Update Entertainment Offer&lt;/a> and &lt;a href=&quot;hlink://74e6e35e-b1e7-45c1-bd9f-5d80c0714472&quot;>Provide Access Management Control&lt;/a>.&amp;nbsp;&amp;nbsp;&lt;/p>&#xA;&#xA;&lt;p>&lt;img src=&quot;In-Flight Entertainment System/images/Operator context.jpg&quot; style=&quot;width: 300px; height: 218px;&quot; />&lt;/p>&#xA;&#xA;&lt;p>He is allocated to the following system Functions ;&lt;/p>&#xA;&#xA;&lt;ul>&#xA;&#x9;&lt;li>&lt;a href=&quot;hlink://88faafec-6848-4494-8dd3-2acda3e53688&quot;>Configure the System&lt;/a>&lt;/li>&#xA;&#x9;&lt;li>&lt;a href=&quot;hlink://4d0046b4-4865-438d-b09b-fd95671db09b&quot;>Update Media Content&lt;/a>&lt;/li>&#xA;&#x9;&lt;li>&lt;a href=&quot;hlink://ff70c856-f667-4e61-98d7-00190703d53a&quot;>Launch and Analyze Tests&lt;/a>&lt;/li>&#xA;&#x9;&lt;li>&lt;a href=&quot;hlink://5e0fff47-a1a5-4a13-867c-18348bd894af&quot;>Set Passenger Service Authorization&lt;/a>&lt;/li>&#xA;&lt;/ul>&#xA;&#xA;&lt;p>There&amp;nbsp;are 3 diagrams that allow a better understanding its interactions with the IFE System. It explains the functional exchanges between the Ground Operator&amp;nbsp;and the IFE System at two levels of accuracy&amp;nbsp;:&lt;/p>&#xA;&#xA;&lt;ul>&#xA;&#x9;&lt;li>&lt;a href=&quot;hlink://_xXSwEKv6EeSTJvLsyJitsw&quot;>[SAB] Top Level System Overview&lt;/a>&lt;/li>&#xA;&#x9;&lt;li>&lt;a href=&quot;hlink://_xXSwEKv6EeSTJvLsyJitsw&quot;>[SAB] Top Level System Overview&lt;/a>&lt;/li>&#xA;&#x9;&lt;li>&lt;a href=&quot;hlink://_7KFO0K99EeyWiMAmwYaSaQ&quot;>[SAB] High Level System Overview with some FCs&lt;/a>&lt;/li>&#xA;&lt;/ul>&#xA;&#xA;&lt;p>For further information,&amp;nbsp;it is possible to&amp;nbsp;consult other diagrams related to the Ground Operator such as &lt;a href=&quot;hlink://_mjqfIKveEeS4Nr5peSh-tg&quot;>[SFBD] All Actor Functions&lt;/a> which shows his functions alongside those of the other actors or &lt;a href=&quot;hlink://_HPnzIJTiEeSgObsjQ4XNVQ&quot;>[SFBD] All System Functions&lt;/a>.&lt;/p>&#xA;&#xA;&lt;p>&amp;nbsp;&lt;/p>&#xA;&#xA;&lt;p>&amp;nbsp;&lt;/p>&#xA;&#xA;&lt;p>&amp;nbsp;&lt;/p>&#xA;&#xA;&lt;p>&amp;nbsp;&lt;/p>&#xA;&#xA;&lt;p>&amp;nbsp;&lt;/p>&#xA;&#xA;&lt;p>&amp;nbsp;&lt;/p>&#xA;&#xA;&lt;p>&amp;nbsp;&lt;/p>&#xA;"
+            actor="true" human="true">
           <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
               id="2ee91ba5-8a54-457b-b5b4-f8d7604a4848" targetElement="#88faafec-6848-4494-8dd3-2acda3e53688"
               sourceElement="#d475ed7d-4644-4461-97d4-b52772c9b425"/>
@@ -12147,6 +12156,248 @@
                   sourceElement="#18fcdf21-f3b3-45ac-b0cb-966394a90b7f"/>
             </ownedFunctionalExchanges>
           </ownedFunctions>
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.pa:PhysicalFunction"
+              id="f46f4ddc-51cc-4b2c-ba6c-d9e8c0bae8ea" name="Perform remote diagnostic">
+            <ownedFunctionalChains xsi:type="org.polarsys.capella.core.data.fa:FunctionalChain"
+                id="32b16a4d-6319-45c7-be3c-fb276e324a19" name="PFC AND">
+              <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementLink"
+                  id="e1b4685c-edfa-4fd2-9425-12132412f8fd" involved="#c97cc795-07dd-45b2-b9bc-b875bb006d01"
+                  source="#d68546cf-5f68-43eb-85b1-88e462ee6ccf" target="#ab79bdb0-c299-4e20-a90e-fc3ab0a6e5db"/>
+              <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementFunction"
+                  id="ab79bdb0-c299-4e20-a90e-fc3ab0a6e5db" involved="#fd6de739-ae93-4e5f-acaf-4e8fb8f0b2e5"/>
+              <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementFunction"
+                  id="d68546cf-5f68-43eb-85b1-88e462ee6ccf" involved="#88688938-d911-4317-b36e-266cef11a7f3"/>
+              <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementLink"
+                  id="9521aac2-4784-4f52-ac77-ea318d89f99a" involved="#904bdd67-1ec4-4243-85bf-b1ebe1b8db6e"
+                  source="#ab79bdb0-c299-4e20-a90e-fc3ab0a6e5db" target="#88576eaf-1267-4895-aa2f-5c32c78086ae"/>
+              <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementFunction"
+                  id="88576eaf-1267-4895-aa2f-5c32c78086ae" involved="#1c49d7b2-bb7a-4939-86c1-a73c0822fdf5"/>
+              <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementLink"
+                  id="b12da663-cd82-4f06-9bb8-456fb2ab7b88" involved="#89ac0547-79d3-41d4-a655-ba8d9da2468a"
+                  source="#ab79bdb0-c299-4e20-a90e-fc3ab0a6e5db" target="#779ef3c8-4e09-4baa-bc62-1a9206d8bd08"/>
+              <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementFunction"
+                  id="779ef3c8-4e09-4baa-bc62-1a9206d8bd08" involved="#79218945-69c6-4bc6-8aa6-9d67f537492d"/>
+              <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementLink"
+                  id="dbca28b8-2e58-4b82-8d80-4baf80ef659a" involved="#8693abc6-1876-4fcb-870e-6f860cb09170"
+                  source="#88576eaf-1267-4895-aa2f-5c32c78086ae" target="#22cb5108-6f5a-4642-9cc4-fbb201dac61c"/>
+              <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementFunction"
+                  id="22cb5108-6f5a-4642-9cc4-fbb201dac61c" involved="#0012d480-7be3-452f-9872-3a0d8868e2f6"/>
+              <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementLink"
+                  id="9293b410-22cf-4ba7-b85d-cf5d16fc652d" involved="#84ea99c3-18a2-45ca-8ccc-14d43d9b6198"
+                  source="#779ef3c8-4e09-4baa-bc62-1a9206d8bd08" target="#22cb5108-6f5a-4642-9cc4-fbb201dac61c"/>
+              <ownedSequenceNodes xsi:type="org.polarsys.capella.core.data.fa:ControlNode"
+                  id="f99cae18-4781-46b0-b6c1-307c24b0679e" kind="AND"/>
+              <ownedSequenceNodes xsi:type="org.polarsys.capella.core.data.fa:ControlNode"
+                  id="800e54fc-f4d1-438d-ac58-2321d92c7b17" kind="AND"/>
+              <ownedSequenceLinks xsi:type="org.polarsys.capella.core.data.fa:SequenceLink"
+                  id="8784bebf-d0a9-4952-bc51-00085d10d15d" source="#ab79bdb0-c299-4e20-a90e-fc3ab0a6e5db"
+                  target="#f99cae18-4781-46b0-b6c1-307c24b0679e"/>
+              <ownedSequenceLinks xsi:type="org.polarsys.capella.core.data.fa:SequenceLink"
+                  id="e88f1849-7afe-41f1-b4aa-da09f06d8d2a" condition="#5d5a78fe-e685-4ab4-a0fe-49b6e2f16bfc"
+                  source="#f99cae18-4781-46b0-b6c1-307c24b0679e" target="#779ef3c8-4e09-4baa-bc62-1a9206d8bd08">
+                <ownedConstraints xsi:type="org.polarsys.capella.core.data.capellacore:Constraint"
+                    id="5d5a78fe-e685-4ab4-a0fe-49b6e2f16bfc" name="">
+                  <ownedSpecification xsi:type="org.polarsys.capella.core.data.information.datavalue:OpaqueExpression"
+                      id="e9f56d53-d001-4878-a8f9-3179cd6407b7">
+                    <bodies>Condition A</bodies>
+                    <languages>capella:linkedText</languages>
+                  </ownedSpecification>
+                </ownedConstraints>
+              </ownedSequenceLinks>
+              <ownedSequenceLinks xsi:type="org.polarsys.capella.core.data.fa:SequenceLink"
+                  id="f6a819bd-1ab6-492c-b104-cffe5d26e7cd" condition="#3701e215-da8d-4144-b48c-36868374ba47"
+                  source="#f99cae18-4781-46b0-b6c1-307c24b0679e" target="#88576eaf-1267-4895-aa2f-5c32c78086ae">
+                <ownedConstraints xsi:type="org.polarsys.capella.core.data.capellacore:Constraint"
+                    id="3701e215-da8d-4144-b48c-36868374ba47" name="">
+                  <ownedSpecification xsi:type="org.polarsys.capella.core.data.information.datavalue:OpaqueExpression"
+                      id="52a7ef2e-2694-40c7-89e6-ea44aac18535">
+                    <bodies>Condition B</bodies>
+                    <languages>capella:linkedText</languages>
+                  </ownedSpecification>
+                </ownedConstraints>
+              </ownedSequenceLinks>
+              <ownedSequenceLinks xsi:type="org.polarsys.capella.core.data.fa:SequenceLink"
+                  id="e0b677ed-fc9e-43ec-8eea-1142f8074bc8" source="#779ef3c8-4e09-4baa-bc62-1a9206d8bd08"
+                  target="#800e54fc-f4d1-438d-ac58-2321d92c7b17"/>
+              <ownedSequenceLinks xsi:type="org.polarsys.capella.core.data.fa:SequenceLink"
+                  id="029ffad3-e8ab-4af6-8019-213751ef0adb" source="#800e54fc-f4d1-438d-ac58-2321d92c7b17"
+                  target="#22cb5108-6f5a-4642-9cc4-fbb201dac61c"/>
+              <ownedSequenceLinks xsi:type="org.polarsys.capella.core.data.fa:SequenceLink"
+                  id="8a7d0ce0-9cab-465c-81ba-141398e66e86" source="#88576eaf-1267-4895-aa2f-5c32c78086ae"
+                  target="#800e54fc-f4d1-438d-ac58-2321d92c7b17"/>
+            </ownedFunctionalChains>
+            <ownedFunctionalChains xsi:type="org.polarsys.capella.core.data.fa:FunctionalChain"
+                id="05185f6f-bb2c-489e-8492-70c6af579979" name="PFC IT">
+              <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementLink"
+                  id="82c96d83-8ea7-4a10-9322-ed4b81250fb1" involved="#c3fb0b2f-490d-478f-9ed9-f2a40f08da16"
+                  source="#99272162-dd84-43c7-be09-0b89818ef55f" target="#b0c22a35-4ce0-4d0d-a4b6-b25974f27dfa"/>
+              <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementFunction"
+                  id="b0c22a35-4ce0-4d0d-a4b6-b25974f27dfa" involved="#1291c3c4-170d-4fcc-9b59-5b0961cd4a2d"/>
+              <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementFunction"
+                  id="99272162-dd84-43c7-be09-0b89818ef55f" involved="#0012d480-7be3-452f-9872-3a0d8868e2f6"/>
+              <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementLink"
+                  id="dd280a7b-139a-48fa-b46e-c157b266270e" involved="#82ae3980-a9fc-4922-a2a8-09de7b1461e4"
+                  source="#b0c22a35-4ce0-4d0d-a4b6-b25974f27dfa" target="#90a37479-cf94-4ca9-9682-122b924c927e"/>
+              <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementFunction"
+                  id="90a37479-cf94-4ca9-9682-122b924c927e" involved="#71147664-0fcd-401f-937a-bdc76216924d"/>
+              <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementLink"
+                  id="2648fe46-25d7-4015-91b5-f1e195880658" involved="#f4101c8b-3a2f-4fb9-a4bf-9684035adba5"
+                  source="#90a37479-cf94-4ca9-9682-122b924c927e" target="#e8f467ad-11c5-49ad-8130-c618543c27b5"/>
+              <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementFunction"
+                  id="e8f467ad-11c5-49ad-8130-c618543c27b5" involved="#62f152bd-6017-4828-9034-7af3c387f83a"/>
+              <ownedSequenceNodes xsi:type="org.polarsys.capella.core.data.fa:ControlNode"
+                  id="3ed2161f-c41d-4298-8f35-3cf3391e4461" kind="ITERATE"/>
+              <ownedSequenceNodes xsi:type="org.polarsys.capella.core.data.fa:ControlNode"
+                  id="58d866fa-463c-419a-ac8a-2216811bc8fe" kind="ITERATE"/>
+              <ownedSequenceLinks xsi:type="org.polarsys.capella.core.data.fa:SequenceLink"
+                  id="b041375f-3b7c-4645-8678-afc6dc03977d" source="#99272162-dd84-43c7-be09-0b89818ef55f"
+                  target="#58d866fa-463c-419a-ac8a-2216811bc8fe"/>
+              <ownedSequenceLinks xsi:type="org.polarsys.capella.core.data.fa:SequenceLink"
+                  id="7723d293-3d2d-48c4-ba64-8a37ad655267" source="#58d866fa-463c-419a-ac8a-2216811bc8fe"
+                  target="#b0c22a35-4ce0-4d0d-a4b6-b25974f27dfa"/>
+              <ownedSequenceLinks xsi:type="org.polarsys.capella.core.data.fa:SequenceLink"
+                  id="6d90c275-c55f-4a01-93bb-e9f6e9480b48" source="#b0c22a35-4ce0-4d0d-a4b6-b25974f27dfa"
+                  target="#90a37479-cf94-4ca9-9682-122b924c927e"/>
+              <ownedSequenceLinks xsi:type="org.polarsys.capella.core.data.fa:SequenceLink"
+                  id="5fe52982-0b3c-4aea-86e4-ac52113c8b39" source="#90a37479-cf94-4ca9-9682-122b924c927e"
+                  target="#3ed2161f-c41d-4298-8f35-3cf3391e4461"/>
+              <ownedSequenceLinks xsi:type="org.polarsys.capella.core.data.fa:SequenceLink"
+                  id="9228b9a7-b1c0-4f86-be52-fabde26e79bc" source="#3ed2161f-c41d-4298-8f35-3cf3391e4461"
+                  target="#e8f467ad-11c5-49ad-8130-c618543c27b5"/>
+              <ownedSequenceLinks xsi:type="org.polarsys.capella.core.data.fa:SequenceLink"
+                  id="c44045f9-fc60-44c2-8e8d-26cc2a78334f" source="#3ed2161f-c41d-4298-8f35-3cf3391e4461"
+                  target="#58d866fa-463c-419a-ac8a-2216811bc8fe"/>
+            </ownedFunctionalChains>
+            <ownedFunctionalChains xsi:type="org.polarsys.capella.core.data.fa:FunctionalChain"
+                id="9a1fdc9c-09e1-497d-ab3d-3947ba97ea20" name="PFC of PFCs">
+              <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainReference"
+                  id="93436628-03f9-4dc5-962c-c70accc374f0" involved="#32b16a4d-6319-45c7-be3c-fb276e324a19"/>
+              <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainReference"
+                  id="ac1997c2-0753-4483-a4fe-b4abf6be104a" involved="#05185f6f-bb2c-489e-8492-70c6af579979"/>
+              <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementLink"
+                  id="d24e5425-99fc-41aa-b7cb-ceddbdba378c" involved="#0012d480-7be3-452f-9872-3a0d8868e2f6"
+                  sourceReferenceHierarchy="#93436628-03f9-4dc5-962c-c70accc374f0"
+                  targetReferenceHierarchy="#ac1997c2-0753-4483-a4fe-b4abf6be104a"
+                  source="#22cb5108-6f5a-4642-9cc4-fbb201dac61c" target="#99272162-dd84-43c7-be09-0b89818ef55f"/>
+              <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainReference"
+                  id="0677bda5-fbbd-4fd4-9222-8be807f419d3" involved="#1f19f470-fc3b-4bae-9f69-35f96bafa17d"/>
+              <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementLink"
+                  id="f1c60ce2-496f-4ab0-89a0-94516b878ca9" involved="#b10feab0-81b4-4cdf-87a5-e06457ea6873"
+                  sourceReferenceHierarchy="#ac1997c2-0753-4483-a4fe-b4abf6be104a"
+                  targetReferenceHierarchy="#0677bda5-fbbd-4fd4-9222-8be807f419d3"
+                  source="#e8f467ad-11c5-49ad-8130-c618543c27b5" target="#74e27b45-c067-4065-bdbf-0b14b67d45cb"/>
+            </ownedFunctionalChains>
+            <ownedFunctionalChains xsi:type="org.polarsys.capella.core.data.fa:FunctionalChain"
+                id="1f19f470-fc3b-4bae-9f69-35f96bafa17d" name="PFC1">
+              <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementLink"
+                  id="479d808f-d4b6-4f86-b913-755b393011f3" involved="#8fc4392b-c6b5-4f4d-a50d-ff2310de47ac"
+                  source="#74e27b45-c067-4065-bdbf-0b14b67d45cb" target="#a897c277-781b-43b9-bf71-9e02cd0cd3fa"/>
+              <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementFunction"
+                  id="a897c277-781b-43b9-bf71-9e02cd0cd3fa" involved="#52d67cae-5ad2-4c5d-b4bf-e68d308c73b3"/>
+              <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementFunction"
+                  id="74e27b45-c067-4065-bdbf-0b14b67d45cb" involved="#29c4014e-7db7-4660-9f3e-e0a8a37e0090"/>
+            </ownedFunctionalChains>
+            <ownedFunctions xsi:type="org.polarsys.capella.core.data.pa:PhysicalFunction"
+                id="88688938-d911-4317-b36e-266cef11a7f3" name="PF1">
+              <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                  id="5b950b88-688b-41b8-a4c1-b9f597332cca" name="FOP 1"/>
+            </ownedFunctions>
+            <ownedFunctions xsi:type="org.polarsys.capella.core.data.pa:PhysicalFunction"
+                id="fd6de739-ae93-4e5f-acaf-4e8fb8f0b2e5" name="PF2">
+              <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                  id="6e3f72e3-b50c-4ef7-9549-5541de878bc0" name="FIP 1"/>
+              <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                  id="d0c971db-b83e-4c5f-a298-8f90989e62ce" name="FOP 1"/>
+              <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                  id="2af3bfd5-708e-4a86-bff3-dc9589a2d76c" name="FOP 2"/>
+            </ownedFunctions>
+            <ownedFunctions xsi:type="org.polarsys.capella.core.data.pa:PhysicalFunction"
+                id="1c49d7b2-bb7a-4939-86c1-a73c0822fdf5" name="PF3.1">
+              <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                  id="a504f47c-d8ef-40da-bbeb-de4402d28d83" name="FIP 1"/>
+              <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                  id="2a59f6f9-556f-44aa-9f48-1feaac3b9aac" name="FOP 1"/>
+            </ownedFunctions>
+            <ownedFunctions xsi:type="org.polarsys.capella.core.data.pa:PhysicalFunction"
+                id="79218945-69c6-4bc6-8aa6-9d67f537492d" name="PF3.2">
+              <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                  id="74312240-0e8d-411c-bc86-eb752dfb295a" name="FIP 1"/>
+              <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                  id="4da12212-e97a-4916-8312-8c2a8f1a7ebe" name="FOP 1"/>
+            </ownedFunctions>
+            <ownedFunctions xsi:type="org.polarsys.capella.core.data.pa:PhysicalFunction"
+                id="0012d480-7be3-452f-9872-3a0d8868e2f6" name="PF4">
+              <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                  id="43db03cd-03cf-4229-b7ff-07cd5cee54a5" name="FIP 1"/>
+              <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                  id="4d3bc0b0-7b1c-401e-ad14-f67bf48487f9" name="FIP 2"/>
+              <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                  id="f167d6f3-2c18-4923-9ef2-cf774ccbff73" name="FOP 1"/>
+            </ownedFunctions>
+            <ownedFunctions xsi:type="org.polarsys.capella.core.data.pa:PhysicalFunction"
+                id="1291c3c4-170d-4fcc-9b59-5b0961cd4a2d" name="PF5">
+              <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                  id="368bf60e-8fff-4922-8bda-5ddff423bf95" name="FIP 1"/>
+              <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                  id="12b2e0ec-c2ed-4ebf-b91d-ec793c6497cd" name="FOP 1"/>
+            </ownedFunctions>
+            <ownedFunctions xsi:type="org.polarsys.capella.core.data.pa:PhysicalFunction"
+                id="71147664-0fcd-401f-937a-bdc76216924d" name="PF6">
+              <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                  id="ae5a3c2f-cddf-49a9-8db3-2e127a300ea9" name="FIP 1"/>
+              <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                  id="6fcece12-dc23-4a84-a6f7-b5d79aa1b938" name="FOP 1"/>
+            </ownedFunctions>
+            <ownedFunctions xsi:type="org.polarsys.capella.core.data.pa:PhysicalFunction"
+                id="62f152bd-6017-4828-9034-7af3c387f83a" name="PF7">
+              <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                  id="da6135bb-f373-40f4-ba5f-560201d7f735" name="FIP 1"/>
+              <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                  id="1f3cb5dd-2b05-4f44-8267-ed246abfca57" name="FOP 1"/>
+            </ownedFunctions>
+            <ownedFunctions xsi:type="org.polarsys.capella.core.data.pa:PhysicalFunction"
+                id="29c4014e-7db7-4660-9f3e-e0a8a37e0090" name="PF8">
+              <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                  id="83043aff-5c50-4a41-9312-9949d5e53cac" name="FIP 1"/>
+              <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                  id="f412d613-7253-4ad7-aa4c-d0efbf09a74c" name="FOP 1"/>
+            </ownedFunctions>
+            <ownedFunctions xsi:type="org.polarsys.capella.core.data.pa:PhysicalFunction"
+                id="52d67cae-5ad2-4c5d-b4bf-e68d308c73b3" name="PF9">
+              <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                  id="60ff7e8c-32bb-493c-90c1-3fe7a6ab05f3" name="FIP 1"/>
+            </ownedFunctions>
+            <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+                id="c97cc795-07dd-45b2-b9bc-b875bb006d01" name="FE1" target="#6e3f72e3-b50c-4ef7-9549-5541de878bc0"
+                source="#5b950b88-688b-41b8-a4c1-b9f597332cca"/>
+            <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+                id="904bdd67-1ec4-4243-85bf-b1ebe1b8db6e" name="FE2.1" target="#a504f47c-d8ef-40da-bbeb-de4402d28d83"
+                source="#d0c971db-b83e-4c5f-a298-8f90989e62ce"/>
+            <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+                id="89ac0547-79d3-41d4-a655-ba8d9da2468a" name="FE2.2" target="#74312240-0e8d-411c-bc86-eb752dfb295a"
+                source="#2af3bfd5-708e-4a86-bff3-dc9589a2d76c"/>
+            <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+                id="8693abc6-1876-4fcb-870e-6f860cb09170" name="FE3.1" target="#43db03cd-03cf-4229-b7ff-07cd5cee54a5"
+                source="#2a59f6f9-556f-44aa-9f48-1feaac3b9aac"/>
+            <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+                id="84ea99c3-18a2-45ca-8ccc-14d43d9b6198" name="FE3.2" target="#4d3bc0b0-7b1c-401e-ad14-f67bf48487f9"
+                source="#4da12212-e97a-4916-8312-8c2a8f1a7ebe"/>
+            <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+                id="c3fb0b2f-490d-478f-9ed9-f2a40f08da16" name="FE4" target="#368bf60e-8fff-4922-8bda-5ddff423bf95"
+                source="#f167d6f3-2c18-4923-9ef2-cf774ccbff73"/>
+            <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+                id="82ae3980-a9fc-4922-a2a8-09de7b1461e4" name="FE5" target="#ae5a3c2f-cddf-49a9-8db3-2e127a300ea9"
+                source="#12b2e0ec-c2ed-4ebf-b91d-ec793c6497cd"/>
+            <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+                id="f4101c8b-3a2f-4fb9-a4bf-9684035adba5" name="FE6" target="#da6135bb-f373-40f4-ba5f-560201d7f735"
+                source="#6fcece12-dc23-4a84-a6f7-b5d79aa1b938"/>
+            <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+                id="b10feab0-81b4-4cdf-87a5-e06457ea6873" name="FE7" target="#83043aff-5c50-4a41-9312-9949d5e53cac"
+                source="#1f3cb5dd-2b05-4f44-8267-ed246abfca57"/>
+            <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+                id="8fc4392b-c6b5-4f4d-a50d-ff2310de47ac" name="FE8" target="#60ff7e8c-32bb-493c-90c1-3fe7a6ab05f3"
+                source="#f412d613-7253-4ad7-aa4c-d0efbf09a74c"/>
+          </ownedFunctions>
           <ownedFunctionRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionRealization"
               id="881e8070-e5a9-47dd-8edb-de815f40afbf" targetElement="#0f580227-c543-436e-979f-ee70432656e2"
               sourceElement="#0f09b41e-1e38-4d34-abb0-ba31a0eedd58"/>
@@ -14664,6 +14915,8 @@
                 name="Central Management Unit SW" abstractType="#fda6b8f9-bfe8-4c60-8443-9b8a9ee2eeeb"/>
             <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="0badb22d-49c6-43d9-8ffe-83e4758f6b97"
                 name="Media Loading Unit SW" abstractType="#96cfbcc8-37da-4181-b53f-155f8160db5d"/>
+            <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="8e86ebcc-10d1-41b9-90f0-c8589c6b4ceb"
+                name="Remote diagnostic equipment SW" abstractType="#95ea7294-402d-4783-b6e5-2e405c9f4ccb"/>
             <ownedComponentRealizations xsi:type="org.polarsys.capella.core.data.cs:ComponentRealization"
                 id="d556736f-46a9-46f6-bfe2-5d5ee98fb92c" targetElement="#724d6db9-9175-450b-8f05-023fcffec79c"
                 sourceElement="#c8114705-19fa-41b3-b534-a342f70c2e51"/>
@@ -15249,6 +15502,34 @@
               <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
                   id="497181d6-6056-4e25-a817-f937d33be1f9" targetElement="#16904687-4018-46cc-a0ec-c415f6d2bc1d"
                   sourceElement="#96cfbcc8-37da-4181-b53f-155f8160db5d"/>
+            </ownedPhysicalComponents>
+            <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
+                id="95ea7294-402d-4783-b6e5-2e405c9f4ccb" name="Remote diagnostic equipment SW"
+                nature="BEHAVIOR">
+              <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
+                  id="b8cbedc6-056e-4cab-9624-f18e44d810bc" targetElement="#88688938-d911-4317-b36e-266cef11a7f3"
+                  sourceElement="#95ea7294-402d-4783-b6e5-2e405c9f4ccb"/>
+              <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
+                  id="3e4e2636-4842-4810-a102-a930587a066f" targetElement="#fd6de739-ae93-4e5f-acaf-4e8fb8f0b2e5"
+                  sourceElement="#95ea7294-402d-4783-b6e5-2e405c9f4ccb"/>
+              <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
+                  id="e52c2d8e-df65-4c9e-8806-a2488e51064e" targetElement="#1c49d7b2-bb7a-4939-86c1-a73c0822fdf5"
+                  sourceElement="#95ea7294-402d-4783-b6e5-2e405c9f4ccb"/>
+              <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
+                  id="927772e9-fbec-4049-9b4b-c2555be318f5" targetElement="#79218945-69c6-4bc6-8aa6-9d67f537492d"
+                  sourceElement="#95ea7294-402d-4783-b6e5-2e405c9f4ccb"/>
+              <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
+                  id="071bb337-01d7-43e7-8507-4a54e4c331fd" targetElement="#0012d480-7be3-452f-9872-3a0d8868e2f6"
+                  sourceElement="#95ea7294-402d-4783-b6e5-2e405c9f4ccb"/>
+              <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
+                  id="d4fc0001-3903-425f-9cf2-3d658e976a5e" targetElement="#1291c3c4-170d-4fcc-9b59-5b0961cd4a2d"
+                  sourceElement="#95ea7294-402d-4783-b6e5-2e405c9f4ccb"/>
+              <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
+                  id="50757ebb-c6bd-4b1d-95da-867b91815bf0" targetElement="#71147664-0fcd-401f-937a-bdc76216924d"
+                  sourceElement="#95ea7294-402d-4783-b6e5-2e405c9f4ccb"/>
+              <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
+                  id="aca48bc6-87dd-4311-adbf-c57869da551c" targetElement="#62f152bd-6017-4828-9034-7af3c387f83a"
+                  sourceElement="#95ea7294-402d-4783-b6e5-2e405c9f4ccb"/>
             </ownedPhysicalComponents>
           </ownedPhysicalComponents>
           <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
