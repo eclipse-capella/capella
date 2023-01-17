@@ -29,6 +29,8 @@
             	<topic href="html/Release note/API_5.x_to_6.x.html#No_backward_compatibility" label="No backward compatibility"></topic>
             </topic>
             <topic href="html/Release note/API_5.x_to_6.x.html#Raw_API_changes_from_5.2.0_to_6.0.0" label="Raw API changes from 5.2.0 to 6.0.0">
+            </topic>
+            <topic href="html/Release note/API_5.x_to_6.x.html#Raw_API_changes_from_6.0.0_to_6.1.0" label="Raw API changes from 6.0.0 to 6.1.0">
 			</topic>
          </topic>
          <topic href="html/Release note/API_1.4.x_to_5.x.html" label="Capella 1.4.x to 5.x">

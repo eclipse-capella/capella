@@ -506,5 +506,760 @@
 				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.ui.semantic.browser.view.SemanticBrowserViewerComparator.sort(Viewer, Object[])</code>
 			</li>
 		</ul>
+		<h2 id="Raw_API_changes_from_6.0.0_to_6.1.0">Raw API changes from 6.0.0 to 6.1.0</h2>
+		<h4 id="Changes_in_org.polarsys.capella.common.libraries">Changes in <code>org.polarsys.capella.common.libraries</code></h4>
+		<ul>
+			<li><span class="labels"><span class="label label-warning">Deprecated</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.common.libraries.ILibraryManager.getAvailableModels()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.common.libraries.ILibraryManager.getAvailableModels(TransactionalEditingDomain)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.common.libraries.manager.LibraryManager.getAvailableModels(TransactionalEditingDomain)</code>
+			</li>
+			<li><span class="labels"><span class="label label-warning">Deprecated</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.common.libraries.provider.ILibraryProvider.getAvailableModels()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.common.libraries.provider.ILibraryProvider.getAvailableModels(TransactionalEditingDomain)</code>
+			</li>
+		</ul>
+		<h4 id="Changes_in_org.polarsys.capella.common.ui">Changes in <code>org.polarsys.capella.common.ui</code></h4>
+		<ul>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.common.ui.toolkit.dialogs.OpenRepresentationDialog</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.common.ui.toolkit.dialogs.OpenRepresentationDialog.OpenRepresentationDialog(Shell, Collection&lt;DRepresentationDescriptor&gt;)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.common.ui.toolkit.dialogs.OpenRepresentationDialog.create()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.common.ui.toolkit.dialogs.OpenRepresentationDialog.getText(Object)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.common.ui.toolkit.dialogs.OpenRepresentationDialog.isHelpAvailable()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.common.ui.toolkit.dialogs.OpenRepresentationDialog.getTray()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.common.ui.toolkit.dialogs.OpenRepresentationDialog.getSelectedDescriptor()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.common.ui.toolkit.dialogs.SelectNewRepresentationDialog</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.common.ui.toolkit.dialogs.SelectNewRepresentationDialog.SelectNewRepresentationDialog(Shell, String, EObject, Collection&lt;RepresentationDescription&gt;)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.common.ui.toolkit.dialogs.SelectNewRepresentationDialog.getText(Object)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.common.ui.toolkit.dialogs.SelectNewRepresentationDialog.isHelpAvailable()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.common.ui.toolkit.dialogs.SelectNewRepresentationDialog.getTray()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.common.ui.toolkit.dialogs.SelectNewRepresentationDialog.getName()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.common.ui.toolkit.dialogs.SelectNewRepresentationDialog.setErrorMessage(String)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.common.ui.toolkit.dialogs.SelectNewRepresentationDialog.getSelectedRepresentationDescription()</code>
+			</li>
+		</ul>
+		<h4 id="Changes_in_org.polarsys.capella.core.commandline.core">Changes in <code>org.polarsys.capella.core.commandline.core</code></h4>
+		<ul>
+			<li><span class="labels"><span class="label label-warning">Deprecated</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.commandline.core.CommandLineArgumentHelper.getFilePath()</code>
+			</li>
+			<li><span class="labels"><span class="label label-warning">Deprecated</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.commandline.core.CommandLineArgumentHelper.isCreateFolder()</code>
+			</li>
+			<li><span class="labels"><span class="label label-warning">Deprecated</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.commandline.core.CommandLineArgumentHelper.getExportProject()</code>
+			</li>
+			<li><span class="labels"><span class="label label-warning">Deprecated</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.commandline.core.CommandLineArgumentHelper.getZipNameProject()</code>
+			</li>
+		</ul>
+		<h4 id="Changes_in_org.polarsys.capella.core.compare">Changes in <code>org.polarsys.capella.core.compare</code></h4>
+		<ul>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.compare.CapellaDifferenceCategoryProvider</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.compare.CapellaDifferenceCategoryProvider.provideCategories(EMFDiffNode)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.compare.CapellaDifferenceCategoryUtil</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.compare.CapellaDifferenceCategoryUtil.provideCapellaCategories(EMFDiffNode)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.compare.CapellaDifferenceCategoryUtil.compare(ICommonFilterDescriptor, ICommonFilterDescriptor)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.compare.CapellaDifferenceCategoryUtil.keepElement(Object)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.compare.categories.EObjectCategoryFilter</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.compare.categories.EObjectCategoryFilter.EObjectCategoryFilter(String, String, boolean)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.compare.categories.EObjectCategoryFilter.EObjectCategoryFilter(boolean)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.compare.categories.EObjectCategoryFilter.keepElement(Object)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.compare.categories.EObjectCategoryFilter.copy()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.compare.categories.EObjectCategoryFilter.covers(IDifference&lt;?&gt;, EMFDiffNode)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.compare.categories.EObjectCategoryFilter.getID()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.compare.categories.EObjectCategoryFilter.getText(EMFDiffNode)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.compare.categories.EObjectCategoryFilter.getImage(EMFDiffNode)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.compare.categories.EObjectCategoryFilter.getDescription(EMFDiffNode)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.compare.categories.Messages</code>
+			</li>
+		</ul>
+		<h4 id="Changes_in_org.polarsys.capella.core.data.cs.ui.quickfix">Changes in <code>org.polarsys.capella.core.data.cs.ui.quickfix</code></h4>
+		<ul>
+			<li><span class="labels"><span class="label label-error">Removed</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.data.cs.ui.quickfix.generator.DWF_DC_30_Generator</code>
+			</li>
+			<li><span class="labels"><span class="label label-error">Removed</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.data.cs.ui.quickfix.resolver.EditContainterPCOfPhysicalPort</code>
+			</li>
+		</ul>
+		<h4 id="Changes_in_org.polarsys.capella.core.data.fa.ui.quickfix">Changes in <code>org.polarsys.capella.core.data.fa.ui.quickfix</code></h4>
+		<ul>
+			<li><span class="labels"><span class="label label-error">Removed</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.data.fa.ui.quickfix.generator.ComponentExchangeFunctionalExchangeResoultions</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.data.fa.ui.quickfix.resolver.DCOM_20_23_Resolver_Functional_Exchange</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.data.fa.ui.quickfix.resolver.DCOM_20_23_Resolver_Interaction</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.data.fa.ui.quickfix.resolver.DCOM_20_Resolver_Source_Function</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.data.fa.ui.quickfix.resolver.DCOM_20_Resolver_Source_Operational_Activity</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.data.fa.ui.quickfix.resolver.DCOM_20_Resolver_Target_Function</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.data.fa.ui.quickfix.resolver.DCOM_20_Resolver_Target_Operational_Activity</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.data.fa.ui.quickfix.resolver.DCOM_23_PortResolver_Source</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.data.fa.ui.quickfix.resolver.DCOM_23_PortResolver_Source.run(IMarker)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.data.fa.ui.quickfix.resolver.DCOM_23_PortResolver_Source.enabled(Collection&lt;IMarker&gt;)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.data.fa.ui.quickfix.resolver.DCOM_23_PortResolver_Target</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.data.fa.ui.quickfix.resolver.DCOM_23_PortResolver_Target.run(IMarker)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.data.fa.ui.quickfix.resolver.DCOM_23_PortResolver_Target.enabled(Collection&lt;IMarker&gt;)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.data.fa.ui.quickfix.resolver.DCOM_23_Resolver_Abstract_Function</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.data.fa.ui.quickfix.resolver.DCOM_23_Resolver_Abstract_Function.run(IMarker)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.data.fa.ui.quickfix.resolver.DCOM_23_Resolver_Abstract_Function.enabled(Collection&lt;IMarker&gt;)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.data.fa.ui.quickfix.resolver.DCOM_23_Resolver_Looping_Activity</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.data.fa.ui.quickfix.resolver.DCOM_23_Resolver_Looping_Function</code>
+			</li>
+			<li><span class="labels"><span class="label label-error">Removed</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.data.fa.ui.quickfix.resolver.EditContainterPCOfComponentPort</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.data.fa.ui.quickfix.resolver.FunctionalExchangeResolver</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.data.fa.ui.quickfix.resolver.FunctionalExchangeResolver.run(IMarker)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.data.fa.ui.quickfix.resolver.FunctionalExchangeResolver.enabled(Collection&lt;IMarker&gt;)</code>
+			</li>
+			<li><span class="labels"><span class="label label-error">Removed</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.data.fa.ui.quickfix.resolver.I_28_Resolver</code>
+			</li>
+		</ul>
+		<h4 id="Changes_in_org.polarsys.capella.core.data.fa.validation">Changes in <code>org.polarsys.capella.core.data.fa.validation</code></h4>
+		<ul>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.data.fa.validation.functionalExchange.FunctionalExchange_loopsOnSameFunction</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.data.fa.validation.functionalExchange.FunctionalExchange_loopsOnSameFunction.validate(IValidationContext)</code>
+			</li>
+		</ul>
+		<h4 id="Changes_in_org.polarsys.capella.core.data.helpers">Changes in <code>org.polarsys.capella.core.data.helpers</code></h4>
+		<ul>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.data.helpers.ctx.services.CapabilityExt.getAllRelatedScenarios(AbstractCapability)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.data.helpers.fa.services.FunctionExt.isFlowPortInAnyFunctionalExchange(FunctionPort, AbstractFunction)</code>
+			</li>
+		</ul>
+		<h4 id="Changes_in_org.polarsys.capella.core.data.interaction.ui.quickfix">Changes in <code>org.polarsys.capella.core.data.interaction.ui.quickfix</code></h4>
+		<ul>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.data.interaction.ui.quickfix.resolver.AddAllExchangeItemsToSequenceMessageResolver</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.data.interaction.ui.quickfix.resolver.AddAllExchangeItemsToSequenceMessageResolver.run(IMarker)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.data.interaction.ui.quickfix.resolver.AddAllExchangeItemsToSequenceMessageResolver.run()</code>
+			</li>
+		</ul>
+		<h4 id="Changes_in_org.polarsys.capella.core.data.interaction.validation">Changes in <code>org.polarsys.capella.core.data.interaction.validation</code></h4>
+		<ul>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.data.interaction.validation.sequenceMessage.SequenceMessageInvokedOperationExchangeItems</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.data.interaction.validation.sequenceMessage.SequenceMessageInvokedOperationExchangeItems.validate(IValidationContext)</code>
+			</li>
+		</ul>
+		<h4 id="Changes_in_org.polarsys.capella.core.data.migration_2">Changes in <code>org.polarsys.capella.core.data.migration</code></h4>
+		<ul>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.data.migration.aird.ImageDependenciesMigrationContributor</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.data.migration.aird.ImageDependenciesMigrationContributor.getRunnable(IFile)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.data.migration.aird.ImageDependenciesMigrationContributor.getName()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.data.migration.aird.ImageDependenciesMigrationContributor.run(MigrationContext, boolean)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.data.migration.aird.ImageDependenciesMigrationContributor.getKind()</code>
+			</li>
+			<li><span class="labels"><span class="label label-error">Removed</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.data.migration.participant.CapellaWorkspaceImageGMFBoundsMigrationParticipant</code>
+			</li>
+		</ul>
+		<h4 id="Changes_in_org.polarsys.capella.core.libraries">Changes in <code>org.polarsys.capella.core.libraries</code></h4>
+		<ul>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.libraries.provider.CapellaWorkspaceProvider.getAvailableModels(TransactionalEditingDomain)</code>
+			</li>
+		</ul>
+		<h4 id="Changes_in_org.polarsys.capella.core.platform.sirius.sirius.validation_2">Changes in <code>org.polarsys.capella.core.platform.sirius.sirius.validation</code></h4>
+		<ul>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram.AbstractImagePathMassResolver</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram.AbstractImagePathMassResolver.run(IMarker)</code>
+			</li>
+		</ul>
+		<h4 id="Changes_in_org.polarsys.capella.core.platform.sirius.ui.navigator">Changes in <code>org.polarsys.capella.core.platform.sirius.ui.navigator</code></h4>
+		<ul>
+			<li><span class="labels"><span class="label label-error">Removed</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.platform.sirius.ui.navigator.actions.OpenAction.OpenPropertiesAction()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.platform.sirius.ui.navigator.actions.OpenAction.OpenAction()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.platform.sirius.ui.navigator.actions.OpenRelatedDiagramAction</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.platform.sirius.ui.navigator.actions.OpenRelatedDiagramAction.OpenRelatedDiagramAction(EObject)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.platform.sirius.ui.navigator.actions.OpenRelatedDiagramAction.run()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.platform.sirius.ui.navigator.filters.ActorFilter</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.platform.sirius.ui.navigator.filters.ActorFilter.select(Viewer, Object, Object)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.platform.sirius.ui.navigator.filters.ComponentFilter</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.platform.sirius.ui.navigator.filters.ComponentFilter.select(Viewer, Object, Object)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.platform.sirius.ui.navigator.filters.SemanticFiltersHelper</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.platform.sirius.ui.navigator.filters.SemanticFiltersHelper.isSemanticFilter(ICommonFilterDescriptor)</code>
+			</li>
+		</ul>
+		<h4 id="Changes_in_org.polarsys.capella.core.preferences">Changes in <code>org.polarsys.capella.core.preferences</code></h4>
+		<ul>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.commands.preferences.initializers.CapellaDiagramPreferencesInitializer</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.commands.preferences.initializers.CapellaDiagramPreferencesInitializer.CapellaDiagramPreferencesInitializer(String)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.commands.preferences.initializers.CapellaDiagramPreferencesInitializer.initializeDefaultPreferences()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.commands.preferences.initializers.CapellaDiagramPreferencesInitializer.getFormatDate()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.commands.preferences.initializers.CapellaDiagramPreferencesInitializer.getTimeZoneForDateFormatting()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.commands.preferences.preferences.CapellaDiagramPreferences</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.commands.preferences.ui.sirius.CapellaDiagramPreferencePage</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.commands.preferences.ui.sirius.CapellaDiagramPreferencePage.CapellaDiagramPreferencePage()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.commands.preferences.ui.sirius.CapellaDiagramPreferencePage.modifyText(ModifyEvent)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.commands.preferences.ui.sirius.DoubleClickBehaviourUtil</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.commands.preferences.ui.sirius.DoubleClickBehaviourUtil.shouldOpenRelatedDiagramsOnDoubleClick(EObject)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.commands.preferences.ui.sirius.DoubleClickBehaviourUtil.getTargetSemanticElement(EObject)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.commands.preferences.ui.sirius.Messages</code>
+			</li>
+		</ul>
+		<h4 id="Changes_in_org.polarsys.capella.core.semantic.queries_2">Changes in <code>org.polarsys.capella.core.semantic.queries</code></h4>
+		<ul>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.AbstractCapability_ExternalReferencedFunctionalChains</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.AbstractCapability_ExternalReferencedFunctionalChains.AbstractCapability_ExternalReferencedFunctionalChains()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.AbstractCapability_ExternalReferencedFunctionalChains.compute(Object)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.AbstractCapability_ExternalReferencedScenarios</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.AbstractCapability_ExternalReferencedScenarios.AbstractCapability_ExternalReferencedScenarios()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.AbstractCapability_ExternalReferencedScenarios.compute(Object)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChain_ExternalReferencedFunctionalChains</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChain_ExternalReferencedFunctionalChains.FunctionalChain_ExternalReferencedFunctionalChains()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChain_ExternalReferencedFunctionalChains.compute(Object)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.OperationalCapability_ExternalReferencedOperationalProcesses</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.OperationalCapability_ExternalReferencedOperationalProcesses.OperationalCapability_ExternalReferencedOperationalProcesses()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.OperationalCapability_ExternalReferencedOperationalProcesses.compute(Object)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.OperationalProcess_ExternalReferencedOperationalProcesses</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.OperationalProcess_ExternalReferencedOperationalProcesses.OperationalProcess_ExternalReferencedOperationalProcesses()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.semantic.queries.basic.queries.OperationalProcess_ExternalReferencedOperationalProcesses.compute(Object)</code>
+			</li>
+		</ul>
+		<h4 id="Changes_in_org.polarsys.capella.core.sirius.analysis_2">Changes in <code>org.polarsys.capella.core.sirius.analysis</code></h4>
+		<ul>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.sirius.analysis.CapellaServices.getLastModificationDate(EObject)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.sirius.analysis.DiagramServices.createDNodeListElement(AbstractNodeMapping, EObject, DragAndDropTarget, DDiagram, int)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.sirius.analysis.DiagramServices.createContainer(ContainerMapping, EObject, DragAndDropTarget, DDiagram)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.sirius.analysis.PhysicalServices.isValidCreationPhysicalLink(EObject, EObject)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.sirius.analysis.commands.AbstractNewRepresentationCommand</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.sirius.analysis.commands.AbstractNewRepresentationCommand.commandInterrupted()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.sirius.analysis.commands.AbstractNewRepresentationCommand.commandRolledBack()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.sirius.analysis.commands.AbstractNewRepresentationCommand.getRepresentation()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.sirius.analysis.commands.AbstractNewRepresentationCommand.run()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.sirius.analysis.commands.NewRepresentationCommand</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.sirius.analysis.commands.NewRepresentationCommand.NewRepresentationCommand(String, EObject, RepresentationDescription, Session)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.sirius.analysis.commands.NewRepresentationCommand.run()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.sirius.analysis.commands.NewScenarioRepresentationCommand</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.sirius.analysis.commands.NewScenarioRepresentationCommand.NewScenarioRepresentationCommand(String, AbstractCapability, RepresentationDescription, Session)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.sirius.analysis.commands.NewScenarioRepresentationCommand.run()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.sirius.analysis.policies.OpenRelatedDiagramEditPolicy</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.sirius.analysis.policies.OpenRelatedDiagramEditPolicyProvider</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.sirius.analysis.policies.OpenRelatedDiagramEditPolicyProvider.createEditPolicies(final EditPart)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.sirius.analysis.policies.OpenRelatedDiagramEditPolicyProvider.addProviderChangeListener(IProviderChangeListener)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.sirius.analysis.policies.OpenRelatedDiagramEditPolicyProvider.provides(IOperation)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.sirius.analysis.policies.OpenRelatedDiagramEditPolicyProvider.removeProviderChangeListener(IProviderChangeListener)</code>
+			</li>
+			<li><span class="labels"><span class="label label-error">Removed</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.sirius.analysis.preferences.DiagramProcessChainPathPreferenceInitializer.DiagramPreferenceInitializer()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.sirius.analysis.preferences.DiagramProcessChainPathPreferenceInitializer.DiagramProcessChainPathPreferenceInitializer()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.sirius.analysis.titleblock.TitleBlockRepresentationTimeStampInfoProvider</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.sirius.analysis.titleblock.TitleBlockRepresentationTimeStampInfoProvider.preventTimeStampFromBeingUpdated(List&lt;Notification&gt;)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.sirius.analysis.titleblock.TitleBlockSessionManagerListener</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.sirius.analysis.titleblock.TitleBlockSessionManagerListener.notifyAddSession(Session)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.sirius.analysis.titleblock.TitleBlockUpdaterListener</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.sirius.analysis.titleblock.TitleBlockUpdaterListener.isPrecommitOnly()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.sirius.analysis.titleblock.TitleBlockUpdaterListener.isAggregatePrecommitListener()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.sirius.analysis.titleblock.TitleBlockUpdaterListener.transactionAboutToCommit(ResourceSetChangeEvent)</code>
+			</li>
+		</ul>
+		<h4 id="Changes_in_org.polarsys.capella.core.sirius.ui_2">Changes in <code>org.polarsys.capella.core.sirius.ui</code></h4>
+		<ul>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.sirius.ui.actions.AbstractNewRepresentationAction</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.sirius.ui.actions.AbstractNewRepresentationAction.isCanceled()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.sirius.ui.actions.AbstractNewRepresentationAction.setCanceled(boolean)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.sirius.ui.actions.Messages</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.sirius.ui.actions.NewRepresentationAction.NewRepresentationAction(RepresentationDescription, EObject, Session, String)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.sirius.ui.actions.NewRepresentationAction.isValid(String)</code>
+			</li>
+			<li><span class="labels"><span class="label label-error">Removed</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.sirius.ui.actions.NewRepresentationAction.NewRepresentationCommand(String, EObject, RepresentationDescription, Session)</code>
+			</li>
+			<li><span class="labels"><span class="label label-error">Removed</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.sirius.ui.actions.NewRepresentationAction.commandInterrupted()</code>
+			</li>
+			<li><span class="labels"><span class="label label-error">Removed</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.sirius.ui.actions.NewRepresentationAction.commandRolledBack()</code>
+			</li>
+			<li><span class="labels"><span class="label label-error">Removed</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.sirius.ui.actions.NewRepresentationAction.getRepresentation()</code>
+			</li>
+			<li><span class="labels"><span class="label label-error">Removed</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.sirius.ui.actions.NewRepresentationAction.run()</code>
+			</li>
+			<li><span class="labels"><span class="label label-error">Removed</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.sirius.ui.actions.NewRepresentationAction.isCanceled()</code>
+			</li>
+			<li><span class="labels"><span class="label label-error">Removed</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.sirius.ui.actions.NewRepresentationAction.setCanceled(boolean)</code>
+			</li>
+			<li><span class="labels"><span class="label label-error">Removed</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.sirius.ui.actions.NewScenarioRepresentationAction.NewScenarioRepresentationCommand(String, AbstractCapability, RepresentationDescription, Session)</code>
+			</li>
+			<li><span class="labels"><span class="label label-error">Removed</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.sirius.ui.actions.NewScenarioRepresentationAction.commandInterrupted()</code>
+			</li>
+			<li><span class="labels"><span class="label label-error">Removed</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.sirius.ui.actions.NewScenarioRepresentationAction.commandRolledBack()</code>
+			</li>
+			<li><span class="labels"><span class="label label-error">Removed</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.sirius.ui.actions.NewScenarioRepresentationAction.getRepresentation()</code>
+			</li>
+			<li><span class="labels"><span class="label label-error">Removed</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.sirius.ui.actions.NewScenarioRepresentationAction.run()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.sirius.ui.actions.SelectNewRepresentationAction</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.sirius.ui.actions.SelectNewRepresentationAction.SelectNewRepresentationAction(Collection&lt;RepresentationDescription&gt;, EObject, Session, String)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.sirius.ui.actions.SelectNewRepresentationAction.SelectNewRepresentationAction(Collection&lt;RepresentationDescription&gt;, EObject, Session)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.sirius.ui.actions.SelectNewRepresentationAction.SelectNewRepresentationAction(Collection&lt;RepresentationDescription&gt;, EObject, Session, boolean)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.sirius.ui.actions.SelectNewRepresentationAction.run()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.sirius.ui.helper.DescriptionImageDescriptorHelper</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.sirius.ui.helper.DescriptionImageDescriptorHelper.getDescriptionImageDescriptor(RepresentationDescription)</code>
+			</li>
+		</ul>
+		<h4 id="Changes_in_org.polarsys.capella.core.transition.system.ui">Changes in <code>org.polarsys.capella.core.transition.system.ui</code></h4>
+		<ul>
+			<li><span class="labels"><span class="label label-error">Removed</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.transition.system.ui.preferences.TransitionsPreferencesInitializer</code>
+			</li>
+		</ul>
+		<h4 id="Changes_in_org.polarsys.capella.core.transition.system">Changes in <code>org.polarsys.capella.core.transition.system</code></h4>
+		<ul>
+			<li><span class="labels"><span class="label label-error">Removed</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.transition.system.handlers.merge.ActorFilter</code>
+			</li>
+			<li><span class="labels"><span class="label label-error">Removed</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.transition.system.handlers.merge.CapellaClassFilters</code>
+			</li>
+			<li><span class="labels"><span class="label label-error">Removed</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.transition.system.handlers.merge.ComponentExchangeFilter</code>
+			</li>
+			<li><span class="labels"><span class="label label-error">Removed</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.transition.system.handlers.merge.ComponentFilter</code>
+			</li>
+			<li><span class="labels"><span class="label label-error">Removed</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.transition.system.handlers.merge.DataFilter</code>
+			</li>
+			<li><span class="labels"><span class="label label-error">Removed</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.transition.system.handlers.merge.EClassCategoryFilter</code>
+			</li>
+			<li><span class="labels"><span class="label label-error">Removed</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.transition.system.handlers.merge.EObjectCategoryFilter</code>
+			</li>
+			<li><span class="labels"><span class="label label-error">Removed</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.transition.system.handlers.merge.ExchangeItemFilter</code>
+			</li>
+			<li><span class="labels"><span class="label label-error">Removed</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.transition.system.handlers.merge.FunctionFilter</code>
+			</li>
+			<li><span class="labels"><span class="label label-error">Removed</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.transition.system.handlers.merge.FunctionalChainFilter</code>
+			</li>
+			<li><span class="labels"><span class="label label-error">Removed</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.transition.system.handlers.merge.FunctionalExchangeFilter</code>
+			</li>
+			<li><span class="labels"><span class="label label-error">Removed</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.transition.system.handlers.merge.InterfaceFilter</code>
+			</li>
+			<li><span class="labels"><span class="label label-error">Removed</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.transition.system.handlers.merge.PhysicalLinkFilter</code>
+			</li>
+			<li><span class="labels"><span class="label label-error">Removed</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.transition.system.handlers.merge.PropertyValueFilter</code>
+			</li>
+			<li><span class="labels"><span class="label label-error">Removed</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.transition.system.handlers.merge.StateMachineFilter</code>
+			</li>
+			<li><span class="labels"><span class="label label-error">Removed</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.transition.system.preferences.PreferenceConstants</code>
+			</li>
+		</ul>
+		<h4 id="Changes_in_org.polarsys.capella.core.ui.properties">Changes in <code>org.polarsys.capella.core.ui.properties</code></h4>
+		<ul>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.ui.properties.property.ShowInPropertiesDialogHandler</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.ui.properties.property.ShowInPropertiesDialogHandler.execute(ExecutionEvent)</code>
+			</li>
+		</ul>
+		<h4 id="Changes_in_org.polarsys.capella.core.ui.semantic.browser.sirius">Changes in <code>org.polarsys.capella.core.ui.semantic.browser.sirius</code></h4>
+		<ul>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.ui.semantic.browser.sirius.content.provider.SiriusSemanticBrowserContentProviderFactory</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.ui.semantic.browser.sirius.content.provider.SiriusSemanticBrowserContentProviderFactory.SiriusSemanticBrowserContentProviderFactory()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.ui.semantic.browser.sirius.content.provider.SiriusSemanticBrowserContentProviderFactory.getCurrentContentProvider()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.ui.semantic.browser.sirius.content.provider.SiriusSemanticBrowserContentProviderFactory.notifyChanged(Notification)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.ui.semantic.browser.sirius.content.provider.SiriusSemanticBrowserContentProviderFactory.getElements(Object)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.ui.semantic.browser.sirius.content.provider.SiriusSemanticBrowserContentProviderFactory.hasChildren(Object)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.ui.semantic.browser.sirius.content.provider.SiriusSemanticBrowserContentProviderFactory.getReferencedContentProvider()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.ui.semantic.browser.sirius.content.provider.SiriusSemanticBrowserContentProviderFactory.getReferencingContentProvider()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.ui.semantic.browser.sirius.wrapper.CustomEObjectWrapper</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.ui.semantic.browser.sirius.wrapper.CustomEObjectWrapper.CustomEObjectWrapper(EObject)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.ui.semantic.browser.sirius.wrapper.CustomEObjectWrapper.equals(Object)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.ui.semantic.browser.sirius.wrapper.CustomEObjectWrapper.hashCode()</code>
+			</li>
+		</ul>
 	</body>
 </html>
