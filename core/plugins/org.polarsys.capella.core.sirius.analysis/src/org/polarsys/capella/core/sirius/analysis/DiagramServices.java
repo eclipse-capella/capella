@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2022 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2023 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -530,6 +530,17 @@ public class DiagramServices {
     IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(semantic);
     return new AbstractNodeMappingQuery(nodeMapping).evaluatePrecondition((DSemanticDiagram) diagram,
         (DragAndDropTarget) containerView, interpreter, semantic);
+  }
+
+  /**
+   * Evaluate candidate expression of the given node mapping.
+   */
+  public Collection<EObject> evaluateCandidateExpression(AbstractNodeMapping nodeMapping, DDiagram diagram,
+      DSemanticDecorator containerView, EObject semantic) {
+    IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(semantic);
+
+    return new AbstractNodeMappingQuery(nodeMapping).evaluateCandidateExpression((DSemanticDiagram) diagram,
+        interpreter, (DragAndDropTarget) containerView);
   }
 
   public AbstractDNode createAbstractDNode(AbstractNodeMapping mapping, EObject modelElement,
