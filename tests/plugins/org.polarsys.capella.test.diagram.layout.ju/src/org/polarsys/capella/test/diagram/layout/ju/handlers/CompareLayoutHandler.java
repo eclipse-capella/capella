@@ -141,6 +141,7 @@ public class CompareLayoutHandler extends AbstractUiHandler {
     SessionContext context = new SessionContext(session);
     DiagramContext c = new DiagramContext(context, ((DDiagram)diagram1.getRepresentation()));
     c.open();
+
     DiagramHelper.copyLayout(c.getDiagram());
     DiagramContext c2 = new DiagramContext(context, ((DDiagram)diagram2.getRepresentation()));
     c2.open();

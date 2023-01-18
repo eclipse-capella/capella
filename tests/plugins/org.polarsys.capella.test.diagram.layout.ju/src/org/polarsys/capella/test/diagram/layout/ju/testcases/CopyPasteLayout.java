@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018, 2023 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -37,8 +37,7 @@ public class CopyPasteLayout extends ModelCopyLayout {
     checkComponentExchangeLayout(context);
     checkRECRPLLayout(context);
     checkTransitionLayout(context);
-    //checkFunctionalChains(context); //issue: Copy Layout doesn't work with Functional Chains internal links
-    
+    checkFunctionalChains(context);
   }
 
   // A basic diagram with several functions

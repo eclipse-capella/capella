@@ -211,6 +211,23 @@
             <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementFunction"
                 id="7efca5ba-8313-4776-b12e-ac4b0d3f96cb" involved="#7fb4d8b5-fcc2-48cc-a713-31fee3874bda"/>
           </ownedFunctionalChains>
+          <ownedFunctionalChains xsi:type="org.polarsys.capella.core.data.fa:FunctionalChain"
+              id="23cd2876-984f-4921-b679-e0f804f51328" name="FC A->B">
+            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementLink"
+                id="a938e0d3-a522-41ec-8f0a-1618fd617103" involved="#4ed83376-be95-44bf-b349-26c1da1c1a58"
+                source="#3c60d722-25b4-4c2c-a6a3-99bd9c17b45b" target="#90ccae55-63ec-4393-bf22-6ffa5c9b08da"/>
+            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementFunction"
+                id="90ccae55-63ec-4393-bf22-6ffa5c9b08da" involved="#473924b2-be11-42c0-9f63-dfdc78d6961b"/>
+            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementFunction"
+                id="3c60d722-25b4-4c2c-a6a3-99bd9c17b45b" involved="#be451c0f-a745-43e3-9ca5-89c1dc750641"/>
+          </ownedFunctionalChains>
+          <ownedFunctionalChains xsi:type="org.polarsys.capella.core.data.fa:FunctionalChain"
+              id="86815c79-e70f-4fef-b99b-b6496d650d38" name="FC C->FCAB->D">
+            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainReference"
+                id="9efb4469-baef-4ae1-bad4-aaf05302944f" involved="#23cd2876-984f-4921-b679-e0f804f51328"/>
+            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainReference"
+                id="a4af1e00-59b2-4248-bca4-6255574fb0be" involved="#23cd2876-984f-4921-b679-e0f804f51328"/>
+          </ownedFunctionalChains>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
               id="0196c2d4-43c2-4b61-ae1a-ce9ddc25f1af" name="SystemFunction 1">
             <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
@@ -251,6 +268,30 @@
           </ownedFunctions>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
               id="c91b22dc-d1bf-4f61-a139-9dbc20cd5237" name="SystemFunction 5"/>
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
+              id="be451c0f-a745-43e3-9ca5-89c1dc750641" name="SF A">
+            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                id="24602ec0-d453-4a4e-9345-26538f2011b1" name="FIP 1"/>
+            <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                id="97fda36d-a8ee-4245-8260-f7811010fd9f" name="FOP 1"/>
+          </ownedFunctions>
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
+              id="473924b2-be11-42c0-9f63-dfdc78d6961b" name="SF B">
+            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                id="4839e12e-934d-491a-9b6f-e450c5df8f13" name="FIP 1"/>
+            <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                id="e5246fb5-b1b7-40a7-b1b3-c94778916e4b" name="FOP 1"/>
+          </ownedFunctions>
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
+              id="029fc67c-f19d-4469-b6c4-a1672b187909" name="SF C">
+            <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                id="04a95b20-9a7d-45dc-a279-445f420a1a0a" name="FOP 1"/>
+          </ownedFunctions>
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
+              id="fb33b548-c066-48cb-bb83-f079d3ed6b2f" name="SF D">
+            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                id="a2f4c6d9-03d3-4276-85ac-a2665f01c7e0" name="FIP 1"/>
+          </ownedFunctions>
           <ownedFunctionRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionRealization"
               id="8cc6e63c-ba81-40bd-81eb-7202d1495daf" targetElement="#6f466e20-c83b-4726-b4f3-4ffd265aed91"
               sourceElement="#f16685ee-9b1a-4d3f-8389-eb373ede67a6"/>
@@ -269,6 +310,15 @@
           <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
               id="21d6c784-6725-4cca-8013-406109cc727f" name="FunctionalExchange 5"
               target="#280571bc-b318-49cf-b7ea-484c1a308663" source="#bdef1162-5ed3-4c70-9dac-484ae346c777"/>
+          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+              id="4ed83376-be95-44bf-b349-26c1da1c1a58" name="FE A->B" target="#4839e12e-934d-491a-9b6f-e450c5df8f13"
+              source="#97fda36d-a8ee-4245-8260-f7811010fd9f"/>
+          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+              id="e4cc2c7d-fa35-4b6a-8010-a6ff3d051e5a" name="FE C->A" target="#24602ec0-d453-4a4e-9345-26538f2011b1"
+              source="#04a95b20-9a7d-45dc-a279-445f420a1a0a"/>
+          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+              id="c0088e5b-be07-4996-99f3-8153510949b5" name="FE B->D" target="#a2f4c6d9-03d3-4276-85ac-a2665f01c7e0"
+              source="#e5246fb5-b1b7-40a7-b1b3-c94778916e4b"/>
           <ownedSystemFunctionPkgs xsi:type="org.polarsys.capella.core.data.ctx:SystemFunctionPkg"
               id="9c87ce31-399e-44ec-b4d6-440b120d76dd" name="Functional Chain">
             <ownedSystemFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
