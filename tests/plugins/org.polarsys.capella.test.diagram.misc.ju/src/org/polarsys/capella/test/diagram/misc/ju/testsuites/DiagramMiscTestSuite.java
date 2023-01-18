@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2022 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2023 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -38,6 +38,7 @@ import org.polarsys.capella.test.diagram.misc.ju.testcases.InterfacePortSizeTest
 import org.polarsys.capella.test.diagram.misc.ju.testcases.LexicographicOrderInSBClassPropertiesTest;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.LexicographicOrderInSBSequenceInvokedMessagesTest;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.PABStyleChecksDiagramElements;
+import org.polarsys.capella.test.diagram.misc.ju.testcases.RefreshFCContextualElementsTest;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.SemanticBrowserRefreshTest;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.StatusLineTestCase;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.UnsynchronizedSemanticBrowser;
@@ -66,6 +67,7 @@ public class DiagramMiscTestSuite extends BasicTestSuite {
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<>();
     
+    tests.add(new RefreshFCContextualElementsTest());
     tests.add(new DDiagramEditorUndoRedoHandlerTest());
     tests.add(new GraphTest());
     tests.add(new Bug1006TestCase());

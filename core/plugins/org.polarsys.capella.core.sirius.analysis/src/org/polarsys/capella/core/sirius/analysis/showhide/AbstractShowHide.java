@@ -1,4 +1,5 @@
 /*******************************************************************************
+ * Copyright (c) 2006, 2023 THALES GLOBAL SERVICES.
  * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
@@ -26,6 +27,7 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.business.api.query.AbstractNodeMappingQuery;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
@@ -856,8 +858,17 @@ public class AbstractShowHide implements IShowHide {
       return false;
     }
 
+    boolean result = DiagramServices.getDiagramServices().evaluateNodePrecondition(mapping, getContent().getDDiagram(),
+        containerView, semantic);
+    // Call mapping candidate expression if any, to know if the Node is present in its parent
+    if (new AbstractNodeMappingQuery(mapping).hasCandidatesExpression()) {
+        Collection<EObject> candidates = DiagramServices.getDiagramServices().evaluateCandidateExpression(mapping,
+            getContent().getDDiagram(), containerView, semantic);
+  
+        result = result && candidates.contains(semantic);
+  }
     // Call mapping precondition to know if the Node must be shown.
-    return DiagramServices.getDiagramServices().evaluateNodePrecondition(mapping, getContent().getDDiagram(), containerView, semantic);
+    return result;
   }
 
   /**
