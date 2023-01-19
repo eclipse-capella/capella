@@ -102,9 +102,10 @@ An update site can also be installed through command line.
 (replace {xxx} by corresponding values without brackets)
 
 <code>{repository}</code> is one of the following format
-* <code>jar:file:/updatesite.zip!/</code>
 * <code>file://unzipped-updatesite-folder/</code>
+* <code>jar:file:/updatesite.zip!/</code>
 * <code>https://update-site.url</code>
+* <code>jar:https://update-site.url.zip!/</code>
 
 <code>{featureName}</code> is the name of a feature (see below)
 
