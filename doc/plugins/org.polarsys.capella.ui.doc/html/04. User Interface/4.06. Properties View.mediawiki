@@ -70,11 +70,11 @@ If the text field looses the focus during the edition, especially when editing t
 
 Insertion of hyperlinks to other model elements and existing diagrams are possible using two mechanisms:
 
-The first mechanism is similar to a model element copy paste and is called '''Copy as Description Link'''.
+The first mechanism is similar to a model element copy paste and is called '''Copy as Hyperlink for Description'''.
 
-Once you have a selection of elements (from the Project Explorer, Semantic Browser, Diagram elements etc), you can use the contextual menu '''Copy as Description Link''' or use the associated keyboard shortcut '''Ctrl + Shift + C'''.
+Once you have a selection of elements (from the Project Explorer, Semantic Browser, Diagram elements etc), you can use the contextual menu '''Copy as Hyperlink for Description''' or use the associated keyboard shortcut '''Ctrl + Shift + C'''.
 
-[[Image:Images/DescriptionLink1.png|800px]]
+[[Image:Images/DescriptionLink1.png]]
 [[Image:Images/DescriptionLink2.png]]
 [[Image:Images/DescriptionLink3.png]]
 

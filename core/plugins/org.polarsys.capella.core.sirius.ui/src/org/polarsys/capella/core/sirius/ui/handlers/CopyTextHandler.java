@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2021, 2023 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -17,6 +17,8 @@ import java.util.stream.Collectors;
 
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.core.runtime.Adapters;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.swt.dnd.Clipboard;
@@ -58,6 +60,10 @@ public class CopyTextHandler extends AbstractDiagramCommandHandler {
   }
   
   private static String getLabel(Object o) {
+    Object adaptedObject = Adapters.adapt(o, EObject.class);
+    if (adaptedObject != null) {
+      o = adaptedObject;
+    }
     if (o instanceof ModelElement) {
       return ((ModelElement) o).getLabel();
     }

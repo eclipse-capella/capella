@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2019, 2023 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -80,9 +80,9 @@ public class CapellaMDERichTextFactory extends MDERichTextFactory {
   protected void addEditorToolbarItems(MDENebulaBasedRichTextWidget widget) {
     super.addEditorToolbarItems(widget);
 
-    widget.addToolbarItem(widget, CapellaMDERichTextConstants.PASTE_AS_LINK_KEY,
-        CapellaMDERichTextConstants.PASTE_AS_LINK_KEY, CapellaMDERichTextConstants.PASTE_AS_LINK_LABEL,
-        MDERichTextConstants.CLIPBOARD_TOOLBAR, CapellaMDERichTextConstants.PASTE_AS_LINK_ICON,
+    widget.addToolbarItem(widget, CapellaMDERichTextConstants.PASTE_AS_HYPERLINK_KEY,
+        CapellaMDERichTextConstants.PASTE_AS_HYPERLINK_KEY, CapellaMDERichTextConstants.PASTE_AS_HYPERLINK_LABEL,
+        MDERichTextConstants.CLIPBOARD_TOOLBAR, CapellaMDERichTextConstants.PASTE_AS_HYPERLINK_ICON,
         new PasteAsDescriptionLinkHandler());
 
     widget.addToolbarItem(widget, CapellaMDERichTextConstants.OPEN_IN_EDITOR_KEY,
