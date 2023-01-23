@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2021, 2023 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -17,13 +17,14 @@ import java.util.stream.Collectors;
 
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.core.runtime.Adapters;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.swt.dnd.Clipboard;
 import org.eclipse.swt.dnd.TextTransfer;
 import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.ui.handlers.HandlerUtil;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 
 /**
@@ -58,13 +59,11 @@ public class CopyTextHandler extends AbstractDiagramCommandHandler {
   }
   
   private static String getLabel(Object o) {
-    if (o instanceof ModelElement) {
-      return ((ModelElement) o).getLabel();
+    Object adaptedObject = Adapters.adapt(o, EObject.class);
+    if (adaptedObject != null) {
+      o = adaptedObject;
     }
-    if(o instanceof DRepresentationDescriptor) {
-      return ((DRepresentationDescriptor) o).getName();
-    }
-    return o != null ? o.toString() : null;
+    return o != null ? EObjectLabelProviderHelper.getText(o) : null;
   }
 
   @Override

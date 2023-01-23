@@ -1,4 +1,4 @@
 =Description Section=
 
 == Model Element and Diagram Hyperlink Insertion==
-A fast insertion of hyperlinks to model elements and existing diagrams is possible by using the [[../help/topic/org.polarsys.capella.ui.doc/html/04.%20User%20Interface/4.06.%20Properties%20View.html#Description_Section|Copy as Description Link mechanism]].
+A fast insertion of hyperlinks to model elements and existing diagrams is possible by using the [[../help/topic/org.polarsys.capella.ui.doc/html/04.%20User%20Interface/4.06.%20Properties%20View.html#Description_Section|Copy as Hyperlink for Description mechanism]].

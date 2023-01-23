@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <!--
-  Copyright (c) 2017, 2020 THALES GLOBAL SERVICES.
+  Copyright (c) 2017, 2023 THALES GLOBAL SERVICES.
   
   This program and the accompanying materials are made available under the
   terms of the Eclipse Public License 2.0 which is available at
@@ -75,9 +75,9 @@
          point="org.eclipse.ui.commands">
       <command
             categoryId="org.polarsys.capella.core.platform.sirius.ui.navigator"
-            defaultHandler="org.polarsys.capella.core.ui.properties.richtext.handlers.CopyAsDescriptionLinkHandler"
-            id="org.polarsys.capella.core.ui.properties.richtext.CopyAsDescriptionLink"
-            name="%command.copyAsDescriptionLink.name">
+            defaultHandler="org.polarsys.capella.core.ui.properties.richtext.handlers.CopyAsHyperlinkForDescriptionHandler"
+            id="org.polarsys.capella.core.ui.properties.richtext.copyAsHyperlinkForDescription"
+            name="%command.copyAsHyperlinkForDescription.name">
       </command>
    </extension>
    <extension
@@ -86,15 +86,15 @@
             allPopups="true"
             locationURI="popup:org.polarsys.capella.core.copyAs?after=org.polarsys.capella.core.platform.sirius.ui.actions.CopyPath">
          <command
-               commandId="org.polarsys.capella.core.ui.properties.richtext.CopyAsDescriptionLink"
-               icon="icons/full/obj16/copy_as_link.gif"
-               label="%menu.copyAsDescriptionLink.label"
+               commandId="org.polarsys.capella.core.ui.properties.richtext.copyAsHyperlinkForDescription"
+               icon="icons/full/obj16/copy_as_hyperlink.gif"
+               label="%menu.copyAsHyperlinkForDescription.label"
                style="push"
-               tooltip="%menu.copyAsDescriptionLink.tooltip">
+               tooltip="%menu.copyAsHyperlinkForDescription.tooltip">
             <visibleWhen
                   checkEnabled="false">
                <reference
-                     definitionId="org.polarsys.capella.core.ui.properties.richtext.enablementExpression.CopyAsDescriptionLink">
+                     definitionId="org.polarsys.capella.core.ui.properties.richtext.enablementExpression.CopyAsHyperlinkForDescription">
                </reference>
             </visibleWhen>
          </command>
@@ -103,7 +103,7 @@
    <extension
          point="org.eclipse.ui.bindings">
       <key
-            commandId="org.polarsys.capella.core.ui.properties.richtext.CopyAsDescriptionLink"
+            commandId="org.polarsys.capella.core.ui.properties.richtext.copyAsHyperlinkForDescription"
             schemeId="org.polarsys.capella.core.defaultAcceleratorConfiguration"
             sequence="CTRL+SHIFT+C">
       </key>
@@ -111,7 +111,7 @@
    <extension
          point="org.eclipse.core.expressions.definitions">
       <definition
-            id="org.polarsys.capella.core.ui.properties.richtext.enablementExpression.CopyAsDescriptionLink">
+            id="org.polarsys.capella.core.ui.properties.richtext.enablementExpression.CopyAsHyperlinkForDescription">
          <with
                variable="selection">
                <iterate 

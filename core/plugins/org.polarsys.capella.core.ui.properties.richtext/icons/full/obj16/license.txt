@@ -4,7 +4,7 @@ http://www.eclipse.org/legal/epl-2.0
 
 <icon file path> - <original eclipse plug-in> - <original file path>
 
-/icons/full/obj16/paste_as_link.gif - org.polarsys.capella.core.ui.properties.richtext - org/polarsys/capella/core/ui/properties/richtext/icons/full/obj16/paste_as_link.gif
-/icons/full/obj16/copy_as_link.gif - org.polarsys.capella.core.ui.resource - org.polarsys.capella.core.ui.resources/icons/full/obj16/copy_as_link.gif
+/icons/full/obj16/paste_as_hyperlink.gif - org.polarsys.capella.core.ui.properties.richtext - org/polarsys/capella/core/ui/properties/richtext/icons/full/obj16/paste_as_link.gif
+/icons/full/obj16/copy_as_hyperlink.gif - org.polarsys.capella.core.ui.resource - org.polarsys.capella.core.ui.resources/icons/full/obj16/copy_as_link.gif
 /icons/full/obj16/open_in_editor.gif - org.polarsys.capella.core.ui.properties.richtext - org/polarsys/capella/core/ui/properties/richtext/icons/full/obj16/open_in_editor.gif
 

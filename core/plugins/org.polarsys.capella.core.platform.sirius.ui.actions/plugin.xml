@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2023 THALES GLOBAL SERVICES.
   
   This program and the accompanying materials are made available under the
   terms of the Eclipse Public License 2.0 which is available at
@@ -179,7 +179,7 @@
     <extension point="org.eclipse.ui.menus">
     
        <menuContribution
-                locationURI="popup:org.polarsys.capella.core.copyAs?after=group.copyAs">
+                locationURI="popup:org.polarsys.capella.core.copyAs?after=org.polarsys.capella.core.sirius.ui.copyAsText">
            <command
                  commandId="org.polarsys.capella.core.platform.sirius.ui.actions.CopyPath">
                  <visibleWhen
@@ -188,9 +188,20 @@
                                  definitionId="org.polarsys.capella.core.platform.sirius.ui.actions.CopyPath.expression">
                            </reference>
                  </visibleWhen>
+           </command>          
+       </menuContribution>
+       <menuContribution
+      	 locationURI="popup:org.polarsys.capella.core.copyAs?after=org.polarsys.capella.core.ui.properties.richtext.copyAsHyperlinkForDescription">
+        <command
+                 commandId="org.polarsys.capella.core.platform.sirius.ui.actions.CopyUniqueIdentifier">
+              <visibleWhen
+                    checkEnabled="false">
+                 <reference
+                       definitionId="org.polarsys.capella.core.platform.sirius.ui.actions.CopyUniqueIdentifier.expression">
+                 </reference>
+              </visibleWhen>
            </command>
        </menuContribution>
-       
        <menuContribution
                 locationURI="popup:org.eclipse.ui.popup.any?after=group.delete">
            <command
@@ -264,6 +275,21 @@
 		                  property="org.polarsys.capella.core.platform.sirius.ui.actionMode"
 		                  value="copyPath">
 		            </test>
+                  </iterate>
+            </with>
+      </definition>
+      
+      <definition
+            id="org.polarsys.capella.core.platform.sirius.ui.actions.CopyUniqueIdentifier.expression">
+            <with
+                  variable="selection">
+                  <iterate
+                        ifEmpty="false">
+                    <or>
+                           <adapt
+                               type="org.eclipse.emf.ecore.EObject">
+                           </adapt>
+                    </or>
                   </iterate>
             </with>
       </definition>
@@ -632,6 +658,12 @@
             name="%UpdateCategories"
             >
       </command>
+      <command
+            categoryId="org.polarsys.capella.core.semantic"
+            defaultHandler="org.polarsys.capella.core.platform.sirius.ui.handlers.CopyUniqueIdentifierHandler"
+            id="org.polarsys.capella.core.platform.sirius.ui.actions.CopyUniqueIdentifier"
+            name="%CopyID">
+      </command>
       
    </extension>
    
@@ -672,6 +704,10 @@
       </image>
       <image
             commandId="org.polarsys.capella.core.platform.sirius.ui.actions.CopyPath"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_copy_path.gif">
+      </image>
+      <image
+            commandId="org.polarsys.capella.core.platform.sirius.ui.actions.CopyUniqueIdentifier"
                icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_copy_path.gif">
       </image>
       <image
