@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2019, 2023 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -25,7 +25,7 @@ import org.eclipse.ui.handlers.HandlerUtil;
 import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
 import org.polarsys.capella.core.ui.properties.richtext.clipboard.RichTextLinksClipboard;
 
-public class CopyAsDescriptionLinkHandler extends AbstractHandler {
+public class CopyAsHyperlinkForDescriptionHandler extends AbstractHandler {
 
   @Override
   public Object execute(ExecutionEvent event) throws ExecutionException {

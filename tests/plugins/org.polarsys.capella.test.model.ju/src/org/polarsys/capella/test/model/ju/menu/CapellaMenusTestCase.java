@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2021, 2023 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -32,9 +32,10 @@ import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.libraries.model.ICapellaModel;
 import org.polarsys.capella.core.libraries.utils.ScopeModelWrapper;
 import org.polarsys.capella.core.platform.sirius.ui.handlers.CopyPathHandler;
+import org.polarsys.capella.core.platform.sirius.ui.handlers.CopyUniqueIdentifierHandler;
 import org.polarsys.capella.core.platform.sirius.ui.handlers.DeleteHandler;
 import org.polarsys.capella.core.sirius.ui.handlers.CopyTextHandler;
-import org.polarsys.capella.core.ui.properties.richtext.handlers.CopyAsDescriptionLinkHandler;
+import org.polarsys.capella.core.ui.properties.richtext.handlers.CopyAsHyperlinkForDescriptionHandler;
 import org.polarsys.capella.shared.id.handler.IScope;
 import org.polarsys.capella.shared.id.handler.IdManager;
 import org.polarsys.capella.test.model.ju.model.MiscModel;
@@ -54,11 +55,41 @@ public class CapellaMenusTestCase extends MiscModel {
     // PAB Structure
     String pabDiagramID = "_HY2uQekKEem8xqbBNWv2mQ";
     EObject pabDiagram = IdManager.getInstance().getEObject(pabDiagramID, scope);
+    String pabDiagramText = "[PAB] Structure";
+
+    // PAB Structure2
+    String pabDiagramID2 = "_IdZcUH-AEeuYvtZOEmS6hg";
+    EObject pabDiagram2 = IdManager.getInstance().getEObject(pabDiagramID2, scope);
+    String pabDiagram2Text = "[PAB] Structure 2";
+
+    // SF1
+    String sf1ID = "e543b7f1-618e-45a3-b73c-4876f14e72e0";
+    EObject sf1 = IdManager.getInstance().getEObject(sf1ID, scope);
+
+    // EI1
+    String ei1ID = "9e0e8188-0b84-49fa-8cd2-0c84cbe5b1f6";
+    EObject ei1 = IdManager.getInstance().getEObject(ei1ID, scope);
+
     assertTrue(pabDiagram instanceof DRepresentationDescriptor);
-    testDiagramMenus(pabDiagramID, (DRepresentationDescriptor) pabDiagram);
     
+    // Test copy Unique Identifier on representations
+    testCopyAsUniqueIdentifier(new Object[] { pabDiagram }, pabDiagramID);
+    testCopyAsUniqueIdentifier(new Object[] { pabDiagram, pabDiagram2 },
+        pabDiagramID + ICommonConstants.LINE_SEPARATOR + pabDiagramID2);
+
+    // Test copy Unique Identifier on modelElements
+    testCopyAsUniqueIdentifier(new Object[] { sf1 }, sf1ID);
+    testCopyAsUniqueIdentifier(new Object[] { sf1, ei1 }, sf1ID + ICommonConstants.LINE_SEPARATOR + ei1ID);
+
     testCopyAsTextNumericValue(5);
     testCopyAsTextNumericValue(5, 8, 9);
+
+    // Test copy as text on representations
+    testCopyAsText(new Object[] { pabDiagram }, pabDiagramText);
+    testCopyAsText(new Object[] { pabDiagram, pabDiagram2 },
+        pabDiagramText + ICommonConstants.LINE_SEPARATOR + pabDiagram2Text);
+
+    testDiagramMenus(pabDiagramID, (DRepresentationDescriptor) pabDiagram);
   }
   
   protected void init() {
@@ -69,15 +100,15 @@ public class CapellaMenusTestCase extends MiscModel {
   protected void testMenus(String selectedElementId, EObject selectedElement) {
     testDeleteCommand(selectedElementId, selectedElement);
     testCopyQualifiedNameCommand(selectedElement);
-    testCopyAsDescriptionLinkCommand(selectedElement);
+    testCopyAsHyperlinkForDescriptionCommand(selectedElement);
     testCopyAsTextCommand(selectedElement);
   }
   
   protected void testDiagramMenus(String selectedElementId, DRepresentationDescriptor selectedElement) {
-    testDeleteCommand(selectedElementId, selectedElement);
-    testCopyAsDescriptionLinkCommand(selectedElement);
+    testCopyAsHyperlinkForDescriptionCommand(selectedElement);
     testCopyAsTextCommand(selectedElement);
     testCopyAsTextValue(selectedElement, selectedElement.getName());
+    testDeleteCommand(selectedElementId, selectedElement);
   }
   
   protected void testDeleteCommand(String selectedElementId, EObject selectedElement) {
@@ -108,9 +139,9 @@ public class CapellaMenusTestCase extends MiscModel {
     }
   }
   
-  protected void testCopyAsDescriptionLinkCommand(EObject selectedElement) {
+  protected void testCopyAsHyperlinkForDescriptionCommand(EObject selectedElement) {
     try {
-      new CopyAsDescriptionLinkHandler().execute(createExecutionEvent(selectedElement));
+      new CopyAsHyperlinkForDescriptionHandler().execute(createExecutionEvent(selectedElement));
     } catch (ExecutionException e) {
     }
   }
@@ -125,12 +156,26 @@ public class CapellaMenusTestCase extends MiscModel {
   protected void testCopyAsTextValue(EObject selectedElement, String checkLabel) {
     assertTrue("Copied label should be: " + checkLabel, checkLabel.equals(getCopyAsText(selectedElement)));
   }
+
+  protected void testCopyAsText(Object[] selectedElements, String checkLabel) {
+    assertTrue("Copied label should be: " + checkLabel, checkLabel.equals(getCopyAsText(selectedElements)));
+  }
   
   protected void testCopyAsTextNumericValue(Integer... values) {
     Object[] wrappers = Arrays.stream(values).map(value -> new PrimitiveWrapper(value)).toArray();
     String valuesStr = Arrays.stream(values).map(value -> String.valueOf(value))
         .collect(Collectors.joining(ICommonConstants.LINE_SEPARATOR));
     assertEquals(valuesStr, getCopyAsText(wrappers));
+  }
+
+  protected void testCopyAsUniqueIdentifier(Object[] elements, String expected) {
+    assertEquals(expected, getCopyAsUniqueIdentifier(elements));
+  }
+
+  private String getCopyAsUniqueIdentifier(Object... values) {
+    ExecutionEvent event = createExecutionEvent(values);
+    String result = new CopyUniqueIdentifierHandler().getSelectionAsText(event);
+    return result;
   }
 
   private String getCopyAsText(Object... values) {
