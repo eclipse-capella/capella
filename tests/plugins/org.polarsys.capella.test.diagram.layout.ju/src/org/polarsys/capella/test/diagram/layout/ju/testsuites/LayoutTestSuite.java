@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.polarsys.capella.test.diagram.layout.ju.testcases.CopyPasteLayout;
+import org.polarsys.capella.test.diagram.layout.ju.testcases.CopyPasteLayoutFunctionalChains;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 
@@ -37,6 +38,7 @@ public class LayoutTestSuite extends BasicTestSuite {
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
     tests.add(new CopyPasteLayout());
+    tests.add(new CopyPasteLayoutFunctionalChains());
     return tests;
   }
 

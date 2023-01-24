@@ -525,7 +525,8 @@ public interface IMappingNameConstants {
   String FCD_CONTROL_NODE__MAPPING_NAME = "FC_ControlNode";
   String FCD_SEQUENCE_LINK__MAPPING_NAME = "FC_SequenceLink";
   String FCD_ASSOCIATION_LINK__MAPPING_NAME = "FC_SequenceLink_InvolvementLink";
-
+  String FCD_CHAIN_REFERENCE_CHAIN__MAPPING_NAME = "FC_FunctionalChainStacked";
+  
   // PhysicalPathDescription
   String PPD_PHYSICAL_LINK__MAPPING_NAME = "PPD_PhysicalLink";
   String PPD_PHYSICAL_PATH__MAPPING_NAME = "PPD_PhysicalPath";

@@ -166,7 +166,6 @@ public class DiagramHelper {
     preferenceStore.setValue(SiriusDiagramUiPreferencesKeys.PREF_PASTE_MODE_ABSOLUTE.name(), absolute);
   }
   
-
   /**
    * Return the DRepresention with the given name, null otherwise
    * 
@@ -625,13 +624,6 @@ public class DiagramHelper {
     action.init();
     action.run();
     GuiActions.flushASyncGuiThread();
-
-    // Bug sirius: Copy Paste Layout doesn't take border size into account
-    // It requires a second paste
-    action.init();
-    action.run();
-    GuiActions.flushASyncGuiThread();
-
   }
 
   /**

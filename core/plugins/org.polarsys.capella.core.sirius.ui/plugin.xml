@@ -74,6 +74,9 @@
       <keysProvider
             class="org.polarsys.capella.core.sirius.ui.copyformat.keyproviders.TraceabilityKeyProvider">
       </keysProvider>
+      <keysProvider
+            class="org.polarsys.capella.core.sirius.ui.copyformat.keyproviders.InvolvementKeyProvider">
+      </keysProvider>
    </extension>
    
    <extension
