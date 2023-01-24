@@ -5,6 +5,8 @@
 
 The Fast Linker View enables to create links between elements of the opened Capella Model.
 
+Fast Linker capabilities are disabled by default, in order to enable them, please refer to [[../help/topic/org.polarsys.capella.doc/html/Filtering%20of%20Capella%20Capabilities/Filtering%20of%20Capella%20Capabilities.html|Capella Capabilities]] <span class="github-link">[[../../../org.polarsys.capella.doc/Filtering of Capella Capabilities/Filtering of Capella Capabilities.mediawiki|(online documentation)]]</span> 
+
 
 [[Image:Images/4.11.%20FastLinker_html_m2597ecec.png|322x271px]]
 
