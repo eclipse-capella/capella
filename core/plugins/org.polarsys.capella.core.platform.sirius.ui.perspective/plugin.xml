@@ -246,11 +246,10 @@
       
       
        <activity
-             name="Expert Properties"
+             name="Expert/Semantic Properties"
              id="org.polarsys.capella.activities.expert.properties"
-             description="Allows the edition of model element properties through Expert Property View">
+             description="Allows the edition of model element properties through Expert Property View and Semantic Property View for diagram elements">
        </activity>
-       <defaultEnablement id="org.polarsys.capella.activities.expert.properties"/>
         <categoryActivityBinding
              activityId="org.polarsys.capella.activities.expert.properties"
              categoryId="org.polarsys.capella.activities.categories.advanced">

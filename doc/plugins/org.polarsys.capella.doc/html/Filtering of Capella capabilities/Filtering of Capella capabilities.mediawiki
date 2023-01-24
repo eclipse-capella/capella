@@ -2,7 +2,7 @@
 
 ==Deactivating Capella capabilities via the Capabilities preference page==
 Capabilities allow us to enable or disable certain components of Capella product. Some categories of Capella functionalities have been predefined in the Capabilities preference page are:
-* '''Capella Advanced Modeling''' includes functionalities for advanced users, for instance the Expert property view
+* '''Capella Advanced Modeling''' includes functionalities for advanced users, for instance the Expert property view (this view is disabled by default, to be used with extreme caution).
 * '''Capella Concepts''' includes functionalities concerning Capella System Engineering concepts, for instance the behavior component concept
 * '''Capella Phases''' includes functionalities available in different Capella phases, for instance the Operational Analysis phase.
 * '''Capella Tools''' includes various Capella tools, for instance the Transitions tool

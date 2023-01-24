@@ -35,6 +35,8 @@ Capella editors contain 4 sections: semantic properties, description, extensions
 
 This section displays the most important semantic information about the current element. It also allows defining relationships between elements.
 
+disabled by default, please refer to [[../help/topic/org.polarsys.capella.doc/html/Filtering%20of%20Capella%20Capabilities/Filtering%20of%20Capella%20Capabilities.html|Capella Capabilities]] <span class="github-link">[[../../../org.polarsys.capella.doc/Filtering of Capella Capabilities/Filtering of Capella Capabilities.mediawiki|(online documentation)]]</span>  
+
 
 [[Image:Images/4.06_Properties_View3.png|600x300px]]
 
