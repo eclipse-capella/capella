@@ -684,6 +684,10 @@ public class FunctionalChainServices {
 
     return numberOfVisibleRelatedFEEdges == functionalExchangesOnTheChain.size();
   }
+  
+  public boolean isFCRegion(EObject view) {
+    return view instanceof AbstractDNode && IMappingNameConstants.FCD_CHAIN_REFERENCE_CHAIN__MAPPING_NAME.equals(((AbstractDNode) view).getDiagramElementMapping().getName());
+  }
 
   public String getFCInvolvmentLinkLabel(FunctionalChainInvolvementLink involvementLink, DDiagram diagram) {
     String label = "";
