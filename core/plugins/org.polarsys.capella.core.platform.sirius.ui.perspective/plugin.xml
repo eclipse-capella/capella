@@ -287,9 +287,6 @@
 
       <activity id="org.polarsys.capella.activities.fastLinker" name="Fast Linker" 
                 description="Concepts related to the Fast Linker Tool" />
-      <defaultEnablement
-            id="org.polarsys.capella.activities.fastLinker">
-      </defaultEnablement>
       <categoryActivityBinding
             activityId="org.polarsys.capella.activities.fastLinker"
             categoryId="org.polarsys.capella.activities.categories.capella">
