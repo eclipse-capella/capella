@@ -116,6 +116,23 @@ Elements will be copied into the library and become a REC and initial selected e
 
 '''This feature is not available yet '''
 
+== Selecting all related Elements of a given REC on a diagram ==
 
+It is possible to select all elements of a given REC that are displayed on a diagram.
 
+To do so, select a source element from the REC, right click "Capella Select > Related Rec Elements > REC"
+This will set the current selection to all this REC source elements, that are displayed on the diagram
+
+[[Image:Images/select_related_rec.png]]
+
+== Selecting all related Elements of a given RPL on a diagram ==
+
+It is possible to select all elements of a given RPL that are displayed on a diagram.
+
+To do so, select an element from the RPL, right click "Capella Select > Related Rpl Elements > RPL"
+This will set the current selection to all this RPL elements, that are displayed on the diagram
+
+This is particularly useful to copy/paste a layout from a REC to its RPLs
+
+[[Image:Images/select_related_rpl.png]]
 
