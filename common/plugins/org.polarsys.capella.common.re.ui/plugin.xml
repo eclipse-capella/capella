@@ -649,6 +649,40 @@
                </iterate>
          </with>
       </definition>
+      <definition
+            id="org.polarsys.capella.common.re.ui.isValidReferencedRecMenu">
+         <with
+               variable="activeMenuSelection">
+            <iterate
+                  ifEmpty="false">
+               <test
+                     property="org.polarsys.capella.common.re.ui.isValidRecRplTarget">
+               </test>
+            </iterate>
+            <and>
+               <test
+                     property="org.polarsys.capella.common.re.ui.hasRelatedRecElements">
+               </test>
+            </and>
+         </with>
+      </definition>
+      <definition
+            id="org.polarsys.capella.common.re.ui.isValidReferencedRplMenu">
+         <with
+               variable="activeMenuSelection">
+            <iterate
+                  ifEmpty="false">
+               <test
+                     property="org.polarsys.capella.common.re.ui.isValidRecRplTarget">
+               </test>
+            </iterate>
+            <and>
+               <test
+                     property="org.polarsys.capella.common.re.ui.hasRelatedRplElements">
+               </test>
+            </and>
+         </with>
+      </definition>
    </extension>
       
    <extension point="org.eclipse.ui.menus">
@@ -1022,6 +1056,54 @@
             properties="isValidRecRplTarget"
             type="java.lang.Object">
       </propertyTester>
+      <propertyTester
+            class="org.polarsys.capella.common.re.ui.testers.ValidRecRelatedElementMenuTargetTester"
+            id="org.polarsys.capella.common.re.ui.ValidRecRelatedElementMenuTarget"
+            namespace="org.polarsys.capella.common.re.ui"
+            properties="hasRelatedRecElements"
+            type="java.lang.Object">
+      </propertyTester>
+      <propertyTester
+            class="org.polarsys.capella.common.re.ui.testers.ValidRplRelatedElementMenuTargetTester"
+            id="org.polarsys.capella.common.re.ui.ValidRplRelatedElementMenuTarget"
+            namespace="org.polarsys.capella.common.re.ui"
+            properties="hasRelatedRplElements"
+            type="java.lang.Object">
+      </propertyTester>
+   </extension>       
+   <extension point="org.eclipse.ui.menus">
+    <menuContribution
+                locationURI="popup:BusinessSelectMenuSirius">
+                <menu id="org.polarsys.capella.common.re.ui.related.rec.elements" label="Related REC Elements">
+                   <visibleWhen
+                         checkEnabled="false">
+                      <reference
+                            definitionId="org.polarsys.capella.common.re.ui.isValidReferencedRecMenu">
+                      </reference>
+                   </visibleWhen>
+                </menu>
+            	<menu id="org.polarsys.capella.common.re.ui.related.rpl.elements" label="Related RPL Elements">
+                <visibleWhen
+                      checkEnabled="false">
+                   <reference
+                         definitionId="org.polarsys.capella.common.re.ui.isValidReferencedRplMenu">
+                   </reference>
+                </visibleWhen>
+                </menu>
+     </menuContribution>
+        <menuContribution
+                locationURI="popup:org.polarsys.capella.common.re.ui.related.rec.elements">
+                <dynamic
+			              class="org.polarsys.capella.common.re.ui.menu.RecDynamicMenu"
+			              id="org.polarsys.capella.common.re.ui.related.rec.elements.dynamic">
+			    </dynamic>
+      </menuContribution>
+        <menuContribution
+              locationURI="popup:org.polarsys.capella.common.re.ui.related.rpl.elements">
+           <dynamic
+                 class="org.polarsys.capella.common.re.ui.menu.RplDynamicMenu"
+                 id="org.polarsys.capella.common.re.ui.related.rpl.elements.dynamic">
+           </dynamic>
+        </menuContribution>  
    </extension>
-   
 </plugin>

@@ -21,7 +21,9 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.common.flexibility.wizards,
  org.polarsys.capella.core.diagram.helpers,
  org.polarsys.capella.core.platform.sirius.clipboard,
- org.eclipse.sirius.diagram
+ org.eclipse.sirius.diagram,
+ org.polarsys.capella.core.model.handler,
+ org.polarsys.capella.core.platform.sirius.ui.navigator
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.common.re.ui,
@@ -32,6 +34,7 @@ Export-Package: org.polarsys.capella.common.re.ui,
  org.polarsys.capella.common.re.ui.handlers.options,
  org.polarsys.capella.common.re.ui.handlers.scope,
  org.polarsys.capella.common.re.ui.handlers.uihead,
+ org.polarsys.capella.common.re.ui.menu,
  org.polarsys.capella.common.re.ui.queries,
  org.polarsys.capella.common.re.ui.renderers,
  org.polarsys.capella.common.re.ui.subcommands.handlers,

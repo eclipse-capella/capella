@@ -91,6 +91,122 @@
 				</div>
 			</div>
 		</p>
+		<h2 id="Copy.2FPaste_Layout_and_Style">Copy/Paste Layout and Style</h2>
+		<p>Layout and style can also be copy-pasted using a different facility, which can be found in contextual menu "Edit" and in the toolbar at the top of the diagram editor</p>
+		<p>
+			<div class="thumb">
+				<div class="thumbinner">
+					<a href="../../Images/copy_paste_layout_1.png" class="image">
+						<img class="thumbimage" border="0" src="../../Images/copy_paste_layout_1.png"/>
+					</a>
+				</div>
+			</div>
+
+			<div class="thumb">
+				<div class="thumbinner">
+					<a href="../../Images/copy_paste_layout_2.png" class="image">
+						<img class="thumbimage" border="0" src="../../Images/copy_paste_layout_2.png"/>
+					</a>
+				</div>
+			</div>
+		</p>
+		<p>2 selection modes exist for both copy and paste: Global copy, Selection copy, global paste, paste on selection</p>
+		<p>
+			<b>Global copy</b>
+		</p>
+		<p>Layout of all elements on a diagram can be copied at once, either right-clicking the diagram's background &gt; Edit &gt; Copy format, or clicking "Copy the format of the whole diagram"</p>
+		<p>
+			<div class="thumb">
+				<div class="thumbinner">
+					<a href="../../Images/copy_paste_layout_3.png" class="image">
+						<img class="thumbimage" border="0" src="../../Images/copy_paste_layout_3.png"/>
+					</a>
+				</div>
+			</div>
+		</p>
+		<p>
+			<b>Copy based on selection</b>
+		</p>
+		<p>Format can be copied from a selection of elements, either right-clicking the selection &gt; Edit &gt; copy format, or clicking "Copy the format of the selected diagram elements"</p>
+		<p>
+			<div class="thumb">
+				<div class="thumbinner">
+					<a href="../../Images/copy_paste_layout_4.png" class="image">
+						<img class="thumbimage" border="0" src="../../Images/copy_paste_layout_4.png"/>
+					</a>
+				</div>
+			</div>
+		</p>
+		<p>Format data is associated with the semantic element, so that when pasting, any matching element in the target selection will have its format modified to the copied format.</p>
+		<p>
+			<b>Global paste</b>
+		</p>
+		<p>Format (both Style and Layout) can be pasted directly on a diagram, either right-clicking the diagram's background &gt; Edit &gt; Paste format, or clicking "Paste the current recorded format (layout and style) to the selected diagram"</p>
+		<p>
+			<div class="thumb">
+				<div class="thumbinner">
+					<a href="../../Images/copy_paste_layout_5.png" class="image">
+						<img class="thumbimage" border="0" src="../../Images/copy_paste_layout_5.png"/>
+					</a>
+				</div>
+			</div>
+		</p>
+		<p>However, if a semantic element is displayed multiple times, the paste might not be accurate, and may cause these multiple occurrences to be overlapped. To overcome this issue, we recommend to use multiple copy/paste on a fragmented selection instead (See examples)</p>
+		<p>Style or layout can also be pasted separately, using Edit &gt; Paste Style , or Edit &gt; Paste Layout</p>
+		<p>
+			<b>Paste on selection</b>
+		</p>
+		<p>Format can also be pasted on a selection of elements, either right-clicking the diagram's background &gt; Edit &gt; Paste format, or clicking "Paste the current recorded format (layout and style) to the selected elements"</p>
+		<p>
+			<div class="thumb">
+				<div class="thumbinner">
+					<a href="../../Images/copy_paste_layout_6.png" class="image">
+						<img class="thumbimage" border="0" src="../../Images/copy_paste_layout_6.png"/>
+					</a>
+				</div>
+			</div>
+		</p>
+		<p>As explained, a copy paste action may not properly work on a selection of elements that contains several times the same element.
+			This may however be achieved by splitting your original copy paste action into multiple ones, so that the format of each occurrence is properly copy-pasted</p>
+		<p>Accelerators exist to ease this process, such as Select &gt; Related RPL elements, or Select &gt; Related REC elements 
+			They significantly help copy pasting between REC and RPLs, by copying the format of a REC and applying it to each RPL independently.</p>
+		<p>
+			<div class="thumb">
+				<div class="thumbinner">
+					<a href="../../Images/select_related_rec.png" class="image">
+						<img class="thumbimage" border="0" src="../../Images/select_related_rec.png"/>
+					</a>
+				</div>
+			</div>
+		</p>
+		<p>
+			<div class="thumb">
+				<div class="thumbinner">
+					<a href="../../Images/select_related_rpl.png" class="image">
+						<img class="thumbimage" border="0" src="../../Images/select_related_rpl.png"/>
+					</a>
+				</div>
+			</div>
+		</p>
+		<p>On top of the different types of selection, the Paste actions provides two coordinates modes : Absolute and Relative</p>
+		<p>
+			<div class="thumb">
+				<div class="thumbinner">
+					<a href="../../Images/copy_paste_layout_7.png" class="image">
+						<img class="thumbimage" border="0" src="../../Images/copy_paste_layout_7.png"/>
+					</a>
+				</div>
+			</div>
+		</p>
+		<p>
+			<b>Absolute mode</b>
+		</p>
+		<p>When pasting, the matching elements' new coordinates will be the same as the source coordinates</p>
+		<p>
+			<b>Optimized locations by group (Relative)</b>
+		</p>
+		<p>When pasting, the matching elements' new coordinates will be calculated to be relative to the target group of parents
+			This lets you paste format in elements that are contained in other</p>
 		<h2 id="Straighten_to_top">Straighten to top</h2>
 		<p>You can align connectors between two components by selecting them (right-to-left selection) and use the "Straighten" tool:</p>
 		<p>

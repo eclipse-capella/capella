@@ -12,18 +12,24 @@
  *******************************************************************************/
 package org.polarsys.capella.test.diagram.common.ju.context;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.expressions.EvaluationContext;
 import org.eclipse.core.expressions.IEvaluationContext;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
+import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -35,7 +41,12 @@ import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.ui.ISources;
+import org.eclipse.ui.PlatformUI;
+import org.polarsys.capella.common.re.CatalogElement;
+import org.polarsys.capella.common.re.ui.menu.RecDynamicMenu;
+import org.polarsys.capella.common.re.ui.menu.RplDynamicMenu;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.ShowInDiagramAction;
 import org.polarsys.capella.core.sirius.analysis.DiagramServices;
 import org.polarsys.capella.core.sirius.analysis.constants.IDNDToolNameConstants;
 import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
@@ -216,6 +227,85 @@ public class CommonDiagram extends DiagramContext {
       }
     };
     assertSelectionWorked(event, handler);
+  }
+  
+  public void selectRelatedRecs(String initialElement, String... expectedSelection) {
+
+    // Get edit part from initial selected Semantic element
+    DSemanticDecorator decorator = getView(initialElement);
+    EditPart editPart = DiagramServices.getDiagramServices().getEditPart((DDiagramElement) decorator);
+
+    // Collect available RECs if any, on that element
+    Collection<CatalogElement> commonRecs = RecDynamicMenu.getCommonRecs(new StructuredSelection(editPart));
+    assertNotNull(commonRecs);
+    if (expectedSelection != null && expectedSelection.length != 0) {
+      // Get the referenced elements of the first REC available
+      // In our test model there is only one
+      CatalogElement commonRec = commonRecs.iterator().next();
+      EList<EObject> refs = commonRec.getReferencedElements();
+      
+      // Run the ShowInDiagramAction
+      ShowInDiagramAction action = new ShowInDiagramAction();
+      action.selectionChanged(new StructuredSelection(refs));
+      action.run();
+
+      // Get the selection set after the the action is ran, this ensure that we've filtered out all items that are not
+      // displayed
+      IStructuredSelection selec = (IStructuredSelection) PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+          .getActivePage().getSelection();
+      
+      // Collect Semantic elements from selection
+      List<Object> selectedElements = ((List<Object>) selec.toList()).stream().map(EditPart.class::cast)
+          .map(elem -> elem.getModel())
+          .map(View.class::cast).map(view -> view.getElement()).map(DDiagramElement.class::cast)
+          .map(diagramElement -> diagramElement.getTarget()).collect(Collectors.toList());
+
+      List<EObject> expectedElements = Arrays.stream(expectedSelection).map(sel -> getView(sel))
+          .map(view -> view.getTarget()).collect(Collectors.toList());
+      if (!(selectedElements.size() == expectedElements.size() && selectedElements.containsAll(expectedElements))) {
+        fail("Selection didn't correspond to expected selection");
+      }
+
+    }
+  }
+
+  public void selectRelatedRpls(String initialElement, String... expectedSelection) {
+    // Get edit part from initial selected Semantic element
+    DSemanticDecorator decorator = getView(initialElement);
+    EditPart editPart = DiagramServices.getDiagramServices().getEditPart((DDiagramElement) decorator);
+
+    // Collect available RECs if any, on that element
+    Collection<CatalogElement> commonRpls = RplDynamicMenu.getCommonRpls(new StructuredSelection(editPart));
+    assertNotNull(commonRpls);
+    if (expectedSelection != null && expectedSelection.length != 0) {
+      // Get the referenced elements of the first REC available
+      // In our test model there is only one
+      CatalogElement commonRpl = commonRpls.iterator().next();
+      EList<EObject> refs = commonRpl.getReferencedElements();
+
+      // Run the ShowInDiagramAction
+      ShowInDiagramAction action = new ShowInDiagramAction();
+      action.selectionChanged(new StructuredSelection(refs));
+      action.run();
+
+      // Get the selection set after the the action is ran, this ensure that we've filtered out all items that are not
+      // displayed
+      IStructuredSelection selec = (IStructuredSelection) PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+          .getActivePage().getSelection();
+
+      // Collect Semantic elements from selection
+      List<Object> selectedElements = ((List<Object>) selec.toList()).stream().map(EditPart.class::cast)
+          .map(elem -> elem.getModel()).map(View.class::cast).map(view -> view.getElement())
+          .map(DDiagramElement.class::cast).map(diagramElement -> diagramElement.getTarget())
+          .collect(Collectors.toList());
+
+      List<EObject> expectedElements = Arrays.stream(expectedSelection).map(sel -> getView(sel))
+          .map(view -> view.getTarget()).collect(Collectors.toList());
+      if (!(selectedElements.size() == expectedElements.size() && selectedElements.containsAll(expectedElements))) {
+        fail("Selection didn't correspond to expected selection");
+      }
+
+    }
   }
 
   public void selectOwnedPorts(String initialElement) {

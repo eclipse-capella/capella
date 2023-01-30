@@ -4,13 +4,19 @@ In order to '''facilitate the layout set up of elements on diagrams''', some Dia
 
 ==Elements Alignment==
 
-If you select several elements, you can align them on the right, middle, left, top...
+If you select at least two elements, you can align them on the right, middle, left, top...
 
 [[Image:../../Images/Tips20.png]]
 
+This can also be achieved on edge labels, however for it to work, you need to select the labels (and not the edges)
+
+[[Image:../../Images/align_examples.png]]
+
 ==Elements Distribution==
 
-If you select several elements, you can distribute them vertically, horizontally (i.e ensure that there is a gap of the same size between each element in the chosen direction).
+If you select at least 3 elements, you can distribute them vertically, horizontally (i.e ensure that there is a gap of the same size between each element in the chosen direction).
+
+This can also be achieved on edge labels, however for it to work, you need to select the labels (and not the edges)
 
 [[Image:../../Images/Tips21.png]]
 
