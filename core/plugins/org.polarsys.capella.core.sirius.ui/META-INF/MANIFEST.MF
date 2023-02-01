@@ -31,7 +31,8 @@ Require-Bundle: org.eclipse.ui.ide,
  org.eclipse.sirius.diagram.formatdata,
  org.polarsys.capella.common.tools.report.appenders.usage;visibility:=reexport,
  org.polarsys.capella.core.sirius.analysis,
- org.polarsys.capella.core.commandline.core.ui
+ org.polarsys.capella.core.commandline.core.ui,
+ org.eclipse.core.expressions
 Export-Package: org.polarsys.capella.core.sirius.ui,
  org.polarsys.capella.core.sirius.ui.actions,
  org.polarsys.capella.core.sirius.ui.closeproject,
@@ -47,6 +48,7 @@ Export-Package: org.polarsys.capella.core.sirius.ui,
  org.polarsys.capella.core.sirius.ui.refactoring,
  org.polarsys.capella.core.sirius.ui.runnable,
  org.polarsys.capella.core.sirius.ui.session,
+ org.polarsys.capella.core.sirius.ui.testers,
  org.polarsys.capella.core.sirius.ui.wizard
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.polarsys.capella.core.sirius.ui.SiriusUIPlugin

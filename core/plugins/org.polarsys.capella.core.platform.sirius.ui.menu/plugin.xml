@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2021 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2023 THALES GLOBAL SERVICES.
   
   This program and the accompanying materials are made available under the
   terms of the Eclipse Public License 2.0 which is available at
@@ -279,7 +279,7 @@
        <menuContribution
                 locationURI="popup:org.eclipse.ui.popup.any?after=group.transition">
          <menu 
-             id="org.polarsys.capella.core.transitions" label="%transitionGroup_label">
+             id="org.polarsys.capella.core.transitions" label="%transitionGroup_label" icon ="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"> 
              
              <menu id="capella.project.explorer.menu.transitions.diagram.preferences" label="Legacy Transitions Commands">
              </menu>
@@ -292,7 +292,7 @@
             locationURI="popup:org.eclipse.ui.popup.any?after=group.wizard">
             
          <menu
-               id="org.polarsys.capella.core.wizards"  label="%wizardGroup_label">
+               id="org.polarsys.capella.core.wizards"  label="%wizardGroup_label" icon ="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_edit.gif">
                
               <menu id="org.polarsys.capella.core.semantic.browser.wizards" label="Legacy Wizards Commands">
               </menu>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2021 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2023 THALES GLOBAL SERVICES.
   
   This program and the accompanying materials are made available under the
   terms of the Eclipse Public License 2.0 which is available at
@@ -180,7 +180,26 @@
             id="org.polarsys.capella.core.sirius.ui.copyAsText"
             name="%command.copyAsText">
       </command>
+       <command
+            defaultHandler="org.polarsys.capella.core.sirius.ui.handlers.CreateFunctionalChainActionHandler"
+            description="Create Functional Chain"
+            id="org.polarsys.capella.core.sirius.ui.actions.CreateFunctionalChainAction"
+            name="Create a Functional Chain">
+      </command>
       
+      <command
+            defaultHandler="org.polarsys.capella.core.sirius.ui.handlers.CreateFunctionalChainActionHandler"
+            description="Create Operational Process"
+            id="org.polarsys.capella.core.sirius.ui.actions.CreateOperationalProcessAction"
+            name="Create an Operational Process">
+      </command>
+      
+      <command
+            defaultHandler="org.polarsys.capella.core.sirius.ui.handlers.CreatePhysicalPathActionHandler"
+            description="Create Physical Path"
+            id="org.polarsys.capella.core.sirius.ui.actions.CreatePhysicalPathAction"
+            name="Create a Physical Path">
+      </command>
    </extension>
    
    
@@ -284,5 +303,107 @@
             icon="icons/viewpoint.gif">
       </image>
    </extension>
+      <extension
+         point="org.eclipse.core.expressions.definitions">
+         <definition
+            id="org.polarsys.capella.core.sirius.ui.menu.fc.isValidFCMenu">
+            <with
+               variable="activeMenuSelection">
+                <test
+                            property="org.polarsys.capella.core.sirius.ui.menu.fc.isValidFCMenuTarget">
+                 </test>
+                 </with>
+      </definition>
+       <definition
+            id="org.polarsys.capella.core.sirius.ui.menu.op.isValidOPMenu">
+            <with
+               variable="activeMenuSelection">
+                <test
+                            property="org.polarsys.capella.core.sirius.ui.menu.op.isValidOPMenuTarget">
+                 </test>
+                 </with>
+      </definition>
+      <definition
+            id="org.polarsys.capella.core.sirius.ui.menu.pp.isValidPPMenu">
+            <with
+               variable="activeMenuSelection">
+                <test
+                            property="org.polarsys.capella.core.sirius.ui.menu.pp.isValidPPMenuTarget">
+                 </test>
+                 </with>
+      </definition>
+      <definition
+            id="org.polarsys.capella.core.sirius.ui.menu.categories.isValidCECategoryMenu">
+            <with
+               variable="activeMenuSelection">
+                <test
+                            property="org.polarsys.capella.core.sirius.ui.menu.categories.isValidCECategoryMenuTarget">
+                 </test>
+                 </with>
+      </definition>
+       <definition
+            id="org.polarsys.capella.core.sirius.ui.menu.categories.isValidFECategoryMenu">
+            <with
+               variable="activeMenuSelection">
+                <test
+                            property="org.polarsys.capella.core.sirius.ui.menu.categories.isValidFECategoryMenuTarget">
+                 </test>
+                 </with>
+      </definition>
+       <definition
+            id="org.polarsys.capella.core.sirius.ui.menu.categories.isValidPLCategoryMenu">
+            <with
+               variable="activeMenuSelection">
+                <test
+                            property="org.polarsys.capella.core.sirius.ui.menu.categories.isValidPLCategoryMenuTarget">
+                 </test>
+                 </with>
+      </definition>
+   </extension>
+      <extension
+         point="org.eclipse.core.expressions.propertyTesters">
+      <propertyTester
+            class="org.polarsys.capella.core.sirius.ui.testers.ValidFCMenuTargetTester"
+            id="org.polarsys.capella.core.sirius.ui.menu.fc.isValidFCMenuTargetTester"
+            namespace="org.polarsys.capella.core.sirius.ui.menu.fc"
+            properties="isValidFCMenuTarget"
+            type="java.lang.Object">
+      </propertyTester>
+      <propertyTester
+            class="org.polarsys.capella.core.sirius.ui.testers.ValidOPMenuTargetTester"
+            id="org.polarsys.capella.core.sirius.ui.menu.op.isValidOPMenuTargetTester"
+            namespace="org.polarsys.capella.core.sirius.ui.menu.op"
+            properties="isValidOPMenuTarget"
+            type="java.lang.Object">
+      </propertyTester>
+      <propertyTester
+            class="org.polarsys.capella.core.sirius.ui.testers.ValidPPMenuTargetTester"
+            id="org.polarsys.capella.core.sirius.ui.menu.pp.isValidPPMenuTargetTester"
+            namespace="org.polarsys.capella.core.sirius.ui.menu.pp"
+            properties="isValidPPMenuTarget"
+            type="java.lang.Object">
+      </propertyTester>
+       <propertyTester
+            class="org.polarsys.capella.core.sirius.ui.testers.ValidCECategoryMenuTargetTester"
+            id="org.polarsys.capella.core.sirius.ui.menu.categories.isValidCECategoryMenuTargetTester"
+            namespace="org.polarsys.capella.core.sirius.ui.menu.categories"
+            properties="isValidCECategoryMenuTarget"
+            type="java.lang.Object">
+      </propertyTester>
+      <propertyTester
+            class="org.polarsys.capella.core.sirius.ui.testers.ValidFECategoryMenuTargetTester"
+            id="org.polarsys.capella.core.sirius.ui.menu.categories.isValidFECategoryMenuTargetTester"
+            namespace="org.polarsys.capella.core.sirius.ui.menu.categories"
+            properties="isValidFECategoryMenuTarget"
+            type="java.lang.Object">
+      </propertyTester>
+      <propertyTester
+            class="org.polarsys.capella.core.sirius.ui.testers.ValidPLCategoryMenuTargetTester"
+            id="org.polarsys.capella.core.sirius.ui.menu.categories.isValidPLCategoryMenuTargetTester"
+            namespace="org.polarsys.capella.core.sirius.ui.menu.categories"
+            properties="isValidPLCategoryMenuTarget"
+            type="java.lang.Object">
+      </propertyTester>
+      </extension>
    
 </plugin>

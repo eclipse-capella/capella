@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2023 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -12,14 +12,24 @@
  *******************************************************************************/
 package org.polarsys.capella.test.diagram.common.ju.context;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.eclipse.core.commands.ExecutionEvent;
+import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gef.EditPart;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.junit.Assert;
 import org.polarsys.capella.common.data.activity.AbstractAction;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
@@ -38,10 +48,12 @@ import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.pa.PaPackage;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt.Type;
+import org.polarsys.capella.core.sirius.analysis.DiagramServices;
 import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 import org.polarsys.capella.core.sirius.analysis.constants.IDNDToolNameConstants;
 import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
 import org.polarsys.capella.core.sirius.analysis.helpers.ToolProviderHelper;
+import org.polarsys.capella.core.sirius.ui.handlers.CreateFunctionalChainActionHandler;
 import org.polarsys.capella.test.diagram.common.ju.availableXDFBDiagramTools.XDFBCreateContainerTools;
 import org.polarsys.capella.test.diagram.common.ju.availableXDFBDiagramTools.XDFBCreateEdgeTools;
 import org.polarsys.capella.test.diagram.common.ju.availableXDFBDiagramTools.XDFBCreateNodeTools;
@@ -51,7 +63,6 @@ import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateAbstractDNodeTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateContainerTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateDEdgeTool;
-import org.polarsys.capella.test.diagram.common.ju.step.tools.CreatePathTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.InitializationFromExistingDiagramTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.ReconnectTool;
@@ -157,11 +168,29 @@ public class XDFBDiagram extends CommonDiagram {
   // The CreatePathTool has inconsistencies in comparison to other creation tools
   // TODO fix this
   public void createFunctionalChain(String path, String... links) {
-    if (type == Type.OA) {
-      new CreatePathTool(this, IToolNameConstants.TOOL_OAIB_CREATE_OPERATIONAL_PROCESS, path, links).run();
-    } else {
-      new CreatePathTool(this, IToolNameConstants.TOOL_CREATE_FUNCTIONAL_CHAIN, path, links).run();
+    List<DSemanticDecorator> decorators = Arrays.stream(links).map(string -> getView(string))
+        .collect(Collectors.toList());
+    List<EditPart> correspondingEditPart = decorators.stream()
+        .map(decorator -> DiagramServices.getDiagramServices().getEditPart((DDiagramElement) decorator))
+        .collect(Collectors.toList());
+
+    ExecutionEvent event = createExecutionEvent(correspondingEditPart);
+    CreateFunctionalChainActionHandler handler = new CreateFunctionalChainActionHandler() {
+      @Override
+      protected IStructuredSelection getSelection() {
+        StructuredSelection selection = new StructuredSelection(correspondingEditPart);
+        return selection;
+      }
+    };
+    Object result = null;
+    try {
+      result =  handler.execute(event);
+    } catch (ExecutionException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
     }
+    putView(path, (DDiagramElement) result);
+    getSessionContext().putSemanticElement(path, ((DDiagramElement) result).getTarget());
   }
 
   public void showElements(String containerId, XDFBInsertRemoveTools toolName, String... elementsToBeInsertedIds) {

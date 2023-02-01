@@ -58,8 +58,6 @@ la.ldfb.functional.exchanges
 la.ldfb.function.ports
 la.ldfb.functional.chains
 la.ldfb.switch.functional.exchanges.categories
-la.ldfb.functional.chain.menu
-la.ldfb.functional.chain
 la.ldfb.functions.from.mode.state
 la.ldfb.elements.from.scenario
 la.ldfb.functional.chain.elements
@@ -107,8 +105,6 @@ la.lab.functional.chains
 la.lab.functional.exchanges
 la.lab.function.ports
 la.lab.switch.functional.exchanges.categories
-la.lab.functional.chain.menu
-la.lab.functional.chain
 la.lab.port.allocations
 la.lab.functions.from.mode.state
 la.lab.elements.from.scenario
@@ -151,8 +147,6 @@ pa.pdfb.functional.exchanges
 pa.pdfb.function.ports
 pa.pdfb.functional.chains
 pa.pdfb.switch.functional.exchanges.categories
-pa.pdfb.functional.chain.menu
-pa.pdfb.functional.chain
 pa.pdfb.functions.from.mode.state
 pa.pdfb.elements.from.scenario
 pa.pdfb.functional.chain.elements
@@ -219,8 +213,6 @@ pa.pab.functional.chains
 pa.pab.functional.exchanges
 pa.pab.function.ports
 pa.pab.switch.functional.exchanges.categories
-pa.pab.functional.chain.menu
-pa.pab.functional.chain
 pa.pab.port.allocations
 pa.pab.functions.from.mode.state
 pa.pab.elements.from.scenario
@@ -275,8 +267,6 @@ sa.sdfb.functional.exchanges
 sa.sdfb.function.ports
 sa.sdfb.functional.chains
 sa.sdfb.switch.functional.exchanges.categories
-sa.sdfb.functional.chain.menu
-sa.sdfb.functional.chain
 sa.sdfb.functions.from.mode.state
 sa.sdfb.elements.from.scenario
 sa.sdfb.functional.chain.elements
@@ -322,8 +312,6 @@ sa.sab.functional.chains
 sa.sab.functional.exchanges
 sa.sab.function.ports
 sa.sab.switch.functional.exchanges.categories
-sa.sab.functional.chain.menu
-sa.sab.functional.chain
 sa.sab.port.allocations
 sa.sab.functions.from.mode.state
 sa.sab.elements.from.scenario
