@@ -7,6 +7,5 @@ Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Require-Bundle: org.apache.xerces,
- org.polarsys.capella.test.suites.ju
+Require-Bundle: org.polarsys.capella.test.suites.ju
 Export-Package: org.polarsys.capella.test.suite.inui.ju

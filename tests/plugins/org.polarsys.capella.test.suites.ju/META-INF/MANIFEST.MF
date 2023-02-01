@@ -7,8 +7,7 @@ Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Require-Bundle: org.apache.xerces,
- org.polarsys.capella.test.business.queries.ju;visibility:=reexport,
+Require-Bundle: org.polarsys.capella.test.business.queries.ju;visibility:=reexport,
  org.polarsys.capella.test.diagram.filters.ju;visibility:=reexport,
  org.polarsys.capella.test.diagram.tools.ju;visibility:=reexport,
  org.polarsys.capella.test.diagram.layout.ju;visibility:=reexport,
