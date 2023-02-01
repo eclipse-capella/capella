@@ -2,11 +2,9 @@
 
 To use Viewpoints, each projects must activate them by using the Viewpoint Manager view:
 
-Windows > Show View > Other... > Kitalpha > Viewpoint Manager
+Windows > Show View > Viewpoint Manager
 
-[[Image:../Images/Windows_ShowView_Other.png]]
-
-[[Image:../Images/ShowView_ViewpointManager.png]]
+[[Image:../Images/Windows_ShowView.png]]
 
 All Viewpoints installed are listed in this view:
 
