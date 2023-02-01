@@ -18,17 +18,16 @@ import java.util.stream.Collectors;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.runtime.Adapters;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.swt.dnd.Clipboard;
 import org.eclipse.swt.dnd.TextTransfer;
 import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.ui.handlers.HandlerUtil;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
+import org.polarsys.capella.shared.id.handler.IdManager;
 
 public class CopyUniqueIdentifierHandler extends AbstractHandler {
 
@@ -58,11 +57,9 @@ public class CopyUniqueIdentifierHandler extends AbstractHandler {
 
   private String getUniqueId(Object element) {
     String uniqueId = ICommonConstants.EMPTY_STRING;
-    element = Adapters.adapt(element, EObject.class);
-    if (element instanceof DRepresentationDescriptor) {
-      uniqueId = ((DRepresentationDescriptor) element).getUid();
-    } else if (element instanceof ModelElement) {
-      uniqueId = ((ModelElement) element).getId();
+    EObject object = CapellaAdapterHelper.resolveDescriptorOrBusinessObject(element);
+    if (object != null) {
+      return IdManager.getInstance().getId(object);
     }
     return uniqueId;
   }
