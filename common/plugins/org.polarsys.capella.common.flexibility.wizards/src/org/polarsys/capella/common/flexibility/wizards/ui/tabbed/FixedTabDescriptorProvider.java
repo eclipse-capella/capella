@@ -16,6 +16,7 @@ package org.polarsys.capella.common.flexibility.wizards.ui.tabbed;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.core.runtime.IConfigurationElement;
@@ -23,6 +24,8 @@ import org.eclipse.core.runtime.IExtensionPoint;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.activities.IIdentifier;
 import org.eclipse.ui.internal.views.properties.tabbed.view.TabDescriptor;
 import org.eclipse.ui.internal.views.properties.tabbed.view.TabbedPropertyRegistry;
 import org.eclipse.ui.views.properties.tabbed.AbstractTabDescriptor;
@@ -82,6 +85,27 @@ public abstract class FixedTabDescriptorProvider extends TabbedPropertyRegistry 
     }
 
     return descs.toArray(new ITabDescriptor[0]);
+  }
+
+  @Override
+  protected ITabDescriptor adaptDescriptorFor(ITabDescriptor target, IWorkbenchPart part, ISelection selection) {
+    AbstractTabDescriptor result = (AbstractTabDescriptor) ((AbstractTabDescriptor) target).clone();
+    List filteredSectionDescriptors = new ArrayList();
+    List descriptors = target.getSectionDescriptors();
+
+    for (Iterator<?> iter = descriptors.iterator(); iter.hasNext();) {
+      ISectionDescriptor descriptor = (ISectionDescriptor) iter.next();
+      if (descriptor.appliesTo(part, selection)) {
+        IIdentifier identifier = PlatformUI.getWorkbench().getActivitySupport().getActivityManager()
+            .getIdentifier(descriptor.getId());
+        if (!identifier.isEnabled()) {
+          continue;
+        }
+        filteredSectionDescriptors.add(descriptor);
+      }
+    }
+    result.setSectionDescriptors(filteredSectionDescriptors);
+    return result;
   }
 
   @Override
