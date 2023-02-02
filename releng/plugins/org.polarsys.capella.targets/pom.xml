@@ -35,10 +35,10 @@
 
 	<properties>
     	<sonar.skip>true</sonar.skip>
-		<tycho-version>2.0.0</tycho-version>
-		<tycho-extras-version>2.0.0</tycho-extras-version>
+		<tycho-version>2.7.5</tycho-version>
+		<tycho-extras-version>2.7.5</tycho-extras-version>
 		<targetPlatform.name>capella.target-definition.targetplatform</targetPlatform.name>
-		<converterApplication.name>fr.obeo.releng.targetplatform.targetPlatform.converter</converterApplication.name>
+		<converterApplication.name>org.eclipse.cbi.targetplatform.tpd.converter</converterApplication.name>
 		<targetPlatform.id>full</targetPlatform.id>
 	</properties>
 
@@ -53,18 +53,18 @@
 						<repository>
 							<id>targetplatform-tp</id>
 							<layout>p2</layout>
-							<url>http://download.eclipse.org/releases/oxygen/201709271000</url>
+							<url>https://download.eclipse.org/releases/2022-12</url>
 						</repository>
 						<repository>
 							<id>targetplatform</id>
 							<layout>p2</layout>
-							<url>http://pdulth.github.io/fr.obeo.releng.targetplatform/p2/latest</url>
+							<url>https://download.eclipse.org/cbi/updates/tpd/nightly/latest</url>
 						</repository>
 					</repositories>
 					<!-- Set dependencies to launch the application -->
 					<dependencies>
 						<dependency>
-							<artifactId>fr.obeo.releng.targetplatform-feature</artifactId>
+							<artifactId>org.eclipse.cbi.targetplatform.feature</artifactId>
 							<type>eclipse-feature</type>
 						</dependency>
 						<dependency>
@@ -72,7 +72,7 @@
 							<type>eclipse-feature</type>
 						</dependency>
 					</dependencies>
-					<executionEnvironment>JavaSE-1.8</executionEnvironment>
+					<executionEnvironment>JavaSE-11</executionEnvironment>
 				</configuration>
 				<executions>
 					<execution>
@@ -82,7 +82,7 @@
 							<applicationsArgs>
 								<args>-application ${converterApplication.name} ${targetPlatform.id}/${targetPlatform.name}</args>
 							</applicationsArgs>
-							<executionEnvironment>JavaSE-1.8</executionEnvironment>
+							<executionEnvironment>JavaSE-11</executionEnvironment>
 						</configuration>
 						<goals>
 							<goal>eclipse-run</goal>
