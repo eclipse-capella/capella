@@ -22,8 +22,8 @@
 	<packaging>pom</packaging>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<tycho-version>2.0.0</tycho-version>
-		<tycho-extras-version>2.0.0</tycho-extras-version>
+		<tycho-version>2.7.5</tycho-version>
+		<tycho-extras-version>2.7.5</tycho-extras-version>
 		<antrun-version>3.0.0</antrun-version>
 		<rcptt-version>2.5.3</rcptt-version>
 		<rcptt-runner-version>2.5.3</rcptt-runner-version>
@@ -66,6 +66,11 @@
 				<artifactId>target-platform-configuration</artifactId>
 				<version>${tycho-version}</version>
 				<configuration>
+					<targetDefinitionIncludeSource>force</targetDefinitionIncludeSource>
+					<resolver>p2</resolver>
+					<dependency-resolution>
+						<optionalDependencies>ignore</optionalDependencies>
+					</dependency-resolution>
 					<target>
 						<artifact>
 							<groupId>org.polarsys</groupId>
