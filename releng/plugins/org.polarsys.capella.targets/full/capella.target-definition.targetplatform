@@ -15,7 +15,7 @@ target "Capella"
 with source, requirements
 
 // Make sure that GMF, GEF below are consistent with the GMF used by Sirius
-// include "https://download.eclipse.org/sirius/updates/stable/7.1.0-S20230111-043509/2021-06/targets/modules/gmf-runtime-1.15.tpd"
+// include "https://download.eclipse.org/sirius/updates/stable/7.1.0-S20230202-112117/2021-06/targets/modules/gmf-runtime-1.15.tpd"
 
 location GMF-Notation-1.13.1 "https://download.eclipse.org/modeling/gmp/gmf-notation/updates/releases/R202211151334" {
     org.eclipse.gmf.runtime.notation.sdk.feature.group lazy
@@ -64,7 +64,7 @@ location Xerces-2.12.2 "https://download.eclipse.org/modeling/gmp/gmf-runtime/up
 	org.apache.xerces
 }
 
-location sirius "https://download.eclipse.org/sirius/updates/stable/7.1.0-S20230111-043509/2021-06" {
+location sirius "https://download.eclipse.org/sirius/updates/stable/7.1.0-S20230202-112117/2021-06" {
 	org.eclipse.sirius.doc.feature.feature.group
 	org.eclipse.sirius.doc.feature.source.feature.group
 	org.eclipse.sirius.runtime.source.feature.group
@@ -77,7 +77,7 @@ location sirius "https://download.eclipse.org/sirius/updates/stable/7.1.0-S20230
 	org.eclipse.sirius.runtime.ide.ui.acceleo.source.feature.group
 }
 
-location kitalpha-runtime-core-master "https://download.eclipse.org/kitalpha/updates/releases/runtime/6.0.0/" {
+location kitalpha-runtime-core-master "https://download.eclipse.org/kitalpha/updates/stable/runtime/6.1.0.20230207/" {
 	org.polarsys.kitalpha.ad.runtime.feature.source.feature.group
 	org.polarsys.kitalpha.cadence.feature.source.feature.group
 	org.polarsys.kitalpha.common.feature.source.feature.group
@@ -102,7 +102,7 @@ location kitalpha-runtime-core-master "https://download.eclipse.org/kitalpha/upd
 	org.polarsys.kitalpha.sirius.rotativeimage.feature.feature.group
 }
 
-location kitalpha-sdk-master "https://download.eclipse.org/kitalpha/updates/releases/sdk/6.0.0/" {
+location kitalpha-sdk-master "https://download.eclipse.org/kitalpha/updates/stable/sdk/6.1.0.20230207/" {
 	org.polarsys.kitalpha.doc.feature.feature.group
 	org.polarsys.kitalpha.emde.sdk.feature.source.feature.group
 }
