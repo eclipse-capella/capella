@@ -111,8 +111,8 @@ public abstract class AbstractExportDialog extends AbstractViewerDialog {
 
     
     int filterIndex = fd.getFilterIndex();
-    if (filterIndex != -1) {
-      // If a filter was selected
+    if (filterIndex != -1 && (fileName != null)) {
+      // If a filter was selected and file section was not canceled
       String selectedFilter = fd.getFilterExtensions()[filterIndex];
       String fileExtension = selectedFilter.substring(1);
       if (!fileName.endsWith(fileExtension)) {
