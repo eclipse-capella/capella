@@ -40,7 +40,7 @@ Fig.: Start by selecting a set of component exchanges and right click to choose 
 [[Image:Images/7.5.%20Categories%20Management_html_m70b69cf1.png|592x429px]]
 
 
-Fig.: The wizard proposes a default nape for the new category
+Fig.: The wizard proposes a default name for the new category
 
 
 <br>

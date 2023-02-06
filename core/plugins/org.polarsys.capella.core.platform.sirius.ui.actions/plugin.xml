@@ -541,28 +541,136 @@
          <menuContribution
                locationURI="popup:org.eclipse.ui.popup.any?after=group.categories">
             <menu
-                  id="org.polarsys.capella.core.sirius.diagram.editor.categories"
-                  label="%CategoryMenu">
+                  id="org.polarsys.capella.core.sirius.diagram.editor.categories.ce"
+                  label="%CategoryMenu" icon="platform:/plugin/org.polarsys.capella.core.data.res.edit/icons/full/obj16/ComponentExchangeCategory.gif">
                <command
                   commandId="org.polarsys.capella.core.platform.sirius.ui.actions.CreateCategoriesWizardAction"
-                  style="push">
+                  style="push"
+                  icon="platform:/plugin/org.polarsys.capella.core.data.res.edit/icons/full/obj16/ComponentExchangeCategory.gif">
                   <visibleWhen
                      checkEnabled="false">
                      <reference
-                        definitionId="org.polarsys.capella.core.platform.sirius.ui.menu.categories.visibilityInDiagramExpr">
+                        definitionId="org.polarsys.capella.core.sirius.ui.menu.categories.isValidCECategoryMenu">
                      </reference>
                   </visibleWhen>
                </command>
                <command
                   commandId="org.polarsys.capella.core.platform.sirius.ui.actions.UpdateCategoriesWizardAction"
-                  style="push">
+                  style="push"
+                  icon="platform:/plugin/org.polarsys.capella.core.data.res.edit/icons/full/obj16/ComponentExchangeCategory.gif">
                <visibleWhen
                      checkEnabled="false">
                   <reference
-                        definitionId="org.polarsys.capella.core.platform.sirius.ui.menu.categories.visibilityInDiagramExpr">
+                        definitionId="org.polarsys.capella.core.sirius.ui.menu.categories.isValidCECategoryMenu">
                   </reference>
                </visibleWhen>
             </command>
+            </menu>
+            
+             <menu
+                  id="org.polarsys.capella.core.sirius.diagram.editor.categories.fe"
+                  label="%CategoryMenu" icon="platform:/plugin/org.polarsys.capella.core.data.res.edit/icons/full/obj16/ExchangeCategory.gif">
+               <command
+                  commandId="org.polarsys.capella.core.platform.sirius.ui.actions.CreateCategoriesWizardAction"
+                  style="push"
+                  icon="platform:/plugin/org.polarsys.capella.core.data.res.edit/icons/full/obj16/ExchangeCategory.gif">
+                  <visibleWhen
+                     checkEnabled="false">
+                     <reference
+                        definitionId="org.polarsys.capella.core.sirius.ui.menu.categories.isValidFECategoryMenu">
+                     </reference>
+                  </visibleWhen>
+               </command>
+               <command
+                  commandId="org.polarsys.capella.core.platform.sirius.ui.actions.UpdateCategoriesWizardAction"
+                  style="push"
+                  icon="platform:/plugin/org.polarsys.capella.core.data.res.edit/icons/full/obj16/ExchangeCategory.gif">
+               <visibleWhen
+                     checkEnabled="false">
+                  <reference
+                        definitionId="org.polarsys.capella.core.sirius.ui.menu.categories.isValidFECategoryMenu">
+                  </reference>
+               </visibleWhen>
+            </command>
+            </menu>
+            
+            <menu
+                  id="org.polarsys.capella.core.sirius.diagram.editor.categories.pl"
+                  label="%CategoryMenu" icon="platform:/plugin/org.polarsys.capella.core.data.res.edit/icons/full/obj16/PhysicalLinkCategory.gif">
+               <command
+                  commandId="org.polarsys.capella.core.platform.sirius.ui.actions.CreateCategoriesWizardAction"
+                  style="push"
+                  icon="platform:/plugin/org.polarsys.capella.core.data.res.edit/icons/full/obj16/PhysicalLinkCategory.gif">
+                  <visibleWhen
+                     checkEnabled="false">
+                     <reference
+                        definitionId="org.polarsys.capella.core.sirius.ui.menu.categories.isValidPLCategoryMenu">
+                     </reference>
+                  </visibleWhen>
+               </command>
+               <command
+                  commandId="org.polarsys.capella.core.platform.sirius.ui.actions.UpdateCategoriesWizardAction"
+                  style="push"
+                  icon="platform:/plugin/org.polarsys.capella.core.data.res.edit/icons/full/obj16/PhysicalLinkCategory.gif">
+               <visibleWhen
+                     checkEnabled="false">
+                  <reference
+                        definitionId="org.polarsys.capella.core.sirius.ui.menu.categories.isValidPLCategoryMenu">
+                  </reference>
+               </visibleWhen>
+            </command>
+            </menu>
+            
+            
+            
+            
+            
+            
+            
+            <menu
+                  id="org.polarsys.capella.core.sirius.diagram.editor.functionalchains"
+                  label="%FunctionalChainMenu" icon="platform:/plugin/org.polarsys.capella.core.data.res.edit/icons/full/obj16/FunctionalChain.gif">
+               <command
+                  commandId="org.polarsys.capella.core.sirius.ui.actions.CreateFunctionalChainAction"
+                  style="push"
+                  icon="platform:/plugin/org.polarsys.capella.core.data.res.edit/icons/full/obj16/FunctionalChain.gif">
+                  <visibleWhen
+                     checkEnabled="false">
+                     <reference
+                        definitionId="org.polarsys.capella.core.sirius.ui.menu.fc.isValidFCMenu">
+                     </reference>
+                  </visibleWhen>
+               </command>
+            </menu>
+            <menu
+                  id="org.polarsys.capella.core.sirius.diagram.editor.operationalprocesses"
+                  label="%OperationalProcessMenu" icon="platform:/plugin/org.polarsys.capella.core.data.res.edit/icons/full/obj16/OperationalProcess.gif">
+               <command
+                  commandId="org.polarsys.capella.core.sirius.ui.actions.CreateOperationalProcessAction"
+                  style="push"
+                  icon="platform:/plugin/org.polarsys.capella.core.data.res.edit/icons/full/obj16/OperationalProcess.gif">
+                  <visibleWhen
+                     checkEnabled="false">
+                     <reference
+                        definitionId="org.polarsys.capella.core.sirius.ui.menu.op.isValidOPMenu">
+                     </reference>
+                  </visibleWhen>
+               </command>
+            </menu>
+            <menu
+                  id="org.polarsys.capella.core.sirius.diagram.editor.physicalpaths"
+                  label="%PhysicalPathMenu" icon="platform:/plugin/org.polarsys.capella.core.data.res.edit/icons/full/obj16/PhysicalPath.gif">
+               <command
+                  commandId="org.polarsys.capella.core.sirius.ui.actions.CreatePhysicalPathAction"
+                  style="push"
+                  icon="platform:/plugin/org.polarsys.capella.core.data.res.edit/icons/full/obj16/PhysicalPath.gif">
+                  <visibleWhen
+                     checkEnabled="false">
+                     <reference
+                        definitionId="org.polarsys.capella.core.sirius.ui.menu.pp.isValidPPMenu">
+                     </reference>
+                  </visibleWhen>
+               </command>
             
             </menu>
          </menuContribution>

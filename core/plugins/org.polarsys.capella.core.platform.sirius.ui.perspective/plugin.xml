@@ -81,6 +81,11 @@
      <activityPatternBinding
             activityId="org.polarsys.capella.core.hidden.activity"
             pattern="org.polarsys.kitalpha.massactions/org.polarsys.kitalpha.massactions.visualize.view">
+     </activityPatternBinding> 
+         
+       <activityPatternBinding
+            activityId="org.polarsys.capella.core.hidden.activity"
+            pattern=".*/org.polarsys.kitalpha.resourcereuse.emfscheme.ui.load.content.command">
      </activityPatternBinding>
    
      <!-- Declare a specific activity for elements only hidden in Capella perspective -->

@@ -3151,18 +3151,6 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:PopupMenu" name="functional.chain.menu" label="%sa.sdfb.functional.chain.menu">
-            <menuItemDescription xsi:type="tool_1:OperationAction" name="functional.chain" label="%sa.sdfb.functional.chain" precondition="aql:self.isValidFunctionalChainSelection(views)" forceRefresh="true">
-              <view name="views"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.createFunctionalChain(views)">
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(fa::FunctionalChain)">
-                    <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@nodeMappings[name='SDFB_FunctionalChainEnd']" containerViewExpression="aql:views->first().getDiagramContainer()"/>
-                  </subModelOperations>
-                </firstModelOperations>
-              </initialOperation>
-            </menuItemDescription>
-          </ownedTools>
         </toolSections>
         <toolSections name="Accelerators">
           <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert all the Functions available in a given Mode / State. This tool does not modify the semantic model." name="functions.from.mode.state" label="%sa.sdfb.functions.from.mode.state" precondition="aql:elementView.isValidDFInsertStateModes()" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Mode.gif">
@@ -4084,21 +4072,6 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-          </ownedTools>
-          <ownedTools xsi:type="tool_1:PopupMenu" name="physical.path.menu" label="%sa.sab.physical.path.menu">
-            <menuItemDescription xsi:type="tool_1:OperationAction" name="physical.path" label="%sa.sab.physical.path" precondition="aql:self.isValidPhysicalPathSelection(views)" forceRefresh="true">
-              <view name="views"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:views">
-                  <subModelOperations xsi:type="tool_1:Let" variableName="source" valueExpression="service:getPhysicalPathSource(views)"/>
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.createPhysicalPath(views,source)">
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(cs::PhysicalPath)">
-                      <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='SAB_PhysicalPathEnd']" containerViewExpression="aql:views->first().getDiagramContainer()"/>
-                    </subModelOperations>
-                  </subModelOperations>
-                </firstModelOperations>
-              </initialOperation>
-            </menuItemDescription>
           </ownedTools>
           <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Insert/Remove Actors" name="actors.multipart" label="%sa.sab.actors.multipart" containerMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <filters precondition="aql:not (self.isPreferenceEnabled('multipart.allowed'))" elementsToListen="aql:self.getPreferenceListener()">
@@ -5083,18 +5056,6 @@
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool_1:PopupMenu" name="functional.chain.menu" label="%sa.sab.functional.chain.menu">
-            <menuItemDescription xsi:type="tool_1:OperationAction" name="functional.chain" label="%sa.sab.functional.chain" precondition="aql:self.isValidFunctionalChainSelection(views)" forceRefresh="true">
-              <view name="views"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.createFunctionalChain(views)">
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(fa::FunctionalChain)">
-                    <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='CA_FunctionalChainEnd']" containerViewExpression="aql:views->first().getDiagramContainer()"/>
-                  </subModelOperations>
-                </firstModelOperations>
-              </initialOperation>
-            </menuItemDescription>
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Port Allocations" name="port.allocations" label="%sa.sab.port.allocations" precondition="aql:(not self.isNode() or self.isActor()) and container.getComponentType().oclIsKindOf(cs::Component)" inverseSelectionOrder="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element"/>

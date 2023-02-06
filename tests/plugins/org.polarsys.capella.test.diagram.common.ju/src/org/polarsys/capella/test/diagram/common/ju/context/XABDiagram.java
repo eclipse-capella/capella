@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2023 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -16,15 +16,23 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
+import org.eclipse.core.commands.ExecutionEvent;
+import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gef.EditPart;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
-import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.junit.Assert;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
@@ -41,10 +49,13 @@ import org.polarsys.capella.core.model.helpers.BlockArchitectureExt.FunctionType
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt.LinkDirection;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt.Type;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
+import org.polarsys.capella.core.sirius.analysis.DiagramServices;
 import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 import org.polarsys.capella.core.sirius.analysis.actions.extensions.AbstractExternalJavaAction;
 import org.polarsys.capella.core.sirius.analysis.constants.IDNDToolNameConstants;
 import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
+import org.polarsys.capella.core.sirius.ui.handlers.CreateFunctionalChainActionHandler;
+import org.polarsys.capella.core.sirius.ui.handlers.CreatePhysicalPathActionHandler;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.CreateDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.AbstractToolStep;
@@ -52,7 +63,6 @@ import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateAbstractDNod
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateContainerTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateDEdgeTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateNodeTool;
-import org.polarsys.capella.test.diagram.common.ju.step.tools.CreatePathTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.InitializationFromExistingDiagramTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.ReconnectTool;
@@ -626,8 +636,30 @@ public class XABDiagram extends CommonDiagram {
   }
 
   public PhysicalPath createPhysicalPath(final String path, final String... links) {
-    return (PhysicalPath) ((DDiagramElement) new CreatePathTool(this, IToolNameConstants.TOOL_CREATE_PHYSICAL_PATH, path, links)
-        .run()).getTarget();
+    List<DSemanticDecorator> decorators = Arrays.stream(links).map(string -> getView(string))
+        .collect(Collectors.toList());
+    List<EditPart> correspondingEditPart = decorators.stream()
+        .map(decorator -> DiagramServices.getDiagramServices().getEditPart((DDiagramElement) decorator))
+        .collect(Collectors.toList());
+
+    ExecutionEvent event = createExecutionEvent(correspondingEditPart);
+    CreatePhysicalPathActionHandler handler = new CreatePhysicalPathActionHandler() {
+      @Override
+      protected IStructuredSelection getSelection() {
+        StructuredSelection selection = new StructuredSelection(correspondingEditPart);
+        return selection;
+      }
+    };
+    Object result = null;
+    try {
+      result = handler.execute(event);
+    } catch (ExecutionException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+    putView(path, (DDiagramElement) result);
+    getSessionContext().putSemanticElement(path, ((DDiagramElement) result).getTarget());
+    return (PhysicalPath) ((DDiagramElement) result).getTarget();
   }
 
   public void insertPhysicalPath(String... path) {
@@ -639,7 +671,29 @@ public class XABDiagram extends CommonDiagram {
   }
 
   public void createFunctionalChain(String path, String... links) {
-    new CreatePathTool(this, IToolNameConstants.TOOL_CREATE_FUNCTIONAL_CHAIN, path, links).run();
+    List<DSemanticDecorator> decorators = Arrays.stream(links).map(string -> getView(string))
+        .collect(Collectors.toList());
+    List<EditPart> correspondingEditPart = decorators.stream()
+        .map(decorator -> DiagramServices.getDiagramServices().getEditPart((DDiagramElement) decorator))
+        .collect(Collectors.toList());
+
+    ExecutionEvent event = createExecutionEvent(correspondingEditPart);
+    CreateFunctionalChainActionHandler handler = new CreateFunctionalChainActionHandler() {
+      @Override
+      protected IStructuredSelection getSelection() {
+        StructuredSelection selection = new StructuredSelection(correspondingEditPart);
+        return selection;
+      }
+    };
+    Object result = null;
+    try {
+      result = handler.execute(event);
+    } catch (ExecutionException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+      }
+    putView(path, (DDiagramElement) result);
+    getSessionContext().putSemanticElement(path, ((DDiagramElement) result).getTarget());
   }
 
   public String getToolNameFunctionalChains() {
@@ -836,5 +890,4 @@ public class XABDiagram extends CommonDiagram {
   public BlockArchitectureExt.Type getDiagramType() {
     return type;
   }
-
 }

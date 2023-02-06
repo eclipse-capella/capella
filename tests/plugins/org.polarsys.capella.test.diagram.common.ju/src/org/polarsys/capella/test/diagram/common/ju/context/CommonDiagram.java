@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2023 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -12,7 +12,15 @@
  *******************************************************************************/
 package org.polarsys.capella.test.diagram.common.ju.context;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.eclipse.core.commands.ExecutionEvent;
+import org.eclipse.core.expressions.EvaluationContext;
+import org.eclipse.core.expressions.IEvaluationContext;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
@@ -20,6 +28,7 @@ import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
+import org.eclipse.ui.ISources;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.sirius.analysis.constants.IDNDToolNameConstants;
 import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
@@ -294,4 +303,13 @@ public class CommonDiagram extends DiagramContext {
     return ((CapellaElement) semanticElement).getId();
   }
 
+  protected ExecutionEvent createExecutionEvent(Object... elements) {
+    IEvaluationContext context = new EvaluationContext(null, new Object());
+    Map<String, String> parameters = new HashMap<>();
+    ExecutionEvent event = new ExecutionEvent(null, parameters, null, context);
+
+    context.addVariable(ISources.ACTIVE_CURRENT_SELECTION_NAME, new StructuredSelection(Arrays.asList(elements)));
+
+    return event;
+  }
 }

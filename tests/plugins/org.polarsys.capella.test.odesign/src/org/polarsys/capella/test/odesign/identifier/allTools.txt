@@ -33,8 +33,6 @@ oa.oebd.constraint
 oa.oebd.constraint.element
 oa.oebd.constraints
 oa.oebd.hide.property.values.filter
-oa.oaib.operational.process.menu
-oa.oaib.operational.process
 oa.oaib.activities.from.mode.state
 oa.oaib.operational.process.elements
 oa.oaib.constraint
@@ -60,8 +58,6 @@ oa.oab.operational.processes
 oa.oab.allocated.activities
 oa.oab.all.allocated.activities.in.entities
 oa.oab.all.allocated.activities.in.roles
-oa.oab.operational.process.menu
-oa.oab.operational.process
 oa.oab.activities.from.mode.state
 oa.oab.constraint
 oa.oab.constraint.element

@@ -603,18 +603,6 @@
               <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:arg0"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:PopupMenu" name="operational.process.menu" label="%oa.oaib.operational.process.menu">
-            <menuItemDescription xsi:type="tool:OperationAction" name="operational.process" label="%oa.oaib.operational.process" precondition="aql:self.isValidFunctionalChainSelection(views)" forceRefresh="true">
-              <view name="views"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createFunctionalChain(views)">
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(fa::FunctionalChain)">
-                    <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@nodeMappings[name='OAIB_OperationalProcessEnd']" containerViewExpression="aql:views->first().getDiagramContainer()"/>
-                  </subModelOperations>
-                </firstModelOperations>
-              </initialOperation>
-            </menuItemDescription>
-          </ownedTools>
         </toolSections>
         <toolSections name="Accelerators">
           <ownedTools xsi:type="tool:ToolDescription" documentation="Insert all the Activities available in a given Mode / State. This tool does not modify the semantic model." name="activities.from.mode.state" label="%oa.oaib.activities.from.mode.state" precondition="aql:elementView.isValidDFInsertStateModes()" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Mode.gif">
@@ -1723,18 +1711,6 @@
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:PopupMenu" name="operational.process.menu" label="%oa.oab.operational.process.menu">
-            <menuItemDescription xsi:type="tool:OperationAction" name="operational.process" label="%oa.oab.operational.process" precondition="aql:self.isValidFunctionalChainSelection(views)" forceRefresh="true">
-              <view name="views"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createFunctionalChain(views)">
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(fa::FunctionalChain)">
-                    <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@nodeMappings[name='OAB_OperationalProcessEnd']" containerViewExpression="aql:views->first().getDiagramContainer()"/>
-                  </subModelOperations>
-                </firstModelOperations>
-              </initialOperation>
-            </menuItemDescription>
           </ownedTools>
           <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="OAIB Reconnect Exchanges" precondition="aql:element.isFunctionalExchangeReconnectable(sourceView.getDiagramContainer(),source,target)" reconnectionKind="RECONNECT_BOTH">
             <source name="source"/>
