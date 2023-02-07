@@ -32,6 +32,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.business.api.helper.delete.DeleteHookHelper;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.junit.Assert;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
@@ -809,6 +810,16 @@ public class XABDiagram extends CommonDiagram {
 
   public void removeFunctionPort(String id, String containerId) {
     new InsertRemoveTool(this, IToolNameConstants.TOOL_XAB_INSERT_REMOVE_FUNCTION_PORTS, containerId).remove(id);
+  }
+
+  public void deleteControlNodes(String... ids) {
+    deleteSequenceLinks(ids);
+  }
+
+  public void deleteSequenceLinks(String... ids) {
+    List<DSemanticDecorator> decorators = Arrays.stream(ids).map(id -> getView(id)).collect(Collectors.toList());
+    DeleteHookHelper helper = new DeleteHookHelper(decorators);
+    assertTrue(helper.checkDeleteHook());
   }
 
   public void insertCategory(String id, String containerId) {

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--Capella_Version_6.1.0-->
+<!--Capella_Version_null-->
 <org.polarsys.capella.core.data.capellamodeller:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:libraries="http://www.polarsys.org/capella/common/libraries/6.0.0"
     xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/6.0.0"
@@ -55,6 +55,14 @@
                 id="23d57866-66af-4ffc-b655-40fe5e0bdc30" involved="#d7d31666-d9d5-4caa-bf77-cb348efcc248"/>
             <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementFunction"
                 id="1a44905c-35ec-425e-83df-43e9a10ba6ec" involved="#4741aadb-47b5-4487-a717-7703577a3b06"/>
+            <ownedSequenceNodes xsi:type="org.polarsys.capella.core.data.fa:ControlNode"
+                id="224bab6b-092d-4f67-8c05-9b0e3b0a5f93" kind="AND"/>
+            <ownedSequenceLinks xsi:type="org.polarsys.capella.core.data.fa:SequenceLink"
+                id="ca41d42a-5114-438b-9ad2-cd3a1bb9f169" source="#1a44905c-35ec-425e-83df-43e9a10ba6ec"
+                target="#224bab6b-092d-4f67-8c05-9b0e3b0a5f93"/>
+            <ownedSequenceLinks xsi:type="org.polarsys.capella.core.data.fa:SequenceLink"
+                id="7375dc15-f8fd-4d8e-ab08-6720e83bb78c" source="#224bab6b-092d-4f67-8c05-9b0e3b0a5f93"
+                target="#23d57866-66af-4ffc-b655-40fe5e0bdc30"/>
           </ownedFunctionalChains>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.oa:OperationalActivity"
               id="4741aadb-47b5-4487-a717-7703577a3b06" name="OperationalActivity 1"/>
@@ -300,6 +308,14 @@
                 id="1b2d5322-e6be-4215-ba8b-822c8742eda1" involved="#7111133e-b516-48a4-9c03-93c25054c3b9"/>
             <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementFunction"
                 id="1547afa3-9b94-4bca-8367-917f6d95c525" involved="#f84e4a11-a138-4221-b31e-07262d7bf61d"/>
+            <ownedSequenceNodes xsi:type="org.polarsys.capella.core.data.fa:ControlNode"
+                id="68626cbe-0780-4dc4-b35b-a716abf0e286" kind="AND"/>
+            <ownedSequenceLinks xsi:type="org.polarsys.capella.core.data.fa:SequenceLink"
+                id="11284360-1d2b-4ba8-b44f-75e2cb95638d" source="#1547afa3-9b94-4bca-8367-917f6d95c525"
+                target="#68626cbe-0780-4dc4-b35b-a716abf0e286"/>
+            <ownedSequenceLinks xsi:type="org.polarsys.capella.core.data.fa:SequenceLink"
+                id="5e189564-a912-4d3c-b602-fe3f6182c984" source="#68626cbe-0780-4dc4-b35b-a716abf0e286"
+                target="#788424ab-3dcd-4a98-83e0-76b8a53ab59c"/>
           </ownedFunctionalChains>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
               id="5eef3339-1e33-4cc4-9968-58b7b128f28a" name="SystemFunction 1">
@@ -738,6 +754,14 @@
                 id="3eaf2076-d7eb-4736-bf9b-c125740ce83d" involved="#c0f05ce7-ca4d-4994-aaee-5c767e482448"/>
             <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementFunction"
                 id="1ed20407-98a3-4259-908b-6cdd7741f6e2" involved="#08f8a608-31c2-4e1d-a83a-2a18faa2abec"/>
+            <ownedSequenceNodes xsi:type="org.polarsys.capella.core.data.fa:ControlNode"
+                id="c57aa54c-8777-4e2c-bbe1-7086385409e2" kind="AND"/>
+            <ownedSequenceLinks xsi:type="org.polarsys.capella.core.data.fa:SequenceLink"
+                id="5ef1e40c-891e-4d30-bc69-a90e913eb290" source="#1ed20407-98a3-4259-908b-6cdd7741f6e2"
+                target="#c57aa54c-8777-4e2c-bbe1-7086385409e2"/>
+            <ownedSequenceLinks xsi:type="org.polarsys.capella.core.data.fa:SequenceLink"
+                id="59418289-2d2f-4119-8b29-2d2977b2f125" source="#c57aa54c-8777-4e2c-bbe1-7086385409e2"
+                target="#d46d4e5d-82fa-4d81-9fa7-13d3f8097b79"/>
           </ownedFunctionalChains>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
               id="02f0848d-2783-4079-b392-96b837442a54" name="LogicalFunction 1">
@@ -1097,6 +1121,14 @@
                 id="81a5f66c-2af9-4fb2-bd52-64394c66e6e5" involved="#ec34d8a1-5c13-47b5-adf5-ae5a36d0f53d"/>
             <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementFunction"
                 id="a0d377eb-d2c6-487c-b106-afb8bdc03d8c" involved="#1b2adc09-b471-47d0-bfea-b40c4a1dab49"/>
+            <ownedSequenceNodes xsi:type="org.polarsys.capella.core.data.fa:ControlNode"
+                id="c93b8b1f-6d36-4ff9-84fa-0168409967dd" kind="AND"/>
+            <ownedSequenceLinks xsi:type="org.polarsys.capella.core.data.fa:SequenceLink"
+                id="9dd2e36f-40b9-4704-b331-838aeff78297" source="#0accecaa-67c4-42c1-abf8-39c0cef1ffb0"
+                target="#c93b8b1f-6d36-4ff9-84fa-0168409967dd"/>
+            <ownedSequenceLinks xsi:type="org.polarsys.capella.core.data.fa:SequenceLink"
+                id="5258be94-5776-4b42-9465-79d2c9f8598b" source="#c93b8b1f-6d36-4ff9-84fa-0168409967dd"
+                target="#a0d377eb-d2c6-487c-b106-afb8bdc03d8c"/>
           </ownedFunctionalChains>
           <ownedFunctionalChains xsi:type="org.polarsys.capella.core.data.fa:FunctionalChain"
               id="c06f9196-de5f-43dc-baec-a75faf60fdfe" name="FunctionalChain 2">
