@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018, 2023 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -15,7 +15,6 @@ package org.polarsys.capella.test.diagram.tools.ju.common;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.AbstractDNode;
@@ -63,17 +62,6 @@ public class SelectToolsTest extends AbstractDiagramTestCase {
   }
 
   protected void testCommonTools(SessionContext sc, DDiagram rep) {
-
-    // TODO this is a temporary DIRTY FIX and will be removed once filters are migrated
-
-    sc.getSession().getTransactionalEditingDomain().getCommandStack()
-        .execute(new RecordingCommand(sc.getSession().getTransactionalEditingDomain()) {
-          @Override
-          protected void doExecute() {
-            rep.getActivatedFilters().clear();
-          }
-        });
-
     CommonDiagram cd = new CommonDiagram(sc, rep);
     DiagramContext dc = cd.open();
 

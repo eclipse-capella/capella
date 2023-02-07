@@ -329,12 +329,6 @@ sa.sab.hide.simplified.oriented.grouped.component.exchanges.filter
 sa.sab.hide.functional.exchanges.names.filter
 sa.sab.hide.component.exchanges.names.filter
 sa.sab.hide.physical.links.names.filter
-common.cdb.select.menu
-common.cdb.select.elements.of.same.type
-common.cdb.select.resembling.elements
-common.cdb.select.owned.ports
-common.cdb.select.owned.elements
-common.cdb.select.related.connections
 common.cdb.initialization.from.existing.diagram
 common.cdi.in.flow.port
 common.cdi.out.flow.port

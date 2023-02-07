@@ -26,7 +26,15 @@
               <separator name="group.delete" visible="true" />
               
        </menuContribution>
+       
+       <menuContribution
+                locationURI="popup:org.eclipse.gmf.runtime.diagram.ui.DiagramEditorContextMenu?after=BusinessCopyPasteMenuSirius">
+                
+              <menu id="BusinessSelectMenuSirius" label="Capella Select">              	                
+              </menu>
+       </menuContribution>
     
+      
     	<!-- Sirius contribution. We want all our menu available on the diagram menu. Navigation on top. -->
        <menuContribution
                 locationURI="popup:org.eclipse.gmf.runtime.diagram.ui.DiagramEditorContextMenu?after=navigateGroup">
