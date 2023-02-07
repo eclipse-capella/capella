@@ -94,12 +94,6 @@ public interface IToolNameConstants {
   //
   // Tools that are available to multiple types of diagrams
   //
-  String TOOL_COMMON_SELECT_SAME_TYPE = "select.elements.of.same.type";
-  String TOOL_COMMON_SELECT_SAME_MAPPING = "select.resembling.elements";
-  String TOOL_COMMON_SELECT_OWNED_PORTS = "select.owned.ports";
-  String TOOL_COMMON_SELECT_OWNED_ELEMENTS = "select.owned.elements";
-  String TOOL_COMMON_SELECT_RELATED_EDGES = "select.related.connections";
-
   String TOOL_COMMON_ELEMENTS_FROM_SCENARIO = "elements.from.scenario";
   String TOOL_COOMON_FUNCTIONS_FROM_MODE_STATE = "functions.from.mode.state";
 
