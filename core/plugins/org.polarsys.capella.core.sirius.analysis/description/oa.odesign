@@ -890,7 +890,7 @@
         </nodeMappings>
         <nodeMappings name="OAB_Dummy" semanticCandidatesExpression="ocl:Set {}" domainClass="EObject"/>
         <nodeMappings name="FC_ControlNode" semanticCandidatesExpression="aql:diagram.getAvailableControlNodes()" synchronizationLock="true" domainClass="ControlNode">
-          <deletionDescription href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='no%20delete']"/>
+          <deletionDescription href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20FE%20Involvement']"/>
           <conditionnalStyles predicateExpression="aql:self.kind == fa::ControlNodeKind::AND">
             <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/ControlNode_And.svg">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -933,7 +933,7 @@
           </style>
         </edgeMappings>
         <edgeMappings name="OAB_FC_SequenceLink" semanticCandidatesExpression="aql:diagram.getAvailableSequenceLinks()" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']/@subNodeMappings[name='OAB_Activity'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@nodeMappings[name='FC_ControlNode']" targetMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']/@subNodeMappings[name='OAB_Activity'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@nodeMappings[name='FC_ControlNode']" targetFinderExpression="aql:self.getSequenceLinkTarget()" sourceFinderExpression="aql:self.getSequenceLinkSource()" domainClass="SequenceLink" useDomainElement="true">
-          <deletionDescription href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='no%20delete']"/>
+          <deletionDescription href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20FE%20Involvement']"/>
           <style lineStyle="dash" routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="service:getSequenceLinkLabel(diagram)">

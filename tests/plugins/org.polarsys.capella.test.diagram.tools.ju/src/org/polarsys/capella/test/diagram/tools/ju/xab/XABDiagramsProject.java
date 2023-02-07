@@ -48,6 +48,10 @@ public abstract class XABDiagramsProject extends AbstractDiagramTestCase {
   public static final String OA__OAB_OPERATIONAL_PROCESS1 = "0f4ce543-36f9-4753-b7af-f1d869525218";
   public static final String OA__OAB_PROPERTY_VALUE1 = "96a78087-d97a-4a40-a709-af776fd1f2c4";
   public static final String OA__OAB_PROPERTY_VALUE_GROUP1 = "1f2ffac9-4585-4c1b-aa67-83bfc94955ed";
+  public static final String OA__OAB_SEQUENCELINK1 = "ca41d42a-5114-438b-9ad2-cd3a1bb9f169";
+  public static final String OA__OAB_SEQUENCELINK2 = "7375dc15-f8fd-4d8e-ab08-6720e83bb78c";
+  public static final String OA__OAB_CONTROLNODE = "224bab6b-092d-4f67-8c05-9b0e3b0a5f93";
+
 
   // elements from scenarios
   public static final String OA__OAB_ENTITY5 = "2b90e4ce-24ee-4fe0-a0df-db44b202bb5e";
@@ -111,6 +115,9 @@ public abstract class XABDiagramsProject extends AbstractDiagramTestCase {
   public static final String SA__SAB_EXCHANGE_CATEGORY1 = "9674d2ca-16c0-4b98-99d5-f6b5421dd20a";
   public static final String SA__SAB_FUNCTIONAL_EXCHANGE4 = "5cd86e0b-3cda-4c06-8c05-214b754bd4ce";
   public static final String SA__SAB_EXCHANGE_CATEGORY4 = "b76e3399-f2ed-4b8f-b23e-ea1194662d4b";
+  public static final String SA__SAB_SEQUENCELINK1 = "11284360-1d2b-4ba8-b44f-75e2cb95638d";
+  public static final String SA__SAB_SEQUENCELINK2 = "5e189564-a912-4d3c-b602-fe3f6182c984";
+  public static final String SA__SAB_CONTROLNODE = "68626cbe-0780-4dc4-b35b-a716abf0e286";
 
   // elements from scenarios
   public static final String SA__SAB_SYSTEM_ACTOR4 = "edb2b0df-081d-4e98-9e79-d10cff4aaf09";
@@ -186,6 +193,9 @@ public abstract class XABDiagramsProject extends AbstractDiagramTestCase {
   public static final String LA__LAB_EXCHANGE_CATEGORY4 = "eca4de89-fa15-4d1c-b9ee-5b9395b03117";
   public static final String LA__LAB_COMPONENT_EXCHANGE_CATEGORY1 = "60cf855b-4356-41a2-9ffc-5974f481df9f";
   public static final String LA__LAB_STRUCTURE_DIAGRAM = "[LAB] Structure";
+  public static final String LA__LAB_SEQUENCELINK1 = "5ef1e40c-891e-4d30-bc69-a90e913eb290";
+  public static final String LA__LAB_SEQUENCELINK2 = "59418289-2d2f-4119-8b29-2d2977b2f125";
+  public static final String LA__LAB_CONTROLNODE = "c57aa54c-8777-4e2c-bbe1-7086385409e2";
   public static final String LA_7_1 = "09441ac0-4fa8-42c6-8c73-a27d6602b8ed"; //$NON-NLS-1$
   public static final String LA_7_1_PART = "f4e0c504-fc0c-4d0d-b10e-5227cfa0d28f"; //$NON-NLS-1$
   public static final String LA_STRUCTURE = "f98a5409-24f8-4207-bb68-38b721762d2f"; //$NON-NLS-1$
@@ -270,6 +280,9 @@ public abstract class XABDiagramsProject extends AbstractDiagramTestCase {
   public static final String PA__PAB_COMPONENT_EXCHANGE_CATEGORY1 = "1dabc95c-1980-4905-9045-98dcc4a1c7f3";
   public static final String PA__PORT_PP2 = "c17908ae-66bd-4020-8929-6e9487cb6a6e";
   public static final String PA__PORT_PP1 = "aacd2b79-5511-4de6-b4aa-428d779c28d3";
+  public static final String PA__PAB_SEQUENCELINK1 = "9dd2e36f-40b9-4704-b331-838aeff78297";
+  public static final String PA__PAB_SEQUENCELINK2 = "5258be94-5776-4b42-9465-79d2c9f8598b";
+  public static final String PA__PAB_CONTROLNODE = "c93b8b1f-6d36-4ff9-84fa-0168409967dd";
   
   // Show elements from scenarios
   public static final String PA__SCENARIO_FS1 = "f1b164d3-ee4b-420e-86c1-75da2b0070eb";

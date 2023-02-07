@@ -22,6 +22,7 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.EList;
@@ -1002,11 +1003,12 @@ public class DiagramHelper {
     return Collections.emptyList();
   }
 
-  public static List<DEdge> getEdges(DDiagram diagram, String elementId) {
+  public static List<DEdge> getEdges(DDiagram diagram, String... elementIds) {
     List<DEdge> edgeList = new ArrayList<DEdge>();
+    List<String> ids = Arrays.stream(elementIds).collect(Collectors.toList());
     for (DDiagramElement element : diagram.getDiagramElements()) {
       if ((element instanceof DEdge) && (element.getTarget() instanceof ModelElement)
-          && ((ModelElement) element.getTarget()).getId().equals(elementId)) {
+          && ids.contains(((ModelElement) element.getTarget()).getId())) {
         edgeList.add((DEdge) element);
       }
     }
