@@ -122,11 +122,6 @@ public class DiffCategoryProxy extends AbstractDifferenceCategoryItem implements
     item.setModifiable(peer.isModifiable());
   }
 
-  @Override
-  public IDifferenceCategory clone() throws CloneNotSupportedException {
-    return new CategoryState();
-  }
-
   private class CategoryState extends AbstractDifferenceCategory {
 
     CategoryState() {
