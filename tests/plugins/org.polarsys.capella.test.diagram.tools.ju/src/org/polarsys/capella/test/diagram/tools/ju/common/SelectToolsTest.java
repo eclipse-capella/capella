@@ -21,6 +21,7 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
@@ -103,6 +104,10 @@ public class SelectToolsTest extends AbstractDiagramTestCase {
           }
           if (de instanceof AbstractDNode) {
             cd.selectOwnedPorts(de.getUid());
+            cd.selectRelatedRecs(de.getUid());
+            cd.selectRelatedRpls(de.getUid());
+          }
+          if (de instanceof DEdge) {
             cd.selectRelatedRecs(de.getUid());
             cd.selectRelatedRpls(de.getUid());
           }

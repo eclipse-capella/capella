@@ -215,7 +215,7 @@ On a diagram showing the source elements of the REC, select all elements and cop
 
 [[Image:Images/8.2.%20Basic%20Use%20Case_html_m35487b8e.png|627x199px]]
 
-This can also be achieved by selecting any source elements of the REC, right click on it "Capella Select > Related Rec Elements > REC"
+This can also be achieved by selecting any source elements of the REC, right click on it "Capella Select > Related REC Elements > REC"
 [[Image:Images/select_related_rec.png]]
 
 On a diagram where the RPL is displayed, paste the layout:
@@ -223,8 +223,8 @@ On a diagram where the RPL is displayed, paste the layout:
 
 [[Image:Images/8.2.%20Basic%20Use%20Case_html_c008666.png|627x211px]]
 
-If multiple RPLs of the same REC are displayed, and you want to copy the REC layout to all RPls, this can be achieved by pasting the layout on each RPL, one at a time.
-To do so, select a RPL element, right click "Capella Select > Related Rpl Elements > RPL X" and paste the layout
+If multiple RPLs of the same REC are displayed, and you want to copy the REC layout to all RPLs, this can be achieved by pasting the layout on each RPL, one at a time.
+To do so, select a RPL element, right click "Capella Select > Related RPL Elements > RPL X" and paste the layout
 Do this for each RPL.
 
 [[Image:Images/select_related_rpl.png]]
