@@ -32,11 +32,11 @@ The new '''Select''' menu in diagram consists of tools for highlighting related 
 The available tools are:
 
 {| class="wikitable"
-|'''Related Rec Elements'''
-|Select all elements on the active diagram which are related to the '''selected Rec''' as the current selected element(s)
+|'''Related REC Elements'''
+|Select all elements on the active diagram which are related to the '''selected REC''' as the current selected element(s)
 |-
-|'''Related Rpl Elements'''
-|Select all elements on the active diagram which are related to the '''selected Rpl''' as the current selected element(s)
+|'''Related RPL Elements'''
+|Select all elements on the active diagram which are related to the '''selected RPL''' as the current selected element(s)
 |-
 |'''Elements of Same Type'''
 |Select all elements on the active diagram which have the '''same type''' as the current selected element(s)

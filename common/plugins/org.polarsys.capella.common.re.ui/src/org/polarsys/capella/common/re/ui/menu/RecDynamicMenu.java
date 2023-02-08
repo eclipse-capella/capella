@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
+import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 import org.eclipse.jface.action.ContributionItem;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -85,13 +85,13 @@ public class RecDynamicMenu extends ContributionItem {
   public static Collection<CatalogElement> getCommonRecs(IStructuredSelection selection) {
     LinkedHashSet<EObject> selectedElements = new LinkedHashSet<EObject>();
     for (Object aSelectedElement : selection.toArray()) {
-        if (aSelectedElement instanceof GraphicalEditPart) {
-          EObject semantic = CapellaAdapterHelper.resolveBusinessObject(((GraphicalEditPart) aSelectedElement));
-          selectedElements.add(semantic);
-        } else {
-          return new ArrayList<CatalogElement>();
-        }
+      if (aSelectedElement instanceof AbstractGraphicalEditPart) {
+        EObject semantic = CapellaAdapterHelper.resolveBusinessObject(((AbstractGraphicalEditPart) aSelectedElement));
+        selectedElements.add(semantic);
+      } else {
+        return new ArrayList<CatalogElement>();
       }
+    }
 
     HashMap<EObject, Collection<CatalogElement>> mapOfRecs = new HashMap<EObject, Collection<CatalogElement>>();
     for (EObject anElement : selectedElements) {
