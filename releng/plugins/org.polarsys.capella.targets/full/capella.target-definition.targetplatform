@@ -15,7 +15,7 @@ target "Capella"
 with source, requirements
 
 // Make sure that GMF, GEF below are consistent with the GMF used by Sirius
-// include "https://download.eclipse.org/sirius/updates/stable/7.1.0-S20230202-112117/2021-06/targets/modules/gmf-runtime-1.15.tpd"
+// include "https://download.eclipse.org/sirius/updates/stable/7.1.0-S20230209-115903/2021-06/targets/modules/gmf-runtime-1.15.tpd"
 
 location GMF-Notation-1.13.1 "https://download.eclipse.org/modeling/gmp/gmf-notation/updates/releases/R202211151334" {
     org.eclipse.gmf.runtime.notation.sdk.feature.group lazy
@@ -64,7 +64,7 @@ location Xerces-2.12.2 "https://download.eclipse.org/modeling/gmp/gmf-runtime/up
 	org.apache.xerces
 }
 
-location sirius "https://download.eclipse.org/sirius/updates/stable/7.1.0-S20230202-112117/2021-06" {
+location sirius "https://download.eclipse.org/sirius/updates/stable/7.1.0-S20230209-115903/2021-06" {
 	org.eclipse.sirius.doc.feature.feature.group
 	org.eclipse.sirius.doc.feature.source.feature.group
 	org.eclipse.sirius.runtime.source.feature.group
