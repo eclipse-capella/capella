@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2022 THALES GLOBAL SERVICES.
+ * Copyright (c) 2022, 2023 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -63,7 +63,7 @@ public class ImagePathResolver extends AbstractCapellaMarkerResolution {
       TransactionalEditingDomain ted = sessionOpt.get().getTransactionalEditingDomain();
 
       String notReachableImagePath = imagePathStatus.getNotReachableImagePath();
-      boolean fixSucceeded = FileProvider.getDefault().exists(new Path(notReachableImagePath));
+      boolean fixSucceeded = FileProvider.getDefault().exists(new Path(notReachableImagePath), sessionOpt.get());
 
       if (!fixSucceeded) {
         ImagePathTarget imagePathTarget = imagePathStatus.getImagePathTarget();
