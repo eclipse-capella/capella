@@ -21,7 +21,7 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.util.TransactionUtil;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart;
+import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
@@ -42,10 +42,10 @@ public class CreateFunctionalChainActionHandler extends AbstractDiagramCommandHa
   public Object execute(ExecutionEvent event) throws ExecutionException {
     IStructuredSelection selection = getSelection();
 
-    List<ConnectionEditPart> edgeEditParts = new ArrayList<ConnectionEditPart>();
+    List<AbstractGraphicalEditPart> edgeEditParts = new ArrayList<AbstractGraphicalEditPart>();
     for (Object elem : selection.toList()) {
-      if (elem instanceof ConnectionEditPart) {
-        edgeEditParts.add((ConnectionEditPart) elem);
+      if (elem instanceof AbstractGraphicalEditPart) {
+        edgeEditParts.add((AbstractGraphicalEditPart) elem);
       }
     }
     if (!edgeEditParts.isEmpty()) {

@@ -18,6 +18,7 @@ import java.util.stream.Collectors;
 
 import org.eclipse.core.expressions.PropertyTester;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -35,10 +36,10 @@ public class ValidPPMenuTargetTester extends PropertyTester {
     if (getPropertyId().equals(property)) {
       if(receiver instanceof IStructuredSelection) {
         IStructuredSelection selection = (IStructuredSelection) receiver;
-        List<ConnectionEditPart> edgeEditParts = new ArrayList<ConnectionEditPart>();
+        List<AbstractGraphicalEditPart> edgeEditParts = new ArrayList<AbstractGraphicalEditPart>();
         for (Object elem : selection.toList()) {
-          if (elem instanceof ConnectionEditPart) {
-            edgeEditParts.add((ConnectionEditPart) elem);
+          if (elem instanceof AbstractGraphicalEditPart) {
+            edgeEditParts.add((AbstractGraphicalEditPart) elem);
           }
         }
 
