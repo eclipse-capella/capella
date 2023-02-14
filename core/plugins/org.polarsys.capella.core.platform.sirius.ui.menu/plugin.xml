@@ -318,7 +318,7 @@
             locationURI="popup:org.eclipse.ui.popup.any?after=group.accelerator">
             
          <menu
-               id="org.polarsys.capella.core.accelerators" label="%acceleratorGroup_label">
+               id="org.polarsys.capella.core.accelerators" label="%acceleratorGroup_label" icon ="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif">
                
                <separator name="groupAccelerator">
 		       </separator>
