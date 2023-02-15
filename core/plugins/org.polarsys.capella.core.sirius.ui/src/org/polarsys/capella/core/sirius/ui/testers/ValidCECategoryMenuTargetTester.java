@@ -13,7 +13,9 @@
 package org.polarsys.capella.core.sirius.ui.testers;
 
 import org.eclipse.emf.ecore.EObject;
+import org.polarsys.capella.common.data.modellingcore.InformationsExchanger;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
+import org.polarsys.capella.core.data.oa.Entity;
 
 public class ValidCECategoryMenuTargetTester extends AbstractValidCategoryMenuTargetTester {
 
@@ -22,7 +24,12 @@ public class ValidCECategoryMenuTargetTester extends AbstractValidCategoryMenuTa
 
   @Override
   protected boolean isValidContext(EObject context) {
-    return context instanceof ComponentExchange;
+    if (context instanceof ComponentExchange) {
+      ComponentExchange ce = (ComponentExchange) context;
+      InformationsExchanger sourceNode = ce.getSource();
+      return !(sourceNode instanceof Entity);
+    }
+    return false;
   }
 
   @Override
