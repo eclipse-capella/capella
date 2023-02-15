@@ -33,7 +33,9 @@
          <viewShortcut
                id="capella.project.explorer">
          </viewShortcut>
-         <viewShortcut id="org.polarsys.kitalpha.ad.viewpoint.ui.views.viewpointmanagerview"/>         
+         <viewShortcut id="org.polarsys.kitalpha.ad.viewpoint.ui.views.viewpointmanagerview"/>
+         <viewShortcut id="org.eclipse.ui.views.PropertySheet"/> 
+         <viewShortcut id="org.eclipse.ui.views.ContentOutline"/>       
       </perspectiveExtension>
    </extension>
     <extension
