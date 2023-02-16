@@ -23,6 +23,9 @@
   <groupId>org.polarsys</groupId>
   <artifactId>org.polarsys.capella.cdo.plugins</artifactId>
   <packaging>pom</packaging>
+  <properties>
+	  <sonar.skip>true</sonar.skip>
+  </properties>
   <profiles>
      <profile>
       <id>full</id>
