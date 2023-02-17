@@ -13,28 +13,38 @@
 package org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewHelper;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
+import org.polarsys.capella.core.model.utils.saxparser.SaxParserHelper;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarkerResolution;
 
 public class I_23_Resolver extends AbstractCapellaMarkerResolution {
 
-  protected Logger _logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.VALIDATION);
+  protected Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.VALIDATION);
 
   /**
    * {@inheritDoc}
    */
   public void run(IMarker marker_p) {
     final List<EObject> modelElements = getModelElements(marker_p);
+    Diagnostic diagnostic = MarkerViewHelper.getDiagnostic(marker_p);
+    String linkId = SaxParserHelper.getLinkIdFromStatus(diagnostic.getMessage());
+
     final boolean[] flag = { false };
     if (!modelElements.isEmpty()) {
+      // get only the target element
+      List<EObject> targetModelElements = modelElements.stream().limit(1).collect(Collectors.toList());
+
       AbstractReadWriteCommand abstrctCommand = new AbstractReadWriteCommand() {
 
         @Override
@@ -45,17 +55,17 @@ public class I_23_Resolver extends AbstractCapellaMarkerResolution {
         public void run() {
           flag[0] = false;
           DeleteInValidHyperLinkInDescription writeDescription = new DeleteInValidHyperLinkInDescription();
-          flag[0] = writeDescription.updateDescription(modelElements);
+          flag[0] = writeDescription.updateDescription(targetModelElements, linkId);
         }
       };
 
       // execute the command
-      TransactionHelper.getExecutionManager(modelElements).execute(abstrctCommand);
+      TransactionHelper.getExecutionManager(targetModelElements).execute(abstrctCommand);
       if (flag[0]) {
         try {
           marker_p.delete();
         } catch (CoreException exception_p) {
-          _logger.error("Exception while deleting marker : " + exception_p.toString()); //$NON-NLS-1$
+          logger.error("Exception while deleting marker : " + exception_p.toString()); //$NON-NLS-1$
         }
       }
     }

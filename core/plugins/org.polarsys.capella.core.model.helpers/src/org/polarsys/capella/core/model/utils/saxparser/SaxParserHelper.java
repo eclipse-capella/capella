@@ -14,13 +14,14 @@
 package org.polarsys.capella.core.model.utils.saxparser;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.shared.id.handler.IScope;
 import org.polarsys.capella.shared.id.handler.IdManager;
-import org.polarsys.capella.common.helpers.TransactionHelper;
 
 /**
  */
@@ -31,7 +32,8 @@ public class SaxParserHelper {
    */
   public static String escapeSpecialCharacter(String input) {
     String result = input;
-    result = result.replace(IConstantValidation.NON_BREAKING_SPACE_NAME_CODE, IConstantValidation.NON_BREAKING_SPACE_NUMBER_CODE);
+    result = result.replace(IConstantValidation.NON_BREAKING_SPACE_NAME_CODE,
+        IConstantValidation.NON_BREAKING_SPACE_NUMBER_CODE);
     result = result.replace(IConstantValidation.EURO_NAME_CODE, IConstantValidation.EURO_NUMBER_CODE);
     result = result.replace(IConstantValidation.TRADE_NAME_CODE, IConstantValidation.TRADE_NUMBER_CODE);
     result = result.replace(IConstantValidation.AMP_NAME_CODE, IConstantValidation.AMP_NUMBER_CODE);
@@ -58,5 +60,16 @@ public class SaxParserHelper {
     }
 
     return eObject;
+  }
+
+  public static String getLinkIdFromStatus(String statusMessage) {
+    Pattern pattern = Pattern.compile("\\(id: (.+?)\\)");
+
+    Matcher matcher = pattern.matcher(statusMessage);
+    if (matcher.find()) {
+      return matcher.group(1);
+    }
+    return null;
+
   }
 }

@@ -26,9 +26,18 @@
       </resolver>
       <resolver
             class="org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram.I_23_Resolver"
-            desc="%quickFix.I_23_Resolver.desc"
+            desc="%quickFix.I_23_DeleteResolver.desc"
             icon="icons/search16.gif"
-            label="%quickFix.I_23_Resolver.label">
+            label="%quickFix.I_23_DeleteResolver.label">
+         <rules
+               ruleId="I_23">
+         </rules>
+      </resolver>
+      <resolver
+            class="org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram.I_23_ConvertResolver"
+            desc="%quickFix.I_23_ConvertResolver.desc"
+            icon="icons/search16.gif"
+            label="%quickFix.I_23_ConvertResolver.label">
          <rules
                ruleId="I_23">
          </rules>
@@ -45,6 +54,14 @@
             class="org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram.ImagePathResolver"
             desc="%quickFix.ImagePath_Resolver.desc"
             label="%quickFix.ImagePath_Resolver.label">
+         <rules
+               ruleId="I_47">
+         </rules>
+      </resolver>
+      <resolver
+            class="org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram.ImagePathRemoveResolver"
+            desc="%quickFix.ImagePath_RemoveResolver.desc"
+            label="%quickFix.ImagePath_RemoveResolver.label">
          <rules
                ruleId="I_47">
          </rules>
@@ -95,7 +112,7 @@
             <constraint
                   class="org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram.CapellaElementInDescriptionNameCheck"
                   id="I_22"
-                  isEnabledByDefault="false"
+                  isEnabledByDefault="true"
                   lang="java"
                   mode="Batch"
                   name="I_22 - HyperLink to capella element or diagram name check"
@@ -104,9 +121,6 @@
                <message>
                   {0}
                </message>
-               <target
-                     class="CapellaElement">
-               </target>
                <description>
                   This rule ensures that hyperLinks to capella elements or diagrams names are up to date.
                </description>
@@ -114,7 +128,7 @@
             <constraint
                   class="org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram.CapellaElementInDescriptionExistanceCheck"
                   id="I_23"
-                  isEnabledByDefault="false"
+                  isEnabledByDefault="true"
                   lang="java"
                   mode="Batch"
                   name="I_23 - HyperLink to capella element or diagram existance check"
@@ -127,7 +141,7 @@
                      class="CapellaElement">
                </target>
                <description>
-                  This rule ensures that hyperLinks to non existing capella element or diagram are removed from the description.
+                  This rule ensures that hyperLinks to non existing capella element or diagram are removed or converted to text from the description.
                </description>
             </constraint>
             <constraint
@@ -169,7 +183,7 @@ Tip: If some cases are detected (validation markers), it is recommended to check
                <description>
                   This rule ensures that images, used in rich text editor, for attributes such as Capella elements description or diagram description, can be found.
 
-Tip: If some cases are detected (validation markers), it is recommended to check the existence of the image and move it in the right folder according to the used expected image path location. Once done, you can restart the validation. If you have still validation markers, then use the &quot;Quick fix&quot; tool to select a new image.
+Tip: If some cases are detected (validation markers), it is recommended to check the existence of the image and move it in the right folder according to the used expected image path location. Once done, you can restart the validation. If you have still validation markers, then use the &quot;Quick fix&quot; tool to select a new image or remove those images from the description.
                </description>
             </constraint>
          </constraints>

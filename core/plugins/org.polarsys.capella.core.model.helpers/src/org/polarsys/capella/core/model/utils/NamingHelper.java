@@ -25,6 +25,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
@@ -45,6 +47,8 @@ import org.polarsys.capella.core.data.information.Property;
 import org.polarsys.capella.core.data.information.datavalue.DataValue;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
+import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 
 /**
@@ -54,9 +58,10 @@ public class NamingHelper {
   private NamingHelper() {
     // To hide the implicit public one.
   }
-  
+
   /**
    * get the default title for the selection wizard
+   * 
    * @param modelElement
    * @return the default title
    */
@@ -65,8 +70,7 @@ public class NamingHelper {
     String title = getTitleLabel(modelElement);
     if (modelElement instanceof AbstractNamedElement) {
       name = ((AbstractNamedElement) modelElement).getName();
-    } 
-    else{
+    } else {
       name = EObjectLabelProviderHelper.getText(modelElement);
     }
     if (title.length() > 0 && name != null) {
@@ -75,7 +79,7 @@ public class NamingHelper {
     title = title + (name == null ? ICommonConstants.EMPTY_STRING : name);
     return title;
   }
-  
+
   /**
    * 
    * @param modelElement
@@ -97,10 +101,11 @@ public class NamingHelper {
 
     return builder.toString();
   }
-  
+
   /**
    * 
-   * @param resource the resource
+   * @param resource
+   *          the resource
    * @return the text for the given resource
    */
   public static String getTextForResource(IResource resource) {
@@ -152,9 +157,10 @@ public class NamingHelper {
 
     return Messages.getString("UndefinedValue"); //$NON-NLS-1$
   }
-  
+
   /**
    * get the default message for the selection wizard
+   * 
    * @param currentObject
    * @return
    */
@@ -162,7 +168,8 @@ public class NamingHelper {
     String message = "Select " + editedPropertyName; //$NON-NLS-1$
     if (currentObject instanceof AbstractNamedElement) {
       String name = ((AbstractNamedElement) currentObject).getName();
-      message = message + " of " + currentObject.eClass().getName() + " \"" + (name == null ? ICommonConstants.EMPTY_STRING : name) + "\"."; //$NON-NLS-1$//$NON-NLS-2$ //$NON-NLS-3$
+      message = message + " of " + currentObject.eClass().getName() + " \"" //$NON-NLS-1$//$NON-NLS-2$
+          + (name == null ? ICommonConstants.EMPTY_STRING : name) + "\"."; //$NON-NLS-1$
     }
     return message;
   }
@@ -180,9 +187,10 @@ public class NamingHelper {
     }
     return builder.toString();
   }
-  
+
   /**
    * Make the given String starts with capital letter.
+   * 
    * @param str
    * @return
    */
@@ -191,7 +199,7 @@ public class NamingHelper {
       return str;
     return str.substring(0, 1).toUpperCase() + str.substring(1).toLowerCase();
   }
-  
+
   /**
    * Change the name of the given element to the given value
    */
@@ -199,5 +207,23 @@ public class NamingHelper {
     if ((element != null) && !StringUtils.equals(element.getName(), value)) {
       element.setName(value);
     }
+  }
+
+  /**
+   * get the element name , element could be diagram or model
+   */
+  public static String getElementName(EObject object) {
+    String result = null;
+    if (null != object) {
+      result = CapellaElementExt.getName(object);
+      if (object instanceof DRepresentation) {
+        DRepresentation res = (DRepresentation) object;
+        object = RepresentationHelper.getRepresentationDescriptor(res);
+      }
+      if (object instanceof DRepresentationDescriptor) {
+        result = ((DRepresentationDescriptor) object).getName();
+      }
+    }
+    return result;
   }
 }

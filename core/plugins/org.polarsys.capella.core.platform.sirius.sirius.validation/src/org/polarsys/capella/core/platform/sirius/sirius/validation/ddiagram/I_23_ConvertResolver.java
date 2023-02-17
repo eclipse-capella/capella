@@ -13,24 +13,22 @@
 package org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewHelper;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
-import org.polarsys.capella.core.model.utils.NamingHelper;
 import org.polarsys.capella.core.model.utils.saxparser.SaxParserHelper;
-import org.polarsys.capella.core.model.utils.saxparser.WriteCapellaElementDescriptionSAXParser;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarkerResolution;
 
-public class I_22_Resolver extends AbstractCapellaMarkerResolution {
+public class I_23_ConvertResolver extends AbstractCapellaMarkerResolution {
 
   protected Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.VALIDATION);
 
@@ -41,8 +39,12 @@ public class I_22_Resolver extends AbstractCapellaMarkerResolution {
     final List<EObject> modelElements = getModelElements(marker_p);
     Diagnostic diagnostic = MarkerViewHelper.getDiagnostic(marker_p);
     String linkId = SaxParserHelper.getLinkIdFromStatus(diagnostic.getMessage());
+
     final boolean[] flag = { false };
     if (!modelElements.isEmpty()) {
+      // get only the target element
+      List<EObject> targetModelElements = modelElements.stream().limit(1).collect(Collectors.toList());
+
       AbstractReadWriteCommand abstrctCommand = new AbstractReadWriteCommand() {
 
         @Override
@@ -52,29 +54,13 @@ public class I_22_Resolver extends AbstractCapellaMarkerResolution {
 
         public void run() {
           flag[0] = false;
-          WriteCapellaElementDescriptionSAXParser writeDescription = new WriteCapellaElementDescriptionSAXParser() {
-            /**
-             * {@inheritDoc}
-             */
-            @Override
-            protected String getName(EObject object_p) {
-              return NamingHelper.getElementName(object_p);
-            }
-
-            /**
-             * {@inheritDoc}
-             */
-            @Override
-            protected boolean managedObject(EObject object_p) {
-              return super.managedObject(object_p) || (object_p instanceof DRepresentationDescriptor);
-            }
-          };
-          flag[0] = writeDescription.updateDescription(modelElements, linkId);
+          ConvertInValidHyperLinkInDescription writeDescription = new ConvertInValidHyperLinkInDescription();
+          flag[0] = writeDescription.updateDescription(targetModelElements, linkId);
         }
       };
 
       // execute the command
-      TransactionHelper.getExecutionManager(modelElements).execute(abstrctCommand);
+      TransactionHelper.getExecutionManager(targetModelElements).execute(abstrctCommand);
       if (flag[0]) {
         try {
           marker_p.delete();

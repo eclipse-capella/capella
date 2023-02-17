@@ -10,7 +10,8 @@ Require-Bundle: org.polarsys.capella.core.validation,
  org.polarsys.capella.core.validation.ui.ide,
  org.polarsys.capella.shared.id.handler,
  org.eclipse.sirius.diagram,
- org.eclipse.sirius.diagram.ui
+ org.eclipse.sirius.diagram.ui,
+ org.polarsys.capella.core.diagram.helpers;bundle-version="6.1.0"
 Export-Package: org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
