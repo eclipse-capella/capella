@@ -10,8 +10,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
-package org.polarsys.capella.core.model.utils.saxparser;
+package org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram;
 
 import java.io.StringReader;
 import java.util.Iterator;
@@ -23,41 +22,31 @@ import javax.xml.parsers.SAXParserFactory;
 
 import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.model.helpers.CapellaElementExt;
+import org.polarsys.capella.core.model.utils.saxparser.IConstantValidation;
+import org.polarsys.capella.core.model.utils.saxparser.SaxParserHelper;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
+import org.xml.sax.helpers.AttributesImpl;
 import org.xml.sax.helpers.DefaultHandler;
 
 /**
- * Using SAX parser correct capella element name in description
+ * Using SAX parser convert capella element or diagram hyperLink from description
  */
-public class WriteCapellaElementDescriptionSAXParser {
+public class ConvertInValidHyperLinkInDescription {
 
-  protected Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.VALIDATION);
-  protected StringBuilder description;
-  protected StringBuilder currentElementDescription;
+  protected Logger _logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.VALIDATION);
+  protected StringBuilder __description;
+  protected StringBuilder _currentElementDescription;
 
-  public WriteCapellaElementDescriptionSAXParser() {
-    description = null;
-    currentElementDescription = null;
-  }
-
-  protected String getName(EObject object) {
-    if (null != object) {
-      return CapellaElementExt.getName(object);
-    }
-    return null;
-  }
-
-  protected boolean managedObject(EObject object) {
-    return (object instanceof CapellaElement || object instanceof DDiagram);
+  public ConvertInValidHyperLinkInDescription() {
+    __description = null;
+    _currentElementDescription = null;
   }
 
   private String getDescription(EObject object) {
@@ -87,15 +76,15 @@ public class WriteCapellaElementDescriptionSAXParser {
     while (iterator.hasNext()) {
       EObject object = iterator.next();
       if (object instanceof CapellaElement || object instanceof DRepresentationDescriptor) {
-        String elementDescription = getDescription(object);
-        if ((null != elementDescription) && !elementDescription.isEmpty()) {
-          currentElementDescription = new StringBuilder();
+        String description = getDescription(object);
+        if ((null != description) && !description.isEmpty()) {
+          _currentElementDescription = new StringBuilder();
           // for each description, start from scratch
-          description = new StringBuilder();
-          elementDescription = SaxParserHelper.escapeSpecialCharacter(elementDescription);
-          currentElementDescription.append(IConstantValidation.ROOT_NODE);
-          currentElementDescription.append(elementDescription);
-          currentElementDescription.append(IConstantValidation.ROOT_NODE_END);
+          __description = new StringBuilder();
+          description = SaxParserHelper.escapeSpecialCharacter(description);
+          _currentElementDescription.append(IConstantValidation.ROOT_NODE);
+          _currentElementDescription.append(description);
+          _currentElementDescription.append(IConstantValidation.ROOT_NODE_END);
           SAXParser saxParser = null;
           StringReader reader = null;
           try {
@@ -108,7 +97,7 @@ public class WriteCapellaElementDescriptionSAXParser {
             // sax data handler
             DefaultHandler handler = new DefaultHandler() {
               // check the capella name: if same as value do nothing else update the description
-              EObject elementFound = null;
+              boolean elementIsNull = false;
               // value calculated
               boolean valueToAdd = false;
               // merge the value
@@ -126,17 +115,16 @@ public class WriteCapellaElementDescriptionSAXParser {
               }
 
               @Override
-              public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
-
+              public void startElement(String uri, String localName, String qName, Attributes attributes)
+                  throws SAXException {
                 // startElement can be called just after value is calculated for nested element
                 // example: <p> value1 <a href="hvalue"> value2 </a></p>
                 // so need to add the value to the result before starting new element
                 if (valueToAdd) {
-                  description.append(elementValue.toString());
+                  __description.append(elementValue.toString());
                   valueToAdd = false;
                 }
                 elementValue = new StringBuilder(0);
-                
 
                 // if qName is break
                 // an endElement will add the tag value to the result
@@ -144,45 +132,65 @@ public class WriteCapellaElementDescriptionSAXParser {
                   return;
                 }
 
+                // if not a tag, add avery thing to result
+                if (!qName.equalsIgnoreCase(IConstantValidation.XHTML_A_TAG)) {
+                  addElementToResult(qName, attributes);
+                } else {
+
+                  for (int i = 0; i < attributes.getLength(); i++) {
+                    // above filter state the image source (which could be relative or absolute path)
+                    String attValue = attributes.getValue(i);
+                    String attName = attributes.getQName(i);
+                    elementId = attValue.replace("hlink://", "");
+                    if ((null != attValue) && !attValue.isEmpty()
+                        && qName.equalsIgnoreCase(IConstantValidation.XHTML_A_TAG)
+                        && attName.equalsIgnoreCase(IConstantValidation.XHTML_HREF_ATT)) {
+
+                      EObject eObject = SaxParserHelper.getEObjectFromHrefAttribute(object, attValue);
+                      if (null == eObject) {
+                        // if ok default value will be added else the value will be updated
+                        elementIsNull = true;
+                        break;
+                      }
+                    }
+                  }
+                  if (!elementIsNull || (!elementId.isEmpty() && !elementId.equals(linkId))) {
+                    addElementToResult(qName, attributes);
+                  } else {
+                    addElementToResult("span", (Attributes) new AttributesImpl());
+                  }
+                }
+
+              }
+
+              public void addElementToResult(String qName, Attributes attributes) {
                 // '<'
-                description.append(IConstantValidation.LESS_THAN);
+                __description.append(IConstantValidation.LESS_THAN);
                 // element name
-                description.append(qName);
+                __description.append(qName);
                 if (attributes.getLength() == 0) {
                   // close tab ">" if no attributes
                   // empty line correction in description after publication
-                  description.append(IConstantValidation.GREATER_THAN);
+                  __description.append(IConstantValidation.GREATER_THAN);
                 } else {
                   // fore all attributes
                   for (int i = 0; i < attributes.getLength(); i++) {
                     // above filter state the image source (which could be relative or absolute path)
                     String attValue = attributes.getValue(i);
                     String attName = attributes.getQName(i);
-                    // assuming that capella/diagram element reference contain "platform" and "resource" string in href
-                    if ((null != attValue) && !attValue.isEmpty() && qName.equalsIgnoreCase(IConstantValidation.XHTML_A_TAG)
-                        && attName.equalsIgnoreCase(IConstantValidation.XHTML_HREF_ATT)) {
-
-                      EObject eObject = SaxParserHelper.getEObjectFromHrefAttribute(object, attValue);
-
-                      if (managedObject(eObject)) {
-                        // if ok default value will be added else the value will be updated
-                        elementFound = eObject;
-                        elementId = attValue.replace("hlink://", "");
-                      }
-                    }
                     // add other attribute
-                    description.append(IConstantValidation.SPACE);
-                    description.append(attName);
-                    description.append(IConstantValidation.EQUAL);
-                    description.append(IConstantValidation.DOUBLE_QUOTES);
-                    description.append(attValue);
-                    description.append(IConstantValidation.DOUBLE_QUOTES);
+                    __description.append(IConstantValidation.SPACE);
+                    __description.append(attName);
+                    __description.append(IConstantValidation.EQUAL);
+                    __description.append(IConstantValidation.DOUBLE_QUOTES);
+                    __description.append(attValue);
+                    __description.append(IConstantValidation.DOUBLE_QUOTES);
                   }
                   if (qName.equals("img")) {
-                	  description.append("/");
+                    __description.append("/");
                   }
                   // close start Element
-                  description.append(IConstantValidation.GREATER_THAN);
+                  __description.append(IConstantValidation.GREATER_THAN);
                 }
               }
 
@@ -191,50 +199,38 @@ public class WriteCapellaElementDescriptionSAXParser {
                */
               @Override
               public void endElement(String uri, String localName, String qName) throws SAXException {
-            	if (qName.equals("img")) {
-            	  return;
+                if (qName.equals("img")) {
+                  return;
                 }
-                // break element
+                // add break element
                 if (qName.equals(IConstantValidation.XHTML_BREAK_ELEMENT)) {
-                  description.append(IConstantValidation.XHTML_BREAK_ELEMENT_END);
+                  __description.append(IConstantValidation.XHTML_BREAK_ELEMENT_END);
                   return;
                 }
 
-                // value
+                // add value
                 if (valueToAdd) {
                   valueToAdd = false;
-                  // flag will make sure that element value is added to result
-                  boolean flag = false;
-                  String value = elementValue.toString();
-                  if ((null != elementFound)) {
-                    String name = getName(elementFound);
-                    value = value.replaceAll("\\s+", " "); //$NON-NLS-1$//$NON-NLS-2$
-                    if (!name.equals(value) && (!elementId.isEmpty() && elementId.equals(linkId))) {
-                      if (managedObject(elementFound)) {
-                        flag = true;
-                        // add the name of the capella element or diagram
-                        description.append(name);
-                      }
-                    }
-                    // element treated so re-initialize
-                    elementFound = null;
-                  }
-                  if (!flag) {
-                    // add the current value
-                    description.append(value);
-                  }
+                  __description.append(elementValue.toString());
                 }
 
-                // end tab
-                //
-                description.append(IConstantValidation.CLOSE_TAB_PREFIX);
-                description.append(qName);
-                description.append(IConstantValidation.GREATER_THAN);
+                // add end tab
+                __description.append(IConstantValidation.CLOSE_TAB_PREFIX);
+                if (qName.equalsIgnoreCase(IConstantValidation.XHTML_A_TAG) && elementIsNull && !elementId.isEmpty()
+                    && elementId.equals(linkId)) {
+                  __description.append("span");
+                } else {
+                  __description.append(qName);
+                }
+                __description.append(IConstantValidation.GREATER_THAN);
 
+                if (elementIsNull && qName.equalsIgnoreCase(IConstantValidation.XHTML_A_TAG)) {
+                  // re-initialize
+                  elementIsNull = false;
+                  elementId = "";
+                }
                 // empty the element value
                 elementValue = new StringBuilder(0);
-                elementId = "";
-
               }
 
             };
@@ -242,24 +238,25 @@ public class WriteCapellaElementDescriptionSAXParser {
 
             // input Source
             InputSource is = new InputSource();
-            reader = new StringReader(currentElementDescription.toString());
+            reader = new StringReader(_currentElementDescription.toString());
             is.setCharacterStream(reader);
             saxParser.parse(is, handler);
 
           } catch (Exception exception) {
-            logger.error("Exception while quick fix : " + exception.toString()); //$NON-NLS-1$
+            _logger.error("Exception while quick fix : " + exception.toString()); //$NON-NLS-1$
             return false;
           } finally {
             // reset parser and reader
-            if(reader != null){
+            if (reader != null) {
               reader.close();
             }
-            if(saxParser != null){
+            if (saxParser != null) {
               saxParser.reset();
             }
           }
           // remove root
-          String result = description.toString().replaceAll(IConstantValidation.ROOT_NODE, ICommonConstants.EMPTY_STRING);
+          String result = __description.toString().replaceAll(IConstantValidation.ROOT_NODE,
+              ICommonConstants.EMPTY_STRING);
           // remove root_end
           result = result.replaceAll(IConstantValidation.ROOT_NODE_END, ICommonConstants.EMPTY_STRING);
           // set description

@@ -29,7 +29,7 @@ import org.polarsys.capella.common.tools.report.config.registry.ReportManagerReg
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarkerResolution;
 
-public class I_23_Resolver extends AbstractCapellaMarkerResolution {
+public class I_23_ConvertResolver extends AbstractCapellaMarkerResolution {
 
   protected Logger _logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.VALIDATION);
 
@@ -66,7 +66,7 @@ public class I_23_Resolver extends AbstractCapellaMarkerResolution {
 
         public void run() {
           flag[0] = false;
-          DeleteInValidHyperLinkInDescription writeDescription = new DeleteInValidHyperLinkInDescription();
+          ConvertInValidHyperLinkInDescription writeDescription = new ConvertInValidHyperLinkInDescription();
           flag[0] = writeDescription.updateDescription(targetModelElements, linkId);
         }
       };

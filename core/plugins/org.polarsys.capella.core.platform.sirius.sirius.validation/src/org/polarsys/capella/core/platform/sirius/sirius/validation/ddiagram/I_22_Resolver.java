@@ -13,15 +13,18 @@
 package org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewHelper;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.core.model.utils.saxparser.WriteCapellaElementDescriptionSAXParser;
@@ -31,11 +34,25 @@ public class I_22_Resolver extends AbstractCapellaMarkerResolution {
 
   protected Logger _logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.VALIDATION);
 
+  public String extractId(String statusMessage) {
+    Pattern pattern = Pattern.compile("\\(id: (.+?)\\)");
+
+    Matcher matcher = pattern.matcher(statusMessage);
+
+    if (matcher.find()) {
+      return matcher.group(1);
+    }
+    return null;
+
+  }
+
   /**
    * {@inheritDoc}
    */
   public void run(IMarker marker_p) {
     final List<EObject> modelElements = getModelElements(marker_p);
+    Diagnostic diagnostic = MarkerViewHelper.getDiagnostic(marker_p);
+    String linkId = extractId(diagnostic.getMessage());
     final boolean[] flag = { false };
     if (!modelElements.isEmpty()) {
       AbstractReadWriteCommand abstrctCommand = new AbstractReadWriteCommand() {
@@ -55,16 +72,16 @@ public class I_22_Resolver extends AbstractCapellaMarkerResolution {
             protected String getName(EObject object_p) {
               return CapellaElementInDescriptionNameCheck.getName(object_p);
             }
-            
+
             /**
              * {@inheritDoc}
              */
             @Override
-             protected boolean managedObject(EObject object_p) {
+            protected boolean managedObject(EObject object_p) {
               return super.managedObject(object_p) || (object_p instanceof DRepresentationDescriptor);
             }
           };
-          flag[0] = writeDescription.updateDescription(modelElements);
+          flag[0] = writeDescription.updateDescription(modelElements, linkId);
         }
       };
 
