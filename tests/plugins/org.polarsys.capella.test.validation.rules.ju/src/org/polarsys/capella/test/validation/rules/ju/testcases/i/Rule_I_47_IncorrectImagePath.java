@@ -12,22 +12,33 @@
  *******************************************************************************/
 package org.polarsys.capella.test.validation.rules.ju.testcases.i;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IMarker;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EClass;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.ExecutionManagerRegistry;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.platform.sirius.ted.DataNotifier;
+import org.polarsys.capella.common.tools.report.appenders.reportlogview.LightMarkerRegistry;
+import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewHelper;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.libraries.model.CapellaModel;
 import org.polarsys.capella.core.libraries.utils.ScopeModelWrapper;
+import org.polarsys.capella.core.model.handler.markers.ICapellaValidationConstants;
 import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 import org.polarsys.capella.core.model.handler.validation.CapellaDiagnostician;
+import org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram.ImagePathRemoveResolver;
 import org.polarsys.capella.shared.id.handler.IScope;
 import org.polarsys.capella.shared.id.handler.IdManager;
 import org.polarsys.capella.test.framework.api.OracleDefinition;
@@ -75,6 +86,22 @@ public class Rule_I_47_IncorrectImagePath extends ValidationRulePartialTestCase 
     assertEquals("Bad diagnostic children number", 1, children.size());
     assertEquals("Bad diagnostic severity", Diagnostic.ERROR, children.get(0).getSeverity());
     assertTrue("Bad diagnotic message", children.get(0).getMessage().contains("(Image) The absolute path"));
+    List<IMarker> markers = new ArrayList<IMarker>();
+    for (Diagnostic childDiagnostic : children) {
+      IFile resourceFile = EcoreUtil2.getFile(partToCheck.eResource());
+      IMarker marker = LightMarkerRegistry.getInstance().createMarker(resourceFile, childDiagnostic,
+          ICapellaValidationConstants.CAPELLA_MARKER_ID);
+
+      if (marker != null) {
+        markers.add(marker);
+      }
+    }
+    if (getCheckQuickFix()) {
+      IStatus status = testCheckQuickFix(markers);
+      if (status != null && !status.isOK()) {
+        fail(status.getMessage());
+      }
+    }
   }
 
   /**
@@ -99,6 +126,23 @@ public class Rule_I_47_IncorrectImagePath extends ValidationRulePartialTestCase 
   @Override
   protected String getRequiredTestModel() {
     return "exchange-item-instance-and-part-model";
+  }
+
+  @Override
+  protected boolean getCheckQuickFix() {
+    return true;
+  }
+
+  @Override
+  protected IStatus testCheckQuickFix(List<IMarker> markers) {
+    ImagePathRemoveResolver imagePathRemoveResolver = new ImagePathRemoveResolver();
+    CapellaElement element = (CapellaElement) MarkerViewHelper.getModelElementsFromMarker(markers.get(0)).get(0);
+    imagePathRemoveResolver.run(markers.get(0));
+    String imageTag = "<img src=\\\"file:/C:/INVALID/PATH/11_Images/circle_ws2.png\\\" />";
+    if (element.getDescription().contains(imageTag)) {
+      return Status.error("The I_47 Resolver has failed");
+    }
+    return Status.OK_STATUS;
   }
 
 }

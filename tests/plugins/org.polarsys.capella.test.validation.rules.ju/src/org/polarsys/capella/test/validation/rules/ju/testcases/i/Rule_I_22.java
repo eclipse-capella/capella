@@ -15,49 +15,74 @@ package org.polarsys.capella.test.validation.rules.ju.testcases.i;
 import java.util.Arrays;
 import java.util.List;
 
+import org.eclipse.core.resources.IMarker;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EClass;
+import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewHelper;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
+import org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram.I_22_Resolver;
 import org.polarsys.capella.test.framework.api.OracleDefinition;
 import org.polarsys.capella.test.validation.rules.ju.testcases.AbstractRulesOnIntegrityTest;
 
 /**
  * test on I_22: This rule ensures that hyperLinks to capella elements or diagrams names are up to date.
+ * 
  * @generated
  */
 public class Rule_I_22 extends AbstractRulesOnIntegrityTest {
 
-	/**
-	 * @see org.polarsys.capella.test.validation.rules.ju.testcases.ValidationRuleTestCase#getTargetedEClass()
-	 * @generated
-	 */
-	protected EClass getTargetedEClass() {
-		return CapellacorePackage.Literals.CAPELLA_ELEMENT;
-	}
+  /**
+   * @see org.polarsys.capella.test.validation.rules.ju.testcases.ValidationRuleTestCase#getTargetedEClass()
+   * @generated
+   */
+  protected EClass getTargetedEClass() {
+    return CapellacorePackage.Literals.CAPELLA_ELEMENT;
+  }
 
-	/**
-	 * @see org.polarsys.capella.test.validation.rules.ju.testcases.ValidationRuleTestCase#getRuleID()
-	 * @generated
-	 */
-	protected String getRuleID() {
-		return "org.polarsys.capella.core.platform.sirius.sirius.validation.I_22";
-	}
+  /**
+   * @see org.polarsys.capella.test.validation.rules.ju.testcases.ValidationRuleTestCase#getRuleID()
+   * @generated
+   */
+  protected String getRuleID() {
+    return "org.polarsys.capella.core.platform.sirius.sirius.validation.I_22";
+  }
 
-	/**
-	 * @see org.polarsys.capella.test.validation.rules.ju.testcases.ValidationRulePartialTestCase#getScopeDefinition()
-	 * @generated
-	 */
-	protected List<String> getScopeDefinition() {
-		return Arrays.asList(new String[] {
-				"21f79e9a-700b-4673-9599-58c738a208d2",
-				"58fcff83-081f-49e8-b64d-e503042642ab" });
-	}
+  /**
+   * @see org.polarsys.capella.test.validation.rules.ju.testcases.ValidationRulePartialTestCase#getScopeDefinition()
+   * @generated
+   */
+  protected List<String> getScopeDefinition() {
+    return Arrays.asList(new String[] { "21f79e9a-700b-4673-9599-58c738a208d2", "58fcff83-081f-49e8-b64d-e503042642ab",
+        "a9972f3e-dcb8-4d59-a0db-56c14a13890f" });
+  }
 
-	/**
-	 * @see org.polarsys.capella.test.validation.rules.ju.testcases.ValidationRuleTestCase#getOracleDefinitions()
-	 * @generated
-	 */
-	protected List<OracleDefinition> getOracleDefinitions() {
-		return Arrays.asList(new OracleDefinition[] { new OracleDefinition(
-				"58fcff83-081f-49e8-b64d-e503042642ab", 1) });
-	}
+  /**
+   * @see org.polarsys.capella.test.validation.rules.ju.testcases.ValidationRuleTestCase#getOracleDefinitions()
+   * @generated
+   */
+  protected List<OracleDefinition> getOracleDefinitions() {
+    return Arrays.asList(new OracleDefinition[] { new OracleDefinition("58fcff83-081f-49e8-b64d-e503042642ab", 1),
+        new OracleDefinition("a9972f3e-dcb8-4d59-a0db-56c14a13890f", 1) });
+  }
+
+  @Override
+  protected boolean getCheckQuickFix() {
+    return true;
+  }
+
+  @Override
+  protected IStatus testCheckQuickFix(List<IMarker> markers) {
+    I_22_Resolver i22Resolver = new I_22_Resolver();
+    i22Resolver.run(markers.get(0));
+    String falseName = "OperationalActivity 1";
+    String trueName = "OA_to_be_linked";
+    CapellaElement element = (CapellaElement) MarkerViewHelper.getModelElementsFromMarker(markers.get(0)).get(0);
+    if (element.getDescription().contains(falseName) || !element.getDescription().contains(trueName)) {
+      return Status.error("The I_22_Resolver has failed");
+    }
+
+    return Status.OK_STATUS;
+  }
 }

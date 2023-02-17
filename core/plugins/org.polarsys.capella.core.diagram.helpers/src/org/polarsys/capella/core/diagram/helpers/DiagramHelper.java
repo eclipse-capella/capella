@@ -64,6 +64,7 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorPart;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.diagram.helpers.naming.DAnnotationSourceConstants;
 import org.polarsys.capella.core.diagram.helpers.naming.DiagramDescriptionConstants;
 
@@ -83,6 +84,39 @@ public class DiagramHelper {
 
   public RepresentationDescription getDescription(DRepresentation representation) {
     return DialectManager.INSTANCE.getDescription(representation);
+  }
+
+  /**
+   * Returns the description of an element whether it's a model or diagram
+   * 
+   * @param object
+   */
+  public static String getElementDescription(EObject object) {
+    if (object instanceof CapellaElement) {
+      return ((CapellaElement) object).getDescription();
+    }
+
+    if (object instanceof DRepresentationDescriptor) {
+      return ((DRepresentationDescriptor) object).getDocumentation();
+    }
+
+    return null;
+  }
+
+  /**
+   * Update the description of an element whether it's a model or diagram
+   * 
+   * @param object
+   * @param description
+   */
+  public static void setElementDescription(EObject object, String description) {
+    if (object instanceof CapellaElement) {
+      ((CapellaElement) object).setDescription(description);
+    }
+
+    if (object instanceof DRepresentationDescriptor) {
+      ((DRepresentationDescriptor) object).setDocumentation(description);
+    }
   }
 
   /**
@@ -409,18 +443,20 @@ public class DiagramHelper {
       diagramFormatDataManagers.stream().forEach(SiriusFormatDataManager::clearFormatData);
     }
   }
-  
+
   /**
    * Set the position of the given node at the given location
+   * 
    * @param container
    * @param location
    */
   public static void setPosition(AbstractDNode node, Point location) {
     SiriusLayoutDataManager.INSTANCE.addData(new RootLayoutData(node, location, null));
   }
-  
+
   /**
    * Returns the position relatively to the given node (relative to the given container)
+   * 
    * @param node
    * @param deltaX
    * @param deltaY
@@ -442,31 +478,32 @@ public class DiagramHelper {
     newLocation.translate(nodeLocation);
     if (deltaX == 0) {
       // translate to the center of the node
-      newLocation.translate(nodeWidth/2, 0);
+      newLocation.translate(nodeWidth / 2, 0);
     } else if (deltaX > 0) {
       // translate to the right border of the node + given delta
-      newLocation.translate(nodeWidth+deltaX, 0);
+      newLocation.translate(nodeWidth + deltaX, 0);
     } else if (deltaX < 0) {
       // translate to given delta
       newLocation.translate(deltaX, 0);
     }
     if (deltaY == 0) {
       // translate to the center of the node
-      newLocation.translate(0, nodeHeight/2);
+      newLocation.translate(0, nodeHeight / 2);
     } else if (deltaY < 0) {
       // translate to given delta
       newLocation.translate(0, deltaY);
     } else if (deltaY > 0) {
       // translate to the bottom border of the node + given delta
-      newLocation.translate(0, nodeHeight+deltaY);
+      newLocation.translate(0, nodeHeight + deltaY);
     }
     // transform the absolute position to a relative position to its future container
     tranformAbsolutePositionInRelativePositionToTheContainer(newLocation, container);
     return newLocation;
   }
-  
+
   /**
    * Returns the position of the middle of the given edge (relative to the given container)
+   * 
    * @param edge
    * @return
    */
@@ -485,11 +522,11 @@ public class DiagramHelper {
       ShapeEditPart sourceEditPart = getShapeEditPart(source);
       ShapeEditPart targetEditPart = getShapeEditPart(target);
       if (sourceEditPart != null && targetEditPart != null) {
-        sourceLocation.translate(sourceEditPart.getSize().width/2, sourceEditPart.getSize().height/2);
-        targetLocation.translate(targetEditPart.getSize().height/2, targetEditPart.getSize().height/2);
+        sourceLocation.translate(sourceEditPart.getSize().width / 2, sourceEditPart.getSize().height / 2);
+        targetLocation.translate(targetEditPart.getSize().height / 2, targetEditPart.getSize().height / 2);
       }
       // translate to the middle of the edge (between centers of source and target)
-      newLocation.translate((targetLocation.x - sourceLocation.x)/2,( targetLocation.y - sourceLocation.y)/2);
+      newLocation.translate((targetLocation.x - sourceLocation.x) / 2, (targetLocation.y - sourceLocation.y) / 2);
     }
     // translate to the given delta
     newLocation.translate(deltaX, deltaY);
@@ -501,6 +538,7 @@ public class DiagramHelper {
 
   /**
    * Transform an absolute position in a relative position
+   * 
    * @param position
    * @param container
    */
@@ -515,6 +553,7 @@ public class DiagramHelper {
 
   /**
    * Returns the absolute position of the given node
+   * 
    * @param node
    * @return
    */
@@ -523,9 +562,10 @@ public class DiagramHelper {
     getAbsolutePositionOfNode(node, position);
     return position;
   }
-  
+
   /**
    * Set the given point to the absolute position of the given node
+   * 
    * @param node
    * @param position
    */
@@ -544,6 +584,7 @@ public class DiagramHelper {
 
   /**
    * Returns the GraphicalEditPart of the given DDiagramElement
+   * 
    * @param diagramElement
    * @return
    */

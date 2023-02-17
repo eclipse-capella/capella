@@ -271,7 +271,7 @@
 				<td>I_23 - HyperLink to capella element or diagram existance check </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule ensures that hyperLinks to non existing capella element or diagram are removed from the description.</td>
+				<td colspan="2">This rule ensures that hyperLinks to non existing capella element or diagram are removed from the description or converted to text.</td>
 			</tr>
 		</table>
 		<p>
@@ -590,10 +590,11 @@
 				<td colspan="2">This rule ensures that images, used in rich text editor, for attributes such as Capella elements description or diagram description, can be found.
 					<p>Tip: If some cases are detected (validation markers), it is recommended to check the existence of the image and move it in the right folder according to the used expected image path location. Once done, you can restart the validation.
 						<br/>
-						If you still have validation markers, then use the "Quick fix" tools. There are two "quick fix"
+						If you still have validation markers, then use the "Quick fix" tool to select a new image or remove those images from the description. There are three "quick fixes"
 <ul>
-<li>select a new image to replace the broken image</li>
-<li>replace all broken path by a new one. 
+<li>Remove missing image from rich text description </li>
+<li>Select a new image to replace the broken image</li>
+<li>Replace all broken path by a new one. 
 						<b>This "quick fix" will impact the whole model</b> and not only the object associated to the marker</li>
 </ul>
 					</p>
