@@ -6,8 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _VqGRgDS6EeepRL_NUeNEXg
-Runtime-Version: 2.5.0.201909172034
-Save-Time: 5/11/20 11:06 AM
+Runtime-Version: 2.5.4.202208092355
+Save-Time: 2/21/23, 11:32 AM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -27,8 +27,7 @@ with [get-view "Project Explorer" | get-tree] {
     select "EOLE_AF/EOLE_AF.aird" | key-type Enter
     click -default
     select "EOLE_AF/EOLE_AF.aird/EOLE_AF/Operational Analysis/Operational Capabilities/Provide Meteo Services/Scenario" 
-        | key-type Enter
-    click -default
+        | get-menu -path "Show In Properties dialog" | click
 }
 with [get-window Properties] {
     get-tab-folder | get-tab-item Capella | click

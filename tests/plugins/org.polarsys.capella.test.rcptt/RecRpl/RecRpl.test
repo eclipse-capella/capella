@@ -6,7 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _QblmIKj2Eee0yuaysMB3Rg
-Save-Time: 3/23/21 10:41 AM
+Runtime-Version: 2.5.4.202208092355
+Save-Time: 2/21/23, 11:09 AM
 Testcase-Type: ecl
 
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
@@ -34,7 +35,7 @@ with [get-window "Filters and Customization"] {
     get-tab-folder | get-tab-item "Pre-set filters" | click
     with [get-table] {
         get-item "Functional Exchanges" | check
-        get-item "Function Port" | check
+        get-item "Function Ports" | check
     }
     get-button OK | click
 }
@@ -587,10 +588,11 @@ with [get-editor "[SDFB] Root System Function" -index 2] {
         mouse-move 279 2 -height 687 -width 1042
     }
     get-button "Paste the current recorded format (layout and style) to the selected diagram" | click
+    get-window "Paste mode" | get-button Paste | click
     get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function" | mouse-move 260 479 -height 687 
         -width 1042
 }
-
+   
 // Layout shall be copied
 
 with [get-editor "[SDFB] Root System Function" -index 2 | get-diagram -index 1 | get-edit-part 
@@ -600,7 +602,7 @@ with [get-editor "[SDFB] Root System Function" -index 2 | get-diagram -index 1 |
         mouse-move 61 2 button1 -height 68 -width 148
         mouse-press 61 2 button1 -height 68 -width 148
         mouse-release 61 2 button1 524288 -height 68 -width 148
-    }
+}
     mouse-move 170 372 button1 -height 687 -width 1042
     mouse-press 170 372 button1 -height 687 -width 1042
     mouse-release 170 372 button1 524288 -height 687 -width 1042

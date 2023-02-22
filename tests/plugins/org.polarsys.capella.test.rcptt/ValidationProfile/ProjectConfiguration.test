@@ -5,8 +5,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _4W6WAKnCEee0yuaysMB3Rg
-Runtime-Version: 2.5.0.M2
-Save-Time: 9/10/19 5:33 PM
+Runtime-Version: 2.5.4.202208092355
+Save-Time: 2/21/23, 11:49 AM
 Testcase-Type: ecl
 
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
@@ -181,15 +181,14 @@ with [get-window "Properties for ConfigProject1"] {
 }
 
 // Menu Category shall be reenabled
-with [get-editor "[SDFB] Root System Function" | get-diagram -index 1 | get-edit-part 
-    -name "[SDFB] Root System Function"] {
-    mouse-move 205 233 -height 687 -width 1042
-    get-edit-part -name "SystemFunction 1" | get-edit-part 
-        -className DNodeContainerViewNodeContainerCompartmentEditPart | mouse-move 141 41 -height 68 -width 148
-    with [get-edit-part -name "SystemFunction 2" | get-edit-part -name "FIP 1" | get-target-connection 0] {
-        mouse-move 43 46 button3 -height 63 -width 210
-        mouse-press 43 46 button3 -height 63 -width 210
-        mouse-release 43 46 button3 2097152 -height 63 -width 210
+with [get-editor "[SDFB] Root System Function" | get-diagram -index 1] {
+    with [get-edit-part -name "[SDFB] Root System Function"] {
+        with [get-edit-part -name "SystemFunction 2" | get-edit-part -name "FIP 1" | get-target-connection -path 0 
+            | get-edit-part -className DEdgeNameEditPart] {
+            mouse-move 66 3 button3 -height 16 -width 132
+            mouse-press 66 3 button3 -height 16 -width 132
+            mouse-release 66 3 button3 "" -height 16 -width 132
+        }
     }
 }
 with [get-editor "[SDFB] Root System Function" | get-diagram -index 1] {

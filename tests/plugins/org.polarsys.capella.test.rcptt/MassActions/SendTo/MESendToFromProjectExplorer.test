@@ -6,8 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _wcMv8HlMEeinH5hIqek0Nw
-Runtime-Version: 2.3.0.201806262310
-Save-Time: 9/20/18 11:54 AM
+Runtime-Version: 2.5.4.202208092355
+Save-Time: 2/21/23, 12:02 PM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -25,11 +25,7 @@ Entry-Name: .content
 
 get-view "Project Explorer" | get-tree 
     | select "In-Flight Entertainment System/In-Flight Entertainment System.aird" | double-click
-with [get-view "Fast Linker" | get-canvas] {
-    mouse-enter 4 14 -height 145 -width 244
-    mouse-move 29 2 -height 145 -width 244
-    mouse-exit 36 "-1" -height 145 -width 244
-}
+
 get-menu -path "Window/Show View/Other..." | click
 with [get-window "Show View"] {
     with [get-editbox] {

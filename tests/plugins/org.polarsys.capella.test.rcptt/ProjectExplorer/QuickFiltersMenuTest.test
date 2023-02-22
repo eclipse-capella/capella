@@ -6,8 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _8tBCsOSeEeeF_6848eoV8Q
-Runtime-Version: 2.5.0.M2
-Save-Time: 9/10/19 5:42 PM
+Runtime-Version: 2.5.4.202208092355
+Save-Time: 2/21/23, 11:52 AM
 Testcase-Type: ecl
 
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
@@ -33,13 +33,13 @@ with [get-window "Filters and Customization"] {
     get-item "Combined Fragments" | get-property checked | equals true | verify-true
     get-item "Component Exchange Ends" | get-property checked | equals true | verify-true
     get-item "Component Exchanges" | get-property checked | equals true | verify-true
-    get-item "Component Port" | get-property checked | equals true | verify-true
+    get-item "Component Ports" | get-property checked | equals true | verify-true
     get-item "EMF Resources" | get-property checked | equals true | verify-true
     get-item "Events" | get-property checked | equals true | verify-true
     get-item "Execution Ends" | get-property checked | equals true | verify-true
     get-item "Executions" | get-property checked | equals true | verify-true
     get-item "Fragment Ends" | get-property checked | equals true | verify-true
-    get-item "Function Port" | get-property checked | equals true | verify-true
+    get-item "Function Ports" | get-property checked | equals true | verify-true
     get-item "Functional Chain Involvements" | get-property checked | equals true | verify-true
     get-item "Functional Exchanges" | get-property checked | equals true | verify-true
     get-item "Interaction Operands" | get-property checked | equals true | verify-true
@@ -54,7 +54,7 @@ with [get-window "Filters and Customization"] {
     get-item "Parts" | get-property checked | equals true | verify-true
     get-item "Physical Links" | get-property checked | equals true | verify-true
     get-item "Physical Path Involvements" | get-property checked | equals true | verify-true
-    get-item "Physical Port" | get-property checked | equals true | verify-true
+    get-item "Physical Ports" | get-property checked | equals true | verify-true
     get-item "Property Value Packages" | get-property checked | equals true | verify-true
     get-item "Refinement Links" | get-property checked | equals true | verify-true
     get-item "Replicable Element Compliancy Definitions" | get-property checked | equals true | verify-true
@@ -65,7 +65,7 @@ with [get-window "Filters and Customization"] {
     get-item "Sequence Messages" | get-property checked | equals true | verify-true
     get-item "Capability and Mission Involvements" | get-property checked | equals true | verify-true
     get-item "Technical Interfaces" | get-property checked | equals true | verify-true
-    get-item "Trace" | get-property checked | equals true | verify-true
+    get-item "Traces" | get-property checked | equals true | verify-true
     get-item "Transformation Links" | get-property checked | equals true | verify-true
     }
     get-button OK | click
@@ -91,13 +91,13 @@ with [get-window "Filters and Customization"] {
     get-item "Combined Fragments" | get-property checked | equals false | verify-true
     get-item "Component Exchange Ends" | get-property checked | equals false | verify-true
     get-item "Component Exchanges" | get-property checked | equals false | verify-true
-    get-item "Component Port" | get-property checked | equals false | verify-true
+    get-item "Component Ports" | get-property checked | equals false | verify-true
     get-item "EMF Resources" | get-property checked | equals false | verify-true
     get-item "Events" | get-property checked | equals false | verify-true
     get-item "Execution Ends" | get-property checked | equals false | verify-true
     get-item "Executions" | get-property checked | equals false | verify-true
     get-item "Fragment Ends" | get-property checked | equals false | verify-true
-    get-item "Function Port" | get-property checked | equals false | verify-true
+    get-item "Function Ports" | get-property checked | equals false | verify-true
     get-item "Functional Chain Involvements" | get-property checked | equals false | verify-true
     get-item "Functional Exchanges" | get-property checked | equals false | verify-true
     get-item "Interaction Operands" | get-property checked | equals false | verify-true
@@ -112,7 +112,7 @@ with [get-window "Filters and Customization"] {
     get-item "Parts" | get-property checked | equals false | verify-true
     get-item "Physical Links" | get-property checked | equals false | verify-true
     get-item "Physical Path Involvements" | get-property checked | equals false | verify-true
-    get-item "Physical Port" | get-property checked | equals false | verify-true
+    get-item "Physical Ports" | get-property checked | equals false | verify-true
     get-item "Property Value Packages" | get-property checked | equals false | verify-true
     get-item "Refinement Links" | get-property checked | equals false | verify-true
     get-item "Replicable Element Compliancy Definitions" | get-property checked | equals false | verify-true
@@ -123,7 +123,7 @@ with [get-window "Filters and Customization"] {
     get-item "Sequence Messages" | get-property checked | equals false | verify-true
     get-item "Capability and Mission Involvements" | get-property checked | equals false | verify-true
     get-item "Technical Interfaces" | get-property checked | equals false | verify-true
-    get-item "Trace" | get-property checked | equals false | verify-true
+    get-item "Traces" | get-property checked | equals false | verify-true
     get-item "Transformation Links" | get-property checked | equals false | verify-true
     }
     get-button OK | click
@@ -149,13 +149,13 @@ with [get-window "Filters and Customization"] {
     get-item "Combined Fragments" | get-property checked | equals true | verify-true
     get-item "Component Exchange Ends" | get-property checked | equals true | verify-true
     get-item "Component Exchanges" | get-property checked | equals true | verify-true
-    get-item "Component Port" | get-property checked | equals true | verify-true
+    get-item "Component Ports" | get-property checked | equals true | verify-true
     get-item "EMF Resources" | get-property checked | equals true | verify-true
     get-item "Events" | get-property checked | equals true | verify-true
     get-item "Execution Ends" | get-property checked | equals true | verify-true
     get-item "Executions" | get-property checked | equals true | verify-true
     get-item "Fragment Ends" | get-property checked | equals true | verify-true
-    get-item "Function Port" | get-property checked | equals true | verify-true
+    get-item "Function Ports" | get-property checked | equals true | verify-true
     get-item "Functional Chain Involvements" | get-property checked | equals true | verify-true
     get-item "Functional Exchanges" | get-property checked | equals true | verify-true
     get-item "Interaction Operands" | get-property checked | equals true | verify-true
@@ -170,7 +170,7 @@ with [get-window "Filters and Customization"] {
     get-item "Parts" | get-property checked | equals true | verify-true
     get-item "Physical Links" | get-property checked | equals true | verify-true
     get-item "Physical Path Involvements" | get-property checked | equals true | verify-true
-    get-item "Physical Port" | get-property checked | equals true | verify-true
+    get-item "Physical Ports" | get-property checked | equals true | verify-true
     get-item "Property Value Packages" | get-property checked | equals true | verify-true
     get-item "Refinement Links" | get-property checked | equals true | verify-true
     get-item "Replicable Element Compliancy Definitions" | get-property checked | equals false | verify-true
@@ -181,7 +181,7 @@ with [get-window "Filters and Customization"] {
     get-item "Sequence Messages" | get-property checked | equals false | verify-true
     get-item "Capability and Mission Involvements" | get-property checked | equals true | verify-true
     get-item "Technical Interfaces" | get-property checked | equals true | verify-true
-    get-item "Trace" | get-property checked | equals true | verify-true
+    get-item "Traces" | get-property checked | equals true | verify-true
     get-item "Transformation Links" | get-property checked | equals true | verify-true
     }
     get-button OK | click
