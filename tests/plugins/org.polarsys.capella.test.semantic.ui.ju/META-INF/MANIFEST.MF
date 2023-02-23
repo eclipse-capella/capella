@@ -21,7 +21,9 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.jface,
  org.polarsys.capella.core.platform.sirius.ui.navigator,
  org.polarsys.capella.core.data.gen,
- org.polarsys.capella.core.ui.semantic.browser.sirius
+ org.polarsys.capella.core.ui.semantic.browser.sirius,
+ org.polarsys.capella.core.ui.toolkit,
+ org.polarsys.capella.core.ui.properties;bundle-version="6.1.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: org.polarsys.capella.test.semantic.ui.ju,
  org.polarsys.capella.test.semantic.ui.ju.testsuites

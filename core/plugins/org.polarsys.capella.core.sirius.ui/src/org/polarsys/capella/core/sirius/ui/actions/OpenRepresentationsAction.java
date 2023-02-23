@@ -55,6 +55,10 @@ public class OpenRepresentationsAction extends BaseSelectionListenerAction {
     super("Open"); //$NON-NLS-1$
   }
 
+  protected OpenRepresentationsAction(String name) {
+    super(name); 
+  }
+
   /**
    * @param drep
    */
@@ -75,17 +79,24 @@ public class OpenRepresentationsAction extends BaseSelectionListenerAction {
     } catch (IllegalStateException e) {
       if (new IllegalStateExceptionQuery(e).isAConnectionLostException()) {
         return false;
-      } else {
-        throw e;
       }
+      throw e;
     }
   }
 
   /**
    * The action is enabled if at least one valid representation
    */
-  private List<DRepresentationDescriptor> getOpenableRepresentationDescriptors(IStructuredSelection selection) {
-    return RepresentationHelper.getSelectedDescriptors(selection.toList()).stream()
+  protected List<DRepresentationDescriptor> getOpenableRepresentationDescriptors(IStructuredSelection selection) {
+    return getOpenableRepresentationDescriptors(RepresentationHelper.getSelectedDescriptors(selection.toList()));
+  }
+  /**
+   * Returns all valid descriptors from given descriptors
+   * @param elements
+   * @return
+   */
+  protected List<DRepresentationDescriptor> getOpenableRepresentationDescriptors(Collection<DRepresentationDescriptor> elements) {
+    return elements.stream()
         .filter(RepresentationHelper::isValid).collect(Collectors.toList());
   }
 
@@ -107,12 +118,20 @@ public class OpenRepresentationsAction extends BaseSelectionListenerAction {
       return;
     }
 
+    openRepresentations(reps);
+  }
+
+  /**
+   * Runs a OpenRepresentationsRunnable on given descriptors
+   * @param descriptors
+   */
+  protected void openRepresentations(Collection<DRepresentationDescriptor> descriptors) {
     String eventName = "Open Representation";
     String eventContext = ICommonConstants.EMPTY_STRING;
     String addendum = ICommonConstants.EMPTY_STRING;
     UsageMonitoringLogger.getInstance().log(eventName, eventContext, EventStatus.NONE, addendum);
 
-    IRunnableWithProgress runnable = new OpenRepresentationsRunnable(reps, false);
+    IRunnableWithProgress runnable = new OpenRepresentationsRunnable(descriptors, false);
     ProgressMonitorDialog progressDialog = new ProgressMonitorDialog(Display.getDefault().getActiveShell());
 
     try {

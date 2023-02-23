@@ -12,16 +12,19 @@
  *******************************************************************************/
 package org.polarsys.capella.core.platform.sirius.ui.navigator.actions;
 
+import java.util.Collections;
 import java.util.Iterator;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.ui.actions.BaseSelectionListenerAction;
+import org.eclipse.sirius.ui.tools.api.views.common.item.ItemWrapper;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.polarsys.capella.core.commands.preferences.ui.sirius.DoubleClickBehaviourUtil;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
+import org.polarsys.capella.core.sirius.ui.actions.OpenRepresentationsAction;
 import org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlugin;
 
-public class OpenAction extends BaseSelectionListenerAction {
+public class OpenAction extends OpenRepresentationsAction {
 
   public OpenAction() {
     super(Messages.OpenActionLabel);
@@ -42,20 +45,40 @@ public class OpenAction extends BaseSelectionListenerAction {
             OpenRelatedDiagramAction action = new OpenRelatedDiagramAction(elementAsEObject);
             action.run();
           }
+        }else {
+          if(isRepresentationDescriptor(element)) {
+            openRepresentations(Collections.singletonList((DRepresentationDescriptor)element));
+          }
         }
       }
     }
   }
 
+  /**
+   * returns true if action should be enabled
+   * Selection is valid if it contains SemanticElements and RepresentationDescriptors(can be wrapped) only
+   */
   @Override
   protected boolean updateSelection(IStructuredSelection selection) {
-    boolean result = false;
-
+    boolean result = true;
     if (!selection.isEmpty()) {
-      result = (CapellaResourceHelper.isSemanticElements(selection.toList())) ? true : false;
+      for(Object selectedElement : selection.toList()) {
+        if( !CapellaResourceHelper.isSemanticElement(selectedElement) || !isRepresentationDescriptor(selectedElement)) {
+          return false;
+        }
+      }
     }
-
     return result;
   }
 
+
+  private boolean isRepresentationDescriptor(Object element) {
+    if (element instanceof ItemWrapper) {
+      element = ((ItemWrapper) element).getWrappedObject();
+    }
+    if (element instanceof DRepresentationDescriptor) {
+      return true;
+    }
+    return false;
+  }
 }

@@ -480,9 +480,18 @@
                class="org.polarsys.capella.core.platform.sirius.ui.navigator.actions.providers.ModelElementActionProvider"
                id="capella.project.explorer.modelElementActionProvider">
             <enablement>
-               <instanceof
-                     value="org.polarsys.kitalpha.emde.model.Element">
-               </instanceof>
+               <or>
+                  <instanceof
+                        value="org.polarsys.kitalpha.emde.model.Element">
+                  </instanceof>
+                  <instanceof
+                        value="org.eclipse.sirius.viewpoint.DRepresentationDescriptor">
+                  </instanceof>
+                   <test
+                        forcePluginActivation="false"
+                        property="org.polarsys.capella.core.platform.sirius.ui.navigator.itemWrapperPropertyTester">
+                  </test>
+              </or>
             </enablement>
          </actionProvider>
           <dropAssistant

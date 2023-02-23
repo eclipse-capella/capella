@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2022 THALES GLOBAL SERVICES.
+ * Copyright (c) 2023 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -13,53 +13,48 @@
 package org.polarsys.capella.test.semantic.ui.ju.testcases;
 
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.DoubleClickEvent;
-import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
+import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
-import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
-import org.eclipse.swt.widgets.Listener;
-import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.swt.widgets.Widget;
-import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IViewPart;
-import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.intro.IIntroPart;
 import org.eclipse.ui.navigator.CommonViewer;
 import org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper.EObjectWrapper;
-import org.polarsys.capella.common.utils.ReflectUtil;
+import org.polarsys.capella.core.commands.preferences.preferences.CapellaDiagramPreferences;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.ctx.Capability;
 import org.polarsys.capella.core.data.ctx.CapabilityPkg;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
+import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.libraries.model.CapellaModel;
-import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
+import org.polarsys.capella.core.preferences.Activator;
+import org.polarsys.capella.core.ui.semantic.browser.handler.AbstractSemanticBrowserDoubleClickHandler;
+import org.polarsys.capella.core.ui.semantic.browser.sirius.handlers.NavigationSemanticBrowserDoubleClickHandler;
 import org.polarsys.capella.core.ui.semantic.browser.sirius.view.SiriusSemanticBrowserView;
-import org.polarsys.capella.core.ui.properties.wizards.CapellaWizardDialog;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
 
 /**
  * This test case create double click on a representation in the left panel (referencing elements) of the semantic
  * browser view.
  */
-public class SemanticBrowserReferencingElementNavigationTest extends BasicTestCase {
+public class SemanticBrowserCurrentElementNavigationTest extends BasicTestCase {
 
   protected final String CAPELLA_PERSPECTIVE_ID = "capella.sirius.perspective";
   protected final String SEMANTIC_BROWSER_VIEW_ID = "org.polarsys.capella.core.ui.semantic.browser.view.SemanticBrowserID";
@@ -72,11 +67,7 @@ public class SemanticBrowserReferencingElementNavigationTest extends BasicTestCa
   @Override
   public void test() throws Exception {
 
-    Scenario scenarioToBeSelectedInNavigator = null;
-    Scenario scenarioToSelectRepresentationFrom = null;
-
-    IStructuredSelection navigatorSelection = null;
-    IStructuredSelection semanticBrowserSelection = null;
+    Capability capability = null;
 
     try {
 
@@ -86,18 +77,8 @@ public class SemanticBrowserReferencingElementNavigationTest extends BasicTestCa
       SystemEngineering eng = ((SystemEngineering) (project.getOwnedModelRoots().get(0)));
       final SystemAnalysis systemAnalysisPkg = eng.getContainedSystemAnalysis().get(0);
       CapabilityPkg capabilityPkg = (CapabilityPkg) systemAnalysisPkg.getOwnedAbstractCapabilityPkg();
-      Capability capability = capabilityPkg.getOwnedCapabilities().get(0);
-
-      scenarioToSelectRepresentationFrom = capability.getOwnedScenarios().get(0);
-      Collection<DRepresentationDescriptor> descriptors = RepresentationHelper
-          .getAllRepresentationDescriptorsTargetedBy(Collections.singleton(scenarioToSelectRepresentationFrom));
-      DRepresentationDescriptor representationToBeSelectedInSemanticBrowser = descriptors.iterator().next();
-      semanticBrowserSelection = new StructuredSelection(
-          new EObjectWrapper(representationToBeSelectedInSemanticBrowser));
-
-      scenarioToBeSelectedInNavigator = capability.getOwnedScenarios().get(1);
-      navigatorSelection = new StructuredSelection(scenarioToBeSelectedInNavigator);
-
+      capability = capabilityPkg.getOwnedCapabilities().get(0);
+      
     } catch (Exception e) {
       fail("Model Elements could not be found");
     }
@@ -121,42 +102,71 @@ public class SemanticBrowserReferencingElementNavigationTest extends BasicTestCa
       fail("Could not open Capella perspective");
     }
 
-    CommonViewer viewer = getViewer();
-    viewer.getCommonNavigator().selectReveal(navigatorSelection);
-
     IViewPart semanticBrowserViewpart = activeWorkbenchWindow.getActivePage().showView(SEMANTIC_BROWSER_VIEW_ID);
     if (semanticBrowserViewpart != null) {
 
       SiriusSemanticBrowserView semanticBrowserView = (SiriusSemanticBrowserView) semanticBrowserViewpart;
-      semanticBrowserView.setInput(scenarioToBeSelectedInNavigator);
-
-      TreeViewer referencingViewer = semanticBrowserView.getReferencingViewer();
-      Tree referencingViewerTree = referencingViewer.getTree();
-      referencingViewer.expandAll();
+      semanticBrowserView.setInput(capability);
       
-      TreeItem[] items = referencingViewer.getTree().getItems();
-      TreeItem toSelect = items[0].getItems()[0];
-      referencingViewer.setSelection(semanticBrowserSelection);
+      TreeViewer viewer = semanticBrowserView.getCurrentViewer();
+      Tree viewTree = viewer.getTree();
+      viewer.expandAll();
+      
+      TreeItem[] items = viewTree.getItems(); 
 
-      Display display = referencingViewer.getControl().getDisplay();
-      Event doubleClickEvent = createDoubleClickEvent(referencingViewerTree, display, toSelect);
-
-      Listener[] listeners = referencingViewerTree.getListeners(SWT.DefaultSelection);
-      if (listeners == null || listeners[0] == null)
-        fail("Could not find a double click listener");
-
-      Listener listener = listeners[0];
-
-      listener.handleEvent(doubleClickEvent);
-
-      IEditorPart editor = EclipseUIUtil.getActiveEditor();
-      assertTrue("We should have a DDiagramEditor", editor instanceof DDiagramEditor);
-    
+      EObjectWrapper fcWrapper = (EObjectWrapper)items[0].getItems()[0].getItems()[0].getData();
+      FunctionalChain fc = (FunctionalChain) fcWrapper.getElement();
+      
+      
+      EObjectWrapper scWrapper = (EObjectWrapper)items[0].getItems()[1].getItems()[0].getData();
+      Scenario sc = (Scenario) scWrapper.getElement();
+      
+      EObjectWrapper repWrapper = (EObjectWrapper)items[0].getItems()[2].getItems()[0].getData();
+      DRepresentationDescriptor rep = (DRepresentationDescriptor) repWrapper.getElement();
+      
+      // With navigation preference set to TRUE
+      
+      //Double click on a Capability (not navigable, not a diagram) We expect to open the wizard
+      testDoubleClickBehaviors(semanticBrowserView, semanticBrowserView.getCurrentViewer(), capability, false, true, false);
+      
+      //Double click on a Functional Chain (navigable, not a diagram) We expect to navigate
+      testDoubleClickBehaviors(semanticBrowserView, semanticBrowserView.getCurrentViewer(), fc, true, false, false);
+      //Double click on a Scenario (navigable, not a diagram) We expect to navigate
+      testDoubleClickBehaviors(semanticBrowserView, semanticBrowserView.getCurrentViewer(), sc, true, false, false);
+      //Double click on a Representation (a diagram) We expect to open the diagram
+      testDoubleClickBehaviors(semanticBrowserView, semanticBrowserView.getCurrentViewer(), rep, false, false, true);
+      
+      // With navigation preference set to FALSE
+      Activator.getDefault().getPreferenceStore().setValue(CapellaDiagramPreferences.PREF_DISPLAY_NAVIGATE_ON_DOUBLE_CLICK, false);
+      
+      testDoubleClickBehaviors(semanticBrowserView, semanticBrowserView.getCurrentViewer(), capability, false, true, false);
+      
+      //We expect to open the wizard on element that were navigable
+      testDoubleClickBehaviors(semanticBrowserView, semanticBrowserView.getCurrentViewer(), fc, false, true, false);      
+      testDoubleClickBehaviors(semanticBrowserView, semanticBrowserView.getCurrentViewer(), sc, false, true, false);
+      
+      testDoubleClickBehaviors(semanticBrowserView, semanticBrowserView.getCurrentViewer(), rep, false, false, true);
+      
+      Activator.getDefault().getPreferenceStore().setValue(CapellaDiagramPreferences.PREF_DISPLAY_NAVIGATE_ON_DOUBLE_CLICK, true);
+                  
     } else {
       fail("Could not open Semantic Browser View");
     }
   }
 
+  protected void testDoubleClickBehaviors(SiriusSemanticBrowserView view, Viewer source, EObject element, boolean expectedNavigationBehavior, boolean expectedOpenWizardBehavior, boolean expectedOpenDiagramBehavior) {
+    DoubleClickEvent event = new DoubleClickEvent(source,new StructuredSelection(element));
+    AbstractSemanticBrowserDoubleClickHandler handler = view.getSemanticBrowserDoubleClickHandlerFor(event);
+    
+    if( ! (handler instanceof NavigationSemanticBrowserDoubleClickHandler)) {
+      fail("the doubleClick handler should be an instanceof NavigationSemanticBrowserDoubleClickHandler");
+    }
+    NavigationSemanticBrowserDoubleClickHandler doubleClickHandler = (NavigationSemanticBrowserDoubleClickHandler) handler;
+    
+    assertEquals(expectedNavigationBehavior, doubleClickHandler.shouldNavigate(element));    
+    assertEquals(expectedOpenWizardBehavior, doubleClickHandler.shouldOpenPropertyWizard(element));
+    assertEquals(expectedOpenDiagramBehavior, doubleClickHandler.shouldOpenDiagram(element));
+  }
   /**
    * @return
    */
