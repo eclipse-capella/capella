@@ -20,6 +20,7 @@ import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 import org.polarsys.capella.test.semantic.ui.ju.testcases.SBNavigationMenuInteractionUseTest;
 import org.polarsys.capella.test.semantic.ui.ju.testcases.SBNavigationMenuPPTest;
+import org.polarsys.capella.test.semantic.ui.ju.testcases.SemanticBrowserCurrentElementNavigationTest;
 import org.polarsys.capella.test.semantic.ui.ju.testcases.SemanticBrowserReferencingElementNavigationTest;
 import org.polarsys.capella.test.semantic.ui.ju.testcases.SemanticBrowserRepresentationHasSemanticQueriesTest;
 
@@ -30,7 +31,7 @@ public class SemanticUITestSuite extends BasicTestSuite {
   @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
-
+    tests.add(new SemanticBrowserCurrentElementNavigationTest());
     tests.add(new SemanticBrowserReferencingElementNavigationTest());
     tests.add(new SemanticBrowserRepresentationHasSemanticQueriesTest());
     tests.add(new SBNavigationMenuPPTest());

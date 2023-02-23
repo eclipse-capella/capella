@@ -14,6 +14,7 @@ Require-Bundle: org.polarsys.capella.common.ui.toolkit.browser;visibility:=reexp
 Export-Package: org.polarsys.capella.core.ui.semantic.browser,
  org.polarsys.capella.core.ui.semantic.browser.actions,
  org.polarsys.capella.core.ui.semantic.browser.content.provider,
+ org.polarsys.capella.core.ui.semantic.browser.handler,
  org.polarsys.capella.core.ui.semantic.browser.internal,
  org.polarsys.capella.core.ui.semantic.browser.label.provider,
  org.polarsys.capella.core.ui.semantic.browser.model,

@@ -39,7 +39,6 @@ import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ITreeSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
-import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerComparator;
@@ -115,6 +114,8 @@ import org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlugin;
 import org.polarsys.capella.core.ui.semantic.browser.CapellaBrowserActivator;
 import org.polarsys.capella.core.ui.semantic.browser.CapellaBrowserPreferences;
 import org.polarsys.capella.core.ui.semantic.browser.actions.SemanticBrowserActionFactory;
+import org.polarsys.capella.core.ui.semantic.browser.handler.AbstractSemanticBrowserDoubleClickHandler;
+import org.polarsys.capella.core.ui.semantic.browser.handler.DefaultSemanticBrowserDoubleClickHandler;
 import org.polarsys.capella.core.ui.semantic.browser.model.SemanticBrowserModel;
 
 /**
@@ -122,8 +123,7 @@ import org.polarsys.capella.core.ui.semantic.browser.model.SemanticBrowserModel;
  */
 public abstract class SemanticBrowserView extends ViewPart implements ISemanticBrowserViewPart,
     ITabbedPropertySheetPageContributor, IEditingDomainProvider, IReadOnlyListener {
-
-  /**
+   /**
    * Listener that listens to closing and closed session events.
    */
   protected class CloseSessionListener extends SessionManagerListener.Stub {
@@ -244,6 +244,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
   private boolean isLinkedToSelection;
 
   protected ISemanticBrowserModel model;
+  protected AbstractSemanticBrowserDoubleClickHandler doubleClickHandler;
   private ISelectionListener selectionListener;
   private SessionManagerListener sessionListener;
   private TabbedPropertyTitle semanticBrowserTitle;
@@ -774,31 +775,43 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
    * 
    * @param event
    */
-  protected void handleDoubleClick(DoubleClickEvent event) {
-    ITreeSelection selection = (ITreeSelection) event.getSelection();
+  protected void handleDoubleClick(DoubleClickEvent event) {     
+    AbstractSemanticBrowserDoubleClickHandler handler = getSemanticBrowserDoubleClickHandlerFor(event);
+    handler.setControlKeyPressed(isCtrlKeyPressed);
+    Object selectedElement = resolveSelectedElement(event); 
+    handler.handle(this, event, selectedElement );    
+  }
+  
+  /**
+   * Returns the handle for double click behavior on elements
+   * This can be subclassed to customize how double click works
+   * @param event
+   * @return
+   */
+  public AbstractSemanticBrowserDoubleClickHandler getSemanticBrowserDoubleClickHandlerFor(DoubleClickEvent event) {
+    if (doubleClickHandler == null) 
+      doubleClickHandler = new DefaultSemanticBrowserDoubleClickHandler();
+    
+    return doubleClickHandler;
+  }
+  
+  /**
+   * Returns the first element from the event selection, unwrapped if needed
+   * @param event
+   * @return
+   */
+  protected Object resolveSelectedElement(DoubleClickEvent event) {   
+    ITreeSelection selection = (ITreeSelection)  event.getSelection();
     if (!selection.isEmpty()) {
       Object doubleClickedElement = selection.getFirstElement();
-      // do nothing if element of the wrapper is the root element.
-      // change
       if (doubleClickedElement instanceof BrowserElementWrapper) {
         doubleClickedElement = ((BrowserElementWrapper) doubleClickedElement).getElement();
       }
-      // Handle a ModelElement double click event.
-      if (doubleClickedElement instanceof EObject) {
-        if (isCtrlKeyPressed) {
-          if (getRootElement() != doubleClickedElement) {
-            // CTRL is pressed, let's navigate...
-            setInput(doubleClickedElement);
-            // Set and reveal the focused element.
-            this.currentViewer.setSelection(new StructuredSelection(doubleClickedElement), true);
-          }
-        } else {
-          CapellaUIPropertiesPlugin.getDefault().openWizard(event, (EObject) doubleClickedElement);
-        }
-      }
+      return doubleClickedElement;
     }
-  }
-
+    return null;
+}
+	
   /**
    * Handle workbench page selection events.<br>
    * Default implementation returns <code>null</code>.
