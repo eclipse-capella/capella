@@ -38,12 +38,11 @@ import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.MessageTranslator;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.DNodeContainer;
-import org.eclipse.sirius.diagram.model.business.internal.spec.DNodeSpec;
 import org.eclipse.sirius.diagram.ui.tools.api.command.GMFCommandWrapper;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.ui.tools.internal.editor.NavigateToCommand;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swt.widgets.Display;
@@ -72,11 +71,8 @@ public class OpenRelatedDiagramEditPolicy extends OpenDiagramEditPolicy {
         if (view != null) {
           EObject element = ViewUtil.resolveSemanticElement(view);
           EObject targetSemanticElement = null;
-          if (element instanceof DNodeContainer) {
-            DNodeContainer container = (DNodeContainer) element;
-            targetSemanticElement = container.getTarget();
-          } else if (element instanceof DNodeSpec) {
-            DNodeSpec container = (DNodeSpec) element;
+          if (element instanceof DSemanticDecorator) {
+            DSemanticDecorator container = (DSemanticDecorator) element;
             targetSemanticElement = container.getTarget();
           }
           if (!((DDiagramElement) element).getParentDiagram().isIsInShowingMode() && targetSemanticElement != null
