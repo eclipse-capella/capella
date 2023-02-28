@@ -37,6 +37,9 @@ public class OpenAction extends OpenRepresentationsAction {
       Iterator<Object> selectionIterator = selection.iterator();
       while (selectionIterator.hasNext()) {
         Object element = selectionIterator.next();
+        if (element instanceof ItemWrapper) {
+          element = ((ItemWrapper) element).getWrappedObject();
+        }
         if (CapellaResourceHelper.isSemanticElement(element)) {
           EObject elementAsEObject = (EObject) element;
           if (!DoubleClickBehaviourUtil.INSTANCE.shouldOpenRelatedDiagramsOnDoubleClick(elementAsEObject)) {
@@ -72,10 +75,7 @@ public class OpenAction extends OpenRepresentationsAction {
   }
 
 
-  private boolean isRepresentationDescriptor(Object element) {
-    if (element instanceof ItemWrapper) {
-      element = ((ItemWrapper) element).getWrappedObject();
-    }
+  private boolean isRepresentationDescriptor(Object element) {    
     if (element instanceof DRepresentationDescriptor) {
       return true;
     }
