@@ -17,7 +17,7 @@ import java.util.Arrays;
 import org.eclipse.gef.EditPart;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.model.business.internal.spec.DEdgeSpec;
+import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeBeginNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEndNameEditPart;
 import org.eclipse.sirius.viewpoint.RGBValues;
@@ -46,13 +46,13 @@ public class PhysicalLinkIconAndLabel extends XABDiagramsProject {
     PhysicalPath path1 = pab.createPhysicalPath("Path 1", "Physical Link 1");
     PhysicalPath path2 = pab.createPhysicalPath("Path 2", "Physical Link 1");
     DDiagramElement plView = (DDiagramElement) pab.getView("Physical Link 1");
-    assertTrue(plView instanceof DEdgeSpec);
+    assertTrue(plView instanceof DEdge);
     
     checkIcons(pab, plView);
     
-    assertTrue("Wrong label for overlapped Physical Link", ((DEdgeSpec) plView).getBeginLabel().equals(
+    assertTrue("Wrong label for overlapped Physical Link", ((DEdge) plView).getBeginLabel().equals(
         DiagramServices.getDiagramServices().getOverlappedLabels(Arrays.asList(path1.getName(), path2.getName())))
-        && ((DEdgeSpec) plView).getEndLabel().equals(
+        && ((DEdge) plView).getEndLabel().equals(
             DiagramServices.getDiagramServices().getOverlappedLabels(Arrays.asList(path1.getName(), path2.getName()))));
   }
 
