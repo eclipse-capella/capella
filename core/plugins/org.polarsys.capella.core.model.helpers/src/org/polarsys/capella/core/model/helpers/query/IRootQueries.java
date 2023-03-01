@@ -15,7 +15,7 @@ package org.polarsys.capella.core.model.helpers.query;
 
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.kitalpha.emde.model.ExtensibleElement;
 
 /**
  * Root queries for the Sys & Soft models.
@@ -27,7 +27,7 @@ public interface IRootQueries {
    * @param modelElement a business element
    * @return the system engineering (or null if it does not exist)
    */
-  SystemEngineering getSystemEngineering(ModelElement modelElement);
+  SystemEngineering getSystemEngineering(ExtensibleElement modelElement);
   
-  public Project getProject(ModelElement modelElement);
+  public Project getProject(ExtensibleElement modelElement);
 }
