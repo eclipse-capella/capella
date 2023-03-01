@@ -62,6 +62,7 @@ import org.polarsys.capella.core.data.pa.deployment.DeploymentPackage;
 import org.polarsys.capella.core.data.sharedmodel.SharedPkg;
 import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
 import org.polarsys.capella.core.model.utils.CollectionExt;
+import org.polarsys.kitalpha.emde.model.ExtensibleElement;
 
 /**
  * SystemEngineering helpers
@@ -781,7 +782,7 @@ public class SystemEngineeringExt {
     return null;
   }
 
-  public static SystemEngineering getSystemEngineering(CapellaElement currentElement) {
+  public static SystemEngineering getSystemEngineering(ExtensibleElement currentElement) {
     SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentElement);
     return sysEng;
   }

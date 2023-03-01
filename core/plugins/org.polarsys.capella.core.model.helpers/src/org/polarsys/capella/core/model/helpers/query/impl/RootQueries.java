@@ -13,10 +13,11 @@
 
 package org.polarsys.capella.core.model.helpers.query.impl;
 
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.model.helpers.query.IRootQueries;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.kitalpha.emde.model.ExtensibleElement;
 
 public class RootQueries implements IRootQueries {
   /**
@@ -24,35 +25,35 @@ public class RootQueries implements IRootQueries {
    * @see org.polarsys.capella.core.model.helpers.query.IRootQueries#getSystemEngineering()
    * @param modelElement a business element
    */
-  public SystemEngineering getSystemEngineering(ModelElement modelElement) {
+  public SystemEngineering getSystemEngineering(ExtensibleElement modelElement) {
     return (SystemEngineering) getSystemEngineeringRecursively(modelElement);
   }
 
-  private ModelElement getSystemEngineeringRecursively(ModelElement modelElement) {
+  private ModelElement getSystemEngineeringRecursively(ExtensibleElement modelElement) {
     ModelElement result;
     if (null == modelElement) {
       result = null;
     } else if (modelElement instanceof SystemEngineering) {
-      result = modelElement;
+      result = (ModelElement) modelElement;
     } else {
-      ModelElement container = (ModelElement) modelElement.eContainer();
+      ExtensibleElement container = (ExtensibleElement) modelElement.eContainer();
       result = getSystemEngineeringRecursively(container);
     }
     return result;
   }
 
-  public Project getProject(ModelElement modelElement) {
+  public Project getProject(ExtensibleElement modelElement) {
     return (Project) getProjectRecursively(modelElement);
   }
 
-  private ModelElement getProjectRecursively(ModelElement modelElement) {
+  private ModelElement getProjectRecursively(ExtensibleElement modelElement) {
     ModelElement result;
     if (null == modelElement) {
       result = null;
     } else if (modelElement instanceof Project) {
-      result = modelElement;
+      result = (ModelElement) modelElement;
     } else {
-      ModelElement container = (ModelElement) modelElement.eContainer();
+      ExtensibleElement container = (ExtensibleElement) modelElement.eContainer();
       result = getProjectRecursively(container);
     }
     return result;
