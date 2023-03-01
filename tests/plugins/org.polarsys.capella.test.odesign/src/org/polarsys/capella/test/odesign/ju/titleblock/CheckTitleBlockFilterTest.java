@@ -15,6 +15,7 @@ package org.polarsys.capella.test.odesign.ju.titleblock;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
@@ -24,6 +25,7 @@ import org.polarsys.capella.core.sirius.analysis.DiagramServices;
 import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
 import org.polarsys.capella.core.sirius.analysis.IViewpointNameConstants;
+import org.polarsys.capella.core.sirius.analysis.activator.SiriusViewActivator;
 import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
 import org.polarsys.capella.test.odesign.helper.OdesignTestHelper;
 
@@ -64,7 +66,9 @@ public class CheckTitleBlockFilterTest extends CheckTitleBlockTest {
 
   private List<DiagramDescription> getDiagramDescriptionsWithoutFilterOnMapping(String filterName,
       DiagramElementMapping mapping) {
-    return ViewpointRegistry.getInstance().getViewpoints().stream().flatMap(vp -> vp.getOwnedRepresentations().stream())
+    return ViewpointRegistry.getInstance().getViewpoints().stream()
+        .filter(vp -> EcoreUtil.getURI(vp).segment(1) == SiriusViewActivator.ID)
+        .flatMap(vp -> vp.getOwnedRepresentations().stream())
         .filter(DiagramDescription.class::isInstance).map(DiagramDescription.class::cast)
         .filter(des -> !isDiagramDescriptionIgnored(des))
         .filter(des -> !OdesignTestHelper.hasFilterOnMapping(des, filterName, mapping)).collect(Collectors.toList());

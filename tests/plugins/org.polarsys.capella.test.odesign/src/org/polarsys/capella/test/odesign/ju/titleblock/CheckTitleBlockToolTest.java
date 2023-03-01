@@ -15,8 +15,10 @@ package org.polarsys.capella.test.odesign.ju.titleblock;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
+import org.polarsys.capella.core.sirius.analysis.activator.SiriusViewActivator;
 import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
 import org.polarsys.capella.test.odesign.helper.OdesignTestHelper;
 
@@ -43,7 +45,9 @@ public class CheckTitleBlockToolTest extends CheckTitleBlockTest {
   }
 
   private List<DiagramDescription> getDiagramDescriptionsWithoutTool(String toolName) {
-    return ViewpointRegistry.getInstance().getViewpoints().stream().flatMap(vp -> vp.getOwnedRepresentations().stream())
+    return ViewpointRegistry.getInstance().getViewpoints().stream()
+        .filter(vp -> EcoreUtil.getURI(vp).segment(1) == SiriusViewActivator.ID)
+        .flatMap(vp -> vp.getOwnedRepresentations().stream())
         .filter(DiagramDescription.class::isInstance).map(DiagramDescription.class::cast)
         .filter(des -> !isDiagramDescriptionIgnored(des)).filter(des -> !OdesignTestHelper.hasTool(des, toolName))
         .collect(Collectors.toList());
