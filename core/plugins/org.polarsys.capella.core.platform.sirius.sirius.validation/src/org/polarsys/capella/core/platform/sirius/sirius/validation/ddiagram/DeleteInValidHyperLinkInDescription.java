@@ -19,7 +19,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.diagram.helpers.DiagramHelper;
-import org.polarsys.capella.core.model.utils.saxparser.IConstantValidation;
+import org.polarsys.capella.core.platform.sirius.sirius.validation.parser.helper.DescriptionLinkModifierHandler;
+import org.polarsys.capella.core.platform.sirius.sirius.validation.parser.helper.HyperLinkRemoverHandler;
 
 /**
  * Using SAX parser delete capella element or diagram hyperLink from description
@@ -32,22 +33,9 @@ public class DeleteInValidHyperLinkInDescription {
       EObject object = iterator.next();
       if (object instanceof CapellaElement || object instanceof DRepresentationDescriptor) {
         String description = DiagramHelper.getElementDescription(object);
-        ILinkModifierHandler linkModifierHandler = new ILinkModifierHandler() {
-
-          @Override
-          public void updateParsedLink(LinkDescription parsedLink, StringBuilder description) {
-            String elementId = parsedLink.getHref().replace("hlink://", "");
-            if (!(parsedLink.getTargetElement() == null && !elementId.isEmpty() && elementId.equals(linkId))) {
-              DescriptionLinkModifierHandler.addElementToDescription("a", parsedLink.getAttributes(), description);
-              description.append(parsedLink.getName());
-              description.append(IConstantValidation.CLOSE_TAB_PREFIX);
-              description.append("a");
-              description.append(IConstantValidation.GREATER_THAN);
-            }
-          }
-        };
+        HyperLinkRemoverHandler linkRemoverHandler = new HyperLinkRemoverHandler(linkId);
         DescriptionLinkModifierHandler descModifHandler = new DescriptionLinkModifierHandler(object,
-            linkModifierHandler);
+            linkRemoverHandler);
         String result = descModifHandler.process(description);
         DiagramHelper.setElementDescription(object, result);
       }

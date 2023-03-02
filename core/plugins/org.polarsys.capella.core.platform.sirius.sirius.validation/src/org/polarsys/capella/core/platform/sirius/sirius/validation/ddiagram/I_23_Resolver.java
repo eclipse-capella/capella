@@ -25,7 +25,7 @@ import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewHelper;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
-import org.polarsys.capella.core.model.utils.saxparser.SaxParserHelper;
+import org.polarsys.capella.core.platform.sirius.sirius.validation.parser.helper.DescriptionParserHelper;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarkerResolution;
 
 public class I_23_Resolver extends AbstractCapellaMarkerResolution {
@@ -38,7 +38,7 @@ public class I_23_Resolver extends AbstractCapellaMarkerResolution {
   public void run(IMarker marker_p) {
     final List<EObject> modelElements = getModelElements(marker_p);
     Diagnostic diagnostic = MarkerViewHelper.getDiagnostic(marker_p);
-    String linkId = SaxParserHelper.getLinkIdFromStatus(diagnostic.getMessage());
+    String linkId = DescriptionParserHelper.getLinkIdFromStatus(diagnostic.getMessage());
 
     final boolean[] flag = { false };
     if (!modelElements.isEmpty()) {

@@ -15,7 +15,6 @@ package org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
@@ -23,10 +22,10 @@ import org.eclipse.emf.validation.IValidationContext;
 import org.eclipse.emf.validation.model.ConstraintStatus;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.model.utils.NamingHelper;
+import org.polarsys.capella.core.platform.sirius.sirius.validation.parser.helper.DescriptionLinkParserHandler;
+import org.polarsys.capella.core.platform.sirius.sirius.validation.parser.helper.InvalidNameHandler;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 /**
@@ -36,47 +35,13 @@ public class CapellaElementInDescriptionNameCheck extends AbstractValidationRule
 
   public IStatus validateElement(EObject element, String description, final IValidationContext ctx) {
     List<IStatus> failureMessages = new ArrayList<>();
-    ILinkParserHandler linkNameCheckHandler = new ILinkParserHandler() {
-      private List<LinkDescription> parsedLinks = new ArrayList<>();
+    InvalidNameHandler linkParser = new InvalidNameHandler(element, ctx);
 
-      @Override
-      public void handleParsedLink(LinkDescription parsedLink) {
-        if (parsedLink.getTargetElement() != null) {
-          EObject elementFound = parsedLink.getTargetElement();
-          boolean isDiagram = elementFound instanceof DDiagram;
-          String name = NamingHelper.getElementName(elementFound);
-          String value = parsedLink.getName();
-          String elementId = parsedLink.getHref().replace("hlink://", "");
-          if (!name.equals(value)) {
-            if (!parsedLinks.contains(parsedLink)) {
-              parsedLinks.add(parsedLink);
-              String message = "(Hyperlink) The " + (isDiagram ? "diagram" : "model") + " element named \"" + value
-                  + "\" (id: " + elementId + ") found in the rich text description of "
-                  + NamingHelper.getElementName(element) + " is not up to date.";
-              failureMessages.add(ConstraintStatus.createStatus(ctx, element, ctx.getResultLocus(), "{0}", message));
-            } else {
-              String elementName = value;
-              List<IStatus> updatedResult = failureMessages.stream().map(sts -> {
-                if (sts.getMessage().contains(elementId)) {
-                  String message = "(Hyperlink) The " + (isDiagram ? "diagrams" : "models") + " elements named \""
-                      + elementName + ", ...\" (id: " + elementId + ") found in the rich text description of "
-                      + NamingHelper.getElementName(element) + " are not up to date.";
-                  return ConstraintStatus.createStatus(ctx, element, ctx.getResultLocus(), "{0}", message);
-                }
-                return sts;
-              }).collect(Collectors.toList());
-              failureMessages.clear();
-              failureMessages.addAll(updatedResult);
-            }
-          }
-        }
-      }
-    };
-
-    DescriptionLinkParserHandler descriptionParser = new DescriptionLinkParserHandler(element, ctx,
-        linkNameCheckHandler);
+    DescriptionLinkParserHandler descriptionParser = new DescriptionLinkParserHandler(element, ctx, linkParser);
 
     List<IStatus> exceptions = descriptionParser.process(description);
+    List<IStatus> parserResult = linkParser.getResult();
+    failureMessages.addAll(parserResult);
     failureMessages.addAll(exceptions);
 
     if (failureMessages.isEmpty()) {
