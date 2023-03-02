@@ -19,9 +19,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.diagram.helpers.DiagramHelper;
-import org.polarsys.capella.core.model.utils.saxparser.IConstantValidation;
-import org.xml.sax.Attributes;
-import org.xml.sax.helpers.AttributesImpl;
+import org.polarsys.capella.core.platform.sirius.sirius.validation.parser.helper.DescriptionLinkModifierHandler;
+import org.polarsys.capella.core.platform.sirius.sirius.validation.parser.helper.HyperLinkConverterHandler;
 
 /**
  * Using SAX parser convert capella element or diagram hyperLink from description
@@ -34,29 +33,9 @@ public class ConvertInValidHyperLinkInDescription {
       EObject object = iterator.next();
       if (object instanceof CapellaElement || object instanceof DRepresentationDescriptor) {
         String description = DiagramHelper.getElementDescription(object);
-        ILinkModifierHandler linkModifierHandler = new ILinkModifierHandler() {
-
-          @Override
-          public void updateParsedLink(LinkDescription parsedLink, StringBuilder description) {
-            String elementId = parsedLink.getHref().replace("hlink://", "");
-            if (parsedLink.getTargetElement() == null && !elementId.isEmpty() && elementId.equals(linkId)) {
-              DescriptionLinkModifierHandler.addElementToDescription("span", (Attributes) new AttributesImpl(),
-                  description);
-            } else {
-              DescriptionLinkModifierHandler.addElementToDescription("a", parsedLink.getAttributes(), description);
-            }
-            description.append(parsedLink.getName());
-            description.append(IConstantValidation.CLOSE_TAB_PREFIX);
-            if (parsedLink.getTargetElement() == null && !elementId.isEmpty() && elementId.equals(linkId)) {
-              description.append("span");
-            } else {
-              description.append("a");
-            }
-            description.append(IConstantValidation.GREATER_THAN);
-          }
-        };
+        HyperLinkConverterHandler linkConverterHandler = new HyperLinkConverterHandler(linkId);
         DescriptionLinkModifierHandler descModifHandler = new DescriptionLinkModifierHandler(object,
-            linkModifierHandler);
+            linkConverterHandler);
         String result = descModifHandler.process(description);
         DiagramHelper.setElementDescription(object, result);
       }

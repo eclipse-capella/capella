@@ -15,7 +15,6 @@ package org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.apache.log4j.Logger;
 import org.eclipse.core.runtime.IStatus;
@@ -28,7 +27,8 @@ import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.model.utils.NamingHelper;
+import org.polarsys.capella.core.platform.sirius.sirius.validation.parser.helper.DescriptionLinkParserHandler;
+import org.polarsys.capella.core.platform.sirius.sirius.validation.parser.helper.MissingElementHandler;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 /**
@@ -38,40 +38,11 @@ public class CapellaElementInDescriptionExistanceCheck extends AbstractValidatio
 
   public List<IStatus> validateElement(EObject element, String description, IValidationContext ctx) {
     List<IStatus> result = new ArrayList<>();
-    ILinkParserHandler linkParserHandler = new ILinkParserHandler() {
-      private List<LinkDescription> parsedLinks = new ArrayList<>();
-
-      @Override
-      public void handleParsedLink(LinkDescription parsedLink) {
-        if (parsedLink.getTargetElement() == null) {
-          String elementName = NamingHelper.getElementName(element);
-          String elementId = parsedLink.getHref().replace("hlink://", "");
-          if (!parsedLinks.contains(parsedLink)) {
-            parsedLinks.add(parsedLink);
-            String failureMessage = "(Hyperlink) The model/diagram element named “" + parsedLink.getName() + "” (id: "
-                + elementId + ") can not be found for the rich text description of the element " + elementName;
-            result.add(ConstraintStatus.createStatus(ctx, element, ctx.getResultLocus(), "{0}", failureMessage));
-          } else {
-            List<IStatus> updatedResult = result.stream().map(sts -> {
-              if (sts.getMessage().contains(elementId)) {
-                String name = DescriptionLinkParserHandler.extractName(sts.getMessage());
-                String failureMessage = "(Hyperlink) The model/diagram elements named “" + name + ", ...” (id: "
-                    + elementId + ") can not be found for the rich text description of the element " + elementName;
-                return ConstraintStatus.createStatus(ctx, element, ctx.getResultLocus(), "{0}", failureMessage);
-              }
-              return sts;
-            }).collect(Collectors.toList());
-            result.clear();
-            result.addAll(updatedResult);
-          }
-        }
-
-      }
-    };
-
-    DescriptionLinkParserHandler descriptionParser = new DescriptionLinkParserHandler(element, ctx, linkParserHandler);
-
+    MissingElementHandler linkParser = new MissingElementHandler(element, ctx);
+    DescriptionLinkParserHandler descriptionParser = new DescriptionLinkParserHandler(element, ctx, linkParser);
     List<IStatus> exceptions = descriptionParser.process(description);
+    List<IStatus> parserResult = linkParser.getResult();
+    result.addAll(parserResult);
     result.addAll(exceptions);
 
     return result;

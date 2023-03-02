@@ -24,9 +24,9 @@ import org.eclipse.emf.ecore.EClass;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewHelper;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
-import org.polarsys.capella.core.model.utils.saxparser.SaxParserHelper;
 import org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram.I_23_ConvertResolver;
 import org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram.I_23_Resolver;
+import org.polarsys.capella.core.platform.sirius.sirius.validation.parser.helper.DescriptionParserHelper;
 import org.polarsys.capella.test.framework.api.ComposedOracleDefinition;
 import org.polarsys.capella.test.framework.api.OracleDefinition;
 import org.polarsys.capella.test.validation.rules.ju.testcases.AbstractRulesOnIntegrityTest;
@@ -83,7 +83,7 @@ public class Rule_I_23 extends AbstractRulesOnIntegrityTest {
     // apply delete hyperlink QF for the first marker
     I_23_Resolver i23Resolver = new I_23_Resolver();
     Diagnostic diagnostic = MarkerViewHelper.getDiagnostic(markers.get(0));
-    String linkId = SaxParserHelper.getLinkIdFromStatus(diagnostic.getMessage());
+    String linkId = DescriptionParserHelper.getLinkIdFromStatus(diagnostic.getMessage());
     i23Resolver.run(markers.get(0));
     CapellaElement element = (CapellaElement) MarkerViewHelper.getModelElementsFromMarker(markers.get(0)).get(0);
     if (element.getDescription().contains(linkId)) {
@@ -91,7 +91,7 @@ public class Rule_I_23 extends AbstractRulesOnIntegrityTest {
     }
     // apply convert hyperlink QF for the second marker
     Diagnostic diagnostic2 = MarkerViewHelper.getDiagnostic(markers.get(1));
-    String linkId2 = SaxParserHelper.getLinkIdFromStatus(diagnostic2.getMessage());
+    String linkId2 = DescriptionParserHelper.getLinkIdFromStatus(diagnostic2.getMessage());
     String linkName = "Root Operational Activity";
     new I_23_ConvertResolver().run(markers.get(1));
     if (element.getDescription().contains(linkId2) || !element.getDescription().contains(linkName)) {

@@ -14,8 +14,6 @@
 package org.polarsys.capella.core.model.utils.saxparser;
 
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -60,16 +58,5 @@ public class SaxParserHelper {
     }
 
     return eObject;
-  }
-
-  public static String getLinkIdFromStatus(String statusMessage) {
-    Pattern pattern = Pattern.compile("\\(id: (.+?)\\)");
-
-    Matcher matcher = pattern.matcher(statusMessage);
-    if (matcher.find()) {
-      return matcher.group(1);
-    }
-    return null;
-
   }
 }
