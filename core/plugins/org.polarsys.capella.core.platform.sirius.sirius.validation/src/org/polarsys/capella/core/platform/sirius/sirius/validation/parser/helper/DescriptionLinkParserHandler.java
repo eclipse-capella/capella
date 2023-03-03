@@ -107,42 +107,43 @@ public class DescriptionLinkParserHandler extends DefaultHandler {
 
   public List<IStatus> process(String description) {
     List<IStatus> exceptions = new ArrayList<>();
-    description = SaxParserHelper.escapeSpecialCharacter(description);
-    desc = new StringBuilder();
-    desc.append(IConstantValidation.ROOT_NODE);
-    desc.append(description);
-    desc.append(IConstantValidation.ROOT_NODE_END);
-    // parser
-    SAXParser saxParser = null;
-    StringReader reader = null;
-    try {
+    if ((null != description) && !description.isEmpty()) {
+      description = SaxParserHelper.escapeSpecialCharacter(description);
+      desc = new StringBuilder();
+      desc.append(IConstantValidation.ROOT_NODE);
+      desc.append(description);
+      desc.append(IConstantValidation.ROOT_NODE_END);
+      // parser
+      SAXParser saxParser = null;
+      StringReader reader = null;
+      try {
 
-      SAXParserFactory saxFactory = SAXParserFactory.newInstance();
-      saxFactory.setValidating(false);
-      saxParser = saxFactory.newSAXParser();
-      saxParser.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, "");
-      saxParser.setProperty(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
-      // sax data handler
-      DefaultHandler handler = new LinkParserHandler();
+        SAXParserFactory saxFactory = SAXParserFactory.newInstance();
+        saxFactory.setValidating(false);
+        saxParser = saxFactory.newSAXParser();
+        saxParser.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, "");
+        saxParser.setProperty(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
+        // sax data handler
+        DefaultHandler handler = new LinkParserHandler();
 
-      // input Source
-      InputSource is = new InputSource();
-      reader = new StringReader(desc.toString());
-      is.setCharacterStream(reader);
-      saxParser.parse(is, handler);
+        // input Source
+        InputSource is = new InputSource();
+        reader = new StringReader(desc.toString());
+        is.setCharacterStream(reader);
+        saxParser.parse(is, handler);
 
-    } catch (SAXParseException ex) {
-      exceptions.add(ctx.createFailureStatus("Invalid description format at line " + ex.getLineNumber())); //$NON-NLS-1$
-    } catch (Exception exception_p) {
-      StringBuilder loggerMessage = new StringBuilder("Invalid description format"); //$NON-NLS-1$
-      logger.debug(loggerMessage.toString(), exception_p);
-    } finally {
-      if (reader != null && saxParser != null) {
-        reader.close();
-        saxParser.reset();
+      } catch (SAXParseException ex) {
+        exceptions.add(ctx.createFailureStatus("Invalid description format at line " + ex.getLineNumber())); //$NON-NLS-1$
+      } catch (Exception exception_p) {
+        StringBuilder loggerMessage = new StringBuilder("Invalid description format"); //$NON-NLS-1$
+        logger.debug(loggerMessage.toString(), exception_p);
+      } finally {
+        if (reader != null && saxParser != null) {
+          reader.close();
+          saxParser.reset();
+        }
       }
     }
-
     return exceptions;
   }
 }
