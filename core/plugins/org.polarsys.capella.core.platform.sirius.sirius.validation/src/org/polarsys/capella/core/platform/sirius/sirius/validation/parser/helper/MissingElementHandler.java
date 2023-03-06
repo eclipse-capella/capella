@@ -32,20 +32,20 @@ public class MissingElementHandler implements ILinkParser {
 
   @Override
   public void handleParsedLink(LinkDescription parsedLink) {
-    if (parsedLink.getTargetElement() == null) {
+    if (parsedLink.getTargetElement() == null && parsedLink.getHref().startsWith("hlink://")) {
       String elementName = NamingHelper.getElementName(element);
       String elementId = parsedLink.getHref().replace("hlink://", "");
       if (!parsedLinks.contains(parsedLink)) {
         parsedLinks.add(parsedLink);
-        String failureMessage = "(Hyperlink) The model/diagram element named “" + parsedLink.getName() + "” (id: "
+        String failureMessage = "(Hyperlink) The model/diagram element named \"" + parsedLink.getName() + "\" (id: "
             + elementId + ") can not be found for the rich text description of the element " + elementName;
         result.add(ConstraintStatus.createStatus(ctx, element, ctx.getResultLocus(), "{0}", failureMessage));
       } else {
         List<IStatus> updatedResult = result.stream().map(sts -> {
           if (sts.getMessage().contains(elementId)) {
             String name = DescriptionLinkParserHandler.extractName(sts.getMessage());
-            String failureMessage = "(Hyperlink) The model/diagram elements named “" + name + ", ...” (id: " + elementId
-                + ") can not be found for the rich text description of the element " + elementName;
+            String failureMessage = "(Hyperlink) The model/diagram elements named \"" + name + ", ...\" (id: "
+                + elementId + ") can not be found for the rich text description of the element " + elementName;
             return ConstraintStatus.createStatus(ctx, element, ctx.getResultLocus(), "{0}", failureMessage);
           }
           return sts;

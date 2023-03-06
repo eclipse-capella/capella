@@ -3078,7 +3078,7 @@
             id="7da9d3e8-7e95-4074-9bc9-802703c7945d" name="Root Operational Activity">
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.oa:OperationalActivity"
               id="e3012a49-86bc-44a1-b91c-7c18f232ac01" name="KO_OA" summary="CapellaElement links a non-existiing element in its description"
-              description="&lt;p>&lt;a href=&quot;hlink://3a0907f1-7c94-40cf-8e33-191119044e50&quot;>&lt;font color=&quot;#0066cc&quot;>OperationalActivity 1&lt;/font>&lt;/a>&lt;/p>&#xA;&#xA;&lt;p>&lt;a href=&quot;hlink://7da9d3e8-7e95-4074-9bc9-802703c79&quot;>Root Operational Activity&lt;/a>&lt;/p>&#xA;&#xA;&lt;p>&lt;a href=&quot;hlink://3a0907f1-7c94-40cf-8e33-191119044e50&quot;>OperationalActivit&lt;/a>&lt;/p>&#xA;&#xA;&lt;p>&amp;nbsp;&lt;/p>&#xA;"/>
+              description="&lt;p>&lt;a href=&quot;hlink://3a0907f1-7c94-40cf-8e33-191119044e50&quot;>&lt;font color=&quot;#0066cc&quot;>OperationalActivity 1&lt;/font>&lt;/a>&lt;/p>&#xD;&#xA;&#xD;&#xA;&lt;p>&lt;a href=&quot;hlink://7da9d3e8-7e95-4074-9bc9-802703c79&quot;>Root Operational Activity&lt;/a>&lt;/p>&#xD;&#xA;&#xD;&#xA;&lt;p>&lt;a href=&quot;hlink://3a0907f1-7c94-40cf-8e33-191119044e50&quot;>OperationalActivit&lt;/a>&lt;/p>&#xD;&#xA;&#xD;&#xA;&lt;p>&lt;a href=&quot;https://www.google.com/search?q=wrong+site&amp;amp;safe=active&amp;amp;ssui=on&quot;>Shoud_NOT_Be_Parsed&lt;/a>&lt;/p>&lt;p>&amp;nbsp;&lt;/p>&#xD;&#xA;"/>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.oa:OperationalActivity"
               id="d29276c9-0fe2-4407-a5b8-4b28ceb322a9" name="OA_to_be_linked"/>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.oa:OperationalActivity"
