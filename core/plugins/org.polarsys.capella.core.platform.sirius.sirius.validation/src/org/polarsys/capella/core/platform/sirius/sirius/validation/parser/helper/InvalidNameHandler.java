@@ -12,6 +12,7 @@ import org.eclipse.emf.validation.service.ConstraintRegistry;
 import org.eclipse.emf.validation.service.IConstraintDescriptor;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.polarsys.capella.core.model.utils.NamingHelper;
+import org.polarsys.capella.core.model.utils.saxparser.SaxParserHelper;
 import org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram.LinkDescription;
 
 /**
@@ -48,6 +49,7 @@ public class InvalidNameHandler implements ILinkParser {
           String message = "(Hyperlink) The " + (isDiagram ? "diagram" : "model") + " element named \"" + value
               + "\" (id: " + elementId + ") found in the rich text description of "
               + NamingHelper.getElementName(element) + " is not up to date.";
+          message = SaxParserHelper.unescapeSpecialCharacter(message);
           result.add(ConstraintStatus.createStatus(ctx, element, ctx.getResultLocus(), IStatus.WARNING,
               desc.getStatusCode(), "{0}", message));
         } else {
@@ -57,6 +59,7 @@ public class InvalidNameHandler implements ILinkParser {
               String message = "(Hyperlink) The " + (isDiagram ? "diagrams" : "models") + " elements named \""
                   + elementName + ", ...\" (id: " + elementId + ") found in the rich text description of "
                   + NamingHelper.getElementName(element) + " are not up to date.";
+              message = SaxParserHelper.unescapeSpecialCharacter(message);
               return ConstraintStatus.createStatus(ctx, element, ctx.getResultLocus(), IStatus.WARNING,
                   desc.getStatusCode(), "{0}", message);
             }
