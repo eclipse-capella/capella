@@ -130,7 +130,7 @@ In Case the ComponentExchange is of kind DELEGATION
 |}
 <br>
 {| class="VALIDATION-RULE"
-!|[[Image:../../Images/error.gif|ERROR]]
+!|[[Image:../../Images/warning.gif|WARNING]]
 |I_22 - HyperLink to capella element or diagram name check 
 |-
 | colspan="2"|This rule ensures that hyperLinks to capella elements or diagrams names are up to date.

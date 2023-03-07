@@ -116,7 +116,7 @@
                   lang="java"
                   mode="Batch"
                   name="I_22 - HyperLink to capella element or diagram name check"
-                  severity="ERROR"
+                  severity="WARNING"
                   statusCode="1">
                <message>
                   {0}
