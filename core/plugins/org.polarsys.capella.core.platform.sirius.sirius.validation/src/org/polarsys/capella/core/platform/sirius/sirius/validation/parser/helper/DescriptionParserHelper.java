@@ -1,7 +1,20 @@
+/*******************************************************************************
+ * Copyright (c) 2023 Thales Global Services S.A.S.
+ *  This program and the accompanying materials are made available under the
+ *  terms of the Eclipse Public License 2.0 which is available at
+ *  http://www.eclipse.org/legal/epl-2.0
+ *  
+ *  SPDX-License-Identifier: EPL-2.0
+ * 
+ * Contributors:
+ *  Thales Global Services S.A.S - initial API and implementation
+ ******************************************************************************/
 package org.polarsys.capella.core.platform.sirius.sirius.validation.parser.helper;
 
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class DescriptionParserHelper {
 
@@ -13,6 +26,15 @@ public class DescriptionParserHelper {
       return matcher.group(1);
     }
     return null;
+
+  }
+
+  public static List<String> getLinksWithId(String description, String linkId) {
+    Pattern pattern = Pattern.compile("(<a href=\"hlink://" + linkId + ".*?</a>)");
+
+    Matcher matcher = pattern.matcher(description);
+    List<String> links = matcher.results().map(res -> res.group()).collect(Collectors.toList());
+    return links;
 
   }
 }

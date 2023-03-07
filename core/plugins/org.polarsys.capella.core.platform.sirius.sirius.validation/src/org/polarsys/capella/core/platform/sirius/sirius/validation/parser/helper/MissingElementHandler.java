@@ -38,7 +38,8 @@ public class MissingElementHandler implements ILinkParser {
       String elementId = parsedLink.getHref().replace("hlink://", "");
       if (!parsedLinks.contains(parsedLink)) {
         parsedLinks.add(parsedLink);
-        String failureMessage = "(Hyperlink) The model/diagram element named \"" + parsedLink.getName() + "\" (id: "
+        String failureMessage = "(Hyperlink) The model/diagram element with label \"" + parsedLink.getName()
+            + "\" (id: "
             + elementId + ") can not be found for the rich text description of the element " + elementName;
         failureMessage = SaxParserHelper.unescapeSpecialCharacter(failureMessage);
         result.add(ConstraintStatus.createStatus(ctx, element, ctx.getResultLocus(), "{0}", failureMessage));
@@ -46,7 +47,7 @@ public class MissingElementHandler implements ILinkParser {
         List<IStatus> updatedResult = result.stream().map(sts -> {
           if (sts.getMessage().contains(elementId)) {
             String name = DescriptionLinkParserHandler.extractName(sts.getMessage());
-            String failureMessage = "(Hyperlink) The model/diagram elements named \"" + name + ", ...\" (id: "
+            String failureMessage = "(Hyperlink) The model/diagram elements with label \"" + name + "\", ... (id: "
                 + elementId + ") can not be found for the rich text description of the element " + elementName;
             failureMessage = SaxParserHelper.unescapeSpecialCharacter(failureMessage);
             return ConstraintStatus.createStatus(ctx, element, ctx.getResultLocus(), "{0}", failureMessage);

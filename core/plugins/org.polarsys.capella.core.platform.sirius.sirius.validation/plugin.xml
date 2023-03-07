@@ -43,6 +43,24 @@
          </rules>
       </resolver>
       <resolver
+            class="org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram.I_23_ReplaceWithCapellaElementResolver"
+            desc="%quickFix.I_23_ReplaceWithCapellaElementResolver.desc"
+            icon="icons/search16.gif"
+            label="%quickFix.I_23_ReplaceWithCapellaElementResolver.label">
+         <rules
+               ruleId="I_23">
+         </rules>
+      </resolver>
+      <resolver
+            class="org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram.I_23_ReplaceWithDiagramElementResolver"
+            desc="%quickFix.I_23_ReplaceWithDiagramElementResolver.desc"
+            icon="icons/search16.gif"
+            label="%quickFix.I_23_ReplaceWithDiagramElementResolver.label">
+         <rules
+               ruleId="I_23">
+         </rules>
+      </resolver>
+      <resolver
             class="org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram.ImagePathResolver"
             desc="%quickFix.ImagePath_Resolver.desc"
             label="%quickFix.ImagePath_Resolver.label">

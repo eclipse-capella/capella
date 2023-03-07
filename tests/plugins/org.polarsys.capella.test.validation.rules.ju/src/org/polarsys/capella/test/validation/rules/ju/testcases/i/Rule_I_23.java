@@ -14,6 +14,7 @@ package org.polarsys.capella.test.validation.rules.ju.testcases.i;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.core.resources.IMarker;
@@ -21,15 +22,26 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewHelper;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
+import org.polarsys.capella.core.data.capellamodeller.Project;
+import org.polarsys.capella.core.data.oa.OperationalActivity;
+import org.polarsys.capella.core.libraries.model.CapellaModel;
+import org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram.AbstractReplaceInvalidHyperLinkInDescription;
 import org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram.I_23_ConvertResolver;
+import org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram.I_23_ReplaceWithCapellaElementResolver;
+import org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram.I_23_ReplaceWithDiagramElementResolver;
 import org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram.I_23_Resolver;
 import org.polarsys.capella.core.platform.sirius.sirius.validation.parser.helper.DescriptionParserHelper;
 import org.polarsys.capella.test.framework.api.ComposedOracleDefinition;
 import org.polarsys.capella.test.framework.api.OracleDefinition;
 import org.polarsys.capella.test.validation.rules.ju.testcases.AbstractRulesOnIntegrityTest;
+import org.polarsys.kitalpha.richtext.widget.tools.dialogs.IEncodedURLHandler;
+import org.polarsys.kitalpha.richtext.widget.tools.manager.LinkManager;
+import org.polarsys.kitalpha.richtext.widget.tools.utils.Constants;
 
 /**
  * test on I_23: This rule ensures that hyperLinks to non existing capella element or diagram are removed from the
@@ -70,7 +82,7 @@ public class Rule_I_23 extends AbstractRulesOnIntegrityTest {
    */
   protected List<OracleDefinition> getOracleDefinitions() {
     return Arrays
-        .asList(new ComposedOracleDefinition("e3012a49-86bc-44a1-b91c-7c18f232ac01", 3, Collections.emptyList()));
+        .asList(new ComposedOracleDefinition("e3012a49-86bc-44a1-b91c-7c18f232ac01", 5, Collections.emptyList()));
   }
 
   @Override
@@ -96,6 +108,72 @@ public class Rule_I_23 extends AbstractRulesOnIntegrityTest {
     new I_23_ConvertResolver().run(markers.get(1));
     if (element.getDescription().contains(linkId2) || !element.getDescription().contains(linkName)) {
       return Status.error("The I_23_ConvertResolver (convert hyperlink QF) has failed");
+    }
+
+    OperationalActivity op_activity = null;
+
+    CapellaModel model = getTestModel(getRequiredTestModel());
+    TransactionalEditingDomain domain = model.getEditingDomain();
+    Project project = model.getProject(domain);
+    for (Iterator<EObject> it = project.eAllContents(); it.hasNext();) {
+      EObject next = it.next();
+      if (next instanceof OperationalActivity) {
+        op_activity = (OperationalActivity) next;
+        break;
+      }
+    }
+
+    Diagnostic diagnostic3 = MarkerViewHelper.getDiagnostic(markers.get(2));
+    String linkId3 = DescriptionParserHelper.getLinkIdFromStatus(diagnostic3.getMessage());
+    final String linkName2 = "My Label";
+    final String newLinkId = op_activity.getId();
+
+    new I_23_ReplaceWithCapellaElementResolver() {
+      @Override
+      protected IEncodedURLHandler getEncodedURLHandler(EObject targetModelElement,
+          AbstractReplaceInvalidHyperLinkInDescription replaceDescription) {
+        return new IEncodedURLHandler() {
+          public String getEncodedURL() {
+            LinkManager linkManager = getLinkManager(replaceDescription);
+            return linkManager.encode(Constants.MODEL_ELEMENT_LABEL, newLinkId,
+                linkName2);
+          };
+
+          public boolean handle() {
+            return true;
+          };
+        };
+      }
+    }.run(markers.get(2));
+    if (element.getDescription().contains(linkId3) || !element.getDescription().contains(linkName2)
+        || !element.getDescription().contains(newLinkId)) {
+      return Status.error("The I_23_ReplaceWithCapellaElementResolver (convert hyperlink QF) has failed");
+    }
+
+    Diagnostic diagnostic4 = MarkerViewHelper.getDiagnostic(markers.get(3));
+    String linkId4 = DescriptionParserHelper.getLinkIdFromStatus(diagnostic4.getMessage());
+    final String linkName3 = "My Other Label";
+    final String newLinkId2 = "_OTvN8LzVEe2RdMJrxo6ssg";
+
+    new I_23_ReplaceWithDiagramElementResolver() {
+      @Override
+      protected IEncodedURLHandler getEncodedURLHandler(EObject targetModelElement,
+          AbstractReplaceInvalidHyperLinkInDescription replaceDescription) {
+        return new IEncodedURLHandler() {
+          public String getEncodedURL() {
+            LinkManager linkManager = getLinkManager(replaceDescription);
+            return linkManager.encode(Constants.MODEL_ELEMENT_LABEL, newLinkId2, linkName3);
+          };
+
+          public boolean handle() {
+            return true;
+          };
+        };
+      }
+    }.run(markers.get(3));
+    if (element.getDescription().contains(linkId4) || !element.getDescription().contains(linkName3)
+        || !element.getDescription().contains(newLinkId2)) {
+      return Status.error("The I_23_ReplaceWithDiagramElementResolver (convert hyperlink QF) has failed");
     }
 
     return Status.OK_STATUS;
