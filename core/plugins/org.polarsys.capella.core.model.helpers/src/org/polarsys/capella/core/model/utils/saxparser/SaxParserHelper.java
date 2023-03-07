@@ -35,11 +35,35 @@ public class SaxParserHelper {
     result = result.replace(IConstantValidation.EURO_NAME_CODE, IConstantValidation.EURO_NUMBER_CODE);
     result = result.replace(IConstantValidation.TRADE_NAME_CODE, IConstantValidation.TRADE_NUMBER_CODE);
     result = result.replace(IConstantValidation.AMP_NAME_CODE, IConstantValidation.AMP_NUMBER_CODE);
+    result = result.replace(IConstantValidation.LESS_THAN_NAME_CODE, IConstantValidation.LESS_THAN_CODE);
+    result = result.replace(IConstantValidation.GREATER_THAN_NAME_CODE, IConstantValidation.GREATER_THAN_CODE);
 
     // if the 5 predefined entities of XML1.0 are present => replace them by their unicode code
-    result = result.replace(IConstantValidation.DOUBLE_QUOTES, IConstantValidation.DOUBLE_QUOTES);
-    result = result.replace(IConstantValidation.AMP, IConstantValidation.AMP_NUMBER_CODE);
+    result = result.replace(IConstantValidation.DOUBLE_QUOTES_NAME_CODE, IConstantValidation.DOUBLE_QUOTES_CODE);
     result = result.replace(IConstantValidation.APOSTROPHE, IConstantValidation.APOSTROPHE_CODE);
+    result = result.replace(IConstantValidation.APOSTROPHE_NAME_CODE, IConstantValidation.APOSTROPHE_CODE);
+    result = result.replace(IConstantValidation.AMP, IConstantValidation.AMP_NUMBER_CODE);
+
+    return result;
+  }
+
+  public static String unescapeSpecialCharacter(String input) {
+    String result = input;
+    result = result.replace(IConstantValidation.NON_BREAKING_SPACE_NUMBER_CODE, IConstantValidation.SPACE);
+    result = result.replace(IConstantValidation.EURO_NAME_CODE, IConstantValidation.EURO);
+    result = result.replace(IConstantValidation.EURO_NUMBER_CODE, IConstantValidation.EURO);
+    result = result.replace(IConstantValidation.TRADE_NAME_CODE, IConstantValidation.TRADE);
+    result = result.replace(IConstantValidation.TRADE_NUMBER_CODE, IConstantValidation.TRADE);
+    result = result.replace(IConstantValidation.AMP_NAME_CODE, IConstantValidation.AMP);
+    result = result.replace(IConstantValidation.AMP_NUMBER_CODE, IConstantValidation.AMP);
+    result = result.replace(IConstantValidation.LESS_THAN_CODE, IConstantValidation.LESS_THAN);
+    result = result.replace(IConstantValidation.LESS_THAN_NAME_CODE, IConstantValidation.LESS_THAN);
+    result = result.replace(IConstantValidation.GREATER_THAN_CODE, IConstantValidation.GREATER_THAN);
+    result = result.replace(IConstantValidation.GREATER_THAN_NAME_CODE, IConstantValidation.GREATER_THAN);
+    result = result.replace(IConstantValidation.DOUBLE_QUOTES_CODE, IConstantValidation.DOUBLE_QUOTES);
+    result = result.replace(IConstantValidation.DOUBLE_QUOTES_NAME_CODE, IConstantValidation.DOUBLE_QUOTES);
+    result = result.replace(IConstantValidation.APOSTROPHE_CODE, IConstantValidation.APOSTROPHE);
+    result = result.replace(IConstantValidation.APOSTROPHE_NAME_CODE, IConstantValidation.APOSTROPHE);
 
     return result;
   }

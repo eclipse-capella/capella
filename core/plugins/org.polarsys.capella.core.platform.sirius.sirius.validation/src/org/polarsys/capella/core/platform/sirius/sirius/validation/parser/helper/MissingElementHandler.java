@@ -9,6 +9,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.IValidationContext;
 import org.eclipse.emf.validation.model.ConstraintStatus;
 import org.polarsys.capella.core.model.utils.NamingHelper;
+import org.polarsys.capella.core.model.utils.saxparser.SaxParserHelper;
 import org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram.LinkDescription;
 
 /**
@@ -39,6 +40,7 @@ public class MissingElementHandler implements ILinkParser {
         parsedLinks.add(parsedLink);
         String failureMessage = "(Hyperlink) The model/diagram element named \"" + parsedLink.getName() + "\" (id: "
             + elementId + ") can not be found for the rich text description of the element " + elementName;
+        failureMessage = SaxParserHelper.unescapeSpecialCharacter(failureMessage);
         result.add(ConstraintStatus.createStatus(ctx, element, ctx.getResultLocus(), "{0}", failureMessage));
       } else {
         List<IStatus> updatedResult = result.stream().map(sts -> {
@@ -46,6 +48,7 @@ public class MissingElementHandler implements ILinkParser {
             String name = DescriptionLinkParserHandler.extractName(sts.getMessage());
             String failureMessage = "(Hyperlink) The model/diagram elements named \"" + name + ", ...\" (id: "
                 + elementId + ") can not be found for the rich text description of the element " + elementName;
+            failureMessage = SaxParserHelper.unescapeSpecialCharacter(failureMessage);
             return ConstraintStatus.createStatus(ctx, element, ctx.getResultLocus(), "{0}", failureMessage);
           }
           return sts;
