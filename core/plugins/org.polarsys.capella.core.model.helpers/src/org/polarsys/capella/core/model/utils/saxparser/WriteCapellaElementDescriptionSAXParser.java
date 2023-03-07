@@ -29,7 +29,8 @@ import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.model.helpers.CapellaElementExt;
+import org.polarsys.capella.core.model.utils.NamingHelper;
+import org.polarsys.kitalpha.emde.model.Element;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -50,14 +51,11 @@ public class WriteCapellaElementDescriptionSAXParser {
   }
 
   protected String getName(EObject object) {
-    if (null != object) {
-      return CapellaElementExt.getName(object);
-    }
-    return null;
+    return NamingHelper.getElementName(object);
   }
 
   protected boolean managedObject(EObject object) {
-    return (object instanceof CapellaElement || object instanceof DDiagram);
+    return (object instanceof Element || object instanceof DDiagram) || (object instanceof DRepresentationDescriptor);
   }
 
   private String getDescription(EObject object) {
