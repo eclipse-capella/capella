@@ -133,14 +133,14 @@
                   isEnabledByDefault="true"
                   lang="java"
                   mode="Batch"
-                  name="I_22 - HyperLink to capella element or diagram name check"
+                  name="I_22 - Hyperlink to Model Element or Diagram displayed text check"
                   severity="WARNING"
                   statusCode="1">
                <message>
                   {0}
                </message>
                <description>
-                  This rule ensures that hyperLinks to capella elements or diagrams names are up to date.
+                  This rule ensures that displayed text of hyperlinks to Model Element or Diagram is up to date.
                </description>
             </constraint>
             <constraint
@@ -149,7 +149,7 @@
                   isEnabledByDefault="true"
                   lang="java"
                   mode="Batch"
-                  name="I_23 - HyperLink to capella element or diagram existance check"
+                  name="I_23 - Hyperlink to Model Element or Diagram existance check"
                   severity="ERROR"
                   statusCode="1">
                <message>
@@ -159,7 +159,7 @@
                      class="CapellaElement">
                </target>
                <description>
-                  This rule ensures that hyperLinks to non existing capella element or diagram are removed or converted to text from the description.
+                  This rule ensures that hyperlinks to Model Element or Diagram are still refering to existing elements.
                </description>
             </constraint>
             <constraint
