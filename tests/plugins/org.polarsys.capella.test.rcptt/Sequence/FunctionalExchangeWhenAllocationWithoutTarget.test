@@ -6,8 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _m1bcAPyxEeWcsI4k6xXMnQ
-Runtime-Version: 2.5.0.201909172034
-Save-Time: 5/11/20 10:55 AM
+Runtime-Version: 2.5.4.202208092355
+Save-Time: 2/21/23, 11:25 AM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -24,7 +24,8 @@ Entry-Name: .content
 get-view "Project Explorer" | get-menu "Filters and Customization..." | click
 with [get-window "Filters and Customization"] {
     get-tab-folder | get-tab-item "Pre-set filters" | click
-    get-table | get-item Trace | uncheck
+    get-table | get-item Traces | uncheck
+    get-table | get-item "Function Allocations" | uncheck
     get-button OK | click
 }
 with [get-view "Project Explorer" | get-tree] {

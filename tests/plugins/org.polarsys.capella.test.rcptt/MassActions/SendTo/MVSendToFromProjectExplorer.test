@@ -6,8 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _ISCuQHlOEeinH5hIqek0Nw
-Runtime-Version: 2.3.0.201806262310
-Save-Time: 9/20/18 11:54 AM
+Runtime-Version: 2.5.4.202208092355
+Save-Time: 2/21/23, 12:02 PM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -52,11 +52,7 @@ with [get-view "Project Explorer" | get-tree] {
     select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Root System Function/Entertain with IFE System" "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Root System Function/Perform Cabin Management Activities"
     get-menu -path "Send to Mass Visualization View/Mass Visualization" | click
 }
-with [get-view "Fast Linker" | get-canvas] {
-    mouse-enter 230 25 -height 145 -width 244
-    mouse-move 4 25 -height 145 -width 244
-    mouse-exit "-10" 25 -height 145 -width 244
-}
+
 with [get-view "Mass Visualization" | get-canvas] {
     get-property "getLayer().getGridLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getList().ExchangeCategoryImpl[0].getClassName()" 
         | equals "org.polarsys.capella.core.data.fa.impl.ExchangeCategoryImpl" | verify-true
@@ -79,11 +75,7 @@ with [get-view "Mass Visualization" | get-canvas] {
     get-property "getLayer().getGridLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getRowCount()" 
         | equals 4 | verify-true
 }
-with [get-view "Fast Linker" | get-canvas] {
-    mouse-enter 98 38 -height 145 -width 244
-    mouse-move 178 28 -height 145 -width 244
-    mouse-exit 246 22 -height 145 -width 244
-}
+
 with [get-view "Project Explorer" | get-tree] {
     select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/VOD Movie Selections" "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Displayed VOD Movie Data"
     get-menu -path "Send to Mass Visualization View/Mass Visualization" | click

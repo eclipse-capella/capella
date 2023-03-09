@@ -5,8 +5,8 @@ Element-Name: CapellaExplorerFilters
 Element-Type: context
 Element-Version: 2.0
 Id: _l_hsIAA_EeimXaiNP7dJhg
-Runtime-Version: 2.5.0.M2
-Save-Time: 9/10/19 10:55 AM
+Runtime-Version: 2.5.4.202208092355
+Save-Time: 2/21/23, 10:23 AM
 
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
 Content-Type: text/ecl
@@ -28,13 +28,13 @@ with [get-window "Filters and Customization"] {
     get-item "Combined Fragments" | check
     get-item "Component Exchange Ends" | check
     get-item "Component Exchanges" | check
-    get-item "Component Port" | check
+    get-item "Component Ports" | check
     get-item "EMF Resources" | check
     get-item "Events" | check
     get-item "Execution Ends" | check
     get-item "Executions" | check
     get-item "Fragment Ends" | check
-    get-item "Function Port" | check
+    get-item "Function Ports" | check
     get-item "Functional Chain Involvements" | check
     get-item "Functional Exchanges" | check
     get-item "Interaction Operands" | check
@@ -49,7 +49,7 @@ with [get-window "Filters and Customization"] {
     get-item "Parts" | check
     get-item "Physical Links" | check
     get-item "Physical Path Involvements" | check
-    get-item "Physical Port" | check
+    get-item "Physical Ports" | check
     get-item "Property Value Packages" | check
     get-item "Refinement Links" | check
     get-item "Replicable Element Compliancy Definitions" | uncheck
@@ -59,7 +59,7 @@ with [get-window "Filters and Customization"] {
     get-item "Reuse Links" | uncheck
     get-item "Sequence Messages" | uncheck
     get-item "Technical Interfaces" | check
-    get-item "Trace" | check
+    get-item "Traces" | check
     get-item "Transformation Links" | check
     }
     get-button OK | click

@@ -1,0 +1,25 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: CapellaEnableHiddenCapabilities
+Element-Type: context
+Element-Version: 2.0
+Id: __T0kcLHQEe20AqLRAbDpgQ
+Runtime-Version: 2.5.4.202208092355
+Save-Time: 2/21/23, 11:38 AM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+get-preferences-menu | click
+with [get-window Preferences] {
+    get-tree | select "General/Capabilities"
+    get-tree -after [get-label "Description:"] | select "Capella Advanced Modeling" | get-item 
+        -path "Capella Advanced Modeling/Expert\\/Semantic Properties" | check
+    get-tree -after [get-label "Description:"] | select "Capella Tools" | get-item 
+        -path "Capella Tools/Fast Linker" | check
+    get-button Apply | click
+    get-button "Apply and Close" | click
+}
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--

@@ -6,8 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _-NK48OTBEee98IEkL9YSZg
-Runtime-Version: 2.5.0.M2
-Save-Time: 10/8/19 4:55 PM
+Runtime-Version: 2.5.4.202208092355
+Save-Time: 2/21/23, 11:53 AM
 Testcase-Type: ecl
 
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
@@ -66,8 +66,8 @@ get-view "Project Explorer" | get-menu "Filters and Customization..." | click
 with [get-window "Filters and Customization"] {
     get-tab-folder | get-tab-item "Pre-set filters" | click
     get-editbox -after [get-label "Select the filters to apply (matching items will be hidden):"] | set-text fun
-    get-table | select "Function Port"
+    get-table | select "Function Ports"
 }
-get-window "Filters and Customization" | get-table | get-item -path "Function Port" | get-property checked 
+get-window "Filters and Customization" | get-table | get-item -path "Function Ports" | get-property checked 
     | equals false | verify-true
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
