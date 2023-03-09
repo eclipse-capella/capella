@@ -66,6 +66,7 @@ public class ExtendedComparison extends EComparisonImpl {
     public EObject copy(EObject element) {
       if (_mergePolicy instanceof IMergePolicy2) {
         if (!((IMergePolicy2) _mergePolicy).copy(element)) {
+          _mapping.mapIncrementally(element, _sourceRole, element, _sourceRole.opposite());
           return element;
         }
       }
