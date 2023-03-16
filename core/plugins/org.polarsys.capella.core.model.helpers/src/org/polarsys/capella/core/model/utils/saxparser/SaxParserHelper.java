@@ -13,13 +13,10 @@
 
 package org.polarsys.capella.core.model.utils.saxparser;
 
-import java.util.List;
-
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.polarsys.capella.common.helpers.TransactionHelper;
-import org.polarsys.capella.shared.id.handler.IScope;
-import org.polarsys.capella.shared.id.handler.IdManager;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 
 /**
  */
@@ -73,12 +70,8 @@ public class SaxParserHelper {
     EObject eObject = null;
     if (split.length == 2) {
       String id = split[1].replace("/", ""); //$NON-NLS-1$ //$NON-NLS-2$
-      eObject = IdManager.getInstance().getEObject(id, new IScope() {
-        @Override
-        public List<Resource> getResources() {
-          return TransactionHelper.getEditingDomain(context).getResourceSet().getResources();
-        }
-      });
+      ResourceSet rSet = TransactionHelper.getEditingDomain(context).getResourceSet();
+      eObject = RepresentationHelper.getRepresentationDescriptorOrSemanticObject(rSet, id);
     }
 
     return eObject;

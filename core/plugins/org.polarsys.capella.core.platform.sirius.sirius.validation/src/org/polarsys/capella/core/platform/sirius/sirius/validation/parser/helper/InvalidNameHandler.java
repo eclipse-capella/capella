@@ -10,7 +10,9 @@ import org.eclipse.emf.validation.IValidationContext;
 import org.eclipse.emf.validation.model.ConstraintStatus;
 import org.eclipse.emf.validation.service.ConstraintRegistry;
 import org.eclipse.emf.validation.service.IConstraintDescriptor;
-import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
+import org.polarsys.capella.core.model.utils.NamingHelper;
 import org.polarsys.capella.core.model.utils.saxparser.SaxParserHelper;
 import org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram.LinkDescription;
 
@@ -37,7 +39,7 @@ public class InvalidNameHandler implements ILinkParser {
   public void handleParsedLink(LinkDescription parsedLink) {
     if (parsedLink.getTargetElement() != null && parsedLink.getHref().startsWith("hlink://")) {
       EObject elementFound = parsedLink.getTargetElement();
-      boolean isDiagram = elementFound instanceof DDiagram;
+      boolean isDiagram = elementFound instanceof DRepresentationDescriptor || elementFound instanceof DRepresentation;
       String name = DescriptionParserHelper.getElementName(elementFound);
       String value = parsedLink.getName();
       String elementId = parsedLink.getHref().replace("hlink://", "");

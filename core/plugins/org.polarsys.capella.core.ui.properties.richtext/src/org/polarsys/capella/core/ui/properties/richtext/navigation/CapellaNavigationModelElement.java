@@ -14,7 +14,6 @@ package org.polarsys.capella.core.ui.properties.richtext.navigation;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
@@ -28,9 +27,6 @@ import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.ui.services.UIUtil;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
-import org.polarsys.capella.core.model.handler.helpers.SemanticResourcesScope;
-import org.polarsys.capella.shared.id.handler.IScope;
-import org.polarsys.capella.shared.id.handler.IdManager;
 import org.polarsys.kitalpha.richtext.widget.tools.ext.intf.OpenLinkStrategy;
 
 public class CapellaNavigationModelElement implements OpenLinkStrategy {
@@ -59,12 +55,8 @@ public class CapellaNavigationModelElement implements OpenLinkStrategy {
     }
 
     private EObject getElement(final EditingDomain editingDomain, String uriFragment) {
-        ResourceSet resourceSet = editingDomain.getResourceSet();
-        IScope capellaSemanticResourceScope = new SemanticResourcesScope(resourceSet);
-        EObject semanticElement = IdManager.getInstance().getEObject(uriFragment, capellaSemanticResourceScope);
-        if (semanticElement == null) {
-          return RepresentationHelper.getRepresentationDescriptor(resourceSet, uriFragment);
-        }
+        EObject semanticElement = RepresentationHelper
+            .getRepresentationDescriptorOrSemanticObject(editingDomain.getResourceSet(), uriFragment);
         return semanticElement;
     }
 

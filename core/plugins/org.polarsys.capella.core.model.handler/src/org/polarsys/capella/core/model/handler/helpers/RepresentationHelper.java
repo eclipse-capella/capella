@@ -52,6 +52,7 @@ import org.polarsys.capella.common.utils.RunnableWithBooleanResult;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.shared.id.handler.IScope;
+import org.polarsys.capella.shared.id.handler.IdManager;
 
 import com.google.common.collect.Iterables;
 
@@ -366,6 +367,19 @@ public class RepresentationHelper {
    */
   public static DRepresentationDescriptor getRepresentationDescriptor(DRepresentation representation) {
     return new DRepresentationQuery(representation).getRepresentationDescriptor();
+  }
+
+  /**
+   * Get the representation descriptor whose UID or repPath equals to the parameter id 
+   * or the semantic object with the given id
+   */
+  public static EObject getRepresentationDescriptorOrSemanticObject(ResourceSet rSet, String id) {
+    IScope scope = new SemanticResourcesScope(rSet);
+    EObject eObject = IdManager.getInstance().getEObject(id, scope);
+    if (eObject == null) {
+      return RepresentationHelper.getRepresentationDescriptor(rSet, id);
+    }
+    return eObject;
   }
 
   /**
