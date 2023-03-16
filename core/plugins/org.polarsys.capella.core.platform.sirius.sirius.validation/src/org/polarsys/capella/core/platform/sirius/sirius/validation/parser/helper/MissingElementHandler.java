@@ -8,7 +8,6 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.IValidationContext;
 import org.eclipse.emf.validation.model.ConstraintStatus;
-import org.polarsys.capella.core.model.utils.NamingHelper;
 import org.polarsys.capella.core.model.utils.saxparser.SaxParserHelper;
 import org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram.LinkDescription;
 
@@ -34,7 +33,7 @@ public class MissingElementHandler implements ILinkParser {
   @Override
   public void handleParsedLink(LinkDescription parsedLink) {
     if (parsedLink.getTargetElement() == null && parsedLink.getHref().startsWith("hlink://")) {
-      String elementName = NamingHelper.getElementName(element);
+      String elementName = DescriptionParserHelper.getElementName(element);
       String elementId = parsedLink.getHref().replace("hlink://", "");
       if (!parsedLinks.contains(parsedLink)) {
         parsedLinks.add(parsedLink);

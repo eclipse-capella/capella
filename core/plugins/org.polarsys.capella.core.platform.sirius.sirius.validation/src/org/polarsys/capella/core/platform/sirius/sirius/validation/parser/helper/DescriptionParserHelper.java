@@ -16,6 +16,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+import org.eclipse.emf.ecore.EObject;
+import org.polarsys.capella.common.re.ReNamedElement;
+import org.polarsys.capella.core.model.utils.NamingHelper;
+
 public class DescriptionParserHelper {
 
   public static String getLinkIdFromStatus(String statusMessage) {
@@ -36,5 +40,13 @@ public class DescriptionParserHelper {
     List<String> links = matcher.results().map(res -> res.group()).collect(Collectors.toList());
     return links;
 
+  }
+  
+  public static String getElementName(EObject element) {
+    if (element instanceof ReNamedElement) {
+      return ((ReNamedElement) element).getName();
+    }
+
+    return NamingHelper.getElementName(element);
   }
 }
