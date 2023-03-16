@@ -23,7 +23,7 @@ import javax.xml.parsers.SAXParserFactory;
 
 import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
@@ -55,7 +55,7 @@ public class WriteCapellaElementDescriptionSAXParser {
   }
 
   protected boolean managedObject(EObject object) {
-    return (object instanceof Element || object instanceof DDiagram) || (object instanceof DRepresentationDescriptor);
+    return (object instanceof Element || object instanceof DRepresentation) || (object instanceof DRepresentationDescriptor);
   }
 
   private String getDescription(EObject object) {
