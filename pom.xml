@@ -95,6 +95,11 @@
 							<ws>cocoa</ws>
 							<arch>x86_64</arch>
 						</environment>
+						<environment>
+							<os>macosx</os>
+							<ws>cocoa</ws>
+							<arch>aarch64</arch>
+						</environment>
 					</environments>
 				</configuration>
 			</plugin>
@@ -120,7 +125,7 @@
 						<!-- provide bundles not containing any source code -->
 						<plugin id="org.polarsys.capella.core.data.res.edit" />
 						<plugin id="org.polarsys.capella.core.data.res.editor" />
-                        <plugin id="org.polarsys.capella.ui.views" />
+						<plugin id="org.polarsys.capella.ui.views" />
 						<feature id="org.eclipse.nebula.widgets.richtext.feature" />
 						<feature id="org.polarsys.kitalpha.richtext.widget.feature" />
 						<feature id="org.polarsys.capella.core.mylyn.feature" />
@@ -291,7 +296,6 @@
 				<!-- Tests -->
 				<module>tests/features/org.polarsys.capella.test.feature</module>
 				<module>tests/plugins</module>
-
 				<module>releng/plugins/org.polarsys.capella.test.site</module>
 			</modules>
 		</profile>
