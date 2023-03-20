@@ -77,8 +77,16 @@ public class Rule_I_22 extends AbstractRulesOnIntegrityTest {
     I_22_Resolver i22Resolver = new I_22_Resolver();
     i22Resolver.run(markers.get(0));
     String falseName = "OperationalActivity 1";
-    String trueName = "OA_to_be_linked";
+    String trueName = "OA&#160; _&#160; to_be_linked &eacute;&agrave;&euml;";
     CapellaElement element = (CapellaElement) MarkerViewHelper.getModelElementsFromMarker(markers.get(0)).get(0);
+    if (element.getDescription().contains(falseName) || !element.getDescription().contains(trueName)) {
+      return Status.error("The I_22_Resolver has failed");
+    }
+
+    i22Resolver.run(markers.get(1));
+    falseName = "[OABD] Diagram to be linked 2";
+    trueName = "[OABD] Diagram&#160;&#160; to&#160;&#160; be linked &eacute;&agrave;&auml;";
+    element = (CapellaElement) MarkerViewHelper.getModelElementsFromMarker(markers.get(1)).get(0);
     if (element.getDescription().contains(falseName) || !element.getDescription().contains(trueName)) {
       return Status.error("The I_22_Resolver has failed");
     }
