@@ -32,6 +32,7 @@ import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.menu.dynamic.CreationHelper;
 import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
+import org.polarsys.capella.common.re.ReNamedElement;
 import org.polarsys.capella.core.data.capellacommon.AbstractCapabilityPkg;
 import org.polarsys.capella.core.data.capellacommon.AbstractStateRealization;
 import org.polarsys.capella.core.data.capellacommon.StateTransitionRealization;
@@ -302,6 +303,9 @@ public class CapellaElementExt {
     if (element != null) {
       if (element instanceof AbstractNamedElement) {
         name = ((AbstractNamedElement) element).getName();
+      }
+      if (element instanceof ReNamedElement) {
+        return ((ReNamedElement) element).getName();
       }
     }
 
