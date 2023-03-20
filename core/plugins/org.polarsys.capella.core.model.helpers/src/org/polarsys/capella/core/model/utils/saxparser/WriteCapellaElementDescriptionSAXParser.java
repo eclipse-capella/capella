@@ -21,6 +21,7 @@ import javax.xml.XMLConstants;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
+import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.viewpoint.DRepresentation;
@@ -31,6 +32,7 @@ import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultCompon
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.model.utils.NamingHelper;
 import org.polarsys.kitalpha.emde.model.Element;
+import org.polarsys.kitalpha.richtext.widget.tools.utils.MDERichTextToolsHelper;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -206,7 +208,8 @@ public class WriteCapellaElementDescriptionSAXParser {
                   String value = elementValue.toString();
                   if ((null != elementFound)) {
                     String name = getName(elementFound);
-                    value = value.replaceAll("\\s+", " "); //$NON-NLS-1$//$NON-NLS-2$
+                    name = StringEscapeUtils.escapeHtml(name);
+                    name = MDERichTextToolsHelper.encodeWhiteSpaces(name);
                     if (!name.equals(value) && (!elementId.isEmpty() && elementId.equals(linkId))) {
                       if (managedObject(elementFound)) {
                         flag = true;

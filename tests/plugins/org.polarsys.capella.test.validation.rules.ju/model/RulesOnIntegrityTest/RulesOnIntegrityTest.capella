@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--Capella_Version_null-->
+<!--Capella_Version_6.1.0-->
 <org.polarsys.capella.core.data.capellamodeller:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/6.0.0"
     xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/6.0.0"
@@ -3043,15 +3043,17 @@
         <ownedOperationalActivities xsi:type="org.polarsys.capella.core.data.oa:OperationalActivity"
             id="1236025d-f31f-4a2d-89d7-6d28620281f8" name="Root Operational Activity">
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.oa:OperationalActivity"
-              id="67be48d3-498d-4772-b57d-53919e8536d8" name="OA_to_be_linked"/>
+              id="67be48d3-498d-4772-b57d-53919e8536d8" name="OA  _  to_be_linked éàë"/>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.oa:OperationalActivity"
               id="58fcff83-081f-49e8-b64d-e503042642ab" name="KO_OA" summary="CapellaElement with not-updated link in its description"
               description="&lt;a&#xD;&#xA;href=&quot;hlink://67be48d3-498d-4772-b57d-53919e8536d8&quot;>OperationalActivity&#xD;&#xA;1&lt;/a>"/>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.oa:OperationalActivity"
               id="21f79e9a-700b-4673-9599-58c738a208d2" name="OK_OA" summary="CapellaElement links an updated element in his description"
-              description="&lt;a&#xD;&#xA;href=&quot;hlink://67be48d3-498d-4772-b57d-53919e8536d8&quot;>OA_to_be_linked&lt;/a>"/>
+              description="&lt;p>&lt;a href=&quot;hlink://67be48d3-498d-4772-b57d-53919e8536d8&quot;>OA&amp;nbsp; _&amp;nbsp; to_be_linked &amp;eacute;&amp;agrave;&amp;euml;&lt;/a>&lt;/p>&#xA;"/>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.oa:OperationalActivity"
               id="a9972f3e-dcb8-4d59-a0db-56c14a13890f" name="KO_OA_Diagram" description="&lt;p>&lt;a href=&quot;hlink://_LgLVYK7YEe2dGb1QZGN1VA&quot;>[OABD] Diagram to be linked 2&lt;/a>&lt;/p>&#xA;"/>
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.oa:OperationalActivity"
+              id="2e46ca9d-395b-4832-8fc8-fa0ffe0fd207" name="OK_OA_Diagram" description="&lt;p>&lt;a href=&quot;hlink://_LgLVYK7YEe2dGb1QZGN1VA&quot;>[OABD] Diagram&amp;nbsp;&amp;nbsp; to&amp;nbsp;&amp;nbsp; be linked &amp;eacute;&amp;agrave;&amp;auml;&lt;/a>&lt;/p>&#xA;"/>
         </ownedOperationalActivities>
       </ownedFunctionPkg>
       <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
