@@ -51,7 +51,13 @@ public class I_22_Resolver extends AbstractCapellaMarkerResolution {
         }
 
         public void run() {
-          WriteCapellaElementDescriptionSAXParser writeDescription = new WriteCapellaElementDescriptionSAXParser();
+          WriteCapellaElementDescriptionSAXParser writeDescription = new WriteCapellaElementDescriptionSAXParser() {
+            @Override
+            protected String getName(EObject object_p) {
+              return DescriptionParserHelper.getElementName(object_p);
+            }
+          };
+          
           flag[0] = writeDescription.updateDescription(modelElements, linkId);
         }
       };
