@@ -69,6 +69,7 @@
 								<target>
 									<!-- Create the dropins folder -->
 									<mkdir dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/linux/gtk/x86_64/dropins"/>
+									<mkdir dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/linux/gtk/aarch64/dropins"/>
 									<mkdir dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/x86_64/Capella.app/Contents/Eclipse/dropins"/>
 									<mkdir dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/aarch64/Capella.app/Contents/Eclipse/dropins"/>
 									<mkdir dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/win32/win32/x86_64/dropins"/>
@@ -87,6 +88,10 @@
 									
 									<!-- Modify config.ini -->
 									<replace dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/linux/gtk/x86_64/configuration">
+										<include name="config.ini"/>
+										<replacefilter token="eclipse.application=org.polarsys.capella.core.platform.sirius.ui.perspective.id" value="eclipse.application=org.polarsys.capella.core.platform.sirius.ui.perspective.id${line.separator}org.eclipse.update.reconcile=false"/>
+									</replace>
+									<replace dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/linux/gtk/aarch64/configuration">
 										<include name="config.ini"/>
 										<replacefilter token="eclipse.application=org.polarsys.capella.core.platform.sirius.ui.perspective.id" value="eclipse.application=org.polarsys.capella.core.platform.sirius.ui.perspective.id${line.separator}org.eclipse.update.reconcile=false"/>
 									</replace>
@@ -129,6 +134,32 @@
 										</tarfileset>
 									</tar>
 									
+									<!--  Move the Linux aarch64 JRE into the product -->
+									<move todir="${project.build.directory}/products/org.polarsys.capella.rcp.product/linux/gtk/aarch64/jre" includeEmptyDirs="yes">
+										<fileset dir="../../../linux-aarch64JRE/jre">
+											<include name="**/*" />
+										</fileset>
+									</move>
+									
+									<!-- Tar.gz the Linux product -->
+									<tar destfile="${project.build.directory}/products/capella-${unqualifiedVersion}.${buildQualifier}-linux-gtk-aarch64.tar.gz" compression="gzip" longfile="gnu">
+										<tarfileset dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/linux/gtk/aarch64" prefix="capella">
+											<include name="**/*" />
+											<exclude name="capella"/>
+											<exclude name="jre/bin/*"/>
+											<exclude name="jre/lib/jspawnhelper"/>
+										</tarfileset>
+										<tarfileset dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/linux/gtk/aarch64" prefix="capella" filemode="755">
+											<include name="capella"/>
+											<include name="jre/bin/*"/>
+											<include name="jre/lib/jspawnhelper"/>
+										</tarfileset>
+										<tarfileset dir="../../../samples" prefix="samples">
+											<exclude name="target/**"/>
+											<exclude name="pom.xml"/>
+										</tarfileset>
+									</tar>
+									
 									<!--  Move the Mac x86_64 JRE into the product -->
 									<move todir="${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/x86_64/Capella.app/Contents/jre" includeEmptyDirs="yes">
 										<fileset dir="../../../macJRE/jre">
@@ -148,7 +179,8 @@
 											<include name="Capella.app/Contents/MacOS/capella"/>
 											<include name="Capella.app/Contents/jre/Contents/Home/bin/*"/>
 											<include name="Capella.app/Contents/jre/Contents/Home/lib/jspawnhelper"/>
-										</tarfileset><tarfileset dir="../../../samples" prefix="Capella.app/Contents/samples">
+										</tarfileset>
+										<tarfileset dir="../../../samples" prefix="Capella.app/Contents/samples">
 											<exclude name="target/**"/>
 											<exclude name="pom.xml"/>
 										</tarfileset>
@@ -173,7 +205,8 @@
 											<include name="Capella.app/Contents/MacOS/capella"/>
 											<include name="Capella.app/Contents/jre/Contents/Home/bin/*"/>
 											<include name="Capella.app/Contents/jre/Contents/Home/lib/jspawnhelper"/>
-										</tarfileset><tarfileset dir="../../../samples" prefix="Capella.app/Contents/samples">
+										</tarfileset>
+										<tarfileset dir="../../../samples" prefix="Capella.app/Contents/samples">
 											<exclude name="target/**"/>
 											<exclude name="pom.xml"/>
 										</tarfileset>
