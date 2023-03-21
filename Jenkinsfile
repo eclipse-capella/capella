@@ -52,6 +52,10 @@ pipeline {
 		            os = 'mac-aarch64'
 		            def jdkMacSiliconFolder = os + jre
 		            downloader.downloadTemurinJDK17(jdkMacSiliconFolder, os)
+		            
+		            os = 'linux-aarch64'
+		            jdkLinuxSiliconFolder = os + jre
+		            downloader.downloadTemurinJDK17(jdkLinuxSiliconFolder, os)
 	       		}
 	     	}
 	    }
