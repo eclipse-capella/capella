@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2023 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -14,8 +14,10 @@
 package org.polarsys.capella.common.helpers.query;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
@@ -28,6 +30,9 @@ import org.eclipse.emf.ecore.EPackage;
  * This class contains convenient static methods for querying a EMF model
  */
 public class GetAllQueries implements IGetAllQueries {
+
+  private Map<Class, Map<EObject, Set<EObject>>> resultsByTypeAndBySource = new LinkedHashMap<>();
+  private boolean isCacheActivated;
   /**
    * Retrieve EObject instances corresponding to a type and accessible from a source object by successive compositions
    * 
@@ -37,6 +42,18 @@ public class GetAllQueries implements IGetAllQueries {
    *          discriminating type
    */
   public Set<EObject> getAll(EObject source, Class<?> targetType) {
+    Map<EObject, Set<EObject>> resultsBySource = null;
+    if (isCacheActivated) {
+      if (!resultsByTypeAndBySource.containsKey(targetType)) {
+        resultsBySource = new LinkedHashMap<>();
+        resultsByTypeAndBySource.put(targetType, resultsBySource);
+      } else {
+        resultsBySource = resultsByTypeAndBySource.get(targetType);
+        if (resultsBySource.containsKey(source)) {
+          return resultsBySource.get(source);
+        }
+      }
+  }
 
     Set<EObject> result = new LinkedHashSet<EObject>();
 
@@ -52,6 +69,9 @@ public class GetAllQueries implements IGetAllQueries {
       result.addAll(getAll(object, targetType));
     }
 
+    if (resultsBySource != null) {
+      resultsBySource.put(source, result);
+    }
     return result;
   }
 
@@ -126,5 +146,17 @@ public class GetAllQueries implements IGetAllQueries {
     if (null == pkg)
       return ePackage;
     return getRootPackage(pkg);
+  }
+
+  @Override
+  public void activateCache() {
+    isCacheActivated = true;
+
+  }
+
+  @Override
+  public void deactivateAndCleanCache() {
+    isCacheActivated = false;
+    resultsByTypeAndBySource.clear();
   }
 }

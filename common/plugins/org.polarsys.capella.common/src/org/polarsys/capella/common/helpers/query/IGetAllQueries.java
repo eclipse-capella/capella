@@ -49,4 +49,8 @@ public interface IGetAllQueries {
    * @return sub types
    */
   public List<EClass> getLocalSubTypes(EClass eClass);
+
+  public void activateCache();
+
+  public void deactivateAndCleanCache();
 }

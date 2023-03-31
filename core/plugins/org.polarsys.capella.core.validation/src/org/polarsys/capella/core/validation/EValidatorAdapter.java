@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2023 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -27,6 +27,7 @@ import org.eclipse.emf.validation.model.EvaluationMode;
 import org.eclipse.emf.validation.model.IConstraintStatus;
 import org.eclipse.emf.validation.service.IBatchValidator;
 import org.eclipse.emf.validation.service.ModelValidationService;
+import org.polarsys.capella.common.helpers.query.MDEQueries;
 
 /**
  * An adapter that plugs the EMF Model Validation Service API into the {@link org.eclipse.emf.ecore.EValidator} API.
@@ -90,7 +91,9 @@ public class EValidatorAdapter extends EObjectValidator {
       // externally). If there is no context map, then we can't
       // help it
       if (!hasProcessed(eObject_p, context_p)) {
+        MDEQueries.getInstance().getAllQueries().activateCache();
         status = getValidator().validate(eObject_p, new NullProgressMonitor());
+        MDEQueries.getInstance().getAllQueries().deactivateAndCleanCache();
         processed(eObject_p, context_p, status);
         appendDiagnostics(status, diagnostics_p);
       }
