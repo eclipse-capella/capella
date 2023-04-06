@@ -14,7 +14,7 @@ package org.polarsys.capella.core.sirius.analysis.refresh.extension;
 
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension;
-import org.polarsys.capella.core.data.helpers.cache.ModelCache;
+import org.polarsys.capella.common.helpers.cache.ModelCache;
 
 public abstract class AbstractCacheAwareRefreshExtension extends AbstractRefreshExtension implements IRefreshExtension {
 

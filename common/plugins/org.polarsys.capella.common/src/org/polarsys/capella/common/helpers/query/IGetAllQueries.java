@@ -15,6 +15,7 @@ package org.polarsys.capella.common.helpers.query;
 
 import java.util.List;
 import java.util.Set;
+import java.util.function.Predicate;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -32,6 +33,26 @@ public interface IGetAllQueries {
    *          discriminating type
    */
   public Set<EObject> getAll(EObject source, Class<?> targetType);
+
+  /**
+   * Retrieve EObject instances corresponding to a type and accessible from a source object by successive compositions
+   * 
+   * @param source
+   *          element from which the search starts
+   * @param targetType
+   *          discriminating type
+   */
+  public Set<EObject> getAll(EObject source, EClass targetType);
+
+  /**
+   * Retrieve EObject instances corresponding to a type and accessible from a source object by successive compositions
+   * 
+   * @param source
+   *          element from which the search starts
+   * @param predicate
+   *          discriminating predicate
+   */
+  public Set<EObject> getAll(EObject source, Predicate<EObject> predicate);
   
   /**
    * Retrieve recursively EObject instances corresponding to a type and accessible from a source object by successive compositions

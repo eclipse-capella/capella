@@ -12,6 +12,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.transition.system.topdown.handlers.attachment;
 
+import static org.polarsys.capella.common.helpers.cache.ModelCache.getCache;
+
 import java.util.HashMap;
 
 import org.eclipse.core.runtime.IStatus;
@@ -23,8 +25,6 @@ import org.polarsys.capella.core.transition.common.handlers.IHandler;
 import org.polarsys.capella.core.transition.system.topdown.constants.ITopDownConstants;
 import org.polarsys.capella.core.transition.system.topdown.handlers.transformation.TopDownTransformationHelper;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
-
-import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
 
 /**
  *

@@ -4,8 +4,7 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.data.helpers;singleton:=true
 Bundle-Version: 6.1.0.qualifier
 Bundle-Vendor: %providerName
-Export-Package: org.polarsys.capella.core.data.helpers.cache,
- org.polarsys.capella.core.data.helpers.capellacommon,
+Export-Package: org.polarsys.capella.core.data.helpers.capellacommon,
  org.polarsys.capella.core.data.helpers.capellacommon.delegates,
  org.polarsys.capella.core.data.helpers.capellacore,
  org.polarsys.capella.core.data.helpers.capellacore.delegates,

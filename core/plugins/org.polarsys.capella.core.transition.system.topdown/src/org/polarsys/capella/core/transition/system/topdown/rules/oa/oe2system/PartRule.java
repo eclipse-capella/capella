@@ -12,7 +12,7 @@
  *******************************************************************************/
 package org.polarsys.capella.core.transition.system.topdown.rules.oa.oe2system;
 
-import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+import static org.polarsys.capella.common.helpers.cache.ModelCache.getCache;
 
 import java.util.Collection;
 

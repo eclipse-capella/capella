@@ -15,10 +15,10 @@ package org.polarsys.capella.core.business.queries.queries.capellacommon;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.function.Predicate;
 
-import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
@@ -38,6 +38,9 @@ import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 
 public class GetAvailable_StateTransitionTrigger extends AbstractQuery {
 
+  static Predicate<EObject> predicate_isCandidate = object -> (object instanceof ExchangeItem)
+      || (object instanceof Operation) || (object instanceof StateEvent);
+
   @Override
   public List<Object> execute(Object input, IQueryContext context) {
     List<Object> availableElements = getAvailableElements(input, context);
@@ -50,13 +53,7 @@ public class GetAvailable_StateTransitionTrigger extends AbstractQuery {
     BlockArchitecture arch = SystemEngineeringExt.getRootBlockArchitecture(inputElement);
     if (arch != null) {
       for (BlockArchitecture block : BlockArchitectureExt.getAllAllocatedArchitectures(arch)) {
-        TreeIterator<Object> allContents = EcoreUtil.getAllContents(block, false);
-        while (allContents.hasNext()) {
-          Object object = allContents.next();
-          if ((object instanceof ExchangeItem) || (object instanceof Operation) || (object instanceof StateEvent)) {
-            availableElements.add(object);
-          }
-        }
+        availableElements.addAll(EObjectExt.getAll(block, predicate_isCandidate));
       }
     }
     if ((inputElement instanceof StateTransition)) {

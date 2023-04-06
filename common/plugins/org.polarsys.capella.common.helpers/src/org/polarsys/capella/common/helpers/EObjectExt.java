@@ -15,8 +15,11 @@ package org.polarsys.capella.common.helpers;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Predicate;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -29,6 +32,7 @@ import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapter;
+import org.polarsys.capella.common.helpers.cache.CachedBiFunction;
 import org.polarsys.capella.common.helpers.query.MDEQueries;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
@@ -38,14 +42,36 @@ import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFact
  */
 public class EObjectExt extends EcoreUtil2 {
 
+  static CachedBiFunction<EObject, EClass, Set<EObject>> getAll_withEClass = MDEQueries.getInstance()
+      .getAllQueries()::getAll;
+  static CachedBiFunction<EObject, Predicate<EObject>, Set<EObject>> getAll_withPredicate = MDEQueries.getInstance()
+      .getAllQueries()::getAll;
+
   /**
    * @param currentElement
    * @param targetType
    * @return Set<EObject>
    */
   public static Set<EObject> getAll(EObject currentElement, EClass targetType) {
-    List<EClass> filters = new ArrayList<EClass>();
+    return new LinkedHashSet<EObject>(getAll_withEClass.get(currentElement, targetType));
+  }
+
+  /**
+   * @param currentElement
+   * @param targetType
+   * @return Set<EObject>
+   */
+  public static Set<EObject> getAllFiltered(EObject currentElement, EClass targetType, List<EClass> filters) {
     return MDEQueries.getInstance().getAllQueries().getAllFiltered(currentElement, targetType, filters);
+  }
+
+  /**
+   * @param currentElement
+   * @param targetType
+   * @return Set<EObject>
+   */
+  public static Set<EObject> getAll(EObject currentElement, Predicate<EObject> predicate) {
+    return new LinkedHashSet<EObject>(getAll_withPredicate.get(currentElement, predicate));
   }
 
   /**
@@ -121,7 +147,7 @@ public class EObjectExt extends EcoreUtil2 {
       SemanticEditingDomain editingDomain, boolean ignoreDerivedFeature) {
     List<T> result = new ArrayList<T>();
 
-        SiriusCrossReferenceAdapter crossReferencer = editingDomain.getCrossReferencer();
+    SiriusCrossReferenceAdapter crossReferencer = editingDomain.getCrossReferencer();
     if (eRef == null) {
       Collection<Setting> inverseReferences = crossReferencer.getInverseReferences(eObjectRef,
           editingDomain.getCrossReferencer().isResolveProxyEnabled());

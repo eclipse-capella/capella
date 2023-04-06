@@ -13,6 +13,8 @@
 
 package org.polarsys.capella.core.model.helpers;
 
+import static org.polarsys.capella.common.helpers.cache.ModelCache.getCache;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -52,8 +54,6 @@ import org.polarsys.capella.core.data.information.Port;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.model.helpers.refmap.Pair;
-
-import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
 /**
  */
 public class PhysicalPathExt {

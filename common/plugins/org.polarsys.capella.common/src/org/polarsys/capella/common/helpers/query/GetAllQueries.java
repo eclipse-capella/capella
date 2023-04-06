@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Predicate;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
@@ -50,6 +51,63 @@ public class GetAllQueries implements IGetAllQueries {
     EList<EObject> containedElements = source.eContents();
     for (EObject object : containedElements) {
       result.addAll(getAll(object, targetType));
+    }
+
+    return result;
+  }
+
+  /**
+   * Retrieve EObject instances corresponding to a type and accessible from a source object by successive compositions
+   * 
+   * @param source
+   *          element from which the search starts
+   * @param targetType
+   *          discriminating type
+   */
+  public Set<EObject> getAll(EObject source, EClass targetType) {
+
+    Set<EObject> result = new LinkedHashSet<EObject>();
+
+    if (source == null || targetType == null)
+      return result;
+
+    if (targetType.isSuperTypeOf(source.eClass())) {
+      result.add(source);
+    }
+
+    EList<EObject> containedElements = source.eContents();
+    for (EObject object : containedElements) {
+      result.addAll(getAll(object, targetType));
+    }
+
+    return result;
+  }
+
+  /**
+   * Retrieve EObject instances corresponding to a predicate and accessible from a source object by successive
+   * compositions
+   * 
+   * @param <T>
+   * 
+   * @param source
+   *          element from which the search starts
+   * @param predicate
+   *          discriminating predicate
+   */
+  public Set<EObject> getAll(EObject source, Predicate<EObject> predicate) {
+
+    Set<EObject> result = new LinkedHashSet<EObject>();
+
+    if (source == null || predicate == null)
+      return result;
+
+    if (predicate.test(source)) {
+      result.add(source);
+    }
+
+    EList<EObject> containedElements = source.eContents();
+    for (EObject object : containedElements) {
+      result.addAll(getAll(object, predicate));
     }
 
     return result;
