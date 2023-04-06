@@ -18,6 +18,7 @@ import java.util.List;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 import org.polarsys.capella.test.platform.ju.testcases.AboutInfoTest;
+import org.polarsys.capella.test.platform.ju.testcases.CacheTest;
 import org.polarsys.capella.test.platform.ju.testcases.CapellaCDOGenerationOfDerivedFeature;
 import org.polarsys.capella.test.platform.ju.testcases.CapellaCheckAcceleo2NotUsed;
 import org.polarsys.capella.test.platform.ju.testcases.CapellaDefaultEditorEnabled;
@@ -58,6 +59,7 @@ public class PlatformTestSuite extends BasicTestSuite {
   @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
+    tests.add(new CacheTest());
     tests.add(new CapellaVersionConsistencyTest());
     tests.add(new CapellaSiriusCustomisationEnabled());
     tests.add(new CapellaPlatformVersionNotNull());

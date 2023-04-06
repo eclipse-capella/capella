@@ -22,8 +22,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
+import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
-import org.polarsys.capella.common.helpers.query.MDEQueries;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
@@ -39,6 +39,7 @@ import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.data.pa.PaPackage;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.requirement.Requirement;
+import org.polarsys.capella.core.data.requirement.RequirementPackage;
 import org.polarsys.capella.core.data.requirement.RequirementsPkg;
 import org.polarsys.capella.core.data.requirement.RequirementsTrace;
 import org.polarsys.capella.core.model.utils.ListExt;
@@ -171,7 +172,7 @@ public class CapellaElement_OutgoingRequirement implements IBusinessQuery {
     List<Requirement> elements = new ArrayList<Requirement>();
 
     for (RequirementsPkg pkg : arch.getOwnedRequirementPkgs()) {
-      for (EObject req : MDEQueries.getInstance().getAllQueries().getAll(pkg, Requirement.class)) {
+      for (EObject req : EObjectExt.getAll(pkg, RequirementPackage.Literals.REQUIREMENT)) {
         elements.add((Requirement) req);
       }
     }

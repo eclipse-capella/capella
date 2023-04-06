@@ -13,6 +13,8 @@
 
 package org.polarsys.capella.core.data.helpers.fa.delegates;
 
+import static org.polarsys.capella.common.helpers.cache.ModelCache.getCache;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -46,8 +48,6 @@ import org.polarsys.capella.common.data.behavior.AbstractBehavior;
 import org.polarsys.capella.common.data.helpers.activity.delegates.ActivityNodeHelper;
 import org.polarsys.capella.common.data.helpers.modellingcore.delegates.AbstractTypeHelper;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
-
-import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
 
 public class AbstractFunctionHelper {
   private static AbstractFunctionHelper instance;

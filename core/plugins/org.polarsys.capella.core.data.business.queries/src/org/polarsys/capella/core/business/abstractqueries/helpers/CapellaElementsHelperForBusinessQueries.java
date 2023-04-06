@@ -26,8 +26,6 @@ import org.eclipse.emf.ecore.EReference;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.TransactionHelper;
-import org.polarsys.capella.common.helpers.query.IGetAllQueries;
-import org.polarsys.capella.common.helpers.query.MDEQueries;
 import org.polarsys.capella.common.libraries.ILibraryManager;
 import org.polarsys.capella.common.libraries.IModel;
 import org.polarsys.capella.common.libraries.manager.LibraryManagerExt;
@@ -1066,9 +1064,8 @@ public class CapellaElementsHelperForBusinessQueries {
     // get all element from project and all subfolders excluding the modeling architecture packages
     ArrayList<EClass> filteredArchitectures = new ArrayList<>();
     filteredArchitectures.add(ignoredBlkArchClass);
-    IGetAllQueries queries = MDEQueries.getInstance().getAllQueries();
     for (EObject content : currentProject.eContents()) {
-      availableElements.addAll(queries.getAllFiltered(content, targetClass, filteredArchitectures).stream()
+      availableElements.addAll(EObjectExt.getAllFiltered(content, targetClass, filteredArchitectures).stream()
           .map(CapellaElement.class::cast).collect(Collectors.toSet()));
     }
 

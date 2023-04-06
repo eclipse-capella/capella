@@ -12,6 +12,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.business.queries.queries.fa;
 
+import static org.polarsys.capella.common.helpers.cache.ModelCache.getCache;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,8 +32,6 @@ import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
-
-import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
 
 public class GetAvailable_AbstractFunctionalBlock_AllocatedFunctions extends AbstractQuery {
 

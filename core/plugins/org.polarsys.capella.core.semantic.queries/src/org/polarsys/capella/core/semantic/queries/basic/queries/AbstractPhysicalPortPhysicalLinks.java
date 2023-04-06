@@ -12,6 +12,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.semantic.queries.basic.queries;
 
+import static org.polarsys.capella.common.helpers.cache.ModelCache.getCache;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -21,8 +23,6 @@ import org.polarsys.capella.core.data.cs.PhysicalPort;
 import org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt;
 import org.polarsys.capella.core.data.information.Port;
 import org.polarsys.capella.common.helpers.query.IQuery;
-
-import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
 
 /**
  * Return connected Physical Links of current Physical Port

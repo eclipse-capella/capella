@@ -25,9 +25,10 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
+import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
-import org.polarsys.capella.common.helpers.query.MDEQueries;
 import org.polarsys.capella.common.menu.dynamic.CreationHelper;
+import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.capellacommon.GenericTrace;
 import org.polarsys.capella.core.data.capellacommon.TransfoLink;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
@@ -89,7 +90,7 @@ public class CapellaEngine extends TransfoEngine {
 
     List<TransfoLink> eltsToDelete = new ArrayList<TransfoLink>();
     EObject container = (EObject) transfo_p.get(TRANSFO_TARGET_CONTAINER);
-    Set<EObject> links = MDEQueries.getInstance().getAllQueries().getAll(container, TransfoLink.class);
+    Set<EObject> links = EObjectExt.getAll(container, CapellacommonPackage.Literals.TRANSFO_LINK);
     for (EObject obj : links) {
       TransfoLink link = (TransfoLink) obj;
       TraceableElement src = link.getSourceElement();

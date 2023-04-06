@@ -26,8 +26,8 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.eclipse.emf.ecore.EObject;
+import org.polarsys.capella.common.helpers.cache.Cache;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.helpers.cache.Cache;
 import org.polarsys.capella.core.data.interaction.AbstractEnd;
 import org.polarsys.capella.core.data.interaction.AbstractFragment;
 import org.polarsys.capella.core.data.interaction.CombinedFragment;

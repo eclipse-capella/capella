@@ -13,6 +13,8 @@
 
 package org.polarsys.capella.core.semantic.queries.basic.queries;
 
+import static org.polarsys.capella.common.helpers.cache.ModelCache.getCache;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,8 +28,6 @@ import org.polarsys.capella.core.model.helpers.PartExt;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.data.modellingcore.AbstractTypedElement;
 import org.polarsys.capella.common.helpers.query.IQuery;
-
-import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
 
 /**
  *

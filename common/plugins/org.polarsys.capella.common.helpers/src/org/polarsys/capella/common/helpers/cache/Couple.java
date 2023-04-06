@@ -1,4 +1,17 @@
-package org.polarsys.capella.core.data.helpers.cache;
+/*******************************************************************************
+ * Copyright (c) 2023 THALES GLOBAL SERVICES.
+ * 
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0
+ * 
+ * SPDX-License-Identifier: EPL-2.0
+ * 
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+
+package org.polarsys.capella.common.helpers.cache;
 
 import java.util.Objects;
 
@@ -56,5 +69,13 @@ public class Couple<O1, O2> {
     String valueString = (null != o2) ? o2.toString() : ICommonConstants.EMPTY_STRING;
     return new StringBuffer(keyString).append(ICommonConstants.PARENTHESIS_OPEN_CHARACTER).append(valueString)
         .append(ICommonConstants.PARENTHESIS_CLOSE_CHARACTER).toString();
+  }
+  
+  public O1 getFirst() {
+	  return o1;
+  }
+  
+  public O2 getSecond() {
+	  return o2;
   }
 }

@@ -11,7 +11,7 @@
  *    Thales - initial API and implementation
  *******************************************************************************/
 
-package org.polarsys.capella.core.data.helpers.cache;
+package org.polarsys.capella.common.helpers.cache;
 
 import java.util.function.Function;
 
@@ -31,7 +31,10 @@ public class ModelCache {
    * @param parameter
    * @return If enabled, return the cached result if any or apply the function to the given parameter and cache the
    *         result before returning it.
+   * @deprecated Use a CachedFunction instead to ensure that the cache is shared with all calls to this function 
+   *         rather than having a cache per calls. see {@link #getOrApply(CachedFunction, Object) GetOrApply}
    */
+  @Deprecated
   public static <P, R> R getCache(Function<P, R> function, P parameter) {
 
     if (enabled) {
@@ -39,6 +42,34 @@ public class ModelCache {
     }
     return function.apply(parameter);
   }
+  /**
+   * 
+   * @param function
+   * @param parameter
+   * @return If enabled, return the cached result if any or apply the function to the given parameter and cache the
+   *         result before returning it.
+   */
+  static <P, R> R getOrApply(CachedFunction<P, R> function, P parameter) {
+    if (enabled) {
+      return cache.get(function, parameter);
+    }
+    return function.withoutCache(parameter);
+  }
+
+  /**
+   * 
+   * @param function
+   * @param parameter
+   * @return If enabled, return the cached result if any or apply the function to the given parameter and cache the
+   *         result before returning it.
+   */
+  static <P1, P2, R> R getOrApply(CachedBiFunction<P1, P2, R> function, P1 parameter1, P2 parameter2) {
+    if (enabled) {
+      return cache.get(function, parameter1, parameter2);
+    }
+    return function.withoutCache(parameter1, parameter2);
+  }
+
 
   /**
    * Enable the cache.
@@ -69,5 +100,19 @@ public class ModelCache {
    */
   public static void clearCache() {
     cache.clearCache();
+  }
+
+  /**
+   * Removes this entry from this cache.
+   */
+  public static <T, R> void clearCache(CachedFunction<T, R> e) {
+    cache.clearCache(e);
+  }
+
+  /**
+   * Removes this entry from this cache.
+   */
+  public static <T1, T2, R> void clearCache(CachedBiFunction<T1, T2, R> e) {
+    cache.clearCache(e);
   }
 }
