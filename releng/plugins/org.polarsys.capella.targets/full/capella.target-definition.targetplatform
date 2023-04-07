@@ -43,7 +43,8 @@ location eclipse "http://download.eclipse.org/releases/2023-03" {
 	org.eclipse.emf.workspace.source.feature.group
 	org.eclipse.equinox.executable.feature.group
 	com.ibm.icu
-	org.eclipse.viatra.query.sdk.feature.source.feature.group
+	org.eclipse.viatra.query.runtime.feature.source.feature.group
+	org.eclipse.xtext.xbase.lib.feature.group
 	org.eclipse.jgit.source.feature.group
 	org.eclipse.egit.source.feature.group
 	org.apache.log4j
