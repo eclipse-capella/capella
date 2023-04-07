@@ -18,6 +18,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.BiFunction;
 import java.util.function.Function;
 
 public class Cache {
@@ -49,10 +50,40 @@ public class Cache {
     Optional<R> result = (Optional<R>) resultObject;
 
     return result.orElse(null);
+  }
 
+  @SuppressWarnings("unchecked")
+  public <P, P2, R> R get(BiFunction<P, P2, R> function, P parameter, P2 parameter2) {
+
+    TriCouple<BiFunction<P, P2, R>, P, P2> key = new TriCouple<>(function, parameter, parameter2);
+    Object resultObject = cachedResult.get(key);
+    if (resultObject == null) {
+      R result = function.apply(parameter, parameter2);
+      Optional<R> encapsulatedResult;
+
+      if (result instanceof List<?>) {
+        encapsulatedResult = (Optional<R>) Optional.of(Collections.unmodifiableList((List<?>) result));
+      } else if (result instanceof Set<?>) {
+        encapsulatedResult = (Optional<R>) Optional.of(Collections.unmodifiableSet((Set<?>) result));
+      } else if (result instanceof Map<?, ?>) {
+        encapsulatedResult = (Optional<R>) Optional.of(Collections.unmodifiableMap((Map<?, ?>) result));
+      } else {
+        encapsulatedResult = Optional.ofNullable(result);
+      }
+      cachedResult.put(key, encapsulatedResult);
+
+      return result;
+    }
+    Optional<R> result = (Optional<R>) resultObject;
+
+    return result.orElse(null);
   }
 
   public void clearCache() {
     cachedResult.clear();
+  }
+
+  public <T, R> void clearCache(CachedFunction<T, R> e) {
+    cachedResult.remove(e);
   }
 }

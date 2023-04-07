@@ -80,6 +80,7 @@ import org.polarsys.capella.core.data.fa.FaFactory;
 import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.fa.OrientationPortKind;
+import org.polarsys.capella.core.data.helpers.cache.CachedFunction;
 import org.polarsys.capella.core.data.helpers.capellacore.services.GeneralizableElementExt;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionalExt;
@@ -112,7 +113,7 @@ import org.polarsys.capella.core.model.helpers.naming.NamingConstants;
  * Component helpers
  */
 public class ComponentExt {
-
+  
   /**
    * This method adds an interface implementation.
    * 
@@ -122,6 +123,8 @@ public class ComponentExt {
    *          the implemented interface
    */
   public static void addImplementedInterface(Component component, Interface interf) {
+    
+    
     if ((component != null) && (interf != null)) {
       if (!getImplementedInterfaces(component).contains(interf)) {
         InterfaceImplementation impl = CsFactory.eINSTANCE.createInterfaceImplementation();
@@ -740,7 +743,9 @@ public class ComponentExt {
     }
     return comps;
   }
-
+  
+  public static CachedFunction<Component, Collection<Component>> GetAllSubUsedComponents = ComponentExt::getAllSubUsedComponents;
+  
   /**
    * Returns sub components of the component. (include also the given component)
    */

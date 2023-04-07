@@ -13,6 +13,7 @@
 
 package org.polarsys.capella.core.data.helpers.cache;
 
+import java.util.function.BiFunction;
 import java.util.function.Function;
 
 public class ModelCache {
@@ -24,7 +25,7 @@ public class ModelCache {
   private ModelCache() {
     // To hide the implicit public on
   }
-
+  
   /**
    * 
    * @param function
@@ -32,12 +33,26 @@ public class ModelCache {
    * @return If enabled, return the cached result if any or apply the function to the given parameter and cache the
    *         result before returning it.
    */
+  @Deprecated
   public static <P, R> R getCache(Function<P, R> function, P parameter) {
-
     if (enabled) {
       return cache.get(function, parameter);
     }
     return function.apply(parameter);
+  }
+
+  static <P, P2, R> R getOrApply(CachedFunction<P, R> function, P parameter) {
+    if (enabled) {
+      return cache.get(function, parameter);
+    }
+    return function.apply(parameter);
+  }
+
+  static <P, P2, R> R getOrApply(BiFunction<P, P2, R> function, P parameter, P2 parameter2) {
+    if (enabled) {
+      return cache.get(function, parameter, parameter2);
+    }
+    return function.apply(parameter, parameter2);
   }
 
   /**
@@ -67,7 +82,8 @@ public class ModelCache {
   /**
    * Removes all entries from this cache. The cache will be empty after this call returns.
    */
-  public static void clearCache() {
-    cache.clearCache();
+  public static  void clearCache(CachedFunction e) {
+    cache.clearCache(e);
   }
+
 }
