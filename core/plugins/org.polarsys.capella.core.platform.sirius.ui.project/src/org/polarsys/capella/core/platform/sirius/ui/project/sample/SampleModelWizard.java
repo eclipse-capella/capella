@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018, 2023 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -30,6 +30,7 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IResourceVisitor;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.core.runtime.AssertionFailedException;
 import org.eclipse.core.runtime.CoreException;
@@ -92,7 +93,7 @@ public class SampleModelWizard extends AbstractExampleInstallerWizard {
                   if (subfile instanceof ZipEntry
                       && ((ZipEntry) subfile).getName().endsWith(IProjectDescription.DESCRIPTION_FILE_NAME)) {
                     BufferedInputStream in = new BufferedInputStream(structureProvider.getContents((ZipEntry) subfile));
-                    ProjectDescription description = new ProjectDescriptionReader().read(new InputSource(in));
+                    ProjectDescription description = new ProjectDescriptionReader(ResourcesPlugin.getWorkspace()).read(new InputSource(in));
                     return description;
                   }
                 }

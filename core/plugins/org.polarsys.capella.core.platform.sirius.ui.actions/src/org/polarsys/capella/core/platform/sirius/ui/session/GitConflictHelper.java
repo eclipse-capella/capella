@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2021, 2023 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -161,7 +161,7 @@ public class GitConflictHelper {
   public static boolean hasConflict(IFile file) {
     if (file != null && file.getLocationURI() != null) {
       java.nio.file.Path filePath = Paths.get(file.getLocationURI());
-      for (Repository repo : RepositoryCache.getInstance().getAllRepositories()) {
+      for (Repository repo : RepositoryCache.INSTANCE.getAllRepositories()) {
         java.nio.file.Path repoPath = Paths.get(repo.getWorkTree().toURI());
         if (filePath.startsWith(repoPath)) {
           java.nio.file.Path relativizedPath = repoPath.relativize(filePath);
@@ -192,7 +192,7 @@ public class GitConflictHelper {
   public static boolean isInGitRepository(IFile file) {
     if (file != null) {
       java.nio.file.Path filePath = Paths.get(file.getLocationURI());
-      for (Repository repo : RepositoryCache.getInstance().getAllRepositories()) {
+      for (Repository repo : RepositoryCache.INSTANCE.getAllRepositories()) {
         java.nio.file.Path repoPath = Paths.get(repo.getWorkTree().toURI());
         if (filePath.startsWith(repoPath)) {
           return true;
