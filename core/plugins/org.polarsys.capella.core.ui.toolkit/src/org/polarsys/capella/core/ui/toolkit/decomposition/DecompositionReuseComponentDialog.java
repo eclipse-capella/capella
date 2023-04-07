@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2023 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -52,7 +52,7 @@ public class DecompositionReuseComponentDialog extends PopupDialog {
    */
   public DecompositionReuseComponentDialog(Shell parent_p, int shellStyle_p, boolean takeFocusOnOpen_p, boolean persistBounds_p, boolean showDialogMenu_p,
       boolean showPersistAction_p, String titleText_p, String infoText_p, Text text_p, List<DecompositionComponent> reusedComponents_p) {
-    super(parent_p, shellStyle_p, takeFocusOnOpen_p, persistBounds_p, showDialogMenu_p, showPersistAction_p, titleText_p, infoText_p);
+    super(parent_p, shellStyle_p, takeFocusOnOpen_p,persistBounds_p, persistBounds_p, showDialogMenu_p, showPersistAction_p, titleText_p, infoText_p);
     _text = text_p;
     reusedComponents = reusedComponents_p;
 
