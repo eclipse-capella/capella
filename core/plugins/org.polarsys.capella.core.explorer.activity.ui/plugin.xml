@@ -973,7 +973,7 @@
                %PhysicalArchitectureActivityExplorerPage_EnrichPhysicalScenarioSection_Description
             </Description>
             <Activity
-                  class="org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.la.PerformAutomatedCapabilitiesTransitionAdapter"
+                  class="org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.pa.PerformAutomatedCapabilitiesTransitionAdapter"
                   id="org.polarsys.capella.core.explorer.activity.ui.pa.transition.logical.architecture.capabilities"
                   image="icons/full/ctool/transition.png"
                   index="1"
