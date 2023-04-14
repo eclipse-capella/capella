@@ -20,7 +20,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.capella.core.platform.sirius.ui.perspective,
  org.polarsys.capella.common.flexibility.wizards,
  org.polarsys.capella.core.platform.sirius.sirius.validation,
- org.polarsys.kitalpha.richtext.widget.tools
+ org.polarsys.kitalpha.richtext.widget.tools,
+ org.eclipse.sirius.diagram.ui
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.test.validation.rules.ju,

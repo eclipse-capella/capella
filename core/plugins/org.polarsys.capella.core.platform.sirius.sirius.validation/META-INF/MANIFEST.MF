@@ -15,7 +15,9 @@ Require-Bundle: org.polarsys.capella.core.validation,
  org.polarsys.capella.core.diagram.helpers;bundle-version="7.0.0",
  org.polarsys.kitalpha.richtext.widget.ext,
  org.polarsys.kitalpha.richtext.widget.tools,
- org.apache.commons.lang
+ org.apache.commons.lang,
+ org.eclipse.sirius.ext.base,
+ org.eclipse.emf.common
 Export-Package: org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram,
  org.polarsys.capella.core.platform.sirius.sirius.validation.parser.helper
 Bundle-ActivationPolicy: lazy
