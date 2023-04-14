@@ -78,7 +78,15 @@
       </resolver>
       <resolver
             class="org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram.ImagePathRemoveResolver"
-            desc="%quickFix.ImagePath_RemoveResolver.desc"
+            desc="%quickFix.ImagePath_RemoveResolver.descDiagram"
+            label="%quickFix.ImagePath_RemoveResolver.label">
+         <rules
+               ruleId="I_46">
+         </rules>
+      </resolver>
+      <resolver
+            class="org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram.ImagePathRemoveResolver"
+            desc="%quickFix.ImagePath_RemoveResolver.descRichText"
             label="%quickFix.ImagePath_RemoveResolver.label">
          <rules
                ruleId="I_47">

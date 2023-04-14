@@ -47,7 +47,10 @@
             id="9c7016cc-3ba2-471e-99f7-04440cf963cb" name="Root Operational Activity"/>
       </ownedFunctionPkg>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.oa:OperationalCapabilityPkg"
-          id="4b5920a3-ced9-4457-a669-db3d7a342f62" name="Operational Capabilities"/>
+          id="4b5920a3-ced9-4457-a669-db3d7a342f62" name="Operational Capabilities">
+        <ownedOperationalCapabilities xsi:type="org.polarsys.capella.core.data.oa:OperationalCapability"
+            id="8bb9b0da-ed2c-4c9e-8563-47bd797a9344" name="OperationalCapability 1"/>
+      </ownedAbstractCapabilityPkg>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
           id="afdfb437-44d1-4ee4-a8dd-3d0d8191054a" name="Interfaces"/>
       <ownedDataPkg xsi:type="org.polarsys.capella.core.data.information:DataPkg"
@@ -75,7 +78,12 @@
       <ownedRolePkg xsi:type="org.polarsys.capella.core.data.oa:RolePkg" id="37111b38-ed7d-4e71-a618-41f96f8d4f01"
           name="Roles"/>
       <ownedEntityPkg xsi:type="org.polarsys.capella.core.data.oa:EntityPkg" id="5ce28625-dfc9-45e1-ab61-8f1dd09fc11a"
-          name="Operational Entities"/>
+          name="Operational Entities">
+        <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="b48a2b2d-4c37-491c-801a-e0ceff98b883"
+            name="OA 1" abstractType="#fe9afad0-802e-4a7c-ac5e-ab10eba06702"/>
+        <ownedEntities xsi:type="org.polarsys.capella.core.data.oa:Entity" id="fe9afad0-802e-4a7c-ac5e-ab10eba06702"
+            name="OA 1" actor="true" human="true"/>
+      </ownedEntityPkg>
     </ownedArchitectures>
     <ownedArchitectures xsi:type="org.polarsys.capella.core.data.ctx:SystemAnalysis"
         id="6643ab4f-f174-4e60-9385-516ea6624f68" name="System Analysis">
