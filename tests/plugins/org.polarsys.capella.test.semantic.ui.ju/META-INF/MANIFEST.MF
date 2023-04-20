@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.test.semantic.ui.ju;singleton:=true
-Bundle-Version: 6.1.0.qualifier
+Bundle-Version: 7.0.0.qualifier
 Bundle-Activator: org.polarsys.capella.test.semantic.ui.ju.TestSemanticBrowserUIPlugin
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.core.runtime,
@@ -23,7 +23,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.capella.core.data.gen,
  org.polarsys.capella.core.ui.semantic.browser.sirius,
  org.polarsys.capella.core.ui.toolkit,
- org.polarsys.capella.core.ui.properties;bundle-version="6.1.0"
+ org.polarsys.capella.core.ui.properties;bundle-version="7.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: org.polarsys.capella.test.semantic.ui.ju,
  org.polarsys.capella.test.semantic.ui.ju.testsuites
