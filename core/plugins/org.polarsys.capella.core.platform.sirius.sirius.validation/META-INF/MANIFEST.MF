@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.platform.sirius.sirius.validation;singleton:=true
-Bundle-Version: 6.1.0.qualifier
+Bundle-Version: 7.0.0.qualifier
 Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Require-Bundle: org.polarsys.capella.core.validation,
@@ -12,7 +12,7 @@ Require-Bundle: org.polarsys.capella.core.validation,
  org.eclipse.sirius.diagram,
  org.eclipse.sirius.diagram.ui,
  org.polarsys.capella.common.re,
- org.polarsys.capella.core.diagram.helpers;bundle-version="6.1.0",
+ org.polarsys.capella.core.diagram.helpers;bundle-version="7.0.0",
  org.polarsys.kitalpha.richtext.widget.ext,
  org.polarsys.kitalpha.richtext.widget.tools,
  org.apache.commons.lang
