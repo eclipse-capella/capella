@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.common.helpers.cache.ModelCache;
 import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaValidateAction;
 
 /**
@@ -41,7 +42,12 @@ public class CapellaValidateComlineAction extends CapellaValidateAction {
   public void run() {
     if(isSetEditingDomain()){
       // works fine
-      diagnostic = super.validate(new NullProgressMonitor());
+      try {
+        ModelCache.enable();
+        diagnostic = super.validate(new NullProgressMonitor());
+      } finally {
+        ModelCache.disable();
+      }
       handleDiagnostic(diagnostic);
     }
   }
