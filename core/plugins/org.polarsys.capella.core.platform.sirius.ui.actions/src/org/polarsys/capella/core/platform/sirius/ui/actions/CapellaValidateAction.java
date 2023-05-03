@@ -180,7 +180,6 @@ public class CapellaValidateAction extends ValidateAction {
         try {
           ModelCache.enable();
           final Diagnostic diagnostic = validate(progressMonitor);
-          ModelCache.disable();
           shell.getDisplay().asyncExec(new Runnable() {
             public void run() {
               if (progressMonitor.isCanceled()) {
@@ -191,6 +190,7 @@ public class CapellaValidateAction extends ValidateAction {
             }
           });
         } finally {
+          ModelCache.disable();
           progressMonitor.done();
         }
       }
