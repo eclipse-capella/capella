@@ -13,7 +13,7 @@ Require-Bundle: org.polarsys.capella.common.ui,
  org.polarsys.capella.core.ui.resources,
  org.polarsys.capella.core.ui.properties,
  org.polarsys.capella.core.data.interaction.validation
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
 Export-Package: org.polarsys.capella.core.data.interaction.ui.quickfix,

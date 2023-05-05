@@ -7,7 +7,7 @@ Bundle-ClassPath: .
 Bundle-Activator: org.polarsys.capella.common.re.provider.ReEditPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Export-Package: org.polarsys.capella.common.re.gen.provider,
  org.polarsys.capella.common.re.provider
 Require-Bundle: org.eclipse.core.runtime,

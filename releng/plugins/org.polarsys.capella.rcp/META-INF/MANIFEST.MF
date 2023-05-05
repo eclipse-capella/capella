@@ -6,4 +6,4 @@ Bundle-Version: 7.0.0.qualifier
 Require-Bundle: org.polarsys.capella.core.platform.sirius.ui.perspective
 Bundle-Localization: plugin
 Bundle-Vendor: %providerName
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17

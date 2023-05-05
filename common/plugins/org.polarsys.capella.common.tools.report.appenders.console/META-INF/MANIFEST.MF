@@ -11,5 +11,5 @@ Require-Bundle: org.polarsys.capella.common.tools.report;visibility:=reexport,
  org.eclipse.ui.console
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.common.tools.report.appenders.console
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-Localization: plugin

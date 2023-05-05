@@ -11,6 +11,6 @@ Require-Bundle: org.polarsys.capella.common.ui.menu.dynamic;visibility:=reexport
  org.polarsys.capella.core.preferences,
  org.eclipse.emf.edit.ui
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Export-Package: org.polarsys.capella.core.menu.dynamic
 Bundle-Localization: plugin

@@ -22,7 +22,7 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.common.re.gen,
  org.polarsys.capella.core.platform.sirius.ui.navigator
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Export-Package: org.polarsys.capella.test.diagram.common.ju,
  org.polarsys.capella.test.diagram.common.ju.api,
  org.polarsys.capella.test.diagram.common.ju.availableXDFBDiagramTools,

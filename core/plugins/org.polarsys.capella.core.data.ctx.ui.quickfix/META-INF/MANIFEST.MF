@@ -17,7 +17,7 @@ Require-Bundle: org.polarsys.capella.core.validation.ui.ide,
  org.polarsys.capella.common.libraries,
  org.polarsys.capella.core.libraries,
  org.polarsys.capella.core.model.skeleton
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
 Export-Package: org.polarsys.capella.core.data.ctx.ui.quickfix,

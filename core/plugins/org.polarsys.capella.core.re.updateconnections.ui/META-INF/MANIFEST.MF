@@ -18,7 +18,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.sirius.diagram.ui,
  org.eclipse.jface,
  org.eclipse.gmf.runtime.diagram.ui
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.re.updateconnections.ui,
  org.polarsys.capella.core.re.updateconnections.ui.properties,

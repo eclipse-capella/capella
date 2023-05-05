@@ -16,7 +16,7 @@ Require-Bundle: com.google.guava,
  org.eclipse.sirius,
  org.eclipse.gmf.runtime.notation.edit,
  org.eclipse.ui.ide
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.model.handler,
  org.polarsys.capella.core.model.handler.advisor,

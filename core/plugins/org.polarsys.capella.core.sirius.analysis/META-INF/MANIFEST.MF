@@ -54,5 +54,5 @@ Require-Bundle: org.eclipse.core.expressions,
  org.polarsys.capella.common.tools.report.appenders.usage,
  org.polarsys.capella.common.ui.toolkit
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-Localization: plugin

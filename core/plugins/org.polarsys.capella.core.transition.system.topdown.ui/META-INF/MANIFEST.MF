@@ -20,4 +20,4 @@ Export-Package: org.polarsys.capella.core.transition.system.topdown.ui,
  org.polarsys.capella.core.transition.system.topdown.ui.handlers.tester,
  org.polarsys.capella.core.transition.system.topdown.ui.preferences
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17

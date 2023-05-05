@@ -24,7 +24,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.sirius.diagram,
  org.polarsys.capella.core.model.handler,
  org.polarsys.capella.core.platform.sirius.ui.navigator
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.common.re.ui,
  org.polarsys.capella.common.re.ui.decorators,

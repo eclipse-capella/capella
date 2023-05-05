@@ -38,7 +38,7 @@ Export-Package: org.polarsys.capella.test.framework,
  org.polarsys.capella.test.framework.helpers.log,
  org.polarsys.capella.test.framework.model,
  org.polarsys.capella.test.framework.provider
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-Activator: org.polarsys.capella.test.framework.CapellaTestFrameworkPlugin
 Bundle-ClassPath: .
 Bundle-Localization: plugin

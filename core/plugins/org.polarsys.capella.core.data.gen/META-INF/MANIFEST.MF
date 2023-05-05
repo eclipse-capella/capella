@@ -6,7 +6,7 @@ Bundle-Version: 7.0.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Export-Package: org.polarsys.capella.core.data.capellacommon,
  org.polarsys.capella.core.data.capellacommon.impl,
  org.polarsys.capella.core.data.capellacommon.util,

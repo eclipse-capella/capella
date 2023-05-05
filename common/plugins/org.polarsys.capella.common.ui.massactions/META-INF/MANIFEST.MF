@@ -9,7 +9,7 @@ Require-Bundle: org.polarsys.kitalpha.massactions;visibility:=reexport,
  org.polarsys.capella.core.linkedtext.ui,
  org.polarsys.capella.common.linkedtext.ui
 Bundle-Activator: org.polarsys.capella.common.ui.massactions.activator.MACapellaActivator
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
 Export-Package: org.polarsys.capella.common.ui.massactions.activator

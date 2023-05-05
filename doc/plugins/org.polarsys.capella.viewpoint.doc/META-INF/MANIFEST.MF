@@ -7,5 +7,5 @@ Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Require-Bundle: 
  org.eclipse.help
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-ActivationPolicy: lazy

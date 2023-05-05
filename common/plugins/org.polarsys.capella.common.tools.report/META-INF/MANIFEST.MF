@@ -14,5 +14,5 @@ Export-Package: org.polarsys.capella.common.tools.report,
  org.polarsys.capella.common.tools.report.config.registry,
  org.polarsys.capella.common.tools.report.util
 Bundle-Activator: org.polarsys.capella.common.tools.report.ReportManagerActivator
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-Localization: plugin

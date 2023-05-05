@@ -20,7 +20,7 @@ Require-Bundle: org.eclipse.core.resources,
  org.polarsys.capella.core.data.core.properties,
  org.polarsys.capella.core.tiger,
  org.polarsys.capella.core.platform.sirius.ui.actions
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
 Export-Package: org.polarsys.capella.core.data.cs.ui.quickfix,
