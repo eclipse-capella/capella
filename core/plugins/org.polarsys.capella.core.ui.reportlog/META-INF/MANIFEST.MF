@@ -13,7 +13,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.capella.core.model.handler,
  org.polarsys.capella.common.ui.services,
  org.eclipse.sirius
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.ui.reportlog
 Import-Package: org.polarsys.capella.core.sirius.ui.session

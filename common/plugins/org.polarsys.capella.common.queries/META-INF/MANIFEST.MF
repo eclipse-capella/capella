@@ -9,7 +9,7 @@ Require-Bundle: org.apache.commons.lang,
  org.eclipse.core.runtime,
  org.eclipse.emf.ecore,
  org.polarsys.capella.common.tools.report
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.common.queries,
  org.polarsys.capella.common.queries.debug,

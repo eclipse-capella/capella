@@ -33,7 +33,7 @@
 		<tycho.scmUrl>scm:git:https://github.com/eclipse/capella.git</tycho.scmUrl>
 
 		<!-- for packaging -->
-		<eclipse-repo.url>https://download.eclipse.org/releases/2020-06/</eclipse-repo.url>
+		<eclipse-repo.url>https://download.eclipse.org/releases/2023-03/</eclipse-repo.url>
 
 		<!-- for junit -->
 		<capella-product-id>org.polarsys.capella.rcp.product</capella-product-id>

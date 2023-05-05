@@ -12,5 +12,5 @@ Require-Bundle: org.polarsys.capella.common.data.core.gen;visibility:=reexport,
 Export-Package: org.polarsys.capella.common.ui.actions,
  org.polarsys.capella.common.ui.services
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-Localization: plugin

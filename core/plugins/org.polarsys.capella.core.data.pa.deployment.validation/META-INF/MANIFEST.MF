@@ -4,7 +4,7 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.data.pa.deployment.validation;singleton:=true
 Bundle-Version: 7.0.0.qualifier
 Bundle-Vendor: %providerName
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Require-Bundle: org.polarsys.capella.core.validation
 Export-Package: org.polarsys.capella.core.data.pa.validation.deploymentAspect,
  org.polarsys.capella.core.data.pa.validation.physicalComponent

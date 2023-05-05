@@ -27,6 +27,6 @@ Export-Package: org.polarsys.capella.common.ui.toolkit.browser,
  org.polarsys.capella.common.ui.toolkit.browser.query,
  org.polarsys.capella.common.ui.toolkit.browser.util,
  org.polarsys.capella.common.ui.toolkit.browser.view
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin

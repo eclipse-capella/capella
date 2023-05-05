@@ -17,7 +17,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.capella.core.diagram.helpers,
  org.polarsys.capella.core.sirius.ui,
  org.polarsys.capella.core.data.interaction.validation
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.projection.scenario,
  org.polarsys.capella.core.projection.scenario.commands,

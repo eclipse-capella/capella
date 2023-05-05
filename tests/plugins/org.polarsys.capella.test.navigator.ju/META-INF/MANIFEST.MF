@@ -14,7 +14,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.e4.core.contexts,
  org.eclipse.core.expressions
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Export-Package: org.polarsys.capella.test.navigator.ju,
  org.polarsys.capella.test.navigator.ju.testsuites.main
 Bundle-Vendor: %providerName

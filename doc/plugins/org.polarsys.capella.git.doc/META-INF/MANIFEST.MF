@@ -5,6 +5,6 @@ Bundle-SymbolicName: org.polarsys.capella.git.doc;singleton:=true
 Bundle-Version: 7.0.0.qualifier
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ui
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin

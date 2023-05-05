@@ -4,7 +4,7 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.sirius.ui;singleton:=true
 Bundle-Version: 7.0.0.qualifier
 Bundle-Vendor: %providerName
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-Localization: plugin
 Require-Bundle: org.eclipse.ui.ide,
  org.eclipse.ui.navigator,
@@ -52,5 +52,4 @@ Export-Package: org.polarsys.capella.core.sirius.ui,
  org.polarsys.capella.core.sirius.ui.wizard
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.polarsys.capella.core.sirius.ui.SiriusUIPlugin
-Bundle-Localization: plugin
 

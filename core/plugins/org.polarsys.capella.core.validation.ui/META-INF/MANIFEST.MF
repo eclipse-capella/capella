@@ -12,7 +12,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.capella.core.preferences,
  org.polarsys.capella.core.platform.sirius.ui.actions,
  org.polarsys.capella.core.menu.dynamic
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-Localization: plugin
 Bundle-ActivationPolicy: lazy
 Import-Package: org.polarsys.capella.common.tools.report.appenders.reportlogview
