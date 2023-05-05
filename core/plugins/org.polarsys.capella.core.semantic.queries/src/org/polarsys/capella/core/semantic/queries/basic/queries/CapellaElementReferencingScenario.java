@@ -18,18 +18,19 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractTypedElement;
+import org.polarsys.capella.common.helpers.query.IQuery;
+import org.polarsys.capella.core.data.capellacommon.State;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
+import org.polarsys.capella.core.data.fa.FunctionalExchange;
+import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
 import org.polarsys.capella.core.data.information.AbstractEventOperation;
 import org.polarsys.capella.core.data.information.ExchangeItemInstance;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.interaction.Scenario;
-import org.polarsys.capella.core.data.capellacommon.State;
 import org.polarsys.capella.core.data.oa.Role;
 import org.polarsys.capella.core.model.handler.helpers.CrossReferencerHelper;
-import org.polarsys.capella.common.data.modellingcore.AbstractTypedElement;
-import org.polarsys.capella.common.helpers.query.IQuery;
 
 /**
  * Return referencing Scenario of Component, Role, AbstractFunction, ExchangeItemInstance and 
@@ -59,6 +60,14 @@ public class CapellaElementReferencingScenario implements IQuery {
     		|| object instanceof ExchangeItemInstance) {
     	 getReferencingScenarios(result, (EObject) object, InteractionPackage.Literals.INSTANCE_ROLE);
     	 getReferencingScenarios(result, (EObject) object,InteractionPackage.Literals.STATE_FRAGMENT);
+    	 if(object instanceof AbstractFunction) {
+    		 AbstractFunction f = (AbstractFunction) object;
+    		 List<FunctionalExchange> fes = FunctionExt.getExchanges(f);
+    		 for(FunctionalExchange fe : fes) {
+    			 getReferencingScenarios(result, fe, InteractionPackage.Literals.EVENT_RECEIPT_OPERATION);
+    			 getReferencingScenarios(result, fe, InteractionPackage.Literals.EVENT_SENT_OPERATION);
+    		 }
+    	 }
     }
     // AbstractEventOperation
     if (object instanceof AbstractEventOperation) {
