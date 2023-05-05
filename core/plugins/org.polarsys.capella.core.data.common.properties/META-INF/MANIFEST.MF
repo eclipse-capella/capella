@@ -14,5 +14,5 @@ Export-Package: org.polarsys.capella.core.data.common.properties,
  org.polarsys.capella.core.data.common.properties.controllers,
  org.polarsys.capella.core.data.common.properties.fields,
  org.polarsys.capella.core.data.common.properties.sections
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-Localization: plugin

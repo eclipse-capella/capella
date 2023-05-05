@@ -12,5 +12,5 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.debug.ui
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.common.platform.eclipse.tools.report.console
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-Localization: plugin

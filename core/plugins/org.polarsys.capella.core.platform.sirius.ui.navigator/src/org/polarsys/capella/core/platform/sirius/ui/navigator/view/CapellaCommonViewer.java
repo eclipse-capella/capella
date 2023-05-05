@@ -76,7 +76,7 @@ public class CapellaCommonViewer extends CommonViewer {
   }
 
   @Override
-  public void add(Object parentElementOrTreePath, Object[] childElements) {
+  public void add(Object parentElementOrTreePath, Object... childElements) {
     clearCachesForFilters();
     super.add(parentElementOrTreePath, childElements);
   }
@@ -124,13 +124,13 @@ public class CapellaCommonViewer extends CommonViewer {
   }
 
   @Override
-  public void remove(Object parent, Object[] elements) {
+  public void remove(Object parent, Object... elements) {
     clearCachesForFilters();
     super.remove(parent, elements);
   }
 
   @Override
-  public void remove(Object[] elementsOrTreePaths) {
+  public void remove(Object... elementsOrTreePaths) {
     clearCachesForFilters();
     super.remove(elementsOrTreePaths);
   }

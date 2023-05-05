@@ -15,6 +15,6 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.equinox.http.jetty,
  org.eclipse.equinox.http.registry
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Export-Package: org.polarsys.capella.test.doc.ju,
  org.polarsys.capella.test.doc.ju.testsuites

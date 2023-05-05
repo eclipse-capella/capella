@@ -23,7 +23,7 @@ Require-Bundle: org.eclipse.core.resources,
  org.eclipse.pde.core,
  org.polarsys.capella.common.libraries.gen,
  org.polarsys.capella.core.libraries
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
 Export-Package: org.polarsys.capella.core.data.fa.ui.quicfix.helpers,

@@ -15,5 +15,5 @@ Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.model.semantic,
  org.polarsys.capella.core.model.semantic.internal,
  org.polarsys.capella.core.model.semantic.prefs
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-Localization: plugin

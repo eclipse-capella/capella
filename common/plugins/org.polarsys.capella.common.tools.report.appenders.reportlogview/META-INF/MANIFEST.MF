@@ -13,7 +13,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.help,
  org.apache.commons.lang,
  org.polarsys.capella.shared.id.handler
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.common.tools.report.appenders.reportlogview,
  org.polarsys.capella.common.tools.report.appenders.reportlogview.extpoint,

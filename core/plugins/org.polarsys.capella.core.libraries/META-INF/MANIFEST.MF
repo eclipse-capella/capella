@@ -11,7 +11,7 @@ Require-Bundle: org.polarsys.capella.common.flexibility.properties,
  org.polarsys.capella.core.model.preferences,
  org.polarsys.kitalpha.ad.metadata,
  org.polarsys.capella.common.queries
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.libraries,
  org.polarsys.capella.core.libraries.model,

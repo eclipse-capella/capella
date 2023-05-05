@@ -7,7 +7,7 @@ Bundle-Activator: org.polarsys.capella.core.data.information.properties.Informat
 Bundle-Vendor: %providerName
 Require-Bundle: org.polarsys.capella.core.data.common.properties;visibility:=reexport
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Export-Package: org.polarsys.capella.core.data.information.properties,
  org.polarsys.capella.core.data.information.properties.controllers,
  org.polarsys.capella.core.data.information.properties.fields,
