@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.test.commandline.ju
 Bundle-Version: 7.0.0.qualifier
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Require-Bundle: org.polarsys.capella.test.framework,
  org.polarsys.capella.core.validation.commandline,
  org.eclipse.equinox.app,

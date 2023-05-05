@@ -18,7 +18,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.capella.common.tools.report.appenders.usage,
  org.eclipse.jface
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-Vendor: %providerName
 Export-Package: org.polarsys.capella.core.explorer.activity.ui,
  org.polarsys.capella.core.explorer.activity.ui.actions,

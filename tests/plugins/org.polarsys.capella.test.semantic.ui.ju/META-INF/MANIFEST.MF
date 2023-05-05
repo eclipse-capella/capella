@@ -24,7 +24,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.capella.core.ui.semantic.browser.sirius,
  org.polarsys.capella.core.ui.toolkit,
  org.polarsys.capella.core.ui.properties;bundle-version="7.0.0"
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Export-Package: org.polarsys.capella.test.semantic.ui.ju,
  org.polarsys.capella.test.semantic.ui.ju.testsuites
 Bundle-Localization: plugin

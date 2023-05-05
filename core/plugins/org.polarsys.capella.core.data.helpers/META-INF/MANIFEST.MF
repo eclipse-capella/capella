@@ -45,5 +45,5 @@ Require-Bundle: org.polarsys.capella.core.data.gen;visibility:=reexport,
  org.polarsys.capella.common.data.helpers;visibility:=reexport,
  org.eclipse.emf.ecore
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-Localization: plugin

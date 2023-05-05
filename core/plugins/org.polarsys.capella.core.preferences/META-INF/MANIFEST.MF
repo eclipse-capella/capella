@@ -16,7 +16,7 @@ Require-Bundle: org.eclipse.core.expressions,
  org.polarsys.capella.core.model.handler;visibility:=reexport,
  org.eclipse.e4.core.services,
  org.eclipse.osgi.services
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.commands.preferences,
  org.polarsys.capella.core.commands.preferences.initializers,

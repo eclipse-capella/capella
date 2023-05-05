@@ -9,5 +9,5 @@ Require-Bundle: org.polarsys.capella.core.data.core.properties;visibility:=reexp
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.data.pa.deployment.properties,
  org.polarsys.capella.core.data.pa.deployment.properties.sections
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-Localization: plugin

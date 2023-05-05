@@ -7,7 +7,7 @@ Bundle-Activator: org.polarsys.capella.common.flexibility.properties.Activator
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.common.flexibility.properties,
  org.polarsys.capella.common.flexibility.properties.loader,

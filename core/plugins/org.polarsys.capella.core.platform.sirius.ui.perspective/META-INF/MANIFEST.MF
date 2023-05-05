@@ -28,4 +28,4 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.common.platform.sirius.customization,
  org.eclipse.sirius.diagram,
  org.polarsys.capella.common.tools.report.appenders.usage
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17

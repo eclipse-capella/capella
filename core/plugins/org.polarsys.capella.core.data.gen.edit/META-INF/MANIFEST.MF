@@ -7,7 +7,7 @@ Bundle-ClassPath: .
 Bundle-Activator: org.polarsys.capella.core.data.capellamodeller.provider.CapellaModellerEditPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Export-Package: org.polarsys.capella.core.data.capellacommon.provider,
  org.polarsys.capella.core.data.capellacore.provider,
  org.polarsys.capella.core.data.capellamodeller.provider,

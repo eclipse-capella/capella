@@ -17,7 +17,7 @@ Require-Bundle: org.polarsys.capella.core.ui.toolkit,
 Bundle-Version: 7.0.0.qualifier
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.polarsys.capella.core.common.ui.wizards.LCDWizardPlugin
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-Localization: plugin
 Import-Package: org.eclipse.sirius.diagram.ui.edit.api.part;version="3.1.0",
  org.eclipse.sirius.diagram.ui.internal.edit.parts

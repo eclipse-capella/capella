@@ -13,6 +13,6 @@ Export-Package: org.polarsys.capella.common.data.helpers.activity,
  org.polarsys.capella.common.data.helpers.modellingcore,
  org.polarsys.capella.common.data.helpers.modellingcore.delegates,
  org.polarsys.capella.common.data.helpers.modellingcore.utils
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin

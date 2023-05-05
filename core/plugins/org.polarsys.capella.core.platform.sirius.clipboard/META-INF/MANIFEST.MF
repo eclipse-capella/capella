@@ -18,7 +18,7 @@ Require-Bundle: org.eclipse.sirius.diagram.sequence,
  org.polarsys.capella.shared.id.handler,
  org.eclipse.sirius,
  org.polarsys.capella.core.diagram.helpers
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
 Export-Package: org.polarsys.capella.core.platform.sirius.clipboard,

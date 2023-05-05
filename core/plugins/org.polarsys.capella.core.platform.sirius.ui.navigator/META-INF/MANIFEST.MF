@@ -64,4 +64,4 @@ Export-Package: org.polarsys.capella.core.platform.sirius.ui.navigator,
  org.polarsys.capella.core.platform.sirius.ui.navigator.sorter,
  org.polarsys.capella.core.platform.sirius.ui.navigator.view,
  org.polarsys.capella.core.platform.sirius.ui.navigator.viewer
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17

@@ -13,7 +13,7 @@ Export-Package: org.polarsys.capella.common.helpers,
  org.polarsys.capella.common.helpers.selection,
  org.polarsys.capella.common.helpers.validation,
  org.polarsys.capella.common.helpers.validation.xml
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.polarsys.capella.common.helpers.HelperPlugin
 Bundle-Localization: plugin

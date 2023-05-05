@@ -11,6 +11,6 @@ Require-Bundle: org.polarsys.capella.common.data.core.gen,
  org.eclipse.emf.ecore,
  org.eclipse.viatra.query.runtime,
  org.eclipse.xtext.xbase.lib
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Automatic-Module-Name: org.polarsys.capella.viatra.common.data.gen
 Import-Package: org.apache.log4j
