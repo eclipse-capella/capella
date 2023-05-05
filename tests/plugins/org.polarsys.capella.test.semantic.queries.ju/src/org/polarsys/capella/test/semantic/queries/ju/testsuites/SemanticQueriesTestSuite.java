@@ -35,6 +35,7 @@ public class SemanticQueriesTestSuite extends BasicTestSuite {
     tests.add(new AvailableForTypeClassExistTest());
     tests.add(new AbstractFunction_mother_activity_allocation());
     tests.add(new AbstractFunction_mother_function_allocation());
+    tests.add(new AbstractFunction_ReferencingScenarios());
     tests.add(new CapellaElement_applied_property_value_groups());
     tests.add(new CapellaElement_applied_property_values());
     tests.add(new PropertyValue_applying_valued_element());
