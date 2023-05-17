@@ -5,7 +5,7 @@ pipeline {
   
 	tools {
 		maven 'apache-maven-latest'
-		jdk 'openjdk-jdk11-latest'
+		jdk 'openjdk-jdk17-latest'
 	}
   
 	environment {
@@ -66,7 +66,7 @@ pipeline {
 					withCredentials([string(credentialsId: 'sonar-token-capella', variable: 'SONARCLOUD_TOKEN')]) {
 						withEnv(['MAVEN_OPTS=-Xmx4g']) {
 							def sign = github.isPullRequest() ? '' : '-Psign'
-							sh "mvn clean verify -f pom.xml -DjavaDocPhase=none -Pfull ${sign}"
+							sh "mvn clean verify -T 4 -f pom.xml -DjavaDocPhase=none -Pfull ${sign}"
 						}
 					}
       			}
