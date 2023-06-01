@@ -64,7 +64,7 @@ pipeline {
       		steps {
       			script {
 					withCredentials([string(credentialsId: 'sonar-token-capella', variable: 'SONARCLOUD_TOKEN')]) {
-						withEnv(['MAVEN_OPTS=-Xmx4g']) {
+						withEnv(['MAVEN_OPTS=-Xmx3500m -XX:MaxDirectMemorySize=3500m']) {
 							def sign = github.isPullRequest() ? '' : '-Psign'
 							sh "mvn clean verify -f pom.xml -DjavaDocPhase=none -Pfull ${sign}"
 						}
