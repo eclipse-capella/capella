@@ -251,13 +251,7 @@
 			</properties>
 		</profile>
 		<profile>
-			<id>full</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<properties>
-				<packagedSiteName>org.polarsys.capella.rcp.product</packagedSiteName>
-			</properties>
+			<id>buildPlugins</id>
 			<modules>
 				<!-- sample -->
 				<module>samples</module>
@@ -290,9 +284,8 @@
 				
 				<module>releng/features/org.polarsys.capella.rcp</module>
 				<module>releng/plugins/org.polarsys.capella.rcp</module>
-				<module>releng/plugins/org.polarsys.capella.rcp.product</module>
 				<module>releng/plugins/org.polarsys.capella.rcp.site</module>
-
+				
 				<!-- EGF patterns -->
 				<module>releng/features/org.polarsys.capella.core.egf.feature</module>
 				<module>releng/plugins</module>
@@ -302,6 +295,15 @@
 				<module>tests/features/org.polarsys.capella.test.feature</module>
 				<module>tests/plugins</module>
 				<module>releng/plugins/org.polarsys.capella.test.site</module>
+			</modules>
+		</profile>
+		<profile>
+			<id>buildProducts</id>
+			<properties>
+				<packagedSiteName>org.polarsys.capella.rcp.product</packagedSiteName>
+			</properties>
+			<modules>				
+				<module>releng/plugins/org.polarsys.capella.rcp.product</module>
 			</modules>
 		</profile>
 		<profile>
