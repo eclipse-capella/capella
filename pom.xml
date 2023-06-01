@@ -305,6 +305,71 @@
 			</modules>
 		</profile>
 		<profile>
+			<id>buildAllPlugins</id>
+			<modules>
+				<!-- sample -->
+				<module>samples</module>
+			
+				<module>common/features/org.polarsys.capella.common.feature</module>
+				<module>common/features/org.polarsys.capella.common.ui.feature</module>
+				<module>common/features/org.polarsys.capella.common.ui.massactions.feature</module>
+				<module>common/plugins</module>
+				
+				<module>core/features</module>
+				<module>core/plugins</module>
+				
+				<module>doc/features/org.polarsys.capella.doc.feature</module>
+				<module>doc/plugins</module>
+				
+				
+				<module>ext/viatra/features/org.polarsys.capella.viatra.core.feature</module> 
+				<module>ext/viatra/plugins/org.polarsys.capella.viatra.common.data.gen</module>
+				<module>ext/viatra/plugins/org.polarsys.capella.viatra.common.re.gen</module>
+				<module>ext/viatra/plugins/org.polarsys.capella.viatra.core.data.gen</module>
+				
+
+				<module>ext/detachment/features/org.polarsys.capella.detachment.feature</module>
+				<module>ext/detachment/plugins/org.polarsys.capella.detachment.propertyvalue</module>
+				<module>ext/detachment/plugins/org.polarsys.capella.detachment.version.precondition</module>
+				<module>legacy/plugins/org.polarsys.capella.common.mdsofa.common</module>
+				
+				<module>releng/cdo/features</module>
+				<module>releng/cdo/plugins</module>
+				
+				<module>releng/features/org.polarsys.capella.rcp</module>
+				<module>releng/plugins/org.polarsys.capella.rcp</module>
+				<module>releng/plugins/org.polarsys.capella.rcp.site</module>
+				
+				<!-- EGF patterns -->
+				<module>releng/features/org.polarsys.capella.core.egf.feature</module>
+				<module>releng/plugins</module>
+				<module>releng/plugins/org.polarsys.capella.egf.site</module>
+
+				<!-- Tests -->
+				<module>tests/features/org.polarsys.capella.test.feature</module>
+				<module>tests/plugins</module>
+				<module>releng/plugins/org.polarsys.capella.test.site</module>
+			</modules>
+		</profile>
+		<profile>
+			<id>buildRCPProduct</id>
+			<properties>
+				<packagedSiteName>org.polarsys.capella.rcp.product</packagedSiteName>
+			</properties>
+			<modules>				
+				<module>releng/plugins/org.polarsys.capella.rcp.product</module>
+			</modules>
+		</profile>
+		<profile>
+			<id>buildTests</id>
+			<modules>				
+				<!-- Tests -->
+				<module>tests/features/org.polarsys.capella.test.feature</module>
+				<module>tests/plugins</module>
+				<module>releng/plugins/org.polarsys.capella.test.site</module>
+			</modules>
+		</profile>
+		<profile>
 			<id>nightly</id>
 			<properties>
 				<packagedSiteName>org.polarsys.capella.rcp.product</packagedSiteName>
