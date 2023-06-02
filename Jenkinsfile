@@ -66,7 +66,7 @@ pipeline {
 					withCredentials([string(credentialsId: 'sonar-token-capella', variable: 'SONARCLOUD_TOKEN')]) {
 						withEnv(['MAVEN_OPTS=-Xms3g -Xmx3g -XX:MaxDirectMemorySize=3000m -XX:+HeapDumpOnOutOfMemoryError']) {
 							def sign = github.isPullRequest() ? '' : '-Psign'
-							sh "mvn clean verify -f pom.xml -DjavaDocPhase=none -Pfull ${sign}"
+							sh "mvn clean verify -f pom.xml -DjavaDocPhase=none -PbuildAllPlugins -PbuildRCPProduct -PbuildTests"
 						}
 					}
       			}
