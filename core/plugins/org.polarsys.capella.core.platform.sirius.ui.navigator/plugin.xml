@@ -24,7 +24,16 @@
          <description>%project.explorer.description</description>
       </view>
    </extension>
-   
+   <extension
+         point="org.eclipse.ui.editors">
+         <editor
+               class="org.polarsys.capella.core.platform.sirius.ui.navigator.EditorPart2"
+               default="true"
+               extensions="html, htm"
+               id="org.polarsys.capella.core.platform.sirius.ui.navigator.editor1"
+               name="Edge Browser">
+         </editor>
+   </extension>
    <extension
       point="org.eclipse.ui.navigator.viewer">
    <viewer
