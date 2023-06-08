@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2023 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -21,7 +21,6 @@ import org.eclipse.sirius.ui.business.api.session.analysis.SmartDialogAnalysisSe
 import org.eclipse.sirius.ui.tools.api.dialogs.AnalysisSelectorFilteredItemsSelectionDialog;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 
 /**
@@ -43,7 +42,7 @@ public class CapellaAnalysisSelector extends SmartDialogAnalysisSelector {
   protected AnalysisSelectorFilteredItemsSelectionDialog createAnalysisSelectorDialog(Shell shell,
       DAnalysis bestCandidate, Collection<DAnalysis> allAnalysis, List<DAnalysis> bestCandidates,
       DRepresentation representation) {
-    return new AnalysisSelectorFilteredItemsSelectionDialog(Display.getDefault().getActiveShell(),
+    return new AnalysisSelectorFilteredItemsSelectionDialog(shell,
         allAnalysis.iterator().next(), allAnalysis, new ArrayList<>(allAnalysis), true);
   }
 }
