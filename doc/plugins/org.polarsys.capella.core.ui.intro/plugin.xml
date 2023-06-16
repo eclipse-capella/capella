@@ -13,31 +13,77 @@
        Thales - initial API and implementation
 -->
 <plugin>
+   <extension-point id="org.polarsys.capella.core.ui.intro" name="Welcome Page Contribution" schema="schema/org.polarsys.capella.core.ui.intro.exsd"/>
    <extension
-         point="org.eclipse.ui.intro.configExtension">
-         <configExtension
-               configId="org.eclipse.ui.intro.universalConfig"
-               content="intro/firststeps-actions.xml">
-         </configExtension>
-         <configExtension
-               configId="org.eclipse.ui.intro.universalConfig"
-               content="intro/firststeps-help.xml">
-         </configExtension>
-         <configExtension
-               configId="org.eclipse.ui.intro.universalConfig"
-               content="intro/firststeps-doc.xml">
-         </configExtension>
-         <configExtension
-               configId="org.eclipse.ui.intro.universalConfig"
-               content="intro/firststeps-bug.xml">
-         </configExtension>
-         <action
-               name="createCapellaProjectCommand"
-               replaces="runAction?standby=true&amp;pluginId=org.polarsys.capella.core.ui.intro&amp;class=org.polarsys.capella.core.ui.intro.actions.CreateCapellaProjectAction">
-         </action>
-         <action
-               name="importCapellaProjectCommand"
-               replaces="runAction?standby=true&amp;pluginId=org.polarsys.capella.core.ui.intro&amp;class=org.polarsys.capella.core.ui.intro.actions.ImportCapellaProjectAction">
-         </action>
+         point="org.polarsys.capella.core.ui.intro">
+      <provider
+            id="org.polarsys.capella.core.ui.intro.provider">
+         <welcome_contribution
+               desc="Run the wizard to create a new Capella Project"
+               icon="icons/icon_create.png"
+               id="org.polarsys.capella.core.ui.intro.welcome_contribution1"
+               label="New Capella Project"
+               link="https://org.eclipse.ui.intro/createCapellaProjectCommand">
+            <handler
+                  class="org.polarsys.capella.core.ui.intro.views.CreateProjectHandler">
+            </handler>
+         </welcome_contribution>
+         <welcome_contribution
+               desc="Run the wizard to import an existing Capella Project"
+               icon="icons/icon_import.png"
+               id="org.polarsys.capella.core.ui.intro.welcome_contribution2"
+               label="Import Existing Project"
+               link="https://org.eclipse.ui.intro/importCapellaProjectCommand">
+            <handler
+                  class="org.polarsys.capella.core.ui.intro.views.ImportProjectHandler">
+            </handler>
+         </welcome_contribution>
+         <welcome_contribution
+               desc="Read Case-Studies, attend to Upcoming Events, access to Training and Coaching, etc."
+               icon="icons/icon_web.png"
+               id="org.polarsys.capella.core.ui.intro.welcome_contribution4"
+               label="Visit Capella Website"
+               link="https://www.eclipse.org/capella/index.html">
+         </welcome_contribution>
+         <welcome_contribution
+               desc="Watch &quot;how-to&quot; and demonstration screencasts, learn more about the next evolutions and roadmaps, access to development resources, etc."
+               icon="icons/icon_wiki.png"
+               id="org.polarsys.capella.core.ui.intro.welcome_contribution5"
+               label="Visit Capella Wiki"
+               link="https://github.com/eclipse/capella/wiki">
+         </welcome_contribution>
+         <welcome_contribution
+               desc="  Access the discussion board and post a general question about Capella tooling, Arcadia methodology, about how to model some specific parts of your system, etc."
+               icon="icons/icon_forum.png"
+               id="org.polarsys.capella.core.ui.intro.welcome_contribution6"
+               label="Visit Capella Forum"
+               link="https://forum.mbse-capella.org/">
+         </welcome_contribution>
+         <welcome_contribution
+               desc="Access to Help Contents about Capella and dedicated Viewpoints"
+               icon="icons/icon_training.png"
+               id="org.polarsys.capella.core.ui.intro.welcome_contribution3"
+               label="Help Contents"
+               link="org.polarsys.capella.doc/html/toc.html">
+            <handler
+                  class="org.polarsys.capella.core.ui.intro.views.HelpHyperLinkHandler">
+            </handler>
+         </welcome_contribution>
+         <welcome_contribution
+               desc="You have found a problem on Capella, raise a bug in Capella Bug Tracker"
+               icon="icons/icon_bugzilla.png"
+               id="org.polarsys.capella.core.ui.intro.welcome_contribution3"
+               label="You have found a problem on Capella, raise a bug in Capella Bug Tracker"
+               link="https://bugs.polarsys.org">
+         </welcome_contribution>
+      </provider>
+   </extension>
+   <extension
+         point="org.eclipse.ui.intro">
+      <intro
+            class="org.polarsys.capella.core.ui.intro.views.WelcomeView"
+            icon="icons/welcome16.png"
+            id="org.polarsys.capella.core.ui.intro">
+      </intro>
    </extension>
 </plugin>

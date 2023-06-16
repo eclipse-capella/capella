@@ -27,7 +27,7 @@
          point="org.eclipse.ui.intro">
          <introProductBinding
                productId="org.polarsys.capella.rcp.product"
-               introId="org.eclipse.ui.intro.universal">
+               introId="org.polarsys.capella.core.ui.intro">
          </introProductBinding>
    </extension>
     
