@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2023 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -10,24 +10,18 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.core.ui.intro.actions;
+package org.polarsys.capella.core.ui.intro.views;
 
-import java.util.Properties;
-
-import org.eclipse.ui.intro.IIntroSite;
-
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.forms.events.HyperlinkEvent;
 import org.polarsys.capella.core.platform.sirius.ui.project.NewProjectAction;
 
-/**
- * Create an intro action to create a capella project.
- */
-public class CreateCapellaProjectAction extends AbstractIntroAction {
-  /**
-   * @see org.eclipse.ui.intro.config.IIntroAction#run(org.eclipse.ui.intro.IIntroSite, java.util.Properties)
-   */
-  public void run(IIntroSite site_p, Properties params_p) {
+public class CreateProjectHandler extends HyperLinkHandler {
+  @Override
+  public void linkActivated(HyperlinkEvent e) {
     NewProjectAction newProjectAction = new NewProjectAction();
-    newProjectAction.setSite(site_p);
+    newProjectAction
+        .setSite(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getPartService().getActivePart().getSite());
     newProjectAction.run(null);
   }
 }
