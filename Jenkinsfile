@@ -66,7 +66,7 @@ pipeline {
 					withCredentials([string(credentialsId: 'sonar-token-capella', variable: 'SONARCLOUD_TOKEN')]) {
 						withEnv(['MAVEN_OPTS=-Xms3000m -Xmx3000m']) {
 							def sign = github.isPullRequest() ? '' : '-Psign'
-							sh "mvn clean verify -f pom.xml -DjavaDocPhase=none -Pfull ${sign}"
+							sh "mvn verify ${sign}"
 						}
 					}
       			}
