@@ -198,14 +198,14 @@ public class ViewpointMigrationContribution extends AbstractMigrationContributio
    * @see See also org.polarsys.capella.core.af.integration.CapellaMetadataProvider.isMigrationRequired
    */
   private boolean isMigrationPossible(Version fileVersion, Version currentVersion) {
-    boolean sameMajor = (currentVersion.getMajor() == fileVersion.getMajor());
-
-    if (sameMajor) {
-      // Allow migration from <MAJOR>.x to <MAJOR>.y
+    if (fileVersion.getMajor() == 0)
+      return false;
+    if (fileVersion.getMajor() == 1)
+      return fileVersion.getMinor() == 4;
+    if (fileVersion.getMajor() < currentVersion.getMajor())
       return true;
-    }
-    
-    // Allow migration from 1.4.x to 6.x and from 5.x to 6.x
-    return (currentVersion.getMajor() == 6) && (fileVersion.getMajor() == 5 || (fileVersion.getMajor() == 1 && fileVersion.getMinor() == 4));
+    if (fileVersion.getMajor() == currentVersion.getMajor())
+      return fileVersion.getMinor() <= currentVersion.getMinor();
+    return false;
   }
 }
