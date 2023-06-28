@@ -178,8 +178,7 @@
                 id="3dc9aa58-d99d-415c-8632-22e6923ef036" targetElement="#3477d406-18a6-48a9-8532-bc8279d8b2cd"
                 sourceElement="#24491dc1-b229-4d72-be52-78d2d01390db"/>
             <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
-                id="eb5738f9-8fad-4eea-828d-df839eee847e" name="OperationalActivity 9"
-                representedInstance="#4a202fcf-5872-4d21-ae2f-97ebeae0b4e7"/>
+                id="eb5738f9-8fad-4eea-828d-df839eee847e" name="OperationalActivity 9"/>
             <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
                 id="94e3b5b0-8295-485d-ae9c-070d8e42db3f" name="OperationalActivity 10"
                 representedInstance="#40483782-12b2-4999-82af-4ecc9822da0f"/>
@@ -1230,7 +1229,7 @@
                 id="fba93f55-17dc-4695-afb1-818a6c3bbf34" targetElement="#1c7d33f9-fc8e-4463-b948-323f38a15572"
                 sourceElement="#02f9c50e-511f-48ad-9a30-bb490b5af33c"/>
             <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
-                id="fdc92f39-2f04-4b23-9f37-6a489a06c257" name="SA_Function9" representedInstance="#5c8c2b7f-b8a2-454a-be57-3668c7c2f04c"/>
+                id="fdc92f39-2f04-4b23-9f37-6a489a06c257" name="SA_Function9"/>
             <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
                 id="04482926-178e-46e5-8086-1711e4682967" name="SA_Function10" representedInstance="#9ac57c20-5715-4559-a539-3f47d142bea1"/>
             <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
@@ -2240,8 +2239,7 @@
                 id="0fed0bba-1cbf-4d61-bd77-9eb7e93b6780" targetElement="#02f9c50e-511f-48ad-9a30-bb490b5af33c"
                 sourceElement="#f2f3d054-01be-4024-975e-71fd35529cb0"/>
             <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
-                id="c61a7ba8-ba26-4fcf-9ac6-5cfe1ce6a609" name="SA_OperationalActivity 9"
-                representedInstance="#0ddfcffd-4480-494b-8059-b292f7ea8c28"/>
+                id="c61a7ba8-ba26-4fcf-9ac6-5cfe1ce6a609" name="SA_OperationalActivity 9"/>
             <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
                 id="e6ef8598-f22b-425a-97d2-581598865008" name="SA_OperationalActivity 10"
                 representedInstance="#0601a6dc-55ce-456a-adf0-b5a90d8bd4bc"/>
