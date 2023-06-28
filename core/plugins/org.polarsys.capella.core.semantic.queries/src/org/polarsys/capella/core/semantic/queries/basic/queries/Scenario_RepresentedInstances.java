@@ -45,7 +45,9 @@ public class Scenario_RepresentedInstances implements IQuery {
             boolean reusableComponentsDriven = false;
             boolean reusableComponentsDrivenChecked = false;
             
-            for (AbstractInstance representedInstance : af.getOwnedInstanceRoles().stream().map(InstanceRole::getRepresentedInstance).collect(Collectors.toList())) {
+			for (AbstractInstance representedInstance : af.getOwnedInstanceRoles().stream()
+					.filter(role -> role.getRepresentedInstance() != null).map(InstanceRole::getRepresentedInstance)
+					.collect(Collectors.toList())) {
                 AbstractType abstractType = representedInstance.getAbstractType();
                 // First time we get an abstract type, check for ReusableComponents configuration
                 if (abstractType != null && !reusableComponentsDrivenChecked && representedInstance instanceof Part) {

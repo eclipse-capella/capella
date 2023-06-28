@@ -24,7 +24,7 @@
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Capabilities%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.oa:OperationalCapabilityPkg" href="SemanticQueries.capella#eb25fbf6-e305-4e9f-8b84-921a07eb385e"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_0MkOQKCDEeyH1e85yB73sQ" name="[OAS] OperationalProcess 2 1" repPath="#_0MjAIKCDEeyH1e85yB73sQ" changeId="1683275339974">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_0MkOQKCDEeyH1e85yB73sQ" name="[OAS] OperationalProcess 2 1" repPath="#_0MjAIKCDEeyH1e85yB73sQ" changeId="1688385305083">
         <description xmi:type="description_2:SequenceDiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Activity%20Interaction%20Scenario']"/>
         <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="SemanticQueries.capella#24491dc1-b229-4d72-be52-78d2d01390db"/>
       </ownedRepresentationDescriptors>
@@ -115,7 +115,7 @@
         <description xmi:type="description_2:SequenceDiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']"/>
         <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="SemanticQueries.capella#5e48685c-18ce-4bf1-8238-abd01627728b"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_hoo5oKE_EeyBJ7H5UdZsew" name="[FS] [OAS] OperationalProcess 2 1" repPath="#_homdYKE_EeyBJ7H5UdZsew" changeId="1683275339974">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_hoo5oKE_EeyBJ7H5UdZsew" name="[FS] [OAS] OperationalProcess 2 1" repPath="#_homdYKE_EeyBJ7H5UdZsew" changeId="1688385185325">
         <description xmi:type="description_2:SequenceDiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']"/>
         <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="SemanticQueries.capella#745f3b2b-95b5-47a9-885d-407c852e6eae"/>
       </ownedRepresentationDescriptors>
@@ -127,7 +127,7 @@
         <description xmi:type="description_2:SequenceDiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']"/>
         <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="SemanticQueries.capella#bff2cda0-3f48-4059-9519-140f38e328cb"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Ssm9MKFVEeyYO5phjce_nw" name="[FS] [OAS] OperationalProcess 2 1" repPath="#_SsfocKFVEeyYO5phjce_nw" changeId="1683275339974">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Ssm9MKFVEeyYO5phjce_nw" name="[FS] [OAS] OperationalProcess 2 1" repPath="#_SsfocKFVEeyYO5phjce_nw" changeId="1687960218159">
         <description xmi:type="description_2:SequenceDiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']"/>
         <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="SemanticQueries.capella#133c4a8d-b7cd-44e5-8f9b-a12366f1d535"/>
       </ownedRepresentationDescriptors>
@@ -6067,19 +6067,16 @@
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_0My3wKCDEeyH1e85yB73sQ" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_0My3waCDEeyH1e85yB73sQ"/>
     </ownedAnnotationEntries>
-    <ownedDiagramElements xmi:type="diagram:DNode" uid="_0MmDcKCDEeyH1e85yB73sQ" name="OperationalActivity 9" width="10" height="5" resizeKind="EAST_WEST">
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_0MmDcKCDEeyH1e85yB73sQ" name="[Instance Role]" width="10" height="5" resizeKind="EAST_WEST">
       <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="SemanticQueries.capella#eb5738f9-8fad-4eea-828d-df839eee847e"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="SemanticQueries.capella#eb5738f9-8fad-4eea-828d-df839eee847e"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="SemanticQueries.capella#4a202fcf-5872-4d21-ae2f-97ebeae0b4e7"/>
       <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_0R7PaKCDEeyH1e85yB73sQ" x="50" y="50" height="50" width="100"/>
       <ownedBorderedNodes xmi:type="diagram:DNode" uid="_0Mn4oqCDEeyH1e85yB73sQ" outgoingEdges="_0MumUKCDEeyH1e85yB73sQ" width="1" height="40" resizeKind="NSEW">
         <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="SemanticQueries.capella#eb5738f9-8fad-4eea-828d-df839eee847e"/>
         <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="SemanticQueries.capella#eb5738f9-8fad-4eea-828d-df839eee847e"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="SemanticQueries.capella#4a202fcf-5872-4d21-ae2f-97ebeae0b4e7"/>
         <ownedBorderedNodes xmi:type="diagram:DNode" uid="_0MofsKCDEeyH1e85yB73sQ" width="1" height="1">
           <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="SemanticQueries.capella#eb5738f9-8fad-4eea-828d-df839eee847e"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="SemanticQueries.capella#eb5738f9-8fad-4eea-828d-df839eee847e"/>
-          <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="SemanticQueries.capella#4a202fcf-5872-4d21-ae2f-97ebeae0b4e7"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_0MofsaCDEeyH1e85yB73sQ" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.svg">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Activity%20Interaction%20Scenario']/@defaultLayer/@nodeMappings[name='InstanceRoleMaping%20AIS']/@borderedNodeMappings[name='default%20execution%20AIS']/@borderedNodeMappings[name='endOfLifeAIS']/@style"/>
           </ownedStyle>
@@ -8148,19 +8145,16 @@
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_ho4xQKE_EeyBJ7H5UdZsew" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_ho5YUKE_EeyBJ7H5UdZsew"/>
     </ownedAnnotationEntries>
-    <ownedDiagramElements xmi:type="diagram:DNode" uid="_hopgsKE_EeyBJ7H5UdZsew" name="SA_Function9" width="10" height="5" resizeKind="EAST_WEST">
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_hopgsKE_EeyBJ7H5UdZsew" name="[Instance Role]" width="10" height="5" resizeKind="EAST_WEST">
       <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="SemanticQueries.capella#fdc92f39-2f04-4b23-9f37-6a489a06c257"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="SemanticQueries.capella#fdc92f39-2f04-4b23-9f37-6a489a06c257"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="SemanticQueries.capella#5c8c2b7f-b8a2-454a-be57-3668c7c2f04c"/>
       <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_hxJVaaE_EeyBJ7H5UdZsew" x="50" y="50" height="50" width="100"/>
       <ownedBorderedNodes xmi:type="diagram:DNode" uid="_hoskAqE_EeyBJ7H5UdZsew" outgoingEdges="_ho1t8KE_EeyBJ7H5UdZsew" width="1" height="40" resizeKind="NSEW">
         <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="SemanticQueries.capella#fdc92f39-2f04-4b23-9f37-6a489a06c257"/>
         <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="SemanticQueries.capella#fdc92f39-2f04-4b23-9f37-6a489a06c257"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="SemanticQueries.capella#5c8c2b7f-b8a2-454a-be57-3668c7c2f04c"/>
         <ownedBorderedNodes xmi:type="diagram:DNode" uid="_hotLEKE_EeyBJ7H5UdZsew" width="1" height="1">
           <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="SemanticQueries.capella#fdc92f39-2f04-4b23-9f37-6a489a06c257"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="SemanticQueries.capella#fdc92f39-2f04-4b23-9f37-6a489a06c257"/>
-          <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="SemanticQueries.capella#5c8c2b7f-b8a2-454a-be57-3668c7c2f04c"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_hotLEaE_EeyBJ7H5UdZsew" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.svg">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']/@borderedNodeMappings[name='default%20execution%20FS']/@borderedNodeMappings[name='endOfLife%20FS']/@style"/>
           </ownedStyle>
@@ -9619,19 +9613,16 @@
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_Sta1gKFVEeyYO5phjce_nw" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_Sta1gaFVEeyYO5phjce_nw"/>
     </ownedAnnotationEntries>
-    <ownedDiagramElements xmi:type="diagram:DNode" uid="_Ss4C8KFVEeyYO5phjce_nw" name="SA_OperationalActivity 9" width="10" height="5" resizeKind="EAST_WEST">
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_Ss4C8KFVEeyYO5phjce_nw" name="[Instance Role]" width="10" height="5" resizeKind="EAST_WEST">
       <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="SemanticQueries.capella#c61a7ba8-ba26-4fcf-9ac6-5cfe1ce6a609"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="SemanticQueries.capella#c61a7ba8-ba26-4fcf-9ac6-5cfe1ce6a609"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalFunction" href="SemanticQueries.capella#0ddfcffd-4480-494b-8059-b292f7ea8c28"/>
       <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_S2eq6KFVEeyYO5phjce_nw" x="50" y="50" height="50" width="100"/>
       <ownedBorderedNodes xmi:type="diagram:DNode" uid="_Ss-woKFVEeyYO5phjce_nw" outgoingEdges="_StUH0KFVEeyYO5phjce_nw" width="1" height="40" resizeKind="NSEW">
         <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="SemanticQueries.capella#c61a7ba8-ba26-4fcf-9ac6-5cfe1ce6a609"/>
         <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="SemanticQueries.capella#c61a7ba8-ba26-4fcf-9ac6-5cfe1ce6a609"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalFunction" href="SemanticQueries.capella#0ddfcffd-4480-494b-8059-b292f7ea8c28"/>
         <ownedBorderedNodes xmi:type="diagram:DNode" uid="_Ss_XsKFVEeyYO5phjce_nw" width="1" height="1">
           <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="SemanticQueries.capella#c61a7ba8-ba26-4fcf-9ac6-5cfe1ce6a609"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="SemanticQueries.capella#c61a7ba8-ba26-4fcf-9ac6-5cfe1ce6a609"/>
-          <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalFunction" href="SemanticQueries.capella#0ddfcffd-4480-494b-8059-b292f7ea8c28"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_Ss_-wKFVEeyYO5phjce_nw" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.svg">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']/@borderedNodeMappings[name='default%20execution%20FS']/@borderedNodeMappings[name='endOfLife%20FS']/@style"/>
           </ownedStyle>
