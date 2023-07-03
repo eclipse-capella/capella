@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2023 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -16,19 +16,20 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.command.UnexecutableCommand;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.command.AddCommand;
-import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.polarsys.capella.common.model.copypaste.SharedCopyPasteElements;
@@ -37,8 +38,6 @@ import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Part;
-import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
-import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
 import org.polarsys.capella.core.model.handler.helpers.CrossReferencerHelper;
 import org.polarsys.capella.core.ui.toolkit.Activator;
 
@@ -52,9 +51,9 @@ public class PasteCommandHelper {
   private PasteCommandHelper() {
     // Avoid to instantiate.
   }
-  
-  public static IStatus createPasteCommands(Collection<?> pasteElements, CompoundCommand commands, EObject owner, EStructuralFeature feature,
-      EditingDomain domain, int index, boolean useIndex) {
+
+  public static IStatus createPasteCommands(Collection<?> pasteElements, CompoundCommand commands, EObject owner,
+      EStructuralFeature feature, EditingDomain domain, int index, boolean useIndex) {
     IStatus status = Status.OK_STATUS;
     EStructuralFeature feat = feature;
     SharedCopyPasteElements instance = SharedCopyPasteElements.getInstance();
@@ -76,7 +75,7 @@ public class PasteCommandHelper {
       } else {
         feat = getNewTargetContainingFeature((EObject) originalObject, owner, containingFeature);
       }
-      
+
       boolean append = true;
       // Check original object and the new owner are in the same session.
       Session session = SessionManager.INSTANCE.getSession(owner);
@@ -93,18 +92,27 @@ public class PasteCommandHelper {
         if (null != feat) {
           // Is a many feature ?
           if (feat.isMany()) {
-            // Use AddCommand.
-            command =
-                (useIndex) ? AddCommand.create(domain, owner, feat, Collections.singletonList(pasteElement), index) : AddCommand.create(domain,
-                    owner, feat, Collections.singletonList(pasteElement));
+            // Use are RecordingCommand instead of AddCommand to be sure undo is properly done(in case of cut).
+            var featureCommand = feat;
+            command = new RecordingCommand((TransactionalEditingDomain) domain) {
+              @Override
+              protected void doExecute() {
+                ((EList) owner.eGet(featureCommand)).addAll(Collections.singletonList(pasteElement));
+              }
+            };
           } else {
-            // Not many : use a SetCommand.
-            command =
-                (useIndex) ? SetCommand.create(domain, owner, feat, pasteElement, index) : SetCommand.create(domain, owner, feat,
-                    pasteElement);
+            // Use are RecordingCommand instead of SetCommand to be sure undo is properly done(in case of cut).
+            var featureCommand = feat;
+            command = new RecordingCommand((TransactionalEditingDomain) domain) {
+              @Override
+              protected void doExecute() {
+                owner.eSet(featureCommand, Collections.singletonList(pasteElement));
+              }
+            };
           }
         } else {
-          // Unknown feature : EMF will computes automatically the appropriate feature; it seems to handle correctly all type of feature : many or not.
+          // Unknown feature : EMF will computes automatically the appropriate feature; it seems to handle correctly all
+          // type of feature : many or not.
           command = AddCommand.create(domain, owner, null, pasteElement);
         }
         if (null != command) {
@@ -137,7 +145,8 @@ public class PasteCommandHelper {
       if (newOwner instanceof ComponentPkg
           && originalContainingFeature == CapellacorePackage.Literals.CLASSIFIER__OWNED_FEATURES) {
         return CsPackage.Literals.COMPONENT_PKG__OWNED_PARTS;
-      } else if (newOwner instanceof Component && originalContainingFeature == CsPackage.Literals.COMPONENT_PKG__OWNED_PARTS) {
+      } else if (newOwner instanceof Component
+          && originalContainingFeature == CsPackage.Literals.COMPONENT_PKG__OWNED_PARTS) {
         return CapellacorePackage.Literals.CLASSIFIER__OWNED_FEATURES;
       }
     } // If I move a Component or a ComponentPkg ...
