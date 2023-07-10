@@ -319,7 +319,7 @@ public class ABServices {
 
       // Remove all port outgoing allocations
       for (Port port : ComponentExt.getOwnedComponentPort(component)) {
-        FaServices.getFaServices().removeUselessPortRealizations(port, false, true, false, false);
+        FaServices.getFaServices().removeUselessPortAllocations(port, newContainer, false, true, false, false);
       }
 
       FaServices.getFaServices().removeUselessExchanges(component);
