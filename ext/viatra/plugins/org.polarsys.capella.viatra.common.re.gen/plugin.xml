@@ -12,10 +12,10 @@
 #     Thales - initial API and implementation
 --><plugin>
   <extension id="extension.surrogate.org.polarsys.capella.viatra.common.re.surrogate.CatalogElement__referencedElements" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
-    <surrogate-query-emf class-name="CatalogElement" feature-name="referencedElements" package-nsUri="http://www.polarsys.org/capella/common/re/6.0.0" query-fqn="org.polarsys.capella.viatra.common.re.surrogate.CatalogElement__referencedElements" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.common.re.surrogate.CatalogElement__referencedElements"/>
+    <surrogate-query-emf class-name="CatalogElement" feature-name="referencedElements" package-nsUri="http://www.polarsys.org/capella/common/re/7.0.0" query-fqn="org.polarsys.capella.viatra.common.re.surrogate.CatalogElement__referencedElements" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.common.re.surrogate.CatalogElement__referencedElements"/>
   </extension>
   <extension id="extension.surrogate.org.polarsys.capella.viatra.common.re.surrogate.CatalogElement__replicatedElements" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
-    <surrogate-query-emf class-name="CatalogElement" feature-name="replicatedElements" package-nsUri="http://www.polarsys.org/capella/common/re/6.0.0" query-fqn="org.polarsys.capella.viatra.common.re.surrogate.CatalogElement__replicatedElements" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.common.re.surrogate.CatalogElement__replicatedElements"/>
+    <surrogate-query-emf class-name="CatalogElement" feature-name="replicatedElements" package-nsUri="http://www.polarsys.org/capella/common/re/7.0.0" query-fqn="org.polarsys.capella.viatra.common.re.surrogate.CatalogElement__replicatedElements" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.common.re.surrogate.CatalogElement__replicatedElements"/>
   </extension>
   <extension id="org.polarsys.capella.viatra.common.re.surrogate.CatalogElement" point="org.eclipse.viatra.query.runtime.queryspecification">
     <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.polarsys.capella.viatra.common.re.surrogate.CatalogElement" id="org.polarsys.capella.viatra.common.re.surrogate.CatalogElement">

@@ -15,7 +15,7 @@
 <plugin>
    <extension point="org.eclipse.emf.validation.constraintProviders">
      <constraintProvider>
-         <package namespaceUri="http://www.polarsys.org/capella/core/information/6.0.0">
+         <package namespaceUri="http://www.polarsys.org/capella/core/information/7.0.0">
          </package>
          <constraints categories="capella.category/transition/consistency/components">
             <constraint class="org.polarsys.capella.core.data.information.validation.port.PR01_PortRealization_Realization" id="TC_DC_01" isEnabledByDefault="true" lang="Java" mode="Batch" name="TC_DC_01 - Port Allocation" severity="WARNING" statusCode="1">
@@ -584,9 +584,9 @@ If an Association is on SystemArchitecture layer. It should not associate with a
          </constraints>
       </constraintProvider>
      <constraintProvider>
-        <package namespaceUri="http://www.polarsys.org/capella/core/information/datavalue/6.0.0">
+        <package namespaceUri="http://www.polarsys.org/capella/core/information/datavalue/7.0.0">
         </package>
-        <package namespaceUri="http://www.polarsys.org/capella/core/information/datatype/6.0.0">
+        <package namespaceUri="http://www.polarsys.org/capella/core/information/datatype/7.0.0">
         </package>
         <constraints categories="capella.category/design/well-formedness/data">
            <constraint class="org.polarsys.capella.core.data.information.validation.dataValue.LiteralBooleanValueType" id="DWF_D_26" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_D_26 - LiteralBooleanValuel Type" severity="WARNING" statusCode="1">
@@ -733,7 +733,7 @@ If an Association is on SystemArchitecture layer. It should not associate with a
      </constraintProvider>
      <constraintProvider>
         <package
-              namespaceUri="http://www.polarsys.org/capella/core/information/communication/6.0.0">
+              namespaceUri="http://www.polarsys.org/capella/core/information/communication/7.0.0">
         </package>
         <constraints
               categories="capella.category/design/completeness">

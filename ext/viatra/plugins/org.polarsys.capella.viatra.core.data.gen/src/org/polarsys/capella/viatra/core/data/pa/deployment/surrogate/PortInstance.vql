@@ -15,7 +15,7 @@
 
 package org.polarsys.capella.viatra.core.data.pa.deployment.surrogate
 
-import "http://www.polarsys.org/capella/core/pa/deployment/6.0.0"
+import "http://www.polarsys.org/capella/core/pa/deployment/7.0.0"
 
 // Start of user code for imports 
 

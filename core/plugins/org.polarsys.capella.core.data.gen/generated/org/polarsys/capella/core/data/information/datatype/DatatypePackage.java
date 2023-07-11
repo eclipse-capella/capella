@@ -52,7 +52,7 @@ public interface DatatypePackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.polarsys.org/capella/core/information/datatype/6.0.0"; //$NON-NLS-1$
+	String eNS_URI = "http://www.polarsys.org/capella/core/information/datatype/7.0.0"; //$NON-NLS-1$
 
 	/**
 	 * The package namespace name.

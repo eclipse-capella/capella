@@ -628,7 +628,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
 			@Override
 			public Object caseAbstractConstraint(AbstractConstraint object) {
 				// begin-extension-code
-				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/information/datavalue/6.0.0")) { //$NON-NLS-1$
+				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/information/datavalue/7.0.0")) { //$NON-NLS-1$
 					return null;				
 				}
 				// end-extension-code
@@ -811,7 +811,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
 			@Override
 			public Object caseAbstractParameter(AbstractParameter object) {
 				// begin-extension-code
-				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/information/datavalue/6.0.0")) { //$NON-NLS-1$
+				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/information/datavalue/7.0.0")) { //$NON-NLS-1$
 					return null;				
 				}
 				// end-extension-code
@@ -1164,7 +1164,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
 			@Override
 			public Object caseAbstractParameterSet(AbstractParameterSet object) {
 				// begin-extension-code
-				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/information/datavalue/6.0.0")) { //$NON-NLS-1$
+				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/information/datavalue/7.0.0")) { //$NON-NLS-1$
 					return null;				
 				}
 				// end-extension-code
@@ -1420,7 +1420,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
 			@Override
 			public Object caseActivityEdge(ActivityEdge object) {
 				// begin-extension-code
-				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/information/datavalue/6.0.0")) { //$NON-NLS-1$
+				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/information/datavalue/7.0.0")) { //$NON-NLS-1$
 					return null;				
 				}
 				// end-extension-code
@@ -2111,7 +2111,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
 			@Override
 			public Object caseObjectNode(ObjectNode object) {
 				// begin-extension-code
-				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/information/datavalue/6.0.0")) { //$NON-NLS-1$
+				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/information/datavalue/7.0.0")) { //$NON-NLS-1$
 					return null;				
 				}
 				// end-extension-code
@@ -2295,7 +2295,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
 			@Override
 			public Object caseValuePin(ValuePin object) {
 				// begin-extension-code
-				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/information/datavalue/6.0.0")) { //$NON-NLS-1$
+				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/information/datavalue/7.0.0")) { //$NON-NLS-1$
 					return null;				
 				}
 				// end-extension-code

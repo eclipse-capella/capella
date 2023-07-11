@@ -53,7 +53,7 @@ public interface ActivityPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.polarsys.org/capella/common/activity/6.0.0"; //$NON-NLS-1$
+	String eNS_URI = "http://www.polarsys.org/capella/common/activity/7.0.0"; //$NON-NLS-1$
 
 	/**
 	 * The package namespace name.

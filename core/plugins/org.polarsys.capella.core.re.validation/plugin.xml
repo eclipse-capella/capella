@@ -21,7 +21,7 @@
       </category>
       <constraintProvider>
          <package
-               namespaceUri="http://www.polarsys.org/capella/common/re/6.0.0">
+               namespaceUri="http://www.polarsys.org/capella/common/re/7.0.0">
          </package>
          <constraints
                categories="capella.category/design/consistency">

@@ -17,7 +17,7 @@
          point="org.eclipse.emf.validation.constraintProviders">
       <constraintProvider>
          <package
-               namespaceUri="http://www.polarsys.org/capella/core/information/datatype/6.0.0">
+               namespaceUri="http://www.polarsys.org/capella/core/information/datatype/7.0.0">
          </package>
          <constraints
                categories="capella.category/design/well-formedness/data">
@@ -63,7 +63,7 @@
       </constraintProvider>
       <constraintProvider>
          <package
-               namespaceUri="http://www.polarsys.org/capella/core/information/datavalue/6.0.0">
+               namespaceUri="http://www.polarsys.org/capella/core/information/datavalue/7.0.0">
          </package>
          <constraints
                categories="capella.category/design/well-formedness/data">

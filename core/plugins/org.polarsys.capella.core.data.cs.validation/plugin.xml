@@ -17,7 +17,7 @@
          point="org.eclipse.emf.validation.constraintProviders">
       <constraintProvider>
          <package
-               namespaceUri="http://www.polarsys.org/capella/core/cs/6.0.0">
+               namespaceUri="http://www.polarsys.org/capella/core/cs/7.0.0">
          </package>
          <constraints
                categories="capella.category/design/well-formedness/dataflows">
@@ -935,7 +935,7 @@ Interface should be linked to the realized ExchangeItem.
       
       <constraintProvider>
          <package
-               namespaceUri="http://www.polarsys.org/capella/common/core/6.0.0">
+               namespaceUri="http://www.polarsys.org/capella/common/core/7.0.0">
          </package>
          <constraints
                categories="capella.category/design/completeness">

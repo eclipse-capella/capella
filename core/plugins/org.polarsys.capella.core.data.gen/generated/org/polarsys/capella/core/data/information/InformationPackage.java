@@ -54,7 +54,7 @@ public interface InformationPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.polarsys.org/capella/core/information/6.0.0"; //$NON-NLS-1$
+	String eNS_URI = "http://www.polarsys.org/capella/core/information/7.0.0"; //$NON-NLS-1$
 
 	/**
 	 * The package namespace name.

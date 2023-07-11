@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="capellacommon" nsURI="http://www.polarsys.org/capella/core/common/6.0.0"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="capellacommon" nsURI="http://www.polarsys.org/capella/core/common/7.0.0"
     nsPrefix="org.polarsys.capella.core.data.capellacommon">
   <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
     <details key="profileName" value="Capella"/>

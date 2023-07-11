@@ -424,7 +424,7 @@ public class LibrariesPackageImpl extends EPackageImpl implements LibrariesPacka
 		  (modelInformationEClass,
 		   source,
 		   new String[] {
-			   "ExtendedElement", "http://www.polarsys.org/capella/core/modeller/6.0.0#//Project" //$NON-NLS-1$ //$NON-NLS-2$
+			   "ExtendedElement", "http://www.polarsys.org/capella/core/modeller/7.0.0#//Project" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 	}
 
