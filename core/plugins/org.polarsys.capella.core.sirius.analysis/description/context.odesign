@@ -322,7 +322,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D Missions From Project Explorer" precondition="aql:element.oclIsKindOf(ctx::Mission) and element.canBeDropped(newViewContainer)" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@nodeMappings[name='MissionNode']" dragSource="PROJECT_EXPLORER">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D Missions From Project Explorer" precondition="aql:element.oclIsKindOf(ctx::Mission) and element.canBeDropped(newViewContainer) and not element.isLibraryElementOf(newViewContainer)" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@nodeMappings[name='MissionNode']" dragSource="PROJECT_EXPLORER">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -331,7 +331,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D Capabilities From Project Explorer" precondition="aql:element.oclIsKindOf(ctx::Capability) and element.canBeDropped(newViewContainer)" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@nodeMappings[name='CapNode']" dragSource="PROJECT_EXPLORER">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D Capabilities From Project Explorer" precondition="aql:element.oclIsKindOf(ctx::Capability) and element.canBeDropped(newViewContainer) and not element.isLibraryElementOf(newViewContainer)" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@nodeMappings[name='CapNode']" dragSource="PROJECT_EXPLORER">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -340,7 +340,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D Actors From Project Explorer" precondition="aql:element.oclIsKindOf(cs::Component) and element.isActor() and element.canBeDropped(newViewContainer)" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@nodeMappings[name='ActorNode']" dragSource="PROJECT_EXPLORER">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D Actors From Project Explorer" precondition="aql:element.oclIsKindOf(cs::Component) and element.isActor() and element.canBeDropped(newViewContainer) and not element.isLibraryElementOf(newViewContainer)" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@nodeMappings[name='ActorNode']" dragSource="PROJECT_EXPLORER">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -802,7 +802,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D Missions From Project Explorer" precondition="aql:element.oclIsKindOf(ctx::Mission) and element.canBeDropped(newViewContainer)" forceRefresh="true" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@nodeMappings[name='MissionNode2']" dragSource="PROJECT_EXPLORER">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D Missions From Project Explorer" precondition="aql:element.oclIsKindOf(ctx::Mission) and element.canBeDropped(newViewContainer)and not element.isLibraryElementOf(newViewContainer)" forceRefresh="true" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@nodeMappings[name='MissionNode2']" dragSource="PROJECT_EXPLORER">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -811,7 +811,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D Capabilities From Project Explorer" precondition="aql:element.oclIsKindOf(ctx::Capability) and element.canBeDropped(newViewContainer)" forceRefresh="true" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@nodeMappings[name='CapNode2']" dragSource="PROJECT_EXPLORER">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D Capabilities From Project Explorer" precondition="aql:element.oclIsKindOf(ctx::Capability) and element.canBeDropped(newViewContainer) and not element.isLibraryElementOf(newViewContainer)" forceRefresh="true" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@nodeMappings[name='CapNode2']" dragSource="PROJECT_EXPLORER">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -820,7 +820,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D Actors From Project Explorer" precondition="aql:element.isActor() and element.canBeDropped(newViewContainer)" forceRefresh="true" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@nodeMappings[name='ActorNode2']" dragSource="PROJECT_EXPLORER">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D Actors From Project Explorer" precondition="aql:element.isActor() and element.canBeDropped(newViewContainer) and not element.isLibraryElementOf(newViewContainer)" forceRefresh="true" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@nodeMappings[name='ActorNode2']" dragSource="PROJECT_EXPLORER">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -1325,7 +1325,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D Missions From Project Explorer" precondition="aql:element.oclIsKindOf(ctx::Mission) and element.canBeDropped(newViewContainer)" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@nodeMappings[name='MissionNode3']" dragSource="PROJECT_EXPLORER">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D Missions From Project Explorer" precondition="aql:element.oclIsKindOf(ctx::Mission) and element.canBeDropped(newViewContainer) and not element.isLibraryElementOf(newViewContainer)" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@nodeMappings[name='MissionNode3']" dragSource="PROJECT_EXPLORER">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -1334,7 +1334,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D Capabilities From Project Explorer" precondition="aql:element.oclIsKindOf(ctx::Capability) and element.canBeDropped(newViewContainer)" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@nodeMappings[name='Capability3']" dragSource="PROJECT_EXPLORER">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D Capabilities From Project Explorer" precondition="aql:element.oclIsKindOf(ctx::Capability) and element.canBeDropped(newViewContainer) and not element.isLibraryElementOf(newViewContainer)" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@nodeMappings[name='Capability3']" dragSource="PROJECT_EXPLORER">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -1343,7 +1343,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D Actors From Project Explorer" precondition="aql:element.isActor() and element.canBeDropped(newViewContainer)" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@nodeMappings[name='ActorNode3']" dragSource="PROJECT_EXPLORER">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D Actors From Project Explorer" precondition="aql:element.isActor() and element.canBeDropped(newViewContainer) and not element.isLibraryElementOf(newViewContainer)" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@nodeMappings[name='ActorNode3']" dragSource="PROJECT_EXPLORER">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -1882,7 +1882,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D Missions From Project Explorer" precondition="aql:element.oclIsKindOf(ctx::Mission) and element.canBeDropped(newViewContainer)" forceRefresh="true" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@nodeMappings[name='MissionNode4']" dragSource="PROJECT_EXPLORER">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D Missions From Project Explorer" precondition="aql:element.oclIsKindOf(ctx::Mission) and element.canBeDropped(newViewContainer) and not element.isLibraryElementOf(newViewContainer)" forceRefresh="true" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@nodeMappings[name='MissionNode4']" dragSource="PROJECT_EXPLORER">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -1891,7 +1891,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D Capabilities From Project Explorer" precondition="aql:element.oclIsKindOf(ctx::Capability) and element.canBeDropped(newViewContainer)" forceRefresh="true" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@nodeMappings[name='CapabilityNode4']" dragSource="PROJECT_EXPLORER">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D Capabilities From Project Explorer" precondition="aql:element.oclIsKindOf(ctx::Capability) and element.canBeDropped(newViewContainer) and not element.isLibraryElementOf(newViewContainer)" forceRefresh="true" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@nodeMappings[name='CapabilityNode4']" dragSource="PROJECT_EXPLORER">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -1900,7 +1900,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D Actors From Project Explorer" precondition="aql:element.isActor() and element.canBeDropped(newViewContainer)" forceRefresh="true" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@nodeMappings[name='ActorNode4']" dragSource="PROJECT_EXPLORER">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D Actors From Project Explorer" precondition="aql:element.isActor() and element.canBeDropped(newViewContainer) and not element.isLibraryElementOf(newViewContainer)" forceRefresh="true" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@nodeMappings[name='ActorNode4']" dragSource="PROJECT_EXPLORER">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -3119,7 +3119,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D Function From Project Explorer" precondition="aql:element.oclIsKindOf(fa::AbstractFunction) and element.canBeDropped(newViewContainer)" forceRefresh="true" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']" dragSource="PROJECT_EXPLORER">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D Function From Project Explorer" precondition="aql:element.oclIsKindOf(fa::AbstractFunction) and element.canBeDropped(newViewContainer) and not element.isLibraryElementOf(newViewContainer)" forceRefresh="true" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']" dragSource="PROJECT_EXPLORER">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -4524,7 +4524,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D Actors From Project Explorer" precondition="aql:element.getComponentType().oclIsKindOf(cs::Component) and element.getComponentType().isActor() and element.canBeDropped(newViewContainer)" forceRefresh="true" dragSource="PROJECT_EXPLORER">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D Actors From Project Explorer" precondition="aql:element.getComponentType().oclIsKindOf(cs::Component) and element.getComponentType().isActor() and element.canBeDropped(newViewContainer)and not element.isLibraryElementOf(newViewContainer)" forceRefresh="true" dragSource="PROJECT_EXPLORER">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -5028,7 +5028,7 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D Function Allocation From Project Explorer" precondition="aql:element.oclIsKindOf(fa::AbstractFunction) and (element.subFunctions->size() = 0)" forceRefresh="true" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']" dragSource="PROJECT_EXPLORER">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D Function Allocation From Project Explorer" precondition="aql:element.oclIsKindOf(fa::AbstractFunction) and (element.subFunctions->size() = 0) and not element.isLibraryElementOf(newViewContainer)" forceRefresh="true" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']" dragSource="PROJECT_EXPLORER">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element">

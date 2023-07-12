@@ -94,6 +94,7 @@ import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.libraries.ILibraryManager;
 import org.polarsys.capella.common.libraries.IModel;
+import org.polarsys.capella.common.libraries.manager.LibraryManager;
 import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
 import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
@@ -3004,4 +3005,13 @@ public class CapellaServices {
     return sdf.format(date);
   }
 
+  public boolean isLibraryElementOf(EObject source, EObject target) {
+    if (source == null || target == null)
+      return false;
+    IModel srcModel = LibraryManager.INSTANCE.getModel(source);
+    IModel targetModel = LibraryManager.INSTANCE.getModel(target);
+    if (srcModel == null || targetModel == null)
+      return false;
+    return targetModel != srcModel && targetModel.getAvailableReferences().contains(srcModel);
+  }
 }
