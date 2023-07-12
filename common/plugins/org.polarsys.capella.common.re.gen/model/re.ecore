@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="re" nsURI="http://www.polarsys.org/capella/common/re/6.0.0"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="re" nsURI="http://www.polarsys.org/capella/common/re/7.0.0"
     nsPrefix="re">
   <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/extension">
     <details key="extensibleProviderFactory" value="true"/>
@@ -35,7 +35,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RecCatalog" eSuperTypes="#//CatalogElementPkg platform:/plugin/org.polarsys.kitalpha.emde/model/eMDE.ecore#//ElementExtension">
     <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/constraint">
-      <details key="ExtendedElement" value="http://www.polarsys.org/capella/core/modeller/6.0.0#//SystemEngineering "/>
+      <details key="ExtendedElement" value="http://www.polarsys.org/capella/core/modeller/7.0.0#//SystemEngineering "/>
     </eAnnotations>
     <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/constraintMapping">
       <details key="Mapping" value="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.ecore#//SystemEngineering "/>
@@ -45,7 +45,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GroupingElementPkg" eSuperTypes="#//CatalogElementPkg platform:/plugin/org.polarsys.kitalpha.emde/model/eMDE.ecore#//ElementExtension">
     <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/constraint">
-      <details key="ExtendedElement" value="http://www.polarsys.org/capella/core/modeller/6.0.0#//SystemEngineering http://www.polarsys.org/capella/core/cs/6.0.0#//BlockArchitecture"/>
+      <details key="ExtendedElement" value="http://www.polarsys.org/capella/core/modeller/7.0.0#//SystemEngineering http://www.polarsys.org/capella/core/cs/7.0.0#//BlockArchitecture"/>
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CatalogElementLink" eSuperTypes="#//ReAbstractElement">

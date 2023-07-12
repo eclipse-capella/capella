@@ -894,13 +894,13 @@ public class RePackageImpl extends EPackageImpl implements RePackage {
 		  (recCatalogEClass,
 		   source,
 		   new String[] {
-			   "ExtendedElement", "http://www.polarsys.org/capella/core/modeller/6.0.0#//SystemEngineering " //$NON-NLS-1$ //$NON-NLS-2$
+			   "ExtendedElement", "http://www.polarsys.org/capella/core/modeller/7.0.0#//SystemEngineering " //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 		addAnnotation
 		  (groupingElementPkgEClass,
 		   source,
 		   new String[] {
-			   "ExtendedElement", "http://www.polarsys.org/capella/core/modeller/6.0.0#//SystemEngineering http://www.polarsys.org/capella/core/cs/6.0.0#//BlockArchitecture" //$NON-NLS-1$ //$NON-NLS-2$
+			   "ExtendedElement", "http://www.polarsys.org/capella/core/modeller/7.0.0#//SystemEngineering http://www.polarsys.org/capella/core/cs/7.0.0#//BlockArchitecture" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 	}
 

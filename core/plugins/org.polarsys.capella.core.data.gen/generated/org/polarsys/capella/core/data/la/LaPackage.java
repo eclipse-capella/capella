@@ -53,7 +53,7 @@ public interface LaPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.polarsys.org/capella/core/la/6.0.0"; //$NON-NLS-1$
+	String eNS_URI = "http://www.polarsys.org/capella/core/la/7.0.0"; //$NON-NLS-1$
 
 	/**
 	 * The package namespace name.

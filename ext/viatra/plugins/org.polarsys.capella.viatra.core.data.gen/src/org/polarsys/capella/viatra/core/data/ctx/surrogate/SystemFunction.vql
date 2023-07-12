@@ -15,13 +15,13 @@
 
 package org.polarsys.capella.viatra.core.data.ctx.surrogate
 
-import "http://www.polarsys.org/capella/core/ctx/6.0.0"
+import "http://www.polarsys.org/capella/core/ctx/7.0.0"
 
 // Start of user code for imports 
-import "http://www.polarsys.org/capella/common/core/6.0.0"
-import "http://www.polarsys.org/capella/core/fa/6.0.0"
-import "http://www.polarsys.org/capella/core/oa/6.0.0"
-import "http://www.polarsys.org/capella/core/la/6.0.0"
+import "http://www.polarsys.org/capella/common/core/7.0.0"
+import "http://www.polarsys.org/capella/core/fa/7.0.0"
+import "http://www.polarsys.org/capella/core/oa/7.0.0"
+import "http://www.polarsys.org/capella/core/la/7.0.0"
 
 // End of user code
 

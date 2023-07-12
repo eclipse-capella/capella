@@ -20,7 +20,7 @@
 <!--@generated-->
   <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated Behavior -->
-      <package class="org.polarsys.capella.common.data.behavior.BehaviorPackage" genModel="model/Behavior.genmodel" uri="http://www.polarsys.org/capella/common/behavior/6.0.0"/>
+      <package class="org.polarsys.capella.common.data.behavior.BehaviorPackage" genModel="model/Behavior.genmodel" uri="http://www.polarsys.org/capella/common/behavior/7.0.0"/>
    </extension>
 
    

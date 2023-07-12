@@ -15,7 +15,7 @@
 
 package org.polarsys.capella.viatra.common.re.surrogate
 
-import "http://www.polarsys.org/capella/common/re/6.0.0"
+import "http://www.polarsys.org/capella/common/re/7.0.0"
 
 // Start of user code for imports 
 import "http://www.eclipse.org/emf/2002/Ecore"

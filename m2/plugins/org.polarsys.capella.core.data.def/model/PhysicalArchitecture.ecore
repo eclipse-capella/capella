@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="pa" nsURI="http://www.polarsys.org/capella/core/pa/6.0.0" nsPrefix="org.polarsys.capella.core.data.pa">
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="pa" nsURI="http://www.polarsys.org/capella/core/pa/7.0.0" nsPrefix="org.polarsys.capella.core.data.pa">
   <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/extension">
     <details key="trackResourceModification" value="true"/>
     <details key="useUUIDs" value="false"/>
@@ -1076,7 +1076,7 @@
       </eAnnotations>
     </eLiterals>
   </eClassifiers>
-  <eSubpackages name="deployment" nsURI="http://www.polarsys.org/capella/core/pa/deployment/6.0.0"
+  <eSubpackages name="deployment" nsURI="http://www.polarsys.org/capella/core/pa/deployment/7.0.0"
       nsPrefix="org.polarsys.capella.core.data.pa.deployment">
     <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/extension">
       <details key="trackResourceModification" value="true"/>

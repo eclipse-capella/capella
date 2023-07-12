@@ -17,21 +17,21 @@
          point="org.polarsys.capella.common.model.helpers.helper">
       <helperImpl
             class="org.polarsys.capella.common.data.helpers.activity.ActivityHelper"
-            nsURI="http://www.polarsys.org/capella/common/activity/6.0.0">
+            nsURI="http://www.polarsys.org/capella/common/activity/7.0.0">
       </helperImpl>
    </extension>
    <extension
          point="org.polarsys.capella.common.model.helpers.helper">
       <helperImpl
             class="org.polarsys.capella.common.data.helpers.behavior.BehaviorHelper"
-            nsURI="http://www.polarsys.org/capella/common/behavior/6.0.0">
+            nsURI="http://www.polarsys.org/capella/common/behavior/7.0.0">
       </helperImpl>
    </extension>
    <extension
          point="org.polarsys.capella.common.model.helpers.helper">
       <helperImpl
             class="org.polarsys.capella.common.data.helpers.modellingcore.ModellingCoreHelper"
-            nsURI="http://www.polarsys.org/capella/common/core/6.0.0">
+            nsURI="http://www.polarsys.org/capella/common/core/7.0.0">
       </helperImpl>
    </extension>
 </plugin>

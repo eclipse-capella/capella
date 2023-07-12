@@ -19,91 +19,91 @@
       <factory
         class="org.polarsys.capella.core.data.capellacommon.provider.CapellacommonItemProviderDecoratorAdapterFactory"
         supportedTypes="org.eclipse.emf.edit.provider.IItemLabelProvider"
-        uri="http://www.polarsys.org/capella/core/capellacommon/6.0.0"/>
+        uri="http://www.polarsys.org/capella/core/capellacommon/7.0.0"/>
    </extension>
   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <factory
         class="org.polarsys.capella.core.data.capellacore.provider.CapellacoreItemProviderDecoratorAdapterFactory"
         supportedTypes="org.eclipse.emf.edit.provider.IItemLabelProvider"
-        uri="http://www.polarsys.org/capella/core/capellacore/6.0.0"/>
+        uri="http://www.polarsys.org/capella/core/capellacore/7.0.0"/>
    </extension>
   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <factory
         class="org.polarsys.capella.core.data.capellamodeller.provider.CapellamodellerItemProviderDecoratorAdapterFactory"
         supportedTypes="org.eclipse.emf.edit.provider.IItemLabelProvider"
-        uri="http://www.polarsys.org/capella/core/capellamodeller/6.0.0"/>
+        uri="http://www.polarsys.org/capella/core/capellamodeller/7.0.0"/>
    </extension>
   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <factory
         class="org.polarsys.capella.core.data.cs.provider.CsItemProviderDecoratorAdapterFactory"
         supportedTypes="org.eclipse.emf.edit.provider.IItemLabelProvider"
-        uri="http://www.polarsys.org/capella/core/cs/6.0.0"/>
+        uri="http://www.polarsys.org/capella/core/cs/7.0.0"/>
    </extension>
   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <factory
         class="org.polarsys.capella.core.data.ctx.provider.CtxItemProviderDecoratorAdapterFactory"
         supportedTypes="org.eclipse.emf.edit.provider.IItemLabelProvider"
-        uri="http://www.polarsys.org/capella/core/ctx/6.0.0"/>
+        uri="http://www.polarsys.org/capella/core/ctx/7.0.0"/>
    </extension>
   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <factory
         class="org.polarsys.capella.core.data.epbs.provider.EpbsItemProviderDecoratorAdapterFactory"
         supportedTypes="org.eclipse.emf.edit.provider.IItemLabelProvider"
-        uri="http://www.polarsys.org/capella/core/epbs/6.0.0"/>
+        uri="http://www.polarsys.org/capella/core/epbs/7.0.0"/>
    </extension>
   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <factory
         class="org.polarsys.capella.core.data.fa.provider.FaItemProviderDecoratorAdapterFactory"
         supportedTypes="org.eclipse.emf.edit.provider.IItemLabelProvider"
-        uri="http://www.polarsys.org/capella/core/fa/6.0.0"/>
+        uri="http://www.polarsys.org/capella/core/fa/7.0.0"/>
    </extension>
   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <factory
         class="org.polarsys.capella.core.data.information.communication.provider.CommunicationItemProviderDecoratorAdapterFactory"
         supportedTypes="org.eclipse.emf.edit.provider.IItemLabelProvider"
-        uri="http://www.polarsys.org/capella/core/information/communication/6.0.0"/>
+        uri="http://www.polarsys.org/capella/core/information/communication/7.0.0"/>
    </extension>
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <factory
         class="org.polarsys.capella.core.data.information.datavalue.provider.DatavalueItemProviderDecoratorAdapterFactory"
         supportedTypes="org.eclipse.emf.edit.provider.IItemLabelProvider"
-        uri="http://www.polarsys.org/capella/core/information/datavalue/6.0.0"/>
+        uri="http://www.polarsys.org/capella/core/information/datavalue/7.0.0"/>
    </extension>
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <factory
         class="org.polarsys.capella.core.data.information.datatype.provider.DatatypeItemProviderDecoratorAdapterFactory"
         supportedTypes="org.eclipse.emf.edit.provider.IItemLabelProvider"
-        uri="http://www.polarsys.org/capella/core/information/datatype/6.0.0"/>
+        uri="http://www.polarsys.org/capella/core/information/datatype/7.0.0"/>
    </extension>
   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <factory
         class="org.polarsys.capella.core.data.information.provider.InformationItemProviderDecoratorAdapterFactory"
         supportedTypes="org.eclipse.emf.edit.provider.IItemLabelProvider"
-        uri="http://www.polarsys.org/capella/core/information/6.0.0"/>
+        uri="http://www.polarsys.org/capella/core/information/7.0.0"/>
    </extension>
   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <factory
         class="org.polarsys.capella.core.data.la.provider.LaItemProviderDecoratorAdapterFactory"
         supportedTypes="org.eclipse.emf.edit.provider.IItemLabelProvider"
-        uri="http://www.polarsys.org/capella/core/la/6.0.0"/>
+        uri="http://www.polarsys.org/capella/core/la/7.0.0"/>
    </extension>
   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <factory
         class="org.polarsys.capella.core.data.oa.provider.OaItemProviderDecoratorAdapterFactory"
         supportedTypes="org.eclipse.emf.edit.provider.IItemLabelProvider"
-        uri="http://www.polarsys.org/capella/core/oa/6.0.0"/>
+        uri="http://www.polarsys.org/capella/core/oa/7.0.0"/>
    </extension>
   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <factory
         class="org.polarsys.capella.core.data.pa.provider.PaItemProviderDecoratorAdapterFactory"
         supportedTypes="org.eclipse.emf.edit.provider.IItemLabelProvider"
-        uri="http://www.polarsys.org/capella/core/pa/6.0.0"/>
+        uri="http://www.polarsys.org/capella/core/pa/7.0.0"/>
    </extension>
   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <factory
         class="org.polarsys.capella.core.data.sharedmodel.provider.SharedmodelItemProviderDecoratorAdapterFactory"
         supportedTypes="org.eclipse.emf.edit.provider.IItemLabelProvider"
-        uri="http://www.polarsys.org/capella/core/sharedmodel/6.0.0"/>
+        uri="http://www.polarsys.org/capella/core/sharedmodel/7.0.0"/>
    </extension>
   <extension
         point="org.polarsys.capella.core.model.handler.decoratorAdapterFactory">

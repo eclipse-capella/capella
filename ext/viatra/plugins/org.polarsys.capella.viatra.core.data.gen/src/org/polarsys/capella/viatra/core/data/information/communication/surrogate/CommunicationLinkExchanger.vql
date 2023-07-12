@@ -15,7 +15,7 @@
 
 package org.polarsys.capella.viatra.core.data.information.communication.surrogate
 
-import "http://www.polarsys.org/capella/core/information/communication/6.0.0"
+import "http://www.polarsys.org/capella/core/information/communication/7.0.0"
 
 // Start of user code for imports 
 

@@ -677,9 +677,9 @@ public final class AbstractState__realizedAbstractStates extends BaseGeneratedEM
   private static class GeneratedPQuery extends BaseGeneratedEMFPQuery {
     private static final AbstractState__realizedAbstractStates.GeneratedPQuery INSTANCE = new GeneratedPQuery();
     
-    private final PParameter parameter_self = new PParameter("self", "org.polarsys.capella.core.data.capellacommon.AbstractState", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/common/6.0.0", "AbstractState")), PParameterDirection.INOUT);
+    private final PParameter parameter_self = new PParameter("self", "org.polarsys.capella.core.data.capellacommon.AbstractState", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/common/7.0.0", "AbstractState")), PParameterDirection.INOUT);
     
-    private final PParameter parameter_target = new PParameter("target", "org.polarsys.capella.core.data.capellacommon.AbstractState", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/common/6.0.0", "AbstractState")), PParameterDirection.INOUT);
+    private final PParameter parameter_target = new PParameter("target", "org.polarsys.capella.core.data.capellacommon.AbstractState", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/common/7.0.0", "AbstractState")), PParameterDirection.INOUT);
     
     private final List<PParameter> parameters = Arrays.asList(parameter_self, parameter_target);
     
@@ -711,23 +711,23 @@ public final class AbstractState__realizedAbstractStates extends BaseGeneratedEM
           PVariable var_self = body.getOrCreateVariableByName("self");
           PVariable var_target = body.getOrCreateVariableByName("target");
           PVariable var_asr = body.getOrCreateVariableByName("asr");
-          new TypeConstraint(body, Tuples.flatTupleOf(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/common/6.0.0", "AbstractState")));
-          new TypeConstraint(body, Tuples.flatTupleOf(var_target), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/common/6.0.0", "AbstractState")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/common/7.0.0", "AbstractState")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_target), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/common/7.0.0", "AbstractState")));
           body.setSymbolicParameters(Arrays.<ExportedParameter>asList(
              new ExportedParameter(body, var_self, parameter_self),
              new ExportedParameter(body, var_target, parameter_target)
           ));
           // 	AbstractStateRealization.realizingAbstractState(asr, self)
-          new TypeConstraint(body, Tuples.flatTupleOf(var_asr), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/common/6.0.0", "AbstractStateRealization")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_asr), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/common/7.0.0", "AbstractStateRealization")));
           PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
-          new TypeConstraint(body, Tuples.flatTupleOf(var_asr, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/common/6.0.0", "AbstractStateRealization", "realizingAbstractState")));
-          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/common/6.0.0", "AbstractState")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_asr, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/common/7.0.0", "AbstractStateRealization", "realizingAbstractState")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/common/7.0.0", "AbstractState")));
           new Equality(body, var__virtual_0_, var_self);
           // AbstractStateRealization.realizedAbstractState(asr, target)
-          new TypeConstraint(body, Tuples.flatTupleOf(var_asr), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/common/6.0.0", "AbstractStateRealization")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_asr), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/common/7.0.0", "AbstractStateRealization")));
           PVariable var__virtual_1_ = body.getOrCreateVariableByName(".virtual{1}");
-          new TypeConstraint(body, Tuples.flatTupleOf(var_asr, var__virtual_1_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/common/6.0.0", "AbstractStateRealization", "realizedAbstractState")));
-          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_1_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/common/6.0.0", "AbstractState")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_asr, var__virtual_1_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/common/7.0.0", "AbstractStateRealization", "realizedAbstractState")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_1_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/common/7.0.0", "AbstractState")));
           new Equality(body, var__virtual_1_, var_target);
           bodies.add(body);
       }

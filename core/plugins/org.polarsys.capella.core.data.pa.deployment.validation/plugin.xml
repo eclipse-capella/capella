@@ -15,14 +15,14 @@
 <plugin>
    <extension point="org.eclipse.emf.validation.constraintProviders">
       <constraintProvider>
-         <package namespaceUri="http://www.polarsys.org/capella/core/pa/deployment/6.0.0">
+         <package namespaceUri="http://www.polarsys.org/capella/core/pa/deployment/7.0.0">
          </package>
          <constraints
                categories="capella.category/design/well-formedness/use_cases">
          </constraints>
       </constraintProvider>
       <constraintProvider>
-         <package namespaceUri="http://www.polarsys.org/capella/core/pa/6.0.0">
+         <package namespaceUri="http://www.polarsys.org/capella/core/pa/7.0.0">
          </package>
          <constraints
                categories="capella.category/design/well-formedness/components">
