@@ -24,6 +24,7 @@ import java.util.Set;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
 import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.viatra.query.runtime.api.IPatternMatch;
@@ -33,8 +34,10 @@ import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedEMFPQuery;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedEMFQuerySpecification;
 import org.eclipse.viatra.query.runtime.api.impl.BaseMatcher;
 import org.eclipse.viatra.query.runtime.api.impl.BasePatternMatch;
+import org.eclipse.viatra.query.runtime.api.scope.QueryScope;
 import org.eclipse.viatra.query.runtime.emf.types.EClassTransitiveInstancesKey;
 import org.eclipse.viatra.query.runtime.emf.types.EStructuralFeatureInstancesKey;
+import org.eclipse.viatra.query.runtime.matchers.ViatraQueryRuntimeException;
 import org.eclipse.viatra.query.runtime.matchers.backend.QueryEvaluationHint;
 import org.eclipse.viatra.query.runtime.matchers.psystem.PBody;
 import org.eclipse.viatra.query.runtime.matchers.psystem.PVariable;
@@ -670,9 +673,19 @@ public final class CapabilityRealizationInvolvement__involvedCapabilityRealizati
   private static class GeneratedPQuery extends BaseGeneratedEMFPQuery {
     private static final CapabilityRealizationInvolvement__involvedCapabilityRealizationInvolvedElement.GeneratedPQuery INSTANCE = new GeneratedPQuery();
     
-    private final PParameter parameter_self = new PParameter("self", "org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvement", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/common/6.0.0", "CapabilityRealizationInvolvement")), PParameterDirection.INOUT);
+    private final PParameter parameter_self = new PParameter("self",
+        "org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvement",
+        new EClassTransitiveInstancesKey(
+            (EClass) getClassifierLiteralSafe("http://www.polarsys.org/capella/core/common/7.0.0",
+                "CapabilityRealizationInvolvement")),
+        PParameterDirection.INOUT);
     
-    private final PParameter parameter_target = new PParameter("target", "org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvedElement", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/common/6.0.0", "CapabilityRealizationInvolvedElement")), PParameterDirection.INOUT);
+    private final PParameter parameter_target = new PParameter("target",
+        "org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvedElement",
+        new EClassTransitiveInstancesKey(
+            (EClass) getClassifierLiteralSafe("http://www.polarsys.org/capella/core/common/7.0.0",
+                "CapabilityRealizationInvolvedElement")),
+        PParameterDirection.INOUT);
     
     private final List<PParameter> parameters = Arrays.asList(parameter_self, parameter_target);
     
@@ -703,17 +716,25 @@ public final class CapabilityRealizationInvolvement__involvedCapabilityRealizati
           PBody body = new PBody(this);
           PVariable var_self = body.getOrCreateVariableByName("self");
           PVariable var_target = body.getOrCreateVariableByName("target");
-          new TypeConstraint(body, Tuples.flatTupleOf(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/common/6.0.0", "CapabilityRealizationInvolvement")));
-          new TypeConstraint(body, Tuples.flatTupleOf(var_target), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/common/6.0.0", "CapabilityRealizationInvolvedElement")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_self), new EClassTransitiveInstancesKey(
+              (EClass) getClassifierLiteral("http://www.polarsys.org/capella/core/common/7.0.0",
+                  "CapabilityRealizationInvolvement")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_target), new EClassTransitiveInstancesKey(
+              (EClass) getClassifierLiteral("http://www.polarsys.org/capella/core/common/7.0.0",
+                  "CapabilityRealizationInvolvedElement")));
           body.setSymbolicParameters(Arrays.<ExportedParameter>asList(
              new ExportedParameter(body, var_self, parameter_self),
              new ExportedParameter(body, var_target, parameter_target)
           ));
           // 	CapabilityRealizationInvolvement.involved(self, target)
-          new TypeConstraint(body, Tuples.flatTupleOf(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/common/6.0.0", "CapabilityRealizationInvolvement")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_self), new EClassTransitiveInstancesKey(
+              (EClass) getClassifierLiteral("http://www.polarsys.org/capella/core/common/7.0.0",
+                  "CapabilityRealizationInvolvement")));
           PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
-          new TypeConstraint(body, Tuples.flatTupleOf(var_self, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/core/6.0.0", "Involvement", "involved")));
-          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/core/6.0.0", "InvolvedElement")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_self, var__virtual_0_), new EStructuralFeatureInstancesKey(
+              getFeatureLiteral("http://www.polarsys.org/capella/core/core/7.0.0", "Involvement", "involved")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_0_), new EClassTransitiveInstancesKey(
+              (EClass) getClassifierLiteral("http://www.polarsys.org/capella/core/core/7.0.0", "InvolvedElement")));
           new Equality(body, var__virtual_0_, var_target);
           bodies.add(body);
       }
