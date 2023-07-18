@@ -136,6 +136,8 @@ public class ModelProvider extends AbstractProvider {
         if (model instanceof Project)
         {
           semanticResource = model.eResource();
+          if (semanticResource != null)
+            return semanticResource;
         }
     }
     return semanticResource;

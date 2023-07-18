@@ -15,6 +15,7 @@ package org.polarsys.capella.test.diagram.tools.ju.testsuites.partial;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.polarsys.capella.test.diagram.tool.ju.library.LibraryDragAndDropTest;
 import org.polarsys.capella.test.diagram.tools.ju.id.CreateConstraint;
 import org.polarsys.capella.test.diagram.tools.ju.id.CreateExchangeItemElement;
 import org.polarsys.capella.test.diagram.tools.ju.id.CreateExchangeItemGroup;
@@ -53,6 +54,8 @@ public class IDDiagramToolsTestSuite extends BasicTestSuite {
 
     tests.add(new CreateConstraint(new OA_IDProjectSettings()));
     tests.add(new CreateConstraint(new SA_IDProjectSettings()));
+
+    tests.add(new LibraryDragAndDropTest());
 
     return tests;
   }
