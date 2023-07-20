@@ -56,14 +56,12 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ../../org.polarsys.capella.core.data.gen/model/CapellaCore.ecore#//CapellaElement/appliedPropertyValueGroups"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ../../org.polarsys.capella.core.data.gen/model/CapellaCore.ecore#//CapellaElement/status"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ../../org.polarsys.capella.core.data.gen/model/CapellaCore.ecore#//CapellaElement/features"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ../../org.polarsys.capella.core.data.gen/model/CapellaCore.ecore#//CapellaElement/appliedRequirements"/>
     </genClasses>
     <genClasses image="false" ecoreClass="../../org.polarsys.capella.core.data.gen/model/CapellaCore.ecore#//NamedElement"/>
     <genClasses image="false" ecoreClass="../../org.polarsys.capella.core.data.gen/model/CapellaCore.ecore#//Relationship"/>
     <genClasses image="false" ecoreClass="../../org.polarsys.capella.core.data.gen/model/CapellaCore.ecore#//Namespace">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../../org.polarsys.capella.core.data.gen/model/CapellaCore.ecore#//Namespace/ownedTraces"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ../../org.polarsys.capella.core.data.gen/model/CapellaCore.ecore#//Namespace/containedGenericTraces"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ../../org.polarsys.capella.core.data.gen/model/CapellaCore.ecore#//Namespace/containedRequirementsTraces"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../../org.polarsys.capella.core.data.gen/model/CapellaCore.ecore#//Namespace/namingRules"/>
     </genClasses>
     <genClasses image="false" ecoreClass="../../org.polarsys.capella.core.data.gen/model/CapellaCore.ecore#//NamedRelationship">
@@ -711,36 +709,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../../org.polarsys.capella.core.data.gen/model/SharedModel.ecore#//GenericPkg/subGenericPkgs"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../../org.polarsys.capella.core.data.gen/model/SharedModel.ecore#//GenericPkg/capellaElements"/>
     </genClasses>
-  </genPackages>
-  <genPackages prefix="Requirement" basePackage="org.polarsys.capella.core.data" resource="XMI"
-      disposableProviderFactory="true" extensibleProviderFactory="true" childCreationExtenders="true"
-      ecorePackage="../../org.polarsys.capella.core.data.gen/model/Requirement.ecore#/">
-    <genClasses ecoreClass="../../org.polarsys.capella.core.data.gen/model/Requirement.ecore#//RequirementsPkg">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.polarsys.capella.core.data.gen/model/Requirement.ecore#//RequirementsPkg/additionalInformation"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.polarsys.capella.core.data.gen/model/Requirement.ecore#//RequirementsPkg/level"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../../org.polarsys.capella.core.data.gen/model/Requirement.ecore#//RequirementsPkg/ownedRequirements"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../../org.polarsys.capella.core.data.gen/model/Requirement.ecore#//RequirementsPkg/ownedRequirementPkgs"/>
-    </genClasses>
-    <genClasses ecoreClass="../../org.polarsys.capella.core.data.gen/model/Requirement.ecore#//RequirementsTrace">
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ../../org.polarsys.capella.core.data.gen/model/Requirement.ecore#//RequirementsTrace/source"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ../../org.polarsys.capella.core.data.gen/model/Requirement.ecore#//RequirementsTrace/target"/>
-    </genClasses>
-    <genClasses image="false" ecoreClass="../../org.polarsys.capella.core.data.gen/model/Requirement.ecore#//Requirement">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.polarsys.capella.core.data.gen/model/Requirement.ecore#//Requirement/isObsolete"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.polarsys.capella.core.data.gen/model/Requirement.ecore#//Requirement/requirementId"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.polarsys.capella.core.data.gen/model/Requirement.ecore#//Requirement/additionalInformation"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.polarsys.capella.core.data.gen/model/Requirement.ecore#//Requirement/verificationMethod"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.polarsys.capella.core.data.gen/model/Requirement.ecore#//Requirement/verificationPhase"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.polarsys.capella.core.data.gen/model/Requirement.ecore#//Requirement/implementationVersion"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.polarsys.capella.core.data.gen/model/Requirement.ecore#//Requirement/feature"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ../../org.polarsys.capella.core.data.gen/model/Requirement.ecore#//Requirement/relatedCapellaElements"/>
-    </genClasses>
-    <genClasses ecoreClass="../../org.polarsys.capella.core.data.gen/model/Requirement.ecore#//SystemFunctionalInterfaceRequirement"/>
-    <genClasses ecoreClass="../../org.polarsys.capella.core.data.gen/model/Requirement.ecore#//SystemFunctionalRequirement"/>
-    <genClasses ecoreClass="../../org.polarsys.capella.core.data.gen/model/Requirement.ecore#//SystemNonFunctionalInterfaceRequirement"/>
-    <genClasses ecoreClass="../../org.polarsys.capella.core.data.gen/model/Requirement.ecore#//SystemNonFunctionalRequirement"/>
-    <genClasses ecoreClass="../../org.polarsys.capella.core.data.gen/model/Requirement.ecore#//SystemUserRequirement"/>
-  </genPackages>
+  </genPackages>  
   <genPackages prefix="Capellacommon" basePackage="org.polarsys.capella.core.data"
       resource="XMI" disposableProviderFactory="true" extensibleProviderFactory="true"
       childCreationExtenders="true" ecorePackage="../../org.polarsys.capella.core.data.gen/model/CapellaCommon.ecore#/">
@@ -1286,7 +1255,6 @@
       ecorePackage="../../org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#/">
     <genClasses image="false" ecoreClass="../../org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#//BlockArchitecturePkg"/>
     <genClasses image="false" ecoreClass="../../org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#//BlockArchitecture">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../../org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#//BlockArchitecture/ownedRequirementPkgs"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../../org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#//BlockArchitecture/ownedAbstractCapabilityPkg"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../../org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#//BlockArchitecture/ownedInterfacePkg"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../../org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#//BlockArchitecture/ownedDataPkg"/>

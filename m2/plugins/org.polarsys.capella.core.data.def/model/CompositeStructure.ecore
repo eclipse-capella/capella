@@ -58,28 +58,6 @@
       <details key="explanation" value="uml::Package"/>
       <details key="constraints" value="none"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedRequirementPkgs" upperBound="-1"
-        eType="ecore:EClass Requirement.ecore#//RequirementsPkg" containment="true">
-      <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
-        <details key="featureName" value="packagedElement"/>
-        <details key="featureOwner" value="Package"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
-        <details key="Label" value="ownedRequirementPkgs"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="Link to packages that contain requirements&#xD;&#xA;[source: Capella study]"/>
-        <details key="constraints" value="none"/>
-        <details key="comment/notes" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="uml::Package::nestedPackage#uml::Package::packagedElement"/>
-        <details key="explanation" value="none"/>
-        <details key="constraints" value="uml::Package::nestedPackage elements on which RequirementsPkg stereotype or any stereotype that inherits from it is applied&#xD;&#xA;Order must be computed"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedAbstractCapabilityPkg"
         eType="ecore:EClass CapellaCommon.ecore#//AbstractCapabilityPkg" containment="true">
       <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">

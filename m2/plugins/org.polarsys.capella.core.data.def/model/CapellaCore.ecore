@@ -180,20 +180,6 @@
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="appliedRequirements" upperBound="-1"
-        eType="ecore:EClass Requirement.ecore#//Requirement" changeable="false" volatile="true"
-        transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived">
-        <details key="viatra.variant" value="patternbody"/>
-        <details key="viatra.expression" value="RequirementsTrace.sourceElement(rt, self);&#xD;&#xA;RequirementsTrace.targetElement(rt, target);"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
-        <details key="explanation" value="Derived and transient"/>
-        <details key="constraints" value="none"/>
-      </eAnnotations>
-    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NamedElement" abstract="true" eSuperTypes="../../org.polarsys.capella.common.data.def/model/ModellingCore.ecore#//AbstractNamedElement #//CapellaElement">
     <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
@@ -276,27 +262,6 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="containedGenericTraces"
         upperBound="-1" eType="ecore:EClass CapellaCommon.ecore#//GenericTrace" changeable="false"
         volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived">
-        <details key="viatra.variant" value="alias"/>
-        <details key="viatra.expression" value="ownedTraces"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="Link to the set of typed elements which eAttribute type value is the owner type.&#xD;&#xA;[source:Capella study]"/>
-        <details key="constraints" value="None"/>
-        <details key="comment/notes" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
-        <details key="explanation" value="Derived and transient"/>
-        <details key="constraints" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/semantic">
-        <details key="feature" value="ownedTraces"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="containedRequirementsTraces"
-        upperBound="-1" eType="ecore:EClass Requirement.ecore#//RequirementsTrace"
-        changeable="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://www.polarsys.org/capella/derived">
         <details key="viatra.variant" value="alias"/>
         <details key="viatra.expression" value="ownedTraces"/>
