@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2023 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -14,6 +14,7 @@ package org.polarsys.capella.core.ui.properties.fields;
 
 import java.util.List;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
@@ -61,7 +62,12 @@ public abstract class AbstractSemanticButtonGroup extends AbstractSemanticField 
    */
   protected void enableButton(Button button, boolean enabled) {
     if (null != button && !button.isDisposed()) {
-      button.setEnabled(enabled);
+		button.setEnabled(enabled);
+		if (enabled && semanticElement != null && button.getData() instanceof EAttribute
+				&& semanticElement.eGet((EAttribute) button.getData()) instanceof Boolean) {
+			// Refresh widget from semantic element in case of remote update
+			button.setSelection((Boolean) semanticElement.eGet(((EAttribute) button.getData())));
+		}
     }
   }
 

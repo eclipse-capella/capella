@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2023 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -21,6 +21,7 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.core.properties.Messages;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
@@ -145,5 +146,9 @@ public class BasicElementGroup extends AbstractSemanticField {
   public void setEnabled(boolean enabled) {
     LockHelper.getInstance().enable(nameTextField, enabled);
     LockHelper.getInstance().enable(summaryTextField, enabled);
+	if (enabled && semanticElement instanceof CapellaElement) {
+		// Refresh widgets from semantic element in case of remote update
+		loadData(semanticElement);
+	}
   }
 }
