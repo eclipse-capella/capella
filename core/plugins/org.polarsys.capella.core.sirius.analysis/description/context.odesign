@@ -802,7 +802,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D Missions From Project Explorer" precondition="aql:element.oclIsKindOf(ctx::Mission) and element.canBeDropped(newViewContainer)and not element.isLibraryElementOf(newViewContainer)" forceRefresh="true" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@nodeMappings[name='MissionNode2']" dragSource="PROJECT_EXPLORER">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D Missions From Project Explorer" precondition="aql:element.oclIsKindOf(ctx::Mission) and element.canBeDropped(newViewContainer) and not element.isLibraryElementOf(newViewContainer)" forceRefresh="true" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@nodeMappings[name='MissionNode2']" dragSource="PROJECT_EXPLORER">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -4524,7 +4524,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D Actors From Project Explorer" precondition="aql:element.getComponentType().oclIsKindOf(cs::Component) and element.getComponentType().isActor() and element.canBeDropped(newViewContainer)and not element.isLibraryElementOf(newViewContainer)" forceRefresh="true" dragSource="PROJECT_EXPLORER">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D Actors From Project Explorer" precondition="aql:element.getComponentType().oclIsKindOf(cs::Component) and element.getComponentType().isActor() and element.canBeDropped(newViewContainer) and not element.isLibraryElementOf(newViewContainer)" forceRefresh="true" dragSource="PROJECT_EXPLORER">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
