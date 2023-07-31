@@ -13399,7 +13399,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="Component from Model" precondition="aql:element.isValidIDDndComponentFromModel(newViewContainer)" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@containerMappings[name='CRB%20Component']" dragSource="PROJECT_EXPLORER">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="Component from Model" precondition="aql:element.isValidIDDndComponentFromModel(newViewContainer) and not element.isLibraryElementOf(newViewContainer)" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@containerMappings[name='CRB%20Component']" dragSource="PROJECT_EXPLORER">
             <oldContainer name="oldContainer"/>
             <newContainer name="newContainer"/>
             <element name="element"/>
@@ -13408,7 +13408,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:element.dndIDComponentFromModel(newViewContainer)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D Capabilities From Project Explorer" precondition="aql:element.oclIsKindOf(la::CapabilityRealization) and element.canBeDropped(newViewContainer)" forceRefresh="true" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@nodeMappings[name='CRB%20CapabilityRealization']" dragSource="PROJECT_EXPLORER">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D Capabilities From Project Explorer" precondition="aql:element.oclIsKindOf(la::CapabilityRealization) and element.canBeDropped(newViewContainer) and not element.isLibraryElementOf(newViewContainer)" forceRefresh="true" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@nodeMappings[name='CRB%20CapabilityRealization']" dragSource="PROJECT_EXPLORER">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>

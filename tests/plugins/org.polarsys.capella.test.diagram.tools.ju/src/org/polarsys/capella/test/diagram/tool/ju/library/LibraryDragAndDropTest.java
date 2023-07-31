@@ -47,7 +47,8 @@ public class LibraryDragAndDropTest extends AbstractDiagramTestCase {
   private String MCB_DIAGRAM = "[MCB] Capabilities";
   private String LDFB_DIAGRAM = "[LDFB] Root Logical Function";
   private String LAB_DIAGRAM = "[LAB] Structure";
-
+  private String CRB_DIAGRAM = "[CRB] Capabilities";
+  
   // Library1 elements
   private String P_FUNCTION = "bac9b02d-04de-4c22-afdb-b1c92d094dc2";
   private String P_COMPONENT = "1911635d-088e-4b0f-a551-d157bfde80f0";
@@ -73,6 +74,7 @@ public class LibraryDragAndDropTest extends AbstractDiagramTestCase {
   private String ENUM = "4662bcde-491f-48b3-8e80-8b700a03a4fa";
   private String INTERFACE_PKG = "dfa63618-66e2-4ed0-9ea2-684364f6089c";
   private String UNIT = "d4a25f54-b45b-4ec1-92fb-7bcf7f2c5ad0";
+  private String L_CAPABILITY = "3604b6ab-d92e-4dc5-a4c9-249a305bcba9";
   
   // DndTestModel elements
   private String MODEL_P_COMPONENT = "77493fc9-0c6a-45bf-9dd0-e77896eaf924";
@@ -208,20 +210,28 @@ public class LibraryDragAndDropTest extends AbstractDiagramTestCase {
     diagramContext = new OpenDiagramStep(context, LDFB_DIAGRAM).run();
     dragAndDropShouldFail(libraryContext, diagramContext, L_FUNCTION, diagramContext.getDiagramId(),
         IDNDToolNameConstants.TOOL_LDFB_DND_FUNCTION_FROM_EXPLORER);
+    
     // LAB
     diagramContext = new OpenDiagramStep(context, LAB_DIAGRAM).run();
     dragAndDropShouldFail(libraryContext, diagramContext, L_COMPONENT, diagramContext.getDiagramId(),
         IDNDToolNameConstants.TOOL_LAB_DND_COMPONENTS_FROM_EXPLORER);
-
     droppedElementSemantic = context.getSemanticElement(MODEL_L_COMPONENT);
     decorator = diagramContext.getView(droppedElementSemantic);
     dragAndDropShouldFail(libraryContext, diagramContext, L_FUNCTION, decorator.getUid(),
         IDNDToolNameConstants.TOOL_LAB_DND_FUNCTION_ALLOCATION_FROM_EXPLORER);
     
+    // CRB
+    diagramContext = new OpenDiagramStep(context, CRB_DIAGRAM).run();
+    dragAndDropShouldFail(libraryContext, diagramContext, L_COMPONENT, diagramContext.getDiagramId(),
+        IDNDToolNameConstants.TOOL_CRB_DND_COMPONENT_FROM_EXPLORER);
+    dragAndDropShouldFail(libraryContext, diagramContext, L_CAPABILITY, diagramContext.getDiagramId(),
+		        IDNDToolNameConstants.TOOL_CRB_DND_CAPABILITIES_FROM_EXPLORER);
+    
     // PDFB
     diagramContext = new OpenDiagramStep(context, PDFB_DIAGRAM).run();
     dragAndDropShouldFail(libraryContext, diagramContext, P_FUNCTION, diagramContext.getDiagramId(),
         IDNDToolNameConstants.TOOL_PDFB_DND_FUNCTION_FROM_EXPLORER);
+    
     // PAB
     diagramContext = new OpenDiagramStep(context, PAB_DIAGRAM).run();
     dragAndDropShouldFail(libraryContext, diagramContext, P_COMPONENT, diagramContext.getDiagramId(),
