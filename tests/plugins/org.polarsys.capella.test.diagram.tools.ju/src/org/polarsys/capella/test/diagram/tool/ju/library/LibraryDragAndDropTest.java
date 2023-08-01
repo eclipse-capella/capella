@@ -80,23 +80,30 @@ public class LibraryDragAndDropTest extends AbstractDiagramTestCase {
   private String MODEL_P_COMPONENT = "77493fc9-0c6a-45bf-9dd0-e77896eaf924";
   private String MODEL_L_COMPONENT = "1fc85f11-c350-4a5f-8043-3cd4f0fd7ec9";
   private String MODEL_S_COMPONENT = "c5e23053-7c66-4413-9ee8-d82de1b145bb";
-
+  
+  private String LIB2_SYSTEMFUNCTION_1 = "4f840640-726f-4079-b03d-5dfba733ffb3"; //$NON-NLS-1$
+  
   @Override
   public List<String> getRequiredTestModels() {
     List<String> requiredTestModels = new ArrayList<String>();
     requiredTestModels.add(getRequiredTestModel());
     requiredTestModels.add(getRequiredTestLibrary());
+    requiredTestModels.add(getRequiredTestLibrary2());
 
     return requiredTestModels;
   }
 
   @Override
   protected String getRequiredTestModel() {
-		return "DndTestModel";
+	return "DndTestModel";
   }
 
   protected String getRequiredTestLibrary() {
     return "Library1";
+  }
+
+  protected String getRequiredTestLibrary2() {
+    return "Library2";
   }
 
   @Override
@@ -104,9 +111,11 @@ public class LibraryDragAndDropTest extends AbstractDiagramTestCase {
 
     Session session = getSession(getRequiredTestModel());
     Session librarySession = getSession(getRequiredTestLibrary());
+    Session library2Session = getSession(getRequiredTestLibrary2());
 
     SessionContext context = new SessionContext(session);
     SessionContext libraryContext = new SessionContext(librarySession);
+    SessionContext libraryContext2 = new SessionContext(library2Session);
     
     //OAIB
     DiagramContext diagramContext = new OpenDiagramStep(context, OAIB_DIAGRAM).run();
@@ -161,13 +170,16 @@ public class LibraryDragAndDropTest extends AbstractDiagramTestCase {
     diagramContext = new OpenDiagramStep(context, SAB_DIAGRAM).run();
     dragAndDropShouldFail(libraryContext, diagramContext, S_ACTOR, diagramContext.getDiagramId(),
         IDNDToolNameConstants.TOOL_SAB_DND_ACTORS_FROM_EXPLORER);
-
+     
 
     EObject droppedElementSemantic = context.getSemanticElement(MODEL_S_COMPONENT);
     DSemanticDecorator decorator = diagramContext.getView(droppedElementSemantic);
 
     dragAndDropShouldFail(libraryContext, diagramContext, S_FUNCTION, decorator.getUid(),
         IDNDToolNameConstants.TOOL_SAB_DND_FUNCTION_ALLOCATION_FROM_EXPLORER);
+    dragAndDropShouldFail(libraryContext2, diagramContext, LIB2_SYSTEMFUNCTION_1, decorator.getUid(),
+	  IDNDToolNameConstants.TOOL_SAB_DND_FUNCTION_ALLOCATION_FROM_EXPLORER);
+    
     diagramContext.close();
 
     // MCB
