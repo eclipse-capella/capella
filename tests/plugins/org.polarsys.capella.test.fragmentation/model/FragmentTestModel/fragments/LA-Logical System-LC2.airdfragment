@@ -4,8 +4,6 @@
     <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="LA-Logical%20Functions-RLF-OA2-SysOA2_1.airdfragment#_0VgkACZxEeGJJIltX6tx3w"/>
     <semanticResources>LA-Logical%20System-LC2.capellafragment</semanticResources>
     <semanticResources>../sysmodel.capella</semanticResources>
-    <semanticResources>LA-Logical%20Functions-RLF-OA2.capellafragment</semanticResources>
-    <semanticResources>LA-Logical%20Functions-RLF-OA2-SysOA2_1-LogicalFunctionPkg%201.capellafragment</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_i0yfQiZxEeGJJIltX6tx3w">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_D7FG4m9NEeaS6s5ghsv39g" name="[CII] LC2 - Contextual Component Internal Interfaces" repPath="#_W7WmYMS5EeCI_NCOxdDk1w" changeId="de15dc0d-4bcf-4f87-85cc-19f44222ba35">

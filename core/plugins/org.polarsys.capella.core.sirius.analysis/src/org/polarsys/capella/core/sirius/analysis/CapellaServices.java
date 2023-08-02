@@ -3012,6 +3012,6 @@ public class CapellaServices {
     IModel targetModel = LibraryManager.INSTANCE.getModel(target);
     if (srcModel == null || targetModel == null)
       return false;
-    return targetModel != srcModel;
+    return !targetModel.equals(srcModel);
   }
 }

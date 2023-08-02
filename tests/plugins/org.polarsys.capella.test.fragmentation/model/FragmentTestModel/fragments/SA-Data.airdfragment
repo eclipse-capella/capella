@@ -4,8 +4,6 @@
     <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="LA-Logical%20Functions-RLF-OA2-SysOA2_1.airdfragment#_0VgkACZxEeGJJIltX6tx3w"/>
     <semanticResources>SA-Data.capellafragment</semanticResources>
     <semanticResources>../sysmodel.capella</semanticResources>
-    <semanticResources>LA-Logical%20Functions-RLF-OA2.capellafragment</semanticResources>
-    <semanticResources>LA-Logical%20Functions-RLF-OA2-SysOA2_1-LogicalFunctionPkg%201.capellafragment</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_XxLn4iZxEeGJJIltX6tx3w">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_D6sFUG9NEeaS6s5ghsv39g" name="[PD] Data - Package Dependencies" repPath="#_0bx5gMNoEeCmUclACW4KLw" changeId="c37f0eb4-cdbd-4233-a76d-ebda9a250802">

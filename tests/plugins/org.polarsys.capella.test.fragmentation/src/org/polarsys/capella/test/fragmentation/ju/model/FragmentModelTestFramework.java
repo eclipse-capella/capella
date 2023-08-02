@@ -89,6 +89,80 @@ public abstract class FragmentModelTestFramework extends NonDirtyTestCase {
   protected String PA_PhysicalFunctionsRPFID = "250d520b-e135-4089-97fc-83d502dd6d44";
   protected String LA_LogicalSystemID = "e6f8a038-0fc9-48b7-9910-2f665c9fad74";
 
+
+  public static String airdName = "sysmodel.aird";
+  public static String m2Name = "sysmodel.capella";
+  
+  public static String RSFairdName = "SA-System Functions-RSF.airdfragment";
+  public static String RSFm2Name = "SA-System Functions-RSF.capellafragment";
+  public static String SF1airdName = "SA-System Functions-RSF-SF1.airdfragment";
+  public static String SF1m2Name = "SA-System Functions-RSF-SF1.capellafragment";
+  public static String LAairdfragment = "LA.airdfragment";
+  public static String LAfragment = "LA.capellafragment";
+  public static String RLF_OA2airdfragment = "LA-Logical Functions-RLF-OA2.airdfragment";
+  public static String RLF_OA2fragment = "LA-Logical Functions-RLF-OA2.capellafragment";
+  public static String RLF_OA2_SysOA2_1airdfragment = "LA-Logical Functions-RLF-OA2-SysOA2_1.airdfragment";
+  public static String RLF_OA2_SysOA2_1fragment = "LA-Logical Functions-RLF-OA2-SysOA2_1.capellafragment";
+  public static String RLF_OA2_SysOA2_1_LogicalFunctionPkg1airdfragment = "LA-Logical Functions-RLF-OA2-SysOA2_1-LogicalFunctionPkg 1.airdfragment";
+  public static String RLF_OA2_SysOA2_1_LogicalFunctionPkg1fragment = "LA-Logical Functions-RLF-OA2-SysOA2_1-LogicalFunctionPkg 1.capellafragment";
+
+  public static String LC2airdfragment = "LA-Logical System-LC2.airdfragment";
+  public static String LC2fragment = "LA-Logical System-LC2.capellafragment";
+
+  public static String LC2_Capabilitiesairdfragment = "LA-Structure-Logical System-LC2-Capabilities.airdfragment";
+  public static String LC2_Capabilitiesfragment = "LA-Structure-Logical System-LC2-Capabilities.capellafragment";
+  public static String LC3airdfragment = "LA-Structure-Logical System-LC3.airdfragment";
+  public static String LC3fragment = "LA-Structure-Logical System-LC3.capellafragment";
+  public static String LC3_3airdfragment = "LA-Structure-Logical System-LC3-LC3_3.airdfragment";
+  public static String LC3_3fragment = "LA-Structure-Logical System-LC3-LC3_3.capellafragment";
+  public static String LC3_LC3_1airdfragment = "LA-Structure-Logical System-LC3-LC3_1.airdfragment";
+  public static String LC3_LC3_1fragment = "LA-Structure-Logical System-LC3-LC3_1.capellafragment";
+  public static String LA_LogicalSystemairdfragment = "LA-Structure-Logical System.airdfragment";
+  public static String LA_LogicalSystemfragment = "LA-Structure-Logical System.capellafragment";
+  public static String UC1FromLogicalSystemairdfragment = "LA-Structure-Logical System-LC2-Capabilities-UC1 From Logical System.airdfragment";
+  public static String UC1FromLogicalSystemfragment = "LA-Structure-Logical System-LC2-Capabilities-UC1 From Logical System.capellafragment";
+
+  public static String LF2_3airdfragment = "LA-Logical Functions-RLF-OA2-SysOA2_1-LogicalFunctionPkg 1-LF2_3.airdfragment";
+  public static String LF2_3fragment = "LA-Logical Functions-RLF-OA2-SysOA2_1-LogicalFunctionPkg 1-LF2_3.capellafragment";
+  public static String PAairdfragment = "PA.airdfragment";
+  public static String PAfragment = "PA.capellafragment";
+  public static String PhysicalSystemairdfragment = "PA-Physical System.airdfragment";
+  public static String PhysicalSystemfragment = "PA-Physical System.capellafragment";
+  public static String OC1airdfragment = "SA-Capabilities-OC1.airdfragment";
+  public static String OC1fragment = "SA-Capabilities-OC1.capellafragment";
+  public static String Dataairdfragment = "SA-Data.airdfragment";
+  public static String Datafragment = "SA-Data.capellafragment";
+  public static String PA_PhysicalFunctionsRPFairdfragment = "PA-Physical Functions-RPF.airdfragment";
+  public static String PA_PhysicalFunctionsRPFfragment = "PA-Physical Functions-RPF.capellafragment";
+  public static String PA_PhysicalSystemairdfragment = "PA-Physical System.airdfragment";
+  public static String PA_PhysicalSystemfragment = "PA-Physical System.capellafragment";
+  public static String fragmentsFolder = "fragments";
+  public static String projectNameTC4 = "TC4prod00086565";
+  public static String prod00086565Aird = "prod00086565.aird";
+  public static String prod00086565Modeller = "prod00086565.capella";
+  public static String EPBSAFragment = "EPBSA.airdfragment";
+  public static String OAFragment = "OA.airdfragment";
+  public static String SAFragment = "SA.airdfragment";
+  public static String OA_1342a = "1342a - OA";
+  public static String OA_1342a_ID = "2a9ced3c-438e-4305-a9e9-f3886a1ece9b";
+  public static String SA_31673 = "31673 - SA";
+  public static String SA_31673_ID = "c56c1489-4600-4e90-99f7-5053c272d4ba";
+  public static String LA_b1f4f = "b1f4f - LA";
+  public static String LA_b1f4f_ID = "09f3015c-5d07-40a6-8539-731f7f66db39";
+  public static String PA_47af3 = "47af3 - PA";
+  public static String PA_47af3_ID = "2528a220-37cb-4a9c-a71a-3c6091da2408";
+  public static String EPBS_dc124 = "dc124 - EPBS";
+  public static String EPBS_dc124_ID = "d7bac6ec-ab2f-46a7-926e-9dc97b9d5cc7";
+  public static String Data_Pkg_ff1eb = "ff1eb - Data Pkg";
+  public static String Data_Pkg_ff1eb_ID = "e76e606f-8d44-4018-848d-1555deb87e8d";
+  public static String PF_9df8b = "9df8b - Physical Function";
+  public static String PF_9df8b_ID = "65acd2cb-3deb-47da-bf27-f923d83cc256";
+  public static String SM_5aa5b = "5aa5b - State Machine";
+  public static String SM_5aa5b_ID = "989a6d8f-eda4-4bb3-9d9e-7ca0832a7d82";
+  public static String Fragment_ff1eb = "47af3-ff1eb";
+  public static String Fragment_9df8b = "47af3-a425e-b7a5f-98533-49897-9df8b";
+  public static String Fragment_5aa5b = "47af3-ad244-5aa5b";
+  
   protected String _currentProjectName;
 
   protected String LA_LDFB_OA2 = "[LDFB] OA2 - Logical Data Flow Blank";
@@ -130,8 +204,8 @@ public abstract class FragmentModelTestFramework extends NonDirtyTestCase {
 
     mapSemanticObjects = new HashMap<String, EObject>();
 
-    _airdFile = FileHelper.getPlatformFile(getCurrentProjectName() + SLASH_CHARACTER + FragmentationMessages.airdName);
-    _m2File = FileHelper.getPlatformFile(getCurrentProjectName() + SLASH_CHARACTER + FragmentationMessages.m2Name);
+    _airdFile = FileHelper.getPlatformFile(getCurrentProjectName() + SLASH_CHARACTER + airdName);
+    _m2File = FileHelper.getPlatformFile(getCurrentProjectName() + SLASH_CHARACTER + m2Name);
   }
 
   @Override
