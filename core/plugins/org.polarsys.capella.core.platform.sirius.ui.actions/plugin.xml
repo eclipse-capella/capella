@@ -366,6 +366,22 @@
             </with>
          </or>
       </definition>
+      <definition
+            id="org.polarsys.capella.core.platform.sirius.ui.actions.accelerator.ConcretizeFunctionAllocation.expression">
+         <or>
+            <with
+                  variable="selection">
+               <iterate
+                     ifEmpty="false">
+                  <test
+                        forcePluginActivation="true"
+                        property="org.polarsys.capella.core.platform.sirius.ui.actionMode"
+                        value="concretizeFunctionAllocation">
+                  </test>
+               </iterate>
+            </with>
+         </or>
+      </definition>
       
       <definition
             id="org.polarsys.capella.core.platform.sirius.ui.actions.accelerator.PropagateExchangeItemAllocations.expression">
@@ -487,6 +503,15 @@
                                  definitionId="org.polarsys.capella.core.platform.sirius.ui.actions.accelerator.SynchronizeExchangeItemAllocations.expression">
                            </reference>
                      </visibleWhen>
+               </command>
+               <command
+                     commandId="org.polarsys.capella.core.platform.sirius.ui.actions.accelerator.ConcretizeFunctionAllocation">
+                  <visibleWhen
+                        checkEnabled="false">
+                     <reference
+                           definitionId="org.polarsys.capella.core.platform.sirius.ui.actions.accelerator.ConcretizeFunctionAllocation.expression">
+                     </reference>
+                  </visibleWhen>
                </command>
                
                
@@ -703,6 +728,12 @@
                id="org.polarsys.capella.core.platform.sirius.ui.actions.accelerator.PropagateExchangeItemAllocations"
                name="%PropagateEIOnPorts">
       </command>
+      <command
+            categoryId="org.polarsys.capella.core.accelerators"
+            defaultHandler="org.polarsys.capella.core.platform.sirius.ui.handlers.ConcretizeFunctionAllocationHandler"
+            id="org.polarsys.capella.core.platform.sirius.ui.actions.accelerator.ConcretizeFunctionAllocation"
+            name="Concretize Function Allocation">
+      </command>
       
       <command
          	   categoryId="org.polarsys.capella.core.accelerators"
@@ -764,6 +795,10 @@
       </image>
       <image
             commandId="org.polarsys.capella.core.platform.sirius.ui.actions.accelerator.SynchronizeExchangeItemAllocations"
+            icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif">
+      </image>
+      <image
+            commandId="org.polarsys.capella.core.platform.sirius.ui.actions.accelerator.ConcretizeFunctionAllocation"
             icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif">
       </image>
       
