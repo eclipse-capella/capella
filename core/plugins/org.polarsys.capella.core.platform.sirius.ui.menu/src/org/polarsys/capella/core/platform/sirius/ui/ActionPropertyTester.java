@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2023 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -13,16 +13,23 @@
 package org.polarsys.capella.core.platform.sirius.ui;
 
 import org.eclipse.core.expressions.PropertyTester;
+import org.eclipse.emf.common.util.EList;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.ui.actions.ModelAdaptation;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
+import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
+import org.polarsys.capella.core.data.fa.AbstractFunctionalBlock;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
+import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
 import org.polarsys.capella.core.data.information.datavalue.LiteralNumericValue;
+import org.polarsys.capella.core.data.la.LogicalFunction;
+import org.polarsys.capella.core.data.pa.PhysicalFunction;
+import org.polarsys.capella.core.model.helpers.AbstractFunctionExt;
 import org.polarsys.capella.core.model.utils.CapellaLayerCheckingExt;
 
 /**
@@ -34,6 +41,7 @@ public class ActionPropertyTester extends PropertyTester {
    * @see org.eclipse.core.expressions.IPropertyTester#test(java.lang.Object, java.lang.String, java.lang.Object[],
    *      java.lang.Object)
    */
+  @Override
   public boolean test(Object object_p, String propertyName_p, Object[] params_p, Object testedValue_p) {
     boolean result = false;
     if (propertyName_p.equals("actionMode") || propertyName_p.equals("graphicalActionMode")) { //$NON-NLS-1$ //$NON-NLS-2$
@@ -53,6 +61,9 @@ public class ActionPropertyTester extends PropertyTester {
         }
         if ("propagationPortRealizationsFromCE".equals(actionName)) { //$NON-NLS-1$
           return isPropagationPortRealizationsFromCE(element);
+        }
+        if ("concretizeFunctionAllocation".equals(actionName)) { //$NON-NLS-1$
+          return isConcretizableFunctionAllocation(element);
         }
         if ("convertClassPrimitive".equals(actionName)) { //$NON-NLS-1$
           return isConvertPrimitive(element);
@@ -141,6 +152,19 @@ public class ActionPropertyTester extends PropertyTester {
     result = (result && !CapellaLayerCheckingExt.isAOrInOperationalAnalysisLayer((CapellaElement) element_p));
 
     return result;
+  }
+
+  private boolean isConcretizableFunctionAllocation(ModelElement element) {
+    if ((element instanceof LogicalFunction) || (element instanceof SystemFunction) || (element instanceof PhysicalFunction)) {
+      AbstractFunction motherFunction = (AbstractFunction) element;
+      if (!FunctionExt.isLeaf(motherFunction)) {
+        EList<AbstractFunctionalBlock> blockAllocations = motherFunction.getAllocationBlocks();
+        if ((null == blockAllocations) || blockAllocations.isEmpty()) {
+          return AbstractFunctionExt.getMotherFunctionAllocation(motherFunction).size() == 1;
+        }
+      }
+    }
+    return false;
   }
 
   /**
