@@ -25,7 +25,6 @@ import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateContainerTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveTool;
-import org.polarsys.capella.test.fragmentation.ju.messages.FragmentationMessages;
 import org.polarsys.capella.test.fragmentation.ju.model.FragmentModelTestFramework;
 import org.polarsys.capella.test.fragmentation.ju.utils.AbstractToolFragmentModifTest;
 import org.polarsys.capella.test.fragmentation.ju.utils.NonAbusiveFragmentTest;
@@ -113,20 +112,20 @@ public class NonAbusiveTestCase2 extends FragmentModelTestFramework {
   @Override
   protected void init() {
     super.init();
-    _airdFile = FileHelper.getPlatformFile(getCurrentProjectName() + SLASH_CHARACTER + FragmentationMessages.airdName);
-    _m2File = FileHelper.getPlatformFile(getCurrentProjectName() + SLASH_CHARACTER + FragmentationMessages.m2Name);
+    _airdFile = FileHelper.getPlatformFile(getCurrentProjectName() + SLASH_CHARACTER + airdName);
+    _m2File = FileHelper.getPlatformFile(getCurrentProjectName() + SLASH_CHARACTER + m2Name);
 
     _SF11aird = FileHelper.getPlatformFile(getCurrentProjectName() + ICommonConstants.SLASH_CHARACTER
-        + FragmentationMessages.fragmentsFolder + ICommonConstants.SLASH_CHARACTER + SF11airdName);
+        + fragmentsFolder + ICommonConstants.SLASH_CHARACTER + SF11airdName);
 
     _SF11m2 = FileHelper.getPlatformFile(getCurrentProjectName() + ICommonConstants.SLASH_CHARACTER
-        + FragmentationMessages.fragmentsFolder + ICommonConstants.SLASH_CHARACTER + SF11m2Name);
+        + fragmentsFolder + ICommonConstants.SLASH_CHARACTER + SF11m2Name);
 
     _SF12aird = FileHelper.getPlatformFile(getCurrentProjectName() + ICommonConstants.SLASH_CHARACTER
-        + FragmentationMessages.fragmentsFolder + ICommonConstants.SLASH_CHARACTER + SF12airdName);
+        + fragmentsFolder + ICommonConstants.SLASH_CHARACTER + SF12airdName);
 
     _SF12m2 = FileHelper.getPlatformFile(getCurrentProjectName() + ICommonConstants.SLASH_CHARACTER
-        + FragmentationMessages.fragmentsFolder + ICommonConstants.SLASH_CHARACTER + SF12m2Name);
+        + fragmentsFolder + ICommonConstants.SLASH_CHARACTER + SF12m2Name);
   }
 
 }

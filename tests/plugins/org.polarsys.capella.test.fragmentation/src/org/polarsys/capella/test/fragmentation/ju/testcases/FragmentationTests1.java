@@ -16,7 +16,6 @@ import java.util.ArrayList;
 
 import org.eclipse.emf.ecore.resource.Resource;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
-import org.polarsys.capella.test.fragmentation.ju.messages.FragmentationMessages;
 import org.polarsys.capella.test.fragmentation.ju.model.FragmentModelTestFramework;
 import org.polarsys.capella.test.framework.helpers.EObjectHelper;
 import org.polarsys.capella.test.framework.helpers.TestHelper;
@@ -30,16 +29,16 @@ public class FragmentationTests1 extends FragmentModelTestFramework {
     checkLoadedFragmentsNumber(4);
 
     // check the number of tables and diagrams for each fragment
-    checkFragmentTablesDiagramsNumber(FragmentationMessages.RLF_OA2_SysOA2_1airdfragment, 2);
-    checkFragmentTablesDiagramsNumber(FragmentationMessages.LC2airdfragment, 6);
-    checkFragmentTablesDiagramsNumber(FragmentationMessages.OC1airdfragment, 2);
-    checkFragmentTablesDiagramsNumber(FragmentationMessages.Dataairdfragment, 3);
+    checkFragmentTablesDiagramsNumber(RLF_OA2_SysOA2_1airdfragment, 2);
+    checkFragmentTablesDiagramsNumber(LC2airdfragment, 6);
+    checkFragmentTablesDiagramsNumber(OC1airdfragment, 2);
+    checkFragmentTablesDiagramsNumber(Dataairdfragment, 3);
 
     // // check the number of model elements in semantic model elements for each fragment
-    checkFragmentModelElementsNumber(FragmentationMessages.RLF_OA2_SysOA2_1airdfragment, 26); // 19 + 4 ports
-    checkFragmentModelElementsNumber(FragmentationMessages.LC2airdfragment, 149);
-    checkFragmentModelElementsNumber(FragmentationMessages.OC1airdfragment, 177);
-    checkFragmentModelElementsNumber(FragmentationMessages.Dataairdfragment, 152);
+    checkFragmentModelElementsNumber(RLF_OA2_SysOA2_1airdfragment, 26);
+    checkFragmentModelElementsNumber(LC2airdfragment, 149);
+    checkFragmentModelElementsNumber(OC1airdfragment, 177);
+    checkFragmentModelElementsNumber(Dataairdfragment, 152);
 
     // // retrieve number of diagram elements for each diagram
     retrieveDiagramElementsNumber();
@@ -58,30 +57,29 @@ public class FragmentationTests1 extends FragmentModelTestFramework {
     checkLoadedFragmentsNumber(9); // 5 fragments added
 
     // // check the number of tables and diagrams for each fragment
-    checkFragmentTablesDiagramsNumber(FragmentationMessages.RLF_OA2_SysOA2_1airdfragment, 1);
-    checkFragmentTablesDiagramsNumber(FragmentationMessages.LC2airdfragment, 3);
-    checkFragmentTablesDiagramsNumber(FragmentationMessages.OC1airdfragment, 2);
-    checkFragmentTablesDiagramsNumber(FragmentationMessages.Dataairdfragment, 3);
-    checkFragmentTablesDiagramsNumber(FragmentationMessages.UC1FromLogicalSystemairdfragment, 3);
-    checkFragmentTablesDiagramsNumber(FragmentationMessages.LC3airdfragment, 2);
-    checkFragmentTablesDiagramsNumber(FragmentationMessages.LC3_3airdfragment, 0);
-    checkFragmentTablesDiagramsNumber(FragmentationMessages.LF2_3airdfragment, 1);
+    checkFragmentTablesDiagramsNumber(RLF_OA2_SysOA2_1airdfragment, 1);
+    checkFragmentTablesDiagramsNumber(LC2airdfragment, 3);
+    checkFragmentTablesDiagramsNumber(OC1airdfragment, 2);
+    checkFragmentTablesDiagramsNumber(Dataairdfragment, 3);
+    checkFragmentTablesDiagramsNumber(UC1FromLogicalSystemairdfragment, 3);
+    checkFragmentTablesDiagramsNumber(LC3airdfragment, 2);
+    checkFragmentTablesDiagramsNumber(LC3_3airdfragment, 0);
+    checkFragmentTablesDiagramsNumber(LF2_3airdfragment, 1);
     //
     // // check the number of model elements in semantic model elements for each fragment
-    // // 16 + 4 ports added because control functions changes + 3 3 Port Realizations in MA
-    checkFragmentModelElementsNumber(FragmentationMessages.RLF_OA2_SysOA2_1airdfragment, 23); // less model elements
+    checkFragmentModelElementsNumber(RLF_OA2_SysOA2_1airdfragment, 23); // less model elements
                                                                                               // because of LF2_3
                                                                                               // fragmentation
-    checkFragmentModelElementsNumber(FragmentationMessages.LC2airdfragment, 22); // less model elements because of UC1
+    checkFragmentModelElementsNumber(LC2airdfragment, 22); // less model elements because of UC1
                                                                                  // [From 'Logical System']
     // // fragmentation
-    checkFragmentModelElementsNumber(FragmentationMessages.OC1airdfragment, 177);
-    checkFragmentModelElementsNumber(FragmentationMessages.Dataairdfragment, 152);
-    checkFragmentModelElementsNumber(FragmentationMessages.UC1FromLogicalSystemairdfragment, 127);
-    checkFragmentModelElementsNumber(FragmentationMessages.LC3airdfragment, 15);
-    checkFragmentModelElementsNumber(FragmentationMessages.LC3_3airdfragment, 3);
-    checkFragmentModelElementsNumber(FragmentationMessages.LF2_3airdfragment, 3);
-    checkFragmentModelElementsNumber(FragmentationMessages.RLF_OA2airdfragment, 28);
+    checkFragmentModelElementsNumber(OC1airdfragment, 177);
+    checkFragmentModelElementsNumber(Dataairdfragment, 152);
+    checkFragmentModelElementsNumber(UC1FromLogicalSystemairdfragment, 127);
+    checkFragmentModelElementsNumber(LC3airdfragment, 15);
+    checkFragmentModelElementsNumber(LC3_3airdfragment, 3);
+    checkFragmentModelElementsNumber(LF2_3airdfragment, 3);
+    checkFragmentModelElementsNumber(RLF_OA2airdfragment, 14);
 
     // open all diagrams/tables and check if they are not modified
     openAndCheckAllSessionRepresentations();

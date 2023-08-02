@@ -14,10 +14,10 @@ package org.polarsys.capella.test.framework.context;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -28,9 +28,9 @@ import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.commands.preferences.service.AbstractPreferencesInitializer;
 import org.polarsys.capella.core.data.capellacore.KeyValue;
+import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.shared.id.handler.IScope;
 import org.polarsys.capella.shared.id.handler.IdManager;
-import org.polarsys.capella.test.framework.helpers.TestHelper;
 
 /**
  *
@@ -93,9 +93,9 @@ public class SessionContext {
 
         @Override
         public List<Resource> getResources() {
-          Resource semanticResource = TestHelper.getSemanticResource(session);
-          return Collections.singletonList(semanticResource);
+          return session.getSemanticResources().stream().filter(CapellaResourceHelper::isCapellaResource).collect(Collectors.toList());
         }
+        
       });
       putSemanticElement(objectIdentifier, object);
     }

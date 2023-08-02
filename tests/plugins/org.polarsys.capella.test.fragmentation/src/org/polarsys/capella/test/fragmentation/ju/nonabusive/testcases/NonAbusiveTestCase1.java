@@ -25,7 +25,6 @@ import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateAbstractDNodeTool;
-import org.polarsys.capella.test.fragmentation.ju.messages.FragmentationMessages;
 import org.polarsys.capella.test.fragmentation.ju.model.FragmentModelTestFramework;
 import org.polarsys.capella.test.fragmentation.ju.utils.AbstractToolFragmentModifTest;
 
@@ -69,21 +68,21 @@ public class NonAbusiveTestCase1 extends FragmentModelTestFramework {
 
     unfragmentWithRefChecks(context, sf1);
   }
-
+  
   @Override
   protected void init() {
     super.init();
-    _airdFile = FileHelper.getPlatformFile(getCurrentProjectName() + SLASH_CHARACTER + FragmentationMessages.airdName);
-    _m2File = FileHelper.getPlatformFile(getCurrentProjectName() + SLASH_CHARACTER + FragmentationMessages.m2Name);
+    _airdFile = FileHelper.getPlatformFile(getCurrentProjectName() + SLASH_CHARACTER + airdName);
+    _m2File = FileHelper.getPlatformFile(getCurrentProjectName() + SLASH_CHARACTER + m2Name);
 
     _SF1aird = FileHelper
         .getPlatformFile(
-            getCurrentProjectName() + ICommonConstants.SLASH_CHARACTER + FragmentationMessages.fragmentsFolder
+            getCurrentProjectName() + ICommonConstants.SLASH_CHARACTER + fragmentsFolder
                 + ICommonConstants.SLASH_CHARACTER + SF1airdName);
 
     _SF1m2 = FileHelper
         .getPlatformFile(
-            getCurrentProjectName() + ICommonConstants.SLASH_CHARACTER + FragmentationMessages.fragmentsFolder
+            getCurrentProjectName() + ICommonConstants.SLASH_CHARACTER + fragmentsFolder
                 + ICommonConstants.SLASH_CHARACTER + SF1m2Name);
   }
 

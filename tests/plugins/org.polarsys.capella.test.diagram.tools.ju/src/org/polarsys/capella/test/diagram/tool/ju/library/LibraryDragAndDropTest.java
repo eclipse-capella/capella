@@ -110,203 +110,199 @@ public class LibraryDragAndDropTest extends AbstractDiagramTestCase {
   public void test() throws Exception {
 
     Session session = getSession(getRequiredTestModel());
-    Session librarySession = getSession(getRequiredTestLibrary());
-    Session library2Session = getSession(getRequiredTestLibrary2());
 
     SessionContext context = new SessionContext(session);
-    SessionContext libraryContext = new SessionContext(librarySession);
-    SessionContext libraryContext2 = new SessionContext(library2Session);
     
     //OAIB
     DiagramContext diagramContext = new OpenDiagramStep(context, OAIB_DIAGRAM).run();
-    dragAndDropShouldFail(libraryContext, diagramContext, O_ACTIVITY,diagramContext.getDiagramId(),
+    dragAndDropShouldFail(diagramContext, O_ACTIVITY,diagramContext.getDiagramId(),
         IDNDToolNameConstants.TOOL_OAIB_DND_OPERATIONALACTIVITY_FROM_EXPLORER);
     diagramContext.close();
     
     //OAB
     diagramContext = new OpenDiagramStep(context, OAB_DIAGRAM).run();
-    dragAndDropShouldFail(libraryContext, diagramContext, O_ACTIVITY, diagramContext.getDiagramId(),
+    dragAndDropShouldFail(diagramContext, O_ACTIVITY, diagramContext.getDiagramId(),
         IDNDToolNameConstants.TOOL_OAB_DND_OPERATIONALACTIVITIES_FROM_EXPLORER);
-    dragAndDropShouldFail(libraryContext, diagramContext, O_ACTIVITY, diagramContext.getDiagramId(),
+    dragAndDropShouldFail(diagramContext, O_ACTIVITY, diagramContext.getDiagramId(),
         IDNDToolNameConstants.TOOL_OAB_DND_OPERATIONALACTIVITIES_FROM_EXPLORER_TO_ROLE);
 
-    dragAndDropShouldFail(libraryContext, diagramContext, O_ENTITY, diagramContext.getDiagramId(),
+    dragAndDropShouldFail(diagramContext, O_ENTITY, diagramContext.getDiagramId(),
         IDNDToolNameConstants.TOOL_OAB_DND_ENTITIES_FROM_EXPLORER);
-    dragAndDropShouldFail(libraryContext, diagramContext, O_ROLE, diagramContext.getDiagramId(),
+    dragAndDropShouldFail(diagramContext, O_ROLE, diagramContext.getDiagramId(),
         IDNDToolNameConstants.TOOL_OAB_DND_ROLES_FROM_EXPLORER);
     diagramContext.close();
     
     //ORB
     diagramContext = new OpenDiagramStep(context, ORB_DIAGRAM).run();
-    dragAndDropShouldFail(libraryContext, diagramContext, O_ROLE, diagramContext.getDiagramId(),
+    dragAndDropShouldFail(diagramContext, O_ROLE, diagramContext.getDiagramId(),
         IDNDToolNameConstants.TOOL_ORB_DND_ROLE_FOM_EXPLORER);
-    dragAndDropShouldFail(libraryContext, diagramContext, O_ACTIVITY, diagramContext.getDiagramId(),
+    dragAndDropShouldFail(diagramContext, O_ACTIVITY, diagramContext.getDiagramId(),
         IDNDToolNameConstants.TOOL_ORB_DND_OPERATIONALACTIVITIES_FROM_EXPLORER);
     diagramContext.close();
     
     //OCB
     diagramContext = new OpenDiagramStep(context, OCB_DIAGRAM).run();
-    dragAndDropShouldFail(libraryContext, diagramContext, O_ENTITY, diagramContext.getDiagramId(),
+    dragAndDropShouldFail(diagramContext, O_ENTITY, diagramContext.getDiagramId(),
         IDNDToolNameConstants.TOOL_OCB_DND_ENTITIES_FROM_EXPLORER);
-    dragAndDropShouldFail(libraryContext, diagramContext, O_CAPA, diagramContext.getDiagramId(),
+    dragAndDropShouldFail(diagramContext, O_CAPA, diagramContext.getDiagramId(),
         IDNDToolNameConstants.TOOL_OCB_DND_OPERATIONAL_CAPABILITIES_FROM_EXPLORER);
     diagramContext.close();
     
     //COC
     diagramContext = new OpenDiagramStep(context, COC_DIAGRAM).run();
-    dragAndDropShouldFail(libraryContext, diagramContext, O_ENTITY, diagramContext.getDiagramId(),
+    dragAndDropShouldFail(diagramContext, O_ENTITY, diagramContext.getDiagramId(),
         IDNDToolNameConstants.TOOL_OCB_DND_ENTITIES_FROM_EXPLORER);
-    dragAndDropShouldFail(libraryContext, diagramContext, O_CAPA, diagramContext.getDiagramId(),
+    dragAndDropShouldFail(diagramContext, O_CAPA, diagramContext.getDiagramId(),
         IDNDToolNameConstants.TOOL_OCB_DND_OPERATIONAL_CAPABILITIES_FROM_EXPLORER);
     diagramContext.close();
 
     // SDFB
     diagramContext = new OpenDiagramStep(context, SDFB_DIAGRAM).run();
-    dragAndDropShouldFail(libraryContext, diagramContext, S_FUNCTION, diagramContext.getDiagramId(),
+    dragAndDropShouldFail(diagramContext, S_FUNCTION, diagramContext.getDiagramId(),
         IDNDToolNameConstants.TOOL_SDFB_DND_FUNCTION_FROM_EXPLORER);
     diagramContext.close();
 
     // SAB
     diagramContext = new OpenDiagramStep(context, SAB_DIAGRAM).run();
-    dragAndDropShouldFail(libraryContext, diagramContext, S_ACTOR, diagramContext.getDiagramId(),
+    dragAndDropShouldFail(diagramContext, S_ACTOR, diagramContext.getDiagramId(),
         IDNDToolNameConstants.TOOL_SAB_DND_ACTORS_FROM_EXPLORER);
      
 
     EObject droppedElementSemantic = context.getSemanticElement(MODEL_S_COMPONENT);
     DSemanticDecorator decorator = diagramContext.getView(droppedElementSemantic);
 
-    dragAndDropShouldFail(libraryContext, diagramContext, S_FUNCTION, decorator.getUid(),
+    dragAndDropShouldFail(diagramContext, S_FUNCTION, decorator.getUid(),
         IDNDToolNameConstants.TOOL_SAB_DND_FUNCTION_ALLOCATION_FROM_EXPLORER);
-    dragAndDropShouldFail(libraryContext2, diagramContext, LIB2_SYSTEMFUNCTION_1, decorator.getUid(),
+    dragAndDropShouldFail(diagramContext, LIB2_SYSTEMFUNCTION_1, decorator.getUid(),
 	  IDNDToolNameConstants.TOOL_SAB_DND_FUNCTION_ALLOCATION_FROM_EXPLORER);
     
     diagramContext.close();
 
     // MCB
     diagramContext = new OpenDiagramStep(context, MCB_DIAGRAM).run();
-    dragAndDropShouldFail(libraryContext, diagramContext, MISSION, diagramContext.getDiagramId(),
+    dragAndDropShouldFail(diagramContext, MISSION, diagramContext.getDiagramId(),
         IDNDToolNameConstants.TOOL_MCB_DND_MISSIONS_FROM_EXPLORER);
-    dragAndDropShouldFail(libraryContext, diagramContext, S_CAPA, diagramContext.getDiagramId(),
+    dragAndDropShouldFail(diagramContext, S_CAPA, diagramContext.getDiagramId(),
         IDNDToolNameConstants.TOOL_MCB_DND_CAPABILITIES_FROM_EXPLORER);
-    dragAndDropShouldFail(libraryContext, diagramContext, S_ACTOR, diagramContext.getDiagramId(),
+    dragAndDropShouldFail(diagramContext, S_ACTOR, diagramContext.getDiagramId(),
         IDNDToolNameConstants.TOOL_MCB_DND_ACTORS_FROM_EXPLORER);
 
     // CC
     diagramContext = new OpenDiagramStep(context, CC_DIAGRAM).run();
-    dragAndDropShouldFail(libraryContext, diagramContext, MISSION, diagramContext.getDiagramId(),
+    dragAndDropShouldFail(diagramContext, MISSION, diagramContext.getDiagramId(),
         IDNDToolNameConstants.TOOL_CC_DND_MISSIONS_FROM_EXPLORER);
-    dragAndDropShouldFail(libraryContext, diagramContext, S_CAPA, diagramContext.getDiagramId(),
+    dragAndDropShouldFail(diagramContext, S_CAPA, diagramContext.getDiagramId(),
         IDNDToolNameConstants.TOOL_CC_DND_CAPABILITIES_FROM_EXPLORER);
-    dragAndDropShouldFail(libraryContext, diagramContext, S_ACTOR, diagramContext.getDiagramId(),
+    dragAndDropShouldFail(diagramContext, S_ACTOR, diagramContext.getDiagramId(),
         IDNDToolNameConstants.TOOL_CC_DND_ACTORS_FROM_EXPLORER);
     
     // MB
     diagramContext = new OpenDiagramStep(context, MB_DIAGRAM).run();
-    dragAndDropShouldFail(libraryContext, diagramContext, MISSION, diagramContext.getDiagramId(),
+    dragAndDropShouldFail(diagramContext, MISSION, diagramContext.getDiagramId(),
         IDNDToolNameConstants.TOOL_MB_DND_MISSIONS_FROM_EXPLORER);
-    dragAndDropShouldFail(libraryContext, diagramContext, S_CAPA, diagramContext.getDiagramId(),
+    dragAndDropShouldFail(diagramContext, S_CAPA, diagramContext.getDiagramId(),
         IDNDToolNameConstants.TOOL_MB_DND_CAPABILITIES_FROM_EXPLORER);
-    dragAndDropShouldFail(libraryContext, diagramContext, S_ACTOR, diagramContext.getDiagramId(),
+    dragAndDropShouldFail(diagramContext, S_ACTOR, diagramContext.getDiagramId(),
         IDNDToolNameConstants.TOOL_MB_DND_ACTORS_FROM_EXPLORER);
     
     // CM
     diagramContext = new OpenDiagramStep(context, CM_DIAGRAM).run();
-    dragAndDropShouldFail(libraryContext, diagramContext, MISSION, diagramContext.getDiagramId(),
+    dragAndDropShouldFail(diagramContext, MISSION, diagramContext.getDiagramId(),
         IDNDToolNameConstants.TOOL_CM_DND_MISSIONS_FROM_EXPLORER);
-    dragAndDropShouldFail(libraryContext, diagramContext, S_CAPA, diagramContext.getDiagramId(),
+    dragAndDropShouldFail(diagramContext, S_CAPA, diagramContext.getDiagramId(),
         IDNDToolNameConstants.TOOL_CM_DND_CAPABILITIES_FROM_EXPLORER);
-    dragAndDropShouldFail(libraryContext, diagramContext, S_ACTOR, diagramContext.getDiagramId(),
+    dragAndDropShouldFail(diagramContext, S_ACTOR, diagramContext.getDiagramId(),
         IDNDToolNameConstants.TOOL_CM_DND_ACTORS_FROM_EXPLORER);
     
     // LDFB
     diagramContext = new OpenDiagramStep(context, LDFB_DIAGRAM).run();
-    dragAndDropShouldFail(libraryContext, diagramContext, L_FUNCTION, diagramContext.getDiagramId(),
+    dragAndDropShouldFail(diagramContext, L_FUNCTION, diagramContext.getDiagramId(),
         IDNDToolNameConstants.TOOL_LDFB_DND_FUNCTION_FROM_EXPLORER);
     
     // LAB
     diagramContext = new OpenDiagramStep(context, LAB_DIAGRAM).run();
-    dragAndDropShouldFail(libraryContext, diagramContext, L_COMPONENT, diagramContext.getDiagramId(),
+    dragAndDropShouldFail(diagramContext, L_COMPONENT, diagramContext.getDiagramId(),
         IDNDToolNameConstants.TOOL_LAB_DND_COMPONENTS_FROM_EXPLORER);
     droppedElementSemantic = context.getSemanticElement(MODEL_L_COMPONENT);
     decorator = diagramContext.getView(droppedElementSemantic);
-    dragAndDropShouldFail(libraryContext, diagramContext, L_FUNCTION, decorator.getUid(),
+    dragAndDropShouldFail(diagramContext, L_FUNCTION, decorator.getUid(),
         IDNDToolNameConstants.TOOL_LAB_DND_FUNCTION_ALLOCATION_FROM_EXPLORER);
     
     // CRB
     diagramContext = new OpenDiagramStep(context, CRB_DIAGRAM).run();
-    dragAndDropShouldFail(libraryContext, diagramContext, L_COMPONENT, diagramContext.getDiagramId(),
+    dragAndDropShouldFail(diagramContext, L_COMPONENT, diagramContext.getDiagramId(),
         IDNDToolNameConstants.TOOL_CRB_DND_COMPONENT_FROM_EXPLORER);
-    dragAndDropShouldFail(libraryContext, diagramContext, L_CAPABILITY, diagramContext.getDiagramId(),
+    dragAndDropShouldFail(diagramContext, L_CAPABILITY, diagramContext.getDiagramId(),
 		        IDNDToolNameConstants.TOOL_CRB_DND_CAPABILITIES_FROM_EXPLORER);
     
     // PDFB
     diagramContext = new OpenDiagramStep(context, PDFB_DIAGRAM).run();
-    dragAndDropShouldFail(libraryContext, diagramContext, P_FUNCTION, diagramContext.getDiagramId(),
+    dragAndDropShouldFail(diagramContext, P_FUNCTION, diagramContext.getDiagramId(),
         IDNDToolNameConstants.TOOL_PDFB_DND_FUNCTION_FROM_EXPLORER);
     
     // PAB
     diagramContext = new OpenDiagramStep(context, PAB_DIAGRAM).run();
-    dragAndDropShouldFail(libraryContext, diagramContext, P_COMPONENT, diagramContext.getDiagramId(),
+    dragAndDropShouldFail(diagramContext, P_COMPONENT, diagramContext.getDiagramId(),
         IDNDToolNameConstants.TOOL_PAB_DND_COMPONENTS_FROM_EXPLORER);
 
     droppedElementSemantic = context.getSemanticElement(MODEL_P_COMPONENT);
     decorator = diagramContext.getView(droppedElementSemantic);
-    dragAndDropShouldFail(libraryContext, diagramContext, P_FUNCTION, decorator.getUid(),
+    dragAndDropShouldFail(diagramContext, P_FUNCTION, decorator.getUid(),
         IDNDToolNameConstants.TOOL_PAB_DND_ABSTRACTFUNCTION_ALLOCATION_FROM_EXPLORER);
     
     //EAB
     diagramContext = new OpenDiagramStep(context, EAB_DIAGRAM).run();
-    dragAndDropShouldFail(libraryContext, diagramContext, E_CONFITEM, diagramContext.getDiagramId(),
+    dragAndDropShouldFail(diagramContext, E_CONFITEM, diagramContext.getDiagramId(),
         IDNDToolNameConstants.TOOL_EAB_DND_CONFIGURATIONITEM_FROM_EXPLORER);
     
     //M&S
     diagramContext = new OpenDiagramStep(context, MS_DIAGRAM).run();
-    dragAndDropShouldFail(libraryContext, diagramContext, MODE, diagramContext.getDiagramId(),
+    dragAndDropShouldFail(diagramContext, MODE, diagramContext.getDiagramId(),
         IDNDToolNameConstants.TOOL_MS_DND_MODESTATE_FROM_EXPLORER);
     
     //MSM
     diagramContext = new OpenDiagramStep(context, MSM_DIAGRAM).run();
-    dragAndDropShouldFail(libraryContext, diagramContext, MODE, diagramContext.getDiagramId(),
+    dragAndDropShouldFail(diagramContext, MODE, diagramContext.getDiagramId(),
         IDNDToolNameConstants.TOOL_MS_DND_MODESTATE_FROM_EXPLORER);
     
 
     
     //CDB
     diagramContext = new OpenDiagramStep(context, CDB_DIAGRAM).run();
-    dragAndDropShouldWork(libraryContext, diagramContext, EXCHANGE_ITEM, diagramContext.getDiagramId(),
+    dragAndDropShouldWork(diagramContext, EXCHANGE_ITEM, diagramContext.getDiagramId(),
         IDNDToolNameConstants.TOOL_CDB_DND_EXCHANGEITEM_FROM_EXPLORER);
-    dragAndDropShouldWork(libraryContext, diagramContext, LITERAL_NUMERIC_VALUE, diagramContext.getDiagramId(),
+    dragAndDropShouldWork(diagramContext, LITERAL_NUMERIC_VALUE, diagramContext.getDiagramId(),
         IDNDToolNameConstants.TOOL_CDB_DND_DATAVALUE_FROM_EXPLORER);
-    dragAndDropShouldWork(libraryContext, diagramContext, DATA_PKG, diagramContext.getDiagramId(),
+    dragAndDropShouldWork(diagramContext, DATA_PKG, diagramContext.getDiagramId(),
         IDNDToolNameConstants.TOOL_CDB_DND_DATAPKG_FROM_EXPLORER);
-    dragAndDropShouldWork(libraryContext, diagramContext, CLASS, diagramContext.getDiagramId(),
+    dragAndDropShouldWork(diagramContext, CLASS, diagramContext.getDiagramId(),
         IDNDToolNameConstants.TOOL_CDB_DND_CLASS_FROM_EXPLORER);
-    dragAndDropShouldWork(libraryContext, diagramContext, INTERFACE, diagramContext.getDiagramId(),
+    dragAndDropShouldWork(diagramContext, INTERFACE, diagramContext.getDiagramId(),
         IDNDToolNameConstants.TOOL_CDB_DND_INTERFACE_FROM_EXPLORER);
-    dragAndDropShouldWork(libraryContext, diagramContext, COLLECTION, diagramContext.getDiagramId(),
+    dragAndDropShouldWork(diagramContext, COLLECTION, diagramContext.getDiagramId(),
         IDNDToolNameConstants.TOOL_CDB_DND_COLLECTION_FROM_EXPLORER);
-    dragAndDropShouldWork(libraryContext, diagramContext, UNIT, diagramContext.getDiagramId(),
+    dragAndDropShouldWork(diagramContext, UNIT, diagramContext.getDiagramId(),
         IDNDToolNameConstants.TOOL_CDB_DND_UNIT_FROM_EXPLORER);
-    dragAndDropShouldWork(libraryContext, diagramContext, DATATYPE, diagramContext.getDiagramId(),
+    dragAndDropShouldWork(diagramContext, DATATYPE, diagramContext.getDiagramId(),
         IDNDToolNameConstants.TOOL_CDB_DND_DATATYPE_FROM_EXPLORER);
-    dragAndDropShouldWork(libraryContext, diagramContext, INTERFACE_PKG, diagramContext.getDiagramId(),
+    dragAndDropShouldWork(diagramContext, INTERFACE_PKG, diagramContext.getDiagramId(),
         IDNDToolNameConstants.TOOL_CDB_DND_INTERFACEPKG_FROM_EXPLORER);
-    dragAndDropShouldWork(libraryContext, diagramContext, ENUM, diagramContext.getDiagramId(),
+    dragAndDropShouldWork(diagramContext, ENUM, diagramContext.getDiagramId(),
         IDNDToolNameConstants.TOOL_CDB_DND_ENUMERATION_FROM_EXPLORER);
 
   }
   
-  private void dragAndDropShouldFail(SessionContext context, DiagramContext diagramContext, String droppedElementId,
+  private void dragAndDropShouldFail(DiagramContext diagramContext, String droppedElementId,
       String targetId, String tool) {
-    EObject droppedElementSemantic = context.getSemanticElement(droppedElementId);
+    EObject droppedElementSemantic = diagramContext.getSessionContext().getSemanticElement(droppedElementId);
     
     new DragAndDropFromProjectExplorerTool(diagramContext,
         tool, droppedElementSemantic, targetId).cannotRun();
   }
 
-  private void dragAndDropShouldWork(SessionContext context, DiagramContext diagramContext, String droppedElementId,
+  private void dragAndDropShouldWork(DiagramContext diagramContext, String droppedElementId,
       String targetId, String tool) {
-    EObject droppedElementSemantic = context.getSemanticElement(droppedElementId);
+    EObject droppedElementSemantic = diagramContext.getSessionContext().getSemanticElement(droppedElementId);
 
     new DragAndDropFromProjectExplorerTool(diagramContext, tool, droppedElementSemantic, targetId).contextOk();
     ;
