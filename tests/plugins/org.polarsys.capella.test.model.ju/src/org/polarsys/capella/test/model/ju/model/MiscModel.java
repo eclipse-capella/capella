@@ -97,6 +97,8 @@ public abstract class MiscModel extends NonDirtyTestCase {
   public static final String SA__ACTORS = "0b6d6f19-fae4-4a23-aee3-8ac84d7a1e64";
   public static final String SA__MISSIONS = "35874327-16e7-4055-a9a2-c1c41599234d";
   public static final String SA__OPERATIONAL_ANALYSIS_REALIZATION_TO_OPERATIONAL_ANALYSIS = "6379ce8e-2b11-4ea4-bd2e-325317025e30";
+  public static final String SA_ACTOR_2 = "f456cf7d-933c-479d-9f68-6854e890b58a";
+
   public static final String LA = "6423fb82-eda3-42be-a0ad-bb121fee03ce";
   public static final String LA_1 = "0f0c9802-be91-4cb7-8ba8-15a5c8f5e965";
   public static final String LA_1_EXPECTED_PL_TARGET = "a90fff0b-873a-40f2-98af-efb23208f0f8";
@@ -121,6 +123,7 @@ public abstract class MiscModel extends NonDirtyTestCase {
   public static final String LOGICALCOMPONENTPKG_1 = "b1123d45-f6d3-411b-a3c6-ea2965a5da7b"; //$NON-NLS-1$
   public static final String LC_1_PART = "1f8aefd5-6ce2-4d5c-a734-254d1ddde797"; //$NON-NLS-1$
   public static final String LC_2_PART = "c52b2d75-afae-49bf-bc8f-835e2f684320"; //$NON-NLS-1$
+
   public static final String PA = "93e72add-98f8-4f01-81d1-66b443275e2c";
   public static final String PA__PHYSICAL_FUNCTIONS = "433ac136-8085-441d-adfb-f1207ef04f80";
   public static final String PA__ROOT_PF = "82809bc0-4858-4da3-a239-7b7fb8532e6b";
@@ -138,12 +141,22 @@ public abstract class MiscModel extends NonDirtyTestCase {
   public static final String PA_1_EXPECTED_PL_TARGET = "4cbbbc04-3a40-4f1c-8c2b-01bc2b4164b3";
   public static final String PA_2 = "b5fe9222-5075-4ccf-9ceb-4f1211fcf917";
   public static final String PA_3 = "26b4dec4-0ffe-4905-8f7d-9b8f52e6562c";
+  public static final String PA_6 = "1ee8f69d-23a6-4b23-90c6-04349ecb0cd0";
+  public static final String PA_6_EXPECTED_PL_TARGET = "95d2807c-fe32-4bd7-a119-040ff50d128c";
   public static final String PC_1 = "7a0bd881-61c9-45fb-87dc-03d4abc7cc13";
   public static final String PC_1_CONTAINED = "26b4dec4-0ffe-4905-8f7d-9b8f52e6562c";
   public static final String PC_1_EXPECTED_PL_TARGET = "3b60352b-eb8d-4d4c-aa8e-8b3bf97500c4";
   public static final String PC_2 = "28ad3c5c-16a2-4aef-a6af-5ddc1a90ca56";
   public static final String PC_2_CONTAINED = "07c482d3-f759-4bf0-ba98-1d487c8dbbf3";
   public static final String PC_2_EXPECTED_PL_TARGET = "85282fb6-b695-48bc-b194-fef9c4e22775";
+  public static final String PA_7 = "b6c070bf-5c49-4ee7-9bff-9c90972bde16";
+  public static final String PA_7_EXPECTED_PL_TARGET = "c82d306d-35dd-4a3a-9a30-133bcbf02be1";
+  public static final String PA_8 = "b1c8e398-73a0-4270-bc99-e13c02edf387";
+  public static final String PA_8_EXPECTED_PL_TARGET = "38260cd0-2ba1-42b9-9274-a039f6b8b3f0";
+
+  public static final String PA_10 = "42aa1870-e261-4881-a462-eedc17742078";
+  
+  
   public static final String EPBS = "e4e1c7e9-9174-4c56-8375-65cecab211a1";
   public static final String EPBS__CAPABILITIES = "5eaa4a48-a354-41b4-bade-9c9958ee275d";
   public static final String EPBS__EPBS_CONTEXT = "cdb07a6b-0e1a-40dc-897a-fb891add8d88";

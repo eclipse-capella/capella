@@ -35,6 +35,7 @@ import org.polarsys.capella.core.data.cs.DeploymentTarget;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.ComponentExchangeAllocation;
 import org.polarsys.capella.core.data.fa.ComponentExchangeKind;
@@ -58,11 +59,12 @@ import org.polarsys.capella.core.model.helpers.PhysicalLinkExt;
  * This implementation creates physical links.
  */
 public class PhysicalLinksCreator extends DefaultExchangesCreator {
-  
+
   private Part part = null;
-  
+
   /**
    * Constructor
+   * 
    * @param component
    */
   public PhysicalLinksCreator(Component component, Part part) {
@@ -72,6 +74,7 @@ public class PhysicalLinksCreator extends DefaultExchangesCreator {
 
   /**
    * This implementation creates physical links.
+   * 
    * @see org.polarsys.capella.core.projection.commands.utils.DefaultExchangesCreator#createExchanges()
    */
   @Override
@@ -89,17 +92,17 @@ public class PhysicalLinksCreator extends DefaultExchangesCreator {
   protected boolean isValidCreation(AbstractEventOperation fe, Component component, Component allocating) {
     return isValidBound(component) && isValidBound(allocating);
   }
-  
+
   /**
    * @param container
    * 
-   * This method check all subcomponent and try to create physical links and allocate them to a CE at the
-   * contained level component exchanges If the container hasn't subcomponent, it will try to create a PL and
-   * allocate to a CE at the same level
+   *          This method check all subcomponent and try to create physical links and allocate them to a CE at the
+   *          contained level component exchanges If the container hasn't subcomponent, it will try to create a PL and
+   *          allocate to a CE at the same level
    */
   protected void createPhysicalLinksFromCExchanges(Component container) {
     if (container != null) {
-      if(container instanceof PhysicalComponent) {
+      if (container instanceof PhysicalComponent) {
         // Gets the deployments of the node
         EList<AbstractDeploymentLink> deployments = part.getDeploymentLinks();
 
@@ -110,7 +113,7 @@ public class PhysicalLinksCreator extends DefaultExchangesCreator {
             if (deployedElement instanceof Part) {
               Type containedPC = ((Part) deployedElement).getType();
               if (containedPC instanceof PhysicalComponent) {
-                createPhysicalLinksFromCExchanges(container, (PhysicalComponent)containedPC);
+                createPhysicalLinksFromCExchanges(container, (PhysicalComponent) containedPC);
               }
             } else if (deployedElement instanceof PhysicalComponent) {
               createPhysicalLinksFromCExchanges(container, (PhysicalComponent) deployedElement);
@@ -137,17 +140,16 @@ public class PhysicalLinksCreator extends DefaultExchangesCreator {
       });
     }
   }
-  
+
   /**
    * Create Physical Links from Component Exchanges at the same level
    */
   protected void createPLsFromCESameLevel(Component container) {
-    if (!(container instanceof PhysicalComponent && !ComponentExt.isActor(container)
-        && ((PhysicalComponent) container).getNature() == PhysicalComponentNature.NODE)) {
+    if (ComponentExt.isActor(container) || !isNodeComponent(container)) {
       createPhysicalLinksFromCExchanges(container, container);
     }
   }
-  
+
   /**
    * @param sourceContainer
    * @param sourceContained
@@ -164,14 +166,12 @@ public class PhysicalLinksCreator extends DefaultExchangesCreator {
       }
     }
   }
-  
+
   /**
    * @param component
    * @return true if the component is contained by a non actor component
    */
   private boolean isContainedByALogicalNonActorComponent(Component component) {
-    if (!(component instanceof LogicalComponent))
-      return false;
     EObject container = component.eContainer();
     if (container instanceof LogicalComponent) {
       return !ComponentExt.isActor(container) || isContainedByALogicalNonActorComponent((Component) container);
@@ -186,32 +186,45 @@ public class PhysicalLinksCreator extends DefaultExchangesCreator {
         || doesNodeAlreadyHaveAPhysicalLinkForComponentExchange(sourceContainer, componentExchange)) {
       return;
     }
+
     Component targetContained = findTheTargetComponent(componentExchange, port);
-    if (targetContained != null) {
-      if (targetContained instanceof PhysicalComponent) {
-        PhysicalComponent targetContainerPC = findDeployingComponent((PhysicalComponent) targetContained);
-        if (targetContainerPC != null) {
-          doCreatePhysicalLink(componentExchange, sourceContainer, targetContainerPC, port);
-        }
-      }
-      // if the container is the same as contained (if the component doesn't have subcomponents)
-      if (sourceContainer.equals(sourceContained)
-          && (ComponentExt.isActor(sourceContained) || isSystemOrLogicalSystem(sourceContained))) {
-        // if the target is contained by a logical component (non actor), the PL should not be created
-        if (!isContainedByALogicalNonActorComponent(targetContained))
-          doCreatePhysicalLink(componentExchange, sourceContainer, (Component) targetContained, port);
-      } else if (ComponentExt.isActor(targetContained) && targetContained.eContainer() instanceof Component) {
-        Component targetContainer = (Component) targetContained.eContainer();
-        if (!isContainedByALogicalNonActorComponent(targetContainer))
-          doCreatePhysicalLink(componentExchange, sourceContainer, targetContainer, port);
-      }
+    Component target = computePhysicalLinkBound(targetContained);
+    Component source = computePhysicalLinkBound(sourceContained);
+    if (!isValidPhysicalLinkBound(source) || !isValidPhysicalLinkBound(target)) {
+      return;
     }
+
+    doCreatePhysicalLink(componentExchange, source, target, port);
   }
-  
+
+  /**
+   * verify if given parameter is physical component and it nature is a PC hehaviour
+   * 
+   * @param component
+   * @return a boolean
+   */
+  private boolean isBehaviourComponent(Component component) {
+    return component instanceof PhysicalComponent
+        && ((PhysicalComponent) component).getNature() == PhysicalComponentNature.BEHAVIOR;
+  }
+
+  /**
+   * verify if given parameter is physical component and it nature is a node
+   * 
+   * @param component
+   * @return a boolean
+   */
+  private boolean isNodeComponent(Component component) {
+    return component instanceof PhysicalComponent
+        && ((PhysicalComponent) component).getNature() == PhysicalComponentNature.NODE;
+  }
+
   /**
    * Find the target component of the CE
-   * @param componentExchange the source component exchange
-   * @param port 
+   * 
+   * @param componentExchange
+   *          the source component exchange
+   * @param port
    * @return the component if it's a valid target (instanceof Component, validBound, etc), null otherwise
    */
   private Component findTheTargetComponent(ComponentExchange componentExchange, ComponentPort port) {
@@ -219,41 +232,76 @@ public class PhysicalLinksCreator extends DefaultExchangesCreator {
     InformationsExchanger target = FunctionalExt.getOtherBound(componentExchange, port);
     if (!(target instanceof ComponentPort))
       return null;
-
     EObject targetContained = target.eContainer();
-    // the target is not valid if it's not a Physical, Logical or System Component
-    if (!(targetContained instanceof Component && isValidBound((Component) targetContained)))
-      return null;
-
-    // for LogicalComponent, the target is not valid if it's not an actor or the logical system
-    if (targetContained instanceof LogicalComponent
-        && (!ComponentExt.isActor(targetContained) && !isSystemOrLogicalSystem((Component) targetContained)))
-      return null;
-
     return (Component) targetContained;
   }
-  
+
+  /**
+   * Return whether the given component can host the Physical Link
+   * 
+   * @param componentExchange
+   *          the given component
+   * @param port
+   * @return if the component is a Component not behavior nor owned by a behavior
+   */
+  private boolean isValidPhysicalLinkBound(Component bound) {
+    // get the opposite port [which could be source or target of the CE]
+
+    Component targetContained = bound;
+    // the target is not valid if it's not a Physical, Logical or System Component
+    if (!(targetContained instanceof Component && isValidBound((Component) targetContained)))
+      return false;
+
+    // for LogicalComponent, the target is not valid if it's not an actor or the logical system
+    if ((targetContained instanceof LogicalComponent || targetContained instanceof SystemComponent)
+        && (!ComponentExt.isActor(targetContained) && !isSystemOrLogicalSystem((Component) targetContained)))
+      return false;
+
+    if (isBehaviourComponent(targetContained)) {
+      return false;
+    }
+    if (ComponentExt.isActor(targetContained) && isContainedByALogicalNonActorComponent(targetContained)) {
+      return false;
+    }
+    return true;
+  }
+
   private boolean isSystemOrLogicalSystem(Component component) {
     if (component instanceof PhysicalComponent || component instanceof Entity)
       return false;
     BlockArchitecture architecture = ComponentExt.getRootBlockArchitecture(component);
     return architecture.getSystem().equals(component);
   }
-  
-  private PhysicalComponent findDeployingComponent(PhysicalComponent targetContained) {
-    for (Part partition : targetContained.getRepresentingParts()) {
+
+  /**
+   * Starting from a component exchange bound (source or target), return the component that will contains the Physical
+   * link bound
+   */
+  private Component computePhysicalLinkBound(Component componentExchangeBound) {
+    if (componentExchangeBound == null) {
+      return null;
+    }
+    // Returns the deploying Node Component if its deployed on a Node
+    for (Part partition : componentExchangeBound.getRepresentingParts()) {
       for (DeploymentTarget deploying : getCache(PartExt::getDeployingElements, (Part) partition)) {
         if (deploying instanceof Part) {
           Part deployingPart = (Part) deploying;
-          if (deployingPart.getAbstractType() instanceof PhysicalComponent) {
+          if (deployingPart.getAbstractType() instanceof PhysicalComponent
+              && !isBehaviourComponent((PhysicalComponent) deployingPart.getAbstractType())) {
             return (PhysicalComponent) deployingPart.getAbstractType();
           }
         }
       }
     }
-    return null;
+    // If is an Actor, then return it's parent container if the parent is an Actor or an Node
+    if (ComponentExt.isActor(componentExchangeBound) && componentExchangeBound.eContainer() instanceof Component
+        && !isBehaviourComponent((Component) componentExchangeBound.eContainer())) {
+      return (Component) componentExchangeBound.eContainer();
+    }
+    // Otherwise, we create on the same component
+    return componentExchangeBound;
   }
-   
+
   private void doCreatePhysicalLink(ComponentExchange componentExchange, Component exchangeOutput,
       Component exchangeInput, ComponentPort sourcePort) {
     if (componentExchange.getSource().equals(sourcePort)) {
@@ -265,11 +313,16 @@ public class PhysicalLinksCreator extends DefaultExchangesCreator {
 
   /**
    * Create a physical link corresponding to the given component exchange, between the given components
-   * @param componentExchange the source component exchange
-   * @param exchangeOutput the output component
-   * @param exchangeInput the input component
+   * 
+   * @param componentExchange
+   *          the source component exchange
+   * @param exchangeOutput
+   *          the output component
+   * @param exchangeInput
+   *          the input component
    */
-  protected void doCreatePhysicalLink(ComponentExchange componentExchange, Component exchangeOutput, Component exchangeInput) {
+  protected void doCreatePhysicalLink(ComponentExchange componentExchange, Component exchangeOutput,
+      Component exchangeInput) {
     // Precondition:
     if (exchangeOutput == exchangeInput) {
       // Not necessary to create a physical link for exchanges inside the
@@ -304,7 +357,7 @@ public class PhysicalLinksCreator extends DefaultExchangesCreator {
     // target side Delegation
     InformationsExchanger source = componentExchange.getSource();
     createComponentPortAllocation(source, outP);
-    
+
     exchangeInput.getOwnedPhysicalLinks().add(physicalLink);
     exchangeOutput.getOwnedPhysicalLinks().add(physicalLink);
   }
@@ -314,7 +367,8 @@ public class PhysicalLinksCreator extends DefaultExchangesCreator {
    * @param physicalPort
    * @param connection
    */
-  private ComponentPortAllocation createComponentPortAllocation(InformationsExchanger informationExchange, PhysicalPort physicalPort) {
+  private ComponentPortAllocation createComponentPortAllocation(InformationsExchanger informationExchange,
+      PhysicalPort physicalPort) {
     ComponentPortAllocation allocation = FaFactory.eINSTANCE.createComponentPortAllocation();
     allocation.setSourceElement(physicalPort);
     allocation.setTargetElement((TraceableElement) informationExchange);
@@ -324,9 +378,13 @@ public class PhysicalLinksCreator extends DefaultExchangesCreator {
   }
 
   /**
-   * This method allows to know if the given component exchange has already been allocated to a physical link linked to the given physical component.
-   * @param physicalComponent the physical component
-   * @param componentExchange the component exchange
+   * This method allows to know if the given component exchange has already been allocated to a physical link linked to
+   * the given physical component.
+   * 
+   * @param physicalComponent
+   *          the physical component
+   * @param componentExchange
+   *          the component exchange
    * @return true if its has already been allocated, false otherwise
    */
   protected boolean doesNodeAlreadyHaveAPhysicalLinkForComponentExchange(Component physicalComponent,

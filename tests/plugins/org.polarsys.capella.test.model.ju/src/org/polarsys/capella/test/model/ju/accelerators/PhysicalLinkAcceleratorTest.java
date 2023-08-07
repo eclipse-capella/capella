@@ -18,11 +18,9 @@ import java.util.Map;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.expressions.EvaluationContext;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.ui.ISources;
-import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
@@ -41,19 +39,23 @@ public class PhysicalLinkAcceleratorTest extends MiscModel {
   public void test() throws Exception {
     ICapellaModel model = getTestModel();
     IScope scope = new ScopeModelWrapper(model);
+
+	testOnSystemArchitecture(scope);
     // PAB
-
-    // test that accelerator create physical links
-    testPhysicalLinkAccelerator(PA_1, scope, 2, PA_1_EXPECTED_PL_TARGET, PA_2);
-    testPhysicalLinkAccelerator(PC_1, scope, 1, PC_1_EXPECTED_PL_TARGET, PC_1_CONTAINED);
-    testPhysicalLinkAccelerator(PC_2, scope, 1, PC_2_EXPECTED_PL_TARGET, PC_2_CONTAINED);
-
-    // test that accelerator do not create physical links
-    testPhysicalLinkAccelerator(PA_2, scope, 0, EMPTY_STRING, EMPTY_STRING);
-    testPhysicalLinkAccelerator(PA_3, scope, 0, EMPTY_STRING, EMPTY_STRING);
-
+    testOnPhysicalArchitecture(scope);
+    
     // LAB
-    // test that the accelerator create physical links
+    testOnLogicalArchitecture(scope);
+  }
+
+  private void testOnSystemArchitecture(IScope scope) {
+	// test that the accelerator create physical link from root system to an actor
+	testPhysicalLinkAccelerator(SA__SYSTEM_CONTEXT__PART_SYSTEM__SYSTEM, scope, 1, SA_ACTOR_2,
+				SA__SYSTEM_CONTEXT__PART_SYSTEM__SYSTEM);
+	}
+
+  private void testOnLogicalArchitecture(IScope scope) {
+	// test that the accelerator create physical links
     testPhysicalLinkAccelerator(LA_1, scope, 2, LA_1_EXPECTED_PL_TARGET, LA_2);
     testPhysicalLinkAccelerator(LA_SYSTEM, scope, 1, LA_SYSTEM_EXPECTED_PL_TARGET, LA_SYSTEM);
 
@@ -62,7 +64,31 @@ public class PhysicalLinkAcceleratorTest extends MiscModel {
     testPhysicalLinkAccelerator(LA_3, scope, 0, EMPTY_STRING, EMPTY_STRING);
   }
 
-  protected void testPhysicalLinkAccelerator(String selectedElementId, IScope scope, int expectedNumberPL,
+  private void testOnPhysicalArchitecture(IScope scope) {
+    // test that accelerator create physical links
+    testPhysicalLinkAccelerator(PA_1, scope, 2, PA_1_EXPECTED_PL_TARGET, PA_2);
+    testPhysicalLinkAccelerator(PC_1, scope, 1, PC_1_EXPECTED_PL_TARGET, PC_1_CONTAINED);
+    testPhysicalLinkAccelerator(PC_2, scope, 1, PC_2_EXPECTED_PL_TARGET, PC_2_CONTAINED);
+
+	// test that accelerator do not create physical links
+    testPhysicalLinkAccelerator(PA_2, scope, 0, EMPTY_STRING, EMPTY_STRING);
+    testPhysicalLinkAccelerator(PA_3, scope, 0, EMPTY_STRING, EMPTY_STRING);
+
+    //test that the accelerator do not create phsysical link on Behaviour Component
+    testPhysicalLinkAccelerator(PA_6, scope, 1, PA_6_EXPECTED_PL_TARGET, PA_6);
+    
+    //test that the accelerator create a PL on actor as target if actor has no parent
+    //and source has a parent
+    testPhysicalLinkAccelerator(PA_7, scope, 1, PA_7_EXPECTED_PL_TARGET, PA_7);
+    
+    //test that the accelerator create a PL from an actor to an actor
+    testPhysicalLinkAccelerator(PA_8, scope, 1, PA_8_EXPECTED_PL_TARGET, PA_8);
+
+    // test that the accelerator do not create physical links on deployed Behaviour Component onto Behavior
+    testPhysicalLinkAccelerator(PA_10, scope, 0, EMPTY_STRING, EMPTY_STRING);
+  }
+
+protected void testPhysicalLinkAccelerator(String selectedElementId, IScope scope, int expectedNumberPL,
       String expectedPLtargetId, String expectedPortAllocationTargetId) {
     Part inputElement = (Part) IdManager.getInstance().getEObject(selectedElementId, scope);
     Component component = (Component) inputElement.getAbstractType();
