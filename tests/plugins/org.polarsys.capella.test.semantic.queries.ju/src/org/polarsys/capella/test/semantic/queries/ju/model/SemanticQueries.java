@@ -314,6 +314,7 @@ public abstract class SemanticQueries extends AbstractSemanticQueryTestCase {
   public static final String LA__LOGICAL_CAPABILITY_TRACE = "2922b720-9b9c-4103-b404-43308630e9e3";
   public static final String LA__LOGICAL_CAPABILITY_TRACE_SOURCE = "7f696210-08b4-492f-b9f4-26912aa5b5fd";
   public static final String LA__LOGICAL_CAPABILITY_TRACE_TARGET = "055865bd-7993-4d80-adc5-819088a2b53b";
+
   public static final String PA = "8f178984-e6cf-46de-870f-05dcdbaa0025";
   public static final String PA__PHYSICAL_FUNCTIONS = "31d0ecd3-6548-4a0a-b86c-85b43638d4e9";
   public static final String PA__FUNCTIONAL_CHAIN = "29dc7bfc-e5c5-4db7-801c-3ccfa47c793e";
@@ -363,10 +364,11 @@ public abstract class SemanticQueries extends AbstractSemanticQueryTestCase {
   public static final String PA__PF1_FOP1 = "fdd9e69e-179c-43f7-a9f8-0e52b74a6fae";
   public static final String PA__PF2_FIP1 = "a7f4d482-bb03-4302-aa03-b22c0506fcc8";
   public static final String PA__FE1 = "6fd8df09-4eec-4b53-a6cd-38e5522c453a";
-  public static final String PA__FS_CAPABILITY1 ="a76a6e35-c557-4e4c-b848-62a72b71f5ca";
+  public static final String PA__FS_CAPABILITY1 = "a76a6e35-c557-4e4c-b848-62a72b71f5ca";
   public static final String PA__ES_CAPABILITY1 = "2a0f6fef-c411-480c-be22-8f0231ece3f4";
   public static final String PA__ES_CAPABILITY1_COPY = "c8da3939-669c-4812-b425-4fece2136f49";
-  public static final String PA__ES_SCENARIO_INVOKING_FUNCTIONS= "ebeabdd3-7411-4420-b739-0f5fda85d79f";
+  public static final String PA__ES_SCENARIO_INVOKING_FUNCTIONS = "ebeabdd3-7411-4420-b739-0f5fda85d79f";
+
   public static final String EPBS = "1729bd4c-a4d2-48c2-ac5e-cf84172ae391";
   public static final String EPBS__CAPABILITIES = "51981734-92ce-4076-8ef2-702a1097fc2b";
   public static final String EPBS__CAPABILITIES__CAPABILITY_2 = "94e2e370-1828-4bf8-ad0b-80d8e6e22898";

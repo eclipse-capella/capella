@@ -3040,6 +3040,48 @@
                </categoryQuery>
             </category>
             <category
+                  id="org.polarsys.capella.core.semantic.queries.PhysicalLinkSource"
+                  isTopLevel="true"
+                  name="Source">
+               <availableForType
+                     class="org.polarsys.capella.core.data.cs.PhysicalLink">
+               </availableForType>
+               <targetBrowserId
+                     id="ReferencingElementBrowser">
+               </targetBrowserId>
+               <categoryQuery>
+                  <basicQuery
+                        class="org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalLinkSource">
+                  </basicQuery>
+               </categoryQuery>
+               <itemQueries>
+            		<basicQuery
+                 	 	class="org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalPortOwner">
+            		</basicQuery>
+         		</itemQueries>
+            </category>
+            <category
+                  id="org.polarsys.capella.core.semantic.queries.PhysicalLinkTarget"
+                  isTopLevel="true"
+                  name="Target">
+               <availableForType
+                     class="org.polarsys.capella.core.data.cs.PhysicalLink">
+               </availableForType>
+               <targetBrowserId
+                     id="ReferencedElementBrowser">
+               </targetBrowserId>
+               <categoryQuery>
+                  <basicQuery
+                        class="org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalLinkTarget">
+                  </basicQuery>
+               </categoryQuery>
+               <itemQueries>
+            		<basicQuery
+                 	 	class="org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalPortOwner">
+            		</basicQuery>
+         		</itemQueries>
+            </category>
+            <category
                   id="org.polarsys.capella.core.semantic.queries.basic.queries.RequirementTracedElements"
                   isTopLevel="true"
                   name="Traced Elements">
