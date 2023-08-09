@@ -9,6 +9,7 @@
  * 
  * Contributors:
  *    Thales - initial API and implementation
+ *    Obeo - Do not obfuscate .aird and .airdfragment files when listed as semantic resources.
  *******************************************************************************/
 package org.polarsys.capella.core.model.obfuscator.actions;
 
@@ -20,6 +21,7 @@ import java.util.Set;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.StructuredSelection;
@@ -34,6 +36,7 @@ import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
 import org.polarsys.capella.common.mdsofa.common.misc.Couple;
+import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.model.obfuscator.CapellaModelObfuscatorActivator;
 import org.polarsys.capella.core.model.obfuscator.IImageKeys;
 import org.polarsys.capella.core.model.obfuscator.IResourceObfuscator;
@@ -77,9 +80,12 @@ public class ObfuscateSessionAction extends BaseSelectionListenerAction {
 
       // Obfuscate semantic resources.
       for (Resource resource : semanticResources) {
-        if (resource.getURI().fileExtension() != null
-            && !(resource.getURI().fileExtension().equals(ViewpointMetadata.STORAGE_EXTENSION)))
+        URI uri = resource.getURI();
+        if (uri.fileExtension() != null
+            && !(uri.fileExtension().equals(ViewpointMetadata.STORAGE_EXTENSION))
+            && !CapellaResourceHelper.isAirdResource(uri)) {
           obfuscateSemanticResource(resource, executionManager);
+        }    
       }
       // Obfuscate all representations.
       for (DRepresentationDescriptor descriptor : DialectManager.INSTANCE.getAllRepresentationDescriptors(session)) {
