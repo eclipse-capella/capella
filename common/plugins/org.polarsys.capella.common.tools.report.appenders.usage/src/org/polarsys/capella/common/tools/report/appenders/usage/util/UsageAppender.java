@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.polarsys.capella.common.tools.report.appenders.usage.util;
 
+import java.io.File;
 import java.io.IOException;
 
 import org.apache.log4j.RollingFileAppender;
@@ -25,7 +26,7 @@ public class UsageAppender extends RollingFileAppender {
     super(new UsageLayout(), getFileName());
     setMaxFileSize("20MB");
     setMaxBackupIndex(30);
-    
+
     addFilter(new Filter() {
       @Override
       public int decide(LoggingEvent arg0) {
@@ -35,6 +36,6 @@ public class UsageAppender extends RollingFileAppender {
   }
 
   private static String getFileName() {
-    return System.getProperty(UsageMonitoringLogger.USAGE_PATH)+ "\\Usage.log";
+    return System.getProperty(UsageMonitoringLogger.USAGE_PATH) + File.separator + "Usage.log";
   }
 }
