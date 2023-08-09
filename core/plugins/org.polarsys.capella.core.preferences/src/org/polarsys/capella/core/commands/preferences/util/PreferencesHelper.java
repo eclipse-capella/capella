@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2024 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -47,6 +47,7 @@ import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IPerspectiveDescriptor;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPage;
@@ -139,11 +140,12 @@ public class PreferencesHelper {
     IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
     IWorkbenchPage activePage = window != null ? window.getActivePage() : null;
     ISelection activeSelection = activePage != null ? activePage.getSelection() : null;
-
+    IEditorPart activeEditor = activePage != null ? activePage.getActiveEditor() : null;
+    
     IProject capellaProject = null;
-    if ((activeSelection != null) && !activeSelection.isEmpty() && (activeSelection instanceof IStructuredSelection)) {
+    if ((activeSelection != null) && !activeSelection.isEmpty() && activeSelection instanceof IStructuredSelection structSel) {
 
-      Object a = ((IStructuredSelection) activeSelection).iterator().next();
+      Object a = structSel.iterator().next();
       if (a instanceof IProject) {
         capellaProject = (IProject) a;
       } else if (a instanceof IFile) {
@@ -153,28 +155,29 @@ public class PreferencesHelper {
         capellaProject = getProject(((EObject) a));
       }
 
-    } else if ((activePage != null) && (activePage.getActiveEditor() != null)
-        && (activePage.getActiveEditor().getEditorInput() instanceof URIEditorInput)) {
-      URI uri = ((URIEditorInput) activePage.getActiveEditor().getEditorInput()).getURI();
+    } else if (activeEditor != null && activeEditor.getEditorInput() instanceof URIEditorInput uriEditorImput) {
+      URI uri = uriEditorImput.getURI();
       IFile resourceFile = getFileFromUri(uri);
-      if ((null == resourceFile) && (activePage.getActiveEditor().getEditorInput() instanceof SessionEditorInput)
+      if ((null == resourceFile) && uriEditorImput instanceof SessionEditorInput sessionEditorInput
       // to avoid getting resource on a null session
-          && ((SessionEditorInput) activePage.getActiveEditor().getEditorInput()).getStatus().isOK()) {
+          && sessionEditorInput.getStatus().isOK()) {
         // In Capella Team context, the URI is a cdo URI (can't be used to find a local resource file).
         // Get the session from the editor.
-        Session session = ((SessionEditorInput) activePage.getActiveEditor().getEditorInput()).getSession();
-        Resource sessionResource = session.getSessionResource();
-        URI sessionResourceURI = sessionResource.getURI();
-        resourceFile = getFileFromUri(sessionResourceURI);
-      }
+        Session session = sessionEditorInput.getSession();
+        if(session != null) {
+          Resource sessionResource = session.getSessionResource();
+          URI sessionResourceURI = sessionResource.getURI();
+          resourceFile = getFileFromUri(sessionResourceURI);
+        }
+      }  
       // If the resource file is still null -> return a null project, preferences will be taken at workspace level.
       if (null != resourceFile) {
         capellaProject = resourceFile.getProject();
       }
-    } else if ((activePage != null) && (activePage.getActiveEditor() != null)
-        && (activePage.getActiveEditor().getEditorInput() != null)
-        && (activePage.getActiveEditor().getEditorInput().getName() != null)) {
-      capellaProject = getProjectByEditorName(activePage.getActiveEditor().getEditorInput().getName());
+    } else if (activeEditor != null
+        && activeEditor.getEditorInput() != null
+        && activeEditor.getEditorInput().getName() != null) {
+      capellaProject = getProjectByEditorName(activeEditor.getEditorInput().getName());
     }
 
     return capellaProject;
