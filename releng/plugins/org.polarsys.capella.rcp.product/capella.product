@@ -13,6 +13,7 @@
       <vmArgs>-Dosgi.requiredJavaVersion=17
 -Dosgi.dataAreaRequiresExplicitInit=true
 -Dpde.jreProfile=JavaSE-17
+-Dlogback.configurationFile=configuration/logback.xml
 -Xms1000m
 -Xmx3000m
 -Xss4m
