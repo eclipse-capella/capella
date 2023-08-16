@@ -753,6 +753,17 @@ resultIds = {
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.Part_MinCardinality-getAvailableElements
+inputId = daf06284-e8c7-419f-ad95-1f44923315b0
+resultIds = {
+    e4bae922-e84c-4c9c-9e5c-9e54692915e9
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.cs.Part_MinCardinality-getCurrentElements
+inputId = daf06284-e8c7-419f-ad95-1f44923315b0
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.cs.Part_MinCardinality-getAvailableElements
 inputId = 5a6c46c5-2ca9-4073-a79f-85cb276a15d0
 resultIds = {
     e4bae922-e84c-4c9c-9e5c-9e54692915e9
@@ -1112,6 +1123,50 @@ resultIds = {
 
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.Part_MinCardinality-getCurrentElements
 inputId = c121e7fc-cf14-4863-8dfb-6da5874e9ce7
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.cs.Part_MinCardinality-getAvailableElements
+inputId = 4465abe5-3c6d-439b-8a16-ce21bfc468e5
+resultIds = {
+    e4bae922-e84c-4c9c-9e5c-9e54692915e9
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.cs.Part_MinCardinality-getCurrentElements
+inputId = 4465abe5-3c6d-439b-8a16-ce21bfc468e5
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.cs.Part_MinCardinality-getAvailableElements
+inputId = bd426bfe-6ab5-4666-827a-7c032c7159c9
+resultIds = {
+    e4bae922-e84c-4c9c-9e5c-9e54692915e9
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.cs.Part_MinCardinality-getCurrentElements
+inputId = bd426bfe-6ab5-4666-827a-7c032c7159c9
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.cs.Part_MinCardinality-getAvailableElements
+inputId = f95b2f22-3a6d-40cf-9c3e-8e669a47f528
+resultIds = {
+    e4bae922-e84c-4c9c-9e5c-9e54692915e9
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.cs.Part_MinCardinality-getCurrentElements
+inputId = f95b2f22-3a6d-40cf-9c3e-8e669a47f528
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.cs.Part_MinCardinality-getAvailableElements
+inputId = dc30520e-9ba2-437c-b1c5-27eb9f2c4850
+resultIds = {
+    e4bae922-e84c-4c9c-9e5c-9e54692915e9
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.cs.Part_MinCardinality-getCurrentElements
+inputId = dc30520e-9ba2-437c-b1c5-27eb9f2c4850
 resultIds = {
 }
 

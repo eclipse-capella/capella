@@ -2959,6 +2959,9 @@ Stop the event</bodies>
         <ownedComponentExchanges xsi:type="org.polarsys.capella.core.data.fa:ComponentExchange"
             id="22d3f829-2db8-4129-a396-b4530580cc0e" name="C 8" source="#0974a2ca-15cd-4e60-8e7e-647c456f7481"
             target="#6d5fdb91-7c15-4b8d-ba61-7d7485075dfe" kind="FLOW"/>
+        <ownedComponentExchanges xsi:type="org.polarsys.capella.core.data.fa:ComponentExchange"
+            id="e8c314ce-e715-49f2-a3e0-e4570195fd34" name="C 9" source="#cd60beca-b02c-4cda-8408-8cab89947117"
+            target="#db44efd5-ced4-4363-a866-e34c5baddbc5" kind="FLOW"/>
         <ownedSystemComponents xsi:type="org.polarsys.capella.core.data.ctx:SystemComponent"
             id="d8c47314-238b-4bc6-a945-bd76c26b5a9b" name="System" description="&lt;h1 class=&quot;western&quot; lang=&quot;en-US&quot;&#xD;&#xA;style=&quot;MARGIN-TOP: 0.35cm; FONT-SIZE: 16pt; MARGIN-BOTTOM: 0cm; WORD-SPACING: 0px; PAGE-BREAK-AFTER: auto; TEXT-TRANSFORM: none; COLOR: rgb(255,255,255); DIRECTION: ltr; TEXT-INDENT: 0px; LINE-HEIGHT: 24px; FONT-STYLE: normal; FONT-FAMILY: Calibri, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(79,129,189); FONT-VARIANT: normal; background-origin: initial; background-clip: initial; widows: 2; orphans: 2; webkit-text-size-adjust: auto; webkit-text-stroke-width: 0px&quot;>&#xD;&#xA;    MDE MARKET STUDY&#xD;&#xA;&lt;/h1>&#xD;&#xA;&lt;h2 class=&quot;western&quot; lang=&quot;en-US&quot;&#xD;&#xA;style=&quot;BORDER-RIGHT: rgb(255,255,255) 2.5pt solid; PADDING-RIGHT: 0cm; BORDER-TOP: rgb(255,255,255) 2.5pt solid; MARGIN-TOP: 0.35cm; PADDING-LEFT: 0cm; FONT-SIZE: 14pt; MARGIN-BOTTOM: 0cm; PADDING-BOTTOM: 0cm; WORD-SPACING: 0px; PAGE-BREAK-AFTER: auto; TEXT-TRANSFORM: none; BORDER-LEFT: rgb(255,255,255) 2.5pt solid; COLOR: rgb(0,0,0); DIRECTION: ltr; TEXT-INDENT: 0px; LINE-HEIGHT: 21px; PADDING-TOP: 0cm; BORDER-BOTTOM: rgb(255,255,255) 2.5pt solid; FONT-STYLE: normal; FONT-FAMILY: Calibri, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(219,229,241); FONT-VARIANT: normal; background-origin: initial; background-clip: initial; widows: 2; orphans: 2; webkit-text-size-adjust: auto; webkit-text-stroke-width: 0px; border-image: initial&quot;>&#xD;&#xA;    EXISTING MODEL-DRIVEN ENVIRONMENTS&#xD;&#xA;&lt;/h2>&#xD;&#xA;&lt;ol>&#xD;&#xA;    &lt;li>&#xD;&#xA;        &lt;div class=&quot;western&quot; lang=&quot;en-US&quot;&#xD;&#xA;        style=&quot;MARGIN-TOP: 0.35cm; MARGIN-BOTTOM: 0.35cm; WORD-SPACING: 0px; FONT: 11pt/17px Calibri, sans-serif; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); DIRECTION: ltr; TEXT-INDENT: 0px; WHITE-SPACE: normal; LETTER-SPACING: normal; widows: 2; orphans: 2; webkit-text-size-adjust: auto; webkit-text-stroke-width: 0px&quot;>&#xD;&#xA;            Model-driven architecture (&lt;b>MDA&lt;/b>) is a software design approach for the development of software systems.&#xD;&#xA;            It provides a set of guidelines for the structuring of specifications, which are expressed as models.&#xD;&#xA;            Model-driven architecture is a kind of domain engineering, and supports model-driven engineering of software&#xD;&#xA;            systems. It was launched by the Object Management Group (OMG) in 2001.&#xD;&#xA;        &lt;/div>&#xD;&#xA;    &lt;/li>&#xD;&#xA;    &lt;li>&#xD;&#xA;        &lt;div class=&quot;western&quot; lang=&quot;en-US&quot;&#xD;&#xA;        style=&quot;MARGIN-TOP: 0.35cm; MARGIN-BOTTOM: 0.35cm; WORD-SPACING: 0px; FONT: 11pt/17px Calibri, sans-serif; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); DIRECTION: ltr; TEXT-INDENT: 0px; WHITE-SPACE: normal; LETTER-SPACING: normal; widows: 2; orphans: 2; webkit-text-size-adjust: auto; webkit-text-stroke-width: 0px&quot;>&#xD;&#xA;            Model-driven engineering (&lt;b>MDE&lt;/b>) is a software development methodology which focuses on creating and&#xD;&#xA;            exploiting domain models (that is, abstract representations of the knowledge and activities that govern a&#xD;&#xA;            particular application domain), rather than on the computing (or algorithmic) concepts. The MDE approach is&#xD;&#xA;            meant to increase productivity by maximizing compatibility between systems (via reuse of standardized models),&#xD;&#xA;            simplifying the process of design (via models of recurring design patterns in the application domain), and&#xD;&#xA;            promoting communication between individuals and teams working on the system (via a standardization of the&#xD;&#xA;            terminology and the best practices used in the application domain).&#xD;&#xA;        &lt;/div>&#xD;&#xA;    &lt;/li>&#xD;&#xA;&lt;/ol>&#xD;&#xA;&lt;p class=&quot;western&quot; lang=&quot;en-US&quot;&#xD;&#xA;style=&quot;MARGIN-TOP: 0.35cm; MARGIN-BOTTOM: 0.35cm; WORD-SPACING: 0px; FONT: 11pt/17px Calibri, sans-serif; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); DIRECTION: ltr; TEXT-INDENT: 0px; WHITE-SPACE: normal; LETTER-SPACING: normal; widows: 2; orphans: 2; webkit-text-size-adjust: auto; webkit-text-stroke-width: 0px&quot;>&#xD;&#xA;    Sample diagram &lt;a&#xD;&#xA;    href=&quot;hlink://_DzAHsMNUEeCIKqJoDdBYCg&quot;>[ES] OES1 -&#xD;&#xA;    Exchange Scenario&lt;/a> and model element &lt;a&#xD;&#xA;    href=&quot;hlink://d8c47314-238b-4bc6-a945-bd76c26b5a9b&quot;>System&lt;/a>&#xD;&#xA;&lt;/p>&#xD;&#xA;&lt;h2 class=&quot;western&quot; lang=&quot;en-US&quot;&#xD;&#xA;style=&quot;BORDER-RIGHT: rgb(255,255,255) 2.5pt solid; PADDING-RIGHT: 0cm; BORDER-TOP: rgb(255,255,255) 2.5pt solid; MARGIN-TOP: 0.35cm; PADDING-LEFT: 0cm; FONT-SIZE: 14pt; MARGIN-BOTTOM: 0cm; PADDING-BOTTOM: 0cm; WORD-SPACING: 0px; PAGE-BREAK-AFTER: auto; TEXT-TRANSFORM: none; BORDER-LEFT: rgb(255,255,255) 2.5pt solid; COLOR: rgb(0,0,0); DIRECTION: ltr; TEXT-INDENT: 0px; LINE-HEIGHT: 21px; PADDING-TOP: 0cm; BORDER-BOTTOM: rgb(255,255,255) 2.5pt solid; FONT-STYLE: normal; FONT-FAMILY: Calibri, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(219,229,241); FONT-VARIANT: normal; background-origin: initial; background-clip: initial; widows: 2; orphans: 2; webkit-text-size-adjust: auto; webkit-text-stroke-width: 0px; border-image: initial&quot;>&#xD;&#xA;    EXISTING LANGUAGES FOR MD ENVIRONMENTS&#xD;&#xA;&lt;/h2>&#xD;&#xA;&lt;p class=&quot;western&quot; lang=&quot;en-US&quot;&#xD;&#xA;style=&quot;MARGIN-TOP: 0.35cm; MARGIN-BOTTOM: 0.35cm; WORD-SPACING: 0px; FONT: 11pt/17px Calibri, sans-serif; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); DIRECTION: ltr; TEXT-INDENT: 0px; WHITE-SPACE: normal; LETTER-SPACING: normal; widows: 2; orphans: 2; webkit-text-size-adjust: auto; webkit-text-stroke-width: 0px&quot;&#xD;&#xA; align=&quot;center&quot;>&#xD;&#xA;    &lt;b>UML&lt;/b>&lt;span class=&quot;Apple-converted-space&quot;>&amp;nbsp;&lt;/span>is a general purpose engineering language dedicated to&#xD;&#xA;    Software Engineering. Its basic constructs allow software architecture definition and software design, but an&#xD;&#xA;    additional implicit (using modeling conventions) or explicit Framework (using one or several UML profiles) needs to be&#xD;&#xA;    applied for being used properly.&#xD;&#xA;&lt;/p>&#xD;&#xA;&lt;p class=&quot;western&quot; lang=&quot;en-US&quot;&#xD;&#xA;style=&quot;MARGIN-TOP: 0.35cm; MARGIN-BOTTOM: 0.35cm; WORD-SPACING: 0px; FONT: 11pt/17px Calibri, sans-serif; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); DIRECTION: ltr; TEXT-INDENT: 0px; WHITE-SPACE: normal; LETTER-SPACING: normal; widows: 2; orphans: 2; webkit-text-size-adjust: auto; webkit-text-stroke-width: 0px&quot;&#xD;&#xA; align=&quot;center&quot;>&#xD;&#xA;    &lt;img src=&quot;sysmodel/ressources/uml.jpg&quot; />&#xD;&#xA;&lt;/p>&#xD;&#xA;&lt;h2 class=&quot;western&quot; lang=&quot;en-US&quot;&#xD;&#xA;style=&quot;BORDER-RIGHT: rgb(255,255,255) 2.5pt solid; PADDING-RIGHT: 0cm; BORDER-TOP: rgb(255,255,255) 2.5pt solid; MARGIN-TOP: 0.35cm; PADDING-LEFT: 0cm; FONT-SIZE: 14pt; MARGIN-BOTTOM: 0cm; PADDING-BOTTOM: 0cm; WORD-SPACING: 0px; PAGE-BREAK-AFTER: auto; TEXT-TRANSFORM: none; BORDER-LEFT: rgb(255,255,255) 2.5pt solid; COLOR: rgb(0,0,0); DIRECTION: ltr; TEXT-INDENT: 0px; LINE-HEIGHT: 21px; PADDING-TOP: 0cm; BORDER-BOTTOM: rgb(255,255,255) 2.5pt solid; FONT-STYLE: normal; FONT-FAMILY: Calibri, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(219,229,241); FONT-VARIANT: normal; background-origin: initial; background-clip: initial; widows: 2; orphans: 2; webkit-text-size-adjust: auto; webkit-text-stroke-width: 0px; border-image: initial&quot;>&#xD;&#xA;    SOME TOOLS (NOT EXHAUSTIVE)&#xD;&#xA;&lt;/h2>&#xD;&#xA;&lt;ul>&#xD;&#xA;    &lt;li>&#xD;&#xA;        &lt;div class=&quot;western&quot; lang=&quot;en-US&quot;&#xD;&#xA;        style=&quot;MARGIN-TOP: 0.35cm; MARGIN-BOTTOM: 0.35cm; WORD-SPACING: 0px; FONT: 11pt/17px Calibri, sans-serif; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); DIRECTION: ltr; TEXT-INDENT: 0px; WHITE-SPACE: normal; LETTER-SPACING: normal; widows: 2; orphans: 2; webkit-text-size-adjust: auto; webkit-text-stroke-width: 0px&quot;>&#xD;&#xA;            Now called&lt;span class=&quot;Apple-converted-space&quot;>&amp;nbsp;&lt;/span>&lt;b>IBM Rational Rhapsody&lt;/b>, a modeling environment&#xD;&#xA;            based on UML, Rhapsody is a visual development environment for systems engineers and software developers&#xD;&#xA;            creating real-time or embedded systems and software. Rational Rhapsody uses graphical models to generate&#xD;&#xA;            software applications in various languages including C, C++, Ada, Java and C#. Rational Rhapsody helps diverse&#xD;&#xA;            teams collaborate to understand and elaborate requirements, abstract complexity visually using industry&#xD;&#xA;            standard languages (UML, SysML, AUTOSAR, DoDAF, MODAF, UPDM), validate functionality early in development, and&#xD;&#xA;            automate delivery of high quality products.&#xD;&#xA;        &lt;/div>&#xD;&#xA;    &lt;/li>&#xD;&#xA;    &lt;li>&#xD;&#xA;        &lt;div class=&quot;western&quot; lang=&quot;en-US&quot;&#xD;&#xA;        style=&quot;MARGIN-TOP: 0.35cm; MARGIN-BOTTOM: 0.35cm; WORD-SPACING: 0px; FONT: 11pt/17px Calibri, sans-serif; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); DIRECTION: ltr; TEXT-INDENT: 0px; WHITE-SPACE: normal; LETTER-SPACING: normal; widows: 2; orphans: 2; webkit-text-size-adjust: auto; webkit-text-stroke-width: 0px&quot;>&#xD;&#xA;            The&lt;span class=&quot;Apple-converted-space&quot;>&amp;nbsp;&lt;/span>&lt;b>IBM (RM) Harmony&lt;span&#xD;&#xA;            class=&quot;Apple-converted-space&quot;>&amp;nbsp;&lt;/span>&lt;/b>Framework addresses Embedded Systems Engineering. Nevertheless,&#xD;&#xA;            its scope does not cover Operational Needs Analysis, and covers only partially System Analysis and Architecture&#xD;&#xA;            Analysis and Design. An in-depth study of Harmony showed that Interface Engineering, key to Systems&#xD;&#xA;            Engineering, is only partially covered (Physical Components can only have Logical Interfaces), functional&#xD;&#xA;            analysis is done in a service-oriented rather than a data-flow oriented way, data modelling does not allow data&#xD;&#xA;            definition but only data identification. Moreover, the Thales Systems Engineering community does usually not&#xD;&#xA;            accept the SysML/UML language used by the Harmony Framework, and multi-viewpoint analysis is not&#xD;&#xA;            supported.&amp;nbsp;&amp;nbsp;&#xD;&#xA;        &lt;/div>&#xD;&#xA;    &lt;/li>&#xD;&#xA;&lt;/ul>"
             review="Review System&#xD;&#xA;End" status="#12f9c21c-a72e-4051-b611-619c940552eb">
@@ -3099,6 +3102,9 @@ Stop the event</bodies>
               kind="FLOW"/>
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.fa:ComponentPort"
               id="0974a2ca-15cd-4e60-8e7e-647c456f7481" name="CP 9" orientation="INOUT"
+              kind="FLOW"/>
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.fa:ComponentPort"
+              id="cd60beca-b02c-4cda-8408-8cab89947117" name="CP 10" orientation="OUT"
               kind="FLOW"/>
           <ownedCommunicationLinks xsi:type="org.polarsys.capella.core.data.information.communication:CommunicationLink"
               id="458d31aa-fa78-40c7-a274-3c9955378ebd" kind="WRITE" exchangeItem="org.polarsys.capella.core.data.information:ExchangeItem fragments/SA-Data.capellafragment#1cb43832-b71e-4d96-a9ad-d24afa135080"/>
@@ -3290,6 +3296,9 @@ Stop the event</bodies>
           </ownedFeatures>
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:PhysicalPort"
               id="a032f2b2-6fd6-4504-aea1-eb1d5b5166c2" name="PP 2"/>
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.fa:ComponentPort"
+              id="db44efd5-ced4-4363-a866-e34c5baddbc5" name="CP 3" orientation="IN"
+              kind="FLOW"/>
         </ownedSystemComponents>
       </ownedSystemComponentPkg>
       <ownedMissionPkg xsi:type="org.polarsys.capella.core.data.ctx:MissionPkg" id="9e515fef-4bb1-4621-940d-da138b46a284"
@@ -5549,6 +5558,9 @@ stop sequence</bodies>
               id="efc9b53d-e603-478d-88d3-2bf7bb5c4ced" targetElement="#22d3f829-2db8-4129-a396-b4530580cc0e"
               sourceElement="#96d430b1-fe08-4ac2-8a3e-b5900e4aa41a"/>
         </ownedComponentExchanges>
+        <ownedComponentExchanges xsi:type="org.polarsys.capella.core.data.fa:ComponentExchange"
+            id="9058d050-ac52-4580-863e-327248726550" name="C 9" source="#190aaa17-ad12-4bfe-b964-c8f6e194c727"
+            target="#5a9109e5-b3d2-46e1-bb91-b754e40b869b" kind="FLOW"/>
         <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
             id="f75ce897-dc5b-473a-8147-557ba79a0126" name="OA1" actor="true">
           <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
@@ -5802,6 +5814,9 @@ stop sequence</bodies>
                 id="ad0e1e17-8fac-4d2e-904f-ad13d88b1e03" targetElement="#a032f2b2-6fd6-4504-aea1-eb1d5b5166c2"
                 sourceElement="#3af346a5-891b-457b-8b63-78f01cfccba9"/>
           </ownedFeatures>
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.fa:ComponentPort"
+              id="5a9109e5-b3d2-46e1-bb91-b754e40b869b" name="CP 3" orientation="IN"
+              kind="FLOW"/>
           <ownedComponentRealizations xsi:type="org.polarsys.capella.core.data.cs:ComponentRealization"
               id="a238e722-832d-405a-9a35-bca71dd9d82b" targetElement="#fd49b459-02e4-4dcb-9da6-10ef1ba9fcaf"
               sourceElement="#56ab8514-4c42-42ae-8799-9db4e6dcb1e2"/>
@@ -6018,6 +6033,9 @@ stop sequence</bodies>
           </ownedFeatures>
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="b4af3c86-f15a-4f53-83f6-d7a04f812646"
               name="Pattern_Style_Layout" abstractType="#e2edfd0a-2150-4c41-b6f2-69ada57bf6b5"/>
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.fa:ComponentPort"
+              id="190aaa17-ad12-4bfe-b964-c8f6e194c727" name="CP 27" orientation="OUT"
+              kind="FLOW"/>
           <ownedCommunicationLinks xsi:type="org.polarsys.capella.core.data.information.communication:CommunicationLink"
               id="7949f8bc-405f-4a4e-848b-ba79ff410acc" kind="WRITE" exchangeItem="org.polarsys.capella.core.data.information:ExchangeItem fragments/SA-Data.capellafragment#1cb43832-b71e-4d96-a9ad-d24afa135080"/>
           <ownedCommunicationLinks xsi:type="org.polarsys.capella.core.data.information.communication:CommunicationLink"
@@ -8093,6 +8111,8 @@ stop sequence</bodies>
             name="Actor4" abstractType="#ed542859-19dd-4d24-977c-6464e71b6d16"/>
         <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="8ed4b9cf-0bdd-4590-ab25-10c206634d2f"
             name="User_bad_reuse" abstractType="#a4917194-4c32-443f-bdaa-412950062088"/>
+        <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="daf06284-e8c7-419f-ad95-1f44923315b0"
+            name="PA 7" abstractType="#af65959b-09a8-439a-8dd9-339ab08f1f2b"/>
         <ownedComponentExchanges xsi:type="org.polarsys.capella.core.data.fa:ComponentExchange"
             id="1cbc9a87-3fd1-4fcf-ac07-4a0857355040" name="Sysi1" source="#5476d67d-0e3f-40d8-9654-e5cdaf96e1b3"
             target="#c9a145ee-acad-4b2b-b51d-d49ec790b7f0" kind="FLOW">
@@ -8132,6 +8152,11 @@ stop sequence</bodies>
               id="3542ba30-7fc9-4f05-a9e2-2dc2916682a4" targetElement="#e113eee9-7e3f-407b-a33d-0d88e9e5250d"
               sourceElement="#e651b6a0-024f-4a1b-9d44-0ab60a934f4c"/>
         </ownedComponentExchanges>
+        <ownedComponentExchanges xsi:type="org.polarsys.capella.core.data.fa:ComponentExchange"
+            id="5fec5b9a-5b6d-4ed6-85d5-1c3c68de1b2e" name="C 5" source="#32346cfa-9a94-40ef-916c-6ba279d7054d"
+            target="#ce7e87b8-2a0c-4e86-b096-4a2f5579e775" kind="FLOW"/>
+        <ownedPhysicalLinks xsi:type="org.polarsys.capella.core.data.cs:PhysicalLink"
+            id="9217c3a7-9217-4ccd-9ab8-3eeed2145106" name="PL 1" linkEnds="#2dcf8af0-48bd-4f25-9a45-3ef4181d5ca1 #6f0b9c7d-fb02-4ab7-ae09-a09164b10629"/>
         <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
             id="d2f2b89e-e727-43e1-a83f-97af3850387c" name="OA1" actor="true" nature="NODE">
           <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
@@ -8644,6 +8669,22 @@ stop sequence</bodies>
               name="PC 26" abstractType="#75e784e6-8b76-4b83-a53a-c86b4c83fec8"/>
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="c121e7fc-cf14-4863-8dfb-6da5874e9ce7"
               name="PC 27" abstractType="#aedc34ea-49c7-4d2c-8d1f-a95a7351cdfd"/>
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="4465abe5-3c6d-439b-8a16-ce21bfc468e5"
+              name="PC 28" abstractType="#63049898-92e4-47a5-8932-392c565a909c">
+            <ownedDeploymentLinks xsi:type="org.polarsys.capella.core.data.pa.deployment:PartDeploymentLink"
+                id="63d0ea1a-8c9f-4c0d-af5a-0adaafa7acb3" deployedElement="#f95b2f22-3a6d-40cf-9c3e-8e669a47f528"
+                location="#4465abe5-3c6d-439b-8a16-ce21bfc468e5"/>
+          </ownedFeatures>
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="bd426bfe-6ab5-4666-827a-7c032c7159c9"
+              name="PC 29" abstractType="#ae81a36c-b7ea-4f64-93a6-622195b23a78">
+            <ownedDeploymentLinks xsi:type="org.polarsys.capella.core.data.pa.deployment:PartDeploymentLink"
+                id="930fb660-1160-49ea-9bb3-7ab4bf6b6454" deployedElement="#dc30520e-9ba2-437c-b1c5-27eb9f2c4850"
+                location="#bd426bfe-6ab5-4666-827a-7c032c7159c9"/>
+          </ownedFeatures>
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="f95b2f22-3a6d-40cf-9c3e-8e669a47f528"
+              name="PC 30" abstractType="#a413b59d-320d-4de8-bb04-c11d0d5c3c01"/>
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="dc30520e-9ba2-437c-b1c5-27eb9f2c4850"
+              name="PC 31" abstractType="#fe28346e-547b-42ba-addd-d4a8c4efb396"/>
           <ownedInterfaceUses xsi:type="org.polarsys.capella.core.data.cs:InterfaceUse"
               id="a34249cb-9be3-401d-962f-64ae9cebbf8c" usedInterface="#042ea71d-f30b-433d-b3ce-8ba59be4ee2e"/>
           <ownedInterfaceUses xsi:type="org.polarsys.capella.core.data.cs:InterfaceUse"
@@ -8690,6 +8731,23 @@ stop sequence</bodies>
             <ownedPhysicalPathInvolvements xsi:type="org.polarsys.capella.core.data.cs:PhysicalPathInvolvement"
                 id="f082fc7d-f634-4af9-819f-309315b344ce" involved="#c9fb1fe6-8b47-47a6-8584-167f5cc5dbeb"/>
           </ownedPhysicalPath>
+          <ownedPhysicalPath xsi:type="org.polarsys.capella.core.data.cs:PhysicalPath"
+              id="d154f29d-8351-4515-8bb2-d26338dbb2bc" name="PhysicalPath 3">
+            <ownedPhysicalPathInvolvements xsi:type="org.polarsys.capella.core.data.cs:PhysicalPathInvolvement"
+                id="a49fc93d-9d56-49dc-a15e-821f07412c1c" involved="#daf06284-e8c7-419f-ad95-1f44923315b0"
+                nextInvolvements="#ad1276fb-e6ca-4fcc-9fe3-039d65399e39"/>
+            <ownedPhysicalPathInvolvements xsi:type="org.polarsys.capella.core.data.cs:PhysicalPathInvolvement"
+                id="ad1276fb-e6ca-4fcc-9fe3-039d65399e39" involved="#9217c3a7-9217-4ccd-9ab8-3eeed2145106"
+                nextInvolvements="#9c2f7e02-441f-4a94-ab2f-84e80fdf4edf"/>
+            <ownedPhysicalPathInvolvements xsi:type="org.polarsys.capella.core.data.cs:PhysicalPathInvolvement"
+                id="9c2f7e02-441f-4a94-ab2f-84e80fdf4edf" involved="#4465abe5-3c6d-439b-8a16-ce21bfc468e5"
+                nextInvolvements="#8e65a0a1-614e-4eb6-80fa-3a5fe3a1e5f4"/>
+            <ownedPhysicalPathInvolvements xsi:type="org.polarsys.capella.core.data.cs:PhysicalPathInvolvement"
+                id="8e65a0a1-614e-4eb6-80fa-3a5fe3a1e5f4" involved="#ebcea662-88bf-4ea9-81a2-7c7a292add2c"
+                nextInvolvements="#9a452e5c-7c23-487f-97ca-21ab78e715cd"/>
+            <ownedPhysicalPathInvolvements xsi:type="org.polarsys.capella.core.data.cs:PhysicalPathInvolvement"
+                id="9a452e5c-7c23-487f-97ca-21ab78e715cd" involved="#bd426bfe-6ab5-4666-827a-7c032c7159c9"/>
+          </ownedPhysicalPath>
           <ownedPhysicalLinks xsi:type="org.polarsys.capella.core.data.cs:PhysicalLink"
               id="6a358546-f5ff-4a77-971b-4fdc75ab21a3" name="PL1" linkEnds="#46cbfa11-8dfb-4f65-8bbe-fac27139a364 #7cb2b223-3ded-48f6-8dba-ffeb4265e241"/>
           <ownedPhysicalLinks xsi:type="org.polarsys.capella.core.data.cs:PhysicalLink"
@@ -8724,6 +8782,8 @@ stop sequence</bodies>
               id="9a57ea45-6835-4d1a-a8d0-8b71a0805150" name="PL 10" linkEnds="#755408bc-2d11-4c5a-8304-329c9b18e57a #325b2a96-7664-4316-94a1-ec071e918b29"/>
           <ownedPhysicalLinks xsi:type="org.polarsys.capella.core.data.cs:PhysicalLink"
               id="d9359bb4-b0bd-4848-9c42-92b1deefbe0a" name="PL 11" linkEnds="#692a8543-b33d-4b55-b02b-6e3313f234ee #5c10a88e-5d6c-44c6-a61e-7603f04465e5"/>
+          <ownedPhysicalLinks xsi:type="org.polarsys.capella.core.data.cs:PhysicalLink"
+              id="ebcea662-88bf-4ea9-81a2-7c7a292add2c" name="PL 12" linkEnds="#b64df7bf-4d84-4d37-9277-a9145b5cdc1b #1849d516-7aef-42ff-a55b-2b3368567679"/>
           <ownedPhysicalLinkCategories xsi:type="org.polarsys.capella.core.data.cs:PhysicalLinkCategory"
               id="b98b82ac-f139-4afc-9743-84b5dd266b8c" name="PLC_A" links="#94b078f3-74dc-4b83-adba-c7e47969d6f9 #7d4f981f-04d6-4be2-8692-cbfdcd582908 #699f5bc4-10c1-4935-8d83-2d4244f1fe06"/>
           <ownedPhysicalLinkCategories xsi:type="org.polarsys.capella.core.data.cs:PhysicalLinkCategory"
@@ -9428,6 +9488,26 @@ stop sequence</bodies>
                   id="781d0eae-7587-421d-b525-0fb206d45032" name="CP 1" orientation="IN"
                   kind="FLOW"/>
             </ownedPhysicalComponents>
+          </ownedPhysicalComponents>
+          <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
+              id="63049898-92e4-47a5-8932-392c565a909c" name="PC 28" nature="NODE">
+            <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:PhysicalPort"
+                id="6f0b9c7d-fb02-4ab7-ae09-a09164b10629" name="PP 1"/>
+            <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:PhysicalPort"
+                id="b64df7bf-4d84-4d37-9277-a9145b5cdc1b" name="PP 2"/>
+          </ownedPhysicalComponents>
+          <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
+              id="ae81a36c-b7ea-4f64-93a6-622195b23a78" name="PC 29" nature="NODE">
+            <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:PhysicalPort"
+                id="1849d516-7aef-42ff-a55b-2b3368567679" name="PP 1"/>
+          </ownedPhysicalComponents>
+          <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
+              id="a413b59d-320d-4de8-bb04-c11d0d5c3c01" name="PC 30" nature="BEHAVIOR"/>
+          <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
+              id="fe28346e-547b-42ba-addd-d4a8c4efb396" name="PC 31" nature="BEHAVIOR">
+            <ownedFeatures xsi:type="org.polarsys.capella.core.data.fa:ComponentPort"
+                id="ce7e87b8-2a0c-4e86-b096-4a2f5579e775" name="CP 1" orientation="IN"
+                kind="FLOW"/>
           </ownedPhysicalComponents>
           <ownedPhysicalComponentPkgs xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponentPkg"
               id="3bb6744d-d92e-4588-b906-35ce65f0448b" name="PC folder">
@@ -10412,6 +10492,14 @@ stop sequence</bodies>
               </ownedPhysicalComponents>
             </ownedPhysicalComponents>
           </ownedPhysicalComponentPkgs>
+        </ownedPhysicalComponents>
+        <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
+            id="af65959b-09a8-439a-8dd9-339ab08f1f2b" name="PA 7" actor="true" nature="NODE">
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.fa:ComponentPort"
+              id="32346cfa-9a94-40ef-916c-6ba279d7054d" name="CP 1" orientation="OUT"
+              kind="FLOW"/>
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:PhysicalPort"
+              id="2dcf8af0-48bd-4f25-9a45-3ef4181d5ca1" name="PP 2"/>
         </ownedPhysicalComponents>
       </ownedPhysicalComponentPkg>
       <ownedLogicalArchitectureRealizations xsi:type="org.polarsys.capella.core.data.pa:LogicalArchitectureRealization"
