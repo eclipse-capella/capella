@@ -118,6 +118,16 @@ resultIds = {
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.fa.ComponentExchange_AllocatedFunctionalExchanges-getAvailableElements
+inputId = e8c314ce-e715-49f2-a3e0-e4570195fd34
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.fa.ComponentExchange_AllocatedFunctionalExchanges-getCurrentElements
+inputId = e8c314ce-e715-49f2-a3e0-e4570195fd34
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.fa.ComponentExchange_AllocatedFunctionalExchanges-getAvailableElements
 inputId = e88b2b8b-7f8f-46cb-9138-79c715234116
 resultIds = {
     140f54f4-5255-4457-87dc-227c80f76b88
@@ -206,6 +216,16 @@ resultIds = {
 
 queryIdentifier = org.polarsys.capella.core.business.queries.fa.ComponentExchange_AllocatedFunctionalExchanges-getCurrentElements
 inputId = 96d430b1-fe08-4ac2-8a3e-b5900e4aa41a
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.fa.ComponentExchange_AllocatedFunctionalExchanges-getAvailableElements
+inputId = 9058d050-ac52-4580-863e-327248726550
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.fa.ComponentExchange_AllocatedFunctionalExchanges-getCurrentElements
+inputId = 9058d050-ac52-4580-863e-327248726550
 resultIds = {
 }
 
@@ -399,6 +419,16 @@ queryIdentifier = org.polarsys.capella.core.business.queries.fa.ComponentExchang
 inputId = e651b6a0-024f-4a1b-9d44-0ab60a934f4c
 resultIds = {
     e113eee9-7e3f-407b-a33d-0d88e9e5250d
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.fa.ComponentExchange_AllocatedFunctionalExchanges-getAvailableElements
+inputId = 5fec5b9a-5b6d-4ed6-85d5-1c3c68de1b2e
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.fa.ComponentExchange_AllocatedFunctionalExchanges-getCurrentElements
+inputId = 5fec5b9a-5b6d-4ed6-85d5-1c3c68de1b2e
+resultIds = {
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.fa.ComponentExchange_AllocatedFunctionalExchanges-getAvailableElements
