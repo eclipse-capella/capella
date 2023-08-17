@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--Capella_Version_null-->
+<!--Capella_Version_7.0.0-->
 <org.polarsys.capella.core.data.capellamodeller:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:libraries="http://www.polarsys.org/capella/common/libraries/7.0.0"
     xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/7.0.0"
@@ -1640,7 +1640,7 @@
               id="88b74d6a-0423-4c4d-bfdc-6aa353d97f3d" name="PC 14" nature="NODE"/>
         </ownedPhysicalComponents>
         <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
-            id="7681f98c-7ee4-43bd-9794-cffdc2981cbb" name="PA 1" actor="true">
+            id="7681f98c-7ee4-43bd-9794-cffdc2981cbb" name="PA 1" actor="true" nature="NODE">
           <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
               id="8ff646e2-9908-4c87-b612-3df6a71e2f0f" targetElement="#8f1e3963-0e69-4f44-a69c-d410228e2587"
               sourceElement="#7681f98c-7ee4-43bd-9794-cffdc2981cbb"/>
@@ -1656,7 +1656,7 @@
               id="2b0577b8-fdda-49ae-bb2e-93c29ebb0b5d" name="PP 2"/>
         </ownedPhysicalComponents>
         <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
-            id="086c5e00-91df-4ba3-8da7-d9cd082bd47b" name="PA 2" actor="true">
+            id="086c5e00-91df-4ba3-8da7-d9cd082bd47b" name="PA 2" actor="true" nature="NODE">
           <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
               id="91cc0c38-d1fa-470c-9ddc-576e06802062" targetElement="#45213fd7-fe1d-4bc9-a4f3-51a446ad5087"
               sourceElement="#086c5e00-91df-4ba3-8da7-d9cd082bd47b"/>

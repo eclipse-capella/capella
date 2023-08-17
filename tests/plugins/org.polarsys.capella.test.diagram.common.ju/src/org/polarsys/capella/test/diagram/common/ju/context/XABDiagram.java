@@ -396,6 +396,10 @@ public class XABDiagram extends CommonDiagram {
     new CreateDEdgeTool(this, IToolNameConstants.TOOL_XAB_CREATE_PHYSICAL_LINK, idSource, idTarget, id).cannotRun();
   }
 
+  public void creationPhysicalLinkFail(String idSource, String idTarget) {
+    new CreateDEdgeTool(this, IToolNameConstants.TOOL_XAB_CREATE_PHYSICAL_LINK, idSource, idTarget).shouldFail();
+  }
+
   public String getToolNameReconnectPhysicalLink(BlockArchitectureExt.LinkDirection direction) {
     String name = null;
     if (direction == LinkDirection.SOURCE) {
@@ -581,7 +585,7 @@ public class XABDiagram extends CommonDiagram {
 
     // If tool show component in wizard but display parts in diagrams, or the opposite, we switch between them
     EObject scopeElement = scope.iterator().next();
-    Collection<EObject> result = new ArrayList<EObject>();
+    Collection<EObject> result = new ArrayList<>();
     for (EObject element : semanticElements) {
       if ((element instanceof Part) && (scopeElement instanceof Component)) {
         result.add(((Part) element).getAbstractType());
@@ -637,8 +641,7 @@ public class XABDiagram extends CommonDiagram {
   }
 
   public PhysicalPath createPhysicalPath(final String path, final String... links) {
-    List<DSemanticDecorator> decorators = Arrays.stream(links).map(string -> getView(string))
-        .collect(Collectors.toList());
+    List<DSemanticDecorator> decorators = Arrays.stream(links).map(this::getView).collect(Collectors.toList());
     List<EditPart> correspondingEditPart = decorators.stream()
         .map(decorator -> DiagramServices.getDiagramServices().getEditPart((DDiagramElement) decorator))
         .collect(Collectors.toList());
@@ -672,8 +675,7 @@ public class XABDiagram extends CommonDiagram {
   }
 
   public void createFunctionalChain(String path, String... links) {
-    List<DSemanticDecorator> decorators = Arrays.stream(links).map(string -> getView(string))
-        .collect(Collectors.toList());
+    List<DSemanticDecorator> decorators = Arrays.stream(links).map(this::getView).collect(Collectors.toList());
     List<EditPart> correspondingEditPart = decorators.stream()
         .map(decorator -> DiagramServices.getDiagramServices().getEditPart((DDiagramElement) decorator))
         .collect(Collectors.toList());
@@ -692,7 +694,7 @@ public class XABDiagram extends CommonDiagram {
     } catch (ExecutionException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
-      }
+    }
     putView(path, (DDiagramElement) result);
     getSessionContext().putSemanticElement(path, ((DDiagramElement) result).getTarget());
   }
@@ -817,7 +819,7 @@ public class XABDiagram extends CommonDiagram {
   }
 
   public void deleteSequenceLinks(String... ids) {
-    List<DSemanticDecorator> decorators = Arrays.stream(ids).map(id -> getView(id)).collect(Collectors.toList());
+    List<DSemanticDecorator> decorators = Arrays.stream(ids).map(this::getView).collect(Collectors.toList());
     DeleteHookHelper helper = new DeleteHookHelper(decorators);
     assertTrue(helper.checkDeleteHook());
   }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:concern="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/7.0.0" xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/7.0.0" xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/7.0.0" xmlns:org.polarsys.capella.core.data.epbs="http://www.polarsys.org/capella/core/epbs/7.0.0" xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/7.0.0" xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/7.0.0" xmlns:org.polarsys.capella.core.data.interaction="http://www.polarsys.org/capella/core/interaction/7.0.0" xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/7.0.0" xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/7.0.0" xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/7.0.0" xmlns:sequence="http://www.eclipse.org/sirius/diagram/sequence/2.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/concern http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0 http://www.eclipse.org/sirius/diagram/sequence/2.0.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_NtwEUR4mEemefoIC0oWX6A" selectedViews="_NuV6MB4mEemefoIC0oWX6A _N7dwMB4mEemefoIC0oWX6A _N8zM8B4mEemefoIC0oWX6A _N8898B4mEemefoIC0oWX6A _N9P44B4mEemefoIC0oWX6A _N9Zp4B4mEemefoIC0oWX6A _N-l8sB4mEemefoIC0oWX6A" version="15.1.0.202211301600">
+  <viewpoint:DAnalysis uid="_NtwEUR4mEemefoIC0oWX6A" selectedViews="_NuV6MB4mEemefoIC0oWX6A _N7dwMB4mEemefoIC0oWX6A _N8zM8B4mEemefoIC0oWX6A _N8898B4mEemefoIC0oWX6A _N9P44B4mEemefoIC0oWX6A _N9Zp4B4mEemefoIC0oWX6A _N-l8sB4mEemefoIC0oWX6A" version="15.2.0.202303281325">
     <semanticResources>XABDiagrams.afm</semanticResources>
     <semanticResources>XABDiagrams.capella</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_NuV6MB4mEemefoIC0oWX6A">
@@ -592,7 +592,7 @@
                 <styles xmi:type="notation:ShapeStyle" xmi:id="_jId4MSiUEemWztoTWKhzPw" fontName="Segoe UI" fontHeight="8"/>
                 <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jId4MiiUEemWztoTWKhzPw" x="-2" width="10" height="10"/>
               </children>
-              <styles xmi:type="notation:ShapeStyle" xmi:id="_g5W18SiMEemWztoTWKhzPw" fontColor="3038217" fontName="Segoe UI" fontHeight="8"/>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_g5W18SiMEemWztoTWKhzPw" fontColor="3038217" fontName="Segoe UI" fontHeight="8" italic="true"/>
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_g5W18iiMEemWztoTWKhzPw" x="105" y="54" width="50" height="50"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_g5W19SiMEemWztoTWKhzPw" type="3007" element="_g4deEyiMEemWztoTWKhzPw">
@@ -614,7 +614,7 @@
                 <styles xmi:type="notation:ShapeStyle" xmi:id="_jId4OSiUEemWztoTWKhzPw" fontName="Segoe UI" fontHeight="8"/>
                 <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jId4OiiUEemWztoTWKhzPw" x="-2" width="10" height="10"/>
               </children>
-              <styles xmi:type="notation:ShapeStyle" xmi:id="_g5W19iiMEemWztoTWKhzPw" fontColor="3038217" fontName="Segoe UI" fontHeight="8"/>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_g5W19iiMEemWztoTWKhzPw" fontColor="3038217" fontName="Segoe UI" fontHeight="8" italic="true"/>
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_g5W19yiMEemWztoTWKhzPw" x="335" y="54" width="50" height="50"/>
             </children>
             <styles xmi:type="notation:SortingStyle" xmi:id="_SLaieB4mEemefoIC0oWX6A"/>
@@ -2093,7 +2093,7 @@
                 <styles xmi:type="notation:ShapeStyle" xmi:id="_8HWs3SiWEemWztoTWKhzPw" fontName="Segoe UI" fontHeight="8"/>
                 <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8HWs3iiWEemWztoTWKhzPw" x="-2" y="2" width="10" height="10"/>
               </children>
-              <styles xmi:type="notation:ShapeStyle" xmi:id="_1ttqMSiWEemWztoTWKhzPw" fontColor="3038217" fontName="Segoe UI" fontHeight="8"/>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_1ttqMSiWEemWztoTWKhzPw" fontColor="3038217" fontName="Segoe UI" fontHeight="8" italic="true"/>
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1ttqMiiWEemWztoTWKhzPw" x="35" y="102" width="50" height="50"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_2CIa8CiWEemWztoTWKhzPw" type="3007" element="_2B1gACiWEemWztoTWKhzPw">
@@ -2115,7 +2115,7 @@
                 <styles xmi:type="notation:ShapeStyle" xmi:id="_8HWs5SiWEemWztoTWKhzPw" fontName="Segoe UI" fontHeight="8"/>
                 <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8HWs5iiWEemWztoTWKhzPw" x="-2" y="2" width="10" height="10"/>
               </children>
-              <styles xmi:type="notation:ShapeStyle" xmi:id="_2CIa8SiWEemWztoTWKhzPw" fontColor="3038217" fontName="Segoe UI" fontHeight="8"/>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_2CIa8SiWEemWztoTWKhzPw" fontColor="3038217" fontName="Segoe UI" fontHeight="8" italic="true"/>
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2CIa8iiWEemWztoTWKhzPw" x="155" y="102" width="50" height="50"/>
             </children>
             <styles xmi:type="notation:SortingStyle" xmi:id="_k3Mn5R7xEemWP4asEufuQg"/>
@@ -3564,7 +3564,7 @@
                 <styles xmi:type="notation:ShapeStyle" xmi:id="_QdeG2CiWEemWztoTWKhzPw" fontName="Segoe UI" fontHeight="8"/>
                 <layoutConstraint xmi:type="notation:Bounds" xmi:id="_QdeG2SiWEemWztoTWKhzPw" x="-2" width="10" height="10"/>
               </children>
-              <styles xmi:type="notation:ShapeStyle" xmi:id="_FwTZgSiWEemWztoTWKhzPw" fontColor="3038217" fontName="Segoe UI" fontHeight="8"/>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_FwTZgSiWEemWztoTWKhzPw" fontColor="3038217" fontName="Segoe UI" fontHeight="8" italic="true"/>
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_FwTZgiiWEemWztoTWKhzPw" x="35" y="44" width="50" height="50"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_HqCiUCiWEemWztoTWKhzPw" type="3007" element="_HpJxcCiWEemWztoTWKhzPw">
@@ -3586,7 +3586,7 @@
                 <styles xmi:type="notation:ShapeStyle" xmi:id="_QdeG4CiWEemWztoTWKhzPw" fontName="Segoe UI" fontHeight="8"/>
                 <layoutConstraint xmi:type="notation:Bounds" xmi:id="_QdeG4SiWEemWztoTWKhzPw" x="-2" width="10" height="10"/>
               </children>
-              <styles xmi:type="notation:ShapeStyle" xmi:id="_HqCiUSiWEemWztoTWKhzPw" fontColor="3038217" fontName="Segoe UI" fontHeight="8"/>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_HqCiUSiWEemWztoTWKhzPw" fontColor="3038217" fontName="Segoe UI" fontHeight="8" italic="true"/>
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HqCiUiiWEemWztoTWKhzPw" x="155" y="44" width="50" height="50"/>
             </children>
             <styles xmi:type="notation:SortingStyle" xmi:id="_ub8dXR8tEemWP4asEufuQg"/>
@@ -4948,7 +4948,7 @@
             <styles xmi:type="notation:ShapeStyle" xmi:id="_ouD3UY8vEeyVedvSXHAXrw" fontName="Segoe UI"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ouD3Uo8vEeyVedvSXHAXrw"/>
           </children>
-          <styles xmi:type="notation:ShapeStyle" xmi:id="_k1f5gSL8EemVst_4RCMcqw" fontColor="9914954" fontName="Segoe UI" fontHeight="8"/>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_k1f5gSL8EemVst_4RCMcqw" fontName="Segoe UI" fontHeight="8"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_k1f5giL8EemVst_4RCMcqw" x="683" y="50" width="150" height="50"/>
         </children>
         <styles xmi:type="notation:DiagramStyle" xmi:id="_isHLGyL8EemVst_4RCMcqw"/>
@@ -5116,7 +5116,7 @@
             <styles xmi:type="notation:ShapeStyle" xmi:id="_o1fVAY8vEeyVedvSXHAXrw" fontName="Segoe UI"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_o1fVAo8vEeyVedvSXHAXrw"/>
           </children>
-          <styles xmi:type="notation:ShapeStyle" xmi:id="_F8k9JCL_EemVst_4RCMcqw" fontColor="9914954" fontName="Segoe UI" fontHeight="8"/>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_F8k9JCL_EemVst_4RCMcqw" fontName="Segoe UI" fontHeight="8"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_F8k9JSL_EemVst_4RCMcqw" x="50" y="50" width="150" height="50"/>
         </children>
         <children xmi:type="notation:Node" xmi:id="_HkvNxyL_EemVst_4RCMcqw" type="2001" element="_Hj_m4CL_EemVst_4RCMcqw">

@@ -52,7 +52,6 @@ public abstract class XABDiagramsProject extends AbstractDiagramTestCase {
   public static final String OA__OAB_SEQUENCELINK2 = "7375dc15-f8fd-4d8e-ab08-6720e83bb78c";
   public static final String OA__OAB_CONTROLNODE = "224bab6b-092d-4f67-8c05-9b0e3b0a5f93";
 
-
   // elements from scenarios
   public static final String OA__OAB_ENTITY5 = "2b90e4ce-24ee-4fe0-a0df-db44b202bb5e";
   public static final String OA__OAB_ENTITY6 = "4652717e-6c2a-49ad-8b8e-492d9895b1c9";
@@ -213,6 +212,7 @@ public abstract class XABDiagramsProject extends AbstractDiagramTestCase {
   public static final String PC_10 = "7af9dc10-385f-4b61-97b8-4f4a1a88e700"; //$NON-NLS-1$
 
   // pa
+  public static final String PA_STRUCTURE = "aea3f1a1-8d8a-4b5f-ae22-6835b6877895";
   public static final String PA__PAB_PHYSICAL_SYSTEM = "6117356a-8b31-480f-a1ed-07e8da164fbd";
   public static final String PA__PAB_DIAGRAM = "[PAB] Physical System";
   public static final String PA__PAB_DIAGRAM_PC2 = "[PAB] PC 2";
@@ -283,7 +283,7 @@ public abstract class XABDiagramsProject extends AbstractDiagramTestCase {
   public static final String PA__PAB_SEQUENCELINK1 = "9dd2e36f-40b9-4704-b331-838aeff78297";
   public static final String PA__PAB_SEQUENCELINK2 = "5258be94-5776-4b42-9465-79d2c9f8598b";
   public static final String PA__PAB_CONTROLNODE = "c93b8b1f-6d36-4ff9-84fa-0168409967dd";
-  
+
   // Show elements from scenarios
   public static final String PA__SCENARIO_FS1 = "f1b164d3-ee4b-420e-86c1-75da2b0070eb";
   public static final String PA__PAB_PHYSICAL_ACTOR2 = "ffc0b9bd-b37b-409b-a18f-fa7f885a1b30";
