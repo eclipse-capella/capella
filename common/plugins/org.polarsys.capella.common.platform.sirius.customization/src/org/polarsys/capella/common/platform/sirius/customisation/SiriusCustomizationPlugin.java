@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2023 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -27,6 +27,9 @@ import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
 import org.eclipse.sirius.common.ui.SiriusTransPlugin;
 import org.eclipse.sirius.diagram.tools.api.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramCorePreferences;
+import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.ui.IWorkbenchPreferenceConstants;
@@ -152,6 +155,9 @@ public class SiriusCustomizationPlugin extends AbstractUIPlugin {
     
     // Set the jump link type as "Tunnel"
     diagramPreferences.putInt(SiriusDiagramCorePreferences.PREF_JUMP_LINK_TYPE, JumpLinkType.TUNNEL);
+    
+    IEclipsePreferences diagramUiPreferences = DefaultScope.INSTANCE.getNode(DiagramUIPlugin.ID);
+    diagramUiPreferences.putInt(SiriusDiagramUiPreferencesKeys.PREF_NEWLY_CREATED_ELEMENTS_LAYOUT.name(), SiriusLayoutDataManager.VERTICAL_ARRANGEMENT);
     
     // Re-apply command line customizations
     applyCommandLineCustomizations(diagramPreferences);
